@@ -95,12 +95,35 @@ bricks, the window is `pane` with block 191, and the roof is red sandstone with 
 sandstone slab. The rooms now read as their own structures again (169 area, roof y20..32, red
 sandstone 40%), where before they dissolved into the ground.
 
-**The bedrock wall is placed, but it is not the same wall.** The interface it wants already existed —
-`wool-room` meets `north-lane` at rel z −67/−66, which is precisely where the real bedrock sits — so
-it needed a `walls` entry rather than a split. What stamps there is the plan's own barrier: **two
-blocks thick and three courses tall**, per `plan.md`. ClayClay's is **one block, one course** at y12,
-a threshold rather than a barrier. `walls` has no thickness or height knob, so the intent is
-expressible and the dimensions are not.
+**The bedrock wall wanted the split after all, and the first attempt put it in the room's face.**
+A wider survey of the original finds **two** bedrock lines in the north lane, not one:
+
+| world z | rel z | x | y | is |
+|---|---|---|---|---|
+| −51 | −66 | 17..29 | 12 only | flush with the floor at the room's mouth — a line defenders cannot step over or build across |
+| −37 | −52 | 17..29 | 12..15 | the wall proper, standing three courses proud of the terrain, 15 blocks out from the room |
+
+The first attempt read the near line and stamped a full barrier at the room's mouth, which is not
+what is there. The wall proper sits in the middle of `north-lane`, so it needed the split: the lane
+is now `north-lane` (rel z −66..−53) and `south-lane` (−52..−31) with the wall on their interface.
+That lands it at rel z −53/−52, **y12–15 — the original's height exactly**.
+
+Two things it still gets wrong. It is **two blocks thick** against the original's one, and `walls`
+has no thickness knob. And the **flush floor-level line has no equivalent at all**: it is not a
+barrier, it is a course of bedrock laid into the ground, and the only wall the plan can state stands
+above the surface.
+
+**A wool room's bedrock foundation is not optional, and ClayClay does not have one.**
+`WoolStructureStamper` calls `StampFoundation`, which fills bedrock from y=0 to the surface under the
+whole room footprint "so the room cannot be tunnelled into from below". The original's wool room
+stands on ordinary clay with only the map-wide bedrock base beneath it (y0–3), and does its defending
+with the two lines above instead. The foundation is unconditional in the stamper.
+
+**Both maps report 2 isolated objectives, which is the point.** Moving the wall to where the original
+has it takes this build from `0 isolated` to `2` — and the original measures `2 isolated` too. A
+full-width wall standing three proud is meant to be built over, and the traversability read models
+walkable ground with headroom, not climbing. So the recreation matching the original here is the
+faithful result and the earlier `0` was the unfaithful one.
 
 ## What could not be done
 
@@ -128,12 +151,17 @@ This is the one gap here that is a genuine hole in the *model* rather than a mis
 else on this list is a field that could be added to an existing shape; concentric banding is a second
 axis the painter does not have.
 
-### A wool's sky marker cannot be stated
+### A wool's sky marker is placed, but only as one block of wool
 
-Above the real wool sits a **3×3×3 of stained glass with a wool block at its centre**, at y39–41 —
-the beacon that says where the objective is from across the map. Nothing in the intent or the
-structure directives places a volume over a wool; the wool marker resolves to the wool block and its
-room, and the studio's own shell is the cage around it rather than anything above it.
+**An earlier version of this file said nothing placed a marker over a wool. That was wrong** — the
+build has one, at y30–32. `GoalMarkerStamper` stamps a `Size = 3` cube or 3-D cross over every fanned
+goal, floating `Clearance = 4` above the authored build cap so it cannot be reached or towered under.
+
+What is not authorable is anything about it. The shape is one of two enum values chosen by the
+caller, the size and clearance are `const`, and every cell is `Blocks.Wool` in one damage value. The
+real ClayClay marker is **3×3×3 of stained glass with a wool block at its centre** — two materials,
+a shell and a core — which a stamper that writes one block id everywhere cannot produce. Nothing in
+the plan document or the spec reaches any of it.
 
 ### A wool always fans team-outer
 
