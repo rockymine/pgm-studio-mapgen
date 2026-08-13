@@ -110,6 +110,13 @@ a **protection region**, a gameplay contract about where a team is safe, and it 
 the footprint of a building. An author who wants a small hut inside a large protected area, or a large
 hall in a tight one, cannot say either.
 
+The building itself was also mine to get wrong rather than the tool's. `roomStyles.spawn` was left
+unbound through every build above, and an unbound room stamps the **built-in shell — a bedrock lid**,
+exactly as `library.md` says it does. It is now a civic hall in the town's own materials: a banded
+wall of stone brick with polished andesite courses, andesite posts and verge, spruce hip roof with a
+ridge cap and slab eave, arched openings, spruce beams, and a stone-brick floor with an andesite
+border and inlay. Zero bedrock above ground anywhere in the footprint.
+
 ### A goal needs a plan tier under it, even when the landform is authored
 
 The second destroyable stands on the mesa. A marker must ride a plan piece, and — as the author put

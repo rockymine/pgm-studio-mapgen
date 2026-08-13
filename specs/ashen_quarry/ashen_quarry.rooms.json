@@ -1,0 +1,54 @@
+{
+  "_comment": "Only the spawn is bound. A destroy board has no wool cage, and leaving `cage` out keeps the built-in shell for a room that never gets stamped rather than writing a null that would mean open ground.",
+
+  "spawn": {
+    "wall": {
+      "extent": 7,
+      "courses": [
+        { "material": { "kind": "solid", "id": 1,  "data": 6 }, "height": 1 },
+        { "material": { "kind": "solid", "id": 98, "data": 0 }, "height": 3 },
+        { "material": { "kind": "solid", "id": 1,  "data": 6 }, "height": 1 },
+        { "material": { "kind": "solid", "id": 98, "data": 0 }, "height": 2 }
+      ]
+    },
+    "post":  { "kind": "solid", "id": 1,  "data": 6 },
+    "sill":  { "kind": "solid", "id": 1,  "data": 6 },
+    "gable": { "kind": "solid", "id": 98, "data": 0 },
+    "roof":  { "kind": "solid", "id": 5,  "data": 1 },
+    "verge": { "kind": "solid", "id": 1,  "data": 6 },
+
+    "floor": {
+      "extent": 1,
+      "courses": [ { "material": { "kind": "solid", "id": 98, "data": 0 }, "height": 1 } ]
+    },
+
+    "surface": {
+      "field":  { "kind": "solid", "id": 98, "data": 0 },
+      "border": { "kind": "solid", "id": 1,  "data": 6 },
+      "borderWidth": 1,
+      "inlay":  { "kind": "solid", "id": 98, "data": 3 },
+      "inlayInset": 3,
+      "isPlain": false
+    },
+
+    "windows": {
+      "form": "arched", "block": 0, "data": 0,
+      "hostBlock": 98, "hostData": 0,
+      "sill": 2, "width": 2, "height": 3, "spacing": 3
+    },
+    "gableWindows": {
+      "form": "pane", "block": 102, "data": 0,
+      "hostBlock": 98, "hostData": 0,
+      "sill": 1, "width": 1, "height": 2, "spacing": 2
+    },
+
+    "form": "hip", "pitch": 1, "overhang": 1,
+    "ridgeCap": true, "roofHole": false,
+    "roofSlab": 126, "roofSlabData": 1,
+    "beams": { "block": 17, "data": 1, "reach": 2, "any": false },
+
+    "storeys": [], "porch": null, "doorEdge": null,
+    "door": "air", "doorWidth": 2, "doorHeight": 3,
+    "doorHead": { "form": "arched", "block": 109, "fill": "upperSlab", "fillBlock": 44, "fillData": 5 }
+  }
+}
