@@ -52,7 +52,9 @@
     </spawns>
     <destroyables>
         <destroyable id="quarry-monument" name="Quarry Monument" owner="red-team" materials="emerald block" region="quarry-monument-region"/>
+        <destroyable id="mesa-monument" name="Mesa Monument" owner="red-team" materials="gold block" region="mesa-monument-region"/>
         <destroyable id="quarry-monument-2" name="Quarry Monument" owner="blue-team" materials="emerald block" region="quarry-monument-2-region"/>
+        <destroyable id="mesa-monument-2" name="Mesa Monument" owner="blue-team" materials="gold block" region="mesa-monument-2-region"/>
     </destroyables>
     <filters>
         <team id="only-blue">blue-team</team>
@@ -61,20 +63,22 @@
         <material id="only-iron">iron block</material>
     </filters>
     <regions>
-        <point id="blue-spawn-point">143,51,-72</point>
-        <point id="red-spawn-point">-143,51,72</point>
+        <point id="blue-spawn-point">168,51,-105</point>
+        <point id="red-spawn-point">-168,51,105</point>
         <point id="observer-spawn">0,57,0</point>
-        <rectangle id="blue-spawn" min="126,-89" max="160,-55"/>
-        <rectangle id="red-spawn" min="-160,55" max="-126,89"/>
+        <rectangle id="blue-spawn" min="162,-112" max="176,-98"/>
+        <rectangle id="red-spawn" min="-176,98" max="-162,112"/>
         <cuboid id="quarry-monument-region" min="-52,25,51" max="-49,28,54"/>
+        <cuboid id="mesa-monument-region" min="-94,61,-68" max="-90,65,-64"/>
         <cuboid id="quarry-monument-2-region" min="50,25,-53" max="53,28,-50"/>
+        <cuboid id="mesa-monument-2-region" min="92,61,66" max="96,65,70"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
         </union>
         <union id="iron-cubes">
-            <rectangle id="iron-cube-0" min="-156,70" max="-153,73"/>
-            <rectangle id="iron-cube-1" min="152,-74" max="155,-71"/>
+            <rectangle id="iron-cube-0" min="-176,103" max="-173,106"/>
+            <rectangle id="iron-cube-1" min="172,-107" max="175,-104"/>
         </union>
         <negative id="not-spawns">
             <region id="spawns"/>
@@ -136,5 +140,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>65</maxbuildheight>
+    <maxbuildheight>69</maxbuildheight>
 </map>

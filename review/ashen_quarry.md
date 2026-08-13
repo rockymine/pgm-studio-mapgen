@@ -100,6 +100,28 @@ have said it in a sentence; instead it took reading the analyser's source.
 so on a DTM board the gate checks that the two spawns can see each other and says nothing at all about
 whether anyone can reach the goal.
 
+### A spawn building is sized by its plan piece, and nothing else
+
+There is no size knob. The building the stamper raises fills the spawn-role piece, so a 34×34 piece
+gives a 34×34 hall — which on this board read as a bedrock warehouse filling half the town. The fix is
+to draw the *piece* small: at 14×14 it is a building, and it can be pushed into a corner of the town
+because the piece's position is the building's position. That is workable but backwards — the piece is
+a **protection region**, a gameplay contract about where a team is safe, and it is doing double duty as
+the footprint of a building. An author who wants a small hut inside a large protected area, or a large
+hall in a tight one, cannot say either.
+
+### A goal needs a plan tier under it, even when the landform is authored
+
+The second destroyable stands on the mesa. A marker must ride a plan piece, and — as the author put
+it — the plan has to already carry the high ground for the marker to sit on. So the mesa stopped being
+an authored `raise` shape and became a **plan tier at surface 58**, promoted back to a polygon by the
+same reshape as the town, with its tilt restored through `anchor_heights` and `relief_scope: hold`.
+
+That works, and the result is the same world, but it inverts the division the tools describe. The plan
+is meant to state the *board* and the sketch the *ground*; here a piece of ground had to be pushed back
+into the plan purely so a marker had something to ride. Any landform carrying an objective has to exist
+twice — once as a plan rectangle for the marker, once as a polygon for the shape it actually is.
+
 ### Smaller
 
 - **`--structures` cannot see a building whose material matches the ground.** It finds by material, so

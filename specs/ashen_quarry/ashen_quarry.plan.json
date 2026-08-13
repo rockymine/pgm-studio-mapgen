@@ -1,10 +1,14 @@
 ﻿{
   "plan": 1,
   "meta": { "name": "Ashen Quarry" },
-  "globals": { "cell": 1, "symmetry": "rot_180", "maxPlayers": 24, "surface": 41, "headroom": 24 },
+  "globals": { "cell": 1, "symmetry": "rot_180", "maxPlayers": 24, "surface": 41, "headroom": 28 },
 
   "pieces": [
-    { "id": "land-front", "role": "piece", "rect": [-180, -120, 180, 130] },
+    { "id": "lf-a",  "role": "piece", "rect": [-180, -120, 180,  26] },
+    { "id": "lf-b",  "role": "piece", "rect": [-180,  -94,  62,  54] },
+    { "id": "mesa",  "role": "piece", "rect": [-118,  -94,  50,  54], "surface": 58 },
+    { "id": "lf-c",  "role": "piece", "rect": [ -68,  -94,  68,  54] },
+    { "id": "lf-d",  "role": "piece", "rect": [-180,  -40, 180,  50] },
 
     { "id": "town-w",    "role": "piece", "rect": [-180,  10,  50,  20], "surface": 51 },
     { "id": "town-e",    "role": "piece", "rect": [-116,  10,  46,  20], "surface": 51 },
@@ -19,8 +23,8 @@
     { "id": "town-stair-7", "role": "piece", "rect": [-130, 24, 14, 2], "surface": 49 },
     { "id": "town-stair-8", "role": "piece", "rect": [-130, 26, 14, 2], "surface": 50 },
     { "id": "town-stair-9", "role": "piece", "rect": [-130, 28, 14, 2], "surface": 51 },
-    { "id": "east-a",    "role": "piece", "rect": [ -70,  10,  70,  20] },
-    { "id": "quarry",    "role": "piece", "rect": [ -70,  30,  38,  44], "surface": 24 },
+    { "id": "east-a",  "role": "piece", "rect": [ -70,  10,  70,  20] },
+    { "id": "quarry",  "role": "piece", "rect": [ -70,  30,  38,  44], "surface": 24 },
     { "id": "quarry-ramp-0", "role": "piece", "rect": [-32, 30, 2, 44], "surface": 25 },
     { "id": "quarry-ramp-1", "role": "piece", "rect": [-30, 30, 2, 44], "surface": 26 },
     { "id": "quarry-ramp-2", "role": "piece", "rect": [-28, 30, 2, 44], "surface": 27 },
@@ -37,19 +41,21 @@
     { "id": "quarry-ramp-13", "role": "piece", "rect": [-6, 30, 2, 44], "surface": 38 },
     { "id": "quarry-ramp-14", "role": "piece", "rect": [-4, 30, 2, 44], "surface": 39 },
     { "id": "quarry-ramp-15", "role": "piece", "rect": [-2, 30, 2, 44], "surface": 40 },
-    { "id": "east-c",    "role": "piece", "rect": [ -70,  74,  70,  46] },
+    { "id": "east-c",  "role": "piece", "rect": [ -70,  74,  70,  46] },
 
-    { "id": "spawn",     "role": "spawn", "rect": [-160,  55,  34,  34], "surface": 51 }
+    { "id": "spawn",   "role": "spawn", "rect": [-176,  98,  14,  14], "surface": 51 }
   ],
 
-  "cliffs": [ { "a": "town-w", "b": "land-front" }, { "a": "town-e", "b": "land-front" } ],
+  "cliffs": [ { "a": "town-w", "b": "lf-d" }, { "a": "town-e", "b": "lf-d" } ],
 
   "placements": {
-    "spawns": [ { "id": "spawn-1", "piece": "spawn", "at": [17, 17], "facing": "right" } ],
-    "iron":   [ { "id": "iron-1", "piece": "spawn", "at": [6, 17] } ],
+    "spawns": [ { "id": "spawn-1", "piece": "spawn", "at": [7, 7], "facing": "right" } ],
+    "iron":   [ { "id": "iron-1", "piece": "spawn", "at": [2, 7] } ],
     "destroyables": [
       { "id": "destroyable-1", "piece": "quarry", "at": [19, 22],
-        "style": "cube-3", "materials": "emerald block", "float": 4, "name": "Quarry Monument" }
+        "style": "cube-3", "materials": "emerald block", "float": 4, "name": "Quarry Monument" },
+      { "id": "destroyable-2", "piece": "mesa", "at": [25, 27],
+        "style": "cube-4", "materials": "gold block", "float": 4, "name": "Mesa Monument" }
     ]
   }
 }
