@@ -29,6 +29,8 @@
     { "id": "hop-south", "rect": [ 17, -17, 13, 21] }
   ],
 
+  "walls": [ { "a": "wool-room", "b": "north-lane", "side": "b" } ],
+
   "placements": {
     "spawns": [ { "id": "spawn-1", "piece": "spawn", "at": [8.5, 6.5], "facing": "right" } ],
     "wools":  [ { "id": "wool-1", "piece": "wool-room", "at": [6.5, 6.5] } ],

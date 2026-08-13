@@ -63,6 +63,45 @@ light blue is present but sits under the surface course rather than on it.
    what the docs say and what the first attempt looked like. Because every material kind nests, the
    stack's **top layer can itself be a `cell` pattern** — patchy top course, layered depth below.
 
+## Answering the review
+
+`review/clayclay_redux.md` raised five points. Three were fixed; two are confirmed inexpressible, and
+one of the fixes is only approximate.
+
+**The side pattern was wrong and is now measured.** A column probe of the real wool room's edge gives
+it exactly, and the theme's `wall` stack was rewritten from it:
+
+| course | ClayClay | Recreation |
+|---|---|---|
+| rim | blue stained clay ×1 | same |
+| | light blue ×3 | same |
+| | cyan ×1 | same |
+| | gray ×1 | same |
+| | black ×1 | same |
+| | nether brick ×1 | nether brick ×2 |
+| | nether brick **stairs** ×1, one facing | — |
+| rest | clay (82) | same |
+
+The stair course is the one miss. A `layered` layer takes a *material*, and a material resolves its
+own data from where the cell sits — which is exactly why the library picks windows and rails as
+blocks rather than styles ("their metadata is geometry, not material"). A course of stairs all facing
+one way cannot be stated, so it is laid as a second course of plain nether brick.
+
+**The houses were in the wrong style and are now the map's own.** Probing the real wool house gives
+hardened clay and bricks alternating up the wall, orange stained clay posts, **dark oak fence as the
+window** (four courses, y13–16), red sandstone and red sandstone stairs over it, and a light gray clay
+cap. The room style is rebuilt from that — the wall body is a `checker` of hardened clay against
+bricks, the window is `pane` with block 191, and the roof is red sandstone with a `roofSlab` of red
+sandstone slab. The rooms now read as their own structures again (169 area, roof y20..32, red
+sandstone 40%), where before they dissolved into the ground.
+
+**The bedrock wall is placed, but it is not the same wall.** The interface it wants already existed —
+`wool-room` meets `north-lane` at rel z −67/−66, which is precisely where the real bedrock sits — so
+it needed a `walls` entry rather than a split. What stamps there is the plan's own barrier: **two
+blocks thick and three courses tall**, per `plan.md`. ClayClay's is **one block, one course** at y12,
+a threshold rather than a barrier. `walls` has no thickness or height knob, so the intent is
+expressible and the dimensions are not.
+
 ## What could not be done
 
 ### A tree cannot be made of anything but wood
@@ -75,6 +114,26 @@ any other material is placeable. The terrain half of the library is fully block-
 dressing half is not, and the asymmetry is the gap.
 
 Everything else on those caps *is* reachable — the layered column under them was reproduced exactly.
+
+### A surface has one rim, not a stack of them inward
+
+ClayClay's ground is four concentric bands walking inward from the edge: brown and gray stained clay
+at random, then light blue and cyan at random, then dark oak and nether brick at random, then a fill
+of random grass and lime. A theme has exactly **one** `rim` bucket, and its `depth` counts *courses
+downward*, not rings inward — so the model has no way to say "a second band one ring in from the
+first". The recreation paints the innermost band only (random grass and lime), which is most of the
+area and the right reading of the map from above, and loses the three borders.
+
+This is the one gap here that is a genuine hole in the *model* rather than a missing knob. Everything
+else on this list is a field that could be added to an existing shape; concentric banding is a second
+axis the painter does not have.
+
+### A wool's sky marker cannot be stated
+
+Above the real wool sits a **3×3×3 of stained glass with a wool block at its centre**, at y39–41 —
+the beacon that says where the objective is from across the map. Nothing in the intent or the
+structure directives places a volume over a wool; the wool marker resolves to the wool block and its
+room, and the studio's own shell is the cage around it rather than anything above it.
 
 ### A wool always fans team-outer
 
