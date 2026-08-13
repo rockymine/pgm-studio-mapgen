@@ -32,9 +32,9 @@ is what the compile reads — changing the folder alone is not enough.
 ## Rebuilding
 
 ```bash
-dotnet run tools/build.cs -- specs/clayclay_redux.plan.json \
-                             specs/clayclay_redux.theme.json \
-                             specs/clayclay_redux.room.json \
+dotnet run tools/build.cs -- specs/clayclay_redux/clayclay_redux.plan.json \
+                             specs/clayclay_redux/clayclay_redux.theme.json \
+                             specs/clayclay_redux/clayclay_redux.room.json \
                              "ClayClay Redux" out.zip
 ```
 
