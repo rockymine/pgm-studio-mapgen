@@ -35,6 +35,7 @@ is what the compile reads — changing the folder alone is not enough.
 dotnet run tools/build.cs -- specs/clayclay_redux/clayclay_redux.plan.json \
                              specs/clayclay_redux/clayclay_redux.theme.json \
                              specs/clayclay_redux/clayclay_redux.room.json \
+                             specs/clayclay_redux/clayclay_redux.spawn-room.json \
                              "ClayClay Redux" out.zip
 ```
 

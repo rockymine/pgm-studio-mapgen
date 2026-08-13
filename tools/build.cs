@@ -1,6 +1,6 @@
 // Drives a plan all the way to an exported world through the studio's own API, injecting the two things a
 // mapgen spec cannot state: a terrain theme whose materials are named as blocks, and a room style of its own.
-//   dotnet run tools/clayclay-build.cs -- <plan.json> <theme.json> <roomstyle.json> <slug> <outZip>
+//   dotnet run tools/clayclay-build.cs -- <plan.json> <theme.json> <wool-room.json> <spawn-room.json> <name> <outZip>
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
@@ -11,14 +11,16 @@ var api = Environment.GetEnvironmentVariable("PGM_STUDIO_API") ?? "http://localh
 var planPath = args[0];
 var themePath = args[1];
 var roomPath = args[2];
-var wanted = args[3];
-var outZip = args[4];
+var spawnRoomPath = args[3];
+var wanted = args[4];
+var outZip = args[5];
 
 using var http = new HttpClient { Timeout = TimeSpan.FromMinutes(10) };
 
 var plan = JsonNode.Parse(File.ReadAllText(planPath))!;
 var theme = JsonNode.Parse(File.ReadAllText(themePath))!;
 var room = JsonNode.Parse(File.ReadAllText(roomPath))!;
+var spawnRoom = JsonNode.Parse(File.ReadAllText(spawnRoomPath))!;
 
 static StringContent Body(JsonNode node) =>
     new(node.ToJsonString(), Encoding.UTF8, "application/json");
@@ -58,7 +60,7 @@ layout["mapTheme"] = "clay";
 layout["roomStyles"] = new JsonObject
 {
     ["cage"] = room.DeepClone(),
-    ["spawn"] = room.DeepClone(),
+    ["spawn"] = spawnRoom.DeepClone(),
 };
 
 // 4. terrain, then the world, then the gameplay

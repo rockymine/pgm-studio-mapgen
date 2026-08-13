@@ -93,15 +93,15 @@
         <material id="only-iron">iron block</material>
     </filters>
     <regions>
-        <point id="blue-spawn-point">61.5,16,23.5</point>
-        <point id="red-spawn-point">-61.5,16,-23.5</point>
+        <point id="blue-spawn-point">61.5,16,25.5</point>
+        <point id="red-spawn-point">-61.5,16,-25.5</point>
         <point id="blue-wool-spawn">23.5,12,72.5</point>
         <point id="red-wool-spawn">-23.5,12,-72.5</point>
         <point id="observer-spawn">0,29,0</point>
-        <block id="blue-red-monument">-57,17,-28</block>
-        <block id="red-blue-monument">56,17,19</block>
-        <rectangle id="blue-spawn" min="54,17" max="71,30"/>
-        <rectangle id="red-spawn" min="-71,-30" max="-54,-17"/>
+        <block id="blue-red-monument">-57,17,-30</block>
+        <block id="red-blue-monument">56,17,17</block>
+        <rectangle id="blue-spawn" min="54,15" max="71,32"/>
+        <rectangle id="red-spawn" min="-71,-32" max="-54,-15"/>
         <rectangle id="blue-wool" min="17,66" max="30,79"/>
         <rectangle id="red-wool" min="-30,-79" max="-17,-66"/>
         <union id="reds-woolrooms">
@@ -115,8 +115,8 @@
             <region id="blues-woolrooms"/>
         </union>
         <union id="iron-cubes">
-            <rectangle id="iron-cube-0" min="-69,-25" max="-67,-23"/>
-            <rectangle id="iron-cube-1" min="66,22" max="68,24"/>
+            <rectangle id="iron-cube-0" min="-69,-27" max="-67,-25"/>
+            <rectangle id="iron-cube-1" min="66,24" max="68,26"/>
         </union>
         <negative id="not-spawns">
             <region id="spawns"/>

@@ -10,7 +10,7 @@
   },
 
   "pieces": [
-    { "id": "spawn",      "role": "spawn",     "rect": [-71, -30, 17, 13], "surface": 16 },
+    { "id": "spawn",      "role": "spawn",     "rect": [-71, -32, 17, 17], "surface": 16 },
     { "id": "step-4",     "role": "piece",     "rect": [-54, -30,  4, 13], "surface": 15 },
     { "id": "step-5",     "role": "piece",     "rect": [-50, -30,  5, 13], "surface": 14 },
     { "id": "west-lane",  "role": "piece",     "rect": [-45, -30, 15, 13] },

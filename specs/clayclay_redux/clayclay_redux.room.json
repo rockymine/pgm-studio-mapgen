@@ -1,16 +1,10 @@
 {
   "wall": {
     "extent": 7,
-    "courses": [
-      { "material": { "kind": "solid", "id": 172, "data": 0 }, "height": 1 },
-      { "material": { "kind": "checker", "size": 1,
-                      "even": { "kind": "solid", "id": 172, "data": 0 },
-                      "odd":  { "kind": "solid", "id": 45,  "data": 0 } }, "height": 5 },
-      { "material": { "kind": "solid", "id": 159, "data": 1 }, "height": 1 }
-    ]
+    "courses": [ { "material": { "kind": "solid", "id": 172, "data": 0 }, "height": 7 } ]
   },
   "post":  { "kind": "solid", "id": 159, "data": 1 },
-  "sill":  { "kind": "solid", "id": 172, "data": 0 },
+  "sill":  { "kind": "solid", "id": 179, "data": 0 },
   "gable": { "kind": "solid", "id": 172, "data": 0 },
   "roof":  { "kind": "solid", "id": 179, "data": 0 },
   "verge": { "kind": "solid", "id": 159, "data": 8 },
@@ -40,12 +34,32 @@
     "sill": 2, "width": 2, "height": 2, "spacing": 3
   },
 
-  "form": "hip", "pitch": 1, "overhang": 1,
+  "form": "gable", "pitch": 1, "overhang": 0,
   "ridgeCap": false, "roofHole": false,
   "roofSlab": 182, "roofSlabData": 0,
   "beams": { "block": -1, "data": 0, "reach": 1, "any": false },
 
-  "storeys": [], "porch": null, "doorEdge": null,
+  "storeys": [
+    {
+      "clear": 4,
+      "wall": { "extent": 0, "courses": [ { "material": { "kind": "solid", "id": 172, "data": 0 }, "height": 5 } ] },
+      "post": { "kind": "solid", "id": 159, "data": 1 },
+      "windows": { "form": "pane", "block": 191, "data": 0,
+                   "hostBlock": 172, "hostData": 0,
+                   "sill": 1, "width": 1, "height": 4, "spacing": 3 },
+      "ceiling": { "kind": "solid", "id": 126, "data": 13 }
+    },
+    {
+      "clear": 3,
+      "wall": { "extent": 0, "courses": [ { "material": { "kind": "solid", "id": 45, "data": 0 }, "height": 4 } ] },
+      "post": { "kind": "solid", "id": 159, "data": 1 },
+      "windows": { "form": "pane", "block": 160, "data": 1,
+                   "hostBlock": 45, "hostData": 0,
+                   "sill": 1, "width": 2, "height": 2, "spacing": 3 }
+    }
+  ],
+
+  "porch": null, "doorEdge": null,
   "door": "air", "doorWidth": 2, "doorHeight": 3,
   "doorHead": { "form": "arched", "block": 180, "fill": "upperSlab", "fillBlock": 182, "fillData": 8 }
 }

@@ -125,6 +125,64 @@ full-width wall standing three proud is meant to be built over, and the traversa
 walkable ground with headroom, not climbing. So the recreation matching the original here is the
 faithful result and the earlier `0` was the unfaithful one.
 
+## Second review round
+
+**The two rooms are now two styles, not one.** They were sharing a style, which is why the spawn wore
+brick it should never have had. The spawn is a **barn**: hardened clay walls, orange clay posts, red
+sandstone roof rim, acacia roof and acacia plank floor, and no brick anywhere. The wool house keeps
+brick, and is a **two-storey** shell — a `storeys` stack of two, hardened clay under brick, dark oak
+fence windows below and orange glass panes above, gable roof with `overhang: 0`.
+
+**The spawn platform is 17×17.** Measured on the original: x −24..−8 by z −17..−1 at y15, standing one
+block over the top step, which the piece's `surface: 16` against `step-4`'s `15` already gave. The
+piece was 17×13 and is now 17×17, so it stands proud of the 13-wide bar on both sides the way the
+original's does.
+
+**The floor is patchier.** The `cell` field went from `cellSize: 12` to `3` with jitter up to 90 —
+smaller, less organised patches, which is the reading the original has.
+
+### A spawn-role piece is left unpainted, and that one is a bug
+
+The volume under a spawn piece comes out as **raw stone**. It is not elevation and it is not the
+theme: on the same build, at the same height,
+
+| column | y1 .. top | painted? |
+|---|---|---|
+| `spawn` (role spawn, surface 16) | **Stone** ×14 | **no** |
+| `step-4` (role piece, surface 15) | Clay ×13 under lime | yes |
+| `step-5` (role piece, surface 14) | Clay ×12 under lime | yes |
+| `west-lane` (role piece, surface 13) | Clay ×11 under lime | yes |
+
+So a raised *plain* piece paints correctly and only the spawn role does not. It is not the foundation
+either: `StructureStamper.StampFoundation` writes **bedrock**, and the wool room's column duly shows
+bedrock — this one is stone, the rasterizer's own untouched fill, so nothing claimed it at all. The
+practical effect is a stone cliff under every spawn on an otherwise fully themed map.
+
+### The iron behind a spawn has no door to it
+
+`SpawnStructureStamper` stamps its shell with a single opening (`shell with { Door = DoorMaterial.Air }`,
+and `doorEdge: null` meaning whichever wall the frame picks). The iron cube is placed outside the
+building. On the original the iron sits behind the spawn house and there is a way through to it; here
+a player has to run around the outside and cannot see where they are going. A rear opening is not
+something a room style can ask for — the door count is one, and its edge is the only knob.
+
+### Tall grass on the surface is not placeable
+
+The original lays tall grass over its grass blocks. A theme paints **blocks in a column**, and grass
+is a prop rather than a course — it belongs to the dressing pass, which reaches trees, rocks, paths
+and water but is not addressable from a theme. Same wall as the clay tree: the terrain half is
+block-addressable and the dressing half is a closed vocabulary.
+
+### The traversability warning discourages a normal CTW feature
+
+Placing the bedrock wall where the original has it takes the read from `0 isolated` to `2 isolated`.
+The original measures `2` as well, so the number is correct — but it is reported as a fault, and a
+model authoring a map will read it as one and take the wall out to make it go away. A full-width wall
+standing proud of the terrain is a **feature of many CTW maps**, deliberately built over rather than
+walked around, and the traversability read models walkable ground with headroom and nothing else. The
+measurement is not wrong; what is wrong is that it has no way to say "this cut is intended", so the
+tool argues against the map.
+
 ## What could not be done
 
 ### A tree cannot be made of anything but wood
