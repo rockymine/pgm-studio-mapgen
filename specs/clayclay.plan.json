@@ -1,0 +1,38 @@
+﻿{
+  "plan": 1,
+  "meta": { "name": "ClayClay" },
+  "globals": {
+    "cell": 1,
+    "symmetry": "rot_180",
+    "maxPlayers": 13,
+    "surface": 13,
+    "headroom": 13
+  },
+
+  "pieces": [
+    { "id": "spawn",      "role": "spawn",     "rect": [-71, -30, 17, 13], "surface": 16 },
+    { "id": "step-4",     "role": "piece",     "rect": [-54, -30,  4, 13], "surface": 15 },
+    { "id": "step-5",     "role": "piece",     "rect": [-50, -30,  5, 13], "surface": 14 },
+    { "id": "west-lane",  "role": "piece",     "rect": [-45, -30, 15, 13] },
+    { "id": "hub",        "role": "piece",     "rect": [-30, -30, 13, 13] },
+    { "id": "east-arm",   "role": "piece",     "rect": [-17, -30, 13, 13] },
+
+    { "id": "wool-room",  "role": "wool-room", "rect": [-30, -79, 13, 13] },
+    { "id": "north-lane", "role": "piece",     "rect": [-30, -66, 13, 36] },
+    { "id": "south-arm",  "role": "piece",     "rect": [-30, -17, 13, 13] },
+
+    { "id": "cap",        "role": "piece",     "rect": [ 17, -30, 13, 13] }
+  ],
+
+  "zones": [
+    { "id": "hop-east",  "rect": [ -4, -30, 21, 13] },
+    { "id": "hop-south", "rect": [ 17, -17, 13, 21] }
+  ],
+
+  "placements": {
+    "spawns": [ { "id": "spawn-1", "piece": "spawn", "at": [8.5, 6.5], "facing": "right" } ],
+    "wools":  [ { "id": "wool-1", "piece": "wool-room", "at": [6.5, 6.5] } ],
+    "iron":   [ { "id": "iron-1", "piece": "spawn", "at": [3.5, 6.5] } ]
+  }
+}
+
