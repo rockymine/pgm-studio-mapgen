@@ -50,4 +50,5 @@ layered wall or a stamped room — every renderer in the studio is plan-view.
 |---|---|
 | [FINDINGS.md](FINDINGS.md) | the measured record — what the original is, what the recreation reproduces, and every gap found, per review round |
 | [AGENT-REPORT.md](AGENT-REPORT.md) | an opinion piece from the agent that authored the map: why the `mapgen` spec was the wrong layer to work at, what the documentation got right, and an account of the two claims it got wrong |
+| [AGENT-REPORT-2.md](AGENT-REPORT-2.md) | the same, after building a board from nothing rather than tracing one: what the height model got right, why the three scripts in `tools/` should not have needed writing, and the void column that nothing checked for |
 | `review/` | the author's reviews of each build |

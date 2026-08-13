@@ -129,6 +129,30 @@ is meant to state the *board* and the sketch the *ground*; here a piece of groun
 into the plan purely so a marker had something to ride. Any landform carrying an objective has to exist
 twice — once as a plan rectangle for the marker, once as a polygon for the shape it actually is.
 
+### The void column, and the boundary nothing checks
+
+There are **102 void columns along z=29**, a one-row slot at the quarry's mouth. The land polygon
+enters its notch on a *diagonal* — `[0,26] → [-70,30]` — so between z=26 and z=30 the land is already
+cut away while the quarry rectangle does not start until z=30, and nothing covers the strip.
+
+Two boundaries that must agree, authored in different files in different idioms: one a polygon vertex
+list, the other a plan rect. **Nothing validates that they meet.** The build exported clean and the
+traversability gate passed. A lint for "shapes leave a hole no tier fills" is the single check that
+would have caught the most expensive class of error hit across both maps — this, and ClayClay's
+subtract polygons crossing its own spawn.
+
+### The quarry could have been a polygon, and the earlier reasoning here was wrong
+
+An earlier revision of this file said a lower tier "cannot recede without leaving void" and left the
+quarry a rectangle on that basis. The rule that actually governs is the one two sections up:
+
+> the tier that recedes must be overlapped by the other one.
+
+For the town the land is lower, so the land runs **under** it. For the quarry the land is higher, so
+the land needs to run **over** the quarry's fringe — and then the quarry can be an organic polygon
+exactly as the mesa is. Mirrored, not different. The mesa proves the shape works; the quarry is square
+because the rule was misapplied, not because the model refuses it.
+
 ### Smaller
 
 - **`--structures` cannot see a building whose material matches the ground.** It finds by material, so
