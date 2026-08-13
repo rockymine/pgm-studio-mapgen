@@ -108,7 +108,15 @@ the layer stack, the step heights and the stamped room.
 Needs the API running (`dotnet run --project src/PgmStudio.Api`) and a migrated database.
 
 ```bash
-dotnet run tools/build.cs -- specs/clayclay.plan.json specs/clayclay.theme.json \
-                            specs/clayclay.room.json "ClayClay" out.zip
-dotnet run tools/column-probe.cs -- maps/clayclay/region -54 -24 -50 -24
+dotnet run tools/build.cs -- specs/clayclay_redux.plan.json specs/clayclay_redux.theme.json \
+                            specs/clayclay_redux.room.json "ClayClay Redux" out.zip
+dotnet run tools/column-probe.cs -- maps/clayclay_redux/region -54 -24 -50 -24
 ```
+
+## Naming
+
+The map is `ClayClay Redux` in `map.xml` and `clayclay_redux` on disk, not `ClayClay`. A recreation
+that keeps the original's name gives a PGM server two maps with one identity as soon as this repo
+sits beside the community corpus. The name the server reads comes from the plan document's
+`meta.name` — the folder, the map row and the `POST /plan` name are all separate from it, so renaming
+the folder alone leaves the clash in place.

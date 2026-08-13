@@ -20,17 +20,22 @@ a migrated database.
 
 ## Maps
 
-| Slug | Mode | Size | What it is |
-|---|---|---|---|
-| `clayclay` | CTW | 142×158 | A recreation of `OvercastCommunity/CommunityMaps/ctw/clayclay` — two rot_180 plus-shaped clay islands joined by four void hops. See [FINDINGS.md](FINDINGS.md). |
+| Folder | `map.xml` name | Mode | Size | What it is |
+|---|---|---|---|---|
+| `clayclay_redux` | ClayClay Redux | CTW | 142×158 | A recreation of `OvercastCommunity/CommunityMaps/ctw/clayclay` — two rot_180 plus-shaped clay islands joined by four void hops. See [FINDINGS.md](FINDINGS.md). |
+
+**A recreation never reuses the original's name.** Both the folder and the `<name>` in `map.xml` carry
+a suffix, because a PGM server loading this repo alongside the community corpus would otherwise see
+two maps calling themselves the same thing. The name lives in the plan document's `meta.name`, which
+is what the compile reads — changing the folder alone is not enough.
 
 ## Rebuilding
 
 ```bash
-dotnet run tools/build.cs -- specs/clayclay.plan.json \
-                             specs/clayclay.theme.json \
-                             specs/clayclay.room.json \
-                             "ClayClay" out.zip
+dotnet run tools/build.cs -- specs/clayclay_redux.plan.json \
+                             specs/clayclay_redux.theme.json \
+                             specs/clayclay_redux.room.json \
+                             "ClayClay Redux" out.zip
 ```
 
 `tools/column-probe.cs` prints one vertical column of a built world, which is the only way to check a
