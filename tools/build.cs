@@ -12,8 +12,9 @@ var planPath = args[0];
 var themePath = args[1];
 var roomPath = args[2];
 var spawnRoomPath = args[3];
-var wanted = args[4];
-var outZip = args[5];
+var dressingPath = args[4];
+var wanted = args[5];
+var outZip = args[6];
 
 using var http = new HttpClient { Timeout = TimeSpan.FromMinutes(10) };
 
@@ -21,6 +22,7 @@ var plan = JsonNode.Parse(File.ReadAllText(planPath))!;
 var theme = JsonNode.Parse(File.ReadAllText(themePath))!;
 var room = JsonNode.Parse(File.ReadAllText(roomPath))!;
 var spawnRoom = JsonNode.Parse(File.ReadAllText(spawnRoomPath))!;
+var dressing = JsonNode.Parse(File.ReadAllText(dressingPath))!;
 
 static StringContent Body(JsonNode node) =>
     new(node.ToJsonString(), Encoding.UTF8, "application/json");
@@ -62,6 +64,7 @@ layout["roomStyles"] = new JsonObject
     ["cage"] = room.DeepClone(),
     ["spawn"] = spawnRoom.DeepClone(),
 };
+layout["dressing"] = dressing.DeepClone();
 
 // 4. terrain, then the world, then the gameplay
 await Call(HttpMethod.Put, $"/map/{slug}/sketch/from-plan?force=true", layout, "PUT sketch/from-plan");

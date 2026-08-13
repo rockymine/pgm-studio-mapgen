@@ -15,7 +15,10 @@
     { "id": "step-5",     "role": "piece",     "rect": [-50, -30,  5, 13], "surface": 14 },
     { "id": "west-lane",  "role": "piece",     "rect": [-45, -30, 15, 13] },
     { "id": "hub",        "role": "piece",     "rect": [-30, -30, 13, 13] },
-    { "id": "east-arm",   "role": "piece",     "rect": [-17, -30, 13, 13] },
+    { "id": "east-arm",   "role": "piece",     "rect": [-17, -30,  5, 13] },
+    { "id": "spur-13",    "role": "piece",     "rect": [-12, -30,  2, 13], "surface": 14 },
+    { "id": "spur-14",    "role": "piece",     "rect": [-10, -30,  4, 13], "surface": 15 },
+    { "id": "spur-15",    "role": "piece",     "rect": [ -6, -30,  2, 13], "surface": 16 },
 
     { "id": "wool-room",  "role": "wool-room", "rect": [-30, -79, 13, 13] },
     { "id": "north-lane", "role": "piece",     "rect": [-30, -66, 13, 14] },

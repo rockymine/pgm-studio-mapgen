@@ -141,6 +141,16 @@ original's does.
 **The floor is patchier.** The `cell` field went from `cellSize: 12` to `3` with jitter up to 90 —
 smaller, less organised patches, which is the reading the original has.
 
+## Third review round
+
+**The east spur has its own ramp.** Profiling both spurs finds it on the one pointing at the middle
+island: world x35..36 at y13, x37..40 at y14, x41..42 at y15, up from the y12 field. (The south spur
+has no ramp — it carries a raised block at z4..6, which is decoration.) `east-arm` is split into four
+pieces to say it, the same instrument as the spawn approach.
+
+**The map is dressed.** Grass, a tree on each middle island, and the hub puddle — see below; the
+entry that said none of this was reachable is withdrawn.
+
 ### A spawn-role piece is left unpainted, and that one is a bug
 
 The volume under a spawn piece comes out as **raw stone**. It is not elevation and it is not the
@@ -166,12 +176,26 @@ building. On the original the iron sits behind the spawn house and there is a wa
 a player has to run around the outside and cannot see where they are going. A rear opening is not
 something a room style can ask for — the door count is one, and its edge is the only knob.
 
-### Tall grass on the surface is not placeable
+### Dressing is authorable, and two earlier entries here were wrong
 
-The original lays tall grass over its grass blocks. A theme paints **blocks in a column**, and grass
-is a prop rather than a course — it belongs to the dressing pass, which reaches trees, rocks, paths
-and water but is not addressable from a theme. Same wall as the clay tree: the terrain half is
-block-addressable and the dressing half is a closed vocabulary.
+**This file twice said the dressing half of the library was out of reach. It is not.** `dressing` is
+a top-level key of the sketch layout exactly as `themes` and `roomStyles` are, holding a list of
+props polymorphic on a `kind` discriminator — `path`, `water`, `tree`, `boulder`, `flora`, `house` —
+and a hand-written list posts through `PUT /sketch/from-plan` like any other finish key. The map now
+carries all three things that were called impossible:
+
+- **Grass**, as a `flora` prop over a drawn ring. `FloraSpec` splits its cover by `fernShare`,
+  `flowerShare` and `tallShare`; all three at zero leaves plain cover, which is **31:1** — 374
+  columns of it, every one on a grass block.
+- **A tree on each middle island**, as a `tree` prop. Placed once on the authored unit and fanned
+  across the orbit, so both caps carry one.
+- **The water**, as a `water` prop. Measured on the original first: a **3×3 puddle at the hub
+  centre** — world x22..24, z −10..−8, water y9..12 — which is where the spawn arm and the wool arm
+  cross. One prop on the unit gives both hubs one, and the original has exactly the same pair.
+
+What is genuinely closed is narrower than what was claimed: a tree names a **wood** from
+`DressingPalette.Woods`, six rows of `(name, logId, logData, leafId, leafData)`. So the original's
+**stained-clay** tree cannot be built — but a tree can, and an acacia stands there now.
 
 ### The traversability warning discourages a normal CTW feature
 
@@ -185,7 +209,21 @@ tool argues against the map.
 
 ## What could not be done
 
-### A tree cannot be made of anything but wood
+### The renderers call 31:1 "Tall Grass", which is the wrong block
+
+`BlockPalette.Name` answers **"Tall Grass"** for `31:1`. That is the plain one-block grass — the
+plant vanilla calls *grass* — while tall grass is the two-block `175:2` double plant. The name is
+therefore not a loose label but the name of a **different block**, and it appears in every surface
+census, decoration table and column probe.
+
+It cost real confusion here. `FloraSpec.tallShare` is documented as "how much of the plain cover is
+tall (two-block) grass, which is the part of the overlay that hides a player and so classes as
+gameplay" — a share this map deliberately sets to **zero**. A probe then reports 374 columns of
+"Tall Grass", which reads as the setting having been ignored, and the only way to tell that it was
+honoured is to read the id. An author checking whether they got the cover they asked for is told the
+opposite of the truth by the tool that is supposed to confirm it.
+
+### A tree's material is a closed six-wood palette
 
 ClayClay's caps each carry a **stained-clay tree**: brown clay trunk (`159:12`), green clay canopy
 (`159:13`) at y22–25, dark oak stair branches. A `TreeProp` carries a **wood name**, resolved by

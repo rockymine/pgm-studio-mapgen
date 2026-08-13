@@ -1,0 +1,51 @@
+{
+  "props": [
+    {
+      "kind": "water",
+      "id": "hub-puddle",
+      "seed": 3,
+      "points": [[-25, -24], [-23, -24]],
+      "radius": 1.5,
+      "depth": 3,
+      "form": "Canal",
+      "shore": 1,
+      "bank": { "kind": "solid", "id": 172, "data": 0 }
+    },
+
+    {
+      "kind": "tree",
+      "id": "cap-tree",
+      "seed": 7,
+      "x": 23,
+      "z": -24,
+      "form": "Template",
+      "species": "acacia",
+      "height": 9
+    },
+
+    {
+      "kind": "flora",
+      "id": "cover-horizontal",
+      "seed": 11,
+      "points": [[-71, -30], [-5, -30], [-5, -18], [-71, -18]],
+      "spec": { "coverage": 0.4, "scale": 9, "octaves": 3,
+                "fernShare": 0, "flowerShare": 0, "flowerScale": 18, "tallShare": 0 }
+    },
+    {
+      "kind": "flora",
+      "id": "cover-vertical",
+      "seed": 12,
+      "points": [[-30, -79], [-18, -79], [-18, -5], [-30, -5]],
+      "spec": { "coverage": 0.4, "scale": 9, "octaves": 3,
+                "fernShare": 0, "flowerShare": 0, "flowerScale": 18, "tallShare": 0 }
+    },
+    {
+      "kind": "flora",
+      "id": "cover-cap",
+      "seed": 13,
+      "points": [[17, -30], [29, -30], [29, -18], [17, -18]],
+      "spec": { "coverage": 0.4, "scale": 9, "octaves": 3,
+                "fernShare": 0, "flowerShare": 0, "flowerScale": 18, "tallShare": 0 }
+    }
+  ]
+}
