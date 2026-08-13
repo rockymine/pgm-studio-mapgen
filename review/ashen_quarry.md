@@ -3,8 +3,15 @@
 A destroy board authored from scratch through the studio's own endpoints, deliberately reaching for
 every capability at once: a plan carrying its own elevation tiers, compiled tiers promoted to authored
 polygons, an erected tilted mesa, an area-mark relief, per-shape themes with five-deep nested
-materials, and a quarry the goal stands in. **Unfinished** — the dressing pass (village, forest, paths,
-stream) is not done, and the quarry outline is still a rectangle.
+materials, a quarry the goal stands in, and fifty hand-placed props.
+
+**The dressing, in one list of fifty.** Nine buildings in three authored house styles — a stone-and-
+spruce cottage, a cobble-checkered longhouse under a hip roof, and a two-storey shop whose ground
+floor is stone under a timbered flat, written as a `storeys` stack of two. Thirty template oak and
+birch, placed one at a time rather than scattered. Four paths: two field tracks paved from a `cell` of
+dirt, coarse dirt and spruce planks, and two town ways in stone brick and polished andesite. A
+`Natural` stream with a wandering shore over a voronoi bank. Four boulders and two flora meadows.
+Every one is authored on the unit and fanned, so both halves match.
 
 Design sketch: `specs/ashen_quarry/design-sketch.png`.
 
@@ -37,6 +44,17 @@ quarry polygon either drops a hole or buries the way in.
 
 **`relief_scope: hold` is what makes a built thing flat.** Without it the relief solves straight
 through the town and the plateau arrives covered in contour rings.
+
+**A sink shape is how a lower tier gets an organic floor.** The quarry's own outline stays the
+rectangle its plan tier fused to, but a `sink` polygon *inside* it — 5 deeper, `skirt: 3`, its floor
+tilted by `anchor_heights` — cuts an organic bowl in the flat pan, and the destroyable stands at the
+bottom of it. That is the answer to the tension above: a lower tier cannot recede without leaving
+void, but it can be dug into.
+
+**Interlocking beats a straight seam.** Under `rot_180` an overhang past x=0 lands on the opposite
+side at the mirrored z, so a land polygon that crosses the centre line three times produces two halves
+that mesh instead of butting. The one constraint is that an overhang must avoid the z-band where the
+*mirrored* quarry lands, or the mirror's land at 41 covers the quarry at 24 — the taller add wins.
 
 ## What was hit
 
@@ -85,7 +103,13 @@ whether anyone can reach the goal.
 ### Smaller
 
 - **`--structures` cannot see a building whose material matches the ground.** It finds by material, so
-  a themed map hides its own rooms from the check that confirms they stamped.
+  a themed map hides its own rooms from the check that confirms they stamped. Measured here: of nine
+  village houses, only the spruce and dark-oak ones are reported — the stone-brick cottages are
+  swallowed into the 8,399-cell "structure" that is the stone-brick town they stand on.
+- **A stream fragments the navigable read.** Adding the dressing took traversability from 2 components
+  to **18**, because water is not walkable and the channel cuts the land. `isolated` stays 0, so the
+  objectives are fine and the map is sound — but the component count on its own reads like damage, and
+  a board with any water in it will always report a large number.
 - **The API holds its own DLLs.** Rebuilding after a pull fails with sixteen `MSB3027`s that read like
   compile errors and are not; the host has to be stopped first. `CLAUDE.md` warns about two concurrent
   builds, which is the adjacent case, not this one.

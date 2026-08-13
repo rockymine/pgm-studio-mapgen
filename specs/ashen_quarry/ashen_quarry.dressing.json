@@ -1,0 +1,114 @@
+﻿{
+  "_comment": "Everything placed by hand on the authored unit; the pass fans each prop across the orbit. Town sits at y50, the landscape rolls 41..56, the quarry floor is 19..23.",
+
+  "props": [
+    {
+      "kind": "water", "id": "stream", "seed": 4,
+      "points": [[-52,-116],[-31,-88],[-45,-58],[-23,-30],[-36,-2],[-13,18]],
+      "radius": 2, "depth": 2, "form": "Natural", "edge": 1.1,
+      "shore": 2, "shoreWander": true,
+      "bank": { "kind": "voronoi", "seed": 9, "cellSize": 6, "rise": 0,
+                "bands": [ { "material": { "kind": "solid", "id": 13, "data": 0 }, "depth": 1 },
+                           { "material": { "kind": "solid", "id": 3,  "data": 1 }, "depth": 2 },
+                           { "material": { "kind": "solid", "id": 12, "data": 0 }, "depth": 2 } ] }
+    },
+
+    {
+      "kind": "path", "id": "field-road", "seed": 6,
+      "points": [[-118,20],[-92,8],[-62,-6],[-32,-14],[-4,-22]],
+      "radius": 3, "style": "Rough", "coverage": 0.85,
+      "pave": { "kind": "cell", "seed": 7, "cellSize": 5, "jitter": 80, "warp": 2, "rise": 0,
+                "palette": [ { "kind": "solid", "id": 3, "data": 1 },
+                             { "kind": "solid", "id": 3, "data": 1 },
+                             { "kind": "solid", "id": 3, "data": 0 },
+                             { "kind": "solid", "id": 5, "data": 1 } ] }
+    },
+    {
+      "kind": "path", "id": "quarry-track", "seed": 8,
+      "points": [[-20,-14],[-14,10],[-18,34],[-26,54],[-40,64]],
+      "radius": 3, "style": "Worn", "coverage": 0.72,
+      "pave": { "kind": "cell", "seed": 10, "cellSize": 4, "jitter": 85, "warp": 2, "rise": 0,
+                "palette": [ { "kind": "solid", "id": 3, "data": 1 },
+                             { "kind": "solid", "id": 3, "data": 0 },
+                             { "kind": "solid", "id": 12, "data": 0 } ] }
+    },
+    {
+      "kind": "path", "id": "town-way", "seed": 11,
+      "points": [[-142,72],[-130,52],[-122,34],[-118,22]],
+      "radius": 2, "style": "Solid",
+      "pave": { "kind": "cell", "seed": 12, "cellSize": 3, "jitter": 60, "warp": 1, "rise": 0,
+                "palette": [ { "kind": "solid", "id": 98, "data": 0 },
+                             { "kind": "solid", "id": 1,  "data": 6 },
+                             { "kind": "solid", "id": 98, "data": 3 } ] }
+    },
+    {
+      "kind": "path", "id": "town-lane", "seed": 13,
+      "points": [[-172,28],[-146,36],[-116,44],[-96,64],[-88,96]],
+      "radius": 2, "style": "Solid",
+      "pave": { "kind": "cell", "seed": 14, "cellSize": 3, "jitter": 60, "warp": 1, "rise": 0,
+                "palette": [ { "kind": "solid", "id": 1,  "data": 6 },
+                             { "kind": "solid", "id": 98, "data": 0 } ] }
+    },
+
+    { "kind": "tree", "id": "t1",  "seed": 21, "x": -104, "z": 10,  "form": "Template", "species": "oak",   "height": 11 },
+    { "kind": "tree", "id": "t2",  "seed": 22, "x": -96,  "z": -6,  "form": "Template", "species": "birch", "height": 13 },
+    { "kind": "tree", "id": "t3",  "seed": 23, "x": -84,  "z": 14,  "form": "Template", "species": "oak",   "height": 9 },
+    { "kind": "tree", "id": "t4",  "seed": 24, "x": -76,  "z": -4,  "form": "Template", "species": "oak",   "height": 12 },
+    { "kind": "tree", "id": "t5",  "seed": 25, "x": -66,  "z": 12,  "form": "Template", "species": "birch", "height": 10 },
+    { "kind": "tree", "id": "t6",  "seed": 26, "x": -58,  "z": -18, "form": "Template", "species": "oak",   "height": 14 },
+    { "kind": "tree", "id": "t7",  "seed": 27, "x": -44,  "z": 4,   "form": "Template", "species": "birch", "height": 11 },
+    { "kind": "tree", "id": "t8",  "seed": 28, "x": -34,  "z": -26, "form": "Template", "species": "oak",   "height": 10 },
+    { "kind": "tree", "id": "t9",  "seed": 29, "x": -22,  "z": 2,   "form": "Template", "species": "oak",   "height": 13 },
+    { "kind": "tree", "id": "t10", "seed": 30, "x": -12,  "z": -40, "form": "Template", "species": "birch", "height": 9 },
+    { "kind": "tree", "id": "t11", "seed": 31, "x": -30,  "z": -58, "form": "Template", "species": "oak",   "height": 12 },
+    { "kind": "tree", "id": "t12", "seed": 32, "x": -50,  "z": -74, "form": "Template", "species": "oak",   "height": 11 },
+    { "kind": "tree", "id": "t13", "seed": 33, "x": -62,  "z": -96, "form": "Template", "species": "birch", "height": 10 },
+    { "kind": "tree", "id": "t14", "seed": 34, "x": -40,  "z": -104,"form": "Template", "species": "oak",   "height": 13 },
+    { "kind": "tree", "id": "t15", "seed": 35, "x": -18,  "z": -92, "form": "Template", "species": "oak",   "height": 9 },
+    { "kind": "tree", "id": "t16", "seed": 36, "x": -8,   "z": -70, "form": "Template", "species": "birch", "height": 12 },
+    { "kind": "tree", "id": "t17", "seed": 37, "x": -128, "z": -8,  "form": "Template", "species": "oak",   "height": 11 },
+    { "kind": "tree", "id": "t18", "seed": 38, "x": -142, "z": -24, "form": "Template", "species": "birch", "height": 10 },
+    { "kind": "tree", "id": "t19", "seed": 39, "x": -158, "z": -6,  "form": "Template", "species": "oak",   "height": 12 },
+    { "kind": "tree", "id": "t20", "seed": 40, "x": -172, "z": -26, "form": "Template", "species": "oak",   "height": 9 },
+    { "kind": "tree", "id": "t21", "seed": 41, "x": -60,  "z": 86,  "form": "Template", "species": "oak",   "height": 12 },
+    { "kind": "tree", "id": "t22", "seed": 42, "x": -44,  "z": 100, "form": "Template", "species": "birch", "height": 10 },
+    { "kind": "tree", "id": "t23", "seed": 43, "x": -26,  "z": 88,  "form": "Template", "species": "oak",   "height": 13 },
+    { "kind": "tree", "id": "t24", "seed": 44, "x": -12,  "z": 104, "form": "Template", "species": "oak",   "height": 11 },
+    { "kind": "tree", "id": "t25", "seed": 45, "x": -50,  "z": 112, "form": "Template", "species": "birch", "height": 9 },
+    { "kind": "tree", "id": "t26", "seed": 46, "x": -8,   "z": 60,  "form": "Template", "species": "oak",   "height": 12 },
+    { "kind": "tree", "id": "t27", "seed": 47, "x": -14,  "z": 40,  "form": "Template", "species": "birch", "height": 10 },
+    { "kind": "tree", "id": "t28", "seed": 48, "x": -92,  "z": -34, "form": "Template", "species": "oak",   "height": 13 },
+    { "kind": "tree", "id": "t29", "seed": 49, "x": -70,  "z": -50, "form": "Template", "species": "birch", "height": 11 },
+    { "kind": "tree", "id": "t30", "seed": 50, "x": -108, "z": -60, "form": "Template", "species": "oak",   "height": 10 },
+
+    { "kind": "boulder", "id": "b1", "seed": 61, "x": -54, "z": 44, "form": "Angular", "size": 3.0, "mossy": false,
+      "rock": { "kind": "cell", "seed": 62, "cellSize": 3, "jitter": 70, "warp": 1, "rise": 0,
+                "palette": [ { "kind": "solid", "id": 24, "data": 0 }, { "kind": "solid", "id": 179, "data": 0 } ] } },
+    { "kind": "boulder", "id": "b2", "seed": 63, "x": -46, "z": 60, "form": "Outcrop", "size": 2.6, "mossy": false,
+      "rock": { "kind": "solid", "id": 24, "data": 0 } },
+    { "kind": "boulder", "id": "b3", "seed": 64, "x": -86, "z": 40, "form": "Cairn", "size": 2.2, "mossy": true,
+      "rock": { "kind": "solid", "id": 1, "data": 0 } },
+    { "kind": "boulder", "id": "b4", "seed": 65, "x": -24, "z": -70, "form": "Round", "size": 2.8, "mossy": true,
+      "rock": { "kind": "solid", "id": 1, "data": 0 } },
+
+    { "kind": "flora", "id": "meadow-front", "seed": 71,
+      "points": [[-120,-110],[-40,-116],[-4,-80],[-20,-30],[-70,-14],[-118,-40]],
+      "spec": { "coverage": 0.42, "scale": 11, "octaves": 3,
+                "fernShare": 0.15, "flowerShare": 0.10, "flowerScale": 16, "tallShare": 0 } },
+    { "kind": "flora", "id": "meadow-east", "seed": 72,
+      "points": [[-64,80],[-10,68],[-4,114],[-56,118]],
+      "spec": { "coverage": 0.38, "scale": 9, "octaves": 3,
+                "fernShare": 0.20, "flowerShare": 0.08, "flowerScale": 14, "tallShare": 0 } },
+
+    { "kind": "house", "id": "h1", "seed": 81, "points": [[-177,15],[-171,21]], "front": "posZ", "style": {"wall":{"extent":5,"courses":[{"material":{"kind":"solid","id":98,"data":0},"height":2},{"material":{"kind":"solid","id":5,"data":1},"height":3}]},"post":{"kind":"solid","id":17,"data":1},"sill":{"kind":"solid","id":1,"data":6},"gable":{"kind":"solid","id":5,"data":1},"roof":{"kind":"solid","id":5,"data":1},"verge":{"kind":"solid","id":1,"data":6},"floor":{"extent":1,"courses":[{"material":{"kind":"solid","id":5,"data":1},"height":1}]},"surface":{"field":{"kind":"solid","id":5,"data":1},"border":{"kind":"solid","id":98,"data":0},"borderWidth":1,"inlay":null,"inlayInset":2,"isPlain":false},"windows":{"form":"pane","block":102,"data":0,"hostBlock":-1,"hostData":0,"sill":1,"width":1,"height":2,"spacing":2},"form":"gable","pitch":1,"overhang":1,"roofSlab":126,"roofSlabData":1,"storeys":[],"beams":{"block":-1,"data":0,"reach":1,"any":false},"porch":null,"doorEdge":null,"door":"air","doorWidth":1,"doorHeight":3,"doorHead":{"form":"none","block":0,"fill":"upperSlab","fillBlock":0,"fillData":0},"gableWindows":{"form":"none","block":0,"data":0,"hostBlock":-1,"hostData":0,"sill":2,"width":2,"height":2,"spacing":3},"ridgeCap":false,"roofHole":false} },
+    { "kind": "house", "id": "h2", "seed": 82, "points": [[-168,30],[-156,36]], "front": "posX", "style": {"wall":{"extent":6,"courses":[{"material":{"kind":"checker","size":1,"even":{"kind":"solid","id":4,"data":0},"odd":{"kind":"solid","id":98,"data":0}},"height":4},{"material":{"kind":"solid","id":5,"data":1},"height":2}]},"post":{"kind":"solid","id":17,"data":1},"sill":{"kind":"solid","id":1,"data":6},"gable":{"kind":"solid","id":5,"data":1},"roof":{"kind":"solid","id":5,"data":5},"verge":{"kind":"solid","id":98,"data":0},"floor":{"extent":1,"courses":[{"material":{"kind":"solid","id":98,"data":0},"height":1}]},"surface":{"field":{"kind":"solid","id":98,"data":0},"border":{"kind":"solid","id":1,"data":6},"borderWidth":1,"inlay":null,"inlayInset":2,"isPlain":false},"windows":{"form":"slabBanded","block":44,"data":5,"hostBlock":-1,"hostData":0,"sill":2,"width":2,"height":2,"spacing":3},"form":"hip","pitch":1,"overhang":1,"roofSlab":126,"roofSlabData":1,"storeys":[],"beams":{"block":-1,"data":0,"reach":1,"any":false},"porch":null,"doorEdge":null,"door":"air","doorWidth":1,"doorHeight":3,"doorHead":{"form":"none","block":0,"fill":"upperSlab","fillBlock":0,"fillData":0},"gableWindows":{"form":"none","block":0,"data":0,"hostBlock":-1,"hostData":0,"sill":2,"width":2,"height":2,"spacing":3},"ridgeCap":false,"roofHole":false} },
+    { "kind": "house", "id": "h3", "seed": 83, "points": [[-150,17],[-144,23]], "front": "posZ", "style": {"wall":{"extent":5,"courses":[{"material":{"kind":"solid","id":98,"data":0},"height":2},{"material":{"kind":"solid","id":5,"data":1},"height":3}]},"post":{"kind":"solid","id":17,"data":1},"sill":{"kind":"solid","id":1,"data":6},"gable":{"kind":"solid","id":5,"data":1},"roof":{"kind":"solid","id":5,"data":1},"verge":{"kind":"solid","id":1,"data":6},"floor":{"extent":1,"courses":[{"material":{"kind":"solid","id":5,"data":1},"height":1}]},"surface":{"field":{"kind":"solid","id":5,"data":1},"border":{"kind":"solid","id":98,"data":0},"borderWidth":1,"inlay":null,"inlayInset":2,"isPlain":false},"windows":{"form":"pane","block":102,"data":0,"hostBlock":-1,"hostData":0,"sill":1,"width":1,"height":2,"spacing":2},"form":"gable","pitch":1,"overhang":1,"roofSlab":126,"roofSlabData":1,"storeys":[],"beams":{"block":-1,"data":0,"reach":1,"any":false},"porch":null,"doorEdge":null,"door":"air","doorWidth":1,"doorHeight":3,"doorHead":{"form":"none","block":0,"fill":"upperSlab","fillBlock":0,"fillData":0},"gableWindows":{"form":"none","block":0,"data":0,"hostBlock":-1,"hostData":0,"sill":2,"width":2,"height":2,"spacing":3},"ridgeCap":false,"roofHole":false} },
+    { "kind": "house", "id": "h4", "seed": 84, "points": [[-138,32],[-130,40]], "front": "posX", "style": {"wall":{"extent":9,"courses":[{"material":{"kind":"solid","id":98,"data":0},"height":9}]},"post":{"kind":"solid","id":1,"data":6},"sill":{"kind":"solid","id":1,"data":6},"gable":{"kind":"solid","id":5,"data":1},"roof":{"kind":"solid","id":5,"data":5},"verge":{"kind":"solid","id":1,"data":6},"floor":{"extent":1,"courses":[{"material":{"kind":"solid","id":98,"data":0},"height":1}]},"surface":{"field":{"kind":"solid","id":98,"data":0},"border":{"kind":"solid","id":1,"data":6},"borderWidth":1,"inlay":null,"inlayInset":2,"isPlain":false},"windows":{"form":"pane","block":102,"data":0,"hostBlock":-1,"hostData":0,"sill":1,"width":2,"height":2,"spacing":3},"form":"gable","pitch":2,"overhang":1,"roofSlab":126,"roofSlabData":1,"storeys":[{"clear":4,"wall":{"extent":0,"courses":[{"material":{"kind":"solid","id":98,"data":0},"height":5}]},"post":{"kind":"solid","id":1,"data":6},"windows":{"form":"pane","block":102,"data":0,"hostBlock":98,"hostData":0,"sill":1,"width":2,"height":2,"spacing":3},"ceiling":{"kind":"solid","id":126,"data":1}},{"clear":3,"wall":{"extent":0,"courses":[{"material":{"kind":"solid","id":5,"data":1},"height":4}]},"post":{"kind":"solid","id":17,"data":1},"windows":{"form":"pane","block":102,"data":0,"hostBlock":5,"hostData":1,"sill":1,"width":1,"height":2,"spacing":2}}],"beams":{"block":-1,"data":0,"reach":1,"any":false},"porch":null,"doorEdge":null,"door":"air","doorWidth":1,"doorHeight":3,"doorHead":{"form":"none","block":0,"fill":"upperSlab","fillBlock":0,"fillData":0},"gableWindows":{"form":"none","block":0,"data":0,"hostBlock":-1,"hostData":0,"sill":2,"width":2,"height":2,"spacing":3},"ridgeCap":false,"roofHole":false} },
+    { "kind": "house", "id": "h5", "seed": 85, "points": [[-122,50],[-110,56]], "front": "negZ", "style": {"wall":{"extent":6,"courses":[{"material":{"kind":"checker","size":1,"even":{"kind":"solid","id":4,"data":0},"odd":{"kind":"solid","id":98,"data":0}},"height":4},{"material":{"kind":"solid","id":5,"data":1},"height":2}]},"post":{"kind":"solid","id":17,"data":1},"sill":{"kind":"solid","id":1,"data":6},"gable":{"kind":"solid","id":5,"data":1},"roof":{"kind":"solid","id":5,"data":5},"verge":{"kind":"solid","id":98,"data":0},"floor":{"extent":1,"courses":[{"material":{"kind":"solid","id":98,"data":0},"height":1}]},"surface":{"field":{"kind":"solid","id":98,"data":0},"border":{"kind":"solid","id":1,"data":6},"borderWidth":1,"inlay":null,"inlayInset":2,"isPlain":false},"windows":{"form":"slabBanded","block":44,"data":5,"hostBlock":-1,"hostData":0,"sill":2,"width":2,"height":2,"spacing":3},"form":"hip","pitch":1,"overhang":1,"roofSlab":126,"roofSlabData":1,"storeys":[],"beams":{"block":-1,"data":0,"reach":1,"any":false},"porch":null,"doorEdge":null,"door":"air","doorWidth":1,"doorHeight":3,"doorHead":{"form":"none","block":0,"fill":"upperSlab","fillBlock":0,"fillData":0},"gableWindows":{"form":"none","block":0,"data":0,"hostBlock":-1,"hostData":0,"sill":2,"width":2,"height":2,"spacing":3},"ridgeCap":false,"roofHole":false} },
+    { "kind": "house", "id": "h6", "seed": 86, "points": [[-102,70],[-96,76]], "front": "posX", "style": {"wall":{"extent":5,"courses":[{"material":{"kind":"solid","id":98,"data":0},"height":2},{"material":{"kind":"solid","id":5,"data":1},"height":3}]},"post":{"kind":"solid","id":17,"data":1},"sill":{"kind":"solid","id":1,"data":6},"gable":{"kind":"solid","id":5,"data":1},"roof":{"kind":"solid","id":5,"data":1},"verge":{"kind":"solid","id":1,"data":6},"floor":{"extent":1,"courses":[{"material":{"kind":"solid","id":5,"data":1},"height":1}]},"surface":{"field":{"kind":"solid","id":5,"data":1},"border":{"kind":"solid","id":98,"data":0},"borderWidth":1,"inlay":null,"inlayInset":2,"isPlain":false},"windows":{"form":"pane","block":102,"data":0,"hostBlock":-1,"hostData":0,"sill":1,"width":1,"height":2,"spacing":2},"form":"gable","pitch":1,"overhang":1,"roofSlab":126,"roofSlabData":1,"storeys":[],"beams":{"block":-1,"data":0,"reach":1,"any":false},"porch":null,"doorEdge":null,"door":"air","doorWidth":1,"doorHeight":3,"doorHead":{"form":"none","block":0,"fill":"upperSlab","fillBlock":0,"fillData":0},"gableWindows":{"form":"none","block":0,"data":0,"hostBlock":-1,"hostData":0,"sill":2,"width":2,"height":2,"spacing":3},"ridgeCap":false,"roofHole":false} },
+    { "kind": "house", "id": "h7", "seed": 87, "points": [[-114,92],[-106,100]], "front": "negZ", "style": {"wall":{"extent":9,"courses":[{"material":{"kind":"solid","id":98,"data":0},"height":9}]},"post":{"kind":"solid","id":1,"data":6},"sill":{"kind":"solid","id":1,"data":6},"gable":{"kind":"solid","id":5,"data":1},"roof":{"kind":"solid","id":5,"data":5},"verge":{"kind":"solid","id":1,"data":6},"floor":{"extent":1,"courses":[{"material":{"kind":"solid","id":98,"data":0},"height":1}]},"surface":{"field":{"kind":"solid","id":98,"data":0},"border":{"kind":"solid","id":1,"data":6},"borderWidth":1,"inlay":null,"inlayInset":2,"isPlain":false},"windows":{"form":"pane","block":102,"data":0,"hostBlock":-1,"hostData":0,"sill":1,"width":2,"height":2,"spacing":3},"form":"gable","pitch":2,"overhang":1,"roofSlab":126,"roofSlabData":1,"storeys":[{"clear":4,"wall":{"extent":0,"courses":[{"material":{"kind":"solid","id":98,"data":0},"height":5}]},"post":{"kind":"solid","id":1,"data":6},"windows":{"form":"pane","block":102,"data":0,"hostBlock":98,"hostData":0,"sill":1,"width":2,"height":2,"spacing":3},"ceiling":{"kind":"solid","id":126,"data":1}},{"clear":3,"wall":{"extent":0,"courses":[{"material":{"kind":"solid","id":5,"data":1},"height":4}]},"post":{"kind":"solid","id":17,"data":1},"windows":{"form":"pane","block":102,"data":0,"hostBlock":5,"hostData":1,"sill":1,"width":1,"height":2,"spacing":2}}],"beams":{"block":-1,"data":0,"reach":1,"any":false},"porch":null,"doorEdge":null,"door":"air","doorWidth":1,"doorHeight":3,"doorHead":{"form":"none","block":0,"fill":"upperSlab","fillBlock":0,"fillData":0},"gableWindows":{"form":"none","block":0,"data":0,"hostBlock":-1,"hostData":0,"sill":2,"width":2,"height":2,"spacing":3},"ridgeCap":false,"roofHole":false} },
+    { "kind": "house", "id": "h8", "seed": 88, "points": [[-152,100],[-140,106]], "front": "negZ", "style": {"wall":{"extent":6,"courses":[{"material":{"kind":"checker","size":1,"even":{"kind":"solid","id":4,"data":0},"odd":{"kind":"solid","id":98,"data":0}},"height":4},{"material":{"kind":"solid","id":5,"data":1},"height":2}]},"post":{"kind":"solid","id":17,"data":1},"sill":{"kind":"solid","id":1,"data":6},"gable":{"kind":"solid","id":5,"data":1},"roof":{"kind":"solid","id":5,"data":5},"verge":{"kind":"solid","id":98,"data":0},"floor":{"extent":1,"courses":[{"material":{"kind":"solid","id":98,"data":0},"height":1}]},"surface":{"field":{"kind":"solid","id":98,"data":0},"border":{"kind":"solid","id":1,"data":6},"borderWidth":1,"inlay":null,"inlayInset":2,"isPlain":false},"windows":{"form":"slabBanded","block":44,"data":5,"hostBlock":-1,"hostData":0,"sill":2,"width":2,"height":2,"spacing":3},"form":"hip","pitch":1,"overhang":1,"roofSlab":126,"roofSlabData":1,"storeys":[],"beams":{"block":-1,"data":0,"reach":1,"any":false},"porch":null,"doorEdge":null,"door":"air","doorWidth":1,"doorHeight":3,"doorHead":{"form":"none","block":0,"fill":"upperSlab","fillBlock":0,"fillData":0},"gableWindows":{"form":"none","block":0,"data":0,"hostBlock":-1,"hostData":0,"sill":2,"width":2,"height":2,"spacing":3},"ridgeCap":false,"roofHole":false} },
+    { "kind": "house", "id": "h9", "seed": 89, "points": [[-174,95],[-168,101]], "front": "posX", "style": {"wall":{"extent":5,"courses":[{"material":{"kind":"solid","id":98,"data":0},"height":2},{"material":{"kind":"solid","id":5,"data":1},"height":3}]},"post":{"kind":"solid","id":17,"data":1},"sill":{"kind":"solid","id":1,"data":6},"gable":{"kind":"solid","id":5,"data":1},"roof":{"kind":"solid","id":5,"data":1},"verge":{"kind":"solid","id":1,"data":6},"floor":{"extent":1,"courses":[{"material":{"kind":"solid","id":5,"data":1},"height":1}]},"surface":{"field":{"kind":"solid","id":5,"data":1},"border":{"kind":"solid","id":98,"data":0},"borderWidth":1,"inlay":null,"inlayInset":2,"isPlain":false},"windows":{"form":"pane","block":102,"data":0,"hostBlock":-1,"hostData":0,"sill":1,"width":1,"height":2,"spacing":2},"form":"gable","pitch":1,"overhang":1,"roofSlab":126,"roofSlabData":1,"storeys":[],"beams":{"block":-1,"data":0,"reach":1,"any":false},"porch":null,"doorEdge":null,"door":"air","doorWidth":1,"doorHeight":3,"doorHead":{"form":"none","block":0,"fill":"upperSlab","fillBlock":0,"fillData":0},"gableWindows":{"form":"none","block":0,"data":0,"hostBlock":-1,"hostData":0,"sill":2,"width":2,"height":2,"spacing":3},"ridgeCap":false,"roofHole":false} }
+  ]
+}
+
