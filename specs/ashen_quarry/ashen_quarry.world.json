@@ -1,0 +1,66 @@
+{
+  "_comment": "The finish a plan cannot state. The plan's compiled tiers carry the elevations the objectives need; two of them are promoted from their fused rectangles to authored polygons by moving their anchor points. The land tier deliberately runs UNDER the town, so the town's own outline can recede organically without leaving a gap — the taller add wins wherever they overlap. The quarry's notch is entered from the frontline edge so the land tier stays a simple ring.",
+
+  "themeByHeight": {
+    "41": "land",
+    "51": "town",
+    "24": "quarry",
+    "42": "stair", "43": "stair", "44": "stair", "45": "stair", "46": "stair",
+    "47": "stair", "48": "stair", "49": "stair", "50": "stair",
+    "25": "quarry", "26": "quarry", "27": "quarry", "28": "quarry",
+    "29": "quarry", "30": "quarry", "31": "quarry", "32": "quarry",
+    "33": "quarry", "34": "quarry", "35": "quarry", "36": "quarry",
+    "37": "quarry", "38": "quarry", "39": "quarry", "40": "quarry"
+  },
+
+  "reshapeByHeight": {
+    "41": [[-176,-120],[-140,-113],[-104,-120],[-66,-111],[-28,-118],[0,-120],
+           [16,-104],[2,-88],[0,-78],
+           [0,-30],[15,-16],[-5,3],[11,18],[0,26],
+           [-70,30],[-70,74],[0,74],
+           [0,82],[13,97],[-3,112],[0,120],
+           [-34,113],[-72,120],[-124,115],[-180,120],
+           [-180,-58],[-169,-92]],
+
+    "51": [[-180,12],[-152,10],[-138,20],[-114,14],[-104,30],[-86,26],[-78,44],
+           [-88,60],[-70,72],[-84,86],[-72,104],[-92,120],[-180,120]]
+  },
+
+  "shapePropsByHeight": {
+    "51": { "relief_scope": "hold" },
+    "42": { "relief_scope": "hold" }, "43": { "relief_scope": "hold" },
+    "44": { "relief_scope": "hold" }, "45": { "relief_scope": "hold" },
+    "46": { "relief_scope": "hold" }, "47": { "relief_scope": "hold" },
+    "48": { "relief_scope": "hold" }, "49": { "relief_scope": "hold" },
+    "50": { "relief_scope": "hold" },
+    "24": { "relief_scope": "hold" }
+  },
+
+  "addShapes": [
+    { "id": "mesa", "type": "polygon", "operation": "add", "theme": "mesa",
+      "height_mode": "raise", "base_height": 9, "skirt": 4,
+      "anchor_heights": [9, 9, 6, 5, 6, 8],
+      "vertices": [[-116,-86],[-88,-94],[-68,-74],[-73,-50],[-97,-40],[-119,-58]] }
+  ],
+
+  "relief": {
+    "team": {
+      "base": 41,
+      "step": 1,
+      "stairs": true,
+      "grain": { "amplitude": 1.2, "scale": 11, "seed": 5 },
+      "marks": [
+        { "kind": "area", "h": 56,
+          "ring": [[-178,-114],[-146,-118],[-118,-100],[-108,-74],[-124,-52],
+                   [-152,-44],[-176,-58],[-180,-88]] },
+        { "kind": "area", "h": 50,
+          "ring": [[-160,-40],[-128,-46],[-104,-30],[-98,-8],[-116,4],[-148,0],[-166,-18]] },
+        { "kind": "area", "h": 45,
+          "ring": [[-116,-96],[-88,-104],[-64,-88],[-62,-64],[-84,-54],[-108,-66]] },
+        { "kind": "point", "at": [-52, -46], "r": 22, "h": 44 },
+        { "kind": "point", "at": [-24, -86], "r": 22, "h": 44 },
+        { "kind": "point", "at": [-40, 96],  "r": 20, "h": 39 }
+      ]
+    }
+  }
+}

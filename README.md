@@ -23,6 +23,7 @@ a migrated database.
 | Folder | `map.xml` name | Mode | Size | What it is |
 |---|---|---|---|---|
 | `clayclay_redux` | ClayClay Redux | CTW | 142×158 | A recreation of `OvercastCommunity/CommunityMaps/ctw/clayclay` — two rot_180 plus-shaped clay islands joined by four void hops. See [FINDINGS.md](FINDINGS.md). |
+| `ashen_quarry` | Ashen Quarry | DTM | 360×240 | Authored from scratch rather than traced: a walled town on a raised polygon, a 17-deep quarry the destroyable stands in, a tilted mesa and an area-mark hill, on one interlocking landmass. **Work in progress** — no dressing yet. See [review/ashen_quarry.md](review/ashen_quarry.md). |
 
 **A recreation never reuses the original's name.** Both the folder and the `<name>` in `map.xml` carry
 a suffix, because a PGM server loading this repo alongside the community corpus would otherwise see
