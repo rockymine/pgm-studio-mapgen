@@ -42,3 +42,11 @@ dotnet run tools/build.cs -- specs/clayclay_redux/clayclay_redux.plan.json \
 
 `tools/column-probe.cs` prints one vertical column of a built world, which is the only way to check a
 layered wall or a stamped room — every renderer in the studio is plan-view.
+
+## Reports
+
+| File | Is |
+|---|---|
+| [FINDINGS.md](FINDINGS.md) | the measured record — what the original is, what the recreation reproduces, and every gap found, per review round |
+| [AGENT-REPORT.md](AGENT-REPORT.md) | an opinion piece from the agent that authored the map: why the `mapgen` spec was the wrong layer to work at, what the documentation got right, and an account of the two claims it got wrong |
+| `review/` | the author's reviews of each build |
