@@ -294,16 +294,19 @@ shipped preset, and none has appeared on a board:
   and ceiling. Two storeys of the same material at different window forms is a different building from two
   identical ones, and it costs one field.
 
-**And the one an author cannot reach yet, stated precisely so nobody claims it works.** The stamper builds a
-house from a **`Footprint` of touching rectangles — wings** — and roofs the junctions properly: a building's
-roof is the **union** of its wings' roofs, never a max of their crowns. Where a wing **projects** into another
-it cuts the roof it pushes into across its own span, so its verge has something to sit on; where a wing's gable
-end runs up against another it **marches**, each course stepping on along its own ridge until it hits a block,
-with no overhang, since an overhang is what a roof has outside a wall. An L, a T or a U is one house under one
-style. **All of that is built.** What is not is the authoring: a placed building is stored as **exactly two
-corners**, so nothing in the studio can state a second wing, and two buildings drawn touching are stamped as
-two buildings. That is `G172`'s open half and it is on the board. Until it lands, **do not draw an L as two
-touching rectangles** — you get two buildings, or one building and a dropped prop where they overlap.
+- **A building on more than one rectangle.** A placed building states a **list of touching rectangles —
+  wings** — and is stamped as **one house under one style**: the outline is walked as a single landmass, so an
+  L answers six runs of wall and a T eight, a wall ends wherever the building turns, and the cell where two
+  wings meet is an inner corner carrying its own post. Each wing may stop short of the building's height and
+  override the roof form, pitch and slab, and a storey is the plan of the wings still standing there. The roof
+  is the **union** of the wing volumes, never a max of their crowns: where a wing **projects** into another it
+  cuts the roof it pushes into across its own span, and where a wing's gable end runs up against another it
+  **marches** into it with no overhang, since an overhang is what a roof has outside a wall.
+
+  This shipped as `G177` and it is the single biggest change to what a house can be. **An L, a T or a U is now
+  one building, not two standing beside each other** — and drawing them as two is now the mistake rather than
+  the only option. One limit worth knowing: the *canvas* still drags one rectangle at a time (`S60`), so a
+  second wing is stated in the document, which is how you are authoring anyway.
 
 ### Look at a house before you build a world
 
@@ -333,8 +336,8 @@ that ships, **this document is the enforcement.**
 | **Obsidian caps at three** | A destroyable carries at most **3 obsidian**, so only the **pillar** styles may use it. `cube-3` (27), `cube-4` (64) and `column-plus` (15) take **end stone, gold or emerald**. | 27 · 27 · 15 | `B162` |
 | **A slab goes in `roofSlab`** | A slab named in `roof` builds a roof you can see straight through. Slab in **`roofSlab`**, whole block in **`roof`**; a slab-course roof is right only at a **half-course rise**. | 6 houses + a spawn | `B168` |
 | **No log, no ground material, in a roof or a verge** | Never a log. Never Grass Block or Podzol. | `verge: 162` on three boards; `quillon-barrow` roofs in **Grass Block** over **Podzol** | `B168` |
-| **A block must be the kind its role needs** | `doorHead.block` a **stair**; `doorHead.fillBlock` under `upperSlab` a **slab**; a `slabBanded` window's block a slab, a `stairLattice`'s a stair. | cobble/cobble/pane · 98/4 · oak fence | `B160` |
-| **A spawn door is 2.5 clear; a window is plain** | 2.5 blocks of clear height. A window is air or glass, and if filled, a **single block** — no patterned form, whatever blocks it is given. | 2.0 on two boards | `B161` |
+| **A block must be the kind its role needs** | `doorHead.block` a **stair**; `doorHead.fillBlock` under `upperSlab` a **slab**; a `slabBanded` window's block a slab, a `stairLattice`'s a stair. Refused at `HS1` when a style is posted. **The forms themselves are allowed on any house, a spawn included** — a patterned window is never the fault, a wrong block in one is. | cobble/cobble/pane · 98/4 · oak fence | shipped |
+| **A spawn door is 2.5 clear** | 2.5 blocks of clear height. A three-course door leaves two clear courses unless the head's fill is genuinely an upper slab. Refused at `HS2`. | 2.0 on two boards | shipped |
 | **A building seated into terrain has no footing** | Turn `Sill` off by naming **air**, as `HousePresets.Desert` does. | 12 of 14 maps, 0 opted out | `B164` |
 | **Gable at `pitch: 2` loses to its own wall** | The wall wins where they disagree. Use `pitch: 1` on a gable until it is traced. | 13 houses on 3 boards | `B165` |
 | **A goal name is a name** | No `<Team>`, no `<`, no `>`. PGM prints the attribute verbatim on both teams. | 5 boards, all Opus | `B182` |
