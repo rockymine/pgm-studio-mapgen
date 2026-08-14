@@ -6,7 +6,9 @@ map would not think to look. The tool documents in `pgm-studio/docs/tools/` rema
 the errata an author needs beside them.
 
 Measured against `pgm-studio` at `claude/pgm-studio-mapgen-tasks-5kj6sm` (14 Aug 2026), building
-`maps/marlstone-steps`.
+`maps/marlstone-steps` (a CTW board made of tiers) and `maps/basalt-reach` (a destroy board made of one
+relief and a subtract). The two were authored the opposite way round on purpose, so several entries below
+have a measurement from each.
 
 ---
 
@@ -150,7 +152,70 @@ ground ramp up to meet the shape, `exclude` meets the tier below at a face. A te
   *ground*, which it did not before. The warning in older reports that a built-looking block reads orange no
   longer applies to a map this studio built.
 
-## 7. Things that were true, still are, and cost other runs a cycle
+## 7. A path claims ground, and a building that touches it is dropped — silently, still
+
+Known (`AGENT-REPORT-2.md`), **still live**, and it is the single most expensive thing on this list because
+the only symptom is a house that is not there. `Decorator.PlacePath` adds every band cell to the `taken` set;
+`PlaceHouse` returns 0 if any footprint cell is taken, for **both** orbit images, with nothing logged, nothing
+refused, and a clean `200` from export.
+
+Four of five houses on `basalt-reach` went this way on the first dressed build:
+
+| House | footprint | claimed by | that path's band | stamped |
+|---|---|---|---|---|
+| `w1` | `x −45…−37, z 64…72` | — | — | yes |
+| `w2` | `x −34…−25, z 64…71` | `p-ramp-back` at `(−26, 70)` | `x −28…−24, z 68…72` | **no** |
+| `w3` | `x −22…−14, z 64…73` | `p-ramp-back` at `(−22, 63)` | `x −24…−20, z 61…65` | **no** |
+| `w4` | `x −11…−3, z 64…70` | `p-spawn` at `(−8, 66)` | `x −10…−6, z 64…68` | **no** |
+| `w5` | `x 0…7, z 64…72` | `p-spawn` at `(0, 72)` | `x −2…2, z 70…74` | **no** |
+
+Three commits landed during this run about what a *building* claims (its eaves, its roof ring, two buildings
+that touch). None of them touch the path side, so this is unchanged.
+
+**How to work with it.** A path's band is `radius` blocks either side of the centreline, computed along the
+whole polyline — so an intermediate point you did not think about is what claims the ground. Give every
+building **three or more blocks** of clear ground to the nearest band, and remember the building claims one
+block past its own walls for the eaves. Then **check by probing each building's centre**: a stamped house
+reads its own `floor` material there, and a beam or roof slab higher up; a dropped one reads the terrain
+theme's own surface palette. That check is four seconds and it is the only one that answers.
+
+## 8. A prop over void is skipped, and the tree count does not notice
+
+A tree authored at a coordinate with no ground under it simply does not appear. Nothing refuses it — and
+`--topdown --layer foliage --dressing <layout>` still reports it, because **that count comes from the
+document, not from the world**. `s1` at `(−46, 74)` on `basalt-reach` was outside the `works` polygon at that
+z, probes as 0 solid blocks, and the render said "34 tree(s)" with and without it.
+
+Check a prop's coordinate against the polygon it is meant to stand on before building, especially near an
+organic edge, where "inside the shape" is not something you can eyeball off a vertex list.
+
+## 9. Two capabilities the plan cannot reach, that the intent can
+
+**Standalone void enforcement (`B132`).** `BuildIntent.VoidEnforcement` fires whether or not `Areas` is
+declared, which is what lets a board have a permanent void with no build zones at all. But `PlanModel` has no
+field for it and `PlanCompiler` never emits one, so a compiled intent always carries
+`"voidEnforcement": null`. Patch it before `PUT …/intent/from-plan`:
+
+```json
+"build": { "maxHeight": 38, "areas": [], "holes": [],
+           "voidEnforcement": { "exclusions": [] } }
+```
+
+which projects to `<everywhere id="void-enforcement-area"/>` plus
+`<apply block-place="deny(void)" region="void-enforcement-area" …/>`. This retires the previous run's
+workaround of declaring a harmless build zone purely to switch the void rule on.
+
+**Note the interaction:** `Areas` wires `block=no-void` *inside* `not-build-area`, while `VoidEnforcement`
+wires `block-place=deny(void)` over *everywhere minus its exclusions*. Declaring both on a board that wants
+bridgeable zones will deny the bridging the zones were for — put those zones in the exclusions, or use one
+mechanism and not both.
+
+**The evaluator does not see a layout `subtract`.** `POST /plan/evaluate`'s `G8 fill-ratio` is measured on the
+plan's rectangles. `basalt-reach` reads 0.811 — almost solid — while the built board has two large voids cut
+through it by a `subtract` in the layout. The advice is still worth having; it is measuring a document that
+does not yet know about the hole.
+
+## 10. Things that were true, still are, and cost other runs a cycle
 
 Carried forward from `AGENT-REPORT.md` / `AGENT-REPORT-2.md` / `FINDINGS.md`, re-confirmed on this build:
 
@@ -164,7 +229,7 @@ Carried forward from `AGENT-REPORT.md` / `AGENT-REPORT-2.md` / `FINDINGS.md`, re
   hard `BZ6` violation (a build band two cells from a wool room) plus three soft ones on the first draft of
   the Marlstone plan. Score went 1008 → 3.7 across two edits, both of which improved the board.
 
-## 8. Two PowerShell traps, if you drive the API from Windows
+## 11. Two PowerShell traps, if you drive the API from Windows
 
 Not the studio's fault, but they cost a cycle each and the failure looks like a server bug.
 

@@ -1,0 +1,35 @@
+{
+  "plan": 1,
+  "meta": { "name": "Basalt Reach" },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 16,
+    "surface": 12,
+    "headroom": 26,
+    "observerY": 44
+  },
+  "pieces": [
+    { "id": "reach",  "role": "piece", "rect": [-15, -2, 30, 12], "surface": 12 },
+    { "id": "works",  "role": "piece", "rect": [ -9, 10, 18,  5], "surface": 15 },
+    { "id": "back-w", "role": "piece", "rect": [ -9, 15,  7,  4], "surface": 18 },
+    { "id": "spawn",  "role": "spawn", "rect": [ -2, 15,  4,  4], "surface": 18 },
+    { "id": "back-e", "role": "piece", "rect": [  2, 15,  7,  4], "surface": 18 }
+  ],
+  "zones": [],
+  "placements": {
+    "spawns": [
+      { "id": "spawn-1", "piece": "spawn", "at": [2, 2], "facing": "front" }
+    ],
+    "wools": [],
+    "iron": [],
+    "destroyables": [
+      { "id": "monument-1", "piece": "", "at": [-8, 7], "style": "cube-3", "materials": "obsidian", "float": 4, "name": "<Team> Stack" }
+    ],
+    "cores": [
+      { "id": "core-1", "piece": "", "at": [6, 12], "materials": "obsidian", "float": 5, "leak": 8, "name": "<Team> Sump" }
+    ]
+  },
+  "walls": [],
+  "boxes": []
+}
