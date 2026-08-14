@@ -44,6 +44,30 @@ dotnet run tools/build.cs -- specs/clayclay_redux/clayclay_redux.plan.json \
 `tools/column-probe.cs` prints one vertical column of a built world, which is the only way to check a
 layered wall or a stamped room — every renderer in the studio is plan-view.
 
+## How a report separates a claim from a limitation
+
+**A report says what the model reported, what the code actually allows, and which of the two the reader
+should believe.** An agent's account of what it could not do is evidence about the *surface*, not about the
+system, and the two have already diverged badly: a run reported five of six brief requirements as impossible
+while quoting the documentation that describes two of them, and a later one reported per-shape themes and
+area relief marks as missing when both are shipped and in use on maps in this repository.
+
+So every "could not do" entry carries three parts, and an entry missing the third is not finished:
+
+| Part | Is |
+|---|---|
+| **Reported** | what the model believed, in its own words, including the reasoning that led there |
+| **Checked** | what the code and documents actually say — the type, the field, the endpoint, read at the source |
+| **Verdict** | **missing** (no mechanism exists) · **unreachable** (it exists and the surface hid it) · **mistaken** (it exists, was documented, and the model did not find it) |
+
+Only **missing** is a capability gap. **Unreachable** is a surface defect and belongs as a task against the
+studio. **Mistaken** is the most valuable of the three and the easiest to bury, because it reads as a
+limitation and is really a measurement of how legible the system is — and a report that quietly drops its
+mistaken entries destroys exactly the signal the run exists to produce.
+
+A verdict is not the model's to award on its own claim. It is settled by reading the code, and the reading is
+cited.
+
 ## Reports
 
 | File | Is |
