@@ -1,0 +1,1382 @@
+﻿{
+    "setup":  {
+                  "mirror_mode":  "rot_180",
+                  "center":  {
+                                 "cx":  0,
+                                 "cz":  0
+                             },
+                  "bbox":  {
+                               "min_x":  -80,
+                               "max_x":  80,
+                               "min_z":  -105,
+                               "max_z":  105
+                           }
+              },
+    "mapTheme":  "marl-strand",
+    "themes":  {
+                   "marl-strand":  {
+                                       "bedrock":  {
+                                                       "relative":  false,
+                                                       "value":  1
+                                                   },
+                                       "rimEdges":  "void",
+                                       "wallOnTerrainFaces":  true,
+                                       "rim":  {
+                                                   "material":  {
+                                                                    "kind":  "solid",
+                                                                    "id":  13,
+                                                                    "data":  0
+                                                                },
+                                                   "depth":  1,
+                                                   "enabled":  false
+                                               },
+                                       "surface":  {
+                                                       "material":  {
+                                                                        "kind":  "layered",
+                                                                        "layers":  [
+                                                                                       {
+                                                                                           "material":  {
+                                                                                                            "kind":  "cell",
+                                                                                                            "seed":  21,
+                                                                                                            "cellSize":  7,
+                                                                                                            "jitter":  70,
+                                                                                                            "warp":  3,
+                                                                                                            "rise":  0,
+                                                                                                            "palette":  [
+                                                                                                                            {
+                                                                                                                                "kind":  "solid",
+                                                                                                                                "id":  2,
+                                                                                                                                "data":  0
+                                                                                                                            },
+                                                                                                                            {
+                                                                                                                                "kind":  "solid",
+                                                                                                                                "id":  3,
+                                                                                                                                "data":  1
+                                                                                                                            },
+                                                                                                                            {
+                                                                                                                                "kind":  "solid",
+                                                                                                                                "id":  13,
+                                                                                                                                "data":  0
+                                                                                                                            },
+                                                                                                                            {
+                                                                                                                                "kind":  "solid",
+                                                                                                                                "id":  2,
+                                                                                                                                "data":  0
+                                                                                                                            }
+                                                                                                                        ]
+                                                                                                        },
+                                                                                           "thickness":  1
+                                                                                       },
+                                                                                       {
+                                                                                           "material":  {
+                                                                                                            "kind":  "solid",
+                                                                                                            "id":  3,
+                                                                                                            "data":  0
+                                                                                                        },
+                                                                                           "thickness":  2
+                                                                                       }
+                                                                                   ]
+                                                                    },
+                                                       "depth":  3,
+                                                       "enabled":  true
+                                                   },
+                                       "wall":  {
+                                                    "kind":  "layered",
+                                                    "layers":  [
+                                                                   {
+                                                                       "material":  {
+                                                                                        "kind":  "solid",
+                                                                                        "id":  13,
+                                                                                        "data":  0
+                                                                                    },
+                                                                       "thickness":  1
+                                                                   },
+                                                                   {
+                                                                       "material":  {
+                                                                                        "kind":  "solid",
+                                                                                        "id":  4,
+                                                                                        "data":  0
+                                                                                    },
+                                                                       "thickness":  2
+                                                                   },
+                                                                   {
+                                                                       "material":  {
+                                                                                        "kind":  "solid",
+                                                                                        "id":  1,
+                                                                                        "data":  0
+                                                                                    },
+                                                                       "thickness":  3
+                                                                   },
+                                                                   {
+                                                                       "material":  {
+                                                                                        "kind":  "solid",
+                                                                                        "id":  1,
+                                                                                        "data":  5
+                                                                                    },
+                                                                       "thickness":  4
+                                                                   }
+                                                               ]
+                                                },
+                                       "wallEnabled":  true,
+                                       "fill":  {
+                                                    "kind":  "solid",
+                                                    "id":  1,
+                                                    "data":  0
+                                                }
+                                   },
+                   "marl-rock":  {
+                                     "bedrock":  {
+                                                     "relative":  false,
+                                                     "value":  1
+                                                 },
+                                     "rimEdges":  "void",
+                                     "wallOnTerrainFaces":  true,
+                                     "rim":  {
+                                                 "material":  {
+                                                                  "kind":  "solid",
+                                                                  "id":  1,
+                                                                  "data":  5
+                                                              },
+                                                 "depth":  1,
+                                                 "enabled":  false
+                                             },
+                                     "surface":  {
+                                                     "material":  {
+                                                                      "kind":  "layered",
+                                                                      "layers":  [
+                                                                                     {
+                                                                                         "material":  {
+                                                                                                          "kind":  "cell",
+                                                                                                          "seed":  22,
+                                                                                                          "cellSize":  5,
+                                                                                                          "jitter":  80,
+                                                                                                          "warp":  2,
+                                                                                                          "rise":  0,
+                                                                                                          "palette":  [
+                                                                                                                          {
+                                                                                                                              "kind":  "solid",
+                                                                                                                              "id":  1,
+                                                                                                                              "data":  0
+                                                                                                                          },
+                                                                                                                          {
+                                                                                                                              "kind":  "solid",
+                                                                                                                              "id":  1,
+                                                                                                                              "data":  5
+                                                                                                                          },
+                                                                                                                          {
+                                                                                                                              "kind":  "solid",
+                                                                                                                              "id":  13,
+                                                                                                                              "data":  0
+                                                                                                                          },
+                                                                                                                          {
+                                                                                                                              "kind":  "solid",
+                                                                                                                              "id":  4,
+                                                                                                                              "data":  0
+                                                                                                                          }
+                                                                                                                      ]
+                                                                                                      },
+                                                                                         "thickness":  1
+                                                                                     },
+                                                                                     {
+                                                                                         "material":  {
+                                                                                                          "kind":  "solid",
+                                                                                                          "id":  1,
+                                                                                                          "data":  0
+                                                                                                      },
+                                                                                         "thickness":  2
+                                                                                     }
+                                                                                 ]
+                                                                  },
+                                                     "depth":  3,
+                                                     "enabled":  true
+                                                 },
+                                     "wall":  {
+                                                  "kind":  "layered",
+                                                  "layers":  [
+                                                                 {
+                                                                     "material":  {
+                                                                                      "kind":  "solid",
+                                                                                      "id":  155,
+                                                                                      "data":  0
+                                                                                  },
+                                                                     "thickness":  1
+                                                                 },
+                                                                 {
+                                                                     "material":  {
+                                                                                      "kind":  "solid",
+                                                                                      "id":  1,
+                                                                                      "data":  0
+                                                                                  },
+                                                                     "thickness":  2
+                                                                 },
+                                                                 {
+                                                                     "material":  {
+                                                                                      "kind":  "solid",
+                                                                                      "id":  13,
+                                                                                      "data":  0
+                                                                                  },
+                                                                     "thickness":  1
+                                                                 },
+                                                                 {
+                                                                     "material":  {
+                                                                                      "kind":  "solid",
+                                                                                      "id":  1,
+                                                                                      "data":  5
+                                                                                  },
+                                                                     "thickness":  3
+                                                                 }
+                                                             ]
+                                              },
+                                     "wallEnabled":  true,
+                                     "fill":  {
+                                                  "kind":  "solid",
+                                                  "id":  1,
+                                                  "data":  0
+                                              }
+                                 },
+                   "marl-terrace":  {
+                                        "bedrock":  {
+                                                        "relative":  false,
+                                                        "value":  1
+                                                    },
+                                        "rimEdges":  "drop",
+                                        "wallOnTerrainFaces":  true,
+                                        "rim":  {
+                                                    "material":  {
+                                                                     "kind":  "solid",
+                                                                     "id":  155,
+                                                                     "data":  1
+                                                                 },
+                                                    "depth":  1,
+                                                    "enabled":  true
+                                                },
+                                        "surface":  {
+                                                        "material":  {
+                                                                         "kind":  "layered",
+                                                                         "layers":  [
+                                                                                        {
+                                                                                            "material":  {
+                                                                                                             "kind":  "cell",
+                                                                                                             "seed":  23,
+                                                                                                             "cellSize":  5,
+                                                                                                             "jitter":  60,
+                                                                                                             "warp":  2,
+                                                                                                             "rise":  0,
+                                                                                                             "palette":  [
+                                                                                                                             {
+                                                                                                                                 "kind":  "solid",
+                                                                                                                                 "id":  3,
+                                                                                                                                 "data":  1
+                                                                                                                             },
+                                                                                                                             {
+                                                                                                                                 "kind":  "solid",
+                                                                                                                                 "id":  2,
+                                                                                                                                 "data":  0
+                                                                                                                             },
+                                                                                                                             {
+                                                                                                                                 "kind":  "solid",
+                                                                                                                                 "id":  24,
+                                                                                                                                 "data":  0
+                                                                                                                             },
+                                                                                                                             {
+                                                                                                                                 "kind":  "solid",
+                                                                                                                                 "id":  155,
+                                                                                                                                 "data":  0
+                                                                                                                             }
+                                                                                                                         ]
+                                                                                                         },
+                                                                                            "thickness":  1
+                                                                                        },
+                                                                                        {
+                                                                                            "material":  {
+                                                                                                             "kind":  "solid",
+                                                                                                             "id":  24,
+                                                                                                             "data":  0
+                                                                                                         },
+                                                                                            "thickness":  2
+                                                                                        }
+                                                                                    ]
+                                                                     },
+                                                        "depth":  3,
+                                                        "enabled":  true
+                                                    },
+                                        "wall":  {
+                                                     "kind":  "wallRun",
+                                                     "runs":  [
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  155,
+                                                                                       "data":  0
+                                                                                   },
+                                                                      "width":  3
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  155,
+                                                                                       "data":  1
+                                                                                   },
+                                                                      "width":  2
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  24,
+                                                                                       "data":  0
+                                                                                   },
+                                                                      "width":  2
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  155,
+                                                                                       "data":  2
+                                                                                   },
+                                                                      "width":  1
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  155,
+                                                                                       "data":  0
+                                                                                   },
+                                                                      "width":  2
+                                                                  }
+                                                              ]
+                                                 },
+                                        "wallEnabled":  true,
+                                        "fill":  {
+                                                     "kind":  "solid",
+                                                     "id":  24,
+                                                     "data":  0
+                                                 }
+                                    },
+                   "marl-street":  {
+                                       "bedrock":  {
+                                                       "relative":  false,
+                                                       "value":  1
+                                                   },
+                                       "rimEdges":  "boundary",
+                                       "wallOnTerrainFaces":  true,
+                                       "rim":  {
+                                                   "material":  {
+                                                                    "kind":  "solid",
+                                                                    "id":  155,
+                                                                    "data":  2
+                                                                },
+                                                   "depth":  1,
+                                                   "enabled":  true
+                                               },
+                                       "surface":  {
+                                                       "material":  {
+                                                                        "kind":  "layered",
+                                                                        "layers":  [
+                                                                                       {
+                                                                                           "material":  {
+                                                                                                            "kind":  "cell",
+                                                                                                            "seed":  24,
+                                                                                                            "cellSize":  3,
+                                                                                                            "jitter":  90,
+                                                                                                            "warp":  1,
+                                                                                                            "rise":  0,
+                                                                                                            "palette":  [
+                                                                                                                            {
+                                                                                                                                "kind":  "solid",
+                                                                                                                                "id":  98,
+                                                                                                                                "data":  0
+                                                                                                                            },
+                                                                                                                            {
+                                                                                                                                "kind":  "solid",
+                                                                                                                                "id":  98,
+                                                                                                                                "data":  1
+                                                                                                                            },
+                                                                                                                            {
+                                                                                                                                "kind":  "solid",
+                                                                                                                                "id":  98,
+                                                                                                                                "data":  2
+                                                                                                                            },
+                                                                                                                            {
+                                                                                                                                "kind":  "solid",
+                                                                                                                                "id":  4,
+                                                                                                                                "data":  0
+                                                                                                                            }
+                                                                                                                        ]
+                                                                                                        },
+                                                                                           "thickness":  1
+                                                                                       },
+                                                                                       {
+                                                                                           "material":  {
+                                                                                                            "kind":  "solid",
+                                                                                                            "id":  98,
+                                                                                                            "data":  0
+                                                                                                        },
+                                                                                           "thickness":  1
+                                                                                       }
+                                                                                   ]
+                                                                    },
+                                                       "depth":  2,
+                                                       "enabled":  true
+                                                   },
+                                       "wall":  {
+                                                    "kind":  "wallRun",
+                                                    "runs":  [
+                                                                 {
+                                                                     "material":  {
+                                                                                      "kind":  "solid",
+                                                                                      "id":  98,
+                                                                                      "data":  0
+                                                                                  },
+                                                                     "width":  2
+                                                                 },
+                                                                 {
+                                                                     "material":  {
+                                                                                      "kind":  "solid",
+                                                                                      "id":  98,
+                                                                                      "data":  1
+                                                                                  },
+                                                                     "width":  1
+                                                                 },
+                                                                 {
+                                                                     "material":  {
+                                                                                      "kind":  "solid",
+                                                                                      "id":  98,
+                                                                                      "data":  2
+                                                                                  },
+                                                                     "width":  2
+                                                                 },
+                                                                 {
+                                                                     "material":  {
+                                                                                      "kind":  "solid",
+                                                                                      "id":  98,
+                                                                                      "data":  0
+                                                                                  },
+                                                                     "width":  3
+                                                                 }
+                                                             ]
+                                                },
+                                       "wallEnabled":  true,
+                                       "fill":  {
+                                                    "kind":  "solid",
+                                                    "id":  1,
+                                                    "data":  0
+                                                }
+                                   },
+                   "marl-scrub":  {
+                                      "bedrock":  {
+                                                      "relative":  false,
+                                                      "value":  1
+                                                  },
+                                      "rimEdges":  "void",
+                                      "wallOnTerrainFaces":  true,
+                                      "rim":  {
+                                                  "material":  {
+                                                                   "kind":  "solid",
+                                                                   "id":  3,
+                                                                   "data":  1
+                                                               },
+                                                  "depth":  1,
+                                                  "enabled":  false
+                                              },
+                                      "surface":  {
+                                                      "material":  {
+                                                                       "kind":  "layered",
+                                                                       "layers":  [
+                                                                                      {
+                                                                                          "material":  {
+                                                                                                           "kind":  "cell",
+                                                                                                           "seed":  25,
+                                                                                                           "cellSize":  6,
+                                                                                                           "jitter":  85,
+                                                                                                           "warp":  3,
+                                                                                                           "rise":  0,
+                                                                                                           "palette":  [
+                                                                                                                           {
+                                                                                                                               "kind":  "solid",
+                                                                                                                               "id":  3,
+                                                                                                                               "data":  2
+                                                                                                                           },
+                                                                                                                           {
+                                                                                                                               "kind":  "solid",
+                                                                                                                               "id":  3,
+                                                                                                                               "data":  1
+                                                                                                                           },
+                                                                                                                           {
+                                                                                                                               "kind":  "solid",
+                                                                                                                               "id":  2,
+                                                                                                                               "data":  0
+                                                                                                                           },
+                                                                                                                           {
+                                                                                                                               "kind":  "solid",
+                                                                                                                               "id":  13,
+                                                                                                                               "data":  0
+                                                                                                                           }
+                                                                                                                       ]
+                                                                                                       },
+                                                                                          "thickness":  1
+                                                                                      },
+                                                                                      {
+                                                                                          "material":  {
+                                                                                                           "kind":  "solid",
+                                                                                                           "id":  3,
+                                                                                                           "data":  1
+                                                                                                       },
+                                                                                          "thickness":  2
+                                                                                      }
+                                                                                  ]
+                                                                   },
+                                                      "depth":  3,
+                                                      "enabled":  true
+                                                  },
+                                      "wall":  {
+                                                   "kind":  "layered",
+                                                   "layers":  [
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  155,
+                                                                                       "data":  0
+                                                                                   },
+                                                                      "thickness":  1
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  1,
+                                                                                       "data":  0
+                                                                                   },
+                                                                      "thickness":  2
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  13,
+                                                                                       "data":  0
+                                                                                   },
+                                                                      "thickness":  1
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  1,
+                                                                                       "data":  5
+                                                                                   },
+                                                                      "thickness":  2
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  1,
+                                                                                       "data":  0
+                                                                                   },
+                                                                      "thickness":  3
+                                                                  }
+                                                              ]
+                                               },
+                                      "wallEnabled":  true,
+                                      "fill":  {
+                                                   "kind":  "solid",
+                                                   "id":  1,
+                                                   "data":  0
+                                               }
+                                  },
+                   "marl-orchard":  {
+                                        "bedrock":  {
+                                                        "relative":  false,
+                                                        "value":  1
+                                                    },
+                                        "rimEdges":  "drop",
+                                        "wallOnTerrainFaces":  true,
+                                        "rim":  {
+                                                    "material":  {
+                                                                     "kind":  "solid",
+                                                                     "id":  24,
+                                                                     "data":  2
+                                                                 },
+                                                    "depth":  1,
+                                                    "enabled":  true
+                                                },
+                                        "surface":  {
+                                                        "material":  {
+                                                                         "kind":  "layered",
+                                                                         "layers":  [
+                                                                                        {
+                                                                                            "material":  {
+                                                                                                             "kind":  "cell",
+                                                                                                             "seed":  26,
+                                                                                                             "cellSize":  4,
+                                                                                                             "jitter":  50,
+                                                                                                             "warp":  1,
+                                                                                                             "rise":  0,
+                                                                                                             "palette":  [
+                                                                                                                             {
+                                                                                                                                 "kind":  "solid",
+                                                                                                                                 "id":  2,
+                                                                                                                                 "data":  0
+                                                                                                                             },
+                                                                                                                             {
+                                                                                                                                 "kind":  "solid",
+                                                                                                                                 "id":  3,
+                                                                                                                                 "data":  1
+                                                                                                                             },
+                                                                                                                             {
+                                                                                                                                 "kind":  "solid",
+                                                                                                                                 "id":  2,
+                                                                                                                                 "data":  0
+                                                                                                                             },
+                                                                                                                             {
+                                                                                                                                 "kind":  "solid",
+                                                                                                                                 "id":  3,
+                                                                                                                                 "data":  2
+                                                                                                                             }
+                                                                                                                         ]
+                                                                                                         },
+                                                                                            "thickness":  1
+                                                                                        },
+                                                                                        {
+                                                                                            "material":  {
+                                                                                                             "kind":  "solid",
+                                                                                                             "id":  3,
+                                                                                                             "data":  0
+                                                                                                         },
+                                                                                            "thickness":  2
+                                                                                        }
+                                                                                    ]
+                                                                     },
+                                                        "depth":  3,
+                                                        "enabled":  true
+                                                    },
+                                        "wall":  {
+                                                     "kind":  "wallRun",
+                                                     "runs":  [
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  24,
+                                                                                       "data":  0
+                                                                                   },
+                                                                      "width":  3
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  24,
+                                                                                       "data":  2
+                                                                                   },
+                                                                      "width":  1
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  24,
+                                                                                       "data":  1
+                                                                                   },
+                                                                      "width":  1
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  24,
+                                                                                       "data":  0
+                                                                                   },
+                                                                      "width":  2
+                                                                  }
+                                                              ]
+                                                 },
+                                        "wallEnabled":  true,
+                                        "fill":  {
+                                                     "kind":  "solid",
+                                                     "id":  24,
+                                                     "data":  0
+                                                 }
+                                    },
+                   "marl-shelf":  {
+                                      "bedrock":  {
+                                                      "relative":  false,
+                                                      "value":  1
+                                                  },
+                                      "rimEdges":  "drop",
+                                      "wallOnTerrainFaces":  true,
+                                      "rim":  {
+                                                  "material":  {
+                                                                   "kind":  "solid",
+                                                                   "id":  155,
+                                                                   "data":  1
+                                                               },
+                                                  "depth":  1,
+                                                  "enabled":  true
+                                              },
+                                      "surface":  {
+                                                      "material":  {
+                                                                       "kind":  "layered",
+                                                                       "layers":  [
+                                                                                      {
+                                                                                          "material":  {
+                                                                                                           "kind":  "cell",
+                                                                                                           "seed":  27,
+                                                                                                           "cellSize":  6,
+                                                                                                           "jitter":  65,
+                                                                                                           "warp":  2,
+                                                                                                           "rise":  0,
+                                                                                                           "palette":  [
+                                                                                                                           {
+                                                                                                                               "kind":  "solid",
+                                                                                                                               "id":  155,
+                                                                                                                               "data":  0
+                                                                                                                           },
+                                                                                                                           {
+                                                                                                                               "kind":  "solid",
+                                                                                                                               "id":  155,
+                                                                                                                               "data":  1
+                                                                                                                           },
+                                                                                                                           {
+                                                                                                                               "kind":  "solid",
+                                                                                                                               "id":  24,
+                                                                                                                               "data":  0
+                                                                                                                           },
+                                                                                                                           {
+                                                                                                                               "kind":  "solid",
+                                                                                                                               "id":  2,
+                                                                                                                               "data":  0
+                                                                                                                           }
+                                                                                                                       ]
+                                                                                                       },
+                                                                                          "thickness":  1
+                                                                                      },
+                                                                                      {
+                                                                                          "material":  {
+                                                                                                           "kind":  "solid",
+                                                                                                           "id":  155,
+                                                                                                           "data":  0
+                                                                                                       },
+                                                                                          "thickness":  2
+                                                                                      }
+                                                                                  ]
+                                                                   },
+                                                      "depth":  3,
+                                                      "enabled":  true
+                                                  },
+                                      "wall":  {
+                                                   "kind":  "wallDiagonal",
+                                                   "slope":  1,
+                                                   "runs":  [
+                                                                {
+                                                                    "material":  {
+                                                                                     "kind":  "solid",
+                                                                                     "id":  155,
+                                                                                     "data":  0
+                                                                                 },
+                                                                    "width":  2
+                                                                },
+                                                                {
+                                                                    "material":  {
+                                                                                     "kind":  "solid",
+                                                                                     "id":  155,
+                                                                                     "data":  1
+                                                                                 },
+                                                                    "width":  2
+                                                                },
+                                                                {
+                                                                    "material":  {
+                                                                                     "kind":  "solid",
+                                                                                     "id":  24,
+                                                                                     "data":  0
+                                                                                 },
+                                                                    "width":  1
+                                                                }
+                                                            ]
+                                               },
+                                      "wallEnabled":  true,
+                                      "fill":  {
+                                                   "kind":  "solid",
+                                                   "id":  155,
+                                                   "data":  0
+                                               }
+                                  },
+                   "marl-cistern":  {
+                                        "bedrock":  {
+                                                        "relative":  false,
+                                                        "value":  1
+                                                    },
+                                        "rimEdges":  "boundary",
+                                        "wallOnTerrainFaces":  true,
+                                        "rim":  {
+                                                    "material":  {
+                                                                     "kind":  "solid",
+                                                                     "id":  98,
+                                                                     "data":  1
+                                                                 },
+                                                    "depth":  1,
+                                                    "enabled":  true
+                                                },
+                                        "surface":  {
+                                                        "material":  {
+                                                                         "kind":  "layered",
+                                                                         "layers":  [
+                                                                                        {
+                                                                                            "material":  {
+                                                                                                             "kind":  "cell",
+                                                                                                             "seed":  28,
+                                                                                                             "cellSize":  3,
+                                                                                                             "jitter":  95,
+                                                                                                             "warp":  2,
+                                                                                                             "rise":  0,
+                                                                                                             "palette":  [
+                                                                                                                             {
+                                                                                                                                 "kind":  "solid",
+                                                                                                                                 "id":  98,
+                                                                                                                                 "data":  1
+                                                                                                                             },
+                                                                                                                             {
+                                                                                                                                 "kind":  "solid",
+                                                                                                                                 "id":  98,
+                                                                                                                                 "data":  0
+                                                                                                                             },
+                                                                                                                             {
+                                                                                                                                 "kind":  "solid",
+                                                                                                                                 "id":  98,
+                                                                                                                                 "data":  2
+                                                                                                                             },
+                                                                                                                             {
+                                                                                                                                 "kind":  "solid",
+                                                                                                                                 "id":  48,
+                                                                                                                                 "data":  0
+                                                                                                                             }
+                                                                                                                         ]
+                                                                                                         },
+                                                                                            "thickness":  1
+                                                                                        },
+                                                                                        {
+                                                                                            "material":  {
+                                                                                                             "kind":  "solid",
+                                                                                                             "id":  98,
+                                                                                                             "data":  0
+                                                                                                         },
+                                                                                            "thickness":  1
+                                                                                        }
+                                                                                    ]
+                                                                     },
+                                                        "depth":  2,
+                                                        "enabled":  true
+                                                    },
+                                        "wall":  {
+                                                     "kind":  "wallRun",
+                                                     "runs":  [
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  98,
+                                                                                       "data":  1
+                                                                                   },
+                                                                      "width":  1
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  98,
+                                                                                       "data":  0
+                                                                                   },
+                                                                      "width":  3
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  98,
+                                                                                       "data":  2
+                                                                                   },
+                                                                      "width":  1
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  48,
+                                                                                       "data":  0
+                                                                                   },
+                                                                      "width":  1
+                                                                  }
+                                                              ]
+                                                 },
+                                        "wallEnabled":  true,
+                                        "fill":  {
+                                                     "kind":  "solid",
+                                                     "id":  1,
+                                                     "data":  0
+                                                 }
+                                    },
+                   "marl-crest":  {
+                                      "bedrock":  {
+                                                      "relative":  false,
+                                                      "value":  1
+                                                  },
+                                      "rimEdges":  "drop",
+                                      "wallOnTerrainFaces":  true,
+                                      "rim":  {
+                                                  "material":  {
+                                                                   "kind":  "solid",
+                                                                   "id":  155,
+                                                                   "data":  2
+                                                               },
+                                                  "depth":  1,
+                                                  "enabled":  true
+                                              },
+                                      "surface":  {
+                                                      "material":  {
+                                                                       "kind":  "layered",
+                                                                       "layers":  [
+                                                                                      {
+                                                                                          "material":  {
+                                                                                                           "kind":  "cell",
+                                                                                                           "seed":  29,
+                                                                                                           "cellSize":  5,
+                                                                                                           "jitter":  55,
+                                                                                                           "warp":  2,
+                                                                                                           "rise":  0,
+                                                                                                           "palette":  [
+                                                                                                                           {
+                                                                                                                               "kind":  "solid",
+                                                                                                                               "id":  155,
+                                                                                                                               "data":  1
+                                                                                                                           },
+                                                                                                                           {
+                                                                                                                               "kind":  "solid",
+                                                                                                                               "id":  155,
+                                                                                                                               "data":  0
+                                                                                                                           },
+                                                                                                                           {
+                                                                                                                               "kind":  "solid",
+                                                                                                                               "id":  159,
+                                                                                                                               "data":  14
+                                                                                                                           },
+                                                                                                                           {
+                                                                                                                               "kind":  "solid",
+                                                                                                                               "id":  24,
+                                                                                                                               "data":  0
+                                                                                                                           }
+                                                                                                                       ]
+                                                                                                       },
+                                                                                          "thickness":  1
+                                                                                      },
+                                                                                      {
+                                                                                          "material":  {
+                                                                                                           "kind":  "solid",
+                                                                                                           "id":  155,
+                                                                                                           "data":  0
+                                                                                                       },
+                                                                                          "thickness":  2
+                                                                                      }
+                                                                                  ]
+                                                                   },
+                                                      "depth":  3,
+                                                      "enabled":  true
+                                                  },
+                                      "wall":  {
+                                                   "kind":  "wallDiagonal",
+                                                   "slope":  2,
+                                                   "runs":  [
+                                                                {
+                                                                    "material":  {
+                                                                                     "kind":  "solid",
+                                                                                     "id":  155,
+                                                                                     "data":  1
+                                                                                 },
+                                                                    "width":  2
+                                                                },
+                                                                {
+                                                                    "material":  {
+                                                                                     "kind":  "solid",
+                                                                                     "id":  155,
+                                                                                     "data":  0
+                                                                                 },
+                                                                    "width":  3
+                                                                },
+                                                                {
+                                                                    "material":  {
+                                                                                     "kind":  "solid",
+                                                                                     "id":  155,
+                                                                                     "data":  2
+                                                                                 },
+                                                                    "width":  1
+                                                                }
+                                                            ]
+                                               },
+                                      "wallEnabled":  true,
+                                      "fill":  {
+                                                   "kind":  "solid",
+                                                   "id":  155,
+                                                   "data":  0
+                                               }
+                                  }
+               },
+    "roomStyles":  {
+                       "spawn":  {
+                                     "wall":  {
+                                                  "extent":  8,
+                                                  "courses":  [
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  24,
+                                                                                       "data":  2
+                                                                                   },
+                                                                      "height":  1
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  155,
+                                                                                       "data":  0
+                                                                                   },
+                                                                      "height":  5
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  155,
+                                                                                       "data":  1
+                                                                                   },
+                                                                      "height":  1
+                                                                  },
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  159,
+                                                                                       "data":  14
+                                                                                   },
+                                                                      "height":  1
+                                                                  }
+                                                              ]
+                                              },
+                                     "post":  {
+                                                  "kind":  "solid",
+                                                  "id":  155,
+                                                  "data":  2
+                                              },
+                                     "sill":  {
+                                                  "kind":  "solid",
+                                                  "id":  24,
+                                                  "data":  2
+                                              },
+                                     "gable":  {
+                                                   "kind":  "solid",
+                                                   "id":  155,
+                                                   "data":  0
+                                               },
+                                     "roof":  {
+                                                  "kind":  "solid",
+                                                  "id":  45,
+                                                  "data":  0
+                                              },
+                                     "verge":  {
+                                                   "kind":  "solid",
+                                                   "id":  155,
+                                                   "data":  2
+                                               },
+                                     "floor":  {
+                                                   "extent":  1,
+                                                   "courses":  [
+                                                                   {
+                                                                       "material":  {
+                                                                                        "kind":  "solid",
+                                                                                        "id":  98,
+                                                                                        "data":  0
+                                                                                    },
+                                                                       "height":  1
+                                                                   }
+                                                               ]
+                                               },
+                                     "surface":  {
+                                                     "field":  null,
+                                                     "border":  {
+                                                                    "kind":  "solid",
+                                                                    "id":  155,
+                                                                    "data":  1
+                                                                },
+                                                     "borderWidth":  1,
+                                                     "inlay":  {
+                                                                   "kind":  "solid",
+                                                                   "id":  159,
+                                                                   "data":  14
+                                                               },
+                                                     "inlayInset":  3,
+                                                     "isPlain":  false
+                                                 },
+                                     "windows":  {
+                                                     "form":  "arched",
+                                                     "block":  20,
+                                                     "data":  0,
+                                                     "hostBlock":  -1,
+                                                     "hostData":  0,
+                                                     "sill":  2,
+                                                     "width":  2,
+                                                     "height":  3,
+                                                     "spacing":  3
+                                                 },
+                                     "gableWindows":  {
+                                                          "form":  "none",
+                                                          "block":  0,
+                                                          "data":  0,
+                                                          "hostBlock":  -1,
+                                                          "hostData":  0,
+                                                          "sill":  1,
+                                                          "width":  1,
+                                                          "height":  1,
+                                                          "spacing":  3
+                                                      },
+                                     "form":  "hip",
+                                     "pitch":  1,
+                                     "overhang":  1,
+                                     "ridgeCap":  true,
+                                     "roofHole":  false,
+                                     "roofSlab":  44,
+                                     "roofSlabData":  4,
+                                     "beams":  {
+                                                   "block":  155,
+                                                   "data":  2,
+                                                   "reach":  1,
+                                                   "any":  false
+                                               },
+                                     "storeys":  [
+
+                                                 ],
+                                     "porch":  null,
+                                     "doorEdge":  null,
+                                     "door":  "air",
+                                     "doorWidth":  3,
+                                     "doorHeight":  4,
+                                     "doorHead":  {
+                                                      "form":  "arched",
+                                                      "block":  108,
+                                                      "fill":  "upperSlab",
+                                                      "fillBlock":  44,
+                                                      "fillData":  4
+                                                  }
+                                 },
+                       "cage":  {
+                                    "wall":  {
+                                                 "extent":  6,
+                                                 "courses":  [
+                                                                 {
+                                                                     "material":  {
+                                                                                      "kind":  "solid",
+                                                                                      "id":  98,
+                                                                                      "data":  0
+                                                                                  },
+                                                                     "height":  2
+                                                                 },
+                                                                 {
+                                                                     "material":  {
+                                                                                      "kind":  "solid",
+                                                                                      "id":  98,
+                                                                                      "data":  1
+                                                                                  },
+                                                                     "height":  2
+                                                                 },
+                                                                 {
+                                                                     "material":  {
+                                                                                      "kind":  "solid",
+                                                                                      "id":  155,
+                                                                                      "data":  0
+                                                                                  },
+                                                                     "height":  2
+                                                                 }
+                                                             ]
+                                             },
+                                    "post":  {
+                                                 "kind":  "solid",
+                                                 "id":  98,
+                                                 "data":  3
+                                             },
+                                    "sill":  {
+                                                 "kind":  "solid",
+                                                 "id":  98,
+                                                 "data":  0
+                                             },
+                                    "gable":  {
+                                                  "kind":  "solid",
+                                                  "id":  155,
+                                                  "data":  0
+                                              },
+                                    "roof":  {
+                                                 "kind":  "solid",
+                                                 "id":  45,
+                                                 "data":  0
+                                             },
+                                    "verge":  {
+                                                  "kind":  "solid",
+                                                  "id":  98,
+                                                  "data":  3
+                                              },
+                                    "floor":  {
+                                                  "extent":  1,
+                                                  "courses":  [
+                                                                  {
+                                                                      "material":  {
+                                                                                       "kind":  "solid",
+                                                                                       "id":  98,
+                                                                                       "data":  1
+                                                                                   },
+                                                                      "height":  1
+                                                                  }
+                                                              ]
+                                              },
+                                    "surface":  {
+                                                    "field":  null,
+                                                    "border":  {
+                                                                   "kind":  "solid",
+                                                                   "id":  98,
+                                                                   "data":  3
+                                                               },
+                                                    "borderWidth":  1,
+                                                    "inlay":  null,
+                                                    "inlayInset":  2,
+                                                    "isPlain":  false
+                                                },
+                                    "windows":  {
+                                                    "form":  "stairLattice",
+                                                    "block":  109,
+                                                    "data":  0,
+                                                    "hostBlock":  98,
+                                                    "hostData":  0,
+                                                    "sill":  2,
+                                                    "width":  2,
+                                                    "height":  2,
+                                                    "spacing":  3
+                                                },
+                                    "gableWindows":  {
+                                                         "form":  "none",
+                                                         "block":  0,
+                                                         "data":  0,
+                                                         "hostBlock":  -1,
+                                                         "hostData":  0,
+                                                         "sill":  1,
+                                                         "width":  1,
+                                                         "height":  1,
+                                                         "spacing":  3
+                                                     },
+                                    "form":  "gable",
+                                    "pitch":  1,
+                                    "overhang":  1,
+                                    "ridgeCap":  true,
+                                    "roofHole":  false,
+                                    "roofSlab":  44,
+                                    "roofSlabData":  4,
+                                    "beams":  {
+                                                  "block":  98,
+                                                  "data":  3,
+                                                  "reach":  1,
+                                                  "any":  false
+                                              },
+                                    "storeys":  [
+
+                                                ],
+                                    "porch":  null,
+                                    "doorEdge":  null,
+                                    "door":  "air",
+                                    "doorWidth":  2,
+                                    "doorHeight":  3,
+                                    "doorHead":  {
+                                                     "form":  "arched",
+                                                     "block":  109,
+                                                     "fill":  "upperSlab",
+                                                     "fillBlock":  44,
+                                                     "fillData":  4
+                                                 }
+                                }
+                   },
+    "relief":  {
+                   "marlstone":  {
+                                     "base":  10,
+                                     "reach":  16,
+                                     "step":  1,
+                                     "stairs":  true,
+                                     "grain":  {
+                                                   "amplitude":  1.0,
+                                                   "scale":  12,
+                                                   "seed":  5
+                                               },
+                                     "marks":  [
+                                                   {
+                                                       "id":  "m-rim",
+                                                       "kind":  "rim",
+                                                       "h":  10,
+                                                       "depth":  1
+                                                   },
+                                                   {
+                                                       "id":  "m-cross",
+                                                       "kind":  "area",
+                                                       "h":  10,
+                                                       "ring":  [
+                                                                    [
+                                                                        -28,
+                                                                        -10
+                                                                    ],
+                                                                    [
+                                                                        28,
+                                                                        -10
+                                                                    ],
+                                                                    [
+                                                                        28,
+                                                                        10
+                                                                    ],
+                                                                    [
+                                                                        -28,
+                                                                        10
+                                                                    ]
+                                                                ]
+                                                   },
+                                                   {
+                                                       "id":  "m-westswell",
+                                                       "kind":  "point",
+                                                       "at":  [
+                                                                  -46,
+                                                                  -4
+                                                              ],
+                                                       "h":  14,
+                                                       "r":  12
+                                                   },
+                                                   {
+                                                       "id":  "m-eastswell",
+                                                       "kind":  "point",
+                                                       "at":  [
+                                                                  48,
+                                                                  6
+                                                              ],
+                                                       "h":  13,
+                                                       "r":  10
+                                                   }
+                                               ],
+                                     "pushes":  [
+                                                    {
+                                                        "id":  "p-hollow-e",
+                                                        "ring":  [
+                                                                     [
+                                                                         30,
+                                                                         -20
+                                                                     ],
+                                                                     [
+                                                                         50,
+                                                                         -18
+                                                                     ],
+                                                                     [
+                                                                         54,
+                                                                         -4
+                                                                     ],
+                                                                     [
+                                                                         40,
+                                                                         4
+                                                                     ],
+                                                                     [
+                                                                         28,
+                                                                         -6
+                                                                     ]
+                                                                 ],
+                                                        "amount":  -3,
+                                                        "falloff":  8,
+                                                        "roughness":  0.3,
+                                                        "crown":  -1,
+                                                        "seed":  3
+                                                    }
+                                                ]
+                                 }
+               }
+}
