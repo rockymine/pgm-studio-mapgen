@@ -1,0 +1,127 @@
+{
+    "teams": [
+        {
+            "id": "red",
+            "name": "Red",
+            "color": "red"
+        },
+        {
+            "id": "blue",
+            "name": "Blue",
+            "color": "blue"
+        }
+    ],
+    "maxPlayers": 16,
+    "spawns": [
+        {
+            "team": "red",
+            "point": {
+                "x": 0,
+                "y": 10,
+                "z": -145
+            },
+            "protection": [
+                {
+                    "minX": -25,
+                    "minZ": -160,
+                    "maxX": 25,
+                    "maxZ": -130
+                }
+            ],
+            "yaw": 0,
+            "piece": {
+                "minX": -25,
+                "minZ": -160,
+                "maxX": 25,
+                "maxZ": -130
+            },
+            "iron": []
+        },
+        {
+            "team": "blue",
+            "point": {
+                "x": 0,
+                "y": 10,
+                "z": 145
+            },
+            "protection": [
+                {
+                    "minX": -25,
+                    "minZ": 130,
+                    "maxX": 25,
+                    "maxZ": 160
+                }
+            ],
+            "yaw": 180,
+            "piece": {
+                "minX": -25,
+                "minZ": 130,
+                "maxX": 25,
+                "maxZ": 160
+            },
+            "iron": []
+        }
+    ],
+    "observer": {
+        "point": {
+            "x": 0,
+            "y": 24,
+            "z": 0
+        },
+        "yaw": 0
+    },
+    "build": {
+        "maxHeight": 20,
+        "areas": [],
+        "holes": []
+    },
+    "waterLanes": null,
+    "wools": [],
+    "destroyables": null,
+    "cores": [
+        {
+            "owner": "red",
+            "name": "Cinderreach Heart",
+            "anchor": {
+                "x": 0,
+                "y": 9,
+                "z": -60
+            },
+            "size": 5,
+            "height": 5,
+            "shell": 1,
+            "openTop": false,
+            "float": 6,
+            "leak": 7,
+            "box": null,
+            "digDepth": 1
+        },
+        {
+            "owner": "blue",
+            "name": "Cinderreach Heart",
+            "anchor": {
+                "x": 0,
+                "y": 9,
+                "z": 60
+            },
+            "size": 5,
+            "height": 5,
+            "shell": 1,
+            "openTop": false,
+            "float": 6,
+            "leak": 7,
+            "box": null,
+            "digDepth": 1
+        }
+    ],
+    "meta": {
+        "name": "Sonnet Cinderreach",
+        "authors": [],
+        "contributors": []
+    },
+    "symmetry": null,
+    "islandTeams": {
+        "1": "red"
+    },
+    "structures": null
+}

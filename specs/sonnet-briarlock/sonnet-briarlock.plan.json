@@ -1,0 +1,30 @@
+{
+  "plan": 1,
+  "meta": { "name": "Sonnet Briarlock" },
+  "globals": { "cell": 5, "symmetry": "rot_180", "maxPlayers": 24, "surface": 9, "headroom": 11 },
+  "pieces": [
+    { "id": "spawn", "role": "spawn", "rect": [-4, -34, 8, 6], "surface": 11 },
+    { "id": "home", "role": "piece", "rect": [-14, -28, 28, 10], "surface": 9 },
+    { "id": "leg-a", "role": "piece", "rect": [-14, -18, 6, 8], "surface": 9 },
+    { "id": "leg-b", "role": "piece", "rect": [8, -18, 6, 8], "surface": 9 },
+    { "id": "wool-corridor", "role": "piece", "rect": [14, -26, 4, 6], "surface": 9 },
+    { "id": "wool-room", "role": "wool-room", "rect": [18, -26, 8, 6], "surface": 9 },
+    { "id": "wool2-corridor", "role": "piece", "rect": [-18, -26, 4, 6], "surface": 9 },
+    { "id": "wool2-room", "role": "wool-room", "rect": [-26, -26, 8, 6], "surface": 9 }
+  ],
+  "zones": [
+    { "id": "mid", "rect": [-14, -10, 28, 20] }
+  ],
+  "placements": {
+    "spawns": [ { "id": "spawn-1", "piece": "spawn", "at": [4, 3], "facing": "back" } ],
+    "iron": [ { "id": "iron-1", "piece": "spawn", "at": [1, 3] }, { "id": "iron-2", "piece": "spawn", "at": [7, 3] } ],
+    "wools": [
+      { "id": "wool-1", "piece": "wool-room", "at": [4, 3] },
+      { "id": "wool-2", "piece": "wool2-room", "at": [4, 3] }
+    ]
+  },
+  "walls": [
+    { "a": "home", "b": "wool-corridor", "side": "b" },
+    { "a": "home", "b": "wool2-corridor", "side": "b" }
+  ]
+}

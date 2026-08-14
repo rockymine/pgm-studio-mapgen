@@ -1,0 +1,132 @@
+{
+    "teams": [
+        {
+            "id": "red",
+            "name": "Red",
+            "color": "red"
+        },
+        {
+            "id": "blue",
+            "name": "Blue",
+            "color": "blue"
+        }
+    ],
+    "maxPlayers": 16,
+    "spawns": [
+        {
+            "team": "red",
+            "point": {
+                "x": 0,
+                "y": 11,
+                "z": -165
+            },
+            "protection": [
+                {
+                    "minX": -30,
+                    "minZ": -180,
+                    "maxX": 30,
+                    "maxZ": -150
+                }
+            ],
+            "yaw": 0,
+            "piece": {
+                "minX": -30,
+                "minZ": -180,
+                "maxX": 30,
+                "maxZ": -150
+            },
+            "iron": []
+        },
+        {
+            "team": "blue",
+            "point": {
+                "x": 0,
+                "y": 11,
+                "z": 165
+            },
+            "protection": [
+                {
+                    "minX": -30,
+                    "minZ": 150,
+                    "maxX": 30,
+                    "maxZ": 180
+                }
+            ],
+            "yaw": 180,
+            "piece": {
+                "minX": -30,
+                "minZ": 150,
+                "maxX": 30,
+                "maxZ": 180
+            },
+            "iron": []
+        }
+    ],
+    "observer": {
+        "point": {
+            "x": 0,
+            "y": 24,
+            "z": 0
+        },
+        "yaw": 0
+    },
+    "build": {
+        "maxHeight": 20,
+        "areas": [
+            {
+                "minX": 20,
+                "minZ": -55,
+                "maxX": 80,
+                "maxZ": -35
+            },
+            {
+                "minX": -80,
+                "minZ": 35,
+                "maxX": -20,
+                "maxZ": 55
+            }
+        ],
+        "holes": []
+    },
+    "waterLanes": null,
+    "wools": [],
+    "destroyables": [
+        {
+            "owner": "red",
+            "name": "Holdfast Cairn",
+            "style": "cube-3",
+            "materials": "ender stone",
+            "anchor": {
+                "x": 0,
+                "y": 9,
+                "z": -65
+            },
+            "float": 4,
+            "box": null
+        },
+        {
+            "owner": "blue",
+            "name": "Holdfast Cairn",
+            "style": "cube-3",
+            "materials": "ender stone",
+            "anchor": {
+                "x": 0,
+                "y": 9,
+                "z": 65
+            },
+            "float": 4,
+            "box": null
+        }
+    ],
+    "cores": null,
+    "meta": {
+        "name": "Sonnet Holdfast",
+        "authors": [],
+        "contributors": []
+    },
+    "symmetry": null,
+    "islandTeams": {
+        "1": "red"
+    },
+    "structures": null
+}

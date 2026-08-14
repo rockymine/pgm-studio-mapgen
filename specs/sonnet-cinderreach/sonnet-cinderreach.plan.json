@@ -1,0 +1,13 @@
+{
+  "plan": 1,
+  "meta": { "name": "Sonnet Cinderreach" },
+  "globals": { "cell": 5, "symmetry": "rot_180", "maxPlayers": 16, "surface": 9, "headroom": 11 },
+  "pieces": [
+    { "id": "spawn", "role": "spawn", "rect": [-5, -32, 10, 6], "surface": 10 },
+    { "id": "field", "role": "piece", "rect": [-22, -26, 44, 26], "surface": 9 }
+  ],
+  "placements": {
+    "spawns": [ { "id": "spawn-1", "piece": "spawn", "at": [5, 3], "facing": "back" } ],
+    "cores": [ { "id": "core-1", "piece": "", "at": [0, -12], "size": 5, "height": 5, "shell": 1, "float": 6, "leak": 7, "name": "Cinderreach Heart" } ]
+  }
+}

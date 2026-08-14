@@ -1,0 +1,340 @@
+{
+    "teams": [
+        {
+            "id": "red",
+            "name": "Red",
+            "color": "red"
+        },
+        {
+            "id": "blue",
+            "name": "Blue",
+            "color": "blue"
+        }
+    ],
+    "maxPlayers": 24,
+    "spawns": [
+        {
+            "team": "red",
+            "point": {
+                "x": 0,
+                "y": 11,
+                "z": -155
+            },
+            "protection": [
+                {
+                    "minX": -20,
+                    "minZ": -170,
+                    "maxX": 20,
+                    "maxZ": -140
+                }
+            ],
+            "yaw": 0,
+            "piece": {
+                "minX": -20,
+                "minZ": -170,
+                "maxX": 20,
+                "maxZ": -140
+            },
+            "iron": [
+                {
+                    "x": -15,
+                    "y": 11,
+                    "z": -155
+                },
+                {
+                    "x": 15,
+                    "y": 11,
+                    "z": -155
+                }
+            ]
+        },
+        {
+            "team": "blue",
+            "point": {
+                "x": 0,
+                "y": 11,
+                "z": 155
+            },
+            "protection": [
+                {
+                    "minX": -20,
+                    "minZ": 140,
+                    "maxX": 20,
+                    "maxZ": 170
+                }
+            ],
+            "yaw": 180,
+            "piece": {
+                "minX": -20,
+                "minZ": 140,
+                "maxX": 20,
+                "maxZ": 170
+            },
+            "iron": [
+                {
+                    "x": 15,
+                    "y": 11,
+                    "z": 155
+                },
+                {
+                    "x": -15,
+                    "y": 11,
+                    "z": 155
+                }
+            ]
+        }
+    ],
+    "observer": {
+        "point": {
+            "x": 0,
+            "y": 24,
+            "z": 0
+        },
+        "yaw": 0
+    },
+    "build": {
+        "maxHeight": 20,
+        "areas": [
+            {
+                "minX": -70,
+                "minZ": -50,
+                "maxX": 70,
+                "maxZ": 50
+            }
+        ],
+        "holes": []
+    },
+    "waterLanes": null,
+    "wools": [
+        {
+            "owner": "red",
+            "color": "red",
+            "room": [
+                {
+                    "minX": 90,
+                    "minZ": -130,
+                    "maxX": 130,
+                    "maxZ": -100
+                }
+            ],
+            "spawn": {
+                "x": 110,
+                "y": 9,
+                "z": -115
+            },
+            "monuments": [],
+            "piece": {
+                "minX": 90,
+                "minZ": -130,
+                "maxX": 130,
+                "maxZ": -100
+            },
+            "entries": [
+                {
+                    "minX": 90,
+                    "minZ": -130,
+                    "maxX": 90,
+                    "maxZ": -100
+                }
+            ]
+        },
+        {
+            "owner": "red",
+            "color": "orange",
+            "room": [
+                {
+                    "minX": -130,
+                    "minZ": -130,
+                    "maxX": -90,
+                    "maxZ": -100
+                }
+            ],
+            "spawn": {
+                "x": -110,
+                "y": 9,
+                "z": -115
+            },
+            "monuments": [],
+            "piece": {
+                "minX": -130,
+                "minZ": -130,
+                "maxX": -90,
+                "maxZ": -100
+            },
+            "entries": [
+                {
+                    "minX": -90,
+                    "minZ": -130,
+                    "maxX": -90,
+                    "maxZ": -100
+                }
+            ]
+        },
+        {
+            "owner": "blue",
+            "color": "blue",
+            "room": [
+                {
+                    "minX": -130,
+                    "minZ": 100,
+                    "maxX": -90,
+                    "maxZ": 130
+                }
+            ],
+            "spawn": {
+                "x": -110,
+                "y": 9,
+                "z": 115
+            },
+            "monuments": [],
+            "piece": {
+                "minX": -130,
+                "minZ": 100,
+                "maxX": -90,
+                "maxZ": 130
+            },
+            "entries": [
+                {
+                    "minX": -90,
+                    "minZ": 100,
+                    "maxX": -90,
+                    "maxZ": 130
+                }
+            ]
+        },
+        {
+            "owner": "blue",
+            "color": "light_blue",
+            "room": [
+                {
+                    "minX": 90,
+                    "minZ": 100,
+                    "maxX": 130,
+                    "maxZ": 130
+                }
+            ],
+            "spawn": {
+                "x": 110,
+                "y": 9,
+                "z": 115
+            },
+            "monuments": [],
+            "piece": {
+                "minX": 90,
+                "minZ": 100,
+                "maxX": 130,
+                "maxZ": 130
+            },
+            "entries": [
+                {
+                    "minX": 90,
+                    "minZ": 100,
+                    "maxX": 90,
+                    "maxZ": 130
+                }
+            ]
+        }
+    ],
+    "destroyables": null,
+    "cores": null,
+    "meta": {
+        "name": "Sonnet Briarlock",
+        "authors": [],
+        "contributors": []
+    },
+    "symmetry": null,
+    "islandTeams": {
+        "1": "red",
+        "2": "blue"
+    },
+    "structures": {
+        "roomFloors": [
+            {
+                "minX": 90,
+                "minZ": -130,
+                "maxX": 130,
+                "maxZ": -100
+            },
+            {
+                "minX": -130,
+                "minZ": 100,
+                "maxX": -90,
+                "maxZ": 130
+            },
+            {
+                "minX": -130,
+                "minZ": -130,
+                "maxX": -90,
+                "maxZ": -100
+            },
+            {
+                "minX": 90,
+                "minZ": 100,
+                "maxX": 130,
+                "maxZ": 130
+            }
+        ],
+        "redstoneLines": [
+            {
+                "x1": 90,
+                "z1": -130,
+                "x2": 90,
+                "z2": -101
+            },
+            {
+                "x1": -91,
+                "z1": 100,
+                "x2": -91,
+                "z2": 129
+            },
+            {
+                "x1": -91,
+                "z1": -130,
+                "x2": -91,
+                "z2": -101
+            },
+            {
+                "x1": 90,
+                "z1": 100,
+                "x2": 90,
+                "z2": 129
+            }
+        ],
+        "ironCubes": [],
+        "walls": [
+            {
+                "minX": 69,
+                "minZ": -130,
+                "maxX": 71,
+                "maxZ": -100,
+                "topY": 11,
+                "chestOnMinFace": false
+            },
+            {
+                "minX": -71,
+                "minZ": 100,
+                "maxX": -69,
+                "maxZ": 130,
+                "topY": 11,
+                "chestOnMinFace": true
+            },
+            {
+                "minX": -71,
+                "minZ": -130,
+                "maxX": -69,
+                "maxZ": -100,
+                "topY": 11,
+                "chestOnMinFace": true
+            },
+            {
+                "minX": 69,
+                "minZ": 100,
+                "maxX": 71,
+                "maxZ": 130,
+                "topY": 11,
+                "chestOnMinFace": false
+            }
+        ],
+        "isEmpty": false
+    }
+}

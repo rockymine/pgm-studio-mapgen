@@ -1,0 +1,16 @@
+{
+  "plan": 1,
+  "meta": { "name": "Sonnet Holdfast" },
+  "globals": { "cell": 5, "symmetry": "rot_180", "maxPlayers": 16, "surface": 9, "headroom": 11 },
+  "pieces": [
+    { "id": "spawn", "role": "spawn", "rect": [-6, -36, 12, 6], "surface": 11 },
+    { "id": "field", "role": "piece", "rect": [-24, -30, 48, 30], "surface": 9 }
+  ],
+  "zones": [
+    { "id": "bridge-zone", "rect": [4, -11, 12, 4] }
+  ],
+  "placements": {
+    "spawns": [ { "id": "spawn-1", "piece": "spawn", "at": [6, 3], "facing": "back" } ],
+    "destroyables": [ { "id": "destroyable-1", "piece": "", "at": [0, -13], "style": "cube-3", "materials": "ender stone", "float": 4, "name": "Holdfast Cairn" } ]
+  }
+}
