@@ -1,0 +1,169 @@
+{
+    "teams":  [
+                  {
+                      "id":  "red",
+                      "name":  "Red",
+                      "color":  "red"
+                  },
+                  {
+                      "id":  "blue",
+                      "name":  "Blue",
+                      "color":  "blue"
+                  }
+              ],
+    "maxPlayers":  16,
+    "spawns":  [
+                   {
+                       "team":  "red",
+                       "point":  {
+                                     "x":  0,
+                                     "y":  18,
+                                     "z":  85
+                                 },
+                       "protection":  [
+                                          {
+                                              "minX":  -10,
+                                              "minZ":  75,
+                                              "maxX":  10,
+                                              "maxZ":  95
+                                          }
+                                      ],
+                       "yaw":  180,
+                       "piece":  {
+                                     "minX":  -10,
+                                     "minZ":  75,
+                                     "maxX":  10,
+                                     "maxZ":  95
+                                 },
+                       "iron":  [
+
+                                ]
+                   },
+                   {
+                       "team":  "blue",
+                       "point":  {
+                                     "x":  0,
+                                     "y":  18,
+                                     "z":  -85
+                                 },
+                       "protection":  [
+                                          {
+                                              "minX":  -10,
+                                              "minZ":  -95,
+                                              "maxX":  10,
+                                              "maxZ":  -75
+                                          }
+                                      ],
+                       "yaw":  0,
+                       "piece":  {
+                                     "minX":  -10,
+                                     "minZ":  -95,
+                                     "maxX":  10,
+                                     "maxZ":  -75
+                                 },
+                       "iron":  [
+
+                                ]
+                   }
+               ],
+    "observer":  {
+                     "point":  {
+                                   "x":  0,
+                                   "y":  44,
+                                   "z":  0
+                               },
+                     "yaw":  0
+                 },
+    "build":  {
+                  "maxHeight":  38,
+                  "areas":  [
+
+                            ],
+                  "holes":  [
+
+                            ],
+                  "voidEnforcement": { "exclusions": [] }
+              },
+    "waterLanes":  null,
+    "wools":  [
+
+              ],
+    "destroyables":  [
+                         {
+                             "owner":  "red",
+                             "name":  "\u003cTeam\u003e Stack",
+                             "style":  "cube-3",
+                             "materials":  "obsidian",
+                             "anchor":  {
+                                            "x":  -40,
+                                            "y":  12,
+                                            "z":  35
+                                        },
+                             "float":  4,
+                             "box":  null
+                         },
+                         {
+                             "owner":  "blue",
+                             "name":  "\u003cTeam\u003e Stack",
+                             "style":  "cube-3",
+                             "materials":  "obsidian",
+                             "anchor":  {
+                                            "x":  40,
+                                            "y":  12,
+                                            "z":  -35
+                                        },
+                             "float":  4,
+                             "box":  null
+                         }
+                     ],
+    "cores":  [
+                  {
+                      "owner":  "red",
+                      "name":  "\u003cTeam\u003e Sump",
+                      "anchor":  {
+                                     "x":  30,
+                                     "y":  12,
+                                     "z":  60
+                                 },
+                      "size":  5,
+                      "height":  5,
+                      "shell":  1,
+                      "openTop":  false,
+                      "float":  5,
+                      "leak":  8,
+                      "box":  null,
+                      "digDepth":  3
+                  },
+                  {
+                      "owner":  "blue",
+                      "name":  "\u003cTeam\u003e Sump",
+                      "anchor":  {
+                                     "x":  -30,
+                                     "y":  12,
+                                     "z":  -60
+                                 },
+                      "size":  5,
+                      "height":  5,
+                      "shell":  1,
+                      "openTop":  false,
+                      "float":  5,
+                      "leak":  8,
+                      "box":  null,
+                      "digDepth":  3
+                  }
+              ],
+    "meta":  {
+                 "name":  "Basalt Reach",
+                 "authors":  [
+
+                             ],
+                 "contributors":  [
+
+                                  ]
+             },
+    "symmetry":  null,
+    "islandTeams":  {
+                        "1":  "red"
+                    },
+    "structures":  null
+}

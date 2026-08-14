@@ -1,0 +1,107 @@
+{
+  "islands": [
+    {
+      "id": "marlstone",
+      "name": "Marlstone",
+      "mirrors": true,
+      "shapeIds": ["strand","outcrop","ramp-a","low-west","low-mid","low-east","ramp-b","terr-west","terr-mid","gate-pan","terr-east","ramp-c","shelf","cistern","ramp-d","crest"]
+    }
+  ],
+  "shapes": [
+    {
+      "id": "strand", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 10, "theme": "marl-strand",
+      "vertices": [[-58,-6],[-54,-16],[-40,-21],[-20,-23],[0,-22],[20,-23],[40,-21],[54,-16],[58,-6],[58,8],[52,18],[38,23],[20,25],[0,24],[-20,25],[-38,23],[-52,18],[-58,8]]
+    },
+    {
+      "id": "outcrop", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 6, "height_mode": "raise", "skirt": 2, "theme": "marl-rock",
+      "vertices": [[-20,-6],[-12,-10],[-4,-8],[-1,0],[-4,9],[-13,12],[-20,8],[-23,0]]
+    },
+    {
+      "id": "ramp-a", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 10, "height_mode": "level", "skirt": 0, "relief_scope": "exclude", "theme": "marl-street",
+      "vertices": [[42,6],[54,6],[54,20],[42,20]],
+      "anchor_heights": [10,10,14,14]
+    },
+    {
+      "id": "low-west", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 14, "relief_scope": "exclude", "theme": "marl-terrace",
+      "vertices": [[-63,22],[-58,16],[-48,14],[-40,15],[-35,20],[-35,43],[-46,44],[-56,42],[-62,36]]
+    },
+    {
+      "id": "low-mid", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 13, "relief_scope": "exclude", "theme": "marl-street",
+      "vertices": [[-25,20],[-20,15],[0,14],[20,15],[25,20],[25,43],[12,45],[0,44],[-12,45],[-25,43]]
+    },
+    {
+      "id": "low-east", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 14, "relief_scope": "exclude", "theme": "marl-terrace",
+      "vertices": [[35,20],[40,15],[50,14],[60,16],[70,20],[73,30],[72,40],[62,44],[48,44],[35,43]],
+      "controls": {
+        "5": { "in": [77,25], "out": [77,35] },
+        "6": { "in": [76,37], "out": [69,44] }
+      }
+    },
+    {
+      "id": "ramp-b", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 14, "height_mode": "level", "skirt": 0, "relief_scope": "exclude", "theme": "marl-street",
+      "vertices": [[-54,28],[-42,28],[-42,42],[-54,42]],
+      "anchor_heights": [14,14,18,18]
+    },
+    {
+      "id": "terr-west", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 18, "relief_scope": "exclude", "theme": "marl-scrub",
+      "vertices": [[-57,40],[-52,35],[-42,34],[-35,38],[-35,55],[-46,54],[-56,53]]
+    },
+    {
+      "id": "terr-mid", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 18, "relief_scope": "exclude", "theme": "marl-orchard",
+      "vertices": [[-25,38],[-18,34],[0,33],[18,34],[25,38],[25,54],[12,55],[0,54],[-12,55],[-25,54]]
+    },
+    {
+      "id": "gate-pan", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 2, "height_mode": "sink", "skirt": 1, "relief_scope": "exclude", "theme": "marl-street",
+      "vertices": [[-12,38],[12,38],[12,48],[-12,48]]
+    },
+    {
+      "id": "terr-east", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 18, "relief_scope": "exclude", "theme": "marl-scrub",
+      "vertices": [[35,38],[42,34],[52,35],[57,40],[57,58],[46,58],[38,55],[35,52]]
+    },
+    {
+      "id": "ramp-c", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 18, "height_mode": "level", "skirt": 0, "relief_scope": "exclude", "theme": "marl-street",
+      "vertices": [[40,44],[52,44],[52,58],[40,58]],
+      "anchor_heights": [18,18,22,22]
+    },
+    {
+      "id": "shelf", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 22, "relief_scope": "exclude", "theme": "marl-shelf",
+      "vertices": [[-66,62],[-63,51],[-52,48],[-34,50],[-12,48],[10,50],[30,48],[44,51],[53,60],[53,68],[51,74],[40,80],[18,82],[-6,81],[-28,82],[-48,79],[-62,72]],
+      "anchor_heights": [21,21,22,22,22,22,23,23,23,23,23,23,23,22,22,22,21]
+    },
+    {
+      "id": "cistern", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 3, "height_mode": "sink", "skirt": 1, "relief_scope": "exclude", "theme": "marl-cistern",
+      "vertices": [[-56,66],[-48,66],[-48,74],[-56,74]]
+    },
+    {
+      "id": "ramp-d", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 22, "height_mode": "level", "skirt": 0, "relief_scope": "exclude", "theme": "marl-street",
+      "vertices": [[-46,68],[-34,68],[-34,82],[-46,82]],
+      "anchor_heights": [22,22,26,26]
+    },
+    {
+      "id": "crest", "type": "polygon", "operation": "add", "floor": 0,
+      "base_height": 26, "relief_scope": "exclude", "theme": "marl-crest",
+      "vertices": [[-52,80],[-50,75],[-34,74],[-20,73],[-8,71],[8,71],[20,73],[34,74],[50,75],[52,82],[50,94],[36,100],[14,102],[-12,101],[-34,100],[-48,94]],
+      "controls": {
+        "9":  { "in": [54,77], "out": [54,88] },
+        "10": { "in": [53,90], "out": [45,98] },
+        "15": { "in": [-44,99], "out": [-53,89] },
+        "0":  { "in": [-55,85], "out": [-53,77] }
+      }
+    }
+  ]
+}

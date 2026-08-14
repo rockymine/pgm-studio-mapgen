@@ -1,0 +1,57 @@
+{
+  "plan": 1,
+  "meta": { "name": "Marlstone Steps" },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 24,
+    "surface": 10,
+    "headroom": 30,
+    "observerY": 48
+  },
+  "pieces": [
+    { "id": "mid",            "role": "piece",     "rect": [-11, -2, 22, 5], "surface": 10 },
+
+    { "id": "low-west",       "role": "piece",     "rect": [-12,  3,  5, 4], "surface": 14 },
+    { "id": "low-gate",       "role": "piece",     "rect": [ -5,  3, 10, 4], "surface": 13 },
+    { "id": "low-east",       "role": "piece",     "rect": [  7,  3,  5, 4], "surface": 14 },
+    { "id": "wool-east-room", "role": "wool-room", "rect": [ 12,  5,  2, 2], "surface": 14 },
+
+    { "id": "mid-west",       "role": "piece",     "rect": [-11,  7,  4, 4], "surface": 18 },
+    { "id": "mid-side-w",     "role": "piece",     "rect": [ -5,  7,  3, 2], "surface": 18 },
+    { "id": "mid-gate",       "role": "piece",     "rect": [ -2,  7,  4, 2], "surface": 16 },
+    { "id": "mid-side-e",     "role": "piece",     "rect": [  2,  7,  3, 2], "surface": 18 },
+    { "id": "mid-centre",     "role": "piece",     "rect": [ -5,  9, 10, 2], "surface": 18 },
+    { "id": "mid-east",       "role": "piece",     "rect": [  7,  7,  4, 4], "surface": 18 },
+
+    { "id": "up-west",        "role": "piece",     "rect": [-10, 11,  3, 4], "surface": 22 },
+    { "id": "up-centre",      "role": "piece",     "rect": [ -5, 11, 10, 4], "surface": 22 },
+    { "id": "up-east",        "role": "piece",     "rect": [  7, 11,  3, 4], "surface": 22 },
+    { "id": "wool-west-room", "role": "wool-room", "rect": [-12, 11,  2, 2], "surface": 22 },
+
+    { "id": "crest-west",     "role": "piece",     "rect": [-10, 15,  8, 4], "surface": 26 },
+    { "id": "spawn",          "role": "spawn",     "rect": [ -2, 15,  4, 4], "surface": 26 },
+    { "id": "crest-east",     "role": "piece",     "rect": [  2, 15,  8, 4], "surface": 26 }
+  ],
+  "zones": [
+    { "id": "mid-band",     "rect": [-14, -1, 28,  3], "holes": [] },
+    { "id": "ravine-west",  "rect": [ -7,  3,  2, 12], "holes": [] },
+    { "id": "ravine-east",  "rect": [  5,  3,  2, 12], "holes": [] }
+  ],
+  "placements": {
+    "spawns": [
+      { "id": "spawn-1", "piece": "spawn", "at": [2, 2], "facing": "front" }
+    ],
+    "wools": [
+      { "id": "wool-west", "piece": "wool-west-room", "at": [1, 1] },
+      { "id": "wool-east", "piece": "wool-east-room", "at": [1, 1] }
+    ],
+    "iron": [],
+    "destroyables": [],
+    "cores": []
+  },
+  "walls": [
+    { "a": "low-gate", "b": "mid-gate" }
+  ],
+  "boxes": []
+}
