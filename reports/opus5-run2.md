@@ -148,11 +148,28 @@ that settles it in one shot, is an A/B against a build of the same vertices with
 | `(52, 89)` | void | **solid** |
 | `(52, 82)` — *the vertex* | void | void |
 
-**I read "6 roof components" as "eighteen houses are missing" and started diagnosing a drop that had not
-happened.** `--buildings --roof 45:0` finds roofs by material, and a `HouseStyle` with `roofSlab: 44` surfaces
-its roof in brick *slabs* (id 44), not brick blocks (id 45). All twenty-four houses were standing and had been
-visible in the top-down I had already rendered. This is precisely the mistake the brief names — a number read
-without the picture beside it — and I made it with the picture already on disk.
+**I read "6 roof components" as "eighteen houses are missing", and then explained it away half-correctly.**
+All twenty-four houses were standing and had been visible in the top-down I had already rendered. My first
+account blamed the `--roof` material filter alone — brick *slabs* (44:4) rather than brick blocks (45) — which
+is one of three reasons and not the main one. On being pushed I went back and measured, and the tool is
+failing for compounding reasons, all of them because it is built to read worlds the studio did **not** build:
+
+1. the `--roof` filter is exact, and misses a slab-surfaced roof with a quartz-pillar verge;
+2. `IsTerrain` includes `1, 4, 13, 24, 98, 155, 159, 172` — so a cottage roofed in `159:14` is classified as
+   *ground*, its clearance over terrain is nil, and it is dropped by the `RoofHigh − GroundY` gate.
+   `--roof 159:14` on Marlstone returns **0 components**;
+3. `CornerStems` requires a vertical **log** at the footprint corners, and Marlstone's styles use
+   quartz-pillar posts — so every candidate reads `corners: 0` and is labelled "hangs, unframed".
+
+Relaxing `--min-area`, `--min-side` and `--min-height` changed nothing. Opus run 1's census worked because
+`quillon-barrow`'s houses use `post: 17:1` (oak log) and spruce-plank roofs, which satisfy both (2) and (3).
+
+**The instrument I should have used exists and I did not know about it.** `--topdown --layer structure` reads
+`region/provenance.json`, which the export writes and which `B139` has just taught to record *which prop*
+made each claim. Marlstone's owners list is the census, stated rather than inferred:
+`house 24, spawn 2, redstoneline 4, roomfloor 4, wool 4, wall 2` — `h1`…`h12`, twice each. The lesson is not
+"read the picture as well as the number"; it is that **a world this studio built carries a record of what it
+built, and guessing from blocks is the fallback for worlds that do not.**
 
 **My first diagnosis of the empty relief was the relief block.** It was the shapes. What broke the loop was
 posting a *known-good* layout to the same endpoint: it answered normally, which moved the fault from the
@@ -203,7 +220,8 @@ constraint you have not computed yet.
 | 8 | The objective line pluralizes across both teams | `basalt-reach/map.xml`: "monuments" for one destroyable per team | cosmetic |
 | 9 | `species: "dark_oak"` builds from oak blocks | `basalt-reach` `(−60, 12)`: `17:12` log, `18:4` leaves | measured, not diagnosed |
 | 10 | A spawn shape's interior is unpainted | `marlstone-steps` `(0, 85)`: raw `Stone` under the monument | still live (previously filed) |
-| 11 | `--buildings --roof <ids>` misses slab roofs | Marlstone: 24 houses standing, census reported 6 components with `--roof 45:0` | read-back caveat |
+| 11 | `--buildings` cannot see a town built from stone and quartz — exact `--roof` match, `IsTerrain` swallowing `159`/`155`/`98`, and `CornerStems` wanting a log | Marlstone: 24 houses standing; `--roof 45:0` → 6 components (all spawn), `--roof 159:14` → 0 | tool scope, not a defect |
+| 12 | A provenance sidecar written by an earlier revision **throws** instead of falling back | `--topdown --layer structure` exits 255 with `JsonException` on a world built before `B139` changed the sidecar to `{owners, runs}`; `WorldProvenanceFile.TryRead` guards `File.Exists` but not the deserialize | missing (the doc comment promises the fallback) |
 
 ---
 

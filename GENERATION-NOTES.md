@@ -143,14 +143,46 @@ ground ramp up to meet the shape, `exclude` meets the tier below at a face. A te
   already expect something at.
 - **A column through the middle of a house reads floor, air, roof** — the walls are at the perimeter. That
   is a correct building, not a broken one.
-- **`--buildings --roof <ids>` under-reports if your roof is slabs.** A `HouseStyle` with `roofSlab: 44`
-  surfaces its roof in *brick slabs* (id 44), not brick blocks (id 45), so `--roof 45:0` finds only the ridge
-  and verge. Twelve houses that had all stamped reported as "6 roof components". Check the census against the
-  top-down before believing a house is missing.
-- **The category top-down now reads structure from recorded provenance** (`B133`) — it prints
-  `STRUCTURE READING: RECORDED PROVENANCE`. Terrain painted in stone brick, quartz or sandstone reads as
-  *ground*, which it did not before. The warning in older reports that a built-looking block reads orange no
-  longer applies to a map this studio built.
+- **`--topdown --layer structure` is the building census, and `--buildings` is not.** Since `B133`/`B139` the
+  export writes `region/provenance.json` beside the `.mca` files, recording what each pass *placed* and, now,
+  **which prop placed it**. The structure layer reads that, so it draws exactly the buildings you authored.
+  The owners list is a literal census — read it directly:
+
+  ```powershell
+  $j = Get-Content maps/<slug>/region/provenance.json -Raw | ConvertFrom-Json
+  $j.owners | Group-Object { ($_ -split ':')[0] }
+  ```
+
+  Marlstone answers `house 24, spawn 2, redstoneline 4, roomfloor 4, wool 4, wall 2` — twelve authored houses
+  in two orbit images, by id `h1`…`h12`. That is the question "did my buildings stamp" answered from the
+  build itself rather than guessed from blocks.
+
+- **`--buildings` is a forensic tool for worlds the studio did not build**, and it will mislead you about one
+  it did. It finds roofs by material and then judges them, and all three of its stages are tuned to a
+  timber-and-plaster convention:
+  1. **the `--roof` filter is exact.** A `HouseStyle` with `roofSlab: 44` surfaces its roof in brick *slabs*
+     (44:4) with a quartz-pillar verge (155:2) — solid brick (45) appears only at the ridge.
+  2. **`IsTerrain` swallows whole styles.** Its list includes `1, 4, 13, 24, 98, 155, 159, 172` — stone,
+     cobble, gravel, sandstone, stone brick, quartz, stained clay, hardened clay. A cottage roofed in
+     `159:14` is classified as *ground*, so its clearance over terrain is nil and it is discarded by the
+     `RoofHigh − GroundY < minimumHeight` gate. `--roof 159:14` on Marlstone returns **0 components**.
+  3. **`CornerStems` looks for a vertical log** within two blocks of each footprint corner. Styles with
+     quartz-pillar posts and quartz beams carry none, so every candidate reads `corners: 0` and is labelled
+     *"hangs, unframed — not a building"*.
+
+  On Marlstone the three compound: `--roof 45:0` reported "6 roof components", all of them the spawn hall's
+  four concentric hip courses, while twenty-four houses stood in the world. Relaxing `--min-area`,
+  `--min-side` and `--min-height` changed nothing. **Opus run 1's `quillon-barrow` census worked** because
+  its houses used `post: 17:1` (oak log) and `roof: 5:1` (spruce planks) — a log at every corner, and a roof
+  material that is not in `IsTerrain`. If your palette is stone and quartz, `--buildings` cannot see your
+  town; use the structure layer.
+
+- **A provenance sidecar written by an earlier revision crashes the renderer.** `WorldProvenanceFile.TryRead`
+  handles a *missing* file and falls back, exactly as its doc comment promises, but a file it cannot
+  *deserialize* throws straight out: `--topdown --layer structure` exited 255 with an unhandled
+  `JsonException` on worlds built two hours earlier, because `B139` changed the sidecar from a bare array of
+  runs to `{"owners": [...], "runs": [...]}`. **Rebuild a world before rendering it against a newer studio**,
+  or delete `provenance.json` to get the material-estimate fallback.
 
 ## 7. A path claims ground, and a building that touches it is dropped — silently, still
 

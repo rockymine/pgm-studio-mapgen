@@ -59,15 +59,15 @@
         <core id="team-sump-2" name="&lt;Team&gt; Sump" team="blue-team" leak="8" region="team-sump-2-region"/>
     </cores>
     <filters>
-        <team id="only-blue">blue-team</team>
         <team id="only-red">red-team</team>
+        <team id="only-blue">blue-team</team>
     </filters>
     <regions>
-        <point id="blue-spawn-point">0,18,-85</point>
         <point id="red-spawn-point">0,18,85</point>
+        <point id="blue-spawn-point">0,18,-85</point>
         <point id="observer-spawn">0,45,0</point>
-        <rectangle id="blue-spawn" min="-10,-95" max="10,-75"/>
         <rectangle id="red-spawn" min="-10,75" max="10,95"/>
+        <rectangle id="blue-spawn" min="-10,-95" max="10,-75"/>
         <cuboid id="team-stack-region" min="-41,26,34" max="-38,29,37"/>
         <cuboid id="team-stack-2-region" min="39,26,-36" max="42,29,-33"/>
         <cuboid id="team-sump-region" min="28,17,58" max="33,22,63"/>

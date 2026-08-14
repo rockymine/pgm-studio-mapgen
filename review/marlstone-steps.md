@@ -131,11 +131,21 @@ taller shape*; paint resolves it by *the smallest-area shape*. `terr-mid` (~1 50
 the shelf's south edge; not eliminated, because the underlap is what stops the join opening a hole. It is a
 real interaction between two documented rules and nothing warns about it — `GENERATION-NOTES.md` §2.
 
-**`--buildings` said six roof components when twenty-four houses had stamped.** The census finds roofs by
-material, and a `HouseStyle` with `roofSlab: 44` surfaces its roof in *brick slabs* (id 44), not brick blocks
-(id 45). Searching `--roof 45:0` found only ridges and verges. The top-down showed all twenty-four the whole
-time. Not a fault in the tool — a fault in reading one number without the picture beside it, which is the
-mistake this run was explicitly told not to make.
+**`--buildings` said six roof components when twenty-four houses had stamped, and I reached for the wrong
+tool.** The census finds roofs by material and then judges them against a timber convention this board does
+not follow: `--roof 45:0` misses a roof surfaced in brick *slabs* (44:4) with a quartz-pillar verge;
+`IsTerrain` includes `159`, so the cottages' red-clay roofs are classified as *ground* and discarded
+(`--roof 159:14` returns **0**); and `CornerStems` wants a vertical log at each corner, which quartz-pillar
+posts are not. All three compound, and relaxing the thresholds changed nothing.
+
+The right instrument is **`--topdown --layer structure`**, which reads `region/provenance.json` — what the
+passes actually placed. Its owners list is the census, and it is unambiguous:
+`house 24, spawn 2, redstoneline 4, roomfloor 4, wool 4, wall 2`, with the houses named `h1`…`h12` twice
+over. `02-structure.png` draws all of them. Nothing was ever missing.
+
+Two lessons, and the second is the one that cost time: a measurement that disagrees with a picture is not
+automatically the truth, and a tool built to read *unknown* worlds is the wrong one for a world this studio
+just built and recorded.
 
 **I probed the Bézier at the vertex and concluded it did nothing.** The vertex is a fixed point of the curve;
 the bulge is between vertices. Two probe rounds wasted before computing `t = 0.5` and looking there.
@@ -164,8 +174,9 @@ a question about feet.
 
 ## The renders, in the order they were looked at
 
-`02-topdown` (the whole board, category colour, provenance-read structure), `03-foliage` (the orchard grid
-against the scrub, drawn as points and crown radii), `04-heightmap` (the five tiers as contours),
-`05-section-x0` (the spine, spawn to mid), `06-section-x-40` (`ramp-d` as a diagonal between two flat tiers —
-the one image that proves a ramp),  `07-buildings` (the census that misled me), `08-traversability`
+`01-topdown` (the whole board, category colour, provenance-read structure), `02-structure` (**the building
+census as a picture** — every house, both wool rooms, both gate walls and the spawn hall, straight from
+`provenance.json`), `03-foliage` (the orchard grid against the scrub, drawn as points and crown radii),
+`04-heightmap` (the five tiers as contours), `05-section-x0` (the spine, spawn to mid), `06-section-x-40`
+(`ramp-d` as a diagonal between two flat tiers — the one image that proves a ramp), `07-traversability`
 (4 components, 4 objective markers, **0 isolated**).

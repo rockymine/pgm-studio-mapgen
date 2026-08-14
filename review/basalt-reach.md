@@ -168,9 +168,10 @@ reason — it feels like real work — and neither of us can say why not two or 
 
 ## The renders, in the order they were looked at
 
-`01-topdown`, `02-foliage` (the wood against the bare east isthmus), `03-heightmap` (one relief-solved
-platform, contours everywhere rather than terraces), `04-section-x-40` (**the one image that carries the whole
-design**: platform, the void channel cut clean through, the stack, the monument floating over it, the works
-and its roofs), `05-section-z20` (the channel across the board's width), `06-trav` (2 components, 4 objective
-markers, **0 isolated**), `07-surface` (the paint families, which is how the five themes were checked against
-each other).
+`01-topdown`, `02-structure` (the building census from `provenance.json` — five houses a side, both spawn
+halls, both cores and both destroyables, each claim carrying its prop id), `03-foliage` (the wood against the
+bare east isthmus), `04-heightmap` (one relief-solved platform, contours everywhere rather than terraces),
+`05-section-x-40` (**the one image that carries the whole design**: platform, the void channel cut clean
+through, the stack, the monument floating over it, the works and its roofs), `06-section-z20` (the channel
+across the board's width), `07-traversability` (2 components, 4 objective markers, **0 isolated**),
+`08-surface` (the paint families, which is how the five themes were checked against each other).
