@@ -1,0 +1,178 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 20,
+    "z": -75
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -85,
+     "maxX": 10,
+     "maxZ": -70
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -85,
+    "maxX": 10,
+    "maxZ": -70
+   },
+   "iron": []
+  },
+  {
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 20,
+    "z": 75
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 70,
+     "maxX": 10,
+     "maxZ": 85
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 70,
+    "maxX": 10,
+    "maxZ": 85
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 46,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": 34,
+  "areas": [
+   {
+    "minX": -40,
+    "minZ": -5,
+    "maxX": 40,
+    "maxZ": 5
+   }
+  ],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "owner": "red",
+   "name": "<Team> Gantry Stack",
+   "style": "column-plus",
+   "materials": "ender stone",
+   "anchor": {
+    "x": 55,
+    "y": 14,
+    "z": -20
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "owner": "blue",
+   "name": "<Team> Gantry Stack",
+   "style": "column-plus",
+   "materials": "ender stone",
+   "anchor": {
+    "x": -55,
+    "y": 14,
+    "z": 20
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": [
+  {
+   "owner": "red",
+   "name": "<Team> Furnace",
+   "anchor": {
+    "x": -25,
+    "y": 14,
+    "z": -37.5
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 6,
+   "leak": 9,
+   "box": null,
+   "digDepth": 3
+  },
+  {
+   "owner": "blue",
+   "name": "<Team> Furnace",
+   "anchor": {
+    "x": 25,
+    "y": 14,
+    "z": 37.5
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 6,
+   "leak": 9,
+   "box": null,
+   "digDepth": 3
+  }
+ ],
+ "meta": {
+  "name": "Quillon Foundry",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": {
+  "roomFloors": [],
+  "redstoneLines": [],
+  "ironCubes": [
+   {
+    "x": 0,
+    "z": -50,
+    "renew": false
+   },
+   {
+    "x": 0,
+    "z": 50,
+    "renew": false
+   }
+  ],
+  "walls": [],
+  "isEmpty": false
+ }
+}

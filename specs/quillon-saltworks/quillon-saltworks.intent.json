@@ -1,0 +1,328 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 14,
+ "spawns": [
+  {
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 16,
+    "z": -70
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -80,
+     "maxX": 10,
+     "maxZ": -60
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -80,
+    "maxX": 10,
+    "maxZ": -60
+   },
+   "iron": []
+  },
+  {
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 16,
+    "z": 70
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 60,
+     "maxX": 10,
+     "maxZ": 80
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 60,
+    "maxX": 10,
+    "maxZ": 80
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 40,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": 26,
+  "areas": [
+   {
+    "minX": -40,
+    "minZ": -15,
+    "maxX": 40,
+    "maxZ": 15
+   }
+  ],
+  "holes": []
+ },
+ "waterLanes": {
+  "rects": [
+   {
+    "minX": -75,
+    "minZ": -10,
+    "maxX": -45,
+    "maxZ": 10
+   },
+   {
+    "minX": 45,
+    "minZ": -10,
+    "maxX": 75,
+    "maxZ": 10
+   }
+  ]
+ },
+ "wools": [
+  {
+   "owner": "red",
+   "color": "red",
+   "room": [
+    {
+     "minX": -80,
+     "minZ": -80,
+     "maxX": -65,
+     "maxZ": -65
+    }
+   ],
+   "spawn": {
+    "x": -72.5,
+    "y": 14,
+    "z": -72.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": -80,
+    "minZ": -80,
+    "maxX": -65,
+    "maxZ": -65
+   },
+   "entries": [
+    {
+     "minX": -65,
+     "minZ": -75,
+     "maxX": -65,
+     "maxZ": -65
+    }
+   ]
+  },
+  {
+   "owner": "red",
+   "color": "orange",
+   "room": [
+    {
+     "minX": 65,
+     "minZ": -80,
+     "maxX": 80,
+     "maxZ": -65
+    }
+   ],
+   "spawn": {
+    "x": 72.5,
+    "y": 14,
+    "z": -72.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": 65,
+    "minZ": -80,
+    "maxX": 80,
+    "maxZ": -65
+   },
+   "entries": [
+    {
+     "minX": 65,
+     "minZ": -75,
+     "maxX": 65,
+     "maxZ": -65
+    }
+   ]
+  },
+  {
+   "owner": "blue",
+   "color": "blue",
+   "room": [
+    {
+     "minX": 65,
+     "minZ": 65,
+     "maxX": 80,
+     "maxZ": 80
+    }
+   ],
+   "spawn": {
+    "x": 72.5,
+    "y": 14,
+    "z": 72.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": 65,
+    "minZ": 65,
+    "maxX": 80,
+    "maxZ": 80
+   },
+   "entries": [
+    {
+     "minX": 65,
+     "minZ": 65,
+     "maxX": 65,
+     "maxZ": 75
+    }
+   ]
+  },
+  {
+   "owner": "blue",
+   "color": "light_blue",
+   "room": [
+    {
+     "minX": -80,
+     "minZ": 65,
+     "maxX": -65,
+     "maxZ": 80
+    }
+   ],
+   "spawn": {
+    "x": -72.5,
+    "y": 14,
+    "z": 72.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": -80,
+    "minZ": 65,
+    "maxX": -65,
+    "maxZ": 80
+   },
+   "entries": [
+    {
+     "minX": -65,
+     "minZ": 65,
+     "maxX": -65,
+     "maxZ": 75
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "meta": {
+  "name": "Quillon Saltworks",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": {
+  "roomFloors": [
+   {
+    "minX": -80,
+    "minZ": -80,
+    "maxX": -65,
+    "maxZ": -65
+   },
+   {
+    "minX": 65,
+    "minZ": 65,
+    "maxX": 80,
+    "maxZ": 80
+   },
+   {
+    "minX": 65,
+    "minZ": -80,
+    "maxX": 80,
+    "maxZ": -65
+   },
+   {
+    "minX": -80,
+    "minZ": 65,
+    "maxX": -65,
+    "maxZ": 80
+   }
+  ],
+  "redstoneLines": [
+   {
+    "x1": -66,
+    "z1": -75,
+    "x2": -66,
+    "z2": -66
+   },
+   {
+    "x1": 65,
+    "z1": 65,
+    "x2": 65,
+    "z2": 74
+   },
+   {
+    "x1": 65,
+    "z1": -75,
+    "x2": 65,
+    "z2": -66
+   },
+   {
+    "x1": -66,
+    "z1": 65,
+    "x2": -66,
+    "z2": 74
+   }
+  ],
+  "ironCubes": [
+   {
+    "x": 0,
+    "z": -58,
+    "renew": false
+   },
+   {
+    "x": 0,
+    "z": 58,
+    "renew": false
+   }
+  ],
+  "walls": [
+   {
+    "minX": -65,
+    "minZ": -56,
+    "maxX": -55,
+    "maxZ": -54,
+    "topY": 14,
+    "chestOnMinFace": true
+   },
+   {
+    "minX": 55,
+    "minZ": 54,
+    "maxX": 65,
+    "maxZ": 56,
+    "topY": 14,
+    "chestOnMinFace": false
+   }
+  ],
+  "isEmpty": false
+ }
+}

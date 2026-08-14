@@ -1,0 +1,98 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Quillon Barrow"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 12,
+    "surface": 12,
+    "headroom": 22,
+    "observerY": 44
+  },
+  "pieces": [
+    {
+      "id": "back",
+      "role": "piece",
+      "rect": [
+        -7,
+        -22,
+        14,
+        5
+      ],
+      "surface": 15
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        -21,
+        4,
+        4
+      ],
+      "surface": 15
+    },
+    {
+      "id": "village",
+      "role": "piece",
+      "rect": [
+        -8,
+        -17,
+        16,
+        5
+      ],
+      "surface": 14
+    },
+    {
+      "id": "field",
+      "role": "piece",
+      "rect": [
+        -15,
+        -12,
+        30,
+        13
+      ]
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          2
+        ],
+        "facing": "back"
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "monument-1",
+        "piece": "",
+        "at": [
+          0,
+          -10
+        ],
+        "style": "cube-3",
+        "materials": "ender stone",
+        "float": 4,
+        "name": "<Team> Barrow"
+      }
+    ]
+  },
+  "zones": [
+    {
+      "id": "mid-band",
+      "rect": [
+        -7,
+        -1,
+        14,
+        2
+      ],
+      "holes": []
+    }
+  ]
+}

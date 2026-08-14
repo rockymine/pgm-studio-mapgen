@@ -1,0 +1,126 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 15,
+    "z": -95
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -105,
+     "maxX": 10,
+     "maxZ": -85
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -105,
+    "maxX": 10,
+    "maxZ": -85
+   },
+   "iron": []
+  },
+  {
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 15,
+    "z": 95
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 85,
+     "maxX": 10,
+     "maxZ": 105
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 85,
+    "maxX": 10,
+    "maxZ": 105
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 44,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": 34,
+  "areas": [
+   {
+    "minX": -35,
+    "minZ": -5,
+    "maxX": 35,
+    "maxZ": 5
+   }
+  ],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "owner": "red",
+   "name": "<Team> Barrow",
+   "style": "cube-3",
+   "materials": "ender stone",
+   "anchor": {
+    "x": 0,
+    "y": 12,
+    "z": -50
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "owner": "blue",
+   "name": "<Team> Barrow",
+   "style": "cube-3",
+   "materials": "ender stone",
+   "anchor": {
+    "x": 0,
+    "y": 12,
+    "z": 50
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Quillon Barrow",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}
