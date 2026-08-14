@@ -1,0 +1,168 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 12,
+    "z": -90
+   },
+   "protection": [
+    {
+     "minX": -40,
+     "minZ": -95,
+     "maxX": 40,
+     "maxZ": -80
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -40,
+    "minZ": -95,
+    "maxX": 40,
+    "maxZ": -80
+   },
+   "iron": []
+  },
+  {
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 12,
+    "z": 90
+   },
+   "protection": [
+    {
+     "minX": -40,
+     "minZ": 80,
+     "maxX": 40,
+     "maxZ": 95
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -40,
+    "minZ": 80,
+    "maxX": 40,
+    "maxZ": 95
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 24,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": 20,
+  "areas": [
+   {
+    "minX": 70,
+    "minZ": -45,
+    "maxX": 90,
+    "maxZ": -25
+   },
+   {
+    "minX": -90,
+    "minZ": 25,
+    "maxX": -70,
+    "maxZ": 45
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "owner": "red",
+   "name": "Red Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 0,
+    "y": 9,
+    "z": -10
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "owner": "blue",
+   "name": "Blue Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 0,
+    "y": 9,
+    "z": 10
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": [
+  {
+   "owner": "red",
+   "name": "",
+   "anchor": {
+    "x": 0,
+    "y": 9,
+    "z": -35
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 6,
+   "leak": 9,
+   "box": null,
+   "digDepth": 3
+  },
+  {
+   "owner": "blue",
+   "name": "",
+   "anchor": {
+    "x": 0,
+    "y": 9,
+    "z": 35
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 6,
+   "leak": 9,
+   "box": null,
+   "digDepth": 3
+  }
+ ],
+ "meta": {
+  "name": "Ashfall Scar",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

@@ -1,0 +1,20 @@
+{
+  "plan": 1,
+  "meta": { "name": "Ashfall Scar" },
+  "globals": { "cell": 5, "symmetry": "rot_180", "maxPlayers": 16, "surface": 9, "headroom": 11 },
+  "zones": [
+    { "id": "ford", "rect": [14, -9, 4, 4] }
+  ],
+  "pieces": [
+    { "id": "spawn",   "role": "spawn", "rect": [-8, -19, 16, 3], "surface": 12 },
+    { "id": "village", "role": "piece", "rect": [-24, -16, 48, 7], "surface": 10 },
+    { "id": "yard",    "role": "piece", "rect": [-12, -9, 24, 9], "surface": 9 },
+    { "id": "forest",  "role": "piece", "rect": [-24, -9, 12, 9], "surface": 9 },
+    { "id": "ford-bank","role": "piece", "rect": [12, -9, 12, 9], "surface": 9 }
+  ],
+  "placements": {
+    "spawns": [ { "id": "spawn-1", "piece": "spawn", "at": [8, 1], "facing": "back" } ],
+    "destroyables": [ { "id": "destroyable-1", "piece": "", "at": [0, -2], "style": "pillar-3", "materials": "obsidian" } ],
+    "cores": [ { "id": "core-1", "piece": "", "at": [0, -7], "size": 5, "height": 5, "shell": 1, "float": 6, "leak": 9 } ]
+  }
+}
