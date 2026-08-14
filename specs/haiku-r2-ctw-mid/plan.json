@@ -1,0 +1,75 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Haiku R2 CTW Mid"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 8,
+    "surface": 9,
+    "headroom": 11
+  },
+  "pieces": [
+    {
+      "id": "sp",
+      "role": "spawn",
+      "rect": [
+        -6,
+        -6,
+        4,
+        4
+      ]
+    },
+    {
+      "id": "mid",
+      "role": "piece",
+      "rect": [
+        -2,
+        -2,
+        4,
+        4
+      ]
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "s1",
+        "piece": "sp",
+        "at": [
+          2,
+          2
+        ],
+        "facing": "right"
+      },
+      {
+        "id": "s2",
+        "piece": "sp",
+        "at": [
+          2,
+          2
+        ],
+        "facing": "left"
+      }
+    ],
+    "iron": [
+      {
+        "id": "i1",
+        "piece": "sp",
+        "at": [
+          2,
+          2
+        ]
+      },
+      {
+        "id": "i2",
+        "piece": "sp",
+        "at": [
+          2,
+          2
+        ]
+      }
+    ]
+  }
+}

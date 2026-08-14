@@ -1,0 +1,136 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Haiku R2 Canonical"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 8,
+    "surface": 9,
+    "headroom": 11
+  },
+  "pieces": [
+    {
+      "id": "p1",
+      "role": "piece",
+      "rect": [
+        -4,
+        -4,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "p2",
+      "role": "piece",
+      "rect": [
+        -12,
+        -4,
+        8,
+        8
+      ]
+    },
+    {
+      "id": "p3",
+      "role": "piece",
+      "rect": [
+        4,
+        -4,
+        8,
+        8
+      ],
+      "surface": 14
+    },
+    {
+      "id": "p4",
+      "role": "piece",
+      "rect": [
+        -10,
+        4,
+        20,
+        10
+      ]
+    },
+    {
+      "id": "pb",
+      "role": "buffer",
+      "rect": [
+        -4,
+        -12,
+        8,
+        8
+      ]
+    }
+  ],
+  "zones": [
+    {
+      "id": "z1",
+      "rect": [
+        -4,
+        -12,
+        8,
+        8
+      ],
+      "kind": "water-lane"
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "s1",
+        "piece": "p4",
+        "at": [
+          4,
+          5
+        ],
+        "facing": "back"
+      },
+      {
+        "id": "s2",
+        "piece": "p4",
+        "at": [
+          16,
+          5
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "i1",
+        "piece": "p4",
+        "at": [
+          4,
+          5
+        ]
+      },
+      {
+        "id": "i2",
+        "piece": "p4",
+        "at": [
+          16,
+          5
+        ]
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "d1",
+        "piece": "p1",
+        "at": [
+          2,
+          4
+        ]
+      },
+      {
+        "id": "d2",
+        "piece": "p1",
+        "at": [
+          6,
+          4
+        ]
+      }
+    ]
+  }
+}
