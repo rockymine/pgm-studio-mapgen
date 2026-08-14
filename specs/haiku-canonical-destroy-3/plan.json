@@ -1,0 +1,36 @@
+{
+  "plan": 1,
+  "meta": { "name": "Haiku Canonical Destroy" },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 12,
+    "surface": 9,
+    "headroom": 11
+  },
+  "pieces": [
+    { "id": "spawn", "role": "spawn", "rect": [-4, -16, 8, 6], "surface": 9 },
+    { "id": "spawn-approach", "role": "piece", "rect": [-4, -10, 8, 2], "surface": 10 },
+    { "id": "village", "role": "piece", "rect": [-5, -8, 10, 4], "surface": 10 },
+    { "id": "plaza", "role": "piece", "rect": [-4, -2, 8, 4], "surface": 9 },
+    { "id": "hill-east", "role": "piece", "rect": [6, -2, 6, 6], "surface": 17 },
+    { "id": "forest-west", "role": "piece", "rect": [-12, -2, 5, 6], "surface": 9 },
+    { "id": "void-buffer", "role": "buffer", "rect": [-3, 4, 6, 3] }
+  ],
+  "zones": [],
+  "placements": {
+    "spawns": [
+      { "id": "spawn-1", "piece": "spawn", "at": [2, 2], "facing": "front" }
+    ],
+    "destroyables": [
+      { "id": "monument-1", "piece": "plaza", "at": [2, 1.5], "style": "cube-3", "materials": "obsidian", "float": 4 }
+    ],
+    "cores": [],
+    "wools": [],
+    "iron": [
+      { "id": "iron-1", "piece": "spawn", "at": [2, 1] }
+    ]
+  },
+  "walls": [],
+  "boxes": []
+}

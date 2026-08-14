@@ -1,0 +1,41 @@
+{
+  "wall": {
+    "extent": 3,
+    "courses": [ { "material": { "kind": "solid", "id": 98, "data": 0 }, "height": 3 } ]
+  },
+  "post": { "kind": "solid", "id": 5, "data": 0 },
+  "sill": { "kind": "solid", "id": 3, "data": 0 },
+  "gable": { "kind": "solid", "id": 98, "data": 0 },
+  "roof": { "kind": "solid", "id": 5, "data": 0 },
+  "verge": { "kind": "solid", "id": 5, "data": 0 },
+  "floor": {
+    "extent": 1,
+    "courses": [ { "material": { "kind": "solid", "id": 2, "data": 0 }, "height": 1 } ]
+  },
+  "surface": {
+    "field": { "kind": "solid", "id": 2, "data": 0 },
+    "border": { "kind": "solid", "id": 98, "data": 0 },
+    "borderWidth": 1,
+    "inlay": null,
+    "inlayInset": 2,
+    "isPlain": false
+  },
+  "windows": {
+    "form": "pane", "block": 102, "data": 0,
+    "hostBlock": 98, "hostData": 0,
+    "sill": 1, "width": 1, "height": 2, "spacing": 2
+  },
+  "gableWindows": {
+    "form": "none", "block": 0, "data": 0,
+    "hostBlock": -1, "hostData": 0,
+    "sill": 0, "width": 0, "height": 0, "spacing": 0
+  },
+  "form": "gable", "pitch": 1, "overhang": 0,
+  "ridgeCap": false, "roofHole": false,
+  "roofSlab": 44, "roofSlabData": 0,
+  "beams": { "block": -1, "data": 0, "reach": 1, "any": false },
+  "storeys": [],
+  "porch": null, "doorEdge": null,
+  "door": "air", "doorWidth": 2, "doorHeight": 3,
+  "doorHead": { "form": "arched", "block": 98, "fill": "full", "fillBlock": 98, "fillData": 0 }
+}

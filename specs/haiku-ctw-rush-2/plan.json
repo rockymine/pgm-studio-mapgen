@@ -1,0 +1,38 @@
+{
+  "plan": 1,
+  "meta": { "name": "Haiku CTW Rush" },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 12,
+    "surface": 9,
+    "headroom": 11
+  },
+  "pieces": [
+    { "id": "spawn", "role": "spawn", "rect": [-4, -14, 8, 6], "surface": 9 },
+    { "id": "mid-band", "role": "piece", "rect": [-4, -8, 8, 4], "surface": 9 },
+    { "id": "frontline-mid", "role": "piece", "rect": [-2, -4, 4, 2], "surface": 10 },
+    { "id": "frontline-left", "role": "piece", "rect": [-6, -4, 2, 2], "surface": 10 },
+    { "id": "frontline-right", "role": "piece", "rect": [4, -4, 2, 2], "surface": 10 },
+    { "id": "hub", "role": "piece", "rect": [-3, -2, 6, 4], "surface": 9 },
+    { "id": "wool-room", "role": "wool-room", "rect": [-2, 4, 4, 2], "surface": 9 }
+  ],
+  "zones": [
+    { "id": "build-zone", "rect": [-5, -4, 10, 8], "holes": [] }
+  ],
+  "placements": {
+    "spawns": [
+      { "id": "spawn-1", "piece": "spawn", "at": [2, 2], "facing": "front" }
+    ],
+    "wools": [
+      { "id": "wool-1", "piece": "wool-room", "at": [1, 1] }
+    ],
+    "iron": [
+      { "id": "iron-1", "piece": "spawn", "at": [2, 1] }
+    ],
+    "destroyables": [],
+    "cores": []
+  },
+  "walls": [],
+  "boxes": []
+}

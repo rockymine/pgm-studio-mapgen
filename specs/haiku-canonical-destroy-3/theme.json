@@ -1,0 +1,24 @@
+{
+  "bedrock": { "relative": false, "value": 1 },
+  "rimEdges": "void",
+  "wallOnTerrainFaces": true,
+  "rim": {
+    "material": { "kind": "solid", "id": 98, "data": 0 },
+    "depth": 1,
+    "enabled": false
+  },
+  "surface": {
+    "material": { "kind": "solid", "id": 2, "data": 0 },
+    "depth": 1,
+    "enabled": true
+  },
+  "wall": {
+    "kind": "layered",
+    "layers": [
+      { "material": { "kind": "solid", "id": 98, "data": 0 }, "thickness": 3 },
+      { "material": { "kind": "solid", "id": 1, "data": 0 }, "thickness": 8 }
+    ]
+  },
+  "wallEnabled": true,
+  "fill": { "kind": "solid", "id": 1, "data": 0 }
+}

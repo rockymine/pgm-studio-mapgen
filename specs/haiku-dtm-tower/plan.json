@@ -1,0 +1,37 @@
+{
+  "plan": 1,
+  "meta": { "name": "Haiku DTM Tower" },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 12,
+    "surface": 9,
+    "headroom": 11
+  },
+  "pieces": [
+    { "id": "spawn", "role": "spawn", "rect": [-4, -12, 8, 5], "surface": 9 },
+    { "id": "lowland", "role": "piece", "rect": [-4, -7, 8, 3], "surface": 9 },
+    { "id": "plaza-north", "role": "piece", "rect": [-4, -4, 8, 2], "surface": 10 },
+    { "id": "tower-east", "role": "piece", "rect": [5, -3, 4, 6], "surface": 18 },
+    { "id": "tower-west", "role": "piece", "rect": [-9, -3, 4, 6], "surface": 18 },
+    { "id": "void-buffer", "role": "buffer", "rect": [-3, 3, 6, 3] }
+  ],
+  "zones": [],
+  "placements": {
+    "spawns": [
+      { "id": "spawn-1", "piece": "spawn", "at": [2, 2], "facing": "front" }
+    ],
+    "destroyables": [
+      { "id": "monument-1", "piece": "plaza-north", "at": [2, 0.5], "style": "pillar-3", "materials": "emerald block", "float": 3 }
+    ],
+    "cores": [
+      { "id": "core-1", "piece": "plaza-north", "at": [4, 0.5], "size": 3, "height": 4, "shell": 1, "float": 2, "leak": 4 }
+    ],
+    "wools": [],
+    "iron": [
+      { "id": "iron-1", "piece": "spawn", "at": [2, 1] }
+    ]
+  },
+  "walls": [],
+  "boxes": []
+}
