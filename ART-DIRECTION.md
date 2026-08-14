@@ -273,6 +273,46 @@ preset rather than from nothing.**
 | `Cottage` · `Longhouse` · `Terrace` | small, long, joined | **aspect ratio as the variable** |
 | `Counting` · `Workshop` | a townhouse and a shed | function read from proportion |
 
+### A house is not a rectangle with a roof on it, and four idioms nobody used prove it
+
+Every building on every board is a rectangle with a roof form. That is not the shape of the system — it is the
+shape of what the last runs reached for. Four things are expressible **today**, three of them demonstrated by a
+shipped preset, and none has appeared on a board:
+
+- **A house on stilts.** `HousePresets.Stilts` is `Townside` with its ground storey's wall replaced by
+  `RoomCourse(Air, 5)` under one laid-log course — air below, the beam course kept, because on a building with
+  nothing under it that seam is the one course that has to be there. Its windows are cleared, since there is no
+  wall to cut one through. A wharf, a bank over water, a hut on a slope: all of them are this.
+- **A flat roof walled by a parapet, roofed by nothing.** `HousePresets.Terrace` is "a room with an open deck
+  on top of it": a storey whose wall is one course of cobblestone over two of air, with `Post = Air`. It is a
+  **storey-stack idiom**, not a roof form — which is why nobody found it looking at `RoofForm`. A watchtower,
+  a gun platform, a rooftop a player can stand on.
+- **A porch.** `PorchStyle` gives a strip of the footprint up to a deck with its own `Roof` (a `Shed` by
+  default, seated under the house's eave) and a `RailBlock` fence along its open edges. `Workshop` uses a
+  spruce fence.
+- **A storey stack where each storey differs.** `Storey` carries its own wall, posts, windows, floor surface
+  and ceiling. Two storeys of the same material at different window forms is a different building from two
+  identical ones, and it costs one field.
+
+**And the one an author cannot reach yet, stated precisely so nobody claims it works.** The stamper builds a
+house from a **`Footprint` of touching rectangles — wings** — and roofs the junctions properly: a building's
+roof is the **union** of its wings' roofs, never a max of their crowns. Where a wing **projects** into another
+it cuts the roof it pushes into across its own span, so its verge has something to sit on; where a wing's gable
+end runs up against another it **marches**, each course stepping on along its own ridge until it hits a block,
+with no overhang, since an overhang is what a roof has outside a wall. An L, a T or a U is one house under one
+style. **All of that is built.** What is not is the authoring: a placed building is stored as **exactly two
+corners**, so nothing in the studio can state a second wing, and two buildings drawn touching are stamped as
+two buildings. That is `G172`'s open half and it is on the board. Until it lands, **do not draw an L as two
+touching rectangles** — you get two buildings, or one building and a dropped prop where they overlap.
+
+### Look at a house before you build a world
+
+`/room-styles/preview` and its snapshot return **plan, section, isometric and cutaway** as SVG inside JSON, so
+a style can be judged without a build — and `--section <regionDir> <out.png> --x <lo> <hi> --z <fixed>` cuts a
+built one with a Y scale. Use both. A roof laid in slabs at a whole-block rise, a lintel that came out a solid
+cube, a parapet a course too low: every one of those is visible in a section and invisible from above, and
+every one of them shipped because nobody cut one.
+
 **The one correct roof in this repository outside the presets** is `quillon-saltworks`' `h2` and `h5`:
 `form: "gambrel"`, `pitch: 1`, `roofSlab: 126`, `roof: 5:5` — the slab in `roofSlab`, a whole block in `roof`.
 Every other board inverted those two fields. Read it before you write a roof.
