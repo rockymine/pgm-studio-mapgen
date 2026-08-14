@@ -134,12 +134,19 @@ These do not pass or fail; you report them. No refusal is wanted for any of them
 
 | # | Report | Why |
 |---|---|---|
+| C0 | The board's extent and aspect ratio, against the corpus median of 118 × 149 | A destroy board is a lane — six of eight `minuyo` boards have one dimension under 90, and every generated board is roughly square. Nobody has ever stated the silhouette before drawing |
 | C1 | Houses grouped by distinct z, distinct x, and orientation count | Ten of twelve boards came out on 2–3 z-rows. This is the single number that says whether the street was broken |
 | C2 | How many distinct placement ideas the board carries | Street · square · isolated structure · building on other ground · edge run. `ART-DIRECTION.md` §3 asks for three |
 | C3 | Which approaches exist and what dimension each is | *around* · *above* · *below* · *through*. Three approaches that are all "walk through cover" is one approach drawn three times |
 | C4 | Where the void is, on a destroy board | Between the teams, or across the board's own approach. `approaches.md` is amended and the middle-of-terrain hole is withdrawn |
 | C5 | Canopy share, not leaf count | Share of ground columns standing under a leaf. A count cannot tell a leafy forest from a wooden one |
 | C6 | Whorled trees | `whorled: true` gives 46 logs a tree at 1.26 leaves per log against a template spruce's 14 and 5.29 |
+| C7 | **Family width** — for every `cell`, `checker` or `noise` palette, how many members of one tone family it holds | The nineteen families are hand-authored and ordered light to dark; taking the whole family is not needed and usually reads as noise. Two members is a texture, three a mottle, five a mistake. `tallow-kilnrow`'s five near-identical whites is the shipped case |
+| C8 | **Rim state per shape, against whether that shape's ground is relief-solved** | A rim on a relief-solved surface terraces rolling ground into contour lines. Almost every board turned it on because it was the default — report every shape where a rim sits on relief |
+| C9 | **Landform transitions** — for each pair of adjacent landforms, whether they meet along a skirt, a tilt or a step | The named fault is a flat 20×20 pad butted straight against a hill: two pieces of ground shoved together with nothing between them. Probe a column line across each seam |
+| C10 | **Paths** — how many, and what route each states | **No board in twenty-one has ever authored one.** A path is the circulation diagram drawn: it states the route, keeps the ground along it clean, and forces the author to decide where a player goes. Report the routes, the `path_edge`, and whether anything was silently dropped by the band (`B146`) |
+| C11 | **What is themed besides a village** | Every board has themed exactly one thing: a village behind the spawn. A single house on a hill, a house in a forest clearing, a mine head, a wellhouse — report which the board has, or that it has none |
+| C12 | **Which shipped preset each house style forks from, and what it changed** | Ten worked presets exist and each demonstrates a technique — `Desert` a correct arch and no sill, `Diorite` the only correct slab roof. A style written from nothing repeats a fault a preset already solved |
 
 ---
 

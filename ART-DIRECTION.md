@@ -1,276 +1,360 @@
 # Art direction — how a board is supposed to look, stated as law
 
-Twenty-one boards sit in this repository and the eye reads most of them as one board. That is the finding the
-whole of this document exists to correct, and it is not a matter of taste: it was measured. Ten of twelve
-settlements put every house on **two or three z-rows** behind the spawn, all facing the same way, on a "town
-square" themed patch — never a watchtower in a field, never a barn away from the town. Twelve of fourteen maps
-carrying buildings have **not one building without a footing**. Four maps by three models stacked grass three
-courses deep. Three maps put obsidian in a destroyable over its limit. Five maps shipped a literal `<Team>`
-placeholder to players.
+Twenty-one boards sit in this repository and the eye reads most of them as one board. That is the finding this
+document exists to correct, and it is not a matter of taste: it was measured. Ten of twelve settlements put
+every house on **two or three z-rows** behind the spawn, all facing the same way, on a "town square" patch —
+never a watchtower in a field, never a barn in a clearing. Twelve of fourteen maps carrying buildings have
+**not one building without a footing**. Four maps by three models stacked grass three courses deep. Almost
+every board turned its rim on, including boards whose ground was solved by a relief. **No board has ever used
+a path.** No board has ever themed anything except a village. **There has never been a desert map, and never a
+four-team CTW board.**
 
-None of that is a capability gap. Every rule below is expressible today, most of them in one field, and the
-worked example for the hardest one is already committed to this repository. What was missing is a document
-saying which choice is right, so three models reached for the same default and the boards came out alike.
+None of that is a capability gap. Every rule below is expressible today, most in one field, and the hardest
+one has a worked example already committed here. What was missing is a document saying which choice is right,
+so three models reached for the same default.
 
-**Read this before you draw ground, and check a board against it before you build the next stage.** It is
-the same list the reviewer agent works from (`REVIEWER-BRIEF.md`), and the reviewer does not read your report,
-so a rule broken here is a rule found there.
-
----
-
-## 1. A board has one visual identity, and you state it in a sentence before you draw
-
-Not "a themed map" — a specific claim about what this ground is and what it is made of, in a sentence you
-could tell someone over the phone. *A frozen peat fen, dark and low, with an ice scarp on one flank.* *A
-terraced clay hillside in five ochre steps.* *A drained tidal flat, pale sand and tarred timber.* If you
-cannot write that sentence, you are not ready to author themes, and every board that skipped it came out
-looking like the last one.
-
-**Then the sentence becomes a palette of themes, one per kind of ground, and the pairing of paint to what a
-shape is *for* is the whole trick.** A shape carries its own `theme`, and using one theme over the whole board
-throws away the only thing the layout already tells you. The minimum that reads as designed is **three**: the
-ground that is *grown*, the ground that is *built*, and the ground that is *landform* — a cliff, a scarp, a
-cutting. Five is better and the strongest board in the repository uses exactly five.
-
-**Name your three tone families out loud, and say which is ground, which is built, which is the accent.** A
-board fails this in one of two opposite directions and both have shipped here:
-
-- **It vanishes.** `basalt-reach`: all five themes sit on Stone (`1:0`) or Andesite (`1:5`), and three of its
-  five houses are walled in Stone with an Andesite roof and a Polished Andesite verge — built from the same
-  rock as the ground under them. Nothing separates a building from the hill it stands on.
-- **It clashes.** `tallow-kilnrow`: `kiln-stack` is a `cell` over Quartz, Chiselled Quartz, White Clay, Smooth
-  Sandstone and Light Grey Clay, with Red Sandstone two blocks away and a Red Stained Clay boulder sitting in
-  it. Five near-identical whites and then an unrelated red.
-
-The test that catches both: **a building may not be in the same tone family as the ground it stands on**, and a
-board may not carry an accent that appears exactly once. A restricted palette is allowed and can be very
-strong — but if you choose one, the legibility has to come from somewhere else, and you have to say where
-(height, or a single reserved colour, or the built/grown split). Say it in the review.
-
-**A pattern at the wrong scale is the third way to fail.** `tallow-mirefast`'s `mire-timber` puts a
-`{"kind":"checker","size":2}` of coarse dirt and gravel over a shape 92 blocks wide. A two-block checker reads
-as texture at ten blocks and as noise at ninety. Match a pattern's cell size to the shape it covers, or scope
-it to a smaller shape.
+**Read this before you draw ground, and check the board against it before the next stage consumes it.** It is
+the same list the reviewer agent works from (`REVIEWER-BRIEF.md`), and the reviewer does not read your report.
 
 ---
 
-## 2. The material rules, and they are hard
+## 1. Plan the board's silhouette before you plan anything else
 
-Every one was broken on a shipped board. Each carries the task id that will eventually enforce it in code;
-until that id ships, **this document is the enforcement**, and the reviewer checks it by probing the world.
+Nobody has done this, and it shows in every board's proportions. Before a single shape is authored, decide and
+write down: **the board's extent, its aspect ratio, where each spawn sits, where each objective sits, and the
+two routes between them.** Five numbers and two lines. That is the board.
 
-| Rule | The law | Broken on | Enforced by |
-|---|---|---|---|
-| **Grass is one course** | A grass course is exactly **1 block** thick and grass never appears below it. A palette containing grass is invalid at any `depth` > 1 unless it is the **top layer of a `layered` stack**. | `corvid-hollow`, `sable-marsh`, `sonnet-briarlock`, `tallow-weirgate` | `B163` |
-| **Obsidian caps at three** | A destroyable may carry at most **3 obsidian blocks**, so only the **pillar** styles may use it. `cube-3` (27), `cube-4` (64) and `column-plus` (15) take **end stone, gold or emerald**. | `basalt-reach` 27, `corvid-hollow` 27, `tallow-mirefast` 15 | `B162` |
-| **A slab goes in `RoofSlab`** | A slab named in `roof` builds a roof you can see straight through. The slab goes in **`roofSlab`** and a **whole block** in `roof`; a slab-course roof is only right at a **half-course rise**. | 6 Weirgate houses + its spawn | `B168` |
-| **No log, no ground material, in a roof or a verge** | A log is never a roof or a verge. Neither is Grass Block, Podzol or any other ground material. | `verge: 162` on 6 Weirgate + Mirefast + Kilnrow houses; `quillon-barrow` roofs three houses in **Grass Block** over a **Podzol** verge | `B168` |
-| **A block must be the kind its role needs** | `doorHead.block` must be a **stair**. `doorHead.fillBlock` under `upperSlab` must be a **slab**. A `slabBanded` or `stairLattice` window's `block` must be a slab or a stair respectively. | `sable-marsh` (cobble, cobble, pane), `corvid-hollow` (98/4, then fence and iron bars), `ashfall-scar` (oak fence) | `B160` |
-| **A spawn door is 2.5 clear** | At least **2.5 blocks** of clear height. A three-course door leaves two clear courses only if the head's fill is genuinely an upper slab. | `sable-marsh` 2.0, `corvid-hollow` 2.0 | `B161` |
-| **A window is plain** | Air, or glass. If it is filled it is filled with a **single block**. No patterned form — `slabBanded` and `stairLattice` are out for these maps whatever blocks they are given. | `sable-marsh`, `corvid-hollow`, `ashfall-scar` | `B161` |
-| **A building seated into terrain has no footing** | `HouseStyle.Sill` lays a course one block proud on every side. Turn it off by naming **air** as the sill material. | 12 of 14 maps, 0 opted out | `B164` |
-| **Gable at `pitch: 2` is overridden by its own wall** | The wall wins where they disagree, so the roof you asked for is not the roof that stands. Use `pitch: 1` on a gable until the mechanism is traced. | `corvid-hollow` ×2, `ashfall-scar` ×9, `tallow-kilnrow` ×2 | `B165` |
-| **A goal name is a name** | No `<Team>`, no `<`, no `>`. PGM prints the attribute verbatim, on both teams, identically. Leave a core's name empty and PGM names it. | 5 boards, all Opus, across 3 runs | `B182` |
+**A destroy board is a lane.** Six of the eight `minuyo` boards — the tightest set in the corpus — have one
+dimension under 90. Every generated board here is roughly square (240×190, 170×220, 136×190), and on a square
+board every goal is nearly equidistant from both spawns, which is why the ratios came out flat. The corpus
+median board is **118 × 149**.
 
-**The one correct worked example in the repository is worth copying by hand.** `quillon-saltworks`' `h2` and
-`h5` carry `form: "gambrel"`, `pitch: 1`, `roofSlab: 126`, `roof: 5:5` — the slab in `roofSlab`, a whole
-block in `roof` — which is exactly what `HousePresets.Diorite` does and exactly the inverse of every other
-board's attempt. Read it before you write a roof.
-
-**A technique worth having, since it is the one thing the last runs found that worked.** Nesting a `cell`
-inside a `layered` gives a patchy top course over measured depth: a layer stack renders as one flat colour
-from above, so putting a `cell` pattern in its top layer breaks that up without stacking anything. It is also
-how you satisfy the grass rule while keeping a varied surface — grass at `thickness: 1` on top, a `cell` or a
-plain block below.
-
----
-
-## 3. A settlement is not a street
-
-Ten of twelve boards built the same village: every house on two or three z-rows, spreading freely along the
-other axis, one or two orientations, all of it on a "town square" patch directly behind the spawn. Measured:
-
-| Map | Houses | Distinct z | Distinct x | Orientations |
-|---|---|---|---|---|
-| `tallow-weirgate` | 14 | **2** | 14 | 2 |
-| `tallow-mirefast` | 9 | **2** | 9 | 2 |
-| `ashfall-scar` | 9 | **2** | 9 | 2 |
-| `tallow-kilnrow` | 7 | **2** | 7 | **1** |
-| `basalt-reach` | 5 | **2** | 5 | **1** |
-| `corvid-hollow` · `marlstone-steps` · `quillon-barrow` | 9 · 12 · 11 | 3 | 9 · 12 · 11 | 2 |
-
-Two boards break it — `sonnet-cinderreach` and `sonnet-holdfast` — and they are the same two that turned the
-building footing off, which is worth knowing: one model did notice, twice.
-
-**So: a board carries at least three distinct placement ideas, and "the village" is only one of them.** Pick
-three from — a street with a shared frontage line · a square with buildings facing inward · a single isolated
-structure with a reason (a watchtower on a rise, a barn away from the town, a shed at a wharf head) · a
-building on ground of a different kind or height from the rest · a run of buildings along a board edge acting
-as a boundary. The last one is worth knowing a limit about: a building whose interior is filled — a mass
-rather than a place — is **`B92` and is not built**, so an edge run today is enterable buildings and you say
-so in the review.
-
-**Alignment is authored, one prop at a time.** Houses at unrelated offsets read as debris no matter how good
-the individual styles are. If two buildings share a frontage line, they share it because you gave them the
-same coordinate, not because the sampler happened to. But **sharing a line is a decision you make three or
-four times on a board, not the only thing you do.**
-
-**The difference an eye reads first is aspect ratio and height, not material.** A settlement of six buildings
-in one style at six different footprints and storey counts reads as a settlement. Six identical footprints in
-six different materials reads as a colour swatch.
-
-**Three placement rules are hard**, and each is somebody's shipped fault:
-
-- **20 × 20 of open ground in front of a spawn** (`B172`). The only props permitted there are a single tree at
-  the edge of the area, boulders and fauna. **No houses.** Mirefast's corridor came out 12 wide because two
-  houses stood inside the box; `quillon-barrow` has *three* in it.
-- **One block of clearance between buildings, eaves included** (`B166`). Corvid Hollow's house stands flush
-  against the spawn's face with `"overhang": 2`, so its eaves reach two blocks *inside* the spawn wall.
-- **A building is at least 5 × 5 and at most 20 × 20** (`B167`, `B157`). Eight of Weirgate's fourteen came out
-  four blocks deep; `sable-marsh`'s spawn came out a **90-block hall** because a stamped building is sized by
-  its plan piece and nothing bounds it.
-
-And one that is not about buildings but is found the same way: **a house may be stamped over void and nothing
-refuses it** (`B187`). Eight of eleven columns of `quillon-saltworks`' `h1` stand on nothing. Check the ground
-under a footprint before you place it, because the export will not.
-
----
-
-## 4. Ground is the design; elevation is built from shapes
-
-A single relief pass over the whole island is the flattest, most generic answer available, and it is what
-every weak run reached for. `tools/seeds/ruediger.plan.json` — hand-authored by this repository's author —
-steps its ground with **ten `base_height` tiers and no relief block at all**.
-
-Use relief for the ground that should read as *grown*. Use shapes and tiers for the ground that should read as
-*built* or *placed*. Let the two meet, and use `relief_scope: hold` to keep a built thing flat while the
-ground rolls around it — without it the relief solves straight through your plateau and the town arrives
-covered in contour rings.
-
-**A rim is a choice and it was never chosen.** `Rim` is a `TopBand` with an `Enabled` toggle and `RimEdges`
-decides which edges it caps (`void` caps the landmass's true outside only, `drop` caps wherever ground falls
-away, `boundary` caps every plateau boundary). On natural terrain solved by a relief, a rim on every drop
-terraces rolling ground and reads worse than no rim. **Turn it off where the ground is meant to be grown, and
-keep it where an edge is meant to read as an edge.** Every one of the first fifteen generated boards had a rim
-because a rim was the default.
-
-**The wall bucket takes a pattern, not just a block.** `wallRun` reads a cell's arc along the outer
-void-facing face so a pattern runs *along* a wall; `wallDiagonal` cuts across it; a `layered` stack varies the
-material *down* the riser, which is what a real cliff or a coursed retaining wall does. Tie the choice to what
-the wall *is* — a cliff face, a built retaining wall and the side of a platform should not read the same.
-
-**Rectangles are where a shape starts, not where it ends.** Promote a compiled tier to a polygon by replacing
-its `vertices`; take Bézier `controls`; give a shape `height_mode` (`level`/`raise`/`sink`) with a `skirt`, and
-per-vertex `anchor_heights` that **tilt** a surface. A tilted sunken bowl inside a flat pan is four fields and
-it works on the first build. Two catches, both documented the hard way: a tier can fuse to **more than one
-shape**, and reshaping only the first leaves the others' rectangles showing through; and **where the land is
-higher than the piece** — a quarry, a sunken bowl — the land must run **over** the lower tier's fringe, mirrored
-from the ordinary case, and then it can pull inward exactly the same way.
-
-**A large open area wants level changes in it, not more trees.** A second mesa, a shelf, a cut. If a region
-ends up bigger than what fills it, **shrink the region** rather than scattering props into it.
-
----
-
-## 5. Scale, and where the void goes
-
-**A destroy board is a lane.** Six of the eight `minuyo` boards — the tightest, most consistent set in the
-corpus — have one dimension under 90. Every generated board here is roughly square (240×190, 170×220,
-136×190), and on a square board every goal is nearly equidistant from both spawns, which is why the ratios
-came out flat. The corpus median board is **118 × 149**.
-
-**The single cheapest number to check a destroy board against**: a goal sits about **three times** as far from
-the enemy's spawn as from its own. Corpus median 2.9 over 164 `dtcm` maps, p10 1.4, p90 5.0; only 27 of 164
-fall under 2.0. Two spawn points, one goal, one division, no build required.
+**The cheapest number to check a destroy board against**: a goal sits about **three times** as far from the
+enemy's spawn as from its own. Corpus median 2.9 over 164 `dtcm` maps; only 27 of 164 fall under 2.0.
 
 | | own spawn → goal | enemy spawn → goal | ratio | |
 |---|---|---|---|---|
 | corpus median | 49.4 | 135.2 | **2.9** | |
-| `tallow-mirefast` | 40.0 | 140.0 | 3.50 | good |
-| `tallow-kilnrow` | 43.0 | 139.5 | 3.24 | good |
+| `tallow-mirefast` · `tallow-kilnrow` | 40 · 43 | 140 · 139.5 | 3.50 · 3.24 | good |
 | `quillon-foundry` | 77.8 | 109.8 | 1.41 | corpus p10 |
-| `corvid-hollow` · `ashfall-scar` | 80.0 | 100.0 | **1.25** | below p10 |
+| `corvid-hollow` · `ashfall-scar` | 80 | 100 | **1.25** | below p10 |
 
-The three lowest ratios are the three boards the author judged worst on play, arrived at independently.
+The three lowest ratios are the three boards judged worst on play, arrived at independently. Two goals of one
+team stand at least **35** apart and 70–75 is the good band; the nearest enemy goal wants 95–110.
 
-**Two goals of one team stand at least 35 blocks apart** (`B175`) — Haiku DTM Tower put them **eight** apart on
-one piece, with two sky markers ten apart. The two boards judged well spaced give the band to aim at:
-same-team **70–75**, nearest enemy goal **95–110**. And the objective set should use the board it is drawn on:
-Ashfall Scar is 240 × 190 with every objective on `x = 0` and the whole contest inside a six-block column.
+**Then the identity, in one sentence.** *A frozen peat fen, dark and low, with an ice scarp on one flank.* *A
+terraced clay hillside in five ochre steps.* *A red sandstone waterless canyon with a brick caravanserai at the
+head of it.* If you cannot write that sentence, you are not ready to choose a palette.
 
-**Void belongs between the teams, not across an approach — and `approaches.md` has been amended to say so.**
-The old guidance about cutting a hole in the middle of terrain is **withdrawn for `dtm`/`dtc` boards** and
-replaced by a **depression or a pond**: the same interruption of a run, the same reason to go around or drop
-through, without removing the ground. A depression is also an entrance from *below*, which a hole does not
-offer at all. `tallow-kilnrow` is the counter-example — an 88-block cut across 65% of the board's width sitting
-between its own objectives and the middle, while the mid band where the two sides actually meet stayed solid.
-The hole was where the join belongs and the join was where the hole belongs.
+---
+
+## 2. The palette is nineteen hand-authored families, and you take two or three of one — never all of it
+
+`TerrainPalette.Families` is not a generated list. It is **nineteen tone families, hand-picked and ordered
+light to dark**, and it is the same vocabulary the surface read-back names a world by — so what you paint and
+what a report measures cannot drift apart.
+
+| Family | Blocks, light → dark |
+|---|---|
+| `verdant` | Lime Stained Clay · **Grass Block** · Green Stained Clay · Green Wool · Dark Prismarine |
+| `spring` | Slime Block · Lime Wool · Emerald Block |
+| `turquoise` | Prismarine · Prismarine Bricks |
+| `loam` | **Podzol** · Brown Stained Clay · Soul Sand · Dark Oak Planks · Brown Wool |
+| `dirt` | Oak Planks · Jungle Planks · **Dirt** · **Coarse Dirt** · Spruce Planks |
+| `brick` | Granite · Polished Granite · **Bricks** · Hardened Clay |
+| `rust` | Acacia Planks · Orange Stained Clay · **Red Sand** · **Red Sandstone** · Smooth Red Sandstone |
+| `sand` | **Sand** · Birch Planks · **Sandstone** · Smooth Sandstone · **End Stone** |
+| `gold` | Yellow Wool · Sponge · Wet Sponge · Melon Block |
+| `pale stone` | **Diorite** · Polished Diorite · Mushroom Stem |
+| `ash` | Light Grey Wool · **Clay** · Smooth Stone · Stone Slab (double) |
+| `grey stone` | **Stone** · **Andesite** · Polished Andesite · **Stone Bricks** · Iron Ore · Coal Ore |
+| `cobble` | **Gravel** · **Cobblestone** · Cracked Stone Bricks · **Mossy Cobblestone** |
+| `mauve` | Mycelium · Light Blue Stained Clay |
+| `azure` | Blue Wool · Lapis Block · Blue Stained Clay |
+| `slate` | Cyan Stained Clay · Grey Wool |
+| `dark` | **Nether Brick** · Black Stained Clay · Black Wool · Coal Block · Obsidian |
+| `ice` | **Ice** · **Packed Ice** |
+| `bright` | **Snow Block** · **Quartz Block** · Chiselled Quartz |
+
+**The rule nobody followed: a pattern takes two or three members of a family, not the family.** A `cell` over
+all five of `sand` is not a sandy ground, it is five sands fighting for the same square metre, and it reads as
+noise from above. `tallow-kilnrow`'s `kiln-stack` is exactly that fault — a `cell` over five near-identical
+whites — and it is why that board is described as clashing even though every block in it is pale. **Two
+members is a texture. Three is a mottle. Five is a mistake.** If you want a fifth block, put it in a
+*different* shape's theme, where the eye reads it as different ground rather than as the same ground being
+indecisive.
+
+**Reach across two families for a ground that has to read as one thing but not as one block** — `sand` +
+`rust` is a desert, `cobble` + `grey stone` is a worked hillside, `loam` + `dirt` is a fen. Two members from
+each, four blocks total, is a strong ground.
+
+**Three sixteen-shade rows are not families and are not ground.** Stained clay, wool and stained glass are
+*shade rows* — every damage value of one id. They are what you reach for when you want a **stated colour**: a
+team's accent, a roof, a marker, a wool room's interior. Painting terrain out of a shade row is how a board
+ends up looking like a colour picker. And be aware of a real gap: **eight stained-clay values belong to no
+family at all** (`159:0/2/4/6/7/8/10/14`), so a board leaning on them renders magenta "unnamed material" in
+`--surface` and you will briefly think your paint failed. That is `B147`, not your board.
+
+**The two ways a palette fails, both shipped here.** It **vanishes** — `basalt-reach` puts all five themes on
+Stone or Andesite and walls three of its five houses in Stone with an Andesite roof, so a building and the
+hill it stands on are the same rock. Or it **clashes** — Kilnrow's five whites with a Red Sandstone two blocks
+away and a Red Stained Clay boulder in the middle. **The test:** name your three tone families out loud and
+say which is ground, which is built, which is accent. **A building may not be in the same family as the ground
+it stands on**, and an accent that appears exactly once is not an accent.
+
+**And match a pattern's cell size to the shape it covers.** Mirefast's `mire-timber` puts a
+`{"kind":"checker","size":2}` over a shape 92 blocks wide. A two-block checker is texture at ten blocks and
+noise at ninety.
+
+---
+
+## 3. The rim is off by default, and with relief it is off
+
+Almost every board turned it on, because it was the default and nobody chose. **`Rim` is a `TopBand` with an
+`Enabled` toggle**, and `RimEdges` decides which edges it caps at all: `void` caps only the landmass's true
+outside, `drop` caps wherever ground falls away, `boundary` caps every plateau boundary.
+
+**On any shape whose ground is solved by a relief, the rim is off.** A relief makes ground that rises and falls
+continuously; a rim caps every one of those falls with a band of a different material, and the result is a
+rolling hill wearing contour lines — terraced, artificial, and worse than no rim at all. This is the single
+most common reason a board that should read as landscape reads as a model.
+
+**Keep it where an edge is meant to read as an edge**: the outer coast of a landmass over void (`void`), the
+lip of a built platform, the top course of a retaining wall. Those are edges an author *made*, and a band
+along them is the map saying so.
+
+**The wall bucket takes a pattern, not a block, and nobody used that either.** `wallRun` reads a cell's arc
+along the outer void-facing face so a pattern runs *along* a wall; `wallDiagonal` cuts across it; a `layered`
+stack varies the material *down* the riser, which is what a real cliff or a coursed retaining wall does. Tie
+the choice to what the wall **is** — a natural cliff face, a built retaining wall and the side of a platform
+should not read the same, and they currently all do.
+
+---
+
+## 4. Landforms have to flow into each other
+
+This is the fault behind the ugliest ground in the repository, and it has a precise description: **a flat
+20×20 pad butted straight against a hill.** One side of the seam is a level tier, the other is a slope, and
+they meet at a vertical step nothing accounts for. It reads as two unrelated pieces of ground shoved together,
+because it is.
+
+**A landform meets its neighbour along a transition, and the transition is authored.** Four fields do it and
+all four are shipped:
+
+- **`skirt`** — how far a `raise` or `sink` shape's own edge ramps out into what surrounds it. A `raise`
+  polygon with no skirt is a mesa with vertical sides; the same polygon with `skirt: 3` sits in the ground.
+  **A hill with no skirt is the fault above.**
+- **`anchor_heights`** — a height per vertex, so a surface **tilts** rather than sitting level. A depression
+  whose far rim is two blocks higher than its near one is a bowl you look into; one at a single height is a
+  hole.
+- **`height_mode`** (`level` / `raise` / `sink`) — say which, deliberately. A shelf that should be cut into a
+  slope is a `sink`, not a `level` tier that happens to be lower.
+- **`relief_scope`** (`hold` / `exclude`) — `hold` keeps a built thing flat while the ground rolls around it.
+  Without it the relief solves straight through your platform and the town arrives covered in contour rings.
+
+**A depression and the hill beside it are one composition, not two.** If a board has both, the ground between
+them is the interesting part: a saddle, a spur, a shoulder the path runs along. Author that ground. Leaving it
+as the leftover rectangle between two features is what makes both of them look pasted on.
+
+**Elevation is built from shapes, and a single relief pass is the generic answer.**
+`tools/seeds/ruediger.plan.json` — hand-authored by this repository's author — steps its ground with **ten
+`base_height` tiers and no relief block at all**. Use relief for ground that should read as *grown*, tiers and
+shapes for ground that should read as *built* or *placed*, and let the two meet along a skirt.
+
+**Rectangles are where a shape starts.** Promote a compiled tier to a polygon by replacing its `vertices`;
+take Bézier `controls`. Two catches, both learned the hard way: a tier can fuse to **more than one shape**, so
+reshaping only the first leaves the others' rectangles showing through; and **where the land is higher than the
+piece** — a quarry, a sunken bowl — the land must run **over** the lower tier's fringe, mirrored from the
+ordinary case.
+
+**A large open area wants level changes in it, not more trees.** If a region ends up bigger than what fills
+it, shrink the region.
+
+---
+
+## 5. Paths — the thing no board has ever used, and the one that plans the board
+
+Not one of twenty-one boards authored a path. That is the largest single unused capability here, and it is
+unused at exactly the layer where it would have done the most good, because **a path is not decoration. It is
+the circulation diagram, drawn.**
+
+**Author the path before the scenery, and author it as a route you named.** From the spawn door to the
+objective. From the objective to the flank. From the wool room to the hub. You have to decide those routes
+anyway — `approaches.md` says circulation is decided before dressing — and drawing them as paths does three
+things at once: it states the route so a player can read it, it makes the ground along it **stay clean**,
+and it forces you to have decided where a player goes before you start putting things in the way.
+
+**Two different things are both called a path, and you want to know which you are using.**
+
+- A **`path` shape** is *terrain*: a centreline with a band, rasterized into the ground as a footprint. It
+  carries `path_edge` (`solid`, `rough`, `tapered`) and a `path_seed`, because a path is stored as the open
+  line it was drawn as and the band is derived from it. This is the one that changes the ground.
+- A **`path` prop** is *dressing*: it **replaces** the surface it crosses rather than adding to it — a finish,
+  like paving. `GET /terrain/path-styles?pave=…` draws the five band presets so you can see one before you
+  place it.
+
+**`tapered` and `rough` are what stop a path reading as a stripe.** A `solid` edge at a constant radius is a
+road painted on with a ruler. A path that narrows where it climbs and frays where it crosses rough ground is a
+path people wore.
+
+**And the hazard, because it will eat your village if you do not know it: a path's claimed band drops any
+building that touches it, silently** (`B146`). Four of five houses on `basalt-reach`'s first build vanished
+this way, on both orbit images, with no refusal and no warning. So place the paths, then place the buildings
+clear of them — and if a building disappears between two builds, this is why.
+
+---
+
+## 6. A settlement is not a village, and a village is not a street
+
+Ten of twelve boards built the same village. Measured:
+
+| Map | Houses | Distinct z | Distinct x | Orientations |
+|---|---|---|---|---|
+| `tallow-weirgate` · `tallow-mirefast` · `ashfall-scar` | 14 · 9 · 9 | **2** | 14 · 9 · 9 | 2 |
+| `tallow-kilnrow` · `basalt-reach` | 7 · 5 | **2** | 7 · 5 | **1** |
+| `corvid-hollow` · `marlstone-steps` · `quillon-barrow` | 9 · 12 · 11 | 3 | 9 · 12 · 11 | 2 |
+
+Only `sonnet-cinderreach` and `sonnet-holdfast` vary, and they are the same two boards that turned the footing
+off — one model did notice, twice.
+
+**Two separate faults are hiding in that table.** The first is that the houses are in a line. The second, and
+the bigger one, is that **the only thing anyone has ever themed is a village**. A board is allowed other
+built things, and they are more interesting than a sixth cottage:
+
+- **A single house on a hill**, alone, with the ground around it bare. One building placed deliberately reads
+  as more considered than nine placed adequately.
+- **A house in a forest clearing** — the clearing authored as a shape with its own theme, the trees placed
+  around its edge, and a path running to the door.
+- **A mine head, a kiln, a wellhouse, a boathouse, a shrine** — one structure whose *style* says what it is.
+  A `HouseStyle` carries a roof form and pitch, an overhang, a verge, a stacked `RoomCourse` wall, posts, a
+  sill, beams, a porch and a storey stack; a squat one-storey building in stone with no windows and a heavy
+  slab roof reads as a kiln without anyone being told.
+- **A run of buildings along a board edge**, acting as a boundary. Note the limit honestly: a building whose
+  interior is *filled* — a mass rather than somewhere to walk into — is **`B92` and is not built**, so an edge
+  run today is enterable buildings and your review says so.
+
+**A board carries at least three distinct placement ideas.** The village may be one of them.
+
+**Where there is a village, its alignment is authored one prop at a time.** Buildings share a frontage line
+because you gave them the same coordinate. And **the difference an eye reads first is aspect ratio and height,
+not material**: six buildings in one style at six footprints and storey counts reads as a settlement; six
+identical footprints in six materials reads as a swatch.
+
+**Three placement rules are hard**, each somebody's shipped fault:
+
+- **20 × 20 of open ground in front of a spawn** (`B172`). Only a single tree at the edge of it, boulders and
+  fauna. **No houses.** Mirefast's corridor came out 12 wide; `quillon-barrow` has three houses in the box.
+- **One block of clearance between buildings, eaves included** (`B166`). Corvid Hollow's house stands flush
+  against the spawn with `"overhang": 2`, putting its eaves two blocks *inside* the spawn wall.
+- **A building is at least 5 × 5 and at most 20 × 20** (`B167`, `B157`). Eight of Weirgate's fourteen came out
+  four deep; `sable-marsh`'s spawn came out a **90-block hall**, because a stamped building is sized by its
+  plan piece and nothing bounds it.
+
+And: **a house may be stamped over void and nothing refuses it** (`B187`). Eight of eleven columns of
+`quillon-saltworks`' `h1` stand on nothing. Check the ground under a footprint yourself.
+
+---
+
+## 7. Be literal: name the blocks, and start from a preset that exists
+
+The last runs wrote house styles the way someone describes a mood. The system does not take a mood. It takes
+a roof form, a pitch, a slab id, a wall of stacked courses with heights, a window form with a block and a
+sill course, a door head with a stair. **Write the style at that level of detail, and start from a shipped
+preset rather than from nothing.**
+
+`HousePresets` carries ten worked, correct styles, and each one is a demonstration of a technique:
+
+| Preset | Is | Worth copying for |
+|---|---|---|
+| `Desert` | *desert brick* — end stone and sandstone walls, a brick gable, birch stair lattice, **no sill** | a correct arched door head; a two-band `RoomPart` wall; a building with no footing |
+| `Diorite` | *diorite pyramid* — two storeys of five under a brick hip | **the only correct slab roof idiom**: `Roof = Brick`, `RoofSlab = StoneSlab`, `Pitch = 1` |
+| `Alpine` | *alpine mining* | a storey stack, and windows seated per storey |
+| `Townside` · `Stilts` | a street building, and the same on stilts | how one style forks into two by geometry rather than by material |
+| `Cottage` · `Longhouse` · `Terrace` | small, long, joined | **aspect ratio as the variable** |
+| `Counting` · `Workshop` | a townhouse and a shed | function read from proportion |
+
+**The one correct roof in this repository outside the presets** is `quillon-saltworks`' `h2` and `h5`:
+`form: "gambrel"`, `pitch: 1`, `roofSlab: 126`, `roof: 5:5` — the slab in `roofSlab`, a whole block in `roof`.
+Every other board inverted those two fields. Read it before you write a roof.
+
+**A technique worth having**, and the one thing the last runs found that worked: nesting a `cell` inside a
+`layered` gives a patchy top course over measured depth. A layer stack renders as one flat colour from above;
+a `cell` in its top layer breaks that up without stacking anything. It is also how you satisfy the grass rule
+below while keeping a varied surface.
+
+### The material rules, and they are hard
+
+Every one was broken on a shipped board. Each carries the task that will eventually enforce it in code; until
+that ships, **this document is the enforcement.**
+
+| Rule | The law | Broken on | Owns it |
+|---|---|---|---|
+| **Grass is one course** | A grass course is exactly **1 block** and grass never appears below it. A palette containing Grass Block is invalid at any `depth` > 1 unless it is the **top layer of a `layered` stack** — a `cell` is a pick, not a stack, so it writes its choice to every course. | 4 maps, 3 models | `B163` |
+| **Obsidian caps at three** | A destroyable carries at most **3 obsidian**, so only the **pillar** styles may use it. `cube-3` (27), `cube-4` (64) and `column-plus` (15) take **end stone, gold or emerald**. | 27 · 27 · 15 | `B162` |
+| **A slab goes in `roofSlab`** | A slab named in `roof` builds a roof you can see straight through. Slab in **`roofSlab`**, whole block in **`roof`**; a slab-course roof is right only at a **half-course rise**. | 6 houses + a spawn | `B168` |
+| **No log, no ground material, in a roof or a verge** | Never a log. Never Grass Block or Podzol. | `verge: 162` on three boards; `quillon-barrow` roofs in **Grass Block** over **Podzol** | `B168` |
+| **A block must be the kind its role needs** | `doorHead.block` a **stair**; `doorHead.fillBlock` under `upperSlab` a **slab**; a `slabBanded` window's block a slab, a `stairLattice`'s a stair. | cobble/cobble/pane · 98/4 · oak fence | `B160` |
+| **A spawn door is 2.5 clear; a window is plain** | 2.5 blocks of clear height. A window is air or glass, and if filled, a **single block** — no patterned form, whatever blocks it is given. | 2.0 on two boards | `B161` |
+| **A building seated into terrain has no footing** | Turn `Sill` off by naming **air**, as `HousePresets.Desert` does. | 12 of 14 maps, 0 opted out | `B164` |
+| **Gable at `pitch: 2` loses to its own wall** | The wall wins where they disagree. Use `pitch: 1` on a gable until it is traced. | 13 houses on 3 boards | `B165` |
+| **A goal name is a name** | No `<Team>`, no `<`, no `>`. PGM prints the attribute verbatim on both teams. | 5 boards, all Opus | `B182` |
+
+---
+
+## 8. Where the void goes, and the five things about a spawn
+
+**Void belongs between the teams, not across an approach.** `approaches.md` is **amended**: the
+middle-of-terrain hole is **withdrawn** for `dtm`/`dtc` and replaced by a **depression or a pond** — the same
+interruption of a run, the same reason to go around or drop through, without removing the ground, and a
+depression is an entrance from *below* besides. `tallow-kilnrow` is the counter-example: an 88-block cut across
+65% of the board sat between its own objectives and the middle while the mid band, where the two sides meet,
+stayed solid. The hole was where the join belongs.
 
 Do not overcorrect: four small holes around a connected middle draw play into the centre and leave the flanks
-unused. **A hole is also what makes a flank worth walking to.** Where void goes is a composition decision about
-which ground should be contested.
+unused. **A hole is also what makes a flank worth walking to.**
 
-**On a CTW board, two islands sit 15 to 40 blocks apart** (`B158`), and one whole island belonging to one team
-is the *right* shape rather than a defect. A **deliberately shared middle** — a landform crossing the symmetry
-axis that neither team owns — is the one composition an agent invented that the author wants kept; it still
-needs the 15-to-40 gap on **both** of its sides, which is exactly what Weirgate's `flat` did not have.
+On a CTW board two islands sit **15 to 40** apart (`B158`), and a whole island belonging to one team is the
+right shape rather than a defect. A **deliberately shared middle** crossing the symmetry axis is the one
+composition an agent invented that the author wants kept — and it still needs the gap on **both** its sides.
 
----
+**And the spawn, where four boards each broke a different rule:**
 
-## 6. Five things about a spawn, because four boards each broke a different one
-
-A spawn is the one place on a board where every player begins, so every fault there is a fault every player
-meets. Nothing in the pipeline checks any of this yet.
-
-1. **The door stands at least 15 blocks from the nearest void** (`B158`). Sable Marsh's opens *onto* a
-   25-deep void buffer; Weirgate's opens onto a `subtract` sixteen blocks across.
-2. **20 × 20 of open ground in front of it** (`B172`), houses excluded — see §3.
-3. **The ground it opens onto is climbable back** (`B180`). Kilnrow's spawn steps down three blocks into
-   `works` and cannot return; Basalt Reach does the same and puts its stair sixteen blocks off the centre line
-   where nobody leaving the door meets it. **Move the route to the door, not the door to the route** — turning
-   a spawn to face its stair puts an objective behind the player.
-4. **The spawn sits near the back of its lane** (`SP2`) and **the iron goes beside or ahead of it, never
-   behind** (`SP7`). Both are written law in `docs/generator/rules.md` and nothing applies them. Haiku CTW
-   Rush put its iron five blocks behind the spawn point *and inside its own protection region* — a contested
-   resource nobody can contest.
-5. **The ground under a spawn carries something or it is not there.** Weirgate's `yard` is 80 blocks wide for
-   a 20-block spawn; Mirefast's `steading` is 92. Raw size is not the test — a spawn in a corner that *is* the
-   map is fine — but flat dead area around a spawn is dead area, and the fix is to shrink the shape rather
-   than to sprinkle it.
+1. The door stands **≥ 15 blocks** from the nearest void (`B158`).
+2. **20 × 20** of open ground in front of it (`B172`).
+3. The ground it opens onto is **climbable back** (`B180`). **Move the route to the door, not the door to the
+   route** — turning a spawn to face its stair puts an objective behind the player.
+4. The spawn sits near the **back** of its lane (`SP2`); iron goes **beside or ahead**, never behind (`SP7`),
+   and never inside its own protection region.
+5. The ground under it carries something. Weirgate's yard is 80 wide for a 20-block spawn; Mirefast's is 92.
 
 ---
 
-## 7. Circulation is decided before dressing
+## 9. Circulation, and then dressing
 
-State where a player walks from spawn to goal, and where the flanking approach runs, **before** any prop is
-placed. Those runs plus a margin are the ground foliage does not get. This is the order the last runs
-inverted, and the symptom is a forest that swallows the route it was supposed to shelter.
+State the routes, draw them as paths (§5), and **those runs plus a margin are the ground foliage does not
+get.** This is the order the last runs inverted, and the symptom is a forest swallowing the route it was meant
+to shelter.
 
 **Nothing is scattered.** Every prop is placed because there is an answer to *why here*. If you cannot answer
-it, leave the ground bare and say so in the review — bare ground you chose is better than dressing you did
-not.
+it, leave the ground bare and say so — bare ground you chose beats dressing you did not.
 
-**Compose the approaches so they differ.** A void hole makes players go **around**; a hill lets attackers
-bridge in from **above**; a forest gives cover **through**, most valuable early; a depression is an entrance
-from **below**; a village is fought room by room; open ground exposes, which is what an objective wants around
-it. Three approaches that are all "walk through cover" is one approach drawn three times.
+**Compose the approaches so they differ.** Around · above · below · through. Three approaches that are all
+"walk through cover" is one approach drawn three times.
 
-**A forest is measured as canopy share, not as a leaf count** — a spruce forest at 17,600 leaves rendered as
-one solid mass with the routes buried, while a corpus map at 17,897 leaves over 72 trees renders as a wood a
-player walks through. Nearly the same count, opposite maps. And **avoid `whorled: true`**: it builds 46 logs a
-tree against a template spruce's 14, at 1.26 leaves per log, which is a trunk farm rather than a grove
-(`B174`).
+**A forest is measured as canopy share, not leaf count** — a spruce forest at 17,600 leaves rendered as one
+solid mass with the routes buried, while a corpus map at 17,897 leaves over 72 trees renders as a wood a
+player walks through. And **avoid `whorled: true`**: 46 logs a tree at 1.26 leaves per log, against a template
+spruce's 14 at 5.29 (`B174`).
 
 ---
 
 ## What this document does not cover
 
 It says how a board should look and be composed. It does not say how a map **plays** — that is
-`docs/gameplay/approaches.md`, whose claims are the author's and are settled, and `match-flow.md`, which is
-the recorded account of CTW matches. Where those two and this one disagree, they are the law and this is the
-style guide.
+`docs/gameplay/approaches.md`, whose claims are the author's and settled, and `match-flow.md`. Where those and
+this one disagree, they are the law and this is the style guide.
 
-And it does not decide anything the author has not decided. A question about play that `approaches.md` does
-not settle is **recorded as an open question in your report**, with what you decided and why — never filed as
-a fact. This repository has already committed one confident, wrong, invented gameplay claim derived from a
-correct measurement.
+And it decides nothing the author has not. A question about play that `approaches.md` does not settle is
+**recorded as an open question in your report**, with what you decided and why — never filed as a fact. This
+repository has already committed one confident, wrong, invented gameplay claim derived from a correct
+measurement.

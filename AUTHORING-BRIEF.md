@@ -156,12 +156,44 @@ art direction**. It exists so boards stay comparable across models and so the ef
 The **two named briefs** are yours to choose from §1–§6. Prefer ones no run has answered. Announce both at the
 top of your report before you author anything.
 
+Two of the eight named briefs exist because they have **never been attempted here**: there has never been a
+desert map, and never a four-team board. Both are fully expressible — `HousePresets.Desert` is a worked desert
+style and `rot_90` fans an orbit to order 4 with a red/blue/yellow/green slot palette already in
+`PlanCompiler` — and either is worth more than a ninth variation on something that has been done.
+
 **Every map gets its own theme and its own house styles, written for that map.** The materials system supports
 it: any block by id and data, fourteen material kinds each nesting inside any other with no arity limit, a
 theme with a rim band, a surface band with its own depth, a wall, a fill, and a **per-shape scope** so
 different parts of the board are made of different things. Write your house styles yourself — a `HouseStyle`
 carries a roof form and pitch, an overhang and a verge, a wall of stacked `RoomCourse` bands, a floor, posts, a
 sill, window styles, gable windows, a door head, beams and a storey stack.
+
+### Five things the last three runs never did, and the art direction is mostly about
+
+Read `ART-DIRECTION.md` for the whole of it. These five are worth naming here because they are omissions rather
+than mistakes, so nothing in a report ever flagged them:
+
+- **Nobody planned the board's silhouette.** Decide the extent, the aspect ratio, where each spawn and each
+  objective sits, and the two routes between them — five numbers and two lines — **before a shape is authored**.
+  A destroy board is a lane; every board here is square, which is why the goal-distance ratios came out flat.
+- **Nobody used a path.** Not once, in twenty-one boards. A path is the circulation diagram drawn: it states
+  the route, keeps the ground along it clean, and forces you to decide where a player goes before you put
+  things in the way. Draw spawn → objective and spawn → flank as paths, then place everything else clear of
+  them. Know the hazard first: a path's claimed band **silently drops any building touching it** (`B146`).
+- **Everyone took whole tone families.** The nineteen families are hand-authored and ordered light to dark, and
+  a `cell` over all five members of one is five near-identical blocks fighting for the same ground. **Two
+  members is a texture, three a mottle, five a mistake.**
+- **Everyone turned the rim on**, because it was the default. On any shape whose ground is solved by a relief,
+  a rim caps every fall with a band and turns a rolling hill into contour lines. **Off on grown ground.**
+- **Nobody made landforms flow.** The named fault is a flat 20×20 pad butted straight against a hill. A `raise`
+  or `sink` shape meets its neighbour along a **`skirt`**, and its surface **tilts** with `anchor_heights`;
+  without those, two pieces of ground are just shoved together.
+
+And one thing everybody themed and nobody varied: **the only built thing any board has ever had is a village
+behind the spawn.** A single house on a hill, a house in a forest clearing, a mine head, a wellhouse — one
+structure whose *style* says what it is beats a sixth cottage. Start from a shipped preset: ten exist, each
+demonstrating a technique, and `HousePresets.Desert` and `Diorite` between them model two of the rules the
+boards broke most often.
 
 ---
 
