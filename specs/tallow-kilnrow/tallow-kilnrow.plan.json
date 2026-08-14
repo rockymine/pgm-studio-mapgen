@@ -1,0 +1,125 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Tallow Kilnrow"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 14,
+  "surface": 10,
+  "headroom": 22,
+  "observerY": 44
+ },
+ "pieces": [
+  {
+   "id": "crest",
+   "role": "piece",
+   "rect": [
+    -8,
+    -19,
+    16,
+    4
+   ],
+   "surface": 18
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -2,
+    -18,
+    4,
+    3
+   ],
+   "surface": 18
+  },
+  {
+   "id": "works",
+   "role": "piece",
+   "rect": [
+    -13,
+    -15,
+    26,
+    4
+   ],
+   "surface": 15
+  },
+  {
+   "id": "floor",
+   "role": "piece",
+   "rect": [
+    -13,
+    -11,
+    26,
+    7
+   ]
+  },
+  {
+   "id": "mid",
+   "role": "piece",
+   "rect": [
+    -13,
+    -4,
+    26,
+    8
+   ],
+   "surface": 8
+  }
+ ],
+ "zones": [
+  {
+   "id": "flue-band",
+   "rect": [
+    -9,
+    -8,
+    18,
+    5
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     2,
+     2
+    ],
+    "facing": "back"
+   }
+  ],
+  "cores": [
+   {
+    "id": "slake-pit",
+    "piece": "",
+    "at": [
+     -7,
+     -11
+    ],
+    "size": 5,
+    "height": 5,
+    "shell": 1,
+    "float": 6,
+    "leak": 10,
+    "name": "<Team> Slake Pit"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "lime-kiln",
+    "piece": "",
+    "at": [
+     7,
+     -11
+    ],
+    "style": "cube-4",
+    "materials": "ender stone",
+    "float": 4,
+    "name": "<Team> Lime Kiln"
+   }
+  ]
+ }
+}

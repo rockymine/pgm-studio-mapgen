@@ -1,0 +1,96 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Tallow Mirefast"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 11,
+  "headroom": 21,
+  "observerY": 42
+ },
+ "pieces": [
+  {
+   "id": "bank",
+   "role": "piece",
+   "rect": [
+    -7,
+    -21,
+    14,
+    4
+   ],
+   "surface": 16
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -2,
+    -20,
+    4,
+    3
+   ],
+   "surface": 16
+  },
+  {
+   "id": "steading",
+   "role": "piece",
+   "rect": [
+    -10,
+    -17,
+    20,
+    4
+   ],
+   "surface": 14
+  },
+  {
+   "id": "fen",
+   "role": "piece",
+   "rect": [
+    -14,
+    -13,
+    28,
+    15
+   ]
+  },
+  {
+   "id": "ditch",
+   "role": "buffer",
+   "rect": [
+    -10,
+    -6,
+    16,
+    4
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     2,
+     2
+    ],
+    "facing": "back"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "wardstone",
+    "piece": "",
+    "at": [
+     0,
+     -10
+    ],
+    "style": "column-plus",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "<Team> Wardstone"
+   }
+  ]
+ }
+}

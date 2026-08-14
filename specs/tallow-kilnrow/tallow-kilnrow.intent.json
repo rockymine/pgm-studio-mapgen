@@ -1,0 +1,168 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 14,
+ "spawns": [
+  {
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 18,
+    "z": -80
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -90,
+     "maxX": 10,
+     "maxZ": -75
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -90,
+    "maxX": 10,
+    "maxZ": -75
+   },
+   "iron": []
+  },
+  {
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 18,
+    "z": 80
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 75,
+     "maxX": 10,
+     "maxZ": 90
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 75,
+    "maxX": 10,
+    "maxZ": 90
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": -58,
+   "y": 44,
+   "z": -60
+  },
+  "yaw": 120
+ },
+ "build": {
+  "maxHeight": 32,
+  "areas": [
+   {
+    "minX": -45,
+    "minZ": -40,
+    "maxX": 45,
+    "maxZ": -15
+   },
+   {
+    "minX": -45,
+    "minZ": 15,
+    "maxX": 45,
+    "maxZ": 40
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "owner": "red",
+   "name": "<Team> Lime Kiln",
+   "style": "cube-4",
+   "materials": "ender stone",
+   "anchor": {
+    "x": 35,
+    "y": 10,
+    "z": -55
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "owner": "blue",
+   "name": "<Team> Lime Kiln",
+   "style": "cube-4",
+   "materials": "ender stone",
+   "anchor": {
+    "x": -35,
+    "y": 10,
+    "z": 55
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": [
+  {
+   "owner": "red",
+   "name": "<Team> Slake Pit",
+   "anchor": {
+    "x": -35,
+    "y": 10,
+    "z": -55
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 6,
+   "leak": 10,
+   "box": null,
+   "digDepth": 4
+  },
+  {
+   "owner": "blue",
+   "name": "<Team> Slake Pit",
+   "anchor": {
+    "x": 35,
+    "y": 10,
+    "z": 55
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 6,
+   "leak": 10,
+   "box": null,
+   "digDepth": 4
+  }
+ ],
+ "meta": {
+  "name": "Tallow Kilnrow",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

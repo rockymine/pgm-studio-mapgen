@@ -1,0 +1,206 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Tallow Weirgate"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 9,
+  "headroom": 15,
+  "observerY": 40
+ },
+ "pieces": [
+  {
+   "id": "yard",
+   "role": "piece",
+   "rect": [
+    -8,
+    -19,
+    16,
+    4
+   ],
+   "surface": 16
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -2,
+    -18,
+    4,
+    3
+   ],
+   "surface": 16
+  },
+  {
+   "id": "hub",
+   "role": "piece",
+   "rect": [
+    -14,
+    -15,
+    28,
+    4
+   ],
+   "surface": 13
+  },
+  {
+   "id": "lane-w",
+   "role": "piece",
+   "rect": [
+    -14,
+    -11,
+    6,
+    3
+   ],
+   "surface": 14
+  },
+  {
+   "id": "lane-e",
+   "role": "piece",
+   "rect": [
+    8,
+    -11,
+    6,
+    3
+   ],
+   "surface": 14
+  },
+  {
+   "id": "apron",
+   "role": "piece",
+   "rect": [
+    -8,
+    -11,
+    16,
+    3
+   ],
+   "surface": 12
+  },
+  {
+   "id": "dock-w",
+   "role": "wool-room",
+   "rect": [
+    -14,
+    -8,
+    4,
+    4
+   ],
+   "surface": 14
+  },
+  {
+   "id": "dock-e",
+   "role": "wool-room",
+   "rect": [
+    10,
+    -8,
+    4,
+    4
+   ],
+   "surface": 14
+  },
+  {
+   "id": "front",
+   "role": "piece",
+   "rect": [
+    -10,
+    -8,
+    20,
+    4
+   ],
+   "surface": 11
+  },
+  {
+   "id": "causeway",
+   "role": "piece",
+   "rect": [
+    -9,
+    -4,
+    4,
+    2
+   ],
+   "surface": 10
+  },
+  {
+   "id": "flat",
+   "role": "piece",
+   "rect": [
+    -14,
+    -2,
+    28,
+    4
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "race",
+   "rect": [
+    -5,
+    -4,
+    14,
+    2
+   ],
+   "holes": []
+  },
+  {
+   "id": "lane-e-water",
+   "rect": [
+    9,
+    -4,
+    5,
+    2
+   ],
+   "kind": "water-lane"
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     2,
+     2
+    ],
+    "facing": "back"
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "spawn",
+    "at": [
+     0.5,
+     0.5
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-w",
+    "piece": "dock-w",
+    "at": [
+     2,
+     2
+    ]
+   },
+   {
+    "id": "wool-e",
+    "piece": "dock-e",
+    "at": [
+     2,
+     2
+    ]
+   }
+  ]
+ },
+ "walls": [
+  {
+   "a": "dock-w",
+   "b": "front",
+   "side": "a"
+  }
+ ]
+}
