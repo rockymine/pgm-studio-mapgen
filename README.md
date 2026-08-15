@@ -17,6 +17,15 @@ reports/<model>-runN.md    one agent run: what it could not say, what it got wro
 tools/                     the drivers that post those documents to the API
 ```
 
+**The authoring apparatus is four documents, and they are read in this order.**
+[AUTHORING-BRIEF.md](AUTHORING-BRIEF.md) is what an authoring agent is given;
+[ART-DIRECTION.md](ART-DIRECTION.md) is how a board is supposed to look, stated as law with the shipped
+counter-example beside each rule; [MAP-BRIEFS.md](MAP-BRIEFS.md) names the maps to author, each with an
+identity, a composition and the one thing it tests; and [REVIEWER-BRIEF.md](REVIEWER-BRIEF.md) is a
+**separate agent** that measures a finished board against the same checklist and does not read the author's
+report until it has finished. The split exists because a run report once described two empty 245-byte shells
+as *"verified working"* with two destroyables, and no instruction to self-review catches that.
+
 A map's `specs/` are the whole of what was authored; the world is derived from them and is committed as
 the artifact rather than as a source. Rebuilding one needs a running pgm-studio API and a migrated
 database.
@@ -57,12 +66,12 @@ Grouped by the run that produced them. Mode is what the map's own `<gamemode>` d
 |---|---|---|---|
 | `tallow-mirefast` | dtm | Opus | the canonical brief, built |
 | `tallow-weirgate` | ctw | Opus | a capture board on a drained reservoir |
-| `tallow-kilnrow` | dtm dtc | Opus | a destroy board on a lime works |
+| `tallow-kilnrow` | dtm · dtc | Opus | a destroy board on a lime works |
 | `corvid-hollow` | dtm | Sonnet | the canonical brief |
 | `sable-marsh` | ctw | Sonnet | a CTW board |
-| `ashfall-scar` | dtm dtc | Sonnet | a DTC + DTM board |
+| `ashfall-scar` | dtm · dtc | Sonnet | a DTC + DTM board |
 | `marlstone-steps` | ctw | Opus 5 | a white marl hillside in five terraces cut by two void ravines, four tilted ramps joining them |
-| `basalt-reach` | dtm dtc | Opus 5 | a black basalt platform with sea stacks, cut by a `subtract` channel; permanent void with no build zones |
+| `basalt-reach` | dtm · dtc | Opus 5 | a black basalt platform with sea stacks, cut by a `subtract` channel; permanent void with no build zones |
 | `haiku-r2-canonical-8` | — | Haiku | **not a map** — see below |
 | `haiku-r2-ctw-mid` | — | Haiku | **not a map** — see below |
 
@@ -102,9 +111,18 @@ mid and its hub are for.
 
 **`*` — the mode is wrong, and the map is not.** Every board marked `ctw*` is a destroy board whose
 `map.xml` says `ctw`, because it was built before `MetaGenerator` learned to derive `<gamemode>` and the
-objective line from the objective modules the intent actually carries. Boards built after that fix declare
-`dtm`, `dtc` or `dtm dtc` correctly. Nothing about those worlds is wrong; only the label is, and rebuilding
-them against the current studio would correct it.
+objective line from the objective modules the intent actually carries. Nothing about those worlds is wrong;
+only the label is, and rebuilding them against the current studio would correct it. `ctw` is a valid
+`Gamemode` id, so these boards load.
+
+**Three boards did not load at all, and are now corrected by hand.** The fix that taught `MetaGenerator` to
+derive the label emitted `<gamemode>dtm dtc</gamemode>` for a board carrying two objective kinds — and PGM
+parses `<gamemode>` as a **repeated** element holding one id each, against a **closed 25-value enum**, with
+no splitting: `MapInfoImpl.parseGamemodes` throws `InvalidXMLException("Unknown gamemode")` and the map does
+not load. Across ~350 corpus maps every `<gamemode>` holds exactly one id and maps with several repeat the
+element (`cacti_the_wool` carries six); nothing in either corpus has ever written a space-separated value.
+`tallow-kilnrow`, `ashfall-scar` and `basalt-reach` now repeat the element and parse. The writer and reader
+fix is `B155` — the reader has the mirror of the same bug, keeping only the first element on import.
 
 **Two folders in run 2 contain no map.** `haiku-r2-canonical-8` and `haiku-r2-ctw-mid` export a 245-byte
 `map.xml` with no teams, no spawns and no objectives — `<objective></objective>`, empty `<version>` — over
@@ -171,6 +189,7 @@ cited.
 | `reports/opus-run2.md` · `sonnet-run2.md` · `haiku-run2.md` | the three run-2 accounts |
 | [reports/opus5-run2.md](reports/opus5-run2.md) | a second, independent run-2 — its §1 audits the earlier runs' claims against the code, and finds three that were wrong when filed and four gaps since closed |
 | `review/` | one measured record per map |
+| the board audit, 2026-08-14 | every open `TODO.md` entry checked against the code it describes and every map against what its report claims: 48 findings, filed as `B141`–`B188` in `pgm-studio/BACKLOG.md` and bucketed for dispatch |
 
 **Two files are both "Opus, run 2" and they are different runs.** `opus-run2.md` is the cloud agent that
 authored the `tallow-*` boards; `opus5-run2.md` is a separate local run that authored `marlstone-steps` and
