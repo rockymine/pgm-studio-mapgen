@@ -1,0 +1,81 @@
+{
+  "_": "Circulation first (approaches.md): the spine road from spawn through the ford to the hub, a fork onto the two frontline tips, and a drove out to each wool. Trees, rocks and cover go in what is left over.",
+  "props": [
+    { "kind": "water", "id": "spine-ford", "seed": 71, "radius": 3, "depth": 2, "form": "stream",
+      "points": [[-16, 88], [-6, 84], [6, 84], [16, 88]] },
+
+    { "kind": "path", "id": "spine-road", "seed": 11, "radius": 3, "style": "worn", "coverage": 0.85,
+      "points": [[0, 112], [0, 96], [0, 86], [0, 76], [0, 62], [0, 48]],
+      "pave": { "kind": "voronoi", "seed": 21, "cellSize": 4, "bands": [
+        { "material": { "kind": "solid", "id": 13, "data": 0 }, "depth": 1 },
+        { "material": { "kind": "solid", "id": 3,  "data": 1 }, "depth": 2 } ] } },
+
+    { "kind": "path", "id": "front-fork-w", "seed": 12, "radius": 2, "style": "worn", "coverage": 0.7,
+      "points": [[-2, 50], [-9, 42], [-13, 30]],
+      "pave": { "kind": "solid", "id": 13, "data": 0 } },
+    { "kind": "path", "id": "front-fork-e", "seed": 13, "radius": 2, "style": "worn", "coverage": 0.7,
+      "points": [[2, 50], [9, 42], [13, 30]],
+      "pave": { "kind": "solid", "id": 13, "data": 0 } },
+
+    { "kind": "path", "id": "west-drove", "seed": 14, "radius": 3, "style": "solid", "coverage": 1.0,
+      "points": [[-14, 70], [-32, 70], [-45, 78], [-47, 100]],
+      "pave": { "kind": "voronoi", "seed": 22, "cellSize": 3, "bands": [
+        { "material": { "kind": "solid", "id": 4,  "data": 0 }, "depth": 1 },
+        { "material": { "kind": "solid", "id": 13, "data": 0 }, "depth": 2 } ] } },
+
+    { "kind": "path", "id": "east-drove", "seed": 15, "radius": 3, "style": "solid", "coverage": 1.0,
+      "points": [[14, 70], [36, 70], [47, 80], [47, 98]],
+      "pave": { "kind": "voronoi", "seed": 23, "cellSize": 3, "bands": [
+        { "material": { "kind": "solid", "id": 4,  "data": 0 }, "depth": 1 },
+        { "material": { "kind": "solid", "id": 13, "data": 0 }, "depth": 2 } ] } },
+
+    { "kind": "tree", "id": "w-hanger-1", "seed": 31, "x": -53, "z": 80, "form": "template", "species": "birch", "height": 9 },
+    { "kind": "tree", "id": "w-hanger-2", "seed": 32, "x": -52, "z": 90, "form": "template", "species": "oak",   "height": 8 },
+    { "kind": "tree", "id": "w-hanger-3", "seed": 33, "x": -53, "z": 101,"form": "template", "species": "birch", "height": 10 },
+    { "kind": "tree", "id": "w-hanger-4", "seed": 34, "x": -42, "z": 84, "form": "template", "species": "oak",   "height": 8 },
+    { "kind": "tree", "id": "w-hanger-5", "seed": 35, "x": -41, "z": 95, "form": "template", "species": "birch", "height": 9 },
+    { "kind": "tree", "id": "w-hanger-6", "seed": 36, "x": -42, "z": 106,"form": "template", "species": "oak",   "height": 7 },
+
+    { "kind": "tree", "id": "e-hanger-1", "seed": 41, "x": 42, "z": 79, "form": "template", "species": "oak",   "height": 8 },
+    { "kind": "tree", "id": "e-hanger-2", "seed": 42, "x": 53, "z": 84, "form": "template", "species": "birch", "height": 9 },
+    { "kind": "tree", "id": "e-hanger-3", "seed": 43, "x": 42, "z": 96, "form": "template", "species": "birch", "height": 9 },
+    { "kind": "tree", "id": "e-hanger-4", "seed": 44, "x": 53, "z": 100,"form": "template", "species": "oak",   "height": 8 },
+    { "kind": "tree", "id": "e-hanger-5", "seed": 45, "x": 52, "z": 70, "form": "template", "species": "oak",   "height": 7 },
+    { "kind": "tree", "id": "w-wing-1",   "seed": 46, "x": -51, "z": 69,"form": "template", "species": "oak",   "height": 7 },
+
+    { "kind": "boulder", "id": "stone-rock-n", "seed": 51, "x": -5, "z": 5, "form": "outcrop", "size": 4, "moss": true,
+      "rock": { "kind": "solid", "id": 1, "data": 3 } },
+    { "kind": "boulder", "id": "stone-rock-s", "seed": 52, "x": 6, "z": -4, "form": "round", "size": 3, "moss": true,
+      "rock": { "kind": "solid", "id": 1, "data": 3 } },
+    { "kind": "boulder", "id": "tip-rock-w", "seed": 53, "x": -17, "z": 40, "form": "angular", "size": 3, "moss": false,
+      "rock": { "kind": "solid", "id": 1, "data": 3 } },
+    { "kind": "boulder", "id": "tip-rock-e", "seed": 54, "x": 17, "z": 40, "form": "angular", "size": 3, "moss": false,
+      "rock": { "kind": "solid", "id": 1, "data": 3 } },
+    { "kind": "boulder", "id": "hub-cairn-w", "seed": 55, "x": -30, "z": 50, "form": "cairn", "size": 3, "moss": true,
+      "rock": { "kind": "solid", "id": 4, "data": 0 } },
+    { "kind": "boulder", "id": "hub-cairn-e", "seed": 56, "x": 30, "z": 50, "form": "cairn", "size": 3, "moss": true,
+      "rock": { "kind": "solid", "id": 4, "data": 0 } },
+
+    { "kind": "flora", "id": "hub-sward", "seed": 61,
+      "points": [[-33, 47], [-8, 46], [8, 46], [33, 47], [33, 62], [12, 64], [-12, 64], [-33, 62]],
+      "spec": { "coverage": 0.4, "scale": 13, "octaves": 2, "fernShare": 0.2, "flowerShare": 0.22,
+                "flowerScale": 20, "tallShare": 0.08 } },
+    { "kind": "flora", "id": "wool-w-sward", "seed": 62,
+      "points": [[-55, 78], [-41, 76], [-40, 108], [-54, 109]],
+      "spec": { "coverage": 0.5, "scale": 10, "octaves": 3, "fernShare": 0.4, "flowerShare": 0.08,
+                "flowerScale": 14, "tallShare": 0.12 } },
+    { "kind": "flora", "id": "wool-e-sward", "seed": 63,
+      "points": [[41, 77], [55, 78], [54, 104], [41, 103]],
+      "spec": { "coverage": 0.5, "scale": 10, "octaves": 3, "fernShare": 0.4, "flowerShare": 0.08,
+                "flowerScale": 14, "tallShare": 0.12 } },
+    { "kind": "flora", "id": "stone-sward", "seed": 64,
+      "points": [[-9, -9], [9, -9], [9, 9], [-9, 9]],
+      "spec": { "coverage": 0.3, "scale": 8, "octaves": 2, "fernShare": 0.5, "flowerShare": 0.05,
+                "flowerScale": 10, "tallShare": 0.0 } },
+
+    { "kind": "house", "id": "hub-fold-w", "seed": 81, "front": "PosX",
+      "wings": [[[-33, 66], [-24, 74]]] },
+    { "kind": "house", "id": "hub-fold-e", "seed": 82, "front": "NegX",
+      "wings": [[[24, 66], [33, 74]]] }
+  ]
+}

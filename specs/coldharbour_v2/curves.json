@@ -1,0 +1,10 @@
+{
+  "_": "Bezier handles are ABSOLUTE board coordinates; a vertex's `out` bends the edge after it and `in` the edge before (GENERATION-NOTES 3). Applied to the coasts only — never to a seam a player walks.",
+  "s0": { "0": {"in": [-16,-4], "out": [-4,-16]},
+          "1": {"in": [4,-16],  "out": [16,-4]},
+          "2": {"in": [16,4],   "out": [4,16]},
+          "3": {"in": [-4,16],  "out": [-16,4]} },
+  "s4": { "2": {"out": [-38,118]}, "3": {"in": [-57,118], "out": [-59,96]} },
+  "s5": { "1": {"out": [59,96]},  "2": {"in": [57,118], "out": [38,118]} },
+  "s7": { "2": {"out": [12,122]}, "3": {"in": [-12,122]} }
+}
