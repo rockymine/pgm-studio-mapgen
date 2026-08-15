@@ -82,6 +82,18 @@ was run. Each map's `specs/<slug>/authored-by-grok/` holds the original document
 | `sandscar` | dtm | Grok | one plateau a team, two monuments 50 apart, a hollow under one and a hill under the other, a river dragged across as a paved path |
 | `sandscar-complex` | dtm | Grok | a height progression from a river front to a dug pit and a climbed hill, both carrying a monument, savanna crest behind |
 
+### Opus 5 — authored to record the method
+
+One map, authored end to end with the process written down rather than the result:
+[reports/opus5-coldharbour-authoring.md](reports/opus5-coldharbour-authoring.md) is every request, which
+documents were hand-written and which were assembled by script, which previews were looked at before
+building, which render answered which question, and the two places in the whole build where the source was
+the only oracle.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `coldharbour` | ctw | Opus 5 | a chalk down: two wool rooms a team placed against each other, one behind a cut pit down a sunken lane, one on an open shelf with a water lane that opens late; permanent 20-block channels in the frontline |
+
 **`*` — the mode is wrong, and the map is not.** Every board marked `ctw*` is a destroy board whose
 `map.xml` says `ctw`, because it was built before `MetaGenerator` learned to derive `<gamemode>` and the
 objective line from the objective modules the intent actually carries. Boards built after that fix declare

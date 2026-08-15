@@ -1,0 +1,354 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 24,
+ "spawns": [
+  {
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 20,
+    "z": 130
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": 120,
+     "maxX": 15,
+     "maxZ": 140
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -15,
+    "minZ": 120,
+    "maxX": 15,
+    "maxZ": 140
+   },
+   "iron": [
+    {
+     "x": -5,
+     "y": 20,
+     "z": 130
+    }
+   ]
+  },
+  {
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 20,
+    "z": -130
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": -140,
+     "maxX": 15,
+     "maxZ": -120
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -15,
+    "minZ": -140,
+    "maxX": 15,
+    "maxZ": -120
+   },
+   "iron": [
+    {
+     "x": 5,
+     "y": 20,
+     "z": -130
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 45,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": 32,
+  "areas": [
+   {
+    "minX": -70,
+    "minZ": -15,
+    "maxX": 70,
+    "maxZ": 15
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": {
+  "rects": [
+   {
+    "minX": 20,
+    "minZ": 65,
+    "maxX": 30,
+    "maxZ": 95
+   },
+   {
+    "minX": -30,
+    "minZ": -95,
+    "maxX": -20,
+    "maxZ": -65
+   }
+  ]
+ },
+ "wools": [
+  {
+   "owner": "red",
+   "color": "red",
+   "room": [
+    {
+     "minX": -65,
+     "minZ": 95,
+     "maxX": -50,
+     "maxZ": 110
+    }
+   ],
+   "spawn": {
+    "x": -57.5,
+    "y": 10,
+    "z": 102.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": -65,
+    "minZ": 95,
+    "maxX": -50,
+    "maxZ": 110
+   },
+   "entries": [
+    {
+     "minX": -50,
+     "minZ": 95,
+     "maxX": -50,
+     "maxZ": 110
+    }
+   ]
+  },
+  {
+   "owner": "red",
+   "color": "orange",
+   "room": [
+    {
+     "minX": 50,
+     "minZ": 95,
+     "maxX": 65,
+     "maxZ": 110
+    }
+   ],
+   "spawn": {
+    "x": 57.5,
+    "y": 16,
+    "z": 102.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": 50,
+    "minZ": 95,
+    "maxX": 65,
+    "maxZ": 110
+   },
+   "entries": [
+    {
+     "minX": 50,
+     "minZ": 95,
+     "maxX": 65,
+     "maxZ": 95
+    },
+    {
+     "minX": 50,
+     "minZ": 95,
+     "maxX": 50,
+     "maxZ": 110
+    }
+   ]
+  },
+  {
+   "owner": "blue",
+   "color": "blue",
+   "room": [
+    {
+     "minX": 50,
+     "minZ": -110,
+     "maxX": 65,
+     "maxZ": -95
+    }
+   ],
+   "spawn": {
+    "x": 57.5,
+    "y": 10,
+    "z": -102.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": 50,
+    "minZ": -110,
+    "maxX": 65,
+    "maxZ": -95
+   },
+   "entries": [
+    {
+     "minX": 50,
+     "minZ": -110,
+     "maxX": 50,
+     "maxZ": -95
+    }
+   ]
+  },
+  {
+   "owner": "blue",
+   "color": "light_blue",
+   "room": [
+    {
+     "minX": -65,
+     "minZ": -110,
+     "maxX": -50,
+     "maxZ": -95
+    }
+   ],
+   "spawn": {
+    "x": -57.5,
+    "y": 16,
+    "z": -102.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": -65,
+    "minZ": -110,
+    "maxX": -50,
+    "maxZ": -95
+   },
+   "entries": [
+    {
+     "minX": -65,
+     "minZ": -95,
+     "maxX": -50,
+     "maxZ": -95
+    },
+    {
+     "minX": -50,
+     "minZ": -110,
+     "maxX": -50,
+     "maxZ": -95
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "meta": {
+  "name": "Coldharbour",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": {
+  "roomFloors": [
+   {
+    "minX": -65,
+    "minZ": 95,
+    "maxX": -50,
+    "maxZ": 110
+   },
+   {
+    "minX": 50,
+    "minZ": -110,
+    "maxX": 65,
+    "maxZ": -95
+   },
+   {
+    "minX": 50,
+    "minZ": 95,
+    "maxX": 65,
+    "maxZ": 110
+   },
+   {
+    "minX": -65,
+    "minZ": -110,
+    "maxX": -50,
+    "maxZ": -95
+   }
+  ],
+  "redstoneLines": [
+   {
+    "x1": 50,
+    "z1": 95,
+    "x2": 64,
+    "z2": 95
+   },
+   {
+    "x1": -65,
+    "z1": -96,
+    "x2": -51,
+    "z2": -96
+   },
+   {
+    "x1": -51,
+    "z1": 95,
+    "x2": -51,
+    "z2": 109
+   },
+   {
+    "x1": 50,
+    "z1": -110,
+    "x2": 50,
+    "z2": -96
+   },
+   {
+    "x1": 50,
+    "z1": 95,
+    "x2": 50,
+    "z2": 109
+   },
+   {
+    "x1": -51,
+    "z1": -110,
+    "x2": -51,
+    "z2": -96
+   }
+  ],
+  "ironCubes": [],
+  "walls": [
+   {
+    "minX": -40,
+    "minZ": 94,
+    "maxX": -25,
+    "maxZ": 96,
+    "topY": 12,
+    "chestOnMinFace": false
+   },
+   {
+    "minX": 25,
+    "minZ": -96,
+    "maxX": 40,
+    "maxZ": -94,
+    "topY": 12,
+    "chestOnMinFace": true
+   }
+  ],
+  "isEmpty": false
+ }
+}

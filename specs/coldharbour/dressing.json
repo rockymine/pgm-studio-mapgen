@@ -1,0 +1,366 @@
+{
+ "props": [
+  {
+   "kind": "path",
+   "id": "spawn-out-west",
+   "seed": 11,
+   "radius": 2,
+   "style": "worn",
+   "coverage": 0.8,
+   "points": [
+    [
+     0,
+     126
+    ],
+    [
+     -18,
+     114
+    ],
+    [
+     -34,
+     101
+    ]
+   ],
+   "pave": {
+    "kind": "voronoi",
+    "seed": 21,
+    "cellSize": 4,
+    "bands": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      "depth": 1
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      "depth": 2
+     }
+    ]
+   }
+  },
+  {
+   "kind": "path",
+   "id": "holloway-road",
+   "seed": 12,
+   "radius": 3,
+   "style": "solid",
+   "coverage": 1.0,
+   "points": [
+    [
+     -20,
+     92
+    ],
+    [
+     -30,
+     80
+    ],
+    [
+     -46,
+     70
+    ],
+    [
+     -62,
+     70
+    ]
+   ],
+   "pave": {
+    "kind": "voronoi",
+    "seed": 22,
+    "cellSize": 3,
+    "bands": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      "depth": 1
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      "depth": 2
+     }
+    ]
+   }
+  },
+  {
+   "kind": "path",
+   "id": "shelf-track",
+   "seed": 13,
+   "radius": 2,
+   "style": "worn",
+   "coverage": 0.75,
+   "points": [
+    [
+     10,
+     124
+    ],
+    [
+     32,
+     110
+    ],
+    [
+     45,
+     92
+    ],
+    [
+     56,
+     76
+    ]
+   ],
+   "pave": {
+    "kind": "solid",
+    "id": 13,
+    "data": 0
+   }
+  },
+  {
+   "kind": "path",
+   "id": "west-drove",
+   "seed": 14,
+   "radius": 2,
+   "style": "worn",
+   "coverage": 0.7,
+   "points": [
+    [
+     -58,
+     62
+    ],
+    [
+     -56,
+     44
+    ],
+    [
+     -58,
+     26
+    ]
+   ],
+   "pave": {
+    "kind": "solid",
+    "id": 3,
+    "data": 1
+   }
+  },
+  {
+   "kind": "tree",
+   "id": "hanger-1",
+   "seed": 31,
+   "x": -8,
+   "z": 70,
+   "form": "template",
+   "species": "birch",
+   "height": 9
+  },
+  {
+   "kind": "tree",
+   "id": "hanger-2",
+   "seed": 32,
+   "x": -5,
+   "z": 78,
+   "form": "template",
+   "species": "oak",
+   "height": 8
+  },
+  {
+   "kind": "tree",
+   "id": "hanger-3",
+   "seed": 33,
+   "x": -8,
+   "z": 86,
+   "form": "template",
+   "species": "birch",
+   "height": 10
+  },
+  {
+   "kind": "tree",
+   "id": "hanger-4",
+   "seed": 34,
+   "x": -2,
+   "z": 92,
+   "form": "template",
+   "species": "oak",
+   "height": 7
+  },
+  {
+   "kind": "tree",
+   "id": "hanger-5",
+   "seed": 35,
+   "x": 4,
+   "z": 90,
+   "form": "template",
+   "species": "birch",
+   "height": 9
+  },
+  {
+   "kind": "tree",
+   "id": "hanger-6",
+   "seed": 36,
+   "x": 12,
+   "z": 92,
+   "form": "template",
+   "species": "oak",
+   "height": 8
+  },
+  {
+   "kind": "tree",
+   "id": "hanger-7",
+   "seed": 37,
+   "x": 17,
+   "z": 86,
+   "form": "template",
+   "species": "birch",
+   "height": 9
+  },
+  {
+   "kind": "tree",
+   "id": "hanger-8",
+   "seed": 38,
+   "x": 16,
+   "z": 72,
+   "form": "template",
+   "species": "oak",
+   "height": 8
+  },
+  {
+   "kind": "boulder",
+   "id": "front-rock-w",
+   "seed": 41,
+   "x": -12,
+   "z": 26,
+   "form": "outcrop",
+   "size": 4,
+   "moss": true,
+   "rock": {
+    "kind": "solid",
+    "id": 1,
+    "data": 3
+   }
+  },
+  {
+   "kind": "boulder",
+   "id": "front-rock-e",
+   "seed": 42,
+   "x": 12,
+   "z": 26,
+   "form": "angular",
+   "size": 3,
+   "moss": true,
+   "rock": {
+    "kind": "solid",
+    "id": 1,
+    "data": 3
+   }
+  },
+  {
+   "kind": "flora",
+   "id": "front-sward",
+   "seed": 51,
+   "points": [
+    [
+     -18,
+     18
+    ],
+    [
+     18,
+     18
+    ],
+    [
+     18,
+     38
+    ],
+    [
+     -18,
+     38
+    ]
+   ],
+   "spec": {
+    "coverage": 0.45,
+    "scale": 14,
+    "octaves": 2,
+    "fernShare": 0.15,
+    "flowerShare": 0.2,
+    "flowerScale": 22,
+    "tallShare": 0.1
+   }
+  },
+  {
+   "kind": "flora",
+   "id": "crest-sward",
+   "seed": 52,
+   "points": [
+    [
+     -22,
+     98
+    ],
+    [
+     22,
+     98
+    ],
+    [
+     22,
+     118
+    ],
+    [
+     -22,
+     118
+    ]
+   ],
+   "spec": {
+    "coverage": 0.35,
+    "scale": 12,
+    "octaves": 2,
+    "fernShare": 0.25,
+    "flowerShare": 0.1,
+    "flowerScale": 18,
+    "tallShare": 0.05
+   }
+  },
+  {
+   "kind": "house",
+   "id": "yard-byre",
+   "seed": 61,
+   "front": "PosZ",
+   "wings": [
+    [
+     [
+      -66,
+      66
+     ],
+     [
+      -54,
+      73
+     ]
+    ]
+   ]
+  },
+  {
+   "kind": "house",
+   "id": "crest-barn",
+   "seed": 62,
+   "front": "NegZ",
+   "wings": [
+    [
+     [
+      14,
+      100
+     ],
+     [
+      24,
+      108
+     ]
+    ]
+   ]
+  }
+ ]
+}

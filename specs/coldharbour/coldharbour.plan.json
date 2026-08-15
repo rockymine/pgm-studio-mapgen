@@ -1,0 +1,65 @@
+{
+  "plan": 1,
+  "meta": { "name": "Coldharbour" },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 24,
+    "surface": 12,
+    "headroom": 20,
+    "observerY": 45
+  },
+  "pieces": [
+    { "id": "front-west",      "role": "piece",     "rect": [-14,  3,  6, 5], "surface": 12 },
+    { "id": "front-mid",       "role": "piece",     "rect": [ -4,  3,  8, 5], "surface": 12 },
+    { "id": "front-east",      "role": "piece",     "rect": [  8,  3,  6, 5], "surface": 12 },
+
+    { "id": "yard-lane",       "role": "piece",     "rect": [-14,  8,  6, 5], "surface": 12 },
+    { "id": "hub-west",        "role": "piece",     "rect": [ -8,  8,  6, 5], "surface": 14 },
+    { "id": "hub-east",        "role": "piece",     "rect": [  1,  8,  5, 5], "surface": 14 },
+    { "id": "shelf-foot",      "role": "piece",     "rect": [  8,  8,  6, 5], "surface": 14 },
+
+    { "id": "yard-sill",       "role": "piece",     "rect": [-14, 13,  6, 2], "surface": 10 },
+    { "id": "yard-east",       "role": "piece",     "rect": [-10, 15,  2, 4], "surface": 10 },
+    { "id": "holloway",        "role": "piece",     "rect": [ -8, 13,  6, 6], "surface": 10 },
+    { "id": "knoll",           "role": "piece",     "rect": [ -2, 13,  6, 6], "surface": 18 },
+    { "id": "shelf",           "role": "piece",     "rect": [  6, 13,  8, 6], "surface": 16 },
+
+    { "id": "wool-yard-room",  "role": "wool-room", "rect": [-13, 19,  3, 3], "surface": 10 },
+    { "id": "wool-shelf-room", "role": "wool-room", "rect": [ 10, 19,  3, 3], "surface": 16 },
+
+    { "id": "back-west",       "role": "piece",     "rect": [-10, 19,  5, 5], "surface": 14 },
+    { "id": "back-mid",        "role": "piece",     "rect": [ -5, 19, 10, 5], "surface": 18 },
+    { "id": "back-east",       "role": "piece",     "rect": [  5, 19,  5, 5], "surface": 16 },
+
+    { "id": "crest-west",      "role": "piece",     "rect": [ -9, 24,  6, 3], "surface": 18 },
+    { "id": "spawn",           "role": "spawn",     "rect": [ -3, 24,  6, 4], "surface": 20 },
+    { "id": "crest-east",      "role": "piece",     "rect": [  3, 24,  6, 3], "surface": 18 }
+  ],
+  "zones": [
+    { "id": "mid-build",  "rect": [-14, -3, 28, 6], "holes": [] },
+    { "id": "shelf-lane", "rect": [  4, 13,  2, 6], "kind": "water-lane" }
+  ],
+  "placements": {
+    "spawns": [
+      { "id": "spawn-1", "piece": "spawn", "at": [3, 2], "facing": "front" }
+    ],
+    "wools": [
+      { "id": "wool-yard",  "piece": "wool-yard-room",  "at": [1.5, 1.5] },
+      { "id": "wool-shelf", "piece": "wool-shelf-room", "at": [1.5, 1.5] }
+    ],
+    "iron": [
+      { "id": "iron-1", "piece": "spawn", "at": [2, 2] }
+    ],
+    "destroyables": [],
+    "cores": []
+  },
+  "walls": [
+    { "a": "holloway", "b": "back-west", "side": "b" }
+  ],
+  "boxes": [
+    { "id": "yard-approach",  "kind": "wool",      "rect": [-14, 13,  6, 9] },
+    { "id": "shelf-approach", "kind": "wool",      "rect": [  6, 13,  8, 9] },
+    { "id": "front",          "kind": "frontline", "rect": [-14,  3, 28, 5] }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "base": 12,
+  "step": 1,
+  "stairs": true,
+  "reach": 0,
+  "grain": { "amplitude": 1, "scale": 9, "seed": 5 },
+  "marks": [
+    { "id": "front-mid-flat",  "kind": "point", "at": [  0,  28], "r": 22, "h": 12 },
+    { "id": "front-west-flat", "kind": "point", "at": [-55,  28], "r": 18, "h": 12 },
+    { "id": "front-east-flat", "kind": "point", "at": [ 55,  28], "r": 18, "h": 12 },
+    { "id": "knoll-summit",    "kind": "point", "at": [  5,  80], "r": 14, "h": 21 },
+    { "id": "back-plateau",    "kind": "point", "at": [  0, 108], "r": 20, "h": 18 },
+    { "id": "crest-west",      "kind": "point", "at": [-30, 128], "r": 12, "h": 18 },
+    { "id": "crest-east",      "kind": "point", "at": [ 30, 128], "r": 12, "h": 18 },
+    { "id": "coast",           "kind": "rim",   "h": 11, "depth": 1 }
+  ]
+}
