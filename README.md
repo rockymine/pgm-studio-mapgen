@@ -28,8 +28,8 @@ as *"verified working"* with two destroyables, and no instruction to self-review
 
 A map's `specs/` are the whole of what was authored; the world is derived from them and is committed as
 the artifact rather than as a source. Rebuilding one needs a running pgm-studio API and a migrated
-database. The six maps of *The first experiment* below predate that rule and carry a world alone — every
-other row in the layout above is absent for them, and their sources are not recoverable.
+database. The maps of *The first experiment* below predate that rule and carry a world alone — every other
+row in the layout above is absent for them, and their sources are not recoverable.
 
 **Start with [GENERATION-NOTES.md](GENERATION-NOTES.md).** It is the errata an author needs beside
 `pgm-studio/docs/tools/` — the fields a hand-authored shape needs before it exists at all, the two
@@ -40,23 +40,52 @@ have each cost a build cycle.
 
 Grouped by the run that produced them. Mode is what the map's own `<gamemode>` declares.
 
-### The first experiment — worlds only, no specs
+### The first experiment — fifteen boards, worlds only
 
-The six below were built on 11–12 August 2026, a day before this repository existed, and they are the
-reason it does. They are kept as worlds and nothing else: no `specs/`, no `provenance.json`, no `renders/`,
-no `review/`. The documents that produced them lived in the throwaway databases of the runs that made them
-and are gone, and none of the six is worth reconstructing — what they were good for was showing what the
-spec format could not yet say, which is where the shape of `specs/` and the rule against a house standing
-inside another house both came from. They are the standard the rest of the repository is a correction to,
-so they survive as evidence rather than as examples.
+Fifteen boards were built on 11–12 August 2026, each from a single JSON spec, in the session that is the
+reason this repository exists. The spec form itself was a day old: *A map is one JSON file, and a single
+island is a map* landed in pgm-studio on the evening of 12 August, and this repository was created on the
+13th. So there was nowhere to commit a spec and no convention yet asking for one, and only the world was
+saved. The documents lived in the throwaway databases of the runs that made them and are gone — none of the
+fifteen has `specs/`, `provenance.json`, `renders/` or `review/`, and none of them is recoverable.
+
+Fourteen are here. The fifteenth, `thornwake`, was accepted into `CommunityMaps/ctw` and lives there
+instead; `hk1_viridian` below is the pre-merge draft of the board that went upstream with it as
+`CommunityMaps/ctw/viridian`.
+
+**What they proved is visible in the files.** Every one of the nine destroy boards declares
+`<gamemode>ctw</gamemode>` while carrying no wool at all — the objective kind a board is played for could
+not yet be stated, and `B155` is the fix. That, and the houses standing inside one another, are what the
+spec format and the reviewer brief were written against. These survive as evidence rather than as examples.
+
+**Capture the wool**
+
+| Folder | Author | What it is |
+|---|---|---|
+| `emberfall` | Opus 5 | four wools over cinder terraces |
+| `ridgeway` | Opus 5 | a cliff splitting each side, a high road and a low one |
+| `saltmarch` | Opus 5 | a flat open crossing with nowhere to hide |
+| `hk1_viridian` | Haiku 4.5 | a jungle board, two wools — draft of upstream `viridian` |
+| `hk2_crystalline_quarry` | Haiku 4.5 | ice caverns, twelve wools, four teams under `rot_90` |
+
+**Destroy the monument, and monument with core** — all nine mis-declare `ctw`
+
+| Folder | Objective | Author | What it is |
+|---|---|---|---|
+| `cinderreach` | monument | Opus 5 | burnt ground, one monument each |
+| `hollowmere` | monument | Opus 5 | each monument over a sunken basin |
+| `ironhold` | monument | Opus 5 | one rock, two keeps, no way round |
+| `verdigris` | monument | Opus 5 | a copper hall gone green, under `mirror_z` |
+| `hk1_glacial` | monument | Haiku 4.5 | frozen monuments on an icy plateau |
+| `goldhollow` | monument + core | Opus 5 | two of each, open sand between them |
+| `mourncrag` | monument + core | Opus 5 | one of each apiece, on frozen rock |
+| `spinebreak` | monument + core | Opus 5 | one long 145×420 ridge, an objective at each end |
+| `hk2_obsidian_keep` | monument + core | Haiku 4.5 | one of each, behind the walls of the keep |
+
+Beside them sits one world from the same days that is not one of the fifteen:
 
 | Folder | Mode | Author | What it is |
 |---|---|---|---|
-| `emberfall` | ctw | mapgen | four wools over cinder terraces |
-| `ridgeway` | ctw | mapgen | a cliff splitting each side, a high road and a low one |
-| `saltmarch` | ctw | mapgen | a flat open crossing with nowhere to hide |
-| `hk1_viridian` | ctw | Haiku | a jungle board, two wools |
-| `hk2_crystalline_quarry` | ctw | Haiku | ice caverns, twelve wools |
 | `pattern_test` | — | studio | twenty-five plateaus built to look at terrain patterns, not to be played; superseded by `library_map` from `pgm-studio/tools/library-map.cs` |
 
 ### Hand-authored, before the trial runs
