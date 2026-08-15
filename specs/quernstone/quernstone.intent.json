@@ -1,0 +1,580 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  },
+  {
+   "id": "yellow",
+   "name": "Yellow",
+   "color": "yellow"
+  },
+  {
+   "id": "green",
+   "name": "Green",
+   "color": "green"
+  }
+ ],
+ "maxPlayers": 32,
+ "spawns": [
+  {
+   "team": "red",
+   "point": {
+    "x": -20,
+    "y": 20,
+    "z": 95
+   },
+   "protection": [
+    {
+     "minX": -30,
+     "minZ": 85,
+     "maxX": -10,
+     "maxZ": 105
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -30,
+    "minZ": 85,
+    "maxX": -10,
+    "maxZ": 105
+   },
+   "iron": [
+    {
+     "x": -20,
+     "y": 20,
+     "z": 87.5
+    }
+   ]
+  },
+  {
+   "team": "blue",
+   "point": {
+    "x": -95,
+    "y": 20,
+    "z": -20
+   },
+   "protection": [
+    {
+     "minX": -105,
+     "minZ": -30,
+     "maxX": -85,
+     "maxZ": -10
+    }
+   ],
+   "yaw": 270,
+   "piece": {
+    "minX": -105,
+    "minZ": -30,
+    "maxX": -85,
+    "maxZ": -10
+   },
+   "iron": [
+    {
+     "x": -87.5,
+     "y": 20,
+     "z": -20
+    }
+   ]
+  },
+  {
+   "team": "yellow",
+   "point": {
+    "x": 20,
+    "y": 20,
+    "z": -95
+   },
+   "protection": [
+    {
+     "minX": 10,
+     "minZ": -105,
+     "maxX": 30,
+     "maxZ": -85
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": 10,
+    "minZ": -105,
+    "maxX": 30,
+    "maxZ": -85
+   },
+   "iron": [
+    {
+     "x": 20,
+     "y": 20,
+     "z": -87.5
+    }
+   ]
+  },
+  {
+   "team": "green",
+   "point": {
+    "x": 95,
+    "y": 20,
+    "z": 20
+   },
+   "protection": [
+    {
+     "minX": 85,
+     "minZ": 10,
+     "maxX": 105,
+     "maxZ": 30
+    }
+   ],
+   "yaw": 90,
+   "piece": {
+    "minX": 85,
+    "minZ": 10,
+    "maxX": 105,
+    "maxZ": 30
+   },
+   "iron": [
+    {
+     "x": 87.5,
+     "y": 20,
+     "z": 20
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 46,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": 32,
+  "areas": [
+   {
+    "minX": -20,
+    "minZ": -20,
+    "maxX": 20,
+    "maxZ": 20
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "owner": "red",
+   "color": "red",
+   "room": [
+    {
+     "minX": -60,
+     "minZ": 85,
+     "maxX": -45,
+     "maxZ": 100
+    }
+   ],
+   "spawn": {
+    "x": -52.5,
+    "y": 16,
+    "z": 92.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": -60,
+    "minZ": 85,
+    "maxX": -45,
+    "maxZ": 100
+   },
+   "entries": [
+    {
+     "minX": -60,
+     "minZ": 85,
+     "maxX": -45,
+     "maxZ": 85
+    }
+   ]
+  },
+  {
+   "owner": "red",
+   "color": "orange",
+   "room": [
+    {
+     "minX": 15,
+     "minZ": 70,
+     "maxX": 30,
+     "maxZ": 85
+    }
+   ],
+   "spawn": {
+    "x": 22.5,
+    "y": 16,
+    "z": 77.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": 15,
+    "minZ": 70,
+    "maxX": 30,
+    "maxZ": 85
+   },
+   "entries": [
+    {
+     "minX": 15,
+     "minZ": 70,
+     "maxX": 30,
+     "maxZ": 70
+    }
+   ]
+  },
+  {
+   "owner": "blue",
+   "color": "blue",
+   "room": [
+    {
+     "minX": -100,
+     "minZ": -60,
+     "maxX": -85,
+     "maxZ": -45
+    }
+   ],
+   "spawn": {
+    "x": -92.5,
+    "y": 16,
+    "z": -52.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": -100,
+    "minZ": -60,
+    "maxX": -85,
+    "maxZ": -45
+   },
+   "entries": [
+    {
+     "minX": -85,
+     "minZ": -60,
+     "maxX": -85,
+     "maxZ": -45
+    }
+   ]
+  },
+  {
+   "owner": "blue",
+   "color": "light_blue",
+   "room": [
+    {
+     "minX": -85,
+     "minZ": 15,
+     "maxX": -70,
+     "maxZ": 30
+    }
+   ],
+   "spawn": {
+    "x": -77.5,
+    "y": 16,
+    "z": 22.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": -85,
+    "minZ": 15,
+    "maxX": -70,
+    "maxZ": 30
+   },
+   "entries": [
+    {
+     "minX": -70,
+     "minZ": 15,
+     "maxX": -70,
+     "maxZ": 30
+    }
+   ]
+  },
+  {
+   "owner": "yellow",
+   "color": "yellow",
+   "room": [
+    {
+     "minX": 45,
+     "minZ": -100,
+     "maxX": 60,
+     "maxZ": -85
+    }
+   ],
+   "spawn": {
+    "x": 52.5,
+    "y": 16,
+    "z": -92.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": 45,
+    "minZ": -100,
+    "maxX": 60,
+    "maxZ": -85
+   },
+   "entries": [
+    {
+     "minX": 45,
+     "minZ": -85,
+     "maxX": 60,
+     "maxZ": -85
+    }
+   ]
+  },
+  {
+   "owner": "yellow",
+   "color": "pink",
+   "room": [
+    {
+     "minX": -30,
+     "minZ": -85,
+     "maxX": -15,
+     "maxZ": -70
+    }
+   ],
+   "spawn": {
+    "x": -22.5,
+    "y": 16,
+    "z": -77.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": -30,
+    "minZ": -85,
+    "maxX": -15,
+    "maxZ": -70
+   },
+   "entries": [
+    {
+     "minX": -30,
+     "minZ": -70,
+     "maxX": -15,
+     "maxZ": -70
+    }
+   ]
+  },
+  {
+   "owner": "green",
+   "color": "green",
+   "room": [
+    {
+     "minX": 85,
+     "minZ": 45,
+     "maxX": 100,
+     "maxZ": 60
+    }
+   ],
+   "spawn": {
+    "x": 92.5,
+    "y": 16,
+    "z": 52.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": 85,
+    "minZ": 45,
+    "maxX": 100,
+    "maxZ": 60
+   },
+   "entries": [
+    {
+     "minX": 85,
+     "minZ": 45,
+     "maxX": 85,
+     "maxZ": 60
+    }
+   ]
+  },
+  {
+   "owner": "green",
+   "color": "lime",
+   "room": [
+    {
+     "minX": 70,
+     "minZ": -30,
+     "maxX": 85,
+     "maxZ": -15
+    }
+   ],
+   "spawn": {
+    "x": 77.5,
+    "y": 16,
+    "z": -22.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": 70,
+    "minZ": -30,
+    "maxX": 85,
+    "maxZ": -15
+   },
+   "entries": [
+    {
+     "minX": 70,
+     "minZ": -30,
+     "maxX": 70,
+     "maxZ": -15
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "meta": {
+  "name": "Quernstone",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red",
+  "3": "yellow",
+  "4": "green",
+  "5": "neutral"
+ },
+ "structures": {
+  "roomFloors": [
+   {
+    "minX": -60,
+    "minZ": 85,
+    "maxX": -45,
+    "maxZ": 100
+   },
+   {
+    "minX": -100,
+    "minZ": -60,
+    "maxX": -85,
+    "maxZ": -45
+   },
+   {
+    "minX": 45,
+    "minZ": -100,
+    "maxX": 60,
+    "maxZ": -85
+   },
+   {
+    "minX": 85,
+    "minZ": 45,
+    "maxX": 100,
+    "maxZ": 60
+   },
+   {
+    "minX": 15,
+    "minZ": 70,
+    "maxX": 30,
+    "maxZ": 85
+   },
+   {
+    "minX": -85,
+    "minZ": 15,
+    "maxX": -70,
+    "maxZ": 30
+   },
+   {
+    "minX": -30,
+    "minZ": -85,
+    "maxX": -15,
+    "maxZ": -70
+   },
+   {
+    "minX": 70,
+    "minZ": -30,
+    "maxX": 85,
+    "maxZ": -15
+   }
+  ],
+  "redstoneLines": [
+   {
+    "x1": -60,
+    "z1": 85,
+    "x2": -46,
+    "z2": 85
+   },
+   {
+    "x1": -86,
+    "z1": -60,
+    "x2": -86,
+    "z2": -46
+   },
+   {
+    "x1": 45,
+    "z1": -86,
+    "x2": 59,
+    "z2": -86
+   },
+   {
+    "x1": 85,
+    "z1": 45,
+    "x2": 85,
+    "z2": 59
+   },
+   {
+    "x1": 15,
+    "z1": 70,
+    "x2": 29,
+    "z2": 70
+   },
+   {
+    "x1": -71,
+    "z1": 15,
+    "x2": -71,
+    "z2": 29
+   },
+   {
+    "x1": -30,
+    "z1": -71,
+    "x2": -16,
+    "z2": -71
+   },
+   {
+    "x1": 70,
+    "z1": -30,
+    "x2": 70,
+    "z2": -16
+   }
+  ],
+  "ironCubes": [],
+  "walls": [
+   {
+    "minX": 15,
+    "minZ": 54,
+    "maxX": 30,
+    "maxZ": 56,
+    "topY": 16,
+    "chestOnMinFace": false
+   },
+   {
+    "minX": -56,
+    "minZ": 15,
+    "maxX": -54,
+    "maxZ": 30,
+    "topY": 16,
+    "chestOnMinFace": true
+   },
+   {
+    "minX": -30,
+    "minZ": -56,
+    "maxX": -15,
+    "maxZ": -54,
+    "topY": 16,
+    "chestOnMinFace": true
+   },
+   {
+    "minX": 54,
+    "minZ": -30,
+    "maxX": 56,
+    "maxZ": -15,
+    "topY": 16,
+    "chestOnMinFace": false
+   }
+  ],
+  "isEmpty": false
+ }
+}

@@ -90,12 +90,15 @@ documents were hand-written and which were assembled by script, which previews w
 building, which render answered which question, and the two places in the whole build where the source was
 the only oracle. [reports/opus5-coldharbour-v2-authoring.md](reports/opus5-coldharbour-v2-authoring.md) is the
 second pass after the author reviewed it: what the review said, what `ruediger` and `bridgid-ii` measure,
-and the board that came out of starting again.
+and the board that came out of starting again. [reports/opus5-quernstone-authoring.md](reports/opus5-quernstone-authoring.md)
+is the four-team board built from that vocabulary at `rot_90`, and the two corrections that changed what its
+mid and its hub are for.
 
 | Folder | Mode | Author | What it is |
 |---|---|---|---|
 | `coldharbour` | ctw | Opus 5 | a chalk down: two wool rooms a team placed against each other, one behind a cut pit down a sunken lane, one on an open shelf with a water lane that opens late; permanent 20-block channels in the frontline |
 | `coldharbour_v2` | ctw | Opus 5 | the same ground rebuilt to the model's own shapes after review: a U frontline off a double-hole hub, an L wool lane and an I wool lane, one neutral stone in the middle, a stream across the spine. 207 ground cells against v1's 533 |
+| `quernstone` | ctw | Opus 5 | **four teams**, `rot_90`: the same vocabulary pinwheeled — each team a wedge whose frontline straddles the axis, four images abutting into a plus mid around one neutral millstone. 216 × 216, 8 wool rooms, 4 walls |
 
 **`*` — the mode is wrong, and the map is not.** Every board marked `ctw*` is a destroy board whose
 `map.xml` says `ctw`, because it was built before `MetaGenerator` learned to derive `<gamemode>` and the

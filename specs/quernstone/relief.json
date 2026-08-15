@@ -1,0 +1,11 @@
+{
+  "base": 14, "step": 1, "stairs": true, "reach": 0,
+  "grain": { "amplitude": 1, "scale": 8, "seed": 17 },
+  "marks": [
+    { "id": "hub-core",   "kind": "point", "at": [-15, 50], "r": 24, "h": 14 },
+    { "id": "hub-west",   "kind": "point", "at": [-36, 60], "r": 12, "h": 15 },
+    { "id": "hub-east",   "kind": "point", "at": [  6, 50], "r": 10, "h": 15 },
+    { "id": "hub-lip",    "kind": "point", "at": [-15, 37], "r": 20, "h": 13 },
+    { "id": "coast",      "kind": "rim",   "h": 13, "depth": 1 }
+  ]
+}

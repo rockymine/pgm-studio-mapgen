@@ -1,0 +1,352 @@
+<map proto="1.5.0">
+    <name>Quernstone</name>
+    <version>1.0.0</version>
+    <gamemode>ctw</gamemode>
+    <objective>Capture the enemies' wools!</objective>
+    <include id="gapple-kill-reward"/>
+    <teams>
+        <team id="red-team" color="red" max="32">Red</team>
+        <team id="blue-team" color="blue" max="32">Blue</team>
+        <team id="yellow-team" color="yellow" max="32">Yellow</team>
+        <team id="green-team" color="green" max="32">Green</team>
+    </teams>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="iron pickaxe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="golden apple"/>
+            <item slot="28" material="arrow"/>
+            <item slot="29" material="shears" unbreakable="true"/>
+            <item slot="30" material="iron spade" unbreakable="true"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </helmet>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </chestplate>
+            <leggings material="chainmail leggings" unbreakable="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </leggings>
+            <boots material="leather boots" unbreakable="true" team-color="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </boots>
+            <effect duration="oo" amplifier="100">damage resistance</effect>
+        </kit>
+        <kit id="reset-resistance-kit" force="true">
+            <effect duration="0" amplifier="0">damage resistance</effect>
+        </kit>
+    </kits>
+    <spawns>
+        <default region="observer-spawn"/>
+        <spawn team="red-team" kit="spawn-kit" yaw="180" region="red-spawn-point"/>
+        <spawn team="blue-team" kit="spawn-kit" yaw="270" region="blue-spawn-point"/>
+        <spawn team="yellow-team" kit="spawn-kit" region="yellow-spawn-point"/>
+        <spawn team="green-team" kit="spawn-kit" yaw="90" region="green-spawn-point"/>
+    </spawns>
+    <wools>
+        <wool team="blue-team" color="red" location="-53,15,92" monument="red-blue-monument"/>
+        <wool team="yellow-team" color="red" location="-53,15,92" monument="red-yellow-monument"/>
+        <wool team="green-team" color="red" location="-53,15,92" monument="red-green-monument"/>
+        <wool team="blue-team" color="orange" location="22,15,77" monument="orange-blue-monument"/>
+        <wool team="yellow-team" color="orange" location="22,15,77" monument="orange-yellow-monument"/>
+        <wool team="green-team" color="orange" location="22,15,77" monument="orange-green-monument"/>
+        <wool team="red-team" color="blue" location="-93,15,-53" monument="blue-red-monument"/>
+        <wool team="yellow-team" color="blue" location="-93,15,-53" monument="blue-yellow-monument"/>
+        <wool team="green-team" color="blue" location="-93,15,-53" monument="blue-green-monument"/>
+        <wool team="red-team" color="light_blue" location="-78,15,22" monument="light_blue-red-monument"/>
+        <wool team="yellow-team" color="light_blue" location="-78,15,22" monument="light_blue-yellow-monument"/>
+        <wool team="green-team" color="light_blue" location="-78,15,22" monument="light_blue-green-monument"/>
+        <wool team="red-team" color="yellow" location="52,15,-93" monument="yellow-red-monument"/>
+        <wool team="blue-team" color="yellow" location="52,15,-93" monument="yellow-blue-monument"/>
+        <wool team="green-team" color="yellow" location="52,15,-93" monument="yellow-green-monument"/>
+        <wool team="red-team" color="pink" location="-23,15,-78" monument="pink-red-monument"/>
+        <wool team="blue-team" color="pink" location="-23,15,-78" monument="pink-blue-monument"/>
+        <wool team="green-team" color="pink" location="-23,15,-78" monument="pink-green-monument"/>
+        <wool team="red-team" color="green" location="92,15,52" monument="green-red-monument"/>
+        <wool team="blue-team" color="green" location="92,15,52" monument="green-blue-monument"/>
+        <wool team="yellow-team" color="green" location="92,15,52" monument="green-yellow-monument"/>
+        <wool team="red-team" color="lime" location="77,15,-23" monument="lime-red-monument"/>
+        <wool team="blue-team" color="lime" location="77,15,-23" monument="lime-blue-monument"/>
+        <wool team="yellow-team" color="lime" location="77,15,-23" monument="lime-yellow-monument"/>
+    </wools>
+    <filters>
+        <team id="only-green">green-team</team>
+        <team id="only-yellow">yellow-team</team>
+        <team id="only-blue">blue-team</team>
+        <team id="only-red">red-team</team>
+        <all id="yellows-woolrooms-filter">
+            <filter id="not-yellow"/>
+            <filter id="woolrooms-filter"/>
+        </all>
+        <not id="not-yellow">
+            <filter id="only-yellow"/>
+        </not>
+        <all id="blues-woolrooms-filter">
+            <filter id="not-blue"/>
+            <filter id="woolrooms-filter"/>
+        </all>
+        <not id="not-blue">
+            <filter id="only-blue"/>
+        </not>
+        <all id="reds-woolrooms-filter">
+            <filter id="not-red"/>
+            <filter id="woolrooms-filter"/>
+        </all>
+        <not id="not-red">
+            <filter id="only-red"/>
+        </not>
+        <material id="chest-filter">chest</material>
+        <any id="woolrooms-filter">
+            <material>web</material>
+            <material>stained glass</material>
+            <material>stained glass pane</material>
+            <material>wood</material>
+            <material>stained clay</material>
+            <all>
+                <cause>player</cause>
+                <any>
+                    <material>water</material>
+                    <material>stationary water</material>
+                </any>
+            </all>
+        </any>
+        <all id="greens-woolrooms-filter">
+            <filter id="not-green"/>
+            <filter id="woolrooms-filter"/>
+        </all>
+        <not id="not-green">
+            <filter id="only-green"/>
+        </not>
+        <not id="no-void">
+            <void/>
+        </not>
+        <material id="only-air">air</material>
+        <material id="only-iron">iron block</material>
+    </filters>
+    <regions>
+        <point id="green-spawn-point">95,20,20</point>
+        <point id="yellow-spawn-point">20,20,-95</point>
+        <point id="blue-spawn-point">-95,20,-20</point>
+        <point id="red-spawn-point">-20,20,95</point>
+        <point id="light_blue-wool-spawn">-77.5,15,22.5</point>
+        <point id="blue-wool-spawn">-92.5,15,-52.5</point>
+        <point id="orange-wool-spawn">22.5,15,77.5</point>
+        <point id="red-wool-spawn">-52.5,15,92.5</point>
+        <point id="yellow-wool-spawn">52.5,15,-92.5</point>
+        <point id="pink-wool-spawn">-22.5,15,-77.5</point>
+        <point id="green-wool-spawn">92.5,15,52.5</point>
+        <point id="lime-wool-spawn">77.5,15,-22.5</point>
+        <point id="observer-spawn">0,47,0</point>
+        <block id="yellow-red-monument">-28,21,102</block>
+        <block id="light_blue-green-monument">102,21,27</block>
+        <block id="light_blue-yellow-monument">27,21,-103</block>
+        <block id="light_blue-red-monument">-13,21,92</block>
+        <block id="blue-green-monument">102,21,12</block>
+        <block id="blue-yellow-monument">12,21,-103</block>
+        <block id="blue-red-monument">-28,21,92</block>
+        <block id="orange-green-monument">92,21,27</block>
+        <block id="orange-yellow-monument">27,21,-93</block>
+        <block id="orange-blue-monument">-93,21,-13</block>
+        <block id="red-green-monument">92,21,12</block>
+        <block id="red-yellow-monument">12,21,-93</block>
+        <block id="red-blue-monument">-93,21,-28</block>
+        <block id="yellow-blue-monument">-103,21,-28</block>
+        <block id="yellow-green-monument">102,21,13</block>
+        <block id="pink-red-monument">-13,21,102</block>
+        <block id="pink-blue-monument">-103,21,-13</block>
+        <block id="pink-green-monument">102,21,14</block>
+        <block id="green-red-monument">-27,21,102</block>
+        <block id="green-blue-monument">-103,21,-27</block>
+        <block id="green-yellow-monument">13,21,-103</block>
+        <block id="lime-red-monument">-26,21,102</block>
+        <block id="lime-blue-monument">-103,21,-26</block>
+        <block id="lime-yellow-monument">14,21,-103</block>
+        <rectangle id="green-spawn" min="85,10" max="105,30"/>
+        <rectangle id="yellow-spawn" min="10,-105" max="30,-85"/>
+        <rectangle id="blue-spawn" min="-105,-30" max="-85,-10"/>
+        <rectangle id="red-spawn" min="-30,85" max="-10,105"/>
+        <rectangle id="light_blue-wool" min="-85,15" max="-70,30"/>
+        <rectangle id="blue-wool" min="-100,-60" max="-85,-45"/>
+        <rectangle id="orange-wool" min="15,70" max="30,85"/>
+        <rectangle id="red-wool" min="-60,85" max="-45,100"/>
+        <rectangle id="yellow-wool" min="45,-100" max="60,-85"/>
+        <rectangle id="pink-wool" min="-30,-85" max="-15,-70"/>
+        <rectangle id="green-wool" min="85,45" max="100,60"/>
+        <rectangle id="lime-wool" min="70,-30" max="85,-15"/>
+        <union id="reds-woolrooms">
+            <region id="red-wool"/>
+            <region id="orange-wool"/>
+        </union>
+        <union id="blues-woolrooms">
+            <region id="blue-wool"/>
+            <region id="light_blue-wool"/>
+        </union>
+        <union id="yellows-woolrooms">
+            <region id="yellow-wool"/>
+            <region id="pink-wool"/>
+        </union>
+        <union id="greens-woolrooms">
+            <region id="green-wool"/>
+            <region id="lime-wool"/>
+        </union>
+        <union id="woolrooms">
+            <region id="reds-woolrooms"/>
+            <region id="blues-woolrooms"/>
+            <region id="yellows-woolrooms"/>
+            <region id="greens-woolrooms"/>
+        </union>
+        <union id="iron-cubes">
+            <rectangle id="iron-cube-0" min="-22,86" max="-19,89"/>
+            <rectangle id="iron-cube-1" min="-90,-22" max="-87,-19"/>
+            <rectangle id="iron-cube-2" min="18,-90" max="21,-87"/>
+            <rectangle id="iron-cube-3" min="86,18" max="89,21"/>
+        </union>
+        <negative id="not-spawns">
+            <region id="spawns"/>
+        </negative>
+        <negative id="not-build-area">
+            <rectangle id="build-area-1" min="-20,-20" max="20,20"/>
+        </negative>
+        <complement id="spawns">
+            <union id="spawn-areas">
+                <region id="red-spawn"/>
+                <region id="blue-spawn"/>
+                <region id="yellow-spawn"/>
+                <region id="green-spawn"/>
+            </union>
+            <region id="red-blue-monument"/>
+            <region id="red-yellow-monument"/>
+            <region id="red-green-monument"/>
+            <region id="orange-blue-monument"/>
+            <region id="orange-yellow-monument"/>
+            <region id="orange-green-monument"/>
+            <region id="blue-red-monument"/>
+            <region id="blue-yellow-monument"/>
+            <region id="blue-green-monument"/>
+            <region id="light_blue-red-monument"/>
+            <region id="light_blue-yellow-monument"/>
+            <region id="light_blue-green-monument"/>
+            <region id="yellow-red-monument"/>
+            <region id="yellow-blue-monument"/>
+            <region id="yellow-green-monument"/>
+            <region id="pink-red-monument"/>
+            <region id="pink-blue-monument"/>
+            <region id="pink-green-monument"/>
+            <region id="green-red-monument"/>
+            <region id="green-blue-monument"/>
+            <region id="green-yellow-monument"/>
+            <region id="lime-red-monument"/>
+            <region id="lime-blue-monument"/>
+            <region id="lime-yellow-monument"/>
+        </complement>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply enter="only-yellow" region="yellow-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply enter="only-green" region="green-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply block="never" region="spawns" message="You may not block/break spawns!"/>
+        <apply kit="reset-resistance-kit" region="not-spawns"/>
+        <apply enter="not-red" region="reds-woolrooms" message="You may not enter your own wool room!"/>
+        <apply block="reds-woolrooms-filter" region="reds-woolrooms" message="You may not edit the wool room!"/>
+        <apply use="deny(all(only-red,chest-filter))" region="reds-woolrooms"/>
+        <apply enter="not-blue" region="blues-woolrooms" message="You may not enter your own wool room!"/>
+        <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
+        <apply use="deny(all(only-blue,chest-filter))" region="blues-woolrooms"/>
+        <apply enter="not-yellow" region="yellows-woolrooms" message="You may not enter your own wool room!"/>
+        <apply block="yellows-woolrooms-filter" region="yellows-woolrooms" message="You may not edit the wool room!"/>
+        <apply use="deny(all(only-yellow,chest-filter))" region="yellows-woolrooms"/>
+        <apply enter="not-green" region="greens-woolrooms" message="You may not enter your own wool room!"/>
+        <apply block="greens-woolrooms-filter" region="greens-woolrooms" message="You may not edit the wool room!"/>
+        <apply use="deny(all(only-green,chest-filter))" region="greens-woolrooms"/>
+        <apply block="no-void" region="not-build-area" message="You may not edit the void!"/>
+    </regions>
+    <spawners>
+        <spawner spawn-region="red-wool-spawn" player-region="red-wool" delay="1.5s">
+            <item material="wool" damage="14"/>
+        </spawner>
+        <spawner spawn-region="orange-wool-spawn" player-region="orange-wool" delay="1.5s">
+            <item material="wool" damage="1"/>
+        </spawner>
+        <spawner spawn-region="blue-wool-spawn" player-region="blue-wool" delay="1.5s">
+            <item material="wool" damage="11"/>
+        </spawner>
+        <spawner spawn-region="light_blue-wool-spawn" player-region="light_blue-wool" delay="1.5s">
+            <item material="wool" damage="3"/>
+        </spawner>
+        <spawner spawn-region="yellow-wool-spawn" player-region="yellow-wool" delay="1.5s">
+            <item material="wool" damage="4"/>
+        </spawner>
+        <spawner spawn-region="pink-wool-spawn" player-region="pink-wool" delay="1.5s">
+            <item material="wool" damage="6"/>
+        </spawner>
+        <spawner spawn-region="green-wool-spawn" player-region="green-wool" delay="1.5s">
+            <item material="wool" damage="13"/>
+        </spawner>
+        <spawner spawn-region="lime-wool-spawn" player-region="lime-wool" delay="1.5s">
+            <item material="wool" damage="5"/>
+        </spawner>
+    </spawners>
+    <renewables>
+        <renewable region="iron-cubes" renew-filter="only-iron" replace-filter="only-air" avoid-players="2"/>
+    </renewables>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>iron pickaxe</item>
+        <item>iron axe</item>
+        <item>water bucket</item>
+        <item>golden apple</item>
+        <item>arrow</item>
+        <item>shears</item>
+        <item>iron spade</item>
+        <item>wood</item>
+        <item>stained clay</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>iron pickaxe</tool>
+        <tool>iron axe</tool>
+        <tool>shears</tool>
+        <tool>iron spade</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+    <maxbuildheight>32</maxbuildheight>
+</map>
