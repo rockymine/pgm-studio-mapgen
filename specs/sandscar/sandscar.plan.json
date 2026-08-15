@@ -1,0 +1,94 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Sandscar"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 24,
+    "surface": 40,
+    "headroom": 36,
+    "observerY": 78
+  },
+  "pieces": [
+    {
+      "id": "team-plateau",
+      "role": "piece",
+      "rect": [
+        -12,
+        4,
+        24,
+        18
+      ],
+      "surface": 40
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -3,
+        22,
+        6,
+        5
+      ],
+      "surface": 42
+    }
+  ],
+  "zones": [
+    {
+      "id": "mid-build",
+      "rect": [
+        -14,
+        -3,
+        28,
+        7
+      ],
+      "holes": []
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          3,
+          2
+        ],
+        "facing": "front"
+      }
+    ],
+    "wools": [],
+    "iron": [],
+    "destroyables": [
+      {
+        "id": "monument-west",
+        "piece": "team-plateau",
+        "at": [
+          7,
+          11
+        ],
+        "style": "cube-3",
+        "materials": "obsidian",
+        "float": 2,
+        "name": "<Team> West Monument"
+      },
+      {
+        "id": "monument-east",
+        "piece": "team-plateau",
+        "at": [
+          17,
+          11
+        ],
+        "style": "cube-3",
+        "materials": "obsidian",
+        "float": 3,
+        "name": "<Team> East Monument"
+      }
+    ],
+    "cores": []
+  },
+  "walls": [],
+  "boxes": []
+}

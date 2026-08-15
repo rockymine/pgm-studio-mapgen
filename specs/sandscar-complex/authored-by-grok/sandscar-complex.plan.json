@@ -1,0 +1,75 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Sandscar Complex"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 24,
+    "surface": 40,
+    "headroom": 36,
+    "observerY": 78
+  },
+  "pieces": [
+    { "id": "river-bank-n",  "role": "piece", "rect": [-18, -4, 36, 3], "surface": 39 },
+    { "id": "river-bank-s",  "role": "piece", "rect": [-18,  1, 36, 3], "surface": 39 },
+    { "id": "low-desert-w",  "role": "piece", "rect": [-18,  4, 10, 6], "surface": 38 },
+    { "id": "low-desert-e",  "role": "piece", "rect": [  8,  4, 10, 6], "surface": 38 },
+    { "id": "low-centre",    "role": "piece", "rect": [ -6,  4, 12, 5], "surface": 40 },
+    { "id": "pit-approach",  "role": "piece", "rect": [-14, 10,  8, 5], "surface": 36 },
+    { "id": "pit-floor",     "role": "piece", "rect": [-12, 15,  6, 5], "surface": 32 },
+    { "id": "pit-rim",       "role": "piece", "rect": [-14, 15,  2, 5], "surface": 37 },
+    { "id": "pit-rim-e",     "role": "piece", "rect": [ -6, 15,  2, 5], "surface": 37 },
+    { "id": "mid-west",      "role": "piece", "rect": [-18, 10,  4, 8], "surface": 42 },
+    { "id": "mid-east",      "role": "piece", "rect": [  8, 10, 10, 6], "surface": 41 },
+    { "id": "mid-bridge",    "role": "piece", "rect": [ -4, 11,  8, 3], "surface": 41 },
+    { "id": "hill-base",     "role": "piece", "rect": [  6, 16, 12, 5], "surface": 44 },
+    { "id": "hill-slope",    "role": "piece", "rect": [  8, 21, 10, 4], "surface": 48 },
+    { "id": "hill-top",      "role": "piece", "rect": [ 10, 25,  6, 4], "surface": 52 },
+    { "id": "savanna-west",  "role": "piece", "rect": [-18, 20, 10, 6], "surface": 43 },
+    { "id": "savanna-gate",  "role": "piece", "rect": [ -8, 18,  6, 5], "surface": 42 },
+    { "id": "savanna-east",  "role": "piece", "rect": [  0, 20,  6, 5], "surface": 43 },
+    { "id": "upper-west",    "role": "piece", "rect": [-16, 26,  8, 5], "surface": 46 },
+    { "id": "upper-centre",  "role": "piece", "rect": [ -8, 26, 10, 5], "surface": 46 },
+    { "id": "upper-east",    "role": "piece", "rect": [  4, 28,  8, 4], "surface": 47 },
+    { "id": "crest-west",    "role": "piece", "rect": [-14, 31,  6, 4], "surface": 50 },
+    { "id": "spawn",         "role": "spawn", "rect": [ -6, 31,  6, 5], "surface": 51 },
+    { "id": "crest-east",    "role": "piece", "rect": [  2, 31,  8, 4], "surface": 50 }
+  ],
+  "zones": [
+    { "id": "river",      "rect": [-20, -1, 40, 2], "holes": [] },
+    { "id": "mid-build",  "rect": [-16,  8, 32, 5], "holes": [] },
+    { "id": "pit-void",   "rect": [-13, 14,  4, 3], "holes": [] }
+  ],
+  "placements": {
+    "spawns": [
+      { "id": "spawn-1", "piece": "spawn", "at": [3, 2], "facing": "front" }
+    ],
+    "wools": [],
+    "iron": [],
+    "destroyables": [
+      {
+        "id": "monument-pit",
+        "piece": "pit-floor",
+        "at": [3, 2],
+        "style": "cube-3",
+        "materials": "obsidian",
+        "float": 2,
+        "name": "<Team> Pit Monument"
+      },
+      {
+        "id": "monument-hill",
+        "piece": "hill-top",
+        "at": [3, 2],
+        "style": "cube-3",
+        "materials": "obsidian",
+        "float": 3,
+        "name": "<Team> Hill Monument"
+      }
+    ],
+    "cores": []
+  },
+  "walls": [],
+  "boxes": []
+}

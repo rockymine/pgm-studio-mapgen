@@ -1,0 +1,160 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 24,
+ "spawns": [
+  {
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 42,
+    "z": 120
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": 110,
+     "maxX": 15,
+     "maxZ": 135
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -15,
+    "minZ": 110,
+    "maxX": 15,
+    "maxZ": 135
+   },
+   "iron": []
+  },
+  {
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 42,
+    "z": -120
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": -135,
+     "maxX": 15,
+     "maxZ": -110
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -15,
+    "minZ": -135,
+    "maxX": 15,
+    "maxZ": -110
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 78,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": 76,
+  "areas": [
+   {
+    "minX": -70,
+    "minZ": -15,
+    "maxX": 70,
+    "maxZ": 20
+   },
+   {
+    "minX": -70,
+    "minZ": -20,
+    "maxX": 70,
+    "maxZ": 15
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "owner": "red",
+   "name": "<Team> West Monument",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -25,
+    "y": 40,
+    "z": 75
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "owner": "red",
+   "name": "<Team> East Monument",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 25,
+    "y": 40,
+    "z": 75
+   },
+   "float": 3,
+   "box": null
+  },
+  {
+   "owner": "blue",
+   "name": "<Team> West Monument",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 25,
+    "y": 40,
+    "z": -75
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "owner": "blue",
+   "name": "<Team> East Monument",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -25,
+    "y": 40,
+    "z": -75
+   },
+   "float": 3,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Sandscar",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": null
+}

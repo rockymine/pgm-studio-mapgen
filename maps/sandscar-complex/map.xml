@@ -1,0 +1,148 @@
+<map proto="1.5.0">
+    <name>Sandscar Complex</name>
+    <version>1.0.0</version>
+    <gamemode>dtm</gamemode>
+    <objective>Destroy the enemy's monuments!</objective>
+    <include id="gapple-kill-reward"/>
+    <teams>
+        <team id="red-team" color="red" max="24">Red</team>
+        <team id="blue-team" color="blue" max="24">Blue</team>
+    </teams>
+    <kits>
+        <kit id="spawn-kit">
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="golden apple"/>
+            <item slot="28" material="arrow"/>
+            <item slot="29" material="shears" unbreakable="true"/>
+            <item slot="30" material="iron spade" unbreakable="true"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </helmet>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </chestplate>
+            <leggings material="chainmail leggings" unbreakable="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </leggings>
+            <boots material="leather boots" unbreakable="true" team-color="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </boots>
+            <effect duration="oo" amplifier="100">damage resistance</effect>
+        </kit>
+        <kit id="reset-resistance-kit" force="true">
+            <effect duration="0" amplifier="0">damage resistance</effect>
+        </kit>
+    </kits>
+    <spawns>
+        <default region="observer-spawn"/>
+        <spawn team="red-team" kit="spawn-kit" yaw="180" region="red-spawn-point"/>
+        <spawn team="blue-team" kit="spawn-kit" region="blue-spawn-point"/>
+    </spawns>
+    <destroyables>
+        <destroyable id="team-pit-monument" name="&lt;Team&gt; Pit Monument" owner="red-team" materials="obsidian" region="team-pit-monument-region"/>
+        <destroyable id="team-hill-monument" name="&lt;Team&gt; Hill Monument" owner="red-team" materials="obsidian" region="team-hill-monument-region"/>
+        <destroyable id="team-pit-monument-2" name="&lt;Team&gt; Pit Monument" owner="blue-team" materials="obsidian" region="team-pit-monument-2-region"/>
+        <destroyable id="team-hill-monument-2" name="&lt;Team&gt; Hill Monument" owner="blue-team" materials="obsidian" region="team-hill-monument-2-region"/>
+    </destroyables>
+    <filters>
+        <team id="only-blue">blue-team</team>
+        <team id="only-red">red-team</team>
+        <not id="no-void">
+            <void/>
+        </not>
+    </filters>
+    <regions>
+        <point id="blue-spawn-point">15,51,-165</point>
+        <point id="red-spawn-point">-15,51,165</point>
+        <point id="observer-spawn">0,79,0</point>
+        <rectangle id="blue-spawn" min="0,-180" max="30,-155"/>
+        <rectangle id="red-spawn" min="-30,155" max="0,180"/>
+        <cuboid id="team-pit-monument-region" min="-46,34,84" max="-43,37,87"/>
+        <cuboid id="team-hill-monument-region" min="64,55,134" max="67,58,137"/>
+        <cuboid id="team-pit-monument-2-region" min="44,34,-86" max="47,37,-83"/>
+        <cuboid id="team-hill-monument-2-region" min="-66,55,-136" max="-63,58,-133"/>
+        <union id="spawns">
+            <region id="red-spawn"/>
+            <region id="blue-spawn"/>
+        </union>
+        <negative id="not-spawns">
+            <region id="spawns"/>
+        </negative>
+        <negative id="not-build-area">
+            <union id="build-area">
+                <rectangle id="build-area-1" min="-100,-5" max="100,5"/>
+                <rectangle id="build-area-2" min="-80,40" max="80,65"/>
+                <rectangle id="build-area-3" min="-80,-65" max="80,-40"/>
+                <rectangle id="build-area-4" min="-65,70" max="-45,85"/>
+                <rectangle id="build-area-5" min="45,-85" max="65,-70"/>
+            </union>
+        </negative>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply block="never" region="spawns" message="You may not block/break spawns!"/>
+        <apply kit="reset-resistance-kit" region="not-spawns"/>
+        <apply block="no-void" region="not-build-area" message="You may not edit the void!"/>
+    </regions>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>diamond pickaxe</item>
+        <item>iron axe</item>
+        <item>water bucket</item>
+        <item>golden apple</item>
+        <item>arrow</item>
+        <item>shears</item>
+        <item>iron spade</item>
+        <item>wood</item>
+        <item>stained clay</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>diamond pickaxe</tool>
+        <tool>iron axe</tool>
+        <tool>shears</tool>
+        <tool>iron spade</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+    <maxbuildheight>76</maxbuildheight>
+</map>

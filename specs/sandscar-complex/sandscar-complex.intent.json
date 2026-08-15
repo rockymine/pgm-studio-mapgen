@@ -1,0 +1,180 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 24,
+ "spawns": [
+  {
+   "team": "red",
+   "point": {
+    "x": -15,
+    "y": 51,
+    "z": 165
+   },
+   "protection": [
+    {
+     "minX": -30,
+     "minZ": 155,
+     "maxX": 0,
+     "maxZ": 180
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -30,
+    "minZ": 155,
+    "maxX": 0,
+    "maxZ": 180
+   },
+   "iron": []
+  },
+  {
+   "team": "blue",
+   "point": {
+    "x": 15,
+    "y": 51,
+    "z": -165
+   },
+   "protection": [
+    {
+     "minX": 0,
+     "minZ": -180,
+     "maxX": 30,
+     "maxZ": -155
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": 0,
+    "minZ": -180,
+    "maxX": 30,
+    "maxZ": -155
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 78,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": 76,
+  "areas": [
+   {
+    "minX": -100,
+    "minZ": -5,
+    "maxX": 100,
+    "maxZ": 5
+   },
+   {
+    "minX": -80,
+    "minZ": 40,
+    "maxX": 80,
+    "maxZ": 65
+   },
+   {
+    "minX": -80,
+    "minZ": -65,
+    "maxX": 80,
+    "maxZ": -40
+   },
+   {
+    "minX": -65,
+    "minZ": 70,
+    "maxX": -45,
+    "maxZ": 85
+   },
+   {
+    "minX": 45,
+    "minZ": -85,
+    "maxX": 65,
+    "maxZ": -70
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "owner": "red",
+   "name": "<Team> Pit Monument",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -45,
+    "y": 32,
+    "z": 85
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "owner": "red",
+   "name": "<Team> Hill Monument",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 65,
+    "y": 52,
+    "z": 135
+   },
+   "float": 3,
+   "box": null
+  },
+  {
+   "owner": "blue",
+   "name": "<Team> Pit Monument",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 45,
+    "y": 32,
+    "z": -85
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "owner": "blue",
+   "name": "<Team> Hill Monument",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -65,
+    "y": 52,
+    "z": -135
+   },
+   "float": 3,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Sandscar Complex",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red",
+  "3": "neutral",
+  "4": "neutral"
+ },
+ "structures": null
+}

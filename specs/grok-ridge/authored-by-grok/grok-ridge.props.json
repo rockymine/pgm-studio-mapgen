@@ -1,0 +1,184 @@
+[
+  {
+    "kind": "house",
+    "id": "spawn-hall",
+    "seed": 101,
+    "style": "ridge-hall",
+    "points": [[-6, 19], [6, 24]],
+    "front": "negZ"
+  },
+  {
+    "kind": "house",
+    "id": "crest-cottage-w",
+    "seed": 102,
+    "style": "ridge-cottage",
+    "points": [[-14, 18], [-8, 23]],
+    "front": "posX"
+  },
+  {
+    "kind": "house",
+    "id": "crest-cottage-e",
+    "seed": 103,
+    "style": "ridge-cottage",
+    "points": [[8, 18], [14, 23]],
+    "front": "negX"
+  },
+
+  {
+    "kind": "house",
+    "id": "wool-west-shelter",
+    "seed": 111,
+    "style": "wool-shelter",
+    "points": [[-15, 17], [-11, 21]],
+    "front": "posZ"
+  },
+  {
+    "kind": "house",
+    "id": "wool-east-shelter",
+    "seed": 112,
+    "style": "wool-shelter",
+    "points": [[10, 3], [14, 7]],
+    "front": "negX"
+  },
+
+  {
+    "kind": "house",
+    "id": "mid-cottage-w",
+    "seed": 121,
+    "style": "ridge-cottage",
+    "points": [[-12, 8], [-7, 13]],
+    "front": "posZ"
+  },
+  {
+    "kind": "house",
+    "id": "mid-cottage-e",
+    "seed": 122,
+    "style": "ridge-cottage",
+    "points": [[7, 8], [12, 13]],
+    "front": "posZ"
+  },
+
+  {
+    "kind": "path",
+    "id": "path-crest",
+    "seed": 201,
+    "points": [[-10, 20], [0, 20], [10, 20]],
+    "radius": 2,
+    "style": "solid",
+    "coverage": 1.0,
+    "pave": {
+      "kind": "cell",
+      "seed": 51,
+      "cellSize": 3,
+      "jitter": 40,
+      "warp": 1,
+      "rise": 0,
+      "palette": [
+        { "kind": "solid", "id": 98, "data": 0 },
+        { "kind": "solid", "id": 1,  "data": 5 },
+        { "kind": "solid", "id": 4,  "data": 0 }
+      ]
+    }
+  },
+  {
+    "kind": "path",
+    "id": "path-up-centre",
+    "seed": 202,
+    "points": [[0, 22], [0, 15], [0, 10]],
+    "radius": 2,
+    "style": "solid",
+    "coverage": 1.0,
+    "pave": {
+      "kind": "cell",
+      "seed": 52,
+      "cellSize": 3,
+      "jitter": 50,
+      "warp": 1,
+      "rise": 0,
+      "palette": [
+        { "kind": "solid", "id": 98, "data": 0 },
+        { "kind": "solid", "id": 98, "data": 1 },
+        { "kind": "solid", "id": 4,  "data": 0 }
+      ]
+    }
+  },
+  {
+    "kind": "path",
+    "id": "path-to-east-wool",
+    "seed": 203,
+    "points": [[4, 6], [8, 5], [12, 5]],
+    "radius": 1,
+    "style": "solid",
+    "coverage": 1.0,
+    "pave": {
+      "kind": "cell",
+      "seed": 53,
+      "cellSize": 2,
+      "jitter": 30,
+      "warp": 1,
+      "rise": 0,
+      "palette": [
+        { "kind": "solid", "id": 98, "data": 0 },
+        { "kind": "solid", "id": 4,  "data": 0 }
+      ]
+    }
+  },
+  {
+    "kind": "path",
+    "id": "path-to-west-wool",
+    "seed": 204,
+    "points": [[-8, 16], [-11, 16], [-13, 17]],
+    "radius": 1,
+    "style": "solid",
+    "coverage": 1.0,
+    "pave": {
+      "kind": "cell",
+      "seed": 54,
+      "cellSize": 2,
+      "jitter": 30,
+      "warp": 1,
+      "rise": 0,
+      "palette": [
+        { "kind": "solid", "id": 98, "data": 0 },
+        { "kind": "solid", "id": 4,  "data": 0 }
+      ]
+    }
+  },
+
+  {
+    "kind": "tree",
+    "id": "t1",
+    "seed": 301,
+    "x": -9, "z": 16,
+    "form": "template",
+    "species": "spruce",
+    "height": 7
+  },
+  {
+    "kind": "tree",
+    "id": "t2",
+    "seed": 302,
+    "x": 9, "z": 16,
+    "form": "template",
+    "species": "spruce",
+    "height": 8
+  },
+  {
+    "kind": "tree",
+    "id": "t3",
+    "seed": 303,
+    "x": -5, "z": 5,
+    "form": "template",
+    "species": "spruce",
+    "height": 6
+  },
+  {
+    "kind": "tree",
+    "id": "t4",
+    "seed": 304,
+    "x": 5, "z": 5,
+    "form": "template",
+    "species": "spruce",
+    "height": 6
+  }
+]

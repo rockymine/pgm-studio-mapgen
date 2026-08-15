@@ -1,0 +1,151 @@
+[
+  {
+    "kind": "house",
+    "id": "spawn-hall",
+    "seed": 1,
+    "style": "desert-hall",
+    "points": [[-6, 23], [6, 28]],
+    "front": "negZ"
+  },
+  {
+    "kind": "house",
+    "id": "west-shelter",
+    "seed": 11,
+    "style": "monument-shelter",
+    "points": [[-9, 13], [-3, 17]],
+    "front": "posZ"
+  },
+  {
+    "kind": "house",
+    "id": "east-shelter",
+    "seed": 12,
+    "style": "monument-shelter",
+    "points": [[3, 13], [9, 17]],
+    "front": "posZ"
+  },
+  {
+    "kind": "path",
+    "id": "path-spawn-to-west",
+    "seed": 101,
+    "points": [[0, 24], [-3, 20], [-5, 16]],
+    "radius": 2,
+    "style": "solid",
+    "coverage": 1.0,
+    "pave": {
+      "kind": "cell",
+      "seed": 51,
+      "cellSize": 3,
+      "jitter": 40,
+      "warp": 1,
+      "rise": 0,
+      "palette": [
+        { "kind": "solid", "id": 24, "data": 0 },
+        { "kind": "solid", "id": 12, "data": 0 },
+        { "kind": "solid", "id": 24, "data": 2 }
+      ]
+    }
+  },
+  {
+    "kind": "path",
+    "id": "path-spawn-to-east",
+    "seed": 102,
+    "points": [[0, 24], [3, 20], [5, 16]],
+    "radius": 2,
+    "style": "solid",
+    "coverage": 1.0,
+    "pave": {
+      "kind": "cell",
+      "seed": 52,
+      "cellSize": 3,
+      "jitter": 40,
+      "warp": 1,
+      "rise": 0,
+      "palette": [
+        { "kind": "solid", "id": 24, "data": 0 },
+        { "kind": "solid", "id": 12, "data": 0 },
+        { "kind": "solid", "id": 24, "data": 2 }
+      ]
+    }
+  },
+  {
+    "kind": "path",
+    "id": "path-to-front",
+    "seed": 103,
+    "points": [[0, 22], [0, 14], [0, 6]],
+    "radius": 2,
+    "style": "solid",
+    "coverage": 1.0,
+    "pave": {
+      "kind": "cell",
+      "seed": 53,
+      "cellSize": 3,
+      "jitter": 35,
+      "warp": 1,
+      "rise": 0,
+      "palette": [
+        { "kind": "solid", "id": 24, "data": 0 },
+        { "kind": "solid", "id": 12, "data": 0 }
+      ]
+    }
+  },
+  {
+    "kind": "path",
+    "id": "river-meander",
+    "seed": 201,
+    "points": [
+      [-11, 10], [-7, 11], [-3, 9], [0, 10], [3, 12], [7, 11], [11, 10]
+    ],
+    "radius": 2,
+    "style": "solid",
+    "coverage": 1.0,
+    "pave": {
+      "kind": "cell",
+      "seed": 60,
+      "cellSize": 2,
+      "jitter": 20,
+      "warp": 2,
+      "rise": -1,
+      "palette": [
+        { "kind": "solid", "id": 8, "data": 0 },
+        { "kind": "solid", "id": 9, "data": 0 }
+      ]
+    },
+    "note": "meandering river east-west across team half (water)"
+  },
+  {
+    "kind": "tree",
+    "id": "t1",
+    "seed": 301,
+    "x": -8, "z": 8,
+    "form": "template",
+    "species": "acacia",
+    "height": 6
+  },
+  {
+    "kind": "tree",
+    "id": "t2",
+    "seed": 302,
+    "x": 8, "z": 8,
+    "form": "template",
+    "species": "acacia",
+    "height": 7
+  },
+  {
+    "kind": "tree",
+    "id": "t3",
+    "seed": 303,
+    "x": -4, "z": 19,
+    "form": "template",
+    "species": "acacia",
+    "height": 5
+  },
+  {
+    "kind": "tree",
+    "id": "t4",
+    "seed": 304,
+    "x": 4, "z": 19,
+    "form": "template",
+    "species": "acacia",
+    "height": 5
+  }
+]

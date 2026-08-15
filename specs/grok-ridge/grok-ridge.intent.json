@@ -1,0 +1,303 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 24,
+ "spawns": [
+  {
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 28,
+    "z": 100
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 90,
+     "maxX": 10,
+     "maxZ": 110
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 90,
+    "maxX": 10,
+    "maxZ": 110
+   },
+   "iron": []
+  },
+  {
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 28,
+    "z": -100
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -110,
+     "maxX": 10,
+     "maxZ": -90
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -110,
+    "maxX": 10,
+    "maxZ": -90
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 52,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": 42,
+  "areas": [
+   {
+    "minX": -60,
+    "minZ": -10,
+    "maxX": 60,
+    "maxZ": 10
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "owner": "red",
+   "color": "red",
+   "room": [
+    {
+     "minX": -65,
+     "minZ": 90,
+     "maxX": -50,
+     "maxZ": 105
+    }
+   ],
+   "spawn": {
+    "x": -60,
+    "y": 24,
+    "z": 95
+   },
+   "monuments": [],
+   "piece": {
+    "minX": -65,
+    "minZ": 90,
+    "maxX": -50,
+    "maxZ": 105
+   },
+   "entries": [
+    {
+     "minX": -65,
+     "minZ": 90,
+     "maxX": -50,
+     "maxZ": 90
+    }
+   ]
+  },
+  {
+   "owner": "red",
+   "color": "orange",
+   "room": [
+    {
+     "minX": 55,
+     "minZ": 20,
+     "maxX": 70,
+     "maxZ": 35
+    }
+   ],
+   "spawn": {
+    "x": 60,
+    "y": 16,
+    "z": 25
+   },
+   "monuments": [],
+   "piece": {
+    "minX": 55,
+    "minZ": 20,
+    "maxX": 70,
+    "maxZ": 35
+   },
+   "entries": [
+    {
+     "minX": 55,
+     "minZ": 20,
+     "maxX": 55,
+     "maxZ": 35
+    }
+   ]
+  },
+  {
+   "owner": "blue",
+   "color": "blue",
+   "room": [
+    {
+     "minX": 50,
+     "minZ": -105,
+     "maxX": 65,
+     "maxZ": -90
+    }
+   ],
+   "spawn": {
+    "x": 60,
+    "y": 24,
+    "z": -95
+   },
+   "monuments": [],
+   "piece": {
+    "minX": 50,
+    "minZ": -105,
+    "maxX": 65,
+    "maxZ": -90
+   },
+   "entries": [
+    {
+     "minX": 50,
+     "minZ": -90,
+     "maxX": 65,
+     "maxZ": -90
+    }
+   ]
+  },
+  {
+   "owner": "blue",
+   "color": "light_blue",
+   "room": [
+    {
+     "minX": -70,
+     "minZ": -35,
+     "maxX": -55,
+     "maxZ": -20
+    }
+   ],
+   "spawn": {
+    "x": -60,
+    "y": 16,
+    "z": -25
+   },
+   "monuments": [],
+   "piece": {
+    "minX": -70,
+    "minZ": -35,
+    "maxX": -55,
+    "maxZ": -20
+   },
+   "entries": [
+    {
+     "minX": -55,
+     "minZ": -35,
+     "maxX": -55,
+     "maxZ": -20
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "meta": {
+  "name": "Grok Ridge",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": {
+  "roomFloors": [
+   {
+    "minX": 55,
+    "minZ": 20,
+    "maxX": 70,
+    "maxZ": 35
+   },
+   {
+    "minX": -70,
+    "minZ": -35,
+    "maxX": -55,
+    "maxZ": -20
+   },
+   {
+    "minX": -65,
+    "minZ": 90,
+    "maxX": -50,
+    "maxZ": 105
+   },
+   {
+    "minX": 50,
+    "minZ": -105,
+    "maxX": 65,
+    "maxZ": -90
+   }
+  ],
+  "redstoneLines": [
+   {
+    "x1": 55,
+    "z1": 20,
+    "x2": 55,
+    "z2": 34
+   },
+   {
+    "x1": -56,
+    "z1": -35,
+    "x2": -56,
+    "z2": -21
+   },
+   {
+    "x1": -65,
+    "z1": 90,
+    "x2": -51,
+    "z2": 90
+   },
+   {
+    "x1": 50,
+    "z1": -91,
+    "x2": 64,
+    "z2": -91
+   }
+  ],
+  "ironCubes": [],
+  "walls": [
+   {
+    "minX": -25,
+    "minZ": 34,
+    "maxX": 0,
+    "maxZ": 36,
+    "topY": 20,
+    "chestOnMinFace": true
+   },
+   {
+    "minX": 0,
+    "minZ": -36,
+    "maxX": 25,
+    "maxZ": -34,
+    "topY": 20,
+    "chestOnMinFace": false
+   }
+  ],
+  "isEmpty": false
+ }
+}

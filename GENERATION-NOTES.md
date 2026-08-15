@@ -261,7 +261,36 @@ Carried forward from `AGENT-REPORT.md` / `AGENT-REPORT-2.md` / `FINDINGS.md`, re
   hard `BZ6` violation (a build band two cells from a wool room) plus three soft ones on the first draft of
   the Marlstone plan. Score went 1008 → 3.7 across two edits, both of which improved the board.
 
-## 11. Two PowerShell traps, if you drive the API from Windows
+## 11. Four more silences, found by driving another model's documents through cold
+
+Everything in this entry came from `reports/grok-run1.md`: three maps written against the documentation
+with no live API, then posted to the endpoints for the first time. Every fault below is one the author
+could not have seen, because each of them answers `200`.
+
+**A rectangle's four fields are `min_x`/`min_z`/`max_x`/`max_z`, not `x`/`z`/`w`/`h`.** This is entry §1's
+trap one level down: the shape carries `type: "rectangle"`, so `RingOf` dispatches correctly, and then
+reads four properties that are not there. Unknown keys are dropped, the known ones default to zero, and
+the ring is a degenerate point at the origin. Fourteen rectangles across two maps covered nothing.
+`sketch/from-plan` answered `{"ok": true}`; `sketch/finish` answered `422 Nothing is drawn`, naming the
+layout rather than the shapes.
+
+**`relief` rides at the document root, not inside `layout`.** Written beside `shapes` and `islands` it is
+dropped silently. Root, keyed by island id — and the island id has to be the one the layout actually
+carries (a compiled layout's is `team`, not whatever the hand-written document called it).
+
+**The relief vocabulary is `marks`, and a plausible one is not read.** `{noise: {...}, features: [{type:
+"hill", …}]}` parses, keeps `base`, and produces a flat field: `SketchReliefJson` reads `grain` and
+`marks[{kind: point|line|area|rim|scarp, at, r, h}]` and ignores the rest. Relief is also **island-wide**:
+a shape keeps its own stated top only under `relief_scope: "hold"`, so a relief whose `base` disagrees with
+a terraced board's surfaces flattens the terraces and nothing reports the conflict.
+
+**A house prop over the footprint cap is dropped without a word.** `HouseProp.MaxFootprint` is 192 blocks²
+and `Footprint()` answers null past it — no finding, no warning, an export with no building in it. Seven
+of seven houses vanished this way. The cause upstream was a unit error worth its own line: **dressing is
+in world blocks, and a plan is in cells**, so props copied from plan-space coordinates land at 1/`cell`
+scale — and a room dimensioned in cells (12 × 5) becomes a 60 × 25 stadium once multiplied back.
+
+## 12. Two PowerShell traps, if you drive the API from Windows
 
 Not the studio's fault, but they cost a cycle each and the failure looks like a server bug.
 

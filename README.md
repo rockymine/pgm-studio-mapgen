@@ -66,6 +66,22 @@ Grouped by the run that produced them. Mode is what the map's own `<gamemode>` d
 | `haiku-r2-canonical-8` | — | Haiku | **not a map** — see below |
 | `haiku-r2-ctw-mid` | — | Haiku | **not a map** — see below |
 
+### Grok run 1 — authored blind, built afterwards
+
+Three maps written by Grok from the documentation alone, with **no running studio**: nothing it wrote was
+ever posted, compiled or exported by its author. They were driven through the endpoints for the first time
+here. Two of the three plans were refused for cell arithmetic and fixed with four rect edits; every layout
+document rasterized to no ground; the dressing was authored in plan cells rather than blocks.
+[reports/grok-run1.md](reports/grok-run1.md) is what each document did, and
+[reports/grok-experience.md](reports/grok-experience.md) is Grok's own account, written before any of it
+was run. Each map's `specs/<slug>/authored-by-grok/` holds the original documents verbatim.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `grok-ridge` | ctw | Grok | three terraces and a crest, a wool room off each side, a mid build band, one approach wall at the gate seam |
+| `sandscar` | dtm | Grok | one plateau a team, two monuments 50 apart, a hollow under one and a hill under the other, a river dragged across as a paved path |
+| `sandscar-complex` | dtm | Grok | a height progression from a river front to a dug pit and a climbed hill, both carrying a monument, savanna crest behind |
+
 **`*` — the mode is wrong, and the map is not.** Every board marked `ctw*` is a destroy board whose
 `map.xml` says `ctw`, because it was built before `MetaGenerator` learned to derive `<gamemode>` and the
 objective line from the objective modules the intent actually carries. Boards built after that fix declare

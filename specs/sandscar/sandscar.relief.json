@@ -1,0 +1,13 @@
+{
+  "team": {
+    "base": 40,
+    "step": 1,
+    "grain": { "amplitude": 2.5, "scale": 25, "seed": 1 },
+    "marks": [
+      { "id": "west-hollow",  "kind": "point", "at": [-25, 75],  "r": 18, "h": 32 },
+      { "id": "east-hill",    "kind": "point", "at": [25, 75],   "r": 16, "h": 50 },
+      { "id": "spawn-rise",   "kind": "point", "at": [0, 100],   "r": 12, "h": 44 },
+      { "id": "front-flats",  "kind": "point", "at": [0, 45],    "r": 25, "h": 40 }
+    ]
+  }
+}

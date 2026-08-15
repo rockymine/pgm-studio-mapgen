@@ -1,0 +1,256 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Grok Ridge"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 24,
+    "surface": 12,
+    "headroom": 30,
+    "observerY": 52
+  },
+  "pieces": [
+    {
+      "id": "low-west",
+      "role": "piece",
+      "rect": [
+        -11,
+        2,
+        6,
+        5
+      ],
+      "surface": 15
+    },
+    {
+      "id": "low-gate",
+      "role": "piece",
+      "rect": [
+        -5,
+        2,
+        5,
+        5
+      ],
+      "surface": 14
+    },
+    {
+      "id": "low-east",
+      "role": "piece",
+      "rect": [
+        0,
+        2,
+        6,
+        5
+      ],
+      "surface": 15
+    },
+    {
+      "id": "wool-east-approach",
+      "role": "piece",
+      "rect": [
+        6,
+        3,
+        5,
+        4
+      ],
+      "surface": 15
+    },
+    {
+      "id": "wool-east-room",
+      "role": "wool-room",
+      "rect": [
+        11,
+        4,
+        3,
+        3
+      ],
+      "surface": 16
+    },
+    {
+      "id": "mid-west",
+      "role": "piece",
+      "rect": [
+        -10,
+        7,
+        5,
+        5
+      ],
+      "surface": 19
+    },
+    {
+      "id": "mid-gate",
+      "role": "piece",
+      "rect": [
+        -5,
+        7,
+        5,
+        4
+      ],
+      "surface": 18
+    },
+    {
+      "id": "mid-east",
+      "role": "piece",
+      "rect": [
+        0,
+        7,
+        5,
+        5
+      ],
+      "surface": 19
+    },
+    {
+      "id": "mid-bridge",
+      "role": "piece",
+      "rect": [
+        -4,
+        11,
+        8,
+        2
+      ],
+      "surface": 19
+    },
+    {
+      "id": "up-west",
+      "role": "piece",
+      "rect": [
+        -9,
+        13,
+        4,
+        5
+      ],
+      "surface": 23
+    },
+    {
+      "id": "up-centre",
+      "role": "piece",
+      "rect": [
+        -5,
+        13,
+        10,
+        5
+      ],
+      "surface": 23
+    },
+    {
+      "id": "up-east",
+      "role": "piece",
+      "rect": [
+        5,
+        13,
+        4,
+        5
+      ],
+      "surface": 23
+    },
+    {
+      "id": "wool-west-runup",
+      "role": "piece",
+      "rect": [
+        -13,
+        14,
+        4,
+        4
+      ],
+      "surface": 22
+    },
+    {
+      "id": "wool-west-room",
+      "role": "wool-room",
+      "rect": [
+        -13,
+        18,
+        3,
+        3
+      ],
+      "surface": 24
+    },
+    {
+      "id": "crest-west",
+      "role": "piece",
+      "rect": [
+        -8,
+        18,
+        6,
+        4
+      ],
+      "surface": 27
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        18,
+        4,
+        4
+      ],
+      "surface": 28
+    },
+    {
+      "id": "crest-east",
+      "role": "piece",
+      "rect": [
+        2,
+        18,
+        6,
+        4
+      ],
+      "surface": 27
+    }
+  ],
+  "zones": [
+    {
+      "id": "mid-build",
+      "rect": [
+        -12,
+        -2,
+        24,
+        4
+      ],
+      "holes": []
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          2
+        ],
+        "facing": "front"
+      }
+    ],
+    "wools": [
+      {
+        "id": "wool-west",
+        "piece": "wool-west-room",
+        "at": [
+          1,
+          1
+        ]
+      },
+      {
+        "id": "wool-east",
+        "piece": "wool-east-room",
+        "at": [
+          1,
+          1
+        ]
+      }
+    ],
+    "iron": [],
+    "destroyables": [],
+    "cores": []
+  },
+  "walls": [
+    {
+      "a": "low-gate",
+      "b": "mid-gate"
+    }
+  ],
+  "boxes": []
+}
