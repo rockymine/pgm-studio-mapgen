@@ -290,6 +290,21 @@ of seven houses vanished this way. The cause upstream was a unit error worth its
 in world blocks, and a plan is in cells**, so props copied from plan-space coordinates land at 1/`cell`
 scale — and a room dimensioned in cells (12 × 5) becomes a 60 × 25 stadium once multiplied back.
 
+**A section's lines are the renderer's, not the world's.** `--section` blends a horizontal scale over the
+image (`SectionRender.DrawScale`): a white line at 16% alpha every `--ticks` blocks of Y (default 8) and a
+**yellow** one (`#FFD400`) at 36% every fifth tick — every 40 blocks by default. They are translucent because
+they are drawn over the terrain rather than replacing it, the same discipline the heightmap's contours use,
+and there are **no vertical gridlines at all**: every vertical division in a section is a real block. The two
+backgrounds are also two different answers — pale `#E7ECF3` is air inside a loaded chunk, near-black
+`#0E0E12` is no chunk at all.
+
+**A house wing under three blocks on either side is dropped, silently, like one over the cap.**
+`HouseProp.Footprint()` answers null when `maxX - minX + 1 < 3` or the same on Z — a wing has to hold two
+walls and an inside — and null past `MaxFootprint` at the other end. Both ends of the range fail the same
+way: no finding, no warning, an export with one fewer building than the document asked for. Three blocks is
+therefore the legal minimum and not a fault; the smallest building in the Grok run measures 7×7 stamped,
+from a 4×4 authored wing plus its eaves.
+
 ## 12. Two PowerShell traps, if you drive the API from Windows
 
 Not the studio's fault, but they cost a cycle each and the failure looks like a server bug.
