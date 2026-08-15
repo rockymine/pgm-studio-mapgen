@@ -72,6 +72,17 @@ Binding `wool-shelter` as the cage style also turns its stated `"gableWindows": 
 into an **export** 500 — `{"error":"Object reference not set to an instance of an object."}` on
 `GET /map/{slug}/export`, with no rule id and no subject, on a map whose every other call answered 200.
 
+## The wall measures 25 × 2, and the render says 26 × 3
+
+The approach wall between `low-gate` and `mid-gate` — the feature the plan was corrected for — stands as
+bedrock over `x −25..−1, z 34..35`, five courses to y20 with a course of cobweb at y21 (`StampWall`: the
+barrier is bedrock plus one web, so an attacker who bridges to the top meets something shears can cut).
+
+`renders/12-structures-buildings.png` draws it 26 × 3, because that render reads the recorded provenance and
+the sidecar claims one column past the wall on each max edge — the stamper walks the rect max-exclusive and
+`ClaimRect` walks it max-inclusive. `(−12, 36)` and `(−25, 36)` are stone brick at y17, ordinary terrace, in
+a row the sidecar attributes to the wall. `GENERATION-NOTES.md` §11 has the measurement.
+
 ## The paint is an approximation, and it is grey
 
 `specs/grok-ridge/approximated-theme.json` writes THEME.md's palette table as two real terrain themes —

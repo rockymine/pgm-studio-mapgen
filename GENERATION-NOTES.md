@@ -305,6 +305,28 @@ way: no finding, no warning, an export with one fewer building than the document
 therefore the legal minimum and not a fault; the smallest building in the Grok run measures 7×7 stamped,
 from a 4×4 authored wing plus its eaves.
 
+**The approach wall is recorded one column wider than it is built, on both axes.** A structure read that
+trusts `provenance.json` — which `--topdown` does, and says so with `STRUCTURE READING: RECORDED
+PROVENANCE` — draws Grok Ridge's wall as a **26 × 3** bar. The world has a **25 × 2** one. Measured on
+`maps/grok-ridge`, four columns along its length:
+
+| column | top block |
+|---|---|
+| `(−25, 34)` · `(−25, 35)` · `(−12, 34)` · `(−12, 35)` · `(−1, 34)` | cobweb y21 over bedrock y20…16 — the wall |
+| `(−25, 36)` · `(−12, 36)` · `(−1, 36)` | stone brick y17 — the mid terrace, no wall |
+| `(0, 35)` | chiselled stone brick y18 — the rim, no wall |
+
+The cause is two conventions meeting: `StructureStamper.StampWall` walks its footprint **max-exclusive**
+(`for x < maxX`), which is what the intent's own rect means — `SketchWorldBuilder` says so in a comment
+("intent footprints are a fractional corner pair over whole world blocks (max exclusive)") — while
+`ClaimStructures` hands the same rect to `WorldProvenance.ClaimRect`, which walks it **max-inclusive**
+(`for x <= maxX`). One extra column on each max edge, in the sidecar only.
+
+Worth knowing for two reasons. A wall read from a render looks thicker than it plays, and a bedrock line's
+thickness is exactly what decides whether it can be built over. And it is a reminder that the provenance
+sidecar is a *record of intent to claim*, not a read of the blocks: where the two disagree, `--column` is
+the one that has looked at the world.
+
 ## 12. Two PowerShell traps, if you drive the API from Windows
 
 Not the studio's fault, but they cost a cycle each and the failure looks like a server bug.
