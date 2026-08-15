@@ -53,6 +53,24 @@ written `{"material": {…}}`, one wrapper deeper than the model reads, which is
 names as `style.sill.kind`; `monument-shelter` states `"gableWindows": null` and `"doorHead": null`, which
 crashes the stamper rather than being read as "no such part".
 
+## The buildings, recovered — and two the gate refused
+
+The README's "spawn hall + two monument shelters" is an assignment, and `desert-hall` bound as
+`roomStyles.spawn` puts the hall over each spawn pad with no rescaling — a bound room's frame comes from the
+plan piece, so the prop cap never applies. `renders/11-topdown-material-buildings.png` is that board.
+
+The two monument shelters are the one thing left out, and the studio is the one that left them out:
+
+```
+GET /api/map/{slug}/export → 409 OB19
+building 'west-shelter' at (-30, 73) stands inside a goal's clearance;
+building 'east-shelter' at (27, 73) stands inside a goal's clearance
+```
+
+They were placed over the monuments — which the ×5 reading puts within a few blocks of the goals — and
+roofing a destroyable is a real fault rather than a formatting one. The gate named both by id and
+coordinate. Everything else in that document built.
+
 ## The paint is an approximation
 
 Nothing defines `desert-savanna` or `savanna-crest`, the two names Grok's layout writes on its shapes, so

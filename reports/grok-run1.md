@@ -207,6 +207,49 @@ it is a `path` prop paved with a `cell` material whose palette is blocks 8 and 9
 water. It reads as a river in the top-down (`renders/06-topdown-dressed.png`) and it never touches the
 ground, which is what a path does.
 
+### 3.3.1 The buildings are recoverable, and the spawn/wool assignment is not a guess
+
+Grok did say which building goes on the spawn and which on the wool rooms. `THEME.md` assigns `ridge-hall`
+to the spawn — "intended as the main spawn structure sitting on the crest" — and `wool-shelter` to the wool
+rooms — "sits over / beside the wool rooms as light cover" — and his props place exactly those styles at
+exactly those pieces. Sandscar's README says the same in one line: "spawn hall + two monument shelters".
+
+The studio has a first-class key for that pair, and it is the one key his documents never touch:
+`roomStyles: {spawn, cage}` on the layout, the snapshot the export stamps every spawn cube and every wool
+cage with (`structures.md` §9). Bound there, his styles land with **no interpretation at all** — and the
+footprint problem disappears with them, because a bound room's frame comes from the plan piece it sits on
+rather than from the prop cap (`HouseProp.MaxFootprint` is "the prop's, not the stamper's").
+
+The free-standing houses need exactly one interpretation, and it is worth stating rather than hiding. Every
+house rect is in plan cells, so the ×5 **centre** is where he put it — all ten land on the piece their id
+names, which is what proves the unit — while ×5 the **extent** is a stadium. So the placement is taken from
+the cell reading and the extent from the numbers as written: a 12×5 hall, centred where he drew it. Every
+number is his; only the axis each is read on differs. `specs/recovered-buildings.py` is that rule, and
+`specs/<slug>/recovered-buildings.json` the result.
+
+With both halves in place the buildings are on the maps:
+
+| Map | Recorded by the build's own provenance |
+|---|---|
+| `grok-ridge` | **14 houses** (all seven, both team images), 4 room floors, 4 wool, 2 spawn, 2 walls |
+| `sandscar` | 2 houses, plus the bound `desert-hall` over each spawn pad |
+| `sandscar-complex` | 6 houses, plus the bound spawn shell |
+
+`maps/grok-ridge/renders/13-section-spawn-hall.png` is the one that settles it: a section down `z = 107`
+showing the hall standing on the crest — andesite walls, spruce corner posts, glazed panes, a roof with the
+overhang his style asks for.
+
+**Sandscar's two monument shelters were refused, and the refusal is right.** They were placed over the
+monuments, and the export answered `409 OB19`: *building 'west-shelter' at (−30, 73) stands inside a goal's
+clearance*. Roofing a destroyable is a real gameplay fault, the gate is there to catch it, and it caught it
+by name and coordinate. They are the only two props left out; the rest of that map's dressing built.
+
+**And the null bug is worse when the style is bound than when it is previewed.** `wool-shelter` bound as
+the cage style takes `GET /map/{slug}/export` down with `500 {"error":"Object reference not set to an
+instance of an object."}` — no rule id, no subject, no field, on a map whose every other call answered 200.
+Previewing the same style at least names nothing; exporting names nothing either, but it costs the whole
+world.
+
 ## 3.4 The terrain themes are the one part that had to be invented
 
 Eight theme names are written on the shapes of the two Sandscars and four on Grok Ridge —

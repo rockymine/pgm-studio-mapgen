@@ -1,0 +1,1417 @@
+{
+ "roomStyles": {
+  "spawn": {
+   "wall": {
+    "extent": 8,
+    "courses": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      "height": 1
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      "height": 4
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 3
+      },
+      "height": 1
+     }
+    ]
+   },
+   "post": {
+    "kind": "solid",
+    "id": 17,
+    "data": 1
+   },
+   "sill": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "gable": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   },
+   "roof": {
+    "kind": "solid",
+    "id": 159,
+    "data": 7
+   },
+   "verge": {
+    "kind": "solid",
+    "id": 17,
+    "data": 1
+   },
+   "floor": {
+    "extent": 1,
+    "courses": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      "height": 1
+     }
+    ]
+   },
+   "surface": {
+    "field": null,
+    "border": null,
+    "borderWidth": 1,
+    "inlay": null,
+    "inlayInset": 2,
+    "isPlain": true
+   },
+   "windows": {
+    "form": "arched",
+    "block": 102,
+    "data": 0,
+    "hostBlock": -1,
+    "hostData": 0,
+    "sill": 2,
+    "width": 2,
+    "height": 3,
+    "spacing": 3
+   },
+   "gableWindows": {
+    "form": "pane",
+    "block": 102,
+    "data": 0,
+    "hostBlock": -1,
+    "hostData": 0,
+    "sill": 1,
+    "width": 1,
+    "height": 2,
+    "spacing": 3
+   },
+   "form": "gable",
+   "pitch": 1,
+   "overhang": 1,
+   "ridgeCap": true,
+   "roofHole": false,
+   "roofSlab": 44,
+   "roofSlabData": 0,
+   "beams": {
+    "block": 17,
+    "data": 1,
+    "reach": 1,
+    "any": false
+   },
+   "storeys": [],
+   "porch": null,
+   "doorEdge": null,
+   "door": "air",
+   "doorWidth": 2,
+   "doorHeight": 3,
+   "doorHead": {
+    "form": "arched",
+    "block": 109,
+    "fill": "upperSlab",
+    "fillBlock": 44,
+    "fillData": 0
+   }
+  },
+  "cage": {
+   "wall": {
+    "extent": 4,
+    "courses": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      "height": 1
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      "height": 3
+     }
+    ]
+   },
+   "post": {
+    "kind": "solid",
+    "id": 17,
+    "data": 1
+   },
+   "sill": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "gable": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   },
+   "roof": {
+    "kind": "solid",
+    "id": 159,
+    "data": 7
+   },
+   "verge": {
+    "kind": "solid",
+    "id": 17,
+    "data": 1
+   },
+   "floor": {
+    "extent": 1,
+    "courses": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      "height": 1
+     }
+    ]
+   },
+   "surface": {
+    "field": null,
+    "border": null,
+    "borderWidth": 1,
+    "inlay": null,
+    "inlayInset": 1,
+    "isPlain": true
+   },
+   "windows": {
+    "form": "pane",
+    "block": 102,
+    "data": 0,
+    "hostBlock": -1,
+    "hostData": 0,
+    "sill": 1,
+    "width": 1,
+    "height": 2,
+    "spacing": 2
+   },
+   "gableWindows": {
+    "form": "none"
+   },
+   "form": "shed",
+   "pitch": 1,
+   "overhang": 1,
+   "ridgeCap": false,
+   "roofHole": false,
+   "roofSlab": 44,
+   "roofSlabData": 0,
+   "beams": {
+    "block": 17,
+    "data": 1,
+    "reach": 0,
+    "any": false
+   },
+   "storeys": [],
+   "porch": null,
+   "doorEdge": null,
+   "door": "air",
+   "doorWidth": 1,
+   "doorHeight": 2,
+   "doorHead": {
+    "form": "none"
+   }
+  }
+ },
+ "dressing": {
+  "props": [
+   {
+    "kind": "house",
+    "id": "spawn-hall",
+    "seed": 101,
+    "style": {
+     "wall": {
+      "extent": 8,
+      "courses": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        "height": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 5
+        },
+        "height": 4
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 3
+        },
+        "height": 1
+       }
+      ]
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "sill": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     },
+     "gable": {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     "roof": {
+      "kind": "solid",
+      "id": 159,
+      "data": 7
+     },
+     "verge": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "floor": {
+      "extent": 1,
+      "courses": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        "height": 1
+       }
+      ]
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 2,
+      "isPlain": true
+     },
+     "windows": {
+      "form": "arched",
+      "block": 102,
+      "data": 0,
+      "hostBlock": -1,
+      "hostData": 0,
+      "sill": 2,
+      "width": 2,
+      "height": 3,
+      "spacing": 3
+     },
+     "gableWindows": {
+      "form": "pane",
+      "block": 102,
+      "data": 0,
+      "hostBlock": -1,
+      "hostData": 0,
+      "sill": 1,
+      "width": 1,
+      "height": 2,
+      "spacing": 3
+     },
+     "form": "gable",
+     "pitch": 1,
+     "overhang": 1,
+     "ridgeCap": true,
+     "roofHole": false,
+     "roofSlab": 44,
+     "roofSlabData": 0,
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 1,
+      "any": false
+     },
+     "storeys": [],
+     "porch": null,
+     "doorEdge": null,
+     "door": "air",
+     "doorWidth": 2,
+     "doorHeight": 3,
+     "doorHead": {
+      "form": "arched",
+      "block": 109,
+      "fill": "upperSlab",
+      "fillBlock": 44,
+      "fillData": 0
+     }
+    },
+    "front": "NegZ",
+    "wings": [
+     [
+      [
+       -6,
+       105
+      ],
+      [
+       6,
+       110
+      ]
+     ]
+    ]
+   },
+   {
+    "kind": "house",
+    "id": "crest-cottage-w",
+    "seed": 102,
+    "style": {
+     "wall": {
+      "extent": 5,
+      "courses": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        "height": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 5
+        },
+        "height": 3
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        "height": 1
+       }
+      ]
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "sill": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     },
+     "gable": {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     "roof": {
+      "kind": "solid",
+      "id": 159,
+      "data": 7
+     },
+     "verge": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "floor": {
+      "extent": 1,
+      "courses": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 5,
+         "data": 1
+        },
+        "height": 1
+       }
+      ]
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 2,
+      "isPlain": true
+     },
+     "windows": {
+      "form": "pane",
+      "block": 102,
+      "data": 0,
+      "hostBlock": -1,
+      "hostData": 0,
+      "sill": 2,
+      "width": 1,
+      "height": 2,
+      "spacing": 3
+     },
+     "gableWindows": {
+      "form": "pane",
+      "block": 102,
+      "data": 0,
+      "hostBlock": -1,
+      "hostData": 0,
+      "sill": 1,
+      "width": 1,
+      "height": 2,
+      "spacing": 3
+     },
+     "form": "hip",
+     "pitch": 1,
+     "overhang": 1,
+     "ridgeCap": true,
+     "roofHole": false,
+     "roofSlab": 44,
+     "roofSlabData": 0,
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 1,
+      "any": false
+     },
+     "storeys": [],
+     "porch": null,
+     "doorEdge": null,
+     "door": "air",
+     "doorWidth": 1,
+     "doorHeight": 2,
+     "doorHead": {
+      "form": "none",
+      "block": 0,
+      "fill": "upperSlab",
+      "fillBlock": 44,
+      "fillData": 0
+     }
+    },
+    "front": "PosX",
+    "wings": [
+     [
+      [
+       -58,
+       100
+      ],
+      [
+       -52,
+       105
+      ]
+     ]
+    ]
+   },
+   {
+    "kind": "house",
+    "id": "crest-cottage-e",
+    "seed": 103,
+    "style": {
+     "wall": {
+      "extent": 5,
+      "courses": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        "height": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 5
+        },
+        "height": 3
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        "height": 1
+       }
+      ]
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "sill": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     },
+     "gable": {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     "roof": {
+      "kind": "solid",
+      "id": 159,
+      "data": 7
+     },
+     "verge": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "floor": {
+      "extent": 1,
+      "courses": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 5,
+         "data": 1
+        },
+        "height": 1
+       }
+      ]
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 2,
+      "isPlain": true
+     },
+     "windows": {
+      "form": "pane",
+      "block": 102,
+      "data": 0,
+      "hostBlock": -1,
+      "hostData": 0,
+      "sill": 2,
+      "width": 1,
+      "height": 2,
+      "spacing": 3
+     },
+     "gableWindows": {
+      "form": "pane",
+      "block": 102,
+      "data": 0,
+      "hostBlock": -1,
+      "hostData": 0,
+      "sill": 1,
+      "width": 1,
+      "height": 2,
+      "spacing": 3
+     },
+     "form": "hip",
+     "pitch": 1,
+     "overhang": 1,
+     "ridgeCap": true,
+     "roofHole": false,
+     "roofSlab": 44,
+     "roofSlabData": 0,
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 1,
+      "any": false
+     },
+     "storeys": [],
+     "porch": null,
+     "doorEdge": null,
+     "door": "air",
+     "doorWidth": 1,
+     "doorHeight": 2,
+     "doorHead": {
+      "form": "none",
+      "block": 0,
+      "fill": "upperSlab",
+      "fillBlock": 44,
+      "fillData": 0
+     }
+    },
+    "front": "NegX",
+    "wings": [
+     [
+      [
+       52,
+       100
+      ],
+      [
+       58,
+       105
+      ]
+     ]
+    ]
+   },
+   {
+    "kind": "house",
+    "id": "wool-west-shelter",
+    "seed": 111,
+    "style": {
+     "wall": {
+      "extent": 4,
+      "courses": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        "height": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 5
+        },
+        "height": 3
+       }
+      ]
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "sill": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     },
+     "gable": {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     "roof": {
+      "kind": "solid",
+      "id": 159,
+      "data": 7
+     },
+     "verge": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "floor": {
+      "extent": 1,
+      "courses": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        "height": 1
+       }
+      ]
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 1,
+      "isPlain": true
+     },
+     "windows": {
+      "form": "pane",
+      "block": 102,
+      "data": 0,
+      "hostBlock": -1,
+      "hostData": 0,
+      "sill": 1,
+      "width": 1,
+      "height": 2,
+      "spacing": 2
+     },
+     "gableWindows": {
+      "form": "none"
+     },
+     "form": "shed",
+     "pitch": 1,
+     "overhang": 1,
+     "ridgeCap": false,
+     "roofHole": false,
+     "roofSlab": 44,
+     "roofSlabData": 0,
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 0,
+      "any": false
+     },
+     "storeys": [],
+     "porch": null,
+     "doorEdge": null,
+     "door": "air",
+     "doorWidth": 1,
+     "doorHeight": 2,
+     "doorHead": {
+      "form": "none"
+     }
+    },
+    "front": "PosZ",
+    "wings": [
+     [
+      [
+       -67,
+       93
+      ],
+      [
+       -63,
+       97
+      ]
+     ]
+    ]
+   },
+   {
+    "kind": "house",
+    "id": "wool-east-shelter",
+    "seed": 112,
+    "style": {
+     "wall": {
+      "extent": 4,
+      "courses": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        "height": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 5
+        },
+        "height": 3
+       }
+      ]
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "sill": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     },
+     "gable": {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     "roof": {
+      "kind": "solid",
+      "id": 159,
+      "data": 7
+     },
+     "verge": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "floor": {
+      "extent": 1,
+      "courses": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        "height": 1
+       }
+      ]
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 1,
+      "isPlain": true
+     },
+     "windows": {
+      "form": "pane",
+      "block": 102,
+      "data": 0,
+      "hostBlock": -1,
+      "hostData": 0,
+      "sill": 1,
+      "width": 1,
+      "height": 2,
+      "spacing": 2
+     },
+     "gableWindows": {
+      "form": "none"
+     },
+     "form": "shed",
+     "pitch": 1,
+     "overhang": 1,
+     "ridgeCap": false,
+     "roofHole": false,
+     "roofSlab": 44,
+     "roofSlabData": 0,
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 0,
+      "any": false
+     },
+     "storeys": [],
+     "porch": null,
+     "doorEdge": null,
+     "door": "air",
+     "doorWidth": 1,
+     "doorHeight": 2,
+     "doorHead": {
+      "form": "none"
+     }
+    },
+    "front": "NegX",
+    "wings": [
+     [
+      [
+       58,
+       23
+      ],
+      [
+       62,
+       27
+      ]
+     ]
+    ]
+   },
+   {
+    "kind": "house",
+    "id": "mid-cottage-w",
+    "seed": 121,
+    "style": {
+     "wall": {
+      "extent": 5,
+      "courses": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        "height": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 5
+        },
+        "height": 3
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        "height": 1
+       }
+      ]
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "sill": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     },
+     "gable": {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     "roof": {
+      "kind": "solid",
+      "id": 159,
+      "data": 7
+     },
+     "verge": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "floor": {
+      "extent": 1,
+      "courses": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 5,
+         "data": 1
+        },
+        "height": 1
+       }
+      ]
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 2,
+      "isPlain": true
+     },
+     "windows": {
+      "form": "pane",
+      "block": 102,
+      "data": 0,
+      "hostBlock": -1,
+      "hostData": 0,
+      "sill": 2,
+      "width": 1,
+      "height": 2,
+      "spacing": 3
+     },
+     "gableWindows": {
+      "form": "pane",
+      "block": 102,
+      "data": 0,
+      "hostBlock": -1,
+      "hostData": 0,
+      "sill": 1,
+      "width": 1,
+      "height": 2,
+      "spacing": 3
+     },
+     "form": "hip",
+     "pitch": 1,
+     "overhang": 1,
+     "ridgeCap": true,
+     "roofHole": false,
+     "roofSlab": 44,
+     "roofSlabData": 0,
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 1,
+      "any": false
+     },
+     "storeys": [],
+     "porch": null,
+     "doorEdge": null,
+     "door": "air",
+     "doorWidth": 1,
+     "doorHeight": 2,
+     "doorHead": {
+      "form": "none",
+      "block": 0,
+      "fill": "upperSlab",
+      "fillBlock": 44,
+      "fillData": 0
+     }
+    },
+    "front": "PosZ",
+    "wings": [
+     [
+      [
+       -50,
+       50
+      ],
+      [
+       -45,
+       55
+      ]
+     ]
+    ]
+   },
+   {
+    "kind": "house",
+    "id": "mid-cottage-e",
+    "seed": 122,
+    "style": {
+     "wall": {
+      "extent": 5,
+      "courses": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        "height": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 5
+        },
+        "height": 3
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        "height": 1
+       }
+      ]
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "sill": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     },
+     "gable": {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     "roof": {
+      "kind": "solid",
+      "id": 159,
+      "data": 7
+     },
+     "verge": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "floor": {
+      "extent": 1,
+      "courses": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 5,
+         "data": 1
+        },
+        "height": 1
+       }
+      ]
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 2,
+      "isPlain": true
+     },
+     "windows": {
+      "form": "pane",
+      "block": 102,
+      "data": 0,
+      "hostBlock": -1,
+      "hostData": 0,
+      "sill": 2,
+      "width": 1,
+      "height": 2,
+      "spacing": 3
+     },
+     "gableWindows": {
+      "form": "pane",
+      "block": 102,
+      "data": 0,
+      "hostBlock": -1,
+      "hostData": 0,
+      "sill": 1,
+      "width": 1,
+      "height": 2,
+      "spacing": 3
+     },
+     "form": "hip",
+     "pitch": 1,
+     "overhang": 1,
+     "ridgeCap": true,
+     "roofHole": false,
+     "roofSlab": 44,
+     "roofSlabData": 0,
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 1,
+      "any": false
+     },
+     "storeys": [],
+     "porch": null,
+     "doorEdge": null,
+     "door": "air",
+     "doorWidth": 1,
+     "doorHeight": 2,
+     "doorHead": {
+      "form": "none",
+      "block": 0,
+      "fill": "upperSlab",
+      "fillBlock": 44,
+      "fillData": 0
+     }
+    },
+    "front": "PosZ",
+    "wings": [
+     [
+      [
+       45,
+       50
+      ],
+      [
+       50,
+       55
+      ]
+     ]
+    ]
+   },
+   {
+    "kind": "path",
+    "id": "path-crest",
+    "seed": 201,
+    "points": [
+     [
+      -50,
+      100
+     ],
+     [
+      0,
+      100
+     ],
+     [
+      50,
+      100
+     ]
+    ],
+    "radius": 2,
+    "style": "solid",
+    "coverage": 1.0,
+    "pave": {
+     "kind": "cell",
+     "seed": 51,
+     "cellSize": 3,
+     "jitter": 40,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ]
+    }
+   },
+   {
+    "kind": "path",
+    "id": "path-up-centre",
+    "seed": 202,
+    "points": [
+     [
+      0,
+      110
+     ],
+     [
+      0,
+      75
+     ],
+     [
+      0,
+      50
+     ]
+    ],
+    "radius": 2,
+    "style": "solid",
+    "coverage": 1.0,
+    "pave": {
+     "kind": "cell",
+     "seed": 52,
+     "cellSize": 3,
+     "jitter": 50,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 98,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ]
+    }
+   },
+   {
+    "kind": "path",
+    "id": "path-to-east-wool",
+    "seed": 203,
+    "points": [
+     [
+      20,
+      30
+     ],
+     [
+      40,
+      25
+     ],
+     [
+      60,
+      25
+     ]
+    ],
+    "radius": 1,
+    "style": "solid",
+    "coverage": 1.0,
+    "pave": {
+     "kind": "cell",
+     "seed": 53,
+     "cellSize": 2,
+     "jitter": 30,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ]
+    }
+   },
+   {
+    "kind": "path",
+    "id": "path-to-west-wool",
+    "seed": 204,
+    "points": [
+     [
+      -40,
+      80
+     ],
+     [
+      -55,
+      80
+     ],
+     [
+      -65,
+      85
+     ]
+    ],
+    "radius": 1,
+    "style": "solid",
+    "coverage": 1.0,
+    "pave": {
+     "kind": "cell",
+     "seed": 54,
+     "cellSize": 2,
+     "jitter": 30,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ]
+    }
+   },
+   {
+    "kind": "tree",
+    "id": "t1",
+    "seed": 301,
+    "x": -45,
+    "z": 80,
+    "form": "template",
+    "species": "spruce",
+    "height": 7
+   },
+   {
+    "kind": "tree",
+    "id": "t2",
+    "seed": 302,
+    "x": 45,
+    "z": 80,
+    "form": "template",
+    "species": "spruce",
+    "height": 8
+   },
+   {
+    "kind": "tree",
+    "id": "t3",
+    "seed": 303,
+    "x": -25,
+    "z": 25,
+    "form": "template",
+    "species": "spruce",
+    "height": 6
+   },
+   {
+    "kind": "tree",
+    "id": "t4",
+    "seed": 304,
+    "x": 25,
+    "z": 25,
+    "form": "template",
+    "species": "spruce",
+    "height": 6
+   }
+  ]
+ }
+}

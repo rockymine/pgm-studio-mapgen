@@ -56,6 +56,14 @@ So the board was built from the plan's surfaces and the relief left out. The two
 other and nothing in the pipeline would have said so; the relief file is preserved verbatim under
 `specs/sandscar-complex/authored-by-grok/`.
 
+## The buildings, recovered
+
+Its props file is Sandscar's copy, so the three houses in it were authored against the other board; bound
+and placed here they land on the ground this plan actually has, and the provenance records 6 houses beside
+the bound spawn shell. `renders/11-topdown-material-buildings.png` is that build.
+`specs/sandscar-complex/recovered-buildings.json` holds the binding and the placements, and
+`specs/recovered-buildings.py` the rule that produced them.
+
 ## The paint is an approximation, and it recovers the progression
 
 The board's eight theme names define nothing, so the committed world is default paint. The approximation in

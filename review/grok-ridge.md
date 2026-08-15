@@ -49,6 +49,29 @@ are non-nullable properties with an initializer, so the stated null bypasses it 
 `NullReferenceException` — a 500, not a named refusal. Previewed with `{"form": "none"}` in their place,
 which is what the document meant.
 
+## The buildings, recovered
+
+`THEME.md` assigns `ridge-hall` to the spawn ("the main spawn structure sitting on the crest") and
+`wool-shelter` to the wool rooms ("sits over / beside the wool rooms as light cover"), and the props place
+those styles at those pieces. That pair is `roomStyles: {spawn, cage}` on the layout — the key his documents
+never touch — and bound there it needs no interpretation and no rescaling, because a bound room's frame
+comes from the plan piece rather than from the prop cap.
+
+The five free-standing houses take their centre from the cell reading (×5, where he drew them) and their
+extent from the numbers as written. `specs/grok-ridge/recovered-buildings.json` is the result and
+`specs/recovered-buildings.py` the rule.
+
+All seven stand. The build's own provenance records **14 houses** — seven per team image — beside 4 room
+floors, 4 wool, 2 spawn cubes and the 2 approach walls.
+`renders/11-topdown-material-buildings.png` is the board with them,
+`renders/12-structures-buildings.png` isolates what the build recorded placing, and
+`renders/13-section-spawn-hall.png` is a section down `z = 107`: andesite walls, spruce corner posts, glazed
+panes, the overhung roof his style asks for.
+
+Binding `wool-shelter` as the cage style also turns its stated `"gableWindows": null` from a preview 500
+into an **export** 500 — `{"error":"Object reference not set to an instance of an object."}` on
+`GET /map/{slug}/export`, with no rule id and no subject, on a map whose every other call answered 200.
+
 ## The paint is an approximation, and it is grey
 
 `specs/grok-ridge/approximated-theme.json` writes THEME.md's palette table as two real terrain themes —
