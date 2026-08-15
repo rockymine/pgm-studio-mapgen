@@ -34,6 +34,21 @@ walking with headroom, and a cage therefore reads as its own component. The prec
 (ClayClay Redux) and `review/sable-marsh.md`. The compile gate's own reachability rule — a wool reachable
 from every capturing team's spawn without passing through a spawn piece — passed on this plan.
 
+## The house styles do stamp
+
+`specs/grok-ridge/style-previews/` holds the studio's own plan, section, isometric and cutaway of all three
+of Grok's styles, taken through `POST /api/room-styles/preview-snapshot` from his JSON. `ridge-hall` builds
+the building `authored-by-grok/THEME.md` describes — stone-brick base, andesite body, spruce-log posts,
+arched door head and windows, grey stained-clay roof with a ridge cap — and `ridge-cottage` and
+`wool-shelter` come out as the hip and the shed the same document claims. Nothing here needed
+approximating; the styles are complete, and the reason no building stands on the map is the props file's
+footprint, not the styles.
+
+`wool-shelter` states `"gableWindows": null` and `"doorHead": null` to mean "neither of those parts". Both
+are non-nullable properties with an initializer, so the stated null bypasses it and `HouseStamper` throws
+`NullReferenceException` — a 500, not a named refusal. Previewed with `{"form": "none"}` in their place,
+which is what the document meant.
+
 ## What is not here
 
 Grok's own `grok-ridge.layout.json` was not used: all thirteen of its shapes carry `x`/`z`/`w`/`h`, which

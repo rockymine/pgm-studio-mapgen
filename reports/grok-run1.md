@@ -20,7 +20,7 @@ were wrong in a way that builds nothing and says nothing; the dressing was autho
 | `*.plan.json` × 3 | 1 compiled clean, 2 refused with 422 | overlapping pieces at different surfaces; a wall on a pair that shares no interface. Four rect edits in total fixed all of it |
 | `*.layout.json` × 3 | all three rasterize to **no ground** | rectangles carry `x/z/w/h`, the model reads `min_x/min_z/max_x/max_z`; and `relief` sits inside `layout` where the model reads it at the root |
 | `*.props.json` × 3 | parse-refused, then partly dropped | positions in **plan cells**, the document is in **blocks**; houses are `points`, the model reads `wings`; `style` is a registry name, the model takes the style inline |
-| `*.styles.json` × 3 | two field faults | one material wrapped in a second `material` object, one invented enum value. Everything else in ~4 500 lines of house style was correct |
+| `*.styles.json` × 3 | **all six styles stamp** | two field faults — one material wrapped in a second `material` object, one invented enum value — and past those, six complete buildings (§3.1) |
 
 ## 1. The plans
 
@@ -151,6 +151,56 @@ The first is `desert-hall`'s `sill` written as `{"material": {…}}` — one wra
 which is not one of the two members (`none`, `arched`); it was read as `none` here, the member that means
 a plain rectangular head. Beside those two, several hundred lines of wall courses, posts, sills, gables,
 verges, window forms, beams and door heads across six styles parse without complaint.
+
+### 3.1 The house styles are not approximations — they stamp
+
+The styles were the part of the run most likely to be hand-waving, and they are the opposite. All six —
+three per map — go through `POST /api/room-styles/preview-snapshot` and come back as buildings:
+`specs/grok-ridge/style-previews/` and `specs/sandscar/style-previews/` are the studio's own plan, section,
+isometric and cutaway of each, stamped from Grok's JSON with no field of it rewritten except the two faults
+named above.
+
+They also match the prose. `specs/grok-ridge/authored-by-grok/THEME.md` states the palette as a table of
+block ids and calls the result "cool gray ridge stone with dark spruce timber framing and a slate-like
+roof", and that is what `ridge-hall` stamps: a stone-brick base course, an andesite body, spruce-log corner
+posts, an arched door head and arched side windows under a grey stained-clay roof with a ridge cap.
+`desert-hall` is the same building in sandstone, end stone and brick. The three roof forms the documents
+claim — gable on each hall, hip on each cottage, shed on each shelter — are the three that come out.
+
+So the answer to "could the styles be approximated" is that no approximation was needed: the styles are
+complete `HouseStyle` documents, `HouseStamper` builds them today, and the only reason no building stands
+on either map is the **footprint**, which is a property of the props file rather than of the styles.
+
+### 3.2 The unit error was a stated belief, not a slip
+
+`THEME.md` closes with the sentence that explains the whole of §3:
+
+> All coordinates are in the same cell space as the plan. The studio scales and seats them on real ground
+> when the layout is finished / exported.
+
+Nothing does that. A plan is the one document in cells; every other document — layout, relief, dressing —
+is in blocks, and no pass rescales a prop. The belief is reasonable from the outside, which is what makes
+it worth recording: an author who thinks the studio will scale will write cells everywhere and get no
+diagnostic anywhere.
+
+### 3.3 Two style fields crash the stamper when they are stated as `null`
+
+Found by both shelters, and it is the studio's defect rather than Grok's. `HouseStyle.GableWindows` and
+`HouseStyle.DoorHead` are non-nullable properties with an initializer; a JSON `null` bypasses the
+initializer, and `HouseStamper.Stamp` dereferences it:
+
+```
+POST /api/room-styles/preview-snapshot   {"gableWindows": null}   500
+System.NullReferenceException at HouseStamper.<Stamp>g__StampGableWindows|4 (HouseStamper.cs:361)
+POST /api/room-styles/preview-snapshot   {"doorHead": null}       500
+```
+
+`"porch": null` and `"doorEdge": null` are fine — both are declared nullable — so the document reads as
+though stating `null` is how a style says "not this part", and for two fields out of the four it is a 500.
+Grok wrote `"gableWindows": null` and `"doorHead": null` on `wool-shelter` and `monument-shelter` to say
+"no gable windows, no door head", which is exactly what `{"form": "none"}` says safely. Previewed here with
+that substitution; the fix belongs in the studio, which should either read a stated null as the default or
+refuse it by name the way `DR-DOC` refuses a bad material.
 
 **The river is the run's one genuinely clever move.** Sandscar's `river-meander` is not a `water` prop —
 it is a `path` prop paved with a `cell` material whose palette is blocks 8 and 9, still water and flowing

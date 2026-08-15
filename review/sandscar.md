@@ -44,6 +44,15 @@ one under each monument, and the approach in front of them is flat. The board's 
 relief's is 40, which is why this relief composes with the plan instead of fighting it — the same relief
 on `sandscar-complex`'s ten-surface board would have levelled it.
 
+## The house styles do stamp
+
+`specs/sandscar/style-previews/` holds all three of Grok's styles previewed from his own JSON:
+`desert-hall` in sandstone with a brick roof, `savanna-cottage` under a hip, `monument-shelter` under a
+shed. The styles were never the problem — the props file's footprints were. `desert-hall`'s `sill` is
+written `{"material": {…}}`, one wrapper deeper than the model reads, which is the fault the export gate
+names as `style.sill.kind`; `monument-shelter` states `"gableWindows": null` and `"doorHead": null`, which
+crashes the stamper rather than being read as "no such part".
+
 ## The dressing
 
 `specs/sandscar/sandscar.dressing.json`, translated at ×5 (Grok's props are in plan cells; a dressing
