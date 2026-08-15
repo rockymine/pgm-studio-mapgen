@@ -28,7 +28,8 @@ as *"verified working"* with two destroyables, and no instruction to self-review
 
 A map's `specs/` are the whole of what was authored; the world is derived from them and is committed as
 the artifact rather than as a source. Rebuilding one needs a running pgm-studio API and a migrated
-database.
+database. The six maps of *The first experiment* below predate that rule and carry a world alone — every
+other row in the layout above is absent for them, and their sources are not recoverable.
 
 **Start with [GENERATION-NOTES.md](GENERATION-NOTES.md).** It is the errata an author needs beside
 `pgm-studio/docs/tools/` — the fields a hand-authored shape needs before it exists at all, the two
@@ -38,6 +39,25 @@ have each cost a build cycle.
 ## Maps
 
 Grouped by the run that produced them. Mode is what the map's own `<gamemode>` declares.
+
+### The first experiment — worlds only, no specs
+
+The six below were built on 11–12 August 2026, a day before this repository existed, and they are the
+reason it does. They are kept as worlds and nothing else: no `specs/`, no `provenance.json`, no `renders/`,
+no `review/`. The documents that produced them lived in the throwaway databases of the runs that made them
+and are gone, and none of the six is worth reconstructing — what they were good for was showing what the
+spec format could not yet say, which is where the shape of `specs/` and the rule against a house standing
+inside another house both came from. They are the standard the rest of the repository is a correction to,
+so they survive as evidence rather than as examples.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `emberfall` | ctw | mapgen | four wools over cinder terraces |
+| `ridgeway` | ctw | mapgen | a cliff splitting each side, a high road and a low one |
+| `saltmarch` | ctw | mapgen | a flat open crossing with nowhere to hide |
+| `hk1_viridian` | ctw | Haiku | a jungle board, two wools |
+| `hk2_crystalline_quarry` | ctw | Haiku | ice caverns, twelve wools |
+| `pattern_test` | — | studio | twenty-five plateaus built to look at terrain patterns, not to be played; superseded by `library_map` from `pgm-studio/tools/library-map.cs` |
 
 ### Hand-authored, before the trial runs
 
