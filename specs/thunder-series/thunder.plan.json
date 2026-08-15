@@ -1,0 +1,343 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Thunder (reconstruction)"
+ },
+ "globals": {
+  "cell": 1,
+  "symmetry": "rot_90",
+  "maxPlayers": 32,
+  "surface": 7,
+  "headroom": 18,
+  "observerY": 45
+ },
+ "pieces": [
+  {
+   "id": "i1-0",
+   "role": "piece",
+   "rect": [
+    -81,
+    -5,
+    33,
+    16
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i1-1",
+   "role": "piece",
+   "rect": [
+    -105,
+    6,
+    24,
+    16
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i1-2",
+   "role": "piece",
+   "rect": [
+    -81,
+    11,
+    6,
+    14
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i1-3",
+   "role": "piece",
+   "rect": [
+    -82,
+    -8,
+    23,
+    3
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i1-4",
+   "role": "piece",
+   "rect": [
+    -48,
+    -1,
+    4,
+    16
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i1-5",
+   "role": "piece",
+   "rect": [
+    -82,
+    -20,
+    13,
+    4
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i1-6",
+   "role": "piece",
+   "rect": [
+    -96,
+    22,
+    15,
+    3
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i1-7",
+   "role": "piece",
+   "rect": [
+    -69,
+    -18,
+    7,
+    4
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i1-8",
+   "role": "piece",
+   "rect": [
+    -106,
+    4,
+    14,
+    2
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i1-9",
+   "role": "piece",
+   "rect": [
+    -44,
+    10,
+    5,
+    5
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i1-10",
+   "role": "piece",
+   "rect": [
+    -59,
+    11,
+    11,
+    2
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i1-11",
+   "role": "piece",
+   "rect": [
+    -82,
+    -14,
+    3,
+    6
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i1-12",
+   "role": "piece",
+   "rect": [
+    -75,
+    11,
+    6,
+    3
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i1-13",
+   "role": "piece",
+   "rect": [
+    -85,
+    25,
+    9,
+    2
+   ],
+   "surface": 7
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -100,
+    -22,
+    18,
+    12
+   ],
+   "surface": 7
+  },
+  {
+   "id": "wool-room",
+   "role": "wool-room",
+   "rect": [
+    -120,
+    1,
+    14,
+    17
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i5-0",
+   "role": "piece",
+   "rect": [
+    -35,
+    -9,
+    12,
+    13
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i5-1",
+   "role": "piece",
+   "rect": [
+    -24,
+    4,
+    8,
+    7
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i5-2",
+   "role": "piece",
+   "rect": [
+    -31,
+    -16,
+    6,
+    7
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i5-3",
+   "role": "piece",
+   "rect": [
+    -21,
+    11,
+    9,
+    3
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i9-0",
+   "role": "piece",
+   "rect": [
+    -100,
+    37,
+    22,
+    4
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i9-1",
+   "role": "piece",
+   "rect": [
+    -101,
+    30,
+    8,
+    7
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i9-3",
+   "role": "piece",
+   "rect": [
+    -86,
+    33,
+    6,
+    4
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i9-4",
+   "role": "piece",
+   "rect": [
+    -94,
+    41,
+    11,
+    2
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i14-0",
+   "role": "piece",
+   "rect": [
+    -68,
+    20,
+    4,
+    10
+   ],
+   "surface": 7
+  },
+  {
+   "id": "i13-0",
+   "role": "piece",
+   "rect": [
+    -5,
+    -4,
+    9,
+    7
+   ],
+   "surface": 7,
+   "mirrors": false
+  }
+ ],
+ "zones": [
+  {
+   "id": "unit-court",
+   "rect": [
+    -128,
+    -30,
+    140,
+    81
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     5.5,
+     5.5
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-room",
+    "at": [
+     7.5,
+     8.5
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

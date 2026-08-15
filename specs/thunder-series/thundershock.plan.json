@@ -1,0 +1,332 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Thundershock (reconstruction)"
+ },
+ "globals": {
+  "cell": 1,
+  "symmetry": "rot_90",
+  "maxPlayers": 32,
+  "surface": 13,
+  "headroom": 6,
+  "observerY": 38
+ },
+ "pieces": [
+  {
+   "id": "i4-0",
+   "role": "piece",
+   "rect": [
+    97,
+    -35,
+    13,
+    39
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-1",
+   "role": "piece",
+   "rect": [
+    49,
+    -4,
+    23,
+    14
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-2",
+   "role": "piece",
+   "rect": [
+    72,
+    -43,
+    35,
+    8
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-3",
+   "role": "piece",
+   "rect": [
+    68,
+    -35,
+    14,
+    17
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-4",
+   "role": "piece",
+   "rect": [
+    82,
+    -6,
+    15,
+    13
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-5",
+   "role": "piece",
+   "rect": [
+    63,
+    -17,
+    10,
+    13
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-6",
+   "role": "piece",
+   "rect": [
+    110,
+    -13,
+    8,
+    14
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-7",
+   "role": "piece",
+   "rect": [
+    53,
+    10,
+    13,
+    3
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-8",
+   "role": "piece",
+   "rect": [
+    73,
+    -18,
+    4,
+    8
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-9",
+   "role": "piece",
+   "rect": [
+    57,
+    -9,
+    6,
+    5
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-10",
+   "role": "piece",
+   "rect": [
+    82,
+    -35,
+    3,
+    8
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-11",
+   "role": "piece",
+   "rect": [
+    95,
+    -17,
+    2,
+    11
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-12",
+   "role": "piece",
+   "rect": [
+    65,
+    -24,
+    3,
+    7
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-13",
+   "role": "piece",
+   "rect": [
+    110,
+    -29,
+    2,
+    10
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-14",
+   "role": "piece",
+   "rect": [
+    94,
+    -35,
+    3,
+    6
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-15",
+   "role": "piece",
+   "rect": [
+    72,
+    -4,
+    2,
+    8
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i4-16",
+   "role": "piece",
+   "rect": [
+    79,
+    7,
+    8,
+    2
+   ],
+   "surface": 13
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    73,
+    -60,
+    33,
+    17
+   ],
+   "surface": 13
+  },
+  {
+   "id": "wool-room",
+   "role": "wool-room",
+   "rect": [
+    118,
+    -17,
+    21,
+    16
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i8-0",
+   "role": "piece",
+   "rect": [
+    27,
+    -11,
+    8,
+    20
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i8-1",
+   "role": "piece",
+   "rect": [
+    35,
+    2,
+    3,
+    11
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i8-2",
+   "role": "piece",
+   "rect": [
+    25,
+    -13,
+    2,
+    12
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i12-0",
+   "role": "piece",
+   "rect": [
+    22,
+    -38,
+    8,
+    14
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i12-1",
+   "role": "piece",
+   "rect": [
+    30,
+    -34,
+    3,
+    13
+   ],
+   "surface": 13
+  },
+  {
+   "id": "i13-0",
+   "role": "piece",
+   "rect": [
+    -5,
+    -4,
+    9,
+    7
+   ],
+   "surface": 13,
+   "mirrors": false
+  }
+ ],
+ "zones": [
+  {
+   "id": "unit-court",
+   "rect": [
+    -13,
+    -68,
+    160,
+    89
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     12.5,
+     6.5
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-room",
+    "at": [
+     10.5,
+     8.5
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

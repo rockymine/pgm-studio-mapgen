@@ -1,0 +1,61 @@
+{
+  "_": "The series palette, read off the material top-downs of thunder/thunderstorm/thundershock: pale sand over sandstone, a sandstone-and-clay scarp where the island falls to void, and darker grit where the ground is contested. Ids: 12 sand, 24 sandstone (1 chiselled, 2 smooth), 13 gravel, 172 hardened clay, 159 stained clay, 1 stone, 4 cobble, 3 dirt, 2 grass.",
+
+  "dune": {
+    "bedrock": { "relative": true, "value": 6 },
+    "rimEdges": "drop",
+    "wallOnTerrainFaces": true,
+    "rim": { "material": { "kind": "solid", "id": 24, "data": 2 }, "depth": 1, "enabled": true },
+    "surface": { "material": { "kind": "layered", "layers": [
+        { "material": { "kind": "voronoi", "seed": 17, "cellSize": 9, "bands": [
+            { "material": { "kind": "solid", "id": 24, "data": 2 }, "depth": 1 },
+            { "material": { "kind": "solid", "id": 12, "data": 0 }, "depth": 4 } ] }, "thickness": 1 },
+        { "material": { "kind": "solid", "id": 24, "data": 0 }, "thickness": 2 } ] },
+      "depth": 3, "enabled": true },
+    "wall": { "kind": "layered", "layers": [
+        { "material": { "kind": "solid", "id": 24, "data": 1 }, "thickness": 1 },
+        { "material": { "kind": "solid", "id": 24, "data": 0 }, "thickness": 3 },
+        { "material": { "kind": "solid", "id": 172, "data": 0 }, "thickness": 3 } ] },
+    "wallEnabled": true,
+    "fill": { "kind": "solid", "id": 24, "data": 0 }
+  },
+
+  "scour": {
+    "_": "The contested ground. Sand blown off the rock, so gravel and stone show through in patches.",
+    "bedrock": { "relative": true, "value": 6 },
+    "rimEdges": "drop",
+    "wallOnTerrainFaces": true,
+    "rim": { "material": { "kind": "solid", "id": 1, "data": 6 }, "depth": 1, "enabled": true },
+    "surface": { "material": { "kind": "voronoi", "seed": 29, "cellSize": 7, "bands": [
+        { "material": { "kind": "solid", "id": 13, "data": 0 }, "depth": 1 },
+        { "material": { "kind": "solid", "id": 24, "data": 2 }, "depth": 2 },
+        { "material": { "kind": "solid", "id": 12, "data": 0 }, "depth": 4 } ] },
+      "depth": 2, "enabled": true },
+    "wall": { "kind": "layered", "layers": [
+        { "material": { "kind": "solid", "id": 1, "data": 6 }, "thickness": 2 },
+        { "material": { "kind": "solid", "id": 24, "data": 0 }, "thickness": 4 } ] },
+    "wallEnabled": true,
+    "fill": { "kind": "solid", "id": 24, "data": 0 }
+  },
+
+  "oasis": {
+    "_": "The wool runs and the ground under the houses: sand that has held a little water, so dirt and grass take in the hollows.",
+    "bedrock": { "relative": true, "value": 6 },
+    "rimEdges": "void",
+    "wallOnTerrainFaces": true,
+    "rim": { "material": { "kind": "solid", "id": 159, "data": 1 }, "depth": 1, "enabled": true },
+    "surface": { "material": { "kind": "layered", "layers": [
+        { "material": { "kind": "voronoi", "seed": 41, "cellSize": 6, "bands": [
+            { "material": { "kind": "solid", "id": 2, "data": 0 }, "depth": 1 },
+            { "material": { "kind": "solid", "id": 12, "data": 0 }, "depth": 3 } ] }, "thickness": 1 },
+        { "material": { "kind": "solid", "id": 3, "data": 0 }, "thickness": 1 },
+        { "material": { "kind": "solid", "id": 24, "data": 0 }, "thickness": 2 } ] },
+      "depth": 4, "enabled": true },
+    "wall": { "kind": "layered", "layers": [
+        { "material": { "kind": "solid", "id": 159, "data": 1 }, "thickness": 1 },
+        { "material": { "kind": "solid", "id": 172, "data": 0 }, "thickness": 2 },
+        { "material": { "kind": "solid", "id": 24, "data": 0 }, "thickness": 4 } ] },
+    "wallEnabled": true,
+    "fill": { "kind": "solid", "id": 24, "data": 0 }
+  }
+}

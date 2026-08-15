@@ -1,0 +1,188 @@
+{
+ "_": "Thunderhead \u2014 the fourth Thunder, authored in the series' own language and nothing else's. Measured off the other three: a team's ground is a ribbon eight to twenty-eight blocks wide that wanders and swells, broken into three or four islands with void between them; the centre is a quad of about a hundred blocks; there is no hub, no crossbar, no lane grammar anywhere in the series and there is none here. Each island is a set of strokes \u2014 a centreline and a half-width at each point \u2014 swept, carved along a noise field, traced and simplified exactly as a scanned island is. Three islands to a team and a quad on the axis, which is Thundershock's own count. Everything the unit owns lies inside one ninety-degree sector, because under rot_90 anything that leaves it meets its own quarter-turn image \u2014 the check is on the cells and it runs on every build.",
+ "signature": "Thunder zig-zags, Thundershock hooks, Thunderstorm spirals. Thunderhead forks: the ribbon leaves spawn as one band and splits into two prongs reaching for the centre quad, which is what an anvil cloud does at the top. The fork is the whole of its route structure \u2014 two ways at the mid, chosen forty blocks before you get there, with no way to swap once committed except back through the waist.",
+ "centre": [
+  0,
+  0
+ ],
+ "ground": 8,
+ "maxbuild": 24,
+ "spawn": [
+  98.5,
+  4.5
+ ],
+ "spawn_box": [
+  92,
+  -2,
+  104,
+  10
+ ],
+ "wool_room": [
+  76,
+  -54,
+  90,
+  -44
+ ],
+ "islands": [
+  {
+   "id": "quad",
+   "_": "The centre island. Thunder's is 113 blocks across four vertices, Thundershock's 85, Thunderstorm's 89 \u2014 a small near-square quad, and that is the entire form. Stated outright rather than swept, because four vertices is already the simplified polygon.",
+   "axis": true,
+   "vertices": [
+    [
+     -6,
+     -4
+    ],
+    [
+     4,
+     -6
+    ],
+    [
+     6,
+     4
+    ],
+    [
+     -4,
+     6
+    ]
+   ]
+  },
+  {
+   "id": "blade",
+   "_": "The comma between the quad and the prongs, the way Thunder hangs a blade off each of its arms. Two hops to cross it \u2014 twelve blocks off the quad, nine off the nearer prong \u2014 and it is the only ground within thirty blocks of the centre that a team can hold.",
+   "seed": 11,
+   "strokes": [
+    [
+     [
+      26,
+      -13,
+      7
+     ],
+     [
+      31,
+      -3,
+      8
+     ],
+     [
+      26,
+      8,
+      7
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "main",
+   "_": "The team's ribbon. It leaves the spawn swelling at the far end, narrows to a waist at seventy-eight \u2014 the one place the whole island is nine blocks across and the one place a defender can stand and mean it \u2014 then forks, and both prongs taper to a tip pointing at the quad.",
+   "carries": [
+    "spawn"
+   ],
+   "seed": 5,
+   "strokes": [
+    [
+     [
+      104,
+      7,
+      10
+     ],
+     [
+      95,
+      1,
+      10
+     ],
+     [
+      87,
+      -8,
+      7
+     ],
+     [
+      79,
+      -2,
+      5
+     ],
+     [
+      71,
+      -9,
+      6
+     ],
+     [
+      62,
+      1,
+      8
+     ],
+     [
+      54,
+      4,
+      9
+     ]
+    ],
+    [
+     [
+      54,
+      4,
+      9
+     ],
+     [
+      49,
+      -6,
+      7
+     ],
+     [
+      44,
+      -15,
+      6
+     ]
+    ],
+    [
+     [
+      54,
+      4,
+      9
+     ],
+     [
+      46,
+      12,
+      7
+     ],
+     [
+      39,
+      19,
+      6
+     ]
+    ]
+   ]
+  },
+  {
+   "id": "wool-isle",
+   "_": "The wool room on an island of its own, seventeen blocks of void off the ribbon's flank. The series isolates a wool with water and not with bedrock \u2014 Thunder hangs two islands out here, Thundershock runs a spit to its tip \u2014 so a raider bridges in front of whoever is holding it.",
+   "carries": [
+    "wool-room"
+   ],
+   "seed": 29,
+   "strokes": [
+    [
+     [
+      63,
+      -33,
+      9
+     ],
+     [
+      71,
+      -44,
+      12
+     ],
+     [
+      83,
+      -49,
+      11
+     ],
+     [
+      95,
+      -49,
+      8
+     ]
+    ]
+   ]
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+{
+  "_": "thunderstorm reconstructed. The land is the traced polygon, not a drawing: theme by island rank (the big one, then the outliers), a light corner-softening pass over the Douglas-Peucker outline, and a flat relief because the originals are flat. Dressing is added once the shape is confirmed.",
+  "mapTheme": "dune",
+  "themeByRank": ["dune", "scour", "dune", "scour"],
+  "axisTheme": "scour",
+  "soften": { "amplitude": 0.14, "cap": 4.0, "min_edge": 8.0 },
+  "relief": {
+    "base": 10,
+    "step": 1, "stairs": true, "reach": 0,
+    "grain": { "amplitude": 0, "scale": 8, "seed": 5 },
+    "marks": []
+  },
+  "dressing": { "props": [] }
+}
