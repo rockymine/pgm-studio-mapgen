@@ -49,6 +49,18 @@ are non-nullable properties with an initializer, so the stated null bypasses it 
 `NullReferenceException` — a 500, not a named refusal. Previewed with `{"form": "none"}` in their place,
 which is what the document meant.
 
+## The paint is an approximation, and it is grey
+
+`specs/grok-ridge/approximated-theme.json` writes THEME.md's palette table as two real terrain themes —
+`ridge-stone` for the terraces, `ridge-crest` for the two top rows — and `renders/10-topdown-material-painted.png`
+is the board under them. The block ids are Grok's; which block is rim, which is surface, which is the
+exposed riser and how deep each band runs are not stated anywhere and are mine.
+
+What the painted board shows is that his stated ground palette is three greys — andesite, stone brick,
+cobblestone — so the terraces read as one flat field from above and the tiers are legible only by their
+risers. The colour in his palette is all on the buildings: spruce posts, grey stained-clay roofs, glass
+panes. Nothing named a terrain theme, so the committed world paints with the built-in default.
+
 ## What is not here
 
 Grok's own `grok-ridge.layout.json` was not used: all thirteen of its shapes carry `x`/`z`/`w`/`h`, which

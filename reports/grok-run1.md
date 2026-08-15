@@ -207,6 +207,42 @@ it is a `path` prop paved with a `cell` material whose palette is blocks 8 and 9
 water. It reads as a river in the top-down (`renders/06-topdown-dressed.png`) and it never touches the
 ground, which is what a path does.
 
+## 3.4 The terrain themes are the one part that had to be invented
+
+Eight theme names are written on the shapes of the two Sandscars and four on Grok Ridge —
+`stone-terrace`, `stone-crest`, `desert`, `desert-pit`, `river-bank`, `savanna`, `savanna-mid`,
+`savanna-hill`, `savanna-peak`, `savanna-crest` — and nothing defines any of them. A theme name is a key
+into a `themes` registry plus a `mapTheme` default; neither was written, so every one resolves to nothing
+and all three boards paint with the built-in default. That is the fourth instance of the run's recurring
+shape: a field that reads correctly and refers to nothing.
+
+Unlike the styles, this **could not** be recovered from the documents, because a terrain theme is not a
+palette — it is which block is the rim, which is the surface, which is the exposed riser, how deep each
+band runs and where the bedrock floor sits, and none of that is stated anywhere. What Grok did state is
+the palette: a block-id table in `grok-ridge/THEME.md` ("andesite 1:5 body, stone brick 98:0/98:1/98:3
+base and trim, spruce log 17:1 posts, path mix stone brick + andesite + cobble … cool gray ridge stone")
+and one line per Sandscar README ("sandstone + endstone + birch + brick roofs", "desert → savanna
+progression").
+
+`specs/<slug>/approximated-theme.json` is those palettes written as real themes, and
+`specs/approximated-themes.py` is how they were derived. **The block ids are Grok's; the bucket structure
+and the band depths are not stated anywhere and are this report's.** They are kept out of `maps/<slug>/`
+for that reason: the committed world is what Grok's documents produce, and the painted board is
+`renders/10-topdown-material-painted.png` beside it.
+
+Two things the painted boards show that the plain ones cannot:
+
+**Sandscar Complex's desert→savanna progression is real, and it is in the plan rather than in the theme.**
+Grok's per-shape theme names track his own shape ids, which a compile does not produce, so the assignment
+here is by the one property both documents share — the height a piece stands at, with the bands his own
+names describe: pit at 37 and below, desert to 41, savanna above. Sand at the river front, green on the
+high ground behind, end stone in the cut pit, exactly as his README describes it, off nothing but the
+surfaces he authored.
+
+**Grok Ridge's stated palette is almost monochrome**, and the board reads flat from above because of it:
+andesite, stone brick and cobble are three greys. The colour in his palette — spruce timber, grey stained
+clay roofs, glass — lives entirely on the buildings, which are the one thing that did not build.
+
 ## 4. What the built boards measure
 
 | | `grok-ridge` | `sandscar` | `sandscar-complex` |

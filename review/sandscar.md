@@ -53,6 +53,15 @@ written `{"material": {…}}`, one wrapper deeper than the model reads, which is
 names as `style.sill.kind`; `monument-shelter` states `"gableWindows": null` and `"doorHead": null`, which
 crashes the stamper rather than being read as "no such part".
 
+## The paint is an approximation
+
+Nothing defines `desert-savanna` or `savanna-crest`, the two names Grok's layout writes on its shapes, so
+the committed world paints with the built-in default. `specs/sandscar/approximated-theme.json` is the
+README's one line ("sandstone + endstone + birch + brick roofs") written as a real theme — sandstone and
+end stone in a voronoi surface, a chiselled sandstone lip, a smooth sandstone riser — and
+`renders/10-topdown-material-painted.png` is the board under it. The block ids are his; the bucket
+structure is mine.
+
 ## The dressing
 
 `specs/sandscar/sandscar.dressing.json`, translated at ×5 (Grok's props are in plan cells; a dressing

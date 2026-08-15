@@ -56,6 +56,18 @@ So the board was built from the plan's surfaces and the relief left out. The two
 other and nothing in the pipeline would have said so; the relief file is preserved verbatim under
 `specs/sandscar-complex/authored-by-grok/`.
 
+## The paint is an approximation, and it recovers the progression
+
+The board's eight theme names define nothing, so the committed world is default paint. The approximation in
+`specs/sandscar-complex/approximated-theme.json` is three themes — `pit`, `desert`, `savanna` — assigned by
+the height a shape stands at, because Grok's names key to his own shape ids and a compile does not produce
+those. The bands are the ones his own names describe: pit at 37 and below, desert to 41, savanna above.
+
+`renders/10-topdown-material-painted.png` is the result, and it is the clearest picture of what this board
+is for: sand along the river front, green savanna on the high ground behind, end stone in the cut pit. The
+desert→savanna progression his README claims is real and it lives in the surfaces he authored, not in the
+themes he named.
+
 ## What is not here
 
 No dressing — the props file is byte-identical to Sandscar's, so its positions belong to the other board
