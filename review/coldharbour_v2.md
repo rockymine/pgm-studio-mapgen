@@ -71,6 +71,24 @@ The plan states six flat surfaces. The rest is sketch work on the compiled layou
 - **A stream across the spine** — a `water` prop, carved bed and all, between spawn and hub, with the spine
   road paving a 7-block causeway over it. `(±8, 86)` reads water over sand; `(0, 85)` reads road.
 
+## The second pass — organic silhouette, and the mid as a bar
+
+Three changes after review, all measured:
+
+**The mid island is a bar, not a rock.** `mid-bar` spans `x −20..20` — the build zone's full width — and is
+10 blocks deep, with **15 blocks of void to each frontline leg**: a 40-block mid, crossed as 15 · 10 · 15
+rather than as one round stone in an open gap. The legs grew a cell forward to make those numbers exact.
+
+**Every coast is bowed and no seam is.** `specs/coldharbour_v2/curves.py` generates the handles from the
+edge itself, so a handle always travels further along its edge than away from it (the rule, and the lobe it
+prevents, are in `GENERATION-NOTES.md` §11). 26 of 38 edges carry a bow; the other 12 are seams a player
+walks, edges under 12 blocks, or edges within 10 blocks of the approach wall. Amplitude is 0.16 of the edge
+west of the axis and 0.10 east, so the two wool approaches are not the same walk mirrored.
+
+**The wall veto is not cosmetic.** The first organic pass bowed the east lane's coast out to `x 37` and
+`x 56` either side of a wall running `x 40..55`, and players could walk round both ends: traversability went
+from 2 isolated markers to **0**. Vetoing edges near a wall rect restored it to 2.
+
 ## What is still open
 
 **The two wool lanes are more alike than the design says.** West is an L and east an I, which differ in
@@ -82,6 +100,6 @@ decisions rather than two corridors.
 uses them: no route passes between them that a player would choose over the bar, and no build zone spans
 them. CT8 calls an internal hole the rotation device; here it is a hole.
 
-**The neutral stone is small for what it has to carry.** 20 × 20 with two boulders on it is a stepping
-stone, and the crossing might want it either bigger and shaped, or paired with a second one so the hop has
-a choice in it (MD6 puts stones in a grid of two lateral columns, never a chain).
+**The mid bar is one crossing, not a choice.** It spans the width, which is what makes the middle a place —
+but every route over it is the same route. MD6 puts stones in two lateral columns; a second, shorter bar
+offset behind this one would give the hop a decision in it.

@@ -6,7 +6,9 @@ height each fused shape stands at; Bezier controls on the coasts only; per-verte
 shelve the two frontline tips into the mid; a relief that leaves the hub free and pins everything else;
 the two room shells; and the dressing.
 """
-import json, sys, urllib.request, urllib.error
+import json, math, sys, urllib.request, urllib.error
+sys.path.insert(0, '/tmp/claude-0/-home-user/90385ead-9b04-5309-9f26-9268d4a8ba5e/scratchpad/v2')
+from curves import controls_for, flatten, self_intersections, outward_normal, _inside
 
 API = 'http://localhost:5189/api'
 HERE = '/tmp/claude-0/-home-user/90385ead-9b04-5309-9f26-9268d4a8ba5e/scratchpad/v2'
@@ -35,13 +37,73 @@ def call(method, path, body=None):
             return e.code, text
 
 
+# ── the organic pass ─────────────────────────────────────────────────────────────────────────────
+# Only the coasts are bowed. An edge that another shape stands against is a seam a player walks, and a
+# curved seam is a gap; those are left dead straight. Amplitude differs west of the axis from east, so the
+# two wool approaches are not the same walk mirrored.
+def _seam(edge_mid, normal, others):
+    probe = (edge_mid[0] + normal[0] * 3, edge_mid[1] + normal[1] * 3)
+    return any(_inside(p, *probe) for p in others)
+
+
+def wall_rects(plan):
+    """The stamped walls, from the plan's own inspect feed. A wall spans a seam whose width was fixed at
+    compile; bowing the coast beside it widens the lane past the wall's ends and hands players a way round
+    — which is exactly what happened on the first organic pass (ground at x37 and x56 either side of a wall
+    running x40..55). So the edges near one are left straight."""
+    st, feed = call('POST', '/plan/inspect', plan)
+    return [(s['minX'], s['minZ'], s['maxX'], s['maxZ'])
+            for s in (feed.get('structures') or []) if s.get('kind') == 'wall']
+
+
+def _near_wall(mid, walls, margin=10.0):
+    return any(w[0] - margin <= mid[0] <= w[2] + margin and w[1] - margin <= mid[1] <= w[3] + margin
+               for w in walls)
+
+
+def bow_the_coasts(layout, walls, min_edge=12.0):
+    shapes = [s for s in layout['layout']['shapes']
+              if not s.get('role') and s.get('operation') != 'subtract' and s.get('vertices')]
+    polys = {s['id']: [[v[0], v[1]] for v in s['vertices']] for s in shapes}
+    curved = 0
+    for shape in shapes:
+        sid = shape['id']
+        poly = polys[sid]
+        others = [p for i, p in polys.items() if i != sid]
+        bulges = []
+        for i in range(len(poly)):
+            j = (i + 1) % len(poly)
+            (x1, z1), (x2, z2) = poly[i], poly[j]
+            length = math.hypot(x2 - x1, z2 - z1)
+            n = outward_normal(poly, i, j)
+            mid = ((x1 + x2) / 2, (z1 + z2) / 2)
+            if length < min_edge or _seam(mid, n, others) or _near_wall(mid, walls):
+                bulges.append(0.0); continue
+            # deterministic, varied, and asymmetric about the axis: the west coast is eroded softer than
+            # the east, so the two approaches read differently without either being unfair.
+            wobble = ((hash((sid, i)) >> 3) % 100) / 100.0
+            amplitude = (0.16 if mid[0] < 0 else 0.10) + 0.09 * wobble
+            bulges.append(round(min(length * amplitude, 7.0), 2))
+        if not any(bulges):
+            continue
+        controls, clamped = controls_for(poly, bulges)
+        hits = self_intersections(flatten(poly, controls))
+        if hits:
+            print(f'    !! {sid} would self-intersect at {hits[:3]} — left straight')
+            continue
+        shape['controls'] = controls
+        curved += 1
+        print(f'    {sid}: {sum(1 for b in bulges if b)} of {len(bulges)} edges bowed'
+              + (f', {len(clamped)} clamped' if clamped else '') + ', 0 self-intersections')
+    return curved
+
+
 def main():
     plan = json.load(open(f'{HERE}/coldharbour_v2.plan.json'))
     themes = json.load(open(f'{HERE}/themes.json'))
     rooms = json.load(open(f'{HERE}/room-styles.json'))
     relief = json.load(open(f'{HERE}/relief.json'))
     dressing = json.load(open(f'{HERE}/dressing.json'))
-    curves = json.load(open(f'{HERE}/curves.json'))
     slopes = json.load(open(f'{HERE}/slopes.json'))
     for prop in dressing['props']:
         if prop['kind'] == 'house':
@@ -67,11 +129,12 @@ def main():
             shape['theme'] = THEME_BY_HEIGHT[height]
         if shape.get('operation') != 'subtract' and height not in FREE_HEIGHTS:
             shape['relief_scope'] = 'hold'; held += 1
-        if sid in curves:
-            shape['controls'] = curves[sid]; curved += 1
         if sid in slopes and len(slopes[sid]) == len(shape.get('vertices') or []):
             shape['anchor_heights'] = slopes[sid]; tilted += 1
         painted[shape.get('theme', MAP_THEME)] = painted.get(shape.get('theme', MAP_THEME), 0) + 1
+    walls = wall_rects(plan)
+    print(f'  walls to keep clear of: {walls}')
+    curved = bow_the_coasts(layout, walls)
     print(f'  themes {painted} | hold {held} | curved {curved} | tilted {tilted}')
 
     layout['themes'] = themes

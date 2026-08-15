@@ -195,3 +195,78 @@ cosmetic — one number, fired twice, describing a board that had no frontline b
    in that view. I had looked at renders of what I had built and never at a diagram of what I had drawn.
 4. **I used features because they existed.** The water lane went in because the format has one, not
    because the board had two islands wanting a late connection. The same for the third theme.
+
+---
+
+## 6. Third pass — the review of the review
+
+Three more notes, and one of them was a question I could answer with a measurement rather than an opinion.
+
+### Did the corner touches fire the evaluator on v1?
+
+I did check v1's score — **3.243, `valid: true`**, two soft terms: `fill-ratio 0.68` (rule `G8`) and
+`lane-width 30` (rule `LN1`). Neither was the corner contacts, and v1 had five of them.
+
+The guess is a good one and the rule is real, so I settled it by probe rather than by reading. A two-piece
+board whose only link is a corner:
+
+```
+POST /plan/evaluate  →  "corner contact between separate areas: 'a' and 'b' touch at a point,
+                         not a corridor (no land interface)"        score 2000, valid false
+```
+
+Add a third piece joining the same two, leaving the corner exactly where it was:
+
+```
+POST /plan/evaluate  →  no corner violation at all
+```
+
+So **`PC-C` scores, and hard — but only when the corner is the *only* contact between two otherwise
+separate areas.** Every corner in v1 was redundant: the pieces it joined were also joined properly
+elsewhere, so nothing fired. The two terms that did fire were the honest ones, and `fill-ratio` was the
+structural symptom.
+
+### The mid is a bar now, not a rock
+
+`mid-bar` spans the build zone's full width (`x −20..20`) and is 10 blocks deep, with **15 blocks of void
+to each frontline leg** — a 40-block middle crossed as 15 · 10 · 15. The legs each grew a cell forward to
+make those numbers land. It reads as one continuous ledge across the crossing rather than a stone in an
+open gap, which is what makes the middle a place both teams stand on rather than a width they shoot across.
+
+### The Bézier lobe, and the rule that was missing
+
+The review was right that the room outlines had gone wrong, and diagnosing it needed measuring rather than
+squinting. Flattening the old handles and testing every non-adjacent segment pair found **zero
+self-intersections** — so it was not topologically a loop. Drawing the curve with its handles showed what it
+actually was: a 15-block edge with handles placed 8 blocks past it, bowing into a deep U hanging off the
+bottom of a wool room. `renders/09-bezier-lobe-before.png` is that picture and `10-bezier-corner-after.png`
+is the same edge under a rule.
+
+**The rule the documentation is missing is which side of the vertex a handle may sit on.** Build every
+handle from the edge itself —
+
+```
+c1 = p0 + d·t + n·bulge          c2 = p3 − d·t + n·bulge
+```
+
+— and hold two constraints: `t·|d| ≥ bulge`, so the handle travels further *along* the edge than *away*
+from it, and `bulge ≤ 0.35·|d|`, so a short edge cannot carry a big one. Break the first and the cubic
+cusps and then loops; break the second and you get the lobe. `specs/coldharbour_v2/curves.py` is the
+generator, and it flattens the finished ring and tests it for self-intersection before anything is posted.
+
+### The organic pass, and the thing it quietly broke
+
+Every coast is now bowed and no seam is: 26 of 38 edges carry a bow, and the 12 that do not are seams a
+player walks, edges under 12 blocks, or edges beside the approach wall. West of the axis the amplitude is
+0.16 of the edge and east 0.10, so the two wool approaches are not the same walk mirrored.
+
+**The wall veto is the part worth recording, because I did not predict it.** The first organic pass bowed
+the east wool lane's coast out to `x 37` and `x 56` either side of a wall running `x 40..55` — and a wall's
+width is fixed at compile from the plan's seam, so it no longer spanned the lane. Players could walk round
+both ends. Nothing refused it, nothing warned, and the only symptom was a number moving in the opposite
+direction from the one I expected: **traversability went from 2 isolated markers to 0**, which on this board
+means the wall stopped working rather than started. Vetoing every edge within 10 blocks of a wall rect —
+they are in the `POST /plan/inspect` structures feed — put it back to 2.
+
+That is the same class of failure as everything else in these two reports: a change that answers 200 at
+every call and is visible only in a read-back you thought to take.

@@ -327,6 +327,41 @@ thickness is exactly what decides whether it can be built over. And it is a remi
 sidecar is a *record of intent to claim*, not a read of the blocks: where the two disagree, `--column` is
 the one that has looked at the world.
 
+**A Bezier handle that travels further away from its edge than along it makes a lobe, not a corner.**
+§3 gives the semantics — `controls` keyed by vertex index as a string, handles in absolute board
+coordinates, the edge from *i* to *j* being `p0 = V[i]`, `c1 = controls[i].out`, `c2 = controls[j].in`,
+`p3 = V[j]` — and stops there. What it does not say is which side of the vertex a handle may sit on, and
+that is the half that decides whether you get a rounded corner or a bulb of land hanging off one edge.
+
+Place every handle as
+
+```
+c1 = p0 + d·t + n·bulge          c2 = p3 − d·t + n·bulge
+```
+
+with `d` the edge vector, `n` its outward unit normal and `t` a **forward** fraction (0.3 works). Two
+constraints keep it a corner:
+
+| | |
+|---|---|
+| `t·|d| ≥ bulge` | the handle must travel further along the edge than away from it |
+| `bulge ≤ 0.35·|d|` | a short edge cannot carry a big bulge |
+
+Break the first and the cubic doubles back: a cusp, and past that a self-intersecting loop that rasterizes
+as a detached scrap of land. Break the second on a 15-block edge with an 8-block handle and you get the
+measured case in `maps/coldharbour_v2/renders/09-bezier-lobe-before.png` — a deep U hanging off the bottom
+of a wool room, which flattens without self-intersecting and still reads as a bulb.
+`10-bezier-corner-after.png` is the same edge under the rule. `specs/coldharbour_v2/curves.py` is the
+generator, and it flattens the finished ring and tests every non-adjacent segment pair for intersection
+before anything is posted, because a curve that *looks* right in numbers can still cross itself.
+
+**And keep the curve away from two things.** A **seam** a player walks — bow it and the two pieces stop
+touching. And a **wall**: its width was fixed at compile from the plan's seam, so bowing the coast beside
+it widens the lane past the wall's ends. Measured on this map — a wall running `x 40..55` with the lane's
+coast bowed out to `x 37` and `x 56` handed players a way round it, and the traversability read went from
+2 isolated markers to 0. Vetoing every edge within 10 blocks of a wall rect (they are in the
+`POST /plan/inspect` structures feed) put it back.
+
 ## 12. Two PowerShell traps, if you drive the API from Windows
 
 Not the studio's fault, but they cost a cycle each and the failure looks like a server bug.
