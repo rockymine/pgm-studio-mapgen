@@ -100,3 +100,24 @@ next to the above), and any corpus re-sweep of the distance bands (amendment 13 
   text — today it is discoverable only by tripping the hard term.
 - `HJ5` fired on a configuration that appears to satisfy its stated clauses (kerbstone review, east-wing
   case); `WingJointRules`' height clause wants a read and either a fix or a sharper sentence.
+
+## Postscript — what landed, same day
+
+The fast-track was executed the session it was proposed, under the author's four rulings (terms ship
+unbanded; an unreachable goal hard-refuses; B37 report-first; mixed orchestration — two moves by the
+proposing model, the mechanical five by Sonnet subagents under written briefs, every diff reviewed and
+every suite run serialized between merges).
+
+| Move | Landed as |
+|---|---|
+| 1 — Geom helpers | `Cells.PathLengthToAny` + `Cells.SnapToWalkable`; the evaluator's hand-rolled BFS deleted; four snaps converged at their own radii |
+| 2 — goal distance + gating | destroyables/cores gate `EX1` like wools; `POST /plan/inspect` answers `goalDistances` (own walk, enemy walk, ratio — firnline reads 3.0, kerbstone 3.9, both walk-based) |
+| 3 — one gate chain | `MapExportComposer.ComposeSketch`; `tools/mapgen` routes through it, OB17/OB19/playability included, wool monuments folded into OB17 |
+| 4 — one envelope | `Finding.Envelope` in `Domain`; `MapExportComposer.Refuse` a one-liner; the orphaned-relief 409 speaks `SK1` findings |
+| 5 — the census | in flight as this postscript is written: `Decorator` to report every whole-prop decline with a reason (`region/dressing-report.json` + mapgen stderr — B37 report-first over B146/B142/B187) |
+| 6 — lint reach | `POST /plan/evaluate` carries the whole lint table as `lint[]` — `WX9`'s silent iron and `SP2`'s mid-lane spawn are visible on the loop (B109/B177) |
+| 7 — board hygiene | bucket 13 closed, the G section exists, counts agree at forty-four, B107/CV16 refiled, project-structure's Api counts true |
+
+Not done, deliberately: the ratio **band** (the author calibrates from the new measurement before it
+scores), the destroy-native composer (moves 1–2 are its prerequisites), and the `LibraryCrud`/`Services/`
+foldering (real, cosmetic, filed in §4's own not-now list).
