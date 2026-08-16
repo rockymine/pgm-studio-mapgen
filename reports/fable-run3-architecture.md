@@ -121,3 +121,11 @@ every suite run serialized between merges).
 Not done, deliberately: the ratio **band** (the author calibrates from the new measurement before it
 scores), the destroy-native composer (moves 1–2 are its prerequisites), and the `LibraryCrud`/`Services/`
 foldering (real, cosmetic, filed in §4's own not-now list).
+
+Closed outright the same day, past the report-first slice: **B146** — by the author's ruling a path's band
+no longer claims against a building at all (paths are laid first, the road runs to the porch, the house
+wins the ground), so the family's worst member is not "reported now" but gone; the band still refuses the
+scatter, with the census naming each refusal. And two rulings became pinned semantics: a water lane under
+`deny(void)` is not a route pre-timer while an open build zone over void is (a test holds both halves), and
+intended walls/climbs are recorded as relief-design concerns, never traversability faults
+(`docs/design-decisions.md`).

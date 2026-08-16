@@ -64,6 +64,13 @@ points (two extra points bracketing each 90° turn); a frontage line wants 3+ bl
 band*, and the band's centreline is the Catmull-Rom through your points. When in doubt, drop the corner
 radius by one and add a control point — the cost is nothing and the failure it prevents is the silent one.
 
+**Addendum, same day (fault 4 retired for buildings).** The author's ruling landed after this report: a
+path's band no longer claims against a building at all — paths are laid first, a house drawn across the
+pavement stands and the road ends at its wall, so a route can run to a porch. The frontage-margin arithmetic
+above is obsolete for houses; it still governs the road's own course and the scatter (a tree or boulder on
+the real curve is refused, now with a `dressing-report.json` entry naming the cell). GENERATION-NOTES §7/§12
+carry the current rule.
+
 ---
 _Generated with the studio's own endpoints; every claim above is reproducible from `specs/` against the
 branch named in the header._
