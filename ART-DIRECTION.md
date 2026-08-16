@@ -57,11 +57,11 @@ not here: that is `pgm-studio/docs/gameplay/approaches.md`, which wins any disag
   flat inside a solve).
 - **AD-L2.** Do not exclude a piece from the relief and leave its straight edge showing: an excluded
   rectangle meeting solved ground at a ruled corner reads as pasted. Let the relief merge rough ground into
-  clean, or author the seam (`B239`'s per-interface read will complain; today this document does).
+  clean, or author the seam (the relief hard-edge read stays a note per the author; today this document does).
 - **AD-L3.** A depression and the hill beside it are one composition: author the saddle between them.
 - **AD-L4.** Elevation: relief for ground that *grew*, `base_height` tiers and shapes for ground that was
   *built*. Adjacent pieces step by **1 level, or take a ramp** — a bare Δ2 seam is un-walkable, and a spawn
-  behind one cannot be left (`B239`).
+  behind one cannot be left [`SP8`].
 - **AD-L5.** Promote compiled tiers to polygons with Bézier `controls`; a tier can fuse to more than one
   shape, and where land stands higher than a piece the land runs **over** the lower fringe.
 - **AD-L6.** A large open area wants level changes, not more trees. If a region is bigger than what fills
@@ -97,7 +97,7 @@ not here: that is `pgm-studio/docs/gameplay/approaches.md`, which wins any disag
 - **AD-S5.** Placement is bounded and mostly enforced: 20 blocks clear in front of a spawn door and 10 in
   front of a wool entry (trees and buildings; boulders stay legal) [`OB21`]; 10 blocks clear around a goal
   marker [`OB19`]; a building leaves a **5-block passage** on at least one side [`DR-PASS`]; one block
-  between buildings, eaves included (`B166`, unenforced); ≥ 5×5 and ≤ 20×20 (`B167`/`B157`, unenforced);
+  between buildings, eaves included (`B166`, unenforced); ≥ 5×5 [`DR-SIZE`], role pieces ≤ 20×20 [`ST9`];
   ground under every column (`B187`, unenforced — check it yourself).
 - **AD-S6.** Look at a house before building a world: `/room-styles/preview` (plan, section, isometric,
   cutaway), and `--section` on a built one. Every shipped roof fault was visible in a section and invisible
@@ -126,14 +126,15 @@ not here: that is `pgm-studio/docs/gameplay/approaches.md`, which wins any disag
 - **AD-V1.** Void belongs between the teams, not across an approach; for destroy boards the mid-terrain
   hole is replaced by a depression or a pond. A hole is also what makes a flank worth walking to — do not
   fill every one.
-- **AD-V2.** On a CTW board two islands sit 15–40 apart (`B158`); a whole island per team is the right
+- **AD-V2.** On a CTW board the two team islands' direct strait spans 15–40 [`CT12`]; a whole island per team is the right
   shape.
-- **AD-V3.** The spawn: door ≥ 15 from void (`B158`) · open ground ahead [`OB21`] · the ground it opens onto
+- **AD-V3.** The spawn: door ≥ 15 from bare void, a build zone counts as ground [`SP9`] · open ground ahead [`OB21`] · the ground it opens onto
   climbs back (`B180`) · near the back of its lane (`SP2`), iron beside or ahead (`SP7`) · egress steps by
-  1 level or a ramp (`B239`).
+  1 level or a ramp [`SP8`].
 - **AD-V4.** **One build zone for a compact middle.** Several only where the frontline is legged (one zone
   per leg) or two mid islands each take a flush zone — `frontline-dos-and-donts.plan.json`. Stitched funnels
-  are invisible to players (`B238`); a frontline run wants ≥ 15 blocks of width.
+  are invisible to players [`BZ11`]; a crossing spans the face it docks against [`FR8`] — the
+  absolute front width is an open question, so read the run widths off `POST /plan/inspect`.
 - **AD-V5.** A wool stands off its hub behind an approach piece shaped from the approach families (i, l, z,
   scythe, clamp, u, h, donut — `GET /shapes/catalog`); a wool room never docks flush against a hub. The
   bedrock wall sits on the **approach's outer interface**, ~15 blocks from the room — never on the wool's

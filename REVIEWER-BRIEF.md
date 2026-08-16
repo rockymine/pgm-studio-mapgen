@@ -86,7 +86,7 @@ commit — a reviewer still checking a rule the pipeline now refuses is a second
 
 | # | Check | How you measure it | Owns it |
 |---|---|---|---|
-| S1 | Door ≥ **15 blocks** from the nearest void | Read the spawn point and yaw from `map.xml`, walk forward in `--column`, find the first column with 0 solid | `B158` |
+| S1 | Door ≥ **15 blocks** from the nearest void | Read the spawn point and yaw from `map.xml`, walk forward in `--column`, find the first column with 0 solid | `SP9` (lint, `/plan/evaluate`) |
 | S2 | **20 × 20** of open ground in front | The box from the door face, in the yaw direction. Trees at its edge, boulders and fauna are allowed; **houses are not** | `B172` |
 | S3 | The ground it opens onto is climbable back | Probe the door's own surface height and the next surface out. A drop of more than 1 fails unless a route is within a few blocks of the door | `B180` |
 | S4 | Spawn near the back of its lane (`SP2`); iron **beside or ahead**, never behind (`SP7`) | Spawn point against its piece's extent; iron position against the spawn point and the protection rectangle | `B177` |
@@ -96,13 +96,13 @@ commit — a reviewer still checking a rule the pipeline now refuses is a second
 
 | # | Check | How you measure it | Owns it |
 |---|---|---|---|
-| P1 | A wool-room piece and a spawn piece are at most **20 × 20 blocks** | Cells × cell size, from the plan | `B157` |
-| P2 | A placed building is at least **5 × 5** | Every house prop's footprint in the layout | `B167` |
+| P1 | A wool-room piece and a spawn piece are at most **20 × 20 blocks** | Cells × cell size, from the plan | `ST9` (lint) |
+| P2 | A placed building is at least **5 × 5** | Every house prop's footprint in the layout | `DR-SIZE` (dropped by the dressing pass) |
 | P3 | **1 block of clearance** between buildings, eaves included | Footprints plus `overhang`, pairwise | `B166` |
 | P4 | No building stands over void | `--column` at three or more points inside each footprint; count solid blocks under the floor | `B187` |
-| P5 | CTW islands **15–40 blocks** apart | Shape extents and their orbit images. A shared middle is permitted and needs the gap on **both** sides | `B158`, `B170` |
-| P6 | No wall on a wool room's own entry face | The wall rect against the room's declared `entries`. Perpendicular is fine; covering it is not | `B156` |
-| P7 | A bedrock wall spans its intersection, is **10–20 wide**, about **15 in front** of the room's entrance | Wall rect against room rect and entry face | `B186` |
+| P5 | CTW islands **15–40 blocks** apart | Shape extents and their orbit images. A shared middle is permitted and needs the gap on **both** sides | `CT12` (lint), `B170` |
+| P6 | No wall on a wool room's own entry face | The wall rect against the room's declared `entries`. Perpendicular is fine; covering it is not | `PL13` (compile refusal), `ST8` (seat lint) |
+| P7 | A bedrock wall spans its intersection, is **10–20 wide**, about **15 in front** of the room's entrance | Wall rect against room rect and entry face | `ST8` (lint; span is by construction) |
 | P8 | A wall's chest opens the way the room's door faces | Chest x/z against the room footprint. Inside the room fails | `B185` |
 
 ### 3.4 The objectives
