@@ -184,32 +184,27 @@ ground ramp up to meet the shape, `exclude` meets the tier below at a face. A te
   runs to `{"owners": [...], "runs": [...]}`. **Rebuild a world before rendering it against a newer studio**,
   or delete `provenance.json` to get the material-estimate fallback.
 
-## 7. A path claims ground, and a building that touches it is dropped — silently, still
+## 7. A path's band no longer drops a building — the road runs to the porch (retired 16 Aug 2026)
 
-Known (`AGENT-REPORT-2.md`), **still live**, and it is the single most expensive thing on this list because
-the only symptom is a house that is not there. `Decorator.PlacePath` adds every band cell to the `taken` set;
-`PlaceHouse` returns 0 if any footprint cell is taken, for **both** orbit images, with nothing logged, nothing
-refused, and a clean `200` from export.
+The single most expensive fault on this list is fixed, by the author's ruling: paths are laid first, and a
+house drawn across the pavement now **stands** — its floor takes the ground inside its walls and the path
+ends at the wall, which is what lets a road run to a porch or a door at all. The band's claim still holds
+against the scatter above the buildings, so a tree, a boulder or tall cover on the route is refused — and
+since the census landed, refused **with a reason** (`region/dressing-report.json` + one mapgen stderr line
+per drop), not silently.
 
-Four of five houses on `basalt-reach` went this way on the first dressed build:
+The old behaviour, kept for the record because two runs paid for it: `PlacePath` claimed every band cell
+into the shared `taken` set and `PlaceHouse` declined on any collision, both orbit images, nothing logged —
+four of five houses on `basalt-reach` and four on the first Kerbstone build vanished that way (footprint
+tables in `AGENT-REPORT-2.md` and `reports/fable-run3.md`). Route margin arithmetic around buildings is no
+longer needed; probing a building's centre for its `floor` material remains the four-second check that a
+house stamped at all.
 
-| House | footprint | claimed by | that path's band | stamped |
-|---|---|---|---|---|
-| `w1` | `x −45…−37, z 64…72` | — | — | yes |
-| `w2` | `x −34…−25, z 64…71` | `p-ramp-back` at `(−26, 70)` | `x −28…−24, z 68…72` | **no** |
-| `w3` | `x −22…−14, z 64…73` | `p-ramp-back` at `(−22, 63)` | `x −24…−20, z 61…65` | **no** |
-| `w4` | `x −11…−3, z 64…70` | `p-spawn` at `(−8, 66)` | `x −10…−6, z 64…68` | **no** |
-| `w5` | `x 0…7, z 64…72` | `p-spawn` at `(0, 72)` | `x −2…2, z 70…74` | **no** |
-
-Three commits landed during this run about what a *building* claims (its eaves, its roof ring, two buildings
-that touch). None of them touch the path side, so this is unchanged.
-
-**How to work with it.** A path's band is `radius` blocks either side of the centreline, computed along the
-whole polyline — so an intermediate point you did not think about is what claims the ground. Give every
-building **three or more blocks** of clear ground to the nearest band, and remember the building claims one
-block past its own walls for the eaves. Then **check by probing each building's centre**: a stamped house
-reads its own `floor` material there, and a beam or roof slab higher up; a dropped one reads the terrain
-theme's own surface palette. That check is four seconds and it is the only one that answers.
+**The scatter gained the opposite rule — a standoff from the road.** A tree's trunk must rest **≥3 blocks**
+from the nearest paved cell and a boulder **≥2** (the author's numbers; exactly-at-distance is legal). A
+breach drops the whole prop with a `dressing-report.json` entry naming the offending cell, so trees that
+used to seat one block off the kerb now refuse — place tree anchors 3+ from the *paved* edge (spline, not
+polyline, §12). Cover, water and buildings keep zero standoff.
 
 ## 8. A prop over void is skipped, and the tree count does not notice
 
@@ -393,3 +388,79 @@ The compiled layout is thrown away and a hand-written one `PUT` in its place, wh
 and removes the whole "address a compiled tier by the height it stands at" problem. What is kept from the
 compile is the **intent** — it carries the spawns, the wool rooms, their entries and floors, and the
 `structures.walls` a plan's `walls` entry produced, none of which the layout states.
+
+## 12. A path's band follows the spline, not your polyline
+
+`PathBand.Centerline` runs the drawn points through a **Catmull-Rom spline** before the band is derived, and
+a Catmull-Rom overshoots the outside of every corner — by several blocks when the segments are long. Since
+the §7 ruling the band no longer touches buildings, so the overshoot no longer eats houses (four on the
+first Kerbstone build cleared every drawn segment by 1.5+ blocks and went that way). It still decides where
+the *road itself* runs and what the band refuses above it — a tree or boulder several blocks clear of your
+drawn polyline can sit squarely on the real curve — so margin arithmetic against the polyline is still
+arithmetic against the wrong line.
+
+**Work with it, cheaply:** chamfer every sharp corner with two bracketing points (the spline has nothing to
+overshoot), and read `region/dressing-report.json` after a build — a prop the band refused is named there
+with its colliding cell.
+
+## 13. Wing corners are inclusive — "touching" means adjacent rows
+
+An `AuthoredWing`'s `corners` name cells inclusively: `[[0,6],[9,10]]` covers row 6 *and* row 10. Two wings
+that share a coordinate row therefore **overlap** (`HJ1`); a touching wing starts one row past its hall
+(`maxZ` 77 → wing `minZ` 78). And a square-ish pair ties both ridges toward x (`HJ3`) unless the wing states
+`ridge` explicitly. Since this run, `POST /terrain/prop-preview` refuses a composition the build would drop,
+with the same `HJ*`/`HP*` findings — preview every multi-wing building before committing the document.
+
+**The `HJ5` mystery is solved: the roles are ridge-derived.** Which rectangle is the hall and which the wing
+follows from the ridges — the wing's runs *into* the shared edge — so the explicit `ridge` you state to
+dodge an `HJ3` tie can silently swap the roles your drawing suggests, and checking "wing along edge ≤ hall
+across" against the rectangle you *drew* as the wing reads a firing `HJ5` as satisfied (the kerbstone
+east-wing case). The refusal now names the derived roles outright ("the wing (rectangle 1)…"), so read the
+indices in the message, not your drawing.
+
+## 14. Words that differ between the save request and the snapshot
+
+`porch.edge: "front"` is a save-request word; on a **snapshot** (`preview-snapshot`, `roomStyles`, a
+dressing `style`) the field is a nullable enum and the word for "the door wall" is **`null`** — `"front"`
+refuses with `RQ1`. Same document, two layers, two vocabularies.
+
+## 15. The donut sanction is a naming convention
+
+A wool that encloses its own bay (`donut`/staple families) passes `wool-ringed-hole` (WL8) only if the
+hole's ring reads as the wool's **own box**: leg pieces sharing the room's id prefix, at most one foreign
+sealing piece (`ClosureAnalysis.AnyHoleRingedBy`). `south-rim` beside room `wool-south` fires the hard term;
+rename it `wool-south-rim` and the same geometry is sanctioned. Nothing in `rules.md` says this — name your
+approach pieces after their room.
+
+## 16. Retired errata (fixed in the studio, 16 Aug 2026)
+
+- **Water lanes ship again** — `SketchWorldBuilder` rebuilds the intent with `with`, so a lane survives to
+  `map.xml` (§ opus run-2 report 1.1 is history; measured on `sunspit`).
+- **`mirrors: false` touching mirrored land** is now a named refusal (`PL12`) instead of an anonymous 400,
+  and the compile endpoint's residual 400s carry the exception message.
+- **A path's band dropping buildings** is retired outright — §7 records the ruling; §12's spline overshoot
+  now matters only for the road's own course and the scatter it refuses.
+- **The donut sanction's naming contract (§15) is now law**: rules.md WL8 states the id-prefix rule outright,
+  so it is no longer discoverable only by tripping the hard term.
+- **The destroy-goal ratio is banded**: `GO1` [3.0, 4.0] by walk, scored by `goal-spawn-ratio` on
+  `/plan/evaluate` — aim boards inside it (this run's two destroy boards read 3.0 and 3.9).
+- **Houses excavate relief**: a building on a hillside or relief mark carves the slope out of its rooms and
+  sinks in; interiors can no longer be found full of terrain after a build.
+- **The finish previews answer PNG**: `?format=png&view=…` on `material-preview`, `theme-preview` and
+  `prop-preview` returns one view as raw `image/png` — no more rasterizing SVG out of JSON to look at a
+  pattern (`view=plan|section`; themes also take a bucket name).
+- **Traversability is per-team where protections bar one**: a goal tucked behind an oversized spawn
+  protection now refuses export with the barred team named — the §6 read and the export gate both carry
+  `for:<team>` on such isolations.
+- **Door approaches and goal rings are kept open (`OB21`, widened `OB19`)**: a tree or house within 20
+  blocks of a spawn door's face, 10 of a wool entry, or any of the OB19 trio within 10 of a goal marker now
+  refuses export by name. Boulders stay legal in approach lanes. Plan prop positions against the *stamped
+  room's face*, not the protection rect.
+- **A house must leave a way past itself (`DR-PASS`)**: at least one side keeps a 5-block passable band
+  along its whole run (one step past each corner included), or the whole prop is declined with the rule id
+  in `dressing-report.json` — the donut-leg cork from the generator experiment is now impossible to ship.
+- **`prop-preview` refuses an uncomposable building** (see §13).
+- **The objective line counts per team** — one monument per team reads "Destroy the enemy's monument!",
+  one wool per team "Capture the wool!".
+- **`relief/read` answering `{"islands": []}`** now has two causes: shapes not rasterizing (§1) *or* a
+  layout that simply declares no relief. Check whether you stated a relief before reaching for §1.

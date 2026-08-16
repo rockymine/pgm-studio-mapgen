@@ -1,0 +1,255 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Tanglewold"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "mirror_x",
+    "maxPlayers": 20,
+    "surface": 9
+  },
+  "pieces": [
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -17,
+        -2,
+        2,
+        3
+      ],
+      "surface": 13
+    },
+    {
+      "id": "meadow",
+      "role": "piece",
+      "rect": [
+        -15,
+        -6,
+        5,
+        13
+      ],
+      "surface": 11
+    },
+    {
+      "id": "wool-north",
+      "role": "wool-room",
+      "rect": [
+        -13,
+        7,
+        2,
+        2
+      ],
+      "surface": 12
+    },
+    {
+      "id": "southwood",
+      "role": "piece",
+      "rect": [
+        -15,
+        -9,
+        6,
+        3
+      ],
+      "surface": 10
+    },
+    {
+      "id": "wool-south",
+      "role": "wool-room",
+      "rect": [
+        -14,
+        -11,
+        2,
+        2
+      ],
+      "surface": 9
+    },
+    {
+      "id": "midwood",
+      "role": "piece",
+      "rect": [
+        -10,
+        -8,
+        5,
+        14
+      ],
+      "surface": 10
+    },
+    {
+      "id": "hollow",
+      "role": "piece",
+      "rect": [
+        -5,
+        -6,
+        2,
+        10
+      ],
+      "surface": 9
+    },
+    {
+      "id": "spine",
+      "role": "piece",
+      "rect": [
+        -1,
+        -4,
+        1,
+        8
+      ],
+      "surface": 10
+    },
+    {
+      "id": "wool-south-rim",
+      "role": "piece",
+      "rect": [
+        -14,
+        -12,
+        5,
+        1
+      ],
+      "surface": 9
+    },
+    {
+      "id": "wool-south-side",
+      "role": "piece",
+      "rect": [
+        -9,
+        -12,
+        1,
+        4
+      ],
+      "surface": 9
+    }
+  ],
+  "zones": [
+    {
+      "id": "ford-south",
+      "rect": [
+        -3,
+        -6,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "ford-north",
+      "rect": [
+        -3,
+        0,
+        2,
+        4
+      ]
+    }
+  ],
+  "walls": [
+    {
+      "a": "meadow",
+      "b": "wool-north",
+      "side": "a"
+    },
+    {
+      "a": "southwood",
+      "b": "wool-south",
+      "side": "a"
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          1,
+          1
+        ],
+        "facing": "right"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          1,
+          0.5
+        ]
+      }
+    ],
+    "wools": [
+      {
+        "id": "wool-n",
+        "piece": "wool-north",
+        "at": [
+          1,
+          1
+        ]
+      },
+      {
+        "id": "wool-s",
+        "piece": "wool-south",
+        "at": [
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "boxes": [
+    {
+      "id": "wool-n-box",
+      "kind": "wool",
+      "rect": [
+        -14,
+        3,
+        4,
+        7
+      ],
+      "members": [
+        "wool-north"
+      ]
+    },
+    {
+      "id": "wool-s-box",
+      "kind": "wool",
+      "rect": [
+        -15,
+        -12,
+        7,
+        4
+      ],
+      "members": [
+        "wool-south",
+        "southwood",
+        "wool-south-rim",
+        "wool-south-side"
+      ]
+    },
+    {
+      "id": "hub-box",
+      "kind": "hub",
+      "rect": [
+        -11,
+        -9,
+        7,
+        16
+      ],
+      "members": [
+        "midwood",
+        "hollow"
+      ]
+    },
+    {
+      "id": "front-box",
+      "kind": "frontline",
+      "rect": [
+        -2,
+        -5,
+        2,
+        10
+      ],
+      "members": [
+        "spine"
+      ]
+    }
+  ]
+}

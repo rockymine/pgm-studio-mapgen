@@ -109,6 +109,15 @@ Beside them sits one world from the same days that is not one of the fifteen:
 | `haiku-ctw-rush-2` | ctw | Haiku | a CTW board |
 | `haiku-dtm-tower` | ctw* | Haiku | a DTM board with dual objectives |
 
+### Fable run 3
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `firnline` | dtm | Fable | snow-and-mountains lane: a firn valley between built terraces, crevasse pockets, obsidian cairn on a forecourt shelf |
+| `kerbstone` | dtm | Fable | cityscape street canyon: multi-storey rows, marching and projecting wings, gold bullion on a civic court |
+| `sunspit` | ctw | Fable | summer beach: two shores over an open sea gap, lagoon, walled bluff wool + isolated pier wool, tidal water lane |
+| `tanglewold` | ctw | Fable | woodlands: forest belts and brooks, a walled knoll wool + a donut hollow wool, causeway mid over two fords |
+
 ### B120 run 2
 
 | Folder | Mode | Author | What it is |
@@ -237,6 +246,8 @@ cited.
 | `reports/opus-run1.md` · `sonnet-run1.md` · `haiku-run1.md` | the three run-1 accounts |
 | `reports/opus-run2.md` · `sonnet-run2.md` · `haiku-run2.md` | the three run-2 accounts |
 | [reports/opus5-run2.md](reports/opus5-run2.md) | a second, independent run-2 — its §1 audits the earlier runs' claims against the code, and finds three that were wrong when filed and four gaps since closed |
+| [reports/fable-run3.md](reports/fable-run3.md) | run 3 — four themed boards; five studio defects found were fixed in the same session, and the fault table separates them from the author's own mistakes |
+| [reports/fable-run3-architecture.md](reports/fable-run3-architecture.md) | run 3's second half: the distance-measurement inventory, the API-layer survey, and a seven-move fast-track ranked by what each buys |
 | `review/` | one measured record per map |
 | the board audit, 2026-08-14 | every open `TODO.md` entry checked against the code it describes and every map against what its report claims: 48 findings, filed as `B141`–`B188` in `pgm-studio/BACKLOG.md` and bucketed for dispatch |
 

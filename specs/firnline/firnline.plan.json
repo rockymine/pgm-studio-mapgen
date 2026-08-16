@@ -1,0 +1,193 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Firnline"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 16,
+    "surface": 9
+  },
+  "pieces": [
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        18,
+        3,
+        2
+      ],
+      "surface": 15
+    },
+    {
+      "id": "spawn-stoop",
+      "role": "piece",
+      "rect": [
+        -2,
+        16,
+        3,
+        2
+      ],
+      "surface": 13
+    },
+    {
+      "id": "village",
+      "role": "piece",
+      "rect": [
+        -7,
+        11,
+        10,
+        5
+      ],
+      "surface": 11
+    },
+    {
+      "id": "monument-shelf",
+      "role": "piece",
+      "rect": [
+        3,
+        11,
+        3,
+        3
+      ],
+      "surface": 12
+    },
+    {
+      "id": "steps-hi",
+      "role": "piece",
+      "rect": [
+        3,
+        10,
+        3,
+        1
+      ],
+      "surface": 11
+    },
+    {
+      "id": "steps-lo",
+      "role": "piece",
+      "rect": [
+        3,
+        9,
+        3,
+        1
+      ],
+      "surface": 10
+    },
+    {
+      "id": "village-brow",
+      "role": "piece",
+      "rect": [
+        -7,
+        9,
+        4,
+        2
+      ],
+      "surface": 10
+    },
+    {
+      "id": "valley-own",
+      "role": "piece",
+      "rect": [
+        -7,
+        4,
+        13,
+        5
+      ],
+      "surface": 9
+    },
+    {
+      "id": "moraine-west",
+      "role": "piece",
+      "rect": [
+        -9,
+        5,
+        2,
+        10
+      ],
+      "surface": 12
+    },
+    {
+      "id": "mid-west-half",
+      "role": "piece",
+      "rect": [
+        -7,
+        0,
+        5,
+        4
+      ],
+      "surface": 8
+    },
+    {
+      "id": "mid-east-half",
+      "role": "piece",
+      "rect": [
+        2,
+        0,
+        5,
+        4
+      ],
+      "surface": 8
+    },
+    {
+      "id": "mid-north-strip",
+      "role": "piece",
+      "rect": [
+        -2,
+        2,
+        4,
+        2
+      ],
+      "surface": 8
+    },
+    {
+      "id": "mid-knoll-half",
+      "role": "piece",
+      "rect": [
+        -2,
+        0,
+        4,
+        2
+      ],
+      "surface": 10
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          1.5,
+          1.5
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          0.5,
+          0.5
+        ]
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "monument-1",
+        "piece": "monument-shelf",
+        "at": [
+          1.5,
+          1.5
+        ],
+        "style": "pillar-3",
+        "materials": "obsidian",
+        "name": "Cairn"
+      }
+    ]
+  }
+}
