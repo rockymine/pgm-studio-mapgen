@@ -200,6 +200,12 @@ tables in `AGENT-REPORT-2.md` and `reports/fable-run3.md`). Route margin arithme
 longer needed; probing a building's centre for its `floor` material remains the four-second check that a
 house stamped at all.
 
+**The scatter gained the opposite rule — a standoff from the road.** A tree's trunk must rest **≥3 blocks**
+from the nearest paved cell and a boulder **≥2** (the author's numbers; exactly-at-distance is legal). A
+breach drops the whole prop with a `dressing-report.json` entry naming the offending cell, so trees that
+used to seat one block off the kerb now refuse — place tree anchors 3+ from the *paved* edge (spline, not
+polyline, §12). Cover, water and buildings keep zero standoff.
+
 ## 8. A prop over void is skipped, and the tree count does not notice
 
 A tree authored at a coordinate with no ground under it simply does not appear. Nothing refuses it — and
@@ -304,6 +310,13 @@ that share a coordinate row therefore **overlap** (`HJ1`); a touching wing start
 `ridge` explicitly. Since this run, `POST /terrain/prop-preview` refuses a composition the build would drop,
 with the same `HJ*`/`HP*` findings — preview every multi-wing building before committing the document.
 
+**The `HJ5` mystery is solved: the roles are ridge-derived.** Which rectangle is the hall and which the wing
+follows from the ridges — the wing's runs *into* the shared edge — so the explicit `ridge` you state to
+dodge an `HJ3` tie can silently swap the roles your drawing suggests, and checking "wing along edge ≤ hall
+across" against the rectangle you *drew* as the wing reads a firing `HJ5` as satisfied (the kerbstone
+east-wing case). The refusal now names the derived roles outright ("the wing (rectangle 1)…"), so read the
+indices in the message, not your drawing.
+
 ## 14. Words that differ between the save request and the snapshot
 
 `porch.edge: "front"` is a save-request word; on a **snapshot** (`preview-snapshot`, `roomStyles`, a
@@ -326,6 +339,12 @@ approach pieces after their room.
   and the compile endpoint's residual 400s carry the exception message.
 - **A path's band dropping buildings** is retired outright — §7 records the ruling; §12's spline overshoot
   now matters only for the road's own course and the scatter it refuses.
+- **The donut sanction's naming contract (§15) is now law**: rules.md WL8 states the id-prefix rule outright,
+  so it is no longer discoverable only by tripping the hard term.
+- **The destroy-goal ratio is banded**: `GO1` [3.0, 4.0] by walk, scored by `goal-spawn-ratio` on
+  `/plan/evaluate` — aim boards inside it (this run's two destroy boards read 3.0 and 3.9).
+- **Houses excavate relief**: a building on a hillside or relief mark carves the slope out of its rooms and
+  sinks in; interiors can no longer be found full of terrain after a build.
 - **`prop-preview` refuses an uncomposable building** (see §13).
 - **The objective line counts per team** — one monument per team reads "Destroy the enemy's monument!",
   one wool per team "Capture the wool!".

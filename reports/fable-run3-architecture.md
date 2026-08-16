@@ -118,9 +118,10 @@ every suite run serialized between merges).
 | 6 — lint reach | `POST /plan/evaluate` carries the whole lint table as `lint[]` — `WX9`'s silent iron and `SP2`'s mid-lane spawn are visible on the loop (B109/B177) |
 | 7 — board hygiene | bucket 13 closed, the G section exists, counts agree at forty-four, B107/CV16 refiled, project-structure's Api counts true |
 
-Not done, deliberately: the ratio **band** (the author calibrates from the new measurement before it
-scores), the destroy-native composer (moves 1–2 are its prerequisites), and the `LibraryCrud`/`Services/`
-foldering (real, cosmetic, filed in §4's own not-now list).
+Not done, deliberately: the destroy-native composer (moves 1–2 are its prerequisites) and the
+`LibraryCrud`/`Services/` foldering (real, cosmetic, filed in §4's own not-now list). The ratio **band**
+followed the next day: the author stated **[3.0, 4.0]** off the two boards this run measured (3.0, 3.9),
+shipped as rules.md `GO1` and the `goal-spawn-ratio` term — the band authored on the term, not learned.
 
 Closed outright the same day, past the report-first slice: **B146** — by the author's ruling a path's band
 no longer claims against a building at all (paths are laid first, the road runs to the porch, the house
