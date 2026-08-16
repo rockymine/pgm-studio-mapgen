@@ -33,7 +33,10 @@ causeway mid island reached over two 10-block fords, brooks fanned to both halve
 
 - The donut ring's east leg touched its rim at a corner only (`PC-C`, and the loop wasn't walkable) —
   redrawn to share an edge.
-- Spawn iron cube missing from provenance while firnline's stands (identical markers, different spawn
-  styles) — open question, filed in the run report.
+- Spawn iron cube missing on the first builds: the marker at `[0.5, 0.5]` beside a 10-block-wide spawn
+  room resolves as **unplaceable** (`WX9` degrade — no legal strip), stamps nothing, and nothing on the
+  API loop said so. Swept offsets through `POST /plan/inspect` (the structures feed shows placeable iron
+  boxes); `[1, 0.5]` seats a 3-cube. The silence is the finding — WX8/WX9 surface in no evaluate term and
+  no compile warning.
 - Soft terms accepted: `fill-ratio` 0.57, `lane-width` 25 (a woodland "lane" is deliberately a belt, not a
   corridor).

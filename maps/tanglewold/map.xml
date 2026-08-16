@@ -92,19 +92,21 @@
         <not id="no-void">
             <void/>
         </not>
+        <material id="only-air">air</material>
+        <material id="only-iron">iron block</material>
     </filters>
     <regions>
-        <point id="blue-spawn-point">80,13,-5</point>
-        <point id="red-spawn-point">-80,13,-5</point>
+        <point id="blue-spawn-point">80,13,-3</point>
+        <point id="red-spawn-point">-80,13,-3</point>
         <point id="blue-wool-spawn">60,11,40</point>
         <point id="orange-wool-spawn">-65,8,-50</point>
         <point id="red-wool-spawn">-60,11,40</point>
         <point id="light_blue-wool-spawn">65,8,-50</point>
         <point id="observer-spawn">0,25,0</point>
         <block id="light_blue-red-monument">-78,14,2</block>
-        <block id="blue-red-monument">-78,14,-8</block>
+        <block id="blue-red-monument">-78,14,-5</block>
         <block id="orange-blue-monument">77,14,2</block>
-        <block id="red-blue-monument">77,14,-8</block>
+        <block id="red-blue-monument">77,14,-5</block>
         <rectangle id="blue-spawn" min="75,-10" max="85,5"/>
         <rectangle id="red-spawn" min="-85,-10" max="-75,5"/>
         <rectangle id="light_blue-wool" min="60,-55" max="70,-45"/>
@@ -122,6 +124,10 @@
         <union id="woolrooms">
             <region id="reds-woolrooms"/>
             <region id="blues-woolrooms"/>
+        </union>
+        <union id="iron-cubes">
+            <rectangle id="iron-cube-0" min="-82,-10" max="-79,-7"/>
+            <rectangle id="iron-cube-1" min="78,-10" max="81,-7"/>
         </union>
         <negative id="not-spawns">
             <region id="spawns"/>
@@ -170,6 +176,9 @@
             <item material="wool" damage="3"/>
         </spawner>
     </spawners>
+    <renewables>
+        <renewable region="iron-cubes" renew-filter="only-iron" replace-filter="only-air" avoid-players="2"/>
+    </renewables>
     <block-drops>
         <rule>
             <filter>
