@@ -114,7 +114,7 @@ every suite run serialized between merges).
 | 2 — goal distance + gating | destroyables/cores gate `EX1` like wools; `POST /plan/inspect` answers `goalDistances` (own walk, enemy walk, ratio — firnline reads 3.0, kerbstone 3.9, both walk-based) |
 | 3 — one gate chain | `MapExportComposer.ComposeSketch`; `tools/mapgen` routes through it, OB17/OB19/playability included, wool monuments folded into OB17 |
 | 4 — one envelope | `Finding.Envelope` in `Domain`; `MapExportComposer.Refuse` a one-liner; the orphaned-relief 409 speaks `SK1` findings |
-| 5 — the census | in flight as this postscript is written: `Decorator` to report every whole-prop decline with a reason (`region/dressing-report.json` + mapgen stderr — B37 report-first over B146/B142/B187) |
+| 5 — the census | `Decorator` reports every whole-prop decline with a reason: `region/dressing-report.json` beside the provenance sidecar + one mapgen stderr line per drop (B37 report-first over B146/B142/B187) |
 | 6 — lint reach | `POST /plan/evaluate` carries the whole lint table as `lint[]` — `WX9`'s silent iron and `SP2`'s mid-lane spawn are visible on the loop (B109/B177) |
 | 7 — board hygiene | bucket 13 closed, the G section exists, counts agree at forty-four, B107/CV16 refiled, project-structure's Api counts true |
 
