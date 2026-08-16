@@ -53,6 +53,7 @@ and a rebuild fails with sixteen `MSB3027`s that read like compile errors and ar
 | `--traversability-map` | navigable components. Read `B99` before concluding anything from an isolated marker |
 | `--structures` · `--buildings` | building census. **`--buildings` cannot see a town this studio built** (`B149`) — Marlstone has 24 houses and it finds 6. Use `--layer structure` and the provenance sidecar instead |
 | `tools/column-probe.cs` | the same column read, scriptable over a list of positions |
+| `stages/coverage.png` · the `coverage:` line every build prints | where the ground is lived on: corridors and waypoint rings green, prop-decorated fringe yellow, **dead ground red**, each dead patch named with area, centroid and walk to the used ground. The instrument for "this area is dead" and "this board is too big" — cite the patch coordinates, not an impression |
 
 **Two known instrument faults that will mislead you if you do not know them.** `--topdown --layer structure`
 decides *structure* by block material, so terrain painted in stone brick or planks reads orange as though it
@@ -109,7 +110,7 @@ commit — a reviewer still checking a rule the pipeline now refuses is a second
 | # | Check | How you measure it | Owns it |
 |---|---|---|---|
 | O1 | A team's two goals ≥ **35 blocks** apart; **70–75** is the good band | Region centres from `map.xml` | `B175` |
-| O2 | Enemy-spawn ÷ own-spawn distance to a goal ≈ **3** | Corpus median 2.9, p10 1.4. **Under 2.0 is a finding**; under 1.5 is a serious one | `B188` |
+| O2 | Enemy-spawn ÷ own-spawn walk to a goal in **[3.0, 4.0]** | The authored band, scored by `goal-spawn-ratio` and answered by `POST /plan/inspect` as `goalDistances`. Outside the band is a finding | `GO1` |
 | O3 | The objective set uses the board | Objective bounding box against the board extent. Every goal on one line across a wide board is the Ashfall fault | `B179` |
 | O4 | Obsidian in a destroyable ≤ **3 blocks** | Style × material. `pillar-3` = 3 ok; `cube-3` = 27, `cube-4` = 64, `column-plus` = 15. **Probe the cube's own centre** — it is not hollowed | `B162` |
 | O5 | The sky marker is above what was **built**, not just above the cap | `--column` over the goal footprint: the marker must sit above the tallest solid block, roof included, **and** above `maxHeight` | `B159` |
@@ -134,7 +135,7 @@ These do not pass or fail; you report them. No refusal is wanted for any of them
 
 | # | Report | Why |
 |---|---|---|
-| C0 | The board's extent and aspect ratio, against the corpus median of 118 × 149 | A destroy board is a lane — six of eight `minuyo` boards have one dimension under 90, and every generated board is roughly square. Nobody has ever stated the silhouette before drawing |
+| C0 | The board's extent and aspect ratio, against the corpus median of 118 × 149 | A destroy board is a lane — one dimension meaningfully shorter; every generated board so far is roughly square. Check the silhouette was stated before the shapes |
 | C1 | Houses grouped by distinct z, distinct x, and orientation count | Ten of twelve boards came out on 2–3 z-rows. This is the single number that says whether the street was broken |
 | C2 | How many distinct placement ideas the board carries | Street · square · isolated structure · building on other ground · edge run. `ART-DIRECTION.md` §3 asks for three |
 | C3 | Which approaches exist and what dimension each is | *around* · *above* · *below* · *through*. Three approaches that are all "walk through cover" is one approach drawn three times |

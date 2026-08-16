@@ -179,7 +179,9 @@ than mistakes, so nothing in a report ever flagged them:
 - **Nobody used a path.** Not once, in twenty-one boards. A path is the circulation diagram drawn: it states
   the route, keeps the ground along it clean, and forces you to decide where a player goes before you put
   things in the way. Draw spawn → objective and spawn → flank as paths, then place everything else clear of
-  them. Know the hazard first: a path's claimed band **silently drops any building touching it** (`B146`).
+  them. The old hazard is retired: a path never drops a building (the road runs to the porch), but the band
+  refuses trees within 3 blocks and boulders within 2 of the paved edge (`DR-ROAD`), named in
+  `dressing-report.json`.
 - **Everyone took whole tone families.** The nineteen families are hand-authored and ordered light to dark, and
   a `cell` over all five members of one is five near-identical blocks fighting for the same ground. **Two
   members is a texture, three a mottle, five a mistake.**

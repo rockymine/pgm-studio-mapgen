@@ -176,7 +176,7 @@ below — the eye reads that as height and distance at once. This board's variet
 **The paths.** The zigzag up the ladder, drawn as one path with `tapered` edges that narrow where it climbs.
 
 **What it is a test of.** **Goal spacing, board proportion, and whether terraces flow.** Report both distances
-and the ratio against the corpus median of 2.9, the same-team separation against the 70–75 band, and a section
+and the ratio against `GO1`'s authored band of 3.0–4.0 (scored by `goal-spawn-ratio`), the same-team separation against the 70–75 band, and a section
 through two terrace joins.
 
 ---
