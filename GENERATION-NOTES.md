@@ -351,6 +351,13 @@ approach pieces after their room.
 - **Traversability is per-team where protections bar one**: a goal tucked behind an oversized spawn
   protection now refuses export with the barred team named — the §6 read and the export gate both carry
   `for:<team>` on such isolations.
+- **Door approaches and goal rings are kept open (`OB21`, widened `OB19`)**: a tree or house within 20
+  blocks of a spawn door's face, 10 of a wool entry, or any of the OB19 trio within 10 of a goal marker now
+  refuses export by name. Boulders stay legal in approach lanes. Plan prop positions against the *stamped
+  room's face*, not the protection rect.
+- **A house must leave a way past itself (`DR-PASS`)**: at least one side keeps a 5-block passable band
+  along its whole run (one step past each corner included), or the whole prop is declined with the rule id
+  in `dressing-report.json` — the donut-leg cork from the generator experiment is now impossible to ship.
 - **`prop-preview` refuses an uncomposable building** (see §13).
 - **The objective line counts per team** — one monument per team reads "Destroy the enemy's monument!",
   one wool per team "Capture the wool!".
