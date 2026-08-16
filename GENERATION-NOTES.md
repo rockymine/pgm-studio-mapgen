@@ -345,6 +345,12 @@ approach pieces after their room.
   `/plan/evaluate` — aim boards inside it (this run's two destroy boards read 3.0 and 3.9).
 - **Houses excavate relief**: a building on a hillside or relief mark carves the slope out of its rooms and
   sinks in; interiors can no longer be found full of terrain after a build.
+- **The finish previews answer PNG**: `?format=png&view=…` on `material-preview`, `theme-preview` and
+  `prop-preview` returns one view as raw `image/png` — no more rasterizing SVG out of JSON to look at a
+  pattern (`view=plan|section`; themes also take a bucket name).
+- **Traversability is per-team where protections bar one**: a goal tucked behind an oversized spawn
+  protection now refuses export with the barred team named — the §6 read and the export gate both carry
+  `for:<team>` on such isolations.
 - **`prop-preview` refuses an uncomposable building** (see §13).
 - **The objective line counts per team** — one monument per team reads "Destroy the enemy's monument!",
   one wool per team "Capture the wool!".
