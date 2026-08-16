@@ -28,6 +28,13 @@ All from `region/provenance.json`, every prop standing:
 | `th4` `tower` | terrace | flat-roofed 2-storey; the tower seals the west canyon mouth |
 | spawn shell | counting house | the compound at the back |
 
+Probed (the record a claim can be checked against in-game):
+
+| Column | Reads | Proves |
+|---|---|---|
+| (−8, −95) hall centre | floors y11 / y16 / y20, stone-brick hip at y26 | three storeys stand |
+| (−8, −88) wing centre | floors y11 / y16, stone-brick slab roof at y21 | `storeysHigh: 2` honoured; the projecting wing's roof carries below the hall's y26 |
+
 Composition failures on the way: an east-side wing fired `HJ5` in a configuration whose stated clauses it
 appeared to satisfy (wing along edge 5 ≤ hall across 9, equal storeys) — repositioned to the south edge
 rather than diagnosed to the root; **worth a read of `WingJointRules`' height clause**.

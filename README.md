@@ -146,6 +146,7 @@ cited.
 | `reports/opus-run2.md` · `sonnet-run2.md` · `haiku-run2.md` | the three run-2 accounts |
 | [reports/opus5-run2.md](reports/opus5-run2.md) | a second, independent run-2 — its §1 audits the earlier runs' claims against the code, and finds three that were wrong when filed and four gaps since closed |
 | [reports/fable-run3.md](reports/fable-run3.md) | run 3 — four themed boards; five studio defects found were fixed in the same session, and the fault table separates them from the author's own mistakes |
+| [reports/fable-run3-architecture.md](reports/fable-run3-architecture.md) | run 3's second half: the distance-measurement inventory, the API-layer survey, and a seven-move fast-track ranked by what each buys |
 | `review/` | one measured record per map |
 
 **Two files are both "Opus, run 2" and they are different runs.** `opus-run2.md` is the cloud agent that
