@@ -292,3 +292,49 @@ The compiled layout is thrown away and a hand-written one `PUT` in its place, wh
 and removes the whole "address a compiled tier by the height it stands at" problem. What is kept from the
 compile is the **intent** — it carries the spawns, the wool rooms, their entries and floors, and the
 `structures.walls` a plan's `walls` entry produced, none of which the layout states.
+
+## 12. A path's band follows the spline, not your polyline
+
+`PathBand.Centerline` runs the drawn points through a **Catmull-Rom spline** before the band is derived, and
+a Catmull-Rom overshoots the outside of every corner — by several blocks when the segments are long. The
+claimed band (radius around that curve, cell-centre membership, `Polyline.Hits`) is what drops a building,
+so margin arithmetic against the drawn polyline is arithmetic against the wrong line. Four houses on the
+first Kerbstone build cleared every drawn segment by 1.5+ blocks and were eaten by corner overshoot.
+
+**Work with it, cheaply:** chamfer every sharp corner with two bracketing points (the spline has nothing to
+overshoot), keep frontage lines 3+ blocks from the *band*, and read `region/provenance.json` after every
+build — the owners list is the only place a dropped building is visible.
+
+## 13. Wing corners are inclusive — "touching" means adjacent rows
+
+An `AuthoredWing`'s `corners` name cells inclusively: `[[0,6],[9,10]]` covers row 6 *and* row 10. Two wings
+that share a coordinate row therefore **overlap** (`HJ1`); a touching wing starts one row past its hall
+(`maxZ` 77 → wing `minZ` 78). And a square-ish pair ties both ridges toward x (`HJ3`) unless the wing states
+`ridge` explicitly. Since this run, `POST /terrain/prop-preview` refuses a composition the build would drop,
+with the same `HJ*`/`HP*` findings — preview every multi-wing building before committing the document.
+
+## 14. Words that differ between the save request and the snapshot
+
+`porch.edge: "front"` is a save-request word; on a **snapshot** (`preview-snapshot`, `roomStyles`, a
+dressing `style`) the field is a nullable enum and the word for "the door wall" is **`null`** — `"front"`
+refuses with `RQ1`. Same document, two layers, two vocabularies.
+
+## 15. The donut sanction is a naming convention
+
+A wool that encloses its own bay (`donut`/staple families) passes `wool-ringed-hole` (WL8) only if the
+hole's ring reads as the wool's **own box**: leg pieces sharing the room's id prefix, at most one foreign
+sealing piece (`ClosureAnalysis.AnyHoleRingedBy`). `south-rim` beside room `wool-south` fires the hard term;
+rename it `wool-south-rim` and the same geometry is sanctioned. Nothing in `rules.md` says this — name your
+approach pieces after their room.
+
+## 16. Retired errata (fixed in the studio, 16 Aug 2026)
+
+- **Water lanes ship again** — `SketchWorldBuilder` rebuilds the intent with `with`, so a lane survives to
+  `map.xml` (§ opus run-2 report 1.1 is history; measured on `sunspit`).
+- **`mirrors: false` touching mirrored land** is now a named refusal (`PL12`) instead of an anonymous 400,
+  and the compile endpoint's residual 400s carry the exception message.
+- **`prop-preview` refuses an uncomposable building** (see §13).
+- **The objective line counts per team** — one monument per team reads "Destroy the enemy's monument!",
+  one wool per team "Capture the wool!".
+- **`relief/read` answering `{"islands": []}`** now has two causes: shapes not rasterizing (§1) *or* a
+  layout that simply declares no relief. Check whether you stated a relief before reaching for §1.

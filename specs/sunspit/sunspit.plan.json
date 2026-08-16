@@ -1,0 +1,202 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Sunspit"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 16,
+    "surface": 9
+  },
+  "pieces": [
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        18,
+        3,
+        2
+      ],
+      "surface": 14
+    },
+    {
+      "id": "spawn-step",
+      "role": "piece",
+      "rect": [
+        -2,
+        16,
+        3,
+        2
+      ],
+      "surface": 12
+    },
+    {
+      "id": "village",
+      "role": "piece",
+      "rect": [
+        -8,
+        12,
+        11,
+        4
+      ],
+      "surface": 11
+    },
+    {
+      "id": "wool-bluff",
+      "role": "wool-room",
+      "rect": [
+        6,
+        14,
+        2,
+        2
+      ],
+      "surface": 13
+    },
+    {
+      "id": "dune-east",
+      "role": "piece",
+      "rect": [
+        3,
+        10,
+        5,
+        4
+      ],
+      "surface": 11
+    },
+    {
+      "id": "backshore",
+      "role": "piece",
+      "rect": [
+        -8,
+        10,
+        11,
+        2
+      ],
+      "surface": 10
+    },
+    {
+      "id": "strand",
+      "role": "piece",
+      "rect": [
+        -8,
+        4,
+        16,
+        6
+      ],
+      "surface": 9
+    },
+    {
+      "id": "foreshore",
+      "role": "piece",
+      "rect": [
+        -8,
+        2,
+        16,
+        2
+      ],
+      "surface": 8
+    },
+    {
+      "id": "pier-pad",
+      "role": "piece",
+      "rect": [
+        -12,
+        14,
+        2,
+        2
+      ],
+      "surface": 10
+    },
+    {
+      "id": "pier-room",
+      "role": "wool-room",
+      "rect": [
+        -12,
+        16,
+        2,
+        2
+      ],
+      "surface": 10
+    }
+  ],
+  "zones": [
+    {
+      "id": "zone-pier",
+      "rect": [
+        -10,
+        14,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "bar-west",
+      "rect": [
+        -7,
+        -2,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "lane-tide",
+      "rect": [
+        -2,
+        0,
+        4,
+        2
+      ],
+      "kind": "water-lane"
+    }
+  ],
+  "walls": [
+    {
+      "a": "dune-east",
+      "b": "wool-bluff",
+      "side": "a"
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          1.5,
+          1.5
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          0.5,
+          0.5
+        ]
+      }
+    ],
+    "wools": [
+      {
+        "id": "wool-pier",
+        "piece": "pier-room",
+        "at": [
+          1,
+          1
+        ]
+      },
+      {
+        "id": "wool-bluff",
+        "piece": "wool-bluff",
+        "at": [
+          1,
+          1
+        ]
+      }
+    ]
+  }
+}

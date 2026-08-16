@@ -1,0 +1,171 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Kerbstone"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "mirror_z",
+    "maxPlayers": 16,
+    "surface": 9
+  },
+  "pieces": [
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        5,
+        -20,
+        3,
+        2
+      ],
+      "surface": 15
+    },
+    {
+      "id": "stoop",
+      "role": "piece",
+      "rect": [
+        5,
+        -18,
+        3,
+        1
+      ],
+      "surface": 13
+    },
+    {
+      "id": "backrow",
+      "role": "piece",
+      "rect": [
+        -6,
+        -20,
+        11,
+        4
+      ],
+      "surface": 12
+    },
+    {
+      "id": "forecourt",
+      "role": "piece",
+      "rect": [
+        -1,
+        -16,
+        3,
+        3
+      ],
+      "surface": 12
+    },
+    {
+      "id": "yard",
+      "role": "piece",
+      "rect": [
+        -6,
+        -16,
+        5,
+        3
+      ],
+      "surface": 11
+    },
+    {
+      "id": "eastyard",
+      "role": "piece",
+      "rect": [
+        2,
+        -16,
+        3,
+        3
+      ],
+      "surface": 11
+    },
+    {
+      "id": "highstreet",
+      "role": "piece",
+      "rect": [
+        -6,
+        -13,
+        10,
+        5
+      ],
+      "surface": 11
+    },
+    {
+      "id": "westrow",
+      "role": "piece",
+      "rect": [
+        -9,
+        -13,
+        3,
+        6
+      ],
+      "surface": 11
+    },
+    {
+      "id": "eastrow",
+      "role": "piece",
+      "rect": [
+        4,
+        -13,
+        3,
+        6
+      ],
+      "surface": 11
+    },
+    {
+      "id": "kerb",
+      "role": "piece",
+      "rect": [
+        -6,
+        -8,
+        10,
+        1
+      ],
+      "surface": 10
+    },
+    {
+      "id": "avenue",
+      "role": "piece",
+      "rect": [
+        -6,
+        -7,
+        12,
+        7
+      ],
+      "surface": 9
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          1.5,
+          1.5
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          0.5,
+          0.5
+        ]
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "monument-1",
+        "piece": "forecourt",
+        "at": [
+          1.5,
+          1.5
+        ],
+        "style": "cube-3",
+        "materials": "gold block",
+        "name": "Bullion"
+      }
+    ]
+  }
+}
