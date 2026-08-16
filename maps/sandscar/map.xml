@@ -10,6 +10,7 @@
     </teams>
     <kits>
         <kit id="spawn-kit">
+            <clear/>
             <item slot="0" material="iron sword" unbreakable="true"/>
             <item slot="1" material="bow" unbreakable="true">
                 <enchantment level="1">infinity</enchantment>
@@ -51,10 +52,10 @@
         <spawn team="blue-team" kit="spawn-kit" region="blue-spawn-point"/>
     </spawns>
     <destroyables>
-        <destroyable id="team-west-monument" name="&lt;Team&gt; West Monument" owner="red-team" materials="obsidian" region="team-west-monument-region"/>
-        <destroyable id="team-east-monument" name="&lt;Team&gt; East Monument" owner="red-team" materials="obsidian" region="team-east-monument-region"/>
-        <destroyable id="team-west-monument-2" name="&lt;Team&gt; West Monument" owner="blue-team" materials="obsidian" region="team-west-monument-2-region"/>
-        <destroyable id="team-east-monument-2" name="&lt;Team&gt; East Monument" owner="blue-team" materials="obsidian" region="team-east-monument-2-region"/>
+        <destroyable id="west-monument" name="West Monument" owner="red-team" materials="obsidian" region="west-monument-region"/>
+        <destroyable id="east-monument" name="East Monument" owner="red-team" materials="obsidian" region="east-monument-region"/>
+        <destroyable id="west-monument-2" name="West Monument" owner="blue-team" materials="obsidian" region="west-monument-2-region"/>
+        <destroyable id="east-monument-2" name="East Monument" owner="blue-team" materials="obsidian" region="east-monument-2-region"/>
     </destroyables>
     <filters>
         <team id="only-blue">blue-team</team>
@@ -64,15 +65,15 @@
         </not>
     </filters>
     <regions>
-        <point id="blue-spawn-point">0,42,-120</point>
-        <point id="red-spawn-point">0,42,120</point>
+        <point id="blue-spawn-point">0,44,-120</point>
+        <point id="red-spawn-point">0,44,120</point>
         <point id="observer-spawn">0,79,0</point>
         <rectangle id="blue-spawn" min="-15,-135" max="15,-110"/>
         <rectangle id="red-spawn" min="-15,110" max="15,135"/>
-        <cuboid id="team-west-monument-region" min="-26,34,74" max="-23,37,77"/>
-        <cuboid id="team-east-monument-region" min="24,53,74" max="27,56,77"/>
-        <cuboid id="team-west-monument-2-region" min="24,34,-76" max="27,37,-73"/>
-        <cuboid id="team-east-monument-2-region" min="-26,53,-76" max="-23,56,-73"/>
+        <cuboid id="west-monument-region" min="-26,34,74" max="-23,37,77"/>
+        <cuboid id="east-monument-region" min="24,53,74" max="27,56,77"/>
+        <cuboid id="west-monument-2-region" min="24,34,-76" max="27,37,-73"/>
+        <cuboid id="east-monument-2-region" min="-26,53,-76" max="-23,56,-73"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>

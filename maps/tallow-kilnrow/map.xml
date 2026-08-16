@@ -52,12 +52,12 @@
         <spawn team="blue-team" kit="spawn-kit" yaw="180" region="blue-spawn-point"/>
     </spawns>
     <destroyables>
-        <destroyable id="team-lime-kiln" name="&lt;Team&gt; Lime Kiln" owner="red-team" materials="ender stone" region="team-lime-kiln-region"/>
-        <destroyable id="team-lime-kiln-2" name="&lt;Team&gt; Lime Kiln" owner="blue-team" materials="ender stone" region="team-lime-kiln-2-region"/>
+        <destroyable id="team-lime-kiln" name="Lime Kiln" owner="red-team" materials="ender stone" region="team-lime-kiln-region"/>
+        <destroyable id="team-lime-kiln-2" name="Lime Kiln" owner="blue-team" materials="ender stone" region="team-lime-kiln-2-region"/>
     </destroyables>
     <cores>
-        <core id="team-slake-pit" name="&lt;Team&gt; Slake Pit" team="red-team" leak="10" region="team-slake-pit-region"/>
-        <core id="team-slake-pit-2" name="&lt;Team&gt; Slake Pit" team="blue-team" leak="10" region="team-slake-pit-2-region"/>
+        <core id="team-slake-pit" name="Slake Pit" team="red-team" leak="10" region="team-slake-pit-region"/>
+        <core id="team-slake-pit-2" name="Slake Pit" team="blue-team" leak="10" region="team-slake-pit-2-region"/>
     </cores>
     <filters>
         <team id="only-blue">blue-team</team>

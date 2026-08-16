@@ -51,10 +51,10 @@
         <spawn team="blue-team" kit="spawn-kit" region="blue-spawn-point"/>
     </spawns>
     <destroyables>
-        <destroyable id="team-pit-monument" name="&lt;Team&gt; Pit Monument" owner="red-team" materials="obsidian" region="team-pit-monument-region"/>
-        <destroyable id="team-hill-monument" name="&lt;Team&gt; Hill Monument" owner="red-team" materials="obsidian" region="team-hill-monument-region"/>
-        <destroyable id="team-pit-monument-2" name="&lt;Team&gt; Pit Monument" owner="blue-team" materials="obsidian" region="team-pit-monument-2-region"/>
-        <destroyable id="team-hill-monument-2" name="&lt;Team&gt; Hill Monument" owner="blue-team" materials="obsidian" region="team-hill-monument-2-region"/>
+        <destroyable id="team-pit-monument" name="Pit Monument" owner="red-team" materials="obsidian" region="team-pit-monument-region"/>
+        <destroyable id="team-hill-monument" name="Hill Monument" owner="red-team" materials="obsidian" region="team-hill-monument-region"/>
+        <destroyable id="team-pit-monument-2" name="Pit Monument" owner="blue-team" materials="obsidian" region="team-pit-monument-2-region"/>
+        <destroyable id="team-hill-monument-2" name="Hill Monument" owner="blue-team" materials="obsidian" region="team-hill-monument-2-region"/>
     </destroyables>
     <filters>
         <team id="only-blue">blue-team</team>

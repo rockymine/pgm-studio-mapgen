@@ -52,12 +52,12 @@
         <spawn team="blue-team" kit="spawn-kit" region="blue-spawn-point"/>
     </spawns>
     <destroyables>
-        <destroyable id="team-stack" name="&lt;Team&gt; Stack" owner="red-team" materials="obsidian" region="team-stack-region"/>
-        <destroyable id="team-stack-2" name="&lt;Team&gt; Stack" owner="blue-team" materials="obsidian" region="team-stack-2-region"/>
+        <destroyable id="team-stack" name="Stack" owner="red-team" materials="obsidian" region="team-stack-region"/>
+        <destroyable id="team-stack-2" name="Stack" owner="blue-team" materials="obsidian" region="team-stack-2-region"/>
     </destroyables>
     <cores>
-        <core id="team-sump" name="&lt;Team&gt; Sump" team="red-team" leak="8" region="team-sump-region"/>
-        <core id="team-sump-2" name="&lt;Team&gt; Sump" team="blue-team" leak="8" region="team-sump-2-region"/>
+        <core id="team-sump" name="Sump" team="red-team" leak="8" region="team-sump-region"/>
+        <core id="team-sump-2" name="Sump" team="blue-team" leak="8" region="team-sump-2-region"/>
     </cores>
     <filters>
         <team id="only-red">red-team</team>

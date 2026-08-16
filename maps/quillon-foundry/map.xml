@@ -51,12 +51,12 @@
         <spawn team="blue-team" kit="spawn-kit" yaw="180" region="blue-spawn-point"/>
     </spawns>
     <destroyables>
-        <destroyable id="team-gantry-stack" name="&lt;Team&gt; Gantry Stack" owner="red-team" materials="ender stone" region="team-gantry-stack-region"/>
-        <destroyable id="team-gantry-stack-2" name="&lt;Team&gt; Gantry Stack" owner="blue-team" materials="ender stone" region="team-gantry-stack-2-region"/>
+        <destroyable id="team-gantry-stack" name="Gantry Stack" owner="red-team" materials="ender stone" region="team-gantry-stack-region"/>
+        <destroyable id="team-gantry-stack-2" name="Gantry Stack" owner="blue-team" materials="ender stone" region="team-gantry-stack-2-region"/>
     </destroyables>
     <cores>
-        <core id="team-furnace" name="&lt;Team&gt; Furnace" team="red-team" leak="9" region="team-furnace-region"/>
-        <core id="team-furnace-2" name="&lt;Team&gt; Furnace" team="blue-team" leak="9" region="team-furnace-2-region"/>
+        <core id="team-furnace" name="Furnace" team="red-team" leak="9" region="team-furnace-region"/>
+        <core id="team-furnace-2" name="Furnace" team="blue-team" leak="9" region="team-furnace-2-region"/>
     </cores>
     <filters>
         <team id="only-blue">blue-team</team>

@@ -51,8 +51,8 @@
         <spawn team="blue-team" kit="spawn-kit" yaw="180" region="blue-spawn-point"/>
     </spawns>
     <destroyables>
-        <destroyable id="team-wardstone" name="&lt;Team&gt; Wardstone" owner="red-team" materials="obsidian" region="team-wardstone-region"/>
-        <destroyable id="team-wardstone-2" name="&lt;Team&gt; Wardstone" owner="blue-team" materials="obsidian" region="team-wardstone-2-region"/>
+        <destroyable id="team-wardstone" name="Wardstone" owner="red-team" materials="obsidian" region="team-wardstone-region"/>
+        <destroyable id="team-wardstone-2" name="Wardstone" owner="blue-team" materials="obsidian" region="team-wardstone-2-region"/>
     </destroyables>
     <filters>
         <team id="only-blue">blue-team</team>

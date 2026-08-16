@@ -51,8 +51,8 @@
         <spawn team="blue-team" kit="spawn-kit" yaw="180" region="blue-spawn-point"/>
     </spawns>
     <destroyables>
-        <destroyable id="team-barrow" name="&lt;Team&gt; Barrow" owner="red-team" materials="ender stone" region="team-barrow-region"/>
-        <destroyable id="team-barrow-2" name="&lt;Team&gt; Barrow" owner="blue-team" materials="ender stone" region="team-barrow-2-region"/>
+        <destroyable id="team-barrow" name="Barrow" owner="red-team" materials="ender stone" region="team-barrow-region"/>
+        <destroyable id="team-barrow-2" name="Barrow" owner="blue-team" materials="ender stone" region="team-barrow-2-region"/>
     </destroyables>
     <filters>
         <team id="only-red">red-team</team>
