@@ -293,7 +293,26 @@ found. `haiku-wharf` answers a **capture** brief carrying no wool at all. The re
 these under *what could not be done*, which is the whole distance travelled since the run that described two
 empty 245-byte shells as verified.
 
-### Two claims in Sonnet's report, checked
+### `B99` is not an edge case — it fires on nearly every board that carries a wall
+
+Measured across all twelve run-4 boards with `--traversability-map`, and worth stating because `B99`'s own
+evidence is a synthetic 60 × 20 plateau:
+
+| Board | walls | markers | isolated |
+|---|---|---|---|
+| `opus5-hollowbank` | 2 | 4 | **2** — both wool rooms |
+| `sonnet-compass` | 4 | 12 | **12** — every wool |
+| `sonnet-reedcut` | 2 | 2 | **2** — both wools |
+| `opus5-wheal-hazel` | 2 | 2 | 0 |
+| every board carrying no wall | 0 | 2–4 | 0 |
+
+**Every board with an approach wall reads isolated except one, and the exception is the one whose wool lane
+has a second land seam the wall does not cover.** All five passed the export gate, which navigates on
+`WorldColumns.Membership` with no headroom test and never sees the cobweb course the renderer chokes on.
+
+The consequence for a run is not a bad board — it is a reviewer, human or agent, reading the picture and
+filing a defect that is not there. I nearly redesigned `hollowbank` around it. A reviewer reading
+`sonnet-compass`'s twelve-of-twelve would have every reason to call the first four-team board here broken.
 
 **`GET /map/{slug}/traversability` is not in the tool documents' API tables — correct, and worth more than
 it was filed as.** The route exists and answers exactly what an author wants before an export. Measured:

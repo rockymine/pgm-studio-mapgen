@@ -547,7 +547,10 @@ overwritten. And PGM's author contract is a **uuid**: `{"uuid": …, "name": "Op
 `ART-DIRECTION.md` AD-M10's `"authors": ["Fable 5"]` is `tools/mapgen`'s spec shorthand and does not exist on
 the HTTP path.
 
-**`--traversability-map` reporting an isolated wool room is usually the wall's cobweb, not the board.**
+**`--traversability-map` reporting an isolated wool room is the wall's cobweb, not the board — measured over
+twelve run-4 boards, every board carrying an approach wall reads isolated except the one whose wool lane has
+a second land seam (`hollowbank` 2 of 2, `sonnet-compass` 12 of 12, `sonnet-reedcut` 2 of 2, `wheal-hazel` 0
+of 2). All of them pass the export gate.**
 `hollowbank` reads *2 isolated* because its approach wall spans the room lane's only land seam; `wheal-hazel`
 reads *0* because its lane carries a second seam. `B99` measures the cause: the renderer's ground search steps
 past decoration but its headroom test does not, so the cobweb course capping every approach wall reads as
