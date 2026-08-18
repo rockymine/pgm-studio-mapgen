@@ -1,0 +1,255 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Wheal Hazel v2"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 24,
+  "surface": 9,
+  "observerY": 55
+ },
+ "pieces": [
+  {
+   "id": "bar",
+   "role": "piece",
+   "rect": [
+    -5,
+    -1,
+    10,
+    2
+   ],
+   "surface": 9,
+   "mirrors": false
+  },
+  {
+   "id": "works-lo-w",
+   "role": "piece",
+   "rect": [
+    -5,
+    4,
+    3,
+    4
+   ],
+   "surface": 9
+  },
+  {
+   "id": "works-lo-e",
+   "role": "piece",
+   "rect": [
+    2,
+    4,
+    3,
+    4
+   ],
+   "surface": 9
+  },
+  {
+   "id": "works-lo-n",
+   "role": "piece",
+   "rect": [
+    -2,
+    6,
+    4,
+    2
+   ],
+   "surface": 9
+  },
+  {
+   "id": "east-strand",
+   "role": "piece",
+   "rect": [
+    5,
+    6,
+    4,
+    5
+   ],
+   "surface": 11
+  },
+  {
+   "id": "works-yard",
+   "role": "piece",
+   "rect": [
+    -11,
+    8,
+    16,
+    3
+   ],
+   "surface": 11
+  },
+  {
+   "id": "moor",
+   "role": "piece",
+   "rect": [
+    -10,
+    11,
+    15,
+    2
+   ],
+   "surface": 13
+  },
+  {
+   "id": "wool-west-spur",
+   "role": "piece",
+   "rect": [
+    -14,
+    8,
+    3,
+    3
+   ],
+   "surface": 11
+  },
+  {
+   "id": "wool-west-approach",
+   "role": "piece",
+   "rect": [
+    -14,
+    11,
+    3,
+    2
+   ],
+   "surface": 13
+  },
+  {
+   "id": "wool-west-room",
+   "role": "wool-room",
+   "rect": [
+    -14,
+    13,
+    3,
+    3
+   ],
+   "surface": 13
+  },
+  {
+   "id": "wool-east-spur",
+   "role": "piece",
+   "rect": [
+    9,
+    8,
+    3,
+    3
+   ],
+   "surface": 11
+  },
+  {
+   "id": "wool-east-approach",
+   "role": "piece",
+   "rect": [
+    9,
+    11,
+    3,
+    2
+   ],
+   "surface": 13
+  },
+  {
+   "id": "wool-east-room",
+   "role": "wool-room",
+   "rect": [
+    9,
+    13,
+    3,
+    3
+   ],
+   "surface": 13
+  },
+  {
+   "id": "spawn-apron",
+   "role": "piece",
+   "rect": [
+    -5,
+    13,
+    10,
+    3
+   ],
+   "surface": 13
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -2,
+    16,
+    4,
+    2
+   ],
+   "surface": 14
+  }
+ ],
+ "zones": [
+  {
+   "id": "cross",
+   "rect": [
+    -5,
+    1,
+    10,
+    3
+   ]
+  },
+  {
+   "id": "lane-bay",
+   "rect": [
+    -2,
+    4,
+    4,
+    2
+   ],
+   "kind": "water-lane"
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     2,
+     1
+    ],
+    "facing": "front"
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "spawn",
+    "at": [
+     1,
+     1
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-east-room",
+    "at": [
+     1.5,
+     1.5
+    ]
+   },
+   {
+    "id": "wool-2",
+    "piece": "wool-west-room",
+    "at": [
+     1.5,
+     1.5
+    ]
+   }
+  ]
+ },
+ "walls": [
+  {
+   "a": "wool-east-approach",
+   "b": "wool-east-spur",
+   "side": "wool-east-approach"
+  },
+  {
+   "a": "wool-west-approach",
+   "b": "wool-west-spur",
+   "side": "wool-west-approach"
+  }
+ ]
+}

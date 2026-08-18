@@ -1,0 +1,52 @@
+=== Wheal Hazel v1 — cell grid, 1 char = 5×5 blocks, 24×32 cells = 120×160 blocks
+     210987654321012345678901
+                 -           
+ -16 |          llll          |
+ -15 |     jjj  llll          |
+ -14 |     jjj kkkkkkk        |
+ -13 |     jjj kkkkkkk        |
+ -12 |     iiihhhhhhhhhhhhhh  |
+ -11 |     iiihhhhhhhhhhhhhh  |
+ -10 |     iiieeeeeeeeeeeeeeff|
+  -9 |     gggeeeeeeeeeeeeeeff|
+  -8 |     gggeeeeeeeeeeeeeeff|
+  -7 |   ddddddcccccbbaaaaa   |
+  -6 |   ddddddccccc  aaaaa   |
+  -5 |   ddddddccccc  aaaaa   |
+  -4 |  oooo    nnnn          |
+  -3 |  oooo    nnnn          |
+  -2 |  oooo    nnnn          |
+  -1 |    MMMMMMMMMMMMMMMM    |
+   0 |    MMMMMMMMMMMMMMMM    |<<< z=0
+   1 |          NNNN    OOOO  |
+   2 |          NNNN    OOOO  |
+   3 |          NNNN    OOOO  |
+   4 |   AAAAA  CCCCCDDDDDD   |
+   5 |   AAAAA  CCCCCDDDDDD   |
+   6 |   AAAAABBCCCCCDDDDDD   |
+   7 |FFEEEEEEEEEEEEEEGGG     |
+   8 |FFEEEEEEEEEEEEEEGGG     |
+   9 |FFEEEEEEEEEEEEEEIII     |
+  10 |  HHHHHHHHHHHHHHIII     |
+  11 |  HHHHHHHHHHHHHHIII     |
+  12 |        KKKKKKK JJJ     |
+  13 |        KKKKKKK JJJ     |
+  14 |          LLLL  JJJ     |
+  15 |          LLLL          |
+
+  legend (upper = stated, lower = its rot_180 image)
+    A  works-lo-w       piece       cells x  -9..-4  z   4..7     blocks x  -45..-20  z   20..35     (5×3 cells)
+    B  works-lo-n       piece       cells x  -4..-2  z   6..7     blocks x  -20..-10  z   30..35     (2×1 cells)
+    C  works-lo-e       piece       cells x  -2..3   z   4..7     blocks x  -10..15   z   20..35     (5×3 cells)
+    D  east-strand      piece       cells x   3..9   z   4..7     blocks x   15..45   z   20..35     (6×3 cells)
+    E  works-yard       piece       cells x -10..4   z   7..10    blocks x  -50..20   z   35..50     (14×3 cells)
+    F  west-spur        piece       cells x -12..-10 z   7..10    blocks x  -60..-50  z   35..50     (2×3 cells)
+    G  leat-bench       piece       cells x   4..7   z   7..9     blocks x   20..35   z   35..45     (3×2 cells)
+    H  moor             piece       cells x -10..4   z  10..12    blocks x  -50..20   z   50..60     (14×2 cells)
+    I  wool-approach    piece       cells x   4..7   z   9..12    blocks x   20..35   z   45..60     (3×3 cells)
+    J  wool-room        wool-room   cells x   4..7   z  12..15    blocks x   20..35   z   60..75     (3×3 cells)
+    K  spawn-apron      piece       cells x  -4..3   z  12..14    blocks x  -20..15   z   60..70     (7×2 cells)
+    L  spawn            spawn       cells x  -2..2   z  14..16    blocks x  -10..10   z   70..80     (4×2 cells)
+    M  bar              piece       cells x  -8..8   z  -1..1     blocks x  -40..40   z   -5..5      (16×2 cells)
+    N  cross            build       cells x  -2..2   z   1..4     blocks x  -10..10   z    5..20     (4×3 cells)
+    O  lane-east        water-lane  cells x   6..10  z   1..4     blocks x   30..50   z    5..20     (4×3 cells)

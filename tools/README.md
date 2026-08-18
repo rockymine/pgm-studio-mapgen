@@ -72,6 +72,30 @@ name written earlier is overwritten. `GENERATION-NOTES.md` §17 measures both.
 build — which is where most of a board's shape is actually decided. `--force` passes `?force=true` to
 `sketch/from-plan`, accepting the loss of a relief the recompile would orphan (`SK1`).
 
+## `board.py` — a plan as a grid, before it is a picture
+
+```bash
+python3 tools/board.py specs/<slug>/<slug>.plan.json ["<note>"]
+```
+
+Renders a plan's pieces and zones as an ASCII cell grid — one character per cell, upper case for a stated
+rect and lower case for its symmetry image — with a legend giving each piece's cell rect, its block rect and
+its size. **Run it before posting a plan.** A plan is written in cell rectangles, and the faults that matter
+are relations between two of those rectangles: a stepping stone wider than the build zone that reaches it, a
+wool room touching a piece its wall was meant to guard, a spur that connects to nothing. A grid puts the two
+rects on the same rows and a rendered picture does not.
+
+Run 4's own worked example is one line of it. In `maps/opus5-wheal-hazel/renders/00-board.txt`:
+
+```
+  -1 |    MMMMMMMMMMMMMMMM    |     M = the neutral bar, sixteen cells
+   1 |          NNNN    OOOO  |     N = the build zone that reaches it, four
+```
+
+Sixteen against four is the whole of a 60%-dead landform, visible at a glance and invisible in the render
+that was actually looked at (`GENERATION-NOTES.md` §18). `maps/opus5-wheal-hazel-v2/renders/00-board.txt` is
+the same two rows agreeing.
+
 ## `column-probe.cs` and `build.cs` · `world-build.cs`
 
 `column-probe.cs` is the scriptable column read; `pgm-studio`'s

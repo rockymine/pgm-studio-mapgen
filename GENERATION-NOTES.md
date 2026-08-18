@@ -618,3 +618,30 @@ dead like the rest.
 `drive.py` calls this after the metadata patch and before the export, and prints the shares plus the five
 largest patches with their coordinates. It is a **measurement, not a gate** — nothing refuses on it — which
 is exactly why a driver that does not print it lets a board ship with a third of its ground unused.
+
+
+## 19. The board is written in cells — read it as cells
+
+`tools/board.py` renders a plan's rectangles as an ASCII grid, one character per cell, and it is the read to
+take **before** posting a plan. The faults that cost run 4 its worst board are all *relations between two
+rectangles*, and a grid is the only view that puts two rectangles on the same rows:
+
+```
+  -1 |    MMMMMMMMMMMMMMMM    |     M = wheal-hazel's neutral bar, sixteen cells wide
+   1 |          NNNN    OOOO  |     N = the build zone that reaches it, four
+```
+
+Sixteen against four is a landform 60% of which no journey reaches, and it is one glance. The renders that
+were actually looked at — the ground map, the heightmap, the theme swatches — are pictures of a *world*, and
+a picture makes a long bar look like a good idea. Nothing in the picture states the width of the window that
+reaches it.
+
+The same grid catches the rest of the family: a wool room touching the spawn apron (which is what `LN1`
+refuses as a lane thirty blocks wide, measured out of the room), an approach whose wall can be walked round
+because the moor reaches past it, a spur that connects to nothing. Each of those refused or complained on
+v2's first draft and each was visible in the grid first.
+
+`opus5-wheal-hazel-v2` is the rebuild: the bar cut to the build zone's own width, the front split into two
+legs with a water-lane bay between them, and a second wool at the end of each spur. **33.4% dead → 11.3%
+dead**, on the same four gates passing identically both times.
+

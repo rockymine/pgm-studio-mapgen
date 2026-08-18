@@ -1,0 +1,58 @@
+=== Wheal Hazel v2 — cell grid, 1 char = 5×5 blocks, 28×36 cells = 140×180 blocks
+     4321098765432101234567890123
+                   -             
+ -18 |            oooo            |
+ -17 |            oooo            |
+ -16 |  mmm    nnnnnnnnnn      jjj|
+ -15 |  mmm    nnnnnnnnnn      jjj|
+ -14 |  mmm    nnnnnnnnnn      jjj|
+ -13 |  lll    ggggggggggggggg iii|
+ -12 |  lll    ggggggggggggggg iii|
+ -11 |  kkkeeeeffffffffffffffffhhh|
+ -10 |  kkkeeeeffffffffffffffffhhh|
+  -9 |  kkkeeeeffffffffffffffffhhh|
+  -8 |     eeeecccddddbbb         |
+  -7 |     eeeecccddddbbb         |
+  -6 |         cccqqqqbbb         |
+  -5 |         cccqqqqbbb         |
+  -4 |         pppppppppp         |
+  -3 |         pppppppppp         |
+  -2 |         pppppppppp         |
+  -1 |         AAAAAAAAAA         |
+   0 |         AAAAAAAAAA         |<<< z=0
+   1 |         PPPPPPPPPP         |
+   2 |         PPPPPPPPPP         |
+   3 |         PPPPPPPPPP         |
+   4 |         BBBQQQQCCC         |
+   5 |         BBBQQQQCCC         |
+   6 |         BBBDDDDCCCEEEE     |
+   7 |         BBBDDDDCCCEEEE     |
+   8 |HHHFFFFFFFFFFFFFFFFEEEEKKK  |
+   9 |HHHFFFFFFFFFFFFFFFFEEEEKKK  |
+  10 |HHHFFFFFFFFFFFFFFFFEEEEKKK  |
+  11 |III GGGGGGGGGGGGGGG    LLL  |
+  12 |III GGGGGGGGGGGGGGG    LLL  |
+  13 |JJJ      NNNNNNNNNN    MMM  |
+  14 |JJJ      NNNNNNNNNN    MMM  |
+  15 |JJJ      NNNNNNNNNN    MMM  |
+  16 |            OOOO            |
+  17 |            OOOO            |
+
+  legend (upper = stated, lower = its rot_180 image)
+    A  bar              piece       cells x  -5..5   z  -1..1     blocks x  -25..25   z   -5..5      (10×2 cells)
+    B  works-lo-w       piece       cells x  -5..-2  z   4..8     blocks x  -25..-10  z   20..40     (3×4 cells)
+    C  works-lo-e       piece       cells x   2..5   z   4..8     blocks x   10..25   z   20..40     (3×4 cells)
+    D  works-lo-n       piece       cells x  -2..2   z   6..8     blocks x  -10..10   z   30..40     (4×2 cells)
+    E  east-strand      piece       cells x   5..9   z   6..11    blocks x   25..45   z   30..55     (4×5 cells)
+    F  works-yard       piece       cells x -11..5   z   8..11    blocks x  -55..25   z   40..55     (16×3 cells)
+    G  moor             piece       cells x -10..5   z  11..13    blocks x  -50..25   z   55..65     (15×2 cells)
+    H  wool-west-spur   piece       cells x -14..-11 z   8..11    blocks x  -70..-55  z   40..55     (3×3 cells)
+    I  wool-west-approach piece       cells x -14..-11 z  11..13    blocks x  -70..-55  z   55..65     (3×2 cells)
+    J  wool-west-room   wool-room   cells x -14..-11 z  13..16    blocks x  -70..-55  z   65..80     (3×3 cells)
+    K  wool-east-spur   piece       cells x   9..12  z   8..11    blocks x   45..60   z   40..55     (3×3 cells)
+    L  wool-east-approach piece       cells x   9..12  z  11..13    blocks x   45..60   z   55..65     (3×2 cells)
+    M  wool-east-room   wool-room   cells x   9..12  z  13..16    blocks x   45..60   z   65..80     (3×3 cells)
+    N  spawn-apron      piece       cells x  -5..5   z  13..16    blocks x  -25..25   z   65..80     (10×3 cells)
+    O  spawn            spawn       cells x  -2..2   z  16..18    blocks x  -10..10   z   80..90     (4×2 cells)
+    P  cross            build       cells x  -5..5   z   1..4     blocks x  -25..25   z    5..20     (10×3 cells)
+    Q  lane-bay         water-lane  cells x  -2..2   z   4..6     blocks x  -10..10   z   20..30     (4×2 cells)
