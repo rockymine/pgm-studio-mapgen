@@ -645,3 +645,43 @@ v2's first draft and each was visible in the grid first.
 legs with a water-lane bay between them, and a second wool at the end of each spur. **33.4% dead → 11.3%
 dead**, on the same four gates passing identically both times.
 
+
+## 20. A plan carries holes, and a wool board is where they belong
+
+**Correction.** Run 4's report claimed there is no way to cut a hole into a board from a plan, on the
+evidence that three `buffer` pieces drawn over generating pieces changed nothing. The buffers were inert for
+the reason stated — a buffer over a piece can declare a void but never destroy ground — but the conclusion
+was wrong twice over. **A hole in a plan is made by arrangement, not by subtraction**: pieces ring a gap, no
+piece covers it, and `PlanVoids.Declare` names every such gap a `void-N` buffer on *every* compile whether
+or not the author drew one. `opus5-wheal-hazel` itself carries 24 cells of enclosed void, between its build
+zone and its water lane, made by accident and unnoticed.
+
+And a wool board is not merely allowed one — it is where they are normal. Over 400 boards composed at
+`players=32`, `rot_180`, **63% of hubs are `ring` or `double-hole`**, both of which are bodies with a hole
+in them (70% counting `P` and `G`); **19% of frontlines are `twin`**, which is two legs with a void between
+them; and **10% of wool approaches are `donut`**, which rings a void of its own. The shape library says the
+same: of 98 cards, **73 are donuts**, and four of the six hub shapes enclose something.
+
+`examples/generator-32/` holds six of those boards as plans and as grids, with the census, because examples
+of what a board of a given size is supposed to look like are the thing a hand-authoring run has least of.
+
+`docs/gameplay/match-flow.md` §3.2 is what the holes are for, and it names three positions:
+
+| position | the void | what it buys |
+|---|---|---|
+| entrance | between the legs of a twin frontline and the mid band | **97%** of objectives behind one have more than one attack route, against **38%** behind a plain bar |
+| middle | a ring / double-hole / P / G hub | two ways across when the doors straddle the hole — 163 of 224 spawn-to-wool crossings on ring hubs; **solid and branched hubs never** |
+| objective | the bay of a U, H or clamp approach | the same mechanism a third time |
+
+§4.9 prices the middle one: crossing a holed hub the far way covers **37%** of the defender's reinforcement
+lane against **76%** the short way, and reduces the collision on **74%** of boards that offer the choice.
+
+The sentence that reads as a verdict on run 4's own board is §3.2's: *"A large rectangular hub spreads
+players out without giving them a choice, and over a long match that degenerates into push and pull along one
+shortest line."* That was written before the board was built, and it describes what was built.
+
+**None of the six generator boards puts a neutral stepping stone in the middle at all.** The middle is void
+crossed by a build band whose width matches the frontline it serves — identical in three of six, within a
+cell in two more. A mid piece is an authored choice the composer does not make, and an authored choice is
+where the width rule has to be kept by hand.
+

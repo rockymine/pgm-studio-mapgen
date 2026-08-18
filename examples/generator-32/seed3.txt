@@ -1,0 +1,52 @@
+=== gen seed 3 — hub ring, frontline bar, wools i+l — cell grid, 1 char = 5×5 blocks, 16×30 cells = 80×150 blocks
+     8765432101234567
+             -       
+ -15 |      fff       |
+ -14 |      fff       |
+ -13 |      eee       |
+ -12 |     aaaaaaa  hh|
+ -11 |     aaaaaaa  hh|
+ -10 |     ddoooccgggg|
+  -9 | jjiibbbbbbbgggg|
+  -8 | jjiibbbbbbb    |
+  -7 | jj  llllll     |
+  -6 | kk  llllll     |
+  -5 | kk  llllll     |
+  -4 |     llllll     |
+  -3 |     llllll     |
+  -2 |     MMMMMM     |
+  -1 |     MMMMMM     |
+   0 |     MMMMMM     |<<< z=0
+   1 |     MMMMMM     |
+   2 |     LLLLLL     |
+   3 |     LLLLLL     |
+   4 |     LLLLLL  KK |
+   5 |     LLLLLL  KK |
+   6 |     LLLLLL  JJ |
+   7 |    BBBBBBBIIJJ |
+   8 |GGGGBBBBBBBIIJJ |
+   9 |GGGGCCoooDD     |
+  10 |HH  AAAAAAA     |
+  11 |HH  AAAAAAA     |
+  12 |       EEE      |
+  13 |       FFF      |
+  14 |       FFF      |
+
+  o  = enclosed void — 6 cells the board rings and nothing covers (pieces and build
+       zones both count as sides, per match-flow.md §6.8). A hole is made by ARRANGEMENT,
+       never by subtraction: a buffer drawn over a piece is inert by design, and the
+       compiler declares every enclosed void a `void-N` buffer on each compile anyway.
+  legend (upper = stated, lower = its rot_180 image)
+    A  hub-t1           piece       cells x  -4..3   z  10..12    blocks x  -20..15   z   50..60     (7×2 cells)
+    B  hub-t2           piece       cells x  -4..3   z   7..9     blocks x  -20..15   z   35..45     (7×2 cells)
+    C  hub-t3           piece       cells x  -4..-2  z   9..10    blocks x  -20..-10  z   45..50     (2×1 cells)
+    D  hub-t4           piece       cells x   1..3   z   9..10    blocks x    5..15   z   45..50     (2×1 cells)
+    E  spawn-t1         piece       cells x  -1..2   z  12..13    blocks x   -5..10   z   60..65     (3×1 cells)
+    F  spawn-room       spawn       cells x  -1..2   z  13..15    blocks x   -5..10   z   65..75     (3×2 cells)
+    G  wool-a-t1        piece       cells x  -8..-4  z   8..10    blocks x  -40..-20  z   40..50     (4×2 cells)
+    H  wool-a-room      wool-room   cells x  -8..-6  z  10..12    blocks x  -40..-30  z   50..60     (2×2 cells)
+    I  wool-b-t1        piece       cells x   3..5   z   7..9     blocks x   15..25   z   35..45     (2×2 cells)
+    J  wool-b-t2        piece       cells x   5..7   z   6..9     blocks x   25..35   z   30..45     (2×3 cells)
+    K  wool-b-room      wool-room   cells x   5..7   z   4..6     blocks x   25..35   z   20..30     (2×2 cells)
+    L  frontline-t1     piece       cells x  -3..3   z   2..7     blocks x  -15..15   z   10..35     (6×5 cells)
+    M  mid-band         build       cells x  -3..3   z  -2..2     blocks x  -15..15   z  -10..10     (6×4 cells)
