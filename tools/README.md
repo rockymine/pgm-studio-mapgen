@@ -29,7 +29,7 @@ actually posted — so a review reads what was built rather than what was asked 
 | `themes` · `mapTheme` | the theme registry and the map default (the first key unless stated) |
 | `roomStyles` | `{"cage": …, "spawn": …}`; a `"@name"` string loads `tools/styles/<name>.json` |
 | `dressing` | `{"props": [...]}`; a house prop's `style` takes the same `"@name"` |
-| `authors` | `[{"uuid": …, "name": "Opus 5", "role": "author"}]` — PGM's contract is the uuid and the name rides as a comment. A bare string is dropped without a word |
+| `authors` | `["Opus 5"]`, or `[{"name": …, "uuid": …, "role": …, "contribution": …}]`. PGM takes a person as an **account or a pseudonym**: a bare name writes `<author>Opus 5</author>`, a uuid writes `<author uuid="…"/>` with the name as a sibling comment, and a pseudonym may still carry a `contribution` |
 | `voidEnforcement` | `true` patches `intent.build.voidEnforcement`, with `voidExclusions` for the rects to spare |
 
 ### What it prints, and why that is the point

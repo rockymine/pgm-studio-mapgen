@@ -53,8 +53,9 @@ GET   /map/{slug}/export
 **Both of those last two come after the intent, and neither is obvious.** `DR-KEEP` reads the spawn doors'
 approaches and the goal rings, which come off the intent — asked earlier, `sketch/columns` answers a shorter
 list. And storing an intent **projects the map document from the intent's own `meta`**, whose authors a
-compiled intent leaves empty, so a name PATCHed earlier is overwritten. PGM's author contract is a **uuid**:
-`{"uuid": …, "name": "…", "role": "author"}`; a bare string is dropped without a word.
+compiled intent leaves empty, so a name PATCHed earlier is overwritten. **A bare name is a valid author** —
+PGM takes a person as an account or a pseudonym, so `{"authors": ["Opus 5"]}` writes `<author>Opus 5</author>`
+and is the right form when there is no Minecraft account behind the name.
 
 **Two gates are heard for the first time at the export, at 409, after the whole world is built.** `OB17` —
 a goal overhanging void, in a spawn, or in a wool room — and `OB19` — a tree, boulder or building inside a

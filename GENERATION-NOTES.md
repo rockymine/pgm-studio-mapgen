@@ -542,10 +542,17 @@ only control a plan has over it; run 4 set 55–60 on every board.
 **The author's name is set after the intent, not before.** Storing an intent projects the map document from
 the intent's own `meta`, which a compiled intent leaves empty — `PUT …/intent/from-plan` carries authors from
 a *previously stored intent*, and a first build has none. A `PATCH /map/{slug}/metadata` before that point is
-overwritten. And PGM's author contract is a **uuid**: `{"uuid": …, "name": "Opus 5", "role": "author"}` writes
-`<author uuid="…"/>` with the name as an XML comment, while a bare string entry is dropped without a word.
-`ART-DIRECTION.md` AD-M10's `"authors": ["Fable 5"]` is `tools/mapgen`'s spec shorthand and does not exist on
-the HTTP path.
+overwritten.
+
+**A name is enough, and the endpoint used to disagree.** PGM takes a person as an **account or a pseudonym** —
+`<author>aPerson</author>` is the documented form for someone with no Minecraft account, and a pseudonym may
+carry a `contribution` attribute beside its text (`<contributor contribution="A contribution">aHelper</contributor>`,
+pgm.dev *Modules · General · Main*). Both halves of the studio's codec already keep that rule, and
+`XmlWriterTests` pins it. What did not was `PATCH /map/{slug}/metadata`, which skipped any entry with no
+`uuid` **in silence** — so the one form an authoring agent can actually state was the one form that never
+reached the map. Fixed this session; the endpoint now takes `["Opus 5"]`, `[{"name": "Opus 5"}]` and
+`[{"uuid": …, "name": …}]` alike, and skips only a person carrying neither. `ART-DIRECTION.md` AD-M10's
+`"authors": ["Fable 5"]` was right all along.
 
 **`--traversability-map` reporting an isolated wool room is the wall's cobweb, not the board — measured over
 twelve run-4 boards, every board carrying an approach wall reads isolated except the one whose wool lane has

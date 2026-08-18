@@ -160,7 +160,7 @@ something dropped.
 | 2 | a hole inside one of my own plan pieces | a `buffer` over the piece. It is inert by design ("a buffer over a generating piece is inert") | **missing at the plan layer**, present at the layout layer as a `subtract` — and `/plan/evaluate`'s `G8 fill-ratio` therefore measures a board denser than the one that gets built. Every board here fired `G8` and none of them is as solid as it says |
 | 3 | a real span over a hole | an `override: true` add over a `subtract`. It fills its column from `floor` rather than spanning | **out of reach** — the mechanism is `layers[]` with a `base_y`, which the run rules exclude. Not a gap; a documentation gap about which instrument does which |
 | 4 | to know which prop the dressing pass would refuse, before building | `sketch/columns` answers `DR-*`; `OB17`/`OB19` are export refusals and appear nowhere earlier | **out of reach** — the mechanism exists at the wrong end of the pipeline |
-| 5 | a bare author name | `PATCH …/metadata` `{"authors": ["Opus 5"]}`. An entry with no `uuid` is skipped **silently** (`WriteEndpoints.cs`) | **mistaken, mine** — PGM's contract is a uuid with the name as a comment. `ART-DIRECTION.md` AD-M10's `["Fable 5"]` form is `tools/mapgen`'s spec shorthand and does not exist on the HTTP path |
+| 5 | a bare author name | `PATCH …/metadata` `{"authors": ["Opus 5"]}`. An entry with no `uuid` is skipped **silently** (`WriteEndpoints.cs`) | **missing, and I misdiagnosed it as the contract's** — see §8 fault 6. PGM takes a person as an account **or** a pseudonym; the studio's own codec keeps that on both sides and only this endpoint refused it. `ART-DIRECTION.md` AD-M10's `["Fable 5"]` was right all along |
 | 6 | `LN1` satisfied on a plan-authored wool lane | the band is 10–20 blocks; `ST8` wants the wall ~15 in front of the room's entrance, which is three cells of approach at `cell: 5`, and a room is two or three more | **missing** — the two rules cannot both be met. Shortening the lane to satisfy `LN1` fired a hard term instead (score 2 → 1000). Shipped outside `LN1` and said so |
 | 7 | to move the observer off my board | no marker, no control — `flow.md` says so. `globals.observerY` is honoured when hand-authored | **out of reach from the canvas, reachable from a document.** Left at the default it stamps a bedrock pad at `surface + 15` over the origin, which on `wheal-hazel` was the middle of the contested bar |
 
@@ -183,6 +183,17 @@ y1..y8. One `--column` corrected a sentence that had already been written.
 its ridge `AlongX`; a wing meeting it on a vertical shared edge also runs into that edge; both-into-it is
 `HJ4`. `GENERATION-NOTES` §13 says the roles are ridge-derived and I still drew three of them wrong before
 stating the **hall's** ridge explicitly.
+
+**I read a workaround as a contract.** `PATCH /map/{slug}/metadata` silently dropped an author with no
+`uuid`, so I supplied one, saw `<author uuid="…"/>` come out, and wrote down that *PGM's author contract is a
+uuid* — in this report, in `GENERATION-NOTES` §17, in the authoring brief, in the driver's own docstring and
+in `tools/README.md`. It is not. PGM's documentation writes the case explicitly —
+`<author>aPerson</author>`, *"credit a person that doesn't have a Minecraft account"* — and both halves of
+the studio's codec already implement it, with `XmlWriterTests` pinning the round-trip. The endpoint was the
+only thing in the chain that disagreed, and because it disagreed in **silence** the workaround looked like
+the rule. Five documents carried the wrong claim before the author caught it. **A gate that drops something
+without saying so does not just cost a build cycle — it teaches the wrong contract, and the wrong contract
+then gets written down.**
 
 **I invented five material field names out of five.** `palette` for `noise` and for `voronoi`, `a`/`b` for
 `checker`, `inset` for a `layered` axis, `{id, data}` for a `teamTint`. `GET /terrain/patterns` names every
@@ -236,11 +247,12 @@ Recorded, not filed as facts. This session had no human oracle.
 
 ---
 
-## 8. Five defects found and fixed in the studio this session
+## 8. Six defects found and fixed in the studio this session
 
 Each was hit while authoring, each is small, and each mislabelled a document fault as the studio's own or hid
-an answer an agent is told to look for. The last two were found by measuring another model's run rather than
-my own, which is worth saying: a board that looks built and is not is exactly what a silent gate produces.
+an answer an agent is told to look for. Two were found by measuring another model's run rather than my own,
+and the sixth by the author reading a claim this report made and knowing it was false. **Five of the six are
+one shape: something was dropped and nothing said so.**
 
 | # | Found | Checked | Verdict |
 |---|---|---|---|
@@ -250,6 +262,7 @@ my own, which is worth saying: a board that looks built and is not is exactly wh
 
 | 4 | A shape naming a theme the layout's registry does not carry produced **no warning at all**, on either write path | `SketchLayoutCheck` reports a shape kind nobody has, a mirror mode nobody has, an island listing a shape id the layout does not carry, and a relief keyed to an island that does not exist — a **theme** name matching nothing is the same class and was not in the list. Those cells silently take the map default, so the board looks built | **missing** — **fixed**: reported as `SK3`, once per name rather than once per shape, and the map default is checked the same way |
 | 5 | `PUT …/sketch/from-plan` answered `{ok, orphaned}` and ran no document gate, while the plain `PUT …/sketch` ran one and returned its `warnings` | The merge path is the road every headless driver takes — all six of them, and `tools/mapgen` besides. So the one road nothing was reported on was the only road anybody drove | **missing** — **fixed**: the same gate now runs over the **merged** document, which is the one actually stored, and its complaints ride back with `orphaned` |
+| 6 | `PATCH /map/{slug}/metadata` dropped an author carrying a name and no `uuid`, in silence | PGM takes a person as an **account or a pseudonym** — `<author>aPerson</author>` is the documented form for someone with no Minecraft account, and a pseudonym may carry a `contribution` beside its text. `MapParser.ParseAuthors` reads either, `XmlWriter.WriteAuthors` writes either, and `XmlWriterTests` pins both; the endpoint's `if (uuid is empty) continue` was its own rule and nobody else's. It is the one form an authoring agent — which has no Mojang account — can state | **missing** — **fixed**: the endpoint takes `["Opus 5"]`, `[{"name": …}]` and `[{"uuid": …, "name": …}]` alike, and skips only a person carrying neither. A test pins the pseudonym-with-contribution shape the docs write |
 
 **How fault 4 was found is the part worth keeping.** Not by reading the code — by measuring the delegated
 Haiku run's four boards against its own report. Every shape on all four names a theme like `t0`, and the

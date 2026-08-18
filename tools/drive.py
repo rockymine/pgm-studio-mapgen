@@ -18,8 +18,8 @@ layout:
   roomStyles      {"cage": ..., "spawn": ...}; a "@name" string loads tools/styles/<name>.json
   dressing        {"props": [...]};  a house prop's "style" takes the same "@name"
   voidEnforcement true -> patch intent.build.voidEnforcement (voidExclusions for the rects to spare)
-  authors         [{"uuid": ..., "name": "Opus 5"}] -> the map's <authors> block. PGM's contract is a
-                  uuid and the name rides as a comment, so a bare string is dropped without a word
+  authors         ["Opus 5"], or [{"name", "uuid", "role", "contribution"}] -> the <authors> block. PGM
+                  takes a person as an account OR a pseudonym, so a bare name is a valid author
 
 Nothing here computes a placement, a clearance or a validation: it posts documents and prints what
 came back. Every finding the pipeline raises is printed with its rule id, including the dressing
