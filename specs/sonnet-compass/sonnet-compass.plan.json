@@ -15,10 +15,10 @@
       "id": "plaza",
       "role": "piece",
       "rect": [
-        -1,
-        -1,
-        2,
-        2
+        -3,
+        -3,
+        6,
+        6
       ],
       "surface": 9,
       "mirrors": false
@@ -27,10 +27,10 @@
       "id": "hub",
       "role": "piece",
       "rect": [
-        3,
-        3,
-        14,
-        6
+        -5,
+        6,
+        10,
+        2
       ],
       "surface": 9
     },
@@ -38,9 +38,9 @@
       "id": "wool-approach",
       "role": "piece",
       "rect": [
-        7,
-        9,
-        3,
+        -2,
+        8,
+        4,
         3
       ],
       "surface": 10
@@ -49,8 +49,8 @@
       "id": "wool-room",
       "role": "wool-room",
       "rect": [
-        7,
-        12,
+        -1,
+        11,
         3,
         3
       ],
@@ -60,10 +60,10 @@
       "id": "spawn-apron",
       "role": "piece",
       "rect": [
-        3,
-        15,
+        -8,
         14,
-        1
+        16,
+        3
       ],
       "surface": 12
     },
@@ -71,8 +71,8 @@
       "id": "spawn",
       "role": "spawn",
       "rect": [
-        7,
-        16,
+        -2,
+        17,
         4,
         2
       ],
@@ -83,10 +83,10 @@
     {
       "id": "plaza-link",
       "rect": [
-        1,
-        1,
-        2,
-        2
+        -3,
+        3,
+        6,
+        3
       ]
     }
   ],

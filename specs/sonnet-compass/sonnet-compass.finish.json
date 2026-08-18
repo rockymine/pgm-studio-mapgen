@@ -1,1 +1,338 @@
-{}
+{
+ "authors": [
+  {
+   "uuid": "0d05f1a5-0005-4005-8006-0000000c0mp1",
+   "name": "Sonnet 5",
+   "role": "author"
+  }
+ ],
+ "themeById": {
+  "s0": "compass-plaza",
+  "s1": "compass-yard",
+  "s2": "compass-approach",
+  "s3": "compass-approach",
+  "s4": "compass-yard",
+  "s5": "compass-yard"
+ },
+ "shapePropsById": {},
+ "themes": {
+  "compass-yard": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "cell",
+     "seed": 21,
+     "cellSize": 6,
+     "jitter": 60,
+     "warp": 2,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 82,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 82,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 43,
+       "data": 8
+      }
+     ]
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 4,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 82,
+    "data": 0
+   }
+  },
+  "compass-plaza": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 43,
+     "data": 8
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "cell",
+     "seed": 22,
+     "cellSize": 6,
+     "jitter": 60,
+     "warp": 2,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      }
+     ]
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 4,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 4,
+    "data": 0
+   }
+  },
+  "compass-approach": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 43,
+     "data": 8
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "teamTint",
+     "blockId": 159,
+     "neutral": {
+      "kind": "solid",
+      "id": 82,
+      "data": 0
+     }
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   }
+  }
+ },
+ "mapTheme": "compass-yard",
+ "dressing": {
+  "props": [
+   {
+    "id": "p1",
+    "kind": "path",
+    "seed": 1,
+    "radius": 2.5,
+    "style": "worn",
+    "coverage": 0.85,
+    "pave": {
+     "kind": "cell",
+     "seed": 31,
+     "cellSize": 3,
+     "jitter": 40,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ]
+    },
+    "points": [
+     [
+      0,
+      88
+     ],
+     [
+      0,
+      72
+     ],
+     [
+      0,
+      63
+     ],
+     [
+      0,
+      50
+     ],
+     [
+      0,
+      35
+     ],
+     [
+      0,
+      17
+     ]
+    ]
+   },
+   {
+    "id": "h1",
+    "kind": "house",
+    "seed": 11,
+    "front": "negZ",
+    "style": "@sn-compass-keep",
+    "wings": [
+     {
+      "corners": [
+       [
+        8,
+        31
+       ],
+       [
+        22,
+        39
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "h2",
+    "kind": "house",
+    "seed": 12,
+    "front": "negZ",
+    "style": "@sn-compass-well",
+    "wings": [
+     {
+      "corners": [
+       [
+        -3,
+        -3
+       ],
+       [
+        3,
+        3
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "b1",
+    "kind": "boulder",
+    "seed": 21,
+    "x": 6,
+    "z": 18,
+    "form": "outcrop",
+    "size": 2.2,
+    "mossy": true,
+    "rock": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   {
+    "id": "b2",
+    "kind": "boulder",
+    "seed": 22,
+    "x": -6,
+    "z": 18,
+    "form": "outcrop",
+    "size": 2.2,
+    "mossy": true,
+    "rock": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   {
+    "id": "f1",
+    "kind": "flora",
+    "seed": 31,
+    "points": [
+     [
+      -13,
+      -13
+     ],
+     [
+      13,
+      -13
+     ],
+     [
+      13,
+      13
+     ],
+     [
+      -13,
+      13
+     ]
+    ],
+    "spec": {
+     "coverage": 0.15,
+     "scale": 10,
+     "octaves": 2,
+     "fernShare": 0.2,
+     "flowerShare": 0.1,
+     "flowerScale": 14,
+     "tallShare": 0
+    }
+   }
+  ]
+ }
+}

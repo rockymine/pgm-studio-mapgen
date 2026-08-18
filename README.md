@@ -133,6 +133,33 @@ Beside them sits one world from the same days that is not one of the fifteen:
 | `haiku-r2-canonical-8` | — | Haiku | **not a map** — see below |
 | `haiku-r2-ctw-mid` | — | Haiku | **not a map** — see below |
 
+### Opus 5 run 4 — four boards, one per objective shape
+
+Authored to answer `B253` — *how a model actually drives the studio* — so the account of the loop is the
+deliverable and the boards are its evidence. All four build with **nothing declined**.
+[reports/opus5-run4.md](reports/opus5-run4.md) is the run; `GENERATION-NOTES.md` §17 is what it measured;
+`tools/README.md` is the document no driver had.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5-wheal-hazel` | ctw | Opus 5 | a granite tin works either side of a shingle bar: a walled wool lane at the head of each valley, a raised leat over a flooded shaft, a tidal lane that opens on the flank at 45 minutes |
+| `opus5-alabaster-rake` | dtm | Opus 5 | a gypsum badland under a bone-white mesa — three approaches in three dimensions: a weave through a picket of banded hoodoos, a drop into a sunk hollow, a climb up a tilted shelf |
+| `opus5-siderite-bowl` | dtc | Opus 5 | an impact crater whose ejecta ring stands **behind** the bowl, so the defence looks down into its own goal and the attack arrives from below |
+| `opus5-hollowbank` | ctw · dtm | Opus 5 | a chalk ring-fort carrying **both** objective kinds — the wool in a keep off the enclosure, the beacon out on the inner rampart |
+
+### Sonnet run 4 · Haiku run 4 — the same four briefs each, from `MAP-BRIEFS.md`
+
+Sonnet took §1 `caravanserai`, §2 `compass`, §7 `gantry` and §8 `reedcut`; Haiku took §3 `chancel`,
+§4 `ladder`, §5 `wharf` and §6 `winterfold`. `reports/sonnet-run4.md` and `reports/haiku-run4.md` are the
+two accounts.
+
+**Haiku's four load and are unfinished, and its report says so.** All four carry teams, spawns, objectives
+and an author over real region files — and none carries a theme registry, a placed prop, an authored relief
+or a single render. Every shape on them names a theme that does not exist, which is the silence
+`SketchLayoutCheck` was extended to report in the same session. `haiku-wharf` answers a **capture** brief
+with no wool on it. They are kept as what they are: plan-level blueprints, honestly labelled by the run that
+made them, which is the improvement over the run that once described two empty shells as verified.
+
 ### Grok run 1 — authored blind, built afterwards
 
 Three maps written by Grok from the documentation alone, with **no running studio**: nothing it wrote was
@@ -200,10 +227,16 @@ Every map carries `renders/`. Two of them answer questions no plan view can:
 - **`--topdown --layer structure`** reads `region/provenance.json` and draws what the build *recorded* itself
   placing. Its owners list is a literal census of your dressing:
 
-  ```powershell
-  $j = Get-Content maps/<slug>/region/provenance.json -Raw | ConvertFrom-Json
-  $j.owners | Group-Object { ($_ -split ':')[0] }
+  ```python
+  # since B252 an owner is {kind, unit, image} rather than a "kind:id" string
+  import json; from collections import Counter
+  p = json.load(open('maps/<slug>/region/provenance.json'))
+  print(Counter(o['kind'] for o in p['owners']))
   ```
+
+  Every count reads `units × orbit order`, which is the check: a prop that landed nothing has no row at
+  all. Beside it, `region/dressing-report.json` answers what did **not** land, and is written only when
+  something dropped — so its absence means everything authored stood.
 
   Prefer it to `--buildings`, which finds buildings by scanning block materials and is built for worlds the
   studio did **not** build — `GENERATION-NOTES.md` §6 has the three ways it misreads one that it did.
@@ -246,6 +279,8 @@ cited.
 | `reports/opus-run1.md` · `sonnet-run1.md` · `haiku-run1.md` | the three run-1 accounts |
 | `reports/opus-run2.md` · `sonnet-run2.md` · `haiku-run2.md` | the three run-2 accounts |
 | [reports/opus5-run2.md](reports/opus5-run2.md) | a second, independent run-2 — its §1 audits the earlier runs' claims against the code, and finds three that were wrong when filed and four gaps since closed |
+| [reports/opus5-run4.md](reports/opus5-run4.md) | run 4 — `B253`'s answer: the thirteen-call loop as it is actually driven, the two calls whose **order** is load-bearing, what an agent can and cannot look at, and five studio defects found by authoring and fixed |
+| `reports/sonnet-run4.md` · `reports/haiku-run4.md` | run 4's two delegated runs, four named briefs each |
 | [reports/fable-run3.md](reports/fable-run3.md) | run 3 — four themed boards; five studio defects found were fixed in the same session, and the fault table separates them from the author's own mistakes |
 | [reports/fable-run3-architecture.md](reports/fable-run3-architecture.md) | run 3's second half: the distance-measurement inventory, the API-layer survey, and a seven-move fast-track ranked by what each buys |
 | `review/` | one measured record per map |
