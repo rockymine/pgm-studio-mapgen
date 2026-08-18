@@ -12,10 +12,12 @@ Two islands: `team` (4 101 cells, y7..13, symmetry error 0) and `neutral`, the b
 The topology is capture's: the wool a team wants is at the back of the *enemy's* valley, up a lane a bedrock
 wall is built across. The run out crosses the bar; the run back is the same walk carrying the wool.
 
-**The three ways across are three different prices.** The build zone at `x −15..15, z 5..20` is a bridged
-crossing open from the first tick — the short way and the watched one. The **water lane** at `x 30..50,
-z 10..25` is void for forty-five minutes and then becomes a second crossing on the flank, so the endgame is
-not the shape the opening was; under `rot_180` it lands east for red and west for blue, which pinwheels the
+**The three ways across are three different prices, and two of them are the same strait.** The bar's south
+face is `z = 5` and the team's front is `z = 20`, so the water between them is a 15-block band — and the
+board crosses that one band twice. The build zone at `x −10..10, z 5..20` crosses it at the centre, bridged
+and open from the first tick: the short way and the watched one. The **water lane** at `x 30..50, z 5..20`
+is the *same band* out on the flank, void for forty-five minutes and then a second crossing, so the endgame
+is not the shape the opening was; under `rot_180` it lands east for red and west for blue, which pinwheels the
 late route rather than mirroring it. And the **inlet** cut into the works floor at `x −20..−10, z 20..30`
 (probed: `(−15, 25)` = 0 solid) makes the front coast a pair of headlands rather than a wall, so the walk to
 the crossing is a choice of two.
@@ -32,6 +34,7 @@ the crossing is a choice of two.
 | the leat | path shape, r 2.5, `x 22..−44` along `z ≈ 43` | `(−28, 43)` polished diorite y9..11 |
 | the bar | `x −40..40, z −5..5`, `mirrors: false` | `(0, 0)` cobblestone top y10 |
 | strait | team front `z = 20` to bar `z = 5` | 15 blocks — `CT12` wants 15–40 |
+| water lane | `x 30..50, z 5..20` and its `rot_180` image `x −50..−30, z −20..−5` | `map.xml` `<cuboid min="30,0,5" max="50,1,20"/>` — the lane's north edge **is** the bar's south face, x 30..40 |
 
 Traversability: **10 037 navigable columns, 466 bridged over void, 2 components, 0 isolated.**
 
