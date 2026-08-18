@@ -544,15 +544,20 @@ the intent's own `meta`, which a compiled intent leaves empty — `PUT …/inten
 a *previously stored intent*, and a first build has none. A `PATCH /map/{slug}/metadata` before that point is
 overwritten.
 
-**A name is enough, and the endpoint used to disagree.** PGM takes a person as an **account or a pseudonym** —
-`<author>aPerson</author>` is the documented form for someone with no Minecraft account, and a pseudonym may
-carry a `contribution` attribute beside its text (`<contributor contribution="A contribution">aHelper</contributor>`,
-pgm.dev *Modules · General · Main*). Both halves of the studio's codec already keep that rule, and
-`XmlWriterTests` pins it. What did not was `PATCH /map/{slug}/metadata`, which skipped any entry with no
-`uuid` **in silence** — so the one form an authoring agent can actually state was the one form that never
-reached the map. Fixed this session; the endpoint now takes `["Opus 5"]`, `[{"name": "Opus 5"}]` and
-`[{"uuid": …, "name": …}]` alike, and skips only a person carrying neither. `ART-DIRECTION.md` AD-M10's
-`"authors": ["Fable 5"]` was right all along.
+**A name is enough, and three places above the codec disagreed.** PGM takes a person as an **account or a
+pseudonym** — `<author>aPerson</author>` is the documented form for someone with no Minecraft account, and a
+pseudonym may carry a `contribution` attribute beside its text
+(`<contributor contribution="A contribution">aHelper</contributor>`, pgm.dev *Modules · General · Main*). Both
+halves of the studio's codec already keep that rule, and `XmlWriterTests` pins it. The layers above it did not,
+and each dropped the pseudonym **in silence**: `PATCH /map/{slug}/metadata` skipped any entry with no `uuid`;
+`PUT /map/{slug}/intent` looked every stated name up against Mojang and discarded the ones it could not
+resolve — even though the intent model reads a bare JSON string straight into an author's `Name`, so the model
+states a pseudonym and the projection threw it away; and the Configure Identity editor flags an unresolvable
+name as an error and then filters the row out (`AuthorsEditor` + `IdentityPhase`, still open as `TC2` because
+what a pseudonym row should look like is a UX call). The two endpoints are fixed this session: both now take
+`["Opus 5"]`, `[{"name": "Opus 5"}]` and `[{"uuid": …, "name": …}]` alike, keep an unresolvable name as a
+pseudonym, and skip only a person carrying neither. `ART-DIRECTION.md` AD-M10's `"authors": ["Fable 5"]` was
+right all along.
 
 **`--traversability-map` reporting an isolated wool room is the wall's cobweb, not the board — measured over
 twelve run-4 boards, every board carrying an approach wall reads isolated except the one whose wool lane has

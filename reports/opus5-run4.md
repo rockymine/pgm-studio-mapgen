@@ -247,12 +247,12 @@ Recorded, not filed as facts. This session had no human oracle.
 
 ---
 
-## 8. Six defects found and fixed in the studio this session
+## 8. Seven defects found and fixed in the studio this session
 
 Each was hit while authoring, each is small, and each mislabelled a document fault as the studio's own or hid
 an answer an agent is told to look for. Two were found by measuring another model's run rather than my own,
-and the sixth by the author reading a claim this report made and knowing it was false. **Five of the six are
-one shape: something was dropped and nothing said so.**
+and the last two by the author reading a claim this report made and knowing it was false. **Six of the seven
+are one shape: something was dropped and nothing said so.**
 
 | # | Found | Checked | Verdict |
 |---|---|---|---|
@@ -263,6 +263,8 @@ one shape: something was dropped and nothing said so.**
 | 4 | A shape naming a theme the layout's registry does not carry produced **no warning at all**, on either write path | `SketchLayoutCheck` reports a shape kind nobody has, a mirror mode nobody has, an island listing a shape id the layout does not carry, and a relief keyed to an island that does not exist — a **theme** name matching nothing is the same class and was not in the list. Those cells silently take the map default, so the board looks built | **missing** — **fixed**: reported as `SK3`, once per name rather than once per shape, and the map default is checked the same way |
 | 5 | `PUT …/sketch/from-plan` answered `{ok, orphaned}` and ran no document gate, while the plain `PUT …/sketch` ran one and returned its `warnings` | The merge path is the road every headless driver takes — all six of them, and `tools/mapgen` besides. So the one road nothing was reported on was the only road anybody drove | **missing** — **fixed**: the same gate now runs over the **merged** document, which is the one actually stored, and its complaints ride back with `orphaned` |
 | 6 | `PATCH /map/{slug}/metadata` dropped an author carrying a name and no `uuid`, in silence | PGM takes a person as an **account or a pseudonym** — `<author>aPerson</author>` is the documented form for someone with no Minecraft account, and a pseudonym may carry a `contribution` beside its text. `MapParser.ParseAuthors` reads either, `XmlWriter.WriteAuthors` writes either, and `XmlWriterTests` pins both; the endpoint's `if (uuid is empty) continue` was its own rule and nobody else's. It is the one form an authoring agent — which has no Mojang account — can state | **missing** — **fixed**: the endpoint takes `["Opus 5"]`, `[{"name": …}]` and `[{"uuid": …, "name": …}]` alike, and skips only a person carrying neither. A test pins the pseudonym-with-contribution shape the docs write |
+| 7 | `PUT /map/{slug}/intent` dropped the same pseudonym, one layer further in — and this is the layer an authoring agent actually drives | The intent model already states a pseudonym: `AuthorIntentJson` reads a bare JSON string straight into an author's `Name`, which is what makes `{"authors": ["Opus 5"]}` a legal intent at all. `ResolveAuthorsAsync` then looked every stated name up against Mojang and `catch { }`-ed the misses away — so the model accepted the form, the projection deleted it, and the map document came back with the author simply absent. Found by fixing fault 6 and asking what else resolved a name before storing one | **missing** — **fixed**: a name Mojang cannot resolve is kept as a pseudonym with an empty `uuid`, an account still gets its canonical uuid and current name, and a `contribution` rides along either way. Verified live: `["Opus 5", {"name": "Notch"}]` stores one pseudonym and one account |
+
 
 **How fault 4 was found is the part worth keeping.** Not by reading the code — by measuring the delegated
 Haiku run's four boards against its own report. Every shape on all four names a theme like `t0`, and the
@@ -270,7 +272,14 @@ layout carries no `themes` registry at all. The run believed its boards were the
 opportunity to say otherwise and said nothing, on both write paths and on the columns read. Four boards
 shipped unpainted for want of one complaint.
 
-And one **documentation** defect left for the author because its resolution is a design call, not a fix:
+The same drop survives in a third place, left filed rather than fixed because its resolution is a UX call:
+the Configure **Identity** editor looks a typed name up on blur, flags an unresolvable one as an error, and
+`IdentityPhase` then filters the row out with `p.Uuid.Length > 0`, so a pseudonym typed into the UI never
+reaches the intent. What a pseudonym row should *look* like — an accepted unresolved name, or an explicit
+toggle beside the lookup — is the author's decision, so it is `TC2` in `BACKLOG.md` rather than a change made
+unasked.
+
+And one **documentation** defect left for the author for the same reason:
 `capabilities.md` describes a shape erected above the build cap as an obstacle nobody bridges, and the
 ceiling rule in `plan.md` (`G6` amendment 14 — twenty blocks over the highest ground the world builds) makes
 that unreachable for anything made of terrain. Both documents are internally correct; together they promise
