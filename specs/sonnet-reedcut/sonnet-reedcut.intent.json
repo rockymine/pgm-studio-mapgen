@@ -1,0 +1,313 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 24,
+ "spawns": [
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0,
+    "identity": {}
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 13,
+    "z": 75
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 70,
+     "maxX": 10,
+     "maxZ": 80
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 70,
+    "maxX": 10,
+    "maxZ": 80
+   },
+   "iron": [
+    {
+     "x": -5,
+     "y": 13,
+     "z": 75
+    }
+   ]
+  },
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1,
+    "identity": {}
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 13,
+    "z": -75
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -80,
+     "maxX": 10,
+     "maxZ": -70
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -80,
+    "maxX": 10,
+    "maxZ": -70
+   },
+   "iron": [
+    {
+     "x": 5,
+     "y": 13,
+     "z": -75
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 50,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -10,
+    "minZ": 5,
+    "maxX": 10,
+    "maxZ": 20
+   },
+   {
+    "minX": -10,
+    "minZ": -20,
+    "maxX": 10,
+    "maxZ": -5
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": {
+  "rects": [
+   {
+    "minX": 30,
+    "minZ": 5,
+    "maxX": 50,
+    "maxZ": 20
+   },
+   {
+    "minX": -50,
+    "minZ": -20,
+    "maxX": -30,
+    "maxZ": -5
+   }
+  ]
+ },
+ "wools": [
+  {
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 0,
+    "identity": {}
+   },
+   "owner": "red",
+   "color": "red",
+   "room": [
+    {
+     "minX": 20,
+     "minZ": 60,
+     "maxX": 35,
+     "maxZ": 75
+    }
+   ],
+   "spawn": {
+    "x": 27.5,
+    "y": 12,
+    "z": 67.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": 20,
+    "minZ": 60,
+    "maxX": 35,
+    "maxZ": 75
+   },
+   "entries": [
+    {
+     "minX": 20,
+     "minZ": 60,
+     "maxX": 35,
+     "maxZ": 60
+    }
+   ]
+  },
+  {
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 1,
+    "identity": {}
+   },
+   "owner": "blue",
+   "color": "blue",
+   "room": [
+    {
+     "minX": -35,
+     "minZ": -75,
+     "maxX": -20,
+     "maxZ": -60
+    }
+   ],
+   "spawn": {
+    "x": -27.5,
+    "y": 12,
+    "z": -67.5
+   },
+   "monuments": [],
+   "piece": {
+    "minX": -35,
+    "minZ": -75,
+    "maxX": -20,
+    "maxZ": -60
+   },
+   "entries": [
+    {
+     "minX": -35,
+     "minZ": -60,
+     "maxX": -20,
+     "maxZ": -60
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "meta": {
+  "name": "Reedcut Levels",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue",
+  "3": "neutral"
+ },
+ "structures": {
+  "roomFloors": [
+   {
+    "area": {
+     "minX": 20,
+     "minZ": 60,
+     "maxX": 35,
+     "maxZ": 75
+    },
+    "stamp": {
+     "kind": "roomfloor",
+     "unit": "wool-room",
+     "image": 0,
+     "identity": {}
+    }
+   },
+   {
+    "area": {
+     "minX": -35,
+     "minZ": -75,
+     "maxX": -20,
+     "maxZ": -60
+    },
+    "stamp": {
+     "kind": "roomfloor",
+     "unit": "wool-room",
+     "image": 1,
+     "identity": {}
+    }
+   }
+  ],
+  "redstoneLines": [
+   {
+    "x1": 20,
+    "z1": 60,
+    "x2": 34,
+    "z2": 60,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 0,
+     "identity": {}
+    }
+   },
+   {
+    "x1": -35,
+    "z1": -61,
+    "x2": -21,
+    "z2": -61,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1,
+     "identity": {}
+    }
+   }
+  ],
+  "ironCubes": [],
+  "walls": [
+   {
+    "minX": 20,
+    "minZ": 44,
+    "maxX": 35,
+    "maxZ": 46,
+    "topY": 13,
+    "chestOnMinFace": false,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 0,
+     "identity": {}
+    }
+   },
+   {
+    "minX": -35,
+    "minZ": -46,
+    "maxX": -20,
+    "maxZ": -44,
+    "topY": 13,
+    "chestOnMinFace": true,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 1,
+     "identity": {}
+    }
+   }
+  ],
+  "isEmpty": false
+ }
+}

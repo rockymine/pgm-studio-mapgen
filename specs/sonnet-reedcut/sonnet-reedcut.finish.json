@@ -1,0 +1,496 @@
+{
+ "authors": [
+  {
+   "uuid": "0d05f1a5-0005-4005-8009-0000000rdct1",
+   "name": "Sonnet 5",
+   "role": "author"
+  }
+ ],
+ "themeById": {
+  "s0": "reed-lowland",
+  "s1": "reed-bank",
+  "s2": "reed-lowland",
+  "s3": "reed-bank",
+  "s4": "reed-bank",
+  "s5": "reed-bank",
+  "s6": "reed-cut"
+ },
+ "shapePropsById": {
+  "s1": {
+   "relief_scope": "exclude"
+  },
+  "s3": {
+   "relief_scope": "exclude"
+  },
+  "s4": {
+   "relief_scope": "exclude"
+  },
+  "s5": {
+   "relief_scope": "exclude"
+  }
+ },
+ "relief": {
+  "team": {
+   "base": 9,
+   "reach": 16,
+   "step": 1,
+   "stairs": true,
+   "grain": {
+    "amplitude": 0.5,
+    "scale": 9,
+    "seed": 3
+   },
+   "marks": [
+    {
+     "id": "cut1",
+     "kind": "area",
+     "ring": [
+      [
+       -40,
+       20
+      ],
+      [
+       -25,
+       20
+      ],
+      [
+       -25,
+       40
+      ],
+      [
+       -40,
+       40
+      ]
+     ],
+     "h": 6
+    },
+    {
+     "id": "cut2",
+     "kind": "area",
+     "ring": [
+      [
+       10,
+       -20
+      ],
+      [
+       30,
+       -20
+      ],
+      [
+       30,
+       -5
+      ],
+      [
+       10,
+       -5
+      ]
+     ],
+     "h": 6
+    },
+    {
+     "id": "bank1",
+     "kind": "line",
+     "points": [
+      [
+       -30,
+       45
+      ],
+      [
+       -10,
+       40
+      ],
+      [
+       10,
+       42
+      ]
+     ],
+     "h": 11,
+     "width": 6
+    }
+   ],
+   "pushes": [
+    {
+     "id": "swell1",
+     "ring": [
+      [
+       -45,
+       5
+      ],
+      [
+       -15,
+       5
+      ],
+      [
+       -15,
+       20
+      ],
+      [
+       -45,
+       20
+      ]
+     ],
+     "amount": 2,
+     "falloff": 8,
+     "roughness": 0.3,
+     "crown": 1,
+     "seed": 7
+    }
+   ]
+  }
+ },
+ "themes": {
+  "reed-lowland": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 3,
+     "data": 1
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 2,
+         "data": 0
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 1
+        },
+        "thickness": 2
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 2
+        },
+        "thickness": 2
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 159,
+         "data": 12
+        },
+        "thickness": 2
+       }
+      ]
+     }
+    },
+    "depth": 7,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 3,
+    "data": 2
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 3,
+    "data": 2
+   }
+  },
+  "reed-bank": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 5,
+     "data": 1
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "cell",
+     "seed": 51,
+     "cellSize": 6,
+     "jitter": 45,
+     "warp": 2,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 13
+      }
+     ]
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 3,
+    "data": 1
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 3,
+    "data": 1
+   }
+  },
+  "reed-cut": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 3,
+     "data": 2
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "cell",
+     "seed": 52,
+     "cellSize": 5,
+     "jitter": 60,
+     "warp": 2,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 2
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 2
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 12
+      }
+     ]
+    },
+    "depth": 4,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 159,
+    "data": 12
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 3,
+    "data": 2
+   }
+  }
+ },
+ "mapTheme": "reed-lowland",
+ "dressing": {
+  "props": [
+   {
+    "id": "p1",
+    "kind": "path",
+    "seed": 1,
+    "radius": 2.5,
+    "style": "worn",
+    "coverage": 0.8,
+    "pave": {
+     "kind": "solid",
+     "id": 3,
+     "data": 1
+    },
+    "points": [
+     [
+      0,
+      68
+     ],
+     [
+      0,
+      50
+     ],
+     [
+      -15,
+      35
+     ],
+     [
+      -25,
+      20
+     ],
+     [
+      -25,
+      5
+     ]
+    ]
+   },
+   {
+    "id": "p2",
+    "kind": "path",
+    "seed": 2,
+    "radius": 2,
+    "style": "rough",
+    "coverage": 0.75,
+    "pave": {
+     "kind": "solid",
+     "id": 3,
+     "data": 1
+    },
+    "points": [
+     [
+      0,
+      68
+     ],
+     [
+      10,
+      55
+     ],
+     [
+      22,
+      45
+     ],
+     [
+      27,
+      30
+     ]
+    ]
+   },
+   {
+    "id": "h1",
+    "kind": "house",
+    "seed": 11,
+    "front": "negZ",
+    "style": "@sn-reed-bankhouse",
+    "wings": [
+     {
+      "corners": [
+       [
+        -40,
+        22
+       ],
+       [
+        -32,
+        28
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "h2",
+    "kind": "house",
+    "seed": 12,
+    "front": "negZ",
+    "style": "@sn-reed-bankhouse",
+    "wings": [
+     {
+      "corners": [
+       [
+        -58,
+        38
+       ],
+       [
+        -52,
+        44
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "h3",
+    "kind": "house",
+    "seed": 13,
+    "front": "posZ",
+    "style": "@sn-reed-cutter",
+    "wings": [
+     {
+      "corners": [
+       [
+        16,
+        -12
+       ],
+       [
+        24,
+        -4
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "f1",
+    "kind": "flora",
+    "seed": 21,
+    "points": [
+     [
+      -40,
+      15
+     ],
+     [
+      -15,
+      15
+     ],
+     [
+      -15,
+      35
+     ],
+     [
+      -40,
+      35
+     ]
+    ],
+    "spec": {
+     "coverage": 0.3,
+     "scale": 10,
+     "octaves": 2,
+     "fernShare": 0.3,
+     "flowerShare": 0.1,
+     "flowerScale": 12,
+     "tallShare": 0.15
+    }
+   }
+  ]
+ }
+}

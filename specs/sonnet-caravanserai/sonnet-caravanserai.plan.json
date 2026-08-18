@@ -1,0 +1,162 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Redsand Caravanserai"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 20,
+    "surface": 9,
+    "observerY": 55
+  },
+  "pieces": [
+    {
+      "id": "wadi-mouth",
+      "role": "piece",
+      "rect": [
+        -4,
+        2,
+        8,
+        3
+      ],
+      "surface": 7
+    },
+    {
+      "id": "wadi-floor",
+      "role": "piece",
+      "rect": [
+        -5,
+        5,
+        10,
+        4
+      ],
+      "surface": 8
+    },
+    {
+      "id": "wadi-floor-w",
+      "role": "piece",
+      "rect": [
+        -8,
+        5,
+        3,
+        4
+      ],
+      "surface": 8
+    },
+    {
+      "id": "canyon-brow-w",
+      "role": "piece",
+      "rect": [
+        -8,
+        9,
+        6,
+        1
+      ],
+      "surface": 9
+    },
+    {
+      "id": "canyon-brow-e",
+      "role": "piece",
+      "rect": [
+        -2,
+        9,
+        10,
+        1
+      ],
+      "surface": 10
+    },
+    {
+      "id": "caravanserai-yard",
+      "role": "piece",
+      "rect": [
+        5,
+        7,
+        4,
+        2
+      ],
+      "surface": 11
+    },
+    {
+      "id": "approach-terrace",
+      "role": "piece",
+      "rect": [
+        -6,
+        10,
+        12,
+        3
+      ],
+      "surface": 11
+    },
+    {
+      "id": "spawn-ramp",
+      "role": "piece",
+      "rect": [
+        -3,
+        13,
+        6,
+        2
+      ],
+      "surface": 12
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        15,
+        4,
+        3
+      ],
+      "surface": 13
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          2
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          1,
+          1
+        ]
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "carav-1",
+        "piece": "canyon-brow-e",
+        "at": [
+          4,
+          0.5
+        ],
+        "style": "column-plus",
+        "materials": "ender stone",
+        "float": 4,
+        "name": "Caravanserai Rest-stone"
+      }
+    ]
+  },
+  "zones": [
+    {
+      "id": "crossing",
+      "rect": [
+        -4,
+        -2,
+        8,
+        4
+      ]
+    }
+  ]
+}

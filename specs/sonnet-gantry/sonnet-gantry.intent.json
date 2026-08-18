@@ -1,0 +1,218 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 20,
+ "spawns": [
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0,
+    "identity": {}
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 10,
+    "z": 105
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 100,
+     "maxX": 10,
+     "maxZ": 110
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 100,
+    "maxX": 10,
+    "maxZ": 110
+   },
+   "iron": [
+    {
+     "x": -5,
+     "y": 10,
+     "z": 105
+    }
+   ]
+  },
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1,
+    "identity": {}
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 10,
+    "z": -105
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -110,
+     "maxX": 10,
+     "maxZ": -100
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -110,
+    "maxX": 10,
+    "maxZ": -100
+   },
+   "iron": [
+    {
+     "x": 5,
+     "y": 10,
+     "z": -105
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 55,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -30,
+    "minZ": -10,
+    "maxX": 30,
+    "maxZ": 10
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": [
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "core-deck",
+    "image": 0,
+    "identity": {}
+   },
+   "owner": "red",
+   "name": "Gantry Deck Core",
+   "anchor": {
+    "x": -38,
+    "y": 13,
+    "z": 80
+   },
+   "size": 4,
+   "height": 4,
+   "shell": 1,
+   "openTop": false,
+   "float": 5,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "core-pit",
+    "image": 0,
+    "identity": {}
+   },
+   "owner": "red",
+   "name": "Pit Core",
+   "anchor": {
+    "x": 38,
+    "y": 5,
+    "z": 80
+   },
+   "size": 4,
+   "height": 4,
+   "shell": 1,
+   "openTop": false,
+   "float": 5,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "core-deck",
+    "image": 1,
+    "identity": {}
+   },
+   "owner": "blue",
+   "name": "Gantry Deck Core",
+   "anchor": {
+    "x": 37,
+    "y": 13,
+    "z": -81
+   },
+   "size": 4,
+   "height": 4,
+   "shell": 1,
+   "openTop": false,
+   "float": 5,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "core-pit",
+    "image": 1,
+    "identity": {}
+   },
+   "owner": "blue",
+   "name": "Pit Core",
+   "anchor": {
+    "x": -39,
+    "y": 5,
+    "z": -81
+   },
+   "size": 4,
+   "height": 4,
+   "shell": 1,
+   "openTop": false,
+   "float": 5,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  }
+ ],
+ "meta": {
+  "name": "Gantry Quarter Works",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": null
+}

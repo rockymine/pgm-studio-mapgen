@@ -1,0 +1,479 @@
+{
+ "authors": [
+  {
+   "uuid": "0d05f1a5-0005-4005-8007-0000000c4rv1",
+   "name": "Sonnet 5",
+   "role": "author"
+  }
+ ],
+ "themeById": {
+  "s0": "carav-ground",
+  "s1": "carav-ground",
+  "s2": "carav-lip",
+  "s3": "carav-lip",
+  "s4": "carav-ground",
+  "s5": "carav-stop",
+  "s6": "carav-ground",
+  "s7": "carav-ground"
+ },
+ "shapePropsById": {
+  "s2": {
+   "relief_scope": "exclude"
+  },
+  "s3": {
+   "relief_scope": "exclude"
+  },
+  "s4": {
+   "relief_scope": "exclude"
+  },
+  "s5": {
+   "relief_scope": "exclude"
+  },
+  "s6": {
+   "relief_scope": "exclude"
+  },
+  "s7": {
+   "relief_scope": "exclude"
+  }
+ },
+ "relief": {
+  "*": {
+   "base": 8,
+   "reach": 18,
+   "step": 1,
+   "stairs": true,
+   "grain": {
+    "amplitude": 0.6,
+    "scale": 10,
+    "seed": 5
+   },
+   "marks": [
+    {
+     "id": "wadi",
+     "kind": "line",
+     "points": [
+      [
+       0,
+       90
+      ],
+      [
+       0,
+       40
+      ],
+      [
+       0,
+       -10
+      ]
+     ],
+     "h": [
+      13,
+      9,
+      7
+     ],
+     "width": 10
+    }
+   ],
+   "pushes": []
+  }
+ },
+ "themes": {
+  "carav-ground": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 179,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "cell",
+     "seed": 41,
+     "cellSize": 8,
+     "jitter": 55,
+     "warp": 2,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 12,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 12,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 179,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 12,
+       "data": 0
+      }
+     ]
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "stack": {
+     "ending": "repeat",
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 179,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 43,
+        "data": 9
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 179,
+        "data": 0
+       },
+       "thickness": 3
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 179,
+    "data": 0
+   }
+  },
+  "carav-lip": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 179,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "cell",
+     "seed": 41,
+     "cellSize": 8,
+     "jitter": 55,
+     "warp": 2,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 12,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 12,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 179,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 12,
+       "data": 0
+      }
+     ]
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "stack": {
+     "ending": "repeat",
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 179,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 43,
+        "data": 9
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 179,
+        "data": 0
+       },
+       "thickness": 3
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 179,
+    "data": 0
+   }
+  },
+  "carav-stop": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 121,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 121,
+         "data": 0
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 12,
+         "data": 0
+        },
+        "thickness": 2
+       }
+      ]
+     }
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 43,
+    "data": 9
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 12,
+    "data": 0
+   }
+  }
+ },
+ "mapTheme": "carav-ground",
+ "roomStyles": {
+  "spawn": "@sn-carav-desert"
+ },
+ "dressing": {
+  "props": [
+   {
+    "id": "p1",
+    "kind": "path",
+    "seed": 1,
+    "radius": 3,
+    "style": "tapered",
+    "coverage": 0.9,
+    "pave": {
+     "kind": "cell",
+     "seed": 61,
+     "cellSize": 4,
+     "jitter": 40,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 179,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 43,
+       "data": 9
+      }
+     ]
+    },
+    "points": [
+     [
+      0,
+      82
+     ],
+     [
+      0,
+      60
+     ],
+     [
+      0,
+      35
+     ],
+     [
+      0,
+      10
+     ],
+     [
+      0,
+      -10
+     ]
+    ]
+   },
+   {
+    "id": "p2",
+    "kind": "path",
+    "seed": 2,
+    "radius": 1.5,
+    "style": "rough",
+    "coverage": 0.75,
+    "pave": {
+     "kind": "solid",
+     "id": 24,
+     "data": 0
+    },
+    "points": [
+     [
+      10,
+      40
+     ],
+     [
+      22,
+      32
+     ],
+     [
+      35,
+      25
+     ],
+     [
+      40,
+      18
+     ]
+    ]
+   },
+   {
+    "id": "h1",
+    "kind": "house",
+    "seed": 11,
+    "front": "posZ",
+    "style": "@sn-carav-desert",
+    "wings": [
+     {
+      "corners": [
+       [
+        26,
+        36
+       ],
+       [
+        43,
+        40
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "b1",
+    "kind": "boulder",
+    "seed": 21,
+    "x": -25,
+    "z": 62,
+    "form": "angular",
+    "size": 3,
+    "mossy": false,
+    "rock": {
+     "kind": "solid",
+     "id": 179,
+     "data": 0
+    }
+   },
+   {
+    "id": "b2",
+    "kind": "boulder",
+    "seed": 22,
+    "x": 25,
+    "z": 60,
+    "form": "angular",
+    "size": 2.5,
+    "mossy": false,
+    "rock": {
+     "kind": "solid",
+     "id": 179,
+     "data": 0
+    }
+   },
+   {
+    "id": "h2",
+    "kind": "house",
+    "seed": 12,
+    "front": "posZ",
+    "style": "@sn-carav-desert",
+    "wings": [
+     {
+      "corners": [
+       [
+        -24,
+        52
+       ],
+       [
+        -18,
+        58
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

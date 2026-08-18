@@ -262,3 +262,54 @@ And one **documentation** defect left for the author because its resolution is a
 ceiling rule in `plan.md` (`G6` amendment 14 — twenty blocks over the highest ground the world builds) makes
 that unreachable for anything made of terrain. Both documents are internally correct; together they promise
 something that cannot be built. Open question 1 above is the decision that settles which one changes.
+
+---
+
+## 9. The two delegated runs, measured rather than read
+
+Sonnet and Haiku each took four named briefs from `MAP-BRIEFS.md` against the same studio and the same
+driver. Their own accounts are `reports/sonnet-run4.md` and `reports/haiku-run4.md`; what follows is what the
+files say, read before either report was, in the discipline `REVIEWER-BRIEF.md` asks for.
+
+| | Sonnet | Haiku |
+|---|---|---|
+| boards that load | 4 | 4 |
+| `map.xml` | 6.4–14.0 KB | 6.3–6.8 KB, all four within 450 bytes of each other |
+| themes bound | 3 · 3 · 2 · 3 | **0 · 0 · 0 · 0** |
+| props placed | 6 · 6 · 9 · 6 | **0 · 0 · 0 · 0** |
+| relief authored | 2 of 4 | 0 of 4 |
+| renders taken | 18 · 13 · 10 · 14 | **0** |
+| answers its brief's mode | 4 of 4 | 3 of 4 |
+
+**Sonnet built the two briefs nothing here had ever attempted.** `sonnet-compass` is the first four-team
+board in this repository: `rot_90`, four teams, four spawns, twelve wools, 14 KB of `map.xml`.
+`sonnet-caravanserai` is the first desert. `sonnet-gantry` carries four cores — two a team — and six
+hand-placed buildings, which is the grid its brief asked for and which no earlier board attempted.
+
+**Haiku's four are plan-level blueprints and its report says so.** They carry teams, spawns, objectives and
+an author over real region files, and nothing else: no theme registry, no prop, no relief, no picture. Every
+shape on all four names a theme like `t0` that the layout does not carry — which is how defect 4 in §8 was
+found. `haiku-wharf` answers a **capture** brief carrying no wool at all. The report lists every one of
+these under *what could not be done*, which is the whole distance travelled since the run that described two
+empty 245-byte shells as verified.
+
+### Two claims in Sonnet's report, checked
+
+**`GET /map/{slug}/traversability` is not in the tool documents' API tables — correct, and worth more than
+it was filed as.** The route exists and answers exactly what an author wants before an export. Measured:
+the API carries **66** `/map/{slug}` routes; `traversability` is mentioned in `docs/tools/` prose twelve
+times and appears in **no table**, and so do `buildability` and `symmetry`. Ten further path segments appear
+nowhere at all. Filed as `TC1`. **Verdict: unreachable** — the mechanism exists and the surface hid it, which
+is the most useful verdict a run can produce.
+
+**`room-styles/preview-snapshot?format=png&view=plan` renders blank for every style — mistaken, with a real
+finding under it.** The plan view works and draws the roof from directly above. It reads as one flat colour
+for Sonnet's styles because they are **flat-roofed**, which from above is one material — and two of them roof
+in a tone close to the sample ground, so the picture is grey on grey. My own hip-roofed count house answers
+three colours in concentric courses on the same route. **Verdict: mistaken.**
+
+What is true underneath it: for a flat-roofed building neither PNG view says much, and the two views that
+would — the isometric and the cutaway — are the two that cannot answer PNG, because both draw a block as its
+own shape rather than as a filled cell and have no raster to encode. That limit shipped with the fix in §8
+and is stated in `sketch.md`; an agent authoring flat-roofed blocks should read the section and expect the
+plan to be quiet.

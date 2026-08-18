@@ -51,10 +51,32 @@
       "rect": [
         -1,
         11,
-        3,
-        3
+        2,
+        2
       ],
       "surface": 11
+    },
+    {
+      "id": "wool-room-flank-w",
+      "role": "piece",
+      "rect": [
+        -8,
+        11,
+        7,
+        3
+      ],
+      "surface": 10
+    },
+    {
+      "id": "wool-room-flank-e",
+      "role": "piece",
+      "rect": [
+        1,
+        11,
+        7,
+        3
+      ],
+      "surface": 10
     },
     {
       "id": "spawn-apron",
@@ -117,8 +139,8 @@
         "id": "wool-1",
         "piece": "wool-room",
         "at": [
-          1.5,
-          1.5
+          1,
+          1
         ]
       }
     ]

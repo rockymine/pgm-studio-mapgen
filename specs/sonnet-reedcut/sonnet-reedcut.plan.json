@@ -1,0 +1,220 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Reedcut Levels"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 24,
+    "surface": 9,
+    "observerY": 50
+  },
+  "pieces": [
+    {
+      "id": "works-lo-w",
+      "role": "piece",
+      "rect": [
+        -9,
+        4,
+        5,
+        3
+      ],
+      "surface": 9
+    },
+    {
+      "id": "works-lo-n",
+      "role": "piece",
+      "rect": [
+        -4,
+        6,
+        2,
+        1
+      ],
+      "surface": 9
+    },
+    {
+      "id": "works-lo-e",
+      "role": "piece",
+      "rect": [
+        -2,
+        4,
+        5,
+        3
+      ],
+      "surface": 9
+    },
+    {
+      "id": "east-strand",
+      "role": "piece",
+      "rect": [
+        3,
+        4,
+        6,
+        3
+      ],
+      "surface": 10
+    },
+    {
+      "id": "works-yard",
+      "role": "piece",
+      "rect": [
+        -10,
+        7,
+        14,
+        3
+      ],
+      "surface": 10
+    },
+    {
+      "id": "west-spur",
+      "role": "piece",
+      "rect": [
+        -12,
+        7,
+        2,
+        3
+      ],
+      "surface": 10
+    },
+    {
+      "id": "leat-bench",
+      "role": "piece",
+      "rect": [
+        4,
+        7,
+        3,
+        2
+      ],
+      "surface": 11
+    },
+    {
+      "id": "wool-approach",
+      "role": "piece",
+      "rect": [
+        4,
+        9,
+        3,
+        3
+      ],
+      "surface": 11
+    },
+    {
+      "id": "moor",
+      "role": "piece",
+      "rect": [
+        -10,
+        10,
+        14,
+        2
+      ],
+      "surface": 11
+    },
+    {
+      "id": "wool-room",
+      "role": "wool-room",
+      "rect": [
+        4,
+        12,
+        3,
+        3
+      ],
+      "surface": 12
+    },
+    {
+      "id": "spawn-apron",
+      "role": "piece",
+      "rect": [
+        -4,
+        12,
+        7,
+        2
+      ],
+      "surface": 12
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        14,
+        4,
+        2
+      ],
+      "surface": 13
+    },
+    {
+      "id": "bar",
+      "role": "piece",
+      "rect": [
+        -8,
+        -1,
+        16,
+        2
+      ],
+      "surface": 9,
+      "mirrors": false
+    }
+  ],
+  "zones": [
+    {
+      "id": "cross",
+      "rect": [
+        -2,
+        1,
+        4,
+        3
+      ]
+    },
+    {
+      "id": "lane-east",
+      "rect": [
+        6,
+        1,
+        4,
+        3
+      ],
+      "kind": "water-lane"
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          1
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          1,
+          1
+        ]
+      }
+    ],
+    "wools": [
+      {
+        "id": "wool-1",
+        "piece": "wool-room",
+        "at": [
+          1.5,
+          1.5
+        ]
+      }
+    ]
+  },
+  "walls": [
+    {
+      "a": "wool-approach",
+      "b": "leat-bench",
+      "side": "wool-approach"
+    }
+  ]
+}

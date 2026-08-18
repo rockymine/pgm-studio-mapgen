@@ -147,18 +147,26 @@ deliverable and the boards are its evidence. All four build with **nothing decli
 | `opus5-siderite-bowl` | dtc | Opus 5 | an impact crater whose ejecta ring stands **behind** the bowl, so the defence looks down into its own goal and the attack arrives from below |
 | `opus5-hollowbank` | ctw · dtm | Opus 5 | a chalk ring-fort carrying **both** objective kinds — the wool in a keep off the enclosure, the beacon out on the inner rampart |
 
-### Sonnet run 4 · Haiku run 4 — the same four briefs each, from `MAP-BRIEFS.md`
+### Sonnet run 4 — four named briefs, and the two nobody had attempted
 
-Sonnet took §1 `caravanserai`, §2 `compass`, §7 `gantry` and §8 `reedcut`; Haiku took §3 `chancel`,
-§4 `ladder`, §5 `wharf` and §6 `winterfold`. `reports/sonnet-run4.md` and `reports/haiku-run4.md` are the
-two accounts.
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `sonnet-compass` | ctw | Sonnet | **the first four-team board here** — `rot_90`, four spawns, twelve wools, a walled yard around a centre nobody owns |
+| `sonnet-caravanserai` | dtm | Sonnet | **the first desert here** — a red-rock canyon with a walled caravan stop, `HousePresets.Desert` forked by proportion alone |
+| `sonnet-gantry` | dtc | Sonnet | an industrial yard: **two cores a team** on a raised deck and in a sunk pit, and six hand-placed buildings, no two the same size |
+| `sonnet-reedcut` | ctw | Sonnet | a worked peat lowland read by height rather than colour, with a water lane confirmed reaching `map.xml` |
 
-**Haiku's four load and are unfinished, and its report says so.** All four carry teams, spawns, objectives
-and an author over real region files — and none carries a theme registry, a placed prop, an authored relief
-or a single render. Every shape on them names a theme that does not exist, which is the silence
-`SketchLayoutCheck` was extended to report in the same session. `haiku-wharf` answers a **capture** brief
-with no wool on it. They are kept as what they are: plan-level blueprints, honestly labelled by the run that
-made them, which is the improvement over the run that once described two empty shells as verified.
+### Haiku run 4 — four blueprints, honestly labelled
+
+Haiku took §3 `chancel`, §4 `ladder`, §5 `wharf` and §6 `winterfold`. All four load — teams, spawns,
+objectives and an author over real region files — and **none carries a theme registry, a placed prop, an
+authored relief or a single render**. Every shape on all four names a theme the layout does not carry, which
+is the silence `SketchLayoutCheck` was extended to report in the same session and is how that defect was
+found. `haiku-wharf` answers a **capture** brief with no wool on it.
+
+They are kept as what they are: plan-level blueprints, and its own report lists every one of these under
+*what could not be done* — which is the whole distance travelled since the run that described two empty
+245-byte shells as verified. `reports/opus5-run4.md` §9 measures the three run-4 sets against each other.
 
 ### Grok run 1 — authored blind, built afterwards
 
