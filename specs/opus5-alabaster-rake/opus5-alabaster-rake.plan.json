@@ -1,0 +1,162 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Alabaster Rake"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 20,
+    "surface": 9,
+    "observerY": 60
+  },
+  "pieces": [
+    {
+      "id": "wash",
+      "role": "piece",
+      "rect": [
+        -5,
+        2,
+        10,
+        3
+      ],
+      "surface": 8
+    },
+    {
+      "id": "pan",
+      "role": "piece",
+      "rect": [
+        -6,
+        5,
+        11,
+        4
+      ],
+      "surface": 9
+    },
+    {
+      "id": "rake-shelf",
+      "role": "piece",
+      "rect": [
+        5,
+        7,
+        4,
+        2
+      ],
+      "surface": 11
+    },
+    {
+      "id": "mesa",
+      "role": "piece",
+      "rect": [
+        -7,
+        10,
+        14,
+        3
+      ],
+      "surface": 12
+    },
+    {
+      "id": "spawn-ramp",
+      "role": "piece",
+      "rect": [
+        -3,
+        13,
+        6,
+        2
+      ],
+      "surface": 13
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        15,
+        4,
+        3
+      ],
+      "surface": 14
+    },
+    {
+      "id": "brow-w",
+      "role": "piece",
+      "rect": [
+        -9,
+        9,
+        6,
+        1
+      ],
+      "surface": 10
+    },
+    {
+      "id": "brow-e",
+      "role": "piece",
+      "rect": [
+        -3,
+        9,
+        12,
+        1
+      ],
+      "surface": 11
+    },
+    {
+      "id": "pan-w",
+      "role": "piece",
+      "rect": [
+        -9,
+        5,
+        3,
+        4
+      ],
+      "surface": 9
+    }
+  ],
+  "zones": [
+    {
+      "id": "crossing",
+      "rect": [
+        -4,
+        -1,
+        8,
+        3
+      ]
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          2
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          1,
+          1
+        ]
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "rake-1",
+        "piece": "brow-e",
+        "at": [
+          4,
+          0.5
+        ],
+        "style": "column-plus",
+        "materials": "ender stone",
+        "float": 4,
+        "name": "Alabaster Rake"
+      }
+    ]
+  }
+}

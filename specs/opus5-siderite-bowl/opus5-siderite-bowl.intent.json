@@ -1,0 +1,178 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 20,
+ "spawns": [
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0,
+    "identity": {}
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 14,
+    "z": 95
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 85,
+     "maxX": 10,
+     "maxZ": 100
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 85,
+    "maxX": 10,
+    "maxZ": 100
+   },
+   "iron": [
+    {
+     "x": -5,
+     "y": 14,
+     "z": 90
+    }
+   ]
+  },
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1,
+    "identity": {}
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 14,
+    "z": -95
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -100,
+     "maxX": 10,
+     "maxZ": -85
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -100,
+    "maxX": 10,
+    "maxZ": -85
+   },
+   "iron": [
+    {
+     "x": 5,
+     "y": 14,
+     "z": -90
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 60,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -20,
+    "minZ": -5,
+    "maxX": 20,
+    "maxZ": 10
+   },
+   {
+    "minX": -20,
+    "minZ": -10,
+    "maxX": 20,
+    "maxZ": 5
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": [
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "core-1",
+    "image": 0,
+    "identity": {}
+   },
+   "owner": "red",
+   "name": "Siderite Core",
+   "anchor": {
+    "x": -5,
+    "y": 6,
+    "z": 53
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "core-1",
+    "image": 1,
+    "identity": {}
+   },
+   "owner": "blue",
+   "name": "Siderite Core",
+   "anchor": {
+    "x": 4,
+    "y": 6,
+    "z": -54
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  }
+ ],
+ "meta": {
+  "name": "Siderite Bowl",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": null
+}

@@ -1,0 +1,168 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Hollowbank"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 24,
+    "surface": 9,
+    "observerY": 60
+  },
+  "pieces": [
+    {
+      "id": "bank-outer",
+      "role": "piece",
+      "rect": [
+        -8,
+        3,
+        16,
+        3
+      ],
+      "surface": 11
+    },
+    {
+      "id": "ditch",
+      "role": "piece",
+      "rect": [
+        -9,
+        6,
+        18,
+        2
+      ],
+      "surface": 8
+    },
+    {
+      "id": "bank-inner",
+      "role": "piece",
+      "rect": [
+        -8,
+        8,
+        16,
+        2
+      ],
+      "surface": 12
+    },
+    {
+      "id": "enclosure",
+      "role": "piece",
+      "rect": [
+        -7,
+        10,
+        14,
+        3
+      ],
+      "surface": 13
+    },
+    {
+      "id": "wool-approach",
+      "role": "piece",
+      "rect": [
+        5,
+        13,
+        3,
+        2
+      ],
+      "surface": 13
+    },
+    {
+      "id": "wool-room",
+      "role": "wool-room",
+      "rect": [
+        5,
+        15,
+        3,
+        3
+      ],
+      "surface": 13
+    },
+    {
+      "id": "spawn-apron",
+      "role": "piece",
+      "rect": [
+        -5,
+        13,
+        9,
+        2
+      ],
+      "surface": 14
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        15,
+        4,
+        3
+      ],
+      "surface": 15
+    }
+  ],
+  "zones": [
+    {
+      "id": "crossing",
+      "rect": [
+        -4,
+        -2,
+        8,
+        5
+      ]
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          2
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          1,
+          1
+        ]
+      }
+    ],
+    "wools": [
+      {
+        "id": "wool-1",
+        "piece": "wool-room",
+        "at": [
+          1.5,
+          1.5
+        ]
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "beacon-1",
+        "piece": "bank-inner",
+        "at": [
+          8,
+          1
+        ],
+        "style": "pillar-3",
+        "materials": "gold block",
+        "float": 4,
+        "name": "Hollowbank Beacon"
+      }
+    ]
+  },
+  "walls": [
+    {
+      "a": "wool-approach",
+      "b": "enclosure",
+      "side": "wool-approach"
+    }
+  ]
+}

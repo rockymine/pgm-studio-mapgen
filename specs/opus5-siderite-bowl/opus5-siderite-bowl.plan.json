@@ -1,0 +1,186 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Siderite Bowl"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 20,
+    "surface": 9,
+    "observerY": 60
+  },
+  "pieces": [
+    {
+      "id": "outfield",
+      "role": "piece",
+      "rect": [
+        -6,
+        2,
+        12,
+        3
+      ],
+      "surface": 8
+    },
+    {
+      "id": "apron",
+      "role": "piece",
+      "rect": [
+        -8,
+        5,
+        15,
+        3
+      ],
+      "surface": 9
+    },
+    {
+      "id": "bowl",
+      "role": "piece",
+      "rect": [
+        -6,
+        8,
+        10,
+        3
+      ],
+      "surface": 6
+    },
+    {
+      "id": "bowl-ramp",
+      "role": "piece",
+      "rect": [
+        4,
+        8,
+        3,
+        3
+      ],
+      "surface": 8
+    },
+    {
+      "id": "rim-w",
+      "role": "piece",
+      "rect": [
+        -9,
+        11,
+        7,
+        2
+      ],
+      "surface": 13
+    },
+    {
+      "id": "breach",
+      "role": "piece",
+      "rect": [
+        -2,
+        11,
+        3,
+        2
+      ],
+      "surface": 10
+    },
+    {
+      "id": "rim-e",
+      "role": "piece",
+      "rect": [
+        1,
+        11,
+        8,
+        2
+      ],
+      "surface": 13
+    },
+    {
+      "id": "shoulder",
+      "role": "piece",
+      "rect": [
+        -7,
+        13,
+        14,
+        2
+      ],
+      "surface": 12
+    },
+    {
+      "id": "spawn-ramp",
+      "role": "piece",
+      "rect": [
+        -3,
+        15,
+        6,
+        2
+      ],
+      "surface": 13
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        17,
+        4,
+        3
+      ],
+      "surface": 14
+    },
+    {
+      "id": "apron-e",
+      "role": "piece",
+      "rect": [
+        7,
+        6,
+        2,
+        2
+      ],
+      "surface": 9
+    }
+  ],
+  "zones": [
+    {
+      "id": "crossing",
+      "rect": [
+        -4,
+        -1,
+        8,
+        3
+      ]
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          2
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          1,
+          1
+        ]
+      }
+    ],
+    "cores": [
+      {
+        "id": "core-1",
+        "piece": "bowl",
+        "at": [
+          5,
+          2.5
+        ],
+        "size": 5,
+        "height": 5,
+        "shell": 1,
+        "float": 6,
+        "leak": 5,
+        "name": "Siderite Core"
+      }
+    ]
+  }
+}
