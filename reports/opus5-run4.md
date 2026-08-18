@@ -236,16 +236,26 @@ Recorded, not filed as facts. This session had no human oracle.
 
 ---
 
-## 8. Three defects found and fixed in the studio this session
+## 8. Five defects found and fixed in the studio this session
 
 Each was hit while authoring, each is small, and each mislabelled a document fault as the studio's own or hid
-an answer an agent is told to look for.
+an answer an agent is told to look for. The last two were found by measuring another model's run rather than
+my own, which is worth saying: a board that looks built and is not is exactly what a silent gate produces.
 
 | # | Found | Checked | Verdict |
 |---|---|---|---|
 | 1 | a theme carrying a material with no `kind`, a `layered` with no `stack`, a `checker` with no `even`/`odd`, or a `teamTint` with no `neutral` answered **500 `RQ2` — "the fault is its own rather than the document's"** | `DeserializeMaterial` already translated the missing-discriminator `NotSupportedException` into a named `JsonException`; the *theme* and *style* readers did not, so a nested one escaped. The three patterns null-dereferenced at paint time, which is per column, so a whole request died. `flow.md`: *"A body that cannot be read is refused, never crashed"* | **missing** — **fixed**: the translation is written once and shared by the theme and style readers; the three records fall through the way `VoronoiMaterial` already did, so the reader's `unread` walk names the field that was written instead. All four now answer 400 by name |
 | 2 | `GET /map/{slug}/export` never shipped `region/dressing-report.json` | `MapExportEndpoint.BuildWorldZip` calls `DressingReportFile.Write` into the temp region dir and then adds only `provenance.json` to the archive. `tools/mapgen` writes into a real directory so it survives there; the HTTP path deleted it with the temp folder. The decline record is the only account an HTTP caller gets of a dropped prop | **missing** — **fixed**: both sidecars travel |
 | 3 | `/room-styles/preview`, `preview-snapshot`, `/roof-styles/`, `/storey-styles/`, `/porch-styles/preview` ignored `?format=png&view=` and answered SVG-in-JSON, dropping the query rather than refusing it | `PngAnswer` is already shared by the three terrain previews. `WorldViews.Plan`/`Section` were `SvgRaster.Raster` calls that could have been `CellRaster`s, which carry both encodings by construction — the type's own docstring says that is what it is for. The one preview family that draws a **building** was the one an agent could not open | **unreachable** — **fixed**: `Plan`/`Section` return a `CellRaster` and the string methods delegate; `?format=png&view=plan\|section` answers raw PNG and `isometric`/`cutaway` are refused by name, since both draw a block as its own shape and have no raster to encode |
+
+| 4 | A shape naming a theme the layout's registry does not carry produced **no warning at all**, on either write path | `SketchLayoutCheck` reports a shape kind nobody has, a mirror mode nobody has, an island listing a shape id the layout does not carry, and a relief keyed to an island that does not exist — a **theme** name matching nothing is the same class and was not in the list. Those cells silently take the map default, so the board looks built | **missing** — **fixed**: reported as `SK3`, once per name rather than once per shape, and the map default is checked the same way |
+| 5 | `PUT …/sketch/from-plan` answered `{ok, orphaned}` and ran no document gate, while the plain `PUT …/sketch` ran one and returned its `warnings` | The merge path is the road every headless driver takes — all six of them, and `tools/mapgen` besides. So the one road nothing was reported on was the only road anybody drove | **missing** — **fixed**: the same gate now runs over the **merged** document, which is the one actually stored, and its complaints ride back with `orphaned` |
+
+**How fault 4 was found is the part worth keeping.** Not by reading the code — by measuring the delegated
+Haiku run's four boards against its own report. Every shape on all four names a theme like `t0`, and the
+layout carries no `themes` registry at all. The run believed its boards were themed; the pipeline had every
+opportunity to say otherwise and said nothing, on both write paths and on the columns read. Four boards
+shipped unpainted for want of one complaint.
 
 And one **documentation** defect left for the author because its resolution is a design call, not a fix:
 `capabilities.md` describes a shape erected above the build cap as an obstacle nobody bridges, and the
