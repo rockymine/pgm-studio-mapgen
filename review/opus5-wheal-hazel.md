@@ -38,6 +38,41 @@ the crossing is a choice of two.
 
 Traversability: **10 037 navigable columns, 466 bridged over void, 2 components, 0 isolated.**
 
+## The bar is sixty per cent dead ground, and every gate this board passed said nothing about it
+
+Coverage reads **3 269 of 9 798 ground cells dead — a 33.4% dead share**, and two of the named patches are
+the bar itself: 254 cells at `(−30, −1)` and 254 at `(28, −1)`. Measured over the bar's own rect, **488 of
+its 811 cells are dead: 60.2%.**
+
+The cause is a mismatch this board states in two numbers that were never compared. The bar runs
+`x −40..40` — eighty blocks. The build zone that crosses it runs `x −10..10` — twenty. Every journey over
+the bar is a bridge across that twenty-block window, so the corridor claims the window plus the six-block
+margin either side, and everything past `x ±16` is walkable ground no route touches. Counted in ten-block
+bands, the profile is exact:
+
+| band | dead cells of 100 |
+|---|---|
+| `x −10..10` (inside the build zone) | 0 |
+| `x ±10..20` (the corridor margin reaches part-way) | 40 |
+| `x ±20..30` | 100 |
+| `x ±30..40` | 100 |
+
+**The bar overhangs the build zone by thirty blocks on each side and the margin rescues six of them.** The
+outer twenty-four are dead by construction, not by accident — no route can reach them because no journey
+ends there.
+
+The water lane does not rescue the ends, which is what the design assumed. `x 30..40` is the lane's landing
+and it reads **100% dead**: coverage does not route through a lane, because a lane is deliberately outside
+the build slice and therefore outside the navigable set. Even granting it, the route it opens is redundant —
+everything the east lane reaches from the bar is already reachable from the central crossing by walking the
+works floor, so the bar's arms exist to serve a crossing that duplicates one thirty blocks away. **The bar's
+length and the lane's position justify each other and neither is justified by a journey.**
+
+What this board's gates checked was whether ground is *reachable*: `CT12` passed on a 15-block strait,
+traversability passed with 0 isolated and 2 components, the goal ratios passed. Not one of them asks whether
+ground is *used*, and the measure that does — `GET /map/{slug}/coverage` — was never called, because the
+driver did not call it. It does now.
+
 ## The leat is a causeway, and calling it an aqueduct would have been wrong
 
 It was authored as a `path` **shape** — a shape type the Draw dock cannot draw and no board here had ever

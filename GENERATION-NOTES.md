@@ -385,6 +385,7 @@ POST /api/map/{slug}/sketch/finish
 PUT  /api/map/{slug}/intent/from-plan <compiled intent>
 POST /api/map/{slug}/sketch/columns <layout>        # the DR-* declines — AFTER the intent (§17)
 PATCH /api/map/{slug}/metadata {name, authors}      # AFTER the intent, or the projection drops it (§17)
+GET  /api/map/{slug}/coverage                       # where the board is LIVED ON, not merely reachable (§18)
 GET  /api/map/{slug}/export                         -> the world, into a fresh directory
 ```
 
@@ -578,3 +579,42 @@ reached an HTTP caller; and the five `*-styles/preview*` routes ignored `?format
 preview family that draws a **building** — the picture `AD-S6` and the reviewer's C14 both ask to be looked at
 — answered SVG-in-JSON only. All three are fixed; `preview-snapshot?format=png&view=plan|section` now answers
 raw PNG and refuses `isometric`/`cutaway` by name.
+
+
+## 18. Reachable is not used, and every gate before coverage measures the first one
+
+`CT12` on the strait, the traversability components, the goal ratios, the island symmetry error — every
+gate a board passes before it exports asks whether ground **can be got to**. None asks whether any journey
+**goes there**. A board can therefore pass all of them while carrying whole landforms no player has a reason
+to walk, and run 4's own `wheal-hazel` did exactly that.
+
+`GET /map/{slug}/coverage` is the read that answers the other question. It walks a shortest route between
+**every pair** of waypoints — spawns and goals, both directions, because defenders travel to defend and
+attackers rotate goal to goal — widens each route by six blocks, gives each waypoint a ten-block ring, and
+classes what is left: ground near a placed prop is **decorated**, ground near nothing is **dead**. Dead
+ground is clustered into patches and each is reported with its area and centroid, which is what makes it
+actionable rather than a percentage.
+
+Run 4's two boards read:
+
+| board | ground | reached | decorated | dead | dead share |
+|---|---|---|---|---|---|
+| `hollowbank` | 10 940 | 6 696 | 1 682 | 2 562 | **23.4%** |
+| `wheal-hazel` | 9 798 | 5 065 | 1 464 | 3 269 | **33.4%** |
+
+`wheal-hazel`'s extra ten points have a single named cause, and it is a shape mismatch that no other read
+could have seen. Its neutral bar spans `x −40..40`; the build zone that crosses it spans `x −10..10`. Every
+journey over the bar is a bridge through that twenty-block window, so the corridor claims the window plus
+its six-block margin and **488 of the bar's 811 cells — 60.2% — are dead**, reported as two 254-cell patches
+at `(−30, −1)` and `(28, −1)`. Counted in bands: zero dead inside the build zone, forty per hundred in the
+`x ±10..20` band the margin half-reaches, and **one hundred per hundred beyond `x ±20`**.
+
+The general shape of the mistake: **a mid-board stepping stone is used only across the width of the build
+zone that reaches it.** Ground it extends past that window is dead by construction, and the corridor margin
+buys back six blocks and no more. A water lane does not buy back any — a lane sits outside the build slice
+and therefore outside the navigable set, so no route is walked through one and the ground it lands on reads
+dead like the rest.
+
+`drive.py` calls this after the metadata patch and before the export, and prints the shares plus the five
+largest patches with their coordinates. It is a **measurement, not a gate** — nothing refuses on it — which
+is exactly why a driver that does not print it lets a board ship with a third of its ground unused.

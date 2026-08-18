@@ -46,6 +46,13 @@ every finding the pipeline raises, with its rule id**, at the four places one ca
 4. **at the dressing** — `POST …/sketch/columns`'s `DR-*` declines, read **after** the intent is stored,
    because `DR-KEEP` needs the spawn doors and the goal rings the intent carries.
 
+Then one read that raises no finding at all and is printed anyway: **`GET …/coverage`**, the reached /
+decorated / dead shares and the five largest dead patches with their coordinates. Every gate in the four
+places above asks whether ground is *reachable*; this is the only read that asks whether any journey
+**goes there**, and a board can pass all four while carrying a third of its ground unused
+(`GENERATION-NOTES.md` §18 — run 4's own `wheal-hazel` did). It refuses nothing, so it is on the driver to
+put the number where an author sees it.
+
 A refusal stops the run rather than being skipped. **A refusal is a fault to fix, not a step to work around.**
 
 Two things it deliberately does not do. It never computes a placement, a clearance or a sampler — that is the

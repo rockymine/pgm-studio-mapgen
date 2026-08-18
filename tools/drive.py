@@ -228,6 +228,23 @@ def main():
         report(columns)
     else:
         print("    nothing declined")
+    # ── where the board is actually lived on ─────────────────────────────────────────────────
+    # The last read, and the one no earlier driver took. Every gate up to this point asks whether
+    # ground is *reachable* — the strait width, the traversability components, the goal ratios — and
+    # a board can pass all of them while carrying whole regions no journey crosses. Coverage walks a
+    # route between every pair of waypoints and classes the rest: ground within reach of a route or
+    # an objective is `reached`, ground near a prop is `decorated`, and everything else is `dead`.
+    # A named dead patch is a landform that has no reason to exist at the size it is.
+    print("== where the ground is lived on")
+    _, coverage = call("GET", f"/map/{slug}/coverage", fatal=False)
+    if coverage.get("haveRoutes"):
+        print(f"    reached {coverage['reachedCells']}  decorated {coverage['decoratedCells']}  "
+              f"dead {coverage['deadCells']}  of {coverage['groundCells']}  "
+              f"= {coverage['deadShare'] * 100:.1f}% dead")
+        for patch in (coverage.get("deadPatches") or [])[:5]:
+            print(f"    dead patch {patch['area']:>5} cells at "
+                  f"({patch['centroidX']}, {patch['centroidZ']}), "
+                  f"{patch['nearestReachedBlocks']} blocks from used ground")
     _, zip_bytes = call("GET", f"/map/{slug}/export", raw=True)
     if out:
         if os.path.isdir(out):
