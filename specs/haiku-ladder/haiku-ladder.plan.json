@@ -1,0 +1,23 @@
+{
+  "plan": 1,
+  "meta": {"name": "Ochre Ladder"},
+  "globals": {"cell": 5, "symmetry": "rot_180", "maxPlayers": 16, "surface": 8, "observerY": 50},
+  "pieces": [
+    {"id": "spawn", "role": "spawn", "rect": [-2, 14, 4, 3], "surface": 8},
+    {"id": "tier5", "role": "piece", "rect": [-4, 11, 8, 3], "surface": 14},
+    {"id": "tier4", "role": "piece", "rect": [-5, 8, 10, 3], "surface": 12},
+    {"id": "tier3", "role": "piece", "rect": [-6, 5, 12, 3], "surface": 10},
+    {"id": "tier2", "role": "piece", "rect": [-7, 2, 14, 3], "surface": 8},
+    {"id": "tier1", "role": "piece", "rect": [-8, -2, 16, 4], "surface": 6}
+  ],
+  "zones": [],
+  "placements": {
+    "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [1, 1], "facing": "front"}],
+    "wools": [],
+    "iron": [{"id": "iron-1", "piece": "spawn", "at": [2, 1]}],
+    "destroyables": [{"id": "destroy-1", "piece": "tier3", "at": [3, 1], "style": "cube-3", "materials": "obsidian", "float": 1, "name": "Pyre"}],
+    "cores": [{"id": "core-1", "piece": "tier5", "at": [2, 1], "materials": "obsidian", "float": 1, "leak": 4, "name": "Ore"}]
+  },
+  "walls": [],
+  "boxes": []
+}

@@ -1,0 +1,216 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0,
+    "identity": {}
+   },
+   "team": "red",
+   "point": {
+    "x": -5,
+    "y": 11,
+    "z": 65
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 60,
+     "maxX": 10,
+     "maxZ": 80
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 60,
+    "maxX": 10,
+    "maxZ": 80
+   },
+   "iron": [
+    {
+     "x": 0,
+     "y": 11,
+     "z": 70
+    }
+   ]
+  },
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1,
+    "identity": {}
+   },
+   "team": "blue",
+   "point": {
+    "x": 5,
+    "y": 11,
+    "z": -65
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -80,
+     "maxX": 10,
+     "maxZ": -60
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -80,
+    "maxX": 10,
+    "maxZ": -60
+   },
+   "iron": [
+    {
+     "x": 0,
+     "y": 11,
+     "z": -70
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 50,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": 30,
+    "minZ": -10,
+    "maxX": 70,
+    "maxZ": 10
+   },
+   {
+    "minX": -70,
+    "minZ": -10,
+    "maxX": -30,
+    "maxZ": 10
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument-d",
+    "image": 0,
+    "identity": {}
+   },
+   "owner": "red",
+   "name": "Monument",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -10,
+    "y": 11,
+    "z": 50
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument-d",
+    "image": 1,
+    "identity": {}
+   },
+   "owner": "blue",
+   "name": "Monument",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 9,
+    "y": 11,
+    "z": -51
+   },
+   "float": 2,
+   "box": null
+  }
+ ],
+ "cores": [
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "monument-c",
+    "image": 0,
+    "identity": {}
+   },
+   "owner": "red",
+   "name": "Heart",
+   "anchor": {
+    "x": 10,
+    "y": 11,
+    "z": -50
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 3,
+   "leak": 5,
+   "box": null,
+   "digDepth": 2
+  },
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "monument-c",
+    "image": 1,
+    "identity": {}
+   },
+   "owner": "blue",
+   "name": "Heart",
+   "anchor": {
+    "x": -11,
+    "y": 11,
+    "z": 49
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 3,
+   "leak": 5,
+   "box": null,
+   "digDepth": 2
+  }
+ ],
+ "meta": {
+  "name": "Sunk Chancel",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

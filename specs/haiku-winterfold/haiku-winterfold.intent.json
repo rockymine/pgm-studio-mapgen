@@ -1,0 +1,203 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0,
+    "identity": {}
+   },
+   "team": "red",
+   "point": {
+    "x": -5,
+    "y": 18,
+    "z": 95
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 90,
+     "maxX": 10,
+     "maxZ": 105
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 90,
+    "maxX": 10,
+    "maxZ": 105
+   },
+   "iron": [
+    {
+     "x": 0,
+     "y": 18,
+     "z": 95
+    }
+   ]
+  },
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1,
+    "identity": {}
+   },
+   "team": "blue",
+   "point": {
+    "x": 5,
+    "y": 18,
+    "z": -95
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -105,
+     "maxX": 10,
+     "maxZ": -90
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -105,
+    "maxX": 10,
+    "maxZ": -90
+   },
+   "iron": [
+    {
+     "x": 0,
+     "y": 18,
+     "z": -95
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 60,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument-d",
+    "image": 0,
+    "identity": {}
+   },
+   "owner": "red",
+   "name": "Eye",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -10,
+    "y": 18,
+    "z": 50
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument-d",
+    "image": 1,
+    "identity": {}
+   },
+   "owner": "blue",
+   "name": "Eye",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 9,
+    "y": 18,
+    "z": -51
+   },
+   "float": 2,
+   "box": null
+  }
+ ],
+ "cores": [
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "monument-c",
+    "image": 0,
+    "identity": {}
+   },
+   "owner": "red",
+   "name": "Heart",
+   "anchor": {
+    "x": 10,
+    "y": 18,
+    "z": -50
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 2,
+   "leak": 6,
+   "box": null,
+   "digDepth": 4
+  },
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "monument-c",
+    "image": 1,
+    "identity": {}
+   },
+   "owner": "blue",
+   "name": "Heart",
+   "anchor": {
+    "x": -11,
+    "y": 18,
+    "z": 49
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 2,
+   "leak": 6,
+   "box": null,
+   "digDepth": 4
+  }
+ ],
+ "meta": {
+  "name": "Winterfold",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

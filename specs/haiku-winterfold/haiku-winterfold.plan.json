@@ -1,0 +1,21 @@
+{
+  "plan": 1,
+  "meta": {"name": "Winterfold"},
+  "globals": {"cell": 5, "symmetry": "rot_180", "maxPlayers": 16, "surface": 18, "observerY": 60},
+  "pieces": [
+    {"id": "spawn", "role": "spawn", "rect": [-2, 18, 4, 3], "surface": 18},
+    {"id": "field-north", "role": "piece", "rect": [-5, 12, 10, 6], "surface": 18},
+    {"id": "rise", "role": "piece", "rect": [-8, 0, 16, 12], "surface": 22},
+    {"id": "base", "role": "piece", "rect": [-9, -18, 18, 18], "surface": 8}
+  ],
+  "zones": [],
+  "placements": {
+    "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [1, 1], "facing": "front"}],
+    "wools": [],
+    "iron": [{"id": "iron-1", "piece": "spawn", "at": [2, 1]}],
+    "destroyables": [{"id": "monument-d", "piece": "", "at": [-2, 10], "style": "cube-3", "materials": "obsidian", "float": 2, "name": "Eye"}],
+    "cores": [{"id": "monument-c", "piece": "", "at": [2, -10], "materials": "obsidian", "float": 2, "leak": 6, "name": "Heart"}]
+  },
+  "walls": [],
+  "boxes": []
+}

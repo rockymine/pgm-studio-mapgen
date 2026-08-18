@@ -1,0 +1,133 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Four Winds Compound"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_90",
+    "maxPlayers": 24,
+    "surface": 9,
+    "observerY": 50
+  },
+  "pieces": [
+    {
+      "id": "plaza",
+      "role": "piece",
+      "rect": [
+        -1,
+        -1,
+        2,
+        2
+      ],
+      "surface": 9,
+      "mirrors": false
+    },
+    {
+      "id": "hub",
+      "role": "piece",
+      "rect": [
+        3,
+        3,
+        14,
+        6
+      ],
+      "surface": 9
+    },
+    {
+      "id": "wool-approach",
+      "role": "piece",
+      "rect": [
+        7,
+        9,
+        3,
+        3
+      ],
+      "surface": 10
+    },
+    {
+      "id": "wool-room",
+      "role": "wool-room",
+      "rect": [
+        7,
+        12,
+        3,
+        3
+      ],
+      "surface": 11
+    },
+    {
+      "id": "spawn-apron",
+      "role": "piece",
+      "rect": [
+        3,
+        15,
+        14,
+        1
+      ],
+      "surface": 12
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        7,
+        16,
+        4,
+        2
+      ],
+      "surface": 13
+    }
+  ],
+  "zones": [
+    {
+      "id": "plaza-link",
+      "rect": [
+        1,
+        1,
+        2,
+        2
+      ]
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          1
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          1,
+          1
+        ]
+      }
+    ],
+    "wools": [
+      {
+        "id": "wool-1",
+        "piece": "wool-room",
+        "at": [
+          1.5,
+          1.5
+        ]
+      }
+    ]
+  },
+  "walls": [
+    {
+      "a": "hub",
+      "b": "wool-approach",
+      "side": "wool-approach"
+    }
+  ]
+}

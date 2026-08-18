@@ -1,0 +1,203 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0,
+    "identity": {}
+   },
+   "team": "red",
+   "point": {
+    "x": -5,
+    "y": 8,
+    "z": 75
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 70,
+     "maxX": 10,
+     "maxZ": 85
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 70,
+    "maxX": 10,
+    "maxZ": 85
+   },
+   "iron": [
+    {
+     "x": 0,
+     "y": 8,
+     "z": 75
+    }
+   ]
+  },
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1,
+    "identity": {}
+   },
+   "team": "blue",
+   "point": {
+    "x": 5,
+    "y": 8,
+    "z": -75
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -85,
+     "maxX": 10,
+     "maxZ": -70
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -85,
+    "maxX": 10,
+    "maxZ": -70
+   },
+   "iron": [
+    {
+     "x": 0,
+     "y": 8,
+     "z": -75
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 50,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroy-1",
+    "image": 0,
+    "identity": {}
+   },
+   "owner": "red",
+   "name": "Pyre",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -15,
+    "y": 10,
+    "z": 30
+   },
+   "float": 1,
+   "box": null
+  },
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroy-1",
+    "image": 1,
+    "identity": {}
+   },
+   "owner": "blue",
+   "name": "Pyre",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 14,
+    "y": 10,
+    "z": -31
+   },
+   "float": 1,
+   "box": null
+  }
+ ],
+ "cores": [
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "core-1",
+    "image": 0,
+    "identity": {}
+   },
+   "owner": "red",
+   "name": "Ore",
+   "anchor": {
+    "x": -10,
+    "y": 14,
+    "z": 60
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 1,
+   "leak": 4,
+   "box": null,
+   "digDepth": 3
+  },
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "core-1",
+    "image": 1,
+    "identity": {}
+   },
+   "owner": "blue",
+   "name": "Ore",
+   "anchor": {
+    "x": 9,
+    "y": 14,
+    "z": -61
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 1,
+   "leak": 4,
+   "box": null,
+   "digDepth": 3
+  }
+ ],
+ "meta": {
+  "name": "Ochre Ladder",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

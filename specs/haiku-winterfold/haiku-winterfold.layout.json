@@ -1,0 +1,248 @@
+{
+ "setup": {
+  "mirror_mode": "rot_180",
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "bbox": {
+   "min_x": -50,
+   "max_x": 50,
+   "min_z": -110,
+   "max_z": 110
+  }
+ },
+ "layout": {
+  "shapes": [
+   {
+    "id": "s0",
+    "type": "polygon",
+    "operation": "add",
+    "override": false,
+    "min_x": null,
+    "min_z": null,
+    "max_x": null,
+    "max_z": null,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": [
+     [
+      -45,
+      -90
+     ],
+     [
+      45,
+      -90
+     ],
+     [
+      45,
+      0
+     ],
+     [
+      -45,
+      0
+     ]
+    ],
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": null,
+    "base_height": 8,
+    "anchor_heights": null,
+    "floor": null,
+    "role": null,
+    "intentRef": null,
+    "color": null,
+    "height_authored": null,
+    "theme": "t0"
+   },
+   {
+    "id": "s1",
+    "type": "polygon",
+    "operation": "add",
+    "override": false,
+    "min_x": null,
+    "min_z": null,
+    "max_x": null,
+    "max_z": null,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": [
+     [
+      -25,
+      60
+     ],
+     [
+      25,
+      60
+     ],
+     [
+      25,
+      90
+     ],
+     [
+      10,
+      90
+     ],
+     [
+      10,
+      105
+     ],
+     [
+      -10,
+      105
+     ],
+     [
+      -10,
+      90
+     ],
+     [
+      -25,
+      90
+     ]
+    ],
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": null,
+    "base_height": 18,
+    "anchor_heights": null,
+    "floor": null,
+    "role": null,
+    "intentRef": null,
+    "color": null,
+    "height_authored": null,
+    "theme": "t1"
+   },
+   {
+    "id": "s2",
+    "type": "polygon",
+    "operation": "add",
+    "override": false,
+    "min_x": null,
+    "min_z": null,
+    "max_x": null,
+    "max_z": null,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": [
+     [
+      -40,
+      0
+     ],
+     [
+      40,
+      0
+     ],
+     [
+      40,
+      60
+     ],
+     [
+      -40,
+      60
+     ]
+    ],
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": null,
+    "base_height": 22,
+    "anchor_heights": null,
+    "floor": null,
+    "role": null,
+    "intentRef": null,
+    "color": null,
+    "height_authored": null,
+    "theme": "t2"
+   },
+   {
+    "id": "spawn-red",
+    "type": "rectangle",
+    "operation": "add",
+    "override": false,
+    "min_x": -10,
+    "min_z": 90,
+    "max_x": 10,
+    "max_z": 105,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": null,
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": "hold",
+    "base_height": 18,
+    "anchor_heights": null,
+    "floor": null,
+    "role": "spawn",
+    "intentRef": "red",
+    "color": "red",
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "spawn-blue",
+    "type": "rectangle",
+    "operation": "add",
+    "override": false,
+    "min_x": -10,
+    "min_z": -105,
+    "max_x": 10,
+    "max_z": -90,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": null,
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": null,
+    "base_height": null,
+    "anchor_heights": null,
+    "floor": null,
+    "role": "spawn",
+    "intentRef": "blue",
+    "color": "blue",
+    "height_authored": null,
+    "theme": null
+   }
+  ],
+  "islands": [
+   {
+    "id": "team",
+    "name": "Team island",
+    "mirrors": true,
+    "shapeIds": [
+     "s0",
+     "s1",
+     "s2"
+    ]
+   }
+  ]
+ },
+ "layers": null,
+ "themes": null,
+ "mapTheme": null,
+ "roomStyles": {
+  "spawn": 1
+ },
+ "dressing": {
+  "props": []
+ },
+ "relief": null
+}

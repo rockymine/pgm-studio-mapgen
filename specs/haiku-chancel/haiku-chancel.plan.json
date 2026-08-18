@@ -1,0 +1,23 @@
+{
+  "plan": 1,
+  "meta": {"name": "Sunk Chancel"},
+  "globals": {"cell": 5, "symmetry": "rot_180", "maxPlayers": 16, "surface": 11, "observerY": 50},
+  "pieces": [
+    {"id": "reach", "role": "piece", "rect": [-10, -8, 20, 16], "surface": 11},
+    {"id": "spawn", "role": "spawn", "rect": [-2, 12, 4, 4], "surface": 11},
+    {"id": "back", "role": "piece", "rect": [-3, 8, 6, 4], "surface": 11}
+  ],
+  "zones": [
+    {"id": "void-east", "rect": [6, -2, 8, 4]},
+    {"id": "void-west", "rect": [-14, -2, 8, 4]}
+  ],
+  "placements": {
+    "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [1, 1], "facing": "front"}],
+    "wools": [],
+    "iron": [{"id": "iron-1", "piece": "spawn", "at": [2, 2]}],
+    "destroyables": [{"id": "monument-d", "piece": "", "at": [-2, 10], "style": "cube-3", "materials": "obsidian", "float": 2, "name": "Monument"}],
+    "cores": [{"id": "monument-c", "piece": "", "at": [2, -10], "materials": "obsidian", "float": 3, "leak": 5, "name": "Heart"}]
+  },
+  "walls": [],
+  "boxes": []
+}
