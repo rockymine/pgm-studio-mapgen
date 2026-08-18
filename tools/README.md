@@ -32,6 +32,25 @@ actually posted — so a review reads what was built rather than what was asked 
 | `authors` | `["Opus 5"]`, or `[{"name": …, "uuid": …, "role": …, "contribution": …}]`. PGM takes a person as an **account or a pseudonym**: a bare name writes `<author>Opus 5</author>`, a uuid writes `<author uuid="…"/>` with the name as a sibling comment, and a pseudonym may still carry a `contribution` |
 | `voidEnforcement` | `true` patches `intent.build.voidEnforcement`, with `voidExclusions` for the rects to spare |
 
+### The grid, before the plan is posted
+
+```bash
+curl -s "$PGM_STUDIO_API/map/<slug>/plan/ascii?every=2"
+```
+
+`text/plain`, one character per proxy cell, with a key. It is the cheapest check there is and the only render
+a caller with no image reader can act on. A plan is a list of rectangles measured in cells and most of what
+goes wrong with one is a **relation between two of them**; a rendered world cannot show that, and a grid puts
+them on the same rows. `?every=N` draws one character per N cells for a board wider than a terminal.
+
+```
+   -1 | MMMMMMMMMMMMMMMM |   M the neutral bar — sixteen cells
+    0 | MMMMMMMMMMMMMMMM |
+    1 | NNNN     OOOO    |   N the build zone that reaches it — four
+```
+
+`GET /plans/{id}/ascii` is the same render for a candidate in the generator pool, by id rather than slug.
+
 ### What it prints, and why that is the point
 
 It composes nothing and validates nothing. What it does that the six drivers before it did not is **print

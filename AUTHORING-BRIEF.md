@@ -172,6 +172,15 @@ Each exists because breaking it is what produced the mess the last run was clean
 - **An image is a check, not a source of meaning.** A render answers *whether* what you authored came out; the
   document underneath answers *what it is*. The plan render colours by **role** — blue is a build zone or a
   water lane, never water.
+- **A picture shows what a board looks like; a grid shows what it is made of.** `GET /api/map/{slug}/plan/ascii`
+  answers the plan as `text/plain`, one character per proxy cell, with a key — terrain lettered per piece,
+  a build zone `+`, a water lane `~`, an enclosed void `o`, open void a space, markers overprinting. Add
+  `?every=N` for a board wider than a terminal. Read it **before the plan is posted**, not after a world is
+  built: a plan is a list of rectangles and most of what goes wrong with one is a *relation between two of
+  them* — a landform wider than the band that reaches it, a wall on the only throat, a room whose door opens
+  onto its own apron. A top-down of the built world cannot show a relation between two rectangles, because by
+  then they are terrain. This is the render that caught an eighty-block neutral bar crossing a twenty-block
+  build zone, sixteen cells against four, on one row against another.
 - **A gameplay conclusion is not derived from a measurement.** This session has **no human oracle**, which is
   deliberate. When you hit a question about how a map *plays* that `approaches.md` does not settle: make your
   best judgement, **build it**, and **record the question explicitly** in your report as an open question
