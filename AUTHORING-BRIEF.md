@@ -1,10 +1,10 @@
-# Authoring brief — run 3
+# Authoring brief
 
-You are authoring PGM maps by driving the pgm-studio system directly. Three runs have done this before you and
-produced nineteen loadable boards; the author has now reviewed twelve of them in depth, and this brief is what
-that review changed.
+You are authoring PGM maps by driving the pgm-studio system directly. Several runs have done this before you.
+`README.md` lists what each produced and `reports/` carries each one's own account; read the most recent
+before you start, because the errata it measured is what will save you build cycles.
 
-**Two things are different from every previous run, and they are the point of this one.**
+**Two things about this apparatus are worth knowing before anything else.**
 
 **You are given art direction.** The last three runs were asked for "a map of your own design" and produced,
 three times over, the same map: a roughly square board, one street of identical houses behind the spawn, a
@@ -28,6 +28,41 @@ page it was quoting from.
 
 ---
 
+## The loop, and the two calls whose order is load-bearing
+
+**Drive it with `tools/drive.py`**, which `tools/README.md` documents. It takes two authored files —
+`specs/<slug>/<slug>.plan.json` and `<slug>.finish.json` — and prints **every finding the pipeline raises,
+with its rule id**, at the four places one can appear. Six earlier drivers each read the status code and
+threw the findings away, which is why the same declines were re-discovered by hand every run.
+
+```
+POST  /plan/evaluate   <plan>      score, valid, the hard/soft terms, the WHOLE lint table — no map row
+POST  /plan/inspect    <plan>      goalDistances (GO1's 3.0–4.0), islandGaps (CT12's 15–40), the wall rects
+POST  /plan  ·  PUT /map/{slug}/plan
+POST  /plan/compile    <plan>      → {layout, intent}. Read the SHAPE IDS here and key the finish on them
+      ── patch the compiled layout: themes, relief_scope, controls, addShapes, relief, rooms, dressing ──
+PUT   /map/{slug}/sketch/from-plan          → {ok, orphaned, warnings}
+POST  /map/{slug}/sketch/relief/read        cells, low, high, symmetry error, per island
+POST  /map/{slug}/sketch/finish
+PUT   /map/{slug}/intent/from-plan
+POST  /map/{slug}/sketch/columns            the DR-* declines        ← AFTER the intent
+PATCH /map/{slug}/metadata {name, authors}                            ← AFTER the intent
+GET   /map/{slug}/export
+```
+
+**Both of those last two come after the intent, and neither is obvious.** `DR-KEEP` reads the spawn doors'
+approaches and the goal rings, which come off the intent — asked earlier, `sketch/columns` answers a shorter
+list. And storing an intent **projects the map document from the intent's own `meta`**, whose authors a
+compiled intent leaves empty, so a name PATCHed earlier is overwritten. PGM's author contract is a **uuid**:
+`{"uuid": …, "name": "…", "role": "author"}`; a bare string is dropped without a word.
+
+**Two gates are heard for the first time at the export, at 409, after the whole world is built.** `OB17` —
+a goal overhanging void, in a spawn, or in a wool room — and `OB19` — a tree, boulder or building inside a
+goal's clearance, which is a **10-block square about the anchor, tested against a footprint plus its eaves
+and against every orbit image**. Nothing earlier predicts either. Compute `OB19`'s box and keep it empty, and
+cut the holes before placing the goal, or budget a build cycle each (`RP4` in the studio is the pre-flight
+that does not exist yet).
+
 ## Where things are
 
 | Thing | Where |
@@ -37,7 +72,7 @@ page it was quoting from.
 | Where your maps go | `/home/user/pgm-studio-mapgen` |
 | The art direction, the briefs, the reviewer | `ART-DIRECTION.md` · `MAP-BRIEFS.md` · `REVIEWER-BRIEF.md` |
 | The errata an author needs beside the docs | `GENERATION-NOTES.md` |
-| Nineteen boards, their specs and their reviews | `maps/` · `specs/` · `review/` |
+| Every board, its specs and its review | `maps/` · `specs/` · `review/` |
 | Hand-authored examples by the repo's author | `/home/user/pgm-studio/tools/seeds/ruediger.{plan,layout,intent}.json` |
 
 `dotnet` is at `/usr/bin/dotnet`. MariaDB is running and migrated. Run long `dotnet` calls as **background**
@@ -58,23 +93,26 @@ their context.
    report before authoring**.
 4. **`REVIEWER-BRIEF.md`** — the checklist your board will be measured against. Read it as the specification
    it is; a rule you know about before you build is a fault you do not ship.
-5. **`GENERATION-NOTES.md`** — the traps, each of which cost an earlier run a build cycle.
-6. **`docs/tools/flow.md`** — the four levels a map is described at (plan → layout → intent → world), which
+5. **`GENERATION-NOTES.md`** — the traps, each of which cost an earlier run a build cycle. **§17 is the
+   most recent and the densest**: the ordering above, `OB19`'s real box, the six material field names a guess
+   gets wrong, and why an erected shape cannot be an unbridgeable wall.
+6. **`tools/README.md`** — the one driver, and what its two files carry.
+7. **`docs/tools/flow.md`** — the four levels a map is described at (plan → layout → intent → world), which
    tool owns which, and the five hand-offs. This is the map over everything else.
-7. **`docs/tools/capabilities.md`** — what the system can be *asked* for at each stage. Read the section on
+8. **`docs/tools/capabilities.md`** — what the system can be *asked* for at each stage. Read the section on
    **set algebra and void** especially closely: a `subtract` removes ground entirely and is the instrument for
    cutting a channel; **no relief mark of any kind cuts a hole.**
-8. **`docs/tools/plan.md`** — including *"Driving it without the UI"*, which a previous agent called the single
+9. **`docs/tools/plan.md`** — including *"Driving it without the UI"*, which a previous agent called the single
    most useful page in the repository.
-9. **`docs/tools/sketch.md`** — the ground: shapes, heights, relief, paint, dressing. Dressing is **authored,
+10. **`docs/tools/sketch.md`** — the ground: shapes, heights, relief, paint, dressing. Dressing is **authored,
    not scattered**: there is no density pass and no "fill this island with forest".
-10. **`docs/tools/library.md`** — themes, materials, house parts, room styles.
-11. **`docs/gameplay/approaches.md`** — *read this in full.* Every claim in it is marked `[author]` and
+11. **`docs/tools/library.md`** — themes, materials, house parts, room styles.
+12. **`docs/gameplay/approaches.md`** — *read this in full.* Every claim in it is marked `[author]` and
     settled, so it is law rather than advice. **It has been amended since the last run** — see below.
-12. **`docs/gameplay/match-flow.md`** — how a CTW map is actually played, from recorded matches. §4 and §6 are
+13. **`docs/gameplay/match-flow.md`** — how a CTW map is actually played, from recorded matches. §4 and §6 are
     the parts that will change your board.
-13. **`docs/world-export/relief.md`** and **`decoration.md`** — the height model and the prop rules.
-14. **`docs/generator/model.md`** — read for the **box model** as *vocabulary*: what a body is, how a hub, a
+14. **`docs/world-export/relief.md`** and **`decoration.md`** — the height model and the prop rules.
+15. **`docs/generator/model.md`** — read for the **box model** as *vocabulary*: what a body is, how a hub, a
     lane, a frontline and a dock relate, what a wool approach is made of. **Do not author from a composed
     board** — see below.
 
@@ -147,14 +185,17 @@ Each exists because breaking it is what produced the mess the last run was clean
 
 ## What to author
 
-**Three maps: the control, plus two named briefs — one CTW and one destroy.** `MAP-BRIEFS.md` has them.
+**What a run authors is stated when the run is commissioned**, and it has differed: run 3 took the control
+plus two named briefs; run 4's three models took four briefs each, and one of them authored four boards of
+its own design, one per objective shape the system carries (`ctw`, `dtm`, `dtc`, and one board carrying two
+kinds). `MAP-BRIEFS.md` has the named briefs.
 
 The **control** (§0) is the canonical destroy brief, identical for every model and every run, and carries **no
-art direction**. It exists so boards stay comparable across models and so the effect of everything in
+art direction**. It is authored whenever a run is asked for it. It exists so boards stay comparable across models and so the effect of everything in
 `ART-DIRECTION.md` can be seen by comparing an art-directed board against it. Author it as the brief reads.
 
-The **two named briefs** are yours to choose from §1–§6. Prefer ones no run has answered. Announce both at the
-top of your report before you author anything.
+The **named briefs** are §1–§8. Prefer ones no run has answered. Announce yours at the top of your report
+before you author anything.
 
 Two of the eight named briefs exist because they have **never been attempted here**: there has never been a
 desert map, and never a four-team board. Both are fully expressible — `HousePresets.Desert` is a worked desert
