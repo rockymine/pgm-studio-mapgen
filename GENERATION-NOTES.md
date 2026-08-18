@@ -374,13 +374,17 @@ Not the studio's fault, but they cost a cycle each and the failure looks like a 
 
 ```
 POST /api/plan/evaluate      <plan>                 # no map row needed; do this first, twice
+POST /api/plan/inspect       <plan>                 # goalDistances (GO1), islandGaps (CT12), the wall rects
 POST /api/plan               {"name": "..."}        -> {"slug": "..."}
 PUT  /api/map/{slug}/plan    <plan>
 POST /api/plan/compile       <plan>                 -> {layout, intent, warnings}
 PUT  /api/map/{slug}/sketch  <your own layout>      # verbatim replace; the compiled shapes are discarded
+   (or PUT .../sketch/from-plan <the compiled layout, patched> — run 3 and run 4 both took this road)
 POST /api/map/{slug}/sketch/relief/read <layout>    # look at the ground before building it
 POST /api/map/{slug}/sketch/finish
 PUT  /api/map/{slug}/intent/from-plan <compiled intent>
+POST /api/map/{slug}/sketch/columns <layout>        # the DR-* declines — AFTER the intent (§17)
+PATCH /api/map/{slug}/metadata {name, authors}      # AFTER the intent, or the projection drops it (§17)
 GET  /api/map/{slug}/export                         -> the world, into a fresh directory
 ```
 
@@ -389,7 +393,7 @@ and removes the whole "address a compiled tier by the height it stands at" probl
 compile is the **intent** — it carries the spawns, the wool rooms, their entries and floors, and the
 `structures.walls` a plan's `walls` entry produced, none of which the layout states.
 
-## 12. A path's band follows the spline, not your polyline
+## 12b. A path's band follows the spline, not your polyline
 
 `PathBand.Centerline` runs the drawn points through a **Catmull-Rom spline** before the band is derived, and
 a Catmull-Rom overshoots the outside of every corner — by several blocks when the segments are long. Since
@@ -464,3 +468,98 @@ approach pieces after their room.
   one wool per team "Capture the wool!".
 - **`relief/read` answering `{"islands": []}`** now has two causes: shapes not rasterizing (§1) *or* a
   layout that simply declares no relief. Check whether you stated a relief before reaching for §1.
+
+## 17. What run 4 measured, driving the loop with every finding printed
+
+Measured against `pgm-studio` at `claude/b253-agentic-map-authoring-xbxdd4` (18 Aug 2026), building the four
+`opus5-*` boards. Everything here was found by reading a response the earlier drivers threw away.
+
+**The declines you can see before the build are not all of them, and the order is the reason.**
+`POST /map/{slug}/sketch/columns` answers `warnings[]` carrying every `DR-*` the dressing pass will raise —
+but `DR-KEEP` reads the spawn door's approach and the goal rings, which do not exist on a map carrying only a
+sketch. Asked before `PUT …/intent/from-plan` it answers a shorter list; asked after, it answers the whole
+one. Measured on `firnline`: three declines before the intent, four after (the fourth is the house in the
+spawn door's approach). **Read the declines after the intent is stored.**
+
+**`OB19` and `OB17` are not in that list at all.** They are *refusals* raised by the export, so the first time
+a board hears about them is `GET /map/{slug}/export` answering **409** after the whole build has run. Both
+fired on run 4 and neither appears in `sketch/columns`. Budget a build cycle for them, or place props by the
+arithmetic below and skip it.
+
+**`OB19`'s keep-out is a 10-block square about the goal's anchor, and it is bigger than it sounds.** It is
+tested against a prop's footprint **plus its eaves**, and against **every orbit image** of it. For a goal at
+`(0, 45)` the box is `x −10..10, z 35..55`, and a building drawn at `x −12..−1, z 54..61` is refused on its
+eave. Compute the box, add one for the overhang, and keep buildings, trees and boulders out of it.
+
+**A compile cannot see a layout `subtract`, so a goal the plan gate passed can be refused at export.**
+`hollowbank` placed a destroyable on the centre of a plan piece and then cut a sally port through that piece
+in the layout; `/plan/compile` answered 200 and `GET …/export` answered `OB17 — is 1×1 and overhangs the
+void`. The plan gate judges the plan's rectangles and the export gate judges the ground the rasterizer built.
+Cut the holes first, then place the goal.
+
+**A shape erected above the build cap raises the cap twenty blocks above itself.** `capabilities.md` describes
+"an erected cube as a blocker … a wall made of terrain" standing over `max_build_height`; the ceiling is
+`BuildCeiling.Of(highestGround)` where `highestGround` is the tallest **terrain** column the world builds, and
+an erected shape is a terrain column. Measured on `alabaster-rake`: five hoodoos topping at y43 over ground
+topping at y14 wrote `<maxbuildheight>64</maxbuildheight>` — twenty-one blocks of clear air over the picket
+they were meant to be un-bridgeable above. **Erected terrain cannot be used as an unbridgeable wall.** It is
+still an obstacle nobody climbs; it is not one nobody bridges. The same arithmetic means a tall shape hands
+the whole board a ceiling it did not want.
+
+**Buffers only carve where no generating piece covers.** A buffer drawn over a piece is inert — the fill
+ratio does not move and no hole appears. Three of them were drawn on the first Wheal Hazel plan and every one
+did nothing. **There is no way to cut a hole inside a piece from a plan**; the instrument is a layout
+`subtract`, which is the same reason `/plan/evaluate`'s `G8 fill-ratio` reads a board denser than it is built.
+Shape the *pieces* to shape a coast, and cut the holes downstream.
+
+**`GET /terrain/patterns` is the field list, and guessing costs a build cycle.** Six of run 4's first draft
+themes named a field the reader does not have — `noise` takes `stops` and not `palette`, `voronoi` takes
+`bands` (`{material, depth}`) and not `palette`, `checker` takes `even`/`odd` and not `a`/`b`, `layered`'s
+axis is `depth`/`inward` and there is no `inset`, `teamTint` takes `blockId` and `neutral`. A missing required
+field renders a **flat swatch at 200**; read the endpoint rather than the type name.
+
+**A theme's `fill` is what fills a tall shape, and the surface is only its top courses.** A 44-block hoodoo
+banded through `surface` alone came out banded in its top four courses and plain sandstone below. Put the
+`layered` stack in `fill` as well and the strata run the whole column.
+
+**A style fork that repaints `wall` and not `storeys[*].wall` is half a fork.** The storey stack carries its
+own wall, and on a two-storey preset the storey is most of what a section shows: the run-4 wool cage came out
+timber over stone brick until the storey walls were repainted too. The exception is `Stilts`, whose whole
+idiom *is* storey 0's wall (air over a beam course) — repaint that and the stilts disappear.
+
+**A square hall ties its ridge `AlongX`, which is `HJ4` waiting to happen.** Three of run 4's four L-plans
+were refused the first time: a roughly square hall meeting a wing on a **vertical** shared edge ties toward x,
+the wing then also runs into that edge, and both-into-it is `HJ4`. State the **hall's** ridge along the shared
+edge (`AlongZ` for a vertical seam) and the wing's into it. `POST /terrain/prop-preview` answers this before a
+build — but its body is `{propJson, themeJson}` with the documents as **strings**, and a house prop's `style`
+must be the resolved `HouseStyle`, not a library reference.
+
+**A board whose ground crosses the origin gets a bedrock observer platform stamped in its middle.** The
+compiled intent puts the observer at `(0, observerY, 0)` and `observerY` defaults to `surface + 15` — on
+Wheal Hazel that was a bedrock pad at y24 over the centre of the contested bar. `globals.observerY` is the
+only control a plan has over it; run 4 set 55–60 on every board.
+
+**The author's name is set after the intent, not before.** Storing an intent projects the map document from
+the intent's own `meta`, which a compiled intent leaves empty — `PUT …/intent/from-plan` carries authors from
+a *previously stored intent*, and a first build has none. A `PATCH /map/{slug}/metadata` before that point is
+overwritten. And PGM's author contract is a **uuid**: `{"uuid": …, "name": "Opus 5", "role": "author"}` writes
+`<author uuid="…"/>` with the name as an XML comment, while a bare string entry is dropped without a word.
+`ART-DIRECTION.md` AD-M10's `"authors": ["Fable 5"]` is `tools/mapgen`'s spec shorthand and does not exist on
+the HTTP path.
+
+**`--traversability-map` reporting an isolated wool room is usually the wall's cobweb, not the board.**
+`hollowbank` reads *2 isolated* because its approach wall spans the room lane's only land seam; `wheal-hazel`
+reads *0* because its lane carries a second seam. `B99` measures the cause: the renderer's ground search steps
+past decoration but its headroom test does not, so the cobweb course capping every approach wall reads as
+impassable. The export gate navigates on `WorldColumns.Membership` and never sees it. A wall is meant to be
+crossed — over the top, cutting the web with the shears the kit carries.
+
+**Three faults in the studio were found and fixed in this session**, so a document that used to answer 500
+now answers 400: a material with no `kind` nested in a theme or a style, a `layered` with no `stack`, a
+`checker` with no `even`/`odd`, and a `teamTint` with no `neutral` each took the request down as `RQ2 — the
+fault is its own` when the fault was the document's. Beside them: `GET /map/{slug}/export` wrote
+`region/dressing-report.json` into its temp folder and never added it to the zip, so the decline record never
+reached an HTTP caller; and the five `*-styles/preview*` routes ignored `?format=png&view=`, so the one
+preview family that draws a **building** — the picture `AD-S6` and the reviewer's C14 both ask to be looked at
+— answered SVG-in-JSON only. All three are fixed; `preview-snapshot?format=png&view=plan|section` now answers
+raw PNG and refuses `isometric`/`cutaway` by name.
