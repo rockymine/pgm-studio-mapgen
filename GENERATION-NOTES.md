@@ -377,6 +377,8 @@ POST /api/plan/evaluate      <plan>                 # no map row needed; do this
 POST /api/plan/inspect       <plan>                 # goalDistances (GO1), islandGaps (CT12), the wall rects
 POST /api/plan               {"name": "..."}        -> {"slug": "..."}
 PUT  /api/map/{slug}/plan    <plan>
+GET  /api/map/{slug}/plan/ascii                     # the board as a grid, one char per cell (?every=N)
+GET  /api/map/{slug}/plan/flow                      # what the board asks of the two sides, and what it wastes
 POST /api/plan/compile       <plan>                 -> {layout, intent, warnings}
 PUT  /api/map/{slug}/sketch  <your own layout>      # verbatim replace; the compiled shapes are discarded
    (or PUT .../sketch/from-plan <the compiled layout, patched> — run 3 and run 4 both took this road)

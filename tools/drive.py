@@ -61,6 +61,40 @@ def call(method, path, body=None, raw=False, fatal=True):
         return error.code, body
 
 
+def text(path, fatal=False):
+    """One GET whose answer is `text/plain` rather than a document — the grid and the flow account.
+    Returns the body as a string, or None where the read failed; the status line is printed either
+    way, so a read that 404s is visible rather than absent."""
+    status, payload = call("GET", path, raw=True, fatal=fatal)
+    return payload.decode("utf-8", "replace") if isinstance(payload, bytes) and status < 300 else None
+
+
+# The widest grid worth printing at 1:1. Past it the board is downsampled, because a wall of characters
+# nobody reads is the same as no read at all.
+GRID_WIDTH = 110
+# What a grid row spends on its frame: the z label, the two bars and the spaces around them. Only the
+# characters between them are the board.
+GRID_FRAME = 10
+
+
+def grid(slug):
+    """The stored plan as a grid of characters. Asked at 1:1 first — a route or a seam one cell wide is
+    sampled away by any other step — and re-asked at the ratio the board actually turns out to need rather
+    than at a guess about its size.
+
+    Width is measured on the grid's own rows, which are the lines that close with the frame's right bar. The
+    key under them wraps at its own width whatever the board does, so measuring the whole render measures the
+    key and no board ever reads as wide."""
+    drawn = text(f"/map/{slug}/plan/ascii")
+    if drawn is None:
+        return None
+    widest = max((len(line) for line in drawn.splitlines() if line.rstrip().endswith("|")), default=0)
+    if widest <= GRID_WIDTH:
+        return drawn
+    every = -(-(widest - GRID_FRAME) // (GRID_WIDTH - GRID_FRAME))
+    return text(f"/map/{slug}/plan/ascii?every={every}")
+
+
 def findings(payload):
     """Every finding shape the studio answers in, under the four keys it uses."""
     out = []
@@ -183,6 +217,24 @@ def main():
     slug = created["slug"]
     print(f"    slug={slug}")
     call("PUT", f"/map/{slug}/plan", plan)
+
+    # ── the board as a grid, and how it is come at ───────────────────────────────────────────
+    # Two reads that cost no build and raise no finding, which is exactly why they are easy to forget.
+    # They sit here rather than at the first step because both read the STORED plan: there is nothing
+    # to ask before the PUT above. Neither is about the world — a compile has not happened yet.
+    #
+    # The grid is the only render a caller with no image reader can act on, and it answers what no
+    # picture of a built world can: a plan is a list of rectangles measured in cells, and most of what
+    # goes wrong with one is a RELATION between two of them — a landform wider than the band that
+    # reaches it, a wall on the only throat. A grid puts the two on the same rows. The flow says why
+    # ground is dead where the coverage read at the end says only that it is, and it says it before a
+    # world exists to measure.
+    print("== the board as a grid, and how it is come at")
+    if (drawn := grid(slug)) is not None:
+        print(drawn.rstrip("\n"))
+    if (flow := text(f"/map/{slug}/plan/flow")) is not None:
+        print(flow.rstrip("\n"))
+
     _, compiled = call("POST", "/plan/compile", plan)
     report(compiled)
     layout, intent = compiled["layout"], compiled["intent"]
@@ -245,6 +297,11 @@ def main():
             print(f"    dead patch {patch['area']:>5} cells at "
                   f"({patch['centroidX']}, {patch['centroidZ']}), "
                   f"{patch['nearestReachedBlocks']} blocks from used ground")
+    else:
+        # Silence here reads as "nothing dead", which is the opposite of what it means: the walk found
+        # no route to class the ground against, so the share was never computed.
+        print(f"    no routes to walk, so no dead share — {coverage.get('groundCells', 0)} ground cells "
+              f"unclassed. A board with no two waypoints to join carries no traffic to read.")
     _, zip_bytes = call("GET", f"/map/{slug}/export", raw=True)
     if out:
         if os.path.isdir(out):

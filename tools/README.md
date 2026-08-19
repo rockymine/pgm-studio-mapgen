@@ -51,6 +51,10 @@ them on the same rows. `?every=N` draws one character per N cells for a board wi
 
 `GET /plans/{id}/ascii` is the same render for a candidate in the generator pool, by id rather than slug.
 
+It reads the **stored** plan, so it answers from `PUT …/plan` onward — which is where the driver prints it,
+downsampling only when the board comes back wider than a screen. Before a map row exists, `board.py` below is
+the same idea off the plan file itself.
+
 ### What it prints, and why that is the point
 
 It composes nothing and validates nothing. What it does that the six drivers before it did not is **print
@@ -65,12 +69,24 @@ every finding the pipeline raises, with its rule id**, at the four places one ca
 4. **at the dressing** — `POST …/sketch/columns`'s `DR-*` declines, read **after** the intent is stored,
    because `DR-KEEP` needs the spawn doors and the goal rings the intent carries.
 
-Then one read that raises no finding at all and is printed anyway: **`GET …/coverage`**, the reached /
-decorated / dead shares and the five largest dead patches with their coordinates. Every gate in the four
-places above asks whether ground is *reachable*; this is the only read that asks whether any journey
-**goes there**, and a board can pass all four while carrying a third of its ground unused
-(`GENERATION-NOTES.md` §18 — run 4's own `wheal-hazel` did). It refuses nothing, so it is on the driver to
-put the number where an author sees it.
+Then **three reads that raise no finding at all** and are printed anyway. A read that refuses nothing is the
+one an author never runs, so the driver runs all three rather than leaving them to be remembered:
+
+- **`GET …/plan/ascii`**, after the plan is stored and before anything is compiled — the board as a grid of
+  characters, one per proxy cell. A plan is a list of rectangles and most of what goes wrong with one is a
+  *relation between two of them*, which no render of a built world can show, because by then they are terrain.
+- **`GET …/plan/flow`**, beside it — what the board asks of the two sides, in prose: each objective's two
+  walks and the ratio between them, where the ways in part and meet, whether the defence shares the
+  attackers' road, and the ground no journey reaches. Off the plan alone, so it costs no build.
+- **`GET …/coverage`**, at the far end — the reached / decorated / dead shares and the five largest dead
+  patches with their coordinates. Every gate in the four places above asks whether ground is *reachable*;
+  this is the only read that asks whether any journey **goes there**, and a board can pass all four while
+  carrying a third of its ground unused (`GENERATION-NOTES.md` §18 — run 4's own `wheal-hazel` did). Where a
+  board has no two waypoints to join it says so rather than printing nothing, because silence there reads as
+  "nothing dead" and means "never measured".
+
+The flow and the coverage are the same question at two ends of the pipeline: flow says *why* ground will go
+unused while the board is still rectangles, coverage says *that* it did once a world exists to measure.
 
 A refusal stops the run rather than being skipped. **A refusal is a fault to fix, not a step to work around.**
 
@@ -88,7 +104,8 @@ name written earlier is overwritten. `GENERATION-NOTES.md` §17 measures both.
 ### The two escape hatches
 
 `--dry` stops after the evaluator and the inspect feed, so a plan can be iterated with no map row and no
-build — which is where most of a board's shape is actually decided. `--force` passes `?force=true` to
+build — which is where most of a board's shape is actually decided. The grid and the flow read the *stored*
+plan and so are not in a dry pass; `board.py` covers the grid half of that loop. `--force` passes `?force=true` to
 `sketch/from-plan`, accepting the loss of a relief the recompile would orphan (`SK1`).
 
 ## `board.py` — a plan as a grid, before it is a picture

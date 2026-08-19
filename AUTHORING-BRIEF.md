@@ -175,12 +175,20 @@ Each exists because breaking it is what produced the mess the last run was clean
 - **A picture shows what a board looks like; a grid shows what it is made of.** `GET /api/map/{slug}/plan/ascii`
   answers the plan as `text/plain`, one character per proxy cell, with a key — terrain lettered per piece,
   a build zone `+`, a water lane `~`, an enclosed void `o`, open void a space, markers overprinting. Add
-  `?every=N` for a board wider than a terminal. Read it **before the plan is posted**, not after a world is
-  built: a plan is a list of rectangles and most of what goes wrong with one is a *relation between two of
-  them* — a landform wider than the band that reaches it, a wall on the only throat, a room whose door opens
-  onto its own apron. A top-down of the built world cannot show a relation between two rectangles, because by
-  then they are terrain. This is the render that caught an eighty-block neutral bar crossing a twenty-block
-  build zone, sixteen cells against four, on one row against another.
+  `?every=N` for a board wider than a terminal. Read it **before a world is built**: a plan is a list of
+  rectangles and most of what goes wrong with one is a *relation between two of them* — a landform wider than
+  the band that reaches it, a wall on the only throat, a room whose door opens onto its own apron. A top-down
+  of the built world cannot show a relation between two rectangles, because by then they are terrain. This is
+  the render that caught an eighty-block neutral bar crossing a twenty-block build zone, sixteen cells against
+  four, on one row against another. It reads the **stored** plan, so it answers from the `PUT …/plan` onward
+  and not before; `tools/board.py` is the same idea off the plan file itself, for the loop before a map row
+  exists. The driver prints it, so a run that uses `drive.py` has already seen it.
+- **A grid says what ground is there; the flow says what it is for.** `GET /api/map/{slug}/plan/flow` answers
+  in prose, off the plan alone and at no build's cost: each objective's two walks and the ratio between them,
+  where the ways in part and meet, whether the defence shares the attackers' road, and the ground no journey
+  reaches — named with its pieces. It is the companion to the coverage read at the far end of the pipeline and
+  is meant to be read **first**: coverage says a region is dead once a world exists to measure, and this says
+  why while the board is still rectangles. The driver prints it beside the grid.
 - **A gameplay conclusion is not derived from a measurement.** This session has **no human oracle**, which is
   deliberate. When you hit a question about how a map *plays* that `approaches.md` does not settle: make your
   best judgement, **build it**, and **record the question explicitly** in your report as an open question
