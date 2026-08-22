@@ -57,8 +57,18 @@ the same idea off the plan file itself.
 
 ### What it prints, and why that is the point
 
-It composes nothing and validates nothing. What it does that the six drivers before it did not is **print
-every finding the pipeline raises, with its rule id**, at the four places one can appear:
+It composes nothing and validates nothing. What it does is **print every finding the pipeline raises, with
+its rule id and the JSON path it is about**.
+
+**Every call prints its own complaints, in `call` rather than at the call sites.** A 2xx is not a promise
+that everything posted survived: a `decline` says one piece of the document is not in the world, `RQ3` names
+a posted field that went unread, and `SK3`/`SK4` name a shape that drew no ground. The status line carries
+the `Pgm-Warnings` header after the code — `200   ! 6 RQ3 SK3 SK4` — wherever the complaint channel
+collected anything; the body's own `warnings` array is read either way, because an endpoint answering
+`warnings` as its own field, as `/plan/evaluate` does, fills it without the header.
+`GET /api/rules?rule=<id>` answers what any id means and how to fix it.
+
+The four places a finding appears:
 
 1. **before a map row exists** — `POST /plan/evaluate` (score, `valid`, the hard/soft terms and the whole lint
    table) and `POST /plan/inspect` (`goalDistances` against `GO1`'s 3.0–4.0 band, `islandGaps` against
@@ -81,7 +91,7 @@ one an author never runs, so the driver runs all three rather than leaving them 
 - **`GET …/coverage`**, at the far end — the reached / decorated / dead shares and the five largest dead
   patches with their coordinates. Every gate in the four places above asks whether ground is *reachable*;
   this is the only read that asks whether any journey **goes there**, and a board can pass all four while
-  carrying a third of its ground unused (`GENERATION-NOTES.md` §18 — run 4's own `wheal-hazel` did). Where a
+  carrying a quarter of its ground unused (`GENERATION-NOTES.md`, *Reachable is not used*). Where a
   board has no two waypoints to join it says so rather than printing nothing, because silence there reads as
   "nothing dead" and means "never measured".
 
@@ -99,7 +109,7 @@ document. Both of those are the author's.
 `PUT …/intent/from-plan` comes **before** the decline read and **before** the metadata PATCH, and neither is
 an accident. The intent is what carries the spawn doors and the goal rings `DR-KEEP` reads, and storing it
 projects the map document from the intent's own `meta` — which a compiled intent leaves empty, so an author
-name written earlier is overwritten. `GENERATION-NOTES.md` §17 measures both.
+name written earlier is overwritten. `AUTHORING-BRIEF.md` §2 states both.
 
 ### The two escape hatches
 
@@ -128,8 +138,8 @@ Run 4's own worked example is one line of it. In `maps/opus5-wheal-hazel/renders
    1 |          NNNN    OOOO  |     N = the build zone that reaches it, four
 ```
 
-Sixteen against four is the whole of a 60%-dead landform, visible at a glance and invisible in the render
-that was actually looked at (`GENERATION-NOTES.md` §18). `maps/opus5-wheal-hazel-v2/renders/00-board.txt` is
+Sixteen against four is the whole of a dead landform, visible at a glance and invisible in the render
+that was actually looked at. `maps/opus5-wheal-hazel-v2/renders/00-board.txt` is
 the same two rows agreeing.
 
 ## `column-probe.cs` and `build.cs` · `world-build.cs`

@@ -6,35 +6,35 @@ and `map.xml` — so it can be pulled straight onto a machine with Minecraft and
 rebuilding anything.
 
 ```
-maps/<slug>/region/*.mca   the world
-maps/<slug>/region/provenance.json   what each pass placed, and (since B139) which prop placed it
+maps/<slug>/region/*.mca              the world
+maps/<slug>/region/provenance.json    what each pass placed, and which prop placed it
 maps/<slug>/level.dat
-maps/<slug>/map.xml        what a PGM server loads
-maps/<slug>/renders/       the images the map was reviewed from, stage by stage
-specs/<slug>/              the documents that were authored — plan, layout, intent, themes, styles, dressing
-review/<slug>.md           the measured record for that map
-reports/<model>-runN.md    one agent run: what it could not say, what it got wrong, what worked
-tools/                     the drivers that post those documents to the API
+maps/<slug>/map.xml                   what a PGM server loads
+maps/<slug>/renders/                  the images the map was reviewed from, stage by stage
+specs/<slug>/                         the documents that were authored — plan, finish, layout, intent
+review/<slug>.md                      the measured record for that map
+reports/<model>-runN.md               one agent run: what it could not say, what it got wrong, what worked
+tools/                                the driver that posts those documents to the API
 ```
-
-**The authoring apparatus is four documents, and they are read in this order.**
-[AUTHORING-BRIEF.md](AUTHORING-BRIEF.md) is what an authoring agent is given;
-[ART-DIRECTION.md](ART-DIRECTION.md) is how a board is supposed to look, stated as law with the shipped
-counter-example beside each rule; [MAP-BRIEFS.md](MAP-BRIEFS.md) names the maps to author, each with an
-identity, a composition and the one thing it tests; and [REVIEWER-BRIEF.md](REVIEWER-BRIEF.md) is a
-**separate agent** that measures a finished board against the same checklist and does not read the author's
-report until it has finished. The split exists because a run report once described two empty 245-byte shells
-as *"verified working"* with two destroyables, and no instruction to self-review catches that.
 
 A map's `specs/` are the whole of what was authored; the world is derived from them and is committed as
 the artifact rather than as a source. Rebuilding one needs a running pgm-studio API and a migrated
-database. The maps of *The first experiment* below predate that rule and carry a world alone — every other
-row in the layout above is absent for them, and their sources are not recoverable.
+database.
 
-**Start with [GENERATION-NOTES.md](GENERATION-NOTES.md).** It is the errata an author needs beside
-`pgm-studio/docs/tools/` — the fields a hand-authored shape needs before it exists at all, the two
-different rules height and paint use to resolve an overlap, Bézier control semantics, and the traps that
-have each cost a build cycle.
+## Authoring a map here
+
+**Two documents, and the API.** [AUTHORING-BRIEF.md](AUTHORING-BRIEF.md) is what an authoring agent is
+given, end to end. [GENERATION-NOTES.md](GENERATION-NOTES.md) is what the API cannot state about itself —
+a fact about how two correct mechanisms interact, a number no gate checks, a read-back that lies.
+
+Everything else comes from the studio, which describes itself: `GET /api/openapi/v1.json` is every route
+with its request, its answer and the failure codes it declares; `GET /api/rules` is every rule id with what
+it means and how to fix it; and every answer carries its own findings — a refusal under `findings`, a
+success under `warnings`. A hand-written capability list would be a copy free to disagree with the running
+system, so there is not one.
+
+**One agent authors a board.** There is no reviewer agent and no art-direction agent. Feedback on a board
+comes from the repository's author.
 
 ## Maps
 
@@ -42,21 +42,17 @@ Grouped by the run that produced them. Mode is what the map's own `<gamemode>` d
 
 ### The first experiment — fifteen boards, worlds only
 
-Fifteen boards were built on 11–12 August 2026, each from a single JSON spec, in the session that is the
-reason this repository exists. The spec form itself was a day old: *A map is one JSON file, and a single
-island is a map* landed in pgm-studio on the evening of 12 August, and this repository was created on the
-13th. So there was nowhere to commit a spec and no convention yet asking for one, and only the world was
-saved. The documents lived in the throwaway databases of the runs that made them and are gone — none of the
-fifteen has `specs/`, `provenance.json`, `renders/` or `review/`, and none of them is recoverable.
+Fifteen boards were built on 11–12 August 2026, each from a single JSON spec. The spec form itself was a day
+old and there was nowhere to commit one, so only the world was saved: none of the fifteen has `specs/`,
+`provenance.json`, `renders/` or `review/`, and none is recoverable.
 
-Fourteen are here. The fifteenth, `thornwake`, was accepted into `CommunityMaps/ctw` and lives there
-instead; `hk1_viridian` below is the pre-merge draft of the board that went upstream with it as
-`CommunityMaps/ctw/viridian`.
+Fourteen are here. The fifteenth, `thornwake`, was accepted into `CommunityMaps/ctw` and lives there instead;
+`hk1_viridian` below is the pre-merge draft of the board that went upstream with it as `CommunityMaps/ctw/viridian`.
 
 **What they proved is visible in the files.** Every one of the nine destroy boards declares
 `<gamemode>ctw</gamemode>` while carrying no wool at all — the objective kind a board is played for could
-not yet be stated, and `B155` is the fix. That, and the houses standing inside one another, are what the
-spec format and the reviewer brief were written against. These survive as evidence rather than as examples.
+not yet be stated. That, and the houses standing inside one another, are what the spec format was written
+against. These survive as evidence rather than as examples.
 
 **Capture the wool**
 
@@ -92,24 +88,24 @@ Beside them sits one world from the same days that is not one of the fifteen:
 
 | Folder | Mode | What it is |
 |---|---|---|
-| `clayclay_redux` | ctw | A recreation of `CommunityMaps/ctw/clayclay` — two rot_180 plus-shaped clay islands joined by four void hops. See [FINDINGS.md](FINDINGS.md). |
-| `ashen_quarry` | ctw* | Authored from a sketch: a walled town on a raised polygon, a 17-deep quarry the destroyable stands in, a tilted mesa, one interlocking landmass. |
+| `clayclay_redux` | ctw | A recreation of `CommunityMaps/ctw/clayclay` — two rot_180 plus-shaped clay islands joined by four void hops |
+| `ashen_quarry` | ctw* | Authored from a sketch: a walled town on a raised polygon, a 17-deep quarry the destroyable stands in, a tilted mesa, one interlocking landmass |
 
-### B120 run 1
+### Run 1
 
 | Folder | Mode | Author | What it is |
 |---|---|---|---|
-| `quillon-barrow` | ctw* | Opus | the canonical brief — a chalk heath, barrow in the open, wood west, crag east, village behind, channel in front |
+| `quillon-barrow` | ctw* | Opus | a chalk heath, barrow in the open, wood west, crag east, village behind, channel in front |
 | `quillon-saltworks` | ctw | Opus | a capture board on a salt pan, quartz pans stepping down to the brine |
 | `quillon-foundry` | ctw* | Opus | a core and a stack on a red hillside |
-| `sonnet-holdfast` | ctw* | Sonnet | the canonical brief |
+| `sonnet-holdfast` | ctw* | Sonnet | a destroy board |
 | `sonnet-briarlock` | ctw | Sonnet | a CTW map of its own design |
 | `sonnet-cinderreach` | ctw* | Sonnet | a destroy-core map of its own design |
-| `haiku-canonical-destroy-3` | ctw* | Haiku | the canonical brief |
+| `haiku-canonical-destroy-3` | ctw* | Haiku | a destroy board |
 | `haiku-ctw-rush-2` | ctw | Haiku | a CTW board |
 | `haiku-dtm-tower` | ctw* | Haiku | a DTM board with dual objectives |
 
-### Fable run 3
+### Run 3 — Fable
 
 | Folder | Mode | Author | What it is |
 |---|---|---|---|
@@ -118,14 +114,14 @@ Beside them sits one world from the same days that is not one of the fifteen:
 | `sunspit` | ctw | Fable | summer beach: two shores over an open sea gap, lagoon, walled bluff wool + isolated pier wool, tidal water lane |
 | `tanglewold` | ctw | Fable | woodlands: forest belts and brooks, a walled knoll wool + a donut hollow wool, causeway mid over two fords |
 
-### B120 run 2
+### Run 2
 
 | Folder | Mode | Author | What it is |
 |---|---|---|---|
-| `tallow-mirefast` | dtm | Opus | the canonical brief, built |
+| `tallow-mirefast` | dtm | Opus | a destroy board on a mire |
 | `tallow-weirgate` | ctw | Opus | a capture board on a drained reservoir |
 | `tallow-kilnrow` | dtm · dtc | Opus | a destroy board on a lime works |
-| `corvid-hollow` | dtm | Sonnet | the canonical brief |
+| `corvid-hollow` | dtm | Sonnet | a destroy board |
 | `sable-marsh` | ctw | Sonnet | a CTW board |
 | `ashfall-scar` | dtm · dtc | Sonnet | a DTC + DTM board |
 | `marlstone-steps` | ctw | Opus 5 | a white marl hillside in five terraces cut by two void ravines, four tilted ramps joining them |
@@ -133,21 +129,21 @@ Beside them sits one world from the same days that is not one of the fifteen:
 | `haiku-r2-canonical-8` | — | Haiku | **not a map** — see below |
 | `haiku-r2-ctw-mid` | — | Haiku | **not a map** — see below |
 
-### Opus 5 run 4 — four boards, one per objective shape
+### Run 4 — Opus 5, four boards, one per objective shape
 
-Authored to answer `B253` — *how a model actually drives the studio* — so the account of the loop is the
-deliverable and the boards are its evidence. All four build with **nothing declined**.
-[reports/opus5-run4.md](reports/opus5-run4.md) is the run; `GENERATION-NOTES.md` §17 is what it measured;
-`tools/README.md` is the document no driver had.
+Authored to record how a model actually drives the studio, so the account of the loop is the deliverable and
+the boards are its evidence. All four build with nothing declined.
+[reports/opus5-run4.md](reports/opus5-run4.md) is the run.
 
 | Folder | Mode | Author | What it is |
 |---|---|---|---|
 | `opus5-wheal-hazel` | ctw | Opus 5 | a granite tin works either side of a shingle bar: a walled wool lane at the head of each valley, a raised leat over a flooded shaft, a tidal lane that opens on the flank at 45 minutes |
+| `opus5-wheal-hazel-v2` | ctw | Opus 5 | the same board with its neutral bar cut to the width of the build zone that reaches it. **27.2% dead ground → 0.8%**, on the same four gates passing identically both times |
 | `opus5-alabaster-rake` | dtm | Opus 5 | a gypsum badland under a bone-white mesa — three approaches in three dimensions: a weave through a picket of banded hoodoos, a drop into a sunk hollow, a climb up a tilted shelf |
 | `opus5-siderite-bowl` | dtc | Opus 5 | an impact crater whose ejecta ring stands **behind** the bowl, so the defence looks down into its own goal and the attack arrives from below |
 | `opus5-hollowbank` | ctw · dtm | Opus 5 | a chalk ring-fort carrying **both** objective kinds — the wool in a keep off the enclosure, the beacon out on the inner rampart |
 
-### Sonnet run 4 — four named briefs, and the two nobody had attempted
+### Run 4 — Sonnet
 
 | Folder | Mode | Author | What it is |
 |---|---|---|---|
@@ -156,27 +152,25 @@ deliverable and the boards are its evidence. All four build with **nothing decli
 | `sonnet-gantry` | dtc | Sonnet | an industrial yard: **two cores a team** on a raised deck and in a sunk pit, and six hand-placed buildings, no two the same size |
 | `sonnet-reedcut` | ctw | Sonnet | a worked peat lowland read by height rather than colour, with a water lane confirmed reaching `map.xml` |
 
-### Haiku run 4 — four blueprints, honestly labelled
+### Run 4 — Haiku, four blueprints, honestly labelled
 
-Haiku took §3 `chancel`, §4 `ladder`, §5 `wharf` and §6 `winterfold`. All four load — teams, spawns,
-objectives and an author over real region files — and **none carries a theme registry, a placed prop, an
-authored relief or a single render**. Every shape on all four names a theme the layout does not carry, which
-is the silence `SketchLayoutCheck` was extended to report in the same session and is how that defect was
-found. `haiku-wharf` answers a **capture** brief with no wool on it.
+All four load — teams, spawns, objectives and an author over real region files — and **none carries a theme
+registry, a placed prop, an authored relief or a single render**. Every shape on all four names a theme the
+layout does not carry, which is the silence `SketchLayoutCheck` was extended to report. `haiku-wharf` answers
+a capture brief with no wool on it. They are kept as what they are: plan-level blueprints, and the run's own
+report lists every one of these under *what could not be done*.
 
-They are kept as what they are: plan-level blueprints, and its own report lists every one of these under
-*what could not be done* — which is the whole distance travelled since the run that described two empty
-245-byte shells as verified. `reports/opus5-run4.md` §9 measures the three run-4 sets against each other.
+`haiku-chancel` · `haiku-ladder` · `haiku-wharf` · `haiku-winterfold`
 
 ### Grok run 1 — authored blind, built afterwards
 
-Three maps written by Grok from the documentation alone, with **no running studio**: nothing it wrote was
-ever posted, compiled or exported by its author. They were driven through the endpoints for the first time
-here. Two of the three plans were refused for cell arithmetic and fixed with four rect edits; every layout
-document rasterized to no ground; the dressing was authored in plan cells rather than blocks.
+Three maps written by Grok from the documentation alone, with **no running studio**: nothing it wrote was ever
+posted, compiled or exported by its author. They were driven through the endpoints for the first time here.
+Two of the three plans were refused for cell arithmetic and fixed with four rect edits; every layout document
+rasterized to no ground; the dressing was authored in plan cells rather than blocks.
 [reports/grok-run1.md](reports/grok-run1.md) is what each document did, and
-[reports/grok-experience.md](reports/grok-experience.md) is Grok's own account, written before any of it
-was run. Each map's `specs/<slug>/authored-by-grok/` holds the original documents verbatim.
+[reports/grok-experience.md](reports/grok-experience.md) is Grok's own account, written before any of it was
+run. Each map's `specs/<slug>/authored-by-grok/` holds the original documents verbatim.
 
 | Folder | Mode | Author | What it is |
 |---|---|---|---|
@@ -186,116 +180,85 @@ was run. Each map's `specs/<slug>/authored-by-grok/` holds the original document
 
 ### Opus 5 — authored to record the method
 
-One map, authored end to end with the process written down rather than the result:
+Boards authored end to end with the process written down rather than the result:
 [reports/opus5-coldharbour-authoring.md](reports/opus5-coldharbour-authoring.md) is every request, which
-documents were hand-written and which were assembled by script, which previews were looked at before
-building, which render answered which question, and the two places in the whole build where the source was
-the only oracle. [reports/opus5-coldharbour-v2-authoring.md](reports/opus5-coldharbour-v2-authoring.md) is the
-second pass after the author reviewed it: what the review said, what `ruediger` and `bridgid-ii` measure,
-and the board that came out of starting again. [reports/opus5-quernstone-authoring.md](reports/opus5-quernstone-authoring.md)
-is the four-team board built from that vocabulary at `rot_90`, and the two corrections that changed what its
-mid and its hub are for.
+documents were hand-written and which assembled by script, which previews were looked at before building, and
+the two places in the whole build where the source was the only oracle.
+[reports/opus5-coldharbour-v2-authoring.md](reports/opus5-coldharbour-v2-authoring.md) is the second pass
+after review, and [reports/opus5-quernstone-authoring.md](reports/opus5-quernstone-authoring.md) is the
+four-team board built from that vocabulary at `rot_90`.
 
 | Folder | Mode | Author | What it is |
 |---|---|---|---|
 | `coldharbour` | ctw | Opus 5 | a chalk down: two wool rooms a team placed against each other, one behind a cut pit down a sunken lane, one on an open shelf with a water lane that opens late; permanent 20-block channels in the frontline |
 | `coldharbour_v2` | ctw | Opus 5 | the same ground rebuilt to the model's own shapes after review: a U frontline off a double-hole hub, an L wool lane and an I wool lane, one neutral stone in the middle, a stream across the spine. 207 ground cells against v1's 533 |
 | `quernstone` | ctw | Opus 5 | **four teams**, `rot_90`: the same vocabulary pinwheeled — each team a wedge whose frontline straddles the axis, four images abutting into a plus mid around one neutral millstone. 216 × 216, 8 wool rooms, 4 walls |
+| `thunder-series` | — | Opus 5 | see [reports/opus5-thunder-series.md](reports/opus5-thunder-series.md) |
 
-**`*` — the mode is wrong, and the map is not.** Every board marked `ctw*` is a destroy board whose
-`map.xml` says `ctw`, because it was built before `MetaGenerator` learned to derive `<gamemode>` and the
-objective line from the objective modules the intent actually carries. Nothing about those worlds is wrong;
-only the label is, and rebuilding them against the current studio would correct it. `ctw` is a valid
-`Gamemode` id, so these boards load.
+## Three caveats about what is committed here
 
-**Three boards did not load at all, and are now corrected by hand.** The fix that taught `MetaGenerator` to
-derive the label emitted `<gamemode>dtm dtc</gamemode>` for a board carrying two objective kinds — and PGM
-parses `<gamemode>` as a **repeated** element holding one id each, against a **closed 25-value enum**, with
-no splitting: `MapInfoImpl.parseGamemodes` throws `InvalidXMLException("Unknown gamemode")` and the map does
-not load. Across ~350 corpus maps every `<gamemode>` holds exactly one id and maps with several repeat the
-element (`cacti_the_wool` carries six); nothing in either corpus has ever written a space-separated value.
-`tallow-kilnrow`, `ashfall-scar` and `basalt-reach` now repeat the element and parse. The writer and reader
-fix is `B155` — the reader has the mirror of the same bug, keeping only the first element on import.
+**`*` — the mode is wrong, and the map is not.** Every board marked `ctw*` is a destroy board whose `map.xml`
+says `ctw`, because it was built before `MetaGenerator` learned to derive `<gamemode>` and the objective line
+from the objective modules the intent actually carries. Nothing about those worlds is wrong; only the label
+is. `ctw` is a valid `Gamemode` id, so these boards load.
+
+**Three boards did not load at all, and are now corrected by hand.** PGM parses `<gamemode>` as a **repeated**
+element holding one id each, against a **closed 25-value enum**, with no splitting:
+`MapInfoImpl.parseGamemodes` throws `InvalidXMLException("Unknown gamemode")` on `<gamemode>dtm dtc</gamemode>`
+and the map does not load. Across ~350 corpus maps every `<gamemode>` holds exactly one id and maps with
+several repeat the element (`cacti_the_wool` carries six). `tallow-kilnrow`, `ashfall-scar` and `basalt-reach`
+now repeat the element and parse.
 
 **Two folders in run 2 contain no map.** `haiku-r2-canonical-8` and `haiku-r2-ctw-mid` export a 245-byte
-`map.xml` with no teams, no spawns and no objectives — `<objective></objective>`, empty `<version>` — over
-region files that are largely empty. They are kept because they are evidence, not because they are playable:
-they are what `pgm-studio`'s own `d911cefe` names, *"a map with nothing on it satisfies every refusal the
-pipeline has"*. Neither is mentioned in `reports/haiku-run2.md`. **Do not load them.**
+`map.xml` with no teams, no spawns and no objectives, over region files that are largely empty. They are kept
+because they are evidence, not because they are playable — a map with nothing on it satisfies every refusal
+the pipeline had at the time. **Do not load them.**
 
 **A recreation never reuses the original's name.** Both the folder and the `<name>` in `map.xml` carry a
-suffix, because a PGM server loading this repo alongside the community corpus would otherwise see two maps
-calling themselves the same thing. The name lives in the plan document's `meta.name`, which is what the
+suffix, because a PGM server loading this repository alongside the community corpus would otherwise see two
+maps calling themselves the same thing. The name lives in the plan document's `meta.name`, which is what the
 compile reads — changing the folder alone is not enough.
 
 ## Looking at a map without Minecraft
 
-Every map carries `renders/`. Two of them answer questions no plan view can:
+Every map carries `renders/`. Two reads answer questions no plan view can:
 
 - **`--topdown --layer structure`** reads `region/provenance.json` and draws what the build *recorded* itself
-  placing. Its owners list is a literal census of your dressing:
+  placing. Its owners list is a literal census of the dressing — every count reads `units × orbit order`, so
+  a prop that landed nothing has no row at all:
 
   ```python
-  # since B252 an owner is {kind, unit, image} rather than a "kind:id" string
   import json; from collections import Counter
   p = json.load(open('maps/<slug>/region/provenance.json'))
   print(Counter(o['kind'] for o in p['owners']))
   ```
 
-  Every count reads `units × orbit order`, which is the check: a prop that landed nothing has no row at
-  all. Beside it, `region/dressing-report.json` answers what did **not** land, and is written only when
-  something dropped — so its absence means everything authored stood.
-
-  Prefer it to `--buildings`, which finds buildings by scanning block materials and is built for worlds the
-  studio did **not** build — `GENERATION-NOTES.md` §6 has the three ways it misreads one that it did.
+  Beside it, `region/dressing-report.json` answers what did **not** land, and is written only when something
+  dropped — so its absence means everything authored stood.
 
 - **`--section`** and **`--column`** are the only reads that keep Y. A riser, a ramp's step heights, a
   stamped room's floor and a goal's clearance are none of them visible from above.
 
-## How a report separates a claim from a limitation
+## Reports
 
-**A report says what the model reported, what the code actually allows, and which of the two the reader
-should believe.** An agent's account of what it could not do is evidence about the *surface*, not about the
-system, and the two have already diverged badly: a run reported five of six brief requirements as impossible
-while quoting the documentation that describes two of them, and a later one reported per-shape themes and
-area relief marks as missing when both are shipped and in use on maps in this repository.
+`reports/` holds one account per run and `review/` one measured record per board. Both are **dated accounts**:
+each describes the studio and the documents as they were on the day it was written, and several name briefs
+that have since been retired. They are kept as the record of what was found, not as instruction — an
+authoring agent reads `AUTHORING-BRIEF.md` and the API.
 
-So every "could not do" entry carries three parts, and an entry missing the third is not finished:
+**A report separates a claim from a limitation.** An agent's account of what it could not do is evidence about
+the *surface*, not about the system, and the two have diverged badly: a run reported five of six requirements
+as impossible while quoting the documentation that describes two of them, and a later one reported per-shape
+themes and area relief marks as missing when both are shipped and in use on maps here. So every
+"could not do" entry carries three parts, and one missing the third is not finished:
 
 | Part | Is |
 |---|---|
 | **Reported** | what the model believed, in its own words, including the reasoning that led there |
-| **Checked** | what the code and documents actually say — the type, the field, the endpoint, read at the source |
+| **Checked** | what the code and the schema actually say — the type, the field, the endpoint, read at the source |
 | **Verdict** | **missing** (no mechanism exists) · **unreachable** (it exists and the surface hid it) · **mistaken** (it exists, was documented, and the model did not find it) |
 
 Only **missing** is a capability gap. **Unreachable** is a surface defect and belongs as a task against the
 studio. **Mistaken** is the most valuable of the three and the easiest to bury, because it reads as a
-limitation and is really a measurement of how legible the system is — and a report that quietly drops its
-mistaken entries destroys exactly the signal the run exists to produce.
-
-A verdict is not the model's to award on its own claim. It is settled by reading the code, and the reading is
-cited.
-
-## Reports
-
-| File | Is |
-|---|---|
-| [GENERATION-NOTES.md](GENERATION-NOTES.md) | what an author has to know that is not written down — read before authoring |
-| [FINDINGS.md](FINDINGS.md) | the measured record of the ClayClay recreation, per review round |
-| [AGENT-REPORT.md](AGENT-REPORT.md) | tracing an existing map: why the `mapgen` spec was the wrong layer, and two claims it got wrong |
-| [AGENT-REPORT-2.md](AGENT-REPORT-2.md) | authoring a board from nothing: the height model, the three scripts that should not have needed writing, the void column nothing checked for |
-| `reports/opus-run1.md` · `sonnet-run1.md` · `haiku-run1.md` | the three run-1 accounts |
-| `reports/opus-run2.md` · `sonnet-run2.md` · `haiku-run2.md` | the three run-2 accounts |
-| [reports/opus5-run2.md](reports/opus5-run2.md) | a second, independent run-2 — its §1 audits the earlier runs' claims against the code, and finds three that were wrong when filed and four gaps since closed |
-| [reports/opus5-run4.md](reports/opus5-run4.md) | run 4 — `B253`'s answer: the thirteen-call loop as it is actually driven, the two calls whose **order** is load-bearing, what an agent can and cannot look at, and five studio defects found by authoring and fixed |
-| `reports/sonnet-run4.md` · `reports/haiku-run4.md` | run 4's two delegated runs, four named briefs each |
-| [reports/fable-run3.md](reports/fable-run3.md) | run 3 — four themed boards; five studio defects found were fixed in the same session, and the fault table separates them from the author's own mistakes |
-| [reports/fable-run3-architecture.md](reports/fable-run3-architecture.md) | run 3's second half: the distance-measurement inventory, the API-layer survey, and a seven-move fast-track ranked by what each buys |
-| `review/` | one measured record per map |
-| the board audit, 2026-08-14 | every open `TODO.md` entry checked against the code it describes and every map against what its report claims: 48 findings, filed as `B141`–`B188` in `pgm-studio/BACKLOG.md` and bucketed for dispatch |
-
-**Two files are both "Opus, run 2" and they are different runs.** `opus-run2.md` is the cloud agent that
-authored the `tallow-*` boards; `opus5-run2.md` is a separate local run that authored `marlstone-steps` and
-`basalt-reach`. They were written against the same studio revision without knowledge of each other, which
-makes the places they agree worth more than either alone — and they do agree, independently, that Haiku's
-per-shape-theme and area-relief-mark claims were mistaken.
+limitation and is really a measurement of how legible the system is. A verdict is not the model's to award on
+its own claim: it is settled by reading the code, and the reading is cited.

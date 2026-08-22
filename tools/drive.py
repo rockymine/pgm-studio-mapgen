@@ -22,8 +22,12 @@ layout:
                   takes a person as an account OR a pseudonym, so a bare name is a valid author
 
 Nothing here computes a placement, a clearance or a validation: it posts documents and prints what
-came back. Every finding the pipeline raises is printed with its rule id, including the dressing
-declines, which are the ones no other route shows an agent.
+came back. Every finding the pipeline raises is printed with its rule id and the JSON path it is
+about — a refusal's `findings`, the evaluator's `violations` and `lint`, and, on every 2xx, the
+`warnings` a success carries. That last one is the half a driver reading only the status code throws
+away: a decline says one piece of the posted document is not in the world, `RQ3` names a field that
+went unread, and `SK3`/`SK4` name a shape that drew no ground. `GET /api/rules?rule=<id>` answers what
+any of those means and how to fix it.
 """
 import json, sys, io, zipfile, urllib.request, urllib.error, os, shutil
 
@@ -33,17 +37,26 @@ STYLES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "styles")
 
 def call(method, path, body=None, raw=False, fatal=True):
     """One request. Returns (status, payload). A non-2xx is printed with its findings and, unless
-    fatal is False, stops the run — a refusal is a fault to fix, not a step to skip."""
+    fatal is False, stops the run — a refusal is a fault to fix, not a step to skip.
+
+    A 2xx is printed with its `warnings` too, here rather than at the call sites, because a success is
+    not a promise that everything posted survived: a decline says one piece of the document is not in
+    the world, and `RQ3` names a field that went unread. The `Pgm-Warnings` header carries the same
+    count and rule ids, so the status line says how much there is before the body is parsed."""
     data = None if body is None else json.dumps(body).encode()
     req = urllib.request.Request(API + path, data=data, method=method,
                                  headers={"Content-Type": "application/json"} if data else {})
     try:
         with urllib.request.urlopen(req, timeout=1800) as response:
             payload = response.read()
-            print(f"  {method:5} {path:46} {response.status}")
+            carried = response.headers.get("Pgm-Warnings")
+            print(f"  {method:5} {path:46} {response.status}"
+                  f"{'   ! ' + carried if carried else ''}")
             if raw:
                 return response.status, payload
-            return response.status, (json.loads(payload) if payload else {})
+            answered = json.loads(payload) if payload else {}
+            complaints(answered)
+            return response.status, answered
     except urllib.error.HTTPError as error:
         text = error.read().decode()
         print(f"  {method:5} {path:46} {error.code}")
@@ -95,12 +108,14 @@ def grid(slug):
     return text(f"/map/{slug}/plan/ascii?every={every}")
 
 
-def findings(payload):
-    """Every finding shape the studio answers in, under the four keys it uses."""
+def findings(payload, keys=("findings", "violations", "lint")):
+    """Every finding shape the studio answers in, under the keys it uses. `warnings` is read on its own,
+    by `complaints` at the point of the call, so a complaint is printed once and beside the request that
+    raised it rather than at whichever site remembered to ask."""
     out = []
     if not isinstance(payload, dict):
         return out
-    for key in ("findings", "warnings", "violations", "lint"):
+    for key in keys:
         entries = payload.get(key)
         if not isinstance(entries, list):
             continue
@@ -113,12 +128,20 @@ def findings(payload):
     return out
 
 
-def report(payload, indent="  "):
-    for key, entry in findings(payload):
+def report(payload, indent="  ", keys=("findings", "violations", "lint")):
+    for key, entry in findings(payload, keys):
         rule = entry.get("rule") or entry.get("id") or key
         severity = entry.get("severity") or key
         message = entry.get("message") or entry.get("detail") or json.dumps(entry)
-        print(f"{indent}  [{severity:9}] {rule:8} {message}")
+        field = entry.get("field")
+        print(f"{indent}  [{severity:9}] {rule:8} {message}"
+              f"{'   @ ' + field if field else ''}")
+
+
+def complaints(payload):
+    """What a 2xx did not do. A decline means one piece of the document is not in the world and ignoring
+    it does not put it back; a complaint means nothing was lost and something is worth saying anyway."""
+    report(payload, keys=("warnings",))
 
 
 def resolve(style):
@@ -236,7 +259,6 @@ def main():
         print(flow.rstrip("\n"))
 
     _, compiled = call("POST", "/plan/compile", plan)
-    report(compiled)
     layout, intent = compiled["layout"], compiled["intent"]
 
     # ── the finish a plan cannot state ───────────────────────────────────────────────────────
@@ -244,7 +266,6 @@ def main():
     layout = patch_layout(layout, finish)
     query = "?force=true" if force else ""
     _, stored = call("PUT", f"/map/{slug}/sketch/from-plan{query}", layout)
-    report(stored)
 
     # ── look at the ground before building it ────────────────────────────────────────────────
     print("== the ground, read back")
@@ -254,13 +275,13 @@ def main():
               f"low={island.get('low')} high={island.get('high')} "
               f"relief={island.get('relief')} symErr={island.get('symmetryError')}")
     if finish.get("relief") and not read.get("islands"):
-        raise SystemExit("    relief/read answered no islands and a relief was stated — "
-                         "the shapes are not rasterizing (GENERATION-NOTES §1). Stop.")
+        raise SystemExit("    relief/read answered no islands and a relief was stated — the shapes are "
+                         "drawing no ground. Read the SK3/SK4 complaints on the sketch PUT above: SK3 "
+                         "names a shape kind the studio does not draw, SK4 one with no area. Stop.")
 
     # ── build ────────────────────────────────────────────────────────────────────────────────
     print("== build")
     _, finished = call("POST", f"/map/{slug}/sketch/finish")
-    report(finished)
     if finish.get("voidEnforcement"):
         intent.setdefault("build", {})["voidEnforcement"] = \
             {"exclusions": finish.get("voidExclusions", [])}
@@ -276,9 +297,7 @@ def main():
     # answers a shorter list.
     print("== what the dressing pass declined")
     _, columns = call("POST", f"/map/{slug}/sketch/columns", layout, fatal=False)
-    if findings(columns):
-        report(columns)
-    else:
+    if not (columns.get("warnings") if isinstance(columns, dict) else None):
         print("    nothing declined")
     # ── where the board is actually lived on ─────────────────────────────────────────────────
     # The last read, and the one no earlier driver took. Every gate up to this point asks whether
