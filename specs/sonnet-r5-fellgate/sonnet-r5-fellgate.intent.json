@@ -1,0 +1,318 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 9,
+    "z": -160
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -170,
+     "maxX": 10,
+     "maxZ": -150
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -170,
+    "maxX": 10,
+    "maxZ": -150
+   },
+   "iron": []
+  },
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 9,
+    "z": 160
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 150,
+     "maxX": 10,
+     "maxZ": 170
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 150,
+    "maxX": 10,
+    "maxZ": 170
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 58,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -10,
+    "minZ": -15,
+    "maxX": 10,
+    "maxZ": 15
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": {
+  "rects": [
+   {
+    "minX": 20,
+    "minZ": -15,
+    "maxX": 40,
+    "maxZ": 15
+   },
+   {
+    "minX": -40,
+    "minZ": -15,
+    "maxX": -20,
+    "maxZ": 15
+   }
+  ]
+ },
+ "wools": [
+  {
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "room": [
+    {
+     "minX": 10,
+     "minZ": -130,
+     "maxX": 30,
+     "maxZ": -110
+    }
+   ],
+   "spawn": {
+    "x": 20,
+    "y": 9,
+    "z": -120
+   },
+   "monuments": [],
+   "piece": {
+    "minX": 10,
+    "minZ": -130,
+    "maxX": 30,
+    "maxZ": -110
+   },
+   "entries": [
+    {
+     "minX": 10,
+     "minZ": -130,
+     "maxX": 10,
+     "maxZ": -110
+    },
+    {
+     "minX": 10,
+     "minZ": -110,
+     "maxX": 25,
+     "maxZ": -110
+    }
+   ]
+  },
+  {
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "room": [
+    {
+     "minX": -30,
+     "minZ": 110,
+     "maxX": -10,
+     "maxZ": 130
+    }
+   ],
+   "spawn": {
+    "x": -20,
+    "y": 9,
+    "z": 120
+   },
+   "monuments": [],
+   "piece": {
+    "minX": -30,
+    "minZ": 110,
+    "maxX": -10,
+    "maxZ": 130
+   },
+   "entries": [
+    {
+     "minX": -10,
+     "minZ": 110,
+     "maxX": -10,
+     "maxZ": 130
+    },
+    {
+     "minX": -25,
+     "minZ": 110,
+     "maxX": -10,
+     "maxZ": 110
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "meta": {
+  "name": "Fellgate Moor",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": {
+  "roomFloors": [
+   {
+    "area": {
+     "minX": 10,
+     "minZ": -130,
+     "maxX": 30,
+     "maxZ": -110
+    },
+    "stamp": {
+     "kind": "roomfloor",
+     "unit": "bothy",
+     "image": 0
+    }
+   },
+   {
+    "area": {
+     "minX": -30,
+     "minZ": 110,
+     "maxX": -10,
+     "maxZ": 130
+    },
+    "stamp": {
+     "kind": "roomfloor",
+     "unit": "bothy",
+     "image": 1
+    }
+   }
+  ],
+  "redstoneLines": [
+   {
+    "x1": 10,
+    "z1": -130,
+    "x2": 10,
+    "z2": -111,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "x1": -11,
+    "z1": 110,
+    "x2": -11,
+    "z2": 129,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1
+    }
+   },
+   {
+    "x1": 10,
+    "z1": -111,
+    "x2": 24,
+    "z2": -111,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 0
+    }
+   },
+   {
+    "x1": -25,
+    "z1": 110,
+    "x2": -11,
+    "z2": 110,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 1
+    }
+   }
+  ],
+  "ironCubes": [],
+  "walls": [
+   {
+    "minX": -10,
+    "minZ": -111,
+    "maxX": 10,
+    "maxZ": -109,
+    "topY": 11,
+    "chestOnMinFace": true,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "minX": -10,
+    "minZ": 109,
+    "maxX": 10,
+    "maxZ": 111,
+    "topY": 11,
+    "chestOnMinFace": false,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 1
+    }
+   }
+  ],
+  "isEmpty": false
+ }
+}

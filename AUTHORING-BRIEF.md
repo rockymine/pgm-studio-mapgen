@@ -104,6 +104,7 @@ POST  /api/map/{slug}/sketch/finish
 PUT   /api/map/{slug}/intent/from-plan
 POST  /api/map/{slug}/sketch/columns     the DR-* declines                     ← AFTER the intent
 PATCH /api/map/{slug}/metadata           {name, authors}                       ← AFTER the intent
+GET   /api/map/{slug}/preflight          the export's own verdict, before the export
 GET   /api/map/{slug}/coverage           where the ground is lived on, not merely reachable
 GET   /api/map/{slug}/export             the world, into a fresh empty directory
 ```
@@ -118,9 +119,17 @@ stored plan and cost no build; the relief read-back looks at the ground before i
 only read that asks whether any journey *goes* somewhere rather than whether it *can*. All four are worth more
 than the render you would have looked at instead.
 
-**Two gates are heard for the first time at the export, at 409, after the whole world is built.** `OB17` — a
-goal overhanging void, in a spawn, or in a wool room — and `OB19` — a tree, boulder or building inside a
-goal's clearance. Nothing earlier predicts either. `GENERATION-NOTES.md` has `OB19`'s real box.
+**`GET …/preflight` is the export's verdict at a fraction of its cost**, and it is the read most easily
+skipped because nothing refuses you for skipping it. It runs the same traversability check the export refuses
+on — **per team**, so a goal a team is barred from reaching names the team barring it — plus the codec
+round-trip, the mirror and buildability, and ends `export gate OPEN` or `export gate BLOCKED`. A wool room on
+the defenders' own spine compiles clean, evaluates clean, and is refused at export as `EX1`; pre-flight says
+so first.
+
+**Two gates are still heard for the first time at the export, at 409, after the whole world is built.**
+`OB17` — a goal overhanging void, in a spawn, or in a wool room — and `OB19` — a tree, boulder or building
+inside a goal's clearance. Neither is in pre-flight and nothing earlier predicts them.
+`GENERATION-NOTES.md` has `OB19`'s real box.
 
 **A refusal is a fault to fix, not a step to work around.** Do not retry a refused call with a different
 document until you have read why it was refused.
@@ -159,6 +168,8 @@ came apart. The observations below are measured off shipped boards and are enfor
 - **A building is never in the same family as the ground it stands on.** Name three families out loud before
   painting: which is ground, which is built, which is the accent. An accent that appears once is not an accent.
 - **Stained clay, wool and glass are shade rows, not ground** — a stated colour, never terrain.
+- **A goal's name is a name.** No `<Team>`, no angle brackets: PGM prints the attribute verbatim, on both
+  teams, and a placeholder reaches a player.
 - **The rim is off on ground a relief solved.** A rim caps every fall with a band and turns a rolling hill
   into contour lines; it belongs where an edge was *made* — a coast over void, a platform lip, a retaining
   wall's top course.

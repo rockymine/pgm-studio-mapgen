@@ -1,0 +1,165 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Whitebarrow Down"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 16,
+    "surface": 9,
+    "observerY": 55
+  },
+  "pieces": [
+    {
+      "id": "saddle",
+      "role": "piece",
+      "rect": [
+        -7,
+        -2,
+        14,
+        4
+      ],
+      "surface": 9
+    },
+    {
+      "id": "apron",
+      "role": "piece",
+      "rect": [
+        -8,
+        2,
+        16,
+        4
+      ],
+      "surface": 11
+    },
+    {
+      "id": "hanger",
+      "role": "piece",
+      "rect": [
+        -9,
+        6,
+        4,
+        7
+      ],
+      "surface": 13
+    },
+    {
+      "id": "down",
+      "role": "piece",
+      "rect": [
+        -5,
+        6,
+        9,
+        5
+      ],
+      "surface": 13
+    },
+    {
+      "id": "dell",
+      "role": "piece",
+      "rect": [
+        4,
+        6,
+        4,
+        6
+      ],
+      "surface": 11
+    },
+    {
+      "id": "scarp",
+      "role": "piece",
+      "rect": [
+        8,
+        4,
+        2,
+        9
+      ],
+      "surface": 15
+    },
+    {
+      "id": "back",
+      "role": "piece",
+      "rect": [
+        -5,
+        11,
+        9,
+        4
+      ],
+      "surface": 15
+    },
+    {
+      "id": "spawn-apron",
+      "role": "piece",
+      "rect": [
+        -4,
+        15,
+        8,
+        2
+      ],
+      "surface": 15
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        17,
+        4,
+        2
+      ],
+      "surface": 15
+    }
+  ],
+  "zones": [],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          1
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          1,
+          1
+        ]
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "barrow-stone",
+        "piece": "down",
+        "at": [
+          3.5,
+          4.5
+        ],
+        "style": "pillar-3",
+        "materials": "obsidian",
+        "float": 4,
+        "name": "Barrow Stone"
+      }
+    ],
+    "cores": [
+      {
+        "id": "magazine",
+        "piece": "dell",
+        "at": [
+          1,
+          5
+        ],
+        "name": "Powder Magazine"
+      }
+    ]
+  },
+  "walls": [],
+  "boxes": []
+}

@@ -1,0 +1,199 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 15,
+    "z": 90
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 85,
+     "maxX": 10,
+     "maxZ": 95
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 85,
+    "maxX": 10,
+    "maxZ": 95
+   },
+   "iron": [
+    {
+     "x": -5,
+     "y": 15,
+     "z": 90
+    }
+   ]
+  },
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 15,
+    "z": -90
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -95,
+     "maxX": 10,
+     "maxZ": -85
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -95,
+    "maxX": 10,
+    "maxZ": -85
+   },
+   "iron": [
+    {
+     "x": 5,
+     "y": 15,
+     "z": -90
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 55,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": [],
+  "voidEnforcement": {
+   "exclusions": []
+  }
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "barrow-stone",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Barrow Stone",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -8,
+    "y": 13,
+    "z": 53
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "barrow-stone",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Barrow Stone",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 7,
+    "y": 13,
+    "z": -54
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": [
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "magazine",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Powder Magazine",
+   "anchor": {
+    "x": 25,
+    "y": 11,
+    "z": 55
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "magazine",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Powder Magazine",
+   "anchor": {
+    "x": -26,
+    "y": 11,
+    "z": -56
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  }
+ ],
+ "meta": {
+  "name": "Whitebarrow Down",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

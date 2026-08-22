@@ -1,0 +1,68 @@
+{
+  "plan": 1,
+  "meta": {"name": "Hollow Crown"},
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 16,
+    "surface": 11,
+    "observerY": 50
+  },
+  "pieces": [
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [-2, 8, 4, 4],
+      "surface": 11
+    },
+    {
+      "id": "reach",
+      "role": "piece",
+      "rect": [-10, -10, 20, 20],
+      "surface": 11
+    }
+  ],
+  "zones": [],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [0, 1],
+        "facing": "front"
+      }
+    ],
+    "wools": [],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [2, 1]
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "monument-red",
+        "piece": "",
+        "at": [-4, -5],
+        "style": "cube-3",
+        "materials": "obsidian",
+        "float": 2,
+        "name": "Red Monument"
+      }
+    ],
+    "cores": [
+      {
+        "id": "monument-blue",
+        "piece": "",
+        "at": [4, 5],
+        "materials": "obsidian",
+        "float": 2,
+        "leak": 5,
+        "name": "Blue Monument"
+      }
+    ]
+  },
+  "walls": [],
+  "boxes": []
+}

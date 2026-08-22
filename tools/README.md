@@ -95,8 +95,29 @@ one an author never runs, so the driver runs all three rather than leaving them 
   board has no two waypoints to join it says so rather than printing nothing, because silence there reads as
   "nothing dead" and means "never measured".
 
+- **`GET …/preflight`**, after the intent and before the export — the export's own verdict, asked before the
+  export. It runs the same `Traversability.Check` the export refuses on, **per team**, so a goal a team is
+  barred from reaching is named with the team barring it; plus the codec round-trip, the mirror and
+  buildability. Its log ends `export gate OPEN` or `export gate BLOCKED`. `EX1` at 409 after a whole world has
+  been built and this line are the same answer at two prices.
+
 The flow and the coverage are the same question at two ends of the pipeline: flow says *why* ground will go
 unused while the board is still rectangles, coverage says *that* it did once a world exists to measure.
+
+### The pictures, taken rather than remembered
+
+After the export it writes every picture the studio will draw for what was authored, into
+`<worlddir>/renders` or `--renders <dir>`: the grid and the flow as text, one swatch per theme, a **plan and
+a section per house** — the stamped rooms and every distinct house prop style — and the coverage map. That is
+21 files on a board carrying six themes and six houses.
+
+The reason they are taken here is the reason the grid and the flow are printed here: **a read nobody is
+refused for skipping is the read nobody takes.** Every shipped roof fault was visible in a section and
+invisible from above, and no board in this repository had one until an author drew them by hand. Taking a
+picture is not the same as looking at one; what this removes is the excuse.
+
+**A style is serialized in the author's own key order.** A material's `kind` is read positionally, so sorting
+the keys of a style that previews at 200 turns it into a 400 naming a kind that is right there (`TL2`).
 
 A refusal stops the run rather than being skipped. **A refusal is a fault to fix, not a step to work around.**
 

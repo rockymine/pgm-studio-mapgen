@@ -1,0 +1,197 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -10,
+    "y": 11,
+    "z": 45
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 40,
+     "maxX": 10,
+     "maxZ": 60
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 40,
+    "maxX": 10,
+    "maxZ": 60
+   },
+   "iron": [
+    {
+     "x": 0,
+     "y": 11,
+     "z": 45
+    }
+   ]
+  },
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 10,
+    "y": 11,
+    "z": -45
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -60,
+     "maxX": 10,
+     "maxZ": -40
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -60,
+    "maxX": 10,
+    "maxZ": -40
+   },
+   "iron": [
+    {
+     "x": 0,
+     "y": 11,
+     "z": -45
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 50,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument-red",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Red Monument",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -20,
+    "y": 11,
+    "z": -25
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument-red",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Red Monument",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 19,
+    "y": 11,
+    "z": 24
+   },
+   "float": 2,
+   "box": null
+  }
+ ],
+ "cores": [
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "monument-blue",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Blue Monument",
+   "anchor": {
+    "x": 20,
+    "y": 11,
+    "z": 25
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 2,
+   "leak": 5,
+   "box": null,
+   "digDepth": 4
+  },
+  {
+   "stamp": {
+    "kind": "core",
+    "unit": "monument-blue",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Blue Monument",
+   "anchor": {
+    "x": -21,
+    "y": 11,
+    "z": -26
+   },
+   "size": 5,
+   "height": 5,
+   "shell": 1,
+   "openTop": false,
+   "float": 2,
+   "leak": 5,
+   "box": null,
+   "digDepth": 4
+  }
+ ],
+ "meta": {
+  "name": "Hollow Crown",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

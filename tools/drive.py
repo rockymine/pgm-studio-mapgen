@@ -2,7 +2,7 @@
 """Drive a plan + finish document through the pgm-studio API to an exported world, and say what the
 pipeline said on the way.
 
-    tools/drive.py <specdir> "<Map Name>" --out <worlddir> [--force] [--dry]
+    tools/drive.py <specdir> "<Map Name>" --out <worlddir> [--renders <dir>] [--force] [--dry]
 
 <specdir> holds <base>.plan.json and <base>.finish.json, where <base> is the directory's own name.
 The plan is a PlanModel. The finish carries everything a plan cannot state, keyed onto the compiled
@@ -28,6 +28,10 @@ about — a refusal's `findings`, the evaluator's `violations` and `lint`, and, 
 away: a decline says one piece of the posted document is not in the world, `RQ3` names a field that
 went unread, and `SK3`/`SK4` name a shape that drew no ground. `GET /api/rules?rule=<id>` answers what
 any of those means and how to fix it.
+
+It also takes every picture the studio will draw for what was authored — a swatch per theme, a plan and a
+section per house, the coverage map, and the grid and flow as text — into `<worlddir>/renders`, or into
+`--renders <dir>`. Taking a picture is not the same as looking at one; what it removes is the excuse.
 """
 import json, sys, io, zipfile, urllib.request, urllib.error, os, shutil
 
@@ -152,6 +156,56 @@ def resolve(style):
     return style
 
 
+def renders(into, slug, finish, layout, drawn, flow):
+    """Every picture the studio will draw for what was authored, written to disk.
+
+    The reads are the same ones the brief asks an author to look at, and the reason they are taken here is
+    the reason the grid and the flow are printed here: a read nobody is refused for skipping is the read
+    nobody takes. A theme swatch, a house in section and the coverage map each answer a question no
+    top-down of the finished world can — and the section is the one every shipped roof fault was visible in.
+
+    Taking a picture is not the same as looking at one. What this removes is the excuse."""
+    os.makedirs(into, exist_ok=True)
+    written = []
+
+    def png(name, method, path, body=None):
+        status, payload = call(method, path, body, raw=True, fatal=False)
+        if status >= 300 or not isinstance(payload, bytes):
+            return
+        with open(os.path.join(into, name), "wb") as handle:
+            handle.write(payload)
+        written.append(name)
+
+    for name, text_body in (("00-board.txt", drawn), ("01-flow.txt", flow)):
+        if text_body:
+            with open(os.path.join(into, name), "w") as handle:
+                handle.write(text_body)
+            written.append(name)
+
+    for theme_id, theme in (finish.get("themes") or {}).items():
+        png(f"theme-{theme_id}.png", "POST", "/terrain/theme-preview?format=png", theme)
+
+    # Every distinct house the board stands up: the stamped rooms, and each house prop's own style. Keyed by
+    # the style document rather than by where it was named, so one style used twice is drawn once.
+    #
+    # The key is serialized in the author's own key order, NOT sorted: a material's `kind` is read
+    # positionally and has to come first, so sorting the keys of a style that previews at 200 turns it into a
+    # 400 naming a kind that is right there (TL2).
+    houses = {}
+    for room_id, style in (layout.get("roomStyles") or {}).items():
+        houses.setdefault(json.dumps(style), f"room-{room_id}")
+    for prop in ((layout.get("dressing") or {}).get("props") or []):
+        if prop.get("kind") == "house" and isinstance(prop.get("style"), dict):
+            houses.setdefault(json.dumps(prop["style"]), f"house-{prop.get('id', len(houses))}")
+    for style_json, house_id in houses.items():
+        for view in ("plan", "section"):
+            png(f"{house_id}-{view}.png", "POST",
+                f"/room-styles/preview-snapshot?format=png&view={view}", json.loads(style_json))
+
+    png("coverage.png", "GET", f"/map/{slug}/coverage?format=png")
+    print(f"    {len(written)} render(s) -> {into}")
+
+
 def patch_layout(layout, finish):
     """Everything the finish says about the compiled layout, applied in one pass."""
     inner = layout["layout"]
@@ -206,6 +260,7 @@ def patch_layout(layout, finish):
 def main():
     specdir, name = sys.argv[1], sys.argv[2]
     out = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv else None
+    into = sys.argv[sys.argv.index("--renders") + 1] if "--renders" in sys.argv else None
     force = "--force" in sys.argv
     dry = "--dry" in sys.argv
     base = os.path.basename(specdir.rstrip("/"))
@@ -253,6 +308,7 @@ def main():
     # ground is dead where the coverage read at the end says only that it is, and it says it before a
     # world exists to measure.
     print("== the board as a grid, and how it is come at")
+    drawn = flow = None
     if (drawn := grid(slug)) is not None:
         print(drawn.rstrip("\n"))
     if (flow := text(f"/map/{slug}/plan/flow")) is not None:
@@ -299,6 +355,20 @@ def main():
     _, columns = call("POST", f"/map/{slug}/sketch/columns", layout, fatal=False)
     if not (columns.get("warnings") if isinstance(columns, dict) else None):
         print("    nothing declined")
+
+    # ── the export's own verdict, before the export ──────────────────────────────────────────
+    # `GET /export` refuses a board it cannot walk with EX1, at 409, after the whole world is built.
+    # Pre-flight runs that same `Traversability.Check` — per-team, so a goal behind an oversized spawn
+    # protection is named with the team it bars — plus the codec round-trip, the mirror and buildability,
+    # and says outright whether the export gate is open. The verdict is the same one; only the cost of
+    # hearing it differs.
+    print("== the export gate, asked before the export")
+    _, preflight = call("GET", f"/map/{slug}/preflight", fatal=False)
+    for line in (preflight.get("log") or []):
+        print(f"    {line}")
+    for isolated in ((preflight.get("traversability") or {}).get("isolated") or []):
+        barred = f" (for {isolated['for']})" if isolated.get("for") else ""
+        print(f"    isolated: {isolated.get('kind')} {isolated.get('name')}{barred}")
     # ── where the board is actually lived on ─────────────────────────────────────────────────
     # The last read, and the one no earlier driver took. Every gate up to this point asks whether
     # ground is *reachable* — the strait width, the traversability components, the goal ratios — and
@@ -328,6 +398,9 @@ def main():
         os.makedirs(out)
         zipfile.ZipFile(io.BytesIO(zip_bytes)).extractall(out)
         print(f"    world -> {out}")
+        # After the extraction, which clears the directory it writes into.
+        print("== the pictures of what was authored")
+        renders(into or os.path.join(out, "renders"), slug, finish, layout, drawn, flow)
     # the documents that were actually posted, beside the ones that were authored
     with open(f"{specdir}/{base}.layout.json", "w") as handle:
         json.dump(layout, handle, indent=1)

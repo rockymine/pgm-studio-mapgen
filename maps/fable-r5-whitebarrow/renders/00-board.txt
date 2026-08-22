@@ -1,0 +1,52 @@
+=== Whitebarrow Downfinal board — cell grid, 1 char = 5×5 blocks, 20×38 cells = 100×190 blocks
+     09876543210123456789
+               -         
+ -19 |        iiii        |
+ -18 |        iiii        |
+ -17 |      hhhhhhhh      |
+ -16 |      hhhhhhhh      |
+ -15 |      ggggggggg     |
+ -14 |      ggggggggg     |
+ -13 |ff    gggggggggcccc |
+ -12 |ffeeeegggggggggcccc |
+ -11 |ffeeeedddddddddcccc |
+ -10 |ffeeeedddddddddcccc |
+  -9 |ffeeeedddddddddcccc |
+  -8 |ffeeeedddddddddcccc |
+  -7 |ffeeeedddddddddcccc |
+  -6 |ffbbbbbbbbbbbbbbbb  |
+  -5 |ffbbbbbbbbbbbbbbbb  |
+  -4 |  bbbbbbbbbbbbbbbb  |
+  -3 |  bbbbbbbbbbbbbbbb  |
+  -2 |   AAAAAAAAAAAAAA   |
+  -1 |   AAAAAAAAAAAAAA   |
+   0 |   AAAAAAAAAAAAAA   |<<< z=0
+   1 |   AAAAAAAAAAAAAA   |
+   2 |  BBBBBBBBBBBBBBBB  |
+   3 |  BBBBBBBBBBBBBBBB  |
+   4 |  BBBBBBBBBBBBBBBBFF|
+   5 |  BBBBBBBBBBBBBBBBFF|
+   6 | CCCCDDDDDDDDDEEEEFF|
+   7 | CCCCDDDDDDDDDEEEEFF|
+   8 | CCCCDDDDDDDDDEEEEFF|
+   9 | CCCCDDDDDDDDDEEEEFF|
+  10 | CCCCDDDDDDDDDEEEEFF|
+  11 | CCCCGGGGGGGGGEEEEFF|
+  12 | CCCCGGGGGGGGG    FF|
+  13 |     GGGGGGGGG      |
+  14 |     GGGGGGGGG      |
+  15 |      HHHHHHHH      |
+  16 |      HHHHHHHH      |
+  17 |        IIII        |
+  18 |        IIII        |
+
+  legend (upper = stated, lower = its rot_180 image)
+    A  saddle           piece       cells x  -7..7   z  -2..2     blocks x  -35..35   z  -10..10     (14×4 cells)
+    B  apron            piece       cells x  -8..8   z   2..6     blocks x  -40..40   z   10..30     (16×4 cells)
+    C  hanger           piece       cells x  -9..-5  z   6..13    blocks x  -45..-25  z   30..65     (4×7 cells)
+    D  down             piece       cells x  -5..4   z   6..11    blocks x  -25..20   z   30..55     (9×5 cells)
+    E  dell             piece       cells x   4..8   z   6..12    blocks x   20..40   z   30..60     (4×6 cells)
+    F  scarp            piece       cells x   8..10  z   4..13    blocks x   40..50   z   20..65     (2×9 cells)
+    G  back             piece       cells x  -5..4   z  11..15    blocks x  -25..20   z   55..75     (9×4 cells)
+    H  spawn-apron      piece       cells x  -4..4   z  15..17    blocks x  -20..20   z   75..85     (8×2 cells)
+    I  spawn            spawn       cells x  -2..2   z  17..19    blocks x  -10..10   z   85..95     (4×2 cells)

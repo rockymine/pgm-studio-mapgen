@@ -186,6 +186,17 @@ through `surface` alone comes out banded in its top four courses and plain below
 own wall, and on a two-storey preset the storey is most of what a section shows. The exception is `Stilts`,
 whose whole idiom *is* storey 0's wall (air over a beam course) — repaint that and the stilts disappear.
 
+### A material's `kind` has to be the first property of its object
+
+`kind` is read positionally, so moving it and nothing else turns a document that answers 200 into a **400
+naming a kind that is right there** — *"a material names no kind, or names one that does not exist"*. Any
+generic tool that reorders JSON does this: a formatter, a re-serializer, `json.dumps(…, sort_keys=True)`.
+Measured on a room style that previews at 200 as authored and 400 with `kind` moved last in every material,
+the two documents comparing equal as data.
+
+Write materials `kind` first, and never round-trip a theme or a style through anything that sorts keys.
+Filed as `TL2`; until it lands, key order carries meaning in a format where it should not.
+
 ### Two words differ between a save request and a snapshot
 
 `porch.edge: "front"` is a save-request word. On a **snapshot** — `preview-snapshot`, `roomStyles`, a dressing

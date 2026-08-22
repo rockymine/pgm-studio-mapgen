@@ -1,0 +1,24 @@
+{
+  "plan": 1,
+  "meta": { "name": "Fellgate Moor" },
+  "globals": { "cell": 5, "symmetry": "rot_180", "maxPlayers": 16, "surface": 9, "observerY": 58 },
+  "pieces": [
+    { "id": "spawn",      "role": "spawn",     "rect": [-2, -34, 4, 4], "surface": 9 },
+    { "id": "lane-out",   "role": "piece",     "rect": [-2, -30, 4, 4], "surface": 9 },
+    { "id": "wall-mouth", "role": "piece",     "rect": [-2, -26, 4, 4], "surface": 9 },
+    { "id": "bothy",      "role": "wool-room", "rect": [2, -26, 4, 4], "surface": 9 },
+    { "id": "fork",       "role": "piece",     "rect": [-5, -22, 10, 4], "surface": 9 },
+    { "id": "moor-w",     "role": "piece",     "rect": [-5, -18, 2, 13], "surface": 11 },
+    { "id": "moor-e",     "role": "piece",     "rect": [3, -18, 2, 13], "surface": 11 },
+    { "id": "hub",        "role": "piece",     "rect": [-5, -5, 10, 2], "surface": 9 }
+  ],
+  "zones": [
+    { "id": "ford",       "rect": [-2, -3, 4, 6] },
+    { "id": "flood-lane", "rect": [4, -3, 4, 6], "kind": "water-lane" }
+  ],
+  "placements": {
+    "spawns":       [ { "id": "spawn-1", "piece": "spawn", "at": [2, 2], "facing": "back" } ],
+    "wools":        [ { "id": "wool-1", "piece": "bothy", "at": [2, 2] } ]
+  },
+  "walls": [ { "a": "wall-mouth", "b": "fork" } ]
+}

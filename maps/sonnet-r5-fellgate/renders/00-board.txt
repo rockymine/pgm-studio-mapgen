@@ -1,0 +1,87 @@
+=== Fellgate Moorv4 final plan — cell grid, 1 char = 5×5 blocks, 16×68 cells = 80×340 blocks
+     8765432101234567
+             -       
+ -34 |      AAAA      |
+ -33 |      AAAA      |
+ -32 |      AAAA      |
+ -31 |      AAAA      |
+ -30 |      BBBB      |
+ -29 |      BBBB      |
+ -28 |      BBBB      |
+ -27 |      BBBB      |
+ -26 |      CCCC      |
+ -25 |      CCCC      |
+ -24 |      CCCC      |
+ -23 |      CCCC      |
+ -22 |      DDDD      |
+ -21 |      DDDD      |
+ -20 |      DDDD      |
+ -19 |   EEEEEEEEEE   |
+ -18 |   EEEEEEEEEE   |
+ -17 |   EEEEEEEEEE   |
+ -16 |   EEEEEEEEEE   |
+ -15 |   FFooooooGG   |
+ -14 |   FFooooooGG   |
+ -13 |   FFooooooGG   |
+ -12 |   FFooooooGG   |
+ -11 |   FFooooooGG   |
+ -10 |   FFooooooGG   |
+  -9 |   FFooooooGG   |
+  -8 |   FFooooooGG   |
+  -7 |   FFooooooGG   |
+  -6 |   FFooooooGG   |
+  -5 |   HHHHHHHHHH   |
+  -4 |   HHHHHHHHHH   |
+  -3 |jjjjooIIIIooJJJJ|
+  -2 |jjjjooIIIIooJJJJ|
+  -1 |jjjjooIIIIooJJJJ|
+   0 |jjjjooIIIIooJJJJ|<<< z=0
+   1 |jjjjooIIIIooJJJJ|
+   2 |jjjjooIIIIooJJJJ|
+   3 |   hhhhhhhhhh   |
+   4 |   hhhhhhhhhh   |
+   5 |   ggooooooff   |
+   6 |   ggooooooff   |
+   7 |   ggooooooff   |
+   8 |   ggooooooff   |
+   9 |   ggooooooff   |
+  10 |   ggooooooff   |
+  11 |   ggooooooff   |
+  12 |   ggooooooff   |
+  13 |   ggooooooff   |
+  14 |   ggooooooff   |
+  15 |   eeeeeeeeee   |
+  16 |   eeeeeeeeee   |
+  17 |   eeeeeeeeee   |
+  18 |   eeeeeeeeee   |
+  19 |      dddd      |
+  20 |      dddd      |
+  21 |      dddd      |
+  22 |      cccc      |
+  23 |      cccc      |
+  24 |      cccc      |
+  25 |      cccc      |
+  26 |      bbbb      |
+  27 |      bbbb      |
+  28 |      bbbb      |
+  29 |      bbbb      |
+  30 |      aaaa      |
+  31 |      aaaa      |
+  32 |      aaaa      |
+  33 |      aaaa      |
+
+  o  = enclosed void — 144 cells the board rings and nothing covers (pieces and build
+       zones both count as sides, per match-flow.md §6.8). A hole is made by ARRANGEMENT,
+       never by subtraction: a buffer drawn over a piece is inert by design, and the
+       compiler declares every enclosed void a `void-N` buffer on each compile anyway.
+  legend (upper = stated, lower = its rot_180 image)
+    A  spawn            spawn       cells x  -2..2   z -34..-30   blocks x  -10..10   z -170..-150   (4×4 cells)
+    B  lane-out         piece       cells x  -2..2   z -30..-26   blocks x  -10..10   z -150..-130   (4×4 cells)
+    C  bothy            wool-room   cells x  -2..2   z -26..-22   blocks x  -10..10   z -130..-110   (4×4 cells)
+    D  wall-mouth       piece       cells x  -2..2   z -22..-19   blocks x  -10..10   z -110..-95    (4×3 cells)
+    E  fork             piece       cells x  -5..5   z -19..-15   blocks x  -25..25   z  -95..-75    (10×4 cells)
+    F  moor-w           piece       cells x  -5..-3  z -15..-5    blocks x  -25..-15  z  -75..-25    (2×10 cells)
+    G  moor-e           piece       cells x   3..5   z -15..-5    blocks x   15..25   z  -75..-25    (2×10 cells)
+    H  hub              piece       cells x  -5..5   z  -5..-3    blocks x  -25..25   z  -25..-15    (10×2 cells)
+    I  ford             build       cells x  -2..2   z  -3..3     blocks x  -10..10   z  -15..15     (4×6 cells)
+    J  flood-lane       water-lane  cells x   4..8   z  -3..3     blocks x   20..40   z  -15..15     (4×6 cells)
