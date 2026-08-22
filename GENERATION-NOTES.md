@@ -102,6 +102,20 @@ Measured on a five-tier board at `x = 0`, with `shelf` (`base_height 22`, quartz
 problem does not arise at all. Where it is not, author the two edges to overlap by two to four blocks and the
 seam reads as a transition rather than a stripe.
 
+### A relief posted to `sketch/from-plan` loses to the one already stored
+
+`from-plan` merges, and a relief is carried across the merge under its own rule. On a map that already
+holds one, posting a **changed** relief answers 200 and builds the terrain that was already there. The
+failure is silent and worse than silent, because the two reads disagree and both are correct:
+`POST …/sketch/relief/read` measures the layout in the request body, so it reports the new numbers, while
+`GET …/render/heightmap` builds the stored document, so it draws the old ground. An iteration loop that
+watches the readback sees its edits land and an iteration loop that watches the render does not.
+
+`PUT …/sketch` replaces the blob verbatim and is what an edit loop wants. `from-plan` is right for a
+first build — `drive.py` runs it against a map row created moments earlier, which has no stored relief to
+win — and `?force=true` does not change this: force accepts an *orphaned* relief (`SK1`, 409), it does
+not make a posted relief beat a stored one.
+
 ### `base_height: N` puts the top block at `y = N−1`
 
 Confirmed at every tier on every board that has traced a real map. Any plan matching absolute heights is one
@@ -165,6 +179,40 @@ right in numbers can still cross itself.
 touching. And a **wall**: its width was fixed at compile from the plan's seam, so bowing the coast beside it
 widens the lane past the wall's ends and hands players a way round it. The wall rects are in
 `POST /api/plan/inspect`'s structures feed; veto every edge within 10 blocks of one.
+
+### A corner recipe does not make a coastline: a closed ring wants tangent continuity
+
+The handle construction above — `c1 = p0 + d·t + n·bulge`, with `t·|d| ≥ bulge` and
+`bulge ≤ 0.35·|d|` — is the recipe for **one** corner, and it is correct for one. Applied to every edge
+of a closed outline it constrains each edge against itself and says nothing about the two edges meeting
+at a vertex, so every edge bows outward and meets its neighbour in a cusp. A 24-vertex island authored
+that way, with both constraints satisfied and no self-intersection, rasterizes as a **gear**: twenty-four
+points around a blob.
+
+An organic outline is a smoothness constraint between edges, not a bulge on each. Catmull-Rom converted
+to Bézier gives it in one line and is tangent-continuous at every vertex by construction:
+
+```
+c1 = P1 + (P2 − P0)/6        # controls[i].out,  edge i → j
+c2 = P2 − (P3 − P1)/6        # controls[j].in
+```
+
+with `P0`/`P3` the ring neighbours. Raising the divisor flattens the curve toward the polygon; 6 is a
+natural coastline at a 12–20 block vertex spacing.
+
+**Leave the seam edge alone.** On a `rot_180` board the edge a shape shares with its own image — the run
+along `z = 0` — takes no handles at all: straight, the mirror lands on it exactly, and the two halves are
+one island. That is the same warning the entry above gives about bowing a seam, and it is the one edge of
+the ring that must be excluded from whichever construction is used.
+
+### `shapePropsById` reaches a compiled shape's geometry, not only its knobs
+
+`tools/README.md` lists the mergeable fields as `relief_scope`, `controls`, `anchor_heights` and
+`height_mode`. The merge is a plain dict update over the compiled shape, so **`vertices` merges too** —
+which is what lets a plan of three rectangles compile to one polygon and that polygon be replaced by a
+hand-authored ring with a full handle table. A 24-vertex ring and 24 control entries posted this way draw
+no `RQ3`. Pieces at one `surface` fuse into one shape, so keeping every generating piece at the same
+height is what makes there be exactly one shape to replace.
 
 ### A theme and a house style are snapshots, and `RQ3` does not reach inside them
 
@@ -242,6 +290,39 @@ Chamfer every sharp corner with two bracketing points — the spline then has no
 `region/dressing-report.json` after a build, where a prop the band refused is named with its colliding cell.
 
 ---
+
+## Dressing density
+
+### A tree's ground claim scales with its height, and varies with its seed
+
+`DR-CLAIM` names the pair after the fact; nothing answers how far apart two oaks must stand *before* they
+are placed. Measured against the pass over four builds of the same wood, two template oaks clash below a
+Chebyshev separation of roughly
+
+```
+(height_a + height_b) / 5
+```
+
+so a pair of 9s may stand 4 apart and a pair of 14s may not stand 5 apart. It is not a species constant:
+`Decorator.CanopyRadius` measures the crown the build will actually write, and the crown is hash-keyed
+off the prop's `seed`, so **the same pair of heights is not always the same distance** — a `(9, 11)` pair
+at Chebyshev 4 survived one build and was declined the next after an unrelated edit shifted the seeds.
+Divide by 4.7 rather than 5 to sit clear of the variance; at 5 exactly, a board builds clean and its next
+revision does not.
+
+Dart-throwing beats a jittered lattice here for the same reason. A lattice at the spacing either reads as
+a grid (no jitter) or breaks its own minimum (with jitter, which is what the rule charges for); thrown
+points accepted against the test pack right up against it. On a 40 × 50 wood: 60 trees thrown against
+23 latticed, at the same rule.
+
+### A texture path is an exclusion zone as wide as itself
+
+Using the path prop as a brush — a wide `rough` or `worn` band whose `pave` says what a stretch of ground
+*is* — is the way to get dedicated ground out of a single theme, and `DR-ROAD` prices it: a tree keeps
+**three** blocks from the nearest paved cell and a boulder **two**, measured from the prop's resting
+cells, so a radius-10 brush is a 26-wide strip nothing can stand in. A paved forest floor is an empty
+forest. Brush the ground that is meant to be open — the fighting ring round a goal, a quarry pan, a
+trampled heath, a shore — and leave the wood's floor to the theme and the flora overlay.
 
 ## After the intent, and at the export
 

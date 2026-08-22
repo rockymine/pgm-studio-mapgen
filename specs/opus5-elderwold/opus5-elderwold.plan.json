@@ -1,0 +1,21 @@
+{
+  "plan": 1,
+  "meta": { "name": "Elderwold" },
+  "globals": { "cell": 5, "symmetry": "rot_180", "maxPlayers": 24, "surface": 12 },
+  "pieces": [
+    { "id": "body",     "role": "piece", "rect": [-12, 0, 24, 14], "surface": 12 },
+    { "id": "shoulder", "role": "piece", "rect": [-10, 14, 20, 8], "surface": 12 },
+    { "id": "bench",    "role": "piece", "rect": [-7, 22, 14, 4],  "surface": 12 },
+    { "id": "spawn",    "role": "spawn", "rect": [-2, 26, 4, 4],   "surface": 12 }
+  ],
+  "zones": [
+    { "id": "ford-band", "rect": [-12, 0, 24, 3], "holes": [] }
+  ],
+  "placements": {
+    "spawns": [ { "id": "spawn-1", "piece": "spawn", "at": [2, 2], "facing": "front" } ],
+    "destroyables": [
+      { "id": "destroyable-1", "at": [-4, 18], "style": "cube-4",
+        "materials": "ender stone", "float": 4, "name": "Endstone Cairn" }
+    ]
+  }
+}

@@ -1,0 +1,153 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 24,
+ "spawns": [
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 12,
+    "z": 140
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 130,
+     "maxX": 10,
+     "maxZ": 150
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 130,
+    "maxX": 10,
+    "maxZ": 150
+   },
+   "iron": []
+  },
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 12,
+    "z": -140
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -150,
+     "maxX": 10,
+     "maxZ": -130
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -150,
+    "maxX": 10,
+    "maxZ": -130
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 27,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -60,
+    "minZ": 0,
+    "maxX": 60,
+    "maxZ": 15
+   },
+   {
+    "minX": -60,
+    "minZ": -15,
+    "maxX": 60,
+    "maxZ": 0
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Endstone Cairn",
+   "style": "cube-4",
+   "materials": "ender stone",
+   "anchor": {
+    "x": -20,
+    "y": 12,
+    "z": 90
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Endstone Cairn",
+   "style": "cube-4",
+   "materials": "ender stone",
+   "anchor": {
+    "x": 19,
+    "y": 12,
+    "z": -91
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Elderwold",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}
