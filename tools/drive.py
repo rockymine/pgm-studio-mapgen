@@ -30,8 +30,9 @@ went unread, and `SK3`/`SK4` name a shape that drew no ground. `GET /api/rules?r
 any of those means and how to fix it.
 
 It also takes every picture the studio will draw for what was authored — a swatch per theme, a plan and a
-section per house, the coverage map, and the grid and flow as text — into `<worlddir>/renders`, or into
-`--renders <dir>`. Taking a picture is not the same as looking at one; what it removes is the excuse.
+section per house, the coverage map, the board read back from every angle, and the grid and flow as text —
+into `<worlddir>/renders`, or into `--renders <dir>`. Taking a picture is not the same as looking at one;
+what it removes is the excuse.
 """
 import json, sys, io, zipfile, urllib.request, urllib.error, os, shutil
 
@@ -203,6 +204,26 @@ def renders(into, slug, finish, layout, drawn, flow):
                 f"/room-styles/preview-snapshot?format=png&view={view}", json.loads(style_json))
 
     png("coverage.png", "GET", f"/map/{slug}/coverage?format=png")
+
+    # The world itself, read back through the routes that answer it. These are the reads an author is meant
+    # to look at after building and the ones nobody ever took, because until they answered over HTTP an agent
+    # had to know a .NET binary existed. `column` is the workhorse and is not here: it answers one coordinate
+    # and the coordinates worth asking about are the author's, not a driver's.
+    for name, route in (
+        ("world-topdown.png", "render/topdown"),
+        ("world-ground.png", "render/topdown?layer=ground&material=1"),
+        ("world-structure.png", "render/topdown?layer=structure"),
+        ("world-foliage.png", "render/topdown?layer=foliage"),
+        ("world-objectives.png", "render/topdown?layer=objectives"),
+        ("world-heightmap.png", "render/heightmap"),
+        ("world-surface.png", "render/surface"),
+        ("world-traversability.png", "render/traversability"),
+        ("world-mirror.png", "render/mirror"),
+        ("world-section-x0.png", "render/section?axis=x&at=0&from=-120&to=120"),
+        ("world-section-z0.png", "render/section?axis=z&at=0&from=-120&to=120"),
+    ):
+        png(name, "GET", f"/map/{slug}/{route}")
+
     print(f"    {len(written)} render(s) -> {into}")
 
 

@@ -293,6 +293,13 @@ is why.
 
 ## Reading the world back
 
+**The reads answer over HTTP now**, one route each under `GET /api/map/{slug}/…` — `render/topdown`,
+`render/section`, `render/heightmap`, `render/surface`, `render/traversability`, `render/structures`,
+`render/mirror`, and `column`. The schema names each one's own query words, and every route's summary carries
+what it draws and where it is known to mislead, so what follows here is only what a summary cannot hold. The
+`PgmStudio.RoundTrip` flags still take the same readings off a region directory, and `--help` prints the same
+sentences.
+
 ### `--column` is the only honest answer
 
 Every other read is a projection. Probe the coordinate you already expect something at.

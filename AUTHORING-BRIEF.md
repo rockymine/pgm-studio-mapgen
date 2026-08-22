@@ -17,13 +17,13 @@ describes.
 
 | Read | Answers |
 |---|---|
-| `GET /api/openapi/v1.json` | every route, its request body, its answer, and the failure codes it declares. **120 paths, 151 operations, 291 schemas**, and every answered field carries a description |
+| `GET /api/openapi/v1.json` | every route, its request body, its answer, and the failure codes it declares. **128 paths, 159 operations, 296 schemas**, and every answered field carries a description |
 | `/api-docs` | the same document as a browsable page, if you have a browser |
-| `GET /api/rules` | the **111 rule ids** across 24 families, each with what it *means*, how to *fix* it, and the evidence behind its numbers. `?rule=GO1` and `?family=DR` filter it |
+| `GET /api/rules` | the **113 rule ids** across 24 families, each with what it *means*, how to *fix* it, and the evidence behind its numbers. `?rule=GO1` and `?family=DR` filter it |
 | the answer itself | a refusal names its rule ids; a success carries `warnings` for what it did not do |
 
 Read `GET /api/rules` once at the start of a run. It is the whole vocabulary of every no the system can say,
-and it is cheaper to read 111 rows now than to meet them one build at a time.
+and it is cheaper to read 113 rows now than to meet them one build at a time.
 
 ### What a refusal looks like
 
@@ -42,7 +42,7 @@ not enough, `GET /api/rules?rule=<id>` answers what the rule means and how to sa
 
 Status codes are the gate's own: **400** a document wrong as posted · **404** a subject the studio does not
 have · **409** well-formed but conflicting with the map's state · **422** cannot be processed · **500** the
-studio's own fault. Each route declares which of those it answers — **96 of the 151 operations** name a 404,
+studio's own fault. Each route declares which of those it answers — **104 of the 159 operations** name a 404,
 409 or 422 in the schema — so what can go wrong is knowable before anything is posted.
 
 ### What a success carries
@@ -55,7 +55,7 @@ studio's own fault. Each route declares which of those it answers — **96 of th
 | `decline` | the work happened and one piece of what you wrote is not in it — the tree, boulder or building the dressing pass could not seat is not in the world, and ignoring it does not put it back |
 | `complaint` | the work happened and lost nothing; something is worth saying anyway |
 
-**110 of the 2xx answers declare a `warnings` array**, and all 151 operations declare a `Pgm-Warnings`
+**116 of the 2xx answers declare a `warnings` array**, and all 159 operations declare a `Pgm-Warnings`
 response header — `6 RQ3 SK3 SK4` — which is written whenever the complaint channel collected anything, so
 the count and the rule ids are readable without parsing the body. **Read the body either way**: an endpoint
 that answers `warnings` as its own field — `/plan/evaluate` is one — fills the array without the header.
@@ -118,6 +118,12 @@ leaves empty, so a name PATCHed earlier is overwritten.
 stored plan and cost no build; the relief read-back looks at the ground before it is built; coverage is the
 only read that asks whether any journey *goes* somewhere rather than whether it *can*. All four are worth more
 than the render you would have looked at instead.
+
+**Look at what you built, through the API.** `GET /api/map/{slug}/render/topdown` and its seven siblings —
+`section`, `heightmap`, `surface`, `traversability`, `structures`, `mirror`, and `column` — answer the built
+world as pictures and as text. Each route's summary says what it draws and where it misleads; each declares
+its own query words. **`column` is the workhorse**: every picture beside it is a projection, and it is what is
+actually at a coordinate, which is the read to reach for when a picture and a document disagree.
 
 **`GET …/preflight` is the export's verdict at a fraction of its cost**, and it is the read most easily
 skipped because nothing refuses you for skipping it. It runs the same traversability check the export refuses
