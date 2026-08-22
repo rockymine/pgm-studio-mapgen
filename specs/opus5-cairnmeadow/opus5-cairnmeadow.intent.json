@@ -1,0 +1,203 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 20,
+ "spawns": [
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 12,
+    "z": 110
+   },
+   "protection": [
+    {
+     "minX": -5,
+     "minZ": 105,
+     "maxX": 5,
+     "maxZ": 115
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -5,
+    "minZ": 105,
+    "maxX": 5,
+    "maxZ": 115
+   },
+   "iron": []
+  },
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 12,
+    "z": -110
+   },
+   "protection": [
+    {
+     "minX": -5,
+     "minZ": -115,
+     "maxX": 5,
+     "maxZ": -105
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -5,
+    "minZ": -115,
+    "maxX": 5,
+    "maxZ": -105
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 27,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -45,
+    "minZ": 25,
+    "maxX": -20,
+    "maxZ": 40
+   },
+   {
+    "minX": 20,
+    "minZ": -40,
+    "maxX": 45,
+    "maxZ": -25
+   },
+   {
+    "minX": 20,
+    "minZ": 25,
+    "maxX": 45,
+    "maxZ": 40
+   },
+   {
+    "minX": -45,
+    "minZ": -40,
+    "maxX": -20,
+    "maxZ": -25
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Tor Stone",
+   "style": "cube-3",
+   "materials": "ender stone",
+   "anchor": {
+    "x": 34,
+    "y": 12,
+    "z": 78
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Delve Stone",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -24,
+    "y": 12,
+    "z": 70
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Tor Stone",
+   "style": "cube-3",
+   "materials": "ender stone",
+   "anchor": {
+    "x": -35,
+    "y": 12,
+    "z": -79
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Delve Stone",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 23,
+    "y": 12,
+    "z": -71
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Cairnmeadow",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red",
+  "3": "neutral"
+ },
+ "structures": null
+}

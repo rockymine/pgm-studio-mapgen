@@ -1,0 +1,23 @@
+{
+  "plan": 1,
+  "meta": { "name": "Cairnmeadow" },
+  "globals": { "cell": 5, "symmetry": "rot_180", "maxPlayers": 20, "surface": 12 },
+  "pieces": [
+    { "id": "meadow", "role": "piece", "rect": [-13, 8, 26, 16], "surface": 12 },
+    { "id": "spawn",  "role": "spawn", "rect": [-1, 21, 2, 2],   "surface": 12 },
+    { "id": "centre", "role": "piece", "rect": [-9, -5, 18, 10], "surface": 12, "mirrors": false }
+  ],
+  "zones": [
+    { "id": "span-w", "rect": [-9, 5, 5, 3], "holes": [] },
+    { "id": "span-e", "rect": [4, 5, 5, 3],  "holes": [] }
+  ],
+  "placements": {
+    "spawns": [ { "id": "spawn-1", "piece": "spawn", "at": [1, 1], "facing": "front" } ],
+    "destroyables": [
+      { "id": "destroyable-1", "at": [6.8, 15.6], "style": "cube-3",
+        "materials": "ender stone", "float": 4, "name": "The Tor Stone" },
+      { "id": "destroyable-2", "at": [-4.8, 14], "style": "pillar-3",
+        "materials": "obsidian", "float": 4, "name": "The Delve Stone" }
+    ]
+  }
+}

@@ -102,6 +102,22 @@ Measured on a five-tier board at `x = 0`, with `shelf` (`base_height 22`, quartz
 problem does not arise at all. Where it is not, author the two edges to overlap by two to four blocks and the
 seam reads as a transition rather than a stripe.
 
+### Two ordering facts about a relief, and each one hides a landform
+
+**A push is applied to the solved surface, so a push over a hollow fills the hollow in.** A push and
+an `area` mark are not two statements about the same field: the marks are solved first and the pushes
+are added to the answer. A twenty-radius push laid across a bench meant to be five blocks down lifted
+it six, and a `sink` cut from that ground came out shallow with nothing complaining.
+
+**A later mark wins a contested cell, so a mark written over a bench replaces it.** That is the
+mechanism the stacked-hollow idiom depends on — nested `area` rings written outward-in — and it is
+the same mechanism that silently overrode a bench with a knoll written after it and left a
+**21-block** face into a pit that no one authored.
+
+Neither shows up in the document, in a warning, or in a top-down. Both are one
+`GET /map/{slug}/column?at=…` transect across the join. Take one across every place two landforms
+share ground, before believing the JSON.
+
 ### A relief posted to `sketch/from-plan` loses to the one already stored
 
 `from-plan` merges, and a relief is carried across the merge under its own rule. On a map that already
@@ -214,6 +230,41 @@ hand-authored ring with a full handle table. A 24-vertex ring and 24 control ent
 no `RQ3`. Pieces at one `surface` fuse into one shape, so keeping every generating piece at the same
 height is what makes there be exactly one shape to replace.
 
+### `skirt` decides whether an erected shape is a landform or a monument
+
+One measurement covers the whole range, probed on flat ground at y11:
+
+| `skirt` vs `base_height` | The edge builds | Reads as |
+|---|---|---|
+| `0` | one sheer step of the whole lift | a monolith, a cut face |
+| about half the lift | **two**-block risers | a lip: crossed with a placed block, not on foot |
+| **≥ the lift** | **one**-block risers, all the way round | a landform: walked onto from any side |
+
+So `raise 7, skirt 10` is an outcrop a player strolls up and `raise 7, skirt 0` is a standing stone,
+from the same two fields. A shape meant to belong to the terrain wants the third row and a theme in
+the ground's own family — plain stone under a grass meadow — rather than an accent.
+
+**Grass painted back over it is the rest of the merge, and it is free.** A path prop replaces the
+surface finish and adds no cell, so two to five `worn` brushes with a grass pave, drawn as tongues
+over a crag's shoulders at different angles, let the rock show through the grass instead of the
+grass stopping dead at the shape's outline. The crag stays one plain theme and the seam disappears.
+
+**`skirt` is one number for the whole outline**, so an outcrop is uniformly walkable or uniformly
+steep; `anchor_heights` tilts the *top*, not the edge. There is no per-vertex skirt.
+
+### `height_mode: sink` is a quarry, and its anchors are its depth
+
+`sink` with `skirt: 1` cuts sheer faces and a flat floor — measured, a lift of 6 on flat y11 ground
+gives a clean 6-block drop to y5 and back. `anchor_heights` on a sink states the **depth** per
+vertex, so a ring whose corners read 2, 3, 6, 6 comes out four down on average and tilted.
+
+**Notch it rather than tilt it.** Setting most of the ring to full depth and the two vertices on one
+side to 1 gives a pit that is sheer nearly all the way round with a single shallow ramp in; a linear
+tilt across the same ring turns the whole shallow half into a bowl and the cut stops reading as a
+cut. Without a way in, the floor is a **stranded walkable place** — `relief/read` reports it as an
+extra `places` entry with the largest share below 1, which is the only thing on the board that says
+so; a top-down cannot show it.
+
 ### An erected shape is the pillar idiom, and its theme has to go in `fill`
 
 `height_mode: raise` with `skirt: 0` and `floor: 0` is one abstract monolith: the top stands a stated
@@ -294,6 +345,17 @@ island **only if that island is its own rot_180 image**. Authoring such a ring a
 their negations makes it exactly that, at no cost.
 
 ## Buildings
+
+### A room's building is sized by its piece, and by nothing else
+
+`WX1` makes the shell the piece rect inset one block on every side, so a **20 × 20** spawn piece
+stamps an **18 × 18** house — a hall, not a spawn hut — and there is no field that separates the two.
+The only way to a smaller building is a smaller piece: **10 × 10** gives an 8 × 8 shell, which is a
+cottage. The trade is that the piece is also the protection region and the spawn's own ground, so a
+wide protected apron with a small house on it is not expressible.
+
+Watch the marker parity while shrinking it (`WX3`): a piece of an even number of cells takes a whole
+`at`, an odd number takes a half, and mixing them refuses.
 
 ### A placed building is capped at 192 blocks of wing, and a storey wall at `clear + 1` courses
 
