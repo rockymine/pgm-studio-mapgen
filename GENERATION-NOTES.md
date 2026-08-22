@@ -195,7 +195,8 @@ Measured on a room style that previews at 200 as authored and 400 with `kind` mo
 the two documents comparing equal as data.
 
 Write materials `kind` first, and never round-trip a theme or a style through anything that sorts keys.
-Filed as `TL2`; until it lands, key order carries meaning in a format where it should not.
+Fixed in the studio as `TL2` — the reader takes `kind` wherever it sits. A theme or a style written against
+an older build still wants `kind` first.
 
 ### Two words differ between a save request and a snapshot
 
