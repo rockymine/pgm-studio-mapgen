@@ -1,0 +1,117 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Hoarstone"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 16,
+    "surface": 12
+  },
+  "pieces": [
+    {
+      "id": "shore",
+      "role": "piece",
+      "rect": [
+        -13,
+        8,
+        26,
+        13
+      ],
+      "surface": 12
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        17,
+        4,
+        4
+      ],
+      "surface": 12
+    },
+    {
+      "id": "skerry",
+      "role": "piece",
+      "rect": [
+        8,
+        2,
+        5,
+        4
+      ],
+      "surface": 12
+    },
+    {
+      "id": "core",
+      "role": "piece",
+      "rect": [
+        -6,
+        -4,
+        12,
+        8
+      ],
+      "surface": 12,
+      "mirrors": false
+    }
+  ],
+  "zones": [
+    {
+      "id": "span-mid",
+      "rect": [
+        -3,
+        4,
+        6,
+        4
+      ],
+      "holes": []
+    },
+    {
+      "id": "span-back",
+      "rect": [
+        8,
+        6,
+        5,
+        2
+      ],
+      "holes": []
+    },
+    {
+      "id": "span-in",
+      "rect": [
+        6,
+        2,
+        2,
+        2
+      ],
+      "holes": []
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          2
+        ],
+        "facing": "front"
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "destroyable-1",
+        "at": [
+          3.5,
+          12.5
+        ],
+        "style": "cube-3",
+        "materials": "emerald block",
+        "float": 4,
+        "name": "Greenstone"
+      }
+    ]
+  }
+}

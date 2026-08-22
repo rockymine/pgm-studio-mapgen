@@ -178,15 +178,18 @@ run. Each map's `specs/<slug>/authored-by-grok/` holds the original documents ve
 | `sandscar` | dtm | Grok | one plateau a team, two monuments 50 apart, a hollow under one and a hill under the other, a river dragged across as a paved path |
 | `sandscar-complex` | dtm | Grok | a height progression from a river front to a dug pit and a climbed hill, both carrying a monument, savanna crest behind |
 
-### Opus 5 — Elderwold, the relief tool taken as far as it goes
+### Opus 5 — Elderwold and Hoarstone
 
-A board authored from a brief rather than a spec: as few plan pieces as the studio allows, the coast
-stated once as a single polygon and shaped in the sketch, and every landform above it stated as relief.
-[reports/opus5-elderwold-run.md](reports/opus5-elderwold-run.md) is the run.
+Two boards authored from a brief rather than a spec, the second after review of the first.
+[reports/opus5-elderwold-run.md](reports/opus5-elderwold-run.md) ·
+[reports/opus5-hoarstone-run.md](reports/opus5-hoarstone-run.md)
 
 | Folder | Mode | Author | What it is |
 |---|---|---|---|
 | `opus5-elderwold` | dtm | Opus 5 | a wooded island cut by a river with one paved ford: an endstone cairn on a flat shelf scarped on its attack face, a three-step sunken hollow west, an oak wood east, a cottage on a knoll with a track up to it. **One terrain shape, 24 vertices**; sixteen relief marks and three pushes; one theme, with five wide path props used as a texturing brush |
+| `opus5-hoarstone` | dtm | Opus 5 | a frozen archipelago — one island a team, three neutral rocks between them — carrying **thirteen erected monoliths** in three palettes the ground is not made of, six of them a ring on the middle island. Snow over exposed stone, template spruce, and four house plans: an L, a T, a U and a single range, each with its own roof form and storey stack |
+
+
 
 ### Opus 5 — authored to record the method
 

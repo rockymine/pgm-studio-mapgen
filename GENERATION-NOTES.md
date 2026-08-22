@@ -214,6 +214,30 @@ hand-authored ring with a full handle table. A 24-vertex ring and 24 control ent
 no `RQ3`. Pieces at one `surface` fuse into one shape, so keeping every generating piece at the same
 height is what makes there be exactly one shape to replace.
 
+### An erected shape is the pillar idiom, and its theme has to go in `fill`
+
+`height_mode: raise` with `skirt: 0` and `floor: 0` is one abstract monolith: the top stands a stated
+amount over whatever ground the footprint covers, the face is sheer on every side, and the plan is
+whatever polygon was drawn. `anchor_heights` slants that top per vertex — measured on flat ground at
+y11, a raise of 10 with no anchors tops at y21 everywhere, and the same shape with
+`anchor_heights: [4, 4, 16, 16]` runs y19 → y25 across its own footprint. Leave `controls` off
+entirely and the corners stay sharp, which is what makes a stone read as broken rock rather than as
+a small island.
+
+This is a **different device** from a stack of plates at successive `base_height` — the way
+`tools/seeds/ruediger.layout.json` builds its steps — and both are right for what each does. Plates
+are a staircase; a raise is a thing standing in the terrain.
+
+**Put the pillar theme's `layered` stack in `fill` as well as `surface`.** The surface bucket is the
+top few courses, so a stack stated only there bands the head of a 30-block monolith and leaves the
+whole face plain — and the face is the entire point. Stated in `surface`, `wall` and `fill`, a column
+read runs the strata bedrock to top.
+
+**And take the pillar out of the ground's tone family.** On a board whose exposed ground is stone,
+a pillar painted andesite, polished andesite and cobble is terrain wearing a different seed:
+`render/surface` shows it as ground. The rule the brief states for a building — never the same family
+as what it stands on — is the rule for an erected landform too.
+
 ### A theme and a house style are snapshots, and `RQ3` does not reach inside them
 
 Everywhere else, a field the studio did not read comes back named. A **theme** and a **house style** are
@@ -254,7 +278,39 @@ an older build still wants `kind` first.
 
 ---
 
+### The compiler groups islands by mirror, not by landmass
+
+Every fanned piece lands in one island called `team` however many separate rocks they are, and every
+on-axis piece in `neutral`. An archipelago of a team island plus a flanking skerry is therefore **one**
+relief keyed `team` covering two landmasses — which works, because the relaxation only ever steps onto
+land and a mark on one says nothing to the other across the void.
+
+Two consequences worth having before authoring one. **Nothing on `neutral` is mirrored for you**: a
+non-fanned island's relief is stated once and used once, so every mark on it has to be authored as an
+explicit pair about the origin or the two teams play different ground in the middle. And
+**`tools/drive.py` appends every `addShapes` entry to `islands[0]`**, so an authored shape joins the
+fanned group and is fanned — right for a shape on the team island, and right for one on an on-axis
+island **only if that island is its own rot_180 image**. Authoring such a ring as half its points plus
+their negations makes it exactly that, at no cost.
+
 ## Buildings
+
+### A placed building is capped at 192 blocks of wing, and a storey wall at `clear + 1` courses
+
+`HP3` names the cap in its refusal — *"the wings cover 232 blocks, past the 192 a placed building may
+take"* — so an L of a 16×9 hall and an 8×11 wing is refused and one of 14×8 + 7×10 is not. Draw the
+plan shapes to fit it: a U of a 16×7 hall and two 5×7 wings is 182.
+
+A **storey** carries `clear + 1` courses of wall (the top storey carries none extra, the roof being its
+lid), so a wall stack longer than that is silently truncated: a seven-band brick/checker/spruce stack
+on a storey of clear 3 builds four courses of brick and checker and no spruce at all, and the section
+reads as one flat mass. Size each storey's own stack to its own clear — which is also what makes a
+three-storey building read as three rooms rather than as one tall wall.
+
+**`POST /terrain/prop-preview` is the read for a multi-wing house.** It takes the prop — wings and all —
+plus a theme, and answers plan and section as PNG at `?format=png&view=…&scale=8`.
+`room-styles/preview-snapshot` draws the style on a default box, which for an L or a U is not the
+building being placed.
 
 ### Wing corners are inclusive, and the joint roles are ridge-derived
 
@@ -314,6 +370,27 @@ Dart-throwing beats a jittered lattice here for the same reason. A lattice at th
 a grid (no jitter) or breaks its own minimum (with jitter, which is what the rule charges for); thrown
 points accepted against the test pack right up against it. On a 40 × 50 wood: 60 trees thrown against
 23 latticed, at the same rule.
+
+### Three things nothing checks about a placed building
+
+A house is placed by hand and no gate filters it the way the pass filters a scattered prop, so three
+faults reach the world silently and each is cheap to check before posting.
+
+**A standing stone is terrain, so `DR-CLAIM` cannot see it.** An authored `addShapes` polygon is
+ground, not a prop, and a building drawn over one stands inside it and is reported by nothing. Test
+every footprint against every authored shape's ring yourself.
+
+**A prop is judged at every image of its orbit.** A rock beside a building on an on-axis island is a
+rock inside that building's own rot_180 twin, and the pass declines the whole prop rather than the
+image — so a site filter that tests only the authored cell is testing half the map. Measured: three of
+one build's four declines were images rather than originals. Test `(x, z)` and its orbit image against
+everything.
+
+**The authored ring is not the coast.** A Bézier edge bulges *outside* the vertex polygon on a convex
+stretch and *inside* it on a concave one, so testing a footprint against the raw vertices rejects good
+sites and passes bad ones. One house corner sat 1.5 blocks inside the drawn polygon and 1 block past
+the built shore; `DR-SITE` was the first thing to say so. Flatten every ring at the rasterizer's own
+16 samples per edge before testing anything against it.
 
 ### A texture path is an exclusion zone as wide as itself
 
