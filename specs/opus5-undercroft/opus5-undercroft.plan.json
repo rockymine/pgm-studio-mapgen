@@ -1,0 +1,140 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Undercroft"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 32,
+  "surface": 14
+ },
+ "pieces": [
+  {
+   "id": "front-w",
+   "role": "piece",
+   "rect": [
+    -8,
+    2,
+    6,
+    3
+   ],
+   "surface": 14
+  },
+  {
+   "id": "front-e",
+   "role": "piece",
+   "rect": [
+    2,
+    2,
+    6,
+    3
+   ],
+   "surface": 14
+  },
+  {
+   "id": "arm-w",
+   "role": "piece",
+   "rect": [
+    -8,
+    5,
+    4,
+    3
+   ],
+   "surface": 14
+  },
+  {
+   "id": "arm-e",
+   "role": "piece",
+   "rect": [
+    4,
+    5,
+    4,
+    3
+   ],
+   "surface": 14
+  },
+  {
+   "id": "keep",
+   "role": "piece",
+   "rect": [
+    -7,
+    8,
+    14,
+    4
+   ],
+   "surface": 14
+  },
+  {
+   "id": "back",
+   "role": "piece",
+   "rect": [
+    -3,
+    12,
+    6,
+    3
+   ],
+   "surface": 14
+  },
+  {
+   "id": "spawn-t1",
+   "role": "piece",
+   "rect": [
+    -2,
+    15,
+    4,
+    1
+   ],
+   "surface": 14
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    -1,
+    16,
+    2,
+    2
+   ],
+   "surface": 14
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid",
+   "rect": [
+    -8,
+    -3,
+    16,
+    6
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     1,
+     1
+    ],
+    "facing": "front"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "at": [
+     0,
+     8
+    ],
+    "style": "cube-3",
+    "materials": "ender stone",
+    "float": 4,
+    "name": "The Undercroft Stone"
+   }
+  ]
+ }
+}

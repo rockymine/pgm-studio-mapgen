@@ -13,6 +13,7 @@ layout:
   shapePropsByHeight {"11": {"relief_scope": "exclude"}, ...}   fields merged onto a compiled shape
   shapePropsById  {"s3": {...}}
   addShapes       [SketchShape, ...]          authored shapes appended to the first island
+  addLayers       [{id, name, base_y, shapes, islands}]   stacked slabs above the compiled ground
   relief          {"<islandId>": {...}} or {"*": {...}} applied to every island
   themes          the theme registry;  mapTheme  the map default (first key unless stated)
   roomStyles      {"cage": ..., "spawn": ...}; a "@name" string loads tools/styles/<name>.json
@@ -253,6 +254,22 @@ def patch_layout(layout, finish):
         islands[0]["shapeIds"].append(extra["id"])
     if finish.get("addShapes"):
         print(f"    +{len(finish['addShapes'])} authored shapes onto island '{islands[0]['id']}'")
+    for extra in finish.get("addLayers") or []:
+        # The compiled document is the legacy single-layer form; the moment a second slab exists it has
+        # to become `layers`, because the rasterizer reads `layers` OR `layout` and never both — while
+        # SketchLayout.IslandIds reads both, so leaving the old key behind doubles every island id.
+        # The compiled document carries `layers: null` beside its `layout`, so setdefault is not the
+        # test — the key is present and empty.
+        if not layout.get("layers"):
+            layout["layers"] = [{"id": "ground", "name": "Ground",
+                                 "base_y": 0, "layout": layout.pop("layout")}]
+        layers = layout["layers"]
+        layers.append({"id": extra["id"], "name": extra.get("name") or extra["id"],
+                       "base_y": extra["base_y"],
+                       "layout": {"shapes": extra["shapes"], "islands": extra["islands"]}})
+        print(f"    +layer '{extra['id']}' at base_y {extra['base_y']}: "
+              f"{len(extra['shapes'])} shape(s), {len(extra['islands'])} island(s)")
+
     relief = finish.get("relief")
     if relief:
         if "*" in relief:

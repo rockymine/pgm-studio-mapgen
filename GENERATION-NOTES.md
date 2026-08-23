@@ -683,3 +683,75 @@ are paths. Budget them like roads: one tongue per feature, radius 3–4, not two
 the whole rule. Reserving three blocks around each boulder cost twelve trees on a board that had
 three hundred plantable cells; `body + size + 1` is the real margin. The tree-to-tree distance is the
 separate one, and it is a Chebyshev step that grows with the two canopies: `ceil((ha + hb) / 4.7)`.
+
+### A layer is a slab with its own base_y, and the air between two of them survives
+
+`layers[]` replaces the legacy single `layout`: each entry is `{id, name, base_y, layout:{shapes,
+islands}}`, and a cell's column is that layer's `[floor, top]` shifted by `base_y`. The same `(x, z)`
+may appear on several layers, which is the whole feature — two solid spans in one column with air
+between them.
+
+```python
+if not layout.get("layers"):                     # the compiled document carries `layers: null`
+    layout["layers"] = [{"id": "ground", "name": "Ground",
+                         "base_y": 0, "layout": layout.pop("layout")}]
+layout["layers"].append({"id": "terrace", "name": "Terrace", "base_y": 20,
+                         "layout": {"shapes": [...], "islands": [...]}})
+```
+
+**Pop the old `layout` key.** `SketchRasterizer.ResolveLayers` reads `layers` *or* `layout` and
+returns on the first, but `SketchLayout.IslandIds` reads both without an early return, so leaving it
+behind doubles every island id.
+
+**`floor` is the underside**, measured inside the layer: `base_y 20` + `floor 4` is a soffit at y24,
+and the slab's thickness is its solved surface minus that. **Relief solves per layer**, keyed by
+island id, and `ReliefFields` shifts the result into world Y before returning it — so `relief/read`
+answers an upper island in world coordinates.
+
+**The gap survives because `TerrainPainter.Paint` writes only over stone.** Its band stack runs
+bedrock-to-top and would fill the air between two slabs; the stone-only invariant is the one line
+that makes stacking work.
+
+### Everything downstream of a stacked cell reads one number: the surface top
+
+`TerrainBuilder.SurfaceTops` keeps the **maximum** `YTop` per `(x, z)`, and that single grid is what
+the painter, the structure floors, the placements, the dressing and every 2-D render consume. Four
+consequences, all measured on `maps/opus5-undercroft`:
+
+- **A placement climbs onto the upper layer by itself.** A destroyable stated in plan cells with
+  `float: 4` landed at y34 over a terrace and at y19 on the same plan with the layers stripped.
+  Putting an objective on a deck is not stated anywhere — it follows from drawing the deck over it.
+- **The covered ground is unpainted.** One column resolves one band stack, so ground under a slab
+  falls inside the `fill` band: no turf, no rim, no wall.
+- **The covered ground cannot be dressed.** A tree stated at `(8, 53)`, where the ground is a hall
+  floor at y14, stood at y28 on the roof. No decline mentions it.
+- **Theme scope is 2-D.** `ShapeThemeOwners` gives a cell to the smallest-area themed shape covering
+  it across every layer, so an upper shape's theme owns the ground beneath it too.
+
+### A ground ramp meets an upper slab by touching it, and nothing else is needed
+
+Where a relief-solved ground top equals an upper layer's top, the two columns merge into one solid
+mass and the join is a single one-block rise. The failure is one column wide: a causeway whose band
+reached x ±19 beside a terrace drawn to x ±18 left one column of hall floor between them — a
+twelve-block slot, and the deck an island in the air. **Overlap the two footprints by a column** and
+check it with a transect, because no read will say: `traversability` and `WorldColumns.Membership`
+both discard Y, so a layered board is always "one component".
+
+### A layer over open void leaves a bedrock plate at the bottom of the world
+
+`TerrainBuilder.Build` writes bedrock at y0 under every footprint cell it fills, per layer. A bridge
+slab across a strait therefore drops its own 20 × 20 shadow at y0 in the abyss, and an overhanging
+deck does the same over whatever it hangs past. The theme's `bedrock` value does not reach it — the
+painter only overwrites stone — and those columns join the Y0 set a void filter reads. There is no
+knob; a slab over void costs this.
+
+### Only two reads keep Y, and one of them is the section
+
+`topdown`, `heightmap`, `surface`, `traversability`, `coverage` and `relief/read`'s walk all project
+to one height per column, so a hall under a deck exists in none of them. The isometric preview stacks
+layers, and `render/section` cuts a plane:
+
+    GET /map/{slug}/render/section?axis=x&at=<z>&from=<x0>&to=<x1>&ymin=&ymax=
+
+**`axis` names the direction the cut runs, so `at` is the other coordinate** — `axis=x` takes a z,
+`axis=z` takes an x. An `at` outside the world answers 200 with a blank image rather than refusing.
