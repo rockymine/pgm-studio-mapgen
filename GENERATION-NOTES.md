@@ -623,14 +623,18 @@ from z 38 to z 62, so a mark drawn to make a bank behind a frontline erases the 
 push stacked on that band and the result was a seven-block wall across the necks of the launch
 ground. Halve every width that was reasoned about as a corridor.
 
-### `height_mode: raise` hands the ground's slope on to its own top
+### `height_mode: raise` measures from the median ground under its whole footprint
 
-A raise reads the ground under each cell and adds the anchor height there, so over a slope the top
-tilts with the ground *and* the rise at the low foot is the slope plus the lift. An outcrop with a
-lift of 7 standing across a 9-block terrain step reads as a 14-block wall, and no readback mentions
-it. Level the footprint first — an `area` mark at the shape's own ring, grown about 1.3× — and the
-whole face is then the anchor plane, where it was stated, with the pad's edge left to the solver's
-one-block stairs.
+`relief.md` §7 states it: the top is a fixed amount above "the ground under it, **read at the covered
+cells' median**". One number for the shape, not a value per cell. The consequence is the one that bites
+on a slope — the median is the middle of the range the footprint straddles, so an outcrop lying across
+a terrain step stands `median + anchor` high while its foot on the low side is much lower, and the face
+a player meets there is the lift **plus the step**. A crag with a lift of 7 across a nine-block step
+read as a fourteen-block wall, and no readback mentions it.
+
+Level the footprint first — an `area` mark at the shape's own ring, grown about 1.3× — and the median
+is the pad, so the whole face is the anchor plane where it was stated, with the pad's own edge left to
+the solver's one-block stairs.
 
 ### A raise over void builds from its own floor
 

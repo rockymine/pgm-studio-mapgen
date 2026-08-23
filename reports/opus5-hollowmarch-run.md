@@ -63,11 +63,12 @@ wrote over the frontline flat all the way down to z 38, and a push stacked on to
 seven-block wall across the necks of the two frontline prongs, which is the ground an attack launches
 from. Width 5, moved back to z 54..60, with both front pushes moved north to z 60.
 
-**A `raise` hands the ground's slope on to its own top.** The first `scar-front-w` stood across a
-nine-block terrain step and read as a fourteen-block wall — the lift is seven, and the step is the
-other seven. Levelling the footprint first with an `area` mark at the ring grown 1.3× puts the whole
-face in the anchor plane, where it was stated. All five team crags and both isle crags now stand on
-one.
+**A `raise` measures from the median ground under its whole footprint**, which `relief.md` §7 states
+and I had not read closely enough. One number for the shape: so an outcrop lying across a nine-block
+terrain step stands `median + anchor` high while its foot on the low side is far below, and the face
+there is the lift plus the step — `scar-front-w` read as a fourteen-block wall for a lift of seven.
+Levelling the footprint first with an `area` mark at the ring grown 1.3× makes the median the pad and
+puts the whole face in the anchor plane. All five team crags and both isle crags now stand on one.
 
 **A `raise` over void builds from its own floor.** Two cells of `scar-hub-w` hung over the sea and
 came out as seven-block cobble stubs at y0..y6 beside the island. Nothing declines it — the shape is
