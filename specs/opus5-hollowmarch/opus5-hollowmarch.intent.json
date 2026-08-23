@@ -1,0 +1,365 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 32,
+ "spawns": [
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 35,
+    "y": 18,
+    "z": 65
+   },
+   "protection": [
+    {
+     "minX": 30,
+     "minZ": 60,
+     "maxX": 40,
+     "maxZ": 75
+    }
+   ],
+   "yaw": 90,
+   "piece": {
+    "minX": 30,
+    "minZ": 60,
+    "maxX": 40,
+    "maxZ": 75
+   },
+   "iron": []
+  },
+  {
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": -35,
+    "y": 18,
+    "z": -65
+   },
+   "protection": [
+    {
+     "minX": -40,
+     "minZ": -75,
+     "maxX": -30,
+     "maxZ": -60
+    }
+   ],
+   "yaw": 270,
+   "piece": {
+    "minX": -40,
+    "minZ": -75,
+    "maxX": -30,
+    "maxZ": -60
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 29,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -40,
+    "minZ": -30,
+    "maxX": 40,
+    "maxZ": 30
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "room": [
+    {
+     "minX": -25,
+     "minZ": 100,
+     "maxX": -15,
+     "maxZ": 110
+    }
+   ],
+   "spawn": {
+    "x": -20,
+    "y": 18,
+    "z": 105
+   },
+   "monuments": [],
+   "piece": {
+    "minX": -25,
+    "minZ": 100,
+    "maxX": -15,
+    "maxZ": 110
+   },
+   "entries": [
+    {
+     "minX": -25,
+     "minZ": 100,
+     "maxX": -15,
+     "maxZ": 100
+    }
+   ]
+  },
+  {
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-2",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "orange",
+   "room": [
+    {
+     "minX": -55,
+     "minZ": 40,
+     "maxX": -45,
+     "maxZ": 50
+    }
+   ],
+   "spawn": {
+    "x": -50,
+    "y": 18,
+    "z": 45
+   },
+   "monuments": [],
+   "piece": {
+    "minX": -55,
+    "minZ": 40,
+    "maxX": -45,
+    "maxZ": 50
+   },
+   "entries": [
+    {
+     "minX": -55,
+     "minZ": 50,
+     "maxX": -45,
+     "maxZ": 50
+    }
+   ]
+  },
+  {
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "room": [
+    {
+     "minX": 15,
+     "minZ": -110,
+     "maxX": 25,
+     "maxZ": -100
+    }
+   ],
+   "spawn": {
+    "x": 20,
+    "y": 18,
+    "z": -105
+   },
+   "monuments": [],
+   "piece": {
+    "minX": 15,
+    "minZ": -110,
+    "maxX": 25,
+    "maxZ": -100
+   },
+   "entries": [
+    {
+     "minX": 15,
+     "minZ": -100,
+     "maxX": 25,
+     "maxZ": -100
+    }
+   ]
+  },
+  {
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-2",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "light_blue",
+   "room": [
+    {
+     "minX": 45,
+     "minZ": -50,
+     "maxX": 55,
+     "maxZ": -40
+    }
+   ],
+   "spawn": {
+    "x": 50,
+    "y": 18,
+    "z": -45
+   },
+   "monuments": [],
+   "piece": {
+    "minX": 45,
+    "minZ": -50,
+    "maxX": 55,
+    "maxZ": -40
+   },
+   "entries": [
+    {
+     "minX": 45,
+     "minZ": -50,
+     "maxX": 55,
+     "maxZ": -50
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "meta": {
+  "name": "Hollowmarch",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue",
+  "3": "neutral"
+ },
+ "structures": {
+  "roomFloors": [
+   {
+    "area": {
+     "minX": -25,
+     "minZ": 100,
+     "maxX": -15,
+     "maxZ": 110
+    },
+    "stamp": {
+     "kind": "roomfloor",
+     "unit": "wool-a-room",
+     "image": 0
+    }
+   },
+   {
+    "area": {
+     "minX": 15,
+     "minZ": -110,
+     "maxX": 25,
+     "maxZ": -100
+    },
+    "stamp": {
+     "kind": "roomfloor",
+     "unit": "wool-a-room",
+     "image": 1
+    }
+   },
+   {
+    "area": {
+     "minX": -55,
+     "minZ": 40,
+     "maxX": -45,
+     "maxZ": 50
+    },
+    "stamp": {
+     "kind": "roomfloor",
+     "unit": "wool-b-room",
+     "image": 0
+    }
+   },
+   {
+    "area": {
+     "minX": 45,
+     "minZ": -50,
+     "maxX": 55,
+     "maxZ": -40
+    },
+    "stamp": {
+     "kind": "roomfloor",
+     "unit": "wool-b-room",
+     "image": 1
+    }
+   }
+  ],
+  "redstoneLines": [
+   {
+    "x1": -25,
+    "z1": 100,
+    "x2": -16,
+    "z2": 100,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "x1": 15,
+    "z1": -101,
+    "x2": 24,
+    "z2": -101,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1
+    }
+   },
+   {
+    "x1": -55,
+    "z1": 49,
+    "x2": -46,
+    "z2": 49,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 0
+    }
+   },
+   {
+    "x1": 45,
+    "z1": -50,
+    "x2": 54,
+    "z2": -50,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 1
+    }
+   }
+  ],
+  "ironCubes": [],
+  "walls": [],
+  "isEmpty": false
+ }
+}

@@ -1,0 +1,3747 @@
+{
+ "setup": {
+  "mirror_mode": "rot_180",
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "bbox": {
+   "min_x": -60,
+   "max_x": 60,
+   "min_z": -115,
+   "max_z": 115
+  }
+ },
+ "layout": {
+  "shapes": [
+   {
+    "id": "s0",
+    "type": "polygon",
+    "operation": "add",
+    "override": false,
+    "min_x": null,
+    "min_z": null,
+    "max_x": null,
+    "max_z": null,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": [
+     [
+      -35,
+      40
+     ],
+     [
+      -30,
+      42
+     ],
+     [
+      -25,
+      42
+     ],
+     [
+      -20,
+      40
+     ],
+     [
+      -17,
+      35
+     ],
+     [
+      -20,
+      30
+     ],
+     [
+      -15,
+      31
+     ],
+     [
+      -10,
+      30
+     ],
+     [
+      -12,
+      35
+     ],
+     [
+      -10,
+      40
+     ],
+     [
+      -5,
+      43
+     ],
+     [
+      0,
+      42
+     ],
+     [
+      5,
+      40
+     ],
+     [
+      7,
+      35
+     ],
+     [
+      5,
+      30
+     ],
+     [
+      10,
+      31
+     ],
+     [
+      15,
+      30
+     ],
+     [
+      14,
+      35
+     ],
+     [
+      13,
+      40
+     ],
+     [
+      13,
+      45
+     ],
+     [
+      13,
+      50
+     ],
+     [
+      15,
+      55
+     ],
+     [
+      20,
+      55
+     ],
+     [
+      20,
+      60
+     ],
+     [
+      20,
+      75
+     ],
+     [
+      20,
+      80
+     ],
+     [
+      15,
+      78
+     ],
+     [
+      10,
+      78
+     ],
+     [
+      5,
+      77
+     ],
+     [
+      0,
+      78
+     ],
+     [
+      -5,
+      80
+     ],
+     [
+      -7,
+      85
+     ],
+     [
+      -5,
+      90
+     ],
+     [
+      -15,
+      90
+     ],
+     [
+      -13,
+      85
+     ],
+     [
+      -15,
+      80
+     ],
+     [
+      -20,
+      78
+     ],
+     [
+      -25,
+      80
+     ],
+     [
+      -27,
+      85
+     ],
+     [
+      -25,
+      90
+     ],
+     [
+      -35,
+      90
+     ],
+     [
+      -33,
+      85
+     ],
+     [
+      -33,
+      80
+     ],
+     [
+      -34,
+      75
+     ],
+     [
+      -32,
+      70
+     ],
+     [
+      -35,
+      65
+     ],
+     [
+      -35,
+      55
+     ],
+     [
+      -33,
+      50
+     ],
+     [
+      -32,
+      45
+     ]
+    ],
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": null,
+    "base_height": 14,
+    "anchor_heights": null,
+    "floor": null,
+    "role": null,
+    "intentRef": null,
+    "color": null,
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "s1",
+    "type": "polygon",
+    "operation": "add",
+    "override": false,
+    "min_x": null,
+    "min_z": null,
+    "max_x": null,
+    "max_z": null,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": [
+     [
+      -45,
+      55
+     ],
+     [
+      -35,
+      55
+     ],
+     [
+      -35,
+      65
+     ],
+     [
+      -45,
+      65
+     ]
+    ],
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": "hold",
+    "base_height": 16,
+    "anchor_heights": null,
+    "floor": null,
+    "role": null,
+    "intentRef": null,
+    "color": null,
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "s2",
+    "type": "polygon",
+    "operation": "add",
+    "override": false,
+    "min_x": null,
+    "min_z": null,
+    "max_x": null,
+    "max_z": null,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": [
+     [
+      -35,
+      90
+     ],
+     [
+      -5,
+      90
+     ],
+     [
+      -5,
+      100
+     ],
+     [
+      -35,
+      100
+     ]
+    ],
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": "hold",
+    "base_height": 17,
+    "anchor_heights": null,
+    "floor": null,
+    "role": null,
+    "intentRef": null,
+    "color": null,
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "s3",
+    "type": "polygon",
+    "operation": "add",
+    "override": false,
+    "min_x": null,
+    "min_z": null,
+    "max_x": null,
+    "max_z": null,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": [
+     [
+      -55,
+      50
+     ],
+     [
+      -45,
+      50
+     ],
+     [
+      -45,
+      65
+     ],
+     [
+      -55,
+      65
+     ]
+    ],
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": "hold",
+    "base_height": 17,
+    "anchor_heights": null,
+    "floor": null,
+    "role": null,
+    "intentRef": null,
+    "color": null,
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "s4",
+    "type": "polygon",
+    "operation": "add",
+    "override": false,
+    "min_x": null,
+    "min_z": null,
+    "max_x": null,
+    "max_z": null,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": [
+     [
+      20,
+      60
+     ],
+     [
+      30,
+      60
+     ],
+     [
+      30,
+      75
+     ],
+     [
+      20,
+      75
+     ]
+    ],
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": "hold",
+    "base_height": 17,
+    "anchor_heights": null,
+    "floor": null,
+    "role": null,
+    "intentRef": null,
+    "color": null,
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "s5",
+    "type": "polygon",
+    "operation": "add",
+    "override": false,
+    "min_x": null,
+    "min_z": null,
+    "max_x": null,
+    "max_z": null,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": [
+     [
+      30,
+      60
+     ],
+     [
+      40,
+      60
+     ],
+     [
+      40,
+      75
+     ],
+     [
+      30,
+      75
+     ]
+    ],
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": "hold",
+    "base_height": 18,
+    "anchor_heights": null,
+    "floor": null,
+    "role": null,
+    "intentRef": null,
+    "color": null,
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "s6",
+    "type": "polygon",
+    "operation": "add",
+    "override": false,
+    "min_x": null,
+    "min_z": null,
+    "max_x": null,
+    "max_z": null,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": [
+     [
+      -55,
+      40
+     ],
+     [
+      -45,
+      40
+     ],
+     [
+      -45,
+      50
+     ],
+     [
+      -55,
+      50
+     ]
+    ],
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": "hold",
+    "base_height": 18,
+    "anchor_heights": null,
+    "floor": null,
+    "role": null,
+    "intentRef": null,
+    "color": null,
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "s7",
+    "type": "polygon",
+    "operation": "add",
+    "override": false,
+    "min_x": null,
+    "min_z": null,
+    "max_x": null,
+    "max_z": null,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": [
+     [
+      -25,
+      100
+     ],
+     [
+      -15,
+      100
+     ],
+     [
+      -15,
+      110
+     ],
+     [
+      -25,
+      110
+     ]
+    ],
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": "hold",
+    "base_height": 18,
+    "anchor_heights": null,
+    "floor": null,
+    "role": null,
+    "intentRef": null,
+    "color": null,
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "s8",
+    "type": "polygon",
+    "operation": "add",
+    "override": false,
+    "min_x": null,
+    "min_z": null,
+    "max_x": null,
+    "max_z": null,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": [
+     [
+      -30,
+      -4
+     ],
+     [
+      -27,
+      -8
+     ],
+     [
+      -26,
+      -12
+     ],
+     [
+      -20,
+      -13
+     ],
+     [
+      -16,
+      -18
+     ],
+     [
+      -12,
+      -18
+     ],
+     [
+      -8,
+      -18
+     ],
+     [
+      -4,
+      -20
+     ],
+     [
+      0,
+      -19
+     ],
+     [
+      4,
+      -18
+     ],
+     [
+      8,
+      -19
+     ],
+     [
+      13,
+      -16
+     ],
+     [
+      18,
+      -14
+     ],
+     [
+      21,
+      -9
+     ],
+     [
+      26,
+      -6
+     ],
+     [
+      26,
+      0
+     ],
+     [
+      30,
+      4
+     ],
+     [
+      27,
+      8
+     ],
+     [
+      26,
+      12
+     ],
+     [
+      20,
+      13
+     ],
+     [
+      16,
+      18
+     ],
+     [
+      12,
+      18
+     ],
+     [
+      8,
+      18
+     ],
+     [
+      4,
+      20
+     ],
+     [
+      0,
+      19
+     ],
+     [
+      -4,
+      18
+     ],
+     [
+      -8,
+      19
+     ],
+     [
+      -13,
+      16
+     ],
+     [
+      -18,
+      14
+     ],
+     [
+      -21,
+      9
+     ],
+     [
+      -26,
+      6
+     ],
+     [
+      -26,
+      0
+     ]
+    ],
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": null,
+    "base_height": 14,
+    "anchor_heights": null,
+    "floor": null,
+    "role": null,
+    "intentRef": null,
+    "color": null,
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "s9",
+    "type": "polygon",
+    "operation": "subtract",
+    "override": false,
+    "min_x": null,
+    "min_z": null,
+    "max_x": null,
+    "max_z": null,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": [
+     [
+      -25,
+      65
+     ],
+     [
+      -10,
+      65
+     ],
+     [
+      -10,
+      70
+     ],
+     [
+      -25,
+      70
+     ]
+    ],
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": null,
+    "base_height": null,
+    "anchor_heights": null,
+    "floor": null,
+    "role": null,
+    "intentRef": null,
+    "color": null,
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "s10",
+    "type": "polygon",
+    "operation": "subtract",
+    "override": false,
+    "min_x": null,
+    "min_z": null,
+    "max_x": null,
+    "max_z": null,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": [
+     [
+      0,
+      65
+     ],
+     [
+      10,
+      65
+     ],
+     [
+      10,
+      70
+     ],
+     [
+      0,
+      70
+     ]
+    ],
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": null,
+    "base_height": null,
+    "anchor_heights": null,
+    "floor": null,
+    "role": null,
+    "intentRef": null,
+    "color": null,
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "spawn-red",
+    "type": "rectangle",
+    "operation": "add",
+    "override": false,
+    "min_x": 30,
+    "min_z": 60,
+    "max_x": 40,
+    "max_z": 75,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": null,
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": "hold",
+    "base_height": 18,
+    "anchor_heights": null,
+    "floor": null,
+    "role": "spawn",
+    "intentRef": "red",
+    "color": "red",
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "spawn-blue",
+    "type": "rectangle",
+    "operation": "add",
+    "override": false,
+    "min_x": -40,
+    "min_z": -75,
+    "max_x": -30,
+    "max_z": -60,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": null,
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": null,
+    "base_height": null,
+    "anchor_heights": null,
+    "floor": null,
+    "role": "spawn",
+    "intentRef": "blue",
+    "color": "blue",
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "wool-red-red",
+    "type": "rectangle",
+    "operation": "add",
+    "override": false,
+    "min_x": -25,
+    "min_z": 100,
+    "max_x": -15,
+    "max_z": 110,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": null,
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": "hold",
+    "base_height": 18,
+    "anchor_heights": null,
+    "floor": null,
+    "role": "woolRoom",
+    "intentRef": "red:red",
+    "color": "red",
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "wool-red-orange",
+    "type": "rectangle",
+    "operation": "add",
+    "override": false,
+    "min_x": -55,
+    "min_z": 40,
+    "max_x": -45,
+    "max_z": 50,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": null,
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": "hold",
+    "base_height": 18,
+    "anchor_heights": null,
+    "floor": null,
+    "role": "woolRoom",
+    "intentRef": "red:orange",
+    "color": "orange",
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "wool-blue-blue",
+    "type": "rectangle",
+    "operation": "add",
+    "override": false,
+    "min_x": 15,
+    "min_z": -110,
+    "max_x": 25,
+    "max_z": -100,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": null,
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": null,
+    "base_height": null,
+    "anchor_heights": null,
+    "floor": null,
+    "role": "woolRoom",
+    "intentRef": "blue:blue",
+    "color": "blue",
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "wool-blue-light_blue",
+    "type": "rectangle",
+    "operation": "add",
+    "override": false,
+    "min_x": 45,
+    "min_z": -50,
+    "max_x": 55,
+    "max_z": -40,
+    "center_x": null,
+    "center_z": null,
+    "radius": null,
+    "vertices": null,
+    "controls": null,
+    "path_edge": null,
+    "path_seed": null,
+    "height_mode": null,
+    "skirt": null,
+    "relief_scope": null,
+    "base_height": null,
+    "anchor_heights": null,
+    "floor": null,
+    "role": "woolRoom",
+    "intentRef": "blue:light_blue",
+    "color": "light_blue",
+    "height_authored": null,
+    "theme": null
+   },
+   {
+    "id": "scar-front-w",
+    "type": "polygon",
+    "operation": "add",
+    "floor": 12,
+    "base_height": 6,
+    "height_mode": "raise",
+    "skirt": 3,
+    "theme": "scar",
+    "vertices": [
+     [
+      -19,
+      55
+     ],
+     [
+      -19,
+      61
+     ],
+     [
+      -25,
+      64
+     ],
+     [
+      -31,
+      59
+     ],
+     [
+      -32,
+      56
+     ],
+     [
+      -32,
+      48
+     ],
+     [
+      -25,
+      45
+     ],
+     [
+      -20,
+      48
+     ]
+    ],
+    "anchor_heights": [
+     2,
+     0,
+     0,
+     3,
+     4,
+     6,
+     6,
+     4
+    ]
+   },
+   {
+    "id": "scar-front-e",
+    "type": "polygon",
+    "operation": "add",
+    "floor": 12,
+    "base_height": 6,
+    "height_mode": "raise",
+    "skirt": 3,
+    "theme": "scar",
+    "vertices": [
+     [
+      14,
+      54
+     ],
+     [
+      11,
+      61
+     ],
+     [
+      4,
+      62
+     ],
+     [
+      0,
+      56
+     ],
+     [
+      -3,
+      51
+     ],
+     [
+      3,
+      45
+     ],
+     [
+      10,
+      47
+     ]
+    ],
+    "anchor_heights": [
+     2,
+     0,
+     0,
+     2,
+     4,
+     6,
+     5
+    ]
+   },
+   {
+    "id": "scar-hub-w",
+    "type": "polygon",
+    "operation": "add",
+    "floor": 12,
+    "base_height": 6,
+    "height_mode": "raise",
+    "skirt": 3,
+    "theme": "scar",
+    "vertices": [
+     [
+      -21,
+      75
+     ],
+     [
+      -25,
+      80
+     ],
+     [
+      -29,
+      81
+     ],
+     [
+      -33,
+      77
+     ],
+     [
+      -32,
+      73
+     ],
+     [
+      -29,
+      68
+     ],
+     [
+      -24,
+      71
+     ]
+    ],
+    "anchor_heights": [
+     2,
+     0,
+     0,
+     2,
+     4,
+     6,
+     4
+    ]
+   },
+   {
+    "id": "scar-hub-e",
+    "type": "polygon",
+    "operation": "add",
+    "floor": 12,
+    "base_height": 6,
+    "height_mode": "raise",
+    "skirt": 3,
+    "theme": "scar",
+    "vertices": [
+     [
+      20,
+      72
+     ],
+     [
+      16,
+      77
+     ],
+     [
+      12,
+      78
+     ],
+     [
+      8,
+      75
+     ],
+     [
+      8,
+      70
+     ],
+     [
+      12,
+      68
+     ],
+     [
+      16,
+      69
+     ]
+    ],
+    "anchor_heights": [
+     2,
+     0,
+     0,
+     2,
+     5,
+     6,
+     5
+    ]
+   },
+   {
+    "id": "scar-back",
+    "type": "polygon",
+    "operation": "add",
+    "floor": 12,
+    "base_height": 4,
+    "height_mode": "raise",
+    "skirt": 3,
+    "theme": "scar",
+    "vertices": [
+     [
+      -7,
+      79
+     ],
+     [
+      -7,
+      83
+     ],
+     [
+      -11,
+      83
+     ],
+     [
+      -13,
+      82
+     ],
+     [
+      -15,
+      79
+     ],
+     [
+      -13,
+      76
+     ],
+     [
+      -11,
+      75
+     ],
+     [
+      -8,
+      74
+     ]
+    ],
+    "anchor_heights": [
+     2,
+     0,
+     0,
+     0,
+     2,
+     3,
+     4,
+     4
+    ]
+   },
+   {
+    "id": "scar-isle-w",
+    "type": "polygon",
+    "operation": "add",
+    "floor": 12,
+    "base_height": 8,
+    "height_mode": "raise",
+    "skirt": 3,
+    "theme": "scar",
+    "vertices": [
+     [
+      -14,
+      -3
+     ],
+     [
+      -16,
+      1
+     ],
+     [
+      -21,
+      1
+     ],
+     [
+      -25,
+      -2
+     ],
+     [
+      -25,
+      -6
+     ],
+     [
+      -22,
+      -11
+     ],
+     [
+      -17,
+      -8
+     ]
+    ],
+    "anchor_heights": [
+     3,
+     0,
+     0,
+     2,
+     5,
+     8,
+     6
+    ]
+   },
+   {
+    "id": "scar-isle-e",
+    "type": "polygon",
+    "operation": "add",
+    "floor": 12,
+    "base_height": 8,
+    "height_mode": "raise",
+    "skirt": 3,
+    "theme": "scar",
+    "vertices": [
+     [
+      14,
+      3
+     ],
+     [
+      16,
+      -1
+     ],
+     [
+      21,
+      -1
+     ],
+     [
+      25,
+      2
+     ],
+     [
+      25,
+      6
+     ],
+     [
+      22,
+      11
+     ],
+     [
+      17,
+      8
+     ]
+    ],
+    "anchor_heights": [
+     3,
+     0,
+     0,
+     2,
+     5,
+     8,
+     6
+    ]
+   }
+  ],
+  "islands": [
+   {
+    "id": "team",
+    "name": "Team island",
+    "mirrors": true,
+    "shapeIds": [
+     "s0",
+     "s1",
+     "s2",
+     "s3",
+     "s4",
+     "s5",
+     "s6",
+     "s7",
+     "s9",
+     "s10",
+     "scar-front-w",
+     "scar-front-e",
+     "scar-hub-w",
+     "scar-hub-e",
+     "scar-back",
+     "scar-isle-w",
+     "scar-isle-e"
+    ]
+   },
+   {
+    "id": "neutral",
+    "name": "Neutral",
+    "mirrors": false,
+    "shapeIds": [
+     "s8"
+    ]
+   }
+  ]
+ },
+ "layers": null,
+ "themes": {
+  "downland": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": false,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 13,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wallEnabled": false,
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "material": {
+         "kind": "noise",
+         "seed": 83,
+         "scale": 15,
+         "octaves": 2,
+         "rise": 2,
+         "stops": [
+          {
+           "kind": "solid",
+           "id": 2,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 2,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 3,
+           "data": 1
+          }
+         ]
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        },
+        "thickness": 2
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 1
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "noise",
+         "seed": 91,
+         "scale": 6,
+         "octaves": 2,
+         "rise": 1,
+         "stops": [
+          {
+           "kind": "solid",
+           "id": 13,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 4,
+           "data": 0
+          }
+         ]
+        },
+        "thickness": 2
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 0
+        },
+        "thickness": 3
+       }
+      ]
+     }
+    },
+    "depth": 9,
+    "enabled": true
+   },
+   "fill": {
+    "kind": "noise",
+    "seed": 17,
+    "scale": 9,
+    "octaves": 3,
+    "rise": 2,
+    "stops": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     }
+    ]
+   }
+  },
+  "scar": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": false,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 13,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wallEnabled": false,
+   "surface": {
+    "material": {
+     "kind": "noise",
+     "seed": 29,
+     "scale": 5,
+     "octaves": 2,
+     "rise": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     ]
+    },
+    "depth": 6,
+    "enabled": true
+   },
+   "fill": {
+    "kind": "noise",
+    "seed": 23,
+    "scale": 7,
+    "octaves": 2,
+    "rise": 2,
+    "stops": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     }
+    ]
+   }
+  }
+ },
+ "mapTheme": "downland",
+ "roomStyles": {
+  "spawn": {
+   "foundation": {
+    "plate": {
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 5,
+         "data": 1
+        },
+        "thickness": 1
+       }
+      ],
+      "ending": "repeat"
+     },
+     "extent": 1
+    },
+    "surface": {
+     "field": null,
+     "border": null,
+     "borderWidth": 1,
+     "inlay": null,
+     "inlayInset": 2,
+     "isPlain": true
+    },
+    "footing": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 1,
+    "slab": 126,
+    "slabData": 0,
+    "overhang": 1,
+    "ridgeCap": true,
+    "hole": false,
+    "body": {
+     "kind": "solid",
+     "id": 5,
+     "data": 1
+    },
+    "verge": {
+     "kind": "solid",
+     "id": 5,
+     "data": 0
+    },
+    "gable": {
+     "kind": "solid",
+     "id": 5,
+     "data": 0
+    },
+    "gableWindows": {
+     "form": "open",
+     "block": 102,
+     "hostBlock": -1,
+     "hostData": 0,
+     "data": 0,
+     "sill": 1,
+     "width": 1,
+     "height": 1,
+     "spacing": 3
+    }
+   },
+   "wall": {
+    "stack": {
+     "ending": "repeat",
+     "bands": [
+      {
+       "material": {
+        "kind": "noise",
+        "seed": 23,
+        "scale": 3,
+        "octaves": 1,
+        "rise": 2,
+        "stops": [
+         {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 48,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         }
+        ]
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 5,
+        "data": 0
+       },
+       "thickness": 3
+      }
+     ]
+    },
+    "extent": 5
+   },
+   "post": {
+    "kind": "solid",
+    "id": 17,
+    "data": 0
+   },
+   "windows": {
+    "form": "pane",
+    "block": 102,
+    "hostBlock": -1,
+    "hostData": 0,
+    "data": 0,
+    "sill": 2,
+    "width": 1,
+    "height": 2,
+    "spacing": 3
+   },
+   "storeys": [],
+   "porch": null,
+   "front": null,
+   "beams": {
+    "block": -1,
+    "data": 0,
+    "reach": 1,
+    "any": false
+   },
+   "doorway": {
+    "door": "air",
+    "head": {
+     "form": "arched",
+     "block": 53,
+     "fill": "upperSlab",
+     "fillBlock": 126,
+     "fillData": 8
+    },
+    "width": 2,
+    "height": 3
+   }
+  },
+  "cage": {
+   "foundation": {
+    "plate": {
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 5,
+         "data": 1
+        },
+        "thickness": 1
+       }
+      ],
+      "ending": "repeat"
+     },
+     "extent": 1
+    },
+    "surface": {
+     "field": null,
+     "border": null,
+     "borderWidth": 1,
+     "inlay": null,
+     "inlayInset": 2,
+     "isPlain": true
+    },
+    "footing": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 1,
+    "slab": 126,
+    "slabData": 0,
+    "overhang": 1,
+    "ridgeCap": true,
+    "hole": false,
+    "body": {
+     "kind": "solid",
+     "id": 5,
+     "data": 1
+    },
+    "verge": {
+     "kind": "solid",
+     "id": 5,
+     "data": 0
+    },
+    "gable": {
+     "kind": "solid",
+     "id": 5,
+     "data": 0
+    },
+    "gableWindows": {
+     "form": "open",
+     "block": 102,
+     "hostBlock": -1,
+     "hostData": 0,
+     "data": 0,
+     "sill": 1,
+     "width": 1,
+     "height": 1,
+     "spacing": 3
+    }
+   },
+   "wall": {
+    "stack": {
+     "ending": "repeat",
+     "bands": [
+      {
+       "material": {
+        "kind": "noise",
+        "seed": 23,
+        "scale": 3,
+        "octaves": 1,
+        "rise": 2,
+        "stops": [
+         {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 48,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         }
+        ]
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 5,
+        "data": 0
+       },
+       "thickness": 3
+      }
+     ]
+    },
+    "extent": 5
+   },
+   "post": {
+    "kind": "solid",
+    "id": 17,
+    "data": 0
+   },
+   "windows": {
+    "form": "pane",
+    "block": 102,
+    "hostBlock": -1,
+    "hostData": 0,
+    "data": 0,
+    "sill": 2,
+    "width": 1,
+    "height": 2,
+    "spacing": 3
+   },
+   "storeys": [],
+   "porch": null,
+   "front": null,
+   "beams": {
+    "block": -1,
+    "data": 0,
+    "reach": 1,
+    "any": false
+   },
+   "doorway": {
+    "door": "air",
+    "head": {
+     "form": "arched",
+     "block": 53,
+     "fill": "upperSlab",
+     "fillBlock": 126,
+     "fillData": 8
+    },
+    "width": 2,
+    "height": 3
+   }
+  }
+ },
+ "dressing": {
+  "props": [
+   {
+    "id": "road-wool-a",
+    "kind": "path",
+    "seed": 2,
+    "style": "solid",
+    "radius": 2.0,
+    "coverage": 1.0,
+    "pave": {
+     "kind": "cell",
+     "seed": 6,
+     "cellSize": 3,
+     "jitter": 60,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      }
+     ]
+    },
+    "points": [
+     [
+      30,
+      66
+     ],
+     [
+      16,
+      68
+     ],
+     [
+      2,
+      70
+     ],
+     [
+      -10,
+      76
+     ],
+     [
+      -18,
+      86
+     ],
+     [
+      -20,
+      98
+     ]
+    ]
+   },
+   {
+    "id": "road-wool-b",
+    "kind": "path",
+    "seed": 3,
+    "style": "solid",
+    "radius": 2.0,
+    "coverage": 1.0,
+    "pave": {
+     "kind": "cell",
+     "seed": 6,
+     "cellSize": 3,
+     "jitter": 60,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      }
+     ]
+    },
+    "points": [
+     [
+      28,
+      64
+     ],
+     [
+      12,
+      62
+     ],
+     [
+      -4,
+      64
+     ],
+     [
+      -20,
+      62
+     ],
+     [
+      -32,
+      58
+     ],
+     [
+      -42,
+      50
+     ],
+     [
+      -50,
+      46
+     ]
+    ]
+   },
+   {
+    "id": "road-front-w",
+    "kind": "path",
+    "seed": 4,
+    "style": "worn",
+    "radius": 1.5,
+    "coverage": 0.65,
+    "pave": {
+     "kind": "solid",
+     "id": 13,
+     "data": 0
+    },
+    "points": [
+     [
+      -16,
+      60
+     ],
+     [
+      -16,
+      50
+     ],
+     [
+      -15,
+      42
+     ],
+     [
+      -15,
+      34
+     ]
+    ]
+   },
+   {
+    "id": "road-front-e",
+    "kind": "path",
+    "seed": 5,
+    "style": "worn",
+    "radius": 1.5,
+    "coverage": 0.65,
+    "pave": {
+     "kind": "solid",
+     "id": 13,
+     "data": 0
+    },
+    "points": [
+     [
+      6,
+      60
+     ],
+     [
+      8,
+      50
+     ],
+     [
+      9,
+      42
+     ],
+     [
+      10,
+      34
+     ]
+    ]
+   },
+   {
+    "id": "turf-0",
+    "kind": "path",
+    "seed": 40,
+    "style": "worn",
+    "radius": 4.0,
+    "coverage": 0.6,
+    "pave": {
+     "kind": "noise",
+     "seed": 51,
+     "scale": 7,
+     "octaves": 2,
+     "rise": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      }
+     ]
+    },
+    "points": [
+     [
+      -25,
+      54
+     ],
+     [
+      -25,
+      59
+     ],
+     [
+      -25,
+      64
+     ]
+    ]
+   },
+   {
+    "id": "turf-1",
+    "kind": "path",
+    "seed": 43,
+    "style": "worn",
+    "radius": 4.0,
+    "coverage": 0.6,
+    "pave": {
+     "kind": "noise",
+     "seed": 51,
+     "scale": 7,
+     "octaves": 2,
+     "rise": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      }
+     ]
+    },
+    "points": [
+     [
+      6,
+      54
+     ],
+     [
+      5,
+      58
+     ],
+     [
+      4,
+      62
+     ]
+    ]
+   },
+   {
+    "id": "turf-2",
+    "kind": "path",
+    "seed": 46,
+    "style": "worn",
+    "radius": 4.0,
+    "coverage": 0.6,
+    "pave": {
+     "kind": "noise",
+     "seed": 51,
+     "scale": 7,
+     "octaves": 2,
+     "rise": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      }
+     ]
+    },
+    "points": [
+     [
+      -28,
+      75
+     ],
+     [
+      -28,
+      78
+     ],
+     [
+      -29,
+      81
+     ]
+    ]
+   },
+   {
+    "id": "turf-3",
+    "kind": "path",
+    "seed": 49,
+    "style": "worn",
+    "radius": 4.0,
+    "coverage": 0.6,
+    "pave": {
+     "kind": "noise",
+     "seed": 51,
+     "scale": 7,
+     "octaves": 2,
+     "rise": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      }
+     ]
+    },
+    "points": [
+     [
+      13,
+      73
+     ],
+     [
+      13,
+      75
+     ],
+     [
+      12,
+      78
+     ]
+    ]
+   },
+   {
+    "id": "turf-4",
+    "kind": "path",
+    "seed": 52,
+    "style": "worn",
+    "radius": 4.0,
+    "coverage": 0.6,
+    "pave": {
+     "kind": "noise",
+     "seed": 51,
+     "scale": 7,
+     "octaves": 2,
+     "rise": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      }
+     ]
+    },
+    "points": [
+     [
+      -11,
+      79
+     ],
+     [
+      -9,
+      81
+     ],
+     [
+      -7,
+      83
+     ]
+    ]
+   },
+   {
+    "id": "turf-5",
+    "kind": "path",
+    "seed": 55,
+    "style": "worn",
+    "radius": 4.0,
+    "coverage": 0.6,
+    "pave": {
+     "kind": "noise",
+     "seed": 51,
+     "scale": 7,
+     "octaves": 2,
+     "rise": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      }
+     ]
+    },
+    "points": [
+     [
+      -20,
+      -4
+     ],
+     [
+      -18,
+      -2
+     ],
+     [
+      -16,
+      1
+     ]
+    ]
+   },
+   {
+    "id": "turf-6",
+    "kind": "path",
+    "seed": 58,
+    "style": "worn",
+    "radius": 4.0,
+    "coverage": 0.6,
+    "pave": {
+     "kind": "noise",
+     "seed": 51,
+     "scale": 7,
+     "octaves": 2,
+     "rise": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      }
+     ]
+    },
+    "points": [
+     [
+      20,
+      4
+     ],
+     [
+      21,
+      8
+     ],
+     [
+      22,
+      11
+     ]
+    ]
+   },
+   {
+    "id": "dirt-hub",
+    "kind": "path",
+    "seed": 71,
+    "style": "worn",
+    "radius": 4.0,
+    "coverage": 0.45,
+    "pave": {
+     "kind": "noise",
+     "seed": 57,
+     "scale": 5,
+     "octaves": 2,
+     "rise": 1,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      }
+     ]
+    },
+    "points": [
+     [
+      -18,
+      68
+     ],
+     [
+      -8,
+      69
+     ],
+     [
+      2,
+      67
+     ]
+    ]
+   },
+   {
+    "id": "dirt-front",
+    "kind": "path",
+    "seed": 72,
+    "style": "worn",
+    "radius": 4.5,
+    "coverage": 0.4,
+    "pave": {
+     "kind": "noise",
+     "seed": 57,
+     "scale": 5,
+     "octaves": 2,
+     "rise": 1,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      }
+     ]
+    },
+    "points": [
+     [
+      -20,
+      44
+     ],
+     [
+      -6,
+      42
+     ],
+     [
+      6,
+      44
+     ]
+    ]
+   },
+   {
+    "id": "shore-isle",
+    "kind": "path",
+    "seed": 73,
+    "style": "worn",
+    "radius": 3.0,
+    "coverage": 0.55,
+    "pave": {
+     "kind": "voronoi",
+     "seed": 8,
+     "cellSize": 6,
+     "rise": 1,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "depth": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 12,
+        "data": 0
+       },
+       "depth": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "depth": 1
+      }
+     ]
+    },
+    "points": [
+     [
+      -14,
+      -17
+     ],
+     [
+      0,
+      -18
+     ],
+     [
+      14,
+      -16
+     ]
+    ]
+   },
+   {
+    "id": "pond",
+    "kind": "water",
+    "seed": 1,
+    "form": "natural",
+    "points": [
+     [
+      -5,
+      -1
+     ],
+     [
+      -1,
+      -3
+     ],
+     [
+      3,
+      -1
+     ],
+     [
+      4,
+      2
+     ],
+     [
+      0,
+      3
+     ],
+     [
+      -3,
+      1
+     ]
+    ],
+    "radius": 3.0,
+    "depth": 2,
+    "edge": 0.7,
+    "shore": 2,
+    "shoreWander": true,
+    "bank": {
+     "kind": "voronoi",
+     "seed": 6,
+     "cellSize": 4,
+     "rise": 0,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 12,
+        "data": 0
+       },
+       "depth": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "depth": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "depth": 2
+      }
+     ]
+    }
+   },
+   {
+    "id": "r0",
+    "kind": "boulder",
+    "seed": 500,
+    "x": -40,
+    "z": 60,
+    "form": "angular",
+    "size": 2.5,
+    "mossy": true,
+    "rock": {
+     "kind": "voronoi",
+     "seed": 3,
+     "cellSize": 4,
+     "rise": 0,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "depth": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "depth": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "depth": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "r1",
+    "kind": "boulder",
+    "seed": 511,
+    "x": -29,
+    "z": 45,
+    "form": "round",
+    "size": 2.0,
+    "mossy": true,
+    "rock": {
+     "kind": "voronoi",
+     "seed": 3,
+     "cellSize": 4,
+     "rise": 0,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "depth": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "depth": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "depth": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "r2",
+    "kind": "boulder",
+    "seed": 522,
+    "x": -32,
+    "z": 90,
+    "form": "outcrop",
+    "size": 2.0,
+    "mossy": true,
+    "rock": {
+     "kind": "voronoi",
+     "seed": 3,
+     "cellSize": 4,
+     "rise": 0,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "depth": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "depth": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "depth": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "a0",
+    "kind": "tree",
+    "seed": 100,
+    "x": -35,
+    "z": 97,
+    "form": "template",
+    "species": "oak",
+    "height": 9
+   },
+   {
+    "id": "a1",
+    "kind": "tree",
+    "seed": 107,
+    "x": -28,
+    "z": 89,
+    "form": "template",
+    "species": "oak",
+    "height": 9
+   },
+   {
+    "id": "c0",
+    "kind": "tree",
+    "seed": 200,
+    "x": -7,
+    "z": 92,
+    "form": "template",
+    "species": "oak",
+    "height": 10
+   },
+   {
+    "id": "c1",
+    "kind": "tree",
+    "seed": 207,
+    "x": -6,
+    "z": 97,
+    "form": "template",
+    "species": "oak",
+    "height": 10
+   },
+   {
+    "id": "c2",
+    "kind": "tree",
+    "seed": 214,
+    "x": -12,
+    "z": 90,
+    "form": "template",
+    "species": "oak",
+    "height": 11
+   },
+   {
+    "id": "b0",
+    "kind": "tree",
+    "seed": 300,
+    "x": -52,
+    "z": 62,
+    "form": "template",
+    "species": "birch",
+    "height": 10
+   },
+   {
+    "id": "b1",
+    "kind": "tree",
+    "seed": 307,
+    "x": -35,
+    "z": 64,
+    "form": "template",
+    "species": "birch",
+    "height": 11
+   },
+   {
+    "id": "b2",
+    "kind": "tree",
+    "seed": 314,
+    "x": -47,
+    "z": 61,
+    "form": "template",
+    "species": "birch",
+    "height": 12
+   },
+   {
+    "id": "f0",
+    "kind": "tree",
+    "seed": 400,
+    "x": -7,
+    "z": 52,
+    "form": "template",
+    "species": "birch",
+    "height": 9
+   },
+   {
+    "id": "f1",
+    "kind": "tree",
+    "seed": 407,
+    "x": -6,
+    "z": 56,
+    "form": "template",
+    "species": "birch",
+    "height": 8
+   },
+   {
+    "id": "f2",
+    "kind": "tree",
+    "seed": 414,
+    "x": -10,
+    "z": 57,
+    "form": "template",
+    "species": "birch",
+    "height": 8
+   },
+   {
+    "id": "f3",
+    "kind": "tree",
+    "seed": 421,
+    "x": -3,
+    "z": 52,
+    "form": "template",
+    "species": "birch",
+    "height": 9
+   },
+   {
+    "id": "w0",
+    "kind": "tree",
+    "seed": 500,
+    "x": -33,
+    "z": 43,
+    "form": "template",
+    "species": "oak",
+    "height": 9
+   },
+   {
+    "id": "iw0",
+    "kind": "tree",
+    "seed": 700,
+    "x": -19,
+    "z": 11,
+    "form": "template",
+    "species": "birch",
+    "height": 9
+   },
+   {
+    "id": "iw1",
+    "kind": "tree",
+    "seed": 707,
+    "x": -24,
+    "z": 4,
+    "form": "template",
+    "species": "birch",
+    "height": 9
+   },
+   {
+    "id": "iw2",
+    "kind": "tree",
+    "seed": 714,
+    "x": -14,
+    "z": 9,
+    "form": "template",
+    "species": "birch",
+    "height": 8
+   },
+   {
+    "id": "fl-front",
+    "kind": "flora",
+    "seed": 41,
+    "points": [
+     [
+      -32,
+      32
+     ],
+     [
+      12,
+      32
+     ],
+     [
+      14,
+      48
+     ],
+     [
+      -32,
+      48
+     ]
+    ],
+    "spec": {
+     "coverage": 0.42,
+     "scale": 12,
+     "octaves": 2,
+     "fernShare": 0.12,
+     "flowerShare": 0.3,
+     "flowerScale": 11,
+     "tallShare": 0.1
+    }
+   },
+   {
+    "id": "fl-hub",
+    "kind": "flora",
+    "seed": 42,
+    "points": [
+     [
+      -30,
+      58
+     ],
+     [
+      8,
+      58
+     ],
+     [
+      10,
+      78
+     ],
+     [
+      -30,
+      78
+     ]
+    ],
+    "spec": {
+     "coverage": 0.34,
+     "scale": 10,
+     "octaves": 2,
+     "fernShare": 0.2,
+     "flowerShare": 0.22,
+     "flowerScale": 10,
+     "tallShare": 0.06
+    }
+   },
+   {
+    "id": "fl-isle",
+    "kind": "flora",
+    "seed": 43,
+    "points": [
+     [
+      -26,
+      -16
+     ],
+     [
+      22,
+      -14
+     ],
+     [
+      26,
+      8
+     ],
+     [
+      -6,
+      18
+     ],
+     [
+      -26,
+      10
+     ]
+    ],
+    "spec": {
+     "coverage": 0.4,
+     "scale": 11,
+     "octaves": 2,
+     "fernShare": 0.15,
+     "flowerShare": 0.32,
+     "flowerScale": 11,
+     "tallShare": 0.1
+    }
+   }
+  ]
+ },
+ "relief": {
+  "team": {
+   "base": 14,
+   "reach": 24,
+   "step": 1,
+   "stairs": true,
+   "grain": {
+    "amplitude": 1.2,
+    "scale": 12,
+    "seed": 7
+   },
+   "marks": [
+    {
+     "id": "coast",
+     "kind": "rim",
+     "h": 12,
+     "depth": 1
+    },
+    {
+     "id": "front-flat",
+     "kind": "area",
+     "h": 13,
+     "ring": [
+      [
+       -36,
+       28
+      ],
+      [
+       18,
+       28
+      ],
+      [
+       18,
+       48
+      ],
+      [
+       -36,
+       48
+      ]
+     ]
+    },
+    {
+     "id": "front-bank",
+     "kind": "line",
+     "points": [
+      [
+       -34,
+       56
+      ],
+      [
+       -12,
+       60
+      ],
+      [
+       10,
+       56
+      ]
+     ],
+     "h": [
+      18,
+      20,
+      18
+     ],
+     "width": 5
+    },
+    {
+     "id": "hub-floor",
+     "kind": "area",
+     "h": 12,
+     "ring": [
+      [
+       -30,
+       62
+      ],
+      [
+       -12,
+       60
+      ],
+      [
+       6,
+       62
+      ],
+      [
+       6,
+       72
+      ],
+      [
+       -12,
+       72
+      ],
+      [
+       -30,
+       70
+      ]
+     ]
+    },
+    {
+     "id": "west-shoulder",
+     "kind": "line",
+     "points": [
+      [
+       -36,
+       58
+      ],
+      [
+       -30,
+       66
+      ],
+      [
+       -34,
+       78
+      ]
+     ],
+     "h": [
+      17,
+      18,
+      17
+     ],
+     "width": 10
+    },
+    {
+     "id": "north-swell",
+     "kind": "point",
+     "at": [
+      -14,
+      84
+     ],
+     "h": 18,
+     "r": 12
+    },
+    {
+     "id": "east-bench",
+     "kind": "area",
+     "h": 17,
+     "ring": [
+      [
+       6,
+       62
+      ],
+      [
+       18,
+       60
+      ],
+      [
+       20,
+       76
+      ],
+      [
+       8,
+       78
+      ]
+     ]
+    },
+    {
+     "id": "scar-front-w-pad",
+     "kind": "area",
+     "h": 17,
+     "ring": [
+      [
+       -17,
+       55
+      ],
+      [
+       -17,
+       63
+      ],
+      [
+       -25,
+       67
+      ],
+      [
+       -33,
+       60
+      ],
+      [
+       -34,
+       56
+      ],
+      [
+       -34,
+       46
+      ],
+      [
+       -25,
+       42
+      ],
+      [
+       -18,
+       46
+      ]
+     ]
+    },
+    {
+     "id": "scar-front-e-pad",
+     "kind": "area",
+     "h": 17,
+     "ring": [
+      [
+       17,
+       54
+      ],
+      [
+       13,
+       63
+      ],
+      [
+       4,
+       64
+      ],
+      [
+       -2,
+       57
+      ],
+      [
+       -6,
+       50
+      ],
+      [
+       2,
+       42
+      ],
+      [
+       11,
+       45
+      ]
+     ]
+    },
+    {
+     "id": "scar-hub-w-pad",
+     "kind": "area",
+     "h": 18,
+     "ring": [
+      [
+       -19,
+       75
+      ],
+      [
+       -24,
+       82
+      ],
+      [
+       -29,
+       83
+      ],
+      [
+       -35,
+       78
+      ],
+      [
+       -33,
+       72
+      ],
+      [
+       -29,
+       66
+      ],
+      [
+       -23,
+       70
+      ]
+     ]
+    },
+    {
+     "id": "scar-hub-e-pad",
+     "kind": "area",
+     "h": 17,
+     "ring": [
+      [
+       22,
+       72
+      ],
+      [
+       17,
+       78
+      ],
+      [
+       12,
+       80
+      ],
+      [
+       6,
+       76
+      ],
+      [
+       6,
+       69
+      ],
+      [
+       12,
+       67
+      ],
+      [
+       17,
+       68
+      ]
+     ]
+    },
+    {
+     "id": "scar-back-pad",
+     "kind": "area",
+     "h": 20,
+     "ring": [
+      [
+       -6,
+       79
+      ],
+      [
+       -6,
+       84
+      ],
+      [
+       -11,
+       84
+      ],
+      [
+       -14,
+       83
+      ],
+      [
+       -16,
+       79
+      ],
+      [
+       -14,
+       75
+      ],
+      [
+       -11,
+       74
+      ],
+      [
+       -7,
+       73
+      ]
+     ]
+    }
+   ],
+   "pushes": [
+    {
+     "id": "under-front-w",
+     "ring": [
+      [
+       -14,
+       60
+      ],
+      [
+       -19,
+       69
+      ],
+      [
+       -29,
+       72
+      ],
+      [
+       -37,
+       65
+      ],
+      [
+       -37,
+       55
+      ],
+      [
+       -29,
+       48
+      ],
+      [
+       -19,
+       51
+      ]
+     ],
+     "amount": 3,
+     "falloff": 9,
+     "roughness": 0.4,
+     "crown": 2,
+     "seed": 3
+    },
+    {
+     "id": "under-front-e",
+     "ring": [
+      [
+       20,
+       60
+      ],
+      [
+       16,
+       68
+      ],
+      [
+       8,
+       70
+      ],
+      [
+       1,
+       64
+      ],
+      [
+       1,
+       56
+      ],
+      [
+       8,
+       50
+      ],
+      [
+       16,
+       52
+      ]
+     ],
+     "amount": 3,
+     "falloff": 8,
+     "roughness": 0.4,
+     "crown": 2,
+     "seed": 5
+    },
+    {
+     "id": "under-back",
+     "ring": [
+      [
+       -6,
+       86
+      ],
+      [
+       -11,
+       96
+      ],
+      [
+       -21,
+       99
+      ],
+      [
+       -29,
+       92
+      ],
+      [
+       -29,
+       80
+      ],
+      [
+       -21,
+       73
+      ],
+      [
+       -11,
+       76
+      ]
+     ],
+     "amount": 4,
+     "falloff": 10,
+     "roughness": 0.4,
+     "crown": 3,
+     "seed": 9
+    },
+    {
+     "id": "west-rise",
+     "ring": [
+      [
+       -28,
+       70
+      ],
+      [
+       -33,
+       79
+      ],
+      [
+       -43,
+       82
+      ],
+      [
+       -51,
+       75
+      ],
+      [
+       -51,
+       65
+      ],
+      [
+       -43,
+       58
+      ],
+      [
+       -33,
+       61
+      ]
+     ],
+     "amount": 4,
+     "falloff": 10,
+     "roughness": 0.4,
+     "crown": 3,
+     "seed": 13
+    }
+   ]
+  },
+  "neutral": {
+   "base": 14,
+   "reach": 16,
+   "step": 1,
+   "stairs": true,
+   "grain": {
+    "amplitude": 1.0,
+    "scale": 10,
+    "seed": 9
+   },
+   "marks": [
+    {
+     "id": "coast",
+     "kind": "rim",
+     "h": 12,
+     "depth": 1
+    },
+    {
+     "id": "saddle",
+     "kind": "area",
+     "h": 13,
+     "ring": [
+      [
+       -12,
+       -5
+      ],
+      [
+       0,
+       -7
+      ],
+      [
+       12,
+       -5
+      ],
+      [
+       12,
+       5
+      ],
+      [
+       0,
+       7
+      ],
+      [
+       -12,
+       5
+      ]
+     ]
+    },
+    {
+     "id": "horn-a",
+     "kind": "point",
+     "h": 19,
+     "r": 7,
+     "at": [
+      20,
+      -10
+     ]
+    },
+    {
+     "id": "horn-b",
+     "kind": "point",
+     "h": 19,
+     "r": 7,
+     "at": [
+      -20,
+      10
+     ]
+    },
+    {
+     "id": "step-a",
+     "kind": "area",
+     "h": 16,
+     "ring": [
+      [
+       -27,
+       2
+      ],
+      [
+       -16,
+       -2
+      ],
+      [
+       -11,
+       6
+      ],
+      [
+       -22,
+       10
+      ]
+     ]
+    },
+    {
+     "id": "step-b",
+     "kind": "area",
+     "h": 16,
+     "ring": [
+      [
+       27,
+       -2
+      ],
+      [
+       16,
+       2
+      ],
+      [
+       11,
+       -6
+      ],
+      [
+       22,
+       -10
+      ]
+     ]
+    },
+    {
+     "id": "pond-rim",
+     "kind": "area",
+     "h": 12,
+     "ring": [
+      [
+       -9,
+       -2
+      ],
+      [
+       -5,
+       -6
+      ],
+      [
+       1,
+       -6
+      ],
+      [
+       6,
+       -4
+      ],
+      [
+       8,
+       1
+      ],
+      [
+       3,
+       6
+      ],
+      [
+       -3,
+       6
+      ],
+      [
+       -8,
+       3
+      ]
+     ]
+    },
+    {
+     "id": "pond-floor",
+     "kind": "area",
+     "h": 10,
+     "ring": [
+      [
+       -5,
+       -1
+      ],
+      [
+       -2,
+       -4
+      ],
+      [
+       3,
+       -3
+      ],
+      [
+       5,
+       1
+      ],
+      [
+       2,
+       4
+      ],
+      [
+       -3,
+       3
+      ]
+     ]
+    },
+    {
+     "id": "scar-isle-w-pad",
+     "kind": "area",
+     "h": 13,
+     "ring": [
+      [
+       -12,
+       -3
+      ],
+      [
+       -15,
+       2
+      ],
+      [
+       -21,
+       2
+      ],
+      [
+       -26,
+       -1
+      ],
+      [
+       -26,
+       -7
+      ],
+      [
+       -23,
+       -13
+      ],
+      [
+       -16,
+       -9
+      ]
+     ]
+    },
+    {
+     "id": "scar-isle-e-pad",
+     "kind": "area",
+     "h": 13,
+     "ring": [
+      [
+       12,
+       3
+      ],
+      [
+       15,
+       -2
+      ],
+      [
+       21,
+       -2
+      ],
+      [
+       26,
+       1
+      ],
+      [
+       26,
+       7
+      ],
+      [
+       23,
+       13
+      ],
+      [
+       16,
+       9
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  }
+ }
+}

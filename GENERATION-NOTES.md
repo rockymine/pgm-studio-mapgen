@@ -567,3 +567,119 @@ renderer's ground search steps past decoration but its headroom test does not, s
 every wall reads as blocking (`B99`, open). The export gate navigates on `WorldColumns.Membership` and never
 sees it, so all of those boards pass. A wall is meant to be crossed — over the top, cutting the web with the
 shears the kit carries.
+
+### A composed board is JSON, and taking it over is four edits
+
+`GET /api/compose?players=&symmetry=&seedStart=&count=&hub=&front=&wools=` answers cards carrying a
+descriptor and an SVG; `POST /api/compose/pin` stores one and returns its `planJson`. That plan is an
+ordinary `PlanModel` and everything after that is editing it:
+
+```python
+for piece in plan["pieces"]: piece["rect"][1] += 4      # shift every piece 4 cells (20 blocks) of z
+for box   in plan["boxes"]:  box["rect"][1]  += 4       # the boxes travel with their members
+plan["pieces"].append({"id": "mid-isle", "role": "piece",
+                       "rect": [-4, -3, 8, 6], "mirrors": False})
+```
+
+The vocabulary the filter takes: hubs `ring|bar|double-hole|twin|P|G|single`, frontlines
+`twin|single|bar|none`, wools `i|l|donut|u|h|clamp`. **There is no `u` frontline** — `u` is a wool
+family, and the frontline that reads as a U opening forward is `twin`, a bar with two prongs off it.
+
+### The composer's holes are made by arrangement, and nothing marks them
+
+A double-hole hub's two slots and a U wool's notch are the *shape of the pieces*, not a region. An
+add-shape dropped on one fills it in, no gate says a word, and the layout that was filtered for is
+gone. The predicate to check a ring against, before using it:
+
+```python
+def is_hole(x, z, reach=16):
+    """A void cell with land in all four directions within reach. Open sea is void with nothing
+    beyond it, and a shape may hang over that; a hole is not."""
+    if land(x, z) is not None: return False
+    return all(any(land(x + dx*k, z + dz*k) is not None for k in range(1, reach))
+               for dx, dz in ((1,0),(-1,0),(0,1),(0,-1)))
+```
+
+### `globals.surface` is a floor and the theme's `surface.depth` is a thickness
+
+They are different numbers and they interact: a board flattened at 9 under a stack 9 deep has exactly
+one stack's worth of ground, so a coast rim cut one block into it leaves two blocks standing over the
+void. Raising the plan's surface is what buys the stack room to be a soil profile — turf, dirt,
+gravel, rock — which is what a cliff face is made of when `rim` and `wall` are both off.
+
+### Two `hold` pads side by side cannot be ramped between
+
+`relief_scope: hold` keeps a shape at its own level and the surrounding surface is solved knowing
+where it has to arrive — which is exactly the pre-raise a spawn or a wool room wants. But a relief
+mark cannot climb *between* two held shapes, because neither of them will move: a room pad at 18
+beside an approach pad at 14 is a hundred cells of floor nobody can walk onto, and `relief/read`
+reports it only as a rise in the place count. Each pad climbs one block over the pad it is reached
+from — 16 → 17 → 18.
+
+### A line mark's `width` reaches either side of the line
+
+Not a half-width and not a one-sided band. A `line` at z 50 with `width: 12` writes over everything
+from z 38 to z 62, so a mark drawn to make a bank behind a frontline erases the frontline. Then a
+push stacked on that band and the result was a seven-block wall across the necks of the launch
+ground. Halve every width that was reasoned about as a corridor.
+
+### `height_mode: raise` hands the ground's slope on to its own top
+
+A raise reads the ground under each cell and adds the anchor height there, so over a slope the top
+tilts with the ground *and* the rise at the low foot is the slope plus the lift. An outcrop with a
+lift of 7 standing across a 9-block terrain step reads as a 14-block wall, and no readback mentions
+it. Level the footprint first — an `area` mark at the shape's own ring, grown about 1.3× — and the
+whole face is then the anchor plane, where it was stated, with the pad's edge left to the solver's
+one-block stairs.
+
+### A raise over void builds from its own floor
+
+Past the coast there is no ground to read, so the column falls back to the shape's `floor` and a ring
+that overhangs the sea by two cells builds two seven-block stubs at bedrock beside the island. It is
+terrain, so nothing declines it. Audit every ring for sea cells as well as hole cells before using it.
+
+### Three points and a plane is how you tilt a shape deliberately
+
+`anchor_heights` is per-vertex, which is one number too many to pose by hand and one too few to be a
+gesture. Stating three and solving for the rest is the gesture:
+
+```python
+def plane3(ring, pts):
+    """pts is three (index, height) pairs. Solves a*x + b*z + c = h through them, fills the rest."""
+    (i0,h0),(i1,h1),(i2,h2) = pts
+    (x0,z0),(x1,z1),(x2,z2) = ring[i0], ring[i1], ring[i2]
+    det = (x1-x0)*(z2-z0) - (x2-x0)*(z1-z0)
+    a = ((h1-h0)*(z2-z0) - (h2-h0)*(z1-z0)) / det
+    b = ((h2-h0)*(x1-x0) - (h1-h0)*(x2-x0)) / det
+    return [max(0, round(a*x + b*z + (h0 - a*x0 - b*z0))) for x, z in ring]
+```
+
+Pick the three by the axis the lean should run along — the two furthest downwind at 0, the one
+furthest upwind at the lift — and every shape on the board leans together instead of each being its
+own accident. On a `rot_180` board that gives each team the cliff and its own side the ramp for free.
+
+### An island that does not mirror stamps its shapes once; its dressing still fans
+
+Two different rules, and they are easy to swap. `SketchRasterizer` mirrors a shape only when its
+**island meta** says `mirrors`, so a middle island built as its own `rot_180` image stamps each of
+its shapes exactly once — a second crag on the far lobe has to be written out,
+`[[-x, -z] for x, z in ring]` with the same anchor heights, which turns the plane with the ring.
+`Decorator` fans **every prop over the map's symmetry order** regardless, so a stand of trees on one
+lobe is already the stand on the other, and scattering a second one there finds no room.
+
+### DR-ROAD measures to the cells a stroke claims, and a wide brush is still a road
+
+`PlacePath` claims exactly what `PathStroke.Cells(points, radius, style, coverage, seed)` lays, and
+`RouteStandoff` is 3 for a tree and 2 for a boulder off any of them. Two consequences that pull
+opposite ways: a `worn` stroke under partial coverage claims a scattered subset, so a keep-out
+computed at `radius × coverage` lets props through that the gate then declines; and a stroke wanders
+to its full radius, so a keep-out at `radius + standoff` is right — and twenty-one path props over a
+110 × 220 board with that keep-out leave **eleven** plantable cells on the whole map. Texture brushes
+are paths. Budget them like roads: one tongue per feature, radius 3–4, not two at 6–7.
+
+### DR-CLAIM between props is footprint overlap, not a standoff
+
+`claims.Holds(x, z)` — a prop is declined for resting on a cell another prop has claimed, and that is
+the whole rule. Reserving three blocks around each boulder cost twelve trees on a board that had
+three hundred plantable cells; `body + size + 1` is the real margin. The tree-to-tree distance is the
+separate one, and it is a Chebyshev step that grows with the two canopies: `ceil((ha + hb) / 4.7)`.
