@@ -515,10 +515,32 @@ is why.
 
 **The reads answer over HTTP now**, one route each under `GET /api/map/{slug}/…` — `render/topdown`,
 `render/section`, `render/heightmap`, `render/surface`, `render/traversability`, `render/structures`,
-`render/mirror`, and `column`. The schema names each one's own query words, and every route's summary carries
+`render/mirror`, `render/walk`, `walk`, and `column`. The schema names each one's own query words, and every route's summary carries
 what it draws and where it is known to mislead, so what follows here is only what a summary cannot hold. The
 `PgmStudio.RoundTrip` flags still take the same readings off a region directory, and `--help` prints the same
 sentences.
+
+### `walk` is the read that says what ground costs
+
+`traversability` answers whether a board joins up. `walk` answers what crossing it charges, between two
+stated cells, in four units at once: whether it can be reached, how far in blocks, how many blocks a player
+must **place** — a rise of Δ costing Δ−1, void bridged one a cell — and how many falls over three the way
+takes. `aim` picks the route: `travel` the shortest, `reach` the one placing fewest blocks, `comfort` the
+least edge-hugging of the routes within ten blocks of the shortest. `render/walk` shades the same field over
+the whole board with the route on it.
+
+**Ask it in mirrored pairs.** A single journey says what a journey costs; the same journey against its own
+image under the plan's `symmetry` says whether the board is fair, and that is the question no other read
+answers — `render/mirror` compares blocks, and two halves can be block-identical while the ground between
+them charges one team eleven blocks the other does not pay. On Elderwold, `rot_180`, the spawn-to-cairn lines
+agree to within one block and the river corridor does not: `(−24, −16)` is river bed at y5 while `(24, 16)`
+is bank top at y17, and the walk turns that into 11 placed blocks for one team and 0 for the other. The
+relief mark's own point list is rotationally symmetric; what moves the edge is what is laid over it
+unmirrored — the `grain` field and the water props' `shoreWander`.
+
+**The field is one-sided, and the picture does not say so.** `render/walk` measures from one `from`; a cell
+shaded cheap is cheap *from there*. Two teams do not share a picture. Read one per spawn before concluding
+anything about a board's balance from a colour.
 
 ### `--column` is the only honest answer
 

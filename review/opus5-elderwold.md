@@ -107,6 +107,63 @@ The scarp's own crossing count is `onFoot 0, withBlock 0, descended 13` over 18 
 face**: attackers fall off it toward the river, and get back up only round its east end or by building.
 That is the whole composition of the objective — the ground picks the approach, not a wall.
 
+### What the walk charges
+
+A transect reads one column at a time. `GET /map/{slug}/walk` reads the whole board at once, in the units a
+player pays in: how far it is in blocks, how many blocks must be placed to get there — a rise of Δ costing
+Δ−1 — and how many falls over three the way takes.
+
+**Elderwold is walkable almost everywhere.** Of 26,816 ground cells, **20,769 — 77.5% — cost nothing at all**
+to reach from red's spawn, and 92.4% cost three blocks or fewer. That is `step: 1` with `stairs: true` doing
+exactly what it was set for: a relief that climbs to y26 over a base of 12 and hands a player a staircase
+everywhere it does it. Only 151 cells, 0.6%, cost more than eight.
+
+The ford is confirmed from the other direction. The straight crossing `(0, 30) → (0, −30)` costs **60 blocks
+for a 60-block line** — no detour, no placed block, no fall — because the river mark peaks at `h 9` where its
+neighbours sit at 6, and the cobble path lands on top of it. Thirty blocks west the same crossing costs
+**77 for 60, and 11 placed blocks**.
+
+**On the lines that decide the match the board is fair to within one block.**
+
+| Journey | Distance | Placed | Falls |
+|---|---|---|---|
+| red spawn `(0, 140)` → blue's cairn `(19, −91)` | 239 | 0 | 0 |
+| blue spawn `(0, −140)` → red's cairn `(−20, 90)` | 238 | 0 | 0 |
+| red spawn → its own cairn | 58 | 1 | 0 |
+| blue spawn → its own cairn | 57 | 1 | 0 |
+
+The one block is the cairn anchors themselves: `x −20` against `x 19`, not `±20`. Attacking costs 4.1× what
+defending costs.
+
+**The flanks are not fair, and the walk is the only read that says so.** Under the plan's own `rot_180`,
+`(x, z)` and `(−x, −z)` are the same place. Six of ten sampled pairs answer identically in both distance and
+placed blocks. The four that do not are all in the river corridor and on the coasts:
+
+| Pair | From red | From blue, mirrored | Apart |
+|---|---|---|---|
+| `(−24, −16)` ↔ `(24, 16)` | 173 blocks, 0 placed | 166 blocks, **11 placed** | 11 blocks a player must build |
+| `(−43, −21)` ↔ `(43, 21)` | 191, 13 | 179, 10 | 12 distance, 3 placed |
+| `(−46, 0)` ↔ `(46, 0)` | 165, 3 | 159, 0 | 6 distance, 3 placed |
+| west coast `(−50, 120) → (−50, −120)` | 251, 27 | 238, 12 | 13 distance, 15 placed |
+
+The cause is one column deep. At `(−24, −16)` the ground is **gravel at y5**, in the river bed; at its mirror
+`(24, 16)` it is **sand at y17**, on the bank — twelve blocks apart at two cells the symmetry calls one. Two
+cells north and two south of each, the pair matches exactly: `(−24, −14)`/`(24, 14)` both y5, `(−24, −18)`/
+`(24, 18)` both y16. The channel's shoulder simply lands at a different `z` on the two halves. The relief
+mark is not at fault — its point list is rotationally symmetric on its own — so what moves the edge is what
+is laid over it unmirrored: the `grain` field at `seed 5`, and the water props' `shoreWander`.
+
+**The falls are real and off the fought-over lines.** Every spawn-to-cairn journey takes none. Reaching
+3,114 cells takes one fall over three, 114 take two, and five take three; the deepest single fall on the
+board is **twelve blocks, at `(49, 0)`**, the river's east end, with ten at `(42, −52)`. Drawn as a field the
+pattern is the terrain's own commitment: the eastern flank and a western wedge can only be entered by
+dropping off something.
+
+**`comfort` and `travel` agree nearly everywhere here**, which is what a board with no interior void should
+do — the only edge to keep off is the coast, and the routes that matter run down the middle. They part on the
+west ridge, `(−38, 60) → (−38, 10)`: travel takes 52 blocks placing 3, comfort 57 placing 4, buying itself
+room on a shoulder the short way runs along.
+
 ## The paths are used twice
 
 Eight path props, and only three of them are roads.
@@ -180,3 +237,5 @@ it read as a bay rather than as a basin. Moved 8 blocks inland it reads as what 
 | the hollow's floor | `(−40, 58)`, y3; its benches at y6 and y9 |
 | the knoll | `(22, 114)`, flat at y20, radius 8 |
 | highest ground | y26 (the `west-cape` push); build ceiling 46 |
+| the deepest fall | `(49, 0)`, twelve blocks, at the river's east end; ten at `(42, −52)` |
+| where the symmetry breaks | the river's shoulder, `(−24, −16)` at y5 against `(24, 16)` at y17 |
