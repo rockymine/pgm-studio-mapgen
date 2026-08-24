@@ -1,158 +1,230 @@
 {
-  "setup": {
-    "mirror_mode": "rot_180",
-    "center": { "cx": 0, "cz": 0 },
-    "bbox": { "min_x": -70, "max_x": 70, "min_z": -90, "max_z": 90 }
+ "setup": {
+  "mirror_mode": "rot_180",
+  "center": {
+   "cx": 0,
+   "cz": 0
   },
-  "layout": {
+  "bbox": {
+   "min_x": -70,
+   "max_x": 70,
+   "min_z": -90,
+   "max_z": 90
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
     "islands": [
-      {
-        "id": "ridge",
-        "name": "Grok Ridge",
-        "mirrors": true,
-        "shapeIds": [
-          "strand",
-          "low-west",
-          "low-mid",
-          "low-east",
-          "mid-west",
-          "mid-gate",
-          "mid-east",
-          "up-west",
-          "up-centre",
-          "up-east",
-          "crest",
-          "wool-west",
-          "wool-east"
-        ]
-      }
+     {
+      "id": "ridge",
+      "name": "Grok Ridge",
+      "mirrors": true,
+      "shapeIds": [
+       "strand",
+       "low-west",
+       "low-mid",
+       "low-east",
+       "mid-west",
+       "mid-gate",
+       "mid-east",
+       "up-west",
+       "up-centre",
+       "up-east",
+       "crest",
+       "wool-west",
+       "wool-east"
+      ]
+     }
     ],
     "shapes": [
-      {
-        "id": "strand",
-        "type": "polygon",
-        "operation": "add",
-        "floor": 0,
-        "base_height": 12,
-        "theme": "stone-strand",
-        "vertices": [
-          [-45, -10],
-          [-30, -18],
-          [0, -20],
-          [30, -18],
-          [45, -10],
-          [40, 5],
-          [-40, 5]
-        ]
-      },
-      {
-        "id": "low-west",
-        "type": "rectangle",
-        "operation": "add",
-        "floor": 0,
-        "base_height": 16,
-        "theme": "stone-terrace",
-        "x": -50, "z": 15, "w": 25, "h": 20
-      },
-      {
-        "id": "low-mid",
-        "type": "rectangle",
-        "operation": "add",
-        "floor": 0,
-        "base_height": 15,
-        "theme": "stone-terrace",
-        "x": -25, "z": 15, "w": 50, "h": 15
-      },
-      {
-        "id": "low-east",
-        "type": "rectangle",
-        "operation": "add",
-        "floor": 0,
-        "base_height": 16,
-        "theme": "stone-terrace",
-        "x": 25, "z": 15, "w": 25, "h": 20
-      },
-      {
-        "id": "mid-west",
-        "type": "rectangle",
-        "operation": "add",
-        "floor": 0,
-        "base_height": 20,
-        "theme": "stone-terrace",
-        "x": -45, "z": 35, "w": 20, "h": 20
-      },
-      {
-        "id": "mid-gate",
-        "type": "rectangle",
-        "operation": "add",
-        "floor": 0,
-        "base_height": 18,
-        "theme": "stone-terrace",
-        "x": -10, "z": 35, "w": 20, "h": 15
-      },
-      {
-        "id": "mid-east",
-        "type": "rectangle",
-        "operation": "add",
-        "floor": 0,
-        "base_height": 20,
-        "theme": "stone-terrace",
-        "x": 25, "z": 35, "w": 20, "h": 20
-      },
-      {
-        "id": "up-west",
-        "type": "rectangle",
-        "operation": "add",
-        "floor": 0,
-        "base_height": 24,
-        "theme": "stone-terrace",
-        "x": -40, "z": 55, "w": 15, "h": 20
-      },
-      {
-        "id": "up-centre",
-        "type": "rectangle",
-        "operation": "add",
-        "floor": 0,
-        "base_height": 24,
-        "theme": "stone-terrace",
-        "x": -20, "z": 55, "w": 40, "h": 20
-      },
-      {
-        "id": "up-east",
-        "type": "rectangle",
-        "operation": "add",
-        "floor": 0,
-        "base_height": 24,
-        "theme": "stone-terrace",
-        "x": 25, "z": 55, "w": 15, "h": 20
-      },
-      {
-        "id": "crest",
-        "type": "rectangle",
-        "operation": "add",
-        "floor": 0,
-        "base_height": 28,
-        "theme": "stone-crest",
-        "x": -40, "z": 75, "w": 80, "h": 20
-      },
-      {
-        "id": "wool-west",
-        "type": "rectangle",
-        "operation": "add",
-        "floor": 0,
-        "base_height": 24,
-        "theme": "wool-room",
-        "x": -55, "z": 60, "w": 15, "h": 15
-      },
-      {
-        "id": "wool-east",
-        "type": "rectangle",
-        "operation": "add",
-        "floor": 0,
-        "base_height": 16,
-        "theme": "wool-room",
-        "x": 40, "z": 20, "w": 15, "h": 15
-      }
+     {
+      "id": "strand",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 12,
+      "theme": "stone-strand",
+      "vertices": [
+       [
+        -45,
+        -10
+       ],
+       [
+        -30,
+        -18
+       ],
+       [
+        0,
+        -20
+       ],
+       [
+        30,
+        -18
+       ],
+       [
+        45,
+        -10
+       ],
+       [
+        40,
+        5
+       ],
+       [
+        -40,
+        5
+       ]
+      ]
+     },
+     {
+      "id": "low-west",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 16,
+      "theme": "stone-terrace",
+      "x": -50,
+      "z": 15,
+      "w": 25,
+      "h": 20
+     },
+     {
+      "id": "low-mid",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 15,
+      "theme": "stone-terrace",
+      "x": -25,
+      "z": 15,
+      "w": 50,
+      "h": 15
+     },
+     {
+      "id": "low-east",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 16,
+      "theme": "stone-terrace",
+      "x": 25,
+      "z": 15,
+      "w": 25,
+      "h": 20
+     },
+     {
+      "id": "mid-west",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "stone-terrace",
+      "x": -45,
+      "z": 35,
+      "w": 20,
+      "h": 20
+     },
+     {
+      "id": "mid-gate",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 18,
+      "theme": "stone-terrace",
+      "x": -10,
+      "z": 35,
+      "w": 20,
+      "h": 15
+     },
+     {
+      "id": "mid-east",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "stone-terrace",
+      "x": 25,
+      "z": 35,
+      "w": 20,
+      "h": 20
+     },
+     {
+      "id": "up-west",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 24,
+      "theme": "stone-terrace",
+      "x": -40,
+      "z": 55,
+      "w": 15,
+      "h": 20
+     },
+     {
+      "id": "up-centre",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 24,
+      "theme": "stone-terrace",
+      "x": -20,
+      "z": 55,
+      "w": 40,
+      "h": 20
+     },
+     {
+      "id": "up-east",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 24,
+      "theme": "stone-terrace",
+      "x": 25,
+      "z": 55,
+      "w": 15,
+      "h": 20
+     },
+     {
+      "id": "crest",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 28,
+      "theme": "stone-crest",
+      "x": -40,
+      "z": 75,
+      "w": 80,
+      "h": 20
+     },
+     {
+      "id": "wool-west",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 24,
+      "theme": "wool-room",
+      "x": -55,
+      "z": 60,
+      "w": 15,
+      "h": 15
+     },
+     {
+      "id": "wool-east",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 16,
+      "theme": "wool-room",
+      "x": 40,
+      "z": 20,
+      "w": 15,
+      "h": 15
+     }
     ]
+   }
   }
+ ]
 }

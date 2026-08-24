@@ -12,292 +12,298 @@
    "max_z": 115
   }
  },
- "layout": {
-  "shapes": [
-   {
-    "id": "s0",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      25,
-      70
-     ],
-     [
-      50,
-      70
-     ],
-     [
-      50,
-      90
-     ],
-     [
-      25,
-      90
-     ]
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "s0",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        25,
+        70
+       ],
+       [
+        50,
+        70
+       ],
+       [
+        50,
+        90
+       ],
+       [
+        25,
+        90
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 5,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "gantry-works"
+     },
+     {
+      "id": "s1",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -55,
+        10
+       ],
+       [
+        55,
+        10
+       ],
+       [
+        55,
+        70
+       ],
+       [
+        25,
+        70
+       ],
+       [
+        25,
+        90
+       ],
+       [
+        40,
+        90
+       ],
+       [
+        40,
+        100
+       ],
+       [
+        -40,
+        100
+       ],
+       [
+        -40,
+        90
+       ],
+       [
+        -25,
+        90
+       ],
+       [
+        -25,
+        70
+       ],
+       [
+        -55,
+        70
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 9,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "gantry-yard"
+     },
+     {
+      "id": "s2",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -10,
+        100
+       ],
+       [
+        10,
+        100
+       ],
+       [
+        10,
+        110
+       ],
+       [
+        -10,
+        110
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 10,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "gantry-yard"
+     },
+     {
+      "id": "s3",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -50,
+        70
+       ],
+       [
+        -25,
+        70
+       ],
+       [
+        -25,
+        90
+       ],
+       [
+        -50,
+        90
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 13,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "gantry-works"
+     },
+     {
+      "id": "spawn-red",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": -10,
+      "min_z": 100,
+      "max_x": 10,
+      "max_z": 110,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 10,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "red",
+      "color": "red",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "spawn-blue",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": -10,
+      "min_z": -110,
+      "max_x": 10,
+      "max_z": -100,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "blue",
+      "color": "blue",
+      "height_authored": null,
+      "theme": null
+     }
     ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": 5,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "gantry-works"
-   },
-   {
-    "id": "s1",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -55,
-      10
-     ],
-     [
-      55,
-      10
-     ],
-     [
-      55,
-      70
-     ],
-     [
-      25,
-      70
-     ],
-     [
-      25,
-      90
-     ],
-     [
-      40,
-      90
-     ],
-     [
-      40,
-      100
-     ],
-     [
-      -40,
-      100
-     ],
-     [
-      -40,
-      90
-     ],
-     [
-      -25,
-      90
-     ],
-     [
-      -25,
-      70
-     ],
-     [
-      -55,
-      70
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": 9,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "gantry-yard"
-   },
-   {
-    "id": "s2",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -10,
-      100
-     ],
-     [
-      10,
-      100
-     ],
-     [
-      10,
-      110
-     ],
-     [
-      -10,
-      110
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": 10,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "gantry-yard"
-   },
-   {
-    "id": "s3",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -50,
-      70
-     ],
-     [
-      -25,
-      70
-     ],
-     [
-      -25,
-      90
-     ],
-     [
-      -50,
-      90
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": 13,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "gantry-works"
-   },
-   {
-    "id": "spawn-red",
-    "type": "rectangle",
-    "operation": "add",
-    "override": false,
-    "min_x": -10,
-    "min_z": 100,
-    "max_x": 10,
-    "max_z": 110,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": null,
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 10,
-    "anchor_heights": null,
-    "floor": null,
-    "role": "spawn",
-    "intentRef": "red",
-    "color": "red",
-    "height_authored": null,
-    "theme": null
-   },
-   {
-    "id": "spawn-blue",
-    "type": "rectangle",
-    "operation": "add",
-    "override": false,
-    "min_x": -10,
-    "min_z": -110,
-    "max_x": 10,
-    "max_z": -100,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": null,
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": null,
-    "anchor_heights": null,
-    "floor": null,
-    "role": "spawn",
-    "intentRef": "blue",
-    "color": "blue",
-    "height_authored": null,
-    "theme": null
-   }
-  ],
-  "islands": [
-   {
-    "id": "team",
-    "name": "Team island",
-    "mirrors": true,
-    "shapeIds": [
-     "s0",
-     "s1",
-     "s2",
-     "s3"
+    "islands": [
+     {
+      "id": "team",
+      "name": "Team island",
+      "mirrors": true,
+      "shapeIds": [
+       "s0",
+       "s1",
+       "s2",
+       "s3"
+      ]
+     }
     ]
    }
-  ]
- },
- "layers": null,
+  }
+ ],
  "themes": {
   "gantry-yard": {
    "bedrock": {

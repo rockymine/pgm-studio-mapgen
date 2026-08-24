@@ -12,344 +12,350 @@
    "max_z": 100
   }
  },
- "layout": {
-  "shapes": [
-   {
-    "id": "hub",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "vertices": [
-     [
-      -55,
-      -55
-     ],
-     [
-      55,
-      -55
-     ],
-     [
-      55,
-      0
-     ],
-     [
-      -55,
-      0
-     ]
-    ],
-    "base_height": 9,
-    "floor": 0,
-    "theme": "reed-hub"
-   },
-   {
-    "id": "hub-hole",
-    "type": "polygon",
-    "operation": "subtract",
-    "override": false,
-    "vertices": [
-     [
-      -20,
-      -40
-     ],
-     [
-      20,
-      -40
-     ],
-     [
-      20,
-      -25
-     ],
-     [
-      -20,
-      -25
-     ]
-    ],
-    "controls": {
-     "1": {
-      "out": [
-       26,
-       -34
-      ]
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "hub",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "vertices": [
+       [
+        -55,
+        -55
+       ],
+       [
+        55,
+        -55
+       ],
+       [
+        55,
+        0
+       ],
+       [
+        -55,
+        0
+       ]
+      ],
+      "base_height": 9,
+      "floor": 0,
+      "theme": "reed-hub"
      },
-     "2": {
-      "in": [
-       26,
-       -31
+     {
+      "id": "hub-hole",
+      "type": "polygon",
+      "operation": "subtract",
+      "override": false,
+      "vertices": [
+       [
+        -20,
+        -40
+       ],
+       [
+        20,
+        -40
+       ],
+       [
+        20,
+        -25
+       ],
+       [
+        -20,
+        -25
+       ]
+      ],
+      "controls": {
+       "1": {
+        "out": [
+         26,
+         -34
+        ]
+       },
+       "2": {
+        "in": [
+         26,
+         -31
+        ]
+       }
+      },
+      "base_height": 100,
+      "floor": 0
+     },
+     {
+      "id": "west-lane",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "vertices": [
+       [
+        -95,
+        -40
+       ],
+       [
+        -55,
+        -40
+       ],
+       [
+        -55,
+        -10
+       ],
+       [
+        -95,
+        -10
+       ]
+      ],
+      "base_height": 9,
+      "floor": 0,
+      "theme": "stockade",
+      "relief_scope": "hold"
+     },
+     {
+      "id": "east-lane",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "vertices": [
+       [
+        55,
+        -40
+       ],
+       [
+        95,
+        -40
+       ],
+       [
+        95,
+        -10
+       ],
+       [
+        55,
+        -10
+       ]
+      ],
+      "controls": {
+       "1": {
+        "out": [
+         102,
+         -28
+        ]
+       },
+       "2": {
+        "in": [
+         102,
+         -22
+        ]
+       }
+      },
+      "base_height": 9,
+      "floor": 0,
+      "theme": "sable-reeds"
+     },
+     {
+      "id": "leg-w",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -45,
+        -80
+       ],
+       [
+        -15,
+        -80
+       ],
+       [
+        -15,
+        -55
+       ],
+       [
+        -45,
+        -55
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 10,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "silt-flat"
+     },
+     {
+      "id": "leg-e",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        15,
+        -80
+       ],
+       [
+        45,
+        -80
+       ],
+       [
+        45,
+        -55
+       ],
+       [
+        15,
+        -55
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 10,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "silt-flat"
+     },
+     {
+      "id": "spawn-ground",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -45,
+        -95
+       ],
+       [
+        45,
+        -95
+       ],
+       [
+        45,
+        -80
+       ],
+       [
+        -45,
+        -80
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "exclude",
+      "base_height": 12,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "marsh-hold"
+     },
+     {
+      "id": "entrance-void",
+      "type": "polygon",
+      "operation": "subtract",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -15,
+        -80
+       ],
+       [
+        15,
+        -80
+       ],
+       [
+        15,
+        -55
+       ],
+       [
+        -15,
+        -55
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": null
+     }
+    ],
+    "islands": [
+     {
+      "id": "team",
+      "name": "Team island",
+      "mirrors": true,
+      "shapeIds": [
+       "hub",
+       "hub-hole",
+       "west-lane",
+       "east-lane",
+       "leg-w",
+       "leg-e",
+       "spawn-ground",
+       "entrance-void"
       ]
      }
-    },
-    "base_height": 100,
-    "floor": 0
-   },
-   {
-    "id": "west-lane",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "vertices": [
-     [
-      -95,
-      -40
-     ],
-     [
-      -55,
-      -40
-     ],
-     [
-      -55,
-      -10
-     ],
-     [
-      -95,
-      -10
-     ]
-    ],
-    "base_height": 9,
-    "floor": 0,
-    "theme": "stockade",
-    "relief_scope": "hold"
-   },
-   {
-    "id": "east-lane",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "vertices": [
-     [
-      55,
-      -40
-     ],
-     [
-      95,
-      -40
-     ],
-     [
-      95,
-      -10
-     ],
-     [
-      55,
-      -10
-     ]
-    ],
-    "controls": {
-     "1": {
-      "out": [
-       102,
-       -28
-      ]
-     },
-     "2": {
-      "in": [
-       102,
-       -22
-      ]
-     }
-    },
-    "base_height": 9,
-    "floor": 0,
-    "theme": "sable-reeds"
-   },
-   {
-    "id": "leg-w",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -45,
-      -80
-     ],
-     [
-      -15,
-      -80
-     ],
-     [
-      -15,
-      -55
-     ],
-     [
-      -45,
-      -55
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 10,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "silt-flat"
-   },
-   {
-    "id": "leg-e",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      15,
-      -80
-     ],
-     [
-      45,
-      -80
-     ],
-     [
-      45,
-      -55
-     ],
-     [
-      15,
-      -55
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 10,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "silt-flat"
-   },
-   {
-    "id": "spawn-ground",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -45,
-      -95
-     ],
-     [
-      45,
-      -95
-     ],
-     [
-      45,
-      -80
-     ],
-     [
-      -45,
-      -80
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "exclude",
-    "base_height": 12,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "marsh-hold"
-   },
-   {
-    "id": "entrance-void",
-    "type": "polygon",
-    "operation": "subtract",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -15,
-      -80
-     ],
-     [
-      15,
-      -80
-     ],
-     [
-      15,
-      -55
-     ],
-     [
-      -15,
-      -55
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": null,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": null
-   }
-  ],
-  "islands": [
-   {
-    "id": "team",
-    "name": "Team island",
-    "mirrors": true,
-    "shapeIds": [
-     "hub",
-     "hub-hole",
-     "west-lane",
-     "east-lane",
-     "leg-w",
-     "leg-e",
-     "spawn-ground",
-     "entrance-void"
     ]
    }
-  ]
- },
- "layers": null,
+  }
+ ],
  "themes": {
   "reed-hub": {
    "bedrock": {

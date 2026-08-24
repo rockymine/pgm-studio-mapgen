@@ -12,352 +12,359 @@
    "max_z": 100
   }
  },
- "layout": {
-  "shapes": [
-   {
-    "id": "field",
-    "type": "polygon",
-    "operation": "add",
-    "vertices": [
-     [
-      -52,
-      -34
-     ],
-     [
-      -70,
-      -28
-     ],
-     [
-      -74,
-      -12
-     ],
-     [
-      -68,
-      2
-     ],
-     [
-      -50,
-      8
-     ],
-     [
-      -24,
-      6
-     ],
-     [
-      0,
-      8
-     ],
-     [
-      24,
-      6
-     ],
-     [
-      50,
-      8
-     ],
-     [
-      68,
-      2
-     ],
-     [
-      74,
-      -12
-     ],
-     [
-      70,
-      -28
-     ],
-     [
-      52,
-      -34
-     ],
-     [
-      24,
-      -32
-     ],
-     [
-      0,
-      -34
-     ],
-     [
-      -24,
-      -32
-     ]
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "field",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        -52,
+        -34
+       ],
+       [
+        -70,
+        -28
+       ],
+       [
+        -74,
+        -12
+       ],
+       [
+        -68,
+        2
+       ],
+       [
+        -50,
+        8
+       ],
+       [
+        -24,
+        6
+       ],
+       [
+        0,
+        8
+       ],
+       [
+        24,
+        6
+       ],
+       [
+        50,
+        8
+       ],
+       [
+        68,
+        2
+       ],
+       [
+        74,
+        -12
+       ],
+       [
+        70,
+        -28
+       ],
+       [
+        52,
+        -34
+       ],
+       [
+        24,
+        -32
+       ],
+       [
+        0,
+        -34
+       ],
+       [
+        -24,
+        -32
+       ]
+      ],
+      "floor": 0,
+      "base_height": 14,
+      "theme": "foundry-ash"
+     },
+     {
+      "id": "casting",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        -44,
+        -54
+       ],
+       [
+        -20,
+        -52
+       ],
+       [
+        8,
+        -54
+       ],
+       [
+        34,
+        -52
+       ],
+       [
+        44,
+        -46
+       ],
+       [
+        42,
+        -32
+       ],
+       [
+        16,
+        -28
+       ],
+       [
+        -14,
+        -30
+       ],
+       [
+        -40,
+        -32
+       ],
+       [
+        -46,
+        -42
+       ]
+      ],
+      "floor": 0,
+      "base_height": 16,
+      "relief_scope": "hold",
+      "theme": "foundry-floor"
+     },
+     {
+      "id": "yard",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        -58,
+        -72
+       ],
+       [
+        -20,
+        -70
+       ],
+       [
+        20,
+        -72
+       ],
+       [
+        58,
+        -70
+       ],
+       [
+        56,
+        -52
+       ],
+       [
+        20,
+        -48
+       ],
+       [
+        -20,
+        -50
+       ],
+       [
+        -56,
+        -52
+       ]
+      ],
+      "floor": 0,
+      "base_height": 18,
+      "relief_scope": "exclude",
+      "theme": "foundry-yard"
+     },
+     {
+      "id": "back",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        -38,
+        -92
+       ],
+       [
+        38,
+        -92
+       ],
+       [
+        38,
+        -74
+       ],
+       [
+        30,
+        -68
+       ],
+       [
+        -30,
+        -68
+       ],
+       [
+        -38,
+        -74
+       ]
+      ],
+      "floor": 0,
+      "base_height": 20,
+      "relief_scope": "exclude",
+      "theme": "foundry-stage"
+     },
+     {
+      "id": "ridge",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        40,
+        -22
+       ],
+       [
+        44,
+        -32
+       ],
+       [
+        56,
+        -34
+       ],
+       [
+        68,
+        -30
+       ],
+       [
+        72,
+        -18
+       ],
+       [
+        66,
+        -8
+       ],
+       [
+        52,
+        -6
+       ],
+       [
+        42,
+        -12
+       ]
+      ],
+      "floor": 0,
+      "base_height": 10,
+      "height_mode": "raise",
+      "skirt": 2,
+      "anchor_heights": [
+       9,
+       10,
+       12,
+       12,
+       11,
+       10,
+       9,
+       8
+      ],
+      "theme": "foundry-slag"
+     },
+     {
+      "id": "race",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        -34,
+        -30
+       ],
+       [
+        -26,
+        -30
+       ],
+       [
+        -16,
+        4
+       ],
+       [
+        -24,
+        6
+       ]
+      ],
+      "floor": 0,
+      "base_height": 3,
+      "height_mode": "sink",
+      "skirt": 2,
+      "theme": "foundry-race"
+     },
+     {
+      "id": "cut",
+      "type": "polygon",
+      "operation": "subtract",
+      "vertices": [
+       [
+        -12,
+        -18
+       ],
+       [
+        -6,
+        -24
+       ],
+       [
+        10,
+        -24
+       ],
+       [
+        24,
+        -20
+       ],
+       [
+        26,
+        -12
+       ],
+       [
+        14,
+        -8
+       ],
+       [
+        -4,
+        -10
+       ],
+       [
+        -12,
+        -14
+       ]
+      ],
+      "floor": 0,
+      "base_height": 100
+     }
     ],
-    "floor": 0,
-    "base_height": 14,
-    "theme": "foundry-ash"
-   },
-   {
-    "id": "casting",
-    "type": "polygon",
-    "operation": "add",
-    "vertices": [
-     [
-      -44,
-      -54
-     ],
-     [
-      -20,
-      -52
-     ],
-     [
-      8,
-      -54
-     ],
-     [
-      34,
-      -52
-     ],
-     [
-      44,
-      -46
-     ],
-     [
-      42,
-      -32
-     ],
-     [
-      16,
-      -28
-     ],
-     [
-      -14,
-      -30
-     ],
-     [
-      -40,
-      -32
-     ],
-     [
-      -46,
-      -42
-     ]
-    ],
-    "floor": 0,
-    "base_height": 16,
-    "relief_scope": "hold",
-    "theme": "foundry-floor"
-   },
-   {
-    "id": "yard",
-    "type": "polygon",
-    "operation": "add",
-    "vertices": [
-     [
-      -58,
-      -72
-     ],
-     [
-      -20,
-      -70
-     ],
-     [
-      20,
-      -72
-     ],
-     [
-      58,
-      -70
-     ],
-     [
-      56,
-      -52
-     ],
-     [
-      20,
-      -48
-     ],
-     [
-      -20,
-      -50
-     ],
-     [
-      -56,
-      -52
-     ]
-    ],
-    "floor": 0,
-    "base_height": 18,
-    "relief_scope": "exclude",
-    "theme": "foundry-yard"
-   },
-   {
-    "id": "back",
-    "type": "polygon",
-    "operation": "add",
-    "vertices": [
-     [
-      -38,
-      -92
-     ],
-     [
-      38,
-      -92
-     ],
-     [
-      38,
-      -74
-     ],
-     [
-      30,
-      -68
-     ],
-     [
-      -30,
-      -68
-     ],
-     [
-      -38,
-      -74
-     ]
-    ],
-    "floor": 0,
-    "base_height": 20,
-    "relief_scope": "exclude",
-    "theme": "foundry-stage"
-   },
-   {
-    "id": "ridge",
-    "type": "polygon",
-    "operation": "add",
-    "vertices": [
-     [
-      40,
-      -22
-     ],
-     [
-      44,
-      -32
-     ],
-     [
-      56,
-      -34
-     ],
-     [
-      68,
-      -30
-     ],
-     [
-      72,
-      -18
-     ],
-     [
-      66,
-      -8
-     ],
-     [
-      52,
-      -6
-     ],
-     [
-      42,
-      -12
-     ]
-    ],
-    "floor": 0,
-    "base_height": 10,
-    "height_mode": "raise",
-    "skirt": 2,
-    "anchor_heights": [
-     9,
-     10,
-     12,
-     12,
-     11,
-     10,
-     9,
-     8
-    ],
-    "theme": "foundry-slag"
-   },
-   {
-    "id": "race",
-    "type": "polygon",
-    "operation": "add",
-    "vertices": [
-     [
-      -34,
-      -30
-     ],
-     [
-      -26,
-      -30
-     ],
-     [
-      -16,
-      4
-     ],
-     [
-      -24,
-      6
-     ]
-    ],
-    "floor": 0,
-    "base_height": 3,
-    "height_mode": "sink",
-    "skirt": 2,
-    "theme": "foundry-race"
-   },
-   {
-    "id": "cut",
-    "type": "polygon",
-    "operation": "subtract",
-    "vertices": [
-     [
-      -12,
-      -18
-     ],
-     [
-      -6,
-      -24
-     ],
-     [
-      10,
-      -24
-     ],
-     [
-      24,
-      -20
-     ],
-     [
-      26,
-      -12
-     ],
-     [
-      14,
-      -8
-     ],
-     [
-      -4,
-      -10
-     ],
-     [
-      -12,
-      -14
-     ]
-    ],
-    "floor": 0,
-    "base_height": 100
-   }
-  ],
-  "islands": [
-   {
-    "id": "foundry",
-    "name": "Foundry",
-    "mirrors": true,
-    "shapeIds": [
-     "field",
-     "casting",
-     "yard",
-     "back",
-     "ridge",
-     "race",
-     "cut"
+    "islands": [
+     {
+      "id": "foundry",
+      "name": "Foundry",
+      "mirrors": true,
+      "shapeIds": [
+       "field",
+       "casting",
+       "yard",
+       "back",
+       "ridge",
+       "race",
+       "cut"
+      ]
+     }
     ]
    }
-  ]
- },
+  }
+ ],
  "themes": {
   "foundry-ash": {
    "bedrock": {

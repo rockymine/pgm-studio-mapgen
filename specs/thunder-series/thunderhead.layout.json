@@ -12,903 +12,909 @@
    "max_z": 115
   }
  },
- "layout": {
-  "shapes": [
-   {
-    "id": "t0",
-    "type": "polygon",
-    "operation": "add",
-    "vertices": [
-     [
-      18.0,
-      7.0
-     ],
-     [
-      22.0,
-      -1.0
-     ],
-     [
-      20.0,
-      -16.0
-     ],
-     [
-      23.0,
-      -22.0
-     ],
-     [
-      27.0,
-      -24.0
-     ],
-     [
-      35.0,
-      -10.0
-     ],
-     [
-      40.0,
-      -6.0
-     ],
-     [
-      41.0,
-      1.0
-     ],
-     [
-      35.0,
-      6.0
-     ],
-     [
-      27.0,
-      19.0
-     ],
-     [
-      18.0,
-      12.0
-     ]
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "t0",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        18.0,
+        7.0
+       ],
+       [
+        22.0,
+        -1.0
+       ],
+       [
+        20.0,
+        -16.0
+       ],
+       [
+        23.0,
+        -22.0
+       ],
+       [
+        27.0,
+        -24.0
+       ],
+       [
+        35.0,
+        -10.0
+       ],
+       [
+        40.0,
+        -6.0
+       ],
+       [
+        41.0,
+        1.0
+       ],
+       [
+        35.0,
+        6.0
+       ],
+       [
+        27.0,
+        19.0
+       ],
+       [
+        18.0,
+        12.0
+       ]
+      ],
+      "base_height": 8,
+      "relief_scope": "hold",
+      "theme": "dune",
+      "controls": {
+       "0": {
+        "out": [
+         18.4,
+         4.2
+        ]
+       },
+       "1": {
+        "in": [
+         20.0,
+         1.0
+        ],
+        "out": [
+         23.18,
+         -5.74
+        ]
+       },
+       "2": {
+        "in": [
+         22.38,
+         -11.74
+        ]
+       },
+       "4": {
+        "out": [
+         29.01,
+         -19.58
+        ]
+       },
+       "5": {
+        "in": [
+         32.21,
+         -13.98
+        ]
+       },
+       "8": {
+        "out": [
+         31.31,
+         9.1
+        ]
+       },
+       "9": {
+        "in": [
+         28.11,
+         14.3
+        ],
+        "out": [
+         23.48,
+         17.96
+        ]
+       },
+       "10": {
+        "in": [
+         19.88,
+         15.16
+        ]
+       }
+      }
+     },
+     {
+      "id": "t1",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        31.0,
+        22.0
+       ],
+       [
+        40.0,
+        3.0
+       ],
+       [
+        36.0,
+        -8.0
+       ],
+       [
+        36.0,
+        -17.0
+       ],
+       [
+        41.0,
+        -21.0
+       ],
+       [
+        48.0,
+        -20.0
+       ],
+       [
+        50.0,
+        -11.0
+       ],
+       [
+        56.0,
+        -7.0
+       ],
+       [
+        60.0,
+        -8.0
+       ],
+       [
+        67.0,
+        -17.0
+       ],
+       [
+        74.0,
+        -14.0
+       ],
+       [
+        78.0,
+        -8.0
+       ],
+       [
+        82.0,
+        -9.0
+       ],
+       [
+        85.0,
+        -14.0
+       ],
+       [
+        91.0,
+        -15.0
+       ],
+       [
+        103.0,
+        -10.0
+       ],
+       [
+        104.0,
+        -5.0
+       ],
+       [
+        116.0,
+        3.0
+       ],
+       [
+        112.0,
+        16.0
+       ],
+       [
+        105.0,
+        19.0
+       ],
+       [
+        98.0,
+        16.0
+       ],
+       [
+        95.0,
+        11.0
+       ],
+       [
+        85.0,
+        6.0
+       ],
+       [
+        84.0,
+        3.0
+       ],
+       [
+        73.0,
+        3.0
+       ],
+       [
+        68.0,
+        8.0
+       ],
+       [
+        62.0,
+        9.0
+       ],
+       [
+        55.0,
+        18.0
+       ],
+       [
+        48.0,
+        21.0
+       ],
+       [
+        43.0,
+        29.0
+       ],
+       [
+        36.0,
+        29.0
+       ]
+      ],
+      "base_height": 8,
+      "relief_scope": "hold",
+      "theme": "scour",
+      "controls": {
+       "0": {
+        "out": [
+         31.7,
+         15.35
+        ],
+        "in": [
+         33.3,
+         23.53
+        ]
+       },
+       "1": {
+        "in": [
+         35.3,
+         7.75
+        ],
+        "out": [
+         38.75,
+         -0.28
+        ]
+       },
+       "2": {
+        "in": [
+         37.15,
+         -4.68
+        ],
+        "out": [
+         35.28,
+         -10.7
+        ]
+       },
+       "3": {
+        "in": [
+         35.28,
+         -14.3
+        ]
+       },
+       "5": {
+        "out": [
+         47.56,
+         -17.07
+        ]
+       },
+       "6": {
+        "in": [
+         48.36,
+         -13.47
+        ]
+       },
+       "8": {
+        "out": [
+         62.37,
+         -10.49
+        ]
+       },
+       "9": {
+        "in": [
+         65.17,
+         -14.09
+        ]
+       },
+       "14": {
+        "out": [
+         94.4,
+         -13.03
+        ]
+       },
+       "15": {
+        "in": [
+         99.2,
+         -11.03
+        ]
+       },
+       "16": {
+        "out": [
+         107.81,
+         -2.92
+        ]
+       },
+       "17": {
+        "in": [
+         112.61,
+         0.28
+        ],
+        "out": [
+         115.78,
+         7.2
+        ]
+       },
+       "18": {
+        "in": [
+         114.18,
+         12.4
+        ]
+       },
+       "21": {
+        "out": [
+         92.05,
+         9.4
+        ]
+       },
+       "22": {
+        "in": [
+         88.05,
+         7.4
+        ]
+       },
+       "23": {
+        "out": [
+         80.7,
+         2.74
+        ]
+       },
+       "24": {
+        "in": [
+         76.3,
+         2.74
+        ]
+       },
+       "26": {
+        "out": [
+         59.82,
+         11.64
+        ]
+       },
+       "27": {
+        "in": [
+         57.02,
+         15.24
+        ]
+       },
+       "28": {
+        "out": [
+         47.26,
+         23.88
+        ]
+       },
+       "29": {
+        "in": [
+         45.26,
+         27.08
+        ]
+       },
+       "30": {
+        "out": [
+         35.3,
+         26.33
+        ]
+       }
+      }
+     },
+     {
+      "id": "t2",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        53.0,
+        -29.0
+       ],
+       [
+        59.0,
+        -36.0
+       ],
+       [
+        62.0,
+        -46.0
+       ],
+       [
+        73.0,
+        -54.0
+       ],
+       [
+        78.0,
+        -64.0
+       ],
+       [
+        89.0,
+        -57.0
+       ],
+       [
+        101.0,
+        -56.0
+       ],
+       [
+        104.0,
+        -52.0
+       ],
+       [
+        104.0,
+        -43.0
+       ],
+       [
+        101.0,
+        -41.0
+       ],
+       [
+        89.0,
+        -41.0
+       ],
+       [
+        83.0,
+        -35.0
+       ],
+       [
+        62.0,
+        -24.0
+       ],
+       [
+        54.0,
+        -25.0
+       ]
+      ],
+      "base_height": 8,
+      "relief_scope": "hold",
+      "theme": "oasis",
+      "controls": {
+       "0": {
+        "out": [
+         55.37,
+         -30.61
+        ]
+       },
+       "1": {
+        "in": [
+         57.77,
+         -33.41
+        ],
+        "out": [
+         60.01,
+         -38.97
+        ]
+       },
+       "2": {
+        "in": [
+         61.21,
+         -42.97
+        ],
+        "out": [
+         64.29,
+         -49.78
+        ]
+       },
+       "3": {
+        "in": [
+         68.69,
+         -52.98
+        ],
+        "out": [
+         75.3,
+         -56.6
+        ]
+       },
+       "4": {
+        "in": [
+         77.3,
+         -60.6
+        ],
+        "out": [
+         80.7,
+         -60.96
+        ]
+       },
+       "5": {
+        "in": [
+         85.1,
+         -58.16
+        ],
+        "out": [
+         92.57,
+         -56.36
+        ]
+       },
+       "6": {
+        "in": [
+         97.37,
+         -55.96
+        ]
+       },
+       "7": {
+        "out": [
+         103.95,
+         -49.3
+        ]
+       },
+       "8": {
+        "in": [
+         103.95,
+         -45.7
+        ]
+       },
+       "9": {
+        "out": [
+         97.4,
+         -40.08
+        ]
+       },
+       "10": {
+        "in": [
+         92.6,
+         -40.08
+        ],
+        "out": [
+         87.84,
+         -38.56
+        ]
+       },
+       "11": {
+        "in": [
+         85.44,
+         -36.16
+        ],
+        "out": [
+         76.02,
+         -32.99
+        ]
+       },
+       "12": {
+        "in": [
+         67.62,
+         -28.59
+        ],
+        "out": [
+         59.53,
+         -23.74
+        ]
+       },
+       "13": {
+        "in": [
+         56.33,
+         -24.14
+        ]
+       }
+      }
+     },
+     {
+      "id": "t3",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        -6.0,
+        -4.0
+       ],
+       [
+        4.0,
+        -6.0
+       ],
+       [
+        6.0,
+        4.0
+       ],
+       [
+        -4.0,
+        6.0
+       ]
+      ],
+      "base_height": 8,
+      "relief_scope": "hold",
+      "theme": "scour",
+      "controls": {
+       "0": {
+        "out": [
+         -3.01,
+         -4.67
+        ],
+        "in": [
+         -5.29,
+         -1.02
+        ]
+       },
+       "1": {
+        "in": [
+         0.99,
+         -5.47
+        ],
+        "out": [
+         3.26,
+         -2.73
+        ]
+       },
+       "2": {
+        "in": [
+         4.06,
+         1.27
+        ],
+        "out": [
+         2.97,
+         4.47
+        ]
+       },
+       "3": {
+        "in": [
+         -1.03,
+         5.27
+        ],
+        "out": [
+         -4.49,
+         2.98
+        ]
+       }
+      }
+     },
+     {
+      "id": "spawn-red",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": 92,
+      "min_z": -2,
+      "max_x": 104,
+      "max_z": 10,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 8,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "red",
+      "color": "red",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "spawn-blue",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": -10,
+      "min_z": 92,
+      "max_x": 2,
+      "max_z": 104,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "blue",
+      "color": "blue",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "spawn-yellow",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": -104,
+      "min_z": -10,
+      "max_x": -92,
+      "max_z": 2,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "yellow",
+      "color": "yellow",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "spawn-green",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": -2,
+      "min_z": -104,
+      "max_x": 10,
+      "max_z": -92,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "green",
+      "color": "green",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "wool-red-red",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": 76,
+      "min_z": -54,
+      "max_x": 90,
+      "max_z": -44,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 8,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "woolRoom",
+      "intentRef": "red:red",
+      "color": "red",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "wool-blue-blue",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": 44,
+      "min_z": 76,
+      "max_x": 54,
+      "max_z": 90,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "woolRoom",
+      "intentRef": "blue:blue",
+      "color": "blue",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "wool-yellow-yellow",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": -90,
+      "min_z": 44,
+      "max_x": -76,
+      "max_z": 54,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "woolRoom",
+      "intentRef": "yellow:yellow",
+      "color": "yellow",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "wool-green-green",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": -54,
+      "min_z": -90,
+      "max_x": -44,
+      "max_z": -76,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "woolRoom",
+      "intentRef": "green:green",
+      "color": "green",
+      "height_authored": null,
+      "theme": null
+     }
     ],
-    "base_height": 8,
-    "relief_scope": "hold",
-    "theme": "dune",
-    "controls": {
-     "0": {
-      "out": [
-       18.4,
-       4.2
+    "islands": [
+     {
+      "id": "neutral",
+      "name": "Neutral",
+      "mirrors": false,
+      "shapeIds": [
+       "t3"
       ]
      },
-     "1": {
-      "in": [
-       20.0,
-       1.0
-      ],
-      "out": [
-       23.18,
-       -5.74
-      ]
-     },
-     "2": {
-      "in": [
-       22.38,
-       -11.74
-      ]
-     },
-     "4": {
-      "out": [
-       29.01,
-       -19.58
-      ]
-     },
-     "5": {
-      "in": [
-       32.21,
-       -13.98
-      ]
-     },
-     "8": {
-      "out": [
-       31.31,
-       9.1
-      ]
-     },
-     "9": {
-      "in": [
-       28.11,
-       14.3
-      ],
-      "out": [
-       23.48,
-       17.96
-      ]
-     },
-     "10": {
-      "in": [
-       19.88,
-       15.16
+     {
+      "id": "team",
+      "name": "Team island",
+      "mirrors": true,
+      "shapeIds": [
+       "t0",
+       "t1",
+       "t2"
       ]
      }
-    }
-   },
-   {
-    "id": "t1",
-    "type": "polygon",
-    "operation": "add",
-    "vertices": [
-     [
-      31.0,
-      22.0
-     ],
-     [
-      40.0,
-      3.0
-     ],
-     [
-      36.0,
-      -8.0
-     ],
-     [
-      36.0,
-      -17.0
-     ],
-     [
-      41.0,
-      -21.0
-     ],
-     [
-      48.0,
-      -20.0
-     ],
-     [
-      50.0,
-      -11.0
-     ],
-     [
-      56.0,
-      -7.0
-     ],
-     [
-      60.0,
-      -8.0
-     ],
-     [
-      67.0,
-      -17.0
-     ],
-     [
-      74.0,
-      -14.0
-     ],
-     [
-      78.0,
-      -8.0
-     ],
-     [
-      82.0,
-      -9.0
-     ],
-     [
-      85.0,
-      -14.0
-     ],
-     [
-      91.0,
-      -15.0
-     ],
-     [
-      103.0,
-      -10.0
-     ],
-     [
-      104.0,
-      -5.0
-     ],
-     [
-      116.0,
-      3.0
-     ],
-     [
-      112.0,
-      16.0
-     ],
-     [
-      105.0,
-      19.0
-     ],
-     [
-      98.0,
-      16.0
-     ],
-     [
-      95.0,
-      11.0
-     ],
-     [
-      85.0,
-      6.0
-     ],
-     [
-      84.0,
-      3.0
-     ],
-     [
-      73.0,
-      3.0
-     ],
-     [
-      68.0,
-      8.0
-     ],
-     [
-      62.0,
-      9.0
-     ],
-     [
-      55.0,
-      18.0
-     ],
-     [
-      48.0,
-      21.0
-     ],
-     [
-      43.0,
-      29.0
-     ],
-     [
-      36.0,
-      29.0
-     ]
-    ],
-    "base_height": 8,
-    "relief_scope": "hold",
-    "theme": "scour",
-    "controls": {
-     "0": {
-      "out": [
-       31.7,
-       15.35
-      ],
-      "in": [
-       33.3,
-       23.53
-      ]
-     },
-     "1": {
-      "in": [
-       35.3,
-       7.75
-      ],
-      "out": [
-       38.75,
-       -0.28
-      ]
-     },
-     "2": {
-      "in": [
-       37.15,
-       -4.68
-      ],
-      "out": [
-       35.28,
-       -10.7
-      ]
-     },
-     "3": {
-      "in": [
-       35.28,
-       -14.3
-      ]
-     },
-     "5": {
-      "out": [
-       47.56,
-       -17.07
-      ]
-     },
-     "6": {
-      "in": [
-       48.36,
-       -13.47
-      ]
-     },
-     "8": {
-      "out": [
-       62.37,
-       -10.49
-      ]
-     },
-     "9": {
-      "in": [
-       65.17,
-       -14.09
-      ]
-     },
-     "14": {
-      "out": [
-       94.4,
-       -13.03
-      ]
-     },
-     "15": {
-      "in": [
-       99.2,
-       -11.03
-      ]
-     },
-     "16": {
-      "out": [
-       107.81,
-       -2.92
-      ]
-     },
-     "17": {
-      "in": [
-       112.61,
-       0.28
-      ],
-      "out": [
-       115.78,
-       7.2
-      ]
-     },
-     "18": {
-      "in": [
-       114.18,
-       12.4
-      ]
-     },
-     "21": {
-      "out": [
-       92.05,
-       9.4
-      ]
-     },
-     "22": {
-      "in": [
-       88.05,
-       7.4
-      ]
-     },
-     "23": {
-      "out": [
-       80.7,
-       2.74
-      ]
-     },
-     "24": {
-      "in": [
-       76.3,
-       2.74
-      ]
-     },
-     "26": {
-      "out": [
-       59.82,
-       11.64
-      ]
-     },
-     "27": {
-      "in": [
-       57.02,
-       15.24
-      ]
-     },
-     "28": {
-      "out": [
-       47.26,
-       23.88
-      ]
-     },
-     "29": {
-      "in": [
-       45.26,
-       27.08
-      ]
-     },
-     "30": {
-      "out": [
-       35.3,
-       26.33
-      ]
-     }
-    }
-   },
-   {
-    "id": "t2",
-    "type": "polygon",
-    "operation": "add",
-    "vertices": [
-     [
-      53.0,
-      -29.0
-     ],
-     [
-      59.0,
-      -36.0
-     ],
-     [
-      62.0,
-      -46.0
-     ],
-     [
-      73.0,
-      -54.0
-     ],
-     [
-      78.0,
-      -64.0
-     ],
-     [
-      89.0,
-      -57.0
-     ],
-     [
-      101.0,
-      -56.0
-     ],
-     [
-      104.0,
-      -52.0
-     ],
-     [
-      104.0,
-      -43.0
-     ],
-     [
-      101.0,
-      -41.0
-     ],
-     [
-      89.0,
-      -41.0
-     ],
-     [
-      83.0,
-      -35.0
-     ],
-     [
-      62.0,
-      -24.0
-     ],
-     [
-      54.0,
-      -25.0
-     ]
-    ],
-    "base_height": 8,
-    "relief_scope": "hold",
-    "theme": "oasis",
-    "controls": {
-     "0": {
-      "out": [
-       55.37,
-       -30.61
-      ]
-     },
-     "1": {
-      "in": [
-       57.77,
-       -33.41
-      ],
-      "out": [
-       60.01,
-       -38.97
-      ]
-     },
-     "2": {
-      "in": [
-       61.21,
-       -42.97
-      ],
-      "out": [
-       64.29,
-       -49.78
-      ]
-     },
-     "3": {
-      "in": [
-       68.69,
-       -52.98
-      ],
-      "out": [
-       75.3,
-       -56.6
-      ]
-     },
-     "4": {
-      "in": [
-       77.3,
-       -60.6
-      ],
-      "out": [
-       80.7,
-       -60.96
-      ]
-     },
-     "5": {
-      "in": [
-       85.1,
-       -58.16
-      ],
-      "out": [
-       92.57,
-       -56.36
-      ]
-     },
-     "6": {
-      "in": [
-       97.37,
-       -55.96
-      ]
-     },
-     "7": {
-      "out": [
-       103.95,
-       -49.3
-      ]
-     },
-     "8": {
-      "in": [
-       103.95,
-       -45.7
-      ]
-     },
-     "9": {
-      "out": [
-       97.4,
-       -40.08
-      ]
-     },
-     "10": {
-      "in": [
-       92.6,
-       -40.08
-      ],
-      "out": [
-       87.84,
-       -38.56
-      ]
-     },
-     "11": {
-      "in": [
-       85.44,
-       -36.16
-      ],
-      "out": [
-       76.02,
-       -32.99
-      ]
-     },
-     "12": {
-      "in": [
-       67.62,
-       -28.59
-      ],
-      "out": [
-       59.53,
-       -23.74
-      ]
-     },
-     "13": {
-      "in": [
-       56.33,
-       -24.14
-      ]
-     }
-    }
-   },
-   {
-    "id": "t3",
-    "type": "polygon",
-    "operation": "add",
-    "vertices": [
-     [
-      -6.0,
-      -4.0
-     ],
-     [
-      4.0,
-      -6.0
-     ],
-     [
-      6.0,
-      4.0
-     ],
-     [
-      -4.0,
-      6.0
-     ]
-    ],
-    "base_height": 8,
-    "relief_scope": "hold",
-    "theme": "scour",
-    "controls": {
-     "0": {
-      "out": [
-       -3.01,
-       -4.67
-      ],
-      "in": [
-       -5.29,
-       -1.02
-      ]
-     },
-     "1": {
-      "in": [
-       0.99,
-       -5.47
-      ],
-      "out": [
-       3.26,
-       -2.73
-      ]
-     },
-     "2": {
-      "in": [
-       4.06,
-       1.27
-      ],
-      "out": [
-       2.97,
-       4.47
-      ]
-     },
-     "3": {
-      "in": [
-       -1.03,
-       5.27
-      ],
-      "out": [
-       -4.49,
-       2.98
-      ]
-     }
-    }
-   },
-   {
-    "id": "spawn-red",
-    "type": "rectangle",
-    "operation": "add",
-    "override": false,
-    "min_x": 92,
-    "min_z": -2,
-    "max_x": 104,
-    "max_z": 10,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": null,
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 8,
-    "anchor_heights": null,
-    "floor": null,
-    "role": "spawn",
-    "intentRef": "red",
-    "color": "red",
-    "height_authored": null,
-    "theme": null
-   },
-   {
-    "id": "spawn-blue",
-    "type": "rectangle",
-    "operation": "add",
-    "override": false,
-    "min_x": -10,
-    "min_z": 92,
-    "max_x": 2,
-    "max_z": 104,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": null,
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": null,
-    "anchor_heights": null,
-    "floor": null,
-    "role": "spawn",
-    "intentRef": "blue",
-    "color": "blue",
-    "height_authored": null,
-    "theme": null
-   },
-   {
-    "id": "spawn-yellow",
-    "type": "rectangle",
-    "operation": "add",
-    "override": false,
-    "min_x": -104,
-    "min_z": -10,
-    "max_x": -92,
-    "max_z": 2,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": null,
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": null,
-    "anchor_heights": null,
-    "floor": null,
-    "role": "spawn",
-    "intentRef": "yellow",
-    "color": "yellow",
-    "height_authored": null,
-    "theme": null
-   },
-   {
-    "id": "spawn-green",
-    "type": "rectangle",
-    "operation": "add",
-    "override": false,
-    "min_x": -2,
-    "min_z": -104,
-    "max_x": 10,
-    "max_z": -92,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": null,
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": null,
-    "anchor_heights": null,
-    "floor": null,
-    "role": "spawn",
-    "intentRef": "green",
-    "color": "green",
-    "height_authored": null,
-    "theme": null
-   },
-   {
-    "id": "wool-red-red",
-    "type": "rectangle",
-    "operation": "add",
-    "override": false,
-    "min_x": 76,
-    "min_z": -54,
-    "max_x": 90,
-    "max_z": -44,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": null,
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 8,
-    "anchor_heights": null,
-    "floor": null,
-    "role": "woolRoom",
-    "intentRef": "red:red",
-    "color": "red",
-    "height_authored": null,
-    "theme": null
-   },
-   {
-    "id": "wool-blue-blue",
-    "type": "rectangle",
-    "operation": "add",
-    "override": false,
-    "min_x": 44,
-    "min_z": 76,
-    "max_x": 54,
-    "max_z": 90,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": null,
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": null,
-    "anchor_heights": null,
-    "floor": null,
-    "role": "woolRoom",
-    "intentRef": "blue:blue",
-    "color": "blue",
-    "height_authored": null,
-    "theme": null
-   },
-   {
-    "id": "wool-yellow-yellow",
-    "type": "rectangle",
-    "operation": "add",
-    "override": false,
-    "min_x": -90,
-    "min_z": 44,
-    "max_x": -76,
-    "max_z": 54,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": null,
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": null,
-    "anchor_heights": null,
-    "floor": null,
-    "role": "woolRoom",
-    "intentRef": "yellow:yellow",
-    "color": "yellow",
-    "height_authored": null,
-    "theme": null
-   },
-   {
-    "id": "wool-green-green",
-    "type": "rectangle",
-    "operation": "add",
-    "override": false,
-    "min_x": -54,
-    "min_z": -90,
-    "max_x": -44,
-    "max_z": -76,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": null,
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": null,
-    "anchor_heights": null,
-    "floor": null,
-    "role": "woolRoom",
-    "intentRef": "green:green",
-    "color": "green",
-    "height_authored": null,
-    "theme": null
-   }
-  ],
-  "islands": [
-   {
-    "id": "neutral",
-    "name": "Neutral",
-    "mirrors": false,
-    "shapeIds": [
-     "t3"
     ]
-   },
-   {
-    "id": "team",
-    "name": "Team island",
-    "mirrors": true,
-    "shapeIds": [
-     "t0",
-     "t1",
-     "t2"
-    ]
    }
-  ]
- },
- "layers": null,
+  }
+ ],
  "themes": {
   "dune": {
    "bedrock": {

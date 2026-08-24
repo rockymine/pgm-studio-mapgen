@@ -1,72 +1,104 @@
 {
-  "setup": {
-    "mirror_mode": "rot_180",
-    "center": { "cx": 0, "cz": 0 },
-    "bbox": { "min_x": -80, "max_x": 80, "min_z": -40, "max_z": 150 }
+ "setup": {
+  "mirror_mode": "rot_180",
+  "center": {
+   "cx": 0,
+   "cz": 0
   },
-  "layout": {
+  "bbox": {
+   "min_x": -80,
+   "max_x": 80,
+   "min_z": -40,
+   "max_z": 150
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
     "islands": [
-      {
-        "id": "sandscar",
-        "name": "Sandscar",
-        "mirrors": true,
-        "shapeIds": ["plateau", "spawn-pad"]
-      }
+     {
+      "id": "sandscar",
+      "name": "Sandscar",
+      "mirrors": true,
+      "shapeIds": [
+       "plateau",
+       "spawn-pad"
+      ]
+     }
     ],
     "shapes": [
-      {
-        "id": "plateau",
-        "type": "rectangle",
-        "operation": "add",
-        "floor": 0,
-        "base_height": 40,
-        "theme": "desert-savanna",
-        "x": -60, "z": 20, "w": 120, "h": 90
-      },
-      {
-        "id": "spawn-pad",
-        "type": "rectangle",
-        "operation": "add",
-        "floor": 0,
-        "base_height": 42,
-        "theme": "savanna-crest",
-        "x": -15, "z": 110, "w": 30, "h": 25
-      }
+     {
+      "id": "plateau",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "desert-savanna",
+      "x": -60,
+      "z": 20,
+      "w": 120,
+      "h": 90
+     },
+     {
+      "id": "spawn-pad",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 42,
+      "theme": "savanna-crest",
+      "x": -15,
+      "z": 110,
+      "w": 30,
+      "h": 25
+     }
     ],
     "relief": {
-      "sandscar": {
-        "base": 40,
-        "noise": { "scale": 0.04, "amp": 2.5, "octaves": 3 },
-        "features": [
-          {
-            "type": "depression",
-            "x": -25, "z": 75,
-            "radius": 18,
-            "depth": 8,
-            "note": "under west monument"
-          },
-          {
-            "type": "hill",
-            "x": 25, "z": 75,
-            "radius": 16,
-            "height": 10,
-            "note": "under east monument"
-          },
-          {
-            "type": "hill",
-            "x": 0, "z": 100,
-            "radius": 12,
-            "height": 4,
-            "note": "gentle rise toward spawn"
-          },
-          {
-            "type": "flat",
-            "x": 0, "z": 45,
-            "radius": 25,
-            "note": "front approach flats"
-          }
-        ]
-      }
+     "sandscar": {
+      "base": 40,
+      "noise": {
+       "scale": 0.04,
+       "amp": 2.5,
+       "octaves": 3
+      },
+      "features": [
+       {
+        "type": "depression",
+        "x": -25,
+        "z": 75,
+        "radius": 18,
+        "depth": 8,
+        "note": "under west monument"
+       },
+       {
+        "type": "hill",
+        "x": 25,
+        "z": 75,
+        "radius": 16,
+        "height": 10,
+        "note": "under east monument"
+       },
+       {
+        "type": "hill",
+        "x": 0,
+        "z": 100,
+        "radius": 12,
+        "height": 4,
+        "note": "gentle rise toward spawn"
+       },
+       {
+        "type": "flat",
+        "x": 0,
+        "z": 45,
+        "radius": 25,
+        "note": "front approach flats"
+       }
+      ]
+     }
     }
+   }
   }
+ ]
 }

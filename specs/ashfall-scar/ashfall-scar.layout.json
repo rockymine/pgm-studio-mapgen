@@ -12,224 +12,230 @@
    "max_z": 100
   }
  },
- "layout": {
-  "shapes": [
-   {
-    "id": "yard",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "vertices": [
-     [
-      -60,
-      -45
-     ],
-     [
-      60,
-      -45
-     ],
-     [
-      60,
-      0
-     ],
-     [
-      -60,
-      0
-     ]
-    ],
-    "base_height": 9,
-    "floor": 0,
-    "theme": "ashfield"
-   },
-   {
-    "id": "forest",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "vertices": [
-     [
-      -120,
-      -45
-     ],
-     [
-      -60,
-      -45
-     ],
-     [
-      -60,
-      0
-     ],
-     [
-      -120,
-      0
-     ]
-    ],
-    "controls": {
-     "3": {
-      "out": [
-       -127,
-       -15
-      ]
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "yard",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "vertices": [
+       [
+        -60,
+        -45
+       ],
+       [
+        60,
+        -45
+       ],
+       [
+        60,
+        0
+       ],
+       [
+        -60,
+        0
+       ]
+      ],
+      "base_height": 9,
+      "floor": 0,
+      "theme": "ashfield"
      },
-     "0": {
-      "in": [
-       -127,
-       -30
+     {
+      "id": "forest",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "vertices": [
+       [
+        -120,
+        -45
+       ],
+       [
+        -60,
+        -45
+       ],
+       [
+        -60,
+        0
+       ],
+       [
+        -120,
+        0
+       ]
+      ],
+      "controls": {
+       "3": {
+        "out": [
+         -127,
+         -15
+        ]
+       },
+       "0": {
+        "in": [
+         -127,
+         -30
+        ]
+       }
+      },
+      "base_height": 9,
+      "floor": 0,
+      "theme": "cinderwood"
+     },
+     {
+      "id": "ford-bank",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "vertices": [
+       [
+        60,
+        -45
+       ],
+       [
+        120,
+        -45
+       ],
+       [
+        120,
+        0
+       ],
+       [
+        60,
+        0
+       ]
+      ],
+      "base_height": 9,
+      "floor": 0,
+      "theme": "quench-flat",
+      "relief_scope": "hold"
+     },
+     {
+      "id": "ford-void",
+      "type": "rectangle",
+      "operation": "subtract",
+      "override": false,
+      "min_x": 70,
+      "min_z": -45,
+      "max_x": 90,
+      "max_z": -25,
+      "base_height": 100,
+      "floor": 0
+     },
+     {
+      "id": "village",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -120,
+        -80
+       ],
+       [
+        120,
+        -80
+       ],
+       [
+        120,
+        -45
+       ],
+       [
+        -120,
+        -45
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "exclude",
+      "base_height": 10,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "ember-row"
+     },
+     {
+      "id": "spawn-ground",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -40,
+        -95
+       ],
+       [
+        40,
+        -95
+       ],
+       [
+        40,
+        -80
+       ],
+       [
+        -40,
+        -80
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "exclude",
+      "base_height": 12,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "cinder-hold"
+     }
+    ],
+    "islands": [
+     {
+      "id": "team",
+      "name": "Team island",
+      "mirrors": true,
+      "shapeIds": [
+       "yard",
+       "forest",
+       "ford-bank",
+       "ford-void",
+       "village",
+       "spawn-ground"
       ]
      }
-    },
-    "base_height": 9,
-    "floor": 0,
-    "theme": "cinderwood"
-   },
-   {
-    "id": "ford-bank",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "vertices": [
-     [
-      60,
-      -45
-     ],
-     [
-      120,
-      -45
-     ],
-     [
-      120,
-      0
-     ],
-     [
-      60,
-      0
-     ]
-    ],
-    "base_height": 9,
-    "floor": 0,
-    "theme": "quench-flat",
-    "relief_scope": "hold"
-   },
-   {
-    "id": "ford-void",
-    "type": "rectangle",
-    "operation": "subtract",
-    "override": false,
-    "min_x": 70,
-    "min_z": -45,
-    "max_x": 90,
-    "max_z": -25,
-    "base_height": 100,
-    "floor": 0
-   },
-   {
-    "id": "village",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -120,
-      -80
-     ],
-     [
-      120,
-      -80
-     ],
-     [
-      120,
-      -45
-     ],
-     [
-      -120,
-      -45
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "exclude",
-    "base_height": 10,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "ember-row"
-   },
-   {
-    "id": "spawn-ground",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -40,
-      -95
-     ],
-     [
-      40,
-      -95
-     ],
-     [
-      40,
-      -80
-     ],
-     [
-      -40,
-      -80
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "exclude",
-    "base_height": 12,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "cinder-hold"
-   }
-  ],
-  "islands": [
-   {
-    "id": "team",
-    "name": "Team island",
-    "mirrors": true,
-    "shapeIds": [
-     "yard",
-     "forest",
-     "ford-bank",
-     "ford-void",
-     "village",
-     "spawn-ground"
     ]
    }
-  ]
- },
- "layers": null,
+  }
+ ],
  "themes": {
   "ashfield": {
    "bedrock": {

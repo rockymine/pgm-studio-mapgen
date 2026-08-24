@@ -1,47 +1,309 @@
 {
-  "setup": {
-    "mirror_mode": "rot_180",
-    "center": { "cx": 0, "cz": 0 },
-    "bbox": { "min_x": -100, "max_x": 100, "min_z": -40, "max_z": 180 }
+ "setup": {
+  "mirror_mode": "rot_180",
+  "center": {
+   "cx": 0,
+   "cz": 0
   },
-  "layout": {
+  "bbox": {
+   "min_x": -100,
+   "max_x": 100,
+   "min_z": -40,
+   "max_z": 180
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
     "islands": [
-      {
-        "id": "sandscar",
-        "name": "Sandscar Complex",
-        "mirrors": true,
-        "shapeIds": [
-          "river-n", "river-s", "desert-low", "pit-bowl", "pit-rim",
-          "mid-plateau", "hill-rise", "hill-peak", "savanna", "upper", "crest"
-        ]
-      }
+     {
+      "id": "sandscar",
+      "name": "Sandscar Complex",
+      "mirrors": true,
+      "shapeIds": [
+       "river-n",
+       "river-s",
+       "desert-low",
+       "pit-bowl",
+       "pit-rim",
+       "mid-plateau",
+       "hill-rise",
+       "hill-peak",
+       "savanna",
+       "upper",
+       "crest"
+      ]
+     }
     ],
     "shapes": [
-      { "id": "river-n", "type": "rectangle", "operation": "add", "floor": 0, "base_height": 39, "theme": "river-bank", "x": -90, "z": -20, "w": 180, "h": 15 },
-      { "id": "river-s", "type": "rectangle", "operation": "add", "floor": 0, "base_height": 39, "theme": "river-bank", "x": -90, "z": 5, "w": 180, "h": 15 },
-      { "id": "desert-low", "type": "polygon", "operation": "add", "floor": 0, "base_height": 38, "theme": "desert",
-        "vertices": [[-90,20],[-40,18],[0,25],[40,18],[90,20],[90,50],[40,55],[0,48],[-40,55],[-90,50]] },
-      { "id": "pit-bowl", "type": "rectangle", "operation": "add", "floor": 0, "base_height": 32, "theme": "desert-pit", "x": -60, "z": 70, "w": 35, "h": 30 },
-      { "id": "pit-rim", "type": "rectangle", "operation": "add", "floor": 0, "base_height": 37, "theme": "desert", "x": -70, "z": 65, "w": 55, "h": 40 },
-      { "id": "mid-plateau", "type": "polygon", "operation": "add", "floor": 0, "base_height": 41, "theme": "savanna-mid",
-        "vertices": [[-90,55],[-20,58],[20,55],[90,60],[90,95],[30,100],[-30,98],[-90,95]] },
-      { "id": "hill-rise", "type": "rectangle", "operation": "add", "floor": 0, "base_height": 46, "theme": "savanna-hill", "x": 20, "z": 95, "w": 55, "h": 35 },
-      { "id": "hill-peak", "type": "rectangle", "operation": "add", "floor": 0, "base_height": 52, "theme": "savanna-peak", "x": 35, "z": 120, "w": 30, "h": 25 },
-      { "id": "savanna", "type": "polygon", "operation": "add", "floor": 0, "base_height": 43, "theme": "savanna",
-        "vertices": [[-90,95],[-40,100],[0,105],[20,100],[20,130],[-20,135],[-60,130],[-90,125]] },
-      { "id": "upper", "type": "rectangle", "operation": "add", "floor": 0, "base_height": 46, "theme": "savanna", "x": -80, "z": 130, "w": 120, "h": 30 },
-      { "id": "crest", "type": "rectangle", "operation": "add", "floor": 0, "base_height": 51, "theme": "savanna-crest", "x": -70, "z": 155, "w": 100, "h": 25 }
+     {
+      "id": "river-n",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 39,
+      "theme": "river-bank",
+      "x": -90,
+      "z": -20,
+      "w": 180,
+      "h": 15
+     },
+     {
+      "id": "river-s",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 39,
+      "theme": "river-bank",
+      "x": -90,
+      "z": 5,
+      "w": 180,
+      "h": 15
+     },
+     {
+      "id": "desert-low",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 38,
+      "theme": "desert",
+      "vertices": [
+       [
+        -90,
+        20
+       ],
+       [
+        -40,
+        18
+       ],
+       [
+        0,
+        25
+       ],
+       [
+        40,
+        18
+       ],
+       [
+        90,
+        20
+       ],
+       [
+        90,
+        50
+       ],
+       [
+        40,
+        55
+       ],
+       [
+        0,
+        48
+       ],
+       [
+        -40,
+        55
+       ],
+       [
+        -90,
+        50
+       ]
+      ]
+     },
+     {
+      "id": "pit-bowl",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 32,
+      "theme": "desert-pit",
+      "x": -60,
+      "z": 70,
+      "w": 35,
+      "h": 30
+     },
+     {
+      "id": "pit-rim",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 37,
+      "theme": "desert",
+      "x": -70,
+      "z": 65,
+      "w": 55,
+      "h": 40
+     },
+     {
+      "id": "mid-plateau",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 41,
+      "theme": "savanna-mid",
+      "vertices": [
+       [
+        -90,
+        55
+       ],
+       [
+        -20,
+        58
+       ],
+       [
+        20,
+        55
+       ],
+       [
+        90,
+        60
+       ],
+       [
+        90,
+        95
+       ],
+       [
+        30,
+        100
+       ],
+       [
+        -30,
+        98
+       ],
+       [
+        -90,
+        95
+       ]
+      ]
+     },
+     {
+      "id": "hill-rise",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 46,
+      "theme": "savanna-hill",
+      "x": 20,
+      "z": 95,
+      "w": 55,
+      "h": 35
+     },
+     {
+      "id": "hill-peak",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 52,
+      "theme": "savanna-peak",
+      "x": 35,
+      "z": 120,
+      "w": 30,
+      "h": 25
+     },
+     {
+      "id": "savanna",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 43,
+      "theme": "savanna",
+      "vertices": [
+       [
+        -90,
+        95
+       ],
+       [
+        -40,
+        100
+       ],
+       [
+        0,
+        105
+       ],
+       [
+        20,
+        100
+       ],
+       [
+        20,
+        130
+       ],
+       [
+        -20,
+        135
+       ],
+       [
+        -60,
+        130
+       ],
+       [
+        -90,
+        125
+       ]
+      ]
+     },
+     {
+      "id": "upper",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 46,
+      "theme": "savanna",
+      "x": -80,
+      "z": 130,
+      "w": 120,
+      "h": 30
+     },
+     {
+      "id": "crest",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 51,
+      "theme": "savanna-crest",
+      "x": -70,
+      "z": 155,
+      "w": 100,
+      "h": 25
+     }
     ],
     "relief": {
-      "sandscar": {
-        "base": 40,
-        "noise": { "scale": 0.035, "amp": 3.5, "octaves": 3 },
-        "features": [
-          { "type": "river", "axis": "x", "z": 0, "width": 12, "depth": 6 },
-          { "type": "depression", "x": -45, "z": 80, "radius": 22, "depth": 9 },
-          { "type": "hill", "x": 50, "z": 130, "radius": 28, "height": 14 }
-        ]
-      }
+     "sandscar": {
+      "base": 40,
+      "noise": {
+       "scale": 0.035,
+       "amp": 3.5,
+       "octaves": 3
+      },
+      "features": [
+       {
+        "type": "river",
+        "axis": "x",
+        "z": 0,
+        "width": 12,
+        "depth": 6
+       },
+       {
+        "type": "depression",
+        "x": -45,
+        "z": 80,
+        "radius": 22,
+        "depth": 9
+       },
+       {
+        "type": "hill",
+        "x": 50,
+        "z": 130,
+        "radius": 28,
+        "height": 14
+       }
+      ]
+     }
     }
+   }
   }
+ ]
 }

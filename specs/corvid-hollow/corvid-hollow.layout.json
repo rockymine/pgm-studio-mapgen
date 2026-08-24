@@ -12,274 +12,280 @@
    "max_z": 95
   }
  },
- "layout": {
-  "shapes": [
-   {
-    "id": "plaza",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "vertices": [
-     [
-      -30,
-      -45
-     ],
-     [
-      30,
-      -45
-     ],
-     [
-      30,
-      -20
-     ],
-     [
-      -30,
-      -20
-     ]
-    ],
-    "base_height": 9,
-    "floor": 0,
-    "theme": "hollow-turf",
-    "relief_scope": "hold"
-   },
-   {
-    "id": "forest",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "vertices": [
-     [
-      -30,
-      -45
-     ],
-     [
-      -65,
-      -45
-     ],
-     [
-      -65,
-      0
-     ],
-     [
-      -30,
-      0
-     ]
-    ],
-    "controls": {
-     "1": {
-      "out": [
-       -73,
-       -30
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "plaza",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "vertices": [
+       [
+        -30,
+        -45
+       ],
+       [
+        30,
+        -45
+       ],
+       [
+        30,
+        -20
+       ],
+       [
+        -30,
+        -20
+       ]
+      ],
+      "base_height": 9,
+      "floor": 0,
+      "theme": "hollow-turf",
+      "relief_scope": "hold"
+     },
+     {
+      "id": "forest",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "vertices": [
+       [
+        -30,
+        -45
+       ],
+       [
+        -65,
+        -45
+       ],
+       [
+        -65,
+        0
+       ],
+       [
+        -30,
+        0
+       ]
+      ],
+      "controls": {
+       "1": {
+        "out": [
+         -73,
+         -30
+        ]
+       },
+       "2": {
+        "in": [
+         -73,
+         -15
+        ]
+       }
+      },
+      "base_height": 9,
+      "floor": 0,
+      "theme": "rookwood"
+     },
+     {
+      "id": "hill",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "vertices": [
+       [
+        30,
+        -45
+       ],
+       [
+        65,
+        -45
+       ],
+       [
+        65,
+        0
+       ],
+       [
+        30,
+        0
+       ]
+      ],
+      "controls": {
+       "1": {
+        "out": [
+         72,
+         -33
+        ]
+       },
+       "2": {
+        "in": [
+         72,
+         -12
+        ]
+       }
+      },
+      "base_height": 9,
+      "floor": 0,
+      "theme": "briar-crest",
+      "height_mode": "raise",
+      "skirt": 0,
+      "anchor_heights": [
+       4,
+       1,
+       1,
+       9
       ]
      },
-     "2": {
-      "in": [
-       -73,
-       -15
-      ]
-     }
-    },
-    "base_height": 9,
-    "floor": 0,
-    "theme": "rookwood"
-   },
-   {
-    "id": "hill",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "vertices": [
-     [
-      30,
-      -45
-     ],
-     [
-      65,
-      -45
-     ],
-     [
-      65,
-      0
-     ],
-     [
-      30,
-      0
-     ]
-    ],
-    "controls": {
-     "1": {
-      "out": [
-       72,
-       -33
-      ]
+     {
+      "id": "village",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -65,
+        -75
+       ],
+       [
+        65,
+        -75
+       ],
+       [
+        65,
+        -45
+       ],
+       [
+        -65,
+        -45
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "exclude",
+      "base_height": 10,
+      "anchor_heights": null,
+      "floor": 0,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "roost-timber"
      },
-     "2": {
-      "in": [
-       72,
-       -12
+     {
+      "id": "spawn-ground",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -15,
+        -90
+       ],
+       [
+        15,
+        -90
+       ],
+       [
+        15,
+        -75
+       ],
+       [
+        -15,
+        -75
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "exclude",
+      "base_height": 12,
+      "anchor_heights": null,
+      "floor": 0,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "corvid-keep"
+     },
+     {
+      "id": "moat",
+      "type": "polygon",
+      "operation": "subtract",
+      "override": false,
+      "vertices": [
+       [
+        -30,
+        -20
+       ],
+       [
+        30,
+        -20
+       ],
+       [
+        30,
+        0
+       ],
+       [
+        -30,
+        0
+       ]
+      ],
+      "controls": {
+       "0": {
+        "out": [
+         -10,
+         -26
+        ]
+       },
+       "1": {
+        "in": [
+         10,
+         -26
+        ]
+       }
+      },
+      "base_height": 100,
+      "floor": 0
+     }
+    ],
+    "islands": [
+     {
+      "id": "team",
+      "name": "Team island",
+      "mirrors": true,
+      "shapeIds": [
+       "plaza",
+       "forest",
+       "hill",
+       "village",
+       "spawn-ground",
+       "moat"
       ]
      }
-    },
-    "base_height": 9,
-    "floor": 0,
-    "theme": "briar-crest",
-    "height_mode": "raise",
-    "skirt": 0,
-    "anchor_heights": [
-     4,
-     1,
-     1,
-     9
     ]
-   },
-   {
-    "id": "village",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -65,
-      -75
-     ],
-     [
-      65,
-      -75
-     ],
-     [
-      65,
-      -45
-     ],
-     [
-      -65,
-      -45
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "exclude",
-    "base_height": 10,
-    "anchor_heights": null,
-    "floor": 0,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "roost-timber"
-   },
-   {
-    "id": "spawn-ground",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -15,
-      -90
-     ],
-     [
-      15,
-      -90
-     ],
-     [
-      15,
-      -75
-     ],
-     [
-      -15,
-      -75
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "exclude",
-    "base_height": 12,
-    "anchor_heights": null,
-    "floor": 0,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "corvid-keep"
-   },
-   {
-    "id": "moat",
-    "type": "polygon",
-    "operation": "subtract",
-    "override": false,
-    "vertices": [
-     [
-      -30,
-      -20
-     ],
-     [
-      30,
-      -20
-     ],
-     [
-      30,
-      0
-     ],
-     [
-      -30,
-      0
-     ]
-    ],
-    "controls": {
-     "0": {
-      "out": [
-       -10,
-       -26
-      ]
-     },
-     "1": {
-      "in": [
-       10,
-       -26
-      ]
-     }
-    },
-    "base_height": 100,
-    "floor": 0
    }
-  ],
-  "islands": [
-   {
-    "id": "team",
-    "name": "Team island",
-    "mirrors": true,
-    "shapeIds": [
-     "plaza",
-     "forest",
-     "hill",
-     "village",
-     "spawn-ground",
-     "moat"
-    ]
-   }
-  ]
- },
- "layers": null,
+  }
+ ],
  "themes": {
   "hollow-turf": {
    "bedrock": {

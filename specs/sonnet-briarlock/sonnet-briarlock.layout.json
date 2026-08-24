@@ -1,920 +1,926 @@
 {
-    "setup": {
-        "mirror_mode": "rot_180",
-        "center": {
-            "cx": 0,
-            "cz": 0
-        },
-        "bbox": {
-            "min_x": -135,
-            "max_x": 135,
-            "min_z": -175,
-            "max_z": 175
-        }
-    },
-    "layout": {
-        "shapes": [
-            {
-                "id": "s0",
-                "type": "polygon",
-                "operation": "add",
-                "override": false,
-                "min_x": null,
-                "min_z": null,
-                "max_x": null,
-                "max_z": null,
-                "center_x": null,
-                "center_z": null,
-                "radius": null,
-                "vertices": [
-                    [
-                        -130,
-                        -130
-                    ],
-                    [
-                        -70,
-                        -130
-                    ],
-                    [
-                        -70,
-                        -140
-                    ],
-                    [
-                        70,
-                        -140
-                    ],
-                    [
-                        70,
-                        -130
-                    ],
-                    [
-                        130,
-                        -130
-                    ],
-                    [
-                        130,
-                        -100
-                    ],
-                    [
-                        70,
-                        -100
-                    ],
-                    [
-                        70,
-                        -50
-                    ],
-                    [
-                        40,
-                        -50
-                    ],
-                    [
-                        40,
-                        -90
-                    ],
-                    [
-                        -40,
-                        -90
-                    ],
-                    [
-                        -40,
-                        -50
-                    ],
-                    [
-                        -70,
-                        -50
-                    ],
-                    [
-                        -70,
-                        -100
-                    ],
-                    [
-                        -130,
-                        -100
-                    ]
-                ],
-                "controls": {
-                    "0": {
-                        "out": [
-                            -124,
-                            -128
-                        ],
-                        "in": [
-                            -134,
-                            -122
-                        ]
-                    },
-                    "6": {
-                        "out": [
-                            124,
-                            -128
-                        ],
-                        "in": [
-                            134,
-                            -122
-                        ]
-                    }
-                },
-                "path_edge": null,
-                "path_seed": null,
-                "height_mode": null,
-                "skirt": null,
-                "relief_scope": null,
-                "base_height": 9,
-                "anchor_heights": null,
-                "floor": null,
-                "role": null,
-                "intentRef": null,
-                "color": null,
-                "height_authored": null,
-                "theme": "briarlock"
-            },
-            {
-                "id": "s1",
-                "type": "polygon",
-                "operation": "add",
-                "override": false,
-                "min_x": null,
-                "min_z": null,
-                "max_x": null,
-                "max_z": null,
-                "center_x": null,
-                "center_z": null,
-                "radius": null,
-                "vertices": [
-                    [
-                        -20,
-                        -170
-                    ],
-                    [
-                        20,
-                        -170
-                    ],
-                    [
-                        20,
-                        -140
-                    ],
-                    [
-                        -20,
-                        -140
-                    ]
-                ],
-                "controls": null,
-                "path_edge": null,
-                "path_seed": null,
-                "height_mode": null,
-                "skirt": null,
-                "relief_scope": null,
-                "base_height": 11,
-                "anchor_heights": null,
-                "floor": null,
-                "role": null,
-                "intentRef": null,
-                "color": null,
-                "height_authored": null,
-                "theme": "briarlock-spawn"
-            },
-            {
-                "id": "spawn-red",
-                "type": "rectangle",
-                "operation": "add",
-                "override": false,
-                "min_x": -20,
-                "min_z": -170,
-                "max_x": 20,
-                "max_z": -140,
-                "center_x": null,
-                "center_z": null,
-                "radius": null,
-                "vertices": null,
-                "controls": null,
-                "path_edge": null,
-                "path_seed": null,
-                "height_mode": null,
-                "skirt": null,
-                "relief_scope": "hold",
-                "base_height": 11,
-                "anchor_heights": null,
-                "floor": null,
-                "role": "spawn",
-                "intentRef": "red",
-                "color": "red",
-                "height_authored": null,
-                "theme": null
-            },
-            {
-                "id": "spawn-blue",
-                "type": "rectangle",
-                "operation": "add",
-                "override": false,
-                "min_x": -20,
-                "min_z": 140,
-                "max_x": 20,
-                "max_z": 170,
-                "center_x": null,
-                "center_z": null,
-                "radius": null,
-                "vertices": null,
-                "controls": null,
-                "path_edge": null,
-                "path_seed": null,
-                "height_mode": null,
-                "skirt": null,
-                "relief_scope": null,
-                "base_height": null,
-                "anchor_heights": null,
-                "floor": null,
-                "role": "spawn",
-                "intentRef": "blue",
-                "color": "blue",
-                "height_authored": null,
-                "theme": null
-            },
-            {
-                "id": "wool-red-red",
-                "type": "rectangle",
-                "operation": "add",
-                "override": false,
-                "min_x": 90,
-                "min_z": -130,
-                "max_x": 130,
-                "max_z": -100,
-                "center_x": null,
-                "center_z": null,
-                "radius": null,
-                "vertices": null,
-                "controls": null,
-                "path_edge": null,
-                "path_seed": null,
-                "height_mode": null,
-                "skirt": null,
-                "relief_scope": "hold",
-                "base_height": 9,
-                "anchor_heights": null,
-                "floor": null,
-                "role": "woolRoom",
-                "intentRef": "red:red",
-                "color": "red",
-                "height_authored": null,
-                "theme": null
-            },
-            {
-                "id": "wool-red-orange",
-                "type": "rectangle",
-                "operation": "add",
-                "override": false,
-                "min_x": -130,
-                "min_z": -130,
-                "max_x": -90,
-                "max_z": -100,
-                "center_x": null,
-                "center_z": null,
-                "radius": null,
-                "vertices": null,
-                "controls": null,
-                "path_edge": null,
-                "path_seed": null,
-                "height_mode": null,
-                "skirt": null,
-                "relief_scope": "hold",
-                "base_height": 9,
-                "anchor_heights": null,
-                "floor": null,
-                "role": "woolRoom",
-                "intentRef": "red:orange",
-                "color": "orange",
-                "height_authored": null,
-                "theme": null
-            },
-            {
-                "id": "wool-blue-blue",
-                "type": "rectangle",
-                "operation": "add",
-                "override": false,
-                "min_x": -130,
-                "min_z": 100,
-                "max_x": -90,
-                "max_z": 130,
-                "center_x": null,
-                "center_z": null,
-                "radius": null,
-                "vertices": null,
-                "controls": null,
-                "path_edge": null,
-                "path_seed": null,
-                "height_mode": null,
-                "skirt": null,
-                "relief_scope": null,
-                "base_height": null,
-                "anchor_heights": null,
-                "floor": null,
-                "role": "woolRoom",
-                "intentRef": "blue:blue",
-                "color": "blue",
-                "height_authored": null,
-                "theme": null
-            },
-            {
-                "id": "wool-blue-light_blue",
-                "type": "rectangle",
-                "operation": "add",
-                "override": false,
-                "min_x": 90,
-                "min_z": 100,
-                "max_x": 130,
-                "max_z": 130,
-                "center_x": null,
-                "center_z": null,
-                "radius": null,
-                "vertices": null,
-                "controls": null,
-                "path_edge": null,
-                "path_seed": null,
-                "height_mode": null,
-                "skirt": null,
-                "relief_scope": null,
-                "base_height": null,
-                "anchor_heights": null,
-                "floor": null,
-                "role": "woolRoom",
-                "intentRef": "blue:light_blue",
-                "color": "light_blue",
-                "height_authored": null,
-                "theme": null
-            }
+ "setup": {
+  "mirror_mode": "rot_180",
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "bbox": {
+   "min_x": -135,
+   "max_x": 135,
+   "min_z": -175,
+   "max_z": 175
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "s0",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -130,
+        -130
+       ],
+       [
+        -70,
+        -130
+       ],
+       [
+        -70,
+        -140
+       ],
+       [
+        70,
+        -140
+       ],
+       [
+        70,
+        -130
+       ],
+       [
+        130,
+        -130
+       ],
+       [
+        130,
+        -100
+       ],
+       [
+        70,
+        -100
+       ],
+       [
+        70,
+        -50
+       ],
+       [
+        40,
+        -50
+       ],
+       [
+        40,
+        -90
+       ],
+       [
+        -40,
+        -90
+       ],
+       [
+        -40,
+        -50
+       ],
+       [
+        -70,
+        -50
+       ],
+       [
+        -70,
+        -100
+       ],
+       [
+        -130,
+        -100
+       ]
+      ],
+      "controls": {
+       "0": {
+        "out": [
+         -124,
+         -128
         ],
-        "islands": [
-            {
-                "id": "team",
-                "name": "Team island",
-                "mirrors": true,
-                "shapeIds": [
-                    "s0",
-                    "s1"
-                ]
-            }
+        "in": [
+         -134,
+         -122
         ]
-    },
-    "layers": null,
-    "themes": {
-        "briarlock": {
-            "bedrock": {
-                "relative": false,
-                "value": 1
-            },
-            "rimEdges": "void",
-            "wallOnTerrainFaces": true,
-            "rim": {
-                "material": {
-                    "kind": "solid",
-                    "id": 48,
-                    "data": 0
-                },
-                "depth": 1,
-                "enabled": true
-            },
-            "surface": {
-                "material": {
-                    "kind": "cell",
-                    "seed": 9,
-                    "cellSize": 8,
-                    "jitter": 55,
-                    "warp": 3,
-                    "rise": 0,
-                    "palette": [
-                        {
-                            "kind": "solid",
-                            "id": 2,
-                            "data": 0
-                        },
-                        {
-                            "kind": "solid",
-                            "id": 2,
-                            "data": 0
-                        },
-                        {
-                            "kind": "solid",
-                            "id": 3,
-                            "data": 1
-                        }
-                    ]
-                },
-                "depth": 3,
-                "enabled": true
-            },
-            "wall": {
-                "kind": "wallRun",
-                "runs": [
-                    {
-                        "material": {
-                            "kind": "teamTint",
-                            "blockId": 159,
-                            "neutral": {
-                                "kind": "solid",
-                                "id": 159,
-                                "data": 8
-                            }
-                        },
-                        "width": 3
-                    },
-                    {
-                        "material": {
-                            "kind": "solid",
-                            "id": 48,
-                            "data": 0
-                        },
-                        "width": 2
-                    }
-                ]
-            },
-            "wallEnabled": true,
-            "fill": {
-                "kind": "solid",
-                "id": 3,
-                "data": 0
-            }
-        },
-        "briarlock-spawn": {
-            "bedrock": {
-                "relative": false,
-                "value": 1
-            },
-            "rimEdges": "boundary",
-            "wallOnTerrainFaces": true,
-            "rim": {
-                "material": {
-                    "kind": "solid",
-                    "id": 98,
-                    "data": 3
-                },
-                "depth": 1,
-                "enabled": true
-            },
-            "surface": {
-                "material": {
-                    "kind": "layered",
-                    "layers": [
-                        {
-                            "material": {
-                                "kind": "solid",
-                                "id": 98,
-                                "data": 0
-                            },
-                            "thickness": 1
-                        },
-                        {
-                            "material": {
-                                "kind": "solid",
-                                "id": 98,
-                                "data": 3
-                            },
-                            "thickness": 2
-                        }
-                    ]
-                },
-                "depth": 3,
-                "enabled": true
-            },
-            "wall": {
-                "kind": "wallDiagonal",
-                "slope": 1,
-                "runs": [
-                    {
-                        "material": {
-                            "kind": "solid",
-                            "id": 98,
-                            "data": 0
-                        },
-                        "width": 3
-                    },
-                    {
-                        "material": {
-                            "kind": "solid",
-                            "id": 4,
-                            "data": 0
-                        },
-                        "width": 2
-                    }
-                ]
-            },
-            "wallEnabled": true,
-            "fill": {
-                "kind": "solid",
-                "id": 1,
-                "data": 0
-            }
-        }
-    },
-    "mapTheme": "briarlock",
-    "roomStyles": {
-        "cage": {
-            "wall": {
-                "extent": 4,
-                "courses": [
-                    {
-                        "material": {
-                            "kind": "solid",
-                            "id": 48,
-                            "data": 0
-                        },
-                        "height": 2
-                    },
-                    {
-                        "material": {
-                            "kind": "teamTint",
-                            "blockId": 159,
-                            "neutral": {
-                                "kind": "solid",
-                                "id": 159,
-                                "data": 8
-                            }
-                        },
-                        "height": 2
-                    }
-                ]
-            },
-            "post": {
-                "kind": "solid",
-                "id": 17,
-                "data": 1
-            },
-            "form": "Flat",
-            "pitch": 0,
-            "overhang": 0,
-            "floor": {
-                "extent": 1,
-                "courses": [
-                    {
-                        "material": {
-                            "kind": "solid",
-                            "id": 98,
-                            "data": 1
-                        },
-                        "height": 1
-                    }
-                ]
-            },
-            "door": "Air",
-            "doorWidth": 3,
-            "doorHeight": 3
-        },
-        "spawn": null
-    },
-    "dressing": {
-        "props": [
-            {
-                "kind": "flora",
-                "id": "fl-1",
-                "seed": 2,
-                "points": [
-                    [
-                        -66,
-                        -95
-                    ],
-                    [
-                        -66,
-                        -55
-                    ],
-                    [
-                        -56,
-                        -55
-                    ],
-                    [
-                        -56,
-                        -95
-                    ]
-                ],
-                "spec": {
-                    "coverage": 0.6,
-                    "scale": 6,
-                    "octaves": 2,
-                    "fernShare": 0.4,
-                    "flowerShare": 0.05,
-                    "flowerScale": 10,
-                    "tallShare": 0.35
-                }
-            },
-            {
-                "kind": "flora",
-                "id": "fl-2",
-                "seed": 3,
-                "points": [
-                    [
-                        56,
-                        -95
-                    ],
-                    [
-                        56,
-                        -55
-                    ],
-                    [
-                        66,
-                        -55
-                    ],
-                    [
-                        66,
-                        -95
-                    ]
-                ],
-                "spec": {
-                    "coverage": 0.6,
-                    "scale": 6,
-                    "octaves": 2,
-                    "fernShare": 0.4,
-                    "flowerShare": 0.05,
-                    "flowerScale": 10,
-                    "tallShare": 0.35
-                }
-            },
-            {
-                "kind": "boulder",
-                "id": "bo-3",
-                "seed": 4,
-                "x": -14,
-                "z": -27,
-                "form": "Angular",
-                "size": 1.8,
-                "mossy": true,
-                "rock": {
-                    "kind": "solid",
-                    "id": 48,
-                    "data": 0
-                }
-            },
-            {
-                "kind": "boulder",
-                "id": "bo-4",
-                "seed": 5,
-                "x": -22,
-                "z": -27,
-                "form": "Angular",
-                "size": 1.8,
-                "mossy": true,
-                "rock": {
-                    "kind": "solid",
-                    "id": 48,
-                    "data": 0
-                }
-            },
-            {
-                "kind": "boulder",
-                "id": "bo-5",
-                "seed": 6,
-                "x": 14,
-                "z": -27,
-                "form": "Angular",
-                "size": 1.8,
-                "mossy": true,
-                "rock": {
-                    "kind": "solid",
-                    "id": 48,
-                    "data": 0
-                }
-            },
-            {
-                "kind": "boulder",
-                "id": "bo-6",
-                "seed": 7,
-                "x": 22,
-                "z": -27,
-                "form": "Angular",
-                "size": 1.8,
-                "mossy": true,
-                "rock": {
-                    "kind": "solid",
-                    "id": 48,
-                    "data": 0
-                }
-            },
-            {
-                "kind": "tree",
-                "id": "tr-7",
-                "seed": 8,
-                "x": 94,
-                "z": -118,
-                "form": "Template",
-                "species": "spruce",
-                "height": 11
-            },
-            {
-                "kind": "tree",
-                "id": "tr-8",
-                "seed": 9,
-                "x": 104,
-                "z": -122,
-                "form": "Template",
-                "species": "spruce",
-                "height": 12
-            },
-            {
-                "kind": "tree",
-                "id": "tr-9",
-                "seed": 10,
-                "x": 114,
-                "z": -116,
-                "form": "Template",
-                "species": "oak",
-                "height": 10
-            },
-            {
-                "kind": "tree",
-                "id": "tr-10",
-                "seed": 11,
-                "x": -94,
-                "z": -118,
-                "form": "Template",
-                "species": "spruce",
-                "height": 11
-            },
-            {
-                "kind": "tree",
-                "id": "tr-11",
-                "seed": 12,
-                "x": -104,
-                "z": -122,
-                "form": "Template",
-                "species": "spruce",
-                "height": 12
-            },
-            {
-                "kind": "tree",
-                "id": "tr-12",
-                "seed": 13,
-                "x": -114,
-                "z": -116,
-                "form": "Template",
-                "species": "oak",
-                "height": 10
-            },
-            {
-                "kind": "tree",
-                "id": "tr-13",
-                "seed": 14,
-                "x": 30,
-                "z": -34,
-                "form": "Template",
-                "species": "oak",
-                "height": 9
-            },
-            {
-                "kind": "tree",
-                "id": "tr-14",
-                "seed": 15,
-                "x": -30,
-                "z": -34,
-                "form": "Template",
-                "species": "oak",
-                "height": 9
-            },
-            {
-                "kind": "flora",
-                "id": "fl-15",
-                "seed": 16,
-                "points": [
-                    [
-                        -40,
-                        -90
-                    ],
-                    [
-                        40,
-                        -90
-                    ],
-                    [
-                        40,
-                        -50
-                    ],
-                    [
-                        -40,
-                        -50
-                    ]
-                ],
-                "spec": {
-                    "coverage": 0.22,
-                    "scale": 12,
-                    "octaves": 2,
-                    "fernShare": 0.1,
-                    "flowerShare": 0.2,
-                    "flowerScale": 16,
-                    "tallShare": 0.0
-                }
-            }
+       },
+       "6": {
+        "out": [
+         124,
+         -128
+        ],
+        "in": [
+         134,
+         -122
         ]
+       }
+      },
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 9,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "briarlock"
+     },
+     {
+      "id": "s1",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -20,
+        -170
+       ],
+       [
+        20,
+        -170
+       ],
+       [
+        20,
+        -140
+       ],
+       [
+        -20,
+        -140
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 11,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "briarlock-spawn"
+     },
+     {
+      "id": "spawn-red",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": -20,
+      "min_z": -170,
+      "max_x": 20,
+      "max_z": -140,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 11,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "red",
+      "color": "red",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "spawn-blue",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": -20,
+      "min_z": 140,
+      "max_x": 20,
+      "max_z": 170,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "blue",
+      "color": "blue",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "wool-red-red",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": 90,
+      "min_z": -130,
+      "max_x": 130,
+      "max_z": -100,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 9,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "woolRoom",
+      "intentRef": "red:red",
+      "color": "red",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "wool-red-orange",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": -130,
+      "min_z": -130,
+      "max_x": -90,
+      "max_z": -100,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 9,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "woolRoom",
+      "intentRef": "red:orange",
+      "color": "orange",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "wool-blue-blue",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": -130,
+      "min_z": 100,
+      "max_x": -90,
+      "max_z": 130,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "woolRoom",
+      "intentRef": "blue:blue",
+      "color": "blue",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "wool-blue-light_blue",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": 90,
+      "min_z": 100,
+      "max_x": 130,
+      "max_z": 130,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "woolRoom",
+      "intentRef": "blue:light_blue",
+      "color": "light_blue",
+      "height_authored": null,
+      "theme": null
+     }
+    ],
+    "islands": [
+     {
+      "id": "team",
+      "name": "Team island",
+      "mirrors": true,
+      "shapeIds": [
+       "s0",
+       "s1"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "themes": {
+  "briarlock": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 48,
+     "data": 0
     },
-    "relief": {
-        "team": {
-            "base": 9,
-            "reach": 40,
-            "step": 1,
-            "stairs": true,
-            "grain": {
-                "amplitude": 0.6,
-                "scale": 10,
-                "seed": 3
-            },
-            "marks": [
-                {
-                    "id": "rim",
-                    "kind": "rim",
-                    "h": 9,
-                    "depth": 1
-                },
-                {
-                    "id": "wool-a-bench",
-                    "kind": "area",
-                    "h": 9,
-                    "ring": [
-                        [
-                            88,
-                            -132
-                        ],
-                        [
-                            132,
-                            -132
-                        ],
-                        [
-                            132,
-                            -98
-                        ],
-                        [
-                            88,
-                            -98
-                        ]
-                    ]
-                },
-                {
-                    "id": "wool-b-bench",
-                    "kind": "area",
-                    "h": 9,
-                    "ring": [
-                        [
-                            -132,
-                            -132
-                        ],
-                        [
-                            -88,
-                            -132
-                        ],
-                        [
-                            -88,
-                            -98
-                        ],
-                        [
-                            -132,
-                            -98
-                        ]
-                    ]
-                },
-                {
-                    "id": "home-bench",
-                    "kind": "area",
-                    "h": 9,
-                    "ring": [
-                        [
-                            -42,
-                            -92
-                        ],
-                        [
-                            42,
-                            -92
-                        ],
-                        [
-                            42,
-                            -48
-                        ],
-                        [
-                            -42,
-                            -48
-                        ]
-                    ]
-                }
-            ],
-            "pushes": [
-                {
-                    "id": "hub-rise",
-                    "amount": 3,
-                    "falloff": 14,
-                    "roughness": 0.25,
-                    "crown": 2,
-                    "seed": 6,
-                    "ring": [
-                        [
-                            -16,
-                            -76
-                        ],
-                        [
-                            16,
-                            -76
-                        ],
-                        [
-                            16,
-                            -56
-                        ],
-                        [
-                            -16,
-                            -56
-                        ]
-                    ]
-                }
-            ]
-        }
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "cell",
+     "seed": 9,
+     "cellSize": 8,
+     "jitter": 55,
+     "warp": 3,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 2,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      }
+     ]
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "teamTint",
+       "blockId": 159,
+       "neutral": {
+        "kind": "solid",
+        "id": 159,
+        "data": 8
+       }
+      },
+      "width": 3
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 48,
+       "data": 0
+      },
+      "width": 2
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 3,
+    "data": 0
+   }
+  },
+  "briarlock-spawn": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 3
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "layers": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 3
+       },
+       "thickness": 2
+      }
+     ]
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "wallDiagonal",
+    "slope": 1,
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      "width": 3
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      "width": 2
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  }
+ },
+ "mapTheme": "briarlock",
+ "roomStyles": {
+  "cage": {
+   "wall": {
+    "extent": 4,
+    "courses": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 48,
+       "data": 0
+      },
+      "height": 2
+     },
+     {
+      "material": {
+       "kind": "teamTint",
+       "blockId": 159,
+       "neutral": {
+        "kind": "solid",
+        "id": 159,
+        "data": 8
+       }
+      },
+      "height": 2
+     }
+    ]
+   },
+   "post": {
+    "kind": "solid",
+    "id": 17,
+    "data": 1
+   },
+   "form": "Flat",
+   "pitch": 0,
+   "overhang": 0,
+   "floor": {
+    "extent": 1,
+    "courses": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 1
+      },
+      "height": 1
+     }
+    ]
+   },
+   "door": "Air",
+   "doorWidth": 3,
+   "doorHeight": 3
+  },
+  "spawn": null
+ },
+ "dressing": {
+  "props": [
+   {
+    "kind": "flora",
+    "id": "fl-1",
+    "seed": 2,
+    "points": [
+     [
+      -66,
+      -95
+     ],
+     [
+      -66,
+      -55
+     ],
+     [
+      -56,
+      -55
+     ],
+     [
+      -56,
+      -95
+     ]
+    ],
+    "spec": {
+     "coverage": 0.6,
+     "scale": 6,
+     "octaves": 2,
+     "fernShare": 0.4,
+     "flowerShare": 0.05,
+     "flowerScale": 10,
+     "tallShare": 0.35
     }
+   },
+   {
+    "kind": "flora",
+    "id": "fl-2",
+    "seed": 3,
+    "points": [
+     [
+      56,
+      -95
+     ],
+     [
+      56,
+      -55
+     ],
+     [
+      66,
+      -55
+     ],
+     [
+      66,
+      -95
+     ]
+    ],
+    "spec": {
+     "coverage": 0.6,
+     "scale": 6,
+     "octaves": 2,
+     "fernShare": 0.4,
+     "flowerShare": 0.05,
+     "flowerScale": 10,
+     "tallShare": 0.35
+    }
+   },
+   {
+    "kind": "boulder",
+    "id": "bo-3",
+    "seed": 4,
+    "x": -14,
+    "z": -27,
+    "form": "Angular",
+    "size": 1.8,
+    "mossy": true,
+    "rock": {
+     "kind": "solid",
+     "id": 48,
+     "data": 0
+    }
+   },
+   {
+    "kind": "boulder",
+    "id": "bo-4",
+    "seed": 5,
+    "x": -22,
+    "z": -27,
+    "form": "Angular",
+    "size": 1.8,
+    "mossy": true,
+    "rock": {
+     "kind": "solid",
+     "id": 48,
+     "data": 0
+    }
+   },
+   {
+    "kind": "boulder",
+    "id": "bo-5",
+    "seed": 6,
+    "x": 14,
+    "z": -27,
+    "form": "Angular",
+    "size": 1.8,
+    "mossy": true,
+    "rock": {
+     "kind": "solid",
+     "id": 48,
+     "data": 0
+    }
+   },
+   {
+    "kind": "boulder",
+    "id": "bo-6",
+    "seed": 7,
+    "x": 22,
+    "z": -27,
+    "form": "Angular",
+    "size": 1.8,
+    "mossy": true,
+    "rock": {
+     "kind": "solid",
+     "id": 48,
+     "data": 0
+    }
+   },
+   {
+    "kind": "tree",
+    "id": "tr-7",
+    "seed": 8,
+    "x": 94,
+    "z": -118,
+    "form": "Template",
+    "species": "spruce",
+    "height": 11
+   },
+   {
+    "kind": "tree",
+    "id": "tr-8",
+    "seed": 9,
+    "x": 104,
+    "z": -122,
+    "form": "Template",
+    "species": "spruce",
+    "height": 12
+   },
+   {
+    "kind": "tree",
+    "id": "tr-9",
+    "seed": 10,
+    "x": 114,
+    "z": -116,
+    "form": "Template",
+    "species": "oak",
+    "height": 10
+   },
+   {
+    "kind": "tree",
+    "id": "tr-10",
+    "seed": 11,
+    "x": -94,
+    "z": -118,
+    "form": "Template",
+    "species": "spruce",
+    "height": 11
+   },
+   {
+    "kind": "tree",
+    "id": "tr-11",
+    "seed": 12,
+    "x": -104,
+    "z": -122,
+    "form": "Template",
+    "species": "spruce",
+    "height": 12
+   },
+   {
+    "kind": "tree",
+    "id": "tr-12",
+    "seed": 13,
+    "x": -114,
+    "z": -116,
+    "form": "Template",
+    "species": "oak",
+    "height": 10
+   },
+   {
+    "kind": "tree",
+    "id": "tr-13",
+    "seed": 14,
+    "x": 30,
+    "z": -34,
+    "form": "Template",
+    "species": "oak",
+    "height": 9
+   },
+   {
+    "kind": "tree",
+    "id": "tr-14",
+    "seed": 15,
+    "x": -30,
+    "z": -34,
+    "form": "Template",
+    "species": "oak",
+    "height": 9
+   },
+   {
+    "kind": "flora",
+    "id": "fl-15",
+    "seed": 16,
+    "points": [
+     [
+      -40,
+      -90
+     ],
+     [
+      40,
+      -90
+     ],
+     [
+      40,
+      -50
+     ],
+     [
+      -40,
+      -50
+     ]
+    ],
+    "spec": {
+     "coverage": 0.22,
+     "scale": 12,
+     "octaves": 2,
+     "fernShare": 0.1,
+     "flowerShare": 0.2,
+     "flowerScale": 16,
+     "tallShare": 0.0
+    }
+   }
+  ]
+ },
+ "relief": {
+  "team": {
+   "base": 9,
+   "reach": 40,
+   "step": 1,
+   "stairs": true,
+   "grain": {
+    "amplitude": 0.6,
+    "scale": 10,
+    "seed": 3
+   },
+   "marks": [
+    {
+     "id": "rim",
+     "kind": "rim",
+     "h": 9,
+     "depth": 1
+    },
+    {
+     "id": "wool-a-bench",
+     "kind": "area",
+     "h": 9,
+     "ring": [
+      [
+       88,
+       -132
+      ],
+      [
+       132,
+       -132
+      ],
+      [
+       132,
+       -98
+      ],
+      [
+       88,
+       -98
+      ]
+     ]
+    },
+    {
+     "id": "wool-b-bench",
+     "kind": "area",
+     "h": 9,
+     "ring": [
+      [
+       -132,
+       -132
+      ],
+      [
+       -88,
+       -132
+      ],
+      [
+       -88,
+       -98
+      ],
+      [
+       -132,
+       -98
+      ]
+     ]
+    },
+    {
+     "id": "home-bench",
+     "kind": "area",
+     "h": 9,
+     "ring": [
+      [
+       -42,
+       -92
+      ],
+      [
+       42,
+       -92
+      ],
+      [
+       42,
+       -48
+      ],
+      [
+       -42,
+       -48
+      ]
+     ]
+    }
+   ],
+   "pushes": [
+    {
+     "id": "hub-rise",
+     "amount": 3,
+     "falloff": 14,
+     "roughness": 0.25,
+     "crown": 2,
+     "seed": 6,
+     "ring": [
+      [
+       -16,
+       -76
+      ],
+      [
+       16,
+       -76
+      ],
+      [
+       16,
+       -56
+      ],
+      [
+       -16,
+       -56
+      ]
+     ]
+    }
+   ]
+  }
+ }
 }

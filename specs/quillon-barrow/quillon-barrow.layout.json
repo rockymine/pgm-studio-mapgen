@@ -12,338 +12,345 @@
    "max_z": 120
   }
  },
- "layout": {
-  "shapes": [
-   {
-    "id": "field",
-    "type": "polygon",
-    "operation": "add",
-    "vertices": [
-     [
-      -40,
-      -70
-     ],
-     [
-      -58,
-      -64
-     ],
-     [
-      -68,
-      -50
-     ],
-     [
-      -72,
-      -32
-     ],
-     [
-      -64,
-      -16
-     ],
-     [
-      -66,
-      2
-     ],
-     [
-      -52,
-      6
-     ],
-     [
-      -30,
-      4
-     ],
-     [
-      -8,
-      6
-     ],
-     [
-      14,
-      4
-     ],
-     [
-      34,
-      6
-     ],
-     [
-      52,
-      2
-     ],
-     [
-      62,
-      -8
-     ],
-     [
-      66,
-      -26
-     ],
-     [
-      72,
-      -40
-     ],
-     [
-      64,
-      -56
-     ],
-     [
-      48,
-      -66
-     ],
-     [
-      26,
-      -70
-     ],
-     [
-      0,
-      -66
-     ],
-     [
-      -20,
-      -70
-     ]
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "field",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        -40,
+        -70
+       ],
+       [
+        -58,
+        -64
+       ],
+       [
+        -68,
+        -50
+       ],
+       [
+        -72,
+        -32
+       ],
+       [
+        -64,
+        -16
+       ],
+       [
+        -66,
+        2
+       ],
+       [
+        -52,
+        6
+       ],
+       [
+        -30,
+        4
+       ],
+       [
+        -8,
+        6
+       ],
+       [
+        14,
+        4
+       ],
+       [
+        34,
+        6
+       ],
+       [
+        52,
+        2
+       ],
+       [
+        62,
+        -8
+       ],
+       [
+        66,
+        -26
+       ],
+       [
+        72,
+        -40
+       ],
+       [
+        64,
+        -56
+       ],
+       [
+        48,
+        -66
+       ],
+       [
+        26,
+        -70
+       ],
+       [
+        0,
+        -66
+       ],
+       [
+        -20,
+        -70
+       ]
+      ],
+      "floor": 0,
+      "base_height": 12,
+      "theme": "barrow-heath"
+     },
+     {
+      "id": "village",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        -42,
+        -94
+       ],
+       [
+        -45,
+        -76
+       ],
+       [
+        -36,
+        -60
+       ],
+       [
+        -8,
+        -62
+       ],
+       [
+        16,
+        -60
+       ],
+       [
+        38,
+        -62
+       ],
+       [
+        46,
+        -74
+       ],
+       [
+        44,
+        -94
+       ],
+       [
+        10,
+        -96
+       ],
+       [
+        -16,
+        -95
+       ]
+      ],
+      "floor": 0,
+      "base_height": 14,
+      "relief_scope": "hold",
+      "theme": "barrow-fold"
+     },
+     {
+      "id": "back",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        -38,
+        -114
+       ],
+       [
+        -38,
+        -92
+       ],
+       [
+        -28,
+        -84
+       ],
+       [
+        28,
+        -84
+       ],
+       [
+        38,
+        -92
+       ],
+       [
+        38,
+        -114
+       ]
+      ],
+      "floor": 0,
+      "base_height": 15,
+      "relief_scope": "hold",
+      "theme": "barrow-hold"
+     },
+     {
+      "id": "crag",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        24,
+        -46
+       ],
+       [
+        28,
+        -58
+       ],
+       [
+        40,
+        -64
+       ],
+       [
+        56,
+        -60
+       ],
+       [
+        66,
+        -46
+       ],
+       [
+        62,
+        -30
+       ],
+       [
+        48,
+        -22
+       ],
+       [
+        32,
+        -28
+       ]
+      ],
+      "floor": 0,
+      "base_height": 11,
+      "height_mode": "raise",
+      "skirt": 3,
+      "anchor_heights": [
+       10,
+       11,
+       13,
+       13,
+       12,
+       11,
+       10,
+       9
+      ],
+      "theme": "barrow-crag"
+     },
+     {
+      "id": "crag-ramp",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        40,
+        -8
+       ],
+       [
+        52,
+        -4
+       ],
+       [
+        60,
+        -30
+       ],
+       [
+        46,
+        -34
+       ]
+      ],
+      "floor": 0,
+      "base_height": 12,
+      "height_mode": "level",
+      "skirt": 0,
+      "anchor_heights": [
+       12,
+       12,
+       23,
+       23
+      ],
+      "theme": "barrow-crag"
+     },
+     {
+      "id": "channel",
+      "type": "polygon",
+      "operation": "subtract",
+      "vertices": [
+       [
+        -34,
+        -20
+       ],
+       [
+        -28,
+        -28
+       ],
+       [
+        -8,
+        -30
+       ],
+       [
+        12,
+        -29
+       ],
+       [
+        28,
+        -26
+       ],
+       [
+        34,
+        -18
+       ],
+       [
+        26,
+        -10
+       ],
+       [
+        6,
+        -8
+       ],
+       [
+        -14,
+        -10
+       ],
+       [
+        -30,
+        -14
+       ]
+      ],
+      "floor": 0,
+      "base_height": 100
+     }
     ],
-    "floor": 0,
-    "base_height": 12,
-    "theme": "barrow-heath"
-   },
-   {
-    "id": "village",
-    "type": "polygon",
-    "operation": "add",
-    "vertices": [
-     [
-      -42,
-      -94
-     ],
-     [
-      -45,
-      -76
-     ],
-     [
-      -36,
-      -60
-     ],
-     [
-      -8,
-      -62
-     ],
-     [
-      16,
-      -60
-     ],
-     [
-      38,
-      -62
-     ],
-     [
-      46,
-      -74
-     ],
-     [
-      44,
-      -94
-     ],
-     [
-      10,
-      -96
-     ],
-     [
-      -16,
-      -95
-     ]
-    ],
-    "floor": 0,
-    "base_height": 14,
-    "relief_scope": "hold",
-    "theme": "barrow-fold"
-   },
-   {
-    "id": "back",
-    "type": "polygon",
-    "operation": "add",
-    "vertices": [
-     [
-      -38,
-      -114
-     ],
-     [
-      -38,
-      -92
-     ],
-     [
-      -28,
-      -84
-     ],
-     [
-      28,
-      -84
-     ],
-     [
-      38,
-      -92
-     ],
-     [
-      38,
-      -114
-     ]
-    ],
-    "floor": 0,
-    "base_height": 15,
-    "relief_scope": "hold",
-    "theme": "barrow-hold"
-   },
-   {
-    "id": "crag",
-    "type": "polygon",
-    "operation": "add",
-    "vertices": [
-     [
-      24,
-      -46
-     ],
-     [
-      28,
-      -58
-     ],
-     [
-      40,
-      -64
-     ],
-     [
-      56,
-      -60
-     ],
-     [
-      66,
-      -46
-     ],
-     [
-      62,
-      -30
-     ],
-     [
-      48,
-      -22
-     ],
-     [
-      32,
-      -28
-     ]
-    ],
-    "floor": 0,
-    "base_height": 11,
-    "height_mode": "raise",
-    "skirt": 3,
-    "anchor_heights": [
-     10,
-     11,
-     13,
-     13,
-     12,
-     11,
-     10,
-     9
-    ],
-    "theme": "barrow-crag"
-   },
-   {
-    "id": "crag-ramp",
-    "type": "polygon",
-    "operation": "add",
-    "vertices": [
-     [
-      40,
-      -8
-     ],
-     [
-      52,
-      -4
-     ],
-     [
-      60,
-      -30
-     ],
-     [
-      46,
-      -34
-     ]
-    ],
-    "floor": 0,
-    "base_height": 12,
-    "height_mode": "level",
-    "skirt": 0,
-    "anchor_heights": [
-     12,
-     12,
-     23,
-     23
-    ],
-    "theme": "barrow-crag"
-   },
-   {
-    "id": "channel",
-    "type": "polygon",
-    "operation": "subtract",
-    "vertices": [
-     [
-      -34,
-      -20
-     ],
-     [
-      -28,
-      -28
-     ],
-     [
-      -8,
-      -30
-     ],
-     [
-      12,
-      -29
-     ],
-     [
-      28,
-      -26
-     ],
-     [
-      34,
-      -18
-     ],
-     [
-      26,
-      -10
-     ],
-     [
-      6,
-      -8
-     ],
-     [
-      -14,
-      -10
-     ],
-     [
-      -30,
-      -14
-     ]
-    ],
-    "floor": 0,
-    "base_height": 100
-   }
-  ],
-  "islands": [
-   {
-    "id": "barrow",
-    "name": "Barrow",
-    "mirrors": true,
-    "shapeIds": [
-     "field",
-     "village",
-     "back",
-     "crag",
-     "crag-ramp",
-     "channel"
+    "islands": [
+     {
+      "id": "barrow",
+      "name": "Barrow",
+      "mirrors": true,
+      "shapeIds": [
+       "field",
+       "village",
+       "back",
+       "crag",
+       "crag-ramp",
+       "channel"
+      ]
+     }
     ]
    }
-  ]
- },
+  }
+ ],
  "themes": {
   "barrow-heath": {
    "bedrock": {

@@ -12,647 +12,653 @@
    "max_z": 95
   }
  },
- "layout": {
-  "shapes": [
-   {
-    "id": "s0",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -25,
-      10
-     ],
-     [
-      25,
-      10
-     ],
-     [
-      25,
-      25
-     ],
-     [
-      -25,
-      25
-     ]
-    ],
-    "controls": {
-     "1": {
-      "out": [
-       29.0,
-       14.5
-      ]
-     },
-     "2": {
-      "in": [
-       29.0,
-       20.5
-      ]
-     },
-     "3": {
-      "out": [
-       -29.0,
-       20.5
-      ]
-     },
-     "0": {
-      "in": [
-       -29.0,
-       14.5
-      ]
-     }
-    },
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": 8,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "rake-wash"
-   },
-   {
-    "id": "s1",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -45,
-      25
-     ],
-     [
-      25,
-      25
-     ],
-     [
-      25,
-      45
-     ],
-     [
-      -45,
-      45
-     ]
-    ],
-    "controls": {
-     "3": {
-      "out": [
-       -51.0,
-       39.0
-      ]
-     },
-     "0": {
-      "in": [
-       -51.0,
-       31.0
-      ]
-     }
-    },
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": 9,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "rake-pan"
-   },
-   {
-    "id": "s2",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -45,
-      45
-     ],
-     [
-      -15,
-      45
-     ],
-     [
-      -15,
-      50
-     ],
-     [
-      -45,
-      50
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 10,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "rake-pan"
-   },
-   {
-    "id": "s3",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -15,
-      45
-     ],
-     [
-      25,
-      45
-     ],
-     [
-      25,
-      35
-     ],
-     [
-      45,
-      35
-     ],
-     [
-      45,
-      50
-     ],
-     [
-      -15,
-      50
-     ]
-    ],
-    "controls": {
-     "1": {
-      "out": [
-       22.0,
-       42.0
-      ]
-     },
-     "2": {
-      "in": [
-       22.0,
-       38.0
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "s0",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -25,
+        10
+       ],
+       [
+        25,
+        10
+       ],
+       [
+        25,
+        25
+       ],
+       [
+        -25,
+        25
+       ]
       ],
-      "out": [
-       31.0,
-       31.0
-      ]
+      "controls": {
+       "1": {
+        "out": [
+         29.0,
+         14.5
+        ]
+       },
+       "2": {
+        "in": [
+         29.0,
+         20.5
+        ]
+       },
+       "3": {
+        "out": [
+         -29.0,
+         20.5
+        ]
+       },
+       "0": {
+        "in": [
+         -29.0,
+         14.5
+        ]
+       }
+      },
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 8,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "rake-wash"
      },
-     "3": {
-      "in": [
-       39.0,
-       31.0
+     {
+      "id": "s1",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -45,
+        25
+       ],
+       [
+        25,
+        25
+       ],
+       [
+        25,
+        45
+       ],
+       [
+        -45,
+        45
+       ]
       ],
-      "out": [
-       49.0,
-       39.5
+      "controls": {
+       "3": {
+        "out": [
+         -51.0,
+         39.0
+        ]
+       },
+       "0": {
+        "in": [
+         -51.0,
+         31.0
+        ]
+       }
+      },
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 9,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "rake-pan"
+     },
+     {
+      "id": "s2",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -45,
+        45
+       ],
+       [
+        -15,
+        45
+       ],
+       [
+        -15,
+        50
+       ],
+       [
+        -45,
+        50
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 10,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "rake-pan"
+     },
+     {
+      "id": "s3",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -15,
+        45
+       ],
+       [
+        25,
+        45
+       ],
+       [
+        25,
+        35
+       ],
+       [
+        45,
+        35
+       ],
+       [
+        45,
+        50
+       ],
+       [
+        -15,
+        50
+       ]
+      ],
+      "controls": {
+       "1": {
+        "out": [
+         22.0,
+         42.0
+        ]
+       },
+       "2": {
+        "in": [
+         22.0,
+         38.0
+        ],
+        "out": [
+         31.0,
+         31.0
+        ]
+       },
+       "3": {
+        "in": [
+         39.0,
+         31.0
+        ],
+        "out": [
+         49.0,
+         39.5
+        ]
+       },
+       "4": {
+        "in": [
+         49.0,
+         45.5
+        ]
+       }
+      },
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 11,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "rake-brow"
+     },
+     {
+      "id": "s4",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -35,
+        50
+       ],
+       [
+        35,
+        50
+       ],
+       [
+        35,
+        65
+       ],
+       [
+        -35,
+        65
+       ]
+      ],
+      "controls": {
+       "1": {
+        "out": [
+         39.0,
+         54.5
+        ]
+       },
+       "2": {
+        "in": [
+         39.0,
+         60.5
+        ]
+       },
+       "3": {
+        "out": [
+         -39.0,
+         60.5
+        ]
+       },
+       "0": {
+        "in": [
+         -39.0,
+         54.5
+        ]
+       }
+      },
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 12,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "rake-mesa"
+     },
+     {
+      "id": "s5",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -15,
+        65
+       ],
+       [
+        15,
+        65
+       ],
+       [
+        15,
+        75
+       ],
+       [
+        -15,
+        75
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 13,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "rake-works"
+     },
+     {
+      "id": "s6",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -10,
+        75
+       ],
+       [
+        10,
+        75
+       ],
+       [
+        10,
+        90
+       ],
+       [
+        -10,
+        90
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 14,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "rake-works"
+     },
+     {
+      "id": "spawn-red",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": -10,
+      "min_z": 75,
+      "max_x": 10,
+      "max_z": 90,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 14,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "red",
+      "color": "red",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "spawn-blue",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": -10,
+      "min_z": -90,
+      "max_x": 10,
+      "max_z": -75,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "blue",
+      "color": "blue",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "rk-hoodoo-0",
+      "type": "circle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 22,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "rake-hoodoo",
+      "center_x": -40,
+      "center_z": 31,
+      "radius": 3.0
+     },
+     {
+      "id": "rk-hoodoo-1",
+      "type": "circle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 22,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "rake-hoodoo",
+      "center_x": -33,
+      "center_z": 36,
+      "radius": 2.5
+     },
+     {
+      "id": "rk-hoodoo-2",
+      "type": "circle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 22,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "rake-hoodoo",
+      "center_x": -26,
+      "center_z": 30,
+      "radius": 3.5
+     },
+     {
+      "id": "rk-hoodoo-3",
+      "type": "circle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 22,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "rake-hoodoo",
+      "center_x": -19,
+      "center_z": 37,
+      "radius": 2.5
+     },
+     {
+      "id": "rk-hoodoo-4",
+      "type": "circle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 22,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "rake-hoodoo",
+      "center_x": -12,
+      "center_z": 32,
+      "radius": 3.0
+     },
+     {
+      "id": "rk-sink",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 5,
+      "height_mode": "sink",
+      "skirt": 3,
+      "theme": "rake-pan",
+      "vertices": [
+       [
+        2,
+        28
+       ],
+       [
+        22,
+        28
+       ],
+       [
+        24,
+        36
+       ],
+       [
+        18,
+        42
+       ],
+       [
+        4,
+        40
+       ]
       ]
      },
-     "4": {
-      "in": [
-       49.0,
-       45.5
+     {
+      "id": "rk-shelf-tilt",
+      "type": "polygon",
+      "operation": "add",
+      "override": true,
+      "floor": 0,
+      "base_height": 11,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "rake-brow",
+      "vertices": [
+       [
+        27,
+        36
+       ],
+       [
+        43,
+        36
+       ],
+       [
+        43,
+        44
+       ],
+       [
+        27,
+        44
+       ]
+      ],
+      "anchor_heights": [
+       9,
+       10,
+       11,
+       11
       ]
      }
-    },
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 11,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "rake-brow"
-   },
-   {
-    "id": "s4",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -35,
-      50
-     ],
-     [
-      35,
-      50
-     ],
-     [
-      35,
-      65
-     ],
-     [
-      -35,
-      65
-     ]
     ],
-    "controls": {
-     "1": {
-      "out": [
-       39.0,
-       54.5
-      ]
-     },
-     "2": {
-      "in": [
-       39.0,
-       60.5
-      ]
-     },
-     "3": {
-      "out": [
-       -39.0,
-       60.5
-      ]
-     },
-     "0": {
-      "in": [
-       -39.0,
-       54.5
+    "islands": [
+     {
+      "id": "team",
+      "name": "Team island",
+      "mirrors": true,
+      "shapeIds": [
+       "s0",
+       "s1",
+       "s2",
+       "s3",
+       "s4",
+       "s5",
+       "s6",
+       "rk-hoodoo-0",
+       "rk-hoodoo-1",
+       "rk-hoodoo-2",
+       "rk-hoodoo-3",
+       "rk-hoodoo-4",
+       "rk-sink",
+       "rk-shelf-tilt"
       ]
      }
-    },
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 12,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "rake-mesa"
-   },
-   {
-    "id": "s5",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -15,
-      65
-     ],
-     [
-      15,
-      65
-     ],
-     [
-      15,
-      75
-     ],
-     [
-      -15,
-      75
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 13,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "rake-works"
-   },
-   {
-    "id": "s6",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -10,
-      75
-     ],
-     [
-      10,
-      75
-     ],
-     [
-      10,
-      90
-     ],
-     [
-      -10,
-      90
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 14,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "rake-works"
-   },
-   {
-    "id": "spawn-red",
-    "type": "rectangle",
-    "operation": "add",
-    "override": false,
-    "min_x": -10,
-    "min_z": 75,
-    "max_x": 10,
-    "max_z": 90,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": null,
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 14,
-    "anchor_heights": null,
-    "floor": null,
-    "role": "spawn",
-    "intentRef": "red",
-    "color": "red",
-    "height_authored": null,
-    "theme": null
-   },
-   {
-    "id": "spawn-blue",
-    "type": "rectangle",
-    "operation": "add",
-    "override": false,
-    "min_x": -10,
-    "min_z": -90,
-    "max_x": 10,
-    "max_z": -75,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": null,
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": null,
-    "anchor_heights": null,
-    "floor": null,
-    "role": "spawn",
-    "intentRef": "blue",
-    "color": "blue",
-    "height_authored": null,
-    "theme": null
-   },
-   {
-    "id": "rk-hoodoo-0",
-    "type": "circle",
-    "operation": "add",
-    "floor": 0,
-    "base_height": 22,
-    "height_mode": "level",
-    "skirt": 0,
-    "relief_scope": "exclude",
-    "theme": "rake-hoodoo",
-    "center_x": -40,
-    "center_z": 31,
-    "radius": 3.0
-   },
-   {
-    "id": "rk-hoodoo-1",
-    "type": "circle",
-    "operation": "add",
-    "floor": 0,
-    "base_height": 22,
-    "height_mode": "level",
-    "skirt": 0,
-    "relief_scope": "exclude",
-    "theme": "rake-hoodoo",
-    "center_x": -33,
-    "center_z": 36,
-    "radius": 2.5
-   },
-   {
-    "id": "rk-hoodoo-2",
-    "type": "circle",
-    "operation": "add",
-    "floor": 0,
-    "base_height": 22,
-    "height_mode": "level",
-    "skirt": 0,
-    "relief_scope": "exclude",
-    "theme": "rake-hoodoo",
-    "center_x": -26,
-    "center_z": 30,
-    "radius": 3.5
-   },
-   {
-    "id": "rk-hoodoo-3",
-    "type": "circle",
-    "operation": "add",
-    "floor": 0,
-    "base_height": 22,
-    "height_mode": "level",
-    "skirt": 0,
-    "relief_scope": "exclude",
-    "theme": "rake-hoodoo",
-    "center_x": -19,
-    "center_z": 37,
-    "radius": 2.5
-   },
-   {
-    "id": "rk-hoodoo-4",
-    "type": "circle",
-    "operation": "add",
-    "floor": 0,
-    "base_height": 22,
-    "height_mode": "level",
-    "skirt": 0,
-    "relief_scope": "exclude",
-    "theme": "rake-hoodoo",
-    "center_x": -12,
-    "center_z": 32,
-    "radius": 3.0
-   },
-   {
-    "id": "rk-sink",
-    "type": "polygon",
-    "operation": "add",
-    "floor": 0,
-    "base_height": 5,
-    "height_mode": "sink",
-    "skirt": 3,
-    "theme": "rake-pan",
-    "vertices": [
-     [
-      2,
-      28
-     ],
-     [
-      22,
-      28
-     ],
-     [
-      24,
-      36
-     ],
-     [
-      18,
-      42
-     ],
-     [
-      4,
-      40
-     ]
-    ]
-   },
-   {
-    "id": "rk-shelf-tilt",
-    "type": "polygon",
-    "operation": "add",
-    "override": true,
-    "floor": 0,
-    "base_height": 11,
-    "height_mode": "level",
-    "skirt": 0,
-    "relief_scope": "exclude",
-    "theme": "rake-brow",
-    "vertices": [
-     [
-      27,
-      36
-     ],
-     [
-      43,
-      36
-     ],
-     [
-      43,
-      44
-     ],
-     [
-      27,
-      44
-     ]
-    ],
-    "anchor_heights": [
-     9,
-     10,
-     11,
-     11
     ]
    }
-  ],
-  "islands": [
-   {
-    "id": "team",
-    "name": "Team island",
-    "mirrors": true,
-    "shapeIds": [
-     "s0",
-     "s1",
-     "s2",
-     "s3",
-     "s4",
-     "s5",
-     "s6",
-     "rk-hoodoo-0",
-     "rk-hoodoo-1",
-     "rk-hoodoo-2",
-     "rk-hoodoo-3",
-     "rk-hoodoo-4",
-     "rk-sink",
-     "rk-shelf-tilt"
-    ]
-   }
-  ]
- },
- "layers": null,
+  }
+ ],
  "themes": {
   "rake-pan": {
    "bedrock": {

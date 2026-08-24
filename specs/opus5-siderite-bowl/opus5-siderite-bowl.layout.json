@@ -12,749 +12,755 @@
    "max_z": 105
   }
  },
- "layout": {
-  "shapes": [
-   {
-    "id": "s0",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -30,
-      40
-     ],
-     [
-      20,
-      40
-     ],
-     [
-      20,
-      55
-     ],
-     [
-      -30,
-      55
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": 6,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "bowl-floor"
-   },
-   {
-    "id": "s1",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -30,
-      10
-     ],
-     [
-      30,
-      10
-     ],
-     [
-      30,
-      25
-     ],
-     [
-      -30,
-      25
-     ]
-    ],
-    "controls": {
-     "1": {
-      "out": [
-       34.0,
-       14.5
-      ]
-     },
-     "2": {
-      "in": [
-       34.0,
-       20.5
-      ]
-     },
-     "3": {
-      "out": [
-       -34.0,
-       20.5
-      ]
-     },
-     "0": {
-      "in": [
-       -34.0,
-       14.5
-      ]
-     }
-    },
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": 8,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "bowl-scorch"
-   },
-   {
-    "id": "s2",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      20,
-      40
-     ],
-     [
-      35,
-      40
-     ],
-     [
-      35,
-      55
-     ],
-     [
-      20,
-      55
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": 8,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "bowl-rim"
-   },
-   {
-    "id": "s3",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -40,
-      25
-     ],
-     [
-      35,
-      25
-     ],
-     [
-      35,
-      30
-     ],
-     [
-      45,
-      30
-     ],
-     [
-      45,
-      40
-     ],
-     [
-      -40,
-      40
-     ]
-    ],
-    "controls": {
-     "3": {
-      "out": [
-       48.0,
-       33.0
-      ]
-     },
-     "4": {
-      "in": [
-       48.0,
-       37.0
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "s0",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -30,
+        40
+       ],
+       [
+        20,
+        40
+       ],
+       [
+        20,
+        55
+       ],
+       [
+        -30,
+        55
+       ]
       ],
-      "out": [
-       19.5,
-       44.0
-      ]
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 6,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "bowl-floor"
      },
-     "5": {
-      "in": [
-       -14.5,
-       44.0
+     {
+      "id": "s1",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -30,
+        10
+       ],
+       [
+        30,
+        10
+       ],
+       [
+        30,
+        25
+       ],
+       [
+        -30,
+        25
+       ]
       ],
-      "out": [
-       -44.5,
-       35.5
+      "controls": {
+       "1": {
+        "out": [
+         34.0,
+         14.5
+        ]
+       },
+       "2": {
+        "in": [
+         34.0,
+         20.5
+        ]
+       },
+       "3": {
+        "out": [
+         -34.0,
+         20.5
+        ]
+       },
+       "0": {
+        "in": [
+         -34.0,
+         14.5
+        ]
+       }
+      },
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 8,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "bowl-scorch"
+     },
+     {
+      "id": "s2",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        20,
+        40
+       ],
+       [
+        35,
+        40
+       ],
+       [
+        35,
+        55
+       ],
+       [
+        20,
+        55
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 8,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "bowl-rim"
+     },
+     {
+      "id": "s3",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -40,
+        25
+       ],
+       [
+        35,
+        25
+       ],
+       [
+        35,
+        30
+       ],
+       [
+        45,
+        30
+       ],
+       [
+        45,
+        40
+       ],
+       [
+        -40,
+        40
+       ]
+      ],
+      "controls": {
+       "3": {
+        "out": [
+         48.0,
+         33.0
+        ]
+       },
+       "4": {
+        "in": [
+         48.0,
+         37.0
+        ],
+        "out": [
+         19.5,
+         44.0
+        ]
+       },
+       "5": {
+        "in": [
+         -14.5,
+         44.0
+        ],
+        "out": [
+         -44.5,
+         35.5
+        ]
+       },
+       "0": {
+        "in": [
+         -44.5,
+         29.5
+        ]
+       }
+      },
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 9,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "bowl-scorch"
+     },
+     {
+      "id": "s4",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -10,
+        55
+       ],
+       [
+        5,
+        55
+       ],
+       [
+        5,
+        65
+       ],
+       [
+        -10,
+        65
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 10,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "bowl-breach"
+     },
+     {
+      "id": "s5",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -35,
+        65
+       ],
+       [
+        35,
+        65
+       ],
+       [
+        35,
+        75
+       ],
+       [
+        -35,
+        75
+       ]
+      ],
+      "controls": {
+       "1": {
+        "out": [
+         38.0,
+         68.0
+        ]
+       },
+       "2": {
+        "in": [
+         38.0,
+         72.0
+        ]
+       },
+       "3": {
+        "out": [
+         -38.0,
+         72.0
+        ]
+       },
+       "0": {
+        "in": [
+         -38.0,
+         68.0
+        ]
+       }
+      },
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 12,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "bowl-works"
+     },
+     {
+      "id": "s6",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        5,
+        55
+       ],
+       [
+        45,
+        55
+       ],
+       [
+        45,
+        65
+       ],
+       [
+        5,
+        65
+       ]
+      ],
+      "controls": {
+       "1": {
+        "out": [
+         48.0,
+         58.0
+        ]
+       },
+       "2": {
+        "in": [
+         48.0,
+         62.0
+        ]
+       }
+      },
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 13,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "bowl-rim"
+     },
+     {
+      "id": "s7",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -45,
+        55
+       ],
+       [
+        -10,
+        55
+       ],
+       [
+        -10,
+        65
+       ],
+       [
+        -45,
+        65
+       ]
+      ],
+      "controls": {
+       "3": {
+        "out": [
+         -48.0,
+         62.0
+        ]
+       },
+       "0": {
+        "in": [
+         -48.0,
+         58.0
+        ]
+       }
+      },
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 13,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "bowl-rim"
+     },
+     {
+      "id": "s8",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -15,
+        75
+       ],
+       [
+        15,
+        75
+       ],
+       [
+        15,
+        85
+       ],
+       [
+        -15,
+        85
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 13,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "bowl-works"
+     },
+     {
+      "id": "s9",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -10,
+        85
+       ],
+       [
+        10,
+        85
+       ],
+       [
+        10,
+        100
+       ],
+       [
+        -10,
+        100
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 14,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "theme": "bowl-works"
+     },
+     {
+      "id": "spawn-red",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": -10,
+      "min_z": 85,
+      "max_x": 10,
+      "max_z": 100,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 14,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "red",
+      "color": "red",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "spawn-blue",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "min_x": -10,
+      "min_z": -100,
+      "max_x": 10,
+      "max_z": -85,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "blue",
+      "color": "blue",
+      "height_authored": null,
+      "theme": null
+     },
+     {
+      "id": "sb-breach-ramp",
+      "type": "polygon",
+      "operation": "add",
+      "override": true,
+      "floor": 0,
+      "base_height": 10,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "bowl-breach",
+      "vertices": [
+       [
+        -8,
+        47
+       ],
+       [
+        3,
+        47
+       ],
+       [
+        3,
+        57
+       ],
+       [
+        -8,
+        57
+       ]
+      ],
+      "anchor_heights": [
+       6,
+       6,
+       10,
+       10
       ]
      },
-     "0": {
-      "in": [
-       -44.5,
-       29.5
+     {
+      "id": "sb-shelf-ramp",
+      "type": "polygon",
+      "operation": "add",
+      "override": true,
+      "floor": 0,
+      "base_height": 8,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "bowl-rim",
+      "vertices": [
+       [
+        18,
+        42
+       ],
+       [
+        33,
+        42
+       ],
+       [
+        33,
+        52
+       ],
+       [
+        18,
+        52
+       ]
+      ],
+      "anchor_heights": [
+       6,
+       9,
+       9,
+       6
+      ]
+     },
+     {
+      "id": "sb-pit-w",
+      "type": "circle",
+      "operation": "subtract",
+      "floor": 0,
+      "base_height": 40,
+      "center_x": -22,
+      "center_z": 26,
+      "radius": 5
+     },
+     {
+      "id": "sb-pit-e",
+      "type": "circle",
+      "operation": "subtract",
+      "floor": 0,
+      "base_height": 40,
+      "center_x": 14,
+      "center_z": 27,
+      "radius": 4
+     }
+    ],
+    "islands": [
+     {
+      "id": "team",
+      "name": "Team island",
+      "mirrors": true,
+      "shapeIds": [
+       "s0",
+       "s1",
+       "s2",
+       "s3",
+       "s4",
+       "s5",
+       "s6",
+       "s7",
+       "s8",
+       "s9",
+       "sb-breach-ramp",
+       "sb-shelf-ramp",
+       "sb-pit-w",
+       "sb-pit-e"
       ]
      }
-    },
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": 9,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "bowl-scorch"
-   },
-   {
-    "id": "s4",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -10,
-      55
-     ],
-     [
-      5,
-      55
-     ],
-     [
-      5,
-      65
-     ],
-     [
-      -10,
-      65
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 10,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "bowl-breach"
-   },
-   {
-    "id": "s5",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -35,
-      65
-     ],
-     [
-      35,
-      65
-     ],
-     [
-      35,
-      75
-     ],
-     [
-      -35,
-      75
-     ]
-    ],
-    "controls": {
-     "1": {
-      "out": [
-       38.0,
-       68.0
-      ]
-     },
-     "2": {
-      "in": [
-       38.0,
-       72.0
-      ]
-     },
-     "3": {
-      "out": [
-       -38.0,
-       72.0
-      ]
-     },
-     "0": {
-      "in": [
-       -38.0,
-       68.0
-      ]
-     }
-    },
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 12,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "bowl-works"
-   },
-   {
-    "id": "s6",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      5,
-      55
-     ],
-     [
-      45,
-      55
-     ],
-     [
-      45,
-      65
-     ],
-     [
-      5,
-      65
-     ]
-    ],
-    "controls": {
-     "1": {
-      "out": [
-       48.0,
-       58.0
-      ]
-     },
-     "2": {
-      "in": [
-       48.0,
-       62.0
-      ]
-     }
-    },
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 13,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "bowl-rim"
-   },
-   {
-    "id": "s7",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -45,
-      55
-     ],
-     [
-      -10,
-      55
-     ],
-     [
-      -10,
-      65
-     ],
-     [
-      -45,
-      65
-     ]
-    ],
-    "controls": {
-     "3": {
-      "out": [
-       -48.0,
-       62.0
-      ]
-     },
-     "0": {
-      "in": [
-       -48.0,
-       58.0
-      ]
-     }
-    },
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 13,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "bowl-rim"
-   },
-   {
-    "id": "s8",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -15,
-      75
-     ],
-     [
-      15,
-      75
-     ],
-     [
-      15,
-      85
-     ],
-     [
-      -15,
-      85
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 13,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "bowl-works"
-   },
-   {
-    "id": "s9",
-    "type": "polygon",
-    "operation": "add",
-    "override": false,
-    "min_x": null,
-    "min_z": null,
-    "max_x": null,
-    "max_z": null,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": [
-     [
-      -10,
-      85
-     ],
-     [
-      10,
-      85
-     ],
-     [
-      10,
-      100
-     ],
-     [
-      -10,
-      100
-     ]
-    ],
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 14,
-    "anchor_heights": null,
-    "floor": null,
-    "role": null,
-    "intentRef": null,
-    "color": null,
-    "height_authored": null,
-    "theme": "bowl-works"
-   },
-   {
-    "id": "spawn-red",
-    "type": "rectangle",
-    "operation": "add",
-    "override": false,
-    "min_x": -10,
-    "min_z": 85,
-    "max_x": 10,
-    "max_z": 100,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": null,
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": "hold",
-    "base_height": 14,
-    "anchor_heights": null,
-    "floor": null,
-    "role": "spawn",
-    "intentRef": "red",
-    "color": "red",
-    "height_authored": null,
-    "theme": null
-   },
-   {
-    "id": "spawn-blue",
-    "type": "rectangle",
-    "operation": "add",
-    "override": false,
-    "min_x": -10,
-    "min_z": -100,
-    "max_x": 10,
-    "max_z": -85,
-    "center_x": null,
-    "center_z": null,
-    "radius": null,
-    "vertices": null,
-    "controls": null,
-    "path_edge": null,
-    "path_seed": null,
-    "height_mode": null,
-    "skirt": null,
-    "relief_scope": null,
-    "base_height": null,
-    "anchor_heights": null,
-    "floor": null,
-    "role": "spawn",
-    "intentRef": "blue",
-    "color": "blue",
-    "height_authored": null,
-    "theme": null
-   },
-   {
-    "id": "sb-breach-ramp",
-    "type": "polygon",
-    "operation": "add",
-    "override": true,
-    "floor": 0,
-    "base_height": 10,
-    "height_mode": "level",
-    "skirt": 0,
-    "relief_scope": "exclude",
-    "theme": "bowl-breach",
-    "vertices": [
-     [
-      -8,
-      47
-     ],
-     [
-      3,
-      47
-     ],
-     [
-      3,
-      57
-     ],
-     [
-      -8,
-      57
-     ]
-    ],
-    "anchor_heights": [
-     6,
-     6,
-     10,
-     10
     ]
-   },
-   {
-    "id": "sb-shelf-ramp",
-    "type": "polygon",
-    "operation": "add",
-    "override": true,
-    "floor": 0,
-    "base_height": 8,
-    "height_mode": "level",
-    "skirt": 0,
-    "relief_scope": "exclude",
-    "theme": "bowl-rim",
-    "vertices": [
-     [
-      18,
-      42
-     ],
-     [
-      33,
-      42
-     ],
-     [
-      33,
-      52
-     ],
-     [
-      18,
-      52
-     ]
-    ],
-    "anchor_heights": [
-     6,
-     9,
-     9,
-     6
-    ]
-   },
-   {
-    "id": "sb-pit-w",
-    "type": "circle",
-    "operation": "subtract",
-    "floor": 0,
-    "base_height": 40,
-    "center_x": -22,
-    "center_z": 26,
-    "radius": 5
-   },
-   {
-    "id": "sb-pit-e",
-    "type": "circle",
-    "operation": "subtract",
-    "floor": 0,
-    "base_height": 40,
-    "center_x": 14,
-    "center_z": 27,
-    "radius": 4
    }
-  ],
-  "islands": [
-   {
-    "id": "team",
-    "name": "Team island",
-    "mirrors": true,
-    "shapeIds": [
-     "s0",
-     "s1",
-     "s2",
-     "s3",
-     "s4",
-     "s5",
-     "s6",
-     "s7",
-     "s8",
-     "s9",
-     "sb-breach-ramp",
-     "sb-shelf-ramp",
-     "sb-pit-w",
-     "sb-pit-e"
-    ]
-   }
-  ]
- },
- "layers": null,
+  }
+ ],
  "themes": {
   "bowl-scorch": {
    "bedrock": {
