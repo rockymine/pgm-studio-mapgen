@@ -1,0 +1,21 @@
+{
+  "teams": [
+    { "id": "red", "name": "Red", "color": "red" },
+    { "id": "blue", "name": "Blue", "color": "blue" }
+  ],
+  "maxPlayers": 10,
+  "spawns": [
+    { "team": "red",  "point": { "x": 0, "y": 26, "z": 30 },  "yaw": 180, "protection": [] },
+    { "team": "blue", "point": { "x": 0, "y": 26, "z": -30 }, "yaw": 0,   "protection": [] }
+  ],
+  "observer": { "point": { "x": 0, "y": 40, "z": 0 }, "yaw": 0 },
+  "build": {
+    "areas": [ { "minX": -30, "minZ": -8, "maxX": 24, "maxZ": 8 } ],
+    "holes": []
+  },
+  "wools": [
+    { "owner": "red",  "color": "red",  "spawn": { "x": -26, "y": 4, "z": -3 }, "room": [], "monuments": [] },
+    { "owner": "blue", "color": "blue", "spawn": { "x": -26, "y": 4, "z": 3 },  "room": [], "monuments": [] }
+  ],
+  "meta": { "name": "Mineshaft", "authors": [] }
+}

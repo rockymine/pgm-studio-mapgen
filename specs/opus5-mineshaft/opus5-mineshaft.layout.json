@@ -1,0 +1,200 @@
+{
+  "setup": {
+    "mirror_mode": "rot_180",
+    "center": {
+      "cx": 0,
+      "cz": 0
+    }
+  },
+  "layers": [
+    {
+      "id": "ground",
+      "name": "Mine level",
+      "base_y": 0,
+      "layout": {
+        "shapes": [
+          {
+            "id": "wall-n",
+            "type": "rectangle",
+            "operation": "add",
+            "min_x": -40,
+            "min_z": 6,
+            "max_x": 40,
+            "max_z": 40,
+            "floor": 0,
+            "base_height": 20,
+            "theme": "deepstone"
+          },
+          {
+            "id": "wall-s",
+            "type": "rectangle",
+            "operation": "add",
+            "min_x": -40,
+            "min_z": -40,
+            "max_x": 40,
+            "max_z": -6,
+            "floor": 0,
+            "base_height": 20,
+            "theme": "deepstone"
+          },
+          {
+            "id": "wall-w",
+            "type": "rectangle",
+            "operation": "add",
+            "min_x": -40,
+            "min_z": -6,
+            "max_x": -30,
+            "max_z": 6,
+            "floor": 0,
+            "base_height": 20,
+            "theme": "deepstone"
+          },
+          {
+            "id": "wall-e",
+            "type": "rectangle",
+            "operation": "add",
+            "min_x": 24,
+            "min_z": -6,
+            "max_x": 40,
+            "max_z": 6,
+            "floor": 0,
+            "base_height": 20,
+            "theme": "deepstone"
+          },
+          {
+            "id": "gallery",
+            "type": "rectangle",
+            "operation": "add",
+            "min_x": -30,
+            "min_z": -6,
+            "max_x": 24,
+            "max_z": 6,
+            "floor": 0,
+            "base_height": 4,
+            "theme": "minefloor"
+          },
+          {
+            "id": "ramp",
+            "type": "polygon",
+            "operation": "add",
+            "vertices": [
+              [
+                0,
+                -6
+              ],
+              [
+                24,
+                -6
+              ],
+              [
+                24,
+                6
+              ],
+              [
+                0,
+                6
+              ]
+            ],
+            "floor": 0,
+            "anchor_heights": [
+              4,
+              26,
+              26,
+              4
+            ],
+            "theme": "minefloor"
+          }
+        ],
+        "islands": [
+          {
+            "id": "g",
+            "mirrors": false,
+            "shapeIds": [
+              "wall-n",
+              "wall-s",
+              "wall-w",
+              "wall-e",
+              "gallery",
+              "ramp"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "surface",
+      "name": "Meadow",
+      "base_y": 20,
+      "layout": {
+        "shapes": [
+          {
+            "id": "deck",
+            "type": "rectangle",
+            "operation": "add",
+            "min_x": -40,
+            "min_z": -40,
+            "max_x": 40,
+            "max_z": 40,
+            "floor": 0,
+            "base_height": 6,
+            "theme": "meadow"
+          },
+          {
+            "id": "mouth",
+            "type": "rectangle",
+            "operation": "subtract",
+            "min_x": 14,
+            "min_z": -6,
+            "max_x": 24,
+            "max_z": 6
+          }
+        ],
+        "islands": [
+          {
+            "id": "s",
+            "mirrors": false,
+            "shapeIds": [
+              "deck"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "mapTheme": "meadow",
+  "themes": {
+    "meadow": {
+      "surface": {
+        "material": {
+          "kind": "solid",
+          "id": 2,
+          "data": 0
+        },
+        "depth": 3,
+        "enabled": true
+      }
+    },
+    "deepstone": {
+      "surface": {
+        "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+        },
+        "depth": 3,
+        "enabled": true
+      }
+    },
+    "minefloor": {
+      "surface": {
+        "material": {
+          "kind": "solid",
+          "id": 13,
+          "data": 0
+        },
+        "depth": 3,
+        "enabled": true
+      }
+    }
+  }
+}

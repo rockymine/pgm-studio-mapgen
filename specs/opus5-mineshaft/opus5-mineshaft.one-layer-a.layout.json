@@ -1,0 +1,55 @@
+{
+  "setup": {
+    "mirror_mode": "rot_180",
+    "center": {
+      "cx": 0,
+      "cz": 0
+    }
+  },
+  "layers": [
+    {
+      "id": "only",
+      "name": "One layer",
+      "base_y": 0,
+      "layout": {
+        "shapes": [
+          {
+            "id": "gallery",
+            "type": "rectangle",
+            "operation": "add",
+            "min_x": -20,
+            "min_z": -6,
+            "max_x": 20,
+            "max_z": 6,
+            "floor": 0,
+            "base_height": 4,
+            "theme": "minefloor"
+          },
+          {
+            "id": "roof",
+            "type": "rectangle",
+            "operation": "add",
+            "min_x": -20,
+            "min_z": -6,
+            "max_x": 20,
+            "max_z": 6,
+            "floor": 16,
+            "base_height": 6,
+            "theme": "meadow"
+          }
+        ],
+        "islands": [
+          {
+            "id": "o",
+            "mirrors": false,
+            "shapeIds": [
+              "gallery",
+              "roof"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "mapTheme": "meadow"
+}
