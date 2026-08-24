@@ -41,7 +41,13 @@ lay beneath it and the theme of the layer roofing a board landed on no block at 
 reads bedrock. A player walking off a span meets the void, and the column stays out of the Y0 set a void
 filter reads.
 
-**Provenance names a pass, not a layer.** `region/provenance.json` carries a `pass` key.
+**A read can be asked for one storey by name.** `render/topdown?layer=yard` draws the yard's own ground and
+everything standing on it, up to where the terrace's floor starts — the cut this board was drawn to need, and
+the one `renders/topdown-under.png` had to approximate with `ymax=19`. `section` and `column` take no `layer`,
+because they keep Y and show every storey already.
+
+**Provenance names a pass, not a layer.** `region/provenance.json` carries a `pass` key, and it is keyed
+`(X, Z)` with no Y — which is why a read that colours by it cannot tell this board's two storeys apart.
 
 ## The renders
 
@@ -51,20 +57,38 @@ filter reads.
 | `topdown-under.png` | `ymax=19`, below the deck — **no grass anywhere**, the yard showing through where the terrace was |
 | `topdown-category.png` | the same board read by category rather than by block |
 | `section-z0.png` | the cut at z = 0: the yard, the void over it, the deck, and a span standing out over nothing |
-| `traversability.png` | one component — true of the columns and, on a stacked board, not yet true of the board |
+| `traversability.png` | one component — the yard and the terrace, joined only by a rise nothing bounds |
 
 Counted off `topdown.png`: **17,440 px of grass** on the deck against **28,320 px of stone-brick grey** on the
 yard. `topdown-under.png` holds no green at all.
 
 ## Not a map
 
-Two teams, two wools, spawns on the yard. They exist so the export gate has something to check and so the
-section has structures in it. The board has no cover, no second route, and a terrace nothing climbs — the
-spans go outward over void rather than anywhere. It is a fixture.
+Two teams, two wools, and spawns the export put on the **terrace**. The intent states both at `y 6`, on the
+yard — `{"team": "red", "point": {"x": -24, "y": 6, "z": 0}}` — and `map.xml` carries
+`<point id="red-spawn-point">-24,24,0</point>`, because a stamp resolves its Y from the column's top surface
+and `(-24, 0)` is inside the terrace band. Naming a `layer` on the placement is how an author says otherwise
+(`WE24`); this board names none, so it takes the top one, which is the documented behaviour and not what was
+meant here. The wools stay on the yard at `y 5`: `(-20, 20)` and `(20, -20)` are outside the band, so their
+columns have no terrace over them.
 
-## What it still cannot say
+The board has no cover and no second route, and the spans go outward over void rather than anywhere. It is a
+fixture.
 
-`traversability.png` calls the board one component, which is true of its columns and false of its storeys —
-the walk stands a player on the lowest surface carrying headroom, so the deck twenty blocks over the yard is
-not a place at all. That is the open half of the track (`TS21`), and this board is a fixture for it too: the
-terrace here is reachable from nothing, which a walk that could see storeys would say.
+## What the walk says about its storeys
+
+The walk stands a player in a place rather than on a cell, so this board is 5,182 places over 3,600 cells and
+the terrace twenty blocks over the yard is ground of its own. Flooded at `Walk.FreeRise`, the two come apart:
+the yard at `(0, 0, 6)` is a component of **3,472** places and the terrace at `(0, 0, 24)` — where both spawns
+stand — is a component of **1,390**. Nothing on this board climbs between them.
+
+The export gate is nevertheless right to pass it, because its question is whether anyone can get there rather
+than whether the ground joins. Flooded with no bound on the rise, the board is one component: at
+`(0, -13, 6)`, a yard cell at the terrace's edge with open sky over it, an eighteen-block step onto
+`(0, -12, 24)` is a step the clearance admits — a player pillars up. A slab with a roof over it would not
+admit it, which is the distinction the two floods are for.
+
+`traversability.png` draws that one component. The complaint the same read raises beside it — `wool red` for
+`red-team`, `wool blue` for `blue-team` — is wrong, and wrong on any board carrying the studio's own
+`You may not enter your own wool room` rule: a wool's team is read off a key the map document does not carry,
+so every team is asked to reach every wool including the one it defends (`RP56`).

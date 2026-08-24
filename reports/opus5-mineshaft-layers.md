@@ -13,12 +13,12 @@ can be measured against one file instead of a paragraph.
 
 Eighty blocks square, two layers, six shapes, no relief and no dressing.
 
-The **mine level** (`base_y 0`) is four wall rectangles **clamped around** a tucked-in gallery floor —
+The **mine level** (layer `ground`, `base_y 0`) is four wall rectangles **clamped around** a tucked-in gallery floor —
 `wall-n`, `wall-s`, `wall-w`, `wall-e` at `floor 0` `base_height 20`, and `gallery` at `floor 0`
 `base_height 4` in the channel they leave (x −30..24, z −6..6). A `ramp` polygon over x 0..24 carries
 `anchor_heights [4, 26, 26, 4]`, climbing the gallery floor to meadow height.
 
-The **meadow** (`base_y 20`) is one `deck` rectangle over the whole board at `base_height 6`, with a
+The **meadow** (layer `surface`, `base_y 20`) is one `deck` rectangle over the whole board at `base_height 6`, with a
 `mouth` subtracted where the adit breaks the surface (x 14..24, z −6..6).
 
 Read back off `POST …/sketch/columns`, a column is:
@@ -49,41 +49,53 @@ override — produces the **identical** geometry. It works because the set algeb
 is a workaround for a drawing mistake and is not needed.
 
 Both shapes on **one** layer at two floors does not build at all: 480 cells, 0 stacked, every column
-`[16,22)`, in both draw orders. The lower shape is erased and **nothing is raised** — no finding, no
-complaint, a board that reads as authored. That silence is the reason the studio's board now carries
-`TS27`.
+`[16,22)`, in both draw orders. The lower shape is erased. The gate names it now — `SK9` raises one
+`Decline` per contesting pair, saying which of the two shapes is not in the world (`TS27`) — and the
+committed variants `opus5-mineshaft.one-layer-a` and `-b` are what it is measured on, while the
+two-layer mineshaft beside them stays silent.
 
-## What the reads say about it, and where they are wrong
+## What the reads say about it
 
-The export gate passes cleanly — round-trip, mirror, buildability and traversability all green,
-`export gate OPEN`. Two of those pass for the wrong reason.
+The export gate is open. Round-trip, mirror and buildability pass; traversability answers a complaint
+rather than a refusal, and the complaint is wrong — it names `wool red` for `red-team` and `wool blue`
+for `blue-team`, each wool's own defender, which its room's `enter` rule bars by design. A wool's team is
+read off a key the map document does not carry, so no wool names one at all and every team is asked to
+reach every wool (`RP56`).
 
 `GET …/walk?from=0,30&to=0,-30`, spawn to spawn across the middle, answers **reachable, distance 60,
-blocks 21, drops 1, worstDrop 22**. The route runs dead straight along x = 0 — over the meadow, across
-the gallery, out the far side. It is not a route: the standing surface flips from the deck at 26 to the
-mine floor at 4 where the gallery begins, because the walk stands a player on the **lowest** surface in
-a column carrying headroom, and a twenty-two block fall is scored as a drop on one continuous surface
-rather than as two storeys with no way between them. Preflight's traversability check calls the same
-chain connected. Both are `TS21`.
+blocks 0, drops 0**. The route runs dead straight along x = 0 and stays on the meadow at 26 the whole
+way. The walk stands a player in a place rather than on a cell, so the gallery floor at 4 under the same
+columns is a second node and not a surface the route flips onto: a twenty-two block fall between two
+storeys is a step no clearance admits (`TS21`).
 
-`render/topdown` draws the meadow and nothing else, because the deck roofs all 6,400 cells. The only
-cut a caller has is `ymax`, and `renders/topdown-mine.png` is that cut at 19 — it shows the gallery and
-the wool room, and it **also shows both spawn cubes**, which stand on the meadow at 26 and have no
-business in a picture of the mine. Provenance keys a claim `(X, Z)` with no Y, so the structure layer
-is drawn whole whatever the cut says. That is `WS12` and the second half of `TS22`.
+The two storeys are nevertheless one board, which is what the adit is for. Flooded at `Walk.FreeRise`,
+6,670 of the board's 6,962 places are a single component, and the gallery floor at `(0, 0, 4)` and the
+meadow at `(0, 0, 26)` are both in it — joined by the ramp climbing out of the east end, not by the
+column they share.
 
-`renders/section-z0.png` is the one honest picture: the vertical cut at z = 0 shows the meadow slab,
-the void under it, the wool room standing on the gallery floor, and the adit climbing out to the right.
+`render/topdown` draws the meadow, because the deck roofs all 6,400 cells. `?layer=ground` cuts the
+read to the mine storey — that layer's own ground and everything standing on it, up to where the
+meadow's floor starts — so the cut is the layer the author drew rather than a height they had to guess
+(`WS12`). The two ids this board answers to are `ground` and `surface`, which is what the 422 lists when
+a caller names neither.
+The blunt cut is still there: `renders/topdown-mine.png` is `ymax=19`, and it shows both spawn cubes,
+which stand on the meadow at 26. A read that colours by **provenance** keeps them wherever it is cut,
+because a provenance claim is keyed `(X, Z)` with no Y — the reason `C48` attributed the 3-D preview's
+runs to the rasterizer's own spans instead of to it.
+
+`renders/section-z0.png` is the picture that never needed a cut: the vertical read at z = 0 shows the
+meadow slab, the void under it, the wool room standing on the gallery floor, and the adit climbing out
+to the right.
 
 ## The renders
 
 | File | Is |
 |---|---|
 | `topdown.png` | the meadow, which is all a top-down read can see |
-| `topdown-mine.png` | `ymax=19` — the gallery, and the two spawn cubes that should not be in it |
+| `topdown-mine.png` | `ymax=19` — the gallery, and the two spawn cubes a height cut cannot drop |
 | `section-z0.png` | the cut at z = 0: slab, void, floor, adit |
 | `heightmap.png` · `surface.png` | elevation and paint, both of the deck only |
-| `traversability.png` | one component, which is true of the columns and false of the board |
+| `traversability.png` | one component, which the adit makes true of the storeys and not only of the columns |
 
 ## Not a map
 
