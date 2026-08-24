@@ -276,9 +276,11 @@ model rather than emitted by it.
 
 Into `/home/user/pgm-studio-mapgen`, on the branch this session was given:
 
-- **`maps/<slug>/`** — `region/`, `level.dat`, `map.xml`, and `renders/` with the images you actually
-  reviewed the map from **at each stage**, not one top-down at the end.
+- **`maps/<slug>/`** — `region/`, `level.dat`, `map.xml`, and nothing else. That folder is what a game
+  server is handed, so anything that exists to be looked at rather than loaded stays out of it.
 - **`specs/<slug>/`** — every JSON you authored: the plan and the finish. The world is derived from them.
+  Beside them, `renders/` with the images you actually reviewed the map from **at each stage**, not one
+  top-down at the end, and `provenance.json`, which the driver moves here out of the exported `region/`.
 - **`review/<slug>.md`** — what the board is, how it is meant to play, the techniques used, and what went
   wrong. Follow `review/tallow-mirefast.md` for shape.
 - **`reports/<your-model>-<run>.md`** — one for the run:

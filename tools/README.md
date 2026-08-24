@@ -107,9 +107,14 @@ unused while the board is still rectangles, coverage says *that* it did once a w
 ### The pictures, taken rather than remembered
 
 After the export it writes every picture the studio will draw for what was authored, into
-`<worlddir>/renders` or `--renders <dir>`: the grid and the flow as text, one swatch per theme, a **plan and
+`<specdir>/renders` or `--renders <dir>`: the grid and the flow as text, one swatch per theme, a **plan and
 a section per house** — the stamped rooms and every distinct house prop style — and the coverage map. That is
 21 files on a board carrying six themes and six houses.
+
+They land beside the documents rather than in `--out`, and so does the provenance sidecar, which the driver
+moves out of the exported `region/`. `--out` is what a game server is handed: `region/`, `level.dat`,
+`map.xml`, and nothing a match does not read. A CLI read-back pointed at that region directory therefore
+finds no provenance and falls back to the material estimate, which it states on its own scale line.
 
 The reason they are taken here is the reason the grid and the flow are printed here: **a read nobody is
 refused for skipping is the read nobody takes.** Every shipped roof fault was visible in a section and
@@ -152,7 +157,7 @@ are relations between two of those rectangles: a stepping stone wider than the b
 wool room touching a piece its wall was meant to guard, a spur that connects to nothing. A grid puts the two
 rects on the same rows and a rendered picture does not.
 
-Run 4's own worked example is one line of it. In `maps/opus5-wheal-hazel/renders/00-board.txt`:
+Run 4's own worked example is one line of it. In `specs/opus5-wheal-hazel/renders/00-board.txt`:
 
 ```
   -1 |    MMMMMMMMMMMMMMMM    |     M = the neutral bar, sixteen cells
@@ -160,7 +165,7 @@ Run 4's own worked example is one line of it. In `maps/opus5-wheal-hazel/renders
 ```
 
 Sixteen against four is the whole of a dead landform, visible at a glance and invisible in the render
-that was actually looked at. `maps/opus5-wheal-hazel-v2/renders/00-board.txt` is
+that was actually looked at. `specs/opus5-wheal-hazel-v2/renders/00-board.txt` is
 the same two rows agreeing.
 
 ## `column-probe.cs` and `build.cs` · `world-build.cs`

@@ -7,15 +7,20 @@ rebuilding anything.
 
 ```
 maps/<slug>/region/*.mca              the world
-maps/<slug>/region/provenance.json    what each pass placed, and which prop placed it
 maps/<slug>/level.dat
 maps/<slug>/map.xml                   what a PGM server loads
-maps/<slug>/renders/                  the images the map was reviewed from, stage by stage
 specs/<slug>/                         the documents that were authored — plan, finish, layout, intent
+specs/<slug>/renders/                 the images the map was reviewed from, stage by stage
+specs/<slug>/provenance.json          what each pass placed, and which prop placed it
 review/<slug>.md                      the measured record for that map
 reports/<model>-runN.md               one agent run: what it could not say, what it got wrong, what worked
 tools/                                the driver that posts those documents to the API
 ```
+
+**`maps/<slug>/` is what a server is handed and nothing else** — the three things a match reads. Everything
+that exists to be *looked at* rather than loaded lives beside the documents in `specs/<slug>/`: the renders,
+and the provenance sidecar that says which pass claimed which column. Uploading a map folder to a game server
+therefore carries no images and no metadata with it.
 
 A map's `specs/` are the whole of what was authored; the world is derived from them and is committed as
 the artifact rather than as a source. Rebuilding one needs a running pgm-studio API and a migrated
@@ -242,20 +247,24 @@ compile reads — changing the folder alone is not enough.
 
 ## Looking at a map without Minecraft
 
-Every map carries `renders/`. Two reads answer questions no plan view can:
+Every map carries `specs/<slug>/renders/`. Two reads answer questions no plan view can:
 
-- **`--topdown --layer structure`** reads `region/provenance.json` and draws what the build *recorded* itself
+- **`--topdown --layer structure`** reads the provenance record and draws what the build *recorded* itself
   placing. Its owners list is a literal census of the dressing — every count reads `units × orbit order`, so
   a prop that landed nothing has no row at all:
 
   ```python
   import json; from collections import Counter
-  p = json.load(open('maps/<slug>/region/provenance.json'))
+  p = json.load(open('specs/<slug>/provenance.json'))
   print(Counter(o['kind'] for o in p['owners']))
   ```
 
-  Beside it, `region/dressing-report.json` answers what did **not** land, and is written only when something
-  dropped — so its absence means everything authored stood.
+  Beside it, `specs/<slug>/dressing-report.json` answers what did **not** land, and is written only when
+  something dropped — so its absence means everything authored stood.
+
+  The record is written into the exported world's `region/` and the driver moves it out, so a CLI read-back
+  pointed straight at `maps/<slug>/region` falls back to the material estimate and says so on its scale line.
+  Copy the sidecar back beside the `.mca` files for the run that needs it.
 
 - **`--section`** and **`--column`** are the only reads that keep Y. A riser, a ramp's step heights, a
   stamped room's floor and a goal's clearance are none of them visible from above.

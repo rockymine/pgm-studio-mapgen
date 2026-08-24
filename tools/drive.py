@@ -32,8 +32,12 @@ any of those means and how to fix it.
 
 It also takes every picture the studio will draw for what was authored — a swatch per theme, a plan and a
 section per house, the coverage map, the board read back from every angle, and the grid and flow as text —
-into `<worlddir>/renders`, or into `--renders <dir>`. Taking a picture is not the same as looking at one;
+into `<specdir>/renders`, or into `--renders <dir>`. Taking a picture is not the same as looking at one;
 what it removes is the excuse.
+
+The pictures and the provenance sidecar land beside the documents rather than in the exported world, because
+`--out` is what a server is handed: it holds `region/`, `level.dat` and `map.xml`, and nothing a match does
+not read.
 """
 import json, sys, io, zipfile, urllib.request, urllib.error, os, shutil
 
@@ -436,9 +440,16 @@ def main():
         os.makedirs(out)
         zipfile.ZipFile(io.BytesIO(zip_bytes)).extractall(out)
         print(f"    world -> {out}")
+        # The world directory holds what a server loads and nothing else: region/, level.dat, map.xml.
+        # The provenance sidecar is a read-back aid — which pass claimed which column — so it travels
+        # with the documents rather than with the world a server is handed.
+        recorded = os.path.join(out, "region", "provenance.json")
+        if os.path.exists(recorded):
+            shutil.move(recorded, os.path.join(specdir, "provenance.json"))
+            print(f"    provenance -> {specdir}/provenance.json")
         # After the extraction, which clears the directory it writes into.
         print("== the pictures of what was authored")
-        renders(into or os.path.join(out, "renders"), slug, finish, layout, drawn, flow)
+        renders(into or os.path.join(specdir, "renders"), slug, finish, layout, drawn, flow)
     # the documents that were actually posted, beside the ones that were authored
     with open(f"{specdir}/{base}.layout.json", "w") as handle:
         json.dump(layout, handle, indent=1)

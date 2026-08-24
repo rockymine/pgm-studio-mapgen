@@ -551,15 +551,19 @@ correct building, not a broken one.
 
 ### The provenance sidecar records an intent to claim, not the blocks
 
-`--topdown --layer structure` reads `region/provenance.json` and says so
+`--topdown --layer structure` reads the provenance sidecar and says so
 (`STRUCTURE READING: RECORDED PROVENANCE`). Its owners list is a literal census of the dressing, and a prop
 that landed nothing has no row at all:
 
 ```python
 import json; from collections import Counter
-p = json.load(open('maps/<slug>/region/provenance.json'))
+p = json.load(open('specs/<slug>/provenance.json'))
 print(Counter(o['kind'] for o in p['owners']))
 ```
+
+The export writes it into the world's own `region/`; the driver moves it beside the documents, because
+`maps/<slug>/` is what a game server is handed. A CLI read-back pointed at that region directory finds no
+record and falls back to the material estimate, stating which reading it used on its scale line.
 
 **An approach wall is recorded one column wider than it is built, on both axes.** `StructureStamper.StampWall`
 walks its footprint max-**exclusive**, which is what the intent's rect means; `ClaimStructures` hands the same
