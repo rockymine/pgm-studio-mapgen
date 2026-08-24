@@ -1,0 +1,168 @@
+{
+ "setup": {
+  "mirror_mode": "rot_180",
+  "center": {
+   "cx": 0,
+   "cz": 0
+  }
+ },
+ "layers": [
+  {
+   "id": "yard",
+   "name": "Yard",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "court",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -30,
+      "min_z": -30,
+      "max_x": 30,
+      "max_z": 30,
+      "floor": 0,
+      "base_height": 6,
+      "theme": "flagstone"
+     }
+    ],
+    "islands": [
+     {
+      "id": "i-yard",
+      "name": "Yard",
+      "mirrors": false,
+      "shapeIds": [
+       "court"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "terrace",
+   "name": "Terrace",
+   "base_y": 20,
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -30,
+      "min_z": -12,
+      "max_x": 30,
+      "max_z": 12,
+      "floor": 0,
+      "base_height": 4,
+      "theme": "meadow"
+     }
+    ],
+    "islands": [
+     {
+      "id": "i-deck",
+      "name": "Deck",
+      "mirrors": false,
+      "shapeIds": [
+       "deck"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "spans",
+   "name": "Spans",
+   "base_y": 14,
+   "layout": {
+    "shapes": [
+     {
+      "id": "span-w",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -44,
+      "min_z": -4,
+      "max_x": -31,
+      "max_z": 4,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "plank"
+     },
+     {
+      "id": "span-e",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 31,
+      "min_z": -4,
+      "max_x": 44,
+      "max_z": 4,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "plank"
+     }
+    ],
+    "islands": [
+     {
+      "id": "i-spans",
+      "name": "Spans",
+      "mirrors": false,
+      "shapeIds": [
+       "span-w",
+       "span-e"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "mapTheme": "flagstone",
+ "themes": {
+  "flagstone": {
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    },
+    "depth": 2,
+    "enabled": true
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "meadow": {
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 2,
+     "data": 0
+    },
+    "depth": 2,
+    "enabled": true
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "plank": {
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 5,
+     "data": 0
+    },
+    "depth": 2,
+    "enabled": true
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  }
+ }
+}

@@ -1,0 +1,78 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "color": "blue"
+  }
+ ],
+ "spawns": [
+  {
+   "team": "red",
+   "point": {
+    "x": -24,
+    "y": 6,
+    "z": 0
+   },
+   "yaw": 90
+  },
+  {
+   "team": "blue",
+   "point": {
+    "x": 24,
+    "y": 6,
+    "z": 0
+   },
+   "yaw": 270
+  }
+ ],
+ "wools": [
+  {
+   "owner": "red",
+   "color": "red",
+   "spawn": {
+    "x": -20,
+    "y": 6,
+    "z": 20
+   },
+   "monuments": [
+    {
+     "team": "blue"
+    }
+   ]
+  },
+  {
+   "owner": "blue",
+   "color": "blue",
+   "spawn": {
+    "x": 20,
+    "y": 6,
+    "z": -20
+   },
+   "monuments": [
+    {
+     "team": "red"
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 40,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "meta": {
+  "name": "Undermarket",
+  "authors": [
+   {
+    "name": "opus5"
+   }
+  ]
+ }
+}
