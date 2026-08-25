@@ -98,13 +98,38 @@ same way: it climbs onto the deck (`blocks 7`, the eight-block rise minus one) a
 GET …/walk?from=-25,55&to=-25,80     reachable, distance 29, blocks 7, drops 1 (worst 8)   — climbs onto the deck, crosses it, drops off the far side
 ```
 
-**This is the honest answer, not a partial one: "Undercroft Passage" has no undercroft a player can stand
-in.** A rasterized column carries exactly one vertical span, so a floor at the old ground height and a deck
-above it, at the same `(x, z)`, cannot both exist — authoring the deck is authoring away whatever the column
-held before, all the way down. What reads as an underpass from the side is a bridge with a drop under it,
+**"Undercroft Passage" has no undercroft a player can stand in.** Within one sketch layer a rasterized
+column carries exactly one vertical span, so a floor at the old ground height and a deck above it, at the
+same `(x, z)`, cannot both exist — authoring the deck is authoring away whatever the column held before, all
+the way down. (One layer. The next section is the part that changes.) What reads as an underpass from the side is a bridge with a drop under it,
 and what is actually walkable is the same set `11-channel` already had: the deck's own top, the open stretch
 of channel beside it, and the shoulder round the whole thing. The board keeps its name for what the gap looks
 like from a section, not for a route that exists.
+
+## What a column *can* carry two of, and it is not this
+
+The sentence above needs its scope, or it states a limitation the system does not have. **A column carries
+one span per sketch layer**, not one span. `SketchRasterizer` groups every rasterized segment by cell and
+then compares pairs — and the first thing it does is skip a pair that shares a layer:
+
+```csharp
+if (ordered[i].Layer == ordered[j].Layer) continue;   // SK9's ground, not this one
+```
+
+That test only means anything because two segments in one cell *can* come from two layers. A genuine
+undercroft — a yard at the old ground height with a deck standing over it and a player able to walk under —
+is a **second layer**, authored as `addLayers` in the finish (`tools/README.md` documents the key; the
+driver moves the compiled ground into `layers` the moment a second slab exists, because the rasterizer reads
+`layers` **or** `layout` and never both).
+
+Two boards in this repository already do it. `reports/opus5-undermarket-layers.md` measures a yard with a
+terrace over it and two walkways out over open void — *"`topdown-under.png`, `ymax=19`, below the deck: no
+grass anywhere, the yard showing through where the terrace was"* — and `opus5-mineshaft` is the other.
+
+So the honest statement is narrower and more useful than "there is no floor underneath": **one layer cannot
+stack, and stacking is what layers are for.** This showcase stays inside one layer on purpose, because a
+second layer is a different subject with its own two worked examples; what it measures is what an
+`override: true` add does to the column it lands on, which is to *replace* it.
 
 ## The board still holds together
 

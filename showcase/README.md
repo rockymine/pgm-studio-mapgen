@@ -78,6 +78,32 @@ with paint on it and is what `03` onward fork.
 | 17 | `17-houses` | several buildings in one world — forked presets, roof forms, an L-wing, and a shell used as a boundary | `dressing` + `roomStyles` |
 | 18 | `18-wall-and-iron` | the two structures the composer never asks for: a defence wall and a renewable iron cube | the plan |
 
+## What every board here found out, in one place
+
+Eighteen boards measured the same system, and these came up more than once. Each is stated in full where it
+was found; this is the index to them.
+
+| Fact | Measured in |
+|---|---|
+| Stone, Andesite, Stone Bricks and Cobblestone are four names for one grey — a pattern built out of them is invisible | `02` |
+| Paint cannot draw an edge on ground it is flush with: `axis: "inward"` reads inset from the **landmass**, and `rimEdges: "boundary"` groups by height. A kerb is one course up | `03` |
+| A theme has no bucket keyed on elevation. Rock above grass is a second **shape** | `07`, `10` |
+| The export gate will not tell you a step is too tall — `WalkGround.Steps` has no maximum climb, because it models a player who can place blocks | `05` |
+| An erected shape raises `<maxbuildheight>` for the **whole board**: twenty over the highest ground the world builds | `06` |
+| A mark that carries the wrong field names is not defaulted sensibly — a `scarp` written with a `line`'s fields pinned the board to bedrock, gate still OPEN | `08` |
+| A push applies to the already-solved surface, so a push over a hollow fills it in, and a push cannot be matched to a ramp | `09`, `maps/opus5-whinnymoor` |
+| A subtract's `floor` and `base_height` are not read: the whole column goes, however tall the shape says it is | `11` |
+| Within one sketch layer a column carries one span, so an override-add **replaces** the column rather than standing over it. Stacking is what `addLayers` is for | `12` |
+| A water prop's level is the single lowest ground its band touches — one prop over a falling course pools the whole run flat | `13`, `14` |
+| A block's own id decides whether a prop may stand near it: wool, sandstone, stone brick and stained clay are all in `BlockRoles.IsBuilt`, and a prop declines on built ground | `15` |
+| A tree claims every cell its **canopy** reaches, not its trunk cell | `16` |
+| Repainting a preset's top-level `wall` and not `storeys[*].wall` is a fork that changes nothing — provable by a byte-identical preview | `17` |
+| The defence wall's chest face is derived, not authored: it is the **approach** side, and a `side` field is silently ignored | `18` |
+
+And one that no board found and every board needed: **a per-block column transect is the only read that says
+whether a route can be walked.** Sampling every two blocks makes a two-block riser and two one-block risers
+the same number.
+
 ## The map they add up to
 
 `maps/opus5-whinnymoor` is a whole board built out of them — a slate quarry cut into a moor, at score 0 with
