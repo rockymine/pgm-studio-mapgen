@@ -867,3 +867,28 @@ layer the board does not have and these are layers it has.
 `base_height` carrying a different `theme`. The geometry is unchanged and the theme scope resolves
 per layer, so it lands exactly where it is drawn. Both of the pool's lanes are three-wide rectangles
 of the basin's own two courses, themed dark prismarine.
+
+### A paint patch that follows a relief states no height at all
+
+Scoping a theme to a patch of ground is an authored shape carrying a `theme`, and on **flat** ground any of
+several height statements work. On ground a relief has solved, exactly one does: **an `override: true` add
+with no `floor`, no `base_height`, no `height_mode` and no `relief_scope`.** It takes the surface the solve
+produced and repaints its footprint.
+
+Measured on `showcase/07-hill`, four identical rectangles laid across the west hill — whose `point` mark
+carries it to y16 at the summit and lets it fall to y12 at the edges — each carrying the same unmistakable
+Red Sand theme:
+
+| The patch says | Reads at z 40 / 45 / 50 |
+|---|---|
+| nothing but `override: true` | **y13 · y16 · y12**, Red Sand — the hill, repainted |
+| `relief_scope: "hold"`, no height | y0 bedrock — the shape has no height, so it is not in the world |
+| `base_height: 9`, `relief_scope: "hold"` | y8 flat — a plate punched through the hill |
+| `base_height: 9`, `relief_scope: "exclude"` | y8 flat — the same plate |
+
+So a `base_height` is what flattens a patch, and stating one "to be safe" is what turns a brush stroke into a
+terrace. The island's relief read reports the second case as `low 1`: a height-less shape with no override is
+a hole rather than a no-op.
+
+This is the instrument a detailed surface is painted with — a drift of sand against rock, scree at the foot of
+a crag, mud in a hollow — and it is what a single large `voronoi` over a whole region is a substitute for.
