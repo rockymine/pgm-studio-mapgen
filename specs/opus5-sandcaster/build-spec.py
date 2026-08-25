@@ -543,8 +543,13 @@ def under_layer():
     for i, z in enumerate(BAYS):                     # the bays' own back and side walls
         wall(f"u-bw-{i}", W - 2, z - 2, W, z + 7)
     wall("u-ew", COR_X1, COR_Z0 - 2, COR_X1 + 2, COR_Z1 + 2)
-    wall("u-end-s", W - 2, COR_Z0 - 2, COR_X1 + 2, COR_Z0)
-    wall("u-end-n", W - 2, COR_Z1, COR_X1 + 2, COR_Z1 + 2)
+    # The two end walls are drawn in halves, clear of the ramp between them. Among the shapes of one
+    # layer the TALLER override-add wins the column, not the later one, so a wall drawn across a ramp
+    # does not lose to it — it plugs it, and the way down then ends in solid rock with the corridor
+    # behind it detached from the board.
+    for pid, z0, z1 in (("u-end-s", COR_Z0 - 2, COR_Z0), ("u-end-n", COR_Z1, COR_Z1 + 2)):
+        wall(f"{pid}-w", W - 2, z0, COR_X0 + 1, z1)
+        wall(f"{pid}-e", COR_X1 - 1, z0, COR_X1 + 2, z1)
     # the cistern's own walls, with a two-block door in its south face
     wall("u-cist-w", COR_X0 - 2, CIST_Z0 - 2, COR_X0, CIST_Z1 + 2, "cistern")
     wall("u-cist-e", COR_X1, CIST_Z0 - 2, COR_X1 + 2, CIST_Z1 + 2, "cistern")

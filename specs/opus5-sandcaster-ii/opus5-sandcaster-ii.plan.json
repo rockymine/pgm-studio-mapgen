@@ -1,0 +1,135 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Sandcaster II"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 24,
+    "surface": 22,
+    "observerY": 90
+  },
+  "pieces": [
+    {
+      "id": "strait",
+      "role": "piece",
+      "rect": [
+        -8,
+        0,
+        16,
+        8
+      ]
+    },
+    {
+      "id": "basin",
+      "role": "piece",
+      "rect": [
+        -10,
+        8,
+        20,
+        8
+      ]
+    },
+    {
+      "id": "shelf",
+      "role": "piece",
+      "rect": [
+        -9,
+        16,
+        18,
+        8
+      ]
+    },
+    {
+      "id": "holt",
+      "role": "piece",
+      "rect": [
+        -7,
+        24,
+        14,
+        10
+      ]
+    },
+    {
+      "id": "apron",
+      "role": "piece",
+      "rect": [
+        -5,
+        34,
+        10,
+        4
+      ]
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        38,
+        4,
+        2
+      ]
+    }
+  ],
+  "zones": [
+    {
+      "id": "seam",
+      "rect": [
+        -8,
+        -2,
+        16,
+        4
+      ]
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          1
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          1,
+          1
+        ]
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "destroyable-1",
+        "piece": "shelf",
+        "at": [
+          14,
+          6.4
+        ],
+        "style": "pillar-3",
+        "materials": "obsidian",
+        "float": 4,
+        "name": "The Beacon"
+      },
+      {
+        "id": "destroyable-2",
+        "piece": "shelf",
+        "at": [
+          7.4,
+          6.4
+        ],
+        "style": "cube-3",
+        "materials": "ender stone",
+        "float": 4,
+        "name": "The Cistern"
+      }
+    ]
+  }
+}

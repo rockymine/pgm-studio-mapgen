@@ -957,3 +957,27 @@ One last shape note, cheap to fix and expensive to see: an `area` mark's ring is
 looks like one. `shelf` and `apron` written as four-vertex rectangles built two mesas with sheer sides,
 visible in the heightmap as literal squares; the same marks on nine- and eleven-vertex lobed rings are
 indistinguishable from ground.
+
+## Among the shapes of one layer, the taller override-add wins the column — not the later one
+
+`RasterGroup` resolves a layer as `((adds − subtracts) ∪ override-adds) − override-subtracts`, and both the
+plain adds and the override-adds are accumulated through `MergeCell`, where **the taller surface wins**.
+Only the *set* an override-add belongs to is privileged; within that set, document order decides nothing.
+
+That reads as an implementation detail and it is the difference between a tunnel and a sealed one. An end
+wall drawn as one rectangle across the mouth of a ramp is 15 courses tall where the ramp under it is 7, so
+the wall wins every column they share — and the way down ends in solid rock. Measured on
+`opus5-sandcaster-ii` before the fix: `(−8, 60)` read solid `y0..21` with no air in it, a three-block plug
+at `z 59..61` sealing both mouths, with `SK11` reporting 676 and 294 places of standable ground with no
+route onto them. The same wall shape had shipped on the first Sandcaster.
+
+**So a wall that meets a ramp is drawn in halves, one either side of it.** The general form: on one layer,
+*anything shorter than what crosses it is not in the world there*, which is the same fact `SK9` reports for
+a shorter shape inside a taller one and the same reason a room with a sunken floor is drawn as rectangles
+clamped **around** the sunken part rather than under it. Ordering the document does not fix it, because
+order is not what is read.
+
+The cheap check is a column transect down the way in. A ramp that works reads one course of fall every two
+blocks the whole way; a plugged one reads a solid run where the air should be, and nothing else on the board
+says so — the export gate stays open, `render/traversability` can still answer one component, and the only
+complaint is an `SK11` that is easy to write off as a quirk of a stacked board.

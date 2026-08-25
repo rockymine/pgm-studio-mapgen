@@ -29,7 +29,7 @@ database.
 
 ## The showcase library
 
-`showcase/` is nineteen-twentieths of a teaching set: **one folder per technique**, each a complete map whose
+`showcase/` is a teaching set: **one folder per technique**, each a complete map whose
 only reason to exist is the one thing its README names. Every one forks the same base board and changes one
 thing, so the diff is the lesson — a reader who wants to know how a cliff is stated reads the eleven lines
 that state it rather than finding the cliff inside a thousand-line finish. `showcase/README.md` is the index.
@@ -38,6 +38,8 @@ that state it rather than finding the cliff inside a thousand-line finish. `show
 every part of it came from. `maps/opus5-sandcaster` is the destroy board built on top of that: 110 × 400,
 three land regions on one hue axis, a chasm down the middle and a tiled service corridor under the reef —
 two sketch layers, forty-two brush strokes and two monuments, one of them twenty blocks underground.
+`maps/opus5-sandcaster-ii` is the same brief on one open landmass: a mountain range drawn with pushes
+round a dale 32 blocks wide, no chasm anywhere, and the workings moved under the middle of it.
 
 ## Authoring a map here
 

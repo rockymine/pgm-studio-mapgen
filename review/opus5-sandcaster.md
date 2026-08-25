@@ -156,11 +156,18 @@ The alternative was arms twenty blocks wide, which is the thin-lane board this m
 35 blocks an arm holds a dune field, a tower, a cleft and a road across it; at 20 it holds a corridor. The
 soft-term cost is 1.37 of score and nothing else — `valid` stays true and every hard term passes.
 
-**`SK11`, sixteen complaints.** Fourteen are tower tops: ground with sky over it and no way onto it is
-exactly what the top of a pinnacle is. Two are the corridor floor, 608 places each, and those look wrong
-until the traversability render is put beside them — one component, all four markers connected. `SK11`
-appears to ask its question inside a layer, and a corridor's ceiling is in a different one. Recorded as a
-reading rather than a fault.
+**`SK11` on the corridor floor, and a real plug behind part of it.** Most of the complaints are tower
+tops, which is what the top of a pinnacle is. The two on the corridor were read as a quirk of the check and
+were not: each end wall was drawn as one rectangle **across** the ramp under it, and among the shapes of one
+layer the taller override-add wins the column rather than the later one, so the wall did not lose to the
+ramp — it plugged it. The end walls are now drawn in halves, clear of the ramp between them, and the south
+ramp reads continuous block by block: `21` at `z 36` falling one course every two blocks to `6` at `z 66`,
+with the lid over it from `z 62`.
+
+`SK11` still names the workings on this board after the fix, where the same fix cleared it on Sandcaster II.
+Both boards answer **one component** on `render/traversability` with all four markers connected, and both
+ramps read continuous. What the remaining complaint points at is not something a column read confirms, and
+it is recorded as a reading.
 
 **`SK10`, sixteen columns** where the north ramp's high end drives into the holt above it. Two layers
 occupying the same solid rock is not a hole; it is one course of double-counting at the mouth of a cutting.
