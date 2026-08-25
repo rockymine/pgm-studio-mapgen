@@ -1,0 +1,205 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Aerie"
+ },
+ "globals": {
+  "cell": 2,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 30
+ },
+ "pieces": [
+  {
+   "id": "home-w",
+   "role": "piece",
+   "rect": [
+    -10,
+    22,
+    6,
+    10
+   ],
+   "surface": 30
+  },
+  {
+   "id": "home-s",
+   "role": "piece",
+   "rect": [
+    -4,
+    22,
+    8,
+    1
+   ],
+   "surface": 30
+  },
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    -4,
+    23,
+    8,
+    8
+   ],
+   "surface": 30
+  },
+  {
+   "id": "home-e",
+   "role": "piece",
+   "rect": [
+    4,
+    22,
+    6,
+    10
+   ],
+   "surface": 30
+  },
+  {
+   "id": "fold-w",
+   "role": "piece",
+   "rect": [
+    4,
+    10,
+    2,
+    7
+   ],
+   "surface": 26
+  },
+  {
+   "id": "fold-s",
+   "role": "piece",
+   "rect": [
+    6,
+    10,
+    8,
+    1
+   ],
+   "surface": 26
+  },
+  {
+   "id": "wool-room",
+   "role": "wool-room",
+   "rect": [
+    6,
+    11,
+    8,
+    5
+   ],
+   "surface": 26
+  },
+  {
+   "id": "fold-n",
+   "role": "piece",
+   "rect": [
+    6,
+    16,
+    8,
+    1
+   ],
+   "surface": 26
+  },
+  {
+   "id": "fold-e",
+   "role": "piece",
+   "rect": [
+    14,
+    10,
+    2,
+    7
+   ],
+   "surface": 26
+  },
+  {
+   "id": "spike",
+   "role": "piece",
+   "rect": [
+    -16,
+    6,
+    12,
+    8
+   ],
+   "surface": 34
+  }
+ ],
+ "zones": [
+  {
+   "id": "gap-home-fold",
+   "rect": [
+    4,
+    17,
+    12,
+    5
+   ],
+   "holes": []
+  },
+  {
+   "id": "gap-home-spike",
+   "rect": [
+    -16,
+    14,
+    12,
+    8
+   ],
+   "holes": []
+  },
+  {
+   "id": "gap-spike-fold",
+   "rect": [
+    -4,
+    6,
+    8,
+    11
+   ],
+   "holes": []
+  },
+  {
+   "id": "strait",
+   "rect": [
+    -17,
+    -6,
+    34,
+    12
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "camp",
+    "at": [
+     4,
+     4
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-room",
+    "at": [
+     4,
+     3
+    ]
+   }
+  ],
+  "cores": [
+   {
+    "id": "core-1",
+    "at": [
+     -10.0,
+     10.0
+    ],
+    "size": 5,
+    "height": 5,
+    "shell": 1,
+    "openTop": false,
+    "float": 6,
+    "leak": 5,
+    "name": "The Eyrie"
+   }
+  ]
+ }
+}

@@ -964,3 +964,74 @@ whether a wool is reachable from a frontline node without crossing a spawn. A pl
 therefore has no frontline at all, and every wool on it refuses with *"only reachable through a spawn
 piece"* however open the board is. The canonical two-wool seed carries a `mid-band` zone for exactly
 this reason.
+
+### A voronoi's bands are rings inward from a cell boundary, and the last one takes the rest
+
+`VoronoiMaterial.Resolve` walks the band list and stops **one short**, returning `Bands[^1]` for
+everything the earlier bands did not claim. The value it walks is the Worley `F2 − F1` gap — small
+against a cell boundary, largest at a cell's centre — so the bands are **depths measured inward from
+the boundary**, not weights over an area, and the last band's stated thickness is read by nothing.
+
+So `voronoi(seed, 7, [(SAND, 4), (RED_SAND, 2), (GRAVEL, 1)])` is not *sand with a seventh of
+gravel*; it is a **gravel bed with sand along the cracks**, because gravel takes every cell interior.
+Write the ground the board is made of **last** and put the veining before it:
+`[(GRAVEL, 1), (RED_SAND, 2), (SAND, 1)]` is a sand wadi with gravel in the cracks and a red margin
+round each patch. A voronoi is a diagram, not a mixture.
+
+### A cliff's strata belong in the `wall` bucket, because a cliff is what that bucket paints
+
+Nothing bands by world height and nothing needs to. A `layered` stack on the **wall** bucket is read
+by `DepthFromTop`, which on a wall counts down from the top of the face — so on a board whose drops
+all begin at one shelf, banding by depth **is** banding by altitude. One stack shared as the wall
+material of every theme makes every cut on the board the same rock in the same order, and puts those
+colours nowhere else (`opus5-kiln-row`).
+
+The counterpart: **`wallRun` stands vertical**, because its stripes wrap the perimeter and are
+constant up a column. A weathered cliff is bedded and a sawn one is scored, and the two are one
+bucket and two materials (`opus5-deepcut`).
+
+### `step` with `stairs` is the instrument for a quarry — the terracing that ruins a hillside
+
+`ReliefSpec.Step` snaps the finished surface to a quantum, which is what turned `opus5-tarnfell`'s
+hills into stacked plateaus. A worked pit **wants** that: state the rim and the floor as two `area`
+marks, let the relaxation solve a smooth bowl between them, and set `step` to the bench height.
+`stairs: true` then cuts a way up out of every place the terracing stranded, so the pit is walkable
+without stopping being terraced. Every stated level must be a multiple of the step or the knob
+rounds it away. `opus5-deepcut`: four marks and `step 4` give six benches where thirty marks gave a
+hillside nobody wanted.
+
+### Only `relief_scope: "exclude"` makes a vertical-sided spire
+
+Every mark is a constraint the relaxation smooths *through*, so a point mark makes a cone. An
+excluded shape leaves the field entirely — the solver bends round it as it bends round the void — and
+keeps the column it was drawn with: a flat crown on vertical sides, joined to nothing.
+
+### A `rim` mark states one height for **every** island in the relief
+
+It is the right instrument for a board whose islands are level with each other and the wrong one
+otherwise. To shoulder islands that stand at different heights, draw each one's polygon wider than
+the `area` mark that states its top and set `base` **under all of them**: the fringe between polygon
+and area is unpinned and decays toward base, so every edge falls a course or two before its drop, at
+its own height (`opus5-aerie`).
+
+### Water fills whatever is level, so the pan is the size of the pool
+
+An `area` mark 34 × 30 at the sump's height is a 34 × 30 lake however small the `water` prop inside
+it. Draw the mark at the size of the water and let the surrounding floor sit a few courses over it.
+
+### On a bridging board the gaps are the design, so state them first
+
+Six-block gaps between islands answer `G2` (a corridor under ten wide), `G5` (a hop outside 10–20)
+and `CT12` (a strait outside 15–40) on every pair, and they are right: a six-block gap is a running
+jump. Fix the four numbers — the hops and the strait — and fit the islands round them.
+
+### A core is the forward objective and a wool is the deep one
+
+A core cannot be carried anywhere; it is breached where it stands, so it belongs where it will be
+fought over. A wool has to be fetched and brought home, so it belongs behind. On `opus5-aerie` the
+first draft had them the other way round and `WL10` read a wool-front-distance of 8.
+
+Two things about a core in particular: `float` and `leak` are one knob (the lava free-falls to the
+terrain at `float` below the casing and leaks a course below `leak`), and **a core on an island in
+open sky has nothing to catch its lava** — so the casing wants ground all round it, or a breach
+anywhere near an edge ends it at once.

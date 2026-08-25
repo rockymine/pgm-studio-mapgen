@@ -1,0 +1,118 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Deepcut"
+ },
+ "globals": {
+  "cell": 2,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 16
+ },
+ "pieces": [
+  {
+   "id": "pit",
+   "role": "piece",
+   "rect": [
+    -18,
+    0,
+    36,
+    20
+   ],
+   "surface": 24
+  },
+  {
+   "id": "rim-s",
+   "role": "piece",
+   "rect": [
+    -18,
+    20,
+    36,
+    1
+   ],
+   "surface": 40
+  },
+  {
+   "id": "rim-w",
+   "role": "piece",
+   "rect": [
+    -18,
+    21,
+    14,
+    11
+   ],
+   "surface": 40
+  },
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    -4,
+    21,
+    8,
+    8
+   ],
+   "surface": 40
+  },
+  {
+   "id": "rim-n",
+   "role": "piece",
+   "rect": [
+    -4,
+    29,
+    8,
+    3
+   ],
+   "surface": 40
+  },
+  {
+   "id": "rim-e",
+   "role": "piece",
+   "rect": [
+    4,
+    21,
+    14,
+    11
+   ],
+   "surface": 40
+  }
+ ],
+ "zones": [
+  {
+   "id": "pit-floor",
+   "rect": [
+    -18,
+    -9,
+    36,
+    18
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "camp",
+    "at": [
+     4,
+     4
+    ],
+    "facing": "front"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "at": [
+     -6.5,
+     15.0
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "The Witness"
+   }
+  ]
+ }
+}
