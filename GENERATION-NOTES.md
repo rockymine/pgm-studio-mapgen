@@ -127,10 +127,12 @@ failure is silent and worse than silent, because the two reads disagree and both
 `GET …/render/heightmap` builds the stored document, so it draws the old ground. An iteration loop that
 watches the readback sees its edits land and an iteration loop that watches the render does not.
 
-`PUT …/sketch` replaces the blob verbatim and is what an edit loop wants. `from-plan` is right for a
-first build — `drive.py` runs it against a map row created moments earlier, which has no stored relief to
-win — and `?force=true` does not change this: force accepts an *orphaned* relief (`SK1`, 409), it does
-not make a posted relief beat a stored one.
+`PUT …/sketch` replaces the blob verbatim and is what an edit loop wants; `from-plan` merges — it carries a
+stored finish, relief and structural height onto the freshly compiled board, and refuses at 409 with `SK1`
+where the recompile leaves an authored relief with no island to land on. `?force=true` accepts that loss; it
+does not make a posted relief beat a stored one. A spec-driven build wants neither, because it posts a whole
+layout every time: `drive.py` stores through `POST /map/from-documents`, which replaces the map at the slug
+outright, and the merge rules above never come into it.
 
 ### `base_height: N` puts the top block at `y = N−1`
 
@@ -810,8 +812,8 @@ other four intent placements and `PlacedProp`. So a plan-built goal on a stacked
 resolves against `SurfaceTop` — the highest layer — and a monument stated for a hall lands on the
 deck roofing it, with nothing declined.
 
-The word has to be written onto the **compiled intent**, on every orbit image, before
-`PUT …/intent/from-plan`. `drive.py`'s `goalLayers` key does it, matching on `stamp.unit`:
+The word has to be written onto the **compiled intent**, on every orbit image, before the intent is stored.
+`drive.py`'s `goalLayers` key does it in `patch_intent`, matching on `stamp.unit`:
 
 ```python
 {"goalLayers": {"destroyable-1": "under", "destroyable-4": "deck"}}

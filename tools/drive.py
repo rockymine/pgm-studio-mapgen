@@ -2,11 +2,11 @@
 """Drive a plan + finish document through the pgm-studio API to an exported world, and say what the
 pipeline said on the way.
 
-    tools/drive.py <specdir> "<Map Name>" --out <worlddir> [--renders <dir>] [--force] [--dry]
+    tools/drive.py <specdir> "<Map Name>" --out <worlddir> [--renders <dir>] [--slug <slug>] [--dry]
 
-<specdir> holds <base>.plan.json and <base>.finish.json, where <base> is the directory's own name.
-The plan is a PlanModel. The finish carries everything a plan cannot state, keyed onto the compiled
-layout:
+<specdir> holds <base>.plan.json and <base>.finish.json, where <base> is the directory's own name and,
+unless --slug says otherwise, the slug the map is stored under. The plan is a PlanModel. The finish
+carries everything a plan cannot state, keyed onto the compiled layout:
 
   themeByHeight   {"11": "gyp-bench", ...}   theme per compiled shape, by the height it stands at
   themeById       {"s3": "gyp-rake"}          theme per compiled shape id (wins over the height rule)
@@ -26,6 +26,12 @@ layout:
   voidEnforcement true -> patch intent.build.voidEnforcement (voidExclusions for the rects to spare)
   authors         ["Opus 5"], or [{"name", "uuid", "role", "contribution"}] -> the <authors> block. PGM
                   takes a person as an account OR a pseudonym, so a bare name is a valid author
+
+The whole map is stored in ONE call — POST /map/from-documents takes the plan, the patched layout and
+the patched intent together, rasterizes the drawing, projects the intent into the map document and
+applies the authors. The slug is stated, so re-driving a corrected spec REPLACES the map it had rather
+than leaving a second one beside it, and a hand edit made in the Sketch tool between runs is replaced
+rather than merged: the spec is what the map is.
 
 Nothing here computes a placement, a clearance or a validation: it posts documents and prints what
 came back. Every finding the pipeline raises is printed with its rule id and the JSON path it is
@@ -369,13 +375,33 @@ def patch_layout(layout, finish):
     return layout
 
 
+def patch_intent(intent, finish):
+    """Everything the finish says about the compiled intent.
+
+    `voidEnforcement` fills the board's void with the barrier PGM enforces, sparing the rects
+    `voidExclusions` names. `goalLayers` names the storey a goal stands on, by the plan marker id it was
+    stated under: a stacked board carries a surface per storey and a placement naming none takes the top,
+    which on a roofed goal is the roof. The word is keyed onto every orbit image of the marker, because a
+    goal and its mirror stand on the same storey."""
+    if finish.get("voidEnforcement"):
+        intent.setdefault("build", {})["voidEnforcement"] = \
+            {"exclusions": finish.get("voidExclusions", [])}
+    for unit, layer in (finish.get("goalLayers") or {}).items():
+        for kind in ("destroyables", "cores"):
+            for goal in intent.get(kind) or []:
+                if (goal.get("stamp") or {}).get("unit") == unit:
+                    goal["layer"] = layer
+        print(f"    goal '{unit}' stands on layer '{layer}'")
+    return intent
+
+
 def main():
     specdir, name = sys.argv[1], sys.argv[2]
     out = sys.argv[sys.argv.index("--out") + 1] if "--out" in sys.argv else None
     into = sys.argv[sys.argv.index("--renders") + 1] if "--renders" in sys.argv else None
-    force = "--force" in sys.argv
     dry = "--dry" in sys.argv
     base = os.path.basename(specdir.rstrip("/"))
+    slug = sys.argv[sys.argv.index("--slug") + 1] if "--slug" in sys.argv else base
     with open(f"{specdir}/{base}.plan.json") as handle:
         plan = json.load(handle)
     with open(f"{specdir}/{base}.finish.json") as handle:
@@ -401,24 +427,37 @@ def main():
     if dry:
         raise SystemExit(0)
 
-    # ── originate, store, compile ────────────────────────────────────────────────────────────
-    print("== originate, store, compile")
-    _, created = call("POST", "/plan", {"name": name})
-    slug = created["slug"]
-    print(f"    slug={slug}")
-    call("PUT", f"/map/{slug}/plan", plan)
+    # ── compile, and the finish a plan cannot state ──────────────────────────────────────────
+    # The compile takes the plan itself and no map row, so both documents are whole before anything is
+    # stored — which is what lets the store be one call.
+    print("== compile, and the finish")
+    _, compiled = call("POST", "/plan/compile", plan)
+    layout, intent = compiled["layout"], compiled["intent"]
+    layout = patch_layout(layout, finish)
+    intent = patch_intent(intent, finish)
+
+    # ── the map, from the three documents it is made of ──────────────────────────────────────
+    # One call stores the plan, rasterizes the drawing into geometry, projects the intent into the map
+    # document and applies the authors. The slug is stated rather than minted, so a spec re-driven after
+    # a correction replaces the map it had instead of leaving a second one beside it; the authors ride
+    # in the body, so nothing has to be written after the projection that would overwrite them.
+    print("== the map, from its three documents")
+    _, loaded = call("POST", "/map/from-documents", {
+        "slug": slug, "name": name, "plan": plan, "layout": layout, "intent": intent,
+        "authors": finish.get("authors")})
+    slug = loaded["slug"]
+    print(f"    slug={slug}  {'replaced' if loaded.get('replaced') else 'new'}  "
+          f"cells={loaded.get('cells')}  islands={loaded.get('islands')}")
 
     # ── the board as a grid, and how it is come at ───────────────────────────────────────────
     # Two reads that cost no build and raise no finding, which is exactly why they are easy to forget.
-    # They sit here rather than at the first step because both read the STORED plan: there is nothing
-    # to ask before the PUT above. Neither is about the world — a compile has not happened yet.
+    # Both read the STORED plan, so they sit after the store rather than at the first step.
     #
     # The grid is the only render a caller with no image reader can act on, and it answers what no
     # picture of a built world can: a plan is a list of rectangles measured in cells, and most of what
     # goes wrong with one is a RELATION between two of them — a landform wider than the band that
     # reaches it, a wall on the only throat. A grid puts the two on the same rows. The flow says why
-    # ground is dead where the coverage read at the end says only that it is, and it says it before a
-    # world exists to measure.
+    # ground is dead where the coverage read at the end says only that it is.
     print("== the board as a grid, and how it is come at")
     drawn = flow = None
     if (drawn := grid(slug)) is not None:
@@ -426,16 +465,7 @@ def main():
     if (flow := text(f"/map/{slug}/plan/flow")) is not None:
         print(flow.rstrip("\n"))
 
-    _, compiled = call("POST", "/plan/compile", plan)
-    layout, intent = compiled["layout"], compiled["intent"]
-
-    # ── the finish a plan cannot state ───────────────────────────────────────────────────────
-    print("== the finish")
-    layout = patch_layout(layout, finish)
-    query = "?force=true" if force else ""
-    _, stored = call("PUT", f"/map/{slug}/sketch/from-plan{query}", layout)
-
-    # ── look at the ground before building it ────────────────────────────────────────────────
+    # ── look at the ground that was built ────────────────────────────────────────────────────
     print("== the ground, read back")
     _, read = call("POST", f"/map/{slug}/sketch/relief/read", layout)
     for island in read.get("islands") or []:
@@ -444,35 +474,13 @@ def main():
               f"relief={island.get('relief')} symErr={island.get('symmetryError')}")
     if finish.get("relief") and not read.get("islands"):
         raise SystemExit("    relief/read answered no islands and a relief was stated — the shapes are "
-                         "drawing no ground. Read the SK3/SK4 complaints on the sketch PUT above: SK3 "
-                         "names a shape kind the studio does not draw, SK4 one with no area. Stop.")
+                         "drawing no ground. Read the SK3/SK4 complaints on the store above: SK3 "
+                         "names something the document names and the studio does not have, SK4 a shape "
+                         "with no area. Stop.")
 
-    # ── build ────────────────────────────────────────────────────────────────────────────────
-    print("== build")
-    _, finished = call("POST", f"/map/{slug}/sketch/finish")
-    if finish.get("voidEnforcement"):
-        intent.setdefault("build", {})["voidEnforcement"] = \
-            {"exclusions": finish.get("voidExclusions", [])}
-    # A stacked board carries a surface per storey and a placement may say which one it rests on;
-    # naming none takes the top, which on a roofed goal is the roof. The plan has no field for it,
-    # so the word is keyed onto the compiled intent by the marker id the plan did state — and onto
-    # every orbit image of it, because a goal and its mirror stand on the same storey.
-    for unit, layer in (finish.get("goalLayers") or {}).items():
-        for kind in ("destroyables", "cores"):
-            for goal in intent.get(kind) or []:
-                if (goal.get("stamp") or {}).get("unit") == unit:
-                    goal["layer"] = layer
-        print(f"    goal '{unit}' stands on layer '{layer}'")
-    call("PUT", f"/map/{slug}/intent/from-plan", intent)
-    # After the intent, not before. Storing an intent projects the map document from the intent's own
-    # `meta`, which a compiled intent leaves empty — `intent/from-plan` carries authors from a *previously
-    # stored intent*, and a first build has none. A metadata PATCH before this point is overwritten.
-    if authors := finish.get("authors"):
-        call("PATCH", f"/map/{slug}/metadata", {"name": name, "authors": authors}, fatal=False)
     # ── every prop the dressing pass declined ────────────────────────────────────────────────
-    # After the intent, deliberately: DR-KEEP reads the spawn door's approach and the goal rings,
-    # which do not exist on a map that carries only a sketch, so the same call before this point
-    # answers a shorter list.
+    # DR-KEEP reads the spawn door's approach and the goal rings, which the intent carries — so this is
+    # asked after the store, where a map carrying only a sketch would answer a shorter list.
     print("== what the dressing pass declined")
     _, columns = call("POST", f"/map/{slug}/sketch/columns", layout, fatal=False)
     if not (columns.get("warnings") if isinstance(columns, dict) else None):

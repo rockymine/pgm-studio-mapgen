@@ -3,10 +3,13 @@
 ## `drive.py` — a plan and a finish, through the API, to a world
 
 ```bash
-python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir> [--force] [--dry]
+python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir> [--slug <slug>] [--dry]
 ```
 
 `PGM_STUDIO_API` overrides the endpoint (default `http://localhost:7894/api`).
+
+The directory's own name is the slug the map is stored under unless `--slug` says otherwise, so re-driving a
+corrected spec **replaces** the map it had rather than leaving a second one beside it.
 
 `specs/<slug>/` holds exactly two authored documents, both named after the directory:
 
@@ -32,6 +35,8 @@ actually posted — so a review reads what was built rather than what was asked 
 | `dressing` | `{"props": [...]}`; a house prop's `style` takes the same `"@name"` |
 | `authors` | `["Opus 5"]`, or `[{"name": …, "uuid": …, "role": …, "contribution": …}]`. PGM takes a person as an **account or a pseudonym**: a bare name writes `<author>Opus 5</author>`, a uuid writes `<author uuid="…"/>` with the name as a sibling comment, and a pseudonym may still carry a `contribution` |
 | `voidEnforcement` | `true` patches `intent.build.voidEnforcement`, with `voidExclusions` for the rects to spare |
+| `goalLayers` | `{"destroyable-1": "under"}` — which storey a goal stands on, by its plan marker id, patched onto the compiled intent by `stamp.unit` |
+| `addLayers` | `[{id, name, base_y, shapes, islands, below?}]` — the storeys a plan cannot state. `below` inserts one under the compiled ground, where the painter's bottom-up order needs it |
 
 ### The grid, before the plan is posted
 
@@ -52,7 +57,7 @@ them on the same rows. `?every=N` draws one character per N cells for a board wi
 
 `GET /plans/{id}/ascii` is the same render for a candidate in the generator pool, by id rather than slug.
 
-It reads the **stored** plan, so it answers from `PUT …/plan` onward — which is where the driver prints it,
+It reads the **stored** plan, so it answers from the store onward — which is where the driver prints it,
 downsampling only when the board comes back wider than a screen. Before a map row exists, `board.py` below is
 the same idea off the plan file itself.
 
@@ -75,8 +80,9 @@ The four places a finding appears:
    table) and `POST /plan/inspect` (`goalDistances` against `GO1`'s 3.0–4.0 band, `islandGaps` against
    `CT12`'s 15–40, the wall rects, the frontline runs);
 2. **at the compile** — `POST /plan/compile`'s `warnings`, and its 422 findings if it refuses;
-3. **at the sketch** — `PUT …/sketch/from-plan`'s `SK3`/`SK4`/`SK5`, and `relief/read`'s per-island cells,
-   low, high and symmetry error;
+3. **at the store** — `POST /map/from-documents`'s `SK3`/`SK4`/`SK5`/`SK11`, its `RQ3` over all three
+   documents at once (each path named with the member it was posted under — `layout.setupp`, not `setupp`),
+   and `relief/read`'s per-island cells, low, high and symmetry error;
 4. **at the dressing** — `POST …/sketch/columns`'s `DR-*` declines, read **after** the intent is stored,
    because `DR-KEEP` needs the spawn doors and the goal rings the intent carries.
 
@@ -131,19 +137,24 @@ Two things it deliberately does not do. It never computes a placement, a clearan
 capability the run rules keep out of `tools/` — and it never retries a refused call with a different
 document. Both of those are the author's.
 
-### The order that matters
+### One call stores the map
 
-`PUT …/intent/from-plan` comes **before** the decline read and **before** the metadata PATCH, and neither is
-an accident. The intent is what carries the spawn doors and the goal rings `DR-KEEP` reads, and storing it
-projects the map document from the intent's own `meta` — which a compiled intent leaves empty, so an author
-name written earlier is overwritten. `AUTHORING-BRIEF.md` §2 states both.
+`POST /map/from-documents` takes the plan, the patched layout and the patched intent together and does the
+whole store: the plan to re-plan from, the drawing rasterized into geometry, the intent projected into the map
+document, the authors applied over that projection. The compile before it needs no map row, so both documents
+are whole before anything is stored — which is what lets the store be one call, and what keeps the slug the
+author's rather than one minted per attempt.
 
-### The two escape hatches
+Everything after it reads the stored map, and one of those reads has to be there rather than earlier:
+`sketch/columns` is asked **after** the store because `DR-KEEP` reads the spawn doors' approaches and the goal
+rings, which come off the intent.
+
+### The escape hatches
 
 `--dry` stops after the evaluator and the inspect feed, so a plan can be iterated with no map row and no
 build — which is where most of a board's shape is actually decided. The grid and the flow read the *stored*
-plan and so are not in a dry pass; `board.py` covers the grid half of that loop. `--force` passes `?force=true` to
-`sketch/from-plan`, accepting the loss of a relief the recompile would orphan (`SK1`).
+plan and so are not in a dry pass; `board.py` covers the grid half of that loop. `--slug` overrides the slug
+the spec directory's name would give, for a board stored under a name of its own.
 
 ## `board.py` — a plan as a grid, before it is a picture
 

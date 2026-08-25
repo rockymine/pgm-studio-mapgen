@@ -93,26 +93,27 @@ appear, including the ones only visible on a 200.
 ```
 POST  /api/plan/evaluate    <plan>       score, valid, the hard/soft terms, the lint table — no map row yet
 POST  /api/plan/inspect     <plan>       goalDistances (GO1), islandGaps (CT12), the wall rects, frontline runs
-POST  /api/plan  ·  PUT /api/map/{slug}/plan
-GET   /api/map/{slug}/plan/ascii         the board as a grid, one character per cell (?every=N)
-GET   /api/map/{slug}/plan/flow          what the board asks of the two sides, in prose
 POST  /api/plan/compile     <plan>       → {layout, intent}. Read the SHAPE IDS here and key the finish on them
       ── patch the compiled layout: themes, relief_scope, controls, addShapes, relief, rooms, dressing ──
-PUT   /api/map/{slug}/sketch/from-plan
+      ── patch the compiled intent: voidEnforcement, a goal's layer ──
+POST  /api/map/from-documents            {slug, name, plan, layout, intent, authors} — the whole map, one call
+GET   /api/map/{slug}/plan/ascii         the board as a grid, one character per cell (?every=N)
+GET   /api/map/{slug}/plan/flow          what the board asks of the two sides, in prose
 POST  /api/map/{slug}/sketch/relief/read cells, low, high, symmetry error, per island
-POST  /api/map/{slug}/sketch/finish
-PUT   /api/map/{slug}/intent/from-plan
-POST  /api/map/{slug}/sketch/columns     the DR-* declines                     ← AFTER the intent
-PATCH /api/map/{slug}/metadata           {name, authors}                       ← AFTER the intent
+POST  /api/map/{slug}/sketch/columns     the DR-* declines
 GET   /api/map/{slug}/preflight          the export's own verdict, before the export
 GET   /api/map/{slug}/coverage           where the ground is lived on, not merely reachable
 GET   /api/map/{slug}/export             the world, into a fresh empty directory
 ```
 
-**Two calls come after the intent and neither is obvious.** `DR-KEEP` reads the spawn doors' approaches and
-the goal rings, which come off the intent — asked earlier, `sketch/columns` answers a shorter list. And
-storing an intent projects the map document from the intent's own `meta`, whose authors a compiled intent
-leaves empty, so a name PATCHed earlier is overwritten.
+**One call stores the map, and the slug is stated rather than minted.** `POST /map/from-documents` writes the
+plan to re-plan from, rasterizes the drawing into geometry, projects the intent into the map document and
+applies the authors — in that order, which is the order that matters: the projection is what would overwrite
+a name written before it. A map already at the slug is **replaced**, so a corrected spec re-driven keeps one
+map row instead of leaving `board`, `board-2` and `board-3` behind, and a hand edit made in the Sketch tool
+between runs is replaced rather than merged. Everything read after it is read against the stored map: the
+grid and the flow off the stored plan, and `sketch/columns` where `DR-KEEP` can see the spawn doors' approaches
+and the goal rings the intent carries.
 
 **Four reads raise no finding at all, which is exactly why they get skipped.** The grid and the flow read the
 stored plan and cost no build; the relief read-back looks at the ground before it is built; coverage is the
