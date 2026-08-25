@@ -19,7 +19,7 @@ nothing else:
 | Mark | Kind | Says |
 |---|---|---|
 | `downs` | area | the plateau, z ≥ 41, at **y40** |
-| `lobe` | area | this team's working face, `(-25, 14) → (1, 34)`, at **y16** |
+| `lobe` | area | this team's working face, `(-25, 14) → (1, 36)`, at **y16** |
 | `neck` | area | the floor through the seam, `(-9, -14) → (9, 14)`, at **y16** |
 | `sump` | area | the pool in it, `(-7, -6) → (7, 6)`, at **y12** |
 
@@ -38,19 +38,33 @@ away by the knob that shapes everything between them.
 `tarnfell` needed thirty marks and got plateaus it did not want. This board wanted the plateaus and
 took four marks and a number.
 
-## The floor is a dumbbell, and that is what fixes the walk
+## The floor is a dumbbell, because both monuments were the same distance from both spawns
 
-A pit whose floor is a disc in the middle of the board puts both monuments the same distance from
-both spawns, and the first build read `GO1` at **2.08**. Two lobes, each worked back under its own
-team's rim and joined by a neck through the seam, is how a two-faced quarry actually reads *and*
-where a defended goal belongs. The lobe is authored once and the fan draws the other, so the floor
-comes out as a Z through the board.
+A pit whose floor is a disc in the middle of the board is symmetric in a way that ruins it: the first
+build read `GO1` at **2.08**, because each monument sat as far from the team defending it as from the
+team attacking it. Two lobes, each worked back under its own team's rim and joined by a neck through
+the seam, is how a two-faced quarry actually reads *and* where a defended goal belongs. The lobe is
+authored once and the fan draws the other, so the floor comes out as a Z through the board.
 
 | | Built |
 |---|---|
-| own team's walk to its monument | **26** |
-| the enemy's | **87** |
-| ratio | **3.35**, inside `GO1`'s 3.0–4.0 |
+| own team's walk to its monument | **34** |
+| the enemy's | **99** |
+| ratio | **2.91** |
+
+## Twelve blocks of plateau before the lip
+
+The spawn first sat at z 42 — one block of flat ground outside its own door, and then the pit. That
+put `GO1` at 3.35, inside its band, and it was the wrong thing to spend a spawn's frontage on: a
+player walked out and fell in.
+
+The room is now at **z 52–62**, which is twelve blocks of level plateau between the door and the
+break. It is ten deep rather than sixteen, because twenty-three blocks of plateau will not hold both
+a sixteen-deep room and an apron worth having. The haul road's head was brought up to meet it, so the
+way down starts where the players do.
+
+The cost is the ratio: **2.91** against a band of 3.0–4.0, which is what moving a spawn seven blocks
+away from its own objective does on a board 128 long. The apron is worth more than the 0.09.
 
 ## The spire is an `exclude` shape, because no mark can make one
 
@@ -59,7 +73,7 @@ vertical-sided column — it makes a cone. `relief_scope: "exclude"` does someth
 shape's cells **out of the field entirely**, so the bowl is solved as if there were a hole there and
 the shape keeps the column it was drawn with.
 
-`(-13, 30)`, radius 4, crown at **y28** over a floor at y16 — twelve courses of unquarried chalk with
+`(-13, 32)`, radius 4, crown at **y28** over a floor at y16 — twelve courses of unquarried chalk with
 nothing joining it to anything. The monument is a `pillar-3` in obsidian floating four over the
 crown, and the only way onto it is a bridge somebody builds off the bench. The pit floor either side
 of the neck is a build zone for exactly that reason.
@@ -97,7 +111,7 @@ onto it. It is stated twice: as a `line` mark, which the step terraces like ever
 `GET …/preflight`: **export gate OPEN**. Round-trip, mirror, buildability and traversability clean.
 The dressing pass takes 16 prop documents and **declines none**.
 
-`GET …/coverage`: **31.9 % dead** — 2,943 of 9,216 cells. Most of it is the plateau behind each
+`GET …/coverage`: **27.8 % dead** — 2,563 of 9,216 cells. Most of it is the plateau behind each
 spawn, which on this board is the ground the pit was cut *out of* and is there to be looked at from
 below.
 
@@ -105,6 +119,8 @@ below.
 
 **`G8` reads a fill-ratio of 1.** One solid landmass with nothing cut out of it, measured against a
 composed wool board. It gates nothing.
+
+**`GO1` reads 2.91 against a band of 3.0.** Bought deliberately, for the apron above.
 
 **Nothing joins a spire to a bench.** A causeway would have to stand at the spire's own height and
 meet a bench at a different one, and the step would put a four-block wall at the junction. Bridging

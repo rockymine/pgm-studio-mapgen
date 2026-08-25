@@ -97,6 +97,12 @@ stated the four numbers first — 10, 16, 16 and a 24-block strait — and fitte
 in front of a door is kept clear, so on `kiln-row` the two rooms went to the ends of the shelf and
 the terrace went in the forty blocks between them, which is a better composition than the one I lost.
 
+**I put a spawn one block from the edge of a pit.** `deepcut`'s room sat at z 42 because that put
+`GO1` at 3.35, and a player walked out of the door and fell twenty-four blocks. **A lint is not worth
+a spawn's frontage.** The room went back to z 52 — twelve blocks of level plateau between the door
+and the break, and ten deep rather than sixteen so the apron fits — and the ratio fell to 2.91, which
+is the right trade and the author's to make rather than the critic's.
+
 **I built the flats three storeys tall** on a board whose highest natural ground is y27. A 9 × 9
 building fifteen courses high is a tower. Two.
 

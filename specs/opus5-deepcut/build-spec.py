@@ -45,17 +45,21 @@ CROWN_Y = 28                        # the two spires' flat tops
 LAND_H = 38
 
 RIM_Z = 40                          # where the plateau breaks off into the pit
-SPAWN_RECT = (-8, 42, 8, 58)
+# **Twelve blocks of flat plateau between the spawn's door and the lip.** The room sat at z 42 to
+# put the goal-spawn ratio in `GO1`'s band and a player walked out of it straight over the edge —
+# which is the wrong thing to spend a spawn's frontage on. It is a ten-deep room instead of a
+# sixteen so the apron fits in the twenty-three blocks the plateau has.
+SPAWN_RECT = (-8, 52, 8, 62)
 
 # **The floor is a dumbbell, not a bowl.** A pit whose floor is a disc in the middle of the board
 # puts both monuments the same distance from both spawns; two lobes, each worked back under its own
 # team's rim and joined by a neck through the seam, is how a quarry with two faces actually reads and
 # is what puts a goal near the team that defends it. The lobe is authored once and the fan draws the
 # other, so the floor comes out as a Z through the board.
-LOBE = (-25, 14, 1, 34)
+LOBE = (-25, 14, 1, 36)
 NECK = (-9, -14, 9, 14)
 SUMP = (-7, -6, 7, 6)
-PILLAR = (-13, 30)                  # the witness pillar, in the lobe under its own team's rim
+PILLAR = (-13, 32)                  # the witness pillar, in the lobe under its own team's rim
 PILLAR_R = 4
 
 
@@ -219,8 +223,8 @@ MARKS = [
 
     # the haul road, down the west wall into this team's own face, so the stone had a way out and
     # the team that defends the face has the short way onto it
-    line("haul", [(-30, 44), (-29, 36), (-25, 28), (-22, 22)],
-         [RIM_Y, 32, 24, FLOOR_Y], 4),
+    line("haul", [(-30, 50), (-30, 42), (-27, 34), (-23, 26), (-22, 20)],
+         [RIM_Y, RIM_Y, 32, 24, FLOOR_Y], 4),
 
     # two shoulders left uncut, so the pit is not an oval
     point("shoulder-e", 33, 26, 34, 6),
@@ -279,16 +283,16 @@ props = [
      "bank": voronoi(15, 4, [(CLAY, 1), (CLAY_LGREY, 1), (GRAVEL, 1)])},
 
     # spoil: what did not go on the lorry, tipped on the benches
-    boulder("spoil-a", -28, 18, 3.0, 61, form="angular"),
+    boulder("spoil-a", -32, 22, 3.0, 61, form="angular"),
     boulder("spoil-b", 24, 30, 2.6, 62, form="angular"),
     boulder("spoil-c", -31, 12, 2.2, 63, form="outcrop"),
     boulder("spoil-d", 6, 20, 2.4, 64, form="angular"),
     boulder("spoil-e", 30, 6, 2.0, 65, form="outcrop"),
-    boulder("spoil-f", -33, 21, 2.8, 66, form="cairn"),
+    boulder("spoil-f", -33, 12, 2.8, 66, form="cairn"),
 
     # the downs above it, which is the only place anything grows
-    tree("thorn-a", -16, 54, "birch", 7, 201),
-    tree("thorn-b", 22, 48, "birch", 6, 202),
+    tree("thorn-a", -16, 46, "birch", 7, 201),
+    tree("thorn-b", 20, 46, "birch", 6, 202),
     tree("thorn-c", 30, 58, "oak", 8, 203),
     tree("thorn-d", -30, 60, "oak", 7, 204),
     flora("downs-turf", [(-34, RIM_Z + 2), (34, RIM_Z + 2), (34, 62), (-34, 62)], 0.42, 81,
@@ -298,7 +302,8 @@ props = [
           scale=6, fern=0.05, flower=0.2, tall=0.04),
 
     # the haul road, and a wash of grit along the second bench
-    stroke("haul-road", [(-28, 50), (-30, 44), (-29, 36), (-25, 28), (-22, 22), (-12, 16), (0, 8)],
+    stroke("haul-road", [(-10, 56), (-22, 53), (-30, 50), (-30, 42), (-27, 34), (-23, 26),
+                         (-22, 20), (-12, 16), (0, 8)],
            3.0, HAUL, style="solid", coverage=1.0, route=True, seed=31),
     stroke("bench-grit", [(-34, 30), (-16, 34), (4, 32), (22, 36)], 3.4,
            voronoi(22, 4, [(CLAY_LGREY, 1), (GRAVEL, 1)]), style="worn", coverage=0.45, seed=32),

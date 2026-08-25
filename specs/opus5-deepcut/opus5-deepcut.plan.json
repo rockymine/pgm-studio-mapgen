@@ -28,7 +28,7 @@
     -18,
     20,
     36,
-    1
+    6
    ],
    "surface": 40
   },
@@ -37,9 +37,9 @@
    "role": "piece",
    "rect": [
     -18,
-    21,
+    26,
     14,
-    11
+    6
    ],
    "surface": 40
   },
@@ -48,9 +48,9 @@
    "role": "spawn",
    "rect": [
     -4,
-    21,
+    26,
     8,
-    8
+    5
    ],
    "surface": 40
   },
@@ -59,9 +59,9 @@
    "role": "piece",
    "rect": [
     -4,
-    29,
+    31,
     8,
-    3
+    1
    ],
    "surface": 40
   },
@@ -70,9 +70,9 @@
    "role": "piece",
    "rect": [
     4,
-    21,
+    26,
     14,
-    11
+    6
    ],
    "surface": 40
   }
@@ -106,7 +106,7 @@
     "id": "destroyable-1",
     "at": [
      -6.5,
-     15.0
+     16.0
     ],
     "style": "pillar-3",
     "materials": "obsidian",

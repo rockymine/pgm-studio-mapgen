@@ -66,13 +66,13 @@
         </not>
     </filters>
     <regions>
-        <point id="blue-spawn-point">0,40,-50</point>
-        <point id="red-spawn-point">0,40,50</point>
+        <point id="blue-spawn-point">0,40,-58</point>
+        <point id="red-spawn-point">0,40,58</point>
         <point id="observer-spawn">0,32,0</point>
-        <rectangle id="blue-spawn" min="-8,-58" max="8,-42"/>
-        <rectangle id="red-spawn" min="-8,42" max="8,58"/>
-        <cuboid id="the-witness-region" min="-13,32,30" max="-12,35,31"/>
-        <cuboid id="the-witness-2-region" min="12,32,-31" max="13,35,-30"/>
+        <rectangle id="blue-spawn" min="-8,-62" max="8,-52"/>
+        <rectangle id="red-spawn" min="-8,52" max="8,62"/>
+        <cuboid id="the-witness-region" min="-13,32,32" max="-12,35,33"/>
+        <cuboid id="the-witness-2-region" min="12,32,-33" max="13,35,-32"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>

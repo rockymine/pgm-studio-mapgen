@@ -24,22 +24,22 @@
    "point": {
     "x": 0,
     "y": 40,
-    "z": 50
+    "z": 60
    },
    "protection": [
     {
      "minX": -8,
-     "minZ": 42,
+     "minZ": 52,
      "maxX": 8,
-     "maxZ": 58
+     "maxZ": 62
     }
    ],
    "yaw": 180,
    "piece": {
     "minX": -8,
-    "minZ": 42,
+    "minZ": 52,
     "maxX": 8,
-    "maxZ": 58
+    "maxZ": 62
    },
    "iron": []
   },
@@ -54,22 +54,22 @@
    "point": {
     "x": 0,
     "y": 40,
-    "z": -50
+    "z": -60
    },
    "protection": [
     {
      "minX": -8,
-     "minZ": -58,
+     "minZ": -62,
      "maxX": 8,
-     "maxZ": -42
+     "maxZ": -52
     }
    ],
    "yaw": 0,
    "piece": {
     "minX": -8,
-    "minZ": -58,
+    "minZ": -62,
     "maxX": 8,
-    "maxZ": -42
+    "maxZ": -52
    },
    "iron": []
   }
@@ -112,7 +112,7 @@
    "anchor": {
     "x": -13,
     "y": 16,
-    "z": 30
+    "z": 32
    },
    "float": 4,
    "box": null
@@ -131,7 +131,7 @@
    "anchor": {
     "x": 12,
     "y": 16,
-    "z": -31
+    "z": -33
    },
    "float": 4,
    "box": null
