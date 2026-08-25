@@ -532,15 +532,6 @@ def main():
         # The world directory holds what a server loads and nothing else: region/, level.dat, map.xml.
         # The provenance sidecar is a read-back aid — which pass claimed which column — so it travels
         # with the documents rather than with the world a server is handed.
-        # The zip carries the map's own folder, so the world lands one level down. `--out` is what a
-        # server is handed and holds `region/`, `level.dat` and `map.xml` at its top, so the nesting
-        # is undone here rather than left for whoever ships the directory to notice.
-        nested = [os.path.join(out, entry) for entry in os.listdir(out)
-                  if os.path.isdir(os.path.join(out, entry, "region"))]
-        if len(nested) == 1:
-            for entry in os.listdir(nested[0]):
-                shutil.move(os.path.join(nested[0], entry), os.path.join(out, entry))
-            os.rmdir(nested[0])
         recorded = os.path.join(out, "region", "provenance.json")
         if os.path.exists(recorded):
             shutil.move(recorded, os.path.join(specdir, "provenance.json"))
