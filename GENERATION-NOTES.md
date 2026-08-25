@@ -915,3 +915,45 @@ For completeness, what the other three forms do to solved ground, all measured o
 
 This is the instrument a detailed surface is painted with — a drift of sand against rock, scree at the foot of
 a crag, mud in a hollow — and it is what a single large `voronoi` over a whole region is a substitute for.
+
+## A mountain is a push. No mark can be one.
+
+A relief mark is a **constraint**: the ground here *is* this height, honoured exactly, with no falloff of any
+kind. That reads as a modelling detail and it decides what terrain can be authored at all.
+
+A `point` mark at `h 47, r 8` therefore does not build a summit. It builds a **drum** — a flat disc eight
+blocks across standing on a twenty-block sheer wall — because nothing between the disc and the ground round it
+is under any statement except the relaxation, and the relaxation has one cell of room to make the transition
+in. A `line` mark with per-vertex heights is the same object stretched along an arc: a ridge-shaped wall with
+a flat top. Both were built on `showcase/19-mountain-range` before the pushes were, and both produced correct
+relief numbers (`low 11 · high 55`, `symErr 0`, gate OPEN) over a landform that reads as a row of oil drums.
+
+A **push** is the other operation. It takes a drawn ring and lifts the solved surface inside it, and three of
+its fields are the landform:
+
+- **`amounts`** — one lift per ring vertex, interpolated along the arc and wrapped, so the crest falls along
+  the ring the way it was drawn. A massif's spine is six numbers.
+- **`crown`** — how much higher the middle stands than the edge, where the middle is the ring's **medial
+  axis**: a point for a round ring (a dome), a line for a long one (a crest). **The record's default is `0`**,
+  so a push authored without touching it is a plateau. This one field is the difference between a mountain and
+  a mesa.
+- **`falloff`** — the skirt, measured from the ring across the land. This is the number that decides how much
+  of the board the range eats. On a 90-block-wide board, `falloff: 20` put the two massifs' skirts into each
+  other and left a 20-block ditch down the middle; `falloff: 11` left flat ground from `x −18` to `x +15`.
+
+`roughness` wobbles the skirt against a noise field so it is not a clean offset of the outline, and a
+**negative crown** dishes the ring rather than doming it — a corrie, a quarry floor, a pond basin.
+
+**The second half is what is *not* written.** Pinning a region with an `area` mark because it should be about
+that height leaves the solver nothing to solve, and a board with a mark on every region is a table with bumps
+on it however tall the bumps are. `19-mountain-range` pins four things — the coast, the dale floor, the goal's
+shelf and the spawn's apron, every one of them ground a player walks — and the flanks carry no mark at all.
+`opus5-sandcaster` pins all four of its regions, and is flat for exactly that reason.
+
+`reach: 0` goes with it: a finite reach pulls ground back toward `base` at that distance from any constraint,
+which between two distant marks means the flanks decay to the base and the range becomes separate hills.
+
+One last shape note, cheap to fix and expensive to see: an `area` mark's ring is a **shape**, and a rectangle
+looks like one. `shelf` and `apron` written as four-vertex rectangles built two mesas with sheer sides,
+visible in the heightmap as literal squares; the same marks on nine- and eleven-vertex lobed rings are
+indistinguishable from ground.

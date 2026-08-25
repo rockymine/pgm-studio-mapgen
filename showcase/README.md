@@ -78,10 +78,11 @@ with paint on it and is what `03` onward fork.
 | 16 | `16-forest` | a wood is a list of trees somebody placed: an edge, two species, a flora floor, and what a canopy claims | `dressing` |
 | 17 | `17-houses` | several buildings in one world — forked presets, roof forms, an L-wing, and a shell used as a boundary | `dressing` + `roomStyles` |
 | 18 | `18-wall-and-iron` | the two structures the composer never asks for: a defence wall and a renewable iron cube | the plan |
+| 19 | `19-mountain-range` | a range of mountains, drawn entirely with pushes, around a board that stays one open dale — `crown`, `amounts`, `falloff`, and the marks not written | `relief` |
 
 ## What every board here found out, in one place
 
-Eighteen boards measured the same system, and these came up more than once. Each is stated in full where it
+Nineteen boards measured the same system, and these came up more than once. Each is stated in full where it
 was found; this is the index to them.
 
 | Fact | Measured in |
@@ -100,6 +101,8 @@ was found; this is the index to them.
 | A tree claims every cell its **canopy** reaches, not its trunk cell | `16` |
 | Repainting a preset's top-level `wall` and not `storeys[*].wall` is a fork that changes nothing — provable by a byte-identical preview | `17` |
 | The defence wall's chest face is derived, not authored: it is the **approach** side, and a `side` field is silently ignored | `18` |
+| A mark is a constraint with no falloff, so no mark makes a mountain: a `point` summit is a drum on a sheer wall. A landform is a **push**, and its `crown` — record default `0` — is what separates a mountain from a mesa | `19` |
+| A brush stroke reaching past the land is the only add on that column and builds a speck of bedrock standing over the void — a disconnected island made of paint | `19`, `maps/opus5-sandcaster` |
 
 And one that no board found and every board needed: **a per-block column transect is the only read that says
 whether a route can be walked.** Sampling every two blocks makes a two-block riser and two one-block risers
