@@ -126,3 +126,103 @@ Decided rather than derived, and recorded as questions.
 Nineteen boards, eighteen of them one idea each, every number in every README copied from a response. The
 part that will age is the numbers; the part that will not is the section every document has on **what went
 wrong first**, because each of those is a mechanism that is still there.
+
+---
+
+# Run 7 — a destroy board on two storeys
+
+## What I set out to build
+
+A DTM lane, 100 × 200 a side, with **tunnels**; an organic border; **three land regions** — sandy, rocky,
+forest — in one board; the surface painted with a brush rather than one pattern per region; relief taken as
+far as it goes while keeping walkable ground; and an **uncanny** underground that surfaces. Two destroyables
+a team, one of them down there.
+
+It is `maps/opus5-sandcaster`, and `review/opus5-sandcaster.md` is what it became.
+
+## What I took from another agent's branch rather than rediscovering
+
+`claude/liminal-dtm-map-wr16sr` built a four-storey liminal DTM and found what a stacked board needs. Two of
+its findings are capabilities this branch's driver did not have, and I took the implementations **verbatim**
+so the two branches merge without a conflict:
+
+- **`addLayers` `"below": true`.** The painter walks the stack in document order and each pass paints its
+  whole column, so a storey listed after one standing over it finds no stone left. A compiled plan emits
+  `layers[0] = ground`, which is not the bottom of a board with an undercroft.
+- **`goalLayers`.** `DestroyablePlacement` carries no `layer`, so a plan-built goal on a stacked board always
+  resolves against the top surface — a monument stated for a corridor lands on the reef roofing it.
+
+Plus its measured rules: a ramp needs **run at least twice its rise** or it builds as treads of two; a prop's
+keep-out mask is 2-D and does not read `layer`; `render/topdown?layer=` names a sketch layer.
+
+Where I departed from it deliberately: that board's colours are loud and unrelated between rooms. This one
+puts everything on **one hue axis** — a cool pole, a warm pole, a green that ties them, and the underground
+as the same value range gone cold — with exactly two saturated blocks on the whole board.
+
+## What I could not say
+
+**There is still no way to delete a map.** Twelve full builds of a 110 × 400 board, each minting a new slug.
+Filed against the surface in run 6; unchanged.
+
+**A brush stroke's safe form is not discoverable.** A shape carrying a `theme` and no height reads as "paint
+this, leave the height alone" and is nothing of the sort: `RasterShape` gives it one course at bedrock. On
+flat ground and on ordinary solved ground the override form works anyway, because the relief writes the
+solved surface back over the cell — so the failure only appears where a `relief_scope: "exclude"` shape owns
+the ground, and then it is a hole twenty courses deep with no warning of any kind. **Out of reach rather than
+missing**: the correct form exists (`operation: "add"`, one course, no override) and nothing names it.
+`RQ3` cannot help — every field posted was read.
+
+**Nothing pictures a stacked board from the side.** `render/section` cuts one plane and `render/topdown
+?layer=` draws one storey flat; neither shows a tower standing on a lid over a corridor. **Out of reach
+rather than missing**: the studio *has* an isometric WebGL preview — the Sketch tool's 3-D canvas,
+`js/studio/render/iso-webgl.js`, fed by `POST /map/{slug}/sketch/columns` — and no endpoint exposes it. I
+drove it in a headless browser instead: `renders/iso-*.png`. The one thing that made it possible is worth
+recording because it wasted twenty minutes first: **the host serves the Blazor client only in
+`Development`**; started with `ASPNETCORE_ENVIRONMENT` unset, every page under `/` is a 404 while `/api`
+answers fine.
+
+**`SK11` appears to ask its question inside one layer.** A roofed corridor reports 608 places of standable
+ground with "open sky over them and no route onto them" while `render/traversability` reads one component
+with all four goal markers connected and pre-flight opens the gate. Both cannot be describing the same board.
+Recorded as a reading rather than filed as a defect, because I did not read the check.
+
+## What I got wrong
+
+**I wrote a `GENERATION-NOTES` entry that was half true and then met its other half.** The entry said an
+override-add with no height follows the solved surface — measured, on a board where every cell was in a
+solved footprint. It cost eleven holes on this board before I read `SketchRasterizer` and found the actual
+mechanism. The correction is in the file; the lesson is that a measurement on one board is a measurement on
+one board.
+
+**I put the tunnel under the wrong region twice.** First under the wash, whose landforms are dunes carved
+*into* the ground — which a flat lid erases; then with the goal still on the wash after the tunnel moved to
+the reef, so the Cistern sat 80 blocks from the chamber named after it. The under-layer render is what
+showed it: a clean corridor with the goal marker nowhere near it.
+
+**I told seven agents not to clear the shared database in run 6 and then cleared it myself. In this run I did
+it twelve more times** — this time with no other agent running, which makes it defensible rather than right.
+
+**Three wrong ground-finders in run 6, and a fourth here**: "the top of the contiguous run from bedrock"
+walks up a tree trunk. The rule that works is that run with logs and leaves removed first.
+
+## What worked first time
+
+- **`POST /plan/evaluate` + `/plan/inspect` as a search.** Five board topologies and a grid search over two
+  goal positions, all before a map row existed. `FR6` refused a 28-cell frontline and taught me that a
+  frontline is either split or 6–8 cells wide; `WL9` refused a spawn at one end with a goal beside it; `LN2`,
+  `WL10` and `ST9` each rewrote something. Every one was right.
+- **The under layer, first build.** Floor, walls, lid, ramps, bays, pool and chamber all landed at the
+  heights they were authored at, verified by column reads. The `below` flag and `goalLayers` did exactly what
+  the other branch's notes said they would.
+- **Region hold marks.** Four `area` marks at four heights, written after the rim and before the landforms,
+  hold a four-tier board flat and let everything else be written over them. No seam anywhere on the board.
+- **The dressing pass.** Every prop that would have been wrong was named with its coordinate: `DR-SITE` for a
+  boulder hanging its footprint over a coast, `DR-ROAD` and `DR-CLAIM` for trees on a road or on each other,
+  `DR-KEEP` for one in the spawn's door approach, `OB19` for one in a goal's clearance. The final build
+  declines nothing.
+
+## Open gameplay questions
+
+In `review/opus5-sandcaster.md`: whether a goal in a sealed underground room with one door is fair, whether
+the chasm should be bridgeable, and whether a one-way drop into the corridor reads as a shortcut or as the
+way in. All three were decided and none was derived.

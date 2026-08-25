@@ -1,0 +1,141 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Sandcaster"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 24,
+    "surface": 20,
+    "observerY": 70
+  },
+  "pieces": [
+    {
+      "id": "pass",
+      "role": "piece",
+      "rect": [
+        -10,
+        0,
+        20,
+        6
+      ],
+      "surface": 18
+    },
+    {
+      "id": "reef",
+      "role": "piece",
+      "rect": [
+        -10,
+        6,
+        7,
+        22
+      ],
+      "surface": 22
+    },
+    {
+      "id": "wash",
+      "role": "piece",
+      "rect": [
+        3,
+        6,
+        7,
+        22
+      ],
+      "surface": 20
+    },
+    {
+      "id": "holt",
+      "role": "piece",
+      "rect": [
+        -10,
+        28,
+        20,
+        8
+      ],
+      "surface": 24
+    },
+    {
+      "id": "apron",
+      "role": "piece",
+      "rect": [
+        -6,
+        36,
+        12,
+        2
+      ],
+      "surface": 24
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        38,
+        4,
+        2
+      ],
+      "surface": 24
+    }
+  ],
+  "zones": [
+    {
+      "id": "seam",
+      "rect": [
+        -10,
+        -2,
+        20,
+        4
+      ]
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          1
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          1,
+          1
+        ]
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "destroyable-1",
+        "piece": "wash",
+        "at": [
+          5,
+          17
+        ],
+        "style": "pillar-3",
+        "materials": "obsidian",
+        "float": 4,
+        "name": "The Beacon"
+      },
+      {
+        "id": "destroyable-2",
+        "piece": "reef",
+        "at": [
+          2,
+          18
+        ],
+        "style": "cube-3",
+        "materials": "ender stone",
+        "float": 4,
+        "name": "The Cistern"
+      }
+    ]
+  }
+}

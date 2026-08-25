@@ -35,7 +35,9 @@ thing, so the diff is the lesson — a reader who wants to know how a cliff is s
 that state it rather than finding the cliff inside a thousand-line finish. `showcase/README.md` is the index.
 
 `maps/opus5-whinnymoor` is the board they add up to, and `review/opus5-whinnymoor.md` says which showcase
-every part of it came from.
+every part of it came from. `maps/opus5-sandcaster` is the destroy board built on top of that: 110 × 400,
+three land regions on one hue axis, a chasm down the middle and a tiled service corridor under the reef —
+two sketch layers, forty-two brush strokes and two monuments, one of them twenty blocks underground.
 
 ## Authoring a map here
 

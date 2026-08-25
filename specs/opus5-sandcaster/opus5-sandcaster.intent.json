@@ -1,0 +1,201 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 24,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 24,
+    "z": 195
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 190,
+     "maxX": 10,
+     "maxZ": 200
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 190,
+    "maxX": 10,
+    "maxZ": 200
+   },
+   "iron": [
+    {
+     "x": -5,
+     "y": 24,
+     "z": 195
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 24,
+    "z": -195
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -200,
+     "maxX": 10,
+     "maxZ": -190
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -200,
+    "maxX": 10,
+    "maxZ": -190
+   },
+   "iron": [
+    {
+     "x": 5,
+     "y": 24,
+     "z": -195
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 70,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -50,
+    "minZ": -10,
+    "maxX": 50,
+    "maxZ": 10
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Beacon",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 40,
+    "y": 20,
+    "z": 115
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": "under",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Cistern",
+   "style": "cube-3",
+   "materials": "ender stone",
+   "anchor": {
+    "x": -40,
+    "y": 22,
+    "z": 120
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Beacon",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -41,
+    "y": 20,
+    "z": -116
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": "under",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Cistern",
+   "style": "cube-3",
+   "materials": "ender stone",
+   "anchor": {
+    "x": 39,
+    "y": 22,
+    "z": -121
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Sandcaster",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}
