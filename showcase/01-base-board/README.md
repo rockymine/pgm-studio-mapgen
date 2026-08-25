@@ -108,6 +108,24 @@ Those two ids are the handle a finish keys on: `themeById: {"s0": …, "s1": …
 `shapePropsById` entry merges relief scope or controls onto it. **Key both.** A finish naming `s0` alone
 paints half a symmetric board and nothing complains.
 
+## The block above the objective is deliberate
+
+A column read anywhere over a wool room answers a small block of the team's wool colour around **y 38–40**,
+twenty-odd blocks over the cage:
+
+```
+GET …/column?at=27,102
+  y 40   Red Wool   ┐
+  y 39   Red Wool   │ GoalMarkerStamper — a sky marker over the goal
+  y 38   Red Wool   ┘
+  y 12   Red Wool   ← the room's own floor, in the same colour
+```
+
+`GoalMarkerStamper` puts one over every goal — a wool room, a destroyable, a core — so a player can see where
+it is from across the board, and it is stamped **above the map's build-height cap** on purpose: a marker
+inside build range is a marker a team can dismantle. It is not terrain, so it does not enter the cap's own
+derivation. Nothing authored it and nothing needs to.
+
 ## What to look at
 
 | Picture | Says |

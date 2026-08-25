@@ -1,0 +1,164 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Kirkstep"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 8,
+    "surface": 9,
+    "observerY": 40
+  },
+  "pieces": [
+    {
+      "id": "shelf",
+      "role": "piece",
+      "rect": [
+        -8,
+        3,
+        16,
+        3
+      ]
+    },
+    {
+      "id": "flank-w",
+      "role": "piece",
+      "rect": [
+        -8,
+        6,
+        3,
+        6
+      ]
+    },
+    {
+      "id": "flank-e",
+      "role": "piece",
+      "rect": [
+        5,
+        6,
+        3,
+        6
+      ]
+    },
+    {
+      "id": "apron",
+      "role": "piece",
+      "rect": [
+        -8,
+        12,
+        9,
+        3
+      ]
+    },
+    {
+      "id": "lane",
+      "role": "piece",
+      "rect": [
+        1,
+        12,
+        7,
+        3
+      ]
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -6,
+        15,
+        4,
+        3
+      ]
+    },
+    {
+      "id": "tread-1",
+      "role": "piece",
+      "rect": [
+        4,
+        15,
+        3,
+        1
+      ],
+      "surface": 10
+    },
+    {
+      "id": "tread-2",
+      "role": "piece",
+      "rect": [
+        4,
+        16,
+        3,
+        1
+      ],
+      "surface": 11
+    },
+    {
+      "id": "tread-3",
+      "role": "piece",
+      "rect": [
+        4,
+        17,
+        3,
+        1
+      ],
+      "surface": 12
+    },
+    {
+      "id": "tread-4",
+      "role": "piece",
+      "rect": [
+        4,
+        18,
+        3,
+        1
+      ],
+      "surface": 13
+    },
+    {
+      "id": "room",
+      "role": "wool-room",
+      "rect": [
+        4,
+        19,
+        3,
+        3
+      ],
+      "surface": 13
+    }
+  ],
+  "zones": [
+    {
+      "id": "mid",
+      "rect": [
+        -8,
+        -4,
+        16,
+        8
+      ]
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          2
+        ],
+        "facing": "front"
+      }
+    ],
+    "wools": [
+      {
+        "id": "wool-1",
+        "piece": "room",
+        "at": [
+          1.5,
+          1.5
+        ]
+      }
+    ]
+  }
+}
