@@ -1,0 +1,215 @@
+{
+ "authors": [
+  "Opus 5"
+ ],
+ "themes": {
+  "meadow": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "voronoi",
+         "seed": 7,
+         "cellSize": 16,
+         "bands": [
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 3,
+            "data": 1
+           }
+          },
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 2,
+            "data": 0
+           }
+          }
+         ]
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  }
+ },
+ "roomStyles": {
+  "spawn": "@showcase-hall",
+  "cage": "@showcase-cage"
+ },
+ "relief": {
+  "team": {
+   "base": 9,
+   "reach": 20,
+   "step": 1,
+   "stairs": true,
+   "grain": {
+    "amplitude": 1.0,
+    "scale": 11,
+    "seed": 3
+   },
+   "marks": [
+    {
+     "id": "coast",
+     "kind": "rim",
+     "h": 9,
+     "depth": 1
+    },
+    {
+     "id": "brow-w",
+     "kind": "point",
+     "at": [
+      -32,
+      45
+     ],
+     "h": 17,
+     "r": 4
+    },
+    {
+     "id": "strand",
+     "kind": "line",
+     "points": [
+      [
+       -40,
+       18
+      ],
+      [
+       0,
+       18
+      ],
+      [
+       40,
+       18
+      ]
+     ],
+     "h": [
+      9,
+      9,
+      9
+     ],
+     "width": 5
+    }
+   ],
+   "pushes": [
+    {
+     "id": "spur-e",
+     "ring": [
+      [
+       27,
+       32
+      ],
+      [
+       38,
+       36
+      ],
+      [
+       40,
+       50
+      ],
+      [
+       33,
+       60
+      ],
+      [
+       26,
+       56
+      ],
+      [
+       24,
+       44
+      ]
+     ],
+     "amount": 7,
+     "falloff": 12,
+     "roughness": 0.45,
+     "crown": 3,
+     "seed": 5
+    }
+   ]
+  }
+ }
+}

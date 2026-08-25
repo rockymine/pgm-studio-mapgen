@@ -1,0 +1,305 @@
+{
+ "authors": [
+  "Opus 5"
+ ],
+ "themes": {
+  "meadow": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "voronoi",
+         "seed": 7,
+         "cellSize": 16,
+         "bands": [
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 3,
+            "data": 1
+           }
+          },
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 2,
+            "data": 0
+           }
+          }
+         ]
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  }
+ },
+ "roomStyles": {
+  "spawn": "@showcase-hall",
+  "cage": "@showcase-cage"
+ },
+ "relief": {
+  "team": {
+   "base": 9,
+   "reach": 18,
+   "step": 1,
+   "stairs": true,
+   "grain": {
+    "amplitude": 0.9,
+    "scale": 12,
+    "seed": 6
+   },
+   "marks": [
+    {
+     "id": "coast",
+     "kind": "rim",
+     "h": 9,
+     "depth": 1
+    },
+    {
+     "id": "strand",
+     "kind": "line",
+     "points": [
+      [
+       -40,
+       18
+      ],
+      [
+       0,
+       18
+      ],
+      [
+       40,
+       18
+      ]
+     ],
+     "h": [
+      9,
+      9,
+      9
+     ],
+     "width": 5
+    },
+    {
+     "id": "mesa",
+     "kind": "area",
+     "h": 18,
+     "ring": [
+      [
+       -38,
+       36
+      ],
+      [
+       -28,
+       33
+      ],
+      [
+       -26,
+       46
+      ],
+      [
+       -31,
+       56
+      ],
+      [
+       -38,
+       54
+      ]
+     ]
+    },
+    {
+     "id": "hollow",
+     "kind": "area",
+     "h": 4,
+     "ring": [
+      [
+       26,
+       36
+      ],
+      [
+       38,
+       34
+      ],
+      [
+       40,
+       48
+      ],
+      [
+       34,
+       58
+      ],
+      [
+       26,
+       54
+      ],
+      [
+       24,
+       44
+      ]
+     ]
+    },
+    {
+     "id": "terrace-outer",
+     "kind": "area",
+     "h": 12,
+     "ring": [
+      [
+       -34,
+       62
+      ],
+      [
+       -6,
+       62
+      ],
+      [
+       -6,
+       74
+      ],
+      [
+       -34,
+       74
+      ]
+     ]
+    },
+    {
+     "id": "terrace-inner",
+     "kind": "area",
+     "h": 10,
+     "ring": [
+      [
+       -28,
+       65
+      ],
+      [
+       -12,
+       65
+      ],
+      [
+       -12,
+       71
+      ],
+      [
+       -28,
+       71
+      ]
+     ]
+    }
+   ],
+   "pushes": [
+    {
+     "id": "shoulder",
+     "ring": [
+      [
+       6,
+       60
+      ],
+      [
+       20,
+       58
+      ],
+      [
+       24,
+       70
+      ],
+      [
+       14,
+       76
+      ],
+      [
+       4,
+       72
+      ]
+     ],
+     "amount": 4,
+     "falloff": 10,
+     "roughness": 0.4,
+     "crown": 2,
+     "seed": 9
+    }
+   ]
+  }
+ }
+}

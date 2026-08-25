@@ -59,10 +59,18 @@ GET …/column?at=27,z          the flight, one read per tread
 [complaint] EL1  piece 'tread-3' surface delta 3 is not a multiple of 2
 ```
 
-`GET /api/rules?rule=EL1` gives its evidence: over 137 measured land interfaces in the authored seed corpus,
-every delta is even, because the surface palette is base 9 plus even steps. That is a measurement of
-**plateau** deltas — where one piece of ground meets another — and a stair is not two plateaus. Taking the
-complaint at face value here produces the next fault, which is:
+`GET /api/rules?rule=EL1` gives its evidence: over 137 measured **land-interface** deltas in the authored
+seed corpus, every one is even, because the surface palette is base 9 plus even steps.
+
+**The lint measures something else, and this board is the proof.** `PlanValidator.LintEl1` takes
+`piece.surface − globals.surface`, not the delta across an interface — so on a flight whose every interface
+delta is 1 it flags `tread-1` (delta 1 from the global) and `tread-3` (delta 3) and stays silent about
+`tread-2` and `tread-4`. Half a uniform flight complained about and half not is not a judgement about the
+flight; it is the wrong quantity. Filed as `G231` on `pgm-studio`'s backlog.
+
+Even measured correctly it would be the wrong question here: EL1's evidence is where one *plateau* meets
+another, and a stair is not two plateaus. Taking the complaint at face value produces the next fault, which
+is:
 
 **The export gate will not tell you a step is too tall.** The first build of this board used deltas of **2**
 — four risers of two blocks, which no player can walk up. Everything passed:
@@ -82,12 +90,21 @@ by bridging and wrong as a test of whether a stair is a stair.
 **Walkability is the author's.** The read that settles it is a column transect up the flight, and it is the
 only one that does.
 
-## The granularity is the cell
+## The granularity is the cell, and the cell is a choice
 
-A tread here is **five blocks deep**, because a plan piece is a rectangle on a cell grid and `globals.cell`
-is 5. That is right for a flight of four and wrong for a flight of twelve: the plan cannot state a one-block
-tread at all. The layout can — it is drawn in blocks — and `06-ramp-and-slant` is the same twenty blocks
-stated there instead.
+A tread here is **five blocks deep**, because a plan piece is a rectangle on a cell grid and this board's
+`globals.cell` is 5. **Five is the default, not the unit** — `cell` is an ordinary field and takes 7, or 3,
+or 1, and at `cell: 1` a piece is a single block and a flight of twenty one-block treads is a plain plan.
+
+What it is not is a *local* choice. `cell` is one number for the whole board, so the granularity a stair
+wants is also the granularity the shelf, the flanks and the spawn apron are counted in: at `cell: 1` this
+board's `shelf` stops being `[-8, 3, 16, 3]` and becomes `[-40, 15, 80, 15]`, and every rectangle on the
+board is stated in blocks. That is a real way to author — the traced corpus plans do it at other scales — and
+it is a decision about the whole document rather than about the stair.
+
+So the honest statement of the trade is: **a fine flight is reachable from the plan by making the whole board
+fine, or from the layout by drawing one shape.** `06-ramp-and-slant` is the same twenty blocks stated the
+second way, on a board that keeps `cell: 5` everywhere else.
 
 The two are meant to share a board. A stepped quarter that is plainly built, against a solved quarter that is
 plainly a hillside, is what `tools/seeds/ruediger.plan.json` does with 31 pieces at ten heights.
@@ -108,7 +125,7 @@ down the stair. `axis=x&at=27` cuts across the board at z 27 and answers `RQ5 no
 
 | Read | Answer |
 |---|---|
-| `POST /plan/evaluate` | score **0**, `valid: true`, 2 × `EL1` complaint |
+| `POST /plan/evaluate` | score **0**, `valid: true`, 2 × `EL1` complaint — see above; `G231` |
 | shapes | 6 compiled — one per height — against `02`'s 2 |
 | flight | 4 treads · 1 block rise · 5 block going · room plinth at y12 |
 | `GET …/preflight` | export gate **OPEN** |
