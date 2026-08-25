@@ -164,12 +164,12 @@ THEMES = {
 
 # ── the frame ─────────────────────────────────────────────────────────────────────────────────
 Y_BASE = 24                        # the board's ground, and the plan's own surface
-Y_MERE, Y_ISLE = 15, 22            # the mere's bed, and the isle standing out of it
-Y_CREV = 12                        # a crevasse floor — twelve courses under the downs
+Y_MERE, Y_ISLE = 15, 19            # the mere's bed, and the isle standing out of it
+Y_RAVINE = 14                      # how far a ravine is dished under the wood it cuts
 Y_PAD = 26                         # the flats: the goal's ground, the apron and the spawn's
 
 MERE_RX, MERE_RZ = 40, 30          # the mere's bed, an ellipse about the board's own centre
-ISLE_RX, ISLE_RZ = 13, 11
+ISLE_RX, ISLE_RZ = 15, 12
 WATER_RX, WATER_RZ = 25, 19        # the water prop's centreline, a CLOSED RING inside the bed
 WATER_R = 12                       # its half-width: the band runs from the isle's edge out to r 37
 
@@ -311,10 +311,16 @@ def outline():
 # is cut through. Pushes state its RELIEF — the hills and the range. A mark is honoured exactly and has
 # no falloff, so it can pin a lake bed or cut a crevasse with sheer walls but can never be a mountain;
 # a push lifts the solved surface inside a drawn ring, and its `crown` is what makes a landform of it.
-CREVASSES = (
-    ("crev-w", [[-70, 58], [-58, 64], [-46, 60], [-36, 66]]),
-    ("crev-e", [[68, 50], [57, 56], [47, 53], [38, 58]]),
-    ("crev-n", [[-58, 84], [-46, 90], [-34, 86], [-24, 92]]),
+# A ravine is a PUSH with a negative crown, not a line mark. A mark pins a height exactly, so a cut into
+# ground the `wood` area holds level comes out as a slot with two vertical walls — which reads as quarrying
+# rather than as terrain, and reads worst of all in sand, where a sheer face has no business being. A push
+# dishes the ring it is drawn on toward its own medial axis and skirts the result out over `falloff`, so the
+# sides slope and the lip is a lip. Both of them are in the wood, where a ravine belongs.
+# One in the wood and one on the downs. `rot_180` hands each team both, and neither is in the sand:
+# a sheer face has no business on a beach, which is what the first pair of these read as.
+RAVINES = (
+    ("ravine-holt", [[68, 90], [58, 98], [50, 92], [46, 100]]),
+    ("ravine-downs", [[-70, 56], [-60, 64], [-52, 58], [-46, 66]]),
 )
 # Rolling hills: small pushes over the downs and the wood, kept clear of the crevasses and of the
 # goal's own flat — a push crosses every constraint it covers, so one drawn over a cut fills it in.
@@ -324,9 +330,13 @@ CREVASSES = (
 # None of them is on the beach. A push's skirt is where its gradient lives, and the two roads that
 # loop round the mere cross the sand from end to end: a hill sited there put a two-block riser in one
 # of them, which is the one thing a path may not have. Rolling ground is the downs' and the wood's.
-HILLS = ((-52, 72, 10, 8, 6), (58, 70, 10, 8, 6), (-70, 74, 10, 8, 5),
-         (52, 84, 10, 8, 5), (54, 96, 12, 9, 6), (-38, 104, 12, 9, 5),
-         (36, 104, 12, 9, 6), (-24, 110, 11, 8, 4), (22, 110, 11, 8, 4))
+# Rolling, which is a statement about the gradient rather than about the height: a lift of 5 over a
+# 12-block skirt is a knoll at one course every two blocks, and a house standing on that has five
+# courses of relief across its own footprint — which is what its walls are. At a 20-block skirt the
+# same lift is one course every four, so the ground rolls and a building can stand on it.
+HILL_FALLOFF = 20
+HILLS = ((-58, 60, 11, 9, 6), (58, 58, 11, 9, 6), (-56, 78, 10, 8, 5),
+         (56, 76, 10, 8, 5), (-52, 46, 10, 8, 5), (52, 44, 10, 8, 5))
 # The range behind the spawn, drawn the way `showcase/19-mountain-range` draws one.
 SPINE_W = [[-42, 132], [-31, 143], [-20, 133], [-10, 142]]
 LIFT_W = [20, 34, 24, 32]
@@ -336,36 +346,38 @@ SUMMITS = ((SPINE_W[1], 0), (SPINE_W[3], 1), (SPINE_E[0], 2), (SPINE_E[2], 3))
 GOAL = (30, 69)
 
 
+# The flats the board pins level, named once: the marks are written from them and so is the search for
+# where a building may stand, because "level ground" has to mean the same thing to both.
+FLATS = (("downs", 0, 66, 68, 17, 15, 0.2),
+         ("wood", 0, 94, 57, 17, 15, 1.4),
+         ("apron", 0, 108, 42, 9, 11, 0.7))
+FLAT_RINGS = {name: ring_of(cx, cz, rx, rz, lobes=lobes, twist=twist, clamped=False)
+              for name, cx, cz, rx, rz, lobes, twist in FLATS}
+
+
 def relief_marks():
     """Written in the order they resolve: the rim first, so nothing cuts a doorway through the coast,
-    then the water's own ground, then the flats a player has to stand on, then the crevasses last —
-    because a cut has to win the cells it takes from the plateau it is cut into."""
+    then the water's own ground, then the flats a player walks, then the two flats that carry something
+    — because a mark that has to win its cells is written after whatever else wants them."""
     marks = [{"id": "coast", "kind": "rim", "h": Y_BASE, "depth": 1},
              {"id": "mere", "kind": "area", "h": Y_MERE,
               "ring": ring_of(0, 0, MERE_RX, MERE_RZ, lobes=17, twist=0.4, clamped=False)},
              {"id": "isle", "kind": "area", "h": Y_ISLE,
               "ring": ring_of(0, 0, ISLE_RX, ISLE_RZ, lobes=9, twist=1.1, clamped=False)},
-             # the downs and the wood, held level so the hills have something to roll over and the
-             # crevasses have something with a straight lip to cut through
-             {"id": "downs", "kind": "area", "h": Y_PAD,
-              "ring": ring_of(0, 66, 68, 17, lobes=15, twist=0.2, clamped=False)},
-             {"id": "wood", "kind": "area", "h": Y_PAD,
-              "ring": ring_of(0, 94, 57, 17, lobes=15, twist=1.4, clamped=False)},
-             {"id": "apron", "kind": "area", "h": Y_PAD,
-              "ring": ring_of(0, 108, 42, 9, lobes=11, twist=0.7, clamped=False)},
+             # the downs, the wood and the apron, held level so the hills have something to roll over
+             *[{"id": name, "kind": "area", "h": Y_PAD, "ring": FLAT_RINGS[name]}
+               for name, *_rest in FLATS],
              {"id": "spawnpad", "kind": "area", "h": Y_PAD,
               "ring": ring_of(0, 120, 9, 5, lobes=9, twist=0.3, clamped=False)},
              ]
-    # Each crevasse tapers back up to the ground at both ends, so it is a cut in the downs rather
-    # than a channel that halves the board.
-    for pid, points in CREVASSES:
-        marks.append({"id": pid, "kind": "line", "points": points,
-                      "h": [Y_PAD, Y_CREV, Y_CREV, Y_PAD], "r": 3})
-    # The goal's own flat is written LAST, after the cuts: marks resolve in order and the last wins a
-    # contested cell, so the ground the Wardstone stands on cannot be taken by a crevasse that passes
-    # near it however close the two are drawn.
+    # The flats that carry something are written LAST: marks resolve in order and the last wins a
+    # contested cell, so the ground under the Wardstone and under every building is the ground stated
+    # for it however close anything else is drawn.
     marks.append({"id": "goalpad", "kind": "area", "h": Y_PAD + 1,
                   "ring": ring_of(GOAL[0], GOAL[1], 13, 11, lobes=9, twist=0.9, clamped=False)})
+    for i, (x, z, _style, _front) in enumerate(YARDS):
+        marks.append({"id": f"yard-{i}", "kind": "area", "h": Y_PAD,
+                      "ring": ring_of(x, z, 11, 9, lobes=9, twist=0.4 * i, clamped=False)})
     return marks
 
 
@@ -374,8 +386,13 @@ def pushes():
     for i, (x, z, rx, rz, amount) in enumerate(HILLS):
         out.append({"id": f"hill-{i}", "ring": ring_of(x, z, rx, rz, lobes=8, twist=0.6 * i,
                                                        clamped=False),
-                    "amount": amount, "falloff": 12, "roughness": 0.55,
-                    "crown": 4 + (i % 3), "seed": 31 + i})
+                    "amount": amount, "falloff": HILL_FALLOFF, "roughness": 0.55,
+                    "crown": 3 + (i % 2), "seed": 31 + i})
+    # the ravines: the same operation dished instead of domed
+    for i, (pid, spine) in enumerate(RAVINES):
+        ring, _src = ribbon(spine, 12, phase=0.8 + i)
+        out.append({"id": pid, "ring": ring, "amount": 0, "falloff": 10,
+                    "roughness": 0.4, "crown": -Y_RAVINE, "seed": 51 + i})
     for pid, spine, lift, seed in (("range-w", SPINE_W, LIFT_W, 3),
                                    ("range-e", SPINE_E, LIFT_E, 7)):
         ring, src = ribbon(spine, 9, phase=seed * 0.4)
@@ -425,10 +442,9 @@ def brush():
     # the shelf the water thins over, just inside the water's outer edge
     for i, (x, z) in enumerate(around(0, 0, 34, 25, 5, 0.4)):
         out.append(blob(f"br-shallow-{i}", x, z, 9, 7, "shallow", lobes=6, twist=0.7 * i))
-    # the crevasses: a ribbon of bare rock along each cut rather than a row of round patches, and moss
-    # in the bottom of it where nothing dries
-    for pid, points in CREVASSES:
-        ring, _src = ribbon(points, 7, phase=0.9)
+    # the ravines: bare rock down the middle of each, and moss in the bottom where nothing dries
+    for pid, points in RAVINES:
+        ring, _src = ribbon(points, 6, phase=0.9)
         out.append(poly(f"br-scar-{pid}", [list(clamp(x, z)) for x, z in ring], "scar",
                         override=False, base_height=1))
         mid = points[len(points) // 2]
@@ -448,8 +464,8 @@ def brush():
     for i, (x, z) in enumerate(around(0, 0, 70, 48, 7, 0.5)):
         out.append(blob(f"sm-strand-{i}", x, z, 12, 10, "seam-strand", lobes=6, twist=0.4 * i))
     # grass to bare rock, a wider ribbon on the same line: the smaller `scar` inside wins its own
-    # cells, so what is left of this one is exactly the lip
-    for pid, points in CREVASSES:
+    # cells, so what is left of this one is exactly the ravine's shoulder
+    for pid, points in RAVINES:
         ring, _src = ribbon(points, 13, phase=1.7)
         out.append(poly(f"sm-scar-{pid}", [list(clamp(x, z)) for x, z in ring], "seam-scar",
                         override=False, base_height=1))
@@ -478,10 +494,77 @@ ROADS = ([[0, 113], [5, 104], [-6, 92], [4, 76], [-2, 60], [-10, 48], [-4, 40]],
          [[2, 78], [16, 73], [27, 71]],
          [[-8, 48], [-34, 44], [-54, 34], [-62, 16]],
          [[2, 48], [34, 44], [54, 34], [62, 16]])
-YARDS = ((-26, 98, "@17h-croft", "posX"), (24, 96, "@17h-barn", "negX"),
-         (-24, 56, "@17h-granary", "posX"), (46, 58, "@17h-coop", "negX"),
-         (18, 112, "@17h-croft", "negX"), (-58, 46, "@17h-barn", "posX"),
-         (-20, 118, "@17h-coop", "posZ"), (34, 108, "@17h-granary", "negX"))
+STYLES = ("@17h-croft", "@17h-barn", "@17h-granary", "@17h-coop")
+FOOT = (5, 4)                      # half the footprint a yard has to hold, plus its eave
+
+
+def inside(ring, x, z):
+    """Ray cast against a closed ring."""
+    hit = False
+    n = len(ring)
+    for i in range(n):
+        (x1, z1), (x2, z2) = ring[i], ring[(i + 1) % n]
+        if (z1 > z) != (z2 > z) and x < x1 + (z - z1) * (x2 - x1) / (z2 - z1):
+            hit = not hit
+    return hit
+
+
+def skirts():
+    """Every push as a centre and the distance its influence reaches — the ring's own half-width plus
+    its falloff. A push crosses whatever it covers and its skirt is where its gradient lives, so this
+    is the one thing a building has to be outside of: inside a skirt there is no level ground, whatever
+    the marks say, because a push is applied after every constraint."""
+    out = [(x, z, max(rx, rz) + 12) for x, z, rx, rz, _amount in HILLS]
+    out += [(x, z, 12 + 10) for _pid, spine in RAVINES for x, z in spine]
+    out += [(x, z, 9 + 12) for spine in (SPINE_W, SPINE_E) for x, z in spine]
+    return out
+
+
+def yards(count=3, spacing=24):
+    """Where a building may stand, searched rather than typed.
+
+    A building seats on the LOWEST column of its own footprint and the terrain standing over that floor
+    is carved out of it, so a site with relief across it comes out as a house sunk into a bank — and a
+    site with as much relief as the building is tall comes out as a house nobody can see, which is what
+    `DR-SLOPE` declines. What a house needs is a plateau, and on this board a plateau is ground an
+    `area` mark pins level that no push reaches. Both halves are read off the same geometry the relief
+    is written from, so the answer cannot drift from the terrain it is about.
+
+    Candidates are walked on a four-block grid over the three flats, kept where the whole footprint is
+    inside one of them, outside every skirt, off the roads and clear of the goal; then taken greedily,
+    best clearance first, spaced so no two buildings share a view of the same yard."""
+    marked = []
+    for x in range(-70, 71, 4):
+        for z in range(30, 122, 4):
+            ring = next((r for r in FLAT_RINGS.values()
+                         if all(inside(r, x + dx, z + dz)
+                                for dx in (-FOOT[0], FOOT[0]) for dz in (-FOOT[1], FOOT[1]))), None)
+            if ring is None:
+                continue
+            clear = min(math.hypot(x - sx, z - sz) - reach for sx, sz, reach in skirts())
+            if clear < 6:
+                continue
+            if road_distance(x, z) < 13 or math.hypot(x - GOAL[0], z - GOAL[1]) < 22:
+                continue
+            marked.append((clear, x, z))
+    marked.sort(reverse=True)
+    taken = []
+    for _clear, x, z in marked:
+        if any(math.hypot(x - px, z - pz) < spacing for px, pz in taken):
+            continue
+        taken.append((x, z))
+        if len(taken) == count:
+            break
+    # A house fronts the way the nearest road runs, so a door opens onto the ground players use.
+    out = []
+    for i, (x, z) in enumerate(sorted(taken, key=lambda p: (-p[1], p[0]))):
+        near = min(((seg_distance(x, z, *road[j], *road[j + 1]), road[j], road[j + 1])
+                    for road in ROADS for j in range(len(road) - 1)), key=lambda e: e[0])
+        toward = ((near[1][0] + near[2][0]) / 2 - x, (near[1][1] + near[2][1]) / 2 - z)
+        front = ("posX" if toward[0] > 0 else "negX") if abs(toward[0]) >= abs(toward[1]) \
+            else ("posZ" if toward[1] > 0 else "negZ")
+        out.append((x, z, STYLES[i % len(STYLES)], front))
+    return out
 COPSES = ((-42, 86, 12, 9), (-16, 96, 12, 9), (12, 88, 12, 9), (36, 98, 11, 8),
           (-30, 106, 11, 8), (26, 108, 11, 8), (-50, 96, 10, 8), (48, 88, 10, 8))
 
@@ -496,6 +579,9 @@ def seg_distance(px, pz, ax, az, bx, bz):
 def road_distance(x, z):
     return min(seg_distance(x, z, *road[i], *road[i + 1])
                for road in ROADS for i in range(len(road) - 1))
+
+
+YARDS = yards()
 
 
 def dressing():
@@ -569,8 +655,8 @@ def dressing():
 
     # fallen rock: at the foot of the range, and spilled along every crevasse lip
     anchors = [(x, z + 4) for x, z in [tuple(p) for p in SPINE_W + SPINE_E]]
-    anchors += [(p[0], p[1] + 9) for _pid, pts in CREVASSES for p in pts[::2]]
-    anchors += [(p[0], p[1] - 9) for _pid, pts in CREVASSES for p in pts[1::2]]
+    anchors += [(p[0], p[1] + 15) for _pid, pts in RAVINES for p in pts[::2]]
+    anchors += [(p[0], p[1] - 15) for _pid, pts in RAVINES for p in pts[1::2]]
     for i, (x, z) in enumerate(anchors):
         x, z = clamp_int(x, z)
         if not free(x, z, 10.0):

@@ -3,7 +3,7 @@
 `maps/opus5-ravensmere` · `specs/opus5-ravensmere` · **152 × 302 blocks**, one open landmass ·
 destroy, one destroyable a team · `rot_180` · 24 players · **single layer**
 
-The brief, in the author's own order: rolling hills, deep crevasses, a central lake with an island in the
+The brief, in the author's own order: rolling hills, ravines, a central lake with an island in the
 centre, a forest, buildings scattered around a path, one large end-stone cube destroyable about 30 blocks
 right and 50 ahead of spawn, 150 blocks between the two of them, a large sandy beach round the lake, the
 seams between areas textured with brush strokes, a mountain backdrop behind the spawn, and a path seven
@@ -30,7 +30,7 @@ band of 3.0–4.0.
 ## What states what
 
 **Constraints state the plan of the board; pushes state its relief.** A relief mark is honoured exactly and
-has no falloff, so it can pin a lake bed at 15 and cut a crevasse with sheer walls, and it can never be a
+has no falloff, so it can pin a lake bed at 15 or a yard at 26, and it can never be a
 mountain. A push lifts the solved surface inside a drawn ring and its `crown` is what makes a landform of
 it. Eleven marks and eleven pushes:
 
@@ -38,13 +38,20 @@ it. Eleven marks and eleven pushes:
 |---|---|
 | `coast` rim, `mere`, `isle` | the water's own ground, and the island standing out of it |
 | `downs`, `wood`, `apron`, `spawnpad` | the flats a player stands on |
-| `crev-w`, `crev-e`, `crev-n` | three `line` marks at `h 12` with `r 3`, tapering back up to the plateau at both ends |
-| `goalpad` | written **last**, after the cuts — marks resolve in order and the last wins, so the ground the Wardstone stands on cannot be taken by a crevasse drawn near it |
-| 9 hill pushes | `amount` 4–6, `crown` 4–6, `falloff` 12, `roughness` 0.55 |
+| `goalpad`, three `yard-*` | written **last**, after everything else — marks resolve in order and the last wins, so the ground under the Wardstone and under each building is the ground stated for it |
+| 6 hill pushes | `amount` 5–6, `crown` 3–4, **`falloff` 20**, `roughness` 0.55 |
+| 2 ravine pushes | `amount` 0, **`crown` −14**, `falloff` 10 — a dished ring, not a cut |
 | 2 range pushes | `amounts` 20–36 per ring vertex, `crown` 16, `falloff` 12 — the technique `showcase/19-mountain-range` is the worked example of |
 
-Read back: `low 12 · high 75 · relief 63 · symErr 0`. The crevasse floors read **11–17** against a plateau
-pinned at 26; the goal's flat reads 26 across its whole width.
+Read back: `low 10 · high 75 · relief 65 · symErr 0`. The goal's flat reads 26 across its whole width, and
+the ground round every building's footprint reads **1–2 blocks of spread**.
+
+**A ravine is a push, not a mark.** The first pair of these were `line` marks at `h 12` — a height pinned
+exactly, cut into ground the `wood` and `downs` areas hold level, which comes out as a slot with two
+vertical walls. Two of them ran through the beach, where a sheer face has no business at all: a section
+across the board read *sand, wall, sand*, which is quarrying rather than terrain. A push with a **negative
+crown** dishes the ring it is drawn on toward its own medial axis and skirts the result out over `falloff`,
+so the sides slope and the lip is a lip. Both are now in the wood and on the downs, and neither is in sand.
 
 ## The mere, and why the island is a hole in a ring
 
@@ -59,6 +66,39 @@ The bed is the `mere` mark at `h 15` out to `40 × 30`. Beyond it nothing is pin
 relaxation climbs from 15 to 24 over thirty-odd blocks: **that slope is the beach**, and it is large because
 nothing was drawn to stop it being.
 
+## Where a building may stand, and why it is searched rather than typed
+
+A building seats on the **lowest** column of its own footprint and the terrain standing over that floor is
+carved out of it. That is what lets a house dig into a bank instead of standing on a plinth, and it has no
+opinion about how much bank there is: hand-sited on rolling downs, four of the first five houses landed on
+footprints spanning 8 to 13 courses, and one of them sat **inside a ravine** — its own ground reading 11
+against a 31-block wall three blocks away. Nothing declined any of it, because every cell had ground under
+it. A house you cannot see is not a house.
+
+So the sites are computed. `yards()` walks a two-block grid over the three flats and keeps a cell where
+
+- the **whole footprint** is inside one of the flats — the same rings the `area` marks are written from, so
+  "level ground" cannot mean one thing to the terrain and another to the search;
+- it is outside every push's own exclusion. This is not the same as outside the push: what decides whether
+  a building can stand is the **gradient** where it stands, and a push's is its lift over its falloff. A
+  hill's ring interior is domed toward the medial axis and steep, so a building keeps out of the ring; its
+  skirt at `falloff 20` is one course every four blocks — two across a footprint — and a building may stand
+  on that. A ravine's side and a massif's flank are steep on any reading and are kept out of whole;
+- it is 12 blocks off every road, 22 from the goal, and 24 from the last site taken.
+
+Three sites survive on this board, which is six buildings across the orbit, and each one gets a `yard-*`
+`area` mark written after everything else so the plateau is stated rather than hoped for. Measured on the
+built world, the ground round each footprint reads **1–2 blocks of spread**.
+
+**The hills changed to make room, and they are better for it.** At `falloff 12` a lift of 5 is a knoll at
+one course every two blocks: a house standing anywhere on it has five courses of relief across its own
+footprint, which is what its walls are. At `falloff 20` the same lift is one course every four. *Rolling* is
+a statement about the gradient, not about the height.
+
+The general fault is now a gate rather than a habit: `DR-SLOPE` declines a building whose footprint rises by
+as much as the building itself stands — its wall courses plus the rise of its roof — shipped in pgm-studio
+as `WE29`. It reports what this board found, on any board.
+
 ## The path, and the one thing it may not have
 
 Four `stroke` props, `radius 3` — seven blocks across — paved with a `cell` material of brick, granite and
@@ -70,7 +110,7 @@ from the spawn to the mere, a branch to the Wardstone, and a loop round each sid
 crosses whatever it covers and its skirt is where its gradient lives, so the cause was hills sited where the
 roads run — two of them on the beach, which is the last place a hill belongs. The hills moved onto the downs
 and into the wood, the grain came down from 1.6 to 1.0, and the shore loops moved eight blocks inland off
-the crevasse ends. Measured per block over all **236 cells** of road:
+the low ground. Measured per block over all **236 cells** of road:
 
 ```
 spine    74 cells   steps > 1: 0
@@ -84,8 +124,8 @@ shore-e  71 cells   steps > 1: 0
 Eleven grounds and **five seam themes**, and a seam theme is not a twelfth ground: it is one step off each
 of the two it stands between, so a stroke of it reads as the two mixing rather than as a third material
 arriving. `seam-mere` (gravel and sand, the wet edge) rings the water; `seam-strand` (sand and grass) runs
-round the back of the beach; `seam-scar` is a wide ribbon along each crevasse with the narrower `scar`
-ribbon inside it, so what is left of the wider one is exactly the lip; `seam-holt` is more podzol and less
+round the back of the beach; `seam-scar` is a wide ribbon along each ravine with the narrower `scar`
+ribbon inside it, so what is left of the wider one is exactly the shoulder; `seam-holt` is more podzol and less
 grass along the wood's edge; `seam-crag` is the foot of the range. Paint scopes to the smallest shape
 covering a cell, which is what lets one stroke carry a whole ground and a dozen sit inside it.
 
@@ -98,10 +138,10 @@ Every block in every palette is claimed by a paint family. Smooth sandstone (`24
 ```
 score 2.548 · valid true · symErr 0
 goal destroyable-1 (The Wardstone): own 62 · enemy 199 · ratio 3.21
-island team: cells 21353 · low 12 · high 75 · relief 63
+island team: cells 21353 · low 10 · high 75 · relief 65
 export gate OPEN · <maxbuildheight> 95 · 4 region files
-coverage: reached 19369 · decorated 4879 · dead 11870 of 36118 = 32.9%
-provenance: tree 54 · boulder 22 · flora 12 · house 10 · stroke 8 · destroyable 2 · spawn 2 · ironcube 2
+coverage: reached 19369 · decorated 3510 · dead 13239 of 36118 = 36.7%
+provenance: tree 52 · boulder 20 · flora 12 · house 6 · stroke 8 · destroyable 2 · spawn 2 · ironcube 2
 dressing: nothing declined
 ```
 
@@ -112,16 +152,17 @@ the longest run of *collinear, land-joined* pieces, and with every tier a differ
 here is the widest single piece — the board's own 150-block width. A lake with an island, a beach round it
 and a road either side does not fit in 110.
 
-**32.9% dead ground** is the beach, the water and the backdrop. Every dead patch is one block from used
+**36.7% dead ground** is the beach, the water and the backdrop. Every dead patch is one block from used
 ground; the two large ones are the quadrants of sand between the four roads. Four routes were drawn rather
-than one partly to answer it, which moved it from 37.3%. Whether a beach that players cross rather than
+than one partly to answer it. Whether a beach that players cross rather than
 fight over should count against a board is the author's call, not a derivable one.
 
 ## Two readings
 
 **The observer platform stands over the island.** `observer-spawn` seats a 6 × 6 bedrock pad at the board's
 centre, which on this board is directly above the mere's island. `observerY` is 130 rather than the 90 it
-was authored at, which puts it 108 courses up instead of 68.
+was authored at, which puts it 108 courses up instead of 68; it is what the magenta square at the centre of
+`render/surface` is, since the render draws the topmost block and no paint family claims bedrock.
 
 **The 3-D preview drew this board flat, and the cause was a studio bug this board found.** Two brush strokes
 drawn wholly on the mirrored half fell outside the compiled ground's own polygon — the compiler emits one
