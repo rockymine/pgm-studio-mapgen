@@ -10,8 +10,8 @@ wide sand shore, held in rolling fell above which the mountains rise and run off
 the map, with one endstone wardstone standing on a shelf in the hills and a track down to the water
 past three cabins and a lakeside camp.
 
-176 × 248 blocks drawn (the coast reaches z ±173), `rot_180` about the origin, one landmass of
-**34,335 cells**, ground from **y6 to y80**, build ceiling 100, symmetry error **0**.
+176 × 348 blocks drawn (the coast reaches z ±173), `rot_180` about the origin, one landmass of
+**33,942 cells**, ground from **y6 to y80**, build ceiling 100, symmetry error **0**.
 
 ## The two distances the board is authored to
 
@@ -67,16 +67,34 @@ pins the coastal strip at its own heights and puts the crest itself off the map.
 The heightmap is the proof: every contour band in the mountains is cut by the frame rather than
 closing inside it, and the four summits `peak-a`…`peak-d` (radius 3–4) put crests on the crest.
 
+## The tarn is not a circle, and it did not have to be
+
+**`rot_180` maps a shape centred on the origin onto itself**, so the only thing a lake at the centre
+of the board has to be is symmetric about its own centre. A circle satisfies that and so does
+anything else with a half-turn in it, which is the whole freedom the constraint leaves.
+
+So every ring on this board is drawn from one profile of twelve radii covering half a turn, repeated
+at θ+180° — an outline that maps onto itself by construction, and reads as a tilted oval with a
+shoulder on one side and a pinch on the other rather than as a compass arc. The profile runs
+0.86 · 0.93 · 1.03 · 1.13 · 1.17 · 1.10 · 0.97 · 0.86 · 0.90 · 0.83 · 0.78 · 0.80, smoothstepped
+between entries so the outline has no corners, and a `swell` scales how far each ring departs from a
+circle so an outer one can be gentler without stopping being the same shape.
+
+The pan, the two shore lines, the waterline, the beach's paint scope, the islet and its bank and the
+four shore seams are all traced from it, which is what keeps the beach an even band round a shore
+that is nowhere an arc: the long axis reaches 47 blocks and the pinch 35.
+
 ## What is where
 
 | Band | Ground | Carries |
 |---|---|---|
-| r < 8 | y16, an islet | one mossy cairn, ground cover at 0.45 |
-| r 8..13 | y9, the islet's own sand | — |
-| r 13..37 | **the tarn**, water at y5 over a bed at y2 | a `natural` water ring, 24 wide, cut 3 deep, banks of sand over gravel |
-| r 37..49 | **the beach**, y7 | four courses of sand deep, so a shore dug into is still a shore |
-| r 49..64 | the beach shelving up, y7 → 13 → 16 | the shore seam brush |
+| the islet | y16 | one mossy cairn, ground cover at 0.45 |
+| its own sand | y9 | — |
+| **the tarn**, 21–28 out on the profile | water at y5 over a bed at y2 | a `stream`-banked water ring 20 wide, cut 3 deep, banks of sand over gravel |
+| **the beach**, out to 33–47 | y7 | four courses of sand deep, so a shore dug into is still a shore |
+| the beach shelving up, to 43–61 | y7 → 13 → 16 | the two shore seams |
 | \|z\| 58..104 | **the forest**, y13..30 | 56 trees — oak, spruce, birch — over podzol, ground cover at 0.5 |
+| the flanks at \|z\| < 58 | **open fell**, y12..24 | 32 trees and 12 boulders over the band the beach and the wood both leave bare, with ground cover at 0.34 |
 | \|z\| 58..126 | **the rolling fell** | 14 hill and hollow marks, two pushes, three cabins, the wardstone's shelf |
 | \|z\| 126..173 | **the mountains**, to y80 | bare rock, brushed |
 | the flanks | **four crevasses**, void to y0 | `subtract` polygons ~8 wide, open at the coast, closing inland |
@@ -89,7 +107,7 @@ is a twenty-course ravine a player can walk down into and out of.
 
 ## The brush does three jobs
 
-Sixteen strokes, and none of them is a road except the five that are.
+Twenty-eight strokes, and none of them is a road except the five that are.
 
 **The path.** `path-main` is **seven blocks across** (`radius 3.5`, `solid`, `coverage 1.0`), the only
 stroke on the board that claims its cells as a `route`, and it meanders `(0,116) → (-13,106) →
@@ -104,22 +122,32 @@ crest, `peak-pale` at 8 in diorite, `peak-snow` at 5 in snow, and three more on 
 run off the north, west and east edges so the frame cuts snow and not bare stone. All `rough`, so the
 band's width wanders and no snowline is a drawn curve.
 
-**The seams.** Five `rough` strokes at **coverage 0.26 to 0.45**, each laid in the material of the
-area on the *far* side of it, so most of the ground it crosses still shows and the join reads as a
-gradient: sand-and-grass round the shore at radius 11, podzol-and-grass along both edges of the wood
-at 9, andesite-and-coarse-dirt along the mountains' foot at 8, sand round the islet at 3.
+**The seams.** Seventeen `worn` strokes, and the style is the whole of it: **only `worn` spends
+`coverage`.** It rolls a die per cell against it, which is what makes a band read as scattered
+ground; `rough` wanders the band's *edge* and fills what is inside it solid, so a seam drawn with one
+is a belt of a third material laid over the join — which is what a three-material voronoi at
+`rough` had made of every boundary on this board.
+
+Each seam is now **two grounds freckling into each other, one material to a stroke**: a wide thin
+stroke at the far edge and a narrow dense one over it, so the density ramps from a scatter to about
+half cover and no boundary is a drawn curve. Grass out to radius 8 at 0.24 and in to 4 at 0.34;
+its opposite number in the same two sizes at 0.22 and 0.30 — sand round the shore, podzol along
+both edges of the wood, andesite and coarse dirt at the mountains' foot, and one sand stroke round
+the islet. Never a third material in a seam: a voronoi of three laid across a join is a new ground
+over the top of it, which is what reads as noise wherever the two it stands between already differed.
 
 ## What it costs
 
 `GET …/preflight`: **export gate OPEN**. Round-trip, mirror and buildability clean, traversability
 connected for both teams.
 
-The dressing pass places **126 props and declines none**.
+The dressing pass takes **100 prop documents — 44 trees, 15 boulders, 6 buildings, 6 flora fields,
+one water and 28 strokes — and declines none**.
 
-`GET …/coverage`: **60.1 % dead** — 34,889 of 58,083 ground cells sit off every route. Both dead
-patches are one block from used ground and centred at `(±21, ±93)`, which is to say: *everything
+`GET …/coverage`: **54.5 % dead** — 31,661 of 58,083 ground cells sit off every route. Both dead
+patches are one block from used ground and centred at `(±17, ±103)`, which is to say: *everything
 except the corridor the one journey on this board takes.* A single-goal map has one route, and a
-mountain backdrop is scenery on purpose — but 60 % is the number, and it is the honest cost of the
+mountain backdrop is scenery on purpose — but 54 % is the number, and it is the honest cost of the
 brief rather than something the board hides. Bringing it down means more objectives, not less
 landscape.
 

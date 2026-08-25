@@ -919,3 +919,48 @@ A relief keyed to any other name answers `SK3 — a relief is stated for island 
 does not carry`, and then `relief/read` answers no islands at all. `{"*": {...}}` is the key for a
 board of one island, and the driver's own guard stops the run there rather than building a flat
 world.
+
+### Only `worn` spends `coverage` — `rough` fills its band solid
+
+`PathStroke` decides a cell's membership in two steps: a half-width the style shapes, and then a
+per-cell gate. Only `PathStyle.Worn` has the gate (`PatternNoise.Unit(x, z, seed + 11) < coverage`).
+`Rough` spends its knob on the band's *edge* instead, wandering the half-width by ±45 % over a
+7-block scale, and fills everything inside it. So `style="rough", coverage=0.26` is a **solid belt**,
+not a freckle, and sixteen seam strokes written that way turned every boundary on `opus5-tarnfell`
+into a stripe of a third material laid over the join.
+
+A seam wants `worn`, and it wants **two grounds freckling into each other, one material to a
+stroke**: a wide thin stroke at the far edge and a narrow dense one over it, so the density ramps
+from a scatter to about half cover. A voronoi of three materials in one stroke is a new ground over
+the boundary, which reads as noise wherever the two it stands between already differed.
+
+### `rot_180` maps a shape centred on the origin onto itself, so a central lake may be any shape
+
+The mirror does not force a circle; assuming it does is what produces one. Any outline with a
+half-turn in it is already symmetric, so a profile of radii covering **half** a turn, repeated at
+θ+180°, gives a lobed, elongated or kidney-shaped water that fans without error. Smoothstep between
+the profile's entries or the outline comes out faceted, and give the helper a `swell` so an outer
+ring can depart from a circle less than the waterline while staying the same shape — that is what
+keeps a beach an even band round a shore that is nowhere an arc.
+
+### Relief is keyed by island id across the whole stack, and `*` is the ground's alone
+
+`SketchRasterizer.ReliefFields` walks every layer and looks each of its islands up in the one
+`relief` dictionary, adding that layer's `base_y` to the field it solves. So a stacked board can give
+each storey its own landscape — `{"team": …, "walls": …}` — and a layer's marks are stated in **its
+own frame**, not the board's. `drive.py`'s `"*"` expands over the islands the *compile* emitted, so a
+key stated beside it survives and names a layer added in the finish.
+
+### A wool room must abut ground, not sit inside a piece
+
+A `wool-room` piece drawn inside a larger `piece` rectangle shares no edge with it, and the plan tier
+answers `WX6 — wool room is unreachable: no land seam and no abutting build zone to enter by`. Split
+the surrounding piece into rectangles that tile around the room instead.
+
+### The plan tier's frontline is the pieces a **build zone** touches
+
+`FannedGraph.Build` sets `Frontline` to the nodes that touch a fanned build zone, and `SP1` asks
+whether a wool is reachable from a frontline node without crossing a spawn. A plan with `zones: []`
+therefore has no frontline at all, and every wool on it refuses with *"only reachable through a spawn
+piece"* however open the board is. The canonical two-wool seed carries a `mid-band` zone for exactly
+this reason.

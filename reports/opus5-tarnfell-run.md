@@ -15,8 +15,11 @@ island itself, so the highest peaks and rolling hills are visible from the side 
 than the terrain dropping to the side and wasting the space.* No second layers.
 
 What I built: `maps/opus5-tarnfell`, documents in `specs/opus5-tarnfell/`, the account in
-`review/opus5-tarnfell.md`. 176 × 348, one landmass of 34,335 cells, y6 to y80, thirty relief marks,
-sixteen strokes, 126 props, zero declines, export gate open.
+`review/opus5-tarnfell.md`. 176 × 348, one landmass of 33,942 cells, y6 to y80, thirty-three relief
+marks, twenty-eight strokes, 100 prop documents, zero declines, export gate open.
+
+Then a second pass on the author's reading of it: the lake was a circle, the seams round it were
+noise, and the flanks at the middle of the board were bare grass. All three are below.
 
 ## The finding this run is for
 
@@ -44,6 +47,32 @@ range. **The rolling is the relaxation's; a radius is how much of the landform y
 let it do.** An `area` mark is the opposite instrument and is right where flat is the point: the lake
 pan, the spawn terrace and the wardstone's shelf are the three level places on this board and all
 three are areas.
+
+## The two findings the second pass turned up
+
+**Only `worn` spends `coverage`.** `PathStroke` decides membership of a band in two steps — a width,
+which the style shapes, and then a per-cell gate, which only `PathStyle.Worn` has:
+`PatternNoise.Unit(x, z, seed + 11) < coverage`. `Rough` spends its knob on the *edge*, wandering
+the band's half-width by ±45 % over a 7-block scale, and fills whatever is inside it **solid**. So
+sixteen seam strokes written `style="rough", coverage=0.26` were sixteen solid belts, and because
+each was paved with a voronoi of three materials, every boundary on the board was a stripe of a
+third ground laid over the join. The author's word for it was "a lot of noise", and the reading was
+exact.
+
+The fix is the style, and then the composition. `worn` at the same coverage freckles: a seam is now
+**two grounds freckling into each other, one material to a stroke** — a wide thin stroke at the far
+edge and a narrow dense one over it, so the density ramps rather than stopping at a line. Seventeen
+strokes where there were five, two materials to a seam and never a third.
+
+**`rot_180` maps a shape centred on the origin onto itself, so a central lake is free of the
+symmetry entirely.** The circle was not the mirror's doing — it was mine, and I had assumed the
+constraint forced it. What the constraint actually asks is that the outline have a half-turn in it,
+which every ellipse, kidney and lobe also has. One profile of twelve radii covering half a turn,
+repeated at θ+180° and smoothstepped between entries, gives an outline that is symmetric by
+construction and reads as a tilted oval with a shoulder and a pinch. Every ring on the board is
+traced from it — pan, shore lines, waterline, paint scope, islet, seams — with a `swell` scaling how
+far each departs from a circle, which is what keeps the beach an even band round a shore that is
+nowhere an arc.
 
 ## What I could not say
 
@@ -105,9 +134,9 @@ render's worth of doubt to remember that.
 - **`rot_180` over a polygon authored on one half.** The coast is drawn on three sides and the
   fourth is the `z = 0` seam the mirror closes; the two halves fuse into one island and the relief
   folds across it. Symmetry error **0**, first build and every build after.
-- **The lake.** One `water` prop traced as a wobbled ring at radius 25 with a band of 12, cut three
-  courses into an `area` mark holding the pan flat at y6 — so the water line is level by construction
-  rather than by luck, and the islet inside the ring stands ten blocks clear of it.
+- **The lake.** One `water` prop traced as a ring at radius 25 with a band of 10, cut three courses
+  into an `area` mark holding the pan flat at y6 — so the water line is level by construction rather
+  than by luck, and the islet inside the ring stands ten blocks clear of it.
 - **The two authored distances.** 30 right and 50 ahead came out exact; the pair measures 150.5
   because 30 and 50 fix it and 68.74 is not a block.
 - **The brush on the peaks.** Six `rough` strokes along the crest and its shoulders, and the snow runs

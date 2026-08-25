@@ -283,7 +283,10 @@ def patch_layout(layout, finish):
     relief = finish.get("relief")
     if relief:
         if "*" in relief:
-            relief = {island["id"]: relief["*"] for island in islands}
+            # `*` is the ground's, not the board's: it names every island the compile emitted, and a
+            # key stated beside it — a layer added here — keeps its own.
+            wildcard = {key: value for key, value in relief.items() if key != "*"}
+            relief = {**{island["id"]: relief["*"] for island in islands}, **wildcard}
         layout["relief"] = relief
     themes = finish.get("themes")
     if themes:
@@ -459,12 +462,16 @@ def main():
         # The world directory holds what a server loads and nothing else: region/, level.dat, map.xml.
         # The provenance sidecar is a read-back aid — which pass claimed which column — so it travels
         # with the documents rather than with the world a server is handed.
-        # The zip carries the map's own folder, so the world sits one level down; take whichever
-        # of the two shapes is on disk rather than assuming either.
+        # The zip carries the map's own folder, so the world lands one level down. `--out` is what a
+        # server is handed and holds `region/`, `level.dat` and `map.xml` at its top, so the nesting
+        # is undone here rather than left for whoever ships the directory to notice.
         nested = [os.path.join(out, entry) for entry in os.listdir(out)
                   if os.path.isdir(os.path.join(out, entry, "region"))]
-        world = nested[0] if nested else out
-        recorded = os.path.join(world, "region", "provenance.json")
+        if len(nested) == 1:
+            for entry in os.listdir(nested[0]):
+                shutil.move(os.path.join(nested[0], entry), os.path.join(out, entry))
+            os.rmdir(nested[0])
+        recorded = os.path.join(out, "region", "provenance.json")
         if os.path.exists(recorded):
             shutil.move(recorded, os.path.join(specdir, "provenance.json"))
             print(f"    provenance -> {specdir}/provenance.json")

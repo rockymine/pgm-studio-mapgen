@@ -141,6 +141,45 @@ THEMES = {
 }
 
 
+# ── the outline everything round the water is drawn to ────────────────────────────────────────
+# `rot_180` maps a shape centred on the origin onto itself, so the only thing a lakeshape at the
+# centre has to be is symmetric about its own centre — it does not have to be a circle. `LOBES` is
+# half a turn of radii; the other half repeats it, which is exactly that symmetry, and every ring
+# round the tarn is drawn from it so the pan, the water, the beach and the two seams stay parallel.
+# `swell` scales how far a ring departs from a circle, so an outer ring can be gentler than the
+# waterline without stopping being the same shape.
+LOBES = [0.86, 0.93, 1.03, 1.13, 1.17, 1.10, 0.97, 0.86, 0.90, 0.83, 0.78, 0.80]
+
+
+def _lobe(angle):
+    """The half-profile sampled at `angle`, smoothstepped between entries so the outline has no
+    corners, and repeating every 180 degrees."""
+    span = math.pi / len(LOBES)
+    t = (angle % math.pi) / span
+    i = int(math.floor(t)) % len(LOBES)
+    j = (i + 1) % len(LOBES)
+    f = t - math.floor(t)
+    f = f * f * (3 - 2 * f)
+    return LOBES[i] * (1 - f) + LOBES[j] * f
+
+
+def lobed(radius, count=28, swell=1.0, cx=0.0, cz=0.0):
+    """A closed outline round `(cx, cz)`. With an even `count` and the centre on the origin it maps
+    onto itself under `rot_180`, so the fanned board reads as one lake rather than two halves."""
+    out = []
+    for k in range(count):
+        angle = 2 * math.pi * k / count
+        r = radius * (1 + swell * (_lobe(angle) - 1))
+        out.append((round(cx + r * math.cos(angle), 1), round(cz + r * math.sin(angle), 1)))
+    return out
+
+
+def closed(points):
+    """The same ring with its first point repeated, which is what a `line` mark and a `path` stroke
+    want and an `area` mark and a polygon do not."""
+    return list(points) + [points[0]]
+
+
 # ── the ground ────────────────────────────────────────────────────────────────────────────────
 # One polygon, authored on the +z half and fanned. Its z = 0 edge is the seam the mirror closes,
 # so the coast is drawn on three sides and the fourth is where the two halves meet.
@@ -174,12 +213,6 @@ def polygon(prefix, points, floor=0, height=LAND_H, op="add", theme_key=None):
     return shape
 
 
-def circle(prefix, cx, cz, radius, theme_key, floor=0, height=LAND_H):
-    return {"id": sid(prefix), "type": "circle", "operation": "add",
-            "center_x": cx, "center_z": cz, "radius": radius,
-            "floor": floor, "base_height": height, "theme": theme_key}
-
-
 def rect(prefix, x0, z0, x1, z1, theme_key, floor=0, height=LAND_H):
     return {"id": sid(prefix), "type": "rectangle", "operation": "add",
             "min_x": x0, "min_z": z0, "max_x": x1, "max_z": z1,
@@ -194,9 +227,9 @@ shapes += [polygon("crev", ring, height=64, op="subtract") for ring in CREVASSES
 # else. They nest smallest-first, which is the order the scope resolves in.
 shapes += [
     rect("t", -88, 58, 88, 104, "wood"),        # the forest, a band across the board
-    circle("t", 0, 0, 58, "beach"),             # the shore round the water
-    circle("t", 0, 0, 40, "lakebed"),           # what the water covers
-    circle("t", 0, 0, 12, "isle"),              # and the island in the middle of it
+    polygon("t", lobed(58, swell=0.7), theme_key="beach"),     # the shore round the water
+    polygon("t", lobed(41, swell=0.8), theme_key="lakebed"),   # what the water covers
+    polygon("t", lobed(11, swell=0.5), theme_key="isle"),      # and the island in the middle of it
     rect("t", -88, 124, 88, 174, "crag"),       # the mountains behind the spawn
 ]
 
@@ -230,14 +263,13 @@ MARKS = [
     # ── the water, first, so everything stated after it wins the cells they share ──
     # An `area` mark pins its whole interior flat, which is what a lake pan is; the ring is wobbled
     # so the shore is a shape rather than a compass circle.
-    area("lake-pan", ring_of(0, 0, 42, 22, wobble=0.10), LAKE_Y),
+    area("lake-pan", lobed(42, swell=0.8), LAKE_Y),
     # Two shore lines with unpinned ground between them: butted, they build as two terraces and a
     # five-course step at the seam; seven blocks apart, the relaxation ramps 8 to 14 across the gap
-    # and the beach shelves instead.
-    line("shore-lo", ring_of(0, 0, 43, 24, wobble=0.09, phase=0.6)
-         + [ring_of(0, 0, 43, 24, wobble=0.09, phase=0.6)[0]], [BEACH_Y - 2], 5),
-    line("shore-hi", ring_of(0, 0, 60, 24, wobble=0.08, phase=1.4)
-         + [ring_of(0, 0, 60, 24, wobble=0.08, phase=1.4)[0]], [BEACH_Y + 4], 4),
+    # and the beach shelves instead. Both are drawn to the same profile as the pan, so the beach is
+    # a band of even width round a shore that is nowhere a circular arc.
+    line("shore-lo", closed(lobed(43, swell=0.8)), [BEACH_Y - 2], 5),
+    line("shore-hi", closed(lobed(60, swell=0.7)), [BEACH_Y + 4], 4),
 
     # ── the rolling hills ──
     # **A point mark's radius pins a flat disc**, so a radius is a mesa and not a summit: these are
@@ -285,9 +317,8 @@ MARKS = [
     area("goal-shelf", ring_of(GOAL[0], GOAL[1], 11, 12, wobble=0.12), 27),
 
     # ── and the island, last of all, because it is the one mark inside the lake ──
-    line("isle-shore", ring_of(0, 0, 11, 16, wobble=0.14) + [ring_of(0, 0, 11, 16, wobble=0.14)[0]],
-         [LAKE_Y + 3], 3),
-    area("isle", ring_of(0, 0, 8, 16, wobble=0.16), ISLE_Y),
+    line("isle-shore", closed(lobed(9.5, swell=0.5)), [LAKE_Y + 3], 3),
+    area("isle", lobed(7, swell=0.5), ISLE_Y),
     point("isle-knoll", 2, 3, ISLE_Y + 4, 3),
 ]
 
@@ -320,6 +351,19 @@ def stroke(ident, points, radius, pave, style="worn", coverage=0.4, route=False,
         out["route"] = True
     out["points"] = [[x, z] for x, z in points]
     return out
+
+
+def worn(ident, points, radius, coverage, material, seed):
+    """One freckling stroke. **Only `worn` spends `coverage`** — it rolls a die per cell against it, which is
+    what makes a band read as scattered ground. `rough` wanders the band's *edge* and fills what is inside it
+    solid, so a seam drawn with it is a belt of a third material laid over the join rather than a gradient."""
+    return stroke(ident, points, radius, material, style="worn", coverage=coverage, seed=seed)
+
+
+def band(z, sway=3.0, phase=0.0):
+    """A polyline across the board at a nominal z, wandering a little, so a seam is not a drawn line."""
+    return [(x, round(z + sway * math.sin(0.8 * k + phase), 1))
+            for k, x in enumerate((-88, -58, -30, -2, 26, 56, 88))]
 
 
 TRACK = voronoi(21, 4, [(COARSE, 2), (DIRT, 2), (GRAVEL, 1)])
@@ -365,24 +409,32 @@ STROKES = [
            coverage=0.65, seed=46),
 
     # ── the seams, brushed so no two areas meet along a line ──
-    # Each one is laid in the material of the area on the far side of it, at a coverage that leaves
-    # most of the ground it crosses showing, so the join reads as a gradient rather than an edge.
-    stroke("seam-shore", ring_of(0, 0, 58, 28, wobble=0.07)
-           + [ring_of(0, 0, 58, 28, wobble=0.07)[0]], 11,
-           voronoi(29, 6, [(SAND, 2), (GRASS, 2), (COARSE, 1)]),
-           style="rough", coverage=0.26, seed=51),
-    stroke("seam-wood-s", [(-88, 60), (-44, 56), (0, 59), (44, 56), (88, 60)], 9,
-           voronoi(30, 5, [(PODZOL, 2), (GRASS, 2), (COARSE, 1)]),
-           style="rough", coverage=0.28, seed=52),
-    stroke("seam-wood-n", [(-88, 103), (-44, 106), (0, 102), (44, 106), (88, 103)], 9,
-           voronoi(31, 5, [(PODZOL, 2), (GRASS, 2), (COARSE, 1)]),
-           style="rough", coverage=0.28, seed=53),
-    stroke("seam-crag", [(-88, 126), (-44, 122), (0, 127), (44, 122), (88, 126)], 8,
-           voronoi(32, 6, [(ANDESITE, 2), (COARSE, 2), (GRAVEL, 1)]),
-           style="rough", coverage=0.45, seed=54),
-    stroke("seam-isle", ring_of(0, 0, 10, 14, wobble=0.12)
-           + [ring_of(0, 0, 10, 14, wobble=0.12)[0]], 3,
-           voronoi(33, 4, [(SAND, 2), (GRASS, 1)]), style="rough", coverage=0.5, seed=55),
+    # **A seam is two grounds freckling into each other, in two strokes of one material each.** Each side
+    # gets a wide thin stroke and a narrow dense one over it, so the density ramps from a scatter at the far
+    # edge to a half-cover at the join and no boundary is a drawn curve. Two materials to a seam and never a
+    # third: a voronoi of three laid across a join is a new ground over the top of it, which is what reads as
+    # noise wherever the two it stands between were already different colours.
+    worn("seam-shore-grass-far", closed(lobed(53, swell=0.7)), 8, 0.24, GRASS, 51),
+    worn("seam-shore-grass", closed(lobed(56, swell=0.7)), 4, 0.34, GRASS, 61),
+    worn("seam-shore-sand-far", closed(lobed(63, swell=0.7)), 8, 0.22, SAND, 56),
+    worn("seam-shore-sand", closed(lobed(60, swell=0.7)), 4, 0.32, SAND, 62),
+
+    worn("seam-wood-s-grass-far", band(63, phase=0.3), 8, 0.24, GRASS, 52),
+    worn("seam-wood-s-grass", band(60, phase=0.9), 4, 0.32, GRASS, 63),
+    worn("seam-wood-s-podzol-far", band(53, phase=1.5), 8, 0.22, PODZOL, 57),
+    worn("seam-wood-s-podzol", band(56, phase=2.1), 4, 0.30, PODZOL, 64),
+
+    worn("seam-wood-n-grass-far", band(99, phase=0.6), 8, 0.24, GRASS, 53),
+    worn("seam-wood-n-grass", band(102, phase=1.2), 4, 0.32, GRASS, 65),
+    worn("seam-wood-n-podzol-far", band(109, phase=1.8), 8, 0.22, PODZOL, 58),
+    worn("seam-wood-n-podzol", band(106, phase=2.4), 4, 0.30, PODZOL, 66),
+
+    worn("seam-crag-stone-far", band(119, phase=0.4), 8, 0.22, ANDESITE, 54),
+    worn("seam-crag-stone", band(122, phase=1.0), 4, 0.32, ANDESITE, 67),
+    worn("seam-crag-dirt-far", band(129, phase=1.6), 8, 0.24, COARSE, 59),
+    worn("seam-crag-dirt", band(126, phase=2.2), 4, 0.30, COARSE, 68),
+
+    worn("seam-isle", closed(lobed(9, swell=0.5)), 3, 0.45, SAND, 55),
 ]
 
 
@@ -425,18 +477,28 @@ FOREST = [
     (-80, 98, "spruce", 12), (58, 58, "oak", 9), (-56, 98, "oak", 10), (28, 102, "birch", 9),
 ]
 
+# The flanks, at the middle of the board: the band outside the beach and south of the wood, which
+# the forest list does not reach and no landform crosses.
+FLANKS = [
+    (-72, 12, "oak", 11), (-63, 27, "birch", 9), (-74, 38, "spruce", 12), (-61, 46, "oak", 10),
+    (-70, 53, "oak", 12), (-56, 34, "birch", 8), (-78, 26, "oak", 9), (-52, 14, "oak", 10),
+    (70, 16, "oak", 12), (62, 30, "spruce", 13), (72, 42, "oak", 10), (60, 50, "birch", 9),
+    (67, 7, "birch", 9), (55, 39, "oak", 11), (77, 32, "oak", 9), (64, 61, "spruce", 11),
+]
+
 props = [
     # the water. One ring traced round the island at a radius that leaves the isle standing and
     # reaches the beach on the other side, cut three courses into a pan the relief already flattened
     {"id": "the-mere", "kind": "water", "seed": 5, "form": "natural",
-     "points": [[x, z] for x, z in ring_of(0, 0, 25, 24, wobble=0.08, phase=0.3)]
-               + [list(ring_of(0, 0, 25, 24, wobble=0.08, phase=0.3)[0])],
-     "radius": 12.0, "depth": 3, "edge": 0.9, "shore": 7, "shoreWander": True,
+     "points": [[x, z] for x, z in closed(lobed(25, swell=0.65))],
+     "radius": 10.0, "depth": 3, "edge": 0.9, "shore": 7, "shoreWander": True,
      "bank": voronoi(35, 5, [(SAND, 3), (SAND, 2), (GRAVEL, 1), (SANDSTONE, 1)])},
 ]
 
 props += [tree(f"wood-{k}", x, z, sp, h, 200 + k)
           for k, (x, z, sp, h) in enumerate(FOREST)]
+props += [tree(f"flank-{k}", x, z, sp, h, 300 + k)
+          for k, (x, z, sp, h) in enumerate(FLANKS)]
 
 props += [
     # the four places somebody lives, each at the end of a thinner path
@@ -463,8 +525,25 @@ props += [
           scale=9, fern=0.22, flower=0.18, tall=0.2),
     flora("turf-hills", [(-84, 104), (84, 104), (84, 124), (-84, 124)], 0.3, 72,
           scale=13, fern=0.08, flower=0.3, tall=0.08),
-    flora("turf-shore", ring_of(0, 0, 54, 18), 0.22, 73, scale=8, fern=0.05, flower=0.35, tall=0.05),
-    flora("turf-isle", ring_of(0, 0, 8, 12), 0.45, 74, scale=6, fern=0.1, flower=0.4, tall=0.1),
+    flora("turf-shore", lobed(54, swell=0.7, count=20), 0.22, 73,
+          scale=8, fern=0.05, flower=0.35, tall=0.05),
+    flora("turf-isle", lobed(8, swell=0.5, count=12), 0.45, 74,
+          scale=6, fern=0.1, flower=0.4, tall=0.1),
+
+    # ── the flanks, which the rest of the board leaves as bare grass ──
+    # The band between the beach's outer edge and the flank coast carries no landform and no wood,
+    # so nothing was standing on it. Authored on both flanks at +z, because the fan puts the +x
+    # half onto -x at -z and there is otherwise a quadrant with nothing in it.
+    boulder("rock-flank-w1", -66, 20, 3.0, 81, form="round", mossy=True),
+    boulder("rock-flank-w2", -75, 42, 2.6, 82),
+    boulder("rock-flank-w3", -59, 7, 2.2, 83, form="outcrop"),
+    boulder("rock-flank-e1", 68, 26, 3.2, 84),
+    boulder("rock-flank-e2", 73, 49, 2.4, 85, form="round", mossy=True),
+    boulder("rock-flank-e3", 57, 13, 2.0, 86, form="cairn", mossy=True),
+    flora("turf-flank-w", [(-82, 4), (-50, 4), (-50, 56), (-82, 56)], 0.34, 75,
+          scale=10, fern=0.14, flower=0.3, tall=0.1),
+    flora("turf-flank-e", [(50, 4), (82, 4), (82, 56), (50, 56)], 0.34, 76,
+          scale=10, fern=0.14, flower=0.3, tall=0.1),
 ]
 
 props += STROKES
