@@ -1,0 +1,196 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Thornfell"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 24,
+    "surface": 24,
+    "observerY": 130
+  },
+  "pieces": [
+    {
+      "id": "strand",
+      "role": "piece",
+      "rect": [
+        -14,
+        3,
+        28,
+        6
+      ]
+    },
+    {
+      "id": "moor",
+      "role": "piece",
+      "rect": [
+        -15,
+        9,
+        30,
+        6
+      ]
+    },
+    {
+      "id": "neck",
+      "role": "piece",
+      "rect": [
+        -12,
+        15,
+        24,
+        4
+      ]
+    },
+    {
+      "id": "spur-w",
+      "role": "piece",
+      "rect": [
+        -18,
+        19,
+        8,
+        3
+      ]
+    },
+    {
+      "id": "apron",
+      "role": "piece",
+      "rect": [
+        -6,
+        19,
+        12,
+        3
+      ]
+    },
+    {
+      "id": "spur-e",
+      "role": "piece",
+      "rect": [
+        10,
+        19,
+        8,
+        3
+      ]
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        22,
+        4,
+        2
+      ]
+    },
+    {
+      "id": "room-w",
+      "role": "wool-room",
+      "rect": [
+        -18,
+        22,
+        4,
+        3
+      ]
+    },
+    {
+      "id": "room-e",
+      "role": "wool-room",
+      "rect": [
+        14,
+        22,
+        4,
+        3
+      ]
+    },
+    {
+      "id": "backdrop",
+      "role": "piece",
+      "rect": [
+        -8,
+        24,
+        16,
+        4
+      ]
+    },
+    {
+      "id": "crag-w",
+      "role": "piece",
+      "rect": [
+        -20,
+        25,
+        7,
+        4
+      ]
+    },
+    {
+      "id": "crag-e",
+      "role": "piece",
+      "rect": [
+        13,
+        25,
+        7,
+        4
+      ]
+    }
+  ],
+  "zones": [
+    {
+      "id": "ford-w",
+      "rect": [
+        -12,
+        -3,
+        7,
+        6
+      ]
+    },
+    {
+      "id": "ford-e",
+      "rect": [
+        5,
+        -3,
+        7,
+        6
+      ]
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          1
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          1,
+          1
+        ]
+      }
+    ],
+    "wools": [
+      {
+        "id": "wool-1",
+        "piece": "room-w",
+        "at": [
+          2.5,
+          1.5
+        ]
+      },
+      {
+        "id": "wool-2",
+        "piece": "room-e",
+        "at": [
+          2.5,
+          1.5
+        ]
+      }
+    ]
+  }
+}

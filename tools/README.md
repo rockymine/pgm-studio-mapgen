@@ -24,6 +24,7 @@ actually posted — so a review reads what was built rather than what was asked 
 |---|---|
 | `themeById` · `themeByHeight` | the theme a compiled shape paints with, by its id or by the height it stands at. The id is the reliable one: compile once, read the ids off `POST /plan/compile`, and key on them. Two pieces at one height fuse into one shape and a height key cannot tell them apart |
 | `shapePropsById` · `shapePropsByHeight` | any field merged onto a compiled shape — `relief_scope`, `controls`, `anchor_heights`, `height_mode` |
+| `bendShapes` | `{"s0": {"k": 0.22, "wander": 3, "step": 9, "seed": 5}}` — the compiled outline drawn as a coast. The compiler emits a staircase of the plan's rectangles, which is the board's shape and not its coast; redrawing the ring by hand states the coast twice, free to disagree with the plan. This resamples the compiled ring along its long edges, pulls each **inserted** point inward by a deterministic wander and lays Catmull-Rom handles over the result. The plan's own vertices never move, and nothing ever moves outward — a point that did could close the strait a capture board is measured on, or narrow the neck a spur hangs off |
 | `addShapes` | authored `SketchShape`s appended to the first island: the subtracts, the erected shapes, the ramps, the path-shape causeways |
 | `relief` | `{"<islandId>": {...}}`, or `{"*": {...}}` for every island. A compiled board's islands are `team` and `neutral` |
 | `themes` · `mapTheme` | the theme registry and the map default (the first key unless stated) |

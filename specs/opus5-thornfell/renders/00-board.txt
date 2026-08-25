@@ -1,0 +1,65 @@
+      | 2         1         0         1          |
+      | 0987654321098765432101234567890123456789 |
+  -29 | JJJJJJJ                          HHHHHHH |
+  -28 | JJJJJJJ     GGGGGGGGGGGGGGGG     HHHHHHH |
+  -27 | JJJJJJJ     GGGGGGGGGGGGGGGG     HHHHHHH |
+  -26 | JJJJJJJ     GGGGGGGGGGGGGGGG     HHHHHHH |
+  -25 |   VVVV      GGGGGGGGGGGGGGGG      WWWW   |
+  -24 |   V¤VV            SSSS            W¤WW   |
+  -23 |   VVVV            SS@i            WWWW   |
+  -22 |   FFFFFFFF    EEEEEEEEEEEE    DDDDDDDD   |
+  -21 |   FFFFFFFF    EEEEEEEEEEEE    DDDDDDDD   |
+  -20 |   FFFFFFFF    EEEEEEEEEEEE    DDDDDDDD   |
+  -19 |         CCCCCCCCCCCCCCCCCCCCCCCC         |
+  -18 |         CCCCCCCCCCCCCCCCCCCCCCCC         |
+  -17 |         CCCCCCCCCCCCCCCCCCCCCCCC         |
+  -16 |         CCCCCCCCCCCCCCCCCCCCCCCC         |
+  -15 |      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB      |
+  -14 |      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB      |
+  -13 |      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB      |
+  -12 |      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB      |
+  -11 |      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB      |
+  -10 |      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB      |
+   -9 |       AAAAAAAAAAAAAAAAAAAAAAAAAAAA       |
+   -8 |       AAAAAAAAAAAAAAAAAAAAAAAAAAAA       |
+   -7 |       AAAAAAAAAAAAAAAAAAAAAAAAAAAA       |
+   -6 |       AAAAAAAAAAAAAAAAAAAAAAAAAAAA       |
+   -5 |       AAAAAAAAAAAAAAAAAAAAAAAAAAAA       |
+   -4 |       AAAAAAAAAAAAAAAAAAAAAAAAAAAA       |
+   -3 |         +++++++oooooooooo+++++++         |
+   -2 |         +++++++oooooooooo+++++++         |
+   -1 |         +++++++oooooooooo+++++++         |
+    0 |         +++++++oooooooooo+++++++         |
+    1 |         +++++++oooooooooo+++++++         |
+    2 |         +++++++oooooooooo+++++++         |
+    3 |       AAAAAAAAAAAAAAAAAAAAAAAAAAAA       |
+    4 |       AAAAAAAAAAAAAAAAAAAAAAAAAAAA       |
+    5 |       AAAAAAAAAAAAAAAAAAAAAAAAAAAA       |
+    6 |       AAAAAAAAAAAAAAAAAAAAAAAAAAAA       |
+    7 |       AAAAAAAAAAAAAAAAAAAAAAAAAAAA       |
+    8 |       AAAAAAAAAAAAAAAAAAAAAAAAAAAA       |
+    9 |      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB      |
+   10 |      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB      |
+   11 |      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB      |
+   12 |      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB      |
+   13 |      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB      |
+   14 |      BBBBBBBBBBBBBBBBBBBBBBBBBBBBBB      |
+   15 |         CCCCCCCCCCCCCCCCCCCCCCCC         |
+   16 |         CCCCCCCCCCCCCCCCCCCCCCCC         |
+   17 |         CCCCCCCCCCCCCCCCCCCCCCCC         |
+   18 |         CCCCCCCCCCCCCCCCCCCCCCCC         |
+   19 |   DDDDDDDD    EEEEEEEEEEEE    FFFFFFFF   |
+   20 |   DDDDDDDD    EEEEEEEEEEEE    FFFFFFFF   |
+   21 |   DDDDDDDD    EEEEEEEEEEEE    FFFFFFFF   |
+   22 |   WWWW            SSSS            VVVV   |
+   23 |   WW¤W            Si@S            VV¤V   |
+   24 |   WWWW      GGGGGGGGGGGGGGGG      VVVV   |
+   25 | HHHHHHH     GGGGGGGGGGGGGGGG     JJJJJJJ |
+   26 | HHHHHHH     GGGGGGGGGGGGGGGG     JJJJJJJ |
+   27 | HHHHHHH     GGGGGGGGGGGGGGGG     JJJJJJJ |
+   28 | HHHHHHH                          JJJJJJJ |
+      40 × 58 cells drawn  ·  40 × 58 cells = 200 × 290 blocks  ·  cell 5
+      @ spawn   A strand (piece)   B moor (piece)   C neck (piece)   D spur-w (piece)   
+      E apron (piece)   F spur-e (piece)   G backdrop (piece)   H crag-w (piece)   
+      J crag-e (piece)   S spawn (spawn)   V room-e (wool-room)   W room-w (wool-room)   i iron   
+      ¤ wool   

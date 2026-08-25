@@ -42,7 +42,9 @@ two sketch layers, forty-two brush strokes and two monuments, one of them twenty
 round a dale 32 blocks wide, no chasm anywhere, and the workings moved under the middle of it.
 `maps/opus5-ravensmere` is the single-layer one: a mere with an island in the middle of it, a beach thirty
 blocks deep round that, rolling downs cut by three crevasses, a wood, a brick-and-granite path with
-cottages off it, and a range standing behind each spawn.
+cottages off it, and a range standing behind each spawn. `maps/opus5-thornfell` is the same technique on a
+capture board: void down the middle, two wool rooms hung off the back of each half on spurs a raider walks
+out along, and a range behind every one of them.
 
 ## Authoring a map here
 
