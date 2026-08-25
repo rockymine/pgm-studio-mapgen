@@ -785,3 +785,85 @@ layers, and `render/section` cuts a plane:
 
 **`axis` names the direction the cut runs, so `at` is the other coordinate** — `axis=x` takes a z,
 `axis=z` takes an x. An `at` outside the world answers 200 with a blank image rather than refusing.
+
+### The stack is written bottom-up, or the lower storeys are painted by the upper ones
+
+`TerrainPainter.Paint` walks `SurfaceByLayer` **in document order**, and each pass paints its layer's
+whole column from the bedrock course to that layer's surface; the stone-only invariant is the only
+thing keeping two passes off each other. So a storey listed *after* one that stands over it finds no
+stone left, and takes whatever theme the upper storey resolved.
+
+A compiled plan emits `layers[0] = ground`, so appending an undercroft to the end is exactly that
+case. Measured on `opus5-interchange` before the fix, at `(20, 70)`: a 2 × 4 glass door panel on the
+ground layer painted its own column **yellow stained glass from y0 to y25**, twenty-six courses,
+including the pool floor twelve blocks under it. With the same layer inserted at index 0 the pool
+reads `y5..y3` white clay and `y2..y1` hardened clay, and the corridor above it is unchanged.
+
+`drive.py`'s `addLayers` takes `"below": true` for this. The rule is one line: **order `layers[]` by
+the height its shapes stand at, lowest first**, whatever the compile handed you.
+
+### A goal states its storey on the intent, because the plan has no field for it
+
+`DestroyablePlacement` and `CorePlacement` carry `id · piece · at · style · materials · float · name`
+and no `layer`; `DestroyableIntent` and `CoreIntent` carry `layer` as their first property, as do the
+other four intent placements and `PlacedProp`. So a plan-built goal on a stacked board always
+resolves against `SurfaceTop` — the highest layer — and a monument stated for a hall lands on the
+deck roofing it, with nothing declined.
+
+The word has to be written onto the **compiled intent**, on every orbit image, before
+`PUT …/intent/from-plan`. `drive.py`'s `goalLayers` key does it, matching on `stamp.unit`:
+
+```python
+{"goalLayers": {"destroyable-1": "under", "destroyable-4": "deck"}}
+```
+
+Naming a layer the board has no ground on is a `DR-LAYER` decline for a prop; for a goal it is the
+top surface again.
+
+### A ramp at one course a cell builds as treads of two, and a two-block rise is a placed block
+
+A `ramp` polygon falling 18 → 6 over **12** cells rasterized as `18 16 16 14 14 12 12 10 10 8 8` —
+six steps of two — and `…/walk?aim=reach` answered `blocks 3` climbing it, because the walk prices a
+rise of δ at δ−1 placed blocks. The same 12 courses over **20** cells reads one course a cell and
+walks both ways for nothing. The rule to author by: **run at least twice the rise** on any stair
+meant to be climbed rather than fallen down. (A 20-course ramp over 32 cells was right first time.)
+
+### A prop's keep-out mask is 2-D, and `layer` does not reach it
+
+`DR-CLAIM` declined a building on the `deck` layer at y38 as "claimed by" a building on the `ground`
+layer at y18, twenty blocks below it. `PlacedProp.Layer` decides where a prop is *seated* and not
+whether two props are in each other's way, so two kiosks on different storeys have to be moved apart
+in plan. The same applies to `DR-ROAD` against a stroke on another storey.
+
+### `render/topdown?layer=` names a sketch layer, so the category isolations are gone
+
+On a board whose `layers[]` are named, `?layer=structure`, `?layer=foliage` and `?layer=objectives`
+answer **422 `RQ4`**: *"this board has no layer 'structure' — it carries ground, under, catwalk,
+roofs, deck"*. One query word does two jobs and the sketch layer wins. The per-storey read is the
+better half of the trade — `?layer=under` draws the undercroft and nothing over it — but the three
+reads that answer *did the props land where I put them* are unavailable on any stacked board.
+
+### The export does not object to a goal underground
+
+`OB17` asks whether a goal stands over void, in a spawn or in a wool room, and its `IsLand` is the
+set of `(x, z)` the rasterizer produced across **every** layer, so a column under a slab is land.
+`EX1` reads the same spans and a cell on two layers answers twice, so an undercroft is a place the
+walk can stand in. A monument sealed under a concourse exports at 200 as long as something walks to
+it — which on `opus5-interchange` is a ramp, and before the ramp had headroom was `SK11` naming
+3,336 places nothing could reach.
+
+### A stroke ignores `layer`, so a floor with a roof over it is marked with a shape
+
+Every prop kind takes `layer` and `DressingContext.GroundFor` reads it — a house, a tree and a
+boulder all seat on the storey they name; measured on `opus5-interchange`, a kiosk stated for the
+pool hall stands with its roof at y10 under a concourse whose floor is y12, and an oak stated for
+the car deck stands at y42. **A stroke does not.** Two lane markings carrying `"layer": "under"`
+came back from `POST …/sketch/dressing` with `"y": 25` and `"y": 17` — the corridor wall's coping
+and the corridor floor, over the basin they were drawn for — and a worn track stated for a hall at
+y18 came back at `"y": 37`, on the deck roofing it. Nothing declines, because `DR-LAYER` fires on a
+layer the board does not have and these are layers it has.
+
+**Mark a covered floor with a shape instead**: a rectangle of that floor's own `floor` and
+`base_height` carrying a different `theme`. The geometry is unchanged and the theme scope resolves
+per layer, so it lands exactly where it is drawn. Both of the pool's lanes are three-wide rectangles
+of the basin's own two courses, themed dark prismarine.

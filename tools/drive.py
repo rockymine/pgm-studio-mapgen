@@ -13,11 +13,13 @@ layout:
   shapePropsByHeight {"11": {"relief_scope": "exclude"}, ...}   fields merged onto a compiled shape
   shapePropsById  {"s3": {...}}
   addShapes       [SketchShape, ...]          authored shapes appended to the first island
-  addLayers       [{id, name, base_y, shapes, islands}]   stacked slabs above the compiled ground
+  addLayers       [{id, name, base_y, shapes, islands, below?}]  stacked slabs; `below` puts one
+                  under the compiled ground, where the painter's bottom-up order needs it
   relief          {"<islandId>": {...}} or {"*": {...}} applied to every island
   themes          the theme registry;  mapTheme  the map default (first key unless stated)
   roomStyles      {"cage": ..., "spawn": ...}; a "@name" string loads tools/styles/<name>.json
   dressing        {"props": [...]};  a house prop's "style" takes the same "@name"
+  goalLayers      {"destroyable-1": "under"}   which storey a goal stands on, by its plan marker id
   voidEnforcement true -> patch intent.build.voidEnforcement (voidExclusions for the rects to spare)
   authors         ["Opus 5"], or [{"name", "uuid", "role", "contribution"}] -> the <authors> block. PGM
                   takes a person as an account OR a pseudonym, so a bare name is a valid author
@@ -273,10 +275,19 @@ def patch_layout(layout, finish):
             layout["layers"] = [{"id": "ground", "name": "Ground",
                                  "base_y": 0, "layout": layout.pop("layout")}]
         layers = layout["layers"]
-        layers.append({"id": extra["id"], "name": extra.get("name") or extra["id"],
-                       "base_y": extra["base_y"],
-                       "layout": {"shapes": extra["shapes"], "islands": extra["islands"]}})
-        print(f"    +layer '{extra['id']}' at base_y {extra['base_y']}: "
+        slab = {"id": extra["id"], "name": extra.get("name") or extra["id"],
+                "base_y": extra["base_y"],
+                "layout": {"shapes": extra["shapes"], "islands": extra["islands"]}}
+        # `below` puts a storey under the compiled ground rather than over it. The painter walks the
+        # stack in document order and each pass paints its whole column, so a storey listed above one
+        # that stands lower has already had its blocks claimed by the time its own pass runs: the
+        # stack has to be written bottom-up, and the compiled ground is not the bottom of every board.
+        if extra.get("below"):
+            layers.insert(0, slab)
+        else:
+            layers.append(slab)
+        print(f"    +layer '{extra['id']}' at base_y {extra['base_y']}"
+              f"{' (below the compiled ground)' if extra.get('below') else ''}: "
               f"{len(extra['shapes'])} shape(s), {len(extra['islands'])} island(s)")
 
     relief = finish.get("relief")
@@ -388,6 +399,16 @@ def main():
     if finish.get("voidEnforcement"):
         intent.setdefault("build", {})["voidEnforcement"] = \
             {"exclusions": finish.get("voidExclusions", [])}
+    # A stacked board carries a surface per storey and a placement may say which one it rests on;
+    # naming none takes the top, which on a roofed goal is the roof. The plan has no field for it,
+    # so the word is keyed onto the compiled intent by the marker id the plan did state — and onto
+    # every orbit image of it, because a goal and its mirror stand on the same storey.
+    for unit, layer in (finish.get("goalLayers") or {}).items():
+        for kind in ("destroyables", "cores"):
+            for goal in intent.get(kind) or []:
+                if (goal.get("stamp") or {}).get("unit") == unit:
+                    goal["layer"] = layer
+        print(f"    goal '{unit}' stands on layer '{layer}'")
     call("PUT", f"/map/{slug}/intent/from-plan", intent)
     # After the intent, not before. Storing an intent projects the map document from the intent's own
     # `meta`, which a compiled intent leaves empty — `intent/from-plan` carries authors from a *previously
