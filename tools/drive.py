@@ -188,8 +188,13 @@ def renders(into, slug, finish, layout, drawn, flow):
                 handle.write(text_body)
             written.append(name)
 
+    # Two views a theme, because they answer different questions and neither substitutes. The section is
+    # the column — rim over wall over fill, the pairing most easily got wrong. The surface is the swatch,
+    # and it is the only view a pattern is legible in: a section through a voronoi is one block wide.
     for theme_id, theme in (finish.get("themes") or {}).items():
-        png(f"theme-{theme_id}.png", "POST", "/terrain/theme-preview?format=png", theme)
+        for view in ("surface", "section"):
+            png(f"theme-{theme_id}-{view}.png", "POST",
+                f"/terrain/theme-preview?format=png&view={view}", theme)
 
     # Every distinct house the board stands up: the stamped rooms, and each house prop's own style. Keyed by
     # the style document rather than by where it was named, so one style used twice is drawn once.

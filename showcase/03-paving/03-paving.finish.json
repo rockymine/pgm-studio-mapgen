@@ -1,0 +1,350 @@
+{
+ "authors": [
+  "Opus 5"
+ ],
+ "themes": {
+  "meadow": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "voronoi",
+         "seed": 7,
+         "cellSize": 16,
+         "bands": [
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 3,
+            "data": 1
+           }
+          },
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 2,
+            "data": 0
+           }
+          }
+         ]
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "court": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 2,
+    "material": {
+     "kind": "cell",
+     "seed": 21,
+     "cellSize": 3,
+     "jitter": 55,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     ]
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 4,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "threshold": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "checker",
+     "size": 2,
+     "even": {
+      "kind": "solid",
+      "id": 24,
+      "data": 0
+     },
+     "odd": {
+      "kind": "solid",
+      "id": 159,
+      "data": 0
+     }
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 24,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "plinth": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 6
+    }
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "width": 2,
+      "material": {
+       "kind": "solid",
+       "id": 24,
+       "data": 0
+      }
+     },
+     {
+      "width": 1,
+      "material": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      }
+     },
+     {
+      "width": 2,
+      "material": {
+       "kind": "solid",
+       "id": 121,
+       "data": 0
+      }
+     },
+     {
+      "width": 1,
+      "material": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      }
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   }
+  }
+ },
+ "roomStyles": {
+  "spawn": "@showcase-hall",
+  "cage": "@showcase-cage"
+ },
+ "addShapes": [
+  {
+   "id": "court",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 10,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "court",
+   "min_x": -38,
+   "min_z": 60,
+   "max_x": -6,
+   "max_z": 75
+  },
+  {
+   "id": "threshold",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 10,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "threshold",
+   "min_x": -26,
+   "min_z": 72,
+   "max_x": -14,
+   "max_z": 75
+  },
+  {
+   "id": "dais",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 13,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "plinth",
+   "min_x": -4,
+   "min_z": 61,
+   "max_x": 4,
+   "max_z": 69
+  }
+ ]
+}
