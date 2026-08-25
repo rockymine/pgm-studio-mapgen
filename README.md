@@ -14,6 +14,7 @@ specs/<slug>/renders/                 the images the map was reviewed from, stag
 specs/<slug>/provenance.json          what each pass placed, and which prop placed it
 review/<slug>.md                      the measured record for that map
 reports/<model>-runN.md               one agent run: what it could not say, what it got wrong, what worked
+showcase/<nn>-<concept>/              one technique, end to end — documents, world, renders, README
 tools/                                the driver that posts those documents to the API
 ```
 
@@ -25,6 +26,16 @@ therefore carries no images and no metadata with it.
 A map's `specs/` are the whole of what was authored; the world is derived from them and is committed as
 the artifact rather than as a source. Rebuilding one needs a running pgm-studio API and a migrated
 database.
+
+## The showcase library
+
+`showcase/` is nineteen-twentieths of a teaching set: **one folder per technique**, each a complete map whose
+only reason to exist is the one thing its README names. Every one forks the same base board and changes one
+thing, so the diff is the lesson — a reader who wants to know how a cliff is stated reads the eleven lines
+that state it rather than finding the cliff inside a thousand-line finish. `showcase/README.md` is the index.
+
+`maps/opus5-whinnymoor` is the board they add up to, and `review/opus5-whinnymoor.md` says which showcase
+every part of it came from.
 
 ## Authoring a map here
 
