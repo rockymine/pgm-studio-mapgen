@@ -1,0 +1,163 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 24,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 24,
+    "z": 119
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 115,
+     "maxX": 10,
+     "maxZ": 125
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 115,
+    "maxX": 10,
+    "maxZ": 125
+   },
+   "iron": [
+    {
+     "x": -5,
+     "y": 24,
+     "z": 120
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 24,
+    "z": -119
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -125,
+     "maxX": 10,
+     "maxZ": -115
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -125,
+    "maxX": 10,
+    "maxZ": -115
+   },
+   "iron": [
+    {
+     "x": 5,
+     "y": 24,
+     "z": -120
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 130,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -75,
+    "minZ": -10,
+    "maxX": 75,
+    "maxZ": 10
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Wardstone",
+   "style": "cube-4",
+   "materials": "ender stone",
+   "anchor": {
+    "x": 30,
+    "y": 24,
+    "z": 69
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Wardstone",
+   "style": "cube-4",
+   "materials": "ender stone",
+   "anchor": {
+    "x": -31,
+    "y": 24,
+    "z": -70
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Ravensmere",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

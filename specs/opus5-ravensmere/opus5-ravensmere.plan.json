@@ -1,0 +1,143 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Ravensmere"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 24,
+    "surface": 24,
+    "observerY": 130
+  },
+  "pieces": [
+    {
+      "id": "shore",
+      "role": "piece",
+      "rect": [
+        -15,
+        0,
+        30,
+        7
+      ]
+    },
+    {
+      "id": "downs",
+      "role": "piece",
+      "rect": [
+        -14,
+        7,
+        28,
+        8
+      ]
+    },
+    {
+      "id": "holt",
+      "role": "piece",
+      "rect": [
+        -12,
+        15,
+        24,
+        5
+      ]
+    },
+    {
+      "id": "apron",
+      "role": "piece",
+      "rect": [
+        -9,
+        20,
+        18,
+        3
+      ]
+    },
+    {
+      "id": "flank-w",
+      "role": "piece",
+      "rect": [
+        -9,
+        23,
+        7,
+        2
+      ]
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        23,
+        4,
+        2
+      ]
+    },
+    {
+      "id": "flank-e",
+      "role": "piece",
+      "rect": [
+        2,
+        23,
+        7,
+        2
+      ]
+    },
+    {
+      "id": "backdrop",
+      "role": "piece",
+      "rect": [
+        -9,
+        25,
+        18,
+        5
+      ]
+    }
+  ],
+  "zones": [
+    {
+      "id": "seam",
+      "rect": [
+        -15,
+        -2,
+        30,
+        4
+      ]
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          0.8
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          1,
+          1
+        ]
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "destroyable-1",
+        "piece": "downs",
+        "at": [
+          20,
+          6.8
+        ],
+        "style": "cube-4",
+        "materials": "ender stone",
+        "float": 4,
+        "name": "The Wardstone"
+      }
+    ]
+  }
+}

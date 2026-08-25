@@ -40,6 +40,9 @@ three land regions on one hue axis, a chasm down the middle and a tiled service 
 two sketch layers, forty-two brush strokes and two monuments, one of them twenty blocks underground.
 `maps/opus5-sandcaster-ii` is the same brief on one open landmass: a mountain range drawn with pushes
 round a dale 32 blocks wide, no chasm anywhere, and the workings moved under the middle of it.
+`maps/opus5-ravensmere` is the single-layer one: a mere with an island in the middle of it, a beach thirty
+blocks deep round that, rolling downs cut by three crevasses, a wood, a brick-and-granite path with
+cottages off it, and a range standing behind each spawn.
 
 ## Authoring a map here
 
