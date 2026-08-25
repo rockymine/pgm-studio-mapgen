@@ -981,3 +981,46 @@ The cheap check is a column transect down the way in. A ramp that works reads on
 blocks the whole way; a plugged one reads a solid run where the air should be, and nothing else on the board
 says so — the export gate stays open, `render/traversability` can still answer one component, and the only
 complaint is an `SK11` that is easy to write off as a quirk of a stacked board.
+
+## A range is a wall unless its two gradients agree
+
+A push has two slopes in it and they are set by different pairs of fields. Outside the ring the ground climbs
+over the skirt, at `amount / falloff` courses a block. Inside it the ground climbs from the ring's edge to its
+medial axis, at `crown / half` — `half` being the half-width the ribbon was drawn at. Where the two disagree
+the landform has a step in it at its own outline, and a range with a large `amount` and a short `falloff` is a
+cliff with a hill on top of it whatever its height.
+
+Measured on `opus5-thornfell`, behind the spawn: `amount 26 · falloff 8` against `crown 10 · half 7` is 3.25
+courses a block for ten blocks and then 1.4, and the section at `x 0` reads as a sheer face standing directly
+on the building's back wall. The same range at `amounts 13–17 · falloff 10` against `crown 12 · half 7` — 1.7
+either side — reads as one mountainside from the wall to the board's back edge.
+
+**The height a range can be is decided by the ground in front of it, not by taste.** What is available is the
+distance from whatever stands in front to the coast behind, and a peak more than about 1.7 courses a block
+above that distance has to buy the difference somewhere, which it does by putting a step at the ring. Behind
+Thornfell's spawn there are 20 blocks between the building's back wall and the coast, and 20 blocks at 1.7 is
+what makes `high 52` on a board whose ground is 26. Wanting 80 there is wanting a wall.
+
+The other half of the same arithmetic is where the summit goes. Setting the spine **past the coast** puts the
+medial axis off the board, so what is on the board is one uninterrupted climb and the crest reads as being
+behind the map. That costs the strokes that are placed from the spine — a summit blob centred past the coast
+has nothing to clamp to and collapses onto its own centre — so those are taken from a crest point inside the
+outline rather than from the spine itself.
+
+## A wool room's foundation is bedrock to y 0, so it needs land on all four sides
+
+A stamped wool room fills its whole piece and fills **downward in bedrock**: the column under
+`opus5-thornfell`'s room reads floor at `y 25` and bedrock from `y 24` to `y 0`. Nothing about that is visible
+in a plan view, in the relief read-back, or at the export gate. It is visible in the world as a 25-course
+bedrock cliff wherever the cell beside the room is void or lower, which on a board where the room piece is the
+full width of the spur it hangs off is every cell of two of its four sides.
+
+So a room piece gets a piece of ordinary ground either side of it and one behind, and the pad mark is drawn
+wide enough to cover all of them at the same height. Thornfell's rooms sit in a band of five pieces —
+`ledge-w · room-w · ledge-wi` across, `crag-w` behind, `spur-w` in front — and the `roompad` ring is 22 × 10
+rather than the room's own 14 × 10 for that reason. Read back, the ground either side of the room is `y 25`
+and the room's own wall starts at `y 25`: the plinth is under the land rather than beside it.
+
+The gate that hides the fault is that **a push is applied after every constraint**, so a range whose skirt
+crosses the room lifts the pad the room is stamped on and the plinth grows by exactly as much. Before the
+ranges were set back, the same room read floor at `y 43` over 42 courses of bedrock, with void either side.

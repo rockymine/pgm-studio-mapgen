@@ -143,9 +143,9 @@ Y_SHORE = 20                       # the shelf at the head of the strait, four c
 # a function of z: at z 100 there are three separate runs of it with void between them. Membership is
 # tested against the rectangles themselves, which is exact and is the same statement the plan makes.
 RECTS = ((-70, 15, 70, 45), (-75, 45, 75, 75), (-60, 75, 60, 95),
-         (-90, 95, -50, 110), (-30, 95, 30, 110), (50, 95, 90, 110),
-         (-90, 110, -70, 125), (-10, 110, 10, 125), (70, 110, 90, 125),
-         (-40, 120, 40, 140), (-100, 125, -65, 145), (65, 125, 100, 145))
+         (-95, 95, -50, 110), (-30, 95, 30, 110), (50, 95, 95, 110),
+         (-95, 110, -55, 125), (-10, 110, 10, 125), (55, 110, 95, 125),
+         (-40, 125, 40, 145), (-95, 125, -55, 145), (55, 125, 95, 145))
 MARGIN = 7                         # how far inside the plan's own edge a brush stroke has to stay
 
 
@@ -240,11 +240,11 @@ def around(cx, cz, rx, rz, count, phase=0.0, half=True):
 FLATS = (("moor", 0, 60, 72, 16, 15, 0.2),
          ("neck", 0, 86, 56, 11, 13, 1.1),
          ("apron", 0, 102, 28, 8, 11, 0.7),
-         ("spurpad-w", -70, 102, 20, 8, 11, 1.5),
-         ("spurpad-e", 70, 102, 20, 8, 11, 2.3))
+         ("spurpad-w", -72, 102, 21, 7, 11, 1.5),
+         ("spurpad-e", 72, 102, 21, 7, 11, 2.3))
 FLAT_RINGS = {name: ring_of(cx, cz, rx, rz, lobes=lobes, twist=twist, clamped=False)
               for name, cx, cz, rx, rz, lobes, twist in FLATS}
-ROOMS = ((-80, 117), (80, 117))     # the two wool rooms, and the ground each is stamped on
+ROOMS = ((-75, 117), (75, 117))     # the two wool rooms, and the ground each is stamped on
 
 # Rolling, which is a statement about the gradient rather than about the height: a lift of 5 over a
 # 12-block skirt is a knoll at one course every two blocks, and anything standing on it has five courses
@@ -255,15 +255,26 @@ HILLS = ((-56, 34, 12, 10, 6), (56, 34, 12, 10, 6), (-64, 62, 12, 10, 7),
          (-46, 84, 11, 9, 5), (46, 84, 11, 9, 5))
 # Three ranges: one behind the spawn, and one behind each wool room. The two behind the wools are what
 # makes a spur read as a headland rather than as a shelf — the ground it hangs off ends in rock.
-SPINE_S = [[-30, 128], [-12, 136], [10, 129], [30, 136]]
-LIFT_S = [22, 34, 26, 30]
-SPINE_W = [[-96, 130], [-84, 138], [-72, 131]]
-LIFT_W = [24, 36, 26]
-SPINE_E = [[72, 131], [84, 138], [96, 130]]
-LIFT_E = [26, 36, 24]
-RANGES = (("range-s", SPINE_S, LIFT_S, 9, 3), ("range-w", SPINE_W, LIFT_W, 8, 11),
-          ("range-e", SPINE_E, LIFT_E, 8, 15))
-SUMMITS = ((SPINE_S[1], 0), (SPINE_S[3], 1), (SPINE_W[1], 2), (SPINE_E[1], 3))
+# Two numbers decide whether a range reads as a mountainside or as a wall, and neither is its height.
+# The first is where its skirt ends: a push is applied after every constraint, so a range whose skirt
+# crosses a wool room lifts the pad the room is stamped on and leaves the room standing on a plinth of
+# its own foundation. Each spine is set back far enough that its ring plus skirt stops at the edge of
+# the piece in front of it — z 125 for the spawn and for both wool rooms.
+# The second is the gradient, which is `amount / falloff` on the skirt and `crown / half` inside the
+# ring, and a range is a wall wherever those two disagree. Both are ~1.7 courses a block here, so the
+# climb is one slope from the foot to the board's back edge; the medial axis is past that edge, which
+# is what makes the summit read as being behind the map rather than on it.
+SPINE_S = [[-32, 144], [-14, 148], [10, 145], [32, 148]]
+LIFT_S = [13, 17, 14, 16]
+SPINE_W = [[-88, 144], [-75, 148], [-62, 144]]
+LIFT_W = [14, 17, 14]
+SPINE_E = [[62, 144], [75, 148], [88, 144]]
+LIFT_E = [14, 17, 14]
+RANGES = (("range-s", SPINE_S, LIFT_S, 7, 10, 3), ("range-w", SPINE_W, LIFT_W, 6, 10, 11),
+          ("range-e", SPINE_E, LIFT_E, 6, 10, 15))
+# The crests, taken on the board rather than off the back of it: the spine's own summits are past the
+# coast, and a stroke centred past it has nothing to clamp to and collapses onto its own centre.
+SUMMITS = (((-14, 138), 0), ((32, 138), 1), ((-75, 138), 2), ((75, 138), 3))
 
 
 def relief_marks():
@@ -279,10 +290,12 @@ def relief_marks():
              *[{"id": name, "kind": "area", "h": Y_PAD, "ring": FLAT_RINGS[name]}
                for name, *_rest in FLATS],
              {"id": "spawnpad", "kind": "area", "h": Y_PAD,
-              "ring": ring_of(0, 116, 9, 6, lobes=9, twist=0.3, clamped=False)}]
+              "ring": ring_of(0, 117, 10, 8, lobes=9, twist=0.3, clamped=False)}]
     for i, (x, z) in enumerate(ROOMS):
+        # the room and both ledges beside it, so the ground the room is stamped on runs out to the
+        # coast either side of it and the room stands in the land rather than on a pedestal of it
         marks.append({"id": f"roompad-{i}", "kind": "area", "h": Y_PAD,
-                      "ring": ring_of(x, z, 14, 10, lobes=9, twist=0.6 * i, clamped=False)})
+                      "ring": ring_of(x, z, 22, 10, lobes=9, twist=0.6 * i, clamped=False)})
     for i, (x, z, _style, _front) in enumerate(YARDS):
         marks.append({"id": f"yard-{i}", "kind": "area", "h": Y_PAD,
                       "ring": ring_of(x, z, 11, 9, lobes=9, twist=0.4 * i, clamped=False)})
@@ -296,11 +309,11 @@ def pushes():
                                                        clamped=False),
                     "amount": amount, "falloff": HILL_FALLOFF, "roughness": 0.55,
                     "crown": 3 + (i % 2), "seed": 31 + i})
-    for pid, spine, lift, half, seed in RANGES:
+    for pid, spine, lift, half, falloff, seed in RANGES:
         ring, src = ribbon(spine, half, phase=seed * 0.4)
         out.append({"id": pid, "ring": ring, "amount": max(lift),
                     "amounts": [lift[i] for i in src],
-                    "falloff": 12, "roughness": 0.38, "crown": 16, "seed": seed})
+                    "falloff": falloff, "roughness": 0.38, "crown": 12, "seed": seed})
     return out
 
 
@@ -320,11 +333,10 @@ def brush():
     out.append(blob("rg-strand", 0, 22, 66, 12, "strand", lobes=13, twist=0.8))
     for i, (x, z) in enumerate(ROOMS):
         out.append(blob(f"rg-spur-{i}", x, 104, 22, 18, "spur", lobes=11, twist=0.5 + i))
-    for pid, spine, _lift, half, seed in RANGES:
+    for pid, spine, _lift, half, _falloff, seed in RANGES:
         ring, _src = ribbon(spine, half + 5, phase=seed * 0.4)
-        out.append(poly(f"rg-crag-{pid}", [list(pull(*fold(spine[len(spine) // 2][0],
-                                                           spine[len(spine) // 2][1]), x, z))
-                                           for x, z in ring],
+        heart = fold(spine[len(spine) // 2][0], spine[len(spine) // 2][1] - 10)
+        out.append(poly(f"rg-crag-{pid}", [list(pull(*heart, x, z)) for x, z in ring],
                         "crag", override=False, base_height=1))
     # the wood, sitting on the moor rather than replacing it
     for i, (x, z, rx, rz) in enumerate(COPSES):
@@ -334,7 +346,7 @@ def brush():
     for i, (x, z, rx, rz) in enumerate(COPSES):
         out.append(blob(f"br-under-{i}", x, z, rx - 2, rz - 2, "understorey", twist=0.35 * i))
     # the fell: where the rock begins to show through the moor, on the shoulders under each range
-    for i, (x, z) in enumerate([(-56, 108), (56, 108), (-20, 112), (20, 112), (0, 96)]):
+    for i, (x, z) in enumerate([(-60, 105), (60, 105), (-20, 100), (20, 100), (0, 90)]):
         out.append(blob(f"br-fell-{i}", x, z, 14, 9, "fell", twist=0.5 * i))
     # scree spilling off every range
     for i, (spine, index) in enumerate([(SPINE_S, 0), (SPINE_S, 3), (SPINE_W, 0), (SPINE_W, 2),
@@ -359,12 +371,12 @@ def brush():
         out.append(blob(f"sm-strand-{i}", x, 36 + 3 * math.sin(x / 21.0), 12, 8, "seam-strand",
                         lobes=6, twist=0.5 * i))
     # the foot of every range
-    for pid, spine, _lift, _half, seed in RANGES:
+    for pid, spine, _lift, _half, _falloff, seed in RANGES:
         for i, (x, z) in enumerate(spine):
             out.append(blob(f"sm-crag-{pid}-{i}", x, z - 12, 12, 8, "seam-crag",
                             lobes=6, twist=0.4 * i + seed))
     # where the neck gives out onto each spur — the one seam a raider crosses on purpose
-    for i, (x, z) in enumerate([(-54, 100), (54, 100), (-50, 96), (50, 96)]):
+    for i, (x, z) in enumerate([(-58, 102), (58, 102), (-62, 105), (62, 105)]):
         out.append(blob(f"sm-spur-{i}", x, z, 11, 8, "seam-spur", lobes=6, twist=0.7 * i))
     # sward to wood, round every copse
     for i, (x, z, rx, rz) in enumerate(COPSES):
@@ -420,7 +432,7 @@ def skirts():
     ring itself; on a skirt of 20 the gradient is a course every four blocks, two across a footprint,
     and a building may stand on that. A massif's flank is steep on any reading and is kept out whole."""
     out = [(x, z, max(rx, rz) + 4) for x, z, rx, rz, _amount in HILLS]
-    out += [(x, z, half + 12) for _pid, spine, _lift, half, _seed in RANGES for x, z in spine]
+    out += [(x, z, half + 12) for _pid, spine, _lift, half, _f, _seed in RANGES for x, z in spine]
     return out
 
 
@@ -512,7 +524,7 @@ def dressing():
                            "flowerShare": 0.12, "flowerScale": 24, "tallShare": 0.3}})
 
     # fallen rock at the foot of every range, and along the lip of the strait
-    anchors = [(x, z - 13) for _pid, spine, _lift, _half, _seed in RANGES for x, z in spine]
+    anchors = [(x, z - 13) for _pid, spine, _lift, _half, _f, _seed in RANGES for x, z in spine]
     anchors += [(x, 28) for x in range(-58, 59, 20)]
     for i, (x, z) in enumerate(anchors):
         x, z = int(round(x)), int(round(z))
