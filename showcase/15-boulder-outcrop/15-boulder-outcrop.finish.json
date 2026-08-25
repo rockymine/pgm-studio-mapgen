@@ -1,0 +1,522 @@
+{
+  "authors": [
+    "Opus 5"
+  ],
+  "themes": {
+    "meadow": {
+      "bedrock": {
+        "relative": false,
+        "value": 1
+      },
+      "rimEdges": "void",
+      "wallOnTerrainFaces": true,
+      "rim": {
+        "enabled": true,
+        "depth": 1,
+        "material": {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+        }
+      },
+      "surface": {
+        "enabled": true,
+        "depth": 3,
+        "material": {
+          "kind": "layered",
+          "axis": "depth",
+          "beyond": {
+            "kind": "solid",
+            "id": 1,
+            "data": 0
+          },
+          "stack": {
+            "ending": "handOver",
+            "bands": [
+              {
+                "thickness": 1,
+                "material": {
+                  "kind": "voronoi",
+                  "seed": 7,
+                  "cellSize": 16,
+                  "bands": [
+                    {
+                      "depth": 1,
+                      "material": {
+                        "kind": "solid",
+                        "id": 3,
+                        "data": 1
+                      }
+                    },
+                    {
+                      "depth": 1,
+                      "material": {
+                        "kind": "solid",
+                        "id": 2,
+                        "data": 0
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "thickness": 2,
+                "material": {
+                  "kind": "solid",
+                  "id": 3,
+                  "data": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      "wall": {
+        "kind": "layered",
+        "axis": "depth",
+        "beyond": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+        },
+        "stack": {
+          "ending": "handOver",
+          "bands": [
+            {
+              "thickness": 1,
+              "material": {
+                "kind": "solid",
+                "id": 3,
+                "data": 1
+              }
+            },
+            {
+              "thickness": 2,
+              "material": {
+                "kind": "solid",
+                "id": 3,
+                "data": 0
+              }
+            },
+            {
+              "thickness": 2,
+              "material": {
+                "kind": "solid",
+                "id": 1,
+                "data": 5
+              }
+            }
+          ]
+        }
+      },
+      "wallEnabled": true,
+      "fill": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+      }
+    },
+    "outcrop": {
+      "bedrock": {
+        "relative": false,
+        "value": 1
+      },
+      "rimEdges": "drop",
+      "wallOnTerrainFaces": true,
+      "rim": {
+        "enabled": true,
+        "depth": 1,
+        "material": {
+          "kind": "solid",
+          "id": 16,
+          "data": 0
+        }
+      },
+      "surface": {
+        "enabled": true,
+        "depth": 3,
+        "material": {
+          "kind": "layered",
+          "axis": "depth",
+          "beyond": {
+            "kind": "solid",
+            "id": 1,
+            "data": 0
+          },
+          "stack": {
+            "ending": "handOver",
+            "bands": [
+              {
+                "thickness": 1,
+                "material": {
+                  "kind": "solid",
+                  "id": 16,
+                  "data": 0
+                }
+              },
+              {
+                "thickness": 2,
+                "material": {
+                  "kind": "solid",
+                  "id": 1,
+                  "data": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      "wall": {
+        "kind": "layered",
+        "axis": "depth",
+        "beyond": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+        },
+        "stack": {
+          "ending": "handOver",
+          "bands": [
+            {
+              "thickness": 1,
+              "material": {
+                "kind": "solid",
+                "id": 16,
+                "data": 0
+              }
+            },
+            {
+              "thickness": 2,
+              "material": {
+                "kind": "solid",
+                "id": 1,
+                "data": 0
+              }
+            },
+            {
+              "thickness": 2,
+              "material": {
+                "kind": "solid",
+                "id": 4,
+                "data": 0
+              }
+            }
+          ]
+        }
+      },
+      "wallEnabled": true,
+      "fill": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+      }
+    },
+    "scree": {
+      "bedrock": {
+        "relative": false,
+        "value": 1
+      },
+      "rimEdges": "boundary",
+      "wallOnTerrainFaces": true,
+      "rim": {
+        "enabled": false,
+        "depth": 1,
+        "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+        }
+      },
+      "surface": {
+        "enabled": true,
+        "depth": 3,
+        "material": {
+          "kind": "layered",
+          "axis": "depth",
+          "beyond": {
+            "kind": "solid",
+            "id": 1,
+            "data": 0
+          },
+          "stack": {
+            "ending": "handOver",
+            "bands": [
+              {
+                "thickness": 1,
+                "material": {
+                  "kind": "voronoi",
+                  "seed": 12,
+                  "cellSize": 4,
+                  "bands": [
+                    {
+                      "depth": 1,
+                      "material": {
+                        "kind": "solid",
+                        "id": 1,
+                        "data": 0
+                      }
+                    },
+                    {
+                      "depth": 1,
+                      "material": {
+                        "kind": "solid",
+                        "id": 16,
+                        "data": 0
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "thickness": 2,
+                "material": {
+                  "kind": "solid",
+                  "id": 4,
+                  "data": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      "wall": {
+        "kind": "layered",
+        "axis": "depth",
+        "beyond": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+        },
+        "stack": {
+          "ending": "handOver",
+          "bands": [
+            {
+              "thickness": 1,
+              "material": {
+                "kind": "solid",
+                "id": 3,
+                "data": 1
+              }
+            },
+            {
+              "thickness": 2,
+              "material": {
+                "kind": "solid",
+                "id": 3,
+                "data": 0
+              }
+            },
+            {
+              "thickness": 2,
+              "material": {
+                "kind": "solid",
+                "id": 1,
+                "data": 5
+              }
+            }
+          ]
+        }
+      },
+      "wallEnabled": true,
+      "fill": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+      }
+    }
+  },
+  "roomStyles": {
+    "spawn": "@showcase-hall",
+    "cage": "@showcase-cage"
+  },
+  "relief": {
+    "team": {
+      "base": 9,
+      "pushes": [
+        {
+          "id": "swell",
+          "ring": [
+            [
+              -40,
+              50
+            ],
+            [
+              -33,
+              47
+            ],
+            [
+              -27,
+              52
+            ],
+            [
+              -28,
+              63
+            ],
+            [
+              -34,
+              66
+            ],
+            [
+              -40,
+              60
+            ]
+          ],
+          "amount": 6,
+          "falloff": 9,
+          "roughness": 0.4,
+          "crown": 3,
+          "seed": 11
+        }
+      ]
+    }
+  },
+  "addShapes": [
+    {
+      "id": "crag",
+      "type": "polygon",
+      "operation": "add",
+      "override": true,
+      "floor": 0,
+      "base_height": 17,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "outcrop",
+      "vertices": [
+        [
+          -39,
+          40
+        ],
+        [
+          -30,
+          38
+        ],
+        [
+          -28,
+          50
+        ],
+        [
+          -37,
+          52
+        ]
+      ],
+      "anchor_heights": [
+        10,
+        13,
+        24,
+        17
+      ]
+    },
+    {
+      "id": "scree",
+      "type": "polygon",
+      "operation": "add",
+      "override": true,
+      "theme": "scree",
+      "vertices": [
+        [
+          -40,
+          50
+        ],
+        [
+          -33,
+          47
+        ],
+        [
+          -27,
+          52
+        ],
+        [
+          -28,
+          63
+        ],
+        [
+          -34,
+          66
+        ],
+        [
+          -40,
+          60
+        ]
+      ]
+    }
+  ],
+  "dressing": {
+    "props": [
+      {
+        "kind": "boulder",
+        "x": -33,
+        "z": 55,
+        "form": "round",
+        "size": 3,
+        "mossy": true,
+        "rock": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+        },
+        "seed": 1
+      },
+      {
+        "kind": "boulder",
+        "x": -38,
+        "z": 48,
+        "form": "angular",
+        "size": 4,
+        "mossy": false,
+        "rock": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+        },
+        "seed": 2
+      },
+      {
+        "kind": "boulder",
+        "x": -33,
+        "z": 34,
+        "form": "outcrop",
+        "size": 4,
+        "mossy": true,
+        "rock": {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+        },
+        "seed": 3
+      },
+      {
+        "kind": "boulder",
+        "x": -36,
+        "z": 58,
+        "form": "cairn",
+        "size": 3.5,
+        "mossy": true,
+        "rock": {
+          "kind": "voronoi",
+          "seed": 9,
+          "cellSize": 2,
+          "bands": [
+            {
+              "depth": 1,
+              "material": {
+                "kind": "solid",
+                "id": 1,
+                "data": 0
+              }
+            },
+            {
+              "depth": 1,
+              "material": {
+                "kind": "solid",
+                "id": 16,
+                "data": 0
+              }
+            }
+          ]
+        },
+        "seed": 4
+      }
+    ]
+  }
+}

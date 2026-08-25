@@ -1,0 +1,148 @@
+{
+ "authors": [
+  "Opus 5"
+ ],
+ "themes": {
+  "meadow": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "voronoi",
+         "seed": 7,
+         "cellSize": 16,
+         "bands": [
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 3,
+            "data": 1
+           }
+          },
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 2,
+            "data": 0
+           }
+          }
+         ]
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  }
+ },
+ "roomStyles": {
+  "spawn": "@showcase-hall",
+  "cage": "@showcase-cage"
+ },
+ "relief": {
+  "team": {
+   "base": 9,
+   "reach": 20,
+   "step": 1,
+   "stairs": true,
+   "marks": [
+    { "id": "coast", "kind": "rim", "h": 9, "depth": 1 },
+    { "id": "strand", "kind": "line", "points": [[-40, 18], [0, 18], [40, 18]], "h": [9, 9, 9], "width": 5 }
+   ],
+   "pushes": [
+    { "id": "kettle", "ring": [[-38, 32], [-29, 30], [-26, 40], [-27, 52], [-33, 57], [-39, 50]],
+      "amount": 0, "falloff": 10, "roughness": 0.35, "crown": -5, "seed": 7 }
+   ]
+  }
+ },
+ "dressing": {
+  "props": [
+   { "kind": "water", "id": "kettlemere",
+     "points": [[-33, 36], [-32, 45], [-33, 53]],
+     "radius": 4, "depth": 3, "form": "natural", "edge": 0.5,
+     "shore": 1.2, "shoreWander": true, "seed": 21 }
+  ]
+ }
+}

@@ -1,0 +1,249 @@
+{
+ "authors": [
+  "Opus 5"
+ ],
+ "themes": {
+  "meadow": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "voronoi",
+         "seed": 7,
+         "cellSize": 16,
+         "bands": [
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 3,
+            "data": 1
+           }
+          },
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 2,
+            "data": 0
+           }
+          }
+         ]
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  }
+ },
+ "roomStyles": {
+  "spawn": "@showcase-hall",
+  "cage": "@showcase-cage"
+ },
+ "dressing": {
+  "props": [
+   {
+    "kind": "house",
+    "id": "croft",
+    "seed": 101,
+    "points": [
+     [
+      -39,
+      17
+     ],
+     [
+      -33,
+      25
+     ]
+    ],
+    "front": "posX",
+    "style": "@17h-croft"
+   },
+   {
+    "kind": "house",
+    "id": "hall",
+    "seed": 102,
+    "points": [
+     [
+      27,
+      17
+     ],
+     [
+      35,
+      29
+     ]
+    ],
+    "front": "negX",
+    "style": "@17h-hall"
+   },
+   {
+    "kind": "house",
+    "id": "barn",
+    "seed": 103,
+    "wings": [
+     {
+      "corners": [
+       [
+        -39,
+        38
+       ],
+       [
+        -32,
+        50
+       ]
+      ]
+     },
+     {
+      "corners": [
+       [
+        -31,
+        42
+       ],
+       [
+        -27,
+        45
+       ]
+      ],
+      "spec": {
+       "form": "shed"
+      }
+     }
+    ],
+    "front": "negZ",
+    "style": "@17h-barn"
+   },
+   {
+    "kind": "house",
+    "id": "granary",
+    "seed": 104,
+    "points": [
+     [
+      27,
+      39
+     ],
+     [
+      35,
+      47
+     ]
+    ],
+    "front": "negX",
+    "style": "@17h-granary"
+   },
+   {
+    "kind": "house",
+    "id": "vault",
+    "seed": 105,
+    "points": [
+     [
+      34,
+      62
+     ],
+     [
+      39,
+      67
+     ]
+    ],
+    "front": "negX",
+    "style": "@17h-vault"
+   },
+   {
+    "kind": "house",
+    "id": "coop",
+    "seed": 106,
+    "points": [
+     [
+      -40,
+      62
+     ],
+     [
+      -35,
+      68
+     ]
+    ],
+    "front": "posX",
+    "style": "@17h-coop"
+   }
+  ]
+ }
+}
