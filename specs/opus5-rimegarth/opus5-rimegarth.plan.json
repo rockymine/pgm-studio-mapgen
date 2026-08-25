@@ -7,7 +7,7 @@
   "cell": 5,
   "symmetry": "rot_180",
   "maxPlayers": 10,
-  "surface": 12
+  "surface": 9
  },
  "pieces": [
   {
@@ -18,7 +18,8 @@
     8,
     7,
     2
-   ]
+   ],
+   "surface": 10
   },
   {
    "id": "hub-t2",
@@ -28,7 +29,8 @@
     6,
     2,
     2
-   ]
+   ],
+   "surface": 10
   },
   {
    "id": "hub-t3",
@@ -38,7 +40,8 @@
     6,
     3,
     2
-   ]
+   ],
+   "surface": 10
   },
   {
    "id": "spawn-t1",
@@ -48,7 +51,8 @@
     8,
     1,
     2
-   ]
+   ],
+   "surface": 11
   },
   {
    "id": "spawn-room",
@@ -58,17 +62,30 @@
     8,
     2,
     2
-   ]
+   ],
+   "surface": 11
   },
   {
-   "id": "wool-a-t1",
+   "id": "wool-a-t1a",
    "role": "piece",
    "rect": [
     -5,
     12,
     2,
-    9
-   ]
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "wool-a-t1b",
+   "role": "piece",
+   "rect": [
+    -5,
+    16,
+    2,
+    5
+   ],
+   "surface": 13
   },
   {
    "id": "wool-a-t2",
@@ -78,7 +95,8 @@
     12,
     3,
     2
-   ]
+   ],
+   "surface": 12
   },
   {
    "id": "wool-a-t3",
@@ -88,7 +106,8 @@
     19,
     3,
     2
-   ]
+   ],
+   "surface": 14
   },
   {
    "id": "wool-a-t4",
@@ -98,17 +117,30 @@
     10,
     5,
     2
-   ]
+   ],
+   "surface": 11
   },
   {
-   "id": "wool-a-t5",
+   "id": "wool-a-t5a",
    "role": "piece",
    "rect": [
     0,
     12,
     2,
-    7
-   ]
+    4
+   ],
+   "surface": 13
+  },
+  {
+   "id": "wool-a-t5b",
+   "role": "piece",
+   "rect": [
+    0,
+    16,
+    2,
+    3
+   ],
+   "surface": 14
   },
   {
    "id": "wool-a-room",
@@ -118,7 +150,8 @@
     19,
     2,
     2
-   ]
+   ],
+   "surface": 15
   },
   {
    "id": "frontline-t1",
@@ -128,7 +161,8 @@
     2,
     6,
     4
-   ]
+   ],
+   "surface": 9
   }
  ],
  "zones": [
@@ -171,8 +205,12 @@
  },
  "walls": [
   {
-   "a": "wool-a-t4",
-   "b": "wool-a-t2"
+   "a": "wool-a-t1a",
+   "b": "wool-a-t1b"
+  },
+  {
+   "a": "wool-a-t5a",
+   "b": "wool-a-t5b"
   }
  ],
  "boxes": [

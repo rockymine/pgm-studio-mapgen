@@ -6,18 +6,30 @@
 **A regular capture-the-wool board, and the plan under it was composed rather than drawn.**
 `composed.plan.json` beside this file is `GET /api/compose?players=10&symmetry=rot_180&seed=26`
 pinned verbatim — the composer's own board, score 0 on every hard term, structure
-`{wools: [donut], hub: twin, frontline: bar}`. What this script does is everything a composed plan
-does not carry: it is flat at one surface, it has no walls, and it has no world.
+`{wools: [donut], hub: twin, frontline: bar}`. It is kept untouched; what this script does is
+everything a composed plan does not carry.
 
-**The donut is why this seed was picked.** A composed wool box is normally a bar or an L; once in
-forty-eight it comes out as a **ring** — five pieces enclosing a hole, with the wool room closing the
+**The donut is why this seed was picked.** A composed wool box is normally a bar or an L; five times
+in forty-eight it comes out as a **ring** — pieces enclosing a hole, with the wool room closing the
 far corner of it. Read as a place that is a walled garth: a yard you can only go round, with the wool
-in the byre at the far side of it and the middle of it open. The hole is void in the plan, and the
-one thing here that changes the composer's geometry is filling it — a pond five courses down, so the
-garth has a middle rather than a shaft.
+in the byre at the far side and the middle of it open.
 
-Everything else is added on top of what was composed: the relief that lifts the hall over the green,
-the four themes, the approach wall across the garth's near gate, and what stands on it.
+Three things are changed about what the composer drew, and each is a thing it never emits.
+
+**The ring's two arms are split, so two walls can bar both lanes.** A ring has two ways round it and
+one wall closes one of them; an attacker simply takes the other. `wool-a-t1` and `wool-a-t5` are cut
+in half at z 80, and the approach wall goes on each new interface — a pair either side of the hole,
+parallel to each other, each across the **full width of its own lane**.
+
+**Every piece states a surface, and they step by one.** `walls` and `surface` are the two fields a
+composed plan is always empty of; the second turns a flat board into a stair from the gill up to the
+byre — 9, 10, 11, 12, 13, 14, 15, one course at each interface and never two. **No relief is stated
+at all**, because a relief solves a height for every cell of an island and would take the plan's
+surfaces with it: on this board the plan is the terrain.
+
+**The hole gets a pond.** A composed plan compiles to one merged polygon and a `subtract`, and the
+subtract is what cuts the hole; a subtract beats every add on its layer, so an `addShapes` rectangle
+over the hole draws nothing at all. The pond is a slab of its own, stated `below` the compiled ground.
 
 Output: `opus5-rimegarth.plan.json` and `opus5-rimegarth.finish.json` beside this file.
 """
@@ -26,39 +38,78 @@ import json, math, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 SLUG = "opus5-rimegarth"
 COMPOSED = json.load(open(os.path.join(HERE, "composed.plan.json")))
-
 CELL = COMPOSED["globals"]["cell"]           # 5
-SURFACE = 12                                 # the level the composed board is lifted to
+
+# ── the plan: the composed board, with the ring cut and every piece given a height ─────────────
+plan = json.loads(json.dumps(COMPOSED))
+plan["meta"] = {"name": "Rimegarth"}
+
+SPLIT_Z = 16                                 # in cells: block z 80, level with the middle of the hole
+
+
+def split_arm(piece_id, a_id, b_id):
+    """Cut one arm of the ring in two across the lane, so its seam can carry a wall. The composer
+    emits an arm as one long piece; a wall is authored on an **interface**, and a piece with no seam
+    across it has none to put one on."""
+    pieces = plan["pieces"]
+    index = next(i for i, p in enumerate(pieces) if p["id"] == piece_id)
+    x, z, w, h = pieces[index]["rect"]
+    pieces[index:index + 1] = [
+        {"id": a_id, "role": "piece", "rect": [x, z, w, SPLIT_Z - z]},
+        {"id": b_id, "role": "piece", "rect": [x, SPLIT_Z, w, h - (SPLIT_Z - z)]},
+    ]
+
+
+split_arm("wool-a-t1", "wool-a-t1a", "wool-a-t1b")      # the west lane, x -25..-15
+split_arm("wool-a-t5", "wool-a-t5a", "wool-a-t5b")      # the east lane, x   0.. 10
+
+# **The stair.** One course at every interface on the board, from the green at the gill's lip to the
+# byre the wool stands in. Stated here rather than in a relief, because a relief would replace them.
+SURFACES = {
+    "frontline-t1": 9,                                   # the green, lowest and nearest the gill
+    "hub-t1": 10, "hub-t2": 10, "hub-t3": 10,            # the hall's yard
+    "spawn-t1": 11, "spawn-room": 11,                    # the gatehouse, a step above it
+    "wool-a-t4": 11,                                     # the neck into the garth
+    "wool-a-t2": 12,                                     # the garth's south arm
+    "wool-a-t1a": 12, "wool-a-t1b": 13, "wool-a-t3": 14,  # the west lane, rising
+    "wool-a-t5a": 13, "wool-a-t5b": 14,                  # and the east lane, rising with it
+    "wool-a-room": 15,                                   # the byre, highest thing on the board
+}
+for piece in plan["pieces"]:
+    piece["surface"] = SURFACES[piece["id"]]
+plan["globals"]["surface"] = min(SURFACES.values())
+
+# **Two walls, one to a lane, level with the middle of the hole.** A bedrock barrier two thick and
+# three tall across the full interface, stamped on the attack side. Neither is the wool room's own
+# interface (`PL13`); both are an approach out, which is where the device belongs.
+plan["walls"] = [{"a": "wool-a-t1a", "b": "wool-a-t1b"},
+                 {"a": "wool-a-t5a", "b": "wool-a-t5b"}]
 
 
 def blocks(piece_id):
-    """One composed piece's rectangle in blocks — the plan states cells."""
-    x, z, w, h = next(p for p in COMPOSED["pieces"] if p["id"] == piece_id)["rect"]
+    """One piece's rectangle in blocks — the plan states cells."""
+    x, z, w, h = next(p for p in plan["pieces"] if p["id"] == piece_id)["rect"]
     return (x * CELL, z * CELL, (x + w) * CELL, (z + h) * CELL)
 
 
-# The composed board, read once and named. Nothing below re-types a coordinate.
 GATE = blocks("spawn-room")                  # x -50..-40, z 40..50
 HALL = blocks("hub-t1")                      # x -35..  0, z 40..50
-SOLAR = blocks("hub-t2")                     # x -35..-25, z 30..40
-BUTTERY = blocks("hub-t3")                   # x -15..  0, z 30..40
 GREEN = blocks("frontline-t1")               # x -15.. 15, z 10..30
 NECK = blocks("wool-a-t4")                   # x -25..  0, z 50..60
-RING_W = blocks("wool-a-t1")                 # x -25..-15, z 60..105
+RING_W = (blocks("wool-a-t1a")[0], blocks("wool-a-t1a")[1],
+          blocks("wool-a-t1b")[2], blocks("wool-a-t1b")[3])
 RING_S = blocks("wool-a-t2")                 # x -15..  0, z 60.. 70
-RING_E = blocks("wool-a-t5")                 # x   0.. 10, z 60.. 95
+RING_E = (blocks("wool-a-t5a")[0], blocks("wool-a-t5a")[1],
+          blocks("wool-a-t5b")[2], blocks("wool-a-t5b")[3])
 RING_N = blocks("wool-a-t3")                 # x -15..  0, z 95..105
 BYRE = blocks("wool-a-room")                 # x   0.. 10, z 95..105
 
 RING = (RING_W[0], RING_S[1], RING_E[2], RING_N[3])          # the garth's outer bound
 GARTH = (RING_S[0], RING_S[3], RING_S[2], RING_E[3])         # the hole in it: x -15..0, z 70..95
-POOL_Y = SURFACE - 5
-GREEN_Y = SURFACE - 2
+POOL_TOP = 7                                                 # five courses under the garth's low arm
+WALL_Z = SPLIT_Z * CELL                                      # z 80, where both walls stand
 
-# Every piece's rectangle, so nothing below is placed on ground that is not there. A composed board
-# **is** its pieces — there is no landscape round them, only void — and a coordinate typed by eye
-# lands off the map about a third of the time. `write()` refuses to emit a document that does.
-GROUND = [blocks(p["id"]) for p in COMPOSED["pieces"]]
+GROUND = [blocks(p["id"]) for p in plan["pieces"]]
 
 
 def on_ground(x, z, margin=2):
@@ -66,14 +117,9 @@ def on_ground(x, z, margin=2):
                for x0, z0, x1, z1 in GROUND)
 
 
-MID = COMPOSED["zones"][0]["rect"]
-GILL = (MID[0] * CELL, MID[1] * CELL, (MID[0] + MID[2]) * CELL, (MID[1] + MID[3]) * CELL)
-
-
 # ── materials ─────────────────────────────────────────────────────────────────────────────────
-# Winter, and two greys: snow and ice for what the weather left, stone and cobble for what was
-# built out of the hill, spruce for what was cut. The only colour on the board is each team's own,
-# and it is written by one material.
+# Winter, and two greys: snow and ice for what the weather left, stone and cobble for what was built
+# out of the hill, spruce for what was cut. The only colour is each team's own.
 def solid(block, data=0):
     return {"kind": "solid", "id": block, "data": data}
 
@@ -107,7 +153,6 @@ def team_tint(block, neutral):
 
 STONE = solid(1, 0)
 GRANITE = solid(1, 1)
-DIORITE = solid(1, 3)
 ANDESITE = solid(1, 5)
 DIRT = solid(3, 0)
 COARSE = solid(3, 1)
@@ -119,12 +164,10 @@ ICE = solid(79, 0)
 SNOW = solid(80, 0)
 PACKED_ICE = solid(174, 0)
 STONE_BRICK = solid(98, 0)
-MOSSY_BRICK = solid(98, 1)
 CLAY_STAINED = 159
 CLAY_WHITE = solid(159, 0)
 
-# What the board is cut out of, seen on every face that drops into the gill: snow and frozen soil
-# over the hill's own stone.
+# What the board is cut out of, seen on every face — and on a board of steps every interface is one.
 SECTION = layered(stack(
     (SNOW, 1), (COARSE, 1), (PODZOL, 1),
     (STONE, 3), (ANDESITE, 2),
@@ -147,14 +190,20 @@ def theme(surface, wall, fill, surface_depth=3, rim=None, rim_edges="drop", bedr
 
 
 THEMES = {
-    # the heath the whole board is cut from: snow lying on frozen ground, thin where it is walked
+    # the heath the hall's yard is trodden out of
     "heath": theme(
         surface=layered(stack((noise(12, 9, 3, [COARSE, SNOW, SNOW]), 1), (PODZOL, 1), (DIRT, 1))),
         wall=SECTION, fill=STONE, rim=COBBLE, surface_depth=3),
 
-    # the hall's yard and the garth's: trodden through to the cobble that was laid under it
+    # the gatehouse's forecourt and the neck: walked through to the gravel under it
     "yard": theme(
-        surface=layered(stack((voronoi(13, 5, [(SNOW, 1), (MOSSY_COBBLE, 1), (COBBLE, 1)]), 1),
+        surface=layered(stack((voronoi(13, 5, [(SNOW, 1), (MOSSY_COBBLE, 1), (COARSE, 1)]), 1),
+                              (GRAVEL, 1), (STONE, 2))),
+        wall=SECTION, fill=STONE, rim=STONE_BRICK, surface_depth=3),
+
+    # the garth: paved, because a yard with a pond in it was laid rather than worn
+    "garth": theme(
+        surface=layered(stack((voronoi(16, 4, [(SNOW, 1), (MOSSY_COBBLE, 1), (COBBLE, 1)]), 1),
                               (GRAVEL, 1), (STONE, 2))),
         wall=SECTION, fill=STONE, rim=STONE_BRICK, surface_depth=3),
 
@@ -165,7 +214,7 @@ THEMES = {
         wall=SECTION, fill=STONE,
         rim=team_tint(CLAY_STAINED, CLAY_WHITE), surface_depth=3),
 
-    # the pond in the middle of the garth: ice at its edges over the gravel it was dug into
+    # the pond in the middle of the garth
     "pool": theme(
         surface=layered(stack((voronoi(15, 4, [(PACKED_ICE, 1), (GRAVEL, 2), (ICE, 1)]), 1),
                               (GRAVEL, 1), (STONE, 2))),
@@ -173,70 +222,16 @@ THEMES = {
         fill=STONE, rim=PACKED_ICE, surface_depth=2),
 }
 
-# ── the shapes ────────────────────────────────────────────────────────────────────────────────
-_ids = {}
+# **The stair is what themes the board.** Every band of the plan now stands at its own height, so a
+# theme per height needs no shapes at all — which is as well, since an `addShapes` rectangle at one
+# height over ground at another is two adds stacked on one layer (`SK9`).
+THEME_BY_HEIGHT = {"9": "green", "10": "heath", "11": "yard",
+                   "12": "garth", "13": "garth", "14": "garth", "15": "garth"}
 
-
-def sid(prefix):
-    _ids[prefix] = _ids.get(prefix, 0) + 1
-    return f"{prefix}{_ids[prefix]}"
-
-
-def rect(prefix, box, theme_key, floor=0, height=SURFACE):
-    x0, z0, x1, z1 = box
-    return {"id": sid(prefix), "type": "rectangle", "operation": "add",
-            "min_x": x0, "min_z": z0, "max_x": x1, "max_z": z1,
-            "floor": floor, "base_height": height, "theme": theme_key}
-
-
-# **A composed plan compiles to one merged polygon and a `subtract`**, and the subtract is what cuts
-# the garth's hole out of it. A subtract beats every add on its layer whatever order they are in, so
-# an `addShapes` rectangle over the hole draws nothing at all — the pond is a **slab of its own**,
-# stated `below` the compiled ground so the painter reaches it first, filling exactly the rectangle
-# the subtract took and no more.
-pool = [rect("pool", GARTH, "pool", height=POOL_Y + 1)]
-
-shapes = [
-    # paint scopes over what is already there
-    rect("t", (RING[0], RING[1], RING[2], RING[3]), "yard"),
-    rect("t", (SOLAR[0], SOLAR[1], BUTTERY[2], HALL[3]), "yard"),
-    rect("t", NECK, "yard"),
-    rect("t", GREEN, "green"),
-]
-
-
-# ── the relief ────────────────────────────────────────────────────────────────────────────────
-def point(ident, x, z, h, r):
-    return {"id": ident, "kind": "point", "at": [x, z], "h": h, "r": r}
-
-
-def area(ident, box, h):
-    x0, z0, x1, z1 = box
-    return {"id": ident, "kind": "area",
-            "ring": [[x0, z0], [x1, z0], [x1, z1], [x0, z1]], "h": h}
-
-
-MARKS = [
-    # the garth, level, because a yard is. Nothing here states the pond: it is a slab on its own
-    # layer and flat by construction, which is what the bottom of one is.
-    area("garth-floor", RING, SURFACE),
-
-    # the green two courses under the hall, with the seam left unpinned so the ground ramps rather
-    # than steps — the only slope on a board that is otherwise a floor
-    area("green", GREEN, GREEN_Y),
-
-    # and a hand of low swells so the flat is not flat: on the hall's yard, on the neck, and one
-    # behind the gatehouse
-    point("hall-swell", -22, 45, SURFACE + 2, 6),
-    point("neck-swell", -12, 55, SURFACE + 1, 5),
-    point("gate-rise", -46, 45, SURFACE + 2, 5),
-    point("garth-swell", -20, 82, SURFACE + 1, 5),
-    point("green-dip", 6, 18, GREEN_Y - 1, 5),
-]
-
-RELIEF = {"*": {"base": SURFACE, "reach": 14, "step": 1, "stairs": False,
-                "grain": {"amplitude": 0.6, "scale": 8, "seed": 5},
-                "marks": MARKS}}
+# ── the pond's own slab ───────────────────────────────────────────────────────────────────────
+pool = [{"id": "pool1", "type": "rectangle", "operation": "add",
+         "min_x": GARTH[0], "min_z": GARTH[1], "max_x": GARTH[2], "max_z": GARTH[3],
+         "floor": 0, "base_height": POOL_TOP + 1, "theme": "pool"}]
 
 
 # ── what stands on it ─────────────────────────────────────────────────────────────────────────
@@ -253,7 +248,7 @@ def house(ident, x, z, width, depth, style, seed, front="negZ"):
 def boulder(ident, x, z, size, seed, form="angular", mossy=False):
     return {"id": ident, "kind": "boulder", "seed": seed, "x": x, "z": z,
             "form": form, "size": size, "mossy": mossy,
-            "rock": voronoi(16, 4, [(MOSSY_COBBLE, 1), (ANDESITE, 1), (STONE, 1)])}
+            "rock": voronoi(17, 4, [(MOSSY_COBBLE, 1), (ANDESITE, 1), (STONE, 1)])}
 
 
 def flora(ident, ring, coverage, seed, scale=8, fern=0.24, flower=0.1, tall=0.2):
@@ -274,21 +269,19 @@ def stroke(ident, points, radius, pave, style="worn", coverage=0.4, route=False,
 
 TROD = voronoi(21, 4, [(SNOW, 1), (GRAVEL, 1), (COARSE, 1)])
 
-# The three roads, stated once and read by both the strokes and the scatter below.
+# The three roads, stated once and read by both the strokes and the scatter below. Each lane's road
+# runs through its own wall, because a wall is opened on its approach face and the way is through it.
 STREET = [(-44, 45), (-30, 46), (-14, 44), (-6, 38), (-2, 28), (0, 16), (0, 11)]
 GARTH_W = [(-14, 52), (-20, 58), (-20, 74), (-20, 92), (-14, 100), (-2, 100)]
 GARTH_E = [(-10, 54), (-6, 64), (4, 68), (5, 84), (5, 96)]
-# **A road's standoff is measured to its paved cells, not its centreline**, so what a prop has to
-# clear is the stroke's own radius plus the standoff its kind states — three blocks for a tree, two
-# for a boulder. Each road carries its radius here and the scatter adds four.
 ROADS = ((STREET, 3.0), (GARTH_W, 2.4), (GARTH_E, 2.2))
 
-# The approach wall's interface, which is kept clear the way a doorway is.
-WALL_SEAM = (RING_S[0] - 4, NECK[3] - 8, RING_S[2] + 4, RING_S[1] + 8)
-
-# The two buildings, likewise: corner, corner.
 HOUSES = [("hall", (-14, 41, 13, 7), "@rg-hall", "negZ"),
           ("solar", (-33, 32, 7, 7), "@rg-hall", "posZ")]
+
+# The two wall seams, kept clear the way a doorway is.
+WALL_SEAMS = [(RING_W[0] - 4, WALL_Z - 7, RING_W[2] + 4, WALL_Z + 7),
+              (RING_E[0] - 4, WALL_Z - 7, RING_E[2] + 4, WALL_Z + 7)]
 
 
 def _near_segment(x, z, a, b):
@@ -301,30 +294,32 @@ def _near_segment(x, z, a, b):
 
 def clear_spot(x, z):
     """Whether a prop may stand here. **Every rule the dressing pass declines on, asked before the
-    document is written** — the board is corridors ten blocks wide with a road down each of them,
-    so a coordinate that merely looks free almost never is."""
+    document is written** — the board is lanes ten blocks wide with a road down each of them, so a
+    coordinate that merely looks free almost never is. A road's standoff is measured to its **paved
+    cells**, so what is cleared is the stroke's radius plus the standoff its kind states."""
     if not on_ground(x, z, margin=3):
         return False
     for road, radius in ROADS:
         for a, b in zip(road, road[1:]):
             if _near_segment(x, z, a, b) < radius + 4:
                 return False
-    if WALL_SEAM[0] <= x <= WALL_SEAM[2] and WALL_SEAM[1] <= z <= WALL_SEAM[3]:
-        return False
     for _, (hx, hz, hw, hd), _, _ in HOUSES:
         if hx - 4 <= x <= hx + hw + 4 and hz - 4 <= z <= hz + hd + 4:
             return False
-    for room in (GATE, BYRE):                       # the two doors, and the ground kept clear of them
+    for room in (GATE, BYRE):
         if room[0] - 15 <= x <= room[2] + 15 and room[1] - 15 <= z <= room[3] + 15:
             return False
+    for seam in WALL_SEAMS:
+        if seam[0] <= x <= seam[2] and seam[1] <= z <= seam[3]:
+            return False
     if GARTH[0] - 3 <= x <= GARTH[2] + 3 and GARTH[1] - 3 <= z <= GARTH[3] + 3:
-        return False                                 # the pond and its bank
+        return False
     return True
 
 
 def scatter(count, apart=8):
-    """The clear spots, taken in a fixed order and thinned to `apart` blocks between them. No
-    randomness: the same board always dresses the same way."""
+    """The clear spots, taken in a fixed order and thinned. No randomness: the same board always
+    dresses the same way."""
     picks = []
     for z in range(10, 106):
         for x in range(-50, 16):
@@ -339,25 +334,19 @@ def scatter(count, apart=8):
 SPOTS = scatter(20)
 
 props = [
-    # the pond, cut into the pan the relief already flattened
-    # The pond. **A water prop fills its own band and does not spread to a level pan**, so the band
-    # is the pond: a centreline down the middle of the hole at a radius that leaves a block and a
-    # half of bank inside the yard's five-course wall.
+    # The pond. **A water prop fills its own band and does not spread to the level it finds**, so
+    # the band is the pond: a centreline down the middle of the hole at a radius that leaves a block
+    # and a half of bank inside the garth's wall.
     {"id": "the-stank", "kind": "water", "seed": 5, "form": "canal",
      "points": [[(GARTH[0] + GARTH[2]) / 2, GARTH[1] + 9],
                 [(GARTH[0] + GARTH[2]) / 2, GARTH[3] - 9]],
      "radius": 6.0, "depth": 2, "edge": 0.3, "shore": 1, "shoreWander": False,
-     "bank": voronoi(17, 4, [(PACKED_ICE, 1), (GRAVEL, 1), (COBBLE, 1)])},
-
-    # **The hall on the hub and its solar wing stepped off it, and nothing in the garth.** The ring
-    # is ten blocks wide the whole way round — a corridor, not a yard — so a house in it is a house
-    # standing on the only route there is.
+     "bank": voronoi(18, 4, [(PACKED_ICE, 1), (GRAVEL, 1), (COBBLE, 1)])},
 ]
+
 props += [house(ident, x, z, w, d, style, 11 + k, front=front)
           for k, (ident, (x, z, w, d), style, front) in enumerate(HOUSES)]
 
-# Spruce and stone in the spots the scatter found, alternating, which is every place on this board
-# that is on ground, off the roads, clear of the buildings and out of both doorways' approaches.
 props += [
     tree(f"fir-{k}", x, z, "spruce", 9 + (k % 4), 200 + k) if k % 2 == 0
     else boulder(f"stone-{k}", x, z, 2.0 + 0.2 * (k % 4), 60 + k,
@@ -366,7 +355,6 @@ props += [
 ]
 
 props += [
-
     flora("heath-turf", [(-50, 30), (15, 30), (15, 60), (-50, 60)], 0.28, 81),
     flora("garth-turf", [(RING[0], RING[1]), (RING[2], RING[1]),
                          (RING[2], RING[3]), (RING[0], RING[3])], 0.2, 82,
@@ -377,12 +365,11 @@ props += [
 
     # the one road: out of the gatehouse, down the hall's length, over the green to the gill's lip
     stroke("street", STREET, ROADS[0][1], TROD, style="solid", coverage=1.0, route=True, seed=31),
-    # and the way into the garth, which forks round the pond because a ring is what it is
+    # and the two ways round the garth, one to a lane, each through its own wall
     stroke("garth-w", GARTH_W, ROADS[1][1], TROD, coverage=0.85, route=True, seed=32),
     stroke("garth-e", GARTH_E, ROADS[2][1], TROD, coverage=0.8, route=True, seed=33),
 
-    # and two that are paint rather than a way: snow drifted into the lee of the garth's walls, and
-    # the green worn through to the stone under it where a board this narrow is walked most
+    # and two that are paint rather than a way
     stroke("drift", [(RING[0] + 3, RING[1] + 3), (RING[0] + 3, RING[3] - 3),
                      (RING[2] - 3, RING[3] - 3), (RING[2] - 3, RING[1] + 3)], 3.0, SNOW,
            style="worn", coverage=0.45, seed=34),
@@ -391,28 +378,15 @@ props += [
            style="worn", coverage=0.35, seed=35),
 ]
 
-
-# ── the plan ──────────────────────────────────────────────────────────────────────────────────
-# The composed document, with three things added and nothing moved: the surface it is lifted to,
-# the approach wall, and a name.
-plan = json.loads(json.dumps(COMPOSED))
-plan["meta"] = {"name": "Rimegarth"}
-plan["globals"]["surface"] = SURFACE
-# `walls` is always empty on a composed board — a defence wall is authored, never composed. This one
-# bars the garth's near gate, so the way to the wool is round the ring rather than straight up it.
-# Not the wool room's own interface, which is `PL13`.
-plan["walls"] = [{"a": "wool-a-t4", "b": "wool-a-t2"}]
-
 finish = {
     "authors": ["Opus 5"],
-    "addShapes": shapes,
+    "themeByHeight": THEME_BY_HEIGHT,
     "addLayers": [
         {"id": "garth-pool", "name": "The stank", "base_y": 0, "below": True,
          "shapes": pool,
          "islands": [{"id": "stank", "name": "The stank", "mirrors": True,
                       "shapeIds": [p["id"] for p in pool]}]},
     ],
-    "relief": RELIEF,
     "themes": THEMES,
     "mapTheme": "heath",
     "roomStyles": {"cage": "@rg-cage", "spawn": "@rg-gate"},
@@ -421,6 +395,9 @@ finish = {
 
 
 def write():
+    steps = sorted(set(SURFACES.values()))
+    if steps != list(range(steps[0], steps[-1] + 1)):
+        raise SystemExit(f"the stair skips a course: {steps}")
     for prop in props:
         if prop["kind"] in ("tree", "boulder") and not clear_spot(prop["x"], prop["z"]):
             raise SystemExit(f"{prop['id']} at {prop['x']},{prop['z']} is not a clear spot")
@@ -436,14 +413,12 @@ def write():
     kinds = {}
     for prop in props:
         kinds[prop["kind"]] = kinds.get(prop["kind"], 0) + 1
-    span_x = max(p["rect"][0] + p["rect"][2] for p in plan["pieces"]) * CELL
-    span_z = max(p["rect"][1] + p["rect"][3] for p in plan["pieces"]) * CELL
-    print(f"composed p{COMPOSED['globals']['maxPlayers']} seed 26 · cell {CELL} · "
-          f"authored half reaches x{span_x} z{span_z} -> board about {2 * 50} x {2 * span_z}")
-    print(f"garth {RING} · hole {GARTH} · pool y{POOL_Y} · green y{GREEN_Y} · yard y{SURFACE}")
-    print(f"pieces {len(plan['pieces'])} · walls {len(plan['walls'])} · shapes {len(shapes)} "
-          f"+ {len(pool)} on the pond's own slab · "
-          f"marks {len(MARKS)} · themes {len(THEMES)} · props {len(props)} {kinds}")
+    print(f"composed p{plan['globals']['maxPlayers']} seed 26 · cell {CELL} · "
+          f"{len(COMPOSED['pieces'])} pieces composed -> {len(plan['pieces'])} after the ring is cut")
+    print(f"stair {steps} · walls at z{WALL_Z}: "
+          f"west x{RING_W[0]}..{RING_W[2]}, east x{RING_E[0]}..{RING_E[2]}")
+    print(f"garth {RING} · hole {GARTH} · pond top y{POOL_TOP}")
+    print(f"themes {len(THEMES)} by height {THEME_BY_HEIGHT} · props {len(props)} {kinds}")
     print(f"scatter found {len(SPOTS)} clear spots: {SPOTS}")
 
 

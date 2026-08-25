@@ -64,13 +64,51 @@
       "radius": null,
       "vertices": [
        [
-        -50,
-        40
+        -15,
+        10
        ],
        [
-        -35,
-        40
+        15,
+        10
        ],
+       [
+        15,
+        30
+       ],
+       [
+        -15,
+        30
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 9,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": "green"
+     },
+     {
+      "id": "s1",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
        [
         -35,
         30
@@ -89,14 +127,6 @@
        ],
        [
         -15,
-        10
-       ],
-       [
-        15,
-        10
-       ],
-       [
-        15,
         30
        ],
        [
@@ -105,27 +135,157 @@
        ],
        [
         0,
+        50
+       ],
+       [
+        -35,
+        50
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 10,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": "heath"
+     },
+     {
+      "id": "s2",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -25,
+        50
+       ],
+       [
+        0,
+        50
+       ],
+       [
+        0,
         60
        ],
        [
-        10,
+        -25,
         60
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 11,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": "yard"
+     },
+     {
+      "id": "s3",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -50,
+        40
        ],
        [
-        10,
-        105
+        -35,
+        40
        ],
        [
-        -25,
-        105
-       ],
-       [
-        -25,
+        -35,
         50
        ],
        [
         -50,
         50
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 11,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": "yard"
+     },
+     {
+      "id": "s4",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -25,
+        60
+       ],
+       [
+        0,
+        60
+       ],
+       [
+        0,
+        70
+       ],
+       [
+        -15,
+        70
+       ],
+       [
+        -15,
+        80
+       ],
+       [
+        -25,
+        80
        ]
       ],
       "controls": null,
@@ -142,12 +302,104 @@
       "color": null,
       "height_authored": null,
       "doors": null,
-      "theme": null
+      "theme": "garth"
      },
      {
-      "id": "s1",
+      "id": "s5",
       "type": "polygon",
-      "operation": "subtract",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -25,
+        80
+       ],
+       [
+        -15,
+        80
+       ],
+       [
+        -15,
+        105
+       ],
+       [
+        -25,
+        105
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 13,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": "garth"
+     },
+     {
+      "id": "s6",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        0,
+        60
+       ],
+       [
+        10,
+        60
+       ],
+       [
+        10,
+        80
+       ],
+       [
+        0,
+        80
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 13,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": "garth"
+     },
+     {
+      "id": "s7",
+      "type": "polygon",
+      "operation": "add",
       "override": false,
       "min_x": null,
       "min_z": null,
@@ -159,19 +411,35 @@
       "vertices": [
        [
         -15,
-        70
-       ],
-       [
-        0,
-        70
+        95
        ],
        [
         0,
         95
+       ],
+       [
+        0,
+        80
+       ],
+       [
+        10,
+        80
+       ],
+       [
+        10,
+        95
+       ],
+       [
+        0,
+        95
+       ],
+       [
+        0,
+        105
        ],
        [
         -15,
-        95
+        105
        ]
       ],
       "controls": null,
@@ -180,7 +448,7 @@
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
-      "base_height": null,
+      "base_height": 14,
       "anchor_heights": null,
       "floor": null,
       "role": null,
@@ -188,7 +456,53 @@
       "color": null,
       "height_authored": null,
       "doors": null,
-      "theme": null
+      "theme": "garth"
+     },
+     {
+      "id": "s8",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        0,
+        95
+       ],
+       [
+        10,
+        95
+       ],
+       [
+        10,
+        105
+       ],
+       [
+        0,
+        105
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 15,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": "garth"
      },
      {
       "id": "spawn-red",
@@ -209,7 +523,7 @@
       "height_mode": null,
       "skirt": null,
       "relief_scope": "hold",
-      "base_height": 12,
+      "base_height": 11,
       "anchor_heights": null,
       "floor": null,
       "role": "spawn",
@@ -269,7 +583,7 @@
       "height_mode": null,
       "skirt": null,
       "relief_scope": "hold",
-      "base_height": 12,
+      "base_height": 15,
       "anchor_heights": null,
       "floor": null,
       "role": "woolRoom",
@@ -310,54 +624,6 @@
       "height_authored": null,
       "doors": null,
       "theme": null
-     },
-     {
-      "id": "t1",
-      "type": "rectangle",
-      "operation": "add",
-      "min_x": -25,
-      "min_z": 60,
-      "max_x": 10,
-      "max_z": 105,
-      "floor": 0,
-      "base_height": 12,
-      "theme": "yard"
-     },
-     {
-      "id": "t2",
-      "type": "rectangle",
-      "operation": "add",
-      "min_x": -35,
-      "min_z": 30,
-      "max_x": 0,
-      "max_z": 50,
-      "floor": 0,
-      "base_height": 12,
-      "theme": "yard"
-     },
-     {
-      "id": "t3",
-      "type": "rectangle",
-      "operation": "add",
-      "min_x": -25,
-      "min_z": 50,
-      "max_x": 0,
-      "max_z": 60,
-      "floor": 0,
-      "base_height": 12,
-      "theme": "yard"
-     },
-     {
-      "id": "t4",
-      "type": "rectangle",
-      "operation": "add",
-      "min_x": -15,
-      "min_z": 10,
-      "max_x": 15,
-      "max_z": 30,
-      "floor": 0,
-      "base_height": 12,
-      "theme": "green"
      }
     ],
     "islands": [
@@ -368,10 +634,13 @@
       "shapeIds": [
        "s0",
        "s1",
-       "t1",
-       "t2",
-       "t3",
-       "t4"
+       "s2",
+       "s3",
+       "s4",
+       "s5",
+       "s6",
+       "s7",
+       "s8"
       ]
      }
     ]
@@ -567,6 +836,176 @@
          "kind": "voronoi",
          "seed": 13,
          "cellSize": 5,
+         "rise": 0,
+         "bands": [
+          {
+           "material": {
+            "kind": "solid",
+            "id": 80,
+            "data": 0
+           },
+           "thickness": 1
+          },
+          {
+           "material": {
+            "kind": "solid",
+            "id": 48,
+            "data": 0
+           },
+           "thickness": 1
+          },
+          {
+           "material": {
+            "kind": "solid",
+            "id": 3,
+            "data": 1
+           },
+           "thickness": 1
+          }
+         ]
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 13,
+         "data": 0
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 0
+        },
+        "thickness": 2
+       }
+      ],
+      "ending": "repeat"
+     }
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 80,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 2
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "noise",
+        "seed": 11,
+        "scale": 5,
+        "octaves": 2,
+        "stops": [
+         {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 13,
+          "data": 0
+         }
+        ]
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 1
+       },
+       "thickness": 2
+      }
+     ],
+     "ending": "repeat"
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "garth": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "voronoi",
+         "seed": 16,
+         "cellSize": 4,
          "rise": 0,
          "bands": [
           {
@@ -1327,7 +1766,7 @@
     "shoreWander": false,
     "bank": {
      "kind": "voronoi",
-     "seed": 17,
+     "seed": 18,
      "cellSize": 4,
      "rise": 0,
      "bands": [
@@ -1731,7 +2170,7 @@
     "mossy": false,
     "rock": {
      "kind": "voronoi",
-     "seed": 16,
+     "seed": 17,
      "cellSize": 4,
      "rise": 0,
      "bands": [
@@ -1783,7 +2222,7 @@
     "mossy": true,
     "rock": {
      "kind": "voronoi",
-     "seed": 16,
+     "seed": 17,
      "cellSize": 4,
      "rise": 0,
      "bands": [
@@ -1835,7 +2274,7 @@
     "mossy": false,
     "rock": {
      "kind": "voronoi",
-     "seed": 16,
+     "seed": 17,
      "cellSize": 4,
      "rise": 0,
      "bands": [
@@ -1870,11 +2309,63 @@
     "id": "fir-6",
     "kind": "tree",
     "seed": 206,
+    "x": -3,
+    "z": 53,
+    "form": "template",
+    "species": "spruce",
+    "height": 11
+   },
+   {
+    "id": "stone-7",
+    "kind": "boulder",
+    "seed": 67,
+    "x": -12,
+    "z": 66,
+    "form": "angular",
+    "size": 2.6,
+    "mossy": false,
+    "rock": {
+     "kind": "voronoi",
+     "seed": 17,
+     "cellSize": 4,
+     "rise": 0,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 48,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "fir-8",
+    "kind": "tree",
+    "seed": 208,
     "x": -22,
     "z": 100,
     "form": "template",
     "species": "spruce",
-    "height": 11
+    "height": 9
    },
    {
     "id": "heath-turf",
@@ -2260,115 +2751,5 @@
    }
   ]
  },
- "relief": {
-  "team": {
-   "base": 12,
-   "reach": 14,
-   "step": 1,
-   "stairs": false,
-   "grain": {
-    "amplitude": 0.6,
-    "scale": 8,
-    "seed": 5
-   },
-   "marks": [
-    {
-     "id": "garth-floor",
-     "kind": "area",
-     "ring": [
-      [
-       -25,
-       60
-      ],
-      [
-       10,
-       60
-      ],
-      [
-       10,
-       105
-      ],
-      [
-       -25,
-       105
-      ]
-     ],
-     "h": 12
-    },
-    {
-     "id": "green",
-     "kind": "area",
-     "ring": [
-      [
-       -15,
-       10
-      ],
-      [
-       15,
-       10
-      ],
-      [
-       15,
-       30
-      ],
-      [
-       -15,
-       30
-      ]
-     ],
-     "h": 10
-    },
-    {
-     "id": "hall-swell",
-     "kind": "point",
-     "at": [
-      -22,
-      45
-     ],
-     "h": 14,
-     "r": 6
-    },
-    {
-     "id": "neck-swell",
-     "kind": "point",
-     "at": [
-      -12,
-      55
-     ],
-     "h": 13,
-     "r": 5
-    },
-    {
-     "id": "gate-rise",
-     "kind": "point",
-     "at": [
-      -46,
-      45
-     ],
-     "h": 14,
-     "r": 5
-    },
-    {
-     "id": "garth-swell",
-     "kind": "point",
-     "at": [
-      -20,
-      82
-     ],
-     "h": 13,
-     "r": 5
-    },
-    {
-     "id": "green-dip",
-     "kind": "point",
-     "at": [
-      6,
-      18
-     ],
-     "h": 9,
-     "r": 5
-    }
-   ]
-  }
- }
+ "relief": null
 }

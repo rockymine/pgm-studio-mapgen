@@ -2,56 +2,15 @@
  "authors": [
   "Opus 5"
  ],
- "addShapes": [
-  {
-   "id": "t1",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -25,
-   "min_z": 60,
-   "max_x": 10,
-   "max_z": 105,
-   "floor": 0,
-   "base_height": 12,
-   "theme": "yard"
-  },
-  {
-   "id": "t2",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -35,
-   "min_z": 30,
-   "max_x": 0,
-   "max_z": 50,
-   "floor": 0,
-   "base_height": 12,
-   "theme": "yard"
-  },
-  {
-   "id": "t3",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -25,
-   "min_z": 50,
-   "max_x": 0,
-   "max_z": 60,
-   "floor": 0,
-   "base_height": 12,
-   "theme": "yard"
-  },
-  {
-   "id": "t4",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -15,
-   "min_z": 10,
-   "max_x": 15,
-   "max_z": 30,
-   "floor": 0,
-   "base_height": 12,
-   "theme": "green"
-  }
- ],
+ "themeByHeight": {
+  "9": "green",
+  "10": "heath",
+  "11": "yard",
+  "12": "garth",
+  "13": "garth",
+  "14": "garth",
+  "15": "garth"
+ },
  "addLayers": [
   {
    "id": "garth-pool",
@@ -84,117 +43,6 @@
    ]
   }
  ],
- "relief": {
-  "*": {
-   "base": 12,
-   "reach": 14,
-   "step": 1,
-   "stairs": false,
-   "grain": {
-    "amplitude": 0.6,
-    "scale": 8,
-    "seed": 5
-   },
-   "marks": [
-    {
-     "id": "garth-floor",
-     "kind": "area",
-     "ring": [
-      [
-       -25,
-       60
-      ],
-      [
-       10,
-       60
-      ],
-      [
-       10,
-       105
-      ],
-      [
-       -25,
-       105
-      ]
-     ],
-     "h": 12
-    },
-    {
-     "id": "green",
-     "kind": "area",
-     "ring": [
-      [
-       -15,
-       10
-      ],
-      [
-       15,
-       10
-      ],
-      [
-       15,
-       30
-      ],
-      [
-       -15,
-       30
-      ]
-     ],
-     "h": 10
-    },
-    {
-     "id": "hall-swell",
-     "kind": "point",
-     "at": [
-      -22,
-      45
-     ],
-     "h": 14,
-     "r": 6
-    },
-    {
-     "id": "neck-swell",
-     "kind": "point",
-     "at": [
-      -12,
-      55
-     ],
-     "h": 13,
-     "r": 5
-    },
-    {
-     "id": "gate-rise",
-     "kind": "point",
-     "at": [
-      -46,
-      45
-     ],
-     "h": 14,
-     "r": 5
-    },
-    {
-     "id": "garth-swell",
-     "kind": "point",
-     "at": [
-      -20,
-      82
-     ],
-     "h": 13,
-     "r": 5
-    },
-    {
-     "id": "green-dip",
-     "kind": "point",
-     "at": [
-      6,
-      18
-     ],
-     "h": 9,
-     "r": 5
-    }
-   ]
-  }
- },
  "themes": {
   "heath": {
    "bedrock": {
@@ -384,6 +232,176 @@
          "kind": "voronoi",
          "seed": 13,
          "cellSize": 5,
+         "rise": 0,
+         "bands": [
+          {
+           "material": {
+            "kind": "solid",
+            "id": 80,
+            "data": 0
+           },
+           "thickness": 1
+          },
+          {
+           "material": {
+            "kind": "solid",
+            "id": 48,
+            "data": 0
+           },
+           "thickness": 1
+          },
+          {
+           "material": {
+            "kind": "solid",
+            "id": 3,
+            "data": 1
+           },
+           "thickness": 1
+          }
+         ]
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 13,
+         "data": 0
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 0
+        },
+        "thickness": 2
+       }
+      ],
+      "ending": "repeat"
+     }
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 80,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 2
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "noise",
+        "seed": 11,
+        "scale": 5,
+        "octaves": 2,
+        "stops": [
+         {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+         },
+         {
+          "kind": "solid",
+          "id": 13,
+          "data": 0
+         }
+        ]
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 1
+       },
+       "thickness": 2
+      }
+     ],
+     "ending": "repeat"
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "garth": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "voronoi",
+         "seed": 16,
+         "cellSize": 4,
          "rise": 0,
          "bands": [
           {
@@ -842,7 +860,7 @@
     "shoreWander": false,
     "bank": {
      "kind": "voronoi",
-     "seed": 17,
+     "seed": 18,
      "cellSize": 4,
      "rise": 0,
      "bands": [
@@ -936,7 +954,7 @@
     "mossy": false,
     "rock": {
      "kind": "voronoi",
-     "seed": 16,
+     "seed": 17,
      "cellSize": 4,
      "rise": 0,
      "bands": [
@@ -988,7 +1006,7 @@
     "mossy": true,
     "rock": {
      "kind": "voronoi",
-     "seed": 16,
+     "seed": 17,
      "cellSize": 4,
      "rise": 0,
      "bands": [
@@ -1040,7 +1058,7 @@
     "mossy": false,
     "rock": {
      "kind": "voronoi",
-     "seed": 16,
+     "seed": 17,
      "cellSize": 4,
      "rise": 0,
      "bands": [
@@ -1075,11 +1093,63 @@
     "id": "fir-6",
     "kind": "tree",
     "seed": 206,
+    "x": -3,
+    "z": 53,
+    "form": "template",
+    "species": "spruce",
+    "height": 11
+   },
+   {
+    "id": "stone-7",
+    "kind": "boulder",
+    "seed": 67,
+    "x": -12,
+    "z": 66,
+    "form": "angular",
+    "size": 2.6,
+    "mossy": false,
+    "rock": {
+     "kind": "voronoi",
+     "seed": 17,
+     "cellSize": 4,
+     "rise": 0,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 48,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "fir-8",
+    "kind": "tree",
+    "seed": 208,
     "x": -22,
     "z": 100,
     "form": "template",
     "species": "spruce",
-    "height": 11
+    "height": 9
    },
    {
     "id": "heath-turf",

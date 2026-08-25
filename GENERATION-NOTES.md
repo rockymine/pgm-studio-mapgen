@@ -1036,7 +1036,7 @@ terrain at `float` below the casing and leaks a course below `leak`), and **a co
 open sky has nothing to catch its lava** — so the casing wants ground all round it, or a breach
 anywhere near an edge ends it at once.
 
-### A composed plan compiles to one merged polygon and a `subtract`, and the subtract wins
+### A *flat* composed plan compiles to one merged polygon and a `subtract`, and the subtract wins
 
 Twelve pieces go into `POST /plan/compile` and two terrain shapes come out: `s0`, one merged `add`
 polygon over the whole footprint, and `s1`, a `subtract` cutting everything the pieces do not cover.
@@ -1049,6 +1049,26 @@ Fill a composed hole on **its own layer**: an `addLayers` entry with `below: tru
 that fills exactly what the subtract took. No overlap with the compiled ground, so no `SK10`; the
 painter reaches it first; and a prop with no `layer` seats on `SurfaceTop`, which over the hole is
 the new slab.
+
+**The merge is a consequence of the pieces being flat, and stating a `surface` per piece ends it.**
+Give every piece its own height and there is nothing left to merge: the same twelve-piece plan
+compiles to **one polygon per distinct height and no subtract at all** — nine of them on
+`opus5-rimegarth`, `s0` at base 9 through `s8` at base 15 — with the hole simply a place no polygon
+covers. That is also the only way a composed board can be painted in more than one theme: a theme is
+stated **on a shape**, a flat plan has one shape, and `themeByHeight` therefore has nothing to bind
+to until the heights exist. Heights first, then paint.
+
+### A `walls` entry closes an interface, not a route
+
+A plan wall stamps bedrock two thick and three tall across the interface it names, over that
+interface's full width, on the attack side — so it closes exactly one seam. On a plan whose pieces
+enclose something, that is not the same as closing the way through: a `donut` wool box has a lane
+down **each** side of its hole, and a wall on one is walked past on the other.
+
+Count the ways round the thing before counting the walls. Where the plan has no seam at the place a
+wall is needed, **split a piece to make one**: on `opus5-rimegarth` the two long ring arms are each
+cut in two level with the middle of the hole, twelve pieces to fourteen, which puts one interface in
+each lane facing the other across the yard and gives both walls somewhere to stand.
 
 ### Browsing the composer is a four-call loop, and a scan is what tells you its vocabulary
 
@@ -1068,8 +1088,9 @@ in 48 seeds at 16 players: `bar`, `ring`, `single`, `twin`, `g`, `double-hole`, 
 Every piece is ten blocks wide with a road down the middle, and there is no landscape around them —
 what is not a piece is void. Placing props by eye on one gave fourteen declines, half of them
 `DR-SITE — has no ground`. Given the piece rectangles, the roads with their radii, the buildings and
-the doorways, a search over every block of the authored half is instant and returns the truth: on
-`opus5-rimegarth` it is **seven** places in a half.
+the doorways and the wall seams, a search over every block of the authored half is instant and
+returns the truth: on
+`opus5-rimegarth` it is **nine** places in a half.
 
 Two of the rules that search has to know. **A road's standoff is measured to its paved cells, not its
 centreline** — clear the stroke's radius *plus* the kind's standoff, three for a tree and two for a

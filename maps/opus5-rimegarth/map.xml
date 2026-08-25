@@ -55,8 +55,8 @@
         <spawn team="blue-team" kit="spawn-kit" yaw="90" region="blue-spawn-point"/>
     </spawns>
     <wools>
-        <wool team="blue-team" color="red" location="5,11,100" monument="red-blue-monument"/>
-        <wool team="red-team" color="blue" location="-5,11,-100" monument="blue-red-monument"/>
+        <wool team="blue-team" color="red" location="5,14,100" monument="red-blue-monument"/>
+        <wool team="red-team" color="blue" location="-5,14,-100" monument="blue-red-monument"/>
     </wools>
     <filters>
         <team id="only-blue">blue-team</team>
@@ -95,13 +95,13 @@
         </not>
     </filters>
     <regions>
-        <point id="blue-spawn-point">45,14,-45</point>
-        <point id="red-spawn-point">-45,14,45</point>
-        <point id="blue-wool-spawn">-5,11,-100</point>
-        <point id="red-wool-spawn">5,11,100</point>
-        <point id="observer-spawn">0,28,0</point>
-        <block id="blue-red-monument">-43,15,42</block>
-        <block id="red-blue-monument">42,15,-48</block>
+        <point id="blue-spawn-point">45,11,-45</point>
+        <point id="red-spawn-point">-45,11,45</point>
+        <point id="blue-wool-spawn">-5,14,-100</point>
+        <point id="red-wool-spawn">5,14,100</point>
+        <point id="observer-spawn">0,25,0</point>
+        <block id="blue-red-monument">-43,12,42</block>
+        <block id="red-blue-monument">42,12,-48</block>
         <rectangle id="blue-spawn" min="40,-50" max="50,-40"/>
         <rectangle id="red-spawn" min="-50,40" max="-40,50"/>
         <rectangle id="blue-wool" min="-10,-105" max="0,-95"/>
@@ -199,5 +199,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>34</maxbuildheight>
+    <maxbuildheight>35</maxbuildheight>
 </map>

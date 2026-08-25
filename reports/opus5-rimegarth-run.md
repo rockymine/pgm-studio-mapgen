@@ -7,8 +7,8 @@ A regular capture-the-wool map — the kind the studio's own generator makes —
 not mine: `specs/opus5-rimegarth/composed.plan.json` is `GET /api/compose?players=10&seed=26` pinned
 verbatim, and everything else is authored on top of it.
 
-`maps/opus5-rimegarth`, 100 × 210, one landmass of 2,900 cells plus a pond on its own slab, zero
-declines, export gate open, `review/opus5-rimegarth.md`.
+`maps/opus5-rimegarth`, 100 × 210, one landmass of 2,900 cells stepping y9 to y15 plus a pond on its
+own slab, zero declines, export gate open, `review/opus5-rimegarth.md`.
 
 ## Browsing is a real agent workflow, and this is what it costs
 
@@ -36,26 +36,63 @@ garth, and that is the map.
 
 ## The finding this run is for
 
-**A composed plan does not compile to one shape per piece. It compiles to one merged polygon and a
-`subtract`, and the subtract beats every add on its layer.**
+**How a composed plan compiles depends on whether its pieces are flat, and the difference is a
+`subtract` that eats anything you draw where it lands.**
 
-Twelve pieces went in and eleven shapes came out: `s0`, one merged `add` polygon over the whole
-footprint; `s1`, a `subtract` polygon cutting everything the pieces do not cover — including the
-donut's hole; four structural room annotations; and my five added rectangles.
+Left as the composer hands it over — every piece at one global `surface` — twelve pieces do not
+become twelve shapes. They become `s0`, one merged `add` polygon over the whole footprint, and `s1`,
+a `subtract` cutting everything the pieces do not cover, *including the donut's hole*; then the four
+structural room annotations.
 
-So the obvious way to fill the hole does not work, and it fails *silently*. The first build stated a
-`pool` rectangle over the hole, a `pool` theme for it and a `pool` relief mark holding it flat, all
+So the obvious way to fill the hole does not work, and it fails **silently**. The first build stated
+a `pool` rectangle over the hole, a `pool` theme for it and a `pool` relief mark holding it flat, all
 three accepted with no finding, and `…/column?at=-8,82` answered **void**: `s1` had removed those
 cells from the layer's set algebra before anything else was asked. The relief read even reported the
 right total, because the cells were never in the footprint to be missing from it.
 
-What works is a **slab of its own**: an `addLayers` entry with `below: true`, one rectangle filling
-exactly what the subtract took. No overlap with the compiled ground, so no `SK10`; the painter reaches
-it first; and a prop with no `layer` seats on `SurfaceTop`, which over the hole is the pond. It builds
-water at y6–7 over a bed at y5, five courses under a yard at y12.
+Two things fix it, and only the second was obvious at the time.
 
-**Fill a composed hole on its own layer. An `addShapes` rectangle over one draws nothing and says
-nothing.**
+**Fill the hole on a slab of its own.** An `addLayers` entry with `below: true`, one rectangle
+filling exactly what the subtract took. No overlap with the compiled ground, so no `SK10`; the
+painter reaches it first; and a prop with no `layer` seats on `SurfaceTop`, which over the hole is
+the pond.
+
+**Give every piece its own `surface`, and the merge stops happening.** Stating a height per piece —
+which this board now does, for the stair — leaves nothing to merge, and the ground layer compiles
+instead to **nine polygons and no subtract at all**, one per distinct height:
+
+```
+s0 add polygon base 9   green      s5 add polygon base 13  garth
+s1 add polygon base 10  heath      s6 add polygon base 13  garth
+s2 add polygon base 11  yard       s7 add polygon base 14  garth
+s3 add polygon base 11  yard       s8 add polygon base 15  garth
+s4 add polygon base 12  garth
+```
+
+That is also what makes the board paintable. A theme is stated **on a shape**; a flat composed plan
+has one shape, so it can have one theme, and `themeByHeight` has nothing to bind to. Heights first,
+then paint — not the other way round.
+
+**A flat composed plan is one polygon and a hole-punch. A stepped one is a polygon per step.**
+
+## The second finding: one wall on a ring closes nothing
+
+The first build put a single `walls` entry on the garth's near gate and I wrote it up as the cheap
+win of the run. It is not a win: the donut has a lane down **each** side of its hole, so a barrier on
+one of them is walked past on the other. That is not a subtle failure — it is the whole point of a
+ring being a ring, and I had described the map correctly ("a yard you can only go *round*") in the
+same document that claimed one wall barred it.
+
+The composer draws no seam to hang a second wall on. So the pieces get cut: `wool-a-t1` and
+`wool-a-t5`, the two long arms, each split in two at cell z16 — block **z80**, level with the middle
+of the hole — which turns twelve pieces into fourteen and creates one interface per lane, the two
+facing each other across the yard. `walls` then names both, and each stamps bedrock two thick and
+three tall across the full ten-block width of its lane. Read back at z80: ten bedrock columns from
+x −25 to −16, ten from x 0 to 9, the pond between them.
+
+**A `walls` entry closes an interface, not a route.** On any plan whose pieces enclose something,
+count the ways round the thing before counting the walls — and if the plan has no seam where a wall
+is needed, split a piece and make one.
 
 ## What I could not say
 
@@ -65,9 +102,9 @@ first pass and eleven on the second, half of them `DR-SITE — has no ground`, b
 *is* its pieces and there is no landscape around them.
 
 The fix was to make the spec compute it. Given the piece rectangles, the roads with their radii, the
-buildings and the two doorways, a search over every block of the authored half returns the places a
-prop may stand: **seven**. That is the honest number for a hundred-block CTW board, and the answer to
-"why is it so bare" is that a composed plan is corridors and rooms.
+buildings, the two doorways and the two wall seams, a search over every block of the authored half
+returns the places a prop may stand: **nine**. That is the honest number for a hundred-block CTW
+board, and the answer to "why is it so bare" is that a composed plan is corridors and rooms.
 
 Two rules came out of getting there. **A road's standoff is measured to its paved cells, not its
 centreline**, so what a prop must clear is the stroke's radius plus its kind's standoff — three for a
@@ -92,19 +129,23 @@ buildings are on the hub.
 
 - **The board itself.** A composed plan compiles, evaluates and exports without a hand on it; every
   refusal in this run was about something I added.
-- **The approach wall.** One line — `{"a": "wool-a-t4", "b": "wool-a-t2"}` — and the near gate into
-  the garth is barred with bedrock two thick and three tall, so the wool is reached the long way
-  round the yard. `walls` is the one thing a composed board never carries and the cheapest thing to
-  add to it.
+- **The `walls` device itself.** Two lines, and both lanes are barred with bedrock two thick and
+  three tall, edge to edge, on the attack side. `walls` is the one thing a composed board never
+  carries and the cheapest thing to add to it — the work is deciding *where*, not stamping it.
 - **`teamTint` on the green's rim.** The only colour on a white board, on the one edge that matters:
   the lip a team defends, seen from across the gill.
 
 ## Open gameplay questions
 
-**Is 177 to 87 the right ratio for a ring?** The wall makes the attacker go the long way round the
-garth, which is most of the difference. A ring wool room is a defender's shape by construction — you
-can be met at either end of the corridor — and whether that wants the wall as well is a question
-about how the map plays rather than how it builds.
+**Is 177 to 87 the right ratio for a ring with both lanes barred?** A ring wool room is a defender's
+shape by construction — you can be met at either end of the corridor — and it now has a bedrock step
+across each end as well. Whether that is a good map or a stalemate is a question about how it plays
+rather than how it builds.
+
+**Does a one-course step read as terrain or as a stair?** The garth climbs six courses from green to
+byre, one at each seam, which is a free walk up and a free walk down. It slows nobody; it is there so
+the ring reads as a hill rather than a table. Whether a defended ring wants steeper steps — two
+courses, so the climb costs a jump — is the author's call.
 
 **Should the garth's pond be reachable back out of?** It is five courses down with a yard wall all
 round; you climb out at the bank the water prop left, or you place a block. On a capture board that
