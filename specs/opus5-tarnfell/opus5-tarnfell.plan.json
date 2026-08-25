@@ -1,0 +1,162 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Tarnfell"
+ },
+ "globals": {
+  "cell": 2,
+  "symmetry": "rot_180",
+  "maxPlayers": 24,
+  "surface": 20
+ },
+ "pieces": [
+  {
+   "id": "fell-s",
+   "role": "piece",
+   "rect": [
+    -32,
+    0,
+    64,
+    29
+   ],
+   "surface": 20
+  },
+  {
+   "id": "fell-m",
+   "role": "piece",
+   "rect": [
+    -32,
+    29,
+    64,
+    23
+   ],
+   "surface": 20
+  },
+  {
+   "id": "fell-nl",
+   "role": "piece",
+   "rect": [
+    -30,
+    52,
+    18,
+    3
+   ],
+   "surface": 24
+  },
+  {
+   "id": "fell-n",
+   "role": "piece",
+   "rect": [
+    -12,
+    52,
+    24,
+    3
+   ],
+   "surface": 32
+  },
+  {
+   "id": "fell-nr",
+   "role": "piece",
+   "rect": [
+    12,
+    52,
+    18,
+    3
+   ],
+   "surface": 24
+  },
+  {
+   "id": "fell-w2",
+   "role": "piece",
+   "rect": [
+    -30,
+    55,
+    20,
+    8
+   ],
+   "surface": 26
+  },
+  {
+   "id": "fell-nw",
+   "role": "piece",
+   "rect": [
+    -10,
+    55,
+    6,
+    8
+   ],
+   "surface": 32
+  },
+  {
+   "id": "fell-ne",
+   "role": "piece",
+   "rect": [
+    4,
+    55,
+    6,
+    8
+   ],
+   "surface": 32
+  },
+  {
+   "id": "fell-e2",
+   "role": "piece",
+   "rect": [
+    10,
+    55,
+    20,
+    8
+   ],
+   "surface": 26
+  },
+  {
+   "id": "fell-back",
+   "role": "piece",
+   "rect": [
+    -26,
+    63,
+    52,
+    12
+   ],
+   "surface": 32
+  },
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    -4,
+    55,
+    8,
+    8
+   ],
+   "surface": 32
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "camp",
+    "at": [
+     4,
+     4.5
+    ],
+    "facing": "front"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "at": [
+     15.0,
+     34.5
+    ],
+    "style": "cube-4",
+    "materials": "ender stone",
+    "float": 4,
+    "name": "The Wardstone"
+   }
+  ]
+ }
+}

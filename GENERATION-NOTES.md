@@ -867,3 +867,55 @@ layer the board does not have and these are layers it has.
 `base_height` carrying a different `theme`. The geometry is unchanged and the theme scope resolves
 per layer, so it lands exactly where it is drawn. Both of the pool's lanes are three-wide rectangles
 of the basin's own two courses, themed dark prismarine.
+
+### A point mark's radius pins a flat disc, so a radius is a mesa and not a summit
+
+`PointMark.Pins` yields **every** cell inside its radius at the stated height, and those cells are
+constraints — the relaxation only shapes what is left between them. Marks placed at radius 16–32 on
+a 176-wide board nearly tile it, and the ground builds as stacked plateaus with vertical faces.
+
+Measured on `opus5-tarnfell`, the same thirty marks at two radii, off `…/sketch/relief/read`:
+
+| | radius 16–32 | radius 3–6 |
+|---|---|---|
+| walkable at one-block steps | terraced throughout | **95.1 %** |
+| largest place at that tier | — | 86.5 % |
+| cliffs | one at every mark's edge | **6** |
+
+**The rolling is the relaxation's**; a radius is how much of the landform you are refusing to let it
+do. Keep a summit at three to six and let `reach` spread it. An `area` mark is the other instrument
+and is right where flat is the point — a lake pan, a spawn terrace, a shelf under a goal.
+
+### A relief mark's centre may lie outside the land, and that is how a map edge cuts a mountain
+
+`PointMark.Pins` iterates **its own** bounding box and keeps whichever cells `footprint.Inside`
+answers for; `LineMark.Pins` walks `footprint.Land()` and measures each cell's distance to a
+polyline that may lie anywhere. So a ridge traced twelve blocks past the coast with a radius of
+fourteen pins the coastal strip at its own heights and leaves the crest off the map — and the
+board's edge is a mountainside cut through rather than ground decaying to `base`.
+
+Three of `opus5-tarnfell`'s mountain marks lie entirely outside its polygon and a fourth runs out
+through both ends of it; every contour band in its heightmap closes on the frame rather than inside
+it. A mark placed *wholly* out of reach does nothing and raises nothing — no `SK3`, no warning — so
+the check is the heightmap, not the document.
+
+### Two flat marks butted together build two terraces and a step at the seam
+
+A `line` mark at y8 with radius 7 and another at y14 with radius 6, their bands touching, transected
+`7 7 7 7 [+5] 12 13 13`: a five-course wall right round a lake that was meant to shelve. Seven blocks
+of unpinned ground between them and the same two marks read `7 7 7 7 9 11 12 13 13`. **The gap
+between two marks is not a gap in the design; it is where the design happens.**
+
+### The material top-down draws the top *solid* block, so water reads as its own bed
+
+`render/topdown?material=1` over a lake shows sand, not water; the category read
+(`render/topdown`, no `material`) has a `WATER` class and draws it cyan, and
+`…/column?at=0,22` answers `y5 Water · y4 Water · y3 Water · y2 Sand`. When two pictures disagree,
+`column` is the one that is not a projection.
+
+### `addShapes` lands on the island the compile emitted, which is called `team`
+
+A relief keyed to any other name answers `SK3 — a relief is stated for island 'x', which the layout
+does not carry`, and then `relief/read` answers no islands at all. `{"*": {...}}` is the key for a
+board of one island, and the driver's own guard stops the run there rather than building a flat
+world.
