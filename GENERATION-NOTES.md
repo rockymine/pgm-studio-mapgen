@@ -868,27 +868,50 @@ layer the board does not have and these are layers it has.
 per layer, so it lands exactly where it is drawn. Both of the pool's lanes are three-wide rectangles
 of the basin's own two courses, themed dark prismarine.
 
-### A paint patch that follows a relief states no height at all
+### A paint patch on solved ground is an ordinary one-course add, not an override
 
-Scoping a theme to a patch of ground is an authored shape carrying a `theme`, and on **flat** ground any of
-several height statements work. On ground a relief has solved, exactly one does: **an `override: true` add
-with no `floor`, no `base_height`, no `height_mode` and no `relief_scope`.** It takes the surface the solve
-produced and repaints its footprint.
+Scoping a theme to a patch of ground is an authored shape carrying a `theme`. What that shape may say about
+its own height is narrower than it looks, and the narrowing is measured rather than reasoned.
 
-Measured on `showcase/07-hill`, four identical rectangles laid across the west hill — whose `point` mark
-carries it to y16 at the summit and lets it fall to y12 at the edges — each carrying the same unmistakable
-Red Sand theme:
+**Every shape rasterizes to a real span.** `SketchRasterizer.RasterShape` takes `floor` from `Floor ?? 0` and
+its thickness from `HeightFn`, whose last line is `double bh = s.BaseHeight ?? 1` — so a shape stating **no
+height at all** is one course at bedrock, not "no opinion". `RasterGroup` then resolves
+`((adds − subtracts) ∪ override-adds) − override-subtracts`, and the two branches treat that course
+completely differently:
 
-| The patch says | Reads at z 40 / 45 / 50 |
+- an **ordinary add** goes through `MergeCell`, where *the taller add wins the column*, so a one-course
+  stroke laid over ground twenty courses high changes nothing about the height;
+- an **override-add** does `result[k] = v`, which **overwrites the column outright** — floor and all.
+
+**The relief usually hides the difference, and that is the trap.** After the set algebra,
+`RasterizeLayout` writes the solved surface back over every cell in a solved island's footprint:
+`cells[(x,z)] = (Math.Max(column.Floor + 1, field.At(x, z)), column.Floor)`. So an override-add's flattened
+column is repaired to the solved height, and on a board where every cell is in some island's solve an
+override brush works perfectly. Measured that way on `showcase/07-hill`, a bare `override: true` rectangle
+over the west hill read **y13 · y16 · y12** across the summit — the hill, repainted.
+
+**Where there is no field, there is no repair.** A shape carrying `relief_scope: "exclude"` takes its cells
+*out* of the island's footprint (`SolveRelief` puts them in `excluded`, and the relaxation bends round them
+as it bends round void), so nothing writes a height back. An override brush stroke over such ground stays
+what the rasterizer made it: one course on the bedrock, twenty below the ground beside it.
+
+Measured on `opus5-sandcaster`, whose lid over the workings is `relief_scope: "exclude"`: eleven strokes
+punched holes. A transect at `z 51` read `x −50:0 −47:0 −44:0` against a reef surface of y21 four blocks
+away, and the same shapes re-authored as ordinary adds read `−50:21 −47:21 −44:21`.
+
+**So the form a brush takes is `operation: "add"`, `base_height: 1`, and no `override`.** Paint scopes to the
+smallest shape covering a cell, so the stroke still wins the colour; the height is decided by the taller add,
+so it can never lower what it is painted on. The one thing it must not do is hang over the void — a
+one-course add is the only shape on a cell with no ground under it, and there it builds a speck of bedrock.
+
+For completeness, what the other three forms do to solved ground, all measured on `07-hill`:
+
+| The patch says | Reads across the summit |
 |---|---|
-| nothing but `override: true` | **y13 · y16 · y12**, Red Sand — the hill, repainted |
-| `relief_scope: "hold"`, no height | y0 bedrock — the shape has no height, so it is not in the world |
+| `add`, `base_height: 1`, no override | the ground, repainted — and safe over excluded ground |
+| `override: true`, nothing else | the ground, repainted — **only** where a relief covers the cell |
 | `base_height: 9`, `relief_scope: "hold"` | y8 flat — a plate punched through the hill |
-| `base_height: 9`, `relief_scope: "exclude"` | y8 flat — the same plate |
-
-So a `base_height` is what flattens a patch, and stating one "to be safe" is what turns a brush stroke into a
-terrace. The island's relief read reports the second case as `low 1`: a height-less shape with no override is
-a hole rather than a no-op.
+| `relief_scope: "hold"`, no height | y0 bedrock — a shape with no override and no height loses every merge |
 
 This is the instrument a detailed surface is painted with — a drift of sand against rock, scree at the foot of
 a crag, mud in a hollow — and it is what a single large `voronoi` over a whole region is a substitute for.

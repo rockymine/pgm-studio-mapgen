@@ -24,6 +24,14 @@ solve, so it holds the height it was drawn at. And **paint resolves smallest-are
 laid over a 6 000-cell island takes the paint of every cell it covers — that is the whole scoping mechanism,
 and there is no field named after it.
 
+**This board is flat, and on ground a relief has solved the safe form is different.** An override-add
+overwrites the column outright, and a shape stating no height rasterizes to one course at bedrock
+(`HeightFn`: `BaseHeight ?? 1`) — the relief repairs that only where the cell is in a solved footprint. A
+patch meant to *follow* solved ground is therefore an **ordinary** add one course thick: the taller add wins
+the column, so it can never lower what it paints. `GENERATION-NOTES.md`, *A paint patch on solved ground*,
+has the measurement — eleven strokes on `opus5-sandcaster` punched holes twenty courses deep before the form
+was corrected.
+
 **An authored shape appended to a mirroring island is fanned by the symmetry.** All three shapes are written
 once, for team 0, and both teams have them. Nothing states that; the island's `mirrors` does it.
 
