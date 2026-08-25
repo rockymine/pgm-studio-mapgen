@@ -35,8 +35,9 @@ forked into the library's three tone families: ground **verdant + dirt**, built 
   <nn>-<concept>.finish.json   the technique        — authored
   <nn>-<concept>.layout.json   what was posted      — written by the driver
   <nn>-<concept>.intent.json   what was posted      — written by the driver
+  provenance.json              which pass claimed which column — a literal census of what landed
   renders/                     the pictures it was reviewed from, including the board grid and the flow
-  world/                       region/, level.dat, map.xml — what a server loads
+  world/                       region/, level.dat, map.xml — what a server loads, and nothing else
 ```
 
 The two authored files are the whole of the input. Everything else is derived from them and committed so a
