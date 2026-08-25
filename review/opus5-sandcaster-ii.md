@@ -119,11 +119,19 @@ field, which is what the same pushes cost on a 90-block board (24%).
 
 ## Two readings, not faults
 
-**The Sketch tool's 3-D preview draws this board flat.** The world has the range — `/column` reads 66..76
-on the flanks against 21 in the middle, and `render/heightmap` draws the contours — and the preview's own
-`POST …/sketch/columns` payload carries tops in the forties, but the WebGL canvas renders one level.
-Filed as a question against pgm-studio rather than answered here; the boards to compare are this one
-(stacked) and `showcase/19-mountain-range` (one layer), where the same preview shows the relief.
+**The Sketch tool drew this board flat, and the cause was in the studio.** Switching to the ground layer of
+a stacked board renamed its island after the storey under it — the bridge carried island identity over from
+the outgoing layer and matched by centroid, which on two storeys of one board always matches. An island id
+is what a relief is keyed by, so the ground lost its terrain in the live layout and, because the tool saves
+what the canvas holds, in the stored document as well. Fixed in pgm-studio as `C49`; the design question
+underneath it — a nominal key between two documents, telling apart two storeys that are the same footprint
+one layer up — is filed as `WE28`. This board is the reproduction: clicking its ground layer used to leave
+the island named `under` and the preview payload topping out at y91 instead of y103.
+
+The world committed here was never affected. Re-exporting from a clean document after the fix left every
+region file byte-identical — what the corrupted document changed was every *read-back* taken through the
+studio afterwards, which is why a column transect appeared to say the board was flat when the world on disk
+had the range in it all along.
 
 **`SK11` on the first Sandcaster's workings, and not on this one's.** The same end-wall fix cleared it here
 and did not clear it there, while both boards' `render/traversability` answers one component and both

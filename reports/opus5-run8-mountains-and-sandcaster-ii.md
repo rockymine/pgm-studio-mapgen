@@ -93,16 +93,27 @@ real plug that a single column read would have found. The review is corrected.
 **I called the region hold marks a success in run 7.** They are the reason the board the author called flat is
 flat. The measurement (no seam) was right and the conclusion drawn from it was too narrow.
 
-**I chased a corrupted build for four runs.** One run of Sandcaster II exported a completely flat world while
-`relief/read` reported a range: the stored sketch's ground island had been renamed, so the relief keyed on
-`team` matched no island. Re-running from clean produced the correct board and the corruption has not
-recurred; what it cost was two hours of reading the rasterizer for a bug that was not there. The cheap check
-I did not do first is the one that settled it in the end — post the same layout to a fresh map and read a
-column.
+**I chased a corrupted document for four runs and wrote it off as transient.** One run of Sandcaster II read
+back a completely flat world while `relief/read` reported a range: the stored sketch's ground island had been
+renamed, so the relief keyed on `team` matched no island. Re-running from clean produced the right board and
+I recorded it as a one-off that had "not recurred". It was not transient and it had a cause, which the next
+finding names — and calling it transient is what let me file the wrong bug on top of it.
 
-**The 3-D preview draws a stacked board flat**, which is what the author was looking at. The world has the
-range and so does the payload the preview itself posts. Filed against the studio as `TS29` rather than worked
-around here.
+**I filed the wrong bug against the 3-D preview, and the author caught it.** The board did draw flat, and I
+wrote it up as the preview not showing relief on a stacked board — pointing at the commit that had just added
+layer toggling to it. That commit was fine. The real fault was one level down: switching to the ground layer
+of a stacked board renamed its island after the storey under it, because the bridge carried island identity
+over from the outgoing layer and matched by centroid, which on two storeys of one board always matches. A
+relief is keyed by island id, so the ground lost its terrain — and the tool saves what the canvas holds, so
+the wrong id went into the stored document too. **That is also what corrupted the run I spent two hours
+reading the rasterizer over**: the flat export was a browser session having written a broken island id back
+into the sketch, and the column read that "settled" it was reading the corrupted document rather than the
+world on disk. Fixed as `C49`, with the design question underneath filed as `WE28`.
+
+The lesson is not about layers. It is that I reported a diagnosis I had not isolated — I had one board that
+worked and one that did not, and I attributed the difference to the only thing I had noticed differed between
+them instead of bisecting until the cause was forced. A single A/B against the same document, which took four
+minutes once I did it, would have named the right commit the first time.
 
 ## Open gameplay questions
 
