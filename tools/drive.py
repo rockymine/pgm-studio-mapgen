@@ -234,7 +234,9 @@ def renders(into, slug, finish, layout, drawn, flow):
 
 def patch_layout(layout, finish):
     """Everything the finish says about the compiled layout, applied in one pass."""
-    inner = layout["layout"]
+    # A compiled document carries its ground under `layers[0].layout`; a hand-written one may still state
+    # the single `layout` blob. The finish is authored against the ground either way.
+    inner = layout["layout"] if layout.get("layout") else layout["layers"][0]["layout"]
     shapes, islands = inner["shapes"], inner["islands"]
     by_height = finish.get("themeByHeight") or {}
     props_by_height = finish.get("shapePropsByHeight") or {}
@@ -259,11 +261,9 @@ def patch_layout(layout, finish):
     if finish.get("addShapes"):
         print(f"    +{len(finish['addShapes'])} authored shapes onto island '{islands[0]['id']}'")
     for extra in finish.get("addLayers") or []:
-        # The compiled document is the legacy single-layer form; the moment a second slab exists it has
-        # to become `layers`, because the rasterizer reads `layers` OR `layout` and never both — while
-        # SketchLayout.IslandIds reads both, so leaving the old key behind doubles every island id.
-        # The compiled document carries `layers: null` beside its `layout`, so setdefault is not the
-        # test — the key is present and empty.
+        # The rasterizer reads `layers` OR `layout` and never both, while SketchLayout.IslandIds reads
+        # both — so a document that grows a second slab moves its ground into `layers` and drops the
+        # single blob, or every island id is counted twice.
         if not layout.get("layers"):
             layout["layers"] = [{"id": "ground", "name": "Ground",
                                  "base_y": 0, "layout": layout.pop("layout")}]
@@ -439,6 +439,15 @@ def main():
             shutil.rmtree(out)          # B102: never export over a region dir that was not cleared
         os.makedirs(out)
         zipfile.ZipFile(io.BytesIO(zip_bytes)).extractall(out)
+        # The archive wraps the world in a directory named for the slug. `--out` is the world directory
+        # itself — region/, level.dat, map.xml at its top — so the wrapper is unwrapped rather than left
+        # for a caller to notice, which is what a slug that drifted between runs makes easy to miss.
+        held = os.listdir(out)
+        if len(held) == 1 and os.path.isdir(os.path.join(out, held[0])):
+            wrapper = os.path.join(out, held[0])
+            for entry in os.listdir(wrapper):
+                shutil.move(os.path.join(wrapper, entry), os.path.join(out, entry))
+            os.rmdir(wrapper)
         print(f"    world -> {out}")
         # The world directory holds what a server loads and nothing else: region/, level.dat, map.xml.
         # The provenance sidecar is a read-back aid — which pass claimed which column — so it travels
