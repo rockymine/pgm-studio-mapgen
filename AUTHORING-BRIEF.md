@@ -252,7 +252,13 @@ model rather than emitted by it.
   without it. A thin script posting JSON to documented endpoints is fine; anything computing a placement, a
   clearance, a sampler or a validation is a second copy of the system.
 - **No second format.** Author `PlanModel`, `SketchLayout` and `MapIntent` as they are.
-- **Layers are not used.** The ground layer only, per `sketch.md`.
+- **Layers are the sketch's, and a stacked board is written bottom-up.** `layers[]` is a stack of slabs,
+  each keeping one span per column, and a wall is that slab carried higher rather than a shape on top of
+  it. The painter walks the stack in document order, so a storey listed after one that stands over it
+  finds no stone left to paint: the compiled `ground` layer is not the bottom of every board, and an
+  undercroft goes before it. A placement — a goal, a spawn, a room, a prop — names its storey with
+  `layer`; naming none takes the top surface, which on a roofed goal is the roof. `opus5-mineshaft` is
+  the smallest board that is genuinely two storeys and `opus5-interchange` the first playable one.
 - **Every stage is looked at before the next consumes it.** Fifteen boards were once judged from one top-down
   at the end, and every appearance fault in the review was visible in an image nobody rendered. Use the
   preview endpoints — they answer a theme, a material, a prop or a plan without building a world — and look

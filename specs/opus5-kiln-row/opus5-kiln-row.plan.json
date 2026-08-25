@@ -1,0 +1,126 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Kiln Row"
+ },
+ "globals": {
+  "cell": 2,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 10
+ },
+ "pieces": [
+  {
+   "id": "wadi",
+   "role": "piece",
+   "rect": [
+    -18,
+    0,
+    36,
+    15
+   ],
+   "surface": 10
+  },
+  {
+   "id": "row",
+   "role": "piece",
+   "rect": [
+    -18,
+    15,
+    36,
+    7
+   ],
+   "surface": 20
+  },
+  {
+   "id": "wool-room",
+   "role": "wool-room",
+   "rect": [
+    -18,
+    22,
+    8,
+    8
+   ],
+   "surface": 20
+  },
+  {
+   "id": "shelf-wn",
+   "role": "piece",
+   "rect": [
+    -18,
+    30,
+    8,
+    2
+   ],
+   "surface": 20
+  },
+  {
+   "id": "shelf-m",
+   "role": "piece",
+   "rect": [
+    -10,
+    22,
+    20,
+    10
+   ],
+   "surface": 20
+  },
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    10,
+    22,
+    8,
+    8
+   ],
+   "surface": 20
+  },
+  {
+   "id": "shelf-en",
+   "role": "piece",
+   "rect": [
+    10,
+    30,
+    8,
+    2
+   ],
+   "surface": 20
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -18,
+    -7,
+    36,
+    14
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "camp",
+    "at": [
+     4,
+     4
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-room",
+    "at": [
+     4,
+     4
+    ]
+   }
+  ]
+ }
+}

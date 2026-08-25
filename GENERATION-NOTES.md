@@ -868,6 +868,243 @@ layer the board does not have and these are layers it has.
 per layer, so it lands exactly where it is drawn. Both of the pool's lanes are three-wide rectangles
 of the basin's own two courses, themed dark prismarine.
 
+### A point mark's radius pins a flat disc, so a radius is a mesa and not a summit
+
+`PointMark.Pins` yields **every** cell inside its radius at the stated height, and those cells are
+constraints — the relaxation only shapes what is left between them. Marks placed at radius 16–32 on
+a 176-wide board nearly tile it, and the ground builds as stacked plateaus with vertical faces.
+
+Measured on `opus5-tarnfell`, the same thirty marks at two radii, off `…/sketch/relief/read`:
+
+| | radius 16–32 | radius 3–6 |
+|---|---|---|
+| walkable at one-block steps | terraced throughout | **95.1 %** |
+| largest place at that tier | — | 86.5 % |
+| cliffs | one at every mark's edge | **6** |
+
+**The rolling is the relaxation's**; a radius is how much of the landform you are refusing to let it
+do. Keep a summit at three to six and let `reach` spread it. An `area` mark is the other instrument
+and is right where flat is the point — a lake pan, a spawn terrace, a shelf under a goal.
+
+### A relief mark's centre may lie outside the land, and that is how a map edge cuts a mountain
+
+`PointMark.Pins` iterates **its own** bounding box and keeps whichever cells `footprint.Inside`
+answers for; `LineMark.Pins` walks `footprint.Land()` and measures each cell's distance to a
+polyline that may lie anywhere. So a ridge traced twelve blocks past the coast with a radius of
+fourteen pins the coastal strip at its own heights and leaves the crest off the map — and the
+board's edge is a mountainside cut through rather than ground decaying to `base`.
+
+Three of `opus5-tarnfell`'s mountain marks lie entirely outside its polygon and a fourth runs out
+through both ends of it; every contour band in its heightmap closes on the frame rather than inside
+it. A mark placed *wholly* out of reach does nothing and raises nothing — no `SK3`, no warning — so
+the check is the heightmap, not the document.
+
+### Two flat marks butted together build two terraces and a step at the seam
+
+A `line` mark at y8 with radius 7 and another at y14 with radius 6, their bands touching, transected
+`7 7 7 7 [+5] 12 13 13`: a five-course wall right round a lake that was meant to shelve. Seven blocks
+of unpinned ground between them and the same two marks read `7 7 7 7 9 11 12 13 13`. **The gap
+between two marks is not a gap in the design; it is where the design happens.**
+
+### The material top-down draws the top *solid* block, so water reads as its own bed
+
+`render/topdown?material=1` over a lake shows sand, not water; the category read
+(`render/topdown`, no `material`) has a `WATER` class and draws it cyan, and
+`…/column?at=0,22` answers `y5 Water · y4 Water · y3 Water · y2 Sand`. When two pictures disagree,
+`column` is the one that is not a projection.
+
+### `addShapes` lands on the island the compile emitted, which is called `team`
+
+A relief keyed to any other name answers `SK3 — a relief is stated for island 'x', which the layout
+does not carry`, and then `relief/read` answers no islands at all. `{"*": {...}}` is the key for a
+board of one island, and the driver's own guard stops the run there rather than building a flat
+world.
+
+### Only `worn` spends `coverage` — `rough` fills its band solid
+
+`PathStroke` decides a cell's membership in two steps: a half-width the style shapes, and then a
+per-cell gate. Only `PathStyle.Worn` has the gate (`PatternNoise.Unit(x, z, seed + 11) < coverage`).
+`Rough` spends its knob on the band's *edge* instead, wandering the half-width by ±45 % over a
+7-block scale, and fills everything inside it. So `style="rough", coverage=0.26` is a **solid belt**,
+not a freckle, and sixteen seam strokes written that way turned every boundary on `opus5-tarnfell`
+into a stripe of a third material laid over the join.
+
+A seam wants `worn`, and it wants **two grounds freckling into each other, one material to a
+stroke**: a wide thin stroke at the far edge and a narrow dense one over it, so the density ramps
+from a scatter to about half cover. A voronoi of three materials in one stroke is a new ground over
+the boundary, which reads as noise wherever the two it stands between already differed.
+
+### `rot_180` maps a shape centred on the origin onto itself, so a central lake may be any shape
+
+The mirror does not force a circle; assuming it does is what produces one. Any outline with a
+half-turn in it is already symmetric, so a profile of radii covering **half** a turn, repeated at
+θ+180°, gives a lobed, elongated or kidney-shaped water that fans without error. Smoothstep between
+the profile's entries or the outline comes out faceted, and give the helper a `swell` so an outer
+ring can depart from a circle less than the waterline while staying the same shape — that is what
+keeps a beach an even band round a shore that is nowhere an arc.
+
+### Relief is keyed by island id across the whole stack, and `*` is the ground's alone
+
+`SketchRasterizer.ReliefFields` walks every layer and looks each of its islands up in the one
+`relief` dictionary, adding that layer's `base_y` to the field it solves. So a stacked board can give
+each storey its own landscape — `{"team": …, "walls": …}` — and a layer's marks are stated in **its
+own frame**, not the board's. `drive.py`'s `"*"` expands over the islands the *compile* emitted, so a
+key stated beside it survives and names a layer added in the finish.
+
+### A wool room must abut ground, not sit inside a piece
+
+A `wool-room` piece drawn inside a larger `piece` rectangle shares no edge with it, and the plan tier
+answers `WX6 — wool room is unreachable: no land seam and no abutting build zone to enter by`. Split
+the surrounding piece into rectangles that tile around the room instead.
+
+### The plan tier's frontline is the pieces a **build zone** touches
+
+`FannedGraph.Build` sets `Frontline` to the nodes that touch a fanned build zone, and `SP1` asks
+whether a wool is reachable from a frontline node without crossing a spawn. A plan with `zones: []`
+therefore has no frontline at all, and every wool on it refuses with *"only reachable through a spawn
+piece"* however open the board is. The canonical two-wool seed carries a `mid-band` zone for exactly
+this reason.
+
+### A voronoi's bands are rings inward from a cell boundary, and the last one takes the rest
+
+`VoronoiMaterial.Resolve` walks the band list and stops **one short**, returning `Bands[^1]` for
+everything the earlier bands did not claim. The value it walks is the Worley `F2 − F1` gap — small
+against a cell boundary, largest at a cell's centre — so the bands are **depths measured inward from
+the boundary**, not weights over an area, and the last band's stated thickness is read by nothing.
+
+So `voronoi(seed, 7, [(SAND, 4), (RED_SAND, 2), (GRAVEL, 1)])` is not *sand with a seventh of
+gravel*; it is a **gravel bed with sand along the cracks**, because gravel takes every cell interior.
+Write the ground the board is made of **last** and put the veining before it:
+`[(GRAVEL, 1), (RED_SAND, 2), (SAND, 1)]` is a sand wadi with gravel in the cracks and a red margin
+round each patch. A voronoi is a diagram, not a mixture.
+
+### A cliff's strata belong in the `wall` bucket, because a cliff is what that bucket paints
+
+Nothing bands by world height and nothing needs to. A `layered` stack on the **wall** bucket is read
+by `DepthFromTop`, which on a wall counts down from the top of the face — so on a board whose drops
+all begin at one shelf, banding by depth **is** banding by altitude. One stack shared as the wall
+material of every theme makes every cut on the board the same rock in the same order, and puts those
+colours nowhere else (`opus5-kiln-row`).
+
+The counterpart: **`wallRun` stands vertical**, because its stripes wrap the perimeter and are
+constant up a column. A weathered cliff is bedded and a sawn one is scored, and the two are one
+bucket and two materials (`opus5-deepcut`).
+
+### `step` with `stairs` is the instrument for a quarry — the terracing that ruins a hillside
+
+`ReliefSpec.Step` snaps the finished surface to a quantum, which is what turned `opus5-tarnfell`'s
+hills into stacked plateaus. A worked pit **wants** that: state the rim and the floor as two `area`
+marks, let the relaxation solve a smooth bowl between them, and set `step` to the bench height.
+`stairs: true` then cuts a way up out of every place the terracing stranded, so the pit is walkable
+without stopping being terraced. Every stated level must be a multiple of the step or the knob
+rounds it away. `opus5-deepcut`: four marks and `step 4` give six benches where thirty marks gave a
+hillside nobody wanted.
+
+### Only `relief_scope: "exclude"` makes a vertical-sided spire
+
+Every mark is a constraint the relaxation smooths *through*, so a point mark makes a cone. An
+excluded shape leaves the field entirely — the solver bends round it as it bends round the void — and
+keeps the column it was drawn with: a flat crown on vertical sides, joined to nothing.
+
+### A `rim` mark states one height for **every** island in the relief
+
+It is the right instrument for a board whose islands are level with each other and the wrong one
+otherwise. To shoulder islands that stand at different heights, draw each one's polygon wider than
+the `area` mark that states its top and set `base` **under all of them**: the fringe between polygon
+and area is unpinned and decays toward base, so every edge falls a course or two before its drop, at
+its own height (`opus5-aerie`).
+
+### Water fills whatever is level, so the pan is the size of the pool
+
+An `area` mark 34 × 30 at the sump's height is a 34 × 30 lake however small the `water` prop inside
+it. Draw the mark at the size of the water and let the surrounding floor sit a few courses over it.
+
+### On a bridging board the gaps are the design, so state them first
+
+Six-block gaps between islands answer `G2` (a corridor under ten wide), `G5` (a hop outside 10–20)
+and `CT12` (a strait outside 15–40) on every pair, and they are right: a six-block gap is a running
+jump. Fix the four numbers — the hops and the strait — and fit the islands round them.
+
+### A core is the forward objective and a wool is the deep one
+
+A core cannot be carried anywhere; it is breached where it stands, so it belongs where it will be
+fought over. A wool has to be fetched and brought home, so it belongs behind. On `opus5-aerie` the
+first draft had them the other way round and `WL10` read a wool-front-distance of 8.
+
+Two things about a core in particular: `float` and `leak` are one knob (the lava free-falls to the
+terrain at `float` below the casing and leaks a course below `leak`), and **a core on an island in
+open sky has nothing to catch its lava** — so the casing wants ground all round it, or a breach
+anywhere near an edge ends it at once.
+
+### A *flat* composed plan compiles to one merged polygon and a `subtract`, and the subtract wins
+
+Twelve pieces go into `POST /plan/compile` and two terrain shapes come out: `s0`, one merged `add`
+polygon over the whole footprint, and `s1`, a `subtract` cutting everything the pieces do not cover.
+A subtract beats **every** add on its layer whatever order they are written in, so an `addShapes`
+rectangle over a composed hole — the middle of a `donut` wool box, say — draws nothing at all, and
+says nothing about it: no finding, and the relief read reports the right total because those cells
+were never in the footprint.
+
+Fill a composed hole on **its own layer**: an `addLayers` entry with `below: true` carrying one shape
+that fills exactly what the subtract took. No overlap with the compiled ground, so no `SK10`; the
+painter reaches it first; and a prop with no `layer` seats on `SurfaceTop`, which over the hole is
+the new slab.
+
+**The merge is a consequence of the pieces being flat, and stating a `surface` per piece ends it.**
+Give every piece its own height and there is nothing left to merge: the same twelve-piece plan
+compiles to **one polygon per distinct height and no subtract at all** — nine of them on
+`opus5-rimegarth`, `s0` at base 9 through `s8` at base 15 — with the hole simply a place no polygon
+covers. That is also the only way a composed board can be painted in more than one theme: a theme is
+stated **on a shape**, a flat plan has one shape, and `themeByHeight` therefore has nothing to bind
+to until the heights exist. Heights first, then paint.
+
+### A `walls` entry closes an interface, not a route
+
+A plan wall stamps bedrock two thick and three tall across the interface it names, over that
+interface's full width, on the attack side — so it closes exactly one seam. On a plan whose pieces
+enclose something, that is not the same as closing the way through: a `donut` wool box has a lane
+down **each** side of its hole, and a wall on one is walked past on the other.
+
+Count the ways round the thing before counting the walls. Where the plan has no seam at the place a
+wall is needed, **split a piece to make one**: on `opus5-rimegarth` the two long ring arms are each
+cut in two level with the middle of the hole, twelve pieces to fourteen, which puts one interface in
+each lane facing the other across the yard and gives both walls somewhere to stand.
+
+### Browsing the composer is a four-call loop, and a scan is what tells you its vocabulary
+
+`GET /compose?players=&symmetry=&seedStart=&count=` returns cards carrying the descriptor that
+reproduces each board, its score, a structural read and a board SVG; `POST /compose/pin` stores one
+from that descriptor; `GET /plans/{id}/png` renders it as an image; `POST /plan/{id}/author` makes a
+map row. Ninety-six seeds, eleven pins and two contact sheets is a few minutes.
+
+Two things a scan says that nothing else does. **Cell 5 is the only scale it works at** — cell 4
+produced nothing in ninety-six seeds and cell 3 nothing in twelve, both `exhausted`. And **10 and 12
+players give identical boards**, so the land budget buckets rather than scaling. Hub forms observed
+in 48 seeds at 16 players: `bar`, `ring`, `single`, `twin`, `g`, `double-hole`, `p`; wool shapes
+`i`, `l` and — five times in forty-eight — `donut`, which is five pieces round a hole.
+
+### A composed board is corridors, so compute where a prop may stand
+
+Every piece is ten blocks wide with a road down the middle, and there is no landscape around them —
+what is not a piece is void. Placing props by eye on one gave fourteen declines, half of them
+`DR-SITE — has no ground`. Given the piece rectangles, the roads with their radii, the buildings and
+the doorways and the wall seams, a search over every block of the authored half is instant and
+returns the truth: on
+`opus5-rimegarth` it is **nine** places in a half.
+
+Two of the rules that search has to know. **A road's standoff is measured to its paved cells, not its
+centreline** — clear the stroke's radius *plus* the kind's standoff, three for a tree and two for a
+boulder. And **an approach wall's interface is kept clear the way a doorway is**, so the seam a
+`walls` entry names belongs in the keep-out list beside the rooms.
+
+### A water prop fills its own band, not the level it finds
+
+`form: "canal"` holds its stated width: a centreline down the middle of a fifteen-wide hole at radius
+3 is a six-wide channel with dry ground either side of it, however flat the pan under it. The band
+**is** the pond and the radius is the knob. This is the same fact `opus5-deepcut` learned from the
+other end, where an oversized flat `area` mark became an oversized lake: a water prop is a stroke
+that carves, not a fluid that finds its level.
+
 ### A paint patch on solved ground is an ordinary one-course add, not an override
 
 Scoping a theme to a patch of ground is an authored shape carrying a `theme`. What that shape may say about
@@ -919,7 +1156,10 @@ a crag, mud in a hollow — and it is what a single large `voronoi` over a whole
 ## A mountain is a push. No mark can be one.
 
 A relief mark is a **constraint**: the ground here *is* this height, honoured exactly, with no falloff of any
-kind. That reads as a modelling detail and it decides what terrain can be authored at all.
+kind. That reads as a modelling detail and it decides what terrain can be authored at all. *A point mark's
+radius pins a flat disc* above is the same fact met from the other end, and the two remedies are for two
+jobs: a small radius left to `reach` is how a mark stops terracing ground it is only meant to sit on, and a
+push is the only thing that builds a landform.
 
 A `point` mark at `h 47, r 8` therefore does not build a summit. It builds a **drum** — a flat disc eight
 blocks across standing on a twenty-block sheer wall — because nothing between the disc and the ground round it

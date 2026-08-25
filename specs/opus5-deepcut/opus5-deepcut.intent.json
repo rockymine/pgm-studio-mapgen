@@ -1,0 +1,151 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 40,
+    "z": 60
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": 52,
+     "maxX": 8,
+     "maxZ": 62
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -8,
+    "minZ": 52,
+    "maxX": 8,
+    "maxZ": 62
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 40,
+    "z": -60
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": -62,
+     "maxX": 8,
+     "maxZ": -52
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -8,
+    "minZ": -62,
+    "maxX": 8,
+    "maxZ": -52
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 31,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -36,
+    "minZ": -18,
+    "maxX": 36,
+    "maxZ": 18
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Witness",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -13,
+    "y": 16,
+    "z": 32
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Witness",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 12,
+    "y": 16,
+    "z": -33
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Deepcut",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

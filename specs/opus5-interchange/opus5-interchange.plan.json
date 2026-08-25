@@ -1,0 +1,140 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Interchange"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 24,
+  "surface": 18
+ },
+ "pieces": [
+  {
+   "id": "plaza",
+   "role": "piece",
+   "rect": [
+    -9,
+    0,
+    18,
+    4
+   ],
+   "surface": 18
+  },
+  {
+   "id": "apron",
+   "role": "piece",
+   "rect": [
+    -14,
+    4,
+    28,
+    6
+   ],
+   "surface": 18
+  },
+  {
+   "id": "complex",
+   "role": "piece",
+   "rect": [
+    -14,
+    10,
+    28,
+    15
+   ],
+   "surface": 18
+  },
+  {
+   "id": "approach",
+   "role": "piece",
+   "rect": [
+    -7,
+    25,
+    14,
+    3
+   ],
+   "surface": 18
+  },
+  {
+   "id": "arrivals",
+   "role": "spawn",
+   "rect": [
+    -2,
+    28,
+    4,
+    3
+   ],
+   "surface": 18
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "arrivals",
+    "at": [
+     2,
+     2
+    ],
+    "facing": "front"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "at": [
+     7.5,
+     19.5
+    ],
+    "style": "pillar-1",
+    "materials": "obsidian",
+    "float": 3,
+    "name": "The Deep End"
+   },
+   {
+    "id": "destroyable-2",
+    "at": [
+     -9.5,
+     17.0
+    ],
+    "style": "pillar-2",
+    "materials": "obsidian",
+    "float": 2,
+    "name": "The Catwalk"
+   },
+   {
+    "id": "destroyable-3",
+    "at": [
+     8.5,
+     15.5
+    ],
+    "style": "pillar-1",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "The Back Office"
+   },
+   {
+    "id": "destroyable-4",
+    "at": [
+     -6.5,
+     12.5
+    ],
+    "style": "pillar-2",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Level 4"
+   },
+   {
+    "id": "destroyable-5",
+    "at": [
+     6.0,
+     22.5
+    ],
+    "style": "pillar-2",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "The Court"
+   }
+  ]
+ }
+}

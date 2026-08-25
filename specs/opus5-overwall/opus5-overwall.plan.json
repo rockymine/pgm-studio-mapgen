@@ -1,0 +1,172 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Overwall"
+ },
+ "globals": {
+  "cell": 2,
+  "symmetry": "rot_180",
+  "maxPlayers": 24,
+  "surface": 12
+ },
+ "pieces": [
+  {
+   "id": "maze-w",
+   "role": "piece",
+   "rect": [
+    -46,
+    0,
+    20,
+    52
+   ],
+   "surface": 12
+  },
+  {
+   "id": "maze-s",
+   "role": "piece",
+   "rect": [
+    -26,
+    0,
+    8,
+    12
+   ],
+   "surface": 12
+  },
+  {
+   "id": "wool-room",
+   "role": "wool-room",
+   "rect": [
+    -26,
+    12,
+    8,
+    8
+   ],
+   "surface": 12
+  },
+  {
+   "id": "maze-n",
+   "role": "piece",
+   "rect": [
+    -26,
+    20,
+    8,
+    32
+   ],
+   "surface": 12
+  },
+  {
+   "id": "maze-e",
+   "role": "piece",
+   "rect": [
+    -18,
+    0,
+    64,
+    52
+   ],
+   "surface": 12
+  },
+  {
+   "id": "court-w",
+   "role": "piece",
+   "rect": [
+    -46,
+    52,
+    42,
+    14
+   ],
+   "surface": 12
+  },
+  {
+   "id": "court-e",
+   "role": "piece",
+   "rect": [
+    4,
+    52,
+    42,
+    14
+   ],
+   "surface": 12
+  },
+  {
+   "id": "court-s",
+   "role": "piece",
+   "rect": [
+    -4,
+    52,
+    8,
+    1
+   ],
+   "surface": 12
+  },
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    -4,
+    53,
+    8,
+    8
+   ],
+   "surface": 12
+  },
+  {
+   "id": "court-n",
+   "role": "piece",
+   "rect": [
+    -4,
+    61,
+    8,
+    5
+   ],
+   "surface": 12
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -46,
+    -3,
+    92,
+    6
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "camp",
+    "at": [
+     4,
+     4
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-room",
+    "at": [
+     4,
+     4
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "at": [
+     22.0,
+     38.5
+    ],
+    "style": "cube-3",
+    "materials": "ender stone",
+    "float": 3,
+    "name": "The Keystone"
+   }
+  ]
+ }
+}

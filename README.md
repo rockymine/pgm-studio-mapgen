@@ -203,16 +203,23 @@ run. Each map's `specs/<slug>/authored-by-grok/` holds the original documents ve
 | `sandscar` | dtm | Grok | one plateau a team, two monuments 50 apart, a hollow under one and a hill under the other, a river dragged across as a paved path |
 | `sandscar-complex` | dtm | Grok | a height progression from a river front to a dug pit and a climbed hill, both carrying a monument, savanna crest behind |
 
-### Opus 5 — Elderwold, Hoarstone, Cairnmeadow, Hollowmarch and Undercroft
+### Opus 5 — a board at a time, each after review of the one before
 
-Five boards authored from a brief rather than a spec, each after review of the one before. The
-fourth starts from a composed layout rather than a drawn one; the fifth is an experiment on the
-sketch tool's stacked layers rather than on a look.
+Twelve boards authored from a brief rather than a spec. The first five are the ground: a drawn
+layout, an archipelago, two goals a team, a **composed** layout rather than a drawn one, and an
+experiment on the sketch tool's stacked layers. The seven after them push one thing each —
+four storeys, a landscape, a composed `donut`, a mesa's strata, a quarry's benches, open sky with
+no ground at all, and a labyrinth whose walls are their own slab.
 [reports/opus5-elderwold-run.md](reports/opus5-elderwold-run.md) ·
 [reports/opus5-hoarstone-run.md](reports/opus5-hoarstone-run.md) ·
 [reports/opus5-cairnmeadow-run.md](reports/opus5-cairnmeadow-run.md) ·
 [reports/opus5-hollowmarch-run.md](reports/opus5-hollowmarch-run.md) ·
-[reports/opus5-undercroft-run.md](reports/opus5-undercroft-run.md)
+[reports/opus5-undercroft-run.md](reports/opus5-undercroft-run.md) ·
+[reports/opus5-interchange-run.md](reports/opus5-interchange-run.md) ·
+[reports/opus5-tarnfell-run.md](reports/opus5-tarnfell-run.md) ·
+[reports/opus5-rimegarth-run.md](reports/opus5-rimegarth-run.md) ·
+[reports/opus5-smallboards-run.md](reports/opus5-smallboards-run.md) ·
+[reports/opus5-overwall-run.md](reports/opus5-overwall-run.md)
 
 | Folder | Mode | Author | What it is |
 |---|---|---|---|
@@ -221,6 +228,13 @@ sketch tool's stacked layers rather than on a look.
 | `opus5-cairnmeadow` | dtm | Opus 5 | an open meadow over three islands, **two destroyables a team**: one on the crown of a stone outcrop, one at the bottom of the cut its stone came out of. Eight irregular crags erected out of the grass at `skirt >= lift`, so they are walked onto rather than climbed, and painted back over with twenty grass brushes so they belong to the ground. One house on the whole board, and it is the spawn's |
 | `opus5-hollowmarch` | ctw | Opus 5 | a **composed** board — `hub=double-hole`, `front=twin`, 32 players, seed 1233 — shifted twenty blocks to clear a middle island, then given every height by relief over a flat plan. The spawn and the two wool approaches stand on **`hold` pads pre-raised** so the terrain runs up to meet them; **rim and wall are both off**, so a cliff face is the surface stack and the fill under it. Seven rock crags, each tilted by a **plane through three stated vertices** — flush on its own side, a cliff facing the attack — and a pond on the axis island |
 | `opus5-undercroft` | dtm | Opus 5 | a two-level destroy board, and the only one whose subject is a feature: **three sketch layers**, a ground island under a stone terrace twenty blocks over it, and two bridge slabs across the strait. The monument stands on the terrace because a placement snaps to the surface top; the ground it covers survives as a **nine-block hall**, which no 2-D read can see. |
+| `opus5-interchange` | dtm | Opus 5 | a liminal board built to an outside brief: a transit interchange on **four storeys** — a drained swimming pool under the concourse, a catwalk in the stairwell, an empty car deck twenty blocks over it — carrying **five obsidian monuments a team**, one to each storey and each in its own colour. A corridor of doors that rings a sealed core, a spine that crosses the garden court behind glass without opening onto it, and the same kiosk in all nine rooms |
+| `opus5-tarnfell` | dtm | Opus 5 | a landscape rather than a board: a lobed tarn with a green islet in it, a wide sand shore, rolling fell, a forest, four void crevasses and a mountain backdrop that **runs off all four edges**. Thirty-three relief marks, four of them traced past the coast so the frame cuts a mountainside instead of ground decaying to base; every height above the rock is a **brush stroke** along the crest, and every seam between two grounds is two `worn` strokes freckling into each other. One `cube-4` endstone wardstone a team, 30 right and 50 ahead of spawn, 150 apart |
+| `opus5-rimegarth` | ctw | Opus 5 | **the plan was composed, not drawn** — `GET /api/compose?players=10&seed=26` pinned verbatim, picked off two contact sheets of ninety-six seeds for the one shape in nine that comes out a **`donut`**: five pieces enclosing a hole with the wool room closing its far corner. Read as a walled garth, snowbound, with a frozen pond in the middle of it and a hall and solar on the hub. Both ring arms are cut level with the hole so a bedrock wall bars each of the two lanes past it, and every piece states its own height, so the garth climbs a course at a time from the green to the byre |
+| `opus5-kiln-row` | ctw | Opus 5 | **72 × 128** — a dry wadi between two banded bluffs, a terrace of three flats on each shelf under **brick roofs**, the wool room at one end of it and the spawn at the other. A mesa's strata are a `layered` stack in the **wall** bucket, so every drop on the board is the same rock in the same order and nowhere else is; the cliffs themselves are `scarp` marks, which draw a fall along a line at a chosen grade. 1.2% dead |
+| `opus5-deepcut` | dtm | Opus 5 | **72 × 128** — a chalk quarry worked down in six benches, its floor a Z of two faces joined by a flooded neck, with the monument on a spire of unquarried chalk in each. Four `area` marks and `step: 4` with `stairs: true` do what thirty marks could not: the terracing that ruined `tarnfell` **is** a quarry bench. The spires are `exclude` shapes, which is the only way to a vertical-sided column |
+| `opus5-aerie` | ctw · dtc | Opus 5 | **72 × 128** and no ground at all — six crags in open sky, ten to sixteen blocks apart, over a **24-block strait**, with a **core** on the forward spire and the wool in a `teamTint`-walled fold behind it. Every crossing is a bridge somebody builds: `deny(void)` closes everything outside the four build zones, so the zone list is the map |
+| `opus5-overwall` | ctw · dtm | Opus 5 | a labyrinth of ten-block pillars on a twenty-two block grid, so **every passage is twelve wide**. Three slabs: a floor with a relief of its own, a wall network with a **second** relief over its crests, and two brick bridges seated on pillar tops held flat for them. A river down the one corridor no wall crosses; a keystone in one 34-square court and a wool room in another; and 32 trees, 14 boulders and four **houses on stilts** on the wall tops, out of everyone's reach |
 
 
 
