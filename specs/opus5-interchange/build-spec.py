@@ -219,6 +219,9 @@ THEMES = {
         wall=layered(stack((HARDENED, 3), (STONE_BRICK, 2), (CLAY_LTGRAY, 1), (HARDENED, 6))),
         fill=HARDENED, rim=None, surface_depth=1),
 
+    # the pool's lane markings: the basin's own thickness, so only the paint changes
+    "lane": theme(surface=DARK_PRISM, wall=DARK_PRISM, fill=PRISMARINE, rim=None, surface_depth=2),
+
     "glass-cyan": glass_theme(9),
     "glass-green": glass_theme(13),
     "glass-yellow": glass_theme(4),
@@ -277,8 +280,13 @@ ground += [
     box("t", -52, 84, 52, 96, CONC_FLOOR, CONC_H, "garden"),       # the garden court
     box("t", 56, 59, 62, 68, CONC_FLOOR, CONC_H, "skin"),          # the balcony over the void
 ]
-# the glass floor of the sealed core, which is the drained pool's ceiling
-ground += [box("gl", 26, 58, 38, 66, CONC_FLOOR, CONC_H, "glass-cyan")]
+# The two glass floors. The core's is the drained pool's ceiling, sixteen blocks over the monument
+# standing in it; the hall's sits directly under the car deck's own pane, so the three storeys read
+# as one shaft — the deck, the concourse, and the service level under both.
+ground += [
+    box("gl", 26, 58, 38, 66, CONC_FLOOR, CONC_H, "glass-cyan"),
+    box("gl", -30, 56, -22, 64, CONC_FLOOR, CONC_H, "glass-gray"),
+]
 
 # the complex's outer skin
 ground += [
@@ -376,6 +384,8 @@ under += [
     box("pd", 16, 48, 40, 56, UNDER_FLOOR, UNDER_H, "pool"),
     box("pd", 16, 84, 40, 92, UNDER_FLOOR, UNDER_H, "pool"),
     box("pb", 16, 56, 40, 84, UNDER_FLOOR, BASIN_H, "basin"),
+    box("pl", 22, 58, 25, 82, UNDER_FLOOR, BASIN_H, "lane"),
+    box("pl", 31, 58, 34, 82, UNDER_FLOOR, BASIN_H, "lane"),
     ramp("ps", 24, 56, 32, 62, UNDER_FLOOR, high=UNDER_H, low=BASIN_H, theme_key="basin"),
 ]
 # The ramp down from the stair hall, under the hole cut for it. Twenty cells for twelve courses:
@@ -531,6 +541,17 @@ props += [
      "coverage": 1.0, "route": True,
      "pave": voronoi(6, 3, [(SLAB, 2), (STONE_BRICK, 1), (COBBLE, 1)]),
      "points": [[0, 120], [0, 106], [0, 92], [0, 78], [0, 56], [0, 30], [0, 6]]},
+    # The markings. A stroke repaints the surface it crosses and adds no block, so it is the only
+    # way to draw a line on a floor — and none of these states `route`, because a route claims its
+    # cells against the props and nothing here is a way through that a kiosk must keep off.
+    # the traffic worn into the corridor's ring, which goes round the core because nothing else can
+    {"id": "worn-doors", "kind": "path", "seed": 13, "style": "worn", "radius": 2.0,
+     "coverage": 0.55, "pave": voronoi(8, 3, [(CLAY_LTGRAY, 2), (GRAVEL, 1)]),
+     "points": [[17, 46], [17, 76], [47, 76], [47, 50], [30, 47], [17, 47]]},
+    # and the track worn across the car deck, which is the only thing up there that says anyone came
+    {"id": "worn-deck", "kind": "path", "seed": 14, "style": "worn", "radius": 2.0,
+     "coverage": 0.5, "pave": voronoi(9, 3, [(CLAY_LTGRAY, 2), (GRAVEL, 1)]),
+     "points": [[-12, 58], [-24, 62], [-30, 76], [-42, 78]]},
     # two spurs off the court's own gates, which are the only ways onto either lawn
     {"id": "road-court-w", "kind": "path", "seed": 4, "style": "worn", "radius": 2.0,
      "coverage": 0.85, "route": True,

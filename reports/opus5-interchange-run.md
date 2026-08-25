@@ -108,6 +108,19 @@ design as it stands**, and defensible for trees and boulders whose canopies hang
 buildings on different storeys. I moved the kiosks apart in plan, which is not what an author of a
 stacked board wants to have to do.
 
+**A stroke ignores `layer` and seats on the whole-board top surface.** Two lane markings stated for
+the drained basin, with `"layer": "under"` on the prop, came back from `POST …/sketch/dressing`
+carrying `"y": 25` and `"y": 17` — the corridor wall's coping and the corridor floor, sixteen and
+twenty-two blocks over the basin they were drawn for; a worn track stated for the stair hall at y18
+came back at `"y": 37`, on the car deck roofing it. `PlacedProp.Layer` is on the schema and
+`DressingContext.GroundFor` reads it, so a tree and a boulder seat correctly on a named storey — the
+stroke path does not. Nothing declines: `DR-LAYER` fires on a layer the board does not have, and
+these named layers it does have. **Missing from the system** for this one prop kind.
+
+The way round is not a prop at all: a lane is a **shape** of the basin's own thickness carrying only
+a different theme, which resolves per layer and lands exactly where it is drawn. That is worth
+knowing generally — **to mark a floor that has a roof over it, draw a shape, not a stroke.**
+
 **`render/topdown?layer=` means two different things and a board can only have one.** The word
 selects a *sketch layer* by id on a stacked board, and the category isolations the authoring brief
 recommends — `?layer=structure`, `?layer=foliage`, `?layer=objectives` — answer **422 `RQ4`**: "this

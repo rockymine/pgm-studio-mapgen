@@ -851,3 +851,19 @@ set of `(x, z)` the rasterizer produced across **every** layer, so a column unde
 walk can stand in. A monument sealed under a concourse exports at 200 as long as something walks to
 it — which on `opus5-interchange` is a ramp, and before the ramp had headroom was `SK11` naming
 3,336 places nothing could reach.
+
+### A stroke ignores `layer`, so a floor with a roof over it is marked with a shape
+
+Every prop kind takes `layer` and `DressingContext.GroundFor` reads it — a house, a tree and a
+boulder all seat on the storey they name; measured on `opus5-interchange`, a kiosk stated for the
+pool hall stands with its roof at y10 under a concourse whose floor is y12, and an oak stated for
+the car deck stands at y42. **A stroke does not.** Two lane markings carrying `"layer": "under"`
+came back from `POST …/sketch/dressing` with `"y": 25` and `"y": 17` — the corridor wall's coping
+and the corridor floor, over the basin they were drawn for — and a worn track stated for a hall at
+y18 came back at `"y": 37`, on the deck roofing it. Nothing declines, because `DR-LAYER` fires on a
+layer the board does not have and these are layers it has.
+
+**Mark a covered floor with a shape instead**: a rectangle of that floor's own `floor` and
+`base_height` carrying a different `theme`. The geometry is unchanged and the theme scope resolves
+per layer, so it lands exactly where it is drawn. Both of the pool's lanes are three-wide rectangles
+of the basin's own two courses, themed dark prismarine.

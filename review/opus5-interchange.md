@@ -103,7 +103,7 @@ face, so leaving the room the monument stands in costs **39 blocks** to get 16 b
 | the core's floor, x 26..38 z 58..66 | cyan | the drained pool, sixteen blocks below, and *The Deep End* standing in it |
 | the spine's east wall, z 48..54 and 66..72 | yellow | the corridor of doors, from a corridor that does not join it |
 | the spine's crossing of the court, z 84..96 both sides | green | both lawns, neither of which can be entered from the spine |
-| the car deck, x −30..−22 z 56..64 | light grey | straight down into the stair hall, twenty blocks |
+| the car deck and the concourse under it, x −30..−22 z 56..64 | light grey, twice | one shaft through three storeys: the deck, the stair hall floor under it, and the service level under that |
 
 The court crossing is the one that changes play. The spine runs the full length of the complex and
 the garden court is the only room it passes *through* without opening onto, so the lawn is sixteen
@@ -115,6 +115,17 @@ under a quartz slab, and a three-lobed andesite cairn beside it, stand in **nine
 the apron, the approach, the corridor of doors, the pool hall, the stair hall, both halves of the
 garden court, and the car deck. Fanned, that is eighteen kiosks and eighteen cairns on a board that
 has no other building. The one in the pool hall stands under a six-block ceiling.
+
+**And the markings, which are the smallest instance of the same idea.** Two dark-prismarine lanes run
+the length of the drained basin, `x 22..25` and `x 31..34`, so the pool reads as a pool with the water
+taken out of it. A worn track crosses the car deck and another goes round the corridor's ring: both are
+`worn` strokes at 0.5 coverage in light grey clay and gravel, laid over floors made of something else,
+so what they say is that somebody walked here often enough to wear a line into it.
+
+The lanes are **shapes** and not strokes, and that is not a stylistic choice: a stroke ignores
+`layer` and seats on the whole-board top surface, so a lane stated for the basin landed on the corridor
+floor sixteen blocks over it. A rectangle of the basin's own thickness carrying only a different theme
+is the way to mark a floor that has a roof.
 
 **Spaces that are extremely large or extremely narrow, kept brief.** The car deck is 36 × 40 of
 empty slab with one oak on it. The balcony is the other end: a three-wide slot through the east skin
@@ -135,6 +146,7 @@ Nine themes, and each one names a structural family and one accent and stops the
 | the car deck | double stone slab / light grey clay checker at **16** | light grey clay | slab band |
 | the pool deck | white / light grey clay checker at 2 | cyan clay | prismarine brick rim |
 | the basin | light blue clay streaked cyan, over prismarine | prismarine brick, dark prismarine | — |
+| the pool's lanes | dark prismarine over prismarine | — | — |
 | the service level | a voronoi of cracked brick, stone brick and gravel | grey clay | black clay, cracked brick coping |
 | the outer skin | quartz coping | hardened clay banded with stone brick | light grey clay |
 
@@ -151,7 +163,7 @@ all placements on solid ground — and traversability connected for both teams.
 dead patches are all one block from used ground and all on the complex's outer margin between the
 skin and the rooms inside it, which is the thickness of a wall rather than a landform nobody visits.
 
-The dressing pass places **59 props and declines none**.
+The dressing pass places **63 props and declines none**.
 
 Eight `SK11` complaints ride on every stage, and all eight are tops: the spine's roof (1,384 places
 a side, in a two-block-deep slot between its own parapets), the outer skin's coping (336), the

@@ -224,6 +224,30 @@
       "theme": "basin"
      },
      {
+      "id": "pl1",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 22,
+      "min_z": 58,
+      "max_x": 25,
+      "max_z": 82,
+      "floor": 0,
+      "base_height": 3,
+      "theme": "lane"
+     },
+     {
+      "id": "pl2",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 31,
+      "min_z": 58,
+      "max_x": 34,
+      "max_z": 82,
+      "floor": 0,
+      "base_height": 3,
+      "theme": "lane"
+     },
+     {
       "id": "ps1",
       "type": "polygon",
       "operation": "add",
@@ -311,6 +335,8 @@
        "pd3",
        "pd4",
        "pb1",
+       "pl1",
+       "pl2",
        "ps1",
        "dn1"
       ]
@@ -549,6 +575,18 @@
       "floor": 12,
       "base_height": 6,
       "theme": "glass-cyan"
+     },
+     {
+      "id": "gl2",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -30,
+      "min_z": 56,
+      "max_x": -22,
+      "max_z": 64,
+      "floor": 12,
+      "base_height": 6,
+      "theme": "glass-gray"
      },
      {
       "id": "w1",
@@ -875,7 +913,7 @@
       "theme": "w-doors"
      },
      {
-      "id": "gl2",
+      "id": "gl3",
       "type": "rectangle",
       "operation": "add",
       "min_x": 20,
@@ -899,7 +937,7 @@
       "theme": "w-doors"
      },
      {
-      "id": "gl3",
+      "id": "gl4",
       "type": "rectangle",
       "operation": "add",
       "min_x": 20,
@@ -923,7 +961,7 @@
       "theme": "w-doors"
      },
      {
-      "id": "gl4",
+      "id": "gl5",
       "type": "rectangle",
       "operation": "add",
       "min_x": 20,
@@ -947,7 +985,7 @@
       "theme": "w-doors"
      },
      {
-      "id": "gl5",
+      "id": "gl6",
       "type": "rectangle",
       "operation": "add",
       "min_x": 20,
@@ -1097,6 +1135,7 @@
        "t4",
        "t5",
        "gl1",
+       "gl2",
        "w1",
        "w2",
        "w3",
@@ -1124,13 +1163,13 @@
        "w24",
        "w25",
        "w26",
-       "gl2",
-       "w27",
        "gl3",
-       "w28",
+       "w27",
        "gl4",
-       "w29",
+       "w28",
        "gl5",
+       "w29",
+       "gl6",
        "w30",
        "w31",
        "w32",
@@ -2701,6 +2740,43 @@
    "fill": {
     "kind": "solid",
     "id": 172,
+    "data": 0
+   }
+  },
+  "lane": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 155,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 168,
+     "data": 2
+    },
+    "depth": 2,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 168,
+    "data": 2
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 168,
     "data": 0
    }
   },
@@ -5003,6 +5079,114 @@
      [
       0,
       6
+     ]
+    ]
+   },
+   {
+    "id": "worn-doors",
+    "kind": "path",
+    "seed": 13,
+    "style": "worn",
+    "radius": 2.0,
+    "coverage": 0.55,
+    "pave": {
+     "kind": "voronoi",
+     "seed": 8,
+     "cellSize": 3,
+     "rise": 0,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 159,
+        "data": 8
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    },
+    "points": [
+     [
+      17,
+      46
+     ],
+     [
+      17,
+      76
+     ],
+     [
+      47,
+      76
+     ],
+     [
+      47,
+      50
+     ],
+     [
+      30,
+      47
+     ],
+     [
+      17,
+      47
+     ]
+    ]
+   },
+   {
+    "id": "worn-deck",
+    "kind": "path",
+    "seed": 14,
+    "style": "worn",
+    "radius": 2.0,
+    "coverage": 0.5,
+    "pave": {
+     "kind": "voronoi",
+     "seed": 9,
+     "cellSize": 3,
+     "rise": 0,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 159,
+        "data": 8
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    },
+    "points": [
+     [
+      -12,
+      58
+     ],
+     [
+      -24,
+      62
+     ],
+     [
+      -30,
+      76
+     ],
+     [
+      -42,
+      78
      ]
     ]
    },
