@@ -110,9 +110,16 @@ the garden court is the only room it passes *through* without opening onto, so t
 blocks from the spine and **52 blocks of walking** away: out of the spine, into the corridor loop or
 the stair hall, and back in through one of the court's own two gates.
 
+**And it is the one room that grows.** Four oaks, a birch, a kiosk, a cairn and ground cover at 0.55
+coverage on the west lawn; an oak, a birch, a kiosk and a cairn on the east, where the monument's own
+clearance takes most of the room. Outside the north wall the approach carries two more oaks and a
+birch spaced as an avenue rather than a wood, over the unmown verge; the apron and the plaza carry
+six oaks and two ground-cover fields between them. Seventeen trees authored, thirty-four fanned, and
+the whole of the board's planting is in the four rooms that have a sky.
+
 **One or two small structures repeated as decoration.** A 6 × 6 flat-roofed kiosk in light grey clay
 under a quartz slab, and a three-lobed andesite cairn beside it, stand in **nine rooms**: the plaza,
-the apron, the approach, the corridor of doors, the pool hall, the stair hall, both halves of the
+the apron, the approach, the corridor of doors, the pool hall, the stair hall, both lawns of the
 garden court, and the car deck. Fanned, that is eighteen kiosks and eighteen cairns on a board that
 has no other building. The one in the pool hall stands under a six-block ceiling.
 
@@ -142,7 +149,8 @@ Nine themes, and each one names a structural family and one accent and stops the
 | the stair hall | polished andesite / andesite checker at 8 | grey clay | orange clay band |
 | the ramps | polished andesite over andesite over orange | andesite | orange nosing |
 | the corridor of doors | oak / dark oak checker at 6 | brown clay | yellow clay band, yellow glass |
-| the garden court | grass with podzol in a noise field | green clay over mossy cobble | mossy rim |
+| the garden court | **mown in six-block squares**: plain grass against a noise of lime and green clay, over dirt | green clay over mossy cobble | a green-clay rim wherever the lawn meets a wall (`rimEdges: boundary`) |
+| the approach outside it | the same three greens unmown — a noise of grass flecked lime, over dirt and podzol | green clay over mossy cobble | mossy rim |
 | the car deck | double stone slab / light grey clay checker at **16** | light grey clay | slab band |
 | the pool deck | white / light grey clay checker at 2 | cyan clay | prismarine brick rim |
 | the basin | light blue clay streaked cyan, over prismarine | prismarine brick, dark prismarine | — |
@@ -151,19 +159,29 @@ Nine themes, and each one names a structural family and one accent and stops the
 | the outer skin | quartz coping | hardened clay banded with stone brick | light grey clay |
 
 The checkerboards are the liminal signature and they are sized to the room: two blocks in a swimming
-pool, four in a corridor, sixteen on a car deck, where the squares stop reading as tiling and start
-reading as parking bays.
+pool, four in a corridor, **six on the lawn**, sixteen on a car deck, where the squares stop reading
+as tiling and start reading as parking bays. Read across the west lawn at `z = 88`, `x −34..−21`:
+gravel, gravel, grass, grass, lime clay, green, green, green, green, green, grass, grass, grass,
+grass — the road, then a mown square, then an unmown one, six wide. The court is the only room whose
+pattern is made of three blocks rather than two, and the third is what stops it reading as a
+chessboard: the dark squares are a noise field of lime and green rather than one colour.
+
+**The rim is doing a job here that no shape does.** `rimEdges: boundary` calls a column rim where any
+neighbour is a *different plateau* — which inside a room means a wall — so the lawn gets a
+single-course green-clay edge everywhere it meets one, and the planted border round a municipal lawn
+costs no geometry at all. It is the one place on the board a rim is on, and the reason is that this
+is the one room whose edges were built rather than eroded.
 
 ## What the reads say
 
 `GET …/preflight`: **export gate OPEN**. Round-trip clean, mirror clean, buildability clean —
 all placements on solid ground — and traversability connected for both teams.
 
-`GET …/coverage`: **8.4 % dead** — 1,930 of 22,956 ground cells no journey passes. The five largest
+`GET …/coverage`: **7.3 % dead** — 1,678 of 22,956 ground cells no journey passes. The five largest
 dead patches are all one block from used ground and all on the complex's outer margin between the
 skin and the rooms inside it, which is the thickness of a wall rather than a landform nobody visits.
 
-The dressing pass places **63 props and declines none**.
+The dressing pass places **90 props and declines none** — 45 authored, fanned.
 
 Eight `SK11` complaints ride on every stage, and all eight are tops: the spine's roof (1,384 places
 a side, in a two-block-deep slot between its own parapets), the outer skin's coping (336), the

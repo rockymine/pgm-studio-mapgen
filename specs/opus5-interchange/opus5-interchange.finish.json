@@ -64,6 +64,30 @@
    "id": "t5",
    "type": "rectangle",
    "operation": "add",
+   "min_x": -28,
+   "min_z": 100,
+   "max_x": 28,
+   "max_z": 112,
+   "floor": 12,
+   "base_height": 6,
+   "theme": "verge"
+  },
+  {
+   "id": "t6",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -8,
+   "min_z": 112,
+   "max_x": 8,
+   "max_z": 124,
+   "floor": 12,
+   "base_height": 6,
+   "theme": "verge"
+  },
+  {
+   "id": "t7",
+   "type": "rectangle",
+   "operation": "add",
    "min_x": 56,
    "min_z": 59,
    "max_x": 62,
@@ -1745,13 +1769,13 @@
     "relative": false,
     "value": 1
    },
-   "rimEdges": "void",
+   "rimEdges": "boundary",
    "wallOnTerrainFaces": true,
    "rim": {
     "material": {
      "kind": "solid",
-     "id": 48,
-     "data": 0
+     "id": 159,
+     "data": 13
     },
     "depth": 1,
     "enabled": true
@@ -1764,27 +1788,36 @@
       "bands": [
        {
         "material": {
-         "kind": "noise",
-         "seed": 31,
-         "scale": 9,
-         "octaves": 2,
-         "stops": [
-          {
-           "kind": "solid",
-           "id": 2,
-           "data": 0
-          },
-          {
-           "kind": "solid",
-           "id": 2,
-           "data": 0
-          },
-          {
-           "kind": "solid",
-           "id": 3,
-           "data": 2
-          }
-         ]
+         "kind": "checker",
+         "size": 6,
+         "even": {
+          "kind": "solid",
+          "id": 2,
+          "data": 0
+         },
+         "odd": {
+          "kind": "noise",
+          "seed": 53,
+          "scale": 4,
+          "octaves": 2,
+          "stops": [
+           {
+            "kind": "solid",
+            "id": 159,
+            "data": 5
+           },
+           {
+            "kind": "solid",
+            "id": 159,
+            "data": 13
+           },
+           {
+            "kind": "solid",
+            "id": 159,
+            "data": 5
+           }
+          ]
+         }
         },
         "thickness": 1
        },
@@ -1831,6 +1864,127 @@
         "data": 0
        },
        "thickness": 2
+      }
+     ],
+     "ending": "repeat"
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "verge": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 48,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "noise",
+         "seed": 54,
+         "scale": 11,
+         "octaves": 3,
+         "stops": [
+          {
+           "kind": "solid",
+           "id": 2,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 2,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 159,
+           "data": 5
+          }
+         ]
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "noise",
+         "seed": 55,
+         "scale": 9,
+         "octaves": 2,
+         "stops": [
+          {
+           "kind": "solid",
+           "id": 3,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 3,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 3,
+           "data": 2
+          }
+         ]
+        },
+        "thickness": 2
+       }
+      ],
+      "ending": "repeat"
+     }
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 159,
+        "data": 13
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 48,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "thickness": 3
       }
      ],
      "ending": "repeat"
@@ -3070,11 +3224,11 @@
      {
       "corners": [
        [
-        -48,
+        -50,
         86
        ],
        [
-        -43,
+        -45,
         91
        ]
       ]
@@ -3086,7 +3240,7 @@
     "id": "cairn-court-w",
     "kind": "boulder",
     "seed": 505,
-    "x": -40,
+    "x": -42,
     "z": 88,
     "form": "cairn",
     "size": 2.0,
@@ -3133,11 +3287,11 @@
      {
       "corners": [
        [
-        -26,
+        44,
         86
        ],
        [
-        -21,
+        49,
         91
        ]
       ]
@@ -3149,8 +3303,8 @@
     "id": "cairn-court-e",
     "kind": "boulder",
     "seed": 506,
-    "x": -18,
-    "z": 88,
+    "x": 40,
+    "z": 94,
     "form": "cairn",
     "size": 2.0,
     "mossy": false,
@@ -3321,30 +3475,30 @@
     "seed": 41,
     "points": [
      [
-      -50,
-      85
+      -51,
+      84
      ],
      [
-      -14,
-      85
+      -13,
+      84
      ],
      [
-      -14,
-      95
+      -13,
+      96
      ],
      [
-      -50,
-      95
+      -51,
+      96
      ]
     ],
     "spec": {
-     "coverage": 0.4,
-     "scale": 11,
-     "octaves": 2,
-     "fernShare": 0.1,
-     "flowerShare": 0.25,
-     "flowerScale": 9,
-     "tallShare": 0.08
+     "coverage": 0.55,
+     "scale": 9,
+     "octaves": 3,
+     "fernShare": 0.14,
+     "flowerShare": 0.3,
+     "flowerScale": 7,
+     "tallShare": 0.16
     }
    },
    {
@@ -3353,61 +3507,81 @@
     "seed": 43,
     "points": [
      [
-      14,
-      85
+      13,
+      84
      ],
      [
-      50,
-      85
+      51,
+      84
      ],
      [
-      50,
-      95
+      51,
+      96
      ],
      [
-      14,
-      95
+      13,
+      96
      ]
     ],
     "spec": {
-     "coverage": 0.4,
-     "scale": 11,
-     "octaves": 2,
-     "fernShare": 0.1,
-     "flowerShare": 0.25,
-     "flowerScale": 9,
-     "tallShare": 0.08
+     "coverage": 0.55,
+     "scale": 9,
+     "octaves": 3,
+     "fernShare": 0.14,
+     "flowerShare": 0.3,
+     "flowerScale": 7,
+     "tallShare": 0.16
     }
+   },
+   {
+    "id": "court-oak-1",
+    "kind": "tree",
+    "seed": 111,
+    "x": -29,
+    "z": 87,
+    "form": "template",
+    "species": "oak",
+    "height": 9
+   },
+   {
+    "id": "court-oak-2",
+    "kind": "tree",
+    "seed": 112,
+    "x": -22,
+    "z": 94,
+    "form": "template",
+    "species": "oak",
+    "height": 11
+   },
+   {
+    "id": "court-oak-3",
+    "kind": "tree",
+    "seed": 113,
+    "x": -15,
+    "z": 87,
+    "form": "template",
+    "species": "oak",
+    "height": 8
+   },
+   {
+    "id": "court-oak-4",
+    "kind": "tree",
+    "seed": 114,
+    "x": 38,
+    "z": 94,
+    "form": "template",
+    "species": "oak",
+    "height": 10
    },
    {
     "id": "court-birch-1",
     "kind": "tree",
     "seed": 101,
-    "x": -39,
+    "x": -40,
     "z": 95,
     "form": "template",
     "species": "birch",
     "height": 9
-   },
-   {
-    "id": "court-birch-2",
-    "kind": "tree",
-    "seed": 102,
-    "x": -16,
-    "z": 92,
-    "form": "template",
-    "species": "birch",
-    "height": 9
-   },
-   {
-    "id": "court-birch-3",
-    "kind": "tree",
-    "seed": 103,
-    "x": 44,
-    "z": 92,
-    "form": "template",
-    "species": "birch",
-    "height": 8
    },
    {
     "id": "deck-oak",
@@ -3419,6 +3593,68 @@
     "species": "oak",
     "height": 11,
     "layer": "deck"
+   },
+   {
+    "id": "approach-oak-1",
+    "kind": "tree",
+    "seed": 121,
+    "x": -26,
+    "z": 110,
+    "form": "template",
+    "species": "oak",
+    "height": 10
+   },
+   {
+    "id": "approach-oak-2",
+    "kind": "tree",
+    "seed": 122,
+    "x": 26,
+    "z": 110,
+    "form": "template",
+    "species": "oak",
+    "height": 10
+   },
+   {
+    "id": "approach-birch",
+    "kind": "tree",
+    "seed": 102,
+    "x": 14,
+    "z": 103,
+    "form": "template",
+    "species": "birch",
+    "height": 8
+   },
+   {
+    "id": "approach-turf",
+    "kind": "flora",
+    "seed": 44,
+    "points": [
+     [
+      -27,
+      101
+     ],
+     [
+      27,
+      101
+     ],
+     [
+      27,
+      111
+     ],
+     [
+      -27,
+      111
+     ]
+    ],
+    "spec": {
+     "coverage": 0.45,
+     "scale": 10,
+     "octaves": 2,
+     "fernShare": 0.1,
+     "flowerShare": 0.28,
+     "flowerScale": 8,
+     "tallShare": 0.12
+    }
    },
    {
     "id": "plaza-oak-1",
@@ -3439,6 +3675,66 @@
     "form": "template",
     "species": "oak",
     "height": 9
+   },
+   {
+    "id": "plaza-oak-3",
+    "kind": "tree",
+    "seed": 107,
+    "x": 12,
+    "z": 14,
+    "form": "template",
+    "species": "oak",
+    "height": 11
+   },
+   {
+    "id": "plaza-oak-4",
+    "kind": "tree",
+    "seed": 108,
+    "x": -30,
+    "z": 10,
+    "form": "template",
+    "species": "oak",
+    "height": 9
+   },
+   {
+    "id": "apron-oak-1",
+    "kind": "tree",
+    "seed": 109,
+    "x": 40,
+    "z": 26,
+    "form": "template",
+    "species": "oak",
+    "height": 10
+   },
+   {
+    "id": "apron-oak-2",
+    "kind": "tree",
+    "seed": 110,
+    "x": -44,
+    "z": 32,
+    "form": "template",
+    "species": "oak",
+    "height": 11
+   },
+   {
+    "id": "apron-oak-3",
+    "kind": "tree",
+    "seed": 115,
+    "x": -28,
+    "z": 22,
+    "form": "template",
+    "species": "oak",
+    "height": 9
+   },
+   {
+    "id": "apron-oak-4",
+    "kind": "tree",
+    "seed": 116,
+    "x": 8,
+    "z": 34,
+    "form": "template",
+    "species": "oak",
+    "height": 10
    },
    {
     "id": "plaza-turf",
@@ -3463,13 +3759,45 @@
      ]
     ],
     "spec": {
-     "coverage": 0.3,
-     "scale": 13,
+     "coverage": 0.38,
+     "scale": 12,
      "octaves": 2,
-     "fernShare": 0.05,
+     "fernShare": 0.08,
+     "flowerShare": 0.24,
+     "flowerScale": 9,
+     "tallShare": 0.08
+    }
+   },
+   {
+    "id": "apron-turf",
+    "kind": "flora",
+    "seed": 45,
+    "points": [
+     [
+      -54,
+      18
+     ],
+     [
+      54,
+      18
+     ],
+     [
+      54,
+      38
+     ],
+     [
+      -54,
+      38
+     ]
+    ],
+    "spec": {
+     "coverage": 0.32,
+     "scale": 14,
+     "octaves": 2,
+     "fernShare": 0.08,
      "flowerShare": 0.2,
-     "flowerScale": 10,
-     "tallShare": 0.05
+     "flowerScale": 11,
+     "tallShare": 0.06
     }
    },
    {

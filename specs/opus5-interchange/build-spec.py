@@ -124,6 +124,7 @@ CLAY_LTGRAY = solid(159, 8)
 CLAY_CYAN = solid(159, 9)
 CLAY_BROWN = solid(159, 12)
 CLAY_GREEN = solid(159, 13)
+CLAY_LIME = solid(159, 5)
 CLAY_BLACK = solid(159, 15)
 
 # ── the themes, one per area ──────────────────────────────────────────────────────────────────
@@ -171,10 +172,24 @@ THEMES = {
         wall=layered(stack((CLAY_BROWN, 2), (CLAY_YELLOW, 1), (CLAY_BROWN, 5))),
         fill=CLAY_BROWN, rim=None, surface_depth=1),
 
-    # the garden court: the most familiar thing on the board, and the one with a sky
+    # The garden court: the most familiar thing on the board, and the one with a sky. The turf is
+    # mown in six-block squares — plain grass against a three-way mottle of grass, lime and green —
+    # which is the same instrument as the pool's tile and the deck's bays at a third size, and reads
+    # as a lawn somebody laid out rather than one that grew. `boundary` rims it where it meets a
+    # wall, so every lawn has a planted edge without a shape drawn for one.
     "garden": theme(
-        surface=layered(stack((noise(31, 9, 2, [GRASS, GRASS, PODZOL]), 1), (DIRT, 2))),
+        surface=layered(stack(
+            (checker(6, GRASS, noise(53, 4, 2, [CLAY_LIME, CLAY_GREEN, CLAY_LIME])), 1),
+            (DIRT, 2))),
         wall=layered(stack((CLAY_GREEN, 3), (MOSSY, 1), (COBBLE, 2))),
+        fill=STONE, rim=CLAY_GREEN, rim_edges="boundary", surface_depth=3),
+
+    # the approach outside the court's north wall: the same three greens, unmown — no squares, only
+    # the mottle, so the lawn inside the wall reads as the deliberate one
+    "verge": theme(
+        surface=layered(stack((noise(54, 11, 3, [GRASS, GRASS, CLAY_LIME]), 1),
+                              (noise(55, 9, 2, [DIRT, DIRT, PODZOL]), 2))),
+        wall=layered(stack((CLAY_GREEN, 2), (MOSSY, 1), (COBBLE, 3))),
         fill=STONE, rim=MOSSY, rim_edges="void", surface_depth=3),
     "w-garden": theme(
         surface=MOSSY,
@@ -278,6 +293,8 @@ ground += [
     box("t", 12, 44, 52, 80, CONC_FLOOR, CONC_H, "doors"),         # the corridor of doors
     box("t", -8, 40, 8, 100, CONC_FLOOR, CONC_H, "spine"),         # the spine
     box("t", -52, 84, 52, 96, CONC_FLOOR, CONC_H, "garden"),       # the garden court
+    box("t", -28, 100, 28, Z_APPROACH, CONC_FLOOR, CONC_H, "verge"),   # the approach to it
+    box("t", -8, Z_APPROACH, 8, Z_BACK, CONC_FLOOR, CONC_H, "verge"),  # and the arrivals yard
     box("t", 56, 59, 62, 68, CONC_FLOOR, CONC_H, "skin"),          # the balcony over the void
 ]
 # The two glass floors. The core's is the drained pool's ceiling, sixteen blocks over the monument
@@ -479,8 +496,8 @@ KIOSK_SITES = [
     ("kiosk-approach", -20, 102, "ground", 10, 4),
     ("kiosk-doors", 44, 44, "ground", 2, 10),
     ("kiosk-pool", 9, 50, "under", 1, 10),
-    ("kiosk-court-w", -48, 86, "ground", 8, 2),
-    ("kiosk-court-e", -26, 86, "ground", 8, 2),
+    ("kiosk-court-w", -50, 86, "ground", 8, 2),
+    ("kiosk-court-e", 44, 86, "ground", -4, 8),
     ("kiosk-hall", -20, 72, "ground", -6, 2),
     ("kiosk-deck", -14, 60, "deck", -8, 8),
 ]
@@ -510,32 +527,68 @@ for k, (name, x, z, layer, dx, dz) in enumerate(KIOSK_SITES):
 
 # the garden court: the one place on the board where anything grows
 props += [
+    # The court, planted. Two lawns either side of the crossing, each with its kiosk, its cairn, an
+    # oak or three and ground cover over the lot — the one place on the board where anything grows,
+    # and the reason it is the room a player believes before they notice the rest.
     {"id": "court-turf-w", "kind": "flora", "seed": 41,
-     "points": [[-50, 85], [-14, 85], [-14, 95], [-50, 95]],
-     "spec": {"coverage": 0.4, "scale": 11, "octaves": 2, "fernShare": 0.1,
-              "flowerShare": 0.25, "flowerScale": 9, "tallShare": 0.08}},
+     "points": [[-51, 84], [-13, 84], [-13, 96], [-51, 96]],
+     "spec": {"coverage": 0.55, "scale": 9, "octaves": 3, "fernShare": 0.14,
+              "flowerShare": 0.3, "flowerScale": 7, "tallShare": 0.16}},
     {"id": "court-turf-e", "kind": "flora", "seed": 43,
-     "points": [[14, 85], [50, 85], [50, 95], [14, 95]],
-     "spec": {"coverage": 0.4, "scale": 11, "octaves": 2, "fernShare": 0.1,
-              "flowerShare": 0.25, "flowerScale": 9, "tallShare": 0.08}},
-    {"id": "court-birch-1", "kind": "tree", "seed": 101, "x": -39, "z": 95,
+     "points": [[13, 84], [51, 84], [51, 96], [13, 96]],
+     "spec": {"coverage": 0.55, "scale": 9, "octaves": 3, "fernShare": 0.14,
+              "flowerShare": 0.3, "flowerScale": 7, "tallShare": 0.16}},
+    {"id": "court-oak-1", "kind": "tree", "seed": 111, "x": -29, "z": 87,
+     "form": "template", "species": "oak", "height": 9},
+    {"id": "court-oak-2", "kind": "tree", "seed": 112, "x": -22, "z": 94,
+     "form": "template", "species": "oak", "height": 11},
+    {"id": "court-oak-3", "kind": "tree", "seed": 113, "x": -15, "z": 87,
+     "form": "template", "species": "oak", "height": 8},
+    {"id": "court-oak-4", "kind": "tree", "seed": 114, "x": 38, "z": 94,
+     "form": "template", "species": "oak", "height": 10},
+    {"id": "court-birch-1", "kind": "tree", "seed": 101, "x": -40, "z": 95,
      "form": "template", "species": "birch", "height": 9},
-    {"id": "court-birch-2", "kind": "tree", "seed": 102, "x": -16, "z": 92,
-     "form": "template", "species": "birch", "height": 9},
-    {"id": "court-birch-3", "kind": "tree", "seed": 103, "x": 44, "z": 92,
-     "form": "template", "species": "birch", "height": 8},
     # one oak in the middle of the car deck, which is the only thing up there that is alive
     {"id": "deck-oak", "kind": "tree", "seed": 104, "x": -12, "z": 80,
      "form": "template", "species": "oak", "height": 11, "layer": "deck"},
-    # the plaza, outdoors and ordinary
+    # The approach, outside the court's north wall: the same species again, spaced the way an
+    # avenue is rather than the way a wood is, so the walk in reads as somebody's planting scheme.
+    # It is twelve blocks deep between a spawn door's keep-out and a wall, so it holds three.
+    {"id": "approach-oak-1", "kind": "tree", "seed": 121, "x": -26, "z": 110,
+     "form": "template", "species": "oak", "height": 10},
+    {"id": "approach-oak-2", "kind": "tree", "seed": 122, "x": 26, "z": 110,
+     "form": "template", "species": "oak", "height": 10},
+    {"id": "approach-birch", "kind": "tree", "seed": 102, "x": 14, "z": 103,
+     "form": "template", "species": "birch", "height": 8},
+    {"id": "approach-turf", "kind": "flora", "seed": 44,
+     "points": [[-27, 101], [27, 101], [27, 111], [-27, 111]],
+     "spec": {"coverage": 0.45, "scale": 10, "octaves": 2, "fernShare": 0.1,
+              "flowerShare": 0.28, "flowerScale": 8, "tallShare": 0.12}},
+    # the plaza, outdoors and ordinary — more of it planted, none of it patterned
     {"id": "plaza-oak-1", "kind": "tree", "seed": 105, "x": 26, "z": 6,
      "form": "template", "species": "oak", "height": 10},
     {"id": "plaza-oak-2", "kind": "tree", "seed": 106, "x": -8, "z": 12,
      "form": "template", "species": "oak", "height": 9},
+    {"id": "plaza-oak-3", "kind": "tree", "seed": 107, "x": 12, "z": 14,
+     "form": "template", "species": "oak", "height": 11},
+    {"id": "plaza-oak-4", "kind": "tree", "seed": 108, "x": -30, "z": 10,
+     "form": "template", "species": "oak", "height": 9},
+    {"id": "apron-oak-1", "kind": "tree", "seed": 109, "x": 40, "z": 26,
+     "form": "template", "species": "oak", "height": 10},
+    {"id": "apron-oak-2", "kind": "tree", "seed": 110, "x": -44, "z": 32,
+     "form": "template", "species": "oak", "height": 11},
+    {"id": "apron-oak-3", "kind": "tree", "seed": 115, "x": -28, "z": 22,
+     "form": "template", "species": "oak", "height": 9},
+    {"id": "apron-oak-4", "kind": "tree", "seed": 116, "x": 8, "z": 34,
+     "form": "template", "species": "oak", "height": 10},
     {"id": "plaza-turf", "kind": "flora", "seed": 42,
      "points": [[-34, 2], [34, 2], [34, 14], [-34, 14]],
-     "spec": {"coverage": 0.3, "scale": 13, "octaves": 2, "fernShare": 0.05,
-              "flowerShare": 0.2, "flowerScale": 10, "tallShare": 0.05}},
+     "spec": {"coverage": 0.38, "scale": 12, "octaves": 2, "fernShare": 0.08,
+              "flowerShare": 0.24, "flowerScale": 9, "tallShare": 0.08}},
+    {"id": "apron-turf", "kind": "flora", "seed": 45,
+     "points": [[-54, 18], [54, 18], [54, 38], [-54, 38]],
+     "spec": {"coverage": 0.32, "scale": 14, "octaves": 2, "fernShare": 0.08,
+              "flowerShare": 0.2, "flowerScale": 11, "tallShare": 0.06}},
     # the road in: spawn to the court crossing to the plaza, drawn before the scenery
     {"id": "road-in", "kind": "path", "seed": 3, "style": "solid", "radius": 3.0,
      "coverage": 1.0, "route": True,
