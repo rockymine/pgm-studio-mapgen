@@ -17,7 +17,12 @@ comparable with each other.
 
 Nine were authored by hand; nine were handed to sonnet subagents against a written brief once the pattern was
 established, and every one of those was reviewed against its own renders and column reads before it was
-committed.
+committed. One of the nine needed correcting: `12-underpass` reported that a rasterized column carries one
+span, full stop, and the scope was missing — `SketchRasterizer` skips a span pair that shares a **layer**,
+which only means anything because two layers can share a cell, and a genuine undercroft is `addLayers`. Two
+boards in this repository already measure that. The claim was right about what it tested and wrong about the
+system, which is the failure the deliverables rule names, and it survived one review before a source read
+caught it.
 
 ## What I could not say
 
