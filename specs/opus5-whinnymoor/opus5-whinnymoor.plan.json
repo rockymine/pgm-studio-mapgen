@@ -1,0 +1,205 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Whinnymoor"
+  },
+  "globals": {
+    "cell": 5,
+    "symmetry": "rot_180",
+    "maxPlayers": 24,
+    "surface": 12,
+    "observerY": 60
+  },
+  "pieces": [
+    {
+      "id": "tip-w",
+      "role": "piece",
+      "rect": [
+        -10,
+        3,
+        6,
+        3
+      ],
+      "surface": 10
+    },
+    {
+      "id": "tip-e",
+      "role": "piece",
+      "rect": [
+        4,
+        3,
+        6,
+        3
+      ],
+      "surface": 10
+    },
+    {
+      "id": "mid-w",
+      "role": "piece",
+      "rect": [
+        -10,
+        6,
+        5,
+        5
+      ],
+      "surface": 14
+    },
+    {
+      "id": "mid-e",
+      "role": "piece",
+      "rect": [
+        5,
+        6,
+        5,
+        5
+      ],
+      "surface": 14
+    },
+    {
+      "id": "moor-w",
+      "role": "piece",
+      "rect": [
+        -11,
+        11,
+        8,
+        4
+      ],
+      "surface": 18
+    },
+    {
+      "id": "moor-e",
+      "role": "piece",
+      "rect": [
+        3,
+        11,
+        8,
+        4
+      ],
+      "surface": 18
+    },
+    {
+      "id": "back",
+      "role": "piece",
+      "rect": [
+        -11,
+        15,
+        22,
+        3
+      ],
+      "surface": 18
+    },
+    {
+      "id": "sump-app",
+      "role": "piece",
+      "rect": [
+        -11,
+        18,
+        3,
+        3
+      ],
+      "surface": 14
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        18,
+        4,
+        3
+      ],
+      "surface": 18
+    },
+    {
+      "id": "rise",
+      "role": "piece",
+      "rect": [
+        8,
+        18,
+        3,
+        3
+      ],
+      "surface": 18
+    },
+    {
+      "id": "sump",
+      "role": "wool-room",
+      "rect": [
+        -11,
+        21,
+        3,
+        3
+      ],
+      "surface": 10
+    },
+    {
+      "id": "wheel",
+      "role": "wool-room",
+      "rect": [
+        8,
+        21,
+        3,
+        3
+      ],
+      "surface": 22
+    }
+  ],
+  "zones": [
+    {
+      "id": "cut",
+      "rect": [
+        -10,
+        -4,
+        20,
+        8
+      ]
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2,
+          2
+        ],
+        "facing": "front"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          1,
+          1
+        ]
+      }
+    ],
+    "wools": [
+      {
+        "id": "wool-1",
+        "piece": "wheel",
+        "at": [
+          1.5,
+          1.5
+        ]
+      },
+      {
+        "id": "wool-2",
+        "piece": "sump",
+        "at": [
+          1.5,
+          1.5
+        ]
+      }
+    ]
+  },
+  "walls": [
+    {
+      "a": "back",
+      "b": "rise"
+    }
+  ]
+}
