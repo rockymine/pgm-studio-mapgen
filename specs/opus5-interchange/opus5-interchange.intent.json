@@ -1,0 +1,298 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 24,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 18,
+    "z": 120
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": 112,
+     "maxX": 8,
+     "maxZ": 124
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -8,
+    "minZ": 112,
+    "maxX": 8,
+    "maxZ": 124
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 18,
+    "z": -120
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": -124,
+     "maxX": 8,
+     "maxZ": -112
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -8,
+    "minZ": -124,
+    "maxX": 8,
+    "maxZ": -112
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 33,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": [],
+  "voidEnforcement": {
+   "exclusions": []
+  }
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": "under",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Deep End",
+   "style": "pillar-1",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 30,
+    "y": 18,
+    "z": 78
+   },
+   "float": 3,
+   "box": null
+  },
+  {
+   "layer": "catwalk",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Catwalk",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -38,
+    "y": 18,
+    "z": 68
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "layer": "ground",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-3",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Back Office",
+   "style": "pillar-1",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 34,
+    "y": 18,
+    "z": 62
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": "deck",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-4",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Level 4",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -26,
+    "y": 18,
+    "z": 50
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": "ground",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-5",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Court",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 24,
+    "y": 18,
+    "z": 90
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": "under",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Deep End",
+   "style": "pillar-1",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -31,
+    "y": 18,
+    "z": -79
+   },
+   "float": 3,
+   "box": null
+  },
+  {
+   "layer": "catwalk",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Catwalk",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 37,
+    "y": 18,
+    "z": -69
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "layer": "ground",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-3",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Back Office",
+   "style": "pillar-1",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -35,
+    "y": 18,
+    "z": -63
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": "deck",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-4",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Level 4",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 25,
+    "y": 18,
+    "z": -51
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": "ground",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-5",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Court",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -25,
+    "y": 18,
+    "z": -91
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Interchange",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}
