@@ -26,6 +26,8 @@ carries everything a plan cannot state, keyed onto the compiled layout:
   voidEnforcement true -> patch intent.build.voidEnforcement (voidExclusions for the rects to spare)
   authors         ["Opus 5"], or [{"name", "uuid", "role", "contribution"}] -> the <authors> block. PGM
                   takes a person as an account OR a pseudonym, so a bare name is a valid author
+  created         "2026-08-25" -> intent.meta.created -> <created>. The studio cannot know when a map was
+                  made and invents nothing, so a board that states none carries none
 
 The whole map is stored in ONE call — POST /map/from-documents takes the plan, the patched layout and
 the patched intent together, rasterizes the drawing, projects the intent into the map document and
@@ -378,11 +380,17 @@ def patch_layout(layout, finish):
 def patch_intent(intent, finish):
     """Everything the finish says about the compiled intent.
 
-    `voidEnforcement` fills the board's void with the barrier PGM enforces, sparing the rects
-    `voidExclusions` names. `goalLayers` names the storey a goal stands on, by the plan marker id it was
-    stated under: a stacked board carries a surface per storey and a placement naming none takes the top,
-    which on a roofed goal is the roof. The word is keyed onto every orbit image of the marker, because a
-    goal and its mirror stand on the same storey."""
+    `created` is the map's own date, which the studio has no way to derive: it rides on the intent's meta
+    and is the author's to state. `voidEnforcement` fills the board's void with the barrier PGM enforces,
+    sparing the rects `voidExclusions` names. `goalLayers` names the storey a goal stands on, by the plan
+    marker id it was stated under: a stacked board carries a surface per storey and a placement naming none
+    takes the top, which on a roofed goal is the roof. The word is keyed onto every orbit image of the
+    marker, because a goal and its mirror stand on the same storey."""
+    if created := finish.get("created"):
+        intent.setdefault("meta", {})["created"] = created
+        print(f"    created {created}")
+    else:
+        print("    ! the finish states no `created` date, so the map will carry no <created> element")
     if finish.get("voidEnforcement"):
         intent.setdefault("build", {})["voidEnforcement"] = \
             {"exclusions": finish.get("voidExclusions", [])}

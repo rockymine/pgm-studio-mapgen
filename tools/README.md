@@ -34,6 +34,7 @@ actually posted — so a review reads what was built rather than what was asked 
 | `roomStyles` | `{"cage": …, "spawn": …}`; a `"@name"` string loads `tools/styles/<name>.json` |
 | `dressing` | `{"props": [...]}`; a house prop's `style` takes the same `"@name"` |
 | `authors` | `["Opus 5"]`, or `[{"name": …, "uuid": …, "role": …, "contribution": …}]`. PGM takes a person as an **account or a pseudonym**: a bare name writes `<author>Opus 5</author>`, a uuid writes `<author uuid="…"/>` with the name as a sibling comment, and a pseudonym may still carry a `contribution` |
+| `created` | `"2026-08-25"` — when the map was made, onto `intent.meta.created` and out as `<created>`. The studio derives every other identity field and cannot derive this one, so a finish that states none builds a map with no date and the driver says so |
 | `voidEnforcement` | `true` patches `intent.build.voidEnforcement`, with `voidExclusions` for the rects to spare |
 | `goalLayers` | `{"destroyable-1": "under"}` — which storey a goal stands on, by its plan marker id, patched onto the compiled intent by `stamp.unit` |
 | `addLayers` | `[{id, name, base_y, shapes, islands, below?}]` — the storeys a plan cannot state. `below` inserts one under the compiled ground, where the painter's bottom-up order needs it |
