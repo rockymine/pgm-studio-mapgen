@@ -1,0 +1,308 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 10,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -45,
+    "y": 12,
+    "z": 45
+   },
+   "protection": [
+    {
+     "minX": -50,
+     "minZ": 40,
+     "maxX": -40,
+     "maxZ": 50
+    }
+   ],
+   "yaw": 270,
+   "piece": {
+    "minX": -50,
+    "minZ": 40,
+    "maxX": -40,
+    "maxZ": 50
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 45,
+    "y": 12,
+    "z": -45
+   },
+   "protection": [
+    {
+     "minX": 40,
+     "minZ": -50,
+     "maxX": 50,
+     "maxZ": -40
+    }
+   ],
+   "yaw": 90,
+   "piece": {
+    "minX": 40,
+    "minZ": -50,
+    "maxX": 50,
+    "maxZ": -40
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 27,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -15,
+    "minZ": -10,
+    "maxX": 15,
+    "maxZ": 10
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "room": [
+    {
+     "minX": 0,
+     "minZ": 95,
+     "maxX": 10,
+     "maxZ": 105
+    }
+   ],
+   "spawn": {
+    "x": 5,
+    "y": 12,
+    "z": 100
+   },
+   "monuments": [],
+   "piece": {
+    "minX": 0,
+    "minZ": 95,
+    "maxX": 10,
+    "maxZ": 105
+   },
+   "entries": [
+    {
+     "minX": 0,
+     "minZ": 95,
+     "maxX": 0,
+     "maxZ": 105
+    },
+    {
+     "minX": 0,
+     "minZ": 95,
+     "maxX": 10,
+     "maxZ": 95
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "room": [
+    {
+     "minX": -10,
+     "minZ": -105,
+     "maxX": 0,
+     "maxZ": -95
+    }
+   ],
+   "spawn": {
+    "x": -5,
+    "y": 12,
+    "z": -100
+   },
+   "monuments": [],
+   "piece": {
+    "minX": -10,
+    "minZ": -105,
+    "maxX": 0,
+    "maxZ": -95
+   },
+   "entries": [
+    {
+     "minX": 0,
+     "minZ": -105,
+     "maxX": 0,
+     "maxZ": -95
+    },
+    {
+     "minX": -10,
+     "minZ": -95,
+     "maxX": 0,
+     "maxZ": -95
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "meta": {
+  "name": "Rimegarth",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": {
+  "layer": null,
+  "roomFloors": [
+   {
+    "area": {
+     "minX": 0,
+     "minZ": 95,
+     "maxX": 10,
+     "maxZ": 105
+    },
+    "stamp": {
+     "kind": "roomfloor",
+     "unit": "wool-a-room",
+     "image": 0
+    }
+   },
+   {
+    "area": {
+     "minX": -10,
+     "minZ": -105,
+     "maxX": 0,
+     "maxZ": -95
+    },
+    "stamp": {
+     "kind": "roomfloor",
+     "unit": "wool-a-room",
+     "image": 1
+    }
+   }
+  ],
+  "redstoneLines": [
+   {
+    "x1": 0,
+    "z1": 95,
+    "x2": 0,
+    "z2": 104,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "x1": -1,
+    "z1": -105,
+    "x2": -1,
+    "z2": -96,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1
+    }
+   },
+   {
+    "x1": 0,
+    "z1": 95,
+    "x2": 9,
+    "z2": 95,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 0
+    }
+   },
+   {
+    "x1": -10,
+    "z1": -96,
+    "x2": -1,
+    "z2": -96,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 1
+    }
+   }
+  ],
+  "ironCubes": [],
+  "walls": [
+   {
+    "minX": -15,
+    "minZ": 59,
+    "maxX": 0,
+    "maxZ": 61,
+    "topY": 14,
+    "chestOnMinFace": true,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "minX": 0,
+    "minZ": -61,
+    "maxX": 15,
+    "maxZ": -59,
+    "topY": 14,
+    "chestOnMinFace": false,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 1
+    }
+   }
+  ],
+  "isEmpty": false
+ }
+}

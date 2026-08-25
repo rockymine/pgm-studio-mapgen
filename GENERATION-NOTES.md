@@ -1035,3 +1035,51 @@ Two things about a core in particular: `float` and `leak` are one knob (the lava
 terrain at `float` below the casing and leaks a course below `leak`), and **a core on an island in
 open sky has nothing to catch its lava** — so the casing wants ground all round it, or a breach
 anywhere near an edge ends it at once.
+
+### A composed plan compiles to one merged polygon and a `subtract`, and the subtract wins
+
+Twelve pieces go into `POST /plan/compile` and two terrain shapes come out: `s0`, one merged `add`
+polygon over the whole footprint, and `s1`, a `subtract` cutting everything the pieces do not cover.
+A subtract beats **every** add on its layer whatever order they are written in, so an `addShapes`
+rectangle over a composed hole — the middle of a `donut` wool box, say — draws nothing at all, and
+says nothing about it: no finding, and the relief read reports the right total because those cells
+were never in the footprint.
+
+Fill a composed hole on **its own layer**: an `addLayers` entry with `below: true` carrying one shape
+that fills exactly what the subtract took. No overlap with the compiled ground, so no `SK10`; the
+painter reaches it first; and a prop with no `layer` seats on `SurfaceTop`, which over the hole is
+the new slab.
+
+### Browsing the composer is a four-call loop, and a scan is what tells you its vocabulary
+
+`GET /compose?players=&symmetry=&seedStart=&count=` returns cards carrying the descriptor that
+reproduces each board, its score, a structural read and a board SVG; `POST /compose/pin` stores one
+from that descriptor; `GET /plans/{id}/png` renders it as an image; `POST /plan/{id}/author` makes a
+map row. Ninety-six seeds, eleven pins and two contact sheets is a few minutes.
+
+Two things a scan says that nothing else does. **Cell 5 is the only scale it works at** — cell 4
+produced nothing in ninety-six seeds and cell 3 nothing in twelve, both `exhausted`. And **10 and 12
+players give identical boards**, so the land budget buckets rather than scaling. Hub forms observed
+in 48 seeds at 16 players: `bar`, `ring`, `single`, `twin`, `g`, `double-hole`, `p`; wool shapes
+`i`, `l` and — five times in forty-eight — `donut`, which is five pieces round a hole.
+
+### A composed board is corridors, so compute where a prop may stand
+
+Every piece is ten blocks wide with a road down the middle, and there is no landscape around them —
+what is not a piece is void. Placing props by eye on one gave fourteen declines, half of them
+`DR-SITE — has no ground`. Given the piece rectangles, the roads with their radii, the buildings and
+the doorways, a search over every block of the authored half is instant and returns the truth: on
+`opus5-rimegarth` it is **seven** places in a half.
+
+Two of the rules that search has to know. **A road's standoff is measured to its paved cells, not its
+centreline** — clear the stroke's radius *plus* the kind's standoff, three for a tree and two for a
+boulder. And **an approach wall's interface is kept clear the way a doorway is**, so the seam a
+`walls` entry names belongs in the keep-out list beside the rooms.
+
+### A water prop fills its own band, not the level it finds
+
+`form: "canal"` holds its stated width: a centreline down the middle of a fifteen-wide hole at radius
+3 is a six-wide channel with dry ground either side of it, however flat the pan under it. The band
+**is** the pond and the radius is the knob. This is the same fact `opus5-deepcut` learned from the
+other end, where an oversized flat `area` mark became an oversized lake: a water prop is a stroke
+that carves, not a fluid that finds its level.
