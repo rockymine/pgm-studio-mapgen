@@ -6,7 +6,7 @@
  "globals": {
   "cell": 4,
   "symmetry": "rot_180",
-  "maxPlayers": 48,
+  "maxPlayers": 24,
   "surface": 36,
   "observerY": 74
  },
@@ -111,6 +111,16 @@
      2.5
     ],
     "facing": "left"
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "taiga",
+    "at": [
+     4.5,
+     10.0
+    ]
    }
   ],
   "destroyables": [

@@ -90,11 +90,64 @@ client uses web options, which would explain it.
 The per-storey read that does work is the server's: `GET …/render/topdown?layer=under` draws the
 undercroft and nothing over it, and `render/section` is the only other read that keeps Y.
 
+### A ring on the symmetry centre cannot have a door
+
+The End Portal Room stands on the origin, so `rot_180` maps its wall ring onto itself — and the
+image of a wall covers the gap the author left. A door authored on the east side is filled in by the
+image of the west side's wall. Both doors have to be stated, and each is then the other's image.
+Nothing refuses this: the room simply builds sealed, and `SK11` says so afterwards as *"standable
+ground with no route onto it"*. The same rule caught the Village Monument's well rim, which read to
+`SK11` as an unreachable 6 × 6 and to a player as a box.
+
+### `WX11` names the cell, not the cause
+
+*"house blacksmith stands 9 blocks above the cell beside it"* is a building whose footprint shares a
+column with something tall — here a wall stair the **other** face's flight fans onto — and the
+building seats on the highest ground it covers. The finding names the low cell rather than the high
+one, so the coordinate it gives is the one place the problem is not.
+
+### A prop's keep-out is 2-D, and a channel eleven courses down still claims the ground over it
+
+`DR-CLAIM` declined an oak standing on a Small Hill at y36 as *"claimed by the channel
+'main-pool'"* — a pool in the undercroft at y12. `GENERATION-NOTES.md` records this for buildings on
+different storeys; it holds for a water channel under a hill too.
+
+### Two words differ between a preview and a snapshot, and the error says neither
+
+`POST /room-styles/preview` takes the library's **save request**, where `storeys` is a count; a
+serialized `HouseStyle`, where `storeys` is a list, goes to `/room-styles/preview-snapshot`. Posting
+a style to the first answers **400 `RQ1`**: *"Cannot get the value of a token type 'StartArray' as a
+number. Path: $.storeys"*, which is true and does not name the endpoint that would have taken it.
+
 ### A `NoiseMaterial` with no `stops` is a 500, not a refusal
 
 Writing `palette` where `noise` wants `stops` — the word `cell` uses — answered **500 `RQ2`** out of
 `TerrainThemeValidation.Blocks`, an `ArgumentNullException` on a null `SelectMany` source. `RQ3`
 would have named the unread field had the request survived to answer.
+
+### `<timelock>` is not a thing the studio writes
+
+The brief asks for time to run rather than be held. `grep -rn "timelock" src/` over the whole studio
+answers nothing: no intent field, no generator, no element. **Missing from the system**, not out of
+reach — a hand edit of the exported `map.xml` is the only way to get one, and that is a second
+format by another name.
+
+### The build ceiling is an output, not an input
+
+The brief measures `<maxbuildheight>` from the highest Skyblock Monument — y67 on this board.
+`BuildIntent.MaxHeight` is a documented, settable intent field that becomes `<maxbuildheight>`, so I
+added a `maxHeight` passthrough to `drive.py`, stated y67, drove it, and the map came out at **y74**.
+
+`WorldBuilder` overwrites it, deliberately and with the reason written above the line: *"twenty
+blocks over the highest ground the map actually built… written back onto the intent so the
+`<max-build-height>` the XML declares and the altitude these markers are stamped at are one number
+rather than two agreeing by habit."* So on any board that builds a world, `MaxHeight` is what the
+export **answers**, not what an author asks for, and a driver key for it does nothing. I took the
+passthrough back out rather than ship one that reads as a knob.
+
+**Missing from the system**, then, in the sense that matters: a board cannot state its own ceiling.
+On this board the derived answer is eight courses over the brief's, because the derivation measures
+from the skyblocks' grass rather than from the monument standing on it.
 
 ## What I got wrong
 
@@ -107,6 +160,11 @@ moved my marker twelve blocks, and was reasoning about the *first* stage's plan.
 **I assumed the river's 8-block drop was the same on both banks.** It is not: the village's bank is
 where the Town Wall stands, so a flight cut into it is a pit against a wall rather than a way out of
 the water. The ways out are on the outer banks only.
+
+**I read `maxPlayers` as the board's cap and shipped a 48 v 48 map.** `PlanGlobals.MaxPlayers` says
+"shared player cap for every generated team", which is per team, and `48` came out as
+`<team max="48">` twice. The brief's 24 v 24 is `maxPlayers: 24`. Nothing checks it, because nothing
+can: both readings are legal boards.
 
 **I put three Small Hills on top of the roads.** Circulation is authored before scenery for exactly
 this reason, and I drew both in one pass; `DR-ROAD` and `DR-CLAIM` declined three oaks and named the

@@ -34,7 +34,7 @@ A layer is a slab: one span per column, one theme, and its height carried by eac
 
 | Layer | Blocks | Stood on at | Is |
 |---|---|---|---|
-| `under` | 6..11, walls to 17 | y12 | the Liminal Poolroom, the corridor east out of it, and the Backroom Space that joins the two teams' halves across the origin |
+| `under` | 6..11, walls to 17 · the Stronghold 1..3, walls to 17 | y12 · y4 | the Liminal Poolroom and its water, the corridor east out of it, the Backroom Space, and the Stronghold's End Portal Room on the origin |
 | `lid` | 16..17 | — | the Backrooms' own ceiling, which is what gives that corridor four courses of headroom where the landmass over it would leave six |
 | `ground` | 18..35, the river 18..27, the Town Wall to 44 | y36 · y28 · y45 | the desert: the village, the river region, the Pyramid and the Snowy Taiga |
 | `bridge` | 34..35 | y36 | four oak decks over the water, one at each gate |
@@ -58,6 +58,36 @@ y  6  Prismarine Bricks
 document order and each pass paints its whole column, so a storey listed after one that stands over
 it finds no stone left to paint. `under` and `lid` are inserted before the compiled ground; `bridge`
 and `sky` are appended after it.
+
+## The Stronghold, and why its floor is eleven courses lower
+
+The End Portal Room stands **directly under the Village Well** and is the one room on the board with
+height. It gets it by standing lower rather than by reaching higher: its floor is y1..3 where the
+Poolroom's is y6..11, and because every underground ceiling is the landmass's own underside at y18,
+that leaves **fourteen courses of air** where the Poolroom has six. The frame is a ring of end stone
+one course off the floor, and it is decoration — the brief's golden-apple spawner has no prop in the
+studio's vocabulary.
+
+The room is 32 × 32 and its ring is centred on the origin, which is a trap `rot_180` sets: a ring on
+the symmetry centre maps onto itself, so a door authored on one side is **filled in by its own
+image**. Both doors are stated, and each is the other's image. A stair of eight one-block treads
+falls from the Backroom corridor at y12 into it.
+
+**Where it departs from the brief:** four times the vanilla End Portal Room's area, not twice its
+height. Fourteen courses is a little over twice a vanilla stronghold corridor and a little under
+twice the vanilla portal room, and going higher would mean cutting into the village floor overhead.
+
+## The Liminal Poolroom's water
+
+**A pool is not a basin drawn and then filled.** Water in this studio cuts its own bed below the
+surface it crosses and fills that bed to one level line, so a *flat* Poolroom floor and a channel
+four courses deep **is** the pool, and the deck is simply where the channel is not. One channel
+traced as a rounded rectangle makes the Main Pool; two short ones two courses deep make the Sub
+Pools. Measured at `(72, 12)`: water y9–y11 over a prismarine bed at y6–y8, ten courses of sandstone
+over it, and the river's own bed at y23.
+
+The bands stop clear of the room's walls, because a channel **cuts anything above its water line
+inside its band back to air** — which on a wall is the wall.
 
 ## How the board is got round
 
@@ -87,6 +117,14 @@ where the wall stands and a flight cut into it is a pit against a wall rather th
 **Up to the sky, only by building.** `…/walk?aim=reach` prices the nearest island at **20 placed
 blocks**. Nothing on the board walks to one.
 
+**Out of a Pyramid.** The spawn is a `role: "spawn"` piece 20 × 20, so the compiler sizes the
+stamped room to it and `roomStyles.spawn` decides what it looks like: a **hip roof over a square
+footprint is a pyramid** — the form's own docstring says so — with sandstone banded in orange clay
+the way the vanilla structure's front is, and a floor of `teamTint` wool, which is the brief's red
+under Red and blue under Blue without either being stated. Two strokes leave its door: **orange
+wool** toward the bridge, and a worn line of **gravel and stone** along the outer strip to the
+Snowy Taiga, which is the guideline the brief asks for rather than a road.
+
 ## The stairwell, and why it is an override rather than a hole
 
 The obvious way to state a well is a `subtract` on the ground layer with the stair climbing through
@@ -107,6 +145,7 @@ Ten themes, one per place rather than one per piece.
 | Place | Surface | Wall | Fill |
 |---|---|---|---|
 | the desert | sand over sandstone | sandstone | sandstone |
+| the Snowy Taiga | snow lying in patches over grass, over dirt | stone | stone |
 | the river region | sand | sandstone | sandstone |
 | the Town Wall | stone brick grained with cobble | the same | stone brick |
 | a Small Hill | grass over two of dirt | dirt | sandstone |
@@ -116,6 +155,8 @@ Ten themes, one per place rather than one per piece.
 | the Backroom Space | double smooth stone slab | smooth sandstone | smooth sandstone |
 | its ceiling | smooth sandstone | smooth sandstone | smooth sandstone |
 | a skyblock | grass over two of dirt | dirt | obsidian |
+| the Stronghold | stone brick grained with cracked and mossy | the same | stone brick |
+| the portal frame | end stone | end stone | end stone |
 
 **The river is one ground and not two.** Its first draft was a fractal field of gravel into sand,
 which is the fault the authoring brief measures on fifty boards: a noise between two *different*
@@ -146,7 +187,12 @@ board is a walk to one. Stated so it can be overruled.
 Poolroom, the corridor and the Backroom Space are unlit and the brief's sea lanterns and lamp posts
 are not in the world. The brief's spawn-kit torches are the same gap at the other end.
 
-**The Stronghold is not built.** Nor is the Farm, the Village's road lamps, the Pyramid's own
-structure, the Snowy Taiga's two unfinished builds and its iron, the Poolroom's Main and Sub Pools,
-the Backrooms' maze proper, the village's gentle relief, or the desert's cacti and dead bushes.
-What stands today is the board, its five storeys, its circulation and five of its buildings.
+**What the prop vocabulary has no word for.** Cacti and dead bushes: `FloraSpec` states coverage, a
+period, a fern share, a flower share and a tall share, and nothing else grows from it. Lamp posts,
+sea lanterns and the spawn kit's torches: nothing in the studio places a light source. A spawner. An
+end portal. The Town Wall's chests of `Power I` bows — a chest is authored on a `PlanWall`, and this
+wall is terrain rather than one.
+
+**Still to build.** The Farm, the Backrooms' maze proper (what stands is one corridor a side joining
+the two halves through the portal room), the village's gentle four-block relief, and the map-level
+settings the brief names — `timelock` off, the build ceiling, the Plains biome.

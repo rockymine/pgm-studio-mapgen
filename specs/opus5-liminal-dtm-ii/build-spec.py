@@ -19,8 +19,9 @@ CELL = 4
 # ── the courses ───────────────────────────────────────────────────────────────────────────────
 # A layer holds one span per column, so every storey is `floor` + a thickness inside its own layer.
 # Read down the page: the world reads the same way.
-HOLD_FLOOR   = 1                    # the stronghold slab: blocks 1..3, stood on at y4
+HOLD_FLOOR   = 1                    # the Stronghold slab: blocks 1..3, stood on at y4
 HOLD_H       = 3
+HOLD_TOP     = HOLD_FLOOR + HOLD_H              # 4
 UNDER_FLOOR  = 6                    # the undercroft slab: blocks 6..11, stood on at y12
 UNDER_H      = 6
 UNDER_TOP    = UNDER_FLOOR + UNDER_H            # 12 — the undercroft floor a player stands on
@@ -85,12 +86,23 @@ THEMES = {
     "backroom-lid": theme(solid(24, 2), solid(24, 2), solid(24, 2), surface_depth=1),
     # the stair down: smooth sandstone the whole way, because a flight is one made thing
     "stair": theme(solid(24, 2), solid(24, 2), solid(24, 0), surface_depth=1),
+    # the Stronghold: the vanilla mix of stone brick, cracked and mossy, at a period wide enough
+    # to read as a course laid by hand rather than as a field
+    "hold": theme(noise(12, 16, 2, [solid(98), solid(98, 2)]),
+                  noise(12, 16, 2, [solid(98), solid(98, 1)]), solid(98), surface_depth=1),
+    # the frame round the portal, which is decoration and says so
+    "portal": theme(solid(121), solid(121), solid(121), surface_depth=1),
     # a skyblock: grass, two of dirt, obsidian
     "skyblock": theme(layered(stack((solid(2), 1), (solid(3), 2), ending="handOver")),
                       solid(3), solid(49), surface_depth=3, bedrock=0),
     # the Town Wall: stone brick grained with cobble, one ground rather than two
     "wall": theme(noise(3, 11, 2, [solid(98), solid(4)]), noise(3, 11, 2, [solid(98), solid(4)]),
                   solid(98), surface_depth=1),
+    # the Snowy Taiga: snow lying in patches over the grass, at a period wide enough to read as
+    # weather rather than as static, over the dirt and the stone the desert never shows
+    "taiga": theme(layered(stack((noise(9, 20, 2, [solid(80), solid(2)]), 1), (solid(3), 2),
+                                 ending="handOver")),
+                   solid(1), solid(1), surface_depth=3),
     # a Small Hill: its top two courses are grass over dirt where everything round it is sand
     "hill": theme(layered(stack((solid(2), 1), (solid(3), 2), ending="handOver")),
                   solid(3), solid(24), surface_depth=3),
@@ -158,8 +170,9 @@ def ring(prefix, x0, z0, x1, z1, thick, floor, height, theme_key, gaps=(), over=
 POOL  = (56, -12, 96, 36)           # the Liminal Poolroom
 CORR  = (96, 28, 108, 36)           # the corridor out of its east wall
 WELL  = (100, 36, 108, 60)          # the stairwell, open to the sky until the Pyramid stands over it
-BACK  = (8, 4, 56, 12)              # the Backroom Space, west out of the Poolroom
-CROSS = (-8, -12, 8, 12)            # its middle, on the origin, which rot_180 maps onto itself
+BACK  = (24, 4, 56, 12)             # the Backroom Space, west out of the Poolroom
+PORTAL = (-16, -16, 16, 16)         # the End Portal Room, under the Village Well
+HOLD_STAIR = (16, 24)               # eight treads from the Backrooms down into it
 BACK_WALL_H = LID_FLOOR - UNDER_FLOOR            # 10 — a backroom wall stops under its own ceiling
 
 under = []
@@ -175,11 +188,23 @@ under.append(box("bf", *BACK, UNDER_FLOOR, UNDER_H, "backroom"))
 under += ring("bw", *BACK, 2, UNDER_FLOOR, BACK_WALL_H, "backroom", gaps=[("e", 4, 12)])
 # stopping two blocks short of the Poolroom's own wall, which stands to y17 and would otherwise be
 # driven into the lid's own courses (`SK10`)
-under.append(box("xf", *CROSS, UNDER_FLOOR, UNDER_H, "backroom"))
-under += ring("xw", *CROSS, 2, UNDER_FLOOR, BACK_WALL_H, "backroom",
+# ══ the Stronghold ════════════════════════════════════════════════════════════════════════════
+# It stands eleven courses lower than everything else underground, which is the only way its rooms
+# get their height: the ceiling is the landmass's own underside at y18, so a floor at y4 leaves
+# fourteen courses of air where the Poolroom's leaves six.
+#
+# The ring is centred on the origin, so rot_180 maps it onto itself — and an opening authored on one
+# side would be filled by its own image. Both doors are stated, and the image of each is the other.
+under.append(box("hf", *PORTAL, HOLD_FLOOR, HOLD_H, "hold"))
+under += ring("hw", *PORTAL, 2, HOLD_FLOOR, GROUND_FLOOR - HOLD_FLOOR, "hold",
               gaps=[("e", 4, 12), ("w", -12, -4)])
-lid = [box("bl", BACK[0] - 2, BACK[1] - 2, BACK[2] - 2, BACK[3] + 2, LID_FLOOR, LID_H, "backroom-lid"),
-       box("bl", CROSS[0] - 2, CROSS[1] - 2, CROSS[2] + 2, CROSS[3] + 2, LID_FLOOR, LID_H, "backroom-lid")]
+# the frame, raised a course off the floor: decoration, and the middle of the room
+under += ring("hp", -3, -3, 3, 3, 1, HOLD_FLOOR, HOLD_TOP, "portal")
+
+for j in range(UNDER_TOP - HOLD_TOP):
+    edge = HOLD_STAIR[1] - 1 - j
+    under.append(box("hs", edge, 4, edge + 1, 12, HOLD_FLOOR, UNDER_TOP - 1 - j, "hold"))
+lid = [box("bl", BACK[0] - 2, BACK[1] - 2, BACK[2] - 2, BACK[3] + 2, LID_FLOOR, LID_H, "backroom-lid")]
 
 # ══ the stairwell ═════════════════════════════════════════════════════════════════════════════
 # The stair is cut into the LANDMASS, not into a hole in it. A hole in the ground layer — drawn as
@@ -324,7 +349,7 @@ def piece(ident, x0, z0, x1, z1, surface):
 plan = {
     "plan": 1,
     "meta": {"name": "Liminal DTM II"},
-    "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 48, "surface": SURFACE,
+    "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 24, "surface": SURFACE,
                 # the platform is a 6x6 of bedrock at this height, and the derived surface+15 would
                 # stand it in the air over the Village Well
                 "observerY": 74},
@@ -347,6 +372,8 @@ plan = {
         "spawns": [{"id": "spawn-1", "piece": "pyramid-spawn",
                     "at": [(SPAWN_AT[0] - SPAWN_ROOM[0]) / CELL, (SPAWN_AT[1] - SPAWN_ROOM[1]) / CELL],
                     "facing": "left"}],
+        "iron": [{"id": "iron-1", "piece": "taiga",
+                  "at": [(-106 - -X_EDGE) / CELL, 40 / CELL]}],
         "destroyables": [
             {"id": "destroyable-1", "style": "pillar-2", "at": [GOAL_TOWN[0] / CELL, GOAL_TOWN[1] / CELL],
              "materials": "obsidian", "float": 2, "name": "The Desert Well"},
@@ -357,6 +384,28 @@ plan = {
         ],
     },
 }
+
+# ══ the water in the Liminal Poolroom ═════════════════════════════════════════════════════════
+# A pool is not a basin drawn and then filled: water cuts its own bed below the surface it crosses
+# and fills that bed to one line, so a flat floor and a channel four courses deep IS the pool, and
+# the deck is simply where the channel is not. The bands stay clear of the walls, because what is
+# above the water line inside them is cut back to air — which on a wall is the wall.
+POOLS = [
+    {"kind": "water", "id": "main-pool", "seed": 61, "layer": "under",
+     "points": [[68, 2], [76, 2], [76, 22], [68, 22]], "radius": 10, "depth": 4,
+     "form": "canal", "shore": 0, "shoreWander": False, "bank": solid(168, 1)},
+    # the middle the sweep leaves dry: a channel is a swept disc, so a pool of any width is more
+    # than one of them
+    {"kind": "water", "id": "main-pool-mid", "seed": 64, "layer": "under",
+     "points": [[70, 8], [70, 16]], "radius": 9, "depth": 4,
+     "form": "canal", "shore": 0, "shoreWander": False, "bank": solid(168, 1)},
+    {"kind": "water", "id": "sub-pool-n", "seed": 62, "layer": "under",
+     "points": [[88, -2], [92, -2]], "radius": 4, "depth": 2,
+     "form": "canal", "shore": 0, "shoreWander": False, "bank": solid(168, 1)},
+    {"kind": "water", "id": "sub-pool-s", "seed": 63, "layer": "under",
+     "points": [[88, 18], [92, 18]], "radius": 4, "depth": 2,
+     "form": "canal", "shore": 0, "shoreWander": False, "bank": solid(168, 1)},
+]
 
 # ══ the roads, and what stands on the hills ═══════════════════════════════════════════════════
 # Circulation before scenery: each gate is joined to the Well, so the two sides meet where the roads
@@ -375,9 +424,9 @@ ROADS = [
 # Three oaks a hill, and nothing else on them: a hill is a place to fight over, not a wood.
 OAKS = [
     {"kind": "tree", "id": f"oak-{i}-{j}", "seed": 20 + 3 * i + j, "layer": "ground",
-     "x": cx + dx, "z": cz + dz, "form": "template", "species": "oak", "height": 9}
+     "x": cx + dx, "z": cz + dz, "form": "template", "species": "oak", "height": 8}
     for i, (cx, cz) in enumerate(HILLS)
-    for j, (dx, dz) in enumerate(((-3, -1), (1, 2), (4, -2)))
+    for j, (dx, dz) in enumerate(((-5, -2), (0, -2), (-3, 2)))
 ]
 
 # ══ what stands in the village ════════════════════════════════════════════════════════════════
@@ -396,15 +445,59 @@ HOUSES = [
     house("small-house", 10, 30, 17, 37, "negZ", 31),      # 7 x 7
     house("large-house", 32,  7, 43, 16, "negX", 32),      # 11 x 9
     house("library",     33, -19, 46, -10, "posZ", 33),    # 13 x 9
-    house("blacksmith",  57, -17, 66, -7, "negX", 34),     # 9 x 10
+    house("blacksmith",  30, -40, 39, -31, "posZ", 34),   # 9 x 9, clear of the wall stairs
     house("church",      18, -4, 25,  5, "negX", 35),      # 7 x 9
+]
+
+# ══ the Snowy Taiga ═══════════════════════════════════════════════════════════════════════════
+# Spruce and snow against the desert's sand, and two buildings somebody gave up on. Authored on the
+# -x side, so rot_180 puts their images in the Taiga at the other end of the other edge.
+TAIGA_TREES = [(-120, 12), (-98, 26), (-118, 40), (-92, 46), (-110, 66), (-120, 72), (-100, 8)]
+SPRUCE = [
+    {"kind": "tree", "id": f"spruce-{i}", "seed": 40 + i, "layer": "ground",
+     "x": x, "z": z, "form": "template", "species": "spruce", "height": 12}
+    for i, (x, z) in enumerate(TAIGA_TREES)
+]
+
+UNFINISHED = [
+    house("taiga-shed", -110, 20, -103, 25, "posX", 36),      # 7 x 5, no roof
+    house("taiga-hall", -104, 54, -96, 62, "negZ", 37),       # 8 x 8, no roof
+]
+for build in UNFINISHED:
+    build["style"] = "@taiga-unfinished"
+
+TAIGA_FLORA = [{
+    "kind": "flora", "id": "taiga-cover", "seed": 44, "layer": "ground",
+    "points": [[-122, 4], [-90, 4], [-90, 76], [-122, 76]],
+    "spec": {"coverage": 0.4, "scale": 14, "octaves": 3,
+             "fernShare": 0.5, "flowerShare": 0.05, "tallShare": 0.3},
+}]
+
+# ══ the two ways out of the Pyramid ═══════════════════════════════════════════════════════════
+# Orange wool toward the bridge, because a player leaving a spawn needs to be told which way the
+# map is; gravel and stone along the edge to the Snowy Taiga, which is the guideline the brief
+# asks for rather than a road.
+WAYS = [
+    {"kind": "stroke", "id": "way-out", "seed": 51, "layer": "ground", "route": True,
+     "points": [[SPAWN_ROOM[0], 70], [96, 58], [92, 44], [90, 34]], "radius": 2,
+     "style": "solid", "pave": solid(35, 1)},
+    {"kind": "stroke", "id": "way-taiga", "seed": 52, "layer": "ground", "route": True,
+     "points": [[SPAWN_ROOM[0], 72], [114, 48], [114, 16], [110, -16]], "radius": 3,
+     "style": "worn", "coverage": 0.6, "pave": noise(7, 10, 2, [solid(13), solid(1)])},
 ]
 
 # ══ the Desert Well the Village Monument hides in ═════════════════════════════════════════════
 # The vanilla well's rim, two courses over the road, standing round the goal: the monument is inside
 # a structure a player has to take apart rather than a pillar in the open.
-add_shapes += ring("dw", GOAL_TOWN[0] - 2, GOAL_TOWN[1] - 2, GOAL_TOWN[0] + 2, GOAL_TOWN[1] + 2,
-                   1, GROUND_FLOOR, SURFACE - GROUND_FLOOR + 2, "stair", over=True)
+# open on all four sides, which is what a vanilla well is and what keeps the goal inside it both
+# visible and walkable — a closed rim reads to `SK11` as ground nothing can reach, and to a player
+# as a box
+add_shapes += ring("dw", GOAL_TOWN[0] - 3, GOAL_TOWN[1] - 3, GOAL_TOWN[0] + 3, GOAL_TOWN[1] + 3,
+                   1, GROUND_FLOOR, SURFACE - GROUND_FLOOR + 4, "stair", over=True,
+                   gaps=[("n", GOAL_TOWN[0] - 1, GOAL_TOWN[0] + 2),
+                         ("s", GOAL_TOWN[0] - 1, GOAL_TOWN[0] + 2),
+                         ("e", GOAL_TOWN[1] - 1, GOAL_TOWN[1] + 2),
+                         ("w", GOAL_TOWN[1] - 1, GOAL_TOWN[1] + 2)])
 
 # ── the finish ────────────────────────────────────────────────────────────────────────────────
 # `below` inserts at the head of the stack, so the two undercroft layers are listed top-down here
@@ -417,6 +510,9 @@ finish = {
         str(RIVER):   {"floor": GROUND_FLOOR, "base_height": RIVER_H},
     },
     "themeByHeight": {str(SURFACE): "desert", str(RIVER): "riverbed"},
+    # s2 is the Snowy Taiga: the compile emits one shape a piece group, and a height key cannot
+    # tell it from the Pyramid, which stands at the same course
+    "themeById": {"s2": "taiga"},
     "addShapes": add_shapes,
     "addLayers": [
         {"id": "lid",   "name": "Backroom ceiling", "base_y": 0, "below": True,
@@ -429,9 +525,10 @@ finish = {
          "shapes": sky,   "islands": [island("sky", "Skyblocks", sky)]},
     ],
     "goalLayers": {"destroyable-1": "ground", "destroyable-2": "under", "destroyable-3": "sky"},
+    "roomStyles": {"spawn": "@desert-pyramid"},
     "mapTheme": "desert",
     "themes": THEMES,
-    "dressing": {"props": ROADS + OAKS + HOUSES + [
+    "dressing": {"props": ROADS + WAYS + OAKS + HOUSES + SPRUCE + UNFINISHED + TAIGA_FLORA + POOLS + [
         # the river: the east half of an oval traced round the town wall, fanned into a closed ring
         {"kind": "water", "id": "river", "seed": 11, "layer": "ground",
          "points": [[0, 58], [48, 58], [68, 54], [78, 44], [80, 24], [80, 0],

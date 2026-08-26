@@ -11,7 +11,7 @@
    "color": "blue"
   }
  ],
- "maxPlayers": 48,
+ "maxPlayers": 24,
  "spawns": [
   {
    "layer": null,
@@ -83,7 +83,7 @@
   "yaw": 0
  },
  "build": {
-  "maxHeight": null,
+  "maxHeight": 67,
   "areas": [],
   "holes": [],
   "voidEnforcement": {
@@ -219,5 +219,33 @@
  "islandTeams": {
   "1": "red"
  },
- "structures": null
+ "structures": {
+  "layer": null,
+  "roomFloors": [],
+  "redstoneLines": [],
+  "ironCubes": [
+   {
+    "x": -106,
+    "z": 40,
+    "renew": false,
+    "stamp": {
+     "kind": "ironcube",
+     "unit": "iron-1",
+     "image": 0
+    }
+   },
+   {
+    "x": 106,
+    "z": -40,
+    "renew": false,
+    "stamp": {
+     "kind": "ironcube",
+     "unit": "iron-1",
+     "image": 1
+    }
+   }
+  ],
+  "walls": [],
+  "isEmpty": false
+ }
 }
