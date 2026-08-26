@@ -1,0 +1,151 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Liminal DTM II"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 48,
+  "surface": 36
+ },
+ "pieces": [
+  {
+   "id": "village",
+   "role": "piece",
+   "rect": [
+    -18,
+    0,
+    36,
+    12
+   ],
+   "surface": 36
+  },
+  {
+   "id": "river-s",
+   "role": "piece",
+   "rect": [
+    -22,
+    12,
+    44,
+    8
+   ],
+   "surface": 28
+  },
+  {
+   "id": "river-e",
+   "role": "piece",
+   "rect": [
+    18,
+    0,
+    4,
+    12
+   ],
+   "surface": 28
+  },
+  {
+   "id": "river-w",
+   "role": "piece",
+   "rect": [
+    -22,
+    0,
+    4,
+    12
+   ],
+   "surface": 28
+  },
+  {
+   "id": "taiga",
+   "role": "piece",
+   "rect": [
+    -31,
+    0,
+    9,
+    20
+   ],
+   "surface": 36
+  },
+  {
+   "id": "pyramid-w",
+   "role": "piece",
+   "rect": [
+    22,
+    0,
+    4,
+    20
+   ],
+   "surface": 36
+  },
+  {
+   "id": "pyramid-e",
+   "role": "piece",
+   "rect": [
+    26,
+    0,
+    5,
+    15
+   ],
+   "surface": 36
+  },
+  {
+   "id": "pyramid-spawn",
+   "role": "spawn",
+   "rect": [
+    26,
+    15,
+    5,
+    5
+   ],
+   "surface": 36
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "pyramid-spawn",
+    "at": [
+     2.0,
+     2.5
+    ],
+    "facing": "left"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "style": "pillar-2",
+    "at": [
+     14.0,
+     8.0
+    ],
+    "materials": "obsidian",
+    "float": 2,
+    "name": "The Desert Well"
+   },
+   {
+    "id": "destroyable-2",
+    "style": "pillar-2",
+    "at": [
+     20.0,
+     2.0
+    ],
+    "materials": "obsidian",
+    "float": 3,
+    "name": "The Deep End"
+   },
+   {
+    "id": "destroyable-3",
+    "style": "pillar-2",
+    "at": [
+     18.5,
+     5.5
+    ],
+    "materials": "obsidian",
+    "float": 2,
+    "name": "The Floating Garden"
+   }
+  ]
+ }
+}

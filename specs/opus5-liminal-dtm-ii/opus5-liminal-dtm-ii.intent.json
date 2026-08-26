@@ -1,0 +1,223 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 48,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 112,
+    "y": 36,
+    "z": 70
+   },
+   "protection": [
+    {
+     "minX": 104,
+     "minZ": 60,
+     "maxX": 124,
+     "maxZ": 80
+    }
+   ],
+   "yaw": 90,
+   "piece": {
+    "minX": 104,
+    "minZ": 60,
+    "maxX": 124,
+    "maxZ": 80
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": -112,
+    "y": 36,
+    "z": -70
+   },
+   "protection": [
+    {
+     "minX": -124,
+     "minZ": -80,
+     "maxX": -104,
+     "maxZ": -60
+    }
+   ],
+   "yaw": 270,
+   "piece": {
+    "minX": -124,
+    "minZ": -80,
+    "maxX": -104,
+    "maxZ": -60
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 51,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": [],
+  "voidEnforcement": {
+   "exclusions": []
+  }
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": "ground",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Desert Well",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 56,
+    "y": 36,
+    "z": 32
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "layer": "under",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Deep End",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 80,
+    "y": 36,
+    "z": 8
+   },
+   "float": 3,
+   "box": null
+  },
+  {
+   "layer": "sky",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-3",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Floating Garden",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 74,
+    "y": 36,
+    "z": 22
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "layer": "ground",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Desert Well",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -57,
+    "y": 36,
+    "z": -33
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "layer": "under",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Deep End",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -81,
+    "y": 36,
+    "z": -9
+   },
+   "float": 3,
+   "box": null
+  },
+  {
+   "layer": "sky",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-3",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Floating Garden",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -75,
+    "y": 36,
+    "z": -23
+   },
+   "float": 2,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Liminal DTM II",
+  "created": "2026-08-26",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}
