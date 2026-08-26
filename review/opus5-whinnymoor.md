@@ -22,8 +22,9 @@ was built to make: every technique in it is one of the eighteen, and this docume
 ```
 
 Eleven pieces a team at five surfaces — 10, 14, 18, 22 — and one build zone. The chasm is the void the
-pieces leave: no piece covers `x −25..25` between the tips and the moor, and `PlanVoids.Declare` names it on
-every compile whether or not anybody drew it.
+pieces leave: no piece covers `x −25..25` between the tips and the moor. It is **not** declared, and should
+not be: `PlanVoids.Declare` names an *enclosed* void, and this one opens into the mid band at both ends, so
+nothing rings it. The board carries no buffer piece and compiles to no `subtract`.
 
 **A split frontline, because `FR6` says a frontline is either split or 6–8 cells wide.** The first draft ran a
 single 28-cell shelf across the front and was refused. Two headlands with the chasm's mouth between them is

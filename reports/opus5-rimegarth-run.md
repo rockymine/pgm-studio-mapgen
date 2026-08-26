@@ -50,12 +50,18 @@ three accepted with no finding, and `…/column?at=-8,82` answered **void**: `s1
 cells from the layer's set algebra before anything else was asked. The relief read even reported the
 right total, because the cells were never in the footprint to be missing from it.
 
-Two things fix it, and only the second was obvious at the time.
+Two things were done about it at the time, and **both were wrong** — the studio has since been fixed
+and neither is available any more. A hole is never scenery: what the composer encircles is ground
+players go round, and the walls this board hangs on it are drawn to guard exactly that ground, so
+filling it makes them guard nothing. Putting ground back into a subtract is now refused (`SK13`,
+`422`), whether by an override add or by a slab on another layer, and `PlanVoids` reads a void per
+**component** rather than per surface, so a surface per piece no longer removes the subtract. The
+board's pond is the fault this run recorded as its fix. What follows is left as the record of what
+was measured; the conclusions drawn from it are not the rule.
 
-**Fill the hole on a slab of its own.** An `addLayers` entry with `below: true`, one rectangle
-filling exactly what the subtract took. No overlap with the compiled ground, so no `SK10`; the
-painter reaches it first; and a prop with no `layer` seats on `SurfaceTop`, which over the hole is
-the pond.
+**Fill the hole on a slab of its own** — an `addLayers` entry with `below: true`, one rectangle
+filling exactly what the subtract took. No `SK10`, the painter reaches it first, and a prop with no
+`layer` seats on it. This is now a refusal.
 
 **Give every piece its own `surface`, and the merge stops happening.** Stating a height per piece —
 which this board now does, for the stair — leaves nothing to merge, and the ground layer compiles
