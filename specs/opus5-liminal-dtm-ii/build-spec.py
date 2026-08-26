@@ -55,6 +55,10 @@ def layered(band_stack, axis="depth"):
     return {"kind": "layered", "axis": axis, "stack": band_stack}
 
 
+def noise(seed, scale, octaves, stops):
+    return {"kind": "noise", "seed": seed, "scale": scale, "octaves": octaves, "stops": stops}
+
+
 def theme(surface, wall, fill, surface_depth=3, rim=None, rim_edges="void", bedrock=1):
     return {
         "bedrock": {"relative": False, "value": bedrock},
@@ -84,6 +88,12 @@ THEMES = {
     # a skyblock: grass, two of dirt, obsidian
     "skyblock": theme(layered(stack((solid(2), 1), (solid(3), 2), ending="handOver")),
                       solid(3), solid(49), surface_depth=3, bedrock=0),
+    # the Town Wall: stone brick grained with cobble, one ground rather than two
+    "wall": theme(noise(3, 11, 2, [solid(98), solid(4)]), noise(3, 11, 2, [solid(98), solid(4)]),
+                  solid(98), surface_depth=1),
+    # a Small Hill: its top two courses are grass over dirt where everything round it is sand
+    "hill": theme(layered(stack((solid(2), 1), (solid(3), 2), ending="handOver")),
+                  solid(3), solid(24), surface_depth=3),
     # the two bridges: oak over the river, the one crossing a player is meant to take
     "bridge": theme(solid(5, 0), solid(17, 0), solid(5, 0), surface_depth=1),
 }
@@ -113,7 +123,7 @@ def island(ident, name, shapes, mirrors=True):
             "shapeIds": [s["id"] for s in shapes]}
 
 
-def ring(prefix, x0, z0, x1, z1, thick, floor, height, theme_key, gaps=()):
+def ring(prefix, x0, z0, x1, z1, thick, floor, height, theme_key, gaps=(), over=False):
     """A wall round a room. A wall is not a shape on top of a floor — a layer keeps one span per
     column and the taller add wins it outright — so it is the same slab, carried higher, drawn as
     four bands outside the floor. `gaps` names ("e"|"w"|"n"|"s", from, to) left open for a doorway;
@@ -130,13 +140,13 @@ def ring(prefix, x0, z0, x1, z1, thick, floor, height, theme_key, gaps=()):
 
     walls = []
     for lo, hi in spans("n", x0 - thick, x1 + thick):
-        walls.append(box(prefix, lo, z0 - thick, hi, z0, floor, height, theme_key))
+        walls.append(box(prefix, lo, z0 - thick, hi, z0, floor, height, theme_key, over=over))
     for lo, hi in spans("s", x0 - thick, x1 + thick):
-        walls.append(box(prefix, lo, z1, hi, z1 + thick, floor, height, theme_key))
+        walls.append(box(prefix, lo, z1, hi, z1 + thick, floor, height, theme_key, over=over))
     for lo, hi in spans("w", z0, z1):
-        walls.append(box(prefix, x0 - thick, lo, x0, hi, floor, height, theme_key))
+        walls.append(box(prefix, x0 - thick, lo, x0, hi, floor, height, theme_key, over=over))
     for lo, hi in spans("e", z0, z1):
-        walls.append(box(prefix, x1, lo, x1 + thick, hi, floor, height, theme_key))
+        walls.append(box(prefix, x1, lo, x1 + thick, hi, floor, height, theme_key, over=over))
     return walls
 
 
@@ -201,6 +211,87 @@ bridges = [
     box("bg", -X_BANK, BRIDGE_Z[0], -X_TOWN, BRIDGE_Z[1], BRIDGE_FLOOR, 2, "bridge"),
 ]
 
+# ══ the slipways ══════════════════════════════════════════════════════════════════════════════
+# The river sits eight courses under everything around it, so without these it is a pit: a player
+# who drops in cannot climb out without placing a block. Each is a notch cut into the bank beside a
+# bridge — the same override add the stairwell is, one tread a block, so the descent walks both ways
+# — and there is one on each side of each crossing. rot_180 fans four into eight.
+SLIP_Z = (BRIDGE_Z[0] - 8, BRIDGE_Z[0])          # the eight blocks north of a bridge
+SLIP_FALL = SURFACE - RIVER                      # 8 courses
+
+def slipway(x_bank, into):
+    """Steps cut into a bank, falling toward the water. `into` is the direction the river lies in
+    from that bank, so the tread against the water is the low one and the flight walks both ways."""
+    out, start = [], x_bank - into * SLIP_FALL
+    for j in range(SLIP_FALL):
+        edge = start + into * j
+        x0, x1 = (edge, edge + 1) if into > 0 else (edge - 1, edge)
+        out.append(box("sw", x0, SLIP_Z[0], x1, SLIP_Z[1],
+                       GROUND_FLOOR, SURFACE - j - GROUND_FLOOR, "stair", over=True))
+    return out
+
+
+# The outer banks only: the village's own is where the Town Wall stands, and a flight cut into that
+# is a pit against a wall rather than a way out of the water.
+for bank, into in ((X_BANK, -1), (-X_BANK, 1)):
+    add_shapes += slipway(bank, into)
+
+# ══ the Town Wall ═════════════════════════════════════════════════════════════════════════════
+# Nine courses over the village and four thick, open only where a bridge lands. A wall is not a
+# shape on top of the ground: it is the ground's own column carried higher, so it is an override add
+# at the same floor with a greater thickness. Authored for z >= 0 and fanned, which is what puts a
+# gate on each of the four crossings.
+WALL_TOP = SURFACE + 8                           # blocks 18..44, walked at y45
+WALL_T = 4
+GATE = BRIDGE_Z                                  # (28, 36) — where a bridge meets the wall
+
+
+def wall(x0, z0, x1, z1):
+    return box("wl", x0, z0, x1, z1, GROUND_FLOOR, WALL_TOP - GROUND_FLOOR + 1, "wall", over=True)
+
+
+add_shapes += [
+    wall(-X_TOWN, Z_TOWN - WALL_T, X_TOWN, Z_TOWN),                       # the whole north face
+    wall(X_TOWN - WALL_T, 0, X_TOWN, GATE[0]),                            # east, up to its gate
+    wall(X_TOWN - WALL_T, GATE[1], X_TOWN, Z_TOWN - WALL_T),              # east, past it
+    wall(-X_TOWN, 0, -X_TOWN + WALL_T, GATE[0]),                          # west, up to its gate
+    wall(-X_TOWN, GATE[1], -X_TOWN + WALL_T, Z_TOWN - WALL_T),            # west, past it
+]
+
+# Up onto the wall-walk: nine treads against the inner face beside each gate, one course a block, so
+# the climb walks both ways and costs nothing.
+def wall_stair(x_face, into, z0):
+    """`into` is the direction the village lies in from the wall's inner face."""
+    out = []
+    for j in range(WALL_TOP - SURFACE + 1):
+        edge = x_face + into * j
+        x0, x1 = (edge, edge + 1) if into > 0 else (edge - 1, edge)
+        out.append(box("ws", x0, z0, x1, z0 + 4, GROUND_FLOOR,
+                       WALL_TOP - j - GROUND_FLOOR + 1, "wall", over=True))
+    return out
+
+
+for face, into in ((X_TOWN - WALL_T, -1), (-X_TOWN + WALL_T, 1)):
+    for z0 in (GATE[1] + 2, 10):
+        add_shapes += wall_stair(face, into, z0)
+
+# ══ the Village Well ══════════════════════════════════════════════════════════════════════════
+# One on the whole map, on the origin, where the four roads meet. Two courses of smooth sandstone
+# round a 2x2 mouth — the vanilla well's proportions without the water in it yet.
+add_shapes += ring("wh", -1, -1, 1, 1, 2, GROUND_FLOOR, SURFACE - GROUND_FLOOR + 2, "stair", over=True)
+
+# ══ the Small Hills ═══════════════════════════════════════════════════════════════════════════
+# Six, three courses over the village on a 10x6 top, each stepped twice so it meets the sand rather
+# than standing on it. Three are authored and rot_180 makes the other three.
+HILLS = [(-34, -34), (14, -30), (56, 6)]
+for cx, cz in HILLS:
+    add_shapes.append(box("hl", cx - 5, cz - 3, cx + 5, cz + 3,
+                          GROUND_FLOOR, SURFACE + 3 - GROUND_FLOOR, "hill", over=True))
+    add_shapes += ring("hl", cx - 5, cz - 3, cx + 5, cz + 3, 3,
+                       GROUND_FLOOR, SURFACE + 2 - GROUND_FLOOR, "hill", over=True)
+    add_shapes += ring("hl", cx - 8, cz - 6, cx + 8, cz + 6, 3,
+                       GROUND_FLOOR, SURFACE + 1 - GROUND_FLOOR, "hill", over=True)
+
 # ══ the sky ═══════════════════════════════════════════════════════════════════════════════════
 # Eight islands on the ellipse the river runs, evenly spaced; four authored, four fanned. Each is an
 # L of two rectangles, five to eight blocks along both axes.
@@ -233,7 +324,10 @@ def piece(ident, x0, z0, x1, z1, surface):
 plan = {
     "plan": 1,
     "meta": {"name": "Liminal DTM II"},
-    "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 48, "surface": SURFACE},
+    "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 48, "surface": SURFACE,
+                # the platform is a 6x6 of bedrock at this height, and the derived surface+15 would
+                # stand it in the air over the Village Well
+                "observerY": 74},
     "pieces": [
         piece("village", -X_TOWN, 0, X_TOWN, Z_TOWN, SURFACE),
         piece("river-s", -X_BANK, Z_TOWN, X_BANK, Z_EDGE, RIVER),
@@ -264,6 +358,28 @@ plan = {
     },
 }
 
+# ══ the roads, and what stands on the hills ═══════════════════════════════════════════════════
+# Circulation before scenery: each gate is joined to the Well, so the two sides meet where the roads
+# do. Two are authored and fanned into four.
+def road(ident, points):
+    return {"kind": "stroke", "id": ident, "seed": 4, "points": points, "radius": 3,
+            "style": "solid", "route": True, "layer": "ground",
+            "pave": layered(stack((solid(24, 2), 1), (solid(24), 1), ending="repeat"))}
+
+
+ROADS = [
+    road("road-e", [[X_TOWN, 32], [48, 26], [20, 10], [4, 2]]),
+    road("road-w", [[-X_TOWN, 32], [-48, 26], [-20, 10], [-4, 2]]),
+]
+
+# Three oaks a hill, and nothing else on them: a hill is a place to fight over, not a wood.
+OAKS = [
+    {"kind": "tree", "id": f"oak-{i}-{j}", "seed": 20 + 3 * i + j, "layer": "ground",
+     "x": cx + dx, "z": cz + dz, "form": "template", "species": "oak", "height": 9}
+    for i, (cx, cz) in enumerate(HILLS)
+    for j, (dx, dz) in enumerate(((-3, -1), (1, 2), (4, -2)))
+]
+
 # ── the finish ────────────────────────────────────────────────────────────────────────────────
 # `below` inserts at the head of the stack, so the two undercroft layers are listed top-down here
 # and land bottom-up in the document: [under, lid, ground, sky].
@@ -289,7 +405,7 @@ finish = {
     "goalLayers": {"destroyable-1": "ground", "destroyable-2": "under", "destroyable-3": "sky"},
     "mapTheme": "desert",
     "themes": THEMES,
-    "dressing": {"props": [
+    "dressing": {"props": ROADS + OAKS + [
         # the river: the east half of an oval traced round the town wall, fanned into a closed ring
         {"kind": "water", "id": "river", "seed": 11, "layer": "ground",
          "points": [[0, 58], [48, 58], [68, 54], [78, 44], [80, 24], [80, 0],

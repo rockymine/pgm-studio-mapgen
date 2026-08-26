@@ -1,0 +1,144 @@
+# Liminal DTM II — one run, three storeys, and what the system could not say
+
+## What I set out to build
+
+A board to a brief from outside this repository: **Liminal DTM II**, a destroy map for 24 v 24 on a
+point-symmetric desert. A walled village on a plateau is the battlefield; an oval river rings it; a
+Desert Pyramid spawn and a Snowy Taiga sit on each long edge; a Liminal Poolroom and a Backroom maze
+run under all of it; a Stronghold sits under the village; and eight floating islands hang over the
+water. Three monuments a team, one on each of three storeys.
+
+The instruction beside the brief was **begin very simple**, so the run is staged: the footprint
+first, then the vertical stack, then the village. Each stage was rendered in the Sketch tool's own
+3-D preview and looked at before the next was authored.
+
+## What I could not say
+
+### A stairwell cannot be a hole with a stair climbing through it (`SK13`)
+
+**What I wanted:** a well cut through the desert with a flight rising out of the undercroft into it —
+`opus5-interchange`'s own technique, and the obvious way to state a stairwell.
+
+**What I tried, in order:**
+
+1. A `subtract` on the compiled ground layer over the stair's footprint, with the treads on the
+   `under` layer. Refused, 24 findings: *"'st1' fills 6 column(s) that 'sh1' takes away … 'st1' is on
+   layer 'under' and the subtract on 'ground', and a subtract reaches only the layer it is on."*
+2. No subtract at all — the four plan pieces redrawn to leave the well as a gap no piece covers,
+   which `docs` calls the right way to make a hole ("*A plan carries holes by arrangement, not by
+   subtraction*"). `tools/board.py` drew the gap and named it correctly: *"o = enclosed void — 16
+   cells the board rings and nothing covers."* Refused identically, because **`PlanVoids.Declare`
+   compiles an enclosed gap into a subtract** — so arrangement and subtraction reach the same place.
+
+**Is it missing from the system, or was it out of reach from where I was standing?** Out of reach.
+The instrument is the **override add**, which `docs/tools/capabilities.md` states plainly — *"an
+override-add is how ground is put back inside a hole"* — and which no refusal message points at.
+Twenty-four one-block treads at `floor 6` with `override: true` replace the desert's `floor 18`
+column outright, and the shaft is the air left over them. It built first time.
+
+**What is worth recording is that `SK13` is newer than the board that taught me the technique.**
+`opus5-interchange` carries `cut1` (a `subtract` on `ground`) with `dn1` (a plain add on `under`)
+passing straight through it — the exact pair `SK13` refuses. I could not confirm it would be refused
+today, because its spec no longer reaches that gate: see below.
+
+### `opus5-interchange`'s committed spec no longer re-drives
+
+Driving `specs/opus5-interchange` unchanged against this build stops at `POST /map/from-documents`
+with **400 `HS3`** — *"roofSlab is stone and the roof it steps in halves is quartz"* — once for
+`roomStyles.spawn.roofSlab` and once for each of five `dressing.props[*].style.roofSlab`. The board
+in `maps/opus5-interchange` therefore cannot be rebuilt from the documents beside it. Nothing in the
+repository says so, and nothing would have found it: no gate re-drives a committed spec.
+
+### A water channel cuts anything above its water line, on every layer
+
+`WaterProp` carves a bed and then *"cuts any bank above the line back to air"*. That read is over
+`SurfaceTops`, which is the **maximum** per column across every layer, so a slab on a higher layer
+inside the channel's band is not a bank — it is simply removed. Measured: skyblocks drawn at
+`floor 50` over the river came back with **no ground at all** from `x 74` outward (the channel's
+edge is at 73), and the ones just outside it had the channel's **bank material laid on their grass**
+— sand on top of a skyblock 26 blocks above the water.
+
+**Out of reach rather than missing:** `PlacedProp.Layer` is on the base record, so `"layer":
+"ground"` on the water prop confines the carve to the storey it was drawn for. With it the eight
+islands come back whole and grass-topped. Nothing said so — `GENERATION-NOTES.md` records that a
+**stroke** ignores `layer`, which reads as a warning about strokes and left me assuming water was
+fine.
+
+### A spawn marker's protection is the whole piece it stands on, and that can disconnect a board
+
+`PlanCompiler` comments it exactly — *"Protect the whole spawn piece the marker sits on, not just the
+stamped spawn cube"* — and it is easy to author a piece that is a sixth of the map. Mine was
+36 × 80. The consequence is not a big region: it is **`EX1` at the export with every objective
+isolated for every team**, whose message points at protection regions but not at which one or why.
+Every direct read disagreed with it while it was wrong: `POST …/walk?team=red` answered
+`reachable: true, blocks: 0` from the spawn to each goal, and the whole-map traversability put all
+eight gating points in component 1. Splitting a 20 × 20 `role: "spawn"` piece out of the region
+cleared it with no other change.
+
+**Not a gap in the system** — the piece is the documented unit — but the refusal cannot be acted on
+from what it says.
+
+### The 3-D preview lists no storeys on a stacked board
+
+`POST …/sketch/columns` answers `layers: ["under","lid","ground","bridge","sky"]`, the client posts
+all five and meshes all five, and `sketch-bridge.js` fires `OnIsoLayers` with those names. **No
+`LayerChip` appears**, so a storey cannot be taken off in the editor. `fireTo` swallows a failed
+invoke by design, so nothing is logged. I have not proven the cause; `SketchTool.OnIsoLayers`
+deserializes the camelCase message with default `JsonSerializer` options where the rest of the
+client uses web options, which would explain it.
+
+The per-storey read that does work is the server's: `GET …/render/topdown?layer=under` draws the
+undercroft and nothing over it, and `render/section` is the only other read that keeps Y.
+
+### A `NoiseMaterial` with no `stops` is a 500, not a refusal
+
+Writing `palette` where `noise` wants `stops` — the word `cell` uses — answered **500 `RQ2`** out of
+`TerrainThemeValidation.Blocks`, an `ArgumentNullException` on a null `SelectMany` source. `RQ3`
+would have named the unread field had the request survived to answer.
+
+## What I got wrong
+
+**I read a stale `intent.json` and spent a diagnosis on it.** `drive.py` writes `<slug>.layout.json`
+and `<slug>.intent.json` beside the spec, but a run that stops at a refusal leaves the previous run's
+files there. I read a spawn at `(100, 36, 56)` off one, reasoned carefully about why the compiler had
+moved my marker twelve blocks, and was reasoning about the *first* stage's plan. `GET
+/map/{slug}/intent` answers the stored document and is the read to trust.
+
+**I assumed the river's 8-block drop was the same on both banks.** It is not: the village's bank is
+where the Town Wall stands, so a flight cut into it is a pit against a wall rather than a way out of
+the water. The ways out are on the outer banks only.
+
+**I put three Small Hills on top of the roads.** Circulation is authored before scenery for exactly
+this reason, and I drew both in one pass; `DR-ROAD` and `DR-CLAIM` declined three oaks and named the
+cells. Moving the hills off the four diagonals cleared it.
+
+## What worked first time
+
+- **The layer stack.** Five layers written bottom-up — `under`, `lid`, `ground`, `bridge`, `sky` —
+  built with no finding beyond the eight `SK11`s the floating islands are supposed to raise. One
+  column reads *oak deck y34–35 · water y24–27 · sand y23 · sandstone y18–22 · poolroom y6–11*.
+- **`goalLayers`.** Three monuments, three storeys, no argument: The Deep End resolved into the
+  Poolroom at y15, The Floating Garden onto its island at y56.
+- **One-block treads.** Every flight on this board is stated as one rectangle per course rather than
+  as a ramp, so nothing rasterized into treads of two and every climb walks both ways for nothing.
+- **The water ring.** One `WaterProp` polyline, the east half of an oval, fanned by `rot_180` into a
+  closed moat.
+- **The 3-D preview through Playwright.** Chromium's software WebGL draws it; the toggle is
+  `button.canvas-mode-toggle`, the wait is `.canvas-iso-busy` going to `display: none`, and the
+  rotate is `button[title="Rotate the preview 90°"]`.
+
+## Open gameplay questions
+
+Two were put to the brief's author during the run and answered:
+
+| Question | Answer |
+|---|---|
+| The brief's 220 × 145 leaves the Pyramid Spawn 24 blocks of depth, and a vanilla desert pyramid is 21 × 21. Grow the map, keep the numbers, or shrink the village? | **Grow the map to 248 × 160.** |
+| The Poolroom and Skyblock monuments sit near their own spawn by the brief's design, which puts `GO1` at 6.4 and 4.5. Keep them deep, or pull them in? | **Pull them toward the middle.** They now measure 3.03 / 3.14 / 3.53. |
+| The river is 8 blocks below everything around it and cannot be climbed out of. Hazard, or a lane you can leave? | **A few ways out** — stepped slipways cut into the outer banks beside each crossing. |
+
+One is decided and unasked, and is stated here so it can be overruled: **the eight islands are
+reachable only by bridging.** `…/walk?aim=reach` prices the nearest one at **20 placed blocks** from
+the ground under it. The studio's traversability verdict accepts this once the spawn protections are
+the right size, but nothing on the board is a walk up to a monument in the sky, and the brief does
+not say there should be.
