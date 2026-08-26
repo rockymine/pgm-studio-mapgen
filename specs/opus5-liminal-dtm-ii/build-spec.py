@@ -364,7 +364,7 @@ plan = {
 def road(ident, points):
     return {"kind": "stroke", "id": ident, "seed": 4, "points": points, "radius": 3,
             "style": "solid", "route": True, "layer": "ground",
-            "pave": layered(stack((solid(24, 2), 1), (solid(24), 1), ending="repeat"))}
+            "pave": noise(6, 9, 2, [solid(13), solid(4)])}
 
 
 ROADS = [
@@ -379,6 +379,32 @@ OAKS = [
     for i, (cx, cz) in enumerate(HILLS)
     for j, (dx, dz) in enumerate(((-3, -1), (1, 2), (4, -2)))
 ]
+
+# ══ what stands in the village ════════════════════════════════════════════════════════════════
+# Five of the vanilla components, one of each, all authored on the +x side of the origin so rot_180
+# lands their images on the other side and no building can collide with its own orbit. Sandstone
+# walls on sand is the desert village's own idiom rather than the accident the paint rules warn
+# about, so what separates a house from the ground under it is the course of orange clay under its
+# eaves and the sandstone-slab roof over them.
+def house(ident, x0, z0, x1, z1, front, seed):
+    return {"kind": "house", "id": ident, "seed": seed, "layer": "ground", "front": front,
+            "style": "@desert-house",
+            "wings": [{"corners": [[x0, z0], [x1, z1]]}]}
+
+
+HOUSES = [
+    house("small-house", 10, 30, 17, 37, "negZ", 31),      # 7 x 7
+    house("large-house", 32,  7, 43, 16, "negX", 32),      # 11 x 9
+    house("library",     33, -19, 46, -10, "posZ", 33),    # 13 x 9
+    house("blacksmith",  57, -17, 66, -7, "negX", 34),     # 9 x 10
+    house("church",      18, -4, 25,  5, "negX", 35),      # 7 x 9
+]
+
+# ══ the Desert Well the Village Monument hides in ═════════════════════════════════════════════
+# The vanilla well's rim, two courses over the road, standing round the goal: the monument is inside
+# a structure a player has to take apart rather than a pillar in the open.
+add_shapes += ring("dw", GOAL_TOWN[0] - 2, GOAL_TOWN[1] - 2, GOAL_TOWN[0] + 2, GOAL_TOWN[1] + 2,
+                   1, GROUND_FLOOR, SURFACE - GROUND_FLOOR + 2, "stair", over=True)
 
 # ── the finish ────────────────────────────────────────────────────────────────────────────────
 # `below` inserts at the head of the stack, so the two undercroft layers are listed top-down here
@@ -405,7 +431,7 @@ finish = {
     "goalLayers": {"destroyable-1": "ground", "destroyable-2": "under", "destroyable-3": "sky"},
     "mapTheme": "desert",
     "themes": THEMES,
-    "dressing": {"props": ROADS + OAKS + [
+    "dressing": {"props": ROADS + OAKS + HOUSES + [
         # the river: the east half of an oval traced round the town wall, fanned into a closed ring
         {"kind": "water", "id": "river", "seed": 11, "layer": "ground",
          "points": [[0, 58], [48, 58], [68, 54], [78, 44], [80, 24], [80, 0],

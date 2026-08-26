@@ -1473,6 +1473,58 @@
    "base_height": 19,
    "override": true,
    "theme": "hill"
+  },
+  {
+   "id": "dw1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 53,
+   "min_z": 29,
+   "max_x": 59,
+   "max_z": 30,
+   "floor": 18,
+   "base_height": 20,
+   "override": true,
+   "theme": "stair"
+  },
+  {
+   "id": "dw2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 53,
+   "min_z": 34,
+   "max_x": 59,
+   "max_z": 35,
+   "floor": 18,
+   "base_height": 20,
+   "override": true,
+   "theme": "stair"
+  },
+  {
+   "id": "dw3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 53,
+   "min_z": 30,
+   "max_x": 54,
+   "max_z": 34,
+   "floor": 18,
+   "base_height": 20,
+   "override": true,
+   "theme": "stair"
+  },
+  {
+   "id": "dw4",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 58,
+   "min_z": 30,
+   "max_x": 59,
+   "max_z": 34,
+   "floor": 18,
+   "base_height": 20,
+   "override": true,
+   "theme": "stair"
   }
  ],
  "addLayers": [
@@ -2446,29 +2498,22 @@
     "route": true,
     "layer": "ground",
     "pave": {
-     "kind": "layered",
-     "axis": "depth",
-     "stack": {
-      "bands": [
-       {
-        "material": {
-         "kind": "solid",
-         "id": 24,
-         "data": 2
-        },
-        "thickness": 1
-       },
-       {
-        "material": {
-         "kind": "solid",
-         "id": 24,
-         "data": 0
-        },
-        "thickness": 1
-       }
-      ],
-      "ending": "repeat"
-     }
+     "kind": "noise",
+     "seed": 6,
+     "scale": 9,
+     "octaves": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ]
     }
    },
    {
@@ -2498,29 +2543,22 @@
     "route": true,
     "layer": "ground",
     "pave": {
-     "kind": "layered",
-     "axis": "depth",
-     "stack": {
-      "bands": [
-       {
-        "material": {
-         "kind": "solid",
-         "id": 24,
-         "data": 2
-        },
-        "thickness": 1
-       },
-       {
-        "material": {
-         "kind": "solid",
-         "id": 24,
-         "data": 0
-        },
-        "thickness": 1
-       }
-      ],
-      "ending": "repeat"
-     }
+     "kind": "noise",
+     "seed": 6,
+     "scale": 9,
+     "octaves": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ]
     }
    },
    {
@@ -2621,6 +2659,116 @@
     "form": "template",
     "species": "oak",
     "height": 9
+   },
+   {
+    "kind": "house",
+    "id": "small-house",
+    "seed": 31,
+    "layer": "ground",
+    "front": "negZ",
+    "style": "@desert-house",
+    "wings": [
+     {
+      "corners": [
+       [
+        10,
+        30
+       ],
+       [
+        17,
+        37
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "kind": "house",
+    "id": "large-house",
+    "seed": 32,
+    "layer": "ground",
+    "front": "negX",
+    "style": "@desert-house",
+    "wings": [
+     {
+      "corners": [
+       [
+        32,
+        7
+       ],
+       [
+        43,
+        16
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "kind": "house",
+    "id": "library",
+    "seed": 33,
+    "layer": "ground",
+    "front": "posZ",
+    "style": "@desert-house",
+    "wings": [
+     {
+      "corners": [
+       [
+        33,
+        -19
+       ],
+       [
+        46,
+        -10
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "kind": "house",
+    "id": "blacksmith",
+    "seed": 34,
+    "layer": "ground",
+    "front": "negX",
+    "style": "@desert-house",
+    "wings": [
+     {
+      "corners": [
+       [
+        57,
+        -17
+       ],
+       [
+        66,
+        -7
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "kind": "house",
+    "id": "church",
+    "seed": 35,
+    "layer": "ground",
+    "front": "negX",
+    "style": "@desert-house",
+    "wings": [
+     {
+      "corners": [
+       [
+        18,
+        -4
+       ],
+       [
+        25,
+        5
+       ]
+      ]
+     }
+    ]
    },
    {
     "kind": "water",
