@@ -403,8 +403,14 @@ reference.
 
 `PathBand.Centerline` runs the drawn points through a **Catmull-Rom spline** before the band is derived, and a
 Catmull-Rom overshoots the outside of every corner — by several blocks when the segments are long. The band
-does not touch buildings (the road runs to the porch), but it decides where the *road itself* runs and what the
-scatter is refused over, so margin arithmetic against the polyline is arithmetic against the wrong line.
+does not turn a building away for merely touching it (the road runs to the porch), but it decides where the
+*road itself* runs and what the scatter is refused over, so margin arithmetic against the polyline is
+arithmetic against the wrong line.
+
+**A building may end a road and never stand across one (`DR-CROSS`).** Drop a house on the pavement and the
+road ends at its wall, which is what a road running to a door is. Drop one in the *middle* of a road and the
+whole building is declined: the paving carries on out the other side, so what was one way through the board
+is two dead ends facing a wall. Draw the road **to** the door rather than through the house.
 
 Chamfer every sharp corner with two bracketing points — the spline then has nothing to overshoot — and read
 `region/dressing-report.json` after a build, where a prop the band refused is named with its colliding cell.
@@ -1043,14 +1049,21 @@ anywhere near an edge ends it at once.
 Twelve pieces go into `POST /plan/compile` and two terrain shapes come out: `s0`, one merged `add`
 polygon over the whole footprint, and `s1`, a `subtract` cutting everything the pieces do not cover.
 A subtract beats **every** add on its layer whatever order they are written in, so an `addShapes`
-rectangle over a composed hole — the middle of a `donut` wool box, say — draws nothing at all, and
-says nothing about it: no finding, and the relief read reports the right total because those cells
-were never in the footprint.
+rectangle over a composed hole — the middle of a `donut` wool box, say — draws nothing at all. The
+studio now says so: `SK13` names both shapes and which of the two happened, and an add on **another**
+layer over a subtract is the other half of it — that one puts the ground back, and it is named too.
 
-Fill a composed hole on **its own layer**: an `addLayers` entry with `below: true` carrying one shape
-that fills exactly what the subtract took. No overlap with the compiled ground, so no `SK10`; the
-painter reaches it first; and a prop with no `layer` seats on `SurfaceTop`, which over the hole is
-the new slab.
+**Do not fill a hole a CTW board declared.** The void between two team islands is what the walls
+guard, and a slab across it makes them guard nothing (the author's ruling). A hole that is genuinely
+scenery — the middle of a `donut` wool box, a light well — is filled on **its own layer**: an
+`addLayers` entry with `below: true` carrying one shape that fills exactly what the subtract took. No
+overlap with the compiled ground, so no `SK10`; the painter reaches it first; a prop with no `layer`
+seats on `SurfaceTop`, which over the hole is the new slab — and `SK13` rides on the success saying
+the negative space was filled, which on a hole like that is a remark rather than a fault.
+
+**Where the void wants to change shape, change the subtract.** A compiled subtract is the board's
+statement of its own negative space: it may be redrawn — rounded off, narrowed, moved — but never
+deleted and never papered over with an add.
 
 **The merge is a consequence of the pieces being flat, and stating a `surface` per piece ends it.**
 Give every piece its own height and there is nothing left to merge: the same twelve-piece plan
