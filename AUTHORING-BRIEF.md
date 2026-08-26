@@ -156,6 +156,12 @@ objective sits, and the two routes between them. Five numbers and two lines are 
 after them is detail. A destroy board is a lane rather than a square — on a square board every goal is
 equidistant from both spawns and the ratio flattens.
 
+**A landscape board is a small plan and a large relief.** Every destroy board is a landscape board. Pieces are
+the *rooms and corridors* a map is played through, not its terrain: reach for a piece when there is a floor,
+a room or a lane that has to be exactly somewhere, and reach for the **relief** for everything that is a
+shape of ground. A plan that grows a piece per landform is a plan whose paint will grow a theme per piece
+(*What a board is painted with*), and a board authored that way comes out as noise wearing a plan.
+
 **Announce what you are building at the top of your report before you author anything**, so what you set out
 to do can be read beside what you built.
 
@@ -169,11 +175,8 @@ them is not a design achievement; it is the floor.
 What no gate asks is whether the board **looks** like anything, and that is where every previous run's boards
 came apart. The observations below are measured off shipped boards and are enforced nowhere:
 
-- **Two members of a tone family is a texture, three a mottle, five a mistake.** `TerrainPalette.Families` is
-  nineteen hand-ordered families; taking a whole one puts five near-identical blocks on the same ground.
-  Reach across **two** families for ground that reads as one thing but not one block.
-- **A building is never in the same family as the ground it stands on.** Name three families out loud before
-  painting: which is ground, which is built, which is the accent. An accent that appears once is not an accent.
+- **How a board is painted is its own section** — *What a board is painted with*, below. It is the half of
+  authoring no gate holds you to and the half every previous run got wrong.
 - **Stained clay, wool and glass are shade rows, not ground** — a stated colour, never terrain.
 - **A goal's name is a name.** No `<Team>`, no angle brackets: PGM prints the attribute verbatim, on both
   teams, and a placeholder reaches a player.
@@ -195,6 +198,74 @@ came apart. The observations below are measured off shipped boards and are enfor
   as `wall`, or the fork is half applied.
 - **Look at a house in section before building a world.** `/api/room-styles/preview` answers plan, section,
   isometric and cutaway. Every shipped roof fault was visible in a section and invisible from above.
+
+### What a board is painted with
+
+Every board in `specs/` passed every gate and several of them look wrong, and it is the same handful of
+faults each time. What follows is the author's ruling in each case; the numbers beside it are measured over
+the **fifty-one** boards here that carry a theme registry, so they say how far the habit runs rather than how
+bad one board was.
+
+**The through-line is simplicity.** A board is authored simple and detailed afterwards — the relief first,
+then one ground, then the few places that are genuinely made of something else. Detail added later is
+*chosen*; detail that comes out of a pattern is a roll of the dice, and a board is not improved by rolling it
+five hundred thousand times.
+
+**A pattern takes two blocks, not a family.** A `TerrainPalette` family is the set of blocks that read as one
+ground, offered together so a list can be *filled* from one and then cut down — filling it is the first step,
+not the answer. Two members is a texture; three is a mottle; five is a family shown off rather than a ground.
+Of the **277 patterns** on these boards, **85% carry three entries or more**, 51 carry five and 8 carry six or
+seven; only 15% carry two.
+
+**A voronoi is never ground.** It draws a diagram — a grid of lines with cells reading off it — and there is
+no landscape that looks like that. It belongs in the **fill**, where it is the body of the rock nobody sees
+until a wall is cut, and it is made of **stone**. A voronoi whose bands are dirt and whose middle is grass is
+the worst of both: a network of dirt lines nothing in nature draws. On these boards **44 of 50 voronois are on
+the surface** and **none is in the fill**.
+
+**Noise carries a texture, never a border.** A fractal field between two blocks of nearly the same shade —
+sandstone into stone, dirt into coarse dirt — reads as one ground with grain in it. The same field between
+two *different* grounds reads as static: the big destroy boards with the lake scattered sand into grass, and
+what that draws is neither a beach nor a meadow. Where two grounds meet, the edge is **drawn** — a shape with
+its own theme, a stroke, a painted band — and never sampled.
+
+**A brush too small is static, and the cure is always bigger.** A field whose features are smaller than the
+thing they dress reads as noise however good the palette is; the same field at three times the period reads as
+patches, which is what looks deliberate. The medians here are `cellSize` **6** for a cell pattern (down to 2)
+and `scale` **8** for a noise field (down to 4). Those are the numbers that produced the boards being
+complained about. Go up, then look at it: `POST /api/terrain/material-preview` renders one material and
+`POST /api/terrain/theme-preview` the whole finish — a sample plateau painted and cut open, plus a top-down
+swatch per bucket — neither of which builds a world.
+
+**Three themes is a map.** A theme is a *place* — the moor, the works, the shore — and a board has two or
+three of them. Giving every piece of the plan its own theme is not variety, it is the plan leaking into the
+paint: sixteen boards here carry three themes, but eleven carry five, seven carry six, and five carry between
+sixteen and twenty-four (`opus5-interchange` has **twenty-four**).
+
+**Steps share one theme, and it is not the theme of what they join.** A flight of steps is *made* — it is the
+one part of a landscape a person built — so it reads as stone, and it reads as the same stone the whole way
+up. The grassy shelf at the top and the sandy floor at the bottom may each have their own theme; the stair
+between them having a third is what turns a board into a swatch book.
+
+**A landscape board is one theme, a relief and a handful of patches.** Every destroy board is a landscape
+board. Author a **simple plan with few pieces**, put the shape of the ground into the **relief** rather than
+into the piece list, paint the whole thing one ground, and then put the variation in where you *want* it. A
+raised shelf carrying a city may have a theme of its own — but a city is not noise either, so that theme is
+materials laid in courses, not a field sampled over them.
+
+**Splotches beat patterns, and a splotch is a shape.** A theme is stated **on a shape** (`TP10`: map default ›
+shape, winner takes all), so the brush an author reaches for is an `addShapes` polygon with a `theme` of its
+own — a patch of bare dirt worn into a meadow, a sandy shelf at the water, a scorched ring. Ten of those over
+one ground is a landscape somebody made. The same two blocks in a cell pattern is a board that is a third dirt
+*everywhere*, including the places dirt has no reason to be. If the answer to *why is it here* is "the noise
+put it there", it is not an answer.
+
+**A building is never the ground it stands on.** A house is a thing somebody built on a landscape and it has
+to read as one from across the map, which means its walls are not in the tone family under its feet. A stone
+house on stone can be made to work and is a hard thing to get right; it is not the one to attempt. **9 of the
+50 buildings** here are walled in the ground's own family — `opus5-siderite-bowl` puts three grey-stone houses
+on grey stone. Name three families out loud before painting: which is ground, which is built, which is the
+accent. An accent that appears once is not an accent, and an ore block is never a building material.
 
 ### The one thing that is not yours to decide
 
