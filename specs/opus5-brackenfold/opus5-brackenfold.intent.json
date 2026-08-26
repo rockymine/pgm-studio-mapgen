@@ -1,0 +1,153 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 20,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 20,
+    "z": -92
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": -100,
+     "maxX": 8,
+     "maxZ": -84
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -8,
+    "minZ": -100,
+    "maxX": 8,
+    "maxZ": -84
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 20,
+    "z": 92
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": 84,
+     "maxX": 8,
+     "maxZ": 100
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -8,
+    "minZ": 84,
+    "maxX": 8,
+    "maxZ": 100
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 35,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -36,
+    "minZ": -24,
+    "maxX": 36,
+    "maxZ": 24
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Fold Stone",
+   "style": "cube-3",
+   "materials": "ender stone",
+   "anchor": {
+    "x": 0,
+    "y": 22,
+    "z": -50
+   },
+   "float": 3,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Fold Stone",
+   "style": "cube-3",
+   "materials": "ender stone",
+   "anchor": {
+    "x": -1,
+    "y": 22,
+    "z": 49
+   },
+   "float": 3,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Brackenfold",
+  "created": "2026-08-26",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}

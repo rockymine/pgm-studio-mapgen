@@ -1,0 +1,1037 @@
+{
+ "created": "2026-08-26",
+ "authors": [
+  "Opus 5"
+ ],
+ "themes": {
+  "down": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": false,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 3,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 2,
+         "data": 0
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        },
+        "thickness": 2
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "noise",
+    "seed": 31,
+    "scale": 20,
+    "octaves": 3,
+    "rise": 14,
+    "stops": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "voronoi",
+    "seed": 17,
+    "cellSize": 14,
+    "rise": 12,
+    "bands": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      "depth": 2
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      "depth": 1
+     }
+    ]
+   }
+  },
+  "fold": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 3
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 48,
+         "data": 0
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 4,
+         "data": 0
+        },
+        "thickness": 2
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      "width": 3
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 48,
+       "data": 0
+      },
+      "width": 1
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "voronoi",
+    "seed": 17,
+    "cellSize": 14,
+    "rise": 12,
+    "bands": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      "depth": 2
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      "depth": 1
+     }
+    ]
+   }
+  },
+  "scar": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": false,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 3,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 1
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        },
+        "thickness": 2
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "noise",
+    "seed": 31,
+    "scale": 20,
+    "octaves": 3,
+    "rise": 14,
+    "stops": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "voronoi",
+    "seed": 17,
+    "cellSize": 14,
+    "rise": 12,
+    "bands": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      "depth": 2
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      "depth": 1
+     }
+    ]
+   }
+  }
+ },
+ "mapTheme": "down",
+ "themeById": {
+  "s2": "fold"
+ },
+ "shapePropsById": {
+  "s2": {
+   "relief_scope": "exclude"
+  }
+ },
+ "bendShapes": {
+  "s0": {
+   "k": 0.2,
+   "wander": 3,
+   "step": 10,
+   "seed": 5
+  },
+  "s1": {
+   "k": 0.2,
+   "wander": 3,
+   "step": 10,
+   "seed": 9
+  }
+ },
+ "addShapes": [
+  {
+   "id": "scar0",
+   "type": "polygon",
+   "operation": "add",
+   "base_height": 20,
+   "vertices": [
+    [
+     -30,
+     -76
+    ],
+    [
+     -20,
+     -79
+    ],
+    [
+     -14,
+     -72
+    ],
+    [
+     -19,
+     -64
+    ],
+    [
+     -28,
+     -66
+    ]
+   ],
+   "theme": "scar"
+  },
+  {
+   "id": "scar1",
+   "type": "polygon",
+   "operation": "add",
+   "base_height": 20,
+   "vertices": [
+    [
+     6,
+     -70
+    ],
+    [
+     18,
+     -73
+    ],
+    [
+     24,
+     -66
+    ],
+    [
+     16,
+     -60
+    ],
+    [
+     8,
+     -62
+    ]
+   ],
+   "theme": "scar"
+  },
+  {
+   "id": "scar2",
+   "type": "polygon",
+   "operation": "add",
+   "base_height": 20,
+   "vertices": [
+    [
+     -14,
+     -40
+    ],
+    [
+     -2,
+     -43
+    ],
+    [
+     5,
+     -36
+    ],
+    [
+     -4,
+     -30
+    ],
+    [
+     -13,
+     -32
+    ]
+   ],
+   "theme": "scar"
+  }
+ ],
+ "relief": {
+  "team": {
+   "base": 20,
+   "reach": 18,
+   "step": 1,
+   "stairs": false,
+   "grain": {
+    "amplitude": 2.2,
+    "scale": 24,
+    "seed": 13
+   },
+   "marks": [
+    {
+     "id": "hut-shelf",
+     "kind": "area",
+     "h": 20,
+     "ring": [
+      [
+       -31,
+       -78
+      ],
+      [
+       -17,
+       -78
+      ],
+      [
+       -17,
+       -62
+      ],
+      [
+       -31,
+       -62
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "roomStyles": {
+  "spawn": {
+   "foundation": {
+    "plate": {
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        "thickness": 1
+       }
+      ],
+      "ending": "repeat"
+     },
+     "extent": 1
+    },
+    "surface": {
+     "field": null,
+     "border": null,
+     "borderWidth": 1,
+     "inlay": null,
+     "inlayInset": 2,
+     "isPlain": true
+    },
+    "footing": null
+   },
+   "roof": {
+    "form": "flat",
+    "pitch": 1,
+    "slab": 44,
+    "slabData": 5,
+    "overhang": 0,
+    "ridgeCap": false,
+    "hole": false,
+    "body": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    },
+    "verge": {
+     "kind": "solid",
+     "id": 98,
+     "data": 3
+    },
+    "gable": null,
+    "gableWindows": {
+     "form": "none",
+     "block": 102,
+     "hostBlock": -1,
+     "hostData": 0,
+     "data": 0,
+     "sill": 2,
+     "width": 2,
+     "height": 2,
+     "spacing": 3
+    }
+   },
+   "wall": {
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ],
+     "ending": "repeat"
+    },
+    "extent": 5
+   },
+   "post": {
+    "kind": "solid",
+    "id": 17,
+    "data": 1
+   },
+   "windows": {
+    "form": "none",
+    "block": 102,
+    "hostBlock": -1,
+    "hostData": 0,
+    "data": 0,
+    "sill": 2,
+    "width": 2,
+    "height": 2,
+    "spacing": 3
+   },
+   "storeys": [
+    {
+     "clear": 5,
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 99,
+          "data": 15
+         },
+         "thickness": 3
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 4
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 5
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "windows": {
+      "form": "none",
+      "block": 109,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 2,
+      "width": 2,
+      "height": 3,
+      "spacing": 3
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 2,
+      "isPlain": true
+     },
+     "deck": null,
+     "headroom": 5
+    },
+    {
+     "clear": 3,
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 99,
+          "data": 15
+         },
+         "thickness": 3
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 4
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 3
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "windows": {
+      "form": "none",
+      "block": 102,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 2,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 2,
+      "isPlain": true
+     },
+     "deck": null,
+     "headroom": 3
+    }
+   ],
+   "porch": null,
+   "front": null,
+   "beams": {
+    "block": -1,
+    "data": 0,
+    "reach": 1,
+    "any": false
+   },
+   "doorway": {
+    "door": "air",
+    "head": {
+     "form": "arched",
+     "block": 109,
+     "fill": "upperSlab",
+     "fillBlock": 44,
+     "fillData": 5
+    },
+    "width": 2,
+    "height": 3
+   }
+  }
+ },
+ "dressing": {
+  "props": [
+   {
+    "id": "road-w",
+    "kind": "stroke",
+    "route": true,
+    "radius": 2,
+    "seed": 4,
+    "points": [
+     [
+      0,
+      -88
+     ],
+     [
+      -12,
+      -72
+     ],
+     [
+      -18,
+      -58
+     ]
+    ],
+    "pave": {
+     "kind": "solid",
+     "id": 13,
+     "data": 0
+    }
+   },
+   {
+    "id": "road-e",
+    "kind": "stroke",
+    "route": true,
+    "radius": 2,
+    "seed": 5,
+    "points": [
+     [
+      0,
+      -88
+     ],
+     [
+      12,
+      -72
+     ],
+     [
+      18,
+      -58
+     ]
+    ],
+    "pave": {
+     "kind": "solid",
+     "id": 13,
+     "data": 0
+    }
+   },
+   {
+    "id": "hut",
+    "kind": "house",
+    "seed": 11,
+    "front": "posX",
+    "points": [
+     [
+      -28,
+      -74
+     ],
+     [
+      -20,
+      -66
+     ]
+    ],
+    "style": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 4,
+           "data": 0
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 1
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": null
+     },
+     "roof": {
+      "form": "shed",
+      "pitch": 1,
+      "slab": 126,
+      "slabData": 5,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "verge": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gableWindows": {
+       "form": "none"
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 5,
+          "data": 1
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 5
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "windows": {
+      "form": "slabBanded",
+      "block": 44,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 3,
+      "sill": 2,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "storeys": [],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 1,
+      "any": false
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "arched",
+       "block": 67,
+       "fill": "upperSlab",
+       "fillBlock": 44,
+       "fillData": 3
+      },
+      "width": 2,
+      "height": 3
+     }
+    }
+   },
+   {
+    "id": "spoil-0",
+    "kind": "boulder",
+    "x": -24,
+    "z": -28,
+    "seed": 21,
+    "radius": 3,
+    "mossy": true
+   },
+   {
+    "id": "spoil-1",
+    "kind": "boulder",
+    "x": -8,
+    "z": -29,
+    "seed": 22,
+    "radius": 2,
+    "mossy": true
+   },
+   {
+    "id": "spoil-2",
+    "kind": "boulder",
+    "x": 10,
+    "z": -28,
+    "seed": 23,
+    "radius": 3,
+    "mossy": true
+   },
+   {
+    "id": "spoil-3",
+    "kind": "boulder",
+    "x": 26,
+    "z": -29,
+    "seed": 24,
+    "radius": 2,
+    "mossy": true
+   },
+   {
+    "id": "shelter-0",
+    "kind": "tree",
+    "x": 22,
+    "z": -76,
+    "species": "spruce",
+    "height": 13,
+    "seed": 47
+   },
+   {
+    "id": "shelter-1",
+    "kind": "tree",
+    "x": 28,
+    "z": -70,
+    "species": "spruce",
+    "height": 15,
+    "seed": 48
+   },
+   {
+    "id": "shelter-2",
+    "kind": "tree",
+    "x": 20,
+    "z": -66,
+    "species": "spruce",
+    "height": 12,
+    "seed": 49
+   },
+   {
+    "id": "shelter-3",
+    "kind": "tree",
+    "x": 29,
+    "z": -62,
+    "species": "spruce",
+    "height": 14,
+    "seed": 50
+   },
+   {
+    "id": "shelter-4",
+    "kind": "tree",
+    "x": 24,
+    "z": -58,
+    "species": "spruce",
+    "height": 13,
+    "seed": 51
+   },
+   {
+    "id": "holt-0",
+    "kind": "tree",
+    "x": -28,
+    "z": -40,
+    "species": "spruce",
+    "height": 12,
+    "seed": 52
+   },
+   {
+    "id": "holt-1",
+    "kind": "tree",
+    "x": -21,
+    "z": -37,
+    "species": "spruce",
+    "height": 14,
+    "seed": 53
+   },
+   {
+    "id": "holt-2",
+    "kind": "tree",
+    "x": -29,
+    "z": -33,
+    "species": "spruce",
+    "height": 13,
+    "seed": 54
+   },
+   {
+    "id": "holt-3",
+    "kind": "tree",
+    "x": -19,
+    "z": -31,
+    "species": "spruce",
+    "height": 12,
+    "seed": 55
+   },
+   {
+    "id": "byre-0",
+    "kind": "tree",
+    "x": -27,
+    "z": -61,
+    "species": "spruce",
+    "height": 11,
+    "seed": 96
+   },
+   {
+    "id": "byre-1",
+    "kind": "tree",
+    "x": -23,
+    "z": -58,
+    "species": "spruce",
+    "height": 13,
+    "seed": 97
+   },
+   {
+    "id": "hanger-0",
+    "kind": "tree",
+    "x": 24,
+    "z": -40,
+    "species": "spruce",
+    "height": 13,
+    "seed": 98
+   },
+   {
+    "id": "hanger-1",
+    "kind": "tree",
+    "x": 29,
+    "z": -35,
+    "species": "spruce",
+    "height": 12,
+    "seed": 99
+   },
+   {
+    "id": "hanger-2",
+    "kind": "tree",
+    "x": 22,
+    "z": -32,
+    "species": "spruce",
+    "height": 14,
+    "seed": 100
+   },
+   {
+    "id": "hanger-3",
+    "kind": "tree",
+    "x": 22,
+    "z": -26,
+    "species": "spruce",
+    "height": 11,
+    "seed": 101
+   },
+   {
+    "id": "crest-0",
+    "kind": "tree",
+    "x": -20,
+    "z": -79,
+    "species": "spruce",
+    "height": 12,
+    "seed": 102
+   },
+   {
+    "id": "crest-1",
+    "kind": "tree",
+    "x": 16,
+    "z": -82,
+    "species": "spruce",
+    "height": 14,
+    "seed": 103
+   }
+  ]
+ }
+}

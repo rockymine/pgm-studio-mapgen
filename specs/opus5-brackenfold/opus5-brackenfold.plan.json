@@ -1,0 +1,107 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Brackenfold"
+  },
+  "globals": {
+    "cell": 4,
+    "symmetry": "rot_180",
+    "maxPlayers": 20,
+    "surface": 20
+  },
+  "pieces": [
+    {
+      "id": "back",
+      "role": "piece",
+      "rect": [
+        -8,
+        -26,
+        16,
+        6
+      ],
+      "surface": 20
+    },
+    {
+      "id": "camp",
+      "role": "spawn",
+      "rect": [
+        -2,
+        -25,
+        4,
+        4
+      ],
+      "surface": 20
+    },
+    {
+      "id": "moor",
+      "role": "piece",
+      "rect": [
+        -8,
+        -20,
+        16,
+        6
+      ],
+      "surface": 20
+    },
+    {
+      "id": "shoulder",
+      "role": "piece",
+      "rect": [
+        -6,
+        -14,
+        12,
+        3
+      ],
+      "surface": 22
+    },
+    {
+      "id": "lower",
+      "role": "piece",
+      "rect": [
+        -8,
+        -11,
+        16,
+        5
+      ],
+      "surface": 20
+    }
+  ],
+  "zones": [
+    {
+      "id": "cross",
+      "rect": [
+        -9,
+        -6,
+        18,
+        12
+      ]
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "camp",
+        "at": [
+          2,
+          2
+        ],
+        "facing": "back"
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "destroyable-1",
+        "piece": "shoulder",
+        "at": [
+          6,
+          1.5
+        ],
+        "style": "cube-3",
+        "materials": "ender stone",
+        "float": 3,
+        "name": "The Fold Stone"
+      }
+    ]
+  }
+}

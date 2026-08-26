@@ -156,6 +156,18 @@ objective sits, and the two routes between them. Five numbers and two lines are 
 after them is detail. A destroy board is a lane rather than a square — on a square board every goal is
 equidistant from both spawns and the ratio flattens.
 
+**`GO1` is solvable before a shape exists.** With the goal `d` blocks along the lane from its own spawn and
+the spawns `L` apart, the ratio is about `(L − d) / d`, so the band [3.0, 4.0] puts the goal between `L/5` and
+`L/4` from its own spawn. On a 208-block lane that is 42 to 52 blocks; place it there and `/plan/inspect`
+agrees on the first read.
+
+**One objective, and air between the two sides.** On a board a hundred blocks or less across, **one**
+destroyable a team is the answer — two of them close together is one objective with two health bars. And the
+two teams' ground is joined by a **build zone over void** spanning the board's whole width, never by a land
+connection: a corridor is a place a defender stands, and a crossing a team has to pay to bridge is a decision
+an attacker makes. The land ends where the ground stops being anybody's, and the gap starts there. (The
+author's ruling. Both halves of it were wrong in this brief's own first test board.)
+
 **A landscape board is a small plan and a large relief.** Every destroy board is a landscape board. Pieces are
 the *rooms and corridors* a map is played through, not its terrain: reach for a piece when there is a floor,
 a room or a lane that has to be exactly somewhere, and reach for the **relief** for everything that is a
@@ -178,6 +190,10 @@ came apart. The observations below are measured off shipped boards and are enfor
 - **How a board is painted is its own section** — *What a board is painted with*, below. It is the half of
   authoring no gate holds you to and the half every previous run got wrong.
 - **Stained clay, wool and glass are shade rows, not ground** — a stated colour, never terrain.
+- **The magenta block at the centre of every board is the observer platform's bedrock, and it is not a
+  fault.** `SurfaceReport` legends a full cube no tone family claims as *unnamed material* and colours it
+  magenta, so a block missing from a family reads as a fault in the board. Bedrock has no family on purpose —
+  it is the map's floor and the shell of its walls. Do not go looking for what is wrong with it.
 - **A goal's name is a name.** No `<Team>`, no angle brackets: PGM prints the attribute verbatim, on both
   teams, and a placeholder reaches a player.
 - **The rim is off on ground a relief solved.** A rim caps every fall with a band and turns a rolling hill
@@ -234,8 +250,11 @@ thing they dress reads as noise however good the palette is; the same field at t
 patches, which is what looks deliberate. The medians here are `cellSize` **6** for a cell pattern (down to 2)
 and `scale` **8** for a noise field (down to 4). Those are the numbers that produced the boards being
 complained about. Go up, then look at it: `POST /api/terrain/material-preview` renders one material and
-`POST /api/terrain/theme-preview` the whole finish — a sample plateau painted and cut open, plus a top-down
-swatch per bucket — neither of which builds a world.
+`POST /api/terrain/theme-preview` the whole finish, in five views — `section`, `rim`, `surface`, `wall`,
+`fill` — under `?format=png&view=…&scale=…`. Without `format=png` it answers every view at once as JSON and
+`view` does nothing, which reads exactly like a broken knob and is not one. Neither preview builds a world,
+and neither can tell you what a theme sits **next to**: the sample terrain is grey stone, so a grey theme
+reads as one mass there and may be perfectly legible on a board of grass.
 
 **Three themes is a map.** A theme is a *place* — the moor, the works, the shore — and a board has two or
 three of them. Giving every piece of the plan its own theme is not variety, it is the plan leaking into the
