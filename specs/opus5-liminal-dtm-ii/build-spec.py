@@ -122,12 +122,14 @@ def sid(prefix):
     return f"{prefix}{_ids[prefix]}"
 
 
-def box(prefix, x0, z0, x1, z1, floor, height, theme_key=None, op="add", over=False):
+def box(prefix, x0, z0, x1, z1, floor, height, theme_key=None, op="add", over=False, keep=False):
     shape = {"id": sid(prefix), "type": "rectangle", "operation": op,
              "min_x": x0, "min_z": z0, "max_x": x1, "max_z": z1,
              "floor": floor, "base_height": height}
     if over:
         shape["override"] = True
+    if keep:
+        shape["keepClear"] = True
     if theme_key:
         shape["theme"] = theme_key
     return shape
@@ -138,7 +140,7 @@ def island(ident, name, shapes, mirrors=True):
             "shapeIds": [s["id"] for s in shapes]}
 
 
-def ring(prefix, x0, z0, x1, z1, thick, floor, height, theme_key, gaps=(), over=False):
+def ring(prefix, x0, z0, x1, z1, thick, floor, height, theme_key, gaps=(), over=False, keep=False):
     """A wall round a room. A wall is not a shape on top of a floor — a layer keeps one span per
     column and the taller add wins it outright — so it is the same slab, carried higher, drawn as
     four bands outside the floor. `gaps` names ("e"|"w"|"n"|"s", from, to) left open for a doorway;
@@ -155,13 +157,13 @@ def ring(prefix, x0, z0, x1, z1, thick, floor, height, theme_key, gaps=(), over=
 
     walls = []
     for lo, hi in spans("n", x0 - thick, x1 + thick):
-        walls.append(box(prefix, lo, z0 - thick, hi, z0, floor, height, theme_key, over=over))
+        walls.append(box(prefix, lo, z0 - thick, hi, z0, floor, height, theme_key, over=over, keep=keep))
     for lo, hi in spans("s", x0 - thick, x1 + thick):
-        walls.append(box(prefix, lo, z1, hi, z1 + thick, floor, height, theme_key, over=over))
+        walls.append(box(prefix, lo, z1, hi, z1 + thick, floor, height, theme_key, over=over, keep=keep))
     for lo, hi in spans("w", z0, z1):
-        walls.append(box(prefix, x0 - thick, lo, x0, hi, floor, height, theme_key, over=over))
+        walls.append(box(prefix, x0 - thick, lo, x0, hi, floor, height, theme_key, over=over, keep=keep))
     for lo, hi in spans("e", z0, z1):
-        walls.append(box(prefix, x1, lo, x1 + thick, hi, floor, height, theme_key, over=over))
+        walls.append(box(prefix, x1, lo, x1 + thick, hi, floor, height, theme_key, over=over, keep=keep))
     return walls
 
 
@@ -372,7 +374,8 @@ GATE = BRIDGE_Z                                  # (28, 36) — where a bridge m
 
 
 def wall(x0, z0, x1, z1):
-    return box("wl", x0, z0, x1, z1, GROUND_FLOOR, WALL_TOP - GROUND_FLOOR + 1, "wall", over=True)
+    return box("wl", x0, z0, x1, z1, GROUND_FLOOR, WALL_TOP - GROUND_FLOOR + 1, "wall",
+               over=True, keep=True)
 
 
 add_shapes += [
@@ -392,7 +395,7 @@ def wall_stair(x_face, into, z0):
         edge = x_face + into * j
         x0, x1 = (edge, edge + 1) if into > 0 else (edge - 1, edge)
         out.append(box("ws", x0, z0, x1, z0 + 4, GROUND_FLOOR,
-                       WALL_TOP - j - GROUND_FLOOR + 1, "wall", over=True))
+                       WALL_TOP - j - GROUND_FLOOR + 1, "wall", over=True, keep=True))
     return out
 
 
@@ -410,8 +413,10 @@ add_shapes += ring("wh", -1, -1, 1, 1, 2, GROUND_FLOOR, SURFACE - GROUND_FLOOR +
 # kerb round it and a furrow of water down the middle, which is what a vanilla farm is once the
 # crops are taken out — and crops are the one thing the prop vocabulary has no word for.
 FARM = (47, 18, 59, 26)
-add_shapes.append(box("fm", *FARM, GROUND_FLOOR, SURFACE - GROUND_FLOOR - 1, "farm", over=True))
-add_shapes += ring("fm", *FARM, 1, GROUND_FLOOR, SURFACE - GROUND_FLOOR + 1, "stair", over=True)
+add_shapes.append(box("fm", *FARM, GROUND_FLOOR, SURFACE - GROUND_FLOOR - 1, "farm",
+                      over=True, keep=True))
+add_shapes += ring("fm", *FARM, 1, GROUND_FLOOR, SURFACE - GROUND_FLOOR + 1, "stair",
+                   over=True, keep=True)
 
 FURROW = [{
     "kind": "water", "id": "farm-furrow", "seed": 71, "layer": "ground",
@@ -422,7 +427,7 @@ FURROW = [{
 # ══ the Small Hills ═══════════════════════════════════════════════════════════════════════════
 # Six, three courses over the village on a 10x6 top, each stepped twice so it meets the sand rather
 # than standing on it. Three are authored and rot_180 makes the other three.
-HILLS = [(-34, -34), (14, -30), (56, 6)]
+HILLS = [(-34, -39), (14, -30), (56, 6)]
 for cx, cz in HILLS:
     add_shapes.append(box("hl", cx - 5, cz - 3, cx + 5, cz + 3,
                           GROUND_FLOOR, SURFACE + 3 - GROUND_FLOOR, "hill", over=True))
@@ -541,8 +546,8 @@ def road(ident, points):
 
 
 ROADS = [
-    road("road-e", [[X_TOWN, 32], [48, 26], [20, 10], [4, 2]]),
-    road("road-w", [[-X_TOWN, 32], [-48, 26], [-20, 10], [-4, 2]]),
+    road("road-e", [[X_TOWN, 32], [60, 33], [44, 32], [24, 14], [4, 2]]),
+    road("road-w", [[-X_TOWN, 32], [-60, 33], [-44, 32], [-24, 14], [-4, 2]]),
 ]
 
 # Three oaks a hill, and nothing else on them: a hill is a place to fight over, not a wood.
@@ -617,7 +622,7 @@ WAYS = [
 # visible and walkable — a closed rim reads to `SK11` as ground nothing can reach, and to a player
 # as a box
 add_shapes += ring("dw", GOAL_TOWN[0] - 3, GOAL_TOWN[1] - 3, GOAL_TOWN[0] + 3, GOAL_TOWN[1] + 3,
-                   1, GROUND_FLOOR, SURFACE - GROUND_FLOOR + 4, "stair", over=True,
+                   1, GROUND_FLOOR, SURFACE - GROUND_FLOOR + 4, "stair", over=True, keep=True,
                    gaps=[("n", GOAL_TOWN[0] - 1, GOAL_TOWN[0] + 2),
                          ("s", GOAL_TOWN[0] - 1, GOAL_TOWN[0] + 2),
                          ("e", GOAL_TOWN[1] - 1, GOAL_TOWN[1] + 2),

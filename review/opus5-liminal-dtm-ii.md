@@ -200,6 +200,27 @@ wall — and the treads start at `floor 12`, which is the room floor's own top, 
 rather than drive through each other (`SK10`). From a Pyramid's floor to its own Deep End is **95
 blocks, no placed blocks, no drops.**
 
+## What the dressing pass may not touch
+
+**A wall drawn as terrain is terrain, and that is the whole problem.** The Town Wall, the wall stairs,
+the Farm's bed and rim and the Village Well's rim are all override adds on the ground layer: the
+painter writes them with a theme like any other ground, so nothing about their material, their layer
+or their provenance separates them from the sand beside them. A road therefore repainted whatever it
+crossed, and the river — whose water line is the **lowest** surface its band crosses — cut every other
+column in that band down to the line. Measured before the fix: the wall at `(71, -44)` stopped at y24
+with water at y26–27, a twenty-course hole filled with river, and the Farm's beds at `(48, 25)`,
+`(50, 25)` and `(53, 25)` carried the road's cobblestone.
+
+Every one of them now carries **`keepClear`** — 54 of the 125 ground shapes — which puts its own
+columns in the dressing pass's keep-out exactly, with no margin, so a road still runs through a gate
+while the wall either side keeps its top course. Read back after: `(71, -44)` is 45 solid blocks of
+stone brick to y44, the beds are dirt and coarse dirt again, and over 47 sampled columns of the east
+wall face **none** is water or sand-capped.
+
+The road east is redrawn to run south of the Farm — `(72,32) → (60,33) → (44,32) → (24,14) → (4,2)`,
+through the Well's rim on its way — because a keep-out stops a road rather than routing it, and a
+road with a plot-shaped notch in it is not a road.
+
 ## What the board is made of
 
 Ten themes, one per place rather than one per piece.

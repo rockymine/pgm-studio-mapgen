@@ -150,6 +150,30 @@ was handed.
 in it. The brief's author caught it by knowing what could not be there: *there are no houses inside
 the backrooms layer and also no trees or river.*
 
+### A road and a river both ate the things the map was built out of
+
+Two symptoms, one cause, both spotted by the brief's author in a render. The road inside the village
+was laid straight onto the Farm's beds — cobblestone at `(48, 25)`, `(50, 25)`, `(53, 25)`, one course
+down inside the plot. And the river had **hollowed the Town Wall out**: at `(71, -44)` the stone brick
+stopped at y24 with sand at y25 and water at y26–27, a twenty-course hole through the wall, mirrored.
+
+Neither is the water or the stroke misbehaving. `PlaceStroke` swaps the top block of every column it
+crosses; `PlaceWater` takes the **lowest** surface its band crosses as the water line and cuts every
+other column in the band down to it. Both already skip a column whose top block `IsStamp` — and
+neither guard fires here, because a wall drawn as an override add on the ground layer *is terrain*:
+the painter writes it with a theme like any other ground. There was no way for the tool to tell a
+thing built out of ground from the ground.
+
+Fixed upstream as `TS34`: `keepClear` on a sketch shape, which puts its own columns in the dressing
+keep-out — exactly, with no margin, so a road still runs through a gate. 54 of this board's 125 ground
+shapes carry it now. Read back after: the wall is 45 solid blocks to y44 and none of 47 sampled
+columns of its east face is water or sand-capped; the beds are dirt and coarse dirt again.
+
+**What to take from it:** a keep-out stops a prop, it does not route one. The road east had to be
+redrawn to run south of the Farm as well, or it would simply have a plot-shaped notch in it — and
+moving it put a hilltop oak inside its standoff, which is `DR-ROAD` and one more hill to move.
+Circulation is authored before scenery for exactly this reason.
+
 ### Two words differ between a preview and a snapshot, and the error says neither
 
 `POST /room-styles/preview` takes the library's **save request**, where `storeys` is a count; a

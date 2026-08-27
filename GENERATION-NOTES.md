@@ -446,6 +446,16 @@ points accepted against the test pack right up against it. On a 40 × 50 wood: 6
 A house is placed by hand and no gate filters it the way the pass filters a scattered prop, so three
 faults reach the world silently and each is cheap to check before posting.
 
+**A thing built out of terrain has to say so, or a road and a river will eat it.** An override add on
+the ground layer — a town wall, a crop bed, a well's rim, a flight of stairs — is written by the painter
+with a theme like any other ground, so nothing separates it from the sand beside it. A stroke repaints
+the top block of every column it crosses, and a channel takes the *lowest* surface its band crosses as
+its water line and cuts every other column in the band down to it: a wall standing seventeen courses
+over a river comes out as a hole through the wall, filled with water. Mark such a shape `keepClear`
+(`TS34`) and its columns join the dressing keep-out exactly, with no margin, so a road still runs
+through a gate. A keep-out **stops** a prop rather than routing one, so a stroke that would have crossed
+the marked shape wants redrawing too.
+
 **A standing stone is terrain, so `DR-CLAIM` cannot see it.** An authored `addShapes` polygon is
 ground, not a prop, and a building drawn over one stands inside it and is reported by nothing. Test
 every footprint against every authored shape's ring yourself.
