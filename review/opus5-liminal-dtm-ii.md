@@ -110,8 +110,9 @@ rather than as a patch of dirt; the rim is the same smooth sandstone every other
 board is. Measured across at z=22: gravel road at y36, rim at y36, bed at y34, furrow water at
 y34 over dirt at y33.
 
-The furrow is a one-block channel one course deep, which is exactly how the pools are stated — water
-in this studio cuts its own bed and fills to a level line, so a furrow is a very small river.
+The furrow is stated the way the pools are: a rectangle two blocks wide whose theme puts water in its
+surface bucket, one course of it. Not a channel — a channel sweeps a disc along a polyline and carves
+its own bed, which is right for the river outside the wall and wrong for a thing somebody dug.
 
 ## The Stronghold, and why its floor is eleven courses lower
 
