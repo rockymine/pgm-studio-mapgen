@@ -11,11 +11,16 @@
   "28": {
    "floor": 18,
    "base_height": 10
+  },
+  "40": {
+   "floor": 18,
+   "base_height": 22
   }
  },
  "themeByHeight": {
   "36": "desert",
-  "28": "riverbed"
+  "28": "riverbed",
+  "40": "pyramid"
  },
  "themeById": {
   "s2": "taiga"
@@ -32,6 +37,8 @@
    "floor": 12,
    "base_height": 24,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -45,6 +52,8 @@
    "floor": 12,
    "base_height": 23,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -58,6 +67,8 @@
    "floor": 12,
    "base_height": 22,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -71,6 +82,8 @@
    "floor": 12,
    "base_height": 21,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -84,6 +97,8 @@
    "floor": 12,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -97,6 +112,8 @@
    "floor": 12,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -110,6 +127,8 @@
    "floor": 12,
    "base_height": 18,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -123,6 +142,8 @@
    "floor": 12,
    "base_height": 17,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -136,6 +157,8 @@
    "floor": 12,
    "base_height": 16,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -149,6 +172,8 @@
    "floor": 12,
    "base_height": 15,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -162,6 +187,8 @@
    "floor": 12,
    "base_height": 14,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -175,6 +202,8 @@
    "floor": 12,
    "base_height": 13,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -188,6 +217,8 @@
    "floor": 12,
    "base_height": 12,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -201,6 +232,8 @@
    "floor": 12,
    "base_height": 11,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -214,6 +247,8 @@
    "floor": 12,
    "base_height": 10,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -227,6 +262,8 @@
    "floor": 12,
    "base_height": 9,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -240,6 +277,8 @@
    "floor": 12,
    "base_height": 8,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -253,6 +292,8 @@
    "floor": 12,
    "base_height": 7,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -266,6 +307,8 @@
    "floor": 12,
    "base_height": 6,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -279,6 +322,8 @@
    "floor": 12,
    "base_height": 5,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -292,6 +337,8 @@
    "floor": 12,
    "base_height": 4,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -305,6 +352,8 @@
    "floor": 12,
    "base_height": 3,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -318,6 +367,8 @@
    "floor": 12,
    "base_height": 2,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -331,6 +382,8 @@
    "floor": 12,
    "base_height": 1,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -344,6 +397,8 @@
    "floor": 18,
    "base_height": 18,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -357,6 +412,8 @@
    "floor": 18,
    "base_height": 17,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -370,6 +427,8 @@
    "floor": 18,
    "base_height": 16,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -383,6 +442,8 @@
    "floor": 18,
    "base_height": 15,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -396,6 +457,8 @@
    "floor": 18,
    "base_height": 14,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -409,6 +472,8 @@
    "floor": 18,
    "base_height": 13,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -422,6 +487,8 @@
    "floor": 18,
    "base_height": 12,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -435,6 +502,8 @@
    "floor": 18,
    "base_height": 11,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -448,6 +517,8 @@
    "floor": 18,
    "base_height": 18,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -461,6 +532,8 @@
    "floor": 18,
    "base_height": 17,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -474,6 +547,8 @@
    "floor": 18,
    "base_height": 16,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -487,6 +562,8 @@
    "floor": 18,
    "base_height": 15,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -500,6 +577,8 @@
    "floor": 18,
    "base_height": 14,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -513,6 +592,8 @@
    "floor": 18,
    "base_height": 13,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -526,6 +607,8 @@
    "floor": 18,
    "base_height": 12,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -539,6 +622,8 @@
    "floor": 18,
    "base_height": 11,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -552,6 +637,8 @@
    "floor": 18,
    "base_height": 27,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -566,6 +653,8 @@
    "floor": 18,
    "base_height": 27,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -580,6 +669,8 @@
    "floor": 18,
    "base_height": 27,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -594,6 +685,8 @@
    "floor": 18,
    "base_height": 27,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -608,6 +701,8 @@
    "floor": 18,
    "base_height": 27,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -622,6 +717,8 @@
    "floor": 18,
    "base_height": 27,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -636,6 +733,8 @@
    "floor": 18,
    "base_height": 26,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -650,6 +749,8 @@
    "floor": 18,
    "base_height": 25,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -664,6 +765,8 @@
    "floor": 18,
    "base_height": 24,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -678,6 +781,8 @@
    "floor": 18,
    "base_height": 23,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -692,6 +797,8 @@
    "floor": 18,
    "base_height": 22,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -706,6 +813,8 @@
    "floor": 18,
    "base_height": 21,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -720,6 +829,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -734,6 +845,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -748,6 +861,8 @@
    "floor": 18,
    "base_height": 27,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -762,6 +877,8 @@
    "floor": 18,
    "base_height": 26,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -776,6 +893,8 @@
    "floor": 18,
    "base_height": 25,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -790,6 +909,8 @@
    "floor": 18,
    "base_height": 24,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -804,6 +925,8 @@
    "floor": 18,
    "base_height": 23,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -818,6 +941,8 @@
    "floor": 18,
    "base_height": 22,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -832,6 +957,8 @@
    "floor": 18,
    "base_height": 21,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -846,6 +973,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -860,6 +989,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -874,6 +1005,8 @@
    "floor": 18,
    "base_height": 27,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -888,6 +1021,8 @@
    "floor": 18,
    "base_height": 26,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -902,6 +1037,8 @@
    "floor": 18,
    "base_height": 25,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -916,6 +1053,8 @@
    "floor": 18,
    "base_height": 24,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -930,6 +1069,8 @@
    "floor": 18,
    "base_height": 23,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -944,6 +1085,8 @@
    "floor": 18,
    "base_height": 22,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -958,6 +1101,8 @@
    "floor": 18,
    "base_height": 21,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -972,6 +1117,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -986,6 +1133,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -1000,6 +1149,8 @@
    "floor": 18,
    "base_height": 27,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -1014,6 +1165,8 @@
    "floor": 18,
    "base_height": 26,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -1028,6 +1181,8 @@
    "floor": 18,
    "base_height": 25,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -1042,6 +1197,8 @@
    "floor": 18,
    "base_height": 24,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -1056,6 +1213,8 @@
    "floor": 18,
    "base_height": 23,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -1070,6 +1229,8 @@
    "floor": 18,
    "base_height": 22,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -1084,6 +1245,8 @@
    "floor": 18,
    "base_height": 21,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -1098,6 +1261,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -1112,6 +1277,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "wall"
   },
@@ -1126,6 +1293,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -1139,6 +1308,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -1152,6 +1323,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -1165,6 +1338,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "stair"
   },
   {
@@ -1178,6 +1353,8 @@
    "floor": 18,
    "base_height": 17,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "farm"
   },
@@ -1192,6 +1369,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "stair"
   },
@@ -1206,6 +1385,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "stair"
   },
@@ -1220,6 +1401,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "stair"
   },
@@ -1234,6 +1417,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "stair"
   },
@@ -1248,6 +1433,8 @@
    "floor": 18,
    "base_height": 17,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "farm-water"
   },
@@ -1262,6 +1449,8 @@
    "floor": 18,
    "base_height": 21,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1275,6 +1464,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1288,6 +1479,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1301,6 +1494,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1314,6 +1509,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1327,6 +1524,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1340,6 +1539,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1353,6 +1554,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1366,6 +1569,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1379,6 +1584,8 @@
    "floor": 18,
    "base_height": 21,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1392,6 +1599,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1405,6 +1614,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1418,6 +1629,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1431,6 +1644,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1444,6 +1659,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1457,6 +1674,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1470,6 +1689,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1483,6 +1704,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1496,6 +1719,8 @@
    "floor": 18,
    "base_height": 21,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1509,6 +1734,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1522,6 +1749,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1535,6 +1764,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1548,6 +1779,8 @@
    "floor": 18,
    "base_height": 20,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1561,6 +1794,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1574,6 +1809,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1587,6 +1824,8 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
   },
   {
@@ -1600,7 +1839,153 @@
    "floor": 18,
    "base_height": 19,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "theme": "hill"
+  },
+  {
+   "id": "py1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 102,
+   "min_z": 60,
+   "max_x": 104,
+   "max_z": 80,
+   "floor": 18,
+   "base_height": 21,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "theme": "pyramid"
+  },
+  {
+   "id": "py2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 108,
+   "min_z": 58,
+   "max_x": 124,
+   "max_z": 60,
+   "floor": 18,
+   "base_height": 21,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "theme": "pyramid"
+  },
+  {
+   "id": "py3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 100,
+   "min_z": 60,
+   "max_x": 102,
+   "max_z": 80,
+   "floor": 18,
+   "base_height": 20,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "theme": "pyramid"
+  },
+  {
+   "id": "py4",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 108,
+   "min_z": 56,
+   "max_x": 124,
+   "max_z": 58,
+   "floor": 18,
+   "base_height": 20,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "theme": "pyramid"
+  },
+  {
+   "id": "py5",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 98,
+   "min_z": 54,
+   "max_x": 100,
+   "max_z": 80,
+   "floor": 18,
+   "base_height": 19,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "theme": "pyramid"
+  },
+  {
+   "id": "py6",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 108,
+   "min_z": 54,
+   "max_x": 124,
+   "max_z": 56,
+   "floor": 18,
+   "base_height": 19,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "theme": "pyramid"
+  },
+  {
+   "id": "py7",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 96,
+   "min_z": 52,
+   "max_x": 98,
+   "max_z": 80,
+   "floor": 18,
+   "base_height": 18,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "theme": "pyramid"
+  },
+  {
+   "id": "py8",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 98,
+   "min_z": 52,
+   "max_x": 100,
+   "max_z": 54,
+   "floor": 18,
+   "base_height": 18,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "theme": "pyramid"
+  },
+  {
+   "id": "py9",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 108,
+   "min_z": 52,
+   "max_x": 124,
+   "max_z": 54,
+   "floor": 18,
+   "base_height": 18,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "keepClear": true,
+   "theme": "pyramid"
   },
   {
    "id": "dw1",
@@ -1613,6 +1998,8 @@
    "floor": 18,
    "base_height": 22,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "stair"
   },
@@ -1627,6 +2014,8 @@
    "floor": 18,
    "base_height": 22,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "stair"
   },
@@ -1641,6 +2030,8 @@
    "floor": 18,
    "base_height": 22,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "stair"
   },
@@ -1655,6 +2046,8 @@
    "floor": 18,
    "base_height": 22,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "stair"
   },
@@ -1669,6 +2062,8 @@
    "floor": 18,
    "base_height": 22,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "stair"
   },
@@ -1683,6 +2078,8 @@
    "floor": 18,
    "base_height": 22,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "stair"
   },
@@ -1697,6 +2094,8 @@
    "floor": 18,
    "base_height": 22,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "stair"
   },
@@ -1711,6 +2110,8 @@
    "floor": 18,
    "base_height": 22,
    "override": true,
+   "height_mode": "level",
+   "skirt": 0,
    "keepClear": true,
    "theme": "stair"
   }
@@ -7099,6 +7500,8 @@
      "floor": 1,
      "base_height": 11,
      "override": true,
+     "height_mode": "level",
+     "skirt": 0,
      "theme": "pool-deep"
     },
     {
@@ -7112,6 +7515,8 @@
      "floor": 1,
      "base_height": 11,
      "override": true,
+     "height_mode": "level",
+     "skirt": 0,
      "theme": "pool-sub"
     },
     {
@@ -7125,6 +7530,8 @@
      "floor": 1,
      "base_height": 11,
      "override": true,
+     "height_mode": "level",
+     "skirt": 0,
      "theme": "pool-sub"
     },
     {
@@ -8126,6 +8533,71 @@
     "data": 2
    }
   },
+  "pyramid": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 2
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 24,
+         "data": 2
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 159,
+         "data": 1
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 24,
+         "data": 0
+        },
+        "thickness": 2
+       }
+      ],
+      "ending": "repeat"
+     }
+    },
+    "depth": 4,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 24,
+    "data": 2
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 24,
+    "data": 0
+   }
+  },
   "stair": {
    "bedrock": {
     "relative": false,
@@ -8592,6 +9064,660 @@
     "id": 5,
     "data": 0
    }
+  }
+ },
+ "relief": {
+  "team": {
+   "base": 36,
+   "reach": 24,
+   "step": 1,
+   "stairs": true,
+   "marks": [
+    {
+     "id": "river-n",
+     "kind": "area",
+     "h": 28,
+     "ring": [
+      [
+       -88,
+       -80
+      ],
+      [
+       88,
+       -80
+      ],
+      [
+       88,
+       -48
+      ],
+      [
+       -88,
+       -48
+      ]
+     ]
+    },
+    {
+     "id": "river-s",
+     "kind": "area",
+     "h": 28,
+     "ring": [
+      [
+       -88,
+       48
+      ],
+      [
+       88,
+       48
+      ],
+      [
+       88,
+       80
+      ],
+      [
+       -88,
+       80
+      ]
+     ]
+    },
+    {
+     "id": "river-e",
+     "kind": "area",
+     "h": 28,
+     "ring": [
+      [
+       72,
+       -48
+      ],
+      [
+       88,
+       -48
+      ],
+      [
+       88,
+       48
+      ],
+      [
+       72,
+       48
+      ]
+     ]
+    },
+    {
+     "id": "river-w",
+     "kind": "area",
+     "h": 28,
+     "ring": [
+      [
+       -88,
+       -48
+      ],
+      [
+       -72,
+       -48
+      ],
+      [
+       -72,
+       48
+      ],
+      [
+       -88,
+       48
+      ]
+     ]
+    },
+    {
+     "id": "strip-e",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       88,
+       -80
+      ],
+      [
+       124,
+       -80
+      ],
+      [
+       124,
+       80
+      ],
+      [
+       88,
+       80
+      ]
+     ]
+    },
+    {
+     "id": "strip-w",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       -124,
+       -80
+      ],
+      [
+       -88,
+       -80
+      ],
+      [
+       -88,
+       80
+      ],
+      [
+       -124,
+       80
+      ]
+     ]
+    },
+    {
+     "id": "verge-n",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       -72,
+       -48
+      ],
+      [
+       72,
+       -48
+      ],
+      [
+       72,
+       -36
+      ],
+      [
+       -72,
+       -36
+      ]
+     ]
+    },
+    {
+     "id": "verge-s",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       -72,
+       36
+      ],
+      [
+       72,
+       36
+      ],
+      [
+       72,
+       48
+      ],
+      [
+       -72,
+       48
+      ]
+     ]
+    },
+    {
+     "id": "verge-e",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       60,
+       -48
+      ],
+      [
+       72,
+       -48
+      ],
+      [
+       72,
+       48
+      ],
+      [
+       60,
+       48
+      ]
+     ]
+    },
+    {
+     "id": "verge-w",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       -72,
+       -48
+      ],
+      [
+       -60,
+       -48
+      ],
+      [
+       -60,
+       48
+      ],
+      [
+       -72,
+       48
+      ]
+     ]
+    },
+    {
+     "id": "rise-0",
+     "kind": "area",
+     "h": 38,
+     "ring": [
+      [
+       -58,
+       4
+      ],
+      [
+       -44,
+       4
+      ],
+      [
+       -44,
+       18
+      ],
+      [
+       -58,
+       18
+      ]
+     ]
+    },
+    {
+     "id": "rise-1",
+     "kind": "area",
+     "h": 38,
+     "ring": [
+      [
+       -12,
+       20
+      ],
+      [
+       2,
+       20
+      ],
+      [
+       2,
+       34
+      ],
+      [
+       -12,
+       34
+      ]
+     ]
+    },
+    {
+     "id": "rise-2",
+     "kind": "area",
+     "h": 38,
+     "ring": [
+      [
+       44,
+       20
+      ],
+      [
+       58,
+       20
+      ],
+      [
+       58,
+       34
+      ],
+      [
+       44,
+       34
+      ]
+     ]
+    },
+    {
+     "id": "rise-3",
+     "kind": "area",
+     "h": 38,
+     "ring": [
+      [
+       -4,
+       4
+      ],
+      [
+       10,
+       4
+      ],
+      [
+       10,
+       18
+      ],
+      [
+       -4,
+       18
+      ]
+     ]
+    },
+    {
+     "id": "dip-0",
+     "kind": "area",
+     "h": 34,
+     "ring": [
+      [
+       -58,
+       20
+      ],
+      [
+       -44,
+       20
+      ],
+      [
+       -44,
+       34
+      ],
+      [
+       -58,
+       34
+      ]
+     ]
+    },
+    {
+     "id": "dip-1",
+     "kind": "area",
+     "h": 34,
+     "ring": [
+      [
+       24,
+       4
+      ],
+      [
+       38,
+       4
+      ],
+      [
+       38,
+       18
+      ],
+      [
+       24,
+       18
+      ]
+     ]
+    },
+    {
+     "id": "dip-2",
+     "kind": "area",
+     "h": 34,
+     "ring": [
+      [
+       14,
+       20
+      ],
+      [
+       28,
+       20
+      ],
+      [
+       28,
+       34
+      ],
+      [
+       14,
+       34
+      ]
+     ]
+    },
+    {
+     "id": "dip-3",
+     "kind": "area",
+     "h": 34,
+     "ring": [
+      [
+       -30,
+       2
+      ],
+      [
+       -16,
+       2
+      ],
+      [
+       -16,
+       16
+      ],
+      [
+       -30,
+       16
+      ]
+     ]
+    },
+    {
+     "id": "plot-small-house-a",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       6,
+       26
+      ],
+      [
+       21,
+       26
+      ],
+      [
+       21,
+       41
+      ],
+      [
+       6,
+       41
+      ]
+     ]
+    },
+    {
+     "id": "plot-small-house-b",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       -21,
+       -41
+      ],
+      [
+       -6,
+       -41
+      ],
+      [
+       -6,
+       -26
+      ],
+      [
+       -21,
+       -26
+      ]
+     ]
+    },
+    {
+     "id": "plot-large-house-a",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       28,
+       3
+      ],
+      [
+       47,
+       3
+      ],
+      [
+       47,
+       20
+      ],
+      [
+       28,
+       20
+      ]
+     ]
+    },
+    {
+     "id": "plot-large-house-b",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       -47,
+       -20
+      ],
+      [
+       -28,
+       -20
+      ],
+      [
+       -28,
+       -3
+      ],
+      [
+       -47,
+       -3
+      ]
+     ]
+    },
+    {
+     "id": "plot-library-a",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       29,
+       -23
+      ],
+      [
+       50,
+       -23
+      ],
+      [
+       50,
+       -6
+      ],
+      [
+       29,
+       -6
+      ]
+     ]
+    },
+    {
+     "id": "plot-library-b",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       -50,
+       6
+      ],
+      [
+       -29,
+       6
+      ],
+      [
+       -29,
+       23
+      ],
+      [
+       -50,
+       23
+      ]
+     ]
+    },
+    {
+     "id": "plot-blacksmith-a",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       26,
+       -44
+      ],
+      [
+       43,
+       -44
+      ],
+      [
+       43,
+       -27
+      ],
+      [
+       26,
+       -27
+      ]
+     ]
+    },
+    {
+     "id": "plot-blacksmith-b",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       -43,
+       27
+      ],
+      [
+       -26,
+       27
+      ],
+      [
+       -26,
+       44
+      ],
+      [
+       -43,
+       44
+      ]
+     ]
+    },
+    {
+     "id": "plot-church-a",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       14,
+       -8
+      ],
+      [
+       29,
+       -8
+      ],
+      [
+       29,
+       9
+      ],
+      [
+       14,
+       9
+      ]
+     ]
+    },
+    {
+     "id": "plot-church-b",
+     "kind": "area",
+     "h": 36,
+     "ring": [
+      [
+       -29,
+       -9
+      ],
+      [
+       -14,
+       -9
+      ],
+      [
+       -14,
+       8
+      ],
+      [
+       -29,
+       8
+      ]
+     ]
+    }
+   ]
   }
  },
  "dressing": {

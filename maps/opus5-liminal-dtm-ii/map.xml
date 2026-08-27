@@ -74,10 +74,10 @@
         <point id="observer-spawn">0,75,0</point>
         <rectangle id="blue-spawn" min="-124,-80" max="-104,-60"/>
         <rectangle id="red-spawn" min="104,60" max="124,80"/>
-        <cuboid id="the-desert-well-region" min="56,38,32" max="57,40,33"/>
+        <cuboid id="the-desert-well-region" min="56,40,32" max="57,42,33"/>
         <cuboid id="the-deep-end-region" min="80,15,8" max="81,17,9"/>
         <cuboid id="the-floating-garden-region" min="74,56,22" max="75,58,23"/>
-        <cuboid id="the-desert-well-2-region" min="-57,38,-33" max="-56,40,-32"/>
+        <cuboid id="the-desert-well-2-region" min="-57,40,-33" max="-56,42,-32"/>
         <cuboid id="the-deep-end-2-region" min="-81,15,-9" max="-80,17,-8"/>
         <cuboid id="the-floating-garden-2-region" min="-75,56,-23" max="-74,58,-22"/>
         <union id="spawns">

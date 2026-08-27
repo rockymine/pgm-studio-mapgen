@@ -131,6 +131,32 @@ falls from the Backroom corridor at y12 into it.
 height. Fourteen courses is a little over twice a vanilla stronghold corridor and a little under
 twice the vanilla portal room, and going higher would mean cutting into the village floor overhead.
 
+## The village floor, and the Pyramid standing on it
+
+**The brief asks the village for a gentle four-block roll, and a relief is what states one.** A mark is
+a *constraint* — the ground here **is** `h` — and everything between the marks is the surface of least
+curvature subject to them, whose extremes can only sit where a mark put one. Eight areas, four two
+courses over the desert and four two under, give a four-course range that rolls; nothing between them
+bumps up on its own.
+
+A relief is keyed on the island and this board's ground is one island, so **what must not move has to
+say so**. Six marks pin the river region at y28 and the outer strip at y36 — the river would otherwise
+relax up to `base` and lose its eight-course drop — and four more pin a twelve-block verge inside the
+wall, because a mark pins its own cells and the relaxation slopes everything within `reach` of one: an
+unpinned village floor is drawn down into the river's trench and the gates come out below the bridges
+that land in them. Ten more pin the ground each building stands on, which is what a plateau mark is
+for: a house seats on the lowest column of its footprint and the terrain over that floor is carved out
+of it, so a footprint on a slope shows its foundation on the downhill side. Twenty-eight marks in all.
+
+**The Pyramid is a stepped mass now, not a house with a hat.** A hip roof over a square footprint is a
+pyramid's *cap*; what a vanilla desert pyramid mostly is, is the battered mass under it, and that is
+terrain rather than a building's. The spawn **piece** states its own surface — `"surface": 40`, four
+courses over the desert — so the compiler seats the spawn on the platform, and four override rings
+step away from it two blocks of run to one of rise, in smooth sandstone banded with orange clay. Only
+the west and north faces carry them; the other two are the board's own edge. Each ring is cut round
+the stairwell it crosses, because the well is an override add too and a later one would win the column
+and fill the shaft back in. Measured west along z=70: **38, 37, 36, 35** and then the desert.
+
 ## The Liminal Poolroom's water
 
 **A pool is a room with water in it, not a river that happens to be indoors.** A `water` prop sweeps a
@@ -239,6 +265,7 @@ Ten themes, one per place rather than one per piece.
 | the river region | sand | sandstone | sandstone |
 | the Town Wall | stone brick grained with cobble | the same | stone brick |
 | a Small Hill | grass over two of dirt | dirt | sandstone |
+| the Pyramid's mass | smooth sandstone banded with orange clay | smooth sandstone | sandstone |
 | the Farm's beds | dirt in a two-block chequer of two shades | dirt | sandstone |
 | a stair, and the Village Well's rim | smooth sandstone | smooth sandstone | sandstone |
 | a bridge | oak planks | oak log | oak planks |
@@ -309,6 +336,6 @@ Poolrooms, the corridors and the whole maze are unlit. A spawner. An end portal.
 chests of `Power I` bows — a chest is authored on a `PlanWall`, and this wall is terrain rather than
 one.
 
-**Still to build.** The village's gentle four-block relief; the Stronghold's Straight, Prison Hall,
-Room Crossing and Library components beside the End Portal Room; and the map-level settings the brief
-names — `timelock` off, the build ceiling, the Plains biome.
+**Still to build.** The Stronghold's Straight, Prison Hall, Room Crossing and Library components
+beside the End Portal Room; and the map-level settings the brief names — `timelock` off, the build
+ceiling, the Plains biome.

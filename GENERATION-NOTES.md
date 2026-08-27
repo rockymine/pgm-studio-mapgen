@@ -446,6 +446,28 @@ points accepted against the test pack right up against it. On a 40 × 50 wood: 6
 A house is placed by hand and no gate filters it the way the pass filters a scattered prop, so three
 faults reach the world silently and each is cheap to check before posting.
 
+**An `override: true` add is still part of its island's relief.** Override decides who wins the column
+among the shapes on a layer and says nothing about the solve, so a relief's surface replaces the top of
+a wall, a flight, a hill or a rim as readily as it does bare ground — silently, with no finding. A made
+thing keeps its stated top only with `"height_mode": "level"` and `"skirt": 0` (level for an absolute
+top, skirt zero for a sheer face). `relief_scope: "exclude"` is the stronger form, keeping the shape's
+ground out of the solve entirely.
+
+**A relief is solved on the island's primary half, and its surface is copied through the mirror.** A
+mark on the far half constrains cells the solve never visits and is overwritten by the image of the
+near half. State every mark on the side the plan's pieces are authored on, and pin a footprint that
+straddles the axis on both sides.
+
+**A mark pins its own cells and the relaxation slopes everything within `reach`.** Two regions at
+different heights with nothing between them come out as one long ramp, so a floor that must stay level
+next to a lower one needs a verge pinned at its own height — otherwise a wall's footing, and the gate
+in it, follow the neighbour down.
+
+**Raising terrain under a stamped room needs the PLAN to say so.** A piece states `"surface"`; lifting
+the ground with an override add instead leaves the room correctly seated on the higher ground and its
+spawn marker at the height the plan still states, inside the mass. Both spawns then leave the objective
+chain and `EX1` refuses the export.
+
 **A thing built out of terrain has to say so, or a road and a river will eat it.** An override add on
 the ground layer — a town wall, a crop bed, a well's rim, a flight of stairs — is written by the painter
 with a theme like any other ground, so nothing separates it from the sand beside it. A stroke repaints

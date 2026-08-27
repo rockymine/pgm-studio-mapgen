@@ -90,6 +90,11 @@ THEMES = {
     "backroom": theme(solid(43, 8), solid(24, 2), solid(24, 2), surface_depth=1),
     # its ceiling, seen from underneath, which is the lid's fill
     "backroom-lid": theme(solid(24, 2), solid(24, 2), solid(24, 2), surface_depth=1),
+    # the Pyramid's own mass: smooth sandstone banded with orange clay, the two courses the vanilla
+    # structure wears, so the batter reads as built rather than as a sand dune
+    "pyramid": theme(layered(stack((solid(24, 2), 1), (solid(159, 1), 1), (solid(24, 0), 2),
+                                   ending="repeat")),
+                     solid(24, 2), solid(24, 0), surface_depth=4),
     # the stair down: smooth sandstone the whole way, because a flight is one made thing
     "stair": theme(solid(24, 2), solid(24, 2), solid(24, 0), surface_depth=1),
     # the Stronghold: the vanilla mix of stone brick, cracked and mossy, at a period wide enough
@@ -133,7 +138,13 @@ def box(prefix, x0, z0, x1, z1, floor, height, theme_key=None, op="add", over=Fa
              "min_x": x0, "min_z": z0, "max_x": x1, "max_z": z1,
              "floor": floor, "base_height": height}
     if over:
+        # An override add wins the column against the other shapes on its layer — and is still part of
+        # the island's relief field, which then solves a surface straight through it. `height_mode`
+        # is what makes a shape stand OUT of the field: `level` holds it at the absolute top its own
+        # floor and height state, and `skirt: 0` is a sheer face, which is right for a built thing.
         shape["override"] = True
+        shape["height_mode"] = "level"
+        shape["skirt"] = 0
     if keep:
         shape["keepClear"] = True
     if theme_key:
@@ -468,6 +479,8 @@ def cells(x0, z0, x1, z1):
     return [x0 // CELL, z0 // CELL, (x1 - x0) // CELL, (z1 - z0) // CELL]
 
 
+PYR_TOP, PYR_STEPS, PYR_RUN = SURFACE + 4, 4, 2
+
 SPAWN_ROOM = (104, 60, 124, 80)     # the Pyramid itself: a spawn-role piece sizes the stamped room,
                                     # and its rect is the protection, so it is a building and not a region
 SPAWN_AT   = (112, 70)              # inside it, at the head of the stairwell
@@ -509,7 +522,7 @@ plan = {
         piece("pyramid-w", X_BANK, 0, SPAWN_ROOM[0], Z_EDGE, SURFACE),
         piece("pyramid-e", SPAWN_ROOM[0], 0, X_EDGE, SPAWN_ROOM[1], SURFACE),
         {"id": "pyramid-spawn", "role": "spawn",
-         "rect": cells(*SPAWN_ROOM), "surface": SURFACE},
+         "rect": cells(*SPAWN_ROOM), "surface": PYR_TOP},
     ],
     "zones": [],
     "placements": {
@@ -609,6 +622,52 @@ WAYS = [
      "style": "worn", "coverage": 0.6, "pave": noise(7, 10, 2, [solid(13), solid(1)])},
 ]
 
+# ══ the Pyramid's own mass ════════════════════════════════════════════════════════════════════
+# A hip roof over a square footprint is a pyramid's cap and nothing else: what a vanilla desert
+# pyramid mostly is, is the battered mass under it. That is not a house's to draw — it is terrain —
+# so it is stated the way every made thing on this board is: override adds, one rectangle a course.
+#
+# The platform is the spawn PIECE's own surface, four courses over the desert — a piece states its
+# height and the compiler seats the spawn on it. Raising the terrain under a stamped room any other
+# way leaves the room on the higher ground and its spawn marker at the height the plan still says,
+# which is inside the mass: the spawn then walks nowhere and `EX1` refuses the export.
+#
+# The steps fall away from that platform, two blocks of run to one of rise, which walks both ways for
+# nothing. Only the west and north faces carry them, the other two being the board's own edge, and
+# each is cut out of the stairwell it crosses — the well is `override` too and a later override on
+# the same layer would simply win the column, which would fill the shaft back in.
+
+
+def outside(rect, hole):
+    """What is left of a rectangle once a hole is taken out of it, as rectangles."""
+    x0, z0, x1, z1 = rect
+    hx0, hz0, hx1, hz1 = hole
+    if hx0 >= x1 or hx1 <= x0 or hz0 >= z1 or hz1 <= z0:
+        return [rect]
+    out = []
+    if z0 < hz0:
+        out.append((x0, z0, x1, min(hz0, z1)))
+    if z1 > hz1:
+        out.append((x0, max(hz1, z0), x1, z1))
+    mid0, mid1 = max(z0, hz0), min(z1, hz1)
+    if mid0 < mid1:
+        if x0 < hx0:
+            out.append((x0, mid0, min(hx0, x1), mid1))
+        if x1 > hx1:
+            out.append((max(hx1, x0), mid0, x1, mid1))
+    return out
+
+
+for k in range(1, PYR_STEPS + 1):
+    step = (SPAWN_ROOM[0] - PYR_RUN * k, SPAWN_ROOM[1] - PYR_RUN * k,
+            SPAWN_ROOM[0] - PYR_RUN * (k - 1), SPAWN_ROOM[3])
+    brow = (SPAWN_ROOM[0] - PYR_RUN * (k - 1), SPAWN_ROOM[1] - PYR_RUN * k,
+            SPAWN_ROOM[2], SPAWN_ROOM[1] - PYR_RUN * (k - 1))
+    for rect in (step, brow):
+        add_shapes += [box("py", *part, GROUND_FLOOR, PYR_TOP - k - GROUND_FLOOR, "pyramid",
+                           over=True, keep=True)
+                       for part in outside(rect, WELL)]
+
 # ══ the Desert Well the Village Monument hides in ═════════════════════════════════════════════
 # The vanilla well's rim, two courses over the road, standing round the goal: the monument is inside
 # a structure a player has to take apart rather than a pillar in the open.
@@ -622,6 +681,69 @@ add_shapes += ring("dw", GOAL_TOWN[0] - 3, GOAL_TOWN[1] - 3, GOAL_TOWN[0] + 3, G
                          ("e", GOAL_TOWN[1] - 1, GOAL_TOWN[1] + 2),
                          ("w", GOAL_TOWN[1] - 1, GOAL_TOWN[1] + 2)])
 
+# ══ the village floor ═════════════════════════════════════════════════════════════════════════
+# The brief asks the village for a gentle four-block roll, and a relief is what states one: a mark is
+# a CONSTRAINT — the ground here IS h — and everything between the marks is the surface of least
+# curvature subject to them, whose extremes can only sit where a mark put one. So a handful of areas
+# two courses over and two under the desert give a four-course range that rolls rather than terraces.
+#
+# A relief is keyed on the island, and this board's ground is one island, so the parts that must NOT
+# move have to say so: the river region would otherwise relax up to `base` and lose its eight-course
+# drop, and the outer strip would slope into it and take the bridges' landings with it. Every made
+# thing is exempt without asking — the wall, the flights, the hills, the Farm, the Pyramid and the
+# well are override adds, and an erected shape goes on after the relief rather than into it.
+def plots_of(house, margin=4):
+    """A building's footprint grown by a margin, and its rot_180 image — the two rects a plateau mark
+    under it takes. Both, because only the primary half of the board is solved and its image copied
+    back: a house on the far half is pinned by its image, and one straddling the axis needs both or
+    the half the solve never visits comes back sloped."""
+    (x0, z0), (x1, z1) = house["wings"][0]["corners"]
+    rect = (x0 - margin, z0 - margin, x1 + margin, z1 + margin)
+    return rect, (-rect[2], -rect[3], -rect[0], -rect[1])
+
+
+def area(ident, x0, z0, x1, z1, height):
+    return {"id": ident, "kind": "area", "h": height,
+            "ring": [[x0, z0], [x1, z0], [x1, z1], [x0, z1]]}
+
+
+VERGE = 12                          # the band inside the wall the roll is kept out of
+
+RELIEF = {"team": {
+    "base": SURFACE, "reach": 24, "step": 1, "stairs": True,
+    "marks": [
+        # the river region keeps its own floor
+        area("river-n", -X_BANK, -Z_EDGE, X_BANK, -Z_TOWN, RIVER),
+        area("river-s", -X_BANK, Z_TOWN, X_BANK, Z_EDGE, RIVER),
+        area("river-e", X_TOWN, -Z_TOWN, X_BANK, Z_TOWN, RIVER),
+        area("river-w", -X_BANK, -Z_TOWN, -X_TOWN, Z_TOWN, RIVER),
+        area("strip-e", X_BANK, -Z_EDGE, X_EDGE, Z_EDGE, SURFACE),
+        area("strip-w", -X_EDGE, -Z_EDGE, -X_BANK, Z_EDGE, SURFACE),
+        # and so does a verge inside the wall: a mark pins its own cells and the relaxation slopes
+        # everything within `reach` of one, so an unpinned village floor is drawn down into the
+        # river's eight-course drop and the gates come out below the bridges that land in them
+        area("verge-n", -X_TOWN, -Z_TOWN, X_TOWN, -Z_TOWN + VERGE, SURFACE),
+        area("verge-s", -X_TOWN, Z_TOWN - VERGE, X_TOWN, Z_TOWN, SURFACE),
+        area("verge-e", X_TOWN - VERGE, -Z_TOWN, X_TOWN, Z_TOWN, SURFACE),
+        area("verge-w", -X_TOWN, -Z_TOWN, -X_TOWN + VERGE, Z_TOWN, SURFACE),
+        # then the roll itself, two courses over the desert and two under. Every mark is stated on
+        # the board's PRIMARY half — the side the plan's pieces are authored on, here z >= 0 — because
+        # a relief is solved over the island's own cells and its mirror copies that solved surface
+        # back through the same transform. A mark on the far half is not a second constraint; it is a
+        # constraint on cells the solve never visits, and the image of the near half overwrites it.
+    ] + [area(f"rise-{i}", x0, z0, x0 + 14, z0 + 14, SURFACE + 2)
+         for i, (x0, z0) in enumerate(((-58, 4), (-12, 20), (44, 20), (-4, 4)))]
+      + [area(f"dip-{i}", x0, z0, x0 + 14, z0 + 14, SURFACE - 2)
+         for i, (x0, z0) in enumerate(((-58, 20), (24, 4), (14, 20), (-30, 2)))]
+      # and last, because a later constraint wins the cells it shares with an earlier one, the ground
+      # each building stands on — its footprint mirrored onto the primary half where it was authored
+      # on the far one. A house seats on the lowest column of its footprint and the terrain over that
+      # floor is carved out of it, so a footprint on a slope shows its foundation on the downhill
+      # side (`WX11`); a plateau mark under it is what the rule asks for.
+      + [area(f"plot-{h['id']}-{side}", *rect, SURFACE)
+         for h in HOUSES for side, rect in zip("ab", plots_of(h))],
+}}
+
 # ── the finish ────────────────────────────────────────────────────────────────────────────────
 # `below` inserts at the head of the stack, so the two undercroft layers are listed top-down here
 # and land bottom-up in the document: [under, lid, ground, sky].
@@ -631,8 +753,9 @@ finish = {
     "shapePropsByHeight": {
         str(SURFACE): {"floor": GROUND_FLOOR, "base_height": GROUND_H},
         str(RIVER):   {"floor": GROUND_FLOOR, "base_height": RIVER_H},
+        str(PYR_TOP): {"floor": GROUND_FLOOR, "base_height": PYR_TOP - GROUND_FLOOR},
     },
-    "themeByHeight": {str(SURFACE): "desert", str(RIVER): "riverbed"},
+    "themeByHeight": {str(SURFACE): "desert", str(RIVER): "riverbed", str(PYR_TOP): "pyramid"},
     # s2 is the Snowy Taiga: the compile emits one shape a piece group, and a height key cannot
     # tell it from the Pyramid, which stands at the same course
     "themeById": {"s2": "taiga"},
@@ -655,6 +778,7 @@ finish = {
     "roomStyles": {"spawn": "@desert-pyramid"},
     "mapTheme": "desert",
     "themes": THEMES,
+    "relief": RELIEF,
     "dressing": {"props": ROADS + WAYS + OAKS + SKY_OAKS + HOUSES + SPRUCE + UNFINISHED
                           + TAIGA_FLORA + [
         # the river: the east half of an oval traced round the town wall, fanned into a closed ring

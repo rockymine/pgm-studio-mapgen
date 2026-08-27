@@ -192,6 +192,43 @@ shape would be a hole in the floor, not water in it. And a room nested inside a 
 the same columns unless the outer one is banded round it, which is the same care the rock already
 takes with its holes.
 
+### A relief flattened every made thing on the board, and nothing said so
+
+Adding twenty-eight relief marks to give the village its four-block roll silently removed the Town
+Wall. Read back at `(71, 8)`: stone brick to **y35** where it had stood to y44 — nine courses gone, and
+the same for both flights, the six Small Hills, the Farm's rim and the Desert Well's. Nothing was
+refused. `SK11` did not fire, the gate stayed open, and the only visible symptom was the spawns
+leaving the objective chain for an unrelated reason.
+
+The cause is one sentence in `docs/tools/sketch.md` that I had read as being about landforms:
+`height_mode` — `level`, `raise`, `sink` — *"makes a shape stand out of the solved field rather than be
+part of it"*. **An `override: true` add is not that.** Override decides who wins the column among the
+shapes on a layer; it says nothing about the relief, and the solved surface then replaces the column's
+top whatever the shape asked for. A made thing keeps its stated top only if it says
+`"height_mode": "level"` with `"skirt": 0` — level for an absolute top, skirt zero for a sheer face,
+which is right for a built thing and wrong for a landform. All 135 of this board's ground shapes carry
+it now.
+
+Two more, both about where a relief is *solved*:
+
+**A relief is solved on the island's primary half and its surface copied through the mirror.** Marks
+stated on the far half are not a second constraint — they are constraints on cells the solve never
+visits, and the image of the near half overwrites them. Half my knolls and three of five house
+plateaus were dead for that reason, and a house straddling the axis needs its plot pinned **twice**,
+once each side, or the half the solve never visits comes back sloped.
+
+**A mark pins its own cells; everything within `reach` of one slopes.** The river region is pinned at
+y28 and the village at y36, so with nothing between them the village's edge was drawn down into the
+trench: `(70, 32)` and `(68, 32)` came out at **y28**, inside the wall, and the east gate was eight
+courses below the bridge landing in it. A twelve-block verge pinned at the surface is what holds the
+wall's footing.
+
+**And raising terrain under a stamped room needs the plan to say so.** The Pyramid's platform started
+as an override add lifting the ground four courses; the room stamped on it correctly and the spawn
+marker stayed at the height the plan still stated, four courses down inside the mass — both spawns
+isolated, `EX1`, export refused. A piece states `"surface"` and the compiler seats the spawn on it.
+The showcase board `20-undercroft` measures the same thing at thirteen courses.
+
 ### Two words differ between a preview and a snapshot, and the error says neither
 
 `POST /room-styles/preview` takes the library's **save request**, where `storeys` is a count; a
