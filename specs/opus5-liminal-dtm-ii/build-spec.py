@@ -184,6 +184,25 @@ def ring(prefix, x0, z0, x1, z1, thick, floor, height, theme_key, gaps=(), over=
     return walls
 
 
+def ramp(prefix, x0, z0, x1, z1, floor, low, high, theme_key, along, keep=False):
+    """A flight, as ONE shape. A polygon carries a thickness per vertex and the rasterizer samples its
+    surface at each cell's centre and floors it into the column, so a tilted quad IS a stair — the
+    courses are what a sloped surface rasterizes to, one course a cell at the steepest and a course
+    every two or three at gentler runs. `along` is which end is the high one: `+x`, `-x`, `+z`, `-z`."""
+    lo, hi = low - floor, high - floor
+    corners = {"+x": [lo, hi, hi, lo], "-x": [hi, lo, lo, hi],
+               "+z": [lo, lo, hi, hi], "-z": [hi, hi, lo, lo]}[along]
+    shape = {"id": sid(prefix), "type": "polygon", "operation": "add", "override": True,
+             "height_mode": "level", "skirt": 0,
+             "vertices": [[x0, z0], [x1, z0], [x1, z1], [x0, z1]],
+             "anchor_heights": corners, "floor": floor, "base_height": hi}
+    if keep:
+        shape["keepClear"] = True
+    if theme_key:
+        shape["theme"] = theme_key
+    return [shape]
+
+
 def outside(rect, hole):
     """What is left of a rectangle once a hole is taken out of it, as rectangles."""
     x0, z0, x1, z1 = rect
@@ -384,12 +403,7 @@ lid = lid_whole + lid_sided
 # y12. Every tread is its own rectangle, so a course is a course rather than a rasterized guess — a
 # ramp at one course a cell builds as treads of two, and a two-block rise costs a placed block.
 WX0, WZ0, WX1, WZ1 = WELL
-TREADS = SURFACE - UNDER_TOP                     # 24 courses, one block of run each
-
-add_shapes = []
-for i in range(TREADS):
-    add_shapes.append(box("st", WX0, WZ1 - 1 - i, WX1, WZ1 - i,
-                          UNDER_TOP, SURFACE - i - UNDER_TOP, "stair", over=True))
+add_shapes = ramp("st", WX0, WZ0, WX1, WZ1, UNDER_TOP, UNDER_TOP + 1, SURFACE, "stair", "+z")
 
 # ══ the bridges ═══════════════════════════════════════════════════════════════════════════════
 # A deck over the river rather than a causeway through it: on the ground layer a taller add replaces
@@ -414,13 +428,10 @@ SLIP_FALL = SURFACE - RIVER                      # 8 courses
 def slipway(x_bank, into):
     """Steps cut into a bank, falling toward the water. `into` is the direction the river lies in
     from that bank, so the tread against the water is the low one and the flight walks both ways."""
-    out, start = [], x_bank - into * SLIP_FALL
-    for j in range(SLIP_FALL):
-        edge = start + into * j
-        x0, x1 = (edge, edge + 1) if into > 0 else (edge - 1, edge)
-        out.append(box("sw", x0, SLIP_Z[0], x1, SLIP_Z[1],
-                       GROUND_FLOOR, SURFACE - j - GROUND_FLOOR, "stair", over=True))
-    return out
+    start = x_bank - into * SLIP_FALL
+    x0, x1 = (start, x_bank) if into > 0 else (x_bank, start)
+    return ramp("sw", x0, SLIP_Z[0], x1, SLIP_Z[1], GROUND_FLOOR,
+                RIVER, SURFACE, "stair", "-x" if into > 0 else "+x")
 
 
 # The outer banks only: the village's own is where the Town Wall stands, and a flight cut into that

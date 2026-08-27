@@ -3,6 +3,7 @@
     <version>1.0.0</version>
     <gamemode>ctw</gamemode>
     <objective>Capture the wool!</objective>
+    <phase>development</phase>
     <include id="gapple-kill-reward"/>
     <authors>
         <author>Opus 5</author>
@@ -199,5 +200,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>46</maxbuildheight>
+    <maxbuildheight>45</maxbuildheight>
 </map>
