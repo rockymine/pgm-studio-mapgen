@@ -139,14 +139,21 @@ curvature subject to them, whose extremes can only sit where a mark put one. Eig
 courses over the desert and four two under, give a four-course range that rolls; nothing between them
 bumps up on its own.
 
+**The outer bank rolls too** — twelve more areas over the two strips outside the moat and into the
+Snowy Taiga's corner, two courses up and one down, which measures **3 to 5 courses** across each of
+them where it was flat.
+
 A relief is keyed on the island and this board's ground is one island, so **what must not move has to
-say so**. Six marks pin the river region at y28 and the outer strip at y36 — the river would otherwise
-relax up to `base` and lose its eight-course drop — and four more pin a twelve-block verge inside the
-wall, because a mark pins its own cells and the relaxation slopes everything within `reach` of one: an
-unpinned village floor is drawn down into the river's trench and the gates come out below the bridges
-that land in them. Ten more pin the ground each building stands on, which is what a plateau mark is
-for: a house seats on the lowest column of its footprint and the terrain over that floor is carved out
-of it, so a footprint on a slope shows its foundation on the downhill side. Twenty-eight marks in all.
+say so**. Four marks pin the river region at y28 — it would otherwise relax up to `base` and lose its
+eight-course drop — and four more pin a twelve-block verge inside the wall, because a mark pins its own
+cells and the relaxation slopes everything within `reach` of one: an unpinned village floor is drawn
+down into the trench and the gates come out below the bridges that land in them. Three hold what a
+crossing needs — the ground a bridge lands on, the bank its slipway is cut into, and the apron the
+Pyramid's batter steps down to. Fifteen more pin the ground each building and the iron cube stands on,
+which is what a plateau mark is for: a house seats on the lowest column of its footprint and the
+terrain over that floor is carved out of it, so a footprint on a slope shows its foundation on the
+downhill side. **46 marks in all**, and the order they are written in is load-bearing: a later
+constraint wins the cells it shares with an earlier one, so every plateau is stated last.
 
 **The Pyramid is a stepped mass now, not a house with a hat.** A hip roof over a square footprint is a
 pyramid's *cap*; what a vanilla desert pyramid mostly is, is the battered mass under it, and that is

@@ -480,6 +480,7 @@ def cells(x0, z0, x1, z1):
 
 
 PYR_TOP, PYR_STEPS, PYR_RUN = SURFACE + 4, 4, 2
+IRON_AT = (-106, 40)                # the Snowy Taiga's iron blocks
 
 SPAWN_ROOM = (104, 60, 124, 80)     # the Pyramid itself: a spawn-role piece sizes the stamped room,
                                     # and its rect is the protection, so it is a building and not a region
@@ -530,7 +531,7 @@ plan = {
                     "at": [(SPAWN_AT[0] - SPAWN_ROOM[0]) / CELL, (SPAWN_AT[1] - SPAWN_ROOM[1]) / CELL],
                     "facing": "left"}],
         "iron": [{"id": "iron-1", "piece": "taiga",
-                  "at": [(-106 - -X_EDGE) / CELL, 40 / CELL]}],
+                  "at": [(IRON_AT[0] - -X_EDGE) / CELL, IRON_AT[1] / CELL]}],
         "destroyables": [
             {"id": "destroyable-1", "style": "pillar-2", "at": [GOAL_TOWN[0] / CELL, GOAL_TOWN[1] / CELL],
              "materials": "obsidian", "float": 2, "name": "The Desert Well"},
@@ -717,8 +718,12 @@ RELIEF = {"team": {
         area("river-s", -X_BANK, Z_TOWN, X_BANK, Z_EDGE, RIVER),
         area("river-e", X_TOWN, -Z_TOWN, X_BANK, Z_TOWN, RIVER),
         area("river-w", -X_BANK, -Z_TOWN, -X_TOWN, Z_TOWN, RIVER),
-        area("strip-e", X_BANK, -Z_EDGE, X_EDGE, Z_EDGE, SURFACE),
-        area("strip-w", -X_EDGE, -Z_EDGE, -X_BANK, Z_EDGE, SURFACE),
+        # the outer strip is not pinned flat — it rolls too (below) — so what is pinned there is what
+        # a crossing needs: the ground a bridge lands on and the bank its slipway is cut into, and the
+        # apron the Pyramid's own batter steps down to
+        area("land-e", X_BANK, 16, X_BANK + 16, 44, SURFACE),
+        area("land-w", -X_BANK - 16, 16, -X_BANK, 44, SURFACE),
+        area("pyr-foot", X_BANK + 6, 48, X_EDGE, Z_EDGE, SURFACE),
         # and so does a verge inside the wall: a mark pins its own cells and the relaxation slopes
         # everything within `reach` of one, so an unpinned village floor is drawn down into the
         # river's eight-course drop and the gates come out below the bridges that land in them
@@ -735,13 +740,24 @@ RELIEF = {"team": {
          for i, (x0, z0) in enumerate(((-58, 4), (-12, 20), (44, 20), (-4, 4)))]
       + [area(f"dip-{i}", x0, z0, x0 + 14, z0 + 14, SURFACE - 2)
          for i, (x0, z0) in enumerate(((-58, 20), (24, 4), (14, 20), (-30, 2)))]
+      # and the outer bank, which is the ground a player crosses between the moat and the two
+      # corners: three courses of roll rather than four, so the crossings' aprons still meet it
+      + [area(f"bank-up-{i}", x0, z0, x0 + 16, z0 + 16, SURFACE + 2)
+         for i, (x0, z0) in enumerate(((94, 0), (-122, 0), (-106, 60), (-122, 30),
+                                       (106, 20), (-122, 62)))]
+      + [area(f"bank-dn-{i}", x0, z0, x0 + 16, z0 + 16, SURFACE - 1)
+         for i, (x0, z0) in enumerate(((108, 2), (-106, 4), (-122, 60), (94, 30),
+                                       (-104, 64), (106, 36)))]
       # and last, because a later constraint wins the cells it shares with an earlier one, the ground
       # each building stands on — its footprint mirrored onto the primary half where it was authored
       # on the far one. A house seats on the lowest column of its footprint and the terrain over that
       # floor is carved out of it, so a footprint on a slope shows its foundation on the downhill
       # side (`WX11`); a plateau mark under it is what the rule asks for.
       + [area(f"plot-{h['id']}-{side}", *rect, SURFACE)
-         for h in HOUSES for side, rect in zip("ab", plots_of(h))],
+         for h in HOUSES + UNFINISHED for side, rect in zip("ab", plots_of(h))]
+      # the taiga's iron cube takes one for the same reason, and last for the same reason
+      + [area("iron-plot", IRON_AT[0] - 6, IRON_AT[1] - 6,
+              IRON_AT[0] + 6, IRON_AT[1] + 6, SURFACE)],
 }}
 
 # ── the finish ────────────────────────────────────────────────────────────────────────────────
