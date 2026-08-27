@@ -6,8 +6,8 @@ a bench, a mesa top, a sunken floor — and the only one whose ordering is a des
 ## An area is a ring and a height
 
 ```json
-{ "id": "mesa",   "kind": "area", "h": 18, "ring": [[-38,36],[-28,33],[-26,46],[-31,56],[-38,54]] }
-{ "id": "hollow", "kind": "area", "h":  4, "ring": [[26,36],[38,34],[40,48],[34,58],[26,54],[24,44]] }
+{ "id": "mesa",   "kind": "area", "h": 18, "ring": [[-38,-11],[-28,-14],[-26,-1],[-31,9],[-38,7]] }
+{ "id": "hollow", "kind": "area", "h":  4, "ring": [[26,-11],[38,-13],[40,1],[34,11],[26,7],[24,-3]] }
 ```
 
 Every cell inside the ring is pinned to `h`. That is the whole mark, and it is what separates it from the
@@ -24,8 +24,8 @@ cut into the bedrock itself.
 ## Stacked rings, and why order is the whole idea
 
 ```json
-{ "id": "terrace-outer", "kind": "area", "h": 12, "ring": [[-34,62],[-6,62],[-6,74],[-34,74]] }
-{ "id": "terrace-inner", "kind": "area", "h": 10, "ring": [[-28,65],[-12,65],[-12,71],[-28,71]] }
+{ "id": "terrace-outer", "kind": "area", "h": 12, "ring": [[-34,15],[-6,15],[-6,27],[-34,27]] }
+{ "id": "terrace-inner", "kind": "area", "h": 10, "ring": [[-28,18],[-12,18],[-12,24],[-28,24]] }
 ```
 
 **Marks resolve in order and the last one wins a contested cell.** The inner ring sits entirely inside the
@@ -61,7 +61,7 @@ if you were looking at `low`.
 So the shipped push sits *beside* the hollow, on the ground behind it:
 
 ```json
-{ "id": "shoulder", "ring": [[6,60],[20,58],[24,70],[14,76],[4,72]],
+{ "id": "shoulder", "ring": [[6,13],[20,11],[24,23],[14,29],[4,25]],
   "amount": 4, "falloff": 10, "roughness": 0.4, "crown": 2, "seed": 9 }
 ```
 
@@ -82,7 +82,7 @@ a room floor, which is `Rigid` and which the lift steps over.
 | Read | Answer |
 |---|---|
 | `POST /plan/evaluate` | score **0**, `valid: true`, no lint |
-| `POST …/sketch/relief/read` | cells 4 125 · **low 4** · **high 18** · relief 14 · symmetry error 0 |
+| `POST …/sketch/relief/read` | cells 10 000 · **low 4** · **high 18** · relief 14 · symmetry error 0 |
 | mesa | y17 flat, five-sided |
 | hollow | y3 floor, six-sided, six blocks under the base |
 | terrace | outer y11 · inner y9 |

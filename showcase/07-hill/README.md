@@ -14,11 +14,11 @@ compiled board is `team`.
   "grain": { "amplitude": 1.0, "scale": 11, "seed": 3 },
   "marks": [
     { "id": "coast",  "kind": "rim",   "h": 9, "depth": 1 },
-    { "id": "brow-w", "kind": "point", "at": [-32, 45], "h": 17, "r": 4 },
-    { "id": "strand", "kind": "line",  "points": [[-40,18],[0,18],[40,18]], "h": [9,9,9], "width": 5 }
+    { "id": "brow-w", "kind": "point", "at": [-32, 6], "h": 17, "r": 4 },
+    { "id": "strand", "kind": "line",  "points": [[-40,-21],[0,-21],[40,-21]], "h": [9,9,9], "width": 5 }
   ],
   "pushes": [
-    { "id": "spur-e", "ring": [[27,32],[38,36],[40,50],[33,60],[26,56],[24,44]],
+    { "id": "spur-e", "ring": [[27,-7],[38,-3],[40,11],[33,21],[26,17],[24,5]],
       "amount": 7, "falloff": 12, "roughness": 0.45, "crown": 3, "seed": 5 }
   ] } }
 ```
@@ -84,17 +84,23 @@ rim written *after* a summit cuts a doorway through the high ground wherever the
 walking a free way round it. Written first, it holds the shore at the base level and everything else is
 solved inside it.
 
-**`strand`, the line along the frontline shore, holds both banks of the strait at 9.** The build zone is what
-joins the two islands, and a bank the relief lifted is a bank a bridge has to climb onto. A line mark's `h`
-is per vertex and interpolated along its arc, so one stroke can also be a shoulder that falls as it runs;
-here all three are 9 because level is the whole point. Note that a line's `width` is its **radius** — the
-band it writes is twice it.
+**`strand`, the line right across the board at `z −21`, holds a band of it at 9.** It runs two blocks north
+of the far cairn, so the ground the objective stands on and the ground in front of it stay level whatever the
+hills either side do — a summit rising under an objective moves the objective. A line mark's `h` is per
+vertex and interpolated along its arc, so one stroke can also be a shoulder that falls as it runs; here all
+three are 9 because level is the whole point. Note that a line's `width` is its **radius** — the band it
+writes is twice it.
+
+**And, like every authored shape on a `rot_180` board, the marks are solved on one half and mirrored.** The
+relief is solved on the island's primary half and the answer reflected, so a mark stated on the far half is a
+mark that does nothing. Both hills here are written at `z ≥ −21` for that reason, and `symmetryError: 0` is
+what says the reflection took.
 
 ## What the relief read answers, and what it does not
 
 ```
 POST …/sketch/relief/read
-  island team: cells=4125  low=8  high=20  relief=12  symErr=0
+  island team: cells=10000  low=8  high=18  relief=10  symErr=0
 ```
 
 `symmetryError: 0` is the one number here that no picture gives and that a hand-authored relief can silently
@@ -114,8 +120,8 @@ and its own theme, standing where the high ground is. That is the `cairnmeadow` 
 
 | Picture | Says |
 |---|---|
-| `GET …/render/section?axis=x&at=45&from=-45&to=45&scale=7` | both hills in one cut — the only view that separates a mark from a push |
-| `renders/world-heightmap.png` | the two landforms in plan, contoured |
+| `GET …/render/section?axis=x&at=6&from=-45&to=45&scale=7` | both hills in one cut — the only view that separates a mark from a push |
+| `renders/world-heightmap.png` | the two landforms in plan, contoured, and their two images |
 | `renders/world-ground.png` | almost nothing: paint is flat and relief is not a paint question |
 
 ## Numbers
@@ -123,6 +129,6 @@ and its own theme, standing where the high ground is. That is the `cairnmeadow` 
 | Read | Answer |
 |---|---|
 | `POST /plan/evaluate` | score **0**, `valid: true` — a relief is not a plan question |
-| `POST …/sketch/relief/read` | cells 4 125 · low 8 · high 20 · relief 12 · **symmetry error 0** |
-| `GET …/coverage` | 3.3% dead — unchanged; relief moves ground, it does not add or remove any |
+| `POST …/sketch/relief/read` | cells 10 000 · low 8 · high 18 · relief 10 · **symmetry error 0** |
+| `GET …/coverage` | 75.5% dead — unchanged from `02-theme`; relief moves ground, it does not add or remove any |
 | `GET …/preflight` | export gate **OPEN** |

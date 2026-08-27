@@ -17,17 +17,17 @@ to, `team`, mirrors.
   "grain": { "amplitude": 0.6, "scale": 9, "seed": 4 },
   "marks": [
     { "id": "coast",      "kind": "rim",   "h": 9,  "depth": 1 },
-    { "id": "heartswell", "kind": "point", "at": [0, 66], "h": 11, "r": 18 }
+    { "id": "heartswell", "kind": "point", "at": [-1, 14], "h": 11, "r": 18 }
   ]
 } },
 "addShapes": [
   { "id": "tor", "type": "polygon", "operation": "add", "floor": 0, "base_height": 8,
     "height_mode": "raise", "skirt": 5, "relief_scope": "hold", "theme": "tor",
-    "vertices": [[28,36],[34,31],[39,38],[39,49],[34,56],[28,53],[26,44]],
+    "vertices": [[27,12],[33,8],[38,14],[38,26],[33,32],[27,30],[25,20]],
     "anchor_heights": [4,7,8,6,4,3,3] },
   { "id": "delve", "type": "polygon", "operation": "add", "floor": 0, "base_height": 7,
     "height_mode": "sink", "skirt": 2, "relief_scope": "exclude", "theme": "delve",
-    "vertices": [[-36,37],[-32,33],[-29,36],[-29,47],[-32,54],[-35,51],[-37,44]],
+    "vertices": [[-37,14],[-33,10],[-30,12],[-30,24],[-33,30],[-36,28],[-38,20]],
     "anchor_heights": [3,5,7,5,3,2,2] },
   { "id": "hummock-a", "height_mode": "raise", "skirt": 4, "theme": "tor", "...": "6 vertices, anchors 1-4" },
   { "id": "hummock-b", "height_mode": "raise", "skirt": 4, "relief_scope": "hold", "theme": "tor", "...": "6 vertices, anchors 1-4" }
@@ -54,31 +54,31 @@ footprint**, read once, before the shape is erected — not per cell, which is w
 standing proud rather than a blanket following the hillside it sits on. Off in the open (away from any
 relief mark), that ground is the field's flat `base`: 9. Under the `hummock`s, which sit inside the
 `heartswell` point mark's radius, the pre-erection ground is already lifted — measured, plain grass 3
-blocks from any authored shape reads **y8** at `(0,20)` (base, untouched) and **y10** at `(0,66)` (inside
+blocks from any authored shape reads **y8** at `(0,−30)` (base, untouched) and **y9** at `(−1,14)` (inside
 `heartswell`'s reach). A landform's `raise` reads off *that* solved surface, not off `base` directly: this
 is the real interaction a relief and a landform shape have, and it is why a modest relief belongs on a board
 with landform shapes even though `relief_scope` (next) turns out not to matter to them.
 
-`sink` is the same read with the sign flipped: `delve`'s floor sits at y1–y4 against a coastal rim of y8,
+`sink` is the same read with the sign flipped: `delve`'s floor sits at y5 against a coastal rim of y8,
 which is `raise` and `sink` sharing one formula (`datum ± max(1, anchor)`) rather than two.
 
 ## `skirt`: the difference between a landform and a plinth
 
 **This is the field worth two transects.** `skirt` is how far in from its own outline a shape eases toward
 the ground it meets. Zero blends nothing — every covered cell takes its computed height outright, edge cell
-included. The first build set `tor`'s `skirt` to 0 and cut this transect across its west face, `z=42`:
+included. Set `tor`'s `skirt` to 0 and cut a transect across it at `z=20`:
 
-| x | 25 | 26 | 27 | 28 | 29 | 30 | 32 | 34 | 36 | 38 | **39** |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| y (skirt 0) | 8 (meadow) | 11 | 12 | 12 | 12 | 13 | 13 | 13 | 14 | 14 | **8 (meadow)** |
+| x | 24 | 25 | 26 | 27 | 28 | 30 | 32 | 34 | 36 | **38** |
+|---|---|---|---|---|---|---|---|---|---|---|
+| y (skirt 0) | 8 (meadow) | 11 | 11 | 11 | 11 | 12 | 13 | 13 | 14 | **8 (meadow)** |
 
 Eight to eleven in one cell entering, fourteen to eight in one cell leaving: exactly "an unskirted mesa
 drops its whole thickness in one cell," measured rather than quoted. The shipped board sets `skirt: 5` and
 cuts the same transect:
 
-| x | 25 | 26 | 27 | 28 | 29 | 30 | 32 | 34 | 36 | 38 | **39** |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| y (skirt 5) | 8 | 9 | 9 | 10 | 11 | 12 | 13 | 13 | 11 | 9 | **8** |
+| x | 24 | 25 | 26 | 27 | 28 | 30 | 32 | 34 | 36 | **38** |
+|---|---|---|---|---|---|---|---|---|---|---|
+| y (skirt 5) | 8 | 9 | 9 | 9 | 10 | 12 | 13 | 11 | 10 | **8** |
 
 A ramp of one block a cell each way, linear, exactly as `Erect`'s skirt formula is documented: `top` blends
 from the ground just outside to the shape's own stated height over `skirt` blocks. The two transects are the
@@ -86,12 +86,12 @@ same shape, the same anchors, the same relief underneath — `skirt` is the only
 the whole difference between a mesa with vertical sides and a knoll growing out of the ground.
 
 **A skirt reaching the island's own coast free-falls to the shape's floor, not to the coast.** The first cut
-of `delve` put a vertex at `x=-40` — the island's own true edge — with `skirt: 4`. `InwardDepth`'s search for
+of `delve` put a vertex at `x=-40` — the board's own edge — with `skirt: 4`. `InwardDepth`'s search for
 "the ground just outside" found void there, and void has no ground to blend toward, so it fell back to the
 shape's own `floor` (0): the column at the coast read a single block of **bedrock at y0**, a hole punched
-through the shoreline rather than a talus meeting it. Moving `delve`'s footprint three blocks off the coast
+through the shoreline rather than a talus meeting it. Moving `delve`'s footprint two blocks off the coast
 and dropping its `skirt` to 2 fixed it outright — `x=-40` now reads the ordinary y8 coastal rim, and the bowl
-eases down cleanly inside it (`x=-37` y7 → `x=-32` y3, the floor, → `x=-28` y8 again). **A landform shape's
+eases down cleanly inside it (`x=-38` y7 → `x=-34` y5, the floor, → `x=-30` y8 again). **A landform shape's
 skirt needs real ground on every side it blends toward**, coastline included.
 
 ## `anchor_heights` are offsets from the datum, not absolute heights
@@ -155,13 +155,13 @@ that a section and a swatch answer different questions held again, one showcase 
 | Read | Answer |
 |---|---|
 | `POST /plan/evaluate` | score **0**, `valid: true` — the plan is untouched |
-| `POST …/sketch/relief/read` | island `team`: cells 4125 · low 9 · high 11 · relief 2 · **symmetry error 0** |
-| baseline grass, no shape or mark nearby (`0,20`) | y8 |
-| grass inside `heartswell`'s reach (`0,66`) | y10 |
-| `tor` transect, `skirt: 0` (first build), `z=42` | 8 → **11** → 12 → 12 → 12 → 13 → 13 → 13 → 14 → 14 → **8** |
-| `tor` transect, `skirt: 5` (shipped), `z=42` | 8 → 9 → 9 → 10 → 11 → 12 → 13 → 13 → 11 → 9 → 8 |
-| `delve` at the coast, `skirt: 4` touching `x=-40` (first build) | **y0, Bedrock** — a hole, not a shore |
+| `POST …/sketch/relief/read` | island `team`: cells 10 000 · low 9 · high 11 · relief 2 · **symmetry error 0** |
+| baseline grass, no shape or mark nearby (`0,−30`) | y8 |
+| grass inside `heartswell`'s reach (`−1,14`) | y9 |
+| `tor` transect, `skirt: 0`, `z=20` | 8 → **11** → 11 → 11 → 11 → 12 → 13 → 13 → 14 → **8** |
+| `tor` transect, `skirt: 5` (shipped), `z=20` | 8 → 9 → 9 → 9 → 10 → 12 → 13 → 11 → 10 → 8 |
+| `delve` at the coast, `skirt: 4` touching `x=-40` | **y0, Bedrock** — a hole, not a shore |
 | `delve` at the coast, `skirt: 2`, footprint moved off the edge (shipped) | y8 Cobblestone — the ordinary coastal rim |
-| meadow 3 blocks from `tor` (`25,42`) vs. on `tor` (`28,42`) | Cobblestone/Coarse Dirt/Dirt/Andesite (meadow) vs. Andesite/Stone Bricks (tor) — no shared block below the rim |
-| `GET …/coverage` | 7 979 reached · 271 dead · 3.3% — unchanged from `02-theme`: the shapes add height, not new dead ground |
+| meadow 3 blocks from `tor` (`22,20`) vs. on `tor` (`28,20`) | Grass/Dirt/Dirt/Stone (meadow) vs. Podzol/Dirt/Dirt/Stone (tor) — the skin is the whole difference |
+| `GET …/coverage` | 2 451 reached · 7 549 dead · 75.5% — unchanged from `02-theme`: the shapes add height, not new dead ground |
 | `GET …/preflight` | export gate **OPEN** |

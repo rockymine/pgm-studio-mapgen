@@ -280,28 +280,42 @@
    "theme": "ramp",
    "vertices": [
     [
-     23,
+     24,
+     -8
+    ],
+    [
+     40,
+     -8
+    ],
+    [
+     40,
      12
     ],
     [
-     36,
+     24,
      12
-    ],
-    [
-     36,
-     32
-    ],
-    [
-     23,
-     32
     ]
    ],
    "anchor_heights": [
     9,
     9,
-    17,
-    17
+    18,
+    18
    ]
+  },
+  {
+   "id": "terrace",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 0,
+   "base_height": 18,
+   "relief_scope": "exclude",
+   "theme": "ramp",
+   "min_x": 24,
+   "min_z": 12,
+   "max_x": 44,
+   "max_z": 36
   },
   {
    "id": "slab",
@@ -316,20 +330,20 @@
    "theme": "slab",
    "vertices": [
     [
-     -36,
-     -30
+     -40,
+     14
     ],
     [
-     -25,
-     -32
+     -29,
+     12
     ],
     [
-     -23,
-     -12
+     -26,
+     32
     ],
     [
-     -34,
-     -8
+     -38,
+     35
     ]
    ],
    "anchor_heights": [
