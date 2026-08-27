@@ -106,11 +106,17 @@ column with something tall — here a wall stair the **other** face's flight fan
 building seats on the highest ground it covers. The finding names the low cell rather than the high
 one, so the coordinate it gives is the one place the problem is not.
 
-### A prop's keep-out is 2-D, and a channel eleven courses down still claims the ground over it
+### A prop's keep-out was 2-D, and a channel eleven courses down claimed the ground over it
 
 `DR-CLAIM` declined an oak standing on a Small Hill at y36 as *"claimed by the channel
-'main-pool'"* — a pool in the undercroft at y12. `GENERATION-NOTES.md` records this for buildings on
-different storeys; it holds for a water channel under a hill too.
+'main-pool'"* — a pool in the undercroft at y12 — and the same rule declined three of the four oaks
+authored for the skyblocks, 26 courses over the river. That is not a placement to work around: props
+already carry a `layer`, `DressingContext.GroundFor` already answers that layer's own surfaces, and
+`GroundClaims` was the one reader in the pass still keyed on `(x, z)` alone.
+
+Fixed upstream as `WE49`: the claim book is keyed on the layer as well as the cell and each placement
+is handed one storey's view of it (`GroundClaims.On(prop.Layer)`), so two props collide only where
+they share ground. The pass now declines nothing on this board.
 
 ### Two words differ between a preview and a snapshot, and the error says neither
 
@@ -149,6 +155,20 @@ passthrough back out rather than ship one that reads as a knob.
 On this board the derived answer is eight courses over the brief's, because the derivation measures
 from the skyblocks' grass rather than from the monument standing on it.
 
+**A standalone chest cannot be authored.** The brief's islands each want the vanilla skyblock's tree
+*and chest*. The studio places a chest at exactly two places, both in `Minecraft/Stamping`:
+`WoolChests` fills a wool room, and `DefenseChest.Embed` sets one into a bedrock approach wall or on
+the ground beside a monument (`StructureStamper.StampPlatform`). So the island carrying the Skyblock
+Monument has a chest already — read back at `(74, 22)`: obsidian y56–57, **chest y54**, grass y53 —
+and the other seven cannot have one. There is no prop kind, no document field and no endpoint for a
+chest that is not a wool room's or a goal's.
+
+**A goal's prop standoff is wider than a skyblock.** `DressingScope.GoalStandoff` is 10, so a goal
+holds a 21-block square against every placed prop and `OB19` declines anything inside it. The widest
+island on this board is eight blocks across, so the brief's "monument beside the oak" cannot be
+stated: six of the eight islands carry an oak and the two with monuments are bare. Widening the
+island past 21 blocks makes it a platform rather than a skyblock, so this is the author's call.
+
 ## What I got wrong
 
 **I read a stale `intent.json` and spent a diagnosis on it.** `drive.py` writes `<slug>.layout.json`
@@ -166,6 +186,27 @@ the water. The ways out are on the outer banks only.
 `<team max="48">` twice. The brief's 24 v 24 is `maxPlayers: 24`. Nothing checks it, because nothing
 can: both readings are legal boards.
 
+**I drew the undercroft as rooms and left the rest of it as vacuum.** A sketch layer carries one span
+a column, so stating the Poolroom's floor and its walls and nothing else leaves every other column of
+the lower half with no span at all — the landmass stands on nothing and the sandy places read as
+slabs hanging over a hole. The brief's author saw it in the first 3-D render and named it before I
+did. The fix is not more rooms: it is to state the **rock** over the whole board and cut the rooms
+out of it, which is 355 rectangles of mass against 18 of room. Two rules bite the moment it is one
+mass rather than many rooms — a board-wide shape has its own `rot_180` image lying over it (`SK9`),
+so the rock goes in an island stated `mirrors: false` with its holes named for both teams; and a
+tiling that misses a column is invisible in every render, so it is checked in the generator (bare 0,
+doubly covered 0) rather than looked at.
+
+**Filling the rock sealed the stairwell, and I nearly diagnosed it from the wrong read.** The shaft
+down from the Pyramid was a hole in the *ground* layer that had never needed to be a hole in anything
+else, because there had been nothing else. With the mass stated it filled to y17 and the flight
+descended twenty-three courses onto solid stone six blocks over the corridor it was for; both spawns
+left the objective chain and `EX1` refused the export. What nearly cost the diagnosis was
+`GET …/walk`: `aim=travel` returns the **shortest** route and prices the blocks it places along it,
+so a spawn walking out of its own open door read as "6 placed blocks" because a diagonal through the
+wall was two blocks shorter. `aim=reach` is the one that answers *can this be walked*, and the
+component the traversability verdict floods over is the zero-block, two-way one.
+
 **I put three Small Hills on top of the roads.** Circulation is authored before scenery for exactly
 this reason, and I drew both in one pass; `DR-ROAD` and `DR-CLAIM` declined three oaks and named the
 cells. Moving the hills off the four diagonals cleared it.
@@ -181,6 +222,10 @@ cells. Moving the hills off the four diagonals cleared it.
   as a ramp, so nothing rasterized into treads of two and every climb walks both ways for nothing.
 - **The water ring.** One `WaterProp` polyline, the east half of an oval, fanned by `rot_180` into a
   closed moat.
+- **A maze that is its own mirror.** Thirteen runs on a 20-block pitch, links dropped by
+  `(2k + 1 + 2m) % 3 == 0`. The naive `(k + m) % 3` is *not* symmetric: a link is indexed by the run
+  on its low side, so negating both indices shifts it by one and the two teams get different mazes.
+  Doubling the indices and centring the link's own coordinate makes the test even under negation.
 - **The 3-D preview through Playwright.** Chromium's software WebGL draws it; the toggle is
   `button.canvas-mode-toggle`, the wait is `.canvas-iso-busy` going to `display: none`, and the
   rotate is `button[title="Rotate the preview 90°"]`.
@@ -195,8 +240,20 @@ Two were put to the brief's author during the run and answered:
 | The Poolroom and Skyblock monuments sit near their own spawn by the brief's design, which puts `GO1` at 6.4 and 4.5. Keep them deep, or pull them in? | **Pull them toward the middle.** They now measure 3.03 / 3.14 / 3.53. |
 | The river is 8 blocks below everything around it and cannot be climbed out of. Hazard, or a lane you can leave? | **A few ways out** — stepped slipways cut into the outer banks beside each crossing. |
 
-One is decided and unasked, and is stated here so it can be overruled: **the eight islands are
-reachable only by bridging.** `…/walk?aim=reach` prices the nearest one at **20 placed blocks** from
-the ground under it. The studio's traversability verdict accepts this once the spawn protections are
-the right size, but nothing on the board is a walk up to a monument in the sky, and the brief does
-not say there should be.
+Two are open, and are stated here rather than decided:
+
+**Nothing walks up to an island.** `…/walk?aim=reach` prices the nearest one at **11 placed blocks**
+from a Pyramid's floor and the next at **25**. The traversability verdict accepts this once the spawn
+protections are the right size, but a monument in the sky that only a bridge reaches is a match
+decision the brief does not make either way.
+
+**The Skyblock Monument cannot stand beside an oak.** A goal holds a 21-block square against every
+placed prop and the widest island is eight blocks across, so the two islands carrying a monument are
+bare and the other six have their oak. The choices are an island wide enough to keep the standoff —
+which is a platform rather than a skyblock — the monument on an island of its own with the oak on
+another, or the bare island as it stands.
+
+Two are decided and unasked, and stated so they can be overruled: **the Backrooms are unlit**
+(nothing in the studio places a light source), and **seven of the eight islands have no chest**
+(the studio places a chest only in a wool room or beside a monument, so the monument's island has
+one and no other island can).

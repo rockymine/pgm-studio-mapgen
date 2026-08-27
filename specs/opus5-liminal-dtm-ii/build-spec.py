@@ -103,6 +103,9 @@ THEMES = {
     "taiga": theme(layered(stack((noise(9, 20, 2, [solid(80), solid(2)]), 1), (solid(3), 2),
                                  ending="handOver")),
                    solid(1), solid(1), surface_depth=3),
+    # the Farm's beds, laid in a two-block chequer so the plot reads as tilled rather than as dirt
+    "farm": theme({"kind": "checker", "size": 2, "even": solid(3, 0), "odd": solid(3, 1)},
+                  solid(3), solid(24), surface_depth=2),
     # a Small Hill: its top two courses are grass over dirt where everything round it is sand
     "hill": theme(layered(stack((solid(2), 1), (solid(3), 2), ending="handOver")),
                   solid(3), solid(24), surface_depth=3),
@@ -163,66 +166,163 @@ def ring(prefix, x0, z0, x1, z1, thick, floor, height, theme_key, gaps=(), over=
 
 
 # ══ the undercroft ════════════════════════════════════════════════════════════════════════════
-# One team's half; rot_180 fans it. The Poolroom sits under the river band nearest that spawn, a
-# corridor runs east from it and a switchback stair climbs out of the corridor into the Pyramid
-# through a well the plan leaves open by arrangement — a hole in a plan is a gap no piece covers,
-# never a subtract, and a subtract on the ground layer with an add climbing through it is `SK13`.
-POOL  = (56, -12, 96, 36)           # the Liminal Poolroom
-CORR  = (96, 28, 108, 36)           # the corridor out of its east wall
-WELL  = (100, 36, 108, 60)          # the stairwell, open to the sky until the Pyramid stands over it
-BACK  = (24, 4, 56, 12)             # the Backroom Space, west out of the Poolroom
+# The storey is a MASS with rooms cut out of it, not rooms standing in the void. A layer keeps one
+# span per column, so a room's walls are simply the rock either side of it — which means the rock has
+# to be STATED, over every column no room occupies, or the board's lower half is air and the desert
+# above it floats on nothing. Everything down here therefore sits on the same two courses: the mass
+# runs y1..17 and meets the landmass's own underside at y18, and a room is a shorter span in the same
+# column with air over it.
+MASS_FLOOR = 1
+MASS_H     = GROUND_FLOOR - MASS_FLOOR           # 17 — the mass meets the landmass at y18
+FLOOR_H    = UNDER_TOP - MASS_FLOOR              # 11 — a room's floor: blocks 1..11, stood on at y12
+
+POOL   = (56, -12, 96, 36)          # the Liminal Poolroom, under the river band nearest that spawn
+CORR   = (96, 28, 108, 36)          # the corridor out of its east wall, to the stairwell
+WELL   = (100, 36, 108, 60)         # the stairwell, cut into the Pyramid's own ground
+BACK   = (24, 4, 56, 12)            # the way west out of the Poolroom into the Backroom Space
 PORTAL = (-16, -16, 16, 16)         # the End Portal Room, under the Village Well
-HOLD_STAIR = (16, 24)               # eight treads from the Backrooms down into it
-BACK_WALL_H = LID_FLOOR - UNDER_FLOOR            # 10 — a backroom wall stops under its own ceiling
+HOLD_STAIR = (16, 24, 4, 12)        # eight treads from the Backrooms down into it
 
-under = []
-under.append(box("pf", *POOL, UNDER_FLOOR, UNDER_H, "pool"))
-under += ring("pw", *POOL, 2, UNDER_FLOOR, UNDER_WALL_H, "pool",
-              gaps=[("e", 28, 36), ("w", 4, 12)])
-under.append(box("cf", *CORR, UNDER_FLOOR, UNDER_H, "pool"))
-under.append(box("cw", CORR[0], CORR[1] - 2, CORR[2], CORR[1], UNDER_FLOOR, UNDER_WALL_H, "pool"))
-under.append(box("cw", CORR[2], CORR[1] - 2, CORR[2] + 2, CORR[3], UNDER_FLOOR, UNDER_WALL_H, "pool"))
 
-# the Backroom stub, and the lid that gives it four courses of headroom rather than six
-under.append(box("bf", *BACK, UNDER_FLOOR, UNDER_H, "backroom"))
-under += ring("bw", *BACK, 2, UNDER_FLOOR, BACK_WALL_H, "backroom", gaps=[("e", 4, 12)])
-# stopping two blocks short of the Poolroom's own wall, which stands to y17 and would otherwise be
-# driven into the lid's own courses (`SK10`)
-# ══ the Stronghold ════════════════════════════════════════════════════════════════════════════
-# It stands eleven courses lower than everything else underground, which is the only way its rooms
-# get their height: the ceiling is the landmass's own underside at y18, so a floor at y4 leaves
-# fourteen courses of air where the Poolroom's leaves six.
-#
-# The ring is centred on the origin, so rot_180 maps it onto itself — and an opening authored on one
-# side would be filled by its own image. Both doors are stated, and the image of each is the other.
-under.append(box("hf", *PORTAL, HOLD_FLOOR, HOLD_H, "hold"))
-under += ring("hw", *PORTAL, 2, HOLD_FLOOR, GROUND_FLOOR - HOLD_FLOOR, "hold",
+def mirror(rect):
+    """A footprint's rot_180 image. The mass is authored once and fanned, so its holes have to be
+    the union of what is authored and what the fan draws — or the image of the rock fills the
+    authored rooms."""
+    x0, z0, x1, z1 = rect
+    return (-x1, -z1, -x0, -z0)
+
+
+def carve(rect, blocks):
+    """A corridor minus the boxes it must not run into, split along its own long axis. What is left
+    is the maze the mass will have holes for; what is taken out is where a room's liner stands."""
+    x0, z0, x1, z1 = rect
+    along_x = (x1 - x0) >= (z1 - z0)
+    lo, hi = (x0, x1) if along_x else (z0, z1)
+    cuts = sorted((b[0], b[2]) if along_x else (b[1], b[3])
+                  for b in blocks
+                  if b[0] < x1 and b[2] > x0 and b[1] < z1 and b[3] > z0)
+    spans, at = [], lo
+    for c0, c1 in cuts:
+        if c0 > at:
+            spans.append((at, min(c0, hi)))
+        at = max(at, c1)
+    if at < hi:
+        spans.append((at, hi))
+    return [((a, z0, b, z1) if along_x else (x0, a, x1, b)) for a, b in spans if b > a]
+
+
+def solid_around(x0, z0, x1, z1, holes, prefix, floor, height, theme_key):
+    """The rock a storey is cut out of: the box minus the holes, as z-bands split in x. Stated rather
+    than carved, because a subtract reaches only the layer it is on and a shorter add inside a taller
+    one is not in the world at all."""
+    edges = sorted({z0, z1} | {z for h in holes for z in (h[1], h[3]) if z0 < z < z1})
+    out = []
+    for za, zb in zip(edges, edges[1:]):
+        blocked = sorted((h[0], h[2]) for h in holes if h[1] < zb and h[3] > za)
+        at = x0
+        for bx0, bx1 in blocked:
+            if bx0 > at:
+                out.append(box(prefix, at, za, min(bx0, x1), zb, floor, height, theme_key))
+            at = max(at, bx1)
+        if at < x1:
+            out.append(box(prefix, at, za, x1, zb, floor, height, theme_key))
+    return out
+
+
+# ── the Backroom Space ─────────────────────────────────────────────────────────────────────────
+# A lattice of four-wide corridors on a sixteen-block pitch, with one link in three taken out. What
+# that leaves is what the brief asks for and what a plain grid is not: long runs, short ones, loops
+# back into a corridor already walked, and dead ends. The rule is stated rather than rolled, and it
+# is symmetric under rot_180 by construction — `(k + m) % 3` is unchanged by negating both — so the
+# maze is its own mirror image and the two teams walk the same one.
+MAZE_PITCH, MAZE_WIDE = 20, 4
+KS = range(-6, 7)                                # the grid lines, indexed off the origin
+MAZE_LINE = [-2 + MAZE_PITCH * k for k in KS]    # a corridor spans [line, line + 4)
+
+maze = []
+for k, x in zip(KS, MAZE_LINE):                  # every north-south run, whole
+    if -X_EDGE <= x and x + MAZE_WIDE <= X_EDGE:
+        maze.append((x, -Z_EDGE, x + MAZE_WIDE, Z_EDGE))
+for m, z in zip(KS, MAZE_LINE):                  # the east-west links, one in three missing
+    if not (-Z_EDGE <= z and z + MAZE_WIDE <= Z_EDGE):
+        continue
+    for k, x in zip(KS, MAZE_LINE):
+        nxt = x + MAZE_PITCH
+        if nxt + MAZE_WIDE > X_EDGE or (2 * k + 1 + 2 * m) % 3 == 0:
+            continue
+        maze.append((x + MAZE_WIDE, z, nxt, z + MAZE_WIDE))
+
+# The two rooms the maze may not open into anywhere it likes: their walls are their own material and
+# their doors are authored. Everything else the maze meets, it joins.
+LINED = [POOL, PORTAL]
+LINER = [(r[0] - 2, r[1] - 2, r[2] + 2, r[3] + 2) for r in LINED]
+STAIR_BOX = (HOLD_STAIR[0], HOLD_STAIR[2], HOLD_STAIR[1], HOLD_STAIR[3])
+KEEP_OUT = [r for rect in LINER + [CORR, WELL, STAIR_BOX] for r in (rect, mirror(rect))]
+maze = [seg for rect in maze for seg in carve(rect, KEEP_OUT)]
+
+# and the way out of the Poolroom, split round the runs it crosses for the same reason
+BACK_LEGS = carve(BACK, [seg for seg in maze if seg[3] - seg[1] > seg[2] - seg[0]])
+
+# ── what the mass has holes for ────────────────────────────────────────────────────────────────
+SIDED = [POOL, CORR, WELL] + BACK_LEGS           # what one team has and the other's image mirrors
+HOLES = [r for rect in SIDED + LINER for r in (rect, mirror(rect))] \
+    + maze + [PORTAL, STAIR_BOX, mirror(STAIR_BOX)]
+
+# ── the two islands, and why the rock is not one of the mirrored ones ──────────────────────────
+# The mass covers the whole board, so its own rot_180 image would cover it a second time and every
+# column would carry the same span twice (`SK9`). It is drawn once instead — an island that does not
+# mirror stamps its shapes once — and its holes are stated for both halves. The maze is the same
+# case: the rule that draws it is symmetric about the origin, so the lattice IS its own image.
+FRAME = (-4, -4, 4, 4)
+whole = solid_around(-X_EDGE, -Z_EDGE, X_EDGE, Z_EDGE, HOLES, "ms",
+                     MASS_FLOOR, MASS_H, "backroom")
+whole += [box("mf", *rect, MASS_FLOOR, FLOOR_H, "backroom") for rect in maze]
+whole += ring("hw", *PORTAL, 2, MASS_FLOOR, MASS_H, "hold",
               gaps=[("e", 4, 12), ("w", -12, -4)])
-# the frame, raised a course off the floor: decoration, and the middle of the room
-under += ring("hp", -3, -3, 3, 3, 1, HOLD_FLOOR, HOLD_TOP, "portal")
 
+# ══ the Stronghold ════════════════════════════════════════════════════════════════════════════
+# It gets its height by standing lower rather than reaching higher: a floor at y4 under the same
+# ceiling every other room has leaves fourteen courses of air where the Poolroom's leaves six.
+whole += solid_around(*PORTAL, [FRAME], "hf", HOLD_FLOOR, HOLD_H, "hold")
+whole.append(box("hf", -3, -3, 3, 3, HOLD_FLOOR, HOLD_H, "hold"))
+whole += ring("hp", -3, -3, 3, 3, 1, HOLD_FLOOR, HOLD_TOP, "portal")
+
+sided = [box("rf", *rect, MASS_FLOOR, FLOOR_H, "pool" if rect in (POOL, CORR) else "backroom")
+         for rect in SIDED]
+sided += ring("pw", *POOL, 2, MASS_FLOOR, MASS_H, "pool",
+              gaps=[("e", 28, 36), ("w", 4, 12)])
 for j in range(UNDER_TOP - HOLD_TOP):
     edge = HOLD_STAIR[1] - 1 - j
-    under.append(box("hs", edge, 4, edge + 1, 12, HOLD_FLOOR, UNDER_TOP - 1 - j, "hold"))
-lid = [box("bl", BACK[0] - 2, BACK[1] - 2, BACK[2] - 2, BACK[3] + 2, LID_FLOOR, LID_H, "backroom-lid")]
+    sided.append(box("hs", edge, HOLD_STAIR[2], edge + 1, HOLD_STAIR[3],
+                     HOLD_FLOOR, UNDER_TOP - 1 - j, "hold"))
+
+under = whole + sided
+
+# The lid the Backroom Space keeps its four courses under: the mass alone would leave six, which is
+# the Poolroom's height and not the maze's. It covers the corridors and nothing beside them, so it
+# is never driven into the rock either side of one (`SK10`).
+lid_whole = [box("bl", *rect, LID_FLOOR, LID_H, "backroom-lid") for rect in maze]
+lid_sided = [box("bl", *rect, LID_FLOOR, LID_H, "backroom-lid") for rect in BACK_LEGS]
+lid = lid_whole + lid_sided
 
 # ══ the stairwell ═════════════════════════════════════════════════════════════════════════════
 # The stair is cut into the LANDMASS, not into a hole in it. A hole in the ground layer — drawn as
 # a subtract or left as a gap the compiler declares a void — is refused the moment anything on a
 # lower layer stands under it (`SK13`), so the well is stated the other way round: an override add
-# overwrites whatever column it lands on, floor and all, so a tread at `floor 6` replaces the
+# overwrites whatever column it lands on, floor and all, so a tread at `floor 12` replaces the
 # desert's `floor 18` outright and the shaft is the air left over it.
 #
-# Every tread is its own rectangle, so a course is a course rather than a rasterized guess — a ramp
-# at one course a cell builds as treads of two, and a two-block rise costs a placed block. Two
-# flights round a landing, so the well is sixteen blocks deep rather than twenty-four.
+# It descends onto the undercroft's own floor rather than through it: the shaft is one of the mass's
+# holes, so the rock stops at the shaft wall and the flight rests on the room floor beneath it at
+# y12. Every tread is its own rectangle, so a course is a course rather than a rasterized guess — a
+# ramp at one course a cell builds as treads of two, and a two-block rise costs a placed block.
 WX0, WZ0, WX1, WZ1 = WELL
 TREADS = SURFACE - UNDER_TOP                     # 24 courses, one block of run each
 
 add_shapes = []
 for i in range(TREADS):
     add_shapes.append(box("st", WX0, WZ1 - 1 - i, WX1, WZ1 - i,
-                          UNDER_FLOOR, SURFACE - i - UNDER_FLOOR, "stair", over=True))
+                          UNDER_TOP, SURFACE - i - UNDER_TOP, "stair", over=True))
 
 # ══ the bridges ═══════════════════════════════════════════════════════════════════════════════
 # A deck over the river rather than a causeway through it: on the ground layer a taller add replaces
@@ -305,6 +405,20 @@ for face, into in ((X_TOWN - WALL_T, -1), (-X_TOWN + WALL_T, 1)):
 # round a 2x2 mouth — the vanilla well's proportions without the water in it yet.
 add_shapes += ring("wh", -1, -1, 1, 1, 2, GROUND_FLOOR, SURFACE - GROUND_FLOOR + 2, "stair", over=True)
 
+# ══ the Farm ══════════════════════════════════════════════════════════════════════════════════
+# The one Village component that is not a building: a plot sunk a course under the village with a
+# kerb round it and a furrow of water down the middle, which is what a vanilla farm is once the
+# crops are taken out — and crops are the one thing the prop vocabulary has no word for.
+FARM = (47, 18, 59, 26)
+add_shapes.append(box("fm", *FARM, GROUND_FLOOR, SURFACE - GROUND_FLOOR - 1, "farm", over=True))
+add_shapes += ring("fm", *FARM, 1, GROUND_FLOOR, SURFACE - GROUND_FLOOR + 1, "stair", over=True)
+
+FURROW = [{
+    "kind": "water", "id": "farm-furrow", "seed": 71, "layer": "ground",
+    "points": [[53, 19], [53, 25]], "radius": 1, "depth": 1,
+    "form": "canal", "shore": 0, "shoreWander": False, "bank": solid(3, 0),
+}]
+
 # ══ the Small Hills ═══════════════════════════════════════════════════════════════════════════
 # Six, three courses over the village on a 10x6 top, each stepped twice so it meets the sand rather
 # than standing on it. Three are authored and rot_180 makes the other three.
@@ -340,6 +454,16 @@ SPAWN_AT   = (112, 70)              # inside it, at the head of the stairwell
 GOAL_TOWN  = (56, 32)               # the Village Monument, on the road in from the Pyramid
 GOAL_POOL  = (80, 8)                # the Liminal Monument, over the Main Pool
 GOAL_SKY   = (74, 22)               # the Skyblock Monument, on the island nearest the Pyramid
+
+# One oak on the tip of each island's short leg — except the island the Skyblock Monument stands on: a
+# goal holds a 21-block square against every placed prop (`OB19`, `DressingScope.GoalStandoff`) and the
+# widest island here is eight across, so no cell of it is far enough from the monument to plant on.
+SKY_OAKS = [
+    {"kind": "tree", "id": f"sky-oak-{i}", "seed": 80 + i, "layer": "sky",
+     "x": cx - n // 2 + 1, "z": cz - n // 2 + n - 1,
+     "form": "template", "species": "oak", "height": 7}
+    for i, (cx, cz, n) in enumerate(SKYBLOCKS) if (cx, cz) != GOAL_SKY
+]
 
 
 def piece(ident, x0, z0, x1, z1, surface):
@@ -516,9 +640,13 @@ finish = {
     "addShapes": add_shapes,
     "addLayers": [
         {"id": "lid",   "name": "Backroom ceiling", "base_y": 0, "below": True,
-         "shapes": lid,   "islands": [island("lid", "Backroom ceiling", lid)]},
+         "shapes": lid,
+         "islands": [island("lid-maze", "Backroom ceiling", lid_whole, mirrors=False),
+                     island("lid-rooms", "Room ceilings", lid_sided)]},
         {"id": "under", "name": "Undercroft",       "base_y": 0, "below": True,
-         "shapes": under, "islands": [island("under", "Undercroft", under)]},
+         "shapes": under,
+         "islands": [island("under-rock", "The rock", whole, mirrors=False),
+                     island("under-rooms", "The rooms", sided)]},
         {"id": "bridge", "name": "Bridges", "base_y": 0,
          "shapes": bridges, "islands": [island("bridge", "Bridges", bridges)]},
         {"id": "sky",   "name": "Skyblocks",        "base_y": 0,
@@ -528,7 +656,8 @@ finish = {
     "roomStyles": {"spawn": "@desert-pyramid"},
     "mapTheme": "desert",
     "themes": THEMES,
-    "dressing": {"props": ROADS + WAYS + OAKS + HOUSES + SPRUCE + UNFINISHED + TAIGA_FLORA + POOLS + [
+    "dressing": {"props": ROADS + WAYS + OAKS + SKY_OAKS + HOUSES + SPRUCE + UNFINISHED
+                          + TAIGA_FLORA + POOLS + FURROW + [
         # the river: the east half of an oval traced round the town wall, fanned into a closed ring
         {"kind": "water", "id": "river", "seed": 11, "layer": "ground",
          "points": [[0, 58], [48, 58], [68, 54], [78, 44], [80, 24], [80, 0],

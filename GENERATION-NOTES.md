@@ -836,12 +836,14 @@ rise of δ at δ−1 placed blocks. The same 12 courses over **20** cells reads 
 walks both ways for nothing. The rule to author by: **run at least twice the rise** on any stair
 meant to be climbed rather than fallen down. (A 20-course ramp over 32 cells was right first time.)
 
-### A prop's keep-out mask is 2-D, and `layer` does not reach it
+### A prop's claim is a claim of one storey
 
-`DR-CLAIM` declined a building on the `deck` layer at y38 as "claimed by" a building on the `ground`
-layer at y18, twenty blocks below it. `PlacedProp.Layer` decides where a prop is *seated* and not
-whether two props are in each other's way, so two kiosks on different storeys have to be moved apart
-in plan. The same applies to `DR-ROAD` against a stroke on another storey.
+`GroundClaims` is keyed on the layer as well as the cell and each placement is handed one storey's
+view of it, so two props are in each other's way only where they share ground: a building on the
+`deck` layer at y38 and one on `ground` at y18 do not collide, and neither does an oak on a floating
+island and the river under it. `DR-CLAIM` and `DR-ROAD` both read that book, so the standoff to a
+road is measured against roads on the prop's own storey. Two props on the **same** layer still have
+to be moved apart in plan (`WE49`).
 
 ### `render/topdown?layer=` names a sketch layer, so the category isolations are gone
 
