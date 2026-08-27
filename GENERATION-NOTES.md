@@ -454,6 +454,26 @@ grass-over-dirt, sides included, since the hill theme's wall material is dirt. `
 (pair, both themes, the columns they contest); before that it was visible only in a column read or in
 the world. Cut a mound out of what it may not land on rather than trusting the heights to sort it.
 
+**A flight is one shape, and the gradient is what decides whether it walks.** A polygon carries a height
+per vertex (`anchor_heights`) and the rasterizer interpolates between them, so a tilted quad *is* a
+stair — the courses are what a sloped surface rasterizes to. What separates a stair from a wall is the
+run per course, measured on a 24-block quad:
+
+| run : rise | worst step | walks |
+|---|---|---|
+| 1 : 1 | **2 blocks**, nine of them in twenty-four | no — a two-block rise costs a placed block |
+| 2 : 1 | 1 | yes |
+| 3 : 1 | 1 | yes |
+
+So **the run must be at least twice the rise**, and where it is, a flight is a single polygon with
+`height_mode: "level"`, `skirt: 0` and a thickness per vertex. The four flights up this board's Town
+Wall are one quad each — 16 blocks of run for 8 courses — where they were nine rectangles each.
+
+**Where the space is fixed, one rectangle a course is the only correct form.** A shaft 24 blocks long
+that must fall 24 courses cannot be 2:1, and neither can a slipway climbing 8 courses out of a river
+16 wide. Those stay per-course, and so does anything **clipped round an obstacle**: rectangles can be
+cut round a rectangle with plain arithmetic, and a single tilted polygon cannot.
+
 **An `override: true` add is still part of its island's relief.** Override decides who wins the column
 among the shapes on a layer and says nothing about the solve, so a relief's surface replaces the top of
 a wall, a flight, a hill or a rim as readily as it does bare ground. A made thing keeps its stated top

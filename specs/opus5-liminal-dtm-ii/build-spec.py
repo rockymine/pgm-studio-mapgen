@@ -453,15 +453,30 @@ add_shapes += [
 
 # Up onto the wall-walk: nine treads against the inner face beside each gate, one course a block, so
 # the climb walks both ways and costs nothing.
+# A flight is ONE shape, not one rectangle a course. A polygon carries a height per vertex and the
+# rasterizer interpolates between them, so a tilted quad IS a stair — the courses are what a sloped
+# surface rasterizes to. What decides whether it walks is the gradient: at one course a cell the
+# rasterization lands nine two-block steps in twenty-four, and a two-block rise costs a placed block
+# to climb. At two cells a course, none. So the run is twice the rise and the flight is one quad.
+STAIR_RUN = 2 * (WALL_TOP - SURFACE)             # 16 blocks of run for eight courses of rise
+
+
 def wall_stair(x_face, into, z0):
     """`into` is the direction the village lies in from the wall's inner face."""
-    out = []
-    for j in range(WALL_TOP - SURFACE + 1):
-        edge = x_face + into * j
-        x0, x1 = (edge, edge + 1) if into > 0 else (edge - 1, edge)
-        out.append(box("ws", x0, z0, x1, z0 + 4, GROUND_FLOOR,
-                       WALL_TOP - j - GROUND_FLOOR + 1, "wall", over=True, keep=True))
-    return out
+    far = x_face + into * STAIR_RUN
+    x0, x1 = (x_face, far) if into > 0 else (far, x_face)
+    return [{
+        "id": sid("ws"), "type": "polygon", "operation": "add", "override": True,
+        "keepClear": True, "height_mode": "level", "skirt": 0, "theme": "wall",
+        "vertices": [[x0, z0], [x1, z0], [x1, z0 + 4], [x0, z0 + 4]],
+        "floor": GROUND_FLOOR, "base_height": WALL_TOP - GROUND_FLOOR + 1,
+        # a thickness a vertex, measured from the shape's own floor: the wall's top at its face and
+        # the village's own surface at the far end, whichever way round the two ends fall in x
+        "anchor_heights": ([WALL_TOP - GROUND_FLOOR + 1, SURFACE - GROUND_FLOOR,
+                            SURFACE - GROUND_FLOOR, WALL_TOP - GROUND_FLOOR + 1] if into > 0 else
+                           [SURFACE - GROUND_FLOOR, WALL_TOP - GROUND_FLOOR + 1,
+                            WALL_TOP - GROUND_FLOOR + 1, SURFACE - GROUND_FLOOR]),
+    }]
 
 
 STAIR_KEEP = []
@@ -470,8 +485,7 @@ for face, into in ((X_TOWN - WALL_T, -1), (-X_TOWN + WALL_T, 1)):
         flight = wall_stair(face, into, z0)
         add_shapes += flight
         # the run the flight fans over, both halves, so a mound drawn near it is cut round it
-        reach = WALL_TOP - SURFACE + 1
-        low, high = (face - reach, face) if into < 0 else (face, face + reach)
+        low, high = (face - STAIR_RUN, face) if into < 0 else (face, face + STAIR_RUN)
         STAIR_KEEP += [(low, z0, high, z0 + 4), (-high, -z0 - 4, -low, -z0)]
 
 # ══ the Village Well ══════════════════════════════════════════════════════════════════════════
