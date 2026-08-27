@@ -2,20 +2,45 @@
 
 **The technique: what a `TerrainTheme` actually paints, bucket by bucket, and how to check it.**
 
-This is `01-base-board` with a theme and nothing else changed. The plan is identical apart from the map's
-name; the finish gains one key. It is the before-and-after for the whole folder, because `01` exports as raw
-stone and this one does not — **and it is the fork parent for `03` onward**, since a showcase about a cliff
-should not also be a showcase about unthemed ground.
+This is the folder's **base board**: a plain 100 × 100 square with a theme on it, and nothing else. Two
+pieces, two spawns, one destroyable a side, `rot_180`. It scores **0** against the evaluator with no
+violation and no lint, so anything a showcase's evaluation says is about the technique rather than about the
+board — **and it is the fork parent for `03` onward**, since a showcase about a cliff should not also be a
+showcase about a board.
 
 ## The whole document
 
 ```json
 { "authors": ["Opus 5"],
-  "roomStyles": { "spawn": "@showcase-hall", "cage": "@showcase-cage" },
+  "roomStyles": { "spawn": "@showcase-hall" },
   "themes": { "meadow": { … } } }
 ```
 
-The two room styles come straight from `01`. Everything below is the third key.
+**Nothing here ships a default room shell.** A spawn with no bound style stamps a bedrock box, so the board
+binds `tools/styles/showcase-hall.json` — a shipped preset forked into the library's three tone families:
+ground **verdant + dirt**, built **grey stone + loam**, accent **brick**. Everything below is the third key.
+
+## The board under it
+
+```json
+"globals": { "cell": 5, "symmetry": "rot_180", "maxPlayers": 8, "surface": 9, "observerY": 40 },
+"pieces": [ { "id": "field", "role": "piece",  "rect": [-10, -10, 20, 20] },
+            { "id": "camp",  "role": "spawn",  "rect": [ -2,   6,  4,  4] } ],
+"placements": {
+  "spawns":       [ { "id": "spawn-1", "piece": "camp", "at": [2, 2], "facing": "front" } ],
+  "destroyables": [ { "id": "destroyable-1", "style": "pillar-2", "at": [0, 4.4],
+                      "materials": "obsidian", "float": 2, "name": "The Cairn" } ] }
+```
+
+Twenty cells square at five blocks a cell is 100 × 100 blocks, `x −50..50` and `z −50..50`. `rot_180` fans
+the one spawn and the one destroyable onto the far half, so the document states half a board and the compile
+produces both: spawns at `(0, ±40)`, cairns at `(0, 22)` and `(−1, −23)`. `/plan/inspect` reads the pair at
+**own 20 · enemy 67 · ratio 3.35**, inside `GO1`'s 3.0–4.0 band, which is the one number that pins where a
+destroyable may sit on a board this shape.
+
+A destroy board is deliberately the mode here rather than capture-the-wool: it needs no lane, no technical
+void and no strait, so the square can be **empty**, and an empty square is what makes a technique the only
+thing in the picture.
 
 No `themeById`, no `mapTheme`: the driver makes the registry's first key the map default, and a shape naming
 no theme paints with the default. A board that wants one theme therefore says one theme, once.
@@ -36,7 +61,7 @@ the board:
 Two column reads prove all five, and they are the check to take rather than a picture:
 
 ```
-GET /map/meadow-court/column?at=-40,40      the outermost column — rim and wall
+GET /map/02-theme/column?at=-50,0      the outermost column — rim and wall
   y 8   Cobblestone     ← rim, depth 1
   y 7   Coarse Dirt     ┐
   y 6   Dirt            │ wall: a layered stack read downward
@@ -47,7 +72,7 @@ GET /map/meadow-court/column?at=-40,40      the outermost column — rim and wal
   y 1   Stone
   y 0   Bedrock
 
-GET /map/meadow-court/column?at=-39,40      one block in — surface and fill
+GET /map/02-theme/column?at=-49,0      one block in — surface and fill
   y 8   Grass Block     ← surface, depth 3, its first course a voronoi
   y 7   Dirt
   y 6   Dirt
@@ -101,10 +126,10 @@ instead of ignoring it.
 
 | Picture | Says |
 |---|---|
-| `renders/theme-meadow.png` | the theme as it will paint, before a world exists |
+| `renders/theme-meadow-surface.png` · `-section.png` | the theme as it will paint, before a world exists |
 | `renders/world-ground.png` | the built board in **real material colour** — this is the render that shows paint |
 | `renders/world-topdown.png` | the category reading, which paints all ground one hue and shows nothing about paint |
-| `01-base-board/renders/world-ground.png` | the same board with no theme: bare stone |
+| `renders/world-heightmap.png` | one flat plate at y8 — the ground a technique will move |
 
 `world-topdown.png` and `world-ground.png` are the same board and answer different questions. The top-down
 sorts each column into void / water / foliage / structure / ground and paints five deliberate hues; the
@@ -115,7 +140,12 @@ top-down proves nothing** — it is not drawing materials.
 
 | Read | Answer |
 |---|---|
-| `POST /plan/evaluate` | score **0**, `valid: true` — unchanged; a theme is not a plan question |
-| build | no `SK8` — the board is finished carrying a finish |
-| `GET …/coverage` | 7 979 reached · **271 dead** of 8 250 = 3.3% |
-| extent | 80 × 220 blocks, ground top y8, bedrock y0 |
+| `POST /plan/evaluate` | score **0**, `valid: true`, no violation and no lint |
+| `POST /plan/inspect` | `GO1` **3.35** — own 20, enemy 67 |
+| build | 10 000 cells, 1 island; no `SK8` — the board is finished carrying a finish |
+| `GET …/coverage` | 2 451 reached · **7 549 dead** of 10 000 = 75.5% |
+| extent | 100 × 100 blocks, ground top y8, bedrock y0 |
+
+**75% dead is the board working, not failing.** Coverage measures ground a journey passes, and a destroy
+board has no wool to carry back — the only journeys are spawn to cairn and back. An empty square is mostly
+ground nobody crosses, which is exactly what a showcase wants: room to put a technique in.

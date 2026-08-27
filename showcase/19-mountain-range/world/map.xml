@@ -3,13 +3,14 @@
     <version>1.0.0</version>
     <gamemode>dtm</gamemode>
     <objective>Destroy the enemy's monument!</objective>
+    <phase>development</phase>
     <include id="gapple-kill-reward"/>
     <authors>
         <author>Opus 5</author>
     </authors>
     <teams>
-        <team id="red-team" color="red" max="16">Red</team>
-        <team id="blue-team" color="blue" max="16">Blue</team>
+        <team id="red-team" color="red" max="8">Red</team>
+        <team id="blue-team" color="blue" max="8">Blue</team>
     </teams>
     <kits>
         <kit id="spawn-kit">
@@ -61,47 +62,27 @@
     <filters>
         <team id="only-blue">blue-team</team>
         <team id="only-red">red-team</team>
-        <not id="no-void">
-            <void/>
-        </not>
-        <material id="only-air">air</material>
-        <material id="only-iron">iron block</material>
-        <all id="only-iron-cause-world">
-            <material>iron block</material>
-            <cause>world</cause>
-        </all>
     </filters>
     <regions>
-        <point id="blue-spawn-point">-1,16,-85</point>
-        <point id="red-spawn-point">1,16,85</point>
-        <point id="observer-spawn">0,81,0</point>
-        <rectangle id="blue-spawn" min="-10,-90" max="10,-80"/>
-        <rectangle id="red-spawn" min="-10,80" max="10,90"/>
-        <cuboid id="the-cairn-region" min="-20,49,55" max="-19,52,56"/>
-        <cuboid id="the-cairn-2-region" min="19,49,-56" max="20,52,-55"/>
+        <point id="blue-spawn-point">0,13,-40</point>
+        <point id="red-spawn-point">0,13,40</point>
+        <point id="observer-spawn">0,41,0</point>
+        <rectangle id="blue-spawn" min="-10,-50" max="10,-30"/>
+        <rectangle id="red-spawn" min="-10,30" max="10,50"/>
+        <cuboid id="the-cairn-region" min="0,15,22" max="1,17,23"/>
+        <cuboid id="the-cairn-2-region" min="-1,15,-23" max="0,17,-22"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
         </union>
-        <union id="iron-cubes">
-            <rectangle id="iron-cube-0" min="-7,83" max="-4,86"/>
-            <rectangle id="iron-cube-1" min="3,-87" max="6,-84"/>
-        </union>
         <negative id="not-spawns">
             <region id="spawns"/>
         </negative>
-        <negative id="not-build-area">
-            <rectangle id="build-area-1" min="-45,-10" max="45,10"/>
-        </negative>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply block="never" region="spawns" message="You may not block/break spawns!"/>
         <apply kit="reset-resistance-kit" region="not-spawns"/>
-        <apply block-place="only-iron-cause-world" block-break="only-iron" region="spawns" message="You may not edit spawn!"/>
-        <apply block="no-void" region="not-build-area" message="You may not edit the void!"/>
     </regions>
-    <renewables>
-        <renewable region="iron-cubes" renew-filter="only-iron" replace-filter="only-air" avoid-players="2"/>
-    </renewables>
     <block-drops>
         <rule>
             <filter>

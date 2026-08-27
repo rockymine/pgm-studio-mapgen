@@ -1,19 +1,62 @@
 {
-  "plan": 1,
-  "meta": { "name": "Scarrowdale" },
-  "globals": { "cell": 5, "symmetry": "rot_180", "maxPlayers": 16, "surface": 12, "observerY": 80 },
-  "pieces": [
-    { "id": "body",     "role": "piece", "rect": [-9,  0, 18, 8] },
-    { "id": "shoulder", "role": "piece", "rect": [-8,  8, 16, 5] },
-    { "id": "bench",    "role": "piece", "rect": [-6, 13, 12, 3] },
-    { "id": "spawn",    "role": "spawn", "rect": [-2, 16,  4, 2] }
-  ],
-  "zones": [ { "id": "ford", "rect": [-9, -2, 18, 4] } ],
-  "placements": {
-    "spawns": [ { "id": "spawn-1", "piece": "spawn", "at": [2, 1], "facing": "front" } ],
-    "iron":   [ { "id": "iron-1",  "piece": "spawn", "at": [1, 1] } ],
-    "destroyables": [
-      { "id": "destroyable-1", "piece": "shoulder", "at": [4, 3], "style": "pillar-3",
-        "materials": "obsidian", "float": 4, "name": "The Cairn" } ]
+ "plan": 1,
+ "meta": {
+  "name": "Scarrowdale"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 8,
+  "surface": 9,
+  "observerY": 40
+ },
+ "pieces": [
+  {
+   "id": "field",
+   "role": "piece",
+   "rect": [
+    -10,
+    -10,
+    20,
+    20
+   ]
+  },
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    -2,
+    6,
+    4,
+    4
+   ]
   }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "camp",
+    "at": [
+     2,
+     2
+    ],
+    "facing": "front"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "style": "pillar-2",
+    "at": [
+     0,
+     4.4
+    ],
+    "materials": "obsidian",
+    "float": 2,
+    "name": "The Cairn"
+   }
+  ]
+ }
 }

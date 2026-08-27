@@ -1,8 +1,9 @@
 <map proto="1.5.0">
-    <name>Meadow Court</name>
+    <name>Meadow Field</name>
     <version>1.0.0</version>
-    <gamemode>ctw</gamemode>
-    <objective>Capture the wool!</objective>
+    <gamemode>dtm</gamemode>
+    <objective>Destroy the enemy's monument!</objective>
+    <phase>development</phase>
     <include id="gapple-kill-reward"/>
     <authors>
         <author>Opus 5</author>
@@ -18,7 +19,7 @@
             <item slot="1" material="bow" unbreakable="true">
                 <enchantment level="1">infinity</enchantment>
             </item>
-            <item slot="2" material="iron pickaxe" unbreakable="true">
+            <item slot="2" material="diamond pickaxe" unbreakable="true">
                 <enchantment level="1">efficiency</enchantment>
             </item>
             <item slot="3" material="iron axe" unbreakable="true">
@@ -54,102 +55,34 @@
         <spawn team="red-team" kit="spawn-kit" yaw="180" region="red-spawn-point"/>
         <spawn team="blue-team" kit="spawn-kit" region="blue-spawn-point"/>
     </spawns>
-    <wools>
-        <wool team="blue-team" color="red" location="27,8,102" monument="red-blue-monument"/>
-        <wool team="red-team" color="blue" location="-28,8,-103" monument="blue-red-monument"/>
-    </wools>
+    <destroyables>
+        <destroyable id="the-cairn" name="The Cairn" owner="red-team" materials="obsidian" region="the-cairn-region"/>
+        <destroyable id="the-cairn-2" name="The Cairn" owner="blue-team" materials="obsidian" region="the-cairn-2-region"/>
+    </destroyables>
     <filters>
         <team id="only-blue">blue-team</team>
         <team id="only-red">red-team</team>
-        <all id="reds-woolrooms-filter">
-            <filter id="not-red"/>
-            <filter id="woolrooms-filter"/>
-        </all>
-        <not id="not-red">
-            <filter id="only-red"/>
-        </not>
-        <material id="chest-filter">chest</material>
-        <any id="woolrooms-filter">
-            <material>web</material>
-            <material>stained glass</material>
-            <material>stained glass pane</material>
-            <material>wood</material>
-            <material>stained clay</material>
-            <all>
-                <cause>player</cause>
-                <any>
-                    <material>water</material>
-                    <material>stationary water</material>
-                </any>
-            </all>
-        </any>
-        <all id="blues-woolrooms-filter">
-            <filter id="not-blue"/>
-            <filter id="woolrooms-filter"/>
-        </all>
-        <not id="not-blue">
-            <filter id="only-blue"/>
-        </not>
-        <not id="no-void">
-            <void/>
-        </not>
     </filters>
     <regions>
-        <point id="blue-spawn-point">20,9,-85</point>
-        <point id="red-spawn-point">-20,9,85</point>
-        <point id="blue-wool-spawn">-27.5,8,-102.5</point>
-        <point id="red-wool-spawn">27.5,8,102.5</point>
+        <point id="blue-spawn-point">0,9,-40</point>
+        <point id="red-spawn-point">0,9,40</point>
         <point id="observer-spawn">0,41,0</point>
-        <block id="blue-red-monument">-28,10,77</block>
-        <block id="red-blue-monument">12,10,-78</block>
-        <rectangle id="blue-spawn" min="10,-90" max="30,-75"/>
-        <rectangle id="red-spawn" min="-30,75" max="-10,90"/>
-        <rectangle id="blue-wool" min="-35,-110" max="-20,-95"/>
-        <rectangle id="red-wool" min="20,95" max="35,110"/>
-        <union id="reds-woolrooms">
-            <region id="red-wool"/>
-        </union>
-        <union id="blues-woolrooms">
-            <region id="blue-wool"/>
-        </union>
-        <union id="woolrooms">
-            <region id="reds-woolrooms"/>
-            <region id="blues-woolrooms"/>
+        <rectangle id="blue-spawn" min="-10,-50" max="10,-30"/>
+        <rectangle id="red-spawn" min="-10,30" max="10,50"/>
+        <cuboid id="the-cairn-region" min="0,11,22" max="1,13,23"/>
+        <cuboid id="the-cairn-2-region" min="-1,11,-23" max="0,13,-22"/>
+        <union id="spawns">
+            <region id="red-spawn"/>
+            <region id="blue-spawn"/>
         </union>
         <negative id="not-spawns">
             <region id="spawns"/>
         </negative>
-        <negative id="not-build-area">
-            <rectangle id="build-area-1" min="-40,-20" max="40,20"/>
-        </negative>
-        <complement id="spawns">
-            <union id="spawn-areas">
-                <region id="red-spawn"/>
-                <region id="blue-spawn"/>
-            </union>
-            <region id="red-blue-monument"/>
-            <region id="blue-red-monument"/>
-        </complement>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
         <apply block="never" region="spawns" message="You may not block/break spawns!"/>
         <apply kit="reset-resistance-kit" region="not-spawns"/>
-        <apply enter="not-red" region="reds-woolrooms" message="You may not enter your own wool room!"/>
-        <apply block="reds-woolrooms-filter" region="reds-woolrooms" message="You may not edit the wool room!"/>
-        <apply use="deny(all(only-red,chest-filter))" region="reds-woolrooms"/>
-        <apply enter="not-blue" region="blues-woolrooms" message="You may not enter your own wool room!"/>
-        <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
-        <apply use="deny(all(only-blue,chest-filter))" region="blues-woolrooms"/>
-        <apply block="no-void" region="not-build-area" message="You may not edit the void!"/>
     </regions>
-    <spawners>
-        <spawner spawn-region="red-wool-spawn" player-region="red-wool" delay="1.5s">
-            <item material="wool" damage="14"/>
-        </spawner>
-        <spawner spawn-region="blue-wool-spawn" player-region="blue-wool" delay="1.5s">
-            <item material="wool" damage="11"/>
-        </spawner>
-    </spawners>
     <block-drops>
         <rule>
             <filter>
@@ -166,7 +99,7 @@
     <itemkeep>
         <item>iron sword</item>
         <item>bow</item>
-        <item>iron pickaxe</item>
+        <item>diamond pickaxe</item>
         <item>iron axe</item>
         <item>water bucket</item>
         <item>golden apple</item>
@@ -185,7 +118,7 @@
     <toolrepair>
         <tool>iron sword</tool>
         <tool>bow</tool>
-        <tool>iron pickaxe</tool>
+        <tool>diamond pickaxe</tool>
         <tool>iron axe</tool>
         <tool>shears</tool>
         <tool>iron spade</tool>

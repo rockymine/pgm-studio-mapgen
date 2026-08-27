@@ -122,28 +122,61 @@
    "rim": {
     "enabled": true,
     "depth": 1,
-    "material": { "kind": "solid", "id": 1, "data": 5 }
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 5
+    }
    },
    "surface": {
     "enabled": true,
     "depth": 1,
-    "material": { "kind": "solid", "id": 5, "data": 5 }
+    "material": {
+     "kind": "solid",
+     "id": 5,
+     "data": 5
+    }
    },
-   "wall": { "kind": "solid", "id": 98, "data": 0 },
+   "wall": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
    "wallEnabled": true,
-   "fill": { "kind": "solid", "id": 98, "data": 0 }
+   "fill": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   }
   }
  },
  "roomStyles": {
-  "spawn": "@showcase-hall",
-  "cage": "@showcase-cage"
+  "spawn": "@showcase-hall"
  },
  "addShapes": [
-  { "id": "gullet-cut", "type": "rectangle", "operation": "subtract",
-    "floor": 0, "base_height": 40,
-    "min_x": -40, "min_z": 60, "max_x": 20, "max_z": 70 },
-  { "id": "deck", "type": "rectangle", "operation": "add", "override": true,
-    "floor": 13, "base_height": 4, "theme": "deck",
-    "min_x": -38, "min_z": 57, "max_x": -12, "max_z": 73 }
+  {
+   "id": "gullet-cut",
+   "type": "rectangle",
+   "operation": "subtract",
+   "floor": 0,
+   "base_height": 40,
+   "min_x": -30.0,
+   "min_z": -5.0,
+   "max_x": 30.0,
+   "max_z": 5.0
+  },
+  {
+   "id": "deck",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "floor": 13,
+   "base_height": 4,
+   "theme": "deck",
+   "min_x": -28.0,
+   "min_z": -8.0,
+   "max_x": -2.0,
+   "max_z": 8.0
+  }
  ]
 }

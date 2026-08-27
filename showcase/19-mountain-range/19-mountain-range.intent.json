@@ -11,7 +11,7 @@
    "color": "blue"
   }
  ],
- "maxPlayers": 16,
+ "maxPlayers": 8,
  "spawns": [
   {
    "layer": null,
@@ -23,31 +23,25 @@
    "team": "red",
    "point": {
     "x": 0,
-    "y": 12,
-    "z": 85
+    "y": 9,
+    "z": 40
    },
    "protection": [
     {
      "minX": -10,
-     "minZ": 80,
+     "minZ": 30,
      "maxX": 10,
-     "maxZ": 90
+     "maxZ": 50
     }
    ],
    "yaw": 180,
    "piece": {
     "minX": -10,
-    "minZ": 80,
+    "minZ": 30,
     "maxX": 10,
-    "maxZ": 90
+    "maxZ": 50
    },
-   "iron": [
-    {
-     "x": -5,
-     "y": 12,
-     "z": 85
-    }
-   ]
+   "iron": []
   },
   {
    "layer": null,
@@ -59,51 +53,38 @@
    "team": "blue",
    "point": {
     "x": 0,
-    "y": 12,
-    "z": -85
+    "y": 9,
+    "z": -40
    },
    "protection": [
     {
      "minX": -10,
-     "minZ": -90,
+     "minZ": -50,
      "maxX": 10,
-     "maxZ": -80
+     "maxZ": -30
     }
    ],
    "yaw": 0,
    "piece": {
     "minX": -10,
-    "minZ": -90,
+    "minZ": -50,
     "maxX": 10,
-    "maxZ": -80
+    "maxZ": -30
    },
-   "iron": [
-    {
-     "x": 5,
-     "y": 12,
-     "z": -85
-    }
-   ]
+   "iron": []
   }
  ],
  "observer": {
   "point": {
    "x": 0,
-   "y": 80,
+   "y": 40,
    "z": 0
   },
   "yaw": 0
  },
  "build": {
   "maxHeight": null,
-  "areas": [
-   {
-    "minX": -45,
-    "minZ": -10,
-    "maxX": 45,
-    "maxZ": 10
-   }
-  ],
+  "areas": [],
   "holes": [],
   "voidEnforcement": null
  },
@@ -119,14 +100,14 @@
    },
    "owner": "red",
    "name": "The Cairn",
-   "style": "pillar-3",
+   "style": "pillar-2",
    "materials": "obsidian",
    "anchor": {
-    "x": -20,
-    "y": 12,
-    "z": 55
+    "x": 0,
+    "y": 9,
+    "z": 22
    },
-   "float": 4,
+   "float": 2,
    "box": null
   },
   {
@@ -138,20 +119,21 @@
    },
    "owner": "blue",
    "name": "The Cairn",
-   "style": "pillar-3",
+   "style": "pillar-2",
    "materials": "obsidian",
    "anchor": {
-    "x": 19,
-    "y": 12,
-    "z": -56
+    "x": -1,
+    "y": 9,
+    "z": -23
    },
-   "float": 4,
+   "float": 2,
    "box": null
   }
  ],
  "cores": null,
  "meta": {
   "name": "Scarrowdale",
+  "created": "",
   "authors": [],
   "contributors": []
  },

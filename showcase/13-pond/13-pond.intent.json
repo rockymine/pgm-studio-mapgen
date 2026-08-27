@@ -22,24 +22,24 @@
    },
    "team": "red",
    "point": {
-    "x": -20,
+    "x": 0,
     "y": 9,
-    "z": 85
+    "z": 40
    },
    "protection": [
     {
-     "minX": -30,
-     "minZ": 75,
-     "maxX": -10,
-     "maxZ": 90
+     "minX": -10,
+     "minZ": 30,
+     "maxX": 10,
+     "maxZ": 50
     }
    ],
    "yaw": 180,
    "piece": {
-    "minX": -30,
-    "minZ": 75,
-    "maxX": -10,
-    "maxZ": 90
+    "minX": -10,
+    "minZ": 30,
+    "maxX": 10,
+    "maxZ": 50
    },
    "iron": []
   },
@@ -52,24 +52,24 @@
    },
    "team": "blue",
    "point": {
-    "x": 20,
+    "x": 0,
     "y": 9,
-    "z": -85
+    "z": -40
    },
    "protection": [
     {
-     "minX": 10,
-     "minZ": -90,
-     "maxX": 30,
-     "maxZ": -75
+     "minX": -10,
+     "minZ": -50,
+     "maxX": 10,
+     "maxZ": -30
     }
    ],
    "yaw": 0,
    "piece": {
-    "minX": 10,
-    "minZ": -90,
-    "maxX": 30,
-    "maxZ": -75
+    "minX": -10,
+    "minZ": -50,
+    "maxX": 10,
+    "maxZ": -30
    },
    "iron": []
   }
@@ -84,164 +84,62 @@
  },
  "build": {
   "maxHeight": null,
-  "areas": [
-   {
-    "minX": -40,
-    "minZ": -20,
-    "maxX": 40,
-    "maxZ": 20
-   }
-  ],
+  "areas": [],
   "holes": [],
   "voidEnforcement": null
  },
  "waterLanes": null,
- "wools": [
+ "wools": [],
+ "destroyables": [
   {
    "layer": null,
    "stamp": {
-    "kind": "wool",
-    "unit": "wool-1",
+    "kind": "destroyable",
+    "unit": "destroyable-1",
     "image": 0
    },
    "owner": "red",
-   "color": "red",
-   "room": [
-    {
-     "minX": 20,
-     "minZ": 95,
-     "maxX": 35,
-     "maxZ": 110
-    }
-   ],
-   "spawn": {
-    "x": 27.5,
+   "name": "The Cairn",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 0,
     "y": 9,
-    "z": 102.5
+    "z": 22
    },
-   "monuments": [],
-   "piece": {
-    "minX": 20,
-    "minZ": 95,
-    "maxX": 35,
-    "maxZ": 110
-   },
-   "entries": [
-    {
-     "minX": 20,
-     "minZ": 95,
-     "maxX": 35,
-     "maxZ": 95
-    }
-   ]
+   "float": 2,
+   "box": null
   },
   {
    "layer": null,
    "stamp": {
-    "kind": "wool",
-    "unit": "wool-1",
+    "kind": "destroyable",
+    "unit": "destroyable-1",
     "image": 1
    },
    "owner": "blue",
-   "color": "blue",
-   "room": [
-    {
-     "minX": -35,
-     "minZ": -110,
-     "maxX": -20,
-     "maxZ": -95
-    }
-   ],
-   "spawn": {
-    "x": -27.5,
+   "name": "The Cairn",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -1,
     "y": 9,
-    "z": -102.5
+    "z": -23
    },
-   "monuments": [],
-   "piece": {
-    "minX": -35,
-    "minZ": -110,
-    "maxX": -20,
-    "maxZ": -95
-   },
-   "entries": [
-    {
-     "minX": -35,
-     "minZ": -95,
-     "maxX": -20,
-     "maxZ": -95
-    }
-   ]
+   "float": 2,
+   "box": null
   }
  ],
- "destroyables": null,
  "cores": null,
  "meta": {
   "name": "Kettlemere",
+  "created": "",
   "authors": [],
   "contributors": []
  },
  "symmetry": null,
  "islandTeams": {
-  "1": "blue",
-  "2": "red"
+  "1": "red"
  },
- "structures": {
-  "layer": null,
-  "roomFloors": [
-   {
-    "area": {
-     "minX": 20,
-     "minZ": 95,
-     "maxX": 35,
-     "maxZ": 110
-    },
-    "stamp": {
-     "kind": "roomfloor",
-     "unit": "room",
-     "image": 0
-    }
-   },
-   {
-    "area": {
-     "minX": -35,
-     "minZ": -110,
-     "maxX": -20,
-     "maxZ": -95
-    },
-    "stamp": {
-     "kind": "roomfloor",
-     "unit": "room",
-     "image": 1
-    }
-   }
-  ],
-  "redstoneLines": [
-   {
-    "x1": 20,
-    "z1": 95,
-    "x2": 34,
-    "z2": 95,
-    "stamp": {
-     "kind": "redstoneline",
-     "unit": "0",
-     "image": 0
-    }
-   },
-   {
-    "x1": -35,
-    "z1": -96,
-    "x2": -21,
-    "z2": -96,
-    "stamp": {
-     "kind": "redstoneline",
-     "unit": "0",
-     "image": 1
-    }
-   }
-  ],
-  "ironCubes": [],
-  "walls": [],
-  "isEmpty": false
- }
+ "structures": null
 }

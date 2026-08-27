@@ -12,102 +12,32 @@
  },
  "pieces": [
   {
-   "id": "shelf",
+   "id": "field",
    "role": "piece",
    "rect": [
-    -8,
-    3,
-    16,
-    3
+    -10,
+    -10,
+    20,
+    20
    ]
   },
   {
-   "id": "flank-w",
-   "role": "piece",
-   "rect": [
-    -8,
-    6,
-    3,
-    6
-   ]
-  },
-  {
-   "id": "flank-e",
-   "role": "piece",
-   "rect": [
-    5,
-    6,
-    3,
-    6
-   ]
-  },
-  {
-   "id": "apron",
-   "role": "piece",
-   "rect": [
-    -8,
-    12,
-    9,
-    3
-   ]
-  },
-  {
-   "id": "lane",
-   "role": "piece",
-   "rect": [
-    1,
-    12,
-    7,
-    3
-   ]
-  },
-  {
-   "id": "spawn",
+   "id": "camp",
    "role": "spawn",
    "rect": [
-    -6,
-    15,
+    -2,
+    6,
     4,
-    3
-   ]
-  },
-  {
-   "id": "rise",
-   "role": "piece",
-   "rect": [
-    4,
-    15,
-    3,
     4
    ]
-  },
-  {
-   "id": "room",
-   "role": "wool-room",
-   "rect": [
-    4,
-    19,
-    3,
-    3
-   ]
   }
  ],
- "zones": [
-  {
-   "id": "mid",
-   "rect": [
-    -8,
-    -4,
-    16,
-    8
-   ]
-  }
- ],
+ "zones": [],
  "placements": {
   "spawns": [
    {
     "id": "spawn-1",
-    "piece": "spawn",
+    "piece": "camp",
     "at": [
      2,
      2
@@ -115,14 +45,17 @@
     "facing": "front"
    }
   ],
-  "wools": [
+  "destroyables": [
    {
-    "id": "wool-1",
-    "piece": "room",
+    "id": "destroyable-1",
+    "style": "pillar-2",
     "at": [
-     1.5,
-     1.5
-    ]
+     0,
+     4.4
+    ],
+    "materials": "obsidian",
+    "float": 2,
+    "name": "The Cairn"
    }
   ]
  }

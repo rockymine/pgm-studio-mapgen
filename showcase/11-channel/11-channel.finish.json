@@ -118,12 +118,19 @@
   }
  },
  "roomStyles": {
-  "spawn": "@showcase-hall",
-  "cage": "@showcase-cage"
+  "spawn": "@showcase-hall"
  },
  "addShapes": [
-  { "id": "gullet-cut", "type": "rectangle", "operation": "subtract",
-    "floor": 0, "base_height": 40,
-    "min_x": -40, "min_z": 60, "max_x": 20, "max_z": 70 }
+  {
+   "id": "gullet-cut",
+   "type": "rectangle",
+   "operation": "subtract",
+   "floor": 0,
+   "base_height": 40,
+   "min_x": -30.0,
+   "min_z": -5.0,
+   "max_x": 30.0,
+   "max_z": 5.0
+  }
  ]
 }

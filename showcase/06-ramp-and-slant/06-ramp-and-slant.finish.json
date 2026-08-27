@@ -264,8 +264,7 @@
   }
  },
  "roomStyles": {
-  "spawn": "@showcase-hall",
-  "cage": "@showcase-cage"
+  "spawn": "@showcase-hall"
  },
  "addShapes": [
   {
@@ -281,20 +280,20 @@
    "theme": "ramp",
    "vertices": [
     [
-     21,
-     75
+     23,
+     12
     ],
     [
-     34,
-     75
+     36,
+     12
     ],
     [
-     34,
-     95
+     36,
+     32
     ],
     [
-     21,
-     95
+     23,
+     32
     ]
    ],
    "anchor_heights": [
@@ -317,20 +316,20 @@
    "theme": "slab",
    "vertices": [
     [
-     -38,
-     34
-    ],
-    [
-     -27,
-     32
+     -36,
+     -30
     ],
     [
      -25,
-     52
+     -32
     ],
     [
-     -36,
-     55
+     -23,
+     -12
+    ],
+    [
+     -34,
+     -8
     ]
    ],
    "anchor_heights": [

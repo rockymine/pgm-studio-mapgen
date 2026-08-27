@@ -6,10 +6,10 @@
    "cz": 0
   },
   "bbox": {
-   "min_x": -45,
-   "max_x": 45,
-   "min_z": -115,
-   "max_z": 115
+   "min_x": -55,
+   "max_x": 55,
+   "min_z": -55,
+   "max_z": 55
   }
  },
  "layers": [
@@ -24,6 +24,7 @@
       "type": "polygon",
       "operation": "add",
       "override": false,
+      "keepClear": false,
       "min_x": null,
       "min_z": null,
       "max_x": null,
@@ -33,52 +34,20 @@
       "radius": null,
       "vertices": [
        [
-        -40,
-        15
+        -50,
+        -50
        ],
        [
-        40,
-        15
+        50,
+        -50
        ],
        [
-        40,
-        75
+        50,
+        50
        ],
        [
-        35,
-        75
-       ],
-       [
-        35,
-        110
-       ],
-       [
-        20,
-        110
-       ],
-       [
-        20,
-        75
-       ],
-       [
-        -10,
-        75
-       ],
-       [
-        -10,
-        90
-       ],
-       [
-        -30,
-        90
-       ],
-       [
-        -30,
-        75
-       ],
-       [
-        -40,
-        75
+        -50,
+        50
        ]
       ],
       "controls": null,
@@ -98,60 +67,15 @@
       "theme": null
      },
      {
-      "id": "s1",
-      "type": "polygon",
-      "operation": "subtract",
-      "override": false,
-      "min_x": null,
-      "min_z": null,
-      "max_x": null,
-      "max_z": null,
-      "center_x": null,
-      "center_z": null,
-      "radius": null,
-      "vertices": [
-       [
-        -25,
-        30
-       ],
-       [
-        25,
-        30
-       ],
-       [
-        25,
-        60
-       ],
-       [
-        -25,
-        60
-       ]
-      ],
-      "controls": null,
-      "path_edge": null,
-      "path_seed": null,
-      "height_mode": null,
-      "skirt": null,
-      "relief_scope": null,
-      "base_height": null,
-      "anchor_heights": null,
-      "floor": null,
-      "role": null,
-      "intentRef": null,
-      "color": null,
-      "height_authored": null,
-      "doors": null,
-      "theme": null
-     },
-     {
       "id": "spawn-red",
       "type": "rectangle",
       "operation": "add",
       "override": false,
-      "min_x": -30,
-      "min_z": 75,
-      "max_x": -10,
-      "max_z": 90,
+      "keepClear": false,
+      "min_x": -10,
+      "min_z": 30,
+      "max_x": 10,
+      "max_z": 50,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -179,10 +103,11 @@
       "type": "rectangle",
       "operation": "add",
       "override": false,
-      "min_x": 10,
-      "min_z": -90,
-      "max_x": 30,
-      "max_z": -75,
+      "keepClear": false,
+      "min_x": -10,
+      "min_z": -50,
+      "max_x": 10,
+      "max_z": -30,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -202,66 +127,6 @@
       "height_authored": null,
       "doors": null,
       "theme": null
-     },
-     {
-      "id": "wool-red-red",
-      "type": "rectangle",
-      "operation": "add",
-      "override": false,
-      "min_x": 20,
-      "min_z": 95,
-      "max_x": 35,
-      "max_z": 110,
-      "center_x": null,
-      "center_z": null,
-      "radius": null,
-      "vertices": null,
-      "controls": null,
-      "path_edge": null,
-      "path_seed": null,
-      "height_mode": null,
-      "skirt": null,
-      "relief_scope": "hold",
-      "base_height": 9,
-      "anchor_heights": null,
-      "floor": null,
-      "role": "woolRoom",
-      "intentRef": "red:red",
-      "color": "red",
-      "height_authored": null,
-      "doors": [
-       "-z"
-      ],
-      "theme": null
-     },
-     {
-      "id": "wool-blue-blue",
-      "type": "rectangle",
-      "operation": "add",
-      "override": false,
-      "min_x": -35,
-      "min_z": -110,
-      "max_x": -20,
-      "max_z": -95,
-      "center_x": null,
-      "center_z": null,
-      "radius": null,
-      "vertices": null,
-      "controls": null,
-      "path_edge": null,
-      "path_seed": null,
-      "height_mode": null,
-      "skirt": null,
-      "relief_scope": null,
-      "base_height": null,
-      "anchor_heights": null,
-      "floor": null,
-      "role": "woolRoom",
-      "intentRef": "blue:blue",
-      "color": "blue",
-      "height_authored": null,
-      "doors": null,
-      "theme": null
      }
     ],
     "islands": [
@@ -270,8 +135,7 @@
       "name": "Team island",
       "mirrors": true,
       "shapeIds": [
-       "s0",
-       "s1"
+       "s0"
       ]
      }
     ]
@@ -421,11 +285,7 @@
      "inlayInset": 2,
      "isPlain": true
     },
-    "footing": {
-     "kind": "solid",
-     "id": 98,
-     "data": 0
-    }
+    "footing": null
    },
    "roof": {
     "form": "gable",
@@ -636,149 +496,6 @@
     "width": 2,
     "height": 3
    }
-  },
-  "cage": {
-   "foundation": {
-    "plate": {
-     "stack": {
-      "bands": [
-       {
-        "material": {
-         "kind": "solid",
-         "id": 4,
-         "data": 0
-        },
-        "thickness": 1
-       }
-      ],
-      "ending": "repeat"
-     },
-     "extent": 1
-    },
-    "surface": {
-     "field": null,
-     "border": null,
-     "borderWidth": 1,
-     "inlay": null,
-     "inlayInset": 2,
-     "isPlain": true
-    },
-    "footing": {
-     "kind": "solid",
-     "id": 98,
-     "data": 0
-    }
-   },
-   "roof": {
-    "form": "hip",
-    "pitch": 1,
-    "slab": -1,
-    "slabData": 0,
-    "overhang": 1,
-    "ridgeCap": true,
-    "hole": false,
-    "body": {
-     "kind": "solid",
-     "id": 45,
-     "data": 0
-    },
-    "verge": {
-     "kind": "solid",
-     "id": 5,
-     "data": 5
-    },
-    "gable": {
-     "kind": "solid",
-     "id": 5,
-     "data": 5
-    },
-    "gableWindows": {
-     "form": "open",
-     "block": 102,
-     "hostBlock": -1,
-     "hostData": 0,
-     "data": 0,
-     "sill": 2,
-     "width": 1,
-     "height": 1,
-     "spacing": 3
-    }
-   },
-   "wall": {
-    "stack": {
-     "bands": [
-      {
-       "material": {
-        "kind": "noise",
-        "seed": 9067,
-        "scale": 2,
-        "octaves": 1,
-        "stops": [
-         {
-          "kind": "solid",
-          "id": 4,
-          "data": 0
-         },
-         {
-          "kind": "solid",
-          "id": 1,
-          "data": 5
-         }
-        ],
-        "rise": 2
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 98,
-        "data": 0
-       },
-       "thickness": 4
-      }
-     ],
-     "ending": "repeat"
-    },
-    "extent": 5
-   },
-   "post": {
-    "kind": "solid",
-    "id": 162,
-    "data": 1
-   },
-   "windows": {
-    "form": "pane",
-    "block": 102,
-    "hostBlock": -1,
-    "hostData": 0,
-    "data": 0,
-    "sill": 2,
-    "width": 1,
-    "height": 2,
-    "spacing": 3
-   },
-   "storeys": [],
-   "porch": null,
-   "front": null,
-   "beams": {
-    "block": 162,
-    "data": 1,
-    "reach": 1,
-    "any": true
-   },
-   "doorway": {
-    "door": "air",
-    "head": {
-     "form": "arched",
-     "block": 109,
-     "fill": "upperSlab",
-     "fillBlock": 44,
-     "fillData": 5
-    },
-    "width": 2,
-    "height": 3
-   }
   }
  },
  "dressing": null,
@@ -806,15 +523,15 @@
      "points": [
       [
        -40,
-       18
+       -29
       ],
       [
        0,
-       18
+       -29
       ],
       [
        40,
-       18
+       -29
       ]
      ],
      "h": [
@@ -831,23 +548,23 @@
      "ring": [
       [
        -38,
-       36
+       -11
       ],
       [
        -28,
-       33
+       -14
       ],
       [
        -26,
-       46
+       -1
       ],
       [
        -31,
-       56
+       9
       ],
       [
        -38,
-       54
+       7
       ]
      ]
     },
@@ -858,27 +575,27 @@
      "ring": [
       [
        26,
-       36
+       -11
       ],
       [
        38,
-       34
+       -13
       ],
       [
        40,
-       48
+       1
       ],
       [
        34,
-       58
+       11
       ],
       [
        26,
-       54
+       7
       ],
       [
        24,
-       44
+       -3
       ]
      ]
     },
@@ -889,19 +606,19 @@
      "ring": [
       [
        -34,
-       62
+       15
       ],
       [
        -6,
-       62
+       15
       ],
       [
        -6,
-       74
+       27
       ],
       [
        -34,
-       74
+       27
       ]
      ]
     },
@@ -912,19 +629,19 @@
      "ring": [
       [
        -28,
-       65
+       18
       ],
       [
        -12,
-       65
+       18
       ],
       [
        -12,
-       71
+       24
       ],
       [
        -28,
-       71
+       24
       ]
      ]
     }
@@ -935,23 +652,23 @@
      "ring": [
       [
        6,
-       60
+       13
       ],
       [
        20,
-       58
+       11
       ],
       [
        24,
-       70
+       23
       ],
       [
        14,
-       76
+       29
       ],
       [
        4,
-       72
+       25
       ]
      ],
      "amount": 4,

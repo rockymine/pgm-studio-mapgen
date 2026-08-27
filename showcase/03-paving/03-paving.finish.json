@@ -294,8 +294,7 @@
   }
  },
  "roomStyles": {
-  "spawn": "@showcase-hall",
-  "cage": "@showcase-cage"
+  "spawn": "@showcase-hall"
  },
  "addShapes": [
   {
@@ -309,10 +308,10 @@
    "skirt": 0,
    "relief_scope": "exclude",
    "theme": "court",
-   "min_x": -38,
-   "min_z": 60,
-   "max_x": -6,
-   "max_z": 75
+   "min_x": -21,
+   "min_z": -8,
+   "max_x": 11,
+   "max_z": 8
   },
   {
    "id": "threshold",
@@ -325,10 +324,10 @@
    "skirt": 0,
    "relief_scope": "exclude",
    "theme": "threshold",
-   "min_x": -26,
-   "min_z": 72,
-   "max_x": -14,
-   "max_z": 75
+   "min_x": -9,
+   "min_z": 4,
+   "max_x": 3,
+   "max_z": 8
   },
   {
    "id": "dais",
@@ -341,10 +340,10 @@
    "skirt": 0,
    "relief_scope": "exclude",
    "theme": "plinth",
-   "min_x": -4,
-   "min_z": 61,
-   "max_x": 4,
-   "max_z": 69
+   "min_x": 13,
+   "min_z": -6,
+   "max_x": 21,
+   "max_z": 2
   }
  ]
 }
