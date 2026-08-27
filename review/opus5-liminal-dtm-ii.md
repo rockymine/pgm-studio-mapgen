@@ -198,10 +198,21 @@ a Pyramid or a Snowy Taiga walks the outer strip, crosses an oak deck over the m
 the town. There is no other way in on foot.
 
 **Two flights to the wall-walk on each side face.** The gate cuts each face in two, so one stair a
-face left fifty-six blocks of rampart with no way up — `SK11` said so by name, at 224 places. Every
-flight on this board is stated as **one rectangle per course** rather than as a ramp, because a ramp
-at one course a cell rasterizes into treads of two and a two-block rise costs a placed block to
-climb. Nothing here costs a block.
+face left fifty-six blocks of rampart with no way up — `SK11` said so by name, at 224 places.
+
+**A flight is one shape where the run allows it.** A polygon carries a height per vertex and the
+rasterizer interpolates between them, so a tilted quad *is* a stair — the courses are what a sloped
+surface rasterizes to. What decides whether it walks is the gradient: measured on a 24-block quad, one
+course a cell lands **nine two-block steps in twenty-four** and a two-block rise costs a placed block,
+while two cells a course lands none. Each of the four wall flights is therefore a single polygon, 16
+blocks of run for 8 courses of rise. Profiled along its own line: 35 → 44, every step one block, and
+the walk up and back costs **0 placed blocks and 0 drops**.
+
+The stairwell, the slipways and the Stronghold's flight stay one rectangle per course, and the reason
+is space rather than preference: a shaft 24 blocks long that must fall 24 courses cannot be 2:1, nor
+can a slipway climbing 8 courses out of a river 16 wide. The Pyramid's batter is 2:1 and could be one
+polygon, but it is **cut round the stairwell it crosses** — rectangles clip round a rectangle with
+plain arithmetic, and a tilted polygon does not.
 
 **Down to the undercroft, once a side.** A flight of twenty-four one-block treads falls from beside
 the Pyramid's door into the corridor that runs west to the Poolroom, and out of that into the maze.
