@@ -17,11 +17,11 @@ The plan is `02-theme`'s, untouched, renamed **Kettlemere**. The finish gains a 
     { "id": "strand", "kind": "line", "points": [[-40,18],[0,18],[40,18]], "h": [9,9,9], "width": 5 }
   ],
   "pushes": [
-    { "id": "kettle", "ring": [[-38,32],[-29,30],[-26,40],[-27,52],[-33,57],[-39,50]],
+    { "id": "kettle", "ring": [[-38,-6],[-29,-8],[-26,2],[-27,14],[-33,20],[-39,12]],
       "amount": 0, "falloff": 10, "roughness": 0.35, "crown": -5, "seed": 7 }
   ] } },
 "dressing": { "props": [
-  { "kind": "water", "id": "kettlemere", "points": [[-33,36],[-32,45],[-33,53]],
+  { "kind": "water", "id": "kettlemere", "points": [[-33,-2],[-32,8],[-33,16]],
     "radius": 4, "depth": 3, "form": "natural", "edge": 0.5,
     "shore": 1.2, "shoreWander": true, "seed": 21 }
 ] }
@@ -132,7 +132,7 @@ against the *drawn* shape rather than the *solved* one is a cliff waiting one re
 | Read | Answer |
 |---|---|
 | `POST /plan/evaluate` | score **0**, `valid: true` — the plan is untouched |
-| `POST …/sketch/relief/read` | cells 4 125 · low **4** · high 9 · relief 5 · symmetry error 0 |
+| `POST …/sketch/relief/read` | cells 10 000 · low **4** · high 9 · relief 5 · symmetry error 0 |
 | `GET …/column?at=-33,45` (pond centre) | y3 Water · y2 Water · y1 Water · y0 **Bedrock** — `depth` reached the floor |
 | `GET …/column?at=-37,45` (pond shore) | y6 Gravel (bank) · y5–4 Dirt · y3–1 Stone · y0 Bedrock — dry, painted, not flooded |
 | `GET …/coverage` | 3.3% dead — unchanged from `02-theme`; a pond moves ground and paints it, it does not add or remove any |
