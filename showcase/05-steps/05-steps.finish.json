@@ -115,9 +115,139 @@
     "id": 1,
     "data": 0
    }
+  },
+  "tread": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       }
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "tread-alt": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 121,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 5
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       }
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
   }
  },
  "roomStyles": {
   "spawn": "@showcase-hall"
+ },
+ "themeById": {
+  "s1": "tread",
+  "s2": "tread-alt",
+  "s3": "tread",
+  "s4": "tread-alt"
  }
 }

@@ -18,7 +18,7 @@
     -10,
     -10,
     20,
-    14
+    12
    ]
   },
   {
@@ -26,14 +26,36 @@
    "role": "piece",
    "rect": [
     -10,
-    4,
+    2,
+    20,
+    1
+   ],
+   "surface": 10
+  },
+  {
+   "id": "tread-2",
+   "role": "piece",
+   "rect": [
+    -10,
+    3,
     20,
     1
    ],
    "surface": 11
   },
   {
-   "id": "tread-2",
+   "id": "tread-3",
+   "role": "piece",
+   "rect": [
+    -10,
+    4,
+    20,
+    1
+   ],
+   "surface": 12
+  },
+  {
+   "id": "tread-4",
    "role": "piece",
    "rect": [
     -10,
@@ -52,7 +74,7 @@
     8,
     4
    ],
-   "surface": 15
+   "surface": 13
   },
   {
    "id": "terrace-e",
@@ -63,7 +85,7 @@
     8,
     4
    ],
-   "surface": 15
+   "surface": 13
   },
   {
    "id": "camp",
@@ -74,7 +96,7 @@
     4,
     4
    ],
-   "surface": 15
+   "surface": 13
   }
  ],
  "zones": [],

@@ -308,10 +308,10 @@
    "skirt": 0,
    "relief_scope": "exclude",
    "theme": "court",
-   "min_x": -21,
-   "min_z": -8,
-   "max_x": 11,
-   "max_z": 8
+   "min_x": -16,
+   "min_z": 4,
+   "max_x": 16,
+   "max_z": 20
   },
   {
    "id": "threshold",
@@ -324,10 +324,10 @@
    "skirt": 0,
    "relief_scope": "exclude",
    "theme": "threshold",
-   "min_x": -9,
-   "min_z": 4,
-   "max_x": 3,
-   "max_z": 8
+   "min_x": -6,
+   "min_z": 24,
+   "max_x": 6,
+   "max_z": 30
   },
   {
    "id": "dais",
@@ -340,10 +340,10 @@
    "skirt": 0,
    "relief_scope": "exclude",
    "theme": "plinth",
-   "min_x": 13,
-   "min_z": -6,
-   "max_x": 21,
-   "max_z": 2
+   "min_x": 20,
+   "min_z": 4,
+   "max_x": 28,
+   "max_z": 12
   }
  ]
 }

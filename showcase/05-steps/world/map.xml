@@ -64,13 +64,13 @@
         <team id="only-red">red-team</team>
     </filters>
     <regions>
-        <point id="blue-spawn-point">0,15,-40</point>
-        <point id="red-spawn-point">0,15,40</point>
+        <point id="blue-spawn-point">0,13,-40</point>
+        <point id="red-spawn-point">0,13,40</point>
         <point id="observer-spawn">0,41,0</point>
         <rectangle id="blue-spawn" min="-10,-50" max="10,-30"/>
         <rectangle id="red-spawn" min="-10,30" max="10,50"/>
-        <cuboid id="the-cairn-region" min="0,13,22" max="1,15,23"/>
-        <cuboid id="the-cairn-2-region" min="-1,13,-23" max="0,15,-22"/>
+        <cuboid id="the-cairn-region" min="0,14,22" max="1,16,23"/>
+        <cuboid id="the-cairn-2-region" min="-1,14,-23" max="0,16,-22"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -132,5 +132,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>35</maxbuildheight>
+    <maxbuildheight>33</maxbuildheight>
 </map>

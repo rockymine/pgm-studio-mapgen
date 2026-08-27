@@ -3,26 +3,34 @@
 **The technique: elevation stated on the plan, as one piece per tread — and the two things nothing will tell
 you about it.**
 
-`02-theme`'s `rise` — the flat 20-block strip between the lane and the wool room — becomes four pieces one
-cell deep, each a block higher than the last, and the room stands on top of them.
+`02-theme`'s one `field` piece is cut back to `z −50..10`, and the twenty blocks between there and the spawn
+camp become four pieces one cell deep, each a block higher than the last. The camp and the terraces either
+side of it stand on top of them.
 
 ## The plan diff, in full
 
 ```json
-{ "id": "tread-1", "role": "piece", "rect": [4, 15, 3, 1], "surface": 10 },
-{ "id": "tread-2", "role": "piece", "rect": [4, 16, 3, 1], "surface": 11 },
-{ "id": "tread-3", "role": "piece", "rect": [4, 17, 3, 1], "surface": 12 },
-{ "id": "tread-4", "role": "piece", "rect": [4, 18, 3, 1], "surface": 13 },
-{ "id": "room",  "role": "wool-room", "rect": [4, 19, 3, 3], "surface": 13 }
+{ "id": "field",     "role": "piece", "rect": [-10, -10, 20, 12] },
+{ "id": "tread-1",   "role": "piece", "rect": [-10,   2, 20,  1], "surface": 10 },
+{ "id": "tread-2",   "role": "piece", "rect": [-10,   3, 20,  1], "surface": 11 },
+{ "id": "tread-3",   "role": "piece", "rect": [-10,   4, 20,  1], "surface": 12 },
+{ "id": "tread-4",   "role": "piece", "rect": [-10,   5, 20,  1], "surface": 13 },
+{ "id": "terrace-w", "role": "piece", "rect": [-10,   6,  8,  4], "surface": 13 },
+{ "id": "terrace-e", "role": "piece", "rect": [  2,   6,  8,  4], "surface": 13 },
+{ "id": "camp",      "role": "spawn", "rect": [ -2,   6,  4,  4], "surface": 13 }
 ```
+
+**Pieces may not overlap where their surfaces differ** — `PL4` refuses that outright — so the flight is not
+laid *over* the field, it is cut *out* of it. That is what turns two pieces into eight, and it is the honest
+cost of stating elevation on a plan: a step is a piece, and a piece takes its ground from its neighbours.
 
 That is the whole of it. `surface` overrides the global height for one piece, and **the compiler makes one
 shape per distinct height within a component**, so four pieces become four polygons:
 
 ```
-s0  h  9   the island                     s3  h 12   tread-3
-s1  h 10   tread-1                        s4  h 13   tread-4 fused with the room's ground
-s2  h 11   tread-2                        s5  —      the hole
+s0  h  9   the field                      s3  h 12   tread-3
+s1  h 10   tread-1                        s4  h 13   tread-4 fused with the terraces and the camp
+s2  h 11   tread-2
 ```
 
 Those ids are what the paint keys on. The board reaches Sketch as a flight, not as a grid of rectangles.
@@ -41,14 +49,18 @@ both over a riser of one course of Andesite on two of Cobblestone. The flight re
 a slope that happens to be quantised, and that costs two theme entries and four keys.
 
 ```
-GET …/column?at=27,z          the flight, one read per tread
-  z 74   y  8  Grass Block      the lane
-  z 78   y  9  Stone Bricks     tread-1
-  z 83   y 10  Andesite         tread-2
-  z 88   y 11  Stone Bricks     tread-3
-  z 93   y 12  Andesite         tread-4
-  z 100  y 12  …                the wool room's plinth, same shape
+GET …/column?at=20,z          the flight, one read per tread
+  z  8   y  8  Grass Block      the field
+  z 12   y  9  Stone Bricks     tread-1
+  z 17   y 10  Andesite         tread-2
+  z 23   y 11  Stone Bricks     tread-3
+  z 27   y 12  Andesite         tread-4
+  z 32   y 12  Andesite         the terrace the camp stands on, same shape
 ```
+
+The cut is at `x 20` rather than at `x 0` because the cairn floats over the axis at `(0, 22)` and a column
+read there answers the objective, not the ground. The flight runs the full width of the board, so any `x`
+clear of the objectives and the spawn pads reads the same six values.
 
 ## The two things nothing tells you
 
@@ -72,23 +84,38 @@ Even measured correctly it would be the wrong question here: EL1's evidence is w
 another, and a stair is not two plateaus. Taking the complaint at face value produces the next fault, which
 is:
 
-**The export gate will not tell you a step is too tall.** The first build of this board used deltas of **2**
-— four risers of two blocks, which no player can walk up. Everything passed:
+**One gate does tell you a step is too tall, and it only looks at one step.** Building this flight with
+deltas of **2** — four risers of two blocks, which no player can walk up — draws exactly one finding, from
+the *last* riser:
 
-| Read | Answer on the 2-block flight |
-|---|---|
-| `POST /plan/evaluate` | score **0**, `valid: true`, **no `EL1`** — the deltas were even |
-| `GET …/preflight` | `traversability: spawn ↔ objective chain connected` · **export gate OPEN** |
-| `GET …/coverage` | 3.3% dead, unchanged |
+```
+[complaint] SP8  spawn egress steps 2 blocks at 'tread-2'–'camp'
+                 — use 1-level steps or a ramp against the spawn
+```
 
-The board was measurably unwalkable and four gates said it was fine. The reason is in the walk's own
-docstring: `WalkGround.Steps` asks only whether the vertical span fits under the clearance over the lower
-place — *"On a board with nothing stacked over it every place has open sky, so this never refuses a step."*
-It models a player **who can place blocks**, which is correct for a capture board where the strait is crossed
-by bridging and wrong as a test of whether a stair is a stair.
+`SP8` reads the step **out of a spawn** and nothing else. Move the two-block riser three treads down the
+flight — `field 9 · tread-1 10 · tread-2 12 · tread-3 13 · tread-4 14 · camp 15` — and it goes silent, while
+`EL1` complains about tread-1, tread-2 and tread-4 and says nothing about the riser that is actually two
+blocks tall:
 
-**Walkability is the author's.** The read that settles it is a column transect up the flight, and it is the
-only one that does.
+```
+POST /plan/evaluate   score 0  valid true
+  [lint] EL1  piece 'tread-1' surface delta 1 is not a multiple of 2
+  [lint] EL1  piece 'tread-2' surface delta 3 is not a multiple of 2
+  [lint] EL1  piece 'tread-4' surface delta 5 is not a multiple of 2
+```
+
+Three complaints, none of them about the step, and the one gate that would have named it is looking at the
+other end of the flight.
+
+Traversability does not catch it either, and the reason is in the walk's own docstring: `WalkGround.Steps`
+asks only whether the vertical span fits under the clearance over the lower place — *"On a board with nothing
+stacked over it every place has open sky, so this never refuses a step."* It models a player **who can place
+blocks**, which is correct for a capture board where the strait is crossed by bridging and wrong as a test of
+whether a stair is a stair.
+
+**Walkability is the author's, everywhere except the one step out of a spawn.** The read that settles it is a
+column transect up the flight, and it is the only one that does.
 
 ## The granularity is the cell, and the cell is a choice
 
@@ -97,9 +124,9 @@ A tread here is **five blocks deep**, because a plan piece is a rectangle on a c
 or 1, and at `cell: 1` a piece is a single block and a flight of twenty one-block treads is a plain plan.
 
 What it is not is a *local* choice. `cell` is one number for the whole board, so the granularity a stair
-wants is also the granularity the shelf, the flanks and the spawn apron are counted in: at `cell: 1` this
-board's `shelf` stops being `[-8, 3, 16, 3]` and becomes `[-40, 15, 80, 15]`, and every rectangle on the
-board is stated in blocks. That is a real way to author — the traced corpus plans do it at other scales — and
+wants is also the granularity every other piece is counted in: at `cell: 1` this board's `field` stops being
+`[-10, -10, 20, 12]` and becomes `[-50, -50, 100, 60]`, and every rectangle on the board is stated in
+blocks. That is a real way to author — the traced corpus plans do it at other scales — and
 it is a decision about the whole document rather than about the stair.
 
 So the honest statement of the trade is: **a fine flight is reachable from the plan by making the whole board
@@ -113,19 +140,19 @@ plainly a hillside, is what `tools/seeds/ruediger.plan.json` does with 31 pieces
 
 | Picture | Says |
 |---|---|
-| `renders/world-section-z0.png` | — the wrong cut; the flight is at x 27 |
-| `GET …/render/section?axis=z&at=27&from=68&to=112&scale=10` | the flight in elevation, which is the only view a riser has |
-| `renders/world-heightmap.png` | the four tiers from above |
+| `renders/world-section-x0.png` | the flight in elevation, which is the only view a riser has |
+| `renders/world-heightmap.png` | the four tiers as bands right across the board |
 | `renders/theme-tread-section.png` | one tread's nosing over its riser |
+| `02-theme/renders/world-heightmap.png` | the same board flat |
 
-**A section is taken along the axis the cut runs**, and `at` is the other coordinate: `axis=z&at=27` cuts
-down the stair. `axis=x&at=27` cuts across the board at z 27 and answers `RQ5 nothing stands along that cut`.
+**A section is taken along the axis the cut runs**, and `at` is the other coordinate: `axis=x&at=0` runs
+down the board's length and crosses every tread, which is the cut this flight wants.
 
 ## Numbers
 
 | Read | Answer |
 |---|---|
 | `POST /plan/evaluate` | score **0**, `valid: true`, 2 × `EL1` complaint — see above; `G231` |
-| shapes | 6 compiled — one per height — against `02`'s 2 |
-| flight | 4 treads · 1 block rise · 5 block going · room plinth at y12 |
-| `GET …/preflight` | export gate **OPEN** |
+| shapes | 5 compiled — one per height — against `02`'s 1 |
+| flight | 4 treads · 1 block rise · 5 block going · terrace at y12 |
+| `GET …/preflight` | export gate **OPEN**, `SP8` silent — the last tread and the camp are level |
