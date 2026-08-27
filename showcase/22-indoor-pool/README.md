@@ -5,7 +5,7 @@ pool is exactly the rectangle drawn — straight sides, one depth, flush with th
 swept it.**
 
 This forks `20-undercroft`: the rock, the hall and the flight down are unchanged. The finish gains one
-room, one theme, and nothing else.
+shape, one theme, and nothing else.
 
 ## The document
 
@@ -18,27 +18,27 @@ room, one theme, and nothing else.
 }
 ```
 
-and the pool is a room like any other — a hole in the rock with a floor put back under it:
+and the pool is a patch of the hall's own floor, painted:
 
 ```json
-{ "id": "rf5", "type": "rectangle", "operation": "add", "theme": "pool",
+{ "id": "basin", "type": "rectangle", "operation": "add", "theme": "pool",
   "floor": 0, "base_height": 8,
-  "min_x": -36, "min_z": 26, "max_x": -30, "max_z": 54 }
+  "min_x": -12, "min_z": -8, "max_x": 12, "max_z": 8 }
 ```
 
-Same span as the hall around it, `floor 0` for eight courses. What makes it water is the theme: the
-**surface bucket claims the top four courses** and paints them block 9, and the fill takes everything
-under. Read back:
+**Same span as the hall around it** — `floor 0` for eight courses, exactly the hall's own column. What
+makes it water is the theme, and what makes the theme land only here is that **paint resolves
+smallest-area-wins**, which is `03-paving`'s mechanism applied one storey down. Read back:
 
 ```
-GET …/column?at=-34,40     y7..y4  Water
-                           y3..y1  Prismarine Bricks
-                           y0      Bedrock
-GET …/column?at=-37,40     y7      Quartz Block   — the deck, one block away
+GET …/column?at=0,0       y7..y4  Water
+                          y3..y1  Prismarine Bricks
+                          y0      Bedrock
+GET …/column?at=-13,0     y7      Quartz Block   — the deck, one block away
 ```
 
-Four courses of water whose surface is at y7, level with the deck it is cut into, and a hard edge at
-`x -37/-36`.
+Four courses of water whose surface is at y7, level with the deck it is cut into, and a hard edge
+between `x −13` and `x −12`.
 
 ## Why not the water prop
 
@@ -57,21 +57,26 @@ somebody built.** `13-pond` and `14-river` are the other half of this pair and u
 
 ## The one thing to get right
 
-A room nested inside another room is **two floors in the same columns** unless the outer one is banded
-round it — a column carries one span a layer, and stating it twice is stating it twice. The generator
-bands the hall round the pool for the same reason it bands the rock round its rooms, and the tiling
-check says so: over the board's **8,250 columns, none bare and none doubly covered**.
+**The basin is not banded out of the hall, and it must not be.** The rock is banded round the hall
+because the two differ in *height* — fourteen courses against eight — and on one layer the taller add
+wins the column outright. The basin and the hall are the same eight courses in the same columns, so
+neither wins anything: the geometry is identical either way and only the paint differs, which is
+resolved by area. That is why a pool is one extra shape and a room is a set of bands.
+
+The rule falls out of the two together: **band where the heights differ, overlay where they do not.**
+Getting it the wrong way round is silent in both directions — a banded-out basin is the same world, and
+a shorter add inside a taller one is no room at all.
 
 The pool's own depth is its theme's `surface.depth`, so changing four to two is the whole of a shallow
-pool. It is not the shape's height: the shape spans the room's own eight courses either way, and a
+pool. It is not the shape's height: the shape spans the hall's own eight courses either way, and a
 shorter shape would be a *hole* in the floor rather than water in it.
 
 ## What to look at
 
 | | |
 |---|---|
-| `renders/section-pool-z40.png` | the pool in section: four of water, three of prismarine, deck level |
-| `GET …/column?at=-34,40` · `?at=-37,40` | water and deck, one block apart |
+| `renders/world-section-z0.png` | the pool in section: four of water, three of prismarine, deck level, the landmass over it |
+| `GET …/column?at=0,0` · `?at=-13,0` | water and deck, one block apart |
 
 ```bash
 python3 tools/drive.py showcase/22-indoor-pool "Indoor Pool" --out showcase/22-indoor-pool/world

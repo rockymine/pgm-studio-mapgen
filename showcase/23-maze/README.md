@@ -5,66 +5,74 @@ neighbours with one in three left out, and a modular rule that is *even under `r
 teams walk the same maze rather than two different ones.**
 
 This forks `20-undercroft`. The rock, the lift and the flight down are unchanged; the hall is gone and
-the lattice is the undercroft.
+the lattice is the undercroft. **The square board is the one that needs the rule**, which is why the
+maze is here and not on a board with a strait down the middle.
 
 ## The lattice
 
 ```python
-PITCH, WIDE = 8, 3
-runs_x = [-38 + PITCH * k for k in range(10)]
-runs_z = [16 + PITCH * m for m in range(8)]
+PITCH, WIDE, REACH = 8, 4, 46
+CENTRES = sorted(c for j in range(6) for c in (-4 - 8 * j, 4 + 8 * j))   # symmetric about 0
 
-rects = [(x, 16, x + WIDE, 74) for x in runs_x if x + WIDE <= 38]     # every run, whole
-for m, z in enumerate(runs_z):
-    for k, x in enumerate(runs_x):
-        nxt = x + PITCH
-        if nxt + WIDE > 38 or (2 * k + 1 + 2 * m) % 3 == 0: continue  # one link in three, missing
-        rects.append((x + WIDE, z, nxt, z + WIDE))
+runs = [(c - WIDE // 2, -REACH, c + WIDE // 2, REACH) for c in CENTRES]  # every run, whole
+links = [(c + WIDE // 2, r - WIDE // 2, c + PITCH - WIDE // 2, r + WIDE // 2)
+         for c in CENTRES if c + PITCH in CENTRES
+         for r in CENTRES if (((c + PITCH // 2) // 4) + (r // 4)) % 3 != 0]
 ```
 
-Ten runs the length of the board, seven rows of links between neighbouring runs, and **one link in
-three left out**. The omission is the whole of it: a full lattice is a grid, and what makes a maze is
-loops that return and legs that end at rock. Nothing here is random — the same numbers give the same
-maze, which is what a board a match is played on has to be.
+Twelve runs the length of the board, twelve rows of links between neighbouring runs, **88 of 132 kept**
+— one link in three left out. The omission is the whole of it: a full lattice is a grid, and what makes
+a maze is loops that return and legs that end at rock. Nothing here is random — the same numbers give
+the same maze, which is what a board a match is played on has to be.
 
-## The rule has to be even under negation — on the board that needs it
+**The run centres are `±4, ±12, ±20, ±28, ±36, ±44`, and their symmetry is load-bearing.** A run at `c`
+images onto one at `−c`; a run at `−46 + 8k` would image onto no run at all.
 
-**Not this one, and the difference is worth knowing.** Here the whole `under` layer is authored on one
-half of the board and the island fans it, so the two storeys are the same lattice by construction
-whatever rule drops the links. `rot_180` does the work.
+## The rule has to be even under negation
 
-That stops being true the moment the storey covers **both** halves at once — which is any board
-without a strait down the middle. A shape spanning the whole board has its own image lying over it, so
-every column would carry two spans (`SK9`), and the answer is an island stated `mirrors: false`,
-stamped once. Nothing fans it then: the lattice has to *be* its own image, and that is a property of
-the rule that drops the links.
+A storey covering **both** halves of the board has its own image lying over it, so fanning it would
+state every column twice; the island is `mirrors: false` and the lattice is stamped once. Nothing fans
+it, which means the lattice has to *be* its own image — and that is a property of the expression that
+drops the links, not of the geometry.
 
-`(k + m) % 3` does not have it. A link is indexed by the run on its **low** side, so under negation it
-is indexed by the run on its other side — the index shifts by one and the rule shifts with it, and the
-two halves come out different mazes.
+A link between the runs at `c` and `c + 8`, on the row at `r`, has its midpoint at `(c + 4, r)`. Under
+`rot_180` that midpoint goes to `(−c − 4, −r)`, which is the midpoint of the link between `−c − 8` and
+`−c` on row `−r` — another link, because the centres are symmetric. So writing the rule as a function
+of `u = (c + 4)/4` and `v = r/4` makes it a statement about the *link* rather than about one of its
+ends, and the question becomes whether that function is **even**: `f(u, v) = f(−u, −v)`.
 
-`(2k + 1 + 2m) % 3` does. `2k + 1` is the link's own **midpoint** between runs `k` and `k+1`, doubled
-to keep it a whole number, and `2m` is its row's. A rule stated on the midpoint is a rule about the
-link rather than about one of its ends, and a midpoint negates cleanly where an end does not — so the
-image of a dropped link is a dropped link.
+`(u + v) % 3 == 0` is. Negating both arguments negates the sum, and a sum is zero mod three exactly
+when its negation is.
 
-`maps/opus5-liminal-dtm-ii` is the board that needs it: its rock covers all 39,680 columns, its island
-is `mirrors: false`, and its Backrooms are the same maze from either spawn because of that one
-expression.
+**A constant term is what breaks it, and a constant term is the natural thing to add** when the maze
+comes out wrong and the obvious fix is to shift which third goes missing. Measured over all 132
+candidate links:
 
-## It is stated over the land there is
+| rule | links kept | images that disagree |
+|---|---|---|
+| `(u + v) % 3` | 88 | **0** |
+| `(u + 2v) % 3` | 88 | **0** |
+| `(u + v + 1) % 3` | 88 | **88** — every one |
 
-The base board is not a rectangle. It has a strait between its two islands and a void hole in each,
-and the rock is stated over neither (`20-undercroft`). The maze is clipped the same way — `minus()` in
-the generator returns what is left of a rectangle once a hole is taken out of it, **as rectangles**,
-because a subtract would be a claim that the column is empty on every layer.
+The offset rule keeps the same number of links and gets every single one of them on the wrong side of
+the mirror: one team's maze is the exact photographic negative of the other's. It compiles, it builds,
+the export gate opens, and nothing anywhere says so.
 
-That clipping is why the lattice here wraps its void rather than crossing it, and it is the honest
-shape of a maze on this board. On a board with no void it runs edge to edge.
+`maps/opus5-liminal-dtm-ii` is the other board that needs it: its rock covers all 39,680 columns, its
+island is `mirrors: false`, and its Backrooms are the same maze from either spawn for this reason.
 
-`minus()` also clips the runs round the **stairwell**, so the maze does not state a second span in the
-columns the flight comes down. Over the board's **8,250 columns, none is bare and none carries two
-spans** — the same check every stacked board here runs.
+## The rock is banded round every corridor
+
+The board is a plain square with no void in it, so the lattice runs edge to edge — but the *rock* still
+has to be stated as adds banded round each hole, for `20-undercroft`'s reason: a subtract is a claim
+about the whole stack, and a shorter add inside a taller one is not a room. One hundred corridors and
+links leave **213 rock bands** between them, and that count is why the banding is generated rather than
+drawn: over the board's **10,000 columns, none is bare and none carries two spans**, checked rather
+than looked at.
+
+That is the honest cost of the technique. A hall is four bands; a maze is two hundred and thirteen.
+Nothing about the document is harder — it is the same rectangle repeated — but it is not a document
+anyone hand-writes, and the check is what makes generating it safe.
 
 ## Headroom
 
@@ -79,8 +87,9 @@ nowhere else, which is also what makes the maze legible in `?layer=lid`.
 
 | | |
 |---|---|
-| `renders/under-heightmap.png` | the lattice alone — corridors low, rock high |
-| `GET …/render/heightmap?layer=under` | the same read, live |
+| `renders/world-section-z0.png` | the corridors as a row of voids under the landmass, rock pillars between them |
+| `renders/world-ground.png` | the lattice in plan — corridors dark, rock pillars light |
+| `GET …/render/heightmap?layer=under` | the storey alone, live |
 
 ```bash
 python3 tools/drive.py showcase/23-maze "Maze" --out showcase/23-maze/world
