@@ -159,172 +159,54 @@
  },
  "addShapes": [
   {
-   "id": "wl1",
+   "id": "wall",
    "type": "rectangle",
    "operation": "add",
-   "min_x": -40.0,
-   "min_z": -0.5,
-   "max_x": -4.0,
-   "max_z": 2.5,
+   "override": true,
+   "keepClear": true,
    "floor": 0,
    "base_height": 14,
-   "override": true,
-   "keepClear": true,
-   "theme": "wall"
+   "theme": "wall",
+   "min_x": -40,
+   "min_z": -2,
+   "max_x": -4,
+   "max_z": 2
   },
   {
-   "id": "wl2",
-   "type": "rectangle",
+   "id": "stair",
+   "type": "polygon",
    "operation": "add",
-   "min_x": 4.0,
-   "min_z": -0.5,
-   "max_x": 40.0,
-   "max_z": 2.5,
+   "override": true,
+   "keepClear": true,
    "floor": 0,
    "base_height": 14,
-   "override": true,
-   "keepClear": true,
-   "theme": "wall"
-  },
-  {
-   "id": "ws1",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": 8.0,
-   "min_z": -1.5,
-   "max_x": 12.0,
-   "max_z": -0.5,
-   "floor": 0,
-   "base_height": 14,
-   "override": true,
-   "keepClear": true,
-   "theme": "wall"
-  },
-  {
-   "id": "ws2",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -12.0,
-   "min_z": 2.5,
-   "max_x": -8.0,
-   "max_z": 3.5,
-   "floor": 0,
-   "base_height": 14,
-   "override": true,
-   "keepClear": true,
-   "theme": "wall"
-  },
-  {
-   "id": "ws3",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": 8.0,
-   "min_z": -2.5,
-   "max_x": 12.0,
-   "max_z": -1.5,
-   "floor": 0,
-   "base_height": 13,
-   "override": true,
-   "keepClear": true,
-   "theme": "wall"
-  },
-  {
-   "id": "ws4",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -12.0,
-   "min_z": 3.5,
-   "max_x": -8.0,
-   "max_z": 4.5,
-   "floor": 0,
-   "base_height": 13,
-   "override": true,
-   "keepClear": true,
-   "theme": "wall"
-  },
-  {
-   "id": "ws5",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": 8.0,
-   "min_z": -3.5,
-   "max_x": 12.0,
-   "max_z": -2.5,
-   "floor": 0,
-   "base_height": 12,
-   "override": true,
-   "keepClear": true,
-   "theme": "wall"
-  },
-  {
-   "id": "ws6",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -12.0,
-   "min_z": 4.5,
-   "max_x": -8.0,
-   "max_z": 5.5,
-   "floor": 0,
-   "base_height": 12,
-   "override": true,
-   "keepClear": true,
-   "theme": "wall"
-  },
-  {
-   "id": "ws7",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": 8.0,
-   "min_z": -4.5,
-   "max_x": 12.0,
-   "max_z": -3.5,
-   "floor": 0,
-   "base_height": 11,
-   "override": true,
-   "keepClear": true,
-   "theme": "wall"
-  },
-  {
-   "id": "ws8",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -12.0,
-   "min_z": 5.5,
-   "max_x": -8.0,
-   "max_z": 6.5,
-   "floor": 0,
-   "base_height": 11,
-   "override": true,
-   "keepClear": true,
-   "theme": "wall"
-  },
-  {
-   "id": "ws9",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": 8.0,
-   "min_z": -5.5,
-   "max_x": 12.0,
-   "max_z": -4.5,
-   "floor": 0,
-   "base_height": 10,
-   "override": true,
-   "keepClear": true,
-   "theme": "wall"
-  },
-  {
-   "id": "ws10",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -12.0,
-   "min_z": 6.5,
-   "max_x": -8.0,
-   "max_z": 7.5,
-   "floor": 0,
-   "base_height": 10,
-   "override": true,
-   "keepClear": true,
-   "theme": "wall"
+   "theme": "wall",
+   "height_mode": "level",
+   "skirt": 0,
+   "vertices": [
+    [
+     8,
+     -7
+    ],
+    [
+     12,
+     -7
+    ],
+    [
+     12,
+     -2
+    ],
+    [
+     8,
+     -2
+    ]
+   ],
+   "anchor_heights": [
+    9,
+    9,
+    14,
+    14
+   ]
   }
  ],
  "dressing": {
@@ -336,12 +218,12 @@
     "route": true,
     "points": [
      [
-      0.0,
-      -16.5
+      0,
+      -16
      ],
      [
-      0.0,
-      16.5
+      0,
+      16
      ]
     ],
     "radius": 3,
@@ -358,12 +240,12 @@
     "seed": 5,
     "points": [
      [
-      -40.0,
-      8.5
+      -40,
+      8
      ],
      [
-      40.0,
-      8.5
+      40,
+      8
      ]
     ],
     "radius": 5,

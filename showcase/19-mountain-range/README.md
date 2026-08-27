@@ -4,10 +4,9 @@
 single open dale. The instrument is the push's `crown`, `falloff` and per-vertex `amounts`; the discipline is
 that nothing a player stands on is pinned by a mark.**
 
-This is the only showcase that does not fork `02-theme`'s plan. The board is `elderwold`-shaped instead: four
-nested rectangles down one half, mirrored by `rot_180`, compiling to **one** shape — an open landmass with no
-cut-outs, because a destroy board played across a set of separated pads is not played across anything. The
-plan is 19 lines, and every decision in this folder is in the finish.
+The plan is `02-theme`'s, untouched — one open square, because a board played across a set of separated pads
+is not played across anything. **Every decision in this folder is in the finish**, and on a board that says
+nothing that is exactly what the range has to be measured against.
 
 ## The document
 
@@ -17,7 +16,7 @@ plan is 19 lines, and every decision in this folder is in the finish.
   "grain": { "amplitude": 2.0, "scale": 13, "seed": 5 },
   "marks": [
     { "id": "coast", "kind": "rim",  "h": 12, "depth": 1 },
-    { "id": "dale",  "kind": "line", "points": [[0,2],[-4,24],[3,46],[-2,66],[0,84]],
+    { "id": "dale",  "kind": "line", "points": [[0,-40],[-4,-19],[3,1],[-2,19],[0,35]],
                      "h": [12,13,14,15,16], "r": 18 },
     { "id": "shelf", "kind": "area", "h": 18, "ring": [ …lobed ring, 9 vertices… ] },
     { "id": "apron", "kind": "area", "h": 16, "ring": [ …lobed ring, 11 vertices… ] }
@@ -47,9 +46,9 @@ nothing tells the ground between the disc and its surroundings what to do except
 relaxation has one cell to do it in. A `line` mark with per-vertex heights is the same failure stretched: a
 ridge-shaped wall with a flat top.
 
-Both were built here before the pushes were, and `renders/` keeps the reading: `low 11 · high 55`, a heightmap
-of concentric squares, and a 3D preview of five white-capped oil drums. The relief numbers were right and the
-landform was not, which is the reason this showcase exists beside `07-hill` rather than inside it.
+A board built that way reads `low 11 · high 55` — plausible relief numbers — over a heightmap of concentric
+squares and a preview of five white-capped oil drums. The numbers are right and the landform is not, which is
+the reason this showcase exists beside `07-hill` rather than inside it.
 
 ### A push is the landform, and three of its numbers are the shape
 
@@ -63,18 +62,19 @@ it. Three fields do the work:
   axis**. For a round ring that is a point and the crown domes it; for the long ribbon here it is a line, and
   the crown puts a crest on it. This is the single field that separates a mountain from a mesa, and its record
   default is `0`. A push authored without it is a plateau.
-- **`falloff`** — the skirt, measured as distance from the ring **across the land**. On a 90-block-wide board
-  this is the number that decides whether there is a map left: at `20` the two massifs' skirts met in the
-  middle and the dale was a 20-block ditch; at `11` the flat ground runs `x −18 … +15`.
+- **`falloff`** — the skirt, measured as distance from the ring **across the land**. On a 100-block-wide board
+  this is the number that decides whether there is a map left: at `20` the two massifs' skirts meet in the
+  middle and the dale is a ditch; at `11` the ground at or below y17 runs `x −15 … +15`, a third of the
+  board's width.
 
 `roughness` wobbles the skirt against a noise field so it is not a clean offset of the ring — the difference
 between a hill and an extruded logo — and a **negative crown** dishes the ring instead of doming it, which is
-what `corrie-w` and `corrie-e` are: a bowl bitten out of each massif's inner flank at `(±36, 44/50)`, reading
-43 against a 53 rim.
+what `corrie-w` and `corrie-e` are: a bowl bitten out of each massif's inner flank, `crown: −9` against an
+`amount` of 3.
 
 ### Pin only the ground that is stood on
 
-The four marks are the coast, the dale floor, the goal's shelf and the spawn's apron — every one of them
+The four marks are the coast, the dale floor, the cairn's shelf and the spawn's apron — every one of them
 ground a player has to walk. Nothing else is pinned, and that is the whole of the second lesson: a mark
 written over a region *because the region should be about that height* leaves the solver nothing to solve, and
 a board with a mark on every region is a table with bumps on it however tall the bumps are. The flanks here
@@ -94,43 +94,45 @@ its outline did.
 ### A brush stroke is clamped into the land, and derived from the spine
 
 The 20 strokes — snow on the four summits, crag along the crests, flank below them, the two saddles and the
-spawn's sward — are ordinary one-course adds, and every vertex is clamped inside the board's tiered outline
-before it is written. A stroke reaching past the land is the only add on that column and builds a **speck of
-bedrock standing over the void**: before the clamp, `/coverage` reported `141 cells at (-24, 91), 364 blocks
-from used ground` — a disconnected island made of paint. Afterwards every dead patch is `1 block from used
-ground`.
+spawn's sward — are ordinary one-course adds, and every vertex is clamped inside the board before it is
+written. A stroke reaching past the land is the only add on that column and builds a **speck of bedrock
+standing over the void**: a disconnected island made of paint, which `/coverage` reports as a dead patch
+hundreds of blocks from used ground. On a square board the clamp is the board's own bounds and is easy; on a
+board with an outline it is the outline, and it is the step that gets skipped.
 
 They are also placed *off the spines* rather than typed as coordinates, which is what makes the range
-tunable at all: moving `SPINE_W` outward by six blocks moved four summits, and the snow moved with them.
+tunable at all: moving the spine outward by six blocks moves four summits, and the snow moves with them.
 
 ## What to look at
 
 | Render | Shows |
 |---|---|
 | `renders/world-heightmap.png` | the range as a contour map — two chains, four summits, the saddles, and the dale running the length of the board between them |
-| `renders/sec-x-z20.png`, `sec-x-z56.png`, `sec-x-z80.png` | the profile across both massifs at three places: the silhouette is the push's crown |
+| `GET …/render/section?axis=x&at=0&from=-50&to=50&scale=6` | the profile across both massifs: the silhouette is the push's crown |
 | `renders/world-surface.png` | where each theme landed, and the stair courses the slopes are built from |
 | `renders/world-traversability.png` | the dale is one connected floor; the massifs are scenery |
 
 ## What it measures
 
 ```
-island team: cells 6762 · low 11 · high 64 · relief 53 · symErr 0
+island team: cells 10 000 · low 12 · high 64 · relief 52 · symErr 0
 export gate OPEN
-coverage: reached 10239 · dead 3231 of 13470 = 24.0% dead,
-          every dead patch 1 block from used ground
+coverage: reached 2451 · dead 7549 of 10 000 = 75.5% dead
 ```
 
-Transect at `z = 44`, every third block from `x = −45`:
+Transect at `z = 0`, every third block from `x = −45`:
 
 ```
- 0  0 41 44 47 56 50 38 27 16 13 13 13 13 13 13 13 13 13 13 13 21 36 47 55 57 57 57 56  0  0
+40 46 52 59 61 58 59 52 40 27 14 13 13 13 41 40 13 13 13 13 16 27 39 49 55 48 46 53 46 39 34
 ```
 
-**24% dead is the range itself** and is the honest cost of the technique: a mountain is scenery, and scenery
-is ground no journey passes. On a board this size the range is a quarter of it. That is the number to carry
-into a real map — the same pushes on a 200-block board are a frame around a playing field rather than half
-the field.
+Fifty-two blocks of relief over a hundred, and a floor at 13–16 that runs `x −15 … +15` — a third of the
+board's width, walkable end to end, with the two chains rising off it either side. The two 40s in the middle
+of the flat run are the cairn's own shelf, which is a mark and not a push.
+
+**The dead share is `02-theme`'s**, unchanged, and that is worth stating plainly: coverage counts cells a
+journey passes, and a mountain moves ground rather than adding or removing it. What the range costs is not
+measured here at all — it is measured by walking the dale, which is what the traversability render shows.
 
 ## Limits
 
