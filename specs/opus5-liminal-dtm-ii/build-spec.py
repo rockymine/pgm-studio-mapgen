@@ -184,6 +184,43 @@ def ring(prefix, x0, z0, x1, z1, thick, floor, height, theme_key, gaps=(), over=
     return walls
 
 
+def outside(rect, hole):
+    """What is left of a rectangle once a hole is taken out of it, as rectangles."""
+    x0, z0, x1, z1 = rect
+    hx0, hz0, hx1, hz1 = hole
+    if hx0 >= x1 or hx1 <= x0 or hz0 >= z1 or hz1 <= z0:
+        return [rect]
+    out = []
+    if z0 < hz0:
+        out.append((x0, z0, x1, min(hz0, z1)))
+    if z1 > hz1:
+        out.append((x0, max(hz1, z0), x1, z1))
+    mid0, mid1 = max(z0, hz0), min(z1, hz1)
+    if mid0 < mid1:
+        if x0 < hx0:
+            out.append((x0, mid0, min(hx0, x1), mid1))
+        if x1 > hx1:
+            out.append((max(hx1, x0), mid0, x1, mid1))
+    return out
+
+
+def clipped(shapes, holes):
+    """The same shapes with the holes taken out of them, one rectangle a surviving piece. Two
+    override adds over one column is not a refusal — the taller wins the geometry — but a theme is
+    scoped separately and the SMALLER shape wins that, so a hill's ring crossing the Town Wall leaves
+    a wall built to its own height and painted grass over dirt. What a shape may not land on, it is
+    cut out of."""
+    out = []
+    for shape in shapes:
+        parts = [(shape["min_x"], shape["min_z"], shape["max_x"], shape["max_z"])]
+        for hole in holes:
+            parts = [piece for part in parts for piece in outside(part, hole)]
+        for x0, z0, x1, z1 in parts:
+            out.append({**shape, "id": sid(shape["id"].rstrip("0123456789")),
+                        "min_x": x0, "min_z": z0, "max_x": x1, "max_z": z1})
+    return out
+
+
 # ══ the undercroft ════════════════════════════════════════════════════════════════════════════
 # The storey is a MASS with rooms cut out of it, not rooms standing in the void. A layer keeps one
 # span per column, so a room's walls are simply the rock either side of it — which means the rock has
@@ -454,13 +491,23 @@ add_shapes.append(box("fw", 53, 19, 54, 26, GROUND_FLOOR, SURFACE - GROUND_FLOOR
 # Six, three courses over the village on a 10x6 top, each stepped twice so it meets the sand rather
 # than standing on it. Three are authored and rot_180 makes the other three.
 HILLS = [(-34, -39), (14, -30), (56, 6)]
+# The four faces of the Town Wall as rectangles — what a mound drawn near one is cut out of. Stated
+# for both halves, since a hill authored on one side has its rot_180 image on the other.
+WALL_KEEP = [
+    (-X_TOWN, Z_TOWN - WALL_T, X_TOWN, Z_TOWN),          # north
+    (-X_TOWN, -Z_TOWN, X_TOWN, -Z_TOWN + WALL_T),        # south
+    (X_TOWN - WALL_T, -Z_TOWN, X_TOWN, Z_TOWN),          # east
+    (-X_TOWN, -Z_TOWN, -X_TOWN + WALL_T, Z_TOWN),        # west
+]
+
 for cx, cz in HILLS:
-    add_shapes.append(box("hl", cx - 5, cz - 3, cx + 5, cz + 3,
-                          GROUND_FLOOR, SURFACE + 3 - GROUND_FLOOR, "hill", over=True))
-    add_shapes += ring("hl", cx - 5, cz - 3, cx + 5, cz + 3, 3,
-                       GROUND_FLOOR, SURFACE + 2 - GROUND_FLOOR, "hill", over=True)
-    add_shapes += ring("hl", cx - 8, cz - 6, cx + 8, cz + 6, 3,
-                       GROUND_FLOOR, SURFACE + 1 - GROUND_FLOOR, "hill", over=True)
+    mound = [box("hl", cx - 5, cz - 3, cx + 5, cz + 3,
+                 GROUND_FLOOR, SURFACE + 3 - GROUND_FLOOR, "hill", over=True)]
+    mound += ring("hl", cx - 5, cz - 3, cx + 5, cz + 3, 3,
+                  GROUND_FLOOR, SURFACE + 2 - GROUND_FLOOR, "hill", over=True)
+    mound += ring("hl", cx - 8, cz - 6, cx + 8, cz + 6, 3,
+                  GROUND_FLOOR, SURFACE + 1 - GROUND_FLOOR, "hill", over=True)
+    add_shapes += clipped(mound, WALL_KEEP)
 
 # ══ the sky ═══════════════════════════════════════════════════════════════════════════════════
 # Eight islands on the ellipse the river runs, evenly spaced; four authored, four fanned. Each is an
@@ -637,26 +684,6 @@ WAYS = [
 # nothing. Only the west and north faces carry them, the other two being the board's own edge, and
 # each is cut out of the stairwell it crosses — the well is `override` too and a later override on
 # the same layer would simply win the column, which would fill the shaft back in.
-
-
-def outside(rect, hole):
-    """What is left of a rectangle once a hole is taken out of it, as rectangles."""
-    x0, z0, x1, z1 = rect
-    hx0, hz0, hx1, hz1 = hole
-    if hx0 >= x1 or hx1 <= x0 or hz0 >= z1 or hz1 <= z0:
-        return [rect]
-    out = []
-    if z0 < hz0:
-        out.append((x0, z0, x1, min(hz0, z1)))
-    if z1 > hz1:
-        out.append((x0, max(hz1, z0), x1, z1))
-    mid0, mid1 = max(z0, hz0), min(z1, hz1)
-    if mid0 < mid1:
-        if x0 < hx0:
-            out.append((x0, mid0, min(hx0, x1), mid1))
-        if x1 > hx1:
-            out.append((max(hx1, x0), mid0, x1, mid1))
-    return out
 
 
 for k in range(1, PYR_STEPS + 1):

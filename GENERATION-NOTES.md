@@ -446,6 +446,14 @@ points accepted against the test pack right up against it. On a 40 × 50 wood: 6
 A house is placed by hand and no gate filters it the way the pass filters a scattered prop, so three
 faults reach the world silently and each is cheap to check before posting.
 
+**Two override adds over one column build one shape and paint the other.** Overlap is not a refusal and
+raises no finding: the taller add wins the *geometry*, and the theme is scoped separately — a cell goes
+to the **smallest-area** themed shape covering it — so the smaller shape paints the taller one's blocks.
+A hill's outer ring crossing a town wall leaves a wall built to its own twenty-seven courses and
+finished in the hill's grass-over-dirt, sides included, since the hill theme's wall material is dirt.
+Nothing says so; it is only visible in a column read or in the world. Cut a mound out of what it may
+not land on rather than trusting the heights to sort it.
+
 **An `override: true` add is still part of its island's relief.** Override decides who wins the column
 among the shapes on a layer and says nothing about the solve, so a relief's surface replaces the top of
 a wall, a flight, a hill or a rim as readily as it does bare ground — silently, with no finding. A made

@@ -318,6 +318,20 @@ so a spawn walking out of its own open door read as "6 placed blocks" because a 
 wall was two blocks shorter. `aim=reach` is the one that answers *can this be walked*, and the
 component the traversability verdict floods over is the zero-block, two-way one.
 
+**A Small Hill built the Town Wall and painted it grass.** The brief's author spotted it in game after
+it had stood for several passes. Hill 0 sits at `(-34, -39)` and its outer ring reaches `cz ± 9`, which
+is `z -48` — exactly the south wall's own columns. Two override adds over one column is not a refusal
+and raises no finding: the taller wins the **geometry**, so the wall still stood twenty-seven courses,
+and the theme is scoped separately to the **smallest-area** shape covering the cell, so the hill's ring
+won the paint. The wall's walk course came out `Grass Block` at y44 over a full depth of dirt — the
+hill theme's wall material is `solid(3)`. 21 blocks of rampart, mirrored.
+
+Nothing on the board could have caught it. `SK9`/`SK10` are about spans between layers, the export gate
+does not read materials, and both shapes are doing exactly what they were told. Fixed by cutting each
+mound out of the wall's four faces (`clipped(mound, WALL_KEEP)`), which is the same instrument the
+Pyramid's steps already use against the stairwell. After: 288 sampled wall columns, all topping out at
+y44 in stone brick or cobble, none otherwise.
+
 **I put three Small Hills on top of the roads.** Circulation is authored before scenery for exactly
 this reason, and I drew both in one pass; `DR-ROAD` and `DR-CLAIM` declined three oaks and named the
 cells. Moving the hills off the four diagonals cleared it.

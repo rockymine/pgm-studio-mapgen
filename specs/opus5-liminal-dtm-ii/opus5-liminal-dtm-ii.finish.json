@@ -1439,7 +1439,7 @@
    "theme": "farm-water"
   },
   {
-   "id": "hl1",
+   "id": "hl10",
    "type": "rectangle",
    "operation": "add",
    "min_x": -39,
@@ -1454,11 +1454,11 @@
    "theme": "hill"
   },
   {
-   "id": "hl2",
+   "id": "hl11",
    "type": "rectangle",
    "operation": "add",
    "min_x": -42,
-   "min_z": -45,
+   "min_z": -44,
    "max_x": -26,
    "max_z": -42,
    "floor": 18,
@@ -1469,7 +1469,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl3",
+   "id": "hl12",
    "type": "rectangle",
    "operation": "add",
    "min_x": -42,
@@ -1484,7 +1484,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl4",
+   "id": "hl13",
    "type": "rectangle",
    "operation": "add",
    "min_x": -42,
@@ -1499,7 +1499,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl5",
+   "id": "hl14",
    "type": "rectangle",
    "operation": "add",
    "min_x": -29,
@@ -1514,22 +1514,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl6",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -45,
-   "min_z": -48,
-   "max_x": -23,
-   "max_z": -45,
-   "floor": 18,
-   "base_height": 19,
-   "override": true,
-   "height_mode": "level",
-   "skirt": 0,
-   "theme": "hill"
-  },
-  {
-   "id": "hl7",
+   "id": "hl15",
    "type": "rectangle",
    "operation": "add",
    "min_x": -45,
@@ -1544,11 +1529,11 @@
    "theme": "hill"
   },
   {
-   "id": "hl8",
+   "id": "hl16",
    "type": "rectangle",
    "operation": "add",
    "min_x": -45,
-   "min_z": -45,
+   "min_z": -44,
    "max_x": -42,
    "max_z": -33,
    "floor": 18,
@@ -1559,11 +1544,11 @@
    "theme": "hill"
   },
   {
-   "id": "hl9",
+   "id": "hl17",
    "type": "rectangle",
    "operation": "add",
    "min_x": -26,
-   "min_z": -45,
+   "min_z": -44,
    "max_x": -23,
    "max_z": -33,
    "floor": 18,
@@ -1574,7 +1559,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl10",
+   "id": "hl27",
    "type": "rectangle",
    "operation": "add",
    "min_x": 9,
@@ -1589,7 +1574,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl11",
+   "id": "hl28",
    "type": "rectangle",
    "operation": "add",
    "min_x": 6,
@@ -1604,7 +1589,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl12",
+   "id": "hl29",
    "type": "rectangle",
    "operation": "add",
    "min_x": 6,
@@ -1619,7 +1604,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl13",
+   "id": "hl30",
    "type": "rectangle",
    "operation": "add",
    "min_x": 6,
@@ -1634,7 +1619,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl14",
+   "id": "hl31",
    "type": "rectangle",
    "operation": "add",
    "min_x": 19,
@@ -1649,7 +1634,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl15",
+   "id": "hl32",
    "type": "rectangle",
    "operation": "add",
    "min_x": 3,
@@ -1664,7 +1649,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl16",
+   "id": "hl33",
    "type": "rectangle",
    "operation": "add",
    "min_x": 3,
@@ -1679,7 +1664,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl17",
+   "id": "hl34",
    "type": "rectangle",
    "operation": "add",
    "min_x": 3,
@@ -1694,7 +1679,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl18",
+   "id": "hl35",
    "type": "rectangle",
    "operation": "add",
    "min_x": 22,
@@ -1709,7 +1694,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl19",
+   "id": "hl45",
    "type": "rectangle",
    "operation": "add",
    "min_x": 51,
@@ -1724,7 +1709,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl20",
+   "id": "hl46",
    "type": "rectangle",
    "operation": "add",
    "min_x": 48,
@@ -1739,7 +1724,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl21",
+   "id": "hl47",
    "type": "rectangle",
    "operation": "add",
    "min_x": 48,
@@ -1754,7 +1739,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl22",
+   "id": "hl48",
    "type": "rectangle",
    "operation": "add",
    "min_x": 48,
@@ -1769,7 +1754,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl23",
+   "id": "hl49",
    "type": "rectangle",
    "operation": "add",
    "min_x": 61,
@@ -1784,7 +1769,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl24",
+   "id": "hl50",
    "type": "rectangle",
    "operation": "add",
    "min_x": 45,
@@ -1799,7 +1784,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl25",
+   "id": "hl51",
    "type": "rectangle",
    "operation": "add",
    "min_x": 45,
@@ -1814,7 +1799,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl26",
+   "id": "hl52",
    "type": "rectangle",
    "operation": "add",
    "min_x": 45,
@@ -1829,7 +1814,7 @@
    "theme": "hill"
   },
   {
-   "id": "hl27",
+   "id": "hl53",
    "type": "rectangle",
    "operation": "add",
    "min_x": 64,
