@@ -845,6 +845,19 @@ island and the river under it. `DR-CLAIM` and `DR-ROAD` both read that book, so 
 road is measured against roads on the prop's own storey. Two props on the **same** layer still have
 to be moved apart in plan (`WE49`).
 
+### A storey read only reaches its own top where the spans are read half-open
+
+`ColumnSegment` is `[YFloor, YTop)`. A board whose lower layer meets the one over it with no gap —
+rock at `under[1..18]` under `ground[18..28]`, which is what stating the rock under a landmass looks
+like — is the case a closed reading gets wrong: nothing is found above, the storey is handed the rest
+of the world, and `?layer=under` draws the surface under the undercroft's name. A layer with air over
+it reads correctly, so the fault shows on some storeys of a board and not others (`WS18`, fixed).
+
+The provenance record travels with it: a claim is recorded per column and carries no course, so under
+a storey read it describes the column's top rather than the course being drawn. It is narrowed with
+the world now — terrain at or below the layer's own top, the recorded claim only where the storey
+shows the column's own top — and the picture's legend says which reading it used.
+
 ### `render/topdown?layer=` names a sketch layer, so the category isolations are gone
 
 On a board whose `layers[]` are named, `?layer=structure`, `?layer=foliage` and `?layer=objectives`

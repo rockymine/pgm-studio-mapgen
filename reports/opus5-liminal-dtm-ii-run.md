@@ -118,6 +118,38 @@ Fixed upstream as `WE49`: the claim book is keyed on the layer as well as the ce
 is handed one storey's view of it (`GroundClaims.On(prop.Layer)`), so two props collide only where
 they share ground. The pass now declines nothing on this board.
 
+### A storey read drew the storey over it, and the pictures were wrong for four stages
+
+`GET …/render/topdown?layer=under` drew the desert — its houses, its trees, its river — under the
+undercroft's name, and so did `?layer=lid`. `?layer=sky` and `?layer=bridge` were right, which is what
+made it look like a provenance fault rather than a geometry one: a claim is recorded per column and
+carries no course, so a house at y36 was being attributed to the cellar floor under it.
+
+It was both, and the geometry half was the one that mattered. A `ColumnSegment` is half-open —
+`[YFloor, YTop)` — and `WorldStorey` compared the next layer's floor against it as a **closed** range.
+Rasterizing this board's own layout says why that only shows on some columns:
+
+```
+(8,-70)  under[1..18]  ground[18..28]      ← 18 > 18 is false: no layer found above, storey = the world
+(0,-70)  under[1..12]  lid[16..18]  ground[18..28]   ← 16 > 12: storey ends at 15, correct
+```
+
+The mass meets the landmass at y18 with no gap, which is the whole point of stating it, and that is
+exactly the case the comparison got wrong. Every storey with air over it read correctly and every
+storey that abutted the one above it swallowed the rest of the world.
+
+Fixed upstream as `WS18`: the comparison is `>=`, a layer's last drawn course is `YTop - 1`, and the
+provenance record is narrowed with the world — at or below the layer's own top a block is the
+rasterizer's terrain and reads `Ground`, above it the recorded claim is kept only where the storey
+shows the column's own top. The picture's legend now follows what the render read rather than what it
+was handed.
+
+**What to take from it:** a picture that looks plausible is not a read. Four stages of committed
+`*-under-topdown.png` renders in this map's `renders/` are that fault, and none of them looked wrong
+— the undercroft's maze lattice was drawn over the surface and read as an undercroft with a lattice
+in it. The brief's author caught it by knowing what could not be there: *there are no houses inside
+the backrooms layer and also no trees or river.*
+
 ### Two words differ between a preview and a snapshot, and the error says neither
 
 `POST /room-styles/preview` takes the library's **save request**, where `storeys` is a count; a
@@ -232,7 +264,7 @@ cells. Moving the hills off the four diagonals cleared it.
 
 ## Open gameplay questions
 
-Two were put to the brief's author during the run and answered:
+Five were put to the brief's author during the run and answered. The first three settled the board:
 
 | Question | Answer |
 |---|---|
@@ -240,18 +272,15 @@ Two were put to the brief's author during the run and answered:
 | The Poolroom and Skyblock monuments sit near their own spawn by the brief's design, which puts `GO1` at 6.4 and 4.5. Keep them deep, or pull them in? | **Pull them toward the middle.** They now measure 3.03 / 3.14 / 3.53. |
 | The river is 8 blocks below everything around it and cannot be climbed out of. Hazard, or a lane you can leave? | **A few ways out** — stepped slipways cut into the outer banks beside each crossing. |
 
-Two are open, and are stated here rather than decided:
+Two more were put to the author and answered:
 
 **Nothing walks up to an island.** `…/walk?aim=reach` prices the nearest one at **11 placed blocks**
-from a Pyramid's floor and the next at **25**. The traversability verdict accepts this once the spawn
-protections are the right size, but a monument in the sky that only a bridge reaches is a match
-decision the brief does not make either way.
+from a Pyramid's floor and the next at **25**. **Answered: an island does not need to be connected —
+players build up to it.**
 
 **The Skyblock Monument cannot stand beside an oak.** A goal holds a 21-block square against every
 placed prop and the widest island is eight blocks across, so the two islands carrying a monument are
-bare and the other six have their oak. The choices are an island wide enough to keep the standoff —
-which is a platform rather than a skyblock — the monument on an island of its own with the oak on
-another, or the bare island as it stands.
+bare and the other six have their oak. **Answered: the monument keeps its bare island.**
 
 Two are decided and unasked, and stated so they can be overruled: **the Backrooms are unlit**
 (nothing in the studio places a light source), and **seven of the eight islands have no chest**

@@ -169,7 +169,8 @@ cut into the two outer banks beside each crossing; the village's own bank has no
 where the wall stands and a flight cut into it is a pit against a wall rather than a way out.
 
 **Up to the sky, only by building.** `…/walk?aim=reach` prices the nearest island at **11 placed
-blocks** from a Pyramid's floor and the next at **25**. Nothing on the board walks to one.
+blocks** from a Pyramid's floor and the next at **25**. Nothing on the board walks to one, which is
+what an island is.
 
 **Out of a Pyramid.** The spawn is a `role: "spawn"` piece 20 × 20, so the compiler sizes the
 stamped room to it and `roomStyles.spawn` decides what it looks like: a **hip roof over a square
@@ -251,21 +252,19 @@ measures; neither gates the export.
 
 ## Where it departs from the brief, and why
 
-**The Skyblock Monument is bridged to.** The brief puts an island 25–35 blocks over the river and a
-monument on the one nearest each spawn, and says nothing about how a player gets up. Nothing on the
-board is a walk to one. Stated so it can be overruled.
-
 **Nothing places a light source.** The studio has no lamp, torch or sea lantern prop, so the
 Poolroom, the corridor and the Backroom Space are unlit and the brief's sea lanterns and lamp posts
 are not in the world. The brief's spawn-kit torches are the same gap at the other end.
 
-**Seven islands carry an oak and the eighth cannot.** The brief puts one oak on each island and the
-Skyblock Monument beside the oak on the island nearest the Pyramid. A goal holds a **21-block square**
-against every placed prop (`OB19`, `DressingScope.GoalStandoff` = 10) and the widest island here is
-**eight blocks across**, so no cell of the monument's own island is far enough from it to plant on.
-Six oaks are authored and six stand; the two monument islands are bare. Widening that island past 21
-blocks would make it a platform rather than a skyblock, so this is the author's call rather than a
-fix.
+**The monument's island is bare, by the author's ruling.** The brief puts one oak on each island and
+the Skyblock Monument beside the oak on the island nearest the Pyramid. A goal holds a **21-block
+square** against every placed prop (`OB19`, `DressingScope.GoalStandoff` = 10) and the widest island
+here is **eight blocks across**, so no cell of the monument's own island is far enough from it to
+plant on. The monument keeps its island without an oak. Six oaks are authored and six stand.
+
+**An island is reached by building up to it, by the same ruling.** `…/walk?aim=reach` prices the
+nearest at **11 placed blocks** from a Pyramid's floor and the next at **25**. An island is not
+connected to the board and is not meant to be.
 
 **A chest on each island is not authorable, and the monument's island already has one.** The studio
 places a chest at exactly two places, both in `Minecraft/Stamping`: `WoolChests` fills a wool room
