@@ -326,8 +326,7 @@
   }
  },
  "roomStyles": {
-  "spawn": "@showcase-hall",
-  "cage": "@showcase-cage"
+  "spawn": "@showcase-hall"
  },
  "relief": {
   "team": {
@@ -445,8 +444,8 @@
   "props": [
    {
     "kind": "boulder",
-    "x": 0,
-    "z": 5,
+    "x": -28,
+    "z": 8,
     "form": "round",
     "size": 3,
     "mossy": true,
@@ -459,8 +458,8 @@
    },
    {
     "kind": "boulder",
-    "x": -4,
-    "z": -2,
+    "x": -18,
+    "z": 8,
     "form": "angular",
     "size": 4,
     "mossy": false,
@@ -473,8 +472,8 @@
    },
    {
     "kind": "boulder",
-    "x": -14,
-    "z": 2,
+    "x": 18,
+    "z": 8,
     "form": "outcrop",
     "size": 4,
     "mossy": true,
@@ -487,7 +486,7 @@
    },
    {
     "kind": "boulder",
-    "x": -2,
+    "x": 28,
     "z": 8,
     "form": "cairn",
     "size": 3.5,
