@@ -7953,7 +7953,7 @@
       "min_x": 48,
       "min_z": 9,
       "max_x": 64,
-      "max_z": 12,
+      "max_z": 10,
       "floor": 18,
       "base_height": 20,
       "override": true,
@@ -7963,6 +7963,21 @@
      },
      {
       "id": "hl48",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 48,
+      "min_z": 10,
+      "max_x": 59,
+      "max_z": 12,
+      "floor": 18,
+      "base_height": 20,
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "theme": "hill"
+     },
+     {
+      "id": "hl49",
       "type": "rectangle",
       "operation": "add",
       "min_x": 48,
@@ -7977,7 +7992,7 @@
       "theme": "hill"
      },
      {
-      "id": "hl49",
+      "id": "hl50",
       "type": "rectangle",
       "operation": "add",
       "min_x": 61,
@@ -7992,7 +8007,7 @@
       "theme": "hill"
      },
      {
-      "id": "hl50",
+      "id": "hl51",
       "type": "rectangle",
       "operation": "add",
       "min_x": 45,
@@ -8007,11 +8022,11 @@
       "theme": "hill"
      },
      {
-      "id": "hl51",
+      "id": "hl52",
       "type": "rectangle",
       "operation": "add",
       "min_x": 45,
-      "min_z": 12,
+      "min_z": 14,
       "max_x": 67,
       "max_z": 15,
       "floor": 18,
@@ -8022,7 +8037,22 @@
       "theme": "hill"
      },
      {
-      "id": "hl52",
+      "id": "hl53",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 45,
+      "min_z": 12,
+      "max_x": 59,
+      "max_z": 14,
+      "floor": 18,
+      "base_height": 19,
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "theme": "hill"
+     },
+     {
+      "id": "hl54",
       "type": "rectangle",
       "operation": "add",
       "min_x": 45,
@@ -8037,13 +8067,13 @@
       "theme": "hill"
      },
      {
-      "id": "hl53",
+      "id": "hl55",
       "type": "rectangle",
       "operation": "add",
       "min_x": 64,
       "min_z": 0,
       "max_x": 67,
-      "max_z": 12,
+      "max_z": 10,
       "floor": 18,
       "base_height": 19,
       "override": true,
@@ -8452,6 +8482,8 @@
        "hl51",
        "hl52",
        "hl53",
+       "hl54",
+       "hl55",
        "py1",
        "py2",
        "py3",

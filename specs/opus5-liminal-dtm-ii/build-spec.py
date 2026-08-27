@@ -464,9 +464,15 @@ def wall_stair(x_face, into, z0):
     return out
 
 
+STAIR_KEEP = []
 for face, into in ((X_TOWN - WALL_T, -1), (-X_TOWN + WALL_T, 1)):
     for z0 in (GATE[1] + 2, 10):
-        add_shapes += wall_stair(face, into, z0)
+        flight = wall_stair(face, into, z0)
+        add_shapes += flight
+        # the run the flight fans over, both halves, so a mound drawn near it is cut round it
+        reach = WALL_TOP - SURFACE + 1
+        low, high = (face - reach, face) if into < 0 else (face, face + reach)
+        STAIR_KEEP += [(low, z0, high, z0 + 4), (-high, -z0 - 4, -low, -z0)]
 
 # ══ the Village Well ══════════════════════════════════════════════════════════════════════════
 # One on the whole map, on the origin, where the four roads meet. Two courses of smooth sandstone
@@ -507,7 +513,7 @@ for cx, cz in HILLS:
                   GROUND_FLOOR, SURFACE + 2 - GROUND_FLOOR, "hill", over=True)
     mound += ring("hl", cx - 8, cz - 6, cx + 8, cz + 6, 3,
                   GROUND_FLOOR, SURFACE + 1 - GROUND_FLOOR, "hill", over=True)
-    add_shapes += clipped(mound, WALL_KEEP)
+    add_shapes += clipped(mound, WALL_KEEP + STAIR_KEEP)
 
 # ══ the sky ═══════════════════════════════════════════════════════════════════════════════════
 # Eight islands on the ellipse the river runs, evenly spaced; four authored, four fanned. Each is an
