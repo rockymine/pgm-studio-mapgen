@@ -134,10 +134,10 @@
       "operation": "subtract",
       "floor": 0,
       "base_height": 40,
-      "min_x": -30.0,
-      "min_z": -5.0,
-      "max_x": 30.0,
-      "max_z": 5.0
+      "min_x": -30,
+      "min_z": -5,
+      "max_x": 30,
+      "max_z": 5
      },
      {
       "id": "deck",
@@ -147,10 +147,10 @@
       "floor": 13,
       "base_height": 4,
       "theme": "deck",
-      "min_x": -28.0,
-      "min_z": -8.0,
-      "max_x": -2.0,
-      "max_z": 8.0
+      "min_x": -28,
+      "min_z": -8,
+      "max_x": -2,
+      "max_z": 8
      }
     ],
     "islands": [

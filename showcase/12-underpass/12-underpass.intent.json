@@ -84,7 +84,14 @@
  },
  "build": {
   "maxHeight": null,
-  "areas": [],
+  "areas": [
+   {
+    "minX": -30,
+    "minZ": -5,
+    "maxX": 30,
+    "maxZ": 5
+   }
+  ],
   "holes": [],
   "voidEnforcement": null
  },

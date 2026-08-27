@@ -4,7 +4,7 @@
 what an author gets and does not — a bridge with real headroom under it, never a floor to stand on there.**
 
 This forks `11-channel`, not `02-theme`: the plan and the `gullet-cut` subtract are unchanged, wool still
-answers at `(-30, -105)`, the shoulder at `x 20..40` is still open ground. The finish gains one shape — a deck
+the shoulders at `x ±30..50` are still open ground. The finish gains one shape — a deck
 — and one theme to paint it in, because a deck is built and the ground under it is not.
 
 ## The document
@@ -13,10 +13,10 @@ answers at `(-30, -105)`, the shoulder at `x 20..40` is still open ground. The f
 "addShapes": [
   { "id": "gullet-cut", "type": "rectangle", "operation": "subtract",
     "floor": 0, "base_height": 40,
-    "min_x": -40, "min_z": 60, "max_x": 20, "max_z": 70 },
+    "min_x": -30, "min_z": -5, "max_x": 30, "max_z": 5 },
   { "id": "deck", "type": "rectangle", "operation": "add", "override": true,
     "floor": 13, "base_height": 4, "theme": "deck",
-    "min_x": -38, "min_z": 57, "max_x": -12, "max_z": 73 }
+    "min_x": -28, "min_z": -8, "max_x": -2, "max_z": 8 }
 ]
 ```
 
@@ -32,34 +32,34 @@ the same column regardless of which was authored first, because the subtract sid
 either shape's `override` is looked at. Dropping `override` from `deck` and rebuilding answers exactly that:
 
 ```
-GET …/column?at=-25,65   (deck without "override")   0 solid block(s) — void
+GET …/column?at=-15,0   (deck without "override")   0 solid block(s) — void
 ```
 
 The channel wins; there is no deck. `override: true` is what moves `deck` into the second pass, where it
 "overwrites the column it lands on" outright — the third fact `capabilities.md` states about the resolution
 order, and the one this board is the worked example of.
 
-## The trap: the first version filled the channel back in
+## The trap: `base_height` alone fills the channel back in
 
-The first `deck` shape stated only `base_height: 17`, on the reasoning that seventeen blocks is where its top
-should be. It is not what the field means. `floor` defaults to `0` — the very bottom of the shape's column —
-so an override-add with no stated floor spans from the world's floor to its own top, the same as any ordinary
-ground. The column it built:
+State only `base_height: 17`, on the reasoning that seventeen blocks is where the deck's top should be, and
+the board is **refused**:
 
 ```
-GET …/column?at=-25,65   (base_height 17, floor unset)
-  y 16   Grass Block
-  y 15   Dirt
-  y 14   Dirt
-  y 13   Stone           ← bedrock and eleven more courses of stone below, unbroken
-  ...
-  y  0   Bedrock
-  17 solid block(s)
+POST /map/from-documents   422
+[refusal] SK13  'deck' fills 260 column(s) that 'gullet-cut' takes away — from (-28, -5) — so the
+                negative space the board states there is ground in the world.
+                An override add beats a subtract on its own layer
 ```
 
-Seventeen solid blocks, bedrock to grass. The channel is gone — refilled as an ordinary column that happens to
-stand tall, not bridged at all. **`floor` is the field that decides**, exactly as the brief warns, and it
-decides by setting where the column's own span *starts*, not by any relation to the ground it replaces.
+`floor` defaults to `0` — the very bottom of the shape's column — so an override add with no stated floor
+spans from the world's floor to its own top, the same as any ordinary ground: seventeen solid blocks,
+bedrock to grass, the channel gone. **`floor` is the field that decides**, and it decides by setting where
+the column's own span *starts*, not by any relation to the ground it replaces.
+
+**`SK13` reads both floors, which is what separates this from the shipped board.** A layer holds one span
+per column, so an override add resting *above* the subtract's floor moves that span up and records nothing
+beneath it — a lid, not a fill — and the gate is silent on it. The same shape at the subtract's own floor is
+the refusal above. The difference between the two documents is one field.
 
 ## The fix, and what it actually buys
 
@@ -67,7 +67,7 @@ Setting `floor: 13` alongside `base_height: 4` keeps the same top — `y16` — 
 higher up instead of at the bottom:
 
 ```
-GET …/column?at=-25,65   (base_height 4, floor 13)
+GET …/column?at=-15,0   (base_height 4, floor 13)
   y 16   Dark Oak Planks
   y 15   Stone Bricks
   y 14   Stone Bricks
@@ -82,11 +82,11 @@ what an overhang is built from: a span that starts high and nothing under it.
 ## What that costs: there is no floor to stand on underneath
 
 A column is one span. Building the slab higher did not add a second, lower span for a passage floor — it
-moved the *only* span this cell has. Asking the walk for a place at `(-25, 65)` and naming the ground height
+moved the *only* span this cell has. Asking the walk for a place at `(-15, 0)` and naming the ground height
 explicitly proves it:
 
 ```
-GET …/walk?from=-25,65,8&to=-25,25    reachable, distance 41, blocks 0, drops 1 (worst 8)
+GET …/walk?from=-15,0,8&to=-15,-30    reachable, distance 30, blocks 0, drops 1 (worst 8)
 ```
 
 The request asks for the place at `y8` — where the ground would be if the channel had never been cut — and
@@ -95,7 +95,7 @@ side. There is no place at `y8` to snap to. A walk crossing the deck's own footp
 same way: it climbs onto the deck (`blocks 7`, the eight-block rise minus one) and crosses on top of it.
 
 ```
-GET …/walk?from=-25,55&to=-25,80     reachable, distance 29, blocks 7, drops 1 (worst 8)   — climbs onto the deck, crosses it, drops off the far side
+GET …/walk?from=-15,-20&to=-15,20    reachable, distance 40, blocks 7, drops 1 (worst 8)   — climbs onto the deck, crosses it, drops off the far side
 ```
 
 **"Undercroft Passage" has no undercroft a player can stand in.** Within one sketch layer a rasterized
@@ -139,7 +139,7 @@ does not want to spend the seven blocks a bridge costs or the distance the shoul
 
 ```
 GET …/preflight                        export gate OPEN — traversability: connected, 1 component
-GET …/coverage                         reached 6722 · dead 94 · 1.4% dead
+GET …/coverage                         reached 5 640 · dead 3 448 of 9 088 · 37.9% dead
 ```
 
 ## What to look at
@@ -147,18 +147,18 @@ GET …/coverage                         reached 6722 · dead 94 · 1.4% dead
 | Picture | Says |
 |---|---|
 | `renders/world-ground.png` | the deck (dark plank/stone) crossing the meadow cut, distinct from both the ground family and `11-channel`'s bare lip |
-| `renders/section-deck-x65.png` | `axis=x&at=65` — the deck as a slab hanging in open air, void above **and below** it, the untouched shoulder solid on the right |
-| `renders/section-deck-z-25.png` | `axis=z&at=-25` — ground, then the floating deck, then the spawn beyond it, the gap under the deck visible the whole way along |
+| `GET …/render/section?axis=x&at=0&from=-50&to=50&scale=6` | the deck as a slab hanging in open air, void above **and below** it, the untouched shoulders solid either end |
+| `GET …/render/section?axis=z&at=-15&from=-30&to=30&scale=10` | ground, then the floating deck, then ground again, the gap under the deck visible the whole way along |
 
 ## Numbers
 
 | Read | Answer |
 |---|---|
 | `POST /plan/evaluate` | score **0**, `valid: true` |
-| `deck` without `override` | column at `(-25,65)` reads **void** — the subtract still wins |
-| `deck` with `floor` unset, `base_height: 17` | column reads **17 solid blocks**, bedrock to `y16` — the channel is filled, not bridged |
+| `deck` without `override` | column at `(-15,0)` reads **void**, and `SK13` complains that the shape draws nothing |
+| `deck` with `floor` unset, `base_height: 17` | **refused** — `SK13`: the deck fills 260 columns the cut takes away |
 | `deck` with `floor: 13`, `base_height: 4` | column reads **4 solid blocks**, `y13..16`, nothing below |
-| `GET …/walk?from=-25,65,8&to=-25,25` | snaps to the deck's own top (`y16`); no place answers at `y8` |
-| `GET …/walk?from=-25,55&to=-25,80` | blocks 7, one drop of 8 — over the deck, not under it |
+| `GET …/walk?from=-15,0,8&to=-15,-30` | snaps to the deck's own top (`y16`); no place answers at `y8` |
+| `GET …/walk?from=-15,-20&to=-15,20` | blocks 7, one drop of 8 — over the deck, not under it |
 | `GET …/preflight` | export gate **OPEN**, traversability connected, 1 component |
-| `GET …/coverage` | 1.4% dead (11-channel: 1.8%) |
+| `GET …/coverage` | 37.9% dead (11-channel: 76.8% — the deck is walked, the void it spans is not) |
