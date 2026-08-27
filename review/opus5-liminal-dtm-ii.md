@@ -133,15 +133,22 @@ twice the vanilla portal room, and going higher would mean cutting into the vill
 
 ## The Liminal Poolroom's water
 
-**A pool is not a basin drawn and then filled.** Water in this studio cuts its own bed below the
-surface it crosses and fills that bed to one level line, so a *flat* Poolroom floor and a channel
-four courses deep **is** the pool, and the deck is simply where the channel is not. One channel
-traced as a rounded rectangle makes the Main Pool; two short ones two courses deep make the Sub
-Pools. Measured at `(72, 12)`: water y9–y11 over a prismarine bed at y6–y8, ten courses of sandstone
-over it, and the river's own bed at y23.
+**A pool is a room with water in it, not a river that happens to be indoors.** A `water` prop sweeps a
+disc along a polyline and carves its own bed, filling it to one level line — right for the river
+above, and wrong here: the outline comes out lobed where the discs overlap, the corners round off, and
+a pool wider than the sweep needs a second prop down its middle to fill what the first one missed.
 
-The bands stop clear of the room's walls, because a channel **cuts anything above its water line
-inside its band back to air** — which on a wall is the wall.
+Each pool is a **rectangle whose theme puts water in its surface bucket**: the same span as the deck
+around it, `floor 1` for eleven courses, with `surface.depth: 4` painting the top four courses block 9
+and the fill leaving prismarine under them. The pool is exactly the rectangle drawn. Measured across
+its west edge at z=8: `(59, 8)` is light blue clay at y11 — the deck — and `(60, 8)` is water, four
+courses of it from y8 to y11, level with the deck it is cut into.
+
+The Main Pool is `(60, −8)` to `(92, 32)` — 32 × 40 of the room's 40 × 48, the brief's ~70% — and two
+Sub Pools of 4 × 8 sit along the east deck at two courses. Depth is the theme's number and not the
+shape's: a shallower pool is `surface.depth: 2` on a shape of the same height, because a shorter shape
+would be a hole in the floor rather than water in it. The Farm's furrow is the same trick one course
+deep.
 
 ## How the board is got round
 

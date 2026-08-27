@@ -1,0 +1,627 @@
+{
+ "authors": [
+  "Opus 5"
+ ],
+ "themes": {
+  "meadow": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "voronoi",
+         "seed": 7,
+         "cellSize": 16,
+         "bands": [
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 3,
+            "data": 1
+           }
+          },
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 2,
+            "data": 0
+           }
+          }
+         ]
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "rock": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 2
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "room": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 2
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 155,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "stair": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 2
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  }
+ },
+ "roomStyles": {
+  "spawn": "@showcase-hall",
+  "cage": "@showcase-cage"
+ },
+ "shapePropsByHeight": {
+  "22": {
+   "floor": 14,
+   "base_height": 8
+  }
+ },
+ "addShapes": [
+  {
+   "id": "st1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -38,
+   "min_z": 73,
+   "max_x": -30,
+   "max_z": 74,
+   "floor": 8,
+   "base_height": 14,
+   "override": true,
+   "keepClear": true,
+   "theme": "stair"
+  },
+  {
+   "id": "st2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -38,
+   "min_z": 72,
+   "max_x": -30,
+   "max_z": 73,
+   "floor": 8,
+   "base_height": 13,
+   "override": true,
+   "keepClear": true,
+   "theme": "stair"
+  },
+  {
+   "id": "st3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -38,
+   "min_z": 71,
+   "max_x": -30,
+   "max_z": 72,
+   "floor": 8,
+   "base_height": 12,
+   "override": true,
+   "keepClear": true,
+   "theme": "stair"
+  },
+  {
+   "id": "st4",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -38,
+   "min_z": 70,
+   "max_x": -30,
+   "max_z": 71,
+   "floor": 8,
+   "base_height": 11,
+   "override": true,
+   "keepClear": true,
+   "theme": "stair"
+  },
+  {
+   "id": "st5",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -38,
+   "min_z": 69,
+   "max_x": -30,
+   "max_z": 70,
+   "floor": 8,
+   "base_height": 10,
+   "override": true,
+   "keepClear": true,
+   "theme": "stair"
+  },
+  {
+   "id": "st6",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -38,
+   "min_z": 68,
+   "max_x": -30,
+   "max_z": 69,
+   "floor": 8,
+   "base_height": 9,
+   "override": true,
+   "keepClear": true,
+   "theme": "stair"
+  },
+  {
+   "id": "st7",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -38,
+   "min_z": 67,
+   "max_x": -30,
+   "max_z": 68,
+   "floor": 8,
+   "base_height": 8,
+   "override": true,
+   "keepClear": true,
+   "theme": "stair"
+  },
+  {
+   "id": "st8",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -38,
+   "min_z": 66,
+   "max_x": -30,
+   "max_z": 67,
+   "floor": 8,
+   "base_height": 7,
+   "override": true,
+   "keepClear": true,
+   "theme": "stair"
+  },
+  {
+   "id": "st9",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -38,
+   "min_z": 65,
+   "max_x": -30,
+   "max_z": 66,
+   "floor": 8,
+   "base_height": 6,
+   "override": true,
+   "keepClear": true,
+   "theme": "stair"
+  },
+  {
+   "id": "st10",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -38,
+   "min_z": 64,
+   "max_x": -30,
+   "max_z": 65,
+   "floor": 8,
+   "base_height": 5,
+   "override": true,
+   "keepClear": true,
+   "theme": "stair"
+  },
+  {
+   "id": "st11",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -38,
+   "min_z": 63,
+   "max_x": -30,
+   "max_z": 64,
+   "floor": 8,
+   "base_height": 4,
+   "override": true,
+   "keepClear": true,
+   "theme": "stair"
+  },
+  {
+   "id": "st12",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -38,
+   "min_z": 62,
+   "max_x": -30,
+   "max_z": 63,
+   "floor": 8,
+   "base_height": 3,
+   "override": true,
+   "keepClear": true,
+   "theme": "stair"
+  },
+  {
+   "id": "st13",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -38,
+   "min_z": 61,
+   "max_x": -30,
+   "max_z": 62,
+   "floor": 8,
+   "base_height": 2,
+   "override": true,
+   "keepClear": true,
+   "theme": "stair"
+  },
+  {
+   "id": "st14",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -38,
+   "min_z": 60,
+   "max_x": -30,
+   "max_z": 61,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "keepClear": true,
+   "theme": "stair"
+  }
+ ],
+ "addLayers": [
+  {
+   "id": "under",
+   "name": "Undercroft",
+   "base_y": 0,
+   "below": true,
+   "shapes": [
+    {
+     "id": "rk1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -40,
+     "min_z": 15,
+     "max_x": 40,
+     "max_z": 20,
+     "floor": 0,
+     "base_height": 14,
+     "theme": "rock"
+    },
+    {
+     "id": "rk2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -40,
+     "min_z": 20,
+     "max_x": -38,
+     "max_z": 30,
+     "floor": 0,
+     "base_height": 14,
+     "theme": "rock"
+    },
+    {
+     "id": "rk3",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -28,
+     "min_z": 20,
+     "max_x": 40,
+     "max_z": 30,
+     "floor": 0,
+     "base_height": 14,
+     "theme": "rock"
+    },
+    {
+     "id": "rk4",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -40,
+     "min_z": 30,
+     "max_x": -38,
+     "max_z": 60,
+     "floor": 0,
+     "base_height": 14,
+     "theme": "rock"
+    },
+    {
+     "id": "rk5",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -28,
+     "min_z": 30,
+     "max_x": -25,
+     "max_z": 60,
+     "floor": 0,
+     "base_height": 14,
+     "theme": "rock"
+    },
+    {
+     "id": "rk6",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 25,
+     "min_z": 30,
+     "max_x": 40,
+     "max_z": 60,
+     "floor": 0,
+     "base_height": 14,
+     "theme": "rock"
+    },
+    {
+     "id": "rk7",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -40,
+     "min_z": 60,
+     "max_x": -38,
+     "max_z": 74,
+     "floor": 0,
+     "base_height": 14,
+     "theme": "rock"
+    },
+    {
+     "id": "rk8",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -30,
+     "min_z": 60,
+     "max_x": 40,
+     "max_z": 74,
+     "floor": 0,
+     "base_height": 14,
+     "theme": "rock"
+    },
+    {
+     "id": "rk9",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -40,
+     "min_z": 74,
+     "max_x": 40,
+     "max_z": 75,
+     "floor": 0,
+     "base_height": 14,
+     "theme": "rock"
+    },
+    {
+     "id": "rk10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": 75,
+     "max_x": 35,
+     "max_z": 110,
+     "floor": 0,
+     "base_height": 14,
+     "theme": "rock"
+    },
+    {
+     "id": "rk11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -30,
+     "min_z": 75,
+     "max_x": -10,
+     "max_z": 90,
+     "floor": 0,
+     "base_height": 14,
+     "theme": "rock"
+    },
+    {
+     "id": "rf1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -38,
+     "min_z": 20,
+     "max_x": -28,
+     "max_z": 60,
+     "floor": 0,
+     "base_height": 8,
+     "theme": "room"
+    },
+    {
+     "id": "rf2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -38,
+     "min_z": 60,
+     "max_x": -30,
+     "max_z": 74,
+     "floor": 0,
+     "base_height": 8,
+     "theme": "room"
+    }
+   ],
+   "islands": [
+    {
+     "id": "under",
+     "name": "The rock and its rooms",
+     "mirrors": true,
+     "shapeIds": [
+      "rk1",
+      "rk2",
+      "rk3",
+      "rk4",
+      "rk5",
+      "rk6",
+      "rk7",
+      "rk8",
+      "rk9",
+      "rk10",
+      "rk11",
+      "rf1",
+      "rf2"
+     ]
+    }
+   ]
+  }
+ ]
+}

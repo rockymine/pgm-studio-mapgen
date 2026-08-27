@@ -174,6 +174,24 @@ redrawn to run south of the Farm as well, or it would simply have a plot-shaped 
 moving it put a hilltop oak inside its standoff, which is `DR-ROAD` and one more hill to move.
 Circulation is authored before scenery for exactly this reason.
 
+### A water prop makes a river, and a pool wants a shape
+
+The brief's author saw it before I did: the Poolrooms *read organic when they are not*. Four
+`WaterProp`s made two pools — a swept disc along a polyline, plus a second prop down the middle to
+fill what the sweep missed — and a swept disc gives a room's pool an outline no room has: lobed where
+the discs overlap, rounded at the corners, depth following the sweep.
+
+A pool is a rectangle whose **theme** puts water in its surface bucket: same span as the deck around
+it, `surface.depth: 4`, block 9 on top and prismarine under. `(59, 8)` is deck at y11 and `(60, 8)` is
+water from y8 — a one-block edge, four courses everywhere, no prop involved. The Farm's furrow went
+the same way.
+
+The rule, stated once: **a channel is for water that found its shape; a themed rectangle is for water
+somebody built.** Two things follow. Depth is the theme's number rather than the shape's — a shorter
+shape would be a hole in the floor, not water in it. And a room nested inside a room is two spans in
+the same columns unless the outer one is banded round it, which is the same care the rock already
+takes with its holes.
+
 ### Two words differ between a preview and a snapshot, and the error says neither
 
 `POST /room-styles/preview` takes the library's **save request**, where `storeys` is a count; a

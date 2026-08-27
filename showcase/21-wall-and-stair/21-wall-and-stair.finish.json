@@ -1,0 +1,383 @@
+{
+ "authors": [
+  "Opus 5"
+ ],
+ "themes": {
+  "meadow": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "voronoi",
+         "seed": 7,
+         "cellSize": 16,
+         "bands": [
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 3,
+            "data": 1
+           }
+          },
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 2,
+            "data": 0
+           }
+          }
+         ]
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "wall": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 2
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   }
+  }
+ },
+ "roomStyles": {
+  "spawn": "@showcase-hall",
+  "cage": "@showcase-cage"
+ },
+ "addShapes": [
+  {
+   "id": "wl1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -40,
+   "min_z": 21,
+   "max_x": -4,
+   "max_z": 24,
+   "floor": 0,
+   "base_height": 14,
+   "override": true,
+   "keepClear": true,
+   "theme": "wall"
+  },
+  {
+   "id": "wl2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 4,
+   "min_z": 21,
+   "max_x": 40,
+   "max_z": 24,
+   "floor": 0,
+   "base_height": 14,
+   "override": true,
+   "keepClear": true,
+   "theme": "wall"
+  },
+  {
+   "id": "ws1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 8,
+   "min_z": 20,
+   "max_x": 12,
+   "max_z": 21,
+   "floor": 0,
+   "base_height": 14,
+   "override": true,
+   "keepClear": true,
+   "theme": "wall"
+  },
+  {
+   "id": "ws2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -12,
+   "min_z": 24,
+   "max_x": -8,
+   "max_z": 25,
+   "floor": 0,
+   "base_height": 14,
+   "override": true,
+   "keepClear": true,
+   "theme": "wall"
+  },
+  {
+   "id": "ws3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 8,
+   "min_z": 19,
+   "max_x": 12,
+   "max_z": 20,
+   "floor": 0,
+   "base_height": 13,
+   "override": true,
+   "keepClear": true,
+   "theme": "wall"
+  },
+  {
+   "id": "ws4",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -12,
+   "min_z": 25,
+   "max_x": -8,
+   "max_z": 26,
+   "floor": 0,
+   "base_height": 13,
+   "override": true,
+   "keepClear": true,
+   "theme": "wall"
+  },
+  {
+   "id": "ws5",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 8,
+   "min_z": 18,
+   "max_x": 12,
+   "max_z": 19,
+   "floor": 0,
+   "base_height": 12,
+   "override": true,
+   "keepClear": true,
+   "theme": "wall"
+  },
+  {
+   "id": "ws6",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -12,
+   "min_z": 26,
+   "max_x": -8,
+   "max_z": 27,
+   "floor": 0,
+   "base_height": 12,
+   "override": true,
+   "keepClear": true,
+   "theme": "wall"
+  },
+  {
+   "id": "ws7",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 8,
+   "min_z": 17,
+   "max_x": 12,
+   "max_z": 18,
+   "floor": 0,
+   "base_height": 11,
+   "override": true,
+   "keepClear": true,
+   "theme": "wall"
+  },
+  {
+   "id": "ws8",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -12,
+   "min_z": 27,
+   "max_x": -8,
+   "max_z": 28,
+   "floor": 0,
+   "base_height": 11,
+   "override": true,
+   "keepClear": true,
+   "theme": "wall"
+  },
+  {
+   "id": "ws9",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 8,
+   "min_z": 16,
+   "max_x": 12,
+   "max_z": 17,
+   "floor": 0,
+   "base_height": 10,
+   "override": true,
+   "keepClear": true,
+   "theme": "wall"
+  },
+  {
+   "id": "ws10",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -12,
+   "min_z": 28,
+   "max_x": -8,
+   "max_z": 29,
+   "floor": 0,
+   "base_height": 10,
+   "override": true,
+   "keepClear": true,
+   "theme": "wall"
+  }
+ ],
+ "dressing": {
+  "props": [
+   {
+    "kind": "stroke",
+    "id": "gate-road",
+    "seed": 3,
+    "route": true,
+    "points": [
+     [
+      0,
+      5
+     ],
+     [
+      0,
+      38
+     ]
+    ],
+    "radius": 3,
+    "style": "solid",
+    "pave": {
+     "kind": "solid",
+     "id": 13,
+     "data": 0
+    }
+   },
+   {
+    "kind": "water",
+    "id": "moat",
+    "seed": 5,
+    "points": [
+     [
+      -40,
+      30
+     ],
+     [
+      40,
+      30
+     ]
+    ],
+    "radius": 5,
+    "depth": 3,
+    "form": "canal",
+    "shore": 3,
+    "shoreWander": false,
+    "bank": {
+     "kind": "solid",
+     "id": 12,
+     "data": 0
+    }
+   }
+  ]
+ }
+}

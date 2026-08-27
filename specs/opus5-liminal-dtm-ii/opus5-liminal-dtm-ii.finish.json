@@ -1238,6 +1238,20 @@
    "theme": "stair"
   },
   {
+   "id": "fw1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 53,
+   "min_z": 19,
+   "max_x": 54,
+   "max_z": 26,
+   "floor": 18,
+   "base_height": 17,
+   "override": true,
+   "keepClear": true,
+   "theme": "farm-water"
+  },
+  {
    "id": "hl1",
    "type": "rectangle",
    "operation": "add",
@@ -7075,6 +7089,45 @@
      "theme": "pool"
     },
     {
+     "id": "pl1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 60,
+     "min_z": -8,
+     "max_x": 92,
+     "max_z": 32,
+     "floor": 1,
+     "base_height": 11,
+     "override": true,
+     "theme": "pool-deep"
+    },
+    {
+     "id": "pl2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 92,
+     "min_z": -4,
+     "max_x": 96,
+     "max_z": 4,
+     "floor": 1,
+     "base_height": 11,
+     "override": true,
+     "theme": "pool-sub"
+    },
+    {
+     "id": "pl3",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 92,
+     "min_z": 12,
+     "max_x": 96,
+     "max_z": 20,
+     "floor": 1,
+     "base_height": 11,
+     "override": true,
+     "theme": "pool-sub"
+    },
+    {
      "id": "hs1",
      "type": "rectangle",
      "operation": "add",
@@ -7549,6 +7602,9 @@
       "pw3",
       "pw4",
       "pw5",
+      "pl1",
+      "pl2",
+      "pl3",
       "hs1",
       "hs2",
       "hs3",
@@ -7883,6 +7939,117 @@
     "kind": "solid",
     "id": 168,
     "data": 1
+   }
+  },
+  "pool-deep": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 2
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 9,
+     "data": 0
+    },
+    "depth": 4,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 159,
+    "data": 9
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 168,
+    "data": 1
+   }
+  },
+  "pool-sub": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 2
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 9,
+     "data": 0
+    },
+    "depth": 2,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 159,
+    "data": 9
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 168,
+    "data": 1
+   }
+  },
+  "farm-water": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 2
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 9,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 3,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 24,
+    "data": 0
    }
   },
   "backroom": {
@@ -8998,144 +9165,6 @@
      "fernShare": 0.5,
      "flowerShare": 0.05,
      "tallShare": 0.3
-    }
-   },
-   {
-    "kind": "water",
-    "id": "main-pool",
-    "seed": 61,
-    "layer": "under",
-    "points": [
-     [
-      68,
-      2
-     ],
-     [
-      76,
-      2
-     ],
-     [
-      76,
-      22
-     ],
-     [
-      68,
-      22
-     ]
-    ],
-    "radius": 10,
-    "depth": 4,
-    "form": "canal",
-    "shore": 0,
-    "shoreWander": false,
-    "bank": {
-     "kind": "solid",
-     "id": 168,
-     "data": 1
-    }
-   },
-   {
-    "kind": "water",
-    "id": "main-pool-mid",
-    "seed": 64,
-    "layer": "under",
-    "points": [
-     [
-      70,
-      8
-     ],
-     [
-      70,
-      16
-     ]
-    ],
-    "radius": 9,
-    "depth": 4,
-    "form": "canal",
-    "shore": 0,
-    "shoreWander": false,
-    "bank": {
-     "kind": "solid",
-     "id": 168,
-     "data": 1
-    }
-   },
-   {
-    "kind": "water",
-    "id": "sub-pool-n",
-    "seed": 62,
-    "layer": "under",
-    "points": [
-     [
-      88,
-      -2
-     ],
-     [
-      92,
-      -2
-     ]
-    ],
-    "radius": 4,
-    "depth": 2,
-    "form": "canal",
-    "shore": 0,
-    "shoreWander": false,
-    "bank": {
-     "kind": "solid",
-     "id": 168,
-     "data": 1
-    }
-   },
-   {
-    "kind": "water",
-    "id": "sub-pool-s",
-    "seed": 63,
-    "layer": "under",
-    "points": [
-     [
-      88,
-      18
-     ],
-     [
-      92,
-      18
-     ]
-    ],
-    "radius": 4,
-    "depth": 2,
-    "form": "canal",
-    "shore": 0,
-    "shoreWander": false,
-    "bank": {
-     "kind": "solid",
-     "id": 168,
-     "data": 1
-    }
-   },
-   {
-    "kind": "water",
-    "id": "farm-furrow",
-    "seed": 71,
-    "layer": "ground",
-    "points": [
-     [
-      53,
-      19
-     ],
-     [
-      53,
-      25
-     ]
-    ],
-    "radius": 1,
-    "depth": 1,
-    "form": "canal",
-    "shore": 0,
-    "shoreWander": false,
-    "bank": {
-     "kind": "solid",
-     "id": 3,
-     "data": 0
     }
    },
    {

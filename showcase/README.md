@@ -79,6 +79,10 @@ with paint on it and is what `03` onward fork.
 | 17 | `17-houses` | several buildings in one world — forked presets, roof forms, an L-wing, and a shell used as a boundary | `dressing` + `roomStyles` |
 | 18 | `18-wall-and-iron` | the two structures the composer never asks for: a defence wall and a renewable iron cube | the plan |
 | 19 | `19-mountain-range` | a range of mountains, drawn entirely with pushes, around a board that stays one open dale — `crown`, `amounts`, `falloff`, and the marks not written | `relief` |
+| 20 | `20-undercroft` | a storey under the landmass: lifting the ground's floor to make room, and stating the **rock** with the rooms as holes in it rather than the rooms alone | `addLayers` |
+| 21 | `21-wall-and-stair` | a wall you can walk on, its gate, its flights — and `keepClear`, without which a road repaints its top course and a channel cuts it out | `addShapes` + `dressing` |
+| 22 | `22-indoor-pool` | water in a theme's **surface bucket**, so a pool is the rectangle drawn rather than a swept disc's outline | `themes` |
+| 23 | `23-maze` | a Backrooms lattice: runs on a pitch, one link in three left out, and the rule that survives `rot_180` | `addLayers` |
 
 ## What every board here found out, in one place
 
@@ -97,6 +101,13 @@ was found; this is the index to them.
 | A subtract's `floor` and `base_height` are not read: the whole column goes, however tall the shape says it is | `11` |
 | Within one sketch layer a column carries one span, so an override-add **replaces** the column rather than standing over it. Stacking is what `addLayers` is for | `12` |
 | A water prop's level is the single lowest ground its band touches — one prop over a falling course pools the whole run flat | `13`, `14` |
+| A **subtract is a claim about the whole stack**, not about one layer: rock cut with subtracts forbids the landmass over it, and rock stated over the board's own void fills that void from below. State a storey as adds, banded round its holes | `20` |
+| Lifting the compiled ground to make room for a storey needs the **plan** to say so too. Move the finish's floor alone and the spawns stay where the plan put them, thirteen courses under their own ground, and every placement reads as over open void | `20` |
+| A placement reads as over open void unless its column has a span at **Y = 0** — a storey resting at `floor 1` leaves the whole board without one | `20` |
+| A wall or a crop bed drawn as terrain **is** terrain: the painter writes it with a theme like any other ground, so a stroke repaints its top course and a channel cuts it down to the water line. `keepClear` is what separates a made thing from the ground | `21` |
+| A keep-out **stops** a prop; it does not route one. A road that would cross a marked shape wants redrawing | `21` |
+| Water in a theme's surface bucket is a pool; a water prop is a river. The prop sweeps a disc and carves its own bed, which gives an outline no room has | `22` |
+| A storey's headroom is the gap between two spans and needs no field: a floor of seven courses under rock starting at fourteen is six courses, everywhere, by construction | `20`, `23` |
 | A block's own id decides whether a prop may stand near it: wool, sandstone, stone brick and stained clay are all in `BlockRoles.IsBuilt`, and a prop declines on built ground | `15` |
 | A tree claims every cell its **canopy** reaches, not its trunk cell | `16` |
 | Repainting a preset's top-level `wall` and not `storeys[*].wall` is a fork that changes nothing — provable by a byte-identical preview | `17` |

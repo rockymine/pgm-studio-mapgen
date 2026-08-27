@@ -80,6 +80,12 @@ THEMES = {
     # the Liminal Poolroom: the blocks of an indoor swimming pool
     "pool": theme(layered(stack((solid(159, 3), 1), (solid(159, 9), 1), ending="repeat")),
                   solid(159, 9), solid(168, 1), surface_depth=2),
+    # the pools themselves: the same prismarine basin with water for its top courses, so the water is
+    # the shape's own surface bucket rather than a channel swept over it — a pool has straight sides
+    "pool-deep": theme(solid(9), solid(159, 9), solid(168, 1), surface_depth=4),
+    "pool-sub":  theme(solid(9), solid(159, 9), solid(168, 1), surface_depth=2),
+    # the Farm's furrow, the same trick one course deep
+    "farm-water": theme(solid(9), solid(3), solid(24), surface_depth=1),
     # the Liminal Backroom Space: double smooth stone slab underfoot, smooth sandstone everywhere else
     "backroom": theme(solid(43, 8), solid(24, 2), solid(24, 2), surface_depth=1),
     # its ceiling, seen from underneath, which is the lid's fill
@@ -293,6 +299,17 @@ sided = [box("rf", *rect, MASS_FLOOR, FLOOR_H, "pool" if rect in (POOL, CORR) el
          for rect in SIDED]
 sided += ring("pw", *POOL, 2, MASS_FLOOR, MASS_H, "pool",
               gaps=[("e", 28, 36), ("w", 4, 12)])
+
+# ══ the water in them ═════════════════════════════════════════════════════════════════════════
+# A pool is a room with water in it, not a river that happens to be indoors. A `water` prop sweeps a
+# disc along a polyline and carves its own bed, which is right for a river and wrong here: the edge
+# comes out lobed and the depth follows the sweep. Stated as a rectangle whose theme puts water in its
+# surface bucket, the pool is exactly the rectangle drawn — straight sides, one depth, flush with the
+# deck at y11 — and the prismarine under it is the same fill the room already has.
+MAIN_POOL = (60, -8, 92, 32)        # 32 x 40 of the room's 40 x 48 — the brief's ~70%, four deep
+SUB_BATHS = [(92, -4, 96, 4), (92, 12, 96, 20)]     # two along the east deck, two deep
+sided.append(box("pl", *MAIN_POOL, MASS_FLOOR, FLOOR_H, "pool-deep", over=True))
+sided += [box("pl", *rect, MASS_FLOOR, FLOOR_H, "pool-sub", over=True) for rect in SUB_BATHS]
 for j in range(UNDER_TOP - HOLD_TOP):
     edge = HOLD_STAIR[1] - 1 - j
     sided.append(box("hs", edge, HOLD_STAIR[2], edge + 1, HOLD_STAIR[3],
@@ -418,11 +435,9 @@ add_shapes.append(box("fm", *FARM, GROUND_FLOOR, SURFACE - GROUND_FLOOR - 1, "fa
 add_shapes += ring("fm", *FARM, 1, GROUND_FLOOR, SURFACE - GROUND_FLOOR + 1, "stair",
                    over=True, keep=True)
 
-FURROW = [{
-    "kind": "water", "id": "farm-furrow", "seed": 71, "layer": "ground",
-    "points": [[53, 19], [53, 25]], "radius": 1, "depth": 1,
-    "form": "canal", "shore": 0, "shoreWander": False, "bank": solid(3, 0),
-}]
+add_shapes.append(box("fw", 53, 19, 54, 26, GROUND_FLOOR, SURFACE - GROUND_FLOOR - 1,
+                      "farm-water", over=True, keep=True))
+
 
 # ══ the Small Hills ═══════════════════════════════════════════════════════════════════════════
 # Six, three courses over the village on a 10x6 top, each stepped twice so it meets the sand rather
@@ -514,27 +529,6 @@ plan = {
     },
 }
 
-# ══ the water in the Liminal Poolroom ═════════════════════════════════════════════════════════
-# A pool is not a basin drawn and then filled: water cuts its own bed below the surface it crosses
-# and fills that bed to one line, so a flat floor and a channel four courses deep IS the pool, and
-# the deck is simply where the channel is not. The bands stay clear of the walls, because what is
-# above the water line inside them is cut back to air — which on a wall is the wall.
-POOLS = [
-    {"kind": "water", "id": "main-pool", "seed": 61, "layer": "under",
-     "points": [[68, 2], [76, 2], [76, 22], [68, 22]], "radius": 10, "depth": 4,
-     "form": "canal", "shore": 0, "shoreWander": False, "bank": solid(168, 1)},
-    # the middle the sweep leaves dry: a channel is a swept disc, so a pool of any width is more
-    # than one of them
-    {"kind": "water", "id": "main-pool-mid", "seed": 64, "layer": "under",
-     "points": [[70, 8], [70, 16]], "radius": 9, "depth": 4,
-     "form": "canal", "shore": 0, "shoreWander": False, "bank": solid(168, 1)},
-    {"kind": "water", "id": "sub-pool-n", "seed": 62, "layer": "under",
-     "points": [[88, -2], [92, -2]], "radius": 4, "depth": 2,
-     "form": "canal", "shore": 0, "shoreWander": False, "bank": solid(168, 1)},
-    {"kind": "water", "id": "sub-pool-s", "seed": 63, "layer": "under",
-     "points": [[88, 18], [92, 18]], "radius": 4, "depth": 2,
-     "form": "canal", "shore": 0, "shoreWander": False, "bank": solid(168, 1)},
-]
 
 # ══ the roads, and what stands on the hills ═══════════════════════════════════════════════════
 # Circulation before scenery: each gate is joined to the Well, so the two sides meet where the roads
@@ -662,7 +656,7 @@ finish = {
     "mapTheme": "desert",
     "themes": THEMES,
     "dressing": {"props": ROADS + WAYS + OAKS + SKY_OAKS + HOUSES + SPRUCE + UNFINISHED
-                          + TAIGA_FLORA + POOLS + FURROW + [
+                          + TAIGA_FLORA + [
         # the river: the east half of an oval traced round the town wall, fanned into a closed ring
         {"kind": "water", "id": "river", "seed": 11, "layer": "ground",
          "points": [[0, 58], [48, 58], [68, 54], [78, 44], [80, 24], [80, 0],
