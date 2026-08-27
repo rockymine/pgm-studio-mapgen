@@ -715,7 +715,9 @@ RELIEF = {"team": {
     "marks": [
         # the river region keeps its own floor
         area("river-n", -X_BANK, -Z_EDGE, X_BANK, -Z_TOWN, RIVER),
-        area("river-s", -X_BANK, Z_TOWN, X_BANK, Z_EDGE, RIVER),
+        # — but only as far out as the water's own band reaches. Past that the region is dry sand
+        #   between the channel and the board's edge, and it is the dunes below that shape it
+        area("river-s", -X_BANK, Z_TOWN, X_BANK, Z_EDGE - 16, RIVER),
         area("river-e", X_TOWN, -Z_TOWN, X_BANK, Z_TOWN, RIVER),
         area("river-w", -X_BANK, -Z_TOWN, -X_TOWN, Z_TOWN, RIVER),
         # the outer strip is not pinned flat — it rolls too (below) — so what is pinned there is what
@@ -748,6 +750,13 @@ RELIEF = {"team": {
       + [area(f"bank-dn-{i}", x0, z0, x0 + 16, z0 + 16, SURFACE - 1)
          for i, (x0, z0) in enumerate(((108, 2), (-106, 4), (-122, 60), (94, 30),
                                        (-104, 64), (106, 36)))]
+      # and the long dry bank on the board's own edge, where the sand meets the water. Dunes only:
+      # a channel's level is the LOWEST surface its band crosses, so a hollow inside that band drops
+      # the whole river, while a crest inside it changes nothing. The pinned river floor stops ten
+      # blocks short of them, and the relaxation between the two is what makes the bank a slope
+      # rather than a step.
+      + [area(f"dune-{i}", x0, Z_EDGE - 10, x0 + 22, Z_EDGE, RIVER + up)
+         for i, (x0, up) in enumerate(((-84, 3), (-56, 5), (-28, 3), (0, 6), (28, 3), (56, 5)))]
       # and last, because a later constraint wins the cells it shares with an earlier one, the ground
       # each building stands on — its footprint mirrored onto the primary half where it was authored
       # on the far one. A house seats on the lowest column of its footprint and the terrain over that

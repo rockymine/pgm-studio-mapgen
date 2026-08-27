@@ -141,7 +141,14 @@ bumps up on its own.
 
 **The outer bank rolls too** — twelve more areas over the two strips outside the moat and into the
 Snowy Taiga's corner, two courses up and one down, which measures **3 to 5 courses** across each of
-them where it was flat.
+them where it was flat. And six dunes hold the long dry bank on the board's own edge, where the sand
+meets the water: a cut at x=0 reads water at y27, sand at y30, then a crest at **y33** — six courses
+from the waterline to the edge, sloped rather than stepped because the pinned river floor stops ten
+blocks short of them and the relaxation fills the gap.
+
+**Dunes only, on that bank, and the reason is the water.** A channel's level is the *lowest* surface
+its band crosses, so a hollow inside the band drops the whole river while a crest inside it changes
+nothing. Measured after: the moat still stands at y27.
 
 A relief is keyed on the island and this board's ground is one island, so **what must not move has to
 say so**. Four marks pin the river region at y28 — it would otherwise relax up to `base` and lose its
