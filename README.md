@@ -15,6 +15,7 @@ specs/<slug>/provenance.json          what each pass placed, and which prop plac
 review/<slug>.md                      the measured record for that map
 reports/<model>-runN.md               one agent run: what it could not say, what it got wrong, what worked
 showcase/<nn>-<concept>/              one technique, end to end — documents, world, renders, README
+sculpture/                            structures built out of the layer system — the two galleries
 tools/                                the driver that posts those documents to the API
 ```
 
@@ -45,6 +46,14 @@ blocks deep round that, rolling downs cut by three crevasses, a wood, a brick-an
 cottages off it, and a range standing behind each spawn. `maps/opus5-thornfell` is the same technique on a
 capture board: void down the middle, two wool rooms hung off the back of each half on spurs a raider walks
 out along, and a range behind every one of them.
+
+## Sculpting with layers
+
+The sketch tool's layers were built to stack storeys, and they hold rather more than that: a layer is one
+arbitrary height field, so a dome is thirteen circles on one layer and a thirty-block statue is eight layers
+of rectangles. [SCULPTING-WITH-LAYERS.md](SCULPTING-WITH-LAYERS.md) is the account — the six facts that decide
+how far it goes, the four limits, and what could become a tool. `sculpture/` holds the two galleries it was
+written from and `maps/opus5-automaton` is a played board furnished with them.
 
 ## Authoring a map here
 
@@ -237,6 +246,12 @@ no ground at all, and a labyrinth whose walls are their own slab.
 | `opus5-overwall` | ctw · dtm | Opus 5 | a labyrinth of ten-block pillars on a twenty-two block grid, so **every passage is twelve wide**. Three slabs: a floor with a relief of its own, a wall network with a **second** relief over its crests, and two brick bridges seated on pillar tops held flat for them. A river down the one corridor no wall crosses; a keystone in one 34-square court and a wool room in another; and 32 trees, 14 boulders and four **houses on stilts** on the wall tops, out of everyone's reach |
 
 
+
+### Opus 5 — furnished with sculpted props
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5-automaton` | dtm | Opus 5 | **110 × 110** — a flat green square whose whole finish is *props*: a 45-block brass colossus standing on a stepped granite plinth over the symmetry centre, four hooded sentinels holding lanterns on the spawn approaches, two tile rotundas under clay cones with doorways cut through them, and two tapered slate watchtowers. Every one of them is shapes on layers of the ordinary sketch document, arriving through the finish's `addLayers` with nothing about the studio changed; the four sentinels are two authored on the north half and fanned. Scores **0 with no violation and no lint**. Flat because a prop states an absolute floor and a relief moves the ground under it — [SCULPTING-WITH-LAYERS.md](SCULPTING-WITH-LAYERS.md) §5 |
 
 ### Opus 5 — authored to record the method
 

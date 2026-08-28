@@ -1,0 +1,145 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -10,
+    "y": 9,
+    "z": 40
+   },
+   "protection": [
+    {
+     "minX": -20,
+     "minZ": 30,
+     "maxX": 20,
+     "maxZ": 55
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -20,
+    "minZ": 30,
+    "maxX": 20,
+    "maxZ": 55
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 10,
+    "y": 9,
+    "z": -40
+   },
+   "protection": [
+    {
+     "minX": -20,
+     "minZ": -55,
+     "maxX": 20,
+     "maxZ": -30
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -20,
+    "minZ": -55,
+    "maxX": 20,
+    "maxZ": -30
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 60,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Governor",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 0,
+    "y": 9,
+    "z": 25
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Governor",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -1,
+    "y": 9,
+    "z": -26
+   },
+   "float": 2,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Automaton",
+  "created": "2026-08-28",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}
