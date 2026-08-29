@@ -1,163 +1,104 @@
 {
- "foundation": {
-  "plate": {
-   "stack": {
-    "bands": [
-     {
-      "material": {
-       "kind": "solid",
-       "id": 179,
-       "data": 0
+  "foundation": {
+    "plate": {
+      "stack": {
+        "bands": [
+          {
+            "material": {
+              "kind": "solid",
+              "id": 179,
+              "data": 0
+            },
+            "thickness": 1
+          }
+        ],
+        "ending": "repeat"
       },
-      "thickness": 1
-     }
-    ],
-    "ending": "repeat"
-   },
-   "extent": 1
-  },
-  "surface": {
-   "field": null,
-   "border": null,
-   "borderWidth": 1,
-   "inlay": null,
-   "inlayInset": 2,
-   "isPlain": true
-  },
-  "footing": null
- },
- "roof": {
-  "form": "gable",
-  "pitch": 1,
-  "slab": 44,
-  "slabData": 1,
-  "overhang": 1,
-  "ridgeCap": true,
-  "hole": false,
-  "body": {
-   "kind": "solid",
-   "id": 45,
-   "data": 0
-  },
-  "verge": {
-   "kind": "solid",
-   "id": 45,
-   "data": 0
-  },
-  "gable": {
-   "kind": "solid",
-   "id": 121,
-   "data": 0
-  },
-  "gableWindows": {
-   "form": "none"
-  }
- },
- "wall": {
-  "stack": {
-   "bands": [
-    {
-     "material": {
-      "kind": "solid",
-      "id": 24,
-      "data": 0
-     },
-     "thickness": 2
+      "extent": 1
     },
-    {
-     "material": {
+    "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 2,
+      "isPlain": true
+    },
+    "footing": null
+  },
+  "roof": {
+    "form": "gable",
+    "pitch": 1,
+    "slab": 44,
+    "slabData": 4,
+    "overhang": 1,
+    "ridgeCap": true,
+    "hole": false,
+    "body": {
+      "kind": "solid",
+      "id": 45,
+      "data": 0
+    },
+    "verge": {
+      "kind": "solid",
+      "id": 45,
+      "data": 0
+    },
+    "gable": {
       "kind": "solid",
       "id": 121,
       "data": 0
-     },
-     "thickness": 1
     },
-    {
-     "material": {
-      "kind": "solid",
-      "id": 24,
-      "data": 0
-     },
-     "thickness": 3
-    },
-    {
-     "material": {
-      "kind": "solid",
-      "id": 159,
-      "data": 1
-     },
-     "thickness": 1
+    "gableWindows": {
+      "form": "none"
     }
-   ],
-   "ending": "repeat"
   },
-  "extent": 6
- },
- "post": {
-  "kind": "solid",
-  "id": 24,
-  "data": 2
- },
- "windows": {
-  "form": "arched",
-  "block": 135,
-  "hostBlock": -1,
-  "hostData": 0,
-  "data": 0,
-  "sill": 2,
-  "width": 2,
-  "height": 3,
-  "spacing": 3
- },
- "storeys": [
-  {
-   "clear": 5,
-   "wall": {
+  "wall": {
     "stack": {
-     "bands": [
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 121,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
-      }
-     ],
-     "ending": "repeat"
+      "bands": [
+        {
+          "material": {
+            "kind": "solid",
+            "id": 24,
+            "data": 0
+          },
+          "thickness": 2
+        },
+        {
+          "material": {
+            "kind": "solid",
+            "id": 121,
+            "data": 0
+          },
+          "thickness": 1
+        },
+        {
+          "material": {
+            "kind": "solid",
+            "id": 24,
+            "data": 0
+          },
+          "thickness": 3
+        },
+        {
+          "material": {
+            "kind": "solid",
+            "id": 159,
+            "data": 1
+          },
+          "thickness": 1
+        }
+      ],
+      "ending": "repeat"
     },
     "extent": 6
-   },
-   "post": {
+  },
+  "post": {
     "kind": "solid",
     "id": 24,
     "data": 2
-   },
-   "windows": {
+  },
+  "windows": {
     "form": "arched",
     "block": 135,
     "hostBlock": -1,
@@ -167,86 +108,145 @@
     "width": 2,
     "height": 3,
     "spacing": 3
-   }
   },
-  {
-   "clear": 5,
-   "wall": {
-    "stack": {
-     "bands": [
-      {
-       "material": {
+  "storeys": [
+    {
+      "clear": 5,
+      "wall": {
+        "stack": {
+          "bands": [
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 0
+              },
+              "thickness": 2
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 121,
+                "data": 0
+              },
+              "thickness": 1
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 0
+              },
+              "thickness": 3
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 159,
+                "data": 1
+              },
+              "thickness": 1
+            }
+          ],
+          "ending": "repeat"
+        },
+        "extent": 6
+      },
+      "post": {
         "kind": "solid",
         "id": 24,
-        "data": 0
-       },
-       "thickness": 2
+        "data": 2
       },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 121,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 24,
-        "data": 0
-       },
-       "thickness": 3
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 159,
-        "data": 1
-       },
-       "thickness": 1
+      "windows": {
+        "form": "arched",
+        "block": 135,
+        "hostBlock": -1,
+        "hostData": 0,
+        "data": 0,
+        "sill": 2,
+        "width": 2,
+        "height": 3,
+        "spacing": 3
       }
-     ],
-     "ending": "repeat"
     },
-    "extent": 6
-   },
-   "post": {
-    "kind": "solid",
-    "id": 24,
-    "data": 2
-   },
-   "windows": {
-    "form": "arched",
-    "block": 135,
-    "hostBlock": -1,
-    "hostData": 0,
+    {
+      "clear": 5,
+      "wall": {
+        "stack": {
+          "bands": [
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 0
+              },
+              "thickness": 2
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 121,
+                "data": 0
+              },
+              "thickness": 1
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 0
+              },
+              "thickness": 3
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 159,
+                "data": 1
+              },
+              "thickness": 1
+            }
+          ],
+          "ending": "repeat"
+        },
+        "extent": 6
+      },
+      "post": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+      },
+      "windows": {
+        "form": "arched",
+        "block": 135,
+        "hostBlock": -1,
+        "hostData": 0,
+        "data": 0,
+        "sill": 2,
+        "width": 2,
+        "height": 3,
+        "spacing": 3
+      }
+    }
+  ],
+  "porch": null,
+  "front": null,
+  "beams": {
+    "block": 17,
     "data": 0,
-    "sill": 2,
+    "reach": 0,
+    "any": false
+  },
+  "doorway": {
+    "door": "air",
+    "head": {
+      "form": "arched",
+      "block": 135,
+      "fill": "upperSlab",
+      "fillBlock": 126,
+      "fillData": 2
+    },
     "width": 2,
-    "height": 3,
-    "spacing": 3
-   }
+    "height": 3
   }
- ],
- "porch": null,
- "front": null,
- "beams": {
-  "block": 17,
-  "data": 0,
-  "reach": 0,
-  "any": false
- },
- "doorway": {
-  "door": "air",
-  "head": {
-   "form": "arched",
-   "block": 135,
-   "fill": "upperSlab",
-   "fillBlock": 44,
-   "fillData": 1
-  },
-  "width": 2,
-  "height": 3
- }
 }

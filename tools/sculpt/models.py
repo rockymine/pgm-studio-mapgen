@@ -836,3 +836,38 @@ def crane():
           (crate, "timber"),
           (lamp, "lamp"))
     return model
+
+
+# ── the mini car ──────────────────────────────────────────────────────────────────────────────────────────
+
+def minicar(cabin_back=True):
+    """A car at the scale a board can carry a row of: 9 blocks long, 5 wide, 5 tall, one block a wheel.
+
+    Everything larger in this file is a form written as solids and then hollowed. This is the other end: at
+    nine blocks there is no room for a profile crossed with a plan, so the whole model is **four boxes and
+    four cubes** — a chassis course, a two-course body, a cabin set back or forward on it, and the wheels.
+    What makes it read as a car at all is the setback and the glass band, not the outline."""
+    model = {}
+
+    body = box(-2, 2, 1, 3, -4, 4)
+    chassis = box(-2, 2, 1, 1, -4, 4)
+    nose = box(-2, 2, 2, 2, -5, -4)
+    tail = box(-2, 2, 2, 3, 4, 5)
+
+    cabin = box(-2, 2, 4, 5, -1, 3) if cabin_back else box(-2, 2, 4, 5, -3, 1)
+    glass = difference(cabin, box(-1, 1, 4, 5, -2 if cabin_back else -4, 4 if cabin_back else 2))
+    roof = box(-2, 2, 5, 5, *( (-1, 3) if cabin_back else (-3, 1) ))
+
+    wheels = union(*[box(sx * 2, sx * 2, 0, 1, sz, sz + 1) for sx in (-1, 1) for sz in (-4, 2)])
+    lamps = union(box(-2, -1, 2, 2, -5, -5), box(1, 2, 2, 2, -5, -5))
+    lights = union(box(-2, -1, 3, 3, 5, 5), box(1, 2, 3, 3, 5, 5))
+
+    paint(model,
+          (union(body, nose, tail), "car-paint"),
+          (chassis, "car-trim"),
+          (cabin, "car-glass"),
+          (roof, "car-paint"),
+          (wheels, "car-trim"),
+          (lamps, "lamp"),
+          (lights, "car-tail"))
+    return model

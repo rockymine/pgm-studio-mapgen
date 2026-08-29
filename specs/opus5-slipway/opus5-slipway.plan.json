@@ -8,127 +8,160 @@
     "symmetry": "rot_180",
     "maxPlayers": 28,
     "surface": 22,
-    "observerY": 96
+    "observerY": 100
   },
   "pieces": [
     {
-      "id": "basin-w",
+      "id": "basin",
       "role": "piece",
       "rect": [
-        -24,
-        -6,
-        20,
-        12
-      ],
-      "surface": 6
-    },
-    {
-      "id": "slip",
-      "role": "piece",
-      "rect": [
+        -13,
         -4,
-        -6,
-        8,
-        13
+        26,
+        8
       ],
       "surface": 6
     },
     {
-      "id": "basin-e",
+      "id": "balloon-field",
       "role": "piece",
       "rect": [
+        -25,
+        -4,
+        12,
+        11
+      ],
+      "surface": 26
+    },
+    {
+      "id": "crane-dock",
+      "role": "piece",
+      "rect": [
+        -13,
         4,
-        -6,
-        20,
-        12
+        6,
+        5
       ],
-      "surface": 6
+      "surface": 20
     },
     {
-      "id": "quay-w",
+      "id": "goal-dock",
       "role": "piece",
       "rect": [
-        -24,
-        6,
-        20,
-        4
+        -7,
+        4,
+        7,
+        7
       ],
-      "surface": 22
+      "surface": 20
     },
     {
       "id": "quay-e",
       "role": "piece",
       "rect": [
+        0,
         4,
-        6,
-        20,
-        4
+        11,
+        7
       ],
       "surface": 22
     },
     {
-      "id": "town-w",
+      "id": "port",
       "role": "piece",
       "rect": [
-        -22,
-        10,
+        11,
+        4,
         14,
-        8
-      ],
-      "surface": 24
-    },
-    {
-      "id": "market",
-      "role": "piece",
-      "rect": [
-        -8,
-        7,
-        16,
-        11
+        10
       ],
       "surface": 22
     },
     {
-      "id": "town-e",
-      "role": "piece",
-      "rect": [
-        8,
-        10,
-        14,
-        8
-      ],
-      "surface": 24
-    },
-    {
-      "id": "ridge-w",
+      "id": "dock-town",
       "role": "piece",
       "rect": [
         -18,
-        18,
-        13,
-        5
-      ],
-      "surface": 28
-    },
-    {
-      "id": "crest",
-      "role": "piece",
-      "rect": [
-        -5,
-        18,
-        10,
+        7,
+        5,
         7
       ],
+      "surface": 24
+    },
+    {
+      "id": "dock-yard",
+      "role": "piece",
+      "rect": [
+        -13,
+        9,
+        6,
+        5
+      ],
+      "surface": 24
+    },
+    {
+      "id": "mid",
+      "role": "piece",
+      "rect": [
+        -7,
+        11,
+        18,
+        3
+      ],
+      "surface": 24
+    },
+    {
+      "id": "back-settlement",
+      "role": "piece",
+      "rect": [
+        7,
+        14,
+        11,
+        10
+      ],
+      "surface": 30
+    },
+    {
+      "id": "port-back",
+      "role": "piece",
+      "rect": [
+        18,
+        14,
+        7,
+        10
+      ],
+      "surface": 26
+    },
+    {
+      "id": "hill",
+      "role": "piece",
+      "rect": [
+        -18,
+        14,
+        25,
+        9
+      ],
       "surface": 28
     },
     {
-      "id": "ridge-e",
+      "id": "fore-spawn",
       "role": "piece",
       "rect": [
-        5,
-        18,
-        13,
+        -7,
+        23,
+        14,
         5
+      ],
+      "surface": 28
+    },
+    {
+      "id": "back-band",
+      "role": "piece",
+      "rect": [
+        7,
+        24,
+        11,
+        4
       ],
       "surface": 28
     },
@@ -136,23 +169,12 @@
       "id": "spawn",
       "role": "spawn",
       "rect": [
-        -2,
-        25,
+        -3,
+        28,
         5,
         5
       ],
-      "surface": 28
-    },
-    {
-      "id": "headland",
-      "role": "piece",
-      "rect": [
-        -32,
-        -8,
-        8,
-        18
-      ],
-      "surface": 26
+      "surface": 30
     }
   ],
   "zones": [],
@@ -171,10 +193,10 @@
     "iron": [
       {
         "id": "iron-1",
-        "piece": "spawn",
+        "piece": "fore-spawn",
         "at": [
-          2.5,
-          1.0
+          11.0,
+          2.0
         ]
       }
     ],
@@ -183,23 +205,23 @@
         "id": "destroyable-1",
         "style": "pillar-2",
         "at": [
-          -5.0,
-          15.0
+          -6.0,
+          6.5
         ],
         "materials": "obsidian",
         "float": 2,
-        "name": "The Sail Loft"
+        "name": "The Careening Beam"
       },
       {
         "id": "destroyable-2",
         "style": "pillar-2",
         "at": [
-          5.0,
-          15.0
+          9.0,
+          13.0
         ],
         "materials": "obsidian",
         "float": 2,
-        "name": "The Ropewalk"
+        "name": "The Powder House"
       }
     ]
   }

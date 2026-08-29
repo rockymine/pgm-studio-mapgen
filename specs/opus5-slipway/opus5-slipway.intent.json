@@ -22,32 +22,26 @@
    },
    "team": "red",
    "point": {
-    "x": 2,
-    "y": 28,
-    "z": 110
+    "x": -2,
+    "y": 30,
+    "z": 122
    },
    "protection": [
     {
-     "minX": -8,
-     "minZ": 100,
-     "maxX": 12,
-     "maxZ": 120
+     "minX": -12,
+     "minZ": 112,
+     "maxX": 8,
+     "maxZ": 132
     }
    ],
    "yaw": 180,
    "piece": {
-    "minX": -8,
-    "minZ": 100,
-    "maxX": 12,
-    "maxZ": 120
+    "minX": -12,
+    "minZ": 112,
+    "maxX": 8,
+    "maxZ": 132
    },
-   "iron": [
-    {
-     "x": 2,
-     "y": 28,
-     "z": 104
-    }
-   ]
+   "iron": []
   },
   {
    "layer": null,
@@ -58,38 +52,32 @@
    },
    "team": "blue",
    "point": {
-    "x": -2,
-    "y": 28,
-    "z": -110
+    "x": 2,
+    "y": 30,
+    "z": -122
    },
    "protection": [
     {
-     "minX": -12,
-     "minZ": -120,
-     "maxX": 8,
-     "maxZ": -100
+     "minX": -8,
+     "minZ": -132,
+     "maxX": 12,
+     "maxZ": -112
     }
    ],
    "yaw": 0,
    "piece": {
-    "minX": -12,
-    "minZ": -120,
-    "maxX": 8,
-    "maxZ": -100
+    "minX": -8,
+    "minZ": -132,
+    "maxX": 12,
+    "maxZ": -112
    },
-   "iron": [
-    {
-     "x": -2,
-     "y": 28,
-     "z": -104
-    }
-   ]
+   "iron": []
   }
  ],
  "observer": {
   "point": {
    "x": 0,
-   "y": 96,
+   "y": 100,
    "z": 0
   },
   "yaw": 0
@@ -113,13 +101,13 @@
     "image": 0
    },
    "owner": "red",
-   "name": "The Sail Loft",
+   "name": "The Careening Beam",
    "style": "pillar-2",
    "materials": "obsidian",
    "anchor": {
-    "x": -20,
+    "x": -24,
     "y": 22,
-    "z": 60
+    "z": 26
    },
    "float": 2,
    "box": null
@@ -132,13 +120,13 @@
     "image": 0
    },
    "owner": "red",
-   "name": "The Ropewalk",
+   "name": "The Powder House",
    "style": "pillar-2",
    "materials": "obsidian",
    "anchor": {
-    "x": 20,
+    "x": 36,
     "y": 22,
-    "z": 60
+    "z": 52
    },
    "float": 2,
    "box": null
@@ -151,13 +139,13 @@
     "image": 1
    },
    "owner": "blue",
-   "name": "The Sail Loft",
+   "name": "The Careening Beam",
    "style": "pillar-2",
    "materials": "obsidian",
    "anchor": {
-    "x": 19,
+    "x": 23,
     "y": 22,
-    "z": -61
+    "z": -27
    },
    "float": 2,
    "box": null
@@ -170,13 +158,13 @@
     "image": 1
    },
    "owner": "blue",
-   "name": "The Ropewalk",
+   "name": "The Powder House",
    "style": "pillar-2",
    "materials": "obsidian",
    "anchor": {
-    "x": -21,
+    "x": -37,
     "y": 22,
-    "z": -61
+    "z": -53
    },
    "float": 2,
    "box": null
@@ -193,5 +181,33 @@
  "islandTeams": {
   "1": "red"
  },
- "structures": null
+ "structures": {
+  "layer": null,
+  "roomFloors": [],
+  "redstoneLines": [],
+  "ironCubes": [
+   {
+    "x": 16,
+    "z": 100,
+    "renew": false,
+    "stamp": {
+     "kind": "ironcube",
+     "unit": "iron-1",
+     "image": 0
+    }
+   },
+   {
+    "x": -16,
+    "z": -100,
+    "renew": false,
+    "stamp": {
+     "kind": "ironcube",
+     "unit": "iron-1",
+     "image": 1
+    }
+   }
+  ],
+  "walls": [],
+  "isEmpty": false
+ }
 }

@@ -83,7 +83,13 @@ def compile_layers(voxels, prefix="s", layer_prefix="L", mirrors=False, group_na
     reaches, and neither is true of a sculpture. `prop` names the made thing all of its layers belong to, so
     the studio draws one row for it and seats it as a unit; `seat="ground"` takes its floors from the lowest
     solid column under its own footprint, which is what a thing standing on terrain wants and a thing flying
-    over it does not."""
+    over it does not.
+
+    **A shape marks itself kept clear only when the thing it belongs to stands on the ground.** That flag
+    says the cells under it are not terrain to dress, which is true of a crane's legs and false of a balloon
+    flying thirty blocks up: a floating thing's footprint is ground an author decorates, not ground it
+    occupies. So `seat` decides it — the same field that says whether the model settles onto terrain."""
+    stands = seat is not None
     columns = defaultdict(dict)
     for (x, y, z), material in voxels.items():
         columns[(x, z)][y] = material
@@ -111,7 +117,7 @@ def compile_layers(voxels, prefix="s", layer_prefix="L", mirrors=False, group_na
                     "floor": floor,
                     "base_height": top - floor,
                     "theme": material,
-                    "keepClear": True,
+                    "keepClear": stands,
                 })
                 serial += 1
 
