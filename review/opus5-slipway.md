@@ -16,12 +16,21 @@ Made things, each stated a different way, which is the point of the board:
 | thing | blocks | layers | shapes | how it meets the ground |
 |---|---|---|---|---|
 | ship | 8,897 | 8 | 598 | floats — an absolute floor at the load line, no seat |
-| balloon ×2 | 3,195 | 8 | 1,160 | flies — an absolute floor at y48, no seat |
+| balloon ×2 | 3,211 | 8 | 1,156 | flies — an absolute floor at y48, no seat |
+| cloud ×6 | 1,883–2,192 | 1 | 154–182 | flies — an absolute floor at y78–84, no seat |
 | crane ×2 | 810 | 4 | 107 | `seat: ground` — settles onto the dock, jib out over the water |
 | mini car ×8 | 208 | 4 | 19 | parks — an absolute floor at the port's own surface, four boxes and four cubes, 11 × 5 × 6 |
 
 Beside them: sixteen houses over **four** styles, fifty-four trees, five crates, five roads, a harbour and
 six flights of stairs.
+
+**A cloud is the cheapest made thing on the board and the only one nobody can reach.** Three cumulus, each
+answered across the axis, in white stained glass at the altitude the balloons' own shoulders ride at — six
+lobes about a wide low one, cut off flat underneath, because what a cloud has to read as from below is a flat
+base and a lumpy silhouette and an ellipsoid centred on the base plane is a dome for nothing. It seats on
+nothing, takes no ground, and stands entirely over the build ceiling of 68, so no player builds to one. In
+layers it costs **one**: a solid blob is a single run per column, against the balloon's eight. What it costs
+is a top-down read — 2,974 columns, **7.2% of the board**, have a cloud between them and the camera.
 
 **A car parks rather than seats, and that is one course.** A seat lands a made thing's lowest course on the
 ground's own top block — right for a building whose foundation cuts into the surface, and a course too low
@@ -217,6 +226,18 @@ model, and this board is the measurement that says what a pair of them costs.
   the quay and the port, `stone dark voronoi` walled every riser, `grass clay surface dark` turfed the hill.
   Every surface is drawn from the wool-free 159 now — but `stone dark voronoi` is back as the *remainder*
   under the terracotta and the dock, because nothing is planted on ground four courses down.
+- **`SurfaceTop` is nobody's question, and the placements still asking it were the half left undone.** A
+  cloud at y78 over the port is the top of every column beneath it, and `BuiltTerrain.SurfaceFor` fell back
+  to that whole-board top for any placement naming no layer — so the `Car Park` goal read the cloud and was
+  stamped at **y83**, four `OB23` complaints for standing over a build ceiling of 68 it had not itself
+  raised. `WE61` took the dressing pass off that read and `G6` amendment 25 took the ceiling off it; this is
+  the third reader. `BuiltTerrain.Ground` is the one answer now — the tops of everything that is not a made
+  thing — and every seating in `WorldBuilder` takes it: a room's floor, a goal's box and the buried plate
+  under it, a wall, a build-region marker, the world spawn. **A cloud is what found it**, because it is the
+  first made thing on this board authored to fly over an objective.
+- **A cloud stands off a goal's marker.** The marker hangs five over the build ceiling — a sky sign a player
+  reads the goal's position from — which is exactly the air a cloud wants. The first placement put `cloud-mid`
+  three blocks over both of them; it moved to `(0, −60)`.
 - **A road is the lane, so the lane's keep-out must not stop it.** The spawn road is authored to `(0, 114)`,
   inside the spawn's own piece, and it paved 228 cells — narrowing from seven wide to one and ending at
   `z 100`, twelve blocks short. The cause is the door approach: twenty blocks out from the room's face, in

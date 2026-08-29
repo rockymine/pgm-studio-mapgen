@@ -804,6 +804,37 @@ def balloon():
     return model
 
 
+# ── weather ───────────────────────────────────────────────────────────────────────────────────────────────
+
+def cloud(lobes):
+    """A cumulus puff: overlapping domes on one flat base, from `(x, z, span, rise)` a lobe.
+
+    **A cloud is the one made thing seen from underneath**, so what has to read is the flat base every
+    cumulus has and the lumpiness of the silhouette above it. Both come free from the primitive: an
+    ellipsoid centred ON the base plane is a dome once everything below the plane is cut away, and a handful
+    of them at different spans and rises is a cumulus without a single hand-placed block. `rise` is the
+    dome's own height and `span` its radius in plan; a lobe wider than it is tall is what keeps the thing
+    from reading as a heap of spheres.
+
+    Written about `y = 0` at its base, like every model here is written about its own origin, so a caller
+    states one altitude and gets the underside there."""
+    domes = union(*[ellipsoid(x, 0, z, span, rise, span * 0.86) for x, z, span, rise in lobes])
+    floor = max(rise for _x, _z, _span, rise in lobes)
+    return intersect(domes, half_space(0, -1, 0, 0), box(-4096, 4096, 0, int(floor) + 1, -4096, 4096))
+
+
+def cumulus(seed=0):
+    """One of four puffs, so a sky is not one shape repeated. Each is five or six lobes about a wide low
+    one, and none is symmetric about either axis — a cloud that answers itself across a mirror reads as a
+    logo rather than as weather."""
+    return paint({}, (cloud([
+        [(0, 0, 11, 5), (-6, -3, 7, 8), (5, 2, 8, 7), (10, -2, 5, 4), (-11, 3, 5, 4), (2, -7, 5, 5)],
+        [(0, 0, 13, 4), (-4, 4, 8, 8), (7, -3, 7, 6), (-12, -2, 6, 4), (13, 3, 5, 4)],
+        [(0, 0, 9, 6), (-7, 2, 8, 5), (6, -4, 6, 8), (12, 2, 5, 4), (-13, -3, 4, 4), (0, 8, 5, 4)],
+        [(0, 0, 12, 5), (-8, -4, 6, 7), (6, 5, 7, 8), (-14, 3, 5, 4), (11, -5, 4, 4)],
+    ][seed % 4]), "cloud"))
+
+
 # ── the quay crane ────────────────────────────────────────────────────────────────────────────────────────
 
 def crane():

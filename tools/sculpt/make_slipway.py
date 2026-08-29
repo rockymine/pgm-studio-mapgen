@@ -213,6 +213,28 @@ def sculpted():
         add_layers += layers
         table.append((name, row))
 
+    # **A sky over the board.** A board with a balloon flying over it wants something else in the air, or the
+    # balloon reads as the one thing that got away. Three puffs, each answered across the axis, riding at the
+    # altitude the balloons' own shoulders do — `CLOUD_BASE` is the underside, and a cumulus is eight blocks
+    # deep, so they sit inside the y75-102 the envelopes occupy.
+    #
+    # **A cloud costs the board nothing it has.** It is the one made thing nobody can reach: the build
+    # ceiling clears the terrain and the buildings and stops at 68, and these fly from 78, so no player
+    # stands on one or builds to one. It takes no ground, seats on nothing, and in layers it is the cheapest
+    # thing here — a solid blob is one run per column, so one layer apiece against the balloon's eight.
+    #
+    # **A cloud stands off a goal's marker.** The marker is a sky sign — a player crossing open ground reads
+    # where the goal is from it — and it hangs five over the build ceiling, which is exactly the air a cloud
+    # wants. The first placement put one three blocks over both of them.
+    for index, (name, at) in enumerate([("cloud-mid", (0, 78, -60)),
+                                        ("cloud-back", (35, 84, 70)),
+                                        ("cloud-town", (-70, 80, 40))]):
+        for side, (px, pz) in enumerate([(at[0], at[2]), (-at[0], -at[2])]):
+            layers, row = made(f"{name}-{side}", place(models.cumulus(index), (px, at[1], pz)))
+            add_layers += layers
+            if side == 0:
+                table.append((name, row))
+
     # A car park on the port, four cars a side. At nine blocks a car is four boxes and four cubes, which is
     # the other end of the scale from the ship — and what makes the port read as somewhere goods leave from.
     #
@@ -475,6 +497,11 @@ THEMES = {
     # A made thing is painted in solids: the painter's buckets are a model of ground — a rim capping every
     # plateau boundary, a wall down every riser — and a curved form is nothing but boundaries, so a shaded
     # theme speckles it.
+    # Weather. White stained glass rather than wool or quartz: a cloud is the one thing on a board that
+    # should not read as a solid, and the glass carries the light through instead of casting the map into
+    # a shadow the shape of itself.
+    "cloud": board.solid(95, 0),
+
     "car-paint": board.solid(159, 14), "car-trim": board.solid(35, 15),
     "car-glass": board.solid(95, 3), "car-tail": board.solid(35, 14),
 
