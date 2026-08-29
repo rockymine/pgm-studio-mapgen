@@ -252,3 +252,92 @@ def bowl(layer_id, cx, cz, radius, rim_y, depth, theme, steps=6, seat=3, points=
         top = rim_y - int(round(drop))
         layer.poly(annulus(cx, cz, outer, outer, radius / steps, points), top - seat, seat, theme)
     return layer.done()
+
+
+# ── the fortified forms ───────────────────────────────────────────────────────────────────────────────────
+
+def crenellated_wall(layer_id, x0, z0, x1, z1, thickness, floor, height, theme, merlon=3, crenel=2,
+                     parapet=3, **kw):
+    """A curtain wall with a walkway and battlements, on one layer.
+
+    **A merlon is a full-height shape, not a block sitting on the wall.** A layer holds one span per column
+    and the taller add wins it *floor included*, so a merlon stated as `[wall top, wall top + parapet]`
+    replaces the wall under it outright and the battlement comes out as a picket fence with daylight between
+    the pales — which is exactly what `SK9` is for, and it names the pair. Stated from the wall's own floor
+    to the merlon's top it is simply the taller shape over those columns, and the wall beneath survives."""
+    layer = LayerBuilder(layer_id, **kw)
+    along_x = abs(x1 - x0) >= abs(z1 - z0)
+    lo, hi = (min(x0, x1), max(x0, x1)) if along_x else (min(z0, z1), max(z0, z1))
+    cross = (min(z0, z1), max(z0, z1)) if along_x else (min(x0, x1), max(x0, x1))
+
+    def place(a0, a1, b0, b1, base, thick):
+        if along_x:
+            layer.rect(a0, b0, a1, b1, base, thick, theme)
+        else:
+            layer.rect(b0, a0, b1, a1, base, thick, theme)
+
+    place(lo, hi, cross[0], cross[1], floor, height)
+    step = merlon + crenel
+    at = lo
+    while at < hi:
+        end = min(at + merlon, hi)
+        place(at, end, cross[0], cross[0] + thickness, floor, height + parapet)
+        place(at, end, cross[1] - thickness, cross[1], floor, height + parapet)
+        at += step
+    return layer.done()
+
+
+def drum_tower(layer_id, cx, cz, outer, thickness, floor, height, theme, merlons=10, parapet=3,
+               inner_floor=None, points=64, **kw):
+    """A round tower with a crenellated crown: the shaft is one annulus, the merlons are wedges of a second
+    annulus standing above it, and a `merlons` of zero leaves a plain parapet. Two layers, because the crown
+    stands on the shaft's own top rather than beside it."""
+    shaft = LayerBuilder(layer_id, **kw)
+    shaft.poly(annulus(cx, cz, outer, outer, thickness, points), floor, height, theme)
+    if inner_floor is not None:
+        shaft.disc(cx, cz, outer - thickness + 0.5, floor, 1, inner_floor, override=True)
+
+    crest = dict(kw)
+    crest["name"] = f"{crest.get('name', layer_id)} crown"
+    # The crown is its own layer, because a merlon and the shaft below it would be two spans on one — the
+    # same rule `crenellated_wall` gets round by stating each merlon full height. Here a second layer is the
+    # cleaner answer: the shaft's walkway stays, and the crenels stand on it with air in between.
+    crown = LayerBuilder(f"{layer_id}-crown", **crest)
+    if merlons:
+        for i in range(merlons):
+            a0 = 2 * math.pi * i / merlons
+            a1 = a0 + math.pi / merlons
+            arc = [(cx + (outer + 0.4) * math.cos(a), cz + (outer + 0.4) * math.sin(a))
+                   for a in (a0 + (a1 - a0) * k / 6 for k in range(7))]
+            arc += [(cx + (outer - thickness) * math.cos(a), cz + (outer - thickness) * math.sin(a))
+                    for a in (a1 - (a1 - a0) * k / 6 for k in range(7))]
+            crown.poly(arc, floor + height, parapet, theme)
+    else:
+        crown.poly(annulus(cx, cz, outer, outer, thickness, points), floor + height, parapet, theme)
+    return [shaft.done(), crown.done()]
+
+
+def gatehouse(layer_id, cx, cz, span, floor, theme, roof_theme=None, wing=26, wall_height=11,
+              tower_radius=8, tower_height=17, **kw):
+    """Two drum towers and the curtain between them, with a gate arched through it — a composite of the
+    emitters above, which is what a stamper in the tool would be. Six layers and about sixty shapes for a
+    fifty-block frontage, all of them circles, polygons and rectangles an author can still drag."""
+    half = span / 2
+    out = []
+    named = {k: v for k, v in kw.items() if k != "name"}
+    out += drum_tower(f"{layer_id}-w", cx - half, cz, tower_radius, 2, floor, tower_height, theme,
+                      inner_floor=theme, name=f"{layer_id} west tower", **named)
+    out += drum_tower(f"{layer_id}-e", cx + half, cz, tower_radius, 2, floor, tower_height, theme,
+                      inner_floor=theme, name=f"{layer_id} east tower", **named)
+    out.append(arch(f"{layer_id}-gate", cx - half + tower_radius + 1, cx + half - tower_radius - 1, cz, 6,
+                    floor, 8, 6, theme, steps=9, name=f"{layer_id} gate", **named))
+    out.append(crenellated_wall(f"{layer_id}-parapet", cx - half + tower_radius - 3, cz - 3,
+                                cx + half - tower_radius + 3, cz + 3, 1, floor + 16, 1, roof_theme or theme,
+                                merlon=3, crenel=2, parapet=2, name=f"{layer_id} gate parapet", **named))
+    out.append(crenellated_wall(f"{layer_id}-w-wall", cx - half - tower_radius - wing, cz - 2.5,
+                                cx - half - tower_radius + 1, cz + 2.5, 1, floor, wall_height, theme,
+                                name=f"{layer_id} west wall", **named))
+    out.append(crenellated_wall(f"{layer_id}-e-wall", cx + half + tower_radius - 1, cz - 2.5,
+                                cx + half + tower_radius + wing, cz + 2.5, 1, floor, wall_height, theme,
+                                name=f"{layer_id} east wall", **named))
+    return out

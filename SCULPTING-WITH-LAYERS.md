@@ -1,8 +1,8 @@
 # Sculpting with layers
 
 The sketch tool's layer system was built to stack storeys. This is the record of what happens when it is
-asked for something else — a robot, a starship, a Rubik's cube, a ring station, a car, a statue — and of the
-facts that decide how far it goes. Everything here was measured against a running studio; the three boards are
+asked for something else — a robot, a dragon, a starship, a Rubik's cube, a walker, a ring station, a car, a
+statue — and of the facts that decide how far it goes. Everything here was measured against a running studio; the three boards are
 in `maps/form-gallery`, `maps/sculpture-gallery` and `maps/opus5-automaton`, the documents beside them in
 `sculpture/`, and the tools that produced them in `tools/sculpt/` and `tools/render/`.
 
@@ -86,6 +86,8 @@ driven into another and `SK10` stays silent. Two shapes on a layer never overlap
 | Rubik's cube | 23 × 23 × 23 | 12,167 | **1** | **7** | 123 |
 | hooded statue | 25 × 45 × 23 | 6,699 | 4 | 8 | 363 |
 | car | 22 × 14 × 38 | 4,630 | **1** | 3 | 212 |
+| walker | 44 × 36 × 46 | 8,813 | 3 | 4 | 476 |
+| dragon | 84 × 44 × 70 | 15,316 | 4 | 6 | 2,185 |
 | starship | 66 × 28 × 70 | 15,518 | 2 | 4 | 540 |
 | space station | 118 × 58 × 66 | 29,418 | 6 | 7 | 2,557 |
 
@@ -94,7 +96,15 @@ colour. Read it against the one beside it, because the gap between them is the w
 
 **Height has nothing to do with the layer count.** The station is 58 blocks tall and mostly hollow, and takes
 seven; the car is 14 tall and takes three; the 70-block starship takes four. What sets the geometric number is
-the busiest column — the one that passes through a boot, then air, then a hand, then air, then a brim.
+the busiest column — the one that passes through a boot, then air, then a hand, then air, then a brim. The
+dragon is the sharpest case: 84 blocks of wingspan, a neck that curls back over its own shoulders, a wing held
+above the body — **four**.
+
+**A creature needs a primitive the rest do not.** A plan crossed with a profile gives a body that is a
+function of one axis, and nothing doubling back over itself is. `tube` sweeps a radius along a 3-D polyline
+so the tail, the spine and the neck are one statement each with round joints; `sheet` lifts a plan outline
+onto a surface, which is how a wing membrane arcs over its own spars. Both are in `tools/sculpt/solid.py`, and
+between them they are what makes the dragon possible at all.
 
 **And the geometry is almost never what you pay for.** A layer's span carries one theme, so a colour change
 inside a contiguous run splits it as surely as air does. The Rubik's cube is the pure case: a **solid box**,
@@ -157,6 +167,9 @@ and polygons with a floor and a height — not a stamped block soup. The cost is
 | form | layers | shapes |
 |---|---|---|
 | roundhouse wall, two doors, floor | 1 | 4 |
+| crenellated curtain wall, 35 long | 1 | 13 |
+| drum tower with a crenellated crown | 2 | 12 |
+| **gatehouse** — two towers, a gate, two curtains | 8 | 74 |
 | conical roof | 1 | 9 |
 | hollow dome, radius 13, 3 thick | 1 | 13 |
 | hollow ellipse, 15 × 9 | 1 | 2 |
@@ -166,8 +179,19 @@ and polygons with a floor and a height — not a stamped block soup. The cost is
 | colonnade of twelve | 1 | 12 |
 | amphitheatre, six tiers | 1 | 7 |
 
-Eight of the nine are one layer. That is a dressing prop, not a new subsystem — it wants the same shape the
-house stamper already has, emitting into the sketch document instead of into the world.
+Eight of the nine single forms are one layer. The **gatehouse** is the shape the tool would actually want: a
+composite of five of the emitters, one call, eight layers and 74 shapes for a fifty-block frontage — a
+stamper, not a new subsystem, wanting the same shape the house stamper already has and emitting into the
+sketch document instead of into the world.
+
+![the gatehouse](sculpture/forms/renders/form-gatehouse-front.png)
+
+**A battlement is where `SK9` earns its keep.** State a merlon as `[wall top, wall top + parapet]` and the
+taller add wins those columns *floor included*, so the wall vanishes under every merlon and the battlement
+builds as a picket fence with daylight between the pales. `SK9` names the pair, and the fix is to state each
+merlon from the wall's own floor to the merlon's top — then it is simply the taller shape over its columns
+and the wall beneath survives. It is the one place in this whole exercise where the rule that makes sculpture
+possible also bites.
 
 **Seat a prop against the solved ground.** Either the two-pass read above, or a `height_mode` for a whole
 layer: a layer that says `"seat": "raise"` takes each shape's floor from the top of whatever ground stands
@@ -197,6 +221,8 @@ What it is worth, measured by re-compiling every model with runs split on **air 
 | Rubik's cube | 7 | 123 | **1** | **33** | 6 |
 | hooded statue | 8 | 363 | 4 | 272 | 110 |
 | car | 3 | 212 | 1 | 152 | 33 |
+| walker | 4 | 476 | 3 | 473 | 89 |
+| dragon | 6 | 2,185 | 4 | **1,669** | 516 |
 | starship | 4 | 540 | 2 | 471 | 88 |
 | space station | 7 | 2,557 | 6 | 1,467 | 81 |
 

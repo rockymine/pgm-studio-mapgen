@@ -68,6 +68,15 @@ THEMES = {
     "ship-glow": board.solid(89, 0),
     "ship-glass": board.solid(95, 9),
 
+    # the dragon
+    "scale": board.solid(35, 13),
+    "belly": board.solid(159, 4),
+    "membrane": board.solid(159, 14),
+    "spine": board.solid(159, 15),
+    "bone": board.solid(159, 0),
+    "ember": board.solid(89, 0),
+    "rock": board.shaded(surface=(1, 5), wall=(1, 0), rim=(4, 0)),
+
     # the cube — six sticker colours and a black frame
     "frame": board.solid(35, 15),
     "white": board.solid(155, 0),
@@ -79,17 +88,21 @@ THEMES = {
 }
 
 DECK_TOP = 5
-SPAWN = (0, DECK_TOP + 1, -88)
+SPAWN = (0, DECK_TOP + 1, -108)
 
-# `(name, maker, origin, plinth half-width or None for a piece that flies)`
+# `(name, maker, origin, plinth half-width or None for a piece that flies)`. The front row stands, the middle
+# row stands, and the two that fly hang over the back of the board with nothing under them — a mass with sky
+# over it and no route onto it, which is what `SK11` says about all of them and none of it a fault.
 PIECES = [
-    ("robot", models.robot, (-120, DECK_TOP + 1, -60), 17),
-    ("droid", models.droid, (-80, DECK_TOP + 1, -60), 12),
-    ("rubik", models.rubik, (-40, DECK_TOP + 1, -62), 17),
-    ("statue", models.statue, (5, DECK_TOP + 1, -60), 15),
-    ("car", models.car, (58, DECK_TOP + 1, -60), 24),
-    ("starship", models.starship, (-70, DECK_TOP + 22, 55), None),
-    ("station", models.station, (75, DECK_TOP + 30, 55), None),
+    ("robot", models.robot, (-116, DECK_TOP + 1, -74), 17),
+    ("droid", models.droid, (-76, DECK_TOP + 1, -74), 12),
+    ("rubik", models.rubik, (-40, DECK_TOP + 1, -84), 17),
+    ("statue", models.statue, (10, DECK_TOP + 1, -74), 15),
+    ("car", models.car, (62, DECK_TOP + 1, -74), 24),
+    ("walker", models.walker, (112, DECK_TOP + 1, -74), 26),
+    ("dragon", models.dragon, (-64, DECK_TOP + 1, 10), 46),
+    ("starship", models.starship, (66, DECK_TOP + 24, -10), None),
+    ("station", models.station, (66, DECK_TOP + 34, 76), None),
 ]
 
 
@@ -108,7 +121,7 @@ def geometric_depth(voxels):
 
 def deck():
     ground = props.LayerBuilder("deck", name="Deck")
-    ground.rect(-146, -92, 146, 100, 0, DECK_TOP, "ground")
+    ground.rect(-146, -124, 146, 120, 0, DECK_TOP, "ground")
     for name, _, (dx, _, dz), half in PIECES:
         if half:
             ground.rect(dx - half, dz - half, dx + half, dz + half, 0, DECK_TOP + 1, "plinth")
@@ -152,7 +165,7 @@ if __name__ == "__main__":
     print("  'shape' is the layer count the geometry alone would need; 'layers' adds every colour band")
 
     board.store("sculpture-gallery", "Sculpture Gallery", document, spawn=SPAWN,
-                observer=(0, DECK_TOP + 70, -130))
+                observer=(0, DECK_TOP + 80, -150))
     payload = board.columns("sculpture-gallery", document)
     json.dump(payload, open(f"{out}/sculpture.columns.json", "w"))
     if world:
@@ -160,7 +173,7 @@ if __name__ == "__main__":
 
     import iso
     iso.isometric(payload, f"{out}/sculpture-iso.png", scale=3, quarter=2,
-                  title="seven solids compiled into sketch layers",
+                  title="nine solids compiled into sketch layers",
                   caption="every block here is a rectangle on a layer of one sketch document")
     for name, make, (dx, dy, dz), half in PIECES:
         cells = make()

@@ -11,6 +11,7 @@ so a caller places it with one `translate`. Each faces **north**, along `-z`."""
 import math
 
 from solid import (Solid, beam, box, cylinder, cylinder_z, difference, ellipsoid, extrude_x,
+                   sheet, tube,
                    extrude_z, frustum, half_space, intersect, mirror_x, prism, revolve, revolve_z,
                    rotate_y, shell, sphere, torus, translate, union)
 
@@ -447,4 +448,169 @@ def droid():
           (rim, "trim"),
           (lens, "visor"),
           (union(lamp, mirror_x(lamp, 0)), "eye"))
+    return model
+
+
+# ── the dragon ────────────────────────────────────────────────────────────────────────────────────────────
+
+def dragon():
+    """A wyrm rearing off a crag, 80 blocks across the wings and 46 tall.
+
+    The one model whose body is a **path**: `tube` sweeps a radius profile along a 3-D polyline, so the tail,
+    the spine and the neck are one statement each and every joint between them is round. Nothing else here can
+    say that — a plan crossed with a profile gives a body that is a function of one axis, and a creature
+    doubling back over itself is not. The wings are the other new primitive: a plan outline lifted onto a
+    surface (`sheet`), which is how a membrane arcs over its own spars.
+
+    It is also the model with the deepest columns on the board. A wing held over the shoulders puts tail,
+    body, wing and spar in one column, and every one of them has to find a layer."""
+    model = {}
+
+    # tail tip on the rock, up through the haunches and the chest, then the neck curling forward
+    spine = [(0, 3, 36), (0, 5, 28), (-1, 8, 20), (-1, 13, 12), (0, 19, 4), (1, 24, -2),
+             (1, 29, -8), (0, 33, -13), (-2, 35, -17), (-4, 35, -21)]
+    girth = [1.2, 2.2, 3.6, 5.2, 5.8, 5.2, 4.2, 3.4, 3.0, 2.8]
+    body = tube(spine, girth)
+
+    # The underside is a second tube run below the first, so the pale scales follow the curve rather than
+    # being knifed off by a plane the body has already bent past.
+    under = tube([(x, y - g * 0.60, z) for (x, y, z), g in zip(spine, girth)],
+                 [g * 0.80 for g in girth])
+    belly = intersect(body, under)
+
+    skull = union(
+        ellipsoid(-4.8, 35.4, -23.5, 3.6, 3.4, 5.0),
+        ellipsoid(-5.6, 34.0, -28.0, 2.6, 2.2, 4.0),
+        ellipsoid(-6.0, 33.2, -31.0, 1.9, 1.5, 2.2))
+    jaw = union(ellipsoid(-5.4, 32.6, -27.6, 2.6, 1.3, 4.2),
+                ellipsoid(-5.9, 32.2, -30.8, 1.8, 1.0, 2.2))
+    teeth = union(*[ellipsoid(-5.4 + dx, 33.2, z, 0.6, 0.9, 0.6)
+                    for dx in (-1.8, 0, 1.8) for z in (-26.0, -29.0, -31.6)])
+    horn = tube([(-2.8, 37.4, -21.5), (-0.4, 40.2, -16.5), (2.4, 40.6, -10.5)], [1.2, 0.8, 0.3])
+    horn = union(horn, translate(horn, -4.0, -0.8, -0.4))
+    brow = union(ellipsoid(-3.1, 36.6, -24.6, 1.2, 0.9, 1.5), ellipsoid(-6.5, 36.6, -24.6, 1.2, 0.9, 1.5))
+    nostril = union(ellipsoid(-5.2, 33.8, -31.4, 0.7, 0.7, 0.8), ellipsoid(-6.8, 33.8, -31.4, 0.7, 0.7, 0.8))
+    eye = union(ellipsoid(-2.7, 36.2, -25.9, 1.0, 1.0, 1.3), ellipsoid(-6.9, 36.2, -25.9, 1.0, 1.0, 1.3))
+
+    # The membrane's surface: it climbs away from the shoulder and falls again past the wrist, so the wing
+    # arcs over the body instead of lying flat, and it slopes down toward the trailing edge.
+    def lift(x, z):
+        t = min(1.0, abs(x) / 42.0)
+        return 26.0 + 34.0 * t - 20.0 * t * t - (z + 6.0) * 0.24
+
+    def wing_outline(sign):
+        return [(sign * 4, -6), (sign * 18, -18), (sign * 32, -18), (sign * 42, -6),
+                (sign * 36, 6), (sign * 24, 13), (sign * 12, 14), (sign * 4, 8)]
+
+    def membrane(sign):
+        return sheet(wing_outline(sign), lift, 1.7)
+
+    def spars(sign):
+        root = (sign * 4, lift(sign * 4, -4) - 1, -4)
+        wrist = (sign * 20, lift(sign * 20, -16) + 1, -16)
+        fingers = [(sign * 32, -18), (sign * 42, -6), (sign * 36, 6), (sign * 24, 13)]
+        out = [tube([root, wrist], [2.6, 1.8])]
+        for fx, fz in fingers:
+            out.append(tube([wrist, (fx, lift(fx, fz), fz)], [1.5, 0.5]))
+        out.append(tube([root, (sign * 12, lift(sign * 12, 14), 14)], [1.8, 0.6]))
+        return union(*out)
+
+    wings = union(membrane(1), membrane(-1))
+    bones = union(spars(1), spars(-1))
+
+    def leg(sign, hip, knee, ankle, foot, thick):
+        return union(tube([hip, knee, ankle, foot], [thick, thick * 0.60, thick * 0.50, thick * 0.45]),
+                     ellipsoid(foot[0], foot[1] - 0.4, foot[2] - 1.8, thick * 0.95, thick * 0.5, thick * 1.5),
+                     sphere(hip[0], hip[1], hip[2], thick * 1.05))
+    fore = union(leg(1, (4.0, 22, 0), (8.4, 15, -4), (8.0, 8, -8), (7.6, 4, -10), 2.5),
+                 leg(-1, (-4.0, 22, 0), (-8.4, 15, -4), (-8.0, 8, -8), (-7.6, 4, -10), 2.5))
+    hind = union(leg(1, (4.4, 13, 16), (9.6, 8, 20), (9.0, 4, 15), (8.4, 3, 11), 3.2),
+                 leg(-1, (-4.4, 13, 16), (-9.6, 8, 20), (-9.0, 4, 15), (-8.4, 3, 11), 3.2))
+    claws = union(*[ellipsoid(x, 3.4, z, 0.9, 0.7, 1.5)
+                    for x, z in ((6.3, -12), (8.9, -12), (-6.3, -12), (-8.9, -12),
+                                 (7.1, 9), (9.7, 9), (-7.1, 9), (-9.7, 9))])
+
+    # A crest of plates along the spine: each is the body's own section grown upward and clipped to one course
+    # of thickness, so the ridge follows the curve instead of standing off it.
+    ridge = union(*[intersect(ellipsoid(spine[i][0], spine[i][1], spine[i][2],
+                                        1.1, girth[i] + 2.6, 1.1),
+                              box(-9, 9, int(spine[i][1]), int(spine[i][1] + girth[i] + 4), -44, 44))
+                    for i in range(1, len(spine) - 1)])
+
+    crag = union(box(-14, 14, 0, 2, -8, 32), box(-12, 12, 2, 4, -6, 30), box(-13, 13, 4, 5, -7, 31))
+
+    paint(model,
+          (crag, "rock"),
+          (union(body, skull), "scale"),
+          (belly, "belly"),
+          (union(fore, hind), "scale"),
+          (claws, "bone"),
+          (jaw, "belly"),
+          (teeth, "bone"),
+          (wings, "membrane"),
+          (bones, "scale"),
+          (ridge, "spine"),
+          (union(horn, brow), "bone"),
+          (nostril, "spine"),
+          (eye, "ember"))
+    return model
+
+
+# ── the walker ────────────────────────────────────────────────────────────────────────────────────────────
+
+def walker():
+    """A four-legged walker, 42 blocks across the stance and 34 tall.
+
+    A hull slung between two shoulder yokes, four jointed legs, a turret with a pair of barrels and a
+    sensor mast. Every limb is a `tube` along three points, which is what makes a knee read as a knee: the
+    capsule's own round cap is the joint, so nothing has to be stamped there."""
+    model = {}
+
+    hull = union(
+        intersect(extrude_x([(-13, 16), (-9, 22), (9, 23), (14, 18), (14, 13), (-13, 13)], -9, 9),
+                  prism([(-9, -14), (-11, -4), (-11, 8), (-8, 15), (8, 15), (11, 8), (11, -4), (9, -14)],
+                        12, 24)),
+        box(-11, 11, 15, 20, -6, 8))
+    skirt = intersect(prism([(-12, -12), (-13, 6), (-10, 14), (10, 14), (13, 6), (12, -12)], 12, 15),
+                      extrude_x([(-13, 12), (-13, 15), (15, 15), (15, 12)], -14, 14))
+
+    yoke = union(*[tube([(-13, 18, z), (13, 18, z)], 2.6) for z in (-7, 9)])
+
+    def limb(sx, sz, out, forward):
+        hip = (sx * 13, 18, sz)
+        knee = (sx * 20, 11, sz + forward * 3)
+        ankle = (sx * 18, 5, sz + forward * 8)
+        foot = (sx * 18, 1, sz + forward * 11)
+        return union(tube([hip, knee, ankle, foot], [3.0, 2.2, 1.8, 1.4]),
+                     ellipsoid(sx * 18, 1.4, sz + forward * 11, 3.2, 1.6, 4.0),
+                     sphere(sx * 13, 18, sz, 3.2))
+    legs = union(limb(1, -7, 1, -1), limb(-1, -7, 1, -1), limb(1, 9, 1, 1), limb(-1, 9, 1, 1))
+
+    turret = union(ellipsoid(0, 25, 1, 7.4, 3.6, 6.4), cylinder(0, 1, 6.0, 21, 25))
+    barrels = union(*[union(cylinder_z(x, 25, 1.5, -16, 2), cylinder_z(x, 25, 2.2, -10, -6))
+                      for x in (-4, 4)])
+    mast = union(tube([(6, 28, 4), (8, 34, 6)], [0.9, 0.6]), sphere(8, 34.6, 6, 1.6))
+
+    def decal(x0, x1, y0, y1, z0, z1, grow=0.5):
+        return intersect(union(
+            intersect(extrude_x([(-13 - grow, 16), (-9 - grow, 22), (9 + grow, 23), (14 + grow, 18),
+                                 (14 + grow, 13), (-13 - grow, 13)], -10, 10),
+                      prism([(-9 - grow, -14), (-11 - grow, -4), (-11 - grow, 8), (-8 - grow, 15),
+                             (8 + grow, 15), (11 + grow, 8), (11 + grow, -4), (9 + grow, -14)], 12, 24)),
+            box(-12, 12, 15, 21, -7, 9)), box(x0, x1, y0, y1, z0, z1))
+
+    visor = decal(-6, 6, 18, 20, -20, -10)
+    flank = union(decal(-14, -12, 14, 21, -6, 8, 0.9), decal(12, 14, 14, 21, -6, 8, 0.9))
+    lamps = union(ellipsoid(-5, 16.4, -14.6, 1.2, 1.0, 1.4), ellipsoid(5, 16.4, -14.6, 1.2, 1.0, 1.4))
+
+    paint(model,
+          (union(legs, yoke), "joint"),
+          (hull, "shell"),
+          (skirt, "trim"),
+          (flank, "trim"),
+          (visor, "visor"),
+          (turret, "shell"),
+          (barrels, "joint"),
+          (mast, "trim"),
+          (lamps, "eye"))
     return model

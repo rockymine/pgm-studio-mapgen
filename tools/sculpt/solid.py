@@ -333,3 +333,56 @@ def cylinder_z(cx, cy, r, z0, z1, ry=None):
         return z0 <= z <= z1 + 1 and ((x - cx) / r) ** 2 + ((y - cy) / ry) ** 2 <= 1.0
     return Solid(inside, (math.floor(cx - r), math.ceil(cx + r),
                           math.floor(cy - ry), math.ceil(cy + ry), z0, z1))
+
+
+def tube(path, radii, square=False):
+    """A body swept along a 3-D polyline, its radius interpolated between the stated points.
+
+    The one primitive a creature needs and none of the others give: a neck, a tail, a root, a cable. Each
+    segment is a capsule, so the joins are round and a sharp bend does not open a seam — which is what the
+    sphere at every joint of the robot is doing by hand.
+
+    `path` is `[(x, y, z), ...]` and `radii` is one radius per point (or a single number for all)."""
+    if not isinstance(radii, (list, tuple)):
+        radii = [radii] * len(path)
+    parts = []
+    for i in range(len(path) - 1):
+        steps = max(1, int(max(abs(b - a) for a, b in zip(path[i], path[i + 1]))))
+        for step in range(steps):
+            t0, t1 = step / steps, (step + 1) / steps
+            a = tuple(path[i][k] + (path[i + 1][k] - path[i][k]) * t0 for k in range(3))
+            b = tuple(path[i][k] + (path[i + 1][k] - path[i][k]) * t1 for k in range(3))
+            r = radii[i] + (radii[i + 1] - radii[i]) * (t0 + t1) / 2
+            if r > 0:
+                parts.append(beam(a, b, r, square))
+    return union(*parts)
+
+
+def sheet(points, height, thickness=1.0):
+    """A plan outline lifted onto a surface: every column inside `points` filled for `thickness` blocks about
+    `height(x, z)`. What a wing membrane, a sail, a banner or a tilted plate is — a shape the plan-and-profile
+    pair cannot state, because its surface is not a function of one axis."""
+    xs = [p[0] for p in points]
+    zs = [p[1] for p in points]
+
+    def inside(x, y, z):
+        hits = 0
+        for i in range(len(points)):
+            x0, z0 = points[i]
+            x1, z1 = points[(i + 1) % len(points)]
+            if (z0 <= z < z1) or (z1 <= z < z0):
+                if x < x0 + (z - z0) * (x1 - x0) / (z1 - z0):
+                    hits += 1
+        return hits % 2 == 1 and abs(y - height(x, z)) <= thickness / 2
+
+    lows, highs = [], []
+    for x in (min(xs), sum(xs) / len(xs), max(xs)):
+        for z in (min(zs), sum(zs) / len(zs), max(zs)):
+            lows.append(height(x, z))
+            highs.append(height(x, z))
+    for i in range(len(points)):
+        lows.append(height(*points[i]))
+        highs.append(height(*points[i]))
+    return Solid(inside, (math.floor(min(xs)), math.ceil(max(xs)),
+                          math.floor(min(lows) - thickness), math.ceil(max(highs) + thickness),
+                          math.floor(min(zs)), math.ceil(max(zs))))

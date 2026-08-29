@@ -27,14 +27,14 @@ THEMES = {
 }
 
 PLINTH = 6                                                # every form stands on the same six-block plinth
-SPAWN = (0, PLINTH + 1, 58)
+SPAWN = (0, PLINTH + 1, 66)
 
 
 def deck():
     """The board itself: one wide plate for everything to stand on, and the visitors' pad at the south edge —
     `EX2` refuses to export a map no player can enter."""
     ground = props.LayerBuilder("deck", name="Deck")
-    ground.rect(-70, -46, 70, 66, 0, PLINTH, "ground")
+    ground.rect(-70, -46, 70, 76, 0, PLINTH, "ground")
     ground.rect(SPAWN[0] - 9, SPAWN[2] - 5, SPAWN[0] + 9, SPAWN[2] + 5, 0, PLINTH + 1, "pale")
     return ground.done()
 
@@ -72,6 +72,11 @@ def build():
 
     take(props.bowl("bowl", 56, 24, 14, PLINTH + 14, 11, "moss", steps=6, seat=2), "amphitheatre")
 
+    # A composite: everything above is one form, this is a building made of several — which is the shape a
+    # stamper in the tool would have. A visitor spawns behind it and walks in through the gate.
+    take(props.gatehouse("gate", 0, 50, 40, PLINTH, "grey", roof_theme="pale", wing=26,
+                         wall_height=11, tower_radius=8, tower_height=17), "gatehouse")
+
     return layers, notes
 
 
@@ -107,3 +112,5 @@ if __name__ == "__main__":
                                ("peristyle", 22, 24, 20), ("amphitheatre", 56, 24, 20)):
         iso.isometric(payload, f"{out}/form-{label}.png", scale=7, quarter=2,
                       clip=(x - reach, x + reach, PLINTH - 1, None, z - reach, z + reach), title=label)
+    iso.isometric(payload, f"{out}/form-gatehouse.png", scale=6, quarter=2,
+                  clip=(-62, 62, PLINTH - 1, None, 38, 62), title="gatehouse")
