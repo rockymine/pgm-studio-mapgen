@@ -228,14 +228,14 @@ ROADS = [
 HOUSES = [
     # The dock town, kept where it was: the chandler at the head of the street, the cooperage in the yard
     # behind the crane.
-    ("chandler",       "@wh-count",        ( -68,  26), ( -58,  35), "negZ"),
-    ("cooperage",      "@wh-shed",         ( -43,  46), ( -32,  55), "negZ"),
+    ("chandler",       "@wh-count",        ( -68,  26), ( -58,  35), "posX"),
+    ("cooperage",      "@wh-shed",         ( -43,  46), ( -32,  55), "negX"),
     # The quay east of the goal dock: a harbour office at the water, and a store along from it.
     ("harbour-office", "@sn-compass-well", (   5,  19), (  16,  32), "negZ"),
     ("quay-store",     "@kr-deck",         (  21,  23), (  30,  31), "posX"),
     # The row across the middle, which is the one thing joining the two towns.
     ("arcade-w",       "@terrace",         ( -10,  47), (   4,  54), "negZ"),
-    ("arcade-e",       "@terrace",         (   9,  47), (  23,  54), "negZ"),
+    ("arcade-e",       "@terrace",         (   9,  47), (  23,  54), "posZ"),
     # The back settlement, cut into the upland and flattened.
     ("counting",       "@wh-count",        (  28,  82), (  37,  91), "posZ"),
     ("upland-hall",    "@17h-hall",        (  55,  66), (  66,  80), "posX"),
@@ -244,7 +244,7 @@ HOUSES = [
     ("balloon-store",  "@rk-kiln",         ( -90,   8), ( -81,  16), "negX"),
     ("field-cottage",  "@cairn-cottage",   ( -75, -13), ( -67,  -2), "posX"),
     # The port, beside the car park.
-    ("warehouse",      "@hoar-longhall",   (  79,  40), (  90,  54), "negZ"),
+    ("warehouse",      "@hoar-longhall",   (  79,  40), (  90,  54), "posZ"),
 ]
 
 # The field the balloon flies off, the hill behind the town, and the back settlement's own green.
