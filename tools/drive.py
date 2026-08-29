@@ -16,8 +16,11 @@ carries everything a plan cannot state, keyed onto the compiled layout:
                   as a coast: resampled along its long edges, each inserted point pulled inward by a
                   wander, and Bezier handles over the result. The plan's own vertices never move
   addShapes       [SketchShape, ...]          authored shapes appended to the first group
-  addLayers       [{id, name, base_y, shapes, groups, below?}]  stacked slabs; `below` puts one
-                  under the compiled ground, where the painter's bottom-up order needs it
+  addLayers       [{id, name, base_y, shapes, groups, below?, kind?, prop?, seat?}]  stacked slabs;
+                  `below` puts one under the compiled ground, where the painter's bottom-up order
+                  needs it. `kind: "prop"` marks a made thing — out of the stacking rules, painted
+                  over its own span; `prop` names the thing a run of layers belongs to and `seat:
+                  "ground"` settles them onto the terrain together
   relief          {"<groupId>": {...}} or {"*": {...}} applied to every group
   themes          the theme registry;  mapTheme  the map default (first key unless stated)
   roomStyles      {"cage": ..., "spawn": ...}; a "@name" string loads tools/styles/<name>.json
@@ -336,6 +339,10 @@ def patch_layout(layout, finish):
         layers = layout["layers"]
         slab = {"id": extra["id"], "name": extra.get("name") or extra["id"],
                 "base_y": extra["base_y"],
+                # What the layer holds, and how it meets the ground. A made thing states `kind: "prop"`,
+                # which takes it out of the stacking rules and paints it over its own span; `prop` names the
+                # thing its layers belong to, and `seat` settles them onto the terrain as a unit.
+                **{key: extra[key] for key in ("kind", "prop", "seat") if key in extra},
                 "layout": {"shapes": extra["shapes"], "groups": extra["groups"]}}
         # `below` puts a storey under the compiled ground rather than over it. The painter walks the
         # stack in document order and each pass paints its whole column, so a storey listed above one

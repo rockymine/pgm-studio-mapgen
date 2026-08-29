@@ -1,0 +1,206 @@
+{
+  "plan": 1,
+  "meta": {
+    "name": "Slipway"
+  },
+  "globals": {
+    "cell": 4,
+    "symmetry": "rot_180",
+    "maxPlayers": 28,
+    "surface": 22,
+    "observerY": 96
+  },
+  "pieces": [
+    {
+      "id": "basin-w",
+      "role": "piece",
+      "rect": [
+        -24,
+        -6,
+        20,
+        12
+      ],
+      "surface": 6
+    },
+    {
+      "id": "slip",
+      "role": "piece",
+      "rect": [
+        -4,
+        -6,
+        8,
+        13
+      ],
+      "surface": 6
+    },
+    {
+      "id": "basin-e",
+      "role": "piece",
+      "rect": [
+        4,
+        -6,
+        20,
+        12
+      ],
+      "surface": 6
+    },
+    {
+      "id": "quay-w",
+      "role": "piece",
+      "rect": [
+        -24,
+        6,
+        20,
+        4
+      ],
+      "surface": 22
+    },
+    {
+      "id": "quay-e",
+      "role": "piece",
+      "rect": [
+        4,
+        6,
+        20,
+        4
+      ],
+      "surface": 22
+    },
+    {
+      "id": "town-w",
+      "role": "piece",
+      "rect": [
+        -22,
+        10,
+        14,
+        8
+      ],
+      "surface": 24
+    },
+    {
+      "id": "market",
+      "role": "piece",
+      "rect": [
+        -8,
+        7,
+        16,
+        11
+      ],
+      "surface": 22
+    },
+    {
+      "id": "town-e",
+      "role": "piece",
+      "rect": [
+        8,
+        10,
+        14,
+        8
+      ],
+      "surface": 24
+    },
+    {
+      "id": "ridge-w",
+      "role": "piece",
+      "rect": [
+        -18,
+        18,
+        13,
+        5
+      ],
+      "surface": 28
+    },
+    {
+      "id": "crest",
+      "role": "piece",
+      "rect": [
+        -5,
+        18,
+        10,
+        7
+      ],
+      "surface": 28
+    },
+    {
+      "id": "ridge-e",
+      "role": "piece",
+      "rect": [
+        5,
+        18,
+        13,
+        5
+      ],
+      "surface": 28
+    },
+    {
+      "id": "spawn",
+      "role": "spawn",
+      "rect": [
+        -2,
+        25,
+        5,
+        5
+      ],
+      "surface": 28
+    },
+    {
+      "id": "headland",
+      "role": "piece",
+      "rect": [
+        -32,
+        -8,
+        8,
+        18
+      ],
+      "surface": 26
+    }
+  ],
+  "zones": [],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "spawn",
+        "at": [
+          2.5,
+          2.5
+        ],
+        "facing": "down"
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "spawn",
+        "at": [
+          2.5,
+          1.0
+        ]
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "destroyable-1",
+        "style": "pillar-2",
+        "at": [
+          -5.0,
+          15.0
+        ],
+        "materials": "obsidian",
+        "float": 2,
+        "name": "The Sail Loft"
+      },
+      {
+        "id": "destroyable-2",
+        "style": "pillar-2",
+        "at": [
+          5.0,
+          15.0
+        ],
+        "materials": "obsidian",
+        "float": 2,
+        "name": "The Ropewalk"
+      }
+    ]
+  }
+}

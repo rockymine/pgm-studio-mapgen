@@ -69,13 +69,21 @@ def rectangles(cells):
     return out
 
 
-def compile_layers(voxels, prefix="s", layer_prefix="L", mirrors=False, group_name=None):
+def compile_layers(voxels, prefix="s", layer_prefix="L", mirrors=False, group_name=None,
+                   prop=None, seat=None):
     """A `{(x, y, z): material}` model as the `layers` array of a sketch layout.
 
     Every layer sits at `base_y` 0 and every shape states its own `floor`, which is what lets one layer hold
     runs at different heights: the layer is a slot in the per-column run order, not a storey at a height.
     Each layer's shapes are grouped into one group so the mirror can be turned off for the whole sculpture at
-    once — a group's `mirrors` flag is the only thing that decides whether the fan copies it."""
+    once — a group's `mirrors` flag is the only thing that decides whether the fan copies it.
+
+    Every layer states `kind: "prop"`, which is what keeps the stacking rules off a made thing: `SK10` reads
+    two layers whose spans meet as a lost gap and `SK11` reads an overhang as standable ground nothing
+    reaches, and neither is true of a sculpture. `prop` names the made thing all of its layers belong to, so
+    the studio draws one row for it and seats it as a unit; `seat="ground"` takes its floors from the lowest
+    solid column under its own footprint, which is what a thing standing on terrain wants and a thing flying
+    over it does not."""
     columns = defaultdict(dict)
     for (x, y, z), material in voxels.items():
         columns[(x, z)][y] = material
@@ -112,6 +120,9 @@ def compile_layers(voxels, prefix="s", layer_prefix="L", mirrors=False, group_na
             "id": layer_id,
             "name": f"{group_name or layer_prefix} run {index}",
             "base_y": 0,
+            "kind": "prop",
+            **({"prop": prop} if prop else {}),
+            **({"seat": seat} if seat else {}),
             "layout": {
                 "shapes": shapes,
                 "groups": [{

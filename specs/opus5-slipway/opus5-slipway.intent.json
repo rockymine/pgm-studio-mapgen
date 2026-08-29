@@ -1,0 +1,197 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 28,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 2,
+    "y": 28,
+    "z": 110
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": 100,
+     "maxX": 12,
+     "maxZ": 120
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -8,
+    "minZ": 100,
+    "maxX": 12,
+    "maxZ": 120
+   },
+   "iron": [
+    {
+     "x": 2,
+     "y": 28,
+     "z": 104
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": -2,
+    "y": 28,
+    "z": -110
+   },
+   "protection": [
+    {
+     "minX": -12,
+     "minZ": -120,
+     "maxX": 8,
+     "maxZ": -100
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -12,
+    "minZ": -120,
+    "maxX": 8,
+    "maxZ": -100
+   },
+   "iron": [
+    {
+     "x": -2,
+     "y": 28,
+     "z": -104
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 96,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": [],
+  "voidEnforcement": {
+   "exclusions": []
+  }
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Sail Loft",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -20,
+    "y": 22,
+    "z": 60
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Ropewalk",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 20,
+    "y": 22,
+    "z": 60
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Sail Loft",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 19,
+    "y": 22,
+    "z": -61
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Ropewalk",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -21,
+    "y": 22,
+    "z": -61
+   },
+   "float": 2,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Slipway",
+  "created": "2026-08-29",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

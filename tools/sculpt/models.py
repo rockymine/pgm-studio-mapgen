@@ -614,3 +614,225 @@ def walker():
           (mast, "trim"),
           (lamps, "eye"))
     return model
+
+
+# ── the ship ──────────────────────────────────────────────────────────────────────────────────────────────
+
+def ship():
+    """A two-masted brigantine, 54 blocks stem to stern and 42 to the mainmast truck.
+
+    A hull is the car's trick taken seriously: one **sheer profile** in `(z, y)` extruded across the beam and
+    one **waterplane** in `(x, z)` extruded up, intersected. What that pair alone cannot give is tumblehome —
+    a hull is narrower at the keel than at the rail — so the plan is applied twice, a narrow one low and the
+    full one high, and the volume between them is the turn of the bilge.
+
+    Above the deck nothing is a volume. The bulwark is the hull's own skin over a height band, the sails are
+    `sheet` surfaces bowed by a height function, and the rigging is a set of tubes: a ship read as solids
+    would be a barge with poles in it."""
+    model = {}
+
+    #          stem          forefoot      midships       quarter        transom
+    sheer = [(-27, 4.0), (-25, 1.6), (-16, 0.0), (0, 0.0), (14, 0.4), (23, 2.0), (26, 3.4), (26, 15.0),
+             (14, 12.4), (0, 11.6), (-16, 12.4), (-25, 14.4), (-27, 14.0)]
+    waterplane = [(-1.2, -27), (-4.6, -20), (-7.0, -10), (-7.6, 2), (-6.8, 13), (-4.6, 22), (-3.0, 26),
+                  (3.0, 26), (4.6, 22), (6.8, 13), (7.6, 2), (7.0, -10), (4.6, -20), (1.2, -27)]
+    keelplane = [(x * 0.42, z) for x, z in waterplane]
+
+    body = intersect(extrude_x(sheer, -8, 8), prism(waterplane, 0, 16))
+    bilge = intersect(extrude_x(sheer, -8, 8), prism(keelplane, 0, 16))
+    # The turn of the bilge: below the waterline the hull narrows to the keel, so the low band takes the
+    # narrow plan and the high band the full one, and the two meet at the load line.
+    hull = union(difference(body, box(-9, 9, 0, 5, -28, 27)),
+                 intersect(bilge, box(-9, 9, 0, 5, -28, 27)))
+    keel = intersect(extrude_x([(-26, -0.4), (-24, -1.2), (20, -1.2), (24, -0.4)], -1, 1),
+                     box(-1, 1, -2, 1, -28, 27))
+    hull = union(hull, keel)
+
+    # The deck is a lid rather than a fill: the hull below it is never seen and would cost a run per column.
+    deck = intersect(prism([(x * 0.94, z) for x, z in waterplane], 11, 13), difference(hull, _eroded(hull, 1)))
+    deck = union(deck, intersect(prism([(x * 0.90, z) for x, z in waterplane], 11, 12),
+                                 box(-9, 9, 11, 12, -25, 25)))
+
+    skin = difference(hull, _eroded(hull, 1))
+    rail = intersect(skin, box(-9, 9, 12, 16, -28, 27))          # bulwark: the skin above the deck
+    strake = intersect(skin, box(-9, 9, 8, 9, -28, 27))          # the load-line stripe, one course of it
+
+    quarterdeck = intersect(prism([(-6.0, 8), (-6.0, 24), (6.0, 24), (6.0, 8)], 13, 17),
+                            difference(hull, box(-5, 5, 13, 17, 9, 23)))
+    quarterdeck = union(quarterdeck, prism([(-6.0, 8), (-6.0, 24), (6.0, 24), (6.0, 8)], 16, 17))
+
+    def mast(z, height, top_radius=0.7):
+        return union(tube([(0, 10, z), (0, height, z)], [1.5, top_radius]),
+                     sphere(0, height + 0.6, z, 1.2))
+
+    fore, main = mast(-11, 33), mast(7, 41)
+
+    def yard(z, y, half, radius=0.8):
+        return tube([(-half, y, z), (half, y, z)], radius)
+
+    yards = union(yard(-11, 30, 13), yard(-11, 22, 15), yard(7, 37, 11), yard(7, 28, 16))
+    bowsprit = tube([(0, 14, -24), (0, 19, -36)], [1.4, 0.7])
+
+    def square_sail(z, y_top, y_foot, half_top, half_foot, belly, thickness=1.3):
+        """A square sail, bowed downwind: a **near-vertical** cloth whose depth in z is a function of where
+        on it you are, deepest at the middle of the head-to-foot and slack at both. It cannot be a `sheet` —
+        a sheet's height is a function of the plan, and a sail's plan is a line. So it is written as its own
+        membership test over `(x, y)`, which is the plane a sail actually lives in."""
+        span = max(y_top - y_foot, 1)
+
+        def inside(x, y, zz):
+            if not (y_foot <= y <= y_top):
+                return False
+            down = (y_top - y) / span                      # 0 at the head, 1 at the foot
+            half = half_top + (half_foot - half_top) * down
+            if abs(x) > half:
+                return False
+            across = 1 - (x / max(half, 1e-6)) ** 2        # slack in the middle, taut at the leeches
+            # The bow is across the width and the lean is down the drop, and they are kept separate on
+            # purpose: a curve in both puts a step in every course and the cloth reads as slats. Curved one
+            # way and raked the other, every course has the same profile and the steps fall along the curve.
+            bow = belly * across + 0.35 * span * down
+            return abs(zz - (z + bow)) <= thickness / 2
+        reach = max(half_top, half_foot) + 1
+        return Solid(inside, (-reach, reach, y_foot, y_top, z - 2, z + belly + 2))
+
+    def furled(z, y, half):
+        """A sail rolled onto its yard: a fat bolt of cloth along the spar, tapering to the yardarms. A ship
+        at anchor carries her topsails this way, and it is what keeps the deck of a moored one visible."""
+        return tube([(-half, y, z), (-half * 0.7, y - 0.4, z), (half * 0.7, y - 0.4, z), (half, y, z)],
+                    [1.1, 2.0, 2.0, 1.1])
+
+    # Courses set, topsails furled: a ship lying to her anchor, which is what one in a harbour is doing, and
+    # what leaves her deck open rather than roofed in cloth.
+    sails = union(square_sail(-11, 21.5, 15.5, 14, 15, 2.6), square_sail(7, 27.5, 19.0, 15, 16, 2.8),
+                  furled(-11, 30, 13), furled(7, 37, 11))
+
+    # A fore-and-aft jib on the bowsprit: a triangle standing between the stay and the stem, so it is a
+    # sheet in the (z, y) plane rather than a bowed square.
+    jib = intersect(extrude_x([(-34, 17.5), (-11, 31), (-13, 15)], -1, 1), box(-1, 1, 14, 32, -36, -10))
+
+    def stay(a, b, radius=0.5):
+        return tube([a, b], radius)
+
+    rigging = union(
+        stay((0, 33, -11), (0, 19, -35)), stay((0, 41, 7), (0, 33.5, -10.5)),
+        stay((0, 41, 7), (0, 16, 25)), stay((0, 33, -11), (0, 15.5, -1)),
+        *[stay((x, 12.5, -11 + s), (0, 29, -11), 0.4) for x in (-7.4, 7.4) for s in (-1, 1)],
+        *[stay((x, 12.5, 7 + s), (0, 36, 7), 0.4) for x in (-7.4, 7.4) for s in (-1, 1)])
+
+    rudder = intersect(extrude_x([(24, 0), (27, 1), (27, 12), (24, 12)], -1, 1), box(-1, 1, 0, 12, 22, 28))
+    cabin = difference(box(-5, 5, 17, 21, 11, 22), box(-4, 4, 18, 21, 12, 21))
+    windows = union(*[box(-5, 5, 18, 19, z, z + 1) for z in (13, 16, 19)])
+    lantern = union(cylinder(0, 24, 1.0, 21, 23), sphere(0, 23.6, 24, 1.3))
+
+    paint(model,
+          (hull, "hull"),
+          (strake, "strake"),
+          (rail, "rail"),
+          (deck, "deck"),
+          (quarterdeck, "deck"),
+          (union(fore, main, yards, bowsprit), "spar"),
+          (rigging, "rig"),
+          (union(sails, jib), "canvas"),
+          (rudder, "hull"),
+          (cabin, "rail"),
+          (windows, "glass"),
+          (lantern, "lamp"))
+    return model
+
+
+# ── the hot air balloon ───────────────────────────────────────────────────────────────────────────────────
+
+def balloon():
+    """A hot air balloon, 30 blocks across the shoulder and 52 from basket floor to crown.
+
+    The envelope is one `revolve` of a teardrop profile and then a **shell**, because a balloon is a skin and
+    a solid one would cost a hundred thousand blocks to say nothing. The gores are the reason it is worth
+    building at all: a wedge test on the angle about the axis cuts the skin into twelve panels, and painting
+    the alternate ones is one line rather than twelve solids. Below it the mouth is a frustum, the cables are
+    tubes drawn to the four corners of the basket, and the basket is a shelled box with a burner in it."""
+    model = {}
+
+    #        mouth      shoulder                        crown
+    profile = [(4.5, 0), (9.0, 4), (13.0, 9), (15.0, 15), (14.6, 21), (12.4, 27), (8.4, 32), (0.0, 35)]
+    envelope = shell(revolve(profile, 0, 0, 20), thickness=1, keep_bottom=True)
+
+    def gore(index, count=12):
+        """One wedge of the envelope, by the angle about its axis. `index` is which of `count` panels."""
+        step = 2 * math.pi / count
+
+        def inside(x, y, z):
+            angle = math.atan2(z, x) % (2 * math.pi)
+            return int(angle / step) % count == index
+        return Solid(inside, (-20, 20, 0, 128, -20, 20))
+
+    band = intersect(envelope, box(-20, 20, 41, 44, -20, 20))
+    panels = [intersect(envelope, gore(i)) for i in range(12)]
+
+    mouth = shell(revolve([(4.6, 0), (4.0, 3), (5.2, 6)], 0, 0, 14), thickness=1, keep_bottom=True)
+    ring = torus(0, 14, 0, 4.8, 0.8)
+
+    basket = difference(box(-4, 4, 0, 6, -4, 4), box(-3, 3, 2, 7, -3, 3))
+    coaming = box(-4, 4, 6, 6, -4, 4)
+    burner = union(cylinder(0, 0, 1.6, 8, 11), cylinder(0, 0, 2.4, 11, 12))
+    flame = cylinder(0, 0, 1.2, 12, 13)
+
+    cables = union(*[tube([(x, 6.5, z), (x * 0.9, 14, z * 0.9)], 0.5)
+                     for x in (-3.6, 3.6) for z in (-3.6, 3.6)],
+                   *[tube([(x, 14, z), (x * 2.6, 20.5, z * 2.6)], 0.5)
+                     for x in (-3.6, 3.6) for z in (-3.6, 3.6)])
+    sandbags = union(*[ellipsoid(x, 1.4, z, 1.4, 1.2, 1.4) for x, z in ((-5.0, 0), (5.0, 0))])
+
+    paint(model,
+          *[(panel, "envelope-a" if i % 2 == 0 else "envelope-b") for i, panel in enumerate(panels)],
+          (band, "envelope-band"),
+          (mouth, "envelope-band"),
+          (ring, "rig"),
+          (cables, "rig"),
+          (basket, "wicker"),
+          (coaming, "rail"),
+          (sandbags, "wicker"),
+          (burner, "rig"),
+          (flame, "flame"))
+    return model
+
+
+# ── the quay crane ────────────────────────────────────────────────────────────────────────────────────────
+
+def crane():
+    """A shear-legs crane on a quay: two raking legs meeting at a head 22 blocks up, a back stay holding them
+    off the vertical, and a load swinging on a chain over the water.
+
+    It is here because it is the smallest thing worth **seating**. A ship floats and a balloon flies, so
+    neither reads the ground under it; a crane stands on a wharf that rolls, and its four feet have to find
+    that ground or it is a model hanging in the air. Everything above the feet is tubes: a lattice read as
+    solids would be a wall."""
+    model = {}
+
+    head = (0, 22, -3)
+    feet = [(-6, 0, 4), (6, 0, 4)]
+    legs = union(*[tube([foot, head], [1.5, 0.9]) for foot in feet])
+    brace = union(tube([(-5, 8, 3.4), (5, 8, 3.4)], 0.6), tube([(-4, 15, 1.6), (4, 15, 1.6)], 0.6),
+                  tube([(-5, 8, 3.4), (4, 15, 1.6)], 0.5), tube([(5, 8, 3.4), (-4, 15, 1.6)], 0.5))
+    stay = union(tube([head, (0, 3, 14)], [0.9, 1.2]), tube([(0, 12, 5.5), (0, 3, 14)], 0.5))
+
+    sill = union(*[box(x - 2, x + 2, -1, 1, 2, 6) for x in (-6, 6)], box(-2, 2, -1, 1, 12, 16))
+    drum = union(rotate_y(cylinder(0, 0, 2.0, -3, 3), 90), rotate_y(cylinder(0, 0, 1.2, -4, 4), 90))
+    drum = translate(drum, 0, 3, 11)
+
+    chain = tube([(0, 21.4, -3.6), (0, 9, -3.6)], 0.4)
+    hook = union(tube([(0, 9.4, -3.6), (0, 8, -3.6)], 0.8), torus(0, 7.2, -3.6, 1.2, 0.5))
+    crate = difference(box(-3, 3, 2, 7, -7, -1), box(-2, 2, 3, 7, -6, -2))
+    load = union(tube([(0, 8.6, -3.6), (0, 7.2, -3.6)], 0.5), crate)
+
+    cap = union(sphere(0, 22.4, -3, 1.6), tube([(-2.4, 22, -3), (2.4, 22, -3)], 0.7))
+    lamp = sphere(0, 20.4, -4.6, 1.0)
+
+    paint(model,
+          (sill, "stone"),
+          (union(legs, brace, stay, cap), "iron"),
+          (drum, "iron"),
+          (union(chain, hook, load), "chain"),
+          (crate, "timber"),
+          (lamp, "lamp"))
+    return model
