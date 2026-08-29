@@ -20,7 +20,7 @@ Made things, each stated a different way, which is the point of the board:
 | crane ×2 | 810 | 4 | 107 | `seat: ground` — settles onto the dock, jib out over the water |
 | mini car ×8 | 208 | 4 | 19 | `seat: ground` — four boxes and four cubes, 11 × 5 × 6 |
 
-Beside them: sixteen houses from the style library, thirteen trees, four crates, five roads and a harbour.
+Beside them: sixteen houses from the style library, twelve trees, four crates, five roads and a harbour.
 
 ## The crane reaches over the water, and what that cost
 
@@ -111,10 +111,21 @@ is the measurement that says what one costs.
   notch, which is the one move worth most, because drawing it across the notch turns an L into a coast.
 - **No two neighbours may move**, or the edge between them merely translates and the shape is the rectangle
   it was, somewhere else. A reflex corner is offered its move first, since only one of any pair gets one.
-- **What it costs is ground nobody walks.** Sixteen corners drawn out, none taking more than 320 cells, grew
-  the board from 200 x 264 to **240 x 264** and its ground from 35,908 cells to 44,046 — and almost all of
-  that is shore. The dead share went 27.2% → 38.8%, and back to 34.1% once the fields the new coast made
-  room on carried five buildings a side instead of two.
+- **A Bézier leaves the polygon the guard read.** Bowing an edge shared with the shape beside it pushes
+  ground over that shape whatever the straight ring did: the upland's north edge bowed 3 blocks into the
+  town and left `destroyable-2` standing **6 blocks proud one block from the goal**. So an edge is bowed only
+  where it faces open water along its whole length, and the test is per edge rather than per corner — `in`
+  governs the edge arriving and `out` the edge leaving, so one corner bows its coast and holds its seam with
+  a zero-length handle. A drawn corner also keeps 14 blocks off a goal, because a pad drawn to an
+  objective's doorstep leaves the objective standing on the step it made.
+- **What it costs is ground nobody walks.** The corners drawn out, none taking more than 320 cells, grew the
+  board from 200 x 264 to **240 x 264**, and almost all of that is shore. The dead share went 27.2% → 38.8%,
+  and back to **29.9%** once the fields the new coast made room on carried five buildings a side and the flat
+  pad behind the port was deleted.
+- **A thousand columns at one height is not ground, it is unfinished map.** The piece behind the port stood
+  1,071 columns every one at y23 — no route across it, no relief mark over it, nothing built on it — and its
+  `rot_180` image the same. Deleting it took 2,456 cells off the board and 4 points off the dead share, and
+  the upland now reaches the corner it was filling.
 - **`HP3` caps a placed building at 192 blocks of footprint, inclusive of both corners** — an 11 × 15 plot
   is 12 × 16 = 192 exactly and a 12 × 15 is 208 and refuses.
 - **`LN2` measures a chain of collinear rects, not a piece.** Rects sharing a cross-axis interval and
@@ -130,14 +141,14 @@ Two are the author's own calls and one is cosmetic:
 |---|---|---|
 | `ST2` | 1 | the iron stands outside the spawn piece, beside its door lane — the author asked for it there |
 | `SP8` | 1 | the spawn's egress steps two blocks at `fore-spawn`–`spawn` |
-| `WX11` | 16 | eight houses stand 2–4 blocks above the cell beside them, showing that much foundation |
+| `WX11` | 12 | six houses stand 2–3 blocks above the cell beside them, showing that much foundation |
 
-The sixteen `WX11` are all doorstep-sized. The ones that mattered — a shed reading as a 53-block bedrock tower
+The twelve `WX11` are all doorstep-sized. The ones that mattered — a shed reading as a 53-block bedrock tower
 because a balloon flew over it — were a defect in what the check read, not in where the house stood
 (`WE61`).
 
 ## Coverage
 
-`reached 21,401 · decorated 7,605 · dead 15,040 of 44,046 = 34.1% dead` on a board of 240 x 264. The dead
+`reached 21,401 · decorated 7,471 · dead 12,294 of 41,166 = 29.9% dead` on a board of 240 x 264. The dead
 ground is the drawn shore and the port — a car park behind a warehouse is somewhere goods leave from, not
 somewhere a lane runs through.

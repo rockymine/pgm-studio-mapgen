@@ -108,10 +108,16 @@ that already read as an edge.
 **Let no two neighbours move.** A corner drawn out slants both of its edges, which is the whole effect; move
 the vertex beside it the same way and the edge between them merely translates.
 
-Handles go on the drawn corners only, so the two new edges bow out and every edge the plan drew stays
-straight — which is what keeps a seam a seam and a quay a quay. Clamp each to `k` times its **shorter** edge:
-Catmull-Rom's tangent is the chord between a vertex's neighbours, which is right on this board's evenly
-spaced twenty-eight and wrong where a compiled corner has one neighbour a block away and the other seventy.
+**Bow an edge only where it faces open water along its whole length.** The guard reads the polygon and a
+Bézier leaves it: bowing a seam pushes ground over the neighbour whatever the straight ring did. The test is
+per edge, not per corner — `in` governs the edge arriving and `out` the edge leaving, so a corner between a
+coast and a seam bows the one and holds the other with a zero-length handle. Clamp what remains to `k` times
+its **shorter** edge: Catmull-Rom's tangent is the chord between a vertex's neighbours, which is right on this
+board's evenly spaced twenty-eight and wrong where a compiled corner has one neighbour a block away and the
+other seventy.
+
+**And keep a drawn corner off the objectives.** A pad drawn out to a goal's doorstep leaves the goal standing
+on the step it made, which `WX11` reports against the goal rather than against the shape that moved.
 
 **What it costs is ground nobody walks.** On `opus5-slipway` — the worked example, nine compiled rings, four
 of which have no free corner and never move — sixteen drawn corners, none taking more than 320 cells, grew

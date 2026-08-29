@@ -5,20 +5,20 @@
   -31 |                        SS@SS                       |
   -30 |                        SSSSS                       |
   -29 |                        SSSSS                       |
-  -28 |        PPPPPPPPPPPNNNNNNNNNNNNNN                   |
-  -27 |        PPPPPPPPPPPNNNNNNNNNNNNNN                   |
-  -26 |        PPPPPPPPPPPNNNNNNNNNNNNNN                   |
-  -25 |        PPPPPPPPPPPNNNiNNNNNNNNNN                   |
-  -24 | LLLLLLLKKKKKKKKKKKNNNNNNNNNNNNNN                   |
-  -23 | LLLLLLLKKKKKKKKKKKMMMMMMMMMMMMMMMMMMMMMMMMM        |
-  -22 | LLLLLLLKKKKKKKKKKKMMMMMMMMMMMMMMMMMMMMMMMMM        |
-  -21 | LLLLLLLKKKKKKKKKKKMMMMMMMMMMMMMMMMMMMMMMMMM        |
-  -20 | LLLLLLLKKKKKKKKKKKMMMMMMMMMMMMMMMMMMMMMMMMM        |
-  -19 | LLLLLLLKKKKKKKKKKKMMMMMMMMMMMMMMMMMMMMMMMMM        |
-  -18 | LLLLLLLKKKKKKKKKKKMMMMMMMMMMMMMMMMMMMMMMMMM        |
-  -17 | LLLLLLLKKKKKKKKKKKMMMMMMMMMMMMMMMMMMMMMMMMM        |
-  -16 | LLLLLLLKKKKKKKKKKKMMMMMMMMMMMMMMMMMMMMMMMMM        |
-  -15 | LLLLLLLKKKKKKKKKKKMMMMMMMMMMMMMMMMMMMMMMMMM        |
+  -28 |        NNNNNNNNNNNMMMMMMMMMMMMMM                   |
+  -27 |        NNNNNNNNNNNMMMMMMMMMMMMMM                   |
+  -26 |        NNNNNNNNNNNMMMMMMMMMMMMMM                   |
+  -25 |        NNNNNNNNNNNMMMiMMMMMMMMMM                   |
+  -24 |        KKKKKKKKKKKMMMMMMMMMMMMMM                   |
+  -23 |        KKKKKKKKKKKLLLLLLLLLLLLLLLLLLLLLLLLL        |
+  -22 |        KKKKKKKKKKKLLLLLLLLLLLLLLLLLLLLLLLLL        |
+  -21 |        KKKKKKKKKKKLLLLLLLLLLLLLLLLLLLLLLLLL        |
+  -20 |        KKKKKKKKKKKLLLLLLLLLLLLLLLLLLLLLLLLL        |
+  -19 |        KKKKKKKKKKKLLLLLLLLLLLLLLLLLLLLLLLLL        |
+  -18 |        KKKKKKKKKKKLLLLLLLLLLLLLLLLLLLLLLLLL        |
+  -17 |        KKKKKKKKKKKLLLLLLLLLLLLLLLLLLLLLLLLL        |
+  -16 |        KKKKKKKKKKKLLLLLLLLLLLLLLLLLLLLLLLLL        |
+  -15 |        KKKKKKKKKKKLLLLLLLLLLLLLLLLLLLLLLLLL        |
   -14 | FFFFFFFFFFFFFFJJJJJJJJJJJJJJJJJJHHHHHHGGGGG        |
   -13 | FFFFFFFFFFFFFFJJ!JJJJJJJJJJJJJJJHHHHHHGGGGG        |
   -12 | FFFFFFFFFFFFFFJJJJJJJJJJJJJJJJJJHHHHHHGGGGG        |
@@ -47,20 +47,20 @@
    11 |        GGGGGHHHHHHJJJJJJJJJJJJJJJJJJFFFFFFFFFFFFFF |
    12 |        GGGGGHHHHHHJJJJJJJJJJJJJJJJJJFFFFFFFFFFFFFF |
    13 |        GGGGGHHHHHHJJJJJJJJJJJJJJJJ!JFFFFFFFFFFFFFF |
-   14 |        MMMMMMMMMMMMMMMMMMMMMMMMMKKKKKKKKKKKLLLLLLL |
-   15 |        MMMMMMMMMMMMMMMMMMMMMMMMMKKKKKKKKKKKLLLLLLL |
-   16 |        MMMMMMMMMMMMMMMMMMMMMMMMMKKKKKKKKKKKLLLLLLL |
-   17 |        MMMMMMMMMMMMMMMMMMMMMMMMMKKKKKKKKKKKLLLLLLL |
-   18 |        MMMMMMMMMMMMMMMMMMMMMMMMMKKKKKKKKKKKLLLLLLL |
-   19 |        MMMMMMMMMMMMMMMMMMMMMMMMMKKKKKKKKKKKLLLLLLL |
-   20 |        MMMMMMMMMMMMMMMMMMMMMMMMMKKKKKKKKKKKLLLLLLL |
-   21 |        MMMMMMMMMMMMMMMMMMMMMMMMMKKKKKKKKKKKLLLLLLL |
-   22 |        MMMMMMMMMMMMMMMMMMMMMMMMMKKKKKKKKKKKLLLLLLL |
-   23 |                   NNNNNNNNNNNNNNKKKKKKKKKKKLLLLLLL |
-   24 |                   NNNNNNNNNNNNNNPPPPPPPPPPP        |
-   25 |                   NNNNNNNNNNNiNNPPPPPPPPPPP        |
-   26 |                   NNNNNNNNNNNNNNPPPPPPPPPPP        |
-   27 |                   NNNNNNNNNNNNNNPPPPPPPPPPP        |
+   14 |        LLLLLLLLLLLLLLLLLLLLLLLLLKKKKKKKKKKK        |
+   15 |        LLLLLLLLLLLLLLLLLLLLLLLLLKKKKKKKKKKK        |
+   16 |        LLLLLLLLLLLLLLLLLLLLLLLLLKKKKKKKKKKK        |
+   17 |        LLLLLLLLLLLLLLLLLLLLLLLLLKKKKKKKKKKK        |
+   18 |        LLLLLLLLLLLLLLLLLLLLLLLLLKKKKKKKKKKK        |
+   19 |        LLLLLLLLLLLLLLLLLLLLLLLLLKKKKKKKKKKK        |
+   20 |        LLLLLLLLLLLLLLLLLLLLLLLLLKKKKKKKKKKK        |
+   21 |        LLLLLLLLLLLLLLLLLLLLLLLLLKKKKKKKKKKK        |
+   22 |        LLLLLLLLLLLLLLLLLLLLLLLLLKKKKKKKKKKK        |
+   23 |                   MMMMMMMMMMMMMMKKKKKKKKKKK        |
+   24 |                   MMMMMMMMMMMMMMNNNNNNNNNNN        |
+   25 |                   MMMMMMMMMMMiMMNNNNNNNNNNN        |
+   26 |                   MMMMMMMMMMMMMMNNNNNNNNNNN        |
+   27 |                   MMMMMMMMMMMMMMNNNNNNNNNNN        |
    28 |                       SSSSS                        |
    29 |                       SSSSS                        |
    30 |                       SS@SS                        |
@@ -69,5 +69,5 @@
       50 × 66 cells drawn  ·  50 × 66 cells = 200 × 264 blocks  ·  cell 4
       ! destroyable   @ spawn   A basin (piece)   B balloon-field (piece)   C crane-dock (piece)   
       D goal-dock (piece)   E quay-e (piece)   F port (piece)   G dock-town (piece)   
-      H dock-yard (piece)   J mid (piece)   K back-settlement (piece)   L port-back (piece)   
-      M hill (piece)   N fore-spawn (piece)   P back-band (piece)   S spawn (spawn)   i iron   
+      H dock-yard (piece)   J mid (piece)   K back-settlement (piece)   L hill (piece)   
+      M fore-spawn (piece)   N back-band (piece)   S spawn (spawn)   i iron   

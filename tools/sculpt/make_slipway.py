@@ -54,7 +54,11 @@ PLAN = {
     # a crane dock west of centre, the first goal's dock at the middle, a port east, the dockside settlement
     # behind the west dock and a second settlement back and to the east with the other goal in front of it —
     # and a field on each arm for a balloon to stand over. `LN2` caps a lane at 110 blocks and rects sharing
-    # a cross-axis interval merge into one lane however many pieces they are written as; 104 is the longest.
+    # a cross-axis interval merge into one lane however many pieces they are written as.
+    #
+    # **Ground that reads as nothing is not drawn.** A piece behind the port stood a thousand columns at one
+    # height with no route across it, no relief mark over it and nothing built on it — a flat pad the eye
+    # takes for unfinished map. Its corner is now the board's, and the outline draws it.
     "pieces": [
         {"id": "basin",           "role": "piece", "rect": [-13, -4, 26,  8], "surface": BASIN},
         {"id": "balloon-field",   "role": "piece", "rect": [-25, -4, 12, 11], "surface": HEAD},
@@ -66,7 +70,6 @@ PLAN = {
         {"id": "dock-yard",       "role": "piece", "rect": [-13,  9,  6,  5], "surface": TOWN},
         {"id": "mid",             "role": "piece", "rect": [ -7, 11, 18,  3], "surface": TOWN},
         {"id": "back-settlement", "role": "piece", "rect": [  7, 14, 11, 10], "surface": BACK},
-        {"id": "port-back",       "role": "piece", "rect": [ 18, 14,  7, 10], "surface": HEAD},
         {"id": "hill",            "role": "piece", "rect": [-18, 14, 25,  9], "surface": RIDGE},
         {"id": "fore-spawn",      "role": "piece", "rect": [ -7, 23, 14,  5], "surface": RIDGE},
         {"id": "back-band",       "role": "piece", "rect": [  7, 24, 11,  4], "surface": RIDGE},
@@ -235,14 +238,14 @@ ROADS = [
 # stands outside the +-10-block square a destroy goal keeps clear (`DressingScope.GoalStandoff`, `OB19`).
 HOUSES = [
     # The dock town, kept where it was: the sailmaker and the cooperage in the yard behind the crane.
-    ("sailmaker",      "@hoar-steading",   ( -71,  45), ( -62,  57), "posZ"),
-    ("cooperage",      "@wh-shed",         ( -53,  47), ( -42,  56), "negX"),
+    ("sailmaker",      "@hoar-steading",   ( -69,  45), ( -60,  57), "posZ"),
+    ("cooperage",      "@wh-shed",         ( -53,  46), ( -42,  55), "negX"),
     # The quay east of the goal dock: a harbour office at the water, and a store along from it.
     ("harbour-office", "@sn-compass-well", (   5,  19), (  16,  32), "negZ"),
     ("quay-store",     "@kr-deck",         (  21,  23), (  30,  31), "posX"),
     # The row across the middle, which is the one thing joining the two towns.
-    ("arcade-w",       "@terrace",         ( -13,  44), (   1,  51), "negZ"),
-    ("arcade-e",       "@terrace",         (   9,  45), (  23,  52), "posZ"),
+    ("arcade-w",       "@terrace",         ( -12,  46), (   2,  53), "negZ"),
+    ("arcade-e",       "@terrace",         (   9,  46), (  23,  53), "posZ"),
     # The upland: a barn on the hill's own shoulder, and the back settlement flattened into it.
     ("granary",        "@17h-barn",        ( -40,  75), ( -29,  86), "negX"),
     ("counting",       "@wh-count",        (  28,  82), (  37,  91), "posZ"),
@@ -250,18 +253,18 @@ HOUSES = [
     # The field the balloon flies off, which the drawn coast made room on: five, so it reads as somewhere
     # rather than as the ground beside somewhere.
     ("balloon-shed",   "@wh-shed",         ( -81,  18), ( -69,  27), "posZ"),
-    ("balloon-store",  "@kr-deck",         ( -87,  -1), ( -78,   7), "negZ"),
+    ("balloon-store",  "@kr-deck",         ( -64,  20), ( -55,  28), "negZ"),
     ("field-cottage",  "@cairn-cottage",   ( -94,  13), ( -86,  24), "posX"),
-    ("field-barn",     "@17h-barn",        (-103, -16), ( -92,  -4), "posZ"),
-    ("field-byre",     "@hoar-steading",   ( -73, -14), ( -63,  -5), "negX"),
+    ("field-barn",     "@17h-barn",        (-103, -13), ( -92,  -1), "posZ"),
+    ("field-byre",     "@hoar-steading",   ( -79,  -8), ( -69,   1), "negX"),
     # The port, beside the car park.
-    ("warehouse",      "@hoar-longhall",   (  99,  23), ( 110,  37), "posZ"),
-    ("port-office",    "@townside",        (  79,  40), (  88,  51), "posX"),
+    ("warehouse",      "@hoar-longhall",   (  99,  18), ( 110,  32), "posZ"),
+    ("port-office",    "@townside",        (  90,  39), (  99,  50), "posX"),
 ]
 
 # The field the balloon flies off, the hill behind the town, and the back settlement's own green.
-TREES = [(-58, 24), (-94, 2), (-72, 1), (-72, 11), (11, 73), (-13, 76), (-5, 90), (0, 79), (-18, 58),
-         (21, 77), (62, 90), (47, 69), (44, 93)]
+TREES = [(-63, -12), (-86, 0), (-78, 8), (-94, 5), (11, 73), (-13, 76), (-5, 90), (0, 79), (21, 77),
+         (62, 90), (47, 69), (44, 93)]
 
 SPECIES = ["oak", "birch", "spruce", "oak", "birch"]
 
@@ -344,6 +347,8 @@ DRAW_OUT = (14, 10, 18, 8, 12, 16)
 # the shapes worth reshaping are the ones refused: a forty-four-block edge cannot move a corner seven blocks
 # inside two hundred cells.
 GAIN_CAP = 320
+# How far a drawn corner keeps off a goal, so an objective is never left standing on the step one made.
+GOAL_STANDOFF = 14
 # The curve a drawn corner's handles reach along the chord between its neighbours (Catmull-Rom). Below about
 # 0.15 the pair of new edges still reads as two straight cuts; above about 0.35 a handle overshoots.
 CURVE = 0.26
@@ -361,6 +366,16 @@ def plan_cells():
                 cells.add((x, z))
                 cells.add((-x - 1, -z - 1))
     return cells
+
+
+def goal_cells():
+    """Every goal's own cell and its image. A pad drawn out to a goal's doorstep leaves the goal standing on
+    the step (`WX11`), and a bay cut to it would strand it outright, so the outline keeps its distance."""
+    at = set()
+    for goal in PLAN["placements"]["destroyables"]:
+        x, z = int(goal["at"][0] * CELL), int(goal["at"][1] * CELL)
+        at.add((x, z)); at.add((-x, -z))
+    return at
 
 
 def spawn_cells():
@@ -423,7 +438,7 @@ def outline():
     its `rot_180` image — and two shapes growing into the same water is two shapes overlapping."""
     ground = plan_cells()
     occupied = set(ground)
-    keep_square = spawn_cells()
+    keep_square, goals = spawn_cells(), goal_cells()
     props = {}
 
     for shape_id, _height, ring in compiled_rings():
@@ -440,7 +455,7 @@ def outline():
         # so the order decides which; the vertex inside a notch is the one whose move is worth most, because
         # drawing it across the notch turns an L into a coast while drawing an outer corner only chamfers
         # one that already reads as an edge.
-        curved = set()
+        curved, mine = set(), set()
         order = sorted(range(len(ring)),
                        key=lambda index: not reflex(ring[index - 1], ring[index],
                                                     ring[(index + 1) % len(ring)], ring))
@@ -456,18 +471,27 @@ def outline():
                 if len(gained) > GAIN_CAP: continue
                 if any(cell in occupied or (-cell[0] - 1, -cell[1] - 1) in occupied for cell in gained):
                     continue
+                if any(max(abs(x - gx), abs(z - gz)) < GOAL_STANDOFF
+                       for x, z in gained for gx, gz in goals): continue
                 occupied.update(gained)
                 occupied.update((-x - 1, -z - 1) for x, z in gained)
+                mine.update(gained)
                 ring[index] = moved
                 curved.add(index)
                 break
 
-        # Only a drawn corner takes handles, so the two new edges bow out and every edge the plan drew stays
-        # the straight line it was — which is what keeps a seam a seam and a quay a quay.
+        # A drawn corner bows an edge only where that edge **faces open water along its whole length**. The
+        # guard that admits the move reads the polygon, and a Bézier leaves the polygon: bowing an edge
+        # shared with the shape beside it pushes ground over that shape whatever the straight ring did, which
+        # is how the upland came to stand six blocks proud one block from a goal. The test is per edge rather
+        # than per corner, so a corner between a coast and a seam bows the one and holds the other.
         controls = {}
         for index in sorted(curved):
             x, z = ring[index]
             before, after = ring[index - 1], ring[(index + 1) % len(ring)]
+            arriving = open_water(before, ring[index], ring, occupied, mine)
+            leaving = open_water(ring[index], after, ring, occupied, mine)
+            if not (arriving or leaving): continue
             tangent_x = (after[0] - before[0]) * CURVE
             tangent_z = (after[1] - before[1]) * CURVE
             reach = math.hypot(tangent_x, tangent_z)
@@ -475,12 +499,32 @@ def outline():
                                    math.hypot(after[0] - x, after[1] - z))
             if reach > room > 0:
                 tangent_x, tangent_z = tangent_x * room / reach, tangent_z * room / reach
-            controls[str(index)] = {"in": [round(x - tangent_x, 2), round(z - tangent_z, 2)],
-                                    "out": [round(x + tangent_x, 2), round(z + tangent_z, 2)]}
+            # A handle on the seam side is the vertex itself, which is a straight edge: `in` governs the edge
+            # arriving and `out` the edge leaving, so one corner can bow its coast and hold its seam.
+            controls[str(index)] = {
+                "in": [round(x - tangent_x, 2), round(z - tangent_z, 2)] if arriving else [x, z],
+                "out": [round(x + tangent_x, 2), round(z + tangent_z, 2)] if leaving else [x, z]}
 
         props[shape_id] = {"vertices": [[x, z] for x, z in ring]}
         if controls: props[shape_id]["controls"] = controls
     return props
+
+
+def open_water(start, end, ring, occupied, mine):
+    """Whether an edge faces nothing but void along its whole length — what a curve may bow into."""
+    span = math.hypot(end[0] - start[0], end[1] - start[1])
+    if span < 1: return False
+    step_x, step_z = (end[1] - start[1]) / span, -(end[0] - start[0]) / span
+    for at in range(int(span) + 1):
+        px = start[0] + (end[0] - start[0]) * at / span
+        pz = start[1] + (end[1] - start[1]) * at / span
+        for side in (1, -1):
+            probe = (px + step_x * side * 2.0, pz + step_z * side * 2.0)
+            if within(ring, *probe): continue
+            cell = (math.floor(probe[0]), math.floor(probe[1]))
+            if cell in occupied and cell not in mine: return False
+            break
+    return True
 
 
 def reflex(before, here, after, ring):
