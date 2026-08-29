@@ -1,6 +1,6 @@
 # Slipway — a harbour DTM built to a sketched composition
 
-`specs/opus5-slipway`, driven `2026-08-29`. 200 × 264 blocks, `rot_180`, 28 players, two destroyables a
+`specs/opus5-slipway`, driven `2026-08-29`. 240 × 264 blocks, `rot_180`, 28 players, two destroyables a
 team. Symmetry error **0**, export gate **OPEN**, and **nothing the dressing pass declined**.
 
 The board is the author's own composition, sketched at cell scale and scaled up here: a harbour with a
@@ -20,7 +20,7 @@ Made things, each stated a different way, which is the point of the board:
 | crane ×2 | 810 | 4 | 107 | `seat: ground` — settles onto the dock, jib out over the water |
 | mini car ×8 | 208 | 4 | 19 | `seat: ground` — four boxes and four cubes, 11 × 5 × 6 |
 
-Beside them: twelve houses from the style library, fifteen trees, four crates, five roads and a harbour.
+Beside them: sixteen houses from the style library, thirteen trees, four crates, five roads and a harbour.
 
 ## The crane reaches over the water, and what that cost
 
@@ -95,20 +95,26 @@ is the measurement that says what one costs.
 - **The outline to redraw is the one the compile already hands back.** `POST /plan/compile` fuses abutting
   pieces of equal height into one ring apiece, and those rings are the board's silhouette: the upland here
   is a single eight-vertex polygon — a stretched T where the spawn's approach steps back out of the hill —
-  and the notch in it is two vertices. Redrawing that ring through `shapePropsById` is `showcase/04`'s own
-  technique and it cannot make a hole, because it moves the edge rather than punching through it.
-  Subtracting lobes off the perimeter was a second answer to a question the repo had already answered.
-- **A ring has two kinds of edge and they behave oppositely.** An edge facing the void is coast: drawing it
-  in shortens the coast. An edge shared with the neighbouring shape is a **seam**: drawing one side of it in
-  leaves a strip of void between two pieces that were flush. That is why redrawing looked unavailable on a
-  fifteen-piece board at all — but the two are told apart by what lies two blocks off the edge, so every
-  step of every ring is classified, a sample is taken where an edge changes kind, and only samples strictly
-  inside a run of open shore move.
-- **Catmull-Rom's tangent is the chord between a sample's neighbours, which is wrong on an uneven ring.** A
-  compiled corner has one neighbour a block away and the other seventy, so the chord swings the curve clear
-  outside the polygon: unclamped handles bit a 20-cell hole out of the town at `x −34..−28, z 37..43` and
-  left `destroyable-2` standing 6 blocks proud. A handle is clamped to a fraction of its shorter edge and a
-  sample that was not drawn in gets none, which is also what keeps a seam a seam.
+  and the notch in it is one vertex. Redrawing that ring through `shapePropsById` is `showcase/04`'s own
+  technique. Subtracting lobes off the perimeter was a second answer to a question the repo had answered.
+- **A corner is drawn out, and that is what makes it safe.** A vertex moves only where the redrawn ring
+  covers every cell the compiled one did and every cell it gains was void, its `rot_180` image included. So
+  it cannot erode the shore, cannot reach into a neighbouring shape, and above all cannot open a **seam**: an
+  edge shared with the shape beside it is exactly an edge whose outward side is that shape's ground, and a
+  move across one fails the guard on its first cell. Drawing inward has no such property — every subtract
+  has to be checked for holes by hand, which is how eight of them went uncaught.
+- **Carrying one edge on beats opening the angle.** A corner drawn along its own bisector swings *both* its
+  edges, so where one of them is a seam the move is refused outright — the terracotta field's west corner
+  took the bisector and swung its north edge into the town. Taken along an edge instead, that edge stays
+  collinear and only the other swings: the field grows a headland and the seam never moves. The bisector is
+  tried last, and it is what a corner with two free edges takes — the reflex vertex inside the upland's
+  notch, which is the one move worth most, because drawing it across the notch turns an L into a coast.
+- **No two neighbours may move**, or the edge between them merely translates and the shape is the rectangle
+  it was, somewhere else. A reflex corner is offered its move first, since only one of any pair gets one.
+- **What it costs is ground nobody walks.** Sixteen corners drawn out, none taking more than 320 cells, grew
+  the board from 200 x 264 to **240 x 264** and its ground from 35,908 cells to 44,046 — and almost all of
+  that is shore. The dead share went 27.2% → 38.8%, and back to 34.1% once the fields the new coast made
+  room on carried five buildings a side instead of two.
 - **`HP3` caps a placed building at 192 blocks of footprint, inclusive of both corners** — an 11 × 15 plot
   is 12 × 16 = 192 exactly and a 12 × 15 is 208 and refuses.
 - **`LN2` measures a chain of collinear rects, not a piece.** Rects sharing a cross-axis interval and
@@ -124,14 +130,14 @@ Two are the author's own calls and one is cosmetic:
 |---|---|---|
 | `ST2` | 1 | the iron stands outside the spawn piece, beside its door lane — the author asked for it there |
 | `SP8` | 1 | the spawn's egress steps two blocks at `fore-spawn`–`spawn` |
-| `WX11` | 10 | five houses stand 2–3 blocks above the cell beside them, showing that much foundation |
+| `WX11` | 16 | eight houses stand 2–4 blocks above the cell beside them, showing that much foundation |
 
-The ten `WX11` are all doorstep-sized. The ones that mattered — a shed reading as a 53-block bedrock tower
+The sixteen `WX11` are all doorstep-sized. The ones that mattered — a shed reading as a 53-block bedrock tower
 because a balloon flew over it — were a defect in what the check read, not in where the house stood
 (`WE61`).
 
 ## Coverage
 
-`reached 20,635 · decorated 5,504 · dead 9,769 of 35,908 = 27.2% dead`. The largest dead patches are the
-port and its mirror — a car park behind a warehouse is somewhere goods leave from, not somewhere a lane
-runs through.
+`reached 21,401 · decorated 7,605 · dead 15,040 of 44,046 = 34.1% dead` on a board of 240 x 264. The dead
+ground is the drawn shore and the port — a car park behind a warehouse is somewhere goods leave from, not
+somewhere a lane runs through.

@@ -234,30 +234,34 @@ ROADS = [
 # (`DR-SLOPE`), it clears the roads (`DR-CROSS`), it clears every other plot's claim (`DR-CLAIM`) and it
 # stands outside the +-10-block square a destroy goal keeps clear (`DressingScope.GoalStandoff`, `OB19`).
 HOUSES = [
-    # The dock town, kept where it was: the chandler at the head of the street, the sailmaker and the
-    # cooperage in the yard behind the crane.
-    ("chandler",       "@wh-count",        ( -68,  26), ( -58,  35), "posX"),
-    ("sailmaker",      "@hoar-steading",   ( -65,  45), ( -56,  57), "posZ"),
-    ("cooperage",      "@wh-shed",         ( -51,  46), ( -40,  55), "negX"),
+    # The dock town, kept where it was: the sailmaker and the cooperage in the yard behind the crane.
+    ("sailmaker",      "@hoar-steading",   ( -71,  45), ( -62,  57), "posZ"),
+    ("cooperage",      "@wh-shed",         ( -53,  47), ( -42,  56), "negX"),
     # The quay east of the goal dock: a harbour office at the water, and a store along from it.
     ("harbour-office", "@sn-compass-well", (   5,  19), (  16,  32), "negZ"),
     ("quay-store",     "@kr-deck",         (  21,  23), (  30,  31), "posX"),
     # The row across the middle, which is the one thing joining the two towns.
-    ("arcade-w",       "@terrace",         ( -10,  47), (   4,  54), "negZ"),
-    ("arcade-e",       "@terrace",         (   9,  47), (  23,  54), "posZ"),
-    # The back settlement, cut into the upland and flattened.
+    ("arcade-w",       "@terrace",         ( -13,  44), (   1,  51), "negZ"),
+    ("arcade-e",       "@terrace",         (   9,  45), (  23,  52), "posZ"),
+    # The upland: a barn on the hill's own shoulder, and the back settlement flattened into it.
+    ("granary",        "@17h-barn",        ( -40,  75), ( -29,  86), "negX"),
     ("counting",       "@wh-count",        (  28,  82), (  37,  91), "posZ"),
     ("upland-hall",    "@17h-hall",        (  55,  66), (  66,  80), "posX"),
-    # Under the balloon: what a field a balloon flies off has on it.
-    ("balloon-shed",   "@wh-shed",         ( -81,  -8), ( -69,   1), "posZ"),
-    ("field-cottage",  "@cairn-cottage",   ( -82,  13), ( -74,  24), "posX"),
+    # The field the balloon flies off, which the drawn coast made room on: five, so it reads as somewhere
+    # rather than as the ground beside somewhere.
+    ("balloon-shed",   "@wh-shed",         ( -81,  18), ( -69,  27), "posZ"),
+    ("balloon-store",  "@kr-deck",         ( -87,  -1), ( -78,   7), "negZ"),
+    ("field-cottage",  "@cairn-cottage",   ( -94,  13), ( -86,  24), "posX"),
+    ("field-barn",     "@17h-barn",        (-103, -16), ( -92,  -4), "posZ"),
+    ("field-byre",     "@hoar-steading",   ( -73, -14), ( -63,  -5), "negX"),
     # The port, beside the car park.
-    ("warehouse",      "@hoar-longhall",   (  79,  40), (  90,  54), "negZ"),
+    ("warehouse",      "@hoar-longhall",   (  99,  23), ( 110,  37), "posZ"),
+    ("port-office",    "@townside",        (  79,  40), (  88,  51), "posX"),
 ]
 
 # The field the balloon flies off, the hill behind the town, and the back settlement's own green.
-TREES = [(-90, -12), (-68, 19), (-89, 22), (-89, 14), (-31, 82), (11, 73), (-13, 76), (-5, 90), (0, 79),
-         (21, 77), (62, 90), (47, 69), (43, 90)]
+TREES = [(-58, 24), (-94, 2), (-72, 1), (-72, 11), (11, 73), (-13, 76), (-5, 90), (0, 79), (-18, 58),
+         (21, 77), (62, 90), (47, 69), (44, 93)]
 
 SPECIES = ["oak", "birch", "spruce", "oak", "birch"]
 
@@ -328,15 +332,21 @@ THEMES = {
 }
 
 
-# How far a sample of the outline may be drawn in, and how often one is taken along a run of open shore.
-# `showcase/04-organic-outline` pushes each of its ring samples inward by nought to nine blocks and takes one
-# every fourteen; the cycle is what makes a shore wander rather than round off, and its length being coprime
-# with nothing in the board keeps a long edge from repeating.
-DRAW_IN = (0, 5, 9, 3, 7, 2, 8, 4, 6, 1, 7, 3)
-SAMPLE_EVERY = 13
-# The curve each sample's handles reach along the chord between its neighbours (Catmull-Rom). Below about
-# 0.15 the ring still reads as straight segments; above about 0.35 a handle overshoots its own edge.
-CURVE = 0.22
+# How far a corner may be drawn out, largest first — a vertex takes the first of these its own guard admits.
+# Every block of it is ground nobody walks, so the budget is a look bought at a price: at these reaches the
+# board grows about 8% and its dead share about two points, and at twice them it grows a quarter and reads
+# as an island with a rind.
+DRAW_OUT = (14, 10, 18, 8, 12, 16)
+# And how much new ground one may take. The reach alone does not bound it: the triangle a corner sweeps is
+# half its reach times the edge it swings, so ten blocks at the end of a hundred-block quay is five hundred
+# cells of shore nobody walks. Capping the area is what makes the same budget mean the same thing on a
+# forty-block field and on that quay — a long edge simply takes a shallower move. Set it much under this and
+# the shapes worth reshaping are the ones refused: a forty-four-block edge cannot move a corner seven blocks
+# inside two hundred cells.
+GAIN_CAP = 320
+# The curve a drawn corner's handles reach along the chord between its neighbours (Catmull-Rom). Below about
+# 0.15 the pair of new edges still reads as two straight cuts; above about 0.35 a handle overshoots.
+CURVE = 0.26
 
 
 def plan_cells():
@@ -353,24 +363,17 @@ def plan_cells():
     return cells
 
 
-def held_cells():
-    """Ground the outline may not draw in over: a spawn pad and its image, and the ground round each goal.
-    `showcase/04` pins the samples over its spawn pads at nought for the same reason — a spawn standing off
-    the coast is a spawn on a jetty (`WX11`), and a bay cut deep enough to strand an objective is the export
-    gate's refusal rather than a decoration."""
-    held = set()
+def spawn_cells():
+    """Every block of a spawn piece and its image. A spawn's ground is a room's frame, stamped as a
+    rectangle, so the shape carrying one keeps the corners the plan gave it."""
+    cells = set()
     for piece in PLAN["pieces"]:
         if piece.get("role") != "spawn": continue
         cx, cz, wide, deep = piece["rect"]
-        for x in range(cx * CELL - 4, (cx + wide) * CELL + 4):
-            for z in range(cz * CELL - 4, (cz + deep) * CELL + 4):
-                held.add((x, z)); held.add((-x - 1, -z - 1))
-    for goal in PLAN["placements"]["destroyables"]:
-        gx, gz = int(goal["at"][0] * CELL), int(goal["at"][1] * CELL)
-        for x in range(gx - 14, gx + 15):
-            for z in range(gz - 14, gz + 15):
-                held.add((x, z)); held.add((-x, -z))
-    return held
+        for x in range(cx * CELL, (cx + wide) * CELL):
+            for z in range(cz * CELL, (cz + deep) * CELL):
+                cells.add((x, z)); cells.add((-x - 1, -z - 1))
+    return cells
 
 
 def compiled_rings():
@@ -399,93 +402,144 @@ def outline():
     """The board's silhouette, redrawn on the shapes the plan compiles to.
 
     A plan is written in cell rectangles, so it can say where ground is and never what shape its edge is.
-    What the compile hands back is that edge as a ring per fused component — the upland here is one eight
-    vertex polygon, a stretched T where the spawn's approach steps back out of the hill — and **the ring is
-    what to redraw**. `shapePropsById` merges `vertices` and `controls` onto a compiled shape, so a drawn
-    ring replaces the compiled one and nothing upstream knows.
+    What the compile hands back is that edge as a ring per fused component — the upland here is a single
+    eight-vertex polygon, a stretched T where the spawn's approach steps back out of the hill — and **the
+    ring is what to redraw**. `shapePropsById` merges `vertices` and `controls` onto a compiled shape, so a
+    drawn ring replaces the compiled one and nothing upstream knows.
 
-    **Only the samples over open water move.** A ring's edges are of two kinds and they behave oppositely: an
-    edge facing the void is the board's own coast and drawing it in shortens the coast, while an edge shared
-    with the neighbouring shape is a seam, and drawing one side of a seam in leaves a strip of void between
-    two pieces that were flush. So every step along every edge is classified by what lies two blocks off it,
-    a sample is taken at each original vertex, at each point where an edge changes kind, and every
-    `SAMPLE_EVERY` blocks along a run of open shore — and only the samples strictly inside such a run are
-    drawn in. A sample over a spawn pad or a goal's ground is pinned at nought whatever it faces.
+    **A corner is drawn out, never in.** Each vertex is offered a move along the bisector of its own two
+    edges, in the direction that leaves the polygon: an outer corner grows a chamfer and the reflex corner of
+    an L is pushed across its notch until the notch is a diagonal. The board gains a triangle of ground and
+    reads as a landmass rather than a stack of rectangles.
 
-    The handles are Catmull-Rom: the tangent at a sample is the chord between its two neighbours and each
-    handle reaches `CURVE` along it. Written by hand they fight each other and kink."""
-    ground, held = plan_cells(), held_cells()
+    **What makes that safe is that it only ever adds.** A vertex may move only where the redrawn ring covers
+    every cell the compiled one did and every cell it gains was void — so it cannot erode the shore, cannot
+    reach into a neighbouring shape, and above all cannot open a **seam**: an edge shared with the shape
+    beside it is exactly an edge whose outward side is that shape's ground, and a move across it fails the
+    guard on its first cell. Drawing inward has no such property, which is what a subtract along the
+    perimeter has to be checked for by hand.
+
+    The guard is asked of the fan too, because a corner drawn out is drawn out twice — once here and once at
+    its `rot_180` image — and two shapes growing into the same water is two shapes overlapping."""
+    ground = plan_cells()
+    occupied = set(ground)
+    keep_square = spawn_cells()
     props = {}
 
     for shape_id, _height, ring in compiled_rings():
         if len(ring) < 3: continue
+        ring = list(ring)
+        # A shape carrying a spawn keeps the corners the plan gave it: a room is stamped as a rectangle.
+        if any(cell in keep_square for cell in
+               ((int(x), int(z)) for x, z in ring)): continue
 
-        def open_shore(ax, az, bx, bz, at):
-            """Whether the shore is open `at` blocks along the edge from (ax, az) to (bx, bz) — the cell two
-            off its outward side holding no ground."""
-            span = math.hypot(bx - ax, bz - az)
-            px, pz = ax + (bx - ax) * at / span, az + (bz - az) * at / span
-            step_x, step_z = (bz - az) / span, -(bx - ax) / span
-            for side in (1, -1):
-                probe = (px + step_x * side * 2.5, pz + step_z * side * 2.5)
-                if not within(ring, *probe):
-                    return (math.floor(probe[0]), math.floor(probe[1])) not in ground, (step_x * side, step_z * side)
-            return False, (0.0, 0.0)
+        # **No two neighbours move.** A corner drawn out slants both of its edges, which is the whole effect;
+        # move the vertex beside it the same way and the edge between them merely translates and the shape
+        # is the rectangle it was, somewhere else.
+        # **A reflex corner is offered its move first.** Only one vertex of any pair of neighbours may move,
+        # so the order decides which; the vertex inside a notch is the one whose move is worth most, because
+        # drawing it across the notch turns an L into a coast while drawing an outer corner only chamfers
+        # one that already reads as an edge.
+        curved = set()
+        order = sorted(range(len(ring)),
+                       key=lambda index: not reflex(ring[index - 1], ring[index],
+                                                    ring[(index + 1) % len(ring)], ring))
+        for index in order:
+            if (index - 1) % len(ring) in curved or (index + 1) % len(ring) in curved: continue
+            before, here, after = ring[index - 1], ring[index], ring[(index + 1) % len(ring)]
+            for step, reach in ((step, reach) for reach in DRAW_OUT
+                                for step in ways_out(before, here, after, ring)):
+                moved = (round(here[0] + step[0] * reach, 1), round(here[1] + step[1] * reach, 1))
+                drawn = ring[:index] + [moved] + ring[index + 1:]
+                gained = trades(ring, drawn, before, here, after, moved)
+                if gained is None: continue                       # the move would give ground back
+                if len(gained) > GAIN_CAP: continue
+                if any(cell in occupied or (-cell[0] - 1, -cell[1] - 1) in occupied for cell in gained):
+                    continue
+                occupied.update(gained)
+                occupied.update((-x - 1, -z - 1) for x, z in gained)
+                ring[index] = moved
+                curved.add(index)
+                break
 
-        samples = []                                     # (x, z, inward normal or None)
-        for index in range(len(ring)):
-            ax, az = ring[index]
-            bx, bz = ring[(index + 1) % len(ring)]
-            span = int(round(math.hypot(bx - ax, bz - az)))
-            if span == 0: continue
-            kinds = [open_shore(ax, az, bx, bz, at + 0.5) for at in range(span)]
-            samples.append((ax, az, None))               # the vertex itself: a corner is never drawn in
-            run_from = None
-            for at in range(span):
-                shore, normal = kinds[at]
-                changed = at > 0 and kinds[at - 1][0] != shore
-                if changed:
-                    at_x, at_z = ax + (bx - ax) * at / span, az + (bz - az) * at / span
-                    samples.append((at_x, at_z, None))   # the seam's own end, held where the compile put it
-                    run_from = at if shore else None
-                elif at == 0:
-                    run_from = 0 if shore else None
-                if shore and run_from is not None and at > run_from and (at - run_from) % SAMPLE_EVERY == 0 \
-                        and span - at > SAMPLE_EVERY // 2:
-                    at_x, at_z = ax + (bx - ax) * at / span, az + (bz - az) * at / span
-                    samples.append((at_x, at_z, (-normal[0], -normal[1])))
-
-        drawn, moved, step = [], [], 0
-        for x, z, inward in samples:
-            if inward is None or (math.floor(x), math.floor(z)) in held:
-                drawn.append([round(x, 1), round(z, 1)])
-                moved.append(False)
-                continue
-            reach = DRAW_IN[step % len(DRAW_IN)]
-            step += 1
-            drawn.append([round(x + inward[0] * reach, 1), round(z + inward[1] * reach, 1)])
-            moved.append(True)
-
-        # A handle is clamped to a fraction of the **shorter** of its two edges, and a sample that was not
-        # drawn in gets none at all. Catmull-Rom's tangent is the chord between a sample's neighbours, which
-        # is right on an evenly-spaced ring and wrong on this one: a compiled corner has one neighbour a
-        # block away and the other seventy, so the chord swings the curve clear outside the polygon and
-        # bites a hole where two shapes were flush. Pinning the corners is also what keeps a seam a seam.
+        # Only a drawn corner takes handles, so the two new edges bow out and every edge the plan drew stays
+        # the straight line it was — which is what keeps a seam a seam and a quay a quay.
         controls = {}
-        for index, (x, z) in enumerate(drawn):
-            if moved[index] is False: continue
-            before, after = drawn[index - 1], drawn[(index + 1) % len(drawn)]
+        for index in sorted(curved):
+            x, z = ring[index]
+            before, after = ring[index - 1], ring[(index + 1) % len(ring)]
             tangent_x = (after[0] - before[0]) * CURVE
             tangent_z = (after[1] - before[1]) * CURVE
             reach = math.hypot(tangent_x, tangent_z)
-            room = CURVE * min(math.hypot(x - before[0], z - before[1]),
-                               math.hypot(after[0] - x, after[1] - z)) * 2
+            room = CURVE * 2 * min(math.hypot(x - before[0], z - before[1]),
+                                   math.hypot(after[0] - x, after[1] - z))
             if reach > room > 0:
                 tangent_x, tangent_z = tangent_x * room / reach, tangent_z * room / reach
             controls[str(index)] = {"in": [round(x - tangent_x, 2), round(z - tangent_z, 2)],
                                     "out": [round(x + tangent_x, 2), round(z + tangent_z, 2)]}
-        props[shape_id] = {"vertices": drawn, "controls": controls}
+
+        props[shape_id] = {"vertices": [[x, z] for x, z in ring]}
+        if controls: props[shape_id]["controls"] = controls
     return props
+
+
+def reflex(before, here, after, ring):
+    """Whether a vertex is the inside corner of a notch — the interior reaching round more than a half turn,
+    which is what an L has where its two arms meet."""
+    def unit(from_point, to_point):
+        length = math.hypot(to_point[0] - from_point[0], to_point[1] - from_point[1])
+        return None if length == 0 else ((to_point[0] - from_point[0]) / length,
+                                         (to_point[1] - from_point[1]) / length)
+    back, on = unit(here, before), unit(here, after)
+    if back is None or on is None: return False
+    step_x, step_z = back[0] + on[0], back[1] + on[1]
+    length = math.hypot(step_x, step_z)
+    if length < 0.2: return False
+    # The two steps toward a vertex's neighbours sum toward the interior at a convex corner and away from it
+    # at a reflex one, which is the whole test.
+    return not within(ring, here[0] + step_x / length * 2, here[1] + step_z / length * 2)
+
+
+def ways_out(before, here, after, ring):
+    """The unit steps a corner may be drawn along, in the order they are worth trying.
+
+    **Carrying one edge on is tried before opening the angle.** A corner has two edges and a move along
+    either keeps that one collinear and swings only the other, which is the whole of what makes a move
+    admissible where one of the two is a seam: the west corner of the terracotta field carries its own north
+    edge on and the field grows a headland, while the same corner taken along the bisector swings that north
+    edge into the town beside it and the guard has to throw the move away. The bisector is tried last, and it
+    is what a corner with two free edges — the reflex vertex inside the upland's notch — takes."""
+    def unit(from_point, to_point):
+        length = math.hypot(to_point[0] - from_point[0], to_point[1] - from_point[1])
+        return None if length == 0 else ((to_point[0] - from_point[0]) / length,
+                                         (to_point[1] - from_point[1]) / length)
+    along_back, along_on = unit(before, here), unit(after, here)
+    if along_back is None or along_on is None: return []
+    away_back, away_on = (-along_back[0], -along_back[1]), (-along_on[0], -along_on[1])
+    corner_x, corner_z = away_back[0] + away_on[0], away_back[1] + away_on[1]
+    length = math.hypot(corner_x, corner_z)
+    steps = [along_back, along_on]
+    if length >= 0.2:
+        corner = (corner_x / length, corner_z / length)
+        steps.append(corner if not within(ring, here[0] + corner[0] * 2, here[1] + corner[1] * 2)
+                     else (-corner[0], -corner[1]))
+    return steps
+
+
+def trades(ring, drawn, before, here, after, moved):
+    """The cells a redrawn ring gains, or `None` if it gives any back. Only the two triangles either side of
+    the moved vertex can change, so that is all this reads."""
+    corners = [before, here, after, moved]
+    lo_x, hi_x = int(min(c[0] for c in corners)) - 2, int(max(c[0] for c in corners)) + 2
+    lo_z, hi_z = int(min(c[1] for c in corners)) - 2, int(max(c[1] for c in corners)) + 2
+    gained = []
+    for x in range(lo_x, hi_x + 1):
+        for z in range(lo_z, hi_z + 1):
+            was = within(ring, x + 0.5, z + 0.5)
+            now = within(drawn, x + 0.5, z + 0.5)
+            if was and not now: return None
+            if now and not was: gained.append((x, z))
+    return gained
 
 
 def finish(add_layers):

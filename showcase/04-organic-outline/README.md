@@ -81,26 +81,42 @@ the coast cannot strand a pad outright — but a pad standing proud of the shore
 wherever it is drawn, and the pre-flight's traversability walk is what proves it rather than the picture.
 A bay cut deep enough to isolate one would block the export gate, not merely look odd.
 
-## A board of several shapes redraws every ring, and the seams do not move
+## A board of several shapes draws its corners out, and the seams do not move
 
-The board under this one is one piece, so its ring is all coast and every sample is free to move. A board of
-fourteen pieces at seven surfaces compiles to a ring apiece, and on those rings an edge is one of two things.
-An edge facing the void is coast, and drawing it in shortens the coast. An edge **shared** with the
-neighbouring shape is a seam, and drawing one side of a seam in leaves a strip of void between two pieces
-that were flush — the fault looks like a coastline and is a hole.
+The board under this one is one piece, so its ring is all coast and every sample is free to move inward. A
+board of fourteen pieces at seven surfaces compiles to a ring apiece, and there **inward is the wrong
+direction**: an edge shared with the shape beside it is a seam, and drawing one side of a seam in leaves a
+strip of void between two pieces that were flush — a fault that looks like a coastline and is a hole.
 
-The two are told apart by what lies two blocks off the edge, so the rule is per step rather than per shape:
-walk every edge a block at a time, ask whether the cell off its outward side holds ground, take a sample at
-each original vertex, at each point where an edge changes kind, and every fourteen blocks along a run of open
-shore — and move only the samples strictly inside such a run. `opus5-slipway` is the worked example: nine
-compiled rings, of which four have no void-facing edge at all and never move, and the upland's is a
-stretched T whose notch is two vertices.
+So a corner is drawn **out** instead, and that one change is what makes the rest safe. A vertex may move only
+where the redrawn ring covers every cell the compiled one did and every cell it gains was void, its `rot_180`
+image included. A move across a seam fails that guard on its first cell, because the outward side of a seam
+is the neighbour's ground; a move that would erode the shore fails it too. Nothing has to be classified and
+nothing has to be checked afterwards.
 
-**The handles need clamping on a ring like that.** Catmull-Rom's tangent is the chord between a sample's
-neighbours, which is right on this board's evenly-spaced twenty-eight and wrong where a compiled corner has
-one neighbour a block away and the other seventy: the chord swings the curve clear outside the polygon.
-Clamp each handle to `k` times its **shorter** edge, and give a sample that did not move no handle at all —
-which is also what holds a seam still.
+Three rules make the result read as a landmass rather than a rectangle somewhere else.
+
+**Carry one edge on before opening the angle.** A corner taken along its bisector swings *both* its edges, so
+one seam among the two refuses the move outright. Taken along one of its own edges, that edge stays collinear
+and only the other swings — the shape grows a headland and the seam never moves. The bisector is tried last,
+and it is what a corner with two free edges takes.
+
+**Offer a reflex corner its move first.** The vertex inside a notch is the one whose move is worth most:
+drawing it across the notch turns an L into a coast, where drawing an outer corner only chamfers something
+that already read as an edge.
+
+**Let no two neighbours move.** A corner drawn out slants both of its edges, which is the whole effect; move
+the vertex beside it the same way and the edge between them merely translates.
+
+Handles go on the drawn corners only, so the two new edges bow out and every edge the plan drew stays
+straight — which is what keeps a seam a seam and a quay a quay. Clamp each to `k` times its **shorter** edge:
+Catmull-Rom's tangent is the chord between a vertex's neighbours, which is right on this board's evenly
+spaced twenty-eight and wrong where a compiled corner has one neighbour a block away and the other seventy.
+
+**What it costs is ground nobody walks.** On `opus5-slipway` — the worked example, nine compiled rings, four
+of which have no free corner and never move — sixteen drawn corners, none taking more than 320 cells, grew
+the board from 200 x 264 to 240 x 264 and its dead share from 27% to 39%. Half of that came back by putting
+buildings on the ground the new coast made room for. Budget the corner and then fill what it opens.
 
 ## What it costs, measured
 
