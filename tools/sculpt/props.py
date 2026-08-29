@@ -30,7 +30,7 @@ import math
 
 
 class LayerBuilder:
-    """One layer under construction: shapes get their ids here, and the island is closed at the end so a
+    """One layer under construction: shapes get their ids here, and the group is closed at the end so a
     whole structure can be turned off the mirror in one flag."""
 
     def __init__(self, layer_id, name=None, base_y=0, mirrors=False, tag=None):
@@ -63,7 +63,7 @@ class LayerBuilder:
     def done(self):
         return {"id": self.id, "name": self.name, "base_y": self.base_y,
                 "layout": {"shapes": self.shapes,
-                           "islands": [{"id": f"{self.id}-body", "name": self.name,
+                           "groups": [{"id": f"{self.id}-body", "name": self.name,
                                         "mirrors": self.mirrors,
                                         "shapeIds": [s["id"] for s in self.shapes]}]}}
 

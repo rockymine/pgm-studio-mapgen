@@ -69,13 +69,13 @@ def rectangles(cells):
     return out
 
 
-def compile_layers(voxels, prefix="s", layer_prefix="L", mirrors=False, island_name=None):
+def compile_layers(voxels, prefix="s", layer_prefix="L", mirrors=False, group_name=None):
     """A `{(x, y, z): material}` model as the `layers` array of a sketch layout.
 
     Every layer sits at `base_y` 0 and every shape states its own `floor`, which is what lets one layer hold
     runs at different heights: the layer is a slot in the per-column run order, not a storey at a height.
-    Each layer's shapes are grouped into one island so the mirror can be turned off for the whole sculpture at
-    once — an island's `mirrors` flag is the only thing that decides whether the fan copies it."""
+    Each layer's shapes are grouped into one group so the mirror can be turned off for the whole sculpture at
+    once — a group's `mirrors` flag is the only thing that decides whether the fan copies it."""
     columns = defaultdict(dict)
     for (x, y, z), material in voxels.items():
         columns[(x, z)][y] = material
@@ -110,13 +110,13 @@ def compile_layers(voxels, prefix="s", layer_prefix="L", mirrors=False, island_n
         layer_id = f"{layer_prefix}{index}"
         layers.append({
             "id": layer_id,
-            "name": f"{island_name or layer_prefix} run {index}",
+            "name": f"{group_name or layer_prefix} run {index}",
             "base_y": 0,
             "layout": {
                 "shapes": shapes,
-                "islands": [{
+                "groups": [{
                     "id": f"{layer_id}-body",
-                    "name": island_name or layer_id,
+                    "name": group_name or layer_id,
                     "mirrors": mirrors,
                     "shapeIds": [shape["id"] for shape in shapes],
                 }],

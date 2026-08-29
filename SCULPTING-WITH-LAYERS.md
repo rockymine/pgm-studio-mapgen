@@ -148,7 +148,7 @@ Four limits, each measured rather than reasoned:
 **A prop cannot be seated on a relief.** A prop's shapes state an absolute `floor`; a relief moves the ground
 under them. On rolling terrain every prop either floats or is buried, and `SK10` names all of them — the first
 `opus5-automaton` build raised nine of these, up to seven courses deep. `height_mode: raise` is the studio's
-answer for a shape *inside* an island's relief, and it does not reach a shape on another layer. The board
+answer for a shape *inside* a group's relief, and it does not reach a shape on another layer. The board
 here is flat because of it. **The fix is two-pass and cheap**: post the ground-only layout, read
 `POST …/sketch/columns` for the solved top at the prop's centre, and set the prop's floor from it. Nothing in
 the API is missing; nothing calls it in that order yet.

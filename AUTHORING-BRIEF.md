@@ -99,7 +99,7 @@ POST  /api/plan/compile     <plan>       → {layout, intent}. Read the SHAPE ID
 POST  /api/map/from-documents            {slug, name, plan, layout, intent, authors} — the whole map, one call
 GET   /api/map/{slug}/plan/ascii         the board as a grid, one character per cell (?every=N)
 GET   /api/map/{slug}/plan/flow          what the board asks of the two sides, in prose
-POST  /api/map/{slug}/sketch/relief/read cells, low, high, symmetry error, per island
+POST  /api/map/{slug}/sketch/relief/read cells, low, high, symmetry error, per group
 POST  /api/map/{slug}/sketch/columns     the DR-* declines
 GET   /api/map/{slug}/preflight          the export's own verdict, before the export
 GET   /api/map/{slug}/coverage           where the ground is lived on, not merely reachable
@@ -180,7 +180,7 @@ to do can be read beside what you built.
 ### What the studio checks for you, and what it does not
 
 The numbers a board is held to are in `GET /api/rules` — the goal-to-spawn walk ratio (`GO1`), the strait
-between two teams' islands (`CT12`), the ground a spawn door opens onto (`SP8`, `SP9`), the clearance around a
+between two teams' groups (`CT12`), the ground a spawn door opens onto (`SP8`, `SP9`), the clearance around a
 goal (`OB19`), the passage past a building (`DR-PASS`), how two wings of a house meet (`HJ1`–`HJ5`). Meeting
 them is not a design achievement; it is the floor.
 

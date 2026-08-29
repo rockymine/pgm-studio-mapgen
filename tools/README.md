@@ -28,8 +28,8 @@ actually posted — so a review reads what was built rather than what was asked 
 | `themeById` · `themeByHeight` | the theme a compiled shape paints with, by its id or by the height it stands at. The id is the reliable one: compile once, read the ids off `POST /plan/compile`, and key on them. Two pieces at one height fuse into one shape and a height key cannot tell them apart |
 | `shapePropsById` · `shapePropsByHeight` | any field merged onto a compiled shape — `relief_scope`, `controls`, `anchor_heights`, `height_mode` |
 | `bendShapes` | `{"s0": {"k": 0.22, "wander": 3, "step": 9, "seed": 5}}` — the compiled outline drawn as a coast. The compiler emits a staircase of the plan's rectangles, which is the board's shape and not its coast; redrawing the ring by hand states the coast twice, free to disagree with the plan. This resamples the compiled ring along its long edges, pulls each **inserted** point inward by a deterministic wander and lays Catmull-Rom handles over the result. The plan's own vertices never move, and nothing ever moves outward — a point that did could close the strait a capture board is measured on, or narrow the neck a spur hangs off |
-| `addShapes` | authored `SketchShape`s appended to the first island: the subtracts, the erected shapes, the ramps, the path-shape causeways |
-| `relief` | `{"<islandId>": {...}}`, or `{"*": {...}}` for every island. A compiled board's islands are `team` and `neutral` |
+| `addShapes` | authored `SketchShape`s appended to the first group: the subtracts, the erected shapes, the ramps, the path-shape causeways |
+| `relief` | `{"<groupId>": {...}}`, or `{"*": {...}}` for every group. A compiled board's groups are `team` and `neutral` |
 | `themes` · `mapTheme` | the theme registry and the map default (the first key unless stated) |
 | `roomStyles` | `{"cage": …, "spawn": …}`; a `"@name"` string loads `tools/styles/<name>.json` |
 | `dressing` | `{"props": [...]}`; a house prop's `style` takes the same `"@name"` |
@@ -37,7 +37,7 @@ actually posted — so a review reads what was built rather than what was asked 
 | `created` | `"2026-08-25"` — when the map was made, onto `intent.meta.created` and out as `<created>`. The studio derives every other identity field and cannot derive this one, so a finish that states none builds a map with no date and the driver says so |
 | `voidEnforcement` | `true` patches `intent.build.voidEnforcement`, with `voidExclusions` for the rects to spare |
 | `goalLayers` | `{"destroyable-1": "under"}` — which storey a goal stands on, by its plan marker id, patched onto the compiled intent by `stamp.unit` |
-| `addLayers` | `[{id, name, base_y, shapes, islands, below?}]` — the storeys a plan cannot state. `below` inserts one under the compiled ground, where the painter's bottom-up order needs it |
+| `addLayers` | `[{id, name, base_y, shapes, groups, below?}]` — the storeys a plan cannot state. `below` inserts one under the compiled ground, where the painter's bottom-up order needs it |
 
 ### The grid, before the plan is posted
 
@@ -83,7 +83,7 @@ The four places a finding appears:
 2. **at the compile** — `POST /plan/compile`'s `warnings`, and its 422 findings if it refuses;
 3. **at the store** — `POST /map/from-documents`'s `SK3`/`SK4`/`SK5`/`SK11`, its `RQ3` over all three
    documents at once (each path named with the member it was posted under — `layout.setupp`, not `setupp`),
-   and `relief/read`'s per-island cells, low, high and symmetry error;
+   and `relief/read`'s per-group cells, low, high and symmetry error;
 4. **at the dressing** — `POST …/sketch/columns`'s `DR-*` declines, read **after** the intent is stored,
    because `DR-KEEP` needs the spawn doors and the goal rings the intent carries.
 

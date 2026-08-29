@@ -34,7 +34,7 @@ approach whose wall can be walked round because the ground reaches past it, a sp
 
 ### Reachable is not used, and every gate before coverage measures the first one
 
-`CT12` on the strait, the traversability components, the goal ratios, the island symmetry error — every gate a
+`CT12` on the strait, the traversability components, the goal ratios, the group symmetry error — every gate a
 board passes before it exports asks whether ground **can be got to**. None asks whether any journey **goes
 there**. A board can pass all of them while carrying whole landforms no player has a reason to walk.
 
@@ -129,7 +129,7 @@ watches the readback sees its edits land and an iteration loop that watches the 
 
 `PUT …/sketch` replaces the blob verbatim and is what an edit loop wants; `from-plan` merges — it carries a
 stored finish, relief and structural height onto the freshly compiled board, and refuses at 409 with `SK1`
-where the recompile leaves an authored relief with no island to land on. `?force=true` accepts that loss; it
+where the recompile leaves an authored relief with no group to land on. `?force=true` accepts that loss; it
 does not make a posted relief beat a stored one. A spec-driven build wants neither, because it posts a whole
 layout every time: `drive.py` stores through `POST /map/from-documents`, which replaces the map at the slug
 outright, and the merge rules above never come into it.
@@ -203,7 +203,7 @@ widens the lane past the wall's ends and hands players a way round it. The wall 
 The handle construction above — `c1 = p0 + d·t + n·bulge`, with `t·|d| ≥ bulge` and
 `bulge ≤ 0.35·|d|` — is the recipe for **one** corner, and it is correct for one. Applied to every edge
 of a closed outline it constrains each edge against itself and says nothing about the two edges meeting
-at a vertex, so every edge bows outward and meets its neighbour in a cusp. A 24-vertex island authored
+at a vertex, so every edge bows outward and meets its neighbour in a cusp. A 24-vertex group authored
 that way, with both constraints satisfied and no self-intersection, rasterizes as a **gear**: twenty-four
 points around a blob.
 
@@ -220,7 +220,7 @@ natural coastline at a 12–20 block vertex spacing.
 
 **Leave the seam edge alone.** On a `rot_180` board the edge a shape shares with its own image — the run
 along `z = 0` — takes no handles at all: straight, the mirror lands on it exactly, and the two halves are
-one island. That is the same warning the entry above gives about bowing a seam, and it is the one edge of
+one group. That is the same warning the entry above gives about bowing a seam, and it is the one edge of
 the ring that must be excluded from whichever construction is used.
 
 ### `shapePropsById` reaches a compiled shape's geometry, not only its knobs
@@ -275,7 +275,7 @@ whatever polygon was drawn. `anchor_heights` slants that top per vertex — meas
 y11, a raise of 10 with no anchors tops at y21 everywhere, and the same shape with
 `anchor_heights: [4, 4, 16, 16]` runs y19 → y25 across its own footprint. Leave `controls` off
 entirely and the corners stay sharp, which is what makes a stone read as broken rock rather than as
-a small island.
+a small group.
 
 This is a **different device** from a stack of plates at successive `base_height` — the way
 `tools/seeds/ruediger.layout.json` builds its steps — and both are right for what each does. Plates
@@ -331,19 +331,19 @@ an older build still wants `kind` first.
 
 ---
 
-### The compiler groups islands by mirror, not by landmass
+### The compiler groups groups by mirror, not by landmass
 
-Every fanned piece lands in one island called `team` however many separate rocks they are, and every
-on-axis piece in `neutral`. An archipelago of a team island plus a flanking skerry is therefore **one**
+Every fanned piece lands in one group called `team` however many separate rocks they are, and every
+on-axis piece in `neutral`. An archipelago of a team group plus a flanking skerry is therefore **one**
 relief keyed `team` covering two landmasses — which works, because the relaxation only ever steps onto
 land and a mark on one says nothing to the other across the void.
 
 Two consequences worth having before authoring one. **Nothing on `neutral` is mirrored for you**: a
-non-fanned island's relief is stated once and used once, so every mark on it has to be authored as an
+non-fanned group's relief is stated once and used once, so every mark on it has to be authored as an
 explicit pair about the origin or the two teams play different ground in the middle. And
-**`tools/drive.py` appends every `addShapes` entry to `islands[0]`**, so an authored shape joins the
-fanned group and is fanned — right for a shape on the team island, and right for one on an on-axis
-island **only if that island is its own rot_180 image**. Authoring such a ring as half its points plus
+**`tools/drive.py` appends every `addShapes` entry to `groups[0]`**, so an authored shape joins the
+fanned group and is fanned — right for a shape on the team group, and right for one on an on-axis
+group **only if that group is its own rot_180 image**. Authoring such a ring as half its points plus
 their negations makes it exactly that, at no cost.
 
 ## Buildings
@@ -474,7 +474,7 @@ that must fall 24 courses cannot be 2:1, and neither can a slipway climbing 8 co
 16 wide. Those stay per-course, and so does anything **clipped round an obstacle**: rectangles can be
 cut round a rectangle with plain arithmetic, and a single tilted polygon cannot.
 
-**An `override: true` add is still part of its island's relief.** Override decides who wins the column
+**An `override: true` add is still part of its group's relief.** Override decides who wins the column
 among the shapes on a layer and says nothing about the solve, so a relief's surface replaces the top of
 a wall, a flight, a hill or a rim as readily as it does bare ground. A made thing keeps its stated top
 only with `"height_mode": "level"` and `"skirt": 0` (level for an absolute top, skirt zero for a sheer
@@ -482,7 +482,7 @@ face); `relief_scope: "exclude"` is the stronger form, keeping the shape's groun
 entirely. `SK14` names an override add carrying neither — it was silent when this board first hit it,
 and a twenty-seven-course wall came out level with the ground beside it.
 
-**A relief is solved on the island's primary half, and its surface is copied through the mirror.** A
+**A relief is solved on the group's primary half, and its surface is copied through the mirror.** A
 mark on the far half constrains cells the solve never visits and is overwritten by the image of the
 near half. State every mark on the side the plan's pieces are authored on, and pin a footprint that
 straddles the axis on both sides.
@@ -511,7 +511,7 @@ the marked shape wants redrawing too.
 ground, not a prop, and a building drawn over one stands inside it and is reported by nothing. Test
 every footprint against every authored shape's ring yourself.
 
-**A prop is judged at every image of its orbit.** A rock beside a building on an on-axis island is a
+**A prop is judged at every image of its orbit.** A rock beside a building on an on-axis group is a
 rock inside that building's own rot_180 twin, and the pass declines the whole prop rather than the
 image — so a site filter that tests only the authored cell is testing half the map. Measured: three of
 one build's four declines were images rather than originals. Test `(x, z)` and its orbit image against
@@ -734,7 +734,7 @@ the solver's one-block stairs.
 ### A raise over void builds from its own floor
 
 Past the coast there is no ground to read, so the column falls back to the shape's `floor` and a ring
-that overhangs the sea by two cells builds two seven-block stubs at bedrock beside the island. It is
+that overhangs the sea by two cells builds two seven-block stubs at bedrock beside the group. It is
 terrain, so nothing declines it. Audit every ring for sea cells as well as hole cells before using it.
 
 ### Three points and a plane is how you tilt a shape deliberately
@@ -757,10 +757,10 @@ Pick the three by the axis the lean should run along — the two furthest downwi
 furthest upwind at the lift — and every shape on the board leans together instead of each being its
 own accident. On a `rot_180` board that gives each team the cliff and its own side the ramp for free.
 
-### An island that does not mirror stamps its shapes once; its dressing still fans
+### A group that does not mirror stamps its shapes once; its dressing still fans
 
 Two different rules, and they are easy to swap. `SketchRasterizer` mirrors a shape only when its
-**island meta** says `mirrors`, so a middle island built as its own `rot_180` image stamps each of
+**group meta** says `mirrors`, so a middle group built as its own `rot_180` image stamps each of
 its shapes exactly once — a second crag on the far lobe has to be written out,
 `[[-x, -z] for x, z in ring]` with the same anchor heights, which turns the plane with the ring.
 `Decorator` fans **every prop over the map's symmetry order** regardless, so a stand of trees on one
@@ -786,7 +786,7 @@ separate one, and it is a Chebyshev step that grows with the two canopies: `ceil
 ### A layer is a slab with its own base_y, and the air between two of them survives
 
 `layers[]` replaces the legacy single `layout`: each entry is `{id, name, base_y, layout:{shapes,
-islands}}`, and a cell's column is that layer's `[floor, top]` shifted by `base_y`. The same `(x, z)`
+groups}}`, and a cell's column is that layer's `[floor, top]` shifted by `base_y`. The same `(x, z)`
 may appear on several layers, which is the whole feature — two solid spans in one column with air
 between them.
 
@@ -795,17 +795,17 @@ if not layout.get("layers"):                     # the compiled document carries
     layout["layers"] = [{"id": "ground", "name": "Ground",
                          "base_y": 0, "layout": layout.pop("layout")}]
 layout["layers"].append({"id": "terrace", "name": "Terrace", "base_y": 20,
-                         "layout": {"shapes": [...], "islands": [...]}})
+                         "layout": {"shapes": [...], "groups": [...]}})
 ```
 
 **Pop the old `layout` key.** `SketchRasterizer.ResolveLayers` reads `layers` *or* `layout` and
 returns on the first, but `SketchLayout.IslandIds` reads both without an early return, so leaving it
-behind doubles every island id.
+behind doubles every group id.
 
 **`floor` is the underside**, measured inside the layer: `base_y 20` + `floor 4` is a soffit at y24,
 and the slab's thickness is its solved surface minus that. **Relief solves per layer**, keyed by
-island id, and `ReliefFields` shifts the result into world Y before returning it — so `relief/read`
-answers an upper island in world coordinates.
+group id, and `ReliefFields` shifts the result into world Y before returning it — so `relief/read`
+answers an upper group in world coordinates.
 
 **The gap survives because `TerrainPainter.Paint` writes only over stone.** Its band stack runs
 bedrock-to-top and would fill the air between two slabs; the stone-only invariant is the one line
@@ -832,7 +832,7 @@ consequences, all measured on `maps/opus5-undercroft`:
 Where a relief-solved ground top equals an upper layer's top, the two columns merge into one solid
 mass and the join is a single one-block rise. The failure is one column wide: a causeway whose band
 reached x ±19 beside a terrace drawn to x ±18 left one column of hall floor between them — a
-twelve-block slot, and the deck an island in the air. **Overlap the two footprints by a column** and
+twelve-block slot, and the deck a group in the air. **Overlap the two footprints by a column** and
 check it with a transect, because no read will say: `traversability` and `WorldColumns.Membership`
 both discard Y, so a layered board is always "one component".
 
@@ -902,7 +902,7 @@ meant to be climbed rather than fallen down. (A 20-course ramp over 32 cells was
 `GroundClaims` is keyed on the layer as well as the cell and each placement is handed one storey's
 view of it, so two props are in each other's way only where they share ground: a building on the
 `deck` layer at y38 and one on `ground` at y18 do not collide, and neither does an oak on a floating
-island and the river under it. `DR-CLAIM` and `DR-ROAD` both read that book, so the standoff to a
+group and the river under it. `DR-CLAIM` and `DR-ROAD` both read that book, so the standoff to a
 road is measured against roads on the prop's own storey. Two props on the **same** layer still have
 to be moved apart in plan (`WE49`).
 
@@ -997,11 +997,11 @@ between two marks is not a gap in the design; it is where the design happens.**
 `…/column?at=0,22` answers `y5 Water · y4 Water · y3 Water · y2 Sand`. When two pictures disagree,
 `column` is the one that is not a projection.
 
-### `addShapes` lands on the island the compile emitted, which is called `team`
+### `addShapes` lands on the group the compile emitted, which is called `team`
 
-A relief keyed to any other name answers `SK3 — a relief is stated for island 'x', which the layout
-does not carry`, and then `relief/read` answers no islands at all. `{"*": {...}}` is the key for a
-board of one island, and the driver's own guard stops the run there rather than building a flat
+A relief keyed to any other name answers `SK3 — a relief is stated for group 'x', which the layout
+does not carry`, and then `relief/read` answers no groups at all. `{"*": {...}}` is the key for a
+board of one group, and the driver's own guard stops the run there rather than building a flat
 world.
 
 ### Only `worn` spends `coverage` — `rough` fills its band solid
@@ -1027,12 +1027,12 @@ the profile's entries or the outline comes out faceted, and give the helper a `s
 ring can depart from a circle less than the waterline while staying the same shape — that is what
 keeps a beach an even band round a shore that is nowhere an arc.
 
-### Relief is keyed by island id across the whole stack, and `*` is the ground's alone
+### Relief is keyed by group id across the whole stack, and `*` is the ground's alone
 
-`SketchRasterizer.ReliefFields` walks every layer and looks each of its islands up in the one
+`SketchRasterizer.ReliefFields` walks every layer and looks each of its groups up in the one
 `relief` dictionary, adding that layer's `base_y` to the field it solves. So a stacked board can give
 each storey its own landscape — `{"team": …, "walls": …}` — and a layer's marks are stated in **its
-own frame**, not the board's. `drive.py`'s `"*"` expands over the islands the *compile* emitted, so a
+own frame**, not the board's. `drive.py`'s `"*"` expands over the groups the *compile* emitted, so a
 key stated beside it survives and names a layer added in the finish.
 
 ### A wool room must abut ground, not sit inside a piece
@@ -1090,10 +1090,10 @@ Every mark is a constraint the relaxation smooths *through*, so a point mark mak
 excluded shape leaves the field entirely — the solver bends round it as it bends round the void — and
 keeps the column it was drawn with: a flat crown on vertical sides, joined to nothing.
 
-### A `rim` mark states one height for **every** island in the relief
+### A `rim` mark states one height for **every** group in the relief
 
-It is the right instrument for a board whose islands are level with each other and the wrong one
-otherwise. To shoulder islands that stand at different heights, draw each one's polygon wider than
+It is the right instrument for a board whose groups are level with each other and the wrong one
+otherwise. To shoulder groups that stand at different heights, draw each one's polygon wider than
 the `area` mark that states its top and set `base` **under all of them**: the fringe between polygon
 and area is unpinned and decays toward base, so every edge falls a course or two before its drop, at
 its own height (`opus5-aerie`).
@@ -1105,9 +1105,9 @@ it. Draw the mark at the size of the water and let the surrounding floor sit a f
 
 ### On a bridging board the gaps are the design, so state them first
 
-Six-block gaps between islands answer `G2` (a corridor under ten wide), `G5` (a hop outside 10–20)
+Six-block gaps between groups answer `G2` (a corridor under ten wide), `G5` (a hop outside 10–20)
 and `CT12` (a strait outside 15–40) on every pair, and they are right: a six-block gap is a running
-jump. Fix the four numbers — the hops and the strait — and fit the islands round them.
+jump. Fix the four numbers — the hops and the strait — and fit the groups round them.
 
 ### A core is the forward objective and a wool is the deep one
 
@@ -1116,7 +1116,7 @@ fought over. A wool has to be fetched and brought home, so it belongs behind. On
 first draft had them the other way round and `WL10` read a wool-front-distance of 8.
 
 Two things about a core in particular: `float` and `leak` are one knob (the lava free-falls to the
-terrain at `float` below the casing and leaks a course below `leak`), and **a core on an island in
+terrain at `float` below the casing and leaks a course below `leak`), and **a core on a group in
 open sky has nothing to catch its lava** — so the casing wants ground all round it, or a breach
 anywhere near an edge ends it at once.
 
@@ -1213,14 +1213,14 @@ completely differently:
 - an **override-add** does `result[k] = v`, which **overwrites the column outright** — floor and all.
 
 **The relief usually hides the difference, and that is the trap.** After the set algebra,
-`RasterizeLayout` writes the solved surface back over every cell in a solved island's footprint:
+`RasterizeLayout` writes the solved surface back over every cell in a solved group's footprint:
 `cells[(x,z)] = (Math.Max(column.Floor + 1, field.At(x, z)), column.Floor)`. So an override-add's flattened
-column is repaired to the solved height, and on a board where every cell is in some island's solve an
+column is repaired to the solved height, and on a board where every cell is in some group's solve an
 override brush works perfectly. Measured that way on `showcase/07-hill`, a bare `override: true` rectangle
 over the west hill read **y13 · y16 · y12** across the summit — the hill, repainted.
 
 **Where there is no field, there is no repair.** A shape carrying `relief_scope: "exclude"` takes its cells
-*out* of the island's footprint (`SolveRelief` puts them in `excluded`, and the relaxation bends round them
+*out* of the group's footprint (`SolveRelief` puts them in `excluded`, and the relaxation bends round them
 as it bends round void), so nothing writes a height back. An override brush stroke over such ground stays
 what the rasterizer made it: one course on the bedrock, twenty below the ground beside it.
 

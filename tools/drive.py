@@ -15,10 +15,10 @@ carries everything a plan cannot state, keyed onto the compiled layout:
   bendShapes      {"s0": {"k": 0.22, "wander": 3, "step": 10, "seed": 5}}  the compiled outline drawn
                   as a coast: resampled along its long edges, each inserted point pulled inward by a
                   wander, and Bezier handles over the result. The plan's own vertices never move
-  addShapes       [SketchShape, ...]          authored shapes appended to the first island
-  addLayers       [{id, name, base_y, shapes, islands, below?}]  stacked slabs; `below` puts one
+  addShapes       [SketchShape, ...]          authored shapes appended to the first group
+  addLayers       [{id, name, base_y, shapes, groups, below?}]  stacked slabs; `below` puts one
                   under the compiled ground, where the painter's bottom-up order needs it
-  relief          {"<islandId>": {...}} or {"*": {...}} applied to every island
+  relief          {"<groupId>": {...}} or {"*": {...}} applied to every group
   themes          the theme registry;  mapTheme  the map default (first key unless stated)
   roomStyles      {"cage": ..., "spawn": ...}; a "@name" string loads tools/styles/<name>.json
   dressing        {"props": [...]};  a house prop's "style" takes the same "@name"
@@ -300,7 +300,7 @@ def patch_layout(layout, finish):
     # `layout` key beside it any more. The finish keys onto that layer's shapes and appends the
     # storeys the plan cannot state above it.
     inner = layout["layers"][0]["layout"]
-    shapes, islands = inner["shapes"], inner["islands"]
+    shapes, groups = inner["shapes"], inner["groups"]
     by_height = finish.get("themeByHeight") or {}
     props_by_height = finish.get("shapePropsByHeight") or {}
     by_id = finish.get("themeById") or {}
@@ -329,14 +329,14 @@ def patch_layout(layout, finish):
 
     for extra in finish.get("addShapes") or []:
         shapes.append(extra)
-        islands[0]["shapeIds"].append(extra["id"])
+        groups[0]["shapeIds"].append(extra["id"])
     if finish.get("addShapes"):
-        print(f"    +{len(finish['addShapes'])} authored shapes onto island '{islands[0]['id']}'")
+        print(f"    +{len(finish['addShapes'])} authored shapes onto group '{groups[0]['id']}'")
     for extra in finish.get("addLayers") or []:
         layers = layout["layers"]
         slab = {"id": extra["id"], "name": extra.get("name") or extra["id"],
                 "base_y": extra["base_y"],
-                "layout": {"shapes": extra["shapes"], "islands": extra["islands"]}}
+                "layout": {"shapes": extra["shapes"], "groups": extra["groups"]}}
         # `below` puts a storey under the compiled ground rather than over it. The painter walks the
         # stack in document order and each pass paints its whole column, so a storey listed above one
         # that stands lower has already had its blocks claimed by the time its own pass runs: the
@@ -347,15 +347,15 @@ def patch_layout(layout, finish):
             layers.append(slab)
         print(f"    +layer '{extra['id']}' at base_y {extra['base_y']}"
               f"{' (below the compiled ground)' if extra.get('below') else ''}: "
-              f"{len(extra['shapes'])} shape(s), {len(extra['islands'])} island(s)")
+              f"{len(extra['shapes'])} shape(s), {len(extra['groups'])} group(s)")
 
     relief = finish.get("relief")
     if relief:
         if "*" in relief:
-            # `*` is the ground's, not the board's: it names every island the compile emitted, and a
+            # `*` is the ground's, not the board's: it names every group the compile emitted, and a
             # key stated beside it — a layer added here — keeps its own.
             wildcard = {key: value for key, value in relief.items() if key != "*"}
-            relief = {**{island["id"]: relief["*"] for island in islands}, **wildcard}
+            relief = {**{group["id"]: relief["*"] for group in groups}, **wildcard}
         layout["relief"] = relief
     themes = finish.get("themes")
     if themes:
@@ -426,7 +426,7 @@ def main():
               f"enemy {goal.get('enemySpawnBlocks')} ratio {goal.get('ratio')}"
               f"   (GO1 wants 3.0-4.0)")
     for gap in inspected.get("islandGaps") or []:
-        print(f"    island gap: {json.dumps(gap)}   (CT12 wants 15-40 on a direct strait)")
+        print(f"    group gap: {json.dumps(gap)}   (CT12 wants 15-40 on a direct strait)")
     for run in inspected.get("frontlineRuns") or []:
         print(f"    frontline run: {json.dumps(run)}")
     for structure in inspected.get("structures") or []:
@@ -455,7 +455,7 @@ def main():
         "authors": finish.get("authors")})
     slug = loaded["slug"]
     print(f"    slug={slug}  {'replaced' if loaded.get('replaced') else 'new'}  "
-          f"cells={loaded.get('cells')}  islands={loaded.get('islands')}")
+          f"cells={loaded.get('cells')}  groups={loaded.get('groups')}")
 
     # ── the board as a grid, and how it is come at ───────────────────────────────────────────
     # Two reads that cost no build and raise no finding, which is exactly why they are easy to forget.
@@ -476,12 +476,12 @@ def main():
     # ── look at the ground that was built ────────────────────────────────────────────────────
     print("== the ground, read back")
     _, read = call("POST", f"/map/{slug}/sketch/relief/read", layout)
-    for island in read.get("islands") or []:
-        print(f"    island {island.get('island') or island.get('id')}: cells={island.get('cells')} "
-              f"low={island.get('low')} high={island.get('high')} "
-              f"relief={island.get('relief')} symErr={island.get('symmetryError')}")
-    if finish.get("relief") and not read.get("islands"):
-        raise SystemExit("    relief/read answered no islands and a relief was stated — the shapes are "
+    for group in read.get("groups") or []:
+        print(f"    group {group.get('group') or group.get('id')}: cells={group.get('cells')} "
+              f"low={group.get('low')} high={group.get('high')} "
+              f"relief={group.get('relief')} symErr={group.get('symmetryError')}")
+    if finish.get("relief") and not read.get("groups"):
+        raise SystemExit("    relief/read answered no groups and a relief was stated — the shapes are "
                          "drawing no ground. Read the SK3/SK4 complaints on the store above: SK3 "
                          "names something the document names and the studio does not have, SK4 a shape "
                          "with no area. Stop.")

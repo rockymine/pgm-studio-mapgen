@@ -62,7 +62,7 @@ if (world?["reshapeByHeight"] is JsonObject reshape)
 {
     var done = new HashSet<int>();
     var shapes = layout["layout"]!["shapes"]!.AsArray();
-    var island = layout["layout"]!["islands"]!.AsArray().First()!;
+    var group = layout["layout"]!["groups"]!.AsArray().First()!;
     foreach (var shape in shapes.ToList())
     {
         if (shape!["role"] is not null || shape["base_height"]?.GetValue<double>() is not { } h) continue;
@@ -78,7 +78,7 @@ if (world?["reshapeByHeight"] is JsonObject reshape)
 
         var dropped = shape["id"]!.GetValue<string>();
         shapes.Remove(shape);
-        var ids = island["shapeIds"]!.AsArray();
+        var ids = group["shapeIds"]!.AsArray();
         foreach (var id in ids.ToList())
             if (id!.GetValue<string>() == dropped) ids.Remove(id);
         Console.WriteLine($"  dropped {dropped} — tier {(int)h} is the authored polygon now");
@@ -98,11 +98,11 @@ if (world?["shapePropsByHeight"] is JsonObject props)
 if (world?["addShapes"] is JsonArray extra)
 {
     var shapes = layout["layout"]!["shapes"]!.AsArray();
-    var island = layout["layout"]!["islands"]!.AsArray().First()!;
+    var group = layout["layout"]!["groups"]!.AsArray().First()!;
     foreach (var shape in extra)
     {
         shapes.Add(shape!.DeepClone());
-        island["shapeIds"]!.AsArray().Add((JsonNode)JsonValue.Create(shape["id"]!.GetValue<string>()));
+        group["shapeIds"]!.AsArray().Add((JsonNode)JsonValue.Create(shape["id"]!.GetValue<string>()));
     }
     Console.WriteLine($"  shapes: {shapes.Count} ({extra.Count} authored on top of the plan's tiers)");
 }

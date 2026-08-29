@@ -87,20 +87,20 @@ def place(model, at, palette, quarter=0):
 
 def sculpted(name, voxels, mirrors):
     made = compile_layers(voxels, prefix=f"{name}-", layer_prefix=f"{name}-L",
-                          mirrors=mirrors, island_name=name)
+                          mirrors=mirrors, group_name=name)
     return [{"id": layer["id"], "name": layer["name"], "base_y": 0,
-             "shapes": layer["layout"]["shapes"], "islands": layer["layout"]["islands"]}
+             "shapes": layer["layout"]["shapes"], "groups": layer["layout"]["groups"]}
             for layer in made], stats(voxels, made)
 
 
 def native(made, mirrors):
-    """A prop already written in sketch shapes only needs its island's mirror flag set."""
+    """A prop already written in sketch shapes only needs its group's mirror flag set."""
     out = []
     for layer in (made if isinstance(made, list) else [made]):
-        for island in layer["layout"]["islands"]:
-            island["mirrors"] = mirrors
+        for group in layer["layout"]["groups"]:
+            group["mirrors"] = mirrors
         out.append({"id": layer["id"], "name": layer["name"], "base_y": layer["base_y"],
-                    "shapes": layer["layout"]["shapes"], "islands": layer["layout"]["islands"]})
+                    "shapes": layer["layout"]["shapes"], "groups": layer["layout"]["groups"]})
     return out
 
 

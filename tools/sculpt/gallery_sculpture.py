@@ -134,7 +134,7 @@ def build():
     table = []
     for name, make, (dx, dy, dz), _ in PIECES:
         voxels = {(x + dx, y + dy, z + dz): material for (x, y, z), material in make().items()}
-        made = compile_layers(voxels, prefix=f"{name}-", layer_prefix=f"{name}-L", island_name=name)
+        made = compile_layers(voxels, prefix=f"{name}-", layer_prefix=f"{name}-L", group_name=name)
         layers.extend(made)
         row = stats(voxels, made)
         row["model"] = name
