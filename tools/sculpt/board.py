@@ -46,7 +46,8 @@ def shaded(surface, wall, rim=None, fill=None, rim_edges="boundary"):
     }
 
 
-def layout(layers, themes, map_theme=None, mirror="none", centre=(0, 0), relief=None, dressing=None):
+def layout(layers, themes, map_theme=None, mirror="none", centre=(0, 0), relief=None, dressing=None,
+           room_styles=True):
     """The sketch document itself. `mirror` of `none` is the right default for a gallery board: a sculpture
     is drawn where it stands, and a fan would put a second one across the axis."""
     xs, zs = [], []
@@ -72,6 +73,10 @@ def layout(layers, themes, map_theme=None, mirror="none", centre=(0, 0), relief=
         "themes": themes,
         "mapTheme": map_theme or next(iter(themes)),
     }
+    # An explicit null is "no building at all" — a pad on open ground — where absent would stamp the
+    # built-in bedrock shell. A gallery wants the pad.
+    if room_styles is None:
+        document["roomStyles"] = {"spawn": None}
     if relief:
         document["relief"] = relief
     if dressing:
@@ -79,11 +84,23 @@ def layout(layers, themes, map_theme=None, mirror="none", centre=(0, 0), relief=
     return document
 
 
-def intent(name, created="2026-08-28"):
-    """The smallest intent a map row needs: who made it and when. A gallery board is played for nothing, so
-    it states no teams, no spawns and no objectives — and the studio answers that honestly rather than
-    inventing one."""
-    return {"meta": {"name": name, "created": created}, "teams": [], "spawns": [], "objectives": []}
+def intent(name, created="2026-08-29", spawn=None, observer=None):
+    """The smallest intent a **exportable** map needs. A gallery board is played for nothing and states no
+    objective, but `EX2` refuses an export of a map with no spawn at all — "no player and no observer can
+    enter it" — so a board meant to be walked round declares one visitor team and one pad."""
+    x, y, z = spawn or (0, 10, 0)
+    ox, oy, oz = observer or (x, y + 40, z)
+    return {
+        "meta": {"name": name, "created": created},
+        "teams": [{"id": "visitors", "name": "Visitors", "color": "aqua"}],
+        "maxPlayers": 8,
+        "spawns": [{"layer": None, "team": "visitors", "point": {"x": x, "y": y, "z": z},
+                    "protection": [{"minX": x - 8, "minZ": z - 8, "maxX": x + 8, "maxZ": z + 8}],
+                    "yaw": 180, "iron": []}],
+        "observer": {"point": {"x": ox, "y": oy, "z": oz}, "yaw": 180},
+        "build": {"maxHeight": None, "areas": [], "holes": [], "voidEnforcement": None},
+        "wools": [], "destroyables": [], "cores": None,
+    }
 
 
 def call(method, path, body=None, expect=(200, 201)):
@@ -110,10 +127,38 @@ def call(method, path, body=None, expect=(200, 201)):
     return answer
 
 
-def store(slug, name, document, authors=("Opus 5",)):
+def store(slug, name, document, authors=("Opus 5",), spawn=None, observer=None):
     return call("POST", "/map/from-documents",
-                {"layout": document, "intent": intent(name), "name": name, "slug": slug,
-                 "authors": list(authors)})
+                {"layout": document, "intent": intent(name, spawn=spawn, observer=observer),
+                 "name": name, "slug": slug, "authors": list(authors)})
+
+
+def export(slug, out):
+    """The world a server loads — `region/`, `level.dat`, `map.xml` — unzipped into `out`. A gallery is worth
+    exporting for the same reason a map is: a picture is a claim about a world and the world is the thing."""
+    import io
+    import os
+    import shutil
+    import urllib.request
+    import zipfile
+
+    with urllib.request.urlopen(f"{API}/map/{slug}/export", timeout=900) as response:
+        blob = response.read()
+    if os.path.isdir(out):
+        shutil.rmtree(out)
+    os.makedirs(out, exist_ok=True)
+    with zipfile.ZipFile(io.BytesIO(blob)) as archive:
+        archive.extractall(out)
+    inner = [e for e in os.listdir(out) if os.path.isdir(os.path.join(out, e))]
+    if inner == [slug] or (len(inner) == 1 and "region" in os.listdir(os.path.join(out, inner[0]))):
+        nested = os.path.join(out, inner[0])
+        for entry in os.listdir(nested):
+            shutil.move(os.path.join(nested, entry), os.path.join(out, entry))
+        os.rmdir(nested)
+    # The provenance sidecar is a record of what each pass placed, not something a server reads.
+    sidecar = os.path.join(out, "region", "provenance.json")
+    print(f" exp {slug} -> {out}  ({len(blob) // 1024} KiB)")
+    return sidecar if os.path.exists(sidecar) else None
 
 
 def columns(slug, document):

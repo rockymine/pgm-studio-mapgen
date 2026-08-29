@@ -27,13 +27,15 @@ THEMES = {
 }
 
 PLINTH = 6                                                # every form stands on the same six-block plinth
+SPAWN = (0, PLINTH + 1, 58)
 
 
 def deck():
-    """The board itself: one wide plate for everything to stand on, and a plinth under each form so the
-    silhouettes read against something."""
+    """The board itself: one wide plate for everything to stand on, and the visitors' pad at the south edge —
+    `EX2` refuses to export a map no player can enter."""
     ground = props.LayerBuilder("deck", name="Deck")
-    ground.rect(-70, -46, 70, 46, 0, PLINTH, "ground")
+    ground.rect(-70, -46, 70, 66, 0, PLINTH, "ground")
+    ground.rect(SPAWN[0] - 9, SPAWN[2] - 5, SPAWN[0] + 9, SPAWN[2] + 5, 0, PLINTH + 1, "pale")
     return ground.done()
 
 
@@ -75,9 +77,10 @@ def build():
 
 if __name__ == "__main__":
     layers, notes = build()
-    document = board.layout(layers, THEMES, map_theme="ground", mirror="none")
+    document = board.layout(layers, THEMES, map_theme="ground", mirror="none", room_styles=None)
 
     out = sys.argv[1] if len(sys.argv) > 1 else "/tmp/forms"
+    world = sys.argv[2] if len(sys.argv) > 2 else None
     os.makedirs(out, exist_ok=True)
     json.dump(document, open(f"{out}/forms.layout.json", "w"), indent=1)
 
@@ -87,11 +90,20 @@ if __name__ == "__main__":
     print(f"{'TOTAL':<22} {len(layers):>7} "
           f"{sum(len(l['layout']['shapes']) for l in layers):>7}")
 
-    board.store("form-gallery", "Form Gallery", document)
+    board.store("form-gallery", "Form Gallery", document, spawn=SPAWN,
+                observer=(0, PLINTH + 60, 90))
     payload = board.columns("form-gallery", document)
     json.dump(payload, open(f"{out}/forms.columns.json", "w"))
+    if world:
+        board.export("form-gallery", world)
 
     import iso
-    print(iso.isometric(payload, f"{out}/forms-iso.png", scale=4,
+    print(iso.isometric(payload, f"{out}/forms-iso.png", scale=4, quarter=2,
                         title="forms drawn in sketch shapes",
                         caption="every structure here is circles, polygons and rectangles on a layer"))
+    for label, x, z, reach in (("roundhouse", -52, -26, 20), ("dome", -18, -26, 18),
+                               ("ellipse", 18, -26, 20), ("tower", 52, -26, 16),
+                               ("ziggurat", -52, 24, 20), ("arch", -15, 24, 26),
+                               ("peristyle", 22, 24, 20), ("amphitheatre", 56, 24, 20)):
+        iso.isometric(payload, f"{out}/form-{label}.png", scale=7, quarter=2,
+                      clip=(x - reach, x + reach, PLINTH - 1, None, z - reach, z + reach), title=label)

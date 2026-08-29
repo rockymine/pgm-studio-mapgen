@@ -1,0 +1,123 @@
+<map proto="1.5.0">
+    <name>Sculpture Gallery</name>
+    <version>1.0.0</version>
+    <objective></objective>
+    <created>2026-08-29</created>
+    <phase>development</phase>
+    <include id="gapple-kill-reward"/>
+    <authors>
+        <author>Opus 5</author>
+    </authors>
+    <teams>
+        <team id="visitors-team" color="aqua" max="8">Visitors</team>
+    </teams>
+    <kits>
+        <kit id="spawn-kit">
+            <clear/>
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="iron pickaxe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="golden apple"/>
+            <item slot="28" material="arrow"/>
+            <item slot="29" material="shears" unbreakable="true"/>
+            <item slot="30" material="iron spade" unbreakable="true"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </helmet>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </chestplate>
+            <leggings material="chainmail leggings" unbreakable="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </leggings>
+            <boots material="leather boots" unbreakable="true" team-color="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </boots>
+            <effect duration="oo" amplifier="100">damage resistance</effect>
+        </kit>
+        <kit id="reset-resistance-kit" force="true">
+            <effect duration="0" amplifier="0">damage resistance</effect>
+        </kit>
+    </kits>
+    <spawns>
+        <default yaw="180" region="observer-spawn"/>
+        <spawn team="visitors-team" kit="spawn-kit" yaw="180" region="visitors-spawn-point"/>
+    </spawns>
+    <filters>
+        <team id="only-visitors">visitors-team</team>
+    </filters>
+    <regions>
+        <point id="visitors-spawn-point">0,6,-88</point>
+        <point id="observer-spawn">0,76,-130</point>
+        <rectangle id="visitors-spawn" min="-8,-96" max="8,-80"/>
+        <union id="spawns">
+            <region id="visitors-spawn"/>
+        </union>
+        <negative id="not-spawns">
+            <region id="spawns"/>
+        </negative>
+        <apply enter="only-visitors" region="visitors-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply block="never" region="spawns" message="You may not block/break spawns!"/>
+        <apply kit="reset-resistance-kit" region="not-spawns"/>
+    </regions>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>iron pickaxe</item>
+        <item>iron axe</item>
+        <item>water bucket</item>
+        <item>golden apple</item>
+        <item>arrow</item>
+        <item>shears</item>
+        <item>iron spade</item>
+        <item>wood</item>
+        <item>stained clay</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>iron pickaxe</tool>
+        <tool>iron axe</tool>
+        <tool>shears</tool>
+        <tool>iron spade</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+    <maxbuildheight>100</maxbuildheight>
+</map>
