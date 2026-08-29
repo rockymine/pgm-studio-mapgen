@@ -105,20 +105,28 @@ def style(name):
     raise SystemExit(f"no style named {name!r} in the library")
 
 
-def ground(surface, wall, rim, fill=None):
+def ground(surface, wall, rim=None, fill=None):
     """A terrain theme over four full materials rather than four blocks — which is what the author's styles
     are, so binding one to a bucket is the whole of using them. The surface is one course: `all green` and
-    `all sand` are picks, and a pick two courses deep is soil surfaced twice over, which `PT1` refuses."""
-    return {
+    `all sand` are picks, and a pick two courses deep is soil surfaced twice over, which `PT1` refuses.
+
+    **Landscape takes no rim.** A rim caps a plateau boundary, and `rimEdges: "boundary"` caps every one of
+    them — a face against a structure and against level ground the paint calls a different plateau included.
+    On grass or on terracotta that draws a hard line round every patch and the ground reads as a diagram of
+    itself; the surface is what a landscape is, so it runs to the edge. A rim is for ground that is built —
+    a stone kerb along a quay is a kerb — so a theme states one only where it means one."""
+    theme = {
         "bedrock": {"relative": False, "value": 1},
-        "rimEdges": "boundary",
         "wallOnTerrainFaces": True,
-        "rim": {"enabled": True, "depth": 1, "material": rim},
+        "rim": {"enabled": rim is not None, "depth": 1,
+                "material": rim or {"kind": "solid", "id": 1, "data": 0}},
         "surface": {"enabled": True, "depth": 1, "material": surface},
         "wall": wall,
         "wallEnabled": True,
         "fill": fill or wall,
     }
+    if rim is not None: theme["rimEdges"] = "boundary"
+    return theme
 
 
 def turn(model, quarter):
@@ -226,10 +234,11 @@ ROADS = [
 # (`DR-SLOPE`), it clears the roads (`DR-CROSS`), it clears every other plot's claim (`DR-CLAIM`) and it
 # stands outside the +-10-block square a destroy goal keeps clear (`DressingScope.GoalStandoff`, `OB19`).
 HOUSES = [
-    # The dock town, kept where it was: the chandler at the head of the street, the cooperage in the yard
-    # behind the crane.
-    ("chandler",       "@wh-count",        ( -68,  26), ( -58,  35), "posX"),
-    ("cooperage",      "@wh-shed",         ( -43,  46), ( -32,  55), "negX"),
+    # The dock town, kept where it was: the chandler at the head of the street, the sailmaker and the
+    # cooperage in the yard behind the crane.
+    ("chandler",       "@wh-count",        ( -69,  26), ( -59,  35), "posX"),
+    ("sailmaker",      "@hoar-steading",   ( -63,  45), ( -54,  57), "posZ"),
+    ("cooperage",      "@wh-shed",         ( -49,  46), ( -38,  55), "negX"),
     # The quay east of the goal dock: a harbour office at the water, and a store along from it.
     ("harbour-office", "@sn-compass-well", (   5,  19), (  16,  32), "negZ"),
     ("quay-store",     "@kr-deck",         (  21,  23), (  30,  31), "posX"),
@@ -240,16 +249,16 @@ HOUSES = [
     ("counting",       "@wh-count",        (  28,  82), (  37,  91), "posZ"),
     ("upland-hall",    "@17h-hall",        (  55,  66), (  66,  80), "posX"),
     # Under the balloon: what a field a balloon flies off has on it.
-    ("balloon-shed",   "@wh-shed",         ( -97, -13), ( -85,  -4), "posZ"),
-    ("balloon-store",  "@rk-kiln",         ( -90,   8), ( -81,  16), "negX"),
-    ("field-cottage",  "@cairn-cottage",   ( -75, -13), ( -67,  -2), "posX"),
+    ("balloon-shed",   "@wh-shed",         ( -81,  -8), ( -69,   1), "posZ"),
+    ("balloon-store",  "@rk-kiln",         ( -81,  11), ( -72,  19), "negX"),
+    ("field-cottage",  "@cairn-cottage",   ( -94, -13), ( -86,  -2), "posX"),
     # The port, beside the car park.
-    ("warehouse",      "@hoar-longhall",   (  79,  40), (  90,  54), "posZ"),
+    ("port-office",    "@townside",        (  79,  40), (  88,  51), "negZ"),
 ]
 
 # The field the balloon flies off, the hill behind the town, and the back settlement's own green.
-TREES = [(-68, 19), (-74, 11), (11, 73), (-13, 76), (-31, 81), (-29, 72), (0, 79), (21, 77), (62, 90),
-         (47, 69), (43, 92)]
+TREES = [(-66, 19), (-89, 18), (-93, 4), (11, 73), (-13, 76), (-5, 90), (-31, 78), (0, 79), (21, 77),
+         (62, 90), (47, 69), (43, 90)]
 
 SPECIES = ["oak", "birch", "spruce", "oak", "birch"]
 
@@ -286,22 +295,21 @@ THEMES = {
     # quay paved in `white stone cells` or a hill turfed in `grass clay surface dark` takes no crate, no tree
     # and no house however flat it is. Every surface and wall below is drawn from the wool-free half of the
     # library, which is 159 of its 168 styles.
+    #
+    # **The two built grounds take a rim and the five landscapes do not.** A quay is masonry and a kerb along
+    # its edge is a kerb; grass, terracotta and a seabed have no such line, and capping every plateau
+    # boundary on them draws the plan back over the ground it was supposed to become.
     "quay":   ground(style("oldstone · fill"), style("stone fractal"),
                      {"kind": "solid", "id": 98, "data": 0}),
     "dock":   ground(style("terracotta with dirt"), style("stone fractal"),
                      {"kind": "solid", "id": 5, "data": 1}),
     # Clay turf rather than `all green`: `all green` mixes wool into its palette, the dressing pass reads
     # wool as a stamp's own block, and a tree on it is declined as built ground rather than terrain.
-    "town":   ground(style("grass clay surface"), style("dirt clay fill"),
-                     {"kind": "solid", "id": 5, "data": 1}),
-    "ridge":  ground(style("meadow · surface"), style("stone fractal"),
-                     {"kind": "solid", "id": 4, "data": 0}),
-    "back":   ground(style("oldstone · surface"), style("stone fractal"),
-                     {"kind": "solid", "id": 98, "data": 0}),
-    "head":   ground(style("rust cells"), style("stone fractal"),
-                     {"kind": "solid", "id": 98, "data": 3}),
-    "seabed": ground(style("all sand"), style("dirt fractal"),
-                     {"kind": "solid", "id": 24, "data": 0}),
+    "town":   ground(style("grass clay surface"), style("dirt clay fill")),
+    "ridge":  ground(style("meadow · surface"), style("stone fractal")),
+    "back":   ground(style("oldstone · surface"), style("stone fractal")),
+    "head":   ground(style("rust cells"), style("stone fractal")),
+    "seabed": ground(style("all sand"), style("dirt fractal")),
 
     # A made thing is painted in solids: the painter's buckets are a model of ground — a rim capping every
     # plateau boundary, a wall down every riser — and a curved form is nothing but boundaries, so a shaded
@@ -333,35 +341,114 @@ def compiled_shapes():
             in compiled["layout"]["layers"][0]["layout"]["shapes"]]
 
 
+# How far a bite may reach in from the shore, how wide one is, and how far apart they sit.
+# `showcase/04-organic-outline` pushes each of its ring samples inward by nought to nine blocks and takes one
+# every fourteen, and that budget is the whole technique: a coast that wanders by a few blocks reads as a
+# coast, and one that reaches thirty blocks in is a lagoon. The depths cycle so the shore is not a row of
+# identical scallops, and the deepest is the budget.
+# The two cycles are different lengths on purpose: six depths against five widths repeat every thirty bites,
+# which is more than this shore holds, so no stretch of it is the same scallop twice.
+BITE_DEPTHS, BITE_WIDTHS = (3, 7, 4, 6, 5, 8), (9, 15, 11, 17, 12)
+BITE_DEPTH = max(BITE_DEPTHS)
+
+
+def plan_cells():
+    """Every block the plan states ground at, its `rot_180` image included — the board's silhouette before a
+    single subtract. Read from `PLAN` rather than from a build, so the coast is derived from the same
+    rectangles the pieces are written as and cannot fall out of step with them."""
+    cells = set()
+    for piece in PLAN["pieces"]:
+        cx, cz, wide, deep = piece["rect"]
+        for x in range(cx * CELL, (cx + wide) * CELL):
+            for z in range(cz * CELL, (cz + deep) * CELL):
+                cells.add((x, z))
+                cells.add((-x - 1, -z - 1))
+    return cells
+
+
+def spawn_pads():
+    """Every block of a spawn piece and its image — ground a bite may not take, because a spawn standing off
+    the coast is a spawn on a jetty (`WX11`) and one cut off it is a board that will not export."""
+    pads = set()
+    for piece in PLAN["pieces"]:
+        if piece.get("role") != "spawn": continue
+        cx, cz, wide, deep = piece["rect"]
+        for x in range(cx * CELL, (cx + wide) * CELL):
+            for z in range(cz * CELL, (cz + deep) * CELL):
+                pads.add((x, z)); pads.add((-x - 1, -z - 1))
+    return pads
+
+
+def goal_grounds():
+    """Every goal's own cell and its image. A bay cut deep enough to strand one is the export gate's refusal
+    rather than a decoration."""
+    at = set()
+    for goal in PLAN["placements"]["destroyables"]:
+        x, z = int(goal["at"][0] * CELL), int(goal["at"][1] * CELL)
+        at.add((x, z)); at.add((-x, -z))
+    return at
+
+
 def coastline():
-    """The board's outline, bitten rather than redrawn.
+    """The board's outline, bitten rather than drawn.
 
     `showcase/04-organic-outline` replaces a compiled ring with a wandering one, which is right for a board
-    that is a single island: every sample is pushed inward and the shape stays inside the ground the plan
-    drew. This board is fourteen pieces at seven surfaces, and inward on one of them is *away from its
-    neighbour* — bending the town opens a seam of void between it and the market. So the wander is stated as
-    **subtracts along the outer edge** instead: a bite taken out of the boundary can only ever meet the void
-    it starts in, and two pieces that abut stay abutting.
+    that is a single island: every sample is pushed inward along that edge's normal and the shape stays
+    inside the ground the plan drew. This board is fifteen pieces at seven surfaces, and inward on one of
+    them is *away from its neighbour* — bending the town opens a seam of void between it and the yard. So
+    the wander is stated as **subtracts along the outer edge** instead.
 
-    Each lobe is a polygon reaching in from outside. They ride in the `team` group, so the fan answers the
-    board's other half, and every one is clear of a route, a goal and a spawn — a bay deep enough to strand
-    an objective is the export gate's refusal rather than a decoration."""
-    lobes = [
-        # The western field's own coast, clear of the balloon standing over it.
-        ("bay-field-n", [[-112, -60], [-74, -54], [-82, -38], [-112, -40]]),
-        ("bay-field-s", [[-112, 18], [-80, 22], [-74, 34], [-112, 34]]),
-        # The town's coast and the hill behind it.
-        ("bay-town-n", [[-80, 60], [-62, 54], [-46, 58], [-50, 70], [-78, 68]]),
-        ("bay-hill-w", [[-88, 74], [-70, 78], [-68, 94], [-90, 92]]),
-        ("bay-hill-m", [[-30, 88], [-6, 84], [8, 90], [2, 100], [-26, 100]]),
-        # The port's outer edge and the ground behind the back settlement.
-        ("bay-port-e", [[104, 20], [114, 26], [112, 50], [98, 48], [100, 26]]),
-        ("bay-back-e", [[76, 62], [92, 66], [90, 88], [74, 86]]),
-        ("bay-back-n", [[36, 100], [58, 96], [70, 102], [64, 114], [38, 114]]),
-    ]
-    return [{"id": name, "type": "polygon", "operation": "subtract",
-             "vertices": ring, "floor": 0, "base_height": 100}
-            for name, ring in lobes]
+    **Every lobe is derived from the outline and answers to a depth budget.** Its anchor is a cell on the
+    board's own outer boundary, its centre sits outside the board on that cell's outward normal, and its
+    radius is set so it reaches exactly `BITE_DEPTH` blocks in. A polygon written by hand against a
+    composition is a polygon that goes on describing that composition after the pieces move, and a subtract
+    that ends up wholly inside the board is a hole the export gate will not report — the ground round it is
+    still walkable, so nothing fails. Derived and budgeted, a bite can only ever meet the void it starts in.
+
+    Anchors are taken from one half of the orbit only: the shapes ride in the `team` group, so the fan
+    answers the other half and generating both would subtract each bite twice over. A bite is also kept off
+    the spawn's own pad and away from the goals — `showcase/04` pins its samples over the spawn pads at
+    nought for the same reason, because a spawn standing off the coast is a spawn on a jetty."""
+    ground_cells = plan_cells()
+    keep_off = spawn_pads() | goal_grounds()
+
+    def outward(x, z):
+        """Which way the void lies from a boundary cell, over a 7 x 7 window — the normal to bite along."""
+        dx = sum(sx for sx in range(-3, 4) for sz in range(-3, 4)
+                 if (x + sx, z + sz) not in ground_cells)
+        dz = sum(sz for sx in range(-3, 4) for sz in range(-3, 4)
+                 if (x + sx, z + sz) not in ground_cells)
+        length = math.hypot(dx, dz)
+        return (dx / length, dz / length) if length > 0.5 else None
+
+    # The outer boundary, on the half the fan is generated from, thinned to one anchor every BITE_STRIDE
+    # blocks so the bites are spaced rather than overlapping into one long inlet.
+    boundary = sorted(cell for cell in ground_cells
+                      if any((cell[0] + dx, cell[1] + dz) not in ground_cells
+                             for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)))
+                      and (cell[1] > 0 or (cell[1] == 0 and cell[0] > 0)))
+
+    lobes, taken = [], []
+    for x, z in boundary:
+        # Spaced from every other anchor **and from every anchor's image**: a bite near the mirror axis and
+        # the image of one on the far side land on the same shore and cut it twice. The spacing is the last
+        # bite's own width plus a headland, so a wide bay is followed by more shore than a narrow one.
+        if any(math.hypot(x - ax, z - az) < span or math.hypot(x + ax, z + az) < span
+               for ax, az, span in taken): continue
+        if any(math.hypot(x - kx, z - kz) < BITE_DEPTH + 10 for kx, kz in keep_off): continue
+        if outward(x, z) is None: continue
+        normal_x, normal_z = outward(x, z)
+        # A circle of this radius centred this far out cuts a lens `depth` deep and about BITE_WIDTH wide.
+        depth = BITE_DEPTHS[len(lobes) % len(BITE_DEPTHS)]
+        width = BITE_WIDTHS[len(lobes) % len(BITE_WIDTHS)]
+        radius = (width * width / 4 + depth * depth) / (2 * depth)
+        centre = (x + normal_x * (radius - depth), z + normal_z * (radius - depth))
+        ring = [[round(centre[0] + radius * math.cos(math.tau * step / 12), 1),
+                 round(centre[1] + radius * math.sin(math.tau * step / 12), 1)] for step in range(12)]
+        lobes.append({"id": f"bay-{len(lobes)}", "type": "polygon", "operation": "subtract",
+                      "vertices": ring, "floor": 0, "base_height": 100})
+        taken.append((x, z, width + 8))
+    return lobes
 
 
 def finish(add_layers):

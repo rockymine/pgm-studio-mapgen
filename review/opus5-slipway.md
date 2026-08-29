@@ -70,6 +70,10 @@ is the measurement that says what one costs.
 
 ## What the board taught
 
+- **A landscape takes no rim.** `rimEdges: "boundary"` caps every plateau boundary — a face against a
+  structure and against level ground the paint calls a different plateau included. On a stone quay that is a
+  kerb; on grass and on terracotta it draws the plan back over the ground it was supposed to become. The two
+  built grounds keep their rim and the five landscapes state none, so the surface runs to the edge.
 - **A ground style built from wool is unplantable.** The dressing pass reads a wool-topped column as a stamp
   and declines everything on it (`DR-KEEP`). Nine of the library's 168 styles carry wool in their palette,
   and three of them were this board's surfaces: `white stone cells` paved the quay and the port,
@@ -81,6 +85,16 @@ is the measurement that says what one costs.
 - **A piece can collide with another piece's mirror, and no gate says so.** `balloon-field` and `port` did
   not overlap; the field's `rot_180` image and the port did, over 788 columns, and the port silently came
   out at the field's height. `PL4` reads the authored half only.
+- **A subtract drawn by hand goes on describing the composition it was drawn against.** The first coastline
+  was eight polygons written in absolute coordinates while the pieces stood somewhere else, and the pieces
+  then moved five times. What they cut in the end was not a coast: `bay-back-e` and its image were **373
+  cells each of fully enclosed void**, `bay-hill-m` took 463 cells out of the middle of the hill through a
+  two-block neck, and `bay-town-n` took 327 out of the dock town — which is most of the reason the town
+  held two houses. **Nothing failed.** The export gate walks the ground and the ground was still walkable
+  round every hole, so the board built, the gate opened and the holes were only visible in a picture.
+  The coast is now derived: each bite is anchored on a cell of the board's own outer boundary, its centre
+  sits outside the board on that cell's outward normal, and its radius reaches exactly its budgeted depth
+  in. 16 bites over the whole shore, 3–8 blocks deep, **4.9% of the ground and zero enclosed void**.
 - **Ground measured for a plot must be ground with nothing on it.** A search run against the last board's
   output reads each standing house as a seven-course rise and refuses the plot it already used. The measure
   strips the houses, trees and boulders from the layout and keeps only what carves and claims — water and
@@ -100,14 +114,14 @@ Two are the author's own calls and one is cosmetic:
 |---|---|---|
 | `ST2` | 1 | the iron stands outside the spawn piece, beside its door lane — the author asked for it there |
 | `SP8` | 1 | the spawn's egress steps two blocks at `fore-spawn`–`spawn` |
-| `WX11` | 8 | four houses stand 2–3 blocks above the cell beside them, showing that much foundation |
+| `WX11` | 10 | five houses stand 2–4 blocks above the cell beside them, showing that much foundation |
 
-The eight `WX11` are all doorstep-sized. The ones that mattered — a shed reading as a 53-block bedrock tower
+The ten `WX11` are all doorstep-sized. The ones that mattered — a shed reading as a 53-block bedrock tower
 because a balloon flew over it — were a defect in what the check read, not in where the house stood
 (`WE61`).
 
 ## Coverage
 
-`reached 18,190 · decorated 5,552 · dead 10,880 of 34,622 = 31.4% dead`. The two largest dead patches are
-the port and its mirror (4,048 and 4,044 cells) — a car park behind a warehouse is somewhere goods leave
-from, not somewhere a lane runs through.
+`reached 20,611 · decorated 5,559 · dead 10,232 of 36,402 = 28.1% dead`. The largest dead patches are the
+port and its mirror — a car park behind a warehouse is somewhere goods leave from, not somewhere a lane
+runs through.
