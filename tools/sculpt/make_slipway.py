@@ -14,6 +14,11 @@ at their own surface whose compiled shapes are marked `relief_scope: "exclude"`,
 around them and each is a flat terrace rather than a slope with buildings sliding down it. The roads are
 drawn onto those pads and the houses are placed clear of them.
 
+**A layer holds a stair as well as a sculpture, because both are a thickness over a stated base.** The port
+is walled on two sides by the grounds above it, so `port-stairs` sits at the port's own surface and carries
+a flight per face — a polygon whose corners state a course at the foot and the face's own at the head,
+which the rasterizer interpolates into treads.
+
 **The two settlements a team has are not each other's mirror.** One is on the dock at the water; the other is
 cut back into the hill behind the town. Only the board is symmetric.
 
@@ -44,6 +49,12 @@ API = os.environ.get("PGM_STUDIO_API", "http://localhost:7894/api")
 CELL = 4
 # Surfaces, in blocks. Every step between neighbouring pieces is a multiple of two (`EL1`).
 BASIN, WATER, DOCK, QUAY, PORT, TOWN, HEAD, RIDGE, BACK = 6, 16, 20, 22, 22, 24, 26, 28, 30
+
+# The Y a balloon's basket floor is stated at. A balloon is a made thing that flies, so its height is
+# authored rather than seated, and this one rides well clear of the roofs on the field it flies off — the
+# steading below the western envelope tops at y42. It costs the board no build ceiling: a made thing is not
+# what the ceiling clears.
+FLYING = HEAD + 22
 
 PLAN = {
     "plan": 1,
@@ -166,10 +177,9 @@ def sculpted():
     add_layers += layers
     table.append(("ship", row))
 
-    # A balloon standing over each arm's own field, just risen off it. Two rather than one because a single
-    # one on a rot_180 board is the one thing on it that is not answered across the axis. What a made thing
-    # costs a played board is build ceiling — the highest column plus twenty — so height here is spent.
-    for name, at in [("balloon-w", (-78, HEAD + 2, -8)), ("balloon-e", (78, HEAD + 2, 8))]:
+    # A balloon flying over each arm's own field. Two rather than one because a single one on a rot_180
+    # board is the one thing on it that is not answered across the axis.
+    for name, at in [("balloon-w", (-78, FLYING, -8)), ("balloon-e", (78, FLYING, 8))]:
         layers, row = made(name, place(models.balloon(), at))
         add_layers += layers
         table.append((name, row))
@@ -184,12 +194,16 @@ def sculpted():
 
     # A car park on the port, four cars a side. At nine blocks a car is four boxes and four cubes, which is
     # the other end of the scale from the ship — and what makes the port read as somewhere goods leave from.
+    #
+    # **A car states its floor rather than seating on the ground.** A seat lands a thing's lowest course on
+    # the ground's own top block, which is right for a building whose foundation cuts into the surface and
+    # wrong for a wheel: the car reads sunk a course into the tarmac. The port is one flat terrace under all
+    # eight of them, so the floor the model was drawn at IS the floor it wants.
     for index, (x, z, quarter, back) in enumerate([(58, 26, 0, True), (70, 26, 0, False),
                                                    (58, 40, 2, True), (70, 40, 2, False)]):
         for side, (px, pz, turn_) in enumerate([(x, z, quarter), (-x, -z, (quarter + 2) % 4)]):
             name = f"car-{index}-{side}"
-            layers, row = made(name, place(models.minicar(cabin_back=back), (px, PORT, pz), turn_),
-                               seat="ground")
+            layers, row = made(name, place(models.minicar(cabin_back=back), (px, PORT, pz), turn_))
             add_layers += layers
             if side == 0:
                 table.append((name, row))
@@ -262,11 +276,43 @@ HOUSES = [
     ("port-office",    "@townside",        (  90,  39), (  99,  50), "posX"),
 ]
 
-# The field the balloon flies off, the hill behind the town, and the back settlement's own green.
-TREES = [(-63, -12), (-86, 0), (-78, 8), (-94, 5), (11, 73), (-13, 76), (-5, 90), (0, 79), (21, 77),
-         (62, 90), (32, 60), (40, 63)]
-
-SPECIES = ["oak", "birch", "spruce", "oak", "birch"]
+# `(x, z, species, height)`. The field the balloon flies off, the hill behind the town, the back
+# settlement's own green — and then the wood on the upland the spawn stands in.
+#
+# **The upland is the one ground on this board a player crosses on foot the whole way.** It is grass from
+# the spawn's own door to the settlements, and bare grass at that width reads as a field to walk over
+# rather than as somewhere. The wood is oak and birch at eight to eleven blocks, which is the stock the
+# rest of the board already carries, and it is laid to three rules: it stands on the meadow shape and
+# nowhere else, it leaves the ground in front of the spawn door open, and it thickens and thins rather
+# than standing at one pitch — a crown's own radius plus a gap that runs between one block and six, so the
+# upland carries groves and glades instead of an orchard.
+#
+# Every trunk is a position the board's own ground was searched for: the meadow under its whole crown, a
+# rise under it below six, four blocks off a route's claim (`DR-ROAD` asks three), its crown clear of every
+# building's claim, of every other crown and of the objectives' standoff (`OB19`). A tree is RNG-free, so
+# a crown's reach is a function of its species and height and can be measured before any world exists.
+TREES = [
+    # The balloon's field, the hill and the back green.
+    ( -63, -12, "oak", 9),   ( -86,   0, "birch", 10), ( -78,   8, "spruce", 11),
+    ( -94,   5, "oak", 12),  (  11,  73, "birch", 9),  ( -13,  76, "oak", 10),
+    (  -5,  90, "birch", 11), (   0,  79, "spruce", 12), (  21,  77, "oak", 9),
+    (  62,  90, "birch", 10), (  32,  60, "oak", 11),  (  40,  63, "birch", 12),
+    # The upland wood, west of the spawn's approach and east of it.
+    ( -20,  58, "birch", 9), ( -10,  58, "oak", 8), (  18,  58, "oak", 9),
+    ( -80,  60, "oak", 9), ( -47,  61, "birch", 11), ( -39,  61, "oak", 9),
+    ( -62,  63, "birch", 9), ( -56,  64, "birch", 9), ( -70,  65, "oak", 8),
+    ( -64,  69, "oak", 8), ( -54,  70, "birch", 8), ( -39,  70, "birch", 8),
+    ( -31,  70, "birch", 10), ( -48,  71, "birch", 10), ( -76,  73, "birch", 10),
+    ( -70,  75, "birch", 9), (  -6,  75, "birch", 9), ( -64,  77, "oak", 8),
+    ( -53,  79, "birch", 10), ( -46,  80, "oak", 9), (  10,  82, "oak", 9),
+    ( -72,  83, "birch", 11), ( -61,  83, "oak", 9), ( -12,  84, "oak", 8),
+    (  19,  84, "oak", 9), (   1,  87, "birch", 8), ( -47,  88, "oak", 9),
+    ( -63,  91, "birch", 9), ( -27,  91, "birch", 10), ( -55,  92, "oak", 8),
+    ( -38,  96, "birch", 11), (  29,  98, "birch", 11), (  40,  98, "oak", 10),
+    (  73,  98, "birch", 8), (  82,  99, "birch", 8), (  61, 102, "oak", 10),
+    (  51, 104, "oak", 8), ( -29, 105, "birch", 8), (  27, 107, "oak", 9),
+    (  72, 107, "oak", 8), (  42, 108, "oak", 9), (  34, 109, "birch", 9),
+]
 
 
 def houses():
@@ -277,8 +323,8 @@ def houses():
 
 def trees():
     return [{"id": f"tree-{index}", "kind": "tree", "seed": 200 + index, "x": x, "z": z,
-             "form": "template", "species": SPECIES[index % len(SPECIES)], "height": 9 + (index % 4)}
-            for index, (x, z) in enumerate(TREES)]
+             "form": "template", "species": species, "height": height}
+            for index, (x, z, species, height) in enumerate(TREES)]
 
 
 def crates():
@@ -294,6 +340,74 @@ def crates():
              "form": "angular", "size": 1.4 + 0.3 * (index % 3), "mossy": False, "rock": timber}
             for index, (x, z) in enumerate(at)]
 
+
+# ── the stairs the port is reached by ─────────────────────────────────────────────────────────────────────
+
+# Two faces stand over the port and neither can be climbed: the terracotta field the balloon flies off,
+# along the water side, and the settlement the spawn road comes down from, along the back. Seven blocks and
+# eight of bedrock wall, which is a player walking the length of the port looking for a way up.
+#
+# **A stair is a thickness over the ground it is laid on, so it is one layer and not a shape apiece.** The
+# layer states the port's own surface as its base and every shape on it is a height above that — which is
+# what lets a flight be stated as one polygon: the corners at the foot carry a course and the corners at
+# the head carry the face's own, and the rasterizer interpolates across the footprint and rounds per cell,
+# which is a staircase. The anchors sit half a course either side of those numbers so that every cell
+# centre lands on a whole course rather than on a tie between two.
+#
+# **And it climbs ALONG the face rather than into it.** A flight cut square into a wall puts a player at
+# the top still walking the way they climbed, and what is at the top here is a car park on one side and a
+# street on the other. Turned ninety degrees the climb ends on a landing level with the ground above, and
+# that ground is a step to the side — which is how a quay stair is built and why it is five blocks deep
+# rather than the width of the thing it serves.
+#
+# One statement, two of everything: the group mirrors, so each flight is answered at the far arm's own face.
+STAIR_DEEP = 5      # across a flight — a stair rather than a ramp
+STAIR_LAND = 5      # along the landing at its head
+# `(name, the face in blocks, the flight's FOOT, which way it climbs, what its landing is paved as)`. The
+# port floors at 21, the terracotta field tops at 28 and the settlement at 29, so the two rises are the two
+# differences.
+#
+# **The back face carries a pair, and the second is the first turned about.** One flight is a way up; two
+# facing away from each other, eleven blocks of wall between their heads, is a choice of which way to go up
+# — and the feet land at opposite ends of the frontage, so a player meeting the wall anywhere takes the
+# nearer. The water face carries one, because the frontage east of the car park is not wide enough for two
+# and a stair over the cars is a stair in the car park.
+#
+# **A flight is stone and a landing is the ground it joins.** The steps are the port's own masonry carried
+# up the face, so they read as built; the landing is the last block before a player is simply on the field
+# or in the settlement, and paving it as that ground is what stops the climb ending on a grey plate.
+STAIRS = [
+    ("field-stair",   7, (77, 16), +1, "head"),
+    ("ridge-stair-w", 8, (49, 51), +1, "back"),
+    ("ridge-stair-e", 8, (85, 51), -1, "back"),
+]
+
+
+def stairs():
+    """The port's flights and their landings, on a layer at the port's own surface. The steps are ground
+    somebody drew rather than ground that happened, so they are marked `keepClear` and the dressing pass
+    puts nothing on them."""
+    shapes = []
+    for name, rise, (x, z), step, landing in STAIRS:
+        flight = sorted(x + step * tread for tread in range(rise))
+        head = sorted(x + step * (rise + along) for along in range(STAIR_LAND))
+        # A course at the foot and the face's own at the head. The anchors sit half a course either side of
+        # those, because a cell is sampled at its centre: on the whole numbers every tread falls on a tie and
+        # the rounding turns a 1:1 flight into two-block steps.
+        low, high = (0.5, rise + 0.5) if step > 0 else (rise + 0.5, 0.5)
+        shapes += [
+            {"id": f"{name}-flight", "type": "polygon", "operation": "add", "keepClear": True,
+             "theme": "quay", "floor": 0,
+             "vertices": [[flight[0], z], [flight[-1] + 1, z],
+                          [flight[-1] + 1, z + STAIR_DEEP], [flight[0], z + STAIR_DEEP]],
+             "anchor_heights": [low, high, high, low]},
+            {"id": f"{name}-landing", "type": "rectangle", "operation": "add", "keepClear": True,
+             "theme": landing, "floor": 0, "base_height": rise,
+             "min_x": head[0], "max_x": head[-1] + 1, "min_z": z, "max_z": z + STAIR_DEEP},
+        ]
+    return {"id": "port-stairs", "name": "Port stairs", "base_y": PORT, "shapes": shapes,
+            "groups": [{"id": "port-stairs-body", "name": "Port stairs", "mirrors": True,
+                        "shapeIds": [shape["id"] for shape in shapes]}]}
 
 THEMES = {
     # **No ground a prop stands on is finished in a style whose palette holds wool.** The dressing pass reads
@@ -605,7 +719,8 @@ def finish(add_layers):
         "mapTheme": "quay",
         "themes": THEMES,
         "shapePropsById": shaped,
-        "addLayers": add_layers,
+        # The stairs first: they are ground laid on the compiled ground, and the made things stand on both.
+        "addLayers": [stairs()] + add_layers,
         # The spawn is a building rather than a bedrock box: a stamped two-storey hall with its own doorway.
         "roomStyles": {"spawn": "@sb-spawn"},
         # The ground the plan states is a set of plateaus; the relief is what makes it terrain. `reach` 26

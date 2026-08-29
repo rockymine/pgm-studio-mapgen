@@ -7,7 +7,7 @@ The board is the author's own composition, sketched at cell scale and scaled up 
 brigantine on it, a crane dock west of centre with the first goal's dock beside it, a port east with a car
 park, the dockside town behind the west dock, a second settlement back and to the east with the other goal
 in front of it, a terrace row across the middle joining the two, and a field on each arm for a balloon to
-stand over.
+fly over.
 
 ## What it carries
 
@@ -16,11 +16,18 @@ Made things, each stated a different way, which is the point of the board:
 | thing | blocks | layers | shapes | how it meets the ground |
 |---|---|---|---|---|
 | ship | 8,897 | 8 | 598 | floats — an absolute floor at the load line, no seat |
-| balloon ×2 | 3,195 | 8 | 1,160 | flies — an absolute floor, no seat |
+| balloon ×2 | 3,195 | 8 | 1,160 | flies — an absolute floor at y48, no seat |
 | crane ×2 | 810 | 4 | 107 | `seat: ground` — settles onto the dock, jib out over the water |
-| mini car ×8 | 208 | 4 | 19 | `seat: ground` — four boxes and four cubes, 11 × 5 × 6 |
+| mini car ×8 | 208 | 4 | 19 | parks — an absolute floor at the port's own surface, four boxes and four cubes, 11 × 5 × 6 |
 
-Beside them: sixteen houses from the style library, twelve trees, four crates, five roads and a harbour.
+Beside them: sixteen houses from the style library, fifty-four trees, five crates, five roads, a harbour
+and six flights of stairs.
+
+**A car parks rather than seats, and that is one course.** A seat lands a made thing's lowest course on the
+ground's own top block — right for a building whose foundation cuts into the surface, and a course too low
+for a wheel: the cars read sunk into the tarmac. The port is one flat terrace under all eight of them, so the
+floor the model was drawn at is the floor it wants, and stating it outright is the whole fix. The crane still
+seats, because a crane stands on a dock the relief did not promise to keep level.
 
 ## The crane reaches over the water, and what that cost
 
@@ -44,6 +51,85 @@ ground under the jib found the seabed and took the whole crane down to it (`WE61
 **3,330 columns hold water, 32,863 blocks of it.** The harbour ring is the basin piece to the block: a pool
 cuts its bed wherever the ground stands above it, so the old ring — drawn 40 blocks wider than the water's
 own ground — dug the quay it lapped and flooded 1,524 columns of the balloon's field into a lake.
+
+## The port is walled on two sides, and a stair is a thickness
+
+The port floors at y21 and two grounds stand over it: the terracotta field the balloon flies off, at y28
+along the whole water side, and the settlement the spawn road comes down from, at y29 along the back. Seven
+blocks and eight of bedrock face, on the one piece of the board a player crosses lengthways. Neither could
+be climbed, and neither showed up in a gate: the export walks the ground and the ground is walkable *round*
+a wall, so the board built, the gate opened and the wall was only visible from inside it.
+
+**A stair is a thickness over the ground it is laid on, so it is one layer and not a shape apiece.** The
+`port-stairs` layer states `base_y: 22` — the port's own surface — and every shape on it is a height above
+that rather than an elevation. That is what lets a flight be one polygon: the two corners at the foot carry
+one course and the two at the head carry the face's own, and the rasterizer TIN-interpolates across the
+footprint and rounds per cell, which is a staircase. The anchors are stated half a course either side of
+those numbers (`0.5` and `rise + 0.5`) because a cell is sampled at its **centre**: anchored on the whole
+numbers every tread falls on a tie, and `Math.Round`'s banker's rounding turns a 1:1 flight into a
+two-block step. Half a course off, every cell centre lands on a whole course.
+
+**And it climbs along the face rather than into it.** A flight cut square into a wall puts a player at the
+top still walking the way they climbed, and what is at the top here is a car park on one side and a street
+on the other. Turned ninety degrees, the climb ends on a landing level with the ground above and that
+ground is a step to the side — which is why the flight is five blocks deep rather than the width of the
+thing it serves. Measured on the built board at `z 16..20`, the water face:
+
+| x | 72–76 | 77 | 78 | 79 | 80 | 81 | 82 | 83 | 84–88 | 89–94 |
+|---|---|---|---|---|---|---|---|---|---|---|
+| top | 21 | 22 | 23 | 24 | 25 | 26 | 27 | 28 | 28 | 21 |
+
+— the port, seven treads at one block each, then a 5 × 5 landing flush with the field at `z 15`. Its foot
+stands five blocks east of the car park rather than two, because a stair a player has to squeeze past a
+bumper to reach is a stair in the car park.
+
+**The back face carries a pair, and the second is the first turned about.** One flight is a way up; two of
+them facing away from each other, with eleven blocks of plain wall between their heads, is a choice of which
+way to go up — and because the feet land at opposite ends of the frontage, a player meeting the wall
+anywhere takes the nearer. Measured at `z 51..55`:
+
+| x | 44–48 | 49–56 | 57–61 | 62–72 | 73–77 | 78–85 | 86–92 |
+|---|---|---|---|---|---|---|---|
+| top | 21 | 22→29 | 29 | 21 | 29 | 29→22 | 21 |
+
+The water face takes one flight and not two, because the frontage east of the car park is 22 blocks and a
+pair wants 35 — the room is there only west of the cars, and a stair over them is the thing the first move
+was undoing.
+
+**A flight is stone and a landing is the ground it joins.** The treads are the port's own masonry carried up
+the face, so the climb reads as built; the landing is the last block before a player is simply on the field
+or in the settlement, so it is paved as that ground — the terracotta of the field on the water side, the
+settlement's own green-over-grey on the back. Measured on the built board, the field landing comes back
+`#a05325` against the field's `#a05325` at `z 15`, and a tread `#7a7a7a`. What it stops is a climb ending on
+a grey plate somebody has to notice is not a floor.
+
+Every flight and every landing is marked `keepClear`, which is what the word is for — a shape drawn to *be*
+something is terrain by construction and indistinguishable from the ground beside it, so without it a road
+repaints the treads and the dressing pass seats a crate on them.
+
+**One statement, six stairs**: three are authored and the group mirrors, so each is answered at the far arm's
+own face.
+
+## The upland is a wood, and the door's fan is not
+
+The upland is the one ground on this board a player crosses on foot the whole way, from the spawn's own
+door to the settlements, and bare grass at that width reads as a field to walk over rather than as
+somewhere. Forty-two oak and birch at eight to eleven blocks — the stock the rest of the board already
+carries — stand on the meadow shape and nowhere else, west of the spawn's approach and east of it.
+
+**A wood at one pitch is an orchard.** Each trunk is kept its own crown's radius plus a gap from every
+other, and the gap runs between one block and six over two sines of incommensurate period, so the upland
+carries thickets and glades instead of a lattice. The radius is measured rather than nominal: a tree is
+deterministic and RNG-free, so an oak at h9 reaches two cells and at h11 three, and the search knows that
+before any world exists.
+
+**The ground in front of the door carries no trunk however free it reads.** A forest that closes over a
+spawn's egress is a wall rather than cover, so the fan — `x −26..22` from `z 88` to the room itself — is
+left open, and every trunk stands off a route's claim by four blocks where `DR-ROAD` asks three, off every
+building's claim by its own crown, and outside the objectives' standoff. Zero declined.
+
+What it bought is traffic: **decorated ground went 6,719 → 9,452 columns and the dead share 25.9% → 19.3%**,
+because ground a player has reason to walk through is not dead ground.
 
 ## Where the goals stand, and what the bands say
 
@@ -83,6 +169,10 @@ model, and this board is the measurement that says what a pair of them costs.
 - **A footing needs a foundation under it.** Thirty-two library styles rang a one-course plate with a
   footing, which `HS7` calls a one-block rim round a building with nothing beneath it. Their plates are two
   courses now.
+- **Beams are a farmhouse's detail and a spawn hall has none.** `BeamStyle` runs a log out past each corner
+  where two storeys meet, which is the one thing a style writes outside its own footprint — and on the
+  stamped spawn it read as four oak stubs on a masonry building. `@sb-spawn` states no `beams` at all now,
+  which is `BeamStyle`'s own default, and the hall's walls run to their corners.
 - **A piece can collide with another piece's mirror, and no gate says so.** `balloon-field` and `port` did
   not overlap; the field's `rot_180` image and the port did, over 788 columns, and the port silently came
   out at the field's height. `PL4` reads the authored half only.
@@ -131,8 +221,13 @@ model, and this board is the measurement that says what a pair of them costs.
   is 12 × 16 = 192 exactly and a 12 × 15 is 208 and refuses.
 - **`LN2` measures a chain of collinear rects, not a piece.** Rects sharing a cross-axis interval and
   abutting merge into one lane however many pieces they are written as: 104 blocks is this board's longest.
-- **A made thing raises the build ceiling**, which is the highest column plus twenty. The balloons crown at
-  y82, so `<maxbuildheight>` is **100** rather than the 53 the terrain alone would give.
+- **The build ceiling clears the buildings and never the balloons.** It is twenty blocks over the highest
+  block the map builds that a player meets, which on this board is the spawn hall's ridge at y48, so
+  `<maxbuildheight>` is **68** and every goal marker hangs at y73. The board is what moved the rule (`G6`
+  amendment 25): the balloons crown at y97 and a `SurfaceTop` measure asked for 117, clamped to
+  `BuildGenerator`'s 100; the terrain alone tops at y33 and would have capped the town five blocks over its
+  own roofline. A made thing is out because it is scenery hung in the air, and an objective is out because a
+  goal floats by design and a cap derived from one could never be beneath it — which is the whole of `OB23`.
 
 ## The order the board has to be built in
 
@@ -151,7 +246,10 @@ preference, it is a dependency chain, and every step invalidates everything down
    what a plot's own rise test reads.
 5. **The roads.** They claim their paving and a house may not stand on it, so they carve the bands a
    settlement has left.
-6. **The houses, then the trees and crates**, each searched against the finished ground.
+6. **The stairs**, which are ground and therefore above every prop: a flight is laid against a face the
+   relief and the outline have already settled, and it raises the surface the props below it are then
+   searched against.
+7. **The houses, then the trees and crates**, each searched against the finished ground.
 
 **And the ground a plot is searched over is the ground with nothing on it.** A search run against the last
 board's output reads every standing house as a seven-course rise and refuses the plot it already used — so
@@ -183,7 +281,7 @@ Two are the author's own calls and one is cosmetic:
 |---|---|---|
 | `ST2` | 1 | the iron stands outside the spawn piece, beside its door lane — the author asked for it there |
 | `SP8` | 1 | the spawn's egress steps two blocks at `fore-spawn`–`spawn` |
-| `WX11` | 28 | fourteen houses stand 2–3 blocks above the cell beside them, showing that much foundation |
+| `WX11` | 14 | six houses and the port goal stand 2–3 blocks above the cell beside them, showing that much foundation — seven units, each raised for its own image |
 
 The `WX11` are all doorstep-sized. The ones that mattered — a shed reading as a 53-block bedrock tower
 because a balloon flew over it — were a defect in what the check read, not in where the house stood
@@ -199,10 +297,18 @@ because a balloon flew over it — were a defect in what the check read, not in 
 | `world-structure.png` | the buildings alone. **A made thing is not in it**, which is `WE62`: the ship read as the ground it floats on and a house beside a balloon read as a house standing on one |
 | `world-made.png` | the made things alone, over the terrain they stand on or fly above, with nothing the dressing pass placed in the way |
 | `world-section-x0.png` | the ship afloat with the balloons over it |
+| `world-foliage.png` | the wood as trunks rather than as a mass, which is the only read the tree count can be taken off |
 | `coverage.png` | which ground a journey actually uses |
 
 ## Coverage
 
-`reached 23,774 · decorated 6,719 · dead 10,673 of 41,166 = 25.9% dead` on a board of 240 x 264. The dead
+`reached 23,774 · decorated 9,452 · dead 7,940 of 41,166 = 19.3% dead` on a board of 240 x 264. The dead
 ground is the drawn shore and the port — a car park behind a warehouse is somewhere goods leave from, not
 somewhere a lane runs through.
+
+**`reached` did not move, and that is the honest reading of what the wood bought.** Coverage walks the
+authored routes, and no route was added: every one of the 2,733 columns is `decorated`, which is ground a
+player has a reason to be on rather than ground a lane crosses. What it shows up in is the patch list — the
+two bare upland patches of 1,183 and 1,165 cells are gone outright, and the port and its image fell from
+3,245 and 3,198 to 2,648 and 2,601. The two 410-cell patches that replace them at the top of the list are
+drawn shore, 43 blocks out, which is coast rather than unfinished map.
