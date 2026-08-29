@@ -299,3 +299,37 @@ def extrude_z(profile, z0, z1):
     return Solid(lambda x, y, z: z0 <= z <= z1 + 1 and _even_odd(profile, x, y),
                  (math.floor(min(xs)), math.ceil(max(xs)),
                   math.floor(min(ys)), math.ceil(max(ys)), z0, z1))
+
+
+def revolve_z(profile, cx, cy, z0):
+    """A profile `[(radius, length)]` spun about the **north-south** axis through `(cx, cy)`. The vertical
+    `revolve` makes a vase; this makes a fuselage, a nacelle or a pipe — the same statement laid down."""
+    lengths = [z0 + entry[1] for entry in profile]
+    radii = [entry[0] for entry in profile]
+
+    def radius_at(z):
+        if z < lengths[0] or z > lengths[-1]:
+            return 0.0
+        for i in range(len(lengths) - 1):
+            if lengths[i] <= z <= lengths[i + 1]:
+                span = lengths[i + 1] - lengths[i] or 1
+                t = (z - lengths[i]) / span
+                return radii[i] + (radii[i + 1] - radii[i]) * t
+        return radii[-1]
+
+    def inside(x, y, z):
+        r = radius_at(z)
+        return r > 0 and (x - cx) ** 2 + (y - cy) ** 2 <= r * r
+    reach = max(radii)
+    return Solid(inside, (math.floor(cx - reach), math.ceil(cx + reach),
+                          math.floor(cy - reach), math.ceil(cy + reach),
+                          math.floor(lengths[0]), math.ceil(lengths[-1])))
+
+
+def cylinder_z(cx, cy, r, z0, z1, ry=None):
+    """A pipe running north-south, elliptical where `ry` differs from `r`."""
+    ry = r if ry is None else ry
+    def inside(x, y, z):
+        return z0 <= z <= z1 + 1 and ((x - cx) / r) ** 2 + ((y - cy) / ry) ** 2 <= 1.0
+    return Solid(inside, (math.floor(cx - r), math.ceil(cx + r),
+                          math.floor(cy - ry), math.ceil(cy + ry), z0, z1))

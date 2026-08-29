@@ -9,7 +9,7 @@
    "min_x": -78,
    "max_x": 78,
    "min_z": -54,
-   "max_z": 54
+   "max_z": 74
   }
  },
  "layers": [
@@ -24,11 +24,24 @@
       "min_x": -70,
       "min_z": -46,
       "max_x": 70,
-      "max_z": 46,
+      "max_z": 66,
       "floor": 0,
       "base_height": 6,
       "theme": "ground",
       "id": "deck-0",
+      "operation": "add",
+      "keepClear": true
+     },
+     {
+      "type": "rectangle",
+      "min_x": -9,
+      "min_z": 53,
+      "max_x": 9,
+      "max_z": 63,
+      "floor": 0,
+      "base_height": 7,
+      "theme": "pale",
+      "id": "deck-1",
       "operation": "add",
       "keepClear": true
      }
@@ -39,7 +52,8 @@
       "name": "Deck",
       "mirrors": false,
       "shapeIds": [
-       "deck-0"
+       "deck-0",
+       "deck-1"
       ]
      }
     ]
@@ -9111,5 +9125,8 @@
    }
   }
  },
- "mapTheme": "ground"
+ "mapTheme": "ground",
+ "roomStyles": {
+  "spawn": null
+ }
 }

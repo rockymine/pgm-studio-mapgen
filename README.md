@@ -251,6 +251,8 @@ no ground at all, and a labyrinth whose walls are their own slab.
 
 | Folder | Mode | Author | What it is |
 |---|---|---|---|
+| `form-gallery` | — | Opus 5 | nine parametric structures on one deck, every one of them circles, polygons and rectangles on a **single layer**: a roundhouse under a conical roof, a hollow dome, a hollow ellipse, a tapered tower, a ziggurat, an arch, a colonnade under a saucer dome and an amphitheatre. 11 layers and 83 shapes for the board |
+| `sculpture-gallery` | — | Opus 5 | seven solids compiled into layers — a robot, a droid, a **Rubik's cube**, a hooded statue, a coupe, a **starship** and a ring station, the last two flying. 55 layers, 4,760 shapes, and the table that says why: the cube is one run per column and takes seven layers, all of them colour |
 | `opus5-automaton` | dtm | Opus 5 | **110 × 110** — a flat green square whose whole finish is *props*: a 45-block brass colossus standing on a stepped granite plinth over the symmetry centre, four hooded sentinels holding lanterns on the spawn approaches, two tile rotundas under clay cones with doorways cut through them, and two tapered slate watchtowers. Every one of them is shapes on layers of the ordinary sketch document, arriving through the finish's `addLayers` with nothing about the studio changed; the four sentinels are two authored on the north half and fanned. Scores **0 with no violation and no lint**. Flat because a prop states an absolute floor and a relief moves the ground under it — [SCULPTING-WITH-LAYERS.md](SCULPTING-WITH-LAYERS.md) §5 |
 
 ### Opus 5 — authored to record the method

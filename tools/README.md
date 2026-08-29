@@ -198,11 +198,11 @@ The account of what they are for and what they found is
 | File | Is |
 |---|---|
 | `sculpt/props.py` | parametric structures emitted as **sketch shapes** — `ring_wall`, `ellipse_wall`, `dome`, `spire`, `ziggurat`, `arch`, `colonnade`, `tapered_tower`, `bowl`. Eight of the nine are one layer, and what lands in the document is circles and polygons an author can still drag |
-| `sculpt/solid.py` | the modelling kit: a solid is a membership test plus its own box. Boxes, ellipsoids, cylinders, frusta, tori, capsules, extruded plans and profiles, revolves, half-spaces; union / intersect / difference / shell; translate, mirror, rotate |
+| `sculpt/solid.py` | the modelling kit: a solid is a membership test plus its own box. Boxes, ellipsoids, cylinders (upright and laid down), frusta, tori, capsules, half-spaces; plans and side profiles extruded along any axis; revolves about the vertical (`revolve`) **and about the north-south axis** (`revolve_z`, which is what a fuselage or a nacelle is); union / intersect / difference / shell; translate, mirror, rotate |
 | `sculpt/layers.py` | the compiler — a `{(x, y, z): material}` model into layers, by **run index**: per column, maximal runs of one material, and the *n*-th run of every column onto layer *n*. Nothing contests anything, so `SK9` and `SK10` stay silent |
-| `sculpt/models.py` | the four sculptures — robot, ring station, coupe, hooded statue |
-| `sculpt/board.py` | the themes (`solid`, `shaded`), the document, and the two calls that store and read a board back |
-| `sculpt/gallery_forms.py` · `gallery_sculpture.py` | the two boards in `sculpture/`, each printing what it cost in layers and shapes |
+| `sculpt/models.py` | the seven sculptures — robot, droid, Rubik's cube, hooded statue, coupe, starship, ring station |
+| `sculpt/board.py` | the themes (`solid`, `shaded`), the document, the minimal intent an export needs, and the calls that store a board, read its columns back and unzip its world |
+| `sculpt/gallery_forms.py` · `gallery_sculpture.py` | the two boards in `sculpture/`, each printing what it cost in layers and shapes and exporting a world into the directory named as its second argument |
 | `sculpt/make_board.py` | writes `specs/opus5-automaton`'s plan and finish, props and all, for `drive.py` to build |
 | `render/png.py` | a PNG writer, a scanline polygon fill and a 5×7 face, in the standard library alone |
 | `render/iso.py` | isometric, orthographic elevation and one-panel-per-layer renders off `POST …/sketch/columns` — the built world, not the drawing |

@@ -10,8 +10,9 @@ Coordinates are the studio's — `x` and `z` in plan, `y` up — and every model
 so a caller places it with one `translate`. Each faces **north**, along `-z`."""
 import math
 
-from solid import (beam, box, cylinder, difference, ellipsoid, extrude_x, extrude_z, frustum, half_space,
-                   intersect, mirror_x, prism, revolve, rotate_y, shell, sphere, torus, translate, union)
+from solid import (Solid, beam, box, cylinder, cylinder_z, difference, ellipsoid, extrude_x,
+                   extrude_z, frustum, half_space, intersect, mirror_x, prism, revolve, revolve_z,
+                   rotate_y, shell, sphere, torus, translate, union)
 
 
 def paint(model, *parts):
@@ -270,4 +271,180 @@ def statue():
           (face, "dark"),
           (union(hanger, lamp_shell, lamp_cap), "metal"),
           (flame, "flame"))
+    return model
+
+
+# ── the starship ──────────────────────────────────────────────────────────────────────────────────────────
+
+def starship():
+    """A one-seat interceptor, 76 blocks nose to exhaust and 62 across the wings, flying north.
+
+    Everything long about it is a **body of revolution laid down** — `revolve_z` spins a radius profile about
+    the north-south axis, so the fuselage, the two nacelles and their bells are each one statement rather than
+    a stack of rings. What is left is flat: the wings are swept polygons three blocks thick, the fins are
+    silhouettes in the side plane, and the livery is decals — the hull's own surface grown by a hair and
+    clipped by a box, because any other shape crosses the hull somewhere and speckles along the crossing."""
+    model = {}
+
+    #        tip      nose        cockpit        waist        engine deck      tail
+    fuselage = revolve_z([(0.6, 0), (3.4, 5), (5.6, 13), (6.6, 24), (6.4, 40), (7.2, 54), (6.8, 62),
+                          (5.0, 66), (5.2, 68)], 0, 10, -38)
+    spine = intersect(revolve_z([(0.6, 0), (4.4, 5), (7.0, 13), (8.2, 24), (8.0, 40), (8.6, 54),
+                                 (8.0, 62), (6.0, 68)], 0, 8.0, -38),
+                      box(-5, 5, 13, 22, -38, 30))
+    hull = union(fuselage, spine)
+
+    # A swept delta: root chord long, tip short, leading edge raked back. One polygon and a thickness.
+    wing = prism([(5, -8), (14, -2), (26, 10), (31, 20), (30, 24), (16, 18), (8, 12), (5, 6)], 9, 12)
+    wing = union(wing, mirror_x(wing, 0))
+    wing_edge = prism([(5, -8), (14, -2), (26, 10), (31, 20), (30, 21), (25, 11), (13, 0), (5, -6)], 9, 12)
+    wing_edge = union(wing_edge, mirror_x(wing_edge, 0))
+    tips = union(*[intersect(cylinder_z(x, 10.5, 2.2, 8, 26), box(-33, 33, 8, 13, 8, 26))
+                   for x in (-30.5, 30.5)])
+
+    canards = prism([(5, -26), (13, -22), (15, -16), (6, -18)], 10, 12)
+    canards = union(canards, mirror_x(canards, 0))
+
+    fin = intersect(extrude_x([(18, 16), (26, 31), (32, 31), (32, 16)], -1, 1),
+                    box(-2, 2, 15, 32, 16, 33))
+
+    def nacelle(x):
+        tube = revolve_z([(2.0, 0), (3.8, 3), (4.2, 22), (3.8, 30), (4.6, 33), (4.0, 35)], x, 8.0, -6)
+        return tube
+    nacelles = union(nacelle(-15), nacelle(15))
+    bells = union(*[intersect(revolve_z([(4.6, 0), (5.0, 2), (3.6, 4)], x, 8.0, 27), box(-40, 40, 0, 20, 27, 31))
+                    for x in (-15, 15)])
+    glow = union(*[cylinder_z(x, 8.0, 3.4, 29, 30) for x in (-15, 15)])
+    pylons = union(*[box(x - 2, x + 2, 9, 13, -4, 12) for x in (-15, 15)])
+
+    def decal(x0, x1, y0, y1, z0, z1, grow=0.45):
+        return intersect(union(
+            revolve_z([(0.6 + grow, 0), (3.4 + grow, 5), (5.6 + grow, 13), (6.6 + grow, 24),
+                       (6.4 + grow, 40), (7.2 + grow, 54), (6.8 + grow, 62), (5.0 + grow, 66),
+                       (5.2 + grow, 68)], 0, 10, -38),
+            intersect(revolve_z([(0.6 + grow, 0), (4.4 + grow, 5), (7.0 + grow, 13), (8.2 + grow, 24),
+                                 (8.0 + grow, 40), (8.6 + grow, 54), (8.0 + grow, 62), (6.0 + grow, 68)],
+                                0, 8.0, -38),
+                      box(-6, 6, 13, 22, -38, 30))),
+            box(x0, x1, y0, y1, z0, z1))
+
+    canopy = intersect(hull, extrude_x([(-20, 14), (-14, 18.4), (-1, 19.0), (4, 15.5)], -5, 5))
+    canopy = difference(canopy, _eroded(canopy, 1))
+    nose = intersect(hull, box(-9, 9, 0, 24, -38, -33))
+    stripe = union(decal(-2, 2, 14, 26, -38, 30), decal(-10, 10, 2, 26, -20, -19))
+    intakes = union(*[intersect(hull, box(-9, 9, 11, 14, z, z + 1)) for z in (-4, 6)])
+    wing_flash = intersect(union(wing, tips), box(-33, 33, 9, 12, 16, 26))
+
+    paint(model,
+          (union(hull, wing, tips, canards), "ship-hull"),
+          (wing_edge, "ship-red"),
+          (wing_flash, "ship-red"),
+          (pylons, "ship-grey"),
+          (fin, "ship-red"),
+          (stripe, "ship-red"),
+          (intakes, "ship-dark"),
+          (nose, "ship-dark"),
+          (nacelles, "ship-grey"),
+          (bells, "ship-dark"),
+          (glow, "ship-glow"),
+          (canopy, "ship-glass"))
+    return model
+
+
+# ── the cube ──────────────────────────────────────────────────────────────────────────────────────────────
+
+def rubik(cubie=7, gap=1, scramble=None):
+    """A 3x3 twisty cube, 23 blocks on a side at the default seven-block cubie.
+
+    Geometrically it is the simplest thing here — one solid box, one run per column — and it is the most
+    expensive to compile, which is the whole reason it is in the set. A layer holds one span per column and a
+    span carries one theme, so a colour change splits a run as surely as air does. A column down the east
+    face crosses white, black, red, black, red, black, red, black, yellow: nine bands, nine layers, through a
+    solid cube with no hole in it anywhere.
+
+    `scramble` is a `{face: [[colour x 3] x 3]}` override; the default is the solved cube."""
+    model = {}
+    side = 3 * cubie + 2 * gap
+    body = box(0, side - 1, 0, side - 1, 0, side - 1)
+    faces = scramble or {
+        "up": [["white"] * 3] * 3, "down": [["yellow"] * 3] * 3,
+        "north": [["green"] * 3] * 3, "south": [["blue"] * 3] * 3,
+        "east": [["red"] * 3] * 3, "west": [["orange"] * 3] * 3,
+    }
+
+    stickers = []
+    for face, grid in faces.items():
+        for row in range(3):
+            for col in range(3):
+                low = lambda i: i * (cubie + gap) + 1
+                high = lambda i: i * (cubie + gap) + cubie - 2
+                a0, a1 = low(col), high(col)
+                b0, b1 = low(row), high(row)
+                edge = side - 1
+                if face == "up":
+                    tile = box(a0, a1, edge, edge, b0, b1)
+                elif face == "down":
+                    tile = box(a0, a1, 0, 0, b0, b1)
+                elif face == "north":
+                    tile = box(a0, a1, b0, b1, 0, 0)
+                elif face == "south":
+                    tile = box(a0, a1, b0, b1, edge, edge)
+                elif face == "east":
+                    tile = box(edge, edge, b0, b1, a0, a1)
+                else:
+                    tile = box(0, 0, b0, b1, a0, a1)
+                stickers.append((tile, grid[row][col]))
+
+    paint(model, (body, "frame"), *stickers)
+    return model
+
+
+# ── the droid ─────────────────────────────────────────────────────────────────────────────────────────────
+
+def droid():
+    """A barrel droid, 21 blocks tall — the robot's small cousin, and the one to reach for as a map prop.
+
+    Everything about it is a body of revolution: a domed head on a ring collar, a barrel with a service
+    hatch and a row of ports, two outboard legs on shoulder pivots and a centre caster. Cheap enough to
+    stand four of them along a road."""
+    model = {}
+
+    foot = union(ellipsoid(-6.5, 1.4, 0, 2.6, 1.6, 4.2), box(-9, -4, 0, 1, -4, 4))
+    leg = union(beam((-6.5, 2, 0), (-5.2, 11, 0), 2.2), sphere(-5.2, 11.4, 0, 2.6))
+    caster = union(sphere(0, 2.0, 5.6, 2.2), beam((0, 3, 5.4), (0, 8, 3.4), 1.6))
+
+    barrel = union(cylinder(0, 0, 4.6, 4, 15), ellipsoid(0, 15.2, 0, 4.6, 1.6, 4.6),
+                   ellipsoid(0, 4.2, 0, 4.6, 1.4, 4.6))
+    collar = cylinder(0, 0, 4.2, 15, 16)
+    dome = union(ellipsoid(0, 15.6, 0, 4.5, 5.4, 4.5), cylinder(0, 0, 4.5, 16, 17))
+    dome = intersect(dome, box(-6, 6, 16, 22, -6, 6))
+
+    def skin(x0, x1, y0, y1, z0, z1, grow=0.4):
+        return intersect(cylinder(0, 0, 4.6 + grow, 4, 15), box(x0, x1, y0, y1, z0, z1))
+
+    hatch = skin(-2, 2, 8, 12, -6, -3)
+    ports = union(*[skin(-2, 2, y, y, -6, -3, 0.55) for y in (6, 13)])
+    band = union(intersect(cylinder(0, 0, 5.0, 4, 15), box(-6, 6, 13, 13, -6, 6)),
+                 intersect(cylinder(0, 0, 5.0, 4, 15), box(-6, 6, 6, 6, -6, 6)))
+
+    def head_skin(x0, x1, y0, y1, z0, z1, grow=0.4):
+        return intersect(union(ellipsoid(0, 16.0, 0, 4.4 + grow, 4.6 + grow, 4.4 + grow),
+                               cylinder(0, 0, 4.4 + grow, 16, 17)),
+                         box(x0, x1, y0, y1, z0, z1))
+
+    lens = head_skin(-2, 2, 17, 19, -6, -2, 0.7)
+    lamp = head_skin(-4, -3, 18, 19, -6, -3, 0.7)
+    rim = head_skin(-6, 6, 16, 16, -6, 6, 0.55)
+
+    paint(model,
+          (union(leg, mirror_x(leg, 0), foot, mirror_x(foot, 0), caster), "joint"),
+          (barrel, "shell"),
+          (band, "trim"),
+          (hatch, "panel"),
+          (ports, "joint"),
+          (collar, "trim"),
+          (dome, "shell"),
+          (rim, "trim"),
+          (lens, "visor"),
+          (union(lamp, mirror_x(lamp, 0)), "eye"))
     return model

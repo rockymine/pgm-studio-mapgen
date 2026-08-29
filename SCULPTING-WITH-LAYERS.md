@@ -1,15 +1,21 @@
 # Sculpting with layers
 
 The sketch tool's layer system was built to stack storeys. This is the record of what happens when it is
-asked for something else — a statue, a ring station, a car, a robot — and of the six facts that decide how far
-it goes. Everything here was measured against a running studio; the boards are in `sculpture/` and
-`maps/opus5-automaton`, the tools that produced them in `tools/sculpt/` and `tools/render/`.
+asked for something else — a robot, a starship, a Rubik's cube, a ring station, a car, a statue — and of the
+facts that decide how far it goes. Everything here was measured against a running studio; the three boards are
+in `maps/form-gallery`, `maps/sculpture-gallery` and `maps/opus5-automaton`, the documents beside them in
+`sculpture/`, and the tools that produced them in `tools/sculpt/` and `tools/render/`.
 
 **The short answer is that it goes further than the documentation suggests, and the ceiling is not where it
 looks.** A layer is not a flat slab. It is one arbitrary *height field* — a `(floor, top)` pair per column —
 and a stack of layers is a set of those fields with air between them. Any solid whatever can be written in
-that form, and the number of layers it needs is not its height: it is **how many separately-coloured runs the
-busiest column of it passes through**. A thirty-block statue needs eight layers. A car needs three.
+that form.
+
+**And what it costs is the paint, not the shape.** The number of layers a sculpture needs is how many
+separately-coloured runs its busiest column passes through, and for every model measured here the colour term
+dominates: a 70-block starship is two layers of geometry and four in the end, a robot is five and sixteen, and
+a **Rubik's cube — a solid box with one run per column — is one and seven**. §6 costs the one-record change
+that removes most of it.
 
 ---
 
@@ -71,26 +77,32 @@ shapes are the rectangle cover of each `(material, floor, top)` group — and th
 nothing contests anything. Two runs of one column always have air between them, so no pair of layers is ever
 driven into another and `SK10` stays silent. Two shapes on a layer never overlap, so `SK9` stays silent.
 
-`tools/sculpt/layers.py` is thirty lines of that. What it costs, measured:
+`tools/sculpt/layers.py` is thirty lines of that. What it costs, over seven models:
 
-| model | size (x, y, z) | blocks | layers | shapes | blocks/shape |
+| model | size (x, y, z) | blocks | **shape** | layers | shapes |
 |---|---|---|---|---|---|
-| robot | 26 × 45 × 14 | 4,486 | 16 | 746 | 6.0 |
-| space station | 118 × 58 × 66 | 29,418 | 7 | 2,557 | 11.5 |
-| car | 22 × 14 × 38 | 4,630 | 3 | 212 | 21.8 |
-| hooded statue | 25 × 45 × 23 | 6,699 | 8 | 363 | 18.5 |
+| robot | 26 × 45 × 14 | 4,486 | 5 | 16 | 746 |
+| droid | 18 × 21 × 13 | 1,726 | 4 | 9 | 212 |
+| Rubik's cube | 23 × 23 × 23 | 12,167 | **1** | **7** | 123 |
+| hooded statue | 25 × 45 × 23 | 6,699 | 4 | 8 | 363 |
+| car | 22 × 14 × 38 | 4,630 | **1** | 3 | 212 |
+| starship | 66 × 28 × 70 | 15,518 | 2 | 4 | 540 |
+| space station | 118 × 58 × 66 | 29,418 | 6 | 7 | 2,557 |
 
-Read the layer column first, because it is the surprising one. The **station is 58 blocks tall, mostly
-hollow, and takes seven layers**; the **car is 14 tall and takes three**. Height has nothing to do with it.
-What sets the count is the busiest column — the one that passes through a boot, then air, then a hand, then
-air, then a brim. `sculpture/models/renders/robot-layers.png` is the picture of it: layer 0 holds 1,686 of the
-robot's blocks, layer 1 holds 900, and by layer 14 there is a single block left.
+The **shape** column is the layer count the geometry alone would need — maximal runs per column, ignoring
+colour. Read it against the one beside it, because the gap between them is the whole cost model.
 
-**Material is what makes the robot expensive, not geometry.** A layer's span carries one theme, so a colour
-change inside a contiguous run splits it as surely as air does. The robot has a visor, a brow band, eyes, a
-chest panel and a mouth grille all on one curved head, and each is a band the column has to leave and
-re-enter. Nine of its sixteen layers hold fewer than eighty blocks each and exist entirely to carry markings.
-The car, painted in four flat colours, needs three.
+**Height has nothing to do with the layer count.** The station is 58 blocks tall and mostly hollow, and takes
+seven; the car is 14 tall and takes three; the 70-block starship takes four. What sets the geometric number is
+the busiest column — the one that passes through a boot, then air, then a hand, then air, then a brim.
+
+**And the geometry is almost never what you pay for.** A layer's span carries one theme, so a colour change
+inside a contiguous run splits it as surely as air does. The Rubik's cube is the pure case: a **solid box**,
+one run per column, no hole in it anywhere — and seven layers, because a column down its east face crosses
+white, black, red, black, red, black, red, black, yellow. `sculpture/models/renders/rubik-layers.png` is the
+picture of it, and there is not one gap in the model. The robot is the same story with a face: five layers of
+shape and eleven more of visor, brow, eyes, chest panel and mouth grille, nine of which hold fewer than eighty
+blocks each.
 
 ## 4. What the painter does to a sculpture
 
@@ -165,14 +177,47 @@ under it. That one field removes the whole `SK10` class and is what lets a prop 
 walk and `SK11`'s reachability walk, and would let the storey strip and the topdown render group thirty-one
 layers into four props. None of the three needs the rasterizer to change.
 
+And one more, which is the largest of the four and the cheapest:
+
+**A material that reads absolute Y.** Everything §3 measures says the same thing — the layer count is the
+paint job, not the shape — and a layer only splits on colour because a span carries **one** material. Give it
+a stack keyed on world Y and the split stops. `TerrainMaterial` is already polymorphic under a `kind`
+discriminator with fourteen derived types, `BucketContext` already carries `Y`, and no material maps it to a
+stated band: the volume patterns sample it as a noise coordinate and that is all. So this is one derived
+record — a list of `(from, to, material)` and a fallback — and no change to the rasterizer, the painter or
+the gate.
+
+What it is worth, measured by re-compiling every model with runs split on **air only** and shapes grouped by
+`(floor, top, colour sequence)`:
+
+| model | layers now | shapes now | layers banded | shapes banded | distinct stacks |
+|---|---|---|---|---|---|
+| robot | 16 | 746 | **5** | **396** | 118 |
+| droid | 9 | 212 | 4 | 118 | 32 |
+| Rubik's cube | 7 | 123 | **1** | **33** | 6 |
+| hooded statue | 8 | 363 | 4 | 272 | 110 |
+| car | 3 | 212 | 1 | 152 | 33 |
+| starship | 4 | 540 | 2 | 471 | 88 |
+| space station | 7 | 2,557 | 6 | 1,467 | 81 |
+
+It is not a trade. It is fewer layers **and** fewer shapes in every case, because splitting a run by colour
+also shatters its footprint into small rectangles, and keeping the run whole lets big ones form again. The
+cube goes from seven layers and 123 shapes to **one layer and 33**, and the whole board's storey strip becomes
+readable at the same time.
+
 ## 7. Running it
 
 ```bash
-python3 tools/sculpt/gallery_forms.py      /tmp/forms       # the nine parametric forms
-python3 tools/sculpt/gallery_sculpture.py  /tmp/sculpture   # the four compiled models
-python3 tools/sculpt/make_board.py         specs/opus5-automaton
+python3 tools/sculpt/gallery_forms.py     /tmp/forms     maps/form-gallery        # nine parametric forms
+python3 tools/sculpt/gallery_sculpture.py /tmp/sculpture maps/sculpture-gallery   # seven compiled models
+python3 tools/sculpt/make_board.py        specs/opus5-automaton
 python3 tools/drive.py specs/opus5-automaton "Automaton" --out /tmp/automaton
 ```
+
+The second argument to either gallery is the world directory to export into — `region/`, `level.dat` and
+`map.xml`, the three things a server reads. A gallery states no objective, and `EX2` refuses to export a map
+no player can enter, so both boards declare one visitor team and a pad at the south edge; that is the whole
+of their intent.
 
 Each posts to a running studio at `$PGM_STUDIO_API` (default `http://localhost:7894/api`), reads the built
 world back through `POST …/sketch/columns` and renders it. The renderer is `tools/render/` — a PNG writer, an
