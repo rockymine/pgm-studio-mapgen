@@ -189,6 +189,28 @@ the same two rows agreeing.
 maps were made. **New work uses `drive.py`.** `drive.ps1` was a seventh driver pointed at a port nothing
 serves any more and is gone.
 
+## `sculpt/` and `render/` — structures built out of the layer system
+
+`sculpt/` writes sketch documents that hold things which are not terrain, and `render/` takes their picture.
+The account of what they are for and what they found is
+[SCULPTING-WITH-LAYERS.md](../SCULPTING-WITH-LAYERS.md); this is the file map.
+
+| File | Is |
+|---|---|
+| `sculpt/props.py` | parametric structures emitted as **sketch shapes** — `ring_wall`, `ellipse_wall`, `dome`, `spire`, `ziggurat`, `arch`, `colonnade`, `tapered_tower`, `bowl`. Eight of the nine are one layer, and what lands in the document is circles and polygons an author can still drag |
+| `sculpt/solid.py` | the modelling kit: a solid is a membership test plus its own box. Boxes, ellipsoids, cylinders, frusta, tori, capsules, extruded plans and profiles, revolves, half-spaces; union / intersect / difference / shell; translate, mirror, rotate |
+| `sculpt/layers.py` | the compiler — a `{(x, y, z): material}` model into layers, by **run index**: per column, maximal runs of one material, and the *n*-th run of every column onto layer *n*. Nothing contests anything, so `SK9` and `SK10` stay silent |
+| `sculpt/models.py` | the four sculptures — robot, ring station, coupe, hooded statue |
+| `sculpt/board.py` | the themes (`solid`, `shaded`), the document, and the two calls that store and read a board back |
+| `sculpt/gallery_forms.py` · `gallery_sculpture.py` | the two boards in `sculpture/`, each printing what it cost in layers and shapes |
+| `sculpt/make_board.py` | writes `specs/opus5-automaton`'s plan and finish, props and all, for `drive.py` to build |
+| `render/png.py` | a PNG writer, a scanline polygon fill and a 5×7 face, in the standard library alone |
+| `render/iso.py` | isometric, orthographic elevation and one-panel-per-layer renders off `POST …/sketch/columns` — the built world, not the drawing |
+| `render/preview.py` | the same isometric taken straight off a model's voxels, for correcting a proportion without a build |
+
+The studio's own 3-D preview is WebGL in the browser, so there is no way to take a picture from it; these
+read the column payload the preview meshes and draw it server-side.
+
 ## `styles/`
 
 One `HouseStyle` snapshot per file, referenced from a finish as `"@<name>"`. Fork a shipped preset rather
