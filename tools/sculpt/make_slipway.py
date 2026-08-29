@@ -120,15 +120,13 @@ def style(name):
 
 
 def ground(surface, wall, rim=None, fill=None):
-    """A terrain theme over four full materials rather than four blocks — which is what the author's styles
-    are, so binding one to a bucket is the whole of using them. The surface is one course: `all green` and
-    `all sand` are picks, and a pick two courses deep is soil surfaced twice over, which `PT1` refuses.
+    """A theme with a **face**: a one-course surface, a wall down every exposed riser, and optionally a rim
+    capping the plateau boundaries. What built ground wants — a quay is masonry with a kerb along its edge
+    and a cut face where it drops to the water, and the seabed's shelf is a face too.
 
-    **Landscape takes no rim.** A rim caps a plateau boundary, and `rimEdges: "boundary"` caps every one of
-    them — a face against a structure and against level ground the paint calls a different plateau included.
-    On grass or on terracotta that draws a hard line round every patch and the ground reads as a diagram of
-    itself; the surface is what a landscape is, so it runs to the edge. A rim is for ground that is built —
-    a stone kerb along a quay is a kerb — so a theme states one only where it means one."""
+    The materials are the author's own library patterns rather than four blocks, so binding one to a bucket
+    is the whole of using them. The surface is one course: `all green` and `all sand` are picks, and a pick
+    two courses deep is soil surfaced twice over, which `PT1` refuses."""
     theme = {
         "bedrock": {"relative": False, "value": 1},
         "wallOnTerrainFaces": True,
@@ -141,6 +139,29 @@ def ground(surface, wall, rim=None, fill=None):
     }
     if rim is not None: theme["rimEdges"] = "boundary"
     return theme
+
+
+def layers(*courses):
+    """A theme that is nothing but a stack of courses, read down from the surface — `(pattern, thickness)`
+    top first, the last one repeating to the bedrock however deep the ground is.
+
+    **A landform has courses; it does not have a face.** With no rim, no surface bucket and no wall the
+    painter leaves one `Fill` band spanning the whole column over the bedrock, and a `layered` material on
+    the depth axis is then the courses themselves — depth 0 is the top block. A wall is the other model: it
+    paints the exposed riser in one material, which draws every drop as a cut face and every plateau
+    boundary as a line, and a hillside is neither. Stated this way the ground reads as what it is made of
+    all the way down, and a cut through it shows soil over subsoil over rock rather than a rind."""
+    bands = [{"material": material, "thickness": thickness} for material, thickness in courses]
+    stone = {"kind": "solid", "id": 1, "data": 0}
+    return {
+        "bedrock": {"relative": False, "value": 1},
+        "rim": {"enabled": False, "depth": 1, "material": stone},
+        "surface": {"enabled": False, "depth": 1, "material": stone},
+        "wall": stone,
+        "wallEnabled": False,
+        "wallOnTerrainFaces": False,
+        "fill": {"kind": "layered", "axis": "depth", "stack": {"bands": bands, "ending": "repeat"}},
+    }
 
 
 def turn(model, quarter):
@@ -244,37 +265,52 @@ ROADS = [
 # blocks (`HP3`); they are laid **1.5:2 rather than square**, staggered in depth so a street is not a row of
 # identical boxes, and turned four different ways — a rectangle with its door on the short end reads
 # differently from the same rectangle with its door on the long one, and every house facing one way is a
-# shed row rather than a town. Half the styles carry two or three storeys.
+# shed row rather than a town.
+#
+# **Four styles, and the ground decides which two a house may take.** Eleven styles over sixteen plots is a
+# catalogue rather than a town: nothing recurs, so nothing reads as belonging anywhere. Each ground now
+# carries a pair, and a pair is enough — two roofs alternating down a street is a settlement, one is a
+# terrace and four is a sample book.
+#
+# | ground | the two it takes |
+# |---|---|
+# | the meadow — town, terrace row, hill, settlements | `@17h-hall` red-brick gable · `@sb-spawn` stone gable |
+# | the quay and the port, where the cars stand | `@17h-hall` red-brick gable · `@sn-compass-well` diorite and blue clay |
+# | the dock and the terracotta fields | `@hoar-longhall` white gable · `@sb-spawn` stone gable |
+#
+# The footprints are untouched: a plot is a position the board's ground was searched for, and a style change
+# is not a reason to re-search one.
 #
 # **Every plot is a position the board's own ground was searched for**: the `ground` layer carries every
 # column of the plot and a two-block ring, the rise across that stays under the building's own height
 # (`DR-SLOPE`), it clears the roads (`DR-CROSS`), it clears every other plot's claim (`DR-CLAIM`) and it
 # stands outside the +-10-block square a destroy goal keeps clear (`DressingScope.GoalStandoff`, `OB19`).
 HOUSES = [
-    # The dock town, kept where it was: the sailmaker and the cooperage in the yard behind the crane.
-    ("sailmaker",      "@hoar-steading",   ( -69,  45), ( -60,  57), "posZ"),
-    ("cooperage",      "@wh-shed",         ( -53,  46), ( -42,  55), "negX"),
+    # The dock town, on the meadow: the sailmaker and the cooperage in the yard behind the crane.
+    ("sailmaker",      "@sb-spawn",        ( -69,  45), ( -60,  57), "posZ"),
+    ("cooperage",      "@17h-hall",        ( -53,  46), ( -42,  55), "negX"),
     # The quay east of the goal dock: a harbour office at the water, and a store along from it.
     ("harbour-office", "@sn-compass-well", (   5,  19), (  16,  32), "negZ"),
-    ("quay-store",     "@kr-deck",         (  35,  21), (  44,  29), "posX"),
+    ("quay-store",     "@17h-hall",        (  35,  21), (  44,  29), "posX"),
     # The row across the middle, which is the one thing joining the two towns.
-    ("arcade-w",       "@terrace",         ( -12,  46), (   2,  53), "negZ"),
-    ("arcade-e",       "@terrace",         (  16,  46), (  30,  53), "posZ"),
+    ("arcade-w",       "@sb-spawn",        ( -12,  46), (   2,  53), "negZ"),
+    ("arcade-e",       "@17h-hall",        (  16,  46), (  30,  53), "posZ"),
     # The upland: a barn on the hill's own shoulder, and the back settlement flattened into it.
-    ("granary",        "@17h-barn",        ( -40,  75), ( -29,  86), "negX"),
-    ("counting",       "@wh-count",        (  28,  82), (  37,  91), "posZ"),
+    ("granary",        "@17h-hall",        ( -40,  75), ( -29,  86), "negX"),
+    ("counting",       "@sb-spawn",        (  28,  82), (  37,  91), "posZ"),
     ("upland-hall",    "@17h-hall",        (  55,  66), (  66,  80), "posX"),
     # The field the balloon flies off, which the drawn coast made room on: five, so it reads as somewhere
     # rather than as the ground beside somewhere.
-    ("balloon-shed",   "@wh-shed",         ( -81,  18), ( -69,  27), "posZ"),
-    ("balloon-store",  "@kr-deck",         ( -64,  20), ( -55,  28), "negZ"),
-    ("field-cottage",  "@cairn-cottage",   ( -94,  13), ( -86,  24), "posX"),
-    ("field-barn",     "@17h-barn",        (-103, -13), ( -92,  -1), "posZ"),
-    ("field-byre",     "@hoar-steading",   ( -79,  -8), ( -69,   1), "negX"),
+    ("balloon-shed",   "@hoar-longhall",   ( -81,  18), ( -69,  27), "posZ"),
+    ("balloon-store",  "@sb-spawn",        ( -64,  20), ( -55,  28), "negZ"),
+    ("field-cottage",  "@hoar-longhall",   ( -94,  13), ( -86,  24), "posX"),
+    ("field-barn",     "@sb-spawn",        (-103, -13), ( -92,  -1), "posZ"),
+    ("field-byre",     "@hoar-longhall",   ( -79,  -8), ( -69,   1), "negX"),
     # The port, beside the car park.
-    ("warehouse",      "@hoar-longhall",   (  99,  18), ( 110,  32), "posZ"),
-    ("port-office",    "@townside",        (  90,  39), (  99,  50), "posX"),
+    ("warehouse",      "@sn-compass-well", (  99,  18), ( 110,  32), "posZ"),
+    ("port-office",    "@17h-hall",        (  90,  39), (  99,  50), "posX"),
 ]
+
 
 # `(x, z, species, height)`. The field the balloon flies off, the hill behind the town, the back
 # settlement's own green — and then the wood on the upland the spawn stands in.
@@ -368,18 +404,20 @@ STAIR_LAND = 5      # along the landing at its head
 # differences.
 #
 # **The back face carries a pair, and the second is the first turned about.** One flight is a way up; two
-# facing away from each other, eleven blocks of wall between their heads, is a choice of which way to go up
-# — and the feet land at opposite ends of the frontage, so a player meeting the wall anywhere takes the
-# nearer. The water face carries one, because the frontage east of the car park is not wide enough for two
-# and a stair over the cars is a stair in the car park.
+# climbing away from each other is a choice of which way to go up. **The two flights face each other and the
+# landings go to the ends**: a landing is a solid block the full height of the face, so a pair of them in the
+# middle reads as two towers standing off the wall, while at the ends they read as the wall — and what a
+# player walking the port then meets in the middle is stairs rather than masonry. Eleven blocks of port
+# between the two feet. The water face carries one, because the frontage east of the car park is not wide
+# enough for two and a stair over the cars is a stair in the car park.
 #
 # **A flight is stone and a landing is the ground it joins.** The steps are the port's own masonry carried
 # up the face, so they read as built; the landing is the last block before a player is simply on the field
 # or in the settlement, and paving it as that ground is what stops the climb ending on a grey plate.
 STAIRS = [
     ("field-stair",   7, (77, 16), +1, "head"),
-    ("ridge-stair-w", 8, (49, 51), +1, "back"),
-    ("ridge-stair-e", 8, (85, 51), -1, "back"),
+    ("ridge-stair-w", 8, (61, 51), -1, "meadow"),
+    ("ridge-stair-e", 8, (73, 51), +1, "meadow"),
 ]
 
 
@@ -410,26 +448,29 @@ def stairs():
                         "shapeIds": [shape["id"] for shape in shapes]}]}
 
 THEMES = {
+    # **Two grounds are built and take a face; the rest are landforms and take a stack.** A quay is masonry
+    # with a kerb along its edge and a cut face where it drops to the water, and the seabed shelves into the
+    # basin the same way — both want a surface, a wall and, on the quay, a rim. Grass, terracotta and a
+    # working dock want none of that: a wall paints every riser as one material and a rim draws a line round
+    # every plateau, which turns a hillside into a diagram of itself. Those three are stated as courses
+    # instead, read down from the top block, the last repeating to the bedrock.
+    #
     # **No ground a prop stands on is finished in a style whose palette holds wool.** The dressing pass reads
     # a wool-topped column as a stamp rather than terrain and declines everything on it (`DR-KEEP`), so a
     # quay paved in `white stone cells` or a hill turfed in `grass clay surface dark` takes no crate, no tree
-    # and no house however flat it is. Every surface and wall below is drawn from the wool-free half of the
-    # library, which is 159 of its 168 styles.
-    #
-    # **The two built grounds take a rim and the five landscapes do not.** A quay is masonry and a kerb along
-    # its edge is a kerb; grass, terracotta and a seabed have no such line, and capping every plateau
-    # boundary on them draws the plan back over the ground it was supposed to become.
+    # and no house however flat it is. The rule is about the TOP block, which is why `stone dark voronoi` is
+    # fine as a remainder: nothing stands on ground four courses down.
     "quay":   ground(style("oldstone · fill"), style("stone fractal"),
                      {"kind": "solid", "id": 98, "data": 0}),
-    "dock":   ground(style("terracotta with dirt"), style("stone fractal"),
-                     {"kind": "solid", "id": 5, "data": 1}),
-    # Clay turf rather than `all green`: `all green` mixes wool into its palette, the dressing pass reads
-    # wool as a stamp's own block, and a tree on it is declined as built ground rather than terrain.
-    "town":   ground(style("grass clay surface"), style("dirt clay fill")),
-    "ridge":  ground(style("meadow · surface"), style("stone fractal")),
-    "back":   ground(style("oldstone · surface"), style("stone fractal")),
-    "head":   ground(style("rust cells"), style("stone fractal")),
     "seabed": ground(style("all sand"), style("dirt fractal")),
+
+    # **One grass, not three.** `grass clay surface`, `oldstone · surface` and `meadow · surface` were three
+    # greens doing one job, and a player crossing from the town to the hill to the back settlement read three
+    # grounds where the board means one. The meadow is what survives, and it carries the whole upland — the
+    # dock town, the terrace row, the hill, the spawn's approach and the settlements behind it.
+    "meadow": layers((style("meadow · surface"), 1), (style("dirt fractal"), 3), (style("stone fractal"), 1)),
+    "head":   layers((style("rust cells"), 2), (style("dirt fractal"), 3), (style("stone dark voronoi"), 1)),
+    "dock":   layers((style("dirt fractal"), 2), (style("stone dark voronoi"), 1)),
 
     # A made thing is painted in solids: the painter's buckets are a model of ground — a rim capping every
     # plateau boundary, a wall down every riser — and a curved form is nothing but boundaries, so a shaded
@@ -714,8 +755,8 @@ def finish(add_layers):
     return {
         "authors": ["Opus 5"],
         "created": "2026-08-29",
-        "themeByHeight": {str(BASIN): "seabed", str(DOCK): "dock", str(QUAY): "quay", str(TOWN): "town",
-                          str(HEAD): "head", str(RIDGE): "ridge", str(BACK): "back"},
+        "themeByHeight": {str(BASIN): "seabed", str(DOCK): "dock", str(QUAY): "quay", str(TOWN): "meadow",
+                          str(HEAD): "head", str(RIDGE): "meadow", str(BACK): "meadow"},
         "mapTheme": "quay",
         "themes": THEMES,
         "shapePropsById": shaped,

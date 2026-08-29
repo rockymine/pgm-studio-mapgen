@@ -20,8 +20,8 @@ Made things, each stated a different way, which is the point of the board:
 | crane ×2 | 810 | 4 | 107 | `seat: ground` — settles onto the dock, jib out over the water |
 | mini car ×8 | 208 | 4 | 19 | parks — an absolute floor at the port's own surface, four boxes and four cubes, 11 × 5 × 6 |
 
-Beside them: sixteen houses from the style library, fifty-four trees, five crates, five roads, a harbour
-and six flights of stairs.
+Beside them: sixteen houses over **four** styles, fifty-four trees, five crates, five roads, a harbour and
+six flights of stairs.
 
 **A car parks rather than seats, and that is one course.** A seat lands a made thing's lowest course on the
 ground's own top block — right for a building whose foundation cuts into the surface, and a course too low
@@ -83,14 +83,17 @@ thing it serves. Measured on the built board at `z 16..20`, the water face:
 stands five blocks east of the car park rather than two, because a stair a player has to squeeze past a
 bumper to reach is a stair in the car park.
 
-**The back face carries a pair, and the second is the first turned about.** One flight is a way up; two of
-them facing away from each other, with eleven blocks of plain wall between their heads, is a choice of which
-way to go up — and because the feet land at opposite ends of the frontage, a player meeting the wall
-anywhere takes the nearer. Measured at `z 51..55`:
+**The back face carries a pair, and the second is the first turned about.** One flight is a way up; two
+climbing away from each other is a choice of which way to go up. Measured at `z 51..55`:
 
-| x | 44–48 | 49–56 | 57–61 | 62–72 | 73–77 | 78–85 | 86–92 |
+| x | 44–48 | 49–53 | 54–61 | 62–72 | 73–80 | 81–85 | 86–92 |
 |---|---|---|---|---|---|---|---|
-| top | 21 | 22→29 | 29 | 21 | 29 | 29→22 | 21 |
+| top | 21 | 29 | 29→22 | 21 | 22→29 | 29 | 21 |
+
+**The flights face each other and the landings go to the ends**, which is the author's call and the right way
+round: a landing is a solid block the full height of the face, so a pair of them in the middle reads as two
+towers standing off the wall, and at the ends they read as the wall itself. What a player walking the port
+meets in the middle is then stairs rather than masonry, with eleven blocks of port between the two feet.
 
 The water face takes one flight and not two, because the frontage east of the car park is 22 blocks and a
 pair wants 35 — the room is there only west of the cars, and a stair over them is the thing the first move
@@ -99,9 +102,9 @@ was undoing.
 **A flight is stone and a landing is the ground it joins.** The treads are the port's own masonry carried up
 the face, so the climb reads as built; the landing is the last block before a player is simply on the field
 or in the settlement, so it is paved as that ground — the terracotta of the field on the water side, the
-settlement's own green-over-grey on the back. Measured on the built board, the field landing comes back
-`#a05325` against the field's `#a05325` at `z 15`, and a tread `#7a7a7a`. What it stops is a climb ending on
-a grey plate somebody has to notice is not a floor.
+meadow on the back. Measured on the built board, the field landing comes back `#a05325` against the field's
+`#a05325` at `z 15`, and a tread `#7a7a7a`. What it stops is a climb ending on a grey plate somebody has to
+notice is not a floor.
 
 Every flight and every landing is marked `keepClear`, which is what the word is for — a shape drawn to *be*
 something is terrain by construction and indistinguishable from the ground beside it, so without it a road
@@ -131,6 +134,57 @@ building's claim by its own crown, and outside the objectives' standoff. Zero de
 What it bought is traffic: **decorated ground went 6,719 → 9,452 columns and the dead share 25.9% → 19.3%**,
 because ground a player has reason to walk through is not dead ground.
 
+## The ground is a stack, not a face
+
+**Two grounds on this board are built and five are landforms, and they want different models.** A theme can
+paint a column two ways: as a *face* — a one-course surface, a wall down every exposed riser, and a rim
+capping the plateau boundaries — or as a *stack* of courses read down from the top block. The quay and the
+seabed take the face, because a quay is masonry with a kerb along its edge and a cut wall where it drops to
+the water, and the basin shelves the same way. Everything else takes the stack.
+
+**What a wall does to a landform is draw it as a diagram of itself.** It paints every exposed riser in one
+material, so a hillside comes out with a rind on it and a rim `rimEdges: "boundary"` caps every plateau the
+paint can tell apart — including a face against a structure and against level ground. A hill is not a thing
+with a face; it is a thing made of something, all the way down. So the three landforms are stated as courses
+and the painter is left one `Fill` band spanning the whole column, over which a `layered` material on the
+depth axis *is* the courses:
+
+| ground | 0 | 1 | 2 | 3 | 4 | remainder |
+|---|---|---|---|---|---|---|
+| meadow | `meadow · surface` | `dirt fractal` | `dirt fractal` | `dirt fractal` | `stone fractal` | `stone fractal` |
+| terracotta | `rust cells` | `rust cells` | `dirt fractal` | `dirt fractal` | `dirt fractal` | `stone dark voronoi` |
+| dock | `dirt fractal` | `dirt fractal` | `stone dark voronoi` | | | `stone dark voronoi` |
+
+Read back off the built world at `(−50, 62)`: grass, dirt, granite, granite, cobble — soil over subsoil over
+rock, which is what a cut through a hill should show. At `(−88, 5)`: granite, granite, dirt, dirt, spruce,
+gravel. The last band repeats, so it is the remainder however deep the ground runs.
+
+**And one green, not three.** `grass clay surface`, `oldstone · surface` and `meadow · surface` were three
+greens doing one job, and a player crossing from the dock town to the hill to the back settlement read three
+grounds where the board means one. The meadow is what survives and it carries the whole upland — the dock
+town, the terrace row, the hill, the spawn's approach and the settlements behind it. Sampled off the claims
+it comes back `#79c05a` on 79–95% of its columns with `#5d421f` podzol in the rest, and that one figure now
+answers for all three.
+
+## The town is four roofs, not eleven
+
+Eleven styles over sixteen plots is a catalogue rather than a town: nothing recurs, so nothing reads as
+belonging anywhere. Four survive, and **the ground decides which two a plot may take** — a pair is enough,
+because two roofs alternating down a street is a settlement while one is a terrace and four is a sample book.
+
+| ground | the two it takes | the plots |
+|---|---|---|
+| the meadow | `@17h-hall` red-brick gable · `@sb-spawn` stone gable | cooperage, arcade-e, granary, upland-hall · sailmaker, arcade-w, counting |
+| the quay and the port | `@17h-hall` · `@sn-compass-well` diorite and blue clay | quay-store, port-office · harbour-office, warehouse |
+| the terracotta fields | `@hoar-longhall` white gable · `@sb-spawn` stone gable | balloon-shed, field-cottage, field-byre · balloon-store, field-barn |
+
+**No plot moved.** A footprint is a position the board's ground was searched for and a style change is not a
+reason to re-search one, so the sixteen rectangles, their fronts and their claims are exactly what they were:
+zero declined, and the same seven units raise the same fourteen `WX11`.
+
+`@sb-spawn` is the spawn hall's own style, which is why it recurs: the room a team leaves from is a building
+of the same town rather than a shape from somewhere else.
+
 ## Where the goals stand, and what the bands say
 
 `Crane` stands on the dock beside the crane it is named for; `Car Park` stands at the corner of the port's
@@ -157,15 +211,12 @@ model, and this board is the measurement that says what a pair of them costs.
 
 ## What the board taught
 
-- **A landscape takes no rim.** `rimEdges: "boundary"` caps every plateau boundary — a face against a
-  structure and against level ground the paint calls a different plateau included. On a stone quay that is a
-  kerb; on grass and on terracotta it draws the plan back over the ground it was supposed to become. The two
-  built grounds keep their rim and the five landscapes state none, so the surface runs to the edge.
-- **A ground style built from wool is unplantable.** The dressing pass reads a wool-topped column as a stamp
-  and declines everything on it (`DR-KEEP`). Nine of the library's 168 styles carry wool in their palette,
-  and three of them were this board's surfaces: `white stone cells` paved the quay and the port,
-  `stone dark voronoi` walled every riser, `grass clay surface dark` turfed the hill. Every surface here is
-  now drawn from the wool-free 159.
+- **A ground style built from wool is unplantable — and the rule is about the top block.** The dressing pass
+  reads a wool-topped column as a stamp and declines everything on it (`DR-KEEP`). Nine of the library's 168
+  styles carry wool in their palette, and three of them were this board's surfaces: `white stone cells` paved
+  the quay and the port, `stone dark voronoi` walled every riser, `grass clay surface dark` turfed the hill.
+  Every surface is drawn from the wool-free 159 now — but `stone dark voronoi` is back as the *remainder*
+  under the terracotta and the dock, because nothing is planted on ground four courses down.
 - **A footing needs a foundation under it.** Thirty-two library styles rang a one-course plate with a
   footing, which `HS7` calls a one-block rim round a building with nothing beneath it. Their plates are two
   courses now.

@@ -270,7 +270,18 @@ def renders(into, slug, finish, layout, drawn, flow):
             written.append(name)
             print(f"  ISO   {name:<44} {blocks} blocks, {faces} drawn, {size[0]}x{size[1]} px")
 
-    print(f"    {len(written)} render(s) -> {into}")
+    # **And what this run did NOT write goes.** The pictures are keyed by what the board holds — a theme per
+    # id, a house per distinct style, keyed by the FIRST plot using it — so a theme renamed, a style dropped
+    # or a plot restyled leaves its old picture behind under a key nothing produces any more. It reads
+    # perfectly and is of a house that is not there, which is the exact failure a stale document is. A render
+    # directory is this run's output and not an accumulation of every run's, so the sweep is part of writing
+    # it rather than a thing to remember.
+    swept = [name for name in sorted(os.listdir(into))
+             if os.path.isfile(os.path.join(into, name)) and name not in set(written)]
+    for name in swept:
+        os.remove(os.path.join(into, name))
+    print(f"    {len(written)} render(s) -> {into}"
+          + (f"   swept {len(swept)}: {', '.join(swept)}" if swept else ""))
 
 
 def bend(ring, k=0.22, wander=3.0, step=10, seed=5):
