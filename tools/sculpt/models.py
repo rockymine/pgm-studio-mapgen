@@ -777,9 +777,16 @@ def balloon():
     burner = union(cylinder(0, 0, 1.6, 8, 11), cylinder(0, 0, 2.4, 11, 12))
     flame = cylinder(0, 0, 1.2, 12, 13)
 
+    # The rigging is two runs per corner: the basket's own lines drawing in to the load ring at y14, and the
+    # load tapes carrying on from the ring to the envelope. **A tape ends ON the skin.** The profile passes
+    # radius 13 at y29, so that is where the second run stops — 2.55 times the corner's own offset, which
+    # lands it within a fifth of a block of the fabric. Aimed anywhere else it is a black stick in the air:
+    # ending at y20.5 put its tip eight blocks outside a skin that is only 5 wide there, and the run came out
+    # at 51 degrees off the vertical because that is what reaching that far in six blocks of climb costs. At
+    # 28 degrees it runs a block clear of the fabric the whole way up and meets it at the shoulder.
     cables = union(*[tube([(x, 6.5, z), (x * 0.9, 14, z * 0.9)], 0.5)
                      for x in (-3.6, 3.6) for z in (-3.6, 3.6)],
-                   *[tube([(x, 14, z), (x * 2.6, 20.5, z * 2.6)], 0.5)
+                   *[tube([(x, 14, z), (x * 2.55, 29, z * 2.55)], 0.5)
                      for x in (-3.6, 3.6) for z in (-3.6, 3.6)])
     sandbags = union(*[ellipsoid(x, 1.4, z, 1.4, 1.2, 1.4) for x, z in ((-5.0, 0), (5.0, 0))])
 

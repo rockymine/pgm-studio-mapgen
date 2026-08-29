@@ -217,6 +217,21 @@ model, and this board is the measurement that says what a pair of them costs.
   the quay and the port, `stone dark voronoi` walled every riser, `grass clay surface dark` turfed the hill.
   Every surface is drawn from the wool-free 159 now — but `stone dark voronoi` is back as the *remainder*
   under the terracotta and the dock, because nothing is planted on ground four courses down.
+- **A road is the lane, so the lane's keep-out must not stop it.** The spawn road is authored to `(0, 114)`,
+  inside the spawn's own piece, and it paved 228 cells — narrowing from seven wide to one and ending at
+  `z 100`, twelve blocks short. The cause is the door approach: twenty blocks out from the room's face, in
+  the keep-out mask, and `PlaceStroke` was reading the whole of that mask. But the mask is about things that
+  **stand** on ground, and a stroke stands on nothing — it replaces one course of finish, and in front of a
+  door it *is* the ground the approach is being kept clear for. A stroke now reads `KeepOut.Structure` alone,
+  which is a room floor, a wall, an iron cube or a shape that marked itself `keepClear`; a stamped column is
+  caught by the pass's own per-cell test instead, with no margin, so the road runs to the wall and stops at
+  the wall. **367 cells now, full width, into the hall's doorstep at `z 116`.**
+- **A tube aimed at a curved surface has to be aimed at where the surface is.** The balloon's load tapes ran
+  from the load ring at y14 out to radius 13.2 at y20.5 — but the envelope's profile is only 5.1 wide there,
+  so every tape ended **8.2 blocks outside the fabric**, four black sticks fanning into the air at 51° off
+  the vertical. The profile passes radius 13 at y29, so that is where a tape ends now: 28° off the vertical,
+  a block clear of the skin the whole way up and meeting it at the shoulder. Measured on the model, tape
+  blocks touching the envelope went **0 → 24**.
 - **A footing needs a foundation under it.** Thirty-two library styles rang a one-course plate with a
   footing, which `HS7` calls a one-block rim round a building with nothing beneath it. Their plates are two
   courses now.
