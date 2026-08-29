@@ -1,0 +1,17 @@
+{
+  "plan": 1,
+  "meta": { "name": "Fellmoor Common" },
+  "globals": { "cell": 5, "symmetry": "rot_180", "maxPlayers": 16, "surface": 9 },
+  "pieces": [
+    { "id": "spawn", "role": "spawn", "rect": [-2, 21, 4, 4], "surface": 13 },
+    { "id": "lane",  "role": "piece", "rect": [-4, 2, 8, 19] }
+  ],
+  "zones": [
+    { "id": "crossing", "rect": [-8, 0, 16, 2] }
+  ],
+  "placements": {
+    "spawns": [ { "id": "spawn-1", "piece": "spawn", "at": [2, 2], "facing": "front" } ],
+    "destroyables": [ { "id": "cairn-1", "piece": "lane", "at": [4, 10.5],
+                        "style": "pillar-3", "materials": "obsidian" } ]
+  }
+}
