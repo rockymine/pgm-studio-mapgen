@@ -107,13 +107,17 @@ def native(made, mirrors):
 def build():
     add_layers, table = [], []
 
+    # The stack is written bottom-up, and that is not cosmetic: the painter walks the layers in document
+    # order and each pass resolves its bands from the bedrock course to its own top, so a made thing listed
+    # before the plinth it stands on paints the plinth in its own material before the plinth's pass runs.
+    add_layers += native(props.ziggurat("colossus-plinth", 0, 0, 15, SURFACE, 3, 1, 4, "granite",
+                                        mirrors=False, name="Colossus plinth"), mirrors=False)
+
     # The colossus stands on the symmetry centre, so it is its own image and is drawn once.
     colossus = place(models.robot(), (0, SURFACE + 3, 0), ROBOT_THEME)
     made, row = sculpted("colossus", colossus, mirrors=False)
     add_layers += made
     table.append(("colossus", row))
-    add_layers += native(props.ziggurat("colossus-plinth", 0, 0, 15, SURFACE, 3, 1, 4, "granite",
-                                        mirrors=False, name="Colossus plinth"), mirrors=False)
 
     # Two sentinels flank each spawn approach, facing the middle of the board. Authored on the north half
     # and fanned, which is what the mirror is for.

@@ -121,15 +121,25 @@ down every exposed riser, a rim capping every plateau boundary. A curved voxel f
 boundaries, so a three-tone theme speckles the whole surface of a sphere. Every piece here therefore states a
 **solid** theme, one block a material, and lets the geometry do the reading. The ground keeps its shading.
 
-Two smaller facts cost time and are worth writing down:
+**A pass resolves its bands from the bedrock course up to its own top** — the right model for ground and
+nonsense for a sculpture flying at y24, whose fill band then claims the whole column beneath it. Only the
+stone-only invariant stops the damage, and that makes two things load-bearing that do not look it.
 
-- **Never theme a sculpture in plain stone.** The painter's stone-only invariant means a stone theme writes
-  nothing and leaves its cells still stone, so the next layer's pass paints straight through them. A pillar
-  themed in stone standing on ground themed in stone came out entirely as the pillar's material, floor
-  included.
-- **`bedrock` clamps to at least one course.** `BedrockSpec.PaintFloor` is `clamp(value, 1, surfaceTop)`, so
-  y=0 is bedrock wherever a column has ground at all. It never reaches a prop standing above the terrain, and
-  a prop that starts at y=0 will have a bedrock sole.
+**The layer list has to be written bottom-up.** The painter walks the layers in document order, so a made
+thing listed before the plinth it stands on paints that plinth in its own material and the plinth's own pass
+then finds nothing left to do. `opus5-automaton`'s colossus did exactly that — brass at y9–11 where the
+granite ziggurat should be — until the plinth was moved ahead of it in `addLayers`. `WE56` is the fix that
+removes the hazard: a prop layer resolving its bands over its own span rather than the whole column.
+
+**The stone-only invariant was over the id and not the block, and that was a defect** (`WE58`, fixed). Stone's
+id is shared by granite, diorite, andesite and their polished forms, so a course a lower layer had already
+finished in one of those still read as stone and the pass above painted through it: a plinth in polished
+diorite under a red car came back red at y1–5, while the same plinth in sandstone came back sandstone. The
+read now compares `(id, data)` against `(Stone, 0)`, which is what the write beside it always compared.
+
+Beside them, one smaller fact: **`bedrock` clamps to at least one course.** `BedrockSpec.PaintFloor` is
+`clamp(value, 1, surfaceTop)`, so y=0 is bedrock wherever a column has ground at all. It never reaches a prop
+standing above the terrain, and a prop that starts at y=0 will have a bedrock sole.
 
 ## 5. Where it stops
 

@@ -142,6 +142,66 @@
    }
   },
   {
+   "id": "colossus-plinth",
+   "name": "Colossus plinth",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "type": "rectangle",
+      "min_x": -15,
+      "min_z": -15,
+      "max_x": 15,
+      "max_z": 15,
+      "floor": 9,
+      "base_height": 1,
+      "theme": "granite",
+      "id": "colossus-plinth-0",
+      "operation": "add",
+      "keepClear": true
+     },
+     {
+      "type": "rectangle",
+      "min_x": -11,
+      "min_z": -11,
+      "max_x": 11,
+      "max_z": 11,
+      "floor": 9,
+      "base_height": 2,
+      "theme": "granite",
+      "id": "colossus-plinth-1",
+      "operation": "add",
+      "keepClear": true
+     },
+     {
+      "type": "rectangle",
+      "min_x": -7,
+      "min_z": -7,
+      "max_x": 7,
+      "max_z": 7,
+      "floor": 9,
+      "base_height": 3,
+      "theme": "granite",
+      "id": "colossus-plinth-2",
+      "operation": "add",
+      "keepClear": true
+     }
+    ],
+    "islands": [
+     {
+      "id": "colossus-plinth-body",
+      "name": "Colossus plinth",
+      "mirrors": false,
+      "shapeIds": [
+       "colossus-plinth-0",
+       "colossus-plinth-1",
+       "colossus-plinth-2"
+      ]
+     }
+    ]
+   }
+  },
+  {
    "id": "colossus-L0",
    "name": "colossus run 0",
    "base_y": 0,
@@ -10868,66 +10928,6 @@
       "mirrors": false,
       "shapeIds": [
        "colossus-745"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "id": "colossus-plinth",
-   "name": "Colossus plinth",
-   "base_y": 0,
-   "layout": {
-    "shapes": [
-     {
-      "type": "rectangle",
-      "min_x": -15,
-      "min_z": -15,
-      "max_x": 15,
-      "max_z": 15,
-      "floor": 9,
-      "base_height": 1,
-      "theme": "granite",
-      "id": "colossus-plinth-0",
-      "operation": "add",
-      "keepClear": true
-     },
-     {
-      "type": "rectangle",
-      "min_x": -11,
-      "min_z": -11,
-      "max_x": 11,
-      "max_z": 11,
-      "floor": 9,
-      "base_height": 2,
-      "theme": "granite",
-      "id": "colossus-plinth-1",
-      "operation": "add",
-      "keepClear": true
-     },
-     {
-      "type": "rectangle",
-      "min_x": -7,
-      "min_z": -7,
-      "max_x": 7,
-      "max_z": 7,
-      "floor": 9,
-      "base_height": 3,
-      "theme": "granite",
-      "id": "colossus-plinth-2",
-      "operation": "add",
-      "keepClear": true
-     }
-    ],
-    "islands": [
-     {
-      "id": "colossus-plinth-body",
-      "name": "Colossus plinth",
-      "mirrors": false,
-      "shapeIds": [
-       "colossus-plinth-0",
-       "colossus-plinth-1",
-       "colossus-plinth-2"
       ]
      }
     ]
@@ -26082,5 +26082,6 @@
   }
  },
  "dressing": null,
+ "biome": null,
  "relief": null
 }
