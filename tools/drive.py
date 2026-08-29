@@ -238,9 +238,13 @@ def renders(into, slug, finish, layout, drawn, flow):
     for name, route in (
         ("world-topdown.png", "render/topdown"),
         ("world-ground.png", "render/topdown?layer=ground&material=1"),
-        ("world-structure.png", "render/topdown?layer=structure"),
-        ("world-foliage.png", "render/topdown?layer=foliage"),
-        ("world-objectives.png", "render/topdown?layer=objectives"),
+        # `subject` is the category asked about; `layer` is the sketch storey. A board whose storeys are a
+        # ground plus a made thing's runs has no storey called "structure", so asking by `layer` for one is
+        # `RQ4` and no picture at all.
+        ("world-structure.png", "render/topdown?subject=structure"),
+        ("world-made.png", "render/topdown?subject=made"),
+        ("world-foliage.png", "render/topdown?subject=foliage"),
+        ("world-objectives.png", "render/topdown?subject=objectives"),
         ("world-heightmap.png", "render/heightmap"),
         ("world-surface.png", "render/surface"),
         ("world-traversability.png", "render/traversability"),
@@ -249,6 +253,22 @@ def renders(into, slug, finish, layout, drawn, flow):
         ("world-section-z0.png", "render/section?axis=z&at=0&from=-120&to=120"),
     ):
         png(name, "GET", f"/map/{slug}/{route}")
+
+    # And the board in the round. Every read above is a plan — a diagram of one question, drawn from above —
+    # and a plan cannot say whether a thing has the bulk it should: a ship is a ship-shaped patch of planks
+    # until it is seen with its masts up. The picture is drawn here rather than fetched because the studio
+    # answers columns, not cameras; `tools/render/iso.py` turns the one into the other, off the same payload
+    # the decline list was read from, so what is drawn is what was built.
+    _, columns = call("POST", f"/map/{slug}/sketch/columns", layout, fatal=False)
+    if isinstance(columns, dict) and columns.get("cols"):
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "render"))
+        import iso
+        for name, quarter in (("world-iso.png", 0), ("world-iso-turned.png", 1)):
+            blocks, faces, size = iso.isometric(
+                columns, os.path.join(into, name), scale=3, margin=30, quarter=quarter,
+                title=None, caption=f"{slug} - isometric, {'south-east' if quarter == 0 else 'south-west'}")
+            written.append(name)
+            print(f"  ISO   {name:<44} {blocks} blocks, {faces} drawn, {size[0]}x{size[1]} px")
 
     print(f"    {len(written)} render(s) -> {into}")
 

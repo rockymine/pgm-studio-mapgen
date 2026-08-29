@@ -82,16 +82,16 @@ PLAN = {
         # passes the iron instead of walking into it. `ST2` complains that it is off the spawn piece, which
         # is the author's call — a stamped spawn has a doorway, and a chest in a doorway is in the way.
         "iron":   [{"id": "iron-1", "piece": "fore-spawn", "at": [11.0, 2.0]}],
-        # One goal on the middle dock and one in front of the back settlement, which is the author's own
-        # composition: the two a team defends stand at opposite corners of its ground rather than side by
-        # side. The dock goal is a FORWARD objective and reads outside `GO1`/`GO4`, and its own mirror is
+        # One goal on the dock beside the crane and one at the corner of the port's car park, which is the
+        # author's own composition: the two a team defends stand at opposite corners of its ground rather
+        # than side by side, and each is named for what it stands at. The dock goal is a FORWARD objective and reads outside `GO1`/`GO4`, and its own mirror is
         # under `GO3` — the bands are written for two goals in a defender's rear, and this board is the
         # measurement that says what a forward one costs. `review/opus5-slipway.md` carries the numbers.
         "destroyables": [
             {"id": "destroyable-1", "style": "pillar-2", "at": [-6.0, 6.5], "materials": "obsidian",
-             "float": 2, "name": "The Careening Beam"},
-            {"id": "destroyable-2", "style": "pillar-2", "at": [ 9.0, 13.0], "materials": "obsidian",
-             "float": 2, "name": "The Powder House"},
+             "float": 2, "name": "Crane"},
+            {"id": "destroyable-2", "style": "pillar-2", "at": [10.75, 11.5], "materials": "obsidian",
+             "float": 2, "name": "Car Park"},
         ],
     },
 }
@@ -242,10 +242,10 @@ HOUSES = [
     ("cooperage",      "@wh-shed",         ( -53,  46), ( -42,  55), "negX"),
     # The quay east of the goal dock: a harbour office at the water, and a store along from it.
     ("harbour-office", "@sn-compass-well", (   5,  19), (  16,  32), "negZ"),
-    ("quay-store",     "@kr-deck",         (  21,  23), (  30,  31), "posX"),
+    ("quay-store",     "@kr-deck",         (  35,  21), (  44,  29), "posX"),
     # The row across the middle, which is the one thing joining the two towns.
     ("arcade-w",       "@terrace",         ( -12,  46), (   2,  53), "negZ"),
-    ("arcade-e",       "@terrace",         (   9,  46), (  23,  53), "posZ"),
+    ("arcade-e",       "@terrace",         (  16,  46), (  30,  53), "posZ"),
     # The upland: a barn on the hill's own shoulder, and the back settlement flattened into it.
     ("granary",        "@17h-barn",        ( -40,  75), ( -29,  86), "negX"),
     ("counting",       "@wh-count",        (  28,  82), (  37,  91), "posZ"),
@@ -264,7 +264,7 @@ HOUSES = [
 
 # The field the balloon flies off, the hill behind the town, and the back settlement's own green.
 TREES = [(-63, -12), (-86, 0), (-78, 8), (-94, 5), (11, 73), (-13, 76), (-5, 90), (0, 79), (21, 77),
-         (62, 90), (47, 69), (44, 93)]
+         (62, 90), (32, 60), (40, 63)]
 
 SPECIES = ["oak", "birch", "spruce", "oak", "birch"]
 
@@ -289,7 +289,7 @@ def crates():
                           {"kind": "solid", "id": 17, "data": 1}]}
     # Searched for like every other plot: clear of the crane's own ground, off the roads and outside the
     # dock goal's +-10 square, which a boulder standing in is `OB19`.
-    at = [(-9, 29), (-10, 21), (-2, 21), (41, 26)]
+    at = [(-9, 29), (-10, 21), (-2, 21), (27, 28), (28, 20)]
     return [{"id": f"crate-{index}", "kind": "boulder", "seed": 500 + index, "x": x, "z": z,
              "form": "angular", "size": 1.4 + 0.3 * (index % 3), "mossy": False, "rock": timber}
             for index, (x, z) in enumerate(at)]

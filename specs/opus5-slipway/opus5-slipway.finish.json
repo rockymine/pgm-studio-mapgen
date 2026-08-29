@@ -49525,12 +49525,12 @@
         "front": "posX",
         "points": [
           [
-            21,
-            23
+            35,
+            21
           ],
           [
-            30,
-            31
+            44,
+            29
           ]
         ],
         "style": "@kr-deck"
@@ -49559,11 +49559,11 @@
         "front": "posZ",
         "points": [
           [
-            9,
+            16,
             46
           ],
           [
-            23,
+            30,
             53
           ]
         ],
@@ -49845,10 +49845,44 @@
         "id": "crate-3",
         "kind": "boulder",
         "seed": 503,
-        "x": 41,
-        "z": 26,
+        "x": 27,
+        "z": 28,
         "form": "angular",
         "size": 1.4,
+        "mossy": false,
+        "rock": {
+          "kind": "cell",
+          "seed": 3,
+          "cellSize": 3,
+          "jitter": 40,
+          "warp": 2,
+          "palette": [
+            {
+              "kind": "solid",
+              "id": 5,
+              "data": 1
+            },
+            {
+              "kind": "solid",
+              "id": 5,
+              "data": 5
+            },
+            {
+              "kind": "solid",
+              "id": 17,
+              "data": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": "crate-4",
+        "kind": "boulder",
+        "seed": 504,
+        "x": 28,
+        "z": 20,
+        "form": "angular",
+        "size": 1.7,
         "mossy": false,
         "rock": {
           "kind": "cell",
@@ -49979,8 +50013,8 @@
         "id": "tree-10",
         "kind": "tree",
         "seed": 210,
-        "x": 47,
-        "z": 69,
+        "x": 32,
+        "z": 60,
         "form": "template",
         "species": "oak",
         "height": 11
@@ -49989,8 +50023,8 @@
         "id": "tree-11",
         "kind": "tree",
         "seed": 211,
-        "x": 44,
-        "z": 93,
+        "x": 40,
+        "z": 63,
         "form": "template",
         "species": "birch",
         "height": 12

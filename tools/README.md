@@ -205,7 +205,7 @@ The account of what they are for and what they found is
 | `sculpt/gallery_forms.py` · `gallery_sculpture.py` | the two boards in `sculpture/`, each printing what it cost in layers and shapes and exporting a world into the directory named as its second argument |
 | `sculpt/make_board.py` | writes `specs/opus5-automaton`'s plan and finish, props and all, for `drive.py` to build |
 | `render/png.py` | a PNG writer, a scanline polygon fill and a 5×7 face, in the standard library alone |
-| `render/iso.py` | isometric, orthographic elevation and one-panel-per-layer renders off `POST …/sketch/columns` — the built world, not the drawing |
+| `render/iso.py` | isometric, orthographic elevation and one-panel-per-layer renders off `POST …/sketch/columns` — the built world, not the drawing. `drive.py` writes two of them per spec, so every board has a picture in the round |
 | `render/preview.py` | the same isometric taken straight off a model's voxels, for correcting a proportion without a build |
 
 The studio's own 3-D preview is WebGL in the browser, so there is no way to take a picture from it; these
