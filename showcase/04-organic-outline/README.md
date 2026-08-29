@@ -81,6 +81,27 @@ the coast cannot strand a pad outright — but a pad standing proud of the shore
 wherever it is drawn, and the pre-flight's traversability walk is what proves it rather than the picture.
 A bay cut deep enough to isolate one would block the export gate, not merely look odd.
 
+## A board of several shapes redraws every ring, and the seams do not move
+
+The board under this one is one piece, so its ring is all coast and every sample is free to move. A board of
+fourteen pieces at seven surfaces compiles to a ring apiece, and on those rings an edge is one of two things.
+An edge facing the void is coast, and drawing it in shortens the coast. An edge **shared** with the
+neighbouring shape is a seam, and drawing one side of a seam in leaves a strip of void between two pieces
+that were flush — the fault looks like a coastline and is a hole.
+
+The two are told apart by what lies two blocks off the edge, so the rule is per step rather than per shape:
+walk every edge a block at a time, ask whether the cell off its outward side holds ground, take a sample at
+each original vertex, at each point where an edge changes kind, and every fourteen blocks along a run of open
+shore — and move only the samples strictly inside such a run. `opus5-slipway` is the worked example: nine
+compiled rings, of which four have no void-facing edge at all and never move, and the upland's is a
+stretched T whose notch is two vertices.
+
+**The handles need clamping on a ring like that.** Catmull-Rom's tangent is the chord between a sample's
+neighbours, which is right on this board's evenly-spaced twenty-eight and wrong where a compiled corner has
+one neighbour a block away and the other seventy: the chord swings the curve clear outside the polygon.
+Clamp each handle to `k` times its **shorter** edge, and give a sample that did not move no handle at all —
+which is also what holds a seam still.
+
 ## What it costs, measured
 
 | | `02-theme` | `04-organic-outline` |

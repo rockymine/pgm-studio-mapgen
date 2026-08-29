@@ -92,13 +92,23 @@ is the measurement that says what one costs.
   two-block neck, and `bay-town-n` took 327 out of the dock town — which is most of the reason the town
   held two houses. **Nothing failed.** The export gate walks the ground and the ground was still walkable
   round every hole, so the board built, the gate opened and the holes were only visible in a picture.
-  The coast is now derived: each bite is anchored on a cell of the board's own outer boundary, its centre
-  sits outside the board on that cell's outward normal, and its radius reaches exactly its budgeted depth
-  in. 16 bites over the whole shore, 3–8 blocks deep, **4.9% of the ground and zero enclosed void**.
-- **Ground measured for a plot must be ground with nothing on it.** A search run against the last board's
-  output reads each standing house as a seven-course rise and refuses the plot it already used. The measure
-  strips the houses, trees and boulders from the layout and keeps only what carves and claims — water and
-  roads.
+- **The outline to redraw is the one the compile already hands back.** `POST /plan/compile` fuses abutting
+  pieces of equal height into one ring apiece, and those rings are the board's silhouette: the upland here
+  is a single eight-vertex polygon — a stretched T where the spawn's approach steps back out of the hill —
+  and the notch in it is two vertices. Redrawing that ring through `shapePropsById` is `showcase/04`'s own
+  technique and it cannot make a hole, because it moves the edge rather than punching through it.
+  Subtracting lobes off the perimeter was a second answer to a question the repo had already answered.
+- **A ring has two kinds of edge and they behave oppositely.** An edge facing the void is coast: drawing it
+  in shortens the coast. An edge shared with the neighbouring shape is a **seam**: drawing one side of it in
+  leaves a strip of void between two pieces that were flush. That is why redrawing looked unavailable on a
+  fifteen-piece board at all — but the two are told apart by what lies two blocks off the edge, so every
+  step of every ring is classified, a sample is taken where an edge changes kind, and only samples strictly
+  inside a run of open shore move.
+- **Catmull-Rom's tangent is the chord between a sample's neighbours, which is wrong on an uneven ring.** A
+  compiled corner has one neighbour a block away and the other seventy, so the chord swings the curve clear
+  outside the polygon: unclamped handles bit a 20-cell hole out of the town at `x −34..−28, z 37..43` and
+  left `destroyable-2` standing 6 blocks proud. A handle is clamped to a fraction of its shorter edge and a
+  sample that was not drawn in gets none, which is also what keeps a seam a seam.
 - **`HP3` caps a placed building at 192 blocks of footprint, inclusive of both corners** — an 11 × 15 plot
   is 12 × 16 = 192 exactly and a 12 × 15 is 208 and refuses.
 - **`LN2` measures a chain of collinear rects, not a piece.** Rects sharing a cross-axis interval and
@@ -114,7 +124,7 @@ Two are the author's own calls and one is cosmetic:
 |---|---|---|
 | `ST2` | 1 | the iron stands outside the spawn piece, beside its door lane — the author asked for it there |
 | `SP8` | 1 | the spawn's egress steps two blocks at `fore-spawn`–`spawn` |
-| `WX11` | 10 | five houses stand 2–4 blocks above the cell beside them, showing that much foundation |
+| `WX11` | 10 | five houses stand 2–3 blocks above the cell beside them, showing that much foundation |
 
 The ten `WX11` are all doorstep-sized. The ones that mattered — a shed reading as a 53-block bedrock tower
 because a balloon flew over it — were a defect in what the check read, not in where the house stood
@@ -122,6 +132,6 @@ because a balloon flew over it — were a defect in what the check read, not in 
 
 ## Coverage
 
-`reached 20,611 · decorated 5,559 · dead 10,232 of 36,402 = 28.1% dead`. The largest dead patches are the
+`reached 20,635 · decorated 5,504 · dead 9,769 of 35,908 = 27.2% dead`. The largest dead patches are the
 port and its mirror — a car park behind a warehouse is somewhere goods leave from, not somewhere a lane
 runs through.

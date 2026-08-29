@@ -236,9 +236,9 @@ ROADS = [
 HOUSES = [
     # The dock town, kept where it was: the chandler at the head of the street, the sailmaker and the
     # cooperage in the yard behind the crane.
-    ("chandler",       "@wh-count",        ( -69,  26), ( -59,  35), "posX"),
-    ("sailmaker",      "@hoar-steading",   ( -63,  45), ( -54,  57), "posZ"),
-    ("cooperage",      "@wh-shed",         ( -49,  46), ( -38,  55), "negX"),
+    ("chandler",       "@wh-count",        ( -68,  26), ( -58,  35), "posX"),
+    ("sailmaker",      "@hoar-steading",   ( -65,  45), ( -56,  57), "posZ"),
+    ("cooperage",      "@wh-shed",         ( -51,  46), ( -40,  55), "negX"),
     # The quay east of the goal dock: a harbour office at the water, and a store along from it.
     ("harbour-office", "@sn-compass-well", (   5,  19), (  16,  32), "negZ"),
     ("quay-store",     "@kr-deck",         (  21,  23), (  30,  31), "posX"),
@@ -250,15 +250,14 @@ HOUSES = [
     ("upland-hall",    "@17h-hall",        (  55,  66), (  66,  80), "posX"),
     # Under the balloon: what a field a balloon flies off has on it.
     ("balloon-shed",   "@wh-shed",         ( -81,  -8), ( -69,   1), "posZ"),
-    ("balloon-store",  "@rk-kiln",         ( -81,  11), ( -72,  19), "negX"),
-    ("field-cottage",  "@cairn-cottage",   ( -94, -13), ( -86,  -2), "posX"),
+    ("field-cottage",  "@cairn-cottage",   ( -82,  13), ( -74,  24), "posX"),
     # The port, beside the car park.
-    ("port-office",    "@townside",        (  79,  40), (  88,  51), "negZ"),
+    ("warehouse",      "@hoar-longhall",   (  79,  40), (  90,  54), "negZ"),
 ]
 
 # The field the balloon flies off, the hill behind the town, and the back settlement's own green.
-TREES = [(-66, 19), (-89, 18), (-93, 4), (11, 73), (-13, 76), (-5, 90), (-31, 78), (0, 79), (21, 77),
-         (62, 90), (47, 69), (43, 90)]
+TREES = [(-90, -12), (-68, 19), (-89, 22), (-89, 14), (-31, 82), (11, 73), (-13, 76), (-5, 90), (0, 79),
+         (21, 77), (62, 90), (47, 69), (43, 90)]
 
 SPECIES = ["oak", "birch", "spruce", "oak", "birch"]
 
@@ -329,33 +328,21 @@ THEMES = {
 }
 
 
-def compiled_shapes():
-    """The shapes `POST /plan/compile` fuses the plan into, by id and by the height each stands at — which is
-    what `shapePropsById` is keyed on. Asked rather than assumed: the ids are the compile's and a table here
-    would be a second copy of them."""
-    body = json.dumps(PLAN).encode()
-    request = urllib.request.Request(f"{API}/plan/compile", body, {"Content-Type": "application/json"})
-    with urllib.request.urlopen(request) as answer:
-        compiled = json.load(answer)
-    return [(shape["id"], shape.get("base_height")) for shape
-            in compiled["layout"]["layers"][0]["layout"]["shapes"]]
-
-
-# How far a bite may reach in from the shore, how wide one is, and how far apart they sit.
+# How far a sample of the outline may be drawn in, and how often one is taken along a run of open shore.
 # `showcase/04-organic-outline` pushes each of its ring samples inward by nought to nine blocks and takes one
-# every fourteen, and that budget is the whole technique: a coast that wanders by a few blocks reads as a
-# coast, and one that reaches thirty blocks in is a lagoon. The depths cycle so the shore is not a row of
-# identical scallops, and the deepest is the budget.
-# The two cycles are different lengths on purpose: six depths against five widths repeat every thirty bites,
-# which is more than this shore holds, so no stretch of it is the same scallop twice.
-BITE_DEPTHS, BITE_WIDTHS = (3, 7, 4, 6, 5, 8), (9, 15, 11, 17, 12)
-BITE_DEPTH = max(BITE_DEPTHS)
+# every fourteen; the cycle is what makes a shore wander rather than round off, and its length being coprime
+# with nothing in the board keeps a long edge from repeating.
+DRAW_IN = (0, 5, 9, 3, 7, 2, 8, 4, 6, 1, 7, 3)
+SAMPLE_EVERY = 13
+# The curve each sample's handles reach along the chord between its neighbours (Catmull-Rom). Below about
+# 0.15 the ring still reads as straight segments; above about 0.35 a handle overshoots its own edge.
+CURVE = 0.22
 
 
 def plan_cells():
-    """Every block the plan states ground at, its `rot_180` image included — the board's silhouette before a
-    single subtract. Read from `PLAN` rather than from a build, so the coast is derived from the same
-    rectangles the pieces are written as and cannot fall out of step with them."""
+    """Every block the plan states ground at, its `rot_180` image included — the board's silhouette. Read
+    from `PLAN` rather than from a build, so what the outline is tested against is the same set of rectangles
+    the pieces are written as and cannot fall out of step with them."""
     cells = set()
     for piece in PLAN["pieces"]:
         cx, cz, wide, deep = piece["rect"]
@@ -366,97 +353,151 @@ def plan_cells():
     return cells
 
 
-def spawn_pads():
-    """Every block of a spawn piece and its image — ground a bite may not take, because a spawn standing off
-    the coast is a spawn on a jetty (`WX11`) and one cut off it is a board that will not export."""
-    pads = set()
+def held_cells():
+    """Ground the outline may not draw in over: a spawn pad and its image, and the ground round each goal.
+    `showcase/04` pins the samples over its spawn pads at nought for the same reason — a spawn standing off
+    the coast is a spawn on a jetty (`WX11`), and a bay cut deep enough to strand an objective is the export
+    gate's refusal rather than a decoration."""
+    held = set()
     for piece in PLAN["pieces"]:
         if piece.get("role") != "spawn": continue
         cx, cz, wide, deep = piece["rect"]
-        for x in range(cx * CELL, (cx + wide) * CELL):
-            for z in range(cz * CELL, (cz + deep) * CELL):
-                pads.add((x, z)); pads.add((-x - 1, -z - 1))
-    return pads
-
-
-def goal_grounds():
-    """Every goal's own cell and its image. A bay cut deep enough to strand one is the export gate's refusal
-    rather than a decoration."""
-    at = set()
+        for x in range(cx * CELL - 4, (cx + wide) * CELL + 4):
+            for z in range(cz * CELL - 4, (cz + deep) * CELL + 4):
+                held.add((x, z)); held.add((-x - 1, -z - 1))
     for goal in PLAN["placements"]["destroyables"]:
-        x, z = int(goal["at"][0] * CELL), int(goal["at"][1] * CELL)
-        at.add((x, z)); at.add((-x, -z))
-    return at
+        gx, gz = int(goal["at"][0] * CELL), int(goal["at"][1] * CELL)
+        for x in range(gx - 14, gx + 15):
+            for z in range(gz - 14, gz + 15):
+                held.add((x, z)); held.add((-x, -z))
+    return held
 
 
-def coastline():
-    """The board's outline, bitten rather than drawn.
+def compiled_rings():
+    """The polygons `POST /plan/compile` fuses the plan into, by shape id — abutting pieces of equal height
+    become one ring apiece. Asked rather than assumed: the ids and the winding are the compile's."""
+    body = json.dumps(PLAN).encode()
+    request = urllib.request.Request(f"{API}/plan/compile", body, {"Content-Type": "application/json"})
+    with urllib.request.urlopen(request) as answer:
+        compiled = json.load(answer)
+    return [(shape["id"], shape.get("base_height"), [tuple(v) for v in (shape.get("vertices") or [])])
+            for shape in compiled["layout"]["layers"][0]["layout"]["shapes"]]
 
-    `showcase/04-organic-outline` replaces a compiled ring with a wandering one, which is right for a board
-    that is a single island: every sample is pushed inward along that edge's normal and the shape stays
-    inside the ground the plan drew. This board is fifteen pieces at seven surfaces, and inward on one of
-    them is *away from its neighbour* — bending the town opens a seam of void between it and the yard. So
-    the wander is stated as **subtracts along the outer edge** instead.
 
-    **Every lobe is derived from the outline and answers to a depth budget.** Its anchor is a cell on the
-    board's own outer boundary, its centre sits outside the board on that cell's outward normal, and its
-    radius is set so it reaches exactly `BITE_DEPTH` blocks in. A polygon written by hand against a
-    composition is a polygon that goes on describing that composition after the pieces move, and a subtract
-    that ends up wholly inside the board is a hole the export gate will not report — the ground round it is
-    still walkable, so nothing fails. Derived and budgeted, a bite can only ever meet the void it starts in.
+def within(ring, px, pz):
+    """Whether a point lies inside a ring — the winding-independent crossing test."""
+    hit = False
+    for index in range(len(ring)):
+        ax, az = ring[index]
+        bx, bz = ring[(index + 1) % len(ring)]
+        if (az > pz) != (bz > pz) and px < (bx - ax) * (pz - az) / (bz - az) + ax:
+            hit = not hit
+    return hit
 
-    Anchors are taken from one half of the orbit only: the shapes ride in the `team` group, so the fan
-    answers the other half and generating both would subtract each bite twice over. A bite is also kept off
-    the spawn's own pad and away from the goals — `showcase/04` pins its samples over the spawn pads at
-    nought for the same reason, because a spawn standing off the coast is a spawn on a jetty."""
-    ground_cells = plan_cells()
-    keep_off = spawn_pads() | goal_grounds()
 
-    def outward(x, z):
-        """Which way the void lies from a boundary cell, over a 7 x 7 window — the normal to bite along."""
-        dx = sum(sx for sx in range(-3, 4) for sz in range(-3, 4)
-                 if (x + sx, z + sz) not in ground_cells)
-        dz = sum(sz for sx in range(-3, 4) for sz in range(-3, 4)
-                 if (x + sx, z + sz) not in ground_cells)
-        length = math.hypot(dx, dz)
-        return (dx / length, dz / length) if length > 0.5 else None
+def outline():
+    """The board's silhouette, redrawn on the shapes the plan compiles to.
 
-    # The outer boundary, on the half the fan is generated from, thinned to one anchor every BITE_STRIDE
-    # blocks so the bites are spaced rather than overlapping into one long inlet.
-    boundary = sorted(cell for cell in ground_cells
-                      if any((cell[0] + dx, cell[1] + dz) not in ground_cells
-                             for dx, dz in ((1, 0), (-1, 0), (0, 1), (0, -1)))
-                      and (cell[1] > 0 or (cell[1] == 0 and cell[0] > 0)))
+    A plan is written in cell rectangles, so it can say where ground is and never what shape its edge is.
+    What the compile hands back is that edge as a ring per fused component — the upland here is one eight
+    vertex polygon, a stretched T where the spawn's approach steps back out of the hill — and **the ring is
+    what to redraw**. `shapePropsById` merges `vertices` and `controls` onto a compiled shape, so a drawn
+    ring replaces the compiled one and nothing upstream knows.
 
-    lobes, taken = [], []
-    for x, z in boundary:
-        # Spaced from every other anchor **and from every anchor's image**: a bite near the mirror axis and
-        # the image of one on the far side land on the same shore and cut it twice. The spacing is the last
-        # bite's own width plus a headland, so a wide bay is followed by more shore than a narrow one.
-        if any(math.hypot(x - ax, z - az) < span or math.hypot(x + ax, z + az) < span
-               for ax, az, span in taken): continue
-        if any(math.hypot(x - kx, z - kz) < BITE_DEPTH + 10 for kx, kz in keep_off): continue
-        if outward(x, z) is None: continue
-        normal_x, normal_z = outward(x, z)
-        # A circle of this radius centred this far out cuts a lens `depth` deep and about BITE_WIDTH wide.
-        depth = BITE_DEPTHS[len(lobes) % len(BITE_DEPTHS)]
-        width = BITE_WIDTHS[len(lobes) % len(BITE_WIDTHS)]
-        radius = (width * width / 4 + depth * depth) / (2 * depth)
-        centre = (x + normal_x * (radius - depth), z + normal_z * (radius - depth))
-        ring = [[round(centre[0] + radius * math.cos(math.tau * step / 12), 1),
-                 round(centre[1] + radius * math.sin(math.tau * step / 12), 1)] for step in range(12)]
-        lobes.append({"id": f"bay-{len(lobes)}", "type": "polygon", "operation": "subtract",
-                      "vertices": ring, "floor": 0, "base_height": 100})
-        taken.append((x, z, width + 8))
-    return lobes
+    **Only the samples over open water move.** A ring's edges are of two kinds and they behave oppositely: an
+    edge facing the void is the board's own coast and drawing it in shortens the coast, while an edge shared
+    with the neighbouring shape is a seam, and drawing one side of a seam in leaves a strip of void between
+    two pieces that were flush. So every step along every edge is classified by what lies two blocks off it,
+    a sample is taken at each original vertex, at each point where an edge changes kind, and every
+    `SAMPLE_EVERY` blocks along a run of open shore — and only the samples strictly inside such a run are
+    drawn in. A sample over a spawn pad or a goal's ground is pinned at nought whatever it faces.
+
+    The handles are Catmull-Rom: the tangent at a sample is the chord between its two neighbours and each
+    handle reaches `CURVE` along it. Written by hand they fight each other and kink."""
+    ground, held = plan_cells(), held_cells()
+    props = {}
+
+    for shape_id, _height, ring in compiled_rings():
+        if len(ring) < 3: continue
+
+        def open_shore(ax, az, bx, bz, at):
+            """Whether the shore is open `at` blocks along the edge from (ax, az) to (bx, bz) — the cell two
+            off its outward side holding no ground."""
+            span = math.hypot(bx - ax, bz - az)
+            px, pz = ax + (bx - ax) * at / span, az + (bz - az) * at / span
+            step_x, step_z = (bz - az) / span, -(bx - ax) / span
+            for side in (1, -1):
+                probe = (px + step_x * side * 2.5, pz + step_z * side * 2.5)
+                if not within(ring, *probe):
+                    return (math.floor(probe[0]), math.floor(probe[1])) not in ground, (step_x * side, step_z * side)
+            return False, (0.0, 0.0)
+
+        samples = []                                     # (x, z, inward normal or None)
+        for index in range(len(ring)):
+            ax, az = ring[index]
+            bx, bz = ring[(index + 1) % len(ring)]
+            span = int(round(math.hypot(bx - ax, bz - az)))
+            if span == 0: continue
+            kinds = [open_shore(ax, az, bx, bz, at + 0.5) for at in range(span)]
+            samples.append((ax, az, None))               # the vertex itself: a corner is never drawn in
+            run_from = None
+            for at in range(span):
+                shore, normal = kinds[at]
+                changed = at > 0 and kinds[at - 1][0] != shore
+                if changed:
+                    at_x, at_z = ax + (bx - ax) * at / span, az + (bz - az) * at / span
+                    samples.append((at_x, at_z, None))   # the seam's own end, held where the compile put it
+                    run_from = at if shore else None
+                elif at == 0:
+                    run_from = 0 if shore else None
+                if shore and run_from is not None and at > run_from and (at - run_from) % SAMPLE_EVERY == 0 \
+                        and span - at > SAMPLE_EVERY // 2:
+                    at_x, at_z = ax + (bx - ax) * at / span, az + (bz - az) * at / span
+                    samples.append((at_x, at_z, (-normal[0], -normal[1])))
+
+        drawn, moved, step = [], [], 0
+        for x, z, inward in samples:
+            if inward is None or (math.floor(x), math.floor(z)) in held:
+                drawn.append([round(x, 1), round(z, 1)])
+                moved.append(False)
+                continue
+            reach = DRAW_IN[step % len(DRAW_IN)]
+            step += 1
+            drawn.append([round(x + inward[0] * reach, 1), round(z + inward[1] * reach, 1)])
+            moved.append(True)
+
+        # A handle is clamped to a fraction of the **shorter** of its two edges, and a sample that was not
+        # drawn in gets none at all. Catmull-Rom's tangent is the chord between a sample's neighbours, which
+        # is right on an evenly-spaced ring and wrong on this one: a compiled corner has one neighbour a
+        # block away and the other seventy, so the chord swings the curve clear outside the polygon and
+        # bites a hole where two shapes were flush. Pinning the corners is also what keeps a seam a seam.
+        controls = {}
+        for index, (x, z) in enumerate(drawn):
+            if moved[index] is False: continue
+            before, after = drawn[index - 1], drawn[(index + 1) % len(drawn)]
+            tangent_x = (after[0] - before[0]) * CURVE
+            tangent_z = (after[1] - before[1]) * CURVE
+            reach = math.hypot(tangent_x, tangent_z)
+            room = CURVE * min(math.hypot(x - before[0], z - before[1]),
+                               math.hypot(after[0] - x, after[1] - z)) * 2
+            if reach > room > 0:
+                tangent_x, tangent_z = tangent_x * room / reach, tangent_z * room / reach
+            controls[str(index)] = {"in": [round(x - tangent_x, 2), round(z - tangent_z, 2)],
+                                    "out": [round(x + tangent_x, 2), round(z + tangent_z, 2)]}
+        props[shape_id] = {"vertices": drawn, "controls": controls}
+    return props
 
 
 def finish(add_layers):
     # Every ground a settlement stands on is a terrace, not a slope: the docks, the quay and the port, the
     # town and the upland stand out of the relief entirely, so the relaxation bends round them and a house is
     # built on the flat. The hill and the balloon's field keep their relief, which is what they are for.
-    flat = {shape_id: {"relief_scope": "exclude"}
-            for shape_id, height in compiled_shapes() if height in (DOCK, PORT, TOWN, BACK)}
+    # The coast and the terraces are two statements about the same compiled shapes, so they are merged onto
+    # one entry apiece rather than one overwriting the other.
+    shaped = outline()
+    for shape_id, height, _ring in compiled_rings():
+        if height in (DOCK, PORT, TOWN, BACK):
+            shaped.setdefault(shape_id, {})["relief_scope"] = "exclude"
 
     return {
         "authors": ["Opus 5"],
@@ -465,8 +506,7 @@ def finish(add_layers):
                           str(HEAD): "head", str(RIDGE): "ridge", str(BACK): "back"},
         "mapTheme": "quay",
         "themes": THEMES,
-        "shapePropsById": flat,
-        "addShapes": coastline(),
+        "shapePropsById": shaped,
         "addLayers": add_layers,
         # The spawn is a building rather than a bedrock box: a stamped two-storey hall with its own doorway.
         "roomStyles": {"spawn": "@sb-spawn"},
