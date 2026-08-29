@@ -1,25 +1,22 @@
 {
   "setup": {
-    "mirror_mode": "rot_180",
-    "center": {
-      "cx": 0,
-      "cz": 0
-    },
     "bbox": {
       "min_x": -130,
       "max_x": 130,
       "min_z": -125,
       "max_z": 125
-    }
+    },
+    "center": {
+      "cx": 0,
+      "cz": 0
+    },
+    "mirror_mode": "rot_180"
   },
   "layers": [
     {
       "id": "ground",
       "name": "Ground",
       "base_y": 0,
-      "kind": null,
-      "prop": null,
-      "seat": null,
       "layout": {
         "shapes": [
           {
@@ -37,16 +34,44 @@
             "radius": null,
             "vertices": [
               [
+                -132,
+                49
+              ],
+              [
                 -125,
                 35
               ],
               [
+                -82,
+                43
+              ],
+              [
+                -46,
+                30
+              ],
+              [
                 -15,
                 35
               ],
               [
+                -7,
+                54
+              ],
+              [
                 -15,
                 70
+              ],
+              [
+                -40,
+                62
+              ],
+              [
+                -90,
+                76
+              ],
+              [
+                -108,
+                73
               ],
               [
                 -125,
@@ -84,16 +109,40 @@
             "radius": null,
             "vertices": [
               [
-                -105,
-                70
+                -113,
+                95
               ],
               [
-                5,
-                70
+                -108,
+                73
+              ],
+              [
+                -90,
+                76
+              ],
+              [
+                -40,
+                62
+              ],
+              [
+                1,
+                75
+              ],
+              [
+                13,
+                96
               ],
               [
                 5,
                 120
+              ],
+              [
+                -34,
+                131
+              ],
+              [
+                -68,
+                122
               ],
               [
                 -105,
@@ -131,19 +180,39 @@
             "radius": null,
             "vertices": [
               [
+                -122,
+                15
+              ],
+              [
                 -115,
                 0
               ],
               [
-                -20,
-                0
+                -89,
+                -20
               ],
               [
-                -20,
+                -65,
+                -2
+              ],
+              [
+                -33,
+                6
+              ],
+              [
+                -15,
                 35
               ],
               [
-                -115,
+                -46,
+                30
+              ],
+              [
+                -82,
+                43
+              ],
+              [
+                -125,
                 35
               ]
             ],
@@ -178,12 +247,20 @@
             "radius": null,
             "vertices": [
               [
+                22,
+                53
+              ],
+              [
                 30,
                 25
               ],
               [
-                65,
-                25
+                59,
+                33
+              ],
+              [
+                77,
+                46
               ],
               [
                 65,
@@ -200,9 +277,9 @@
             "height_mode": null,
             "skirt": null,
             "relief_scope": null,
-            "base_height": 35,
+            "base_height": 25,
             "anchor_heights": null,
-            "floor": null,
+            "floor": 0,
             "role": null,
             "intentRef": null,
             "color": null,
@@ -279,20 +356,338 @@
             "name": "Team island",
             "mirrors": true,
             "shapeIds": [
-              "s0",
               "s1",
-              "s2",
+              "s2"
+            ]
+          },
+          {
+            "id": "isl_1788043672416_1",
+            "name": "Group 2",
+            "mirrors": true,
+            "shapeIds": [
               "s3"
             ]
           }
         ]
       }
+    },
+    {
+      "id": "s1788044050814_2",
+      "name": "Layer 2",
+      "base_y": 30,
+      "layout": {
+        "shapes": [
+          {
+            "type": "polygon",
+            "operation": "add",
+            "override": false,
+            "vertices": [
+              [
+                -68,
+                122
+              ],
+              [
+                -34,
+                131
+              ],
+              [
+                -9,
+                124
+              ],
+              [
+                -28,
+                108
+              ],
+              [
+                -58,
+                109
+              ]
+            ],
+            "id": "s1788044060841_3",
+            "base_height": 5,
+            "floor": 0
+          },
+          {
+            "type": "polygon",
+            "operation": "add",
+            "override": false,
+            "vertices": [
+              [
+                -58,
+                14
+              ],
+              [
+                -39,
+                23
+              ],
+              [
+                -28,
+                14
+              ],
+              [
+                -33,
+                6
+              ],
+              [
+                -61,
+                -1
+              ]
+            ],
+            "id": "s1788044068070_4",
+            "base_height": 5,
+            "floor": 0
+          },
+          {
+            "type": "polygon",
+            "operation": "add",
+            "override": false,
+            "vertices": [
+              [
+                -122,
+                15
+              ],
+              [
+                -125,
+                35
+              ],
+              [
+                -102,
+                31
+              ],
+              [
+                -102,
+                14
+              ],
+              [
+                -96,
+                1
+              ],
+              [
+                -102,
+                -10
+              ],
+              [
+                -115,
+                0
+              ]
+            ],
+            "id": "s1788045091764_11",
+            "base_height": 5,
+            "floor": 0
+          }
+        ],
+        "groups": [
+          {
+            "id": "isl_1788045091764_0",
+            "name": "Group 1",
+            "mirrors": true,
+            "shapeIds": [
+              "s1788045091764_11"
+            ]
+          },
+          {
+            "id": "isl_1788044060841_0",
+            "name": "Group 1",
+            "mirrors": true,
+            "shapeIds": [
+              "s1788044060841_3"
+            ]
+          },
+          {
+            "id": "isl_1788044068070_0",
+            "name": "Group 1",
+            "mirrors": true,
+            "shapeIds": [
+              "s1788044068070_4"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "s1788044335222_5",
+      "name": "Layer 3",
+      "base_y": 25,
+      "layout": {
+        "shapes": [
+          {
+            "type": "polygon",
+            "operation": "add",
+            "override": false,
+            "vertices": [
+              [
+                30,
+                70
+              ],
+              [
+                65,
+                70
+              ],
+              [
+                71,
+                58
+              ],
+              [
+                62,
+                46
+              ],
+              [
+                42,
+                41
+              ],
+              [
+                35,
+                51
+              ],
+              [
+                22,
+                53
+              ]
+            ],
+            "id": "s1788044464945_7",
+            "base_height": 5,
+            "floor": 0
+          }
+        ],
+        "groups": [
+          {
+            "id": "isl_1788044464946_0",
+            "name": "Group 1",
+            "mirrors": true,
+            "shapeIds": [
+              "s1788044464945_7"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "s1788045027527_9",
+      "name": "Layer 4",
+      "base_y": 35,
+      "layout": {
+        "shapes": [
+          {
+            "type": "polygon",
+            "operation": "add",
+            "override": false,
+            "vertices": [
+              [
+                35,
+                51
+              ],
+              [
+                41,
+                60
+              ],
+              [
+                59,
+                58
+              ],
+              [
+                62,
+                46
+              ],
+              [
+                42,
+                41
+              ]
+            ],
+            "id": "s1788045034391_10",
+            "base_height": 5,
+            "floor": 0
+          }
+        ],
+        "groups": [
+          {
+            "id": "isl_1788045034392_0",
+            "name": "Group 1",
+            "mirrors": true,
+            "shapeIds": [
+              "s1788045034391_10"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "s1788045174017_13",
+      "name": "Layer 5",
+      "base_y": 35,
+      "layout": {
+        "shapes": [
+          {
+            "type": "polygon",
+            "operation": "add",
+            "override": false,
+            "vertices": [
+              [
+                -53,
+                126
+              ],
+              [
+                -34,
+                131
+              ],
+              [
+                -35,
+                120
+              ],
+              [
+                -47,
+                116
+              ]
+            ],
+            "id": "s1788045181711_14",
+            "base_height": 5,
+            "floor": 0
+          },
+          {
+            "type": "polygon",
+            "operation": "add",
+            "override": false,
+            "vertices": [
+              [
+                -115,
+                0
+              ],
+              [
+                -102,
+                14
+              ],
+              [
+                -96,
+                1
+              ],
+              [
+                -102,
+                -10
+              ]
+            ],
+            "id": "s1788045303992_15",
+            "base_height": 5,
+            "floor": 0
+          }
+        ],
+        "groups": [
+          {
+            "id": "isl_1788045303993_0",
+            "name": "Group 1",
+            "mirrors": true,
+            "shapeIds": [
+              "s1788045303992_15"
+            ]
+          },
+          {
+            "id": "isl_1788045181711_0",
+            "name": "Group 1",
+            "mirrors": true,
+            "shapeIds": [
+              "s1788045181711_14"
+            ]
+          }
+        ]
+      }
     }
-  ],
-  "themes": null,
-  "mapTheme": null,
-  "roomStyles": null,
-  "dressing": null,
-  "biome": null,
-  "relief": null
+  ]
 }
