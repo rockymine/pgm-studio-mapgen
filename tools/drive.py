@@ -579,7 +579,7 @@ def main():
     # route: not the store above, not `sketch/columns`, not `relief/read`, not the `Pgm-Warnings`
     # header. A stacked board can store at 200, raise nothing anywhere, open the export gate, and have
     # a floor that is not in the world with a wall bridging the trench where it was. This read is the
-    # only one that says so, and it is asked on every run for that reason (TS68).
+    # only one that says so, which is why it is asked on every run.
     print("== everything wrong with the stored map")
     _, verdict = call("GET", f"/map/{slug}/findings", fatal=False)
     if findings(verdict):
