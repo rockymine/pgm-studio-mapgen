@@ -1,0 +1,201 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -90,
+    "y": 30,
+    "z": 105
+   },
+   "protection": [
+    {
+     "minX": -95,
+     "minZ": 100,
+     "maxX": -85,
+     "maxZ": 110
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -95,
+    "minZ": 100,
+    "maxX": -85,
+    "maxZ": 110
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 90,
+    "y": 30,
+    "z": -105
+   },
+   "protection": [
+    {
+     "minX": 85,
+     "minZ": -110,
+     "maxX": 95,
+     "maxZ": -100
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": 85,
+    "minZ": -110,
+    "maxX": 95,
+    "maxZ": -100
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 24,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -65,
+    "minZ": 0,
+    "maxX": 65,
+    "maxZ": 70
+   },
+   {
+    "minX": -65,
+    "minZ": -70,
+    "maxX": 65,
+    "maxZ": 0
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Red Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -90,
+    "y": 30,
+    "z": 18
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Red Monument 2",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -15,
+    "y": 30,
+    "z": 98
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Blue Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 89,
+    "y": 30,
+    "z": -19
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Blue Monument 2",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 14,
+    "y": 30,
+    "z": -99
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "map experiment",
+  "created": "2026-08-30",
+  "authors": [
+   "Sonnet"
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue",
+  "3": "neutral",
+  "4": "neutral"
+ },
+ "structures": null
+}

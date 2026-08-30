@@ -1,0 +1,4988 @@
+{
+ "setup": {
+  "bbox": {
+   "min_x": -130,
+   "max_x": 130,
+   "min_z": -125,
+   "max_z": 125
+  },
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "mirror_mode": "rot_180"
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "s0",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -132,
+        49
+       ],
+       [
+        -125,
+        35
+       ],
+       [
+        -82,
+        43
+       ],
+       [
+        -46,
+        30
+       ],
+       [
+        -15,
+        35
+       ],
+       [
+        -7,
+        54
+       ],
+       [
+        -15,
+        70
+       ],
+       [
+        -40,
+        62
+       ],
+       [
+        -90,
+        76
+       ],
+       [
+        -108,
+        73
+       ],
+       [
+        -125,
+        70
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 25,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": "wrought"
+     },
+     {
+      "id": "s1",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -113,
+        95
+       ],
+       [
+        -108,
+        73
+       ],
+       [
+        -90,
+        76
+       ],
+       [
+        -40,
+        62
+       ],
+       [
+        1,
+        75
+       ],
+       [
+        13,
+        96
+       ],
+       [
+        5,
+        120
+       ],
+       [
+        -34,
+        131
+       ],
+       [
+        -68,
+        122
+       ],
+       [
+        -105,
+        120
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 30,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": "sward"
+     },
+     {
+      "id": "s2",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -122,
+        15
+       ],
+       [
+        -115,
+        0
+       ],
+       [
+        -89,
+        -20
+       ],
+       [
+        -65,
+        -2
+       ],
+       [
+        -33,
+        6
+       ],
+       [
+        -15,
+        35
+       ],
+       [
+        -46,
+        30
+       ],
+       [
+        -82,
+        43
+       ],
+       [
+        -125,
+        35
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 30,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": "sward"
+     },
+     {
+      "id": "s3",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        22,
+        53
+       ],
+       [
+        30,
+        25
+       ],
+       [
+        59,
+        33
+       ],
+       [
+        77,
+        46
+       ],
+       [
+        65,
+        70
+       ],
+       [
+        30,
+        70
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 25,
+      "anchor_heights": null,
+      "floor": 0,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": "holt"
+     },
+     {
+      "id": "spawn-red",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -95,
+      "min_z": 100,
+      "max_x": -85,
+      "max_z": 110,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 30,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "red",
+      "color": "red",
+      "height_authored": null,
+      "doors": [
+       "-z"
+      ],
+      "theme": null
+     },
+     {
+      "id": "spawn-blue",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": 85,
+      "min_z": -110,
+      "max_x": 95,
+      "max_z": -100,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "blue",
+      "color": "blue",
+      "height_authored": null,
+      "doors": null,
+      "theme": null
+     },
+     {
+      "id": "wall-n",
+      "type": "path",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "vertices": [
+       [
+        -15,
+        70
+       ],
+       [
+        -40,
+        62
+       ],
+       [
+        -90,
+        76
+       ],
+       [
+        -108,
+        73
+       ],
+       [
+        -125,
+        70
+       ]
+      ],
+      "radius": 1.0,
+      "path_edge": "solid",
+      "path_seed": 7,
+      "floor": 15,
+      "base_height": 15,
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought",
+      "height_mode": "level"
+     },
+     {
+      "id": "wall-s",
+      "type": "path",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "vertices": [
+       [
+        -125,
+        35
+       ],
+       [
+        -82,
+        43
+       ],
+       [
+        -46,
+        30
+       ],
+       [
+        -15,
+        35
+       ]
+      ],
+      "radius": 1.0,
+      "path_edge": "solid",
+      "path_seed": 7,
+      "floor": 15,
+      "base_height": 15,
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought",
+      "height_mode": "level"
+     }
+    ],
+    "groups": [
+     {
+      "id": "team",
+      "name": "Team island",
+      "mirrors": true,
+      "shapeIds": [
+       "s0",
+       "s1",
+       "s2",
+       "wall-n",
+       "wall-s"
+      ]
+     },
+     {
+      "id": "isl_1788043672416_1",
+      "name": "Group 2",
+      "mirrors": true,
+      "shapeIds": [
+       "s3"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "spans",
+   "name": "Bridge",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "bridge-33",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 33,
+      "max_z": 34,
+      "floor": 28,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-33",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 33,
+      "max_z": 34,
+      "floor": 31,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-33",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 33,
+      "max_z": 34,
+      "floor": 31,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-34",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 34,
+      "max_z": 35,
+      "floor": 28,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-34",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 34,
+      "max_z": 35,
+      "floor": 31,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-34",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 34,
+      "max_z": 35,
+      "floor": 31,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-35",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 35,
+      "max_z": 36,
+      "floor": 29,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-35",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 35,
+      "max_z": 36,
+      "floor": 32,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-35",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 35,
+      "max_z": 36,
+      "floor": 32,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-36",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 36,
+      "max_z": 37,
+      "floor": 29,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-36",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 36,
+      "max_z": 37,
+      "floor": 32,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-36",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 36,
+      "max_z": 37,
+      "floor": 32,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-37",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 37,
+      "max_z": 38,
+      "floor": 30,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-37",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 37,
+      "max_z": 38,
+      "floor": 33,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-37",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 37,
+      "max_z": 38,
+      "floor": 33,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-38",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 38,
+      "max_z": 39,
+      "floor": 30,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-38",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 38,
+      "max_z": 39,
+      "floor": 33,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-38",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 38,
+      "max_z": 39,
+      "floor": 33,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-39",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 39,
+      "max_z": 40,
+      "floor": 31,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-39",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 39,
+      "max_z": 40,
+      "floor": 34,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-39",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 39,
+      "max_z": 40,
+      "floor": 34,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-40",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 40,
+      "max_z": 41,
+      "floor": 24,
+      "base_height": 10,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-40",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 40,
+      "max_z": 41,
+      "floor": 34,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-40",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 40,
+      "max_z": 41,
+      "floor": 34,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-41",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 41,
+      "max_z": 42,
+      "floor": 26,
+      "base_height": 8,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-41",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 41,
+      "max_z": 42,
+      "floor": 34,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-41",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 41,
+      "max_z": 42,
+      "floor": 34,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-42",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 42,
+      "max_z": 43,
+      "floor": 29,
+      "base_height": 6,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-42",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 42,
+      "max_z": 43,
+      "floor": 35,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-42",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 42,
+      "max_z": 43,
+      "floor": 35,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-43",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 43,
+      "max_z": 44,
+      "floor": 30,
+      "base_height": 5,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-43",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 43,
+      "max_z": 44,
+      "floor": 35,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-43",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 43,
+      "max_z": 44,
+      "floor": 35,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-44",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 44,
+      "max_z": 45,
+      "floor": 31,
+      "base_height": 4,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-44",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 44,
+      "max_z": 45,
+      "floor": 35,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-44",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 44,
+      "max_z": 45,
+      "floor": 35,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-45",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 45,
+      "max_z": 46,
+      "floor": 32,
+      "base_height": 4,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-45",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 45,
+      "max_z": 46,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-45",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 45,
+      "max_z": 46,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-46",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 46,
+      "max_z": 47,
+      "floor": 33,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-46",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 46,
+      "max_z": 47,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-46",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 46,
+      "max_z": 47,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-47",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 47,
+      "max_z": 48,
+      "floor": 33,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-47",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 47,
+      "max_z": 48,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-47",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 47,
+      "max_z": 48,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-48",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 48,
+      "max_z": 49,
+      "floor": 33,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-48",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 48,
+      "max_z": 49,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-48",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 48,
+      "max_z": 49,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-49",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 49,
+      "max_z": 50,
+      "floor": 33,
+      "base_height": 4,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-49",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 49,
+      "max_z": 50,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-49",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 49,
+      "max_z": 50,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-50",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 50,
+      "max_z": 51,
+      "floor": 33,
+      "base_height": 4,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-50",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 50,
+      "max_z": 51,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-50",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 50,
+      "max_z": 51,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-51",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 51,
+      "max_z": 52,
+      "floor": 15,
+      "base_height": 22,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-51",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 51,
+      "max_z": 52,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-51",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 51,
+      "max_z": 52,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-52",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 52,
+      "max_z": 53,
+      "floor": 15,
+      "base_height": 22,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-52",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 52,
+      "max_z": 53,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-52",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 52,
+      "max_z": 53,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-53",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 53,
+      "max_z": 54,
+      "floor": 15,
+      "base_height": 22,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-53",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 53,
+      "max_z": 54,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-53",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 53,
+      "max_z": 54,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-54",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 54,
+      "max_z": 55,
+      "floor": 15,
+      "base_height": 22,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-54",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 54,
+      "max_z": 55,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-54",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 54,
+      "max_z": 55,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-55",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 55,
+      "max_z": 56,
+      "floor": 15,
+      "base_height": 22,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-55",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 55,
+      "max_z": 56,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-55",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 55,
+      "max_z": 56,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-56",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 56,
+      "max_z": 57,
+      "floor": 15,
+      "base_height": 22,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-56",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 56,
+      "max_z": 57,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-56",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 56,
+      "max_z": 57,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-57",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 57,
+      "max_z": 58,
+      "floor": 15,
+      "base_height": 22,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-57",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 57,
+      "max_z": 58,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-57",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 57,
+      "max_z": 58,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-58",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 58,
+      "max_z": 59,
+      "floor": 15,
+      "base_height": 22,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-58",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 58,
+      "max_z": 59,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-58",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 58,
+      "max_z": 59,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-59",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 59,
+      "max_z": 60,
+      "floor": 15,
+      "base_height": 22,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-59",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 59,
+      "max_z": 60,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-59",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 59,
+      "max_z": 60,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-60",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 60,
+      "max_z": 61,
+      "floor": 33,
+      "base_height": 4,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-60",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 60,
+      "max_z": 61,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-60",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 60,
+      "max_z": 61,
+      "floor": 37,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-61",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 61,
+      "max_z": 62,
+      "floor": 33,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-61",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 61,
+      "max_z": 62,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-61",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 61,
+      "max_z": 62,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-62",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 62,
+      "max_z": 63,
+      "floor": 33,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-62",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 62,
+      "max_z": 63,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-62",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 62,
+      "max_z": 63,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-63",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 63,
+      "max_z": 64,
+      "floor": 33,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-63",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 63,
+      "max_z": 64,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-63",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 63,
+      "max_z": 64,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-64",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 64,
+      "max_z": 65,
+      "floor": 33,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-64",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 64,
+      "max_z": 65,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-64",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 64,
+      "max_z": 65,
+      "floor": 36,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-65",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 65,
+      "max_z": 66,
+      "floor": 31,
+      "base_height": 4,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-65",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 65,
+      "max_z": 66,
+      "floor": 35,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-65",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 65,
+      "max_z": 66,
+      "floor": 35,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-66",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 66,
+      "max_z": 67,
+      "floor": 30,
+      "base_height": 5,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-66",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 66,
+      "max_z": 67,
+      "floor": 35,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-66",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 66,
+      "max_z": 67,
+      "floor": 35,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-67",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 67,
+      "max_z": 68,
+      "floor": 29,
+      "base_height": 6,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-67",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 67,
+      "max_z": 68,
+      "floor": 35,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-67",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 67,
+      "max_z": 68,
+      "floor": 35,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-68",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 68,
+      "max_z": 69,
+      "floor": 27,
+      "base_height": 7,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-68",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 68,
+      "max_z": 69,
+      "floor": 34,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-68",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 68,
+      "max_z": 69,
+      "floor": 34,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-69",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 69,
+      "max_z": 70,
+      "floor": 24,
+      "base_height": 10,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-69",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 69,
+      "max_z": 70,
+      "floor": 34,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-69",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 69,
+      "max_z": 70,
+      "floor": 34,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-70",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 70,
+      "max_z": 71,
+      "floor": 31,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-70",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 70,
+      "max_z": 71,
+      "floor": 34,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-70",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 70,
+      "max_z": 71,
+      "floor": 34,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-71",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 71,
+      "max_z": 72,
+      "floor": 30,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-71",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 71,
+      "max_z": 72,
+      "floor": 33,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-71",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 71,
+      "max_z": 72,
+      "floor": 33,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-72",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 72,
+      "max_z": 73,
+      "floor": 30,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-72",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 72,
+      "max_z": 73,
+      "floor": 33,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-72",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 72,
+      "max_z": 73,
+      "floor": 33,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-73",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 73,
+      "max_z": 74,
+      "floor": 29,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-73",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 73,
+      "max_z": 74,
+      "floor": 32,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-73",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 73,
+      "max_z": 74,
+      "floor": 32,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-74",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 74,
+      "max_z": 75,
+      "floor": 29,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-74",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 74,
+      "max_z": 75,
+      "floor": 32,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-74",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 74,
+      "max_z": 75,
+      "floor": 32,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-75",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 75,
+      "max_z": 76,
+      "floor": 28,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-75",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 75,
+      "max_z": 76,
+      "floor": 31,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-75",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 75,
+      "max_z": 76,
+      "floor": 31,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-76",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -76,
+      "max_x": -64,
+      "min_z": 76,
+      "max_z": 77,
+      "floor": 28,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pw-76",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -78,
+      "max_x": -76,
+      "min_z": 76,
+      "max_z": 77,
+      "floor": 31,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     },
+     {
+      "id": "bridge-pe-76",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "min_x": -64,
+      "max_x": -62,
+      "min_z": 76,
+      "max_z": 77,
+      "floor": 31,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     }
+    ],
+    "groups": [
+     {
+      "id": "spans-body",
+      "name": "bridge",
+      "mirrors": true,
+      "shapeIds": [
+       "bridge-33",
+       "bridge-pw-33",
+       "bridge-pe-33",
+       "bridge-34",
+       "bridge-pw-34",
+       "bridge-pe-34",
+       "bridge-35",
+       "bridge-pw-35",
+       "bridge-pe-35",
+       "bridge-36",
+       "bridge-pw-36",
+       "bridge-pe-36",
+       "bridge-37",
+       "bridge-pw-37",
+       "bridge-pe-37",
+       "bridge-38",
+       "bridge-pw-38",
+       "bridge-pe-38",
+       "bridge-39",
+       "bridge-pw-39",
+       "bridge-pe-39",
+       "bridge-40",
+       "bridge-pw-40",
+       "bridge-pe-40",
+       "bridge-41",
+       "bridge-pw-41",
+       "bridge-pe-41",
+       "bridge-42",
+       "bridge-pw-42",
+       "bridge-pe-42",
+       "bridge-43",
+       "bridge-pw-43",
+       "bridge-pe-43",
+       "bridge-44",
+       "bridge-pw-44",
+       "bridge-pe-44",
+       "bridge-45",
+       "bridge-pw-45",
+       "bridge-pe-45",
+       "bridge-46",
+       "bridge-pw-46",
+       "bridge-pe-46",
+       "bridge-47",
+       "bridge-pw-47",
+       "bridge-pe-47",
+       "bridge-48",
+       "bridge-pw-48",
+       "bridge-pe-48",
+       "bridge-49",
+       "bridge-pw-49",
+       "bridge-pe-49",
+       "bridge-50",
+       "bridge-pw-50",
+       "bridge-pe-50",
+       "bridge-51",
+       "bridge-pw-51",
+       "bridge-pe-51",
+       "bridge-52",
+       "bridge-pw-52",
+       "bridge-pe-52",
+       "bridge-53",
+       "bridge-pw-53",
+       "bridge-pe-53",
+       "bridge-54",
+       "bridge-pw-54",
+       "bridge-pe-54",
+       "bridge-55",
+       "bridge-pw-55",
+       "bridge-pe-55",
+       "bridge-56",
+       "bridge-pw-56",
+       "bridge-pe-56",
+       "bridge-57",
+       "bridge-pw-57",
+       "bridge-pe-57",
+       "bridge-58",
+       "bridge-pw-58",
+       "bridge-pe-58",
+       "bridge-59",
+       "bridge-pw-59",
+       "bridge-pe-59",
+       "bridge-60",
+       "bridge-pw-60",
+       "bridge-pe-60",
+       "bridge-61",
+       "bridge-pw-61",
+       "bridge-pe-61",
+       "bridge-62",
+       "bridge-pw-62",
+       "bridge-pe-62",
+       "bridge-63",
+       "bridge-pw-63",
+       "bridge-pe-63",
+       "bridge-64",
+       "bridge-pw-64",
+       "bridge-pe-64",
+       "bridge-65",
+       "bridge-pw-65",
+       "bridge-pe-65",
+       "bridge-66",
+       "bridge-pw-66",
+       "bridge-pe-66",
+       "bridge-67",
+       "bridge-pw-67",
+       "bridge-pe-67",
+       "bridge-68",
+       "bridge-pw-68",
+       "bridge-pe-68",
+       "bridge-69",
+       "bridge-pw-69",
+       "bridge-pe-69",
+       "bridge-70",
+       "bridge-pw-70",
+       "bridge-pe-70",
+       "bridge-71",
+       "bridge-pw-71",
+       "bridge-pe-71",
+       "bridge-72",
+       "bridge-pw-72",
+       "bridge-pe-72",
+       "bridge-73",
+       "bridge-pw-73",
+       "bridge-pe-73",
+       "bridge-74",
+       "bridge-pw-74",
+       "bridge-pe-74",
+       "bridge-75",
+       "bridge-pw-75",
+       "bridge-pe-75",
+       "bridge-76",
+       "bridge-pw-76",
+       "bridge-pe-76"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "boat-keel",
+   "name": "boat-keel",
+   "base_y": 0,
+   "kind": "prop",
+   "prop": "boat",
+   "layout": {
+    "shapes": [
+     {
+      "id": "bt-k",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": false,
+      "min_x": -105,
+      "max_x": -95,
+      "min_z": 50,
+      "max_z": 54,
+      "floor": 20,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "plank-dark"
+     }
+    ],
+    "groups": [
+     {
+      "id": "boat-keel-body",
+      "name": "boat",
+      "mirrors": true,
+      "shapeIds": [
+       "bt-k"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "boat-hull",
+   "name": "boat-hull",
+   "base_y": 0,
+   "kind": "prop",
+   "prop": "boat",
+   "layout": {
+    "shapes": [
+     {
+      "id": "bt-h",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": false,
+      "min_x": -106,
+      "max_x": -94,
+      "min_z": 49,
+      "max_z": 55,
+      "floor": 23,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "plank-dark"
+     }
+    ],
+    "groups": [
+     {
+      "id": "boat-hull-body",
+      "name": "boat",
+      "mirrors": true,
+      "shapeIds": [
+       "bt-h"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "boat-thwart",
+   "name": "boat-thwart",
+   "base_y": 0,
+   "kind": "prop",
+   "prop": "boat",
+   "layout": {
+    "shapes": [
+     {
+      "id": "bt-t",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": false,
+      "min_x": -101,
+      "max_x": -99,
+      "min_z": 49,
+      "max_z": 55,
+      "floor": 25,
+      "base_height": 1,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "plank"
+     }
+    ],
+    "groups": [
+     {
+      "id": "boat-thwart-body",
+      "name": "boat",
+      "mirrors": true,
+      "shapeIds": [
+       "bt-t"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "plane-fuselage",
+   "name": "plane-fuselage",
+   "base_y": 0,
+   "kind": "prop",
+   "prop": "plane",
+   "layout": {
+    "shapes": [
+     {
+      "id": "pl-f",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": false,
+      "min_x": -70,
+      "max_x": -58,
+      "min_z": 2,
+      "max_z": 4,
+      "floor": 29,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "plank-dark"
+     }
+    ],
+    "groups": [
+     {
+      "id": "plane-fuselage-body",
+      "name": "plane",
+      "mirrors": true,
+      "shapeIds": [
+       "pl-f"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "plane-nose",
+   "name": "plane-nose",
+   "base_y": 0,
+   "kind": "prop",
+   "prop": "plane",
+   "layout": {
+    "shapes": [
+     {
+      "id": "pl-n",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": false,
+      "min_x": -58,
+      "max_x": -57,
+      "min_z": 2,
+      "max_z": 4,
+      "floor": 29,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "wrought"
+     }
+    ],
+    "groups": [
+     {
+      "id": "plane-nose-body",
+      "name": "plane",
+      "mirrors": true,
+      "shapeIds": [
+       "pl-n"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "plane-wings",
+   "name": "plane-wings",
+   "base_y": 0,
+   "kind": "prop",
+   "prop": "plane",
+   "layout": {
+    "shapes": [
+     {
+      "id": "pl-w",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": false,
+      "min_x": -66,
+      "max_x": -63,
+      "min_z": -3,
+      "max_z": 9,
+      "floor": 29,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "plank"
+     }
+    ],
+    "groups": [
+     {
+      "id": "plane-wings-body",
+      "name": "plane",
+      "mirrors": true,
+      "shapeIds": [
+       "pl-w"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "plane-tail",
+   "name": "plane-tail",
+   "base_y": 0,
+   "kind": "prop",
+   "prop": "plane",
+   "layout": {
+    "shapes": [
+     {
+      "id": "pl-tf",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": false,
+      "min_x": -71,
+      "max_x": -70,
+      "min_z": 0,
+      "max_z": 6,
+      "floor": 30,
+      "base_height": 1,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "plank"
+     },
+     {
+      "id": "pl-tv",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": false,
+      "min_x": -71,
+      "max_x": -70,
+      "min_z": 2,
+      "max_z": 4,
+      "floor": 29,
+      "base_height": 5,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "plank-dark"
+     }
+    ],
+    "groups": [
+     {
+      "id": "plane-tail-body",
+      "name": "plane",
+      "mirrors": true,
+      "shapeIds": [
+       "pl-tf",
+       "pl-tv"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "relief": {
+  "team": {
+   "base": 30,
+   "reach": 42,
+   "step": 1,
+   "stairs": true,
+   "landform": "rolling",
+   "grain": {
+    "amplitude": 0.5,
+    "scale": 19,
+    "seed": 5
+   },
+   "marks": [
+    {
+     "id": "canal-bed",
+     "kind": "area",
+     "h": 16,
+     "ring": [
+      [
+       -132,
+       49
+      ],
+      [
+       -125,
+       35
+      ],
+      [
+       -82,
+       43
+      ],
+      [
+       -46,
+       30
+      ],
+      [
+       -15,
+       35
+      ],
+      [
+       -7,
+       54
+      ],
+      [
+       -15,
+       70
+      ],
+      [
+       -40,
+       62
+      ],
+      [
+       -90,
+       76
+      ],
+      [
+       -108,
+       73
+      ],
+      [
+       -125,
+       70
+      ]
+     ]
+    },
+    {
+     "id": "north-bank",
+     "kind": "area",
+     "h": 30,
+     "ring": [
+      [
+       -113,
+       95
+      ],
+      [
+       -108,
+       73
+      ],
+      [
+       -90,
+       76
+      ],
+      [
+       -40,
+       62
+      ],
+      [
+       1,
+       75
+      ],
+      [
+       13,
+       96
+      ],
+      [
+       5,
+       120
+      ],
+      [
+       -34,
+       131
+      ],
+      [
+       -68,
+       122
+      ],
+      [
+       -105,
+       120
+      ]
+     ]
+    },
+    {
+     "id": "south-bank",
+     "kind": "area",
+     "h": 30,
+     "ring": [
+      [
+       -122,
+       15
+      ],
+      [
+       -115,
+       0
+      ],
+      [
+       -89,
+       -20
+      ],
+      [
+       -65,
+       -2
+      ],
+      [
+       -33,
+       6
+      ],
+      [
+       -15,
+       35
+      ],
+      [
+       -46,
+       30
+      ],
+      [
+       -82,
+       43
+      ],
+      [
+       -125,
+       35
+      ]
+     ]
+    }
+   ],
+   "pushes": [
+    {
+     "id": "north-rise",
+     "ring": [
+      [
+       -20,
+       116
+      ],
+      [
+       -24,
+       124
+      ],
+      [
+       -35,
+       129
+      ],
+      [
+       -47,
+       127
+      ],
+      [
+       -55,
+       120
+      ],
+      [
+       -55,
+       112
+      ],
+      [
+       -47,
+       105
+      ],
+      [
+       -35,
+       103
+      ],
+      [
+       -24,
+       108
+      ]
+     ],
+     "amount": 5,
+     "falloff": 18,
+     "roughness": 0.35,
+     "crown": 3,
+     "seed": 11
+    },
+    {
+     "id": "south-rise",
+     "ring": [
+      [
+       -14,
+       -6
+      ],
+      [
+       -18,
+       2
+      ],
+      [
+       -29,
+       6
+      ],
+      [
+       -41,
+       4
+      ],
+      [
+       -49,
+       -2
+      ],
+      [
+       -49,
+       -10
+      ],
+      [
+       -41,
+       -16
+      ],
+      [
+       -29,
+       -18
+      ],
+      [
+       -18,
+       -14
+      ]
+     ],
+     "amount": 5,
+     "falloff": 18,
+     "roughness": 0.35,
+     "crown": 3,
+     "seed": 12
+    },
+    {
+     "id": "goal-hollow",
+     "ring": [
+      [
+       -80,
+       18
+      ],
+      [
+       -82,
+       22
+      ],
+      [
+       -88,
+       25
+      ],
+      [
+       -95,
+       24
+      ],
+      [
+       -99,
+       20
+      ],
+      [
+       -99,
+       16
+      ],
+      [
+       -95,
+       12
+      ],
+      [
+       -88,
+       11
+      ],
+      [
+       -82,
+       14
+      ]
+     ],
+     "amount": -6,
+     "falloff": 10,
+     "roughness": 0.3,
+     "crown": -3,
+     "seed": 13
+    },
+    {
+     "id": "canal-dish",
+     "ring": [
+      [
+       -132,
+       49
+      ],
+      [
+       -125,
+       35
+      ],
+      [
+       -82,
+       43
+      ],
+      [
+       -46,
+       30
+      ],
+      [
+       -15,
+       35
+      ],
+      [
+       -7,
+       54
+      ],
+      [
+       -15,
+       70
+      ],
+      [
+       -40,
+       62
+      ],
+      [
+       -90,
+       76
+      ],
+      [
+       -108,
+       73
+      ],
+      [
+       -125,
+       70
+      ]
+     ],
+     "amount": -3,
+     "falloff": 6,
+     "roughness": 0.25,
+     "crown": -3,
+     "seed": 14
+    }
+   ]
+  },
+  "isl_1788043672416_1": {
+   "base": 25,
+   "reach": 30,
+   "step": 1,
+   "stairs": true,
+   "landform": "rolling",
+   "grain": {
+    "amplitude": 0.7,
+    "scale": 13,
+    "seed": 15
+   },
+   "marks": [],
+   "pushes": [
+    {
+     "id": "knoll",
+     "ring": [
+      [
+       66,
+       50
+      ],
+      [
+       62,
+       58
+      ],
+      [
+       51,
+       63
+      ],
+      [
+       39,
+       61
+      ],
+      [
+       31,
+       54
+      ],
+      [
+       31,
+       46
+      ],
+      [
+       39,
+       39
+      ],
+      [
+       51,
+       37
+      ],
+      [
+       62,
+       42
+      ]
+     ],
+     "amount": 5,
+     "falloff": 22,
+     "roughness": 0.3,
+     "crown": 3,
+     "seed": 16
+    }
+   ]
+  }
+ },
+ "themes": {
+  "sward": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "wallOnTerrainFaces": false,
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 2,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "noise",
+    "seed": 42,
+    "scale": 16,
+    "octaves": 4,
+    "stops": [
+     {
+      "kind": "solid",
+      "id": 3,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     }
+    ],
+    "rise": 2
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "noise",
+    "seed": 43,
+    "scale": 20,
+    "octaves": 4,
+    "stops": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 1
+     }
+    ],
+    "rise": 2
+   },
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "rimEdges": "boundary"
+  },
+  "holt": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "wallOnTerrainFaces": false,
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "noise",
+     "seed": 51,
+     "scale": 16,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 2
+      }
+     ],
+     "rise": 2
+    }
+   },
+   "wall": {
+    "kind": "noise",
+    "seed": 52,
+    "scale": 14,
+    "octaves": 4,
+    "stops": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 48,
+      "data": 0
+     }
+    ],
+    "rise": 2
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "noise",
+    "seed": 52,
+    "scale": 14,
+    "octaves": 4,
+    "stops": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 48,
+      "data": 0
+     }
+    ],
+    "rise": 2
+   },
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "rimEdges": "boundary"
+  },
+  "wrought": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "wallOnTerrainFaces": false,
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "noise",
+     "seed": 61,
+     "scale": 12,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     ],
+     "rise": 2
+    }
+   },
+   "wall": {
+    "kind": "noise",
+    "seed": 62,
+    "scale": 10,
+    "octaves": 4,
+    "stops": [
+     {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 98,
+      "data": 3
+     }
+    ],
+    "rise": 2
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "noise",
+    "seed": 62,
+    "scale": 10,
+    "octaves": 4,
+    "stops": [
+     {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 98,
+      "data": 3
+     }
+    ],
+    "rise": 2
+   },
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "rimEdges": "boundary"
+  },
+  "plank": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "wallOnTerrainFaces": false,
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 5,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 5,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 5,
+    "data": 0
+   },
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "rimEdges": "boundary"
+  },
+  "plank-dark": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "wallOnTerrainFaces": false,
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 5,
+     "data": 2
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 5,
+    "data": 2
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 5,
+    "data": 2
+   },
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "rimEdges": "boundary"
+  },
+  "canvas": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "wallOnTerrainFaces": false,
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 35,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 35,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 35,
+    "data": 0
+   },
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "rimEdges": "boundary"
+  },
+  "leaf": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "wallOnTerrainFaces": false,
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 18,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 18,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 18,
+    "data": 0
+   },
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "rimEdges": "boundary"
+  }
+ },
+ "mapTheme": "sward",
+ "roomStyles": {
+  "spawn": {
+   "foundation": {
+    "plate": {
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 4,
+         "data": 0
+        },
+        "thickness": 1
+       }
+      ],
+      "ending": "repeat"
+     },
+     "extent": 1
+    },
+    "surface": {
+     "field": null,
+     "border": null,
+     "borderWidth": 1,
+     "inlay": null,
+     "inlayInset": 2,
+     "isPlain": true
+    },
+    "footing": null
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 1,
+    "slab": -1,
+    "slabData": 0,
+    "overhang": 1,
+    "ridgeCap": true,
+    "hole": false,
+    "body": {
+     "kind": "solid",
+     "id": 45,
+     "data": 0
+    },
+    "verge": {
+     "kind": "solid",
+     "id": 5,
+     "data": 5
+    },
+    "gable": {
+     "kind": "solid",
+     "id": 5,
+     "data": 5
+    },
+    "gableWindows": {
+     "form": "pane",
+     "block": 102,
+     "hostBlock": -1,
+     "hostData": 0,
+     "data": 0,
+     "sill": 1,
+     "width": 1,
+     "height": 1,
+     "spacing": 3
+    }
+   },
+   "wall": {
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ],
+     "ending": "repeat"
+    },
+    "extent": 5
+   },
+   "post": {
+    "kind": "solid",
+    "id": 162,
+    "data": 1
+   },
+   "windows": {
+    "form": "pane",
+    "block": 102,
+    "hostBlock": -1,
+    "hostData": 0,
+    "data": 0,
+    "sill": 2,
+    "width": 2,
+    "height": 2,
+    "spacing": 3
+   },
+   "storeys": [
+    {
+     "clear": 5,
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "noise",
+          "seed": 4101,
+          "scale": 2,
+          "octaves": 1,
+          "stops": [
+           {
+            "kind": "solid",
+            "id": 4,
+            "data": 0
+           },
+           {
+            "kind": "solid",
+            "id": 1,
+            "data": 5
+           }
+          ],
+          "rise": 2
+         },
+         "thickness": 2
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 3
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 5
+     },
+     "post": {
+      "kind": "solid",
+      "id": 162,
+      "data": 1
+     },
+     "windows": {
+      "form": "pane",
+      "block": 102,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 2,
+      "width": 2,
+      "height": 2,
+      "spacing": 4
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 2,
+      "isPlain": true
+     },
+     "deck": null,
+     "headroom": 5
+    },
+    {
+     "clear": 4,
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 5,
+          "data": 5
+         },
+         "thickness": 3
+        },
+        {
+         "material": {
+          "kind": "laidLog",
+          "id": 162,
+          "data": 1
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 4
+     },
+     "post": {
+      "kind": "solid",
+      "id": 162,
+      "data": 1
+     },
+     "windows": {
+      "form": "pane",
+      "block": 102,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 1,
+      "width": 2,
+      "height": 2,
+      "spacing": 4
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 2,
+      "isPlain": true
+     },
+     "deck": null,
+     "headroom": 4
+    }
+   ],
+   "porch": null,
+   "front": null,
+   "beams": {
+    "block": 162,
+    "data": 1,
+    "reach": 1,
+    "any": true
+   },
+   "doorway": {
+    "door": "air",
+    "head": {
+     "form": "none",
+     "block": 53,
+     "fill": "upperSlab",
+     "fillBlock": 126,
+     "fillData": 0
+    },
+    "width": 2,
+    "height": 3
+   }
+  }
+ },
+ "dressing": {
+  "props": [
+   {
+    "id": "canal-water",
+    "kind": "water",
+    "seed": 9,
+    "layer": "ground",
+    "shape": "pool",
+    "points": [
+     [
+      -132,
+      49
+     ],
+     [
+      -125,
+      35
+     ],
+     [
+      -82,
+      43
+     ],
+     [
+      -46,
+      30
+     ],
+     [
+      -15,
+      35
+     ],
+     [
+      -7,
+      54
+     ],
+     [
+      -15,
+      70
+     ],
+     [
+      -40,
+      62
+     ],
+     [
+      -90,
+      76
+     ],
+     [
+      -108,
+      73
+     ],
+     [
+      -125,
+      70
+     ]
+    ],
+    "radius": 6,
+    "depth": 8,
+    "shore": 1,
+    "shoreWander": false,
+    "edge": 0.5,
+    "level": 23,
+    "bank": {
+     "kind": "cell",
+     "seed": 91,
+     "cellSize": 4,
+     "jitter": 25,
+     "warp": 1,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 12,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    }
+   },
+   {
+    "id": "route",
+    "kind": "stroke",
+    "seed": 21,
+    "layer": "ground",
+    "points": [
+     [
+      -90,
+      99
+     ],
+     [
+      -85,
+      85
+     ],
+     [
+      -73,
+      75
+     ],
+     [
+      -70,
+      55
+     ],
+     [
+      -73,
+      38
+     ],
+     [
+      -83,
+      26
+     ],
+     [
+      -90,
+      19
+     ]
+    ],
+    "radius": 2.5,
+    "style": "worn",
+    "coverage": 0.72,
+    "route": true,
+    "pave": {
+     "kind": "noise",
+     "seed": 81,
+     "scale": 9,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      }
+     ],
+     "rise": 1
+    }
+   },
+   {
+    "id": "route-yard",
+    "kind": "stroke",
+    "seed": 22,
+    "layer": "ground",
+    "points": [
+     [
+      -83,
+      26
+     ],
+     [
+      -77,
+      12
+     ],
+     [
+      -70,
+      5
+     ],
+     [
+      -64,
+      3
+     ]
+    ],
+    "radius": 2,
+    "style": "worn",
+    "coverage": 0.7,
+    "route": true,
+    "pave": {
+     "kind": "noise",
+     "seed": 81,
+     "scale": 9,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      }
+     ],
+     "rise": 1
+    }
+   },
+   {
+    "id": "croft-bank",
+    "kind": "house",
+    "seed": 785,
+    "layer": "ground",
+    "wings": [
+     {
+      "corners": [
+       [
+        -101,
+        -6
+       ],
+       [
+        -93,
+        1
+       ]
+      ]
+     }
+    ],
+    "front": "posZ",
+    "style": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 5,
+           "data": 1
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 2
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 1,
+      "slab": -1,
+      "slabData": 0,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "verge": {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      },
+      "gableWindows": {
+       "form": "open",
+       "block": 102,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 2,
+       "width": 1,
+       "height": 1,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "noise",
+          "seed": 15389,
+          "scale": 2,
+          "octaves": 1,
+          "stops": [
+           {
+            "kind": "solid",
+            "id": 4,
+            "data": 0
+           },
+           {
+            "kind": "solid",
+            "id": 1,
+            "data": 5
+           }
+          ],
+          "rise": 2
+         },
+         "thickness": 2
+        },
+        {
+         "material": {
+          "kind": "checker",
+          "size": 1,
+          "even": {
+           "kind": "solid",
+           "id": 1,
+           "data": 0
+          },
+          "odd": {
+           "kind": "solid",
+           "id": 1,
+           "data": 6
+          }
+         },
+         "thickness": 3
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 5
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "windows": {
+      "form": "none",
+      "block": 109,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 3,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "storeys": [],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": -1,
+      "data": 0,
+      "reach": 1,
+      "any": false
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "arched",
+       "block": 109,
+       "fill": "upperSlab",
+       "fillBlock": 44,
+       "fillData": 5
+      },
+      "width": 2,
+      "height": 3
+     }
+    }
+   },
+   {
+    "id": "croft-north",
+    "kind": "house",
+    "seed": 616,
+    "layer": "ground",
+    "wings": [
+     {
+      "corners": [
+       [
+        -68,
+        84
+       ],
+       [
+        -60,
+        90
+       ]
+      ]
+     }
+    ],
+    "front": "negZ",
+    "style": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 5,
+           "data": 0
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 2
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 1,
+      "slab": -1,
+      "slabData": 0,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      "verge": {
+       "kind": "solid",
+       "id": 5,
+       "data": 0
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 5,
+       "data": 0
+      },
+      "gableWindows": {
+       "form": "open",
+       "block": 102,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 2,
+       "width": 1,
+       "height": 1,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "noise",
+          "seed": 15389,
+          "scale": 2,
+          "octaves": 1,
+          "stops": [
+           {
+            "kind": "solid",
+            "id": 4,
+            "data": 0
+           },
+           {
+            "kind": "solid",
+            "id": 1,
+            "data": 5
+           }
+          ],
+          "rise": 2
+         },
+         "thickness": 2
+        },
+        {
+         "material": {
+          "kind": "checker",
+          "size": 1,
+          "even": {
+           "kind": "solid",
+           "id": 1,
+           "data": 0
+          },
+          "odd": {
+           "kind": "solid",
+           "id": 1,
+           "data": 6
+          }
+         },
+         "thickness": 3
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 5
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "windows": {
+      "form": "none",
+      "block": 109,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 3,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "storeys": [],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": -1,
+      "data": 0,
+      "reach": 1,
+      "any": false
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "arched",
+       "block": 109,
+       "fill": "upperSlab",
+       "fillBlock": 44,
+       "fillData": 5
+      },
+      "width": 2,
+      "height": 3
+     }
+    }
+   },
+   {
+    "id": "oak-0",
+    "kind": "tree",
+    "seed": 3292,
+    "layer": "ground",
+    "form": "grown",
+    "x": -104,
+    "z": -4,
+    "wood": "oak",
+    "height": 10,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.5,
+    "flow": 0.5,
+    "branchAngle": 1.15,
+    "leafSize": 0.66,
+    "whorled": false
+   },
+   {
+    "id": "oak-1",
+    "kind": "tree",
+    "seed": 3160,
+    "layer": "ground",
+    "form": "grown",
+    "x": -97,
+    "z": -9,
+    "wood": "oak",
+    "height": 9,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.5,
+    "flow": 0.5,
+    "branchAngle": 1.15,
+    "leafSize": 0.66,
+    "whorled": false
+   },
+   {
+    "id": "oak-2",
+    "kind": "tree",
+    "seed": 1921,
+    "layer": "ground",
+    "form": "grown",
+    "x": -68,
+    "z": 11,
+    "wood": "oak",
+    "height": 11,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.5,
+    "flow": 0.5,
+    "branchAngle": 1.15,
+    "leafSize": 0.66,
+    "whorled": false
+   },
+   {
+    "id": "oak-3",
+    "kind": "tree",
+    "seed": 1638,
+    "layer": "ground",
+    "form": "grown",
+    "x": -100,
+    "z": 86,
+    "wood": "oak",
+    "height": 10,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.5,
+    "flow": 0.5,
+    "branchAngle": 1.15,
+    "leafSize": 0.66,
+    "whorled": false
+   },
+   {
+    "id": "oak-4",
+    "kind": "tree",
+    "seed": 950,
+    "layer": "ground",
+    "form": "grown",
+    "x": -80,
+    "z": 90,
+    "wood": "oak",
+    "height": 12,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.5,
+    "flow": 0.5,
+    "branchAngle": 1.15,
+    "leafSize": 0.66,
+    "whorled": false
+   },
+   {
+    "id": "fir-0",
+    "kind": "tree",
+    "seed": 1610,
+    "layer": "ground",
+    "form": "grown",
+    "x": 30,
+    "z": 40,
+    "wood": "spruce",
+    "height": 11,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.8,
+    "flow": 0.2,
+    "branchAngle": 0.75,
+    "leafSize": 0.56,
+    "whorled": true
+   },
+   {
+    "id": "fir-1",
+    "kind": "tree",
+    "seed": 2676,
+    "layer": "ground",
+    "form": "grown",
+    "x": 60,
+    "z": 48,
+    "wood": "spruce",
+    "height": 13,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.8,
+    "flow": 0.2,
+    "branchAngle": 0.75,
+    "leafSize": 0.56,
+    "whorled": true
+   },
+   {
+    "id": "fir-2",
+    "kind": "tree",
+    "seed": 2102,
+    "layer": "ground",
+    "form": "grown",
+    "x": 36,
+    "z": 58,
+    "wood": "spruce",
+    "height": 10,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.8,
+    "flow": 0.2,
+    "branchAngle": 0.75,
+    "leafSize": 0.56,
+    "whorled": true
+   },
+   {
+    "id": "erratic-bank",
+    "kind": "boulder",
+    "seed": 1183,
+    "layer": "ground",
+    "x": -108,
+    "z": 1,
+    "form": "round",
+    "size": 4,
+    "rock": {
+     "kind": "noise",
+     "seed": 71,
+     "scale": 3,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 2
+    },
+    "mossy": true
+   },
+   {
+    "id": "erratic-shelf",
+    "kind": "boulder",
+    "seed": 969,
+    "layer": "ground",
+    "x": -84,
+    "z": -9,
+    "form": "outcrop",
+    "size": 6,
+    "rock": {
+     "kind": "noise",
+     "seed": 71,
+     "scale": 3,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 2
+    },
+    "mossy": true
+   },
+   {
+    "id": "erratic-cairn",
+    "kind": "boulder",
+    "seed": 555,
+    "layer": "ground",
+    "x": -55,
+    "z": 10,
+    "form": "cairn",
+    "size": 3,
+    "rock": {
+     "kind": "noise",
+     "seed": 71,
+     "scale": 3,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 2
+    },
+    "mossy": true
+   },
+   {
+    "id": "erratic-north",
+    "kind": "boulder",
+    "seed": 715,
+    "layer": "ground",
+    "x": -105,
+    "z": 88,
+    "form": "angular",
+    "size": 5,
+    "rock": {
+     "kind": "noise",
+     "seed": 71,
+     "scale": 3,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 2
+    },
+    "mossy": true
+   },
+   {
+    "id": "erratic-holm",
+    "kind": "boulder",
+    "seed": 706,
+    "layer": "ground",
+    "x": 46,
+    "z": 40,
+    "form": "cairn",
+    "size": 4,
+    "rock": {
+     "kind": "noise",
+     "seed": 71,
+     "scale": 3,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 2
+    },
+    "mossy": true
+   }
+  ]
+ }
+}

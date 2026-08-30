@@ -4,9 +4,15 @@ pipeline said on the way.
 
     tools/drive.py <specdir> "<Map Name>" --out <worlddir> [--renders <dir>] [--slug <slug>] [--dry]
 
-<specdir> holds <base>.plan.json and <base>.finish.json, where <base> is the directory's own name and,
-unless --slug says otherwise, the slug the map is stored under. The plan is a PlanModel. The finish
-carries everything a plan cannot state, keyed onto the compiled layout:
+<specdir> holds <base>.plan.json and EITHER <base>.finish.json, OR a hand-drawn <base>.layout.json and
+<base>.intent.json -- the shape the Sketch tool writes, whose geometry is authored rather than compiled.
+The either/or is exact: a spec carrying a finish is compiled from its plan on every run, and the layout
+and intent beside it are what the last run posted rather than anything it reads. A drawn spec's layout
+and intent are its input and are never written over, so it states in its intent's own meta what a finish
+would otherwise say about it -- `authors` and `created`. <base> is the directory's own name and, unless
+--slug says otherwise, the slug the map is stored under. Both shapes take the same road from here: the
+same grid, flow, declines and renders. The finish carries everything a plan cannot state, keyed onto the
+compiled layout:
 
   themeByHeight   {"11": "gyp-bench", ...}   theme per compiled shape, by the height it stands at
   themeById       {"s3": "gyp-rake"}          theme per compiled shape id (wins over the height rule)
@@ -45,6 +51,11 @@ about — a refusal's `findings`, the evaluator's `violations` and `lint`, and, 
 away: a decline says one piece of the posted document is not in the world, `RQ3` names a field that
 went unread, and `SK3`/`SK4` name a shape that drew no ground. `GET /api/rules?rule=<id>` answers what
 any of those means and how to fix it.
+
+`GET /map/{slug}/findings` is asked on every run beside those, because it is the only read that
+answers `SK9` — the gate that knows two shapes on one layer stacked and the lower one is not in the
+world. It is a decline, the channel every other route publishes on keeps complaints alone, and so a
+board can store at 200 with a floor missing under its walls and nothing anywhere says so.
 
 It also takes every picture the studio will draw for what was authored — a swatch per theme, a plan and a
 section per house, the coverage map, the board read back from every angle, and the grid and flow as text —
@@ -159,7 +170,9 @@ def report(payload, indent="  ", keys=("findings", "violations", "lint")):
         rule = entry.get("rule") or entry.get("id") or key
         severity = entry.get("severity") or key
         message = entry.get("message") or entry.get("detail") or json.dumps(entry)
-        field = entry.get("field")
+        # A finding names what it is about as `field` on the request routes and as `subjects` on
+        # `GET /map/{slug}/findings`, which judges shapes rather than a posted document.
+        field = entry.get("field") or ", ".join(entry.get("subjects") or [])
         print(f"{indent}  [{severity:9}] {rule:8} {message}"
               f"{'   @ ' + field if field else ''}")
 
@@ -427,8 +440,10 @@ def patch_intent(intent, finish):
     if created := finish.get("created"):
         intent.setdefault("meta", {})["created"] = created
         print(f"    created {created}")
+    elif (intent.get("meta") or {}).get("created"):
+        print(f"    created {intent['meta']['created']}")
     else:
-        print("    ! the finish states no `created` date, so the map will carry no <created> element")
+        print("    ! nothing states a `created` date, so the map will carry no <created> element")
     if finish.get("voidEnforcement"):
         intent.setdefault("build", {})["voidEnforcement"] = \
             {"exclusions": finish.get("voidExclusions", [])}
@@ -450,8 +465,32 @@ def main():
     slug = sys.argv[sys.argv.index("--slug") + 1] if "--slug" in sys.argv else base
     with open(f"{specdir}/{base}.plan.json") as handle:
         plan = json.load(handle)
-    with open(f"{specdir}/{base}.finish.json") as handle:
-        finish = json.load(handle)
+    # A board drawn in the Sketch tool has no finish: its geometry IS the layout, authored by hand and
+    # not derivable from the plan. Such a spec carries `<base>.layout.json` and `<base>.intent.json`
+    # instead, and the compile below is skipped rather than run over the top of them. Everything after
+    # this point -- the grid, the flow, the declines and every render -- is the same for both shapes of
+    # spec, which is the whole reason this branch is here rather than in a second driver.
+    #
+    # **The finish is what decides which shape this spec is, and it has to be**: the run ends by writing
+    # the layout and intent it posted back into the spec directory, under exactly the names a drawn spec
+    # uses. Reading those back as a drawing on the next run would apply the finish a second time, and
+    # `addLayers`, `addShapes` and `bendShapes` are all appends -- two storeys called 'under', a ring
+    # bent twice. So a spec with a finish is compiled from its plan every run, and the layout beside it
+    # is the run's output rather than its input.
+    finish = {}
+    if os.path.exists(f"{specdir}/{base}.finish.json"):
+        with open(f"{specdir}/{base}.finish.json") as handle:
+            finish = json.load(handle)
+    drawn_layout = drawn_intent = None
+    if not finish and os.path.exists(f"{specdir}/{base}.layout.json") \
+            and os.path.exists(f"{specdir}/{base}.intent.json"):
+        with open(f"{specdir}/{base}.layout.json") as handle:
+            drawn_layout = json.load(handle)
+        with open(f"{specdir}/{base}.intent.json") as handle:
+            drawn_intent = json.load(handle)
+    if not finish and drawn_layout is None:
+        raise SystemExit(f"{specdir}: needs {base}.finish.json, or a drawn {base}.layout.json "
+                         f"and {base}.intent.json beside the plan")
 
     # ── read the board before anything exists ────────────────────────────────────────────────
     print("== the board, before a map row exists")
@@ -476,9 +515,15 @@ def main():
     # ── compile, and the finish a plan cannot state ──────────────────────────────────────────
     # The compile takes the plan itself and no map row, so both documents are whole before anything is
     # stored — which is what lets the store be one call.
-    print("== compile, and the finish")
-    _, compiled = call("POST", "/plan/compile", plan)
-    layout, intent = compiled["layout"], compiled["intent"]
+    if drawn_layout is not None:
+        print("== the drawn layout, taken as authored")
+        layout, intent = drawn_layout, drawn_intent
+        print(f"    {len(layout.get('layers') or [])} layer(s), "
+              f"{sum(len(l['layout']['shapes']) for l in layout.get('layers') or [])} shape(s) — not compiled")
+    else:
+        print("== compile, and the finish")
+        _, compiled = call("POST", "/plan/compile", plan)
+        layout, intent = compiled["layout"], compiled["intent"]
     layout = patch_layout(layout, finish)
     intent = patch_intent(intent, finish)
 
@@ -490,10 +535,28 @@ def main():
     print("== the map, from its three documents")
     _, loaded = call("POST", "/map/from-documents", {
         "slug": slug, "name": name, "plan": plan, "layout": layout, "intent": intent,
-        "authors": finish.get("authors")})
+        # A drawn spec has no finish to state its authorship in, so it states it where the rest of what
+        # it says about itself already lives: the intent's own meta.
+        "authors": finish.get("authors") or (intent.get("meta") or {}).get("authors")})
     slug = loaded["slug"]
     print(f"    slug={slug}  {'replaced' if loaded.get('replaced') else 'new'}  "
           f"cells={loaded.get('cells')}  groups={loaded.get('groups')}")
+
+    # ── everything wrong with the stored map, including what no other read answers ───────────
+    # `Findings.Complaints` keeps `Severity.Complaint` alone, and `SK9` is the one `Severity.Decline`
+    # the sketch layout check raises — so the gate that knows a storey is missing reaches no other
+    # route: not the store above, not `sketch/columns`, not `relief/read`, not the `Pgm-Warnings`
+    # header. A stacked board can store at 200, raise nothing anywhere, open the export gate, and have
+    # a floor that is not in the world with a wall bridging the trench where it was. This read is the
+    # only one that says so, which is why it is asked on every run.
+    print("== everything wrong with the stored map")
+    _, verdict = call("GET", f"/map/{slug}/findings", fatal=False)
+    if findings(verdict):
+        report(verdict)
+    else:
+        print("    nothing")
+    for gate in (verdict.get("unasked") or []):
+        print(f"    not judged yet: {gate.get('gate'):16} -> {gate.get('ask')}")
 
     # ── the board as a grid, and how it is come at ───────────────────────────────────────────
     # Two reads that cost no build and raise no finding, which is exactly why they are easy to forget.
@@ -593,11 +656,14 @@ def main():
         # After the extraction, which clears the directory it writes into.
         print("== the pictures of what was authored")
         renders(into or os.path.join(specdir, "renders"), slug, finish, layout, drawn, flow)
-    # the documents that were actually posted, beside the ones that were authored
-    with open(f"{specdir}/{base}.layout.json", "w") as handle:
-        json.dump(layout, handle, indent=1)
-    with open(f"{specdir}/{base}.intent.json", "w") as handle:
-        json.dump(intent, handle, indent=1)
+    # A compiled spec's documents are the run's output and are written beside its plan; a drawn spec's
+    # are its input and are left exactly as authored, so re-driving one is byte-identical by
+    # construction rather than by the finish being empty.
+    if drawn_layout is None:
+        with open(f"{specdir}/{base}.layout.json", "w") as handle:
+            json.dump(layout, handle, indent=1)
+        with open(f"{specdir}/{base}.intent.json", "w") as handle:
+            json.dump(intent, handle, indent=1)
     print(f"DONE slug={slug}")
 
 

@@ -19,7 +19,12 @@ corrected spec **replaces** the map it had rather than leaving a second one besi
 | `<slug>.finish.json` | everything a plan cannot state, keyed onto the layout the plan compiles to |
 
 The driver writes two more beside them — `<slug>.layout.json` and `<slug>.intent.json`, the documents it
-actually posted — so a review reads what was built rather than what was asked for.
+actually posted — so a review reads what was built rather than what was asked for. **Those two are output
+and never input.** A spec carrying a finish is compiled from its plan on every run and the pair is
+overwritten; a spec with no finish is a board drawn in the Sketch tool, and then they are the authored
+geometry and are read. The finish is what decides which, because `addLayers`, `addShapes` and `bendShapes`
+all append — reading back a layout the driver wrote and patching it again gives two storeys called `under`
+and a ring bent twice.
 
 ### What the finish carries
 
@@ -123,6 +128,11 @@ They land beside the documents rather than in `--out`, and so does the provenanc
 moves out of the exported `region/`. `--out` is what a game server is handed: `region/`, `level.dat`,
 `map.xml`, and nothing a match does not read. A CLI read-back pointed at that region directory therefore
 finds no provenance and falls back to the material estimate, which it states on its own scale line.
+
+**The sweep is over files, so `renders/close/` is where a hand-taken picture belongs.** A render directory
+is one run's output rather than an accumulation of every run's, and the sweep at the end of a run removes
+whatever this run did not write — which silently deletes a picture an author took by hand and a README then
+points at. A subdirectory is not touched.
 
 The reason they are taken here is the reason the grid and the flow are printed here: **a read nobody is
 refused for skipping is the read nobody takes.** Every shipped roof fault was visible in a section and
