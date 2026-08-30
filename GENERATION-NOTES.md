@@ -906,6 +906,16 @@ group and the river under it. `DR-CLAIM` and `DR-ROAD` both read that book, so t
 road is measured against roads on the prop's own storey. Two props on the **same** layer still have
 to be moved apart in plan (`WE49`).
 
+**The keep-out mask is the other way round, and that is the half that bites underground.**
+`DressingScope.KeptClearAt` is `(x, z)` with no layer at all, and `SketchRasterizer.KeepClearCells`
+gathers every `keepClear` shape **over every layer**, so a keep-out is a column from floor to sky.
+Both halves show on `showcase/24-underground`: a boulder on the `under` layer at `(0, 14)`, sixteen
+courses below a monument at `(0, 22)`, declines `OB19` *"rests on (0, 13), inside a goal's
+clearance"*; and a **lid** marked `keepClear` makes the room under it undressable — the same board's
+flora ring inside its cell placed **0** cells with the vault marked and **13** with the mark removed,
+and flora declines silently, so neither answer raises anything. **Mark the wall, never the roof.**
+Filed as `TS69`.
+
 ### A storey read only reaches its own top where the spans are read half-open
 
 `ColumnSegment` is `[YFloor, YTop)`. A board whose lower layer meets the one over it with no gap —
@@ -936,21 +946,80 @@ walk can stand in. A monument sealed under a concourse exports at 200 as long as
 it — which on `opus5-interchange` is a ramp, and before the ramp had headroom was `SK11` naming
 3,336 places nothing could reach.
 
-### A stroke ignores `layer`, so a floor with a roof over it is marked with a shape
+### A stroke honours `layer`, and the census `y` that says otherwise is the column's top
 
 Every prop kind takes `layer` and `DressingContext.GroundFor` reads it — a house, a tree and a
 boulder all seat on the storey they name; measured on `opus5-interchange`, a kiosk stated for the
 pool hall stands with its roof at y10 under a concourse whose floor is y12, and an oak stated for
-the car deck stands at y42. **A stroke does not.** Two lane markings carrying `"layer": "under"`
-came back from `POST …/sketch/dressing` with `"y": 25` and `"y": 17` — the corridor wall's coping
-and the corridor floor, over the basin they were drawn for — and a worn track stated for a hall at
-y18 came back at `"y": 37`, on the deck roofing it. Nothing declines, because `DR-LAYER` fires on a
-layer the board does not have and these are layers it has.
+the car deck stands at y42. **A stroke is the same**: `PlaceStroke` opens with
+`context.GroundFor(path)` like every other placement. A `worn` stroke carrying `"layer": "under"`,
+drawn `(−6, 10) → (6, 10)` on `showcase/24-underground`, paves **y5** — the chamber floor's own top
+course, sixteen courses under the meadow — and `GET …/column?at=0,10` still answers grass at y21.
 
-**Mark a covered floor with a shape instead**: a rectangle of that floor's own `floor` and
-`base_height` carrying a different `theme`. The geometry is unchanged and the theme scope resolves
-per layer, so it lands exactly where it is drawn. Both of the pool's lanes are three-wide rectangles
-of the basin's own two courses, themed dark prismarine.
+**What misleads is the read, not the prop.** `DressingPropDto.y` is *"the top of that column in the
+world this pass just built"* — the **column's** top, not the prop's own height — so on a stacked
+board every underground prop reports the roof over it. The same board's census answers `"y": 21`
+for all four of its props, including one whose flora sits at y6, and `"y": 40` for one image whose
+column carries the observer platform's bedrock. A census `y` can never say which storey a prop
+landed on; only `GET …/column` can.
+
+**A shape still marks a covered floor better than a stroke**, for a different reason: a rectangle of
+that floor's own `floor` and `base_height` carrying a different `theme` is geometry, so it is exact,
+repeatable and cannot be thinned by a `worn` dice. `opus5-interchange`'s pool lanes are three-wide
+rectangles of the basin's own two courses, themed dark prismarine.
+
+### `SK9` is a `Decline`, and no 2xx response carries one
+
+`Findings.Complaints` filters to `Severity.Complaint` and says so on purpose — *"a `Severity.Decline`
+rides along on the same response and is deliberately not here"* — and `SK9` is the **only**
+`Severity.Decline` `SketchLayoutCheck` raises. Every publisher hands the channel that narrowed list
+(`MapFromDocumentsEndpoint` passes `loaded.Complaints?.Complaints`), so a board whose lower shape is
+not in the world stores at **200 with no `Pgm-Warnings` header**, opens the export gate and says
+nothing anywhere.
+
+Measured: a ring wall stated `floor 6, base_height 6` over a chamber floor of `floor 0,
+base_height 6` — the natural way to write a wall standing *on* a floor — leaves a six-course trench
+round the whole wall. `GET …/column?at=-7,0` answers brick y6..13 and **nothing below, not even
+bedrock**; `GET /api/map/{slug}/findings` names `SK9` three times. That endpoint returns the whole
+`Finding` list rather than the complaint channel's, and it is the only read that answers this.
+
+**On a stacked board, ask `GET …/findings` after every store.** No driver does, and the one gate that
+knows a storey is missing speaks only there. Filed as `TS68`.
+
+### `seat: "ground"` reads the highest ground at a cell, so it cannot put anything in a cave
+
+`SketchRasterizer.Seat` builds `groundTop` as the **maximum** `YTop` over every layer that is not the
+made thing itself, then drops the thing until its lowest floor rests one course under that. Under a
+landmass the maximum is always the roof. A `kind: "prop"`, `seat: "ground"` layer drawn at `floor 30`
+inside a chamber whose floor is y5 settled to **y21..23** — on the meadow — and cut a course out of
+the grass beneath it, because the seat also carves the ground standing over the settled floor. The
+control: the same layer without `seat` stayed at **y30..32**, exactly as drawn.
+
+**A made thing in a room states its floors absolutely.** `seat` is for a hull on a beach, not a crate
+in a cellar.
+
+### A lid repaints the stone courses of the room under it
+
+A terrain layer's painting pass resolves its bands from the bedrock course to **its own top**, and
+`TerrainPainter.Paint`'s stone-only invariant is the only thing bounding it. So a ceiling layer's
+`fill` claims every course beneath it that is still stone. Measured inside a cell roofed by a
+two-course brick vault at y12..13: `y3..1` came back **Bricks** where the room's own floor theme
+states stone, while `y5..4` — the floor's `surface` band, coarse dirt — survived.
+
+The top course always survives, so this is visible only where a room's floor is thicker than its
+`surface.depth`. The remedy is `"kind": "prop"` on the lid layer, which paints it over its own span
+alone (`WE56`); re-measured, `y3..1` is Stone again. The trade is that a `prop` layer is also out of
+`SK10`'s pair walk and `SK11`'s, so a lid stated that way loses the gate that would have said it was
+driven into the wall it rests on.
+
+### `below: true` inserts at the front, so a finish lists its storeys top-down
+
+`drive.py`'s `addLayers` does `layers.insert(0, slab)` for every entry marked `below`, and inserting
+twice at index 0 reverses the pair. A board with an undercroft **and** a ceiling over part of it
+therefore lists them `[vault, under]` in the finish to get `[under, vault, ground]` in the posted
+layout — which is the order the painter needs, since it walks the stack in document order and each
+pass paints its whole column. Read the driver's own `+layer …` lines back, or the posted
+`<slug>.layout.json`: the order there is the order that matters.
 
 ### A point mark's radius pins a flat disc, so a radius is a mesa and not a summit
 
