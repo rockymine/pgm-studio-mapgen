@@ -116,9 +116,28 @@
    "style": "pillar-3",
    "materials": "obsidian",
    "anchor": {
-    "x": -52,
-    "y": 19,
-    "z": 52
+    "x": -90,
+    "y": 30,
+    "z": 18
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Red Monument 2",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -15,
+    "y": 30,
+    "z": 98
    },
    "float": 4,
    "box": null
@@ -135,9 +154,28 @@
    "style": "pillar-3",
    "materials": "obsidian",
    "anchor": {
-    "x": 52,
-    "y": 19,
-    "z": -52
+    "x": 89,
+    "y": 30,
+    "z": -19
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Blue Monument 2",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 14,
+    "y": 30,
+    "z": -99
    },
    "float": 4,
    "box": null
@@ -145,11 +183,9 @@
  ],
  "cores": null,
  "meta": {
-  "name": "Millrace",
-  "created": "2026-08-30",
-  "authors": [
-   "Opus 5"
-  ],
+  "name": "map experiment",
+  "created": "",
+  "authors": [],
   "contributors": []
  },
  "symmetry": null,
