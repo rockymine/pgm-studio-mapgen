@@ -266,13 +266,16 @@ tests. With the fixes in, both suites are green (263 Geom, 909 Minecraft, 405 JS
 
 ## What was not fixed
 
-- **A generated crown is still denser than a hand-built one** — 7.6 occupied neighbours per leaf against the
-  corpus's 6.2, and a generated tree still carries more wood per leaf than an author's. Already recorded as
-  open in `tree-corpus.md`; the face rooting does not move it either way.
+- **A generated crown is still denser than a hand-built one** — 7.5 occupied neighbours per leaf against the
+  corpus's 6.2 over the corpus doc's own sweep, climbing 6.6 at height 6 to 8.6 at height 40, and a generated
+  tree still carries more wood per leaf than an author's (2.3 leaves per block). Already recorded as open in
+  `tree-corpus.md`; the face rooting barely moves it.
 - **The whorled tree's bulk sits at mid-height**, not in the bottom third a hand-built conifer puts it in
   (`G173`, already on the board).
 - **A prop that is clipped away to nothing says nothing.** `Fan` reports a decline when a prop cannot *seat*;
   a prop that seats and then loses every block to what is already standing places silently. Filed as `WE66`.
+- **Five documents name a `tools/tree-corpus/` that was swept away** — `doc-status.md` lists a README there,
+  and two backlog entries name scripts in it as the reading to take. Filed as `WE67`.
 - **A grown tree's trunk is one block wide up to about height 26** (`TreeShape.TrunkRadius` = 0.6 + size·0.6,
   reaching a plus-section three wide only near height 40). That is defensible against a corpus whose median
   tree carries 51 blocks of wood, and it is not what the author reported, so it is left alone.
