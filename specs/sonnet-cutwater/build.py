@@ -242,7 +242,7 @@ def boulder(pid, x, z, form, size, rock, mossy=True):
 # site below is read off the built columns — flat, clear of the goals' clearance and the wall —
 # rather than guessed off the plan's now-superseded flat hint layers.
 OAKS_N = [(-65, 82, 10), (-25, 85, 9), (-35, 105, 9)]
-OAKS_S = [(-55, 10, 10), (-105, 22, 9)]
+OAKS_S = [(-40, 10, 10), (-114, 22, 9)]
 FIRS_ISLE = [(38, 48, 13), (55, 62, 11), (60, 45, 14)]
 GNEISS, GRIT = noise(STONE, COBBLE, 3, 61), noise(STONE, GRAVEL, 2, 62)
 BOULDERS = [
@@ -291,8 +291,7 @@ layout["dressing"] = {"props": [
      "points": [[BRIDGE_X, Z0], [-88, 26], [DESTROYABLE_1[0], DESTROYABLE_1[1] + 8]], "pave": GRAVEL},
     house("house-north-1", -58, 85, -48, 93, STYLE, "posZ"),
     house("house-north-2", -40, 84, -30, 92, VARIANT, "negZ"),
-    house("house-south-1", -120, 17, -110, 25, VARIANT, "posX"),
-    house("house-south-2", -72, 15, -64, 21, STYLE, "negZ"),
+    house("house-south-1", -56, 6, -46, 14, VARIANT, "posZ"),
 ] + [oak(f"oak-n{n}", x, z, h) for n, (x, z, h) in enumerate(OAKS_N)]
   + [oak(f"oak-s{n}", x, z, h) for n, (x, z, h) in enumerate(OAKS_S)]
   + [fir(f"fir-{n}", x, z, h) for n, (x, z, h) in enumerate(FIRS_ISLE)]
