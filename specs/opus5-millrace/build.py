@@ -112,23 +112,26 @@ def rect(sid, x0, z0, x1, z1, floor, h, th, keep=True):
             "height_mode":"level","skirt":0,"relief_scope":"exclude","theme":th}
 Z0, Z1 = zon(SOUTH[0], SOUTH[1], BRIDGE_X)-7, zon([-108,73],[-90,76], BRIDGE_X)+7
 
-def arch(sid, axis, a0, a1, cross0, cross1, spring, crown_rise, piers, pier_foot, theme_id="masonry"):
+def arch(sid, axis, a0, a1, cross0, cross1, spring, crown_rise, piers, pier_foot,
+         theme_id="masonry", base=None):
     """A bridge drawn as one slice per block along its span: the deck rises to a crown, and the
     masonry under it springs from each pier in an arc, so the openings are voids rather than a
     solid wall. Piers stand where `piers` names them and carry down to `pier_foot`."""
     import math
     out, span = [], a1 - a0
+    lo, hi = (BANK, BANK) if base is None else (base if isinstance(base, tuple) else (base, base))
     def deck_at(a):
-        return BANK + round(crown_rise * math.sin(math.pi * (a - a0) / span))
+        f = (a - a0) / span
+        return round(lo + (hi - lo) * f + crown_rise * math.sin(math.pi * f))
     stops = [a0] + list(piers) + [a1]
     for a in range(int(a0), int(a1) + 1):
         top = deck_at(a)
         if any(abs(a - q) <= 4 for q in piers):
             floor = pier_foot                                     # a pier, founded in the bed
         else:
-            lo = max([q for q in stops if q <= a], default=a0)
-            hi = min([q for q in stops if q >= a], default=a1)
-            half, mid = max((hi - lo) / 2, 1), (lo + hi) / 2
+            left = max([q for q in stops if q <= a], default=a0)
+            right = min([q for q in stops if q >= a], default=a1)
+            half, mid = max((right - left) / 2, 1), (left + right) / 2
             r = max(0.0, 1 - ((a - mid) / half) ** 2) ** 0.5
             floor = int(round(spring + (top - 2 - spring) * r))   # the soffit, highest at mid-span
         lo_c, hi_c = cross0, cross1
@@ -147,33 +150,17 @@ def arch(sid, axis, a0, a1, cross0, cross1, spring, crown_rise, piers, pier_foot
 # so the race runs through the openings instead of being dammed by them.
 span = arch("race-bridge", "z", Z0, Z1, BRIDGE_X-6, BRIDGE_X+6,
             spring=BED+1, crown_rise=8, piers=(57,), pier_foot=BED-1)
-# The crossing between the two halves: island to its own image, straight over the build region
-# through (0,0). It is drawn ONCE and its group does not mirror -- a shape centred on the axis is
-# its own image, and fanning it would lay it twice.
-import math as _m
-CROSS = []
-CA, CB = (38, 32), (-38, -32)   # the ends bite into the island rather than stopping short of it
-for i in range(24):
-    f0, f1 = i/24, (i+1)/24
-    ax, az = CA[0]+(CB[0]-CA[0])*f0, CA[1]+(CB[1]-CA[1])*f0
-    bx, bz = CA[0]+(CB[0]-CA[0])*f1, CA[1]+(CB[1]-CA[1])*f1
-    y = 26 + round(6 * _m.sin(_m.pi * (f0+f1)/2))     # springs from the island's own ground
-    CROSS.append({"id":f"cross-{i}","type":"path","operation":"add","override":True,"keepClear":True,
-                  "vertices":[[round(ax),round(az)],[round(bx),round(bz)]],"radius":4.5,
-                  "path_edge":"solid","path_seed":3,"floor":y-1,"base_height":2,
-                  "height_mode":"level","skirt":0,"relief_scope":"exclude","theme":"masonry"})
-    if i % 4 == 0:                                  # a post every fourth bay, for a parapet line
-        CROSS.append({"id":f"cross-post-{i}","type":"path","operation":"add","override":True,
-                      "keepClear":True,"vertices":[[round(ax),round(az)],[round(bx),round(bz)]],
-                      "radius":5.5,"path_edge":"solid","path_seed":3,"floor":y+1,"base_height":3,
-                      "height_mode":"level","skirt":0,"relief_scope":"exclude","theme":"masonry"})
+# The second crossing runs the SAME way as the one over the water -- along z at a constant x --
+# from the wold the monument and its ring stand on, south over the build region to the mirrored
+# middle island. The fan makes the matching span on the other half. Measured: at x -48 the wold's
+# south edge is z 3 and the island's north edge z -30, the shortest crossing between the two.
+HOLM_X = -48
+span += arch("holm-bridge", "z", -34, 8, HOLM_X-6, HOLM_X+6,
+             spring=22, crown_rise=3, piers=(), pier_foot=22, base=(29, 37))
 layout["layers"] = [layout["layers"][0],
   {"id":"spans","name":"spans","base_y":0,"layout":{"shapes":span,
    "groups":[{"id":"spans-body","name":"spans","mirrors":True,
-              "shapeIds":[s["id"] for s in span]}]}},
-  {"id":"crossing","name":"crossing","base_y":0,"layout":{"shapes":CROSS,
-   "groups":[{"id":"crossing-body","name":"crossing","mirrors":False,
-              "shapeIds":[s["id"] for s in CROSS]}]}}]
+              "shapeIds":[s["id"] for s in span]}]}}]
 
 # ── relief: rolling banks, not a flat table with knobs on ───────────────────
 # Relief, on the showcases' own scale: a small `r` and a FINITE `reach`, which is what makes a
