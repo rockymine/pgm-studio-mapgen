@@ -52,7 +52,7 @@ NORTH = [[-15,70],[-40,62],[-90,76],[-108,73],[-125,70]]
 def zon(a, b, x): return a[1] + (x-a[0])*(b[1]-a[1])/(b[0]-a[0])
 NB = lambda x: zon([-90,76], [-40,62], x)
 BANK, WALL_TOP, WALL_FLOOR, WATER, BED = 30, 31, 12, 25, 17
-BRIDGE_X = -100
+BRIDGE_X = -48          # in einer Flucht mit der Querung zur Spiegel-Insel
 STAIR_W, STAIR_E = -76, -62          # the one flight down to the water, on the moor side
 
 def built(sid, pts, radius, floor, height, th="masonry", seed=7, level=True):
@@ -110,7 +110,17 @@ def rect(sid, x0, z0, x1, z1, floor, h, th, keep=True):
     return {"id":sid,"type":"rectangle","operation":"add","override":True,"keepClear":keep,
             "min_x":x0,"max_x":x1,"min_z":z0,"max_z":z1,"floor":floor,"base_height":h,
             "height_mode":"level","skirt":0,"relief_scope":"exclude","theme":th}
-Z0, Z1 = zon(SOUTH[0], SOUTH[1], BRIDGE_X)-7, zon([-108,73],[-90,76], BRIDGE_X)+7
+def basin_span(x):
+    """The basin's z extent at this x, read off its own ring so the span follows the shape."""
+    hits = []
+    for i in range(len(S0)):
+        (ax, az), (bx, bz) = S0[i], S0[(i + 1) % len(S0)]
+        if (ax <= x <= bx) or (bx <= x <= ax):
+            if ax != bx: hits.append(az + (x - ax) * (bz - az) / (bx - ax))
+    return (min(hits), max(hits)) if len(hits) >= 2 else (0, 0)
+
+_zlo, _zhi = basin_span(BRIDGE_X)
+Z0, Z1 = _zlo - 7, _zhi + 7
 
 def arch(sid, axis, a0, a1, cross0, cross1, spring, crown_rise, piers, pier_foot,
          theme_id="masonry", base=None):
@@ -149,7 +159,7 @@ def arch(sid, axis, a0, a1, cross0, cross1, spring, crown_rise, piers, pier_foot
 # Two arches over one mid-stream pier, and the soffit springs from BED+1 -- below the water line,
 # so the race runs through the openings instead of being dammed by them.
 span = arch("race-bridge", "z", Z0, Z1, BRIDGE_X-6, BRIDGE_X+6,
-            spring=BED+1, crown_rise=8, piers=(57,), pier_foot=BED-1)
+            spring=BED+1, crown_rise=8, piers=(round((_zlo+_zhi)/2),), pier_foot=BED-1)
 # The second crossing runs the SAME way as the one over the water -- along z at a constant x --
 # from the wold the monument and its ring stand on, south over the build region to the mirrored
 # middle island. The fan makes the matching span on the other half. Measured: at x -48 the wold's
