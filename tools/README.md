@@ -124,6 +124,14 @@ After the export it writes every picture the studio will draw for what was autho
 a section per house** — the stamped rooms and every distinct house prop style — and the coverage map. That is
 21 files on a board carrying six themes and six houses.
 
+Two more it draws itself, because the studio answers columns and not cameras: `world-iso` from two quarters,
+and `world-xray` from the same two where the board holds a covered space. The x-ray is the only view anything
+underground appears in — `world-iso` draws a gaol under a meadow as a meadow — and it is written only when
+the void scan finds a roofed void of at least 200 cells, because below that it draws the board the isometric
+already drew, one shade paler. The scan itself runs on every board and prints what it found with the
+coordinates: how much covered space, between which blocks, and how much of it is `SEALED`, meaning nothing
+can walk into it.
+
 They land beside the documents rather than in `--out`, and so does the provenance sidecar, which the driver
 moves out of the exported `region/`. `--out` is what a game server is handed: `region/`, `level.dat`,
 `map.xml`, and nothing a match does not read. A CLI read-back pointed at that region directory therefore
@@ -215,7 +223,7 @@ The account of what they are for and what they found is
 | `sculpt/gallery_forms.py` · `gallery_sculpture.py` | the two boards in `sculpture/`, each printing what it cost in layers and shapes and exporting a world into the directory named as its second argument |
 | `sculpt/make_board.py` | writes `specs/opus5-automaton`'s plan and finish, props and all, for `drive.py` to build |
 | `render/png.py` | a PNG writer, a scanline polygon fill and a 5×7 face, in the standard library alone |
-| `render/iso.py` | isometric, orthographic elevation and one-panel-per-layer renders off `POST …/sketch/columns` — the built world, not the drawing. `drive.py` writes two of them per spec, so every board has a picture in the round |
+| `render/iso.py` | isometric, **x-ray isometric**, orthographic elevation and one-panel-per-layer renders off `POST …/sketch/columns` — the built world, not the drawing. `drive.py` writes two isometrics per spec, so every board has a picture in the round, and two x-rays where the board holds a covered space. `cavities` beside them is the read on its own: every roofed void, its cell count, the blocks it lies between, and whether anything can walk into it |
 | `render/preview.py` | the same isometric taken straight off a model's voxels, for correcting a proportion without a build |
 
 The studio's own 3-D preview is WebGL in the browser, so there is no way to take a picture from it; these

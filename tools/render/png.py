@@ -21,15 +21,22 @@ class Canvas:
             offset = (y * self.width + x) * 3
             self.pixels[offset:offset + 3] = bytes(colour)
 
-    def fill_polygon(self, points, colour):
+    def fill_polygon(self, points, colour, alpha=1.0):
         """Scanline-fill a polygon. Points are (x, y) floats; the even-odd rule decides the interior, so a
-        self-intersecting outline fills the way a rasterizer would rather than raising."""
+        self-intersecting outline fills the way a rasterizer would rather than raising.
+
+        `alpha` below 1 mixes the colour into what is already on the canvas instead of replacing it. The
+        mix is a per-channel table built once for the whole polygon, so a translucent face costs one table
+        lookup a byte rather than a multiply."""
         if len(points) < 3:
             return
         ys = [p[1] for p in points]
         top = max(0, int(min(ys)))
         bottom = min(self.height - 1, int(max(ys)) + 1)
         rgb = bytes(colour)
+        mix = None if alpha >= 1 else [
+            bytes(int(channel * alpha + under * (1 - alpha)) for under in range(256))
+            for channel in colour]
         for y in range(top, bottom + 1):
             centre = y + 0.5
             crossings = []
@@ -44,7 +51,13 @@ class Canvas:
                 right = min(self.width, int(crossings[i + 1] + 0.5))
                 if right > left:
                     offset = (y * self.width + left) * 3
-                    self.pixels[offset:offset + (right - left) * 3] = rgb * (right - left)
+                    width = (right - left) * 3
+                    if mix is None:
+                        self.pixels[offset:offset + width] = rgb * (right - left)
+                    else:
+                        self.pixels[offset:offset + width] = bytes(
+                            mix[i % 3][under]
+                            for i, under in enumerate(self.pixels[offset:offset + width]))
 
     def line(self, x0, y0, x1, y1, colour):
         steps = int(max(abs(x1 - x0), abs(y1 - y0))) + 1
@@ -96,6 +109,14 @@ def shade(colour, factor):
     if factor <= 1:
         return tuple(max(0, min(255, int(c * factor))) for c in colour)
     return tuple(max(0, min(255, int(c + (255 - c) * (factor - 1)))) for c in colour)
+
+
+def desaturate(colour, amount):
+    """One colour pulled toward its own grey, `amount` 0 leaving it alone and 1 flattening it to
+    luminance. What it buys is a second axis beside brightness: mass drawn at full value but no chroma
+    still reads as ground, and whatever keeps its chroma reads as the subject."""
+    grey = 0.299 * colour[0] + 0.587 * colour[1] + 0.114 * colour[2]
+    return tuple(max(0, min(255, int(c + (grey - c) * amount))) for c in colour)
 
 
 def hex_rgb(text):

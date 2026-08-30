@@ -62,6 +62,12 @@ section per house, the coverage map, the board read back from every angle, and t
 into `<specdir>/renders`, or into `--renders <dir>`. Taking a picture is not the same as looking at one;
 what it removes is the excuse.
 
+Two of those pictures are drawn here rather than fetched, because the studio answers columns and not
+cameras: `world-iso` and, where the board holds a covered space, `world-xray`, which washes out whatever
+stands between the camera and a roofed void so a chamber under a hill is in the picture at all. The void
+scan behind it prints on every board — how much covered space there is, between which blocks, and which
+of it is SEALED, meaning nothing can walk into it.
+
 The pictures and the provenance sidecar land beside the documents rather than in the exported world, because
 `--out` is what a server is handed: it holds `region/`, `level.dat` and `map.xml`, and nothing a match does
 not read.
@@ -119,6 +125,9 @@ def text(path, fatal=False):
     return payload.decode("utf-8", "replace") if isinstance(payload, bytes) and status < 300 else None
 
 
+# The smallest roofed void worth an x-ray: a room six blocks square with six courses of headroom. Under
+# it the view draws what the plain isometric already drew, one shade paler.
+XRAY_FLOOR = 200
 # The widest grid worth printing at 1:1. Past it the board is downsampled, because a wall of characters
 # nobody reads is the same as no read at all.
 GRID_WIDTH = 110
@@ -282,6 +291,34 @@ def renders(into, slug, finish, layout, drawn, flow):
                 title=None, caption=f"{slug} - isometric, {'south-east' if quarter == 0 else 'south-west'}")
             written.append(name)
             print(f"  ISO   {name:<44} {blocks} blocks, {faces} drawn, {size[0]}x{size[1]} px")
+
+        # What the board holds that is covered — a chamber, a house interior, the air under a ledge — with
+        # the blocks it lies between. The scan runs on every board because it costs one pass over a payload
+        # already in hand and answers a question no other read does: `render/section` needs the coordinate
+        # in advance and `world-iso` above draws a gaol under a meadow as a meadow. A void marked SEALED is
+        # a finding on its own — a space nothing can walk into.
+        voids = iso.cavities(iso.voxels(columns))
+        for entry in voids[:6]:
+            print(f"  VOID  {entry['cells']:>6} cells  {'SEALED' if entry['sealed'] else 'open  '}  "
+                  f"x {entry['min'][0]}..{entry['max'][0]}  y {entry['min'][1]}..{entry['max'][1]}  "
+                  f"z {entry['min'][2]}..{entry['max'][2]}")
+        print(f"  VOID  {len(voids)} roofed void(s), "
+              f"{sum(1 for entry in voids if entry['sealed'])} of them sealed")
+        # And the x-ray, only where there is something in it to see. Below the floor the view draws the
+        # same board the two isometrics already drew, one shade paler, which is a picture that costs a
+        # reader a look and answers nothing.
+        if voids and voids[0]["cells"] >= XRAY_FLOOR:
+            # The storeys the veil may not touch. A layer of `kind: "prop"` is a made thing, and a made
+            # thing standing in a room is the subject of the picture rather than what hides it — but it
+            # stands between the camera and the air behind it like any other block, so the sight-line
+            # rule cannot tell it from a ceiling. The document can, and this is the caller that holds it.
+            made = [layer["id"] for layer in (layout.get("layers") or [])
+                    if layer.get("kind") == "prop" and layer.get("id")]
+            for name, quarter in (("world-xray.png", 0), ("world-xray-turned.png", 1)):
+                iso.xray(columns, os.path.join(into, name), scale=3, margin=30, quarter=quarter,
+                         title=None, keep=made or None)
+                written.append(name)
+                print(f"  XRAY  {name:<44} veiled to the largest of {len(voids)} void(s)")
 
     # **And what this run did NOT write goes.** The pictures are keyed by what the board holds — a theme per
     # id, a house per distinct style, keyed by the FIRST plot using it — so a theme renamed, a style dropped
