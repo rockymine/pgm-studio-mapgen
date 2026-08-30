@@ -1,125 +1,117 @@
 {
-  "plan": 1,
-  "meta": {
-    "name": "Cutwater Race"
+ "plan": 1,
+ "meta": {
+  "name": "Cutwater"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "piece",
+   "role": "piece",
+   "rect": [
+    -21,
+    14,
+    23,
+    10
+   ],
+   "surface": 30
   },
-  "globals": {
-    "cell": 5,
-    "symmetry": "rot_180",
-    "maxPlayers": 12,
-    "surface": 9
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -19,
+    20,
+    2,
+    2
+   ],
+   "surface": 30
   },
-  "pieces": [
-    {
-      "id": "piece",
-      "role": "piece",
-      "rect": [
-        -21,
-        14,
-        22,
-        10
-      ],
-      "surface": 30
-    },
-    {
-      "id": "spawn",
-      "role": "spawn",
-      "rect": [
-        -19,
-        20,
-        2,
-        2
-      ],
-      "surface": 30
-    },
-    {
-      "id": "piece-2",
-      "role": "piece",
-      "rect": [
-        -25,
-        7,
-        22,
-        7
-      ],
-      "surface": 25
-    },
-    {
-      "id": "piece-3",
-      "role": "piece",
-      "rect": [
-        -23,
-        0,
-        19,
-        7
-      ],
-      "surface": 30
-    },
-    {
-      "id": "piece-4",
-      "role": "piece",
-      "rect": [
-        -3,
-        5,
-        5,
-        8
-      ],
-      "surface": 25
-    }
-  ],
-  "zones": [
-    {
-      "id": "zone",
-      "rect": [
-        -13,
-        0,
-        26,
-        14
-      ],
-      "holes": []
-    }
-  ],
-  "placements": {
-    "spawns": [
-      {
-        "id": "spawn-1",
-        "piece": "spawn",
-        "at": [
-          1,
-          1
-        ],
-        "facing": "front"
-      }
+  {
+   "id": "piece-2",
+   "role": "piece",
+   "rect": [
+    -25,
+    7,
+    22,
+    7
+   ],
+   "surface": 25
+  },
+  {
+   "id": "piece-3",
+   "role": "piece",
+   "rect": [
+    -23,
+    0,
+    19,
+    7
+   ],
+   "surface": 30
+  },
+  {
+   "id": "piece-4",
+   "role": "piece",
+   "rect": [
+    1,
+    5,
+    10,
+    9
+   ],
+   "surface": 35
+  }
+ ],
+ "zones": [
+  {
+   "id": "zone",
+   "rect": [
+    -13,
+    0,
+    26,
+    14
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     1,
+     1
     ],
-    "wools": [],
-    "iron": [],
-    "destroyables": [
-      {
-        "id": "destroyable-1",
-        "piece": "",
-        "at": [
-          -10.4,
-          10.0
-        ],
-        "style": "pillar-3",
-        "materials": "obsidian",
-        "float": 4,
-        "name": "The Quarry Cairn"
-      },
-      {
-        "id": "destroyable-2",
-        "piece": "",
-        "at": [
-          -6.8,
-          12.4
-        ],
-        "style": "pillar-3",
-        "materials": "obsidian",
-        "float": 4,
-        "name": "The Moor Cairn"
-      }
-    ],
-    "cores": []
-  },
-  "walls": [],
-  "boxes": []
+    "facing": "front"
+   }
+  ],
+  "wools": [],
+  "iron": [],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "piece": "piece-3",
+    "at": [
+     5,
+     3.5
+    ]
+   },
+   {
+    "id": "destroyable-2",
+    "piece": "piece",
+    "at": [
+     18,
+     5.5
+    ]
+   }
+  ],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
 }
