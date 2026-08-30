@@ -22,24 +22,24 @@
    },
    "team": "red",
    "point": {
-    "x": -75,
+    "x": -90,
     "y": 30,
-    "z": 85
+    "z": 105
    },
    "protection": [
     {
-     "minX": -80,
-     "minZ": 80,
-     "maxX": -70,
-     "maxZ": 90
+     "minX": -95,
+     "minZ": 100,
+     "maxX": -85,
+     "maxZ": 110
     }
    ],
    "yaw": 180,
    "piece": {
-    "minX": -80,
-    "minZ": 80,
-    "maxX": -70,
-    "maxZ": 90
+    "minX": -95,
+    "minZ": 100,
+    "maxX": -85,
+    "maxZ": 110
    },
    "iron": []
   },
@@ -52,24 +52,24 @@
    },
    "team": "blue",
    "point": {
-    "x": 75,
+    "x": 90,
     "y": 30,
-    "z": -85
+    "z": -105
    },
    "protection": [
     {
-     "minX": 70,
-     "minZ": -90,
-     "maxX": 80,
-     "maxZ": -80
+     "minX": 85,
+     "minZ": -110,
+     "maxX": 95,
+     "maxZ": -100
     }
    ],
    "yaw": 0,
    "piece": {
-    "minX": 70,
-    "minZ": -90,
-    "maxX": 80,
-    "maxZ": -80
+    "minX": 85,
+    "minZ": -110,
+    "maxX": 95,
+    "maxZ": -100
    },
    "iron": []
   }
@@ -77,7 +77,7 @@
  "observer": {
   "point": {
    "x": 0,
-   "y": 58,
+   "y": 24,
    "z": 0
   },
   "yaw": 0
@@ -112,13 +112,13 @@
     "image": 0
    },
    "owner": "red",
-   "name": "Fallow Pit",
+   "name": "Red Monument",
    "style": "pillar-3",
    "materials": "obsidian",
    "anchor": {
-    "x": -55,
-    "y": 26,
-    "z": 35
+    "x": -90,
+    "y": 30,
+    "z": 18
    },
    "float": 4,
    "box": null
@@ -131,13 +131,13 @@
     "image": 0
    },
    "owner": "red",
-   "name": "Bridgehead",
+   "name": "Red Monument 2",
    "style": "pillar-3",
    "materials": "obsidian",
    "anchor": {
-    "x": -24,
+    "x": -15,
     "y": 30,
-    "z": 64
+    "z": 98
    },
    "float": 4,
    "box": null
@@ -150,13 +150,13 @@
     "image": 1
    },
    "owner": "blue",
-   "name": "Fallow Pit",
+   "name": "Blue Monument",
    "style": "pillar-3",
    "materials": "obsidian",
    "anchor": {
-    "x": 55,
-    "y": 26,
-    "z": -35
+    "x": 89,
+    "y": 30,
+    "z": -19
    },
    "float": 4,
    "box": null
@@ -169,13 +169,13 @@
     "image": 1
    },
    "owner": "blue",
-   "name": "Bridgehead",
+   "name": "Blue Monument 2",
    "style": "pillar-3",
    "materials": "obsidian",
    "anchor": {
-    "x": 24,
+    "x": 14,
     "y": 30,
-    "z": -64
+    "z": -99
    },
    "float": 4,
    "box": null
@@ -183,15 +183,19 @@
  ],
  "cores": null,
  "meta": {
-  "name": "Fallowmere",
-  "created": "",
-  "authors": [],
+  "name": "map experiment",
+  "created": "2026-08-30",
+  "authors": [
+   "Sonnet"
+  ],
   "contributors": []
  },
  "symmetry": null,
  "islandTeams": {
   "1": "red",
-  "2": "blue"
+  "2": "blue",
+  "3": "neutral",
+  "4": "neutral"
  },
  "structures": null
 }
