@@ -6089,6 +6089,214 @@
      }
     ]
    }
+  },
+  {
+   "id": "lighter-keel",
+   "name": "lighter-keel",
+   "base_y": 0,
+   "kind": "prop",
+   "prop": "lighter",
+   "layout": {
+    "shapes": [
+     {
+      "id": "bt-k",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": false,
+      "min_x": -107,
+      "max_x": -93,
+      "min_z": 55,
+      "max_z": 59,
+      "floor": 22,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "hull"
+     }
+    ],
+    "groups": [
+     {
+      "id": "lighter-keel-body",
+      "name": "lighter",
+      "mirrors": true,
+      "shapeIds": [
+       "bt-k"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "lighter-hull",
+   "name": "lighter-hull",
+   "base_y": 0,
+   "kind": "prop",
+   "prop": "lighter",
+   "layout": {
+    "shapes": [
+     {
+      "id": "bt-h",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": false,
+      "min_x": -110,
+      "max_x": -90,
+      "min_z": 53,
+      "max_z": 61,
+      "floor": 25,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "hull"
+     }
+    ],
+    "groups": [
+     {
+      "id": "lighter-hull-body",
+      "name": "lighter",
+      "mirrors": true,
+      "shapeIds": [
+       "bt-h"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "lighter-deck",
+   "name": "lighter-deck",
+   "base_y": 0,
+   "kind": "prop",
+   "prop": "lighter",
+   "layout": {
+    "shapes": [
+     {
+      "id": "bt-d",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": false,
+      "min_x": -111,
+      "max_x": -89,
+      "min_z": 52,
+      "max_z": 62,
+      "floor": 28,
+      "base_height": 1,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "timber"
+     }
+    ],
+    "groups": [
+     {
+      "id": "lighter-deck-body",
+      "name": "lighter",
+      "mirrors": true,
+      "shapeIds": [
+       "bt-d"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "lighter-cabin",
+   "name": "lighter-cabin",
+   "base_y": 0,
+   "kind": "prop",
+   "prop": "lighter",
+   "layout": {
+    "shapes": [
+     {
+      "id": "bt-c",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": false,
+      "min_x": -98,
+      "max_x": -92,
+      "min_z": 55,
+      "max_z": 59,
+      "floor": 29,
+      "base_height": 4,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "timber"
+     }
+    ],
+    "groups": [
+     {
+      "id": "lighter-cabin-body",
+      "name": "lighter",
+      "mirrors": true,
+      "shapeIds": [
+       "bt-c"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "lighter-rig",
+   "name": "lighter-rig",
+   "base_y": 0,
+   "kind": "prop",
+   "prop": "lighter",
+   "layout": {
+    "shapes": [
+     {
+      "id": "bt-m",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": false,
+      "min_x": -104,
+      "max_x": -103,
+      "min_z": 56,
+      "max_z": 57,
+      "floor": 29,
+      "base_height": 19,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "hull"
+     },
+     {
+      "id": "bt-s",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "keepClear": false,
+      "min_x": -103,
+      "max_x": -102,
+      "min_z": 51,
+      "max_z": 63,
+      "floor": 30,
+      "base_height": 15,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "envelope2"
+     }
+    ],
+    "groups": [
+     {
+      "id": "lighter-rig-body",
+      "name": "lighter",
+      "mirrors": true,
+      "shapeIds": [
+       "bt-m",
+       "bt-s"
+      ]
+     }
+    ]
+   }
   }
  ],
  "relief": {

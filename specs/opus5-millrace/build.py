@@ -258,6 +258,23 @@ statue = [("plinth", [rect("st-p", SX-5, SZ-5, SX+5, SZ+5, SY, 4, "masonry", kee
 for name, shapes in statue:
     layout["layers"].append(prop_layer(f"statue-{name}", "statue", shapes))
 
+# A lighter moored in the wide reach west of the bridge: keel bedded in the water, hull to the
+# waterline, a deck over it, a cabin aft and a mast carrying two courses of canvas. The rig shares
+# one layer with the cabin because they stand on different columns, and a layer holds one span per
+# column rather than one shape.
+BX, BZ, WATERLINE = -100, 57, WATER
+lighter = [("keel",  [rect("bt-k", BX-7, BZ-2, BX+7, BZ+2, WATERLINE-3, 3, "hull", keep=False)]),
+           ("hull",  [rect("bt-h", BX-10, BZ-4, BX+10, BZ+4, WATERLINE, 3, "hull", keep=False)]),
+           ("deck",  [rect("bt-d", BX-11, BZ-5, BX+11, BZ+5, WATERLINE+3, 1, "timber", keep=False)]),
+           ("cabin", [rect("bt-c", BX+2, BZ-2, BX+8, BZ+2, WATERLINE+4, 4, "timber", keep=False)]),
+           # A rectangle's max edge is exclusive, so a mast is stated as two columns to build one.
+           # The sail hangs one block aft of it rather than through it: a layer holds one span per
+           # column, so a plate crossing the mast's own column would take the mast's place in it.
+           ("rig",   [rect("bt-m", BX-4, BZ-1, BX-3, BZ, WATERLINE+4, 19, "hull", keep=False),
+                      rect("bt-s", BX-3, BZ-6, BX-2, BZ+6, WATERLINE+5, 15, "envelope2", keep=False)])]
+for name, shapes in lighter:
+    layout["layers"].append(prop_layer(f"lighter-{name}", "lighter", shapes))
+
 # ── dressing: the water, the woods, the erratics and the crofts ─────────────
 # Every coordinate below was read off the built world rather than guessed: a site is a cell whose
 # 5x5 neighbourhood varies by one block, carries nothing standing on it, and lies clear of the
