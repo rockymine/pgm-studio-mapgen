@@ -67,8 +67,10 @@ theme is named specifically: do not bind it.
 a roof change, not a second design. Fork a shipped preset (`GET /api/room-styles/{id}/json`) rather than
 writing one from nothing. The island holds very few buildings; it has no room for a settlement.
 
-**Normal trees only.** The `grown` tree is broken — floating parts, poor trunks — and is under investigation
-separately. Use the tree every other board here uses.
+**Both tree forms are usable.** The grown tree's severed trunks and floating limbs are fixed, and the four
+boulder forms are fixed with them — `showcase/25` is the world that demonstrates both. A grown tree names a
+`wood` and is shaped by its own knobs; `whorled: true` is the conifer against the broadleaf. Put the conifer
+on earth ground and the broadleaf on grass, and give the erratics more than one form and more than one size.
 
 **A pit under one of the destroyables,** and one goal sitting down inside a dip rather than on open ground.
 
@@ -77,9 +79,7 @@ separately. Use the tree every other board here uses.
 say how a made thing is built out of layers and how it meets the ground — `seat: ground`, or an absolute floor
 for anything that flies or floats.
 
-**The board's name is written in the sky.** Letters, blocky and thick, as a made thing on their own layer, with
-a backdrop behind them if that reads better. This is an experiment the author wants seen, not a requirement
-that has been proven to work.
+**No sky-writing.** It was tried and the author has ruled it out. Spend the layers on the props instead.
 
 ## The outline stays edgy
 
