@@ -1,9 +1,20 @@
 # The map-experiment brief — three boards off one base
 
 `rockymine-map-experiment` is a board the author drew **in the browser**, in the Sketch tool, rather than
-through the API. That is why its spec folder differs from every other one here: it holds a `plan`, a `layout`
-and an `intent` and **no `finish.json`**, because a finish is the driver's document and this board never went
-through the driver. Drive it with `POST /api/map/from-documents`, which takes the three it does have.
+through the API. Its spec folder therefore holds a `plan`, a `layout` and an `intent`, and its `finish.json`
+carries nothing but authorship: the geometry *is* the layout, hand-drawn and not derivable from the plan.
+
+**Every board goes through `tools/drive.py`, and a board that has not been driven is not finished.** The
+driver takes a drawn spec as it takes a compiled one — it skips `/plan/compile` where a `layout` and an
+`intent` are already on disk and drives those instead:
+
+    python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir>
+
+That one call is the ascii grid, the flow read, `sketch/relief/read` (the only place `RL2` is heard), the
+dressing declines, the preflight, the coverage read, the world export and **23 renders** into
+`specs/<slug>/renders`. Taking a picture is not the same as looking at one: read `world-iso.png`,
+`world-heightmap.png` and `world-traversability.png` before claiming a board is done. The driver **sweeps**
+its own render directory, so a closeup that should survive the next run goes in `specs/<slug>/closeups/`.
 
 Three boards are authored off it, one per agent, each on its **own slug** — the base is a starting composition
 and is never overwritten. What follows is what the author asked all three for, then what separates them.
@@ -92,18 +103,22 @@ the thing to avoid.
 
 ## What the base already fails, measured
 
-Driven against the live API before any of the three boards was authored. **The plan is `valid: false` as
-drawn** and every board has to answer these; none of them is a matter of taste.
+Driven against the live API before any of the three boards was authored. `POST /plan/evaluate` answers
+`valid: false`, and **exactly one of the four terms is what makes it false**: `gap-hop-band` comes back
+`kind: "hard"` and the three goal terms come back `kind: "soft"`. A soft term costs score and does not
+refuse; fixing `G5` alone turns the plan valid.
 
-| rule | says | reading |
-|---|---|---|
-| `G5` | `gap hop 25 outside 10..20 between 'piece' and 'piece-4'` — **hard** | the two are too far apart to jump between. Move one, widen one, or put ground between them |
-| `GO1` | `goal-spawn-ratio 2.511 outside [3, 4]` | the goals are too near the *attacker* relative to their own spawn |
-| `GO2` | `own-goal-distance 111 outside [35, 65]` | and much too far from the team that defends them |
-| `GO3` | `opposing-goal-distance 205 outside [85, 150]` | which follows from the same placement |
+| rule | term | kind | says | reading |
+|---|---|---|---|---|
+| `G5` | `gap-hop-band` | **hard** | `gap hop 25 outside 10..20 between 'piece' and 'piece-4'` | the two are too far apart to jump between. Move one, widen one, or put ground between them |
+| `GO1` | `goal-spawn-ratio` | soft | `2.511 outside [3, 4]` | each goal sits 2.5× as far from the enemy spawn as from its own, against a band of 3–4 |
+| `GO2` | `own-goal-distance` | soft | `111 outside [35, 65]` | the **two goals one team owns** stand 111 blocks apart by walk. Not a goal-to-spawn measure |
+| `GO3` | `opposing-goal-distance` | soft | `205 outside [85, 150]` | the same walk read across the axis |
 
-The spawns are 277 blocks apart, so `GO1`'s band puts each goal **55–69 blocks** from its own spawn along the
-lane. They stand at 111. Moving the objectives is the cheapest fix; moving the spawns re-cuts the board.
+**The two goals per team are the author's, and they stay.** They were placed where they are on purpose, and
+`GO2`'s band is what a pair of goals covered from one defensive position measures — a statement about a
+convention, not about this board. `G5` is the one term a board must answer; the three `GO` terms are read,
+weighed and left alone unless moving something else happens to improve them.
 
 `POST /map/from-documents` answers **200** with `5 SK11 SK8`:
 
