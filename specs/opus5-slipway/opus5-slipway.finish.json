@@ -2068,7 +2068,7 @@
       "name": "ship run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "ship",
+      "part_of": "ship",
       "shapes": [
         {
           "id": "ship-0",
@@ -4886,7 +4886,7 @@
       "name": "ship run 1",
       "base_y": 0,
       "kind": "made",
-      "prop": "ship",
+      "part_of": "ship",
       "shapes": [
         {
           "id": "ship-200",
@@ -6332,7 +6332,7 @@
       "name": "ship run 2",
       "base_y": 0,
       "kind": "made",
-      "prop": "ship",
+      "part_of": "ship",
       "shapes": [
         {
           "id": "ship-302",
@@ -7904,7 +7904,7 @@
       "name": "ship run 3",
       "base_y": 0,
       "kind": "made",
-      "prop": "ship",
+      "part_of": "ship",
       "shapes": [
         {
           "id": "ship-413",
@@ -9266,7 +9266,7 @@
       "name": "ship run 4",
       "base_y": 0,
       "kind": "made",
-      "prop": "ship",
+      "part_of": "ship",
       "shapes": [
         {
           "id": "ship-509",
@@ -10068,7 +10068,7 @@
       "name": "ship run 5",
       "base_y": 0,
       "kind": "made",
-      "prop": "ship",
+      "part_of": "ship",
       "shapes": [
         {
           "id": "ship-565",
@@ -10422,7 +10422,7 @@
       "name": "ship run 6",
       "base_y": 0,
       "kind": "made",
-      "prop": "ship",
+      "part_of": "ship",
       "shapes": [
         {
           "id": "ship-589",
@@ -10524,7 +10524,7 @@
       "name": "ship run 7",
       "base_y": 0,
       "kind": "made",
-      "prop": "ship",
+      "part_of": "ship",
       "shapes": [
         {
           "id": "ship-595",
@@ -10584,7 +10584,7 @@
       "name": "balloon-w run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-w",
+      "part_of": "balloon-w",
       "shapes": [
         {
           "id": "balloon-w-0",
@@ -16888,7 +16888,7 @@
       "name": "balloon-w run 1",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-w",
+      "part_of": "balloon-w",
       "shapes": [
         {
           "id": "balloon-w-449",
@@ -22646,7 +22646,7 @@
       "name": "balloon-w run 2",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-w",
+      "part_of": "balloon-w",
       "shapes": [
         {
           "id": "balloon-w-859",
@@ -24568,7 +24568,7 @@
       "name": "balloon-w run 3",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-w",
+      "part_of": "balloon-w",
       "shapes": [
         {
           "id": "balloon-w-995",
@@ -25370,7 +25370,7 @@
       "name": "balloon-w run 4",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-w",
+      "part_of": "balloon-w",
       "shapes": [
         {
           "id": "balloon-w-1051",
@@ -26004,7 +26004,7 @@
       "name": "balloon-w run 5",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-w",
+      "part_of": "balloon-w",
       "shapes": [
         {
           "id": "balloon-w-1095",
@@ -26596,7 +26596,7 @@
       "name": "balloon-w run 6",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-w",
+      "part_of": "balloon-w",
       "shapes": [
         {
           "id": "balloon-w-1136",
@@ -26838,7 +26838,7 @@
       "name": "balloon-w run 7",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-w",
+      "part_of": "balloon-w",
       "shapes": [
         {
           "id": "balloon-w-1152",
@@ -26912,7 +26912,7 @@
       "name": "balloon-e run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-e",
+      "part_of": "balloon-e",
       "shapes": [
         {
           "id": "balloon-e-0",
@@ -33216,7 +33216,7 @@
       "name": "balloon-e run 1",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-e",
+      "part_of": "balloon-e",
       "shapes": [
         {
           "id": "balloon-e-449",
@@ -38974,7 +38974,7 @@
       "name": "balloon-e run 2",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-e",
+      "part_of": "balloon-e",
       "shapes": [
         {
           "id": "balloon-e-859",
@@ -40896,7 +40896,7 @@
       "name": "balloon-e run 3",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-e",
+      "part_of": "balloon-e",
       "shapes": [
         {
           "id": "balloon-e-995",
@@ -41698,7 +41698,7 @@
       "name": "balloon-e run 4",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-e",
+      "part_of": "balloon-e",
       "shapes": [
         {
           "id": "balloon-e-1051",
@@ -42332,7 +42332,7 @@
       "name": "balloon-e run 5",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-e",
+      "part_of": "balloon-e",
       "shapes": [
         {
           "id": "balloon-e-1095",
@@ -42924,7 +42924,7 @@
       "name": "balloon-e run 6",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-e",
+      "part_of": "balloon-e",
       "shapes": [
         {
           "id": "balloon-e-1136",
@@ -43166,7 +43166,7 @@
       "name": "balloon-e run 7",
       "base_y": 0,
       "kind": "made",
-      "prop": "balloon-e",
+      "part_of": "balloon-e",
       "shapes": [
         {
           "id": "balloon-e-1152",
@@ -43240,7 +43240,7 @@
       "name": "crane-w run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "crane-w",
+      "part_of": "crane-w",
       "seat": "ground",
       "shapes": [
         {
@@ -44141,7 +44141,7 @@
       "name": "crane-w run 1",
       "base_y": 0,
       "kind": "made",
-      "prop": "crane-w",
+      "part_of": "crane-w",
       "seat": "ground",
       "shapes": [
         {
@@ -44650,7 +44650,7 @@
       "name": "crane-w run 2",
       "base_y": 0,
       "kind": "made",
-      "prop": "crane-w",
+      "part_of": "crane-w",
       "seat": "ground",
       "shapes": [
         {
@@ -44781,7 +44781,7 @@
       "name": "crane-w run 3",
       "base_y": 0,
       "kind": "made",
-      "prop": "crane-w",
+      "part_of": "crane-w",
       "seat": "ground",
       "shapes": [
         {
@@ -44814,7 +44814,7 @@
       "name": "crane-e run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "crane-e",
+      "part_of": "crane-e",
       "seat": "ground",
       "shapes": [
         {
@@ -45715,7 +45715,7 @@
       "name": "crane-e run 1",
       "base_y": 0,
       "kind": "made",
-      "prop": "crane-e",
+      "part_of": "crane-e",
       "seat": "ground",
       "shapes": [
         {
@@ -46224,7 +46224,7 @@
       "name": "crane-e run 2",
       "base_y": 0,
       "kind": "made",
-      "prop": "crane-e",
+      "part_of": "crane-e",
       "seat": "ground",
       "shapes": [
         {
@@ -46355,7 +46355,7 @@
       "name": "crane-e run 3",
       "base_y": 0,
       "kind": "made",
-      "prop": "crane-e",
+      "part_of": "crane-e",
       "seat": "ground",
       "shapes": [
         {
@@ -46388,7 +46388,7 @@
       "name": "cloud-mid-0 run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "cloud-mid-0",
+      "part_of": "cloud-mid-0",
       "shapes": [
         {
           "id": "cloud-mid-0-0",
@@ -48562,7 +48562,7 @@
       "name": "cloud-mid-1 run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "cloud-mid-1",
+      "part_of": "cloud-mid-1",
       "shapes": [
         {
           "id": "cloud-mid-1-0",
@@ -50736,7 +50736,7 @@
       "name": "cloud-back-0 run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "cloud-back-0",
+      "part_of": "cloud-back-0",
       "shapes": [
         {
           "id": "cloud-back-0-0",
@@ -53302,7 +53302,7 @@
       "name": "cloud-back-1 run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "cloud-back-1",
+      "part_of": "cloud-back-1",
       "shapes": [
         {
           "id": "cloud-back-1-0",
@@ -55868,7 +55868,7 @@
       "name": "cloud-town-0 run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "cloud-town-0",
+      "part_of": "cloud-town-0",
       "shapes": [
         {
           "id": "cloud-town-0-0",
@@ -58266,7 +58266,7 @@
       "name": "cloud-town-1 run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "cloud-town-1",
+      "part_of": "cloud-town-1",
       "shapes": [
         {
           "id": "cloud-town-1-0",
@@ -60664,7 +60664,7 @@
       "name": "car-0-0 run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-0-0",
+      "part_of": "car-0-0",
       "shapes": [
         {
           "id": "car-0-0-0",
@@ -60878,7 +60878,7 @@
       "name": "car-0-0 run 1",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-0-0",
+      "part_of": "car-0-0",
       "shapes": [
         {
           "id": "car-0-0-14",
@@ -60938,7 +60938,7 @@
       "name": "car-0-0 run 2",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-0-0",
+      "part_of": "car-0-0",
       "shapes": [
         {
           "id": "car-0-0-17",
@@ -60970,7 +60970,7 @@
       "name": "car-0-0 run 3",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-0-0",
+      "part_of": "car-0-0",
       "shapes": [
         {
           "id": "car-0-0-18",
@@ -61002,7 +61002,7 @@
       "name": "car-0-1 run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-0-1",
+      "part_of": "car-0-1",
       "shapes": [
         {
           "id": "car-0-1-0",
@@ -61216,7 +61216,7 @@
       "name": "car-0-1 run 1",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-0-1",
+      "part_of": "car-0-1",
       "shapes": [
         {
           "id": "car-0-1-14",
@@ -61276,7 +61276,7 @@
       "name": "car-0-1 run 2",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-0-1",
+      "part_of": "car-0-1",
       "shapes": [
         {
           "id": "car-0-1-17",
@@ -61308,7 +61308,7 @@
       "name": "car-0-1 run 3",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-0-1",
+      "part_of": "car-0-1",
       "shapes": [
         {
           "id": "car-0-1-18",
@@ -61340,7 +61340,7 @@
       "name": "car-1-0 run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-1-0",
+      "part_of": "car-1-0",
       "shapes": [
         {
           "id": "car-1-0-0",
@@ -61554,7 +61554,7 @@
       "name": "car-1-0 run 1",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-1-0",
+      "part_of": "car-1-0",
       "shapes": [
         {
           "id": "car-1-0-14",
@@ -61614,7 +61614,7 @@
       "name": "car-1-0 run 2",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-1-0",
+      "part_of": "car-1-0",
       "shapes": [
         {
           "id": "car-1-0-17",
@@ -61646,7 +61646,7 @@
       "name": "car-1-0 run 3",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-1-0",
+      "part_of": "car-1-0",
       "shapes": [
         {
           "id": "car-1-0-18",
@@ -61678,7 +61678,7 @@
       "name": "car-1-1 run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-1-1",
+      "part_of": "car-1-1",
       "shapes": [
         {
           "id": "car-1-1-0",
@@ -61892,7 +61892,7 @@
       "name": "car-1-1 run 1",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-1-1",
+      "part_of": "car-1-1",
       "shapes": [
         {
           "id": "car-1-1-14",
@@ -61952,7 +61952,7 @@
       "name": "car-1-1 run 2",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-1-1",
+      "part_of": "car-1-1",
       "shapes": [
         {
           "id": "car-1-1-17",
@@ -61984,7 +61984,7 @@
       "name": "car-1-1 run 3",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-1-1",
+      "part_of": "car-1-1",
       "shapes": [
         {
           "id": "car-1-1-18",
@@ -62016,7 +62016,7 @@
       "name": "car-2-0 run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-2-0",
+      "part_of": "car-2-0",
       "shapes": [
         {
           "id": "car-2-0-0",
@@ -62230,7 +62230,7 @@
       "name": "car-2-0 run 1",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-2-0",
+      "part_of": "car-2-0",
       "shapes": [
         {
           "id": "car-2-0-14",
@@ -62290,7 +62290,7 @@
       "name": "car-2-0 run 2",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-2-0",
+      "part_of": "car-2-0",
       "shapes": [
         {
           "id": "car-2-0-17",
@@ -62322,7 +62322,7 @@
       "name": "car-2-0 run 3",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-2-0",
+      "part_of": "car-2-0",
       "shapes": [
         {
           "id": "car-2-0-18",
@@ -62354,7 +62354,7 @@
       "name": "car-2-1 run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-2-1",
+      "part_of": "car-2-1",
       "shapes": [
         {
           "id": "car-2-1-0",
@@ -62568,7 +62568,7 @@
       "name": "car-2-1 run 1",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-2-1",
+      "part_of": "car-2-1",
       "shapes": [
         {
           "id": "car-2-1-14",
@@ -62628,7 +62628,7 @@
       "name": "car-2-1 run 2",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-2-1",
+      "part_of": "car-2-1",
       "shapes": [
         {
           "id": "car-2-1-17",
@@ -62660,7 +62660,7 @@
       "name": "car-2-1 run 3",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-2-1",
+      "part_of": "car-2-1",
       "shapes": [
         {
           "id": "car-2-1-18",
@@ -62692,7 +62692,7 @@
       "name": "car-3-0 run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-3-0",
+      "part_of": "car-3-0",
       "shapes": [
         {
           "id": "car-3-0-0",
@@ -62906,7 +62906,7 @@
       "name": "car-3-0 run 1",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-3-0",
+      "part_of": "car-3-0",
       "shapes": [
         {
           "id": "car-3-0-14",
@@ -62966,7 +62966,7 @@
       "name": "car-3-0 run 2",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-3-0",
+      "part_of": "car-3-0",
       "shapes": [
         {
           "id": "car-3-0-17",
@@ -62998,7 +62998,7 @@
       "name": "car-3-0 run 3",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-3-0",
+      "part_of": "car-3-0",
       "shapes": [
         {
           "id": "car-3-0-18",
@@ -63030,7 +63030,7 @@
       "name": "car-3-1 run 0",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-3-1",
+      "part_of": "car-3-1",
       "shapes": [
         {
           "id": "car-3-1-0",
@@ -63244,7 +63244,7 @@
       "name": "car-3-1 run 1",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-3-1",
+      "part_of": "car-3-1",
       "shapes": [
         {
           "id": "car-3-1-14",
@@ -63304,7 +63304,7 @@
       "name": "car-3-1 run 2",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-3-1",
+      "part_of": "car-3-1",
       "shapes": [
         {
           "id": "car-3-1-17",
@@ -63336,7 +63336,7 @@
       "name": "car-3-1 run 3",
       "base_y": 0,
       "kind": "made",
-      "prop": "car-3-1",
+      "part_of": "car-3-1",
       "shapes": [
         {
           "id": "car-3-1-18",

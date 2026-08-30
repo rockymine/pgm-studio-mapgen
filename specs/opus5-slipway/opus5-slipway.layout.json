@@ -18,7 +18,7 @@
    "name": "Ground",
    "base_y": 0,
    "kind": null,
-   "prop": null,
+   "part_of": null,
    "seat": null,
    "layout": {
     "shapes": [
@@ -756,7 +756,7 @@
    "name": "ship run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "ship",
+   "part_of": "ship",
    "layout": {
     "shapes": [
      {
@@ -3576,7 +3576,7 @@
    "name": "ship run 1",
    "base_y": 0,
    "kind": "made",
-   "prop": "ship",
+   "part_of": "ship",
    "layout": {
     "shapes": [
      {
@@ -5024,7 +5024,7 @@
    "name": "ship run 2",
    "base_y": 0,
    "kind": "made",
-   "prop": "ship",
+   "part_of": "ship",
    "layout": {
     "shapes": [
      {
@@ -6598,7 +6598,7 @@
    "name": "ship run 3",
    "base_y": 0,
    "kind": "made",
-   "prop": "ship",
+   "part_of": "ship",
    "layout": {
     "shapes": [
      {
@@ -7962,7 +7962,7 @@
    "name": "ship run 4",
    "base_y": 0,
    "kind": "made",
-   "prop": "ship",
+   "part_of": "ship",
    "layout": {
     "shapes": [
      {
@@ -8766,7 +8766,7 @@
    "name": "ship run 5",
    "base_y": 0,
    "kind": "made",
-   "prop": "ship",
+   "part_of": "ship",
    "layout": {
     "shapes": [
      {
@@ -9122,7 +9122,7 @@
    "name": "ship run 6",
    "base_y": 0,
    "kind": "made",
-   "prop": "ship",
+   "part_of": "ship",
    "layout": {
     "shapes": [
      {
@@ -9226,7 +9226,7 @@
    "name": "ship run 7",
    "base_y": 0,
    "kind": "made",
-   "prop": "ship",
+   "part_of": "ship",
    "layout": {
     "shapes": [
      {
@@ -9288,7 +9288,7 @@
    "name": "balloon-w run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-w",
+   "part_of": "balloon-w",
    "layout": {
     "shapes": [
      {
@@ -15594,7 +15594,7 @@
    "name": "balloon-w run 1",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-w",
+   "part_of": "balloon-w",
    "layout": {
     "shapes": [
      {
@@ -21354,7 +21354,7 @@
    "name": "balloon-w run 2",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-w",
+   "part_of": "balloon-w",
    "layout": {
     "shapes": [
      {
@@ -23278,7 +23278,7 @@
    "name": "balloon-w run 3",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-w",
+   "part_of": "balloon-w",
    "layout": {
     "shapes": [
      {
@@ -24082,7 +24082,7 @@
    "name": "balloon-w run 4",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-w",
+   "part_of": "balloon-w",
    "layout": {
     "shapes": [
      {
@@ -24718,7 +24718,7 @@
    "name": "balloon-w run 5",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-w",
+   "part_of": "balloon-w",
    "layout": {
     "shapes": [
      {
@@ -25312,7 +25312,7 @@
    "name": "balloon-w run 6",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-w",
+   "part_of": "balloon-w",
    "layout": {
     "shapes": [
      {
@@ -25556,7 +25556,7 @@
    "name": "balloon-w run 7",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-w",
+   "part_of": "balloon-w",
    "layout": {
     "shapes": [
      {
@@ -25632,7 +25632,7 @@
    "name": "balloon-e run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-e",
+   "part_of": "balloon-e",
    "layout": {
     "shapes": [
      {
@@ -31938,7 +31938,7 @@
    "name": "balloon-e run 1",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-e",
+   "part_of": "balloon-e",
    "layout": {
     "shapes": [
      {
@@ -37698,7 +37698,7 @@
    "name": "balloon-e run 2",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-e",
+   "part_of": "balloon-e",
    "layout": {
     "shapes": [
      {
@@ -39622,7 +39622,7 @@
    "name": "balloon-e run 3",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-e",
+   "part_of": "balloon-e",
    "layout": {
     "shapes": [
      {
@@ -40426,7 +40426,7 @@
    "name": "balloon-e run 4",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-e",
+   "part_of": "balloon-e",
    "layout": {
     "shapes": [
      {
@@ -41062,7 +41062,7 @@
    "name": "balloon-e run 5",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-e",
+   "part_of": "balloon-e",
    "layout": {
     "shapes": [
      {
@@ -41656,7 +41656,7 @@
    "name": "balloon-e run 6",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-e",
+   "part_of": "balloon-e",
    "layout": {
     "shapes": [
      {
@@ -41900,7 +41900,7 @@
    "name": "balloon-e run 7",
    "base_y": 0,
    "kind": "made",
-   "prop": "balloon-e",
+   "part_of": "balloon-e",
    "layout": {
     "shapes": [
      {
@@ -41976,7 +41976,7 @@
    "name": "crane-w run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "crane-w",
+   "part_of": "crane-w",
    "seat": "ground",
    "layout": {
     "shapes": [
@@ -42879,7 +42879,7 @@
    "name": "crane-w run 1",
    "base_y": 0,
    "kind": "made",
-   "prop": "crane-w",
+   "part_of": "crane-w",
    "seat": "ground",
    "layout": {
     "shapes": [
@@ -43390,7 +43390,7 @@
    "name": "crane-w run 2",
    "base_y": 0,
    "kind": "made",
-   "prop": "crane-w",
+   "part_of": "crane-w",
    "seat": "ground",
    "layout": {
     "shapes": [
@@ -43523,7 +43523,7 @@
    "name": "crane-w run 3",
    "base_y": 0,
    "kind": "made",
-   "prop": "crane-w",
+   "part_of": "crane-w",
    "seat": "ground",
    "layout": {
     "shapes": [
@@ -43558,7 +43558,7 @@
    "name": "crane-e run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "crane-e",
+   "part_of": "crane-e",
    "seat": "ground",
    "layout": {
     "shapes": [
@@ -44461,7 +44461,7 @@
    "name": "crane-e run 1",
    "base_y": 0,
    "kind": "made",
-   "prop": "crane-e",
+   "part_of": "crane-e",
    "seat": "ground",
    "layout": {
     "shapes": [
@@ -44972,7 +44972,7 @@
    "name": "crane-e run 2",
    "base_y": 0,
    "kind": "made",
-   "prop": "crane-e",
+   "part_of": "crane-e",
    "seat": "ground",
    "layout": {
     "shapes": [
@@ -45105,7 +45105,7 @@
    "name": "crane-e run 3",
    "base_y": 0,
    "kind": "made",
-   "prop": "crane-e",
+   "part_of": "crane-e",
    "seat": "ground",
    "layout": {
     "shapes": [
@@ -45140,7 +45140,7 @@
    "name": "cloud-mid-0 run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "cloud-mid-0",
+   "part_of": "cloud-mid-0",
    "layout": {
     "shapes": [
      {
@@ -47316,7 +47316,7 @@
    "name": "cloud-mid-1 run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "cloud-mid-1",
+   "part_of": "cloud-mid-1",
    "layout": {
     "shapes": [
      {
@@ -49492,7 +49492,7 @@
    "name": "cloud-back-0 run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "cloud-back-0",
+   "part_of": "cloud-back-0",
    "layout": {
     "shapes": [
      {
@@ -52060,7 +52060,7 @@
    "name": "cloud-back-1 run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "cloud-back-1",
+   "part_of": "cloud-back-1",
    "layout": {
     "shapes": [
      {
@@ -54628,7 +54628,7 @@
    "name": "cloud-town-0 run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "cloud-town-0",
+   "part_of": "cloud-town-0",
    "layout": {
     "shapes": [
      {
@@ -57028,7 +57028,7 @@
    "name": "cloud-town-1 run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "cloud-town-1",
+   "part_of": "cloud-town-1",
    "layout": {
     "shapes": [
      {
@@ -59428,7 +59428,7 @@
    "name": "car-0-0 run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-0-0",
+   "part_of": "car-0-0",
    "layout": {
     "shapes": [
      {
@@ -59644,7 +59644,7 @@
    "name": "car-0-0 run 1",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-0-0",
+   "part_of": "car-0-0",
    "layout": {
     "shapes": [
      {
@@ -59706,7 +59706,7 @@
    "name": "car-0-0 run 2",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-0-0",
+   "part_of": "car-0-0",
    "layout": {
     "shapes": [
      {
@@ -59740,7 +59740,7 @@
    "name": "car-0-0 run 3",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-0-0",
+   "part_of": "car-0-0",
    "layout": {
     "shapes": [
      {
@@ -59774,7 +59774,7 @@
    "name": "car-0-1 run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-0-1",
+   "part_of": "car-0-1",
    "layout": {
     "shapes": [
      {
@@ -59990,7 +59990,7 @@
    "name": "car-0-1 run 1",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-0-1",
+   "part_of": "car-0-1",
    "layout": {
     "shapes": [
      {
@@ -60052,7 +60052,7 @@
    "name": "car-0-1 run 2",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-0-1",
+   "part_of": "car-0-1",
    "layout": {
     "shapes": [
      {
@@ -60086,7 +60086,7 @@
    "name": "car-0-1 run 3",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-0-1",
+   "part_of": "car-0-1",
    "layout": {
     "shapes": [
      {
@@ -60120,7 +60120,7 @@
    "name": "car-1-0 run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-1-0",
+   "part_of": "car-1-0",
    "layout": {
     "shapes": [
      {
@@ -60336,7 +60336,7 @@
    "name": "car-1-0 run 1",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-1-0",
+   "part_of": "car-1-0",
    "layout": {
     "shapes": [
      {
@@ -60398,7 +60398,7 @@
    "name": "car-1-0 run 2",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-1-0",
+   "part_of": "car-1-0",
    "layout": {
     "shapes": [
      {
@@ -60432,7 +60432,7 @@
    "name": "car-1-0 run 3",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-1-0",
+   "part_of": "car-1-0",
    "layout": {
     "shapes": [
      {
@@ -60466,7 +60466,7 @@
    "name": "car-1-1 run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-1-1",
+   "part_of": "car-1-1",
    "layout": {
     "shapes": [
      {
@@ -60682,7 +60682,7 @@
    "name": "car-1-1 run 1",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-1-1",
+   "part_of": "car-1-1",
    "layout": {
     "shapes": [
      {
@@ -60744,7 +60744,7 @@
    "name": "car-1-1 run 2",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-1-1",
+   "part_of": "car-1-1",
    "layout": {
     "shapes": [
      {
@@ -60778,7 +60778,7 @@
    "name": "car-1-1 run 3",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-1-1",
+   "part_of": "car-1-1",
    "layout": {
     "shapes": [
      {
@@ -60812,7 +60812,7 @@
    "name": "car-2-0 run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-2-0",
+   "part_of": "car-2-0",
    "layout": {
     "shapes": [
      {
@@ -61028,7 +61028,7 @@
    "name": "car-2-0 run 1",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-2-0",
+   "part_of": "car-2-0",
    "layout": {
     "shapes": [
      {
@@ -61090,7 +61090,7 @@
    "name": "car-2-0 run 2",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-2-0",
+   "part_of": "car-2-0",
    "layout": {
     "shapes": [
      {
@@ -61124,7 +61124,7 @@
    "name": "car-2-0 run 3",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-2-0",
+   "part_of": "car-2-0",
    "layout": {
     "shapes": [
      {
@@ -61158,7 +61158,7 @@
    "name": "car-2-1 run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-2-1",
+   "part_of": "car-2-1",
    "layout": {
     "shapes": [
      {
@@ -61374,7 +61374,7 @@
    "name": "car-2-1 run 1",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-2-1",
+   "part_of": "car-2-1",
    "layout": {
     "shapes": [
      {
@@ -61436,7 +61436,7 @@
    "name": "car-2-1 run 2",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-2-1",
+   "part_of": "car-2-1",
    "layout": {
     "shapes": [
      {
@@ -61470,7 +61470,7 @@
    "name": "car-2-1 run 3",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-2-1",
+   "part_of": "car-2-1",
    "layout": {
     "shapes": [
      {
@@ -61504,7 +61504,7 @@
    "name": "car-3-0 run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-3-0",
+   "part_of": "car-3-0",
    "layout": {
     "shapes": [
      {
@@ -61720,7 +61720,7 @@
    "name": "car-3-0 run 1",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-3-0",
+   "part_of": "car-3-0",
    "layout": {
     "shapes": [
      {
@@ -61782,7 +61782,7 @@
    "name": "car-3-0 run 2",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-3-0",
+   "part_of": "car-3-0",
    "layout": {
     "shapes": [
      {
@@ -61816,7 +61816,7 @@
    "name": "car-3-0 run 3",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-3-0",
+   "part_of": "car-3-0",
    "layout": {
     "shapes": [
      {
@@ -61850,7 +61850,7 @@
    "name": "car-3-1 run 0",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-3-1",
+   "part_of": "car-3-1",
    "layout": {
     "shapes": [
      {
@@ -62066,7 +62066,7 @@
    "name": "car-3-1 run 1",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-3-1",
+   "part_of": "car-3-1",
    "layout": {
     "shapes": [
      {
@@ -62128,7 +62128,7 @@
    "name": "car-3-1 run 2",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-3-1",
+   "part_of": "car-3-1",
    "layout": {
     "shapes": [
      {
@@ -62162,7 +62162,7 @@
    "name": "car-3-1 run 3",
    "base_y": 0,
    "kind": "made",
-   "prop": "car-3-1",
+   "part_of": "car-3-1",
    "layout": {
     "shapes": [
      {

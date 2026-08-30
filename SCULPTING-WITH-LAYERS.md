@@ -145,8 +145,8 @@ standing above the terrain, and a prop that starts at y=0 will have a bedrock so
 
 Four limits, each measured rather than reasoned:
 
-**A prop cannot be seated on a relief.** A prop's shapes state an absolute `floor`; a relief moves the ground
-under them. On rolling terrain every prop either floats or is buried, and `SK10` names all of them — the first
+**A made thing cannot be seated on a relief.** Its shapes state an absolute `floor`; a relief moves the
+ground under them. On rolling terrain every made thing either floats or is buried, and `SK10` names all of them — the first
 `opus5-automaton` build raised nine of these, up to seven courses deep. `height_mode: raise` is the studio's
 answer for a shape *inside* a group's relief, and it does not reach a shape on another layer. The board
 here is flat because of it. **The fix is two-pass and cheap**: post the ground-only layout, read
@@ -155,11 +155,11 @@ the API is missing; nothing calls it in that order yet.
 
 **`SK10` misreads a prop as a storey.** A solid sculpture standing on a hill *should* sink into the hill —
 there is no gap to lose. The rule's sentence ("the gap between the two storeys is not in the world there") is
-about a gallery under a deck and is simply not true of a statue. It fired on nine props that were correct.
+about a gallery under a deck and is simply not true of a statue. It fired on nine made things that were correct.
 
-**`SK11` fires on every prop with a roof or an overhang.** The gallery raises twenty-two of them: a dome on
+**`SK11` fires on every made thing with a roof or an overhang.** The gallery raises twenty-two of them: a dome on
 columns, a raised arm, an antenna ball. All are true statements ("standable ground with sky over it and no
-route onto it") and none is a fault. A prop layer would want to be out of that walk.
+route onto it") and none is a fault. A made-thing layer would want to be out of that walk.
 
 **A board's layer list stops being readable.** `opus5-automaton` carries thirty-one layers, twenty-four of
 which are `colossus-L0 … sentinel-L7`. `GET …/render/topdown?layer=` takes a sketch layer id, and the refusal

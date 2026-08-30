@@ -70,7 +70,7 @@ def rectangles(cells):
 
 
 def compile_layers(voxels, prefix="s", layer_prefix="L", mirrors=False, group_name=None,
-                   prop=None, seat=None):
+                   part_of=None, seat=None):
     """A `{(x, y, z): material}` model as the `layers` array of a sketch layout.
 
     Every layer sits at `base_y` 0 and every shape states its own `floor`, which is what lets one layer hold
@@ -80,7 +80,8 @@ def compile_layers(voxels, prefix="s", layer_prefix="L", mirrors=False, group_na
 
     Every layer states `kind: "made"`, which is what keeps the stacking rules off a made thing: `SK10` reads
     two layers whose spans meet as a lost gap and `SK11` reads an overhang as standable ground nothing
-    reaches, and neither is true of a sculpture. `prop` names the made thing all of its layers belong to, so
+    reaches, and neither is true of a sculpture. `part_of` names the made thing every one of its layers is a
+    slice of, so
     the studio draws one row for it and seats it as a unit; `seat="ground"` takes its floors from the lowest
     solid column under its own footprint, which is what a thing standing on terrain wants and a thing flying
     over it does not.
@@ -127,7 +128,7 @@ def compile_layers(voxels, prefix="s", layer_prefix="L", mirrors=False, group_na
             "name": f"{group_name or layer_prefix} run {index}",
             "base_y": 0,
             "kind": "made",
-            **({"prop": prop} if prop else {}),
+            **({"part_of": part_of} if part_of else {}),
             **({"seat": seat} if seat else {}),
             "layout": {
                 "shapes": shapes,

@@ -202,7 +202,7 @@ repaint(VARIANT)
 layout["roomStyles"] = {"spawn": json.load(open(f"{STYLES}/showcase-hall.json"))}
 
 def prop_layer(layer_id, prop, shapes, mirrors=True, seat=None):
-    slab = {"id": layer_id, "name": layer_id, "base_y": 0, "kind": "made", "prop": prop,
+    slab = {"id": layer_id, "name": layer_id, "base_y": 0, "kind": "made", "part_of": prop,
             "layout": {"shapes": shapes, "groups": [{"id": layer_id + "-body", "name": prop,
                        "mirrors": mirrors, "shapeIds": [s["id"] for s in shapes]}]}}
     if seat:

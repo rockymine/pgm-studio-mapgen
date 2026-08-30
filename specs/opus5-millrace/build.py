@@ -223,7 +223,7 @@ def repaint(n):
 repaint(VARIANT)
 layout["roomStyles"] = {"spawn": json.load(open(f"{ROOT}/tools/styles/showcase-hall.json"))}
 def prop_layer(lid, prop, shapes, mirrors=True):
-    return {"id":lid,"name":lid,"base_y":0,"kind":"made","prop":prop,
+    return {"id":lid,"name":lid,"base_y":0,"kind":"made","part_of":prop,
             "layout":{"shapes":shapes,"groups":[{"id":lid+"-body","name":prop,"mirrors":mirrors,
                       "shapeIds":[s["id"] for s in shapes]}]}}
 def disc(sid, cx, cz, r, floor, h, th):

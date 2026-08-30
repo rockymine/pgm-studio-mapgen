@@ -179,11 +179,11 @@ def place(model, at, quarter=0):
 
 
 def made(name, voxels, seat=None):
-    """A model compiled to layers, in the shape `addLayers` takes. `kind`, `prop` and `seat` ride with it."""
+    """A model compiled to layers, in the shape `addLayers` takes. `kind`, `part_of` and `seat` ride with it."""
     layers = compile_layers(voxels, prefix=f"{name}-", layer_prefix=f"{name}-L", group_name=name,
-                            prop=name, seat=seat)
+                            part_of=name, seat=seat)
     return [{"id": layer["id"], "name": layer["name"], "base_y": 0, "kind": layer["kind"],
-             "prop": layer["prop"], **({"seat": layer["seat"]} if "seat" in layer else {}),
+             "part_of": layer["part_of"], **({"seat": layer["seat"]} if "seat" in layer else {}),
              "shapes": layer["layout"]["shapes"], "groups": layer["layout"]["groups"]}
             for layer in layers], stats(voxels, layers)
 

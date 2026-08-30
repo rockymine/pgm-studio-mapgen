@@ -22,10 +22,10 @@ compiled layout:
                   as a coast: resampled along its long edges, each inserted point pulled inward by a
                   wander, and Bezier handles over the result. The plan's own vertices never move
   addShapes       [SketchShape, ...]          authored shapes appended to the first group
-  addLayers       [{id, name, base_y, shapes, groups, below?, kind?, prop?, seat?}]  stacked slabs;
+  addLayers       [{id, name, base_y, shapes, groups, below?, kind?, part_of?, seat?}]  stacked slabs;
                   `below` puts one under the compiled ground, where the painter's bottom-up order
                   needs it. `kind: "made"` marks a made thing — out of the stacking rules, painted
-                  over its own span; `prop` names the thing a run of layers belongs to and `seat:
+                  over its own span; `part_of` names the thing a run of layers is sliced from and `seat:
                   "ground"` settles them onto the terrain together
   relief          {"<groupId>": {...}} or {"*": {...}} applied to every group
   themes          the theme registry;  mapTheme  the map default (first key unless stated)
@@ -421,9 +421,9 @@ def patch_layout(layout, finish):
         slab = {"id": extra["id"], "name": extra.get("name") or extra["id"],
                 "base_y": extra["base_y"],
                 # What the layer holds, and how it meets the ground. A made thing states `kind: "made"`,
-                # which takes it out of the stacking rules and paints it over its own span; `prop` names the
+                # which takes it out of the stacking rules and paints it over its own span; `part_of` names the
                 # thing its layers belong to, and `seat` settles them onto the terrain as a unit.
-                **{key: extra[key] for key in ("kind", "prop", "seat") if key in extra},
+                **{key: extra[key] for key in ("kind", "part_of", "seat") if key in extra},
                 "layout": {"shapes": extra["shapes"], "groups": extra["groups"]}}
         # `below` puts a storey under the compiled ground rather than over it. The painter walks the
         # stack in document order and each pass paints its whole column, so a storey listed above one
