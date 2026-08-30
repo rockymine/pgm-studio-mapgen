@@ -40,7 +40,7 @@ def flat(b): return theme(b, b, b)
 # not the paint -- and the island keeps its own; the masonry is the third, and it is the only thing
 # on the board that reads as built rather than grown.
 THEMES = {
- "sward": theme(noise(GRASS, PODZOL, 22, 41), noise(DIRT, STONE, 16, 42), noise(STONE, GRANITE, 20, 43)),
+ "sward": theme(GRASS, noise(DIRT, STONE, 16, 42), noise(STONE, GRANITE, 20, 43)),
  "holt": theme(noise(COARSE, PODZOL, 16, 51), noise(STONE, MOSSY_C, 14, 52), noise(STONE, MOSSY_C, 14, 52)),
  "wrought": theme(noise(SBRICK, ANDESITE, 12, 61), noise(SBRICK, CHISEL, 10, 62), noise(SBRICK, CHISEL, 10, 62)),
  "plank": flat(PLANK), "plank-dark": flat(PLANK_D), "canvas": flat(solid(35, 0)), "leaf": flat(OAK_LEAVES),
@@ -240,9 +240,9 @@ for name, shapes in lighter:
 PX, PZ, PY = -64, 3, 29
 plane = [("fuselage", [rect("pl-f", PX - 6, PZ - 1, PX + 6, PZ + 1, PY, 2, "plank-dark", keep=False)]),
          ("nose",     [rect("pl-n", PX + 6, PZ - 1, PX + 7, PZ + 1, PY, 2, "wrought", keep=False)]),
-         ("wings",    [rect("pl-w", PX - 2, PZ - 6, PX + 1, PZ + 6, PY + 1, 1, "plank", keep=False)]),
+         ("wings",    [rect("pl-w", PX - 2, PZ - 6, PX + 1, PZ + 6, PY, 2, "plank", keep=False)]),
          ("tail",     [rect("pl-tf", PX - 7, PZ - 3, PX - 6, PZ + 3, PY + 1, 1, "plank", keep=False),
-                       rect("pl-tv", PX - 7, PZ - 1, PX - 6, PZ + 1, PY, 3, "plank-dark", keep=False)])]
+                       rect("pl-tv", PX - 7, PZ - 1, PX - 6, PZ + 1, PY, 5, "plank-dark", keep=False)])]
 for name, shapes in plane:
     layout["layers"].append(prop_layer(f"plane-{name}", "plane", shapes))
 

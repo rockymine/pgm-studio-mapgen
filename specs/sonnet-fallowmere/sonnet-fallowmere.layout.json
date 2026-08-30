@@ -3048,8 +3048,8 @@
       "max_x": -63,
       "min_z": -3,
       "max_z": 9,
-      "floor": 30,
-      "base_height": 1,
+      "floor": 29,
+      "base_height": 2,
       "height_mode": "level",
       "skirt": 0,
       "relief_scope": "exclude",
@@ -3104,7 +3104,7 @@
       "min_z": 2,
       "max_z": 4,
       "floor": 29,
-      "base_height": 3,
+      "base_height": 5,
       "height_mode": "level",
       "skirt": 0,
       "relief_scope": "exclude",
@@ -3548,23 +3548,9 @@
     "enabled": true,
     "depth": 1,
     "material": {
-     "kind": "noise",
-     "seed": 41,
-     "scale": 22,
-     "octaves": 4,
-     "stops": [
-      {
-       "kind": "solid",
-       "id": 2,
-       "data": 0
-      },
-      {
-       "kind": "solid",
-       "id": 3,
-       "data": 2
-      }
-     ],
-     "rise": 2
+     "kind": "solid",
+     "id": 2,
+     "data": 0
     }
    },
    "wall": {

@@ -54,13 +54,23 @@ the race runs through the opening rather than against a dam. Measured on the bui
 
 | Theme | On | Says |
 |---|---|---|
-| `sward` | `s1`, `s2` — both banks, hills included | grown: grass-podzol noise surface, a dirt-over-stone wall, a stone-granite fill |
+| `sward` | `s1`, `s2` — both banks, hills included | grown: solid grass surface, a dirt-over-stone wall, a stone-granite fill |
 | `holt` | `s3` and its image — the island, kept its own | grown: coarser, coarse-dirt/podzol surface, stone-mossy-cobble wall and fill |
 | `wrought` | the canal wall and the bridge | built: stone-brick/andesite surface, stone-brick/chiseled wall and fill — the one theme that reads as made rather than grown |
 
 Two banks share one ground on purpose — the water is what tells them apart, not a second palette — and
 the island keeps the third for the same reason `holt` differs at all: it is a different place, not a
 different patch of the same one.
+
+**`sward`'s surface was first authored as `noise(grass, podzol, scale 22)`, and that was wrong the same
+way the author has already ruled against once.** Grass and podzol are two different families — green
+against dark brown — not two shades of one, so `world-iso.png` came back a speckle rather than a ground:
+the exact "podzol and dirt and grass together clash a lot" the author named on an earlier board. The
+reference board's own `moor` answers this by not pairing at all — a solid grass surface, with the noise
+kept for the wall and fill, where a mottled reveal is the point rather than the fault. `sward` now does
+the same: `theme(GRASS, noise(DIRT, STONE, ...), noise(STONE, GRANITE, ...))`, solid on top. Read back,
+both banks are one unbroken green in `world-iso.png` — `holt`'s own pairing (`3:1` coarse dirt against
+`3:2` podzol) was never the problem, since both stops are the one dirt family already.
 
 ## The relief: two flat marks, then whatever rolls
 
@@ -81,17 +91,19 @@ gentle knoll).
   fires. It is the cost of the causeway being thin (two courses) rather than the alternative — a causeway
   thick enough to duplicate the wall's own mass — and it costs nothing visible: the wall's blocks are
   simply repainted in the bridge's material for two of the fifteen courses under the deck.
-- **`SK11`, three patches (11108 + 3634 + 3627 cells).** This is the finding this board spent the most
-  time on and did not clear. `relief/read`'s own walk measures the `team` group's solved field with a
-  two-block join bound, and it reads the far side of a walled, single-bridge canal as unreached — which
-  is close to what a wall is *for*. What it is not measuring is the actual crossing: `GET
-  .../render/traversability` shows every marker connected, `main component` on both banks, and
-  `preflight`'s own `traversability: spawn ↔ objective chain connected` holds on every run this board was
-  driven. Disabling the goal-hollow push entirely left the count unchanged (11108 → 11108), which rules
-  the pit out as the cause; the remaining and more likely explanation is that the check is reading the
-  relief field the wall was excluded from, not the built column the bridge's own layer stamps over it —
-  a question for the studio rather than for this board, and one this run could not settle further without
-  changing code outside the brief.
+- **`SK11`, three patches (11108 + 3634 + 3627 cells).** `render/traversability` and `SK11` answer
+  different questions and cannot contradict each other — one asks whether the built world is walkable at
+  all, the other whether a relief group's own solved field shows a standable mass with no route drawn
+  onto it — so a green traversability read is not by itself a reason to doubt this finding, and an
+  earlier pass here reasoned as if it were. What actually settles it is a walk: flooding the built columns
+  from spawn over the ground and spans layers together, climb 1 and drop 3, reaches every cell all three
+  patches name, including `(-92, 16)`, which the largest is centred on. Disabling the goal-hollow push
+  changed nothing (11108 → 11108) either, which had already ruled the pit out as the cause. Read against
+  `GET /api/rules?rule=SK11`'s own words — "a second landmass the author meant... or leave it if a
+  detached landmass is what the board is" — the finding is the board's two masses either side of the
+  middle void: the shared base's own shape, a destroy board's two team territories joined only by the
+  build zone at the intent tier and never by land, not a defect introduced here. Left, as the rule says
+  to.
 - **`RL2`, 28 blocks of range, 257 barrier steps.** Read together with the heightmap's own contour
   rings — smooth, evenly spaced, no terracing — this is the wall again: a deliberate 15-block masonry
   face reads exactly like an ungraded barrier to a rule that cannot tell a retaining wall from a cliff
@@ -100,6 +112,16 @@ gentle knoll).
 - **`WX11` ×2, destroyable-2 two blocks proud of the cell beside it.** The base's own placement,
   untouched; a doorstep rather than a wall, and not worth re-grading a goal the brief says stays where it
   is.
+
+**The biplane read as an aircraft from above and as a plank cross from the side.** Its wing was a single
+course resting on top of the fuselage rather than a box through it, and the tail fin barely cleared the
+fuselage's own height. Both were cheap to change: the wing is now two courses deep, floored level with
+the fuselage rather than above it, so it has volume where it crosses rather than sitting on the surface
+like a lid; the fin is five courses instead of three. `closeups/airplane.png` shows the wing box plainly
+now. A true side elevation still reads it as low and long rather than as a silhouette a player would call
+a plane from across the map — the model is eleven blocks long and four tall, which is a scale a wing box
+and a taller fin can make readable in plan but not fully in profile — so this is the honest ceiling of a
+cheap fix rather than a full one.
 
 ## Coverage — the number this board is steering by
 
@@ -122,7 +144,7 @@ island, at `(41,-110)`, `(-43,107)`, `(-104,56)` and their mirrors — shoreline
 | the croft | `(-101..-93, -6..1)` | `croft-bank`, forked room-style 6, door `posZ` |
 | the second croft | `(-68..-60, 84..90)` | `croft-north`, the same style repainted, door `negZ` |
 | the rowboat | `(-100, 52)` | keel `y20`, hull to `y25`, moored west of the crossing |
-| the grounded biplane | `(-64, 3)` | fuselage `y29`, wings at `y30`, the new thing this board tried |
+| the grounded biplane | `(-64, 3)` | fuselage `y29..31`, wing box `y29..31` through it, fin to `y34` |
 | the yard route | `(-83,26) → (-77,12) → (-70,5) → (-64,3)` | a worn branch off the crossing's own approach, passing east of the croft rather than through it |
 | the island knoll | centred `(48, 50)` | `+5` push, `y26..33` read back |
 
@@ -130,7 +152,7 @@ island, at `(41,-110)`, `(-43,107)`, `(-104,56)` and their mirrors — shoreline
 
 `specs/sonnet-fallowmere/renders/world-iso.png` and `world-iso-turned.png` are the board in the round;
 `world-heightmap.png` is the contour read the relief section above is measured against;
-`world-traversability.png` is the connectivity claim `SK11` disagrees with;
+`world-traversability.png` is the walkability read `SK11` is not asking (see above);
 `specs/sonnet-fallowmere/closeups/bridge-crossing.png` is the arch from the water; `boat-in-canal.png`
 and `airplane.png` are the two new props at a scale that reads them; `yard-house-airfield.png` is the
 croft, the route and the boulders together.
