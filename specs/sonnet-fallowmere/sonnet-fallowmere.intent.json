@@ -1,0 +1,197 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -75,
+    "y": 30,
+    "z": 85
+   },
+   "protection": [
+    {
+     "minX": -80,
+     "minZ": 80,
+     "maxX": -70,
+     "maxZ": 90
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -80,
+    "minZ": 80,
+    "maxX": -70,
+    "maxZ": 90
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 75,
+    "y": 30,
+    "z": -85
+   },
+   "protection": [
+    {
+     "minX": 70,
+     "minZ": -90,
+     "maxX": 80,
+     "maxZ": -80
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": 70,
+    "minZ": -90,
+    "maxX": 80,
+    "maxZ": -80
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 58,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -65,
+    "minZ": 0,
+    "maxX": 65,
+    "maxZ": 70
+   },
+   {
+    "minX": -65,
+    "minZ": -70,
+    "maxX": 65,
+    "maxZ": 0
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Fallow Pit",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -55,
+    "y": 26,
+    "z": 35
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Bridgehead",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -24,
+    "y": 30,
+    "z": 64
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Fallow Pit",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 55,
+    "y": 26,
+    "z": -35
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Bridgehead",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 24,
+    "y": 30,
+    "z": -64
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Fallowmere",
+  "created": "",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}
