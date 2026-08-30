@@ -178,7 +178,7 @@ def repaint(node):
 repaint(VARIANT)
 
 def prop_layer(lid, prop, shapes, mirrors=True):
-    return {"id": lid, "name": lid, "base_y": 0, "kind": "prop", "prop": prop,
+    return {"id": lid, "name": lid, "base_y": 0, "kind": "made", "prop": prop,
             "layout": {"shapes": shapes, "groups": [{"id": lid + "-body", "name": prop,
                        "mirrors": mirrors, "shapeIds": [s["id"] for s in shapes]}]}}
 

@@ -207,7 +207,7 @@ possible also bites.
 layer: a layer that says `"seat": "raise"` takes each shape's floor from the top of whatever ground stands
 under it. That one field removes the whole `SK10` class and is what lets a prop be dragged around a hillside.
 
-**Say that a layer is a prop.** One flag on the layer — `"kind": "prop"` — would take it out of `SK10`'s pair
+**Say that a layer is a made thing.** One flag on the layer — `"kind": "made"` — would take it out of `SK10`'s pair
 walk and `SK11`'s reachability walk, and would let the storey strip and the topdown render group thirty-one
 layers into four props. None of the three needs the rasterizer to change.
 

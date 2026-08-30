@@ -27,7 +27,7 @@ and this board's geometry is the hand-authored layout.
 | both tree forms, on the right ground | 5 grown oaks (`whorled: false`) on `sward`; 3 grown spruces (`whorled: true`) on `holt` | oaks `leader 0.5`; firs `leader 0.8`, both `form: grown` |
 | four boulder forms, more than one size | round, outcrop, cairn ×2, angular — sizes 3, 4, 5, 6 | `BOULDERS` table in `build.py` |
 | a pit under a destroyable, a goal in a dip | `goal-hollow` push, `amount -6 crown -3`, centred on destroyable-1's own anchor | destroyable-1 `(-90, 18)`; ring read `low=10` inside `team`'s relief |
-| props placed for a reason | a rowboat in the water it costs nothing extra to sit in; a grounded biplane on the flat the croft's own yard reaches | `boat-*` and `plane-*` prop layers, `kind: "prop"` |
+| props placed for a reason | a rowboat in the water it costs nothing extra to sit in; a grounded biplane on the flat the croft's own yard reaches | `boat-*` and `plane-*` prop layers, `kind: "made"` |
 | no sky-writing | none authored | — |
 | the outline stays edgy | `s0`/`s1`/`s2`/`s3` carry their drawn vertices unchanged, no `controls` on any outer edge | `S0`/`S1`/`S2` in `build.py` are the base's own arrays, verbatim |
 

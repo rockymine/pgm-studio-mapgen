@@ -309,7 +309,7 @@ def xray(payload, path, scale=6, layers=None, clip=None, title=None, caption=Non
     exactly as it washes out the ceiling — the rule is right about enclosure and cannot tell a lamp from a
     lid. Nothing in the block set can: a chamber's ceiling is adjacent to its void and so is the fire in the
     middle of it, and every test that separates them by shape needs a number nobody can defend. What does
-    separate them is the document, which already says so — a layer of `kind: "prop"` is a *made thing* and
+    separate them is the document, which already says so — a layer of `kind: "made"` is a *made thing* and
     a made thing in a room is the subject of the picture. So the caller that holds the layout names those
     storeys, and `drive.py` does exactly that. `keep` reads its layer names the way `layers` does, so the
     unattributed runs — the structures and the props the dressing pass placed — come with them.

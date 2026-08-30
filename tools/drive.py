@@ -24,7 +24,7 @@ compiled layout:
   addShapes       [SketchShape, ...]          authored shapes appended to the first group
   addLayers       [{id, name, base_y, shapes, groups, below?, kind?, prop?, seat?}]  stacked slabs;
                   `below` puts one under the compiled ground, where the painter's bottom-up order
-                  needs it. `kind: "prop"` marks a made thing — out of the stacking rules, painted
+                  needs it. `kind: "made"` marks a made thing — out of the stacking rules, painted
                   over its own span; `prop` names the thing a run of layers belongs to and `seat:
                   "ground"` settles them onto the terrain together
   relief          {"<groupId>": {...}} or {"*": {...}} applied to every group
@@ -308,12 +308,12 @@ def renders(into, slug, finish, layout, drawn, flow):
         # same board the two isometrics already drew, one shade paler, which is a picture that costs a
         # reader a look and answers nothing.
         if voids and voids[0]["cells"] >= XRAY_FLOOR:
-            # The storeys the veil may not touch. A layer of `kind: "prop"` is a made thing, and a made
+            # The storeys the veil may not touch. A layer of `kind: "made"` is a made thing, and a made
             # thing standing in a room is the subject of the picture rather than what hides it — but it
             # stands between the camera and the air behind it like any other block, so the sight-line
             # rule cannot tell it from a ceiling. The document can, and this is the caller that holds it.
             made = [layer["id"] for layer in (layout.get("layers") or [])
-                    if layer.get("kind") == "prop" and layer.get("id")]
+                    if layer.get("kind") == "made" and layer.get("id")]
             for name, quarter in (("world-xray.png", 0), ("world-xray-turned.png", 1)):
                 iso.xray(columns, os.path.join(into, name), scale=3, margin=30, quarter=quarter,
                          title=None, keep=made or None)
@@ -420,7 +420,7 @@ def patch_layout(layout, finish):
         layers = layout["layers"]
         slab = {"id": extra["id"], "name": extra.get("name") or extra["id"],
                 "base_y": extra["base_y"],
-                # What the layer holds, and how it meets the ground. A made thing states `kind: "prop"`,
+                # What the layer holds, and how it meets the ground. A made thing states `kind: "made"`,
                 # which takes it out of the stacking rules and paints it over its own span; `prop` names the
                 # thing its layers belong to, and `seat` settles them onto the terrain as a unit.
                 **{key: extra[key] for key in ("kind", "prop", "seat") if key in extra},
