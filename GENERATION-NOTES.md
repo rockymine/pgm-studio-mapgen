@@ -1425,3 +1425,33 @@ and the room's own wall starts at `y 25`: the plinth is under the land rather th
 The gate that hides the fault is that **a push is applied after every constraint**, so a range whose skirt
 crosses the room lifts the pad the room is stamped on and the plinth grows by exactly as much. Before the
 ranges were set back, the same room read floor at `y 43` over 42 courses of bedrock, with void either side.
+
+## A finish is applied to a compiled layout, and `drive.py` writes its output under the input's name
+
+`drive.py` ends a run by writing the layout and intent it posted into the spec directory, as
+`<base>.layout.json` and `<base>.intent.json` — the same two names a board **drawn** in the Sketch tool
+carries as its authored geometry. Reading those back on the next run therefore fed the driver its own output
+and applied the finish a second time, and the finish's three appending keys are all silently additive:
+`addLayers` inserts a storey per entry, `addShapes` appends to the first group, `bendShapes` bends a ring
+that is already bent.
+
+Measured on `showcase/24-underground`, whose finish adds two storeys. One run stores `['under', 'vault',
+'ground']`; a second run over the same directory stores `['under', 'vault', 'under', 'vault', 'ground']`,
+and the studio says so twice:
+
+```
+SK12  2 groups answer to the id 'under', so terrain and placements stored under it have no single group
+      to belong to — the first one solved takes them and the rest build flat
+SK10  layers 'under' and 'ground' are driven 17 block(s) into each other over 64 column(s)
+      — deepest at (-20, -14)
+```
+
+Nothing refuses it. The board still exports, the gate still opens, and the committed spec now differs from
+the board it describes.
+
+**The finish is what decides which shape a spec is.** A spec carrying one is compiled from its plan every
+run and its layout is the run's output; a spec with no finish is a drawing and its layout is the input. That
+is what the driver's own docstring always said — "either `<base>.finish.json`, or a hand-drawn
+`<base>.layout.json`" — and the load now honours it. Every one of the 65 specs holding both is a compiled
+board whose layout the driver wrote, so re-driving one is idempotent again; the 23 holding a layout and no
+finish are the genuinely drawn ones and are unaffected.

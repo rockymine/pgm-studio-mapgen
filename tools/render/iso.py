@@ -5,17 +5,19 @@ the sketch layer that drew it — the same build the export writes. That payload
 stacked board that carries real block colours, so everything here reads it rather than the documents that
 produced it: what is drawn is what was built.
 
-The four views:
+The views:
 
 - `isometric` — the board from above at 2:1, painter's-algorithm cubes, back to front.
+- `xray`      — the same camera with whatever hides a roofed void drawn as a wash, which is the only view
+  anything underground appears in at all. `cavities` beside it is the read on its own: what covered space
+  a board holds, how big, between which blocks, and which of it nothing can walk into.
 - `elevation`  — one orthographic face (north, south, east or west), which is what says whether a silhouette
   reads. An isometric view flatters a shape; a straight-on face does not.
-- `slices`     — one plan per Y level, the model as the layer system actually holds it.
 - `exploded`   — one isometric per sketch layer, laid out in a row, which is the picture of the decomposition.
 """
 import json
 
-from png import Canvas, hex_rgb, shade, write_png
+from png import Canvas, desaturate, hex_rgb, shade, write_png
 
 # The three visible faces of a cube under this camera, and what each does to the block's colour. The top
 # keeps the block's own colour and the two flanks fall away, rather than the top being lit — a sculpture in
@@ -100,21 +102,26 @@ def iso_bounds(blocks, w, h, k):
     return min(us) - w, max(us) + w, min(vs) - k, max(vs) + 2 * h
 
 
-def draw_iso(canvas, blocks, origin, w, h, k, order=None):
+def draw_iso(canvas, blocks, origin, w, h, k, order=None, alpha=None):
     """Paint every block back to front. Depth along the camera axis is `x + y + z`, so ascending order draws
-    the near ones last and no depth buffer is needed."""
+    the near ones last and no depth buffer is needed.
+
+    `alpha` maps a cell to the opacity its three faces are painted at; a cell it does not name is opaque.
+    Back-to-front is what makes that meaningful — a translucent cube is composited over whatever the
+    passes behind it already put down."""
     ox, oy = origin
     for cell in sorted(blocks, key=order or (lambda c: c[0] + c[1] + c[2])):
         x, y, z = cell
         colour = blocks[cell]
+        opacity = 1.0 if alpha is None else alpha.get(cell, 1.0)
         px = ox + (x - z) * w
         py = oy + (x + z) * h - y * k
         canvas.fill_polygon([(px, py - k), (px + w, py + h - k),
-                             (px, py + 2 * h - k), (px - w, py + h - k)], shade(colour, TOP))
+                             (px, py + 2 * h - k), (px - w, py + h - k)], shade(colour, TOP), opacity)
         canvas.fill_polygon([(px + w, py + h - k), (px + w, py + h),
-                             (px, py + 2 * h), (px, py + 2 * h - k)], shade(colour, RIGHT))
+                             (px, py + 2 * h), (px, py + 2 * h - k)], shade(colour, RIGHT), opacity)
         canvas.fill_polygon([(px - w, py + h - k), (px - w, py + h),
-                             (px, py + 2 * h), (px, py + 2 * h - k)], shade(colour, LEFT))
+                             (px, py + 2 * h), (px, py + 2 * h - k)], shade(colour, LEFT), opacity)
 
 
 def isometric(payload, path, scale=6, layers=None, clip=None, title=None, caption=None, margin=40,
@@ -141,6 +148,231 @@ def isometric(payload, path, scale=6, layers=None, clip=None, title=None, captio
         canvas.text(margin, canvas.height - 24, caption, (110, 110, 118), 2)
     write_png(path, canvas)
     return len(blocks), len(shown), (canvas.width, canvas.height)
+
+
+def cavities(blocks, min_cells=6, max_headroom=24):
+    """Every roofed void in the block set, largest first, as
+    `{"cells", "min": (x, y, z), "max": (x, y, z), "sealed": bool, "voids": {cell, ...}}`.
+
+    A void is **air with solid over it in its own column** — the plain meaning of underground, and the
+    only test that finds a room without being told where to look: a layer document states what was drawn,
+    never what the drawing left hollow, and the hollow is the subject.
+
+    `max_headroom` is what keeps the sky out of the answer. A cloud, a sky-written letter or an observer
+    platform roofs everything under it just as a hillside does, and on a board carrying any of them the
+    largest "void" is tens of thousands of cells of open air. A room is a floor and a ceiling that belong
+    to each other, so the measure is taken per column and per air run: a run of air taller than this is
+    not a room, and the sixty-four courses under a cloud say so.
+
+    Sealed-ness is a second, weaker fact and not the test. Air is flooded from one corner of a shell
+    padded a block beyond the model's own bounding box, and a void no such air reaches is marked `sealed`.
+    A room worth a picture is normally *not* sealed — a chamber with a stair down to it is open to the sky
+    through its own shaft — so a sealed void is reported rather than sought: it is a space nothing can
+    walk into, which on a board that meant to build a room is a finding."""
+    xs = [cell[0] for cell in blocks]
+    ys = [cell[1] for cell in blocks]
+    zs = [cell[2] for cell in blocks]
+    x0, y0, z0 = min(xs) - 1, min(ys) - 1, min(zs) - 1
+    span_x, span_y, span_z = max(xs) - x0 + 2, max(ys) - y0 + 2, max(zs) - z0 + 2
+    plane = span_x * span_z
+    size = plane * span_y
+
+    SOLID, ROOFED, HELD = 1, 2, 3
+    state = bytearray(size)
+    for x, y, z in blocks:
+        state[(y - y0) * plane + (z - z0) * span_x + (x - x0)] = SOLID
+
+    # The model is padded by a block on every side, so the whole outer shell is air and the shell is
+    # six-connected — flooding from its corner reaches all of it. That padding is also why the walk needs
+    # no per-axis bound test: a step that runs off the end of a row or a plane lands on the opposite
+    # shell, which is air the flood has already opened, so a wrapped step can only ever re-open an open
+    # cell. A roofed cell is never on the shell, so the same holds for the component walk below.
+    steps = (1, -1, span_x, -span_x, plane, -plane)
+    sky = bytearray(size)
+    sky[0] = 1
+    stack = [0]
+    while stack:
+        index = stack.pop()
+        for step in steps:
+            ahead = index + step
+            if 0 <= ahead < size and not sky[ahead] and state[ahead] != SOLID:
+                sky[ahead] = 1
+                stack.append(ahead)
+
+    # A column's void is what is hollow between its own lowest block and its own highest: air under the
+    # bottom of a stack is not a room, it is the space the board stands in, and air over the top of one is
+    # the sky. Between those two the air is taken one run at a time, so a run too tall to be a room can be
+    # dropped without dropping the room in the same column.
+    stacks = {}
+    for x, y, z in blocks:
+        low, high = stacks.get((x, z), (y, y))
+        stacks[(x, z)] = (min(low, y), max(high, y))
+    for (x, z), (floor, ceiling) in stacks.items():
+        base = (z - z0) * span_x + (x - x0)
+        run = []
+        for y in range(floor + 1, ceiling):
+            index = (y - y0) * plane + base
+            if state[index] == SOLID:
+                if len(run) <= max_headroom:
+                    for at in run:
+                        state[at] = ROOFED
+                run = []
+            else:
+                run.append(index)
+        if run and len(run) <= max_headroom:
+            for at in run:
+                state[at] = ROOFED
+
+    found = []
+    for start in range(size):
+        if state[start] != ROOFED:
+            continue
+        state[start] = HELD
+        stack, held = [start], []
+        while stack:
+            index = stack.pop()
+            held.append(index)
+            for step in steps:
+                ahead = index + step
+                if 0 <= ahead < size and state[ahead] == ROOFED:
+                    state[ahead] = HELD
+                    stack.append(ahead)
+        if len(held) < min_cells:
+            continue
+        voids = set()
+        for index in held:
+            rest, x = divmod(index, span_x)
+            y, z = divmod(rest, span_z)
+            voids.add((x + x0, y + y0, z + z0))
+        found.append({"cells": len(voids),
+                      "min": (min(c[0] for c in voids), min(c[1] for c in voids),
+                              min(c[2] for c in voids)),
+                      "max": (max(c[0] for c in voids), max(c[1] for c in voids),
+                              max(c[2] for c in voids)),
+                      "sealed": not any(sky[index] for index in held),
+                      "voids": voids})
+    found.sort(key=lambda entry: -entry["cells"])
+    return found
+
+
+def sightline_mass(blocks, voids):
+    """The solid cells standing between the camera and a roofed void.
+
+    The camera is at (+inf, +inf, +inf), so the line of sight out of a block is the diagonal (+1, +1, +1)
+    and every block on one line shares the pair `(x - y, z - y)`. A single void cell opens its whole line,
+    so only the lowest void on each line has to be found: everything solid above it on that line is
+    exactly what the world is hiding the room with, and nothing else is."""
+    if not voids:
+        return set()
+    top = max(cell[1] for cell in blocks)
+    lowest = {}
+    for x, y, z in voids:
+        line = (x - y, z - y)
+        if y < lowest.get(line, top + 1):
+            lowest[line] = y
+    hidden = set()
+    for (across, into), floor in lowest.items():
+        for y in range(floor + 1, top + 1):
+            cell = (across + y, y, into + y)
+            if cell in blocks:
+                hidden.add(cell)
+    return hidden
+
+
+# What the veil keeps of a block it washes out. Nearly none: a hillside drawn over a room at even a
+# sixth of its opacity still tints the whole room its own green, and a room read through a green wash is
+# a room whose floor material cannot be named. Grey reads as glass and leaves the chroma to the subject.
+VEIL_CHROMA = 0.9
+
+
+def xray(payload, path, scale=6, layers=None, clip=None, title=None, caption=None, margin=40,
+         quarter=0, veil=0.15, calm=0.6, min_void=6, max_headroom=24):
+    """The board with whatever hides a roofed room taken down to a wash, so the room is in the picture.
+
+    `isometric` cannot show anything underground: the terrain over a chamber is nearer the camera and is
+    painted last, so a gaol under a meadow renders as a meadow. What an x-ray has to mean here is
+    therefore narrow and mechanical — **nothing that stands between the camera and a roofed void may
+    paint over it** — and the three classes fall out of that one sentence:
+
+    - the **veil**, `sightline_mass` above: every solid cell on the (+1, +1, +1) diagonal out of a roofed
+      void. Drawn at `veil` opacity and near enough grey, and only its own outer skin, so the hill still
+      reads as a hill and the room reads straight through it. This is an automatic cutaway — it opens the
+      hillside exactly as far as the sight-line into the room and no further, and on a board with nothing
+      roofed it is empty, which makes the view degrade to `isometric` rather than to a wrong picture.
+    - the **lining**, every solid cell with a face onto that void: the floor, the far walls, and whatever
+      stands on the floor. Drawn opaque at the block's own colour, because it is the subject.
+    - everything else, the **mass**. Drawn opaque but pulled `calm` of the way to grey, so the room's real
+      block colours are the only chroma in the frame.
+
+    Four other readings were weighed. Drawing the whole board at reduced alpha turns twenty courses of
+    overburden into an opaque smear and loses the very structure it was supposed to reveal. Cutting at a
+    stated Y or plane needs the author to already know where the room is, which is what the picture was
+    for. Drawing the void's bounding shell alone reveals nothing either, because a chamber's ceiling is
+    part of that shell and is what the camera hits first. And drawing made things opaque over ghosted
+    terrain cannot separate them at all here: a cell block and the rock around it are drawn on the same
+    sketch layer, so layer attribution says they are one thing while void adjacency says which is which.
+
+    The voids are measured on the whole board, before `layers` and `clip` are applied, so clipping to a
+    room frames the camera without opening the room's own roof.
+
+    Returns the cavity table `cavities` answered — cell counts and block bounds, which is what a finding
+    about a room is reported with."""
+    whole = turned(voxels(payload), quarter)
+    if not whole:
+        raise SystemExit("nothing to draw")
+    found = cavities(whole, min_cells=min_void, max_headroom=max_headroom)
+    voids = set().union(*(entry["voids"] for entry in found)) if found else set()
+
+    lining = set()
+    for x, y, z in voids:
+        for cell in ((x + 1, y, z), (x - 1, y, z), (x, y + 1, z),
+                     (x, y - 1, z), (x, y, z + 1), (x, y, z - 1)):
+            if cell in whole:
+                lining.add(cell)
+    hidden = sightline_mass(whole, voids)
+
+    blocks = whole if layers is None and clip is None else \
+        turned(voxels(payload, layers=layers, clip=clip), quarter)
+    solid, veiled = {}, {}
+    for cell, colour in blocks.items():
+        if cell in hidden:
+            veiled[cell] = desaturate(colour, VEIL_CHROMA)
+        elif cell in lining:
+            solid[cell] = colour
+        else:
+            solid[cell] = desaturate(colour, calm)
+
+    # Two culls, not one. A cell hidden only by veiled mass is now visible and has to be drawn, so the
+    # opaque pass is culled against the opaque set alone; the veil is culled against itself, which leaves
+    # one skin rather than a stack of washes deep enough to be opaque again.
+    shown = {cell: solid[cell] for cell in _visible(solid)}
+    skin = {cell: veiled[cell] for cell in _visible(veiled)}
+    merged = dict(shown)
+    merged.update(skin)
+
+    w, h, k = scale, scale // 2 or 1, scale
+    u0, u1, v0, v1 = iso_bounds(merged, w, h, k)
+    if caption is None:
+        caption = (f"nothing roofed - {len(blocks)} blocks"
+                   if not found else
+                   f"{len(found)} roofed void(s), {sum(1 for e in found if e['sealed'])} sealed. "
+                   f"largest {found[0]['cells']} cells at "
+                   f"x {found[0]['min'][0]}..{found[0]['max'][0]} "
+                   f"y {found[0]['min'][1]}..{found[0]['max'][1]} "
+                   f"z {found[0]['min'][2]}..{found[0]['max'][2]}")
+    head = 46 if title else 0
+    foot = 34 if caption else 0
+    width = max(int(u1 - u0) + margin * 2,
+                margin * 2 + max(len(title or "") * 18, len(caption or "") * 12))
+    canvas = Canvas(width, int(v1 - v0) + margin * 2 + head + foot, BACKGROUND)
+    draw_iso(canvas, merged, (margin - u0, margin - v0 + head), w, h, k,
+             alpha={cell: veil for cell in skin})
+    if title:
+        canvas.text(margin, 14, title, (25, 25, 30), 3)
+    if caption:
+        canvas.text(margin, canvas.height - 24, caption, (110, 110, 118), 2)
+    write_png(path, canvas)
+    return found
 
 
 FACES = {"north": ("x", "z", False), "south": ("x", "z", True),

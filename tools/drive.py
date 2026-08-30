@@ -4,11 +4,13 @@ pipeline said on the way.
 
     tools/drive.py <specdir> "<Map Name>" --out <worlddir> [--renders <dir>] [--slug <slug>] [--dry]
 
-<specdir> holds <base>.plan.json and either <base>.finish.json, or a hand-drawn <base>.layout.json and
+<specdir> holds <base>.plan.json and EITHER <base>.finish.json, OR a hand-drawn <base>.layout.json and
 <base>.intent.json -- the shape the Sketch tool writes, whose geometry is authored rather than compiled.
-<base> is the directory's own name and, unless --slug says otherwise, the slug the map is stored under.
-Both shapes take the same road from here: the same grid, flow, declines and renders. The finish carries
-everything a plan cannot state, keyed onto the compiled layout:
+The either/or is exact: a spec carrying a finish is compiled from its plan on every run, and the layout
+and intent beside it are what the last run posted rather than anything it reads. <base> is the
+directory's own name and, unless --slug says otherwise, the slug the map is stored under. Both shapes
+take the same road from here: the same grid, flow, declines and renders. The finish carries everything
+a plan cannot state, keyed onto the compiled layout:
 
   themeByHeight   {"11": "gyp-bench", ...}   theme per compiled shape, by the height it stands at
   themeById       {"s3": "gyp-rake"}          theme per compiled shape id (wins over the height rule)
@@ -48,10 +50,21 @@ away: a decline says one piece of the posted document is not in the world, `RQ3`
 went unread, and `SK3`/`SK4` name a shape that drew no ground. `GET /api/rules?rule=<id>` answers what
 any of those means and how to fix it.
 
+`GET /map/{slug}/findings` is asked on every run beside those, because it is the only read that
+answers `SK9` — the gate that knows two shapes on one layer stacked and the lower one is not in the
+world. It is a decline, the channel every other route publishes on keeps complaints alone, and so a
+board can store at 200 with a floor missing under its walls and nothing anywhere says so.
+
 It also takes every picture the studio will draw for what was authored — a swatch per theme, a plan and a
 section per house, the coverage map, the board read back from every angle, and the grid and flow as text —
 into `<specdir>/renders`, or into `--renders <dir>`. Taking a picture is not the same as looking at one;
 what it removes is the excuse.
+
+Two of those pictures are drawn here rather than fetched, because the studio answers columns and not
+cameras: `world-iso` and, where the board holds a covered space, `world-xray`, which washes out whatever
+stands between the camera and a roofed void so a chamber under a hill is in the picture at all. The void
+scan behind it prints on every board — how much covered space there is, between which blocks, and which
+of it is SEALED, meaning nothing can walk into it.
 
 The pictures and the provenance sidecar land beside the documents rather than in the exported world, because
 `--out` is what a server is handed: it holds `region/`, `level.dat` and `map.xml`, and nothing a match does
@@ -110,6 +123,9 @@ def text(path, fatal=False):
     return payload.decode("utf-8", "replace") if isinstance(payload, bytes) and status < 300 else None
 
 
+# The smallest roofed void worth an x-ray: a room six blocks square with six courses of headroom. Under
+# it the view draws what the plain isometric already drew, one shade paler.
+XRAY_FLOOR = 200
 # The widest grid worth printing at 1:1. Past it the board is downsampled, because a wall of characters
 # nobody reads is the same as no read at all.
 GRID_WIDTH = 110
@@ -161,7 +177,9 @@ def report(payload, indent="  ", keys=("findings", "violations", "lint")):
         rule = entry.get("rule") or entry.get("id") or key
         severity = entry.get("severity") or key
         message = entry.get("message") or entry.get("detail") or json.dumps(entry)
-        field = entry.get("field")
+        # A finding names what it is about as `field` on the request routes and as `subjects` on
+        # `GET /map/{slug}/findings`, which judges shapes rather than a posted document.
+        field = entry.get("field") or ", ".join(entry.get("subjects") or [])
         print(f"{indent}  [{severity:9}] {rule:8} {message}"
               f"{'   @ ' + field if field else ''}")
 
@@ -271,6 +289,28 @@ def renders(into, slug, finish, layout, drawn, flow):
                 title=None, caption=f"{slug} - isometric, {'south-east' if quarter == 0 else 'south-west'}")
             written.append(name)
             print(f"  ISO   {name:<44} {blocks} blocks, {faces} drawn, {size[0]}x{size[1]} px")
+
+        # What the board holds that is covered — a chamber, a house interior, the air under a ledge — with
+        # the blocks it lies between. The scan runs on every board because it costs one pass over a payload
+        # already in hand and answers a question no other read does: `render/section` needs the coordinate
+        # in advance and `world-iso` above draws a gaol under a meadow as a meadow. A void marked SEALED is
+        # a finding on its own — a space nothing can walk into.
+        voids = iso.cavities(iso.voxels(columns))
+        for entry in voids[:6]:
+            print(f"  VOID  {entry['cells']:>6} cells  {'SEALED' if entry['sealed'] else 'open  '}  "
+                  f"x {entry['min'][0]}..{entry['max'][0]}  y {entry['min'][1]}..{entry['max'][1]}  "
+                  f"z {entry['min'][2]}..{entry['max'][2]}")
+        print(f"  VOID  {len(voids)} roofed void(s), "
+              f"{sum(1 for entry in voids if entry['sealed'])} of them sealed")
+        # And the x-ray, only where there is something in it to see. Below the floor the view draws the
+        # same board the two isometrics already drew, one shade paler, which is a picture that costs a
+        # reader a look and answers nothing.
+        if voids and voids[0]["cells"] >= XRAY_FLOOR:
+            for name, quarter in (("world-xray.png", 0), ("world-xray-turned.png", 1)):
+                iso.xray(columns, os.path.join(into, name), scale=3, margin=30, quarter=quarter,
+                         title=None)
+                written.append(name)
+                print(f"  XRAY  {name:<44} veiled to the largest of {len(voids)} void(s)")
 
     # **And what this run did NOT write goes.** The pictures are keyed by what the board holds — a theme per
     # id, a house per distinct style, keyed by the FIRST plot using it — so a theme renamed, a style dropped
@@ -454,16 +494,23 @@ def main():
         plan = json.load(handle)
     # A board drawn in the Sketch tool has no finish: its geometry IS the layout, authored by hand and
     # not derivable from the plan. Such a spec carries `<base>.layout.json` and `<base>.intent.json`
-    # instead, and the compile below is skipped rather than run over the top of them. The finish is then
-    # optional, and everything after this point -- the grid, the flow, the declines and every render --
-    # is the same for both shapes of spec, which is the whole reason this branch is here rather than in
-    # a second driver.
+    # instead, and the compile below is skipped rather than run over the top of them. Everything after
+    # this point -- the grid, the flow, the declines and every render -- is the same for both shapes of
+    # spec, which is the whole reason this branch is here rather than in a second driver.
+    #
+    # **The finish is what decides which shape this spec is, and it has to be**: the run ends by writing
+    # the layout and intent it posted back into the spec directory, under exactly the names a drawn spec
+    # uses. Reading those back as a drawing on the next run would apply the finish a second time, and
+    # `addLayers`, `addShapes` and `bendShapes` are all appends -- two storeys called 'under', a ring
+    # bent twice. So a spec with a finish is compiled from its plan every run, and the layout beside it
+    # is the run's output rather than its input.
     finish = {}
     if os.path.exists(f"{specdir}/{base}.finish.json"):
         with open(f"{specdir}/{base}.finish.json") as handle:
             finish = json.load(handle)
     drawn_layout = drawn_intent = None
-    if os.path.exists(f"{specdir}/{base}.layout.json") and os.path.exists(f"{specdir}/{base}.intent.json"):
+    if not finish and os.path.exists(f"{specdir}/{base}.layout.json") \
+            and os.path.exists(f"{specdir}/{base}.intent.json"):
         with open(f"{specdir}/{base}.layout.json") as handle:
             drawn_layout = json.load(handle)
         with open(f"{specdir}/{base}.intent.json") as handle:
@@ -519,6 +566,22 @@ def main():
     slug = loaded["slug"]
     print(f"    slug={slug}  {'replaced' if loaded.get('replaced') else 'new'}  "
           f"cells={loaded.get('cells')}  groups={loaded.get('groups')}")
+
+    # ── everything wrong with the stored map, including what no other read answers ───────────
+    # `Findings.Complaints` keeps `Severity.Complaint` alone, and `SK9` is the one `Severity.Decline`
+    # the sketch layout check raises — so the gate that knows a storey is missing reaches no other
+    # route: not the store above, not `sketch/columns`, not `relief/read`, not the `Pgm-Warnings`
+    # header. A stacked board can store at 200, raise nothing anywhere, open the export gate, and have
+    # a floor that is not in the world with a wall bridging the trench where it was. This read is the
+    # only one that says so, and it is asked on every run for that reason (TS68).
+    print("== everything wrong with the stored map")
+    _, verdict = call("GET", f"/map/{slug}/findings", fatal=False)
+    if findings(verdict):
+        report(verdict)
+    else:
+        print("    nothing")
+    for gate in (verdict.get("unasked") or []):
+        print(f"    not judged yet: {gate.get('gate'):16} -> {gate.get('ask')}")
 
     # ── the board as a grid, and how it is come at ───────────────────────────────────────────
     # Two reads that cost no build and raise no finding, which is exactly why they are easy to forget.

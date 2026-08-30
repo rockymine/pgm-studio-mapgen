@@ -317,13 +317,14 @@ at `y30..32`, exactly where it was drawn.
 
 | | |
 |---|---|
+| `renders/world-xray.png` · `world-xray-turned.png` | the x-ray: the board with everything between the camera and the chamber washed to a fifth of itself, so the gaol is in the picture. `world-iso.png` beside it is the same board and the same camera with nothing washed out, and is a meadow with two houses on it |
 | `renders/section-room-z0.png` | the cut across the board — meadow, chamber, the cell block with its vault, the two shafts |
 | `renders/section-cell-x0.png` | the cut through both doorways: the vault hanging over an open threshold |
 | `renders/section-flight-x-18.png` | the flight, in the one view a grade exists in |
 | `renders/under-topdown.png` | `?layer=under` — the storey alone: the ring, the straw, the two sumps, the tracks |
 | `GET …/column?at=0,0` | brick fill `y1..3`, coarse dirt `y4..5`, air `y6..11`, vault `y12..13`, landmass `y14..21` |
 | `GET …/column?at=-7,0` | the wall: brick `y1..13`, bedrock `y0` |
-| `GET …/findings` | the read that answers `SK9`, and the only one that does |
+| `GET …/findings` | the read that answers `SK9`, and the only one that does. `drive.py` asks it on every run |
 
 ## Numbers
 
@@ -336,6 +337,7 @@ at `y30..32`, exactly where it was drawn.
 | the doorways | **4** columns wide, **6** courses tall, both faces |
 | the flight | **15** risers of **1** course, `y21 → y6`, no repeat |
 | `GET …/findings` | **none** |
+| the void scan | **6** roofed voids. The chamber is the largest: **10,156** cells at `x −24..23  y 6..13  z −16..15`. Two are `SEALED` — the spawn platforms, 2,176 cells each at `y28..39` |
 | `POST …/sketch/dressing` | 8 placements (4 props × 2 images), **0 declines** |
 | `GET …/preflight` | export gate **OPEN**, traversability connected, both teams |
 | `GET …/coverage` | reached 3,979 · dead 6,021 of 10,000 = **60.2 %** dead — `02-theme`'s empty square, and the storey is under all of it |
