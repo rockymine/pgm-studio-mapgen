@@ -320,9 +320,11 @@ for name, shapes in balloon:
 
 # An isometric read is antisymmetric in v = (x+z)/2 - y: a prop off the x+z=0 diagonal has its
 # rot_180 image drawn as far above the board as the original is drawn into it, so one image reads
-# as sky and the other lands on the terrain. Both clouds sit on (or within a block of) that
-# diagonal, at a height read off the actual render as clearing the silhouette in both images.
-for n, (cx, cz, y) in enumerate(((-45, 45, 80), (-95, 100, 74))):
+# as sky and the other lands on the terrain. The diagonal is necessary and not sufficient: a cloud
+# on it draws both images at the same height, which is only worth having where that height clears
+# the board's own isometric silhouette. Both seats below were found by projecting every cell of
+# both images into that frame and testing them against the silhouette the ground and spans paint.
+for n, (cx, cz, y) in enumerate(((-130, 130, 74), (-95, 100, 74))):
     lobes = [disc(f"cl{n}-0", cx, cz, 9, y, 3, "cloud-glass"),
              disc(f"cl{n}-1", cx - 8, cz + 3, 6, y, 3, "cloud-glass"),
              disc(f"cl{n}-2", cx + 7, cz - 3, 6, y, 3, "cloud-glass")]

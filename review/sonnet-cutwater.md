@@ -35,13 +35,16 @@ original is drawn into it. `cloud-0` was authored at `(-15, 65)`, `x+z = 50`, no
 (`layers=["ground","cloud-0"]`, full board, no clip) showed it directly: one image a clean white puff in
 open sky, the other a white blob sitting on the green bank near the north wall.
 
-**Fixed by moving `cloud-0` to `(-45, 45)`** — `x+z = 0` exactly — at `y80`. Re-rendered the same
-`ground`+`cloud-0` isolation afterward: both images now read as sky, confirmed against the real renderer
-rather than by eye, and `world-iso.png` shows both puffs floating clear over the spawn hall on either side.
-A stateless `POST /sketch/columns` taken between edits does not reliably reflect the very latest document —
-one such read produced a centroid nowhere near either authored position — so every number in this review
-was taken from a document either freshly written by `build.py` and re-posted, or from `tools/drive.py`'s own
-full store-and-read.
+**The diagonal is necessary and not sufficient.** A cloud on it draws both images at the same height,
+which is only worth having where that height clears the board's own silhouette — and `(-45, 45)` at `y80`
+does not: it takes both images onto the terrain at once, which counts 687 of the cloud's 880 iso cells
+behind the board against the 440 the original asymmetry cost. What settles a seat is the projection
+itself, so the seat was searched for rather than reasoned to: every cell of both images pushed into
+`(u, v)` and tested against the silhouette the `ground` and `spans` layers paint there.
+
+**Fixed by moving `cloud-0` to `(-130, 130)`** — `x+z = 0`, out over the void off the north-west shore —
+at `y74`. Measured after: **0 of 880** iso cells behind the board, against `cloud-1`'s 1 of 880 at its own
+seat. `world-iso.png` shows all four puffs clear of the land.
 
 ### 2. `WX11` at three, four and five blocks was not doorstep scale
 
