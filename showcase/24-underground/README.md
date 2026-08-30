@@ -318,13 +318,16 @@ at `y30..32`, exactly where it was drawn.
 | | |
 |---|---|
 | `renders/world-xray.png` · `world-xray-turned.png` | the x-ray: the board with everything between the camera and the chamber washed to a fifth of itself, so the gaol is in the picture. `world-iso.png` beside it is the same board and the same camera with nothing washed out, and is a meadow with two houses on it |
-| `renders/section-room-z0.png` | the cut across the board — meadow, chamber, the cell block with its vault, the two shafts |
-| `renders/section-cell-x0.png` | the cut through both doorways: the vault hanging over an open threshold |
-| `renders/section-flight-x-18.png` | the flight, in the one view a grade exists in |
-| `renders/under-topdown.png` | `?layer=under` — the storey alone: the ring, the straw, the two sumps, the tracks |
+| `renders/close/section-room-z0.png` | the cut across the board — meadow, chamber, the cell block with its vault, the two shafts |
+| `renders/close/section-cell-x0.png` | the cut through both doorways: the vault hanging over an open threshold |
+| `renders/close/section-flight-x-18.png` | the flight, in the one view a grade exists in |
+| `renders/close/under-topdown.png` | `?layer=under` — the storey alone: the ring, the straw, the two sumps, the tracks |
 | `GET …/column?at=0,0` | brick fill `y1..3`, coarse dirt `y4..5`, air `y6..11`, vault `y12..13`, landmass `y14..21` |
 | `GET …/column?at=-7,0` | the wall: brick `y1..13`, bedrock `y0` |
 | `GET …/findings` | the read that answers `SK9`, and the only one that does. `drive.py` asks it on every run |
+
+The four sections are taken by hand and live in `renders/close/`. `drive.py` sweeps `renders/` of anything the
+run did not write, and the sweep is over **files**, so a subdirectory is where a hand-taken picture belongs.
 
 ## Numbers
 

@@ -286,7 +286,7 @@ VEIL_CHROMA = 0.9
 
 
 def xray(payload, path, scale=6, layers=None, clip=None, title=None, caption=None, margin=40,
-         quarter=0, veil=0.15, calm=0.6, min_void=6, max_headroom=24):
+         quarter=0, veil=0.15, calm=0.6, min_void=6, max_headroom=24, keep=None):
     """The board with whatever hides a roofed room taken down to a wash, so the room is in the picture.
 
     `isometric` cannot show anything underground: the terrain over a chamber is nearer the camera and is
@@ -303,6 +303,16 @@ def xray(payload, path, scale=6, layers=None, clip=None, title=None, caption=Non
       stands on the floor. Drawn opaque at the block's own colour, because it is the subject.
     - everything else, the **mass**. Drawn opaque but pulled `calm` of the way to grey, so the room's real
       block colours are the only chroma in the frame.
+
+    **`keep` names the layers the veil may not touch**, and something has to. A brazier standing on a room's
+    floor genuinely stands between the camera and the air behind it, so the sight-line rule washes it out
+    exactly as it washes out the ceiling — the rule is right about enclosure and cannot tell a lamp from a
+    lid. Nothing in the block set can: a chamber's ceiling is adjacent to its void and so is the fire in the
+    middle of it, and every test that separates them by shape needs a number nobody can defend. What does
+    separate them is the document, which already says so — a layer of `kind: "prop"` is a *made thing* and
+    a made thing in a room is the subject of the picture. So the caller that holds the layout names those
+    storeys, and `drive.py` does exactly that. `keep` reads its layer names the way `layers` does, so the
+    unattributed runs — the structures and the props the dressing pass placed — come with them.
 
     Four other readings were weighed. Drawing the whole board at reduced alpha turns twenty courses of
     overburden into an opaque smear and loses the very structure it was supposed to reveal. Cutting at a
@@ -330,6 +340,8 @@ def xray(payload, path, scale=6, layers=None, clip=None, title=None, caption=Non
             if cell in whole:
                 lining.add(cell)
     hidden = sightline_mass(whole, voids)
+    if keep:
+        hidden -= set(turned(voxels(payload, layers=keep), quarter))
 
     blocks = whole if layers is None and clip is None else \
         turned(voxels(payload, layers=layers, clip=clip), quarter)

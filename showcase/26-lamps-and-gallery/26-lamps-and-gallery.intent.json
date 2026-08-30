@@ -1,0 +1,145 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 8,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 30,
+    "z": 40
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 30,
+     "maxX": 10,
+     "maxZ": 50
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -10,
+    "minZ": 30,
+    "maxX": 10,
+    "maxZ": 50
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 30,
+    "z": -40
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -50,
+     "maxX": 10,
+     "maxZ": -30
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": -10,
+    "minZ": -50,
+    "maxX": 10,
+    "maxZ": -30
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 40,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Cairn",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 0,
+    "y": 30,
+    "z": 22
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Cairn",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -1,
+    "y": 30,
+    "z": -23
+   },
+   "float": 2,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Lanthorn",
+  "created": "2026-08-30",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

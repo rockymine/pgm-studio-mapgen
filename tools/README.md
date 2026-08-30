@@ -137,6 +137,11 @@ moves out of the exported `region/`. `--out` is what a game server is handed: `r
 `map.xml`, and nothing a match does not read. A CLI read-back pointed at that region directory therefore
 finds no provenance and falls back to the material estimate, which it states on its own scale line.
 
+**The sweep is over files, so `renders/close/` is where a hand-taken picture belongs.** A render directory
+is one run's output rather than an accumulation of every run's, and the sweep at the end of a run removes
+whatever this run did not write — which silently deletes a picture an author took by hand and a README then
+points at. A subdirectory is not touched.
+
 The reason they are taken here is the reason the grid and the flow are printed here: **a read nobody is
 refused for skipping is the read nobody takes.** Every shipped roof fault was visible in a section and
 invisible from above, and no board in this repository had one until an author drew them by hand. Taking a

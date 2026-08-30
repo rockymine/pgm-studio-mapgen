@@ -110,6 +110,7 @@ Read them in order the first time — each assumes the one before it. `02` is th
 | 23 | `23-maze` | a Backrooms lattice: runs on a pitch, one link in three left out, and the rule that survives `rot_180` | `addLayers` |
 | 24 | `24-underground` | a room built inside the rock: a wall that is one even-odd ring, a doorway that is an override add, a ceiling on its own layer — and what a prop can be given in a cave | `addLayers` + `dressing` |
 | 25 | `25-trees-and-boulders` | the two props that are shapes rather than materials: the `grown` tree beside the `template` tree that is its control, and the glacial erratic in all four of its forms from 3 blocks of reach to 10 | `dressing` |
+| 26 | `26-lamps-and-gallery` | light, and a floor halfway up a room: four emitting blocks drawn as themes on a made-thing layer, a gallery ring at a stated `y14`, and the stair anchor stated as a formula rather than a worked case | `addLayers` |
 
 ## What every board here found out, in one place
 
@@ -151,6 +152,9 @@ it was found; this is the index to them.
 | `layer` is a prop's only vertical control and a stroke honours it. A goal's clearance and a `keepClear` mark do not: both are 2-D and reach every storey, so a lid marked `keepClear` makes the room under it undressable | `24` |
 | `seat: "ground"` reads the **maximum** ground top over every layer, so a made thing drawn in a cellar seats on the roof of the cellar | `24` |
 | A measure of a generated body taken over a **3×3×3** neighbourhood counts a corner as a hold and a player does not: a block joined only at a corner has air on all six of its own faces and is seen straight past. Read that way a grown tree was 3,106 bodies rather than 32 | `25` |
+| **A light is a theme, not a prop.** No prop kind emits, but a shape wearing a theme that is one emitting block through and through builds that block, data value included — glowstone, sea lantern, jack o'lantern and a standing torch `50:5` all land where drawn | `26` |
+| A flight's anchors are a formula, not a worked case: for `n` cells falling a course each, `A = top − floor + 2` at the head and `B = A − n` at the foot gives `n` treads and no doubled one. Checked on three flights across `20`, `24` and `26` | `26` |
+| `rot_180` maps a **cell** `(x, z)` to `(−1−x, −1−z)`, so a rectangle is its own image exactly when `min = −max` on both axes — and an area prop that is its own image is stamped once, with a noise mask nothing mirrors | `26` |
 
 And one that no board found and every board needed: **a per-block column transect is the only read that says
 whether a route can be walked.** Sampling every two blocks makes a two-block riser and two one-block risers

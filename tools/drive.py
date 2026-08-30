@@ -306,9 +306,15 @@ def renders(into, slug, finish, layout, drawn, flow):
         # same board the two isometrics already drew, one shade paler, which is a picture that costs a
         # reader a look and answers nothing.
         if voids and voids[0]["cells"] >= XRAY_FLOOR:
+            # The storeys the veil may not touch. A layer of `kind: "prop"` is a made thing, and a made
+            # thing standing in a room is the subject of the picture rather than what hides it — but it
+            # stands between the camera and the air behind it like any other block, so the sight-line
+            # rule cannot tell it from a ceiling. The document can, and this is the caller that holds it.
+            made = [layer["id"] for layer in (layout.get("layers") or [])
+                    if layer.get("kind") == "prop" and layer.get("id")]
             for name, quarter in (("world-xray.png", 0), ("world-xray-turned.png", 1)):
                 iso.xray(columns, os.path.join(into, name), scale=3, margin=30, quarter=quarter,
-                         title=None)
+                         title=None, keep=made or None)
                 written.append(name)
                 print(f"  XRAY  {name:<44} veiled to the largest of {len(voids)} void(s)")
 

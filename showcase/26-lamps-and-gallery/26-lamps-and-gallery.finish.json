@@ -1,0 +1,1057 @@
+{
+ "authors": [
+  "Opus 5"
+ ],
+ "themes": {
+  "meadow": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "voronoi",
+         "seed": 7,
+         "cellSize": 16,
+         "bands": [
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 3,
+            "data": 1
+           }
+          },
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 2,
+            "data": 0
+           }
+          }
+         ]
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "rock": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 2
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "gaol": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 2
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 45,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 45,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 45,
+    "data": 0
+   }
+  },
+  "floor": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 2
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 3,
+     "data": 1
+    },
+    "depth": 2,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 3,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "glow": {
+   "bedrock": {
+    "relative": false,
+    "value": 0
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 89,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 89,
+     "data": 0
+    }
+   },
+   "wallEnabled": false,
+   "wall": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   }
+  },
+  "lantern": {
+   "bedrock": {
+    "relative": false,
+    "value": 0
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 169,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 169,
+     "data": 0
+    }
+   },
+   "wallEnabled": false,
+   "wall": {
+    "kind": "solid",
+    "id": 169,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 169,
+    "data": 0
+   }
+  },
+  "torch": {
+   "bedrock": {
+    "relative": false,
+    "value": 0
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 50,
+     "data": 5
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 50,
+     "data": 5
+    }
+   },
+   "wallEnabled": false,
+   "wall": {
+    "kind": "solid",
+    "id": 50,
+    "data": 5
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 50,
+    "data": 5
+   }
+  },
+  "fire": {
+   "bedrock": {
+    "relative": false,
+    "value": 0
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 91,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 91,
+     "data": 0
+    }
+   },
+   "wallEnabled": false,
+   "wall": {
+    "kind": "solid",
+    "id": 91,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 91,
+    "data": 0
+   }
+  }
+ },
+ "roomStyles": {
+  "spawn": "@showcase-hall"
+ },
+ "shapePropsByHeight": {
+  "30": {
+   "floor": 22,
+   "base_height": 8
+  }
+ },
+ "addShapes": [
+  {
+   "id": "descent",
+   "type": "polygon",
+   "operation": "add",
+   "override": true,
+   "keepClear": true,
+   "floor": 16,
+   "base_height": 14,
+   "theme": "gaol",
+   "height_mode": "level",
+   "skirt": 0,
+   "vertices": [
+    [
+     -22,
+     -16
+    ],
+    [
+     -18,
+     -16
+    ],
+    [
+     -18,
+     -2
+    ],
+    [
+     -22,
+     -2
+    ]
+   ],
+   "anchor_heights": [
+    15,
+    15,
+    1,
+    1
+   ]
+  }
+ ],
+ "addLayers": [
+  {
+   "id": "lamps",
+   "name": "The Lamps",
+   "base_y": 0,
+   "below": true,
+   "kind": "prop",
+   "prop": "lamps",
+   "groups": [
+    {
+     "id": "lamps",
+     "mirrors": false,
+     "shapeIds": [
+      "cross-x",
+      "cross-z",
+      "fire-w-a",
+      "fire-w-b",
+      "fire-e-a",
+      "fire-e-b",
+      "torch-w-a",
+      "torch-w-b",
+      "torch-e-a",
+      "torch-e-b"
+     ]
+    }
+   ],
+   "shapes": [
+    {
+     "id": "cross-x",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 21,
+     "base_height": 1,
+     "theme": "glow",
+     "min_x": -1,
+     "min_z": -8,
+     "max_x": 1,
+     "max_z": 8
+    },
+    {
+     "id": "cross-z",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 21,
+     "base_height": 1,
+     "theme": "glow",
+     "min_x": -8,
+     "min_z": -1,
+     "max_x": 8,
+     "max_z": 1
+    },
+    {
+     "id": "fire-w-a",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 9,
+     "base_height": 1,
+     "theme": "fire",
+     "min_x": -10,
+     "min_z": -6,
+     "max_x": -8,
+     "max_z": -4
+    },
+    {
+     "id": "fire-w-b",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 9,
+     "base_height": 1,
+     "theme": "fire",
+     "min_x": 8,
+     "min_z": 4,
+     "max_x": 10,
+     "max_z": 6
+    },
+    {
+     "id": "fire-e-a",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 9,
+     "base_height": 1,
+     "theme": "fire",
+     "min_x": 8,
+     "min_z": -6,
+     "max_x": 10,
+     "max_z": -4
+    },
+    {
+     "id": "fire-e-b",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 9,
+     "base_height": 1,
+     "theme": "fire",
+     "min_x": -10,
+     "min_z": 4,
+     "max_x": -8,
+     "max_z": 6
+    },
+    {
+     "id": "torch-w-a",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 16,
+     "base_height": 1,
+     "theme": "torch",
+     "min_x": -17,
+     "min_z": -13,
+     "max_x": -16,
+     "max_z": -12
+    },
+    {
+     "id": "torch-w-b",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 16,
+     "base_height": 1,
+     "theme": "torch",
+     "min_x": 16,
+     "min_z": 12,
+     "max_x": 17,
+     "max_z": 13
+    },
+    {
+     "id": "torch-e-a",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 16,
+     "base_height": 1,
+     "theme": "torch",
+     "min_x": 15,
+     "min_z": -13,
+     "max_x": 16,
+     "max_z": -12
+    },
+    {
+     "id": "torch-e-b",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 16,
+     "base_height": 1,
+     "theme": "torch",
+     "min_x": -16,
+     "min_z": 12,
+     "max_x": -15,
+     "max_z": 13
+    }
+   ]
+  },
+  {
+   "id": "gallery",
+   "name": "The Gallery",
+   "base_y": 0,
+   "below": true,
+   "kind": "prop",
+   "prop": "gallery",
+   "groups": [
+    {
+     "id": "gallery",
+     "mirrors": false,
+     "shapeIds": [
+      "ring",
+      "lamp-ring-0-a",
+      "lamp-ring-0-b",
+      "lamp-ring-1-a",
+      "lamp-ring-1-b",
+      "lamp-ring-2-a",
+      "lamp-ring-2-b"
+     ]
+    }
+   ],
+   "shapes": [
+    {
+     "id": "ring",
+     "type": "polygon",
+     "operation": "add",
+     "floor": 14,
+     "base_height": 2,
+     "theme": "gaol",
+     "vertices": [
+      [
+       -24,
+       -16
+      ],
+      [
+       24,
+       -16
+      ],
+      [
+       24,
+       16
+      ],
+      [
+       -24,
+       16
+      ],
+      [
+       -24,
+       -16
+      ],
+      [
+       -12,
+       -8
+      ],
+      [
+       -12,
+       8
+      ],
+      [
+       12,
+       8
+      ],
+      [
+       12,
+       -8
+      ],
+      [
+       -12,
+       -8
+      ]
+     ]
+    },
+    {
+     "id": "lamp-ring-0-a",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 14,
+     "base_height": 2,
+     "theme": "lantern",
+     "min_x": -13,
+     "min_z": -13,
+     "max_x": -11,
+     "max_z": -11,
+     "override": true
+    },
+    {
+     "id": "lamp-ring-0-b",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 14,
+     "base_height": 2,
+     "theme": "lantern",
+     "min_x": 11,
+     "min_z": 11,
+     "max_x": 13,
+     "max_z": 13,
+     "override": true
+    },
+    {
+     "id": "lamp-ring-1-a",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 14,
+     "base_height": 2,
+     "theme": "lantern",
+     "min_x": -1,
+     "min_z": -13,
+     "max_x": 1,
+     "max_z": -11,
+     "override": true
+    },
+    {
+     "id": "lamp-ring-1-b",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 14,
+     "base_height": 2,
+     "theme": "lantern",
+     "min_x": -1,
+     "min_z": 11,
+     "max_x": 1,
+     "max_z": 13,
+     "override": true
+    },
+    {
+     "id": "lamp-ring-2-a",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 14,
+     "base_height": 2,
+     "theme": "lantern",
+     "min_x": 11,
+     "min_z": -13,
+     "max_x": 13,
+     "max_z": -11,
+     "override": true
+    },
+    {
+     "id": "lamp-ring-2-b",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 14,
+     "base_height": 2,
+     "theme": "lantern",
+     "min_x": -13,
+     "min_z": 11,
+     "max_x": -11,
+     "max_z": 13,
+     "override": true
+    }
+   ]
+  },
+  {
+   "id": "under",
+   "name": "The Hall",
+   "base_y": 0,
+   "below": true,
+   "groups": [
+    {
+     "id": "under",
+     "mirrors": false,
+     "shapeIds": [
+      "rk-n",
+      "rk-s",
+      "rk-w",
+      "rk-e",
+      "cham",
+      "pier-nw-a",
+      "pier-nw-b",
+      "pier-ne-a",
+      "pier-ne-b",
+      "stair-a",
+      "stair-b",
+      "plinth-w-a",
+      "plinth-w-b",
+      "plinth-e-a",
+      "plinth-e-b"
+     ]
+    }
+   ],
+   "shapes": [
+    {
+     "id": "rk-n",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 22,
+     "theme": "rock",
+     "min_x": -50,
+     "min_z": -50,
+     "max_x": 50,
+     "max_z": -16
+    },
+    {
+     "id": "rk-s",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 22,
+     "theme": "rock",
+     "min_x": -50,
+     "min_z": 16,
+     "max_x": 50,
+     "max_z": 50
+    },
+    {
+     "id": "rk-w",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 22,
+     "theme": "rock",
+     "min_x": -50,
+     "min_z": -16,
+     "max_x": -24,
+     "max_z": 16
+    },
+    {
+     "id": "rk-e",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 22,
+     "theme": "rock",
+     "min_x": 24,
+     "min_z": -16,
+     "max_x": 50,
+     "max_z": 16
+    },
+    {
+     "id": "cham",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 6,
+     "theme": "floor",
+     "min_x": -24,
+     "min_z": -16,
+     "max_x": 24,
+     "max_z": 16
+    },
+    {
+     "id": "pier-nw-a",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 14,
+     "theme": "gaol",
+     "min_x": -15,
+     "min_z": -11,
+     "max_x": -12,
+     "max_z": -8
+    },
+    {
+     "id": "pier-nw-b",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 14,
+     "theme": "gaol",
+     "min_x": 12,
+     "min_z": 8,
+     "max_x": 15,
+     "max_z": 11
+    },
+    {
+     "id": "pier-ne-a",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 14,
+     "theme": "gaol",
+     "min_x": 12,
+     "min_z": -11,
+     "max_x": 15,
+     "max_z": -8
+    },
+    {
+     "id": "pier-ne-b",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 14,
+     "theme": "gaol",
+     "min_x": -15,
+     "min_z": 8,
+     "max_x": -12,
+     "max_z": 11
+    },
+    {
+     "id": "stair-a",
+     "type": "polygon",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 18,
+     "theme": "gaol",
+     "height_mode": "level",
+     "skirt": 0,
+     "vertices": [
+      [
+       -12,
+       -2
+      ],
+      [
+       -2,
+       -2
+      ],
+      [
+       -2,
+       2
+      ],
+      [
+       -12,
+       2
+      ]
+     ],
+     "anchor_heights": [
+      17,
+      7,
+      7,
+      17
+     ]
+    },
+    {
+     "id": "stair-b",
+     "type": "polygon",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 18,
+     "theme": "gaol",
+     "height_mode": "level",
+     "skirt": 0,
+     "vertices": [
+      [
+       2,
+       -2
+      ],
+      [
+       12,
+       -2
+      ],
+      [
+       12,
+       2
+      ],
+      [
+       2,
+       2
+      ]
+     ],
+     "anchor_heights": [
+      7,
+      17,
+      17,
+      7
+     ]
+    },
+    {
+     "id": "plinth-w-a",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 9,
+     "theme": "gaol",
+     "min_x": -10,
+     "min_z": -6,
+     "max_x": -8,
+     "max_z": -4
+    },
+    {
+     "id": "plinth-w-b",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 9,
+     "theme": "gaol",
+     "min_x": 8,
+     "min_z": 4,
+     "max_x": 10,
+     "max_z": 6
+    },
+    {
+     "id": "plinth-e-a",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 9,
+     "theme": "gaol",
+     "min_x": 8,
+     "min_z": -6,
+     "max_x": 10,
+     "max_z": -4
+    },
+    {
+     "id": "plinth-e-b",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 0,
+     "base_height": 9,
+     "theme": "gaol",
+     "min_x": -10,
+     "min_z": 4,
+     "max_x": -8,
+     "max_z": 6
+    }
+   ]
+  }
+ ],
+ "dressing": {
+  "props": [
+   {
+    "id": "hall-oak",
+    "kind": "tree",
+    "seed": 41,
+    "layer": "under",
+    "x": -6,
+    "z": 4,
+    "species": "oak",
+    "height": 10,
+    "grown": true
+   },
+   {
+    "id": "hall-turf",
+    "kind": "flora",
+    "seed": 42,
+    "layer": "under",
+    "points": [
+     [
+      -11,
+      -7
+     ],
+     [
+      11,
+      -7
+     ],
+     [
+      11,
+      7
+     ],
+     [
+      -11,
+      7
+     ]
+    ],
+    "spec": {
+     "coverage": 0.35,
+     "scale": 6,
+     "octaves": 2,
+     "fernShare": 0.6,
+     "flowerShare": 0.1,
+     "tallShare": 0.2
+    }
+   },
+   {
+    "id": "hall-track",
+    "kind": "stroke",
+    "seed": 43,
+    "layer": "under",
+    "points": [
+     [
+      -3,
+      0
+     ],
+     [
+      0,
+      -4
+     ],
+     [
+      4,
+      -6
+     ]
+    ],
+    "radius": 2,
+    "style": "worn",
+    "coverage": 0.6,
+    "route": false,
+    "pave": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   }
+  ]
+ },
+ "created": "2026-08-30"
+}

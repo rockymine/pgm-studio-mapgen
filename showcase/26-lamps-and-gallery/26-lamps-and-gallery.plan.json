@@ -1,0 +1,62 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Lanthorn"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 8,
+  "surface": 30,
+  "observerY": 40
+ },
+ "pieces": [
+  {
+   "id": "field",
+   "role": "piece",
+   "rect": [
+    -10,
+    -10,
+    20,
+    20
+   ]
+  },
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    -2,
+    6,
+    4,
+    4
+   ]
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "camp",
+    "at": [
+     2,
+     2
+    ],
+    "facing": "front"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "style": "pillar-2",
+    "at": [
+     0,
+     4.4
+    ],
+    "materials": "obsidian",
+    "float": 2,
+    "name": "The Cairn"
+   }
+  ]
+ }
+}
