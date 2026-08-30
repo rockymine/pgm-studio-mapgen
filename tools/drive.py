@@ -7,10 +7,12 @@ pipeline said on the way.
 <specdir> holds <base>.plan.json and EITHER <base>.finish.json, OR a hand-drawn <base>.layout.json and
 <base>.intent.json -- the shape the Sketch tool writes, whose geometry is authored rather than compiled.
 The either/or is exact: a spec carrying a finish is compiled from its plan on every run, and the layout
-and intent beside it are what the last run posted rather than anything it reads. <base> is the
-directory's own name and, unless --slug says otherwise, the slug the map is stored under. Both shapes
-take the same road from here: the same grid, flow, declines and renders. The finish carries everything
-a plan cannot state, keyed onto the compiled layout:
+and intent beside it are what the last run posted rather than anything it reads. A drawn spec's layout
+and intent are its input and are never written over, so it states in its intent's own meta what a finish
+would otherwise say about it -- `authors` and `created`. <base> is the directory's own name and, unless
+--slug says otherwise, the slug the map is stored under. Both shapes take the same road from here: the
+same grid, flow, declines and renders. The finish carries everything a plan cannot state, keyed onto the
+compiled layout:
 
   themeByHeight   {"11": "gyp-bench", ...}   theme per compiled shape, by the height it stands at
   themeById       {"s3": "gyp-rake"}          theme per compiled shape id (wins over the height rule)
@@ -475,8 +477,10 @@ def patch_intent(intent, finish):
     if created := finish.get("created"):
         intent.setdefault("meta", {})["created"] = created
         print(f"    created {created}")
+    elif (intent.get("meta") or {}).get("created"):
+        print(f"    created {intent['meta']['created']}")
     else:
-        print("    ! the finish states no `created` date, so the map will carry no <created> element")
+        print("    ! nothing states a `created` date, so the map will carry no <created> element")
     if finish.get("voidEnforcement"):
         intent.setdefault("build", {})["voidEnforcement"] = \
             {"exclusions": finish.get("voidExclusions", [])}
@@ -568,7 +572,9 @@ def main():
     print("== the map, from its three documents")
     _, loaded = call("POST", "/map/from-documents", {
         "slug": slug, "name": name, "plan": plan, "layout": layout, "intent": intent,
-        "authors": finish.get("authors")})
+        # A drawn spec has no finish to state its authorship in, so it states it where the rest of what
+        # it says about itself already lives: the intent's own meta.
+        "authors": finish.get("authors") or (intent.get("meta") or {}).get("authors")})
     slug = loaded["slug"]
     print(f"    slug={slug}  {'replaced' if loaded.get('replaced') else 'new'}  "
           f"cells={loaded.get('cells')}  groups={loaded.get('groups')}")
@@ -687,11 +693,14 @@ def main():
         # After the extraction, which clears the directory it writes into.
         print("== the pictures of what was authored")
         renders(into or os.path.join(specdir, "renders"), slug, finish, layout, drawn, flow)
-    # the documents that were actually posted, beside the ones that were authored
-    with open(f"{specdir}/{base}.layout.json", "w") as handle:
-        json.dump(layout, handle, indent=1)
-    with open(f"{specdir}/{base}.intent.json", "w") as handle:
-        json.dump(intent, handle, indent=1)
+    # A compiled spec's documents are the run's output and are written beside its plan; a drawn spec's
+    # are its input and are left exactly as authored, so re-driving one is byte-identical by
+    # construction rather than by the finish being empty.
+    if drawn_layout is None:
+        with open(f"{specdir}/{base}.layout.json", "w") as handle:
+            json.dump(layout, handle, indent=1)
+        with open(f"{specdir}/{base}.intent.json", "w") as handle:
+            json.dump(intent, handle, indent=1)
     print(f"DONE slug={slug}")
 
 
