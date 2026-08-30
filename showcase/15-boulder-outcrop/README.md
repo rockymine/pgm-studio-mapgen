@@ -48,9 +48,11 @@ Debris at the rock's foot, one of four:
 **A boulder is a prop.** It is placed at a point, it is a few blocks across, and — the fact that decides
 everything else about where it may stand — it is stamped into a box of *air*: `BoulderShapes.Of` fills an
 ellipsoid seated on whatever ground is already there, and the pass never rewrites a wall, a roof or a post to
-make room for one. Four forms are one lobe list each (`GET /api/terrain/boulder-forms`): `round` is a single
-buried sphere, `angular` the same sphere eroded by a noise field, `outcrop` a wide flat lobe (`rx=1.45×size`,
-`ry=0.45×size` — a slab, not a rock), and `cairn` three shrinking lobes stacked. `rock` is a full
+make room for one. Four forms are one lobe list each (`GET /api/terrain/boulder-forms`): `round` is an
+erratic — a main mass standing on the ground with a haunch and a shoulder on seeded bearings, 30% of its
+height bedded in — `angular` the same rock with its surface broken, `outcrop` wide flat lobes whose middle
+stays at the surface (a slab, not a rock, and the one form that genuinely emerges), and `cairn` three
+shrinking lobes stacked. `showcase/25-trees-and-boulders` is the technique on its own. `rock` is a full
 `TerrainMaterial`, resolved in the boulder's own frame before it knows where on the map it lands — the cairn
 here is a `voronoi` of two blocks, not a `solid`, which is one of the fourteen pattern kinds the surface
 paint uses.

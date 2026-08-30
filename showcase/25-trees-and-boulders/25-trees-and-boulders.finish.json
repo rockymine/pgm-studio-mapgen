@@ -1,0 +1,271 @@
+{
+ "authors": [
+  "Opus 5"
+ ],
+ "themes": {
+  "meadow": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "voronoi",
+         "seed": 7,
+         "cellSize": 16,
+         "bands": [
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 3,
+            "data": 1
+           }
+          },
+          {
+           "depth": 1,
+           "material": {
+            "kind": "solid",
+            "id": 2,
+            "data": 0
+           }
+          }
+         ]
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  }
+ },
+ "roomStyles": {
+  "spawn": "@showcase-hall"
+ },
+ "dressing": {
+  "props": [
+   {
+    "kind": "tree",
+    "id": "sapling-grown",
+    "x": -50,
+    "z": -44,
+    "seed": 11,
+    "form": "Grown",
+    "wood": "oak",
+    "height": 12,
+    "stems": 1
+   },
+   {
+    "kind": "tree",
+    "id": "oak-grown",
+    "x": -50,
+    "z": -22,
+    "seed": 12,
+    "form": "Grown",
+    "wood": "oak",
+    "height": 20,
+    "stems": 1
+   },
+   {
+    "kind": "tree",
+    "id": "oak-template",
+    "x": -50,
+    "z": 0,
+    "seed": 13,
+    "form": "Template",
+    "species": "oak",
+    "height": 20
+   },
+   {
+    "kind": "tree",
+    "id": "triple-grown",
+    "x": -50,
+    "z": 22,
+    "seed": 14,
+    "form": "Grown",
+    "wood": "oak",
+    "height": 20,
+    "stems": 3
+   },
+   {
+    "kind": "tree",
+    "id": "tall-grown",
+    "x": -50,
+    "z": 44,
+    "seed": 15,
+    "form": "Grown",
+    "wood": "oak",
+    "height": 28,
+    "stems": 1
+   },
+   {
+    "kind": "boulder",
+    "id": "erratic-3",
+    "x": -24,
+    "z": -46,
+    "seed": 21,
+    "form": "round",
+    "size": 3,
+    "mossy": true,
+    "rock": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   {
+    "kind": "boulder",
+    "id": "erratic-6",
+    "x": -24,
+    "z": -28,
+    "seed": 22,
+    "form": "round",
+    "size": 6,
+    "mossy": true,
+    "rock": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   {
+    "kind": "boulder",
+    "id": "erratic-10",
+    "x": -24,
+    "z": -9,
+    "seed": 23,
+    "form": "round",
+    "size": 10,
+    "mossy": true,
+    "rock": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   {
+    "kind": "boulder",
+    "id": "angular-7",
+    "x": -24,
+    "z": 10,
+    "seed": 24,
+    "form": "angular",
+    "size": 7,
+    "mossy": true,
+    "rock": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   {
+    "kind": "boulder",
+    "id": "outcrop-8",
+    "x": -24,
+    "z": 28,
+    "seed": 25,
+    "form": "outcrop",
+    "size": 8,
+    "mossy": false,
+    "rock": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   {
+    "kind": "boulder",
+    "id": "cairn-6",
+    "x": -24,
+    "z": 46,
+    "seed": 26,
+    "form": "cairn",
+    "size": 6,
+    "mossy": true,
+    "rock": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   }
+  ]
+ }
+}

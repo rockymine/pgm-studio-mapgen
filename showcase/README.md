@@ -109,6 +109,7 @@ Read them in order the first time — each assumes the one before it. `02` is th
 | 22 | `22-indoor-pool` | water in a theme's **surface bucket**, so a pool is the rectangle drawn rather than a swept disc's outline | `themes` |
 | 23 | `23-maze` | a Backrooms lattice: runs on a pitch, one link in three left out, and the rule that survives `rot_180` | `addLayers` |
 | 24 | `24-underground` | a room built inside the rock: a wall that is one even-odd ring, a doorway that is an override add, a ceiling on its own layer — and what a prop can be given in a cave | `addLayers` + `dressing` |
+| 25 | `25-trees-and-boulders` | the two props that are shapes rather than materials: the `grown` tree beside the `template` tree that is its control, and the glacial erratic in all four of its forms from 3 blocks of reach to 10 | `dressing` |
 
 ## What every board here found out, in one place
 
@@ -149,6 +150,7 @@ it was found; this is the index to them.
 | A wall inside a room is stated from the **floor's own floor**. From the floor's top it stands over a trench of its own depth, and `SK9` — the only `Severity.Decline` the layout check raises — reaches no 2xx response: `GET …/findings` is the one read that answers it | `24` |
 | `layer` is a prop's only vertical control and a stroke honours it. A goal's clearance and a `keepClear` mark do not: both are 2-D and reach every storey, so a lid marked `keepClear` makes the room under it undressable | `24` |
 | `seat: "ground"` reads the **maximum** ground top over every layer, so a made thing drawn in a cellar seats on the roof of the cellar | `24` |
+| A measure of a generated body taken over a **3×3×3** neighbourhood counts a corner as a hold and a player does not: a block joined only at a corner has air on all six of its own faces and is seen straight past. Read that way a grown tree was 3,106 bodies rather than 32 | `25` |
 
 And one that no board found and every board needed: **a per-block column transect is the only read that says
 whether a route can be walked.** Sampling every two blocks makes a two-block riser and two one-block risers
