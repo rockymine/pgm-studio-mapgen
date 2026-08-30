@@ -51,7 +51,8 @@ Read on faces, the grown tree was a haze. Over the 32 grown trees on the probe b
 | pieces resting on nothing | **3,069** | **0** |
 | worst single tree | 394 bodies, 235 floating blocks | 1 body, 0 |
 
-The ten **template** trees on the same board were one body each with nothing floating, before and after. That
+The **template** trees on the same board were one body each with nothing floating, before and after — eight
+of the ten read (the acacia and dark-oak rows use the `log2`/`leaves2` ids the probe did not scan for). That
 is why every shipped board uses the vanilla tree.
 
 ### Per tree, with coordinates
