@@ -2232,10 +2232,10 @@
       "id": "cl0-0",
       "type": "circle",
       "operation": "add",
-      "center_x": -15,
-      "center_z": 65,
+      "center_x": -45,
+      "center_z": 45,
       "radius": 9,
-      "floor": 78,
+      "floor": 80,
       "base_height": 3,
       "keepClear": false,
       "theme": "cloud-glass"
@@ -2244,10 +2244,10 @@
       "id": "cl0-1",
       "type": "circle",
       "operation": "add",
-      "center_x": -23,
-      "center_z": 68,
+      "center_x": -53,
+      "center_z": 48,
       "radius": 6,
-      "floor": 78,
+      "floor": 80,
       "base_height": 3,
       "keepClear": false,
       "theme": "cloud-glass"
@@ -2256,10 +2256,10 @@
       "id": "cl0-2",
       "type": "circle",
       "operation": "add",
-      "center_x": -8,
-      "center_z": 62,
+      "center_x": -38,
+      "center_z": 42,
       "radius": 6,
-      "floor": 78,
+      "floor": 80,
       "base_height": 3,
       "keepClear": false,
       "theme": "cloud-glass"
@@ -4110,18 +4110,18 @@
    {
     "id": "house-north-1",
     "kind": "house",
-    "seed": 699,
+    "seed": 599,
     "layer": "ground",
     "wings": [
      {
       "corners": [
        [
-        -58,
-        85
+        -63,
+        80
        ],
        [
-        -48,
-        93
+        -53,
+        88
        ]
       ]
      }
@@ -4291,18 +4291,18 @@
    {
     "id": "house-north-2",
     "kind": "house",
-    "seed": 812,
+    "seed": 673,
     "layer": "ground",
     "wings": [
      {
       "corners": [
        [
-        -40,
-        84
+        -45,
+        76
        ],
        [
-        -30,
-        92
+        -35,
+        84
        ]
       ]
      }
@@ -4482,8 +4482,8 @@
         6
        ],
        [
-        -46,
-        14
+        -48,
+        12
        ]
       ]
      }
@@ -4653,11 +4653,11 @@
    {
     "id": "oak-n0",
     "kind": "tree",
-    "seed": 621,
+    "seed": 872,
     "layer": "ground",
     "form": "grown",
-    "x": -65,
-    "z": 82,
+    "x": -72,
+    "z": 80,
     "wood": "oak",
     "height": 10,
     "stems": 1,
@@ -4797,11 +4797,11 @@
    {
     "id": "template-oak-a",
     "kind": "tree",
-    "seed": 738,
+    "seed": 1130,
     "layer": "ground",
     "form": "template",
-    "x": -66,
-    "z": 84,
+    "x": -30,
+    "z": 80,
     "species": "oak",
     "height": 14
    },

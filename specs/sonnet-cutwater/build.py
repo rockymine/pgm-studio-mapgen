@@ -241,7 +241,7 @@ def boulder(pid, x, z, form, size, rock, mossy=True):
 # Broadleaf on the bank's grass, both sides of the water; conifer on the island's earth. Every
 # site below is read off the built columns — flat, clear of the goals' clearance and the wall —
 # rather than guessed off the plan's now-superseded flat hint layers.
-OAKS_N = [(-65, 82, 10), (-25, 85, 9), (-35, 105, 9)]
+OAKS_N = [(-72, 80, 10), (-25, 85, 9), (-35, 105, 9)]
 OAKS_S = [(-40, 10, 10), (-114, 22, 9)]
 FIRS_ISLE = [(38, 48, 13), (55, 62, 11), (60, 45, 14)]
 GNEISS, GRIT = noise(STONE, COBBLE, 3, 61), noise(STONE, GRAVEL, 2, 62)
@@ -289,13 +289,16 @@ layout["dressing"] = {"props": [
      "points": [[-58, 108], [-64, 96], [BRIDGE_X, Z1]], "pave": GRAVEL},
     {"id": "road-bridge-s", "kind": "stroke", "seed": 42, "route": True, "radius": 2,
      "points": [[BRIDGE_X, Z0], [-88, 26], [DESTROYABLE_1[0], DESTROYABLE_1[1] + 8]], "pave": GRAVEL},
-    house("house-north-1", -58, 85, -48, 93, STYLE, "posZ"),
-    house("house-north-2", -40, 84, -30, 92, VARIANT, "negZ"),
-    house("house-south-1", -56, 6, -46, 14, VARIANT, "posZ"),
+    # Every footprint below was searched against the built surface for WX11's own test: not
+    # just a level footprint, but a one-block border ring within a block of the footprint's
+    # own floor, so the foundation reads as a doorstep rather than a plinth on every side.
+    house("house-north-1", -63, 80, -53, 88, STYLE, "posZ"),
+    house("house-north-2", -45, 76, -35, 84, VARIANT, "negZ"),
+    house("house-south-1", -56, 6, -48, 12, VARIANT, "posZ"),
 ] + [oak(f"oak-n{n}", x, z, h) for n, (x, z, h) in enumerate(OAKS_N)]
   + [oak(f"oak-s{n}", x, z, h) for n, (x, z, h) in enumerate(OAKS_S)]
   + [fir(f"fir-{n}", x, z, h) for n, (x, z, h) in enumerate(FIRS_ISLE)]
-  + [template_tree("template-oak-a", -66, 84, "oak", 14),
+  + [template_tree("template-oak-a", -30, 80, "oak", 14),
      template_tree("template-oak-b", -74, 96, "oak", 12)]
   + [boulder(pid, x, z, form, size, rock) for pid, x, z, form, size, rock in BOULDERS]}
 
@@ -315,7 +318,11 @@ balloon = [
 for name, shapes in balloon:
     layout["layers"].append(prop_layer(f"balloon-{name}", "balloon", shapes))
 
-for n, (cx, cz, y) in enumerate(((-15, 65, 78), (-95, 100, 74))):
+# An isometric read is antisymmetric in v = (x+z)/2 - y: a prop off the x+z=0 diagonal has its
+# rot_180 image drawn as far above the board as the original is drawn into it, so one image reads
+# as sky and the other lands on the terrain. Both clouds sit on (or within a block of) that
+# diagonal, at a height read off the actual render as clearing the silhouette in both images.
+for n, (cx, cz, y) in enumerate(((-45, 45, 80), (-95, 100, 74))):
     lobes = [disc(f"cl{n}-0", cx, cz, 9, y, 3, "cloud-glass"),
              disc(f"cl{n}-1", cx - 8, cz + 3, 6, y, 3, "cloud-glass"),
              disc(f"cl{n}-2", cx + 7, cz - 3, 6, y, 3, "cloud-glass")]
