@@ -655,12 +655,12 @@
       "operation": "add",
       "override": true,
       "keepClear": false,
-      "min_x": -104,
-      "max_x": -76,
+      "min_x": -111,
+      "max_x": -61,
       "min_z": 94,
-      "max_z": 120,
-      "floor": 24,
-      "base_height": 16,
+      "max_z": 125,
+      "floor": 0,
+      "base_height": 40,
       "height_mode": "level",
       "skirt": 0,
       "relief_scope": "exclude",
@@ -5732,10 +5732,10 @@
       "id": "cl0-0",
       "type": "circle",
       "operation": "add",
-      "center_x": -46,
-      "center_z": 128,
+      "center_x": -118,
+      "center_z": 118,
       "radius": 13,
-      "floor": 86,
+      "floor": 104,
       "base_height": 3,
       "theme": "cloud",
       "keepClear": false
@@ -5744,10 +5744,10 @@
       "id": "cl0-1",
       "type": "circle",
       "operation": "add",
-      "center_x": -57,
-      "center_z": 133,
+      "center_x": -129,
+      "center_z": 123,
       "radius": 8,
-      "floor": 86,
+      "floor": 104,
       "base_height": 3,
       "theme": "cloud",
       "keepClear": false
@@ -5756,10 +5756,10 @@
       "id": "cl0-2",
       "type": "circle",
       "operation": "add",
-      "center_x": -34,
-      "center_z": 124,
+      "center_x": -106,
+      "center_z": 114,
       "radius": 9,
-      "floor": 86,
+      "floor": 104,
       "base_height": 3,
       "theme": "cloud",
       "keepClear": false
@@ -5768,10 +5768,10 @@
       "id": "cl0-3",
       "type": "circle",
       "operation": "add",
-      "center_x": -43,
-      "center_z": 137,
+      "center_x": -115,
+      "center_z": 127,
       "radius": 7,
-      "floor": 86,
+      "floor": 104,
       "base_height": 3,
       "theme": "cloud",
       "keepClear": false
@@ -5804,10 +5804,10 @@
       "id": "cl1-0",
       "type": "circle",
       "operation": "add",
-      "center_x": 16,
-      "center_z": 86,
+      "center_x": -30,
+      "center_z": 30,
       "radius": 13,
-      "floor": 80,
+      "floor": 108,
       "base_height": 3,
       "theme": "cloud",
       "keepClear": false
@@ -5816,10 +5816,10 @@
       "id": "cl1-1",
       "type": "circle",
       "operation": "add",
-      "center_x": 5,
-      "center_z": 91,
+      "center_x": -41,
+      "center_z": 35,
       "radius": 8,
-      "floor": 80,
+      "floor": 108,
       "base_height": 3,
       "theme": "cloud",
       "keepClear": false
@@ -5828,10 +5828,10 @@
       "id": "cl1-2",
       "type": "circle",
       "operation": "add",
-      "center_x": 28,
-      "center_z": 82,
+      "center_x": -18,
+      "center_z": 26,
       "radius": 9,
-      "floor": 80,
+      "floor": 108,
       "base_height": 3,
       "theme": "cloud",
       "keepClear": false
@@ -5840,10 +5840,10 @@
       "id": "cl1-3",
       "type": "circle",
       "operation": "add",
-      "center_x": 19,
-      "center_z": 95,
+      "center_x": -27,
+      "center_z": 39,
       "radius": 7,
-      "floor": 80,
+      "floor": 108,
       "base_height": 3,
       "theme": "cloud",
       "keepClear": false
@@ -7489,6 +7489,1338 @@
      "id": 13,
      "data": 0
     }
+   },
+   {
+    "id": "croft-quay",
+    "kind": "house",
+    "seed": 709,
+    "layer": "ground",
+    "wings": [
+     {
+      "corners": [
+       [
+        -77,
+        96
+       ],
+       [
+        -67,
+        106
+       ]
+      ]
+     }
+    ],
+    "front": "posX",
+    "style": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 5,
+           "data": 1
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 2
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 1,
+      "slab": -1,
+      "slabData": 0,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 45,
+       "data": 0
+      },
+      "verge": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gableWindows": {
+       "form": "open",
+       "block": 102,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 2,
+       "width": 1,
+       "height": 1,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+         },
+         "thickness": 2
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 3
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 5
+     },
+     "post": {
+      "kind": "solid",
+      "id": 162,
+      "data": 1
+     },
+     "windows": {
+      "form": "none",
+      "block": 109,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 3,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "storeys": [],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": -1,
+      "data": 0,
+      "reach": 1,
+      "any": false
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "arched",
+       "block": 109,
+       "fill": "upperSlab",
+       "fillBlock": 44,
+       "fillData": 5
+      },
+      "width": 2,
+      "height": 3
+     }
+    }
+   },
+   {
+    "id": "croft-yard",
+    "kind": "house",
+    "seed": 910,
+    "layer": "ground",
+    "wings": [
+     {
+      "corners": [
+       [
+        -78,
+        112
+       ],
+       [
+        -68,
+        121
+       ]
+      ]
+     }
+    ],
+    "front": "negZ",
+    "style": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 5,
+           "data": 1
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 2
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 1,
+      "slab": -1,
+      "slabData": 0,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 45,
+       "data": 0
+      },
+      "verge": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gableWindows": {
+       "form": "open",
+       "block": 102,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 2,
+       "width": 1,
+       "height": 1,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 2
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         "thickness": 3
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 5
+     },
+     "post": {
+      "kind": "solid",
+      "id": 162,
+      "data": 1
+     },
+     "windows": {
+      "form": "none",
+      "block": 109,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 3,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "storeys": [],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": -1,
+      "data": 0,
+      "reach": 1,
+      "any": false
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "arched",
+       "block": 109,
+       "fill": "upperSlab",
+       "fillBlock": 44,
+       "fillData": 5
+      },
+      "width": 2,
+      "height": 3
+     }
+    }
+   },
+   {
+    "id": "croft-fell",
+    "kind": "house",
+    "seed": 820,
+    "layer": "ground",
+    "wings": [
+     {
+      "corners": [
+       [
+        -93,
+        -13
+       ],
+       [
+        -86,
+        -7
+       ]
+      ]
+     }
+    ],
+    "front": "posZ",
+    "style": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 5,
+           "data": 1
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 2
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 1,
+      "slab": -1,
+      "slabData": 0,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 45,
+       "data": 0
+      },
+      "verge": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gableWindows": {
+       "form": "open",
+       "block": 102,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 2,
+       "width": 1,
+       "height": 1,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+         },
+         "thickness": 2
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 3
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 5
+     },
+     "post": {
+      "kind": "solid",
+      "id": 162,
+      "data": 1
+     },
+     "windows": {
+      "form": "none",
+      "block": 109,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 3,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "storeys": [],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": -1,
+      "data": 0,
+      "reach": 1,
+      "any": false
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "arched",
+       "block": 109,
+       "fill": "upperSlab",
+       "fillBlock": 44,
+       "fillData": 5
+      },
+      "width": 2,
+      "height": 3
+     }
+    }
+   },
+   {
+    "id": "croft-bank",
+    "kind": "house",
+    "seed": 638,
+    "layer": "ground",
+    "wings": [
+     {
+      "corners": [
+       [
+        -37,
+        69
+       ],
+       [
+        -27,
+        78
+       ]
+      ]
+     }
+    ],
+    "front": "posZ",
+    "style": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 5,
+           "data": 1
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 2
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 1,
+      "slab": -1,
+      "slabData": 0,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 45,
+       "data": 0
+      },
+      "verge": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gableWindows": {
+       "form": "open",
+       "block": 102,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 2,
+       "width": 1,
+       "height": 1,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 2
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         "thickness": 3
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 5
+     },
+     "post": {
+      "kind": "solid",
+      "id": 162,
+      "data": 1
+     },
+     "windows": {
+      "form": "none",
+      "block": 109,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 3,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "storeys": [],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": -1,
+      "data": 0,
+      "reach": 1,
+      "any": false
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "arched",
+       "block": 109,
+       "fill": "upperSlab",
+       "fillBlock": 44,
+       "fillData": 5
+      },
+      "width": 2,
+      "height": 3
+     }
+    }
+   },
+   {
+    "id": "croft-holm",
+    "kind": "house",
+    "seed": 1073,
+    "layer": "ground",
+    "wings": [
+     {
+      "corners": [
+       [
+        -53,
+        -54
+       ],
+       [
+        -45,
+        -47
+       ]
+      ]
+     }
+    ],
+    "front": "posZ",
+    "style": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 5,
+           "data": 1
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 2
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 1,
+      "slab": -1,
+      "slabData": 0,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 45,
+       "data": 0
+      },
+      "verge": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gableWindows": {
+       "form": "open",
+       "block": 102,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 2,
+       "width": 1,
+       "height": 1,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 2
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         "thickness": 3
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 5
+     },
+     "post": {
+      "kind": "solid",
+      "id": 162,
+      "data": 1
+     },
+     "windows": {
+      "form": "none",
+      "block": 109,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 3,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "storeys": [],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": -1,
+      "data": 0,
+      "reach": 1,
+      "any": false
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "arched",
+       "block": 109,
+       "fill": "upperSlab",
+       "fillBlock": 44,
+       "fillData": 5
+      },
+      "width": 2,
+      "height": 3
+     }
+    }
+   },
+   {
+    "id": "oak-0",
+    "kind": "tree",
+    "seed": 562,
+    "layer": "ground",
+    "form": "grown",
+    "x": -62,
+    "z": 80,
+    "wood": "oak",
+    "height": 12,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.5,
+    "flow": 0.5,
+    "branchAngle": 1.15,
+    "leafSize": 0.68,
+    "whorled": false
+   },
+   {
+    "id": "oak-1",
+    "kind": "tree",
+    "seed": 760,
+    "layer": "ground",
+    "form": "grown",
+    "x": -21,
+    "z": 83,
+    "wood": "oak",
+    "height": 10,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.5,
+    "flow": 0.5,
+    "branchAngle": 1.15,
+    "leafSize": 0.68,
+    "whorled": false
+   },
+   {
+    "id": "oak-2",
+    "kind": "tree",
+    "seed": 1824,
+    "layer": "ground",
+    "form": "grown",
+    "x": -106,
+    "z": 86,
+    "wood": "oak",
+    "height": 13,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.5,
+    "flow": 0.5,
+    "branchAngle": 1.15,
+    "leafSize": 0.68,
+    "whorled": false
+   },
+   {
+    "id": "oak-3",
+    "kind": "tree",
+    "seed": 323,
+    "layer": "ground",
+    "form": "grown",
+    "x": -51,
+    "z": 112,
+    "wood": "oak",
+    "height": 11,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.5,
+    "flow": 0.5,
+    "branchAngle": 1.15,
+    "leafSize": 0.68,
+    "whorled": false
+   },
+   {
+    "id": "oak-4",
+    "kind": "tree",
+    "seed": 698,
+    "layer": "ground",
+    "form": "grown",
+    "x": -40,
+    "z": 114,
+    "wood": "oak",
+    "height": 13,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.5,
+    "flow": 0.5,
+    "branchAngle": 1.15,
+    "leafSize": 0.68,
+    "whorled": false
+   },
+   {
+    "id": "oak-5",
+    "kind": "tree",
+    "seed": 1059,
+    "layer": "ground",
+    "form": "grown",
+    "x": -30,
+    "z": 117,
+    "wood": "oak",
+    "height": 9,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.5,
+    "flow": 0.5,
+    "branchAngle": 1.15,
+    "leafSize": 0.68,
+    "whorled": false
+   },
+   {
+    "id": "oak-6",
+    "kind": "tree",
+    "seed": 1510,
+    "layer": "ground",
+    "form": "grown",
+    "x": -16,
+    "z": 118,
+    "wood": "oak",
+    "height": 12,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.5,
+    "flow": 0.5,
+    "branchAngle": 1.15,
+    "leafSize": 0.68,
+    "whorled": false
+   },
+   {
+    "id": "oak-7",
+    "kind": "tree",
+    "seed": 462,
+    "layer": "ground",
+    "form": "grown",
+    "x": -52,
+    "z": 122,
+    "wood": "oak",
+    "height": 10,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.5,
+    "flow": 0.5,
+    "branchAngle": 1.15,
+    "leafSize": 0.68,
+    "whorled": false
+   },
+   {
+    "id": "oak-8",
+    "kind": "tree",
+    "seed": 899,
+    "layer": "ground",
+    "form": "grown",
+    "x": -39,
+    "z": 124,
+    "wood": "oak",
+    "height": 13,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.5,
+    "flow": 0.5,
+    "branchAngle": 1.15,
+    "leafSize": 0.68,
+    "whorled": false
+   },
+   {
+    "id": "fir-0",
+    "kind": "tree",
+    "seed": 3219,
+    "layer": "ground",
+    "form": "grown",
+    "x": -100,
+    "z": -7,
+    "wood": "spruce",
+    "height": 18,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.78,
+    "flow": 0.2,
+    "branchAngle": 0.8,
+    "leafSize": 0.58,
+    "whorled": true
+   },
+   {
+    "id": "fir-1",
+    "kind": "tree",
+    "seed": 1919,
+    "layer": "ground",
+    "form": "grown",
+    "x": -63,
+    "z": 2,
+    "wood": "spruce",
+    "height": 14,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.78,
+    "flow": 0.2,
+    "branchAngle": 0.8,
+    "leafSize": 0.58,
+    "whorled": true
+   },
+   {
+    "id": "fir-2",
+    "kind": "tree",
+    "seed": 994,
+    "layer": "ground",
+    "form": "grown",
+    "x": -37,
+    "z": 9,
+    "wood": "spruce",
+    "height": 13,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.78,
+    "flow": 0.2,
+    "branchAngle": 0.8,
+    "leafSize": 0.58,
+    "whorled": true
+   },
+   {
+    "id": "fir-3",
+    "kind": "tree",
+    "seed": 686,
+    "layer": "ground",
+    "form": "grown",
+    "x": -32,
+    "z": 18,
+    "wood": "spruce",
+    "height": 16,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.78,
+    "flow": 0.2,
+    "branchAngle": 0.8,
+    "leafSize": 0.58,
+    "whorled": true
+   },
+   {
+    "id": "fir-4",
+    "kind": "tree",
+    "seed": 2655,
+    "layer": "ground",
+    "form": "grown",
+    "x": -101,
+    "z": 28,
+    "wood": "spruce",
+    "height": 15,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.78,
+    "flow": 0.2,
+    "branchAngle": 0.8,
+    "leafSize": 0.58,
+    "whorled": true
+   },
+   {
+    "id": "fir-5",
+    "kind": "tree",
+    "seed": 2277,
+    "layer": "ground",
+    "form": "grown",
+    "x": -91,
+    "z": 32,
+    "wood": "spruce",
+    "height": 13,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.78,
+    "flow": 0.2,
+    "branchAngle": 0.8,
+    "leafSize": 0.58,
+    "whorled": true
+   },
+   {
+    "id": "fir-6",
+    "kind": "tree",
+    "seed": 2751,
+    "layer": "ground",
+    "form": "grown",
+    "x": -52,
+    "z": -67,
+    "wood": "spruce",
+    "height": 14,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.78,
+    "flow": 0.2,
+    "branchAngle": 0.8,
+    "leafSize": 0.58,
+    "whorled": true
+   },
+   {
+    "id": "fir-7",
+    "kind": "tree",
+    "seed": 2224,
+    "layer": "ground",
+    "form": "grown",
+    "x": -35,
+    "z": -67,
+    "wood": "spruce",
+    "height": 12,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.78,
+    "flow": 0.2,
+    "branchAngle": 0.8,
+    "leafSize": 0.58,
+    "whorled": true
+   },
+   {
+    "id": "fir-8",
+    "kind": "tree",
+    "seed": 2746,
+    "layer": "ground",
+    "form": "grown",
+    "x": -65,
+    "z": -43,
+    "wood": "spruce",
+    "height": 16,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.78,
+    "flow": 0.2,
+    "branchAngle": 0.8,
+    "leafSize": 0.58,
+    "whorled": true
+   },
+   {
+    "id": "fir-9",
+    "kind": "tree",
+    "seed": 1604,
+    "layer": "ground",
+    "form": "grown",
+    "x": -32,
+    "z": -36,
+    "wood": "spruce",
+    "height": 13,
+    "stems": 1,
+    "levels": 2,
+    "leader": 0.78,
+    "flow": 0.2,
+    "branchAngle": 0.8,
+    "leafSize": 0.58,
+    "whorled": true
+   },
+   {
+    "id": "erratic-round",
+    "kind": "boulder",
+    "seed": 290,
+    "layer": "ground",
+    "x": -10,
+    "z": 80,
+    "form": "round",
+    "size": 5,
+    "rock": {
+     "kind": "noise",
+     "seed": 51,
+     "scale": 3,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 2
+    },
+    "mossy": true
+   },
+   {
+    "id": "erratic-broken",
+    "kind": "boulder",
+    "seed": 427,
+    "layer": "ground",
+    "x": -77,
+    "z": 84,
+    "form": "angular",
+    "size": 7,
+    "rock": {
+     "kind": "noise",
+     "seed": 51,
+     "scale": 3,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 2
+    },
+    "mossy": true
+   },
+   {
+    "id": "erratic-shelf",
+    "kind": "boulder",
+    "seed": 151,
+    "layer": "ground",
+    "x": -56,
+    "z": 93,
+    "form": "outcrop",
+    "size": 8,
+    "rock": {
+     "kind": "noise",
+     "seed": 52,
+     "scale": 2,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      }
+     ],
+     "rise": 2
+    },
+    "mossy": true
+   },
+   {
+    "id": "erratic-cairn",
+    "kind": "boulder",
+    "seed": 509,
+    "layer": "ground",
+    "x": -6,
+    "z": 115,
+    "form": "cairn",
+    "size": 4,
+    "rock": {
+     "kind": "noise",
+     "seed": 51,
+     "scale": 3,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 2
+    },
+    "mossy": true
+   },
+   {
+    "id": "erratic-crag",
+    "kind": "boulder",
+    "seed": 740,
+    "layer": "ground",
+    "x": -75,
+    "z": 17,
+    "form": "angular",
+    "size": 6,
+    "rock": {
+     "kind": "noise",
+     "seed": 52,
+     "scale": 2,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      }
+     ],
+     "rise": 2
+    },
+    "mossy": true
+   },
+   {
+    "id": "erratic-cobble",
+    "kind": "boulder",
+    "seed": 1183,
+    "layer": "ground",
+    "x": -118,
+    "z": 23,
+    "form": "round",
+    "size": 4,
+    "rock": {
+     "kind": "noise",
+     "seed": 52,
+     "scale": 2,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      }
+     ],
+     "rise": 2
+    },
+    "mossy": true
+   },
+   {
+    "id": "erratic-ledge",
+    "kind": "boulder",
+    "seed": 655,
+    "layer": "ground",
+    "x": -35,
+    "z": -54,
+    "form": "outcrop",
+    "size": 7,
+    "rock": {
+     "kind": "noise",
+     "seed": 51,
+     "scale": 3,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 2
+    },
+    "mossy": true
+   },
+   {
+    "id": "erratic-stack",
+    "kind": "boulder",
+    "seed": 996,
+    "layer": "ground",
+    "x": -66,
+    "z": -54,
+    "form": "cairn",
+    "size": 4,
+    "rock": {
+     "kind": "noise",
+     "seed": 52,
+     "scale": 2,
+     "octaves": 4,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      }
+     ],
+     "rise": 2
+    },
+    "mossy": true
    }
   ]
  }

@@ -90,10 +90,14 @@ edges += [built(f"cairn-wall-{i}", arc(MX, MZ, 20, a0, a1), 1.0, 24, 11, seed=11
 
 # The spawn stood on ground rising 7 blocks under its own footprint, so the room was stamped on the
 # lowest column of it and sat in a hole. It gets a terrace instead, level with the bank it adjoins.
-SPX0, SPZ0, SPX1, SPZ1, TERRACE = -104, 94, -76, 120, 40
+# Vom Rand aus gewachsen: 7 Bloecke nach Westen in den Void (der Moor endet dort bei x -110),
+# 15 nach Osten auf die Statue zu, 5 nach Norden in den Void (die Moorkante liegt bei z 121).
+# Der Sockel steht von y0, sonst haengt er ueber Leere -- ein override-Add gewinnt die Saeule
+# mitsamt ihrem Boden, also war unter floor 24 nichts.
+SPX0, SPZ0, SPX1, SPZ1, TERRACE = -104-7, 94, -76+15, 120+5, 40
 edges.append({"id":"spawn-terrace","type":"rectangle","operation":"add","override":True,
   "keepClear":False,"min_x":SPX0,"max_x":SPX1,"min_z":SPZ0,"max_z":SPZ1,
-  "floor":24,"base_height":TERRACE-24,"height_mode":"level","skirt":0,
+  "floor":0,"base_height":TERRACE,"height_mode":"level","skirt":0,
   "relief_scope":"exclude","theme":"masonry"})
 # and a flight off its south face into the grass, the way the water stair goes down to the water
 edges.append({"id":"spawn-stair","type":"polygon","operation":"add","override":True,"keepClear":True,
@@ -229,7 +233,12 @@ def disc(sid, cx, cz, r, floor, h, th):
 
 # A cloud is a flat base and a lumpy silhouette: lobes at ONE floor and one height, so they merge
 # into a single span instead of the tallest eating the rest.
-for n, (cx, cz, y) in enumerate(((-46, 128, 86), (16, 86, 80))):
+#
+# Both stand on the x + z = 0 diagonal at a height that clears the board's own isometric
+# silhouette. An isometric read draws a block at (x + z) / 2 - y, so a cloud off the diagonal has
+# its -x, -z image drawn as far above the board as the original is drawn into it, and one too low
+# on the diagonal lands on the terrain in both.
+for n, (cx, cz, y) in enumerate(((-118, 118, 104), (-30, 30, 108))):
     lobes = [disc(f"cl{n}-0", cx, cz, 13, y, 3, "cloud"),
              disc(f"cl{n}-1", cx-11, cz+5, 8, y, 3, "cloud"),
              disc(f"cl{n}-2", cx+12, cz-4, 9, y, 3, "cloud"),
@@ -249,11 +258,67 @@ statue = [("plinth", [rect("st-p", SX-5, SZ-5, SX+5, SZ+5, SY, 4, "masonry", kee
 for name, shapes in statue:
     layout["layers"].append(prop_layer(f"statue-{name}", "statue", shapes))
 
+# ── dressing: the water, the woods, the erratics and the crofts ─────────────
+# Every coordinate below was read off the built world rather than guessed: a site is a cell whose
+# 5x5 neighbourhood varies by one block, carries nothing standing on it, and lies clear of the
+# goals, the spawn and the statue. A prop is stated once on the red half; the symmetry fan writes
+# its image.
+def tree(pid, x, z, wood, height, **knobs):
+    base = {"id":pid,"kind":"tree","seed":abs(x*31+z*17)%9973,"layer":"ground","form":"grown",
+            "x":x,"z":z,"wood":wood,"height":height,"stems":1,"levels":2}
+    return base | knobs
+
+# A broadleaf: a low leader, a wandering trunk and a wide fork, so the crown spreads.
+def oak(pid, x, z, height):
+    return tree(pid, x, z, "oak", height, leader=0.5, flow=0.5, branchAngle=1.15,
+                leafSize=0.68, whorled=False)
+
+# A conifer: the branches gathered into whorls, each ring shorter than the one below, on a leader
+# that climbs almost the whole height -- which is the spire the earth banks want.
+def fir(pid, x, z, height):
+    return tree(pid, x, z, "spruce", height, leader=0.78, flow=0.2, branchAngle=0.8,
+                leafSize=0.58, whorled=True)
+
+OAKS = [(-62,80,12), (-21,83,10), (-106,86,13), (-51,112,11), (-40,114,13),
+        (-30,117,9), (-16,118,12), (-52,122,10), (-39,124,13)]
+FIRW = [(-100,-7,18), (-63,2,14), (-37,9,13), (-32,18,16), (-101,28,15), (-91,32,13)]
+FIRI = [(-52,-67,14), (-35,-67,12), (-65,-43,16), (-32,-36,13)]
+
+# Four forms at four scales, so the erratics can be read against each other: a rounded mass, the
+# same mass broken up, a low outcrop with its middle at the surface, and three shrinking lobes.
+GNEISS  = noise(STONE, COBBLE, 3, 51)     # stone mottled with cobble, in the rock's own frame
+GRIT    = noise(STONE, GRAVEL, 2, 52)     # stone shot through with gravel
+BOULDERS = [("erratic-round",  -10,  80, "round",   5, GNEISS),
+            ("erratic-broken", -77,  84, "angular", 7, GNEISS),
+            ("erratic-shelf",  -56,  93, "outcrop", 8, GRIT),
+            ("erratic-cairn",   -6, 115, "cairn",   4, GNEISS),
+            ("erratic-crag",   -75,  17, "angular", 6, GRIT),
+            ("erratic-cobble",-118,  23, "round",   4, GRIT),
+            ("erratic-ledge",  -35, -54, "outcrop", 7, GNEISS),
+            ("erratic-stack",  -66, -54, "cairn",   4, GRIT)]
+
+def house(pid, x0, z0, x1, z1, style, front):
+    return {"id":pid,"kind":"house","seed":abs(x0*7+z0*13)%9973,"layer":"ground",
+            "wings":[{"corners":[[x0,z0],[x1,z1]]}],"front":front,"style":style}
+
 layout["dressing"] = {"props": [
  {"id":"race-water","kind":"water","seed":7,"layer":"ground","shape":"pool","points":S0,
   "radius":26,"depth":10,"shore":1,"shoreWander":False,"edge":0.6,"level":WATER,
   "bank":{"kind":"solid","id":13,"data":0}},
-]}
+ # Two crofts on the spawn plaza, clear of the band round the spawn room so nothing stands in
+ # front of its door whichever wall it is cut through.
+ house("croft-quay",   -77,  96, -67, 106, STYLE,   "posX"),
+ house("croft-yard",   -78, 112, -68, 121, VARIANT, "negZ"),
+ # One on the earth bank the monument stands on, one on the moor above the water,
+ house("croft-fell",   -93, -13, -86,  -7, STYLE,   "posZ"),
+ house("croft-bank",   -37,  69, -27,  78, VARIANT, "posZ"),
+ # and one on the holm the second crossing lands on.
+ house("croft-holm",   -53, -54, -45, -47, VARIANT, "posZ"),
+] + [oak(f"oak-{n}", x, z, h) for n, (x, z, h) in enumerate(OAKS)]
+  + [fir(f"fir-{n}", x, z, h) for n, (x, z, h) in enumerate(FIRW + FIRI)]
+  + [{"id":pid,"kind":"boulder","seed":abs(x*11+z*5)%9973,"layer":"ground",
+      "x":x,"z":z,"form":form,"size":size,"rock":rock,"mossy":True}
+     for pid, x, z, form, size, rock in BOULDERS]}
 
 json.dump({"authors":["Opus 5"],"created":"2026-08-30"}, open(SPEC + ".finish.json","w"), indent=1)
 json.dump(plan,   open(SPEC + ".plan.json","w"),   indent=1)
