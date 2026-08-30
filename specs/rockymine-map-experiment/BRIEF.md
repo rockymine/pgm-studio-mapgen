@@ -1,8 +1,10 @@
 # The map-experiment brief — three boards off one base
 
 `rockymine-map-experiment` is a board the author drew **in the browser**, in the Sketch tool, rather than
-through the API. Its spec folder therefore holds a `plan`, a `layout` and an `intent`, and its `finish.json`
-carries nothing but authorship: the geometry *is* the layout, hand-drawn and not derivable from the plan.
+through the API. Its spec folder therefore holds a `plan`, a `layout` and an `intent` and **no finish**: the
+geometry *is* the layout, hand-drawn and not derivable from the plan, and a finish is the recipe a compile is
+run through. A drawn board states what a finish would have said about it — `authors`, `created` — in its
+intent's own `meta`.
 
 **Every board goes through `tools/drive.py`, and a board that has not been driven is not finished.** The
 driver takes a drawn spec as it takes a compiled one — it skips `/plan/compile` where a `layout` and an
