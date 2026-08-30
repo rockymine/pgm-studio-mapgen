@@ -4,9 +4,11 @@ pipeline said on the way.
 
     tools/drive.py <specdir> "<Map Name>" --out <worlddir> [--renders <dir>] [--slug <slug>] [--dry]
 
-<specdir> holds <base>.plan.json and <base>.finish.json, where <base> is the directory's own name and,
-unless --slug says otherwise, the slug the map is stored under. The plan is a PlanModel. The finish
-carries everything a plan cannot state, keyed onto the compiled layout:
+<specdir> holds <base>.plan.json and either <base>.finish.json, or a hand-drawn <base>.layout.json and
+<base>.intent.json -- the shape the Sketch tool writes, whose geometry is authored rather than compiled.
+<base> is the directory's own name and, unless --slug says otherwise, the slug the map is stored under.
+Both shapes take the same road from here: the same grid, flow, declines and renders. The finish carries
+everything a plan cannot state, keyed onto the compiled layout:
 
   themeByHeight   {"11": "gyp-bench", ...}   theme per compiled shape, by the height it stands at
   themeById       {"s3": "gyp-rake"}          theme per compiled shape id (wins over the height rule)
@@ -450,8 +452,25 @@ def main():
     slug = sys.argv[sys.argv.index("--slug") + 1] if "--slug" in sys.argv else base
     with open(f"{specdir}/{base}.plan.json") as handle:
         plan = json.load(handle)
-    with open(f"{specdir}/{base}.finish.json") as handle:
-        finish = json.load(handle)
+    # A board drawn in the Sketch tool has no finish: its geometry IS the layout, authored by hand and
+    # not derivable from the plan. Such a spec carries `<base>.layout.json` and `<base>.intent.json`
+    # instead, and the compile below is skipped rather than run over the top of them. The finish is then
+    # optional, and everything after this point -- the grid, the flow, the declines and every render --
+    # is the same for both shapes of spec, which is the whole reason this branch is here rather than in
+    # a second driver.
+    finish = {}
+    if os.path.exists(f"{specdir}/{base}.finish.json"):
+        with open(f"{specdir}/{base}.finish.json") as handle:
+            finish = json.load(handle)
+    drawn_layout = drawn_intent = None
+    if os.path.exists(f"{specdir}/{base}.layout.json") and os.path.exists(f"{specdir}/{base}.intent.json"):
+        with open(f"{specdir}/{base}.layout.json") as handle:
+            drawn_layout = json.load(handle)
+        with open(f"{specdir}/{base}.intent.json") as handle:
+            drawn_intent = json.load(handle)
+    if not finish and drawn_layout is None:
+        raise SystemExit(f"{specdir}: needs {base}.finish.json, or a drawn {base}.layout.json "
+                         f"and {base}.intent.json beside the plan")
 
     # ── read the board before anything exists ────────────────────────────────────────────────
     print("== the board, before a map row exists")
@@ -476,9 +495,15 @@ def main():
     # ── compile, and the finish a plan cannot state ──────────────────────────────────────────
     # The compile takes the plan itself and no map row, so both documents are whole before anything is
     # stored — which is what lets the store be one call.
-    print("== compile, and the finish")
-    _, compiled = call("POST", "/plan/compile", plan)
-    layout, intent = compiled["layout"], compiled["intent"]
+    if drawn_layout is not None:
+        print("== the drawn layout, taken as authored")
+        layout, intent = drawn_layout, drawn_intent
+        print(f"    {len(layout.get('layers') or [])} layer(s), "
+              f"{sum(len(l['layout']['shapes']) for l in layout.get('layers') or [])} shape(s) — not compiled")
+    else:
+        print("== compile, and the finish")
+        _, compiled = call("POST", "/plan/compile", plan)
+        layout, intent = compiled["layout"], compiled["intent"]
     layout = patch_layout(layout, finish)
     intent = patch_intent(intent, finish)
 
