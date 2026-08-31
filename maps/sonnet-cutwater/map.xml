@@ -1,5 +1,5 @@
 <map proto="1.5.0">
-    <name>Fallowmere</name>
+    <name>Cutwater</name>
     <version>1.0.0</version>
     <gamemode>dtm</gamemode>
     <objective>Destroy the enemy's monuments!</objective>
@@ -7,7 +7,7 @@
     <phase>development</phase>
     <include id="gapple-kill-reward"/>
     <authors>
-        <author>Sonnet</author>
+        <author>Sonnet 5</author>
     </authors>
     <teams>
         <team id="red-team" color="red" max="12">Red</team>
@@ -75,10 +75,10 @@
         <point id="observer-spawn">0,25,0</point>
         <rectangle id="blue-spawn" min="85,-110" max="95,-100"/>
         <rectangle id="red-spawn" min="-95,100" max="-85,110"/>
-        <cuboid id="red-monument-region" min="-90,25,18" max="-89,28,19"/>
-        <cuboid id="red-monument-2-region" min="-15,35,98" max="-14,38,99"/>
-        <cuboid id="blue-monument-region" min="89,25,-19" max="90,28,-18"/>
-        <cuboid id="blue-monument-2-region" min="14,35,-99" max="15,38,-98"/>
+        <cuboid id="red-monument-region" min="-90,26,18" max="-89,29,19"/>
+        <cuboid id="red-monument-2-region" min="-15,37,98" max="-14,40,99"/>
+        <cuboid id="blue-monument-region" min="89,26,-19" max="90,29,-18"/>
+        <cuboid id="blue-monument-2-region" min="14,37,-99" max="15,40,-98"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -147,5 +147,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>63</maxbuildheight>
+    <maxbuildheight>65</maxbuildheight>
 </map>
