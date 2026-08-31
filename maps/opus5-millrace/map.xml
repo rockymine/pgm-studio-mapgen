@@ -2,7 +2,7 @@
     <name>Millrace</name>
     <version>1.0.0</version>
     <gamemode>dtm</gamemode>
-    <objective>Destroy the enemy's monument!</objective>
+    <objective>Destroy the enemy's monuments!</objective>
     <created>2026-08-30</created>
     <phase>development</phase>
     <include id="gapple-kill-reward"/>
@@ -58,7 +58,9 @@
     </spawns>
     <destroyables>
         <destroyable id="red-monument" name="Red Monument" owner="red-team" materials="obsidian" region="red-monument-region"/>
+        <destroyable id="red-monument-2" name="Red Monument 2" owner="red-team" materials="obsidian" region="red-monument-2-region"/>
         <destroyable id="blue-monument" name="Blue Monument" owner="blue-team" materials="obsidian" region="blue-monument-region"/>
+        <destroyable id="blue-monument-2" name="Blue Monument 2" owner="blue-team" materials="obsidian" region="blue-monument-2-region"/>
     </destroyables>
     <filters>
         <team id="only-blue">blue-team</team>
@@ -68,13 +70,15 @@
         </not>
     </filters>
     <regions>
-        <point id="blue-spawn-point">90,30,-105</point>
-        <point id="red-spawn-point">-90,30,105</point>
+        <point id="blue-spawn-point">90,40,-105</point>
+        <point id="red-spawn-point">-90,40,105</point>
         <point id="observer-spawn">0,25,0</point>
         <rectangle id="blue-spawn" min="85,-110" max="95,-100"/>
         <rectangle id="red-spawn" min="-95,100" max="-85,110"/>
-        <cuboid id="red-monument-region" min="-52,23,52" max="-51,26,53"/>
-        <cuboid id="blue-monument-region" min="52,23,-52" max="53,26,-51"/>
+        <cuboid id="red-monument-region" min="-90,37,18" max="-89,40,19"/>
+        <cuboid id="red-monument-2-region" min="-15,39,98" max="-14,42,99"/>
+        <cuboid id="blue-monument-region" min="89,37,-19" max="90,40,-18"/>
+        <cuboid id="blue-monument-2-region" min="14,39,-99" max="15,42,-98"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -143,5 +147,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>71</maxbuildheight>
+    <maxbuildheight>73</maxbuildheight>
 </map>

@@ -268,6 +268,7 @@ layout["dressing"] = {"props": [
 # No finish.json: the current driver compiles from the plan whenever a finish exists at all, even
 # an authorship-only one, and this board's geometry is the layout -- hand-drawn, not derivable from
 # the plan. Authorship rides directly on the intent it is free to state.
+intent["meta"]["name"] = "Fallowmere"
 intent["meta"]["authors"] = ["Sonnet"]
 intent["meta"]["created"] = "2026-08-30"
 json.dump(plan,   open(SPEC + ".plan.json",   "w"), indent=1)

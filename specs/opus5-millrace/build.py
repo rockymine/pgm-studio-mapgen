@@ -338,7 +338,8 @@ layout["dressing"] = {"props": [
 
 # A drawn spec carries no finish -- the driver reads one as a compile recipe and would run the compile
 # over the top of this layout -- so what a finish would have stated about the map is stated here.
-intent.setdefault("meta", {}).update({"authors": ["Opus 5"], "created": "2026-08-30"})
+intent.setdefault("meta", {}).update({"name": "Millrace", "authors": ["Opus 5"],
+                                      "created": "2026-08-30"})
 json.dump(plan,   open(SPEC + ".plan.json","w"),   indent=1)
 json.dump(layout, open(SPEC + ".layout.json","w"), indent=1)
 json.dump(intent, open(SPEC + ".intent.json","w"), indent=1)
