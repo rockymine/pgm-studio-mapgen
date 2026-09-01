@@ -1,0 +1,101 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Weirbank"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 8,
+  "surface": 9,
+  "observerY": 44
+ },
+ "pieces": [
+  {
+   "id": "moor",
+   "role": "piece",
+   "rect": [
+    -13,
+    2,
+    8,
+    10
+   ],
+   "surface": 29
+  },
+  {
+   "id": "neck",
+   "role": "piece",
+   "rect": [
+    -10,
+    -3,
+    8,
+    6
+   ],
+   "surface": 29
+  },
+  {
+   "id": "quay",
+   "role": "piece",
+   "rect": [
+    -3,
+    -3,
+    1,
+    6
+   ],
+   "surface": 29
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -12,
+    10,
+    2,
+    2
+   ],
+   "surface": 29
+  }
+ ],
+ "zones": [
+  {
+   "id": "cut",
+   "rect": [
+    -2,
+    -3,
+    4,
+    6
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     1,
+     1
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [],
+  "iron": [],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "piece": "moor",
+    "at": [
+     5,
+     2
+    ],
+    "style": "cube-3",
+    "materials": "ender stone"
+   }
+  ],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

@@ -29,6 +29,8 @@ compiled layout:
                   "ground"` settles them onto the terrain together
   relief          {"<groupId>": {...}} or {"*": {...}} applied to every group
   themes          the theme registry;  mapTheme  the map default (first key unless stated)
+  biome           SketchLayout's own biome field: {"kind": "cell"|"noise"|"solid", ...}. The byte each
+                  chunk carries, which tints grass, leaves and water. Absent is plains everywhere
   roomStyles      {"cage": ..., "spawn": ...}; a "@name" string loads tools/styles/<name>.json
   dressing        {"props": [...]};  a house prop's "style" takes the same "@name"
   goalLayers      {"destroyable-1": "under"}   which storey a goal stands on, by its plan marker id
@@ -449,6 +451,13 @@ def patch_layout(layout, finish):
     if themes:
         layout["themes"] = themes
         layout["mapTheme"] = finish.get("mapTheme") or next(iter(themes))
+    if "biome" in finish:
+        # A strict pass-through of `SketchLayout.biome`, which is the one top-level layout key a finish
+        # could not state. The field is documented as raw JSON of type BiomeField -- `solid`, `cell` or
+        # `noise`, keyed on `kind` -- and nothing here reads it, defaults it or validates it; the export
+        # does that through BiomeScope. Absent is plains everywhere, which is what every board that
+        # states none already exports as.
+        layout["biome"] = finish["biome"]
     if "roomStyles" in finish:
         layout["roomStyles"] = {k: resolve(v) for k, v in finish["roomStyles"].items()}
     if "dressing" in finish:
