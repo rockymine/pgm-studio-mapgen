@@ -12,9 +12,12 @@ and `sketch/dressing` (what every prop did, and every decline with its rule and 
 stored. The map has to have been driven once before, because the dressing preview reads the stored intent
 for the spawn doors and the goal rings `DR-KEEP` keeps clear.
 
-`--candidates` is the placement oracle the API does not have: the named prop is duplicated at every
-position given, as `cand-1`, `cand-2`, …, and one dressing pass says which of them stand and which are
-declined and why. Eight candidates cost one pass. `--profile` and `--column` post `sketch/columns`, which
+`--candidates` asks whether **this** prop stands at a position, which the claims raster does not answer:
+the raster (`sketch/dressing`, `claims`) says which cells nothing holds, and a free cell is still refused
+where the prop's own rules bite — its footprint on a slope, its claim against a neighbour, its standoff from
+a road. So read the raster for where to try, then name the tries here: the prop is duplicated at every
+position given, as `cand-1`, `cand-2`, …, and one dressing pass says which stand and which are declined,
+with the rule and the coordinates. Eight candidates cost one pass. `--profile` and `--column` post `sketch/columns`, which
 builds the board and is the one heavy read here, and print the ground's surface along a line or the whole
 column at a position, which is how a scarp's side or a bench's edge is checked without a world.
 """

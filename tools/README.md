@@ -215,11 +215,14 @@ coordinates. **The map has to have been driven once**, because the dressing prev
 intent for the spawn doors and the goal rings `DR-KEEP` keeps clear; after that, every placement question
 is a loop pass and the drive is the last step rather than the first.
 
-`--candidates` is the placement read the API does not have. Seven rules decide where a prop may stand (a
-water prop's bed, a door's lane, the spawn's margin, a goal's 21 blocks, a road's standoff, a house's claim,
-a structure's keep-out) and the only way to find a free spot is to try one, so the named prop is duplicated
-at every position given, as `cand-1`, `cand-2`, …, and one pass says which stand and which are declined and
-why. Eight candidates cost one pass. Every prop placement on `fable-mossgill` was found this way.
+`--candidates` asks whether **this** prop stands at a position. The dressing preview's `claims` raster
+already answers where nothing stands and nothing is kept clear — one call, the whole board, in
+`06-claims.txt` — but a free cell is not a legal seat: seven rules decide where a prop may stand (a water
+prop's bed, a door's lane, the spawn's margin, a goal's 21 blocks, a road's standoff, a house's claim, a
+structure's keep-out), and the last three read the prop's own footprint rather than the cell. So the raster
+says where to try and this says whether the try lands: the named prop is duplicated at every position given,
+as `cand-1`, `cand-2`, …, and one pass answers which stand and which are declined, with the rule and the
+coordinates. Eight candidates cost one pass.
 
 `--profile` and `--column` post `sketch/columns`, the one heavy read here (it builds the board), and print the
 ground's surface along a line, or the whole column at a position as its runs with the layer that drew each.

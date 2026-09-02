@@ -74,7 +74,7 @@ The pictures and the provenance sidecar land beside the documents rather than in
 `--out` is what a server is handed: it holds `region/`, `level.dat` and `map.xml`, and nothing a match does
 not read.
 """
-import json, math, sys, io, zipfile, urllib.request, urllib.error, os, shutil
+import json, math, re, sys, io, zipfile, urllib.request, urllib.error, os, shutil
 
 API = os.environ.get("PGM_STUDIO_API", "http://localhost:7894/api")
 STYLES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "styles")
@@ -117,6 +117,40 @@ def call(method, path, body=None, raw=False, fatal=True):
         if fatal:
             raise SystemExit(1)
         return error.code, body
+
+
+# The band a measure is judged against and the sentence a rule is stated in are the studio's, read once
+# per run: a number restated here is the number every future run is told after the author has moved it.
+# `/rules/terms` answers the enforced band through the scorer's own resolution; `/rules` answers the rule.
+_terms, _headlines = {}, {}
+
+
+def band(term):
+    """`(low, high, source)` for a scored term, or None where the term carries no band."""
+    if not _terms:
+        _, answered = call("GET", "/rules/terms", fatal=False)
+        for row in answered if isinstance(answered, list) else []:
+            _terms[row.get("term")] = row
+    stated = (_terms.get(term) or {}).get("band")
+    return (stated[0], stated[1], (_terms.get(term) or {}).get("bandSource")) if stated else None
+
+
+def wants(term, rule):
+    """What to print beside a measure: the rule's own band where it has one, and the rule id alone
+    where it does not — never a number written down here."""
+    stated = band(term)
+    return f"({rule} wants {stated[0]}-{stated[1]}, {stated[2]})" if stated else f"({rule})"
+
+
+def headline(rule):
+    """A rule's own claim — the first bold sentence of what `GET /rules` says it means, which is where
+    every rule states its number."""
+    if rule not in _headlines:
+        _, answered = call("GET", f"/rules?rule={rule}", fatal=False)
+        means = (answered[0].get("means") if isinstance(answered, list) and answered else "") or ""
+        stated = re.search(r"\*\*(.+?)\*\*", means)
+        _headlines[rule] = stated.group(1).strip() if stated else rule
+    return _headlines[rule]
 
 
 def text(path, fatal=False):
@@ -575,12 +609,12 @@ def main():
     print(f"    score {evaluated.get('score')}  valid {evaluated.get('valid')}")
     report(evaluated)
     _, inspected = call("POST", "/plan/inspect", plan, fatal=False)
+    goal_ratio = wants("goal-spawn-ratio", "GO1")
     for goal in inspected.get("goalDistances") or []:
         print(f"    goal {goal.get('id')} ({goal.get('kind')}): own {goal.get('ownSpawnBlocks')} "
-              f"enemy {goal.get('enemySpawnBlocks')} ratio {goal.get('ratio')}"
-              f"   (GO1 wants 3.0-4.0)")
+              f"enemy {goal.get('enemySpawnBlocks')} ratio {goal.get('ratio')}   {goal_ratio}")
     for gap in inspected.get("islandGaps") or []:
-        print(f"    group gap: {json.dumps(gap)}   (CT12 wants 15-40 on a direct strait)")
+        print(f"    group gap: {json.dumps(gap)}   (CT12: {headline('CT12')})")
     for run in inspected.get("frontlineRuns") or []:
         print(f"    frontline run: {json.dumps(run)}")
     for structure in inspected.get("structures") or []:
