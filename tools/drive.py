@@ -186,6 +186,13 @@ def report(payload, indent="  ", keys=("findings", "violations", "lint")):
         field = entry.get("field") or ", ".join(entry.get("subjects") or [])
         print(f"{indent}  [{severity:9}] {rule:8} {message}"
               f"{'   @ ' + field if field else ''}")
+        # A finding that states its edit says what to change in the document's own words: which document,
+        # the path, the operation and the value. Printed under the sentence so it is applied rather than
+        # re-derived from the rule's prose.
+        if isinstance(edit := entry.get("edit"), dict):
+            print(f"{indent}    edit  {edit.get('document')}.{edit.get('path')}  {edit.get('op')}: "
+                  f"{edit.get('says')}")
+            print(f"{indent}          {json.dumps(edit.get('value'), separators=(',', ':'))}")
 
 
 def complaints(payload):
