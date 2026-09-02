@@ -272,6 +272,25 @@ four-team board built from that vocabulary at `rot_90`.
 | `quernstone` | ctw | Opus 5 | **four teams**, `rot_90`: the same vocabulary pinwheeled — each team a wedge whose frontline straddles the axis, four images abutting into a plus mid around one neutral millstone. 216 × 216, 8 wool rooms, 4 walls |
 | `thunder-series` | — | Opus 5 | see [reports/opus5-thunder-series.md](reports/opus5-thunder-series.md) |
 
+### The author's basin — three boards, a hand revamp, and the revamp restated
+
+`specs/rockymine-map-experiment` is a basin the author drew in the Sketch tool — a sunken canal between two
+thirty-high masses, two destroyables a team, the hills hinted as stacked slabs — and its `BRIEF.md` is what
+three agents were asked to make of it. Then the author took one of the three onto a build server and finished
+it by hand, and that finished world is the first board here that was **not** built by the studio.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5-millrace` | dtm | Opus 5 | the basin flooded, walled in stone brick and bridged twice; a quarry pit under one monument, a diorite statue on the moor brow, a lighter moored in the race, clouds in white glass. Two grounds of two-shade noise and the island a third; nine grown oaks and ten grown firs a side |
+| `opus5-weirbank` | dtm | Opus 5 | half of Millrace's box, the same art direction on a quarter of the area — `review/opus5-weirbank.md` |
+| `rockymine-ruediger-millrace` | dtm | rockymine, Ruediger_LP | **Millrace finished by hand**, five hours of WorldEdit and Arceon over the studio's world: the stone body re-laid as a six-stone voronoi, three courses of earth under every surface, the canal walls in double slab and grey wool, granite paths, ferns on every grass block, four biomes, the eighteen grown trees replaced by sixteen of the author's own showcase trees, a team-coloured statue on the small island, a tug in the race, a balloon holding the observer spawn, beacons over the monuments. The terrain, water, walls, bridges and boulders are the studio's, unmoved. `review/rockymine-ruediger-millrace.md` is the author's own account with the commands; `review/fable-millrace-revamp.md` is the measured diff |
+| `fable-millrace-revamp` | dtm | Fable 5.1 | **the hand revamp restated as documents** over the original's own layout: the six-stone body as one nested cell-and-turbulence pattern, the earth as a depth stack, the author's trees planted as `copied` recipes cut out of `showcase/tree-showcase`, the statue, the tug, the balloon and the beacon frames lifted out of the hand-built world as made things. Every gap between the two is in the review |
+| `fable-mossgill` | dtm | Fable 5.1 | **the same techniques on half the box and a new layout** — 130 × 120: one moor split by a beck cut eight courses into it on a shallow diagonal, a crag a team spawns on in each corner, a brow down onto an apron where the monument stands in a quay-walled sheepfold, a plank bridge between two quays at the axis. The six-stone body as a volume of cells wider than tall, three courses of earth as a volume, the author's copied oaks and conifers, granite roads, ferns, four biomes. `review/fable-mossgill.md` |
+
+`showcase/tree-showcase/` is the author's tree corpus beside the technique showcases: 75 hand-built trees on
+their own platforms, the measured ground truth behind `pgm-studio/docs/world-export/tree-corpus.md`, and now
+the world `pgm-studio/tools/seed-trees.cs` cuts copied tree recipes out of.
+
 ## Three caveats about what is committed here
 
 **`*` — the mode is wrong, and the map is not.** Every board marked `ctw*` is a destroy board whose `map.xml`

@@ -155,3 +155,12 @@ the same number.
 0.0% dead ground. `review/opus5-whinnymoor.md` says which showcase every part of it came from, and records
 the one pair that fought: a push and a ramp cannot be matched to each other, because a push is applied after
 every constraint the ramp was drawn against.
+
+## The tree corpus beside the showcases
+
+`tree-showcase/` is not a technique: it is the author's 75 hand-built trees, one per 19×19 platform in
+fourteen family rows, kept here because nothing can re-derive them. `pgm-studio/docs/world-export/tree-corpus.md`
+is what they measure like against the grown tree, and `pgm-studio/tools/seed-trees.cs` cuts every tree
+standing on a platform into the library as a `copied` recipe — the dense oaks of the row at z −75 and the
+acacia-and-birch conifers of the rows at z −242 and z −368 are the sixteen `maps/fable-millrace-revamp`
+plants.

@@ -1,0 +1,236 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 56,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -90,
+    "y": 30,
+    "z": 105
+   },
+   "protection": [
+    {
+     "minX": -100,
+     "maxX": -80,
+     "minZ": 96,
+     "maxZ": 125
+    }
+   ],
+   "yaw": 180,
+   "piece": {
+    "minX": -95,
+    "minZ": 100,
+    "maxX": -85,
+    "maxZ": 110
+   },
+   "iron": [
+    {
+     "x": -78,
+     "z": 116
+    },
+    {
+     "x": -82,
+     "z": 116
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 90,
+    "y": 30,
+    "z": -105
+   },
+   "protection": [
+    {
+     "minX": 80,
+     "maxX": 100,
+     "minZ": -125,
+     "maxZ": -96
+    }
+   ],
+   "yaw": 0,
+   "piece": {
+    "minX": 85,
+    "minZ": -110,
+    "maxX": 95,
+    "maxZ": -100
+   },
+   "iron": [
+    {
+     "x": 78,
+     "z": -116
+    },
+    {
+     "x": 82,
+     "z": -116
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 70,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -65,
+    "minZ": 0,
+    "maxX": 65,
+    "maxZ": 70
+   },
+   {
+    "minX": -65,
+    "minZ": -70,
+    "maxX": 65,
+    "maxZ": 0
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Red Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -90,
+    "y": 30,
+    "z": 18
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Red Monument 2",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -15,
+    "y": 30,
+    "z": 98
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Blue Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 89,
+    "y": 30,
+    "z": -19
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Blue Monument 2",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 14,
+    "y": 30,
+    "z": -99
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Millrace",
+  "created": "2026-09-02",
+  "authors": [
+   {
+    "name": "rockymine",
+    "uuid": "fe3608b7-d105-4029-8800-34b3147065b6",
+    "contribution": "layout, terrain, block palette, beautification"
+   },
+   {
+    "name": "Ruediger_LP",
+    "uuid": "e2d2c2c6-cea9-4510-9ab2-a091b5605b30",
+    "contribution": "interior design, houses, beautification"
+   },
+   {
+    "name": "Opus 5",
+    "contribution": "layout composition, initial draft, sculptures, bridges"
+   },
+   {
+    "name": "Fable 5.1",
+    "contribution": "the revamp restated in the studio"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue",
+  "3": "neutral",
+  "4": "neutral"
+ },
+ "structures": null
+}

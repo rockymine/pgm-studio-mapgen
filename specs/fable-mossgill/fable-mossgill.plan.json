@@ -1,0 +1,101 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Mossgill"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 24,
+  "surface": 14
+ },
+ "pieces": [
+  {
+   "id": "crag",
+   "role": "spawn",
+   "rect": [
+    -13,
+    -12,
+    4,
+    4
+   ],
+   "surface": 27
+  },
+  {
+   "id": "brow",
+   "role": "piece",
+   "rect": [
+    -9,
+    -12,
+    5,
+    4
+   ],
+   "surface": 22
+  },
+  {
+   "id": "apron",
+   "role": "piece",
+   "rect": [
+    -13,
+    -8,
+    11,
+    4
+   ],
+   "surface": 20
+  },
+  {
+   "id": "bank",
+   "role": "piece",
+   "rect": [
+    -13,
+    -4,
+    13,
+    4
+   ],
+   "surface": 14
+  },
+  {
+   "id": "shoulder",
+   "role": "piece",
+   "rect": [
+    0,
+    -4,
+    9,
+    4
+   ],
+   "surface": 14
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "crag",
+    "at": [
+     10,
+     10
+    ],
+    "facing": "right"
+   }
+  ],
+  "wools": [],
+  "iron": [],
+  "cores": [],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "at": [
+     -29,
+     -28
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Fold Monument"
+   }
+  ]
+ },
+ "walls": [],
+ "boxes": []
+}

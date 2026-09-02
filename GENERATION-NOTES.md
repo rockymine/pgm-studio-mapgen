@@ -32,6 +32,16 @@ picture makes a long bar look like a good idea. Nothing in the picture states th
 reaches it. The same grid catches the rest of the family: a wool room touching the spawn apron (`LN1`), an
 approach whose wall can be walked round because the ground reaches past it, a spur that connects to nothing.
 
+### On half a box the three goal bands cannot all hold at the plan tier
+
+`GO1` wants a goal three to four times as far from the enemy's door as from its own, `GO4` wants it at least
+40 blocks from its own, and `GO3` wants the two teams' goals at least 85 apart. With the doors 134 blocks
+apart on a 130 × 120 board and a goal a distance `d` along the line between them, that is `d` in [27, 34],
+`d` ≥ 40 and `134 − 2d` ≥ 85 — three bands with no common point. The plan tier walks the pieces flat, so a
+gill cut eight courses deep or a single bridge lengthens no route it measures; the terms are soft, and
+`fable-mossgill` takes `d` = 33 — the ratio in band, the other two read and left — because it is the built
+board that decides the walk, and there the beck makes every enemy route go by the bridge.
+
 ### Reachable is not used, and every gate before coverage measures the first one
 
 `CT12` on the strait, the traversability components, the goal ratios, the group symmetry error — every gate a
@@ -148,6 +158,25 @@ stepped board, because "add relief" is not available as a later fix.
 
 `hold` and `exclude` differ in how the join reads, not in whether the shape stays flat: `hold` lets the ground
 ramp up to meet the shape, `exclude` meets the tier below at a face. A terrace wants `exclude`.
+
+### A fill pattern is a plane until it states a `rise`
+
+Every area pattern — `cell`, `voronoi`, `noise`, `turbulence`, `electric` — samples the plane by default
+(`TP15`): a column resolves to one block, so the pattern decides the ground and nothing else. On a surface a
+course or three deep that is right and cheap. On a **fill** it is a cliff of vertical stripes: a six-stone
+body stated as a `cell` of `turbulence` mixes with `rise` at its default came out of `fable-millrace-revamp`'s
+first build with every cut face striped floor to sky, one cell's stone the whole height of the column. State
+`rise` about the cell's own size — 7 on a cell of 7, 5 on a turbulence of 5 — and the field is a volume.
+
+### An override add standing in ground keeps the ground under its floor
+
+An override add overwrites the column it lands on, and where the ground's ordinary span reaches the override's
+floor the built column runs from the ground's floor to the override's top. So a wall traced along a lip may
+state a floor a few courses under the bed — `floor: 12` against a bed at 17 — and the bed is still under it.
+A deck stated above the ground's top keeps the air beneath it, and a slab over open void still lays the
+bedrock plate below. Measured on `opus5-millrace`: the canal walls, the spawn stair and the cairn walls stood
+over a void from y0 to their floors, and `maps/rockymine-ruediger-millrace` carries 25,000 blocks of hand fill
+under them; `maps/fable-millrace-revamp` is the same layout built with the ground kept.
 
 ### A ramp between two tiers is four fields and works first time
 
@@ -418,6 +447,16 @@ Chamfer every sharp corner with two bracketing points — the spline then has no
 ---
 
 ## Dressing density
+
+### A copied tree is a recipe with a body, and the body is the whole of it
+
+A `copied` tree recipe carries `body: [[x, y, z, id, data], …]` from its foot, and the placement is a point
+and a seed like any other tree. The registry key minted for one stated inline counts its blocks
+(`copied-716`), so state the recipes under names in `dressing.styles` — `oak-dense-2`, `fir-tall-6` — and let
+the placements name those. The bodies come out of a world with `pgm-studio/tools/seed-trees.cs`, which files
+them in the library under `<world>-r<row>-<n>`; `specs/fable-millrace-revamp/trees.json` is the sixteen the
+Millrace revamp planted, keyed the way its placements name them. A body is written block for block, so its
+seat is its foot's column and a crown overhanging a slope is cut where it meets it, exactly as a grown one.
 
 ### A tree's ground claim scales with its height, and varies with its seed
 
