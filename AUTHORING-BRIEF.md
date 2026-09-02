@@ -126,6 +126,15 @@ world as pictures and as text. Each route's summary says what it draws and where
 its own query words. **`column` is the workhorse**: every picture beside it is a projection, and it is what is
 actually at a coordinate, which is the read to reach for when a picture and a document disagree.
 
+**Read the text before the pictures.** The driver writes the board as text beside every picture —
+`02-heightmap.txt`, `03-slopes.txt`, the two axis sections, a `transect-<feature>.txt` through every spawn,
+goal, house, water prop and made thing, and `04-routes.txt` along each team's walk to each goal — and prints
+their summaries inline. A height in a picture is a shade to gauge; in a transect it is a number to subtract,
+and every step a player cannot walk is already named with its coordinates. A claim about a **shape** — a
+bank, a wall, a slope, a stair, a basin — is a claim about a profile and is read off a transect, never off a
+single column and never off a render; the pictures are for what no number states — whether a thing reads as
+belonging where it stands.
+
 **`GET …/preflight` is the export's verdict at a fraction of its cost**, and it is the read most easily
 skipped because nothing refuses you for skipping it. It runs the same traversability check the export refuses
 on — **per team**, so a goal a team is barred from reaching names the team barring it — plus the codec

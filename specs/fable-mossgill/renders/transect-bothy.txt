@@ -1,0 +1,56 @@
+TRANSECT bothy (house) along x at z=-35, x -68..-44
+  station        ground  top  standing            step
+  ( -68, -35)                                  void
+  ( -67, -35)      21   21                     
+  ( -66, -35)      21   22  flora meadow-apron 
+  ( -65, -35)      21   22  flora meadow-apron 
+  ( -64, -35)      22   23  flora meadow-apron +1
+  ( -63, -35)      22   23  flora meadow-apron 
+  ( -62, -35)      22   22                     
+  ( -61, -35)      23   30  house bothy        +1
+  ( -60, -35)      23   30  house bothy        
+  ( -59, -35)      21   30  house bothy        -2
+  ( -58, -35)      21   30  house bothy        
+  ( -57, -35)      21   30  house bothy        
+  ( -56, -35)      21   30  house bothy        
+  ( -55, -35)      21   30  house bothy        
+  ( -54, -35)      21   30  house bothy        
+  ( -53, -35)      21   30  house bothy        
+  ( -52, -35)      21   30  house bothy        
+  ( -51, -35)      21   30  house bothy        
+  ( -50, -35)      21   21  stroke road-bank   
+  ( -49, -35)      20   20  stroke road-bank   -1
+  ( -48, -35)      20   20  stroke road-bank   
+  ( -47, -35)      19   19  stroke road-bank   -1
+  ( -46, -35)      19   20  flora meadow-apron 
+  ( -45, -35)      19   20  flora meadow-apron 
+  ( -44, -35)      19   20  flora meadow-apron 
+  25 stations: rises 2, falls 4, worst step 2: 0 barrier, 0 scramble, 0 drop — walked end to end
+
+TRANSECT bothy (house) along z at x=-56, z -46..-23
+  station        ground  top  standing            step
+  ( -56, -46)      25   41  spawn spawn-1      
+  ( -56, -45)      25   41  spawn spawn-1      
+  ( -56, -44)      25   41  spawn spawn-1      
+  ( -56, -43)      25   41  spawn spawn-1      
+  ( -56, -42)      25   41  spawn spawn-1      
+  ( -56, -41)      25   41  something          
+  ( -56, -40)      21   21                     DROP -4
+  ( -56, -39)      21   26  house bothy        
+  ( -56, -38)      21   27  house bothy        
+  ( -56, -37)      21   28  house bothy        
+  ( -56, -36)      21   29  house bothy        
+  ( -56, -35)      21   30  house bothy        
+  ( -56, -34)      21   30  house bothy        
+  ( -56, -33)      21   29  house bothy        
+  ( -56, -32)      21   28  house bothy        
+  ( -56, -31)      23   27  house bothy        scramble +2
+  ( -56, -30)      22   26  house bothy        -1
+  ( -56, -29)      21   21                     -1
+  ( -56, -28)      21   22  flora meadow-apron 
+  ( -56, -27)      20   21  flora meadow-apron -1
+  ( -56, -26)      19   20  flora meadow-apron -1
+  ( -56, -25)      18   19  flora meadow-apron -1
+  ( -56, -24)      17   18  flora meadow-apron -1
+  ( -56, -23)      16   17  flora meadow-apron -1
+  24 stations: rises 2, falls 11, worst step 4: 0 barrier, 1 scramble, 1 drop — DROP -4 at (-56,-40); scramble +2 at (-56,-31)

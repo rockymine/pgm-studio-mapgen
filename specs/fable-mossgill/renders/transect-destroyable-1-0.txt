@@ -1,0 +1,57 @@
+TRANSECT destroyable-1-0 (destroyable) along x at z=-28, x -41..-17
+  station        ground  top  standing            step
+  ( -41, -28)      19   20  flora meadow-apron 
+  ( -40, -28)      19   20  flora meadow-apron 
+  ( -39, -28)      19   20  flora meadow-apron 
+  ( -38, -28)      19   20  flora meadow-apron 
+  ( -37, -28)      19   20  flora meadow-apron 
+  ( -36, -28)      19   20  flora meadow-apron 
+  ( -35, -28)      19   20  flora meadow-apron 
+  ( -34, -28)      19   20  flora meadow-apron 
+  ( -33, -28)      19   20  flora meadow-apron 
+  ( -32, -28)      19   20  flora meadow-apron 
+  ( -31, -28)      19   20  flora meadow-apron 
+  ( -30, -28)      19   68  flora meadow-apron 
+  ( -29, -28)      19   69  destroyable destroyable-1 
+  ( -28, -28)      19   68  stroke road-beck   
+  ( -27, -28)      19   19  stroke road-beck   
+  ( -26, -28)      19   19  stroke road-beck   
+  ( -25, -28)      19   20  flora meadow-apron 
+  ( -24, -28)      19   20  flora meadow-apron 
+  ( -23, -28)      19   20  flora meadow-apron 
+  ( -22, -28)      19   20  flora meadow-apron 
+  ( -21, -28)      19   20  flora meadow-apron 
+  ( -20, -28)      19   20  flora meadow-apron 
+  ( -19, -28)      19   21  flora meadow-apron 
+  ( -18, -28)      19   20  flora meadow-apron 
+  ( -17, -28)      19   20  flora meadow-apron 
+  25 stations: rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop — walked end to end
+
+TRANSECT destroyable-1-0 (destroyable) along z at x=-29, z -40..-16
+  station        ground  top  standing            step
+  ( -29, -40)      19   36  tree tree-2        
+  ( -29, -39)      19   20  flora meadow-apron 
+  ( -29, -38)      19   32  tree tree-2        
+  ( -29, -37)      19   20  flora meadow-apron 
+  ( -29, -36)      19   20  flora meadow-apron 
+  ( -29, -35)      21   21                     scramble +2
+  ( -29, -34)      21   21                     
+  ( -29, -33)      19   20  flora meadow-apron -2
+  ( -29, -32)      19   20  flora meadow-apron 
+  ( -29, -31)      19   20  flora meadow-apron 
+  ( -29, -30)      19   20  flora meadow-apron 
+  ( -29, -29)      19   68  flora meadow-apron 
+  ( -29, -28)      19   69  destroyable destroyable-1 
+  ( -29, -27)      19   68  stroke road-beck   
+  ( -29, -26)      19   19  stroke road-beck   
+  ( -29, -25)      19   19  stroke road-beck   
+  ( -29, -24)      19   19                     
+  ( -29, -23)      21   21                     scramble +2
+  ( -29, -22)      21   24  tree tree-6        
+  ( -29, -21)      18   26  tree tree-6        -3
+  ( -29, -20)      18   28  tree tree-6        
+  ( -29, -19)      17   27  tree tree-6        -1
+  ( -29, -18)      16   28  tree tree-6        -1
+  ( -29, -17)      15   27  tree tree-6        -1
+  ( -29, -16)      15   28  tree tree-6        
+  25 stations: rises 4, falls 8, worst step 3: 0 barrier, 2 scramble, 0 drop — scramble +2 at (-29,-35); scramble +2 at (-29,-23)

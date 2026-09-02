@@ -322,18 +322,43 @@ def renders(into, slug, finish, layout, drawn, flow):
                 written.append(name)
                 print(f"  XRAY  {name:<44} veiled to the largest of {len(voids)} void(s)")
 
-    # **And what this run did NOT write goes.** The pictures are keyed by what the board holds — a theme per
-    # id, a house per distinct style, keyed by the FIRST plot using it — so a theme renamed, a style dropped
-    # or a plot restyled leaves its old picture behind under a key nothing produces any more. It reads
-    # perfectly and is of a house that is not there, which is the exact failure a stale document is. A render
-    # directory is this run's output and not an accumulation of every run's, so the sweep is part of writing
-    # it rather than a thing to remember.
+    print(f"    {len(written)} render(s) -> {into}")
+    return columns, written
+
+
+def text_reads(into, slug, world_dir, specdir, intent, layout, columns):
+    """The board as text, beside the pictures: a heightmap, a slope grid, the two axis sections, a transect
+    through every feature and a profile along every route, off the exported world, the provenance sidecar
+    and the columns the isometric was drawn from. A picture asks a reader to gauge a height; these state
+    it, so a wall, a floor over falling ground or a step a player cannot walk is a number to subtract
+    rather than a shade to estimate. The summaries are printed here; the files carry every station."""
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "render"))
+    import textreads
+
+    def walk_for(from_xz, to_xz):
+        status, answer = call("GET", f"/map/{slug}/walk?from={from_xz[0]},{from_xz[1]}&to={to_xz[0]},{to_xz[1]}",
+                              fatal=False)
+        return answer if status == 200 and isinstance(answer, dict) else None
+
+    written, summaries = textreads.write_all(into, world_dir, os.path.join(specdir, "provenance.json"),
+                                             intent, layout, columns, walk_for)
+    for line in summaries:
+        print(line)
+    print(f"    {len(written)} text read(s) -> {into}")
+    return written
+
+
+def sweep(into, written):
+    """**What this run did NOT write goes.** The pictures are keyed by what the board holds — a theme per id,
+    a house per distinct style, a transect per feature — so a theme renamed, a style dropped or a prop
+    removed would leave its old picture beside the new ones, and a README would go on pointing at it. A
+    subdirectory is not touched, which is where a hand-taken picture belongs."""
     swept = [name for name in sorted(os.listdir(into))
              if os.path.isfile(os.path.join(into, name)) and name not in set(written)]
     for name in swept:
         os.remove(os.path.join(into, name))
-    print(f"    {len(written)} render(s) -> {into}"
-          + (f"   swept {len(swept)}: {', '.join(swept)}" if swept else ""))
+    if swept:
+        print(f"    swept {len(swept)}: {', '.join(swept)}")
 
 
 def bend(ring, k=0.22, wander=3.0, step=10, seed=5):
@@ -701,7 +726,12 @@ def main():
             print(f"    provenance -> {specdir}/provenance.json")
         # After the extraction, which clears the directory it writes into.
         print("== the pictures of what was authored")
-        renders(into or os.path.join(specdir, "renders"), slug, finish, layout, drawn, flow)
+        pictures = into or os.path.join(specdir, "renders")
+        columns, written = renders(pictures, slug, finish, layout, drawn, flow)
+        # ── the same board as text, which is the shape a reader subtracts from rather than gauges ──
+        print("== the board as text: transects through every feature, and the routes")
+        written += text_reads(pictures, slug, out, specdir, intent, layout, columns)
+        sweep(pictures, written)
     # A compiled spec's documents are the run's output and are written beside its plan; a drawn spec's
     # are its input and are left exactly as authored, so re-driving one is byte-identical by
     # construction rather than by the finish being empty.

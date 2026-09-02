@@ -1,0 +1,81 @@
+TRANSECT spawn-blue (spawn) along x at z=50, x 37..73
+  station        ground  top  standing            step
+  (  37,  50)      23   23  stroke road-crag   
+  (  38,  50)      23   23  stroke road-crag   
+  (  39,  50)      24   24  stroke road-crag   +1
+  (  40,  50)      24   24  stroke road-crag   
+  (  41,  50)      25   25  stroke road-crag   +1
+  (  42,  50)      25   25  stroke road-crag   
+  (  43,  50)      25   25  stroke road-crag   
+  (  44,  50)      26   26  stroke road-crag   +1
+  (  45,  50)      25   25  stroke road-crag   -1
+  (  46,  50)      25   25  stroke road-crag   
+  (  47,  50)      25   25                     
+  (  48,  50)      25   25                     
+  (  49,  50)      25   35  something          
+  (  50,  50)      25   36  spawn spawn-1      
+  (  51,  50)      25   37  spawn spawn-1      
+  (  52,  50)      25   38  spawn spawn-1      
+  (  53,  50)      25   39  spawn spawn-1      
+  (  54,  50)      25   40  spawn spawn-1      
+  (  55,  50)      25   41  spawn spawn-1      
+  (  56,  50)      25   42  spawn spawn-1      
+  (  57,  50)      25   42  spawn spawn-1      
+  (  58,  50)      25   41  spawn spawn-1      
+  (  59,  50)      25   40  spawn spawn-1      
+  (  60,  50)      25   39  spawn spawn-1      
+  (  61,  50)      25   38  spawn spawn-1      
+  (  62,  50)      25   37  spawn spawn-1      
+  (  63,  50)      25   36  spawn spawn-1      
+  (  64,  50)      25   35  something          
+  (  65,  50)                                  void
+  (  66,  50)                                  void
+  (  67,  50)                                  void
+  (  68,  50)                                  void
+  (  69,  50)                                  void
+  (  70,  50)                                  void
+  (  71,  50)                                  void
+  (  72,  50)                                  void
+  (  73,  50)                                  void
+  37 stations: rises 3, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop — walked end to end
+
+TRANSECT spawn-blue (spawn) along z at x=55, z 32..68
+  station        ground  top  standing            step
+  (  55,  32)      21   29  house bothy        
+  (  55,  33)      21   30  house bothy        
+  (  55,  34)      21   30  house bothy        
+  (  55,  35)      21   29  house bothy        
+  (  55,  36)      21   28  house bothy        
+  (  55,  37)      21   27  house bothy        
+  (  55,  38)      21   26  house bothy        
+  (  55,  39)      21   21                     
+  (  55,  40)      25   41  something          BARRIER +4
+  (  55,  41)      25   41  spawn spawn-1      
+  (  55,  42)      25   41  spawn spawn-1      
+  (  55,  43)      25   41  spawn spawn-1      
+  (  55,  44)      25   41  spawn spawn-1      
+  (  55,  45)      25   41  spawn spawn-1      
+  (  55,  46)      25   41  spawn spawn-1      
+  (  55,  47)      25   41  spawn spawn-1      
+  (  55,  48)      25   41  spawn spawn-1      
+  (  55,  49)      25   41  spawn spawn-1      
+  (  55,  50)      25   41  spawn spawn-1      
+  (  55,  51)      25   41  spawn spawn-1      
+  (  55,  52)      25   41  spawn spawn-1      
+  (  55,  53)      25   41  spawn spawn-1      
+  (  55,  54)      25   41  spawn spawn-1      
+  (  55,  55)      25   41  spawn spawn-1      
+  (  55,  56)      25   41  spawn spawn-1      
+  (  55,  57)      25   41  spawn spawn-1      
+  (  55,  58)      25   41  spawn spawn-1      
+  (  55,  59)      25   41  something          
+  (  55,  60)                                  void
+  (  55,  61)                                  void
+  (  55,  62)                                  void
+  (  55,  63)                                  void
+  (  55,  64)                                  void
+  (  55,  65)                                  void
+  (  55,  66)                                  void
+  (  55,  67)                                  void
+  (  55,  68)                                  void
+  37 stations: rises 4, falls 0, worst step 4: 1 barrier, 0 scramble, 0 drop — BARRIER +4 at (55,40)

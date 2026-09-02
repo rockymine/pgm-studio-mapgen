@@ -137,6 +137,24 @@ moves out of the exported `region/`. `--out` is what a game server is handed: `r
 `map.xml`, and nothing a match does not read. A CLI read-back pointed at that region directory therefore
 finds no provenance and falls back to the material estimate, which it states on its own scale line.
 
+**And the same board as text, beside the pictures.** A picture encodes a height as a shade and asks a
+reader to estimate it; a model reads a character grid and subtracts. So after the pictures the driver
+writes the board as text too, off the exported world, the provenance sidecar and the columns the isometric
+was drawn from (`tools/render/textreads.py`, which also runs on its own over a driven board):
+
+| File | Is |
+|---|---|
+| `02-heightmap.txt` | the ground as one character per two blocks — its height band above the board's lowest ground, `0-9a-z` — with the houses, the water, the spawn points and the goals overprinted, so a height is read beside what stands there |
+| `03-slopes.txt` | where the ground steps: `.` walked, `:` a block to scramble, `#` a barrier. A cliff reads as a line of `#`, a ramp as a band of `.` through it, and an overdone relief as a page of `#` |
+| `world-section-x0.txt` · `world-section-z0.txt` | the two axis cuts as characters — `#` ground, `L` a storey over it, `~` water, `I`/`T` a tree, `H` a house or a hall, `M` a made thing — with a y axis, and the ground's height under each column beneath |
+| `transect-<feature>.txt` | one per spawn, goal, house, water prop, boulder and made thing: the ground, what stands on it and the step from the station before, along x and along z through the feature's own box with eight blocks of overshoot each side. **Every step a player cannot walk is named where it is** — `BARRIER +8 at (-52, 0)` — which is the read that finds a pit with a puddle at the bottom, a floor over falling ground, or a stair running down into a hill |
+| `04-routes.txt` | each team's walk to each goal, from `GET …/walk`, as the same transect along the route's own cells, with what stands within two blocks of it — the read for a thing thrown in the players' way |
+
+The summaries — one line per transect and per route — are printed inline under `== the board as text`, so
+they are in the transcript without a file being opened, and the extent of every transect comes from the
+feature's own box rather than from a reader deciding where to look. A read a reader has to remember to take
+is the read that catches nothing.
+
 **The sweep is over files, so `renders/close/` is where a hand-taken picture belongs.** A render directory
 is one run's output rather than an accumulation of every run's, and the sweep at the end of a run removes
 whatever this run did not write — which silently deletes a picture an author took by hand and a README then
