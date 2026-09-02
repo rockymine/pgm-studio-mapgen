@@ -1,0 +1,10347 @@
+{
+ "authors": [
+  "Opus 5"
+ ],
+ "created": "2026-09-02",
+ "themes": {
+  "city": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 3
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "noise",
+     "seed": 11,
+     "scale": 17,
+     "octaves": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 8
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 8
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "tarmac": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 43,
+     "data": 8
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "noise",
+     "seed": 23,
+     "scale": 19,
+     "octaves": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 7
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 7
+      },
+      {
+       "kind": "solid",
+       "id": 159,
+       "data": 8
+      }
+     ],
+     "rise": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "garden": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 45,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 3,
+      "data": 1
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "material": {
+         "kind": "noise",
+         "seed": 37,
+         "scale": 14,
+         "octaves": 2,
+         "stops": [
+          {
+           "kind": "solid",
+           "id": 2,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 2,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 3,
+           "data": 1
+          }
+         ],
+         "rise": 0
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 1
+        },
+        "thickness": 1
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 5
+    },
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 2
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "ballast": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "noise",
+     "seed": 41,
+     "scale": 12,
+     "octaves": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "concrete": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 3
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "noise",
+     "seed": 53,
+     "scale": 15,
+     "octaves": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 98,
+       "data": 2
+      }
+     ],
+     "rise": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "steel": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 6
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "line": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 159,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "warnline": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 159,
+     "data": 4
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "coping": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 43,
+     "data": 8
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "stage": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 155,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "car-wheel": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 173,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 173,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 173,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 173,
+    "data": 0
+   }
+  },
+  "car-body": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 19,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 19,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 19,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 19,
+    "data": 0
+   }
+  },
+  "car-glass": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 79,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 79,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 79,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 79,
+    "data": 0
+   }
+  },
+  "car-roof": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 44,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 44,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 44,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 44,
+    "data": 0
+   }
+  },
+  "col-base": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   }
+  },
+  "col-shaft": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 159,
+     "data": 13
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 159,
+     "data": 13
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 159,
+    "data": 13
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 159,
+    "data": 13
+   }
+  },
+  "col-cap": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 44,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 44,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 44,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 44,
+    "data": 0
+   }
+  },
+  "poster-a": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 35,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 35,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 35,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 35,
+    "data": 0
+   }
+  },
+  "poster-b": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 35,
+     "data": 4
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 35,
+     "data": 4
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 35,
+    "data": 4
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 35,
+    "data": 4
+   }
+  },
+  "poster-c": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 35,
+     "data": 14
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 35,
+     "data": 14
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 35,
+    "data": 14
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 35,
+    "data": 14
+   }
+  },
+  "poster-d": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 35,
+     "data": 3
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 35,
+     "data": 3
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 35,
+    "data": 3
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 35,
+    "data": 3
+   }
+  },
+  "piano": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 112,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 112,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 112,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 112,
+    "data": 0
+   }
+  },
+  "piano-keys": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 155,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 155,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 155,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 155,
+    "data": 0
+   }
+  },
+  "lamp-mast": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 159,
+     "data": 15
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 159,
+     "data": 15
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 159,
+    "data": 15
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 159,
+    "data": 15
+   }
+  },
+  "lamp-head": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 89,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 89,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   }
+  }
+ },
+ "mapTheme": "city",
+ "themeByHeight": {
+  "20": "city",
+  "24": "garden"
+ },
+ "addShapes": [
+  {
+   "id": "trench-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -10,
+   "min_z": -80,
+   "max_x": 11,
+   "max_z": -68,
+   "floor": 0,
+   "base_height": 9,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "ballast"
+  },
+  {
+   "id": "trench-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -10,
+   "min_z": -68,
+   "max_x": 11,
+   "max_z": -56,
+   "floor": 0,
+   "base_height": 9,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "ballast"
+  },
+  {
+   "id": "trench-2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -10,
+   "min_z": -56,
+   "max_x": 11,
+   "max_z": -44,
+   "floor": 0,
+   "base_height": 9,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "ballast"
+  },
+  {
+   "id": "trench-3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -10,
+   "min_z": -44,
+   "max_x": 11,
+   "max_z": -35,
+   "floor": 0,
+   "base_height": 9,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "ballast"
+  },
+  {
+   "id": "box-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 10,
+   "min_z": -80,
+   "max_x": 19,
+   "max_z": -68,
+   "floor": 0,
+   "base_height": 9,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "concrete"
+  },
+  {
+   "id": "box-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 10,
+   "min_z": -68,
+   "max_x": 19,
+   "max_z": -62,
+   "floor": 0,
+   "base_height": 9,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "concrete"
+  },
+  {
+   "id": "platform-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 4,
+   "min_z": -80,
+   "max_x": 19,
+   "max_z": -68,
+   "floor": 0,
+   "base_height": 11,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "concrete"
+  },
+  {
+   "id": "platform-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 4,
+   "min_z": -68,
+   "max_x": 19,
+   "max_z": -62,
+   "floor": 0,
+   "base_height": 11,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "concrete"
+  },
+  {
+   "id": "platform-edge",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 4,
+   "min_z": -80,
+   "max_x": 5,
+   "max_z": -62,
+   "floor": 10,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "warnline"
+  },
+  {
+   "id": "rail-0-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -80,
+   "max_x": -8,
+   "max_z": -64,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "rail-0-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -64,
+   "max_x": -8,
+   "max_z": -48,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "rail-0-2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -48,
+   "max_x": -8,
+   "max_z": -35,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "rail-1-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -80,
+   "max_x": -5,
+   "max_z": -64,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "rail-1-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -64,
+   "max_x": -5,
+   "max_z": -48,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "rail-1-2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -48,
+   "max_x": -5,
+   "max_z": -35,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "rail-2-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -80,
+   "max_x": -1,
+   "max_z": -64,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "rail-2-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -64,
+   "max_x": -1,
+   "max_z": -48,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "rail-2-2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -48,
+   "max_x": -1,
+   "max_z": -35,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "rail-3-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -80,
+   "max_x": 2,
+   "max_z": -64,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "rail-3-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -64,
+   "max_x": 2,
+   "max_z": -48,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "rail-3-2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -48,
+   "max_x": 2,
+   "max_z": -35,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "stair-a0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 16,
+   "min_z": -78,
+   "max_x": 19,
+   "max_z": -76,
+   "floor": 0,
+   "base_height": 19,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "concrete"
+  },
+  {
+   "id": "stair-a1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 16,
+   "min_z": -76,
+   "max_x": 19,
+   "max_z": -74,
+   "floor": 0,
+   "base_height": 18,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "concrete"
+  },
+  {
+   "id": "stair-a2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 16,
+   "min_z": -74,
+   "max_x": 19,
+   "max_z": -72,
+   "floor": 0,
+   "base_height": 17,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "concrete"
+  },
+  {
+   "id": "stair-a3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 16,
+   "min_z": -72,
+   "max_x": 19,
+   "max_z": -70,
+   "floor": 0,
+   "base_height": 16,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "concrete"
+  },
+  {
+   "id": "stair-a4",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 16,
+   "min_z": -70,
+   "max_x": 19,
+   "max_z": -68,
+   "floor": 0,
+   "base_height": 15,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "concrete"
+  },
+  {
+   "id": "stair-b0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 12,
+   "min_z": -70,
+   "max_x": 15,
+   "max_z": -68,
+   "floor": 0,
+   "base_height": 14,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "concrete"
+  },
+  {
+   "id": "stair-b1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 12,
+   "min_z": -72,
+   "max_x": 15,
+   "max_z": -70,
+   "floor": 0,
+   "base_height": 13,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "concrete"
+  },
+  {
+   "id": "stair-b2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 12,
+   "min_z": -74,
+   "max_x": 15,
+   "max_z": -72,
+   "floor": 0,
+   "base_height": 12,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "concrete"
+  },
+  {
+   "id": "stair-b3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 12,
+   "min_z": -76,
+   "max_x": 15,
+   "max_z": -74,
+   "floor": 0,
+   "base_height": 11,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "concrete"
+  },
+  {
+   "id": "ramp",
+   "type": "polygon",
+   "operation": "add",
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "floor": 0,
+   "theme": "ballast",
+   "vertices": [
+    [
+     -10,
+     -35
+    ],
+    [
+     11,
+     -35
+    ],
+    [
+     11,
+     -11
+    ],
+    [
+     -10,
+     -11
+    ]
+   ],
+   "anchor_heights": [
+    9,
+    9,
+    20,
+    20
+   ]
+  },
+  {
+   "id": "ramprail-0--35",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -35,
+   "max_x": -8,
+   "max_z": -34,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--34",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -34,
+   "max_x": -8,
+   "max_z": -33,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--33",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -33,
+   "max_x": -8,
+   "max_z": -32,
+   "floor": 9,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--32",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -32,
+   "max_x": -8,
+   "max_z": -31,
+   "floor": 9,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--31",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -31,
+   "max_x": -8,
+   "max_z": -30,
+   "floor": 10,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--30",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -30,
+   "max_x": -8,
+   "max_z": -29,
+   "floor": 10,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--29",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -29,
+   "max_x": -8,
+   "max_z": -28,
+   "floor": 10,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--28",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -28,
+   "max_x": -8,
+   "max_z": -27,
+   "floor": 11,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--27",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -27,
+   "max_x": -8,
+   "max_z": -26,
+   "floor": 11,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--26",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -26,
+   "max_x": -8,
+   "max_z": -25,
+   "floor": 12,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--25",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -25,
+   "max_x": -8,
+   "max_z": -24,
+   "floor": 12,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--24",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -24,
+   "max_x": -8,
+   "max_z": -23,
+   "floor": 13,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--23",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -23,
+   "max_x": -8,
+   "max_z": -22,
+   "floor": 13,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--22",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -22,
+   "max_x": -8,
+   "max_z": -21,
+   "floor": 14,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--21",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -21,
+   "max_x": -8,
+   "max_z": -20,
+   "floor": 14,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--20",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -20,
+   "max_x": -8,
+   "max_z": -19,
+   "floor": 15,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--19",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -19,
+   "max_x": -8,
+   "max_z": -18,
+   "floor": 15,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--18",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -18,
+   "max_x": -8,
+   "max_z": -17,
+   "floor": 16,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--17",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -17,
+   "max_x": -8,
+   "max_z": -16,
+   "floor": 16,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--16",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -16,
+   "max_x": -8,
+   "max_z": -15,
+   "floor": 16,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--15",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -15,
+   "max_x": -8,
+   "max_z": -14,
+   "floor": 17,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--14",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -14,
+   "max_x": -8,
+   "max_z": -13,
+   "floor": 17,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--13",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -13,
+   "max_x": -8,
+   "max_z": -12,
+   "floor": 18,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-0--12",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -12,
+   "max_x": -8,
+   "max_z": -11,
+   "floor": 18,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--35",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -35,
+   "max_x": -5,
+   "max_z": -34,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--34",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -34,
+   "max_x": -5,
+   "max_z": -33,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--33",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -33,
+   "max_x": -5,
+   "max_z": -32,
+   "floor": 9,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--32",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -32,
+   "max_x": -5,
+   "max_z": -31,
+   "floor": 9,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--31",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -31,
+   "max_x": -5,
+   "max_z": -30,
+   "floor": 10,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--30",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -30,
+   "max_x": -5,
+   "max_z": -29,
+   "floor": 10,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--29",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -29,
+   "max_x": -5,
+   "max_z": -28,
+   "floor": 10,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--28",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -28,
+   "max_x": -5,
+   "max_z": -27,
+   "floor": 11,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--27",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -27,
+   "max_x": -5,
+   "max_z": -26,
+   "floor": 11,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--26",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -26,
+   "max_x": -5,
+   "max_z": -25,
+   "floor": 12,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--25",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -25,
+   "max_x": -5,
+   "max_z": -24,
+   "floor": 12,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--24",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -24,
+   "max_x": -5,
+   "max_z": -23,
+   "floor": 13,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--23",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -23,
+   "max_x": -5,
+   "max_z": -22,
+   "floor": 13,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--22",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -22,
+   "max_x": -5,
+   "max_z": -21,
+   "floor": 14,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--21",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -21,
+   "max_x": -5,
+   "max_z": -20,
+   "floor": 14,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--20",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -20,
+   "max_x": -5,
+   "max_z": -19,
+   "floor": 15,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--19",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -19,
+   "max_x": -5,
+   "max_z": -18,
+   "floor": 15,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--18",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -18,
+   "max_x": -5,
+   "max_z": -17,
+   "floor": 16,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--17",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -17,
+   "max_x": -5,
+   "max_z": -16,
+   "floor": 16,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--16",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -16,
+   "max_x": -5,
+   "max_z": -15,
+   "floor": 16,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--15",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -15,
+   "max_x": -5,
+   "max_z": -14,
+   "floor": 17,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--14",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -14,
+   "max_x": -5,
+   "max_z": -13,
+   "floor": 17,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--13",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -13,
+   "max_x": -5,
+   "max_z": -12,
+   "floor": 18,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-1--12",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -12,
+   "max_x": -5,
+   "max_z": -11,
+   "floor": 18,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--35",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -35,
+   "max_x": -1,
+   "max_z": -34,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--34",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -34,
+   "max_x": -1,
+   "max_z": -33,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--33",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -33,
+   "max_x": -1,
+   "max_z": -32,
+   "floor": 9,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--32",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -32,
+   "max_x": -1,
+   "max_z": -31,
+   "floor": 9,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--31",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -31,
+   "max_x": -1,
+   "max_z": -30,
+   "floor": 10,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--30",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -30,
+   "max_x": -1,
+   "max_z": -29,
+   "floor": 10,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--29",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -29,
+   "max_x": -1,
+   "max_z": -28,
+   "floor": 10,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--28",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -28,
+   "max_x": -1,
+   "max_z": -27,
+   "floor": 11,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--27",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -27,
+   "max_x": -1,
+   "max_z": -26,
+   "floor": 11,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--26",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -26,
+   "max_x": -1,
+   "max_z": -25,
+   "floor": 12,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--25",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -25,
+   "max_x": -1,
+   "max_z": -24,
+   "floor": 12,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--24",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -24,
+   "max_x": -1,
+   "max_z": -23,
+   "floor": 13,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--23",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -23,
+   "max_x": -1,
+   "max_z": -22,
+   "floor": 13,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--22",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -22,
+   "max_x": -1,
+   "max_z": -21,
+   "floor": 14,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--21",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -21,
+   "max_x": -1,
+   "max_z": -20,
+   "floor": 14,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--20",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -20,
+   "max_x": -1,
+   "max_z": -19,
+   "floor": 15,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--19",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -19,
+   "max_x": -1,
+   "max_z": -18,
+   "floor": 15,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--18",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -18,
+   "max_x": -1,
+   "max_z": -17,
+   "floor": 16,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--17",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -17,
+   "max_x": -1,
+   "max_z": -16,
+   "floor": 16,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--16",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -16,
+   "max_x": -1,
+   "max_z": -15,
+   "floor": 16,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--15",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -15,
+   "max_x": -1,
+   "max_z": -14,
+   "floor": 17,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--14",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -14,
+   "max_x": -1,
+   "max_z": -13,
+   "floor": 17,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--13",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -13,
+   "max_x": -1,
+   "max_z": -12,
+   "floor": 18,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-2--12",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -12,
+   "max_x": -1,
+   "max_z": -11,
+   "floor": 18,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--35",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -35,
+   "max_x": 2,
+   "max_z": -34,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--34",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -34,
+   "max_x": 2,
+   "max_z": -33,
+   "floor": 8,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--33",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -33,
+   "max_x": 2,
+   "max_z": -32,
+   "floor": 9,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--32",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -32,
+   "max_x": 2,
+   "max_z": -31,
+   "floor": 9,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--31",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -31,
+   "max_x": 2,
+   "max_z": -30,
+   "floor": 10,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--30",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -30,
+   "max_x": 2,
+   "max_z": -29,
+   "floor": 10,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--29",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -29,
+   "max_x": 2,
+   "max_z": -28,
+   "floor": 10,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--28",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -28,
+   "max_x": 2,
+   "max_z": -27,
+   "floor": 11,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--27",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -27,
+   "max_x": 2,
+   "max_z": -26,
+   "floor": 11,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--26",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -26,
+   "max_x": 2,
+   "max_z": -25,
+   "floor": 12,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--25",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -25,
+   "max_x": 2,
+   "max_z": -24,
+   "floor": 12,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--24",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -24,
+   "max_x": 2,
+   "max_z": -23,
+   "floor": 13,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--23",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -23,
+   "max_x": 2,
+   "max_z": -22,
+   "floor": 13,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--22",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -22,
+   "max_x": 2,
+   "max_z": -21,
+   "floor": 14,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--21",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -21,
+   "max_x": 2,
+   "max_z": -20,
+   "floor": 14,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--20",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -20,
+   "max_x": 2,
+   "max_z": -19,
+   "floor": 15,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--19",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -19,
+   "max_x": 2,
+   "max_z": -18,
+   "floor": 15,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--18",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -18,
+   "max_x": 2,
+   "max_z": -17,
+   "floor": 16,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--17",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -17,
+   "max_x": 2,
+   "max_z": -16,
+   "floor": 16,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--16",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -16,
+   "max_x": 2,
+   "max_z": -15,
+   "floor": 16,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--15",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -15,
+   "max_x": 2,
+   "max_z": -14,
+   "floor": 17,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--14",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -14,
+   "max_x": 2,
+   "max_z": -13,
+   "floor": 17,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--13",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -13,
+   "max_x": 2,
+   "max_z": -12,
+   "floor": 18,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "ramprail-3--12",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -12,
+   "max_x": 2,
+   "max_z": -11,
+   "floor": 18,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "bridge",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -10,
+   "min_z": -12,
+   "max_x": 11,
+   "max_z": 12,
+   "floor": 16,
+   "base_height": 4,
+   "keepClear": true,
+   "theme": "concrete"
+  },
+  {
+   "id": "parapet-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -10,
+   "min_z": -12,
+   "max_x": -9,
+   "max_z": 12,
+   "floor": 20,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true,
+   "theme": "coping"
+  },
+  {
+   "id": "parapet-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 10,
+   "min_z": -12,
+   "max_x": 11,
+   "max_z": 12,
+   "floor": 20,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true,
+   "theme": "coping"
+  },
+  {
+   "id": "deckrail-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -9,
+   "min_z": -12,
+   "max_x": -8,
+   "max_z": 12,
+   "floor": 19,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "deckrail-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -6,
+   "min_z": -12,
+   "max_x": -5,
+   "max_z": 12,
+   "floor": 19,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "deckrail-2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -2,
+   "min_z": -12,
+   "max_x": -1,
+   "max_z": 12,
+   "floor": 19,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "deckrail-3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 1,
+   "min_z": -12,
+   "max_x": 2,
+   "max_z": 12,
+   "floor": 19,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "steel"
+  },
+  {
+   "id": "carpark",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -25,
+   "min_z": -65,
+   "max_x": 25,
+   "max_z": -35,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "tarmac"
+  },
+  {
+   "id": "bayline-0-0-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -21,
+   "min_z": -64,
+   "max_x": -20,
+   "max_z": -59,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-0-1-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -17,
+   "min_z": -64,
+   "max_x": -16,
+   "max_z": -59,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-0-2-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -13,
+   "min_z": -64,
+   "max_x": -12,
+   "max_z": -59,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-0-8-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 11,
+   "min_z": -62,
+   "max_x": 12,
+   "max_z": -59,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-0-9-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 15,
+   "min_z": -62,
+   "max_x": 16,
+   "max_z": -59,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-0-10-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 19,
+   "min_z": -64,
+   "max_x": 20,
+   "max_z": -59,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-0-11-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "min_z": -64,
+   "max_x": 24,
+   "max_z": -59,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "rowline-0-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "min_z": -59,
+   "max_x": -10,
+   "max_z": -58,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "rowline-0-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 11,
+   "min_z": -59,
+   "max_x": 24,
+   "max_z": -58,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-1-0-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -21,
+   "min_z": -53,
+   "max_x": -20,
+   "max_z": -48,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-1-1-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -17,
+   "min_z": -53,
+   "max_x": -16,
+   "max_z": -48,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-1-2-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -13,
+   "min_z": -53,
+   "max_x": -12,
+   "max_z": -48,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-1-8-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 11,
+   "min_z": -53,
+   "max_x": 12,
+   "max_z": -48,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-1-9-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 15,
+   "min_z": -53,
+   "max_x": 16,
+   "max_z": -48,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-1-10-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 19,
+   "min_z": -53,
+   "max_x": 20,
+   "max_z": -48,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-1-11-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "min_z": -53,
+   "max_x": 24,
+   "max_z": -48,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "rowline-1-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "min_z": -48,
+   "max_x": -10,
+   "max_z": -47,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "rowline-1-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 11,
+   "min_z": -48,
+   "max_x": 24,
+   "max_z": -47,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-2-0-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -21,
+   "min_z": -42,
+   "max_x": -20,
+   "max_z": -37,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-2-1-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -17,
+   "min_z": -42,
+   "max_x": -16,
+   "max_z": -37,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-2-2-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -13,
+   "min_z": -42,
+   "max_x": -12,
+   "max_z": -37,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-2-8-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 11,
+   "min_z": -42,
+   "max_x": 12,
+   "max_z": -37,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-2-9-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 15,
+   "min_z": -42,
+   "max_x": 16,
+   "max_z": -37,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-2-10-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 19,
+   "min_z": -42,
+   "max_x": 20,
+   "max_z": -37,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "bayline-2-11-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "min_z": -42,
+   "max_x": 24,
+   "max_z": -37,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "rowline-2-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "min_z": -37,
+   "max_x": -10,
+   "max_z": -36,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "rowline-2-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 11,
+   "min_z": -37,
+   "max_x": 24,
+   "max_z": -36,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "line"
+  },
+  {
+   "id": "cp-kerb-w",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -25,
+   "min_z": -65,
+   "max_x": -24,
+   "max_z": -35,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "coping"
+  },
+  {
+   "id": "cp-kerb-e",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 24,
+   "min_z": -65,
+   "max_x": 25,
+   "max_z": -35,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "coping"
+  },
+  {
+   "id": "ramp-cp-w",
+   "type": "polygon",
+   "operation": "add",
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "floor": 0,
+   "theme": "city",
+   "vertices": [
+    [
+     -25,
+     -58
+    ],
+    [
+     -17,
+     -58
+    ],
+    [
+     -17,
+     -53
+    ],
+    [
+     -25,
+     -53
+    ]
+   ],
+   "anchor_heights": [
+    24,
+    20,
+    20,
+    24
+   ]
+  },
+  {
+   "id": "ramp-cp-e",
+   "type": "polygon",
+   "operation": "add",
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "floor": 0,
+   "theme": "city",
+   "vertices": [
+    [
+     17,
+     -58
+    ],
+    [
+     25,
+     -58
+    ],
+    [
+     25,
+     -53
+    ],
+    [
+     17,
+     -53
+    ]
+   ],
+   "anchor_heights": [
+    20,
+    24,
+    24,
+    20
+   ]
+  },
+  {
+   "id": "ramp-fc-w",
+   "type": "polygon",
+   "operation": "add",
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "floor": 0,
+   "theme": "city",
+   "vertices": [
+    [
+     -45,
+     -65
+    ],
+    [
+     -41,
+     -65
+    ],
+    [
+     -41,
+     -56
+    ],
+    [
+     -45,
+     -56
+    ]
+   ],
+   "anchor_heights": [
+    20,
+    20,
+    24,
+    24
+   ]
+  },
+  {
+   "id": "ramp-fc-e",
+   "type": "polygon",
+   "operation": "add",
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "floor": 0,
+   "theme": "city",
+   "vertices": [
+    [
+     41,
+     -65
+    ],
+    [
+     45,
+     -65
+    ],
+    [
+     45,
+     -56
+    ],
+    [
+     41,
+     -56
+    ]
+   ],
+   "anchor_heights": [
+    20,
+    20,
+    24,
+    24
+   ]
+  },
+  {
+   "id": "ramp-ct-w",
+   "type": "polygon",
+   "operation": "add",
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "floor": 0,
+   "theme": "city",
+   "vertices": [
+    [
+     -45,
+     -44
+    ],
+    [
+     -41,
+     -44
+    ],
+    [
+     -41,
+     -35
+    ],
+    [
+     -45,
+     -35
+    ]
+   ],
+   "anchor_heights": [
+    24,
+    24,
+    20,
+    20
+   ]
+  },
+  {
+   "id": "ramp-ct-e",
+   "type": "polygon",
+   "operation": "add",
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "floor": 0,
+   "theme": "city",
+   "vertices": [
+    [
+     41,
+     -44
+    ],
+    [
+     45,
+     -44
+    ],
+    [
+     45,
+     -35
+    ],
+    [
+     41,
+     -35
+    ]
+   ],
+   "anchor_heights": [
+    24,
+    24,
+    20,
+    20
+   ]
+  },
+  {
+   "id": "stage",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 22,
+   "min_z": -78,
+   "max_x": 33,
+   "max_z": -70,
+   "floor": 20,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true,
+   "theme": "stage"
+  },
+  {
+   "id": "green-w",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -44,
+   "min_z": -73,
+   "max_x": -28,
+   "max_z": -68,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "garden"
+  },
+  {
+   "id": "green-e",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 34,
+   "min_z": -73,
+   "max_x": 45,
+   "max_z": -68,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "garden"
+  },
+  {
+   "id": "green-cw",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -44,
+   "min_z": -32,
+   "max_x": -14,
+   "max_z": -26,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "garden"
+  },
+  {
+   "id": "green-ce",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 14,
+   "min_z": -32,
+   "max_x": 44,
+   "max_z": -26,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "garden"
+  },
+  {
+   "id": "cut-kerb-w",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -11,
+   "min_z": -35,
+   "max_x": -10,
+   "max_z": -11,
+   "floor": 20,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true,
+   "theme": "coping"
+  },
+  {
+   "id": "cut-kerb-e",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 11,
+   "min_z": -35,
+   "max_x": 12,
+   "max_z": -11,
+   "floor": 20,
+   "base_height": 1,
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true,
+   "theme": "coping"
+  },
+  {
+   "id": "gorge-kerb-w",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -45,
+   "min_z": -11,
+   "max_x": -10,
+   "max_z": -10,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "coping"
+  },
+  {
+   "id": "gorge-kerb-e",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 11,
+   "min_z": -11,
+   "max_x": 45,
+   "max_z": -10,
+   "floor": 0,
+   "base_height": 1,
+   "theme": "coping"
+  }
+ ],
+ "addLayers": [
+  {
+   "id": "lid",
+   "name": "Tunnel lid",
+   "base_y": 17,
+   "shapes": [
+    {
+     "id": "bayline-0-3-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -9,
+     "min_z": -64,
+     "max_x": -8,
+     "max_z": -59,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-0-4-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -5,
+     "min_z": -64,
+     "max_x": -4,
+     "max_z": -59,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-0-5-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -1,
+     "min_z": -64,
+     "max_x": 0,
+     "max_z": -59,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-0-6-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 3,
+     "min_z": -64,
+     "max_x": 4,
+     "max_z": -59,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-0-7-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 7,
+     "min_z": -64,
+     "max_x": 8,
+     "max_z": -59,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-0-8-lid1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 11,
+     "min_z": -64,
+     "max_x": 12,
+     "max_z": -62,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-0-9-lid1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 15,
+     "min_z": -64,
+     "max_x": 16,
+     "max_z": -62,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "rowline-0-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -59,
+     "max_x": 11,
+     "max_z": -58,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-1-3-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -9,
+     "min_z": -53,
+     "max_x": -8,
+     "max_z": -48,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-1-4-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -5,
+     "min_z": -53,
+     "max_x": -4,
+     "max_z": -48,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-1-5-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -1,
+     "min_z": -53,
+     "max_x": 0,
+     "max_z": -48,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-1-6-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 3,
+     "min_z": -53,
+     "max_x": 4,
+     "max_z": -48,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-1-7-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 7,
+     "min_z": -53,
+     "max_x": 8,
+     "max_z": -48,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "rowline-1-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -48,
+     "max_x": 11,
+     "max_z": -47,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-2-3-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -9,
+     "min_z": -42,
+     "max_x": -8,
+     "max_z": -37,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-2-4-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -5,
+     "min_z": -42,
+     "max_x": -4,
+     "max_z": -37,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-2-5-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -1,
+     "min_z": -42,
+     "max_x": 0,
+     "max_z": -37,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-2-6-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 3,
+     "min_z": -42,
+     "max_x": 4,
+     "max_z": -37,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "bayline-2-7-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 7,
+     "min_z": -42,
+     "max_x": 8,
+     "max_z": -37,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "rowline-2-lid0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -37,
+     "max_x": 11,
+     "max_z": -36,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "line",
+     "keepClear": false
+    },
+    {
+     "id": "well-rail-w",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 15,
+     "min_z": -77,
+     "max_x": 16,
+     "max_z": -68,
+     "floor": 0,
+     "base_height": 4,
+     "theme": "coping",
+     "keepClear": true
+    },
+    {
+     "id": "well-rail-n",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 15,
+     "min_z": -79,
+     "max_x": 19,
+     "max_z": -78,
+     "floor": 0,
+     "base_height": 4,
+     "theme": "coping",
+     "keepClear": true
+    },
+    {
+     "id": "well-rail-s",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 15,
+     "min_z": -68,
+     "max_x": 19,
+     "max_z": -67,
+     "floor": 0,
+     "base_height": 4,
+     "theme": "coping",
+     "keepClear": true
+    },
+    {
+     "id": "lid-n",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -80,
+     "max_x": 19,
+     "max_z": -78,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "city",
+     "keepClear": false
+    },
+    {
+     "id": "lid-w",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -78,
+     "max_x": 16,
+     "max_z": -68,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "city",
+     "keepClear": false
+    },
+    {
+     "id": "lid-s",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -68,
+     "max_x": 19,
+     "max_z": -65,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "city",
+     "keepClear": false
+    },
+    {
+     "id": "lid-cp1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -65,
+     "max_x": 19,
+     "max_z": -62,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "tarmac",
+     "keepClear": false
+    },
+    {
+     "id": "lid-cp2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -62,
+     "max_x": 11,
+     "max_z": -35,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "tarmac",
+     "keepClear": false
+    }
+   ],
+   "groups": [
+    {
+     "id": "lid",
+     "name": "Tunnel lid",
+     "mirrors": true,
+     "shapeIds": [
+      "bayline-0-3-lid0",
+      "bayline-0-4-lid0",
+      "bayline-0-5-lid0",
+      "bayline-0-6-lid0",
+      "bayline-0-7-lid0",
+      "bayline-0-8-lid1",
+      "bayline-0-9-lid1",
+      "rowline-0-lid0",
+      "bayline-1-3-lid0",
+      "bayline-1-4-lid0",
+      "bayline-1-5-lid0",
+      "bayline-1-6-lid0",
+      "bayline-1-7-lid0",
+      "rowline-1-lid0",
+      "bayline-2-3-lid0",
+      "bayline-2-4-lid0",
+      "bayline-2-5-lid0",
+      "bayline-2-6-lid0",
+      "bayline-2-7-lid0",
+      "rowline-2-lid0",
+      "well-rail-w",
+      "well-rail-n",
+      "well-rail-s",
+      "lid-n",
+      "lid-w",
+      "lid-s",
+      "lid-cp1",
+      "lid-cp2"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cars-L0",
+   "name": "cars run 0",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "cars",
+   "shapes": [
+    {
+     "id": "cars-0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -63,
+     "max_x": -23,
+     "max_z": -62,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -63,
+     "max_x": -21,
+     "max_z": -62,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -63,
+     "max_x": -19,
+     "max_z": -62,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-3",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -18,
+     "min_z": -63,
+     "max_x": -17,
+     "max_z": -62,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-4",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -63,
+     "max_x": -11,
+     "max_z": -62,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-5",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -63,
+     "max_x": -9,
+     "max_z": -62,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-6",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -63,
+     "max_x": 5,
+     "max_z": -62,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-7",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "min_z": -63,
+     "max_x": 7,
+     "max_z": -62,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-8",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -63,
+     "max_x": 9,
+     "max_z": -62,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-9",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "min_z": -63,
+     "max_x": 11,
+     "max_z": -62,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -63,
+     "max_x": 21,
+     "max_z": -62,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 22,
+     "min_z": -63,
+     "max_x": 23,
+     "max_z": -62,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-12",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -61,
+     "max_x": -23,
+     "max_z": -60,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-13",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -61,
+     "max_x": -21,
+     "max_z": -60,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-14",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -61,
+     "max_x": -19,
+     "max_z": -60,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-15",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -18,
+     "min_z": -61,
+     "max_x": -17,
+     "max_z": -60,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-16",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -61,
+     "max_x": -11,
+     "max_z": -60,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-17",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -61,
+     "max_x": -9,
+     "max_z": -60,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-18",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -61,
+     "max_x": 5,
+     "max_z": -60,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-19",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "min_z": -61,
+     "max_x": 7,
+     "max_z": -60,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-20",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -61,
+     "max_x": 9,
+     "max_z": -60,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-21",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "min_z": -61,
+     "max_x": 11,
+     "max_z": -60,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-22",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -61,
+     "max_x": 21,
+     "max_z": -60,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-23",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 22,
+     "min_z": -61,
+     "max_x": 23,
+     "max_z": -60,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-24",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -52,
+     "max_x": -23,
+     "max_z": -51,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-25",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -52,
+     "max_x": -21,
+     "max_z": -51,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-26",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "min_z": -52,
+     "max_x": -7,
+     "max_z": -51,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-27",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -6,
+     "min_z": -52,
+     "max_x": -5,
+     "max_z": -51,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-28",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -52,
+     "max_x": 9,
+     "max_z": -51,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-29",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "min_z": -52,
+     "max_x": 11,
+     "max_z": -51,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-30",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "min_z": -52,
+     "max_x": 17,
+     "max_z": -51,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-31",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 18,
+     "min_z": -52,
+     "max_x": 19,
+     "max_z": -51,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-32",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -50,
+     "max_x": -23,
+     "max_z": -49,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-33",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -50,
+     "max_x": -21,
+     "max_z": -49,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-34",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "min_z": -50,
+     "max_x": -7,
+     "max_z": -49,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-35",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -6,
+     "min_z": -50,
+     "max_x": -5,
+     "max_z": -49,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-36",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -50,
+     "max_x": 9,
+     "max_z": -49,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-37",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "min_z": -50,
+     "max_x": 11,
+     "max_z": -49,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-38",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "min_z": -50,
+     "max_x": 17,
+     "max_z": -49,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-39",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 18,
+     "min_z": -50,
+     "max_x": 19,
+     "max_z": -49,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-40",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -41,
+     "max_x": -19,
+     "max_z": -40,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-41",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -18,
+     "min_z": -41,
+     "max_x": -17,
+     "max_z": -40,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-42",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -41,
+     "max_x": -11,
+     "max_z": -40,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-43",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -41,
+     "max_x": -9,
+     "max_z": -40,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-44",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -41,
+     "max_x": 5,
+     "max_z": -40,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-45",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "min_z": -41,
+     "max_x": 7,
+     "max_z": -40,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-46",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 12,
+     "min_z": -41,
+     "max_x": 13,
+     "max_z": -40,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-47",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 14,
+     "min_z": -41,
+     "max_x": 15,
+     "max_z": -40,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-48",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -41,
+     "max_x": 21,
+     "max_z": -40,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-49",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 22,
+     "min_z": -41,
+     "max_x": 23,
+     "max_z": -40,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-50",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -39,
+     "max_x": -19,
+     "max_z": -38,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-51",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -18,
+     "min_z": -39,
+     "max_x": -17,
+     "max_z": -38,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-52",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -39,
+     "max_x": -11,
+     "max_z": -38,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-53",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -39,
+     "max_x": -9,
+     "max_z": -38,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-54",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -39,
+     "max_x": 5,
+     "max_z": -38,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-55",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "min_z": -39,
+     "max_x": 7,
+     "max_z": -38,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-56",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 12,
+     "min_z": -39,
+     "max_x": 13,
+     "max_z": -38,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-57",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 14,
+     "min_z": -39,
+     "max_x": 15,
+     "max_z": -38,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-58",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -39,
+     "max_x": 21,
+     "max_z": -38,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-59",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 22,
+     "min_z": -39,
+     "max_x": 23,
+     "max_z": -38,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "car-wheel",
+     "keepClear": true
+    },
+    {
+     "id": "cars-60",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -64,
+     "max_x": -17,
+     "max_z": -63,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-61",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -64,
+     "max_x": 7,
+     "max_z": -63,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-62",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -64,
+     "max_x": 23,
+     "max_z": -63,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-63",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -19,
+     "min_z": -63,
+     "max_x": -18,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-64",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 5,
+     "min_z": -63,
+     "max_x": 6,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-65",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 21,
+     "min_z": -63,
+     "max_x": 22,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-66",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -62,
+     "max_x": -21,
+     "max_z": -61,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-67",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -62,
+     "max_x": -17,
+     "max_z": -61,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-68",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -62,
+     "max_x": -9,
+     "max_z": -61,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-69",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -62,
+     "max_x": 7,
+     "max_z": -61,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-70",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -62,
+     "max_x": 11,
+     "max_z": -61,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-71",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -62,
+     "max_x": 23,
+     "max_z": -61,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-72",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "min_z": -61,
+     "max_x": -22,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-73",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -11,
+     "min_z": -61,
+     "max_x": -10,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-74",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "min_z": -61,
+     "max_x": 10,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-75",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -60,
+     "max_x": -21,
+     "max_z": -59,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-76",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -60,
+     "max_x": -9,
+     "max_z": -59,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-77",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -60,
+     "max_x": 11,
+     "max_z": -59,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-78",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -53,
+     "max_x": -21,
+     "max_z": -52,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-79",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -53,
+     "max_x": 11,
+     "max_z": -52,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-80",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "min_z": -52,
+     "max_x": -22,
+     "max_z": -51,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-81",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "min_z": -52,
+     "max_x": 10,
+     "max_z": -51,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-82",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -51,
+     "max_x": -21,
+     "max_z": -50,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-83",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "min_z": -51,
+     "max_x": -5,
+     "max_z": -50,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-84",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -51,
+     "max_x": 11,
+     "max_z": -50,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-85",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "min_z": -51,
+     "max_x": 19,
+     "max_z": -50,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-86",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -7,
+     "min_z": -50,
+     "max_x": -6,
+     "max_z": -49,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-87",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 17,
+     "min_z": -50,
+     "max_x": 18,
+     "max_z": -49,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-88",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "min_z": -49,
+     "max_x": -5,
+     "max_z": -48,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-89",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "min_z": -49,
+     "max_x": 19,
+     "max_z": -48,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-90",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -42,
+     "max_x": -9,
+     "max_z": -41,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-91",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 12,
+     "min_z": -42,
+     "max_x": 15,
+     "max_z": -41,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-92",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -11,
+     "min_z": -41,
+     "max_x": -10,
+     "max_z": -40,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-93",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 13,
+     "min_z": -41,
+     "max_x": 14,
+     "max_z": -40,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-94",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -40,
+     "max_x": -17,
+     "max_z": -39,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-95",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -40,
+     "max_x": -9,
+     "max_z": -39,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-96",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -40,
+     "max_x": 7,
+     "max_z": -39,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-97",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 12,
+     "min_z": -40,
+     "max_x": 15,
+     "max_z": -39,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-98",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -40,
+     "max_x": 23,
+     "max_z": -39,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-99",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -19,
+     "min_z": -39,
+     "max_x": -18,
+     "max_z": -38,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-100",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 5,
+     "min_z": -39,
+     "max_x": 6,
+     "max_z": -38,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-101",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 21,
+     "min_z": -39,
+     "max_x": 22,
+     "max_z": -38,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-102",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -38,
+     "max_x": -17,
+     "max_z": -37,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-103",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -38,
+     "max_x": 7,
+     "max_z": -37,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-104",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -38,
+     "max_x": 23,
+     "max_z": -37,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-105",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -64,
+     "max_x": -21,
+     "max_z": -63,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-106",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -64,
+     "max_x": -9,
+     "max_z": -63,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-107",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -64,
+     "max_x": 11,
+     "max_z": -63,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-108",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "min_z": -63,
+     "max_x": -22,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-109",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -11,
+     "min_z": -63,
+     "max_x": -10,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-110",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "min_z": -63,
+     "max_x": 10,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-111",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -19,
+     "min_z": -61,
+     "max_x": -18,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-112",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 5,
+     "min_z": -61,
+     "max_x": 6,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-113",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 21,
+     "min_z": -61,
+     "max_x": 22,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-114",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -60,
+     "max_x": -17,
+     "max_z": -59,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-115",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -60,
+     "max_x": 7,
+     "max_z": -59,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-116",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -60,
+     "max_x": 23,
+     "max_z": -59,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-117",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "min_z": -53,
+     "max_x": -5,
+     "max_z": -52,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-118",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "min_z": -53,
+     "max_x": 19,
+     "max_z": -52,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-119",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -7,
+     "min_z": -52,
+     "max_x": -6,
+     "max_z": -51,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-120",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 17,
+     "min_z": -52,
+     "max_x": 18,
+     "max_z": -51,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-121",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "min_z": -50,
+     "max_x": -22,
+     "max_z": -49,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-122",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "min_z": -50,
+     "max_x": 10,
+     "max_z": -49,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-123",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -49,
+     "max_x": -21,
+     "max_z": -48,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-124",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -49,
+     "max_x": 11,
+     "max_z": -48,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-125",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -42,
+     "max_x": -17,
+     "max_z": -41,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-126",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -42,
+     "max_x": 7,
+     "max_z": -41,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-127",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -42,
+     "max_x": 23,
+     "max_z": -41,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-128",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -19,
+     "min_z": -41,
+     "max_x": -18,
+     "max_z": -40,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-129",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 5,
+     "min_z": -41,
+     "max_x": 6,
+     "max_z": -40,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-130",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 21,
+     "min_z": -41,
+     "max_x": 22,
+     "max_z": -40,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-131",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -11,
+     "min_z": -39,
+     "max_x": -10,
+     "max_z": -38,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-132",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 13,
+     "min_z": -39,
+     "max_x": 14,
+     "max_z": -38,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-133",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -38,
+     "max_x": -9,
+     "max_z": -37,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-134",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 12,
+     "min_z": -38,
+     "max_x": 15,
+     "max_z": -37,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    }
+   ],
+   "groups": [
+    {
+     "id": "cars-L0-body",
+     "name": "cars",
+     "mirrors": true,
+     "shapeIds": [
+      "cars-0",
+      "cars-1",
+      "cars-2",
+      "cars-3",
+      "cars-4",
+      "cars-5",
+      "cars-6",
+      "cars-7",
+      "cars-8",
+      "cars-9",
+      "cars-10",
+      "cars-11",
+      "cars-12",
+      "cars-13",
+      "cars-14",
+      "cars-15",
+      "cars-16",
+      "cars-17",
+      "cars-18",
+      "cars-19",
+      "cars-20",
+      "cars-21",
+      "cars-22",
+      "cars-23",
+      "cars-24",
+      "cars-25",
+      "cars-26",
+      "cars-27",
+      "cars-28",
+      "cars-29",
+      "cars-30",
+      "cars-31",
+      "cars-32",
+      "cars-33",
+      "cars-34",
+      "cars-35",
+      "cars-36",
+      "cars-37",
+      "cars-38",
+      "cars-39",
+      "cars-40",
+      "cars-41",
+      "cars-42",
+      "cars-43",
+      "cars-44",
+      "cars-45",
+      "cars-46",
+      "cars-47",
+      "cars-48",
+      "cars-49",
+      "cars-50",
+      "cars-51",
+      "cars-52",
+      "cars-53",
+      "cars-54",
+      "cars-55",
+      "cars-56",
+      "cars-57",
+      "cars-58",
+      "cars-59",
+      "cars-60",
+      "cars-61",
+      "cars-62",
+      "cars-63",
+      "cars-64",
+      "cars-65",
+      "cars-66",
+      "cars-67",
+      "cars-68",
+      "cars-69",
+      "cars-70",
+      "cars-71",
+      "cars-72",
+      "cars-73",
+      "cars-74",
+      "cars-75",
+      "cars-76",
+      "cars-77",
+      "cars-78",
+      "cars-79",
+      "cars-80",
+      "cars-81",
+      "cars-82",
+      "cars-83",
+      "cars-84",
+      "cars-85",
+      "cars-86",
+      "cars-87",
+      "cars-88",
+      "cars-89",
+      "cars-90",
+      "cars-91",
+      "cars-92",
+      "cars-93",
+      "cars-94",
+      "cars-95",
+      "cars-96",
+      "cars-97",
+      "cars-98",
+      "cars-99",
+      "cars-100",
+      "cars-101",
+      "cars-102",
+      "cars-103",
+      "cars-104",
+      "cars-105",
+      "cars-106",
+      "cars-107",
+      "cars-108",
+      "cars-109",
+      "cars-110",
+      "cars-111",
+      "cars-112",
+      "cars-113",
+      "cars-114",
+      "cars-115",
+      "cars-116",
+      "cars-117",
+      "cars-118",
+      "cars-119",
+      "cars-120",
+      "cars-121",
+      "cars-122",
+      "cars-123",
+      "cars-124",
+      "cars-125",
+      "cars-126",
+      "cars-127",
+      "cars-128",
+      "cars-129",
+      "cars-130",
+      "cars-131",
+      "cars-132",
+      "cars-133",
+      "cars-134"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cars-L1",
+   "name": "cars run 1",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "cars",
+   "shapes": [
+    {
+     "id": "cars-135",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -63,
+     "max_x": -19,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-136",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -18,
+     "min_z": -63,
+     "max_x": -17,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-137",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -63,
+     "max_x": 5,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-138",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "min_z": -63,
+     "max_x": 7,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-139",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -63,
+     "max_x": 21,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-140",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 22,
+     "min_z": -63,
+     "max_x": 23,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-141",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -61,
+     "max_x": -23,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-142",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -61,
+     "max_x": -21,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-143",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -61,
+     "max_x": -11,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-144",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -61,
+     "max_x": -9,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-145",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -61,
+     "max_x": 9,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-146",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "min_z": -61,
+     "max_x": 11,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-147",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -52,
+     "max_x": -23,
+     "max_z": -51,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-148",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -52,
+     "max_x": -21,
+     "max_z": -51,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-149",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -52,
+     "max_x": 9,
+     "max_z": -51,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-150",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "min_z": -52,
+     "max_x": 11,
+     "max_z": -51,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-151",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "min_z": -50,
+     "max_x": -7,
+     "max_z": -49,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-152",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -6,
+     "min_z": -50,
+     "max_x": -5,
+     "max_z": -49,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-153",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "min_z": -50,
+     "max_x": 17,
+     "max_z": -49,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-154",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 18,
+     "min_z": -50,
+     "max_x": 19,
+     "max_z": -49,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-155",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -41,
+     "max_x": -11,
+     "max_z": -40,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-156",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -41,
+     "max_x": -9,
+     "max_z": -40,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-157",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 12,
+     "min_z": -41,
+     "max_x": 13,
+     "max_z": -40,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-158",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 14,
+     "min_z": -41,
+     "max_x": 15,
+     "max_z": -40,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-159",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -39,
+     "max_x": -19,
+     "max_z": -38,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-160",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -18,
+     "min_z": -39,
+     "max_x": -17,
+     "max_z": -38,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-161",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -39,
+     "max_x": 5,
+     "max_z": -38,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-162",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "min_z": -39,
+     "max_x": 7,
+     "max_z": -38,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-163",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -39,
+     "max_x": 21,
+     "max_z": -38,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-164",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 22,
+     "min_z": -39,
+     "max_x": 23,
+     "max_z": -38,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-165",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -63,
+     "max_x": -23,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-166",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -63,
+     "max_x": -21,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-167",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -63,
+     "max_x": -11,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-168",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -63,
+     "max_x": -9,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-169",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -63,
+     "max_x": 9,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-170",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "min_z": -63,
+     "max_x": 11,
+     "max_z": -62,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-171",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -61,
+     "max_x": -19,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-172",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -18,
+     "min_z": -61,
+     "max_x": -17,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-173",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -61,
+     "max_x": 5,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-174",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "min_z": -61,
+     "max_x": 7,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-175",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -61,
+     "max_x": 21,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-176",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 22,
+     "min_z": -61,
+     "max_x": 23,
+     "max_z": -60,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-177",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "min_z": -52,
+     "max_x": -7,
+     "max_z": -51,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-178",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -6,
+     "min_z": -52,
+     "max_x": -5,
+     "max_z": -51,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-179",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "min_z": -52,
+     "max_x": 17,
+     "max_z": -51,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-180",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 18,
+     "min_z": -52,
+     "max_x": 19,
+     "max_z": -51,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-181",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -50,
+     "max_x": -23,
+     "max_z": -49,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-182",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -50,
+     "max_x": -21,
+     "max_z": -49,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-183",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -50,
+     "max_x": 9,
+     "max_z": -49,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-184",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "min_z": -50,
+     "max_x": 11,
+     "max_z": -49,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-185",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -41,
+     "max_x": -19,
+     "max_z": -40,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-186",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -18,
+     "min_z": -41,
+     "max_x": -17,
+     "max_z": -40,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-187",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -41,
+     "max_x": 5,
+     "max_z": -40,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-188",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "min_z": -41,
+     "max_x": 7,
+     "max_z": -40,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-189",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -41,
+     "max_x": 21,
+     "max_z": -40,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-190",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 22,
+     "min_z": -41,
+     "max_x": 23,
+     "max_z": -40,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-191",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -39,
+     "max_x": -11,
+     "max_z": -38,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-192",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -39,
+     "max_x": -9,
+     "max_z": -38,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-193",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 12,
+     "min_z": -39,
+     "max_x": 13,
+     "max_z": -38,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-194",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 14,
+     "min_z": -39,
+     "max_x": 15,
+     "max_z": -38,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "car-body",
+     "keepClear": true
+    },
+    {
+     "id": "cars-195",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -64,
+     "max_x": -17,
+     "max_z": -63,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-196",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -64,
+     "max_x": 7,
+     "max_z": -63,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-197",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -64,
+     "max_x": 23,
+     "max_z": -63,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-198",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -62,
+     "max_x": -21,
+     "max_z": -61,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-199",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -62,
+     "max_x": -17,
+     "max_z": -61,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-200",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -62,
+     "max_x": -9,
+     "max_z": -61,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-201",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -62,
+     "max_x": 7,
+     "max_z": -61,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-202",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -62,
+     "max_x": 11,
+     "max_z": -61,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-203",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -62,
+     "max_x": 23,
+     "max_z": -61,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-204",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -60,
+     "max_x": -21,
+     "max_z": -59,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-205",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -60,
+     "max_x": -9,
+     "max_z": -59,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-206",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -60,
+     "max_x": 11,
+     "max_z": -59,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-207",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -53,
+     "max_x": -21,
+     "max_z": -52,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-208",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -53,
+     "max_x": 11,
+     "max_z": -52,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-209",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -51,
+     "max_x": -21,
+     "max_z": -50,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-210",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "min_z": -51,
+     "max_x": -5,
+     "max_z": -50,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-211",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -51,
+     "max_x": 11,
+     "max_z": -50,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-212",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "min_z": -51,
+     "max_x": 19,
+     "max_z": -50,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-213",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "min_z": -49,
+     "max_x": -5,
+     "max_z": -48,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-214",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "min_z": -49,
+     "max_x": 19,
+     "max_z": -48,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-215",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -42,
+     "max_x": -9,
+     "max_z": -41,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-216",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 12,
+     "min_z": -42,
+     "max_x": 15,
+     "max_z": -41,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-217",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -40,
+     "max_x": -17,
+     "max_z": -39,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-218",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -40,
+     "max_x": -9,
+     "max_z": -39,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-219",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -40,
+     "max_x": 7,
+     "max_z": -39,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-220",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 12,
+     "min_z": -40,
+     "max_x": 15,
+     "max_z": -39,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-221",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -40,
+     "max_x": 23,
+     "max_z": -39,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-222",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -38,
+     "max_x": -17,
+     "max_z": -37,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-223",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -38,
+     "max_x": 7,
+     "max_z": -37,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-224",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -38,
+     "max_x": 23,
+     "max_z": -37,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-225",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -19,
+     "min_z": -63,
+     "max_x": -18,
+     "max_z": -62,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-226",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 5,
+     "min_z": -63,
+     "max_x": 6,
+     "max_z": -62,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-227",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 21,
+     "min_z": -63,
+     "max_x": 22,
+     "max_z": -62,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-228",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "min_z": -61,
+     "max_x": -22,
+     "max_z": -60,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-229",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -11,
+     "min_z": -61,
+     "max_x": -10,
+     "max_z": -60,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-230",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "min_z": -61,
+     "max_x": 10,
+     "max_z": -60,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-231",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "min_z": -52,
+     "max_x": -22,
+     "max_z": -51,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-232",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "min_z": -52,
+     "max_x": 10,
+     "max_z": -51,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-233",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -7,
+     "min_z": -50,
+     "max_x": -6,
+     "max_z": -49,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-234",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 17,
+     "min_z": -50,
+     "max_x": 18,
+     "max_z": -49,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-235",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -11,
+     "min_z": -41,
+     "max_x": -10,
+     "max_z": -40,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-236",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 13,
+     "min_z": -41,
+     "max_x": 14,
+     "max_z": -40,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-237",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -19,
+     "min_z": -39,
+     "max_x": -18,
+     "max_z": -38,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-238",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 5,
+     "min_z": -39,
+     "max_x": 6,
+     "max_z": -38,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-239",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 21,
+     "min_z": -39,
+     "max_x": 22,
+     "max_z": -38,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    }
+   ],
+   "groups": [
+    {
+     "id": "cars-L1-body",
+     "name": "cars",
+     "mirrors": true,
+     "shapeIds": [
+      "cars-135",
+      "cars-136",
+      "cars-137",
+      "cars-138",
+      "cars-139",
+      "cars-140",
+      "cars-141",
+      "cars-142",
+      "cars-143",
+      "cars-144",
+      "cars-145",
+      "cars-146",
+      "cars-147",
+      "cars-148",
+      "cars-149",
+      "cars-150",
+      "cars-151",
+      "cars-152",
+      "cars-153",
+      "cars-154",
+      "cars-155",
+      "cars-156",
+      "cars-157",
+      "cars-158",
+      "cars-159",
+      "cars-160",
+      "cars-161",
+      "cars-162",
+      "cars-163",
+      "cars-164",
+      "cars-165",
+      "cars-166",
+      "cars-167",
+      "cars-168",
+      "cars-169",
+      "cars-170",
+      "cars-171",
+      "cars-172",
+      "cars-173",
+      "cars-174",
+      "cars-175",
+      "cars-176",
+      "cars-177",
+      "cars-178",
+      "cars-179",
+      "cars-180",
+      "cars-181",
+      "cars-182",
+      "cars-183",
+      "cars-184",
+      "cars-185",
+      "cars-186",
+      "cars-187",
+      "cars-188",
+      "cars-189",
+      "cars-190",
+      "cars-191",
+      "cars-192",
+      "cars-193",
+      "cars-194",
+      "cars-195",
+      "cars-196",
+      "cars-197",
+      "cars-198",
+      "cars-199",
+      "cars-200",
+      "cars-201",
+      "cars-202",
+      "cars-203",
+      "cars-204",
+      "cars-205",
+      "cars-206",
+      "cars-207",
+      "cars-208",
+      "cars-209",
+      "cars-210",
+      "cars-211",
+      "cars-212",
+      "cars-213",
+      "cars-214",
+      "cars-215",
+      "cars-216",
+      "cars-217",
+      "cars-218",
+      "cars-219",
+      "cars-220",
+      "cars-221",
+      "cars-222",
+      "cars-223",
+      "cars-224",
+      "cars-225",
+      "cars-226",
+      "cars-227",
+      "cars-228",
+      "cars-229",
+      "cars-230",
+      "cars-231",
+      "cars-232",
+      "cars-233",
+      "cars-234",
+      "cars-235",
+      "cars-236",
+      "cars-237",
+      "cars-238",
+      "cars-239"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cars-L2",
+   "name": "cars run 2",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "cars",
+   "shapes": [
+    {
+     "id": "cars-240",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -63,
+     "max_x": -19,
+     "max_z": -62,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-241",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -18,
+     "min_z": -63,
+     "max_x": -17,
+     "max_z": -62,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-242",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -63,
+     "max_x": 5,
+     "max_z": -62,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-243",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "min_z": -63,
+     "max_x": 7,
+     "max_z": -62,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-244",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -63,
+     "max_x": 21,
+     "max_z": -62,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-245",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 22,
+     "min_z": -63,
+     "max_x": 23,
+     "max_z": -62,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-246",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -61,
+     "max_x": -23,
+     "max_z": -60,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-247",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -61,
+     "max_x": -21,
+     "max_z": -60,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-248",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -61,
+     "max_x": -11,
+     "max_z": -60,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-249",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -61,
+     "max_x": -9,
+     "max_z": -60,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-250",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -61,
+     "max_x": 9,
+     "max_z": -60,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-251",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "min_z": -61,
+     "max_x": 11,
+     "max_z": -60,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-252",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -52,
+     "max_x": -23,
+     "max_z": -51,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-253",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -52,
+     "max_x": -21,
+     "max_z": -51,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-254",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -52,
+     "max_x": 9,
+     "max_z": -51,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-255",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "min_z": -52,
+     "max_x": 11,
+     "max_z": -51,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-256",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "min_z": -50,
+     "max_x": -7,
+     "max_z": -49,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-257",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -6,
+     "min_z": -50,
+     "max_x": -5,
+     "max_z": -49,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-258",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "min_z": -50,
+     "max_x": 17,
+     "max_z": -49,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-259",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 18,
+     "min_z": -50,
+     "max_x": 19,
+     "max_z": -49,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-260",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -41,
+     "max_x": -11,
+     "max_z": -40,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-261",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -41,
+     "max_x": -9,
+     "max_z": -40,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-262",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 12,
+     "min_z": -41,
+     "max_x": 13,
+     "max_z": -40,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-263",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 14,
+     "min_z": -41,
+     "max_x": 15,
+     "max_z": -40,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-264",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -39,
+     "max_x": -19,
+     "max_z": -38,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-265",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -18,
+     "min_z": -39,
+     "max_x": -17,
+     "max_z": -38,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-266",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -39,
+     "max_x": 5,
+     "max_z": -38,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-267",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "min_z": -39,
+     "max_x": 7,
+     "max_z": -38,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-268",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -39,
+     "max_x": 21,
+     "max_z": -38,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-269",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 22,
+     "min_z": -39,
+     "max_x": 23,
+     "max_z": -38,
+     "floor": 22,
+     "base_height": 1,
+     "theme": "car-glass",
+     "keepClear": true
+    },
+    {
+     "id": "cars-270",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -64,
+     "max_x": -17,
+     "max_z": -63,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-271",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -64,
+     "max_x": 7,
+     "max_z": -63,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-272",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -64,
+     "max_x": 23,
+     "max_z": -63,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-273",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -62,
+     "max_x": -21,
+     "max_z": -61,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-274",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -62,
+     "max_x": -17,
+     "max_z": -61,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-275",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -62,
+     "max_x": -9,
+     "max_z": -61,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-276",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -62,
+     "max_x": 7,
+     "max_z": -61,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-277",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -62,
+     "max_x": 11,
+     "max_z": -61,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-278",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -62,
+     "max_x": 23,
+     "max_z": -61,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-279",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -60,
+     "max_x": -21,
+     "max_z": -59,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-280",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -60,
+     "max_x": -9,
+     "max_z": -59,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-281",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -60,
+     "max_x": 11,
+     "max_z": -59,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-282",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -53,
+     "max_x": -21,
+     "max_z": -52,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-283",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -53,
+     "max_x": 11,
+     "max_z": -52,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-284",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -51,
+     "max_x": -21,
+     "max_z": -50,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-285",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "min_z": -51,
+     "max_x": -5,
+     "max_z": -50,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-286",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -51,
+     "max_x": 11,
+     "max_z": -50,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-287",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "min_z": -51,
+     "max_x": 19,
+     "max_z": -50,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-288",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "min_z": -49,
+     "max_x": -5,
+     "max_z": -48,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-289",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "min_z": -49,
+     "max_x": 19,
+     "max_z": -48,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-290",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -42,
+     "max_x": -9,
+     "max_z": -41,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-291",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 12,
+     "min_z": -42,
+     "max_x": 15,
+     "max_z": -41,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-292",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -40,
+     "max_x": -17,
+     "max_z": -39,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-293",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -40,
+     "max_x": -9,
+     "max_z": -39,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-294",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -40,
+     "max_x": 7,
+     "max_z": -39,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-295",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 12,
+     "min_z": -40,
+     "max_x": 15,
+     "max_z": -39,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-296",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -40,
+     "max_x": 23,
+     "max_z": -39,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-297",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -38,
+     "max_x": -17,
+     "max_z": -37,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-298",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -38,
+     "max_x": 7,
+     "max_z": -37,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-299",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -38,
+     "max_x": 23,
+     "max_z": -37,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    }
+   ],
+   "groups": [
+    {
+     "id": "cars-L2-body",
+     "name": "cars",
+     "mirrors": true,
+     "shapeIds": [
+      "cars-240",
+      "cars-241",
+      "cars-242",
+      "cars-243",
+      "cars-244",
+      "cars-245",
+      "cars-246",
+      "cars-247",
+      "cars-248",
+      "cars-249",
+      "cars-250",
+      "cars-251",
+      "cars-252",
+      "cars-253",
+      "cars-254",
+      "cars-255",
+      "cars-256",
+      "cars-257",
+      "cars-258",
+      "cars-259",
+      "cars-260",
+      "cars-261",
+      "cars-262",
+      "cars-263",
+      "cars-264",
+      "cars-265",
+      "cars-266",
+      "cars-267",
+      "cars-268",
+      "cars-269",
+      "cars-270",
+      "cars-271",
+      "cars-272",
+      "cars-273",
+      "cars-274",
+      "cars-275",
+      "cars-276",
+      "cars-277",
+      "cars-278",
+      "cars-279",
+      "cars-280",
+      "cars-281",
+      "cars-282",
+      "cars-283",
+      "cars-284",
+      "cars-285",
+      "cars-286",
+      "cars-287",
+      "cars-288",
+      "cars-289",
+      "cars-290",
+      "cars-291",
+      "cars-292",
+      "cars-293",
+      "cars-294",
+      "cars-295",
+      "cars-296",
+      "cars-297",
+      "cars-298",
+      "cars-299"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "cars-L3",
+   "name": "cars run 3",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "cars",
+   "shapes": [
+    {
+     "id": "cars-300",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -63,
+     "max_x": -19,
+     "max_z": -62,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-301",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -18,
+     "min_z": -63,
+     "max_x": -17,
+     "max_z": -62,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-302",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -63,
+     "max_x": 5,
+     "max_z": -62,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-303",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "min_z": -63,
+     "max_x": 7,
+     "max_z": -62,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-304",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -63,
+     "max_x": 21,
+     "max_z": -62,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-305",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 22,
+     "min_z": -63,
+     "max_x": 23,
+     "max_z": -62,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-306",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -61,
+     "max_x": -23,
+     "max_z": -60,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-307",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -61,
+     "max_x": -21,
+     "max_z": -60,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-308",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -61,
+     "max_x": -11,
+     "max_z": -60,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-309",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -61,
+     "max_x": -9,
+     "max_z": -60,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-310",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -61,
+     "max_x": 9,
+     "max_z": -60,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-311",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "min_z": -61,
+     "max_x": 11,
+     "max_z": -60,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-312",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "min_z": -52,
+     "max_x": -23,
+     "max_z": -51,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-313",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -52,
+     "max_x": -21,
+     "max_z": -51,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-314",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "min_z": -52,
+     "max_x": 9,
+     "max_z": -51,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-315",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "min_z": -52,
+     "max_x": 11,
+     "max_z": -51,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-316",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "min_z": -50,
+     "max_x": -7,
+     "max_z": -49,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-317",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -6,
+     "min_z": -50,
+     "max_x": -5,
+     "max_z": -49,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-318",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "min_z": -50,
+     "max_x": 17,
+     "max_z": -49,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-319",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 18,
+     "min_z": -50,
+     "max_x": 19,
+     "max_z": -49,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-320",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "min_z": -41,
+     "max_x": -11,
+     "max_z": -40,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-321",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "min_z": -41,
+     "max_x": -9,
+     "max_z": -40,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-322",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 12,
+     "min_z": -41,
+     "max_x": 13,
+     "max_z": -40,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-323",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 14,
+     "min_z": -41,
+     "max_x": 15,
+     "max_z": -40,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-324",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "min_z": -39,
+     "max_x": -19,
+     "max_z": -38,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-325",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -18,
+     "min_z": -39,
+     "max_x": -17,
+     "max_z": -38,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-326",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "min_z": -39,
+     "max_x": 5,
+     "max_z": -38,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-327",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "min_z": -39,
+     "max_x": 7,
+     "max_z": -38,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-328",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "min_z": -39,
+     "max_x": 21,
+     "max_z": -38,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    },
+    {
+     "id": "cars-329",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 22,
+     "min_z": -39,
+     "max_x": 23,
+     "max_z": -38,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "car-roof",
+     "keepClear": true
+    }
+   ],
+   "groups": [
+    {
+     "id": "cars-L3-body",
+     "name": "cars",
+     "mirrors": true,
+     "shapeIds": [
+      "cars-300",
+      "cars-301",
+      "cars-302",
+      "cars-303",
+      "cars-304",
+      "cars-305",
+      "cars-306",
+      "cars-307",
+      "cars-308",
+      "cars-309",
+      "cars-310",
+      "cars-311",
+      "cars-312",
+      "cars-313",
+      "cars-314",
+      "cars-315",
+      "cars-316",
+      "cars-317",
+      "cars-318",
+      "cars-319",
+      "cars-320",
+      "cars-321",
+      "cars-322",
+      "cars-323",
+      "cars-324",
+      "cars-325",
+      "cars-326",
+      "cars-327",
+      "cars-328",
+      "cars-329"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "column-L0",
+   "name": "column run 0",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "column",
+   "shapes": [
+    {
+     "id": "column-0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "min_z": -75,
+     "max_x": -20,
+     "max_z": -72,
+     "floor": 20,
+     "base_height": 1,
+     "theme": "col-base",
+     "keepClear": true
+    }
+   ],
+   "groups": [
+    {
+     "id": "column-L0-body",
+     "name": "column",
+     "mirrors": true,
+     "shapeIds": [
+      "column-0"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "column-L1",
+   "name": "column run 1",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "column",
+   "shapes": [
+    {
+     "id": "column-1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -74,
+     "max_x": -21,
+     "max_z": -73,
+     "floor": 21,
+     "base_height": 6,
+     "theme": "col-shaft",
+     "keepClear": true
+    },
+    {
+     "id": "column-2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -75,
+     "max_x": -21,
+     "max_z": -74,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "col-shaft",
+     "keepClear": true
+    },
+    {
+     "id": "column-3",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "min_z": -74,
+     "max_x": -22,
+     "max_z": -73,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "col-shaft",
+     "keepClear": true
+    },
+    {
+     "id": "column-4",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -21,
+     "min_z": -74,
+     "max_x": -20,
+     "max_z": -73,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "col-shaft",
+     "keepClear": true
+    },
+    {
+     "id": "column-5",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -73,
+     "max_x": -21,
+     "max_z": -72,
+     "floor": 21,
+     "base_height": 1,
+     "theme": "col-shaft",
+     "keepClear": true
+    },
+    {
+     "id": "column-6",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "min_z": -75,
+     "max_x": -22,
+     "max_z": -74,
+     "floor": 27,
+     "base_height": 1,
+     "theme": "col-cap",
+     "keepClear": true
+    },
+    {
+     "id": "column-7",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -21,
+     "min_z": -75,
+     "max_x": -20,
+     "max_z": -74,
+     "floor": 27,
+     "base_height": 1,
+     "theme": "col-cap",
+     "keepClear": true
+    },
+    {
+     "id": "column-8",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "min_z": -73,
+     "max_x": -22,
+     "max_z": -72,
+     "floor": 27,
+     "base_height": 1,
+     "theme": "col-cap",
+     "keepClear": true
+    },
+    {
+     "id": "column-9",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -21,
+     "min_z": -73,
+     "max_x": -20,
+     "max_z": -72,
+     "floor": 27,
+     "base_height": 1,
+     "theme": "col-cap",
+     "keepClear": true
+    }
+   ],
+   "groups": [
+    {
+     "id": "column-L1-body",
+     "name": "column",
+     "mirrors": true,
+     "shapeIds": [
+      "column-1",
+      "column-2",
+      "column-3",
+      "column-4",
+      "column-5",
+      "column-6",
+      "column-7",
+      "column-8",
+      "column-9"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "column-L2",
+   "name": "column run 2",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "column",
+   "shapes": [
+    {
+     "id": "column-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -75,
+     "max_x": -21,
+     "max_z": -74,
+     "floor": 22,
+     "base_height": 4,
+     "theme": "poster-a",
+     "keepClear": true
+    },
+    {
+     "id": "column-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -73,
+     "max_x": -21,
+     "max_z": -72,
+     "floor": 22,
+     "base_height": 4,
+     "theme": "poster-b",
+     "keepClear": true
+    },
+    {
+     "id": "column-12",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "min_z": -74,
+     "max_x": -22,
+     "max_z": -73,
+     "floor": 22,
+     "base_height": 4,
+     "theme": "poster-c",
+     "keepClear": true
+    },
+    {
+     "id": "column-13",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -21,
+     "min_z": -74,
+     "max_x": -20,
+     "max_z": -73,
+     "floor": 22,
+     "base_height": 4,
+     "theme": "poster-d",
+     "keepClear": true
+    },
+    {
+     "id": "column-14",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -74,
+     "max_x": -21,
+     "max_z": -73,
+     "floor": 27,
+     "base_height": 2,
+     "theme": "col-cap",
+     "keepClear": true
+    }
+   ],
+   "groups": [
+    {
+     "id": "column-L2-body",
+     "name": "column",
+     "mirrors": true,
+     "shapeIds": [
+      "column-10",
+      "column-11",
+      "column-12",
+      "column-13",
+      "column-14"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "column-L3",
+   "name": "column run 3",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "column",
+   "shapes": [
+    {
+     "id": "column-15",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -75,
+     "max_x": -21,
+     "max_z": -74,
+     "floor": 26,
+     "base_height": 1,
+     "theme": "col-shaft",
+     "keepClear": true
+    },
+    {
+     "id": "column-16",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "min_z": -74,
+     "max_x": -22,
+     "max_z": -73,
+     "floor": 26,
+     "base_height": 1,
+     "theme": "col-shaft",
+     "keepClear": true
+    },
+    {
+     "id": "column-17",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -21,
+     "min_z": -74,
+     "max_x": -20,
+     "max_z": -73,
+     "floor": 26,
+     "base_height": 1,
+     "theme": "col-shaft",
+     "keepClear": true
+    },
+    {
+     "id": "column-18",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -73,
+     "max_x": -21,
+     "max_z": -72,
+     "floor": 26,
+     "base_height": 1,
+     "theme": "col-shaft",
+     "keepClear": true
+    }
+   ],
+   "groups": [
+    {
+     "id": "column-L3-body",
+     "name": "column",
+     "mirrors": true,
+     "shapeIds": [
+      "column-15",
+      "column-16",
+      "column-17",
+      "column-18"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "column-L4",
+   "name": "column run 4",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "column",
+   "shapes": [
+    {
+     "id": "column-19",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -75,
+     "max_x": -21,
+     "max_z": -74,
+     "floor": 27,
+     "base_height": 1,
+     "theme": "col-cap",
+     "keepClear": true
+    },
+    {
+     "id": "column-20",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "min_z": -74,
+     "max_x": -22,
+     "max_z": -73,
+     "floor": 27,
+     "base_height": 1,
+     "theme": "col-cap",
+     "keepClear": true
+    },
+    {
+     "id": "column-21",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -21,
+     "min_z": -74,
+     "max_x": -20,
+     "max_z": -73,
+     "floor": 27,
+     "base_height": 1,
+     "theme": "col-cap",
+     "keepClear": true
+    },
+    {
+     "id": "column-22",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -22,
+     "min_z": -73,
+     "max_x": -21,
+     "max_z": -72,
+     "floor": 27,
+     "base_height": 1,
+     "theme": "col-cap",
+     "keepClear": true
+    }
+   ],
+   "groups": [
+    {
+     "id": "column-L4-body",
+     "name": "column",
+     "mirrors": true,
+     "shapeIds": [
+      "column-19",
+      "column-20",
+      "column-21",
+      "column-22"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "piano-L0",
+   "name": "piano run 0",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "piano",
+   "shapes": [
+    {
+     "id": "piano-0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 24,
+     "min_z": -74,
+     "max_x": 31,
+     "max_z": -72,
+     "floor": 21,
+     "base_height": 5,
+     "theme": "piano",
+     "keepClear": true
+    },
+    {
+     "id": "piano-1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 27,
+     "min_z": -70,
+     "max_x": 28,
+     "max_z": -69,
+     "floor": 21,
+     "base_height": 2,
+     "theme": "piano",
+     "keepClear": true
+    },
+    {
+     "id": "piano-2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 24,
+     "min_z": -72,
+     "max_x": 31,
+     "max_z": -71,
+     "floor": 23,
+     "base_height": 1,
+     "theme": "piano-keys",
+     "keepClear": true
+    }
+   ],
+   "groups": [
+    {
+     "id": "piano-L0-body",
+     "name": "piano",
+     "mirrors": true,
+     "shapeIds": [
+      "piano-0",
+      "piano-1",
+      "piano-2"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "piano-L1",
+   "name": "piano run 1",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "piano",
+   "shapes": [
+    {
+     "id": "piano-3",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 24,
+     "min_z": -72,
+     "max_x": 31,
+     "max_z": -71,
+     "floor": 24,
+     "base_height": 1,
+     "theme": "piano",
+     "keepClear": true
+    }
+   ],
+   "groups": [
+    {
+     "id": "piano-L1-body",
+     "name": "piano",
+     "mirrors": true,
+     "shapeIds": [
+      "piano-3"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lamps-L0",
+   "name": "lamps run 0",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "lamps",
+   "shapes": [
+    {
+     "id": "lamps-0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -16,
+     "min_z": -77,
+     "max_x": -15,
+     "max_z": -76,
+     "floor": 20,
+     "base_height": 5,
+     "theme": "lamp-mast",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "min_z": -76,
+     "max_x": 7,
+     "max_z": -75,
+     "floor": 20,
+     "base_height": 5,
+     "theme": "lamp-mast",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -6,
+     "min_z": -71,
+     "max_x": -5,
+     "max_z": -70,
+     "floor": 20,
+     "base_height": 5,
+     "theme": "lamp-mast",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-3",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -21,
+     "min_z": -56,
+     "max_x": -20,
+     "max_z": -55,
+     "floor": 20,
+     "base_height": 5,
+     "theme": "lamp-mast",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-4",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -5,
+     "min_z": -56,
+     "max_x": -4,
+     "max_z": -55,
+     "floor": 20,
+     "base_height": 5,
+     "theme": "lamp-mast",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-5",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 11,
+     "min_z": -56,
+     "max_x": 12,
+     "max_z": -55,
+     "floor": 20,
+     "base_height": 5,
+     "theme": "lamp-mast",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-6",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -21,
+     "min_z": -45,
+     "max_x": -20,
+     "max_z": -44,
+     "floor": 20,
+     "base_height": 5,
+     "theme": "lamp-mast",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-7",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -5,
+     "min_z": -45,
+     "max_x": -4,
+     "max_z": -44,
+     "floor": 20,
+     "base_height": 5,
+     "theme": "lamp-mast",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-8",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 11,
+     "min_z": -45,
+     "max_x": 12,
+     "max_z": -44,
+     "floor": 20,
+     "base_height": 5,
+     "theme": "lamp-mast",
+     "keepClear": true
+    }
+   ],
+   "groups": [
+    {
+     "id": "lamps-L0-body",
+     "name": "lamps",
+     "mirrors": true,
+     "shapeIds": [
+      "lamps-0",
+      "lamps-1",
+      "lamps-2",
+      "lamps-3",
+      "lamps-4",
+      "lamps-5",
+      "lamps-6",
+      "lamps-7",
+      "lamps-8"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "lamps-L1",
+   "name": "lamps run 1",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "lamps",
+   "shapes": [
+    {
+     "id": "lamps-9",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -16,
+     "min_z": -77,
+     "max_x": -15,
+     "max_z": -76,
+     "floor": 25,
+     "base_height": 1,
+     "theme": "lamp-head",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "min_z": -76,
+     "max_x": 7,
+     "max_z": -75,
+     "floor": 25,
+     "base_height": 1,
+     "theme": "lamp-head",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -6,
+     "min_z": -71,
+     "max_x": -5,
+     "max_z": -70,
+     "floor": 25,
+     "base_height": 1,
+     "theme": "lamp-head",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-12",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -21,
+     "min_z": -56,
+     "max_x": -20,
+     "max_z": -55,
+     "floor": 25,
+     "base_height": 1,
+     "theme": "lamp-head",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-13",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -5,
+     "min_z": -56,
+     "max_x": -4,
+     "max_z": -55,
+     "floor": 25,
+     "base_height": 1,
+     "theme": "lamp-head",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-14",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 11,
+     "min_z": -56,
+     "max_x": 12,
+     "max_z": -55,
+     "floor": 25,
+     "base_height": 1,
+     "theme": "lamp-head",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-15",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -21,
+     "min_z": -45,
+     "max_x": -20,
+     "max_z": -44,
+     "floor": 25,
+     "base_height": 1,
+     "theme": "lamp-head",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-16",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -5,
+     "min_z": -45,
+     "max_x": -4,
+     "max_z": -44,
+     "floor": 25,
+     "base_height": 1,
+     "theme": "lamp-head",
+     "keepClear": true
+    },
+    {
+     "id": "lamps-17",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 11,
+     "min_z": -45,
+     "max_x": 12,
+     "max_z": -44,
+     "floor": 25,
+     "base_height": 1,
+     "theme": "lamp-head",
+     "keepClear": true
+    }
+   ],
+   "groups": [
+    {
+     "id": "lamps-L1-body",
+     "name": "lamps",
+     "mirrors": true,
+     "shapeIds": [
+      "lamps-9",
+      "lamps-10",
+      "lamps-11",
+      "lamps-12",
+      "lamps-13",
+      "lamps-14",
+      "lamps-15",
+      "lamps-16",
+      "lamps-17"
+     ]
+    }
+   ]
+  }
+ ],
+ "roomStyles": {
+  "spawn": "@lk-spawn"
+ },
+ "dressing": {
+  "props": [
+   {
+    "id": "hs-w1",
+    "kind": "house",
+    "seed": 20,
+    "front": "posX",
+    "style": "@lk-terrace",
+    "wings": [
+     {
+      "corners": [
+       [
+        -37,
+        -63
+       ],
+       [
+        -28,
+        -55
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "hs-w2",
+    "kind": "house",
+    "seed": 21,
+    "front": "posX",
+    "style": "@lk-terrace",
+    "wings": [
+     {
+      "corners": [
+       [
+        -37,
+        -49
+       ],
+       [
+        -28,
+        -41
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "hs-e1",
+    "kind": "house",
+    "seed": 22,
+    "front": "negX",
+    "style": "@lk-terrace",
+    "wings": [
+     {
+      "corners": [
+       [
+        28,
+        -63
+       ],
+       [
+        37,
+        -55
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "hs-e2",
+    "kind": "house",
+    "seed": 23,
+    "front": "negX",
+    "style": "@lk-terrace",
+    "wings": [
+     {
+      "corners": [
+       [
+        28,
+        -49
+       ],
+       [
+        37,
+        -41
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "hs-n1",
+    "kind": "house",
+    "seed": 24,
+    "front": "posZ",
+    "style": "@lk-terrace",
+    "wings": [
+     {
+      "corners": [
+       [
+        -40,
+        -98
+       ],
+       [
+        -29,
+        -89
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "hs-n2",
+    "kind": "house",
+    "seed": 25,
+    "front": "posZ",
+    "style": "@lk-terrace",
+    "wings": [
+     {
+      "corners": [
+       [
+        27,
+        -98
+       ],
+       [
+        38,
+        -89
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "ks-w",
+    "kind": "house",
+    "seed": 26,
+    "front": "posZ",
+    "style": "@lk-kiosk",
+    "wings": [
+     {
+      "corners": [
+       [
+        -41,
+        -79
+       ],
+       [
+        -34,
+        -74
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "ks-e",
+    "kind": "house",
+    "seed": 27,
+    "front": "posZ",
+    "style": "@lk-kiosk",
+    "wings": [
+     {
+      "corners": [
+       [
+        34,
+        -79
+       ],
+       [
+        41,
+        -74
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "t0",
+    "kind": "tree",
+    "seed": 300,
+    "x": -42,
+    "z": -70,
+    "form": "template",
+    "species": "oak",
+    "height": 8
+   },
+   {
+    "id": "t1",
+    "kind": "tree",
+    "seed": 301,
+    "x": -36,
+    "z": -70,
+    "form": "template",
+    "species": "oak",
+    "height": 7
+   },
+   {
+    "id": "t2",
+    "kind": "tree",
+    "seed": 302,
+    "x": -30,
+    "z": -70,
+    "form": "template",
+    "species": "oak",
+    "height": 9
+   },
+   {
+    "id": "t3",
+    "kind": "tree",
+    "seed": 303,
+    "x": 36,
+    "z": -70,
+    "form": "template",
+    "species": "oak",
+    "height": 7
+   },
+   {
+    "id": "t4",
+    "kind": "tree",
+    "seed": 304,
+    "x": 42,
+    "z": -70,
+    "form": "template",
+    "species": "oak",
+    "height": 9
+   },
+   {
+    "id": "t5",
+    "kind": "tree",
+    "seed": 305,
+    "x": -44,
+    "z": -85,
+    "form": "template",
+    "species": "oak",
+    "height": 8
+   },
+   {
+    "id": "t6",
+    "kind": "tree",
+    "seed": 306,
+    "x": 44,
+    "z": -85,
+    "form": "template",
+    "species": "oak",
+    "height": 8
+   },
+   {
+    "id": "t7",
+    "kind": "tree",
+    "seed": 307,
+    "x": -20,
+    "z": -84,
+    "form": "template",
+    "species": "oak",
+    "height": 7
+   },
+   {
+    "id": "t8",
+    "kind": "tree",
+    "seed": 308,
+    "x": 20,
+    "z": -84,
+    "form": "template",
+    "species": "oak",
+    "height": 7
+   },
+   {
+    "id": "t9",
+    "kind": "tree",
+    "seed": 309,
+    "x": -41,
+    "z": -29,
+    "form": "template",
+    "species": "oak",
+    "height": 9
+   },
+   {
+    "id": "t10",
+    "kind": "tree",
+    "seed": 310,
+    "x": -33,
+    "z": -29,
+    "form": "template",
+    "species": "oak",
+    "height": 7
+   },
+   {
+    "id": "t11",
+    "kind": "tree",
+    "seed": 311,
+    "x": -24,
+    "z": -29,
+    "form": "template",
+    "species": "oak",
+    "height": 8
+   },
+   {
+    "id": "t12",
+    "kind": "tree",
+    "seed": 312,
+    "x": -16,
+    "z": -29,
+    "form": "template",
+    "species": "oak",
+    "height": 7
+   },
+   {
+    "id": "t13",
+    "kind": "tree",
+    "seed": 313,
+    "x": 16,
+    "z": -29,
+    "form": "template",
+    "species": "oak",
+    "height": 7
+   },
+   {
+    "id": "t14",
+    "kind": "tree",
+    "seed": 314,
+    "x": 24,
+    "z": -29,
+    "form": "template",
+    "species": "oak",
+    "height": 8
+   },
+   {
+    "id": "t15",
+    "kind": "tree",
+    "seed": 315,
+    "x": 33,
+    "z": -29,
+    "form": "template",
+    "species": "oak",
+    "height": 7
+   },
+   {
+    "id": "t16",
+    "kind": "tree",
+    "seed": 316,
+    "x": 41,
+    "z": -29,
+    "form": "template",
+    "species": "oak",
+    "height": 9
+   },
+   {
+    "id": "fl-garden-w",
+    "kind": "flora",
+    "seed": 71,
+    "points": [
+     [
+      -44,
+      -64
+     ],
+     [
+      -26,
+      -64
+     ],
+     [
+      -26,
+      -36
+     ],
+     [
+      -44,
+      -36
+     ]
+    ],
+    "spec": {
+     "coverage": 0.4,
+     "scale": 8,
+     "octaves": 2,
+     "fernShare": 0.15,
+     "flowerShare": 0.08,
+     "flowerScale": 11,
+     "tallShare": 0.25
+    }
+   },
+   {
+    "id": "fl-garden-e",
+    "kind": "flora",
+    "seed": 72,
+    "points": [
+     [
+      26,
+      -64
+     ],
+     [
+      44,
+      -64
+     ],
+     [
+      44,
+      -36
+     ],
+     [
+      26,
+      -36
+     ]
+    ],
+    "spec": {
+     "coverage": 0.4,
+     "scale": 8,
+     "octaves": 2,
+     "fernShare": 0.15,
+     "flowerShare": 0.08,
+     "flowerScale": 11,
+     "tallShare": 0.25
+    }
+   },
+   {
+    "id": "fl-plaza",
+    "kind": "flora",
+    "seed": 73,
+    "points": [
+     [
+      -44,
+      -73
+     ],
+     [
+      -28,
+      -73
+     ],
+     [
+      -28,
+      -68
+     ],
+     [
+      -44,
+      -68
+     ]
+    ],
+    "spec": {
+     "coverage": 0.5,
+     "scale": 7,
+     "octaves": 2,
+     "fernShare": 0.1,
+     "flowerShare": 0.12,
+     "flowerScale": 9,
+     "tallShare": 0.3
+    }
+   },
+   {
+    "id": "fl-cutting-w",
+    "kind": "flora",
+    "seed": 74,
+    "points": [
+     [
+      -44,
+      -32
+     ],
+     [
+      -14,
+      -32
+     ],
+     [
+      -14,
+      -26
+     ],
+     [
+      -44,
+      -26
+     ]
+    ],
+    "spec": {
+     "coverage": 0.45,
+     "scale": 7,
+     "octaves": 2,
+     "fernShare": 0.1,
+     "flowerShare": 0.1,
+     "flowerScale": 9,
+     "tallShare": 0.3
+    }
+   },
+   {
+    "id": "fl-cutting-e",
+    "kind": "flora",
+    "seed": 75,
+    "points": [
+     [
+      14,
+      -32
+     ],
+     [
+      44,
+      -32
+     ],
+     [
+      44,
+      -26
+     ],
+     [
+      14,
+      -26
+     ]
+    ],
+    "spec": {
+     "coverage": 0.45,
+     "scale": 7,
+     "octaves": 2,
+     "fernShare": 0.1,
+     "flowerShare": 0.1,
+     "flowerScale": 9,
+     "tallShare": 0.3
+    }
+   }
+  ]
+ }
+}

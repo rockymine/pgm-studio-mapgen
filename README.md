@@ -294,6 +294,20 @@ it by hand, and that finished world is the first board here that was **not** bui
 their own platforms, the measured ground truth behind `pgm-studio/docs/world-export/tree-corpus.md`, and now
 the world `pgm-studio/tools/seed-trees.cs` cuts copied tree recipes out of.
 
+### Opus 5 — a board to the author's own brief, with a community map read first
+
+The first board here authored to a list of things rather than to a shape, and the first whose references
+are maps this repository does not hold. The brief named minuyo's boards in `CommunityMaps` for their
+angularity and *Fox Dream* for its houses, so the run began by **reading a finished community map with the
+world tools** — `anvil.py` for a census and a surface read, `probe.py` for what its body is laid in, and a
+section cut through one of its houses for the palette `@lk-terrace` forks. `import-folder` cannot take a map
+that already carries a `map.xml`; that is the route working as specified, and it is why the reading was done
+with the tools rather than through the API. [reports/opus5-lindenkreuz-run.md](reports/opus5-lindenkreuz-run.md)
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5-lindenkreuz` | dtm | Opus 5 | **90 × 200, and it carries no relief at all** — every height on it is stated, which is what makes it angular and what lets thirty 5 × 3 cars state an absolute floor and land on the tarmac rather than in it. Two city blocks either side of a twenty-block gorge joined by one railway bridge: a car park marked into 36 bays with the monument standing in one of them, a Litfaßsäule and a nether-brick piano on the station forecourt, terrace houses on two raised garden blocks, and an S-Bahn in a **cut-and-cover tunnel** — a trench cut by an override add, a lid that has to be a layer of its own, a switchback stair down to the platform — that comes up a ramp in an open cutting and goes on over the bridge |
+
 ## Three caveats about what is committed here
 
 **`*` — the mode is wrong, and the map is not.** Every board marked `ctw*` is a destroy board whose `map.xml`

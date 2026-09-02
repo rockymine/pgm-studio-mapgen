@@ -1,0 +1,29 @@
+THEMES  9 themes over 16640 ground cells, 18 distinct surface blocks
+  city  8684 cells (52.2%)  159:8 Light Gray Stained Clay, 1:0 Stone, 43:8 Double Stone Slab, 98:3 Chiseled Stone Bricks, 5:1 Spruce Planks, 98:0 Stone Bricks, 45:0 Bricks, 35:14 Red Wool, 35:11 Blue Wool
+  garden  3102 cells (18.6%)  2:0 Grass Block, 45:0 Bricks, 5:1 Spruce Planks, 3:1 Coarse Dirt, 98:0 Stone Bricks
+  tarmac  2092 cells (12.6%)  159:7 Gray Stained Clay, 159:8 Light Gray Stained Clay, 43:8 Double Stone Slab
+  ballast  794 cells (4.8%)  13:0 Gravel, 4:0 Cobblestone
+  line  648 cells (3.9%)  159:0 White Stained Clay
+  coping  480 cells (2.9%)  43:8 Double Stone Slab
+  concrete  336 cells (2.0%)  98:0 Stone Bricks, 98:2 Cracked Stone Bricks
+  steel  328 cells (2.0%)  1:6 Polished Andesite
+  stage  176 cells (1.1%)  155:0 Quartz Block
+borders:
+  line | tarmac  1232 cells
+  city | garden  658 cells
+  ballast | steel  382 cells
+  city | coping  304 cells
+  concrete | steel  230 cells
+  city | tarmac  188 cells
+  coping | garden  120 cells
+  ballast | coping  98 cells
+  city | stage  76 cells
+  coping | tarmac  62 cells
+  coping | steel  48 cells
+  coping | line  42 cells
+  city | line  34 cells
+  ballast | tarmac  34 cells
+  concrete | coping  30 cells
+  ballast | concrete  24 cells
+  city | concrete  22 cells
+  steel | tarmac  8 cells

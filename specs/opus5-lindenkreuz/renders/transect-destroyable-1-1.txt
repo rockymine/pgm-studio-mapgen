@@ -1,0 +1,61 @@
+## destroyable-1-1 (destroyable) along x
+TRANSECT 25 stations from (2, 50) to (26, 50), every 1
+  station        ground  surface  water  top  standing            step
+  (    2,    50)      20       20           20                      
+  (    3,    50)      20       20           20                      
+  (    4,    50)      20       20           20                      
+  (    5,    50)      20       24           24  storey              BARRIER +4
+  (    6,    50)      20       24           24  storey              
+  (    7,    50)      20       24           24  storey              
+  (    8,    50)      20       20           20                      DROP -4
+  (    9,    50)      20       20           20                      
+  (   10,    50)      20       20           20                      
+  (   11,    50)      20       20           20                      
+  (   12,    50)      20       20           20  destroyable destroyable-1#1  
+  (   13,    50)      20       20           62  destroyable destroyable-1#1  
+  (   14,    50)      20       20           63  destroyable destroyable-1#1  
+  (   15,    50)      20       20           62  destroyable destroyable-1#1  
+  (   16,    50)      20       20           20  destroyable destroyable-1#1  
+  (   17,    50)      20       20           20                      
+  (   18,    50)      20       20           20                      
+  (   19,    50)      20       20           20                      
+  (   20,    50)      20       20           20                      
+  (   21,    50)      20       24           24  storey              BARRIER +4
+  (   22,    50)      20       24           24  storey              
+  (   23,    50)      20       24           24  storey              
+  (   24,    50)      20       20           20                      DROP -4
+  (   25,    50)      24       24           24                      BARRIER +4
+  (   26,    50)      24       24           24                      
+rises 3, falls 2, worst step 4: 3 barrier, 0 scramble, 2 drop — BARRIER +4 at (5, 50); DROP -4 at (8, 50); BARRIER +4 at (21, 50); DROP -4 at (24, 50); BARRIER +4 at (25, 50) | walked end to end
+beside: destroyable destroyable-1#1 at (12, 48), house hs-w2#1 at (26, 48), flora fl-garden-w#1 at (27, 51)
+
+## destroyable-1-1 (destroyable) along z
+TRANSECT 25 stations from (14, 38) to (14, 62), every 1
+  station        ground  surface  water  top  standing            step
+  (   14,    38)      20       20           20                      
+  (   14,    39)      20       20           20                      
+  (   14,    40)      20       20           20                      
+  (   14,    41)      20       20           20                      
+  (   14,    42)      20       20           20                      
+  (   14,    43)      20       20           20                      
+  (   14,    44)      20       20           20                      
+  (   14,    45)      20       20           20                      
+  (   14,    46)      20       20           20                      
+  (   14,    47)      20       20           20                      
+  (   14,    48)      20       20           20  destroyable destroyable-1#1  
+  (   14,    49)      20       20           62  destroyable destroyable-1#1  
+  (   14,    50)      20       20           63  destroyable destroyable-1#1  
+  (   14,    51)      20       20           62  destroyable destroyable-1#1  
+  (   14,    52)      20       20           20  destroyable destroyable-1#1  
+  (   14,    53)      20       20           20                      
+  (   14,    54)      20       20           20                      
+  (   14,    55)      20       20           20                      
+  (   14,    56)      20       20           20                      
+  (   14,    57)      20       20           20                      
+  (   14,    58)      20       20           20                      
+  (   14,    59)      20       20           20                      
+  (   14,    60)      20       20           20                      
+  (   14,    61)      20       20           20                      
+  (   14,    62)      20       20           20                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable destroyable-1#1 at (12, 48)

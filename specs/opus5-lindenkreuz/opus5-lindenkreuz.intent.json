@@ -1,0 +1,143 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 24,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 20,
+    "z": -90
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -100,
+     "maxX": 10,
+     "maxZ": -80
+    }
+   ],
+   "yaw": 0,
+   "footprint": null,
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 20,
+    "z": 90
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 80,
+     "maxX": 10,
+     "maxZ": 100
+    }
+   ],
+   "yaw": 180,
+   "footprint": null,
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 64,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -45,
+    "minZ": -15,
+    "maxX": 45,
+    "maxZ": 15
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Parking Meter",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -15,
+    "y": 20,
+    "z": -51
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Parking Meter",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 14,
+    "y": 20,
+    "z": 50
+   },
+   "float": 2,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Lindenkreuz",
+  "created": "2026-09-02",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}

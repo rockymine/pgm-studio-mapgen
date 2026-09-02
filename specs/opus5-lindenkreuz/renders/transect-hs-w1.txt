@@ -1,0 +1,62 @@
+## hs-w1 (house) along x
+TRANSECT 26 stations from (-45, -59) to (-20, -59), every 1
+  station        ground  surface  water  top  standing            step
+  (  -45,   -59)      22       22           22                      
+  (  -44,   -59)      22       22           22                      
+  (  -43,   -59)      22       22           22                      
+  (  -42,   -59)      22       22           22                      
+  (  -41,   -59)      24       24           24                      scramble +2
+  (  -40,   -59)      24       24           26  flora fl-garden-w   
+  (  -39,   -59)      24       24           24                      
+  (  -38,   -59)      24       24           36  house hs-w1         
+  (  -37,   -59)      24       24           36  house hs-w1         
+  (  -36,   -59)      24       24           36  house hs-w1         
+  (  -35,   -59)      24       24           36  house hs-w1         
+  (  -34,   -59)      24       24           36  house hs-w1         
+  (  -33,   -59)      24       24           36  house hs-w1         
+  (  -32,   -59)      24       24           36  house hs-w1         
+  (  -31,   -59)      24       24           36  house hs-w1         
+  (  -30,   -59)      24       24           36  house hs-w1         
+  (  -29,   -59)      24       24           36  house hs-w1         
+  (  -28,   -59)      24       24           36  house hs-w1         
+  (  -27,   -59)      24       24           36  house hs-w1         
+  (  -26,   -59)      24       24           24                      
+  (  -25,   -59)      20       20           20                      DROP -4
+  (  -24,   -59)      20       20           20                      
+  (  -23,   -59)      20       20           20                      
+  (  -22,   -59)      20       20           20                      
+  (  -21,   -59)      20       20           20                      
+  (  -20,   -59)      20       20           20                      
+rises 1, falls 1, worst step 4: 0 barrier, 1 scramble, 1 drop — scramble +2 at (-41, -59); DROP -4 at (-25, -59) | walked end to end
+beside: flora fl-garden-w at (-40, -61), house hs-w1 at (-38, -61)
+
+## hs-w1 (house) along z
+TRANSECT 25 stations from (-33, -71) to (-33, -47), every 1
+  station        ground  surface  water  top  standing            step
+  (  -33,   -71)      20       20           27  tree t2             
+  (  -33,   -70)      20       20           28  tree t2             
+  (  -33,   -69)      20       20           20                      
+  (  -33,   -68)      20       20           20                      
+  (  -33,   -67)      20       20           20                      
+  (  -33,   -66)      20       20           20                      
+  (  -33,   -65)      24       24           24                      BARRIER +4
+  (  -33,   -64)      24       24           34  house hs-w1         
+  (  -33,   -63)      24       24           34  house hs-w1         
+  (  -33,   -62)      24       24           35  house hs-w1         
+  (  -33,   -61)      24       24           35  house hs-w1         
+  (  -33,   -60)      24       24           36  house hs-w1         
+  (  -33,   -59)      24       24           36  house hs-w1         
+  (  -33,   -58)      24       24           36  house hs-w1         
+  (  -33,   -57)      24       24           35  house hs-w1         
+  (  -33,   -56)      24       24           35  house hs-w1         
+  (  -33,   -55)      24       24           34  house hs-w1         
+  (  -33,   -54)      24       24           34  house hs-w1         
+  (  -33,   -53)      24       24           24                      
+  (  -33,   -52)      24       24           25  flora fl-garden-w   
+  (  -33,   -51)      24       24           24                      
+  (  -33,   -50)      24       24           34  house hs-w2         
+  (  -33,   -49)      24       24           34  house hs-w2         
+  (  -33,   -48)      24       24           35  house hs-w2         
+  (  -33,   -47)      24       24           35  house hs-w2         
+rises 1, falls 0, worst step 4: 1 barrier, 0 scramble, 0 drop — BARRIER +4 at (-33, -65) | walked end to end
+beside: house ks-w at (-35, -73), flora fl-plaza at (-31, -73), tree t1 at (-35, -72), tree t2 at (-32, -72), house hs-w1 at (-35, -64), flora fl-garden-w at (-35, -52), house hs-w2 at (-35, -50)

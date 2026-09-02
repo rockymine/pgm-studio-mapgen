@@ -1,0 +1,51 @@
+## column (made) along x
+TRANSECT 20 stations from (-31, -74) to (-12, -74), every 1
+  station        ground  surface  water  top  standing            step
+  (  -31,   -74)      20       20           20                      
+  (  -30,   -74)      20       20           20                      
+  (  -29,   -74)      20       20           20                      
+  (  -28,   -74)      20       20           20                      
+  (  -27,   -74)      20       20           20                      
+  (  -26,   -74)      20       20           20                      
+  (  -25,   -74)      20       20           20                      
+  (  -24,   -74)      20       20           20                      
+  (  -23,   -74)      20       28           28  storey              BARRIER +8
+  (  -22,   -74)      20       29           29  storey              +1
+  (  -21,   -74)      20       28           28  storey              -1
+  (  -20,   -74)      20       20           20                      DROP -8
+  (  -19,   -74)      20       20           20                      
+  (  -18,   -74)      20       20           20                      
+  (  -17,   -74)      20       20           20                      
+  (  -16,   -74)      20       20           20                      
+  (  -15,   -74)      20       20           20                      
+  (  -14,   -74)      20       20           20                      
+  (  -13,   -74)      20       20           20                      
+  (  -12,   -74)      20       20           20                      
+rises 2, falls 2, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (-23, -74); DROP -8 at (-20, -74) | walked end to end
+beside: house ks-w at (-33, -76), flora fl-plaza at (-31, -73), tree t2 at (-32, -72)
+
+## column (made) along z
+TRANSECT 20 stations from (-22, -83) to (-22, -64), every 1
+  station        ground  surface  water  top  standing            step
+  (  -22,   -83)      20       20           25  tree t7             
+  (  -22,   -82)      20       20           20                      
+  (  -22,   -81)      20       20           20                      
+  (  -22,   -80)      20       20           20                      
+  (  -22,   -79)      20       20           20                      
+  (  -22,   -78)      20       20           20                      
+  (  -22,   -77)      20       20           20                      
+  (  -22,   -76)      20       20           20                      
+  (  -22,   -75)      20       28           28  storey              BARRIER +8
+  (  -22,   -74)      20       29           29  storey              +1
+  (  -22,   -73)      20       28           28  storey              -1
+  (  -22,   -72)      20       20           20                      DROP -8
+  (  -22,   -71)      20       20           20                      
+  (  -22,   -70)      20       20           20                      
+  (  -22,   -69)      20       20           20                      
+  (  -22,   -68)      20       20           20                      
+  (  -22,   -67)      20       20           20                      
+  (  -22,   -66)      20       20           20                      
+  (  -22,   -65)      20       20           20                      
+  (  -22,   -64)      20       23           23  storey              BARRIER +3
+rises 3, falls 2, worst step 8: 2 barrier, 0 scramble, 1 drop — BARRIER +8 at (-22, -75); DROP -8 at (-22, -72); BARRIER +3 at (-22, -64) | walked end to end
+beside: tree t7 at (-22, -85)

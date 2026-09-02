@@ -1,0 +1,61 @@
+## hs-e1 (house) along x
+TRANSECT 25 stations from (20, -59) to (44, -59), every 1
+  station        ground  surface  water  top  standing            step
+  (   20,   -59)      20       20           20                      
+  (   21,   -59)      20       20           20                      
+  (   22,   -59)      20       20           20                      
+  (   23,   -59)      20       20           20                      
+  (   24,   -59)      20       20           20                      
+  (   25,   -59)      24       24           24                      BARRIER +4
+  (   26,   -59)      24       24           24                      
+  (   27,   -59)      24       24           36  house hs-e1         
+  (   28,   -59)      24       24           36  house hs-e1         
+  (   29,   -59)      24       24           36  house hs-e1         
+  (   30,   -59)      24       24           36  house hs-e1         
+  (   31,   -59)      24       24           36  house hs-e1         
+  (   32,   -59)      24       24           36  house hs-e1         
+  (   33,   -59)      24       24           36  house hs-e1         
+  (   34,   -59)      24       24           36  house hs-e1         
+  (   35,   -59)      24       24           36  house hs-e1         
+  (   36,   -59)      24       24           36  house hs-e1         
+  (   37,   -59)      24       24           36  house hs-e1         
+  (   38,   -59)      24       24           36  house hs-e1         
+  (   39,   -59)      24       24           24                      
+  (   40,   -59)      24       24           24                      
+  (   41,   -59)      22       22           22                      -2
+  (   42,   -59)      22       22           22                      
+  (   43,   -59)      22       22           22                      
+  (   44,   -59)      22       22           22                      
+rises 1, falls 1, worst step 4: 1 barrier, 0 scramble, 0 drop — BARRIER +4 at (25, -59) | walked end to end
+beside: house hs-e1 at (27, -61)
+
+## hs-e1 (house) along z
+TRANSECT 25 stations from (32, -71) to (32, -47), every 1
+  station        ground  surface  water  top  standing            step
+  (   32,   -71)      21       21           21                      
+  (   32,   -70)      20       20           20                      -1
+  (   32,   -69)      20       20           20                      
+  (   32,   -68)      20       20           20                      
+  (   32,   -67)      20       20           20                      
+  (   32,   -66)      20       20           20                      
+  (   32,   -65)      24       24           24                      BARRIER +4
+  (   32,   -64)      24       24           34  house hs-e1         
+  (   32,   -63)      24       24           34  house hs-e1         
+  (   32,   -62)      24       24           35  house hs-e1         
+  (   32,   -61)      24       24           35  house hs-e1         
+  (   32,   -60)      24       24           36  house hs-e1         
+  (   32,   -59)      24       24           36  house hs-e1         
+  (   32,   -58)      24       24           36  house hs-e1         
+  (   32,   -57)      24       24           35  house hs-e1         
+  (   32,   -56)      24       24           35  house hs-e1         
+  (   32,   -55)      24       24           34  house hs-e1         
+  (   32,   -54)      24       24           34  house hs-e1         
+  (   32,   -53)      24       24           24                      
+  (   32,   -52)      24       24           24                      
+  (   32,   -51)      24       24           24                      
+  (   32,   -50)      24       24           34  house hs-e2         
+  (   32,   -49)      24       24           34  house hs-e2         
+  (   32,   -48)      24       24           35  house hs-e2         
+  (   32,   -47)      24       24           35  house hs-e2         
+rises 1, falls 1, worst step 4: 1 barrier, 0 scramble, 0 drop — BARRIER +4 at (32, -65) | walked end to end
+beside: house ks-e at (33, -73), tree t3 at (34, -70), house hs-e1 at (30, -64), house hs-e2 at (30, -50)

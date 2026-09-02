@@ -1,0 +1,141 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Lindenkreuz"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 24,
+  "surface": 20,
+  "observerY": 64
+ },
+ "pieces": [
+  {
+   "id": "stn",
+   "role": "spawn",
+   "rect": [
+    -2,
+    -20,
+    4,
+    4
+   ],
+   "surface": 20
+  },
+  {
+   "id": "street-w",
+   "role": "piece",
+   "rect": [
+    -9,
+    -20,
+    7,
+    4
+   ],
+   "surface": 20
+  },
+  {
+   "id": "street-e",
+   "role": "piece",
+   "rect": [
+    2,
+    -20,
+    7,
+    4
+   ],
+   "surface": 20
+  },
+  {
+   "id": "forecourt",
+   "role": "piece",
+   "rect": [
+    -9,
+    -16,
+    18,
+    3
+   ],
+   "surface": 20
+  },
+  {
+   "id": "garden-w",
+   "role": "piece",
+   "rect": [
+    -9,
+    -13,
+    4,
+    6
+   ],
+   "surface": 24
+  },
+  {
+   "id": "carpark",
+   "role": "piece",
+   "rect": [
+    -5,
+    -13,
+    10,
+    6
+   ],
+   "surface": 20
+  },
+  {
+   "id": "garden-e",
+   "role": "piece",
+   "rect": [
+    5,
+    -13,
+    4,
+    6
+   ],
+   "surface": 24
+  },
+  {
+   "id": "cutting",
+   "role": "piece",
+   "rect": [
+    -9,
+    -7,
+    18,
+    5
+   ],
+   "surface": 20
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid",
+   "rect": [
+    -9,
+    -3,
+    18,
+    6
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "stn",
+    "at": [
+     10,
+     10
+    ],
+    "facing": "back"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "at": [
+     -15,
+     -51
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 2,
+    "name": "Parking Meter"
+   }
+  ]
+ }
+}

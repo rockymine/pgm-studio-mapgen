@@ -1,0 +1,57 @@
+## piano (made) along x
+TRANSECT 24 stations from (16, -72) to (39, -72), every 1
+  station        ground  surface  water  top  standing            step
+  (   16,   -72)      16       16           16                      
+  (   17,   -72)      16       16           16                      
+  (   18,   -72)      16       16           16                      
+  (   19,   -72)      20       20           20                      BARRIER +4
+  (   20,   -72)      20       20           20                      
+  (   21,   -72)      20       20           20                      
+  (   22,   -72)      21       21           21                      +1
+  (   23,   -72)      21       21           21                      
+  (   24,   -72)      21       25           25  storey              BARRIER +4
+  (   25,   -72)      21       25           25  storey              
+  (   26,   -72)      21       25           25  storey              
+  (   27,   -72)      21       25           25  storey              
+  (   28,   -72)      21       25           25  storey              
+  (   29,   -72)      21       25           25  storey              
+  (   30,   -72)      21       25           25  storey              
+  (   31,   -72)      21       21           21                      DROP -4
+  (   32,   -72)      21       21           21                      
+  (   33,   -72)      20       20           20                      -1
+  (   34,   -72)      20       20           20                      
+  (   35,   -72)      20       20           20                      
+  (   36,   -72)      20       20           26  tree t3             
+  (   37,   -72)      20       20           25  tree t3             
+  (   38,   -72)      20       20           20                      
+  (   39,   -72)      20       20           20                      
+rises 3, falls 2, worst step 4: 2 barrier, 0 scramble, 1 drop — BARRIER +4 at (19, -72); BARRIER +4 at (24, -72); DROP -4 at (31, -72) | walked end to end
+beside: house ks-e at (33, -74), tree t3 at (34, -70), tree t4 at (39, -70)
+
+## piano (made) along z
+TRANSECT 22 stations from (27, -82) to (27, -61), every 1
+  station        ground  surface  water  top  standing            step
+  (   27,   -82)      20       20           20                      
+  (   27,   -81)      20       20           20                      
+  (   27,   -80)      20       20           20                      
+  (   27,   -79)      20       20           20                      
+  (   27,   -78)      21       21           21                      +1
+  (   27,   -77)      21       21           21                      
+  (   27,   -76)      21       21           21                      
+  (   27,   -75)      21       21           21                      
+  (   27,   -74)      21       26           26  storey              BARRIER +5
+  (   27,   -73)      21       26           26  storey              
+  (   27,   -72)      21       25           25  storey              -1
+  (   27,   -71)      21       21           21                      DROP -4
+  (   27,   -70)      20       23           23  storey              scramble +2
+  (   27,   -69)      20       20           20                      -3
+  (   27,   -68)      20       20           20                      
+  (   27,   -67)      20       20           20                      
+  (   27,   -66)      20       20           20                      
+  (   27,   -65)      24       24           24                      BARRIER +4
+  (   27,   -64)      24       24           34  house hs-e1         
+  (   27,   -63)      24       24           34  house hs-e1         
+  (   27,   -62)      24       24           35  house hs-e1         
+  (   27,   -61)      24       24           35  house hs-e1         
+rises 4, falls 3, worst step 5: 2 barrier, 1 scramble, 1 drop — BARRIER +5 at (27, -74); DROP -4 at (27, -71); scramble +2 at (27, -70); BARRIER +4 at (27, -65) | walked end to end
+beside: house hs-e1 at (27, -64)
