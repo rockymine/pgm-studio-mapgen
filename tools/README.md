@@ -6,7 +6,11 @@
 python3 tools/drive.py specs/<slug> "<Map Name>" --out <worlddir> [--slug <slug>] [--dry]
 ```
 
-`PGM_STUDIO_API` overrides the endpoint (default `http://localhost:7894/api`).
+`PGM_STUDIO_API` states the endpoint. With nothing stated the driver **discovers** it: it asks
+`GET /api/health` at `localhost:7894`, `localhost:5189` and `localhost:5000` in turn and prints which
+one answered. Where the studio listens is a fact about the machine and it has been a different port on
+every environment the boards here were built on, so a constant is a connection error that says nothing
+about what to set.
 
 The directory's own name is the slug the map is stored under unless `--slug` says otherwise, so re-driving a
 corrected spec **replaces** the map it had rather than leaving a second one beside it.
@@ -153,6 +157,14 @@ which features get a transect, which spawn walks to which goal):
 | `04-routes.txt` | each team's walk to each goal, from `GET …/walk?format=text&beside=2`: the storey the walk stood on at every place, every step that left a walk, and what stands within two blocks of the route — the read for a thing thrown in the players' way |
 | `05-themes.txt` | `GET …/themes/census?format=text`: cells and share per theme, the materials each spends, and which theme borders which over how many cells — the number for a board that mashes its themes |
 | `06-claims.txt` | `POST …/sketch/dressing?format=text`: every cell of the board as the digit of what claims it — a prop, a goal's clearance, a keep-out, or free — so a candidate site is looked up rather than tried |
+
+**And the run ends with the three numbers, not with a picture.** `== the three numbers, before the
+pictures` prints `03-slopes.txt`'s `cells: N walked, N scrambled, N barrier`, `06-claims.txt`'s
+`placed N, declined N`, and the worst step on any spawn-to-goal route out of `04-routes.txt`. The text
+reads have been written beside the pictures since the pass existed and the run reports say they go
+unread — a picture is one look and a 90 × 200 character grid is a question about which rows — so the
+three that need no slicing are the last thing in the transcript, each naming the file the rest of the
+answer is in.
 
 The summaries — one line per transect and per route — are printed inline under `== the board as text`, so
 they are in the transcript without a file being opened, and the extent of every transect comes from the

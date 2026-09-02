@@ -76,8 +76,38 @@ not read.
 """
 import json, math, re, sys, io, zipfile, urllib.request, urllib.error, os, shutil
 
-API = os.environ.get("PGM_STUDIO_API", "http://localhost:7894/api")
 STYLES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "styles")
+
+# Where the studio answers is a fact about the machine, not about this repository, and it has been a
+# different port on every environment the boards here were built on. So it is DISCOVERED rather than
+# defaulted: `PGM_STUDIO_API` wins outright and is not probed, and with nothing stated the candidates
+# below are asked `GET /api/health` in turn. A wrong constant is worse than no constant -- it fails at
+# the first call with a connection error that says nothing about what to set.
+CANDIDATES = ["http://localhost:7894/api", "http://localhost:5189/api", "http://localhost:5000/api"]
+_api = None
+
+
+def endpoint():
+    """The studio's base URL, resolved once and printed when it was found rather than told."""
+    global _api
+    if _api is not None:
+        return _api
+    stated = os.environ.get("PGM_STUDIO_API")
+    if stated:
+        _api = stated.rstrip("/")
+        return _api
+    for candidate in CANDIDATES:
+        try:
+            with urllib.request.urlopen(candidate + "/health", timeout=2) as response:
+                if response.status == 200:
+                    _api = candidate
+                    print(f"  studio at {candidate}  (set PGM_STUDIO_API to state one)")
+                    return _api
+        except Exception:
+            continue
+    raise SystemExit("no studio answered GET /api/health at " + ", ".join(CANDIDATES) +
+                     "\n  Set PGM_STUDIO_API to the endpoint, e.g. "
+                     "PGM_STUDIO_API=http://localhost:1234/api")
 
 
 def call(method, path, body=None, raw=False, fatal=True):
@@ -89,7 +119,7 @@ def call(method, path, body=None, raw=False, fatal=True):
     the world, and `RQ3` names a field that went unread. The `Pgm-Warnings` header carries the same
     count and rule ids, so the status line says how much there is before the body is parsed."""
     data = None if body is None else json.dumps(body).encode()
-    req = urllib.request.Request(API + path, data=data, method=method,
+    req = urllib.request.Request(endpoint() + path, data=data, method=method,
                                  headers={"Content-Type": "application/json"} if data else {})
     try:
         with urllib.request.urlopen(req, timeout=1800) as response:
@@ -365,6 +395,44 @@ def renders(into, slug, finish, layout, drawn, flow):
 
     print(f"    {len(written)} render(s) -> {into}")
     return columns, written
+
+
+def headline(into):
+    """The three numbers a board is wrong or right by, printed last, from the files just written.
+
+    The text reads have been written beside the pictures since the pass existed and the run reports say
+    they go unread: a picture is one look and a 90 × 200 character grid is a question about which rows.
+    So the run ends with the three lines that need no slicing — how much of the ground steps further
+    than a player walks, whether every prop the document names is in the world, and the worst step on
+    any route between a spawn and a goal. Each names the file the rest of the answer is in."""
+    def line(name, match, fallback=None):
+        try:
+            with open(os.path.join(into, name)) as handle:
+                rows = [row.rstrip("\n") for row in handle]
+        except OSError:
+            return None
+        hit = [row for row in rows if match(row)]
+        return hit[-1].strip() if hit else fallback
+
+    slopes = line("03-slopes.txt", lambda row: row.startswith("cells:"))
+    claims = line("06-claims.txt", lambda row: row.startswith("placed "))
+    worst, route = 0, None
+    try:
+        with open(os.path.join(into, "04-routes.txt")) as handle:
+            heading = None
+            for row in handle:
+                if row.startswith("## "):
+                    heading = row[3:].strip()
+                elif "worst step" in row:
+                    step = re.search(r"worst step (\d+)", row)
+                    if step and int(step.group(1)) >= worst:
+                        worst, route = int(step.group(1)), f"{heading}: {row.split(':', 1)[-1].strip()}"
+    except OSError:
+        pass
+    print("== the three numbers, before the pictures")
+    print(f"  03-slopes.txt   {slopes or 'not written'}")
+    print(f"  06-claims.txt   {claims or 'not written'}")
+    print(f"  04-routes.txt   {route or 'no route between a spawn and a goal'}")
 
 
 def text_reads(into, slug, intent, layout):
@@ -772,6 +840,7 @@ def main():
         print("== the board as text: transects through every feature, and the routes")
         written += text_reads(pictures, slug, intent, layout)
         sweep(pictures, written)
+        headline(pictures)
     # A compiled spec's documents are the run's output and are written beside its plan; a drawn spec's
     # are its input and are left exactly as authored, so re-driving one is byte-identical by
     # construction rather than by the finish being empty.

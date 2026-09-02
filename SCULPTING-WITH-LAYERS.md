@@ -255,7 +255,7 @@ The second argument to either gallery is the world directory to export into — 
 no player can enter, so both boards declare one visitor team and a pad at the south edge; that is the whole
 of their intent.
 
-Each posts to a running studio at `$PGM_STUDIO_API` (default `http://localhost:7894/api`), reads the built
+Each posts to a running studio at `$PGM_STUDIO_API` (or, unset, the one `tools/drive.py` discovers), reads the built
 world back through `POST …/sketch/columns` and renders it. The renderer is `tools/render/` — a PNG writer, an
 isometric painter and an orthographic elevation, in the standard library alone, because the studio's own 3-D
 preview is WebGL in the browser and there is no way to take a picture from it.

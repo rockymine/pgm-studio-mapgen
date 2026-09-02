@@ -7,10 +7,11 @@ edge cap, so three blocks in one theme give a shape a lit top, a body and an out
 `solid` is the flat version for a part that wants one block everywhere.
 """
 import json
+import os
 import urllib.error
 import urllib.request
 
-API = "http://localhost:7894/api"
+API = os.environ.get("PGM_STUDIO_API", "http://localhost:7894/api")
 
 
 def solid(block, data=0):

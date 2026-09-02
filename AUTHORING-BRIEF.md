@@ -313,7 +313,7 @@ measurement plus an invented conclusion is already committed to this repository'
 | Thing | Where |
 |---|---|
 | The studio (code, docs) | `/home/user/pgm-studio` |
-| The live API | `http://localhost:7894/api` — already running, **do not restart it** |
+| The live API | already running, **do not restart it**. `PGM_STUDIO_API` states where; `tools/drive.py` discovers it by `GET /api/health` when nothing does |
 | Where your map goes | `/home/user/pgm-studio-mapgen` |
 | The errata the API cannot state | `GENERATION-NOTES.md` |
 | The driver | `tools/README.md` · `tools/drive.py` · `tools/board.py` |

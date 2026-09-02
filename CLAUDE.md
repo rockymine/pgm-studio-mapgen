@@ -9,8 +9,10 @@ distilled from 24 run reports and every rule in it cost at least one build.
 
 Three things that are true before the skill loads:
 
-- **The API is at `http://localhost:5189/api`** (`PGM_STUDIO_API` overrides it; `tools/` still defaults
-  to the old 7894). It is already running — do not restart it.
+- **The studio is already running — do not restart it. Where it listens is not a constant.** It has been
+  a different port on every environment the boards here were built on, so nothing states one: set
+  `PGM_STUDIO_API`, or let `tools/drive.py` find it by asking `GET /api/health` at the candidates it
+  knows. If you write a port into a document, you have written down the machine you happened to be on.
 - **Do not write a second copy of the system.** A `specs/<slug>/build-spec.py` that generates the plan
   and the finish is the authoring work and is expected. A script that reads the *built world* —
   a ground-finder, a section renderer, a walk or clearance check — is not, wherever it lives, including
