@@ -50,15 +50,15 @@ WHITE_G, PLANK_S = solid(95, 0), solid(5, 1)
 # and a cell as tall as it is wide still reads as a column on a cut face — the author's blobs are wider than
 # tall, so the cells are.
 BODY = cell([
-    turb([ANDESITE, POLISHED], 6, 71, rise=3),
-    turb([STONE, ANDESITE], 6, 72, rise=3),
-    turb([MOSSY, STONE, MOSSY], 6, 73, rise=3),
-    cell([EMERALD_ORE, POLISHED, MOSSY, ANDESITE], 5, 74, rise=3),
-    cell([CYAN_CLAY, STONE, ANDESITE], 5, 75, rise=3),
-    turb([POLISHED, MOSSY], 6, 76, rise=3),
-], 9, 70, rise=4)
+    turb([ANDESITE, POLISHED], 7, 71, rise=4),
+    turb([STONE, ANDESITE], 7, 72, rise=4),
+    turb([MOSSY, STONE, MOSSY], 7, 73, rise=4),
+    cell([EMERALD_ORE, POLISHED, MOSSY, ANDESITE], 5, 74, rise=4),
+    cell([CYAN_CLAY, STONE, ANDESITE], 5, 75, rise=4),
+    turb([POLISHED, MOSSY], 7, 76, rise=4),
+], 9, 70, rise=5)
 # Three courses of earth under every soil surface: coarse dirt, spruce planks and dirt.
-EARTH = noise([COARSE, COARSE, COARSE, SPRUCE_PLANK, SPRUCE_PLANK, DIRT], 4, 80, rise=6)
+EARTH = noise([COARSE, COARSE, COARSE, SPRUCE_PLANK, SPRUCE_PLANK, DIRT], 4, 80, rise=8)
 # The surfaces: the moor's grass with dirt and podzol in it, the wold's dirt with grass specks, the holm's
 # podzol, and the race bed under the water.
 MOOR_TOP = noise([GRASS, GRASS, GRASS, COARSE, GRASS, DIRT, COARSE, PODZOL], 4, 81)
@@ -188,7 +188,7 @@ FIRS = [(-100, -7, "fir-tall-6"), (-63, 2, "fir-tall-5"), (-37, 9, "fir-small-5"
         (-27, 27, "fir-small-5")]
 # No rock stands in the race: the water prop claims its whole bed and the quay walls keep their band clear,
 # so every boulder brushed into the bed by hand is a boulder the studio refuses (review/fable-millrace-revamp.md).
-BOULDERS = [("erratic-round", -10, 80, "erratic"), ("erratic-broken", -66, 86, "erratic"), ("erratic-shelf", -56, 93, "shelf"),
+BOULDERS = [("erratic-round", -10, 80, "erratic"), ("erratic-broken", -76, 86, "erratic"), ("erratic-shelf", -56, 93, "shelf"),
             ("erratic-cairn", -6, 115, "bed-rock"), ("erratic-crag", -60, 12, "erratic"), ("erratic-cobble", -118, 23, "bed-rock"),
             ("erratic-ledge", -35, -54, "shelf"), ("erratic-stack", -66, -54, "bed-rock")]
 

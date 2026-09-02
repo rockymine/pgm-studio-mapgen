@@ -128,6 +128,17 @@ Neither shows up in the document, in a warning, or in a top-down. Both are one
 `GET /map/{slug}/column?at=…` transect across the join. Take one across every place two landforms
 share ground, before believing the JSON.
 
+### A scarp's shelf is on the +z hand of the direction its lip is traced
+
+A `scarp` pins `high` on one side of its line and `low` on the other, and which side is which is the order the
+points are written in: the `high` band is the side toward which `z` increases when the line is walked from its
+first point to its last — **south** of a lip traced west to east, **north** of one traced east to west. The
+field carries no `side` word, so a lip drawn along a beck's north bank with `x` increasing puts the shelf in
+the beck and the drop on the bank. Measured on `fable-mossgill`: with `lip-n` traced west to east the bank
+north of the beck solved at **8–9** against the 14 it states and the relief read counted **418** barrier
+steps; the same points reversed put the bank at 13–14 and the count at 268, which is the two scarp faces and
+nothing else. Under `rot_180` the image reverses with the original, so one lip traced the right way is both.
+
 ### A relief posted to `sketch/from-plan` loses to the one already stored
 
 `from-plan` merges, and a relief is carried across the merge under its own rule. On a map that already
@@ -166,7 +177,14 @@ Every area pattern — `cell`, `voronoi`, `noise`, `turbulence`, `electric` — 
 course or three deep that is right and cheap. On a **fill** it is a cliff of vertical stripes: a six-stone
 body stated as a `cell` of `turbulence` mixes with `rise` at its default came out of `fable-millrace-revamp`'s
 first build with every cut face striped floor to sky, one cell's stone the whole height of the column. State
-`rise` about the cell's own size — 7 on a cell of 7, 5 on a turbulence of 5 — and the field is a volume.
+a `rise` and the field is a volume — but a cell as tall as it is wide still reads as a column on a cut, because
+a cut face shows a cell's width and its height side by side and a square blob of stone is a post. The second
+Millrace build stated cells of 7 with a rise of 7 and its cliffs still read as vertical runs. Make the cells
+wider than tall: `fable-millrace-revamp` and `fable-mossgill` state the body as a `cell` nine across with a rise
+of five over turbulences seven across with a rise of four, and the built body's runs of one material down a
+column are 40% one block long, 23% two and 16% three, a mean of **2.5** — a blob, not a stripe. The earth is
+the other way: three courses deep, so a rise of eight there makes each column's earth one material (64% of
+columns) and the mix shows across the ground rather than down it, which is what a cut through soil looks like.
 
 ### An override add standing in ground keeps the ground under its floor
 

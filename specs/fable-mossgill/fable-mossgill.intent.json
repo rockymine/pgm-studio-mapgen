@@ -1,0 +1,135 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 24,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -55,
+    "y": 27,
+    "z": -50
+   },
+   "protection": [
+    {
+     "minX": -65,
+     "minZ": -60,
+     "maxX": -45,
+     "maxZ": -40
+    }
+   ],
+   "yaw": 270,
+   "footprint": null,
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 55,
+    "y": 27,
+    "z": 50
+   },
+   "protection": [
+    {
+     "minX": 45,
+     "minZ": 40,
+     "maxX": 65,
+     "maxZ": 60
+    }
+   ],
+   "yaw": 90,
+   "footprint": null,
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 29,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Fold Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -29,
+    "y": 14,
+    "z": -28
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Fold Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 28,
+    "y": 14,
+    "z": 27
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Mossgill",
+  "created": "2026-09-02",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

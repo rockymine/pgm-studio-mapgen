@@ -64,14 +64,14 @@ PLANK_S, PLANK_D = solid(5, 1), solid(5, 5)
 # states a rise (TP15), and a cell as tall as it is wide reads as a column on a cut; the author's blobs are
 # wider than tall, so the cells are.
 BODY = cell([
-    turb([ANDESITE, POLISHED], 6, 71, rise=3),
-    turb([STONE, ANDESITE], 6, 72, rise=3),
-    turb([MOSSY, STONE, MOSSY], 6, 73, rise=3),
-    cell([EMERALD_ORE, POLISHED, MOSSY, ANDESITE], 5, 74, rise=3),
-    cell([CYAN_CLAY, STONE, ANDESITE], 5, 75, rise=3),
-    turb([POLISHED, MOSSY], 6, 76, rise=3),
-], 9, 70, rise=4)
-EARTH = noise([COARSE, COARSE, COARSE, SPRUCE_PLANK, SPRUCE_PLANK, DIRT], 4, 80, rise=6)
+    turb([ANDESITE, POLISHED], 7, 71, rise=4),
+    turb([STONE, ANDESITE], 7, 72, rise=4),
+    turb([MOSSY, STONE, MOSSY], 7, 73, rise=4),
+    cell([EMERALD_ORE, POLISHED, MOSSY, ANDESITE], 5, 74, rise=4),
+    cell([CYAN_CLAY, STONE, ANDESITE], 5, 75, rise=4),
+    turb([POLISHED, MOSSY], 7, 76, rise=4),
+], 9, 70, rise=5)
+EARTH = noise([COARSE, COARSE, COARSE, SPRUCE_PLANK, SPRUCE_PLANK, DIRT], 4, 80, rise=8)
 BANK_TOP = noise([GRASS, GRASS, GRASS, COARSE, GRASS, DIRT, COARSE, PODZOL], 4, 81)
 APRON_TOP = noise([GRASS, GRASS, COARSE, GRASS, GRASS, PODZOL, DIRT, GRASS], 4, 82)
 BROW_TOP = noise([COARSE, PODZOL, COARSE, GRASS, DIRT, COARSE, PODZOL], 4, 83)
@@ -121,23 +121,23 @@ add_shapes = [
     path_shape("fold-n", arc(GOAL[0], GOAL[1], 6, 200, 340), 1.0, 19, 3, "quay", seed=11),
     path_shape("fold-s", arc(GOAL[0], GOAL[1], 6, 20, 160), 1.0, 19, 3, "quay", seed=12),
     # The quays: a parapet along each lip of the beck at the crossing, one course over the bank.
-    path_shape("quay-n", lip(-6, -16, 16, 8), 1.0, 8, 7, "quay", seed=13),
+    path_shape("quay-n", lip(-5, -16, 16, 8), 1.0, 8, 7, "quay", seed=13),
 ]
 
 # The plank bridge, on its own layer over the beck: its own image, so it does not mirror.
-bridge = {"id": "spans", "name": "spans", "base_y": 0, "layout": {
+bridge = {"id": "spans", "name": "spans", "base_y": 0,
     "shapes": [
         {"id": "deck", "type": "rectangle", "operation": "add", "override": True, "keepClear": True,
-         "min_x": -3, "max_x": 3, "min_z": -9, "max_z": 9, "floor": 13, "base_height": 1,
+         "min_x": -3, "max_x": 3, "min_z": -8, "max_z": 8, "floor": 15, "base_height": 1,
          "height_mode": "level", "skirt": 0, "relief_scope": "exclude", "theme": "timber"},
         {"id": "rail-w", "type": "rectangle", "operation": "add", "override": True, "keepClear": True,
-         "min_x": -4, "max_x": -3, "min_z": -9, "max_z": 9, "floor": 13, "base_height": 2,
+         "min_x": -4, "max_x": -3, "min_z": -8, "max_z": 8, "floor": 15, "base_height": 2,
          "height_mode": "level", "skirt": 0, "relief_scope": "exclude", "theme": "dark-timber"},
         {"id": "rail-e", "type": "rectangle", "operation": "add", "override": True, "keepClear": True,
-         "min_x": 3, "max_x": 4, "min_z": -9, "max_z": 9, "floor": 13, "base_height": 2,
+         "min_x": 3, "max_x": 4, "min_z": -8, "max_z": 8, "floor": 15, "base_height": 2,
          "height_mode": "level", "skirt": 0, "relief_scope": "exclude", "theme": "dark-timber"},
     ],
-    "groups": [{"id": "spans-body", "name": "spans", "mirrors": False, "shapeIds": ["deck", "rail-w", "rail-e"]}]}}
+    "groups": [{"id": "spans-body", "name": "spans", "mirrors": False, "shapeIds": ["deck", "rail-w", "rail-e"]}]}
 
 def ring(cx, cz, rx, rz, n=9):
     return [[round(cx + rx * math.cos(2 * math.pi * i / n)), round(cz + rz * math.sin(2 * math.pi * i / n))]
@@ -145,19 +145,27 @@ def ring(cx, cz, rx, rz, n=9):
 
 relief = {"team": {
     "base": 14, "reach": 18, "step": 1, "stairs": True, "landform": "moor",
-    "grain": {"amplitude": 1.0, "scale": 16, "seed": 5},
+    "grain": {"amplitude": 0.7, "scale": 16, "seed": 5},
     "marks": [
-        {"id": "apron", "kind": "area", "h": 20, "ring": [[-66, -41], [-9, -41], [-9, -19], [-66, -19]]},
-        {"id": "brow", "kind": "area", "h": 22, "ring": [[-46, -61], [-19, -61], [-19, -39], [-46, -39]]},
-        {"id": "crag", "kind": "area", "h": 27, "ring": [[-66, -61], [-44, -61], [-44, -39], [-66, -39]]},
+        # The tiers, each ring drawn inside its piece so the solve grades a slope between them rather than a
+        # step, and a ramp down each seam the roads take.
+        {"id": "apron", "kind": "area", "h": 20, "ring": [[-62, -36], [-13, -36], [-13, -27], [-62, -27]]},
+        {"id": "brow", "kind": "area", "h": 22, "ring": [[-39, -58], [-22, -58], [-22, -44], [-39, -44]]},
+        {"id": "crag", "kind": "area", "h": 27, "ring": [[-64, -59], [-50, -59], [-50, -44], [-64, -44]]},
+        # the bothy stands on a bench of its own held flat to the crag's foot, so no side of it is over falling ground
+        {"id": "bothy-bench", "kind": "area", "h": 20, "ring": [[-63, -40], [-49, -40], [-49, -28], [-63, -28]]},
+        {"id": "ramp-crag", "kind": "line", "width": 6, "points": [[-45, -50], [-38, -47], [-32, -42], [-31, -38]], "h": [27, 24, 21, 20]},
+        {"id": "ramp-beck", "kind": "line", "width": 7, "points": [[-22, -24], [-19, -18], [-15, -12]], "h": [20, 17, 14]},
         # the beck: a gill cut eight courses into the bank, sheer on both lips
-        {"id": "beck", "kind": "line", "width": 9, "points": BECK, "h": [6] * len(BECK)},
-        {"id": "lip-n", "kind": "scarp", "points": lip(-6, -60, 60, 12), "high": 14, "low": 7, "face": 3, "band": 5},
+        {"id": "beck", "kind": "line", "width": 7, "points": BECK, "h": [6] * len(BECK)},
+        # The scarp's high side is the left of its drawn direction, so the lip is traced east to west to put the
+        # shelf on the bank and the drop on the beck.
+        {"id": "lip-n", "kind": "scarp", "points": lip(-5, -60, 60, 12)[::-1], "high": 14, "low": 7, "face": 2, "band": 4},
     ],
+    # One push only: the bank between the apron's foot and the gill is eight blocks wide, and a knoll across it
+    # cut its west half off from the ramp on the first build.
     "pushes": [
-        {"id": "knoll", "ring": ring(-30, -11, 13, 6), "amount": 4, "falloff": 10, "roughness": 0.4, "crown": 2, "seed": 7},
-        {"id": "moss-bank", "ring": ring(-58, -30, 8, 9), "amount": 3, "falloff": 9, "roughness": 0.35, "crown": 2, "seed": 8},
-        {"id": "shoulder-rise", "ring": ring(30, -12, 12, 6), "amount": 3, "falloff": 9, "roughness": 0.4, "crown": 2, "seed": 9},
+        {"id": "moss-bank", "ring": ring(-58, -33, 7, 6), "amount": 2, "falloff": 8, "roughness": 0.35, "crown": 2, "seed": 8},
     ],
 }}
 
@@ -177,7 +185,7 @@ VARIANT = repaint(STYLE, {(4, 0): (1, 5), (98, 0): (1, 0), (98, 1): (1, 5)})
 styles = {key: {"kind": "tree", "form": "copied", "body": tree["body"]} for key, tree in BODIES.items()}
 styles["erratic"] = {"kind": "boulder", "form": "angular", "size": 5, "mossy": True,
                      "rock": noise([MOSSY, MOSSY, PRISMARINE, PRISMARINE, COBBLE, EMERALD_ORE, ANDESITE], 3, 51, rise=3)}
-styles["shelf"] = {"kind": "boulder", "form": "outcrop", "size": 6, "mossy": True,
+styles["shelf"] = {"kind": "boulder", "form": "outcrop", "size": 3, "mossy": True,
                    "rock": noise([MOSSY, PRISMARINE, COBBLE, MOSSY, EMERALD_ORE], 3, 53, rise=3)}
 styles["croft"] = {"kind": "house", "shell": STYLE}
 styles["croft-grey"] = {"kind": "house", "shell": VARIANT}
@@ -196,29 +204,29 @@ def meadow(pid, ring_, seed):
                      "flowerScale": 18, "tallShare": 0.03}}
 
 # Every prop keeps 21 blocks off the monument (OB19) and off the spawn's own ground.
+# Where a tree may stand on a board this size is most of the composition: 21 blocks off the monument and off
+# the spawn's ground, out of the lane in front of every door, twelve off the beck, three off a road.
 TREES = [
-    # the crag and the brow: the tall acacia-and-birch conifers on earth
-    (-61, -58, "fir-tall-5"), (-48, -59, "fir-tall-7"), (-38, -57, "fir-tall-6"), (-24, -55, "fir-tall-8"),
-    (-22, -45, "fir-tall-5"), (-42, -43, "fir-small-4"),
-    # the apron ends and the bank: the dense oaks on grass
-    (-62, -23, "oak-dense-2"), (-8, -22, "oak-dense-4"), (-4, -36, "oak-dense-7"),
-    (-42, -8, "oak-dense-1"), (-24, -5, "oak-dense-3"), (-58, -9, "oak-dense-5"),
+    # the brow's east end, past the lane out of the crag's door: the tall conifers on earth
+    (-25, -57, "fir-tall-7"), (-22, -46, "fir-tall-8"), (-27, -42, "fir-tall-5"),
+    # the apron's west end, the far side of the bothy from the fold
+    (-63, -21, "oak-dense-2"),
+    # the bank between the apron's foot and the gill
+    (-40, -15, "oak-dense-1"), (-50, -16, "fir-small-3"), (-28, -17, "oak-dense-3"), (-9, -18, "fir-small-1"),
     # the shoulder across the beck
-    (12, -15, "oak-dense-6"), (28, -7, "oak-dense-9"), (41, -16, "oak-dense-8"),
-    # small firs along the gill's lips
-    (-13, -17, "fir-small-1"), (22, -18, "fir-small-2"), (38, -6, "fir-small-5"), (-52, -18, "fir-small-4"),
+    (-1, -16, "oak-dense-6"), (24, -16, "oak-dense-9"), (42, -16, "oak-dense-8"),
 ]
-BOULDERS = [("stone-1", -20, -13, "erratic"), ("stone-2", 18, -6, "shelf"), ("stone-3", -62, -3, "erratic"),
-            ("stone-4", 40, -11, "erratic"), ("stone-5", -63, -33, "shelf")]
+# One rock: a bank eight blocks wide between a road and a gill has no room for an erratic beside an oak.
+BOULDERS = [("stone-2", 33, -11, "shelf")]
 props = [
     {"id": "beck", "kind": "water", "seed": 1, "shape": "channel", "form": "natural", "radius": 4, "depth": 2,
      "edge": 0.8, "shore": 2, "shoreWander": True, "points": BECK,
      "bank": voronoi([(GRAVEL, 1), (COARSE, 1), (SAND, 1)], 5, 6)},
-    house("bothy", -64, -39, -55, -31, "croft", "posX"),
-    house("barn", -54, -16, -45, -9, "croft-grey", "negZ"),
+    house("bothy", -60, -38, -52, -31, "croft", "posX"),
+    house("barn", 8, -18, 16, -11, "croft-grey", "posZ"),
     road("road-crag", [[-44, -50], [-35, -47], [-32, -40], [-36, -34]], 1),
     road("road-beck", [[-26, -25], [-16, -15], [-5, -10], [0, -8]], 2),
-    road("road-bank", [[-34, -22], [-46, -18], [-56, -12], [-62, -6]], 3),
+    road("road-bank", [[-34, -22], [-44, -25], [-49, -30], [-49, -35]], 3),
     meadow("meadow-apron", [[-66, -41], [-9, -41], [-9, -19], [-66, -19]], 11),
     meadow("meadow-bank", [[-66, -21], [46, -21], [46, -6], [-66, -6]], 12),
     meadow("meadow-brow", [[-46, -61], [-19, -61], [-19, -39], [-46, -39]], 13),

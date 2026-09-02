@@ -214,7 +214,24 @@ over 27 recipes — sixteen copied trees, three boulders, two crofts — and pat
 observer at `(0, 70, 0)`, the protections and the iron, four authors. `python3 tools/drive.py
 specs/fable-millrace-revamp "Millrace" --out maps/fable-millrace-revamp` builds it.
 
-BUILD-RESULT
+**What the build says.** The plan is stored under the current form; the layout stores at 200 with the two
+complaints the original's rebuild carries (`SK10` the holm bridge driven into the wold's swell over 890
+columns, `SK11` the race bed) and nothing new; the export gate is **open**; coverage reads **17.8% dead**
+against the original's 20.1%, the five dead patches the same five — the two western cliffs at
+`(−114, 39)` and `(112, −41)`, the two back corners, the island knoll. The dressing pass declines nothing on
+the final drive, and the fourteen `SK18` complaints are the beacon frames, every one of them a false reading
+forty courses over the goal (`TS79`).
+
+Read back off `maps/fable-millrace-revamp/region`: every standalone copied tree is its showcase body block
+for block (fourteen exact of the thirty-eight bodies, the rest merged into groves or clipped by a slope by a
+block or two), every leaf carries the no-decay bit and none the check bit, the tug, the balloon and the beacon
+frames stand at the coordinates they were cut from, the red statue is red and the blue one blue, and the
+columns under the quay walls, the spawn stair and the cairn walls run to bedrock — the 3,664 columns with
+nothing at y0 are the holm bridge over its strait, the balloon over the centre and the clouds' overhang, all
+of them drawn over void. The stone body varies down a column with a mean run of three blocks of one stone
+against the author's 3.7, and a face read across the north quay at `z 60` shows the same blobs of andesite,
+mossy cobble and cyan clay the author's face does, wider than they are tall.
+
 
 ## What to look at
 
