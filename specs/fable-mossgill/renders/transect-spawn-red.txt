@@ -1,81 +1,71 @@
-TRANSECT spawn-red (spawn) along x at z=-50, x -73..-37
-  station        ground  top  standing            step
-  ( -73, -50)                                  void
-  ( -72, -50)                                  void
-  ( -71, -50)                                  void
-  ( -70, -50)                                  void
-  ( -69, -50)                                  void
-  ( -68, -50)                                  void
-  ( -67, -50)                                  void
-  ( -66, -50)                                  void
-  ( -65, -50)      25   35  something          
-  ( -64, -50)      25   36  spawn spawn-1      
-  ( -63, -50)      25   37  spawn spawn-1      
-  ( -62, -50)      25   38  spawn spawn-1      
-  ( -61, -50)      25   39  spawn spawn-1      
-  ( -60, -50)      25   40  spawn spawn-1      
-  ( -59, -50)      25   41  spawn spawn-1      
-  ( -58, -50)      25   42  spawn spawn-1      
-  ( -57, -50)      25   42  spawn spawn-1      
-  ( -56, -50)      25   41  spawn spawn-1      
-  ( -55, -50)      25   40  spawn spawn-1      
-  ( -54, -50)      25   39  spawn spawn-1      
-  ( -53, -50)      25   38  spawn spawn-1      
-  ( -52, -50)      25   37  spawn spawn-1      
-  ( -51, -50)      25   36  spawn spawn-1      
-  ( -50, -50)      25   35  something          
-  ( -49, -50)      25   25                     
-  ( -48, -50)      25   25                     
-  ( -47, -50)      25   25  stroke road-crag   
-  ( -46, -50)      25   25  stroke road-crag   
-  ( -45, -50)      26   26  stroke road-crag   +1
-  ( -44, -50)      25   25  stroke road-crag   -1
-  ( -43, -50)      25   25  stroke road-crag   
-  ( -42, -50)      24   24  stroke road-crag   -1
-  ( -41, -50)      24   24  stroke road-crag   
-  ( -40, -50)      24   24  stroke road-crag   
-  ( -39, -50)      23   23  stroke road-crag   -1
-  ( -38, -50)      23   23  stroke road-crag   
-  ( -37, -50)      22   22  stroke road-crag   -1
-  37 stations: rises 1, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop — walked end to end
+## spawn-red (spawn) along x
+TRANSECT 31 stations from (-67, -50) to (-37, -50), every 1
+  station        ground  surface  water  top  standing            step
+  (  -67,   -50)                                                    void
+  (  -66,   -50)                                                    void
+  (  -65,   -50)      26       26           36                      
+  (  -64,   -50)      26       26           37  spawn spawn-1       
+  (  -63,   -50)      26       26           38  spawn spawn-1       
+  (  -62,   -50)      26       26           39  spawn spawn-1       
+  (  -61,   -50)      26       26           40  spawn spawn-1       
+  (  -60,   -50)      26       26           41  spawn spawn-1       
+  (  -59,   -50)      26       26           42  spawn spawn-1       
+  (  -58,   -50)      26       26           43  spawn spawn-1       
+  (  -57,   -50)      26       26           43  spawn spawn-1       
+  (  -56,   -50)      26       26           42  spawn spawn-1       
+  (  -55,   -50)      26       26           41  spawn spawn-1       
+  (  -54,   -50)      26       26           40  spawn spawn-1       
+  (  -53,   -50)      26       26           39  spawn spawn-1       
+  (  -52,   -50)      26       26           38  spawn spawn-1       
+  (  -51,   -50)      26       26           37  spawn spawn-1       
+  (  -50,   -50)      26       26           36                      
+  (  -49,   -50)      26       26           26                      
+  (  -48,   -50)      26       26           26                      
+  (  -47,   -50)      26       26           26  stroke road-crag    
+  (  -46,   -50)      26       26           26  stroke road-crag    
+  (  -45,   -50)      27       27           27  stroke road-crag    +1
+  (  -44,   -50)      26       26           26  stroke road-crag    -1
+  (  -43,   -50)      26       26           26  stroke road-crag    
+  (  -42,   -50)      25       25           25  stroke road-crag    -1
+  (  -41,   -50)      25       25           25  stroke road-crag    
+  (  -40,   -50)      25       25           25  stroke road-crag    
+  (  -39,   -50)      24       24           24  stroke road-crag    -1
+  (  -38,   -50)      24       24           24  stroke road-crag    
+  (  -37,   -50)      23       23           23  stroke road-crag    -1
+rises 1, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (-64, -52), stroke road-crag at (-47, -51)
 
-TRANSECT spawn-red (spawn) along z at x=-55, z -68..-32
-  station        ground  top  standing            step
-  ( -55, -68)                                  void
-  ( -55, -67)                                  void
-  ( -55, -66)                                  void
-  ( -55, -65)                                  void
-  ( -55, -64)                                  void
-  ( -55, -63)                                  void
-  ( -55, -62)                                  void
-  ( -55, -61)                                  void
-  ( -55, -60)      25   40  something          
-  ( -55, -59)      25   40  spawn spawn-1      
-  ( -55, -58)      25   40  spawn spawn-1      
-  ( -55, -57)      25   40  spawn spawn-1      
-  ( -55, -56)      25   40  spawn spawn-1      
-  ( -55, -55)      25   40  spawn spawn-1      
-  ( -55, -54)      25   40  spawn spawn-1      
-  ( -55, -53)      25   40  spawn spawn-1      
-  ( -55, -52)      25   40  spawn spawn-1      
-  ( -55, -51)      25   40  spawn spawn-1      
-  ( -55, -50)      25   40  spawn spawn-1      
-  ( -55, -49)      25   40  spawn spawn-1      
-  ( -55, -48)      25   40  spawn spawn-1      
-  ( -55, -47)      25   40  spawn spawn-1      
-  ( -55, -46)      25   40  spawn spawn-1      
-  ( -55, -45)      25   40  spawn spawn-1      
-  ( -55, -44)      25   40  spawn spawn-1      
-  ( -55, -43)      25   40  spawn spawn-1      
-  ( -55, -42)      25   40  spawn spawn-1      
-  ( -55, -41)      25   40  something          
-  ( -55, -40)      21   21                     DROP -4
-  ( -55, -39)      21   26  house bothy        
-  ( -55, -38)      21   27  house bothy        
-  ( -55, -37)      21   28  house bothy        
-  ( -55, -36)      21   29  house bothy        
-  ( -55, -35)      21   30  house bothy        
-  ( -55, -34)      21   30  house bothy        
-  ( -55, -33)      21   29  house bothy        
-  ( -55, -32)      21   28  house bothy        
-  37 stations: rises 0, falls 4, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-55,-40)
+## spawn-red (spawn) along z
+TRANSECT 29 stations from (-55, -60) to (-55, -32), every 1
+  station        ground  surface  water  top  standing            step
+  (  -55,   -60)      26       26           41                      
+  (  -55,   -59)      26       26           41  spawn spawn-1       
+  (  -55,   -58)      26       26           41  spawn spawn-1       
+  (  -55,   -57)      26       26           41  spawn spawn-1       
+  (  -55,   -56)      26       26           41  spawn spawn-1       
+  (  -55,   -55)      26       26           41  spawn spawn-1       
+  (  -55,   -54)      26       26           41  spawn spawn-1       
+  (  -55,   -53)      26       26           41  spawn spawn-1       
+  (  -55,   -52)      26       26           41  spawn spawn-1       
+  (  -55,   -51)      26       26           41  spawn spawn-1       
+  (  -55,   -50)      26       26           41  spawn spawn-1       
+  (  -55,   -49)      26       26           41  spawn spawn-1       
+  (  -55,   -48)      26       26           41  spawn spawn-1       
+  (  -55,   -47)      26       26           41  spawn spawn-1       
+  (  -55,   -46)      26       26           41  spawn spawn-1       
+  (  -55,   -45)      26       26           41  spawn spawn-1       
+  (  -55,   -44)      26       26           41  spawn spawn-1       
+  (  -55,   -43)      26       26           41  spawn spawn-1       
+  (  -55,   -42)      26       26           41  spawn spawn-1       
+  (  -55,   -41)      26       26           41                      
+  (  -55,   -40)      22       22           22                      DROP -4
+  (  -55,   -39)      22       22           27  house bothy         
+  (  -55,   -38)      22       22           28  house bothy         
+  (  -55,   -37)      22       22           29  house bothy         
+  (  -55,   -36)      23       23           30  house bothy         +1
+  (  -55,   -35)      23       23           31  house bothy         
+  (  -55,   -34)      23       23           31  house bothy         
+  (  -55,   -33)      23       23           30  house bothy         
+  (  -55,   -32)      23       23           29  house bothy         
+rises 1, falls 1, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-55, -40) | walked end to end
+beside: spawn spawn-1 at (-57, -59), house bothy at (-57, -39)

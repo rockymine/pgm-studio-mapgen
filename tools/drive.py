@@ -333,22 +333,21 @@ def renders(into, slug, finish, layout, drawn, flow):
     return columns, written
 
 
-def text_reads(into, slug, world_dir, specdir, intent, layout, columns):
-    """The board as text, beside the pictures: a heightmap, a slope grid, the two axis sections, a transect
-    through every feature and a profile along every route, off the exported world, the provenance sidecar
-    and the columns the isometric was drawn from. A picture asks a reader to gauge a height; these state
-    it, so a wall, a floor over falling ground or a step a player cannot walk is a number to subtract
-    rather than a shade to estimate. The summaries are printed here; the files carry every station."""
+def text_reads(into, slug, intent, layout):
+    """The board as text, beside the pictures: the API's own text reads — the heightmap, the slope grid,
+    the two axis sections, the theme census and the dressing pass's claims — and, at an extent the
+    documents decide, a transect through every feature and a profile along every route. A picture asks a
+    reader to gauge a height; these state it, so a wall, a floor over falling ground or a step a player
+    cannot walk is a number to subtract rather than a shade to estimate. The summaries are printed here;
+    the files carry every station."""
     sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "render"))
     import textreads
 
-    def walk_for(from_xz, to_xz):
-        status, answer = call("GET", f"/map/{slug}/walk?from={from_xz[0]},{from_xz[1]}&to={to_xz[0]},{to_xz[1]}",
-                              fatal=False)
-        return answer if status == 200 and isinstance(answer, dict) else None
+    def fetch(method, path, body=None):
+        status, payload = call(method, path, body, raw=True, fatal=False)
+        return payload.decode("utf-8", "replace") if isinstance(payload, bytes) and status < 300 else None
 
-    written, summaries = textreads.write_all(into, world_dir, os.path.join(specdir, "provenance.json"),
-                                             intent, layout, columns, walk_for)
+    written, summaries = textreads.write_all(into, slug, intent, layout, fetch)
     for line in summaries:
         print(line)
     print(f"    {len(written)} text read(s) -> {into}")
@@ -734,10 +733,10 @@ def main():
         # After the extraction, which clears the directory it writes into.
         print("== the pictures of what was authored")
         pictures = into or os.path.join(specdir, "renders")
-        columns, written = renders(pictures, slug, finish, layout, drawn, flow)
+        _columns, written = renders(pictures, slug, finish, layout, drawn, flow)
         # ── the same board as text, which is the shape a reader subtracts from rather than gauges ──
         print("== the board as text: transects through every feature, and the routes")
-        written += text_reads(pictures, slug, out, specdir, intent, layout, columns)
+        written += text_reads(pictures, slug, intent, layout)
         sweep(pictures, written)
     # A compiled spec's documents are the run's output and are written beside its plan; a drawn spec's
     # are its input and are left exactly as authored, so re-driving one is byte-identical by

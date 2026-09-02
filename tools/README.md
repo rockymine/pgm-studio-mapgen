@@ -139,16 +139,20 @@ finds no provenance and falls back to the material estimate, which it states on 
 
 **And the same board as text, beside the pictures.** A picture encodes a height as a shade and asks a
 reader to estimate it; a model reads a character grid and subtracts. So after the pictures the driver
-writes the board as text too, off the exported world, the provenance sidecar and the columns the isometric
-was drawn from (`tools/render/textreads.py`, which also runs on its own over a driven board):
+writes the board as text too, every file the API's own `?format=text` answer, so what a column carries,
+which layer drew it and what a goal keeps clear come from the build's record rather than from a sidecar
+(`tools/render/textreads.py`, which also runs on its own over a driven board and decides only the extent —
+which features get a transect, which spawn walks to which goal):
 
 | File | Is |
 |---|---|
-| `02-heightmap.txt` | the ground as one character per two blocks — its height band above the board's lowest ground, `0-9a-z` — with the houses, the water, the spawn points and the goals overprinted, so a height is read beside what stands there |
-| `03-slopes.txt` | where the ground steps: `.` walked, `:` a block to scramble, `#` a barrier. A cliff reads as a line of `#`, a ramp as a band of `.` through it, and an overdone relief as a page of `#` |
-| `world-section-x0.txt` · `world-section-z0.txt` | the two axis cuts as characters — `#` ground, `L` a storey over it, `~` water, `I`/`T` a tree, `H` a house or a hall, `M` a made thing — with a y axis, and the ground's height under each column beneath |
-| `transect-<feature>.txt` | one per spawn, goal, house, water prop, boulder and made thing: the ground, what stands on it and the step from the station before, along x and along z through the feature's own box with eight blocks of overshoot each side. **Every step a player cannot walk is named where it is** — `BARRIER +8 at (-52, 0)` — which is the read that finds a pit with a puddle at the bottom, a floor over falling ground, or a stair running down into a hill |
-| `04-routes.txt` | each team's walk to each goal, from `GET …/walk`, as the same transect along the route's own cells, with what stands within two blocks of it — the read for a thing thrown in the players' way |
+| `02-heightmap.txt` | `GET …/render/heightmap?format=text`: the ground's height band above the board's lowest surface, `0-9a-z`, one character per `every` blocks, with the houses, the water, the spawn points and the goals overprinted, so a height is read beside what stands there |
+| `03-slopes.txt` | `GET …/slopes?format=text`: where the ground steps — `.` walked, `:` a block to scramble, `#` a barrier — and the barrier runs named as faces, largest first. A cliff reads as a line of `#`, a ramp as a band of `.` through it, and an overdone relief as a page of `#` |
+| `world-section-x0.txt` · `world-section-z0.txt` | `GET …/render/section?format=text`, the two axis cuts as characters — `#` ground, `L` a storey over it, `~` liquid, `I`/`T` a tree, `H` a house or a hall, `M` a made thing, `S`/`!`/`W` a spawn, a goal, a wool — with a y axis, a ruler and the ground's height band under each column |
+| `transect-<feature>.txt` | `GET …/transect?format=text&beside=2`, one per spawn, goal, house, water prop, boulder and made thing: at every station the ground, the storey stood on, the water, the top, what stands there and the step from the station before, along x and along z through the feature's own box with eight blocks of overshoot each side, and what stands within two cells of the line |
+| `04-routes.txt` | each team's walk to each goal, from `GET …/walk?format=text&beside=2`: the storey the walk stood on at every place, every step that left a walk, and what stands within two blocks of the route — the read for a thing thrown in the players' way |
+| `05-themes.txt` | `GET …/themes/census?format=text`: cells and share per theme, the materials each spends, and which theme borders which over how many cells — the number for a board that mashes its themes |
+| `06-claims.txt` | `POST …/sketch/dressing?format=text`: every cell of the board as the digit of what claims it — a prop, a goal's clearance, a keep-out, or free — so a candidate site is looked up rather than tried |
 
 The summaries — one line per transect and per route — are printed inline under `== the board as text`, so
 they are in the transcript without a file being opened, and the extent of every transect comes from the

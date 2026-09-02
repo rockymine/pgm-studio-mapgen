@@ -126,10 +126,13 @@ world as pictures and as text. Each route's summary says what it draws and where
 its own query words. **`column` is the workhorse**: every picture beside it is a projection, and it is what is
 actually at a coordinate, which is the read to reach for when a picture and a document disagree.
 
-**Read the text before the pictures.** The driver writes the board as text beside every picture —
-`02-heightmap.txt`, `03-slopes.txt`, the two axis sections, a `transect-<feature>.txt` through every spawn,
-goal, house, water prop and made thing, and `04-routes.txt` along each team's walk to each goal — and prints
-their summaries inline. A height in a picture is a shade to gauge; in a transect it is a number to subtract,
+**Read the text before the pictures.** The driver writes the board as text beside every picture, each
+file the API's own `?format=text` answer — `02-heightmap.txt`, `03-slopes.txt`, the two axis sections, a
+`transect-<feature>.txt` through every spawn, goal, house, water prop and made thing, `04-routes.txt` along
+each team's walk to each goal, `05-themes.txt` and `06-claims.txt` — and prints their summaries inline.
+Every one of them can be asked for again at any extent: `render/section`, `transect`, `walk`, `slopes`,
+`render/heightmap`, `themes/census` and `sketch/dressing` all answer `?format=text`, and a finding that
+has a mechanical fix carries it as `edit`, which the drive prints under the finding's sentence. A height in a picture is a shade to gauge; in a transect it is a number to subtract,
 and every step a player cannot walk is already named with its coordinates. A claim about a **shape** — a
 bank, a wall, a slope, a stair, a basin — is a claim about a profile and is read off a transect, never off a
 single column and never off a render; the pictures are for what no number states — whether a thing reads as

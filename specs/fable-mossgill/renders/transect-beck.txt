@@ -1,209 +1,189 @@
-TRANSECT beck (water) along x at z=0, x -78..78
-  station        ground  top  standing            step
-  ( -78,   0)                                  void
-  ( -77,   0)                                  void
-  ( -76,   0)                                  void
-  ( -75,   0)                                  void
-  ( -74,   0)                                  void
-  ( -73,   0)                                  void
-  ( -72,   0)                                  void
-  ( -71,   0)                                  void
-  ( -70,   0)                                  void
-  ( -69,   0)                                  void
-  ( -68,   0)                                  void
-  ( -67,   0)                                  void
-  ( -66,   0)                                  void
-  ( -65,   0)                                  void
-  ( -64,   0)       5    5                     
-  ( -63,   0)       5    5                     
-  ( -62,   0)       5    5                     
-  ( -61,   0)       5    5                     
-  ( -60,   0)       5    5                     
-  ( -59,   0)       5    5                     
-  ( -58,   0)       5    5                     
-  ( -57,   0)       5    5                     
-  ( -56,   0)       5    5                     
-  ( -55,   0)       5    5                     
-  ( -54,   0)       5    5                     
-  ( -53,   0)       5    5                     
-  ( -52,   0)      13   13                     BARRIER +8
-  ( -51,   0)      13   13                     
-  ( -50,   0)      13   13                     
-  ( -49,   0)      13   13                     
-  ( -48,   0)      13   13                     
-  ( -47,   0)      13   13                     
-  ( -46,   0)      13   13                     
-  ( -45,   0)      13   13                     
-  ( -44,   0)       5    5                     DROP -8
-  ( -43,   0)       5    5                     
-  ( -42,   0)       5    5                     
-  ( -41,   0)       5    5                     
-  ( -40,   0)       5    5                     
-  ( -39,   0)       5    5  water beck         
-  ( -38,   0)       5    5  water beck         
-  ( -37,   0)       5    5  water beck         
-  ( -36,   0)       5    5  water beck         
-  ( -35,   0)       5    5  water beck         
-  ( -34,   0)       5    5  water beck         
-  ( -33,   0)       5    5  water beck water   
-  ( -32,   0)       5    5  water beck water   
-  ( -31,   0)       5    5  water beck water   
-  ( -30,   0)       5    5  water beck water   
-  ( -29,   0)       5    5  water beck water   
-  ( -28,   0)       5    5  water beck water   
-  ( -27,   0)       5    5  water beck water   
-  ( -26,   0)       5    5  water beck water   
-  ( -25,   0)       5    5  water beck water   
-  ( -24,   0)       5    5  water beck water   
-  ( -23,   0)       5    5  water beck water   
-  ( -22,   0)       5    5  water beck water   
-  ( -21,   0)       5    5  water beck water   
-  ( -20,   0)       5    5  water beck water   
-  ( -19,   0)       5    5  water beck water   
-  ( -18,   0)       5    5  water beck water   
-  ( -17,   0)       5    5  water beck water   
-  ( -16,   0)       5    5  water beck water   
-  ( -15,   0)       5    5  water beck water   
-  ( -14,   0)       5    5  water beck water   
-  ( -13,   0)       5    5  water beck water   
-  ( -12,   0)       5    5  water beck water   
-  ( -11,   0)       5    5  water beck water   
-  ( -10,   0)       5    5  water beck water   
-  (  -9,   0)       5    5  water beck water   
-  (  -8,   0)       5    5  water beck water   
-  (  -7,   0)       5    5  water beck water   
-  (  -6,   0)       5    5  water beck water   
-  (  -5,   0)       5    5  water beck water   
-  (  -4,   0)       6   16  water beck         +1
-  (  -3,   0)       6   30  water beck         
-  (  -2,   0)       6   30  water beck         
-  (  -1,   0)       6   29  water beck         
-  (   0,   0)       6   29  water beck         
-  (   1,   0)       6   30  water beck         
-  (   2,   0)       6   30  water beck         
-  (   3,   0)       6   16  water beck         
-  (   4,   0)       5    5  water beck water   -1
-  (   5,   0)       5    5  water beck water   
-  (   6,   0)       5    5  water beck water   
-  (   7,   0)       5    5  water beck water   
-  (   8,   0)       5    5  water beck water   
-  (   9,   0)       5    5  water beck water   
-  (  10,   0)       5    5  water beck water   
-  (  11,   0)       5    5  water beck water   
-  (  12,   0)       5    5  water beck water   
-  (  13,   0)       5    5  water beck water   
-  (  14,   0)       5    5  water beck water   
-  (  15,   0)       5    5  water beck water   
-  (  16,   0)       5    5  water beck water   
-  (  17,   0)       5    5  water beck water   
-  (  18,   0)       5    5  water beck water   
-  (  19,   0)       5    5  water beck water   
-  (  20,   0)       5    5  water beck water   
-  (  21,   0)       5    5  water beck water   
-  (  22,   0)       5    5  water beck water   
-  (  23,   0)       5    5  water beck water   
-  (  24,   0)       5    5  water beck water   
-  (  25,   0)       5    5  water beck water   
-  (  26,   0)       5    5  water beck water   
-  (  27,   0)       5    5  water beck water   
-  (  28,   0)       5    5  water beck water   
-  (  29,   0)       5    5  water beck water   
-  (  30,   0)       5    5  water beck water   
-  (  31,   0)       5    5  water beck water   
-  (  32,   0)       5    5  water beck water   
-  (  33,   0)       5    5  water beck water   
-  (  34,   0)       5    5  water beck water   
-  (  35,   0)       5    5  water beck water   
-  (  36,   0)       5    5  water beck water   
-  (  37,   0)       5    5  water beck water   
-  (  38,   0)       5    5  water beck water   
-  (  39,   0)       5    5  water beck         
-  (  40,   0)       5    5  water beck         
-  (  41,   0)       5    5  water beck         
-  (  42,   0)       5    5                     
-  (  43,   0)       5    5                     
-  (  44,   0)       5    5                     
-  (  45,   0)       5    5                     
-  (  46,   0)       5    5                     
-  (  47,   0)       5    5  water beck         
-  (  48,   0)       5    5  water beck         
-  (  49,   0)       5    5  water beck         
-  (  50,   0)       5    5  water beck         
-  (  51,   0)       5    5  water beck         
-  (  52,   0)       5    5                     
-  (  53,   0)       5    5                     
-  (  54,   0)       5    5                     
-  (  55,   0)       5    5                     
-  (  56,   0)       5    5                     
-  (  57,   0)       5    5                     
-  (  58,   0)       5    5                     
-  (  59,   0)       5    5                     
-  (  60,   0)       5    5                     
-  (  61,   0)       5    5                     
-  (  62,   0)       5    5                     
-  (  63,   0)       5    5                     
-  (  64,   0)       5    5                     
-  (  65,   0)                                  void
-  (  66,   0)                                  void
-  (  67,   0)                                  void
-  (  68,   0)                                  void
-  (  69,   0)                                  void
-  (  70,   0)                                  void
-  (  71,   0)                                  void
-  (  72,   0)                                  void
-  (  73,   0)                                  void
-  (  74,   0)                                  void
-  (  75,   0)                                  void
-  (  76,   0)                                  void
-  (  77,   0)                                  void
-  (  78,   0)                                  void
-  157 stations: rises 9, falls 9, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (-52,0); DROP -8 at (-44,0)
+## beck (water) along x
+TRANSECT 133 stations from (-67, 0) to (65, 0), every 1
+  station        ground  surface  water  top  standing            step
+  (  -67,     0)                                                    void
+  (  -66,     0)                                                    void
+  (  -65,     0)                                                    void
+  (  -64,     0)       6        6            6                      
+  (  -63,     0)       6        6            6                      
+  (  -62,     0)       6        6            6                      
+  (  -61,     0)       6        6            6                      
+  (  -60,     0)       6        6            6                      
+  (  -59,     0)       6        6            6                      
+  (  -58,     0)       6        6            6                      
+  (  -57,     0)       6        6            6                      
+  (  -56,     0)       6        6            6                      
+  (  -55,     0)       6        6            6                      
+  (  -54,     0)       6        6            6                      
+  (  -53,     0)       6        6            6                      
+  (  -52,     0)      14       14           14                      BARRIER +8
+  (  -51,     0)      14       14           14                      
+  (  -50,     0)      14       14           14                      
+  (  -49,     0)      14       14           14                      
+  (  -48,     0)      14       14           14                      
+  (  -47,     0)      14       14           14                      
+  (  -46,     0)      14       14           14                      
+  (  -45,     0)      14       14           14                      
+  (  -44,     0)       6        6            6                      DROP -8
+  (  -43,     0)       6        6            6                      
+  (  -42,     0)       6        6            6                      
+  (  -41,     0)       6        6            6                      
+  (  -40,     0)       6        6            6                      
+  (  -39,     0)       6        6            6  water beck          
+  (  -38,     0)       6        6            6  water beck          
+  (  -37,     0)       6        6            6  water beck          
+  (  -36,     0)       6        6            6  water beck          
+  (  -35,     0)       6        6            6  water beck          
+  (  -34,     0)       6        6            6  water beck          
+  (  -33,     0)       6        6      6     6  water beck          
+  (  -32,     0)       6        6      6     6  water beck          
+  (  -31,     0)       6        6      6     6  water beck#1        
+  (  -30,     0)       6        6      6     6  water beck#1        
+  (  -29,     0)       6        6      6     6  water beck#1        
+  (  -28,     0)       7        7      6     6  water beck          +1
+  (  -27,     0)       7        7      6     6  water beck          
+  (  -26,     0)       7        7      6     6  water beck          
+  (  -25,     0)       7        7      6     6  water beck          
+  (  -24,     0)       7        7      6     6  water beck          
+  (  -23,     0)       7        7      6     6  water beck          
+  (  -22,     0)       7        7      6     6  water beck          
+  (  -21,     0)       7        7      6     6  water beck          
+  (  -20,     0)       7        7      6     6  water beck          
+  (  -19,     0)       7        7      6     6  water beck          
+  (  -18,     0)       7        7      6     6  water beck          
+  (  -17,     0)       7        7      6     6  water beck          
+  (  -16,     0)       7        7      6     6  water beck          
+  (  -15,     0)       7        7      6     6  water beck          
+  (  -14,     0)       7        7      6     6  water beck          
+  (  -13,     0)       7        7      6     6  water beck          
+  (  -12,     0)       7        7      6     6  water beck          
+  (  -11,     0)       7        7      6     6  water beck          
+  (  -10,     0)       7        7      6     6  water beck          
+  (   -9,     0)       7        7      6     6  water beck          
+  (   -8,     0)       7        7      6     6  water beck          
+  (   -7,     0)       7        7      6     6  water beck          
+  (   -6,     0)       7        7      6     6  water beck          
+  (   -5,     0)       7        7      6     6  water beck          
+  (   -4,     0)      17       17           17  water beck#1        BARRIER +10
+  (   -3,     0)      16       16           31  water beck#1        -1
+  (   -2,     0)      16       16           31  water beck#1        
+  (   -1,     0)      16       16           30  water beck#1        
+  (    0,     0)      16       16           30  water beck#1        
+  (    1,     0)      16       16           31  water beck#1        
+  (    2,     0)      16       16           31  water beck#1        
+  (    3,     0)      17       17           17  water beck#1        +1
+  (    4,     0)       6        6      6     6  water beck#1        DROP -11
+  (    5,     0)       6        6      6     6  water beck#1        
+  (    6,     0)       6        6      6     6  water beck#1        
+  (    7,     0)       6        6      6     6  water beck#1        
+  (    8,     0)       6        6      6     6  water beck#1        
+  (    9,     0)       6        6      6     6  water beck#1        
+  (   10,     0)       6        6      6     6  water beck#1        
+  (   11,     0)       6        6      6     6  water beck#1        
+  (   12,     0)       6        6      6     6  water beck#1        
+  (   13,     0)       6        6      6     6  water beck#1        
+  (   14,     0)       6        6      6     6  water beck#1        
+  (   15,     0)       6        6      6     6  water beck#1        
+  (   16,     0)       6        6      6     6  water beck#1        
+  (   17,     0)       6        6      6     6  water beck#1        
+  (   18,     0)       6        6      6     6  water beck#1        
+  (   19,     0)       6        6      6     6  water beck#1        
+  (   20,     0)       6        6      6     6  water beck#1        
+  (   21,     0)       6        6      6     6  water beck#1        
+  (   22,     0)       6        6      6     6  water beck#1        
+  (   23,     0)       6        6      6     6  water beck#1        
+  (   24,     0)       6        6      6     6  water beck#1        
+  (   25,     0)       6        6      6     6  water beck#1        
+  (   26,     0)       6        6      6     6  water beck#1        
+  (   27,     0)       6        6      6     6  water beck#1        
+  (   28,     0)       6        6      6     6  water beck#1        
+  (   29,     0)       6        6      6     6  water beck#1        
+  (   30,     0)       6        6      6     6  water beck#1        
+  (   31,     0)       6        6      6     6  water beck#1        
+  (   32,     0)       6        6      6     6  water beck#1        
+  (   33,     0)       6        6      6     6  water beck#1        
+  (   34,     0)       6        6      6     6  water beck#1        
+  (   35,     0)       6        6      6     6  water beck#1        
+  (   36,     0)       6        6      6     6  water beck#1        
+  (   37,     0)       6        6      6     6  water beck#1        
+  (   38,     0)       6        6      6     6  water beck#1        
+  (   39,     0)       6        6            6  water beck          
+  (   40,     0)       6        6            6  water beck          
+  (   41,     0)       6        6            6  water beck          
+  (   42,     0)       6        6            6                      
+  (   43,     0)       6        6            6                      
+  (   44,     0)       6        6            6                      
+  (   45,     0)       6        6            6                      
+  (   46,     0)       6        6            6                      
+  (   47,     0)       6        6            6  water beck          
+  (   48,     0)       6        6            6  water beck          
+  (   49,     0)       6        6            6  water beck          
+  (   50,     0)       6        6            6  water beck          
+  (   51,     0)       6        6            6  water beck          
+  (   52,     0)       6        6            6                      
+  (   53,     0)       6        6            6                      
+  (   54,     0)       6        6            6                      
+  (   55,     0)       6        6            6                      
+  (   56,     0)       6        6            6                      
+  (   57,     0)       6        6            6                      
+  (   58,     0)       6        6            6                      
+  (   59,     0)       6        6            6                      
+  (   60,     0)       6        6            6                      
+  (   61,     0)       6        6            6                      
+  (   62,     0)       6        6            6                      
+  (   63,     0)       6        6            6                      
+  (   64,     0)       6        6            6                      
+  (   65,     0)                                                    void
+rises 4, falls 3, worst step 11: 2 barrier, 0 scramble, 2 drop — BARRIER +8 at (-52, 0); DROP -8 at (-44, 0); BARRIER +10 at (-4, 0); DROP -11 at (4, 0) | walked end to end
+beside: water beck#1 at (-57, -2), water beck at (-54, -2)
 
-TRANSECT beck (water) along z at x=0, z -22..22
-  station        ground  top  standing            step
-  (   0, -22)           24  tree tree-8        void
-  (   0, -21)           25  tree tree-8        void
-  (   0, -20)      13   26  tree tree-8        
-  (   0, -19)      13   28  tree tree-8        
-  (   0, -18)      13   28  tree tree-8        
-  (   0, -17)      13   27  tree tree-8        
-  (   0, -16)      13   28  tree tree-8        
-  (   0, -15)      13   28  tree tree-8        
-  (   0, -14)      13   28  tree tree-8        
-  (   0, -13)      13   27  tree tree-8        
-  (   0, -12)      13   27  tree tree-8        
-  (   0, -11)      13   24  tree tree-8        
-  (   0, -10)      13   24  tree tree-8        
-  (   0,  -9)      13   13  stroke road-beck   
-  (   0,  -8)      13   15  something          
-  (   0,  -7)      13   15  something          
-  (   0,  -6)      14   15  something          +1
-  (   0,  -5)      14   15  water beck         
-  (   0,  -4)       6   15  water beck         DROP -8
-  (   0,  -3)       6   30  water beck         
-  (   0,  -2)       6   30  water beck         
-  (   0,  -1)       6   29  water beck         
-  (   0,   0)       6   29  water beck         
-  (   0,   1)       6   30  water beck         
-  (   0,   2)       6   30  water beck         
-  (   0,   3)       6   15  water beck         
-  (   0,   4)      14   15  water beck         BARRIER +8
-  (   0,   5)      14   15  something          
-  (   0,   6)      13   15  something          -1
-  (   0,   7)      13   15  something          
-  (   0,   8)      13   13  stroke road-beck   
-  (   0,   9)      13   23  tree tree-8        
-  (   0,  10)      13   25  tree tree-8        
-  (   0,  11)      13   26  tree tree-8        
-  (   0,  12)      13   27  tree tree-8        
-  (   0,  13)      13   27  tree tree-8        
-  (   0,  14)      13   28  tree tree-8        
-  (   0,  15)      13   26  tree tree-8        
-  (   0,  16)      13   28  tree tree-8        
-  (   0,  17)      13   23  tree tree-8        
-  (   0,  18)      13   27  tree tree-8        
-  (   0,  19)      13   26  tree tree-8        
-  (   0,  20)           26  tree tree-8        void
-  (   0,  21)           23  tree tree-8        void
-  (   0,  22)           19  tree tree-8        void
-  45 stations: rises 9, falls 9, worst step 8: 1 barrier, 0 scramble, 1 drop — DROP -8 at (0,-4); BARRIER +8 at (0,4)
+## beck (water) along z
+TRANSECT 45 stations from (0, -22) to (0, 22), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,   -22)                            25  tree tree-8         void
+  (    0,   -21)                            26  tree tree-8         void
+  (    0,   -20)      14       14           27  tree tree-8         
+  (    0,   -19)      14       14           29  tree tree-8         
+  (    0,   -18)      14       14           29  tree tree-8         
+  (    0,   -17)      14       14           28  tree tree-8         
+  (    0,   -16)      14       14           29  tree tree-8         
+  (    0,   -15)      14       14           29  tree tree-8         
+  (    0,   -14)      14       14           29  tree tree-8         
+  (    0,   -13)      14       14           28  tree tree-8         
+  (    0,   -12)      14       14           28  tree tree-8         
+  (    0,   -11)      14       14           25  tree tree-8         
+  (    0,   -10)      14       14           25  tree tree-8         
+  (    0,    -9)      14       14           14  stroke road-beck    
+  (    0,    -8)      16       16           16                      scramble +2
+  (    0,    -7)      16       16           16                      
+  (    0,    -6)      16       16           16                      
+  (    0,    -5)      16       16           16  water beck          
+  (    0,    -4)      16       16           16  water beck#1        
+  (    0,    -3)      16       16           31  water beck#1        
+  (    0,    -2)      16       16           31  water beck#1        
+  (    0,    -1)      16       16           30  water beck#1        
+  (    0,     0)      16       16           30  water beck#1        
+  (    0,     1)      16       16           31  water beck#1        
+  (    0,     2)      16       16           31  water beck#1        
+  (    0,     3)      16       16           16  water beck#1        
+  (    0,     4)      16       16           16  water beck#1        
+  (    0,     5)      16       16           16                      
+  (    0,     6)      16       16           16                      
+  (    0,     7)      16       16           16                      
+  (    0,     8)      14       14           14  stroke road-beck#1  -2
+  (    0,     9)      14       14           24  tree tree-8#1       
+  (    0,    10)      14       14           26  tree tree-8#1       
+  (    0,    11)      14       14           27  tree tree-8#1       
+  (    0,    12)      14       14           28  tree tree-8#1       
+  (    0,    13)      14       14           28  tree tree-8#1       
+  (    0,    14)      14       14           29  tree tree-8#1       
+  (    0,    15)      14       14           27  tree tree-8#1       
+  (    0,    16)      14       14           29  tree tree-8#1       
+  (    0,    17)      14       14           24  tree tree-8#1       
+  (    0,    18)      14       14           28  tree tree-8#1       
+  (    0,    19)      14       14           27  tree tree-8#1       
+  (    0,    20)                            27  tree tree-8#1       void
+  (    0,    21)                            24  tree tree-8#1       void
+  (    0,    22)                            20  tree tree-8#1       void
+rises 1, falls 1, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (0, -8) | walked end to end
+beside: tree tree-8 at (-2, -23), stroke road-beck at (-2, -9), flora meadow-bank at (2, -9), water beck at (-2, -5), water beck#1 at (-2, -4), stroke road-beck#1 at (-2, 8), tree tree-8#1 at (-2, 9)

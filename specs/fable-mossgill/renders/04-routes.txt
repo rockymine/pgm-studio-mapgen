@@ -1,255 +1,259 @@
-ROUTE spawn-red -> destroyable-1-0: 35 blocks, 1 placed, 0 drop(s), worst drop 0
-  station        ground  top  standing            step
-  ( -55, -50)      25   40  spawn spawn-1      
-  ( -54, -50)      25   39  spawn spawn-1      
-  ( -53, -50)      25   38  spawn spawn-1      
-  ( -52, -50)      25   37  spawn spawn-1      
-  ( -51, -50)      25   36  spawn spawn-1      
-  ( -50, -49)      25   35  something          
-  ( -49, -48)      25   25                     
-  ( -48, -47)      25   25                     
-  ( -47, -46)      25   25                     
-  ( -46, -45)      25   25                     
-  ( -45, -44)      25   25                     
-  ( -44, -43)      24   24                     -1
-  ( -43, -42)      23   23                     -1
-  ( -42, -41)      22   22                     -1
-  ( -41, -40)      21   22  flora meadow-apron -1
-  ( -40, -39)      20   21  flora meadow-apron -1
-  ( -39, -38)      20   21  flora meadow-apron 
-  ( -38, -37)      19   20  flora meadow-apron -1
-  ( -37, -36)      19   19  stroke road-crag   
-  ( -36, -35)      19   19  stroke road-crag   
-  ( -35, -34)      19   19  stroke road-crag   
-  ( -34, -33)      21   21  stroke road-crag   scramble +2
-  ( -33, -32)      19   19                     -2
-  ( -32, -31)      19   19                     
-  ( -31, -30)      19   20  flora meadow-apron 
-  ( -30, -29)      19   20  flora meadow-apron 
-  ( -29, -28)      19   69  destroyable destroyable-1 
-  27 stations: rises 2, falls 8, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-34,-33)
-  within two blocks of the route: spawn spawn-1 at (-57, -52), destroyable destroyable-1 at (-29, -28)
+## spawn-red -> destroyable-1-0
+ROUTE (-55, -50) -> (-29, -28) aim travel: 35 blocks, 1 placed, 0 drop(s), worst drop 0
+  place            y   step
+  (-55, -50)        26
+  (-54, -50)        26
+  (-53, -50)        26
+  (-52, -50)        26
+  (-51, -50)        26
+  (-50, -49)        26
+  (-49, -48)        26
+  (-48, -47)        26
+  (-47, -46)        26
+  (-46, -45)        26
+  (-45, -44)        26
+  (-44, -43)        25
+  (-43, -42)        24
+  (-42, -41)        23
+  (-41, -40)        23
+  (-40, -39)        22
+  (-39, -38)        22
+  (-38, -37)        21
+  (-37, -36)        20
+  (-36, -35)        20
+  (-35, -34)        20
+  (-34, -33)        22   scramble +2
+  (-33, -32)        20
+  (-32, -31)        20
+  (-31, -30)        21
+  (-30, -29)        21
+  (-29, -28)        21
+rises 1, falls 0, worst step 2: scramble +2 at (-34, -33)
+beside: destroyable destroyable-1 at (-29, -28) d0, spawn spawn-1 at (-55, -50) d0
 
-ROUTE spawn-red -> destroyable-1-1: 127 blocks, 10 placed, 1 drop(s), worst drop 11
-  station        ground  top  standing            step
-  ( -55, -50)      25   40  spawn spawn-1      
-  ( -54, -50)      25   39  spawn spawn-1      
-  ( -53, -50)      25   38  spawn spawn-1      
-  ( -52, -50)      25   37  spawn spawn-1      
-  ( -51, -50)      25   36  spawn spawn-1      
-  ( -50, -50)      25   35  something          
-  ( -49, -50)      25   25                     
-  ( -48, -50)      25   25                     
-  ( -47, -50)      25   25  stroke road-crag   
-  ( -46, -50)      25   25  stroke road-crag   
-  ( -45, -50)      26   26  stroke road-crag   +1
-  ( -44, -49)      25   25  stroke road-crag   -1
-  ( -43, -48)      24   24                     -1
-  ( -42, -47)      24   24                     
-  ( -41, -46)      23   23                     -1
-  ( -40, -45)      22   22                     -1
-  ( -39, -44)      22   22                     
-  ( -38, -43)      21   21                     -1
-  ( -37, -42)      20   20                     -1
-  ( -36, -41)      20   20                     
-  ( -35, -40)      19   19  stroke road-crag   -1
-  ( -34, -39)      19   19  stroke road-crag   
-  ( -33, -38)      19   19  stroke road-crag   
-  ( -32, -37)      19   19  stroke road-crag   
-  ( -31, -36)      19   20  flora meadow-apron 
-  ( -30, -35)      21   21                     scramble +2
-  ( -29, -34)      21   21                     
-  ( -28, -33)      19   20  flora meadow-apron -2
-  ( -27, -32)      19   20  flora meadow-apron 
-  ( -26, -31)      19   19                     
-  ( -25, -30)      19   19                     
-  ( -24, -29)      19   20  flora meadow-apron 
-  ( -23, -28)      19   20  flora meadow-apron 
-  ( -22, -27)      19   20  flora meadow-apron 
-  ( -21, -26)      19   20  flora meadow-apron 
-  ( -20, -25)      19   20  flora meadow-apron 
-  ( -19, -24)      18   19  flora meadow-apron -1
-  ( -18, -23)      18   19  flora meadow-apron 
-  ( -17, -22)      17   18  flora meadow-apron -1
-  ( -16, -21)      16   17  flora meadow-apron -1
-  ( -15, -20)      16   17  flora meadow-apron 
-  ( -14, -19)      15   16  flora meadow-bank  -1
-  ( -13, -18)      14   15  flora meadow-bank  -1
-  ( -12, -17)      14   15  flora meadow-bank  
-  ( -11, -16)      13   18  tree tree-7        -1
-  ( -10, -15)      13   18  tree tree-7        
-  (  -9, -15)      13   14  flora meadow-bank  
-  (  -8, -14)      13   13  stroke road-beck   
-  (  -7, -13)      13   13  stroke road-beck   
-  (  -6, -12)      13   13  stroke road-beck   
-  (  -5, -11)      13   13  stroke road-beck   
-  (  -4, -10)      13   13  stroke road-beck   
-  (  -3,  -9)      13   13  stroke road-beck   
-  (  -2,  -8)      13   15  something          
-  (  -1,  -7)      13   15  something          
-  (   0,  -6)      14   15  something          +1
-  (   1,  -5)      14   15  something          
-  (   1,  -4)       6   15  water beck         DROP -8
-  (   1,  -3)       6   29  water beck         
-  (   1,  -2)       6   29  water beck         
-  (   1,  -1)       6   30  water beck         
-  (   1,   0)       6   30  water beck         
-  (   1,   1)       6   29  water beck         
-  (   2,   2)       6   29  water beck         
-  (   3,   3)       6   16  water beck         
-  (   4,   4)       5    5  water beck water   -1
-  (   5,   5)      14   14                     BARRIER +9
-  (   6,   5)      14   14                     
-  (   7,   6)      14   14                     
-  (   8,   7)      13   13  water beck         -1
-  (   9,   8)      13   13  stroke road-beck   
-  (  10,   9)      13   13  stroke road-beck   
-  (  11,  10)      13   13  stroke road-beck   
-  (  12,  11)      13   13  stroke road-beck   
-  (  13,  12)      13   13  stroke road-beck   
-  (  14,  13)      13   13  stroke road-beck   
-  (  15,  14)      14   14  stroke road-beck   +1
-  (  16,  15)      15   15  stroke road-beck   +1
-  (  17,  16)      15   15  stroke road-beck   
-  (  18,  17)      16   16  stroke road-beck   +1
-  (  19,  18)      16   16  stroke road-beck   
-  (  20,  19)      17   17  stroke road-beck   +1
-  (  21,  20)      18   18  stroke road-beck   +1
-  (  22,  21)      18   18  stroke road-beck   
-  (  23,  22)      19   19  stroke road-beck   +1
-  (  24,  23)      21   21                     scramble +2
-  (  25,  24)      19   19  stroke road-beck   -2
-  (  26,  25)      19   19  stroke road-beck   
-  (  27,  26)      19   19  stroke road-beck   
-  (  28,  27)      19   69  destroyable destroyable-1 
-  90 stations: rises 21, falls 27, worst step 9: 1 barrier, 2 scramble, 1 drop — scramble +2 at (-30,-35); DROP -8 at (1,-4); BARRIER +9 at (5,5); scramble +2 at (24,23)
-  within two blocks of the route: spawn spawn-1 at (-57, -52), tree tree-2 at (-32, -40), tree tree-7 at (-11, -20), tree tree-8 at (-6, -16), water beck at (-3, -5), tree tree-6 at (20, 15), destroyable destroyable-1 at (28, 27)
+## spawn-red -> destroyable-1-1
+ROUTE (-55, -50) -> (28, 27) aim travel: 127 blocks, 10 placed, 1 drop(s), worst drop 11
+  place            y   step
+  (-55, -50)        26
+  (-54, -50)        26
+  (-53, -50)        26
+  (-52, -50)        26
+  (-51, -50)        26
+  (-50, -50)        26
+  (-49, -50)        26
+  (-48, -50)        26
+  (-47, -50)        26
+  (-46, -50)        26
+  (-45, -50)        27
+  (-44, -49)        26
+  (-43, -48)        25
+  (-42, -47)        25
+  (-41, -46)        24
+  (-40, -45)        23
+  (-39, -44)        23
+  (-38, -43)        22
+  (-37, -42)        21
+  (-36, -41)        21
+  (-35, -40)        20
+  (-34, -39)        20
+  (-33, -38)        20
+  (-32, -37)        20
+  (-31, -36)        21
+  (-30, -35)        22
+  (-29, -34)        22
+  (-28, -33)        21
+  (-27, -32)        21
+  (-26, -31)        20
+  (-25, -30)        20
+  (-24, -29)        21
+  (-23, -28)        21
+  (-22, -27)        21
+  (-21, -26)        21
+  (-20, -25)        21
+  (-19, -24)        20
+  (-18, -23)        20
+  (-17, -22)        19
+  (-16, -21)        18
+  (-15, -20)        18
+  (-14, -19)        17
+  (-13, -18)        16
+  (-12, -17)        16
+  (-11, -16)        14
+  (-10, -15)        14
+  (-9, -15)         15
+  (-8, -14)         14
+  (-7, -13)         14
+  (-6, -12)         14
+  (-5, -11)         14
+  (-4, -10)         14
+  (-3, -9)          14
+  (-2, -8)          16   scramble +2
+  (-1, -7)          16
+  (0, -6)           16
+  (1, -5)           16
+  (1, -4)           16
+  (1, -3)           16
+  (1, -2)           16
+  (1, -1)           16
+  (1, 0)            16
+  (1, 1)            16
+  (2, 2)            16
+  (3, 3)            17
+  (4, 4)             6   drop -11
+  (5, 5)            15   barrier +9
+  (6, 5)            15
+  (7, 6)            15
+  (8, 7)            14
+  (9, 8)            14
+  (10, 9)           14
+  (11, 10)          14
+  (12, 11)          14
+  (13, 12)          14
+  (14, 13)          14
+  (15, 14)          15
+  (16, 15)          16
+  (17, 16)          16
+  (18, 17)          17
+  (19, 18)          17
+  (20, 19)          18
+  (21, 20)          19
+  (22, 21)          19
+  (23, 22)          20
+  (24, 23)          22   scramble +2
+  (25, 24)          20
+  (26, 25)          20
+  (27, 26)          20
+  (28, 27)          21
+rises 3, falls 1, worst step 11: scramble +2 at (-2, -8); drop -11 at (4, 4); barrier +9 at (5, 5); scramble +2 at (24, 23)
+beside: destroyable destroyable-1#1 at (28, 27) d0, spawn spawn-1 at (-55, -50) d0, tree tree-7 at (-11, -16) d0, water beck#1 at (1, -4) d0, tree tree-6#1 at (20, 17) d1, tree tree-8 at (-6, -14) d1, water beck at (-1, -5) d1, tree tree-2 at (-32, -40) d2
 
-ROUTE spawn-blue -> destroyable-1-0: 128 blocks, 13 placed, 1 drop(s), worst drop 9
-  station        ground  top  standing            step
-  (  55,  50)      25   41  spawn spawn-1      
-  (  54,  50)      25   40  spawn spawn-1      
-  (  53,  50)      25   39  spawn spawn-1      
-  (  52,  50)      25   38  spawn spawn-1      
-  (  51,  50)      25   37  spawn spawn-1      
-  (  50,  50)      25   36  spawn spawn-1      
-  (  49,  49)      25   35  something          
-  (  48,  48)      25   25                     
-  (  47,  47)      25   25                     
-  (  46,  46)      25   25                     
-  (  45,  45)      25   25                     
-  (  44,  44)      25   25                     
-  (  43,  43)      24   24                     -1
-  (  42,  42)      24   24                     
-  (  41,  41)      22   22                     -2
-  (  40,  40)      22   23  flora meadow-apron 
-  (  39,  39)      21   22  flora meadow-apron -1
-  (  38,  38)      20   21  flora meadow-apron -1
-  (  37,  37)      20   21  flora meadow-apron 
-  (  36,  36)      19   19  stroke road-crag   -1
-  (  35,  35)      19   19  stroke road-crag   
-  (  34,  34)      19   19  stroke road-crag   
-  (  33,  33)      19   19  stroke road-crag   
-  (  32,  32)      21   21                     scramble +2
-  (  31,  31)      19   19                     -2
-  (  30,  30)      19   20  flora meadow-apron 
-  (  29,  29)      19   20  flora meadow-apron 
-  (  28,  28)      19   68  flora meadow-apron 
-  (  27,  27)      19   68  stroke road-beck   
-  (  26,  26)      19   19  stroke road-beck   
-  (  25,  25)      19   19  stroke road-beck   
-  (  24,  24)      21   21                     scramble +2
-  (  23,  23)      19   19  stroke road-beck   -2
-  (  22,  22)      19   19  stroke road-beck   
-  (  21,  21)      18   18  stroke road-beck   -1
-  (  20,  20)      17   17  stroke road-beck   -1
-  (  19,  19)      17   17  stroke road-beck   
-  (  18,  18)      16   16  stroke road-beck   -1
-  (  17,  17)      16   16  stroke road-beck   
-  (  16,  16)      15   15  stroke road-beck   -1
-  (  15,  15)      14   14  stroke road-beck   -1
-  (  14,  14)      14   14  stroke road-beck   
-  (  13,  13)      13   13  stroke road-beck   -1
-  (  12,  12)      13   13  stroke road-beck   
-  (  11,  11)      13   13  stroke road-beck   
-  (  10,  10)      13   13  stroke road-beck   
-  (   9,   9)      13   13  stroke road-beck   
-  (   8,   8)      13   13  stroke road-beck   
-  (   7,   7)      13   13  stroke road-beck   
-  (   6,   6)      14   14                     +1
-  (   5,   5)      14   14                     
-  (   4,   4)       5    5  water beck water   DROP -9
-  (   4,   3)       5    5  water beck water   
-  (   4,   2)       5    5  water beck water   
-  (   4,   1)       5    5  water beck water   
-  (   4,   0)       5    5  water beck water   
-  (   4,  -1)       5    5  water beck water   
-  (   4,  -2)       5    5  water beck water   
-  (   3,  -3)       6   16  water beck         +1
-  (   2,  -4)       6   15  water beck         
-  (   1,  -5)      14   15  something          BARRIER +8
-  (   0,  -6)      14   15  something          
-  (  -1,  -6)      14   15  something          
-  (  -2,  -6)      14   15  something          
-  (  -3,  -6)      14   15  something          
-  (  -4,  -6)      14   16  something          
-  (  -5,  -6)      14   14                     
-  (  -6,  -6)      14   14                     
-  (  -7,  -6)      14   14                     
-  (  -8,  -7)      14   14                     
-  (  -9,  -8)      13   13  water beck         -1
-  ( -10,  -9)      13   13  stroke road-beck   
-  ( -11, -10)      13   13  stroke road-beck   
-  ( -12, -11)      13   13  stroke road-beck   
-  ( -13, -12)      13   13  stroke road-beck   
-  ( -14, -13)      13   13  stroke road-beck   
-  ( -15, -14)      13   13  stroke road-beck   
-  ( -16, -15)      14   14  stroke road-beck   +1
-  ( -17, -16)      15   15  stroke road-beck   +1
-  ( -18, -17)      15   15  stroke road-beck   
-  ( -19, -18)      16   16  stroke road-beck   +1
-  ( -20, -19)      16   16  stroke road-beck   
-  ( -21, -20)      17   17  stroke road-beck   +1
-  ( -22, -21)      18   18  stroke road-beck   +1
-  ( -23, -22)      18   18  stroke road-beck   
-  ( -24, -23)      19   19  stroke road-beck   +1
-  ( -25, -24)      21   21                     scramble +2
-  ( -26, -25)      19   19  stroke road-beck   -2
-  ( -27, -26)      19   19  stroke road-beck   
-  ( -28, -27)      19   19  stroke road-beck   
-  ( -29, -28)      19   69  destroyable destroyable-1 
-  91 stations: rises 22, falls 28, worst step 9: 1 barrier, 3 scramble, 1 drop — scramble +2 at (32,32); scramble +2 at (24,24); DROP -9 at (4,4); BARRIER +8 at (1,-5); scramble +2 at (-25,-24)
-  within two blocks of the route: spawn spawn-1 at (53, 48), destroyable destroyable-1 at (28, 27), tree tree-6 at (23, 21), water beck at (8, 7)
+## spawn-blue -> destroyable-1-0
+ROUTE (55, 50) -> (-29, -28) aim travel: 128 blocks, 13 placed, 1 drop(s), worst drop 9
+  place            y   step
+  (55, 50)          26
+  (54, 50)          26
+  (53, 50)          26
+  (52, 50)          26
+  (51, 50)          26
+  (50, 50)          26
+  (49, 49)          26
+  (48, 48)          26
+  (47, 47)          26
+  (46, 46)          26
+  (45, 45)          26
+  (44, 44)          26
+  (43, 43)          25
+  (42, 42)          25
+  (41, 41)          23
+  (40, 40)          24
+  (39, 39)          23
+  (38, 38)          22
+  (37, 37)          22
+  (36, 36)          20
+  (35, 35)          20
+  (34, 34)          20
+  (33, 33)          20
+  (32, 32)          22   scramble +2
+  (31, 31)          20
+  (30, 30)          21
+  (29, 29)          21
+  (28, 28)          21
+  (27, 27)          20
+  (26, 26)          20
+  (25, 25)          20
+  (24, 24)          22   scramble +2
+  (23, 23)          20
+  (22, 22)          20
+  (21, 21)          19
+  (20, 20)          18
+  (19, 19)          18
+  (18, 18)          17
+  (17, 17)          17
+  (16, 16)          16
+  (15, 15)          15
+  (14, 14)          15
+  (13, 13)          14
+  (12, 12)          14
+  (11, 11)          14
+  (10, 10)          14
+  (9, 9)            14
+  (8, 8)            14
+  (7, 7)            14
+  (6, 6)            15
+  (5, 5)            15
+  (4, 4)             6   drop -9
+  (4, 3)             6
+  (4, 2)             6
+  (4, 1)             6
+  (4, 0)             6
+  (4, -1)            6
+  (4, -2)            6
+  (3, -3)           17   barrier +11
+  (2, -4)           16
+  (1, -5)           16
+  (0, -6)           16
+  (-1, -6)          16
+  (-2, -6)          16
+  (-3, -6)          16
+  (-4, -6)          17
+  (-5, -6)          15
+  (-6, -6)          15
+  (-7, -6)          15
+  (-8, -7)          15
+  (-9, -8)          14
+  (-10, -9)         14
+  (-11, -10)        14
+  (-12, -11)        14
+  (-13, -12)        14
+  (-14, -13)        14
+  (-15, -14)        14
+  (-16, -15)        15
+  (-17, -16)        16
+  (-18, -17)        16
+  (-19, -18)        17
+  (-20, -19)        17
+  (-21, -20)        18
+  (-22, -21)        19
+  (-23, -22)        19
+  (-24, -23)        20
+  (-25, -24)        22   scramble +2
+  (-26, -25)        20
+  (-27, -26)        20
+  (-28, -27)        20
+  (-29, -28)        21
+rises 4, falls 1, worst step 11: scramble +2 at (32, 32); scramble +2 at (24, 24); drop -9 at (4, 4); barrier +11 at (3, -3); scramble +2 at (-25, -24)
+beside: destroyable destroyable-1 at (-29, -28) d0, spawn spawn-1#1 at (50, 50) d0, water beck at (-9, -8) d0, water beck#1 at (2, -4) d0, destroyable destroyable-1#1 at (28, 27) d1, tree tree-6 at (-25, -22) d1, tree tree-6#1 at (21, 19) d1
 
-ROUTE spawn-blue -> destroyable-1-1: 36 blocks, 1 placed, 0 drop(s), worst drop 0
-  station        ground  top  standing            step
-  (  55,  50)      25   41  spawn spawn-1      
-  (  54,  50)      25   40  spawn spawn-1      
-  (  53,  50)      25   39  spawn spawn-1      
-  (  52,  50)      25   38  spawn spawn-1      
-  (  51,  50)      25   37  spawn spawn-1      
-  (  50,  49)      25   36  spawn spawn-1      
-  (  49,  48)      25   35  something          
-  (  48,  47)      25   25                     
-  (  47,  46)      25   25                     
-  (  46,  45)      25   25                     
-  (  45,  44)      25   25                     
-  (  44,  43)      25   25                     
-  (  43,  42)      24   24                     -1
-  (  42,  41)      23   23                     -1
-  (  41,  40)      22   23  flora meadow-apron -1
-  (  40,  39)      21   22  flora meadow-apron -1
-  (  39,  38)      20   21  flora meadow-apron -1
-  (  38,  37)      20   21  flora meadow-apron 
-  (  37,  36)      19   20  flora meadow-apron -1
-  (  36,  35)      19   19  stroke road-crag   
-  (  35,  34)      19   19  stroke road-crag   
-  (  34,  33)      19   19  stroke road-crag   
-  (  33,  32)      21   21  stroke road-crag   scramble +2
-  (  32,  31)      19   19                     -2
-  (  31,  30)      19   19                     
-  (  30,  29)      19   20  flora meadow-apron 
-  (  29,  28)      19   20  flora meadow-apron 
-  (  28,  27)      19   69  destroyable destroyable-1 
-  28 stations: rises 2, falls 8, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (33,32)
-  within two blocks of the route: spawn spawn-1 at (53, 48), destroyable destroyable-1 at (28, 27)
+## spawn-blue -> destroyable-1-1
+ROUTE (55, 50) -> (28, 27) aim travel: 36 blocks, 1 placed, 0 drop(s), worst drop 0
+  place            y   step
+  (55, 50)          26
+  (54, 50)          26
+  (53, 50)          26
+  (52, 50)          26
+  (51, 50)          26
+  (50, 49)          26
+  (49, 48)          26
+  (48, 47)          26
+  (47, 46)          26
+  (46, 45)          26
+  (45, 44)          26
+  (44, 43)          26
+  (43, 42)          25
+  (42, 41)          24
+  (41, 40)          24
+  (40, 39)          23
+  (39, 38)          22
+  (38, 37)          22
+  (37, 36)          21
+  (36, 35)          20
+  (35, 34)          20
+  (34, 33)          20
+  (33, 32)          22   scramble +2
+  (32, 31)          20
+  (31, 30)          20
+  (30, 29)          21
+  (29, 28)          21
+  (28, 27)          21
+rises 1, falls 0, worst step 2: scramble +2 at (33, 32)
+beside: destroyable destroyable-1#1 at (28, 27) d0, spawn spawn-1#1 at (50, 49) d0

@@ -1,0 +1,22 @@
+THEMES  8 themes over 8893 ground cells, 23 distinct surface blocks
+  bank  2819 cells (31.7%)  2:0 Grass Block, 3:1 Coarse Dirt, 3:0 Dirt, 5:1 Spruce Planks, 1:2 Polished Granite, 5:3 Jungle Planks, 1:5 Andesite, 3:2 Podzol, 1:1 Granite, 4:0 Cobblestone, 48:0 Mossy Cobblestone, 9:0 Water
+  apron  2290 cells (25.8%)  2:0 Grass Block, 3:1 Coarse Dirt, 5:3 Jungle Planks, 3:2 Podzol, 1:2 Polished Granite, 3:0 Dirt, 5:1 Spruce Planks, 4:0 Cobblestone, 1:1 Granite, 162:1 Dark Oak Log
+  bed  1640 cells (18.4%)  9:0 Water, 13:0 Gravel, 3:1 Coarse Dirt, 5:1 Spruce Planks, 12:0 Sand, 48:0 Mossy Cobblestone, 1:5 Andesite, 168:0 Prismarine, 5:3 Jungle Planks, 1:2 Polished Granite
+  brow  1000 cells (11.2%)  3:1 Coarse Dirt, 2:0 Grass Block, 3:0 Dirt, 3:2 Podzol, 1:2 Polished Granite, 5:3 Jungle Planks, 1:1 Granite
+  crag  800 cells (9.0%)  5:0 Oak Planks, 3:1 Coarse Dirt, 3:2 Podzol, 3:0 Dirt, 2:0 Grass Block, 35:14 Red Wool, 1:2 Polished Granite, 5:3 Jungle Planks, 1:1 Granite, 35:11 Blue Wool
+  quay  216 cells (2.4%)  43:0 Double Stone Slab, 43:8 Double Stone Slab, 35:8 Light Gray Wool, 1:2 Polished Granite, 5:3 Jungle Planks
+  timber  96 cells (1.1%)  5:1 Spruce Planks
+  dark-timber  32 cells (0.4%)  5:5 Dark Oak Planks
+borders:
+  bank | bed  298 cells
+  apron | quay  176 cells
+  apron | bank  114 cells
+  bed | quay  112 cells
+  apron | brow  50 cells
+  apron | crag  40 cells
+  brow | crag  40 cells
+  dark-timber | timber  32 cells
+  bed | dark-timber  20 cells
+  bank | timber  12 cells
+  dark-timber | quay  8 cells
+  bank | dark-timber  8 cells
