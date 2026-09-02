@@ -16,7 +16,7 @@ review/<slug>.md                      the measured record for that map
 reports/<model>-runN.md               one agent run: what it could not say, what it got wrong, what worked
 showcase/<nn>-<concept>/              one technique, end to end — documents, world, renders, README
 sculpture/                            structures built out of the layer system — the two galleries
-tools/                                the driver that posts those documents to the API
+tools/                                the driver that posts those documents to the API, the loop beside it, and the world tools
 ```
 
 **`maps/<slug>/` is what a server is handed and nothing else** — the three things a match reads. Everything
@@ -60,6 +60,9 @@ written from and `maps/opus5-automaton` is a played board furnished with them.
 **Two documents, and the API.** [AUTHORING-BRIEF.md](AUTHORING-BRIEF.md) is what an authoring agent is
 given, end to end. [GENERATION-NOTES.md](GENERATION-NOTES.md) is what the API cannot state about itself —
 a fact about how two correct mechanisms interact, a number no gate checks, a read-back that lies.
+[REVAMP-BRIEF.md](REVAMP-BRIEF.md) is the loop after a person has finished a board in game: the two
+worlds read against each other, the commands named, the finish restated as documents, and a new board
+built with what it taught.
 
 Everything else comes from the studio, which describes itself: `GET /api/openapi/v1.json` is every route
 with its request, its answer and the failure codes it declares; `GET /api/rules` is every rule id with what

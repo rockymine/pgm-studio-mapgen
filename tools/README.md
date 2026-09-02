@@ -1,4 +1,4 @@
-# tools/ — the one driver, and the two probes beside it
+# tools/ — the driver, the loop beside it, and the world tools a hand revamp needs
 
 ## `drive.py` — a plan and a finish, through the API, to a world
 
@@ -175,6 +175,35 @@ build — which is where most of a board's shape is actually decided. The grid a
 plan and so are not in a dry pass; `board.py` covers the grid half of that loop. `--slug` overrides the slug
 the spec directory's name would give, for a board stored under a name of its own.
 
+## `loop.py` — the spec through the previews, in seconds
+
+```bash
+python3 tools/loop.py specs/<slug> [--slug <slug>] [--no-relief] [--no-dressing]
+                      [--candidates <propId> x,z [x,z ...]]
+                      [--profile x=<x>[,z=<z0>..<z1>[,step=<n>]]] [--profile z=<z>[,x=<x0>..<x1>]]
+                      [--column x,z [x,z ...]]
+```
+
+A drive is ten minutes and most of what it decides was decided by two previews that take twenty seconds.
+This reads the spec exactly as `drive.py` does — the plan compiled and patched with its finish, or the drawn
+layout — and posts the result to `sketch/relief/read` and `sketch/dressing` without storing anything. The
+relief read answers the terrain in numbers (range, walk/scramble/barrier steps, crossings in both
+directions); the dressing preview answers what every prop did and prints every decline with its rule and
+coordinates. **The map has to have been driven once**, because the dressing preview reads the stored
+intent for the spawn doors and the goal rings `DR-KEEP` keeps clear; after that, every placement question
+is a loop pass and the drive is the last step rather than the first.
+
+`--candidates` is the placement read the API does not have. Seven rules decide where a prop may stand (a
+water prop's bed, a door's lane, the spawn's margin, a goal's 21 blocks, a road's standoff, a house's claim,
+a structure's keep-out) and the only way to find a free spot is to try one, so the named prop is duplicated
+at every position given, as `cand-1`, `cand-2`, …, and one pass says which stand and which are declined and
+why. Eight candidates cost one pass. Every prop placement on `fable-mossgill` was found this way.
+
+`--profile` and `--column` post `sketch/columns`, the one heavy read here (it builds the board), and print the
+ground's surface along a line, or the whole column at a position as its runs with the layer that drew each.
+It is the read that showed a scarp's shelf on the wrong side of its lip, which no render was small enough to
+hide and no render was large enough to show.
+
 ## `board.py` — a plan as a grid, before it is a picture
 
 ```bash
@@ -198,6 +227,45 @@ Run 4's own worked example is one line of it. In `specs/opus5-wheal-hazel/render
 Sixteen against four is the whole of a dead landform, visible at a glance and invisible in the render
 that was actually looked at. `specs/opus5-wheal-hazel-v2/renders/00-board.txt` is
 the same two rows agreeing.
+
+## The world tools — reading a world a person finished
+
+Five tools read Anvil worlds directly, in the standard library alone, for the loop where the studio builds
+a board, a person finishes it in game, and the finish is read back into documents. The procedure that uses
+them end to end is [REVAMP-BRIEF.md](../REVAMP-BRIEF.md); `review/fable-millrace-revamp.md` is the record
+they were written to produce.
+
+| Tool | Answers |
+|---|---|
+| `anvil.py` | the reader the other four import — `World(regionDir)` with `get`, `blocks`, `columns`, `voxels`, `bounds`, `biome` — and, run on its own, a census of a world. Numeric ids, 1.8 Anvil, nothing installed |
+| `world-diff.py` | two worlds of one board against each other, keyed by the first's `provenance.json`: how many columns kept their surface, what each block became by pass and depth, every added and removed thing with its box, the bed under the water, the plants, the biomes, and how much of each material shows on a face. `--json` writes it all for a lift or a review |
+| `lift.py` | a box cut out of a world into `models/<name>.json`, rows of `[x, y, z, id, data]`, which a spec's `build.py` turns into a made thing through `sculpt/layers.py`. `--against` keeps only what the other world lacks, `--ground-below` drops the terrain a footing stands in, `--cost` prints what it costs in layers and shapes, `--plan` prints the box as a plan of top blocks |
+| `trees.py` | `catalogue` every tree standing in a world; `match` planted trees back to their originals on leaf shape under the eight symmetries of the square; `bodies` a showcase row into the `trees.json` a `copied` recipe carries; `verify` that a built world planted them block for block and every leaf no-decay |
+| `probe.py` | whether the ground varies down a column or each column is one material — the run lengths of one stone through the body, the earth's uniformity, a face as characters, and the floating columns bucketed by what stands at their top |
+
+```bash
+python3 tools/world-diff.py maps/<slug>/region maps/<author>-<slug>/region \
+        --provenance specs/<slug>/provenance.json --json specs/<author>-<slug>/diff.json
+python3 tools/trees.py match showcase/tree-showcase/region maps/<author>-<slug>/region --against maps/<slug>/region
+python3 tools/trees.py bodies showcase/tree-showcase/region --row -75=oak-dense --row -242=fir-tall --out specs/<new>/trees.json
+python3 tools/lift.py maps/<author>-<slug>/region statue --box -61 31 -75 -29 72 -38 \
+        --against maps/<slug>/region --ground-below 36 --out specs/<new>/models --cost
+python3 tools/probe.py maps/<new>/region --floating
+python3 tools/trees.py verify maps/<new>/region specs/<new>/trees.json
+```
+
+Three things they agree on, so they cannot drift apart: what a tree is (wood, leaves, the plants a crown
+carries; `anvil.py` holds the sets), that a body is 26-connected, and that a column's surface is its topmost
+block that is not a tree, so a crown never counts as ground. Two readings they were written to make cheap:
+**the determinism control** — `world-diff.py` with the edited world replaced by a fresh rebuild of the
+original says what a rebuild moves, and only where it moves nothing is a diff against hand work a statement
+about the hand work (0.4% on `opus5-millrace`, all of it trees and shells); and **floating columns** — a
+column with nothing at the world's floor is a bridge over a strait, a cloud or a balloon far more often than
+a hole, and `probe.py --floating` says which by what stands at its top, where a count alone said "hole".
+
+Each reads a million-block world in seconds and holds it in memory as a dict; a diff of two boards takes
+about a minute. They take a world's `region/` directory, which is what `maps/<slug>/` and a spec's
+`--out` hold.
 
 ## `column-probe.cs` and `build.cs` · `world-build.cs`
 
