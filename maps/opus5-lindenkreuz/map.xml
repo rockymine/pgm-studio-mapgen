@@ -63,7 +63,7 @@
     <filters>
         <team id="only-blue">blue-team</team>
         <team id="only-red">red-team</team>
-        <any id="over-void-breakable">
+        <any id="block-break-void-filter">
             <all>
                 <any>
                     <material>log</material>
@@ -77,14 +77,13 @@
                     <material>water lily</material>
                     <material>vine</material>
                 </any>
-                <filter id="is-void"/>
+                <void/>
             </all>
-            <filter id="no-void"/>
+            <filter id="block-place-void-filter"/>
         </any>
-        <not id="no-void">
-            <filter id="is-void"/>
+        <not id="block-place-void-filter">
+            <void/>
         </not>
-        <void/>
     </filters>
     <regions>
         <point id="blue-spawn-point">0,20,90</point>
@@ -108,7 +107,7 @@
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
         <apply block="never" region="spawns" message="You may not block/break spawns!"/>
         <apply kit="reset-resistance-kit" region="not-spawns"/>
-        <apply block-place="no-void" block-break="over-void-breakable" region="not-build-area" message="You may not edit the void!"/>
+        <apply block-place="block-place-void-filter" block-break="block-break-void-filter" region="not-build-area" message="You may not edit the void!"/>
     </regions>
     <block-drops>
         <rule>
