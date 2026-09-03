@@ -1,0 +1,13 @@
+THEMES  5 themes over 23653 ground cells, 13 distinct surface blocks
+  pan  17411 cells (73.6%)  12:0 Sand, 24:0 Sandstone, 13:0 Gravel, 24:2 Smooth Sandstone, 12:1 Red Sand, 24:1 Chiseled Sandstone, 159:1 Orange Stained Clay, 172:0 Hardened Clay, 35:14 Red Wool, 35:11 Blue Wool
+  scree  2612 cells (11.0%)  12:1 Red Sand, 159:1 Orange Stained Clay, 13:0 Gravel
+  caliche  1690 cells (7.1%)  24:2 Smooth Sandstone, 159:8 Light Gray Stained Clay, 159:0 White Stained Clay, 13:0 Gravel, 12:1 Red Sand
+  butte  1666 cells (7.0%)  159:12 Brown Stained Clay, 159:1 Orange Stained Clay, 172:0 Hardened Clay
+  wash  274 cells (1.2%)  13:0 Gravel, 12:0 Sand, 12:1 Red Sand
+borders:
+  pan | scree  522 cells
+  caliche | pan  314 cells
+  butte | pan  212 cells
+  butte | scree  162 cells
+  pan | wash  142 cells
+  caliche | wash  70 cells

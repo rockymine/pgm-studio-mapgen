@@ -1,0 +1,198 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 16,
+    "z": -90
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -100,
+     "maxX": 10,
+     "maxZ": -80
+    }
+   ],
+   "yaw": 0,
+   "footprint": {
+    "minX": -5,
+    "minZ": -95,
+    "maxX": 5,
+    "maxZ": -85
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 16,
+    "z": 90
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 80,
+     "maxX": 10,
+     "maxZ": 100
+    }
+   ],
+   "yaw": 180,
+   "footprint": {
+    "minX": -5,
+    "minZ": 85,
+    "maxX": 5,
+    "maxZ": 95
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 60,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -60,
+    "minZ": -40,
+    "maxX": 60,
+    "maxZ": -20
+   },
+   {
+    "minX": -60,
+    "minZ": 20,
+    "maxX": 60,
+    "maxZ": 40
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "mon-w",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Quiverstone",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -24,
+    "y": 16,
+    "z": -54
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "mon-e",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Redscar",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 24,
+    "y": 16,
+    "z": -54
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "mon-w",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Quiverstone",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 23,
+    "y": 16,
+    "z": 53
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "mon-e",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Redscar",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -25,
+    "y": 16,
+    "z": 53
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Quiverstone Mesa",
+  "created": "2026-09-03",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue",
+  "3": "neutral"
+ },
+ "structures": null
+}

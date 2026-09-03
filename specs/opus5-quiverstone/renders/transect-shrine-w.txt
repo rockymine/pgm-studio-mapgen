@@ -1,0 +1,56 @@
+## shrine-w (house) along x
+TRANSECT 23 stations from (-50, -2) to (-28, -2), every 1
+  station        ground  surface  water  top  standing            step
+  (  -50,    -2)      16       16           16                      
+  (  -49,    -2)      17       17           17                      +1
+  (  -48,    -2)      17       17           17                      
+  (  -47,    -2)      17       17           17                      
+  (  -46,    -2)      17       17           17                      
+  (  -45,    -2)      17       17           17                      
+  (  -44,    -2)      17       17           17                      
+  (  -43,    -2)      17       17           22  house shrine-w      
+  (  -42,    -2)      17       17           23  house shrine-w      
+  (  -41,    -2)      17       17           24  house shrine-w      
+  (  -40,    -2)      17       17           25  house shrine-w      
+  (  -39,    -2)      17       17           25  house shrine-w      
+  (  -38,    -2)      17       17           25  house shrine-w      
+  (  -37,    -2)      17       17           24  house shrine-w      
+  (  -36,    -2)      17       17           23  house shrine-w      
+  (  -35,    -2)      17       17           22  house shrine-w      
+  (  -34,    -2)      17       17           17                      
+  (  -33,    -2)      17       17           17                      
+  (  -32,    -2)      17       17           17                      
+  (  -31,    -2)      17       17           17                      
+  (  -30,    -2)      17       17           17                      
+  (  -29,    -2)      17       17           17                      
+  (  -28,    -2)      17       17           17                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house shrine-w at (-43, -4)
+
+## shrine-w (house) along z
+TRANSECT 22 stations from (-39, -12) to (-39, 9), every 1
+  station        ground  surface  water  top  standing            step
+  (  -39,   -12)      17       17           17                      
+  (  -39,   -11)      17       17           17                      
+  (  -39,   -10)      17       17           17                      
+  (  -39,    -9)      17       17           17                      
+  (  -39,    -8)      17       17           17                      
+  (  -39,    -7)      17       17           17                      
+  (  -39,    -6)      17       17           17                      
+  (  -39,    -5)      17       17           22  house shrine-w      
+  (  -39,    -4)      17       17           23  house shrine-w      
+  (  -39,    -3)      17       17           24  house shrine-w      
+  (  -39,    -2)      17       17           25  house shrine-w      
+  (  -39,    -1)      17       17           25  house shrine-w      
+  (  -39,     0)      17       17           24  house shrine-w      
+  (  -39,     1)      17       17           23  house shrine-w      
+  (  -39,     2)      17       17           22  house shrine-w      
+  (  -39,     3)      17       17           17                      
+  (  -39,     4)      17       17           17                      
+  (  -39,     5)      17       17           22  house shrine-e#1    
+  (  -39,     6)      17       17           23  house shrine-e#1    
+  (  -39,     7)      17       17           24  house shrine-e#1    
+  (  -39,     8)      17       17           25  house shrine-e#1    
+  (  -39,     9)      17       17           25  house shrine-e#1    
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house shrine-w at (-41, -5), house shrine-e#1 at (-41, 5)

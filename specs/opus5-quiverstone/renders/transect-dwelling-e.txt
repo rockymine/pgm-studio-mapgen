@@ -1,0 +1,58 @@
+## dwelling-e (house) along x
+TRANSECT 25 stations from (9, -95) to (33, -95), every 1
+  station        ground  surface  water  top  standing            step
+  (    9,   -95)      20       20           20                      
+  (   10,   -95)      20       20           20                      
+  (   11,   -95)      20       20           20                      
+  (   12,   -95)      20       20           20                      
+  (   13,   -95)      20       20           20                      
+  (   14,   -95)      20       20           20                      
+  (   15,   -95)      20       20           20                      
+  (   16,   -95)      20       20           27  house dwelling-e    
+  (   17,   -95)      20       20           27  house dwelling-e    
+  (   18,   -95)      20       20           27  house dwelling-e    
+  (   19,   -95)      20       20           27  house dwelling-e    
+  (   20,   -95)      20       20           20  house dwelling-e    
+  (   21,   -95)      20       20           20  house dwelling-e    
+  (   22,   -95)      20       20           20  house dwelling-e    
+  (   23,   -95)      20       20           27  house dwelling-e    
+  (   24,   -95)      20       20           27  house dwelling-e    
+  (   25,   -95)      20       20           27  house dwelling-e    
+  (   26,   -95)      20       20           27  house dwelling-e    
+  (   27,   -95)      20       20           20                      
+  (   28,   -95)      20       20           20                      
+  (   29,   -95)      20       20           20                      
+  (   30,   -95)      20       20           20                      
+  (   31,   -95)      19       19           19                      -1
+  (   32,   -95)      19       19           19                      
+  (   33,   -95)      20       20           20                      +1
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house dwelling-e at (16, -97)
+
+## dwelling-e (house) along z
+TRANSECT 22 stations from (21, -105) to (21, -84), every 1
+  station        ground  surface  water  top  standing            step
+  (   21,  -105)      16       16           16                      
+  (   21,  -104)      17       17           17                      +1
+  (   21,  -103)      17       17           17                      
+  (   21,  -102)      18       18           18                      +1
+  (   21,  -101)      19       19           19                      +1
+  (   21,  -100)      19       19           19                      
+  (   21,   -99)      20       20           20                      +1
+  (   21,   -98)      20       20           27  house dwelling-e    
+  (   21,   -97)      20       20           27  house dwelling-e    
+  (   21,   -96)      20       20           27  house dwelling-e    
+  (   21,   -95)      20       20           20  house dwelling-e    
+  (   21,   -94)      20       20           20  house dwelling-e    
+  (   21,   -93)      20       20           27  house dwelling-e    
+  (   21,   -92)      20       20           27  house dwelling-e    
+  (   21,   -91)      20       20           27  house dwelling-e    
+  (   21,   -90)      20       20           20                      
+  (   21,   -89)      20       20           20                      
+  (   21,   -88)      20       20           28  house assay-e       
+  (   21,   -87)      20       20           28  house assay-e       
+  (   21,   -86)      20       20           29  house assay-e       
+  (   21,   -85)      20       20           29  house assay-e       
+  (   21,   -84)      20       20           29  house assay-e       
+rises 4, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house dwelling-e at (19, -98), house assay-e at (19, -88)

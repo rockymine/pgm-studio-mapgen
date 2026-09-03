@@ -1,0 +1,61 @@
+## mon-e-1 (destroyable) along x
+TRANSECT 25 stations from (-37, 53) to (-13, 53), every 1
+  station        ground  surface  water  top  standing            step
+  (  -37,    53)      16       16           16                      
+  (  -36,    53)      16       16           16                      
+  (  -35,    53)      16       16           16                      
+  (  -34,    53)      16       16           16                      
+  (  -33,    53)      16       16           16                      
+  (  -32,    53)      16       16           16                      
+  (  -31,    53)      16       16           16                      
+  (  -30,    53)      16       16           16                      
+  (  -29,    53)      16       16           16                      
+  (  -28,    53)      16       16           16                      
+  (  -27,    53)      16       16           16  stroke track-e#1    
+  (  -26,    53)      16       16           71  stroke track-e#1    
+  (  -25,    53)      16       16           72  stroke track-e#1    
+  (  -24,    53)      16       16           71  stroke track-e#1    
+  (  -23,    53)      16       16           16  stroke track-e#1    
+  (  -22,    53)      16       16           16                      
+  (  -21,    53)      16       16           16                      
+  (  -20,    53)      16       16           16                      
+  (  -19,    53)      16       16           16                      
+  (  -18,    53)      16       16           16                      
+  (  -17,    53)      16       16           16                      
+  (  -16,    53)      16       16           16                      
+  (  -15,    53)      16       16           16                      
+  (  -14,    53)      16       16           16                      
+  (  -13,    53)      16       16           16                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track-e#1 at (-27, 51), destroyable mon-e#1 at (-27, 54)
+
+## mon-e-1 (destroyable) along z
+TRANSECT 25 stations from (-25, 41) to (-25, 65), every 1
+  station        ground  surface  water  top  standing            step
+  (  -25,    41)      16       16           16                      
+  (  -25,    42)      16       16           16                      
+  (  -25,    43)      16       16           16  stroke track-e#1    
+  (  -25,    44)      16       16           16  stroke track-e#1    
+  (  -25,    45)      16       16           16  stroke track-e#1    
+  (  -25,    46)      16       16           16  stroke track-e#1    
+  (  -25,    47)      16       16           16  stroke track-e#1    
+  (  -25,    48)      16       16           16  stroke track-e#1    
+  (  -25,    49)      16       16           16  stroke track-e#1    
+  (  -25,    50)      16       16           16  stroke track-e#1    
+  (  -25,    51)      16       16           16  stroke track-e#1    
+  (  -25,    52)      16       16           71  stroke track-e#1    
+  (  -25,    53)      16       16           72  stroke track-e#1    
+  (  -25,    54)      16       16           71  stroke track-e#1    
+  (  -25,    55)      16       16           16  stroke track-e#1    
+  (  -25,    56)      16       16           16  stroke track-e#1    
+  (  -25,    57)      16       16           16  stroke track-e#1    
+  (  -25,    58)      16       16           16  stroke track-e#1    
+  (  -25,    59)      16       16           16  stroke track-e#1    
+  (  -25,    60)      16       16           16  stroke track-e#1    
+  (  -25,    61)      16       16           16  stroke track-e#1    
+  (  -25,    62)      17       17           17  stroke track-e#1    +1
+  (  -25,    63)      17       17           17  stroke track-e#1    
+  (  -25,    64)      17       17           17  stroke track-e#1    
+  (  -25,    65)      17       17           17  stroke track-e#1    
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track-e#1 at (-27, 43), destroyable mon-e#1 at (-23, 51)

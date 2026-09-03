@@ -1,0 +1,61 @@
+## mon-w-1 (destroyable) along x
+TRANSECT 25 stations from (11, 53) to (35, 53), every 1
+  station        ground  surface  water  top  standing            step
+  (   11,    53)      16       16           16                      
+  (   12,    53)      16       16           16                      
+  (   13,    53)      16       16           16                      
+  (   14,    53)      16       16           16                      
+  (   15,    53)      16       16           16                      
+  (   16,    53)      16       16           16                      
+  (   17,    53)      16       16           16                      
+  (   18,    53)      16       16           16                      
+  (   19,    53)      16       16           16                      
+  (   20,    53)      16       16           16                      
+  (   21,    53)      16       16           16  stroke track-w#1    
+  (   22,    53)      16       16           71  stroke track-w#1    
+  (   23,    53)      16       16           72  stroke track-w#1    
+  (   24,    53)      16       16           71  stroke track-w#1    
+  (   25,    53)      16       16           16  stroke track-w#1    
+  (   26,    53)      16       16           16                      
+  (   27,    53)      16       16           16                      
+  (   28,    53)      16       16           16                      
+  (   29,    53)      16       16           16                      
+  (   30,    53)      16       16           16                      
+  (   31,    53)      16       16           16                      
+  (   32,    53)      16       16           16                      
+  (   33,    53)      16       16           16                      
+  (   34,    53)      16       16           16                      
+  (   35,    53)      16       16           16                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable mon-w#1 at (21, 51), stroke track-w#1 at (21, 53)
+
+## mon-w-1 (destroyable) along z
+TRANSECT 25 stations from (23, 41) to (23, 65), every 1
+  station        ground  surface  water  top  standing            step
+  (   23,    41)      16       16           16                      
+  (   23,    42)      16       16           16                      
+  (   23,    43)      16       16           16                      
+  (   23,    44)      16       16           16  stroke track-w#1    
+  (   23,    45)      15       15           15  stroke track-w#1    -1
+  (   23,    46)      15       15           15  stroke track-w#1    
+  (   23,    47)      16       16           16  stroke track-w#1    +1
+  (   23,    48)      16       16           16  stroke track-w#1    
+  (   23,    49)      16       16           16  stroke track-w#1    
+  (   23,    50)      16       16           16  stroke track-w#1    
+  (   23,    51)      16       16           16  stroke track-w#1    
+  (   23,    52)      16       16           71  stroke track-w#1    
+  (   23,    53)      16       16           72  stroke track-w#1    
+  (   23,    54)      16       16           71  stroke track-w#1    
+  (   23,    55)      16       16           16  stroke track-w#1    
+  (   23,    56)      16       16           16  stroke track-w#1    
+  (   23,    57)      16       16           16  stroke track-w#1    
+  (   23,    58)      16       16           16  stroke track-w#1    
+  (   23,    59)      16       16           16  stroke track-w#1    
+  (   23,    60)      16       16           16  stroke track-w#1    
+  (   23,    61)      16       16           16  stroke track-w#1    
+  (   23,    62)      17       17           17  stroke track-w#1    +1
+  (   23,    63)      17       17           17  stroke track-w#1    
+  (   23,    64)      17       17           17  stroke track-w#1    
+  (   23,    65)      17       17           17  stroke track-w#1    
+rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track-w#1 at (24, 43), destroyable mon-w#1 at (21, 51)

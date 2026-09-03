@@ -1,0 +1,61 @@
+## assay-e (house) along x
+TRANSECT 28 stations from (5, -85) to (32, -85), every 1
+  station        ground  surface  water  top  standing            step
+  (    5,   -85)      20       20           27                      
+  (    6,   -85)      20       20           20                      
+  (    7,   -85)      20       20           20                      
+  (    8,   -85)      20       20           20                      
+  (    9,   -85)      20       20           20                      
+  (   10,   -85)      20       20           20                      
+  (   11,   -85)      20       20           20                      
+  (   12,   -85)      20       20           29  house assay-e       
+  (   13,   -85)      20       20           29  house assay-e       
+  (   14,   -85)      20       20           29  house assay-e       
+  (   15,   -85)      20       20           29  house assay-e       
+  (   16,   -85)      20       20           29  house assay-e       
+  (   17,   -85)      20       20           29  house assay-e       
+  (   18,   -85)      20       20           29  house assay-e       
+  (   19,   -85)      20       20           29  house assay-e       
+  (   20,   -85)      20       20           29  house assay-e       
+  (   21,   -85)      20       20           29  house assay-e       
+  (   22,   -85)      20       20           29  house assay-e       
+  (   23,   -85)      20       20           29  house assay-e       
+  (   24,   -85)      20       20           29  house assay-e       
+  (   25,   -85)      20       20           29  house assay-e       
+  (   26,   -85)      20       20           20                      
+  (   27,   -85)      20       20           20                      
+  (   28,   -85)      20       20           20                      
+  (   29,   -85)      20       20           20                      
+  (   30,   -85)      20       20           20                      
+  (   31,   -85)      20       20           20                      
+  (   32,   -85)      21       21           21                      +1
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (3, -87), house assay-e at (12, -87)
+
+## assay-e (house) along z
+TRANSECT 22 stations from (18, -95) to (18, -74), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,   -95)      20       20           27  house dwelling-e    
+  (   18,   -94)      20       20           27  house dwelling-e    
+  (   18,   -93)      20       20           27  house dwelling-e    
+  (   18,   -92)      20       20           27  house dwelling-e    
+  (   18,   -91)      20       20           27  house dwelling-e    
+  (   18,   -90)      20       20           20                      
+  (   18,   -89)      20       20           20                      
+  (   18,   -88)      20       20           28  house assay-e       
+  (   18,   -87)      20       20           28  house assay-e       
+  (   18,   -86)      20       20           29  house assay-e       
+  (   18,   -85)      20       20           29  house assay-e       
+  (   18,   -84)      20       20           29  house assay-e       
+  (   18,   -83)      20       20           29  house assay-e       
+  (   18,   -82)      20       20           28  house assay-e       
+  (   18,   -81)      20       20           28  house assay-e       
+  (   18,   -80)      20       20           20                      
+  (   18,   -79)      19       19           19                      -1
+  (   18,   -78)      19       19           19                      
+  (   18,   -77)      19       19           19  stroke track-e      
+  (   18,   -76)      19       19           19  stroke track-e      
+  (   18,   -75)      19       19           19  stroke track-e      
+  (   18,   -74)      18       18           18  stroke track-e      -1
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house dwelling-e at (16, -97), house assay-e at (16, -88), stroke track-e at (16, -78)
