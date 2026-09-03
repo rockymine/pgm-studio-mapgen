@@ -199,6 +199,23 @@ report lists every one of these under *what could not be done*.
 
 `haiku-chancel` · `haiku-ladder` · `haiku-wharf` · `haiku-winterfold`
 
+### Run 5 — one board a model, and the brief was a lane rather than a square
+
+Three models, one board each, all three authored to the same instruction the earlier runs had learned:
+**a lane, not a square**, because on a square board every goal is equidistant from both spawns and the
+walk ratio flattens. Two of the three took the combined destroy shape the corpus calls ordinary — one
+destroyable and one core a team, and both boards repeat `<gamemode>` for the pair rather than declaring
+one and carrying the other.
+[reports/fable-run5.md](reports/fable-run5.md) ·
+[reports/haiku-run5.md](reports/haiku-run5.md) ·
+[reports/sonnet-run5.md](reports/sonnet-run5.md)
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `fable-r5-whitebarrow` | dtm · dtc | Fable 5.1 | **100 × 190 of chalk down, four stated tiers 9 / 11 / 13 / 15** — the Barrow Stone (obsidian, `pillar-3`) on open turf ringed by sarsens, the Powder Magazine (a default core) sunk in a dell east of it, and the two sides meeting across a saddle that holds a dew pond. Every approach pays a different price: turf and sarsen cover in the open, a beech hanger closing the west flank, and a chalk scarp on the east that is climbed from the mid and bridged from at the top |
+| `haiku-r5-hollow-crown` | dtm · dtc | Haiku 4.5 | **100 × 120, and honest about being a test** — two spawns at opposite ends, one central reach piece carrying the objectives, and nothing else. Built to verify that the authoring pipeline and its documentation are followable end to end rather than to be played; its own review names the asymmetric dead ground on the flanks as the cost of that |
+| `sonnet-r5-fellgate` | ctw | Sonnet 4.5 | **70 × 350 — the longest lane of the three** — a highland sheep-moor whose two hamlets face each other down a heather track, each guarding a stone bothy behind a **bedrock approach wall**, the banks either side of the mid hollow topped by granite tors. The mid is crossed by a ford at the centre and, forty-five minutes in, by a second flooded lane out on the flank. One connected island: the whole authored half is one landmass fanned whole onto its image |
+
 ### Grok run 1 — authored blind, built afterwards
 
 Three maps written by Grok from the documentation alone, with **no running studio**: nothing it wrote was ever
@@ -285,6 +302,8 @@ it by hand, and that finished world is the first board here that was **not** bui
 | Folder | Mode | Author | What it is |
 |---|---|---|---|
 | `opus5-millrace` | dtm | Opus 5 | the basin flooded, walled in stone brick and bridged twice; a quarry pit under one monument, a diorite statue on the moor brow, a lighter moored in the race, clouds in white glass. Two grounds of two-shade noise and the island a third; nine grown oaks and ten grown firs a side |
+| `sonnet-cutwater` | dtm | Sonnet 4.5 | the basin **flooded, walled and bridged** — a canal walled on both banks with one arched bridge across it, the four flat hint layers replaced by real relief, and a pit dug for the near destroyable to sit down inside. 260 × 250. The one geometry fault in the base was fixed against the evaluator rather than by eye — a piece widened one cell and its neighbour shifted the same amount took the hop from 25 into `G5`'s 10–20 band — and the author's own spawns and goals were read, weighed and left exactly where they were drawn |
+| `sonnet-fallowmere` | dtm | Sonnet 4.5 | the same basin **left open** — the same canal, the same single bridge, the same edgy coast, and then less of everything else: two quiet grass banks, a hollow dug under the forward goal, a lone knoll-island either side of the crossing, and just enough made — a croft, a grounded biplane, a rowboat, a scatter of stone — to give the ground a reason without covering it |
 | `opus5-weirbank` | dtm | Opus 5 | half of Millrace's box, the same art direction on a quarter of the area — `review/opus5-weirbank.md` |
 | `rockymine-ruediger-millrace` | dtm | rockymine, Ruediger_LP | **Millrace finished by hand**, five hours of WorldEdit and Arceon over the studio's world: the stone body re-laid as a six-stone voronoi, three courses of earth under every surface, the canal walls in double slab and grey wool, granite paths, ferns on every grass block, four biomes, the eighteen grown trees replaced by sixteen of the author's own showcase trees, a team-coloured statue on the small island, a tug in the race, a balloon holding the observer spawn, beacons over the monuments. The terrain, water, walls, bridges and boulders are the studio's, unmoved. `review/rockymine-ruediger-millrace.md` is the author's own account with the commands; `review/fable-millrace-revamp.md` is the measured diff |
 | `fable-millrace-revamp` | dtm | Fable 5.1 | **the hand revamp restated as documents** over the original's own layout: the six-stone body as one nested cell-and-turbulence pattern, the earth as a depth stack, the author's trees planted as `copied` recipes cut out of `showcase/tree-showcase`, the statue, the tug, the balloon and the beacon frames lifted out of the hand-built world as made things. Every gap between the two is in the review |
@@ -293,6 +312,36 @@ it by hand, and that finished world is the first board here that was **not** bui
 `showcase/tree-showcase/` is the author's tree corpus beside the technique showcases: 75 hand-built trees on
 their own platforms, the measured ground truth behind `pgm-studio/docs/world-export/tree-corpus.md`, and now
 the world `pgm-studio/tools/seed-trees.cs` cuts copied tree recipes out of.
+
+### Boards built to put a rule on live ground
+
+Two boards whose subject is a document rather than a place: each one exists so that a rule written down
+somewhere else can be watched deciding a real board, and the review says which sentence bought which part
+of the ground. [reports/opus5-run9-brackenfold.md](reports/opus5-run9-brackenfold.md)
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5-brackenfold` | dtm | Opus 5 | **68 × 212, and the board the *What a board is painted with* section of `AUTHORING-BRIEF.md` was written for** — a grass down falling from each spawn to a peat working, the monument standing on a cobbled fold on the shoulder above it, and the two workings separated by open air a team has to bridge. **Three themes and one of them is the map**; the variation on the surface is *drawn* — three polygons a half carrying a `scar` theme, worn ground where sheep have poached the down — rather than a field sampled over the moor |
+| `sonnet-fellmoor` | dtm | Sonnet 4.5 | **80 × 250, built to put `GO1` and `GO4` on live ground** the week they were wired — a grazing common split by a spring-fed beck, two cairns each on their own barrow behind a fold, a stonemason's hall and a darkwood croft behind each spawn, a mill by the ford, and a turf causeway as the only way across. `POST /plan/inspect` reads the ratio at **3.31** in `[3.0, 4.0]` and the own-spawn walk at **55** in `[40, 90]`. Built a second time over, once the first pass turned out simple to the point of dodging its own findings |
+
+### Opus 5 — the layer track's two fixtures
+
+Neither is a playable map, and both are here because a claim about stacked layers is cheaper to check
+against one small world than to argue from a paragraph.
+[reports/opus5-mineshaft-layers.md](reports/opus5-mineshaft-layers.md) ·
+[reports/opus5-undermarket-layers.md](reports/opus5-undermarket-layers.md)
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5-mineshaft` | ctw | Opus 5 | **the smallest board that is genuinely two storeys** — a gallery running under a meadow with an adit climbing out of its east end, and the minimum geometry that answers what a stack of layers actually does. `opus5-undercroft` raised the question; this is the file every claim on the layer track can be measured against |
+| `opus5-undermarket` | ctw | Opus 5 | **eighty blocks square, three layers, four shapes, no relief and no dressing** — the smallest board that proves each storey **wears its own finish**. The terrace roofs the middle and the edges are the yard, so one top-down shows both storeys' paint side by side; read at `(0, 0)` the same cell answers two surfaces and two blocks. A player walking off a span meets the void, and `render/topdown?layer=yard` draws one storey by name |
+
+### Opus 5 — two boards to a composition somebody else drew
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5-liminal-dtm-ii` | dtm | Opus 5 | **248 × 160 to a brief from outside this repository, and three floors of it played at once** — a walled village as the battlefield, an oval river ringing it, a Desert Pyramid spawn and a Snowy Taiga on each long edge. **Five sketch layers** (`under` · `lid` · `ground` · `bridge` · `sky`): an undercroft holding a swimming pool and a Backrooms maze under the sand, the desert itself at y36, and eight islands hanging over the water to y53 — with one of its six obsidian monuments a team on each of the three levels. [reports/opus5-liminal-dtm-ii-run.md](reports/opus5-liminal-dtm-ii-run.md) |
+| `opus5-slipway` | dtm | Opus 5 | **240 × 264 of harbour, sketched by the author at cell scale and scaled up here** — a brigantine on the water, a crane dock west of centre with the first goal's dock beside it, a port east with a car park, the dockside town behind the west dock, a second settlement back and to the east with the other goal in front of it, a terrace row across the middle joining the two, and a field on each arm for a balloon to fly over. Symmetry error **0**, export gate **OPEN**, and **nothing the dressing pass declined** |
 
 ### Opus 5 — a board to the author's own brief, with a community map read first
 
@@ -355,6 +404,12 @@ element holding one id each, against a **closed 25-value enum**, with no splitti
 and the map does not load. Across ~350 corpus maps every `<gamemode>` holds exactly one id and maps with
 several repeat the element (`cacti_the_wool` carries six). `tallow-kilnrow`, `ashfall-scar` and `basalt-reach`
 now repeat the element and parse.
+
+**Three folders under `maps/` are fixtures rather than boards.** `biome-test`, `biome-test-pattern` and
+`biome-test-wide` are three worlds built to look at what the biome field does to grass, leaf and water
+tint — the same minimal DTM board painted three ways. They carry no `specs/`, no `review/` and no report,
+they are in no run, and they are the reason the map tables below do not add up to the folder count. They
+load; there is simply nothing on them to play.
 
 **Two folders in run 2 contain no map.** `haiku-r2-canonical-8` and `haiku-r2-ctw-mid` export a 245-byte
 `map.xml` with no teams, no spawns and no objectives, over region files that are largely empty. They are kept
