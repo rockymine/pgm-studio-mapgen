@@ -1,0 +1,61 @@
+## mast-e (made) along x
+TRANSECT 25 stations from (20, -70) to (44, -70), every 1
+  station        ground  surface  water  top  standing            step
+  (   20,   -70)      20       20           20  stroke walk-e       
+  (   21,   -70)      20       20           20  stroke walk-e       
+  (   22,   -70)      20       20           20                      
+  (   23,   -70)      20       20           20                      
+  (   24,   -70)      20       20           20                      
+  (   25,   -70)      20       20           20                      
+  (   26,   -70)      26       26           26                      BARRIER +6
+  (   27,   -70)      26       26           26                      
+  (   28,   -70)      25       57           57  storey              BARRIER +31
+  (   29,   -70)      25       57           57  storey              
+  (   30,   -70)      25       57           57  storey              
+  (   31,   -70)      25       57           57  storey              
+  (   32,   -70)      25       57           57  storey              
+  (   33,   -70)      25       57           57  storey              
+  (   34,   -70)      25       57           57  storey              
+  (   35,   -70)      25       57           57  storey              
+  (   36,   -70)      26       26           26                      DROP -31
+  (   37,   -70)      26       26           26                      
+  (   38,   -70)      20       20           20                      DROP -6
+  (   39,   -70)      20       20           20                      
+  (   40,   -70)      20       20           20                      
+  (   41,   -70)      20       20           20                      
+  (   42,   -70)      20       20           20                      
+  (   43,   -70)      20       20           20                      
+  (   44,   -70)      20       20           20                      
+rises 2, falls 2, worst step 31: 2 barrier, 0 scramble, 2 drop — BARRIER +6 at (26, -70); BARRIER +31 at (28, -70); DROP -31 at (36, -70); DROP -6 at (38, -70) | walked end to end
+beside: stroke walk-e at (18, -72), redstoneline 1 at (45, -72)
+
+## mast-e (made) along z
+TRANSECT 25 stations from (32, -82) to (32, -58), every 1
+  station        ground  surface  water  top  standing            step
+  (   32,   -82)                                                    void
+  (   32,   -81)                                                    void
+  (   32,   -80)                                                    void
+  (   32,   -79)                                                    void
+  (   32,   -78)                                                    void
+  (   32,   -77)                                                    void
+  (   32,   -76)      20       20           20                      
+  (   32,   -75)      20       20           20                      
+  (   32,   -74)      20       57           57  storey              BARRIER +37
+  (   32,   -73)      20       57           57  storey              
+  (   32,   -72)      25       57           57  storey              
+  (   32,   -71)      25       57           57  storey              
+  (   32,   -70)      25       57           57  storey              
+  (   32,   -69)      25       57           57  storey              
+  (   32,   -68)      25       57           57  storey              
+  (   32,   -67)      25       57           57  storey              
+  (   32,   -66)      20       20           20                      DROP -37
+  (   32,   -65)      20       20           20  stroke walk-e       
+  (   32,   -64)      20       20           20  stroke walk-e       
+  (   32,   -63)      20       20           20  stroke walk-e       
+  (   32,   -62)      20       20           20  stroke walk-e       
+  (   32,   -61)      20       20           20  stroke walk-e       
+  (   32,   -60)      20       20           20                      
+  (   32,   -59)      20       20           20                      
+  (   32,   -58)      20       20           20                      
+rises 1, falls 1, worst step 37: 1 barrier, 0 scramble, 1 drop — BARRIER +37 at (32, -74); DROP -37 at (32, -66) | walked end to end
+beside: stroke walk-e at (30, -65), tree scrap-e at (30, -58), tree dish-e at (34, -56)

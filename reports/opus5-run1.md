@@ -29,8 +29,12 @@ Mario-inspired map, a space theme and an abstract theme offered as ideas. I took
   invert Alderfen's construction entirely: flat ground with **all** height carried by erected plates
   in two-block steps, and a made-thing vocabulary of warp pipes, drawn hills, floating block rows and
   clouds.
+- `opus5-lodestar`, *Lodestar Yard* — a **capture-the-wool** board on a derelict orbital dock. The
+  first three are all destroy boards, and a destroy board is not read for routes at all: the flow read
+  says so and stops. This one changes the objective family, which changes which rules apply, what the
+  flow read can say, and — as it turned out — what shape the board is allowed to be.
 
-Each has a `review/<slug>.md` with its own measurements. This report is only about the surface: what I
+Each of the four has a `review/<slug>.md` with its own measurements. This report is only about the surface: what I
 could not say to it, what I said wrongly, and what worked without a fight.
 
 ## What I could not say
@@ -165,6 +169,87 @@ capability being absent: the dressing document is rich and does nearly everythin
 that the one artifact an agent is told to check before filing a gap cannot answer a question about
 half the document it has to write.
 
+### 7 · What a wool board refuses that a destroy board does not
+
+The fourth board is the run's one capture-the-wool map, and it drew four refusals on its **first dry
+run** that none of the three destroy boards had ever seen. All four turned out to be **out of reach
+from where I was standing** in the most useful sense: the rule said what it wanted and why, and the
+"why" was that the board is played for wool.
+
+| Rule | Said | Why the earlier boards never met it |
+|---|---|---|
+| `FR6` | `frontline-width 20 outside authored band [1, 16]` | its own text: *"On a board played for cores or destroyables there is no width cap at all (amendment 2026-09-02): 6–8 cells is the wool board's figure"* |
+| `STRUCT` | `wool room is unreachable: no land seam and no abutting build zone to enter by` | a destroy board has no wool room |
+| `G8` | `fill-ratio 0.773 outside authored band [0.201, 0.542]` | not raised on the DTC boards at 0.745 — the band is read against the detected mode |
+| `SP2` | `spawn on 'berth' not near the back of its lane` (complaint) | the lane chain here is seven pieces long, and the lint says of itself that it *"approximates 'back' per-piece and misreads spawns placed mid-chain"* |
+
+**This is the run's most transferable finding, and it is not a defect.** A rule id is not a fixed
+constraint: `FR6`, `G8` and `CT12` all read **authored bands** whose values depend on what the board
+is played for, and three boards of experience on one objective family taught me nothing about the
+next. A 100-block frontline and a solid rectangle a side are correct for a core board and refused on
+a wool board, and the only way to know is to dry-run the plan and read the band the finding quotes.
+
+What cleared all four was one change of topology rather than four fixes: the deck stopped being a
+rectangle and became a **hub with two arms**, each arm ending in a wool bay that abuts it along
+fifteen blocks of shared edge, with one 40-block neck as the board's only edge on the void. That is
+`FR6`'s own "split frontline hung off a hub", it gives `STRUCT` its seam, and the void between the
+arms takes the fill ratio to 0.375.
+
+It also produced the run's best dead-ground number by a wide margin — **1% off every route**, against
+28.8%, 36.7% and 40.1% on the three rectangles. A rectangle has corners no journey passes; an arm
+is a corridor to somewhere, so every block of it is on the way.
+
+### 8 · A theme's `rim` takes a band, not a material — and the schema will not say
+
+**Wanted:** a chiselled cap course along every cut edge of the hull.
+
+**Tried:** `"rim": solid(STONE_BRICK, CHISELLED_BRICK)` — the same shape `wall` and `fill` take.
+
+**Got `RQ1`**, and the rule states the whole contract in one line: *"'rim' names no material — rim and
+surface take a band, `{"material": …, "depth": N}`, and wall and fill take a material directly."*
+
+**Verdict: out of reach because I read the field wrong, and the schema cannot correct me** — the
+theme dictionary lives under `SketchLayout.themes`, which *is* typed, but the four buckets' band-vs-
+material split is the kind of thing a `oneOf` does not distinguish at a glance. `RQ1` is the good
+case for how a refusal should read: it names the field, states both shapes, and says which buckets
+take which. One read of the rule and one edit.
+
+### 9 · A voronoi's `bands` are bands, and an ill-formed list stores at 200 and throws at paint time
+
+**Wanted:** a five-colour hull plate — straight-edged convex cells about seven blocks across.
+
+**Tried:** `voronoi(seed, cellSize, [material, material, …])`, by analogy with `noise`, whose `stops`
+**is** a bare list of materials.
+
+**Got `RQ2`:** *"the studio failed to answer this request, and the fault is its own rather than the
+document's — the detail is in the server log."* The log:
+
+```
+unhandled at GET /api/map/opus5-lodestar/export
+System.NullReferenceException
+   at PgmStudio.Minecraft.Painting.VoronoiMaterial.Resolve(BucketContext& ctx)
+      TerrainPatterns.cs:line 64
+```
+
+**The schema is right and I read it wrong.** `VoronoiMaterial.bands` is declared
+`array of VoronoiBand`, and `VoronoiBand` is documented as *"a material and how many blocks inward
+from the cell boundary it runs. The last band's depth is ignored — it takes whatever is left of the
+cell."* It even says why it is not a `Band`: a `BandStack` is read along an integer step, a voronoi
+along the continuous Worley `F2 − F1` gap. `noise` taking bare materials in `stops` and `voronoi`
+taking pairs in `bands` is a real distinction with a real reason, and the field names say so.
+
+**Verdict: out of reach because I read the field wrong — and there is a defect underneath it.** A
+`bands` array of bare materials was **accepted by `PUT /sketch` with a 200**, survived the store, and
+only failed at `GET /export`, in the painter, on a null `VoronoiBand.Material`. Every other malformed
+material on this run was caught at store time by an `RQ` gate that named the field (`RQ1` on the
+`rim`, and it named both shapes and which buckets take which). This one was not. The gate that
+already exists for `rim` would catch it.
+
+This is the **second** 500 of the run whose only diagnostic was in the server log, after
+`Storey.deck`. Both were my misreading of a field, and in both cases an agent driving over HTTP alone
+could not have found the cause. `RQ2` at least labels the class honestly — *"the fault is its own
+rather than the document's"* — which is more than the bare 500 the `deck` gave.
+
 ## What I got wrong
 
 ### An ellipse states a box and covers less than half of it
@@ -250,6 +335,15 @@ Not padding — this is the half a reader can trust without checking.
   it, a copied body will.
 - **`bendShapes` for a drawn coast.** Worked as documented; the only correction was magnitude —
   `wander: 2.5` is invisible at map scale and `6` reads as a coast.
+- **`teamTint` as a whole board's identity.** One theme, painted on both docks of the wool board, and
+  the census reads back `159:14 Red Stained Clay` **and** `159:11 Blue Stained Clay` from that single
+  material. It worked exactly as its docstring says, first build. The one thing to know is what its
+  `neutral` fallback is for: paint a neutral piece with it and every cell falls back to the fallback,
+  so the material has nothing to say there.
+- **The studio places a CTW board's monuments itself.** The plan states the wool rooms and their
+  markers; `POST /map/from-documents` worked out four wools, four monuments beside the right spawns,
+  22 regions, 34 filters and 11 apply-rules, and `preflight`'s mirror check grew a `wool/room ✓` leg
+  that the destroy boards never had. No authoring, no correction.
 
 ## Open gameplay questions
 
@@ -276,7 +370,58 @@ Each is a judgement about the map **as played**, which `CLAUDE.md` says this rep
   costs one placed block, and three or more is a barrier. Every plate on that board steps by two, so
   the whole map is climbable at the price of one block per step. Decided **two**, on the reasoning
   that a drawn platformer's height should cost something and not much. Untested in play.
+- **A wool at the end of an arm has one way in.** `plan/flow` on the fourth board: *"One way in, end
+  to end: nothing forks and nothing merges, so the whole approach is one road to hold."* That is a
+  direct consequence of the shape `FR6` and `STRUCT` forced on it, and it is the sharpest gameplay
+  finding of the run. Decided **keep it** — the arms are what took dead ground to 1%, and a corridor
+  is a real defensive position rather than an open field. But a single approach may simply be too easy
+  to hold at 24 a side; if it is, the fix is a bridgeable gap onto each arm's flank, which puts void
+  back and raises the fill ratio again. This one wants an oracle more than anything else in the run.
+- **Land per player is an input, and I set it from a table rather than from taste.** `G8` couples land
+  per team to players per team and saturates near 175–185 blocks a player. The wool board carries
+  4 400 blocks of deck a side, so it declares `maxPlayers: 24` — 183 a player, where the corpus curve
+  flattens. The three destroy boards all declare 16 and carry more land than that ratio wants, which
+  is a thing I did not know to check until the fourth board's plan was refused.
 - **The crossing is 20 blocks, and on Block Realm you pay for it twice.** An attacker on Alderfen and
   Quiverstone places 23–27 blocks; on Block Realm, where the route runs field → midway → field, it is
   **39–42**. Decided **keep it**, because a mid island both sides pay to reach is what the author asked
   for. Whether 40 placed blocks is a crossing or a chore is played, not measured.
+
+## What the four boards say together
+
+Four boards, one studio, and the thing worth carrying forward is that **three boards of experience on
+one objective family taught me almost nothing about the fourth.**
+
+The three destroy boards converged on a working recipe: a rectangle a team, a rectangle in the middle,
+two goals a side, a 20-block crossing, props spaced eight apart and clear of every rot_180 image. Every
+one of those is correct for a core or destroyable board. Three of them are refused on a wool board —
+`FR6` caps the frontline only when there is wool to carry, `G8` reads a different fill band, and
+`STRUCT` will not have a wool room drawn inside another piece. The rules are the same rules; the
+**bands** are read against what the board is played for, and a finding quotes the band it used.
+
+So the transferable practice is not a recipe. It is: **dry-run the plan before anything is built, and
+read the band the finding quotes rather than the number it rejected.** `POST /plan/evaluate` answers in
+about a second on a document that has never been stored, and it is what made four boards affordable.
+
+The second thing the four say together is about **dead ground**, and it is nearly the opposite of what
+the first three suggested. Alderfen taught that splitting one central goal into two takes dead ground
+from 83% to 32%, and Quiverstone and Block Realm both applied it and landed at 40.1% and 28.8%. All
+three are rectangles, and a rectangle has corners no journey passes: past a certain width, adding
+board adds dead ground faster than moving goals removes it. Lodestar was not designed for this at all
+— its shape was forced by three refusals — and it reads **1%**, because an arm is a corridor to
+somewhere and a corner is not. **The shape of the land does more for dead ground than the placement of
+the objectives on it.**
+
+| Board | Mode | Land shape | Dead |
+|---|---|---|---|
+| `opus5-alderfen` | DTC | rectangle | 36.7% |
+| `opus5-quiverstone` | DTM | rectangle | 40.1% |
+| `opus5-blockrealm` | DTC | rectangle, narrowed 140 → 110 | 28.8% |
+| `opus5-lodestar` | CTW | hub and arms | **1.3%** |
+
+And the third: of the nine things in this report I could not say, **five were the schema being right
+and me reading it wrong**, three were a deliberate rule saying no and saying why, and one — the
+`dressing` and `biome` fields carrying no schema at all — was the surface genuinely unable to answer.
+That ratio is the useful number. The system is far more answerable than an agent's first impression of
+it, and the check the brief demands — look in `GET /api/openapi/v1.json` before filing a gap — moved
+four of my nine from "missing" to "I misread it".

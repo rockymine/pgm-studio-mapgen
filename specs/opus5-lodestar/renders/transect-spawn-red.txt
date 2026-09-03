@@ -1,0 +1,89 @@
+## spawn-red (spawn) along x
+TRANSECT 47 stations from (-23, -90) to (23, -90), every 1
+  station        ground  surface  water  top  standing            step
+  (  -23,   -90)                                                    void
+  (  -22,   -90)                                                    void
+  (  -21,   -90)                                                    void
+  (  -20,   -90)                                                    void
+  (  -19,   -90)                                                    void
+  (  -18,   -90)                                                    void
+  (  -17,   -90)                                                    void
+  (  -16,   -90)      20       20           20                      
+  (  -15,   -90)      23       23           23                      BARRIER +3
+  (  -14,   -90)      23       23           23                      
+  (  -13,   -90)      23       23           23                      
+  (  -12,   -90)      23       23           23                      
+  (  -11,   -90)      23       23           23                      
+  (  -10,   -90)      23       23           23                      
+  (   -9,   -90)      23       23           23                      
+  (   -8,   -90)      23       23           31                      
+  (   -7,   -90)      23       23           31  spawn spawn-1       
+  (   -6,   -90)      23       23           31  spawn spawn-1       
+  (   -5,   -90)      23       23           31  spawn spawn-1       
+  (   -4,   -90)      23       23           31  spawn spawn-1       
+  (   -3,   -90)      23       23           31  spawn spawn-1       
+  (   -2,   -90)      23       23           23  spawn spawn-1       
+  (   -1,   -90)      23       23           23  spawn spawn-1       
+  (    0,   -90)      23       23           23  spawn spawn-1       
+  (    1,   -90)      23       23           23  spawn spawn-1       
+  (    2,   -90)      23       23           31  spawn spawn-1       
+  (    3,   -90)      23       23           31  spawn spawn-1       
+  (    4,   -90)      23       23           31  spawn spawn-1       
+  (    5,   -90)      23       23           31  spawn spawn-1       
+  (    6,   -90)      23       23           31  spawn spawn-1       
+  (    7,   -90)      23       23           31                      
+  (    8,   -90)      23       23           23                      
+  (    9,   -90)      23       23           23                      
+  (   10,   -90)      23       23           23                      
+  (   11,   -90)      23       23           23                      
+  (   12,   -90)      23       23           23                      
+  (   13,   -90)      23       23           23                      
+  (   14,   -90)      23       23           23                      
+  (   15,   -90)      20       20           20                      -3
+  (   16,   -90)                                                    void
+  (   17,   -90)                                                    void
+  (   18,   -90)                                                    void
+  (   19,   -90)                                                    void
+  (   20,   -90)                                                    void
+  (   21,   -90)                                                    void
+  (   22,   -90)                                                    void
+  (   23,   -90)                                                    void
+rises 1, falls 1, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (-15, -90) | walked end to end
+beside: spawn spawn-1 at (-7, -92)
+
+## spawn-red (spawn) along z
+TRANSECT 31 stations from (0, -102) to (0, -72), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,  -102)      20       20           20                      
+  (    0,  -101)      21       21           21                      +1
+  (    0,  -100)      23       23           23                      scramble +2
+  (    0,   -99)      23       23           23                      
+  (    0,   -98)      23       23           23                      
+  (    0,   -97)      23       23           23                      
+  (    0,   -96)      23       23           31                      
+  (    0,   -95)      23       23           31  spawn spawn-1       
+  (    0,   -94)      23       23           31  spawn spawn-1       
+  (    0,   -93)      23       23           31  spawn spawn-1       
+  (    0,   -92)      23       23           23  spawn spawn-1       
+  (    0,   -91)      23       23           23  spawn spawn-1       
+  (    0,   -90)      23       23           23  spawn spawn-1       
+  (    0,   -89)      23       23           23  spawn spawn-1       
+  (    0,   -88)      23       23           31  spawn spawn-1       
+  (    0,   -87)      23       23           31  spawn spawn-1       
+  (    0,   -86)      23       23           31  spawn spawn-1       
+  (    0,   -85)      23       23           31                      
+  (    0,   -84)      23       23           23  stroke walk-neck    
+  (    0,   -83)      23       23           23  stroke walk-neck    
+  (    0,   -82)      23       23           23  stroke walk-neck    
+  (    0,   -81)      23       23           23  stroke walk-neck    
+  (    0,   -80)      23       23           23  stroke walk-neck    
+  (    0,   -79)      23       23           23  stroke walk-neck    
+  (    0,   -78)      22       22           22  stroke walk-neck    -1
+  (    0,   -77)      22       22           22  stroke walk-neck    
+  (    0,   -76)      21       21           21  stroke walk-neck    -1
+  (    0,   -75)      21       21           21  stroke walk-neck    
+  (    0,   -74)      21       21           21  stroke walk-neck    
+  (    0,   -73)      20       20           20  stroke walk-neck    -1
+  (    0,   -72)      20       20           20  stroke walk-neck    
+rises 2, falls 3, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (0, -100) | walked end to end
+beside: spawn spawn-1 at (-2, -95), stroke walk-neck at (-2, -84)

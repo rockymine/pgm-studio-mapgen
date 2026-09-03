@@ -1,0 +1,56 @@
+## shed-w (house) along x
+TRANSECT 23 stations from (-24, -44) to (-2, -44), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,   -44)                                                    void
+  (  -23,   -44)                                                    void
+  (  -22,   -44)                                                    void
+  (  -21,   -44)                                                    void
+  (  -20,   -44)      20       20           20                      
+  (  -19,   -44)      20       20           20                      
+  (  -18,   -44)      20       20           20                      
+  (  -17,   -44)      20       20           24  house shed-w        
+  (  -16,   -44)      20       20           24  house shed-w        
+  (  -15,   -44)      20       20           24  house shed-w        
+  (  -14,   -44)      20       20           24  house shed-w        
+  (  -13,   -44)      20       20           24  house shed-w        
+  (  -12,   -44)      20       20           24  house shed-w        
+  (  -11,   -44)      20       20           24  house shed-w        
+  (  -10,   -44)      20       20           24  house shed-w        
+  (   -9,   -44)      20       20           24  house shed-w        
+  (   -8,   -44)      20       20           20                      
+  (   -7,   -44)      20       20           20                      
+  (   -6,   -44)      20       20           20                      
+  (   -5,   -44)      20       20           20                      
+  (   -4,   -44)      20       20           20                      
+  (   -3,   -44)      20       20           20  stroke walk-neck    
+  (   -2,   -44)      20       20           20  stroke walk-neck    
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house shed-w at (-17, -46), stroke walk-neck at (-3, -46)
+
+## shed-w (house) along z
+TRANSECT 22 stations from (-13, -54) to (-13, -33), every 1
+  station        ground  surface  water  top  standing            step
+  (  -13,   -54)      20       20           21  tree crate-hw       
+  (  -13,   -53)      20       20           20                      
+  (  -13,   -52)      20       20           20                      
+  (  -13,   -51)      20       20           20                      
+  (  -13,   -50)      20       20           20                      
+  (  -13,   -49)      20       20           20                      
+  (  -13,   -48)      20       20           20                      
+  (  -13,   -47)      20       20           24  house shed-w        
+  (  -13,   -46)      20       20           24  house shed-w        
+  (  -13,   -45)      20       20           24  house shed-w        
+  (  -13,   -44)      20       20           24  house shed-w        
+  (  -13,   -43)      20       20           24  house shed-w        
+  (  -13,   -42)      20       20           24  house shed-w        
+  (  -13,   -41)      20       20           24  house shed-w        
+  (  -13,   -40)      20       20           24  house shed-w        
+  (  -13,   -39)      20       20           20                      
+  (  -13,   -38)      20       20           20                      
+  (  -13,   -37)      20       20           20                      
+  (  -13,   -36)      20       20           20                      
+  (  -13,   -35)      20       20           20                      
+  (  -13,   -34)                                                    void
+  (  -13,   -33)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree crate-hw at (-15, -56), house shed-w at (-15, -47)
