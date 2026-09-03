@@ -1,0 +1,65 @@
+## fenhouse-e (house) along x
+TRANSECT 28 stations from (9, -88) to (36, -88), every 1
+  station        ground  surface  water  top  standing            step
+  (    9,   -88)      18       18           18                      
+  (   10,   -88)      18       18           18                      
+  (   11,   -88)      18       18           18                      
+  (   12,   -88)      18       18           18                      
+  (   13,   -88)      18       18           19  flora cover-garth   
+  (   14,   -88)      18       18           19  flora cover-garth   
+  (   15,   -88)      18       18           18                      
+  (   16,   -88)      18       18           28  house fenhouse-e    
+  (   17,   -88)      18       18           28  house fenhouse-e    
+  (   18,   -88)      18       18           28  house fenhouse-e    
+  (   19,   -88)      18       18           28  house fenhouse-e    
+  (   20,   -88)      18       18           28  house fenhouse-e    
+  (   21,   -88)      18       18           28  house fenhouse-e    
+  (   22,   -88)      18       18           28  house fenhouse-e    
+  (   23,   -88)      18       18           28  house fenhouse-e    
+  (   24,   -88)      18       18           28  house fenhouse-e    
+  (   25,   -88)      18       18           28  house fenhouse-e    
+  (   26,   -88)      18       18           28  house fenhouse-e    
+  (   27,   -88)      18       18           28  house fenhouse-e    
+  (   28,   -88)      18       18           28  house fenhouse-e    
+  (   29,   -88)      18       18           28  house fenhouse-e    
+  (   30,   -88)      18       18           18                      
+  (   31,   -88)      18       18           18                      
+  (   32,   -88)      18       18           18                      
+  (   33,   -88)      18       18           19  flora cover-brae-e  
+  (   34,   -88)      18       18           19  flora cover-brae-e  
+  (   35,   -88)      17       17           18  flora cover-brae-e  -1
+  (   36,   -88)      18       18           19  flora cover-brae-e  +1
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke road-e at (7, -86), flora cover-garth at (13, -90), house fenhouse-e at (16, -90), flora cover-brae-e at (31, -90)
+
+## fenhouse-e (house) along z
+TRANSECT 26 stations from (22, -100) to (22, -75), every 1
+  station        ground  surface  water  top  standing            step
+  (   22,  -100)      18       18           28  house steading-e    
+  (   22,   -99)      18       18           28  house steading-e    
+  (   22,   -98)      18       18           27  house steading-e    
+  (   22,   -97)      18       18           26  house steading-e    
+  (   22,   -96)      18       18           25  house steading-e    
+  (   22,   -95)      18       18           24  house steading-e    
+  (   22,   -94)      18       18           18                      
+  (   22,   -93)      18       18           26  house fenhouse-e    
+  (   22,   -92)      18       18           26  house fenhouse-e    
+  (   22,   -91)      18       18           27  house fenhouse-e    
+  (   22,   -90)      18       18           27  house fenhouse-e    
+  (   22,   -89)      18       18           28  house fenhouse-e    
+  (   22,   -88)      18       18           28  house fenhouse-e    
+  (   22,   -87)      18       18           28  house fenhouse-e    
+  (   22,   -86)      18       18           28  house fenhouse-e    
+  (   22,   -85)      18       18           27  house fenhouse-e    
+  (   22,   -84)      18       18           27  house fenhouse-e    
+  (   22,   -83)      18       18           26  house fenhouse-e    
+  (   22,   -82)      17       17           26  house fenhouse-e    -1
+  (   22,   -81)      17       17           17                      
+  (   22,   -80)      17       17           17                      
+  (   22,   -79)      17       17           17                      
+  (   22,   -78)      17       17           17  stroke road-e       
+  (   22,   -77)      17       17           17  stroke road-e       
+  (   22,   -76)      17       17           17  stroke road-e       
+  (   22,   -75)      16       16           16  stroke road-e       -1
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house steading-e at (20, -102), house fenhouse-e at (20, -93), flora cover-brae-e at (23, -80), stroke road-e at (20, -79)

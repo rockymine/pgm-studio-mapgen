@@ -1,0 +1,12 @@
+THEMES  5 themes over 27804 ground cells, 19 distinct surface blocks
+  bog  22986 cells (82.7%)  2:0 Grass Block, 3:2 Podzol, 5:1 Spruce Planks, 12:0 Sand, 3:0 Dirt, 13:0 Gravel, 1:6 Polished Andesite, 3:1 Coarse Dirt, 4:0 Cobblestone, 48:0 Mossy Cobblestone, 1:5 Andesite, 9:0 Water
+  brae  3756 cells (13.5%)  2:0 Grass Block, 3:0 Dirt, 3:1 Coarse Dirt, 48:0 Mossy Cobblestone, 1:5 Andesite, 4:0 Cobblestone
+  fenbed  518 cells (1.9%)  3:2 Podzol, 3:1 Coarse Dirt, 3:0 Dirt, 5:1 Spruce Planks, 17:1 Spruce Log, 65:2 Ladder
+  strand  350 cells (1.3%)  12:0 Sand, 13:0 Gravel
+  marsh  194 cells (0.7%)  9:0 Water
+borders:
+  bog | brae  678 cells
+  bog | fenbed  178 cells
+  bog | strand  160 cells
+  marsh | strand  96 cells
+  brae | fenbed  38 cells

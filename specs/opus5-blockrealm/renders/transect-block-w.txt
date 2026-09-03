@@ -1,0 +1,58 @@
+## block-w (house) along x
+TRANSECT 25 stations from (-34, -94) to (-10, -94), every 1
+  station        ground  surface  water  top  standing            step
+  (  -34,   -94)      18       18           18                      
+  (  -33,   -94)      18       18           18                      
+  (  -32,   -94)      18       18           18                      
+  (  -31,   -94)      18       18           18                      
+  (  -30,   -94)      18       18           18                      
+  (  -29,   -94)      18       18           18                      
+  (  -28,   -94)      18       18           18                      
+  (  -27,   -94)      18       18           26  house block-w       
+  (  -26,   -94)      18       18           26  house block-w       
+  (  -25,   -94)      18       18           26  house block-w       
+  (  -24,   -94)      18       18           26  house block-w       
+  (  -23,   -94)      18       18           26  house block-w       
+  (  -22,   -94)      18       18           26  house block-w       
+  (  -21,   -94)      18       18           26  house block-w       
+  (  -20,   -94)      18       18           26  house block-w       
+  (  -19,   -94)      18       18           26  house block-w       
+  (  -18,   -94)      18       18           26  house block-w       
+  (  -17,   -94)      18       18           26  house block-w       
+  (  -16,   -94)      18       18           18                      
+  (  -15,   -94)      18       18           18                      
+  (  -14,   -94)      18       18           18                      
+  (  -13,   -94)      18       18           18                      
+  (  -12,   -94)      18       18           18                      
+  (  -11,   -94)      18       18           18                      
+  (  -10,   -94)      18       18           18                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house block-w at (-27, -96)
+
+## block-w (house) along z
+TRANSECT 22 stations from (-22, -103) to (-22, -82), every 1
+  station        ground  surface  water  top  standing            step
+  (  -22,  -103)      14       14           14                      
+  (  -22,  -102)      15       15           15                      +1
+  (  -22,  -101)      17       17           17                      scramble +2
+  (  -22,  -100)      18       18           18                      +1
+  (  -22,   -99)      18       18           18                      
+  (  -22,   -98)      18       18           26  house block-w       
+  (  -22,   -97)      18       18           26  house block-w       
+  (  -22,   -96)      18       18           26  house block-w       
+  (  -22,   -95)      18       18           26  house block-w       
+  (  -22,   -94)      18       18           26  house block-w       
+  (  -22,   -93)      18       18           26  house block-w       
+  (  -22,   -92)      18       18           26  house block-w       
+  (  -22,   -91)      18       18           26  house block-w       
+  (  -22,   -90)      18       18           26  house block-w       
+  (  -22,   -89)      18       18           26  house block-w       
+  (  -22,   -88)      18       18           18                      
+  (  -22,   -87)      18       18           23  house cap-w         
+  (  -22,   -86)      18       18           24  house cap-w         
+  (  -22,   -85)      18       18           25  house cap-w         
+  (  -22,   -84)      18       18           26  house cap-w         
+  (  -22,   -83)      18       18           26  house cap-w         
+  (  -22,   -82)      18       18           25  house cap-w         
+rises 3, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-22, -101) | walked end to end
+beside: house block-w at (-24, -98), house cap-w at (-24, -87)

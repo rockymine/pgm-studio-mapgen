@@ -1,0 +1,210 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 14,
+    "z": -95
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -105,
+     "maxX": 10,
+     "maxZ": -85
+    }
+   ],
+   "yaw": 0,
+   "footprint": {
+    "minX": -5,
+    "minZ": -100,
+    "maxX": 5,
+    "maxZ": -90
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 14,
+    "z": 95
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 85,
+     "maxX": 10,
+     "maxZ": 105
+    }
+   ],
+   "yaw": 180,
+   "footprint": {
+    "minX": -5,
+    "minZ": 90,
+    "maxX": 5,
+    "maxZ": 100
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 58,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -65,
+    "minZ": -40,
+    "maxX": 65,
+    "maxZ": -20
+   },
+   {
+    "minX": -65,
+    "minZ": 20,
+    "maxX": 65,
+    "maxZ": 40
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-w",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "",
+   "anchor": {
+    "x": -22,
+    "y": 14,
+    "z": -56
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-e",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "",
+   "anchor": {
+    "x": 22,
+    "y": 14,
+    "z": -56
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-w",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "",
+   "anchor": {
+    "x": 21,
+    "y": 14,
+    "z": 55
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-e",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "",
+   "anchor": {
+    "x": -23,
+    "y": 14,
+    "z": 55
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  }
+ ],
+ "meta": {
+  "name": "Alderfen Holm",
+  "created": "2026-09-02",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue",
+  "3": "neutral"
+ },
+ "structures": null
+}

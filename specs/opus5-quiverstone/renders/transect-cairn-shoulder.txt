@@ -1,0 +1,61 @@
+## cairn-shoulder (boulder) along x
+TRANSECT 25 stations from (-50, -78) to (-26, -78), every 1
+  station        ground  surface  water  top  standing            step
+  (  -50,   -78)      44       44           44                      
+  (  -49,   -78)      44       44           44                      
+  (  -48,   -78)      44       44           44                      
+  (  -47,   -78)      44       44           44                      
+  (  -46,   -78)      29       29           29                      DROP -15
+  (  -45,   -78)      29       29           29                      
+  (  -44,   -78)      29       29           29                      
+  (  -43,   -78)      28       28           28                      -1
+  (  -42,   -78)      27       27           27                      -1
+  (  -41,   -78)      26       26           26                      -1
+  (  -40,   -78)      25       25           25                      -1
+  (  -39,   -78)      23       23           25  boulder cairn-shoulder  -2
+  (  -38,   -78)      21       21           24  boulder cairn-shoulder  -2
+  (  -37,   -78)      20       20           24  boulder cairn-shoulder  -1
+  (  -36,   -78)      19       19           22  boulder cairn-shoulder  -1
+  (  -35,   -78)      15       22           22  storey              BARRIER +3
+  (  -34,   -78)      15       22           22  storey              
+  (  -33,   -78)      15       22           22  storey              
+  (  -32,   -78)      15       22           22  storey              
+  (  -31,   -78)      15       22           22  storey              
+  (  -30,   -78)      15       22           22  storey              
+  (  -29,   -78)      15       22           22  storey              
+  (  -28,   -78)      15       22           22  storey              
+  (  -27,   -78)      15       22           22  storey              
+  (  -26,   -78)      15       22           22  storey              
+rises 1, falls 9, worst step 15: 1 barrier, 0 scramble, 1 drop — DROP -15 at (-46, -78); BARRIER +3 at (-35, -78) | walked end to end
+beside: boulder cairn-shoulder at (-39, -78)
+
+## cairn-shoulder (boulder) along z
+TRANSECT 25 stations from (-38, -90) to (-38, -66), every 1
+  station        ground  surface  water  top  standing            step
+  (  -38,   -90)      24       24           24                      
+  (  -38,   -89)      24       24           24                      
+  (  -38,   -88)      25       25           25                      +1
+  (  -38,   -87)      26       26           26                      +1
+  (  -38,   -86)      26       26           26                      
+  (  -38,   -85)      26       26           26                      
+  (  -38,   -84)      26       26           26                      
+  (  -38,   -83)      26       26           26                      
+  (  -38,   -82)      25       25           25                      -1
+  (  -38,   -81)      24       24           24                      -1
+  (  -38,   -80)      23       23           23                      -1
+  (  -38,   -79)      22       22           24  boulder cairn-shoulder  -1
+  (  -38,   -78)      21       21           24  boulder cairn-shoulder  -1
+  (  -38,   -77)      20       20           25  boulder cairn-shoulder  -1
+  (  -38,   -76)      20       20           23  boulder cairn-shoulder  
+  (  -38,   -75)      19       19           19                      -1
+  (  -38,   -74)      17       17           17                      -2
+  (  -38,   -73)      17       17           17                      
+  (  -38,   -72)      17       17           17                      
+  (  -38,   -71)      17       17           17                      
+  (  -38,   -70)      17       17           17                      
+  (  -38,   -69)      17       17           17                      
+  (  -38,   -68)      17       17           17                      
+  (  -38,   -67)      17       17           17                      
+  (  -38,   -66)      16       16           16                      -1
+rises 2, falls 9, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder cairn-shoulder at (-38, -79), tree tree-1 at (-40, -68)

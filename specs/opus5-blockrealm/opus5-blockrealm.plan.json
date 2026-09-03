@@ -1,0 +1,114 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Block Realm",
+  "notes": "DTC. Flat ground, blocky stepped plates, warp pipes, two lava keeps a team."
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 14,
+  "observerY": 62
+ },
+ "pieces": [
+  {
+   "id": "field",
+   "role": "piece",
+   "rect": [
+    -11,
+    -20,
+    22,
+    12
+   ],
+   "surface": 14
+  },
+  {
+   "id": "keep",
+   "role": "spawn",
+   "rect": [
+    -2,
+    -20,
+    4,
+    4
+   ],
+   "surface": 14
+  },
+  {
+   "id": "midway",
+   "role": "piece",
+   "rect": [
+    -8,
+    -4,
+    16,
+    8
+   ],
+   "surface": 14,
+   "mirrors": false
+  }
+ ],
+ "zones": [
+  {
+   "id": "gap",
+   "rect": [
+    -10,
+    -8,
+    20,
+    4
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "keep",
+    "at": [
+     10,
+     10
+    ],
+    "facing": "back",
+    "footprint": [
+     5,
+     5,
+     10,
+     10
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [],
+  "destroyables": [],
+  "cores": [
+   {
+    "id": "core-w",
+    "piece": "",
+    "at": [
+     -30,
+     -56
+    ],
+    "lava": 3,
+    "lavaHeight": 3,
+    "openTop": true,
+    "float": 6,
+    "leak": 5
+   },
+   {
+    "id": "core-e",
+    "piece": "",
+    "at": [
+     30,
+     -56
+    ],
+    "lava": 3,
+    "lavaHeight": 3,
+    "openTop": true,
+    "float": 6,
+    "leak": 5
+   }
+  ]
+ },
+ "walls": [],
+ "boxes": []
+}

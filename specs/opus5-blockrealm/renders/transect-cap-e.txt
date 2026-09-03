@@ -1,0 +1,56 @@
+## cap-e (house) along x
+TRANSECT 23 stations from (10, -84) to (32, -84), every 1
+  station        ground  surface  water  top  standing            step
+  (   10,   -84)      18       18           18                      
+  (   11,   -84)      18       18           18                      
+  (   12,   -84)      18       18           18                      
+  (   13,   -84)      18       18           18                      
+  (   14,   -84)      18       18           18                      
+  (   15,   -84)      18       18           18                      
+  (   16,   -84)      18       18           18                      
+  (   17,   -84)      18       18           23  house cap-e         
+  (   18,   -84)      18       18           24  house cap-e         
+  (   19,   -84)      18       18           25  house cap-e         
+  (   20,   -84)      18       18           26  house cap-e         
+  (   21,   -84)      18       18           26  house cap-e         
+  (   22,   -84)      18       18           26  house cap-e         
+  (   23,   -84)      18       18           25  house cap-e         
+  (   24,   -84)      18       18           24  house cap-e         
+  (   25,   -84)      18       18           23  house cap-e         
+  (   26,   -84)      18       18           18                      
+  (   27,   -84)      18       18           24  tree tree-1         
+  (   28,   -84)      18       18           24  tree tree-1         
+  (   29,   -84)      18       18           24  tree tree-1         
+  (   30,   -84)      18       18           18                      
+  (   31,   -84)      18       18           18                      
+  (   32,   -84)      18       18           18                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora cover-keep at (13, -86), house cap-e at (17, -86), tree tree-1 at (25, -82)
+
+## cap-e (house) along z
+TRANSECT 22 stations from (21, -94) to (21, -73), every 1
+  station        ground  surface  water  top  standing            step
+  (   21,   -94)      18       18           26  house block-e       
+  (   21,   -93)      18       18           26  house block-e       
+  (   21,   -92)      18       18           26  house block-e       
+  (   21,   -91)      18       18           26  house block-e       
+  (   21,   -90)      18       18           26  house block-e       
+  (   21,   -89)      18       18           26  house block-e       
+  (   21,   -88)      18       18           18                      
+  (   21,   -87)      18       18           23  house cap-e         
+  (   21,   -86)      18       18           24  house cap-e         
+  (   21,   -85)      18       18           25  house cap-e         
+  (   21,   -84)      18       18           26  house cap-e         
+  (   21,   -83)      18       18           26  house cap-e         
+  (   21,   -82)      18       18           25  house cap-e         
+  (   21,   -81)      18       18           24  house cap-e         
+  (   21,   -80)      18       18           23  house cap-e         
+  (   21,   -79)      18       18           18                      
+  (   21,   -78)      18       18           18                      
+  (   21,   -77)      18       18           18                      
+  (   21,   -76)      16       16           16                      -2
+  (   21,   -75)      16       16           16                      
+  (   21,   -74)      16       16           16                      
+  (   21,   -73)      16       16           16                      
+rises 0, falls 1, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house block-e at (19, -96), house cap-e at (19, -87), stroke track-e at (19, -74)

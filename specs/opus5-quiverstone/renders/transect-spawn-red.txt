@@ -1,0 +1,83 @@
+## spawn-red (spawn) along x
+TRANSECT 37 stations from (-18, -90) to (18, -90), every 1
+  station        ground  surface  water  top  standing            step
+  (  -18,   -90)      20       20           20                      
+  (  -17,   -90)      20       20           20                      
+  (  -16,   -90)      20       20           20                      
+  (  -15,   -90)      20       20           20                      
+  (  -14,   -90)      20       20           20                      
+  (  -13,   -90)      20       20           20                      
+  (  -12,   -90)      20       20           20                      
+  (  -11,   -90)      20       20           20                      
+  (  -10,   -90)      20       20           20                      
+  (   -9,   -90)      20       20           20                      
+  (   -8,   -90)      20       20           20                      
+  (   -7,   -90)      20       20           20                      
+  (   -6,   -90)      20       20           27                      
+  (   -5,   -90)      20       20           27  spawn spawn-1       
+  (   -4,   -90)      20       20           27  spawn spawn-1       
+  (   -3,   -90)      20       20           27  spawn spawn-1       
+  (   -2,   -90)      20       20           20  spawn spawn-1       
+  (   -1,   -90)      20       20           20  spawn spawn-1       
+  (    0,   -90)      20       20           20  spawn spawn-1       
+  (    1,   -90)      20       20           20  spawn spawn-1       
+  (    2,   -90)      20       20           27  spawn spawn-1       
+  (    3,   -90)      20       20           27  spawn spawn-1       
+  (    4,   -90)      20       20           27  spawn spawn-1       
+  (    5,   -90)      20       20           27                      
+  (    6,   -90)      20       20           20                      
+  (    7,   -90)      20       20           20                      
+  (    8,   -90)      20       20           20                      
+  (    9,   -90)      20       20           20                      
+  (   10,   -90)      20       20           20                      
+  (   11,   -90)      20       20           20                      
+  (   12,   -90)      20       20           20                      
+  (   13,   -90)      20       20           20                      
+  (   14,   -90)      20       20           20                      
+  (   15,   -90)      20       20           20                      
+  (   16,   -90)      20       20           20                      
+  (   17,   -90)      20       20           20                      
+  (   18,   -90)      20       20           20                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house dwelling-w at (-20, -92), house assay-w at (-20, -88), spawn spawn-1 at (-5, -92), house assay-e at (12, -88), house dwelling-e at (16, -92)
+
+## spawn-red (spawn) along z
+TRANSECT 35 stations from (0, -106) to (0, -72), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,  -106)                                                    void
+  (    0,  -105)                                                    void
+  (    0,  -104)                                                    void
+  (    0,  -103)                                                    void
+  (    0,  -102)      16       16           16                      
+  (    0,  -101)      19       19           19                      BARRIER +3
+  (    0,  -100)      20       20           20                      +1
+  (    0,   -99)      20       20           20                      
+  (    0,   -98)      20       20           20                      
+  (    0,   -97)      20       20           20                      
+  (    0,   -96)      20       20           27                      
+  (    0,   -95)      20       20           27  spawn spawn-1       
+  (    0,   -94)      20       20           27  spawn spawn-1       
+  (    0,   -93)      20       20           27  spawn spawn-1       
+  (    0,   -92)      20       20           20  spawn spawn-1       
+  (    0,   -91)      20       20           20  spawn spawn-1       
+  (    0,   -90)      20       20           20  spawn spawn-1       
+  (    0,   -89)      20       20           20  spawn spawn-1       
+  (    0,   -88)      20       20           27  spawn spawn-1       
+  (    0,   -87)      20       20           27  spawn spawn-1       
+  (    0,   -86)      20       20           27  spawn spawn-1       
+  (    0,   -85)      20       20           27                      
+  (    0,   -84)      20       20           20                      
+  (    0,   -83)      20       20           20                      
+  (    0,   -82)      20       20           20                      
+  (    0,   -81)      20       20           20                      
+  (    0,   -80)      20       20           20                      
+  (    0,   -79)      20       20           20                      
+  (    0,   -78)      20       20           20                      
+  (    0,   -77)      19       19           19                      -1
+  (    0,   -76)      19       19           19                      
+  (    0,   -75)      19       19           19                      
+  (    0,   -74)      18       18           18                      -1
+  (    0,   -73)      18       18           18                      
+  (    0,   -72)      17       17           17                      -1
+rises 2, falls 3, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (0, -101) | walked end to end
+beside: spawn spawn-1 at (-2, -95)

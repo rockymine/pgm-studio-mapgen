@@ -1,0 +1,61 @@
+## stone-holm (boulder) along x
+TRANSECT 25 stations from (-12, 12) to (12, 12), every 1
+  station        ground  surface  water  top  standing            step
+  (  -12,    12)      15       15           15                      
+  (  -11,    12)      15       15           15                      
+  (  -10,    12)      15       15           15                      
+  (   -9,    12)      15       15           15                      
+  (   -8,    12)      15       15           15                      
+  (   -7,    12)      15       15           15                      
+  (   -6,    12)      15       15           15                      
+  (   -5,    12)      15       15           17  boulder stone-holm  
+  (   -4,    12)      15       15           20  boulder stone-holm  
+  (   -3,    12)      15       15           21  boulder stone-holm  
+  (   -2,    12)      15       15           22  boulder stone-holm  
+  (   -1,    12)      15       15           22  boulder stone-holm  
+  (    0,    12)      15       15           22  boulder stone-holm  
+  (    1,    12)      15       15           22  boulder stone-holm  
+  (    2,    12)      15       15           22  boulder stone-holm  
+  (    3,    12)      15       15           21  boulder stone-holm  
+  (    4,    12)      15       15           20  boulder stone-holm  
+  (    5,    12)      15       15           18  boulder stone-holm  
+  (    6,    12)      15       15           15                      
+  (    7,    12)      15       15           15                      
+  (    8,    12)      15       15           15                      
+  (    9,    12)      15       15           15                      
+  (   10,    12)      15       15           21  tree tree-17#1      
+  (   11,    12)      15       15           22  tree tree-17#1      
+  (   12,    12)      15       15           22  tree tree-17#1      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora cover-holm at (-14, 10), boulder stone-holm at (-5, 11), tree tree-17#1 at (10, 10)
+
+## stone-holm (boulder) along z
+TRANSECT 25 stations from (0, 0) to (0, 24), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,     0)      15       93           93  storey              
+  (    0,     1)      15       93           93  storey              
+  (    0,     2)      15       93           93  storey              
+  (    0,     3)      15       93           93  storey              
+  (    0,     4)      15       93           93  storey              
+  (    0,     5)      15       93           93  storey              
+  (    0,     6)      15       93           93  storey              
+  (    0,     7)      15       87           87  storey              DROP -6
+  (    0,     8)      15       87           87  storey              
+  (    0,     9)      15       15           21  boulder stone-holm  DROP -72
+  (    0,    10)      15       15           22  boulder stone-holm  
+  (    0,    11)      15       15           22  boulder stone-holm  
+  (    0,    12)      15       15           22  boulder stone-holm  
+  (    0,    13)      15       15           22  boulder stone-holm  
+  (    0,    14)      15       15           22  boulder stone-holm  
+  (    0,    15)      15       15           21  boulder stone-holm  
+  (    0,    16)      15       15           19  boulder stone-holm  
+  (    0,    17)      15       15           15                      
+  (    0,    18)      14       14           14                      -1
+  (    0,    19)      14       14           14                      
+  (    0,    20)      14       14           14                      
+  (    0,    21)      14       14           14                      
+  (    0,    22)      14       14           14                      
+  (    0,    23)                                                    void
+  (    0,    24)                                                    void
+rises 0, falls 3, worst step 72: 0 barrier, 0 scramble, 2 drop — DROP -6 at (0, 7); DROP -72 at (0, 9) | walked end to end
+beside: boulder stone-holm at (-2, 9)

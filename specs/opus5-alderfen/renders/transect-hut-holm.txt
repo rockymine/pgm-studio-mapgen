@@ -1,0 +1,56 @@
+## hut-holm (house) along x
+TRANSECT 23 stations from (18, 10) to (40, 10), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,    10)      15       15           15                      
+  (   19,    10)      15       15           17  flora cover-holm    
+  (   20,    10)      15       15           16  flora cover-holm    
+  (   21,    10)      15       15           16  flora cover-holm    
+  (   22,    10)      15       15           16  flora cover-holm    
+  (   23,    10)      15       15           16  flora cover-holm    
+  (   24,    10)      15       15           15                      
+  (   25,    10)      15       15           23  house hut-holm      
+  (   26,    10)      15       15           23  house hut-holm      
+  (   27,    10)      15       15           23  house hut-holm      
+  (   28,    10)      15       15           23  house hut-holm      
+  (   29,    10)      15       15           23  house hut-holm      
+  (   30,    10)      15       15           23  house hut-holm      
+  (   31,    10)      15       15           23  house hut-holm      
+  (   32,    10)      15       15           23  house hut-holm      
+  (   33,    10)      15       15           23  house hut-holm      
+  (   34,    10)      15       15           15                      
+  (   35,    10)      15       15           16  flora cover-holm#1  
+  (   36,    10)      15       15           22  tree tree-16#1      
+  (   37,    10)      15       15           22  tree tree-16#1      
+  (   38,    10)      15       15           22  tree tree-16#1      
+  (   39,    10)      15       15           22  tree tree-16#1      
+  (   40,    10)      15       15           22  tree tree-16#1      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree tree-17#1 at (16, 8), flora cover-holm at (17, 10), house hut-holm at (25, 8), flora cover-holm#1 at (35, 10), tree tree-16#1 at (36, 10)
+
+## hut-holm (house) along z
+TRANSECT 22 stations from (29, 0) to (29, 21), every 1
+  station        ground  surface  water  top  standing            step
+  (   29,     0)      15       15           15  water holm-pool#1   
+  (   29,     1)      15       15           15  water holm-pool#1   
+  (   29,     2)      15       15           16  flora cover-holm    
+  (   29,     3)      15       15           16  flora cover-holm    
+  (   29,     4)      15       15           16  flora cover-holm    
+  (   29,     5)      15       15           16  flora cover-holm    
+  (   29,     6)      15       15           15                      
+  (   29,     7)      15       15           20  house hut-holm      
+  (   29,     8)      15       15           21  house hut-holm      
+  (   29,     9)      15       15           22  house hut-holm      
+  (   29,    10)      15       15           23  house hut-holm      
+  (   29,    11)      15       15           23  house hut-holm      
+  (   29,    12)      15       15           22  house hut-holm      
+  (   29,    13)      15       15           21  house hut-holm      
+  (   29,    14)      15       15           20  house hut-holm      
+  (   29,    15)      15       15           15                      
+  (   29,    16)      15       15           15                      
+  (   29,    17)      15       15           15                      
+  (   29,    18)      15       15           15                      
+  (   29,    19)      15       15           15                      
+  (   29,    20)                                                    void
+  (   29,    21)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water holm-pool#1 at (27, -2), flora cover-holm at (27, 1), house hut-holm at (27, 7)

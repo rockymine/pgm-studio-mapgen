@@ -1,0 +1,56 @@
+## hut-w (house) along x
+TRANSECT 23 stations from (-54, -2) to (-32, -2), every 1
+  station        ground  surface  water  top  standing            step
+  (  -54,    -2)      14       14           14                      
+  (  -53,    -2)      15       15           15                      +1
+  (  -52,    -2)      15       15           15                      
+  (  -51,    -2)      15       15           15                      
+  (  -50,    -2)      15       15           15                      
+  (  -49,    -2)      15       15           15                      
+  (  -48,    -2)      15       15           15                      
+  (  -47,    -2)      15       15           23  house hut-w         
+  (  -46,    -2)      15       15           23  house hut-w         
+  (  -45,    -2)      15       15           23  house hut-w         
+  (  -44,    -2)      15       15           23  house hut-w         
+  (  -43,    -2)      15       15           23  house hut-w         
+  (  -42,    -2)      15       15           23  house hut-w         
+  (  -41,    -2)      15       15           23  house hut-w         
+  (  -40,    -2)      15       15           23  house hut-w         
+  (  -39,    -2)      15       15           23  house hut-w         
+  (  -38,    -2)      15       15           15                      
+  (  -37,    -2)      15       15           16  flora cover-holm    
+  (  -36,    -2)      15       15           16  flora cover-holm    
+  (  -35,    -2)      15       15           16  flora cover-holm    
+  (  -34,    -2)      15       15           15  water holm-pool     
+  (  -33,    -2)      15       15           15  water holm-pool     
+  (  -32,    -2)      15       15           15  water holm-pool     
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house hut-w at (-47, -4), flora cover-holm at (-37, -4), water holm-pool at (-37, 0)
+
+## hut-w (house) along z
+TRANSECT 22 stations from (-43, -12) to (-43, 9), every 1
+  station        ground  surface  water  top  standing            step
+  (  -43,   -12)      15       15           22  tree tree-16        
+  (  -43,   -11)      15       15           21  tree tree-16        
+  (  -43,   -10)      15       15           15                      
+  (  -43,    -9)      15       15           15                      
+  (  -43,    -8)      15       15           16  flora cover-holm    
+  (  -43,    -7)      15       15           16  flora cover-holm    
+  (  -43,    -6)      15       15           15                      
+  (  -43,    -5)      15       15           20  house hut-w         
+  (  -43,    -4)      15       15           21  house hut-w         
+  (  -43,    -3)      15       15           22  house hut-w         
+  (  -43,    -2)      15       15           23  house hut-w         
+  (  -43,    -1)      15       15           23  house hut-w         
+  (  -43,     0)      15       15           22  house hut-w         
+  (  -43,     1)      15       15           21  house hut-w         
+  (  -43,     2)      15       15           20  house hut-w         
+  (  -43,     3)      15       15           15                      
+  (  -43,     4)      15       15           16  flora cover-holm    
+  (  -43,     5)      15       15           16  flora cover-holm#1  
+  (  -43,     6)      15       15           15                      
+  (  -43,     7)      15       15           20  house hut-e#1       
+  (  -43,     8)      15       15           21  house hut-e#1       
+  (  -43,     9)      15       15           22  house hut-e#1       
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree tree-16 at (-44, -14), flora cover-holm at (-42, -10), flora cover-holm#1 at (-45, -8), house hut-w at (-45, -5), house hut-e#1 at (-45, 7)

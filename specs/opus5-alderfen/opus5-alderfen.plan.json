@@ -1,0 +1,112 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Alderfen Holm",
+  "notes": "DTC. One core a team on level bog; one holm between the sides."
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 14,
+  "observerY": 58
+ },
+ "pieces": [
+  {
+   "id": "holm",
+   "role": "piece",
+   "rect": [
+    -15,
+    -21,
+    30,
+    13
+   ],
+   "surface": 14
+  },
+  {
+   "id": "garth",
+   "role": "spawn",
+   "rect": [
+    -2,
+    -21,
+    4,
+    4
+   ],
+   "surface": 14
+  },
+  {
+   "id": "holm-mid",
+   "role": "piece",
+   "rect": [
+    -12,
+    -4,
+    24,
+    8
+   ],
+   "surface": 14,
+   "mirrors": false
+  }
+ ],
+ "zones": [
+  {
+   "id": "span",
+   "rect": [
+    -13,
+    -8,
+    26,
+    4
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "garth",
+    "at": [
+     10,
+     10
+    ],
+    "facing": "back",
+    "footprint": [
+     5,
+     5,
+     10,
+     10
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [],
+  "destroyables": [],
+  "cores": [
+   {
+    "id": "core-w",
+    "piece": "",
+    "at": [
+     -22,
+     -56
+    ],
+    "lava": 3,
+    "lavaHeight": 3,
+    "float": 6,
+    "leak": 5
+   },
+   {
+    "id": "core-e",
+    "piece": "",
+    "at": [
+     22,
+     -56
+    ],
+    "lava": 3,
+    "lavaHeight": 3,
+    "float": 6,
+    "leak": 5
+   }
+  ]
+ },
+ "walls": [],
+ "boxes": []
+}

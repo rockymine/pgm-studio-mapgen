@@ -1,0 +1,112 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Quiverstone Mesa",
+  "notes": "DTM. Two monuments a team on the open pan, buttes either side of the spawn."
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 16,
+  "observerY": 60
+ },
+ "pieces": [
+  {
+   "id": "shelf",
+   "role": "piece",
+   "rect": [
+    -14,
+    -20,
+    28,
+    12
+   ],
+   "surface": 16
+  },
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    -2,
+    -20,
+    4,
+    4
+   ],
+   "surface": 16
+  },
+  {
+   "id": "reef",
+   "role": "piece",
+   "rect": [
+    -10,
+    -4,
+    20,
+    8
+   ],
+   "surface": 16,
+   "mirrors": false
+  }
+ ],
+ "zones": [
+  {
+   "id": "wash",
+   "rect": [
+    -12,
+    -8,
+    24,
+    4
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "camp",
+    "at": [
+     10,
+     10
+    ],
+    "facing": "back",
+    "footprint": [
+     5,
+     5,
+     10,
+     10
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [],
+  "destroyables": [
+   {
+    "id": "mon-w",
+    "piece": "",
+    "at": [
+     -24,
+     -54
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Quiverstone"
+   },
+   {
+    "id": "mon-e",
+    "piece": "",
+    "at": [
+     24,
+     -54
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Redscar"
+   }
+  ],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

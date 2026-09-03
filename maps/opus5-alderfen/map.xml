@@ -1,0 +1,169 @@
+<map proto="1.5.0">
+    <name>Alderfen Holm</name>
+    <version>1.0.0</version>
+    <gamemode>dtc</gamemode>
+    <objective>Leak the enemy's cores!</objective>
+    <created>2026-09-02</created>
+    <phase>development</phase>
+    <include id="gapple-kill-reward"/>
+    <authors>
+        <author>Opus 5</author>
+    </authors>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
+    <kits>
+        <kit id="spawn-kit">
+            <clear/>
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="diamond pickaxe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="golden apple"/>
+            <item slot="28" material="arrow"/>
+            <item slot="29" material="shears" unbreakable="true"/>
+            <item slot="30" material="iron spade" unbreakable="true"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </helmet>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </chestplate>
+            <leggings material="chainmail leggings" unbreakable="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </leggings>
+            <boots material="leather boots" unbreakable="true" team-color="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </boots>
+            <effect duration="oo" amplifier="100">damage resistance</effect>
+        </kit>
+        <kit id="reset-resistance-kit" force="true">
+            <effect duration="0" amplifier="0">damage resistance</effect>
+        </kit>
+    </kits>
+    <spawns>
+        <default region="observer-spawn"/>
+        <spawn team="red-team" kit="spawn-kit" region="red-spawn-point"/>
+        <spawn team="blue-team" kit="spawn-kit" yaw="180" region="blue-spawn-point"/>
+    </spawns>
+    <cores>
+        <core id="red-core" team="red-team" region="red-core-region"/>
+        <core id="red-core-2" team="red-team" region="red-core-2-region"/>
+        <core id="blue-core" team="blue-team" region="blue-core-region"/>
+        <core id="blue-core-2" team="blue-team" region="blue-core-2-region"/>
+    </cores>
+    <filters>
+        <team id="only-blue">blue-team</team>
+        <team id="only-red">red-team</team>
+        <any id="block-break-void-filter">
+            <all>
+                <any>
+                    <material>log</material>
+                    <material>log 2</material>
+                    <material>leaves</material>
+                    <material>leaves 2</material>
+                    <material>long grass</material>
+                    <material>yellow flower</material>
+                    <material>red rose</material>
+                    <material>double plant</material>
+                    <material>water lily</material>
+                    <material>vine</material>
+                </any>
+                <void/>
+            </all>
+            <filter id="block-place-void-filter"/>
+        </any>
+        <not id="block-place-void-filter">
+            <void/>
+        </not>
+    </filters>
+    <regions>
+        <point id="blue-spawn-point">0,18,95</point>
+        <point id="red-spawn-point">0,18,-95</point>
+        <point id="observer-spawn">0,59,0</point>
+        <rectangle id="blue-spawn" min="-10,85" max="10,105"/>
+        <rectangle id="red-spawn" min="-10,-105" max="10,-85"/>
+        <cuboid id="red-core-region" min="-24,21,-58" max="-19,26,-53"/>
+        <cuboid id="red-core-2-region" min="20,21,-58" max="25,26,-53"/>
+        <cuboid id="blue-core-region" min="19,21,53" max="24,26,58"/>
+        <cuboid id="blue-core-2-region" min="-25,21,53" max="-20,26,58"/>
+        <union id="spawns">
+            <region id="red-spawn"/>
+            <region id="blue-spawn"/>
+        </union>
+        <negative id="not-spawns">
+            <region id="spawns"/>
+        </negative>
+        <negative id="not-build-area">
+            <union id="build-area">
+                <rectangle id="build-area-1" min="-65,-40" max="65,-20"/>
+                <rectangle id="build-area-2" min="-65,20" max="65,40"/>
+            </union>
+        </negative>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply block="never" region="spawns" message="You may not block/break spawns!"/>
+        <apply kit="reset-resistance-kit" region="not-spawns"/>
+        <apply block-place="block-place-void-filter" block-break="block-break-void-filter" region="not-build-area" message="You may not edit the void!"/>
+    </regions>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>diamond pickaxe</item>
+        <item>iron axe</item>
+        <item>water bucket</item>
+        <item>golden apple</item>
+        <item>arrow</item>
+        <item>shears</item>
+        <item>iron spade</item>
+        <item>wood</item>
+        <item>stained clay</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>diamond pickaxe</tool>
+        <tool>iron axe</tool>
+        <tool>shears</tool>
+        <tool>iron spade</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+    <maxbuildheight>61</maxbuildheight>
+</map>

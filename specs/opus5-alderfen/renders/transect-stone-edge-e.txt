@@ -1,0 +1,61 @@
+## stone-edge-e (boulder) along x
+TRANSECT 25 stations from (50, -70) to (74, -70), every 1
+  station        ground  surface  water  top  standing            step
+  (   50,   -70)      23       23           24  flora cover-brae-e  
+  (   51,   -70)      26       26           27  flora cover-brae-e  BARRIER +3
+  (   52,   -70)      30       30           31  flora cover-brae-e  BARRIER +4
+  (   53,   -70)      32       32           33  flora cover-brae-e  scramble +2
+  (   54,   -70)      35       35           36  flora cover-brae-e  BARRIER +3
+  (   55,   -70)      36       36           37  flora cover-brae-e  +1
+  (   56,   -70)      36       36           37  flora cover-brae-e  
+  (   57,   -70)      35       35           36  flora cover-brae-e  -1
+  (   58,   -70)      33       33           34  flora cover-brae-e  -2
+  (   59,   -70)      32       32           32  boulder stone-edge-e  -1
+  (   60,   -70)      32       32           32  boulder stone-edge-e  
+  (   61,   -70)      31       31           31  boulder stone-edge-e  -1
+  (   62,   -70)      29       29           29  boulder stone-edge-e  -2
+  (   63,   -70)      28       28           28  boulder stone-edge-e  -1
+  (   64,   -70)      27       27           28  boulder stone-edge-e  -1
+  (   65,   -70)      26       26           28  boulder stone-edge-e  -1
+  (   66,   -70)      25       25           27  boulder stone-edge-e  -1
+  (   67,   -70)      24       24           24                      -1
+  (   68,   -70)      23       23           23                      -1
+  (   69,   -70)      22       22           22                      -1
+  (   70,   -70)      20       20           20                      -2
+  (   71,   -70)      19       19           19                      -1
+  (   72,   -70)      17       17           17                      -2
+  (   73,   -70)      16       16           16                      -1
+  (   74,   -70)      15       15           15                      -1
+rises 5, falls 17, worst step 4: 3 barrier, 1 scramble, 0 drop — BARRIER +3 at (51, -70); BARRIER +4 at (52, -70); scramble +2 at (53, -70); BARRIER +3 at (54, -70) | walked end to end
+beside: flora cover-brae-e at (48, -72), boulder stone-edge-e at (59, -71)
+
+## stone-edge-e (boulder) along z
+TRANSECT 25 stations from (62, -82) to (62, -58), every 1
+  station        ground  surface  water  top  standing            step
+  (   62,   -82)      36       36           37  flora cover-brae-e  
+  (   62,   -81)      36       36           37  flora cover-brae-e  
+  (   62,   -80)      35       35           43  tree fir-0          -1
+  (   62,   -79)      34       34           47  tree fir-0          -1
+  (   62,   -78)      34       34           48  tree fir-0          
+  (   62,   -77)      34       34           46  tree fir-0          
+  (   62,   -76)      34       34           43  tree fir-0          
+  (   62,   -75)      35       35           41  tree fir-0          +1
+  (   62,   -74)      34       34           35  flora cover-brae-e  -1
+  (   62,   -73)      33       33           34  flora cover-brae-e  -1
+  (   62,   -72)      32       32           32  boulder stone-edge-e  -1
+  (   62,   -71)      31       31           31  boulder stone-edge-e  -1
+  (   62,   -70)      29       29           29  boulder stone-edge-e  -2
+  (   62,   -69)      28       28           28  boulder stone-edge-e  -1
+  (   62,   -68)      28       28           28  boulder stone-edge-e  
+  (   62,   -67)      28       28           29  flora cover-brae-e  
+  (   62,   -66)      30       30           31  flora cover-brae-e  scramble +2
+  (   62,   -65)      31       31           31                      +1
+  (   62,   -64)      33       33           33                      scramble +2
+  (   62,   -63)      34       34           34                      +1
+  (   62,   -62)      33       33           33                      -1
+  (   62,   -61)      33       33           33                      
+  (   62,   -60)      33       33           33                      
+  (   62,   -59)      33       33           33                      
+  (   62,   -58)      33       33           33                      
+rises 5, falls 9, worst step 2: 0 barrier, 2 scramble, 0 drop — scramble +2 at (62, -66); scramble +2 at (62, -64) | walked end to end
+beside: tree tree-15 at (60, -84), flora cover-brae-e at (62, -84), tree fir-0 at (63, -81), boulder stone-edge-e at (60, -72)

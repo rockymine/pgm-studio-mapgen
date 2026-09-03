@@ -1,0 +1,61 @@
+## core-w-1 (core) along x
+TRANSECT 25 stations from (17, 55) to (41, 55), every 1
+  station        ground  surface  water  top  standing            step
+  (   17,    55)      14       14           15  flora cover-field#1  
+  (   18,    55)      14       14           15  flora cover-field#1  
+  (   19,    55)      14       14           14  stroke track-w#1    
+  (   20,    55)      14       14           14  stroke track-w#1    
+  (   21,    55)      14       14           14  stroke track-w#1    
+  (   22,    55)      14       14           14  stroke track-w#1    
+  (   23,    55)      14       14           14  stroke track-w#1    
+  (   24,    55)      14       14           14                      
+  (   25,    55)      14       14           14                      
+  (   26,    55)      14       14           14                      
+  (   27,    55)      14       14           24  core core-w#1       
+  (   28,    55)      14       14     24    52  core core-w#1       
+  (   29,    55)      14       14     24    53  core core-w#1       
+  (   30,    55)      14       14     24    52  core core-w#1       
+  (   31,    55)      14       14           24  core core-w#1       
+  (   32,    55)      14       14           14                      
+  (   33,    55)      14       14           14                      
+  (   34,    55)      14       14           14                      
+  (   35,    55)      14       14           14                      
+  (   36,    55)      14       14           14                      
+  (   37,    55)      14       14           14                      
+  (   38,    55)      14       14           14                      
+  (   39,    55)      14       14           14                      
+  (   40,    55)      14       14           14                      
+  (   41,    55)      14       14           14                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora cover-field#1 at (15, 53), stroke track-w#1 at (19, 53), core core-w#1 at (27, 53)
+
+## core-w-1 (core) along z
+TRANSECT 25 stations from (29, 43) to (29, 67), every 1
+  station        ground  surface  water  top  standing            step
+  (   29,    43)      14       14           14                      
+  (   29,    44)      14       14           14                      
+  (   29,    45)      14       14           14                      
+  (   29,    46)      14       14           14                      
+  (   29,    47)      14       14           14                      
+  (   29,    48)      14       14           14                      
+  (   29,    49)      14       14           14                      
+  (   29,    50)      14       14           14                      
+  (   29,    51)      14       14           14                      
+  (   29,    52)      14       14           14                      
+  (   29,    53)      14       14           24  core core-w#1       
+  (   29,    54)      14       14     24    52  core core-w#1       
+  (   29,    55)      14       14     24    53  core core-w#1       
+  (   29,    56)      14       14     24    52  core core-w#1       
+  (   29,    57)      14       14           24  core core-w#1       
+  (   29,    58)      14       14           14                      
+  (   29,    59)      14       14           14                      
+  (   29,    60)      14       14           14                      
+  (   29,    61)      14       14           14                      
+  (   29,    62)      14       14           14                      
+  (   29,    63)      14       14           14                      
+  (   29,    64)      14       14           14                      
+  (   29,    65)      14       14           14                      
+  (   29,    66)      14       14           14                      
+  (   29,    67)      14       14           14                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: core core-w#1 at (27, 53)

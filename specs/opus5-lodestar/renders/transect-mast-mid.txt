@@ -1,0 +1,61 @@
+## mast-mid (made) along x
+TRANSECT 25 stations from (-36, -10) to (-12, -10), every 1
+  station        ground  surface  water  top  standing            step
+  (  -36,   -10)                                                    void
+  (  -35,   -10)                                                    void
+  (  -34,   -10)                                                    void
+  (  -33,   -10)                                                    void
+  (  -32,   -10)                                                    void
+  (  -31,   -10)      20       20           20                      
+  (  -30,   -10)      20       20           20                      
+  (  -29,   -10)      20       20           20                      
+  (  -28,   -10)      19       55           55  storey              BARRIER +35
+  (  -27,   -10)      19       55           55  storey              
+  (  -26,   -10)      19       55           55  storey              
+  (  -25,   -10)      19       55           55  storey              
+  (  -24,   -10)      19       55           55  storey              
+  (  -23,   -10)      19       55           55  storey              
+  (  -22,   -10)      19       55           55  storey              
+  (  -21,   -10)      19       55           55  storey              
+  (  -20,   -10)      20       20           20                      DROP -35
+  (  -19,   -10)      20       20           20                      
+  (  -18,   -10)      20       20           20                      
+  (  -17,   -10)      20       20           20                      
+  (  -16,   -10)      20       20           20                      
+  (  -15,   -10)      20       20           20                      
+  (  -14,   -10)      20       20           20                      
+  (  -13,   -10)      20       20           20                      
+  (  -12,   -10)      20       20           20                      
+rises 1, falls 1, worst step 35: 1 barrier, 0 scramble, 1 drop — BARRIER +35 at (-28, -10); DROP -35 at (-20, -10) | walked end to end
+beside: (none)
+
+## mast-mid (made) along z
+TRANSECT 25 stations from (-24, -22) to (-24, 2), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,   -22)                                                    void
+  (  -24,   -21)                                                    void
+  (  -24,   -20)                                                    void
+  (  -24,   -19)                                                    void
+  (  -24,   -18)                                                    void
+  (  -24,   -17)      20       20           20                      
+  (  -24,   -16)      20       20           20                      
+  (  -24,   -15)      20       20           20                      
+  (  -24,   -14)      19       55           55  storey              BARRIER +35
+  (  -24,   -13)      19       55           55  storey              
+  (  -24,   -12)      19       55           55  storey              
+  (  -24,   -11)      19       55           55  storey              
+  (  -24,   -10)      19       55           55  storey              
+  (  -24,    -9)      19       55           55  storey              
+  (  -24,    -8)      19       55           55  storey              
+  (  -24,    -7)      19       55           55  storey              
+  (  -24,    -6)      20       20           20                      DROP -35
+  (  -24,    -5)      20       20           20                      
+  (  -24,    -4)      20       20           20                      
+  (  -24,    -3)      20       20           20                      
+  (  -24,    -2)      20       20           20                      
+  (  -24,    -1)      20       20           20                      
+  (  -24,     0)      20       20           20                      
+  (  -24,     1)      20       20           26  tree dish-mid       
+  (  -24,     2)      20       20           25  tree dish-mid       
+rises 1, falls 1, worst step 35: 1 barrier, 0 scramble, 1 drop — BARRIER +35 at (-24, -14); DROP -35 at (-24, -6) | walked end to end
+beside: tree dish-mid at (-24, 1)

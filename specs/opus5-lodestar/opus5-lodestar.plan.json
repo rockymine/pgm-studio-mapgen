@@ -1,0 +1,171 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Lodestar Yard",
+  "notes": "CTW. Two wool bays a team on the ends of two arms, one neck onto the void, and every ground on the board a plate somebody welded."
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 24,
+  "surface": 20,
+  "observerY": 66
+ },
+ "pieces": [
+  {
+   "id": "berth",
+   "role": "spawn",
+   "rect": [
+    -3,
+    -20,
+    6,
+    4
+   ],
+   "surface": 20
+  },
+  {
+   "id": "hub",
+   "role": "piece",
+   "rect": [
+    -4,
+    -16,
+    8,
+    6
+   ],
+   "surface": 20
+  },
+  {
+   "id": "arm-w",
+   "role": "piece",
+   "rect": [
+    -9,
+    -15,
+    5,
+    5
+   ],
+   "surface": 20
+  },
+  {
+   "id": "arm-e",
+   "role": "piece",
+   "rect": [
+    4,
+    -15,
+    5,
+    5
+   ],
+   "surface": 20
+  },
+  {
+   "id": "vault-w",
+   "role": "wool-room",
+   "rect": [
+    -12,
+    -15,
+    3,
+    5
+   ],
+   "surface": 20
+  },
+  {
+   "id": "vault-e",
+   "role": "wool-room",
+   "rect": [
+    9,
+    -15,
+    3,
+    5
+   ],
+   "surface": 20
+  },
+  {
+   "id": "neck",
+   "role": "piece",
+   "rect": [
+    -4,
+    -10,
+    8,
+    3
+   ],
+   "surface": 20
+  },
+  {
+   "id": "spine",
+   "role": "piece",
+   "rect": [
+    -6,
+    -3,
+    12,
+    6
+   ],
+   "surface": 20,
+   "mirrors": false
+  }
+ ],
+ "zones": [
+  {
+   "id": "cross",
+   "rect": [
+    -4,
+    -7,
+    8,
+    4
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "berth",
+    "at": [
+     15,
+     10
+    ],
+    "facing": "back",
+    "footprint": [
+     8,
+     5,
+     14,
+     10
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-w",
+    "piece": "vault-w",
+    "at": [
+     8,
+     13
+    ],
+    "footprint": [
+     2,
+     4,
+     11,
+     17
+    ]
+   },
+   {
+    "id": "wool-e",
+    "piece": "vault-e",
+    "at": [
+     7,
+     13
+    ],
+    "footprint": [
+     2,
+     4,
+     11,
+     17
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

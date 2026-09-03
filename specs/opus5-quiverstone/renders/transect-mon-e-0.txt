@@ -1,0 +1,61 @@
+## mon-e-0 (destroyable) along x
+TRANSECT 25 stations from (12, -54) to (36, -54), every 1
+  station        ground  surface  water  top  standing            step
+  (   12,   -54)      16       16           16                      
+  (   13,   -54)      16       16           16                      
+  (   14,   -54)      16       16           16                      
+  (   15,   -54)      16       16           16                      
+  (   16,   -54)      16       16           16                      
+  (   17,   -54)      16       16           16                      
+  (   18,   -54)      16       16           16                      
+  (   19,   -54)      16       16           16                      
+  (   20,   -54)      16       16           16                      
+  (   21,   -54)      16       16           16                      
+  (   22,   -54)      16       16           16  stroke track-e      
+  (   23,   -54)      16       16           71  stroke track-e      
+  (   24,   -54)      16       16           72  stroke track-e      
+  (   25,   -54)      16       16           71  stroke track-e      
+  (   26,   -54)      16       16           16  stroke track-e      
+  (   27,   -54)      16       16           16                      
+  (   28,   -54)      16       16           16                      
+  (   29,   -54)      16       16           16                      
+  (   30,   -54)      16       16           16                      
+  (   31,   -54)      16       16           16                      
+  (   32,   -54)      16       16           16                      
+  (   33,   -54)      16       16           16                      
+  (   34,   -54)      16       16           16                      
+  (   35,   -54)      16       16           16                      
+  (   36,   -54)      16       16           16                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track-e at (22, -56), destroyable mon-e at (22, -53)
+
+## mon-e-0 (destroyable) along z
+TRANSECT 25 stations from (24, -66) to (24, -42), every 1
+  station        ground  surface  water  top  standing            step
+  (   24,   -66)      17       17           17  stroke track-e      
+  (   24,   -65)      17       17           17  stroke track-e      
+  (   24,   -64)      17       17           17  stroke track-e      
+  (   24,   -63)      17       17           17  stroke track-e      
+  (   24,   -62)      16       16           16  stroke track-e      -1
+  (   24,   -61)      16       16           16  stroke track-e      
+  (   24,   -60)      16       16           16  stroke track-e      
+  (   24,   -59)      16       16           16  stroke track-e      
+  (   24,   -58)      16       16           16  stroke track-e      
+  (   24,   -57)      16       16           16  stroke track-e      
+  (   24,   -56)      16       16           16  stroke track-e      
+  (   24,   -55)      16       16           71  stroke track-e      
+  (   24,   -54)      16       16           72  stroke track-e      
+  (   24,   -53)      16       16           71  stroke track-e      
+  (   24,   -52)      16       16           16  stroke track-e      
+  (   24,   -51)      16       16           16  stroke track-e      
+  (   24,   -50)      16       16           16  stroke track-e      
+  (   24,   -49)      16       16           16  stroke track-e      
+  (   24,   -48)      16       16           16  stroke track-e      
+  (   24,   -47)      16       16           16  stroke track-e      
+  (   24,   -46)      16       16           16  stroke track-e      
+  (   24,   -45)      16       16           16  stroke track-e      
+  (   24,   -44)      16       16           16  stroke track-e      
+  (   24,   -43)      16       16           16                      
+  (   24,   -42)      16       16           16                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track-e at (22, -68), destroyable mon-e at (26, -56)
