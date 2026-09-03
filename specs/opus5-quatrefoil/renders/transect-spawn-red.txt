@@ -1,0 +1,73 @@
+## spawn-red (spawn) along x
+TRANSECT 31 stations from (-98, -86) to (-68, -86), every 1
+  station        ground  surface  water  top  standing            step
+  (  -98,   -86)                                                    void
+  (  -97,   -86)                                                    void
+  (  -96,   -86)      10       10           10                      
+  (  -95,   -86)      10       10           20  spawn spawn-1       
+  (  -94,   -86)      10       10           20  spawn spawn-1       
+  (  -93,   -86)      10       10           20  spawn spawn-1       
+  (  -92,   -86)      10       10           20  spawn spawn-1       
+  (  -91,   -86)      10       10           20  spawn spawn-1       
+  (  -90,   -86)      10       10           20  spawn spawn-1       
+  (  -89,   -86)      10       10           20  spawn spawn-1       
+  (  -88,   -86)      10       10           20  spawn spawn-1       
+  (  -87,   -86)      10       10           20  spawn spawn-1       
+  (  -86,   -86)      10       10           20  spawn spawn-1       
+  (  -85,   -86)      10       10           20  spawn spawn-1       
+  (  -84,   -86)      10       10           20  spawn spawn-1       
+  (  -83,   -86)      10       10           20  spawn spawn-1       
+  (  -82,   -86)      10       10           20  spawn spawn-1       
+  (  -81,   -86)      10       10           20  spawn spawn-1       
+  (  -80,   -86)      10       10           20  spawn spawn-1       
+  (  -79,   -86)      10       10           20  spawn spawn-1       
+  (  -78,   -86)      10       10           20  spawn spawn-1       
+  (  -77,   -86)      10       10           10                      
+  (  -76,   -86)      12       12           12                      scramble +2
+  (  -75,   -86)      12       12           12                      
+  (  -74,   -86)      13       13           13                      +1
+  (  -73,   -86)      14       14           14                      +1
+  (  -72,   -86)      14       14           14                      
+  (  -71,   -86)      15       15           15                      +1
+  (  -70,   -86)      15       15           15                      
+  (  -69,   -86)      15       15           15                      
+  (  -68,   -86)      16       16           16                      +1
+rises 5, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-76, -86) | walked end to end
+beside: spawn spawn-1 at (-95, -88)
+
+## spawn-red (spawn) along z
+TRANSECT 31 stations from (-86, -98) to (-86, -68), every 1
+  station        ground  surface  water  top  standing            step
+  (  -86,   -98)                                                    void
+  (  -86,   -97)                                                    void
+  (  -86,   -96)      10       10           10                      
+  (  -86,   -95)      10       10           20  spawn spawn-1       
+  (  -86,   -94)      10       10           20  spawn spawn-1       
+  (  -86,   -93)      10       10           20  spawn spawn-1       
+  (  -86,   -92)      10       10           20  spawn spawn-1       
+  (  -86,   -91)      10       10           20  spawn spawn-1       
+  (  -86,   -90)      10       10           20  spawn spawn-1       
+  (  -86,   -89)      10       10           20  spawn spawn-1       
+  (  -86,   -88)      10       10           20  spawn spawn-1       
+  (  -86,   -87)      10       10           20  spawn spawn-1       
+  (  -86,   -86)      10       10           20  spawn spawn-1       
+  (  -86,   -85)      10       10           20  spawn spawn-1       
+  (  -86,   -84)      10       10           20  spawn spawn-1       
+  (  -86,   -83)      10       10           20  spawn spawn-1       
+  (  -86,   -82)      10       10           20  spawn spawn-1       
+  (  -86,   -81)      10       10           10                      
+  (  -86,   -80)      10       10           10                      
+  (  -86,   -79)      10       10           13  stroke track-south  
+  (  -86,   -78)      10       10           13  ironcube spawn-1:0  
+  (  -86,   -77)      10       10           13  stroke track-south  
+  (  -86,   -76)      10       10           10  stroke track-east   
+  (  -86,   -75)      10       10           10  stroke track-south  
+  (  -86,   -74)      11       11           11  stroke track-south  +1
+  (  -86,   -73)      11       11           11  stroke track-south  
+  (  -86,   -72)      11       11           11  stroke track-south  
+  (  -86,   -71)      12       12           12                      +1
+  (  -86,   -70)      12       12           12                      
+  (  -86,   -69)      13       13           13  stroke track-south  +1
+  (  -86,   -68)      13       13           13  stroke track-south  
+rises 3, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (-88, -95), stroke track-south at (-87, -79), ironcube spawn-1:0 at (-85, -79), stroke track-east at (-84, -77)

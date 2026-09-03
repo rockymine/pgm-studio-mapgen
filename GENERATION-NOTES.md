@@ -1092,6 +1092,35 @@ each storey its own landscape — `{"team": …, "walls": …}` — and a layer'
 own frame**, not the board's. `drive.py`'s `"*"` expands over the groups the *compile* emitted, so a
 key stated beside it survives and names a layer added in the finish.
 
+### `POST /plan/room` answers one footprint whatever the facing says
+
+The route is the resolver's own answer to *what room does this piece carry*, and it is the honest thing to
+copy onto a placement — except that its `footprint` does not move with the spawn's `facing`. Asked on the
+same 20 x 20-block piece it answers `{"at":[10,12],"footprint":[1,5,18,14]}` for all four facings, while
+the compiled shell does move: `facing: "front"` puts the shell at the piece's `+z` end with its door apron
+at `-z`, and `facing: "back"` the other way round. Copying that footprint onto a `back`-facing spawn
+therefore pins the five-block apron to the wall the door is not in, and `WX8` then refuses the iron cube
+because the ring it needs is on the other side.
+
+**State no footprint.** `WX1`'s default is the same rectangle and it follows the facing.
+
+### The iron cube stands OUTSIDE the room shell
+
+`WX8` reads *"inside the piece"* and it is easy to read that as *inside the room*. The cube is
+`IronSpan` square, stands **in the ring between the shell and the piece edge**, and holds `IronGap` blocks
+of clear air to the wall. On a 20 x 20 piece whose shell is the piece inset one and five in front of the
+door, that ring is the five-block door apron and nothing else: the marker goes at the apron's outer edge,
+three blocks of cube and two of air, and anywhere in the hall is unplaceable.
+
+### `04-routes.txt` is not written on a board whose goals are wools
+
+`tools/drive.py` ends every run with *the three numbers*, and on a capture board the third is always
+`no route between a spawn and a goal`. The read it is made of answers fine asked by hand —
+`GET /map/{slug}/walk?from=&to=&aim=reach&format=text` gave `153 blocks, 19 placed, 2 drop(s), worst drop
+10` from a spawn point to an enemy wool on `opus5-quatrefoil` — so what a raid costs is knowable and is
+simply not in the sweep. On a wool board, take the walks by hand: own wool, each enemy wool, and read the
+placed count, which is the whole of what a crossing costs an attacker.
+
 ### A wool room must abut ground, not sit inside a piece
 
 A `wool-room` piece drawn inside a larger `piece` rectangle shares no edge with it, and the plan tier

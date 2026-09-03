@@ -1,0 +1,61 @@
+## b-spit-2 (boulder) along x
+TRANSECT 25 stations from (-84, 7) to (-60, 7), every 1
+  station        ground  surface  water  top  standing            step
+  (  -84,     7)      15       15           15                      
+  (  -83,     7)      15       15           15                      
+  (  -82,     7)      15       15           15                      
+  (  -81,     7)      15       15           15                      
+  (  -80,     7)      15       15           15                      
+  (  -79,     7)      15       15           15                      
+  (  -78,     7)      15       15           15                      
+  (  -77,     7)      15       15           15                      
+  (  -76,     7)      15       15           17  boulder b-spit-2    
+  (  -75,     7)      15       15           18  boulder b-spit-2    
+  (  -74,     7)      15       15           19  boulder b-spit-2    
+  (  -73,     7)      15       15           20  boulder b-spit-2    
+  (  -72,     7)      15       15           20  boulder b-spit-2    
+  (  -71,     7)      15       15           20  boulder b-spit-2    
+  (  -70,     7)      15       15           19  boulder b-spit-2    
+  (  -69,     7)      15       15           19  boulder b-spit-2    
+  (  -68,     7)      15       15           15                      
+  (  -67,     7)      14       14           14                      -1
+  (  -66,     7)      14       14           14                      
+  (  -65,     7)      14       14           14                      
+  (  -64,     7)      13       13           13                      -1
+  (  -63,     7)      13       13           13                      
+  (  -62,     7)      13       13           13                      
+  (  -61,     7)      13       13           13                      
+  (  -60,     7)      13       13           13                      
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree t-spit-1 at (-86, 5), boulder b-spit-2 at (-76, 6), tree t-spit-2 at (-59, 6)
+
+## b-spit-2 (boulder) along z
+TRANSECT 25 stations from (-72, -5) to (-72, 19), every 1
+  station        ground  surface  water  top  standing            step
+  (  -72,    -5)      17       17           17                      
+  (  -72,    -4)      17       17           17                      
+  (  -72,    -3)      18       18           18                      +1
+  (  -72,    -2)      19       19           19  stroke spit-lane    +1
+  (  -72,    -1)      19       19           19  stroke spit-lane    
+  (  -72,     0)      19       19           19  stroke spit-lane    
+  (  -72,     1)      19       19           19  stroke spit-lane    
+  (  -72,     2)      18       18           18                      -1
+  (  -72,     3)      17       17           17  boulder b-spit-2    -1
+  (  -72,     4)      17       17           19  boulder b-spit-2    
+  (  -72,     5)      17       17           19  boulder b-spit-2    
+  (  -72,     6)      16       16           20  boulder b-spit-2    -1
+  (  -72,     7)      15       15           20  boulder b-spit-2    -1
+  (  -72,     8)      14       14           20  boulder b-spit-2    -1
+  (  -72,     9)      13       13           19  boulder b-spit-2    -1
+  (  -72,    10)                            18  boulder b-spit-2    void
+  (  -72,    11)                                                    void
+  (  -72,    12)                                                    void
+  (  -72,    13)                                                    void
+  (  -72,    14)                                                    void
+  (  -72,    15)                                                    void
+  (  -72,    16)                                                    void
+  (  -72,    17)                                                    void
+  (  -72,    18)                                                    void
+  (  -72,    19)                                                    void
+rises 2, falls 6, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke spit-lane at (-72, -2), boulder b-spit-2 at (-72, 3)

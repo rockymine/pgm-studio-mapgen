@@ -308,6 +308,22 @@ with the tools rather than through the API. [reports/opus5-lindenkreuz-run.md](r
 |---|---|---|---|
 | `opus5-lindenkreuz` | dtm | Opus 5 | **90 × 200, and it carries no relief at all** — every height on it is stated, which is what makes it angular and what lets thirty 5 × 3 cars state an absolute floor and land on the tarmac rather than in it. Two city blocks either side of a twenty-block gorge joined by one railway bridge: a car park marked into 36 bays with the monument standing in one of them, a Litfaßsäule and a nether-brick piano on the station forecourt, terrace houses on two raised garden blocks, and an S-Bahn in a **cut-and-cover tunnel** — a trench cut by an override add, a lid that has to be a layer of its own, a switchback stair down to the platform — that comes up a ramp in an open cutting and goes on over the bridge |
 
+### Opus 5 — a four-team board from a handed-over plan
+
+The first board here authored from a plan somebody else drew: a `rot_90` quatrefoil and a five-colour
+palette, given as documents rather than as a brief. Two things it settled. **A cell is a scale and an
+arrangement is a design** — the plan came in at `cell: 1`, where every gap was six blocks and
+`/plan/evaluate` refused it on two hard terms; doubling the cell and moving nothing put every hop in
+band. And the run found the studio bug that made a four-team board impossible to build fairly: a
+relief-bearing group read each mirrored copy's heights back through the axis that *placed* it, which is
+right for every mirror and the half-turn and wrong for a quarter-turn, so two of four teams played the
+shapes' flat base heights while `relief/read` answered `symmetryError 0`. Fixed upstream as `WE75`.
+[reports/opus5-quatrefoil-run.md](reports/opus5-quatrefoil-run.md)
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5-quatrefoil` | ctw | Opus 5 | **196 × 196, four teams, nine landmasses and no land route anywhere** — four corner quarters of mossy grey-green moor, each with a spawn compound in its corner and a wool room on a shelf in its middle; four pale sand spits on the axes; and a stepped sandstone keep in the centre that is the junction all four spits meet at. The quarters are rolled by pushes and carry no rim; the keep is flat, sheer, kerbed on every drop and has beds of podzol cut into its deck with flowers and birches in them. Three build regions do all the joining: the flank out to a spit, the hop onto the keep's apron, and one bridge down from that apron into the next team's wool shelf |
+
 ## Three caveats about what is committed here
 
 **`*` — the mode is wrong, and the map is not.** Every board marked `ctw*` is a destroy board whose `map.xml`

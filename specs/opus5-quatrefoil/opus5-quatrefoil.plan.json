@@ -1,0 +1,249 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Quatrefoil"
+ },
+ "globals": {
+  "cell": 2,
+  "symmetry": "rot_90",
+  "maxPlayers": 12,
+  "surface": 9,
+  "observerY": 38
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -48,
+    -48,
+    10,
+    10
+   ],
+   "surface": 8
+  },
+  {
+   "id": "yard-e",
+   "role": "piece",
+   "rect": [
+    -38,
+    -48,
+    10,
+    10
+   ],
+   "surface": 8
+  },
+  {
+   "id": "yard-s",
+   "role": "piece",
+   "rect": [
+    -48,
+    -38,
+    20,
+    10
+   ],
+   "surface": 8
+  },
+  {
+   "id": "march-s",
+   "role": "piece",
+   "rect": [
+    -45,
+    -28,
+    13,
+    15
+   ],
+   "surface": 9
+  },
+  {
+   "id": "march-e",
+   "role": "piece",
+   "rect": [
+    -28,
+    -45,
+    15,
+    13
+   ],
+   "surface": 9
+  },
+  {
+   "id": "wool-app-w",
+   "role": "piece",
+   "rect": [
+    -32,
+    -25,
+    7,
+    10
+   ],
+   "surface": 10
+  },
+  {
+   "id": "wool-app-n",
+   "role": "piece",
+   "rect": [
+    -25,
+    -32,
+    10,
+    7
+   ],
+   "surface": 10
+  },
+  {
+   "id": "wool",
+   "role": "wool-room",
+   "rect": [
+    -25,
+    -25,
+    10,
+    10
+   ],
+   "surface": 11
+  },
+  {
+   "id": "wool-ledge-e",
+   "role": "piece",
+   "rect": [
+    -15,
+    -25,
+    3,
+    10
+   ],
+   "surface": 10
+  },
+  {
+   "id": "wool-ledge-s",
+   "role": "piece",
+   "rect": [
+    -25,
+    -15,
+    13,
+    3
+   ],
+   "surface": 10
+  },
+  {
+   "id": "arm-outer",
+   "role": "piece",
+   "rect": [
+    -49,
+    -5,
+    4,
+    10
+   ],
+   "surface": 7
+  },
+  {
+   "id": "arm-mid",
+   "role": "piece",
+   "rect": [
+    -45,
+    -5,
+    13,
+    10
+   ],
+   "surface": 8
+  },
+  {
+   "id": "arm-inner",
+   "role": "piece",
+   "rect": [
+    -32,
+    -5,
+    8,
+    10
+   ],
+   "surface": 9
+  },
+  {
+   "id": "keep-apron",
+   "role": "piece",
+   "rect": [
+    -18,
+    -5,
+    8,
+    10
+   ],
+   "surface": 13
+  },
+  {
+   "id": "keep",
+   "role": "piece",
+   "rect": [
+    -10,
+    -10,
+    20,
+    20
+   ],
+   "surface": 18
+  }
+ ],
+ "zones": [
+  {
+   "id": "bz-arm",
+   "rect": [
+    -45,
+    -13,
+    13,
+    26
+   ],
+   "holes": []
+  },
+  {
+   "id": "bz-cross",
+   "rect": [
+    -26,
+    -5,
+    11,
+    10
+   ],
+   "holes": []
+  },
+  {
+   "id": "bz-raid",
+   "rect": [
+    -18,
+    -12,
+    7,
+    7
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     10,
+     12
+    ],
+    "facing": "back"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool",
+    "at": [
+     10,
+     10
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "spawn",
+    "at": [
+     10.5,
+     18.5
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}
