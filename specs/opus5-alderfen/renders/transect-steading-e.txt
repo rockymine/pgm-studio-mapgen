@@ -1,0 +1,58 @@
+## steading-e (house) along x
+TRANSECT 25 stations from (11, -100) to (35, -100), every 1
+  station        ground  surface  water  top  standing            step
+  (   11,  -100)      18       18           18                      
+  (   12,  -100)      18       18           18                      
+  (   13,  -100)      18       18           18                      
+  (   14,  -100)      18       18           18                      
+  (   15,  -100)      18       18           18                      
+  (   16,  -100)      18       18           18                      
+  (   17,  -100)      18       18           18                      
+  (   18,  -100)      18       18           28  house steading-e    
+  (   19,  -100)      18       18           28  house steading-e    
+  (   20,  -100)      18       18           28  house steading-e    
+  (   21,  -100)      18       18           28  house steading-e    
+  (   22,  -100)      18       18           28  house steading-e    
+  (   23,  -100)      18       18           28  house steading-e    
+  (   24,  -100)      18       18           28  house steading-e    
+  (   25,  -100)      18       18           28  house steading-e    
+  (   26,  -100)      18       18           28  house steading-e    
+  (   27,  -100)      18       18           28  house steading-e    
+  (   28,  -100)      18       18           28  house steading-e    
+  (   29,  -100)      18       18           18                      
+  (   30,  -100)      18       18           18                      
+  (   31,  -100)      18       18           18                      
+  (   32,  -100)      18       18           18                      
+  (   33,  -100)      18       18           18                      
+  (   34,  -100)      18       18           18                      
+  (   35,  -100)      17       17           23  tree tree-13        -1
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house steading-e at (18, -102), tree tree-13 at (34, -98)
+
+## steading-e (house) along z
+TRANSECT 22 stations from (23, -109) to (23, -88), every 1
+  station        ground  surface  water  top  standing            step
+  (   23,  -109)                                                    void
+  (   23,  -108)      14       14           14                      
+  (   23,  -107)      14       14           14                      
+  (   23,  -106)      18       18           18                      BARRIER +4
+  (   23,  -105)      18       18           18                      
+  (   23,  -104)      18       18           24  house steading-e    
+  (   23,  -103)      18       18           25  house steading-e    
+  (   23,  -102)      18       18           26  house steading-e    
+  (   23,  -101)      18       18           27  house steading-e    
+  (   23,  -100)      18       18           28  house steading-e    
+  (   23,   -99)      18       18           28  house steading-e    
+  (   23,   -98)      18       18           27  house steading-e    
+  (   23,   -97)      18       18           26  house steading-e    
+  (   23,   -96)      18       18           25  house steading-e    
+  (   23,   -95)      18       18           24  house steading-e    
+  (   23,   -94)      18       18           18                      
+  (   23,   -93)      18       18           26  house fenhouse-e    
+  (   23,   -92)      18       18           26  house fenhouse-e    
+  (   23,   -91)      18       18           27  house fenhouse-e    
+  (   23,   -90)      18       18           27  house fenhouse-e    
+  (   23,   -89)      18       18           28  house fenhouse-e    
+  (   23,   -88)      18       18           28  house fenhouse-e    
+rises 1, falls 0, worst step 4: 1 barrier, 0 scramble, 0 drop — BARRIER +4 at (23, -106) | walked end to end
+beside: house steading-e at (21, -104), house fenhouse-e at (21, -93)

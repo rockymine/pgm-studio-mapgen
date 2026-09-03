@@ -1,0 +1,61 @@
+## stone-edge-w (boulder) along x
+TRANSECT 25 stations from (-76, -56) to (-52, -56), every 1
+  station        ground  surface  water  top  standing            step
+  (  -76,   -56)      20       20           20                      
+  (  -75,   -56)      22       22           22                      scramble +2
+  (  -74,   -56)      24       24           24                      scramble +2
+  (  -73,   -56)      25       25           25                      +1
+  (  -72,   -56)      25       25           25                      
+  (  -71,   -56)      26       26           26                      +1
+  (  -70,   -56)      27       27           27                      +1
+  (  -69,   -56)      28       28           28                      +1
+  (  -68,   -56)      29       29           31  boulder stone-edge-w  +1
+  (  -67,   -56)      30       91           91  storey              BARRIER +62
+  (  -66,   -56)      32       91           91  storey              
+  (  -65,   -56)      33       91           91  storey              
+  (  -64,   -56)      34       91           91  storey              
+  (  -63,   -56)      34       91           91  storey              
+  (  -62,   -56)      35       91           91  storey              
+  (  -61,   -56)      34       91           91  storey              
+  (  -60,   -56)      33       94           94  storey              BARRIER +3
+  (  -59,   -56)      32       94           94  storey              
+  (  -58,   -56)      31       94           94  storey              
+  (  -57,   -56)      30       94           94  storey              
+  (  -56,   -56)      28       91           91  storey              -3
+  (  -55,   -56)      27       91           91  storey              
+  (  -54,   -56)      26       91           91  storey              
+  (  -53,   -56)      25       91           91  storey              
+  (  -52,   -56)      25       25           25                      DROP -66
+rises 9, falls 2, worst step 66: 2 barrier, 2 scramble, 1 drop — scramble +2 at (-75, -56); scramble +2 at (-74, -56); BARRIER +62 at (-67, -56); BARRIER +3 at (-60, -56); DROP -66 at (-52, -56) | walked end to end
+beside: tree fir-4 at (-68, -58), boulder stone-edge-w at (-68, -57), tree tree-3 at (-59, -58)
+
+## stone-edge-w (boulder) along z
+TRANSECT 25 stations from (-64, -68) to (-64, -44), every 1
+  station        ground  surface  water  top  standing            step
+  (  -64,   -68)      28       28           30  flora cover-brae-w  
+  (  -64,   -67)      29       29           29                      +1
+  (  -64,   -66)      29       29           29                      
+  (  -64,   -65)      30       30           30                      +1
+  (  -64,   -64)      30       30           30                      
+  (  -64,   -63)      31       31           31                      +1
+  (  -64,   -62)      34       34           38  tree fir-4          BARRIER +3
+  (  -64,   -61)      33       33           38  tree fir-4          -1
+  (  -64,   -60)      33       33           39  tree fir-4          
+  (  -64,   -59)      33       33           40  tree fir-4          
+  (  -64,   -58)      34       34           38  tree fir-4          +1
+  (  -64,   -57)      34       91           91  storey              BARRIER +57
+  (  -64,   -56)      34       91           91  storey              
+  (  -64,   -55)      34       91           91  storey              
+  (  -64,   -54)      34       94           94  storey              BARRIER +3
+  (  -64,   -53)      33       94           94  storey              
+  (  -64,   -52)      32       94           94  storey              
+  (  -64,   -51)      32       97           97  storey              BARRIER +3
+  (  -64,   -50)      31       97           97  storey              
+  (  -64,   -49)      30       97           97  storey              
+  (  -64,   -48)      29       97           97  storey              
+  (  -64,   -47)      28       97           97  storey              
+  (  -64,   -46)      27       97           97  storey              
+  (  -64,   -45)      27       97           97  storey              
+  (  -64,   -44)      26       97           97  storey              
+rises 8, falls 1, worst step 57: 4 barrier, 0 scramble, 0 drop — BARRIER +3 at (-64, -62); BARRIER +57 at (-64, -57); BARRIER +3 at (-64, -54); BARRIER +3 at (-64, -51) | walked end to end
+beside: flora cover-brae-w at (-65, -70), tree tree-3 at (-63, -65), tree fir-4 at (-66, -63), boulder stone-edge-w at (-63, -58)

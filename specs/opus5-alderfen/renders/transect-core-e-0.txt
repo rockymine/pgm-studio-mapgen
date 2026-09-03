@@ -1,0 +1,61 @@
+## core-e-0 (core) along x
+TRANSECT 25 stations from (10, -56) to (34, -56), every 1
+  station        ground  surface  water  top  standing            step
+  (   10,   -56)      14       14           15  flora cover-bog     
+  (   11,   -56)      14       14           15  flora cover-bog     
+  (   12,   -56)      14       14           15  flora cover-bog     
+  (   13,   -56)      14       14           15  flora cover-bog     
+  (   14,   -56)      14       14           15  flora cover-bog     
+  (   15,   -56)      14       14           15  flora cover-bog     
+  (   16,   -56)      14       14           15  flora cover-bog     
+  (   17,   -56)      15       15           16  flora cover-bog     +1
+  (   18,   -56)      15       15           16  flora cover-bog     
+  (   19,   -56)      14       14           14  stroke road-e       -1
+  (   20,   -56)      14       14           26  stroke road-e       
+  (   21,   -56)      14       14     25    68  stroke road-e       
+  (   22,   -56)      14       14     25    69  stroke road-e       
+  (   23,   -56)      14       14     25    68  stroke road-e       
+  (   24,   -56)      14       14           26  stroke road-e       
+  (   25,   -56)      14       14           15  flora cover-bog     
+  (   26,   -56)      14       14           15  flora cover-bog     
+  (   27,   -56)      14       14           14                      
+  (   28,   -56)      14       14           15  flora cover-bog     
+  (   29,   -56)      14       14           15  flora cover-bog     
+  (   30,   -56)      14       14           15  flora cover-bog     
+  (   31,   -56)      14       14           14                      
+  (   32,   -56)      14       14           14                      
+  (   33,   -56)      14       14           14                      
+  (   34,   -56)      14       14           14                      
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora cover-bog at (9, -58), stroke road-e at (19, -58), core core-e at (24, -54)
+
+## core-e-0 (core) along z
+TRANSECT 25 stations from (22, -68) to (22, -44), every 1
+  station        ground  surface  water  top  standing            step
+  (   22,   -68)      16       16           17  flora cover-bog     
+  (   22,   -67)      15       15           16  flora cover-bog     -1
+  (   22,   -66)      15       15           16  flora cover-bog     
+  (   22,   -65)      15       15           17  flora cover-bog     
+  (   22,   -64)      15       15           16  flora cover-bog     
+  (   22,   -63)      15       15           15  stroke road-e       
+  (   22,   -62)      15       15           15  stroke road-e       
+  (   22,   -61)      15       15           15  stroke road-e       
+  (   22,   -60)      15       15           15  stroke road-e       
+  (   22,   -59)      15       15           15  stroke road-e       
+  (   22,   -58)      14       14           26  stroke road-e       -1
+  (   22,   -57)      14       14     25    68  stroke road-e       
+  (   22,   -56)      14       14     25    69  stroke road-e       
+  (   22,   -55)      14       14     25    68  stroke road-e       
+  (   22,   -54)      14       14           26  stroke road-e       
+  (   22,   -53)      14       14           14  stroke road-e       
+  (   22,   -52)      14       14           14  stroke road-e       
+  (   22,   -51)      14       14           14  stroke road-e       
+  (   22,   -50)      14       14           14  stroke road-e       
+  (   22,   -49)      14       14           14  stroke road-e       
+  (   22,   -48)      14       14           14  stroke road-e       
+  (   22,   -47)      14       14           14  stroke road-e       
+  (   22,   -46)      14       14           14  stroke road-e       
+  (   22,   -45)      14       14           14                      
+  (   22,   -44)      14       14           14                      
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora cover-bog at (20, -70), stroke road-e at (24, -70), core core-e at (24, -54)

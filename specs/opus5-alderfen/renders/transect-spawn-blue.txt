@@ -1,0 +1,79 @@
+## spawn-blue (spawn) along x
+TRANSECT 37 stations from (-18, 95) to (18, 95), every 1
+  station        ground  surface  water  top  standing            step
+  (  -18,    95)      18       18           18                      
+  (  -17,    95)      18       18           18                      
+  (  -16,    95)      18       18           18                      
+  (  -15,    95)      18       18           18                      
+  (  -14,    95)      18       18           18                      
+  (  -13,    95)      18       18           18                      
+  (  -12,    95)      18       18           18                      
+  (  -11,    95)      18       18           18                      
+  (  -10,    95)      18       18           18                      
+  (   -9,    95)      18       18           18                      
+  (   -8,    95)      18       18           18                      
+  (   -7,    95)      18       18           18                      
+  (   -6,    95)      18       18           29                      
+  (   -5,    95)      18       18           29  spawn spawn-1#1     
+  (   -4,    95)      18       18           29  spawn spawn-1#1     
+  (   -3,    95)      18       18           29  spawn spawn-1#1     
+  (   -2,    95)      18       18           29  spawn spawn-1#1     
+  (   -1,    95)      18       18           29  spawn spawn-1#1     
+  (    0,    95)      18       18           29  spawn spawn-1#1     
+  (    1,    95)      18       18           29  spawn spawn-1#1     
+  (    2,    95)      18       18           29  spawn spawn-1#1     
+  (    3,    95)      18       18           29  spawn spawn-1#1     
+  (    4,    95)      18       18           29  spawn spawn-1#1     
+  (    5,    95)      18       18           29                      
+  (    6,    95)      18       18           18                      
+  (    7,    95)      18       18           18                      
+  (    8,    95)      18       18           18                      
+  (    9,    95)      18       18           18                      
+  (   10,    95)      18       18           18                      
+  (   11,    95)      18       18           18                      
+  (   12,    95)      18       18           18                      
+  (   13,    95)      18       18           18                      
+  (   14,    95)      18       18           18                      
+  (   15,    95)      18       18           18                      
+  (   16,    95)      18       18           18                      
+  (   17,    95)      18       18           25  house steading-w#1  
+  (   18,    95)      18       18           25  house steading-w#1  
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house steading-e#1 at (-20, 94), flora cover-garth#1 at (-17, 94), spawn spawn-1#1 at (-5, 93), house steading-w#1 at (17, 94)
+
+## spawn-blue (spawn) along z
+TRANSECT 31 stations from (0, 77) to (0, 107), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    77)      16       16           16                      
+  (    0,    78)      16       16           16                      
+  (    0,    79)      17       17           17                      +1
+  (    0,    80)      17       17           17                      
+  (    0,    81)      17       17           17                      
+  (    0,    82)      18       18           18                      +1
+  (    0,    83)      18       18           18                      
+  (    0,    84)      18       18           18                      
+  (    0,    85)      18       18           18                      
+  (    0,    86)      18       18           18                      
+  (    0,    87)      18       18           18                      
+  (    0,    88)      18       18           18                      
+  (    0,    89)      18       18           24                      
+  (    0,    90)      18       18           25  spawn spawn-1#1     
+  (    0,    91)      18       18           26  spawn spawn-1#1     
+  (    0,    92)      18       18           27  spawn spawn-1#1     
+  (    0,    93)      18       18           28  spawn spawn-1#1     
+  (    0,    94)      18       18           29  spawn spawn-1#1     
+  (    0,    95)      18       18           29  spawn spawn-1#1     
+  (    0,    96)      18       18           28  spawn spawn-1#1     
+  (    0,    97)      18       18           27  spawn spawn-1#1     
+  (    0,    98)      18       18           26  spawn spawn-1#1     
+  (    0,    99)      18       18           25  spawn spawn-1#1     
+  (    0,   100)      18       18           24                      
+  (    0,   101)      18       18           18                      
+  (    0,   102)      18       18           18                      
+  (    0,   103)      18       18           18                      
+  (    0,   104)      18       18           18                      
+  (    0,   105)      18       18           18                      
+  (    0,   106)      18       18           18                      
+  (    0,   107)      18       18           18                      
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (-2, 90)

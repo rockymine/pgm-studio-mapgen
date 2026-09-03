@@ -1,0 +1,61 @@
+## cairn-brae (boulder) along x
+TRANSECT 25 stations from (-62, -96) to (-38, -96), every 1
+  station        ground  surface  water  top  standing            step
+  (  -62,   -96)      37       86           86  storey              
+  (  -61,   -96)      37       86           86  storey              
+  (  -60,   -96)      37       86           86  storey              
+  (  -59,   -96)      37       86           86  storey              
+  (  -58,   -96)      36       86           86  storey              
+  (  -57,   -96)      36       86           86  storey              
+  (  -56,   -96)      34       89           89  storey              BARRIER +3
+  (  -55,   -96)      34       89           89  storey              
+  (  -54,   -96)      33       89           89  storey              
+  (  -53,   -96)      33       89           89  storey              
+  (  -52,   -96)      32       89           89  storey              
+  (  -51,   -96)      31       86           86  storey              -3
+  (  -50,   -96)      31       86           86  storey              
+  (  -49,   -96)      30       86           86  storey              
+  (  -48,   -96)      30       86           86  storey              
+  (  -47,   -96)      30       83           83  storey              -3
+  (  -46,   -96)      29       83           83  storey              
+  (  -45,   -96)      28       83           83  storey              
+  (  -44,   -96)      27       83           83  storey              
+  (  -43,   -96)      25       25           25                      DROP -58
+  (  -42,   -96)      23       23           23                      -2
+  (  -41,   -96)      21       21           21                      -2
+  (  -40,   -96)      19       19           19                      -2
+  (  -39,   -96)      18       18           18                      -1
+  (  -38,   -96)      17       17           17                      -1
+rises 1, falls 8, worst step 58: 1 barrier, 0 scramble, 1 drop — BARRIER +3 at (-56, -96); DROP -58 at (-43, -96) | walked end to end
+beside: flora cover-brae-w at (-44, -95), tree tree-9 at (-42, -98)
+
+## cairn-brae (boulder) along z
+TRANSECT 25 stations from (-50, -108) to (-50, -84), every 1
+  station        ground  surface  water  top  standing            step
+  (  -50,  -108)                                                    void
+  (  -50,  -107)      23       23           23                      
+  (  -50,  -106)      25       25           25                      scramble +2
+  (  -50,  -105)      26       26           26                      +1
+  (  -50,  -104)      27       27           27                      +1
+  (  -50,  -103)      28       28           28                      +1
+  (  -50,  -102)      29       83           83  storey              BARRIER +55
+  (  -50,  -101)      29       83           83  storey              
+  (  -50,  -100)      29       86           86  storey              BARRIER +3
+  (  -50,   -99)      30       86           86  storey              
+  (  -50,   -98)      30       86           86  storey              
+  (  -50,   -97)      30       86           86  storey              
+  (  -50,   -96)      31       86           86  storey              
+  (  -50,   -95)      31       86           86  storey              
+  (  -50,   -94)      32       86           86  storey              
+  (  -50,   -93)      32       86           86  storey              
+  (  -50,   -92)      32       86           86  storey              
+  (  -50,   -91)      33       33           35  flora cover-brae-w  DROP -53
+  (  -50,   -90)      34       34           35  flora cover-brae-w  +1
+  (  -50,   -89)      35       35           36  flora cover-brae-w  +1
+  (  -50,   -88)      35       35           36  flora cover-brae-w  
+  (  -50,   -87)      35       35           36  flora cover-brae-w  
+  (  -50,   -86)      35       35           36  flora cover-brae-w  
+  (  -50,   -85)      35       35           36  flora cover-brae-w  
+  (  -50,   -84)      35       35           36  flora cover-brae-w  
+rises 8, falls 1, worst step 55: 2 barrier, 1 scramble, 1 drop — scramble +2 at (-50, -106); BARRIER +55 at (-50, -102); BARRIER +3 at (-50, -100); DROP -53 at (-50, -91) | walked end to end
+beside: flora cover-brae-w at (-49, -92), tree tree-7 at (-52, -85), tree tree-1 at (-49, -82), tree tree-6 at (-48, -82)
