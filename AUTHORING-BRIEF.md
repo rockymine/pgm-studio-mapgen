@@ -17,9 +17,9 @@ describes.
 
 | Read | Answers |
 |---|---|
-| `GET /api/openapi/v1.json` | every route, its request body, its answer, and the failure codes it declares. **128 paths, 159 operations, 296 schemas**, and every answered field carries a description |
+| `GET /api/openapi/v1.json` | every route, its request body, its answer, and the failure codes it declares. Every answered field carries a description, and every part of a document a route writes has a type in there rather than a sentence about it |
 | `/api-docs` | the same document as a browsable page, if you have a browser |
-| `GET /api/rules` | the **113 rule ids** across 24 families, each with what it *means*, how to *fix* it, and the evidence behind its numbers. `?rule=GO1` and `?family=DR` filter it |
+| `GET /api/rules` | every rule id the studio can raise, by family, each with what it *means*, how to *fix* it, and the evidence behind its numbers. `?rule=GO1` and `?family=DR` filter it |
 | the answer itself | a refusal names its rule ids; a success carries `warnings` for what it did not do |
 
 Read `GET /api/rules` once at the start of a run. It is the whole vocabulary of every no the system can say,
@@ -42,8 +42,8 @@ not enough, `GET /api/rules?rule=<id>` answers what the rule means and how to sa
 
 Status codes are the gate's own: **400** a document wrong as posted · **404** a subject the studio does not
 have · **409** well-formed but conflicting with the map's state · **422** cannot be processed · **500** the
-studio's own fault. Each route declares which of those it answers — **104 of the 159 operations** name a 404,
-409 or 422 in the schema — so what can go wrong is knowable before anything is posted.
+studio's own fault. Each route declares which of those it answers, so what can go wrong is knowable before
+anything is posted.
 
 ### What a success carries
 
@@ -55,8 +55,8 @@ studio's own fault. Each route declares which of those it answers — **104 of t
 | `decline` | the work happened and one piece of what you wrote is not in it — the tree, boulder or building the dressing pass could not seat is not in the world, and ignoring it does not put it back |
 | `complaint` | the work happened and lost nothing; something is worth saying anyway |
 
-**116 of the 2xx answers declare a `warnings` array**, and all 159 operations declare a `Pgm-Warnings`
-response header — `6 RQ3 SK3 SK4` — which is written whenever the complaint channel collected anything, so
+**A 2xx answer declares a `warnings` array wherever it can carry one**, and every operation declares a
+`Pgm-Warnings` response header — `6 RQ3 SK3 SK4` — which is written whenever the complaint channel collected anything, so
 the count and the rule ids are readable without parsing the body. **Read the body either way**: an endpoint
 that answers `warnings` as its own field — `/plan/evaluate` is one — fills the array without the header.
 
