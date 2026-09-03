@@ -1,0 +1,65 @@
+## row-w (made) along x
+TRANSECT 35 stations from (-26, -48) to (8, -48), every 1
+  station        ground  surface  water  top  standing            step
+  (  -26,   -48)      14       14           14                      
+  (  -25,   -48)      14       14           14  stroke track-w      
+  (  -24,   -48)      14       14           14  stroke track-w      
+  (  -23,   -48)      14       14           14  stroke track-w      
+  (  -22,   -48)      14       14           14  stroke track-w      
+  (  -21,   -48)      14       14           14  stroke track-w      
+  (  -20,   -48)      14       14           14                      
+  (  -19,   -48)      14       14           14                      
+  (  -18,   -48)      14       26           26  storey              BARRIER +12
+  (  -17,   -48)      14       26           26  storey              
+  (  -16,   -48)      14       14           14                      DROP -12
+  (  -15,   -48)      13       13           13                      -1
+  (  -14,   -48)      12       26           26  storey              BARRIER +13
+  (  -13,   -48)      11       26           26  storey              
+  (  -12,   -48)      10       10           10                      DROP -16
+  (  -11,   -48)      10       10           10                      
+  (  -10,   -48)      10       26           26  storey              BARRIER +16
+  (   -9,   -48)      10       26           26  storey              
+  (   -8,   -48)      10       10           10                      DROP -16
+  (   -7,   -48)      10       10           10                      
+  (   -6,   -48)      10       26           26  storey              BARRIER +16
+  (   -5,   -48)      10       26           26  storey              
+  (   -4,   -48)      11       11           11                      DROP -15
+  (   -3,   -48)      12       12           12                      +1
+  (   -2,   -48)      13       26           26  storey              BARRIER +14
+  (   -1,   -48)      14       26           26  storey              
+  (    0,   -48)      14       14           14                      DROP -12
+  (    1,   -48)      13       13           13                      -1
+  (    2,   -48)      12       12           12                      -1
+  (    3,   -48)      11       11           11                      -1
+  (    4,   -48)      10       10           10                      -1
+  (    5,   -48)      10       10           10                      
+  (    6,   -48)      10       10           10                      
+  (    7,   -48)      10       10           10                      
+  (    8,   -48)      10       10           10                      
+rises 6, falls 10, worst step 16: 5 barrier, 0 scramble, 5 drop — BARRIER +12 at (-18, -48); DROP -12 at (-16, -48); BARRIER +13 at (-14, -48); DROP -16 at (-12, -48); BARRIER +16 at (-10, -48); DROP -16 at (-8, -48); BARRIER +16 at (-6, -48); DROP -15 at (-4, -48); BARRIER +14 at (-2, -48); DROP -12 at (0, -48) | walked end to end
+beside: flora cover-field at (-26, -50), stroke track-w at (-25, -50)
+
+## row-w (made) along z
+TRANSECT 19 stations from (-9, -57) to (-9, -39), every 1
+  station        ground  surface  water  top  standing            step
+  (   -9,   -57)      14       14           14                      
+  (   -9,   -56)      14       14           15  flora cover-field   
+  (   -9,   -55)      14       14           15  flora cover-field   
+  (   -9,   -54)      14       14           15  flora cover-field   
+  (   -9,   -53)      14       14           15  flora cover-field   
+  (   -9,   -52)      13       13           14  flora cover-field   -1
+  (   -9,   -51)      12       12           13  flora cover-field   -1
+  (   -9,   -50)      11       11           12  flora cover-field   -1
+  (   -9,   -49)      10       26           26  storey              BARRIER +15
+  (   -9,   -48)      10       26           26  storey              
+  (   -9,   -47)      10       10           10                      DROP -16
+  (   -9,   -46)      11       11           11                      +1
+  (   -9,   -45)      12       12           12                      +1
+  (   -9,   -44)      13       13           13                      +1
+  (   -9,   -43)      14       14           14                      +1
+  (   -9,   -42)      14       14           14                      
+  (   -9,   -41)      14       14           14                      
+  (   -9,   -40)      14       14           14                      
+  (   -9,   -39)      14       14           14                      
+rises 5, falls 4, worst step 16: 1 barrier, 0 scramble, 1 drop — BARRIER +15 at (-9, -49); DROP -16 at (-9, -47) | walked end to end
+beside: flora cover-field at (-7, -58), tree tree-4 at (-11, -43)

@@ -1,0 +1,210 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 14,
+    "z": -90
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -100,
+     "maxX": 10,
+     "maxZ": -80
+    }
+   ],
+   "yaw": 0,
+   "footprint": {
+    "minX": -5,
+    "minZ": -95,
+    "maxX": 5,
+    "maxZ": -85
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 14,
+    "z": 90
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 80,
+     "maxX": 10,
+     "maxZ": 100
+    }
+   ],
+   "yaw": 180,
+   "footprint": {
+    "minX": -5,
+    "minZ": 85,
+    "maxX": 5,
+    "maxZ": 95
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 62,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -50,
+    "minZ": -40,
+    "maxX": 50,
+    "maxZ": -20
+   },
+   {
+    "minX": -50,
+    "minZ": 20,
+    "maxX": 50,
+    "maxZ": 40
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-w",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "",
+   "anchor": {
+    "x": -30,
+    "y": 14,
+    "z": -56
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": true,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-e",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "",
+   "anchor": {
+    "x": 30,
+    "y": 14,
+    "z": -56
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": true,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-w",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "",
+   "anchor": {
+    "x": 29,
+    "y": 14,
+    "z": 55
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": true,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-e",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "",
+   "anchor": {
+    "x": -31,
+    "y": 14,
+    "z": 55
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": true,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  }
+ ],
+ "meta": {
+  "name": "Block Realm",
+  "created": "2026-09-03",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue",
+  "3": "neutral"
+ },
+ "structures": null
+}
