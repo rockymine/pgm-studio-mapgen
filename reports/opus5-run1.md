@@ -1,4 +1,4 @@
-# opus5, run 1 — three boards, and what the surface would and would not say
+# opus5, run 1 — four boards, and what the surface would and would not say
 
 ## What I set out to build
 
@@ -317,7 +317,7 @@ Not padding — this is the half a reader can trust without checking.
   boards. `column?at=x,z&format=text` is the only read that is not a projection, and it settled every
   "did that actually land" question in this run — the lily pad, the mushroom, the strata, the vines.
 - **`POST /plan/evaluate` before a map row exists.** Catching `GO1`, `GO4` and `LN2` on a document
-  that has never been stored, in about a second, is what made three boards affordable. Block Realm's
+  that has never been stored, in about a second, is what made four boards affordable. Block Realm's
   goal geometry was fixed by moving two numbers before anything was built.
 - **`layered` as a shared `wall` bucket.** Putting one seven-band strata stack in the `wall` bucket of
   *every* ground theme, and in `fill` as well, gave Quiverstone a badlands where every cut face —

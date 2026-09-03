@@ -308,6 +308,24 @@ with the tools rather than through the API. [reports/opus5-lindenkreuz-run.md](r
 |---|---|---|---|
 | `opus5-lindenkreuz` | dtm | Opus 5 | **90 × 200, and it carries no relief at all** — every height on it is stated, which is what makes it angular and what lets thirty 5 × 3 cars state an absolute floor and land on the tarmac rather than in it. Two city blocks either side of a twenty-block gorge joined by one railway bridge: a car park marked into 36 bays with the monument standing in one of them, a Litfaßsäule and a nether-brick piano on the station forecourt, terrace houses on two raised garden blocks, and an S-Bahn in a **cut-and-cover tunnel** — a trench cut by an override add, a lid that has to be a layer of its own, a switchback stair down to the platform — that comes up a ramp in an open cutting and goes on over the bridge |
 
+### Opus 5 — four boards to a list of things, one per objective shape
+
+One brief was the author's, in full — a swamp DTC with vines hanging at different heights, lily pads on
+the water, roads of coarse dirt and polished andesite — and the other three were the run's to choose, one
+per objective shape and each on a colour scheme far enough from the last to test the paint rather than
+repeat it. What the four have in common is that three of them are rectangles and the fourth is not, and
+the fourth is the one worth reading first: a wool board's rules refuse a rectangle, and the hub-with-two-
+arms they force instead came out with **1% dead ground against 28.8%, 36.7% and 40.1%**. A rectangle has
+corners no journey passes; an arm is a corridor to somewhere, so every block of it is on the way.
+[reports/opus5-run1.md](reports/opus5-run1.md)
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5-alderfen` | dtc | Opus 5 | **150 × 210, a peat holm archipelago, and the board that found out how a vine gets onto a map** — nothing in the dressing vocabulary places one, so the oaks are seven `copied` recipes each carrying 4–18 vine cells hung in curtains. Two obsidian cores a team on level bog in front of a hill-backed island; two team islands and one mid holm, joined only by a build zone over sixteen blocks of void; painted bog pools with lily pads over a sand bank; roads of coarse dirt with polished andesite laid through them; and six cumulus clouds of white wool standing at y80–96 as **made** things |
+| `opus5-quiverstone` | dtm | Opus 5 | **140 × 200 of badlands, and a pinnacle that is a made thing on purpose** — a hoodoo tall enough to read as one would otherwise stand inside the build ceiling, so it is a made layer instead. Two obsidian pillars a team at `x ±24` on open caliche, **46 blocks of walk from their own camp and 152–154 from the enemy's, of which 23–27 are placed**; an erected clay butte behind each camp for an attacker to climb and bridge from; a dished wash across the front of each monument; and one sandstone reef in the middle both sides pay twenty blocks of crossing to reach |
+| `opus5-blockrealm` | dtc | Opus 5 | **110 × 200 of drawn level, where the ground is flat everywhere a player fights and all of the height is erected plates** — brick staircases stepping two courses at a time up each flank, warp pipes at their feet, floating brick-and-question rows, and clouds to y100. Every standing thing is a **made** layer, which is what keeps a 100-course cloud out of the build ceiling, and four of its themes paint no ground at all because they are the materials of made things. The field was narrowed from 140 to 110 on a dead-ground read — **46% → 33%**, and the standing `LN2` complaint cleared in the same change |
+| `opus5-lodestar` | ctw | Opus 5 | **120 × 200 on a derelict orbital dock, and the one board whose shape a rule dictated** — eight pieces a side rather than one, because a wool board's rules will not have a rectangle: a spawn berth, a hub, two arms, a wool bay on the end of each, a neck, and the neutral gantry both sides cross to. Two wool bays a team, each captured by the *other* team and carried to a monument beside its own spawn; the neck is the board's **only** edge on the void, 40 wide with a 20-block crossing; masts to y36 and solar wings to y58. **1% of it is off every route** — the run's best by a wide margin, and the reason is the topology rather than the dressing |
+
 ### Opus 5 — a four-team board from a handed-over plan
 
 The first board here authored from a plan somebody else drew: a `rot_90` quatrefoil and a five-colour
