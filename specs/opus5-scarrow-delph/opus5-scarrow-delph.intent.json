@@ -1,0 +1,192 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 24,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 30,
+    "z": -98
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -110,
+     "maxX": 10,
+     "maxZ": -86
+    }
+   ],
+   "yaw": 0,
+   "footprint": {
+    "minX": -8,
+    "minZ": -106,
+    "maxX": 8,
+    "maxZ": -92
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 30,
+    "z": 98
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 86,
+     "maxX": 10,
+     "maxZ": 110
+    }
+   ],
+   "yaw": 180,
+   "footprint": {
+    "minX": -8,
+    "minZ": 92,
+    "maxX": 8,
+    "maxZ": 106
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 74,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -54,
+    "minZ": -30,
+    "maxX": 54,
+    "maxZ": 30
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "dt-pit",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Sump",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -28,
+    "y": 30,
+    "z": -60
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "dt-shelf",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Gallery",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 22,
+    "y": 30,
+    "z": -58
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "dt-pit",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Sump",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 27,
+    "y": 30,
+    "z": 59
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "dt-shelf",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Gallery",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -23,
+    "y": 30,
+    "z": 57
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Scarrow Delph",
+  "created": "2026-09-03",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue",
+  "3": "neutral"
+ },
+ "structures": null
+}

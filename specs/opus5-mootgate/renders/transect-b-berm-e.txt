@@ -1,0 +1,50 @@
+## b-berm-e (boulder) along x
+TRANSECT 14 stations from (26, 36) to (39, 36), every 1
+  station        ground  surface  water  top  standing            step
+  (   26,    36)      15       15           21  house h-south-f     
+  (   27,    36)      15       15           21  house h-south-f     
+  (   28,    36)      15       15           21  house h-south-f     
+  (   29,    36)      15       15           21  house h-south-f     
+  (   30,    36)      15       15           21  house h-south-f     
+  (   31,    36)      15       15           20  house h-south-f     
+  (   32,    36)      15       15           20  house h-south-f     
+  (   33,    36)      23       23           23                      BARRIER +8
+  (   34,    36)      23       23           23                      
+  (   35,    36)      23       23           23                      
+  (   36,    36)      15       15           18  boulder b-berm-e    DROP -8
+  (   37,    36)      15       15           18  boulder b-berm-e    
+  (   38,    36)      15       15           19  boulder b-berm-e    
+  (   39,    36)      15       15           18  boulder b-berm-e    
+rises 1, falls 1, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (33, 36); DROP -8 at (36, 36) | walked end to end
+beside: house h-south-f at (24, 34), boulder b-berm-e at (36, 35)
+
+## b-berm-e (boulder) along z
+TRANSECT 25 stations from (38, 24) to (38, 48), every 1
+  station        ground  surface  water  top  standing            step
+  (   38,    24)      16       16           17  boulder b-field-c   
+  (   38,    25)      16       16           17  boulder b-field-c   
+  (   38,    26)      16       16           17  boulder b-field-c   
+  (   38,    27)      15       15           17  boulder b-field-c   -1
+  (   38,    28)      15       15           15                      
+  (   38,    29)      15       15           15                      
+  (   38,    30)      15       15           15                      
+  (   38,    31)      15       15           15                      
+  (   38,    32)      15       15           15                      
+  (   38,    33)      15       15           15                      
+  (   38,    34)      15       15           18  boulder b-berm-e    
+  (   38,    35)      15       15           18  boulder b-berm-e    
+  (   38,    36)      15       15           19  boulder b-berm-e    
+  (   38,    37)      15       15           18  boulder b-berm-e    
+  (   38,    38)      15       15           17  boulder b-berm-e    
+  (   38,    39)      15       15           15                      
+  (   38,    40)      15       15           15                      
+  (   38,    41)      15       15           15                      
+  (   38,    42)      15       15           15                      
+  (   38,    43)      15       15           15                      
+  (   38,    44)      15       15           15                      
+  (   38,    45)      15       15           15                      
+  (   38,    46)      15       15           15                      
+  (   38,    47)      15       15           15                      
+  (   38,    48)      15       15           24  tree t-berm-e       
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder b-field-c at (36, 22), boulder b-berm-e at (38, 34), tree t-berm-e at (37, 47)

@@ -1,0 +1,55 @@
+## h-south-b (house) along x
+TRANSECT 21 stations from (-25, 37) to (-5, 37), every 1
+  station        ground  surface  water  top  standing            step
+  (  -25,    37)      15       15           23  house h-south-a     
+  (  -24,    37)      15       15           15                      
+  (  -23,    37)      15       15           15  stroke st-postern-w  
+  (  -22,    37)      15       15           15  stroke st-postern-w  
+  (  -21,    37)      15       15           15  stroke st-postern-w  
+  (  -20,    37)      15       15           15  stroke st-postern-w  
+  (  -19,    37)      15       15           15                      
+  (  -18,    37)      15       15           24  house h-south-b     
+  (  -17,    37)      15       15           25  house h-south-b     
+  (  -16,    37)      15       15           26  house h-south-b     
+  (  -15,    37)      15       15           27  house h-south-b     
+  (  -14,    37)      15       15           26  house h-south-b     
+  (  -13,    37)      15       15           25  house h-south-b     
+  (  -12,    37)      15       15           24  house h-south-b     
+  (  -11,    37)      21       21           21                      BARRIER +6
+  (  -10,    37)      21       21           21                      
+  (   -9,    37)      21       21           21                      
+  (   -8,    37)      21       21           21                      
+  (   -7,    37)      15       15           15                      DROP -6
+  (   -6,    37)      15       15           15                      
+  (   -5,    37)      15       15           15                      
+rises 1, falls 1, worst step 6: 1 barrier, 0 scramble, 1 drop — BARRIER +6 at (-11, 37); DROP -6 at (-7, 37) | walked end to end
+beside: house h-south-a at (-27, 35), stroke st-postern-w at (-23, 35), house h-south-b at (-18, 35), stroke st-gate at (-3, 35)
+
+## h-south-b (house) along z
+TRANSECT 23 stations from (-15, 26) to (-15, 48), every 1
+  station        ground  surface  water  top  standing            step
+  (  -15,    26)      15       15           26  house h-steading    
+  (  -15,    27)      15       15           15                      
+  (  -15,    28)      15       15           15                      
+  (  -15,    29)      23       23           23                      BARRIER +8
+  (  -15,    30)      23       23           23                      
+  (  -15,    31)      23       23           23                      
+  (  -15,    32)      15       15           15                      DROP -8
+  (  -15,    33)      15       15           27  house h-south-b     
+  (  -15,    34)      15       15           27  house h-south-b     
+  (  -15,    35)      15       15           27  house h-south-b     
+  (  -15,    36)      15       15           27  house h-south-b     
+  (  -15,    37)      15       15           27  house h-south-b     
+  (  -15,    38)      15       15           27  house h-south-b     
+  (  -15,    39)      15       15           27  house h-south-b     
+  (  -15,    40)      15       15           27  house h-south-b     
+  (  -15,    41)      15       15           27  house h-south-b     
+  (  -15,    42)      15       15           15  stroke st-market    
+  (  -15,    43)      15       15           15  stroke st-market    
+  (  -15,    44)      15       15           15  stroke st-market    
+  (  -15,    45)      15       15           15  stroke st-market    
+  (  -15,    46)      15       15           30  house h-granary     
+  (  -15,    47)      15       15           30  house h-granary     
+  (  -15,    48)      15       15           30  house h-granary     
+rises 1, falls 1, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (-15, 29); DROP -8 at (-15, 32) | walked end to end
+beside: house h-steading at (-17, 24), house h-south-b at (-17, 33), stroke st-market at (-17, 42), house h-granary at (-17, 46)

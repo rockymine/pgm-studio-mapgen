@@ -1,0 +1,51 @@
+## blk1 (boulder) along x
+TRANSECT 15 stations from (-54, -94) to (-40, -94), every 1
+  station        ground  surface  water  top  standing            step
+  (  -54,   -94)      45       45           47  boulder blk1        
+  (  -53,   -94)      45       45           48  boulder blk1        
+  (  -52,   -94)      45       45           48  boulder blk1        
+  (  -51,   -94)      45       45           47  boulder blk1        
+  (  -50,   -94)      44       44           47  boulder blk1        -1
+  (  -49,   -94)      44       44           44                      
+  (  -48,   -94)      44       44           44                      
+  (  -47,   -94)      44       44           44                      
+  (  -46,   -94)      44       44           48  boulder blk0        
+  (  -45,   -94)      45       45           49  boulder blk0        +1
+  (  -44,   -94)      45       45           49  boulder blk0        
+  (  -43,   -94)      45       45           48  boulder blk0        
+  (  -42,   -94)      45       45           48  boulder blk0        
+  (  -41,   -94)      45       45           45                      
+  (  -40,   -94)      45       45           45                      
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder blk1 at (-52, -96), flora fl-moor at (-46, -96), boulder blk0 at (-46, -95)
+
+## blk1 (boulder) along z
+TRANSECT 25 stations from (-52, -106) to (-52, -82), every 1
+  station        ground  surface  water  top  standing            step
+  (  -52,  -106)      56       56           56                      
+  (  -52,  -105)      55       55           55                      -1
+  (  -52,  -104)      55       55           55                      
+  (  -52,  -103)      54       54           54                      -1
+  (  -52,  -102)      54       54           54                      
+  (  -52,  -101)      54       54           61  tree tr0            
+  (  -52,  -100)      54       54           63  tree tr0            
+  (  -52,   -99)      53       53           63  tree tr0            -1
+  (  -52,   -98)      51       51           59  tree tr0            -2
+  (  -52,   -97)      48       48           48                      -3
+  (  -52,   -96)      46       46           47  boulder blk1        -2
+  (  -52,   -95)      45       45           47  boulder blk1        -1
+  (  -52,   -94)      45       45           48  boulder blk1        
+  (  -52,   -93)      44       44           48  boulder blk1        -1
+  (  -52,   -92)      44       44           47  boulder blk1        
+  (  -52,   -91)      44       44           44                      
+  (  -52,   -90)      44       44           44                      
+  (  -52,   -89)      44       44           44                      
+  (  -52,   -88)      44       44           44                      
+  (  -52,   -87)      44       44           44                      
+  (  -52,   -86)      42       42           42                      -2
+  (  -52,   -85)      42       42           42                      
+  (  -52,   -84)      42       42           42                      
+  (  -52,   -83)      42       42           42                      
+  (  -52,   -82)      42       42           42  stroke road-haul    
+rises 0, falls 9, worst step 3: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree tr0 at (-53, -102), boulder blk1 at (-52, -96), stroke road-haul at (-50, -85)

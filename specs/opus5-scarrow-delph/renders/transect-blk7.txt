@@ -1,0 +1,61 @@
+## blk7 (boulder) along x
+TRANSECT 25 stations from (12, -86) to (36, -86), every 1
+  station        ground  surface  water  top  standing            step
+  (   12,   -86)      43       43           43                      
+  (   13,   -86)      43       43           43                      
+  (   14,   -86)      43       43           43                      
+  (   15,   -86)      43       43           43                      
+  (   16,   -86)      43       43           43                      
+  (   17,   -86)      43       43           43                      
+  (   18,   -86)      43       43           43                      
+  (   19,   -86)      43       43           43                      
+  (   20,   -86)      43       43           43                      
+  (   21,   -86)      43       43           43                      
+  (   22,   -86)      43       43           46  boulder blk7        
+  (   23,   -86)      43       43           47  boulder blk7        
+  (   24,   -86)      43       43           47  boulder blk7        
+  (   25,   -86)      43       43           46  boulder blk7        
+  (   26,   -86)      43       43           46  boulder blk7        
+  (   27,   -86)      43       43           43                      
+  (   28,   -86)      43       43           43                      
+  (   29,   -86)      43       43           43                      
+  (   30,   -86)      43       43           43                      
+  (   31,   -86)      43       43           43                      
+  (   32,   -86)      43       43           43                      
+  (   33,   -86)      43       43           43                      
+  (   34,   -86)      43       43           43                      
+  (   35,   -86)      43       43           43                      
+  (   36,   -86)      44       44           44                      +1
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder blk7 at (22, -87)
+
+## blk7 (boulder) along z
+TRANSECT 25 stations from (24, -98) to (24, -74), every 1
+  station        ground  surface  water  top  standing            step
+  (   24,   -98)      44       44           54  house smithy        
+  (   24,   -97)      44       44           55  house smithy        
+  (   24,   -96)      44       44           56  house smithy        
+  (   24,   -95)      44       44           57  house smithy        
+  (   24,   -94)      44       44           58  house smithy        
+  (   24,   -93)      44       44           57  house smithy        
+  (   24,   -92)      44       44           56  house smithy        
+  (   24,   -91)      43       43           55  house smithy        -1
+  (   24,   -90)      43       43           54  house smithy        
+  (   24,   -89)      43       43           53  house smithy        
+  (   24,   -88)      43       43           46  boulder blk7        
+  (   24,   -87)      43       43           46  boulder blk7        
+  (   24,   -86)      43       43           47  boulder blk7        
+  (   24,   -85)      43       43           46  boulder blk7        
+  (   24,   -84)      43       43           45  boulder blk7        
+  (   24,   -83)      43       43           43                      
+  (   24,   -82)      43       43           43                      
+  (   24,   -81)      42       42           42                      -1
+  (   24,   -80)      40       40           40                      -2
+  (   24,   -79)      39       39           39                      -1
+  (   24,   -78)      37       37           37                      -2
+  (   24,   -77)      36       36           36                      -1
+  (   24,   -76)      35       35           35                      -1
+  (   24,   -75)      34       34           34                      -1
+  (   24,   -74)      32       32           32                      -2
+rises 0, falls 9, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house smithy at (22, -99), boulder blk7 at (23, -88)

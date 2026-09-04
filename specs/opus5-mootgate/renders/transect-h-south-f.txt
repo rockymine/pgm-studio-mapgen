@@ -1,0 +1,57 @@
+## h-south-f (house) along x
+TRANSECT 23 stations from (17, 37) to (39, 37), every 1
+  station        ground  surface  water  top  standing            step
+  (   17,    37)      15       15           20  house h-south-d     
+  (   18,    37)      15       15           19  house h-south-d     
+  (   19,    37)      15       15           15  stroke st-postern-e  
+  (   20,    37)      15       15           15  stroke st-postern-e  
+  (   21,    37)      15       15           15  stroke st-postern-e  
+  (   22,    37)      15       15           15  stroke st-postern-e  
+  (   23,    37)      15       15           15                      
+  (   24,    37)      15       15           20  house h-south-f     
+  (   25,    37)      15       15           20  house h-south-f     
+  (   26,    37)      15       15           21  house h-south-f     
+  (   27,    37)      15       15           21  house h-south-f     
+  (   28,    37)      15       15           21  house h-south-f     
+  (   29,    37)      15       15           21  house h-south-f     
+  (   30,    37)      15       15           21  house h-south-f     
+  (   31,    37)      15       15           20  house h-south-f     
+  (   32,    37)      15       15           20  house h-south-f     
+  (   33,    37)      23       23           23                      BARRIER +8
+  (   34,    37)      23       23           23                      
+  (   35,    37)      23       23           23                      
+  (   36,    37)      15       15           17  boulder b-berm-e    DROP -8
+  (   37,    37)      15       15           18  boulder b-berm-e    
+  (   38,    37)      15       15           18  boulder b-berm-e    
+  (   39,    37)      15       15           18  boulder b-berm-e    
+rises 1, falls 1, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (33, 37); DROP -8 at (36, 37) | walked end to end
+beside: house h-south-d at (15, 35), stroke st-postern-e at (19, 35), house h-south-f at (24, 35), boulder b-berm-e at (36, 35)
+
+## h-south-f (house) along z
+TRANSECT 23 stations from (28, 26) to (28, 48), every 1
+  station        ground  surface  water  top  standing            step
+  (   28,    26)      15       15           15                      
+  (   28,    27)      15       15           21  tree t-hedge-b      
+  (   28,    28)      15       15           15                      
+  (   28,    29)      23       23           23                      BARRIER +8
+  (   28,    30)      23       23           23                      
+  (   28,    31)      23       23           23                      
+  (   28,    32)      15       15           15                      DROP -8
+  (   28,    33)      15       15           20  house h-south-f     
+  (   28,    34)      15       15           20  house h-south-f     
+  (   28,    35)      15       15           21  house h-south-f     
+  (   28,    36)      15       15           21  house h-south-f     
+  (   28,    37)      15       15           21  house h-south-f     
+  (   28,    38)      15       15           20  house h-south-f     
+  (   28,    39)      15       15           22  house h-south-f     
+  (   28,    40)      15       15           21  house h-south-f     
+  (   28,    41)      15       15           21  house h-south-f     
+  (   28,    42)      15       15           15  stroke st-market    
+  (   28,    43)      15       15           15  stroke st-market    
+  (   28,    44)      15       15           15  stroke st-market    
+  (   28,    45)      15       15           15  stroke st-market    
+  (   28,    46)      15       15           21  house h-east-k      
+  (   28,    47)      15       15           21  house h-east-k      
+  (   28,    48)      15       15           21  house h-east-k      
+rises 1, falls 1, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (28, 29); DROP -8 at (28, 32) | walked end to end
+beside: house h-barn at (26, 24), tree t-hedge-b at (29, 25), flora fl-field at (26, 27), house h-south-f at (26, 33), stroke st-market at (26, 42), house h-east-k at (26, 46)

@@ -1,0 +1,55 @@
+## h-cot (house) along x
+TRANSECT 21 stations from (5, 21) to (25, 21), every 1
+  station        ground  surface  water  top  standing            step
+  (    5,    21)      15       15           21  house h-chapel      
+  (    6,    21)      15       15           22  house h-chapel      
+  (    7,    21)      15       15           21  house h-chapel      
+  (    8,    21)      15       15           20  house h-chapel      
+  (    9,    21)      15       15           19  house h-chapel      
+  (   10,    21)      15       15           15                      
+  (   11,    21)      15       15           15                      
+  (   12,    21)      15       15           19  house h-cot         
+  (   13,    21)      15       15           20  house h-cot         
+  (   14,    21)      15       15           21  house h-cot         
+  (   15,    21)      15       15           22  house h-cot         
+  (   16,    21)      15       15           21  house h-cot         
+  (   17,    21)      15       15           20  house h-cot         
+  (   18,    21)      15       15           19  house h-cot         
+  (   19,    21)      15       15           15  stroke st-postern-e  
+  (   20,    21)      15       15           15  stroke st-postern-e  
+  (   21,    21)      15       15           15  stroke st-postern-e  
+  (   22,    21)      15       15           15  stroke st-postern-e  
+  (   23,    21)      16       16           21  house h-barn        +1
+  (   24,    21)      16       16           22  house h-barn        
+  (   25,    21)      16       16           23  house h-barn        
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house h-chapel at (3, 19), house h-cot at (12, 19), stroke st-postern-e at (19, 21), house h-barn at (23, 19)
+
+## h-cot (house) along z
+TRANSECT 23 stations from (15, 10) to (15, 32), every 1
+  station        ground  surface  water  top  standing            step
+  (   15,    10)                                                    void
+  (   15,    11)                                                    void
+  (   15,    12)                                                    void
+  (   15,    13)                            23  tree t-field-c      void
+  (   15,    14)      15       15           24  tree t-field-c      
+  (   15,    15)      15       15           23  tree t-field-c      
+  (   15,    16)      15       15           23  tree t-field-c      
+  (   15,    17)      15       15           23  tree t-field-c      
+  (   15,    18)      15       15           22  house h-cot         
+  (   15,    19)      15       15           22  house h-cot         
+  (   15,    20)      15       15           22  house h-cot         
+  (   15,    21)      15       15           22  house h-cot         
+  (   15,    22)      15       15           22  house h-cot         
+  (   15,    23)      15       15           22  house h-cot         
+  (   15,    24)      15       15           22  house h-cot         
+  (   15,    25)      15       15           22  house h-cot         
+  (   15,    26)      15       15           15                      
+  (   15,    27)      15       15           15                      
+  (   15,    28)      15       15           15                      
+  (   15,    29)      23       23           23                      BARRIER +8
+  (   15,    30)      23       23           23                      
+  (   15,    31)      23       23           23                      
+  (   15,    32)      15       15           15                      DROP -8
+rises 1, falls 1, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (15, 29); DROP -8 at (15, 32) | walked end to end
+beside: tree t-field-c at (16, 12), tree t-hedge-c at (13, 14), house h-cot at (13, 17), house h-south-d at (13, 33)

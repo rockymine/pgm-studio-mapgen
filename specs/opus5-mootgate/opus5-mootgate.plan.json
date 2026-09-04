@@ -1,0 +1,153 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Mootgate"
+ },
+ "globals": {
+  "cell": 2,
+  "symmetry": "rot_180",
+  "maxPlayers": 24,
+  "surface": 14
+ },
+ "pieces": [
+  {
+   "id": "field",
+   "role": "piece",
+   "rect": [
+    -20,
+    7,
+    40,
+    6
+   ]
+  },
+  {
+   "id": "town",
+   "role": "piece",
+   "rect": [
+    -20,
+    13,
+    40,
+    22
+   ],
+   "surface": 15
+  },
+  {
+   "id": "back-w",
+   "role": "piece",
+   "rect": [
+    -20,
+    35,
+    4,
+    7
+   ],
+   "surface": 15
+  },
+  {
+   "id": "moot",
+   "role": "wool-room",
+   "rect": [
+    -16,
+    35,
+    9,
+    7
+   ],
+   "surface": 15
+  },
+  {
+   "id": "mid-back",
+   "role": "piece",
+   "rect": [
+    -7,
+    35,
+    15,
+    7
+   ],
+   "surface": 15
+  },
+  {
+   "id": "barrack",
+   "role": "spawn",
+   "rect": [
+    8,
+    35,
+    8,
+    7
+   ],
+   "surface": 15
+  },
+  {
+   "id": "back-e",
+   "role": "piece",
+   "rect": [
+    16,
+    35,
+    4,
+    7
+   ],
+   "surface": 15
+  },
+  {
+   "id": "rear",
+   "role": "piece",
+   "rect": [
+    -20,
+    42,
+    40,
+    3
+   ],
+   "surface": 15
+  }
+ ],
+ "zones": [
+  {
+   "id": "crossing",
+   "rect": [
+    -20,
+    -7,
+    40,
+    14
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "barrack",
+    "at": [
+     8,
+     7
+    ],
+    "facing": "left",
+    "footprint": [
+     2,
+     3,
+     12,
+     8
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "moot",
+    "at": [
+     9,
+     7
+    ],
+    "footprint": [
+     3,
+     3,
+     12,
+     8
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

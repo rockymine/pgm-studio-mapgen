@@ -1,0 +1,58 @@
+## h-back-e (house) along x
+TRANSECT 24 stations from (14, 65) to (37, 65), every 1
+  station        ground  surface  water  top  standing            step
+  (   14,    65)      15       15           28  house h-guild       
+  (   15,    65)      15       15           28  house h-guild       
+  (   16,    65)      15       15           28  house h-guild       
+  (   17,    65)      15       15           28  house h-guild       
+  (   18,    65)      15       15           28  house h-guild       
+  (   19,    65)      15       15           28  house h-guild       
+  (   20,    65)      15       15           15                      
+  (   21,    65)      15       15           23  house h-back-e      
+  (   22,    65)      15       15           23  house h-back-e      
+  (   23,    65)      15       15           23  house h-back-e      
+  (   24,    65)      15       15           23  house h-back-e      
+  (   25,    65)      15       15           23  house h-back-e      
+  (   26,    65)      15       15           23  house h-back-e      
+  (   27,    65)      15       15           23  house h-back-e      
+  (   28,    65)      15       15           23  house h-back-e      
+  (   29,    65)      15       15           23  house h-back-e      
+  (   30,    65)      15       15           23  house h-back-e      
+  (   31,    65)      15       15           15                      
+  (   32,    65)      15       15           15                      
+  (   33,    65)      23       23           23                      BARRIER +8
+  (   34,    65)      23       23           23                      
+  (   35,    65)      23       23           23                      
+  (   36,    65)      15       15           15                      DROP -8
+  (   37,    65)      15       15           15                      
+rises 1, falls 1, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (33, 65); DROP -8 at (36, 65) | walked end to end
+beside: house h-guild at (12, 63), tree t-yard-n at (12, 65), house h-back-e at (21, 63), boulder b-berm-e2 at (36, 67)
+
+## h-back-e (house) along z
+TRANSECT 23 stations from (25, 54) to (25, 76), every 1
+  station        ground  surface  water  top  standing            step
+  (   25,    54)      15       15           15                      
+  (   25,    55)      15       15           15                      
+  (   25,    56)      15       15           15                      
+  (   25,    57)      15       15           15                      
+  (   25,    58)      15       15           15                      
+  (   25,    59)      15       15           15                      
+  (   25,    60)      15       15           15                      
+  (   25,    61)      15       15           19  house h-back-e      
+  (   25,    62)      15       15           20  house h-back-e      
+  (   25,    63)      15       15           21  house h-back-e      
+  (   25,    64)      15       15           22  house h-back-e      
+  (   25,    65)      15       15           23  house h-back-e      
+  (   25,    66)      15       15           22  house h-back-e      
+  (   25,    67)      15       15           21  house h-back-e      
+  (   25,    68)      15       15           20  house h-back-e      
+  (   25,    69)      15       15           19  house h-back-e      
+  (   25,    70)      15       15           15                      
+  (   25,    71)      15       15           15                      
+  (   25,    72)      15       15           20                      
+  (   25,    73)      15       15           21  spawn spawn-1       
+  (   25,    74)      15       15           22  spawn spawn-1       
+  (   25,    75)      15       15           23  spawn spawn-1       
+  (   25,    76)      15       15           24  spawn spawn-1       
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house h-inn at (23, 52), house h-east-k at (26, 52), house h-back-e at (23, 61), spawn spawn-1 at (23, 73)

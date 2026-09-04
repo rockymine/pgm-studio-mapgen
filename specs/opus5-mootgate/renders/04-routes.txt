@@ -1,0 +1,22 @@
+ROUTES  taken by hand.  tools/drive.py writes no 04-routes.txt on a board whose goals are wools
+        (GENERATION-NOTES: 'on a wool board, take the walks by hand').
+        GET /map/opus5-mootgate/walk?from=&to=&aim=&team=&format=text
+
+  walk                                     aim     reachable dist placed drops worstDrop worstStep
+  red spawn -> own red wool (team-filtered) reach   False       -1     -1     0         0         0
+  red spawn -> own red wool (no filter)    reach   True        47      5     1         6         6
+  red spawn -> enemy blue wool             reach   True       177     21     2        14        15
+  blue spawn -> enemy red wool             reach   True       220     20     2        15        15
+  red spawn -> enemy blue wool             travel  True       154     43     3         7         7
+  blue spawn -> enemy red wool             travel  True       154     43     3         7         7
+
+  A team is barred from entering its OWN wool room (PGM's own rule, written into map.xml as
+  <apply enter="not-red" region="reds-woolrooms" message="You may not enter your own wool room!"/>),
+  which is why the team-filtered walk to a team's own wool answers unreachable and is not a fault.
+
+  What a raid costs: 43 placed blocks straight over the void and over the town wall (aim=travel,
+  154 blocks both ways, so the board is symmetric); 20-21 placed and 177-220 blocks by the route
+  that goes round to a gate (aim=reach).  The 28-block void is most of the placed count either way.
+
+  What stands within two blocks of the red raid on blue's town:
+beside: house h-back-e at (21, 61) d0, house h-barn at (31, 22) d0, house h-granary#1 at (23, -63) d0, house h-inn at (22, 57) d0, spawn spawn-1 at (21, 73) d0, tree t-hedge-a at (34, 19) d0, tree t-hedge-b at (28, 27) d0, tree t-wood-a#1 at (25, -28) d0, tree t-wood-b#1 at (27, -27) d0, water w-mere#1 at (33, -26) d0, wool wool-1#1 at (23, -77) d0, boulder b-field-c at (33, 22) d1, house h-south-a#1 at (24, -42) d1, house h-south-f at (24, 33) d1, house h-guild at (19, 61) d2

@@ -1,0 +1,73 @@
+## spawn-blue (spawn) along x
+TRANSECT 33 stations from (-40, -77) to (-8, -77), every 1
+  station        ground  surface  water  top  standing            step
+  (  -40,   -77)      15       15           15                      
+  (  -39,   -77)      15       15           15                      
+  (  -38,   -77)      15       15           15                      
+  (  -37,   -77)      15       15           15                      
+  (  -36,   -77)      23       23           23                      BARRIER +8
+  (  -35,   -77)      23       23           23                      
+  (  -34,   -77)      23       23           23                      
+  (  -33,   -77)      15       15           15                      DROP -8
+  (  -32,   -77)      15       15           15                      
+  (  -31,   -77)      15       15           24                      
+  (  -30,   -77)      15       15           24  spawn spawn-1#1     
+  (  -29,   -77)      15       15           24  spawn spawn-1#1     
+  (  -28,   -77)      15       15           24  spawn spawn-1#1     
+  (  -27,   -77)      15       15           24  spawn spawn-1#1     
+  (  -26,   -77)      15       15           24  spawn spawn-1#1     
+  (  -25,   -77)      15       15           24  spawn spawn-1#1     
+  (  -24,   -77)      15       15           24  spawn spawn-1#1     
+  (  -23,   -77)      15       15           24  spawn spawn-1#1     
+  (  -22,   -77)      15       15           24  spawn spawn-1#1     
+  (  -21,   -77)      15       15           24  spawn spawn-1#1     
+  (  -20,   -77)      15       15           24  spawn spawn-1#1     
+  (  -19,   -77)      15       15           24  spawn spawn-1#1     
+  (  -18,   -77)      15       15           24                      
+  (  -17,   -77)      15       15           15                      
+  (  -16,   -77)      15       15           15                      
+  (  -15,   -77)      15       15           15                      
+  (  -14,   -77)      15       15           15                      
+  (  -13,   -77)      15       15           15                      
+  (  -12,   -77)      15       15           15                      
+  (  -11,   -77)      15       15           15                      
+  (  -10,   -77)      15       15           15                      
+  (   -9,   -77)      15       15           15                      
+  (   -8,   -77)      15       15           15                      
+rises 1, falls 1, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (-36, -77); DROP -8 at (-33, -77) | walked end to end
+beside: tree t-berm-e2#1 at (-41, -79), spawn spawn-1#1 at (-30, -79)
+
+## spawn-blue (spawn) along z
+TRANSECT 29 stations from (-24, -90) to (-24, -62), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,   -90)      15       15           15                      
+  (  -24,   -89)      15       15           15                      
+  (  -24,   -88)      23       23           23                      BARRIER +8
+  (  -24,   -87)      23       23           23                      
+  (  -24,   -86)      23       23           23                      
+  (  -24,   -85)      15       15           15                      DROP -8
+  (  -24,   -84)      15       15           15                      
+  (  -24,   -83)      15       15           15                      
+  (  -24,   -82)      15       15           20                      
+  (  -24,   -81)      15       15           21  spawn spawn-1#1     
+  (  -24,   -80)      15       15           22  spawn spawn-1#1     
+  (  -24,   -79)      15       15           23  spawn spawn-1#1     
+  (  -24,   -78)      15       15           24  spawn spawn-1#1     
+  (  -24,   -77)      15       15           24  spawn spawn-1#1     
+  (  -24,   -76)      15       15           23  spawn spawn-1#1     
+  (  -24,   -75)      15       15           22  spawn spawn-1#1     
+  (  -24,   -74)      15       15           21  spawn spawn-1#1     
+  (  -24,   -73)      15       15           20                      
+  (  -24,   -72)      15       15           15                      
+  (  -24,   -71)      15       15           15                      
+  (  -24,   -70)      15       15           19  house h-back-e#1    
+  (  -24,   -69)      15       15           20  house h-back-e#1    
+  (  -24,   -68)      15       15           21  house h-back-e#1    
+  (  -24,   -67)      15       15           22  house h-back-e#1    
+  (  -24,   -66)      15       15           23  house h-back-e#1    
+  (  -24,   -65)      15       15           22  house h-back-e#1    
+  (  -24,   -64)      15       15           21  house h-back-e#1    
+  (  -24,   -63)      15       15           20  house h-back-e#1    
+  (  -24,   -62)      15       15           19  house h-back-e#1    
+rises 1, falls 1, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (-24, -88); DROP -8 at (-24, -85) | walked end to end
+beside: spawn spawn-1#1 at (-26, -81), house h-back-e#1 at (-26, -70)

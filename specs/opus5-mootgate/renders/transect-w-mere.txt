@@ -1,0 +1,66 @@
+## w-mere (water) along x
+TRANSECT 23 stations from (-40, 20) to (-18, 20), every 1
+  station        ground  surface  water  top  standing            step
+  (  -40,    20)      17       17           17                      
+  (  -39,    20)      17       17           17                      
+  (  -38,    20)      12       12           12  water w-mere        DROP -5
+  (  -37,    20)      12       12     12    12  water w-mere        
+  (  -36,    20)      12       12     12    12  water w-mere        
+  (  -35,    20)      12       12     12    12  water w-mere        
+  (  -34,    20)      12       12     12    12  water w-mere        
+  (  -33,    20)      12       12     12    12  water w-mere        
+  (  -32,    20)      12       12     12    12  water w-mere        
+  (  -31,    20)      12       12     12    12  water w-mere        
+  (  -30,    20)      12       12           12                      
+  (  -29,    20)      12       12           12                      
+  (  -28,    20)      17       17           17                      BARRIER +5
+  (  -27,    20)      17       17           17                      
+  (  -26,    20)      17       17           17                      
+  (  -25,    20)      17       17           27  tree t-wood-a       
+  (  -24,    20)      17       17           17                      
+  (  -23,    20)      17       17           17                      
+  (  -22,    20)      17       17           17  stroke st-postern-w  
+  (  -21,    20)      16       16           16  stroke st-postern-w  -1
+  (  -20,    20)      16       16           16                      
+  (  -19,    20)      16       16           16                      
+  (  -18,    20)      16       16           28  house h-steading    
+rises 1, falls 2, worst step 5: 1 barrier, 0 scramble, 1 drop — DROP -5 at (-38, 20); BARRIER +5 at (-28, 20) | walked end to end
+beside: water w-mere at (-38, 20), tree t-wood-b at (-30, 22), tree t-wood-a at (-29, 22), boulder b-field-a at (-28, 18), stroke st-postern-w at (-23, 21), house h-steading at (-18, 18)
+
+## w-mere (water) along z
+TRANSECT 32 stations from (-34, 5) to (-34, 36), every 1
+  station        ground  surface  water  top  standing            step
+  (  -34,     5)                                                    void
+  (  -34,     6)                                                    void
+  (  -34,     7)                                                    void
+  (  -34,     8)                                                    void
+  (  -34,     9)                                                    void
+  (  -34,    10)                                                    void
+  (  -34,    11)                                                    void
+  (  -34,    12)                                                    void
+  (  -34,    13)                                                    void
+  (  -34,    14)      17       17           17                      
+  (  -34,    15)      12       12           12                      DROP -5
+  (  -34,    16)      12       12           12                      
+  (  -34,    17)      12       12     12    12  water w-mere        
+  (  -34,    18)      12       12     12    12  water w-mere        
+  (  -34,    19)      12       12     12    12  water w-mere        
+  (  -34,    20)      12       12     12    12  water w-mere        
+  (  -34,    21)      12       12     12    12  water w-mere        
+  (  -34,    22)      12       12     12    12  water w-mere        
+  (  -34,    23)      12       12     12    12  water w-mere        
+  (  -34,    24)      12       12           12  water w-mere        
+  (  -34,    25)      17       17           17  water w-mere        BARRIER +5
+  (  -34,    26)      17       17           17                      
+  (  -34,    27)      17       17           17                      
+  (  -34,    28)      17       17           17                      
+  (  -34,    29)      23       23           23                      BARRIER +6
+  (  -34,    30)      23       23           23                      
+  (  -34,    31)      23       23           23                      
+  (  -34,    32)      23       23           23                      
+  (  -34,    33)      23       23           23                      
+  (  -34,    34)      23       23           23                      
+  (  -34,    35)      23       23           23                      
+  (  -34,    36)      23       23           23                      
+rises 2, falls 1, worst step 6: 2 barrier, 0 scramble, 1 drop — DROP -5 at (-34, 15); BARRIER +5 at (-34, 25); BARRIER +6 at (-34, 29) | walked end to end
+beside: water w-mere at (-33, 16), tree t-wood-b at (-32, 23), house h-south-a at (-33, 33)

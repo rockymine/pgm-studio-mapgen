@@ -1,0 +1,55 @@
+## blk4 (boulder) along x
+TRANSECT 25 stations from (22, -104) to (46, -104), every 1
+  station        ground  surface  water  top  standing            step
+  (   22,  -104)      46       46           46                      
+  (   23,  -104)      46       46           46                      
+  (   24,  -104)      46       46           46                      
+  (   25,  -104)      46       46           46                      
+  (   26,  -104)      46       46           46                      
+  (   27,  -104)      46       46           46                      
+  (   28,  -104)      46       46           46                      
+  (   29,  -104)      46       46           46                      
+  (   30,  -104)      46       46           46                      
+  (   31,  -104)      46       46           46                      
+  (   32,  -104)      46       46           49  boulder blk4        
+  (   33,  -104)      46       46           50  boulder blk4        
+  (   34,  -104)      46       46           50  boulder blk4        
+  (   35,  -104)      47       47           50  boulder blk4        +1
+  (   36,  -104)      47       47           49  boulder blk4        
+  (   37,  -104)      48       48           48                      +1
+  (   38,  -104)      48       48           48                      
+  (   39,  -104)      49       49           49                      +1
+  (   40,  -104)      51       51           51                      scramble +2
+  (   41,  -104)      52       52           52                      +1
+  (   42,  -104)      53       53           53                      +1
+  (   43,  -104)      53       53           53                      
+  (   44,  -104)      53       53           53                      
+  (   45,  -104)      54       54           59  tree tr4            +1
+  (   46,  -104)      54       54           54                      
+rises 7, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (40, -104) | walked end to end
+beside: tree tr3 at (23, -106), boulder blk4 at (32, -105), tree tr7 at (35, -102), tree tr4 at (44, -106)
+
+## blk4 (boulder) along z
+TRANSECT 19 stations from (34, -110) to (34, -92), every 1
+  station        ground  surface  water  top  standing            step
+  (   34,  -110)      46       46           46                      
+  (   34,  -109)      46       46           46                      
+  (   34,  -108)      46       46           46                      
+  (   34,  -107)      46       46           46                      
+  (   34,  -106)      46       46           49  boulder blk4        
+  (   34,  -105)      46       46           50  boulder blk4        
+  (   34,  -104)      46       46           50  boulder blk4        
+  (   34,  -103)      46       46           50  boulder blk4        
+  (   34,  -102)      46       46           49  boulder blk4        
+  (   34,  -101)      46       46           53  tree tr7            
+  (   34,  -100)      46       46           55  tree tr7            
+  (   34,   -99)      46       46           55  tree tr7            
+  (   34,   -98)      46       46           46                      
+  (   34,   -97)      45       45           45                      -1
+  (   34,   -96)      44       44           44                      -1
+  (   34,   -95)      44       44           44                      
+  (   34,   -94)      44       44           44                      
+  (   34,   -93)      44       44           44                      
+  (   34,   -92)      43       43           43                      -1
+rises 0, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder blk4 at (33, -106), tree tr7 at (36, -103)

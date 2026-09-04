@@ -1,0 +1,61 @@
+## stage (house) along x
+TRANSECT 27 stations from (-5, -35) to (21, -35), every 1
+  station        ground  surface  water  top  standing            step
+  (   -5,   -35)      18       18           18  stroke road-spine   
+  (   -4,   -35)      18       18           18  stroke road-spine   
+  (   -3,   -35)      18       18           18  stroke road-spine   
+  (   -2,   -35)      18       18           18  stroke road-spine   
+  (   -1,   -35)      18       18           18  stroke road-spine   
+  (    0,   -35)      18       18           18  stroke road-spine   
+  (    1,   -35)      18       18           18                      
+  (    2,   -35)      18       18           26  house stage         
+  (    3,   -35)      18       18           26  house stage         
+  (    4,   -35)      18       18           26  house stage         
+  (    5,   -35)      18       18           26  house stage         
+  (    6,   -35)      18       18           26  house stage         
+  (    7,   -35)      18       18           26  house stage         
+  (    8,   -35)      18       18           26  house stage         
+  (    9,   -35)      18       18           26  house stage         
+  (   10,   -35)      18       18           26  house stage         
+  (   11,   -35)      18       18           26  house stage         
+  (   12,   -35)      18       18           26  house stage         
+  (   13,   -35)      18       18           26  house stage         
+  (   14,   -35)      18       18           26  house stage         
+  (   15,   -35)      18       18           18                      
+  (   16,   -35)      16       16           16                      -2
+  (   17,   -35)      16       16           16                      
+  (   18,   -35)      16       16           16                      
+  (   19,   -35)      16       16           16                      
+  (   20,   -35)      16       16           16                      
+  (   21,   -35)      16       16           16                      
+rises 0, falls 1, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke road-spine at (-5, -37), house stage at (2, -37)
+
+## stage (house) along z
+TRANSECT 23 stations from (8, -46) to (8, -24), every 1
+  station        ground  surface  water  top  standing            step
+  (    8,   -46)      28       28           28                      
+  (    8,   -45)      26       26           26                      -2
+  (    8,   -44)      24       24           24                      -2
+  (    8,   -43)      22       22           22                      -2
+  (    8,   -42)      20       20           20                      -2
+  (    8,   -41)      18       18           18                      -2
+  (    8,   -40)      18       18           18                      
+  (    8,   -39)      18       18           27  house stage         
+  (    8,   -38)      18       18           27  house stage         
+  (    8,   -37)      18       18           27  house stage         
+  (    8,   -36)      18       18           26  house stage         
+  (    8,   -35)      18       18           26  house stage         
+  (    8,   -34)      18       18           25  house stage         
+  (    8,   -33)      18       18           25  house stage         
+  (    8,   -32)      18       18           23  house stage         
+  (    8,   -31)      18       18           23  house stage         
+  (    8,   -30)      18       18           18                      
+  (    8,   -29)      13       13           13                      DROP -5
+  (    8,   -28)      13       13           13                      
+  (    8,   -27)      13       13           13                      
+  (    8,   -26)                                                    void
+  (    8,   -25)                                                    void
+  (    8,   -24)                                                    void
+rises 0, falls 6, worst step 5: 0 barrier, 0 scramble, 1 drop — DROP -5 at (8, -29) | walked end to end
+beside: house stage at (6, -39)

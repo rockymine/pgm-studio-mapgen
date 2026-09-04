@@ -1,0 +1,61 @@
+## dt-pit-1 (destroyable) along x
+TRANSECT 25 stations from (15, 59) to (39, 59), every 1
+  station        ground  surface  water  top  standing            step
+  (   15,    59)      30       30           30                      
+  (   16,    59)      30       30           30                      
+  (   17,    59)      30       30           30                      
+  (   18,    59)      30       30           30                      
+  (   19,    59)      24       24           24                      DROP -6
+  (   20,    59)      24       24           24                      
+  (   21,    59)      24       24           24                      
+  (   22,    59)      24       24           24                      
+  (   23,    59)      24       24           24                      
+  (   24,    59)      24       24           24                      
+  (   25,    59)      24       24           24  destroyable dt-pit#1  
+  (   26,    59)      24       24           84  destroyable dt-pit#1  
+  (   27,    59)      24       24           85  destroyable dt-pit#1  
+  (   28,    59)      24       24           84  destroyable dt-pit#1  
+  (   29,    59)      24       24           24  destroyable dt-pit#1  
+  (   30,    59)      24       24           24                      
+  (   31,    59)      24       24           24                      
+  (   32,    59)      24       24           24                      
+  (   33,    59)      24       24           24                      
+  (   34,    59)      24       24           24                      
+  (   35,    59)      24       24           24                      
+  (   36,    59)      24       24           24                      
+  (   37,    59)      30       30           30                      BARRIER +6
+  (   38,    59)      30       30           30                      
+  (   39,    59)      30       30           30                      
+rises 1, falls 1, worst step 6: 1 barrier, 0 scramble, 1 drop — DROP -6 at (19, 59); BARRIER +6 at (37, 59) | walked end to end
+beside: stroke road-haul#1 at (13, 57), destroyable dt-pit#1 at (25, 57)
+
+## dt-pit-1 (destroyable) along z
+TRANSECT 25 stations from (27, 47) to (27, 71), every 1
+  station        ground  surface  water  top  standing            step
+  (   27,    47)      30       30           30  stroke road-haul#1  
+  (   27,    48)      24       24           24  stroke road-haul#1  DROP -6
+  (   27,    49)      24       24           24  stroke road-haul#1  
+  (   27,    50)      24       24           24  stroke road-haul#1  
+  (   27,    51)      24       24           24  stroke road-haul#1  
+  (   27,    52)      24       24           24  stroke road-haul#1  
+  (   27,    53)      24       24           24  stroke road-haul#1  
+  (   27,    54)      24       24           24  stroke road-haul#1  
+  (   27,    55)      24       24           24  stroke road-haul#1  
+  (   27,    56)      24       24           24  stroke road-haul#1  
+  (   27,    57)      24       24           24  stroke road-haul#1  
+  (   27,    58)      24       24           84  destroyable dt-pit#1  
+  (   27,    59)      24       24           85  destroyable dt-pit#1  
+  (   27,    60)      24       24           84  destroyable dt-pit#1  
+  (   27,    61)      24       24           24  destroyable dt-pit#1  
+  (   27,    62)      24       24           24                      
+  (   27,    63)      24       24           24                      
+  (   27,    64)      24       24           24                      
+  (   27,    65)      24       24           24                      
+  (   27,    66)      24       24           24                      
+  (   27,    67)      24       24           24                      
+  (   27,    68)      24       24           24                      
+  (   27,    69)      24       24           24                      
+  (   27,    70)      24       24           24                      
+  (   27,    71)      30       30           30                      BARRIER +6
+rises 1, falls 1, worst step 6: 1 barrier, 0 scramble, 1 drop — DROP -6 at (27, 48); BARRIER +6 at (27, 71) | walked end to end
+beside: stroke road-haul#1 at (29, 45), destroyable dt-pit#1 at (25, 57)

@@ -1,0 +1,53 @@
+## blk5 (boulder) along x
+TRANSECT 17 stations from (-54, -31) to (-38, -31), every 1
+  station        ground  surface  water  top  standing            step
+  (  -54,   -31)      16       16           16                      
+  (  -53,   -31)      16       16           16                      
+  (  -52,   -31)      16       16           19  boulder blk5        
+  (  -51,   -31)      16       16           20  boulder blk5        
+  (  -50,   -31)      16       16           20  boulder blk5        
+  (  -49,   -31)      16       16           20  boulder blk5        
+  (  -48,   -31)      16       16           19  boulder blk5        
+  (  -47,   -31)      16       16           16                      
+  (  -46,   -31)      16       16           16                      
+  (  -45,   -31)      16       16           16                      
+  (  -44,   -31)      16       16           16                      
+  (  -43,   -31)      17       17           17                      +1
+  (  -42,   -31)      18       18           18                      +1
+  (  -41,   -31)      19       19           19                      +1
+  (  -40,   -31)      20       20           20                      +1
+  (  -39,   -31)      21       21           21                      +1
+  (  -38,   -31)      22       22           22                      +1
+rises 6, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder blk5 at (-52, -32), boulder blk6 at (-36, -29)
+
+## blk5 (boulder) along z
+TRANSECT 25 stations from (-50, -43) to (-50, -19), every 1
+  station        ground  surface  water  top  standing            step
+  (  -50,   -43)      37       37           37  stroke road-haul    
+  (  -50,   -42)      37       37           37  stroke road-haul    
+  (  -50,   -41)      37       37           37  stroke road-haul    
+  (  -50,   -40)      37       37           37  stroke road-haul    
+  (  -50,   -39)      37       37           37  stroke road-haul    
+  (  -50,   -38)      42       42           42  stroke road-haul    BARRIER +5
+  (  -50,   -37)      42       42           42                      
+  (  -50,   -36)      31       31           31                      DROP -11
+  (  -50,   -35)      16       16           16                      DROP -15
+  (  -50,   -34)      16       16           16                      
+  (  -50,   -33)      16       16           18  boulder blk5        
+  (  -50,   -32)      16       16           20  boulder blk5        
+  (  -50,   -31)      16       16           20  boulder blk5        
+  (  -50,   -30)      16       16           20  boulder blk5        
+  (  -50,   -29)      13       13           19  boulder blk5        -3
+  (  -50,   -28)      13       13           13                      
+  (  -50,   -27)      13       13           13                      
+  (  -50,   -26)                                                    void
+  (  -50,   -25)                                                    void
+  (  -50,   -24)                                                    void
+  (  -50,   -23)                                                    void
+  (  -50,   -22)                                                    void
+  (  -50,   -21)                                                    void
+  (  -50,   -20)                                                    void
+  (  -50,   -19)                                                    void
+rises 1, falls 3, worst step 15: 1 barrier, 0 scramble, 2 drop — BARRIER +5 at (-50, -38); DROP -11 at (-50, -36); DROP -15 at (-50, -35) | walked end to end
+beside: stroke road-haul at (-52, -45), boulder blk5 at (-51, -33)

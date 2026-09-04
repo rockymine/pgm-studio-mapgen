@@ -1,0 +1,61 @@
+## b-field-b (boulder) along x
+TRANSECT 25 stations from (-18, 20) to (6, 20), every 1
+  station        ground  surface  water  top  standing            step
+  (  -18,    20)      16       16           28  house h-steading    
+  (  -17,    20)      16       16           28  house h-steading    
+  (  -16,    20)      16       16           27  house h-steading    
+  (  -15,    20)      16       16           26  house h-steading    
+  (  -14,    20)      15       15           25  house h-steading    -1
+  (  -13,    20)      15       15           24  house h-steading    
+  (  -12,    20)      15       15           23  house h-steading    
+  (  -11,    20)      15       15           22  house h-steading    
+  (  -10,    20)      15       15           21  house h-steading    
+  (   -9,    20)      15       15           15                      
+  (   -8,    20)      15       15           18  boulder b-field-b   
+  (   -7,    20)      15       15           18  boulder b-field-b   
+  (   -6,    20)      15       15           19  boulder b-field-b   
+  (   -5,    20)      15       15           18  boulder b-field-b   
+  (   -4,    20)      15       15           18  boulder b-field-b   
+  (   -3,    20)      15       15           15                      
+  (   -2,    20)      15       15           15  stroke st-gate      
+  (   -1,    20)      15       15           15  stroke st-gate      
+  (    0,    20)      15       15           15  stroke st-gate      
+  (    1,    20)      15       15           15  stroke st-gate      
+  (    2,    20)      15       15           15                      
+  (    3,    20)      15       15           19  house h-chapel      
+  (    4,    20)      15       15           20  house h-chapel      
+  (    5,    20)      15       15           21  house h-chapel      
+  (    6,    20)      15       15           22  house h-chapel      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house h-steading at (-18, 18), stroke st-postern-w at (-20, 21), boulder b-field-b at (-8, 19), stroke st-gate at (-3, 22), house h-chapel at (3, 18)
+
+## b-field-b (boulder) along z
+TRANSECT 25 stations from (-6, 8) to (-6, 32), every 1
+  station        ground  surface  water  top  standing            step
+  (   -6,     8)                                                    void
+  (   -6,     9)                                                    void
+  (   -6,    10)                                                    void
+  (   -6,    11)                                                    void
+  (   -6,    12)                                                    void
+  (   -6,    13)                                                    void
+  (   -6,    14)      15       15           15                      
+  (   -6,    15)      15       15           15                      
+  (   -6,    16)      15       15           15                      
+  (   -6,    17)      15       15           15                      
+  (   -6,    18)      15       15           18  boulder b-field-b   
+  (   -6,    19)      15       15           18  boulder b-field-b   
+  (   -6,    20)      15       15           19  boulder b-field-b   
+  (   -6,    21)      15       15           18  boulder b-field-b   
+  (   -6,    22)      15       15           17  boulder b-field-b   
+  (   -6,    23)      15       15           15                      
+  (   -6,    24)      15       15           24  tree t-wood-c       
+  (   -6,    25)      15       15           24  tree t-wood-c       
+  (   -6,    26)      15       15           23  tree t-wood-c       
+  (   -6,    27)      27       27           27                      BARRIER +12
+  (   -6,    28)      27       27           27                      
+  (   -6,    29)      27       27           27                      
+  (   -6,    30)      27       27           27                      
+  (   -6,    31)      27       27           27                      
+  (   -6,    32)      27       27           27                      
+rises 1, falls 0, worst step 12: 1 barrier, 0 scramble, 0 drop — BARRIER +12 at (-6, 27) | walked end to end
+beside: boulder b-field-b at (-6, 18), tree t-wood-c at (-5, 23)

@@ -1,0 +1,61 @@
+## b-field-a (boulder) along x
+TRANSECT 25 stations from (-38, 17) to (-14, 17), every 1
+  station        ground  surface  water  top  standing            step
+  (  -38,    17)      17       17           17                      
+  (  -37,    17)      12       12           12  water w-mere        DROP -5
+  (  -36,    17)      12       12           12  water w-mere        
+  (  -35,    17)      12       12     12    12  water w-mere        
+  (  -34,    17)      12       12     12    12  water w-mere        
+  (  -33,    17)      12       12     12    12  water w-mere        
+  (  -32,    17)      12       12           12  water w-mere        
+  (  -31,    17)      12       12           12                      
+  (  -30,    17)      12       12           12                      
+  (  -29,    17)      17       17           17                      BARRIER +5
+  (  -28,    17)      17       17           20  boulder b-field-a   
+  (  -27,    17)      17       17           21  boulder b-field-a   
+  (  -26,    17)      17       17           21  boulder b-field-a   
+  (  -25,    17)      17       17           21  boulder b-field-a   
+  (  -24,    17)      17       17           20  boulder b-field-a   
+  (  -23,    17)      17       17           17                      
+  (  -22,    17)      17       17           17                      
+  (  -21,    17)      16       16           16                      -1
+  (  -20,    17)      16       16           24  tree t-field-w      
+  (  -19,    17)      16       16           16                      
+  (  -18,    17)      16       16           28  house h-steading    
+  (  -17,    17)      16       16           28  house h-steading    
+  (  -16,    17)      16       16           27  house h-steading    
+  (  -15,    17)      16       16           26  house h-steading    
+  (  -14,    17)      16       16           25  tree t-wood-d       
+rises 1, falls 2, worst step 5: 1 barrier, 0 scramble, 1 drop — DROP -5 at (-37, 17); BARRIER +5 at (-29, 17) | walked end to end
+beside: water w-mere at (-37, 17), boulder b-field-a at (-28, 16), tree t-field-w at (-22, 16), house h-steading at (-18, 17), tree t-wood-d at (-15, 16)
+
+## b-field-a (boulder) along z
+TRANSECT 25 stations from (-26, 5) to (-26, 29), every 1
+  station        ground  surface  water  top  standing            step
+  (  -26,     5)                                                    void
+  (  -26,     6)                                                    void
+  (  -26,     7)                                                    void
+  (  -26,     8)                                                    void
+  (  -26,     9)                                                    void
+  (  -26,    10)                                                    void
+  (  -26,    11)                                                    void
+  (  -26,    12)                                                    void
+  (  -26,    13)                                                    void
+  (  -26,    14)      17       17           17                      
+  (  -26,    15)      17       17           19  boulder b-field-a   
+  (  -26,    16)      17       17           20  boulder b-field-a   
+  (  -26,    17)      17       17           21  boulder b-field-a   
+  (  -26,    18)      17       17           21  boulder b-field-a   
+  (  -26,    19)      17       17           19  boulder b-field-a   
+  (  -26,    20)      17       17           17                      
+  (  -26,    21)      17       17           28  tree t-wood-a       
+  (  -26,    22)      17       17           29  tree t-wood-a       
+  (  -26,    23)      17       17           30  tree t-wood-a       
+  (  -26,    24)      17       17           30  tree t-wood-a       
+  (  -26,    25)      17       17           30  tree t-wood-a       
+  (  -26,    26)      17       17           30  tree t-wood-a       
+  (  -26,    27)      15       15           28  tree t-wood-a       -2
+  (  -26,    28)      15       15           15                      
+  (  -26,    29)      23       23           23                      BARRIER +8
+rises 1, falls 1, worst step 8: 1 barrier, 0 scramble, 0 drop — BARRIER +8 at (-26, 29) | walked end to end
+beside: boulder b-field-a at (-26, 15), tree t-wood-a at (-25, 20), tree t-wood-b at (-28, 23)

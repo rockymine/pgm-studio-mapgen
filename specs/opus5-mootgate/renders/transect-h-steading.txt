@@ -1,0 +1,58 @@
+## h-steading (house) along x
+TRANSECT 23 stations from (-25, 21) to (-3, 21), every 1
+  station        ground  surface  water  top  standing            step
+  (  -25,    21)      17       17           28  tree t-wood-a       
+  (  -24,    21)      17       17           26  tree t-wood-a       
+  (  -23,    21)      17       17           17  stroke st-postern-w  
+  (  -22,    21)      16       16           16  stroke st-postern-w  -1
+  (  -21,    21)      16       16           16  stroke st-postern-w  
+  (  -20,    21)      16       16           16  stroke st-postern-w  
+  (  -19,    21)      16       16           16                      
+  (  -18,    21)      16       16           28  house h-steading    
+  (  -17,    21)      16       16           28  house h-steading    
+  (  -16,    21)      16       16           27  house h-steading    
+  (  -15,    21)      16       16           26  house h-steading    
+  (  -14,    21)      15       15           25  house h-steading    -1
+  (  -13,    21)      15       15           24  house h-steading    
+  (  -12,    21)      15       15           23  house h-steading    
+  (  -11,    21)      15       15           22  house h-steading    
+  (  -10,    21)      15       15           21  house h-steading    
+  (   -9,    21)      15       15           15                      
+  (   -8,    21)      15       15           17  boulder b-field-b   
+  (   -7,    21)      15       15           18  boulder b-field-b   
+  (   -6,    21)      15       15           18  boulder b-field-b   
+  (   -5,    21)      15       15           18  boulder b-field-b   
+  (   -4,    21)      15       15           17  boulder b-field-b   
+  (   -3,    21)      15       15           15                      
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder b-field-a at (-26, 19), tree t-wood-a at (-25, 20), stroke st-postern-w at (-23, 21), house h-steading at (-18, 19), boulder b-field-b at (-8, 19), tree t-wood-c at (-5, 23), stroke st-gate at (-3, 22)
+
+## h-steading (house) along z
+TRANSECT 24 stations from (-14, 10) to (-14, 33), every 1
+  station        ground  surface  water  top  standing            step
+  (  -14,    10)                                                    void
+  (  -14,    11)                                                    void
+  (  -14,    12)                                                    void
+  (  -14,    13)                            22  tree t-wood-d       void
+  (  -14,    14)      16       16           24  tree t-wood-d       
+  (  -14,    15)      16       16           25  tree t-wood-d       
+  (  -14,    16)      16       16           25  tree t-wood-d       
+  (  -14,    17)      16       16           25  tree t-wood-d       
+  (  -14,    18)      16       16           25  house h-steading    
+  (  -14,    19)      16       16           25  house h-steading    
+  (  -14,    20)      15       15           25  house h-steading    -1
+  (  -14,    21)      15       15           25  house h-steading    
+  (  -14,    22)      15       15           25  house h-steading    
+  (  -14,    23)      15       15           25  house h-steading    
+  (  -14,    24)      15       15           25  house h-steading    
+  (  -14,    25)      15       15           25  house h-steading    
+  (  -14,    26)      15       15           25  house h-steading    
+  (  -14,    27)      15       15           15                      
+  (  -14,    28)      15       15           15                      
+  (  -14,    29)      23       23           23                      BARRIER +8
+  (  -14,    30)      23       23           23                      
+  (  -14,    31)      23       23           23                      
+  (  -14,    32)      15       15           15                      DROP -8
+  (  -14,    33)      15       15           26  house h-south-b     
+rises 1, falls 2, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (-14, 29); DROP -8 at (-14, 32) | walked end to end
+beside: tree t-wood-d at (-14, 13), house h-steading at (-16, 17), house h-south-b at (-16, 33)

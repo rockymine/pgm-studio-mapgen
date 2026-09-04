@@ -1,0 +1,58 @@
+## h-barn (house) along x
+TRANSECT 23 stations from (16, 20) to (38, 20), every 1
+  station        ground  surface  water  top  standing            step
+  (   16,    20)      15       15           21  house h-cot         
+  (   17,    20)      15       15           20  house h-cot         
+  (   18,    20)      15       15           19  house h-cot         
+  (   19,    20)      15       15           15                      
+  (   20,    20)      15       15           15  stroke st-postern-e  
+  (   21,    20)      15       15           15  stroke st-postern-e  
+  (   22,    20)      16       16           16                      +1
+  (   23,    20)      16       16           21  house h-barn        
+  (   24,    20)      16       16           22  house h-barn        
+  (   25,    20)      16       16           23  house h-barn        
+  (   26,    20)      16       16           24  house h-barn        
+  (   27,    20)      16       16           25  house h-barn        
+  (   28,    20)      16       16           26  house h-barn        
+  (   29,    20)      16       16           27  house h-barn        
+  (   30,    20)      16       16           28  house h-barn        
+  (   31,    20)      16       16           28  house h-barn        
+  (   32,    20)      16       16           16                      
+  (   33,    20)      16       16           16                      
+  (   34,    20)      16       16           16                      
+  (   35,    20)      16       16           16                      
+  (   36,    20)      16       16           16                      
+  (   37,    20)      16       16           16                      
+  (   38,    20)      16       16           16                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house h-cot at (14, 18), tree t-field-c at (17, 18), stroke st-postern-e at (19, 21), house h-barn at (23, 18), tree t-hedge-a at (33, 18), boulder b-field-c at (33, 22)
+
+## h-barn (house) along z
+TRANSECT 24 stations from (27, 9) to (27, 32), every 1
+  station        ground  surface  water  top  standing            step
+  (   27,     9)                                                    void
+  (   27,    10)                                                    void
+  (   27,    11)                                                    void
+  (   27,    12)                                                    void
+  (   27,    13)                                                    void
+  (   27,    14)      16       16           16                      
+  (   27,    15)      16       16           16                      
+  (   27,    16)      16       16           25  house h-barn        
+  (   27,    17)      16       16           25  house h-barn        
+  (   27,    18)      16       16           25  house h-barn        
+  (   27,    19)      16       16           25  house h-barn        
+  (   27,    20)      16       16           25  house h-barn        
+  (   27,    21)      16       16           25  house h-barn        
+  (   27,    22)      16       16           25  house h-barn        
+  (   27,    23)      16       16           25  house h-barn        
+  (   27,    24)      16       16           25  house h-barn        
+  (   27,    25)      15       15           25  house h-barn        -1
+  (   27,    26)      15       15           15                      
+  (   27,    27)      15       15           16  flora fl-field      
+  (   27,    28)      15       15           15                      
+  (   27,    29)      23       23           23                      BARRIER +8
+  (   27,    30)      23       23           23                      
+  (   27,    31)      23       23           23                      
+  (   27,    32)      15       15           15                      DROP -8
+rises 1, falls 2, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (27, 29); DROP -8 at (27, 32) | walked end to end
+beside: house h-barn at (25, 16), tree t-hedge-b at (29, 25), flora fl-field at (25, 27), house h-south-f at (25, 33)

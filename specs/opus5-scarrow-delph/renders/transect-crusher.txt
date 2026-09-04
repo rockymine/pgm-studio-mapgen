@@ -1,0 +1,57 @@
+## crusher (house) along x
+TRANSECT 21 stations from (32, -72) to (52, -72), every 1
+  station        ground  surface  water  top  standing            step
+  (   32,   -72)      32       32           32                      
+  (   33,   -72)      32       32           32                      
+  (   34,   -72)      32       32           32                      
+  (   35,   -72)      32       32           32                      
+  (   36,   -72)      38       38           38                      BARRIER +6
+  (   37,   -72)      38       38           38                      
+  (   38,   -72)      38       38           38                      
+  (   39,   -72)      38       38           53  house crusher       
+  (   40,   -72)      38       38           53  house crusher       
+  (   41,   -72)      38       38           53  house crusher       
+  (   42,   -72)      38       38           53  house crusher       
+  (   43,   -72)      38       38           53  house crusher       
+  (   44,   -72)      38       38           53  house crusher       
+  (   45,   -72)      38       38           53  house crusher       
+  (   46,   -72)      38       38           53  house crusher       
+  (   47,   -72)      38       38           53  house crusher       
+  (   48,   -72)      38       38           53  house crusher       
+  (   49,   -72)      38       38           53  house crusher       
+  (   50,   -72)      38       38           53  house crusher       
+  (   51,   -72)      38       38           53  house crusher       
+  (   52,   -72)      38       38           38                      
+rises 1, falls 0, worst step 6: 1 barrier, 0 scramble, 0 drop — BARRIER +6 at (36, -72) | walked end to end
+beside: house crusher at (39, -74)
+
+## crusher (house) along z
+TRANSECT 25 stations from (45, -84) to (45, -60), every 1
+  station        ground  surface  water  top  standing            step
+  (   45,   -84)      44       44           44                      
+  (   45,   -83)      43       43           43                      -1
+  (   45,   -82)      38       38           38                      DROP -5
+  (   45,   -81)      38       38           41  boulder blk9        
+  (   45,   -80)      38       38           41  boulder blk9        
+  (   45,   -79)      38       38           41  boulder blk9        
+  (   45,   -78)      38       38           41  boulder blk9        
+  (   45,   -77)      38       38           48  house crusher       
+  (   45,   -76)      38       38           49  house crusher       
+  (   45,   -75)      38       38           50  house crusher       
+  (   45,   -74)      38       38           51  house crusher       
+  (   45,   -73)      38       38           52  house crusher       
+  (   45,   -72)      38       38           53  house crusher       
+  (   45,   -71)      38       38           52  house crusher       
+  (   45,   -70)      38       38           51  house crusher       
+  (   45,   -69)      38       38           50  house crusher       
+  (   45,   -68)      38       38           49  house crusher       
+  (   45,   -67)      38       38           48  house crusher       
+  (   45,   -66)      38       38           38                      
+  (   45,   -65)      38       38           38                      
+  (   45,   -64)      38       38           38                      
+  (   45,   -63)      38       38           38                      
+  (   45,   -62)      38       38           38                      
+  (   45,   -61)      38       38           38                      
+  (   45,   -60)      38       38           40  boulder blk8        
+rises 0, falls 2, worst step 5: 0 barrier, 0 scramble, 1 drop — DROP -5 at (45, -82) | walked end to end
+beside: boulder blk9 at (43, -82), house crusher at (43, -77), boulder blk8 at (46, -62)

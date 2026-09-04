@@ -1,0 +1,60 @@
+## h-east-k (house) along x
+TRANSECT 21 stations from (19, 52) to (39, 52), every 1
+  station        ground  surface  water  top  standing            step
+  (   19,    52)      15       15           27  house h-inn         
+  (   20,    52)      15       15           27  house h-inn         
+  (   21,    52)      15       15           27  house h-inn         
+  (   22,    52)      15       15           27  house h-inn         
+  (   23,    52)      15       15           27  house h-inn         
+  (   24,    52)      15       15           15                      
+  (   25,    52)      15       15           15                      
+  (   26,    52)      15       15           19  house h-east-k      
+  (   27,    52)      15       15           20  house h-east-k      
+  (   28,    52)      15       15           21  house h-east-k      
+  (   29,    52)      15       15           22  house h-east-k      
+  (   30,    52)      15       15           21  house h-east-k      
+  (   31,    52)      15       15           20  house h-east-k      
+  (   32,    52)      15       15           19  house h-east-k      
+  (   33,    52)      23       23           23                      BARRIER +8
+  (   34,    52)      23       23           23                      
+  (   35,    52)      23       23           23                      
+  (   36,    52)      15       15           22  tree t-berm-e       DROP -8
+  (   37,    52)      15       15           24  tree t-berm-e       
+  (   38,    52)      15       15           24  tree t-berm-e       
+  (   39,    52)      15       15           23  tree t-berm-e       
+rises 1, falls 1, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (33, 52); DROP -8 at (36, 52) | walked end to end
+beside: house h-inn at (17, 50), house h-east-k at (26, 50), tree t-berm-e at (36, 50)
+
+## h-east-k (house) along z
+TRANSECT 28 stations from (29, 39) to (29, 66), every 1
+  station        ground  surface  water  top  standing            step
+  (   29,    39)      15       15           22  house h-south-f     
+  (   29,    40)      15       15           21  house h-south-f     
+  (   29,    41)      15       15           21  house h-south-f     
+  (   29,    42)      15       15           15  stroke st-market    
+  (   29,    43)      15       15           15  stroke st-market    
+  (   29,    44)      15       15           15  stroke st-market    
+  (   29,    45)      15       15           15  stroke st-market    
+  (   29,    46)      15       15           22  house h-east-k      
+  (   29,    47)      15       15           22  house h-east-k      
+  (   29,    48)      15       15           22  house h-east-k      
+  (   29,    49)      15       15           22  house h-east-k      
+  (   29,    50)      15       15           22  house h-east-k      
+  (   29,    51)      15       15           22  house h-east-k      
+  (   29,    52)      15       15           22  house h-east-k      
+  (   29,    53)      15       15           22  house h-east-k      
+  (   29,    54)      15       15           22  house h-east-k      
+  (   29,    55)      15       15           22  house h-east-k      
+  (   29,    56)      15       15           22  house h-east-k      
+  (   29,    57)      15       15           22  house h-east-k      
+  (   29,    58)      15       15           22  house h-east-k      
+  (   29,    59)      15       15           22  house h-east-k      
+  (   29,    60)      15       15           15                      
+  (   29,    61)      15       15           19  house h-back-e      
+  (   29,    62)      15       15           20  house h-back-e      
+  (   29,    63)      15       15           21  house h-back-e      
+  (   29,    64)      15       15           22  house h-back-e      
+  (   29,    65)      15       15           23  house h-back-e      
+  (   29,    66)      15       15           22  house h-back-e      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house h-south-f at (27, 37), stroke st-market at (27, 42), house h-east-k at (27, 46), house h-back-e at (27, 61)

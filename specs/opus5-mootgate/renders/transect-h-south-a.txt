@@ -1,0 +1,57 @@
+## h-south-a (house) along x
+TRANSECT 23 stations from (-40, 37) to (-18, 37), every 1
+  station        ground  surface  water  top  standing            step
+  (  -40,    37)      15       15           17  boulder b-berm-w    
+  (  -39,    37)      15       15           18  boulder b-berm-w    
+  (  -38,    37)      15       15           18  boulder b-berm-w    
+  (  -37,    37)      15       15           18  boulder b-berm-w    
+  (  -36,    37)      23       23           23                      BARRIER +8
+  (  -35,    37)      23       23           23                      
+  (  -34,    37)      23       23           23                      
+  (  -33,    37)      15       15           23  house h-south-a     DROP -8
+  (  -32,    37)      15       15           23  house h-south-a     
+  (  -31,    37)      15       15           23  house h-south-a     
+  (  -30,    37)      15       15           23  house h-south-a     
+  (  -29,    37)      15       15           23  house h-south-a     
+  (  -28,    37)      15       15           23  house h-south-a     
+  (  -27,    37)      15       15           23  house h-south-a     
+  (  -26,    37)      15       15           23  house h-south-a     
+  (  -25,    37)      15       15           23  house h-south-a     
+  (  -24,    37)      15       15           15                      
+  (  -23,    37)      15       15           15  stroke st-postern-w  
+  (  -22,    37)      15       15           15  stroke st-postern-w  
+  (  -21,    37)      15       15           15  stroke st-postern-w  
+  (  -20,    37)      15       15           15  stroke st-postern-w  
+  (  -19,    37)      15       15           15                      
+  (  -18,    37)      15       15           24  house h-south-b     
+rises 1, falls 1, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (-36, 37); DROP -8 at (-33, 37) | walked end to end
+beside: boulder b-berm-w at (-39, 35), house h-south-a at (-33, 35), stroke st-postern-w at (-23, 35), house h-south-b at (-18, 35)
+
+## h-south-a (house) along z
+TRANSECT 23 stations from (-29, 26) to (-29, 48), every 1
+  station        ground  surface  water  top  standing            step
+  (  -29,    26)      17       17           27  tree t-wood-b       
+  (  -29,    27)      17       17           26  tree t-wood-b       
+  (  -29,    28)      17       17           17                      
+  (  -29,    29)      23       23           23                      BARRIER +6
+  (  -29,    30)      23       23           23                      
+  (  -29,    31)      23       23           23                      
+  (  -29,    32)      15       15           15                      DROP -8
+  (  -29,    33)      15       15           19  house h-south-a     
+  (  -29,    34)      15       15           20  house h-south-a     
+  (  -29,    35)      15       15           21  house h-south-a     
+  (  -29,    36)      15       15           22  house h-south-a     
+  (  -29,    37)      15       15           23  house h-south-a     
+  (  -29,    38)      15       15           22  house h-south-a     
+  (  -29,    39)      15       15           21  house h-south-a     
+  (  -29,    40)      15       15           20  house h-south-a     
+  (  -29,    41)      15       15           19  house h-south-a     
+  (  -29,    42)      15       15           15  stroke st-market    
+  (  -29,    43)      15       15           15  stroke st-market    
+  (  -29,    44)      15       15           15  stroke st-market    
+  (  -29,    45)      15       15           15  stroke st-market    
+  (  -29,    46)      15       15           21  house h-west-g      
+  (  -29,    47)      15       15           21  house h-west-g      
+  (  -29,    48)      15       15           21  house h-west-g      
+rises 1, falls 1, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +6 at (-29, 29); DROP -8 at (-29, 32) | walked end to end
+beside: tree t-wood-b at (-31, 24), tree t-wood-a at (-27, 24), house h-south-a at (-31, 33), stroke st-market at (-30, 42), house h-west-g at (-31, 46)

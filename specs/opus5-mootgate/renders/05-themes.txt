@@ -1,0 +1,8 @@
+THEMES  3 themes over 12160 ground cells, 13 distinct surface blocks
+  vale  8666 cells (71.3%)  2:0 Grass Block, 4:0 Cobblestone, 98:0 Stone Bricks, 13:0 Gravel, 1:0 Stone, 9:0 Water, 3:1 Coarse Dirt, 17:1 Spruce Log, 35:14 Red Wool, 35:11 Blue Wool
+  rampart  1808 cells (14.9%)  98:0 Stone Bricks, 98:1 Mossy Stone Bricks, 17:0 Oak Log, 159:0 White Stained Clay, 4:0 Cobblestone
+  cobbles  1686 cells (13.9%)  4:0 Cobblestone, 13:0 Gravel, 98:0 Stone Bricks
+borders:
+  rampart | vale  1060 cells
+  cobbles | vale  512 cells
+  cobbles | rampart  148 cells

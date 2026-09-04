@@ -1,0 +1,53 @@
+## h-stall-b (house) along x
+TRANSECT 21 stations from (-19, 58) to (1, 58), every 1
+  station        ground  surface  water  top  standing            step
+  (  -19,    58)      15       15           26  house h-granary     
+  (  -18,    58)      15       15           26  house h-granary     
+  (  -17,    58)      15       15           15                      
+  (  -16,    58)      15       15           15                      
+  (  -15,    58)      15       15           15                      
+  (  -14,    58)      15       15           15                      
+  (  -13,    58)      15       15           15                      
+  (  -12,    58)      15       15           21  house h-stall-b     
+  (  -11,    58)      15       15           21  house h-stall-b     
+  (  -10,    58)      15       15           20  house h-stall-b     
+  (   -9,    58)      15       15           19  house h-stall-b     
+  (   -8,    58)      15       15           22  house h-stall-b     
+  (   -7,    58)      15       15           21  house h-stall-b     
+  (   -6,    58)      15       15           20  house h-stall-b     
+  (   -5,    58)      17       17           17                      scramble +2
+  (   -4,    58)      17       17           17                      
+  (   -3,    58)      17       17           17                      
+  (   -2,    58)      15       15           15                      -2
+  (   -1,    58)      15       15           15                      
+  (    0,    58)      15       15           15                      
+  (    1,    58)      15       15           15                      
+rises 1, falls 1, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-5, 58) | walked end to end
+beside: house h-granary at (-21, 56), house h-stall-b at (-12, 56), house h-stall-c at (2, 56)
+
+## h-stall-b (house) along z
+TRANSECT 21 stations from (-9, 48) to (-9, 68), every 1
+  station        ground  surface  water  top  standing            step
+  (   -9,    48)      16       16           19  house h-stall-a     
+  (   -9,    49)      15       15           19  house h-stall-a     -1
+  (   -9,    50)      15       15           19  house h-stall-a     
+  (   -9,    51)      15       15           19  house h-stall-a     
+  (   -9,    52)      15       15           19  house h-stall-a     
+  (   -9,    53)      15       15           22  house h-stall-a     
+  (   -9,    54)      15       15           15                      
+  (   -9,    55)      15       15           22  house h-stall-b     
+  (   -9,    56)      15       15           19  house h-stall-b     
+  (   -9,    57)      15       15           19  house h-stall-b     
+  (   -9,    58)      15       15           19  house h-stall-b     
+  (   -9,    59)      15       15           19  house h-stall-b     
+  (   -9,    60)      15       15           19  house h-stall-b     
+  (   -9,    61)      15       15           22  house h-stall-b     
+  (   -9,    62)      15       15           15                      
+  (   -9,    63)      15       15           15                      
+  (   -9,    64)      15       15           15                      
+  (   -9,    65)      15       15           15                      
+  (   -9,    66)      15       15           15                      
+  (   -9,    67)      15       15           15                      
+  (   -9,    68)      15       15           15                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke st-market at (-7, 46), house h-stall-a at (-11, 47), house h-stall-b at (-11, 55)

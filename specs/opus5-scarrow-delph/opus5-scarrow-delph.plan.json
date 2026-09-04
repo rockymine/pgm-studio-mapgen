@@ -1,0 +1,129 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Scarrow Delph",
+  "notes": "A worked hillside quarry: benched delph, haul road, gallery, drowned pit."
+ },
+ "globals": {
+  "cell": 2,
+  "symmetry": "rot_180",
+  "maxPlayers": 24,
+  "surface": 30,
+  "observerY": 74
+ },
+ "pieces": [
+  {
+   "id": "moor-w",
+   "role": "piece",
+   "rect": [
+    -27,
+    -55,
+    22,
+    12
+   ],
+   "surface": 30
+  },
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    -5,
+    -55,
+    10,
+    12
+   ],
+   "surface": 30
+  },
+  {
+   "id": "moor-e",
+   "role": "piece",
+   "rect": [
+    5,
+    -55,
+    22,
+    12
+   ],
+   "surface": 30
+  },
+  {
+   "id": "works",
+   "role": "piece",
+   "rect": [
+    -27,
+    -43,
+    54,
+    30
+   ],
+   "surface": 30
+  },
+  {
+   "id": "sump",
+   "role": "piece",
+   "rect": [
+    -22,
+    -8,
+    44,
+    16
+   ],
+   "surface": 10,
+   "mirrors": false
+  }
+ ],
+ "zones": [
+  {
+   "id": "crossing",
+   "rect": [
+    -27,
+    -15,
+    54,
+    30
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "camp",
+    "at": [
+     10,
+     12
+    ],
+    "facing": "back",
+    "footprint": [
+     2,
+     4,
+     16,
+     14
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "dt-pit",
+    "piece": "",
+    "at": [
+     -28,
+     -60
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "The Sump"
+   },
+   {
+    "id": "dt-shelf",
+    "piece": "",
+    "at": [
+     22,
+     -58
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "The Gallery"
+   }
+  ]
+ }
+}

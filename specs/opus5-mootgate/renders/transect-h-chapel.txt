@@ -1,0 +1,55 @@
+## h-chapel (house) along x
+TRANSECT 21 stations from (-4, 21) to (16, 21), every 1
+  station        ground  surface  water  top  standing            step
+  (   -4,    21)      15       15           17  boulder b-field-b   
+  (   -3,    21)      15       15           15                      
+  (   -2,    21)      15       15           15  stroke st-gate      
+  (   -1,    21)      15       15           15  stroke st-gate      
+  (    0,    21)      15       15           15  stroke st-gate      
+  (    1,    21)      15       15           15  stroke st-gate      
+  (    2,    21)      15       15           15                      
+  (    3,    21)      15       15           19  house h-chapel      
+  (    4,    21)      15       15           20  house h-chapel      
+  (    5,    21)      15       15           21  house h-chapel      
+  (    6,    21)      15       15           22  house h-chapel      
+  (    7,    21)      15       15           21  house h-chapel      
+  (    8,    21)      15       15           20  house h-chapel      
+  (    9,    21)      15       15           19  house h-chapel      
+  (   10,    21)      15       15           15                      
+  (   11,    21)      15       15           15                      
+  (   12,    21)      15       15           19  house h-cot         
+  (   13,    21)      15       15           20  house h-cot         
+  (   14,    21)      15       15           21  house h-cot         
+  (   15,    21)      15       15           22  house h-cot         
+  (   16,    21)      15       15           21  house h-cot         
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder b-field-b at (-6, 19), stroke st-gate at (-2, 20), tree t-wood-c at (-5, 23), house h-chapel at (3, 19), house h-cot at (12, 19)
+
+## h-chapel (house) along z
+TRANSECT 23 stations from (6, 10) to (6, 32), every 1
+  station        ground  surface  water  top  standing            step
+  (    6,    10)                                                    void
+  (    6,    11)                                                    void
+  (    6,    12)                                                    void
+  (    6,    13)                                                    void
+  (    6,    14)      15       15           15                      
+  (    6,    15)      15       15           15                      
+  (    6,    16)      15       15           15                      
+  (    6,    17)      15       15           22  house h-chapel      
+  (    6,    18)      15       15           22  house h-chapel      
+  (    6,    19)      15       15           22  house h-chapel      
+  (    6,    20)      15       15           22  house h-chapel      
+  (    6,    21)      15       15           22  house h-chapel      
+  (    6,    22)      15       15           22  house h-chapel      
+  (    6,    23)      15       15           22  house h-chapel      
+  (    6,    24)      15       15           22  house h-chapel      
+  (    6,    25)      15       15           22  house h-chapel      
+  (    6,    26)      15       15           15                      
+  (    6,    27)      27       27           27                      BARRIER +12
+  (    6,    28)      27       27           27                      
+  (    6,    29)      27       27           27                      
+  (    6,    30)      27       27           27                      
+  (    6,    31)      27       27           27                      
+  (    6,    32)      27       27           27                      
+rises 1, falls 0, worst step 12: 1 barrier, 0 scramble, 0 drop — BARRIER +12 at (6, 27) | walked end to end
+beside: house h-chapel at (4, 17)

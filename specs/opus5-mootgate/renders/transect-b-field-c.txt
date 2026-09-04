@@ -1,0 +1,52 @@
+## b-field-c (boulder) along x
+TRANSECT 16 stations from (24, 24) to (39, 24), every 1
+  station        ground  surface  water  top  standing            step
+  (   24,    24)      15       15           22  house h-barn        
+  (   25,    24)      15       15           23  house h-barn        
+  (   26,    24)      15       15           24  house h-barn        
+  (   27,    24)      16       16           25  house h-barn        +1
+  (   28,    24)      16       16           26  house h-barn        
+  (   29,    24)      16       16           27  house h-barn        
+  (   30,    24)      16       16           28  house h-barn        
+  (   31,    24)      16       16           28  tree t-hedge-b      
+  (   32,    24)      16       16           16                      
+  (   33,    24)      16       16           17  boulder b-field-c   
+  (   34,    24)      16       16           17  boulder b-field-c   
+  (   35,    24)      16       16           17  boulder b-field-c   
+  (   36,    24)      16       16           17  boulder b-field-c   
+  (   37,    24)      16       16           17  boulder b-field-c   
+  (   38,    24)      16       16           17  boulder b-field-c   
+  (   39,    24)      16       16           17  boulder b-field-c   
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke st-postern-e at (22, 22), house h-barn at (23, 22), tree t-hedge-b at (29, 25), boulder b-field-c at (33, 22)
+
+## b-field-c (boulder) along z
+TRANSECT 25 stations from (36, 12) to (36, 36), every 1
+  station        ground  surface  water  top  standing            step
+  (   36,    12)                                                    void
+  (   36,    13)                                                    void
+  (   36,    14)      16       16           16                      
+  (   36,    15)      16       16           16                      
+  (   36,    16)      16       16           16                      
+  (   36,    17)      16       16           23  tree t-hedge-a      
+  (   36,    18)      16       16           16                      
+  (   36,    19)      16       16           16                      
+  (   36,    20)      16       16           16                      
+  (   36,    21)      16       16           16  boulder b-field-c   
+  (   36,    22)      16       16           17  boulder b-field-c   
+  (   36,    23)      16       16           17  boulder b-field-c   
+  (   36,    24)      16       16           17  boulder b-field-c   
+  (   36,    25)      16       16           17  boulder b-field-c   
+  (   36,    26)      16       16           17  boulder b-field-c   
+  (   36,    27)      15       15           17  boulder b-field-c   -1
+  (   36,    28)      15       15           17  boulder b-field-c   
+  (   36,    29)      15       15           15                      
+  (   36,    30)      15       15           15                      
+  (   36,    31)      15       15           15                      
+  (   36,    32)      15       15           15                      
+  (   36,    33)      15       15           15                      
+  (   36,    34)      15       15           15                      
+  (   36,    35)      15       15           17  boulder b-berm-e    
+  (   36,    36)      15       15           18  boulder b-berm-e    
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree t-hedge-a at (34, 16), boulder b-field-c at (35, 21), tree t-hedge-b at (34, 26), boulder b-berm-e at (38, 34)
