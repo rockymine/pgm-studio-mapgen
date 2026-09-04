@@ -9,9 +9,9 @@ TRANSECT 29 stations from (20, 38) to (48, 38), every 1
   (   25,    38)       9        9            9  stroke track-east#2  
   (   26,    38)       9        9            9                      
   (   27,    38)       9        9            9                      
-  (   28,    38)       9        9            9                      
-  (   29,    38)       9        9            9                      
-  (   30,    38)       9        9            9                      
+  (   28,    38)       9        9           12  ironcube spawn-1:0#2  
+  (   29,    38)       9        9           12  ironcube spawn-1:0#2  
+  (   30,    38)       9        9           12  ironcube spawn-1:0#2  
   (   31,    38)       9        9            9                      
   (   32,    38)       9        9            9                      
   (   33,    38)       9        9           19  spawn spawn-1#2     
@@ -31,7 +31,7 @@ TRANSECT 29 stations from (20, 38) to (48, 38), every 1
   (   47,    38)       9        9            9                      
   (   48,    38)                                                    void
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke track-east#2 at (19, 36), spawn spawn-1#2 at (33, 36)
+beside: stroke track-east#2 at (19, 36), ironcube spawn-1:0#2 at (28, 36), spawn spawn-1#2 at (33, 36)
 
 ## spawn-yellow (spawn) along z
 TRANSECT 29 stations from (38, 20) to (38, 48), every 1
@@ -66,4 +66,4 @@ TRANSECT 29 stations from (38, 20) to (38, 48), every 1
   (   38,    47)       9        9            9                      
   (   38,    48)                                                    void
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke track-south#2 at (36, 18), ironcube spawn-1:0#2 at (40, 30), spawn spawn-1#2 at (36, 33)
+beside: stroke track-south#2 at (36, 18), spawn spawn-1#2 at (36, 33)

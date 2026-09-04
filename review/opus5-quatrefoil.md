@@ -92,11 +92,18 @@ five- and six-block yard anybody walks along rather than wall a spawning player 
 the door along `+z`:
 
 ```
-(-40,-36) 9 · (-40,-33) 9 · (-40,-30) 9 · (-40,-24) 9
-rises 0, falls 0, worst step 0 — walked end to end
+(-40,-36) 9 · (-40,-33) 9 · (-40,-30) 9 · (-40,-26) 9
+rises 0, falls 0, worst step 0 — nothing standing but the track, walked end to end
 ```
 
-The iron cube stands in that yard, outside the shell and inside the piece, which is where `WX8` puts one.
+**The iron cube is in the +x arm of that yard, not the +z one.** `WX8` puts the cube outside the shell,
+inside the piece, holding two blocks of clear air to the wall — which leaves the outer three cells of
+each arm and says nothing about where the door is. Placed by that rule alone it lands on the hall's own
+centreline two blocks in front of the opening: measured on the first build of this board at
+`x −42..−40, z −31..−29`, with the door in the `+z` wall at `z = −33` and the hall spanning `x −47..−33`.
+It now stands at `x −31..−29, z −38..−36` — along the stretch of the side yard the march abuts, because
+the yard's inner corner overhangs the void and a cube there stands on nine courses of its own bedrock
+(`WX11`, measured, and the reason it is not simply in the corner).
 
 ## What a raid costs
 

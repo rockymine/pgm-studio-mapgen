@@ -90,7 +90,12 @@ def plan():
             "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [7, 7],
                         "facing": "back", "footprint": [1, 1, 14, 14]}],
             "wools":  [{"id": "wool-1", "piece": "wool", "at": [5, 5]}],
-            "iron":   [{"id": "iron-1", "piece": "spawn", "at": [7.5, 18.5]}],
+            # The cube stands OUTSIDE the shell and inside the piece, holding two blocks of clear air to
+            # the wall (WX8), which leaves the outer three cells of the yard's two arms. The door is in the
+            # +z wall on the hall's own centreline, so the cube goes in the +x arm instead — and along the
+            # stretch of it the march abuts, because the yard's inner corner overhangs the void and a cube
+            # there stands on nine courses of its own bedrock.
+            "iron":   [{"id": "iron-1", "piece": "spawn", "at": [18.5, 10.5]}],
             "destroyables": [], "cores": [],
         },
         "walls": [], "boxes": [],

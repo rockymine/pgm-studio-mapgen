@@ -54,9 +54,9 @@ TRANSECT 30 stations from (38, -49) to (38, -20), every 1
   (   38,   -34)       9        9           19  spawn spawn-1#1     
   (   38,   -33)       9        9            9                      
   (   38,   -32)       9        9            9                      
-  (   38,   -31)       9        9            9                      
-  (   38,   -30)       9        9            9                      
-  (   38,   -29)       9        9            9                      
+  (   38,   -31)       9        9           12  ironcube spawn-1:0#1  
+  (   38,   -30)       9        9           12  ironcube spawn-1:0#1  
+  (   38,   -29)       9        9           12  ironcube spawn-1:0#1  
   (   38,   -28)       9        9            9                      
   (   38,   -27)       9        9            9                      
   (   38,   -26)       9        9            9  stroke track-east#1  
@@ -67,4 +67,4 @@ TRANSECT 30 stations from (38, -49) to (38, -20), every 1
   (   38,   -21)       9        9            9  stroke track-east#1  
   (   38,   -20)       9        9            9  stroke track-east#1  
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn spawn-1#1 at (36, -47), stroke track-east#1 at (39, -32), flora flora-dell#1 at (37, -18)
+beside: spawn spawn-1#1 at (36, -47), stroke track-east#1 at (39, -32), ironcube spawn-1:0#1 at (36, -31), flora flora-dell#1 at (37, -18)
