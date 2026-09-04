@@ -703,8 +703,8 @@ FINISH = {
     "themeById": {},
     # the coasts drawn rather than ruled: the compile emits the plan's own rectangles, which is the
     # board's shape and not its shoreline. Two blocks of wander is invisible at map scale.
-    "bendShapes": {"s0": {"k": 0.22, "wander": 6, "step": 12, "seed": 9},
-                   "s1": {"k": 0.20, "wander": 5, "step": 10, "seed": 11}},
+    "bendShapes": {"camp-16": {"k": 0.22, "wander": 6, "step": 12, "seed": 9},
+                   "reef-16": {"k": 0.20, "wander": 5, "step": 10, "seed": 11}},
     "addShapes": ADD_SHAPES,
     "addLayers": ADD_LAYERS,
     "relief": RELIEF,

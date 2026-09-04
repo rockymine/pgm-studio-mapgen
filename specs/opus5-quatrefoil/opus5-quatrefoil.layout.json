@@ -23,7 +23,7 @@
    "layout": {
     "shapes": [
      {
-      "id": "s0",
+      "id": "march-e-8",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -70,7 +70,7 @@
       "theme": "moor"
      },
      {
-      "id": "s1",
+      "id": "march-e-9",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -117,7 +117,7 @@
       "theme": "moor"
      },
      {
-      "id": "s2",
+      "id": "march-e-9-2",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -164,7 +164,7 @@
       "theme": "moor"
      },
      {
-      "id": "s3",
+      "id": "march-e-10",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -251,7 +251,7 @@
       "theme": "moor"
      },
      {
-      "id": "s4",
+      "id": "march-e-11",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -298,7 +298,7 @@
       "theme": "moor"
      },
      {
-      "id": "s5",
+      "id": "arm-inner-7",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -345,7 +345,7 @@
       "theme": "strand"
      },
      {
-      "id": "s6",
+      "id": "arm-inner-8",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -392,7 +392,7 @@
       "theme": "strand"
      },
      {
-      "id": "s7",
+      "id": "arm-inner-9",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -439,7 +439,7 @@
       "theme": "strand"
      },
      {
-      "id": "s8",
+      "id": "keep-13",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -486,7 +486,7 @@
       "theme": "keep"
      },
      {
-      "id": "s9",
+      "id": "keep-18",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -533,7 +533,7 @@
       "theme": "keep"
      },
      {
-      "id": "s10",
+      "id": "void-1-cut",
       "type": "polygon",
       "operation": "subtract",
       "override": false,
@@ -580,7 +580,7 @@
       "theme": null
      },
      {
-      "id": "s11",
+      "id": "void-2-cut",
       "type": "polygon",
       "operation": "subtract",
       "override": false,
@@ -2615,18 +2615,18 @@
       "name": "Team island",
       "mirrors": true,
       "shapeIds": [
-       "s0",
-       "s1",
-       "s2",
-       "s3",
-       "s4",
-       "s5",
-       "s6",
-       "s7",
-       "s8",
-       "s9",
-       "s10",
-       "s11",
+       "march-e-8",
+       "march-e-9",
+       "march-e-9-2",
+       "march-e-10",
+       "march-e-11",
+       "arm-inner-7",
+       "arm-inner-8",
+       "arm-inner-9",
+       "keep-13",
+       "keep-18",
+       "void-1-cut",
+       "void-2-cut",
        "keep-ramp",
        "keep-t1",
        "keep-t2",

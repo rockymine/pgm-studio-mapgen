@@ -29,7 +29,7 @@ the route is right and this file is wrong. Each row names its route.
   themeByHeight       the same, over every compiled shape standing at that height
   shapePropsById      PATCH  /map/{slug}/sketch/shapes/{shapeId}
   shapePropsByHeight  the same, by height
-  bendShapes          none yet — the studio has no bend operation (`TS30`), so the coast is computed here
+  bendShapes          POST   /map/{slug}/sketch/shapes/{shapeId}/bend
   relief              PUT    /map/{slug}/sketch/relief/{groupId}
   themes              PUT    /map/{slug}/sketch/themes/{themeId}
   mapTheme            PUT    /map/{slug}/sketch/map-theme
@@ -51,9 +51,9 @@ What each key states:
   themeById       {"s3": "gyp-rake"}          theme per compiled shape id (wins over the height rule)
   shapePropsByHeight {"11": {"relief_scope": "exclude"}, ...}   fields merged onto a compiled shape
   shapePropsById  {"s3": {...}}
-  bendShapes      {"s0": {"k": 0.22, "wander": 3, "step": 10, "seed": 5}}  the compiled outline drawn
-                  as a coast: resampled along its long edges, each inserted point pulled inward by a
-                  wander, and Bezier handles over the result. The plan's own vertices never move
+  bendShapes      {"bahnhof-30": {"k": 0.22, "wander": 3, "step": 10, "seed": 5}}  the compiled outline
+                  drawn as a coast, through POST /sketch/shapes/{id}/bend after the board is stored: the
+                  outline's own vertices never move and no point ever moves outward, both the studio's
   addShapes       [SketchShape + layer? + group?, ...]  authored shapes, each onto the layer and group it
                   names -- the studio's POST /map/{slug}/sketch/layers/{layerId}/shapes?group={id}. A shape
                   naming neither takes the compiled ground's first group
@@ -503,50 +503,6 @@ def sweep(into, written):
         print(f"    swept {len(swept)}: {', '.join(swept)}")
 
 
-def bend(ring, k=0.22, wander=3.0, step=10, seed=5):
-    """A compiled outline drawn as a coast: the plan's own ring, resampled along its long edges, each
-    inserted point pulled INWARD by a deterministic wander, and Catmull-Rom handles over the result.
-
-    The compiler emits a staircase of the plan's rectangles, which is the board's shape and not its
-    coast. Redrawing the ring by hand states the coast twice — once in the plan and once in the finish,
-    free to disagree — so the bend is taken over whatever the compile produced instead.
-
-    **Inward only, and never at a corner.** A point moved outward can cross the mirror line, close the
-    strait a capture board is measured on, or leave the plan's own footprint; a corner moved at all
-    narrows the neck a spur hangs off, which is the one width a branching board cannot spare. So the
-    plan's vertices stay exactly where they are and only the points between them move, and only into
-    the land: the coast can lose a few blocks and can never gain one.
-    """
-    n = len(ring)
-    area = sum(ring[i][0] * ring[(i + 1) % n][1] - ring[(i + 1) % n][0] * ring[i][1] for i in range(n))
-    inward = 1.0 if area > 0 else -1.0        # which side of an edge the interior is on
-    drawn = []
-    for i in range(n):
-        (ax, az), (bx, bz) = ring[i], ring[(i + 1) % n]
-        drawn.append([float(ax), float(az)])
-        length = math.hypot(bx - ax, bz - az)
-        cuts = int(length // step)
-        if cuts < 2:
-            continue
-        nx, nz = (bz - az) / length * inward, -(bx - ax) / length * inward
-        for c in range(1, cuts):
-            t = c / cuts
-            px, pz = ax + (bx - ax) * t, az + (bz - az) * t
-            # Two sines of incommensurate period over the point's own place on the board, so the coast
-            # never repeats and the script re-runs identical.
-            noise = 0.5 + 0.5 * math.sin(px / 13.7 + seed) * math.sin(pz / 21.3 + seed * 1.7)
-            drawn.append([round(px + nx * wander * noise, 1), round(pz + nz * wander * noise, 1)])
-    controls = {}
-    m = len(drawn)
-    for i, (x, z) in enumerate(drawn):
-        px, pz = drawn[(i - 1) % m]
-        nx2, nz2 = drawn[(i + 1) % m]
-        tx, tz = (nx2 - px) * k, (nz2 - pz) * k
-        controls[str(i)] = {"in": [round(x - tx, 2), round(z - tz, 2)],
-                            "out": [round(x + tx, 2), round(z + tz, 2)]}
-    return drawn, controls
-
-
 def patch_layout(layout, finish):
     """Everything the finish says about the compiled layout, applied in one pass."""
     # A compiled layout is a stack of one: `layers[0]` is the ground the plan drew, and there is no
@@ -572,15 +528,16 @@ def patch_layout(layout, finish):
             shape["theme"] = by_id[shape["id"]]
         if shape["id"] in props_by_id:
             shape.update(props_by_id[shape["id"]])
-    for shape_id, how in (finish.get("bendShapes") or {}).items():
-        shape = next((s for s in shapes if s["id"] == shape_id), None)
-        if shape is None or not shape.get("vertices"):
-            print(f"    ! bendShapes names '{shape_id}', which the compile did not produce as a polygon")
-            continue
-        before = len(shape["vertices"])
-        shape["vertices"], shape["controls"] = bend(shape["vertices"], **how)
-        print(f"    bent '{shape_id}': {before} compiled vertices -> {len(shape['vertices'])} drawn")
 
+    # A key naming no shape is silent otherwise: the board stores, the gate opens, and the theme or the
+    # override is simply not on anything. A compiled shape answers to its component's first piece and the
+    # surface it stands at -- `bahnhof-30` -- so a spec written against the old positional `s<n>` names
+    # nothing at all, and this is where it says so.
+    drawn = {shape["id"] for shape in shapes}
+    for key, block in (("themeById", by_id), ("shapePropsById", props_by_id)):
+        for named in [id for id in block if id not in drawn]:
+            print(f"    ! {key} names '{named}', which the compile did not produce"
+                  f" — it emitted {sorted(id for id in drawn)}")
     for extra in finish.get("addLayers") or []:
         layers = layout["layers"]
         slab = {"id": extra["id"], "name": extra.get("name") or extra["id"],
@@ -772,6 +729,25 @@ def main():
     slug = loaded["slug"]
     print(f"    slug={slug}  {'replaced' if loaded.get('replaced') else 'new'}  "
           f"cells={loaded.get('cells')}  groups={loaded.get('groups')}")
+
+    # ── the coasts, drawn by the studio over the board it just stored ────────────────────────
+    # A bend is an operation on a stored shape, not a patch this script can apply: the two rules that make
+    # one safe — the outline's own vertices never move, and no point ever moves outward — are the studio's,
+    # and a second copy of them here is a second answer free to disagree. It answers `held`, the points that
+    # had land on neither side and stayed where they were cut.
+    if finish.get("bendShapes"):
+        print("== the coasts")
+        for shape_id, how in finish["bendShapes"].items():
+            status, drew = call("POST", f"/map/{slug}/sketch/shapes/{shape_id}/bend", {
+                "wander": how.get("wander", 3.0), "step": how.get("step", 10),
+                "seed": how.get("seed", 5), "tension": how.get("k", 0.22)}, fatal=False)
+            if status >= 300:
+                continue                                 # the refusal is already printed with its rule id
+            print(f"    bent '{shape_id}': {drew.get('vertices')} drawn vertices"
+                  + (f", {drew['held']} point(s) held" if drew.get("held") else ""))
+        # The stored board is the bent one, and everything below reads the layout rather than the map: the
+        # previews take it as a body and the spec is written out from it.
+        _, layout = call("GET", f"/map/{slug}/sketch")
 
     # ── everything wrong with the stored map, including what no other read answers ───────────
     # `Findings.Complaints` keeps `Severity.Complaint` alone, and `SK9` is the one `Severity.Decline`

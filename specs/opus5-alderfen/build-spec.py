@@ -832,8 +832,8 @@ PROPS.append({"id": "cover-holm", "kind": "flora", "seed": 95, "spec": FLORA,
 
 FINISH = {
     "themeById": {},
-    "bendShapes": {"s0": {"k": 0.22, "wander": 6, "step": 12, "seed": 5},
-                   "s1": {"k": 0.20, "wander": 5, "step": 10, "seed": 6}},
+    "bendShapes": {"garth-14": {"k": 0.22, "wander": 6, "step": 12, "seed": 5},
+                   "holm-mid-14": {"k": 0.20, "wander": 5, "step": 10, "seed": 6}},
     "addShapes": ADD_SHAPES,
     "addLayers": ADD_LAYERS,
     "relief": RELIEF,

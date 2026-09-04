@@ -337,7 +337,7 @@ finish = {
     "relief": {"team": team_relief, "neutral": neutral_relief},
     # s1 is the neutral island the compile emits; `addShapes` can only reach group 0, so the
     # drowned pit is themed by its shape id rather than painted with a patch.
-    "themeById": {"s1": "spoil"},
+    "themeById": {"sump-10": "spoil"},
     "dressing": {"props": props},
     "biome": {"kind": "solid", "id": 3},
     "authors": ["Opus 5"],

@@ -246,6 +246,38 @@ touching. And a **wall**: its width was fixed at compile from the plan's seam, s
 widens the lane past the wall's ends and hands players a way round it. The wall rects are in
 `POST /api/plan/inspect`'s structures feed; veto every edge within 10 blocks of one.
 
+### The bend is the studio's, and it takes land away rather than adding it
+
+`POST /map/{slug}/sketch/shapes/{shapeId}/bend` draws a compiled outline as a coast, and `drive.py`'s
+`bendShapes` calls it once the board is stored. The two rules that make it safe are the studio's now: **the
+outline's own vertices never move, and no point ever moves outward.** Inward is decided by offering each
+inserted point both perpendiculars and taking whichever lands inside the original ring — right for a ring
+wound either way and for a concave stretch as readily as a convex one.
+
+**A shoelace sign is what gets this wrong**, and the driver's own copy did, for every board that used it.
+Measured on `opus5-alderfen`'s two rings, compiled against drawn:
+
+| ring | compiled | the old local bend | the studio's |
+|---|---|---|---|
+| `garth-14` | 9750 | 11033 (**+1283**) | 8467 (**−1283**) |
+| `holm-mid-14` | 4800 | 5477 (**+677**) | 4123 (**−677**) |
+
+The same magnitude with the sign reversed, which is the whole of the fault: every bent board grew by the
+amount it was meant to lose, past the plan's own footprint. A board authored against the old coast therefore
+has props standing on ground that no longer exists. Re-driven, the five bend boards lose two props each
+except one, and every one of them is a prop that stood on the growth:
+
+| board | placed | declined |
+|---|---|---|
+| `opus5-alderfen` | 106 | `steading-e`, `steading-w` |
+| `opus5-blockrealm` | 38 | `tree-4`, `tree-5` |
+| `opus5-quiverstone` | 44 | `birch-1`, `dwelling-e` |
+| `fable-mossgill` | 38 | `tree-10`, `tree-3` |
+| `opus5-lodestar` | 30 | — |
+
+Moving each inside the drawn coast is the fix, and `06-claims.txt` is the read that says where there is room
+(`TS83`).
+
 ### A corner recipe does not make a coastline: a closed ring wants tangent continuity
 
 The handle construction above — `c1 = p0 + d·t + n·bulge`, with `t·|d| ≥ bulge` and

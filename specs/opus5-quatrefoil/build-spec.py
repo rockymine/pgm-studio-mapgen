@@ -386,24 +386,24 @@ def finish():
         # keyed on the compiled ids, because two pieces at one height fuse into one shape and a
         # height key cannot tell them apart
         "themeById": {
-            "s0": "moor",     # the spawn compound
-            "s1": "moor",     # march-s
-            "s2": "moor",     # march-e
-            "s3": "moor",     # the wool shelf, all four sides of the room
-            "s4": "moor",     # the room's own ground
-            "s5": "strand",   # the spit, outer
-            "s6": "strand",   # the spit, middle
-            "s7": "strand",   # the spit, inner
-            "s8": "keep",     # the apron is the keep's own landing, not the spit's end
-            "s9": "keep",     # the keep
+            "march-e-8": "moor",     # the spawn compound
+            "march-e-9": "moor",     # march-s
+            "march-e-9-2": "moor",     # march-e
+            "march-e-10": "moor",     # the wool shelf, all four sides of the room
+            "march-e-11": "moor",     # the room's own ground
+            "arm-inner-7": "strand",   # the spit, outer
+            "arm-inner-8": "strand",   # the spit, middle
+            "arm-inner-9": "strand",   # the spit, inner
+            "keep-13": "keep",     # the apron is the keep's own landing, not the spit's end
+            "keep-18": "keep",     # the keep
         },
         "shapePropsById": {
             # the room and its shelf are pads, each one riser over the one it is reached from
-            "s3": {"relief_scope": "hold"},
-            "s4": {"relief_scope": "hold"},
+            "march-e-10": {"relief_scope": "hold"},
+            "march-e-11": {"relief_scope": "hold"},
             # the apron and the keep are made: out of the elevation model, flat and sheer
-            "s8": {"relief_scope": "exclude"},
-            "s9": {"relief_scope": "exclude"},
+            "keep-13": {"relief_scope": "exclude"},
+            "keep-18": {"relief_scope": "exclude"},
         },
         "relief": RELIEF,
         "addShapes": ADD_SHAPES,

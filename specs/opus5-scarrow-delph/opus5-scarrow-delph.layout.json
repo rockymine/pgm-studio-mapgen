@@ -23,7 +23,7 @@
    "layout": {
     "shapes": [
      {
-      "id": "s0",
+      "id": "camp-30",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -70,7 +70,7 @@
       "theme": null
      },
      {
-      "id": "s1",
+      "id": "sump-10",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -414,7 +414,7 @@
       "name": "Team island",
       "mirrors": true,
       "shapeIds": [
-       "s0",
+       "camp-30",
        "paint-delph",
        "paint-shelf",
        "paint-shelf-hi",
@@ -429,7 +429,7 @@
       "name": "Neutral",
       "mirrors": false,
       "shapeIds": [
-       "s1"
+       "sump-10"
       ]
      }
     ]

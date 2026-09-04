@@ -701,8 +701,8 @@ FINISH = {
     "themeById": {},
     # the coasts drawn rather than ruled — but only a little: a drawn level's ground has a hard edge,
     # so five blocks of wander is as organic as this board wants to be
-    "bendShapes": {"s0": {"k": 0.14, "wander": 4, "step": 14, "seed": 3},
-                   "s1": {"k": 0.12, "wander": 3, "step": 12, "seed": 5}},
+    "bendShapes": {"field-14": {"k": 0.14, "wander": 4, "step": 14, "seed": 3},
+                   "midway-14": {"k": 0.12, "wander": 3, "step": 12, "seed": 5}},
     "addShapes": ADD_SHAPES,
     "addLayers": ADD_LAYERS,
     "relief": RELIEF,
