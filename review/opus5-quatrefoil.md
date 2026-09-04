@@ -25,7 +25,7 @@ POST /map/from-documents        200
 GET  …/preflight                export gate OPEN
 GET  …/coverage                 reached 5904 · dead 0 · 0.0%
 GET  …/slopes                   5904 walked · 0 scrambled · 0 barrier · 0 faces
-POST …/sketch/dressing          placed 38 · declined 0
+POST …/sketch/dressing          placed 39 · declined 0
 ```
 
 `G5`'s 10–20 band, `G2`'s ten-block corridor and `LN1`/`LN2`'s lane figures are the composer's, learned
@@ -89,23 +89,35 @@ single step on this board a player cannot walk up.
 The region is the author's 20 × 20, because that is the ground the team owns; the **hall** is 12 × 12,
 stated as a `footprint` and set in the piece's outer corner. Region and building are two rectangles, so
 the protected ground stays the whole `min="-48,-48" max="-28,-28"` while the building sits inside it: a
-one-block verge behind and to the west, a seven-block yard in front of the door and eight down the east
-side. The spawn point is `-41,9,-41`, the hall's own centre, and the door is the `+z` gap at `x −43..−39`,
-which the point stands square in — a player walks five blocks and is outside, and can walk the whole way
-round the building without leaving the region.
+one-block verge behind and to the west, a seven-block yard in front of each door and eight of open ground
+between them. The spawn point is `-41,9,-41`, the hall's own centre.
+
+**It has two doors, and they are not stated.** The spawn piece meets the board on exactly two sides —
+`piece-5` along `+z` for thirteen blocks and `piece-6` along `+x` for thirteen — so that is where the hall
+is cut, the same derivation the wool cage has always used and the same two-entry shape it has on this
+board. The compiled layout carries `spawn-red: ['+z', '+x']` beside `wool-red-red: ['-x', '-z']`.
+
+**The player looks at the corner between them.** `facing: "back-right"` is a diagonal, so the yaw is
+`315` — and its three orbit images are `45`, `135`, `225`, each team turned to face the middle of the
+board. No door is derivable from that angle, which is the point: the doors ride the intent instead.
 
 ```
-out of the door, +z          (-41,-34) 9 · (-41,-31) 9 · (-41,-28) 9 · (-41,-26) 9
-past the hall, east side     (-31,-46) 9 · (-31,-38) 9 · (-31,-30) 9
+out of the +z door, west march    (-41,-34) 9 · (-41,-31) 9 · (-41,-28) 9 · (-41,-26) 9
+out of the +x door, north march   (-34,-41) 9 · (-31,-41) 9 · (-28,-41) 9 · (-26,-41) 9
 both: rises 0, falls 0, worst step 0 — 0 barrier, 0 scramble, 0 drop, walked end to end
 ```
 
+Both mouths read open in the world — air at `y 9` and `y 10` under a stone-brick-slab lintel at `y 11`,
+at `(-41, -36)` and `(-36, -41)` — against mushroom-stem wall at `(-36, -45)` and `(-45, -36)`.
+
 **The iron cube is beside the door, on the player's right as they leave.** It is not placed by hand:
 `POST /plan/room?piece=spawn` answers `{"at":[7,7],"footprint":[1,1,12,12],"iron":[3.5,16.5]}` for this
-hall, and the plan states that answer verbatim. The seat is the nearest row outside the door wall `WX8`
-allows — the building's own edge plus `IronGap`, so two blocks of standing room — and the flank of the
-door corridor the player's right hand points at, which for a `+z` door is the low-x side. Measured in the
-world at `x −46..−43, z −33..−30`, standing on the spawn's own ground:
+hall, and the plan states that answer verbatim. With two doors it takes the one the facing leans into
+first — the `+z` door, which ties on lean with `+x` and wins on the walls' reading order. The seat is the
+nearest row outside that wall `WX8` allows — the building's own edge plus `IronGap`, so two blocks of
+standing room — and the flank of the door corridor the player's right hand points at, which for a `+z`
+door is the low-x side. Measured in the world at `x −46..−43, z −33..−30`, standing on the spawn's own
+ground:
 
 | column | ground top | cube |
 |---|---|---|

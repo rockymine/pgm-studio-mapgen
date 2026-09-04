@@ -1092,6 +1092,19 @@ each storey its own landscape — `{"team": …, "walls": …}` — and a layer'
 own frame**, not the board's. `drive.py`'s `"*"` expands over the groups the *compile* emitted, so a
 key stated beside it survives and names a layer added in the finish.
 
+### A spawn hall's doors come from what its piece touches, not from the facing
+
+A spawn is cut with a door on each wall its piece meets more board on, at most two — the same derivation a
+wool cage has always used, capped. So the number of exits is not something a plan states: it follows from
+where the piece was drawn. A corner piece with a neighbour on two sides gets two doors and a piece with one
+neighbour gets one, and there is no way to ask for three.
+
+Two things follow. `facing` is a **direction only** and takes eight values, the four walls plus the four
+corners — `back-right` on a corner hall points the player between its two exits and yaws `315`, which names
+no wall at all. And the **march between two rooms becomes an approach the dressing keeps clear at both
+ends**: `DR-KEEP` declined a tree at four separate positions along one before it was moved off the march
+entirely. Read `06-claims.txt` before seating a prop near a room, not after.
+
 ### `POST /plan/room` is where the spawn's marker, building and iron all come from
 
 The route answers *what room does this piece carry*, for the piece **as the document states it**: it reads

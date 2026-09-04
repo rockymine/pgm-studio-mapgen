@@ -55,10 +55,10 @@
     </kits>
     <spawns>
         <default region="observer-spawn"/>
-        <spawn team="red-team" kit="spawn-kit" region="red-spawn-point"/>
-        <spawn team="blue-team" kit="spawn-kit" yaw="90" region="blue-spawn-point"/>
-        <spawn team="yellow-team" kit="spawn-kit" yaw="180" region="yellow-spawn-point"/>
-        <spawn team="green-team" kit="spawn-kit" yaw="270" region="green-spawn-point"/>
+        <spawn team="red-team" kit="spawn-kit" yaw="315" region="red-spawn-point"/>
+        <spawn team="blue-team" kit="spawn-kit" yaw="45" region="blue-spawn-point"/>
+        <spawn team="yellow-team" kit="spawn-kit" yaw="135" region="yellow-spawn-point"/>
+        <spawn team="green-team" kit="spawn-kit" yaw="225" region="green-spawn-point"/>
     </spawns>
     <wools>
         <wool team="blue-team" color="red" location="-20,10,-20" monument="red-blue-monument"/>
@@ -161,17 +161,17 @@
         <point id="green-wool-spawn">-20,10,20</point>
         <point id="observer-spawn">0,35,0</point>
         <block id="yellow-green-monument">-46,10,36</block>
-        <block id="yellow-blue-monument">36,10,-37</block>
+        <block id="yellow-blue-monument">45,10,-37</block>
         <block id="yellow-red-monument">-37,10,-37</block>
         <block id="blue-green-monument">-37,10,45</block>
-        <block id="blue-yellow-monument">45,10,36</block>
+        <block id="blue-yellow-monument">45,10,45</block>
         <block id="blue-red-monument">-46,10,-37</block>
-        <block id="red-green-monument">-37,10,36</block>
-        <block id="red-yellow-monument">36,10,36</block>
-        <block id="red-blue-monument">36,10,-46</block>
+        <block id="red-green-monument">-46,10,45</block>
+        <block id="red-yellow-monument">36,10,45</block>
+        <block id="red-blue-monument">36,10,-37</block>
         <block id="green-red-monument">-46,10,-46</block>
-        <block id="green-blue-monument">45,10,-46</block>
-        <block id="green-yellow-monument">36,10,45</block>
+        <block id="green-blue-monument">36,10,-46</block>
+        <block id="green-yellow-monument">36,10,36</block>
         <rectangle id="green-spawn" min="-48,28" max="-28,48"/>
         <rectangle id="yellow-spawn" min="28,28" max="48,48"/>
         <rectangle id="blue-spawn" min="28,-48" max="48,-28"/>

@@ -31,7 +31,7 @@ TRANSECT 29 stations from (20, -38) to (48, -38), every 1
   (   47,   -38)       9        9            9                      
   (   48,   -38)                                                    void
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke track-south#1 at (20, -40), spawn spawn-1#1 at (35, -40)
+beside: stroke track-south#1 at (20, -40), flora flora-marches#1 at (19, -37), spawn spawn-1#1 at (35, -40)
 
 ## spawn-blue (spawn) along z
 TRANSECT 30 stations from (38, -49) to (38, -20), every 1
@@ -67,4 +67,4 @@ TRANSECT 30 stations from (38, -49) to (38, -20), every 1
   (   38,   -21)       9        9            9  stroke track-east#1  
   (   38,   -20)       9        9            9  stroke track-east#1  
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn spawn-1#1 at (36, -47), stroke track-east#1 at (39, -32), flora flora-dell#1 at (37, -18)
+beside: spawn spawn-1#1 at (36, -47), stroke track-east#1 at (39, -32)

@@ -90,7 +90,7 @@ plan, each was locally reasonable, and the chain was never re-read against the o
 And I did not merely make the mistake, I canonised it: *"a cell is a scale and an arrangement is a
 design"* went into `review/opus5-quatrefoil.md` and into the README as though it were a principle. It is a
 sentence I invented to justify a change. Both are now corrected, and the board is rebuilt at `cell: 1`:
-**5 904 walked, 0 scrambled, 0 barrier, 0 faces**, 38 props placed and none declined.
+**5 904 walked, 0 scrambled, 0 barrier, 0 faces**, 39 props placed and none declined.
 
 ## What I could not say
 

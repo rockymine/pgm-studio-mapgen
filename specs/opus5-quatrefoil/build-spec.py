@@ -87,9 +87,11 @@ def plan():
         "placements": {
             # The hall is 12x12 in the piece's outer corner: the protected platform stays the whole 20x20
             # region, and the ground a player can walk on runs a block behind the hall, seven in front of
-            # its door and eight down the inner side. Nobody spawns facing a wall and nobody is fenced in.
+            # each door and eight down the inner side. The piece meets the board on both its +z and +x
+            # walls, so the hall is cut with a door in each and the player looks at the corner between
+            # them, which is the middle of the board.
             "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [7, 7],
-                        "facing": "back", "footprint": [1, 1, 12, 12]}],
+                        "facing": "back-right", "footprint": [1, 1, 12, 12]}],
             "wools":  [{"id": "wool-1", "piece": "wool", "at": [5, 5]}],
             # The seat POST /plan/room answers for that hall: the nearest row outside the door wall WX8
             # allows, and the flank of the door corridor on the player's right as they walk out.
@@ -259,7 +261,9 @@ DRESSING = {"props": [
 # A 98-block board with four spawn keep-outs and four wool-room door approaches on it has little free
 # ground, and `06-claims.txt` is where the free cells are read off rather than guessed at.
 TREES = [
-    ("t-march", -20, -44, "spruce", 8),
+    # The marches carry no tree: with a door at each end of one — the spawn hall's and the wool cage's —
+    # the whole run is approach the dressing keeps clear, which is what DR-KEEP says when it declines one.
+    ("t-arm-3", -28, 0, "spruce", 8),
     ("t-arm-1", -44, 4, "birch", 6), ("t-arm-2", -40, -5, "birch", 6),
     ("t-keep", -8, -8, "birch", 5),
 ]
