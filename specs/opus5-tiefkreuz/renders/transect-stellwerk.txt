@@ -1,53 +1,58 @@
 ## stellwerk (house) along x
-TRANSECT 17 stations from (23, 44) to (39, 44), every 1
+TRANSECT 22 stations from (-40, 36) to (-19, 36), every 1
   station        ground  surface  water  top  standing            step
-  (   23,    44)      30       30           30  stroke umfahrung-ost  
-  (   24,    44)      30       30           30  stroke umfahrung-ost  
-  (   25,    44)      30       30           30  stroke umfahrung-ost  
-  (   26,    44)      30       30           30  stroke umfahrung-ost  
-  (   27,    44)      30       30           30  stroke umfahrung-ost  
-  (   28,    44)      30       30           30  stroke umfahrung-ost  
-  (   29,    44)      30       30           41  house stellwerk     
-  (   30,    44)      30       30           41  house stellwerk     
-  (   31,    44)      30       30           41  house stellwerk     
-  (   32,    44)      30       30           41  house stellwerk     
-  (   33,    44)      30       30           41  house stellwerk     
-  (   34,    44)      30       30           41  house stellwerk     
-  (   35,    44)      30       30           41  house stellwerk     
-  (   36,    44)      30       30           41  house stellwerk     
-  (   37,    44)      30       30           41  house stellwerk     
-  (   38,    44)      30       30           41  house stellwerk     
-  (   39,    44)      30       30           41  house stellwerk     
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke umfahrung-ost at (22, 42), house stellwerk at (29, 42)
+  (  -40,    36)      30       30           30                      
+  (  -39,    36)      30       30           30                      
+  (  -38,    36)      30       30           30                      
+  (  -37,    36)      30       30           30                      
+  (  -36,    36)      30       30           41  house stellwerk     
+  (  -35,    36)      30       30           41  house stellwerk     
+  (  -34,    36)      30       30           41  house stellwerk     
+  (  -33,    36)      30       30           41  house stellwerk     
+  (  -32,    36)      30       30           41  house stellwerk     
+  (  -31,    36)      30       30           41  house stellwerk     
+  (  -30,    36)      30       30           41  house stellwerk     
+  (  -29,    36)      30       30           41  house stellwerk     
+  (  -28,    36)      30       30           41  house stellwerk     
+  (  -27,    36)      30       30           41  house stellwerk     
+  (  -26,    36)      30       30           41  house stellwerk     
+  (  -25,    36)      30       30           41  house stellwerk     
+  (  -24,    36)      30       30           30                      
+  (  -23,    36)      30       30           30                      
+  (  -22,    36)      30       30           30                      
+  (  -21,    36)      32       32           32                      scramble +2
+  (  -20,    36)       9       16           16  storey              DROP -16
+  (  -19,    36)       9       16           16  storey              
+rises 1, falls 1, worst step 16: 0 barrier, 1 scramble, 1 drop — scramble +2 at (-21, 36); DROP -16 at (-20, 36) | walked end to end
+beside: house stellwerk at (-36, 34)
 
 ## stellwerk (house) along z
-TRANSECT 25 stations from (34, 32) to (34, 56), every 1
+TRANSECT 25 stations from (-31, 24) to (-31, 48), every 1
   station        ground  surface  water  top  standing            step
-  (   34,    32)      30       30           30                      
-  (   34,    33)      30       30           30                      
-  (   34,    34)      30       30           30                      
-  (   34,    35)      30       30           30                      
-  (   34,    36)      30       30           30                      
-  (   34,    37)      30       30           30                      
-  (   34,    38)      30       30           41  house stellwerk     
-  (   34,    39)      30       30           41  house stellwerk     
-  (   34,    40)      30       30           41  house stellwerk     
-  (   34,    41)      30       30           41  house stellwerk     
-  (   34,    42)      30       30           41  house stellwerk     
-  (   34,    43)      30       30           41  house stellwerk     
-  (   34,    44)      30       30           41  house stellwerk     
-  (   34,    45)      30       30           41  house stellwerk     
-  (   34,    46)      30       30           41  house stellwerk     
-  (   34,    47)      30       30           41  house stellwerk     
-  (   34,    48)      30       30           41  house stellwerk     
-  (   34,    49)      30       30           41  house stellwerk     
-  (   34,    50)      30       30           41  house stellwerk     
-  (   34,    51)      30       30           30                      
-  (   34,    52)      30       30           30                      
-  (   34,    53)      30       30           30                      
-  (   34,    54)      30       30           30                      
-  (   34,    55)      30       30           30                      
-  (   34,    56)      30       30           30                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: house stellwerk at (32, 38)
+  (  -31,    24)                                                    void
+  (  -31,    25)                                                    void
+  (  -31,    26)                                                    void
+  (  -31,    27)                                                    void
+  (  -31,    28)      30       30           30                      
+  (  -31,    29)      30       30           30                      
+  (  -31,    30)      30       30           41  house stellwerk     
+  (  -31,    31)      30       30           41  house stellwerk     
+  (  -31,    32)      30       30           41  house stellwerk     
+  (  -31,    33)      30       30           41  house stellwerk     
+  (  -31,    34)      30       30           41  house stellwerk     
+  (  -31,    35)      30       30           41  house stellwerk     
+  (  -31,    36)      30       30           41  house stellwerk     
+  (  -31,    37)      30       30           41  house stellwerk     
+  (  -31,    38)      30       30           41  house stellwerk     
+  (  -31,    39)      30       30           41  house stellwerk     
+  (  -31,    40)      30       30           41  house stellwerk     
+  (  -31,    41)      30       30           41  house stellwerk     
+  (  -31,    42)      30       30           41  house stellwerk     
+  (  -31,    43)      30       30           30                      
+  (  -31,    44)      33       33           33                      BARRIER +3
+  (  -31,    45)      34       34           34                      +1
+  (  -31,    46)      35       35           35                      +1
+  (  -31,    47)      36       36           36                      +1
+  (  -31,    48)      37       37           37                      +1
+rises 5, falls 0, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (-31, 44) | walked end to end
+beside: house stellwerk at (-33, 30)

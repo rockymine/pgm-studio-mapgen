@@ -3,7 +3,7 @@
     <version>1.0.0</version>
     <gamemode>dtm</gamemode>
     <objective>Destroy the enemy's monuments!</objective>
-    <created>2026-09-03</created>
+    <created>2026-09-04</created>
     <phase>development</phase>
     <include id="gapple-kill-reward"/>
     <authors>
@@ -90,13 +90,13 @@
     <regions>
         <point id="blue-spawn-point">0,30,-106</point>
         <point id="red-spawn-point">0,30,106</point>
-        <point id="observer-spawn">0,69,0</point>
+        <point id="observer-spawn">0,77,0</point>
         <rectangle id="blue-spawn" min="-8,-112" max="8,-100"/>
         <rectangle id="red-spawn" min="-8,100" max="8,112"/>
-        <cuboid id="tiefbahnsteig-region" min="-16,11,56" max="-15,13,57"/>
-        <cuboid id="hochbahnsteig-region" min="22,45,62" max="23,47,63"/>
-        <cuboid id="tiefbahnsteig-2-region" min="15,11,-57" max="16,13,-56"/>
-        <cuboid id="hochbahnsteig-2-region" min="-23,45,-63" max="-22,47,-62"/>
+        <cuboid id="tiefbahnsteig-region" min="-12,8,56" max="-11,10,57"/>
+        <cuboid id="hochbahnsteig-region" min="24,44,63" max="25,46,64"/>
+        <cuboid id="tiefbahnsteig-2-region" min="11,8,-57" max="12,10,-56"/>
+        <cuboid id="hochbahnsteig-2-region" min="-25,44,-64" max="-24,46,-63"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -162,5 +162,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>64</maxbuildheight>
+    <maxbuildheight>69</maxbuildheight>
 </map>

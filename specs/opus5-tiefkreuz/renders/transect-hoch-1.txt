@@ -1,61 +1,61 @@
 ## hoch-1 (destroyable) along x
-TRANSECT 25 stations from (-35, -63) to (-11, -63), every 1
+TRANSECT 25 stations from (-37, -64) to (-13, -64), every 1
   station        ground  surface  water  top  standing            step
-  (  -35,   -63)      42       42           42                      
-  (  -34,   -63)      42       42           42                      
-  (  -33,   -63)      42       42           42                      
-  (  -32,   -63)      42       42           42                      
-  (  -31,   -63)      42       42           42                      
-  (  -30,   -63)      42       42           42                      
-  (  -29,   -63)      42       42           42                      
-  (  -28,   -63)      42       42           42                      
-  (  -27,   -63)      42       42           42                      
-  (  -26,   -63)      42       42           42                      
-  (  -25,   -63)      42       42           42  destroyable hoch#1  
-  (  -24,   -63)      42       42           71  destroyable hoch#1  
-  (  -23,   -63)      42       42           72  destroyable hoch#1  
-  (  -22,   -63)      42       42           71  destroyable hoch#1  
-  (  -21,   -63)      42       42           42  destroyable hoch#1  
-  (  -20,   -63)      42       42           42                      
-  (  -19,   -63)      42       42           42                      
-  (  -18,   -63)      42       42           42                      
-  (  -17,   -63)      42       42           42                      
-  (  -16,   -63)      42       42           42                      
-  (  -15,   -63)      42       42           42                      
-  (  -14,   -63)      42       42           42                      
-  (  -13,   -63)      42       42           42                      
-  (  -12,   -63)      42       42           42                      
-  (  -11,   -63)      42       42           42  stroke umfahrung-ost#1  
+  (  -37,   -64)                                                    void
+  (  -36,   -64)      42       42           42                      
+  (  -35,   -64)      42       42           42                      
+  (  -34,   -64)      42       42           42                      
+  (  -33,   -64)      42       42           42                      
+  (  -32,   -64)      42       42           42                      
+  (  -31,   -64)      42       42           42                      
+  (  -30,   -64)      42       42           42                      
+  (  -29,   -64)      42       42           42                      
+  (  -28,   -64)      42       42           42                      
+  (  -27,   -64)      42       42           42  destroyable hoch#1  
+  (  -26,   -64)      42       42           76  destroyable hoch#1  
+  (  -25,   -64)      42       42           77  destroyable hoch#1  
+  (  -24,   -64)      42       42           76  destroyable hoch#1  
+  (  -23,   -64)      42       42           42  destroyable hoch#1  
+  (  -22,   -64)      42       42           42                      
+  (  -21,   -64)      42       42           42                      
+  (  -20,   -64)      42       42           42                      
+  (  -19,   -64)      42       42           42                      
+  (  -18,   -64)      42       42           42                      
+  (  -17,   -64)      42       42           42                      
+  (  -16,   -64)      42       42           42                      
+  (  -15,   -64)      42       42           42                      
+  (  -14,   -64)      42       42           42                      
+  (  -13,   -64)      42       42           42                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: destroyable hoch#1 at (-25, -65), stroke umfahrung-ost#1 at (-22, -61)
+beside: destroyable hoch#1 at (-27, -66)
 
 ## hoch-1 (destroyable) along z
-TRANSECT 25 stations from (-23, -75) to (-23, -51), every 1
+TRANSECT 25 stations from (-25, -76) to (-25, -52), every 1
   station        ground  surface  water  top  standing            step
-  (  -23,   -75)      44       44           44                      
-  (  -23,   -74)      42       42           42                      -2
-  (  -23,   -73)      42       42           42                      
-  (  -23,   -72)      43       43           43                      +1
-  (  -23,   -71)      42       42           42                      -1
-  (  -23,   -70)      43       43           43                      +1
-  (  -23,   -69)      42       42           42                      -1
-  (  -23,   -68)      42       42           42                      
-  (  -23,   -67)      43       43           43                      +1
-  (  -23,   -66)      42       42           42                      -1
-  (  -23,   -65)      43       43           43  destroyable hoch#1  +1
-  (  -23,   -64)      42       42           71  destroyable hoch#1  -1
-  (  -23,   -63)      42       42           72  destroyable hoch#1  
-  (  -23,   -62)      44       44           71  destroyable hoch#1  scramble +2
-  (  -23,   -61)      30       30           41  destroyable hoch#1  DROP -14
-  (  -23,   -60)      30       30           30  stroke umfahrung-ost#1  
-  (  -23,   -59)      30       30           30  stroke umfahrung-ost#1  
-  (  -23,   -58)      30       30           30  stroke umfahrung-ost#1  
-  (  -23,   -57)      30       30           30  stroke umfahrung-ost#1  
-  (  -23,   -56)      30       30           30  stroke umfahrung-ost#1  
-  (  -23,   -55)      30       30           30  stroke umfahrung-ost#1  
-  (  -23,   -54)      30       30           30  stroke umfahrung-ost#1  
-  (  -23,   -53)      30       30           30  stroke umfahrung-ost#1  
-  (  -23,   -52)      30       30           30                      
-  (  -23,   -51)      30       30           30                      
-rises 5, falls 6, worst step 14: 0 barrier, 1 scramble, 1 drop — scramble +2 at (-23, -62); DROP -14 at (-23, -61) | walked end to end
-beside: house gueterschuppen#1 at (-25, -77), destroyable hoch#1 at (-25, -65), stroke umfahrung-ost#1 at (-22, -61)
+  (  -25,   -76)      30       30           30                      
+  (  -25,   -75)      30       30           30                      
+  (  -25,   -74)      30       30           30                      
+  (  -25,   -73)      30       30           30                      
+  (  -25,   -72)      30       30           30                      
+  (  -25,   -71)      30       30           30                      
+  (  -25,   -70)      30       30           30                      
+  (  -25,   -69)      45       45           45                      BARRIER +15
+  (  -25,   -68)      42       42           42                      -3
+  (  -25,   -67)      42       42           42                      
+  (  -25,   -66)      43       43           43  destroyable hoch#1  +1
+  (  -25,   -65)      42       42           76  destroyable hoch#1  -1
+  (  -25,   -64)      42       42           77  destroyable hoch#1  
+  (  -25,   -63)      43       43           76  destroyable hoch#1  +1
+  (  -25,   -62)      42       42           42  destroyable hoch#1  -1
+  (  -25,   -61)      43       49           49  storey              BARRIER +7
+  (  -25,   -60)      43       49           49  storey              
+  (  -25,   -59)      43       49           49  storey              
+  (  -25,   -58)      43       43           43                      DROP -6
+  (  -25,   -57)      43       43           43                      
+  (  -25,   -56)      42       42           42                      -1
+  (  -25,   -55)      41       41           41                      -1
+  (  -25,   -54)      40       40           40                      -1
+  (  -25,   -53)      39       39           39                      -1
+  (  -25,   -52)      38       38           38                      -1
+rises 4, falls 9, worst step 15: 2 barrier, 0 scramble, 1 drop — BARRIER +15 at (-25, -69); BARRIER +7 at (-25, -61); DROP -6 at (-25, -58) | walked end to end
+beside: destroyable hoch#1 at (-27, -66)

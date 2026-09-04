@@ -1,0 +1,111 @@
+## hochperron (made) along x
+TRANSECT 80 stations from (-40, 59) to (39, 59), every 1
+  station        ground  surface  water  top  standing            step
+  (  -40,    59)      30       30           30                      
+  (  -39,    59)      30       30           30                      
+  (  -38,    59)      30       30           30                      
+  (  -37,    59)      30       30           30                      
+  (  -36,    59)      43       49           49  storey              BARRIER +19
+  (  -35,    59)      43       49           49  storey              
+  (  -34,    59)      43       49           49  storey              
+  (  -33,    59)      43       49           49  storey              
+  (  -32,    59)      43       49           49  storey              
+  (  -31,    59)      43       49           49  storey              
+  (  -30,    59)      43       49           49  storey              
+  (  -29,    59)      43       49           49  storey              
+  (  -28,    59)      43       49           49  storey              
+  (  -27,    59)      43       49           49  storey              
+  (  -26,    59)      43       49           49  storey              
+  (  -25,    59)      43       49           49  storey              
+  (  -24,    59)      43       49           49  storey              
+  (  -23,    59)      43       49           49  storey              
+  (  -22,    59)      43       49           49  storey              
+  (  -21,    59)      43       49           49  storey              
+  (  -20,    59)      43       49           49  storey              
+  (  -19,    59)      43       49           49  storey              
+  (  -18,    59)      43       49           49  storey              
+  (  -17,    59)      43       49           49  storey              
+  (  -16,    59)      43       49           49  storey              
+  (  -15,    59)      43       49           49  storey              
+  (  -14,    59)      43       49           49  storey              
+  (  -13,    59)      43       49           49  storey              
+  (  -12,    59)      43       49           49  storey              
+  (  -11,    59)      43       49           49  storey              
+  (  -10,    59)      43       49           49  storey              
+  (   -9,    59)      43       49           49  storey              
+  (   -8,    59)      43       49           49  storey              
+  (   -7,    59)      43       49           49  storey              
+  (   -6,    59)      43       49           49  storey              
+  (   -5,    59)      43       49           49  storey              
+  (   -4,    59)      43       49           49  storey              
+  (   -3,    59)      43       49           49  storey              
+  (   -2,    59)      43       49           49  storey              
+  (   -1,    59)      43       49           49  storey              
+  (    0,    59)      43       49           49  storey              
+  (    1,    59)      43       49           49  storey              
+  (    2,    59)      43       49           49  storey              
+  (    3,    59)      43       49           49  storey              
+  (    4,    59)      43       49           49  storey              
+  (    5,    59)      43       49           49  storey              
+  (    6,    59)      43       49           49  storey              
+  (    7,    59)      43       49           49  storey              
+  (    8,    59)      43       49           49  storey              
+  (    9,    59)      43       49           49  storey              
+  (   10,    59)      43       49           49  storey              
+  (   11,    59)      43       49           49  storey              
+  (   12,    59)      43       49           49  storey              
+  (   13,    59)      43       49           49  storey              
+  (   14,    59)      43       49           49  storey              
+  (   15,    59)      43       49           49  storey              
+  (   16,    59)      43       49           49  storey              
+  (   17,    59)      43       49           49  storey              
+  (   18,    59)      43       49           49  storey              
+  (   19,    59)      43       49           49  storey              
+  (   20,    59)      43       49           49  storey              
+  (   21,    59)      43       49           49  storey              
+  (   22,    59)      43       49           49  storey              
+  (   23,    59)      43       49           49  storey              
+  (   24,    59)      43       49           49  storey              
+  (   25,    59)      43       49           49  storey              
+  (   26,    59)      43       49           49  storey              
+  (   27,    59)      43       49           49  storey              
+  (   28,    59)      43       49           49  storey              
+  (   29,    59)      43       49           49  storey              
+  (   30,    59)      43       49           49  storey              
+  (   31,    59)      43       49           49  storey              
+  (   32,    59)      43       49           49  storey              
+  (   33,    59)      43       49           49  storey              
+  (   34,    59)      43       49           49  storey              
+  (   35,    59)      43       49           49  storey              
+  (   36,    59)      30       30           30                      DROP -19
+  (   37,    59)      30       30           30                      
+  (   38,    59)      30       30           30                      
+  (   39,    59)      30       30           30                      
+rises 1, falls 1, worst step 19: 1 barrier, 0 scramble, 1 drop — BARRIER +19 at (-36, 59); DROP -19 at (36, 59) | walked end to end
+beside: destroyable tief at (-14, 57), destroyable hoch at (22, 61)
+
+## hochperron (made) along z
+TRANSECT 20 stations from (0, 50) to (0, 69), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    50)      30       30           30                      
+  (    0,    51)      30       30           30                      
+  (    0,    52)      30       30           30                      
+  (    0,    53)      30       30           30                      
+  (    0,    54)      30       30           30                      
+  (    0,    55)      30       30           30                      
+  (    0,    56)      30       30           30                      
+  (    0,    57)      45       45           45                      BARRIER +15
+  (    0,    58)      43       49           49  storey              BARRIER +4
+  (    0,    59)      43       49           49  storey              
+  (    0,    60)      43       49           49  storey              
+  (    0,    61)      42       42           42                      DROP -7
+  (    0,    62)      43       43           43                      +1
+  (    0,    63)      42       42           42                      -1
+  (    0,    64)      42       42           42                      
+  (    0,    65)      43       43           43                      +1
+  (    0,    66)      42       42           42                      -1
+  (    0,    67)      42       42           42                      
+  (    0,    68)      45       45           45                      BARRIER +3
+  (    0,    69)      30       30           30                      DROP -15
+rises 5, falls 4, worst step 15: 3 barrier, 0 scramble, 2 drop — BARRIER +15 at (0, 57); BARRIER +4 at (0, 58); DROP -7 at (0, 61); BARRIER +3 at (0, 68); DROP -15 at (0, 69) | walked end to end
+beside: (none)

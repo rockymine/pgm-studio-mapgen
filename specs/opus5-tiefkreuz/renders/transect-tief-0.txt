@@ -1,61 +1,61 @@
 ## tief-0 (destroyable) along x
-TRANSECT 25 stations from (-28, 56) to (-4, 56), every 1
+TRANSECT 25 stations from (-24, 56) to (0, 56), every 1
   station        ground  surface  water  top  standing            step
-  (  -28,    56)      40       40           40                      
-  (  -27,    56)      40       40           40                      
-  (  -26,    56)      30       30           30  stroke umfahrung-west  DROP -10
-  (  -25,    56)      30       30           30  stroke umfahrung-west  
-  (  -24,    56)      30       30           30  stroke umfahrung-west  
-  (  -23,    56)      30       30           30  stroke umfahrung-west  
-  (  -22,    56)      30       30           30  stroke umfahrung-west  
+  (  -24,    56)      45       45           45                      
+  (  -23,    56)      30       30           30                      DROP -15
+  (  -22,    56)      30       30           30                      
   (  -21,    56)      30       30           30                      
-  (  -20,    56)       9        9            9                      DROP -21
-  (  -19,    56)       9        9            9                      
-  (  -18,    56)       9        9           27  destroyable tief    
-  (  -17,    56)       9        9           71  destroyable tief    
-  (  -16,    56)       9        9           72  destroyable tief    
-  (  -15,    56)       9        9           71  destroyable tief    
-  (  -14,    56)      30       30           30  destroyable tief    BARRIER +21
-  (  -13,    56)      30       30           30                      
-  (  -12,    56)      30       30           30                      
-  (  -11,    56)      30       30           30                      
-  (  -10,    56)      30       30           30                      
-  (   -9,    56)      30       30           30                      
-  (   -8,    56)      30       30           30                      
-  (   -7,    56)      30       30           30                      
+  (  -20,    56)      30       30           30                      
+  (  -19,    56)      30       30           30                      
+  (  -18,    56)      30       30           30                      
+  (  -17,    56)      30       30           30                      
+  (  -16,    56)      30       30           30                      
+  (  -15,    56)      32       32           32                      scramble +2
+  (  -14,    56)       8        8            8  destroyable tief    DROP -24
+  (  -13,    56)       7        7           76  destroyable tief    -1
+  (  -12,    56)       6        6           77  destroyable tief    -1
+  (  -11,    56)       6        6           76  destroyable tief    
+  (  -10,    56)       7        7            7  destroyable tief    +1
+  (   -9,    56)       8        8            8                      +1
+  (   -8,    56)      32       32           32                      BARRIER +24
+  (   -7,    56)      30       30           30                      -2
   (   -6,    56)      30       30           30                      
   (   -5,    56)      30       30           30                      
   (   -4,    56)      30       30           30                      
-rises 1, falls 2, worst step 21: 1 barrier, 0 scramble, 2 drop — DROP -10 at (-26, 56); DROP -21 at (-20, 56); BARRIER +21 at (-14, 56) | walked end to end
-beside: stroke umfahrung-west at (-26, 54), destroyable tief at (-18, 54), stroke umfahrung-ost at (-2, 58)
+  (   -3,    56)      30       30           30                      
+  (   -2,    56)      30       30           30                      
+  (   -1,    56)      30       30           30                      
+  (    0,    56)      30       30           30                      
+rises 4, falls 5, worst step 24: 1 barrier, 1 scramble, 2 drop — DROP -15 at (-23, 56); scramble +2 at (-15, 56); DROP -24 at (-14, 56); BARRIER +24 at (-8, 56) | walked end to end
+beside: destroyable tief at (-14, 54)
 
 ## tief-0 (destroyable) along z
-TRANSECT 25 stations from (-16, 44) to (-16, 68), every 1
+TRANSECT 25 stations from (-12, 44) to (-12, 68), every 1
   station        ground  surface  water  top  standing            step
-  (  -16,    44)      30       30           30                      
-  (  -16,    45)      30       30           30                      
-  (  -16,    46)      30       30           30                      
-  (  -16,    47)      30       30           30                      
-  (  -16,    48)      30       30           30                      
-  (  -16,    49)      30       30           30                      
-  (  -16,    50)       9        9            9                      DROP -21
-  (  -16,    51)       9        9            9                      
-  (  -16,    52)       9        9            9                      
-  (  -16,    53)       9        9            9                      
-  (  -16,    54)       9        9           27  destroyable tief    
-  (  -16,    55)       9        9           71  destroyable tief    
-  (  -16,    56)       9        9           72  destroyable tief    
-  (  -16,    57)       9        9           71  destroyable tief    
-  (  -16,    58)      30       30           30  stroke umfahrung-west  BARRIER +21
-  (  -16,    59)      30       30           30  stroke umfahrung-west  
-  (  -16,    60)      30       30           30  stroke umfahrung-west  
-  (  -16,    61)      44       44           44  stroke umfahrung-west  BARRIER +14
-  (  -16,    62)      42       42           42                      -2
-  (  -16,    63)      42       42           42                      
-  (  -16,    64)      43       43           43                      +1
-  (  -16,    65)      42       42           42                      -1
-  (  -16,    66)      43       43           43                      +1
-  (  -16,    67)      42       42           42                      -1
-  (  -16,    68)      42       42           42                      
-rises 4, falls 4, worst step 21: 2 barrier, 0 scramble, 1 drop — DROP -21 at (-16, 50); BARRIER +21 at (-16, 58); BARRIER +14 at (-16, 61) | walked end to end
-beside: destroyable tief at (-18, 54), stroke umfahrung-west at (-18, 58)
+  (  -12,    44)      30       30           30                      
+  (  -12,    45)      30       30           30                      
+  (  -12,    46)      30       30           30                      
+  (  -12,    47)      30       30           30                      
+  (  -12,    48)      30       30           30                      
+  (  -12,    49)      30       30           30                      
+  (  -12,    50)      30       30           30                      
+  (  -12,    51)      32       32           32                      scramble +2
+  (  -12,    52)       6        6            6                      DROP -26
+  (  -12,    53)       6        6            6                      
+  (  -12,    54)       6        6            6  destroyable tief    
+  (  -12,    55)       6        6           76  destroyable tief    
+  (  -12,    56)       6        6           77  destroyable tief    
+  (  -12,    57)      45       45           76  destroyable tief    BARRIER +39
+  (  -12,    58)      43       49           49  destroyable tief    BARRIER +4
+  (  -12,    59)      43       49           49  storey              
+  (  -12,    60)      43       49           49  storey              
+  (  -12,    61)      42       42           42                      DROP -7
+  (  -12,    62)      43       49           49  storey              BARRIER +7
+  (  -12,    63)      42       49           49  storey              
+  (  -12,    64)      42       49           49  storey              
+  (  -12,    65)      43       49           49  storey              
+  (  -12,    66)      42       42           42                      DROP -7
+  (  -12,    67)      42       42           42                      
+  (  -12,    68)      45       45           45                      BARRIER +3
+rises 5, falls 3, worst step 39: 4 barrier, 1 scramble, 3 drop — scramble +2 at (-12, 51); DROP -26 at (-12, 52); BARRIER +39 at (-12, 57); BARRIER +4 at (-12, 58); DROP -7 at (-12, 61); BARRIER +7 at (-12, 62); DROP -7 at (-12, 66); BARRIER +3 at (-12, 68) | walked end to end
+beside: destroyable tief at (-14, 54), house block-s2 at (-14, 69)

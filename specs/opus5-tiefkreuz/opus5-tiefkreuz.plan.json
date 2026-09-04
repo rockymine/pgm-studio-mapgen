@@ -8,7 +8,7 @@
   "symmetry": "rot_180",
   "maxPlayers": 16,
   "surface": 30,
-  "observerY": 68
+  "observerY": 76
  },
  "pieces": [
   {
@@ -117,7 +117,7 @@
     "id": "tief",
     "piece": "",
     "at": [
-     -16,
+     -12,
      56
     ],
     "layer": "ground",
@@ -130,13 +130,13 @@
     "id": "hoch",
     "piece": "",
     "at": [
-     22,
-     62
+     24,
+     63
     ],
     "layer": "viadukt",
     "style": "pillar-2",
     "materials": "obsidian",
-    "float": 3,
+    "float": 2,
     "name": "Hochbahnsteig"
    }
   ]

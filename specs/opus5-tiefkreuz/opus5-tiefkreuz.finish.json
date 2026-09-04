@@ -2,7 +2,7 @@
  "authors": [
   "Opus 5"
  ],
- "created": "2026-09-03",
+ "created": "2026-09-04",
  "themes": {
   "stadt": {
    "bedrock": {
@@ -15,23 +15,9 @@
     "enabled": true,
     "depth": 3,
     "material": {
-     "kind": "noise",
-     "seed": 7,
-     "scale": 18,
-     "octaves": 2,
-     "stops": [
-      {
-       "kind": "solid",
-       "id": 98,
-       "data": 0
-      },
-      {
-       "kind": "solid",
-       "id": 1,
-       "data": 5
-      }
-     ],
-     "rise": 0
+     "kind": "solid",
+     "id": 98,
+     "data": 0
     }
    },
    "wall": {
@@ -67,7 +53,7 @@
     "depth": 2,
     "material": {
      "kind": "checker",
-     "size": 6,
+     "size": 1,
      "even": {
       "kind": "solid",
       "id": 155,
@@ -82,7 +68,7 @@
    },
    "wall": {
     "kind": "solid",
-    "id": 159,
+    "id": 43,
     "data": 8
    },
    "wallEnabled": true,
@@ -97,7 +83,7 @@
     "material": {
      "kind": "solid",
      "id": 159,
-     "data": 7
+     "data": 8
     }
    }
   },
@@ -112,23 +98,9 @@
     "enabled": true,
     "depth": 2,
     "material": {
-     "kind": "noise",
-     "seed": 19,
-     "scale": 9,
-     "octaves": 2,
-     "stops": [
-      {
-       "kind": "solid",
-       "id": 13,
-       "data": 0
-      },
-      {
-       "kind": "solid",
-       "id": 1,
-       "data": 5
-      }
-     ],
-     "rise": 0
+     "kind": "solid",
+     "id": 13,
+     "data": 0
     }
    },
    "wall": {
@@ -152,7 +124,7 @@
     }
    }
   },
-  "ziegel": {
+  "gruen": {
    "bedrock": {
     "relative": false,
     "value": 1
@@ -161,234 +133,49 @@
    "wallOnTerrainFaces": true,
    "surface": {
     "enabled": true,
-    "depth": 2,
+    "depth": 3,
     "material": {
-     "kind": "solid",
-     "id": 45,
-     "data": 0
-    }
-   },
-   "wall": {
-    "kind": "layered",
-    "axis": "height",
-    "from": 0,
-    "stack": {
-     "bands": [
-      {
-       "material": {
-        "kind": "solid",
-        "id": 45,
-        "data": 0
+     "kind": "layered",
+     "axis": "depth",
+     "from": 0,
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 2,
+         "data": 0
+        },
+        "thickness": 1
        },
-       "thickness": 6
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 98,
-        "data": 0
-       },
-       "thickness": 1
-      }
-     ],
-     "ending": "repeat"
-    },
-    "beyond": {
-     "kind": "solid",
-     "id": 45,
-     "data": 0
-    }
-   },
-   "wallEnabled": true,
-   "fill": {
-    "kind": "solid",
-    "id": 45,
-    "data": 0
-   },
-   "rim": {
-    "enabled": true,
-    "depth": 1,
-    "material": {
-     "kind": "solid",
-     "id": 43,
-     "data": 5
-    }
-   }
-  },
-  "licht": {
-   "bedrock": {
-    "relative": false,
-    "value": 1
-   },
-   "rimEdges": "void",
-   "wallOnTerrainFaces": true,
-   "surface": {
-    "enabled": true,
-    "depth": 1,
-    "material": {
-     "kind": "solid",
-     "id": 89,
-     "data": 0
+       {
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        },
+        "thickness": 2
+       }
+      ],
+      "ending": "repeat"
+     },
+     "beyond": {
+      "kind": "solid",
+      "id": 3,
+      "data": 0
+     }
     }
    },
    "wall": {
     "kind": "solid",
-    "id": 155,
+    "id": 3,
     "data": 0
    },
    "wallEnabled": true,
    "fill": {
     "kind": "solid",
     "id": 1,
-    "data": 6
-   },
-   "rim": {
-    "enabled": false,
-    "depth": 1,
-    "material": {
-     "kind": "solid",
-     "id": 1,
-     "data": 0
-    }
-   }
-  },
-  "gleis": {
-   "bedrock": {
-    "relative": false,
-    "value": 1
-   },
-   "rimEdges": "void",
-   "wallOnTerrainFaces": true,
-   "surface": {
-    "enabled": true,
-    "depth": 2,
-    "material": {
-     "kind": "solid",
-     "id": 42,
-     "data": 0
-    }
-   },
-   "wall": {
-    "kind": "solid",
-    "id": 42,
-    "data": 0
-   },
-   "wallEnabled": true,
-   "fill": {
-    "kind": "solid",
-    "id": 42,
-    "data": 0
-   },
-   "rim": {
-    "enabled": false,
-    "depth": 1,
-    "material": {
-     "kind": "solid",
-     "id": 1,
-     "data": 0
-    }
-   }
-  },
-  "zug-rot": {
-   "bedrock": {
-    "relative": false,
-    "value": 1
-   },
-   "rimEdges": "void",
-   "wallOnTerrainFaces": true,
-   "surface": {
-    "enabled": true,
-    "depth": 2,
-    "material": {
-     "kind": "solid",
-     "id": 159,
-     "data": 14
-    }
-   },
-   "wall": {
-    "kind": "solid",
-    "id": 159,
-    "data": 14
-   },
-   "wallEnabled": true,
-   "fill": {
-    "kind": "solid",
-    "id": 159,
-    "data": 14
-   },
-   "rim": {
-    "enabled": false,
-    "depth": 1,
-    "material": {
-     "kind": "solid",
-     "id": 1,
-     "data": 0
-    }
-   }
-  },
-  "zug-glas": {
-   "bedrock": {
-    "relative": false,
-    "value": 1
-   },
-   "rimEdges": "void",
-   "wallOnTerrainFaces": true,
-   "surface": {
-    "enabled": true,
-    "depth": 2,
-    "material": {
-     "kind": "solid",
-     "id": 95,
-     "data": 3
-    }
-   },
-   "wall": {
-    "kind": "solid",
-    "id": 95,
-    "data": 3
-   },
-   "wallEnabled": true,
-   "fill": {
-    "kind": "solid",
-    "id": 95,
-    "data": 3
-   },
-   "rim": {
-    "enabled": false,
-    "depth": 1,
-    "material": {
-     "kind": "solid",
-     "id": 1,
-     "data": 0
-    }
-   }
-  },
-  "zug-grau": {
-   "bedrock": {
-    "relative": false,
-    "value": 1
-   },
-   "rimEdges": "void",
-   "wallOnTerrainFaces": true,
-   "surface": {
-    "enabled": true,
-    "depth": 2,
-    "material": {
-     "kind": "solid",
-     "id": 159,
-     "data": 7
-    }
-   },
-   "wall": {
-    "kind": "solid",
-    "id": 159,
-    "data": 7
-   },
-   "wallEnabled": true,
-   "fill": {
-    "kind": "solid",
-    "id": 159,
-    "data": 7
+    "data": 5
    },
    "rim": {
     "enabled": false,
@@ -410,7 +197,7 @@
    "min_x": -20,
    "max_x": -14,
    "min_z": 16,
-   "max_z": 54,
+   "max_z": 58,
    "floor": 0,
    "base_height": 9,
    "theme": "bahn",
@@ -427,7 +214,7 @@
    "min_x": -14,
    "max_x": -8,
    "min_z": 16,
-   "max_z": 54,
+   "max_z": 76,
    "floor": 0,
    "base_height": 6,
    "theme": "schotter",
@@ -444,7 +231,7 @@
    "min_x": -8,
    "max_x": 8,
    "min_z": 16,
-   "max_z": 54,
+   "max_z": 58,
    "floor": 0,
    "base_height": 9,
    "theme": "bahn",
@@ -461,7 +248,7 @@
    "min_x": 8,
    "max_x": 14,
    "min_z": 16,
-   "max_z": 54,
+   "max_z": 76,
    "floor": 0,
    "base_height": 6,
    "theme": "schotter",
@@ -478,23 +265,6 @@
    "min_x": 14,
    "max_x": 20,
    "min_z": 16,
-   "max_z": 54,
-   "floor": 0,
-   "base_height": 9,
-   "theme": "bahn",
-   "override": true,
-   "height_mode": "level",
-   "skirt": 0,
-   "relief_scope": "exclude",
-   "keepClear": true
-  },
-  {
-   "id": "box-kopfsteig",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -20,
-   "max_x": 20,
-   "min_z": 54,
    "max_z": 58,
    "floor": 0,
    "base_height": 9,
@@ -512,10 +282,40 @@
    "min_x": -13,
    "max_x": -12,
    "min_z": 16,
-   "max_z": 54,
+   "max_z": 76,
    "floor": 0,
    "base_height": 7,
-   "theme": "gleis",
+   "material": {
+    "kind": "layered",
+    "axis": "height",
+    "from": 0,
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 6
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 42,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ],
+     "ending": "repeat"
+    },
+    "beyond": {
+     "kind": "solid",
+     "id": 42,
+     "data": 0
+    }
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -529,10 +329,40 @@
    "min_x": -10,
    "max_x": -9,
    "min_z": 16,
-   "max_z": 54,
+   "max_z": 76,
    "floor": 0,
    "base_height": 7,
-   "theme": "gleis",
+   "material": {
+    "kind": "layered",
+    "axis": "height",
+    "from": 0,
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 6
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 42,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ],
+     "ending": "repeat"
+    },
+    "beyond": {
+     "kind": "solid",
+     "id": 42,
+     "data": 0
+    }
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -546,10 +376,40 @@
    "min_x": 9,
    "max_x": 10,
    "min_z": 16,
-   "max_z": 54,
+   "max_z": 76,
    "floor": 0,
    "base_height": 7,
-   "theme": "gleis",
+   "material": {
+    "kind": "layered",
+    "axis": "height",
+    "from": 0,
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 6
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 42,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ],
+     "ending": "repeat"
+    },
+    "beyond": {
+     "kind": "solid",
+     "id": 42,
+     "data": 0
+    }
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -563,10 +423,40 @@
    "min_x": 12,
    "max_x": 13,
    "min_z": 16,
-   "max_z": 54,
+   "max_z": 76,
    "floor": 0,
    "base_height": 7,
-   "theme": "gleis",
+   "material": {
+    "kind": "layered",
+    "axis": "height",
+    "from": 0,
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 6
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 42,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ],
+     "ending": "repeat"
+    },
+    "beyond": {
+     "kind": "solid",
+     "id": 42,
+     "data": 0
+    }
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -574,16 +464,20 @@
    "keepClear": true
   },
   {
-   "id": "prellbock-0",
+   "id": "bankett-0",
    "type": "rectangle",
    "operation": "add",
-   "min_x": -13,
-   "max_x": -9,
-   "min_z": 52,
-   "max_z": 54,
+   "min_x": -14,
+   "max_x": -13,
+   "min_z": 16,
+   "max_z": 58,
    "floor": 0,
    "base_height": 8,
-   "theme": "gleis",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -591,16 +485,20 @@
    "keepClear": true
   },
   {
-   "id": "prellbock-1",
+   "id": "bankett-1",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 9,
-   "max_x": 13,
-   "min_z": 52,
-   "max_z": 54,
+   "min_x": -9,
+   "max_x": -8,
+   "min_z": 16,
+   "max_z": 58,
    "floor": 0,
    "base_height": 8,
-   "theme": "gleis",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -608,7 +506,49 @@
    "keepClear": true
   },
   {
-   "id": "box-wand-w-s",
+   "id": "bankett-2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 8,
+   "max_x": 9,
+   "min_z": 16,
+   "max_z": 58,
+   "floor": 0,
+   "base_height": 8,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "bankett-3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 13,
+   "max_x": 14,
+   "min_z": 16,
+   "max_z": 58,
+   "floor": 0,
+   "base_height": 8,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "box-wand-w-0",
    "type": "rectangle",
    "operation": "add",
    "min_x": -21,
@@ -617,7 +557,11 @@
    "max_z": 24,
    "floor": 0,
    "base_height": 30,
-   "theme": "bahn",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -625,16 +569,20 @@
    "keepClear": true
   },
   {
-   "id": "box-wand-w-n",
+   "id": "box-wand-w-1",
    "type": "rectangle",
    "operation": "add",
    "min_x": -21,
    "max_x": -20,
-   "min_z": 38,
+   "min_z": 42,
    "max_z": 58,
    "floor": 0,
    "base_height": 30,
-   "theme": "bahn",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -648,10 +596,14 @@
    "min_x": -21,
    "max_x": -20,
    "min_z": 24,
-   "max_z": 38,
+   "max_z": 42,
    "floor": 0,
-   "base_height": 31,
-   "theme": "bahn",
+   "base_height": 32,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -659,7 +611,7 @@
    "keepClear": true
   },
   {
-   "id": "box-wand-e-s",
+   "id": "box-wand-e-0",
    "type": "rectangle",
    "operation": "add",
    "min_x": 20,
@@ -668,7 +620,11 @@
    "max_z": 24,
    "floor": 0,
    "base_height": 30,
-   "theme": "bahn",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -676,16 +632,20 @@
    "keepClear": true
   },
   {
-   "id": "box-wand-e-n",
+   "id": "box-wand-e-1",
    "type": "rectangle",
    "operation": "add",
    "min_x": 20,
    "max_x": 21,
-   "min_z": 38,
+   "min_z": 42,
    "max_z": 58,
    "floor": 0,
    "base_height": 30,
-   "theme": "bahn",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -699,10 +659,14 @@
    "min_x": 20,
    "max_x": 21,
    "min_z": 24,
-   "max_z": 38,
+   "max_z": 42,
    "floor": 0,
-   "base_height": 31,
-   "theme": "bahn",
+   "base_height": 32,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -719,7 +683,11 @@
    "max_z": 21,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -736,7 +704,11 @@
    "max_z": 27,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -753,7 +725,11 @@
    "max_z": 33,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -770,7 +746,11 @@
    "max_z": 39,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -787,7 +767,11 @@
    "max_z": 45,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -804,7 +788,11 @@
    "max_z": 51,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -815,13 +803,17 @@
    "id": "lampe-p6",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 17,
-   "max_x": 18,
-   "min_z": 20,
-   "max_z": 21,
+   "min_x": -17,
+   "max_x": -16,
+   "min_z": 56,
+   "max_z": 57,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -834,11 +826,15 @@
    "operation": "add",
    "min_x": 17,
    "max_x": 18,
-   "min_z": 26,
-   "max_z": 27,
+   "min_z": 20,
+   "max_z": 21,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -851,11 +847,15 @@
    "operation": "add",
    "min_x": 17,
    "max_x": 18,
-   "min_z": 32,
-   "max_z": 33,
+   "min_z": 26,
+   "max_z": 27,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -868,11 +868,15 @@
    "operation": "add",
    "min_x": 17,
    "max_x": 18,
-   "min_z": 38,
-   "max_z": 39,
+   "min_z": 32,
+   "max_z": 33,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -885,11 +889,15 @@
    "operation": "add",
    "min_x": 17,
    "max_x": 18,
-   "min_z": 44,
-   "max_z": 45,
+   "min_z": 38,
+   "max_z": 39,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -902,11 +910,15 @@
    "operation": "add",
    "min_x": 17,
    "max_x": 18,
-   "min_z": 50,
-   "max_z": 51,
+   "min_z": 44,
+   "max_z": 45,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -917,13 +929,17 @@
    "id": "lampe-p12",
    "type": "rectangle",
    "operation": "add",
-   "min_x": -4,
-   "max_x": -3,
-   "min_z": 20,
-   "max_z": 21,
+   "min_x": 17,
+   "max_x": 18,
+   "min_z": 50,
+   "max_z": 51,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -934,13 +950,17 @@
    "id": "lampe-p13",
    "type": "rectangle",
    "operation": "add",
-   "min_x": -4,
-   "max_x": -3,
-   "min_z": 26,
-   "max_z": 27,
+   "min_x": 17,
+   "max_x": 18,
+   "min_z": 56,
+   "max_z": 57,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -953,11 +973,15 @@
    "operation": "add",
    "min_x": -4,
    "max_x": -3,
-   "min_z": 32,
-   "max_z": 33,
+   "min_z": 20,
+   "max_z": 21,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -970,11 +994,15 @@
    "operation": "add",
    "min_x": -4,
    "max_x": -3,
-   "min_z": 38,
-   "max_z": 39,
+   "min_z": 26,
+   "max_z": 27,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -987,11 +1015,15 @@
    "operation": "add",
    "min_x": -4,
    "max_x": -3,
-   "min_z": 44,
-   "max_z": 45,
+   "min_z": 32,
+   "max_z": 33,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1004,11 +1036,246 @@
    "operation": "add",
    "min_x": -4,
    "max_x": -3,
+   "min_z": 38,
+   "max_z": 39,
+   "floor": 0,
+   "base_height": 9,
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "lampe-p18",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -4,
+   "max_x": -3,
+   "min_z": 44,
+   "max_z": 45,
+   "floor": 0,
+   "base_height": 9,
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "lampe-p19",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -4,
+   "max_x": -3,
+   "min_z": 50,
+   "max_z": 51,
+   "floor": 0,
+   "base_height": 9,
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "lampe-p20",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -4,
+   "max_x": -3,
    "min_z": 56,
    "max_z": 57,
    "floor": 0,
    "base_height": 9,
-   "theme": "licht",
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "lampe-p21",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -12,
+   "max_x": -11,
+   "min_z": 60,
+   "max_z": 61,
+   "floor": 0,
+   "base_height": 6,
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "lampe-p22",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -12,
+   "max_x": -11,
+   "min_z": 65,
+   "max_z": 66,
+   "floor": 0,
+   "base_height": 6,
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "lampe-p23",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -12,
+   "max_x": -11,
+   "min_z": 70,
+   "max_z": 71,
+   "floor": 0,
+   "base_height": 6,
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "lampe-p24",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -12,
+   "max_x": -11,
+   "min_z": 75,
+   "max_z": 76,
+   "floor": 0,
+   "base_height": 6,
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "lampe-p25",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 10,
+   "max_x": 11,
+   "min_z": 60,
+   "max_z": 61,
+   "floor": 0,
+   "base_height": 6,
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "lampe-p26",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 10,
+   "max_x": 11,
+   "min_z": 65,
+   "max_z": 66,
+   "floor": 0,
+   "base_height": 6,
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "lampe-p27",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 10,
+   "max_x": 11,
+   "min_z": 70,
+   "max_z": 71,
+   "floor": 0,
+   "base_height": 6,
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "lampe-p28",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 10,
+   "max_x": 11,
+   "min_z": 75,
+   "max_z": 76,
+   "floor": 0,
+   "base_height": 6,
+   "material": {
+    "kind": "solid",
+    "id": 89,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1019,13 +1286,59 @@
    "id": "treppe-p0",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 0,
-   "max_x": 8,
-   "min_z": 16,
-   "max_z": 18,
+   "min_x": -3,
+   "max_x": 3,
+   "min_z": 32,
+   "max_z": 33,
    "floor": 0,
    "base_height": 9,
-   "theme": "bahn",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pw0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -4,
+   "max_x": -3,
+   "min_z": 32,
+   "max_z": 33,
+   "floor": 0,
+   "base_height": 11,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pe0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 3,
+   "max_x": 4,
+   "min_z": 32,
+   "max_z": 33,
+   "floor": 0,
+   "base_height": 11,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1036,13 +1349,59 @@
    "id": "treppe-p1",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 0,
-   "max_x": 8,
-   "min_z": 18,
-   "max_z": 20,
+   "min_x": -3,
+   "max_x": 3,
+   "min_z": 33,
+   "max_z": 34,
    "floor": 0,
    "base_height": 10,
-   "theme": "bahn",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pw1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -4,
+   "max_x": -3,
+   "min_z": 33,
+   "max_z": 34,
+   "floor": 0,
+   "base_height": 12,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pe1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 3,
+   "max_x": 4,
+   "min_z": 33,
+   "max_z": 34,
+   "floor": 0,
+   "base_height": 12,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1053,13 +1412,59 @@
    "id": "treppe-p2",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 0,
-   "max_x": 8,
-   "min_z": 20,
-   "max_z": 22,
+   "min_x": -3,
+   "max_x": 3,
+   "min_z": 34,
+   "max_z": 35,
    "floor": 0,
    "base_height": 11,
-   "theme": "bahn",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pw2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -4,
+   "max_x": -3,
+   "min_z": 34,
+   "max_z": 35,
+   "floor": 0,
+   "base_height": 13,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pe2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 3,
+   "max_x": 4,
+   "min_z": 34,
+   "max_z": 35,
+   "floor": 0,
+   "base_height": 13,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1070,13 +1475,59 @@
    "id": "treppe-p3",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 0,
-   "max_x": 8,
-   "min_z": 22,
-   "max_z": 24,
+   "min_x": -3,
+   "max_x": 3,
+   "min_z": 35,
+   "max_z": 36,
    "floor": 0,
    "base_height": 12,
-   "theme": "bahn",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pw3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -4,
+   "max_x": -3,
+   "min_z": 35,
+   "max_z": 36,
+   "floor": 0,
+   "base_height": 14,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pe3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 3,
+   "max_x": 4,
+   "min_z": 35,
+   "max_z": 36,
+   "floor": 0,
+   "base_height": 14,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1087,13 +1538,59 @@
    "id": "treppe-p4",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 0,
-   "max_x": 8,
-   "min_z": 24,
-   "max_z": 26,
+   "min_x": -3,
+   "max_x": 3,
+   "min_z": 36,
+   "max_z": 37,
    "floor": 0,
    "base_height": 13,
-   "theme": "bahn",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pw4",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -4,
+   "max_x": -3,
+   "min_z": 36,
+   "max_z": 37,
+   "floor": 0,
+   "base_height": 15,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pe4",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 3,
+   "max_x": 4,
+   "min_z": 36,
+   "max_z": 37,
+   "floor": 0,
+   "base_height": 15,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1104,13 +1601,59 @@
    "id": "treppe-p5",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 0,
-   "max_x": 8,
-   "min_z": 26,
-   "max_z": 28,
+   "min_x": -3,
+   "max_x": 3,
+   "min_z": 37,
+   "max_z": 38,
    "floor": 0,
    "base_height": 14,
-   "theme": "bahn",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pw5",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -4,
+   "max_x": -3,
+   "min_z": 37,
+   "max_z": 38,
+   "floor": 0,
+   "base_height": 16,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pe5",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 3,
+   "max_x": 4,
+   "min_z": 37,
+   "max_z": 38,
+   "floor": 0,
+   "base_height": 16,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1121,13 +1664,59 @@
    "id": "treppe-p6",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 0,
-   "max_x": 8,
-   "min_z": 28,
-   "max_z": 30,
+   "min_x": -3,
+   "max_x": 3,
+   "min_z": 38,
+   "max_z": 39,
    "floor": 0,
    "base_height": 15,
-   "theme": "bahn",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pw6",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -4,
+   "max_x": -3,
+   "min_z": 38,
+   "max_z": 39,
+   "floor": 0,
+   "base_height": 17,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pe6",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 3,
+   "max_x": 4,
+   "min_z": 38,
+   "max_z": 39,
+   "floor": 0,
+   "base_height": 17,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1138,13 +1727,59 @@
    "id": "treppe-p7",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 0,
-   "max_x": 8,
-   "min_z": 30,
-   "max_z": 32,
+   "min_x": -3,
+   "max_x": 3,
+   "min_z": 39,
+   "max_z": 40,
    "floor": 0,
    "base_height": 16,
-   "theme": "bahn",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pw7",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -4,
+   "max_x": -3,
+   "min_z": 39,
+   "max_z": 40,
+   "floor": 0,
+   "base_height": 18,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pe7",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 3,
+   "max_x": 4,
+   "min_z": 39,
+   "max_z": 40,
+   "floor": 0,
+   "base_height": 18,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1155,13 +1790,59 @@
    "id": "treppe-p8",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 0,
-   "max_x": 8,
-   "min_z": 32,
-   "max_z": 34,
+   "min_x": -3,
+   "max_x": 3,
+   "min_z": 40,
+   "max_z": 41,
    "floor": 0,
    "base_height": 17,
-   "theme": "bahn",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pw8",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -4,
+   "max_x": -3,
+   "min_z": 40,
+   "max_z": 41,
+   "floor": 0,
+   "base_height": 19,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pe8",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 3,
+   "max_x": 4,
+   "min_z": 40,
+   "max_z": 41,
+   "floor": 0,
+   "base_height": 19,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1172,13 +1853,17 @@
    "id": "treppe-p9",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 0,
-   "max_x": 8,
-   "min_z": 34,
-   "max_z": 36,
+   "min_x": -3,
+   "max_x": 3,
+   "min_z": 41,
+   "max_z": 42,
    "floor": 0,
    "base_height": 18,
-   "theme": "bahn",
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1186,16 +1871,1679 @@
    "keepClear": true
   },
   {
-   "id": "treppe-p10",
+   "id": "gelaender-pw9",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 0,
-   "max_x": 8,
-   "min_z": 36,
-   "max_z": 38,
+   "min_x": -4,
+   "max_x": -3,
+   "min_z": 41,
+   "max_z": 42,
    "floor": 0,
-   "base_height": 19,
-   "theme": "bahn",
+   "base_height": 20,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "gelaender-pe9",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 3,
+   "max_x": 4,
+   "min_z": 41,
+   "max_z": 42,
+   "floor": 0,
+   "base_height": 20,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-0-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -30,
+   "max_x": -24,
+   "min_z": 44,
+   "max_z": 45,
+   "floor": 0,
+   "base_height": 31,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0w0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -31,
+   "max_x": -30,
+   "min_z": 44,
+   "max_z": 45,
+   "floor": 0,
+   "base_height": 33,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0e0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "max_x": -23,
+   "min_z": 44,
+   "max_z": 45,
+   "floor": 0,
+   "base_height": 33,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-0-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -30,
+   "max_x": -24,
+   "min_z": 45,
+   "max_z": 46,
+   "floor": 0,
+   "base_height": 32,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0w1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -31,
+   "max_x": -30,
+   "min_z": 45,
+   "max_z": 46,
+   "floor": 0,
+   "base_height": 34,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0e1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "max_x": -23,
+   "min_z": 45,
+   "max_z": 46,
+   "floor": 0,
+   "base_height": 34,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-0-2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -30,
+   "max_x": -24,
+   "min_z": 46,
+   "max_z": 47,
+   "floor": 0,
+   "base_height": 33,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0w2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -31,
+   "max_x": -30,
+   "min_z": 46,
+   "max_z": 47,
+   "floor": 0,
+   "base_height": 35,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0e2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "max_x": -23,
+   "min_z": 46,
+   "max_z": 47,
+   "floor": 0,
+   "base_height": 35,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-0-3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -30,
+   "max_x": -24,
+   "min_z": 47,
+   "max_z": 48,
+   "floor": 0,
+   "base_height": 34,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0w3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -31,
+   "max_x": -30,
+   "min_z": 47,
+   "max_z": 48,
+   "floor": 0,
+   "base_height": 36,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0e3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "max_x": -23,
+   "min_z": 47,
+   "max_z": 48,
+   "floor": 0,
+   "base_height": 36,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-0-4",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -30,
+   "max_x": -24,
+   "min_z": 48,
+   "max_z": 49,
+   "floor": 0,
+   "base_height": 35,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0w4",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -31,
+   "max_x": -30,
+   "min_z": 48,
+   "max_z": 49,
+   "floor": 0,
+   "base_height": 37,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0e4",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "max_x": -23,
+   "min_z": 48,
+   "max_z": 49,
+   "floor": 0,
+   "base_height": 37,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-0-5",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -30,
+   "max_x": -24,
+   "min_z": 49,
+   "max_z": 50,
+   "floor": 0,
+   "base_height": 36,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0w5",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -31,
+   "max_x": -30,
+   "min_z": 49,
+   "max_z": 50,
+   "floor": 0,
+   "base_height": 38,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0e5",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "max_x": -23,
+   "min_z": 49,
+   "max_z": 50,
+   "floor": 0,
+   "base_height": 38,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-0-6",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -30,
+   "max_x": -24,
+   "min_z": 50,
+   "max_z": 51,
+   "floor": 0,
+   "base_height": 37,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0w6",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -31,
+   "max_x": -30,
+   "min_z": 50,
+   "max_z": 51,
+   "floor": 0,
+   "base_height": 39,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0e6",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "max_x": -23,
+   "min_z": 50,
+   "max_z": 51,
+   "floor": 0,
+   "base_height": 39,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-0-7",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -30,
+   "max_x": -24,
+   "min_z": 51,
+   "max_z": 52,
+   "floor": 0,
+   "base_height": 38,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0w7",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -31,
+   "max_x": -30,
+   "min_z": 51,
+   "max_z": 52,
+   "floor": 0,
+   "base_height": 40,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0e7",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "max_x": -23,
+   "min_z": 51,
+   "max_z": 52,
+   "floor": 0,
+   "base_height": 40,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-0-8",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -30,
+   "max_x": -24,
+   "min_z": 52,
+   "max_z": 53,
+   "floor": 0,
+   "base_height": 39,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0w8",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -31,
+   "max_x": -30,
+   "min_z": 52,
+   "max_z": 53,
+   "floor": 0,
+   "base_height": 41,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0e8",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "max_x": -23,
+   "min_z": 52,
+   "max_z": 53,
+   "floor": 0,
+   "base_height": 41,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-0-9",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -30,
+   "max_x": -24,
+   "min_z": 53,
+   "max_z": 54,
+   "floor": 0,
+   "base_height": 40,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0w9",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -31,
+   "max_x": -30,
+   "min_z": 53,
+   "max_z": 54,
+   "floor": 0,
+   "base_height": 42,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0e9",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "max_x": -23,
+   "min_z": 53,
+   "max_z": 54,
+   "floor": 0,
+   "base_height": 42,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-0-10",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -30,
+   "max_x": -24,
+   "min_z": 54,
+   "max_z": 55,
+   "floor": 0,
+   "base_height": 41,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0w10",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -31,
+   "max_x": -30,
+   "min_z": 54,
+   "max_z": 55,
+   "floor": 0,
+   "base_height": 43,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0e10",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "max_x": -23,
+   "min_z": 54,
+   "max_z": 55,
+   "floor": 0,
+   "base_height": 43,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-0-11",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -30,
+   "max_x": -24,
+   "min_z": 55,
+   "max_z": 56,
+   "floor": 0,
+   "base_height": 42,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0w11",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -31,
+   "max_x": -30,
+   "min_z": 55,
+   "max_z": 56,
+   "floor": 0,
+   "base_height": 44,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-0e11",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "max_x": -23,
+   "min_z": 55,
+   "max_z": 56,
+   "floor": 0,
+   "base_height": 44,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochpodest-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -30,
+   "max_x": -24,
+   "min_z": 56,
+   "max_z": 58,
+   "floor": 0,
+   "base_height": 43,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochpodest-0w",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -31,
+   "max_x": -30,
+   "min_z": 56,
+   "max_z": 58,
+   "floor": 0,
+   "base_height": 45,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochpodest-0e",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -24,
+   "max_x": -23,
+   "min_z": 56,
+   "max_z": 58,
+   "floor": 0,
+   "base_height": 45,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-1-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 24,
+   "max_x": 30,
+   "min_z": 44,
+   "max_z": 45,
+   "floor": 0,
+   "base_height": 31,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1w0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "max_x": 24,
+   "min_z": 44,
+   "max_z": 45,
+   "floor": 0,
+   "base_height": 33,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1e0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 30,
+   "max_x": 31,
+   "min_z": 44,
+   "max_z": 45,
+   "floor": 0,
+   "base_height": 33,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-1-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 24,
+   "max_x": 30,
+   "min_z": 45,
+   "max_z": 46,
+   "floor": 0,
+   "base_height": 32,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1w1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "max_x": 24,
+   "min_z": 45,
+   "max_z": 46,
+   "floor": 0,
+   "base_height": 34,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1e1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 30,
+   "max_x": 31,
+   "min_z": 45,
+   "max_z": 46,
+   "floor": 0,
+   "base_height": 34,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-1-2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 24,
+   "max_x": 30,
+   "min_z": 46,
+   "max_z": 47,
+   "floor": 0,
+   "base_height": 33,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1w2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "max_x": 24,
+   "min_z": 46,
+   "max_z": 47,
+   "floor": 0,
+   "base_height": 35,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1e2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 30,
+   "max_x": 31,
+   "min_z": 46,
+   "max_z": 47,
+   "floor": 0,
+   "base_height": 35,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-1-3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 24,
+   "max_x": 30,
+   "min_z": 47,
+   "max_z": 48,
+   "floor": 0,
+   "base_height": 34,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1w3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "max_x": 24,
+   "min_z": 47,
+   "max_z": 48,
+   "floor": 0,
+   "base_height": 36,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1e3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 30,
+   "max_x": 31,
+   "min_z": 47,
+   "max_z": 48,
+   "floor": 0,
+   "base_height": 36,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-1-4",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 24,
+   "max_x": 30,
+   "min_z": 48,
+   "max_z": 49,
+   "floor": 0,
+   "base_height": 35,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1w4",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "max_x": 24,
+   "min_z": 48,
+   "max_z": 49,
+   "floor": 0,
+   "base_height": 37,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1e4",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 30,
+   "max_x": 31,
+   "min_z": 48,
+   "max_z": 49,
+   "floor": 0,
+   "base_height": 37,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-1-5",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 24,
+   "max_x": 30,
+   "min_z": 49,
+   "max_z": 50,
+   "floor": 0,
+   "base_height": 36,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1w5",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "max_x": 24,
+   "min_z": 49,
+   "max_z": 50,
+   "floor": 0,
+   "base_height": 38,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1e5",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 30,
+   "max_x": 31,
+   "min_z": 49,
+   "max_z": 50,
+   "floor": 0,
+   "base_height": 38,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-1-6",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 24,
+   "max_x": 30,
+   "min_z": 50,
+   "max_z": 51,
+   "floor": 0,
+   "base_height": 37,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1w6",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "max_x": 24,
+   "min_z": 50,
+   "max_z": 51,
+   "floor": 0,
+   "base_height": 39,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1e6",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 30,
+   "max_x": 31,
+   "min_z": 50,
+   "max_z": 51,
+   "floor": 0,
+   "base_height": 39,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-1-7",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 24,
+   "max_x": 30,
+   "min_z": 51,
+   "max_z": 52,
+   "floor": 0,
+   "base_height": 38,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1w7",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "max_x": 24,
+   "min_z": 51,
+   "max_z": 52,
+   "floor": 0,
+   "base_height": 40,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1e7",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 30,
+   "max_x": 31,
+   "min_z": 51,
+   "max_z": 52,
+   "floor": 0,
+   "base_height": 40,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-1-8",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 24,
+   "max_x": 30,
+   "min_z": 52,
+   "max_z": 53,
+   "floor": 0,
+   "base_height": 39,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1w8",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "max_x": 24,
+   "min_z": 52,
+   "max_z": 53,
+   "floor": 0,
+   "base_height": 41,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1e8",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 30,
+   "max_x": 31,
+   "min_z": 52,
+   "max_z": 53,
+   "floor": 0,
+   "base_height": 41,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-1-9",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 24,
+   "max_x": 30,
+   "min_z": 53,
+   "max_z": 54,
+   "floor": 0,
+   "base_height": 40,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1w9",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "max_x": 24,
+   "min_z": 53,
+   "max_z": 54,
+   "floor": 0,
+   "base_height": 42,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1e9",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 30,
+   "max_x": 31,
+   "min_z": 53,
+   "max_z": 54,
+   "floor": 0,
+   "base_height": 42,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-1-10",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 24,
+   "max_x": 30,
+   "min_z": 54,
+   "max_z": 55,
+   "floor": 0,
+   "base_height": 41,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1w10",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "max_x": 24,
+   "min_z": 54,
+   "max_z": 55,
+   "floor": 0,
+   "base_height": 43,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1e10",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 30,
+   "max_x": 31,
+   "min_z": 54,
+   "max_z": 55,
+   "floor": 0,
+   "base_height": 43,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochtreppe-1-11",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 24,
+   "max_x": 30,
+   "min_z": 55,
+   "max_z": 56,
+   "floor": 0,
+   "base_height": 42,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1w11",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "max_x": 24,
+   "min_z": 55,
+   "max_z": 56,
+   "floor": 0,
+   "base_height": 44,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochgelaender-1e11",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 30,
+   "max_x": 31,
+   "min_z": 55,
+   "max_z": 56,
+   "floor": 0,
+   "base_height": 44,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochpodest-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 24,
+   "max_x": 30,
+   "min_z": 56,
+   "max_z": 58,
+   "floor": 0,
+   "base_height": 43,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochpodest-1w",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 23,
+   "max_x": 24,
+   "min_z": 56,
+   "max_z": 58,
+   "floor": 0,
+   "base_height": 45,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "hochpodest-1e",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 30,
+   "max_x": 31,
+   "min_z": 56,
+   "max_z": 58,
+   "floor": 0,
+   "base_height": 45,
+   "material": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1206,13 +3554,51 @@
    "id": "pfeiler-0",
    "type": "rectangle",
    "operation": "add",
-   "min_x": -36,
-   "max_x": -32,
-   "min_z": 64,
-   "max_z": 72,
+   "min_x": -34,
+   "max_x": -30,
+   "min_z": 59,
+   "max_z": 66,
    "floor": 0,
-   "base_height": 39,
-   "theme": "ziegel",
+   "base_height": 37,
+   "material": {
+    "kind": "layered",
+    "axis": "height",
+    "from": 0,
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       },
+       "thickness": 30
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 4
+      }
+     ],
+     "ending": "repeat"
+    },
+    "beyond": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1223,13 +3609,51 @@
    "id": "pfeiler-1",
    "type": "rectangle",
    "operation": "add",
-   "min_x": -26,
-   "max_x": -22,
-   "min_z": 64,
-   "max_z": 72,
+   "min_x": -27,
+   "max_x": -23,
+   "min_z": 59,
+   "max_z": 66,
    "floor": 0,
-   "base_height": 39,
-   "theme": "ziegel",
+   "base_height": 37,
+   "material": {
+    "kind": "layered",
+    "axis": "height",
+    "from": 0,
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       },
+       "thickness": 30
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 4
+      }
+     ],
+     "ending": "repeat"
+    },
+    "beyond": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1240,13 +3664,51 @@
    "id": "pfeiler-2",
    "type": "rectangle",
    "operation": "add",
-   "min_x": -16,
-   "max_x": -12,
-   "min_z": 64,
-   "max_z": 72,
+   "min_x": -20,
+   "max_x": -16,
+   "min_z": 59,
+   "max_z": 66,
    "floor": 0,
-   "base_height": 39,
-   "theme": "ziegel",
+   "base_height": 37,
+   "material": {
+    "kind": "layered",
+    "axis": "height",
+    "from": 0,
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       },
+       "thickness": 30
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 4
+      }
+     ],
+     "ending": "repeat"
+    },
+    "beyond": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1257,13 +3719,51 @@
    "id": "pfeiler-3",
    "type": "rectangle",
    "operation": "add",
-   "min_x": -6,
-   "max_x": -2,
-   "min_z": 64,
-   "max_z": 72,
+   "min_x": 16,
+   "max_x": 20,
+   "min_z": 59,
+   "max_z": 66,
    "floor": 0,
-   "base_height": 39,
-   "theme": "ziegel",
+   "base_height": 37,
+   "material": {
+    "kind": "layered",
+    "axis": "height",
+    "from": 0,
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       },
+       "thickness": 30
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 4
+      }
+     ],
+     "ending": "repeat"
+    },
+    "beyond": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1274,13 +3774,51 @@
    "id": "pfeiler-4",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 4,
-   "max_x": 8,
-   "min_z": 64,
-   "max_z": 72,
+   "min_x": 23,
+   "max_x": 27,
+   "min_z": 59,
+   "max_z": 66,
    "floor": 0,
-   "base_height": 39,
-   "theme": "ziegel",
+   "base_height": 37,
+   "material": {
+    "kind": "layered",
+    "axis": "height",
+    "from": 0,
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       },
+       "thickness": 30
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 4
+      }
+     ],
+     "ending": "repeat"
+    },
+    "beyond": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1291,13 +3829,51 @@
    "id": "pfeiler-5",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 14,
-   "max_x": 18,
-   "min_z": 64,
-   "max_z": 72,
+   "min_x": 30,
+   "max_x": 34,
+   "min_z": 59,
+   "max_z": 66,
    "floor": 0,
-   "base_height": 39,
-   "theme": "ziegel",
+   "base_height": 37,
+   "material": {
+    "kind": "layered",
+    "axis": "height",
+    "from": 0,
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       },
+       "thickness": 30
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 4
+      }
+     ],
+     "ending": "repeat"
+    },
+    "beyond": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1305,16 +3881,20 @@
    "keepClear": true
   },
   {
-   "id": "pfeiler-6",
+   "id": "allee-fahrbahn",
    "type": "rectangle",
    "operation": "add",
-   "min_x": 24,
-   "max_x": 28,
-   "min_z": 64,
-   "max_z": 72,
+   "min_x": -3,
+   "max_x": 3,
+   "min_z": 60,
+   "max_z": 100,
    "floor": 0,
-   "base_height": 39,
-   "theme": "ziegel",
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 15
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1322,16 +3902,440 @@
    "keepClear": true
   },
   {
-   "id": "pfeiler-7",
+   "id": "allee-gehweg-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -5,
+   "max_x": -3,
+   "min_z": 60,
+   "max_z": 100,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "allee-gehweg-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 3,
+   "max_x": 5,
+   "min_z": 60,
+   "max_z": 100,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "allee-strich-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -1,
+   "max_x": 1,
+   "min_z": 62,
+   "max_z": 64,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "allee-strich-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -1,
+   "max_x": 1,
+   "min_z": 68,
+   "max_z": 70,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "allee-strich-2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -1,
+   "max_x": 1,
+   "min_z": 74,
+   "max_z": 76,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "allee-strich-3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -1,
+   "max_x": 1,
+   "min_z": 80,
+   "max_z": 82,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "allee-strich-4",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -1,
+   "max_x": 1,
+   "min_z": 86,
+   "max_z": 88,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "allee-strich-5",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -1,
+   "max_x": 1,
+   "min_z": 92,
+   "max_z": 94,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "arterie-fahrbahn",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -34,
+   "max_x": 34,
+   "min_z": 84,
+   "max_z": 88,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 15
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "arterie-gehweg-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -34,
+   "max_x": 34,
+   "min_z": 82,
+   "max_z": 84,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "arterie-gehweg-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -34,
+   "max_x": 34,
+   "min_z": 88,
+   "max_z": 90,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 43,
+    "data": 8
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "arterie-strich-0",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -32,
+   "max_x": -30,
+   "min_z": 86,
+   "max_z": 88,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "arterie-strich-1",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -26,
+   "max_x": -24,
+   "min_z": 86,
+   "max_z": 88,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "arterie-strich-2",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -20,
+   "max_x": -18,
+   "min_z": 86,
+   "max_z": 88,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "arterie-strich-3",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -14,
+   "max_x": -12,
+   "min_z": 86,
+   "max_z": 88,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "arterie-strich-4",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -8,
+   "max_x": -6,
+   "min_z": 86,
+   "max_z": 88,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "arterie-strich-5",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 8,
+   "max_x": 10,
+   "min_z": 86,
+   "max_z": 88,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "arterie-strich-6",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 14,
+   "max_x": 16,
+   "min_z": 86,
+   "max_z": 88,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "arterie-strich-7",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 20,
+   "max_x": 22,
+   "min_z": 86,
+   "max_z": 88,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "arterie-strich-8",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 26,
+   "max_x": 28,
+   "min_z": 86,
+   "max_z": 88,
+   "floor": 0,
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "keepClear": true
+  },
+  {
+   "id": "arterie-strich-9",
    "type": "rectangle",
    "operation": "add",
    "min_x": 32,
-   "max_x": 36,
-   "min_z": 64,
-   "max_z": 72,
+   "max_x": 34,
+   "min_z": 86,
+   "max_z": 88,
    "floor": 0,
-   "base_height": 39,
-   "theme": "ziegel",
+   "base_height": 30,
+   "material": {
+    "kind": "solid",
+    "id": 159,
+    "data": 4
+   },
    "override": true,
    "height_mode": "level",
    "skirt": 0,
@@ -1339,334 +4343,480 @@
    "keepClear": true
   },
   {
-   "id": "rampe-0",
+   "id": "allee-gruen-00",
    "type": "rectangle",
    "operation": "add",
-   "min_x": -34,
-   "max_x": -26,
-   "min_z": 38,
-   "max_z": 40,
-   "floor": 0,
-   "base_height": 31,
-   "theme": "ziegel",
-   "override": true,
-   "height_mode": "level",
-   "skirt": 0,
-   "relief_scope": "exclude",
-   "keepClear": true
-  },
-  {
-   "id": "rampe-1",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -34,
-   "max_x": -26,
-   "min_z": 40,
-   "max_z": 42,
-   "floor": 0,
-   "base_height": 32,
-   "theme": "ziegel",
-   "override": true,
-   "height_mode": "level",
-   "skirt": 0,
-   "relief_scope": "exclude",
-   "keepClear": true
-  },
-  {
-   "id": "rampe-2",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -34,
-   "max_x": -26,
-   "min_z": 42,
-   "max_z": 44,
-   "floor": 0,
-   "base_height": 33,
-   "theme": "ziegel",
-   "override": true,
-   "height_mode": "level",
-   "skirt": 0,
-   "relief_scope": "exclude",
-   "keepClear": true
-  },
-  {
-   "id": "rampe-3",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -34,
-   "max_x": -26,
-   "min_z": 44,
-   "max_z": 46,
-   "floor": 0,
-   "base_height": 34,
-   "theme": "ziegel",
-   "override": true,
-   "height_mode": "level",
-   "skirt": 0,
-   "relief_scope": "exclude",
-   "keepClear": true
-  },
-  {
-   "id": "rampe-4",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -34,
-   "max_x": -26,
-   "min_z": 46,
-   "max_z": 48,
-   "floor": 0,
-   "base_height": 35,
-   "theme": "ziegel",
-   "override": true,
-   "height_mode": "level",
-   "skirt": 0,
-   "relief_scope": "exclude",
-   "keepClear": true
-  },
-  {
-   "id": "rampe-5",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -34,
-   "max_x": -26,
-   "min_z": 48,
-   "max_z": 50,
-   "floor": 0,
-   "base_height": 36,
-   "theme": "ziegel",
-   "override": true,
-   "height_mode": "level",
-   "skirt": 0,
-   "relief_scope": "exclude",
-   "keepClear": true
-  },
-  {
-   "id": "rampe-6",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -34,
-   "max_x": -26,
-   "min_z": 50,
-   "max_z": 52,
-   "floor": 0,
-   "base_height": 37,
-   "theme": "ziegel",
-   "override": true,
-   "height_mode": "level",
-   "skirt": 0,
-   "relief_scope": "exclude",
-   "keepClear": true
-  },
-  {
-   "id": "rampe-7",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -34,
-   "max_x": -26,
-   "min_z": 52,
-   "max_z": 54,
-   "floor": 0,
-   "base_height": 38,
-   "theme": "ziegel",
-   "override": true,
-   "height_mode": "level",
-   "skirt": 0,
-   "relief_scope": "exclude",
-   "keepClear": true
-  },
-  {
-   "id": "rampe-8",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -34,
-   "max_x": -26,
-   "min_z": 54,
-   "max_z": 56,
-   "floor": 0,
-   "base_height": 39,
-   "theme": "ziegel",
-   "override": true,
-   "height_mode": "level",
-   "skirt": 0,
-   "relief_scope": "exclude",
-   "keepClear": true
-  },
-  {
-   "id": "rampe-9",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -34,
-   "max_x": -26,
-   "min_z": 56,
-   "max_z": 58,
-   "floor": 0,
-   "base_height": 40,
-   "theme": "ziegel",
-   "override": true,
-   "height_mode": "level",
-   "skirt": 0,
-   "relief_scope": "exclude",
-   "keepClear": true
-  },
-  {
-   "id": "rampe-10",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -34,
-   "max_x": -26,
-   "min_z": 58,
-   "max_z": 60,
-   "floor": 0,
-   "base_height": 41,
-   "theme": "ziegel",
-   "override": true,
-   "height_mode": "level",
-   "skirt": 0,
-   "relief_scope": "exclude",
-   "keepClear": true
-  },
-  {
-   "id": "rampe-11",
-   "type": "rectangle",
-   "operation": "add",
-   "min_x": -34,
-   "max_x": -26,
+   "min_x": -8,
+   "max_x": -5,
    "min_z": 60,
-   "max_z": 62,
+   "max_z": 82,
    "floor": 0,
-   "base_height": 42,
-   "theme": "ziegel",
+   "base_height": 30,
+   "theme": "gruen",
    "override": true,
    "height_mode": "level",
    "skirt": 0,
-   "relief_scope": "exclude",
-   "keepClear": true
+   "relief_scope": "exclude"
+  },
+  {
+   "id": "allee-gruen-01",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": -8,
+   "max_x": -5,
+   "min_z": 90,
+   "max_z": 100,
+   "floor": 0,
+   "base_height": 30,
+   "theme": "gruen",
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude"
+  },
+  {
+   "id": "allee-gruen-10",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 5,
+   "max_x": 8,
+   "min_z": 60,
+   "max_z": 82,
+   "floor": 0,
+   "base_height": 30,
+   "theme": "gruen",
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude"
+  },
+  {
+   "id": "allee-gruen-11",
+   "type": "rectangle",
+   "operation": "add",
+   "min_x": 5,
+   "max_x": 8,
+   "min_z": 90,
+   "max_z": 100,
+   "floor": 0,
+   "base_height": 30,
+   "theme": "gruen",
+   "override": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude"
   }
  ],
  "addLayers": [
   {
-   "id": "zug-0",
-   "name": "Triebzug 0",
+   "id": "zug-fahrwerk",
+   "name": "Triebzug fahrwerk",
    "base_y": 7,
    "shapes": [
     {
-     "id": "zug-0-a",
+     "id": "zug-drehgestell-00",
      "type": "rectangle",
      "operation": "add",
      "min_x": 9,
      "max_x": 13,
-     "min_z": 26,
-     "max_z": 50,
-     "floor": 0,
-     "base_height": 2,
-     "theme": "zug-grau"
-    }
-   ],
-   "groups": [
-    {
-     "id": "zug-0-g",
-     "name": "Triebzug 0",
-     "mirrors": true,
-     "shapeIds": [
-      "zug-0-a"
-     ]
-    }
-   ],
-   "kind": "made",
-   "part_of": "zug"
-  },
-  {
-   "id": "zug-1",
-   "name": "Triebzug 1",
-   "base_y": 9,
-   "shapes": [
-    {
-     "id": "zug-1-a",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": 9,
-     "max_x": 13,
-     "min_z": 26,
-     "max_z": 50,
-     "floor": 0,
-     "base_height": 2,
-     "theme": "zug-rot"
-    }
-   ],
-   "groups": [
-    {
-     "id": "zug-1-g",
-     "name": "Triebzug 1",
-     "mirrors": true,
-     "shapeIds": [
-      "zug-1-a"
-     ]
-    }
-   ],
-   "kind": "made",
-   "part_of": "zug"
-  },
-  {
-   "id": "zug-2",
-   "name": "Triebzug 2",
-   "base_y": 11,
-   "shapes": [
-    {
-     "id": "zug-2-a",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": 9,
-     "max_x": 13,
-     "min_z": 26,
-     "max_z": 50,
+     "min_z": 29,
+     "max_z": 31,
      "floor": 0,
      "base_height": 1,
-     "theme": "zug-glas"
-    }
-   ],
-   "groups": [
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
     {
-     "id": "zug-2-g",
-     "name": "Triebzug 2",
-     "mirrors": true,
-     "shapeIds": [
-      "zug-2-a"
-     ]
-    }
-   ],
-   "kind": "made",
-   "part_of": "zug"
-  },
-  {
-   "id": "zug-3",
-   "name": "Triebzug 3",
-   "base_y": 12,
-   "shapes": [
-    {
-     "id": "zug-3-a",
+     "id": "zug-drehgestell-01",
      "type": "rectangle",
      "operation": "add",
      "min_x": 9,
      "max_x": 13,
-     "min_z": 26,
-     "max_z": 50,
+     "min_z": 36,
+     "max_z": 38,
      "floor": 0,
      "base_height": 1,
-     "theme": "zug-grau"
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "zug-rahmen-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "max_x": 12,
+     "min_z": 28,
+     "max_z": 29,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "zug-rahmen-01",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "max_x": 12,
+     "min_z": 31,
+     "max_z": 36,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "zug-rahmen-02",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "max_x": 12,
+     "min_z": 38,
+     "max_z": 39,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "zug-drehgestell-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 42,
+     "max_z": 44,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "zug-drehgestell-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 49,
+     "max_z": 51,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "zug-rahmen-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "max_x": 12,
+     "min_z": 41,
+     "max_z": 42,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "zug-rahmen-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "max_x": 12,
+     "min_z": 44,
+     "max_z": 49,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "zug-rahmen-12",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "max_x": 12,
+     "min_z": 51,
+     "max_z": 52,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
     }
    ],
    "groups": [
     {
-     "id": "zug-3-g",
-     "name": "Triebzug 3",
+     "id": "zug-fahrwerk-g",
+     "name": "Triebzug fahrwerk",
      "mirrors": true,
      "shapeIds": [
-      "zug-3-a"
+      "zug-drehgestell-00",
+      "zug-drehgestell-01",
+      "zug-rahmen-00",
+      "zug-rahmen-01",
+      "zug-rahmen-02",
+      "zug-drehgestell-10",
+      "zug-drehgestell-11",
+      "zug-rahmen-10",
+      "zug-rahmen-11",
+      "zug-rahmen-12"
      ]
     }
    ],
    "kind": "made",
-   "part_of": "zug"
+   "part_of": "Triebzug"
+  },
+  {
+   "id": "zug-kasten",
+   "name": "Triebzug kasten",
+   "base_y": 8,
+   "shapes": [
+    {
+     "id": "zug-tuer-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 31,
+     "max_z": 33,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "zug-tuer-01",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 34,
+     "max_z": 36,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "zug-kopf-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 28,
+     "max_z": 29,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "zug-kasten-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 29,
+     "max_z": 31,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "zug-kasten-01",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 33,
+     "max_z": 34,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "zug-kasten-02",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 36,
+     "max_z": 39,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "zug-tuer-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 44,
+     "max_z": 46,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "zug-tuer-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 47,
+     "max_z": 49,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "zug-kopf-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 51,
+     "max_z": 52,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "zug-kasten-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 41,
+     "max_z": 44,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "zug-kasten-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 46,
+     "max_z": 47,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "zug-kasten-12",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 49,
+     "max_z": 51,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "zug-kasten-g",
+     "name": "Triebzug kasten",
+     "mirrors": true,
+     "shapeIds": [
+      "zug-tuer-00",
+      "zug-tuer-01",
+      "zug-kopf-00",
+      "zug-kasten-00",
+      "zug-kasten-01",
+      "zug-kasten-02",
+      "zug-tuer-10",
+      "zug-tuer-11",
+      "zug-kopf-10",
+      "zug-kasten-10",
+      "zug-kasten-11",
+      "zug-kasten-12"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "Triebzug"
   },
   {
    "id": "perron-fuss",
@@ -1682,8 +4832,12 @@
      "min_z": 26,
      "max_z": 27,
      "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
     },
     {
      "id": "stuetze--19-31",
@@ -1694,8 +4848,12 @@
      "min_z": 31,
      "max_z": 32,
      "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
     },
     {
      "id": "stuetze--19-36",
@@ -1706,8 +4864,12 @@
      "min_z": 36,
      "max_z": 37,
      "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
     },
     {
      "id": "stuetze--16-26",
@@ -1718,8 +4880,12 @@
      "min_z": 26,
      "max_z": 27,
      "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
     },
     {
      "id": "stuetze--16-31",
@@ -1730,8 +4896,12 @@
      "min_z": 31,
      "max_z": 32,
      "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
     },
     {
      "id": "stuetze--16-36",
@@ -1742,80 +4912,12 @@
      "min_z": 36,
      "max_z": 37,
      "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
-    },
-    {
-     "id": "stuetze--7-26",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -7,
-     "max_x": -6,
-     "min_z": 26,
-     "max_z": 27,
-     "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
-    },
-    {
-     "id": "stuetze--7-31",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -7,
-     "max_x": -6,
-     "min_z": 31,
-     "max_z": 32,
-     "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
-    },
-    {
-     "id": "stuetze--7-36",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -7,
-     "max_x": -6,
-     "min_z": 36,
-     "max_z": 37,
-     "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
-    },
-    {
-     "id": "stuetze--2-26",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -2,
-     "max_x": -1,
-     "min_z": 26,
-     "max_z": 27,
-     "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
-    },
-    {
-     "id": "stuetze--2-31",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -2,
-     "max_x": -1,
-     "min_z": 31,
-     "max_z": 32,
-     "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
-    },
-    {
-     "id": "stuetze--2-36",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -2,
-     "max_x": -1,
-     "min_z": 36,
-     "max_z": 37,
-     "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
     },
     {
      "id": "stuetze-15-26",
@@ -1826,8 +4928,12 @@
      "min_z": 26,
      "max_z": 27,
      "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
     },
     {
      "id": "stuetze-15-31",
@@ -1838,8 +4944,12 @@
      "min_z": 31,
      "max_z": 32,
      "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
     },
     {
      "id": "stuetze-15-36",
@@ -1850,8 +4960,12 @@
      "min_z": 36,
      "max_z": 37,
      "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
     },
     {
      "id": "stuetze-18-26",
@@ -1862,8 +4976,12 @@
      "min_z": 26,
      "max_z": 27,
      "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
     },
     {
      "id": "stuetze-18-31",
@@ -1874,8 +4992,12 @@
      "min_z": 31,
      "max_z": 32,
      "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
     },
     {
      "id": "stuetze-18-36",
@@ -1886,8 +5008,44 @@
      "min_z": 36,
      "max_z": 37,
      "floor": 0,
-     "base_height": 5,
-     "theme": "bahn"
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "stuetze--7-26",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -7,
+     "max_x": -6,
+     "min_z": 26,
+     "max_z": 27,
+     "floor": 0,
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "stuetze-6-26",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "max_x": 7,
+     "min_z": 26,
+     "max_z": 27,
+     "floor": 0,
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
     }
    ],
    "groups": [
@@ -1902,18 +5060,14 @@
       "stuetze--16-26",
       "stuetze--16-31",
       "stuetze--16-36",
-      "stuetze--7-26",
-      "stuetze--7-31",
-      "stuetze--7-36",
-      "stuetze--2-26",
-      "stuetze--2-31",
-      "stuetze--2-36",
       "stuetze-15-26",
       "stuetze-15-31",
       "stuetze-15-36",
       "stuetze-18-26",
       "stuetze-18-31",
-      "stuetze-18-36"
+      "stuetze-18-36",
+      "stuetze--7-26",
+      "stuetze-6-26"
      ]
     }
    ],
@@ -1921,45 +5075,443 @@
    "part_of": "perron"
   },
   {
-   "id": "perron",
-   "name": "Bahnsteigdach",
-   "base_y": 14,
+   "id": "zug-fenster",
+   "name": "Triebzug fenster",
+   "base_y": 11,
    "shapes": [
     {
-     "id": "dach-w",
+     "id": "zug-tuerkopf-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 31,
+     "max_z": 33,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "zug-tuerkopf-01",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 34,
+     "max_z": 36,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "zug-front-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 28,
+     "max_z": 29,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    },
+    {
+     "id": "zug-saeule-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 30,
+     "max_z": 31,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "zug-saeule-01",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 36,
+     "max_z": 37,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "zug-fenster-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 29,
+     "max_z": 30,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    },
+    {
+     "id": "zug-fenster-01",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 33,
+     "max_z": 34,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    },
+    {
+     "id": "zug-fenster-02",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 37,
+     "max_z": 39,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    },
+    {
+     "id": "zug-tuerkopf-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 44,
+     "max_z": 46,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "zug-tuerkopf-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 47,
+     "max_z": 49,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "zug-front-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 51,
+     "max_z": 52,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    },
+    {
+     "id": "zug-saeule-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 43,
+     "max_z": 44,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "zug-saeule-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 49,
+     "max_z": 50,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "zug-fenster-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 41,
+     "max_z": 43,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    },
+    {
+     "id": "zug-fenster-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 46,
+     "max_z": 47,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    },
+    {
+     "id": "zug-fenster-12",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 50,
+     "max_z": 51,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "zug-fenster-g",
+     "name": "Triebzug fenster",
+     "mirrors": true,
+     "shapeIds": [
+      "zug-tuerkopf-00",
+      "zug-tuerkopf-01",
+      "zug-front-00",
+      "zug-saeule-00",
+      "zug-saeule-01",
+      "zug-fenster-00",
+      "zug-fenster-01",
+      "zug-fenster-02",
+      "zug-tuerkopf-10",
+      "zug-tuerkopf-11",
+      "zug-front-10",
+      "zug-saeule-10",
+      "zug-saeule-11",
+      "zug-fenster-10",
+      "zug-fenster-11",
+      "zug-fenster-12"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "Triebzug"
+  },
+  {
+   "id": "tunnel",
+   "name": "Tunnelr\u00f6hre",
+   "base_y": 12,
+   "shapes": [
+    {
+     "id": "roehre-0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -14,
+     "max_x": -8,
+     "min_z": 58,
+     "max_z": 76,
+     "floor": 0,
+     "base_height": 18,
+     "theme": "stadt",
+     "keepClear": true
+    },
+    {
+     "id": "roehre-1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "max_x": 14,
+     "min_z": 58,
+     "max_z": 76,
+     "floor": 0,
+     "base_height": 18,
+     "theme": "stadt",
+     "keepClear": true
+    }
+   ],
+   "groups": [
+    {
+     "id": "tunnel-g",
+     "name": "Tunnelr\u00f6hre",
+     "mirrors": true,
+     "shapeIds": [
+      "roehre-0",
+      "roehre-1"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "zug-dach",
+   "name": "Triebzug dach",
+   "base_y": 12,
+   "shapes": [
+    {
+     "id": "zug-dach-0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 28,
+     "max_z": 39,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "zug-dach-1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 13,
+     "min_z": 41,
+     "max_z": 52,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "zug-dach-g",
+     "name": "Triebzug dach",
+     "mirrors": true,
+     "shapeIds": [
+      "zug-dach-0",
+      "zug-dach-1"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "Triebzug"
+  },
+  {
+   "id": "perron",
+   "name": "Bahnsteigdach",
+   "base_y": 15,
+   "shapes": [
+    {
+     "id": "dach-0",
      "type": "rectangle",
      "operation": "add",
      "min_x": -20,
      "max_x": -14,
      "min_z": 24,
-     "max_z": 38,
+     "max_z": 42,
      "floor": 0,
      "base_height": 1,
-     "theme": "bahn"
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     }
     },
     {
-     "id": "dach-m",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -8,
-     "max_x": 0,
-     "min_z": 24,
-     "max_z": 38,
-     "floor": 0,
-     "base_height": 1,
-     "theme": "bahn"
-    },
-    {
-     "id": "dach-e",
+     "id": "dach-1",
      "type": "rectangle",
      "operation": "add",
      "min_x": 14,
      "max_x": 20,
      "min_z": 24,
-     "max_z": 38,
+     "max_z": 42,
      "floor": 0,
      "base_height": 1,
-     "theme": "bahn"
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     }
+    },
+    {
+     "id": "dach-2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "max_x": 8,
+     "min_z": 24,
+     "max_z": 31,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     }
     }
    ],
    "groups": [
@@ -1968,9 +5520,9 @@
      "name": "Bahnsteigdach",
      "mirrors": true,
      "shapeIds": [
-      "dach-w",
-      "dach-m",
-      "dach-e"
+      "dach-0",
+      "dach-1",
+      "dach-2"
      ]
     }
    ],
@@ -1983,13 +5535,52 @@
    "base_y": 17,
    "shapes": [
     {
-     "id": "halle--20-40",
+     "id": "halle--20-46",
      "type": "rectangle",
      "operation": "add",
      "min_x": -20,
      "max_x": -16,
-     "min_z": 40,
-     "max_z": 42,
+     "min_z": 46,
+     "max_z": 48,
+     "floor": 0,
+     "base_height": 2,
+     "theme": "bahn",
+     "keepClear": true
+    },
+    {
+     "id": "halle--20-54",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "max_x": -16,
+     "min_z": 54,
+     "max_z": 56,
+     "floor": 0,
+     "base_height": 2,
+     "theme": "bahn",
+     "keepClear": true
+    },
+    {
+     "id": "halle--20-52",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "max_x": -14,
+     "min_z": 52,
+     "max_z": 54,
+     "floor": 0,
+     "base_height": 2,
+     "theme": "bahn",
+     "keepClear": true
+    },
+    {
+     "id": "halle--20-56",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "max_x": -14,
+     "min_z": 56,
+     "max_z": 58,
      "floor": 0,
      "base_height": 2,
      "theme": "bahn",
@@ -2000,34 +5591,34 @@
      "type": "rectangle",
      "operation": "add",
      "min_x": -20,
-     "max_x": -16,
+     "max_x": 14,
      "min_z": 48,
-     "max_z": 50,
+     "max_z": 52,
      "floor": 0,
      "base_height": 2,
      "theme": "bahn",
      "keepClear": true
     },
     {
-     "id": "halle--20-38",
+     "id": "halle--20-43",
      "type": "rectangle",
      "operation": "add",
      "min_x": -20,
-     "max_x": -14,
-     "min_z": 38,
-     "max_z": 40,
+     "max_x": 20,
+     "min_z": 43,
+     "max_z": 46,
      "floor": 0,
      "base_height": 2,
      "theme": "bahn",
      "keepClear": true
     },
     {
-     "id": "halle--20-42",
+     "id": "halle--14-46",
      "type": "rectangle",
      "operation": "add",
-     "min_x": -20,
-     "max_x": -14,
-     "min_z": 42,
+     "min_x": -14,
+     "max_x": -4,
+     "min_z": 46,
      "max_z": 48,
      "floor": 0,
      "base_height": 2,
@@ -2035,77 +5626,38 @@
      "keepClear": true
     },
     {
-     "id": "halle--8-40",
+     "id": "halle--8-54",
      "type": "rectangle",
      "operation": "add",
      "min_x": -8,
      "max_x": -4,
-     "min_z": 40,
-     "max_z": 42,
+     "min_z": 54,
+     "max_z": 56,
      "floor": 0,
      "base_height": 2,
      "theme": "bahn",
      "keepClear": true
     },
     {
-     "id": "halle--8-48",
+     "id": "halle--8-52",
      "type": "rectangle",
      "operation": "add",
      "min_x": -8,
-     "max_x": -4,
-     "min_z": 48,
-     "max_z": 50,
+     "max_x": 20,
+     "min_z": 52,
+     "max_z": 54,
      "floor": 0,
      "base_height": 2,
      "theme": "bahn",
      "keepClear": true
     },
     {
-     "id": "halle--8-55",
+     "id": "halle--8-56",
      "type": "rectangle",
      "operation": "add",
      "min_x": -8,
-     "max_x": -4,
-     "min_z": 55,
-     "max_z": 57,
-     "floor": 0,
-     "base_height": 2,
-     "theme": "bahn",
-     "keepClear": true
-    },
-    {
-     "id": "halle--8-42",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -8,
-     "max_x": 1,
-     "min_z": 42,
-     "max_z": 48,
-     "floor": 0,
-     "base_height": 2,
-     "theme": "bahn",
-     "keepClear": true
-    },
-    {
-     "id": "halle--8-50",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -8,
-     "max_x": 14,
-     "min_z": 50,
-     "max_z": 55,
-     "floor": 0,
-     "base_height": 2,
-     "theme": "bahn",
-     "keepClear": true
-    },
-    {
-     "id": "halle--8-57",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -8,
-     "max_x": 14,
-     "min_z": 57,
+     "max_x": 20,
+     "min_z": 56,
      "max_z": 58,
      "floor": 0,
      "base_height": 2,
@@ -2113,64 +5665,12 @@
      "keepClear": true
     },
     {
-     "id": "halle--8-38",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -8,
-     "max_x": 20,
-     "min_z": 38,
-     "max_z": 40,
-     "floor": 0,
-     "base_height": 2,
-     "theme": "bahn",
-     "keepClear": true
-    },
-    {
-     "id": "halle--2-40",
+     "id": "halle--2-46",
      "type": "rectangle",
      "operation": "add",
      "min_x": -2,
-     "max_x": 8,
-     "min_z": 40,
-     "max_z": 42,
-     "floor": 0,
-     "base_height": 2,
-     "theme": "bahn",
-     "keepClear": true
-    },
-    {
-     "id": "halle--2-48",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -2,
-     "max_x": 8,
-     "min_z": 48,
-     "max_z": 50,
-     "floor": 0,
-     "base_height": 2,
-     "theme": "bahn",
-     "keepClear": true
-    },
-    {
-     "id": "halle--2-55",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -2,
-     "max_x": 8,
-     "min_z": 55,
-     "max_z": 57,
-     "floor": 0,
-     "base_height": 2,
-     "theme": "bahn",
-     "keepClear": true
-    },
-    {
-     "id": "halle-7-42",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": 7,
-     "max_x": 20,
-     "min_z": 42,
+     "max_x": 4,
+     "min_z": 46,
      "max_z": 48,
      "floor": 0,
      "base_height": 2,
@@ -2178,65 +5678,52 @@
      "keepClear": true
     },
     {
-     "id": "halle-10-55",
+     "id": "halle--2-54",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 10,
+     "min_x": -2,
+     "max_x": 4,
+     "min_z": 54,
+     "max_z": 56,
+     "floor": 0,
+     "base_height": 2,
+     "theme": "bahn",
+     "keepClear": true
+    },
+    {
+     "id": "halle-6-46",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
      "max_x": 14,
-     "min_z": 55,
-     "max_z": 57,
+     "min_z": 46,
+     "max_z": 48,
      "floor": 0,
      "base_height": 2,
      "theme": "bahn",
      "keepClear": true
     },
     {
-     "id": "halle-10-40",
+     "id": "halle-6-54",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 10,
+     "min_x": 6,
      "max_x": 16,
-     "min_z": 40,
-     "max_z": 42,
+     "min_z": 54,
+     "max_z": 56,
      "floor": 0,
      "base_height": 2,
      "theme": "bahn",
      "keepClear": true
     },
     {
-     "id": "halle-10-48",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": 10,
-     "max_x": 16,
-     "min_z": 48,
-     "max_z": 50,
-     "floor": 0,
-     "base_height": 2,
-     "theme": "bahn",
-     "keepClear": true
-    },
-    {
-     "id": "halle-18-40",
+     "id": "halle-18-54",
      "type": "rectangle",
      "operation": "add",
      "min_x": 18,
      "max_x": 20,
-     "min_z": 40,
-     "max_z": 42,
-     "floor": 0,
-     "base_height": 2,
-     "theme": "bahn",
-     "keepClear": true
-    },
-    {
-     "id": "halle-18-48",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": 18,
-     "max_x": 20,
-     "min_z": 48,
-     "max_z": 50,
+     "min_z": 54,
+     "max_z": 56,
      "floor": 0,
      "base_height": 2,
      "theme": "bahn",
@@ -2248,11 +5735,15 @@
      "operation": "add",
      "min_x": -16,
      "max_x": -14,
-     "min_z": 40,
-     "max_z": 42,
+     "min_z": 46,
+     "max_z": 48,
      "floor": 0,
      "base_height": 2,
-     "theme": "licht",
+     "material": {
+      "kind": "solid",
+      "id": 89,
+      "data": 0
+     },
      "keepClear": true
     },
     {
@@ -2261,24 +5752,32 @@
      "operation": "add",
      "min_x": -4,
      "max_x": -2,
-     "min_z": 40,
-     "max_z": 42,
+     "min_z": 46,
+     "max_z": 48,
      "floor": 0,
      "base_height": 2,
-     "theme": "licht",
+     "material": {
+      "kind": "solid",
+      "id": 89,
+      "data": 0
+     },
      "keepClear": true
     },
     {
      "id": "lampe-h2",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 8,
-     "max_x": 10,
-     "min_z": 40,
-     "max_z": 42,
+     "min_x": 4,
+     "max_x": 6,
+     "min_z": 46,
+     "max_z": 48,
      "floor": 0,
      "base_height": 2,
-     "theme": "licht",
+     "material": {
+      "kind": "solid",
+      "id": 89,
+      "data": 0
+     },
      "keepClear": true
     },
     {
@@ -2287,11 +5786,15 @@
      "operation": "add",
      "min_x": 16,
      "max_x": 18,
-     "min_z": 40,
-     "max_z": 42,
+     "min_z": 46,
+     "max_z": 48,
      "floor": 0,
      "base_height": 2,
-     "theme": "licht",
+     "material": {
+      "kind": "solid",
+      "id": 89,
+      "data": 0
+     },
      "keepClear": true
     },
     {
@@ -2300,11 +5803,15 @@
      "operation": "add",
      "min_x": -16,
      "max_x": -14,
-     "min_z": 48,
-     "max_z": 50,
+     "min_z": 54,
+     "max_z": 56,
      "floor": 0,
      "base_height": 2,
-     "theme": "licht",
+     "material": {
+      "kind": "solid",
+      "id": 89,
+      "data": 0
+     },
      "keepClear": true
     },
     {
@@ -2313,24 +5820,32 @@
      "operation": "add",
      "min_x": -4,
      "max_x": -2,
-     "min_z": 48,
-     "max_z": 50,
+     "min_z": 54,
+     "max_z": 56,
      "floor": 0,
      "base_height": 2,
-     "theme": "licht",
+     "material": {
+      "kind": "solid",
+      "id": 89,
+      "data": 0
+     },
      "keepClear": true
     },
     {
      "id": "lampe-h6",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 8,
-     "max_x": 10,
-     "min_z": 48,
-     "max_z": 50,
+     "min_x": 4,
+     "max_x": 6,
+     "min_z": 54,
+     "max_z": 56,
      "floor": 0,
      "base_height": 2,
-     "theme": "licht",
+     "material": {
+      "kind": "solid",
+      "id": 89,
+      "data": 0
+     },
      "keepClear": true
     },
     {
@@ -2339,180 +5854,695 @@
      "operation": "add",
      "min_x": 16,
      "max_x": 18,
-     "min_z": 48,
-     "max_z": 50,
+     "min_z": 54,
+     "max_z": 56,
      "floor": 0,
      "base_height": 2,
-     "theme": "licht",
+     "material": {
+      "kind": "solid",
+      "id": 89,
+      "data": 0
+     },
      "keepClear": true
     },
     {
-     "id": "lampe-h8",
+     "id": "halle-bruestung-0",
      "type": "rectangle",
      "operation": "add",
-     "min_x": -4,
-     "max_x": -2,
-     "min_z": 55,
-     "max_z": 57,
+     "min_x": -20,
+     "max_x": -3,
+     "min_z": 42,
+     "max_z": 43,
      "floor": 0,
-     "base_height": 2,
-     "theme": "licht",
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
      "keepClear": true
     },
     {
-     "id": "lampe-h9",
+     "id": "halle-bruestung-1",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 8,
-     "max_x": 10,
-     "min_z": 55,
-     "max_z": 57,
+     "min_x": 3,
+     "max_x": 20,
+     "min_z": 42,
+     "max_z": 43,
+     "floor": 0,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "halle-schwelle",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -3,
+     "max_x": 3,
+     "min_z": 42,
+     "max_z": 43,
      "floor": 0,
      "base_height": 2,
-     "theme": "licht",
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "halle-kranz-g0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -15,
+     "max_x": -14,
+     "min_z": 52,
+     "max_z": 58,
+     "floor": 0,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "halle-kranz-g1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -15,
+     "max_x": -7,
+     "min_z": 51,
+     "max_z": 52,
+     "floor": 0,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "halle-kranz-g3",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "max_x": -7,
+     "min_z": 52,
+     "max_z": 58,
+     "floor": 0,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "halle-kranz-e0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 13,
+     "max_x": 14,
+     "min_z": 46,
+     "max_z": 52,
+     "floor": 0,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
      "keepClear": true
     },
     {
      "id": "treppe-s0",
      "type": "rectangle",
      "operation": "add",
-     "min_x": -14,
-     "max_x": -8,
-     "min_z": 36,
-     "max_z": 38,
+     "min_x": 10,
+     "max_x": 16,
+     "min_z": 44,
+     "max_z": 45,
      "floor": 0,
      "base_height": 3,
-     "theme": "bahn",
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-sw0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 10,
+     "min_z": 44,
+     "max_z": 45,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-se0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "max_x": 17,
+     "min_z": 44,
+     "max_z": 45,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
      "keepClear": true
     },
     {
      "id": "treppe-s1",
      "type": "rectangle",
      "operation": "add",
-     "min_x": -14,
-     "max_x": -8,
-     "min_z": 38,
-     "max_z": 40,
+     "min_x": 10,
+     "max_x": 16,
+     "min_z": 45,
+     "max_z": 46,
      "floor": 0,
      "base_height": 4,
-     "theme": "bahn",
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-sw1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 10,
+     "min_z": 45,
+     "max_z": 46,
+     "floor": 0,
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-se1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "max_x": 17,
+     "min_z": 45,
+     "max_z": 46,
+     "floor": 0,
+     "base_height": 6,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
      "keepClear": true
     },
     {
      "id": "treppe-s2",
      "type": "rectangle",
      "operation": "add",
-     "min_x": -14,
-     "max_x": -8,
-     "min_z": 40,
-     "max_z": 42,
+     "min_x": 10,
+     "max_x": 16,
+     "min_z": 46,
+     "max_z": 47,
      "floor": 0,
      "base_height": 5,
-     "theme": "bahn",
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-sw2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 10,
+     "min_z": 46,
+     "max_z": 47,
+     "floor": 0,
+     "base_height": 7,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-se2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "max_x": 17,
+     "min_z": 46,
+     "max_z": 47,
+     "floor": 0,
+     "base_height": 7,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
      "keepClear": true
     },
     {
      "id": "treppe-s3",
      "type": "rectangle",
      "operation": "add",
-     "min_x": -14,
-     "max_x": -8,
-     "min_z": 42,
-     "max_z": 44,
+     "min_x": 10,
+     "max_x": 16,
+     "min_z": 47,
+     "max_z": 48,
      "floor": 0,
      "base_height": 6,
-     "theme": "bahn",
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-sw3",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 10,
+     "min_z": 47,
+     "max_z": 48,
+     "floor": 0,
+     "base_height": 8,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-se3",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "max_x": 17,
+     "min_z": 47,
+     "max_z": 48,
+     "floor": 0,
+     "base_height": 8,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
      "keepClear": true
     },
     {
      "id": "treppe-s4",
      "type": "rectangle",
      "operation": "add",
-     "min_x": -14,
-     "max_x": -8,
-     "min_z": 44,
-     "max_z": 46,
+     "min_x": 10,
+     "max_x": 16,
+     "min_z": 48,
+     "max_z": 49,
      "floor": 0,
      "base_height": 7,
-     "theme": "bahn",
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-sw4",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 10,
+     "min_z": 48,
+     "max_z": 49,
+     "floor": 0,
+     "base_height": 9,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-se4",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "max_x": 17,
+     "min_z": 48,
+     "max_z": 49,
+     "floor": 0,
+     "base_height": 9,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
      "keepClear": true
     },
     {
      "id": "treppe-s5",
      "type": "rectangle",
      "operation": "add",
-     "min_x": -14,
-     "max_x": -8,
-     "min_z": 46,
-     "max_z": 48,
+     "min_x": 10,
+     "max_x": 16,
+     "min_z": 49,
+     "max_z": 50,
      "floor": 0,
      "base_height": 8,
-     "theme": "bahn",
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-sw5",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 10,
+     "min_z": 49,
+     "max_z": 50,
+     "floor": 0,
+     "base_height": 10,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-se5",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "max_x": 17,
+     "min_z": 49,
+     "max_z": 50,
+     "floor": 0,
+     "base_height": 10,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
      "keepClear": true
     },
     {
      "id": "treppe-s6",
      "type": "rectangle",
      "operation": "add",
-     "min_x": -14,
-     "max_x": -8,
-     "min_z": 48,
-     "max_z": 50,
+     "min_x": 10,
+     "max_x": 16,
+     "min_z": 50,
+     "max_z": 51,
      "floor": 0,
      "base_height": 9,
-     "theme": "bahn",
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-sw6",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 10,
+     "min_z": 50,
+     "max_z": 51,
+     "floor": 0,
+     "base_height": 11,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-se6",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "max_x": 17,
+     "min_z": 50,
+     "max_z": 51,
+     "floor": 0,
+     "base_height": 11,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
      "keepClear": true
     },
     {
      "id": "treppe-s7",
      "type": "rectangle",
      "operation": "add",
-     "min_x": -14,
-     "max_x": -8,
-     "min_z": 50,
+     "min_x": 10,
+     "max_x": 16,
+     "min_z": 51,
      "max_z": 52,
      "floor": 0,
      "base_height": 10,
-     "theme": "bahn",
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-sw7",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 10,
+     "min_z": 51,
+     "max_z": 52,
+     "floor": 0,
+     "base_height": 12,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-se7",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "max_x": 17,
+     "min_z": 51,
+     "max_z": 52,
+     "floor": 0,
+     "base_height": 12,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
      "keepClear": true
     },
     {
      "id": "treppe-s8",
      "type": "rectangle",
      "operation": "add",
-     "min_x": -14,
-     "max_x": -8,
+     "min_x": 10,
+     "max_x": 16,
      "min_z": 52,
-     "max_z": 54,
+     "max_z": 53,
      "floor": 0,
      "base_height": 11,
-     "theme": "bahn",
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-sw8",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 10,
+     "min_z": 52,
+     "max_z": 53,
+     "floor": 0,
+     "base_height": 13,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-se8",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "max_x": 17,
+     "min_z": 52,
+     "max_z": 53,
+     "floor": 0,
+     "base_height": 13,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
      "keepClear": true
     },
     {
      "id": "treppe-s9",
      "type": "rectangle",
      "operation": "add",
-     "min_x": -14,
-     "max_x": -8,
-     "min_z": 54,
-     "max_z": 56,
+     "min_x": 10,
+     "max_x": 16,
+     "min_z": 53,
+     "max_z": 54,
      "floor": 0,
      "base_height": 12,
-     "theme": "bahn",
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-sw9",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 10,
+     "min_z": 53,
+     "max_z": 54,
+     "floor": 0,
+     "base_height": 14,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-se9",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "max_x": 17,
+     "min_z": 53,
+     "max_z": 54,
+     "floor": 0,
+     "base_height": 14,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
      "keepClear": true
     },
     {
      "id": "treppe-s10",
      "type": "rectangle",
      "operation": "add",
-     "min_x": -14,
-     "max_x": -8,
-     "min_z": 56,
-     "max_z": 58,
+     "min_x": 10,
+     "max_x": 16,
+     "min_z": 54,
+     "max_z": 55,
      "floor": 0,
      "base_height": 13,
-     "theme": "bahn",
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-sw10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 10,
+     "min_z": 54,
+     "max_z": 55,
+     "floor": 0,
+     "base_height": 15,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
+     "keepClear": true
+    },
+    {
+     "id": "gelaender-se10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "max_x": 17,
+     "min_z": 54,
+     "max_z": 55,
+     "floor": 0,
+     "base_height": 15,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     },
      "keepClear": true
     }
    ],
@@ -2522,26 +6552,21 @@
      "name": "Zwischengeschoss",
      "mirrors": true,
      "shapeIds": [
-      "halle--20-40",
+      "halle--20-46",
+      "halle--20-54",
+      "halle--20-52",
+      "halle--20-56",
       "halle--20-48",
-      "halle--20-38",
-      "halle--20-42",
-      "halle--8-40",
-      "halle--8-48",
-      "halle--8-55",
-      "halle--8-42",
-      "halle--8-50",
-      "halle--8-57",
-      "halle--8-38",
-      "halle--2-40",
-      "halle--2-48",
-      "halle--2-55",
-      "halle-7-42",
-      "halle-10-55",
-      "halle-10-40",
-      "halle-10-48",
-      "halle-18-40",
-      "halle-18-48",
+      "halle--20-43",
+      "halle--14-46",
+      "halle--8-54",
+      "halle--8-52",
+      "halle--8-56",
+      "halle--2-46",
+      "halle--2-54",
+      "halle-6-46",
+      "halle-6-54",
+      "halle-18-54",
       "lampe-h0",
       "lampe-h1",
       "lampe-h2",
@@ -2550,19 +6575,46 @@
       "lampe-h5",
       "lampe-h6",
       "lampe-h7",
-      "lampe-h8",
-      "lampe-h9",
+      "halle-bruestung-0",
+      "halle-bruestung-1",
+      "halle-schwelle",
+      "halle-kranz-g0",
+      "halle-kranz-g1",
+      "halle-kranz-g3",
+      "halle-kranz-e0",
       "treppe-s0",
+      "gelaender-sw0",
+      "gelaender-se0",
       "treppe-s1",
+      "gelaender-sw1",
+      "gelaender-se1",
       "treppe-s2",
+      "gelaender-sw2",
+      "gelaender-se2",
       "treppe-s3",
+      "gelaender-sw3",
+      "gelaender-se3",
       "treppe-s4",
+      "gelaender-sw4",
+      "gelaender-se4",
       "treppe-s5",
+      "gelaender-sw5",
+      "gelaender-se5",
       "treppe-s6",
+      "gelaender-sw6",
+      "gelaender-se6",
       "treppe-s7",
+      "gelaender-sw7",
+      "gelaender-se7",
       "treppe-s8",
+      "gelaender-sw8",
+      "gelaender-se8",
       "treppe-s9",
-      "treppe-s10"
+      "gelaender-sw9",
+      "gelaender-se9",
+      "treppe-s10",
+      "gelaender-sw10",
+      "gelaender-se10"
      ]
     }
    ]
@@ -2585,43 +6637,91 @@
      "theme": "stadt"
     },
     {
-     "id": "deckel--20-39",
+     "id": "deckel--20-52",
      "type": "rectangle",
      "operation": "add",
      "min_x": -20,
      "max_x": -14,
-     "min_z": 39,
-     "max_z": 50,
-     "floor": 0,
-     "base_height": 3,
-     "theme": "stadt"
-    },
-    {
-     "id": "deckel--8-50",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -8,
-     "max_x": 14,
-     "min_z": 50,
+     "min_z": 52,
      "max_z": 58,
      "floor": 0,
      "base_height": 3,
      "theme": "stadt"
     },
     {
-     "id": "deckel--8-39",
+     "id": "deckel--20-44",
      "type": "rectangle",
      "operation": "add",
-     "min_x": -8,
-     "max_x": 20,
-     "min_z": 39,
-     "max_z": 50,
+     "min_x": -20,
+     "max_x": 9,
+     "min_z": 44,
+     "max_z": 52,
      "floor": 0,
      "base_height": 3,
      "theme": "stadt"
     },
     {
-     "id": "kante--20-23",
+     "id": "deckel--20-43",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "max_x": 20,
+     "min_z": 43,
+     "max_z": 44,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "stadt"
+    },
+    {
+     "id": "deckel--8-52",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "max_x": 9,
+     "min_z": 52,
+     "max_z": 55,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "stadt"
+    },
+    {
+     "id": "deckel--8-55",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "max_x": 20,
+     "min_z": 55,
+     "max_z": 58,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "stadt"
+    },
+    {
+     "id": "deckel-17-44",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 17,
+     "max_x": 20,
+     "min_z": 44,
+     "max_z": 46,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "stadt"
+    },
+    {
+     "id": "deckel-17-52",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 17,
+     "max_x": 20,
+     "min_z": 52,
+     "max_z": 55,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "stadt"
+    },
+    {
+     "id": "kante-0",
      "type": "rectangle",
      "operation": "add",
      "min_x": -20,
@@ -2629,32 +6729,140 @@
      "min_z": 23,
      "max_z": 24,
      "floor": 0,
-     "base_height": 4,
-     "theme": "bahn"
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     }
     },
     {
-     "id": "kante--20-38",
+     "id": "kante-1",
      "type": "rectangle",
      "operation": "add",
      "min_x": -20,
-     "max_x": -14,
-     "min_z": 38,
-     "max_z": 39,
+     "max_x": 20,
+     "min_z": 42,
+     "max_z": 43,
      "floor": 0,
-     "base_height": 4,
-     "theme": "bahn"
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     }
     },
     {
-     "id": "kante--8-38",
+     "id": "kante-2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "max_x": 9,
+     "min_z": 44,
+     "max_z": 55,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     }
+    },
+    {
+     "id": "kante-3",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "max_x": 18,
+     "min_z": 43,
+     "max_z": 44,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     }
+    },
+    {
+     "id": "kante-4",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 17,
+     "max_x": 18,
+     "min_z": 44,
+     "max_z": 55,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     }
+    },
+    {
+     "id": "kante-5",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -15,
+     "max_x": -14,
+     "min_z": 52,
+     "max_z": 58,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     }
+    },
+    {
+     "id": "kante-6",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -15,
+     "max_x": -7,
+     "min_z": 51,
+     "max_z": 52,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     }
+    },
+    {
+     "id": "kante-7",
      "type": "rectangle",
      "operation": "add",
      "min_x": -8,
-     "max_x": 20,
-     "min_z": 38,
-     "max_z": 39,
+     "max_x": -7,
+     "min_z": 52,
+     "max_z": 58,
      "floor": 0,
-     "base_height": 4,
-     "theme": "bahn"
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     }
+    },
+    {
+     "id": "kante-8",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 13,
+     "max_x": 14,
+     "min_z": 46,
+     "max_z": 52,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     }
     }
    ],
    "groups": [
@@ -2664,12 +6872,344 @@
      "mirrors": true,
      "shapeIds": [
       "deckel--20-16",
-      "deckel--20-39",
-      "deckel--8-50",
-      "deckel--8-39",
-      "kante--20-23",
-      "kante--20-38",
-      "kante--8-38"
+      "deckel--20-52",
+      "deckel--20-44",
+      "deckel--20-43",
+      "deckel--8-52",
+      "deckel--8-55",
+      "deckel-17-44",
+      "deckel-17-52",
+      "kante-0",
+      "kante-1",
+      "kante-2",
+      "kante-3",
+      "kante-4",
+      "kante-5",
+      "kante-6",
+      "kante-7",
+      "kante-8"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "traeger",
+   "name": "\u00dcberbau",
+   "base_y": 37,
+   "shapes": [
+    {
+     "id": "traeger-rand-0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -36,
+     "max_x": -31,
+     "min_z": 57,
+     "max_z": 58,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-rand-1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -36,
+     "max_x": 36,
+     "min_z": 58,
+     "max_z": 59,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-rand-2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "max_x": 23,
+     "min_z": 57,
+     "max_z": 58,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-rand-3",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 31,
+     "max_x": 36,
+     "min_z": 57,
+     "max_z": 58,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-rand-4",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -36,
+     "max_x": 36,
+     "min_z": 67,
+     "max_z": 69,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-quer-0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -34,
+     "max_x": -30,
+     "min_z": 59,
+     "max_z": 67,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-quer-1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -27,
+     "max_x": -23,
+     "min_z": 59,
+     "max_z": 67,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-quer-2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -20,
+     "max_x": -16,
+     "min_z": 59,
+     "max_z": 67,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-quer-3",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "max_x": 20,
+     "min_z": 59,
+     "max_z": 67,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-quer-4",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 23,
+     "max_x": 27,
+     "min_z": 59,
+     "max_z": 67,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-quer-5",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 30,
+     "max_x": 34,
+     "min_z": 59,
+     "max_z": 67,
+     "floor": 0,
+     "base_height": 2,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-untersicht-0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -36,
+     "max_x": -34,
+     "min_z": 59,
+     "max_z": 67,
+     "floor": 1,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-untersicht-1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -30,
+     "max_x": -27,
+     "min_z": 59,
+     "max_z": 67,
+     "floor": 1,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-untersicht-2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "max_x": -20,
+     "min_z": 59,
+     "max_z": 67,
+     "floor": 1,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-untersicht-3",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -16,
+     "max_x": 16,
+     "min_z": 59,
+     "max_z": 67,
+     "floor": 1,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-untersicht-4",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 20,
+     "max_x": 23,
+     "min_z": 59,
+     "max_z": 67,
+     "floor": 1,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-untersicht-5",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 27,
+     "max_x": 30,
+     "min_z": 59,
+     "max_z": 67,
+     "floor": 1,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "traeger-untersicht-6",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 34,
+     "max_x": 36,
+     "min_z": 59,
+     "max_z": 67,
+     "floor": 1,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "traeger-g",
+     "name": "\u00dcberbau",
+     "mirrors": true,
+     "shapeIds": [
+      "traeger-rand-0",
+      "traeger-rand-1",
+      "traeger-rand-2",
+      "traeger-rand-3",
+      "traeger-rand-4",
+      "traeger-quer-0",
+      "traeger-quer-1",
+      "traeger-quer-2",
+      "traeger-quer-3",
+      "traeger-quer-4",
+      "traeger-quer-5",
+      "traeger-untersicht-0",
+      "traeger-untersicht-1",
+      "traeger-untersicht-2",
+      "traeger-untersicht-3",
+      "traeger-untersicht-4",
+      "traeger-untersicht-5",
+      "traeger-untersicht-6"
      ]
     }
    ]
@@ -2680,100 +7220,305 @@
    "base_y": 39,
    "shapes": [
     {
-     "id": "via-deck",
+     "id": "bruestung-0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -36,
+     "max_x": -31,
+     "min_z": 57,
+     "max_z": 58,
+     "floor": 0,
+     "base_height": 6,
+     "material": {
+      "kind": "layered",
+      "axis": "height",
+      "from": 39,
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 45,
+          "data": 0
+         },
+         "thickness": 5
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "beyond": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     }
+    },
+    {
+     "id": "bruestung-1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -23,
+     "max_x": 23,
+     "min_z": 57,
+     "max_z": 58,
+     "floor": 0,
+     "base_height": 6,
+     "material": {
+      "kind": "layered",
+      "axis": "height",
+      "from": 39,
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 45,
+          "data": 0
+         },
+         "thickness": 5
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "beyond": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     }
+    },
+    {
+     "id": "bruestung-2",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 31,
+     "max_x": 36,
+     "min_z": 57,
+     "max_z": 58,
+     "floor": 0,
+     "base_height": 6,
+     "material": {
+      "kind": "layered",
+      "axis": "height",
+      "from": 39,
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 45,
+          "data": 0
+         },
+         "thickness": 5
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "beyond": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     }
+    },
+    {
+     "id": "bruestung-3",
      "type": "rectangle",
      "operation": "add",
      "min_x": -36,
      "max_x": 36,
-     "min_z": 62,
-     "max_z": 74,
+     "min_z": 68,
+     "max_z": 69,
+     "floor": 0,
+     "base_height": 6,
+     "material": {
+      "kind": "layered",
+      "axis": "height",
+      "from": 39,
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 45,
+          "data": 0
+         },
+         "thickness": 5
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "beyond": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     }
+    },
+    {
+     "id": "hochsteig",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -36,
+     "max_x": 36,
+     "min_z": 58,
+     "max_z": 61,
+     "floor": 0,
+     "base_height": 4,
+     "theme": "bahn",
+     "keepClear": true
+    },
+    {
+     "id": "via-bett-0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -36,
+     "max_x": 36,
+     "min_z": 61,
+     "max_z": 62,
      "floor": 0,
      "base_height": 3,
      "theme": "schotter"
     },
     {
-     "id": "via-schiene-64",
+     "id": "via-bett-1",
      "type": "rectangle",
      "operation": "add",
      "min_x": -36,
      "max_x": 36,
-     "min_z": 64,
+     "min_z": 63,
      "max_z": 65,
      "floor": 0,
-     "base_height": 4,
-     "theme": "gleis"
+     "base_height": 3,
+     "theme": "schotter"
     },
     {
-     "id": "via-schiene-66",
+     "id": "via-bett-2",
      "type": "rectangle",
      "operation": "add",
      "min_x": -36,
      "max_x": 36,
      "min_z": 66,
-     "max_z": 67,
+     "max_z": 68,
+     "floor": 0,
+     "base_height": 3,
+     "theme": "schotter"
+    },
+    {
+     "id": "via-schiene-0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -36,
+     "max_x": 36,
+     "min_z": 62,
+     "max_z": 63,
      "floor": 0,
      "base_height": 4,
-     "theme": "gleis"
+     "material": {
+      "kind": "layered",
+      "axis": "height",
+      "from": 39,
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 13,
+          "data": 0
+         },
+         "thickness": 3
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 42,
+          "data": 0
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "beyond": {
+       "kind": "solid",
+       "id": 42,
+       "data": 0
+      }
+     }
     },
     {
-     "id": "via-schiene-69",
+     "id": "via-schiene-1",
      "type": "rectangle",
      "operation": "add",
      "min_x": -36,
      "max_x": 36,
-     "min_z": 69,
-     "max_z": 70,
+     "min_z": 65,
+     "max_z": 66,
      "floor": 0,
      "base_height": 4,
-     "theme": "gleis"
-    },
-    {
-     "id": "via-schiene-71",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -36,
-     "max_x": 36,
-     "min_z": 71,
-     "max_z": 72,
-     "floor": 0,
-     "base_height": 4,
-     "theme": "gleis"
-    },
-    {
-     "id": "bruestung-sued--36",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -36,
-     "max_x": -34,
-     "min_z": 61,
-     "max_z": 62,
-     "floor": 0,
-     "base_height": 5,
-     "theme": "ziegel"
-    },
-    {
-     "id": "bruestung-sued--26",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -26,
-     "max_x": 36,
-     "min_z": 61,
-     "max_z": 62,
-     "floor": 0,
-     "base_height": 5,
-     "theme": "ziegel"
-    },
-    {
-     "id": "bruestung-nord--36",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": -36,
-     "max_x": 36,
-     "min_z": 74,
-     "max_z": 75,
-     "floor": 0,
-     "base_height": 5,
-     "theme": "ziegel"
+     "material": {
+      "kind": "layered",
+      "axis": "height",
+      "from": 39,
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 13,
+          "data": 0
+         },
+         "thickness": 3
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 42,
+          "data": 0
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "beyond": {
+       "kind": "solid",
+       "id": 42,
+       "data": 0
+      }
+     }
     }
    ],
    "groups": [
@@ -2782,201 +7527,1109 @@
      "name": "Hochbahn",
      "mirrors": true,
      "shapeIds": [
-      "via-deck",
-      "via-schiene-64",
-      "via-schiene-66",
-      "via-schiene-69",
-      "via-schiene-71",
-      "bruestung-sued--36",
-      "bruestung-sued--26",
-      "bruestung-nord--36"
+      "bruestung-0",
+      "bruestung-1",
+      "bruestung-2",
+      "bruestung-3",
+      "hochsteig",
+      "via-bett-0",
+      "via-bett-1",
+      "via-bett-2",
+      "via-schiene-0",
+      "via-schiene-1"
      ]
     }
    ]
+  },
+  {
+   "id": "hochperron-fuss",
+   "name": "Hochbahnsteigst\u00fctzen",
+   "base_y": 43,
+   "shapes": [
+    {
+     "id": "hstuetze--32",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -32,
+     "max_x": -31,
+     "min_z": 59,
+     "max_z": 60,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "hstuetze--24",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -24,
+     "max_x": -23,
+     "min_z": 59,
+     "max_z": 60,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "hstuetze--16",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -16,
+     "max_x": -15,
+     "min_z": 59,
+     "max_z": 60,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "hstuetze--8",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "max_x": -7,
+     "min_z": 59,
+     "max_z": 60,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "hstuetze-0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 0,
+     "max_x": 1,
+     "min_z": 59,
+     "max_z": 60,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "hstuetze-8",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 8,
+     "max_x": 9,
+     "min_z": 59,
+     "max_z": 60,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "hstuetze-16",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 16,
+     "max_x": 17,
+     "min_z": 59,
+     "max_z": 60,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "hstuetze-24",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 24,
+     "max_x": 25,
+     "min_z": 59,
+     "max_z": 60,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    },
+    {
+     "id": "hstuetze-32",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 32,
+     "max_x": 33,
+     "min_z": 59,
+     "max_z": 60,
+     "floor": 0,
+     "base_height": 5,
+     "material": {
+      "kind": "solid",
+      "id": 98,
+      "data": 0
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "hochperron-fuss-g",
+     "name": "Hochbahnsteigst\u00fctzen",
+     "mirrors": true,
+     "shapeIds": [
+      "hstuetze--32",
+      "hstuetze--24",
+      "hstuetze--16",
+      "hstuetze--8",
+      "hstuetze-0",
+      "hstuetze-8",
+      "hstuetze-16",
+      "hstuetze-24",
+      "hstuetze-32"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "hochperron"
+  },
+  {
+   "id": "hochzug-fahrwerk",
+   "name": "Hochbahnzug fahrwerk",
+   "base_y": 43,
+   "shapes": [
+    {
+     "id": "hochzug-drehgestell-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -11,
+     "max_x": -9,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "hochzug-drehgestell-01",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -4,
+     "max_x": -2,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "hochzug-rahmen-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "max_x": -11,
+     "min_z": 63,
+     "max_z": 65,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "hochzug-rahmen-01",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -9,
+     "max_x": -4,
+     "min_z": 63,
+     "max_z": 65,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "hochzug-rahmen-02",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -2,
+     "max_x": -1,
+     "min_z": 63,
+     "max_z": 65,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "hochzug-drehgestell-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 2,
+     "max_x": 4,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "hochzug-drehgestell-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 11,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "hochzug-rahmen-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 1,
+     "max_x": 2,
+     "min_z": 63,
+     "max_z": 65,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "hochzug-rahmen-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "max_x": 9,
+     "min_z": 63,
+     "max_z": 65,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    },
+    {
+     "id": "hochzug-rahmen-12",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 11,
+     "max_x": 12,
+     "min_z": 63,
+     "max_z": 65,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 15
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "hochzug-fahrwerk-g",
+     "name": "Hochbahnzug fahrwerk",
+     "mirrors": true,
+     "shapeIds": [
+      "hochzug-drehgestell-00",
+      "hochzug-drehgestell-01",
+      "hochzug-rahmen-00",
+      "hochzug-rahmen-01",
+      "hochzug-rahmen-02",
+      "hochzug-drehgestell-10",
+      "hochzug-drehgestell-11",
+      "hochzug-rahmen-10",
+      "hochzug-rahmen-11",
+      "hochzug-rahmen-12"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "Hochbahnzug"
+  },
+  {
+   "id": "hochzug-kasten",
+   "name": "Hochbahnzug kasten",
+   "base_y": 44,
+   "shapes": [
+    {
+     "id": "hochzug-tuer-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -9,
+     "max_x": -7,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "hochzug-tuer-01",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -6,
+     "max_x": -4,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "hochzug-kopf-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "max_x": -11,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "hochzug-kasten-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -11,
+     "max_x": -9,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "hochzug-kasten-01",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -7,
+     "max_x": -6,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "hochzug-kasten-02",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -4,
+     "max_x": -1,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "hochzug-tuer-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "max_x": 6,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "hochzug-tuer-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 7,
+     "max_x": 9,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "hochzug-kopf-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 11,
+     "max_x": 12,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "hochzug-kasten-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 1,
+     "max_x": 4,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "hochzug-kasten-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "max_x": 7,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "hochzug-kasten-12",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 11,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "hochzug-kasten-g",
+     "name": "Hochbahnzug kasten",
+     "mirrors": true,
+     "shapeIds": [
+      "hochzug-tuer-00",
+      "hochzug-tuer-01",
+      "hochzug-kopf-00",
+      "hochzug-kasten-00",
+      "hochzug-kasten-01",
+      "hochzug-kasten-02",
+      "hochzug-tuer-10",
+      "hochzug-tuer-11",
+      "hochzug-kopf-10",
+      "hochzug-kasten-10",
+      "hochzug-kasten-11",
+      "hochzug-kasten-12"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "Hochbahnzug"
+  },
+  {
+   "id": "hochzug-fenster",
+   "name": "Hochbahnzug fenster",
+   "base_y": 47,
+   "shapes": [
+    {
+     "id": "hochzug-tuerkopf-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -9,
+     "max_x": -7,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "hochzug-tuerkopf-01",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -6,
+     "max_x": -4,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "hochzug-front-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "max_x": -11,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    },
+    {
+     "id": "hochzug-saeule-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -10,
+     "max_x": -9,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "hochzug-saeule-01",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -4,
+     "max_x": -3,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "hochzug-fenster-00",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -11,
+     "max_x": -10,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    },
+    {
+     "id": "hochzug-fenster-01",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -7,
+     "max_x": -6,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    },
+    {
+     "id": "hochzug-fenster-02",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -3,
+     "max_x": -1,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    },
+    {
+     "id": "hochzug-tuerkopf-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 4,
+     "max_x": 6,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "hochzug-tuerkopf-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 7,
+     "max_x": 9,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "hochzug-front-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 11,
+     "max_x": 12,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    },
+    {
+     "id": "hochzug-saeule-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 3,
+     "max_x": 4,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "hochzug-saeule-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 9,
+     "max_x": 10,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 14
+     }
+    },
+    {
+     "id": "hochzug-fenster-10",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 1,
+     "max_x": 3,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    },
+    {
+     "id": "hochzug-fenster-11",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 6,
+     "max_x": 7,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    },
+    {
+     "id": "hochzug-fenster-12",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 10,
+     "max_x": 11,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 95,
+      "data": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "hochzug-fenster-g",
+     "name": "Hochbahnzug fenster",
+     "mirrors": true,
+     "shapeIds": [
+      "hochzug-tuerkopf-00",
+      "hochzug-tuerkopf-01",
+      "hochzug-front-00",
+      "hochzug-saeule-00",
+      "hochzug-saeule-01",
+      "hochzug-fenster-00",
+      "hochzug-fenster-01",
+      "hochzug-fenster-02",
+      "hochzug-tuerkopf-10",
+      "hochzug-tuerkopf-11",
+      "hochzug-front-10",
+      "hochzug-saeule-10",
+      "hochzug-saeule-11",
+      "hochzug-fenster-10",
+      "hochzug-fenster-11",
+      "hochzug-fenster-12"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "Hochbahnzug"
+  },
+  {
+   "id": "hochperron",
+   "name": "Hochbahnsteigdach",
+   "base_y": 48,
+   "shapes": [
+    {
+     "id": "hochdach",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -36,
+     "max_x": 36,
+     "min_z": 58,
+     "max_z": 61,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "hochperron-g",
+     "name": "Hochbahnsteigdach",
+     "mirrors": true,
+     "shapeIds": [
+      "hochdach"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "hochperron"
+  },
+  {
+   "id": "hochzug-dach",
+   "name": "Hochbahnzug dach",
+   "base_y": 48,
+   "shapes": [
+    {
+     "id": "hochzug-dach-0",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -12,
+     "max_x": -1,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    },
+    {
+     "id": "hochzug-dach-1",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 1,
+     "max_x": 12,
+     "min_z": 62,
+     "max_z": 66,
+     "floor": 0,
+     "base_height": 1,
+     "material": {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "hochzug-dach-g",
+     "name": "Hochbahnzug dach",
+     "mirrors": true,
+     "shapeIds": [
+      "hochzug-dach-0",
+      "hochzug-dach-1"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "Hochbahnzug"
   }
  ],
  "roomStyles": {
-  "spawn": "@tk-kopfbau"
+  "spawn": "@tk-hochhaus"
  },
  "dressing": {
   "props": [
    {
-    "id": "bahnhofstrasse-nord",
-    "kind": "stroke",
-    "seed": 3,
-    "points": [
-     [
-      0,
-      104
-     ],
-     [
-      0,
-      92
-     ],
-     [
-      0,
-      82
-     ],
-     [
-      0,
-      78
-     ]
-    ],
-    "radius": 4,
-    "style": "solid",
-    "claimsGround": true,
-    "coverage": 0.5,
-    "pave": {
-     "kind": "solid",
-     "id": 1,
-     "data": 6
-    }
-   },
-   {
-    "id": "bahnhofstrasse-sued",
-    "kind": "stroke",
-    "seed": 5,
-    "points": [
-     [
-      0,
-      60
-     ],
-     [
-      0,
-      52
-     ],
-     [
-      0,
-      46
-     ],
-     [
-      0,
-      42
-     ]
-    ],
-    "radius": 4,
-    "style": "solid",
-    "claimsGround": true,
-    "coverage": 0.5,
-    "pave": {
-     "kind": "solid",
-     "id": 1,
-     "data": 6
-    }
-   },
-   {
-    "id": "umfahrung-west",
-    "kind": "stroke",
-    "seed": 4,
-    "points": [
-     [
-      -2,
-      59
-     ],
-     [
-      -14,
-      58
-     ],
-     [
-      -26,
-      54
-     ],
-     [
-      -26,
-      40
-     ],
-     [
-      -26,
-      24
-     ]
-    ],
-    "radius": 4,
-    "style": "solid",
-    "claimsGround": true,
-    "coverage": 0.5,
-    "pave": {
-     "kind": "solid",
-     "id": 1,
-     "data": 6
-    }
-   },
-   {
-    "id": "umfahrung-ost",
-    "kind": "stroke",
-    "seed": 6,
-    "points": [
-     [
-      2,
-      59
-     ],
-     [
-      14,
-      58
-     ],
-     [
-      26,
-      54
-     ],
-     [
-      26,
-      40
-     ],
-     [
-      26,
-      24
-     ]
-    ],
-    "radius": 4,
-    "style": "solid",
-    "claimsGround": true,
-    "coverage": 0.5,
-    "pave": {
-     "kind": "solid",
-     "id": 1,
-     "data": 6
-    }
-   },
-   {
-    "id": "gueterschuppen",
+    "id": "block-s1",
     "kind": "house",
     "seed": 5,
-    "style": "@tk-schuppen",
+    "style": "@tk-block",
     "wings": [
      {
       "corners": [
+       [
+        -33,
+        70
+       ],
+       [
+        -24,
+        80
+       ]
+      ]
+     }
+    ],
+    "front": "posZ"
+   },
+   {
+    "id": "block-s2",
+    "kind": "house",
+    "seed": 7,
+    "style": "@tk-block",
+    "wings": [
+     {
+      "corners": [
+       [
+        -20,
+        70
+       ],
+       [
+        -13,
+        80
+       ]
+      ]
+     }
+    ],
+    "front": "posZ"
+   },
+   {
+    "id": "block-n1",
+    "kind": "house",
+    "seed": 9,
+    "style": "@tk-block",
+    "wings": [
+     {
+      "corners": [
+       [
+        -33,
+        91
+       ],
+       [
+        -24,
+        99
+       ]
+      ]
+     }
+    ],
+    "front": "negZ"
+   },
+   {
+    "id": "block-n2",
+    "kind": "house",
+    "seed": 11,
+    "style": "@tk-block",
+    "wings": [
+     {
+      "corners": [
+       [
+        -20,
+        91
+       ],
+       [
+        -13,
+        99
+       ]
+      ]
+     }
+    ],
+    "front": "negZ"
+   },
+   {
+    "id": "block-n3",
+    "kind": "house",
+    "seed": 13,
+    "style": "@tk-block",
+    "wings": [
+     {
+      "corners": [
+       [
+        13,
+        91
+       ],
        [
         20,
-        77
-       ],
-       [
-        32,
-        89
+        99
        ]
       ]
      }
     ],
-    "front": "negX"
+    "front": "negZ"
    },
    {
-    "id": "zollhalle",
+    "id": "block-n4",
     "kind": "house",
-    "seed": 5,
-    "style": "@tk-schuppen",
+    "seed": 15,
+    "style": "@tk-block",
     "wings": [
      {
       "corners": [
        [
-        -32,
-        77
+        24,
+        91
        ],
        [
-        -21,
-        89
+        33,
+        99
        ]
       ]
      }
     ],
-    "front": "posX"
+    "front": "negZ"
    },
    {
     "id": "stellwerk",
@@ -2987,33 +8640,12 @@
      {
       "corners": [
        [
-        31,
-        40
-       ],
-       [
-        38,
-        48
-       ]
-      ]
-     }
-    ],
-    "front": "negX"
-   },
-   {
-    "id": "umspannwerk",
-    "kind": "house",
-    "seed": 5,
-    "style": "@tk-schuppen",
-    "wings": [
-     {
-      "corners": [
-       [
         -34,
-        93
+        32
        ],
        [
-        -26,
-        99
+        -27,
+        40
        ]
       ]
      }
@@ -3024,48 +8656,48 @@
     "id": "allee-0",
     "kind": "tree",
     "seed": 11,
-    "x": -12,
-    "z": 80,
+    "x": -7,
+    "z": 71,
     "style": "platane"
    },
    {
     "id": "allee-1",
     "kind": "tree",
     "seed": 12,
-    "x": 12,
-    "z": 80,
+    "x": 6,
+    "z": 71,
     "style": "platane"
    },
    {
     "id": "allee-2",
     "kind": "tree",
     "seed": 13,
-    "x": -12,
-    "z": 88,
+    "x": -7,
+    "z": 76,
     "style": "platane"
    },
    {
     "id": "allee-3",
     "kind": "tree",
     "seed": 14,
-    "x": 12,
-    "z": 88,
+    "x": 6,
+    "z": 76,
     "style": "platane"
    },
    {
     "id": "allee-4",
     "kind": "tree",
     "seed": 15,
-    "x": -14,
-    "z": 96,
+    "x": -7,
+    "z": 81,
     "style": "platane"
    },
    {
     "id": "allee-5",
     "kind": "tree",
     "seed": 16,
-    "x": 14,
-    "z": 96,
+    "x": 6,
+    "z": 81,
     "style": "platane"
    }
   ],

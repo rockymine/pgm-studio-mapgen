@@ -1,0 +1,73 @@
+## Hochbahnzug (made) along x
+TRANSECT 41 stations from (-20, 64) to (20, 64), every 1
+  station        ground  surface  water  top  standing            step
+  (  -20,    64)      42       42           42                      
+  (  -19,    64)      42       42           42                      
+  (  -18,    64)      42       42           42                      
+  (  -17,    64)      42       42           42                      
+  (  -16,    64)      42       42           42                      
+  (  -15,    64)      42       42           42                      
+  (  -14,    64)      42       42           42                      
+  (  -13,    64)      42       42           42                      
+  (  -12,    64)      42       49           49  storey              BARRIER +7
+  (  -11,    64)      42       49           49  storey              
+  (  -10,    64)      42       49           49  storey              
+  (   -9,    64)      42       49           49  storey              
+  (   -8,    64)      42       49           49  storey              
+  (   -7,    64)      42       49           49  storey              
+  (   -6,    64)      42       49           49  storey              
+  (   -5,    64)      42       49           49  storey              
+  (   -4,    64)      42       49           49  storey              
+  (   -3,    64)      42       49           49  storey              
+  (   -2,    64)      42       49           49  storey              
+  (   -1,    64)      42       42           42                      DROP -7
+  (    0,    64)      42       42           42                      
+  (    1,    64)      42       49           49  storey              BARRIER +7
+  (    2,    64)      42       49           49  storey              
+  (    3,    64)      42       49           49  storey              
+  (    4,    64)      42       49           49  storey              
+  (    5,    64)      42       49           49  storey              
+  (    6,    64)      42       49           49  storey              
+  (    7,    64)      42       49           49  storey              
+  (    8,    64)      42       49           49  storey              
+  (    9,    64)      42       49           49  storey              
+  (   10,    64)      42       49           49  storey              
+  (   11,    64)      42       49           49  storey              
+  (   12,    64)      42       42           42                      DROP -7
+  (   13,    64)      42       42           42                      
+  (   14,    64)      42       42           42                      
+  (   15,    64)      42       42           42                      
+  (   16,    64)      42       42           42                      
+  (   17,    64)      42       42           42                      
+  (   18,    64)      42       42           42                      
+  (   19,    64)      42       42           42                      
+  (   20,    64)      42       42           42                      
+rises 2, falls 2, worst step 7: 2 barrier, 0 scramble, 2 drop — BARRIER +7 at (-12, 64); DROP -7 at (-1, 64); BARRIER +7 at (1, 64); DROP -7 at (12, 64) | walked end to end
+beside: destroyable hoch at (22, 62)
+
+## Hochbahnzug (made) along z
+TRANSECT 21 stations from (0, 54) to (0, 74), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    54)      30       30           30                      
+  (    0,    55)      30       30           30                      
+  (    0,    56)      30       30           30                      
+  (    0,    57)      45       45           45                      BARRIER +15
+  (    0,    58)      43       49           49  storey              BARRIER +4
+  (    0,    59)      43       49           49  storey              
+  (    0,    60)      43       49           49  storey              
+  (    0,    61)      42       42           42                      DROP -7
+  (    0,    62)      43       43           43                      +1
+  (    0,    63)      42       42           42                      -1
+  (    0,    64)      42       42           42                      
+  (    0,    65)      43       43           43                      +1
+  (    0,    66)      42       42           42                      -1
+  (    0,    67)      42       42           42                      
+  (    0,    68)      45       45           45                      BARRIER +3
+  (    0,    69)      30       30           30                      DROP -15
+  (    0,    70)      30       30           30                      
+  (    0,    71)      30       30           30                      
+  (    0,    72)      30       30           30                      
+  (    0,    73)      30       30           30                      
+  (    0,    74)      30       30           30                      
+rises 5, falls 4, worst step 15: 3 barrier, 0 scramble, 2 drop — BARRIER +15 at (0, 57); BARRIER +4 at (0, 58); DROP -7 at (0, 61); BARRIER +3 at (0, 68); DROP -15 at (0, 69) | walked end to end
+beside: (none)

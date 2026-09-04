@@ -35,6 +35,10 @@
     }
    ],
    "yaw": 180,
+   "doors": [
+    "-z",
+    "-x"
+   ],
    "footprint": null,
    "iron": []
   },
@@ -60,6 +64,10 @@
     }
    ],
    "yaw": 0,
+   "doors": [
+    "-z",
+    "-x"
+   ],
    "footprint": null,
    "iron": []
   }
@@ -67,7 +75,7 @@
  "observer": {
   "point": {
    "x": 0,
-   "y": 68,
+   "y": 76,
    "z": 0
   },
   "yaw": 0
@@ -100,7 +108,7 @@
    "style": "pillar-2",
    "materials": "obsidian",
    "anchor": {
-    "x": -16,
+    "x": -12,
     "y": 30,
     "z": 56
    },
@@ -119,11 +127,11 @@
    "style": "pillar-2",
    "materials": "obsidian",
    "anchor": {
-    "x": 22,
+    "x": 24,
     "y": 30,
-    "z": 62
+    "z": 63
    },
-   "float": 3,
+   "float": 2,
    "box": null
   },
   {
@@ -138,7 +146,7 @@
    "style": "pillar-2",
    "materials": "obsidian",
    "anchor": {
-    "x": 15,
+    "x": 11,
     "y": 30,
     "z": -57
    },
@@ -157,18 +165,18 @@
    "style": "pillar-2",
    "materials": "obsidian",
    "anchor": {
-    "x": -23,
+    "x": -25,
     "y": 30,
-    "z": -63
+    "z": -64
    },
-   "float": 3,
+   "float": 2,
    "box": null
   }
  ],
  "cores": null,
  "meta": {
   "name": "Tiefkreuz",
-  "created": "2026-09-03",
+  "created": "2026-09-04",
   "authors": [],
   "contributors": []
  },

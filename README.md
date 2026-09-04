@@ -399,6 +399,21 @@ upstream as `WE75`. [reports/opus5-quatrefoil-run.md](reports/opus5-quatrefoil-r
 |---|---|---|---|
 | `opus5-quatrefoil` | ctw | Opus 5 | **98 × 98 at the scale it was drawn — nine landmasses, no land route anywhere, and not one step on it a player cannot walk up.** The author's eleven rectangles and their ids untouched: four corner quarters of mossy moor with a spawn hall in the outer corner and a wool room on a ramp in the middle, four pale sand capes on the axes, and a stepped keep in the centre that all four capes meet at. **The shaping is piece heights and four ramps rather than relief** — the relief carries a grain and nothing else — and the board reads back **5 904 walked · 0 scrambled · 0 barrier**, 0% dead, 39 props placed and none declined. The spawn is the shape the model allows and a board rarely uses: a 12 × 12 hall in the corner of a 20 × 20 protected region, so a player walks the whole way round their own building. It is cut with **two doors** — the piece meets the board on both its `+z` and `+x` walls, so both are ways out — and the player looks at the corner between them at yaw `315`, which is the middle of the map. The iron is `POST /plan/room`'s own answer beside the near door, not a hand-placed marker. Every enemy wool costs fifteen placed blocks at least |
 
+### Opus 5 — a four-storey board, and the pass that reworked it
+
+The board with the most storeys in this repository, and the only one here built twice: once as a
+terminus station under a viaduct, and once again against a list of measured faults, which is what turned
+it from areas thrown together into a place with a plan. The second pass is the worked example of the
+sketch's `material` word — one `TerrainMaterial` in place of a theme, painted over a shape's whole span
+— and of why it exists: a theme is a recipe for ground and a shape with no interior column is all edge,
+so a kerb, a stilt or a stair tread themed like the floor it serves comes out as rim over wall with the
+theme's own surface nowhere on it (`SK23`). 38 shapes on it carry a theme and 367 state a material.
+[reports/opus5-tiefkreuz-run.md](reports/opus5-tiefkreuz-run.md)
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5-tiefkreuz` | dtm | Opus 5 | **80 × 224 on seventeen layers, and the objectives stand on the rails** — two railways crossing at right angles over one block of city: a north–south **through** station in cut-and-cover with ballast at y5, rails a course proud of it, a concrete cess at each track edge so a track is a trough a player walks through rather than a ditch, an island between two side platforms at y8, a concourse at y18, the street at y29, and the rails running on through a portal into a vaulted bore at the back of the map. Over it, east–west on six brick piers with a 32-block clear span and a masonry soffit, an **elevated station** — platform, canopy, two-car train — with the second monument in its four-foot. Every flight is 45° with a rail two courses over its treads; behind the crossing an avenue with planted verges, an arterial road and six flat-roofed blocks, of which the spawn is the tallest. No relief at all: every height on it is stated |
+
 ## Three caveats about what is committed here
 
 **`*` — the mode is wrong, and the map is not.** Every board marked `ctw*` is a destroy board whose `map.xml`

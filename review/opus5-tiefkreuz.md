@@ -1,32 +1,37 @@
-# Tiefkreuz — a destroy board played on four storeys
+# Tiefkreuz — a destroy board on the two railways that cross under a city
 
-> A multi-level transit interchange whose whole middle is the station: a deep platform level in
-> cut-and-cover, a concourse mezzanine over it, the street over that, and an elevated viaduct over the
-> street. The objectives stand thirty-four blocks apart in the vertical.
+> Two lines cross at right angles over the same block of city and the board is played on both. The deep
+> line runs north–south in cut-and-cover under the street and goes on through a tunnel into the back of
+> the map; the elevated line crosses it east–west on a brick viaduct with a platform, a canopy and a
+> train of its own. One monument stands on each line, in the four-foot between its rails.
 
 **In one sentence:** two halves of a city are cut apart by a thirty-two-block chasm, and in each half a
-terminus station is buried under the street — tracks and platforms at y8, a concourse slab at y18, the
-street at y29 and a brick viaduct at y41 — with one monument on the deepest floor and one on the highest,
-so a raid on either team has to be climbed or descended before it can be fought.
+through station is buried under the street — tracks and platforms at y8, a concourse slab at y18, the
+street at y29 and a viaduct at y41 — with one monument on the deep track and one on the elevated track,
+so both objectives stand on the line and a raid on either has to be climbed or descended before it can
+be fought.
 
-80 × 224 blocks, `rot_180` about the origin, base surface 30, build ceiling 64, ground y0..y43.
+80 × 224 blocks, `rot_180` about the origin, base surface 30, build ceiling 69, ground y0..y48.
 `maps/opus5-tiefkreuz` · `specs/opus5-tiefkreuz` · `reports/opus5-tiefkreuz-run.md`.
 
 ## The stack, in world Y
 
 | Storey | Ground top | A player walks at | Drawn by |
 |---|---|---|---|
-| running tracks (ballast) | y5 | y6 | ground layer, override adds |
-| rails, one course proud | y6 | y7 | ground layer |
+| ballast of the deep tracks | y5 | y6 | ground layer, override adds |
+| rails, one course proud of the bed | y6 | y7 | ground layer, a height band stack |
+| cess — one column of concrete at each track edge | y7 | y8 | ground layer |
 | platforms — an island between two side platforms | y8 | y9 | ground layer |
-| platform canopies | y14 | — | `perron`, a **made** layer on posts from y9 |
+| platform canopies over the open bay | y15 | — | `perron`, a **made** layer on posts from y9 |
+| tunnel vault over the two northern bores | y29 | — | `tunnel`, base_y 12 |
 | concourse mezzanine | y18 | y19 | `halle`, base_y 17 |
 | street — and the box's lid where it crosses it | y29 | y30 | the compiled ground layer, and `deckel` at base_y 27 |
-| viaduct deck (parapets y43) | y41 | y42 | `viadukt`, base_y 39 |
+| girders and soffit under the viaduct | y38 | — | `traeger`, base_y 37 |
+| viaduct deck · elevated platform (parapets y44) | y41 · y42 | y42 · y43 | `viadukt`, base_y 39 |
 
-Ten layers in all: the compiled `ground` carrying 67 authored shapes, three ground layers over it
-(`halle` 41 shapes, `deckel` 7, `viadukt` 8), and six **made** layers — four slices of a standing train
-and two of the platform canopies on their posts.
+Eighteen layers in all: the compiled `ground` carrying 188 authored shapes, five ground layers over it
+(`tunnel`, `halle`, `deckel`, `traeger`, `viadukt`) and twelve **made** layers — four bands of each of
+the two trains, and the posts and the roof of each of the two canopies.
 
 **The board carries no relief at all.** Every height on it is stated: a shape's `floor` and
 `base_height`, or a tread's own course. That is what makes a four-storey stack arithmetic rather than a
@@ -35,27 +40,81 @@ on a board where a soffit has to clear a platform by exactly eight blocks that i
 making. The cost is that every landform on the board is a rectangle, which is right for a city and would
 be wrong for anywhere else.
 
+## Ground and made: the two words a shape is painted with
+
+A shape that is **ground** carries a `theme`, whose five buckets are resolved per column: the platforms,
+the concourse, the elevated platform, the ballast, the street, the tunnel vault, the planted verges. A
+shape that is a **thing made of something** carries a `material` instead, which paints its whole span
+with no rim, no wall and no surface depth: every rail, kerb, parapet, stair tread, balustrade, canopy
+post, canopy roof, road course, lamp and carriage side. Thirty-eight shapes on this board carry a theme
+and three hundred and sixty-seven state one material.
+
+The division is not stylistic. A shape with no interior column can never show a theme's surface, because
+which bucket a block takes is decided per column by whether that column is an edge, and on a one-block
+kerb or a one-tread stair every column is an edge. `SK23` names exactly that, and the board raises none:
+the four groups it named before this pass — eighteen canopy stilts, three street kerbs, three viaduct
+parapets and one concourse threshold — are materials now.
+
+Two things a material buys that a theme cannot. A **height band stack** (`layered`, `axis: height`,
+`from: 0`) lets one shape say *ballast to y5, iron at y6*, which is how a rail sits **on** its bed
+instead of being an iron pillar sunk six courses into it; and *stone plinth, brick shaft, stone impost*,
+which is how a pier reads as masonry rather than as thirty-eight courses of brick. And a **road** is a
+shape rather than a stroke, so it lands where it is drawn — a stroke seats on whatever surface a column
+carries and a stroke under the viaduct paves the viaduct — and `keepClear` on it keeps props off it
+exactly, with no margin.
+
+| Theme | On | Says |
+|---|---|---|
+| `stadt` | the street, the lid, the tunnel vault, the chasm walls, and every column a material paints | **one** block — stone brick — kerbed with a smooth-stone rim wherever the ground drops |
+| `bahn` | platforms, concourse, the elevated platform | a **one-block** `checker` of quartz and smooth stone: a tiled floor, light against the city |
+| `schotter` | the trackbed and the viaduct's own ballast | gravel, over an andesite body |
+| `gruen` | the avenue's two planted verges | turf over two courses of soil, which is what a street tree stands in |
+
+**No field is sampled anywhere on the board.** An octave-2 noise between two blocks of nearly one shade
+runs eight blocks of a material at a stated scale of 4 and forty at 18, so on a board 80 across it draws
+blotches of two pavements rather than grain in one, and it reads worse than either block on its own
+(the author's ruling). Every variation the city has is *drawn*: the black carriageways with their yellow
+dashes, the smooth-stone pavements, the two green verges, the station's own checker, the brick of the
+buildings and the piers. The census reads the surface block, so `stadt`'s share includes every column a
+`material` painted — brick, iron, glowstone, asphalt and the trains are all inside it.
+
 ## What the four storeys are for
 
-**The deep level is a terminus.** Two tracks run from the tunnel mouths at `z = ±16` — the chasm face —
-north to buffer stops at `z = ±52`, with a west platform, an island and an east platform between them.
-At the head of the tracks the three platforms join across a terminus deck (`z ±54..±57`), and the deep
-monument stands on it, at `(−16, 11, 56)` and `(15, 11, −57)`.
+**The deep level is a through station.** Two tracks run from the tunnel mouths at `z = ±16` — the chasm
+face — north past a west platform, an island and an east platform, and on at `z = ±58` through a portal
+into a bore eighteen blocks long, roofed at y12, that carries the rails into the back of the map. The
+deep monument stands in the four-foot of the west track at `(−12, 8, 56)` and `(11, 8, −57)`, on the
+ballast, a few blocks short of the portal.
 
-**The concourse is a slab over the whole box** from `z ±38` to `z ±57`, eight blocks of headroom over the
-platforms and eight under the street. It is cut by four openings: the street flight, a light well over
-each side platform and one over the island. The well over the west platform runs the whole way up —
-street to platform, twenty-one blocks — so the deep monument is visible from the pavement and can be
-dropped onto for nine hearts.
+**A track is a trough a player walks through, not a ditch to be climbed out of.** One column of concrete
+at each track edge stands a course over the rail head, so crossing a track from a platform is
+`y8 → y7 → y6 → y5` and back — four one-block steps. Before that step existed the trackway was three
+hundred cells of two-block scramble and the only free way between platforms was the concourse; it is now
+the shortest way to the monument and the reason a goal may stand on the line at all.
 
-**The street is the lid over the station** for `z ±16..±24` and `z ±38..±58`, and is missing between
-them: the open bay, 41 × 14, where the trainshed is open to the sky and daylight reaches the platforms.
-A player walking the middle of the board meets a hole with a one-course parapet round it and goes round
-by either flank, which is what puts traffic on the flanks at all.
+**The concourse is a slab over the whole box** from `z ±43` to `z ±57`, with a two-course parapet along
+its open south lip, ten glowstone panels cut into it and put back at the same span so their light
+reaches the platform beneath, and two openings: the street stair's own well and a shaft over the deep
+monument. That shaft runs the whole way up — street to track, twenty-four blocks — so the monument is
+visible from the pavement and can be dropped onto.
 
-**The viaduct crosses the city** at `z ±61..±75`, 88 blocks of deck on eight brick piers, twelve blocks
-of headroom over the street. One ramp climbs it — twelve treads of two blocks, at the end furthest from
-the goal — and the high monument stands on the deck's south lip at `(22, 45, 62)` and `(−23, 45, −63)`.
+**The street is the lid over the station** for `z ±16..±23` and `z ±43..±57`, and is missing between
+them: the open bay, 41 × 18, where the trainshed is open to the sky and daylight reaches the platforms.
+Its edges are kerbed two courses proud, which is what makes the hole read as an edge rather than as a
+flush twenty-one-block drop.
+
+**The viaduct is an elevated station.** `z ±57..±69`, 72 blocks of deck on six brick piers with a
+thirty-two-block clear span over the box, a two-course masonry soffit and edge girders under the whole
+of it, a side platform on the south edge under a canopy, one track with two rails, and a two-car train
+standing at it. The high monument stands in that track's four-foot at `(24, 44, 63)` and
+`(−25, 44, −64)`. Two masonry stair towers climb to it from the street — twelve treads and a landing,
+one rise to one tread — one either side of the avenue.
+
+**Behind the crossing is the quarter the two stations serve.** An avenue sixteen blocks wide runs from
+the station forecourt to the spawn: a black carriageway with a dashed centre line, two smooth-stone
+pavements and two planted verges with six oaks in them. An arterial road crosses it east–west. Six
+flat-roofed brick blocks stand on the grid the two roads make, and the spawn is the seventh and tallest
+— a four-storey block at the head of the avenue, not a station head house standing where no station is.
 
 ## Where the two teams meet
 
@@ -65,16 +124,13 @@ wider than the window that reaches it is not possible here — the window *is* t
 writes `<apply block-place="…" region="not-build-area" message="You may not edit the void!"/>`, so a
 crossing may be built only inside that window.
 
-Three heights face each other across it, and none of them is bridged for you:
-
 | Crossing | Height | Gap | What it arrives at |
 |---|---|---|---|
 | the tunnel mouths | y9 | 32 | straight onto the enemy platform, at the far end from their monument |
 | the quays | y30 | 32 | the enemy street, in the open |
-| — | up to y64 | 32 | legal anywhere inside the window, up to the build ceiling |
+| — | up to y69 | 32 | legal anywhere inside the window, up to the build ceiling |
 
-The viaduct does **not** reach the chasm: each team's is a stub over its own half, so the high monument
-cannot be crossed to directly.
+The viaduct does **not** reach the chasm: each team's is a stub over its own half.
 
 ## What the walks cost
 
@@ -84,37 +140,26 @@ ends on the street twelve blocks beneath it.
 
 | From the red spawn point (0, 106, 30) | `aim=reach` | `aim=travel` |
 |---|---|---|
-| own deep monument `(−16, 56, 9)` | 60 blocks, 3 placed, one 21-block drop | the same |
-| own high monument `(22, 62, 42)` | **149 blocks, 0 placed** — by the ramp | 53 blocks, **13 placed** — pillared up |
-| enemy deep monument `(15, −57, 9)` | **181 blocks, 28 placed** | 169, 78 placed |
-| enemy high monument `(−23, −63, 42)` | **370 blocks, 25 placed** | 178, 44 placed |
+| own deep monument `(−12, 56, 10)` | 101 blocks, 0 placed, one 35-block drop | 55 blocks, 3 placed |
+| own high monument `(24, 63, 43)` | 94 blocks, 2 placed | 53 blocks, 17 placed |
+| enemy deep monument `(11, −57, 10)` | 260 blocks, 25 placed | 168 blocks, 97 placed |
+| enemy high monument `(−25, −64, 43)` | 232 blocks, 27 placed | 180 blocks, 36 placed |
 
-The stair chain walks both ways for nothing: street → concourse is 45 blocks and 0 placed, concourse →
-platform 25 blocks and 0 placed. The 21-block drop down the light well is the shortcut, and the walk
-model prices a fall at nothing, which is why `reach` takes it; in game it costs nine hearts.
+The two placed blocks on the way to the high monument are the climb onto the monument itself, which
+floats three courses over the deck by design.
 
-Plan tier, off `POST /plan/inspect`: `GO1` **3.07** and **3.42** (band 3–4), `GO4` **55** and **52**
-(band 40–90), `GO2` **38** (band 35–65), `GO3` **127 / 123 / 142** (band 85–150), `CT12` **32** (band
-15–40). The evaluator scores the plan **0** with no violations and no lint.
+Every leg of the vertical chain walks for nothing, in both directions:
 
-## What the ground is made of
+| Leg | `aim=reach` |
+|---|---|
+| island platform → concourse (stair A) | 22 blocks, 0 placed |
+| concourse → street (stair B) | 36 blocks, 0 placed |
+| tunnel bore → island platform | 48 blocks, 0 placed |
+| deep track → own spawn, the whole climb | 111 blocks, 0 placed, 0 drops |
 
-Six themes over the ground and three more for the things that are made rather than grown. The families
-are three: the city is grey stone, the station is white concrete, the railway is brick and iron — and no
-building is walled in the ground's own family.
-
-| Theme | Share | On | Says |
-|---|---|---|---|
-| `stadt` | 69.5% | the street, the lid, the chasm walls | a `noise` of stone brick and andesite at scale 18 — two blocks, broad patches — kerbed with a smooth-stone rim wherever the ground drops |
-| `bahn` | 11.0% | platforms, concourse, canopies, box lining | a 6-block `checker` of quartz and smooth stone: a built floor, light against the city |
-| `schotter` | 9.7% | the trackbed and the viaduct's deck | a `noise` of gravel and andesite at scale 9 |
-| `ziegel` | 4.7% | the viaduct's piers, parapets and ramp | brick, with a `layered` wall band putting a stone-brick string course every seventh block up the pier faces |
-| `gleis` | 4.9% | the rails, four on the deep tracks and four on the deck | iron, one column wide |
-| `licht` | 0.1% | 18 pavers down the platforms, 10 panels in the concourse slab | glowstone, one course deep — the only lighting a stacked board can have, since nothing in the API places a fixture |
-
-The train is `zug-rot` / `zug-glas` / `zug-grau` — three solid themes, one block each, because a made
-thing wants its geometry read and not its shading. Theme borders: `gleis | schotter` 1360 cells (the
-rails in their own ballast), `bahn | stadt` 524, `stadt | ziegel` 380. Nothing is mashed.
+Plan tier, off `POST /plan/inspect`: `GO1` **3.15** and **3.31** (band 3–4), `GO4` **53** and **54**
+(band 40–90), `GO2` **37**, `GO3` **124 / 131 / 145** (band 85–150), `CT12` **32** (band 15–40). The
+evaluator scores the plan **0** with no violations and no lint.
 
 ## The techniques, and what each one bought
 
@@ -123,78 +168,85 @@ column and the taller add wins it, so a hall drawn that way builds as its roof a
 across the box (platform, track, island, track, platform) are drawn side by side at their own heights,
 and the street either side of them *is* the box wall.
 
-**Two flights of treads, not two tilted quads.** A ramp is one polygon with a thickness per vertex, and
-that is the shorter statement — but the column where a flight *meets a slab* has to land on that slab's
-own top exactly, and an interpolated anchor at the last column does not promise it. Both flights are
-per-course rectangles: eleven treads of two blocks from platform to concourse, eleven from concourse to
-street, twelve from street to viaduct deck. Every one is a run of two for a rise of one, which is what
-makes a flight walk both ways for nothing.
+**Every flight is 45°, and every flight has a rail.** A tread is one block deep for one course of rise,
+drawn as a rectangle per course, and a balustrade stands beside each tread **two** courses above it. Two
+is the number that matters: a rail one course proud is a step, and the walk climbs it — measured, the
+route from the platform to the spawn ran up the balustrade rather than the stair. At two it is a wall.
+Stair A is ten treads from the island platform to the concourse, stair B eleven from the concourse to
+the street, and each stair tower twelve treads and a landing from the street to the elevated platform.
 
-**A goal states its storey.** `DestroyablePlacement` carries `layer`, and it is carried through the
-compile onto every orbit image: `{"piece": "", "at": [-16, 56], "layer": "ground"}` resolves against the
-ground layer's surface at that column — the terminus deck at y8 — instead of against the lid twenty-one
-blocks over it. `{"layer": "viadukt"}` does the same at y41. Neither needed a patch to the intent.
+**A height band stack is how one shape says two materials.** `layered` on `axis: height` reads world Y,
+so a rail is `gravel ×6, iron ×1` from y0 and a pier is `stone ×3, brick ×30, stone ×4`. One shape, one
+span, no two override adds contesting a column.
 
 **A rectangle algebra for the slabs.** `carve(outer, holes)` in `build-spec.py` turns a slab and its
-openings into the rectangles that remain, banded by z. The lid is seven rectangles round the open bay,
-the stair well and two light wells; the concourse is seventeen.
+openings into the rectangles that remain, banded by z. The lid, the concourse, the parapets, the
+girders, the two parapet notches where a stair tower lands, and every carriage side with its doors and
+its cab cut out of it are all one routine.
 
-**Made layers for the things that are not ground.** The train is four slices — underframe, body, window
-band, roof — because a colour change inside a run splits a layer as surely as air does, and `kind:
-"made"` keeps `SK10`'s pair walk and `SK11`'s reachability walk off it. The canopies are two more, on
-posts. Six made layers, thirty blocks of statement, and no complaint from either gate.
+**Made layers for the things that are not ground.** Each train is four layers — underframe with two
+bogies a car, body with its doors and cab ends, a window band with pillars between the windows, and a
+roof — with an eleven-block car and a two-block gap between the cars. `kind: "made"` keeps `SK10`'s pair
+walk and `SK11`'s reachability walk off all of them.
 
-**A stroke seats on the top surface, so the avenue is drawn in two runs.** The street from the head
-house to the station passes *under* the viaduct; a single stroke through it paves the viaduct's deck
-instead of the street. `bahnhofstrasse-nord` stops at the viaduct's north face and
-`bahnhofstrasse-sued` starts at its south.
+**A goal states its storey.** `DestroyablePlacement` carries `layer`, and it is carried through the
+compile onto every orbit image: `{"at": [-12, 56], "layer": "ground"}` resolves against the ballast at
+y5 and `{"layer": "viadukt"}` against the deck's own at y41.
 
 ## What is wrong with it
 
-**`03-slopes.txt`: 11 994 walked, 300 scrambled, 1 658 barrier, 10 faces, the largest 431 cells at
-`x −21..20, z −59..−24`.** That face is the trainshed's own lip — the 21-block drop from the street into
-the open bay — and every other face is either the chasm wall or the viaduct's edge. All of them are
-drawn, none is a landform that came out wrong; but a board where a sixth of the cells step by three or
-more is a board a player falls off, and that is the trade this one makes on purpose.
+**`03-slopes.txt`: 11 672 walked, 648 scrambled, 1 632 barrier, 10 faces, the largest 348 cells at
+`x −21..20, z −53..−24`.** That face is the trainshed's own lip — the drop from the street into the open
+bay — and every other face is either the chasm wall, the box wall or the viaduct's edge. The 648
+scrambled cells are almost all **parapets**: the bay's kerbs, the concourse's lip, the viaduct's two
+parapets and every stair balustrade stand two courses over the floor beside them, which is what a
+parapet is and what a one-course one is not. The trackway, which was 300 of the old board's scrambles,
+is now walked end to end.
 
-**The 300 scrambled cells are the trackway.** Ballast at y5, rails at y6, platform at y8: crossing a
-track from a platform is a two-block climb out, which costs one placed block. That is deliberate — it is
-what makes the concourse the free way between platforms — and it is also the single most likely thing to
-annoy a player who does not read it as a railway.
+**8.3% of the ground goes unused** (`GET …/coverage`: reached 12 006, decorated 791, dead 1 155). The
+patches are the corners behind each spawn and the flank west of the viaduct's ramp-less end. Bare ground
+beside a spawn is not a fault worth dressing over, and the spawn's own door approach is a keep-out wide
+enough that a building cannot be put there — three were declined for it before they were moved.
 
-**10.7% of the ground goes unused** (`GET …/coverage`: reached 11 521, decorated 936, dead 1 495). The
-five patches are the corners beside each head house — 321 cells at `(−27, −105)`, 288 at `(26, 104)`,
-177 at `(−26, 107)`, 177 at `(24, −109)`, 165 at `(−38, 46)`. Bare ground beside a spawn is not a fault
-worth dressing over, and nothing was put there to hide it.
+**`SK11` names 9 209 places of standable ground around `(−14, −76)` as unreached, and the board is
+connected.** Every leg of the chain measures 0 placed in both directions (the table above), pre-flight
+reports *traversability: spawn ↔ objective chain connected across the build geometry*, and the export
+gate is OPEN. The complaint is not reconciled and is recorded rather than worked around; the two
+72-place complaints beside it are the two viaduct parapets, whose tops stand two over the platform on
+purpose and which nothing is meant to walk onto.
 
-**`WX11` on the signal box, twice.** `stellwerk` at `x 31..38, z 40..48` stands 30 blocks above the cell
-beside it at `(41, 38)`, fifteen of them over the void, so its foundation fills that face in bedrock.
-That face is at the board's own coast, where the street's 30-block cliff already stands; the complaint is
-correct and the building is deliberately sited on the railway boundary. Left as it is.
+**`SK18` reports the elevated canopy and the deep monument in ten shared columns, and no block of either
+is in the other.** The test is two-dimensional. Read at `(−14, 58)`, the first column it names, the
+world holds the tunnel vault `y12..y29`, the girder `y37..y38`, the deck `y39..y42` and the canopy
+`y48` — and no obsidian, because the monument is at `(−12, 56)` and stands at `y8..y9`. Left as it is.
 
-**`WX11` on both monuments**, for the same reason: a goal on a deck or on a terminus platform stands
-above the cell beside it by construction. The finding offers an `area` relief mark as its mechanical fix,
-which this board has no relief to carry. Its number for the deep monument is also wrong — it reports 21
-blocks at `(−19, 54)`, and `GET …/column` reads the obsidian at y11–12 over paving at y8 with that
-neighbour's surface also at y8, which is three.
+**`WX11` reports the deep monument thirty-nine blocks above the cell beside it, and the world says
+three.** `GET …/column?at=-12,56` reads obsidian at y8–y9 over ballast topping at y5, and `?at=-12,53`
+reads that neighbour's own surface at y5. Thirty-nine is the distance from the viaduct's parapet, which
+crosses fifteen blocks north of the goal and thirty-six above it. The same complaint on the old board
+reported twenty-one against a measured three.
 
 ## What a match would decide
 
-Three things were settled without an oracle and are recorded here rather than filed as facts.
+Four things were settled without an oracle and are recorded here rather than filed as facts.
 
-**The deep route is a corridor, and the brief rules against one.** `AUTHORING-BRIEF.md` §3 says the two
+**Is a goal on the track the right place for it?** It is the author's own suggestion and it reads well —
+the monument stands between the rails with the train behind it — but it puts the objective in the
+narrowest part of the station, four blocks wide between two rails, reached along a trough. That is a
+place two defenders hold. The alternative was the terminus deck the old board had, which is open and
+which the through station removed.
+
+**Is a one-way drop a route?** The shaft over the deep monument falls twenty-four blocks straight onto
+the track — no way back except the stairs, and `aim=reach` prefers it because the walk prices a fall at
+nothing. It is kept, kerbed on both storeys so it reads as an edge, and it is the only way in that is
+not a stair.
+
+**Is a seventeen-block pillar a route?** The free way onto the viaduct is a stair tower, 94 blocks; the
+fast one is straight up off the street, 53 blocks and seventeen placed. That is the decision the deck is
+for.
+
+**Is the inside of a station a corridor the brief rules out?** `AUTHORING-BRIEF.md` §3 says the two
 teams' ground is joined by a build zone over void and never by a land connection. This board obeys that
-at every height — the chasm is full-depth and the platforms stop at the mouths — but the *inside* of each
-station is a long enclosed hall that an attacker must walk end to end with two stairs as its only doors.
-That is a place a defender stands. It is also what a station is, and the alternative was not to build the
-board. A match decides whether the twenty-one-block wells and the open bay give an attacker enough ways
-in.
-
-**A twelve-block pillar is cheaper than a 149-block walk.** The free route to the viaduct is the ramp;
-the fast one is thirteen placed blocks straight up from the street. That is the decision the deck is for,
-and a board that wanted the ramp contested would raise the deck to twenty blocks and lose the headroom
-under it.
-
-**A one-way drop is a route.** The light well over the deep monument falls twenty-one blocks onto it —
-nine hearts, no way back except the stairs. `aim=reach` takes it, and so would a player who is winning.
-Closing it would make the deep monument a stair fight and nothing else.
+at every height. But the *inside* of each half's station is an enclosed hall an attacker walks end to
+end, and the through tunnel behind it is a dead-end bore eighteen blocks long. A match decides whether
+the shaft, the open bay and two stairs give an attacker enough ways in.
