@@ -385,18 +385,19 @@ corners no journey passes; an arm is a corridor to somewhere, so every block of 
 ### Opus 5 — a four-team board from a handed-over plan
 
 The first board here authored from a plan somebody else drew: a `rot_90` quatrefoil and a five-colour
-palette, given as documents rather than as a brief. Two things it settled. **A cell is a scale and an
-arrangement is a design** — the plan came in at `cell: 1`, where every gap was six blocks and
-`/plan/evaluate` refused it on two hard terms; doubling the cell and moving nothing put every hop in
-band. And the run found the studio bug that made a four-team board impossible to build fairly: a
-relief-bearing group read each mirrored copy's heights back through the axis that *placed* it, which is
-right for every mirror and the half-turn and wrong for a quarter-turn, so two of four teams played the
-shapes' flat base heights while `relief/read` answered `symmetryError 0`. Fixed upstream as `WE75`.
-[reports/opus5-quatrefoil-run.md](reports/opus5-quatrefoil-run.md)
+palette, given as documents rather than as a brief. Two things it settled. **A scale somebody drew is a
+statement, and an evaluator's `"kind": "hard"` is not a gate** — the plan came in at `cell: 1`,
+`/plan/evaluate` read it `valid: false` on the composer's `G5` band, that was mistaken for a refusal and
+the board was rebuilt at twice the size; driven at the author's own scale it compiles, pre-flights and
+exports with 0% dead ground. And the run found the studio bug that made a four-team board impossible to
+build fairly: a relief-bearing group read each mirrored copy's heights back through the axis that
+*placed* it, which is right for every mirror and the half-turn and wrong for a quarter-turn, so two of
+four teams played the shapes' flat base heights while `relief/read` answered `symmetryError 0`. Fixed
+upstream as `WE75`. [reports/opus5-quatrefoil-run.md](reports/opus5-quatrefoil-run.md)
 
 | Folder | Mode | Author | What it is |
 |---|---|---|---|
-| `opus5-quatrefoil` | ctw | Opus 5 | **196 × 196, four teams, nine landmasses and no land route anywhere** — four corner quarters of mossy grey-green moor, each with a spawn compound in its corner and a wool room on a shelf in its middle; four pale sand spits on the axes; and a stepped sandstone keep in the centre that is the junction all four spits meet at. The quarters are rolled by pushes and carry no rim; the keep is flat, sheer, kerbed on every drop and has beds of podzol cut into its deck with flowers and birches in them. Three build regions do all the joining: the flank out to a spit, the hop onto the keep's apron, and one bridge down from that apron into the next team's wool shelf |
+| `opus5-quatrefoil` | ctw | Opus 5 | **98 × 98 at the scale it was drawn — nine landmasses, no land route anywhere, and not one step on it a player cannot walk up.** The author's eleven rectangles and their ids untouched: four corner quarters of mossy moor with a spawn hall in the outer corner and a wool room on a ramp in the middle, four pale sand capes on the axes, and a stepped keep in the centre that all four capes meet at. **The shaping is piece heights and four ramps rather than relief** — the relief carries a grain and nothing else — and the board reads back **5 904 walked · 0 scrambled · 0 barrier**, 0% dead, 39 props placed and none declined. The spawn is the shape the model allows and a board rarely uses: a 12 × 12 hall in the corner of a 20 × 20 protected region, so a player walks the whole way round their own building. It is cut with **two doors** — the piece meets the board on both its `+z` and `+x` walls, so both are ways out — and the player looks at the corner between them at yaw `315`, which is the middle of the map. The iron is `POST /plan/room`'s own answer beside the near door, not a hand-placed marker. Every enemy wool costs fifteen placed blocks at least |
 
 ## Three caveats about what is committed here
 

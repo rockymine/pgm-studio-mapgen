@@ -1196,25 +1196,40 @@ each storey its own landscape — `{"team": …, "walls": …}` — and a layer'
 own frame**, not the board's. `drive.py`'s `"*"` expands over the groups the *compile* emitted, so a
 key stated beside it survives and names a layer added in the finish.
 
-### `POST /plan/room` answers one footprint whatever the facing says
+### A spawn hall's doors come from what its piece touches, not from the facing
 
-The route is the resolver's own answer to *what room does this piece carry*, and it is the honest thing to
-copy onto a placement — except that its `footprint` does not move with the spawn's `facing`. Asked on the
-same 20 x 20-block piece it answers `{"at":[10,12],"footprint":[1,5,18,14]}` for all four facings, while
-the compiled shell does move: `facing: "front"` puts the shell at the piece's `+z` end with its door apron
-at `-z`, and `facing: "back"` the other way round. Copying that footprint onto a `back`-facing spawn
-therefore pins the five-block apron to the wall the door is not in, and `WX8` then refuses the iron cube
-because the ring it needs is on the other side.
+A spawn is cut with a door on each wall its piece meets more board on, at most two — the same derivation a
+wool cage has always used, capped. So the number of exits is not something a plan states: it follows from
+where the piece was drawn. A corner piece with a neighbour on two sides gets two doors and a piece with one
+neighbour gets one, and there is no way to ask for three.
 
-**State no footprint.** `WX1`'s default is the same rectangle and it follows the facing.
+Two things follow. `facing` is a **direction only** and takes eight values, the four walls plus the four
+corners — `back-right` on a corner hall points the player between its two exits and yaws `315`, which names
+no wall at all. And the **march between two rooms becomes an approach the dressing keeps clear at both
+ends**: `DR-KEEP` declined a tree at four separate positions along one before it was moved off the march
+entirely. Read `06-claims.txt` before seating a prop near a room, not after.
+
+### `POST /plan/room` is where the spawn's marker, building and iron all come from
+
+The route answers *what room does this piece carry*, for the piece **as the document states it**: it reads
+the placement's `facing` and its `footprint` and answers `{at, footprint, iron}`, all piece-relative block
+offsets. Asked with a 12 x 12 hall stated in a 20 x 20 spawn piece it gives
+`{"at":[7,7],"footprint":[1,1,12,12],"iron":[3.5,16.5]}` — the marker at the hall's own centre, the
+footprint back verbatim, and the cube beside the door on the player's right as they leave.
+
+**State the building, then copy the answer.** Sizing the hall by hand and then guessing the marker or the
+cube is three numbers that can disagree; asking is one read that cannot. A piece with no placement yet
+answers for the drawing defaults instead — a front door and the room the piece affords.
 
 ### The iron cube stands OUTSIDE the room shell
 
 `WX8` reads *"inside the piece"* and it is easy to read that as *inside the room*. The cube is
 `IronSpan` square, stands **in the ring between the shell and the piece edge**, and holds `IronGap` blocks
 of clear air to the wall. On a 20 x 20 piece whose shell is the piece inset one and five in front of the
-door, that ring is the five-block door apron and nothing else: the marker goes at the apron's outer edge,
-three blocks of cube and two of air, and anywhere in the hall is unplaceable.
+door, that ring is the five-block door apron and nothing else: the cube fills it, three blocks of cube and
+two of air, and anywhere in the hall is unplaceable. Shrinking the building widens the ring, which is what
+makes a seat beside the door possible at all — and `/plan/room` hands it over rather than being guessed
+at.
 
 ### `04-routes.txt` is not written on a board whose goals are wools
 

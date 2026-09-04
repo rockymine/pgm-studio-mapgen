@@ -32,25 +32,34 @@
    },
    "team": "red",
    "point": {
-    "x": -86,
+    "x": -41,
     "y": 8,
-    "z": -84
+    "z": -41
    },
    "protection": [
     {
-     "minX": -96,
-     "minZ": -96,
-     "maxX": -76,
-     "maxZ": -76
+     "minX": -48,
+     "minZ": -48,
+     "maxX": -28,
+     "maxZ": -28
     }
    ],
-   "yaw": 0,
-   "footprint": null,
+   "yaw": 315,
+   "doors": [
+    "+z",
+    "+x"
+   ],
+   "footprint": {
+    "minX": -47,
+    "minZ": -47,
+    "maxX": -35,
+    "maxZ": -35
+   },
    "iron": [
     {
-     "x": -85.5,
+     "x": -44.5,
      "y": 8,
-     "z": -77.5
+     "z": -31.5
     }
    ]
   },
@@ -63,25 +72,34 @@
    },
    "team": "blue",
    "point": {
-    "x": 84,
+    "x": 41,
     "y": 8,
-    "z": -86
+    "z": -41
    },
    "protection": [
     {
-     "minX": 76,
-     "minZ": -96,
-     "maxX": 96,
-     "maxZ": -76
+     "minX": 28,
+     "minZ": -48,
+     "maxX": 48,
+     "maxZ": -28
     }
    ],
-   "yaw": 90,
-   "footprint": null,
+   "yaw": 45,
+   "doors": [
+    "+z",
+    "+x"
+   ],
+   "footprint": {
+    "minX": 35,
+    "minZ": -47,
+    "maxX": 47,
+    "maxZ": -35
+   },
    "iron": [
     {
-     "x": 77.5,
+     "x": 31.5,
      "y": 8,
-     "z": -85.5
+     "z": -44.5
     }
    ]
   },
@@ -94,25 +112,34 @@
    },
    "team": "yellow",
    "point": {
-    "x": 86,
+    "x": 41,
     "y": 8,
-    "z": 84
+    "z": 41
    },
    "protection": [
     {
-     "minX": 76,
-     "minZ": 76,
-     "maxX": 96,
-     "maxZ": 96
+     "minX": 28,
+     "minZ": 28,
+     "maxX": 48,
+     "maxZ": 48
     }
    ],
-   "yaw": 180,
-   "footprint": null,
+   "yaw": 135,
+   "doors": [
+    "+z",
+    "+x"
+   ],
+   "footprint": {
+    "minX": 35,
+    "minZ": 35,
+    "maxX": 47,
+    "maxZ": 47
+   },
    "iron": [
     {
-     "x": 85.5,
+     "x": 44.5,
      "y": 8,
-     "z": 77.5
+     "z": 31.5
     }
    ]
   },
@@ -125,25 +152,34 @@
    },
    "team": "green",
    "point": {
-    "x": -84,
+    "x": -41,
     "y": 8,
-    "z": 86
+    "z": 41
    },
    "protection": [
     {
-     "minX": -96,
-     "minZ": 76,
-     "maxX": -76,
-     "maxZ": 96
+     "minX": -48,
+     "minZ": 28,
+     "maxX": -28,
+     "maxZ": 48
     }
    ],
-   "yaw": 270,
-   "footprint": null,
+   "yaw": 225,
+   "doors": [
+    "+z",
+    "+x"
+   ],
+   "footprint": {
+    "minX": -47,
+    "minZ": 35,
+    "maxX": -35,
+    "maxZ": 47
+   },
    "iron": [
     {
-     "x": -77.5,
+     "x": -31.5,
      "y": 8,
-     "z": 85.5
+     "z": 44.5
     }
    ]
   }
@@ -151,7 +187,7 @@
  "observer": {
   "point": {
    "x": 0,
-   "y": 38,
+   "y": 34,
    "z": 0
   },
   "yaw": 0
@@ -160,76 +196,52 @@
   "maxHeight": null,
   "areas": [
    {
-    "minX": -90,
-    "minZ": -26,
-    "maxX": -64,
-    "maxZ": 26
+    "minX": -45,
+    "minZ": -13,
+    "maxX": -32,
+    "maxZ": 13
+   },
+   {
+    "minX": -13,
+    "minZ": -45,
+    "maxX": 13,
+    "maxZ": -32
+   },
+   {
+    "minX": 32,
+    "minZ": -13,
+    "maxX": 45,
+    "maxZ": 13
+   },
+   {
+    "minX": -13,
+    "minZ": 32,
+    "maxX": 13,
+    "maxZ": 45
    },
    {
     "minX": -26,
-    "minZ": -90,
-    "maxX": 26,
-    "maxZ": -64
+    "minZ": -5,
+    "maxX": -15,
+    "maxZ": 5
    },
    {
-    "minX": 64,
+    "minX": -5,
     "minZ": -26,
-    "maxX": 90,
-    "maxZ": 26
+    "maxX": 5,
+    "maxZ": -15
    },
    {
-    "minX": -26,
-    "minZ": 64,
+    "minX": 15,
+    "minZ": -5,
     "maxX": 26,
-    "maxZ": 90
+    "maxZ": 5
    },
    {
-    "minX": -52,
-    "minZ": -10,
-    "maxX": -30,
-    "maxZ": 10
-   },
-   {
-    "minX": -10,
-    "minZ": -52,
-    "maxX": 10,
-    "maxZ": -30
-   },
-   {
-    "minX": 30,
-    "minZ": -10,
-    "maxX": 52,
-    "maxZ": 10
-   },
-   {
-    "minX": -10,
-    "minZ": 30,
-    "maxX": 10,
-    "maxZ": 52
-   },
-   {
-    "minX": -36,
-    "minZ": -24,
-    "maxX": -22,
-    "maxZ": -10
-   },
-   {
-    "minX": 10,
-    "minZ": -36,
-    "maxX": 24,
-    "maxZ": -22
-   },
-   {
-    "minX": 22,
-    "minZ": 10,
-    "maxX": 36,
-    "maxZ": 24
-   },
-   {
-    "minX": -24,
-    "minZ": 22,
-    "maxX": -10,
-    "maxZ": 36
+    "minX": -5,
+    "minZ": 15,
+    "maxX": 5,
+    "maxZ": 26
    }
   ],
   "holes": [],
@@ -248,43 +260,31 @@
    "color": "red",
    "protection": [
     {
-     "minX": -50,
-     "minZ": -50,
-     "maxX": -30,
-     "maxZ": -30
+     "minX": -25,
+     "minZ": -25,
+     "maxX": -15,
+     "maxZ": -15
     }
    ],
    "spawn": {
-    "x": -40,
+    "x": -20,
     "y": 11,
-    "z": -40
+    "z": -20
    },
    "monuments": [],
    "footprint": null,
    "entries": [
     {
-     "minX": -50,
-     "minZ": -50,
-     "maxX": -50,
-     "maxZ": -30
+     "minX": -25,
+     "minZ": -25,
+     "maxX": -25,
+     "maxZ": -15
     },
     {
-     "minX": -50,
-     "minZ": -50,
-     "maxX": -30,
-     "maxZ": -50
-    },
-    {
-     "minX": -30,
-     "minZ": -50,
-     "maxX": -30,
-     "maxZ": -30
-    },
-    {
-     "minX": -50,
-     "minZ": -30,
-     "maxX": -30,
-     "maxZ": -30
+     "minX": -25,
+     "minZ": -25,
+     "maxX": -15,
+     "maxZ": -25
     }
    ]
   },
@@ -299,43 +299,31 @@
    "color": "blue",
    "protection": [
     {
-     "minX": 30,
-     "minZ": -50,
-     "maxX": 50,
-     "maxZ": -30
+     "minX": 15,
+     "minZ": -25,
+     "maxX": 25,
+     "maxZ": -15
     }
    ],
    "spawn": {
-    "x": 40,
+    "x": 20,
     "y": 11,
-    "z": -40
+    "z": -20
    },
    "monuments": [],
    "footprint": null,
    "entries": [
     {
-     "minX": 30,
-     "minZ": -50,
-     "maxX": 50,
-     "maxZ": -50
+     "minX": 15,
+     "minZ": -25,
+     "maxX": 25,
+     "maxZ": -25
     },
     {
-     "minX": 50,
-     "minZ": -50,
-     "maxX": 50,
-     "maxZ": -30
-    },
-    {
-     "minX": 30,
-     "minZ": -30,
-     "maxX": 50,
-     "maxZ": -30
-    },
-    {
-     "minX": 30,
-     "minZ": -50,
-     "maxX": 30,
-     "maxZ": -30
+     "minX": 25,
+     "minZ": -25,
+     "maxX": 25,
+     "maxZ": -15
     }
    ]
   },
@@ -350,43 +338,31 @@
    "color": "yellow",
    "protection": [
     {
-     "minX": 30,
-     "minZ": 30,
-     "maxX": 50,
-     "maxZ": 50
+     "minX": 15,
+     "minZ": 15,
+     "maxX": 25,
+     "maxZ": 25
     }
    ],
    "spawn": {
-    "x": 40,
+    "x": 20,
     "y": 11,
-    "z": 40
+    "z": 20
    },
    "monuments": [],
    "footprint": null,
    "entries": [
     {
-     "minX": 50,
-     "minZ": 30,
-     "maxX": 50,
-     "maxZ": 50
+     "minX": 25,
+     "minZ": 15,
+     "maxX": 25,
+     "maxZ": 25
     },
     {
-     "minX": 30,
-     "minZ": 50,
-     "maxX": 50,
-     "maxZ": 50
-    },
-    {
-     "minX": 30,
-     "minZ": 30,
-     "maxX": 30,
-     "maxZ": 50
-    },
-    {
-     "minX": 30,
-     "minZ": 30,
-     "maxX": 50,
-     "maxZ": 30
+     "minX": 15,
+     "minZ": 25,
+     "maxX": 25,
+     "maxZ": 25
     }
    ]
   },
@@ -401,43 +377,31 @@
    "color": "green",
    "protection": [
     {
-     "minX": -50,
-     "minZ": 30,
-     "maxX": -30,
-     "maxZ": 50
+     "minX": -25,
+     "minZ": 15,
+     "maxX": -15,
+     "maxZ": 25
     }
    ],
    "spawn": {
-    "x": -40,
+    "x": -20,
     "y": 11,
-    "z": 40
+    "z": 20
    },
    "monuments": [],
    "footprint": null,
    "entries": [
     {
-     "minX": -50,
-     "minZ": 50,
-     "maxX": -30,
-     "maxZ": 50
+     "minX": -25,
+     "minZ": 25,
+     "maxX": -15,
+     "maxZ": 25
     },
     {
-     "minX": -50,
-     "minZ": 30,
-     "maxX": -50,
-     "maxZ": 50
-    },
-    {
-     "minX": -50,
-     "minZ": 30,
-     "maxX": -30,
-     "maxZ": 30
-    },
-    {
-     "minX": -30,
-     "minZ": 30,
-     "maxX": -30,
-     "maxZ": 50
+     "minX": -25,
+     "minZ": 15,
+     "maxX": -25,
+     "maxZ": 25
     }
    ]
   }
@@ -446,7 +410,7 @@
  "cores": null,
  "meta": {
   "name": "Quatrefoil",
-  "created": "2026-09-03",
+  "created": "2026-09-04",
   "authors": [],
   "contributors": []
  },
@@ -466,10 +430,10 @@
   "layer": null,
   "redstoneLines": [
    {
-    "x1": -50,
-    "z1": -50,
-    "x2": -50,
-    "z2": -31,
+    "x1": -25,
+    "z1": -25,
+    "x2": -25,
+    "z2": -16,
     "stamp": {
      "kind": "redstoneline",
      "unit": "0",
@@ -477,10 +441,10 @@
     }
    },
    {
-    "x1": 30,
-    "z1": -50,
-    "x2": 49,
-    "z2": -50,
+    "x1": 15,
+    "z1": -25,
+    "x2": 24,
+    "z2": -25,
     "stamp": {
      "kind": "redstoneline",
      "unit": "0",
@@ -488,10 +452,10 @@
     }
    },
    {
-    "x1": 49,
-    "z1": 30,
-    "x2": 49,
-    "z2": 49,
+    "x1": 24,
+    "z1": 15,
+    "x2": 24,
+    "z2": 24,
     "stamp": {
      "kind": "redstoneline",
      "unit": "0",
@@ -499,10 +463,10 @@
     }
    },
    {
-    "x1": -50,
-    "z1": 49,
-    "x2": -31,
-    "z2": 49,
+    "x1": -25,
+    "z1": 24,
+    "x2": -16,
+    "z2": 24,
     "stamp": {
      "kind": "redstoneline",
      "unit": "0",
@@ -510,10 +474,10 @@
     }
    },
    {
-    "x1": -50,
-    "z1": -50,
-    "x2": -31,
-    "z2": -50,
+    "x1": -25,
+    "z1": -25,
+    "x2": -16,
+    "z2": -25,
     "stamp": {
      "kind": "redstoneline",
      "unit": "1",
@@ -521,10 +485,10 @@
     }
    },
    {
-    "x1": 49,
-    "z1": -50,
-    "x2": 49,
-    "z2": -31,
+    "x1": 24,
+    "z1": -25,
+    "x2": 24,
+    "z2": -16,
     "stamp": {
      "kind": "redstoneline",
      "unit": "1",
@@ -532,10 +496,10 @@
     }
    },
    {
-    "x1": 30,
-    "z1": 49,
-    "x2": 49,
-    "z2": 49,
+    "x1": 15,
+    "z1": 24,
+    "x2": 24,
+    "z2": 24,
     "stamp": {
      "kind": "redstoneline",
      "unit": "1",
@@ -543,101 +507,13 @@
     }
    },
    {
-    "x1": -50,
-    "z1": 30,
-    "x2": -50,
-    "z2": 49,
+    "x1": -25,
+    "z1": 15,
+    "x2": -25,
+    "z2": 24,
     "stamp": {
      "kind": "redstoneline",
      "unit": "1",
-     "image": 3
-    }
-   },
-   {
-    "x1": -31,
-    "z1": -50,
-    "x2": -31,
-    "z2": -31,
-    "stamp": {
-     "kind": "redstoneline",
-     "unit": "2",
-     "image": 0
-    }
-   },
-   {
-    "x1": 30,
-    "z1": -31,
-    "x2": 49,
-    "z2": -31,
-    "stamp": {
-     "kind": "redstoneline",
-     "unit": "2",
-     "image": 1
-    }
-   },
-   {
-    "x1": 30,
-    "z1": 30,
-    "x2": 30,
-    "z2": 49,
-    "stamp": {
-     "kind": "redstoneline",
-     "unit": "2",
-     "image": 2
-    }
-   },
-   {
-    "x1": -50,
-    "z1": 30,
-    "x2": -31,
-    "z2": 30,
-    "stamp": {
-     "kind": "redstoneline",
-     "unit": "2",
-     "image": 3
-    }
-   },
-   {
-    "x1": -50,
-    "z1": -31,
-    "x2": -31,
-    "z2": -31,
-    "stamp": {
-     "kind": "redstoneline",
-     "unit": "3",
-     "image": 0
-    }
-   },
-   {
-    "x1": 30,
-    "z1": -50,
-    "x2": 30,
-    "z2": -31,
-    "stamp": {
-     "kind": "redstoneline",
-     "unit": "3",
-     "image": 1
-    }
-   },
-   {
-    "x1": 30,
-    "z1": 30,
-    "x2": 49,
-    "z2": 30,
-    "stamp": {
-     "kind": "redstoneline",
-     "unit": "3",
-     "image": 2
-    }
-   },
-   {
-    "x1": -31,
-    "z1": 30,
-    "x2": -31,
-    "z2": 49,
-    "stamp": {
-     "kind": "redstoneline",
-     "unit": "3",
      "image": 3
     }
    }

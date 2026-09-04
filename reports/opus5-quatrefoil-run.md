@@ -7,10 +7,13 @@ colours — a sage teal, a camel, a pale oak, a green-grey and a dark coffee. Th
 that the terrain should be **terraformed naturally**, and that the middle island should be its opposite —
 **angular and obviously made** — with natural blocks softening its edges.
 
-So: four wooded corner quarters over a mossy grey-green moor, four pale sand spits on the axes, and a
-stepped stone keep in the middle that every route crosses and nobody owns. The quarters are rolled by
-pushes and carry no rim at all; the keep is flat, sheer, kerbed on every drop, and has beds of podzol cut
-into its deck with flowers and birches growing out of them.
+So: four corner quarters over a mossy grey-green moor, four pale sand capes on the axes, and a stepped
+stone keep in the middle that every route crosses and nobody owns. The keep is flat, sheer, kerbed on
+every drop, and has beds of podzol cut into its deck with flowers and a birch growing out of them.
+
+**As shipped the board is 98 × 98 — the plan's own scale.** The first build doubled it and the whole of
+*What I got wrong* is about why; what stands now is the author's eleven rectangles with their ids, their
+arrangement and their tiers, shaped by four authored ramps rather than by relief.
 
 The board is `maps/opus5-quatrefoil`, the documents are `specs/opus5-quatrefoil/`, and what it is and how
 it is meant to play is `review/opus5-quatrefoil.md`.
@@ -58,11 +61,36 @@ got no skirt at all. Widening the skirt to 11, dropping the crown to 3 and takin
 at wobble 0.10 took the relief read from **221 scrambled / 18 barrier** to **36 / 10**. A range is a wall
 unless its two gradients agree, and `GENERATION-NOTES.md` says so; I authored the numbers before I read it.
 
-**I authored the board at the scale it was handed to me.** The plan came in at `cell: 1` — 98 × 98 blocks,
-every gap 6 to 8 across. `/plan/evaluate` refused it twice on hard terms (`G2` corridor width, `G5` gap
-hop) and I spent a while trying to widen individual gaps before noticing that every one of the five
-complaints was the same complaint: the board was half the size the geometry rules describe. `cell: 2`,
-nothing moved, and the board came back `valid` at the first ask.
+**I rebuilt a board at twice its size because an evaluator printed the word "hard", and this is the one
+that mattered.** The plan came in at `cell: 1` — 98 × 98 blocks, every gap 6 to 8 across.
+`POST /plan/evaluate` read it `valid: false` with `G2` and `G5` marked `"kind": "hard"`, I took that for
+*this will not build*, and doubling the cell satisfied both without moving a rectangle. It looked like the
+answer that respected the drawing.
+
+**Nothing refuses on `G2` or `G5`.** They are scoring terms; the gates are `PL*`, `SK*`, `WX*`, `EX*` and
+the export's traversability check. Driven afterwards at the author's own scale, with only the wool marker
+moved onto the room it belongs in and two build zones added, the plan compiles, stores, pre-flights
+`export gate OPEN` and exports with **0.0% dead ground** — against 1.1% on the doubled version. I never
+ran that test; I inferred the answer from a word.
+
+Two things made the inference easy to make and both were written down in this repository before I started.
+`reports/opus5-run1.md` calls it the run's most transferable finding — *"A rule id is not a fixed
+constraint: `FR6`, `G8` and `CT12` all read authored bands whose values depend on what the board is played
+for"* — and those bands come from composed 32-player boards, which this is not. And I was inconsistent
+inside one build: `G8` I left knowingly out of band and said so in the review; `G2` and `G5` I redesigned
+the board for, because the word beside them was different.
+
+**The cascade is the part worth keeping.** Doubling the cell doubled the two rectangles whose size is a
+fact in blocks rather than in cells: the spawn's protection region went to 40 × 40, which `ST10` caps, so
+I split the author's corner into three pieces; the wool room went to 20 × 20 with an 18 × 18 cage, whose
+bedrock foundation I then hid behind four shelf pieces the author never drew, held flat — **1 236 blocks
+of dead-level pad per quarter, 4 944 on the board, 21% of its ground**. Not one of those steps was in the
+plan, each was locally reasonable, and the chain was never re-read against the original.
+
+And I did not merely make the mistake, I canonised it: *"a cell is a scale and an arrangement is a
+design"* went into `review/opus5-quatrefoil.md` and into the README as though it were a principle. It is a
+sentence I invented to justify a change. Both are now corrected, and the board is rebuilt at `cell: 1`:
+**5 904 walked, 0 scrambled, 0 barrier, 0 faces**, 39 props placed and none declined.
 
 ## What I could not say
 
@@ -103,10 +131,11 @@ I read "inside the piece" and put the marker in the middle of the hall three tim
 says it plainly and I did not read it until the third refusal; the fix was `GET /api/rules?rule=WX8`,
 which is the first thing the brief tells you to do.
 
-**`POST /plan/room` does not answer for the facing.** It returned `{"at":[10,12],"footprint":[1,5,18,14]}`
-for a spawn whatever `facing` the plan stated, while the compiled shell moved with the facing — so a
-footprint copied from that answer pins the door apron to the `−z` side of a room whose door opens `+z`.
-Stating no footprint at all is the honest thing: `WX1`'s default follows the facing.
+**`POST /plan/room` answered one footprint whatever the facing said, and dropped the iron.** It returned
+`{"at":[10,12],"footprint":[1,5,18,14]}` for a spawn whatever `facing` the plan stated, while the compiled
+shell moved with the facing — so a footprint copied from that answer pinned the door apron to the `−z`
+side of a room whose door opens `+z`. That is a studio defect and it is fixed (`TN12`): the endpoint reads
+the placement's `facing` and `footprint`, and answers the iron seat alongside them.
 
 ## What the loop cost
 
