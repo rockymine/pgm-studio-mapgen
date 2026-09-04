@@ -1,6 +1,6 @@
 ---
 name: pgm-board
-description: Author, revise or read a PGM map in this repository through the pgm-studio API — a destroy/capture/core board, a spec under specs/, a world under maps/. Use whenever the task is to build a map, change one, diagnose one that built wrong, or read an existing PGM world. Carries the read-before-you-believe procedure and the lookup table from question to the read that answers it, distilled from 24 Opus 5 runs.
+description: Author, revise or read a PGM map in this repository through the pgm-studio API — a destroy/capture/core board, a spec under specs/, a world under maps/. Use whenever the task is to build a map, change one, diagnose one that built wrong, or read an existing PGM world. Carries the read-before-you-believe procedure and the lookup table from question to the read that answers it, distilled from 27 Opus 5 runs.
 ---
 
 # Authoring a board here
@@ -27,6 +27,8 @@ about it."*
 | What does a column hold, layer by layer? | `tools/loop.py --column x,z` | reading a world file yourself |
 | May a prop stand here? | `06-claims.txt` (`POST …/sketch/dressing?format=text`), then `tools/loop.py --candidates <propId> x,z …` | placing it and reading the decline |
 | What did the route actually cost? | `GET …/walk?from=&to=&aim=&format=text`, or `04-routes.txt` | assuming the shortest line is the route |
+| …and on a **stacked** board? | the same read, with **`from=x,z,y`** — the `y` picks which storey of the column is meant | `x,z` alone, which walks to the column *under* an elevated goal and calls it walked end to end |
+| Is a lower storey still made of what I painted it? | `GET …/column?at=x,z` | the isometric, the census, or the 200 — none of the three sees it |
 | Is the board joined up, per team? | `GET …/preflight` | the export, at 409, after a whole world is built |
 | Is any ground unused? | `GET …/coverage` (after) · `GET …/plan/flow` (before) | nothing — no gate asks this |
 | What is the board made of, and what borders what? | `05-themes.txt` (`themes/census?format=text`) | counting your own theme dict |
@@ -93,7 +95,7 @@ The one legitimate exception is §1's last row: a world that is not a stored map
 
 ---
 
-## 4. Five failures that have each cost more than one run
+## 4. Six failures that have each cost more than one run
 
 ### A picture that looks plausible is not a read
 
@@ -140,6 +142,21 @@ wrong explanation of `SK11` and filed a wrong bug against the 3-D preview that t
 Before writing that something is missing, look for it in `GET /api/openapi/v1.json` and say what you
 found. **missing** (no mechanism) · **unreachable** (exists, the surface hid it) · **mistaken** (exists,
 documented, not found) are three different verdicts and only the first is a capability gap.
+
+### A layer's paint reaches further down than the layer does
+
+A **plain** stacked layer's bands run from the **bedrock course**, whatever its `base_y`; only a made
+layer (`kind: "made"`) is painted over its own span. The one thing keeping a pass off the layer below
+is the stone-only invariant — it writes over `(1, 0)` and nothing else — so a ground theme filling in
+plain stone hands the whole column to whatever is drawn above it.
+
+> *"`y 42..39 Iron Block` the viaduct rail, `y 29..27 Stone Bricks` the street lid, `y 26..1 Iron
+> Block` — twenty-six courses of city painted as rail."* — `opus5-tiefkreuz`
+
+Nothing says so. The store answers 200, the export gate answers OPEN, `themes/census` counts the
+**surface** and is right, and a top-down of a lit street is grey either way. **On any board of more than
+one plain layer, `column` a cell where two of them overlap before you believe the render** — and give
+every ground theme a `fill` that is not `1:0`.
 
 ### Dressing placed by eye is dressing declined
 

@@ -5,7 +5,7 @@ Maps authored by driving pgm-studio's HTTP API. `AUTHORING-BRIEF.md` is what a b
 
 **Building, changing, diagnosing or reading a map: invoke the `pgm-board` skill first.** It carries the
 lookup table from question to the read that already answers it, and the two moments to stop at. It is
-distilled from 24 run reports and every rule in it cost at least one build.
+distilled from 27 run reports and every rule in it cost at least one build.
 
 Three things that are true before the skill loads:
 
