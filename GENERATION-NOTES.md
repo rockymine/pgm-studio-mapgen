@@ -142,11 +142,12 @@ nothing else. Under `rot_180` the image reverses with the original, so one lip t
 ### A relief posted to `sketch/from-plan` loses to the one already stored
 
 `from-plan` merges, and a relief is carried across the merge under its own rule. On a map that already
-holds one, posting a **changed** relief answers 200 and builds the terrain that was already there. The
-failure is silent and worse than silent, because the two reads disagree and both are correct:
-`POST …/sketch/relief/read` measures the layout in the request body, so it reports the new numbers, while
-`GET …/render/heightmap` builds the stored document, so it draws the old ground. An iteration loop that
-watches the readback sees its edits land and an iteration loop that watches the render does not.
+holds one, posting a **changed** relief answers 200 and builds the terrain that was already there. The two
+reads disagree and both are correct: `POST …/sketch/relief/read` measures the layout in the request body,
+so it reports the new numbers, while `GET …/render/heightmap` builds the stored document, so it draws the
+old ground. An iteration loop that watches the readback sees its edits land and an iteration loop that
+watches the render does not. The merge is no longer silent about it — one `SK1` complaint per group whose
+posted relief was replaced rides back on the 200 — but the terrain still comes from the stored one.
 
 `PUT …/sketch` replaces the blob verbatim and is what an edit loop wants; `from-plan` merges — it carries a
 stored finish, relief and structural height onto the freshly compiled board, and refuses at 409 with `SK1`
@@ -395,13 +396,17 @@ their negations makes it exactly that, at no cost.
 
 ## Buildings
 
-### A room's building is sized by its piece, and by nothing else
+### A room's building defaults to its piece, and `footprint` separates the two
 
-`WX1` makes the shell the piece rect inset one block on every side, so a **20 × 20** spawn piece
-stamps an **18 × 18** house — a hall, not a spawn hut — and there is no field that separates the two.
-The only way to a smaller building is a smaller piece: **10 × 10** gives an 8 × 8 shell, which is a
-cottage. The trade is that the piece is also the protection region and the spawn's own ground, so a
-wide protected apron with a small house on it is not expressible.
+`WX1` makes the shell the piece rect inset one block on every side where the placement says nothing, so
+a **20 × 20** spawn piece stamps an **18 × 18** house — a hall, not a spawn hut. `WoolPlacement.footprint`
+and `SpawnPlacement.footprint` state it instead, as `[x, z, w, h]` in blocks from the piece's minimum
+corner; `WX12` refuses one that reaches outside its piece, and `ST9`'s cap reads the rectangle the export
+actually stamps — the stated one, or `WX1`'s default. So a wide protected apron with a small house on it
+*is* expressible, since the piece is still the protection region and the spawn's own ground.
+
+*Measured: `[3, 3, 12, 8]` on an 18 × 14 piece, and `POST /plan/inspect` answered
+`wool-cage minX -29 minZ 73 maxX -17 maxZ 81` before a map row existed (`opus5-mootgate`).*
 
 Watch the marker parity while shrinking it (`WX3`): a piece of an even number of cells takes a whole
 `at`, an odd number takes a half, and mixing them refuses.
@@ -564,9 +569,14 @@ over a river comes out as a hole through the wall, filled with water. Mark such 
 through a gate. A keep-out **stops** a prop rather than routing one, so a stroke that would have crossed
 the marked shape wants redrawing too.
 
-**A standing stone is terrain, so `DR-CLAIM` cannot see it.** An authored `addShapes` polygon is
-ground, not a prop, and a building drawn over one stands inside it and is reported by nothing. Test
-every footprint against every authored shape's ring yourself.
+**A standing stone is terrain, and `keepClear` is what makes the pass see it.** An authored `addShapes`
+polygon is ground, not a prop, so a building drawn over one stands inside it and is reported by nothing —
+*unless the shape sets* `keepClear`, which makes it a real dressing keep-out with no margin. A wall, a
+market cross or a stair flight authored as terrain and marked that way declines what leans on it by name.
+Test every footprint against every *unmarked* authored shape's ring yourself.
+
+*Measured: `b-berm-e rests on (35, 32), which is kept clear for a stated structure` — a boulder declined
+for leaning on a `keepClear` town wall (`opus5-mootgate`).*
 
 **A prop is judged at every image of its orbit.** A rock beside a building on an on-axis group is a
 rock inside that building's own rot_180 twin, and the pass declines the whole prop rather than the

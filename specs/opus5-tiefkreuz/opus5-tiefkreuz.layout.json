@@ -1,0 +1,4325 @@
+{
+ "setup": {
+  "mirror_mode": "rot_180",
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "bbox": {
+   "min_x": -44,
+   "max_x": 44,
+   "min_z": -116,
+   "max_z": 116
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "kind": null,
+   "part_of": null,
+   "seat": null,
+   "layout": {
+    "shapes": [
+     {
+      "id": "s0",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -40,
+        28
+       ],
+       [
+        -28,
+        28
+       ],
+       [
+        -28,
+        16
+       ],
+       [
+        28,
+        16
+       ],
+       [
+        28,
+        28
+       ],
+       [
+        40,
+        28
+       ],
+       [
+        40,
+        60
+       ],
+       [
+        36,
+        60
+       ],
+       [
+        36,
+        112
+       ],
+       [
+        -36,
+        112
+       ],
+       [
+        -36,
+        60
+       ],
+       [
+        -40,
+        60
+       ]
+      ],
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 30,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null
+     },
+     {
+      "id": "spawn-red",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -8,
+      "min_z": 100,
+      "max_x": 8,
+      "max_z": 112,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 30,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "red",
+      "color": "red",
+      "height_authored": null,
+      "doors": [
+       "-z"
+      ],
+      "theme": null
+     },
+     {
+      "id": "spawn-blue",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -8,
+      "min_z": -112,
+      "max_x": 8,
+      "max_z": -100,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "path_edge": null,
+      "path_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "blue",
+      "color": "blue",
+      "height_authored": null,
+      "doors": null,
+      "theme": null
+     },
+     {
+      "id": "box-plat-w",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -20,
+      "max_x": -14,
+      "min_z": 16,
+      "max_z": 54,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "box-trk-w",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -14,
+      "max_x": -8,
+      "min_z": 16,
+      "max_z": 54,
+      "floor": 0,
+      "base_height": 6,
+      "theme": "schotter",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "box-plat-m",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "max_x": 8,
+      "min_z": 16,
+      "max_z": 54,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "box-trk-e",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 8,
+      "max_x": 14,
+      "min_z": 16,
+      "max_z": 54,
+      "floor": 0,
+      "base_height": 6,
+      "theme": "schotter",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "box-plat-e",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 14,
+      "max_x": 20,
+      "min_z": 16,
+      "max_z": 54,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "box-kopfsteig",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -20,
+      "max_x": 20,
+      "min_z": 54,
+      "max_z": 58,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "schiene-0",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -13,
+      "max_x": -12,
+      "min_z": 16,
+      "max_z": 54,
+      "floor": 0,
+      "base_height": 7,
+      "theme": "gleis",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "schiene-1",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -10,
+      "max_x": -9,
+      "min_z": 16,
+      "max_z": 54,
+      "floor": 0,
+      "base_height": 7,
+      "theme": "gleis",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "schiene-2",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 9,
+      "max_x": 10,
+      "min_z": 16,
+      "max_z": 54,
+      "floor": 0,
+      "base_height": 7,
+      "theme": "gleis",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "schiene-3",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 12,
+      "max_x": 13,
+      "min_z": 16,
+      "max_z": 54,
+      "floor": 0,
+      "base_height": 7,
+      "theme": "gleis",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "prellbock-0",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -13,
+      "max_x": -9,
+      "min_z": 52,
+      "max_z": 54,
+      "floor": 0,
+      "base_height": 8,
+      "theme": "gleis",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "prellbock-1",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 9,
+      "max_x": 13,
+      "min_z": 52,
+      "max_z": 54,
+      "floor": 0,
+      "base_height": 8,
+      "theme": "gleis",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "box-wand-w-s",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -21,
+      "max_x": -20,
+      "min_z": 16,
+      "max_z": 24,
+      "floor": 0,
+      "base_height": 30,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "box-wand-w-n",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -21,
+      "max_x": -20,
+      "min_z": 38,
+      "max_z": 58,
+      "floor": 0,
+      "base_height": 30,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "box-bruestung-w",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -21,
+      "max_x": -20,
+      "min_z": 24,
+      "max_z": 38,
+      "floor": 0,
+      "base_height": 31,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "box-wand-e-s",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 20,
+      "max_x": 21,
+      "min_z": 16,
+      "max_z": 24,
+      "floor": 0,
+      "base_height": 30,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "box-wand-e-n",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 20,
+      "max_x": 21,
+      "min_z": 38,
+      "max_z": 58,
+      "floor": 0,
+      "base_height": 30,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "box-bruestung-e",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 20,
+      "max_x": 21,
+      "min_z": 24,
+      "max_z": 38,
+      "floor": 0,
+      "base_height": 31,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p0",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -17,
+      "max_x": -16,
+      "min_z": 20,
+      "max_z": 21,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p1",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -17,
+      "max_x": -16,
+      "min_z": 26,
+      "max_z": 27,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p2",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -17,
+      "max_x": -16,
+      "min_z": 32,
+      "max_z": 33,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p3",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -17,
+      "max_x": -16,
+      "min_z": 38,
+      "max_z": 39,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p4",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -17,
+      "max_x": -16,
+      "min_z": 44,
+      "max_z": 45,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p5",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -17,
+      "max_x": -16,
+      "min_z": 50,
+      "max_z": 51,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p6",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 17,
+      "max_x": 18,
+      "min_z": 20,
+      "max_z": 21,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p7",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 17,
+      "max_x": 18,
+      "min_z": 26,
+      "max_z": 27,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p8",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 17,
+      "max_x": 18,
+      "min_z": 32,
+      "max_z": 33,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p9",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 17,
+      "max_x": 18,
+      "min_z": 38,
+      "max_z": 39,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p10",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 17,
+      "max_x": 18,
+      "min_z": 44,
+      "max_z": 45,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p11",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 17,
+      "max_x": 18,
+      "min_z": 50,
+      "max_z": 51,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p12",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -4,
+      "max_x": -3,
+      "min_z": 20,
+      "max_z": 21,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p13",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -4,
+      "max_x": -3,
+      "min_z": 26,
+      "max_z": 27,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p14",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -4,
+      "max_x": -3,
+      "min_z": 32,
+      "max_z": 33,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p15",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -4,
+      "max_x": -3,
+      "min_z": 38,
+      "max_z": 39,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p16",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -4,
+      "max_x": -3,
+      "min_z": 44,
+      "max_z": 45,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-p17",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -4,
+      "max_x": -3,
+      "min_z": 56,
+      "max_z": 57,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "licht",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-p0",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 0,
+      "max_x": 8,
+      "min_z": 16,
+      "max_z": 18,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-p1",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 0,
+      "max_x": 8,
+      "min_z": 18,
+      "max_z": 20,
+      "floor": 0,
+      "base_height": 10,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-p2",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 0,
+      "max_x": 8,
+      "min_z": 20,
+      "max_z": 22,
+      "floor": 0,
+      "base_height": 11,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-p3",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 0,
+      "max_x": 8,
+      "min_z": 22,
+      "max_z": 24,
+      "floor": 0,
+      "base_height": 12,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-p4",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 0,
+      "max_x": 8,
+      "min_z": 24,
+      "max_z": 26,
+      "floor": 0,
+      "base_height": 13,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-p5",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 0,
+      "max_x": 8,
+      "min_z": 26,
+      "max_z": 28,
+      "floor": 0,
+      "base_height": 14,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-p6",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 0,
+      "max_x": 8,
+      "min_z": 28,
+      "max_z": 30,
+      "floor": 0,
+      "base_height": 15,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-p7",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 0,
+      "max_x": 8,
+      "min_z": 30,
+      "max_z": 32,
+      "floor": 0,
+      "base_height": 16,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-p8",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 0,
+      "max_x": 8,
+      "min_z": 32,
+      "max_z": 34,
+      "floor": 0,
+      "base_height": 17,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-p9",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 0,
+      "max_x": 8,
+      "min_z": 34,
+      "max_z": 36,
+      "floor": 0,
+      "base_height": 18,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-p10",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 0,
+      "max_x": 8,
+      "min_z": 36,
+      "max_z": 38,
+      "floor": 0,
+      "base_height": 19,
+      "theme": "bahn",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "pfeiler-0",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -36,
+      "max_x": -32,
+      "min_z": 64,
+      "max_z": 72,
+      "floor": 0,
+      "base_height": 39,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "pfeiler-1",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -26,
+      "max_x": -22,
+      "min_z": 64,
+      "max_z": 72,
+      "floor": 0,
+      "base_height": 39,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "pfeiler-2",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -16,
+      "max_x": -12,
+      "min_z": 64,
+      "max_z": 72,
+      "floor": 0,
+      "base_height": 39,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "pfeiler-3",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -6,
+      "max_x": -2,
+      "min_z": 64,
+      "max_z": 72,
+      "floor": 0,
+      "base_height": 39,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "pfeiler-4",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 4,
+      "max_x": 8,
+      "min_z": 64,
+      "max_z": 72,
+      "floor": 0,
+      "base_height": 39,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "pfeiler-5",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 14,
+      "max_x": 18,
+      "min_z": 64,
+      "max_z": 72,
+      "floor": 0,
+      "base_height": 39,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "pfeiler-6",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 24,
+      "max_x": 28,
+      "min_z": 64,
+      "max_z": 72,
+      "floor": 0,
+      "base_height": 39,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "pfeiler-7",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 32,
+      "max_x": 36,
+      "min_z": 64,
+      "max_z": 72,
+      "floor": 0,
+      "base_height": 39,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "rampe-0",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "max_x": -26,
+      "min_z": 38,
+      "max_z": 40,
+      "floor": 0,
+      "base_height": 31,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "rampe-1",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "max_x": -26,
+      "min_z": 40,
+      "max_z": 42,
+      "floor": 0,
+      "base_height": 32,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "rampe-2",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "max_x": -26,
+      "min_z": 42,
+      "max_z": 44,
+      "floor": 0,
+      "base_height": 33,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "rampe-3",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "max_x": -26,
+      "min_z": 44,
+      "max_z": 46,
+      "floor": 0,
+      "base_height": 34,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "rampe-4",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "max_x": -26,
+      "min_z": 46,
+      "max_z": 48,
+      "floor": 0,
+      "base_height": 35,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "rampe-5",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "max_x": -26,
+      "min_z": 48,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 36,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "rampe-6",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "max_x": -26,
+      "min_z": 50,
+      "max_z": 52,
+      "floor": 0,
+      "base_height": 37,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "rampe-7",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "max_x": -26,
+      "min_z": 52,
+      "max_z": 54,
+      "floor": 0,
+      "base_height": 38,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "rampe-8",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "max_x": -26,
+      "min_z": 54,
+      "max_z": 56,
+      "floor": 0,
+      "base_height": 39,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "rampe-9",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "max_x": -26,
+      "min_z": 56,
+      "max_z": 58,
+      "floor": 0,
+      "base_height": 40,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "rampe-10",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "max_x": -26,
+      "min_z": 58,
+      "max_z": 60,
+      "floor": 0,
+      "base_height": 41,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     },
+     {
+      "id": "rampe-11",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "max_x": -26,
+      "min_z": 60,
+      "max_z": 62,
+      "floor": 0,
+      "base_height": 42,
+      "theme": "ziegel",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true
+     }
+    ],
+    "groups": [
+     {
+      "id": "team",
+      "name": "Team island",
+      "mirrors": true,
+      "shapeIds": [
+       "s0",
+       "box-plat-w",
+       "box-trk-w",
+       "box-plat-m",
+       "box-trk-e",
+       "box-plat-e",
+       "box-kopfsteig",
+       "schiene-0",
+       "schiene-1",
+       "schiene-2",
+       "schiene-3",
+       "prellbock-0",
+       "prellbock-1",
+       "box-wand-w-s",
+       "box-wand-w-n",
+       "box-bruestung-w",
+       "box-wand-e-s",
+       "box-wand-e-n",
+       "box-bruestung-e",
+       "lampe-p0",
+       "lampe-p1",
+       "lampe-p2",
+       "lampe-p3",
+       "lampe-p4",
+       "lampe-p5",
+       "lampe-p6",
+       "lampe-p7",
+       "lampe-p8",
+       "lampe-p9",
+       "lampe-p10",
+       "lampe-p11",
+       "lampe-p12",
+       "lampe-p13",
+       "lampe-p14",
+       "lampe-p15",
+       "lampe-p16",
+       "lampe-p17",
+       "treppe-p0",
+       "treppe-p1",
+       "treppe-p2",
+       "treppe-p3",
+       "treppe-p4",
+       "treppe-p5",
+       "treppe-p6",
+       "treppe-p7",
+       "treppe-p8",
+       "treppe-p9",
+       "treppe-p10",
+       "pfeiler-0",
+       "pfeiler-1",
+       "pfeiler-2",
+       "pfeiler-3",
+       "pfeiler-4",
+       "pfeiler-5",
+       "pfeiler-6",
+       "pfeiler-7",
+       "rampe-0",
+       "rampe-1",
+       "rampe-2",
+       "rampe-3",
+       "rampe-4",
+       "rampe-5",
+       "rampe-6",
+       "rampe-7",
+       "rampe-8",
+       "rampe-9",
+       "rampe-10",
+       "rampe-11"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "zug-0",
+   "name": "Triebzug 0",
+   "base_y": 7,
+   "kind": "made",
+   "part_of": "zug",
+   "layout": {
+    "shapes": [
+     {
+      "id": "zug-0-a",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 9,
+      "max_x": 13,
+      "min_z": 26,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "zug-grau"
+     }
+    ],
+    "groups": [
+     {
+      "id": "zug-0-g",
+      "name": "Triebzug 0",
+      "mirrors": true,
+      "shapeIds": [
+       "zug-0-a"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "zug-1",
+   "name": "Triebzug 1",
+   "base_y": 9,
+   "kind": "made",
+   "part_of": "zug",
+   "layout": {
+    "shapes": [
+     {
+      "id": "zug-1-a",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 9,
+      "max_x": 13,
+      "min_z": 26,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "zug-rot"
+     }
+    ],
+    "groups": [
+     {
+      "id": "zug-1-g",
+      "name": "Triebzug 1",
+      "mirrors": true,
+      "shapeIds": [
+       "zug-1-a"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "zug-2",
+   "name": "Triebzug 2",
+   "base_y": 11,
+   "kind": "made",
+   "part_of": "zug",
+   "layout": {
+    "shapes": [
+     {
+      "id": "zug-2-a",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 9,
+      "max_x": 13,
+      "min_z": 26,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 1,
+      "theme": "zug-glas"
+     }
+    ],
+    "groups": [
+     {
+      "id": "zug-2-g",
+      "name": "Triebzug 2",
+      "mirrors": true,
+      "shapeIds": [
+       "zug-2-a"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "zug-3",
+   "name": "Triebzug 3",
+   "base_y": 12,
+   "kind": "made",
+   "part_of": "zug",
+   "layout": {
+    "shapes": [
+     {
+      "id": "zug-3-a",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 9,
+      "max_x": 13,
+      "min_z": 26,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 1,
+      "theme": "zug-grau"
+     }
+    ],
+    "groups": [
+     {
+      "id": "zug-3-g",
+      "name": "Triebzug 3",
+      "mirrors": true,
+      "shapeIds": [
+       "zug-3-a"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "perron-fuss",
+   "name": "Bahnsteigst\u00fctzen",
+   "base_y": 9,
+   "kind": "made",
+   "part_of": "perron",
+   "layout": {
+    "shapes": [
+     {
+      "id": "stuetze--19-26",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -19,
+      "max_x": -18,
+      "min_z": 26,
+      "max_z": 27,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze--19-31",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -19,
+      "max_x": -18,
+      "min_z": 31,
+      "max_z": 32,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze--19-36",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -19,
+      "max_x": -18,
+      "min_z": 36,
+      "max_z": 37,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze--16-26",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -16,
+      "max_x": -15,
+      "min_z": 26,
+      "max_z": 27,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze--16-31",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -16,
+      "max_x": -15,
+      "min_z": 31,
+      "max_z": 32,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze--16-36",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -16,
+      "max_x": -15,
+      "min_z": 36,
+      "max_z": 37,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze--7-26",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -7,
+      "max_x": -6,
+      "min_z": 26,
+      "max_z": 27,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze--7-31",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -7,
+      "max_x": -6,
+      "min_z": 31,
+      "max_z": 32,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze--7-36",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -7,
+      "max_x": -6,
+      "min_z": 36,
+      "max_z": 37,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze--2-26",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -2,
+      "max_x": -1,
+      "min_z": 26,
+      "max_z": 27,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze--2-31",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -2,
+      "max_x": -1,
+      "min_z": 31,
+      "max_z": 32,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze--2-36",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -2,
+      "max_x": -1,
+      "min_z": 36,
+      "max_z": 37,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze-15-26",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 15,
+      "max_x": 16,
+      "min_z": 26,
+      "max_z": 27,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze-15-31",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 15,
+      "max_x": 16,
+      "min_z": 31,
+      "max_z": 32,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze-15-36",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 15,
+      "max_x": 16,
+      "min_z": 36,
+      "max_z": 37,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze-18-26",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 18,
+      "max_x": 19,
+      "min_z": 26,
+      "max_z": 27,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze-18-31",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 18,
+      "max_x": 19,
+      "min_z": 31,
+      "max_z": 32,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     },
+     {
+      "id": "stuetze-18-36",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 18,
+      "max_x": 19,
+      "min_z": 36,
+      "max_z": 37,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn"
+     }
+    ],
+    "groups": [
+     {
+      "id": "perron-fuss-g",
+      "name": "Bahnsteigst\u00fctzen",
+      "mirrors": true,
+      "shapeIds": [
+       "stuetze--19-26",
+       "stuetze--19-31",
+       "stuetze--19-36",
+       "stuetze--16-26",
+       "stuetze--16-31",
+       "stuetze--16-36",
+       "stuetze--7-26",
+       "stuetze--7-31",
+       "stuetze--7-36",
+       "stuetze--2-26",
+       "stuetze--2-31",
+       "stuetze--2-36",
+       "stuetze-15-26",
+       "stuetze-15-31",
+       "stuetze-15-36",
+       "stuetze-18-26",
+       "stuetze-18-31",
+       "stuetze-18-36"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "perron",
+   "name": "Bahnsteigdach",
+   "base_y": 14,
+   "kind": "made",
+   "part_of": "perron",
+   "layout": {
+    "shapes": [
+     {
+      "id": "dach-w",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -20,
+      "max_x": -14,
+      "min_z": 24,
+      "max_z": 38,
+      "floor": 0,
+      "base_height": 1,
+      "theme": "bahn"
+     },
+     {
+      "id": "dach-m",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "max_x": 0,
+      "min_z": 24,
+      "max_z": 38,
+      "floor": 0,
+      "base_height": 1,
+      "theme": "bahn"
+     },
+     {
+      "id": "dach-e",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 14,
+      "max_x": 20,
+      "min_z": 24,
+      "max_z": 38,
+      "floor": 0,
+      "base_height": 1,
+      "theme": "bahn"
+     }
+    ],
+    "groups": [
+     {
+      "id": "perron-g",
+      "name": "Bahnsteigdach",
+      "mirrors": true,
+      "shapeIds": [
+       "dach-w",
+       "dach-m",
+       "dach-e"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "halle",
+   "name": "Zwischengeschoss",
+   "base_y": 17,
+   "layout": {
+    "shapes": [
+     {
+      "id": "halle--20-40",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -20,
+      "max_x": -16,
+      "min_z": 40,
+      "max_z": 42,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle--20-48",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -20,
+      "max_x": -16,
+      "min_z": 48,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle--20-38",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -20,
+      "max_x": -14,
+      "min_z": 38,
+      "max_z": 40,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle--20-42",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -20,
+      "max_x": -14,
+      "min_z": 42,
+      "max_z": 48,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle--8-40",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "max_x": -4,
+      "min_z": 40,
+      "max_z": 42,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle--8-48",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "max_x": -4,
+      "min_z": 48,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle--8-55",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "max_x": -4,
+      "min_z": 55,
+      "max_z": 57,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle--8-42",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "max_x": 1,
+      "min_z": 42,
+      "max_z": 48,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle--8-50",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "max_x": 14,
+      "min_z": 50,
+      "max_z": 55,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle--8-57",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "max_x": 14,
+      "min_z": 57,
+      "max_z": 58,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle--8-38",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "max_x": 20,
+      "min_z": 38,
+      "max_z": 40,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle--2-40",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -2,
+      "max_x": 8,
+      "min_z": 40,
+      "max_z": 42,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle--2-48",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -2,
+      "max_x": 8,
+      "min_z": 48,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle--2-55",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -2,
+      "max_x": 8,
+      "min_z": 55,
+      "max_z": 57,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle-7-42",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 7,
+      "max_x": 20,
+      "min_z": 42,
+      "max_z": 48,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle-10-55",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 10,
+      "max_x": 14,
+      "min_z": 55,
+      "max_z": 57,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle-10-40",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 10,
+      "max_x": 16,
+      "min_z": 40,
+      "max_z": 42,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle-10-48",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 10,
+      "max_x": 16,
+      "min_z": 48,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle-18-40",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 18,
+      "max_x": 20,
+      "min_z": 40,
+      "max_z": 42,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "halle-18-48",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 18,
+      "max_x": 20,
+      "min_z": 48,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-h0",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -16,
+      "max_x": -14,
+      "min_z": 40,
+      "max_z": 42,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "licht",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-h1",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -4,
+      "max_x": -2,
+      "min_z": 40,
+      "max_z": 42,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "licht",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-h2",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 8,
+      "max_x": 10,
+      "min_z": 40,
+      "max_z": 42,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "licht",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-h3",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 16,
+      "max_x": 18,
+      "min_z": 40,
+      "max_z": 42,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "licht",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-h4",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -16,
+      "max_x": -14,
+      "min_z": 48,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "licht",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-h5",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -4,
+      "max_x": -2,
+      "min_z": 48,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "licht",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-h6",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 8,
+      "max_x": 10,
+      "min_z": 48,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "licht",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-h7",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 16,
+      "max_x": 18,
+      "min_z": 48,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "licht",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-h8",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -4,
+      "max_x": -2,
+      "min_z": 55,
+      "max_z": 57,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "licht",
+      "keepClear": true
+     },
+     {
+      "id": "lampe-h9",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 8,
+      "max_x": 10,
+      "min_z": 55,
+      "max_z": 57,
+      "floor": 0,
+      "base_height": 2,
+      "theme": "licht",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-s0",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -14,
+      "max_x": -8,
+      "min_z": 36,
+      "max_z": 38,
+      "floor": 0,
+      "base_height": 3,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-s1",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -14,
+      "max_x": -8,
+      "min_z": 38,
+      "max_z": 40,
+      "floor": 0,
+      "base_height": 4,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-s2",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -14,
+      "max_x": -8,
+      "min_z": 40,
+      "max_z": 42,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-s3",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -14,
+      "max_x": -8,
+      "min_z": 42,
+      "max_z": 44,
+      "floor": 0,
+      "base_height": 6,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-s4",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -14,
+      "max_x": -8,
+      "min_z": 44,
+      "max_z": 46,
+      "floor": 0,
+      "base_height": 7,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-s5",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -14,
+      "max_x": -8,
+      "min_z": 46,
+      "max_z": 48,
+      "floor": 0,
+      "base_height": 8,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-s6",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -14,
+      "max_x": -8,
+      "min_z": 48,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-s7",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -14,
+      "max_x": -8,
+      "min_z": 50,
+      "max_z": 52,
+      "floor": 0,
+      "base_height": 10,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-s8",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -14,
+      "max_x": -8,
+      "min_z": 52,
+      "max_z": 54,
+      "floor": 0,
+      "base_height": 11,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-s9",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -14,
+      "max_x": -8,
+      "min_z": 54,
+      "max_z": 56,
+      "floor": 0,
+      "base_height": 12,
+      "theme": "bahn",
+      "keepClear": true
+     },
+     {
+      "id": "treppe-s10",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -14,
+      "max_x": -8,
+      "min_z": 56,
+      "max_z": 58,
+      "floor": 0,
+      "base_height": 13,
+      "theme": "bahn",
+      "keepClear": true
+     }
+    ],
+    "groups": [
+     {
+      "id": "halle-g",
+      "name": "Zwischengeschoss",
+      "mirrors": true,
+      "shapeIds": [
+       "halle--20-40",
+       "halle--20-48",
+       "halle--20-38",
+       "halle--20-42",
+       "halle--8-40",
+       "halle--8-48",
+       "halle--8-55",
+       "halle--8-42",
+       "halle--8-50",
+       "halle--8-57",
+       "halle--8-38",
+       "halle--2-40",
+       "halle--2-48",
+       "halle--2-55",
+       "halle-7-42",
+       "halle-10-55",
+       "halle-10-40",
+       "halle-10-48",
+       "halle-18-40",
+       "halle-18-48",
+       "lampe-h0",
+       "lampe-h1",
+       "lampe-h2",
+       "lampe-h3",
+       "lampe-h4",
+       "lampe-h5",
+       "lampe-h6",
+       "lampe-h7",
+       "lampe-h8",
+       "lampe-h9",
+       "treppe-s0",
+       "treppe-s1",
+       "treppe-s2",
+       "treppe-s3",
+       "treppe-s4",
+       "treppe-s5",
+       "treppe-s6",
+       "treppe-s7",
+       "treppe-s8",
+       "treppe-s9",
+       "treppe-s10"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "deckel",
+   "name": "Stra\u00dfendecke",
+   "base_y": 27,
+   "layout": {
+    "shapes": [
+     {
+      "id": "deckel--20-16",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -20,
+      "max_x": 20,
+      "min_z": 16,
+      "max_z": 23,
+      "floor": 0,
+      "base_height": 3,
+      "theme": "stadt"
+     },
+     {
+      "id": "deckel--20-39",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -20,
+      "max_x": -14,
+      "min_z": 39,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 3,
+      "theme": "stadt"
+     },
+     {
+      "id": "deckel--8-50",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "max_x": 14,
+      "min_z": 50,
+      "max_z": 58,
+      "floor": 0,
+      "base_height": 3,
+      "theme": "stadt"
+     },
+     {
+      "id": "deckel--8-39",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "max_x": 20,
+      "min_z": 39,
+      "max_z": 50,
+      "floor": 0,
+      "base_height": 3,
+      "theme": "stadt"
+     },
+     {
+      "id": "kante--20-23",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -20,
+      "max_x": 20,
+      "min_z": 23,
+      "max_z": 24,
+      "floor": 0,
+      "base_height": 4,
+      "theme": "bahn"
+     },
+     {
+      "id": "kante--20-38",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -20,
+      "max_x": -14,
+      "min_z": 38,
+      "max_z": 39,
+      "floor": 0,
+      "base_height": 4,
+      "theme": "bahn"
+     },
+     {
+      "id": "kante--8-38",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "max_x": 20,
+      "min_z": 38,
+      "max_z": 39,
+      "floor": 0,
+      "base_height": 4,
+      "theme": "bahn"
+     }
+    ],
+    "groups": [
+     {
+      "id": "deckel-g",
+      "name": "Stra\u00dfendecke",
+      "mirrors": true,
+      "shapeIds": [
+       "deckel--20-16",
+       "deckel--20-39",
+       "deckel--8-50",
+       "deckel--8-39",
+       "kante--20-23",
+       "kante--20-38",
+       "kante--8-38"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "viadukt",
+   "name": "Hochbahn",
+   "base_y": 39,
+   "layout": {
+    "shapes": [
+     {
+      "id": "via-deck",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -36,
+      "max_x": 36,
+      "min_z": 62,
+      "max_z": 74,
+      "floor": 0,
+      "base_height": 3,
+      "theme": "schotter"
+     },
+     {
+      "id": "via-schiene-64",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -36,
+      "max_x": 36,
+      "min_z": 64,
+      "max_z": 65,
+      "floor": 0,
+      "base_height": 4,
+      "theme": "gleis"
+     },
+     {
+      "id": "via-schiene-66",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -36,
+      "max_x": 36,
+      "min_z": 66,
+      "max_z": 67,
+      "floor": 0,
+      "base_height": 4,
+      "theme": "gleis"
+     },
+     {
+      "id": "via-schiene-69",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -36,
+      "max_x": 36,
+      "min_z": 69,
+      "max_z": 70,
+      "floor": 0,
+      "base_height": 4,
+      "theme": "gleis"
+     },
+     {
+      "id": "via-schiene-71",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -36,
+      "max_x": 36,
+      "min_z": 71,
+      "max_z": 72,
+      "floor": 0,
+      "base_height": 4,
+      "theme": "gleis"
+     },
+     {
+      "id": "bruestung-sued--36",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -36,
+      "max_x": -34,
+      "min_z": 61,
+      "max_z": 62,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "ziegel"
+     },
+     {
+      "id": "bruestung-sued--26",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -26,
+      "max_x": 36,
+      "min_z": 61,
+      "max_z": 62,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "ziegel"
+     },
+     {
+      "id": "bruestung-nord--36",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -36,
+      "max_x": 36,
+      "min_z": 74,
+      "max_z": 75,
+      "floor": 0,
+      "base_height": 5,
+      "theme": "ziegel"
+     }
+    ],
+    "groups": [
+     {
+      "id": "viadukt-g",
+      "name": "Hochbahn",
+      "mirrors": true,
+      "shapeIds": [
+       "via-deck",
+       "via-schiene-64",
+       "via-schiene-66",
+       "via-schiene-69",
+       "via-schiene-71",
+       "bruestung-sued--36",
+       "bruestung-sued--26",
+       "bruestung-nord--36"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "themes": {
+  "stadt": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "noise",
+     "seed": 7,
+     "scale": 18,
+     "octaves": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     ],
+     "rise": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   },
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 43,
+     "data": 8
+    }
+   }
+  },
+  "bahn": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "surface": {
+    "enabled": true,
+    "depth": 2,
+    "material": {
+     "kind": "checker",
+     "size": 6,
+     "even": {
+      "kind": "solid",
+      "id": 155,
+      "data": 0
+     },
+     "odd": {
+      "kind": "solid",
+      "id": 43,
+      "data": 8
+     }
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 159,
+    "data": 8
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 6
+   },
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 159,
+     "data": 7
+    }
+   }
+  },
+  "schotter": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "surface": {
+    "enabled": true,
+    "depth": 2,
+    "material": {
+     "kind": "noise",
+     "seed": 19,
+     "scale": 9,
+     "octaves": 2,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     ],
+     "rise": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   },
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   }
+  },
+  "ziegel": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "surface": {
+    "enabled": true,
+    "depth": 2,
+    "material": {
+     "kind": "solid",
+     "id": 45,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "height",
+    "from": 0,
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       },
+       "thickness": 6
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ],
+     "ending": "repeat"
+    },
+    "beyond": {
+     "kind": "solid",
+     "id": 45,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 45,
+    "data": 0
+   },
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 43,
+     "data": 5
+    }
+   }
+  },
+  "licht": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 89,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 155,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 6
+   },
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   }
+  },
+  "gleis": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "surface": {
+    "enabled": true,
+    "depth": 2,
+    "material": {
+     "kind": "solid",
+     "id": 42,
+     "data": 0
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 42,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 42,
+    "data": 0
+   },
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   }
+  },
+  "zug-rot": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "surface": {
+    "enabled": true,
+    "depth": 2,
+    "material": {
+     "kind": "solid",
+     "id": 159,
+     "data": 14
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 159,
+    "data": 14
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 159,
+    "data": 14
+   },
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   }
+  },
+  "zug-glas": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "surface": {
+    "enabled": true,
+    "depth": 2,
+    "material": {
+     "kind": "solid",
+     "id": 95,
+     "data": 3
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 95,
+    "data": 3
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 95,
+    "data": 3
+   },
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   }
+  },
+  "zug-grau": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "surface": {
+    "enabled": true,
+    "depth": 2,
+    "material": {
+     "kind": "solid",
+     "id": 159,
+     "data": 7
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 159,
+    "data": 7
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 159,
+    "data": 7
+   },
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   }
+  }
+ },
+ "mapTheme": "stadt",
+ "roomStyles": {
+  "spawn": {
+   "foundation": {
+    "plate": {
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 43,
+         "data": 8
+        },
+        "thickness": 1
+       }
+      ],
+      "ending": "repeat"
+     },
+     "extent": 2
+    },
+    "surface": {
+     "field": null,
+     "border": null,
+     "borderWidth": 1,
+     "inlay": null,
+     "inlayInset": 2,
+     "isPlain": true
+    },
+    "footing": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
+   "roof": {
+    "form": "flat",
+    "pitch": 1,
+    "slab": 44,
+    "slabData": 0,
+    "overhang": 1,
+    "ridgeCap": false,
+    "hole": false,
+    "body": {
+     "kind": "solid",
+     "id": 43,
+     "data": 8
+    },
+    "verge": {
+     "kind": "solid",
+     "id": 155,
+     "data": 0
+    },
+    "gable": null,
+    "gableWindows": {
+     "form": "none",
+     "block": 102,
+     "hostBlock": -1,
+     "hostData": 0,
+     "data": 0,
+     "sill": 2,
+     "width": 1,
+     "height": 1,
+     "spacing": 3
+    }
+   },
+   "wall": {
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 159,
+        "data": 8
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 155,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ],
+     "ending": "repeat"
+    },
+    "extent": 8
+   },
+   "post": {
+    "kind": "solid",
+    "id": 155,
+    "data": 0
+   },
+   "windows": {
+    "form": "pane",
+    "block": 160,
+    "hostBlock": -1,
+    "hostData": 0,
+    "data": 0,
+    "sill": 2,
+    "width": 4,
+    "height": 4,
+    "spacing": 2
+   },
+   "storeys": [
+    {
+     "clear": 8,
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 45,
+          "data": 0
+         },
+         "thickness": 3
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 159,
+          "data": 8
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 45,
+          "data": 0
+         },
+         "thickness": 3
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 155,
+          "data": 0
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 8
+     },
+     "post": {
+      "kind": "solid",
+      "id": 155,
+      "data": 0
+     },
+     "windows": {
+      "form": "pane",
+      "block": 160,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 2,
+      "width": 4,
+      "height": 4,
+      "spacing": 2
+     },
+     "surface": {
+      "field": null,
+      "border": null,
+      "borderWidth": 1,
+      "inlay": null,
+      "inlayInset": 2,
+      "isPlain": true
+     },
+     "deck": null,
+     "headroom": 8
+    }
+   ],
+   "porch": null,
+   "front": null,
+   "beams": {
+    "block": -1,
+    "data": 0,
+    "reach": 1,
+    "any": false
+   },
+   "doorway": {
+    "door": "air",
+    "head": {
+     "form": "arched",
+     "block": 109,
+     "fill": "upperSlab",
+     "fillBlock": 44,
+     "fillData": 5
+    },
+    "width": 4,
+    "height": 5
+   }
+  }
+ },
+ "dressing": {
+  "props": [
+   {
+    "id": "bahnhofstrasse-nord",
+    "kind": "stroke",
+    "seed": 3,
+    "points": [
+     [
+      0,
+      104
+     ],
+     [
+      0,
+      92
+     ],
+     [
+      0,
+      82
+     ],
+     [
+      0,
+      78
+     ]
+    ],
+    "radius": 4,
+    "style": "solid",
+    "route": true,
+    "coverage": 0.5,
+    "pave": {
+     "kind": "solid",
+     "id": 1,
+     "data": 6
+    }
+   },
+   {
+    "id": "bahnhofstrasse-sued",
+    "kind": "stroke",
+    "seed": 5,
+    "points": [
+     [
+      0,
+      60
+     ],
+     [
+      0,
+      52
+     ],
+     [
+      0,
+      46
+     ],
+     [
+      0,
+      42
+     ]
+    ],
+    "radius": 4,
+    "style": "solid",
+    "route": true,
+    "coverage": 0.5,
+    "pave": {
+     "kind": "solid",
+     "id": 1,
+     "data": 6
+    }
+   },
+   {
+    "id": "umfahrung-west",
+    "kind": "stroke",
+    "seed": 4,
+    "points": [
+     [
+      -2,
+      59
+     ],
+     [
+      -14,
+      58
+     ],
+     [
+      -26,
+      54
+     ],
+     [
+      -26,
+      40
+     ],
+     [
+      -26,
+      24
+     ]
+    ],
+    "radius": 4,
+    "style": "solid",
+    "route": true,
+    "coverage": 0.5,
+    "pave": {
+     "kind": "solid",
+     "id": 1,
+     "data": 6
+    }
+   },
+   {
+    "id": "umfahrung-ost",
+    "kind": "stroke",
+    "seed": 6,
+    "points": [
+     [
+      2,
+      59
+     ],
+     [
+      14,
+      58
+     ],
+     [
+      26,
+      54
+     ],
+     [
+      26,
+      40
+     ],
+     [
+      26,
+      24
+     ]
+    ],
+    "radius": 4,
+    "style": "solid",
+    "route": true,
+    "coverage": 0.5,
+    "pave": {
+     "kind": "solid",
+     "id": 1,
+     "data": 6
+    }
+   },
+   {
+    "id": "gueterschuppen",
+    "kind": "house",
+    "seed": 5,
+    "style": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 45,
+           "data": 0
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 1
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": {
+       "kind": "solid",
+       "id": 45,
+       "data": 0
+      }
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 1,
+      "slab": 126,
+      "slabData": 1,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      },
+      "verge": {
+       "kind": "laidLog",
+       "id": 17,
+       "data": 1
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 159,
+       "data": 12
+      },
+      "gableWindows": {
+       "form": "open",
+       "block": 102,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 2,
+       "width": 1,
+       "height": 1,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 45,
+          "data": 0
+         },
+         "thickness": 2
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 159,
+          "data": 12
+         },
+         "thickness": 4
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 6
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "windows": {
+      "form": "slabBanded",
+      "block": 126,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 1,
+      "sill": 3,
+      "width": 2,
+      "height": 2,
+      "spacing": 4
+     },
+     "storeys": [
+      {
+       "clear": 6,
+       "wall": {
+        "stack": {
+         "bands": [
+          {
+           "material": {
+            "kind": "solid",
+            "id": 45,
+            "data": 0
+           },
+           "thickness": 2
+          },
+          {
+           "material": {
+            "kind": "solid",
+            "id": 159,
+            "data": 12
+           },
+           "thickness": 4
+          }
+         ],
+         "ending": "repeat"
+        },
+        "extent": 6
+       },
+       "post": {
+        "kind": "solid",
+        "id": 17,
+        "data": 1
+       },
+       "windows": {
+        "form": "slabBanded",
+        "block": 126,
+        "hostBlock": -1,
+        "hostData": 0,
+        "data": 1,
+        "sill": 3,
+        "width": 2,
+        "height": 2,
+        "spacing": 4
+       },
+       "surface": {
+        "field": null,
+        "border": null,
+        "borderWidth": 1,
+        "inlay": null,
+        "inlayInset": 2,
+        "isPlain": true
+       },
+       "deck": null,
+       "headroom": 6
+      }
+     ],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 1,
+      "any": true
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "none",
+       "block": 53,
+       "fill": "upperSlab",
+       "fillBlock": 126,
+       "fillData": 1
+      },
+      "width": 4,
+      "height": 4
+     }
+    },
+    "wings": [
+     {
+      "corners": [
+       [
+        20,
+        77
+       ],
+       [
+        32,
+        89
+       ]
+      ]
+     }
+    ],
+    "front": "negX"
+   },
+   {
+    "id": "zollhalle",
+    "kind": "house",
+    "seed": 5,
+    "style": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 45,
+           "data": 0
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 1
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": {
+       "kind": "solid",
+       "id": 45,
+       "data": 0
+      }
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 1,
+      "slab": 126,
+      "slabData": 1,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      },
+      "verge": {
+       "kind": "laidLog",
+       "id": 17,
+       "data": 1
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 159,
+       "data": 12
+      },
+      "gableWindows": {
+       "form": "open",
+       "block": 102,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 2,
+       "width": 1,
+       "height": 1,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 45,
+          "data": 0
+         },
+         "thickness": 2
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 159,
+          "data": 12
+         },
+         "thickness": 4
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 6
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "windows": {
+      "form": "slabBanded",
+      "block": 126,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 1,
+      "sill": 3,
+      "width": 2,
+      "height": 2,
+      "spacing": 4
+     },
+     "storeys": [
+      {
+       "clear": 6,
+       "wall": {
+        "stack": {
+         "bands": [
+          {
+           "material": {
+            "kind": "solid",
+            "id": 45,
+            "data": 0
+           },
+           "thickness": 2
+          },
+          {
+           "material": {
+            "kind": "solid",
+            "id": 159,
+            "data": 12
+           },
+           "thickness": 4
+          }
+         ],
+         "ending": "repeat"
+        },
+        "extent": 6
+       },
+       "post": {
+        "kind": "solid",
+        "id": 17,
+        "data": 1
+       },
+       "windows": {
+        "form": "slabBanded",
+        "block": 126,
+        "hostBlock": -1,
+        "hostData": 0,
+        "data": 1,
+        "sill": 3,
+        "width": 2,
+        "height": 2,
+        "spacing": 4
+       },
+       "surface": {
+        "field": null,
+        "border": null,
+        "borderWidth": 1,
+        "inlay": null,
+        "inlayInset": 2,
+        "isPlain": true
+       },
+       "deck": null,
+       "headroom": 6
+      }
+     ],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 1,
+      "any": true
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "none",
+       "block": 53,
+       "fill": "upperSlab",
+       "fillBlock": 126,
+       "fillData": 1
+      },
+      "width": 4,
+      "height": 4
+     }
+    },
+    "wings": [
+     {
+      "corners": [
+       [
+        -32,
+        77
+       ],
+       [
+        -21,
+        89
+       ]
+      ]
+     }
+    ],
+    "front": "posX"
+   },
+   {
+    "id": "stellwerk",
+    "kind": "house",
+    "seed": 5,
+    "style": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 98,
+           "data": 0
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 2
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     "roof": {
+      "form": "flat",
+      "pitch": 1,
+      "slab": 44,
+      "slabData": 0,
+      "overhang": 2,
+      "ridgeCap": false,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 43,
+       "data": 8
+      },
+      "verge": {
+       "kind": "solid",
+       "id": 45,
+       "data": 0
+      },
+      "gable": null,
+      "gableWindows": {
+       "form": "none",
+       "block": 102,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 2,
+       "width": 1,
+       "height": 1,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 45,
+          "data": 0
+         },
+         "thickness": 4
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 4
+     },
+     "post": {
+      "kind": "solid",
+      "id": 45,
+      "data": 0
+     },
+     "windows": {
+      "form": "none",
+      "block": 102,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 2,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "storeys": [
+      {
+       "clear": 4,
+       "wall": {
+        "stack": {
+         "bands": [
+          {
+           "material": {
+            "kind": "solid",
+            "id": 45,
+            "data": 0
+           },
+           "thickness": 4
+          }
+         ],
+         "ending": "repeat"
+        },
+        "extent": 4
+       },
+       "post": {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       },
+       "windows": {
+        "form": "none",
+        "block": 102,
+        "hostBlock": -1,
+        "hostData": 0,
+        "data": 0,
+        "sill": 2,
+        "width": 2,
+        "height": 2,
+        "spacing": 3
+       },
+       "surface": {
+        "field": null,
+        "border": null,
+        "borderWidth": 1,
+        "inlay": null,
+        "inlayInset": 2,
+        "isPlain": true
+       },
+       "deck": null,
+       "headroom": 4
+      },
+      {
+       "clear": 5,
+       "wall": {
+        "stack": {
+         "bands": [
+          {
+           "material": {
+            "kind": "solid",
+            "id": 45,
+            "data": 0
+           },
+           "thickness": 1
+          },
+          {
+           "material": {
+            "kind": "solid",
+            "id": 95,
+            "data": 0
+           },
+           "thickness": 3
+          },
+          {
+           "material": {
+            "kind": "solid",
+            "id": 45,
+            "data": 0
+           },
+           "thickness": 1
+          }
+         ],
+         "ending": "repeat"
+        },
+        "extent": 5
+       },
+       "post": {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       },
+       "windows": {
+        "form": "pane",
+        "block": 102,
+        "hostBlock": -1,
+        "hostData": 0,
+        "data": 0,
+        "sill": 1,
+        "width": 5,
+        "height": 3,
+        "spacing": 1
+       },
+       "surface": {
+        "field": null,
+        "border": null,
+        "borderWidth": 1,
+        "inlay": null,
+        "inlayInset": 2,
+        "isPlain": true
+       },
+       "deck": null,
+       "headroom": 5
+      }
+     ],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": -1,
+      "data": 0,
+      "reach": 1,
+      "any": false
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "none",
+       "block": 109,
+       "fill": "upperSlab",
+       "fillBlock": 44,
+       "fillData": 0
+      },
+      "width": 2,
+      "height": 3
+     }
+    },
+    "wings": [
+     {
+      "corners": [
+       [
+        31,
+        40
+       ],
+       [
+        38,
+        48
+       ]
+      ]
+     }
+    ],
+    "front": "negX"
+   },
+   {
+    "id": "umspannwerk",
+    "kind": "house",
+    "seed": 5,
+    "style": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 45,
+           "data": 0
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 1
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": {
+       "kind": "solid",
+       "id": 45,
+       "data": 0
+      }
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 1,
+      "slab": 126,
+      "slabData": 1,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      },
+      "verge": {
+       "kind": "laidLog",
+       "id": 17,
+       "data": 1
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 159,
+       "data": 12
+      },
+      "gableWindows": {
+       "form": "open",
+       "block": 102,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 2,
+       "width": 1,
+       "height": 1,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 45,
+          "data": 0
+         },
+         "thickness": 2
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 159,
+          "data": 12
+         },
+         "thickness": 4
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 6
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "windows": {
+      "form": "slabBanded",
+      "block": 126,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 1,
+      "sill": 3,
+      "width": 2,
+      "height": 2,
+      "spacing": 4
+     },
+     "storeys": [
+      {
+       "clear": 6,
+       "wall": {
+        "stack": {
+         "bands": [
+          {
+           "material": {
+            "kind": "solid",
+            "id": 45,
+            "data": 0
+           },
+           "thickness": 2
+          },
+          {
+           "material": {
+            "kind": "solid",
+            "id": 159,
+            "data": 12
+           },
+           "thickness": 4
+          }
+         ],
+         "ending": "repeat"
+        },
+        "extent": 6
+       },
+       "post": {
+        "kind": "solid",
+        "id": 17,
+        "data": 1
+       },
+       "windows": {
+        "form": "slabBanded",
+        "block": 126,
+        "hostBlock": -1,
+        "hostData": 0,
+        "data": 1,
+        "sill": 3,
+        "width": 2,
+        "height": 2,
+        "spacing": 4
+       },
+       "surface": {
+        "field": null,
+        "border": null,
+        "borderWidth": 1,
+        "inlay": null,
+        "inlayInset": 2,
+        "isPlain": true
+       },
+       "deck": null,
+       "headroom": 6
+      }
+     ],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 1,
+      "any": true
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "none",
+       "block": 53,
+       "fill": "upperSlab",
+       "fillBlock": 126,
+       "fillData": 1
+      },
+      "width": 4,
+      "height": 4
+     }
+    },
+    "wings": [
+     {
+      "corners": [
+       [
+        -34,
+        93
+       ],
+       [
+        -26,
+        99
+       ]
+      ]
+     }
+    ],
+    "front": "posX"
+   },
+   {
+    "id": "allee-0",
+    "kind": "tree",
+    "seed": 11,
+    "x": -12,
+    "z": 80,
+    "style": "platane"
+   },
+   {
+    "id": "allee-1",
+    "kind": "tree",
+    "seed": 12,
+    "x": 12,
+    "z": 80,
+    "style": "platane"
+   },
+   {
+    "id": "allee-2",
+    "kind": "tree",
+    "seed": 13,
+    "x": -12,
+    "z": 88,
+    "style": "platane"
+   },
+   {
+    "id": "allee-3",
+    "kind": "tree",
+    "seed": 14,
+    "x": 12,
+    "z": 88,
+    "style": "platane"
+   },
+   {
+    "id": "allee-4",
+    "kind": "tree",
+    "seed": 15,
+    "x": -14,
+    "z": 96,
+    "style": "platane"
+   },
+   {
+    "id": "allee-5",
+    "kind": "tree",
+    "seed": 16,
+    "x": 14,
+    "z": 96,
+    "style": "platane"
+   }
+  ],
+  "styles": {
+   "platane": {
+    "kind": "tree",
+    "form": "template",
+    "species": "oak",
+    "wood": "oak",
+    "height": 8,
+    "stems": 1,
+    "leader": 0.55,
+    "flow": 0.45,
+    "branchAngle": 1.1,
+    "levels": 2,
+    "whorled": false,
+    "leafSize": 0.6
+   }
+  }
+ },
+ "biome": null,
+ "relief": null
+}

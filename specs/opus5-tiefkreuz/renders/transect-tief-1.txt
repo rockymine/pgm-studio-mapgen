@@ -1,0 +1,61 @@
+## tief-1 (destroyable) along x
+TRANSECT 25 stations from (3, -57) to (27, -57), every 1
+  station        ground  surface  water  top  standing            step
+  (    3,   -57)      30       30           30                      
+  (    4,   -57)      30       30           30                      
+  (    5,   -57)      30       30           30                      
+  (    6,   -57)      30       30           30                      
+  (    7,   -57)      30       30           30                      
+  (    8,   -57)      30       30           30                      
+  (    9,   -57)      30       30           30                      
+  (   10,   -57)      30       30           30                      
+  (   11,   -57)      30       30           30                      
+  (   12,   -57)      30       30           30                      
+  (   13,   -57)      30       30           30  destroyable tief#1  
+  (   14,   -57)       9        9           71  destroyable tief#1  DROP -21
+  (   15,   -57)       9        9           72  destroyable tief#1  
+  (   16,   -57)       9        9           71  destroyable tief#1  
+  (   17,   -57)       9        9           27  destroyable tief#1  
+  (   18,   -57)       9        9            9                      
+  (   19,   -57)       9        9            9                      
+  (   20,   -57)      30       30           30                      BARRIER +21
+  (   21,   -57)      30       30           30  stroke umfahrung-west#1  
+  (   22,   -57)      30       30           30  stroke umfahrung-west#1  
+  (   23,   -57)      30       30           30  stroke umfahrung-west#1  
+  (   24,   -57)      30       30           30  stroke umfahrung-west#1  
+  (   25,   -57)      30       30           30  stroke umfahrung-west#1  
+  (   26,   -57)      40       40           40                      BARRIER +10
+  (   27,   -57)      40       40           40                      
+rises 2, falls 1, worst step 21: 2 barrier, 0 scramble, 1 drop — DROP -21 at (14, -57); BARRIER +21 at (20, -57); BARRIER +10 at (26, -57) | walked end to end
+beside: stroke umfahrung-ost#1 at (1, -59), stroke umfahrung-west#1 at (2, -59), destroyable tief#1 at (13, -58)
+
+## tief-1 (destroyable) along z
+TRANSECT 25 stations from (15, -69) to (15, -45), every 1
+  station        ground  surface  water  top  standing            step
+  (   15,   -69)      42       42           42                      
+  (   15,   -68)      42       42           42                      
+  (   15,   -67)      43       43           43                      +1
+  (   15,   -66)      42       42           42                      -1
+  (   15,   -65)      43       43           43                      +1
+  (   15,   -64)      42       42           42                      -1
+  (   15,   -63)      42       42           42                      
+  (   15,   -62)      44       44           44  stroke umfahrung-west#1  scramble +2
+  (   15,   -61)      30       30           30  stroke umfahrung-west#1  DROP -14
+  (   15,   -60)      30       30           30  stroke umfahrung-west#1  
+  (   15,   -59)      30       30           30  stroke umfahrung-west#1  
+  (   15,   -58)       9        9           71  destroyable tief#1  DROP -21
+  (   15,   -57)       9        9           72  destroyable tief#1  
+  (   15,   -56)       9        9           71  destroyable tief#1  
+  (   15,   -55)       9        9           27  destroyable tief#1  
+  (   15,   -54)       9        9            9                      
+  (   15,   -53)       9        9            9                      
+  (   15,   -52)       9        9            9                      
+  (   15,   -51)       9        9            9                      
+  (   15,   -50)      30       30           30                      BARRIER +21
+  (   15,   -49)      30       30           30                      
+  (   15,   -48)      30       30           30                      
+  (   15,   -47)      30       30           30                      
+  (   15,   -46)      30       30           30                      
+  (   15,   -45)      30       30           30                      
+rises 4, falls 4, worst step 21: 1 barrier, 1 scramble, 2 drop — scramble +2 at (15, -62); DROP -14 at (15, -61); DROP -21 at (15, -58); BARRIER +21 at (15, -50) | walked end to end
+beside: stroke umfahrung-west#1 at (13, -62), destroyable tief#1 at (13, -58)

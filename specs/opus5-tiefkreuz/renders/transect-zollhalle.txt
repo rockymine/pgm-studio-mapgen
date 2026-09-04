@@ -1,0 +1,68 @@
+## zollhalle (house) along x
+TRANSECT 28 stations from (-40, 83) to (-13, 83), every 1
+  station        ground  surface  water  top  standing            step
+  (  -40,    83)                                                    void
+  (  -39,    83)                                                    void
+  (  -38,    83)                                                    void
+  (  -37,    83)                                                    void
+  (  -36,    83)      30       30           30                      
+  (  -35,    83)      30       30           30                      
+  (  -34,    83)      30       30           30                      
+  (  -33,    83)      30       30           37  house zollhalle     
+  (  -32,    83)      30       30           37  house zollhalle     
+  (  -31,    83)      30       30           38  house zollhalle     
+  (  -30,    83)      30       30           38  house zollhalle     
+  (  -29,    83)      30       30           39  house zollhalle     
+  (  -28,    83)      30       30           39  house zollhalle     
+  (  -27,    83)      30       30           40  house zollhalle     
+  (  -26,    83)      30       30           40  house zollhalle     
+  (  -25,    83)      30       30           39  house zollhalle     
+  (  -24,    83)      30       30           39  house zollhalle     
+  (  -23,    83)      30       30           38  house zollhalle     
+  (  -22,    83)      30       30           38  house zollhalle     
+  (  -21,    83)      30       30           37  house zollhalle     
+  (  -20,    83)      30       30           37  house zollhalle     
+  (  -19,    83)      30       30           30                      
+  (  -18,    83)      30       30           30                      
+  (  -17,    83)      30       30           30                      
+  (  -16,    83)      30       30           30                      
+  (  -15,    83)      30       30           30                      
+  (  -14,    83)      30       30           30                      
+  (  -13,    83)      30       30           30                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house zollhalle at (-33, 81), tree allee-0 at (-14, 81)
+
+## zollhalle (house) along z
+TRANSECT 29 stations from (-27, 69) to (-27, 97), every 1
+  station        ground  surface  water  top  standing            step
+  (  -27,    69)      43       43           43                      
+  (  -27,    70)      42       42           42                      -1
+  (  -27,    71)      43       43           43                      +1
+  (  -27,    72)      42       42           42                      -1
+  (  -27,    73)      42       42           42                      
+  (  -27,    74)      44       44           44                      scramble +2
+  (  -27,    75)      30       30           30                      DROP -14
+  (  -27,    76)      30       30           40  house zollhalle     
+  (  -27,    77)      30       30           40  house zollhalle     
+  (  -27,    78)      30       30           40  house zollhalle     
+  (  -27,    79)      30       30           40  house zollhalle     
+  (  -27,    80)      30       30           40  house zollhalle     
+  (  -27,    81)      30       30           40  house zollhalle     
+  (  -27,    82)      30       30           40  house zollhalle     
+  (  -27,    83)      30       30           40  house zollhalle     
+  (  -27,    84)      30       30           40  house zollhalle     
+  (  -27,    85)      30       30           40  house zollhalle     
+  (  -27,    86)      30       30           40  house zollhalle     
+  (  -27,    87)      30       30           40  house zollhalle     
+  (  -27,    88)      30       30           40  house zollhalle     
+  (  -27,    89)      30       30           40  house zollhalle     
+  (  -27,    90)      30       30           40  house zollhalle     
+  (  -27,    91)      30       30           30                      
+  (  -27,    92)      30       30           37  house umspannwerk   
+  (  -27,    93)      30       30           37  house umspannwerk   
+  (  -27,    94)      30       30           38  house umspannwerk   
+  (  -27,    95)      30       30           38  house umspannwerk   
+  (  -27,    96)      30       30           39  house umspannwerk   
+  (  -27,    97)      30       30           38  house umspannwerk   
+rises 2, falls 3, worst step 14: 0 barrier, 1 scramble, 1 drop — scramble +2 at (-27, 74); DROP -14 at (-27, 75) | walked end to end
+beside: house zollhalle at (-29, 76), house umspannwerk at (-29, 92)

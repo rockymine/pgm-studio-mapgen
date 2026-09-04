@@ -1,0 +1,61 @@
+## hoch-1 (destroyable) along x
+TRANSECT 25 stations from (-35, -63) to (-11, -63), every 1
+  station        ground  surface  water  top  standing            step
+  (  -35,   -63)      42       42           42                      
+  (  -34,   -63)      42       42           42                      
+  (  -33,   -63)      42       42           42                      
+  (  -32,   -63)      42       42           42                      
+  (  -31,   -63)      42       42           42                      
+  (  -30,   -63)      42       42           42                      
+  (  -29,   -63)      42       42           42                      
+  (  -28,   -63)      42       42           42                      
+  (  -27,   -63)      42       42           42                      
+  (  -26,   -63)      42       42           42                      
+  (  -25,   -63)      42       42           42  destroyable hoch#1  
+  (  -24,   -63)      42       42           71  destroyable hoch#1  
+  (  -23,   -63)      42       42           72  destroyable hoch#1  
+  (  -22,   -63)      42       42           71  destroyable hoch#1  
+  (  -21,   -63)      42       42           42  destroyable hoch#1  
+  (  -20,   -63)      42       42           42                      
+  (  -19,   -63)      42       42           42                      
+  (  -18,   -63)      42       42           42                      
+  (  -17,   -63)      42       42           42                      
+  (  -16,   -63)      42       42           42                      
+  (  -15,   -63)      42       42           42                      
+  (  -14,   -63)      42       42           42                      
+  (  -13,   -63)      42       42           42                      
+  (  -12,   -63)      42       42           42                      
+  (  -11,   -63)      42       42           42  stroke umfahrung-ost#1  
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable hoch#1 at (-25, -65), stroke umfahrung-ost#1 at (-22, -61)
+
+## hoch-1 (destroyable) along z
+TRANSECT 25 stations from (-23, -75) to (-23, -51), every 1
+  station        ground  surface  water  top  standing            step
+  (  -23,   -75)      44       44           44                      
+  (  -23,   -74)      42       42           42                      -2
+  (  -23,   -73)      42       42           42                      
+  (  -23,   -72)      43       43           43                      +1
+  (  -23,   -71)      42       42           42                      -1
+  (  -23,   -70)      43       43           43                      +1
+  (  -23,   -69)      42       42           42                      -1
+  (  -23,   -68)      42       42           42                      
+  (  -23,   -67)      43       43           43                      +1
+  (  -23,   -66)      42       42           42                      -1
+  (  -23,   -65)      43       43           43  destroyable hoch#1  +1
+  (  -23,   -64)      42       42           71  destroyable hoch#1  -1
+  (  -23,   -63)      42       42           72  destroyable hoch#1  
+  (  -23,   -62)      44       44           71  destroyable hoch#1  scramble +2
+  (  -23,   -61)      30       30           41  destroyable hoch#1  DROP -14
+  (  -23,   -60)      30       30           30  stroke umfahrung-ost#1  
+  (  -23,   -59)      30       30           30  stroke umfahrung-ost#1  
+  (  -23,   -58)      30       30           30  stroke umfahrung-ost#1  
+  (  -23,   -57)      30       30           30  stroke umfahrung-ost#1  
+  (  -23,   -56)      30       30           30  stroke umfahrung-ost#1  
+  (  -23,   -55)      30       30           30  stroke umfahrung-ost#1  
+  (  -23,   -54)      30       30           30  stroke umfahrung-ost#1  
+  (  -23,   -53)      30       30           30  stroke umfahrung-ost#1  
+  (  -23,   -52)      30       30           30                      
+  (  -23,   -51)      30       30           30                      
+rises 5, falls 6, worst step 14: 0 barrier, 1 scramble, 1 drop — scramble +2 at (-23, -62); DROP -14 at (-23, -61) | walked end to end
+beside: house gueterschuppen#1 at (-25, -77), destroyable hoch#1 at (-25, -65), stroke umfahrung-ost#1 at (-22, -61)

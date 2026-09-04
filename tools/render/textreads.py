@@ -45,7 +45,7 @@ def features(intent, layout):
         else:
             box = (point.get("x", 0) - 6, point.get("z", 0) - 6, point.get("x", 0) + 6, point.get("z", 0) + 6)
         found.append((f"spawn-{spawn.get('team')}", "spawn", box))
-    for goal_id, kind, (x, z) in goals(intent):
+    for goal_id, kind, (x, z), _layer in goals(intent):
         found.append((goal_id, kind, (x - 4, z - 4, x + 4, z + 4)))
     for prop in (layout.get("dressing") or {}).get("props") or []:
         if prop.get("kind") == "house":
@@ -80,17 +80,44 @@ def features(intent, layout):
 
 
 def goals(intent):
-    """Every goal the intent states, as `(id, kind, (x, z))` — the far end of every route."""
+    """Every goal the intent states, as `(id, kind, (x, z), layer)` — the far end of every route, and the
+    storey it stands on.
+
+    A wool's position is its `spawn`: that is the pad the wool dispenses from, which is the place a raider
+    walks to. It carries no `anchor`, so a board played for wools states its goals under a different key from
+    a board played for monuments or cores.
+
+    The `layer` rides along because `walk` takes `x,z,y` to pick which storey of a stacked column is meant,
+    and without one a route to a goal on a viaduct is the route to the street under it."""
     found = []
     for kind in ("destroyables", "cores", "wools"):
         for goal in intent.get(kind) or []:
-            at = goal.get("anchor") or goal.get("location") or goal.get("point") or {}
+            at = goal.get("anchor") or goal.get("location") or goal.get("spawn") or goal.get("point") or {}
             if "x" not in at:
                 continue
-            unit = (goal.get("stamp") or {}).get("unit") or goal.get("name") or kind
+            unit = goal.get("color") or (goal.get("stamp") or {}).get("unit") or goal.get("name") or kind
             image = (goal.get("stamp") or {}).get("image", 0)
-            found.append((f"{unit}-{image}", kind[:-1], (int(at["x"]), int(at["z"]))))
+            found.append((f"{unit}-{image}", kind[:-1], (int(at["x"]), int(at["z"])), goal.get("layer")))
     return found
+
+
+def storeys(layout):
+    """Each layer's `base_y`, by the id a goal or a spawn names it with — what turns a `layer` into the `y`
+    that picks a storey. A layer that named itself keeps its id; one that did not is under its position, the
+    same name the studio gives it."""
+    found = {}
+    for at, layer in enumerate(layout.get("layers") or []):
+        found[layer.get("id") or f"layer{at}"] = int(layer.get("base_y") or 0)
+    return found
+
+
+def at(point, layer, floors):
+    """A `from=`/`to=` coordinate, carrying the storey where the thing names a layer the board has. The
+    layer's own base is enough to pick it: a storey is the span above it, and naming any height inside one
+    selects it."""
+    x, z = point
+    base = floors.get(layer) if layer else None
+    return f"{x},{z}" if base is None else f"{x},{z},{base}"
 
 
 def extent(heightmap_text):
@@ -159,12 +186,14 @@ def write_all(into, slug, intent, layout, fetch, every=None):
         summaries.append(f"  {'':18} along z: {summary_of(along_z)}")
 
     routes = []
+    floors = storeys(layout)
     for spawn in intent.get("spawns") or []:
         point = spawn.get("point") or {}
         if "x" not in point:
             continue
-        for goal_id, _kind, (gx, gz) in goals(intent):
-            text = fetch("GET", f"/map/{slug}/walk?from={int(point['x'])},{int(point['z'])}&to={gx},{gz}"
+        start = at((int(point["x"]), int(point["z"])), spawn.get("layer"), floors)
+        for goal_id, _kind, where, layer in goals(intent):
+            text = fetch("GET", f"/map/{slug}/walk?from={start}&to={at(where, layer, floors)}"
                                 f"&beside={BESIDE}&format=text")
             if text is None:
                 continue

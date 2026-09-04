@@ -1,0 +1,181 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 30,
+    "z": 106
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": 100,
+     "maxX": 8,
+     "maxZ": 112
+    }
+   ],
+   "yaw": 180,
+   "footprint": null,
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 30,
+    "z": -106
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": -112,
+     "maxX": 8,
+     "maxZ": -100
+    }
+   ],
+   "yaw": 0,
+   "footprint": null,
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 68,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -28,
+    "minZ": -16,
+    "maxX": 28,
+    "maxZ": 16
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": "ground",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "tief",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Tiefbahnsteig",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -16,
+    "y": 30,
+    "z": 56
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "layer": "viadukt",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "hoch",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Hochbahnsteig",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 22,
+    "y": 30,
+    "z": 62
+   },
+   "float": 3,
+   "box": null
+  },
+  {
+   "layer": "ground",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "tief",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Tiefbahnsteig",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": 15,
+    "y": 30,
+    "z": -57
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "layer": "viadukt",
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "hoch",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Hochbahnsteig",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "anchor": {
+    "x": -23,
+    "y": 30,
+    "z": -63
+   },
+   "float": 3,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Tiefkreuz",
+  "created": "2026-09-03",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": null
+}

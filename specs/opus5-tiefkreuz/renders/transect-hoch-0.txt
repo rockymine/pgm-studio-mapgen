@@ -1,0 +1,61 @@
+## hoch-0 (destroyable) along x
+TRANSECT 25 stations from (10, 62) to (34, 62), every 1
+  station        ground  surface  water  top  standing            step
+  (   10,    62)      42       42           42  stroke umfahrung-ost  
+  (   11,    62)      42       42           42                      
+  (   12,    62)      42       42           42                      
+  (   13,    62)      42       42           42                      
+  (   14,    62)      42       42           42                      
+  (   15,    62)      42       42           42                      
+  (   16,    62)      42       42           42                      
+  (   17,    62)      42       42           42                      
+  (   18,    62)      42       42           42                      
+  (   19,    62)      42       42           42                      
+  (   20,    62)      42       42           42  destroyable hoch    
+  (   21,    62)      42       42           71  destroyable hoch    
+  (   22,    62)      42       42           72  destroyable hoch    
+  (   23,    62)      42       42           71  destroyable hoch    
+  (   24,    62)      42       42           42  destroyable hoch    
+  (   25,    62)      42       42           42                      
+  (   26,    62)      42       42           42                      
+  (   27,    62)      42       42           42                      
+  (   28,    62)      42       42           42                      
+  (   29,    62)      42       42           42                      
+  (   30,    62)      42       42           42                      
+  (   31,    62)      42       42           42                      
+  (   32,    62)      42       42           42                      
+  (   33,    62)      42       42           42                      
+  (   34,    62)      42       42           42                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke umfahrung-ost at (8, 60), destroyable hoch at (20, 61)
+
+## hoch-0 (destroyable) along z
+TRANSECT 25 stations from (22, 50) to (22, 74), every 1
+  station        ground  surface  water  top  standing            step
+  (   22,    50)      30       30           30                      
+  (   22,    51)      30       30           30                      
+  (   22,    52)      30       30           30  stroke umfahrung-ost  
+  (   22,    53)      30       30           30  stroke umfahrung-ost  
+  (   22,    54)      30       30           30  stroke umfahrung-ost  
+  (   22,    55)      30       30           30  stroke umfahrung-ost  
+  (   22,    56)      30       30           30  stroke umfahrung-ost  
+  (   22,    57)      30       30           30  stroke umfahrung-ost  
+  (   22,    58)      30       30           30  stroke umfahrung-ost  
+  (   22,    59)      30       30           30  stroke umfahrung-ost  
+  (   22,    60)      30       30           41  destroyable hoch    
+  (   22,    61)      44       44           71  destroyable hoch    BARRIER +14
+  (   22,    62)      42       42           72  destroyable hoch    -2
+  (   22,    63)      42       42           71  destroyable hoch    
+  (   22,    64)      43       43           43  destroyable hoch    +1
+  (   22,    65)      42       42           42                      -1
+  (   22,    66)      43       43           43                      +1
+  (   22,    67)      42       42           42                      -1
+  (   22,    68)      42       42           42                      
+  (   22,    69)      43       43           43                      +1
+  (   22,    70)      42       42           42                      -1
+  (   22,    71)      43       43           43                      +1
+  (   22,    72)      42       42           42                      -1
+  (   22,    73)      42       42           42                      
+  (   22,    74)      44       44           44                      scramble +2
+rises 6, falls 5, worst step 14: 1 barrier, 1 scramble, 0 drop — BARRIER +14 at (22, 61); scramble +2 at (22, 74) | walked end to end
+beside: stroke umfahrung-ost at (23, 48), destroyable hoch at (22, 60), house gueterschuppen at (20, 76)

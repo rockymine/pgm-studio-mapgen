@@ -1,0 +1,144 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Tiefkreuz"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 30,
+  "observerY": 68
+ },
+ "pieces": [
+  {
+   "id": "kai",
+   "role": "piece",
+   "rect": [
+    -7,
+    4,
+    14,
+    3
+   ],
+   "surface": 30
+  },
+  {
+   "id": "bahnhof",
+   "role": "piece",
+   "rect": [
+    -10,
+    7,
+    20,
+    8
+   ],
+   "surface": 30
+  },
+  {
+   "id": "stadt",
+   "role": "piece",
+   "rect": [
+    -9,
+    15,
+    18,
+    7
+   ],
+   "surface": 30
+  },
+  {
+   "id": "vorplatz",
+   "role": "piece",
+   "rect": [
+    -9,
+    22,
+    18,
+    3
+   ],
+   "surface": 30
+  },
+  {
+   "id": "flanke-w",
+   "role": "piece",
+   "rect": [
+    -9,
+    25,
+    7,
+    3
+   ],
+   "surface": 30
+  },
+  {
+   "id": "kopfbau",
+   "role": "spawn",
+   "rect": [
+    -2,
+    25,
+    4,
+    3
+   ],
+   "surface": 30
+  },
+  {
+   "id": "flanke-e",
+   "role": "piece",
+   "rect": [
+    2,
+    25,
+    7,
+    3
+   ],
+   "surface": 30
+  }
+ ],
+ "zones": [
+  {
+   "id": "uebergang",
+   "rect": [
+    -7,
+    -4,
+    14,
+    8
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "kopfbau",
+    "at": [
+     8,
+     6
+    ],
+    "facing": "front"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "tief",
+    "piece": "",
+    "at": [
+     -16,
+     56
+    ],
+    "layer": "ground",
+    "style": "pillar-2",
+    "materials": "obsidian",
+    "float": 2,
+    "name": "Tiefbahnsteig"
+   },
+   {
+    "id": "hoch",
+    "piece": "",
+    "at": [
+     22,
+     62
+    ],
+    "layer": "viadukt",
+    "style": "pillar-2",
+    "materials": "obsidian",
+    "float": 3,
+    "name": "Hochbahnsteig"
+   }
+  ]
+ }
+}
