@@ -1092,25 +1092,27 @@ each storey its own landscape — `{"team": …, "walls": …}` — and a layer'
 own frame**, not the board's. `drive.py`'s `"*"` expands over the groups the *compile* emitted, so a
 key stated beside it survives and names a layer added in the finish.
 
-### `POST /plan/room` answers one footprint whatever the facing says
+### `POST /plan/room` is where the spawn's marker, building and iron all come from
 
-The route is the resolver's own answer to *what room does this piece carry*, and it is the honest thing to
-copy onto a placement — except that its `footprint` does not move with the spawn's `facing`. Asked on the
-same 20 x 20-block piece it answers `{"at":[10,12],"footprint":[1,5,18,14]}` for all four facings, while
-the compiled shell does move: `facing: "front"` puts the shell at the piece's `+z` end with its door apron
-at `-z`, and `facing: "back"` the other way round. Copying that footprint onto a `back`-facing spawn
-therefore pins the five-block apron to the wall the door is not in, and `WX8` then refuses the iron cube
-because the ring it needs is on the other side.
+The route answers *what room does this piece carry*, for the piece **as the document states it**: it reads
+the placement's `facing` and its `footprint` and answers `{at, footprint, iron}`, all piece-relative block
+offsets. Asked with a 12 x 12 hall stated in a 20 x 20 spawn piece it gives
+`{"at":[7,7],"footprint":[1,1,12,12],"iron":[3.5,16.5]}` — the marker at the hall's own centre, the
+footprint back verbatim, and the cube beside the door on the player's right as they leave.
 
-**State no footprint.** `WX1`'s default is the same rectangle and it follows the facing.
+**State the building, then copy the answer.** Sizing the hall by hand and then guessing the marker or the
+cube is three numbers that can disagree; asking is one read that cannot. A piece with no placement yet
+answers for the drawing defaults instead — a front door and the room the piece affords.
 
 ### The iron cube stands OUTSIDE the room shell
 
 `WX8` reads *"inside the piece"* and it is easy to read that as *inside the room*. The cube is
 `IronSpan` square, stands **in the ring between the shell and the piece edge**, and holds `IronGap` blocks
 of clear air to the wall. On a 20 x 20 piece whose shell is the piece inset one and five in front of the
-door, that ring is the five-block door apron and nothing else: the marker goes at the apron's outer edge,
-three blocks of cube and two of air, and anywhere in the hall is unplaceable.
+door, that ring is the five-block door apron and nothing else: the cube fills it, three blocks of cube and
+two of air, and anywhere in the hall is unplaceable. Shrinking the building widens the ring, which is what
+makes a seat beside the door possible at all — and `/plan/room` hands it over rather than being guessed
+at.
 
 ### `04-routes.txt` is not written on a board whose goals are wools
 

@@ -160,18 +160,18 @@
         <point id="yellow-wool-spawn">20,10,20</point>
         <point id="green-wool-spawn">-20,10,20</point>
         <point id="observer-spawn">0,35,0</point>
-        <block id="yellow-green-monument">-46,10,34</block>
-        <block id="yellow-blue-monument">34,10,-35</block>
-        <block id="yellow-red-monument">-35,10,-35</block>
-        <block id="blue-green-monument">-35,10,45</block>
-        <block id="blue-yellow-monument">45,10,34</block>
-        <block id="blue-red-monument">-46,10,-35</block>
-        <block id="red-green-monument">-35,10,34</block>
-        <block id="red-yellow-monument">34,10,34</block>
-        <block id="red-blue-monument">34,10,-46</block>
+        <block id="yellow-green-monument">-46,10,36</block>
+        <block id="yellow-blue-monument">36,10,-37</block>
+        <block id="yellow-red-monument">-37,10,-37</block>
+        <block id="blue-green-monument">-37,10,45</block>
+        <block id="blue-yellow-monument">45,10,36</block>
+        <block id="blue-red-monument">-46,10,-37</block>
+        <block id="red-green-monument">-37,10,36</block>
+        <block id="red-yellow-monument">36,10,36</block>
+        <block id="red-blue-monument">36,10,-46</block>
         <block id="green-red-monument">-46,10,-46</block>
         <block id="green-blue-monument">45,10,-46</block>
-        <block id="green-yellow-monument">34,10,45</block>
+        <block id="green-yellow-monument">36,10,45</block>
         <rectangle id="green-spawn" min="-48,28" max="-28,48"/>
         <rectangle id="yellow-spawn" min="28,28" max="48,48"/>
         <rectangle id="blue-spawn" min="28,-48" max="48,-28"/>
@@ -199,10 +199,10 @@
             <region id="greens-woolrooms"/>
         </union>
         <union id="iron-cubes">
-            <rectangle id="iron-cube-0" min="-31,-39" max="-29,-37"/>
-            <rectangle id="iron-cube-1" min="36,-31" max="38,-29"/>
-            <rectangle id="iron-cube-2" min="28,36" max="30,38"/>
-            <rectangle id="iron-cube-3" min="-39,28" max="-37,30"/>
+            <rectangle id="iron-cube-0" min="-46,-33" max="-44,-31"/>
+            <rectangle id="iron-cube-1" min="30,-46" max="32,-44"/>
+            <rectangle id="iron-cube-2" min="43,30" max="45,32"/>
+            <rectangle id="iron-cube-3" min="-33,43" max="-31,45"/>
         </union>
         <negative id="not-spawns">
             <region id="spawns"/>

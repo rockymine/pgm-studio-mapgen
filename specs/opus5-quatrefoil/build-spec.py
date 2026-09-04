@@ -65,7 +65,7 @@ PIECES = [
     ("piece-9",  "piece",     [-25, -32, 10,  7], H_QUARTER),  # the wool approach, north — a ramp
     ("piece-10", "piece",     [-17,  -5,  7, 10], H_APRON),    # the keep's apron — the flight up
     ("piece-11", "piece",     [-49,  -5,  4, 10], H_QUARTER),  # the arm's outer cape
-    ("spawn",    "spawn",     [-48, -48, 20, 20], H_SPAWN),    # the corner: region 20x20, hall 14x14
+    ("spawn",    "spawn",     [-48, -48, 20, 20], H_SPAWN),    # the corner: region 20x20, hall 12x12
     ("wool",     "wool-room", [-25, -25, 10, 10], H_POCKET),   # the room, level with its approaches
 ]
 
@@ -85,17 +85,15 @@ def plan():
         "pieces": [{"id": i, "role": r, "rect": rect, "surface": s} for i, r, rect, s in PIECES],
         "zones": [{"id": i, "rect": rect, "holes": []} for i, rect in ZONES],
         "placements": {
-            # The hall is 14x14 in the piece's outer corner, so the other two sides of the 20x20 region
-            # are ground anybody walks along rather than wall a spawning player meets.
+            # The hall is 12x12 in the piece's outer corner: the protected platform stays the whole 20x20
+            # region, and the ground a player can walk on runs a block behind the hall, seven in front of
+            # its door and eight down the inner side. Nobody spawns facing a wall and nobody is fenced in.
             "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [7, 7],
-                        "facing": "back", "footprint": [1, 1, 14, 14]}],
+                        "facing": "back", "footprint": [1, 1, 12, 12]}],
             "wools":  [{"id": "wool-1", "piece": "wool", "at": [5, 5]}],
-            # The cube stands OUTSIDE the shell and inside the piece, holding two blocks of clear air to
-            # the wall (WX8), which leaves the outer three cells of the yard's two arms. The door is in the
-            # +z wall on the hall's own centreline, so the cube goes in the +x arm instead — and along the
-            # stretch of it the march abuts, because the yard's inner corner overhangs the void and a cube
-            # there stands on nine courses of its own bedrock.
-            "iron":   [{"id": "iron-1", "piece": "spawn", "at": [18.5, 10.5]}],
+            # The seat POST /plan/room answers for that hall: the nearest row outside the door wall WX8
+            # allows, and the flank of the door corridor on the player's right as they walk out.
+            "iron":   [{"id": "iron-1", "piece": "spawn", "at": [3.5, 16.5]}],
             "destroyables": [], "cores": [],
         },
         "walls": [], "boxes": [],

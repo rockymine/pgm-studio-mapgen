@@ -40,7 +40,7 @@ Three things the plan cannot state and the board cannot be played without:
 |---|---|
 | two build zones | `zones: []` leaves the board with no frontline at all, and every wool then refuses as *reachable only through a spawn*. `bz-arm` laps the arm and the quarter gap either side of it; `bz-cross` is the arm's hop onto the keep's apron |
 | the wool marker moved onto the `wool` piece | the plan placed it on the `spawn` piece, which reads spawn↔wool = 1 block (`WL2`). The room the plan draws is where it belongs |
-| a `footprint` on the spawn | see *The spawn*, below |
+| a `footprint` on the spawn, and its iron | see *The spawn*, below |
 
 Everything else is paint, ramps and dressing. **No rectangle moved, no piece was split, no piece was
 added.** The eleven ids are the author's own — `piece`, `piece-2`, `piece-4`… — and are kept so that the
@@ -86,24 +86,36 @@ single step on this board a player cannot walk up.
 
 ## The spawn
 
-The region is the author's 20 × 20, because that is the ground the team owns. The **hall** is 14 × 14,
-stated as a `footprint` and set in the piece's outer corner, so the other two sides of the region are a
-five- and six-block yard anybody walks along rather than wall a spawning player meets. Measured out of
-the door along `+z`:
+The region is the author's 20 × 20, because that is the ground the team owns; the **hall** is 12 × 12,
+stated as a `footprint` and set in the piece's outer corner. Region and building are two rectangles, so
+the protected ground stays the whole `min="-48,-48" max="-28,-28"` while the building sits inside it: a
+one-block verge behind and to the west, a seven-block yard in front of the door and eight down the east
+side. The spawn point is `-41,9,-41`, the hall's own centre, and the door is the `+z` gap at `x −43..−39`,
+which the point stands square in — a player walks five blocks and is outside, and can walk the whole way
+round the building without leaving the region.
 
 ```
-(-40,-36) 9 · (-40,-33) 9 · (-40,-30) 9 · (-40,-26) 9
-rises 0, falls 0, worst step 0 — nothing standing but the track, walked end to end
+out of the door, +z          (-41,-34) 9 · (-41,-31) 9 · (-41,-28) 9 · (-41,-26) 9
+past the hall, east side     (-31,-46) 9 · (-31,-38) 9 · (-31,-30) 9
+both: rises 0, falls 0, worst step 0 — 0 barrier, 0 scramble, 0 drop, walked end to end
 ```
 
-**The iron cube is in the +x arm of that yard, not the +z one.** `WX8` puts the cube outside the shell,
-inside the piece, holding two blocks of clear air to the wall — which leaves the outer three cells of
-each arm and says nothing about where the door is. Placed by that rule alone it lands on the hall's own
-centreline two blocks in front of the opening: measured on the first build of this board at
-`x −42..−40, z −31..−29`, with the door in the `+z` wall at `z = −33` and the hall spanning `x −47..−33`.
-It now stands at `x −31..−29, z −38..−36` — along the stretch of the side yard the march abuts, because
-the yard's inner corner overhangs the void and a cube there stands on nine courses of its own bedrock
-(`WX11`, measured, and the reason it is not simply in the corner).
+**The iron cube is beside the door, on the player's right as they leave.** It is not placed by hand:
+`POST /plan/room?piece=spawn` answers `{"at":[7,7],"footprint":[1,1,12,12],"iron":[3.5,16.5]}` for this
+hall, and the plan states that answer verbatim. The seat is the nearest row outside the door wall `WX8`
+allows — the building's own edge plus `IronGap`, so two blocks of standing room — and the flank of the
+door corridor the player's right hand points at, which for a `+z` door is the low-x side. Measured in the
+world at `x −46..−43, z −33..−30`, standing on the spawn's own ground:
+
+| column | ground top | cube |
+|---|---|---|
+| `(−45, −32)` | mossy cobblestone `y 8` | iron `y 9–11` |
+| `(−44, −31)` | coarse dirt `y 8` | iron `y 9–11` |
+| `(−41, −34)` — the door mouth | mossy cobblestone `y 8` | clear |
+| `(−38, −32)` — the left flank | mossy cobblestone `y 8` | clear |
+
+Nine courses of bedrock under a cube in the yard's inner corner (`WX11`, measured on an earlier hand
+placement) do not arise here: the seat is inside the piece's own ground, not out at its rim.
 
 ## What a raid costs
 

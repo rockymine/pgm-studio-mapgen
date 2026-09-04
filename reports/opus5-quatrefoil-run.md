@@ -131,10 +131,11 @@ I read "inside the piece" and put the marker in the middle of the hall three tim
 says it plainly and I did not read it until the third refusal; the fix was `GET /api/rules?rule=WX8`,
 which is the first thing the brief tells you to do.
 
-**`POST /plan/room` does not answer for the facing.** It returned `{"at":[10,12],"footprint":[1,5,18,14]}`
-for a spawn whatever `facing` the plan stated, while the compiled shell moved with the facing — so a
-footprint copied from that answer pins the door apron to the `−z` side of a room whose door opens `+z`.
-Stating no footprint at all is the honest thing: `WX1`'s default follows the facing.
+**`POST /plan/room` answered one footprint whatever the facing said, and dropped the iron.** It returned
+`{"at":[10,12],"footprint":[1,5,18,14]}` for a spawn whatever `facing` the plan stated, while the compiled
+shell moved with the facing — so a footprint copied from that answer pinned the door apron to the `−z`
+side of a room whose door opens `+z`. That is a studio defect and it is fixed (`TN12`): the endpoint reads
+the placement's `facing` and `footprint`, and answers the iron seat alongside them.
 
 ## What the loop cost
 
