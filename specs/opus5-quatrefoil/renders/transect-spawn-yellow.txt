@@ -1,69 +1,69 @@
 ## spawn-yellow (spawn) along x
-TRANSECT 29 stations from (68, 86) to (96, 86), every 1
+TRANSECT 29 stations from (20, 38) to (48, 38), every 1
   station        ground  surface  water  top  standing            step
-  (   68,    86)      16       16           16                      
-  (   69,    86)      16       16           16                      
-  (   70,    86)      15       15           15                      -1
-  (   71,    86)      15       15           15                      
-  (   72,    86)      15       15           15                      
-  (   73,    86)      14       14           14                      -1
-  (   74,    86)      13       13           13                      -1
-  (   75,    86)      12       12           12                      -1
-  (   76,    86)      10       10           10                      -2
-  (   77,    86)      10       10           20  spawn spawn-1#2     
-  (   78,    86)      10       10           20  spawn spawn-1#2     
-  (   79,    86)      10       10           20  spawn spawn-1#2     
-  (   80,    86)      10       10           20  spawn spawn-1#2     
-  (   81,    86)      10       10           20  spawn spawn-1#2     
-  (   82,    86)      10       10           20  spawn spawn-1#2     
-  (   83,    86)      10       10           20  spawn spawn-1#2     
-  (   84,    86)      10       10           20  spawn spawn-1#2     
-  (   85,    86)      10       10           20  spawn spawn-1#2     
-  (   86,    86)      10       10           20  spawn spawn-1#2     
-  (   87,    86)      10       10           20  spawn spawn-1#2     
-  (   88,    86)      10       10           20  spawn spawn-1#2     
-  (   89,    86)      10       10           20  spawn spawn-1#2     
-  (   90,    86)      10       10           20  spawn spawn-1#2     
-  (   91,    86)      10       10           20  spawn spawn-1#2     
-  (   92,    86)      10       10           20  spawn spawn-1#2     
-  (   93,    86)      10       10           20  spawn spawn-1#2     
-  (   94,    86)      10       10           20  spawn spawn-1#2     
-  (   95,    86)      10       10           10                      
-  (   96,    86)                                                    void
-rises 0, falls 5, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn spawn-1#2 at (77, 84)
+  (   20,    38)       9        9            9  stroke track-east#2  
+  (   21,    38)       9        9            9  stroke track-east#2  
+  (   22,    38)       9        9            9  stroke track-east#2  
+  (   23,    38)       9        9            9  stroke track-east#2  
+  (   24,    38)       9        9            9  stroke track-east#2  
+  (   25,    38)       9        9            9  stroke track-east#2  
+  (   26,    38)       9        9            9                      
+  (   27,    38)       9        9            9                      
+  (   28,    38)       9        9            9                      
+  (   29,    38)       9        9            9                      
+  (   30,    38)       9        9            9                      
+  (   31,    38)       9        9            9                      
+  (   32,    38)       9        9            9                      
+  (   33,    38)       9        9           19  spawn spawn-1#2     
+  (   34,    38)       9        9           19  spawn spawn-1#2     
+  (   35,    38)       9        9           19  spawn spawn-1#2     
+  (   36,    38)       9        9           19  spawn spawn-1#2     
+  (   37,    38)       9        9           19  spawn spawn-1#2     
+  (   38,    38)       9        9           19  spawn spawn-1#2     
+  (   39,    38)       9        9           19  spawn spawn-1#2     
+  (   40,    38)       9        9           19  spawn spawn-1#2     
+  (   41,    38)       9        9           19  spawn spawn-1#2     
+  (   42,    38)       9        9           19  spawn spawn-1#2     
+  (   43,    38)       9        9           19  spawn spawn-1#2     
+  (   44,    38)       9        9           19  spawn spawn-1#2     
+  (   45,    38)       9        9           19  spawn spawn-1#2     
+  (   46,    38)       9        9           19  spawn spawn-1#2     
+  (   47,    38)       9        9            9                      
+  (   48,    38)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track-east#2 at (19, 36), spawn spawn-1#2 at (33, 36)
 
 ## spawn-yellow (spawn) along z
-TRANSECT 29 stations from (86, 68) to (86, 96), every 1
+TRANSECT 29 stations from (38, 20) to (38, 48), every 1
   station        ground  surface  water  top  standing            step
-  (   86,    68)      13       13           13  stroke track-south#2  
-  (   86,    69)      13       13           13  stroke track-south#2  
-  (   86,    70)      13       13           13  stroke track-south#2  
-  (   86,    71)      12       12           12  stroke track-south#2  -1
-  (   86,    72)      12       12           12  stroke track-south#2  
-  (   86,    73)      12       12           12  stroke track-south#2  
-  (   86,    74)      12       12           12  stroke track-south#2  
-  (   86,    75)      11       11           11  stroke track-south#2  -1
-  (   86,    76)      10       10           13  stroke track-south#2  -1
-  (   86,    77)      10       10           13  stroke track-south#2  
-  (   86,    78)      10       10           13  stroke track-south#2  
-  (   86,    79)      10       10           10                      
-  (   86,    80)      10       10           10                      
-  (   86,    81)      10       10           20  spawn spawn-1#2     
-  (   86,    82)      10       10           20  spawn spawn-1#2     
-  (   86,    83)      10       10           20  spawn spawn-1#2     
-  (   86,    84)      10       10           20  spawn spawn-1#2     
-  (   86,    85)      10       10           20  spawn spawn-1#2     
-  (   86,    86)      10       10           20  spawn spawn-1#2     
-  (   86,    87)      10       10           20  spawn spawn-1#2     
-  (   86,    88)      10       10           20  spawn spawn-1#2     
-  (   86,    89)      10       10           20  spawn spawn-1#2     
-  (   86,    90)      10       10           20  spawn spawn-1#2     
-  (   86,    91)      10       10           20  spawn spawn-1#2     
-  (   86,    92)      10       10           20  spawn spawn-1#2     
-  (   86,    93)      10       10           20  spawn spawn-1#2     
-  (   86,    94)      10       10           20  spawn spawn-1#2     
-  (   86,    95)      10       10           10                      
-  (   86,    96)                                                    void
-rises 0, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke track-south#2 at (84, 66), stroke track-east#2 at (84, 73), ironcube spawn-1:0#2 at (85, 77), spawn spawn-1#2 at (84, 81)
+  (   38,    20)       9        9            9  stroke track-south#2  
+  (   38,    21)       9        9            9                      
+  (   38,    22)       9        9            9  stroke track-south#2  
+  (   38,    23)       9        9            9  stroke track-south#2  
+  (   38,    24)       9        9            9  stroke track-south#2  
+  (   38,    25)       9        9            9  stroke track-south#2  
+  (   38,    26)       9        9            9                      
+  (   38,    27)       9        9            9                      
+  (   38,    28)       9        9            9                      
+  (   38,    29)       9        9            9                      
+  (   38,    30)       9        9            9                      
+  (   38,    31)       9        9            9                      
+  (   38,    32)       9        9            9                      
+  (   38,    33)       9        9           19  spawn spawn-1#2     
+  (   38,    34)       9        9           19  spawn spawn-1#2     
+  (   38,    35)       9        9           19  spawn spawn-1#2     
+  (   38,    36)       9        9           19  spawn spawn-1#2     
+  (   38,    37)       9        9           19  spawn spawn-1#2     
+  (   38,    38)       9        9           19  spawn spawn-1#2     
+  (   38,    39)       9        9           19  spawn spawn-1#2     
+  (   38,    40)       9        9           19  spawn spawn-1#2     
+  (   38,    41)       9        9           19  spawn spawn-1#2     
+  (   38,    42)       9        9           19  spawn spawn-1#2     
+  (   38,    43)       9        9           19  spawn spawn-1#2     
+  (   38,    44)       9        9           19  spawn spawn-1#2     
+  (   38,    45)       9        9           19  spawn spawn-1#2     
+  (   38,    46)       9        9           19  spawn spawn-1#2     
+  (   38,    47)       9        9            9                      
+  (   38,    48)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track-south#2 at (36, 18), ironcube spawn-1:0#2 at (40, 30), spawn spawn-1#2 at (36, 33)

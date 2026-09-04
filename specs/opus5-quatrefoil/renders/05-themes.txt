@@ -1,9 +1,8 @@
-THEMES  4 themes over 23708 ground cells, 22 distinct surface blocks
-  moor  14952 cells (63.1%)  48:0 Mossy Cobblestone, 3:1 Coarse Dirt, 98:0 Stone Bricks, 13:0 Gravel, 4:0 Cobblestone, 1:5 Andesite, 12:0 Sand, 5:0 Oak Planks, 1:0 Stone, 24:0 Sandstone, 35:14 Red Wool, 35:11 Blue Wool
-  strand  3116 cells (13.1%)  13:0 Gravel, 12:0 Sand, 24:0 Sandstone
-  brake  3052 cells (12.9%)  3:2 Podzol, 3:1 Coarse Dirt, 98:0 Stone Bricks, 13:0 Gravel, 5:0 Oak Planks, 4:0 Cobblestone, 17:1 Spruce Log, 35:14 Red Wool, 35:11 Blue Wool, 35:4 Yellow Wool, 35:13 Green Wool, 65:2 Ladder
-  keep  2588 cells (10.9%)  24:2 Smooth Sandstone, 24:0 Sandstone, 98:3 Chiseled Stone Bricks, 48:0 Mossy Cobblestone
+THEMES  4 themes over 5904 ground cells, 14 distinct surface blocks
+  moor  3444 cells (58.3%)  48:0 Mossy Cobblestone, 3:1 Coarse Dirt, 98:0 Stone Bricks, 4:0 Cobblestone, 13:0 Gravel, 35:14 Red Wool, 35:11 Blue Wool, 35:4 Yellow Wool, 35:13 Green Wool
+  strand  1104 cells (18.7%)  13:0 Gravel, 24:0 Sandstone, 12:0 Sand
+  brake  730 cells (12.4%)  3:2 Podzol, 3:1 Coarse Dirt, 98:0 Stone Bricks, 13:0 Gravel, 4:0 Cobblestone, 35:14 Red Wool, 35:11 Blue Wool, 35:4 Yellow Wool, 35:13 Green Wool
+  keep  626 cells (10.6%)  98:3 Chiseled Stone Bricks, 24:2 Smooth Sandstone, 24:0 Sandstone, 48:0 Mossy Cobblestone
 borders:
-  brake | moor  956 cells
-  moor | strand  432 cells
-  brake | keep  204 cells
+  brake | moor  460 cells
+  brake | keep  44 cells
