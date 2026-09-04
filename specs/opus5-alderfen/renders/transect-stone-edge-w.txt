@@ -38,8 +38,8 @@ TRANSECT 25 stations from (-64, -68) to (-64, -44), every 1
   (  -64,   -65)      30       30           30                      +1
   (  -64,   -64)      30       30           30                      
   (  -64,   -63)      31       31           31                      +1
-  (  -64,   -62)      34       34           38  tree fir-4          BARRIER +3
-  (  -64,   -61)      33       33           38  tree fir-4          -1
+  (  -64,   -62)      33       33           38  tree fir-4          scramble +2
+  (  -64,   -61)      33       33           38  tree fir-4          
   (  -64,   -60)      33       33           39  tree fir-4          
   (  -64,   -59)      33       33           40  tree fir-4          
   (  -64,   -58)      34       34           38  tree fir-4          +1
@@ -57,5 +57,5 @@ TRANSECT 25 stations from (-64, -68) to (-64, -44), every 1
   (  -64,   -46)      27       97           97  storey              
   (  -64,   -45)      27       97           97  storey              
   (  -64,   -44)      26       97           97  storey              
-rises 8, falls 1, worst step 57: 4 barrier, 0 scramble, 0 drop — BARRIER +3 at (-64, -62); BARRIER +57 at (-64, -57); BARRIER +3 at (-64, -54); BARRIER +3 at (-64, -51) | walked end to end
+rises 8, falls 0, worst step 57: 3 barrier, 1 scramble, 0 drop — scramble +2 at (-64, -62); BARRIER +57 at (-64, -57); BARRIER +3 at (-64, -54); BARRIER +3 at (-64, -51) | walked end to end
 beside: flora cover-brae-w at (-65, -70), tree tree-3 at (-63, -65), tree fir-4 at (-66, -63), boulder stone-edge-w at (-63, -58)

@@ -38,6 +38,8 @@ about it."*
 | What does this refusal mean? | `GET /api/rules?rule=<id>` | inferring from the sentence |
 | What does the house style build? | `POST /room-styles/preview-snapshot?format=png&view=section` (and `plan`; other views 400) | a top-down — every shipped roof fault was visible in a section and invisible from above |
 | What does a whole multi-wing house build? | `POST /terrain/prop-preview` — the prop plus a theme | `preview-snapshot`, which draws a default box |
+| How do I reshape a compiled outline? | `PATCH …/sketch/shapes/{id}/vertices/{index}` moves **one** point; `POST …/vertices {"after": n}` adds one at that edge's midpoint; `DELETE …/vertices/{index}` | a second shape added on top to enlarge it, a subtract to eat into it, or a bend to move one corner |
+| How do I make a whole edge read rougher? | `POST …/sketch/shapes/{id}/bend` with `side: out\|in\|both` (`out` is the default and is the bloat that reads as land) | restating the whole `vertices` array, which is a second copy of the coast |
 
 **A world that is not a stored map** — a community map, a hand-finished world, anything with a
 `map.xml` the studio did not write — is the one case none of the above reaches. `import-folder`
@@ -95,7 +97,7 @@ The one legitimate exception is §1's last row: a world that is not a stored map
 
 ---
 
-## 4. Six failures that have each cost more than one run
+## 4. Seven failures that have each cost more than one run
 
 ### A picture that looks plausible is not a read
 
@@ -142,6 +144,23 @@ wrong explanation of `SK11` and filed a wrong bug against the 3-D preview that t
 Before writing that something is missing, look for it in `GET /api/openapi/v1.json` and say what you
 found. **missing** (no mechanism) · **unreachable** (exists, the surface hid it) · **mistaken** (exists,
 documented, not found) are three different verdicts and only the first is a capability gap.
+
+### The plan was cut up so a theme would have somewhere to hang
+
+A plan states the board's **arrangement** — which ground is where, at what height, next to what. It is not
+the board's shape, and adding pieces to get a shape is the failure. `firnline` is the worked example:
+**13 plan pieces at 6 surface heights**, then `themeByHeight` mapping each height to a theme, so the theme
+partition is the piece partition and the board's look was decided by how it happened to be cut up. It reads
+chopped rather than coherent, and no amount of dressing repairs it.
+
+The same board is **one terrain shape plus two platforms**: author the ground the map is played on as one
+shape (or as few as the arrangement genuinely needs), reshape it per vertex until it reads as ground, then
+put the monument shelf and the middle plateau on `addLayers` slabs over it, each with its own `base_y` and
+its own theme. A piece earns its place by stating something the arrangement needs — a height a lane climbs, a
+room a building is seated in, a footprint the symmetry fans. A piece that exists only so a theme can be hung
+on it should have been a shape scope.
+
+**Construction comes before dressing, and a bad construction cannot be dressed out of.**
 
 ### A layer's paint reaches further down than the layer does
 

@@ -51,9 +51,10 @@ What each key states:
   themeById       {"s3": "gyp-rake"}          theme per compiled shape id (wins over the height rule)
   shapePropsByHeight {"11": {"relief_scope": "exclude"}, ...}   fields merged onto a compiled shape
   shapePropsById  {"s3": {...}}
-  bendShapes      {"bahnhof-30": {"k": 0.22, "wander": 3, "step": 10, "seed": 5}}  the compiled outline
-                  drawn as a coast, through POST /sketch/shapes/{id}/bend after the board is stored: the
-                  outline's own vertices never move and no point ever moves outward, both the studio's
+  bendShapes      {"bahnhof-30": {"k": 0.22, "wander": 3, "step": 10, "seed": 5, "side": "out"}}  the
+                  compiled outline drawn as a coast, through POST /sketch/shapes/{id}/bend after the board
+                  is stored. The outline's own vertices never move; `side` is "out" (the default -- the
+                  slight bloat that reads as land), "in" (keeps the plan's footprint) or "both"
   addShapes       [SketchShape + layer? + group?, ...]  authored shapes, each onto the layer and group it
                   names -- the studio's POST /map/{slug}/sketch/layers/{layerId}/shapes?group={id}. A shape
                   naming neither takes the compiled ground's first group
@@ -731,16 +732,17 @@ def main():
           f"cells={loaded.get('cells')}  groups={loaded.get('groups')}")
 
     # ── the coasts, drawn by the studio over the board it just stored ────────────────────────
-    # A bend is an operation on a stored shape, not a patch this script can apply: the two rules that make
-    # one safe — the outline's own vertices never move, and no point ever moves outward — are the studio's,
-    # and a second copy of them here is a second answer free to disagree. It answers `held`, the points that
-    # had land on neither side and stayed where they were cut.
+    # A bend is an operation on a stored shape, not a patch this script can apply: the rule that makes
+    # one safe — the outline's own vertices never move — is the studio's, and a second copy of it here is a
+    # second answer free to disagree. It answers `held`, the points that had no room on the side asked for
+    # and stayed where they were cut.
     if finish.get("bendShapes"):
         print("== the coasts")
         for shape_id, how in finish["bendShapes"].items():
             status, drew = call("POST", f"/map/{slug}/sketch/shapes/{shape_id}/bend", {
                 "wander": how.get("wander", 3.0), "step": how.get("step", 10),
-                "seed": how.get("seed", 5), "tension": how.get("k", 0.22)}, fatal=False)
+                "seed": how.get("seed", 5), "tension": how.get("k", 0.22),
+                "side": how.get("side", "out")}, fatal=False)
             if status >= 300:
                 continue                                 # the refusal is already printed with its rule id
             print(f"    bent '{shape_id}': {drew.get('vertices')} drawn vertices"

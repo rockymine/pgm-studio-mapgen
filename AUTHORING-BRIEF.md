@@ -186,6 +186,25 @@ a room or a lane that has to be exactly somewhere, and reach for the **relief** 
 shape of ground. A plan that grows a piece per landform is a plan whose paint will grow a theme per piece
 (*What a board is painted with*), and a board authored that way comes out as noise wearing a plan.
 
+`firnline` is what that looks like when it goes wrong: **13 plan pieces at 6 surface heights**, then a
+`themeByHeight` mapping each of those 6 heights to a theme. The theme partition is the height partition,
+which is the piece partition — so the board's look was decided by how it happened to be cut up rather than by
+any reading of the terrain, and it reads chopped instead of coherent. The same board is one terrain shape
+plus two platforms: the monument shelf and the middle plateau, each an `addLayers` slab over the ground with
+its own `base_y` and its own theme. **Construction comes before dressing, and a bad construction cannot be
+dressed out of.**
+
+**A compiled rectangle is reshaped one point at a time.** `PATCH
+/map/{slug}/sketch/shapes/{id}/vertices/{index}` moves one vertex and leaves every other exactly where it was drawn; `POST …/vertices` with
+`{"after": n}` adds one, at the midpoint of that edge when no point is stated, and answers where it landed;
+`DELETE …/vertices/{index}` takes one out. That non-movement is the whole property — a board's shapes abut,
+and an edit that drags a ring's other points opens ground between two that were flush, which is what happens
+when a whole-ring transform is used to pull a corner. `bendShapes` is the other tool and is a *roughener*:
+it moves every cut point at once by a formula, `side` deciding whether the outline bloats (`out`, the
+default), holds its footprint (`in`) or wanders across it (`both`). Reach for the bend to make a whole edge
+read rougher; reach for a vertex to make one place different from the others. Do not reach for a second shape
+to enlarge or eat into the first — that is the move that produces a board nobody can read.
+
 **Announce what you are building at the top of your report before you author anything**, so what you set out
 to do can be read beside what you built.
 

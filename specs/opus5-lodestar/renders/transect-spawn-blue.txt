@@ -8,8 +8,8 @@ TRANSECT 47 stations from (-23, 90) to (23, 90), every 1
   (  -19,    90)                                                    void
   (  -18,    90)                                                    void
   (  -17,    90)                                                    void
-  (  -16,    90)      20       20           20                      
-  (  -15,    90)      23       23           23                      BARRIER +3
+  (  -16,    90)                                                    void
+  (  -15,    90)      23       23           23                      
   (  -14,    90)      23       23           23                      
   (  -13,    90)      23       23           23                      
   (  -12,    90)      23       23           23                      
@@ -39,7 +39,7 @@ TRANSECT 47 stations from (-23, 90) to (23, 90), every 1
   (   12,    90)      23       23           23                      
   (   13,    90)      23       23           23                      
   (   14,    90)      23       23           23                      
-  (   15,    90)      20       20           20                      -3
+  (   15,    90)                                                    void
   (   16,    90)                                                    void
   (   17,    90)                                                    void
   (   18,    90)                                                    void
@@ -48,11 +48,11 @@ TRANSECT 47 stations from (-23, 90) to (23, 90), every 1
   (   21,    90)                                                    void
   (   22,    90)                                                    void
   (   23,    90)                                                    void
-rises 1, falls 1, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (-15, 90) | walked end to end
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: spawn spawn-1#1 at (-7, 88)
 
 ## spawn-blue (spawn) along z
-TRANSECT 29 stations from (0, 72) to (0, 100), every 1
+TRANSECT 27 stations from (0, 72) to (0, 98), every 1
   station        ground  surface  water  top  standing            step
   (    0,    72)      20       20           20  stroke walk-neck#1  
   (    0,    73)      21       21           21  stroke walk-neck#1  +1
@@ -81,7 +81,5 @@ TRANSECT 29 stations from (0, 72) to (0, 100), every 1
   (    0,    96)      23       23           23                      
   (    0,    97)      23       23           23                      
   (    0,    98)      23       23           23                      
-  (    0,    99)      23       23           23                      
-  (    0,   100)      21       21           21                      -2
-rises 3, falls 1, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 3, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: stroke walk-neck#1 at (-2, 70), spawn spawn-1#1 at (-2, 85)

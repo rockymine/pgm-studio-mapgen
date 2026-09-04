@@ -246,37 +246,83 @@ touching. And a **wall**: its width was fixed at compile from the plan's seam, s
 widens the lane past the wall's ends and hands players a way round it. The wall rects are in
 `POST /api/plan/inspect`'s structures feed; veto every edge within 10 blocks of one.
 
-### The bend is the studio's, and it takes land away rather than adding it
+### The bend is the studio's, and the side is the author's
 
 `POST /map/{slug}/sketch/shapes/{shapeId}/bend` draws a compiled outline as a coast, and `drive.py`'s
-`bendShapes` calls it once the board is stored. The two rules that make it safe are the studio's now: **the
-outline's own vertices never move, and no point ever moves outward.** Inward is decided by offering each
-inserted point both perpendiculars and taking whichever lands inside the original ring — right for a ring
-wound either way and for a concave stretch as readily as a convex one.
+`bendShapes` calls it once the board is stored. **The outline's own vertices never move** — that is the rule
+that makes one safe, and it is the studio's. Which way the cut points go is `side`: `out` is the default and
+is the slight bloat that makes a compiled rectangle read as land, `in` keeps the plan's footprint where
+shapes abut on a measured strait, and `both` wanders across the line the plan drew. The side is decided by
+offering each inserted point both perpendiculars and taking the one that lands where it was asked to — right
+for a ring wound either way and for a concave stretch as readily as a convex one, which a shoelace sign is
+not.
 
-**A shoelace sign is what gets this wrong**, and the driver's own copy did, for every board that used it.
-Measured on `opus5-alderfen`'s two rings, compiled against drawn:
+Measured on `opus5-alderfen`'s two rings, compiled against each side:
 
-| ring | compiled | the old local bend | the studio's |
+| ring | compiled | `side: out` | `side: in` |
 |---|---|---|---|
 | `garth-14` | 9750 | 11033 (**+1283**) | 8467 (**−1283**) |
 | `holm-mid-14` | 4800 | 5477 (**+677**) | 4123 (**−677**) |
 
-The same magnitude with the sign reversed, which is the whole of the fault: every bent board grew by the
-amount it was meant to lose, past the plan's own footprint. A board authored against the old coast therefore
-has props standing on ground that no longer exists. Re-driven, the five bend boards lose two props each
-except one, and every one of them is a prop that stood on the growth:
+The same magnitude with the sign reversed, which is the whole of what the side chooses. The studio's outward
+coast is vertex-for-vertex the coast every bent board in `specs/` was authored against, so those boards
+re-drive to the ground their props were placed on.
 
-| board | placed | declined |
-|---|---|---|
-| `opus5-alderfen` | 106 | `steading-e`, `steading-w` |
-| `opus5-blockrealm` | 38 | `tree-4`, `tree-5` |
-| `opus5-quiverstone` | 44 | `birch-1`, `dwelling-e` |
-| `fable-mossgill` | 38 | `tree-10`, `tree-3` |
-| `opus5-lodestar` | 30 | — |
+### Bending is a roughener; reshaping is per vertex
 
-Moving each inside the drawn coast is the fix, and `06-claims.txt` is the read that says where there is room
-(`TS83`).
+A bend moves every cut point on a ring at once by a formula. That is right where a whole edge should read
+rougher and wrong where one place should differ from the others — pulling a bay, widening one flank, cutting
+the notch a lane runs through. Those are one point each, and a bend does them by making the entire outline
+uniformly wobbly and the one place unchanged.
+
+The three routes that do it are `PATCH /map/{slug}/sketch/shapes/{id}/vertices/{index}` (move one point),
+`POST …/vertices` with `{"after": n, "x": …, "z": …}` (add one on that edge, and the answer says the index it
+landed at) and `DELETE …/vertices/{index}`. **Every other point of the outline is exactly where it was drawn
+after each of them.** That is the property the whole thing exists for: a board's shapes abut, and an edit
+that drags a ring's other points opens ground between two that were flush.
+
+State the point in the insert rather than splitting first and moving second: the one call is atomic, so a
+point that would fold the ring leaves the outline untouched, where the two-call form leaves the midpoint
+behind. Omitting `x`/`z` is the other case and is the midpoint anchor — a corner half way along a wall,
+placed before it is decided where it goes. Nine such calls take a one-piece plan's compiled rectangle
+(4 vertices, 24,000 blocks²) to a 12-point outline of 28,084, **+17%**, with all four of the compile's own
+corners still exactly where the plan put them.
+
+`rockymine-map-experiment` is the scale a hand actually works at, and it is larger than a bend's. Its four
+ground shapes are the plan's four rectangles reshaped by hand:
+
+| plan rectangle | compiled | drawn | vertices | Δ |
+|---|---|---|---|---|
+| `piece-25` | 3850 | 3920 | 4 → 11 | +70 |
+| `piece-30` | 5500 | 6351 | 4 → 10 | +851 |
+| `piece-30-2` | 3325 | 3962 | 4 → 9 | +637 |
+| `piece-4-35` | 1575 | 1774 | 4 → 6 | +199 |
+| total | 14250 | 16008 | | **+1758 (+12.3%)** |
+
+Every one grew. Of the 36 drawn vertices, 19 sit **outside** the rectangle they came from by 2 to 20 blocks,
+7 sit inside by 4 to 8, and 10 stay on the edge. The document carries **no Bézier handles at all** —
+`opus5-millrace` inherits its `s0`–`s3` and both spawns from this board and adds none either. A reshape that
+far outward and that uneven is not reachable by any whole-ring transform, and it is reachable one point at a
+time.
+
+### Construction before dressing: a coherent terrain first, platforms as layers
+
+The plan states the board's **arrangement** — which ground is where, at what height, next to what. It is not
+the board's shape, and cutting it into more pieces to get a shape is the failure this section exists to name.
+`firnline` is the worked example of doing it wrong: **13 plan pieces at 6 surface heights**, then
+`themeByHeight` mapping each of those 6 heights to a theme. The theme partition is therefore the height
+partition, which is the piece partition — the board's look is decided by how it happened to be cut up rather
+than by any reading of the terrain, and it comes out chopped instead of coherent.
+
+The order that works is the other way round. Author the terrain the map is played on as **one shape**, or as
+few as the arrangement genuinely needs, and reshape it per vertex until it reads as ground. Then put the
+platforms a match needs — a monument shelf, a middle plateau — on **layers over it**, which is what a layer
+is for: `addLayers` with a `base_y`, a footprint, and its own theme. `firnline`'s 13 pieces are one terrain
+shape plus two platforms.
+
+A plan piece earns its place by stating something the arrangement needs: a height a lane climbs, a room a
+building is seated in, a footprint the symmetry fans. A piece that exists only so a theme can be hung on it
+is a piece that should have been a shape scope.
 
 ### A corner recipe does not make a coastline: a closed ring wants tangent continuity
 
