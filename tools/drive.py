@@ -29,6 +29,7 @@ the route is right and this file is wrong. Each row names its route.
   themeByHeight       the same, over every compiled shape standing at that height
   shapePropsById      PATCH  /map/{slug}/sketch/shapes/{shapeId}
   shapePropsByHeight  the same, by height
+  editShapes          PATCH/POST/DELETE /map/{slug}/sketch/shapes/{shapeId}/vertices[/{index}]
   bendShapes          POST   /map/{slug}/sketch/shapes/{shapeId}/bend
   relief              PUT    /map/{slug}/sketch/relief/{groupId}
   themes              PUT    /map/{slug}/sketch/themes/{themeId}
@@ -52,6 +53,12 @@ What each key states:
   themeById       {"s3": "gyp-rake"}          theme per compiled shape id (wins over the height rule)
   shapePropsByHeight {"11": {"relief_scope": "exclude"}, ...}   fields merged onto a compiled shape
   shapePropsById  {"s3": {...}}
+  editShapes      {"garth-14": [{"after": 1, "x": 92, "z": -70}, {"index": 4, "x": 80, "z": -60},
+                  {"remove": 7}]}  the outline reshaped one point at a time, in order, after the board is
+                  stored and before any bend. `after` inserts a point on that edge (at its midpoint when no
+                  x/z is stated), `index` moves the point there, `remove` drops it; every other point of the
+                  outline stays exactly where it was drawn. An op naming none or more than one of the three
+                  is a spec fault and stops the run
   bendShapes      {"bahnhof-30": {"k": 0.22, "wander": 3, "step": 10, "seed": 5, "side": "out"}}  the
                   compiled outline drawn as a coast, through POST /sketch/shapes/{id}/bend after the board
                   is stored. The outline's own vertices never move; `side` is "out" (the default -- the
@@ -731,6 +738,39 @@ def main():
     slug = loaded["slug"]
     print(f"    slug={slug}  {'replaced' if loaded.get('replaced') else 'new'}  "
           f"cells={loaded.get('cells')}  groups={loaded.get('groups')}")
+
+    # ── the outlines, edited one point at a time ─────────────────────────────────────────────
+    # The three per-vertex routes are what reshapes a compiled rectangle into ground, and every other point
+    # of an outline stays where it was drawn — which is what a whole-ring transform cannot do and what keeps
+    # two abutting shapes flush. They run before the bend, since a bend resamples whatever ring it is given.
+    #
+    # Each op names exactly one index: `after` inserts a point on that edge, `index` moves the point there,
+    # `remove` drops it. An insert answers where the point landed, which the run prints, because every index
+    # after an insert or a delete has shifted and the next op is stated against the ring as it now is.
+    if finish.get("editShapes"):
+        print("== the outlines")
+        for shape_id, ops in finish["editShapes"].items():
+            for at, op in enumerate(ops):
+                named = [key for key in ("after", "index", "remove") if key in op]
+                if len(named) != 1:
+                    raise SystemExit(f"editShapes['{shape_id}'][{at}] names {named or 'no index'}; an op "
+                                     f"states exactly one of after (insert), index (move), remove (drop)")
+                where = named[0]
+                if where == "remove":
+                    status, wrote = call("DELETE", f"/map/{slug}/sketch/shapes/{shape_id}/vertices/{op['remove']}",
+                                         fatal=False)
+                elif where == "index":
+                    status, wrote = call("PATCH", f"/map/{slug}/sketch/shapes/{shape_id}/vertices/{op['index']}",
+                                         {"x": op["x"], "z": op["z"]}, fatal=False)
+                else:
+                    body = {"after": op["after"]}
+                    if "x" in op: body["x"], body["z"] = op["x"], op["z"]
+                    status, wrote = call("POST", f"/map/{slug}/sketch/shapes/{shape_id}/vertices", body, fatal=False)
+                if status >= 300:
+                    continue                             # the refusal is already printed with its rule id
+                print(f"    '{shape_id}' {where} {op[where]}: vertex {wrote.get('index')} of "
+                      f"{wrote.get('vertices')}")
+        _, layout = call("GET", f"/map/{slug}/sketch")
 
     # ── the coasts, drawn by the studio over the board it just stored ────────────────────────
     # A bend is an operation on a stored shape, not a patch this script can apply: the rule that makes

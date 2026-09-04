@@ -288,6 +288,18 @@ placed before it is decided where it goes. Nine such calls take a one-piece plan
 (4 vertices, 24,000 blocks²) to a 12-point outline of 28,084, **+17%**, with all four of the compile's own
 corners still exactly where the plan put them.
 
+**A spec states them under `editShapes`**, an ordered list per shape replayed after the store and **before**
+any bend, since a bend resamples whatever ring it is given. Each op names exactly one index — `after` inserts
+a point on that edge, `index` moves the point there, `remove` drops it — and one naming none or two stops the
+run rather than guessing. The indices shift as the ring grows and shrinks, which is why the run prints where
+each point landed:
+
+```json
+"editShapes": {"garth-14": [{"after": 1, "x": 92, "z": -70},
+                            {"index": 4, "x": 80, "z": -60},
+                            {"remove": 7}]}
+```
+
 `rockymine-map-experiment` is the scale a hand actually works at, and it is larger than a bend's. Its four
 ground shapes are the plan's four rectangles reshaped by hand:
 

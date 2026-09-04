@@ -197,7 +197,8 @@ dressed out of.**
 **A compiled rectangle is reshaped one point at a time.** `PATCH
 /map/{slug}/sketch/shapes/{id}/vertices/{index}` moves one vertex and leaves every other exactly where it was drawn; `POST …/vertices` with
 `{"after": n}` adds one, at the midpoint of that edge when no point is stated, and answers where it landed;
-`DELETE …/vertices/{index}` takes one out. That non-movement is the whole property — a board's shapes abut,
+`DELETE …/vertices/{index}` takes one out, and a spec states the three as `editShapes`, an ordered list per
+  shape replayed before any bend. That non-movement is the whole property — a board's shapes abut,
 and an edit that drags a ring's other points opens ground between two that were flush, which is what happens
 when a whole-ring transform is used to pull a corner. `bendShapes` is the other tool and is a *roughener*:
 it moves every cut point at once by a formula, `side` deciding whether the outline bloats (`out`, the
