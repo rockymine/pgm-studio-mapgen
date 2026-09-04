@@ -40,6 +40,7 @@ about it."*
 | What does a whole multi-wing house build? | `POST /terrain/prop-preview` — the prop plus a theme | `preview-snapshot`, which draws a default box |
 | How do I reshape a compiled outline? | `PATCH …/sketch/shapes/{id}/vertices/{index}` moves **one** point; `POST …/vertices {"after": n}` adds one at that edge's midpoint; `DELETE …/vertices/{index}` | a second shape added on top to enlarge it, a subtract to eat into it, or a bend to move one corner |
 | How do I make a whole edge read rougher? | `POST …/sketch/shapes/{id}/bend` with `side: out\|in\|both` (`out` is the default and is the bloat that reads as land) | restating the whole `vertices` array, which is a second copy of the coast |
+| How do I get a flowing wall, lane or watercourse? | a `path` **shape** — the rasterizer splines its points (centripetal Catmull-Rom, 8 samples a segment) before offsetting the band, so 4 clicked points draw as a curve. `path_edge`: `solid` \| `rough` \| `tapered` | a chain of rectangles, or hand-authored `controls` |
 
 **A world that is not a stored map** — a community map, a hand-finished world, anything with a
 `map.xml` the studio did not write — is the one case none of the above reaches. `import-folder`

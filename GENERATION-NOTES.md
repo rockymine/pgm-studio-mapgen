@@ -300,10 +300,18 @@ ground shapes are the plan's four rectangles reshaped by hand:
 | total | 14250 | 16008 | | **+1758 (+12.3%)** |
 
 Every one grew. Of the 36 drawn vertices, 19 sit **outside** the rectangle they came from by 2 to 20 blocks,
-7 sit inside by 4 to 8, and 10 stay on the edge. The document carries **no Bézier handles at all** —
-`opus5-millrace` inherits its `s0`–`s3` and both spawns from this board and adds none either. A reshape that
-far outward and that uneven is not reachable by any whole-ring transform, and it is reachable one point at a
-time.
+7 sit inside by 4 to 8, and 10 stay on the edge. The document carries **no Bézier handles at all**. A reshape
+that far outward and that uneven is not reachable by any whole-ring transform, and it is reachable one point
+at a time.
+
+`opus5-millrace` inherits `s0`–`s3` and both spawns from this board **vertex for vertex** and adds no handles
+either — its curves are `path` shapes, which is the layout's other curve and the one nothing has to author.
+The three canal walls are `wall-s`, `wall-n-w` and `wall-n-e`: three or four clicked points, `radius 1`,
+`path_edge: solid`. The rasterizer runs a path's points through a centripetal Catmull-Rom spline at eight
+samples a segment before offsetting the band, so four points become a twenty-five-point centreline and the
+wall draws as a curve. `cairn-wall-0`–`2` are the same shape at nine or ten points over about twenty blocks.
+Reach for a path wherever a wall, a lane or a watercourse should flow; reach for `controls` only on a closed
+ring of ground.
 
 ### Construction before dressing: a coherent terrain first, platforms as layers
 
