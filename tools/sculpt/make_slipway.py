@@ -260,25 +260,25 @@ ROADS = [
     # The waterfront's back lane, from the goal dock east past the port. It starts where the crane dock ends
     # — a road through a crane's sill is a road broken by it — and runs along the **back** of the quay, which
     # leaves the eighteen blocks between it and the water as working ground rather than a verge.
-    {"id": "quay-road", "kind": "path", "seed": 3, "route": True, "radius": 3, "coverage": 0.95,
+    {"id": "quay-road", "kind": "stroke", "seed": 3, "claimsGround": True, "radius": 3, "coverage": 0.95,
      "points": [[-24, 38], [4, 40], [30, 38], [58, 34], [92, 32]],
      "pave": {"kind": "solid", "id": 98, "data": 0}},
     # Behind the crane, along the back of the dock and into the town: the lane a load leaves the quay by.
-    {"id": "dock-road", "kind": "path", "seed": 8, "route": True, "radius": 3, "coverage": 0.9,
+    {"id": "dock-road", "kind": "stroke", "seed": 8, "claimsGround": True, "radius": 3, "coverage": 0.9,
      "points": [[-66, 40], [-44, 40], [-30, 42], [-18, 44]],
      "pave": {"kind": "solid", "id": 98, "data": 0}},
     # Up out of the dock, round the terrace row's western end and along the foot of the hill. It leaves the
     # dock town uncrossed on purpose: a twenty-block strip with a road down it holds no house, and the row
     # across the middle is the one thing joining the two towns.
-    {"id": "town-road", "kind": "path", "seed": 4, "route": True, "radius": 3, "coverage": 0.9,
+    {"id": "town-road", "kind": "stroke", "seed": 4, "claimsGround": True, "radius": 3, "coverage": 0.9,
      "points": [[-18, 44], [-26, 54], [-32, 62], [-20, 66], [2, 70]],
      "pave": {"kind": "solid", "id": 4, "data": 0}},
     # The lane to the back settlement, past the goal that stands in front of it.
-    {"id": "back-road", "kind": "path", "seed": 5, "route": True, "radius": 3, "coverage": 0.9,
+    {"id": "back-road", "kind": "stroke", "seed": 5, "claimsGround": True, "radius": 3, "coverage": 0.9,
      "points": [[-20, 66], [10, 64], [34, 70], [48, 82], [54, 92]],
      "pave": {"kind": "solid", "id": 4, "data": 0}},
     # And up over the hill to the spawn.
-    {"id": "spawn-road", "kind": "path", "seed": 6, "route": True, "radius": 3, "coverage": 0.9,
+    {"id": "spawn-road", "kind": "stroke", "seed": 6, "claimsGround": True, "radius": 3, "coverage": 0.9,
      "points": [[-20, 66], [-22, 84], [-10, 98], [0, 114]],
      "pave": {"kind": "solid", "id": 4, "data": 0}},
 ]

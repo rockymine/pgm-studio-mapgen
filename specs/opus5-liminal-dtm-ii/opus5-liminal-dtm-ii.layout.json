@@ -5976,8 +5976,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -6023,8 +6023,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -6070,8 +6070,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -6125,8 +6125,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -6172,8 +6172,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -6202,8 +6202,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": "hold",
@@ -6234,8 +6234,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -8713,7 +8713,7 @@
     ],
     "radius": 3,
     "style": "solid",
-    "route": true,
+    "claimsGround": true,
     "layer": "ground",
     "pave": {
      "kind": "noise",
@@ -8762,7 +8762,7 @@
     ],
     "radius": 3,
     "style": "solid",
-    "route": true,
+    "claimsGround": true,
     "layer": "ground",
     "pave": {
      "kind": "noise",
@@ -8788,7 +8788,7 @@
     "id": "way-out",
     "seed": 51,
     "layer": "ground",
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       104,
@@ -8820,7 +8820,7 @@
     "id": "way-taiga",
     "seed": 52,
     "layer": "ground",
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       104,

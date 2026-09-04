@@ -892,12 +892,12 @@
       },
       {
         "id": "path-1",
-        "kind": "path",
+        "kind": "stroke",
         "seed": 9,
         "style": "worn",
         "radius": 3,
         "coverage": 0.9,
-        "route": true,
+        "claimsGround": true,
         "pave": {
           "kind": "cell",
           "seed": 1,

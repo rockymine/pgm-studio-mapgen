@@ -648,10 +648,10 @@ def dressing():
     # the road out of the spawn, forking to the two goals — the circulation diagram, drawn
     props.append({"id": "road-w", "kind": "stroke", "seed": 270,
                   "points": [[0, 188], [-20, 176], [-34, 166], [-38, 150]],
-                  "radius": 2, "style": "worn", "coverage": 0.7, "route": True, "pave": COARSE})
+                  "radius": 2, "style": "worn", "coverage": 0.7, "claimsGround": True, "pave": COARSE})
     props.append({"id": "road-e", "kind": "stroke", "seed": 271,
                   "points": [[0, 188], [18, 178], [30, 166], [36, 150]],
-                  "radius": 2, "style": "worn", "coverage": 0.7, "route": True, "pave": COARSE})
+                  "radius": 2, "style": "worn", "coverage": 0.7, "claimsGround": True, "pave": COARSE})
     return {"props": props}
 
 

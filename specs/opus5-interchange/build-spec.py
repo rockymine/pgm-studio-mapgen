@@ -581,28 +581,28 @@ props += [
      "spec": {"coverage": 0.32, "scale": 14, "octaves": 2, "fernShare": 0.08,
               "flowerShare": 0.2, "flowerScale": 11, "tallShare": 0.06}},
     # the road in: spawn to the court crossing to the plaza, drawn before the scenery
-    {"id": "road-in", "kind": "path", "seed": 3, "style": "solid", "radius": 3.0,
-     "coverage": 1.0, "route": True,
+    {"id": "road-in", "kind": "stroke", "seed": 3, "style": "solid", "radius": 3.0,
+     "coverage": 1.0, "claimsGround": True,
      "pave": voronoi(6, 3, [(SLAB, 2), (STONE_BRICK, 1), (COBBLE, 1)]),
      "points": [[0, 120], [0, 106], [0, 92], [0, 78], [0, 56], [0, 30], [0, 6]]},
     # The markings. A stroke repaints the surface it crosses and adds no block, so it is the only
     # way to draw a line on a floor — and none of these states `route`, because a route claims its
     # cells against the props and nothing here is a way through that a kiosk must keep off.
     # the traffic worn into the corridor's ring, which goes round the core because nothing else can
-    {"id": "worn-doors", "kind": "path", "seed": 13, "style": "worn", "radius": 2.0,
+    {"id": "worn-doors", "kind": "stroke", "seed": 13, "style": "worn", "radius": 2.0,
      "coverage": 0.55, "pave": voronoi(8, 3, [(CLAY_LTGRAY, 2), (GRAVEL, 1)]),
      "points": [[17, 46], [17, 76], [47, 76], [47, 50], [30, 47], [17, 47]]},
     # and the track worn across the car deck, which is the only thing up there that says anyone came
-    {"id": "worn-deck", "kind": "path", "seed": 14, "style": "worn", "radius": 2.0,
+    {"id": "worn-deck", "kind": "stroke", "seed": 14, "style": "worn", "radius": 2.0,
      "coverage": 0.5, "pave": voronoi(9, 3, [(CLAY_LTGRAY, 2), (GRAVEL, 1)]),
      "points": [[-12, 58], [-24, 62], [-30, 76], [-42, 78]]},
     # two spurs off the court's own gates, which are the only ways onto either lawn
-    {"id": "road-court-w", "kind": "path", "seed": 4, "style": "worn", "radius": 2.0,
-     "coverage": 0.85, "route": True,
+    {"id": "road-court-w", "kind": "stroke", "seed": 4, "style": "worn", "radius": 2.0,
+     "coverage": 0.85, "claimsGround": True,
      "pave": voronoi(7, 3, [(GRAVEL, 2), (COBBLE, 1)]),
      "points": [[-34, 80], [-34, 92]]},
-    {"id": "road-court-e", "kind": "path", "seed": 5, "style": "worn", "radius": 2.0,
-     "coverage": 0.85, "route": True,
+    {"id": "road-court-e", "kind": "stroke", "seed": 5, "style": "worn", "radius": 2.0,
+     "coverage": 0.85, "claimsGround": True,
      "pave": voronoi(7, 3, [(GRAVEL, 2), (COBBLE, 1)]),
      "points": [[34, 80], [34, 92]]},
 ]

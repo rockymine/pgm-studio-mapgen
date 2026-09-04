@@ -287,8 +287,8 @@
         ]
        }
       },
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -513,8 +513,8 @@
         ]
        }
       },
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -541,8 +541,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": "hold",
@@ -569,8 +569,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -1385,7 +1385,7 @@
   "props": [
    {
     "id": "road",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 2,
     "style": "solid",
     "radius": 2.5,
@@ -1448,7 +1448,7 @@
    },
    {
     "id": "spur-tor",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 3,
     "style": "worn",
     "radius": 2.0,
@@ -1479,7 +1479,7 @@
    },
    {
     "id": "spur-delve",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 5,
     "style": "worn",
     "radius": 2.0,
@@ -1510,7 +1510,7 @@
    },
    {
     "id": "spur-w",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 6,
     "style": "worn",
     "radius": 1.5,
@@ -1541,7 +1541,7 @@
    },
    {
     "id": "spur-e",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 7,
     "style": "worn",
     "radius": 1.5,
@@ -1572,7 +1572,7 @@
    },
    {
     "id": "turf-tor",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 21,
     "style": "rough",
     "radius": 5.0,
@@ -1622,7 +1622,7 @@
    },
    {
     "id": "turf-tor-2",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 22,
     "style": "worn",
     "radius": 4.0,
@@ -1668,7 +1668,7 @@
    },
    {
     "id": "turf-knap",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 23,
     "style": "worn",
     "radius": 4.0,
@@ -1714,7 +1714,7 @@
    },
    {
     "id": "turf-shoulder",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 24,
     "style": "worn",
     "radius": 4.5,
@@ -1760,7 +1760,7 @@
    },
    {
     "id": "turf-hummock",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 25,
     "style": "worn",
     "radius": 4.0,
@@ -1806,7 +1806,7 @@
    },
    {
     "id": "turf-gate-w",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 27,
     "style": "worn",
     "radius": 4.0,
@@ -1852,7 +1852,7 @@
    },
    {
     "id": "turf-tor-3",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 61,
     "style": "worn",
     "radius": 4.5,
@@ -1898,7 +1898,7 @@
    },
    {
     "id": "turf-tor-4",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 62,
     "style": "worn",
     "radius": 4.0,
@@ -1944,7 +1944,7 @@
    },
    {
     "id": "turf-tor-5",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 63,
     "style": "worn",
     "radius": 4.0,
@@ -1990,7 +1990,7 @@
    },
    {
     "id": "turf-knap-2",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 64,
     "style": "worn",
     "radius": 3.5,
@@ -2036,7 +2036,7 @@
    },
    {
     "id": "turf-shoulder2",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 65,
     "style": "worn",
     "radius": 4.0,
@@ -2082,7 +2082,7 @@
    },
    {
     "id": "turf-hummock2",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 66,
     "style": "worn",
     "radius": 3.5,
@@ -2128,7 +2128,7 @@
    },
    {
     "id": "turf-isle-a",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 67,
     "style": "worn",
     "radius": 4.5,
@@ -2174,7 +2174,7 @@
    },
    {
     "id": "turf-isle-b",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 68,
     "style": "worn",
     "radius": 4.0,
@@ -2220,7 +2220,7 @@
    },
    {
     "id": "dirt-mid",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 31,
     "style": "worn",
     "radius": 8.0,
@@ -2266,7 +2266,7 @@
    },
    {
     "id": "dirt-north",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 32,
     "style": "worn",
     "radius": 5.0,
@@ -2312,7 +2312,7 @@
    },
    {
     "id": "scree",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 33,
     "style": "rough",
     "radius": 6.0,
@@ -2366,7 +2366,7 @@
    },
    {
     "id": "delve-floor",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 34,
     "style": "rough",
     "radius": 6.0,
@@ -2413,7 +2413,7 @@
    },
    {
     "id": "isle-turf",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 35,
     "style": "worn",
     "radius": 6.0,
@@ -2459,7 +2459,7 @@
    },
    {
     "id": "isle-dirt",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 36,
     "style": "worn",
     "radius": 6.0,

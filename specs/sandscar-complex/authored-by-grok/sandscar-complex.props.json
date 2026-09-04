@@ -24,7 +24,7 @@
     "front": "posZ"
   },
   {
-    "kind": "path",
+    "kind": "stroke",
     "id": "path-spawn-to-west",
     "seed": 101,
     "points": [[0, 24], [-3, 20], [-5, 16]],
@@ -46,7 +46,7 @@
     }
   },
   {
-    "kind": "path",
+    "kind": "stroke",
     "id": "path-spawn-to-east",
     "seed": 102,
     "points": [[0, 24], [3, 20], [5, 16]],
@@ -68,7 +68,7 @@
     }
   },
   {
-    "kind": "path",
+    "kind": "stroke",
     "id": "path-to-front",
     "seed": 103,
     "points": [[0, 22], [0, 14], [0, 6]],
@@ -89,7 +89,7 @@
     }
   },
   {
-    "kind": "path",
+    "kind": "stroke",
     "id": "river-meander",
     "seed": 201,
     "points": [

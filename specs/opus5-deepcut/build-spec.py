@@ -263,7 +263,7 @@ def flora(ident, ring, coverage, seed, scale=9, fern=0.1, flower=0.3, tall=0.06)
 
 
 def stroke(ident, points, radius, pave, style="worn", coverage=0.4, route=False, seed=1):
-    out = {"id": ident, "kind": "path", "seed": seed, "style": style, "radius": radius,
+    out = {"id": ident, "kind": "stroke", "seed": seed, "style": style, "radius": radius,
            "coverage": coverage, "pave": pave}
     if route:
         out["route"] = True

@@ -391,8 +391,8 @@
         ]
        }
       },
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -607,8 +607,8 @@
         ]
        }
       },
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -654,8 +654,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -701,8 +701,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -731,8 +731,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": "hold",
@@ -763,8 +763,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -896,7 +896,7 @@
      },
      {
       "id": "fold-n",
-      "type": "path",
+      "type": "polyline",
       "operation": "add",
       "override": true,
       "keepClear": true,
@@ -963,8 +963,8 @@
        ]
       ],
       "radius": 1.0,
-      "path_edge": "solid",
-      "path_seed": 11,
+      "stroke_edge": "solid",
+      "stroke_seed": 11,
       "floor": 19,
       "base_height": 3,
       "skirt": 0,
@@ -974,7 +974,7 @@
      },
      {
       "id": "fold-s",
-      "type": "path",
+      "type": "polyline",
       "operation": "add",
       "override": true,
       "keepClear": true,
@@ -1041,8 +1041,8 @@
        ]
       ],
       "radius": 1.0,
-      "path_edge": "solid",
-      "path_seed": 12,
+      "stroke_edge": "solid",
+      "stroke_seed": 12,
       "floor": 19,
       "base_height": 3,
       "skirt": 0,
@@ -1052,7 +1052,7 @@
      },
      {
       "id": "quay-n",
-      "type": "path",
+      "type": "polyline",
       "operation": "add",
       "override": true,
       "keepClear": true,
@@ -1079,8 +1079,8 @@
        ]
       ],
       "radius": 1.0,
-      "path_edge": "solid",
-      "path_seed": 13,
+      "stroke_edge": "solid",
+      "stroke_seed": 13,
       "floor": 8,
       "base_height": 7,
       "skirt": 0,
@@ -3869,7 +3869,7 @@
     "radius": 2.5,
     "style": "rough",
     "coverage": 0.8,
-    "route": true,
+    "claimsGround": true,
     "pave": {
      "kind": "noise",
      "seed": 61,
@@ -3925,7 +3925,7 @@
     "radius": 2.5,
     "style": "rough",
     "coverage": 0.8,
-    "route": true,
+    "claimsGround": true,
     "pave": {
      "kind": "noise",
      "seed": 62,
@@ -3981,7 +3981,7 @@
     "radius": 2.5,
     "style": "rough",
     "coverage": 0.8,
-    "route": true,
+    "claimsGround": true,
     "pave": {
      "kind": "noise",
      "seed": 63,

@@ -973,7 +973,7 @@
    },
    {
     "id": "home-path",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 31,
     "style": "solid",
     "radius": 2.2,
@@ -1010,7 +1010,7 @@
       }
      ]
     },
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       0,
@@ -1032,7 +1032,7 @@
    },
    {
     "id": "fold-path",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 32,
     "style": "worn",
     "radius": 2.0,
@@ -1061,7 +1061,7 @@
       }
      ]
     },
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       31,

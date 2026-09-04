@@ -629,7 +629,7 @@ plan = {
 # do. Two are authored and fanned into four.
 def road(ident, points):
     return {"kind": "stroke", "id": ident, "seed": 4, "points": points, "radius": 3,
-            "style": "solid", "route": True, "layer": "ground",
+            "style": "solid", "claimsGround": True, "layer": "ground",
             "pave": noise(6, 9, 2, [solid(13), solid(4)])}
 
 
@@ -695,10 +695,10 @@ TAIGA_FLORA = [{
 # map is; gravel and stone along the edge to the Snowy Taiga, which is the guideline the brief
 # asks for rather than a road.
 WAYS = [
-    {"kind": "stroke", "id": "way-out", "seed": 51, "layer": "ground", "route": True,
+    {"kind": "stroke", "id": "way-out", "seed": 51, "layer": "ground", "claimsGround": True,
      "points": [[SPAWN_ROOM[0], 70], [96, 58], [92, 44], [90, 34]], "radius": 2,
      "style": "solid", "pave": solid(35, 1)},
-    {"kind": "stroke", "id": "way-taiga", "seed": 52, "layer": "ground", "route": True,
+    {"kind": "stroke", "id": "way-taiga", "seed": 52, "layer": "ground", "claimsGround": True,
      "points": [[SPAWN_ROOM[0], 72], [114, 48], [114, 16], [110, -16]], "radius": 3,
      "style": "worn", "coverage": 0.6, "pave": noise(7, 10, 2, [solid(13), solid(1)])},
 ]

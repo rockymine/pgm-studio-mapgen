@@ -65,8 +65,8 @@ def basin_span(x):
     return (min(hits), max(hits)) if len(hits) >= 2 else (0, 0)
 
 def built(sid, pts, radius, floor, height, th="wrought", seed=7):
-    return {"id": sid, "type": "path", "operation": "add", "override": True, "keepClear": True,
-            "vertices": pts, "radius": radius, "path_edge": "solid", "path_seed": seed,
+    return {"id": sid, "type": "polyline", "operation": "add", "override": True, "keepClear": True,
+            "vertices": pts, "radius": radius, "stroke_edge": "solid", "stroke_seed": seed,
             "floor": floor, "base_height": height, "skirt": 0, "relief_scope": "exclude",
             "theme": th, "height_mode": "level"}
 
@@ -252,9 +252,9 @@ layout["dressing"] = {"props": [
   "bank": {"kind": "cell", "seed": 91, "cellSize": 4, "jitter": 25, "warp": 1,
            "palette": [GRAVEL, COARSE, solid(12, 0)], "rise": 0}},
  {"id": "route", "kind": "stroke", "seed": 21, "layer": "ground", "points": ROUTE_PTS,
-  "radius": 2.5, "style": "worn", "coverage": 0.72, "route": True, "pave": PACKED},
+  "radius": 2.5, "style": "worn", "coverage": 0.72, "claimsGround": True, "pave": PACKED},
  {"id": "route-yard", "kind": "stroke", "seed": 22, "layer": "ground", "points": YARD_PTS,
-  "radius": 2, "style": "worn", "coverage": 0.7, "route": True, "pave": PACKED},
+  "radius": 2, "style": "worn", "coverage": 0.7, "claimsGround": True, "pave": PACKED},
  house("croft-bank", -101, -6, -93, 1, STYLE, "posZ"),
  house("croft-north", -68, 84, -60, 90, VARIANT, "negZ"),
 ] + [oak(f"oak-{n}", x, z, h) for n, (x, z, h) in enumerate((

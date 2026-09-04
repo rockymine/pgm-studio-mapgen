@@ -1176,7 +1176,7 @@
    },
    {
     "id": "street",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 31,
     "style": "solid",
     "radius": 2.6,
@@ -1213,7 +1213,7 @@
       }
      ]
     },
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       -26,
@@ -1239,7 +1239,7 @@
    },
    {
     "id": "ramp-track-e",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 32,
     "style": "worn",
     "radius": 2.4,
@@ -1276,7 +1276,7 @@
       }
      ]
     },
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       26,
@@ -1298,7 +1298,7 @@
    },
    {
     "id": "ramp-track-w",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 36,
     "style": "worn",
     "radius": 2.4,
@@ -1335,7 +1335,7 @@
       }
      ]
     },
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       -26,
@@ -1357,7 +1357,7 @@
    },
    {
     "id": "braid-a",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 33,
     "style": "worn",
     "radius": 3.0,
@@ -1407,7 +1407,7 @@
    },
    {
     "id": "braid-b",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 34,
     "style": "worn",
     "radius": 2.2,
@@ -1457,7 +1457,7 @@
    },
    {
     "id": "foot-wash",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 35,
     "style": "worn",
     "radius": 5.0,

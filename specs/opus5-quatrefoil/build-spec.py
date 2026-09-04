@@ -303,16 +303,16 @@ DRESSING = {"props": [
     # want `worn`, which is the one style that spends its coverage on a scatter; `rough` fills its
     # band solid and turns a track into a stripe.
     {"id": "track-south", "kind": "stroke", "seed": 70, "style": "worn", "coverage": 0.85,
-     "radius": 2, "route": True,
+     "radius": 2, "claimsGround": True,
      "points": [[-86, -77], [-86, -66], [-86, -56], [-85, -46], [-79, -37], [-69, -34], [-59, -33]],
      "pave": cell_pattern(83, 4, [GRAVEL, COARSE, COBBLE, GRAVEL], jitter=100, warp=0)},
     {"id": "track-east", "kind": "stroke", "seed": 71, "style": "worn", "coverage": 0.8,
-     "radius": 2, "route": True,
+     "radius": 2, "claimsGround": True,
      "points": [[-84, -75], [-72, -72], [-60, -71], [-50, -74], [-44, -78], [-39, -69], [-36, -59]],
      "pave": cell_pattern(84, 4, [GRAVEL, COARSE, COBBLE, GRAVEL], jitter=100, warp=0)},
     # the trodden crest of each spit — the lane every crossing runs along
     {"id": "spit-lane", "kind": "stroke", "seed": 72, "style": "worn", "coverage": 0.7,
-     "radius": 3, "route": True,
+     "radius": 3, "claimsGround": True,
      "points": [[-97, 1], [-86, -2], [-74, 1], [-62, -1], [-50, 0]],
      "pave": cell_pattern(85, 5, [GRAVEL, SANDSTONE, SAND, GRAVEL], jitter=100, warp=0)},
     {"id": "flora-spit", "kind": "flora", "seed": 254,

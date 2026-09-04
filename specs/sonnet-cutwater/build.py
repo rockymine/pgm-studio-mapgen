@@ -75,8 +75,8 @@ WALL_TOP, WALL_FLOOR = 33, 11
 BRIDGE_X = -82                              # the canal's narrowest crossing, measured off S0
 
 def wall(sid, pts, seed):
-    return {"id": sid, "type": "path", "operation": "add", "override": True, "keepClear": True,
-            "vertices": pts, "radius": 1.6, "path_edge": "solid", "path_seed": seed,
+    return {"id": sid, "type": "polyline", "operation": "add", "override": True, "keepClear": True,
+            "vertices": pts, "radius": 1.6, "stroke_edge": "solid", "stroke_seed": seed,
             "floor": WALL_FLOOR, "base_height": WALL_TOP - WALL_FLOOR, "height_mode": "level",
             "skirt": 0, "theme": "quay"}
 
@@ -285,9 +285,9 @@ layout["dressing"] = {"props": [
     {"id": "canal-water", "kind": "water", "seed": 7, "layer": "ground", "shape": "pool",
      "points": densify(expand(S0, 15)), "radius": 20, "depth": WATER - BED, "shore": 1,
      "shoreWander": False, "edge": 0.6, "level": WATER, "bank": GRAVEL},
-    {"id": "road-bridge-n", "kind": "stroke", "seed": 41, "route": True, "radius": 2,
+    {"id": "road-bridge-n", "kind": "stroke", "seed": 41, "claimsGround": True, "radius": 2,
      "points": [[-58, 108], [-64, 96], [BRIDGE_X, Z1]], "pave": GRAVEL},
-    {"id": "road-bridge-s", "kind": "stroke", "seed": 42, "route": True, "radius": 2,
+    {"id": "road-bridge-s", "kind": "stroke", "seed": 42, "claimsGround": True, "radius": 2,
      "points": [[BRIDGE_X, Z0], [-88, 26], [DESTROYABLE_1[0], DESTROYABLE_1[1] + 8]], "pave": GRAVEL},
     # Every footprint below was searched against the built surface for WX11's own test: not
     # just a level footprint, but a one-block border ring within a block of the footprint's

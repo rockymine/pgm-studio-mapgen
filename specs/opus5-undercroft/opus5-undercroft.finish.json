@@ -6,7 +6,7 @@
   "props": [
    {
     "id": "span-w",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 2,
     "style": "solid",
     "radius": 3.0,
@@ -53,7 +53,7 @@
    },
    {
     "id": "span-e",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 3,
     "style": "solid",
     "radius": 3.0,
@@ -100,7 +100,7 @@
    },
    {
     "id": "deck-walk",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 4,
     "style": "worn",
     "radius": 2.0,
@@ -127,7 +127,7 @@
    },
    {
     "id": "causeway-w",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 5,
     "style": "worn",
     "radius": 2.5,
@@ -174,7 +174,7 @@
    },
    {
     "id": "causeway-e",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 6,
     "style": "worn",
     "radius": 2.5,

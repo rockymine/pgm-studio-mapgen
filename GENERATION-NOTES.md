@@ -307,11 +307,11 @@ at a time.
 `opus5-millrace` inherits `s0`–`s3` and both spawns from this board **vertex for vertex** and adds no handles
 either — its curves are `path` shapes, which is the layout's other curve and the one nothing has to author.
 The three canal walls are `wall-s`, `wall-n-w` and `wall-n-e`: three or four clicked points, `radius 1`,
-`path_edge: solid`. The rasterizer runs a path's points through a centripetal Catmull-Rom spline at eight
-samples a segment before offsetting the band, so four points become a twenty-five-point centreline and the
-wall draws as a curve. `cairn-wall-0`–`2` are the same shape at nine or ten points over about twenty blocks.
-Reach for a path wherever a wall, a lane or a watercourse should flow; reach for `controls` only on a closed
-ring of ground.
+`stroke_edge: solid`. The rasterizer runs a polyline's points through a centripetal Catmull-Rom spline at
+eight samples a segment before offsetting the band, so four points become a twenty-five-point centreline and
+the wall draws as a curve. `cairn-wall-0`–`2` are the same shape at nine or ten points over about twenty
+blocks. Reach for a polyline wherever a wall, a lane or a watercourse should flow; reach for `controls` only
+on a closed ring of ground.
 
 ### Construction before dressing: a coherent terrain first, platforms as layers
 
@@ -539,7 +539,7 @@ reference.
 
 ### A path's band follows the spline, not your polyline
 
-`PathBand.Centerline` runs the drawn points through a **Catmull-Rom spline** before the band is derived, and a
+`Centerline.Of` runs the drawn points through a **Catmull-Rom spline** before the band is derived, and a
 Catmull-Rom overshoots the outside of every corner — by several blocks when the segments are long. The band
 does not turn a building away for merely touching it (the road runs to the porch), but it decides where the
 *road itself* runs and what the scatter is refused over, so margin arithmetic against the polyline is
@@ -921,7 +921,7 @@ lobe is already the stand on the other, and scattering a second one there finds 
 
 ### DR-ROAD measures to the cells a stroke claims, and a wide brush is still a road
 
-`PlacePath` claims exactly what `PathStroke.Cells(points, radius, style, coverage, seed)` lays, and
+`PlacePath` claims exactly what `StrokeFill.Cells(points, radius, style, coverage, seed)` lays, and
 `RouteStandoff` is 3 for a tree and 2 for a boulder off any of them. Two consequences that pull
 opposite ways: a `worn` stroke under partial coverage claims a scattered subset, so a keep-out
 computed at `radius × coverage` lets props through that the gate then declines; and a stroke wanders
@@ -1155,7 +1155,7 @@ world.
 
 ### Only `worn` spends `coverage` — `rough` fills its band solid
 
-`PathStroke` decides a cell's membership in two steps: a half-width the style shapes, and then a
+`StrokeFill` decides a cell's membership in two steps: a half-width the style shapes, and then a
 per-cell gate. Only `PathStyle.Worn` has the gate (`PatternNoise.Unit(x, z, seed + 11) < coverage`).
 `Rough` spends its knob on the band's *edge* instead, wandering the half-width by ±45 % over a
 7-block scale, and fills everything inside it. So `style="rough", coverage=0.26` is a **solid belt**,

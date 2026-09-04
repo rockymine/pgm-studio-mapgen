@@ -74,8 +74,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -119,8 +119,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -164,8 +164,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -209,8 +209,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -237,8 +237,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": "hold",
@@ -265,8 +265,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -293,8 +293,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": "hold",
@@ -321,8 +321,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -584,7 +584,7 @@
   "props": [
    {
     "id": "spine-path",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 11,
     "points": [
      [
@@ -619,7 +619,7 @@
    },
    {
     "id": "hamlet-path",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 12,
     "points": [
      [

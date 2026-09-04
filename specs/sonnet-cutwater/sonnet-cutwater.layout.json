@@ -79,8 +79,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -150,8 +150,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -217,8 +217,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -272,8 +272,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -302,8 +302,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": "hold",
@@ -334,8 +334,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -351,7 +351,7 @@
      },
      {
       "id": "wall-south",
-      "type": "path",
+      "type": "polyline",
       "operation": "add",
       "override": true,
       "keepClear": true,
@@ -382,8 +382,8 @@
        ]
       ],
       "radius": 1.6,
-      "path_edge": "solid",
-      "path_seed": 51,
+      "stroke_edge": "solid",
+      "stroke_seed": 51,
       "floor": 11,
       "base_height": 22,
       "height_mode": "level",
@@ -392,7 +392,7 @@
      },
      {
       "id": "wall-north",
-      "type": "path",
+      "type": "polyline",
       "operation": "add",
       "override": true,
       "keepClear": true,
@@ -419,8 +419,8 @@
        ]
       ],
       "radius": 1.6,
-      "path_edge": "solid",
-      "path_seed": 52,
+      "stroke_edge": "solid",
+      "stroke_seed": 52,
       "floor": 11,
       "base_height": 22,
       "height_mode": "level",
@@ -4059,7 +4059,7 @@
     "id": "road-bridge-n",
     "kind": "stroke",
     "seed": 41,
-    "route": true,
+    "claimsGround": true,
     "radius": 2,
     "points": [
      [
@@ -4085,7 +4085,7 @@
     "id": "road-bridge-s",
     "kind": "stroke",
     "seed": 42,
-    "route": true,
+    "claimsGround": true,
     "radius": 2,
     "points": [
      [

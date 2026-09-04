@@ -234,12 +234,15 @@ came apart. The observations below are measured off shipped boards and are enfor
   The four fields are `skirt`, `anchor_heights`, `height_mode` and `relief_scope`.
 - **Draw the routes as paths before the scenery.** Spawn door → objective, objective → flank, wool → hub. A
   path is the circulation diagram drawn: it states the route and keeps the ground along it clean.
-- **A `path` *shape* is the layout's easiest curve, and it is not the path prop.** The rasterizer splines a
-  path's points — centripetal Catmull-Rom, eight samples a segment — before offsetting the band, so four
-  clicked points draw as a flowing wall rather than a chain of chords, and nothing has to be authored for it.
-  `path_edge` is `solid`, `rough` (the width wanders ±45%) or `tapered`. `opus5-millrace`'s canal walls are
-  three such shapes at three or four points each. Reach for one wherever a wall, a lane or a watercourse
-  should flow; `controls` — Bézier handles — belong only on a closed ring of ground.
+- **A `polyline` *shape* is the layout's easiest curve, and it is not the `stroke` prop.** The rasterizer
+  splines a polyline's points — centripetal Catmull-Rom, eight samples a segment — before offsetting the band,
+  so four clicked points draw as a flowing wall rather than a chain of chords, and nothing has to be authored
+  for it. `stroke_edge` is `solid`, `rough` (the width wanders ±45%) or `tapered`. `opus5-millrace`'s canal
+  walls are three such shapes at three or four points each. Reach for one wherever a wall, a lane or a
+  watercourse should flow; `controls` — Bézier handles — belong only on a closed ring of ground. **The
+  `stroke` prop is the other thing entirely**: it repaints the top course of what it crosses and adds no
+  cell, and `claimsGround` on it says whether trees, boulders and buildings keep off — which is about holding
+  ground, not about players walking.
 - **A board carries more than one placement idea.** A village behind the spawn may be one of them; a single
   house on a hill, a house in an authored clearing, a mine head or a wellhouse whose style says its function,
   a run of buildings as a boundary are the others. Six footprints in one style is a settlement; one footprint

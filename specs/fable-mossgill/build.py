@@ -100,8 +100,8 @@ def lip(offset, x0, x1, step=8):
     return [[x, round(beck_z(x) + offset, 1)] for x in range(x0, x1 + 1, step)]
 
 def path_shape(sid, pts, radius, floor, height, th, seed=7, level=True, keep=True):
-    shape = {"id": sid, "type": "path", "operation": "add", "override": True, "keepClear": keep,
-             "vertices": pts, "radius": radius, "path_edge": "solid", "path_seed": seed,
+    shape = {"id": sid, "type": "polyline", "operation": "add", "override": True, "keepClear": keep,
+             "vertices": pts, "radius": radius, "stroke_edge": "solid", "stroke_seed": seed,
              "floor": floor, "base_height": height, "skirt": 0, "relief_scope": "exclude", "theme": th}
     if level: shape["height_mode"] = "level"
     return shape
@@ -197,7 +197,7 @@ def house(pid, x0, z0, x1, z1, style, front):
             "wings": [{"corners": [[x0, z0], [x1, z1]]}], "front": front, "style": style}
 def road(pid, points, seed):
     return {"id": pid, "kind": "stroke", "seed": seed, "points": points, "radius": 2.5, "style": "rough",
-            "coverage": 0.8, "route": True, "pave": noise([GRANITE, POLISHED_GRANITE, JUNGLE_PLANK, GRANITE], 4, 60 + seed)}
+            "coverage": 0.8, "claimsGround": True, "pave": noise([GRANITE, POLISHED_GRANITE, JUNGLE_PLANK, GRANITE], 4, 60 + seed)}
 def meadow(pid, ring_, seed):
     return {"id": pid, "kind": "flora", "seed": seed, "points": ring_,
             "spec": {"coverage": 0.88, "scale": 6, "octaves": 3, "fernShare": 0.5, "flowerShare": 0.03,

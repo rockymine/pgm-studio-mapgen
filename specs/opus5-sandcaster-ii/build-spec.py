@@ -743,7 +743,7 @@ def dressing():
     for name, road in (("road-w", ROADS[0]), ("road-e", ROADS[1])):
         props.append({"id": name, "kind": "stroke", "seed": 270 + len(props) % 2,
                       "points": road, "radius": 2, "style": "worn", "coverage": 0.7,
-                      "route": True, "pave": COARSE})
+                      "claimsGround": True, "pave": COARSE})
     return {"props": props}
 
 

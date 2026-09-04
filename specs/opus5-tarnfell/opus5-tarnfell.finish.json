@@ -4054,7 +4054,7 @@
    },
    {
     "id": "path-main",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 31,
     "style": "solid",
     "radius": 3.5,
@@ -4091,7 +4091,7 @@
       }
      ]
     },
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       0,
@@ -4129,7 +4129,7 @@
    },
    {
     "id": "path-cabin-n",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 32,
     "style": "worn",
     "radius": 1.6,
@@ -4158,7 +4158,7 @@
       }
      ]
     },
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       -13,
@@ -4176,7 +4176,7 @@
    },
    {
     "id": "path-cabin-e",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 33,
     "style": "worn",
     "radius": 1.6,
@@ -4205,7 +4205,7 @@
       }
      ]
     },
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       2,
@@ -4223,7 +4223,7 @@
    },
    {
     "id": "path-cabin-w",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 34,
     "style": "worn",
     "radius": 1.6,
@@ -4252,7 +4252,7 @@
       }
      ]
     },
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       -11,
@@ -4270,7 +4270,7 @@
    },
    {
     "id": "path-camp",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 35,
     "style": "worn",
     "radius": 1.4,
@@ -4299,7 +4299,7 @@
       }
      ]
     },
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       -4,
@@ -4317,7 +4317,7 @@
    },
    {
     "id": "peak-rock",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 41,
     "style": "rough",
     "radius": 13,
@@ -4383,7 +4383,7 @@
    },
    {
     "id": "peak-pale",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 42,
     "style": "rough",
     "radius": 8,
@@ -4445,7 +4445,7 @@
    },
    {
     "id": "peak-snow",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 43,
     "style": "rough",
     "radius": 5,
@@ -4503,7 +4503,7 @@
    },
    {
     "id": "peak-snow-n",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 44,
     "style": "rough",
     "radius": 6,
@@ -4549,7 +4549,7 @@
    },
    {
     "id": "peak-snow-w",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 45,
     "style": "rough",
     "radius": 6,
@@ -4603,7 +4603,7 @@
    },
    {
     "id": "peak-snow-e",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 46,
     "style": "rough",
     "radius": 6,
@@ -4657,7 +4657,7 @@
    },
    {
     "id": "seam-shore-grass-far",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 51,
     "style": "worn",
     "radius": 8,
@@ -4788,7 +4788,7 @@
    },
    {
     "id": "seam-shore-grass",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 61,
     "style": "worn",
     "radius": 4,
@@ -4919,7 +4919,7 @@
    },
    {
     "id": "seam-shore-sand-far",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 56,
     "style": "worn",
     "radius": 8,
@@ -5050,7 +5050,7 @@
    },
    {
     "id": "seam-shore-sand",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 62,
     "style": "worn",
     "radius": 4,
@@ -5181,7 +5181,7 @@
    },
    {
     "id": "seam-wood-s-grass-far",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 52,
     "style": "worn",
     "radius": 8,
@@ -5224,7 +5224,7 @@
    },
    {
     "id": "seam-wood-s-grass",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 63,
     "style": "worn",
     "radius": 4,
@@ -5267,7 +5267,7 @@
    },
    {
     "id": "seam-wood-s-podzol-far",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 57,
     "style": "worn",
     "radius": 8,
@@ -5310,7 +5310,7 @@
    },
    {
     "id": "seam-wood-s-podzol",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 64,
     "style": "worn",
     "radius": 4,
@@ -5353,7 +5353,7 @@
    },
    {
     "id": "seam-wood-n-grass-far",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 53,
     "style": "worn",
     "radius": 8,
@@ -5396,7 +5396,7 @@
    },
    {
     "id": "seam-wood-n-grass",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 65,
     "style": "worn",
     "radius": 4,
@@ -5439,7 +5439,7 @@
    },
    {
     "id": "seam-wood-n-podzol-far",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 58,
     "style": "worn",
     "radius": 8,
@@ -5482,7 +5482,7 @@
    },
    {
     "id": "seam-wood-n-podzol",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 66,
     "style": "worn",
     "radius": 4,
@@ -5525,7 +5525,7 @@
    },
    {
     "id": "seam-crag-stone-far",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 54,
     "style": "worn",
     "radius": 8,
@@ -5568,7 +5568,7 @@
    },
    {
     "id": "seam-crag-stone",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 67,
     "style": "worn",
     "radius": 4,
@@ -5611,7 +5611,7 @@
    },
    {
     "id": "seam-crag-dirt-far",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 59,
     "style": "worn",
     "radius": 8,
@@ -5654,7 +5654,7 @@
    },
    {
     "id": "seam-crag-dirt",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 68,
     "style": "worn",
     "radius": 4,
@@ -5697,7 +5697,7 @@
    },
    {
     "id": "seam-isle",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 55,
     "style": "worn",
     "radius": 3,

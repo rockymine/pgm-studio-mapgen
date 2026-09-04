@@ -63529,9 +63529,9 @@
     "props": [
       {
         "id": "quay-road",
-        "kind": "path",
+        "kind": "stroke",
         "seed": 3,
-        "route": true,
+        "claimsGround": true,
         "radius": 3,
         "coverage": 0.95,
         "points": [
@@ -63564,9 +63564,9 @@
       },
       {
         "id": "dock-road",
-        "kind": "path",
+        "kind": "stroke",
         "seed": 8,
-        "route": true,
+        "claimsGround": true,
         "radius": 3,
         "coverage": 0.9,
         "points": [
@@ -63595,9 +63595,9 @@
       },
       {
         "id": "town-road",
-        "kind": "path",
+        "kind": "stroke",
         "seed": 4,
-        "route": true,
+        "claimsGround": true,
         "radius": 3,
         "coverage": 0.9,
         "points": [
@@ -63630,9 +63630,9 @@
       },
       {
         "id": "back-road",
-        "kind": "path",
+        "kind": "stroke",
         "seed": 5,
-        "route": true,
+        "claimsGround": true,
         "radius": 3,
         "coverage": 0.9,
         "points": [
@@ -63665,9 +63665,9 @@
       },
       {
         "id": "spawn-road",
-        "kind": "path",
+        "kind": "stroke",
         "seed": 6,
-        "route": true,
+        "claimsGround": true,
         "radius": 3,
         "coverage": 0.9,
         "points": [

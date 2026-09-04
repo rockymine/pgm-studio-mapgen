@@ -3802,12 +3802,12 @@
    },
    {
     "id": "road-in",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 3,
     "style": "solid",
     "radius": 3.0,
     "coverage": 1.0,
-    "route": true,
+    "claimsGround": true,
     "pave": {
      "kind": "voronoi",
      "seed": 6,
@@ -3873,7 +3873,7 @@
    },
    {
     "id": "worn-doors",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 13,
     "style": "worn",
     "radius": 2.0,
@@ -3931,7 +3931,7 @@
    },
    {
     "id": "worn-deck",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 14,
     "style": "worn",
     "radius": 2.0,
@@ -3981,12 +3981,12 @@
    },
    {
     "id": "road-court-w",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 4,
     "style": "worn",
     "radius": 2.0,
     "coverage": 0.85,
-    "route": true,
+    "claimsGround": true,
     "pave": {
      "kind": "voronoi",
      "seed": 7,
@@ -4024,12 +4024,12 @@
    },
    {
     "id": "road-court-e",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 5,
     "style": "worn",
     "radius": 2.0,
     "coverage": 0.85,
-    "route": true,
+    "claimsGround": true,
     "pave": {
      "kind": "voronoi",
      "seed": 7,

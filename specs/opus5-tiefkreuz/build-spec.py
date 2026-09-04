@@ -360,7 +360,7 @@ THEMES = {
 # ── the dressing ──────────────────────────────────────────────────────────────────────
 def stroke(pid, points, radius, pave, route=True, style="solid", seed=3):
     return {"id": pid, "kind": "stroke", "seed": seed, "points": points,
-            "radius": radius, "style": style, "route": route, "coverage": 0.5,
+            "radius": radius, "style": style, "claimsGround": route, "coverage": 0.5,
             "pave": pave}
 
 

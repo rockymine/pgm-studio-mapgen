@@ -609,7 +609,7 @@ def dressing():
     # standoff every other prop is filtered against is measured to.
     for name, road in zip(("path-spine", "path-ward", "path-shore-w", "path-shore-e"), ROADS):
         props.append({"id": name, "kind": "stroke", "seed": 70 + len(props), "points": road,
-                      "radius": 3, "style": "worn", "coverage": 0.95, "route": True, "pave": PAVE})
+                      "radius": 3, "style": "worn", "coverage": 0.95, "claimsGround": True, "pave": PAVE})
 
     # the buildings, scattered off the path rather than lined along it
     for i, (x, z, style, front) in enumerate(YARDS):

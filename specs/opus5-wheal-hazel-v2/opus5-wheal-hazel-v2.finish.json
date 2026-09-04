@@ -986,14 +986,14 @@
   },
   {
    "id": "wh-leat",
-   "type": "path",
+   "type": "polyline",
    "operation": "add",
    "override": true,
    "floor": 0,
    "base_height": 12,
    "radius": 2.5,
-   "path_edge": "tapered",
-   "path_seed": 4,
+   "stroke_edge": "tapered",
+   "stroke_seed": 4,
    "relief_scope": "exclude",
    "theme": "hazel-vein",
    "vertices": [
@@ -1133,7 +1133,7 @@
   "props": [
    {
     "id": "p1",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 1,
     "radius": 2.5,
     "style": "worn",
@@ -1194,7 +1194,7 @@
    },
    {
     "id": "p2",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 2,
     "radius": 2,
     "style": "tapered",
@@ -1251,7 +1251,7 @@
    },
    {
     "id": "p3",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 3,
     "radius": 2,
     "style": "rough",

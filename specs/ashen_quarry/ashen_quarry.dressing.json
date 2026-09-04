@@ -14,7 +14,7 @@
     },
 
     {
-      "kind": "path", "id": "field-road", "seed": 6,
+      "kind": "stroke", "id": "field-road", "seed": 6,
       "points": [[-118,20],[-92,8],[-62,-6],[-32,-14],[-4,-22]],
       "radius": 3, "style": "Rough", "coverage": 0.85,
       "pave": { "kind": "cell", "seed": 7, "cellSize": 5, "jitter": 80, "warp": 2, "rise": 0,
@@ -24,7 +24,7 @@
                              { "kind": "solid", "id": 5, "data": 1 } ] }
     },
     {
-      "kind": "path", "id": "quarry-track", "seed": 8,
+      "kind": "stroke", "id": "quarry-track", "seed": 8,
       "points": [[-20,-14],[-14,10],[-18,34],[-26,54],[-40,64]],
       "radius": 3, "style": "Worn", "coverage": 0.72,
       "pave": { "kind": "cell", "seed": 10, "cellSize": 4, "jitter": 85, "warp": 2, "rise": 0,
@@ -33,7 +33,7 @@
                              { "kind": "solid", "id": 12, "data": 0 } ] }
     },
     {
-      "kind": "path", "id": "town-way", "seed": 11,
+      "kind": "stroke", "id": "town-way", "seed": 11,
       "points": [[-166,96],[-150,78],[-134,58],[-124,38],[-118,24]],
       "radius": 2, "style": "Solid",
       "pave": { "kind": "cell", "seed": 12, "cellSize": 3, "jitter": 60, "warp": 1, "rise": 0,
@@ -42,7 +42,7 @@
                              { "kind": "solid", "id": 98, "data": 3 } ] }
     },
     {
-      "kind": "path", "id": "town-lane", "seed": 13,
+      "kind": "stroke", "id": "town-lane", "seed": 13,
       "points": [[-172,30],[-146,38],[-118,46],[-98,66],[-90,98]],
       "radius": 2, "style": "Solid",
       "pave": { "kind": "cell", "seed": 14, "cellSize": 3, "jitter": 60, "warp": 1, "rise": 0,

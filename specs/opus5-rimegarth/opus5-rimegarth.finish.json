@@ -1249,7 +1249,7 @@
    },
    {
     "id": "street",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 31,
     "style": "solid",
     "radius": 3.0,
@@ -1286,7 +1286,7 @@
       }
      ]
     },
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       -44,
@@ -1320,7 +1320,7 @@
    },
    {
     "id": "garth-w",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 32,
     "style": "worn",
     "radius": 2.4,
@@ -1357,7 +1357,7 @@
       }
      ]
     },
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       -14,
@@ -1387,7 +1387,7 @@
    },
    {
     "id": "garth-e",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 33,
     "style": "worn",
     "radius": 2.2,
@@ -1424,7 +1424,7 @@
       }
      ]
     },
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       -10,
@@ -1450,7 +1450,7 @@
    },
    {
     "id": "drift",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 34,
     "style": "worn",
     "radius": 3.0,
@@ -1481,7 +1481,7 @@
    },
    {
     "id": "tread",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 35,
     "style": "worn",
     "radius": 5.0,

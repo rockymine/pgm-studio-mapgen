@@ -243,7 +243,7 @@ def dress(unit, origin, house):
         route = walk(road_land, (int(spawn[0]), int(spawn[1])),
                      (int((room[0] + room[2]) / 2) - origin[0], int((room[1] + room[3]) / 2) - origin[1]))
         if len(route) > 2:
-            props.append({'kind': 'path', 'id': 'island-road', 'seed': 11, 'radius': 3,
+            props.append({'kind': 'stroke', 'id': 'island-road', 'seed': 11, 'radius': 3,
                           'style': 'worn', 'coverage': 0.8, 'points': route,
                           'pave': {'kind': 'voronoi', 'seed': 21, 'cellSize': 4, 'bands': [
                               {'material': {'kind': 'solid', 'id': 24, 'data': 1}, 'depth': 1},

@@ -278,7 +278,7 @@ with open(os.path.join(HERE, "..", "..", "tools", "styles", "rk-shed.json")) as 
 STAGE_STYLE["roof"]["slab"], STAGE_STYLE["roof"]["slabData"] = 44, 1
 def stroke(sid, pts, radius, seed, pave=None, route=True, style="solid", coverage=1.0):
     return {"id": sid, "kind": "stroke", "seed": seed, "radius": radius, "style": style,
-            "coverage": coverage, "route": route, "pave": pave or ROAD_PAVE,
+            "coverage": coverage, "claimsGround": route, "pave": pave or ROAD_PAVE,
             "points": [list(p) for p in pts]}
 
 BANK = cell(4401, 6, [GRAVEL, COARSE])

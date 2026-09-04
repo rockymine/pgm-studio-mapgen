@@ -491,7 +491,7 @@ def dressing():
     # every other prop is filtered against is measured to them
     for name, road in zip(("track-wool-w", "track-wool-e", "track-ford-w", "track-ford-e"), ROADS):
         props.append({"id": name, "kind": "stroke", "seed": 70 + len(props), "points": road,
-                      "radius": 2, "style": "worn", "coverage": 0.9, "route": True, "pave": PAVE})
+                      "radius": 2, "style": "worn", "coverage": 0.9, "claimsGround": True, "pave": PAVE})
 
     for i, (x, z, style, front) in enumerate(YARDS):
         placed.append((x, z))

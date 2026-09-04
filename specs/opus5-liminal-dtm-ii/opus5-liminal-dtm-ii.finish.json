@@ -9385,7 +9385,7 @@
     ],
     "radius": 3,
     "style": "solid",
-    "route": true,
+    "claimsGround": true,
     "layer": "ground",
     "pave": {
      "kind": "noise",
@@ -9434,7 +9434,7 @@
     ],
     "radius": 3,
     "style": "solid",
-    "route": true,
+    "claimsGround": true,
     "layer": "ground",
     "pave": {
      "kind": "noise",
@@ -9460,7 +9460,7 @@
     "id": "way-out",
     "seed": 51,
     "layer": "ground",
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       104,
@@ -9492,7 +9492,7 @@
     "id": "way-taiga",
     "seed": 52,
     "layer": "ground",
-    "route": true,
+    "claimsGround": true,
     "points": [
      [
       104,

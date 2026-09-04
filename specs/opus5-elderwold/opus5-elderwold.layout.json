@@ -363,8 +363,8 @@
         ]
        }
       },
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -391,8 +391,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": "hold",
@@ -419,8 +419,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -743,7 +743,7 @@
   "props": [
    {
     "id": "road",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 2,
     "style": "solid",
     "radius": 2.5,
@@ -834,7 +834,7 @@
    },
    {
     "id": "wood-track",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 3,
     "style": "worn",
     "radius": 2.0,
@@ -908,7 +908,7 @@
    },
    {
     "id": "house-track",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 5,
     "style": "tapered",
     "radius": 2.0,
@@ -939,7 +939,7 @@
    },
    {
     "id": "tex-shelf",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 11,
     "style": "rough",
     "radius": 10.0,
@@ -994,7 +994,7 @@
    },
    {
     "id": "tex-hollow",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 12,
     "style": "rough",
     "radius": 9.0,
@@ -1052,7 +1052,7 @@
    },
    {
     "id": "tex-heath",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 13,
     "style": "worn",
     "radius": 11.0,
@@ -1102,7 +1102,7 @@
    },
    {
     "id": "tex-strand",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 14,
     "style": "stones",
     "radius": 4.5,
@@ -1165,7 +1165,7 @@
    },
    {
     "id": "yard",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 15,
     "style": "rough",
     "radius": 5.0,

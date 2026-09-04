@@ -615,11 +615,11 @@ PROPS = []
 # pinned for them. Every corner is chamfered, because the band follows a Catmull-Rom through the
 # drawn line and a spline overshoots the outside of a sharp turn.
 PROPS.append({"id": "track-w", "kind": "stroke", "seed": 81, "radius": 2.5, "style": "rough",
-              "coverage": 0.85, "route": True, "pave": TRACK_PAVE,
+              "coverage": 0.85, "claimsGround": True, "pave": TRACK_PAVE,
               "points": [[-6, -79], [-13, -76], [-19, -73], [-23, -69], [-24, -65],
                          [-24, -61], [-24, -58], [-25, -50], [-26, -46]]})
 PROPS.append({"id": "track-e", "kind": "stroke", "seed": 82, "radius": 2.5, "style": "rough",
-              "coverage": 0.85, "route": True, "pave": TRACK_PAVE,
+              "coverage": 0.85, "claimsGround": True, "pave": TRACK_PAVE,
               "points": [[6, -79], [13, -76], [19, -73], [23, -69], [24, -65],
                          [24, -61], [24, -58], [25, -50], [26, -46]]})
 

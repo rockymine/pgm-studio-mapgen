@@ -735,18 +735,18 @@ PROPS = []
 # clear for props — a `route` stroke wants five and a half blocks off its centreline, and an arm
 # twenty-five deep has room for exactly one line and one row of things beside it.
 PROPS.append({"id": "walk-w", "kind": "stroke", "seed": 41, "radius": 2.5, "style": "solid",
-              "coverage": 1.0, "route": True, "pave": WALK_PAVE,
+              "coverage": 1.0, "claimsGround": True, "pave": WALK_PAVE,
               "points": [[-8, -82], [-13, -78], [-17, -73], [-21, -67], [-28, -63], [-36, -62],
                          [-44, -62]]})
 PROPS.append({"id": "walk-e", "kind": "stroke", "seed": 42, "radius": 2.5, "style": "solid",
-              "coverage": 1.0, "route": True, "pave": WALK_PAVE,
+              "coverage": 1.0, "claimsGround": True, "pave": WALK_PAVE,
               "points": [[8, -82], [13, -78], [17, -73], [21, -67], [28, -63], [36, -62],
                          [44, -62]]})
 PROPS.append({"id": "walk-neck", "kind": "stroke", "seed": 43, "radius": 2.5, "style": "solid",
-              "coverage": 1.0, "route": True, "pave": WALK_PAVE,
+              "coverage": 1.0, "claimsGround": True, "pave": WALK_PAVE,
               "points": [[0, -82], [0, -74], [0, -64], [0, -54], [0, -44], [0, -37]]})
 PROPS.append({"id": "walk-spine", "kind": "stroke", "seed": 44, "radius": 2.5, "style": "solid",
-              "coverage": 1.0, "route": True, "pave": WALK_PAVE,
+              "coverage": 1.0, "claimsGround": True, "pave": WALK_PAVE,
               "points": [[0, -13], [0, -4], [0, 4], [0, 13]]})
 
 # the sheds: two on the neck, either side of the causeway, and one on the gantry

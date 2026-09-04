@@ -315,8 +315,8 @@
         ]
        }
       },
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -372,8 +372,8 @@
        ]
       ],
       "controls": {},
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -570,8 +570,8 @@
         ]
        }
       },
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -598,8 +598,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": "hold",
@@ -626,8 +626,8 @@
       "radius": null,
       "vertices": null,
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
@@ -1986,7 +1986,7 @@
   "props": [
    {
     "id": "road",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 2,
     "style": "solid",
     "radius": 2.5,
@@ -2061,7 +2061,7 @@
    },
    {
     "id": "track-w",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 3,
     "style": "worn",
     "radius": 1.5,
@@ -2096,7 +2096,7 @@
    },
    {
     "id": "track-n",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 5,
     "style": "worn",
     "radius": 1.5,
@@ -2127,7 +2127,7 @@
    },
    {
     "id": "track-e",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 4,
     "style": "worn",
     "radius": 1.5,
@@ -2158,7 +2158,7 @@
    },
    {
     "id": "tex-scree",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 11,
     "style": "rough",
     "radius": 7.0,
@@ -2212,7 +2212,7 @@
    },
    {
     "id": "tex-tarn",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 12,
     "style": "rough",
     "radius": 6.0,
@@ -2266,7 +2266,7 @@
    },
    {
     "id": "tex-bench",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 13,
     "style": "rough",
     "radius": 8.0,
@@ -2312,7 +2312,7 @@
    },
    {
     "id": "tex-duff",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 15,
     "style": "worn",
     "radius": 5.0,
@@ -2358,7 +2358,7 @@
    },
    {
     "id": "tex-hearth",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 16,
     "style": "rough",
     "radius": 6.0,

@@ -144,8 +144,8 @@ def built(sid, pts, radius, floor, height, th="masonry", seed=7, mode="raise"):
     fixed amount above the ground under it, so a run over a rolling bank follows the incline rather
     than cutting a flat line across it. A shape declaring a height_mode reads the ground under its own
     footprint to know where to stand, so it must NOT also be excluded from the relief."""
-    s = {"id": sid, "type": "path", "operation": "add", "override": True, "keepClear": True,
-         "vertices": pts, "radius": radius, "path_edge": "solid", "path_seed": seed,
+    s = {"id": sid, "type": "polyline", "operation": "add", "override": True, "keepClear": True,
+         "vertices": pts, "radius": radius, "stroke_edge": "solid", "stroke_seed": seed,
          "floor": floor, "base_height": height, "skirt": 0, "height_mode": mode, "theme": th}
     if mode == "level": s["relief_scope"] = "exclude"
     return s
@@ -238,8 +238,8 @@ shapes.append({"id": "croft-pad", "type": "polygon", "operation": "add", "overri
 # landing, with untrodden grass between them. A lane that stops at the objective says the objective is
 # where people stop going, and the three read as dirt spilled on the map rather than as a way across
 # it.
-shapes.append({"id": "worn-lane", "type": "path", "operation": "add", "override": False,
-  "keepClear": False, "path_edge": "solid", "path_seed": 5, "radius": 3.0,
+shapes.append({"id": "worn-lane", "type": "polyline", "operation": "add", "override": False,
+  "keepClear": False, "stroke_edge": "solid", "stroke_seed": 5, "radius": 3.0,
   "vertices": [[-55, 46], [-53, 36], [-49, 27], [-44, 21], [-40, 15], [-36, 10],
                [-31, 6], [-25, 3], [-18, 1], [-10, 0]],
   "theme": "worn"})

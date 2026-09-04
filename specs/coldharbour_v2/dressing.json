@@ -4,26 +4,26 @@
     { "kind": "water", "id": "spine-ford", "seed": 71, "radius": 3, "depth": 2, "form": "stream",
       "points": [[-16, 88], [-6, 84], [6, 84], [16, 88]] },
 
-    { "kind": "path", "id": "spine-road", "seed": 11, "radius": 3, "style": "worn", "coverage": 0.85,
+    { "kind": "stroke", "id": "spine-road", "seed": 11, "radius": 3, "style": "worn", "coverage": 0.85,
       "points": [[0, 112], [0, 96], [0, 86], [0, 76], [0, 62], [0, 48]],
       "pave": { "kind": "voronoi", "seed": 21, "cellSize": 4, "bands": [
         { "material": { "kind": "solid", "id": 13, "data": 0 }, "depth": 1 },
         { "material": { "kind": "solid", "id": 3,  "data": 1 }, "depth": 2 } ] } },
 
-    { "kind": "path", "id": "front-fork-w", "seed": 12, "radius": 2, "style": "worn", "coverage": 0.7,
+    { "kind": "stroke", "id": "front-fork-w", "seed": 12, "radius": 2, "style": "worn", "coverage": 0.7,
       "points": [[-2, 50], [-9, 42], [-13, 30]],
       "pave": { "kind": "solid", "id": 13, "data": 0 } },
-    { "kind": "path", "id": "front-fork-e", "seed": 13, "radius": 2, "style": "worn", "coverage": 0.7,
+    { "kind": "stroke", "id": "front-fork-e", "seed": 13, "radius": 2, "style": "worn", "coverage": 0.7,
       "points": [[2, 50], [9, 42], [13, 30]],
       "pave": { "kind": "solid", "id": 13, "data": 0 } },
 
-    { "kind": "path", "id": "west-drove", "seed": 14, "radius": 3, "style": "solid", "coverage": 1.0,
+    { "kind": "stroke", "id": "west-drove", "seed": 14, "radius": 3, "style": "solid", "coverage": 1.0,
       "points": [[-14, 70], [-32, 70], [-45, 78], [-47, 100]],
       "pave": { "kind": "voronoi", "seed": 22, "cellSize": 3, "bands": [
         { "material": { "kind": "solid", "id": 4,  "data": 0 }, "depth": 1 },
         { "material": { "kind": "solid", "id": 13, "data": 0 }, "depth": 2 } ] } },
 
-    { "kind": "path", "id": "east-drove", "seed": 15, "radius": 3, "style": "solid", "coverage": 1.0,
+    { "kind": "stroke", "id": "east-drove", "seed": 15, "radius": 3, "style": "solid", "coverage": 1.0,
       "points": [[14, 70], [36, 70], [47, 80], [47, 98]],
       "pave": { "kind": "voronoi", "seed": 23, "cellSize": 3, "bands": [
         { "material": { "kind": "solid", "id": 4,  "data": 0 }, "depth": 1 },

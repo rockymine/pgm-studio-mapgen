@@ -710,11 +710,11 @@ PROPS.append({
 # pinned for them. Every corner is chamfered with two bracketing points, because the band follows a
 # Catmull-Rom through the drawn line and a spline overshoots the outside of a sharp turn.
 PROPS.append({"id": "road-w", "kind": "stroke", "seed": 71, "radius": 2.5, "style": "rough",
-              "coverage": 0.85, "route": True, "pave": ROAD_PAVE,
+              "coverage": 0.85, "claimsGround": True, "pave": ROAD_PAVE,
               "points": [[-6, -84], [-13, -80], [-20, -77], [-25, -72], [-27, -67],
                          [-25, -63], [-23, -60], [-22, -55], [-23, -49], [-25, -45]]})
 PROPS.append({"id": "road-e", "kind": "stroke", "seed": 72, "radius": 2.5, "style": "rough",
-              "coverage": 0.85, "route": True, "pave": ROAD_PAVE,
+              "coverage": 0.85, "claimsGround": True, "pave": ROAD_PAVE,
               "points": [[6, -84], [13, -80], [20, -77], [25, -72], [27, -67],
                          [25, -63], [23, -60], [22, -55], [23, -49], [25, -45]]})
 # The holm carries no road. A lane across forty blocks of holm puts a three-block tree standoff over

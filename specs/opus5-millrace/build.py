@@ -55,8 +55,8 @@ BRIDGE_X = -48          # in einer Flucht mit der Querung zur Spiegel-Insel
 STAIR_W, STAIR_E = -76, -62          # the one flight down to the water, on the moor side
 
 def built(sid, pts, radius, floor, height, th="masonry", seed=7, level=True):
-    s = {"id":sid,"type":"path","operation":"add","override":True,"keepClear":True,
-         "vertices":pts,"radius":radius,"path_edge":"solid","path_seed":seed,
+    s = {"id":sid,"type":"polyline","operation":"add","override":True,"keepClear":True,
+         "vertices":pts,"radius":radius,"stroke_edge":"solid","stroke_seed":seed,
          "floor":floor,"base_height":height,"skirt":0,"relief_scope":"exclude","theme":th}
     if level: s["height_mode"] = "level"
     return s

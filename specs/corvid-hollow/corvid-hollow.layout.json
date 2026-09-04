@@ -168,8 +168,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": "exclude",
@@ -213,8 +213,8 @@
        ]
       ],
       "controls": null,
-      "path_edge": null,
-      "path_seed": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
       "relief_scope": "exclude",
@@ -768,7 +768,7 @@
   "props": [
    {
     "id": "d1",
-    "kind": "path",
+    "kind": "stroke",
     "seed": 2,
     "points": [
      [

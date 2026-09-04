@@ -171,7 +171,7 @@ def house(pid, x0, z0, x1, z1, style, front):
             "wings": [{"corners": [[x0, z0], [x1, z1]]}], "front": front, "style": style}
 def road(pid, points, seed):
     return {"id": pid, "kind": "stroke", "seed": seed, "layer": "ground", "points": points, "radius": 2.5,
-            "style": "rough", "coverage": 0.8, "route": True,
+            "style": "rough", "coverage": 0.8, "claimsGround": True,
             "pave": noise([GRANITE, POLISHED_GRANITE, JUNGLE_PLANK, GRANITE], 4, 60 + seed)}
 def meadow(pid, ring, seed):
     return {"id": pid, "kind": "flora", "seed": seed, "layer": "ground", "points": ring,
