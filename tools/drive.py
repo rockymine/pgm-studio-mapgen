@@ -12,7 +12,40 @@ and intent are its input and are never written over, so it states in its intent'
 would otherwise say about it -- `authors` and `created`. <base> is the directory's own name and, unless
 --slug says otherwise, the slug the map is stored under. Both shapes take the same road from here: the
 same grid, flow, declines and renders. The finish carries everything a plan cannot state, keyed onto the
-compiled layout:
+compiled layout.
+
+**Every key below is the batched form of one studio route, and the route is what the key means.** The
+studio addresses each part of a stored layout on its own — a layer, a group, a shape, a theme, a relief, a
+prop, a room shell, the biome — and a spec-driven build posts the whole document in one call instead,
+because the layout is derived from this file on every run and there is nothing incremental to edit. So the
+finish is a translation, not a second language: where a key and its route disagree about what a word means,
+the route is right and this file is wrong. Each row names its route.
+
+  key                 the one studio call it batches
+  ---                 ------------------------------
+  addShapes           POST   /map/{slug}/sketch/layers/{layerId}/shapes?group={groupId}
+  addLayers           PUT    /map/{slug}/sketch/layers/{layerId}
+  themeById           PATCH  /map/{slug}/sketch/shapes/{shapeId}   {"theme": ...}
+  themeByHeight       the same, over every compiled shape standing at that height
+  shapePropsById      PATCH  /map/{slug}/sketch/shapes/{shapeId}
+  shapePropsByHeight  the same, by height
+  bendShapes          none yet — the studio has no bend operation (`TS30`), so the coast is computed here
+  relief              PUT    /map/{slug}/sketch/relief/{groupId}
+  themes              PUT    /map/{slug}/sketch/themes/{themeId}
+  mapTheme            PUT    /map/{slug}/sketch/map-theme
+  roomStyles          PUT    /map/{slug}/sketch/room-styles/{part}
+  dressing            POST   /map/{slug}/sketch/props
+  biome               PUT    /map/{slug}/sketch/biome
+  voidEnforcement     PUT    /map/{slug}/intent
+  authors · created   PUT    /map/{slug}/intent
+
+**Two keys address the compiler's own output and are fragile for it.** `themeById` and `shapePropsById`
+name a shape by the id the compiler minted — `s0`, `s1`, `s2` down the emission order — so inserting one
+plan piece renumbers every shape after it and every key a spec holds names a different shape. Every one of
+the 127 `themeById` keys and 90 of the 91 `shapePropsById` keys in `specs/` is such an id. `TS82` is the
+studio task that mints a stable handle; until it lands, re-key by hand after any plan change.
+
+What each key states:
 
   themeByHeight   {"11": "gyp-bench", ...}   theme per compiled shape, by the height it stands at
   themeById       {"s3": "gyp-rake"}          theme per compiled shape id (wins over the height rule)
@@ -21,7 +54,9 @@ compiled layout:
   bendShapes      {"s0": {"k": 0.22, "wander": 3, "step": 10, "seed": 5}}  the compiled outline drawn
                   as a coast: resampled along its long edges, each inserted point pulled inward by a
                   wander, and Bezier handles over the result. The plan's own vertices never move
-  addShapes       [SketchShape, ...]          authored shapes appended to the first group
+  addShapes       [SketchShape + layer? + group?, ...]  authored shapes, each onto the layer and group it
+                  names -- the studio's POST /map/{slug}/sketch/layers/{layerId}/shapes?group={id}. A shape
+                  naming neither takes the compiled ground's first group
   addLayers       [{id, name, base_y, shapes, groups, below?, kind?, part_of?, seat?}]  stacked slabs;
                   `below` puts one under the compiled ground, where the painter's bottom-up order
                   needs it. `kind: "made"` marks a made thing — out of the stacking rules, painted
@@ -33,7 +68,6 @@ compiled layout:
                   chunk carries, which tints grass, leaves and water. Absent is plains everywhere
   roomStyles      {"cage": ..., "spawn": ...}; a "@name" string loads tools/styles/<name>.json
   dressing        {"props": [...]};  a house prop's "style" takes the same "@name"
-  goalLayers      {"destroyable-1": "under"}   which storey a goal stands on, by its plan marker id
   voidEnforcement true -> patch intent.build.voidEnforcement (voidExclusions for the rects to spare)
   authors         ["Opus 5"], or [{"name", "uuid", "role", "contribution"}] -> the <authors> block. PGM
                   takes a person as an account OR a pseudonym, so a bare name is a valid author
@@ -74,7 +108,7 @@ The pictures and the provenance sidecar land beside the documents rather than in
 `--out` is what a server is handed: it holds `region/`, `level.dat` and `map.xml`, and nothing a match does
 not read.
 """
-import json, math, re, sys, io, zipfile, urllib.request, urllib.error, os, shutil
+import collections, json, math, re, sys, io, zipfile, urllib.request, urllib.error, os, shutil
 
 STYLES = os.path.join(os.path.dirname(os.path.abspath(__file__)), "styles")
 
@@ -152,7 +186,7 @@ def call(method, path, body=None, raw=False, fatal=True):
 # The band a measure is judged against and the sentence a rule is stated in are the studio's, read once
 # per run: a number restated here is the number every future run is told after the author has moved it.
 # `/rules/terms` answers the enforced band through the scorer's own resolution; `/rules` answers the rule.
-_terms, _headlines = {}, {}
+_terms, _claims = {}, {}
 
 
 def band(term):
@@ -172,15 +206,15 @@ def wants(term, rule):
     return f"({rule} wants {stated[0]}-{stated[1]}, {stated[2]})" if stated else f"({rule})"
 
 
-def headline(rule):
+def rule_claim(rule):
     """A rule's own claim — the first bold sentence of what `GET /rules` says it means, which is where
     every rule states its number."""
-    if rule not in _headlines:
+    if rule not in _claims:
         _, answered = call("GET", f"/rules?rule={rule}", fatal=False)
         means = (answered[0].get("means") if isinstance(answered, list) and answered else "") or ""
         stated = re.search(r"\*\*(.+?)\*\*", means)
-        _headlines[rule] = stated.group(1).strip() if stated else rule
-    return _headlines[rule]
+        _claims[rule] = stated.group(1).strip() if stated else rule
+    return _claims[rule]
 
 
 def text(path, fatal=False):
@@ -518,7 +552,8 @@ def patch_layout(layout, finish):
     # A compiled layout is a stack of one: `layers[0]` is the ground the plan drew, and there is no
     # `layout` key beside it any more. The finish keys onto that layer's shapes and appends the
     # storeys the plan cannot state above it.
-    inner = layout["layers"][0]["layout"]
+    ground = layout["layers"][0]
+    inner = ground["layout"]
     shapes, groups = inner["shapes"], inner["groups"]
     by_height = finish.get("themeByHeight") or {}
     props_by_height = finish.get("shapePropsByHeight") or {}
@@ -546,11 +581,6 @@ def patch_layout(layout, finish):
         shape["vertices"], shape["controls"] = bend(shape["vertices"], **how)
         print(f"    bent '{shape_id}': {before} compiled vertices -> {len(shape['vertices'])} drawn")
 
-    for extra in finish.get("addShapes") or []:
-        shapes.append(extra)
-        groups[0]["shapeIds"].append(extra["id"])
-    if finish.get("addShapes"):
-        print(f"    +{len(finish['addShapes'])} authored shapes onto group '{groups[0]['id']}'")
     for extra in finish.get("addLayers") or []:
         layers = layout["layers"]
         slab = {"id": extra["id"], "name": extra.get("name") or extra["id"],
@@ -571,6 +601,34 @@ def patch_layout(layout, finish):
         print(f"    +layer '{extra['id']}' at base_y {extra['base_y']}"
               f"{' (below the compiled ground)' if extra.get('below') else ''}: "
               f"{len(extra['shapes'])} shape(s), {len(extra['groups'])} group(s)")
+
+    # After the storeys, so a shape may name one this same finish added -- and onto the COMPILED ground where
+    # it names none, which is not `layers[0]` once a `below` storey has been inserted under it.
+    #
+    # A shape joins the group it names as well as the layer. The group is where its ground is decided: the
+    # symmetry fan is read off each mirroring group's shapeIds and so is the relief, so a shape in the wrong
+    # group is built once, where it was drawn, on flat ground. A name the layer does not carry opens a group,
+    # the way `?group=` does on the studio's own route.
+    onto = collections.Counter()
+    for extra in finish.get("addShapes") or []:
+        extra = dict(extra)
+        layer_id, group_id = extra.pop("layer", None), extra.pop("group", None)
+        into = next((slab for slab in layout["layers"] if slab["id"] == layer_id), None) if layer_id else ground
+        if into is None:
+            print(f"    ! addShapes '{extra['id']}' names layer '{layer_id}', which no layer answers to")
+            continue
+        seat = into["layout"]
+        group = (next((g for g in seat["groups"] if g["id"] == group_id), None) if group_id
+                 else (seat["groups"][0] if seat["groups"] else None))
+        if group is None and group_id:
+            group = {"id": group_id, "name": group_id, "mirrors": True, "shapeIds": []}
+            seat["groups"].append(group)
+        seat["shapes"].append(extra)
+        if group is not None:
+            group["shapeIds"].append(extra["id"])
+        onto[f"{into['id']}/{group['id'] if group else '-'}"] += 1
+    for where, count in onto.items():
+        print(f"    +{count} authored shape(s) onto {where}")
 
     relief = finish.get("relief")
     if relief:
@@ -612,10 +670,10 @@ def patch_intent(intent, finish):
 
     `created` is the map's own date, which the studio has no way to derive: it rides on the intent's meta
     and is the author's to state. `voidEnforcement` fills the board's void with the barrier PGM enforces,
-    sparing the rects `voidExclusions` names. `goalLayers` names the storey a goal stands on, by the plan
-    marker id it was stated under: a stacked board carries a surface per storey and a placement naming none
-    takes the top, which on a roofed goal is the roof. The word is keyed onto every orbit image of the
-    marker, because a goal and its mirror stand on the same storey."""
+    sparing the rects `voidExclusions` names.
+
+    Which storey a goal stands on is the plan's to say: `DestroyablePlacement.layer` and
+    `CorePlacement.layer` carry it through the compile onto every orbit image, so nothing is patched here."""
     if created := finish.get("created"):
         intent.setdefault("meta", {})["created"] = created
         print(f"    created {created}")
@@ -626,12 +684,6 @@ def patch_intent(intent, finish):
     if finish.get("voidEnforcement"):
         intent.setdefault("build", {})["voidEnforcement"] = \
             {"exclusions": finish.get("voidExclusions", [])}
-    for unit, layer in (finish.get("goalLayers") or {}).items():
-        for kind in ("destroyables", "cores"):
-            for goal in intent.get(kind) or []:
-                if (goal.get("stamp") or {}).get("unit") == unit:
-                    goal["layer"] = layer
-        print(f"    goal '{unit}' stands on layer '{layer}'")
     return intent
 
 
@@ -682,7 +734,7 @@ def main():
         print(f"    goal {goal.get('id')} ({goal.get('kind')}): own {goal.get('ownSpawnBlocks')} "
               f"enemy {goal.get('enemySpawnBlocks')} ratio {goal.get('ratio')}   {goal_ratio}")
     for gap in inspected.get("islandGaps") or []:
-        print(f"    group gap: {json.dumps(gap)}   (CT12: {headline('CT12')})")
+        print(f"    group gap: {json.dumps(gap)}   (CT12: {rule_claim('CT12')})")
     for run in inspected.get("frontlineRuns") or []:
         print(f"    frontline run: {json.dumps(run)}")
     for structure in inspected.get("structures") or []:

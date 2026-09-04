@@ -460,30 +460,21 @@ plan = {
         "destroyables": [
             # Absolute cells from the centre: three of the five stand on ground the plan has no
             # rectangle for, and a goal that names no piece is the one marker kind that may.
-            {"id": "destroyable-1", "at": [30 / CELL, 78 / CELL], "style": "pillar-1",
-             "materials": "obsidian", "float": 3, "name": "The Deep End"},
-            {"id": "destroyable-2", "at": [-38 / CELL, 68 / CELL], "style": "pillar-2",
-             "materials": "obsidian", "float": 2, "name": "The Catwalk"},
-            {"id": "destroyable-3", "at": [34 / CELL, 62 / CELL], "style": "pillar-1",
-             "materials": "obsidian", "float": 4, "name": "The Back Office"},
-            {"id": "destroyable-4", "at": [-26 / CELL, 50 / CELL], "style": "pillar-2",
-             "materials": "obsidian", "float": 4, "name": "Level 4"},
-            {"id": "destroyable-5", "at": [24 / CELL, 90 / CELL], "style": "pillar-2",
-             "materials": "obsidian", "float": 4, "name": "The Court"},
+            # `layer` is which storey the goal stands on: a stacked board has a surface per layer, and a
+            # thing stated for a hall lands on the deck roofing it unless it says which one it meant.
+            {"id": "destroyable-1", "at": [30 / CELL, 78 / CELL], "style": "pillar-1", "layer": "under",
+             "materials": "obsidian", "float": 3, "name": "The Deep End"},        # the drained basin
+            {"id": "destroyable-2", "at": [-38 / CELL, 68 / CELL], "style": "pillar-2", "layer": "catwalk",
+             "materials": "obsidian", "float": 2, "name": "The Catwalk"},         # dark, under the car deck
+            {"id": "destroyable-3", "at": [34 / CELL, 62 / CELL], "style": "pillar-1", "layer": "ground",
+             "materials": "obsidian", "float": 4, "name": "The Back Office"},     # roofed by nothing
+            {"id": "destroyable-4", "at": [-26 / CELL, 50 / CELL], "style": "pillar-2", "layer": "deck",
+             "materials": "obsidian", "float": 4, "name": "Level 4"},             # forty by thirty-six of slab
+            {"id": "destroyable-5", "at": [24 / CELL, 90 / CELL], "style": "pillar-2", "layer": "ground",
+             "materials": "obsidian", "float": 4, "name": "The Court"},           # the one anybody finds first
         ],
     },
 }
-
-# Which storey each goal stands on. A stacked board has a surface per layer and a thing stated for
-# a hall lands on the deck roofing it unless it says which one it meant.
-GOAL_LAYERS = {
-    "destroyable-1": "under",       # the drained basin, under the concourse
-    "destroyable-2": "catwalk",     # a two-wide gallery in the dark under the car deck
-    "destroyable-3": "ground",      # the sealed core, roofed by nothing and seen from nowhere
-    "destroyable-4": "deck",        # the middle of forty by thirty-six of empty slab
-    "destroyable-5": "ground",      # the lawn, which is the only one anybody will find first
-}
-
 
 # ── the two things that keep appearing ────────────────────────────────────────────────────────
 # A kiosk and a cairn, in the same relation to each other, in seven rooms that share nothing else:
@@ -640,7 +631,6 @@ finish = {
     "mapTheme": "plaza",
     "roomStyles": {"cage": None, "spawn": "@interchange-spawn"},
     "dressing": {"props": props},
-    "goalLayers": GOAL_LAYERS,
     "voidEnforcement": True,
 }
 

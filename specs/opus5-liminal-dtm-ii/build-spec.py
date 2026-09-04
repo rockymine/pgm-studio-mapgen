@@ -611,12 +611,14 @@ plan = {
         "iron": [{"id": "iron-1", "piece": "taiga",
                   "at": [(IRON_AT[0] - -X_EDGE) / CELL, IRON_AT[1] / CELL]}],
         "destroyables": [
+            # `layer` is the storey the goal stands on: a stacked board has a surface per layer, and a
+            # thing stated for one lands on whatever roofs it unless it says which one it meant.
             {"id": "destroyable-1", "style": "pillar-2", "at": [GOAL_TOWN[0] / CELL, GOAL_TOWN[1] / CELL],
-             "materials": "obsidian", "float": 2, "name": "The Desert Well"},
+             "layer": "ground", "materials": "obsidian", "float": 2, "name": "The Desert Well"},
             {"id": "destroyable-2", "style": "pillar-2", "at": [GOAL_POOL[0] / CELL, GOAL_POOL[1] / CELL],
-             "materials": "obsidian", "float": 3, "name": "The Deep End"},
+             "layer": "under", "materials": "obsidian", "float": 3, "name": "The Deep End"},
             {"id": "destroyable-3", "style": "pillar-2", "at": [GOAL_SKY[0] / CELL, GOAL_SKY[1] / CELL],
-             "materials": "obsidian", "float": 2, "name": "The Floating Garden"},
+             "layer": "sky", "materials": "obsidian", "float": 2, "name": "The Floating Garden"},
         ],
     },
 }
@@ -857,7 +859,6 @@ finish = {
         {"id": "sky",   "name": "Skyblocks",        "base_y": 0,
          "shapes": sky,   "islands": [island("sky", "Skyblocks", sky)]},
     ],
-    "goalLayers": {"destroyable-1": "ground", "destroyable-2": "under", "destroyable-3": "sky"},
     "roomStyles": {"spawn": "@desert-pyramid"},
     "mapTheme": "desert",
     "themes": THEMES,

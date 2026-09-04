@@ -133,7 +133,8 @@
     ],
     "materials": "obsidian",
     "float": 2,
-    "name": "The Desert Well"
+    "name": "The Desert Well",
+    "layer": "ground"
    },
    {
     "id": "destroyable-2",
@@ -144,7 +145,8 @@
     ],
     "materials": "obsidian",
     "float": 3,
-    "name": "The Deep End"
+    "name": "The Deep End",
+    "layer": "under"
    },
    {
     "id": "destroyable-3",
@@ -155,7 +157,8 @@
     ],
     "materials": "obsidian",
     "float": 2,
-    "name": "The Floating Garden"
+    "name": "The Floating Garden",
+    "layer": "sky"
    }
   ]
  }

@@ -89,7 +89,8 @@
     "style": "pillar-1",
     "materials": "obsidian",
     "float": 3,
-    "name": "The Deep End"
+    "name": "The Deep End",
+    "layer": "under"
    },
    {
     "id": "destroyable-2",
@@ -100,7 +101,8 @@
     "style": "pillar-2",
     "materials": "obsidian",
     "float": 2,
-    "name": "The Catwalk"
+    "name": "The Catwalk",
+    "layer": "catwalk"
    },
    {
     "id": "destroyable-3",
@@ -111,7 +113,8 @@
     "style": "pillar-1",
     "materials": "obsidian",
     "float": 4,
-    "name": "The Back Office"
+    "name": "The Back Office",
+    "layer": "ground"
    },
    {
     "id": "destroyable-4",
@@ -122,7 +125,8 @@
     "style": "pillar-2",
     "materials": "obsidian",
     "float": 4,
-    "name": "Level 4"
+    "name": "Level 4",
+    "layer": "deck"
    },
    {
     "id": "destroyable-5",
@@ -133,7 +137,8 @@
     "style": "pillar-2",
     "materials": "obsidian",
     "float": 4,
-    "name": "The Court"
+    "name": "The Court",
+    "layer": "ground"
    }
   ]
  }

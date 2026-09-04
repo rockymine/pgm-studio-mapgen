@@ -938,23 +938,19 @@ reads `y5..y3` white clay and `y2..y1` hardened clay, and the corridor above it 
 `drive.py`'s `addLayers` takes `"below": true` for this. The rule is one line: **order `layers[]` by
 the height its shapes stand at, lowest first**, whatever the compile handed you.
 
-### A goal states its storey on the intent, because the plan has no field for it
+### A goal states its storey on the plan
 
-`DestroyablePlacement` and `CorePlacement` carry `id · piece · at · style · materials · float · name`
-and no `layer`; `DestroyableIntent` and `CoreIntent` carry `layer` as their first property, as do the
-other four intent placements and `PlacedProp`. So a plan-built goal on a stacked board always
-resolves against `SurfaceTop` — the highest layer — and a monument stated for a hall lands on the
-deck roofing it, with nothing declined.
-
-The word has to be written onto the **compiled intent**, on every orbit image, before the intent is stored.
-`drive.py`'s `goalLayers` key does it in `patch_intent`, matching on `stamp.unit`:
+`DestroyablePlacement` and `CorePlacement` carry `layer` beside `id · piece · at · style · materials ·
+float · name`, and the compile carries it onto every orbit image. A goal naming none resolves against
+`SurfaceTop` — the highest layer — so a monument stated for a hall lands on the deck roofing it, with
+nothing declined:
 
 ```python
-{"goalLayers": {"destroyable-1": "under", "destroyable-4": "deck"}}
+{"id": "destroyable-1", "at": [-16, 56], "layer": "under", "style": "pillar-2", "float": 2}
 ```
 
 Naming a layer the board has no ground on is a `DR-LAYER` decline for a prop; for a goal it is the
-top surface again.
+top surface again. A wool's or a spawn's storey has no plan field yet and is still the intent's.
 
 ### A ramp at one course a cell builds as treads of two, and a two-block rise is a placed block
 

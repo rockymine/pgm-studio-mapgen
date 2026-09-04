@@ -674,7 +674,6 @@ def main():
                        "shapes": under_layer(),
                        "islands": [{"id": "under", "name": "The workings", "mirrors": True,
                                     "shapeIds": [s["id"] for s in under_layer()]}]}],
-        "goalLayers": {"destroyable-2": "under"},
         "dressing": dressing(),
     }
     out = os.path.join(HERE, f"{SLUG}.finish.json")
