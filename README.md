@@ -77,6 +77,13 @@ comes from the repository's author.
 
 Grouped by the run that produced them. Mode is what the map's own `<gamemode>` declares.
 
+**Most of these specs no longer compile, and that is settled rather than pending (author).** 74 of the 85
+plans here state `"plan": 1`, whose marker offsets are in cells where version 2 states them in blocks, so
+`POST /plan/compile` refuses one with `PL15`. The worlds under `maps/` were built from them and are what
+those boards are; migrating the plans would move every marker on 74 boards to rebuild something already
+built. **A version 1 spec is the record of a world, not a thing that rebuilds** — read it, do not re-drive
+it, and do not file the migration again.
+
 ### The first experiment — fifteen boards, worlds only
 
 Fifteen boards were built on 11–12 August 2026, each from a single JSON spec. The spec form itself was a day
