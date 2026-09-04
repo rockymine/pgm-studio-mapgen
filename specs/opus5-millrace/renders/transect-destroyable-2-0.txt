@@ -1,0 +1,61 @@
+## destroyable-2-0 (destroyable) along x
+TRANSECT 25 stations from (-27, 98) to (-3, 98), every 1
+  station        ground  surface  water  top  standing            step
+  (  -27,    98)      36       58           58  storey              
+  (  -26,    98)      35       38           38  storey              DROP -20
+  (  -25,    98)      35       35           35                      -3
+  (  -24,    98)      35       35           35                      
+  (  -23,    98)      35       35           35                      
+  (  -22,    98)      35       35           35                      
+  (  -21,    98)      35       35           35                      
+  (  -20,    98)      35       35           35                      
+  (  -19,    98)      35       35           35                      
+  (  -18,    98)      35       35           35                      
+  (  -17,    98)      35       35           35  destroyable destroyable-2  
+  (  -16,    98)      35       35           80  destroyable destroyable-2  
+  (  -15,    98)      35       35           81  destroyable destroyable-2  
+  (  -14,    98)      35       35           80  destroyable destroyable-2  
+  (  -13,    98)      35       35           35  destroyable destroyable-2  
+  (  -12,    98)      34       34           34                      -1
+  (  -11,    98)      34       34           34                      
+  (  -10,    98)      34       34           34                      
+  (   -9,    98)      34       34           34                      
+  (   -8,    98)      34       34           34                      
+  (   -7,    98)      34       34           34                      
+  (   -6,    98)      33       33           33                      -1
+  (   -5,    98)      33       33           33                      
+  (   -4,    98)      33       33           33                      
+  (   -3,    98)      33       33           33                      
+rises 0, falls 4, worst step 20: 0 barrier, 0 scramble, 1 drop — DROP -20 at (-26, 98) | walked end to end
+beside: destroyable destroyable-2 at (-17, 96)
+
+## destroyable-2-0 (destroyable) along z
+TRANSECT 25 stations from (-15, 86) to (-15, 110), every 1
+  station        ground  surface  water  top  standing            step
+  (  -15,    86)      31       31           31                      
+  (  -15,    87)      32       32           32                      +1
+  (  -15,    88)      32       32           32                      
+  (  -15,    89)      32       32           32                      
+  (  -15,    90)      33       33           33                      +1
+  (  -15,    91)      33       33           33                      
+  (  -15,    92)      33       33           33                      
+  (  -15,    93)      33       33           33                      
+  (  -15,    94)      34       34           34                      +1
+  (  -15,    95)      34       34           34                      
+  (  -15,    96)      34       34           34  destroyable destroyable-2  
+  (  -15,    97)      35       35           80  destroyable destroyable-2  +1
+  (  -15,    98)      35       35           81  destroyable destroyable-2  
+  (  -15,    99)      35       35           80  destroyable destroyable-2  
+  (  -15,   100)      35       35           35  destroyable destroyable-2  
+  (  -15,   101)      35       35           35                      
+  (  -15,   102)      36       36           36                      +1
+  (  -15,   103)      36       36           36                      
+  (  -15,   104)      36       36           36                      
+  (  -15,   105)      36       36           36                      
+  (  -15,   106)      36       36           36                      
+  (  -15,   107)      36       36           36                      
+  (  -15,   108)      36       36           36                      
+  (  -15,   109)      36       36           36                      
+  (  -15,   110)      36       36           36                      
+rises 5, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder erratic-round at (-13, 84), destroyable destroyable-2 at (-17, 96), tree oak-6 at (-17, 110)

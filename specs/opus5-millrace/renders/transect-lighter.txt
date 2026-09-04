@@ -1,0 +1,79 @@
+## lighter (made) along x
+TRANSECT 39 stations from (-119, 57) to (-81, 57), every 1
+  station        ground  surface  water  top  standing            step
+  ( -119,    57)      17       17     26    26  water race-water    
+  ( -118,    57)      17       17     26    26  water race-water    
+  ( -117,    57)      17       17     26    26  water race-water    
+  ( -116,    57)      17       17     26    26  water race-water    
+  ( -115,    57)      17       17     26    26  water race-water    
+  ( -114,    57)      17       17     26    26  water race-water    
+  ( -113,    57)      17       17     26    26  water race-water    
+  ( -112,    57)      17       17     26    26  water race-water    
+  ( -111,    57)      17       29     26    29  storey              BARRIER +12
+  ( -110,    57)      17       29     25    29  storey              
+  ( -109,    57)      17       29     25    29  storey              
+  ( -108,    57)      17       29     25    29  storey              
+  ( -107,    57)      17       29     22    29  storey              
+  ( -106,    57)      17       29     22    29  storey              
+  ( -105,    57)      17       29     22    29  storey              
+  ( -104,    57)      17       29     22    29  storey              
+  ( -103,    57)      17       45     22    45  storey              BARRIER +16
+  ( -102,    57)      17       29     22    29  storey              DROP -16
+  ( -101,    57)      17       29     22    29  storey              
+  ( -100,    57)      17       29     22    29  storey              
+  (  -99,    57)      17       29     22    29  storey              
+  (  -98,    57)      17       33     22    33  storey              BARRIER +4
+  (  -97,    57)      17       33     22    33  storey              
+  (  -96,    57)      17       33     22    33  storey              
+  (  -95,    57)      17       33     22    33  storey              
+  (  -94,    57)      17       33     22    33  storey              
+  (  -93,    57)      17       33     25    33  storey              
+  (  -92,    57)      17       29     25    29  storey              DROP -4
+  (  -91,    57)      17       29     25    29  storey              
+  (  -90,    57)      17       29     26    29  storey              
+  (  -89,    57)      17       17     26    26  water race-water    DROP -12
+  (  -88,    57)      17       17     26    26  water race-water    
+  (  -87,    57)      17       17     26    26  water race-water    
+  (  -86,    57)      17       17     26    26  water race-water    
+  (  -85,    57)      17       17     26    26  water race-water    
+  (  -84,    57)      17       17     26    26  water race-water    
+  (  -83,    57)      17       17     26    26  water race-water    
+  (  -82,    57)      17       17     26    26  water race-water    
+  (  -81,    57)      17       17     26    26  water race-water    
+rises 3, falls 3, worst step 16: 3 barrier, 0 scramble, 3 drop — BARRIER +12 at (-111, 57); BARRIER +16 at (-103, 57); DROP -16 at (-102, 57); BARRIER +4 at (-98, 57); DROP -4 at (-92, 57); DROP -12 at (-89, 57) | walked end to end
+beside: water race-water at (-121, 55)
+
+## lighter (made) along z
+TRANSECT 29 stations from (-100, 43) to (-100, 71), every 1
+  station        ground  surface  water  top  standing            step
+  ( -100,    43)      19       19     26    26  water race-water    
+  ( -100,    44)      19       19     26    26  water race-water    
+  ( -100,    45)      18       18     26    26  water race-water    -1
+  ( -100,    46)      18       18     26    26  water race-water    
+  ( -100,    47)      18       18     26    26  water race-water    
+  ( -100,    48)      18       18     26    26  water race-water    
+  ( -100,    49)      17       17     26    26  water race-water    -1
+  ( -100,    50)      17       17     26    26  water race-water    
+  ( -100,    51)      17       17     26    26  water race-water    
+  ( -100,    52)      17       29     26    29  storey              BARRIER +12
+  ( -100,    53)      17       29     25    29  storey              
+  ( -100,    54)      17       29     25    29  storey              
+  ( -100,    55)      17       29     22    29  storey              
+  ( -100,    56)      17       29     22    29  storey              
+  ( -100,    57)      17       29     22    29  storey              
+  ( -100,    58)      17       29     22    29  storey              
+  ( -100,    59)      17       29     25    29  storey              
+  ( -100,    60)      17       29     25    29  storey              
+  ( -100,    61)      17       29     26    29  storey              
+  ( -100,    62)      17       17     26    26  water race-water    DROP -12
+  ( -100,    63)      17       17     26    26  water race-water    
+  ( -100,    64)      17       17     26    26  water race-water    
+  ( -100,    65)      17       17     26    26  water race-water    
+  ( -100,    66)      17       17     26    26  water race-water    
+  ( -100,    67)      17       17     26    26  water race-water    
+  ( -100,    68)      17       17     26    26  water race-water    
+  ( -100,    69)      17       17     26    26  water race-water    
+  ( -100,    70)      17       17     26    26  water race-water    
+  ( -100,    71)      17       17     26    26  water race-water    
+rises 1, falls 3, worst step 12: 1 barrier, 0 scramble, 1 drop — BARRIER +12 at (-100, 52); DROP -12 at (-100, 62) | walked end to end
+beside: water race-water at (-102, 41)

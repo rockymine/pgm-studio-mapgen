@@ -3,15 +3,15 @@
   "Opus 5"
  ],
  "themeById": {
-  "s0": "hb-ditch",
-  "s1": "hb-down",
-  "s2": "hb-bank",
-  "s3": "hb-ring",
-  "s4": "hb-yard",
-  "s5": "hb-yard"
+  "bank-inner-8": "hb-ditch",
+  "bank-inner-11": "hb-down",
+  "bank-inner-12": "hb-bank",
+  "bank-inner-13": "hb-ring",
+  "bank-inner-14": "hb-yard",
+  "bank-inner-15": "hb-yard"
  },
  "shapePropsById": {
-  "s0": {
+  "bank-inner-8": {
    "controls": {
     "1": {
      "out": [
@@ -39,7 +39,7 @@
     }
    }
   },
-  "s1": {
+  "bank-inner-11": {
    "controls": {
     "0": {
      "out": [
@@ -76,7 +76,7 @@
    },
    "relief_scope": "hold"
   },
-  "s2": {
+  "bank-inner-12": {
    "controls": {
     "1": {
      "out": [
@@ -105,7 +105,7 @@
    },
    "relief_scope": "hold"
   },
-  "s3": {
+  "bank-inner-13": {
    "controls": {
     "7": {
      "out": [
@@ -122,10 +122,10 @@
    },
    "relief_scope": "hold"
   },
-  "s4": {
+  "bank-inner-14": {
    "relief_scope": "hold"
   },
-  "s5": {
+  "bank-inner-15": {
    "relief_scope": "hold"
   }
  },

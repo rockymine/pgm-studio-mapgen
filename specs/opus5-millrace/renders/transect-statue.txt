@@ -1,0 +1,67 @@
+## statue (made) along x
+TRANSECT 29 stations from (-44, 96) to (-16, 96), every 1
+  station        ground  surface  water  top  standing            step
+  (  -44,    96)      35       35           35                      
+  (  -43,    96)      35       35           35                      
+  (  -42,    96)      36       36           36                      +1
+  (  -41,    96)      36       36           36                      
+  (  -40,    96)      36       36           36                      
+  (  -39,    96)      36       36           36                      
+  (  -38,    96)      36       36           36                      
+  (  -37,    96)      36       36           36                      
+  (  -36,    96)      36       57           57  storey              BARRIER +21
+  (  -35,    96)      36       57           57  storey              
+  (  -34,    96)      36       58           58  storey              +1
+  (  -33,    96)      35       58           58  storey              
+  (  -32,    96)      35       63           63  storey              BARRIER +5
+  (  -31,    96)      35       63           63  storey              
+  (  -30,    96)      35       63           63  storey              
+  (  -29,    96)      35       63           63  storey              
+  (  -28,    96)      35       58           58  storey              DROP -5
+  (  -27,    96)      35       58           58  storey              
+  (  -26,    96)      35       57           57  storey              -1
+  (  -25,    96)      35       57           57  storey              
+  (  -24,    96)      35       35           35                      DROP -22
+  (  -23,    96)      35       35           35                      
+  (  -22,    96)      35       35           35                      
+  (  -21,    96)      35       35           35                      
+  (  -20,    96)      35       35           35                      
+  (  -19,    96)      35       35           35                      
+  (  -18,    96)      35       35           35                      
+  (  -17,    96)      35       35           35  destroyable destroyable-2  
+  (  -16,    96)      34       34           34  destroyable destroyable-2  -1
+rises 4, falls 4, worst step 22: 2 barrier, 0 scramble, 2 drop — BARRIER +21 at (-36, 96); BARRIER +5 at (-32, 96); DROP -5 at (-28, 96); DROP -22 at (-24, 96) | walked end to end
+beside: boulder erratic-shelf at (-46, 94), destroyable destroyable-2 at (-17, 96)
+
+## statue (made) along z
+TRANSECT 27 stations from (-30, 83) to (-30, 109), every 1
+  station        ground  surface  water  top  standing            step
+  (  -30,    83)      32       32           32                      
+  (  -30,    84)      32       32           32                      
+  (  -30,    85)      32       32           32                      
+  (  -30,    86)      33       33           33                      +1
+  (  -30,    87)      33       33           33                      
+  (  -30,    88)      33       33           33                      
+  (  -30,    89)      33       33           33                      
+  (  -30,    90)      34       34           34                      +1
+  (  -30,    91)      34       38           38  storey              BARRIER +4
+  (  -30,    92)      34       38           38  storey              
+  (  -30,    93)      35       58           58  storey              BARRIER +20
+  (  -30,    94)      35       63           63  storey              BARRIER +5
+  (  -30,    95)      35       63           63  storey              
+  (  -30,    96)      35       63           63  storey              
+  (  -30,    97)      35       63           63  storey              
+  (  -30,    98)      36       58           58  storey              DROP -5
+  (  -30,    99)      36       38           38  storey              DROP -20
+  (  -30,   100)      36       38           38  storey              
+  (  -30,   101)      36       36           36                      -2
+  (  -30,   102)      36       36           36                      
+  (  -30,   103)      36       36           36                      
+  (  -30,   104)      36       36           36                      
+  (  -30,   105)      36       36           36                      
+  (  -30,   106)      36       36           36                      
+  (  -30,   107)      37       37           37                      +1
+  (  -30,   108)      37       37           37                      
+  (  -30,   109)      37       37           37                      
+rises 6, falls 3, worst step 20: 3 barrier, 0 scramble, 2 drop — BARRIER +4 at (-30, 91); BARRIER +20 at (-30, 93); BARRIER +5 at (-30, 94); DROP -5 at (-30, 98); DROP -20 at (-30, 99) | walked end to end
+beside: tree oak-5 at (-32, 111)

@@ -3,17 +3,17 @@
   "Opus 5"
  ],
  "themeById": {
-  "s0": "hazel-floor",
-  "s1": "hazel-yard",
-  "s2": "hazel-moor",
-  "s3": "hazel-vein",
-  "s4": "hazel-lane",
-  "s5": "hazel-lane",
-  "s6": "hazel-lane",
-  "s7": "hazel-bar"
+  "east-strand-9": "hazel-floor",
+  "east-strand-10": "hazel-yard",
+  "east-strand-11": "hazel-moor",
+  "east-strand-11-2": "hazel-vein",
+  "east-strand-12": "hazel-lane",
+  "east-strand-12-2": "hazel-lane",
+  "east-strand-13": "hazel-lane",
+  "bar-9": "hazel-bar"
  },
  "shapePropsById": {
-  "s0": {
+  "east-strand-9": {
    "controls": {
     "0": {
      "out": [
@@ -63,7 +63,7 @@
     }
    }
   },
-  "s1": {
+  "east-strand-10": {
    "controls": {
     "3": {
      "out": [
@@ -92,22 +92,22 @@
    },
    "relief_scope": "hold"
   },
-  "s2": {
+  "east-strand-11": {
    "relief_scope": "hold"
   },
-  "s3": {
+  "east-strand-11-2": {
    "relief_scope": "hold"
   },
-  "s4": {
+  "east-strand-12": {
    "relief_scope": "hold"
   },
-  "s5": {
+  "east-strand-12-2": {
    "relief_scope": "hold"
   },
-  "s6": {
+  "east-strand-13": {
    "relief_scope": "hold"
   },
-  "s7": {
+  "bar-9": {
    "controls": {
     "1": {
      "out": [

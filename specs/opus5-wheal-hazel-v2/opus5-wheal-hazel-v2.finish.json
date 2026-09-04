@@ -3,16 +3,16 @@
   "Opus 5"
  ],
  "themeById": {
-  "s0": "hazel-bar",
-  "s1": "hazel-floor",
-  "s2": "hazel-yard",
-  "s3": "hazel-moor",
-  "s4": "hazel-lane",
-  "s5": "hazel-lane",
-  "s6": "hazel-lane"
+  "bar-9": "hazel-bar",
+  "east-strand-9": "hazel-floor",
+  "east-strand-11": "hazel-yard",
+  "east-strand-13": "hazel-moor",
+  "east-strand-13-2": "hazel-lane",
+  "east-strand-13-3": "hazel-lane",
+  "east-strand-14": "hazel-lane"
  },
  "shapePropsById": {
-  "s0": {
+  "bar-9": {
    "controls": {
     "1": {
      "out": [
@@ -40,16 +40,16 @@
     }
    }
   },
-  "s3": {
+  "east-strand-13": {
    "relief_scope": "hold"
   },
-  "s4": {
+  "east-strand-13-2": {
    "relief_scope": "hold"
   },
-  "s5": {
+  "east-strand-13-3": {
    "relief_scope": "hold"
   },
-  "s6": {
+  "east-strand-14": {
    "relief_scope": "hold"
   }
  },

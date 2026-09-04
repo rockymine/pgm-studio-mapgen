@@ -3,19 +3,19 @@
   "Opus 5"
  ],
  "themeById": {
-  "s0": "bowl-floor",
-  "s1": "bowl-scorch",
-  "s2": "bowl-rim",
-  "s3": "bowl-scorch",
-  "s4": "bowl-breach",
-  "s5": "bowl-works",
-  "s6": "bowl-rim",
-  "s7": "bowl-rim",
-  "s8": "bowl-works",
-  "s9": "bowl-works"
+  "apron-6": "bowl-floor",
+  "apron-8": "bowl-scorch",
+  "apron-8-2": "bowl-rim",
+  "apron-9": "bowl-scorch",
+  "apron-10": "bowl-breach",
+  "apron-12": "bowl-works",
+  "apron-13": "bowl-rim",
+  "apron-13-2": "bowl-rim",
+  "apron-13-3": "bowl-works",
+  "apron-14": "bowl-works"
  },
  "shapePropsById": {
-  "s1": {
+  "apron-8": {
    "controls": {
     "1": {
      "out": [
@@ -43,7 +43,7 @@
     }
    }
   },
-  "s3": {
+  "apron-9": {
    "controls": {
     "3": {
      "out": [
@@ -79,10 +79,10 @@
     }
    }
   },
-  "s4": {
+  "apron-10": {
    "relief_scope": "hold"
   },
-  "s5": {
+  "apron-12": {
    "controls": {
     "1": {
      "out": [
@@ -111,7 +111,7 @@
    },
    "relief_scope": "hold"
   },
-  "s6": {
+  "apron-13": {
    "controls": {
     "1": {
      "out": [
@@ -128,7 +128,7 @@
    },
    "relief_scope": "hold"
   },
-  "s7": {
+  "apron-13-2": {
    "controls": {
     "3": {
      "out": [
@@ -145,10 +145,10 @@
    },
    "relief_scope": "hold"
   },
-  "s8": {
+  "apron-13-3": {
    "relief_scope": "hold"
   },
-  "s9": {
+  "apron-14": {
    "relief_scope": "hold"
   }
  },

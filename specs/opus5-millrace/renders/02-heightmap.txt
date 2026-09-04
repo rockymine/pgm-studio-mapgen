@@ -1,0 +1,93 @@
+HEIGHTMAP  1 char = 3x3 blocks (the top-left block of each)  x -132..129 across, z -131..130 down
+KEY  char = ground height above y17 in bands of 1 block(s): 0 = y17..17, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
+     -3 -2  -1 -0 -9  -8 -7 -6  -5 -4 -3  -2 -1  0   1  2  3   4  5  6   7  8  9   0  1  2   
+     2963074185296307418529630741852963074185296303692581470369258147036925814703692581470369
+-131                                                        j                                
+-128                                                     jjjjjklm                            
+-125                                                 jjjkkkkkklmmnnml nnnnnnnnnnnnnnnn       
+-122                                             hiijjjkkkklllmmnnnmmlnHHHHHnnnnnnnnnn       
+-119                                           dhiijjjkklllmmmmnnnnnmmnHHHHHnnnnnnnnnn       
+-116                                           ghijjjjkllmmmmnnmmmmmnnnHHHHHnnnnnnnnnn       
+-113                                           ghiijjjjkkllllmmllllmmnnHHHHHnnnnnnnnnn       
+-110                                          dgghiijjjjkkkkkllkkkllmnnnnnnnnnnnnnnnnn       
+-107                                          efghiijjjjjjjkkkkkkkklmmnHHHHnnnHHHnnnnn       
+-104                                          efgghiijjjjjjjjjjjjjjklmnHHHHnnnHHHnnnnn       
+-101                                         deefgghi!HjjjjjjjjjjjjjklnHHHHnnnnnnnnnnn       
+ -98                                         ddeefgghHHiiiijjjjjjjjjjknHHHHnnnnnnnnnnnh      
+ -95                                         ddeeffggghhhiiiiiiiiiiiijnnnnnnnnnnnnnnnng      
+ -92                                          ddeeeffggghhhhhhhhhhhhhiijjjjjiillllhhgff      
+ -89                                          ddddeeefffggggghhggggggghhhhhhhhjjjjggfee      
+ -86                                           dddddeeefffffggggffffffffffffggiiiiffee       
+ -83                                            ddddddeeeeeffffffffeeeeeeeeeefggggeedd       
+ -80                                            ddddddddddHHHHeeeeeeeeddddddeedddddddd       
+ -77                                             dddddddddHHHHddddddddddddddddeeeddddd       
+ -74                                               dddddddHHHHddddddddddddcee~~~~~~~~e       
+ -71                                                  edddHHHHdffffiddccc~~~~~~~~~~~~~~~~~e  
+ -68                       cccddddeedccb              ~~~~dddddggggj~~~~~~~~~~~~~~~~~~~~~~~  
+ -65                       dddeeeeeeeddc             ~~~~~~~~ddiii~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ -62                      ddeeeeeeeeeeedd            ~~~~~~~~~~~~~~~~~~~~~~~~~~0000000~~~~~~ 
+ -59                      ddeeeffffffeeee           ~~~~~~~~~~~~~~~~~~~~~~~~~~~0000000~~~~~~ 
+ -56                     ddeefgghhgggffeed          ~~~~~~~~~~~~~~~~~~~~~~~~~~~0000000~~~~~~~
+ -53                     ddefghHHHHhhgfeed          ~~~~~~~~~~~~~~~~~~~~~~~~~~~0000000~~~~~~~
+ -50                    deeefhiHHHHihgfeed          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ -47                    deeefggHHHHhggeee            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ -44                     deeeefggggffeeed            ~~~~000~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ 
+ -41                      eeeeeefeeeeeeed             ~~0000000ll~~~~~~~~~~dddd~~~~~~~~~~~~~ 
+ -38                        deeeeeeeeeddc             ~~0000000kk~~~~~~~~ddddiiideeff~~~~~~  
+ -35                         dddeeeddddc              ee0000011jjj~~~eeedddicbbccddefghhhhe  
+ -32                           eeeehcccb               dddeeee2ii~ilfffedcibbbbbccddefhhiii  
+ -29                           ffffibbba                eeeffggggggjgggfeicbbbcccccdefgijji  
+ -26                           ggggj                    effgghhhhhhihhhgeiccccddddddeigijjj  
+ -23                           hhhhk                     ghhhiiiiiiijjigfedddeffffeddighjk   
+ -20               i           iiiil                      hiiiiiiiijjjihfeeeff!Hggfedeghjk   
+ -17              jji          jjjjm                      iiiiijiijjkkjihgfffgHHgggfefgijk   
+ -14             kHHHjj        kkkkn                       iijjjjjkklllkihffffgggggffghjkl   
+ -11            kkkHHkjj       kkkkn                       jjjkkkkllmmmlkigfeffggggggijkm    
+  -8          llkkkHHkkkk      llllo                        kkklllmomnnmlihgfffggghhijkmn    
+  -5         mllkjjjijjklll    llllo                          lllllommnnmlihgfgghhiiilmn     
+  -2        nmlkjjiiiiiklmmm   llllo                           llllolmnnnlkihghhhiijkmno     
+   1       onlkjiihhggiikmnnmmlllllo                           llllo  mmmmljiiiiijjklmn      
+   4      onmliihhhgggghilmnnmmmlllo                           llllo    lllkjjijjkklmn       
+   7      nlkiihhgggfffgikmmnnmmlllokkk                        llllo     kkkkHHHkkkl         
+  10     mlkihggggggfeefhjklmmmllkkkkjj                        kkkkn       jjHHHkkk          
+  13     lkiifffgggggfffghjklllkjjjjjjii                       kkkkn        jHHHHk           
+  16     kjhieefggg!ggfffghjkkkjjijiiiiii                      jjjjm         iijj            
+  19    kkihiedefggHgfeeefghjjjjiiiiiiiih                      iiiil                         
+  22    kkihieddeffffedddefhijiiiiiiihhhgg                     hhhhk                         
+  25    jjjhfedddddddccccifghhhhhhhihhggff                 9   ggggj                         
+  28    jjihgiedccccbbbbcdefgggggggjgfffeed                abbbffffi                         
+  31    iiihgfeddccbbbbcideffffiiiil2eeeeddd               bccceeeeh                         
+  34    ~hhhgfeeddccbciiddeeee~~~jjm100000ee              bcddddeeeddd                       
+  37   ~~~~~~~ffeddiiidddd~~~~~~~kkn0000000~~             cddeeeeeeeeed                      
+  40   ~~~~~~~~~~~~dddd~~~~~~~~~~~lo0000000~~             deeeefefeeeeee                     
+  43  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~000~~~~            eeeffggggffeeeed                   
+  46  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~           deefgghHHHhgfeeedc                  
+  49 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~           deefhiiHHHihgfeed                   
+  52  ~~~~~~00000000~~~~~~~~~~~~~~~~~~~~~~~~~~~          eeffghiHHHhhgeedd                   
+  55  ~~~~~~00000000~~~~~~~~~~~~~~~~~~~~~~~~~~~          deeffgghhhgffedd                    
+  58  ~~~~~~00000000~~~~~~~~~~~~~~~~~~~~~~~~~~            eeeeffffffeeedd                    
+  61   ~~~~~00000000~~~~~~~~~~~~~~~~~~~~~~~~~~            ddeeeeeeeeeeed                     
+  64   ~~~~~~~~~~~~~~~~~~~~~~~~~~iildd~~~~~~~             ccddeeeeeedddd                     
+  67   ~~~~~~~~~~~~~~~~~~~~~~e~ggggjddddde~~~              ccddeddddccc                      
+  70    ~~~~~~~~~~~~~~~~~~ccdddffffidHHHHddd~                                                
+  73        ee~~~~~~~~eecddddddddddddHHHHddddddd                                             
+  76         ddddeeedddddddddddddddddHHHHddddddddd                                           
+  79         ddddddddedddddddeeeeeeeeHHHHdddddddddd                                          
+  82         ddeeggggfeeeeeeeeeefffffffeeeeeddddddd                                          
+  85        deeffiiiiggffffffffffffgggfffffeeeeddddd                                         
+  88        effggjjjjhhhhhhhggggggghhhggggffffeeeddd                                         
+  91        fgghhllllijjjjjiiihhhhhhhhhhhhgggfffeeddd                                        
+  94        nnnnnnnnnnnnnnnnnjiiiiiiiiiiihhhhggffeedd                                        
+  97        nnnnnnnnnnnHHHHnnkjjjjjjjjjiiiii!hhggfeed                                        
+ 100        nnnnnnnnnnnHHHHHnlkjjjjjjjjjjjjjHihhgffee                                        
+ 103        nnnnnnHHHnnHHHHHnmlkjjjjjjjjjjjjjiihhgffe                                        
+ 106        nnnnnnHHHnnHHHHHnmlkkkkkkkkjjjjjjjiihhgf                                         
+ 109        nnnnnnnnnnnnnnnnnmmllkklllkkkkkjjjjiihgf                                         
+ 112        nnnnnnnnnnnHHHHnnnmllllmmmllllkkjjjjihhg                                         
+ 115        nnnnnnnnnnnHHHHnnnnmmmmmnmmmmmlkkjjjiih                                          
+ 118        nnnnnnnnnnnHHHHnnmmnnnnnmmmllllkjjjjiih                                          
+ 121        nnnnnnnnnnnHHHHnnlmnnnmmlllkkkkjjjjii                                            
+ 124        nnnnnnnnnnnnnnnnn mmnnmllkkkkkkjjj                                               
+ 127                              mlkjjjjj                                                   
+ 130                                 jj                                                      
+low y17, high y42, range 25

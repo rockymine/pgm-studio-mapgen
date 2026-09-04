@@ -530,20 +530,20 @@
  },
  "mapTheme": "barrow-turf",
  "themeById": {
-  "s0": "barrow-turf",
-  "s1": "barrow-turf",
-  "s2": "barrow-down",
-  "s3": "barrow-turf",
-  "s4": "barrow-scar"
+  "apron-9": "barrow-turf",
+  "apron-11": "barrow-turf",
+  "apron-13": "barrow-down",
+  "apron-15": "barrow-turf",
+  "apron-15-2": "barrow-scar"
  },
  "shapePropsById": {
-  "s1": {
+  "apron-11": {
    "relief_scope": "hold"
   },
-  "s3": {
+  "apron-15": {
    "relief_scope": "exclude"
   },
-  "s4": {
+  "apron-15-2": {
    "relief_scope": "exclude"
   }
  },

@@ -1,0 +1,9 @@
+THEMES  4 themes over 33577 ground cells, 15 distinct surface blocks
+  wold  13028 cells (38.8%)  3:0 Dirt, 3:1 Coarse Dirt, 13:0 Gravel, 5:1 Spruce Planks, 4:0 Cobblestone, 1:0 Stone, 9:0 Water, 162:1 Dark Oak Log
+  moor  9293 cells (27.7%)  2:0 Grass Block, 1:0 Stone, 5:1 Spruce Planks, 13:0 Gravel, 4:0 Cobblestone, 1:5 Andesite, 9:0 Water, 162:1 Dark Oak Log
+  masonry  7790 cells (23.2%)  98:1 Mossy Stone Bricks, 98:0 Stone Bricks, 5:1 Spruce Planks, 4:0 Cobblestone, 1:5 Andesite, 35:14 Red Wool, 35:11 Blue Wool
+  holm  3466 cells (10.3%)  3:1 Coarse Dirt, 3:2 Podzol, 1:0 Stone, 5:1 Spruce Planks, 4:0 Cobblestone, 1:5 Andesite
+borders:
+  masonry | wold  1514 cells
+  masonry | moor  498 cells
+  holm | masonry  56 cells

@@ -1,0 +1,61 @@
+## destroyable-1-0 (destroyable) along x
+TRANSECT 25 stations from (-102, 18) to (-78, 18), every 1
+  station        ground  surface  water  top  standing            step
+  ( -102,    18)      32       32           40  tree fir-4          
+  ( -101,    18)      32       32           38  tree fir-4          
+  ( -100,    18)      32       32           38  tree fir-4          
+  (  -99,    18)      33       33           33                      +1
+  (  -98,    18)      33       33           33                      
+  (  -97,    18)      33       33           33                      
+  (  -96,    18)      33       33           33                      
+  (  -95,    18)      33       33           33                      
+  (  -94,    18)      33       33           33                      
+  (  -93,    18)      33       33           33                      
+  (  -92,    18)      33       33           33  destroyable destroyable-1  
+  (  -91,    18)      33       33           80  destroyable destroyable-1  
+  (  -90,    18)      33       33           81  destroyable destroyable-1  
+  (  -89,    18)      33       33           80  destroyable destroyable-1  
+  (  -88,    18)      33       33           33  destroyable destroyable-1  
+  (  -87,    18)      33       33           33                      
+  (  -86,    18)      33       33           33                      
+  (  -85,    18)      33       33           33                      
+  (  -84,    18)      33       33           33                      
+  (  -83,    18)      32       32           32                      -1
+  (  -82,    18)      32       32           32                      
+  (  -81,    18)      32       32           32                      
+  (  -80,    18)      32       32           37  boulder erratic-crag  
+  (  -79,    18)      32       32           38  boulder erratic-crag  
+  (  -78,    18)      31       31           38  boulder erratic-crag  -1
+rises 1, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree fir-4 at (-104, 17), destroyable destroyable-1 at (-92, 16), boulder erratic-crag at (-80, 16)
+
+## destroyable-1-0 (destroyable) along z
+TRANSECT 25 stations from (-90, 6) to (-90, 30), every 1
+  station        ground  surface  water  top  standing            step
+  (  -90,     6)      33       33           33                      
+  (  -90,     7)      33       33           33                      
+  (  -90,     8)      33       33           33                      
+  (  -90,     9)      33       33           33                      
+  (  -90,    10)      33       33           33                      
+  (  -90,    11)      33       33           33                      
+  (  -90,    12)      33       33           33                      
+  (  -90,    13)      33       33           33                      
+  (  -90,    14)      33       33           33                      
+  (  -90,    15)      33       33           33                      
+  (  -90,    16)      33       33           33  destroyable destroyable-1  
+  (  -90,    17)      33       33           80  destroyable destroyable-1  
+  (  -90,    18)      33       33           81  destroyable destroyable-1  
+  (  -90,    19)      33       33           80  destroyable destroyable-1  
+  (  -90,    20)      33       33           33  destroyable destroyable-1  
+  (  -90,    21)      32       32           32                      -1
+  (  -90,    22)      32       32           34  tree fir-5          
+  (  -90,    23)      31       31           35  tree fir-5          -1
+  (  -90,    24)      31       31           33  tree fir-5          
+  (  -90,    25)      30       30           34  tree fir-5          -1
+  (  -90,    26)      30       30           36  tree fir-5          
+  (  -90,    27)      29       29           33  tree fir-5          -1
+  (  -90,    28)      29       29           29                      
+  (  -90,    29)      28       28           28                      -1
+  (  -90,    30)      28       28           40  tree fir-5          
+rises 0, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable destroyable-1 at (-92, 16), tree fir-5 at (-91, 22)

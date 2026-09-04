@@ -1,0 +1,65 @@
+## spawn-red (spawn) along x
+TRANSECT 27 stations from (-103, 105) to (-77, 105), every 1
+  station        ground  surface  water  top  standing            step
+  ( -103,   105)      40       40           40                      
+  ( -102,   105)      40       40           40                      
+  ( -101,   105)      40       40           40                      
+  ( -100,   105)      40       40           40                      
+  (  -99,   105)      40       40           40                      
+  (  -98,   105)      40       40           40                      
+  (  -97,   105)      40       40           40                      
+  (  -96,   105)      40       40           40                      
+  (  -95,   105)      40       40           54                      
+  (  -94,   105)      40       40           54  spawn spawn-1       
+  (  -93,   105)      40       40           54  spawn spawn-1       
+  (  -92,   105)      40       40           54  spawn spawn-1       
+  (  -91,   105)      40       40           54  spawn spawn-1       
+  (  -90,   105)      40       40           54  spawn spawn-1       
+  (  -89,   105)      40       40           54  spawn spawn-1       
+  (  -88,   105)      40       40           54  spawn spawn-1       
+  (  -87,   105)      40       40           54  spawn spawn-1       
+  (  -86,   105)      40       40           54                      
+  (  -85,   105)      40       40           40                      
+  (  -84,   105)      40       40           40                      
+  (  -83,   105)      40       40           40                      
+  (  -82,   105)      40       40           40                      
+  (  -81,   105)      40       40           40                      
+  (  -80,   105)      40       40           40                      
+  (  -79,   105)      40       40           40                      
+  (  -78,   105)      40       40           47  house croft-quay    
+  (  -77,   105)      40       40           47  house croft-quay    
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (-94, 103), house croft-quay at (-78, 103)
+
+## spawn-red (spawn) along z
+TRANSECT 27 stations from (-90, 92) to (-90, 118), every 1
+  station        ground  surface  water  top  standing            step
+  (  -90,    92)      38       38           38                      
+  (  -90,    93)      39       39           39                      +1
+  (  -90,    94)      40       40           40                      +1
+  (  -90,    95)      40       40           40                      
+  (  -90,    96)      40       40           40                      
+  (  -90,    97)      40       40           40                      
+  (  -90,    98)      40       40           40                      
+  (  -90,    99)      40       40           40                      
+  (  -90,   100)      40       40           40                      
+  (  -90,   101)      40       40           50                      
+  (  -90,   102)      40       40           51  spawn spawn-1       
+  (  -90,   103)      40       40           52  spawn spawn-1       
+  (  -90,   104)      40       40           53  spawn spawn-1       
+  (  -90,   105)      40       40           54  spawn spawn-1       
+  (  -90,   106)      40       40           53  spawn spawn-1       
+  (  -90,   107)      40       40           52  spawn spawn-1       
+  (  -90,   108)      40       40           51  spawn spawn-1       
+  (  -90,   109)      40       40           50                      
+  (  -90,   110)      40       40           40                      
+  (  -90,   111)      40       40           40                      
+  (  -90,   112)      40       40           40                      
+  (  -90,   113)      40       40           40                      
+  (  -90,   114)      40       40           40                      
+  (  -90,   115)      40       40           40                      
+  (  -90,   116)      40       40           40                      
+  (  -90,   117)      40       40           40                      
+  (  -90,   118)      40       40           40                      
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (-92, 102)

@@ -39,11 +39,12 @@ the route is right and this file is wrong. Each row names its route.
   voidEnforcement     PUT    /map/{slug}/intent
   authors · created   PUT    /map/{slug}/intent
 
-**Two keys address the compiler's own output and are fragile for it.** `themeById` and `shapePropsById`
-name a shape by the id the compiler minted — `s0`, `s1`, `s2` down the emission order — so inserting one
-plan piece renumbers every shape after it and every key a spec holds names a different shape. Every one of
-the 127 `themeById` keys and 90 of the 91 `shapePropsById` keys in `specs/` is such an id. `TS82` is the
-studio task that mints a stable handle; until it lands, re-key by hand after any plan change.
+**Two keys address the compiler's own output.** `themeById` and `shapePropsById` name a shape by the id the
+compiler mints, which is its component's first piece and the surface it stands at — `bahnhof-30`, and
+`bahnhof-30-2` where one surface fuses into two. A piece inserted, renamed or moved to another height renames
+what it anchors, and the key then names nothing: the run prints one line per such key with the ids the compile
+did emit beside it, which is what a re-key is done from. Keys naming a shape by its position in the emission
+order (`s0`, `s1`) are from before the ids were stable and name nothing at all.
 
 What each key states:
 

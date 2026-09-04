@@ -506,14 +506,14 @@
  },
  "mapTheme": "moor",
  "themeById": {
-  "s0": "floor",
-  "s1": "floor",
-  "s2": "floor",
-  "s3": "bench",
-  "s4": "bench",
-  "s5": "bench",
-  "s6": "moor",
-  "s7": "lip"
+  "back-10": "floor",
+  "back-10-2": "floor",
+  "back-10-3": "floor",
+  "back-14": "bench",
+  "back-14-2": "bench",
+  "back-14-3": "bench",
+  "back-18": "moor",
+  "back-22": "lip"
  },
  "addShapes": [
   {
@@ -1199,25 +1199,25 @@
   ]
  },
  "shapePropsById": {
-  "s0": {
+  "back-10": {
    "relief_scope": "exclude"
   },
-  "s1": {
+  "back-10-2": {
    "relief_scope": "exclude"
   },
-  "s2": {
+  "back-10-3": {
    "relief_scope": "exclude"
   },
-  "s3": {
+  "back-14": {
    "relief_scope": "exclude"
   },
-  "s4": {
+  "back-14-2": {
    "relief_scope": "exclude"
   },
-  "s5": {
+  "back-14-3": {
    "relief_scope": "exclude"
   },
-  "s7": {
+  "back-22": {
    "relief_scope": "exclude"
   }
  },
