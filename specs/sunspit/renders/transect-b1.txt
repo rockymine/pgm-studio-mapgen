@@ -1,0 +1,59 @@
+## b1 (house) along x
+TRANSECT 24 stations from (-41, 69) to (-18, 69), every 1
+  station        ground  surface  water  top  standing            step
+  (  -41,    69)                                                    void
+  (  -40,    69)                                                    void
+  (  -39,    69)                                                    void
+  (  -38,    69)                                                    void
+  (  -37,    69)                                                    void
+  (  -36,    69)                                                    void
+  (  -35,    69)      11       11           11                      
+  (  -34,    69)      11       11           25  house b1            
+  (  -33,    69)      11       11           25  house b1            
+  (  -32,    69)      11       11           25  house b1            
+  (  -31,    69)      11       11           25  house b1            
+  (  -30,    69)      11       11           25  house b1            
+  (  -29,    69)      11       11           25  house b1            
+  (  -28,    69)      11       11           25  house b1            
+  (  -27,    69)      11       11           25  house b1            
+  (  -26,    69)      11       11           25  house b1            
+  (  -25,    69)      11       11           25  house b1            
+  (  -24,    69)      11       11           11                      
+  (  -23,    69)      11       11           11                      
+  (  -22,    69)      11       11           11                      
+  (  -21,    69)      11       11           11                      
+  (  -20,    69)      11       11           11                      
+  (  -19,    69)      11       11           11                      
+  (  -18,    69)      11       11           11                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house b1 at (-34, 67)
+
+## b1 (house) along z
+TRANSECT 24 stations from (-30, 58) to (-30, 81), every 1
+  station        ground  surface  water  top  standing            step
+  (  -30,    58)      12       12           12                      
+  (  -30,    59)      12       12           12                      
+  (  -30,    60)      11       11           11                      -1
+  (  -30,    61)      11       11           11                      
+  (  -30,    62)      11       11           11                      
+  (  -30,    63)      11       11           11                      
+  (  -30,    64)      11       11           11                      
+  (  -30,    65)      11       11           21  house b1            
+  (  -30,    66)      11       11           22  house b1            
+  (  -30,    67)      11       11           23  house b1            
+  (  -30,    68)      11       11           24  house b1            
+  (  -30,    69)      11       11           25  house b1            
+  (  -30,    70)      11       11           25  house b1            
+  (  -30,    71)      11       11           24  house b1            
+  (  -30,    72)      11       11           23  house b1            
+  (  -30,    73)      11       11           22  house b1            
+  (  -30,    74)      11       11           21  house b1            
+  (  -30,    75)      11       11           11                      
+  (  -30,    76)      11       11           21  tree t1             
+  (  -30,    77)      11       11           21  tree t1             
+  (  -30,    78)      11       11           22  tree t1             
+  (  -30,    79)      11       11           21  tree t1             
+  (  -30,    80)                                                    void
+  (  -30,    81)                                                    void
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke p1 at (-32, 56), tree t5 at (-29, 56), house b1 at (-32, 65), tree t1 at (-32, 75)

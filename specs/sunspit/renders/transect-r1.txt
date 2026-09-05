@@ -1,0 +1,61 @@
+## r1 (boulder) along x
+TRANSECT 25 stations from (-38, 40) to (-14, 40), every 1
+  station        ground  surface  water  top  standing            step
+  (  -38,    40)                                                    void
+  (  -37,    40)                                                    void
+  (  -36,    40)                                                    void
+  (  -35,    40)      10       10           10                      
+  (  -34,    40)      10       10           10                      
+  (  -33,    40)      10       10           10                      
+  (  -32,    40)      10       10           10                      
+  (  -31,    40)      10       10           10                      
+  (  -30,    40)      10       10           11  boulder r1          
+  (  -29,    40)      10       10           12  boulder r1          
+  (  -28,    40)      10       10           12  boulder r1          
+  (  -27,    40)      10       10           12  boulder r1          
+  (  -26,    40)      10       10           12  boulder r1          
+  (  -25,    40)      10       10           12  boulder r1          
+  (  -24,    40)      10       10           12  boulder r1          
+  (  -23,    40)      10       10           12  boulder r1          
+  (  -22,    40)      10       10           12  boulder r1          
+  (  -21,    40)      10       10           10                      
+  (  -20,    40)      10       10           10  water w2            
+  (  -19,    40)      10       10           10  water w2            
+  (  -18,    40)       9        9            9  water w2            -1
+  (  -17,    40)       9        9            9  water w2            
+  (  -16,    40)      10       10           10  water w2            +1
+  (  -15,    40)      10       10           10  water w2            
+  (  -14,    40)      10       10           10  water w2            
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder r1 at (-30, 39), water w2 at (-21, 38)
+
+## r1 (boulder) along z
+TRANSECT 25 stations from (-26, 28) to (-26, 52), every 1
+  station        ground  surface  water  top  standing            step
+  (  -26,    28)      10       10           10  water w1            
+  (  -26,    29)      10       10           10  water w1            
+  (  -26,    30)      10       10           10                      
+  (  -26,    31)      10       10           10                      
+  (  -26,    32)      10       10           10                      
+  (  -26,    33)      10       10           10                      
+  (  -26,    34)       9        9            9                      -1
+  (  -26,    35)       9        9            9                      
+  (  -26,    36)      10       10           10                      +1
+  (  -26,    37)      10       10           11  boulder r1          
+  (  -26,    38)      10       10           12  boulder r1          
+  (  -26,    39)      10       10           12  boulder r1          
+  (  -26,    40)      10       10           12  boulder r1          
+  (  -26,    41)      10       10           12  boulder r1          
+  (  -26,    42)      10       10           12  boulder r1          
+  (  -26,    43)      10       10           11  boulder r1          
+  (  -26,    44)      10       10           10                      
+  (  -26,    45)      10       10           10                      
+  (  -26,    46)      11       11           11                      +1
+  (  -26,    47)      11       11           11                      
+  (  -26,    48)      12       12           12                      +1
+  (  -26,    49)      12       12           12                      
+  (  -26,    50)      12       12           12                      
+  (  -26,    51)      12       12           12                      
+  (  -26,    52)      12       12           20  tree t5             
+rises 3, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water w1 at (-27, 26), boulder r1 at (-28, 37), tree t5 at (-28, 51)

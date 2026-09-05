@@ -1,0 +1,63 @@
+## b2 (house) along x
+TRANSECT 24 stations from (-8, 67) to (15, 67), every 1
+  station        ground  surface  water  top  standing            step
+  (   -8,    67)      11       11           11                      
+  (   -7,    67)      11       11           11  stroke p1           
+  (   -6,    67)      11       11           11  stroke p1           
+  (   -5,    67)      11       11           11  stroke p1           
+  (   -4,    67)      11       11           11  stroke p1           
+  (   -3,    67)      11       11           11  stroke p1           
+  (   -2,    67)      11       11           11                      
+  (   -1,    67)      11       11           19  house b2            
+  (    0,    67)      11       11           19  house b2            
+  (    1,    67)      11       11           19  house b2            
+  (    2,    67)      11       11           19  house b2            
+  (    3,    67)      11       11           19  house b2            
+  (    4,    67)      11       11           19  house b2            
+  (    5,    67)      11       11           19  house b2            
+  (    6,    67)      11       11           19  house b2            
+  (    7,    67)      11       11           19  house b2            
+  (    8,    67)      11       11           19  house b2            
+  (    9,    67)      11       11           11                      
+  (   10,    67)      11       11           12  flora f2            
+  (   11,    67)      11       11           12  flora f2            
+  (   12,    67)      11       11           11                      
+  (   13,    67)      11       11           19  tree t4             
+  (   14,    67)      11       11           20  tree t4             
+  (   15,    67)      11       11           20  tree t4             
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke p1 at (-6, 65), house b2 at (-1, 65), flora f2 at (10, 65), tree t4 at (13, 65)
+
+## b2 (house) along z
+TRANSECT 28 stations from (3, 54) to (3, 81), every 1
+  station        ground  surface  water  top  standing            step
+  (    3,    54)      11       11           11                      
+  (    3,    55)      11       11           11                      
+  (    3,    56)      11       11           11                      
+  (    3,    57)      11       11           11                      
+  (    3,    58)      11       11           11                      
+  (    3,    59)      11       11           11                      
+  (    3,    60)      11       11           11                      
+  (    3,    61)      11       11           16  house b2            
+  (    3,    62)      11       11           17  house b2            
+  (    3,    63)      11       11           18  house b2            
+  (    3,    64)      11       11           19  house b2            
+  (    3,    65)      11       11           20  house b2            
+  (    3,    66)      11       11           20  house b2            
+  (    3,    67)      11       11           19  house b2            
+  (    3,    68)      11       11           19  house b2            
+  (    3,    69)      11       11           19  house b2            
+  (    3,    70)      11       11           19  house b2            
+  (    3,    71)      11       11           19  house b2            
+  (    3,    72)      11       11           19  house b2            
+  (    3,    73)      11       11           19  house b2            
+  (    3,    74)      11       11           19  house b2            
+  (    3,    75)      11       11           11                      
+  (    3,    76)      11       11           11                      
+  (    3,    77)      11       11           11                      
+  (    3,    78)      11       11           11                      
+  (    3,    79)      11       11           11                      
+  (    3,    80)                                                    void
+  (    3,    81)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house b2 at (1, 61), tree t3 at (5, 74)

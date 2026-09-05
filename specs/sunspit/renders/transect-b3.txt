@@ -1,0 +1,57 @@
+## b3 (house) along x
+TRANSECT 23 stations from (9, 57) to (31, 57), every 1
+  station        ground  surface  water  top  standing            step
+  (    9,    57)      11       11           11                      
+  (   10,    57)      11       11           11                      
+  (   11,    57)      10       10           10                      -1
+  (   12,    57)      10       10           10                      
+  (   13,    57)      10       10           10                      
+  (   14,    57)      10       10           10                      
+  (   15,    57)      11       11           11                      +1
+  (   16,    57)      11       11           16  house b3            
+  (   17,    57)      11       11           16  house b3            
+  (   18,    57)      11       11           18  house b3            
+  (   19,    57)      11       11           18  house b3            
+  (   20,    57)      11       11           19  house b3            
+  (   21,    57)      11       11           19  house b3            
+  (   22,    57)      11       11           20  house b3            
+  (   23,    57)      11       11           20  house b3            
+  (   24,    57)      11       11           20  house b3            
+  (   25,    57)      11       11           11                      
+  (   26,    57)      11       11           11                      
+  (   27,    57)      11       11           11                      
+  (   28,    57)      11       11           11  stroke p2           
+  (   29,    57)      11       11           11                      
+  (   30,    57)      11       11           11                      
+  (   31,    57)      11       11           11                      
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house b3 at (16, 55), stroke p2 at (27, 59)
+
+## b3 (house) along z
+TRANSECT 23 stations from (20, 46) to (20, 68), every 1
+  station        ground  surface  water  top  standing            step
+  (   20,    46)      10       10           10                      
+  (   20,    47)      10       10           10                      
+  (   20,    48)      10       10           10                      
+  (   20,    49)      10       10           10                      
+  (   20,    50)      11       11           11                      +1
+  (   20,    51)      11       11           11                      
+  (   20,    52)      11       11           11                      
+  (   20,    53)      11       11           19  house b3            
+  (   20,    54)      11       11           19  house b3            
+  (   20,    55)      11       11           19  house b3            
+  (   20,    56)      11       11           19  house b3            
+  (   20,    57)      11       11           19  house b3            
+  (   20,    58)      11       11           19  house b3            
+  (   20,    59)      11       11           19  house b3            
+  (   20,    60)      11       11           19  house b3            
+  (   20,    61)      11       11           19  house b3            
+  (   20,    62)      11       11           11  stroke p2           
+  (   20,    63)      11       11           11  stroke p2           
+  (   20,    64)      11       11           11  stroke p2           
+  (   20,    65)      11       11           11  stroke p2           
+  (   20,    66)      11       11           11                      
+  (   20,    67)      11       11           11                      
+  (   20,    68)      11       11           19  tree t4             
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house b3 at (18, 53), stroke p2 at (18, 62), tree t4 at (18, 65), wall 0 at (20, 69)

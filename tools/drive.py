@@ -640,6 +640,11 @@ def patch_intent(intent, finish):
 
     Which storey a goal stands on is the plan's to say: `DestroyablePlacement.layer` and
     `CorePlacement.layer` carry it through the compile onto every orbit image, so nothing is patched here."""
+    if authors := finish.get("authors"):
+        # The same list the store applies to the map row. It rides on the intent too, because the
+        # observer platform's authors board is stamped off `meta.authors` and a fact carried in one
+        # document and not the other is a fact free to disagree with itself (EX6).
+        intent.setdefault("meta", {})["authors"] = authors
     if created := finish.get("created"):
         intent.setdefault("meta", {})["created"] = created
         print(f"    created {created}")

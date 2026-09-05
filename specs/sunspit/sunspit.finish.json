@@ -1,35 +1,27 @@
 {
-  "themeByHeight": {
-    "8": "tideflat",
-    "9": "strand",
-    "10": "backshore",
-    "11": "dunetop",
-    "12": "dunetop",
-    "13": "bluff",
-    "14": "dunetop"
-  },
   "themeById": {
-    "s7": "pierdeck"
-  },
-  "shapePropsByHeight": {
-    "8": {
-      "relief_scope": "exclude"
-    },
-    "11": {
-      "relief_scope": "exclude"
-    },
-    "12": {
-      "relief_scope": "exclude"
-    },
-    "13": {
-      "relief_scope": "exclude"
-    },
-    "14": {
-      "relief_scope": "exclude"
-    }
+    "backshore-8": "tideflat",
+    "backshore-9": "strand",
+    "backshore-10": "backshore",
+    "backshore-11": "dunetop",
+    "backshore-13": "bluff",
+    "backshore-13-2": "dunetop",
+    "pier-pad-10": "pierdeck"
   },
   "shapePropsById": {
-    "s7": {
+    "backshore-8": {
+      "relief_scope": "exclude"
+    },
+    "backshore-11": {
+      "relief_scope": "exclude"
+    },
+    "backshore-13": {
+      "relief_scope": "exclude"
+    },
+    "backshore-13-2": {
+      "relief_scope": "exclude"
+    },
+    "pier-pad-10": {
       "relief_scope": "exclude"
     }
   },
@@ -121,6 +113,111 @@
           ]
         }
       }
+    },
+    {
+      "id": "ramp-spawn",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 13,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "vertices": [
+        [
+          -14,
+          72
+        ],
+        [
+          -6,
+          72
+        ],
+        [
+          -6,
+          80
+        ],
+        [
+          -14,
+          80
+        ]
+      ],
+      "anchor_heights": [
+        11,
+        11,
+        13,
+        13
+      ],
+      "theme": "dunetop"
+    },
+    {
+      "id": "ramp-bluff",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 13,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "vertices": [
+        [
+          24,
+          62
+        ],
+        [
+          32,
+          62
+        ],
+        [
+          32,
+          70
+        ],
+        [
+          24,
+          70
+        ]
+      ],
+      "anchor_heights": [
+        11,
+        11,
+        13,
+        13
+      ],
+      "theme": "bluff"
+    },
+    {
+      "id": "ramp-dune",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 11,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "vertices": [
+        [
+          20,
+          42
+        ],
+        [
+          28,
+          42
+        ],
+        [
+          28,
+          50
+        ],
+        [
+          20,
+          50
+        ]
+      ],
+      "anchor_heights": [
+        9,
+        9,
+        11,
+        11
+      ],
+      "theme": "dunetop"
     }
   ],
   "relief": {
@@ -128,7 +225,6 @@
       "base": 9,
       "reach": 8,
       "step": 1,
-      "stairs": true,
       "grain": {
         "amplitude": 1.1,
         "scale": 9,
@@ -296,34 +392,44 @@
       },
       "surface": {
         "material": {
-          "kind": "cell",
-          "seed": 11,
-          "cellSize": 8,
-          "jitter": 60,
-          "warp": 3,
-          "rise": 2,
-          "palette": [
-            {
-              "kind": "solid",
-              "id": 12
-            },
-            {
-              "kind": "solid",
-              "id": 12
-            },
-            {
-              "kind": "solid",
-              "id": 12
-            },
-            {
-              "kind": "solid",
-              "id": 2
-            },
-            {
-              "kind": "solid",
-              "id": 2
-            }
-          ]
+          "kind": "layered",
+          "axis": "depth",
+          "stack": {
+            "ending": "handOver",
+            "bands": [
+              {
+                "material": {
+                  "kind": "cell",
+                  "seed": 11,
+                  "cellSize": 8,
+                  "jitter": 60,
+                  "warp": 3,
+                  "palette": [
+                    {
+                      "kind": "solid",
+                      "id": 12
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 12
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 2
+                    }
+                  ]
+                },
+                "thickness": 1
+              },
+              {
+                "material": {
+                  "kind": "solid",
+                  "id": 12
+                },
+                "thickness": 1
+              }
+            ]
+          }
         },
         "depth": 2,
         "enabled": true
@@ -495,20 +601,20 @@
         "seed": 1,
         "points": [
           [
-            -30,
-            15
+            -20,
+            27
           ],
           [
-            -10,
-            14
+            -4,
+            25
           ],
           [
-            10,
-            15
+            12,
+            27
           ],
           [
             28,
-            14
+            26
           ]
         ],
         "radius": 5,
@@ -529,12 +635,12 @@
         "seed": 2,
         "points": [
           [
-            -20,
-            30
+            -18,
+            38
           ],
           [
             -8,
-            26
+            36
           ]
         ],
         "radius": 2.5,
@@ -555,24 +661,24 @@
         "seed": 3,
         "points": [
           [
-            3,
-            86
+            -10,
+            84
           ],
           [
-            3,
-            76
+            -8,
+            74
           ],
           [
-            -2,
+            -4,
             64
           ],
           [
             -14,
-            63
+            58
           ],
           [
-            -28,
-            64
+            -30,
+            56
           ]
         ],
         "radius": 2,
@@ -639,6 +745,52 @@
         }
       },
       {
+        "id": "q1",
+        "kind": "stroke",
+        "seed": 20,
+        "points": [
+          [
+            -17,
+            30
+          ],
+          [
+            -17,
+            16
+          ]
+        ],
+        "radius": 3,
+        "style": "worn",
+        "coverage": 0.85,
+        "pave": {
+          "kind": "solid",
+          "id": 24,
+          "data": 2
+        }
+      },
+      {
+        "id": "q2",
+        "kind": "stroke",
+        "seed": 21,
+        "points": [
+          [
+            17,
+            30
+          ],
+          [
+            17,
+            16
+          ]
+        ],
+        "radius": 3,
+        "style": "worn",
+        "coverage": 0.85,
+        "pave": {
+          "kind": "solid",
+          "id": 24,
+          "data": 2
+        }
+      },
+      {
         "id": "b1",
         "kind": "house",
         "seed": 6,
@@ -648,11 +800,11 @@
             "corners": [
               [
                 -33,
-                68
+                66
               ],
               [
                 -26,
-                74
+                73
               ]
             ]
           }
@@ -668,24 +820,27 @@
           {
             "corners": [
               [
-                -19,
-                68
+                0,
+                62
               ],
               [
-                -11,
-                74
+                7,
+                69
               ]
-            ]
+            ],
+            "spec": {
+              "ridge": "AlongX"
+            }
           },
           {
             "corners": [
               [
-                -17,
-                75
+                1,
+                70
               ],
               [
-                -13,
-                77
+                5,
+                73
               ]
             ],
             "spec": {
@@ -720,7 +875,7 @@
         "id": "t1",
         "kind": "tree",
         "seed": 9,
-        "x": -36,
+        "x": -32,
         "z": 78,
         "form": "template",
         "species": "jungle",
@@ -730,8 +885,8 @@
         "id": "t2",
         "kind": "tree",
         "seed": 10,
-        "x": -22,
-        "z": 80,
+        "x": -20,
+        "z": 76,
         "form": "template",
         "species": "jungle",
         "height": 9
@@ -741,7 +896,7 @@
         "kind": "tree",
         "seed": 11,
         "x": 8,
-        "z": 80,
+        "z": 74,
         "form": "template",
         "species": "jungle",
         "height": 12
@@ -760,8 +915,8 @@
         "id": "t5",
         "kind": "tree",
         "seed": 13,
-        "x": -38,
-        "z": 56,
+        "x": -30,
+        "z": 54,
         "form": "template",
         "species": "acacia",
         "height": 7
@@ -777,32 +932,168 @@
         "height": 10
       },
       {
-        "id": "b4",
+        "id": "r1",
         "kind": "boulder",
         "seed": 15,
-        "x": -34,
-        "z": 34,
+        "x": -26,
+        "z": 40,
         "form": "outcrop",
-        "size": 3,
+        "size": 3.0,
         "mossy": false,
         "rock": {
-          "kind": "solid",
-          "id": 24
+          "kind": "cell",
+          "seed": 31,
+          "cellSize": 3,
+          "jitter": 55,
+          "warp": 2,
+          "rise": 3,
+          "palette": [
+            {
+              "kind": "solid",
+              "id": 1
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 5
+            },
+            {
+              "kind": "solid",
+              "id": 4
+            }
+          ]
         }
       },
       {
-        "id": "b5",
+        "id": "r2",
         "kind": "boulder",
         "seed": 16,
-        "x": 24,
-        "z": 28,
+        "x": 20,
+        "z": 36,
         "form": "round",
         "size": 2.5,
         "mossy": false,
         "rock": {
-          "kind": "solid",
-          "id": 24,
-          "data": 2
+          "kind": "cell",
+          "seed": 31,
+          "cellSize": 3,
+          "jitter": 55,
+          "warp": 2,
+          "rise": 3,
+          "palette": [
+            {
+              "kind": "solid",
+              "id": 1
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 5
+            },
+            {
+              "kind": "solid",
+              "id": 4
+            }
+          ]
+        }
+      },
+      {
+        "id": "r3",
+        "kind": "boulder",
+        "seed": 17,
+        "x": -6,
+        "z": 44,
+        "form": "angular",
+        "size": 3.5,
+        "mossy": false,
+        "rock": {
+          "kind": "cell",
+          "seed": 31,
+          "cellSize": 3,
+          "jitter": 55,
+          "warp": 2,
+          "rise": 3,
+          "palette": [
+            {
+              "kind": "solid",
+              "id": 1
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 5
+            },
+            {
+              "kind": "solid",
+              "id": 4
+            }
+          ]
+        }
+      },
+      {
+        "id": "r4",
+        "kind": "boulder",
+        "seed": 18,
+        "x": 33,
+        "z": 44,
+        "form": "outcrop",
+        "size": 2.5,
+        "mossy": true,
+        "rock": {
+          "kind": "cell",
+          "seed": 31,
+          "cellSize": 3,
+          "jitter": 55,
+          "warp": 2,
+          "rise": 3,
+          "palette": [
+            {
+              "kind": "solid",
+              "id": 1
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 5
+            },
+            {
+              "kind": "solid",
+              "id": 4
+            }
+          ]
+        }
+      },
+      {
+        "id": "r5",
+        "kind": "boulder",
+        "seed": 19,
+        "x": -34,
+        "z": 22,
+        "form": "round",
+        "size": 3.0,
+        "mossy": false,
+        "rock": {
+          "kind": "cell",
+          "seed": 31,
+          "cellSize": 3,
+          "jitter": 55,
+          "warp": 2,
+          "rise": 3,
+          "palette": [
+            {
+              "kind": "solid",
+              "id": 1
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 5
+            },
+            {
+              "kind": "solid",
+              "id": 4
+            }
+          ]
         }
       },
       {
@@ -811,7 +1102,7 @@
         "seed": 17,
         "points": [
           [
-            -38,
+            -34,
             50
           ],
           [
@@ -823,7 +1114,7 @@
             60
           ],
           [
-            -38,
+            -34,
             60
           ]
         ],
@@ -870,5 +1161,10 @@
         }
       }
     ]
-  }
+  },
+  "authors": [
+    "Fable",
+    "Opus 5"
+  ],
+  "created": "2026-09-05"
 }
