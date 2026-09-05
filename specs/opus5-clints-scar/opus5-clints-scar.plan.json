@@ -1,0 +1,76 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Clints Scar"
+ },
+ "globals": {
+  "cell": 2,
+  "symmetry": "rot_180",
+  "maxPlayers": 24,
+  "surface": 22,
+  "observerY": 88
+ },
+ "pieces": [
+  {
+   "id": "fell",
+   "role": "spawn",
+   "rect": [
+    -10,
+    -70,
+    10,
+    6
+   ],
+   "surface": 46
+  },
+  {
+   "id": "west",
+   "role": "piece",
+   "rect": [
+    -30,
+    -64,
+    30,
+    64
+   ],
+   "surface": 22
+  },
+  {
+   "id": "east",
+   "role": "piece",
+   "rect": [
+    0,
+    -64,
+    30,
+    64
+   ],
+   "surface": 22
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "fell",
+    "at": [
+     10,
+     6
+    ],
+    "facing": "back"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "dt-scar",
+    "piece": "west",
+    "at": [
+     55,
+     59
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "The Scar"
+   }
+  ]
+ }
+}
