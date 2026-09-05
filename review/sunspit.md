@@ -7,12 +7,18 @@ valid.**
 
 ## The board
 
-Thirteen pieces on the authored half. The shore is a bar the width of the board with **two legs extruding
-from it** into the sea, ten blocks out and fifteen wide, and a build zone attaches flush against each leg's
-tip and runs across to the enemy's leg at the same x — the composer's `frontline twin`, which is how a
-two-legged front is drawn. The gap a team pays for is 20 blocks, tip to tip. Between the two legs the
-channel is void until the tidal `water-lane` floods it, and it then opens a third way over, bar to bar,
-that neither team's legs cover.
+Twelve pieces on the authored half, and the board reads as two grounds. The **beach** is one shape thirty
+blocks deep across the whole width, with **two legs extruding from it** into the sea, ten blocks out and
+fifteen wide; a build zone attaches flush against each leg's tip and runs across to the enemy's leg at the
+same x — the composer's `frontline twin`, which is how a two-legged front is drawn. The gap a team pays for
+is 20 blocks, tip to tip. Between the two legs the channel is void until the tidal `water-lane` floods it,
+and it then opens a third way over that neither team's legs cover.
+
+Behind the beach the **grassland stands three blocks higher than it used to**, so the sand ends in a
+four-block scarp and the village, the spawn and both wool approaches are a terrace above it. The scarp is a
+barrier by construction — a player walks off it and cannot walk back up — and three graded banks cut through
+it, west, middle and east, each at 3:1 with the road running down two of them. That is the whole of the
+board's front-to-back reading: sand in front, grass behind, and three named ways between them.
 
 ## The numbers
 
@@ -23,7 +29,10 @@ that neither team's legs cover.
 | Pier ↔ mainland strait | CT12 15–40 | **15** |
 | Spawn ↔ wool balance | WL9 ratio ≤ 1.232 | in band, and the band is a guideline (author) |
 | Approach wall | — | 10 blocks, the spur's own width, halfway along it |
-| Ground that steps | 03-slopes | 10726 walked, 262 scrambled, 40 barrier — **the two approach walls and nothing else**, 20 cells each |
+| Walk to own wools | — | 67 blocks / 6 placed (bluff) · 63 / 22 (pier) |
+| Walk to enemy wools | — | 198 / 24 (bluff) · 208 / 41 (pier) |
+| Ground that steps | 03-slopes | 10672 walked, 140 scrambled, 216 barrier — **the beach scarp and the two approach walls**, and the three banks read as walked runs through it |
+| The scarp | — | 4 blocks off the backshore, 5 off the dune; banks at x −29..−20, −7..2, 28..37 |
 | Dressing | 06-claims | **placed 45, declined 0** |
 | Ground no journey reaches | coverage | **0.0% dead** — every cell of the board is on somebody's route |
 | Export | preflight | **gate OPEN** — round-trip, mirror, buildability, traversability per team |
@@ -49,7 +58,10 @@ that neither team's legs cover.
 - **Ramps as shapes, not as relief.** Every tier above the strand is `relief_scope: exclude`, so a relief
   mark on one of its seams does nothing; the three Δ2 seams are tilted quads at 4:1 with `height_mode:
   level` and a thickness per vertex. `03-slopes.txt` reports no barrier anywhere on the board.
-- Water props as sea: a `natural` lagoon behind the bar, a `stream` tide pool, banks in sand.
+- **The beach is one shape, not two.** A five-block strip the width of the board and the beach behind it
+  were the same rectangle at neighbouring heights, which is one shape stated twice; the strip is gone and the
+  legs abut the beach directly.
+- Water props as sea: a `natural` lagoon on the sand, a `stream` tide pool, banks in sand.
 - `laidLog` birch pier deck, `cell` dune-grass patches, sand/sandstone `noise` strand.
 - Five sea rocks in one `cell` of stone, andesite and cobblestone — grey against the sand rather than sand
   on sand.

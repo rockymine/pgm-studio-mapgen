@@ -37,14 +37,6 @@
       "radius": null,
       "vertices": [
        [
-        -40,
-        20
-       ],
-       [
-        -30,
-        20
-       ],
-       [
         -30,
         10
        ],
@@ -57,9 +49,41 @@
         20
        ],
        [
-        15,
+        -30,
         20
-       ],
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "exclude",
+      "base_height": 8,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": "tideflat",
+      "material": null
+     },
+     {
+      "id": "backshore-8-2",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
        [
         15,
         10
@@ -73,16 +97,8 @@
         20
        ],
        [
-        40,
+        15,
         20
-       ],
-       [
-        40,
-        25
-       ],
-       [
-        -40,
-        25
        ]
       ],
       "controls": null,
@@ -118,11 +134,11 @@
       "vertices": [
        [
         -40,
-        25
+        20
        ],
        [
         40,
-        25
+        20
        ],
        [
         40,
@@ -151,118 +167,6 @@
       "material": null
      },
      {
-      "id": "backshore-10",
-      "type": "polygon",
-      "operation": "add",
-      "override": false,
-      "keepClear": false,
-      "min_x": null,
-      "min_z": null,
-      "max_x": null,
-      "max_z": null,
-      "center_x": null,
-      "center_z": null,
-      "radius": null,
-      "vertices": [
-       [
-        -35,
-        50
-       ],
-       [
-        15,
-        50
-       ],
-       [
-        15,
-        60
-       ],
-       [
-        -35,
-        60
-       ]
-      ],
-      "controls": null,
-      "stroke_edge": null,
-      "stroke_seed": null,
-      "height_mode": null,
-      "skirt": null,
-      "relief_scope": null,
-      "base_height": 10,
-      "anchor_heights": null,
-      "floor": null,
-      "role": null,
-      "intentRef": null,
-      "color": null,
-      "height_authored": null,
-      "doors": null,
-      "theme": "backshore",
-      "material": null
-     },
-     {
-      "id": "backshore-11",
-      "type": "polygon",
-      "operation": "add",
-      "override": false,
-      "keepClear": false,
-      "min_x": null,
-      "min_z": null,
-      "max_x": null,
-      "max_z": null,
-      "center_x": null,
-      "center_z": null,
-      "radius": null,
-      "vertices": [
-       [
-        -35,
-        60
-       ],
-       [
-        15,
-        60
-       ],
-       [
-        15,
-        50
-       ],
-       [
-        40,
-        50
-       ],
-       [
-        40,
-        70
-       ],
-       [
-        15,
-        70
-       ],
-       [
-        15,
-        80
-       ],
-       [
-        -35,
-        80
-       ]
-      ],
-      "controls": null,
-      "stroke_edge": null,
-      "stroke_seed": null,
-      "height_mode": null,
-      "skirt": null,
-      "relief_scope": "exclude",
-      "base_height": 11,
-      "anchor_heights": null,
-      "floor": null,
-      "role": null,
-      "intentRef": null,
-      "color": null,
-      "height_authored": null,
-      "doors": null,
-      "theme": "dunetop",
-      "material": null
-     },
-     {
       "id": "backshore-13",
       "type": "polygon",
       "operation": "add",
@@ -277,20 +181,20 @@
       "radius": null,
       "vertices": [
        [
-        -10,
-        80
+        -35,
+        50
        ],
        [
-        5,
-        80
+        15,
+        50
        ],
        [
-        5,
-        100
+        15,
+        60
        ],
        [
-        -10,
-        100
+        -35,
+        60
        ]
       ],
       "controls": null,
@@ -300,6 +204,70 @@
       "skirt": null,
       "relief_scope": "exclude",
       "base_height": 13,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": "backshore",
+      "material": null
+     },
+     {
+      "id": "backshore-14",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -35,
+        60
+       ],
+       [
+        15,
+        60
+       ],
+       [
+        15,
+        50
+       ],
+       [
+        40,
+        50
+       ],
+       [
+        40,
+        70
+       ],
+       [
+        15,
+        70
+       ],
+       [
+        15,
+        80
+       ],
+       [
+        -35,
+        80
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "exclude",
+      "base_height": 14,
       "anchor_heights": null,
       "floor": null,
       "role": null,
@@ -311,7 +279,55 @@
       "material": null
      },
      {
-      "id": "backshore-13-2",
+      "id": "backshore-16",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -10,
+        80
+       ],
+       [
+        5,
+        80
+       ],
+       [
+        5,
+        100
+       ],
+       [
+        -10,
+        100
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "exclude",
+      "base_height": 16,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": "dunetop",
+      "material": null
+     },
+     {
+      "id": "backshore-16-2",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -347,7 +363,7 @@
       "height_mode": null,
       "skirt": null,
       "relief_scope": "exclude",
-      "base_height": 13,
+      "base_height": 16,
       "anchor_heights": null,
       "floor": null,
       "role": null,
@@ -359,7 +375,7 @@
       "material": null
      },
      {
-      "id": "backshore-15",
+      "id": "backshore-18",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -395,7 +411,7 @@
       "height_mode": null,
       "skirt": null,
       "relief_scope": "exclude",
-      "base_height": 15,
+      "base_height": 18,
       "anchor_heights": null,
       "floor": null,
       "role": null,
@@ -474,7 +490,7 @@
       "height_mode": null,
       "skirt": null,
       "relief_scope": "hold",
-      "base_height": 13,
+      "base_height": 16,
       "anchor_heights": null,
       "floor": null,
       "role": "spawn",
@@ -633,7 +649,7 @@
       "height_mode": null,
       "skirt": null,
       "relief_scope": "hold",
-      "base_height": 15,
+      "base_height": 18,
       "anchor_heights": null,
       "floor": null,
       "role": "woolRoom",
@@ -801,10 +817,11 @@
       "type": "polygon",
       "operation": "add",
       "floor": 0,
-      "base_height": 13,
+      "base_height": 16,
       "height_mode": "level",
       "skirt": 0,
       "relief_scope": "exclude",
+      "theme": "dunetop",
       "vertices": [
        [
         -7,
@@ -824,82 +841,151 @@
        ]
       ],
       "anchor_heights": [
-       11,
-       11,
-       13,
-       13
-      ],
-      "theme": "dunetop"
+       14,
+       14,
+       16,
+       16
+      ]
      },
      {
       "id": "ramp-bluff",
       "type": "polygon",
       "operation": "add",
       "floor": 0,
+      "base_height": 16,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "bluff",
+      "vertices": [
+       [
+        25,
+        70
+       ],
+       [
+        35,
+        70
+       ],
+       [
+        35,
+        80
+       ],
+       [
+        25,
+        80
+       ]
+      ],
+      "anchor_heights": [
+       14,
+       14,
+       16,
+       16
+      ]
+     },
+     {
+      "id": "bank-west",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
       "base_height": 13,
       "height_mode": "level",
       "skirt": 0,
       "relief_scope": "exclude",
+      "theme": "backshore",
       "vertices": [
        [
-        25,
-        70
+        -30,
+        44
        ],
        [
-        35,
-        70
+        -20,
+        44
        ],
        [
-        35,
-        80
+        -20,
+        56
        ],
        [
-        25,
-        80
+        -30,
+        56
        ]
       ],
       "anchor_heights": [
-       11,
-       11,
+       9,
+       9,
        13,
        13
-      ],
-      "theme": "bluff"
+      ]
      },
      {
-      "id": "ramp-dune",
+      "id": "bank-mid",
       "type": "polygon",
       "operation": "add",
       "floor": 0,
-      "base_height": 11,
+      "base_height": 13,
       "height_mode": "level",
       "skirt": 0,
       "relief_scope": "exclude",
+      "theme": "backshore",
       "vertices": [
        [
-        20,
-        42
+        -8,
+        44
        ],
        [
-        28,
-        42
+        2,
+        44
        ],
        [
-        28,
-        50
+        2,
+        56
        ],
        [
-        20,
-        50
+        -8,
+        56
        ]
       ],
       "anchor_heights": [
        9,
        9,
-       11,
-       11
+       13,
+       13
+      ]
+     },
+     {
+      "id": "bank-east",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 14,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "backshore",
+      "vertices": [
+       [
+        26,
+        42
+       ],
+       [
+        38,
+        42
+       ],
+       [
+        38,
+        57
+       ],
+       [
+        26,
+        57
+       ]
       ],
-      "theme": "dunetop"
+      "anchor_heights": [
+       9,
+       9,
+       14,
+       14
+      ]
      }
     ],
     "groups": [
@@ -909,18 +995,21 @@
       "mirrors": true,
       "shapeIds": [
        "backshore-8",
+       "backshore-8-2",
        "backshore-9",
-       "backshore-10",
-       "backshore-11",
        "backshore-13",
-       "backshore-13-2",
-       "backshore-15",
+       "backshore-14",
+       "backshore-16",
+       "backshore-16-2",
+       "backshore-18",
        "pier-pad-10",
        "ss-spit",
        "ss-cove",
        "ramp-spawn",
        "ramp-bluff",
-       "ramp-dune"
+       "bank-west",
+       "bank-mid",
+       "bank-east"
       ]
      }
     ]
@@ -1808,8 +1897,12 @@
       58
      ],
      [
-      -30,
-      56
+      -25,
+      50
+     ],
+     [
+      -25,
+      42
      ]
     ],
     "radius": 2,
@@ -1831,16 +1924,16 @@
       64
      ],
      [
-      27,
-      63
+      26,
+      62
      ],
      [
-      30,
+      31,
       56
      ],
      [
-      30,
-      46
+      31,
+      44
      ]
     ],
     "radius": 2,
@@ -2848,28 +2941,28 @@
      "id": "d1",
      "kind": "point",
      "at": [
-      -25,
-      53
+      -26,
+      38
      ],
-     "h": 12,
-     "r": 4
+     "h": 11,
+     "r": 5
     },
     {
      "id": "d2",
      "kind": "point",
      "at": [
-      3,
-      55
+      12,
+      40
      ],
      "h": 11,
-     "r": 3
+     "r": 4
     },
     {
      "id": "d3",
      "kind": "point",
      "at": [
       -6,
-      32
+      30
      ],
      "h": 10,
      "r": 4

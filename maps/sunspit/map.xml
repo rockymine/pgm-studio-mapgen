@@ -60,9 +60,9 @@
     </spawns>
     <wools>
         <wool team="blue-team" color="red" location="-55,9,85" monument="red-blue-monument"/>
-        <wool team="blue-team" color="orange" location="30,14,95" monument="orange-blue-monument"/>
+        <wool team="blue-team" color="orange" location="30,17,95" monument="orange-blue-monument"/>
         <wool team="red-team" color="blue" location="55,9,-85" monument="blue-red-monument"/>
-        <wool team="red-team" color="light_blue" location="-30,14,-95" monument="light_blue-red-monument"/>
+        <wool team="red-team" color="light_blue" location="-30,17,-95" monument="light_blue-red-monument"/>
     </wools>
     <filters>
         <team id="only-blue">blue-team</team>
@@ -125,17 +125,17 @@
         </all>
     </filters>
     <regions>
-        <point id="blue-spawn-point">2.5,13,-92.5</point>
-        <point id="red-spawn-point">-2.5,13,92.5</point>
+        <point id="blue-spawn-point">2.5,16,-92.5</point>
+        <point id="red-spawn-point">-2.5,16,92.5</point>
         <point id="blue-wool-spawn">55,9,-85</point>
-        <point id="orange-wool-spawn">30,14,95</point>
+        <point id="orange-wool-spawn">30,17,95</point>
         <point id="red-wool-spawn">-55,9,85</point>
-        <point id="light_blue-wool-spawn">-30,14,-95</point>
+        <point id="light_blue-wool-spawn">-30,17,-95</point>
         <point id="observer-spawn">0,25,0</point>
-        <block id="light_blue-red-monument">1,14,88</block>
-        <block id="blue-red-monument">-7,14,88</block>
-        <block id="orange-blue-monument">6,14,-89</block>
-        <block id="red-blue-monument">-2,14,-89</block>
+        <block id="light_blue-red-monument">1,17,88</block>
+        <block id="blue-red-monument">-7,17,88</block>
+        <block id="orange-blue-monument">6,17,-89</block>
+        <block id="red-blue-monument">-2,17,-89</block>
         <rectangle id="blue-spawn" min="-5,-100" max="10,-80"/>
         <rectangle id="red-spawn" min="-10,80" max="5,100"/>
         <rectangle id="light_blue-wool" min="-35,-100" max="-25,-90"/>
@@ -261,5 +261,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>48</maxbuildheight>
+    <maxbuildheight>51</maxbuildheight>
 </map>
