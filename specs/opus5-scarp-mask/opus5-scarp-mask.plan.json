@@ -1,0 +1,77 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Scarp Mask"
+ },
+ "globals": {
+  "cell": 2,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 22,
+  "observerY": 70
+ },
+ "pieces": [
+  {
+   "id": "knoll",
+   "role": "spawn",
+   "rect": [
+    -5,
+    -48,
+    10,
+    6
+   ],
+   "surface": 36
+  },
+  {
+   "id": "field",
+   "role": "piece",
+   "rect": [
+    -27,
+    -42,
+    54,
+    42
+   ],
+   "surface": 22
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "knoll",
+    "at": [
+     10,
+     6
+    ],
+    "facing": "back"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "dt-pit",
+    "piece": "field",
+    "at": [
+     22,
+     28
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "The Scar"
+   },
+   {
+    "id": "dt-shelf",
+    "piece": "field",
+    "at": [
+     80,
+     26
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "The Corbel"
+   }
+  ]
+ }
+}

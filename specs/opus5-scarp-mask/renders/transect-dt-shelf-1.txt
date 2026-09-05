@@ -1,0 +1,61 @@
+## dt-shelf-1 (destroyable) along x
+TRANSECT 25 stations from (-39, 57) to (-15, 57), every 1
+  station        ground  surface  water  top  standing            step
+  (  -39,    57)      20       20           20                      
+  (  -38,    57)      20       20           20                      
+  (  -37,    57)      20       20           20                      
+  (  -36,    57)      20       20           20                      
+  (  -35,    57)      20       20           20                      
+  (  -34,    57)      20       20           20                      
+  (  -33,    57)      20       20           20                      
+  (  -32,    57)      21       21           21                      +1
+  (  -31,    57)      21       21           21                      
+  (  -30,    57)      21       21           21                      
+  (  -29,    57)      21       21           21  destroyable dt-shelf#1  
+  (  -28,    57)      21       21           68  destroyable dt-shelf#1  
+  (  -27,    57)      21       21           69  destroyable dt-shelf#1  
+  (  -26,    57)      21       21           68  destroyable dt-shelf#1  
+  (  -25,    57)      21       21           21  destroyable dt-shelf#1  
+  (  -24,    57)      22       22           22                      +1
+  (  -23,    57)      22       22           22                      
+  (  -22,    57)      22       22           22                      
+  (  -21,    57)      22       22           22                      
+  (  -20,    57)      22       22           22                      
+  (  -19,    57)      22       22           22                      
+  (  -18,    57)      22       22           22                      
+  (  -17,    57)      23       23           23                      +1
+  (  -16,    57)      23       23           23                      
+  (  -15,    57)      23       23           23                      
+rises 3, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable dt-shelf#1 at (-29, 55)
+
+## dt-shelf-1 (destroyable) along z
+TRANSECT 25 stations from (-27, 45) to (-27, 69), every 1
+  station        ground  surface  water  top  standing            step
+  (  -27,    45)      20       20           20                      
+  (  -27,    46)      20       20           20                      
+  (  -27,    47)      20       20           20                      
+  (  -27,    48)      20       20           20                      
+  (  -27,    49)      20       20           20                      
+  (  -27,    50)      21       21           21                      +1
+  (  -27,    51)      21       21           21                      
+  (  -27,    52)      21       21           21                      
+  (  -27,    53)      21       21           21                      
+  (  -27,    54)      21       21           21                      
+  (  -27,    55)      21       21           21  destroyable dt-shelf#1  
+  (  -27,    56)      21       21           68  destroyable dt-shelf#1  
+  (  -27,    57)      21       21           69  destroyable dt-shelf#1  
+  (  -27,    58)      21       21           68  destroyable dt-shelf#1  
+  (  -27,    59)      21       21           21  destroyable dt-shelf#1  
+  (  -27,    60)      21       21           21                      
+  (  -27,    61)      21       21           21                      
+  (  -27,    62)      22       22           22                      +1
+  (  -27,    63)      22       22           22                      
+  (  -27,    64)      22       22           22                      
+  (  -27,    65)      22       22           22                      
+  (  -27,    66)      22       22           22                      
+  (  -27,    67)      22       22           22                      
+  (  -27,    68)      22       22           22                      
+  (  -27,    69)      22       22           22                      
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable dt-shelf#1 at (-29, 55)
