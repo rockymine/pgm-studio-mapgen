@@ -1,77 +1,77 @@
 ## spawn-blue (spawn) along x
-TRANSECT 37 stations from (-8, -90) to (28, -90), every 1
+TRANSECT 37 stations from (-13, -90) to (23, -90), every 1
   station        ground  surface  water  top  standing            step
+  (  -13,   -90)                                                    void
+  (  -12,   -90)                                                    void
+  (  -11,   -90)                                                    void
+  (  -10,   -90)                                                    void
+  (   -9,   -90)                                                    void
   (   -8,   -90)                                                    void
   (   -7,   -90)                                                    void
   (   -6,   -90)                                                    void
-  (   -5,   -90)                                                    void
-  (   -4,   -90)                                                    void
-  (   -3,   -90)                                                    void
-  (   -2,   -90)                                                    void
-  (   -1,   -90)                                                    void
-  (    0,   -90)      13       13           13                      
-  (    1,   -90)      13       13           13                      
-  (    2,   -90)      13       13           13                      
-  (    3,   -90)      13       13           13                      
-  (    4,   -90)      13       13           20  spawn spawn-1#1     
+  (   -5,   -90)      13       13           13                      
+  (   -4,   -90)      13       13           13                      
+  (   -3,   -90)      13       13           13                      
+  (   -2,   -90)      13       13           13                      
+  (   -1,   -90)      13       13           20  spawn spawn-1#1     
+  (    0,   -90)      13       13           19  spawn spawn-1#1     
+  (    1,   -90)      13       13           19  spawn spawn-1#1     
+  (    2,   -90)      13       13           19  spawn spawn-1#1     
+  (    3,   -90)      13       13           19  spawn spawn-1#1     
+  (    4,   -90)      13       13           19  spawn spawn-1#1     
   (    5,   -90)      13       13           19  spawn spawn-1#1     
   (    6,   -90)      13       13           19  spawn spawn-1#1     
   (    7,   -90)      13       13           19  spawn spawn-1#1     
   (    8,   -90)      13       13           19  spawn spawn-1#1     
   (    9,   -90)      13       13           19  spawn spawn-1#1     
-  (   10,   -90)      13       13           19  spawn spawn-1#1     
-  (   11,   -90)      13       13           19  spawn spawn-1#1     
-  (   12,   -90)      13       13           19  spawn spawn-1#1     
-  (   13,   -90)      13       13           19  spawn spawn-1#1     
-  (   14,   -90)      13       13           19  spawn spawn-1#1     
-  (   15,   -90)      13       13           20  spawn spawn-1#1     
-  (   16,   -90)      13       13           13                      
-  (   17,   -90)      13       13           13                      
-  (   18,   -90)      13       13           13                      
-  (   19,   -90)      13       13           13                      
+  (   10,   -90)      13       13           20  spawn spawn-1#1     
+  (   11,   -90)      13       13           13                      
+  (   12,   -90)      13       13           13                      
+  (   13,   -90)      13       13           13                      
+  (   14,   -90)      13       13           13                      
+  (   15,   -90)                                                    void
+  (   16,   -90)                                                    void
+  (   17,   -90)                                                    void
+  (   18,   -90)                                                    void
+  (   19,   -90)                                                    void
   (   20,   -90)                                                    void
   (   21,   -90)                                                    void
   (   22,   -90)                                                    void
   (   23,   -90)                                                    void
-  (   24,   -90)                                                    void
-  (   25,   -90)                                                    void
-  (   26,   -90)                                                    void
-  (   27,   -90)                                                    void
-  (   28,   -90)                                                    void
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn spawn-1#1 at (4, -92)
+beside: spawn spawn-1#1 at (-1, -92)
 
 ## spawn-blue (spawn) along z
-TRANSECT 29 stations from (10, -100) to (10, -72), every 1
+TRANSECT 29 stations from (5, -100) to (5, -72), every 1
   station        ground  surface  water  top  standing            step
-  (   10,  -100)      13       13           13                      
-  (   10,   -99)      13       13           13                      
-  (   10,   -98)      13       13           20  spawn spawn-1#1     
-  (   10,   -97)      13       13           19  spawn spawn-1#1     
-  (   10,   -96)      13       13           19  spawn spawn-1#1     
-  (   10,   -95)      13       13           19  spawn spawn-1#1     
-  (   10,   -94)      13       13           19  spawn spawn-1#1     
-  (   10,   -93)      13       13           19  spawn spawn-1#1     
-  (   10,   -92)      13       13           19  spawn spawn-1#1     
-  (   10,   -91)      13       13           19  spawn spawn-1#1     
-  (   10,   -90)      13       13           19  spawn spawn-1#1     
-  (   10,   -89)      13       13           19  spawn spawn-1#1     
-  (   10,   -88)      13       13           19  spawn spawn-1#1     
-  (   10,   -87)      13       13           20  spawn spawn-1#1     
-  (   10,   -86)      13       13           13  stroke p1#1         
-  (   10,   -85)      13       13           13  stroke p1#1         
-  (   10,   -84)      13       13           13  stroke p1#1         
-  (   10,   -83)      13       13           13  stroke p1#1         
-  (   10,   -82)      13       13           13  stroke p1#1         
-  (   10,   -81)      13       13           13  stroke p1#1         
-  (   10,   -80)      12       12           12  stroke p1#1         -1
-  (   10,   -79)      12       12           12  stroke p1#1         
-  (   10,   -78)      12       12           12  stroke p1#1         
-  (   10,   -77)      12       12           12  stroke p1#1         
-  (   10,   -76)      11       11           11                      -1
-  (   10,   -75)      11       11           11                      
-  (   10,   -74)      11       11           11                      
-  (   10,   -73)      11       11           11                      
-  (   10,   -72)      11       11           11                      
+  (    5,  -100)      13       13           13                      
+  (    5,   -99)      13       13           13                      
+  (    5,   -98)      13       13           20  spawn spawn-1#1     
+  (    5,   -97)      13       13           19  spawn spawn-1#1     
+  (    5,   -96)      13       13           19  spawn spawn-1#1     
+  (    5,   -95)      13       13           19  spawn spawn-1#1     
+  (    5,   -94)      13       13           19  spawn spawn-1#1     
+  (    5,   -93)      13       13           19  spawn spawn-1#1     
+  (    5,   -92)      13       13           19  spawn spawn-1#1     
+  (    5,   -91)      13       13           19  spawn spawn-1#1     
+  (    5,   -90)      13       13           19  spawn spawn-1#1     
+  (    5,   -89)      13       13           19  spawn spawn-1#1     
+  (    5,   -88)      13       13           19  spawn spawn-1#1     
+  (    5,   -87)      13       13           20  spawn spawn-1#1     
+  (    5,   -86)      13       13           13  stroke p1#1         
+  (    5,   -85)      13       13           13  stroke p1#1         
+  (    5,   -84)      13       13           13  stroke p1#1         
+  (    5,   -83)      13       13           13  stroke p1#1         
+  (    5,   -82)      13       13           13  stroke p1#1         
+  (    5,   -81)      13       13           13  stroke p1#1         
+  (    5,   -80)      12       12           12  stroke p1#1         -1
+  (    5,   -79)      12       12           12  stroke p1#1         
+  (    5,   -78)      12       12           12  stroke p1#1         
+  (    5,   -77)      12       12           12  stroke p1#1         
+  (    5,   -76)      11       11           11  stroke p1#1         -1
+  (    5,   -75)      11       11           11  stroke p1#1         
+  (    5,   -74)      11       11           11  stroke p1#1         
+  (    5,   -73)      11       11           11  stroke p1#1         
+  (    5,   -72)      11       11           11  stroke p1#1         
 rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn spawn-1#1 at (8, -98), stroke p1#1 at (9, -86)
+beside: spawn spawn-1#1 at (3, -98), stroke p1#1 at (4, -86)

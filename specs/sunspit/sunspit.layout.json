@@ -38,51 +38,51 @@
       "vertices": [
        [
         -40,
-        10
+        20
+       ],
+       [
+        -30,
+        20
        ],
        [
         -30,
         10
        ],
        [
-        -30,
-        15
-       ],
-       [
-        -5,
-        15
-       ],
-       [
-        -5,
+        -15,
         10
        ],
        [
-        5,
+        -15,
+        20
+       ],
+       [
+        15,
+        20
+       ],
+       [
+        15,
         10
-       ],
-       [
-        5,
-        15
-       ],
-       [
-        30,
-        15
        ],
        [
         30,
         10
        ],
        [
-        40,
-        10
+        30,
+        20
        ],
        [
         40,
         20
+       ],
+       [
+        40,
+        25
        ],
        [
         -40,
-        20
+        25
        ]
       ],
       "controls": null,
@@ -118,11 +118,11 @@
       "vertices": [
        [
         -40,
-        20
+        25
        ],
        [
         40,
-        20
+        25
        ],
        [
         40,
@@ -277,19 +277,19 @@
       "radius": null,
       "vertices": [
        [
-        20,
-        70
+        -15,
+        80
        ],
        [
-        40,
-        70
+        5,
+        80
        ],
        [
-        40,
+        5,
         100
        ],
        [
-        20,
+        -15,
         100
        ]
       ],
@@ -325,19 +325,19 @@
       "radius": null,
       "vertices": [
        [
-        -20,
-        80
+        25,
+        70
        ],
        [
-        0,
-        80
+        35,
+        70
        ],
        [
-        0,
+        35,
         100
        ],
        [
-        -20,
+        25,
         100
        ]
       ],
@@ -412,9 +412,9 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": -20,
+      "min_x": -15,
       "min_z": 80,
-      "max_x": 0,
+      "max_x": 5,
       "max_z": 100,
       "center_x": null,
       "center_z": null,
@@ -445,9 +445,9 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": -16,
+      "min_x": -11,
       "min_z": 86,
-      "max_x": -4,
+      "max_x": 1,
       "max_z": 98,
       "center_x": null,
       "center_z": null,
@@ -476,9 +476,9 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": 0,
+      "min_x": -5,
       "min_z": -100,
-      "max_x": 20,
+      "max_x": 15,
       "max_z": -80,
       "center_x": null,
       "center_z": null,
@@ -507,9 +507,9 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": 4,
+      "min_x": -1,
       "min_z": -98,
-      "max_x": 16,
+      "max_x": 11,
       "max_z": -86,
       "center_x": null,
       "center_z": null,
@@ -572,9 +572,9 @@
       "override": false,
       "keepClear": false,
       "min_x": 25,
-      "min_z": 80,
+      "min_z": 90,
       "max_x": 35,
-      "max_z": 90,
+      "max_z": 100,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -593,10 +593,7 @@
       "color": "orange",
       "height_authored": null,
       "doors": [
-       "-z",
-       "-x",
-       "+x",
-       "+z"
+       "-z"
       ],
       "theme": null,
       "material": null
@@ -639,9 +636,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -35,
-      "min_z": -90,
+      "min_z": -100,
       "max_x": -25,
-      "max_z": -80,
+      "max_z": -90,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -762,19 +759,19 @@
       "relief_scope": "exclude",
       "vertices": [
        [
-        -14,
+        -9,
         72
        ],
        [
-        -6,
+        -1,
         72
        ],
        [
-        -6,
+        -1,
         80
        ],
        [
-        -14,
+        -9,
         80
        ]
       ],
@@ -797,19 +794,19 @@
       "relief_scope": "exclude",
       "vertices": [
        [
-        24,
+        26,
         62
        ],
        [
-        32,
+        34,
         62
        ],
        [
-        32,
+        34,
         70
        ],
        [
-        24,
+        26,
         70
        ]
       ],
@@ -1746,19 +1743,19 @@
     "seed": 3,
     "points": [
      [
-      -10,
+      -5,
       84
      ],
      [
-      -8,
+      -6,
       74
      ],
      [
-      -4,
+      -6,
       64
      ],
      [
-      -14,
+      -16,
       58
      ],
      [
@@ -1835,12 +1832,12 @@
     "seed": 20,
     "points": [
      [
-      -17,
-      30
+      -22,
+      32
      ],
      [
-      -17,
-      16
+      -22,
+      12
      ]
     ],
     "radius": 3,
@@ -1858,12 +1855,12 @@
     "seed": 21,
     "points": [
      [
-      17,
-      30
+      22,
+      32
      ],
      [
-      17,
-      16
+      22,
+      12
      ]
     ],
     "radius": 3,
@@ -2120,11 +2117,11 @@
      {
       "corners": [
        [
-        0,
+        3,
         62
        ],
        [
-        7,
+        10,
         69
        ]
       ],
@@ -2135,11 +2132,11 @@
      {
       "corners": [
        [
-        1,
+        4,
         70
        ],
        [
-        5,
+        8,
         73
        ]
       ],
@@ -2519,8 +2516,8 @@
     "id": "t3",
     "kind": "tree",
     "seed": 11,
-    "x": 8,
-    "z": 74,
+    "x": 12,
+    "z": 76,
     "form": "template",
     "species": "jungle",
     "height": 12

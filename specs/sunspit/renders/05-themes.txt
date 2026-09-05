@@ -1,13 +1,13 @@
-THEMES  6 themes over 12328 ground cells, 21 distinct surface blocks
-  strand  4374 cells (35.5%)  12:0 Sand, 9:0 Water, 24:0 Sandstone, 24:2 Smooth Sandstone, 13:0 Gravel, 4:0 Cobblestone, 1:0 Stone, 1:5 Andesite
-  dunetop  3800 cells (30.8%)  2:0 Grass Block, 5:2 Birch Planks, 98:0 Stone Bricks, 4:0 Cobblestone, 5:1 Spruce Planks, 24:0 Sandstone, 5:0 Oak Planks, 7:0 Bedrock, 35:14 Red Wool, 35:11 Blue Wool
-  tideflat  1426 cells (11.6%)  12:0 Sand, 13:0 Gravel, 82:0 Clay, 24:2 Smooth Sandstone, 9:0 Water
-  bluff  1328 cells (10.8%)  2:0 Grass Block, 24:2 Smooth Sandstone, 5:0 Oak Planks, 7:0 Bedrock, 24:0 Sandstone, 35:1 Orange Wool, 35:3 Light Blue Wool
-  backshore  1000 cells (8.1%)  12:0 Sand, 2:0 Grass Block, 5:2 Birch Planks
-  pierdeck  400 cells (3.2%)  5:0 Oak Planks, 17:2 Birch Log, 5:6 Oak Planks, 5:2 Birch Planks, 35:14 Red Wool, 35:11 Blue Wool
+THEMES  6 themes over 11228 ground cells, 21 distinct surface blocks
+  dunetop  3600 cells (32.1%)  2:0 Grass Block, 5:2 Birch Planks, 5:0 Oak Planks, 5:1 Spruce Planks, 4:0 Cobblestone, 24:0 Sandstone, 98:0 Stone Bricks, 7:0 Bedrock, 35:1 Orange Wool, 35:3 Light Blue Wool
+  strand  3576 cells (31.8%)  12:0 Sand, 9:0 Water, 24:0 Sandstone, 24:2 Smooth Sandstone, 13:0 Gravel, 4:0 Cobblestone, 1:0 Stone, 1:5 Andesite
+  tideflat  1724 cells (15.4%)  12:0 Sand, 9:0 Water, 13:0 Gravel, 24:2 Smooth Sandstone, 82:0 Clay, 1:0 Stone, 4:0 Cobblestone
+  backshore  1000 cells (8.9%)  12:0 Sand, 2:0 Grass Block, 5:2 Birch Planks
+  bluff  928 cells (8.3%)  2:0 Grass Block, 98:0 Stone Bricks, 24:2 Smooth Sandstone, 4:0 Cobblestone, 5:2 Birch Planks, 7:0 Bedrock, 24:0 Sandstone, 35:14 Red Wool, 35:11 Blue Wool
+  pierdeck  400 cells (3.6%)  5:0 Oak Planks, 17:2 Birch Log, 5:6 Oak Planks, 5:2 Birch Planks, 35:14 Red Wool, 35:11 Blue Wool
 borders:
-  strand | tideflat  207 cells
+  strand | tideflat  195 cells
   backshore | dunetop  120 cells
+  bluff | dunetop  104 cells
   backshore | strand  100 cells
   dunetop | strand  82 cells
-  bluff | dunetop  72 cells
