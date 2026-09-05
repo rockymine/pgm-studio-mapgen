@@ -22,13 +22,13 @@
    },
    "team": "red",
    "point": {
-    "x": -5,
+    "x": -2.5,
     "y": 13,
-    "z": 92
+    "z": 92.5
    },
    "protection": [
     {
-     "minX": -15,
+     "minX": -10,
      "minZ": 80,
      "maxX": 5,
      "maxZ": 100
@@ -39,16 +39,16 @@
     "-z"
    ],
    "footprint": {
-    "minX": -11,
-    "minZ": 86,
-    "maxX": 1,
+    "minX": -8,
+    "minZ": 87,
+    "maxX": 3,
     "maxZ": 98
    },
    "iron": [
     {
-     "x": -1.5,
+     "x": 0.5,
      "y": 13,
-     "z": 82.5
+     "z": 83.5
     }
    ]
   },
@@ -61,15 +61,15 @@
    },
    "team": "blue",
    "point": {
-    "x": 5,
+    "x": 2.5,
     "y": 13,
-    "z": -92
+    "z": -92.5
    },
    "protection": [
     {
      "minX": -5,
      "minZ": -100,
-     "maxX": 15,
+     "maxX": 10,
      "maxZ": -80
     }
    ],
@@ -78,16 +78,16 @@
     "+z"
    ],
    "footprint": {
-    "minX": -1,
+    "minX": -3,
     "minZ": -98,
-    "maxX": 11,
-    "maxZ": -86
+    "maxX": 8,
+    "maxZ": -87
    },
    "iron": [
     {
-     "x": 1.5,
+     "x": -0.5,
      "y": 13,
-     "z": -82.5
+     "z": -83.5
     }
    ]
   }
@@ -200,7 +200,7 @@
    ],
    "spawn": {
     "x": 30,
-    "y": 13,
+    "y": 15,
     "z": 95
    },
    "monuments": [],
@@ -266,7 +266,7 @@
    ],
    "spawn": {
     "x": -30,
-    "y": 13,
+    "y": 15,
     "z": -95
    },
    "monuments": [],
@@ -355,10 +355,10 @@
   "walls": [
    {
     "minX": 25,
-    "minZ": 69,
+    "minZ": 79,
     "maxX": 35,
-    "maxZ": 71,
-    "topY": 13,
+    "maxZ": 81,
+    "topY": 15,
     "chestOnMinFace": true,
     "stamp": {
      "kind": "wall",
@@ -368,10 +368,10 @@
    },
    {
     "minX": -35,
-    "minZ": -71,
+    "minZ": -81,
     "maxX": -25,
-    "maxZ": -69,
-    "topY": 13,
+    "maxZ": -79,
+    "topY": 15,
     "chestOnMinFace": false,
     "stamp": {
      "kind": "wall",

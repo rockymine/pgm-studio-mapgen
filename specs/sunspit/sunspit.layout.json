@@ -277,7 +277,7 @@
       "radius": null,
       "vertices": [
        [
-        -15,
+        -10,
         80
        ],
        [
@@ -289,7 +289,7 @@
         100
        ],
        [
-        -15,
+        -10,
         100
        ]
       ],
@@ -307,7 +307,7 @@
       "color": null,
       "height_authored": null,
       "doors": null,
-      "theme": "bluff",
+      "theme": "dunetop",
       "material": null
      },
      {
@@ -334,11 +334,11 @@
        ],
        [
         35,
-        100
+        80
        ],
        [
         25,
-        100
+        80
        ]
       ],
       "controls": null,
@@ -355,7 +355,55 @@
       "color": null,
       "height_authored": null,
       "doors": null,
-      "theme": "dunetop",
+      "theme": "bluff",
+      "material": null
+     },
+     {
+      "id": "backshore-15",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        25,
+        80
+       ],
+       [
+        35,
+        80
+       ],
+       [
+        35,
+        100
+       ],
+       [
+        25,
+        100
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "exclude",
+      "base_height": 15,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": "bluff",
       "material": null
      },
      {
@@ -412,7 +460,7 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": -15,
+      "min_x": -10,
       "min_z": 80,
       "max_x": 5,
       "max_z": 100,
@@ -445,9 +493,9 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": -11,
-      "min_z": 86,
-      "max_x": 1,
+      "min_x": -8,
+      "min_z": 87,
+      "max_x": 3,
       "max_z": 98,
       "center_x": null,
       "center_z": null,
@@ -478,7 +526,7 @@
       "keepClear": false,
       "min_x": -5,
       "min_z": -100,
-      "max_x": 15,
+      "max_x": 10,
       "max_z": -80,
       "center_x": null,
       "center_z": null,
@@ -507,10 +555,10 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": -1,
+      "min_x": -3,
       "min_z": -98,
-      "max_x": 11,
-      "max_z": -86,
+      "max_x": 8,
+      "max_z": -87,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -585,7 +633,7 @@
       "height_mode": null,
       "skirt": null,
       "relief_scope": "hold",
-      "base_height": 13,
+      "base_height": 15,
       "anchor_heights": null,
       "floor": null,
       "role": "woolRoom",
@@ -759,19 +807,19 @@
       "relief_scope": "exclude",
       "vertices": [
        [
-        -9,
+        -7,
         72
        ],
        [
-        -1,
+        1,
         72
        ],
        [
-        -1,
+        1,
         80
        ],
        [
-        -9,
+        -7,
         80
        ]
       ],
@@ -794,20 +842,20 @@
       "relief_scope": "exclude",
       "vertices": [
        [
-        26,
-        62
-       ],
-       [
-        34,
-        62
-       ],
-       [
-        34,
+        25,
         70
        ],
        [
-        26,
+        35,
         70
+       ],
+       [
+        35,
+        80
+       ],
+       [
+        25,
+        80
        ]
       ],
       "anchor_heights": [
@@ -866,6 +914,7 @@
        "backshore-11",
        "backshore-13",
        "backshore-13-2",
+       "backshore-15",
        "pier-pad-10",
        "ss-spit",
        "ss-cove",
@@ -1743,11 +1792,11 @@
     "seed": 3,
     "points": [
      [
-      -5,
+      -3,
       84
      ],
      [
-      -6,
+      -4,
       74
      ],
      [
@@ -1881,12 +1930,12 @@
      {
       "corners": [
        [
-        -33,
-        66
+        -32,
+        68
        ],
        [
-        -26,
-        73
+        -25,
+        75
        ]
       ]
      }
@@ -1899,7 +1948,7 @@
          {
           "material": {
            "kind": "solid",
-           "id": 5,
+           "id": 2,
            "data": 0
           },
           "thickness": 1
@@ -2117,12 +2166,12 @@
      {
       "corners": [
        [
-        3,
-        62
+        -20,
+        61
        ],
        [
-        10,
-        69
+        -13,
+        68
        ]
       ],
       "spec": {
@@ -2132,12 +2181,12 @@
      {
       "corners": [
        [
-        4,
-        70
+        -19,
+        69
        ],
        [
-        8,
-        73
+        -15,
+        72
        ]
       ],
       "spec": {

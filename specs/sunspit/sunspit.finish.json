@@ -4,8 +4,9 @@
     "backshore-9": "strand",
     "backshore-10": "backshore",
     "backshore-11": "dunetop",
-    "backshore-13": "bluff",
-    "backshore-13-2": "dunetop",
+    "backshore-13": "dunetop",
+    "backshore-13-2": "bluff",
+    "backshore-15": "bluff",
     "pier-pad-10": "pierdeck"
   },
   "shapePropsById": {
@@ -19,6 +20,9 @@
       "relief_scope": "exclude"
     },
     "backshore-13-2": {
+      "relief_scope": "exclude"
+    },
+    "backshore-15": {
       "relief_scope": "exclude"
     },
     "pier-pad-10": {
@@ -125,19 +129,19 @@
       "relief_scope": "exclude",
       "vertices": [
         [
-          -9,
+          -7,
           72
         ],
         [
-          -1,
+          1,
           72
         ],
         [
-          -1,
+          1,
           80
         ],
         [
-          -9,
+          -7,
           80
         ]
       ],
@@ -160,20 +164,20 @@
       "relief_scope": "exclude",
       "vertices": [
         [
-          26,
-          62
-        ],
-        [
-          34,
-          62
-        ],
-        [
-          34,
+          25,
           70
         ],
         [
-          26,
+          35,
           70
+        ],
+        [
+          35,
+          80
+        ],
+        [
+          25,
+          80
         ]
       ],
       "anchor_heights": [
@@ -661,11 +665,11 @@
         "seed": 3,
         "points": [
           [
-            -5,
+            -3,
             84
           ],
           [
-            -6,
+            -4,
             74
           ],
           [
@@ -799,17 +803,17 @@
           {
             "corners": [
               [
-                -33,
-                66
+                -32,
+                68
               ],
               [
-                -26,
-                73
+                -25,
+                75
               ]
             ]
           }
         ],
-        "style": "@stilts"
+        "style": "@stilts-grass"
       },
       {
         "id": "b2",
@@ -820,12 +824,12 @@
           {
             "corners": [
               [
-                3,
-                62
+                -20,
+                61
               ],
               [
-                10,
-                69
+                -13,
+                68
               ]
             ],
             "spec": {
@@ -835,12 +839,12 @@
           {
             "corners": [
               [
-                4,
-                70
+                -19,
+                69
               ],
               [
-                8,
-                73
+                -15,
+                72
               ]
             ],
             "spec": {
