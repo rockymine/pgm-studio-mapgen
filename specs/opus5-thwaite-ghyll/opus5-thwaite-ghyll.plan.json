@@ -1,0 +1,88 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Thwaite Ghyll"
+ },
+ "globals": {
+  "cell": 2,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 16,
+  "observerY": 74
+ },
+ "pieces": [
+  {
+   "id": "fell",
+   "role": "spawn",
+   "rect": [
+    -5,
+    -38,
+    10,
+    6
+   ],
+   "surface": 42
+  },
+  {
+   "id": "west",
+   "role": "piece",
+   "rect": [
+    -27,
+    -32,
+    27,
+    32
+   ],
+   "surface": 16
+  },
+  {
+   "id": "east",
+   "role": "piece",
+   "rect": [
+    0,
+    -32,
+    27,
+    32
+   ],
+   "surface": 16
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "fell",
+    "at": [
+     10,
+     6
+    ],
+    "facing": "back"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "dt-shelf",
+    "piece": "east",
+    "at": [
+     31,
+     18
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "The Thwaite"
+   },
+   {
+    "id": "dt-ford",
+    "piece": "west",
+    "at": [
+     23,
+     15
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "The Ghyll"
+   }
+  ]
+ }
+}

@@ -1,0 +1,582 @@
+{
+ "setup": {
+  "mirror_mode": "rot_180",
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "bbox": {
+   "min_x": -56,
+   "max_x": 56,
+   "min_z": -78,
+   "max_z": 78
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "kind": null,
+   "part_of": null,
+   "seat": null,
+   "layout": {
+    "shapes": [
+     {
+      "id": "east-16",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -54,
+        -64
+       ],
+       [
+        54,
+        -64
+       ],
+       [
+        54,
+        0
+       ],
+       [
+        -54,
+        0
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 16,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "east-42",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -10,
+        -76
+       ],
+       [
+        10,
+        -76
+       ],
+       [
+        10,
+        -64
+       ],
+       [
+        -10,
+        -64
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 42,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "spawn-red",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -10,
+      "min_z": -76,
+      "max_x": 10,
+      "max_z": -64,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "hold",
+      "base_height": 42,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "red",
+      "color": "red",
+      "height_authored": null,
+      "doors": [
+       "+z"
+      ],
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "spawn-blue",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -10,
+      "min_z": 64,
+      "max_x": 10,
+      "max_z": 76,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "blue",
+      "color": "blue",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     }
+    ],
+    "groups": [
+     {
+      "id": "team",
+      "name": "Team island",
+      "mirrors": true,
+      "shapeIds": [
+       "east-16",
+       "east-42"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "themes": {
+  "ghyll": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 5
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 15,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 2,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 2,
+               "data": 0
+              }
+             ]
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 30
+       },
+       {
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 15
+       },
+       {
+        "material": {
+         "kind": "cell",
+         "cellSize": 9,
+         "palette": [
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 4,
+           "data": 0
+          }
+         ]
+        },
+        "thickness": 45
+       }
+      ]
+     }
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "layered",
+       "layers": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         "thickness": 3
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         "thickness": 4
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 13,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 3
+         },
+         "thickness": 2
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+         },
+         "thickness": 2
+        }
+       ]
+      },
+      "width": 6
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   }
+  }
+ },
+ "mapTheme": "ghyll",
+ "roomStyles": null,
+ "dressing": {
+  "props": [
+   {
+    "id": "river",
+    "kind": "water",
+    "shape": "channel",
+    "level": 12,
+    "depth": 4,
+    "points": [
+     [
+      -54,
+      0
+     ],
+     [
+      -16,
+      -3
+     ],
+     [
+      16,
+      3
+     ],
+     [
+      54,
+      0
+     ]
+    ],
+    "radius": 11
+   }
+  ]
+ },
+ "biome": null,
+ "relief": {
+  "team": {
+   "base": 16,
+   "reach": 0,
+   "step": 1,
+   "landform": "rolling",
+   "grain": {
+    "amplitude": 0.8,
+    "scale": 17,
+    "seed": 7
+   },
+   "marks": [
+    {
+     "id": "moor",
+     "kind": "line",
+     "r": 14,
+     "tread": 6,
+     "points": [
+      [
+       -48,
+       -70
+      ],
+      [
+       0,
+       -74
+      ],
+      [
+       48,
+       -70
+      ]
+     ],
+     "h": [
+      34,
+      42,
+      34
+     ]
+    },
+    {
+     "id": "shelf",
+     "kind": "line",
+     "r": 12,
+     "tread": 7,
+     "points": [
+      [
+       14,
+       -52
+      ],
+      [
+       34,
+       -44
+      ],
+      [
+       48,
+       -34
+      ]
+     ],
+     "h": [
+      28,
+      26,
+      23
+     ]
+    },
+    {
+     "id": "road",
+     "kind": "line",
+     "r": 7,
+     "tread": 3,
+     "batter": 58,
+     "points": [
+      [
+       -44,
+       -60
+      ],
+      [
+       -16,
+       -57
+      ],
+      [
+       -14,
+       -45
+      ],
+      [
+       -42,
+       -42
+      ],
+      [
+       -40,
+       -30
+      ],
+      [
+       -14,
+       -27
+      ]
+     ],
+     "h": [
+      34,
+      31,
+      28,
+      24,
+      21,
+      17
+     ]
+    },
+    {
+     "id": "bank",
+     "kind": "line",
+     "r": 9,
+     "tread": 4,
+     "points": [
+      [
+       -54,
+       -16
+      ],
+      [
+       -18,
+       -13
+      ],
+      [
+       18,
+       -15
+      ],
+      [
+       54,
+       -11
+      ]
+     ],
+     "h": [
+      16,
+      15,
+      15,
+      16
+     ]
+    },
+    {
+     "id": "ghyll",
+     "kind": "line",
+     "r": 6,
+     "tread": 3,
+     "points": [
+      [
+       -54,
+       0
+      ],
+      [
+       -16,
+       -3
+      ],
+      [
+       16,
+       3
+      ],
+      [
+       54,
+       0
+      ]
+     ],
+     "h": [
+      9,
+      8,
+      8,
+      9
+     ]
+    }
+   ]
+  }
+ }
+}

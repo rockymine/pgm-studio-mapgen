@@ -1,0 +1,61 @@
+## dt-shelf-0 (destroyable) along x
+TRANSECT 25 stations from (19, -46) to (43, -46), every 1
+  station        ground  surface  water  top  standing            step
+  (   19,   -46)      27       27           27                      
+  (   20,   -46)      27       27           27                      
+  (   21,   -46)      27       27           27                      
+  (   22,   -46)      27       27           27                      
+  (   23,   -46)      27       27           27                      
+  (   24,   -46)      27       27           27                      
+  (   25,   -46)      27       27           27                      
+  (   26,   -46)      27       27           27                      
+  (   27,   -46)      26       26           26                      -1
+  (   28,   -46)      26       26           26                      
+  (   29,   -46)      26       26           26  destroyable dt-shelf  
+  (   30,   -46)      26       26           71  destroyable dt-shelf  
+  (   31,   -46)      26       26           72  destroyable dt-shelf  
+  (   32,   -46)      26       26           71  destroyable dt-shelf  
+  (   33,   -46)      26       26           26  destroyable dt-shelf  
+  (   34,   -46)      26       26           26                      
+  (   35,   -46)      26       26           26                      
+  (   36,   -46)      25       25           25                      -1
+  (   37,   -46)      25       25           25                      
+  (   38,   -46)      25       25           25                      
+  (   39,   -46)      25       25           25                      
+  (   40,   -46)      25       25           25                      
+  (   41,   -46)      25       25           25                      
+  (   42,   -46)      25       25           25                      
+  (   43,   -46)      25       25           25                      
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable dt-shelf at (29, -48)
+
+## dt-shelf-0 (destroyable) along z
+TRANSECT 25 stations from (31, -58) to (31, -34), every 1
+  station        ground  surface  water  top  standing            step
+  (   31,   -58)      26       26           26                      
+  (   31,   -57)      26       26           26                      
+  (   31,   -56)      26       26           26                      
+  (   31,   -55)      26       26           26                      
+  (   31,   -54)      26       26           26                      
+  (   31,   -53)      26       26           26                      
+  (   31,   -52)      26       26           26                      
+  (   31,   -51)      26       26           26                      
+  (   31,   -50)      26       26           26                      
+  (   31,   -49)      26       26           26                      
+  (   31,   -48)      26       26           26  destroyable dt-shelf  
+  (   31,   -47)      26       26           71  destroyable dt-shelf  
+  (   31,   -46)      26       26           72  destroyable dt-shelf  
+  (   31,   -45)      26       26           71  destroyable dt-shelf  
+  (   31,   -44)      26       26           26  destroyable dt-shelf  
+  (   31,   -43)      26       26           26                      
+  (   31,   -42)      26       26           26                      
+  (   31,   -41)      26       26           26                      
+  (   31,   -40)      26       26           26                      
+  (   31,   -39)      25       25           25                      -1
+  (   31,   -38)      25       25           25                      
+  (   31,   -37)      25       25           25                      
+  (   31,   -36)      24       24           24                      -1
+  (   31,   -35)      24       24           24                      
+  (   31,   -34)      24       24           24                      
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable dt-shelf at (29, -48)
