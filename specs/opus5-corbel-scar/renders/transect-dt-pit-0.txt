@@ -1,0 +1,61 @@
+## dt-pit-0 (destroyable) along x
+TRANSECT 25 stations from (-44, -56) to (-20, -56), every 1
+  station        ground  surface  water  top  standing            step
+  (  -44,   -56)      15       15           15                      
+  (  -43,   -56)      15       15           15                      
+  (  -42,   -56)      12       12           12                      -3
+  (  -41,   -56)      12       12           12                      
+  (  -40,   -56)      12       12           12                      
+  (  -39,   -56)      12       12           12                      
+  (  -38,   -56)      12       12           12                      
+  (  -37,   -56)      12       12           12                      
+  (  -36,   -56)      12       12           12                      
+  (  -35,   -56)      12       12           12                      
+  (  -34,   -56)      12       12           12  destroyable dt-pit  
+  (  -33,   -56)      12       12           68  destroyable dt-pit  
+  (  -32,   -56)      12       12           69  destroyable dt-pit  
+  (  -31,   -56)      12       12           68  destroyable dt-pit  
+  (  -30,   -56)      12       12           12  destroyable dt-pit  
+  (  -29,   -56)      12       12           12                      
+  (  -28,   -56)      12       12           12                      
+  (  -27,   -56)      12       12           12                      
+  (  -26,   -56)      12       12           12                      
+  (  -25,   -56)      12       12           12                      
+  (  -24,   -56)      13       13           13                      +1
+  (  -23,   -56)      13       13           13                      
+  (  -22,   -56)      13       13           13                      
+  (  -21,   -56)      13       13           13                      
+  (  -20,   -56)      13       13           13                      
+rises 1, falls 1, worst step 3: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable dt-pit at (-34, -58)
+
+## dt-pit-0 (destroyable) along z
+TRANSECT 25 stations from (-32, -68) to (-32, -44), every 1
+  station        ground  surface  water  top  standing            step
+  (  -32,   -68)      14       14           14                      
+  (  -32,   -67)      14       14           14                      
+  (  -32,   -66)      14       14           14                      
+  (  -32,   -65)      14       14           14                      
+  (  -32,   -64)      12       12           12                      -2
+  (  -32,   -63)      12       12           12                      
+  (  -32,   -62)      12       12           12                      
+  (  -32,   -61)      12       12           12                      
+  (  -32,   -60)      12       12           12                      
+  (  -32,   -59)      12       12           12                      
+  (  -32,   -58)      12       12           12  destroyable dt-pit  
+  (  -32,   -57)      12       12           68  destroyable dt-pit  
+  (  -32,   -56)      12       12           69  destroyable dt-pit  
+  (  -32,   -55)      12       12           68  destroyable dt-pit  
+  (  -32,   -54)      12       12           12  destroyable dt-pit  
+  (  -32,   -53)      12       12           12                      
+  (  -32,   -52)      12       12           12                      
+  (  -32,   -51)      12       12           12                      
+  (  -32,   -50)      12       12           12                      
+  (  -32,   -49)      12       12           12                      
+  (  -32,   -48)      12       12           12                      
+  (  -32,   -47)      12       12           12                      
+  (  -32,   -46)      12       12           12                      
+  (  -32,   -45)      17       17           17                      BARRIER +5
+  (  -32,   -44)      17       17           17                      
+rises 1, falls 1, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (-32, -45) | walked end to end
+beside: destroyable dt-pit at (-34, -58)
