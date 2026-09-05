@@ -1,47 +1,47 @@
 HEIGHTMAP  1 char = 2x2 blocks (the top-left block of each)  x -55..53 across, z -110..108 down
-KEY  char = ground height above y4 in bands of 1 block(s): 0 = y4..4, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
+KEY  char = ground height above y5 in bands of 1 block(s): 0 = y5..5, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
        -5   -4   -3   -2   -1    0    1    2    3    4    5 
      5319753197531975319753197531135791357913579135791357913
--110                                    ccccc               
--108                                    cHHHH               
--106                                    cHHHH               
--104                                    cHHHH               
--102                                    cHHHH               
--100                               ccccccccccccccc          
- -98                               ccccccccccccccc          
- -96                               ccccccccccccccc          
- -94                               ccccccccccccccc          
- -92                               ccccccccccccccc          
- -90                               eeeee     8abc8          
- -88                                eeee      9cdd          
- -86                                eee       ddd           
- -84                                eeee      ddd           
- -82                                eeee      ddd           
- -80                               eeffee    dedd           
- -78                   9880dd  a88ceeggeeeeeeeeed           
- -76                   ddbadda999abdeffeeeeeefffed          
- -74         HHHHd9999adeffedba99aabdeeeeeedeggfe           
- -72         HHHHdbaabceffgedb99999999999abeefgge           
- -70         HHHHdcbbbcdeeg2     99999       effe           
- -68         HHHHdcbbbcddddd     99999       eeee           
- -66         HHHHdcbbbcddddd     99999       eeeee          
- -64         HHHHdbaaabcdddddd9999999999999eeeeeeedddddddddd
- -62         HHHHd99999bdddddeaf99999999999eeeeedddddddddddd
- -60                   acdeeeeefffffggggggfeeefedddddddddddd
- -58                   9aeefffffffffgggggffeeffedddddddddddd
- -56                   88eefggggffffgggggfffffgfeddddddddddd
- -54                      6ggggggffeefefffffgggged     ddddd
- -52                      afhhhhhgdddddddddfghhged     ddddd
- -50                      8bgiiiebbbbbbbbbbehhhge      HHHHH
- -48                      99bege99999999999bdgeb9      dddHH
- -46                      9999c99999999999999b999      ddHdH
- -44                      99999999999999999999999      dHHHH
- -42                      99999999  a99999999   99     dHHHH
- -40                     99999999     9999999               
- -38                     a9999999     9999999               
- -36                      9999999     9999999               
- -34                      9999999     9999999               
- -32                     99999999     9999999               
+-110                                    bbbbb               
+-108                                    bHHHH               
+-106                                    bHHHH               
+-104                                    bHHHH               
+-102                                    bHHHH               
+-100                               bbbbbbbbbbbbbbb          
+ -98                               bbbbbbbbbbbbbbb          
+ -96                               bbbbbbbbbbbbbbb          
+ -94                               bbbbbbbbbbbbbbb          
+ -92                               bbbbbbbbbbbbbbb          
+ -90                               aaaaa     aaaaa          
+ -88                               aaaaa     aaaaa          
+ -86                               aaaaa     aaaaa          
+ -84                               aaaaa     aaaaa          
+ -82                               aabba     aaaaa          
+ -80                   aaaaaaaaaaaaaabbbaaaaaabaaa          
+ -78                   aaaaaaaaaaaaabbbbaaaaabbbaa          
+ -76                   aabbaaaaaaaaaabbaaa99bcccba          
+ -74         HHHHccbbbaabccbaaaaaa99aaaaa999bddcba          
+ -72         HHHHccbbaabccdbaaa9999999aaa999abdcaa          
+ -70         HHHHccbbaaabbd0     99999       abbaa          
+ -68         HHHHcbbbaaaaaaa     99999       aaaaa          
+ -66         HHHHcbbbaaaaaaa     99999       aaaaa          
+ -64         HHHHcbbbaaaaaaa9998888889999999aaaaaaaaaaabbbbb
+ -62         HHHHcbbbaaaaaaa9998888888889999aaaaaaaaaabbbbbb
+ -60                   aaaa9999888888888899aaabaaaaaaabbbbbb
+ -58                   aaaa9999988888888889aabbbaaaaaabbbbbb
+ -56                   aaaa9aaa987777778889abbcbbaaaaabbbbbc
+ -54                     99aaaaa97777777789accccba     bbbcc
+ -52                     88abbbbb9777777778bcddca9     ccccc
+ -50                     778bccc966666666779dddc98     HHHHH
+ -48                     66679b96666666666689ca866     cccHH
+ -46                     6666686666666666666686666     ccHcH
+ -44                     6666666666666666666666666     cHHHH
+ -42                     6666666666666666666666666     cHHHH
+ -40                     66666666     6666666               
+ -38                     66666666     6666666               
+ -36                     66666666     6666666               
+ -34                     66666666     6666666               
+ -32                     66666666     6666666               
  -30                                                        
  -28                                                        
  -26                                                        
@@ -50,21 +50,21 @@ KEY  char = ground height above y4 in bands of 1 block(s): 0 = y4..4, 1 = …; H
  -20                                                        
  -18                                                        
  -16                                                        
- -14                    aaaaaaaaaaaaa                       
- -12                   aaaaaaaaaaaaaaaaa                    
- -10                 aaaaaaaaaaaaaaaaaaaaa                  
-  -8               aacccaaaaaaaaaaaaaaaaaaa                 
-  -6               abdedbaaaa~~~~~~aaaaaaaaa                
-  -4              aabcddcbaa~~~~~~~~aaaaaaaaaa              
-  -2               aaabbaaaa~~~~~~~~~aaaaaaaaa              
-   0                aaaaaaaa~~~~~~~~~~aaaaaaaa              
-   2                aaaaaaaa~~~~~~~~~~aabcccbaa             
-   4                aaaaaaaaaa~~~~~~~aaabcddcaa             
-   6                  aaaaaaaaaa~~~aaaaaacffca              
-   8                   aaaaaaaaaaaaaaaaaaaddaa              
-  10                    aaaaaaaaaaaaaaaaaa a                
-  12                       aaaaaaaaaaaaaa                   
-  14                              aa                        
+ -14              999999999999999999999999999999            
+ -12              999999999999999999999999999999            
+ -10              999bb9999999999999999999999999            
+  -8              999bdb999999999999999999999999            
+  -6              99acdca9999~~~~~~9999999999999            
+  -4              99abccba99~~~~~~~~999999999999            
+  -2              9999aa9999~~~~~~~~~99999999999            
+   0              9999999999~~~~~~~~~~9999999999            
+   2              9999999999~~~~~~~~~~99abbba999            
+   4              999999999999~~~~~~~999abccb999            
+   6              99999999999999~~~999999beeb999            
+   8              999999999999999999999999cc9999            
+  10              9999999999999999999999999b9999            
+  12              999999999999999999999999999999            
+  14              999999999999999999999999999999            
   16                                                        
   18                                                        
   20                                                        
@@ -72,44 +72,44 @@ KEY  char = ground height above y4 in bands of 1 block(s): 0 = y4..4, 1 = …; H
   24                                                        
   26                                                        
   28                                                        
-  30                99999999     9999999                    
-  32                9999999     99999999                    
-  34                 999999     99999999                    
-  36                 999999     99999999                    
-  38                99999999     9999999                    
-  40 ddddd     9    99999999    99999999                    
-  42 dHHHH      99999999999999 999999999                    
-  44 dHHdH       9999999999999999999999                     
-  46 dHddd       9cbe999999999999cecc99                     
-  48 dHHHH      8dgfhdbaaaaaaaaabgigge9                     
-  50 ddddd      dghhhfdccccccccdgihhhfa                     
-  52 ddddd      dfhgggeeeeeeeddeghhhhhfe                    
-  54 ddddd     ddfggffffggffgffffgggggge                    
-  56 ddddddddddddegffeefgggggfffffffffeeb98                 
-  58 ddddddddddddeefeeefgggggffffffffeeeca8                 
-  60 dddddddddddddeeeecf99999gfffffceeeddd888888ddddd       
-  62 dddddddddddeeeeee99999999999999ddddddba99abdHHHd       
-  64 ddddd8ddddeeeeeeee9999999999999ddddddcbaabcdHHHd       
-  66            eeee        99999     ddddccbbbcdHHHd       
-  68            eefe        99999     eeddccbbccdHHHd       
-  70             fgfee99999999999999d1cgfecbbbbcdHHHd       
-  72            egggfedceeecbbaa999adefgfecaaaabdHHHd       
-  74            defffeeeeeeefdca999aceeecdd88888ddddd       
-  76            eeeeeeeeeeefeeda98888de5ab8                 
-  78            deeeee eeefffee8         88                 
-  80            dddd     eefee                              
-  82            dddd      eeee                              
-  84            ddd       eee                               
-  86            ddb8      eeee                              
-  88            bca8      eeee                              
-  90           ccccccccccccccc                              
-  92           ccccccccccccccc                              
-  94           ccccccccccccccc                              
-  96           ccccccccccccccc                              
-  98           ccccccccccccccc                              
+  30                66666666     6666666                    
+  32                66666666     6666666                    
+  34                66666666     6666666                    
+  36                66666666     6666666                    
+  38                66666666     6666666                    
+  40 ccccc     6666666666666666666666666                    
+  42 cHHHH     6666666666666666666666666                    
+  44 cHHcH     6666666666666666666666666                    
+  46 cHccc     66688a6666666666668988666                    
+  48 cHHHH     77acbd976666666667bcbb966                    
+  50 ccccc     88bdddb8777666667bcbbba87                    
+  52 ccccc     aabdccc98777777779bbbbb98                    
+  54 ccbbb     aabccbb988877777789aaaaa9                    
+  56 bbbbbbaaaaaabcbba99888887777899999aaaa                 
+  58 bbbbbbbaaaaabbbaa9988888888889999aaaaa                 
+  60 bbbbbbaaaaaaaaaaa999888888888899aaaaaaaabbcccccc       
+  62 bbbbbbaaaaaaaaaa9999988888888999aaaaaaaabbccHHHc       
+  64 bbbbbbaaaaaaaaaa9999999988888999aaaaaaaabbccHHHc       
+  66           aaaaa        99999     aaaaaaabbccHHHc       
+  68           aaaba        99999     bbaaaaabbccHHHc       
+  70           aabdbaaa9aaaa9999999aa09dcbaaabbccHHHc       
+  72           aacdcb999aaaaa9999aaaabcdcbaabbbccHHHc       
+  74           aabcccb99aaaabaaaaaaaabbbbaaabbbcccccc       
+  76           abbbbba9aaabbbaaaaaaaaabbaaa                 
+  78           aabbbaaaaabbbbaaaaaaaaaaaaaa                 
+  80           aaaaa     abbba                              
+  82           aaaaa     aaaaa                              
+  84           aaaaa     aaaaa                              
+  86           aaaaa     aaaaa                              
+  88           aaaaa     aaaaa                              
+  90           bbbbbbbbbbbbbbb                              
+  92           bbbbbbbbbbbbbbb                              
+  94           bbbbbbbbbbbbbbb                              
+  96           bbbbbbbbbbbbbbb                              
+  98           bbbbbbbbbbbbbbb                              
  100                HHHHH                                   
- 102                cHHHH                                   
- 104                cHHHH                                   
- 106                cHHHH                                   
- 108                cHHHH                                   
-low y4, high y22, range 18
+ 102                bHHHH                                   
+ 104                bHHHH                                   
+ 106                bHHHH                                   
+ 108                bHHHH                                   
+low y5, high y19, range 14

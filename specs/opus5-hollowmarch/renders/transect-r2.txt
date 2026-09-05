@@ -11,15 +11,15 @@ TRANSECT 25 stations from (-44, 90) to (-20, 90), every 1
   (  -37,    90)                                                    void
   (  -36,    90)                                                    void
   (  -35,    90)      16       16           16                      
-  (  -34,    90)      16       16           17  boulder r2          
-  (  -33,    90)      16       16           18  boulder r2          
-  (  -32,    90)      16       16           18  boulder r2          
-  (  -31,    90)      16       16           18  boulder r2          
-  (  -30,    90)      16       16           23  tree a1             
-  (  -29,    90)      16       16           24  tree a1             
-  (  -28,    90)      16       16           24  tree a1             
-  (  -27,    90)      16       16           23  tree a1             
-  (  -26,    90)      16       16           22  tree a1             
+  (  -34,    90)      16       16           16                      
+  (  -33,    90)      16       16           17  boulder r2          
+  (  -32,    90)      16       16           17  boulder r2          
+  (  -31,    90)      16       16           17  boulder r2          
+  (  -30,    90)      16       16           24  tree a1             
+  (  -29,    90)      16       16           25  tree a1             
+  (  -28,    90)      16       16           25  tree a1             
+  (  -27,    90)      16       16           24  tree a1             
+  (  -26,    90)      16       16           23  tree a1             
   (  -25,    90)      16       16           16                      
   (  -24,    90)      16       16           16                      
   (  -23,    90)      16       16           16                      
@@ -32,21 +32,21 @@ beside: boulder r2 at (-34, 89), tree a1 at (-31, 89), stroke road-wool-a at (-2
 ## r2 (boulder) along z
 TRANSECT 25 stations from (-32, 78) to (-32, 102), every 1
   station        ground  surface  water  top  standing            step
-  (  -32,    78)      17       17           17                      
-  (  -32,    79)      17       17           17  stroke turf-2       
-  (  -32,    80)      17       17           17  stroke turf-2       
-  (  -32,    81)      17       17           17  stroke turf-2       
-  (  -32,    82)      17       17           17  stroke turf-2       
-  (  -32,    83)      17       17           17  stroke turf-2       
-  (  -32,    84)      17       17           17                      
-  (  -32,    85)      17       17           17                      
-  (  -32,    86)      17       17           17                      
-  (  -32,    87)      17       17           17                      
-  (  -32,    88)      16       16           17  boulder r2          -1
-  (  -32,    89)      16       16           18  boulder r2          
-  (  -32,    90)      16       16           18  boulder r2          
-  (  -32,    91)      16       16           17  boulder r2          
-  (  -32,    92)      16       16           17  boulder r2          
+  (  -32,    78)      15       15           15                      
+  (  -32,    79)      15       15           15  stroke turf-2       
+  (  -32,    80)      15       15           15  stroke turf-2       
+  (  -32,    81)      15       15           15  stroke turf-2       
+  (  -32,    82)      15       15           15  stroke turf-2       
+  (  -32,    83)      15       15           15  stroke turf-2       
+  (  -32,    84)      15       15           15                      
+  (  -32,    85)      15       15           15                      
+  (  -32,    86)      15       15           15                      
+  (  -32,    87)      15       15           15                      
+  (  -32,    88)      15       15           16  boulder r2          
+  (  -32,    89)      15       15           17  boulder r2          
+  (  -32,    90)      16       16           17  boulder r2          +1
+  (  -32,    91)      16       16           16  boulder r2          
+  (  -32,    92)      16       16           16                      
   (  -32,    93)      16       16           16                      
   (  -32,    94)      16       16           16                      
   (  -32,    95)      16       16           16                      
@@ -57,5 +57,5 @@ TRANSECT 25 stations from (-32, 78) to (-32, 102), every 1
   (  -32,   100)                                                    void
   (  -32,   101)                                                    void
   (  -32,   102)                                                    void
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: stroke turf-2 at (-32, 76), tree a1 at (-30, 87), boulder r2 at (-33, 88), tree a0 at (-34, 95)

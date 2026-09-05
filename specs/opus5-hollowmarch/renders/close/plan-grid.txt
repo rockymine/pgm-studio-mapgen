@@ -1,0 +1,74 @@
+=== Hollowmarch — cell grid, 1 char = 5×5 blocks, 22×44 cells = 110×220 blocks
+     1098765432101234567890
+                -          
+ -22 |              mm      |
+ -21 |              mm      |
+ -20 |            jjjjjj    |
+ -19 |            jjjjjj    |
+ -18 |            llookk    |
+ -17 |            llookk    |
+ -16 |       eeeeaaaaaaa    |
+ -15 |   iihheeeeaaaaaaa    |
+ -14 |   iihhggooddooocc    |
+ -13 |   iihhffffbbbbbbbnnoo|
+ -12 |       ffffbbbbbbbnnoo|
+ -11 |        qqqqqqqqqq  oo|
+ -10 |        qqqqqqqqqq  pp|
+  -9 |        qqqqqqqqqq  pp|
+  -8 |        sssoorrr      |
+  -7 |        sssoorrr      |
+  -6 |     UUUUUUUUUUUU     |
+  -5 |     UUUUUUUUUUUU     |
+  -4 |     UUUUUUUUUUUU     |
+  -3 |     ############     |
+  -2 |     ############     |
+  -1 |     ############     |
+   0 |     ############     |<<< z=0
+   1 |     ############     |
+   2 |     ############     |
+   3 |     UUUUUUUUUUUU     |
+   4 |     UUUUUUUUUUUU     |
+   5 |     UUUUUUUUUUUU     |
+   6 |      RRRooSSS        |
+   7 |      RRRooSSS        |
+   8 |PP  QQQQQQQQQQ        |
+   9 |PP  QQQQQQQQQQ        |
+  10 |OO  QQQQQQQQQQ        |
+  11 |OONNBBBBBBBFFFF       |
+  12 |OONNBBBBBBBFFFFHHII   |
+  13 |    CCoooDDooGGHHII   |
+  14 |    AAAAAAAEEEEHHII   |
+  15 |    AAAAAAAEEEE       |
+  16 |    KKooLL            |
+  17 |    KKooLL            |
+  18 |    JJJJJJ            |
+  19 |    JJJJJJ            |
+  20 |      MM              |
+  21 |      MM              |
+
+  o  = enclosed void — 26 cells the board rings and nothing covers (pieces and build
+       zones both count as sides, per match-flow.md §6.8). A hole is made by ARRANGEMENT,
+       never by subtraction: a buffer drawn over a piece is inert by design, and the
+       compiler declares every enclosed void a `void-N` buffer on each compile anyway.
+  legend (upper = stated, lower = its rot_180 image)
+    A  hub-t1           piece       cells x  -7..0   z  14..16    blocks x  -35..0    z   70..80     (7×2 cells)
+    B  hub-t2           piece       cells x  -7..0   z  11..13    blocks x  -35..0    z   55..65     (7×2 cells)
+    C  hub-t3           piece       cells x  -7..-5  z  13..14    blocks x  -35..-25  z   65..70     (2×1 cells)
+    D  hub-t4           piece       cells x  -2..0   z  13..14    blocks x  -10..0    z   65..70     (2×1 cells)
+    E  hub-t5           piece       cells x   0..4   z  14..16    blocks x    0..20   z   70..80     (4×2 cells)
+    F  hub-t6           piece       cells x   0..4   z  11..13    blocks x    0..20   z   55..65     (4×2 cells)
+    G  hub-t7           piece       cells x   2..4   z  13..14    blocks x   10..20   z   65..70     (2×1 cells)
+    H  spawn-t1         piece       cells x   4..6   z  12..15    blocks x   20..30   z   60..75     (2×3 cells)
+    I  spawn-room       spawn       cells x   6..8   z  12..15    blocks x   30..40   z   60..75     (2×3 cells)
+    J  wool-a-t1        piece       cells x  -7..-1  z  18..20    blocks x  -35..-5   z   90..100    (6×2 cells)
+    K  wool-a-t2        piece       cells x  -7..-5  z  16..18    blocks x  -35..-25  z   80..90     (2×2 cells)
+    L  wool-a-t3        piece       cells x  -3..-1  z  16..18    blocks x  -15..-5   z   80..90     (2×2 cells)
+    M  wool-a-room      wool-room   cells x  -5..-3  z  20..22    blocks x  -25..-15  z  100..110    (2×2 cells)
+    N  wool-b-t1        piece       cells x  -9..-7  z  11..13    blocks x  -45..-35  z   55..65     (2×2 cells)
+    O  wool-b-t2        piece       cells x -11..-9  z  10..13    blocks x  -55..-45  z   50..65     (2×3 cells)
+    P  wool-b-room      wool-room   cells x -11..-9  z   8..10    blocks x  -55..-45  z   40..50     (2×2 cells)
+    Q  frontline-t1     piece       cells x  -7..3   z   8..11    blocks x  -35..15   z   40..55     (10×3 cells)
+    R  frontline-t2     piece       cells x  -5..-2  z   6..8     blocks x  -25..-10  z   30..40     (3×2 cells)
+    S  frontline-t3     piece       cells x   0..3   z   6..8     blocks x    0..15   z   30..40     (3×2 cells)
+    T  mid-isle         piece       cells x  -6..6   z  -3..3     blocks x  -30..30   z  -15..15     (12×6 cells)
+    U  mid-band         build       cells x  -6..6   z  -6..6     blocks x  -30..30   z  -30..30     (12×12 cells)

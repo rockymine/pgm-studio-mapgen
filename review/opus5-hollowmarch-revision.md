@@ -18,7 +18,48 @@ Paired against the committed layout: every bounding box agrees, except `s8`'s, w
 island past the rectangle it compiles from — which is why an automatic pairing would have refused it and
 left it alone.
 
-## The relief was ungraded, not merely large
+## The relief was thrown away and rebuilt
+
+The first pass calmed it; the author's ruling was to take it out entirely and start again, on the rough
+plan with no drawn coast on it. Both Bézier outlines are gone and the ground is the compiler's own
+rectangles.
+
+Bare, the board is flat and perfect: **no barriers, no scrambles, every row crossable on foot**, and four
+blocks of range, which is the held pads standing over it. Everything below is what was added back to that.
+
+**The instrument is `step: 1` with `stairs: true`.** The surface snaps to whole courses, so every height
+change is one block and is walked, and the stair pass cuts a way up wherever the terracing would strand a
+player. `step: 2` was measured beside it: it terraces just as cleanly — barriers go to zero either way —
+and every bench then costs a placed block, which read as **0 of 15 rows crossable on foot**. One is
+walked, two is climbed, and that is the whole difference.
+
+**Four marks, not twelve.** One `area` per place that is a different level and none for anything else:
+
+| mark | what it does |
+|---|---|
+| `front-fall` h11 | the frontline falls three courses toward the middle, a course at a time |
+| `lane-wool-a` h15 | the north lane climbs out of the hub to the wool approach held at 16 |
+| `lane-wool-b` h15 | the same for the west lane |
+| `lane-spawn` h15 | the same for the spawn's |
+
+**Held pads exactly one course apart.** Two held pads side by side cannot be ramped between, so the
+difference between them *is* the step: the three rooms came down from 18 to 17, one over the approaches at
+16, and `wool-b-t2` from 17 to 16 to join the same run.
+
+`reach` 20 over a 110-block board so the grading is spread; grain 0.8 at a period of 20 so it rides on the
+steps without adding one.
+
+| | before | first pass | now |
+|---|---|---|---|
+| team range | 15 | 8 | **6** |
+| team barriers · scrambles | 185 · 184 | 94 · 83 | **0 · 0** |
+| rows on foot, x · z | 1/15 · 0/10 | 5/15 · 10/10 | **15/15 · 10/10** |
+| the island | 9 range, 50 barriers | flat | **flat, every row walked** |
+| the world, `03-slopes` | 6725 walked · 655 scrambled · 645 barrier · 20 faces | — | **8590 · 286 · 24 · 3 faces** |
+
+The 24 barrier cells left are the crags, which is what a crag is.
+
+## What the relief was before, and why it read as it did
 
 `POST …/sketch/relief/read` said it in one line: **`RL2` — 15 blocks of range and 1.0 scrambles for every
 barrier.** Ground that rolls keeps more scrambles than barriers; this kept the same of each. And of the

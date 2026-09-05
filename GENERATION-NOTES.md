@@ -1289,6 +1289,40 @@ without stopping being terraced. Every stated level must be a multiple of the st
 rounds it away. `opus5-deepcut`: four marks and `step 4` give six benches where thirty marks gave a
 hillside nobody wanted.
 
+### On a small board the relief is `step: 1` with `stairs`, and four marks
+
+A board of a hundred blocks a side has no room for a field. Every knob that makes one — a grain with
+amplitude, a push, a mark per landform — puts a step somewhere a player is standing, and the board comes
+out as a page of `#` with no flat ground on it. `opus5-hollowmarch` measured **185 barriers against 184
+scrambles, one of fifteen rows crossable on foot and none of ten**, off twelve marks, four pushes and a
+grain of 1.2.
+
+The instrument that works at that size is the one `step` was built for, at its smallest quantum:
+
+- **`step: 1` with `stairs: true`.** The surface snaps to whole courses, so every height change is exactly
+  one block, and the stair pass cuts a way up wherever the terracing would strand a player. `step: 2` is
+  the *other* board — it terraces cleanly (barriers go to zero) and every bench then costs a placed block,
+  which measured as **0 of 15 rows crossable on foot**. One is walked; two is climbed.
+- **One `area` mark per place that is a different level, and no others.** Not one per landform: a mark is
+  a level the relaxation has to arrive at, and marks close together at different heights are what a
+  gradient cannot resolve. Hollowmarch takes four — the front, and one per lane out of the hub.
+- **A long `reach`.** 20 on a 110-block board, so the grading between two marks is spread over the whole
+  distance between them rather than piled at one seam.
+- **Held pads exactly one course apart.** `relief_scope: hold` keeps a pad out of the solve, and two held
+  pads side by side cannot be ramped between — so the difference between them *is* the step, and a room
+  two courses over its approach is a step nothing can grade. Hollowmarch's rooms stood at 18 over
+  approaches at 16.
+- **Grain at most 1, at a period of 20 or more.** At that size it rides on the steps without adding one.
+
+Rebuilt that way the same board reads **6 blocks of range, no barriers, no scrambles, and every row
+crossable on foot on both axes** — and in the world, 8590 walked against 24 barrier cells over three
+faces, all three of them a crag.
+
+**And the marks an evaluator offers for a `Δ≥2` seam are the wrong instrument on a held pad.** `EL1` and
+`SP8` hand over a `line` mark at the pad's own height; on ground the solve wants lower, that mark pulls a
+ridge its whole length. Applied to Hollowmarch's six pad seams it took barriers from 88 to 140 and rows on
+foot from 6 to 0. Grade a held seam by moving the pad, not by marking the ground beside it.
+
 ### Only `relief_scope: "exclude"` makes a vertical-sided spire
 
 Every mark is a constraint the relaxation smooths *through*, so a point mark makes a cone. An

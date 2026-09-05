@@ -1,32 +1,32 @@
 ## r0 (boulder) along x
 TRANSECT 25 stations from (-52, 60) to (-28, 60), every 1
   station        ground  surface  water  top  standing            step
-  (  -52,    60)      17       17           26  tree b0             
-  (  -51,    60)      17       17           26  tree b0             
-  (  -50,    60)      17       17           17                      
-  (  -49,    60)      17       17           29  tree b2             
-  (  -48,    60)      17       17           29  tree b2             
-  (  -47,    60)      17       17           30  tree b2             
-  (  -46,    60)      17       17           30  tree b2             
-  (  -45,    60)      17       17           28  tree b2             
-  (  -44,    60)      17       17           17                      
-  (  -43,    60)      17       17           17                      
-  (  -42,    60)      17       17           20  boulder r0          
-  (  -41,    60)      17       17           21  boulder r0          
-  (  -40,    60)      17       17           21  boulder r0          
-  (  -39,    60)      17       17           21  boulder r0          
-  (  -38,    60)      17       17           20  boulder r0          
-  (  -37,    60)      17       17           17                      
-  (  -36,    60)      17       17           17                      
-  (  -35,    60)      17       17           17                      
-  (  -34,    60)      17       17           17                      
-  (  -33,    60)      17       17           17                      
-  (  -32,    60)      17       17           17                      
-  (  -31,    60)      17       17           17  stroke road-wool-b  
-  (  -30,    60)      18       18           19  flora fl-hub        +1
-  (  -29,    60)      18       18           19  flora fl-hub        
-  (  -28,    60)      18       18           19  flora fl-hub        
-rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+  (  -52,    60)      16       16           25  tree b0             
+  (  -51,    60)      16       16           25  tree b0             
+  (  -50,    60)      16       16           16                      
+  (  -49,    60)      16       16           28  tree b2             
+  (  -48,    60)      16       16           28  tree b2             
+  (  -47,    60)      16       16           29  tree b2             
+  (  -46,    60)      16       16           29  tree b2             
+  (  -45,    60)      16       16           27  tree b2             
+  (  -44,    60)      16       16           16                      
+  (  -43,    60)      15       15           15                      -1
+  (  -42,    60)      15       15           18  boulder r0          
+  (  -41,    60)      15       15           19  boulder r0          
+  (  -40,    60)      15       15           19  boulder r0          
+  (  -39,    60)      15       15           19  boulder r0          
+  (  -38,    60)      15       15           18  boulder r0          
+  (  -37,    60)      15       15           15                      
+  (  -36,    60)      15       15           15                      
+  (  -35,    60)      15       15           15                      
+  (  -34,    60)      15       15           15                      
+  (  -33,    60)      15       15           15                      
+  (  -32,    60)      15       15           15                      
+  (  -31,    60)      15       15           15  stroke road-wool-b  
+  (  -30,    60)      15       15           16  flora fl-hub        
+  (  -29,    60)      15       15           16  flora fl-hub        
+  (  -28,    60)      15       15           16  flora fl-hub        
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: tree b0 at (-53, 60), tree b2 at (-50, 61), boulder r0 at (-42, 59), tree b1 at (-36, 62), stroke road-wool-b at (-35, 58), flora fl-hub at (-30, 58), stroke turf-0 at (-27, 58)
 
 ## r0 (boulder) along z
@@ -39,16 +39,16 @@ TRANSECT 25 stations from (-40, 48) to (-40, 72), every 1
   (  -40,    52)                                                    void
   (  -40,    53)                                                    void
   (  -40,    54)                                                    void
-  (  -40,    55)      17       17           17                      
-  (  -40,    56)      17       17           17                      
-  (  -40,    57)      17       17           17                      
-  (  -40,    58)      17       17           20  boulder r0          
-  (  -40,    59)      17       17           21  boulder r0          
-  (  -40,    60)      17       17           21  boulder r0          
-  (  -40,    61)      17       17           21  boulder r0          
-  (  -40,    62)      17       17           20  boulder r0          
-  (  -40,    63)      17       17           17                      
-  (  -40,    64)      17       17           17                      
+  (  -40,    55)      15       15           15                      
+  (  -40,    56)      15       15           15                      
+  (  -40,    57)      15       15           15                      
+  (  -40,    58)      15       15           18  boulder r0          
+  (  -40,    59)      15       15           19  boulder r0          
+  (  -40,    60)      15       15           19  boulder r0          
+  (  -40,    61)      15       15           19  boulder r0          
+  (  -40,    62)      15       15           18  boulder r0          
+  (  -40,    63)      15       15           15                      
+  (  -40,    64)      15       15           15                      
   (  -40,    65)                                                    void
   (  -40,    66)                                                    void
   (  -40,    67)                                                    void
