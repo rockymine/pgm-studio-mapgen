@@ -7,12 +7,13 @@ valid.**
 
 ## The board
 
-Twelve pieces on the authored half, and the board reads as two grounds. The **beach** is one shape thirty
-blocks deep across the whole width, with **two legs extruding from it** into the sea, ten blocks out and
-fifteen wide; a build zone attaches flush against each leg's tip and runs across to the enemy's leg at the
-same x — the composer's `frontline twin`, which is how a two-legged front is drawn. The gap a team pays for
-is 20 blocks, tip to tip. Between the two legs the channel is void until the tidal `water-lane` floods it,
-and it then opens a third way over that neither team's legs cover.
+Eleven pieces on the authored half, and the board reads as two grounds. The **beach** is one shape — the
+strand, the old backshore and both frontline legs are one height, one theme and one relief — fifty blocks
+deep across the whole width, with **two legs extruding from it** into the sea, ten blocks out and twenty
+wide; a build zone attaches flush against each leg's tip and runs across to the enemy's leg at the same x —
+the composer's `frontline twin`, which is how a two-legged front is drawn. The gap a team pays for is 20
+blocks, tip to tip. Between the two legs the channel is void until the tidal `water-lane` floods it, and it
+then opens a third way over that neither team's legs cover.
 
 Behind the beach the **grassland stands on a five-block scarp**, and the line between the two grounds is the
 green's own face — the backshore piece that used to sit between them is beach now, at the sand's height and
@@ -82,9 +83,10 @@ of it.
   one grounded one (`@stilts-ground`, the same style with its open storey taken off), so the two read as one
   settlement; the cottage that stood in the lane to the pier wool is gone, and the stilt house took its place
   clear of that lane.
-- **A path per ramp, cut from the map's own stone.** Two strokes leave the spawn door and end at the head of
-  a ramp each, paved with the same stone/andesite noise the walls and fills are made of, so the way down is
-  the one thing on the green that is not green.
+- **One path network, cut from the map's own stone.** A stroke leaves the spawn door, forks on the green,
+  and ends at the head of each of the three ramps; a fourth runs off the east ramp to the wool room the land
+  reaches. All of it is the same stone/andesite noise the walls and fills are made of, so the way through is
+  the one thing on the green that is not green — and none of it is laid on the pier's own deck.
 - Five sea rocks in one `cell` of stone, andesite and cobblestone — grey against the sand rather than sand
   on sand.
 - `@stilts-grass`, the stilts style forked with a grass plate, so the house standing on the village green
@@ -130,3 +132,20 @@ of it.
   rather than one this repository can settle.
 - The legs are cell-square because the shapes either side of them abut ground a player walks, and a bend
   would open those seams. Whether a squared-off headland is right on a beach is the author's call.
+
+## Read and not fixable here
+
+**A `wallDiagonal` flattens on the face between two grounds, and that is by construction.** The board's
+retaining wall shows its diagonal on every void-facing side and reads as horizontal bands on the one facing
+the beach. The cause is `TerrainProfile.LabelPerimeter`, which Moore-traces each **landmass's** outer
+boundary and numbers those cells `0..n-1`: *"Interior cells and internal elevation steps (which face lower
+terrain, not void) are on no outer boundary and keep -1."* `WallStripes.Arc` then reads `-1` as arc **0**,
+so every column of an internal riser reads the same position round the loop; `wallDiagonal` shears that
+position by `y × slope`, and a shear of a constant is a function of Y alone — horizontal bands.
+
+The green and the beach are one landmass at two heights, so the scarp is an internal riser and nothing about
+it is on a perimeter. It is deliberate rather than a defect — the comment states the intent — but the effect
+is that the pattern flattens on exactly the face an author reaches for it on, and no theme field reaches it:
+the arc is the only position a stripe can read, and the surface has no way to hand a riser one. The fix that
+would work is a second trace, over each **plateau's** own boundary, used as the arc where the landmass trace
+gives none — one pass beside the one that is there, and the studio author's call rather than this map's.

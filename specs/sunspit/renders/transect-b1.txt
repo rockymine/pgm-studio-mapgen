@@ -20,23 +20,23 @@ TRANSECT 24 stations from (-28, 64) to (-5, 64), every 1
   (  -12,    64)      14       14           28  house b1            
   (  -11,    64)      14       14           14                      
   (  -10,    64)      14       14           14                      
-  (   -9,    64)      14       14           14                      
-  (   -8,    64)      14       14           14                      
-  (   -7,    64)      14       14           14                      
-  (   -6,    64)      14       14           15  flora f2            
+  (   -9,    64)      14       14           14  stroke p2           
+  (   -8,    64)      14       14           14  stroke p2           
+  (   -7,    64)      14       14           14  stroke p2           
+  (   -6,    64)      14       14           14  stroke p2           
   (   -5,    64)      14       14           14  stroke p2           
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke p1 at (-27, 62), house b1 at (-21, 62), flora f2 at (-6, 62), stroke p2 at (-5, 62)
+beside: stroke p1 at (-27, 62), house b1 at (-21, 62), stroke p2 at (-11, 66), flora f2 at (-3, 65)
 
 ## b1 (house) along z
 TRANSECT 24 stations from (-17, 53) to (-17, 76), every 1
   station        ground  surface  water  top  standing            step
-  (  -17,    53)       9        9            9                      
-  (  -17,    54)       9        9            9                      
-  (  -17,    55)       9        9            9                      
-  (  -17,    56)       9        9            9                      
-  (  -17,    57)       9        9            9                      
-  (  -17,    58)       9        9            9                      
+  (  -17,    53)       9        9           11  boulder r1          
+  (  -17,    54)       9        9           11  boulder r1          
+  (  -17,    55)       9        9           11  boulder r1          
+  (  -17,    56)       9        9           11  boulder r1          
+  (  -17,    57)       9        9           11  boulder r1          
+  (  -17,    58)       9        9           10  boulder r1          
   (  -17,    59)       9        9            9                      
   (  -17,    60)      14       14           24  house b1            BARRIER +5
   (  -17,    61)      14       14           25  house b1            
@@ -56,4 +56,4 @@ TRANSECT 24 stations from (-17, 53) to (-17, 76), every 1
   (  -17,    75)      14       14           14                      
   (  -17,    76)      14       14           14                      
 rises 1, falls 0, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (-17, 60) | walked end to end
-beside: house b1 at (-19, 60), stroke p1 at (-16, 70), tree t2 at (-19, 74)
+beside: boulder r1 at (-17, 52), house b1 at (-19, 60), stroke p1 at (-15, 70), tree t2 at (-19, 74)

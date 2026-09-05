@@ -1,7 +1,5 @@
 {
   "themeById": {
-    "backshore-8": "tideflat",
-    "backshore-8-2": "tideflat",
     "backshore-9": "strand",
     "backshore-14": "dunetop",
     "backshore-16": "dunetop",
@@ -10,12 +8,6 @@
     "pier-pad-10": "pierdeck"
   },
   "shapePropsById": {
-    "backshore-8": {
-      "relief_scope": "exclude"
-    },
-    "backshore-8-2": {
-      "relief_scope": "exclude"
-    },
     "backshore-14": {
       "relief_scope": "exclude"
     },
@@ -215,8 +207,8 @@
       "reach": 8,
       "step": 1,
       "grain": {
-        "amplitude": 0.0,
-        "scale": 11,
+        "amplitude": 1.0,
+        "scale": 13,
         "seed": 21
       },
       "marks": [
@@ -224,31 +216,31 @@
           "id": "d1",
           "kind": "point",
           "at": [
-            -26,
-            38
+            -36,
+            44
           ],
-          "h": 9,
+          "h": 10,
           "r": 5
         },
         {
           "id": "d2",
           "kind": "point",
           "at": [
-            12,
-            40
+            10,
+            30
           ],
-          "h": 9,
-          "r": 4
+          "h": 10,
+          "r": 6
         },
         {
           "id": "d3",
           "kind": "point",
           "at": [
-            -6,
-            30
+            -14,
+            22
           ],
-          "h": 9,
-          "r": 4
+          "h": 10,
+          "r": 5
         }
       ],
       "pushes": []
@@ -332,60 +324,6 @@
           ]
         },
         "depth": 3,
-        "enabled": true
-      },
-      "wall": {
-        "kind": "solid",
-        "id": 24
-      },
-      "wallEnabled": true,
-      "fill": {
-        "kind": "solid",
-        "id": 24
-      }
-    },
-    "tideflat": {
-      "bedrock": {
-        "relative": false,
-        "value": 1
-      },
-      "rimEdges": "drop",
-      "wallOnTerrainFaces": true,
-      "rim": {
-        "material": {
-          "kind": "solid",
-          "id": 13
-        },
-        "depth": 1,
-        "enabled": false
-      },
-      "surface": {
-        "material": {
-          "kind": "noise",
-          "seed": 15,
-          "scale": 7,
-          "octaves": 2,
-          "rise": 0,
-          "stops": [
-            {
-              "kind": "solid",
-              "id": 12
-            },
-            {
-              "kind": "solid",
-              "id": 12
-            },
-            {
-              "kind": "solid",
-              "id": 13
-            },
-            {
-              "kind": "solid",
-              "id": 82
-            }
-          ]
-        },
-        "depth": 2,
         "enabled": true
       },
       "wall": {
@@ -934,16 +872,20 @@
         "seed": 3,
         "points": [
           [
-            -6,
+            -4,
             84
           ],
           [
-            -9,
+            -8,
             76
           ],
           [
-            -16,
-            68
+            -12,
+            70
+          ],
+          [
+            -20,
+            66
           ],
           [
             -25,
@@ -983,61 +925,16 @@
         "seed": 4,
         "points": [
           [
-            0,
-            84
+            -12,
+            70
           ],
           [
-            -2,
-            76
-          ],
-          [
-            -3,
-            68
+            -8,
+            66
           ],
           [
             -3,
             63
-          ]
-        ],
-        "radius": 2,
-        "style": "solid",
-        "coverage": 1.0,
-        "pave": {
-          "kind": "noise",
-          "seed": 41,
-          "scale": 4,
-          "octaves": 2,
-          "rise": 3,
-          "stops": [
-            {
-              "kind": "solid",
-              "id": 1
-            },
-            {
-              "kind": "solid",
-              "id": 1,
-              "data": 5
-            },
-            {
-              "kind": "solid",
-              "id": 1,
-              "data": 6
-            }
-          ]
-        }
-      },
-      {
-        "id": "p3",
-        "kind": "stroke",
-        "seed": 5,
-        "points": [
-          [
-            -57,
-            74
-          ],
-          [
-            -52,
-            74
           ]
         ],
         "radius": 2,
@@ -1073,16 +970,69 @@
         "seed": 6,
         "points": [
           [
-            16,
-            64
+            -12,
+            70
           ],
           [
-            24,
+            0,
+            72
+          ],
+          [
+            14,
+            68
+          ],
+          [
+            22,
             60
           ],
           [
             27,
             53
+          ]
+        ],
+        "radius": 2,
+        "style": "solid",
+        "coverage": 1.0,
+        "pave": {
+          "kind": "noise",
+          "seed": 41,
+          "scale": 4,
+          "octaves": 2,
+          "rise": 3,
+          "stops": [
+            {
+              "kind": "solid",
+              "id": 1
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 5
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 6
+            }
+          ]
+        }
+      },
+      {
+        "id": "p5",
+        "kind": "stroke",
+        "seed": 7,
+        "points": [
+          [
+            27,
+            53
+          ],
+          [
+            30,
+            62
+          ],
+          [
+            30,
+            72
           ]
         ],
         "radius": 2,
@@ -1244,8 +1194,8 @@
         "id": "t5",
         "kind": "tree",
         "seed": 13,
-        "x": -30,
-        "z": 54,
+        "x": -22,
+        "z": 36,
         "form": "template",
         "species": "acacia",
         "height": 7
@@ -1264,8 +1214,8 @@
         "id": "r1",
         "kind": "boulder",
         "seed": 15,
-        "x": -26,
-        "z": 40,
+        "x": -15,
+        "z": 55,
         "form": "outcrop",
         "size": 3.0,
         "mossy": false,
@@ -1297,8 +1247,8 @@
         "id": "r2",
         "kind": "boulder",
         "seed": 16,
-        "x": 20,
-        "z": 36,
+        "x": 10,
+        "z": 55,
         "form": "round",
         "size": 2.5,
         "mossy": false,
@@ -1330,8 +1280,8 @@
         "id": "r3",
         "kind": "boulder",
         "seed": 17,
-        "x": -6,
-        "z": 44,
+        "x": -12,
+        "z": 47,
         "form": "angular",
         "size": 3.5,
         "mossy": false,
@@ -1488,6 +1438,26 @@
           "flowerScale": 10,
           "tallShare": 0.1
         }
+      },
+      {
+        "id": "t7",
+        "kind": "tree",
+        "seed": 21,
+        "x": 6,
+        "z": 36,
+        "form": "template",
+        "species": "acacia",
+        "height": 8
+      },
+      {
+        "id": "t8",
+        "kind": "tree",
+        "seed": 22,
+        "x": 30,
+        "z": 34,
+        "form": "template",
+        "species": "jungle",
+        "height": 9
       }
     ]
   },

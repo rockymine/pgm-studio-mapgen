@@ -9,25 +9,25 @@ TRANSECT 25 stations from (-48, 34) to (-24, 34), every 1
   (  -43,    34)                                                    void
   (  -42,    34)                                                    void
   (  -41,    34)                                                    void
-  (  -40,    34)       9        9            9                      
-  (  -39,    34)       9        9           11  boulder r5          
-  (  -38,    34)       9        9           13  boulder r5          
-  (  -37,    34)       9        9           13  boulder r5          
-  (  -36,    34)       9        9           14  boulder r5          
-  (  -35,    34)       9        9           13  boulder r5          
-  (  -34,    34)       9        9           13  boulder r5          
-  (  -33,    34)       9        9            9                      
-  (  -32,    34)       9        9            9                      
-  (  -31,    34)       9        9            9                      
-  (  -30,    34)       9        9            9                      
-  (  -29,    34)       9        9            9                      
-  (  -28,    34)       9        9            9                      
-  (  -27,    34)       9        9            9                      
-  (  -26,    34)       9        9            9                      
-  (  -25,    34)       9        9            9                      
-  (  -24,    34)       9        9            9                      
+  (  -40,    34)      10       10           10                      
+  (  -39,    34)      10       10           12  boulder r5          
+  (  -38,    34)      10       10           14  boulder r5          
+  (  -37,    34)      10       10           14  boulder r5          
+  (  -36,    34)      10       10           15  boulder r5          
+  (  -35,    34)      10       10           14  boulder r5          
+  (  -34,    34)      10       10           14  boulder r5          
+  (  -33,    34)      10       10           10                      
+  (  -32,    34)      10       10           10                      
+  (  -31,    34)      10       10           10                      
+  (  -30,    34)      10       10           10                      
+  (  -29,    34)      10       10           10                      
+  (  -28,    34)      10       10           10                      
+  (  -27,    34)      10       10           10                      
+  (  -26,    34)      10       10           10                      
+  (  -25,    34)      10       10           10                      
+  (  -24,    34)      10       10           10                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder r5 at (-39, 34), stroke q1 at (-25, 32)
+beside: boulder r5 at (-39, 34), stroke q1 at (-25, 32), tree t5 at (-22, 35)
 
 ## r5 (boulder) along z
 TRANSECT 25 stations from (-36, 22) to (-36, 46), every 1
@@ -42,20 +42,20 @@ TRANSECT 25 stations from (-36, 22) to (-36, 46), every 1
   (  -36,    29)       9        9            9  water w2            
   (  -36,    30)       9        9            9  water w2            
   (  -36,    31)       9        9            9                      
-  (  -36,    32)       9        9           13  boulder r5          
-  (  -36,    33)       9        9           13  boulder r5          
-  (  -36,    34)       9        9           14  boulder r5          
-  (  -36,    35)       9        9           13  boulder r5          
-  (  -36,    36)       9        9           13  boulder r5          
-  (  -36,    37)       9        9            9                      
-  (  -36,    38)       9        9            9                      
-  (  -36,    39)       9        9            9                      
-  (  -36,    40)       9        9            9                      
-  (  -36,    41)       9        9            9                      
-  (  -36,    42)       9        9            9                      
-  (  -36,    43)       9        9            9                      
-  (  -36,    44)       9        9            9                      
-  (  -36,    45)       9        9            9                      
-  (  -36,    46)       9        9            9                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+  (  -36,    32)      10       10           14  boulder r5          +1
+  (  -36,    33)      10       10           14  boulder r5          
+  (  -36,    34)      10       10           15  boulder r5          
+  (  -36,    35)      10       10           14  boulder r5          
+  (  -36,    36)      10       10           14  boulder r5          
+  (  -36,    37)      10       10           10                      
+  (  -36,    38)      10       10           10                      
+  (  -36,    39)      10       10           10                      
+  (  -36,    40)      10       10           10                      
+  (  -36,    41)      10       10           10                      
+  (  -36,    42)      10       10           10                      
+  (  -36,    43)      10       10           10                      
+  (  -36,    44)      10       10           10                      
+  (  -36,    45)      10       10           10                      
+  (  -36,    46)      10       10           10                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: water w2 at (-34, 22), boulder r5 at (-38, 32)

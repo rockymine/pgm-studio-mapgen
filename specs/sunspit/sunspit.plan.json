@@ -18,8 +18,8 @@
     { "id": "bluff-flat",  "role": "piece",     "rect": [5, 16, 2, 2],   "surface": 18 },
     { "id": "wool-bluff",  "role": "wool-room", "rect": [5, 18, 2, 2],   "surface": 18 },
     { "id": "strand",      "role": "piece",     "rect": [-8, 4, 16, 6],  "surface": 9 },
-    { "id": "leg-west",    "role": "piece",     "rect": [-8, 2, 4, 2],   "surface": 8 },
-    { "id": "leg-east",    "role": "piece",     "rect": [4, 2, 4, 2],    "surface": 8 },
+    { "id": "leg-west",    "role": "piece",     "rect": [-8, 2, 4, 2],   "surface": 9 },
+    { "id": "leg-east",    "role": "piece",     "rect": [4, 2, 4, 2],    "surface": 9 },
     { "id": "pier-pad",    "role": "piece",     "rect": [-12, 14, 2, 2], "surface": 10 },
     { "id": "pier-room",   "role": "wool-room", "rect": [-12, 16, 2, 2], "surface": 10 }
   ],
