@@ -25,6 +25,7 @@ about it."*
 | Where does the ground step, over the whole board? | `03-slopes.txt` — `. walked · : scramble · # barrier`, plus a per-face summary | — |
 | How high is the ground along this line? | `tools/loop.py --profile x=<x>,z=<a>..<b>,step=1` | your own arithmetic over the anchors |
 | How **steep** is the ground, and where? | `GET …/incline?format=text` — the glyph is the tens of degrees, and under the grid, how much ground stands in each ten | `03-slopes.txt`, which answers a *step* (can it be walked) and not an *angle* (how should it be finished) |
+| Is there anywhere to **stand**? | `POST …/sketch/relief/read` → `level` (share under 10°) and `largestField`; `RL5` fires under 30% | the walk tier, which answers one place and no ledge for a board that is one long ramp |
 | Which two **marks** built that wall? | `POST …/sketch/relief/read` → `seams`, worst first, each naming the pair and the cell; `RL3` fires above a scramble | a face in `03-slopes.txt` or the relief read, which report the wall as terrain and attribute it to nothing |
 | What does a column hold, layer by layer? | `tools/loop.py --column x,z` | reading a world file yourself |
 | May a prop stand here? | `06-claims.txt` (`POST …/sketch/dressing?format=text`), then `tools/loop.py --candidates <propId> x,z …` | placing it and reading the decline |
@@ -187,6 +188,20 @@ takes a depth stack of its own so grass stays one course over its soil:
 which is the only thing that says whether a cut lands where you think it does — and a distribution with a
 *spike* in it is a board reporting its own `step` quantum rather than its shape. `opus5-scarp-mask` is the
 worked example: 68% moor, 8% shoulder, 11% rock on ground that was 86% grass and nothing else.
+
+### A tread on every mark builds a board with nowhere to stand
+
+`tread` is the fix for the two faults below, and over-applying it is a fault of its own. A tread grades a
+mark's shoulder into its neighbour, so a board whose every mark carries one is a board of nothing but
+shoulders: no flat to fight on, and no face to decide where anyone goes. It reads as walkable — one connected
+place, no ledge, every step within a jump — which is exactly why nothing else catches it.
+
+`RL5` does, off `level` in the relief read: the share of an island under ten degrees, with 30% the bar.
+**State a tread where two marks would otherwise meet on a wall, and leave it off the ground meant to be flat
+to its edge.**
+
+*`opus5-thwaite-ghyll`, five marks all carrying a tread: 25.4% level and no face at all. The same marks with
+the treads off: 43.6% and 70 faces. Grain is not the difference — removing that moves it 0.5 points.*
 
 ### A mark's band ends on a wall, and `tread` is the answer to both ways it happens
 
