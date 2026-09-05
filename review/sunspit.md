@@ -63,10 +63,11 @@ is the point of it.
 - **Ramps as shapes, not as relief.** Every tier above the strand is `relief_scope: exclude`, so a relief
   mark on one of its seams does nothing; the three Δ2 seams are tilted quads at 4:1 with `height_mode:
   level` and a thickness per vertex. `03-slopes.txt` reports no barrier anywhere on the board.
-- **The isolated wool's crossing docks on a leg too.** The village's west end is cut back a cell and a
-  ten-wide leg put back in front of it, so the pier's build zone attaches to a face that sticks out rather
-  than to flat coast — the same reading the frontline legs give, at the smallest a piece can be, which is one
-  cell. The strait stays 15.
+- **The isolated wool's crossing docks on a leg too.** The village's west face ran `z 60..80` where the
+  zone crossing to the pier only covers `z 70..80`, so half the face it joined was not a crossing. The
+  village is cut back a cell and a ten-block leg put in front of it, `x −35..−30, z 70..80` — the face is now
+  exactly the zone's own width, the same reading the frontline legs give. The strait stays 15. Read back,
+  `(-33, 65)` is void and `(-33, 75)` is grass, which is the notch that makes it a leg.
 - **The jetty is stone with a timber deck.** Its body was planks and logs and read as a different map from
   everything around it; the wall and the fill are the board's own stone-and-andesite noise now, and only the
   deck course is birch.
