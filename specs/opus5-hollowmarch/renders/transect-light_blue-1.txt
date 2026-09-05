@@ -1,0 +1,52 @@
+## light_blue-1 (wool) along x
+TRANSECT 16 stations from (38, -45) to (53, -45), every 1
+  station        ground  surface  water  top  standing            step
+  (   38,   -45)                                                    void
+  (   39,   -45)                                                    void
+  (   40,   -45)                                                    void
+  (   41,   -45)                                                    void
+  (   42,   -45)                                                    void
+  (   43,   -45)                                                    void
+  (   44,   -45)                                                    void
+  (   45,   -45)      17       17           25                      
+  (   46,   -45)      17       17           25  wool wool-2#1       
+  (   47,   -45)      17       17           25  wool wool-2#1       
+  (   48,   -45)      17       17           25  stroke road-wool-b#1  
+  (   49,   -45)      17       17           52  wool wool-2#1       
+  (   50,   -45)      17       17           52  wool wool-2#1       
+  (   51,   -45)      17       17           52  wool wool-2#1       
+  (   52,   -45)      17       17           25  wool wool-2#1       
+  (   53,   -45)      17       17           25  wool wool-2#1       
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke road-wool-b#1 at (45, -47), wool wool-2#1 at (46, -45)
+
+## light_blue-1 (wool) along z
+TRANSECT 25 stations from (50, -57) to (50, -33), every 1
+  station        ground  surface  water  top  standing            step
+  (   50,   -57)      17       17           17                      
+  (   50,   -56)      17       17           17                      
+  (   50,   -55)      17       17           17                      
+  (   50,   -54)      17       17           17                      
+  (   50,   -53)      17       17           17                      
+  (   50,   -52)      17       17           17                      
+  (   50,   -51)      17       17           17                      
+  (   50,   -50)      17       17           23  redstoneline 1#1    
+  (   50,   -49)      17       17           23  wool wool-2#1       
+  (   50,   -48)      17       17           24  stroke road-wool-b#1  
+  (   50,   -47)      17       17           24  stroke road-wool-b#1  
+  (   50,   -46)      17       17           52  wool wool-2#1       
+  (   50,   -45)      17       17           52  wool wool-2#1       
+  (   50,   -44)      17       17           52  wool wool-2#1       
+  (   50,   -43)      17       17           24  wool wool-2#1       
+  (   50,   -42)      17       17           23  wool wool-2#1       
+  (   50,   -41)      17       17           23                      
+  (   50,   -40)                                                    void
+  (   50,   -39)                                                    void
+  (   50,   -38)                                                    void
+  (   50,   -37)                                                    void
+  (   50,   -36)                                                    void
+  (   50,   -35)                                                    void
+  (   50,   -34)                                                    void
+  (   50,   -33)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: redstoneline 1#1 at (48, -50), wool wool-2#1 at (48, -49), stroke road-wool-b#1 at (48, -48)

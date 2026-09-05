@@ -1,0 +1,80 @@
+## pond (water) along x
+TRANSECT 36 stations from (-18, 0) to (17, 0), every 1
+  station        ground  surface  water  top  standing            step
+  (  -18,     0)      14       14           14  stroke turf-5       
+  (  -17,     0)      14       14           14                      
+  (  -16,     0)      14       14           15  flora fl-isle       
+  (  -15,     0)      14       14           15  flora fl-isle       
+  (  -14,     0)      14       14           15  flora fl-isle       
+  (  -13,     0)      14       14           15  flora fl-isle       
+  (  -12,     0)      14       14           15  flora fl-isle       
+  (  -11,     0)      14       14           15  flora fl-isle       
+  (  -10,     0)      14       14           14  water pond          
+  (   -9,     0)      14       14           14  water pond          
+  (   -8,     0)      14       14     14    14  water pond          
+  (   -7,     0)      14       14     14    14  water pond#1        
+  (   -6,     0)      14       14     14    14  water pond#1        
+  (   -5,     0)      14       14     14    14  water pond#1        
+  (   -4,     0)      14       14     14    14  water pond#1        
+  (   -3,     0)      14       14     14    31  water pond#1        
+  (   -2,     0)      14       14     14    31  water pond#1        
+  (   -1,     0)      14       14     14    30  water pond#1        
+  (    0,     0)      14       14     14    30  water pond#1        
+  (    1,     0)      14       14     14    31  water pond#1        
+  (    2,     0)      14       14     14    31  water pond#1        
+  (    3,     0)      14       14     14    14  water pond#1        
+  (    4,     0)      14       14     14    14  water pond#1        
+  (    5,     0)      14       14     14    14  water pond#1        
+  (    6,     0)      14       14     14    14  water pond#1        
+  (    7,     0)      14       14     14    14  water pond#1        
+  (    8,     0)      14       14           14  water pond          
+  (    9,     0)      14       14           14  water pond#1        
+  (   10,     0)      14       14           14                      
+  (   11,     0)      14       14           14                      
+  (   12,     0)      14       14           14                      
+  (   13,     0)      14       14           14  stroke turf-5#1     
+  (   14,     0)      14       14           14                      
+  (   15,     0)      14       14           14  stroke turf-5#1     
+  (   16,     0)      14       14           14                      
+  (   17,     0)      14       14           14                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke turf-6#1 at (-20, -2), stroke turf-5 at (-18, -2), flora fl-isle at (-16, -1), tree iw0 at (-20, 2), water pond at (-10, -2), water pond#1 at (-7, -2), stroke turf-5#1 at (13, -2)
+
+## pond (water) along z
+TRANSECT 33 stations from (-1, -16) to (-1, 16), every 1
+  station        ground  surface  water  top  standing            step
+  (   -1,   -16)                                                    void
+  (   -1,   -15)                                                    void
+  (   -1,   -14)      14       14           14                      
+  (   -1,   -13)      14       14           14                      
+  (   -1,   -12)      14       14           14                      
+  (   -1,   -11)      14       14           14                      
+  (   -1,   -10)      14       14           14                      
+  (   -1,    -9)      14       14           14                      
+  (   -1,    -8)      14       14           14                      
+  (   -1,    -7)      14       14           14  water pond          
+  (   -1,    -6)      14       14     14    14  water pond#1        
+  (   -1,    -5)      14       14     14    14  water pond#1        
+  (   -1,    -4)      14       14     14    14  water pond#1        
+  (   -1,    -3)      14       14     14    31  water pond#1        
+  (   -1,    -2)      14       14     14    31  water pond#1        
+  (   -1,    -1)      14       14     14    30  water pond#1        
+  (   -1,     0)      14       14     14    30  water pond#1        
+  (   -1,     1)      14       14     14    31  water pond#1        
+  (   -1,     2)      14       14     14    31  water pond#1        
+  (   -1,     3)      14       14     14    14  water pond#1        
+  (   -1,     4)      14       14     14    14  water pond#1        
+  (   -1,     5)      14       14     14    14  water pond#1        
+  (   -1,     6)      14       14           14  water pond#1        
+  (   -1,     7)      14       14           14                      
+  (   -1,     8)      14       14           14                      
+  (   -1,     9)      14       14           14                      
+  (   -1,    10)      14       14           14                      
+  (   -1,    11)      14       14           14                      
+  (   -1,    12)      14       14           14                      
+  (   -1,    13)      14       14           14                      
+  (   -1,    14)                                                    void
+  (   -1,    15)                                                    void
+  (   -1,    16)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water pond at (-3, -7), water pond#1 at (-3, -6)

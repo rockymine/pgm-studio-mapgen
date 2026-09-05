@@ -1,0 +1,61 @@
+## r1 (boulder) along x
+TRANSECT 25 stations from (-41, 45) to (-17, 45), every 1
+  station        ground  surface  water  top  standing            step
+  (  -41,    45)                                                    void
+  (  -40,    45)                                                    void
+  (  -39,    45)                                                    void
+  (  -38,    45)                                                    void
+  (  -37,    45)                                                    void
+  (  -36,    45)                                                    void
+  (  -35,    45)                            21  tree w0             void
+  (  -34,    45)                            22  tree w0             void
+  (  -33,    45)                            22  tree w0             void
+  (  -32,    45)      13       13           22  tree w0             
+  (  -31,    45)      13       13           20  tree w0             
+  (  -30,    45)      13       13           16  boulder r1          
+  (  -29,    45)      13       13           16  boulder r1          
+  (  -28,    45)      13       13           16  boulder r1          
+  (  -27,    45)      13       13           15  boulder r1          
+  (  -26,    45)      15       15           15                      scramble +2
+  (  -25,    45)      15       15           15                      
+  (  -24,    45)      13       13           13  stroke dirt-front   -2
+  (  -23,    45)      13       13           13  stroke dirt-front   
+  (  -22,    45)      13       13           13                      
+  (  -21,    45)      13       13           13  stroke dirt-front   
+  (  -20,    45)      13       13           13  stroke dirt-front   
+  (  -19,    45)      13       13           13                      
+  (  -18,    45)      13       13           14  flora fl-front      
+  (  -17,    45)      13       13           14  flora fl-front      
+rises 1, falls 1, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-26, 45) | walked end to end
+beside: tree w0 at (-36, 43), boulder r1 at (-30, 44), stroke dirt-front at (-24, 45), flora fl-front at (-20, 47), stroke road-front-w at (-17, 43)
+
+## r1 (boulder) along z
+TRANSECT 25 stations from (-29, 33) to (-29, 57), every 1
+  station        ground  surface  water  top  standing            step
+  (  -29,    33)                                                    void
+  (  -29,    34)                                                    void
+  (  -29,    35)                                                    void
+  (  -29,    36)                                                    void
+  (  -29,    37)                                                    void
+  (  -29,    38)                                                    void
+  (  -29,    39)                                                    void
+  (  -29,    40)                                                    void
+  (  -29,    41)                                                    void
+  (  -29,    42)      13       13           13                      
+  (  -29,    43)      13       13           13                      
+  (  -29,    44)      13       13           16  boulder r1          
+  (  -29,    45)      13       13           16  boulder r1          
+  (  -29,    46)      16       16           16                      BARRIER +3
+  (  -29,    47)      18       18           18                      scramble +2
+  (  -29,    48)      20       20           20                      scramble +2
+  (  -29,    49)      22       22           22                      scramble +2
+  (  -29,    50)      21       21           21                      -1
+  (  -29,    51)      21       21           21                      
+  (  -29,    52)      21       21           21                      
+  (  -29,    53)      21       21           21                      
+  (  -29,    54)      20       20           20  stroke turf-0       -1
+  (  -29,    55)      20       20           20                      
+  (  -29,    56)      20       20           20                      
+  (  -29,    57)      19       19           19  stroke turf-0       -1
+rises 4, falls 3, worst step 3: 1 barrier, 3 scramble, 0 drop — BARRIER +3 at (-29, 46); scramble +2 at (-29, 47); scramble +2 at (-29, 48); scramble +2 at (-29, 49) | walked end to end
+beside: tree w0 at (-31, 42), boulder r1 at (-30, 44), stroke turf-0 at (-28, 52), stroke road-wool-b at (-31, 57), flora fl-hub at (-30, 58)

@@ -1,0 +1,61 @@
+## r2 (boulder) along x
+TRANSECT 25 stations from (-44, 90) to (-20, 90), every 1
+  station        ground  surface  water  top  standing            step
+  (  -44,    90)                                                    void
+  (  -43,    90)                                                    void
+  (  -42,    90)                                                    void
+  (  -41,    90)                                                    void
+  (  -40,    90)                                                    void
+  (  -39,    90)                                                    void
+  (  -38,    90)                                                    void
+  (  -37,    90)                                                    void
+  (  -36,    90)                                                    void
+  (  -35,    90)      16       16           16                      
+  (  -34,    90)      16       16           17  boulder r2          
+  (  -33,    90)      16       16           18  boulder r2          
+  (  -32,    90)      16       16           18  boulder r2          
+  (  -31,    90)      16       16           18  boulder r2          
+  (  -30,    90)      16       16           23  tree a1             
+  (  -29,    90)      16       16           24  tree a1             
+  (  -28,    90)      16       16           24  tree a1             
+  (  -27,    90)      16       16           23  tree a1             
+  (  -26,    90)      16       16           22  tree a1             
+  (  -25,    90)      16       16           16                      
+  (  -24,    90)      16       16           16                      
+  (  -23,    90)      16       16           16                      
+  (  -22,    90)      16       16           16                      
+  (  -21,    90)      16       16           16  stroke road-wool-a  
+  (  -20,    90)      16       16           16  stroke road-wool-a  
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder r2 at (-34, 89), tree a1 at (-31, 89), stroke road-wool-a at (-22, 92)
+
+## r2 (boulder) along z
+TRANSECT 25 stations from (-32, 78) to (-32, 102), every 1
+  station        ground  surface  water  top  standing            step
+  (  -32,    78)      17       17           17                      
+  (  -32,    79)      17       17           17  stroke turf-2       
+  (  -32,    80)      17       17           17  stroke turf-2       
+  (  -32,    81)      17       17           17  stroke turf-2       
+  (  -32,    82)      17       17           17  stroke turf-2       
+  (  -32,    83)      17       17           17  stroke turf-2       
+  (  -32,    84)      17       17           17                      
+  (  -32,    85)      17       17           17                      
+  (  -32,    86)      17       17           17                      
+  (  -32,    87)      17       17           17                      
+  (  -32,    88)      16       16           17  boulder r2          -1
+  (  -32,    89)      16       16           18  boulder r2          
+  (  -32,    90)      16       16           18  boulder r2          
+  (  -32,    91)      16       16           17  boulder r2          
+  (  -32,    92)      16       16           17  boulder r2          
+  (  -32,    93)      16       16           16                      
+  (  -32,    94)      16       16           16                      
+  (  -32,    95)      16       16           16                      
+  (  -32,    96)      16       16           23  tree a0             
+  (  -32,    97)      16       16           22  tree a0             
+  (  -32,    98)      16       16           16                      
+  (  -32,    99)      16       16           16                      
+  (  -32,   100)                                                    void
+  (  -32,   101)                                                    void
+  (  -32,   102)                                                    void
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke turf-2 at (-32, 76), tree a1 at (-30, 87), boulder r2 at (-33, 88), tree a0 at (-34, 95)

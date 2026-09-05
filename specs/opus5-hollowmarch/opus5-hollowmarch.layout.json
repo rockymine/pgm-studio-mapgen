@@ -17,13 +17,17 @@
    "id": "ground",
    "name": "Ground",
    "base_y": 0,
+   "kind": null,
+   "part_of": null,
+   "seat": null,
    "layout": {
     "shapes": [
      {
-      "id": "s0",
+      "id": "frontline-t1-14",
       "type": "polygon",
       "operation": "add",
       "override": false,
+      "keepClear": false,
       "min_x": null,
       "min_z": null,
       "max_x": null,
@@ -45,27 +49,23 @@
         42
        ],
        [
-        -20,
+        -25,
         40
        ],
        [
-        -17,
+        -24,
         35
        ],
        [
-        -20,
+        -25,
         30
-       ],
-       [
-        -15,
-        31
        ],
        [
         -10,
         30
        ],
        [
-        -12,
+        -11,
         35
        ],
        [
@@ -78,23 +78,15 @@
        ],
        [
         0,
-        42
-       ],
-       [
-        5,
         40
        ],
        [
-        7,
+        -1,
         35
        ],
        [
-        5,
+        0,
         30
-       ],
-       [
-        10,
-        31
        ],
        [
         15,
@@ -105,7 +97,7 @@
         35
        ],
        [
-        13,
+        15,
         40
        ],
        [
@@ -242,13 +234,16 @@
       "intentRef": null,
       "color": null,
       "height_authored": null,
-      "theme": null
+      "doors": null,
+      "theme": null,
+      "material": null
      },
      {
-      "id": "s1",
+      "id": "frontline-t1-16",
       "type": "polygon",
       "operation": "add",
       "override": false,
+      "keepClear": false,
       "min_x": null,
       "min_z": null,
       "max_x": null,
@@ -258,20 +253,20 @@
       "radius": null,
       "vertices": [
        [
-        -45,
-        55
+        -35,
+        90
+       ],
+       [
+        -5,
+        90
+       ],
+       [
+        -5,
+        100
        ],
        [
         -35,
-        55
-       ],
-       [
-        -35,
-        65
-       ],
-       [
-        -45,
-        65
+        100
        ]
       ],
       "controls": null,
@@ -287,13 +282,16 @@
       "intentRef": null,
       "color": null,
       "height_authored": null,
-      "theme": null
+      "doors": null,
+      "theme": null,
+      "material": null
      },
      {
-      "id": "s2",
+      "id": "frontline-t1-16-2",
       "type": "polygon",
       "operation": "add",
       "override": false,
+      "keepClear": false,
       "min_x": null,
       "min_z": null,
       "max_x": null,
@@ -303,20 +301,20 @@
       "radius": null,
       "vertices": [
        [
-        -35,
-        90
+        20,
+        60
        ],
        [
-        -5,
-        90
+        30,
+        60
        ],
        [
-        -5,
-        100
+        30,
+        75
        ],
        [
-        -35,
-        100
+        20,
+        75
        ]
       ],
       "controls": null,
@@ -324,21 +322,72 @@
       "stroke_seed": null,
       "height_mode": null,
       "skirt": null,
-      "relief_scope": "hold",
-      "base_height": 17,
+      "relief_scope": null,
+      "base_height": 16,
       "anchor_heights": null,
       "floor": null,
       "role": null,
       "intentRef": null,
       "color": null,
       "height_authored": null,
-      "theme": null
+      "doors": null,
+      "theme": null,
+      "material": null
      },
      {
-      "id": "s3",
+      "id": "frontline-t1-16-3",
       "type": "polygon",
       "operation": "add",
       "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -45,
+        55
+       ],
+       [
+        -35,
+        55
+       ],
+       [
+        -35,
+        65
+       ],
+       [
+        -45,
+        65
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 16,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "frontline-t1-17",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
       "min_x": null,
       "min_z": null,
       "max_x": null,
@@ -377,58 +426,16 @@
       "intentRef": null,
       "color": null,
       "height_authored": null,
-      "theme": null
+      "doors": null,
+      "theme": null,
+      "material": null
      },
      {
-      "id": "s4",
+      "id": "frontline-t1-18",
       "type": "polygon",
       "operation": "add",
       "override": false,
-      "min_x": null,
-      "min_z": null,
-      "max_x": null,
-      "max_z": null,
-      "center_x": null,
-      "center_z": null,
-      "radius": null,
-      "vertices": [
-       [
-        20,
-        60
-       ],
-       [
-        30,
-        60
-       ],
-       [
-        30,
-        75
-       ],
-       [
-        20,
-        75
-       ]
-      ],
-      "controls": null,
-      "stroke_edge": null,
-      "stroke_seed": null,
-      "height_mode": null,
-      "skirt": null,
-      "relief_scope": "hold",
-      "base_height": 17,
-      "anchor_heights": null,
-      "floor": null,
-      "role": null,
-      "intentRef": null,
-      "color": null,
-      "height_authored": null,
-      "theme": null
-     },
-     {
-      "id": "s5",
-      "type": "polygon",
-      "operation": "add",
-      "override": false,
+      "keepClear": false,
       "min_x": null,
       "min_z": null,
       "max_x": null,
@@ -467,13 +474,16 @@
       "intentRef": null,
       "color": null,
       "height_authored": null,
-      "theme": null
+      "doors": null,
+      "theme": null,
+      "material": null
      },
      {
-      "id": "s6",
+      "id": "frontline-t1-18-2",
       "type": "polygon",
       "operation": "add",
       "override": false,
+      "keepClear": false,
       "min_x": null,
       "min_z": null,
       "max_x": null,
@@ -512,13 +522,16 @@
       "intentRef": null,
       "color": null,
       "height_authored": null,
-      "theme": null
+      "doors": null,
+      "theme": null,
+      "material": null
      },
      {
-      "id": "s7",
+      "id": "frontline-t1-18-3",
       "type": "polygon",
       "operation": "add",
       "override": false,
+      "keepClear": false,
       "min_x": null,
       "min_z": null,
       "max_x": null,
@@ -557,13 +570,16 @@
       "intentRef": null,
       "color": null,
       "height_authored": null,
-      "theme": null
+      "doors": null,
+      "theme": null,
+      "material": null
      },
      {
-      "id": "s8",
+      "id": "mid-isle-14",
       "type": "polygon",
       "operation": "add",
       "override": false,
+      "keepClear": false,
       "min_x": null,
       "min_z": null,
       "max_x": null,
@@ -574,63 +590,63 @@
       "vertices": [
        [
         -30,
-        -4
+        -3
        ],
        [
         -27,
-        -8
+        -6
        ],
        [
         -26,
-        -12
-       ],
-       [
-        -20,
-        -13
-       ],
-       [
-        -16,
-        -18
-       ],
-       [
-        -12,
-        -18
-       ],
-       [
-        -8,
-        -18
-       ],
-       [
-        -4,
-        -20
-       ],
-       [
-        0,
-        -19
-       ],
-       [
-        4,
-        -18
-       ],
-       [
-        8,
-        -19
-       ],
-       [
-        13,
-        -16
-       ],
-       [
-        18,
-        -14
-       ],
-       [
-        21,
         -9
        ],
        [
+        -20,
+        -10
+       ],
+       [
+        -16,
+        -14
+       ],
+       [
+        -12,
+        -14
+       ],
+       [
+        -8,
+        -14
+       ],
+       [
+        -4,
+        -15
+       ],
+       [
+        0,
+        -14
+       ],
+       [
+        4,
+        -14
+       ],
+       [
+        8,
+        -14
+       ],
+       [
+        13,
+        -12
+       ],
+       [
+        18,
+        -10
+       ],
+       [
+        21,
+        -7
+       ],
+       [
         26,
-        -6
+        -4
        ],
        [
         26,
@@ -638,63 +654,63 @@
        ],
        [
         30,
-        4
+        3
        ],
        [
         27,
-        8
+        6
        ],
        [
         26,
-        12
-       ],
-       [
-        20,
-        13
-       ],
-       [
-        16,
-        18
-       ],
-       [
-        12,
-        18
-       ],
-       [
-        8,
-        18
-       ],
-       [
-        4,
-        20
-       ],
-       [
-        0,
-        19
-       ],
-       [
-        -4,
-        18
-       ],
-       [
-        -8,
-        19
-       ],
-       [
-        -13,
-        16
-       ],
-       [
-        -18,
-        14
-       ],
-       [
-        -21,
         9
        ],
        [
+        20,
+        10
+       ],
+       [
+        16,
+        14
+       ],
+       [
+        12,
+        14
+       ],
+       [
+        8,
+        14
+       ],
+       [
+        4,
+        15
+       ],
+       [
+        0,
+        14
+       ],
+       [
+        -4,
+        14
+       ],
+       [
+        -8,
+        14
+       ],
+       [
+        -13,
+        12
+       ],
+       [
+        -18,
+        10
+       ],
+       [
+        -21,
+        7
+       ],
+       [
         -26,
-        6
+        4
        ],
        [
         -26,
@@ -714,13 +730,16 @@
       "intentRef": null,
       "color": null,
       "height_authored": null,
-      "theme": null
+      "doors": null,
+      "theme": null,
+      "material": null
      },
      {
-      "id": "s9",
+      "id": "void-1-cut",
       "type": "polygon",
       "operation": "subtract",
       "override": false,
+      "keepClear": false,
       "min_x": null,
       "min_z": null,
       "max_x": null,
@@ -759,13 +778,16 @@
       "intentRef": null,
       "color": null,
       "height_authored": null,
-      "theme": null
+      "doors": null,
+      "theme": null,
+      "material": null
      },
      {
-      "id": "s10",
+      "id": "void-2-cut",
       "type": "polygon",
       "operation": "subtract",
       "override": false,
+      "keepClear": false,
       "min_x": null,
       "min_z": null,
       "max_x": null,
@@ -804,13 +826,64 @@
       "intentRef": null,
       "color": null,
       "height_authored": null,
-      "theme": null
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "void-3-cut",
+      "type": "polygon",
+      "operation": "subtract",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -25,
+        80
+       ],
+       [
+        -15,
+        80
+       ],
+       [
+        -15,
+        90
+       ],
+       [
+        -25,
+        90
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
      },
      {
       "id": "spawn-red",
       "type": "rectangle",
       "operation": "add",
       "override": false,
+      "keepClear": false,
       "min_x": 30,
       "min_z": 60,
       "max_x": 40,
@@ -832,13 +905,18 @@
       "intentRef": "red",
       "color": "red",
       "height_authored": null,
-      "theme": null
+      "doors": [
+       "-x"
+      ],
+      "theme": null,
+      "material": null
      },
      {
       "id": "spawn-blue",
       "type": "rectangle",
       "operation": "add",
       "override": false,
+      "keepClear": false,
       "min_x": -40,
       "min_z": -75,
       "max_x": -30,
@@ -860,13 +938,16 @@
       "intentRef": "blue",
       "color": "blue",
       "height_authored": null,
-      "theme": null
+      "doors": null,
+      "theme": null,
+      "material": null
      },
      {
       "id": "wool-red-red",
       "type": "rectangle",
       "operation": "add",
       "override": false,
+      "keepClear": false,
       "min_x": -25,
       "min_z": 100,
       "max_x": -15,
@@ -888,13 +969,18 @@
       "intentRef": "red:red",
       "color": "red",
       "height_authored": null,
-      "theme": null
+      "doors": [
+       "-z"
+      ],
+      "theme": null,
+      "material": null
      },
      {
       "id": "wool-red-orange",
       "type": "rectangle",
       "operation": "add",
       "override": false,
+      "keepClear": false,
       "min_x": -55,
       "min_z": 40,
       "max_x": -45,
@@ -916,13 +1002,18 @@
       "intentRef": "red:orange",
       "color": "orange",
       "height_authored": null,
-      "theme": null
+      "doors": [
+       "+z"
+      ],
+      "theme": null,
+      "material": null
      },
      {
       "id": "wool-blue-blue",
       "type": "rectangle",
       "operation": "add",
       "override": false,
+      "keepClear": false,
       "min_x": 15,
       "min_z": -110,
       "max_x": 25,
@@ -944,13 +1035,16 @@
       "intentRef": "blue:blue",
       "color": "blue",
       "height_authored": null,
-      "theme": null
+      "doors": null,
+      "theme": null,
+      "material": null
      },
      {
       "id": "wool-blue-light_blue",
       "type": "rectangle",
       "operation": "add",
       "override": false,
+      "keepClear": false,
       "min_x": 45,
       "min_z": -50,
       "max_x": 55,
@@ -972,7 +1066,9 @@
       "intentRef": "blue:light_blue",
       "color": "light_blue",
       "height_authored": null,
-      "theme": null
+      "doors": null,
+      "theme": null,
+      "material": null
      },
      {
       "id": "scar-front-w",
@@ -1149,11 +1245,11 @@
         78
        ],
        [
-        8,
+        9,
         75
        ],
        [
-        8,
+        9,
         70
        ],
        [
@@ -1328,22 +1424,23 @@
       ]
      }
     ],
-    "islands": [
+    "groups": [
      {
       "id": "team",
       "name": "Team island",
       "mirrors": true,
       "shapeIds": [
-       "s0",
-       "s1",
-       "s2",
-       "s3",
-       "s4",
-       "s5",
-       "s6",
-       "s7",
-       "s9",
-       "s10",
+       "frontline-t1-14",
+       "frontline-t1-16",
+       "frontline-t1-16-2",
+       "frontline-t1-16-3",
+       "frontline-t1-17",
+       "frontline-t1-18",
+       "frontline-t1-18-2",
+       "frontline-t1-18-3",
+       "void-1-cut",
+       "void-2-cut",
+       "void-3-cut",
        "scar-front-w",
        "scar-front-e",
        "scar-hub-w",
@@ -1358,7 +1455,7 @@
       "name": "Neutral",
       "mirrors": false,
       "shapeIds": [
-       "s8"
+       "mid-isle-14"
       ]
      }
     ]
@@ -1608,7 +1705,7 @@
       ],
       "ending": "repeat"
      },
-     "extent": 1
+     "extent": 3
     },
     "surface": {
      "field": null,
@@ -1628,7 +1725,7 @@
     "form": "gable",
     "pitch": 1,
     "slab": 126,
-    "slabData": 0,
+    "slabData": 1,
     "overhang": 1,
     "ridgeCap": true,
     "hole": false,
@@ -1756,7 +1853,7 @@
       ],
       "ending": "repeat"
      },
-     "extent": 1
+     "extent": 3
     },
     "surface": {
      "field": null,
@@ -1776,7 +1873,7 @@
     "form": "gable",
     "pitch": 1,
     "slab": 126,
-    "slabData": 0,
+    "slabData": 1,
     "overhang": 1,
     "ridgeCap": true,
     "hole": false,
@@ -2872,8 +2969,8 @@
     "id": "iw0",
     "kind": "tree",
     "seed": 700,
-    "x": -19,
-    "z": 11,
+    "x": -20,
+    "z": 4,
     "form": "template",
     "species": "birch",
     "height": 9
@@ -3000,15 +3097,15 @@
    }
   ]
  },
+ "biome": null,
  "relief": {
   "team": {
    "base": 14,
    "reach": 24,
    "step": 1,
-   "stairs": true,
    "grain": {
-    "amplitude": 1.2,
-    "scale": 12,
+    "amplitude": 0.6,
+    "scale": 18,
     "seed": 7
    },
    "marks": [
@@ -3068,7 +3165,7 @@
     {
      "id": "hub-floor",
      "kind": "area",
-     "h": 12,
+     "h": 13,
      "ring": [
       [
        -30,
@@ -3152,601 +3249,20 @@
        78
       ]
      ]
-    },
-    {
-     "id": "scar-front-w-pad",
-     "kind": "area",
-     "h": 17,
-     "ring": [
-      [
-       -17,
-       55
-      ],
-      [
-       -17,
-       63
-      ],
-      [
-       -25,
-       67
-      ],
-      [
-       -33,
-       60
-      ],
-      [
-       -34,
-       56
-      ],
-      [
-       -34,
-       46
-      ],
-      [
-       -25,
-       42
-      ],
-      [
-       -18,
-       46
-      ]
-     ]
-    },
-    {
-     "id": "scar-front-e-pad",
-     "kind": "area",
-     "h": 17,
-     "ring": [
-      [
-       17,
-       54
-      ],
-      [
-       13,
-       63
-      ],
-      [
-       4,
-       64
-      ],
-      [
-       -2,
-       57
-      ],
-      [
-       -6,
-       50
-      ],
-      [
-       2,
-       42
-      ],
-      [
-       11,
-       45
-      ]
-     ]
-    },
-    {
-     "id": "scar-hub-w-pad",
-     "kind": "area",
-     "h": 18,
-     "ring": [
-      [
-       -19,
-       75
-      ],
-      [
-       -24,
-       82
-      ],
-      [
-       -29,
-       83
-      ],
-      [
-       -35,
-       78
-      ],
-      [
-       -33,
-       72
-      ],
-      [
-       -29,
-       66
-      ],
-      [
-       -23,
-       70
-      ]
-     ]
-    },
-    {
-     "id": "scar-hub-e-pad",
-     "kind": "area",
-     "h": 17,
-     "ring": [
-      [
-       22,
-       72
-      ],
-      [
-       17,
-       78
-      ],
-      [
-       12,
-       80
-      ],
-      [
-       6,
-       76
-      ],
-      [
-       6,
-       69
-      ],
-      [
-       12,
-       67
-      ],
-      [
-       17,
-       68
-      ]
-     ]
-    },
-    {
-     "id": "scar-back-pad",
-     "kind": "area",
-     "h": 20,
-     "ring": [
-      [
-       -6,
-       79
-      ],
-      [
-       -6,
-       84
-      ],
-      [
-       -11,
-       84
-      ],
-      [
-       -14,
-       83
-      ],
-      [
-       -16,
-       79
-      ],
-      [
-       -14,
-       75
-      ],
-      [
-       -11,
-       74
-      ],
-      [
-       -7,
-       73
-      ]
-     ]
     }
    ],
-   "pushes": [
-    {
-     "id": "under-front-w",
-     "ring": [
-      [
-       -14,
-       60
-      ],
-      [
-       -19,
-       69
-      ],
-      [
-       -29,
-       72
-      ],
-      [
-       -37,
-       65
-      ],
-      [
-       -37,
-       55
-      ],
-      [
-       -29,
-       48
-      ],
-      [
-       -19,
-       51
-      ]
-     ],
-     "amount": 3,
-     "falloff": 9,
-     "roughness": 0.4,
-     "crown": 2,
-     "seed": 3
-    },
-    {
-     "id": "under-front-e",
-     "ring": [
-      [
-       20,
-       60
-      ],
-      [
-       16,
-       68
-      ],
-      [
-       8,
-       70
-      ],
-      [
-       1,
-       64
-      ],
-      [
-       1,
-       56
-      ],
-      [
-       8,
-       50
-      ],
-      [
-       16,
-       52
-      ]
-     ],
-     "amount": 3,
-     "falloff": 8,
-     "roughness": 0.4,
-     "crown": 2,
-     "seed": 5
-    },
-    {
-     "id": "under-back",
-     "ring": [
-      [
-       -6,
-       86
-      ],
-      [
-       -11,
-       96
-      ],
-      [
-       -21,
-       99
-      ],
-      [
-       -29,
-       92
-      ],
-      [
-       -29,
-       80
-      ],
-      [
-       -21,
-       73
-      ],
-      [
-       -11,
-       76
-      ]
-     ],
-     "amount": 4,
-     "falloff": 10,
-     "roughness": 0.4,
-     "crown": 3,
-     "seed": 9
-    },
-    {
-     "id": "west-rise",
-     "ring": [
-      [
-       -28,
-       70
-      ],
-      [
-       -33,
-       79
-      ],
-      [
-       -43,
-       82
-      ],
-      [
-       -51,
-       75
-      ],
-      [
-       -51,
-       65
-      ],
-      [
-       -43,
-       58
-      ],
-      [
-       -33,
-       61
-      ]
-     ],
-     "amount": 4,
-     "falloff": 10,
-     "roughness": 0.4,
-     "crown": 3,
-     "seed": 13
-    }
-   ]
+   "pushes": []
   },
   "neutral": {
    "base": 14,
-   "reach": 16,
+   "reach": 20,
    "step": 1,
-   "stairs": true,
    "grain": {
-    "amplitude": 1.0,
-    "scale": 10,
-    "seed": 9
+    "amplitude": 0.5,
+    "scale": 18,
+    "seed": 11
    },
-   "marks": [
-    {
-     "id": "coast",
-     "kind": "rim",
-     "h": 12,
-     "depth": 1
-    },
-    {
-     "id": "saddle",
-     "kind": "area",
-     "h": 13,
-     "ring": [
-      [
-       -12,
-       -5
-      ],
-      [
-       0,
-       -7
-      ],
-      [
-       12,
-       -5
-      ],
-      [
-       12,
-       5
-      ],
-      [
-       0,
-       7
-      ],
-      [
-       -12,
-       5
-      ]
-     ]
-    },
-    {
-     "id": "horn-a",
-     "kind": "point",
-     "h": 19,
-     "r": 7,
-     "at": [
-      20,
-      -10
-     ]
-    },
-    {
-     "id": "horn-b",
-     "kind": "point",
-     "h": 19,
-     "r": 7,
-     "at": [
-      -20,
-      10
-     ]
-    },
-    {
-     "id": "step-a",
-     "kind": "area",
-     "h": 16,
-     "ring": [
-      [
-       -27,
-       2
-      ],
-      [
-       -16,
-       -2
-      ],
-      [
-       -11,
-       6
-      ],
-      [
-       -22,
-       10
-      ]
-     ]
-    },
-    {
-     "id": "step-b",
-     "kind": "area",
-     "h": 16,
-     "ring": [
-      [
-       27,
-       -2
-      ],
-      [
-       16,
-       2
-      ],
-      [
-       11,
-       -6
-      ],
-      [
-       22,
-       -10
-      ]
-     ]
-    },
-    {
-     "id": "pond-rim",
-     "kind": "area",
-     "h": 12,
-     "ring": [
-      [
-       -9,
-       -2
-      ],
-      [
-       -5,
-       -6
-      ],
-      [
-       1,
-       -6
-      ],
-      [
-       6,
-       -4
-      ],
-      [
-       8,
-       1
-      ],
-      [
-       3,
-       6
-      ],
-      [
-       -3,
-       6
-      ],
-      [
-       -8,
-       3
-      ]
-     ]
-    },
-    {
-     "id": "pond-floor",
-     "kind": "area",
-     "h": 10,
-     "ring": [
-      [
-       -5,
-       -1
-      ],
-      [
-       -2,
-       -4
-      ],
-      [
-       3,
-       -3
-      ],
-      [
-       5,
-       1
-      ],
-      [
-       2,
-       4
-      ],
-      [
-       -3,
-       3
-      ]
-     ]
-    },
-    {
-     "id": "scar-isle-w-pad",
-     "kind": "area",
-     "h": 13,
-     "ring": [
-      [
-       -12,
-       -3
-      ],
-      [
-       -15,
-       2
-      ],
-      [
-       -21,
-       2
-      ],
-      [
-       -26,
-       -1
-      ],
-      [
-       -26,
-       -7
-      ],
-      [
-       -23,
-       -13
-      ],
-      [
-       -16,
-       -9
-      ]
-     ]
-    },
-    {
-     "id": "scar-isle-e-pad",
-     "kind": "area",
-     "h": 13,
-     "ring": [
-      [
-       12,
-       3
-      ],
-      [
-       15,
-       -2
-      ],
-      [
-       21,
-       -2
-      ],
-      [
-       26,
-       1
-      ],
-      [
-       26,
-       7
-      ],
-      [
-       23,
-       13
-      ],
-      [
-       16,
-       9
-      ]
-     ]
-    }
-   ],
+   "marks": [],
    "pushes": []
   }
  }

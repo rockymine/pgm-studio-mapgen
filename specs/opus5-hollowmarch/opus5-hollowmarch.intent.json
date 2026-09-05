@@ -14,6 +14,7 @@
  "maxPlayers": 32,
  "spawns": [
   {
+   "layer": null,
    "stamp": {
     "kind": "spawn",
     "unit": "spawn-1",
@@ -34,15 +35,14 @@
     }
    ],
    "yaw": 90,
-   "piece": {
-    "minX": 30,
-    "minZ": 60,
-    "maxX": 40,
-    "maxZ": 75
-   },
+   "doors": [
+    "-x"
+   ],
+   "footprint": null,
    "iron": []
   },
   {
+   "layer": null,
    "stamp": {
     "kind": "spawn",
     "unit": "spawn-1",
@@ -63,12 +63,10 @@
     }
    ],
    "yaw": 270,
-   "piece": {
-    "minX": -40,
-    "minZ": -75,
-    "maxX": -30,
-    "maxZ": -60
-   },
+   "doors": [
+    "+x"
+   ],
+   "footprint": null,
    "iron": []
   }
  ],
@@ -84,9 +82,9 @@
   "maxHeight": null,
   "areas": [
    {
-    "minX": -40,
+    "minX": -30,
     "minZ": -30,
-    "maxX": 40,
+    "maxX": 30,
     "maxZ": 30
    }
   ],
@@ -96,6 +94,7 @@
  "waterLanes": null,
  "wools": [
   {
+   "layer": null,
    "stamp": {
     "kind": "wool",
     "unit": "wool-1",
@@ -103,7 +102,7 @@
    },
    "owner": "red",
    "color": "red",
-   "room": [
+   "protection": [
     {
      "minX": -25,
      "minZ": 100,
@@ -117,12 +116,7 @@
     "z": 105
    },
    "monuments": [],
-   "piece": {
-    "minX": -25,
-    "minZ": 100,
-    "maxX": -15,
-    "maxZ": 110
-   },
+   "footprint": null,
    "entries": [
     {
      "minX": -25,
@@ -133,6 +127,7 @@
    ]
   },
   {
+   "layer": null,
    "stamp": {
     "kind": "wool",
     "unit": "wool-2",
@@ -140,7 +135,7 @@
    },
    "owner": "red",
    "color": "orange",
-   "room": [
+   "protection": [
     {
      "minX": -55,
      "minZ": 40,
@@ -154,12 +149,7 @@
     "z": 45
    },
    "monuments": [],
-   "piece": {
-    "minX": -55,
-    "minZ": 40,
-    "maxX": -45,
-    "maxZ": 50
-   },
+   "footprint": null,
    "entries": [
     {
      "minX": -55,
@@ -170,6 +160,7 @@
    ]
   },
   {
+   "layer": null,
    "stamp": {
     "kind": "wool",
     "unit": "wool-1",
@@ -177,7 +168,7 @@
    },
    "owner": "blue",
    "color": "blue",
-   "room": [
+   "protection": [
     {
      "minX": 15,
      "minZ": -110,
@@ -191,12 +182,7 @@
     "z": -105
    },
    "monuments": [],
-   "piece": {
-    "minX": 15,
-    "minZ": -110,
-    "maxX": 25,
-    "maxZ": -100
-   },
+   "footprint": null,
    "entries": [
     {
      "minX": 15,
@@ -207,6 +193,7 @@
    ]
   },
   {
+   "layer": null,
    "stamp": {
     "kind": "wool",
     "unit": "wool-2",
@@ -214,7 +201,7 @@
    },
    "owner": "blue",
    "color": "light_blue",
-   "room": [
+   "protection": [
     {
      "minX": 45,
      "minZ": -50,
@@ -228,12 +215,7 @@
     "z": -45
    },
    "monuments": [],
-   "piece": {
-    "minX": 45,
-    "minZ": -50,
-    "maxX": 55,
-    "maxZ": -40
-   },
+   "footprint": null,
    "entries": [
     {
      "minX": 45,
@@ -246,9 +228,16 @@
  ],
  "destroyables": null,
  "cores": null,
+ "modes": null,
+ "gamemodes": [
+  "ctw"
+ ],
  "meta": {
   "name": "Hollowmarch",
-  "authors": [],
+  "created": "",
+  "authors": [
+   "Opus 5"
+  ],
   "contributors": []
  },
  "symmetry": null,
@@ -258,60 +247,7 @@
   "3": "neutral"
  },
  "structures": {
-  "roomFloors": [
-   {
-    "area": {
-     "minX": -25,
-     "minZ": 100,
-     "maxX": -15,
-     "maxZ": 110
-    },
-    "stamp": {
-     "kind": "roomfloor",
-     "unit": "wool-a-room",
-     "image": 0
-    }
-   },
-   {
-    "area": {
-     "minX": 15,
-     "minZ": -110,
-     "maxX": 25,
-     "maxZ": -100
-    },
-    "stamp": {
-     "kind": "roomfloor",
-     "unit": "wool-a-room",
-     "image": 1
-    }
-   },
-   {
-    "area": {
-     "minX": -55,
-     "minZ": 40,
-     "maxX": -45,
-     "maxZ": 50
-    },
-    "stamp": {
-     "kind": "roomfloor",
-     "unit": "wool-b-room",
-     "image": 0
-    }
-   },
-   {
-    "area": {
-     "minX": 45,
-     "minZ": -50,
-     "maxX": 55,
-     "maxZ": -40
-    },
-    "stamp": {
-     "kind": "roomfloor",
-     "unit": "wool-b-room",
-     "image": 1
-    }
-   }
-  ],
+  "layer": null,
   "redstoneLines": [
    {
     "x1": -25,
