@@ -112,16 +112,20 @@ def over(top, soil=solid(3), depth=2):
         {"material": top, "thickness": 1}, {"material": soil, "thickness": depth}]}}
 
 
-#    Where the bands are cut is arithmetic, not taste. Horn's gradient over a one-block contour reads
-#    27 degrees at its lip and nothing at all two cells away; over a two-block step it reads 45. The
-#    relief field snaps to `step: 1`, so its whole surface is one-block contours — a first band ending
-#    at 27 would put a shoulder on every one of them and stripe the open moor. It ends at 28 instead,
-#    which is the first angle a one-block contour cannot reach.
+#    The profile reads the gradient two cells either side, which is what makes these numbers mean what
+#    they say: a sustained grade reads its own angle at any window, and an isolated one-block contour —
+#    all a `step: 1` field is made of on flat ground — reads 14 rather than 27. So the cuts can be the
+#    angles an author actually thinks in rather than a threshold picked to dodge the quantum.
+#    The cuts come off `GET /map/{slug}/incline`, which answers how much ground stands in each ten
+#    degrees. Read two cells either side this board is 42% under 10, 25% at 10-19, 12% at 20-29 and
+#    8% at 30-39, then 12.5% at 40 and over: a smooth fall with one shoulder. Cutting at 30 keeps
+#    grass on everything a player would call a grassy bank and spends the shoulder on the 8% that is
+#    genuinely worn.
 MASK = {"kind": "layered", "axis": "slope", "stack": {"ending": "repeat", "bands": [
-    # the moor, 0 to 27 — grass over soil, one-block contours included
-    {"material": over(cell((2,), (2,), 15)), "thickness": 28},
-    # the shoulder, 28 to 44 — coarse dirt over soil, the ground worn where it starts to fall
-    {"material": over(solid(3, 1)), "thickness": 17},
+    # the moor, 0 to 29 — grass over soil. Ground you cross without noticing you climbed.
+    {"material": over(cell((2,), (2,), 15)), "thickness": 30},
+    # the shoulder, 30 to 44 — coarse dirt over soil, the ground worn where it starts to fall
+    {"material": over(solid(3, 1)), "thickness": 15},
     # the face, 45 and steeper — bare rock, no soil at all
     {"material": cell((1,), (4,), 11), "thickness": 45}]}}
 
