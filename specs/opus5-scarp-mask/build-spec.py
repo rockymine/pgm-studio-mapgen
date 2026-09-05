@@ -77,7 +77,10 @@ marks.append({"id": "delph", "kind": "line", "r": 5, "tread": 2, "batter": 65,
 #    mark underneath changes that — measured identical at base 20 and base 12, with and without a pad
 #    dug to 17 under it, against the tilt asked for. A line mark states a height per point, so it
 #    tilts; and it is part of the solve, so it pulls the ground down to meet it as readily as up.
-marks.append({"id": "terrace", "kind": "line", "r": 13,
+#    A tread on the terrace as well, for the other half of the same rule: its band overlaps `crest`'s, and
+#    a mark states its flat outright and its shoulder softly, so the six cells past the tread grade into
+#    whatever `crest` already put there instead of ending on a nine-block step at (14, -78).
+marks.append({"id": "terrace", "kind": "line", "r": 13, "tread": 7,
               "points": [[10, -66], [28, -58], [44, -46]], "h": [SHELF_HI, 21, SHELF_LO]})
 
 finish = {

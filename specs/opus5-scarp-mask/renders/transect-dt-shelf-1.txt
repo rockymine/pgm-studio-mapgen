@@ -32,9 +32,9 @@ beside: destroyable dt-shelf#1 at (-29, 55)
 ## dt-shelf-1 (destroyable) along z
 TRANSECT 25 stations from (-27, 45) to (-27, 69), every 1
   station        ground  surface  water  top  standing            step
-  (  -27,    45)      20       20           20                      
-  (  -27,    46)      20       20           20                      
-  (  -27,    47)      20       20           20                      
+  (  -27,    45)      19       19           19                      
+  (  -27,    46)      19       19           19                      
+  (  -27,    47)      20       20           20                      +1
   (  -27,    48)      20       20           20                      
   (  -27,    49)      20       20           20                      
   (  -27,    50)      21       21           21                      +1
@@ -54,8 +54,8 @@ TRANSECT 25 stations from (-27, 45) to (-27, 69), every 1
   (  -27,    64)      22       22           22                      
   (  -27,    65)      22       22           22                      
   (  -27,    66)      22       22           22                      
-  (  -27,    67)      22       22           22                      
-  (  -27,    68)      22       22           22                      
-  (  -27,    69)      22       22           22                      
-rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+  (  -27,    67)      23       23           23                      +1
+  (  -27,    68)      25       25           25                      scramble +2
+  (  -27,    69)      26       26           26                      +1
+rises 6, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-27, 68) | walked end to end
 beside: destroyable dt-shelf#1 at (-29, 55)

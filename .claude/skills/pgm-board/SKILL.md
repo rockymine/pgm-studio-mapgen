@@ -187,14 +187,25 @@ which is the only thing that says whether a cut lands where you think it does �
 *spike* in it is a board reporting its own `step` quantum rather than its shape. `opus5-scarp-mask` is the
 worked example: 68% moor, 8% shoulder, 11% rock on ground that was 86% grass and nothing else.
 
-### A road drawn as a line comes out with cliffs for banks
+### A mark's band ends on a wall, and `tread` is the answer to both ways it happens
 
-A `line` mark pins every cell to whichever pass of the line is nearest, so a serpentine, a switchback or a
-spiral haul road walls itself: the cells either side of the midline between two passes take heights a whole
-winding apart. State a **`tread`** narrower than `r` and the rest of the band lofts — a straight ramp between
-the two treads' edges. The angle is the drawing's, not a knob: `atan(drop / (pitch − 2·tread))`, and for a
-spiral the pitch is `(r0 − r1) / turns`. Work it out before building; a pitch under `2·tread` cannot grade at
-all, whatever is stated.
+**A road drawn as a line walls itself.** A `line` mark pins every cell to whichever pass of the line is
+nearest, so a serpentine, a switchback or a spiral haul road puts the cells either side of the midline between
+two passes a whole winding apart in height. State a **`tread`** narrower than `r` and the rest of the band
+lofts — a ramp between the two treads' edges. Left alone it spreads over the whole run,
+`atan(drop / (pitch − 2·tread))`, and for a spiral the pitch is `(r0 − r1) / turns`; **`batter`**, in degrees,
+makes it steeper and puts a flat bench at the toe, which is what a worked quarry looks like. Work the pitch out
+before building — under `2·tread` there is no run to grade in, whatever is stated.
+
+**Two different marks whose bands touch do the same thing**, and this one is easy to miss because neither mark
+looks wrong on its own. The later one wins its cells outright and the seam is one cell carrying the whole
+difference. A `tread` on the later mark grades it: the shoulder states its height softly and blends into
+whatever the earlier mark put there. The shoulder's **width** sets the grade — 22 blocks over a 4-cell shoulder
+is 5.5 a cell, over 10 cells it is 2 — so a gentler seam means a narrower tread or a longer reach.
+
+*`opus5-scarp-mask` at (14, −78): `crest` (r 18, h 33) and `terrace` (r 13, h 24) overlap, and the transect read
+`33 33 33 DROP −9 24`. With `tread: 7` on the terrace it reads `33 33 32 31 29 28 26 25 24`. Board-wide, 1,006
+barrier cells became 480.*
 
 ### A layer's paint reaches further down than the layer does
 
