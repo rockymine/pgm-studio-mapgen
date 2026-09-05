@@ -1,33 +1,33 @@
 ## r4 (boulder) along x
 TRANSECT 25 stations from (21, 44) to (45, 44), every 1
   station        ground  surface  water  top  standing            step
-  (   21,    44)       9        9            9                      
-  (   22,    44)      10       10           10                      +1
-  (   23,    44)      10       10           10                      
-  (   24,    44)      10       10           10                      
-  (   25,    44)       9        9            9                      -1
-  (   26,    44)       9        9            9                      
-  (   27,    44)       9        9            9                      
-  (   28,    44)       9        9            9                      
-  (   29,    44)       9        9            9  stroke p2           
-  (   30,    44)       9        9           10  boulder r4          
-  (   31,    44)       9        9           11  boulder r4          
-  (   32,    44)       9        9           11  boulder r4          
+  (   21,    44)      10       10           10                      
+  (   22,    44)      11       11           11                      +1
+  (   23,    44)      11       11           11                      
+  (   24,    44)      11       11           11                      
+  (   25,    44)      11       11           11                      
+  (   26,    44)      11       11           11                      
+  (   27,    44)      11       11           11                      
+  (   28,    44)      11       11           11                      
+  (   29,    44)      11       11           11                      
+  (   30,    44)      11       11           11                      
+  (   31,    44)      11       11           11  boulder r4          
+  (   32,    44)       9        9           11  boulder r4          -2
   (   33,    44)       9        9           11  boulder r4          
   (   34,    44)       9        9           11  boulder r4          
   (   35,    44)       9        9           11  boulder r4          
   (   36,    44)       9        9           10  boulder r4          
   (   37,    44)       9        9            9                      
-  (   38,    44)      10       10           10                      +1
-  (   39,    44)      10       10           10                      
-  (   40,    44)       8        8            8                      -2
+  (   38,    44)       9        9            9                      
+  (   39,    44)       9        9            9                      
+  (   40,    44)                                                    void
   (   41,    44)                                                    void
   (   42,    44)                                                    void
   (   43,    44)                                                    void
   (   44,    44)                                                    void
   (   45,    44)                                                    void
-rises 2, falls 2, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke p2 at (29, 44), boulder r4 at (30, 42)
+rises 1, falls 1, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder r4 at (31, 43)
 
 ## r4 (boulder) along z
 TRANSECT 25 stations from (33, 32) to (33, 56), every 1
@@ -35,27 +35,27 @@ TRANSECT 25 stations from (33, 32) to (33, 56), every 1
   (   33,    32)       9        9            9                      
   (   33,    33)       9        9            9                      
   (   33,    34)       9        9            9                      
-  (   33,    35)      10       10           10                      +1
-  (   33,    36)      10       10           10                      
-  (   33,    37)       9        9            9                      -1
-  (   33,    38)      10       10           10                      +1
-  (   33,    39)      10       10           10                      
-  (   33,    40)      10       10           10                      
-  (   33,    41)       9        9            9                      -1
+  (   33,    35)       9        9            9                      
+  (   33,    36)       9        9            9                      
+  (   33,    37)       9        9            9                      
+  (   33,    38)       9        9            9                      
+  (   33,    39)       9        9            9                      
+  (   33,    40)       9        9            9                      
+  (   33,    41)       9        9            9                      
   (   33,    42)       9        9           10  boulder r4          
   (   33,    43)       9        9           11  boulder r4          
   (   33,    44)       9        9           11  boulder r4          
-  (   33,    45)      10       10           11  boulder r4          +1
-  (   33,    46)      10       10           11  boulder r4          
-  (   33,    47)      10       10           10                      
-  (   33,    48)      11       11           11                      +1
-  (   33,    49)      11       11           11                      
-  (   33,    50)      11       11           11                      
-  (   33,    51)      12       12           12                      +1
-  (   33,    52)      12       12           12                      
-  (   33,    53)      12       12           12                      
-  (   33,    54)      13       13           13                      +1
-  (   33,    55)      13       13           13                      
-  (   33,    56)      13       13           13                      
-rises 6, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: water w1 at (31, 30), boulder r4 at (31, 42), stroke p2 at (32, 46)
+  (   33,    45)       9        9           11  boulder r4          
+  (   33,    46)       9        9           11  boulder r4          
+  (   33,    47)       9        9            9                      
+  (   33,    48)       9        9            9                      
+  (   33,    49)       9        9            9                      
+  (   33,    50)      14       14           14                      BARRIER +5
+  (   33,    51)      14       14           14                      
+  (   33,    52)      14       14           14                      
+  (   33,    53)      14       14           14                      
+  (   33,    54)      14       14           14                      
+  (   33,    55)      14       14           14                      
+  (   33,    56)      14       14           14                      
+rises 1, falls 0, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (33, 50) | walked end to end
+beside: water w1 at (31, 30), boulder r4 at (32, 42), stroke p2 at (31, 52)

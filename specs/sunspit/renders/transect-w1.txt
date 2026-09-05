@@ -1,24 +1,24 @@
 ## w1 (water) along x
 TRANSECT 79 stations from (-35, 26) to (43, 26), every 1
   station        ground  surface  water  top  standing            step
-  (  -35,    26)      10       10           10                      
-  (  -34,    26)      10       10           10                      
-  (  -33,    26)      10       10           10                      
-  (  -32,    26)      10       10           10                      
-  (  -31,    26)      10       10           10                      
-  (  -30,    26)      10       10           10                      
-  (  -29,    26)      10       10           10                      
-  (  -28,    26)      10       10           10                      
-  (  -27,    26)      10       10           10  water w1            
-  (  -26,    26)      10       10           10  water w1            
-  (  -25,    26)      10       10      9     9  water w1            
-  (  -24,    26)      10       10      9     9  water w1            
-  (  -23,    26)      10       10      9     9  water w1            
-  (  -22,    26)      10       10      9     9  water w1            
-  (  -21,    26)      10       10      9     9  water w1            
-  (  -20,    26)      10       10      9     9  water w1            
-  (  -19,    26)      10       10      9     9  water w1            
-  (  -18,    26)      10       10      9     9  water w1            
+  (  -35,    26)       9        9      9     9  water w2            
+  (  -34,    26)       9        9      9     9  water w2            
+  (  -33,    26)       9        9      9     9  water w2            
+  (  -32,    26)       9        9      9     9  water w2            
+  (  -31,    26)       9        9      9     9  water w2            
+  (  -30,    26)       9        9      9     9  water w2            
+  (  -29,    26)       9        9      9     9  water w2            
+  (  -28,    26)       9        9            9  water w2            
+  (  -27,    26)       9        9            9  water w1            
+  (  -26,    26)       9        9            9  water w1            
+  (  -25,    26)       9        9            9  stroke q1           
+  (  -24,    26)       9        9      8     9  stroke q1           
+  (  -23,    26)       9        9      8     9  stroke q1           
+  (  -22,    26)       9        9      9     9  water w1            
+  (  -21,    26)       9        9      8     9  stroke q1           
+  (  -20,    26)       9        9      8     9  stroke q1           
+  (  -19,    26)       9        9      9     9  water w1            
+  (  -18,    26)      10       10      9     9  water w1            +1
   (  -17,    26)      10       10      9     9  water w1            
   (  -16,    26)      10       10      9     9  water w1            
   (  -15,    26)      10       10      9     9  water w1            
@@ -50,18 +50,18 @@ TRANSECT 79 stations from (-35, 26) to (43, 26), every 1
   (   11,    26)       9        9      9     9  water w1            
   (   12,    26)       9        9      9     9  water w1            
   (   13,    26)       9        9      9     9  water w1            
-  (   14,    26)      10       10      9     9  water w1            +1
-  (   15,    26)      10       10      9     9  water w1            
-  (   16,    26)      10       10      9     9  water w1            
-  (   17,    26)      10       10      9     9  water w1            
-  (   18,    26)       9        9      9     9  water w1            -1
+  (   14,    26)       9        9      9     9  water w1            
+  (   15,    26)       9        9      9     9  water w1            
+  (   16,    26)       9        9      9     9  water w1            
+  (   17,    26)       9        9      9     9  water w1            
+  (   18,    26)       9        9      9     9  water w1            
   (   19,    26)       9        9      8     9  stroke q2           
   (   20,    26)       9        9      8     9  stroke q2           
-  (   21,    26)      10       10      9     9  water w1            +1
-  (   22,    26)      10       10      9     9  water w1            
-  (   23,    26)      10       10      9     9  water w1            
-  (   24,    26)      10       10      9     9  water w1            
-  (   25,    26)       9        9      9     9  water w1            -1
+  (   21,    26)       9        9      8     9  stroke q2           
+  (   22,    26)       9        9      8     9  stroke q2           
+  (   23,    26)       9        9      8     9  stroke q2           
+  (   24,    26)       9        9      8     9  stroke q2           
+  (   25,    26)       9        9      9     9  water w1            
   (   26,    26)       9        9      9     9  water w1            
   (   27,    26)       9        9      9     9  water w1            
   (   28,    26)       9        9      9     9  water w1            
@@ -76,12 +76,12 @@ TRANSECT 79 stations from (-35, 26) to (43, 26), every 1
   (   37,    26)       9        9            9                      
   (   38,    26)       9        9            9                      
   (   39,    26)       9        9            9                      
-  (   40,    26)       8        8            8                      -1
-  (   41,    26)       8        8            8                      
-  (   42,    26)       8        8            8                      
-  (   43,    26)       8        8            8                      
-rises 2, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder r5 at (-36, 24), water w1 at (-27, 25), stroke q1 at (-25, 24), stroke q2 at (19, 24)
+  (   40,    26)                                                    void
+  (   41,    26)                                                    void
+  (   42,    26)                                                    void
+  (   43,    26)                                                    void
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water w2 at (-37, 24), water w1 at (-27, 25), stroke q1 at (-25, 24), stroke q2 at (19, 24)
 
 ## w1 (water) along z
 TRANSECT 33 stations from (4, 10) to (4, 42), every 1
@@ -99,9 +99,9 @@ TRANSECT 33 stations from (4, 10) to (4, 42), every 1
   (    4,    20)      10       10           10                      
   (    4,    21)      10       10           10  water w1            
   (    4,    22)      10       10      9     9  water w1            
-  (    4,    23)      10       10      9     9  water w1            
-  (    4,    24)      10       10      9     9  water w1            
-  (    4,    25)      10       10      9     9  water w1            
+  (    4,    23)       9        9      9     9  water w1            -1
+  (    4,    24)       9        9      9     9  water w1            
+  (    4,    25)      10       10      9     9  water w1            +1
   (    4,    26)      10       10      9     9  water w1            
   (    4,    27)      10       10      9     9  water w1            
   (    4,    28)      10       10      9     9  water w1            
@@ -119,5 +119,5 @@ TRANSECT 33 stations from (4, 10) to (4, 42), every 1
   (    4,    40)      10       10           10                      
   (    4,    41)      10       10           10                      
   (    4,    42)      10       10           10                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: water w1 at (2, 21)

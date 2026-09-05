@@ -169,8 +169,8 @@
             <union id="build-area">
                 <rectangle id="build-area-1" min="-50,70" max="-35,80"/>
                 <rectangle id="build-area-2" min="35,-80" max="50,-70"/>
-                <rectangle id="build-area-3" min="-30,-10" max="-15,10"/>
-                <rectangle id="build-area-4" min="15,-10" max="30,10"/>
+                <rectangle id="build-area-3" min="-40,-10" max="-20,10"/>
+                <rectangle id="build-area-4" min="20,-10" max="40,10"/>
             </union>
         </negative>
         <complement id="spawns">

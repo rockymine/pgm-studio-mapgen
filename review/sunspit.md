@@ -14,25 +14,27 @@ same x — the composer's `frontline twin`, which is how a two-legged front is d
 is 20 blocks, tip to tip. Between the two legs the channel is void until the tidal `water-lane` floods it,
 and it then opens a third way over that neither team's legs cover.
 
-Behind the beach the **grassland stands three blocks higher than it used to**, so the sand ends in a
-four-block scarp and the village, the spawn and both wool approaches are a terrace above it. The scarp is a
-barrier by construction — a player walks off it and cannot walk back up — and three graded banks cut through
-it, west, middle and east, each at 3:1 with the road running down two of them. That is the whole of the
-board's front-to-back reading: sand in front, grass behind, and three named ways between them.
+Behind the beach the **grassland stands three blocks higher**, so the sand ends in a four-block scarp and
+the village, the spawn and both wool approaches are a terrace above it. **The beach itself is flat** — it is
+not graded into the scarp, and the drop is a drop. Three **stone ramps** stand on the sand against the
+terrace's face instead, ten blocks wide, at 3:1: two on the fifty-block backshore face and one on the
+twenty-five-block dune face. Everywhere else the scarp is a barrier a player steps off and cannot climb
+back up, which is the point of it.
 
 ## The numbers
 
 | Measure | Rule | Measured |
 |---|---|---|
-| Crossing frontline | FR8 span ≥ ⅓ · FR9 ≥ 15 blocks | four 15-block runs, straight, share **1.00** on the leg tips they dock against |
+| Crossing frontline | FR8 span ≥ ⅓ | four straight runs, share **1.00** on the leg tips they dock against |
 | Team ↔ team strait | CT12 15–40 | **20** |
 | Pier ↔ mainland strait | CT12 15–40 | **15** |
 | Spawn ↔ wool balance | WL9 ratio ≤ 1.232 | in band, and the band is a guideline (author) |
 | Approach wall | — | 10 blocks, the spur's own width, halfway along it |
 | Walk to own wools | — | 67 blocks / 6 placed (bluff) · 63 / 22 (pier) |
 | Walk to enemy wools | — | 198 / 24 (bluff) · 208 / 41 (pier) |
-| Ground that steps | 03-slopes | 10672 walked, 140 scrambled, 216 barrier — **the beach scarp and the two approach walls**, and the three banks read as walked runs through it |
-| The scarp | — | 4 blocks off the backshore, 5 off the dune; banks at x −29..−20, −7..2, 28..37 |
+| Ground that steps | 03-slopes | 10864 walked, 78 scrambled, 258 barrier — **the beach scarp and the two approach walls**, and the three ramps read as walked runs through it |
+| The scarp | — | 4 blocks off the backshore, 5 off the dune; stone ramps at x −30..−20, −8..2, 22..32 |
+| Crossing frontline width | FR9 ≥ 15 | **20**, the legs running straight out of the beach's outer corners |
 | Dressing | 06-claims | **placed 45, declined 0** |
 | Ground no journey reaches | coverage | **0.0% dead** — every cell of the board is on somebody's route |
 | Export | preflight | **gate OPEN** — round-trip, mirror, buildability, traversability per team |
@@ -58,9 +60,18 @@ board's front-to-back reading: sand in front, grass behind, and three named ways
 - **Ramps as shapes, not as relief.** Every tier above the strand is `relief_scope: exclude`, so a relief
   mark on one of its seams does nothing; the three Δ2 seams are tilted quads at 4:1 with `height_mode:
   level` and a thickness per vertex. `03-slopes.txt` reports no barrier anywhere on the board.
-- **The beach is one shape, not two.** A five-block strip the width of the board and the beach behind it
-  were the same rectangle at neighbouring heights, which is one shape stated twice; the strip is gone and the
-  legs abut the beach directly.
+- **The beach is one rectangle and nothing else.** A five-block strip the width of the board and the beach
+  behind it were the same shape stated twice, so the strip is gone; the two Bézier flank shapes that bulged
+  the coast are gone too, and the legs are widened to twenty and run straight out of the beach's outer
+  corners, which is what the bulge was standing in for. `millrace` is the reference: its ground carries no
+  Bézier handles at all.
+- **A wall stack the grassland is built out of.** All three grass themes share one wall — a coping course,
+  four courses of a `wallDiagonal` at 45° alternating team-tinted clay with double smooth sandstone, two
+  courses of birch planks, then a `noise` of stone, andesite and polished andesite at scale 4 — and one
+  fill: three courses of a coarse-dirt/dirt noise over that same stone. Read back at the village's west
+  cliff `(-35, 70)`: coping y13, clay y12, sandstone y11–10, clay y9, birch y8–7, andesite y6 down.
+  The diagonal shears only on the landmass's outer perimeter, which is where a face is tall enough to show
+  it; on the scarp, an internal riser, the same stack reads as two courses of sandstone under the coping.
 - Water props as sea: a `natural` lagoon on the sand, a `stream` tide pool, banks in sand.
 - `laidLog` birch pier deck, `cell` dune-grass patches, sand/sandstone `noise` strand.
 - Five sea rocks in one `cell` of stone, andesite and cobblestone — grey against the sand rather than sand

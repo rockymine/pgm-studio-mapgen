@@ -17,14 +17,14 @@
   -7 |    hhhhhhhhhhhhhhhh    |
   -6 |    hhhhhhhhhhhhhhhh    |
   -5 |    hhhhhhhhhhhhhhhh    |
-  -4 |      jjjooooooiii      |
-  -3 |      jjjooooooiii      |
-  -2 |      NNNoooooonnn      |
-  -1 |      NNNoooooonnn      |
-   0 |      NNNoOOOOonnn      |<<< z=0
-   1 |      NNNoOOOOonnn      |
-   2 |      IIIoOOOOoJJJ      |
-   3 |      IIIoOOOOoJJJ      |
+  -4 |    jjjjooooooooiiii    |
+  -3 |    jjjjooooooooiiii    |
+  -2 |    NNNNoooooooonnnn    |
+  -1 |    NNNNoooooooonnnn    |
+   0 |    NNNNooOOOOoonnnn    |<<< z=0
+   1 |    NNNNooOOOOoonnnn    |
+   2 |    IIIIooOOOOooJJJJ    |
+   3 |    IIIIooOOOOooJJJJ    |
    4 |    HHHHHHHHHHHHHHHH    |
    5 |    HHHHHHHHHHHHHHHH    |
    6 |    HHHHHHHHHHHHHHHH    |
@@ -42,7 +42,7 @@
   18 |          AAA    GG     |
   19 |          AAA    GG     |
 
-  o  = enclosed void — 16 cells the board rings and nothing covers (pieces and build
+  o  = enclosed void — 32 cells the board rings and nothing covers (pieces and build
        zones both count as sides, per match-flow.md §6.8). A hole is made by ARRANGEMENT,
        never by subtraction: a buffer drawn over a piece is inert by design, and the
        compiler declares every enclosed void a `void-N` buffer on each compile anyway.
@@ -55,10 +55,10 @@
     F  bluff-flat       piece       cells x   5..7   z  16..18    blocks x   25..35   z   80..90     (2×2 cells)
     G  wool-bluff       wool-room   cells x   5..7   z  18..20    blocks x   25..35   z   90..100    (2×2 cells)
     H  strand           piece       cells x  -8..8   z   4..10    blocks x  -40..40   z   20..50     (16×6 cells)
-    I  leg-west         piece       cells x  -6..-3  z   2..4     blocks x  -30..-15  z   10..20     (3×2 cells)
-    J  leg-east         piece       cells x   3..6   z   2..4     blocks x   15..30   z   10..20     (3×2 cells)
+    I  leg-west         piece       cells x  -8..-4  z   2..4     blocks x  -40..-20  z   10..20     (4×2 cells)
+    J  leg-east         piece       cells x   4..8   z   2..4     blocks x   20..40   z   10..20     (4×2 cells)
     K  pier-pad         piece       cells x -12..-10 z  14..16    blocks x  -60..-50  z   70..80     (2×2 cells)
     L  pier-room        wool-room   cells x -12..-10 z  16..18    blocks x  -60..-50  z   80..90     (2×2 cells)
     M  zone-pier        build       cells x -10..-7  z  14..16    blocks x  -50..-35  z   70..80     (3×2 cells)
-    N  zone-leg         build       cells x  -6..-3  z  -2..2     blocks x  -30..-15  z  -10..10     (3×4 cells)
+    N  zone-leg         build       cells x  -8..-4  z  -2..2     blocks x  -40..-20  z  -10..10     (4×4 cells)
     O  lane-tide        water-lane  cells x  -2..2   z   0..4     blocks x  -10..10   z    0..20     (4×4 cells)

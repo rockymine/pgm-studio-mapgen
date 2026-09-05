@@ -1,61 +1,61 @@
 ## r5 (boulder) along x
-TRANSECT 25 stations from (-46, 22) to (-22, 22), every 1
+TRANSECT 25 stations from (-48, 34) to (-24, 34), every 1
   station        ground  surface  water  top  standing            step
-  (  -46,    22)                                                    void
-  (  -45,    22)                                                    void
-  (  -44,    22)                                                    void
-  (  -43,    22)                                                    void
-  (  -42,    22)                                                    void
-  (  -41,    22)                                                    void
-  (  -40,    22)       9        9            9                      
-  (  -39,    22)       9        9            9                      
-  (  -38,    22)       9        9            9                      
-  (  -37,    22)       9        9           11  boulder r5          
-  (  -36,    22)       9        9           13  boulder r5          
-  (  -35,    22)      10       10           13  boulder r5          +1
-  (  -34,    22)      10       10           14  boulder r5          
-  (  -33,    22)      10       10           13  boulder r5          
-  (  -32,    22)      10       10           13  boulder r5          
-  (  -31,    22)      10       10           10                      
-  (  -30,    22)      10       10           10                      
-  (  -29,    22)      10       10           10                      
-  (  -28,    22)      10       10           10                      
-  (  -27,    22)      10       10           10                      
-  (  -26,    22)      10       10           10                      
-  (  -25,    22)      10       10           10  stroke q1           
-  (  -24,    22)      10       10           10  water w1            
-  (  -23,    22)      10       10           10  water w1            
-  (  -22,    22)      10       10      9     9  water w1            
-rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder r5 at (-37, 22), water w1 at (-26, 23), stroke q1 at (-25, 21)
+  (  -48,    34)                                                    void
+  (  -47,    34)                                                    void
+  (  -46,    34)                                                    void
+  (  -45,    34)                                                    void
+  (  -44,    34)                                                    void
+  (  -43,    34)                                                    void
+  (  -42,    34)                                                    void
+  (  -41,    34)                                                    void
+  (  -40,    34)      10       10           10                      
+  (  -39,    34)      10       10           12  boulder r5          
+  (  -38,    34)      10       10           14  boulder r5          
+  (  -37,    34)      10       10           14  boulder r5          
+  (  -36,    34)      10       10           15  boulder r5          
+  (  -35,    34)      10       10           14  boulder r5          
+  (  -34,    34)      10       10           14  boulder r5          
+  (  -33,    34)      10       10           10                      
+  (  -32,    34)      10       10           10                      
+  (  -31,    34)      10       10           10                      
+  (  -30,    34)      10       10           10                      
+  (  -29,    34)      10       10           10                      
+  (  -28,    34)      10       10           10                      
+  (  -27,    34)      10       10           10                      
+  (  -26,    34)      10       10           10                      
+  (  -25,    34)      10       10           10                      
+  (  -24,    34)      10       10           10                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder r5 at (-39, 34), stroke q1 at (-25, 32)
 
 ## r5 (boulder) along z
-TRANSECT 25 stations from (-34, 10) to (-34, 34), every 1
+TRANSECT 25 stations from (-36, 22) to (-36, 46), every 1
   station        ground  surface  water  top  standing            step
-  (  -34,    10)                                                    void
-  (  -34,    11)                                                    void
-  (  -34,    12)                                                    void
-  (  -34,    13)                                                    void
-  (  -34,    14)                                                    void
-  (  -34,    15)                                                    void
-  (  -34,    16)                                                    void
-  (  -34,    17)                                                    void
-  (  -34,    18)                                                    void
-  (  -34,    19)                                                    void
-  (  -34,    20)       9        9           13  boulder r5          
-  (  -34,    21)      10       10           13  boulder r5          +1
-  (  -34,    22)      10       10           14  boulder r5          
-  (  -34,    23)      10       10           13  boulder r5          
-  (  -34,    24)      10       10           13  boulder r5          
-  (  -34,    25)      10       10           10                      
-  (  -34,    26)      10       10           10                      
-  (  -34,    27)                                                    void
-  (  -34,    28)                                                    void
-  (  -34,    29)                                                    void
-  (  -34,    30)                                                    void
-  (  -34,    31)                                                    void
-  (  -34,    32)                                                    void
-  (  -34,    33)                                                    void
-  (  -34,    34)                                                    void
+  (  -36,    22)       9        9            9                      
+  (  -36,    23)       9        9            9  water w2            
+  (  -36,    24)       9        9            9  water w2            
+  (  -36,    25)       9        9            9  water w2            
+  (  -36,    26)       9        9      9     9  water w2            
+  (  -36,    27)      10       10      9     9  water w2            +1
+  (  -36,    28)      10       10      9     9  water w2            
+  (  -36,    29)      10       10           10  water w2            
+  (  -36,    30)      10       10           10  water w2            
+  (  -36,    31)      10       10           10                      
+  (  -36,    32)      10       10           14  boulder r5          
+  (  -36,    33)      10       10           14  boulder r5          
+  (  -36,    34)      10       10           15  boulder r5          
+  (  -36,    35)      10       10           14  boulder r5          
+  (  -36,    36)      10       10           14  boulder r5          
+  (  -36,    37)      10       10           10                      
+  (  -36,    38)      10       10           10                      
+  (  -36,    39)      10       10           10                      
+  (  -36,    40)      10       10           10                      
+  (  -36,    41)      10       10           10                      
+  (  -36,    42)      10       10           10                      
+  (  -36,    43)      10       10           10                      
+  (  -36,    44)      10       10           10                      
+  (  -36,    45)      10       10           10                      
+  (  -36,    46)      10       10           10                      
 rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder r5 at (-36, 20)
+beside: water w2 at (-34, 22), boulder r5 at (-38, 32)

@@ -19,7 +19,7 @@ TRANSECT 23 stations from (9, 57) to (31, 57), every 1
   (   24,    57)      14       14           23  house b3            
   (   25,    57)      14       14           14                      
   (   26,    57)      14       14           14                      
-  (   27,    57)      14       14           14                      
+  (   27,    57)      14       14           14  stroke p2           
   (   28,    57)      14       14           14  stroke p2           
   (   29,    57)      14       14           14                      
   (   30,    57)      14       14           14                      
@@ -30,8 +30,8 @@ beside: house b3 at (16, 55), stroke p2 at (26, 59)
 ## b3 (house) along z
 TRANSECT 23 stations from (20, 46) to (20, 68), every 1
   station        ground  surface  water  top  standing            step
-  (   20,    46)       9        9            9                      
-  (   20,    47)       9        9            9                      
+  (   20,    46)      10       10           10                      
+  (   20,    47)       9        9            9                      -1
   (   20,    48)       9        9            9                      
   (   20,    49)       9        9            9                      
   (   20,    50)      14       14           14                      BARRIER +5
@@ -53,5 +53,5 @@ TRANSECT 23 stations from (20, 46) to (20, 68), every 1
   (   20,    66)      14       14           14                      
   (   20,    67)      14       14           14                      
   (   20,    68)      14       14           22  tree t4             
-rises 1, falls 0, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (20, 50) | walked end to end
+rises 1, falls 1, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (20, 50) | walked end to end
 beside: house b3 at (18, 53), stroke p2 at (18, 62), tree t4 at (18, 65)

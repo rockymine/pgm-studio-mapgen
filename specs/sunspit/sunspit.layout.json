@@ -37,19 +37,19 @@
       "radius": null,
       "vertices": [
        [
-        -30,
+        -40,
         10
        ],
        [
-        -15,
+        -20,
         10
        ],
        [
-        -15,
+        -20,
         20
        ],
        [
-        -30,
+        -40,
         20
        ]
       ],
@@ -85,19 +85,19 @@
       "radius": null,
       "vertices": [
        [
-        15,
+        20,
         10
        ],
        [
-        30,
+        40,
         10
        ],
        [
-        30,
+        40,
         20
        ],
        [
-        15,
+        20,
         20
        ]
       ],
@@ -725,94 +725,6 @@
       "material": null
      },
      {
-      "id": "ss-spit",
-      "type": "polygon",
-      "operation": "add",
-      "floor": 0,
-      "base_height": 8,
-      "relief_scope": "exclude",
-      "theme": "tideflat",
-      "vertices": [
-       [
-        40,
-        22
-       ],
-       [
-        48,
-        26
-       ],
-       [
-        50,
-        34
-       ],
-       [
-        44,
-        42
-       ],
-       [
-        40,
-        46
-       ]
-      ],
-      "controls": {
-       "1": {
-        "out": [
-         52,
-         29
-        ]
-       },
-       "2": {
-        "in": [
-         51,
-         39
-        ]
-       }
-      }
-     },
-     {
-      "id": "ss-cove",
-      "type": "polygon",
-      "operation": "subtract",
-      "floor": 0,
-      "base_height": 100,
-      "vertices": [
-       [
-        -40,
-        24
-       ],
-       [
-        -32,
-        28
-       ],
-       [
-        -30,
-        36
-       ],
-       [
-        -36,
-        42
-       ],
-       [
-        -40,
-        44
-       ]
-      ],
-      "controls": {
-       "1": {
-        "out": [
-         -28,
-         31
-        ]
-       },
-       "2": {
-        "in": [
-         -27,
-         40
-        ]
-       }
-      }
-     },
-     {
       "id": "ramp-spawn",
       "type": "polygon",
       "operation": "add",
@@ -883,7 +795,7 @@
       ]
      },
      {
-      "id": "bank-west",
+      "id": "stair-west",
       "type": "polygon",
       "operation": "add",
       "floor": 0,
@@ -891,23 +803,23 @@
       "height_mode": "level",
       "skirt": 0,
       "relief_scope": "exclude",
-      "theme": "backshore",
+      "theme": "stair",
       "vertices": [
        [
         -30,
-        44
+        38
        ],
        [
         -20,
-        44
+        38
        ],
        [
         -20,
-        56
+        51
        ],
        [
         -30,
-        56
+        51
        ]
       ],
       "anchor_heights": [
@@ -918,7 +830,7 @@
       ]
      },
      {
-      "id": "bank-mid",
+      "id": "stair-mid",
       "type": "polygon",
       "operation": "add",
       "floor": 0,
@@ -926,23 +838,23 @@
       "height_mode": "level",
       "skirt": 0,
       "relief_scope": "exclude",
-      "theme": "backshore",
+      "theme": "stair",
       "vertices": [
        [
         -8,
-        44
+        38
        ],
        [
         2,
-        44
+        38
        ],
        [
         2,
-        56
+        51
        ],
        [
         -8,
-        56
+        51
        ]
       ],
       "anchor_heights": [
@@ -953,7 +865,7 @@
       ]
      },
      {
-      "id": "bank-east",
+      "id": "stair-east",
       "type": "polygon",
       "operation": "add",
       "floor": 0,
@@ -961,23 +873,23 @@
       "height_mode": "level",
       "skirt": 0,
       "relief_scope": "exclude",
-      "theme": "backshore",
+      "theme": "stair",
       "vertices": [
        [
-        26,
-        42
+        22,
+        38
        ],
        [
-        38,
-        42
+        32,
+        38
        ],
        [
-        38,
-        57
+        32,
+        51
        ],
        [
-        26,
-        57
+        22,
+        51
        ]
       ],
       "anchor_heights": [
@@ -1003,13 +915,11 @@
        "backshore-16-2",
        "backshore-18",
        "pier-pad-10",
-       "ss-spit",
-       "ss-cove",
        "ramp-spawn",
        "ramp-bluff",
-       "bank-west",
-       "bank-mid",
-       "bank-east"
+       "stair-west",
+       "stair-mid",
+       "stair-east"
       ]
      }
     ]
@@ -1136,10 +1046,11 @@
    "rim": {
     "material": {
      "kind": "solid",
-     "id": 12
+     "id": 43,
+     "data": 1
     },
     "depth": 1,
-    "enabled": false
+    "enabled": true
    },
    "surface": {
     "material": {
@@ -1182,17 +1093,131 @@
       ]
      }
     },
-    "depth": 2,
+    "depth": 1,
     "enabled": true
    },
    "wall": {
-    "kind": "solid",
-    "id": 24
+    "kind": "layered",
+    "axis": "depth",
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "wallDiagonal",
+        "slope": 1,
+        "runs": [
+         {
+          "material": {
+           "kind": "teamTint",
+           "blockId": 159,
+           "neutral": {
+            "kind": "solid",
+            "id": 24,
+            "data": 2
+           }
+          },
+          "width": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 43,
+           "data": 1
+          },
+          "width": 2
+         }
+        ]
+       },
+       "thickness": 4
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 5,
+        "data": 2
+       },
+       "thickness": 2
+      }
+     ]
+    },
+    "beyond": {
+     "kind": "noise",
+     "seed": 41,
+     "scale": 4,
+     "octaves": 2,
+     "rise": 3,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ]
+    }
    },
    "wallEnabled": true,
    "fill": {
-    "kind": "solid",
-    "id": 24
+    "kind": "layered",
+    "axis": "depth",
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "noise",
+        "seed": 43,
+        "scale": 5,
+        "octaves": 2,
+        "rise": 8,
+        "stops": [
+         {
+          "kind": "solid",
+          "id": 3
+         },
+         {
+          "kind": "solid",
+          "id": 3,
+          "data": 1
+         }
+        ]
+       },
+       "thickness": 3
+      }
+     ]
+    },
+    "beyond": {
+     "kind": "noise",
+     "seed": 41,
+     "scale": 4,
+     "octaves": 2,
+     "rise": 3,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ]
+    }
    }
   },
   "dunetop": {
@@ -1205,8 +1230,8 @@
    "rim": {
     "material": {
      "kind": "solid",
-     "id": 5,
-     "data": 2
+     "id": 43,
+     "data": 1
     },
     "depth": 1,
     "enabled": true
@@ -1239,13 +1264,127 @@
     "enabled": true
    },
    "wall": {
-    "kind": "solid",
-    "id": 24
+    "kind": "layered",
+    "axis": "depth",
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "wallDiagonal",
+        "slope": 1,
+        "runs": [
+         {
+          "material": {
+           "kind": "teamTint",
+           "blockId": 159,
+           "neutral": {
+            "kind": "solid",
+            "id": 24,
+            "data": 2
+           }
+          },
+          "width": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 43,
+           "data": 1
+          },
+          "width": 2
+         }
+        ]
+       },
+       "thickness": 4
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 5,
+        "data": 2
+       },
+       "thickness": 2
+      }
+     ]
+    },
+    "beyond": {
+     "kind": "noise",
+     "seed": 41,
+     "scale": 4,
+     "octaves": 2,
+     "rise": 3,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ]
+    }
    },
    "wallEnabled": true,
    "fill": {
-    "kind": "solid",
-    "id": 24
+    "kind": "layered",
+    "axis": "depth",
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "noise",
+        "seed": 43,
+        "scale": 5,
+        "octaves": 2,
+        "rise": 8,
+        "stops": [
+         {
+          "kind": "solid",
+          "id": 3
+         },
+         {
+          "kind": "solid",
+          "id": 3,
+          "data": 1
+         }
+        ]
+       },
+       "thickness": 3
+      }
+     ]
+    },
+    "beyond": {
+     "kind": "noise",
+     "seed": 41,
+     "scale": 4,
+     "octaves": 2,
+     "rise": 3,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ]
+    }
    }
   },
   "bluff": {
@@ -1258,8 +1397,8 @@
    "rim": {
     "material": {
      "kind": "solid",
-     "id": 24,
-     "data": 2
+     "id": 43,
+     "data": 1
     },
     "depth": 1,
     "enabled": true
@@ -1292,13 +1431,127 @@
     "enabled": true
    },
    "wall": {
-    "kind": "solid",
-    "id": 24
+    "kind": "layered",
+    "axis": "depth",
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "wallDiagonal",
+        "slope": 1,
+        "runs": [
+         {
+          "material": {
+           "kind": "teamTint",
+           "blockId": 159,
+           "neutral": {
+            "kind": "solid",
+            "id": 24,
+            "data": 2
+           }
+          },
+          "width": 2
+         },
+         {
+          "material": {
+           "kind": "solid",
+           "id": 43,
+           "data": 1
+          },
+          "width": 2
+         }
+        ]
+       },
+       "thickness": 4
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 5,
+        "data": 2
+       },
+       "thickness": 2
+      }
+     ]
+    },
+    "beyond": {
+     "kind": "noise",
+     "seed": 41,
+     "scale": 4,
+     "octaves": 2,
+     "rise": 3,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ]
+    }
    },
    "wallEnabled": true,
    "fill": {
-    "kind": "solid",
-    "id": 24
+    "kind": "layered",
+    "axis": "depth",
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "material": {
+        "kind": "noise",
+        "seed": 43,
+        "scale": 5,
+        "octaves": 2,
+        "rise": 8,
+        "stops": [
+         {
+          "kind": "solid",
+          "id": 3
+         },
+         {
+          "kind": "solid",
+          "id": 3,
+          "data": 1
+         }
+        ]
+       },
+       "thickness": 3
+      }
+     ]
+    },
+    "beyond": {
+     "kind": "noise",
+     "seed": 41,
+     "scale": 4,
+     "octaves": 2,
+     "rise": 3,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ]
+    }
    }
   },
   "pierdeck": {
@@ -1336,6 +1589,97 @@
     "kind": "solid",
     "id": 17,
     "data": 2
+   }
+  },
+  "stair": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 43,
+     "data": 1
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "noise",
+     "seed": 41,
+     "scale": 4,
+     "octaves": 2,
+     "rise": 3,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 1
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ]
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "noise",
+    "seed": 41,
+    "scale": 4,
+    "octaves": 2,
+    "rise": 3,
+    "stops": [
+     {
+      "kind": "solid",
+      "id": 1
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 6
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "noise",
+    "seed": 41,
+    "scale": 4,
+    "octaves": 2,
+    "rise": 3,
+    "stops": [
+     {
+      "kind": "solid",
+      "id": 1
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 6
+     }
+    ]
    }
   }
  },
@@ -1855,12 +2199,12 @@
     "seed": 2,
     "points": [
      [
-      -18,
-      38
+      -36,
+      28
      ],
      [
-      -8,
-      36
+      -30,
+      26
      ]
     ],
     "radius": 2.5,
@@ -1898,11 +2242,7 @@
      ],
      [
       -25,
-      50
-     ],
-     [
-      -25,
-      42
+      52
      ]
     ],
     "radius": 2,
@@ -1928,12 +2268,12 @@
       62
      ],
      [
-      31,
+      30,
       56
      ],
      [
-      31,
-      44
+      30,
+      53
      ]
     ],
     "radius": 2,
@@ -2830,8 +3170,8 @@
     "id": "r5",
     "kind": "boulder",
     "seed": 19,
-    "x": -34,
-    "z": 22,
+    "x": -36,
+    "z": 34,
     "form": "round",
     "size": 3.0,
     "mossy": false,
@@ -2932,8 +3272,8 @@
    "reach": 8,
    "step": 1,
    "grain": {
-    "amplitude": 1.1,
-    "scale": 9,
+    "amplitude": 0.8,
+    "scale": 11,
     "seed": 21
    },
    "marks": [
@@ -2944,7 +3284,7 @@
       -26,
       38
      ],
-     "h": 11,
+     "h": 10,
      "r": 5
     },
     {
@@ -2954,7 +3294,7 @@
       12,
       40
      ],
-     "h": 11,
+     "h": 10,
      "r": 4
     },
     {
