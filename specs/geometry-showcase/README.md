@@ -17,9 +17,12 @@ same reading forward, which is how a landing's height is stated rather than gues
 `renders/close/` holds a `?format=text` transect through each construct, taken by hand because the
 driver transects features rather than terrain. Read those before the pictures.
 
-**A flight is not finished at its last tread.** Nothing the studio reads back asks whether a climb
-arrives anywhere: `slopes` classifies cells, `walk` travels an aim line, `transect` cuts where it is
-pointed, and a flight that tops out level with the ground for one cell and then falls twenty-four
-passes all three. The question is per flight — take the last tread, step four cells on **in the
-direction of travel**, and require ground within one course. This board has fourteen of them, listed
-with their top treads in `reports/geometry-showcase.md`; three of them failed it on the first build.
+**A flight is not finished at its last tread.** Three climbs here topped out level with the ground for
+one cell and then fell twenty-four, and every whole-board read called them walkable — none of them is
+asked about a flight. That question is `SK26` now, in the studio, so this board is checked by the tool
+rather than by hand.
+
+**A wall stands on the ground rather than being it.** Drawn as ground it builds the right shape and the
+wrong column: a shape's theme paints everything it owns, so the field's grass and soil under the wall
+are replaced down to bedrock. The rampart, its crenellation, its piers and the drum ring are a layer at
+the field's own surface; the podium another at the plateau's.

@@ -1,8 +1,12 @@
-TRANSECT 17 stations from (66, -38) to (82, -38), every 1
+TRANSECT 25 stations from (62, -38) to (86, -38), every 1
   station        ground  surface  water  top  standing            step
-  (   66,   -38)      26       26           26                      
-  (   67,   -38)      26       26           26                      
-  (   68,   -38)      27       27           27                      +1
+  (   62,   -38)      26       26           26                      
+  (   63,   -38)      26       26           26                      
+  (   64,   -38)      27       27           27                      +1
+  (   65,   -38)      27       27           27                      
+  (   66,   -38)      27       27           27                      
+  (   67,   -38)      27       27           27                      
+  (   68,   -38)      27       27           27                      
   (   69,   -38)      27       27           27                      
   (   70,   -38)      27       27           27                      
   (   71,   -38)      27       27           27                      
@@ -14,8 +18,12 @@ TRANSECT 17 stations from (66, -38) to (82, -38), every 1
   (   77,   -38)      27       27           27                      
   (   78,   -38)      27       27           27                      
   (   79,   -38)      27       27           27                      
-  (   80,   -38)      24       24           24                      -3
-  (   81,   -38)      24       24           24                      
-  (   82,   -38)      24       24           24                      
-rises 1, falls 1, worst step 3: 0 barrier, 0 scramble, 0 drop | walked end to end
+  (   80,   -38)      27       27           27                      
+  (   81,   -38)      27       27           27                      
+  (   82,   -38)      27       27           27                      
+  (   83,   -38)      27       27           27                      
+  (   84,   -38)      23       23           23                      DROP -4
+  (   85,   -38)      23       23           23                      
+  (   86,   -38)      23       23           23                      
+rises 1, falls 1, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (84, -38) | walked end to end
 beside: (none)

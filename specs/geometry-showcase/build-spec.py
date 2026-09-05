@@ -18,8 +18,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 FIELD, SHELF, PLATEAU = 7, 19, 31
 WALL_WALK, MERLON, PIER = 13, 14, 15
 
-half = []          # shapes drawn on the red half; the blue half is their rot_180 image
+half = []          # ground shapes drawn on the red half; the blue half is their rot_180 image
 middle = []        # shapes that are their own image about the origin
+built = []         # things standing ON the ground rather than being it — their own layer
 
 # ── the ground plane, with a gorge across the middle that stops short of both flanks ──────────
 half += [rect("gs-r-plate", -100, -136, 100, -12, 0, 8, theme="gs-field"),
@@ -30,17 +31,17 @@ half += [rect("gs-r-plate", -100, -136, 100, -12, 0, 8, theme="gs-field"),
 #    a wall drawn from the bedrock up builds exactly the same column as one standing on the
 #    ground — and states nothing for SK9 to read as a lost slab (see NOTES.md).
 for side, x0, x1 in (("w", -100, -8), ("e", 8, 100)):
-    half.append(rect(f"gs-r-wall-{side}", x0, -112, x1, -109, 0, WALL_WALK + 1,
-                     keepClear=True, theme="gs-rampart"))
+    built.append(rect(f"gs-r-wall-{side}", x0, -112, x1, -109, 0, WALL_WALK - FIELD,
+                      keepClear=True, theme="gs-rampart"))
     # A merlon is the same column one course taller, not a block laid on the walk: two adds on one
     # layer do not stack, and the taller takes the column floor and all.
     for mx in range(x0, x1 - 2, 6):
-        half.append(rect(f"gs-r-merlon-{side}{mx}", mx, -112, mx + 3, -109, 0, MERLON + 1,
-                         keepClear=True, theme="gs-rampart"))
+        built.append(rect(f"gs-r-merlon-{side}{mx}", mx, -112, mx + 3, -109, 0, MERLON - FIELD,
+                          keepClear=True, theme="gs-rampart"))
 # the gate piers, standing one course over the crenellation
 for side, x0 in (("w", -11), ("e", 8)):
-    half.append(rect(f"gs-r-pier-{side}", x0, -114, x0 + 3, -107, 0, PIER + 1,
-                     keepClear=True, theme="gs-rampart"))
+    built.append(rect(f"gs-r-pier-{side}", x0, -114, x0 + 3, -107, 0, PIER - FIELD,
+                      keepClear=True, theme="gs-rampart"))
 # and the way up onto the rampart walk — six cells, six courses, one tread each
 half.append(flight("gs-r-wall-stair", -26, -109, -20, -103, "z", WALL_WALK, FIELD + 1,
                    keepClear=True, theme="gs-stair"))
@@ -118,20 +119,20 @@ vault = [rect("gs-r-vault", 10, -80, 22, -36, 0, 18, theme="gs-plateau")]
 #    whole mechanism — the taller add wins the columns it covers, so discs whose tops rise inward
 #    write a stepped field with no subtract and no per-column authoring. Kept clear of the
 #    corridor at x >= 10, since a disc reaching over it would fill the tunnel to bedrock. ──────
+podium = []
 for n, (r, h) in enumerate(((9, 1), (6, 2), (3, 3))):
-    half.append(dict(id=f"gs-r-podium-{n}", type="circle", operation="add",
-                     center_x=0, center_z=-69, radius=r, floor=0,
-                     base_height=PLATEAU + 1 + h,
-                     keepClear=True, theme="gs-podium"))
+    podium.append(dict(id=f"gs-r-podium-{n}", type="circle", operation="add",
+                       center_x=0, center_z=-69, radius=r, floor=0, base_height=h,
+                       keepClear=True, theme="gs-podium"))
 
 # ── a hollow drum redoubt in the mid-field: ONE polygon per arc, wound even-odd — the outer
 #    circle, a slit inward, the inner circle traced the other way round. An outer disc minus an
 #    inner one would be a subtract, and SK13 refuses an add over one anywhere on the board. ──
-half += ring("gs-r-drum", 26, -23, 9, 6, 0, 16, gaps=((30, 60), (210, 240)),
-             keepClear=True, theme="gs-rampart")
+built += ring("gs-r-drum", 26, -23, 9, 6, 0, 16 - (FIELD + 1), gaps=((30, 60), (210, 240)),
+              keepClear=True, theme="gs-rampart")
 # the way onto its walk, inside the court: twelve cells for seven courses, ending in the annulus
 # itself, where the ring's own top is the same 15 the flight arrives at
-half.append(flight("gs-r-drum-stair", 23, -29, 29, -20, "z", 15, FIELD + 1,
+half.append(flight("gs-r-drum-stair", 24, -29, 28, -20, "z", 15, FIELD + 1,
                    keepClear=True, theme="gs-stair"))
 
 # ── the stepped mound: nine nested circles, each two blocks wide and one course up ────────────
@@ -142,13 +143,13 @@ for n in range(9):
 
 # ── the spiral ramp: one polyline whose radius shrinks as it winds, so the turns lie beside
 #    one another. A constant radius would be a helix, and a layer holds one span per column. ──
-half += spiral_arcs("gs-r-spiral", 74, -38, 20, 4, turns=2.5,
+half += spiral_arcs("gs-r-spiral", 74, -38, 20, 8, turns=2.5,
                     t_start=FIELD + 1, t_end=FIELD + 19, band=4, start_deg=90,
                     keepClear=True, theme="gs-spiral")
 # The eye. A coil that shrinks to nothing leaves a shaft down the middle at field level, and the
 # last thing the ramp does is walk into it. The cap stands at the height the last turn arrives at.
 half.append(dict(id="gs-r-spiral-cap", type="circle", operation="add",
-                 center_x=74, center_z=-38, radius=6, floor=0, base_height=FIELD + 20,
+                 center_x=74, center_z=-38, radius=10, floor=0, base_height=FIELD + 20,
                  keepClear=True, theme="gs-spiral"))
 
 # ── the bridge: a graded bank on each shore and a deck hung over the void between them ────────
@@ -160,6 +161,8 @@ middle.append(rect("gs-br-deck", -8, -12, 8, 12, 17, 3, keepClear=True, theme="g
 # ── both halves ───────────────────────────────────────────────────────────────────────────────
 shapes = half + [rot180(s) for s in half] + middle
 vault_shapes = vault + [rot180(s) for s in vault]
+built_shapes = built + [rot180(s) for s in built]
+podium_shapes = podium + [rot180(s) for s in podium]
 
 
 def theme(surface, wall, rim, depth=3, soil=None):
@@ -203,10 +206,21 @@ layout = {
     "layers": [
         {"id": "ground", "name": "Ground", "base_y": 0,
          "layout": {"shapes": shapes, "groups": []}},
+        # What stands ON the ground rather than being it. A wall drawn as ground reaches bedrock and
+        # takes the column with it — the field's grass and soil under it are replaced by the wall's
+        # own fill, because a shape's theme paints the whole column it owns. Given its own layer at
+        # the field's own surface, the wall sits on the grass and the profile beneath is the field's.
+        {"id": "rampart", "name": "Rampart", "base_y": FIELD + 1,
+         "layout": {"shapes": built_shapes, "groups": []}},
         # The corridor's roof, and the mass over it up to the plateau's own top. Its own layer
         # because one layer keeps one span per column and the corridor needs a floor and a lid.
+        # Listed by base_y, like the rest: the world is built from base_y and a list in another
+        # order is a document that reads wrong about its own stack (SK20).
         {"id": "vault", "name": "Vault", "base_y": 14,
          "layout": {"shapes": vault_shapes, "groups": []}},
+        # The same, one storey up: a platform raised on the plateau rather than a mass rising out of it.
+        {"id": "podium", "name": "Podium", "base_y": PLATEAU + 1,
+         "layout": {"shapes": podium_shapes, "groups": []}},
     ],
     "themes": THEMES,
     "mapTheme": "gs-field",

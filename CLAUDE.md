@@ -9,10 +9,20 @@ distilled from 27 run reports and every rule in it cost at least one build.
 
 Three things that are true before the skill loads:
 
-- **The studio is already running — do not restart it. Where it listens is not a constant.** It has been
-  a different port on every environment the boards here were built on, so nothing states one: set
-  `PGM_STUDIO_API`, or let `tools/drive.py` find it by asking `GET /api/health` at the candidates it
-  knows. If you write a port into a document, you have written down the machine you happened to be on.
+- **Ask the studio whether it is running before doing anything about it, and where it listens is not a
+  constant.** It has been a different port on every environment the boards here were built on, so nothing
+  states one: set `PGM_STUDIO_API`, or let `tools/drive.py` find it by asking `GET /api/health` at the
+  candidates it knows. If you write a port into a document, you have written down the machine you happened
+  to be on.
+
+  **A studio that answers is somebody's — leave it alone.** Restarting one takes a board out from under
+  whoever is driving it, and two servers on one machine starve each other into route timeouts that read as
+  page faults. Drive the one that is there.
+
+  **A studio that does not answer has to be started, and in a fresh cloud container nothing is installed
+  at all.** That is not this repository's business — `pgm-studio/docs/cloud-setup.md` is the runbook, and it
+  is accurate: the SDK and MariaDB by apt, the database and its user, `--migrate-only`, then the API. Expect
+  it to take a while and do it in a background shell, because a sandboxed foreground one has no network.
 - **Do not write a second copy of the system.** A `specs/<slug>/build-spec.py` that generates the plan
   and the finish is the authoring work and is expected. A script that reads the *built world* —
   a ground-finder, a section renderer, a walk or clearance check — is not, wherever it lives, including
