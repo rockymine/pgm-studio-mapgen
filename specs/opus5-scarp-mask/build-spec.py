@@ -64,7 +64,7 @@ PIT = (-32, -56)
 #    knob — `atan(dropPerTurn / (pitch - 2*tread))` — so the spiral is drawn wide enough to pay for it:
 #    r0 24, 2 turns is a pitch of 9.5 and a fall of 7, which grades at 52 degrees instead of 90.
 _pts = spiral(*PIT, r0=24, r1=5, turns=2.0, n=44)
-marks.append({"id": "delph", "kind": "line", "r": 5, "tread": 2,
+marks.append({"id": "delph", "kind": "line", "r": 5, "tread": 2, "batter": 65,
               "points": _pts,
               # the last six samples run level, so the sump is a floor rather than the end of a ramp
               # and the monument does not stand two courses over the cell beside it (WX11)
