@@ -25,6 +25,7 @@ about it."*
 | Where does the ground step, over the whole board? | `03-slopes.txt` — `. walked · : scramble · # barrier`, plus a per-face summary | — |
 | How high is the ground along this line? | `tools/loop.py --profile x=<x>,z=<a>..<b>,step=1` | your own arithmetic over the anchors |
 | How **steep** is the ground, and where? | `GET …/incline?format=text` — the glyph is the tens of degrees, and under the grid, how much ground stands in each ten | `03-slopes.txt`, which answers a *step* (can it be walked) and not an *angle* (how should it be finished) |
+| Which two **marks** built that wall? | `POST …/sketch/relief/read` → `seams`, worst first, each naming the pair and the cell; `RL3` fires above a scramble | a face in `03-slopes.txt` or the relief read, which report the wall as terrain and attribute it to nothing |
 | What does a column hold, layer by layer? | `tools/loop.py --column x,z` | reading a world file yourself |
 | May a prop stand here? | `06-claims.txt` (`POST …/sketch/dressing?format=text`), then `tools/loop.py --candidates <propId> x,z …` | placing it and reading the decline |
 | What did the route actually cost? | `GET …/walk?from=&to=&aim=&format=text`, or `04-routes.txt` | assuming the shortest line is the route |
@@ -203,9 +204,16 @@ difference. A `tread` on the later mark grades it: the shoulder states its heigh
 whatever the earlier mark put there. The shoulder's **width** sets the grade — 22 blocks over a 4-cell shoulder
 is 5.5 a cell, over 10 cells it is 2 — so a gentler seam means a narrower tread or a longer reach.
 
+**Do not go looking for these in a render.** `POST …/sketch/relief/read` answers `seams` per group — every
+pair of marks whose ground meets on a step of more than a block, worst first, each with the coordinate to
+stand at — and raises `RL3` where one is taller than a scramble. It also answers `silentMarks`, the marks that
+pinned nothing at all because they were placed off their group's ground (`RL4`). A seam that grades reports
+nothing, so the list is the fault and not the arrangement.
+
 *`opus5-scarp-mask` at (14, −78): `crest` (r 18, h 33) and `terrace` (r 13, h 24) overlap, and the transect read
-`33 33 33 DROP −9 24`. With `tread: 7` on the terrace it reads `33 33 32 31 29 28 26 25 24`. Board-wide, 1,006
-barrier cells became 480.*
+`33 33 33 DROP −9 24`. The read named it `crest | terrace, step 10 at (7, −80), 43 cells`. With `tread: 7` on
+the terrace the transect reads `33 33 32 31 29 28 26 25 24` and the seam is gone. Board-wide, 1,006 barrier
+cells became 480.*
 
 ### A layer's paint reaches further down than the layer does
 
