@@ -23,6 +23,7 @@ about it."*
 | What is actually at this coordinate? | `GET /map/{slug}/column?at=x,z` | any render — every other read is a projection |
 | Does this climb? Is that step walkable? | `GET …/transect?points=x,z;x,z&beside=2&format=text`, or `03-slopes.txt` | eyeballing a heightmap shade |
 | Where does the ground step, over the whole board? | `03-slopes.txt` — `. walked · : scramble · # barrier`, plus a per-face summary | — |
+| Is a cliff a landform or a wall somebody typed? | the **longest** straight run of 40°+ cells in `GET …/incline?format=text`, and `03-slopes.txt`'s largest face | the *share* of steep cells above a run length — it hides every wall shorter than the threshold |
 | How high is the ground along this line? | `tools/loop.py --profile x=<x>,z=<a>..<b>,step=1` | your own arithmetic over the anchors |
 | How **steep** is the ground, and where? | `GET …/incline?format=text` — the glyph is the tens of degrees, and under the grid, how much ground stands in each ten | `03-slopes.txt`, which answers a *step* (can it be walked) and not an *angle* (how should it be finished) |
 | Is there anywhere to **stand**? | `POST …/sketch/relief/read` → `level` (share under 10°) and `largestField`; `RL5` fires under 30% | the walk tier, which answers one place and no ledge for a board that is one long ramp |
@@ -229,6 +230,39 @@ nothing, so the list is the fault and not the arrangement.
 `33 33 33 DROP −9 24`. The read named it `crest | terrace, step 10 at (7, −80), 43 cells`. With `tread: 7` on
 the terrace the transect reads `33 33 32 31 29 28 26 25 24` and the seam is gone. Board-wide, 1,006 barrier
 cells became 480.*
+
+### A mark typed with two points is a wall the length of the board
+
+**Nothing splines a relief mark.** `line`, `scarp`, `area` and `push` take their points verbatim, so a
+landform's plan is exactly what is typed: a scarp stated as two points is a straight cliff for its whole run,
+and an area whose ring is a rectangle has a straight bevelled edge down each side. The **axis-aligned** case is
+the worst of it, because every block edge in the run is then collinear and the eye reads one continuous
+silhouette; the same edge at 15–25° off-axis rasterises into a staircase of varying treads and reads as broken
+rock for free.
+
+**Draw the wander.** A break of slope carrying a drop of `H` blocks is displaced perpendicular to its own trend
+at a wavelength of `2.5·H` and an amplitude of `1.0–1.4·H`, with each wavelength jittered ±30% so the scallop
+is not periodic. Cap segments at **10 blocks after the displacement, not before** — displacing a trace moves
+neighbouring vertices apart as well as sideways, so one sampled every 6 blocks carries 17-block segments once
+it has wandered. `specs/opus5-harrowgate/landform.py` is the generator.
+
+**It buys the look and costs nothing.** A scalloped edge carrying the same drop is longer than a straight one,
+so the steep-cell count goes **up** while the wall goes away, and the solver reports no seam at any amplitude
+up to `1.8·H` — a scarp's side test takes the wander. Barrier cells go down, not up: what was wall becomes
+scrambled ground.
+
+**Check it with the longest run, never a share.** Take the cells reading 4 or more in
+`GET …/incline?format=text` and find the longest run of them through each cell along any of the four lattice
+directions, then report the **worst one on the board**. A share above a threshold hides every wall shorter than
+the threshold — a full-width fold seam scored 0% on "share over 60 blocks" while standing there in the render.
+A drop of `H` should show no straight run longer than about `4·H`.
+
+*`opus5-harrowgate`: the `scarp` typed as `[[-54,-52],[54,-52]]` and the `field` ring typed as four corners
+produced straight 40°+ runs at `z −54..−51, x −9..53` and `z −47..−45, x −35..51`, and no vertical runs at all —
+every wall ran along the axis the two marks were typed on. Wandered to 31 and 106 vertices, with all eight
+marks, the grain and the push unchanged: largest relief face 240 cells → **95**, longest straight run 87 → 38,
+barrier cells 668 → **648**, and the route to the enemy objective went from `barrier +4` at the scarp to
+`scramble +2`.*
 
 ### A layer's paint reaches further down than the layer does
 

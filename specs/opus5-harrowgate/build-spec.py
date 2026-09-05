@@ -4,24 +4,32 @@
 Each statement does one job and no two do the same one:
 
   moor    a line with a TREAD — high ground whose front edge grades into the slope below it
-  shelf   an AREA MARK WITH A HEIGHT PER CORNER and a BEVEL — a tilted bench cut into that slope,
-          which could not be stated at all before: a held pad was level whatever it was drawn as
+  shelf   an AREA MARK WITH A HEIGHT PER CORNER and a BEVEL — a tilted bench cut into that slope
   scarp   a SCARP — the deliberate cliff. Not everything should grade, and a face is what decides
-          where players go
+          where players go. Its trace is WANDERED, so the face is a run of bays and headlands
   stair   a switchback line with a TREAD and a BATTER — the one way up the scarp, flat road and
           benched bank rather than a wall
   field   a broad AREA at one height with a BEVEL — the flat the map is fought on, graded at its rim
-          into the scarp's toe and the river's bank. Its interior is what keeps RL5 quiet
+          into the scarp's toe and the river's bank. Its interior is what keeps RL5 quiet, and its
+          ring is WANDERED for the same reason the scarp's trace is
   bank    the river's shoulder, TREAD 4
   ghyll   the river's bed, TREAD 3 — bed and bank grading into each other is what makes a V the
           water can fill to, instead of a flat trench it faces air across
   knoll   a PUSH — the sculpting half. It composes over the solved field instead of pinning it, so
           the field stays flat underneath and the knoll is a landform rather than a constraint
 
+The two marks that carry a drop are drawn through `landform.wander` rather than typed as a straight
+line and a rectangle. A break of slope stated with two points is a wall the length of the board: the
+displacement puts a vertex every ten blocks or closer and swings it perpendicular to its own trend at
+a wavelength of 2.5 times the drop, which turns one 240-cell face into bays of at most 95 and takes
+the route across the scarp from a barrier to a scramble. It costs no marks and no barrier cells.
+
 Authored for the -z half; rot_180 folds it. Writes the plan and finish beside this file.
 """
-import json, os
+import json, os, sys
 HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import landform
 SLUG = "opus5-harrowgate"
 
 BED, POOL, BANK, FIELD, SCARP_TOP, SHELF, MOOR, CREST = 8, 13, 17, 22, 32, 34, 40, 44
@@ -41,7 +49,9 @@ marks.append({"id": "shelf", "kind": "area", "bevel": 6,
 
 # ── the cliff. A scarp states a DROP, not a height, so this is the one edge on the board that is
 #    meant to be a wall — 10 blocks over a 3-block face is not crossed on foot either way. ─────
-marks.append({"id": "scarp", "kind": "scarp", "points": [[-54, -52], [54, -52]],
+marks.append({"id": "scarp", "kind": "scarp",
+              "points": landform.wander([[-54, -52], [54, -52]], drop=SCARP_TOP - FIELD,
+                                        amplitude=1.0, seed=17),
               "high": SCARP_TOP, "low": FIELD, "face": 3, "band": 10})
 
 # ── the way up it: three limbs, 12 apart, falling 5 between each. A tread of 3 leaves 6 blocks of
@@ -60,8 +70,9 @@ marks.append({"id": "gatepad", "kind": "area", "bevel": 4,
 
 # ── the flat the map is fought on. One height, a wide bevel: the middle is level ground and the
 #    rim grades into the scarp's toe on one side and the river's bank on the other. ─────────────
-marks.append({"id": "field", "kind": "area", "bevel": 5,
-              "ring": [[-52, -48], [52, -48], [52, -20], [-52, -20]], "h": FIELD})
+field_ring = landform.wander_ring([[-52, -48], [52, -48], [52, -20], [-52, -20]],
+                                  drop=6, amplitude=0.8, seed=23)
+marks.append({"id": "field", "kind": "area", "bevel": 5, "ring": field_ring, "h": FIELD})
 
 # ── the water's two statements, each with a tread so they grade into one another and leave a V ──
 marks.append({"id": "bank", "kind": "line", "r": 9, "tread": 4,

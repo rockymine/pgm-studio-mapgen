@@ -12,21 +12,21 @@ TRANSECT 25 stations from (20, -60) to (44, -60), every 1
   (   28,   -60)      22       22           22                      
   (   29,   -60)      22       22           22                      
   (   30,   -60)      22       22           22  destroyable dt-shelf  
-  (   31,   -60)      22       22           71  destroyable dt-shelf  
-  (   32,   -60)      22       22           72  destroyable dt-shelf  
-  (   33,   -60)      22       22           71  destroyable dt-shelf  
+  (   31,   -60)      22       22           68  destroyable dt-shelf  
+  (   32,   -60)      22       22           69  destroyable dt-shelf  
+  (   33,   -60)      22       22           68  destroyable dt-shelf  
   (   34,   -60)      22       22           22  destroyable dt-shelf  
-  (   35,   -60)      22       22           22                      
-  (   36,   -60)      22       22           22                      
-  (   37,   -60)      22       22           22                      
-  (   38,   -60)      22       22           22                      
-  (   39,   -60)      22       22           22                      
-  (   40,   -60)      22       22           22                      
-  (   41,   -60)      22       22           22                      
-  (   42,   -60)      22       22           22                      
+  (   35,   -60)      24       24           24                      scramble +2
+  (   36,   -60)      29       29           29                      BARRIER +5
+  (   37,   -60)      30       30           30                      +1
+  (   38,   -60)      29       29           29                      -1
+  (   39,   -60)      27       27           27                      -2
+  (   40,   -60)      26       26           26                      -1
+  (   41,   -60)      24       24           24                      -2
+  (   42,   -60)      22       22           22                      -2
   (   43,   -60)      22       22           22                      
   (   44,   -60)      22       22           22                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 3, falls 5, worst step 5: 1 barrier, 1 scramble, 0 drop — scramble +2 at (35, -60); BARRIER +5 at (36, -60) | walked end to end
 beside: destroyable dt-shelf at (30, -62)
 
 ## dt-shelf-0 (destroyable) along z
@@ -43,19 +43,19 @@ TRANSECT 25 stations from (32, -72) to (32, -48), every 1
   (   32,   -64)      22       22           22                      
   (   32,   -63)      22       22           22                      
   (   32,   -62)      22       22           22  destroyable dt-shelf  
-  (   32,   -61)      22       22           71  destroyable dt-shelf  
-  (   32,   -60)      22       22           72  destroyable dt-shelf  
-  (   32,   -59)      22       22           71  destroyable dt-shelf  
+  (   32,   -61)      22       22           68  destroyable dt-shelf  
+  (   32,   -60)      22       22           69  destroyable dt-shelf  
+  (   32,   -59)      22       22           68  destroyable dt-shelf  
   (   32,   -58)      22       22           22  destroyable dt-shelf  
   (   32,   -57)      22       22           22                      
   (   32,   -56)      22       22           22                      
   (   32,   -55)      22       22           22                      
   (   32,   -54)      22       22           22                      
-  (   32,   -53)      25       25           25                      BARRIER +3
-  (   32,   -52)      29       29           29                      BARRIER +4
-  (   32,   -51)      32       32           32                      BARRIER +3
-  (   32,   -50)      32       32           32                      
-  (   32,   -49)      32       32           32                      
-  (   32,   -48)      32       32           32                      
-rises 3, falls 0, worst step 4: 3 barrier, 0 scramble, 0 drop — BARRIER +3 at (32, -53); BARRIER +4 at (32, -52); BARRIER +3 at (32, -51) | walked end to end
+  (   32,   -53)      22       22           22                      
+  (   32,   -52)      22       22           22                      
+  (   32,   -51)      22       22           22                      
+  (   32,   -50)      24       24           24                      scramble +2
+  (   32,   -49)      25       25           25                      +1
+  (   32,   -48)      26       26           26                      +1
+rises 3, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (32, -50) | walked end to end
 beside: destroyable dt-shelf at (30, -62)
