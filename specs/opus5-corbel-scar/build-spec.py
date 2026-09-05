@@ -4,12 +4,13 @@
 The board is an ordering experiment before it is a map. Three facts decided every line of it, each
 measured on a probe board before anything here was written:
 
-  1. A SHAPE CAN ONLY RAISE GROUND.  A sketch polygon's `anchor_heights` inside a relief group are
-     ignored outright with no `relief_scope`; with `exclude` they win only where the shape stands
-     ABOVE the solved field and are swallowed where it sits below; with `hold` they are flattened to
-     one level read at the ring's centre. So a sloped shelf cut into a hillside cannot be stated as a
-     shape at all — the ground has to be brought down for it first, and only then does the shape
-     stand on it. That is the order: base, then dig, then place.
+  1. A HELD SHAPE IS A FLAT PAD, WHATEVER IT WAS DRAWN AS.  A sketch polygon's `anchor_heights`
+     describe a full surface over its ring, and the relief path reads that surface at ONE point —
+     the ring's centroid — because `AreaMark` carries a single height. So a shelf laid on a slope
+     comes out level whichever way it is bound, and a sloped shelf cannot be stated as a shape at
+     all. It cuts down as readily as it lifts, which the earlier note here had wrong: `hold` and
+     `exclude` both write their height over whatever the field solved to. What they cannot do is
+     tilt. That is the order: base, then dig, then place.
   2. ONLY A `line` MARK CAN TILT.  A point, an area and a rim state one height; a line states one per
      point. So the pit and any graded terrace are line marks, and an `area` is only ever a flat pad.
   3. A SPIRAL LINE IS A WHOLE QUARRY.  One mark whose radius shrinks as it winds cuts the benches and
