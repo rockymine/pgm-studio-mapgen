@@ -1,0 +1,88 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Harrowgate"
+ },
+ "globals": {
+  "cell": 2,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 22,
+  "observerY": 76
+ },
+ "pieces": [
+  {
+   "id": "fell",
+   "role": "spawn",
+   "rect": [
+    -5,
+    -44,
+    10,
+    6
+   ],
+   "surface": 44
+  },
+  {
+   "id": "west",
+   "role": "piece",
+   "rect": [
+    -27,
+    -38,
+    27,
+    38
+   ],
+   "surface": 22
+  },
+  {
+   "id": "east",
+   "role": "piece",
+   "rect": [
+    0,
+    -38,
+    27,
+    38
+   ],
+   "surface": 22
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "fell",
+    "at": [
+     10,
+     6
+    ],
+    "facing": "back"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "dt-shelf",
+    "piece": "east",
+    "at": [
+     32,
+     16
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "The Harrow"
+   },
+   {
+    "id": "dt-gate",
+    "piece": "west",
+    "at": [
+     28,
+     26
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "The Gate"
+   }
+  ]
+ }
+}

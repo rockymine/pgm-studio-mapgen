@@ -1,0 +1,486 @@
+{
+ "authors": [
+  "Opus 5"
+ ],
+ "created": "2026-09-05",
+ "relief": {
+  "*": {
+   "base": 22,
+   "reach": 0,
+   "step": 1,
+   "landform": "rolling",
+   "grain": {
+    "amplitude": 0.7,
+    "scale": 19,
+    "seed": 11
+   },
+   "marks": [
+    {
+     "id": "moor",
+     "kind": "line",
+     "r": 15,
+     "tread": 6,
+     "points": [
+      [
+       -46,
+       -82
+      ],
+      [
+       0,
+       -86
+      ],
+      [
+       46,
+       -82
+      ]
+     ],
+     "h": [
+      40,
+      44,
+      40
+     ]
+    },
+    {
+     "id": "shelf",
+     "kind": "area",
+     "bevel": 6,
+     "ring": [
+      [
+       10,
+       -70
+      ],
+      [
+       44,
+       -68
+      ],
+      [
+       44,
+       -54
+      ],
+      [
+       10,
+       -56
+      ]
+     ],
+     "h": [
+      36,
+      35,
+      31,
+      32
+     ]
+    },
+    {
+     "id": "scarp",
+     "kind": "scarp",
+     "points": [
+      [
+       -54,
+       -52
+      ],
+      [
+       54,
+       -52
+      ]
+     ],
+     "high": 32,
+     "low": 22,
+     "face": 3,
+     "band": 10
+    },
+    {
+     "id": "stair",
+     "kind": "line",
+     "r": 8,
+     "tread": 3,
+     "batter": 58,
+     "points": [
+      [
+       -40,
+       -62
+      ],
+      [
+       -14,
+       -60
+      ],
+      [
+       -12,
+       -50
+      ],
+      [
+       -38,
+       -48
+      ],
+      [
+       -36,
+       -38
+      ],
+      [
+       -12,
+       -36
+      ]
+     ],
+     "h": [
+      32,
+      30,
+      27,
+      25,
+      23,
+      22
+     ]
+    },
+    {
+     "id": "gatepad",
+     "kind": "area",
+     "bevel": 4,
+     "ring": [
+      [
+       -38,
+       -57
+      ],
+      [
+       -16,
+       -57
+      ],
+      [
+       -16,
+       -41
+      ],
+      [
+       -38,
+       -41
+      ]
+     ],
+     "h": 26
+    },
+    {
+     "id": "field",
+     "kind": "area",
+     "bevel": 5,
+     "ring": [
+      [
+       -52,
+       -48
+      ],
+      [
+       52,
+       -48
+      ],
+      [
+       52,
+       -20
+      ],
+      [
+       -52,
+       -20
+      ]
+     ],
+     "h": 22
+    },
+    {
+     "id": "bank",
+     "kind": "line",
+     "r": 9,
+     "tread": 4,
+     "points": [
+      [
+       -54,
+       -15
+      ],
+      [
+       -18,
+       -12
+      ],
+      [
+       18,
+       -14
+      ],
+      [
+       54,
+       -11
+      ]
+     ],
+     "h": [
+      17,
+      16,
+      16,
+      17
+     ]
+    },
+    {
+     "id": "ghyll",
+     "kind": "line",
+     "r": 6,
+     "tread": 3,
+     "points": [
+      [
+       -54,
+       0
+      ],
+      [
+       -16,
+       -3
+      ],
+      [
+       16,
+       3
+      ],
+      [
+       54,
+       0
+      ]
+     ],
+     "h": [
+      9,
+      8,
+      8,
+      9
+     ]
+    }
+   ],
+   "pushes": [
+    {
+     "id": "knoll",
+     "ring": [
+      [
+       24,
+       -40
+      ],
+      [
+       40,
+       -40
+      ],
+      [
+       40,
+       -28
+      ],
+      [
+       24,
+       -28
+      ]
+     ],
+     "amount": 5,
+     "falloff": 11,
+     "roughness": 0.25,
+     "crown": 2,
+     "seed": 5
+    }
+   ]
+  }
+ },
+ "addShapes": [],
+ "themes": {
+  "harrow": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 5
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 15,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 2,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 2,
+               "data": 0
+              }
+             ]
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 30
+       },
+       {
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 15
+       },
+       {
+        "material": {
+         "kind": "cell",
+         "cellSize": 9,
+         "palette": [
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 4,
+           "data": 0
+          }
+         ]
+        },
+        "thickness": 45
+       }
+      ]
+     }
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "layered",
+       "layers": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         "thickness": 3
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 5
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         "thickness": 4
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 13,
+          "data": 0
+         },
+         "thickness": 1
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 1,
+          "data": 3
+         },
+         "thickness": 2
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+         },
+         "thickness": 2
+        }
+       ]
+      },
+      "width": 6
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   }
+  }
+ },
+ "mapTheme": "harrow",
+ "dressing": {
+  "props": [
+   {
+    "id": "river",
+    "kind": "water",
+    "shape": "channel",
+    "level": 13,
+    "depth": 4,
+    "points": [
+     [
+      -54,
+      0
+     ],
+     [
+      -16,
+      -3
+     ],
+     [
+      16,
+      3
+     ],
+     [
+      54,
+      0
+     ]
+    ],
+    "radius": 11
+   }
+  ]
+ },
+ "themeByHeight": {}
+}
