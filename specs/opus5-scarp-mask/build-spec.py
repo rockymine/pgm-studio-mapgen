@@ -57,8 +57,14 @@ marks.append({"id": "spine", "kind": "line", "r": 7,
 # ── the quarry: ONE mark. The radius shrinks as it winds, so the turns lie beside one another and
 #    the ramp between them is the way down. ──────────────────────────────────────────────────────
 PIT = (-32, -56)
-_pts = spiral(*PIT, r0=21, r1=5, turns=2.5, n=44)
-marks.append({"id": "delph", "kind": "line", "r": 5,
+#    `tread` is what keeps the benches from being cliffs. A line pins every cell to whichever pass is
+#    nearest, so at r 5 with the turns 6.4 apart the bands overlap and the midline between two windings
+#    carries the whole 5.6-block fall — a wall, whatever the drawing says. A tread of 2 pins 4 wide flat
+#    and lofts the rest: a straight ramp between the two treads' edges. The angle is the drawing's, not a
+#    knob — `atan(dropPerTurn / (pitch - 2*tread))` — so the spiral is drawn wide enough to pay for it:
+#    r0 24, 2 turns is a pitch of 9.5 and a fall of 7, which grades at 52 degrees instead of 90.
+_pts = spiral(*PIT, r0=24, r1=5, turns=2.0, n=44)
+marks.append({"id": "delph", "kind": "line", "r": 5, "tread": 2,
               "points": _pts,
               # the last six samples run level, so the sump is a floor rather than the end of a ramp
               # and the monument does not stand two courses over the cell beside it (WX11)

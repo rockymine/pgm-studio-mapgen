@@ -24,6 +24,7 @@ about it."*
 | Does this climb? Is that step walkable? | `GET …/transect?points=x,z;x,z&beside=2&format=text`, or `03-slopes.txt` | eyeballing a heightmap shade |
 | Where does the ground step, over the whole board? | `03-slopes.txt` — `. walked · : scramble · # barrier`, plus a per-face summary | — |
 | How high is the ground along this line? | `tools/loop.py --profile x=<x>,z=<a>..<b>,step=1` | your own arithmetic over the anchors |
+| How **steep** is the ground, and where? | `GET …/incline?format=text` — the glyph is the tens of degrees, and under the grid, how much ground stands in each ten | `03-slopes.txt`, which answers a *step* (can it be walked) and not an *angle* (how should it be finished) |
 | What does a column hold, layer by layer? | `tools/loop.py --column x,z` | reading a world file yourself |
 | May a prop stand here? | `06-claims.txt` (`POST …/sketch/dressing?format=text`), then `tools/loop.py --candidates <propId> x,z …` | placing it and reading the decline |
 | What did the route actually cost? | `GET …/walk?from=&to=&aim=&format=text`, or `04-routes.txt` | assuming the shortest line is the route |
@@ -162,6 +163,38 @@ room a building is seated in, a footprint the symmetry fans. A piece that exists
 on it should have been a shape scope.
 
 **Construction comes before dressing, and a bad construction cannot be dressed out of.**
+
+### The ground was finished by its height instead of its angle
+
+A board painted one material per plan piece, or one per height band, comes out a flat sheet from above however
+much relief is under it: the quarry, the graded terrace and the cut banks are all in the picture and none of
+them is visible. Nothing in the geometry tells a 45° hillside from a meadow — such a surface has no exposed
+riser, so the `wall` bucket never sees it and every other band axis paints the two alike.
+
+**Give the ground theme's surface a `layered` material on the `slope` axis.** A thickness on that axis is a
+span of **degrees**, so one stack finishes the flat, the shoulder and the face of the same hill, and each band
+takes a depth stack of its own so grass stays one course over its soil:
+
+```json
+{"kind": "layered", "axis": "slope", "stack": {"ending": "repeat", "bands": [
+  {"material": <grass over two dirt>,       "thickness": 30},
+  {"material": <coarse dirt over two dirt>, "thickness": 15},
+  {"material": <stone/cobble cells>,        "thickness": 45}]}}
+```
+
+**Read `incline` before choosing where the bands cut.** It answers how much ground stands in each ten degrees,
+which is the only thing that says whether a cut lands where you think it does — and a distribution with a
+*spike* in it is a board reporting its own `step` quantum rather than its shape. `opus5-scarp-mask` is the
+worked example: 68% moor, 8% shoulder, 11% rock on ground that was 86% grass and nothing else.
+
+### A road drawn as a line comes out with cliffs for banks
+
+A `line` mark pins every cell to whichever pass of the line is nearest, so a serpentine, a switchback or a
+spiral haul road walls itself: the cells either side of the midline between two passes take heights a whole
+winding apart. State a **`tread`** narrower than `r` and the rest of the band lofts — a straight ramp between
+the two treads' edges. The angle is the drawing's, not a knob: `atan(drop / (pitch − 2·tread))`, and for a
+spiral the pitch is `(r0 − r1) / turns`. Work it out before building; a pitch under `2·tread` cannot grade at
+all, whatever is stated.
 
 ### A layer's paint reaches further down than the layer does
 

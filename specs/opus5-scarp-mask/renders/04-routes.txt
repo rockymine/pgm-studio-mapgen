@@ -1,5 +1,5 @@
 ## spawn-red -> dt-pit-0
-ROUTE (0, -90) -> (-32, -56) aim travel: 47 blocks, 0 placed, 2 drop(s), worst drop 13
+ROUTE (0, -90) -> (-32, -56) aim travel: 47 blocks, 0 placed, 1 drop(s), worst drop 14
   place            y   step
   (0, -90)          34
   (0, -89)          34
@@ -20,23 +20,23 @@ ROUTE (0, -90) -> (-32, -56) aim travel: 47 blocks, 0 placed, 2 drop(s), worst d
   (-14, -74)        33
   (-15, -73)        33
   (-16, -72)        33
-  (-17, -71)        20   drop -13
-  (-18, -70)        20
-  (-19, -69)        20
-  (-20, -68)        20
-  (-21, -67)        20
-  (-22, -66)        20
-  (-23, -65)        13   drop -7
-  (-24, -64)        13
-  (-25, -63)        13
-  (-26, -62)        13
-  (-27, -61)        13
-  (-28, -60)        13
+  (-17, -71)        33
+  (-18, -70)        19   drop -14
+  (-19, -69)        19
+  (-20, -68)        19
+  (-21, -67)        18
+  (-22, -66)        17
+  (-23, -65)        15
+  (-24, -64)        14
+  (-25, -63)        12
+  (-26, -62)        12
+  (-27, -61)        12
+  (-28, -60)        12
   (-29, -59)        12
   (-30, -58)        12
   (-31, -57)        12
   (-32, -56)        13
-rises 0, falls 2, worst step 13: drop -13 at (-17, -71); drop -7 at (-23, -65)
+rises 0, falls 1, worst step 14: drop -14 at (-18, -70)
 beside: destroyable dt-pit at (-32, -56) d0, spawn spawn-1 at (0, -90) d0
 
 ## spawn-red -> dt-shelf-0
@@ -79,7 +79,7 @@ rises 0, falls 1, worst step 8: drop -8 at (6, -78)
 beside: destroyable dt-shelf at (24, -60) d0, spawn spawn-1 at (0, -90) d0
 
 ## spawn-red -> dt-pit-1
-ROUTE (0, -90) -> (31, 55) aim travel: 176 blocks, 0 placed, 2 drop(s), worst drop 7
+ROUTE (0, -90) -> (31, 55) aim travel: 176 blocks, 0 placed, 1 drop(s), worst drop 7
   place            y   step
   (0, -90)          34
   (0, -89)          34
@@ -205,29 +205,29 @@ ROUTE (0, -90) -> (31, 55) aim travel: 176 blocks, 0 placed, 2 drop(s), worst dr
   (7, 31)           16
   (8, 32)           16
   (9, 33)           16
-  (10, 34)          17
+  (10, 34)          16
   (11, 35)          17
   (12, 36)          17
   (13, 37)          17
-  (14, 38)          18
-  (15, 39)          18
-  (16, 40)          18
-  (17, 41)          18
-  (18, 42)          18
-  (19, 43)          18
-  (20, 44)          18
-  (21, 45)          18
-  (22, 46)          18
-  (23, 47)          12   drop -6
-  (24, 48)          12
-  (25, 49)          12
+  (14, 38)          17
+  (15, 39)          17
+  (16, 40)          17
+  (17, 41)          17
+  (18, 42)          17
+  (19, 43)          17
+  (20, 44)          16
+  (21, 45)          16
+  (22, 46)          16
+  (23, 47)          15
+  (24, 48)          14
+  (25, 49)          13
   (26, 50)          12
   (27, 51)          12
   (28, 52)          12
   (29, 53)          12
   (30, 54)          12
   (31, 55)          13
-rises 0, falls 2, worst step 7: drop -7 at (0, -75); drop -6 at (23, 47)
+rises 0, falls 1, worst step 7: drop -7 at (0, -75)
 beside: destroyable dt-pit#1 at (29, 53) d0, spawn spawn-1 at (0, -90) d0, water river at (0, -12) d0, water river#1 at (0, -9) d0
 
 ## spawn-red -> dt-shelf-1
@@ -385,7 +385,7 @@ rises 0, falls 2, worst step 7: drop -7 at (0, -75); drop -4 at (-14, 6)
 beside: destroyable dt-shelf#1 at (-27, 57) d0, spawn spawn-1 at (0, -90) d0, water river at (-14, 6) d0, water river#1 at (-14, 7) d0
 
 ## spawn-blue -> dt-pit-0
-ROUTE (0, 90) -> (-32, -56) aim travel: 177 blocks, 0 placed, 2 drop(s), worst drop 7
+ROUTE (0, 90) -> (-32, -56) aim travel: 177 blocks, 0 placed, 1 drop(s), worst drop 7
   place            y   step
   (0, 90)           34
   (0, 89)           34
@@ -512,29 +512,29 @@ ROUTE (0, 90) -> (-32, -56) aim travel: 177 blocks, 0 placed, 2 drop(s), worst d
   (-8, -32)         16
   (-9, -33)         16
   (-10, -34)        16
-  (-11, -35)        17
+  (-11, -35)        16
   (-12, -36)        17
   (-13, -37)        17
   (-14, -38)        17
-  (-15, -39)        18
-  (-16, -40)        18
-  (-17, -41)        18
-  (-18, -42)        18
-  (-19, -43)        18
-  (-20, -44)        18
-  (-21, -45)        18
-  (-22, -46)        18
-  (-23, -47)        18
-  (-24, -48)        12   drop -6
-  (-25, -49)        12
-  (-26, -50)        12
+  (-15, -39)        17
+  (-16, -40)        17
+  (-17, -41)        17
+  (-18, -42)        17
+  (-19, -43)        17
+  (-20, -44)        17
+  (-21, -45)        16
+  (-22, -46)        16
+  (-23, -47)        16
+  (-24, -48)        15
+  (-25, -49)        14
+  (-26, -50)        13
   (-27, -51)        12
   (-28, -52)        12
   (-29, -53)        12
   (-30, -54)        12
   (-31, -55)        12
   (-32, -56)        13
-rises 0, falls 2, worst step 7: drop -7 at (0, 73); drop -6 at (-24, -48)
+rises 0, falls 1, worst step 7: drop -7 at (0, 73)
 beside: destroyable dt-pit at (-32, -56) d0, spawn spawn-1#1 at (0, 87) d0, water river at (0, -12) d0, water river#1 at (0, -9) d0
 
 ## spawn-blue -> dt-shelf-0
@@ -693,7 +693,7 @@ rises 0, falls 2, worst step 7: drop -7 at (0, 73); drop -4 at (13, -7)
 beside: destroyable dt-shelf at (24, -56) d0, spawn spawn-1#1 at (0, 87) d0, water river at (9, 13) d0, water river#1 at (11, -5) d0
 
 ## spawn-blue -> dt-pit-1
-ROUTE (0, 90) -> (31, 55) aim travel: 48 blocks, 0 placed, 2 drop(s), worst drop 13
+ROUTE (0, 90) -> (31, 55) aim travel: 48 blocks, 0 placed, 1 drop(s), worst drop 14
   place            y   step
   (0, 90)           34
   (0, 89)           34
@@ -715,23 +715,23 @@ ROUTE (0, 90) -> (31, 55) aim travel: 48 blocks, 0 placed, 2 drop(s), worst drop
   (13, 73)          33
   (14, 72)          33
   (15, 71)          33
-  (16, 70)          20   drop -13
-  (17, 69)          20
-  (18, 68)          20
-  (19, 67)          20
-  (20, 66)          20
-  (21, 65)          20
-  (22, 64)          13   drop -7
-  (23, 63)          13
-  (24, 62)          13
-  (25, 61)          13
-  (26, 60)          13
-  (27, 59)          13
+  (16, 70)          33
+  (17, 69)          19   drop -14
+  (18, 68)          19
+  (19, 67)          19
+  (20, 66)          18
+  (21, 65)          17
+  (22, 64)          15
+  (23, 63)          14
+  (24, 62)          12
+  (25, 61)          12
+  (26, 60)          12
+  (27, 59)          12
   (28, 58)          12
   (29, 57)          12
   (30, 56)          12
   (31, 55)          13
-rises 0, falls 2, worst step 13: drop -13 at (16, 70); drop -7 at (22, 64)
+rises 0, falls 1, worst step 14: drop -14 at (17, 69)
 beside: destroyable dt-pit#1 at (29, 57) d0, spawn spawn-1#1 at (0, 87) d0
 
 ## spawn-blue -> dt-shelf-1

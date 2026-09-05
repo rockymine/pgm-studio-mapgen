@@ -29,5 +29,10 @@ Three things that are true before the skill loads:
   a scratch directory. Those reads exist: `column`, `transect`, `slopes`, `walk`, `sketch/dressing`,
   all with `?format=text`. The one exception is a world that is not a stored map (a community map, a
   hand-finished world) — then `tools/anvil.py` and its four siblings.
+- **Finish the ground by its angle, not by its height.** A theme hung on plan pieces or on height bands
+  paints a board flat from above however much relief is under it. The `slope` band axis is what tells a
+  45° hillside from a meadow, `GET …/incline?format=text` is what says where the bands should cut, and the
+  `pgm-board` skill carries both with a worked stack. A board finished any other way is the look every
+  report here has complained about.
 - **Read the text before the pictures.** `tools/drive.py` writes ~25 `?format=text` reads beside every
   render. A picture answers *whether* something came out; a number answers *whether it is right*.
