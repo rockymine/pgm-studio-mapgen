@@ -681,111 +681,6 @@
        16,
        16
       ]
-     },
-     {
-      "id": "stair-west",
-      "type": "polygon",
-      "operation": "add",
-      "floor": 0,
-      "base_height": 14,
-      "height_mode": "level",
-      "skirt": 0,
-      "relief_scope": "exclude",
-      "theme": "stair",
-      "vertices": [
-       [
-        -30,
-        48
-       ],
-       [
-        -20,
-        48
-       ],
-       [
-        -20,
-        61
-       ],
-       [
-        -30,
-        61
-       ]
-      ],
-      "anchor_heights": [
-       9,
-       9,
-       14,
-       14
-      ]
-     },
-     {
-      "id": "stair-mid",
-      "type": "polygon",
-      "operation": "add",
-      "floor": 0,
-      "base_height": 14,
-      "height_mode": "level",
-      "skirt": 0,
-      "relief_scope": "exclude",
-      "theme": "stair",
-      "vertices": [
-       [
-        -8,
-        48
-       ],
-       [
-        2,
-        48
-       ],
-       [
-        2,
-        61
-       ],
-       [
-        -8,
-        61
-       ]
-      ],
-      "anchor_heights": [
-       9,
-       9,
-       14,
-       14
-      ]
-     },
-     {
-      "id": "stair-east",
-      "type": "polygon",
-      "operation": "add",
-      "floor": 0,
-      "base_height": 14,
-      "height_mode": "level",
-      "skirt": 0,
-      "relief_scope": "exclude",
-      "theme": "stair",
-      "vertices": [
-       [
-        22,
-        38
-       ],
-       [
-        32,
-        38
-       ],
-       [
-        32,
-        51
-       ],
-       [
-        22,
-        51
-       ]
-      ],
-      "anchor_heights": [
-       9,
-       9,
-       14,
-       14
-      ]
      }
     ],
     "groups": [
@@ -801,10 +696,267 @@
        "backshore-18",
        "pier-pad-10",
        "ramp-spawn",
-       "ramp-bluff",
-       "stair-west",
-       "stair-mid",
-       "stair-east"
+       "ramp-bluff"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "steps",
+   "name": "Beach steps",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "steps",
+   "layout": {
+    "shapes": [
+     {
+      "id": "step-sw-0",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -30,
+      "min_z": 50,
+      "max_x": -20,
+      "max_z": 52,
+      "floor": 9,
+      "base_height": 1,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "stair"
+     },
+     {
+      "id": "step-sw-1",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -30,
+      "min_z": 52,
+      "max_x": -20,
+      "max_z": 54,
+      "floor": 9,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "stair"
+     },
+     {
+      "id": "step-sw-2",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -30,
+      "min_z": 54,
+      "max_x": -20,
+      "max_z": 56,
+      "floor": 9,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "stair"
+     },
+     {
+      "id": "step-sw-3",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -30,
+      "min_z": 56,
+      "max_x": -20,
+      "max_z": 58,
+      "floor": 9,
+      "base_height": 4,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "stair"
+     },
+     {
+      "id": "step-sw-4",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -30,
+      "min_z": 58,
+      "max_x": -20,
+      "max_z": 60,
+      "floor": 9,
+      "base_height": 5,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "stair"
+     },
+     {
+      "id": "step-sm-0",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "min_z": 50,
+      "max_x": 2,
+      "max_z": 52,
+      "floor": 9,
+      "base_height": 1,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "stair"
+     },
+     {
+      "id": "step-sm-1",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "min_z": 52,
+      "max_x": 2,
+      "max_z": 54,
+      "floor": 9,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "stair"
+     },
+     {
+      "id": "step-sm-2",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "min_z": 54,
+      "max_x": 2,
+      "max_z": 56,
+      "floor": 9,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "stair"
+     },
+     {
+      "id": "step-sm-3",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "min_z": 56,
+      "max_x": 2,
+      "max_z": 58,
+      "floor": 9,
+      "base_height": 4,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "stair"
+     },
+     {
+      "id": "step-sm-4",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "min_z": 58,
+      "max_x": 2,
+      "max_z": 60,
+      "floor": 9,
+      "base_height": 5,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "stair"
+     },
+     {
+      "id": "step-se-0",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 22,
+      "min_z": 40,
+      "max_x": 32,
+      "max_z": 42,
+      "floor": 9,
+      "base_height": 1,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "stair"
+     },
+     {
+      "id": "step-se-1",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 22,
+      "min_z": 42,
+      "max_x": 32,
+      "max_z": 44,
+      "floor": 9,
+      "base_height": 2,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "stair"
+     },
+     {
+      "id": "step-se-2",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 22,
+      "min_z": 44,
+      "max_x": 32,
+      "max_z": 46,
+      "floor": 9,
+      "base_height": 3,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "stair"
+     },
+     {
+      "id": "step-se-3",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 22,
+      "min_z": 46,
+      "max_x": 32,
+      "max_z": 48,
+      "floor": 9,
+      "base_height": 4,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "stair"
+     },
+     {
+      "id": "step-se-4",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 22,
+      "min_z": 48,
+      "max_x": 32,
+      "max_z": 50,
+      "floor": 9,
+      "base_height": 5,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "theme": "stair"
+     }
+    ],
+    "groups": [
+     {
+      "id": "steps-g",
+      "name": "steps",
+      "mirrors": true,
+      "shapeIds": [
+       "step-sw-0",
+       "step-sw-1",
+       "step-sw-2",
+       "step-sw-3",
+       "step-sw-4",
+       "step-sm-0",
+       "step-sm-1",
+       "step-sm-2",
+       "step-sm-3",
+       "step-sm-4",
+       "step-se-0",
+       "step-se-1",
+       "step-se-2",
+       "step-se-3",
+       "step-se-4"
       ]
      }
     ]
@@ -1240,13 +1392,13 @@
     "relative": false,
     "value": 1
    },
-   "rimEdges": "drop",
+   "rimEdges": "void",
    "wallOnTerrainFaces": true,
    "rim": {
     "material": {
      "kind": "solid",
-     "id": 17,
-     "data": 2
+     "id": 43,
+     "data": 1
     },
     "depth": 1,
     "enabled": true
@@ -1261,15 +1413,51 @@
     "enabled": true
    },
    "wall": {
-    "kind": "solid",
-    "id": 5,
-    "data": 2
+    "kind": "noise",
+    "seed": 41,
+    "scale": 4,
+    "octaves": 2,
+    "rise": 3,
+    "stops": [
+     {
+      "kind": "solid",
+      "id": 1
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 6
+     }
+    ]
    },
    "wallEnabled": true,
    "fill": {
-    "kind": "solid",
-    "id": 17,
-    "data": 2
+    "kind": "noise",
+    "seed": 41,
+    "scale": 4,
+    "octaves": 2,
+    "rise": 3,
+    "stops": [
+     {
+      "kind": "solid",
+      "id": 1
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 6
+     }
+    ]
    }
   },
   "stair": {

@@ -18,10 +18,11 @@ then opens a third way over that neither team's legs cover.
 Behind the beach the **grassland stands on a five-block scarp**, and the line between the two grounds is the
 green's own face — the backshore piece that used to sit between them is beach now, at the sand's height and
 in the sand's theme, so the two are one shape. **The beach is flat**, and the drop is a drop. Three **stone
-ramps** stand on the sand against the green's face, ten blocks wide at about 3:1 — two on the village's
-fifty-block face and one on the dune's — and their feet are anchored at the sand's own height, so a player
-walks off a ramp onto the beach without a step. Everywhere else the scarp is a barrier, which is the point
-of it.
+flights** stand on the sand against the green's face, ten blocks wide — two on the village's fifty-block
+face and one on the dune's. Each is five treads of **two blocks deep and one block up**, from the sand to
+the green's own top, and each abuts that face rather than overriding it: the flights are their own **made
+layer**, so nothing they do reaches the ground they stand on. Everywhere else the scarp is a barrier, which
+is the point of it.
 
 ## The numbers
 
@@ -62,6 +63,13 @@ of it.
 - **Ramps as shapes, not as relief.** Every tier above the strand is `relief_scope: exclude`, so a relief
   mark on one of its seams does nothing; the three Δ2 seams are tilted quads at 4:1 with `height_mode:
   level` and a thickness per vertex. `03-slopes.txt` reports no barrier anywhere on the board.
+- **The isolated wool's crossing docks on a leg too.** The village's west end is cut back a cell and a
+  ten-wide leg put back in front of it, so the pier's build zone attaches to a face that sticks out rather
+  than to flat coast — the same reading the frontline legs give, at the smallest a piece can be, which is one
+  cell. The strait stays 15.
+- **The jetty is stone with a timber deck.** Its body was planks and logs and read as a different map from
+  everything around it; the wall and the fill are the board's own stone-and-andesite noise now, and only the
+  deck course is birch.
 - **The beach is one rectangle and nothing else.** A five-block strip the width of the board and the beach
   behind it were the same shape stated twice, so the strip is gone; the two Bézier flank shapes that bulged
   the coast are gone too, and the legs are widened to twenty and run straight out of the beach's outer
