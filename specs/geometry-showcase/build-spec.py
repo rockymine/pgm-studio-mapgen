@@ -58,16 +58,30 @@ half.append(flight("gs-r-ramp-1to2", -96, -92, -72, -84, "x", FIELD + 1, SHELF,
 half.append(dict(id="gs-r-plateau-w", type="polygon", operation="add", floor=0,
                  base_height=PLATEAU + 1, theme="gs-plateau",
                  vertices=[[-40, -80], [10, -80], [10, -36], [-2, -36],
-                           [-2, -54], [-14, -54], [-14, -36], [-40, -36]]))
-half.append(rect("gs-r-plateau-e", 22, -80, 40, -36, 0, PLATEAU + 1, theme="gs-plateau"))
+                           [-2, -57], [-14, -57], [-14, -36], [-40, -36]]))
+# The east half carries a lobe out to x 50 at its southern end. That lobe is the flank ramp's
+# landing: a flight that tops out level with the ground beside it for one cell has not arrived
+# anywhere, because the cell in front of it is still the drop it climbed.
+half.append(dict(id="gs-r-plateau-e", type="polygon", operation="add", floor=0,
+                 base_height=PLATEAU + 1, theme="gs-plateau",
+                 vertices=[[22, -80], [50, -80], [50, -68], [40, -68],
+                           [40, -36], [22, -36]]))
 
 # ── the switchback, inside the notch: up +z... in, turn 180, up -z... out, twelve cells each ──
-half.append(flight("gs-r-sb-up", -14, -48, -8, -36, "z", SHELF, FIELD + 1,
-                   keepClear=True, theme="gs-stair"))
-half.append(rect("gs-r-sb-landing", -14, -54, -2, -48, 0, SHELF + 1,
+# Four pieces, not three. A flight needs a floor at both ends: the apron is where a player
+# steps off the field and squares up, the head is where they arrive and turn onto the plateau —
+# which is open along the head's whole east side, rather than for the one cell a bare last tread
+# would give.
+half.append(rect("gs-r-sb-apron", -14, -41, -8, -36, 0, FIELD + 2,
                  keepClear=True, theme="gs-stair"))
-half.append(flight("gs-r-sb-out", -8, -48, -2, -36, "z", SHELF + 1, PLATEAU,
+half.append(flight("gs-r-sb-up", -14, -53, -8, -41, "z", SHELF, FIELD + 1,
                    keepClear=True, theme="gs-stair"))
+half.append(rect("gs-r-sb-landing", -14, -57, -2, -53, 0, SHELF + 1,
+                 keepClear=True, theme="gs-stair"))
+half.append(flight("gs-r-sb-out", -8, -53, -2, -41, "z", SHELF + 1, PLATEAU,
+                   keepClear=True, theme="gs-stair"))
+half.append(rect("gs-r-sb-head", -8, -41, -2, -36, 0, PLATEAU + 1,
+                 keepClear=True, theme="gs-stair"))
 
 # ── the south face: the same 24 courses as the switchback, taken straight. Two flights and a
 #    landing between them, and it is the measurement the switchback exists to be read against —
@@ -80,7 +94,7 @@ half.append(flight("gs-r-south-upper", -8, -92, 8, -80, "z", SHELF + 1, PLATEAU,
                    keepClear=True, theme="gs-stair"))
 
 # ── the long way up: a graded ramp along the plateau's east flank, 44 cells for 23 courses ────
-half.append(flight("gs-r-ramp-flank", 40, -80, 50, -36, "z", PLATEAU, FIELD + 1,
+half.append(flight("gs-r-ramp-flank", 40, -68, 50, -36, "z", PLATEAU, FIELD + 1,
                    keepClear=True, theme="gs-stair"))
 
 # ── the third way up: a polyline, splined, its heights read along the arc it draws ────────────
@@ -106,7 +120,7 @@ vault = [rect("gs-r-vault", 10, -80, 22, -36, 0, 18, theme="gs-plateau")]
 #    corridor at x >= 10, since a disc reaching over it would fill the tunnel to bedrock. ──────
 for n, (r, h) in enumerate(((9, 1), (6, 2), (3, 3))):
     half.append(dict(id=f"gs-r-podium-{n}", type="circle", operation="add",
-                     center_x=0, center_z=-64, radius=r, floor=0,
+                     center_x=0, center_z=-69, radius=r, floor=0,
                      base_height=PLATEAU + 1 + h,
                      keepClear=True, theme="gs-podium"))
 
@@ -131,6 +145,11 @@ for n in range(9):
 half += spiral_arcs("gs-r-spiral", 74, -38, 20, 4, turns=2.5,
                     t_start=FIELD + 1, t_end=FIELD + 19, band=4, start_deg=90,
                     keepClear=True, theme="gs-spiral")
+# The eye. A coil that shrinks to nothing leaves a shaft down the middle at field level, and the
+# last thing the ramp does is walk into it. The cap stands at the height the last turn arrives at.
+half.append(dict(id="gs-r-spiral-cap", type="circle", operation="add",
+                 center_x=74, center_z=-38, radius=6, floor=0, base_height=FIELD + 20,
+                 keepClear=True, theme="gs-spiral"))
 
 # ── the bridge: a graded bank on each shore and a deck hung over the void between them ────────
 half.append(flight("gs-r-br-bank", -8, -34, 8, -12, "z", FIELD + 1, SHELF,
@@ -201,10 +220,10 @@ intent = {
     "maxPlayers": 16,
     "spawns": [
         {"team": "red", "point": {"x": 0, "y": 8, "z": -125}, "yaw": 0,
-         "protection": [{"minX": -40, "minZ": -136, "maxX": 40, "maxZ": -116}],
+         "protection": [{"minX": -9, "minZ": -134, "maxX": 9, "maxZ": -116}],
          "iron": []},
         {"team": "blue", "point": {"x": 0, "y": 8, "z": 125}, "yaw": 180,
-         "protection": [{"minX": -40, "minZ": 116, "maxX": 40, "maxZ": 136}],
+         "protection": [{"minX": -9, "minZ": 116, "maxX": 9, "maxZ": 134}],
          "iron": []},
     ],
     "observer": {"point": {"x": 0, "y": 48, "z": 0}, "yaw": 0},
@@ -212,9 +231,9 @@ intent = {
     "waterLanes": None, "wools": [],
     "destroyables": [
         {"owner": "red", "name": "Red Gnomon", "style": "cube-3", "materials": "ender stone",
-         "anchor": {"x": 0, "y": MONUMENT_Y, "z": -64}, "float": 4, "box": None},
+         "anchor": {"x": 0, "y": MONUMENT_Y, "z": -69}, "float": 4, "box": None},
         {"owner": "blue", "name": "Blue Gnomon", "style": "cube-3", "materials": "ender stone",
-         "anchor": {"x": 0, "y": MONUMENT_Y, "z": 64}, "float": 4, "box": None},
+         "anchor": {"x": 0, "y": MONUMENT_Y, "z": 69}, "float": 4, "box": None},
     ],
     "cores": None,
     "meta": {"name": "Geometry Showcase", "created": "2026-09-05",
@@ -238,7 +257,7 @@ plan = {
     "zones": [],
     "placements": {
         "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [10, 5], "facing": "back"}],
-        "destroyables": [{"id": "destroyable-1", "piece": "plateau", "at": [40, 16],
+        "destroyables": [{"id": "destroyable-1", "piece": "plateau", "at": [40, 11],
                           "style": "cube-3", "materials": "ender stone", "float": 4,
                           "name": "Gnomon"}],
     },

@@ -23,9 +23,9 @@
    "yaw": 0,
    "protection": [
     {
-     "minX": -40,
-     "minZ": -136,
-     "maxX": 40,
+     "minX": -9,
+     "minZ": -134,
+     "maxX": 9,
      "maxZ": -116
     }
    ],
@@ -41,10 +41,10 @@
    "yaw": 180,
    "protection": [
     {
-     "minX": -40,
+     "minX": -9,
      "minZ": 116,
-     "maxX": 40,
-     "maxZ": 136
+     "maxX": 9,
+     "maxZ": 134
     }
    ],
    "iron": []
@@ -74,7 +74,7 @@
    "anchor": {
     "x": 0,
     "y": 36,
-    "z": -64
+    "z": -69
    },
    "float": 4,
    "box": null
@@ -87,7 +87,7 @@
    "anchor": {
     "x": 0,
     "y": 36,
-    "z": 64
+    "z": 69
    },
    "float": 4,
    "box": null

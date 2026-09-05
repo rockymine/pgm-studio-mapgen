@@ -72,10 +72,10 @@
         <point id="blue-spawn-point">0,8,125</point>
         <point id="red-spawn-point">0,8,-125</point>
         <point id="observer-spawn">0,49,0</point>
-        <rectangle id="blue-spawn" min="-40,116" max="40,136"/>
-        <rectangle id="red-spawn" min="-40,-136" max="40,-116"/>
-        <cuboid id="red-gnomon-region" min="-1,39,-65" max="2,42,-62"/>
-        <cuboid id="blue-gnomon-region" min="-1,39,63" max="2,42,66"/>
+        <rectangle id="blue-spawn" min="-9,116" max="9,134"/>
+        <rectangle id="red-spawn" min="-9,-134" max="9,-116"/>
+        <cuboid id="red-gnomon-region" min="-1,39,-70" max="2,42,-67"/>
+        <cuboid id="blue-gnomon-region" min="-1,39,68" max="2,42,71"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
