@@ -1,0 +1,4444 @@
+{
+ "setup": {
+  "mirror_mode": "rot_180",
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "bbox": {
+   "min_x": -100,
+   "max_x": 100,
+   "min_z": -136,
+   "max_z": 136
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "gs-r-plate",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -100,
+      "min_z": -136,
+      "max_x": 100,
+      "max_z": -12,
+      "floor": 0,
+      "base_height": 8,
+      "theme": "gs-field"
+     },
+     {
+      "id": "gs-r-flank",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -100,
+      "min_z": -12,
+      "max_x": -56,
+      "max_z": 12,
+      "floor": 0,
+      "base_height": 8,
+      "theme": "gs-field"
+     },
+     {
+      "id": "gs-r-wall-w",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -100,
+      "min_z": -112,
+      "max_x": -8,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 14,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-w-100",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -100,
+      "min_z": -112,
+      "max_x": -97,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-w-94",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -94,
+      "min_z": -112,
+      "max_x": -91,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-w-88",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -88,
+      "min_z": -112,
+      "max_x": -85,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-w-82",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -82,
+      "min_z": -112,
+      "max_x": -79,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-w-76",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -76,
+      "min_z": -112,
+      "max_x": -73,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-w-70",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -70,
+      "min_z": -112,
+      "max_x": -67,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-w-64",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -64,
+      "min_z": -112,
+      "max_x": -61,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-w-58",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -58,
+      "min_z": -112,
+      "max_x": -55,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-w-52",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -52,
+      "min_z": -112,
+      "max_x": -49,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-w-46",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -46,
+      "min_z": -112,
+      "max_x": -43,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-w-40",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -40,
+      "min_z": -112,
+      "max_x": -37,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-w-34",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -34,
+      "min_z": -112,
+      "max_x": -31,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-w-28",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -28,
+      "min_z": -112,
+      "max_x": -25,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-w-22",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -22,
+      "min_z": -112,
+      "max_x": -19,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-w-16",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -16,
+      "min_z": -112,
+      "max_x": -13,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-wall-e",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 8,
+      "min_z": -112,
+      "max_x": 100,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 14,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-e8",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 8,
+      "min_z": -112,
+      "max_x": 11,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-e14",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 14,
+      "min_z": -112,
+      "max_x": 17,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-e20",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 20,
+      "min_z": -112,
+      "max_x": 23,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-e26",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 26,
+      "min_z": -112,
+      "max_x": 29,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-e32",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 32,
+      "min_z": -112,
+      "max_x": 35,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-e38",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 38,
+      "min_z": -112,
+      "max_x": 41,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-e44",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 44,
+      "min_z": -112,
+      "max_x": 47,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-e50",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 50,
+      "min_z": -112,
+      "max_x": 53,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-e56",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 56,
+      "min_z": -112,
+      "max_x": 59,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-e62",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 62,
+      "min_z": -112,
+      "max_x": 65,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-e68",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 68,
+      "min_z": -112,
+      "max_x": 71,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-e74",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 74,
+      "min_z": -112,
+      "max_x": 77,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-e80",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 80,
+      "min_z": -112,
+      "max_x": 83,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-e86",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 86,
+      "min_z": -112,
+      "max_x": 89,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-merlon-e92",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 92,
+      "min_z": -112,
+      "max_x": 95,
+      "max_z": -109,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-pier-w",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -11,
+      "min_z": -114,
+      "max_x": -8,
+      "max_z": -107,
+      "floor": 0,
+      "base_height": 16,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-pier-e",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 8,
+      "min_z": -114,
+      "max_x": 11,
+      "max_z": -107,
+      "floor": 0,
+      "base_height": 16,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-wall-stair",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -26,
+        -109
+       ],
+       [
+        -20,
+        -109
+       ],
+       [
+        -20,
+        -103
+       ],
+       [
+        -26,
+        -103
+       ]
+      ],
+      "anchor_heights": [
+       14.52,
+       14.52,
+       8.52,
+       8.52
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-r-shelf",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -72,
+      "min_z": -96,
+      "max_x": -48,
+      "max_z": -78,
+      "floor": 0,
+      "base_height": 20,
+      "theme": "gs-shelf"
+     },
+     {
+      "id": "gs-r-stair-1to1",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -66,
+        -108
+       ],
+       [
+        -58,
+        -108
+       ],
+       [
+        -58,
+        -96
+       ],
+       [
+        -66,
+        -96
+       ]
+      ],
+      "anchor_heights": [
+       8.52,
+       8.52,
+       20.52,
+       20.52
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-r-ramp-1to2",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -96,
+        -92
+       ],
+       [
+        -72,
+        -92
+       ],
+       [
+        -72,
+        -84
+       ],
+       [
+        -96,
+        -84
+       ]
+      ],
+      "anchor_heights": [
+       8.78086956521739,
+       20.25913043478261,
+       20.25913043478261,
+       8.78086956521739
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-r-plateau-w",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 32,
+      "theme": "gs-plateau",
+      "vertices": [
+       [
+        -40,
+        -80
+       ],
+       [
+        10,
+        -80
+       ],
+       [
+        10,
+        -36
+       ],
+       [
+        -2,
+        -36
+       ],
+       [
+        -2,
+        -54
+       ],
+       [
+        -14,
+        -54
+       ],
+       [
+        -14,
+        -36
+       ],
+       [
+        -40,
+        -36
+       ]
+      ]
+     },
+     {
+      "id": "gs-r-plateau-e",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 22,
+      "min_z": -80,
+      "max_x": 40,
+      "max_z": -36,
+      "floor": 0,
+      "base_height": 32,
+      "theme": "gs-plateau"
+     },
+     {
+      "id": "gs-r-sb-up",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -14,
+        -48
+       ],
+       [
+        -8,
+        -48
+       ],
+       [
+        -8,
+        -36
+       ],
+       [
+        -14,
+        -36
+       ]
+      ],
+      "anchor_heights": [
+       20.52,
+       20.52,
+       8.52,
+       8.52
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-r-sb-landing",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -14,
+      "min_z": -54,
+      "max_x": -2,
+      "max_z": -48,
+      "floor": 0,
+      "base_height": 20,
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-r-sb-out",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -8,
+        -48
+       ],
+       [
+        -2,
+        -48
+       ],
+       [
+        -2,
+        -36
+       ],
+       [
+        -8,
+        -36
+       ]
+      ],
+      "anchor_heights": [
+       20.52,
+       20.52,
+       32.519999999999996,
+       32.519999999999996
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-r-south-lower",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -8,
+        -108
+       ],
+       [
+        8,
+        -108
+       ],
+       [
+        8,
+        -97
+       ],
+       [
+        -8,
+        -97
+       ]
+      ],
+      "anchor_heights": [
+       8.52,
+       8.52,
+       19.52,
+       19.52
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-r-south-landing",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -12,
+      "min_z": -97,
+      "max_x": 12,
+      "max_z": -92,
+      "floor": 0,
+      "base_height": 20,
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-r-south-upper",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -8,
+        -92
+       ],
+       [
+        8,
+        -92
+       ],
+       [
+        8,
+        -80
+       ],
+       [
+        -8,
+        -80
+       ]
+      ],
+      "anchor_heights": [
+       20.52,
+       20.52,
+       32.519999999999996,
+       32.519999999999996
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-r-ramp-flank",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        40,
+        -80
+       ],
+       [
+        50,
+        -80
+       ],
+       [
+        50,
+        -36
+       ],
+       [
+        40,
+        -36
+       ]
+      ],
+      "anchor_heights": [
+       32.28744186046512,
+       32.28744186046512,
+       8.75255813953489,
+       8.75255813953489
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-r-serpentine",
+      "type": "polyline",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -48,
+        -30
+       ],
+       [
+        -60,
+        -44
+       ],
+       [
+        -52,
+        -62
+       ],
+       [
+        -42,
+        -73
+       ],
+       [
+        -36,
+        -78
+       ]
+      ],
+      "anchor_heights": [
+       9.0,
+       17.0014349960071,
+       25.549036870593454,
+       32.0,
+       32.0
+      ],
+      "radius": 4,
+      "stroke_edge": "solid",
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-r-podium-0",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 0,
+      "center_z": -64,
+      "radius": 9,
+      "floor": 0,
+      "base_height": 33,
+      "keepClear": true,
+      "theme": "gs-podium"
+     },
+     {
+      "id": "gs-r-podium-1",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 0,
+      "center_z": -64,
+      "radius": 6,
+      "floor": 0,
+      "base_height": 34,
+      "keepClear": true,
+      "theme": "gs-podium"
+     },
+     {
+      "id": "gs-r-podium-2",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 0,
+      "center_z": -64,
+      "radius": 3,
+      "floor": 0,
+      "base_height": 35,
+      "keepClear": true,
+      "theme": "gs-podium"
+     },
+     {
+      "id": "gs-r-drum-0",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        35.0,
+        -23.0
+       ],
+       [
+        34.951,
+        -22.059
+       ],
+       [
+        34.803,
+        -21.129
+       ],
+       [
+        34.56,
+        -20.219
+       ],
+       [
+        34.222,
+        -19.339
+       ],
+       [
+        33.794,
+        -18.5
+       ],
+       [
+        31.196,
+        -20.0
+       ],
+       [
+        31.481,
+        -20.56
+       ],
+       [
+        31.706,
+        -21.146
+       ],
+       [
+        31.869,
+        -21.753
+       ],
+       [
+        31.967,
+        -22.373
+       ],
+       [
+        32.0,
+        -23.0
+       ]
+      ],
+      "floor": 0,
+      "base_height": 16,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-drum-1",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        30.5,
+        -15.206
+       ],
+       [
+        29.779,
+        -14.832
+       ],
+       [
+        29.027,
+        -14.524
+       ],
+       [
+        28.251,
+        -14.286
+       ],
+       [
+        27.456,
+        -14.119
+       ],
+       [
+        26.649,
+        -14.023
+       ],
+       [
+        25.838,
+        -14.001
+       ],
+       [
+        25.027,
+        -14.053
+       ],
+       [
+        24.224,
+        -14.177
+       ],
+       [
+        23.436,
+        -14.373
+       ],
+       [
+        22.669,
+        -14.639
+       ],
+       [
+        21.929,
+        -14.974
+       ],
+       [
+        21.222,
+        -15.373
+       ],
+       [
+        20.553,
+        -15.835
+       ],
+       [
+        19.93,
+        -16.355
+       ],
+       [
+        19.355,
+        -16.93
+       ],
+       [
+        18.835,
+        -17.553
+       ],
+       [
+        18.373,
+        -18.222
+       ],
+       [
+        17.974,
+        -18.929
+       ],
+       [
+        17.639,
+        -19.669
+       ],
+       [
+        17.373,
+        -20.436
+       ],
+       [
+        17.177,
+        -21.224
+       ],
+       [
+        17.053,
+        -22.027
+       ],
+       [
+        17.001,
+        -22.838
+       ],
+       [
+        17.023,
+        -23.649
+       ],
+       [
+        17.119,
+        -24.456
+       ],
+       [
+        17.286,
+        -25.251
+       ],
+       [
+        17.524,
+        -26.027
+       ],
+       [
+        17.832,
+        -26.779
+       ],
+       [
+        18.206,
+        -27.5
+       ],
+       [
+        20.804,
+        -26.0
+       ],
+       [
+        20.555,
+        -25.519
+       ],
+       [
+        20.35,
+        -25.018
+       ],
+       [
+        20.191,
+        -24.501
+       ],
+       [
+        20.079,
+        -23.971
+       ],
+       [
+        20.016,
+        -23.433
+       ],
+       [
+        20.001,
+        -22.892
+       ],
+       [
+        20.035,
+        -22.351
+       ],
+       [
+        20.118,
+        -21.816
+       ],
+       [
+        20.249,
+        -21.291
+       ],
+       [
+        20.426,
+        -20.779
+       ],
+       [
+        20.649,
+        -20.286
+       ],
+       [
+        20.916,
+        -19.814
+       ],
+       [
+        21.223,
+        -19.369
+       ],
+       [
+        21.57,
+        -18.953
+       ],
+       [
+        21.953,
+        -18.57
+       ],
+       [
+        22.369,
+        -18.223
+       ],
+       [
+        22.814,
+        -17.916
+       ],
+       [
+        23.286,
+        -17.649
+       ],
+       [
+        23.779,
+        -17.426
+       ],
+       [
+        24.291,
+        -17.249
+       ],
+       [
+        24.816,
+        -17.118
+       ],
+       [
+        25.351,
+        -17.035
+       ],
+       [
+        25.892,
+        -17.001
+       ],
+       [
+        26.433,
+        -17.016
+       ],
+       [
+        26.971,
+        -17.079
+       ],
+       [
+        27.501,
+        -17.191
+       ],
+       [
+        28.018,
+        -17.35
+       ],
+       [
+        28.519,
+        -17.555
+       ],
+       [
+        29.0,
+        -17.804
+       ]
+      ],
+      "floor": 0,
+      "base_height": 16,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-drum-2",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        21.5,
+        -30.794
+       ],
+       [
+        22.227,
+        -31.171
+       ],
+       [
+        22.986,
+        -31.48
+       ],
+       [
+        23.77,
+        -31.719
+       ],
+       [
+        24.572,
+        -31.886
+       ],
+       [
+        25.386,
+        -31.979
+       ],
+       [
+        26.205,
+        -31.998
+       ],
+       [
+        27.022,
+        -31.942
+       ],
+       [
+        27.831,
+        -31.812
+       ],
+       [
+        28.625,
+        -31.609
+       ],
+       [
+        29.397,
+        -31.334
+       ],
+       [
+        30.141,
+        -30.991
+       ],
+       [
+        30.85,
+        -30.581
+       ],
+       [
+        31.519,
+        -30.109
+       ],
+       [
+        32.143,
+        -29.578
+       ],
+       [
+        32.716,
+        -28.992
+       ],
+       [
+        33.233,
+        -28.356
+       ],
+       [
+        33.69,
+        -27.676
+       ],
+       [
+        34.083,
+        -26.958
+       ],
+       [
+        34.41,
+        -26.206
+       ],
+       [
+        34.666,
+        -25.428
+       ],
+       [
+        34.851,
+        -24.63
+       ],
+       [
+        34.963,
+        -23.818
+       ],
+       [
+        35.0,
+        -23.0
+       ],
+       [
+        32.0,
+        -23.0
+       ],
+       [
+        31.975,
+        -23.546
+       ],
+       [
+        31.901,
+        -24.087
+       ],
+       [
+        31.778,
+        -24.619
+       ],
+       [
+        31.606,
+        -25.137
+       ],
+       [
+        31.389,
+        -25.638
+       ],
+       [
+        31.127,
+        -26.118
+       ],
+       [
+        30.822,
+        -26.571
+       ],
+       [
+        30.477,
+        -26.994
+       ],
+       [
+        30.095,
+        -27.385
+       ],
+       [
+        29.68,
+        -27.739
+       ],
+       [
+        29.233,
+        -28.054
+       ],
+       [
+        28.76,
+        -28.327
+       ],
+       [
+        28.265,
+        -28.556
+       ],
+       [
+        27.75,
+        -28.739
+       ],
+       [
+        27.221,
+        -28.875
+       ],
+       [
+        26.681,
+        -28.961
+       ],
+       [
+        26.137,
+        -28.998
+       ],
+       [
+        25.591,
+        -28.986
+       ],
+       [
+        25.048,
+        -28.924
+       ],
+       [
+        24.513,
+        -28.813
+       ],
+       [
+        23.991,
+        -28.654
+       ],
+       [
+        23.485,
+        -28.447
+       ],
+       [
+        23.0,
+        -28.196
+       ]
+      ],
+      "floor": 0,
+      "base_height": 16,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-r-drum-stair",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        23,
+        -29
+       ],
+       [
+        29,
+        -29
+       ],
+       [
+        29,
+        -20
+       ],
+       [
+        23,
+        -20
+       ]
+      ],
+      "anchor_heights": [
+       16.4575,
+       16.4575,
+       8.5825,
+       8.5825
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-r-mound-0",
+      "type": "circle",
+      "operation": "add",
+      "center_x": -78,
+      "center_z": -26,
+      "radius": 18,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-r-mound-1",
+      "type": "circle",
+      "operation": "add",
+      "center_x": -78,
+      "center_z": -26,
+      "radius": 16,
+      "floor": 0,
+      "base_height": 10,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-r-mound-2",
+      "type": "circle",
+      "operation": "add",
+      "center_x": -78,
+      "center_z": -26,
+      "radius": 14,
+      "floor": 0,
+      "base_height": 11,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-r-mound-3",
+      "type": "circle",
+      "operation": "add",
+      "center_x": -78,
+      "center_z": -26,
+      "radius": 12,
+      "floor": 0,
+      "base_height": 12,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-r-mound-4",
+      "type": "circle",
+      "operation": "add",
+      "center_x": -78,
+      "center_z": -26,
+      "radius": 10,
+      "floor": 0,
+      "base_height": 13,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-r-mound-5",
+      "type": "circle",
+      "operation": "add",
+      "center_x": -78,
+      "center_z": -26,
+      "radius": 8,
+      "floor": 0,
+      "base_height": 14,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-r-mound-6",
+      "type": "circle",
+      "operation": "add",
+      "center_x": -78,
+      "center_z": -26,
+      "radius": 6,
+      "floor": 0,
+      "base_height": 15,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-r-mound-7",
+      "type": "circle",
+      "operation": "add",
+      "center_x": -78,
+      "center_z": -26,
+      "radius": 4,
+      "floor": 0,
+      "base_height": 16,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-r-mound-8",
+      "type": "circle",
+      "operation": "add",
+      "center_x": -78,
+      "center_z": -26,
+      "radius": 2,
+      "floor": 0,
+      "base_height": 17,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-r-spiral-0",
+      "type": "polyline",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        74.0,
+        -18.0
+       ],
+       [
+        68.893,
+        -18.939
+       ],
+       [
+        64.267,
+        -21.141
+       ],
+       [
+        60.424,
+        -24.424
+       ],
+       [
+        57.603,
+        -28.533
+       ],
+       [
+        55.969,
+        -33.169
+       ],
+       [
+        55.6,
+        -38.0
+       ],
+       [
+        56.485,
+        -42.693
+       ],
+       [
+        58.527,
+        -46.933
+       ],
+       [
+        61.555,
+        -50.445
+       ],
+       [
+        65.333,
+        -53.011
+       ],
+       [
+        69.583,
+        -54.485
+       ],
+       [
+        74.0,
+        -54.8
+       ]
+      ],
+      "anchor_heights": [
+       9.0,
+       9.495,
+       9.984,
+       10.466,
+       10.941,
+       11.41,
+       11.872,
+       12.327,
+       12.776,
+       13.218,
+       13.654,
+       14.083,
+       14.505
+      ],
+      "radius": 4,
+      "stroke_edge": "solid",
+      "keepClear": true,
+      "theme": "gs-spiral"
+     },
+     {
+      "id": "gs-r-spiral-1",
+      "type": "polyline",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        74.0,
+        -54.8
+       ],
+       [
+        78.279,
+        -53.97
+       ],
+       [
+        82.133,
+        -52.087
+       ],
+       [
+        85.314,
+        -49.314
+       ],
+       [
+        87.625,
+        -45.867
+       ],
+       [
+        88.94,
+        -42.003
+       ],
+       [
+        89.2,
+        -38.0
+       ],
+       [
+        88.424,
+        -34.135
+       ],
+       [
+        86.702,
+        -30.667
+       ],
+       [
+        84.182,
+        -27.818
+       ],
+       [
+        81.067,
+        -25.76
+       ],
+       [
+        77.589,
+        -24.606
+       ],
+       [
+        74.0,
+        -24.4
+       ]
+      ],
+      "anchor_heights": [
+       14.505,
+       14.92,
+       15.33,
+       15.732,
+       16.128,
+       16.517,
+       16.899,
+       17.275,
+       17.645,
+       18.007,
+       18.363,
+       18.713,
+       19.056
+      ],
+      "radius": 4,
+      "stroke_edge": "solid",
+      "keepClear": true,
+      "theme": "gs-spiral"
+     },
+     {
+      "id": "gs-r-spiral-2",
+      "type": "polyline",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        74.0,
+        -24.4
+       ],
+       [
+        70.549,
+        -25.121
+       ],
+       [
+        67.467,
+        -26.684
+       ],
+       [
+        64.949,
+        -28.949
+       ],
+       [
+        63.146,
+        -31.733
+       ],
+       [
+        62.151,
+        -34.825
+       ],
+       [
+        62.0,
+        -38.0
+       ],
+       [
+        62.666,
+        -41.037
+       ],
+       [
+        64.07,
+        -43.733
+       ],
+       [
+        66.08,
+        -45.92
+       ],
+       [
+        68.533,
+        -47.469
+       ],
+       [
+        71.239,
+        -48.303
+       ],
+       [
+        74.0,
+        -48.4
+       ]
+      ],
+      "anchor_heights": [
+       19.056,
+       19.392,
+       19.721,
+       20.044,
+       20.361,
+       20.67,
+       20.973,
+       21.27,
+       21.56,
+       21.843,
+       22.12,
+       22.39,
+       22.653
+      ],
+      "radius": 4,
+      "stroke_edge": "solid",
+      "keepClear": true,
+      "theme": "gs-spiral"
+     },
+     {
+      "id": "gs-r-spiral-3",
+      "type": "polyline",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        74.0,
+        -48.4
+       ],
+       [
+        76.623,
+        -47.788
+       ],
+       [
+        78.933,
+        -46.545
+       ],
+       [
+        80.788,
+        -44.788
+       ],
+       [
+        82.083,
+        -42.667
+       ],
+       [
+        82.758,
+        -40.347
+       ],
+       [
+        82.8,
+        -38.0
+       ],
+       [
+        82.243,
+        -35.791
+       ],
+       [
+        81.159,
+        -33.867
+       ],
+       [
+        79.657,
+        -32.343
+       ],
+       [
+        77.867,
+        -31.303
+       ],
+       [
+        75.933,
+        -30.788
+       ],
+       [
+        74.0,
+        -30.8
+       ]
+      ],
+      "anchor_heights": [
+       22.653,
+       22.91,
+       23.16,
+       23.404,
+       23.641,
+       23.871,
+       24.095,
+       24.312,
+       24.523,
+       24.727,
+       24.924,
+       25.115,
+       25.299
+      ],
+      "radius": 4,
+      "stroke_edge": "solid",
+      "keepClear": true,
+      "theme": "gs-spiral"
+     },
+     {
+      "id": "gs-r-spiral-4",
+      "type": "polyline",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        74.0,
+        -30.8
+       ],
+       [
+        72.206,
+        -31.303
+       ],
+       [
+        70.667,
+        -32.226
+       ],
+       [
+        69.475,
+        -33.475
+       ],
+       [
+        68.688,
+        -34.933
+       ],
+       [
+        68.333,
+        -36.482
+       ],
+       [
+        68.4,
+        -38.0
+       ],
+       [
+        68.848,
+        -39.38
+       ],
+       [
+        69.612,
+        -40.533
+       ],
+       [
+        70.606,
+        -41.394
+       ],
+       [
+        71.733,
+        -41.926
+       ],
+       [
+        72.896,
+        -42.121
+       ],
+       [
+        74.0,
+        -42.0
+       ]
+      ],
+      "anchor_heights": [
+       25.299,
+       25.477,
+       25.648,
+       25.813,
+       25.971,
+       26.122,
+       26.267,
+       26.406,
+       26.537,
+       26.663,
+       26.782,
+       26.894,
+       27.0
+      ],
+      "radius": 4,
+      "stroke_edge": "solid",
+      "keepClear": true,
+      "theme": "gs-spiral"
+     },
+     {
+      "id": "gs-r-br-bank",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -8,
+        -34
+       ],
+       [
+        8,
+        -34
+       ],
+       [
+        8,
+        -12
+       ],
+       [
+        -8,
+        -12
+       ]
+      ],
+      "anchor_heights": [
+       8.758095238095237,
+       8.758095238095237,
+       20.281904761904762,
+       20.281904761904762
+      ],
+      "keepClear": true,
+      "theme": "gs-deck"
+     },
+     {
+      "id": "gs-r-br-kerb",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "min_z": -12,
+      "max_x": -6,
+      "max_z": 12,
+      "floor": 17,
+      "base_height": 4,
+      "keepClear": true,
+      "theme": "gs-deck"
+     },
+     {
+      "id": "gs-b-plate",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -100,
+      "min_z": 12,
+      "max_x": 100,
+      "max_z": 136,
+      "floor": 0,
+      "base_height": 8,
+      "theme": "gs-field"
+     },
+     {
+      "id": "gs-b-flank",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 56,
+      "min_z": -12,
+      "max_x": 100,
+      "max_z": 12,
+      "floor": 0,
+      "base_height": 8,
+      "theme": "gs-field"
+     },
+     {
+      "id": "gs-b-wall-w",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 8,
+      "min_z": 109,
+      "max_x": 100,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 14,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-w-100",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 97,
+      "min_z": 109,
+      "max_x": 100,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-w-94",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 91,
+      "min_z": 109,
+      "max_x": 94,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-w-88",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 85,
+      "min_z": 109,
+      "max_x": 88,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-w-82",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 79,
+      "min_z": 109,
+      "max_x": 82,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-w-76",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 73,
+      "min_z": 109,
+      "max_x": 76,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-w-70",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 67,
+      "min_z": 109,
+      "max_x": 70,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-w-64",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 61,
+      "min_z": 109,
+      "max_x": 64,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-w-58",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 55,
+      "min_z": 109,
+      "max_x": 58,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-w-52",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 49,
+      "min_z": 109,
+      "max_x": 52,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-w-46",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 43,
+      "min_z": 109,
+      "max_x": 46,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-w-40",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 37,
+      "min_z": 109,
+      "max_x": 40,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-w-34",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 31,
+      "min_z": 109,
+      "max_x": 34,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-w-28",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 25,
+      "min_z": 109,
+      "max_x": 28,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-w-22",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 19,
+      "min_z": 109,
+      "max_x": 22,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-w-16",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 13,
+      "min_z": 109,
+      "max_x": 16,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-wall-e",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -100,
+      "min_z": 109,
+      "max_x": -8,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 14,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-e8",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -11,
+      "min_z": 109,
+      "max_x": -8,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-e14",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -17,
+      "min_z": 109,
+      "max_x": -14,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-e20",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -23,
+      "min_z": 109,
+      "max_x": -20,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-e26",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -29,
+      "min_z": 109,
+      "max_x": -26,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-e32",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -35,
+      "min_z": 109,
+      "max_x": -32,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-e38",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -41,
+      "min_z": 109,
+      "max_x": -38,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-e44",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -47,
+      "min_z": 109,
+      "max_x": -44,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-e50",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -53,
+      "min_z": 109,
+      "max_x": -50,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-e56",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -59,
+      "min_z": 109,
+      "max_x": -56,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-e62",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -65,
+      "min_z": 109,
+      "max_x": -62,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-e68",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -71,
+      "min_z": 109,
+      "max_x": -68,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-e74",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -77,
+      "min_z": 109,
+      "max_x": -74,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-e80",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -83,
+      "min_z": 109,
+      "max_x": -80,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-e86",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -89,
+      "min_z": 109,
+      "max_x": -86,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-merlon-e92",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -95,
+      "min_z": 109,
+      "max_x": -92,
+      "max_z": 112,
+      "floor": 0,
+      "base_height": 15,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-pier-w",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 8,
+      "min_z": 107,
+      "max_x": 11,
+      "max_z": 114,
+      "floor": 0,
+      "base_height": 16,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-pier-e",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -11,
+      "min_z": 107,
+      "max_x": -8,
+      "max_z": 114,
+      "floor": 0,
+      "base_height": 16,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-wall-stair",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        26,
+        109
+       ],
+       [
+        20,
+        109
+       ],
+       [
+        20,
+        103
+       ],
+       [
+        26,
+        103
+       ]
+      ],
+      "anchor_heights": [
+       14.52,
+       14.52,
+       8.52,
+       8.52
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-b-shelf",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 48,
+      "min_z": 78,
+      "max_x": 72,
+      "max_z": 96,
+      "floor": 0,
+      "base_height": 20,
+      "theme": "gs-shelf"
+     },
+     {
+      "id": "gs-b-stair-1to1",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        66,
+        108
+       ],
+       [
+        58,
+        108
+       ],
+       [
+        58,
+        96
+       ],
+       [
+        66,
+        96
+       ]
+      ],
+      "anchor_heights": [
+       8.52,
+       8.52,
+       20.52,
+       20.52
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-b-ramp-1to2",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        96,
+        92
+       ],
+       [
+        72,
+        92
+       ],
+       [
+        72,
+        84
+       ],
+       [
+        96,
+        84
+       ]
+      ],
+      "anchor_heights": [
+       8.78086956521739,
+       20.25913043478261,
+       20.25913043478261,
+       8.78086956521739
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-b-plateau-w",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 32,
+      "theme": "gs-plateau",
+      "vertices": [
+       [
+        40,
+        80
+       ],
+       [
+        -10,
+        80
+       ],
+       [
+        -10,
+        36
+       ],
+       [
+        2,
+        36
+       ],
+       [
+        2,
+        54
+       ],
+       [
+        14,
+        54
+       ],
+       [
+        14,
+        36
+       ],
+       [
+        40,
+        36
+       ]
+      ]
+     },
+     {
+      "id": "gs-b-plateau-e",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -40,
+      "min_z": 36,
+      "max_x": -22,
+      "max_z": 80,
+      "floor": 0,
+      "base_height": 32,
+      "theme": "gs-plateau"
+     },
+     {
+      "id": "gs-b-sb-up",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        14,
+        48
+       ],
+       [
+        8,
+        48
+       ],
+       [
+        8,
+        36
+       ],
+       [
+        14,
+        36
+       ]
+      ],
+      "anchor_heights": [
+       20.52,
+       20.52,
+       8.52,
+       8.52
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-b-sb-landing",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 2,
+      "min_z": 48,
+      "max_x": 14,
+      "max_z": 54,
+      "floor": 0,
+      "base_height": 20,
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-b-sb-out",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        8,
+        48
+       ],
+       [
+        2,
+        48
+       ],
+       [
+        2,
+        36
+       ],
+       [
+        8,
+        36
+       ]
+      ],
+      "anchor_heights": [
+       20.52,
+       20.52,
+       32.519999999999996,
+       32.519999999999996
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-b-south-lower",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        8,
+        108
+       ],
+       [
+        -8,
+        108
+       ],
+       [
+        -8,
+        97
+       ],
+       [
+        8,
+        97
+       ]
+      ],
+      "anchor_heights": [
+       8.52,
+       8.52,
+       19.52,
+       19.52
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-b-south-landing",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -12,
+      "min_z": 92,
+      "max_x": 12,
+      "max_z": 97,
+      "floor": 0,
+      "base_height": 20,
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-b-south-upper",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        8,
+        92
+       ],
+       [
+        -8,
+        92
+       ],
+       [
+        -8,
+        80
+       ],
+       [
+        8,
+        80
+       ]
+      ],
+      "anchor_heights": [
+       20.52,
+       20.52,
+       32.519999999999996,
+       32.519999999999996
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-b-ramp-flank",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -40,
+        80
+       ],
+       [
+        -50,
+        80
+       ],
+       [
+        -50,
+        36
+       ],
+       [
+        -40,
+        36
+       ]
+      ],
+      "anchor_heights": [
+       32.28744186046512,
+       32.28744186046512,
+       8.75255813953489,
+       8.75255813953489
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-b-serpentine",
+      "type": "polyline",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        48,
+        30
+       ],
+       [
+        60,
+        44
+       ],
+       [
+        52,
+        62
+       ],
+       [
+        42,
+        73
+       ],
+       [
+        36,
+        78
+       ]
+      ],
+      "anchor_heights": [
+       9.0,
+       17.0014349960071,
+       25.549036870593454,
+       32.0,
+       32.0
+      ],
+      "radius": 4,
+      "stroke_edge": "solid",
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-b-podium-0",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 0,
+      "center_z": 64,
+      "radius": 9,
+      "floor": 0,
+      "base_height": 33,
+      "keepClear": true,
+      "theme": "gs-podium"
+     },
+     {
+      "id": "gs-b-podium-1",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 0,
+      "center_z": 64,
+      "radius": 6,
+      "floor": 0,
+      "base_height": 34,
+      "keepClear": true,
+      "theme": "gs-podium"
+     },
+     {
+      "id": "gs-b-podium-2",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 0,
+      "center_z": 64,
+      "radius": 3,
+      "floor": 0,
+      "base_height": 35,
+      "keepClear": true,
+      "theme": "gs-podium"
+     },
+     {
+      "id": "gs-b-drum-0",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        -35.0,
+        23.0
+       ],
+       [
+        -34.951,
+        22.059
+       ],
+       [
+        -34.803,
+        21.129
+       ],
+       [
+        -34.56,
+        20.219
+       ],
+       [
+        -34.222,
+        19.339
+       ],
+       [
+        -33.794,
+        18.5
+       ],
+       [
+        -31.196,
+        20.0
+       ],
+       [
+        -31.481,
+        20.56
+       ],
+       [
+        -31.706,
+        21.146
+       ],
+       [
+        -31.869,
+        21.753
+       ],
+       [
+        -31.967,
+        22.373
+       ],
+       [
+        -32.0,
+        23.0
+       ]
+      ],
+      "floor": 0,
+      "base_height": 16,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-drum-1",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        -30.5,
+        15.206
+       ],
+       [
+        -29.779,
+        14.832
+       ],
+       [
+        -29.027,
+        14.524
+       ],
+       [
+        -28.251,
+        14.286
+       ],
+       [
+        -27.456,
+        14.119
+       ],
+       [
+        -26.649,
+        14.023
+       ],
+       [
+        -25.838,
+        14.001
+       ],
+       [
+        -25.027,
+        14.053
+       ],
+       [
+        -24.224,
+        14.177
+       ],
+       [
+        -23.436,
+        14.373
+       ],
+       [
+        -22.669,
+        14.639
+       ],
+       [
+        -21.929,
+        14.974
+       ],
+       [
+        -21.222,
+        15.373
+       ],
+       [
+        -20.553,
+        15.835
+       ],
+       [
+        -19.93,
+        16.355
+       ],
+       [
+        -19.355,
+        16.93
+       ],
+       [
+        -18.835,
+        17.553
+       ],
+       [
+        -18.373,
+        18.222
+       ],
+       [
+        -17.974,
+        18.929
+       ],
+       [
+        -17.639,
+        19.669
+       ],
+       [
+        -17.373,
+        20.436
+       ],
+       [
+        -17.177,
+        21.224
+       ],
+       [
+        -17.053,
+        22.027
+       ],
+       [
+        -17.001,
+        22.838
+       ],
+       [
+        -17.023,
+        23.649
+       ],
+       [
+        -17.119,
+        24.456
+       ],
+       [
+        -17.286,
+        25.251
+       ],
+       [
+        -17.524,
+        26.027
+       ],
+       [
+        -17.832,
+        26.779
+       ],
+       [
+        -18.206,
+        27.5
+       ],
+       [
+        -20.804,
+        26.0
+       ],
+       [
+        -20.555,
+        25.519
+       ],
+       [
+        -20.35,
+        25.018
+       ],
+       [
+        -20.191,
+        24.501
+       ],
+       [
+        -20.079,
+        23.971
+       ],
+       [
+        -20.016,
+        23.433
+       ],
+       [
+        -20.001,
+        22.892
+       ],
+       [
+        -20.035,
+        22.351
+       ],
+       [
+        -20.118,
+        21.816
+       ],
+       [
+        -20.249,
+        21.291
+       ],
+       [
+        -20.426,
+        20.779
+       ],
+       [
+        -20.649,
+        20.286
+       ],
+       [
+        -20.916,
+        19.814
+       ],
+       [
+        -21.223,
+        19.369
+       ],
+       [
+        -21.57,
+        18.953
+       ],
+       [
+        -21.953,
+        18.57
+       ],
+       [
+        -22.369,
+        18.223
+       ],
+       [
+        -22.814,
+        17.916
+       ],
+       [
+        -23.286,
+        17.649
+       ],
+       [
+        -23.779,
+        17.426
+       ],
+       [
+        -24.291,
+        17.249
+       ],
+       [
+        -24.816,
+        17.118
+       ],
+       [
+        -25.351,
+        17.035
+       ],
+       [
+        -25.892,
+        17.001
+       ],
+       [
+        -26.433,
+        17.016
+       ],
+       [
+        -26.971,
+        17.079
+       ],
+       [
+        -27.501,
+        17.191
+       ],
+       [
+        -28.018,
+        17.35
+       ],
+       [
+        -28.519,
+        17.555
+       ],
+       [
+        -29.0,
+        17.804
+       ]
+      ],
+      "floor": 0,
+      "base_height": 16,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-drum-2",
+      "type": "polygon",
+      "operation": "add",
+      "vertices": [
+       [
+        -21.5,
+        30.794
+       ],
+       [
+        -22.227,
+        31.171
+       ],
+       [
+        -22.986,
+        31.48
+       ],
+       [
+        -23.77,
+        31.719
+       ],
+       [
+        -24.572,
+        31.886
+       ],
+       [
+        -25.386,
+        31.979
+       ],
+       [
+        -26.205,
+        31.998
+       ],
+       [
+        -27.022,
+        31.942
+       ],
+       [
+        -27.831,
+        31.812
+       ],
+       [
+        -28.625,
+        31.609
+       ],
+       [
+        -29.397,
+        31.334
+       ],
+       [
+        -30.141,
+        30.991
+       ],
+       [
+        -30.85,
+        30.581
+       ],
+       [
+        -31.519,
+        30.109
+       ],
+       [
+        -32.143,
+        29.578
+       ],
+       [
+        -32.716,
+        28.992
+       ],
+       [
+        -33.233,
+        28.356
+       ],
+       [
+        -33.69,
+        27.676
+       ],
+       [
+        -34.083,
+        26.958
+       ],
+       [
+        -34.41,
+        26.206
+       ],
+       [
+        -34.666,
+        25.428
+       ],
+       [
+        -34.851,
+        24.63
+       ],
+       [
+        -34.963,
+        23.818
+       ],
+       [
+        -35.0,
+        23.0
+       ],
+       [
+        -32.0,
+        23.0
+       ],
+       [
+        -31.975,
+        23.546
+       ],
+       [
+        -31.901,
+        24.087
+       ],
+       [
+        -31.778,
+        24.619
+       ],
+       [
+        -31.606,
+        25.137
+       ],
+       [
+        -31.389,
+        25.638
+       ],
+       [
+        -31.127,
+        26.118
+       ],
+       [
+        -30.822,
+        26.571
+       ],
+       [
+        -30.477,
+        26.994
+       ],
+       [
+        -30.095,
+        27.385
+       ],
+       [
+        -29.68,
+        27.739
+       ],
+       [
+        -29.233,
+        28.054
+       ],
+       [
+        -28.76,
+        28.327
+       ],
+       [
+        -28.265,
+        28.556
+       ],
+       [
+        -27.75,
+        28.739
+       ],
+       [
+        -27.221,
+        28.875
+       ],
+       [
+        -26.681,
+        28.961
+       ],
+       [
+        -26.137,
+        28.998
+       ],
+       [
+        -25.591,
+        28.986
+       ],
+       [
+        -25.048,
+        28.924
+       ],
+       [
+        -24.513,
+        28.813
+       ],
+       [
+        -23.991,
+        28.654
+       ],
+       [
+        -23.485,
+        28.447
+       ],
+       [
+        -23.0,
+        28.196
+       ]
+      ],
+      "floor": 0,
+      "base_height": 16,
+      "keepClear": true,
+      "theme": "gs-rampart"
+     },
+     {
+      "id": "gs-b-drum-stair",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -23,
+        29
+       ],
+       [
+        -29,
+        29
+       ],
+       [
+        -29,
+        20
+       ],
+       [
+        -23,
+        20
+       ]
+      ],
+      "anchor_heights": [
+       16.4575,
+       16.4575,
+       8.5825,
+       8.5825
+      ],
+      "keepClear": true,
+      "theme": "gs-stair"
+     },
+     {
+      "id": "gs-b-mound-0",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 78,
+      "center_z": 26,
+      "radius": 18,
+      "floor": 0,
+      "base_height": 9,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-b-mound-1",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 78,
+      "center_z": 26,
+      "radius": 16,
+      "floor": 0,
+      "base_height": 10,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-b-mound-2",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 78,
+      "center_z": 26,
+      "radius": 14,
+      "floor": 0,
+      "base_height": 11,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-b-mound-3",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 78,
+      "center_z": 26,
+      "radius": 12,
+      "floor": 0,
+      "base_height": 12,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-b-mound-4",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 78,
+      "center_z": 26,
+      "radius": 10,
+      "floor": 0,
+      "base_height": 13,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-b-mound-5",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 78,
+      "center_z": 26,
+      "radius": 8,
+      "floor": 0,
+      "base_height": 14,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-b-mound-6",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 78,
+      "center_z": 26,
+      "radius": 6,
+      "floor": 0,
+      "base_height": 15,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-b-mound-7",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 78,
+      "center_z": 26,
+      "radius": 4,
+      "floor": 0,
+      "base_height": 16,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-b-mound-8",
+      "type": "circle",
+      "operation": "add",
+      "center_x": 78,
+      "center_z": 26,
+      "radius": 2,
+      "floor": 0,
+      "base_height": 17,
+      "theme": "gs-mound"
+     },
+     {
+      "id": "gs-b-spiral-0",
+      "type": "polyline",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -74.0,
+        18.0
+       ],
+       [
+        -68.893,
+        18.939
+       ],
+       [
+        -64.267,
+        21.141
+       ],
+       [
+        -60.424,
+        24.424
+       ],
+       [
+        -57.603,
+        28.533
+       ],
+       [
+        -55.969,
+        33.169
+       ],
+       [
+        -55.6,
+        38.0
+       ],
+       [
+        -56.485,
+        42.693
+       ],
+       [
+        -58.527,
+        46.933
+       ],
+       [
+        -61.555,
+        50.445
+       ],
+       [
+        -65.333,
+        53.011
+       ],
+       [
+        -69.583,
+        54.485
+       ],
+       [
+        -74.0,
+        54.8
+       ]
+      ],
+      "anchor_heights": [
+       9.0,
+       9.495,
+       9.984,
+       10.466,
+       10.941,
+       11.41,
+       11.872,
+       12.327,
+       12.776,
+       13.218,
+       13.654,
+       14.083,
+       14.505
+      ],
+      "radius": 4,
+      "stroke_edge": "solid",
+      "keepClear": true,
+      "theme": "gs-spiral"
+     },
+     {
+      "id": "gs-b-spiral-1",
+      "type": "polyline",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -74.0,
+        54.8
+       ],
+       [
+        -78.279,
+        53.97
+       ],
+       [
+        -82.133,
+        52.087
+       ],
+       [
+        -85.314,
+        49.314
+       ],
+       [
+        -87.625,
+        45.867
+       ],
+       [
+        -88.94,
+        42.003
+       ],
+       [
+        -89.2,
+        38.0
+       ],
+       [
+        -88.424,
+        34.135
+       ],
+       [
+        -86.702,
+        30.667
+       ],
+       [
+        -84.182,
+        27.818
+       ],
+       [
+        -81.067,
+        25.76
+       ],
+       [
+        -77.589,
+        24.606
+       ],
+       [
+        -74.0,
+        24.4
+       ]
+      ],
+      "anchor_heights": [
+       14.505,
+       14.92,
+       15.33,
+       15.732,
+       16.128,
+       16.517,
+       16.899,
+       17.275,
+       17.645,
+       18.007,
+       18.363,
+       18.713,
+       19.056
+      ],
+      "radius": 4,
+      "stroke_edge": "solid",
+      "keepClear": true,
+      "theme": "gs-spiral"
+     },
+     {
+      "id": "gs-b-spiral-2",
+      "type": "polyline",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -74.0,
+        24.4
+       ],
+       [
+        -70.549,
+        25.121
+       ],
+       [
+        -67.467,
+        26.684
+       ],
+       [
+        -64.949,
+        28.949
+       ],
+       [
+        -63.146,
+        31.733
+       ],
+       [
+        -62.151,
+        34.825
+       ],
+       [
+        -62.0,
+        38.0
+       ],
+       [
+        -62.666,
+        41.037
+       ],
+       [
+        -64.07,
+        43.733
+       ],
+       [
+        -66.08,
+        45.92
+       ],
+       [
+        -68.533,
+        47.469
+       ],
+       [
+        -71.239,
+        48.303
+       ],
+       [
+        -74.0,
+        48.4
+       ]
+      ],
+      "anchor_heights": [
+       19.056,
+       19.392,
+       19.721,
+       20.044,
+       20.361,
+       20.67,
+       20.973,
+       21.27,
+       21.56,
+       21.843,
+       22.12,
+       22.39,
+       22.653
+      ],
+      "radius": 4,
+      "stroke_edge": "solid",
+      "keepClear": true,
+      "theme": "gs-spiral"
+     },
+     {
+      "id": "gs-b-spiral-3",
+      "type": "polyline",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -74.0,
+        48.4
+       ],
+       [
+        -76.623,
+        47.788
+       ],
+       [
+        -78.933,
+        46.545
+       ],
+       [
+        -80.788,
+        44.788
+       ],
+       [
+        -82.083,
+        42.667
+       ],
+       [
+        -82.758,
+        40.347
+       ],
+       [
+        -82.8,
+        38.0
+       ],
+       [
+        -82.243,
+        35.791
+       ],
+       [
+        -81.159,
+        33.867
+       ],
+       [
+        -79.657,
+        32.343
+       ],
+       [
+        -77.867,
+        31.303
+       ],
+       [
+        -75.933,
+        30.788
+       ],
+       [
+        -74.0,
+        30.8
+       ]
+      ],
+      "anchor_heights": [
+       22.653,
+       22.91,
+       23.16,
+       23.404,
+       23.641,
+       23.871,
+       24.095,
+       24.312,
+       24.523,
+       24.727,
+       24.924,
+       25.115,
+       25.299
+      ],
+      "radius": 4,
+      "stroke_edge": "solid",
+      "keepClear": true,
+      "theme": "gs-spiral"
+     },
+     {
+      "id": "gs-b-spiral-4",
+      "type": "polyline",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        -74.0,
+        30.8
+       ],
+       [
+        -72.206,
+        31.303
+       ],
+       [
+        -70.667,
+        32.226
+       ],
+       [
+        -69.475,
+        33.475
+       ],
+       [
+        -68.688,
+        34.933
+       ],
+       [
+        -68.333,
+        36.482
+       ],
+       [
+        -68.4,
+        38.0
+       ],
+       [
+        -68.848,
+        39.38
+       ],
+       [
+        -69.612,
+        40.533
+       ],
+       [
+        -70.606,
+        41.394
+       ],
+       [
+        -71.733,
+        41.926
+       ],
+       [
+        -72.896,
+        42.121
+       ],
+       [
+        -74.0,
+        42.0
+       ]
+      ],
+      "anchor_heights": [
+       25.299,
+       25.477,
+       25.648,
+       25.813,
+       25.971,
+       26.122,
+       26.267,
+       26.406,
+       26.537,
+       26.663,
+       26.782,
+       26.894,
+       27.0
+      ],
+      "radius": 4,
+      "stroke_edge": "solid",
+      "keepClear": true,
+      "theme": "gs-spiral"
+     },
+     {
+      "id": "gs-b-br-bank",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "vertices": [
+       [
+        8,
+        34
+       ],
+       [
+        -8,
+        34
+       ],
+       [
+        -8,
+        12
+       ],
+       [
+        8,
+        12
+       ]
+      ],
+      "anchor_heights": [
+       8.758095238095237,
+       8.758095238095237,
+       20.281904761904762,
+       20.281904761904762
+      ],
+      "keepClear": true,
+      "theme": "gs-deck"
+     },
+     {
+      "id": "gs-b-br-kerb",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 6,
+      "min_z": -12,
+      "max_x": 8,
+      "max_z": 12,
+      "floor": 17,
+      "base_height": 4,
+      "keepClear": true,
+      "theme": "gs-deck"
+     },
+     {
+      "id": "gs-br-deck",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -8,
+      "min_z": -12,
+      "max_x": 8,
+      "max_z": 12,
+      "floor": 17,
+      "base_height": 3,
+      "keepClear": true,
+      "theme": "gs-deck"
+     }
+    ],
+    "groups": []
+   }
+  },
+  {
+   "id": "vault",
+   "name": "Vault",
+   "base_y": 14,
+   "layout": {
+    "shapes": [
+     {
+      "id": "gs-r-vault",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 10,
+      "min_z": -80,
+      "max_x": 22,
+      "max_z": -36,
+      "floor": 0,
+      "base_height": 18,
+      "theme": "gs-plateau"
+     },
+     {
+      "id": "gs-b-vault",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -22,
+      "min_z": 36,
+      "max_x": -10,
+      "max_z": 80,
+      "floor": 0,
+      "base_height": 18,
+      "theme": "gs-plateau"
+     }
+    ],
+    "groups": []
+   }
+  }
+ ],
+ "themes": {
+  "gs-field": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 13,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "layers": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 2,
+        "data": 0
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 0
+       },
+       "thickness": 2
+      }
+     ]
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      },
+      "width": 4
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   }
+  },
+  "gs-shelf": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 1
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 2
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 24,
+       "data": 0
+      },
+      "width": 4
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   }
+  },
+  "gs-stair": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 155,
+     "data": 1
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 155,
+     "data": 0
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 2
+      },
+      "width": 4
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   }
+  },
+  "gs-plateau": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 3
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 1
+      },
+      "width": 4
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   }
+  },
+  "gs-rampart": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 48,
+       "data": 0
+      },
+      "width": 4
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   }
+  },
+  "gs-deck": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 5,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 5,
+     "data": 1
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 17,
+       "data": 0
+      },
+      "width": 4
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   }
+  },
+  "gs-podium": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 155,
+     "data": 0
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 159,
+     "data": 4
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 159,
+       "data": 1
+      },
+      "width": 4
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   }
+  },
+  "gs-mound": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 159,
+     "data": 14
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 172,
+     "data": 0
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 159,
+       "data": 1
+      },
+      "width": 4
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   }
+  },
+  "gs-spiral": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 251,
+     "data": 14
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "material": {
+     "kind": "solid",
+     "id": 251,
+     "data": 4
+    },
+    "depth": 3,
+    "enabled": true
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 251,
+       "data": 1
+      },
+      "width": 4
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   }
+  }
+ },
+ "mapTheme": "gs-field"
+}

@@ -1,0 +1,110 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 8,
+    "z": -125
+   },
+   "yaw": 0,
+   "protection": [
+    {
+     "minX": -40,
+     "minZ": -136,
+     "maxX": 40,
+     "maxZ": -116
+    }
+   ],
+   "iron": []
+  },
+  {
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 8,
+    "z": 125
+   },
+   "yaw": 180,
+   "protection": [
+    {
+     "minX": -40,
+     "minZ": 116,
+     "maxX": 40,
+     "maxZ": 136
+    }
+   ],
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 48,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": 40,
+  "areas": [],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "owner": "red",
+   "name": "Red Gnomon",
+   "style": "cube-3",
+   "materials": "ender stone",
+   "anchor": {
+    "x": 0,
+    "y": 36,
+    "z": -64
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "owner": "blue",
+   "name": "Blue Gnomon",
+   "style": "cube-3",
+   "materials": "ender stone",
+   "anchor": {
+    "x": 0,
+    "y": 36,
+    "z": 64
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "meta": {
+  "name": "Geometry Showcase",
+  "created": "2026-09-05",
+  "authors": [
+   "Claude Opus 5"
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

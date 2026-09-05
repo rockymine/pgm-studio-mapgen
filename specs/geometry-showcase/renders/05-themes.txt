@@ -1,0 +1,22 @@
+THEMES  9 themes over 52096 ground cells, 19 distinct surface blocks
+  gs-field  33502 cells (64.3%)  2:0 Grass Block, 7:0 Bedrock, 13:0 Gravel, 35:14 Red Wool, 35:11 Blue Wool
+  gs-plateau  6024 cells (11.6%)  98:0 Stone Bricks, 98:3 Chiseled Stone Bricks
+  gs-stair  4024 cells (7.7%)  155:1 Chiseled Quartz Block, 155:0 Quartz Block
+  gs-spiral  2650 cells (5.1%)  251:4 Block 251, 251:14 Block 251
+  gs-mound  2048 cells (3.9%)  159:14 Red Stained Clay, 172:0 Hardened Clay
+  gs-rampart  1392 cells (2.7%)  98:0 Stone Bricks, 4:0 Cobblestone
+  gs-deck  1088 cells (2.1%)  5:1 Spruce Planks, 5:0 Oak Planks
+  gs-shelf  864 cells (1.7%)  24:2 Smooth Sandstone, 24:1 Chiseled Sandstone
+  gs-podium  504 cells (1.0%)  155:0 Quartz Block, 159:4 Yellow Stained Clay
+borders:
+  gs-field | gs-rampart  972 cells
+  gs-field | gs-stair  916 cells
+  gs-field | gs-spiral  408 cells
+  gs-field | gs-plateau  324 cells
+  gs-field | gs-mound  288 cells
+  gs-plateau | gs-stair  256 cells
+  gs-plateau | gs-podium  144 cells
+  gs-field | gs-shelf  136 cells
+  gs-deck | gs-field  120 cells
+  gs-shelf | gs-stair  32 cells
+  gs-rampart | gs-stair  32 cells

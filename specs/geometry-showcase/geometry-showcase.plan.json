@@ -1,0 +1,87 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Geometry Showcase"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 8,
+  "observerY": 48
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -2,
+    -26,
+    4,
+    4
+   ],
+   "surface": 8
+  },
+  {
+   "id": "yard",
+   "role": "piece",
+   "rect": [
+    -10,
+    -22,
+    20,
+    6
+   ],
+   "surface": 8
+  },
+  {
+   "id": "plateau",
+   "role": "piece",
+   "rect": [
+    -8,
+    -16,
+    16,
+    9
+   ],
+   "surface": 32
+  },
+  {
+   "id": "midfield",
+   "role": "piece",
+   "rect": [
+    -10,
+    -7,
+    20,
+    5
+   ],
+   "surface": 8
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     10,
+     5
+    ],
+    "facing": "back"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "piece": "plateau",
+    "at": [
+     40,
+     16
+    ],
+    "style": "cube-3",
+    "materials": "ender stone",
+    "float": 4,
+    "name": "Gnomon"
+   }
+  ]
+ }
+}
