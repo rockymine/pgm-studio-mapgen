@@ -1,20 +1,20 @@
 ## r2 (boulder) along x
 TRANSECT 25 stations from (8, 36) to (32, 36), every 1
   station        ground  surface  water  top  standing            step
-  (    8,    36)      10       10           10                      
-  (    9,    36)      10       10           10                      
-  (   10,    36)      10       10           10                      
-  (   11,    36)      10       10           10                      
-  (   12,    36)      10       10           10                      
-  (   13,    36)      10       10           10                      
-  (   14,    36)      10       10           10                      
-  (   15,    36)      10       10           10                      
-  (   16,    36)      10       10           10                      
-  (   17,    36)      10       10           10                      
-  (   18,    36)      10       10           12  boulder r2          
-  (   19,    36)      10       10           13  boulder r2          
-  (   20,    36)      10       10           13  boulder r2          
-  (   21,    36)       9        9           13  boulder r2          -1
+  (    8,    36)       9        9            9                      
+  (    9,    36)       9        9            9                      
+  (   10,    36)       9        9            9                      
+  (   11,    36)       9        9            9                      
+  (   12,    36)       9        9            9                      
+  (   13,    36)       9        9            9                      
+  (   14,    36)       9        9            9                      
+  (   15,    36)       9        9            9                      
+  (   16,    36)       9        9            9                      
+  (   17,    36)       9        9            9                      
+  (   18,    36)       9        9           12  boulder r2          
+  (   19,    36)       9        9           13  boulder r2          
+  (   20,    36)       9        9           13  boulder r2          
+  (   21,    36)       9        9           13  boulder r2          
   (   22,    36)       9        9           12  boulder r2          
   (   23,    36)       9        9            9                      
   (   24,    36)       9        9            9                      
@@ -26,7 +26,7 @@ TRANSECT 25 stations from (8, 36) to (32, 36), every 1
   (   30,    36)       9        9            9                      
   (   31,    36)       9        9            9                      
   (   32,    36)       9        9            9                      
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: boulder r2 at (18, 35), stroke q2 at (22, 34)
 
 ## r2 (boulder) along z
@@ -43,19 +43,19 @@ TRANSECT 25 stations from (20, 24) to (20, 48), every 1
   (   20,    32)       9        9            9  stroke q2           
   (   20,    33)       9        9            9  stroke q2           
   (   20,    34)       9        9           12  boulder r2          
-  (   20,    35)      10       10           13  boulder r2          +1
-  (   20,    36)      10       10           13  boulder r2          
-  (   20,    37)      10       10           13  boulder r2          
-  (   20,    38)      10       10           12  boulder r2          
-  (   20,    39)      10       10           10                      
-  (   20,    40)      10       10           10                      
-  (   20,    41)      10       10           10                      
-  (   20,    42)      10       10           10                      
-  (   20,    43)      10       10           10                      
-  (   20,    44)      10       10           10                      
-  (   20,    45)      10       10           10                      
-  (   20,    46)      10       10           10                      
-  (   20,    47)       9        9            9                      -1
+  (   20,    35)       9        9           13  boulder r2          
+  (   20,    36)       9        9           13  boulder r2          
+  (   20,    37)       9        9           13  boulder r2          
+  (   20,    38)       9        9           12  boulder r2          
+  (   20,    39)       9        9            9                      
+  (   20,    40)       9        9            9                      
+  (   20,    41)       9        9            9                      
+  (   20,    42)       9        9            9                      
+  (   20,    43)       9        9            9                      
+  (   20,    44)       9        9            9                      
+  (   20,    45)       9        9            9                      
+  (   20,    46)       9        9            9                      
+  (   20,    47)       9        9            9                      
   (   20,    48)       9        9            9                      
-rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: water w1 at (18, 22), stroke q2 at (19, 22), boulder r2 at (19, 34)

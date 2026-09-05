@@ -39,20 +39,20 @@ beside: spawn spawn-1 at (-8, 88)
 ## spawn-red (spawn) along z
 TRANSECT 27 stations from (-3, 72) to (-3, 98), every 1
   station        ground  surface  water  top  standing            step
-  (   -3,    72)      14       14           14  stroke p1           
-  (   -3,    73)      14       14           14  stroke p1           
-  (   -3,    74)      14       14           14  stroke p1           
-  (   -3,    75)      14       14           14  stroke p1           
-  (   -3,    76)      15       15           15  stroke p1           +1
-  (   -3,    77)      15       15           15  stroke p1           
-  (   -3,    78)      15       15           15  stroke p1           
-  (   -3,    79)      15       15           15  stroke p1           
-  (   -3,    80)      16       16           16  stroke p1           +1
-  (   -3,    81)      16       16           16  stroke p1           
-  (   -3,    82)      16       16           16  stroke p1           
-  (   -3,    83)      16       16           16  stroke p1           
-  (   -3,    84)      16       16           16  stroke p1           
-  (   -3,    85)      16       16           16  stroke p1           
+  (   -3,    72)      14       14           14  stroke p2           
+  (   -3,    73)      14       14           14  stroke p2           
+  (   -3,    74)      14       14           14  stroke p2           
+  (   -3,    75)      14       14           14  stroke p2           
+  (   -3,    76)      15       15           15  stroke p2           +1
+  (   -3,    77)      15       15           15  stroke p2           
+  (   -3,    78)      15       15           15  stroke p2           
+  (   -3,    79)      15       15           15  stroke p2           
+  (   -3,    80)      16       16           16  stroke p2           +1
+  (   -3,    81)      16       16           16  stroke p2           
+  (   -3,    82)      16       16           16                      
+  (   -3,    83)      16       16           16                      
+  (   -3,    84)      16       16           16                      
+  (   -3,    85)      16       16           16                      
   (   -3,    86)      16       16           16                      
   (   -3,    87)      16       16           23  spawn spawn-1       
   (   -3,    88)      16       16           22  spawn spawn-1       
@@ -67,4 +67,4 @@ TRANSECT 27 stations from (-3, 72) to (-3, 98), every 1
   (   -3,    97)      16       16           23  spawn spawn-1       
   (   -3,    98)      16       16           16                      
 rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke p1 at (-5, 70), ironcube spawn-1:0 at (-1, 82), spawn spawn-1 at (-5, 87)
+beside: stroke p2 at (-5, 70), stroke p1 at (-5, 82), spawn spawn-1 at (-5, 87)

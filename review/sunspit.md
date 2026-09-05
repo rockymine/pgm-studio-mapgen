@@ -14,12 +14,13 @@ same x — the composer's `frontline twin`, which is how a two-legged front is d
 is 20 blocks, tip to tip. Between the two legs the channel is void until the tidal `water-lane` floods it,
 and it then opens a third way over that neither team's legs cover.
 
-Behind the beach the **grassland stands three blocks higher**, so the sand ends in a four-block scarp and
-the village, the spawn and both wool approaches are a terrace above it. **The beach itself is flat** — it is
-not graded into the scarp, and the drop is a drop. Three **stone ramps** stand on the sand against the
-terrace's face instead, ten blocks wide, at 3:1: two on the fifty-block backshore face and one on the
-twenty-five-block dune face. Everywhere else the scarp is a barrier a player steps off and cannot climb
-back up, which is the point of it.
+Behind the beach the **grassland stands on a five-block scarp**, and the line between the two grounds is the
+green's own face — the backshore piece that used to sit between them is beach now, at the sand's height and
+in the sand's theme, so the two are one shape. **The beach is flat**, and the drop is a drop. Three **stone
+ramps** stand on the sand against the green's face, ten blocks wide at about 3:1 — two on the village's
+fifty-block face and one on the dune's — and their feet are anchored at the sand's own height, so a player
+walks off a ramp onto the beach without a step. Everywhere else the scarp is a barrier, which is the point
+of it.
 
 ## The numbers
 
@@ -32,8 +33,8 @@ back up, which is the point of it.
 | Approach wall | — | 10 blocks, the spur's own width, halfway along it |
 | Walk to own wools | — | 67 blocks / 6 placed (bluff) · 63 / 22 (pier) |
 | Walk to enemy wools | — | 198 / 24 (bluff) · 208 / 41 (pier) |
-| Ground that steps | 03-slopes | 10864 walked, 78 scrambled, 258 barrier — **the beach scarp and the two approach walls**, and the three ramps read as walked runs through it |
-| The scarp | — | 4 blocks off the backshore, 5 off the dune; stone ramps at x −30..−20, −8..2, 22..32 |
+| Ground that steps | 03-slopes | 10760 walked, 100 scrambled, 340 barrier — **the scarp and the two approach walls**, and the three ramps read as walked runs through it |
+| The scarp | — | 5 blocks; stone ramps at x −30..−20 and −8..2 on the village's face, x 22..32 on the dune's |
 | Crossing frontline width | FR9 ≥ 15 | **20**, the legs running straight out of the beach's outer corners |
 | Dressing | 06-claims | **placed 45, declined 0** |
 | Ground no journey reaches | coverage | **0.0% dead** — every cell of the board is on somebody's route |
@@ -74,6 +75,16 @@ back up, which is the point of it.
   it; on the scarp, an internal riser, the same stack reads as two courses of sandstone under the coping.
 - Water props as sea: a `natural` lagoon on the sand, a `stream` tide pool, banks in sand.
 - `laidLog` birch pier deck, `cell` dune-grass patches, sand/sandstone `noise` strand.
+- **The sand carries its own family.** The strand is a `noise` of sand at three quarters, with sandstone,
+  smooth sandstone, brown mushroom block and birch planks taking a twelfth each — four blocks out of the one
+  tone family, so the beach has colour in it without reading as anything but sand.
+- **Two houses, and the second is the first without its stilts.** The village carries one stilt house and
+  one grounded one (`@stilts-ground`, the same style with its open storey taken off), so the two read as one
+  settlement; the cottage that stood in the lane to the pier wool is gone, and the stilt house took its place
+  clear of that lane.
+- **A path per ramp, cut from the map's own stone.** Two strokes leave the spawn door and end at the head of
+  a ramp each, paved with the same stone/andesite noise the walls and fills are made of, so the way down is
+  the one thing on the green that is not green.
 - Five sea rocks in one `cell` of stone, andesite and cobblestone — grey against the sand rather than sand
   on sand.
 - `@stilts-grass`, the stilts style forked with a grass plate, so the house standing on the village green

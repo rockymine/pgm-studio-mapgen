@@ -1,57 +1,57 @@
 ## b3 (house) along x
 TRANSECT 23 stations from (9, 57) to (31, 57), every 1
   station        ground  surface  water  top  standing            step
-  (    9,    57)      13       13           13                      
-  (   10,    57)      13       13           13                      
-  (   11,    57)      13       13           13                      
-  (   12,    57)      13       13           13                      
-  (   13,    57)      13       13           13                      
-  (   14,    57)      13       13           13                      
-  (   15,    57)      14       14           14                      +1
-  (   16,    57)      14       14           19  house b3            
-  (   17,    57)      14       14           19  house b3            
-  (   18,    57)      14       14           21  house b3            
-  (   19,    57)      14       14           21  house b3            
+  (    9,    57)       9        9            9                      
+  (   10,    57)       9        9            9                      
+  (   11,    57)       9        9            9                      
+  (   12,    57)       9        9            9                      
+  (   13,    57)       9        9            9                      
+  (   14,    57)       9        9            9                      
+  (   15,    57)      14       14           14                      BARRIER +5
+  (   16,    57)      14       14           22  house b3            
+  (   17,    57)      14       14           22  house b3            
+  (   18,    57)      14       14           22  house b3            
+  (   19,    57)      14       14           22  house b3            
   (   20,    57)      14       14           22  house b3            
   (   21,    57)      14       14           22  house b3            
-  (   22,    57)      14       14           23  house b3            
-  (   23,    57)      14       14           23  house b3            
-  (   24,    57)      14       14           23  house b3            
-  (   25,    57)      14       14           14                      
-  (   26,    57)      14       14           14                      
-  (   27,    57)      14       14           14  stroke p2           
-  (   28,    57)      14       14           14  stroke p2           
+  (   22,    57)      14       14           22  house b3            
+  (   23,    57)      14       14           22  house b3            
+  (   24,    57)      14       14           22  house b3            
+  (   25,    57)      14       14           14  stroke p4           
+  (   26,    57)      14       14           14  stroke p4           
+  (   27,    57)      14       14           14  stroke p4           
+  (   28,    57)      14       14           14                      
   (   29,    57)      14       14           14                      
   (   30,    57)      14       14           14                      
   (   31,    57)      14       14           14                      
-rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: house b3 at (16, 55), stroke p2 at (26, 59)
+rises 1, falls 0, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (15, 57) | walked end to end
+beside: house b3 at (16, 55), stroke p4 at (25, 55)
 
 ## b3 (house) along z
 TRANSECT 23 stations from (20, 46) to (20, 68), every 1
   station        ground  surface  water  top  standing            step
-  (   20,    46)      10       10           10                      
-  (   20,    47)       9        9            9                      -1
+  (   20,    46)       9        9            9                      
+  (   20,    47)       9        9            9                      
   (   20,    48)       9        9            9                      
   (   20,    49)       9        9            9                      
   (   20,    50)      14       14           14                      BARRIER +5
   (   20,    51)      14       14           14                      
   (   20,    52)      14       14           14                      
-  (   20,    53)      14       14           22  house b3            
-  (   20,    54)      14       14           22  house b3            
-  (   20,    55)      14       14           22  house b3            
-  (   20,    56)      14       14           22  house b3            
+  (   20,    53)      14       14           18  house b3            
+  (   20,    54)      14       14           19  house b3            
+  (   20,    55)      14       14           20  house b3            
+  (   20,    56)      14       14           21  house b3            
   (   20,    57)      14       14           22  house b3            
-  (   20,    58)      14       14           22  house b3            
-  (   20,    59)      14       14           22  house b3            
-  (   20,    60)      14       14           22  house b3            
-  (   20,    61)      14       14           22  house b3            
-  (   20,    62)      14       14           14  stroke p2           
-  (   20,    63)      14       14           14  stroke p2           
-  (   20,    64)      14       14           14  stroke p2           
-  (   20,    65)      14       14           14  stroke p2           
+  (   20,    58)      14       14           21  house b3            
+  (   20,    59)      14       14           20  house b3            
+  (   20,    60)      14       14           19  house b3            
+  (   20,    61)      14       14           18  house b3            
+  (   20,    62)      14       14           14  stroke p4           
+  (   20,    63)      14       14           14  stroke p4           
+  (   20,    64)      14       14           14                      
+  (   20,    65)      14       14           14                      
   (   20,    66)      14       14           14                      
   (   20,    67)      14       14           14                      
   (   20,    68)      14       14           22  tree t4             
-rises 1, falls 1, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (20, 50) | walked end to end
-beside: house b3 at (18, 53), stroke p2 at (18, 62), tree t4 at (18, 65)
+rises 1, falls 0, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (20, 50) | walked end to end
+beside: house b3 at (18, 53), stroke p4 at (18, 62), tree t4 at (18, 65)

@@ -1,17 +1,13 @@
-THEMES  7 themes over 11200 ground cells, 23 distinct surface blocks
-  strand  4080 cells (36.4%)  12:0 Sand, 9:0 Water, 24:0 Sandstone, 24:2 Smooth Sandstone, 13:0 Gravel, 4:0 Cobblestone, 1:0 Stone
-  dunetop  3580 cells (32.0%)  2:0 Grass Block, 43:1 Double Sandstone Slab, 4:0 Cobblestone, 98:0 Stone Bricks, 5:1 Spruce Planks, 5:2 Birch Planks, 24:0 Sandstone, 35:14 Red Wool, 35:11 Blue Wool
-  backshore  960 cells (8.6%)  12:0 Sand, 2:0 Grass Block, 5:2 Birch Planks, 43:1 Double Sandstone Slab
+THEMES  6 themes over 11200 ground cells, 23 distinct surface blocks
+  strand  5080 cells (45.4%)  12:0 Sand, 9:0 Water, 24:2 Smooth Sandstone, 24:0 Sandstone, 99:0 Brown Mushroom Block, 5:2 Birch Planks, 13:0 Gravel, 4:0 Cobblestone, 1:0 Stone, 1:5 Andesite
+  dunetop  3540 cells (31.6%)  2:0 Grass Block, 43:1 Double Sandstone Slab, 1:5 Andesite, 98:0 Stone Bricks, 1:6 Polished Andesite, 1:0 Stone, 5:0 Oak Planks, 4:0 Cobblestone, 35:14 Red Wool, 35:11 Blue Wool
   tideflat  800 cells (7.1%)  13:0 Gravel, 12:0 Sand, 24:2 Smooth Sandstone, 82:0 Clay
-  stair  780 cells (7.0%)  1:5 Andesite, 1:6 Polished Andesite, 1:0 Stone, 4:0 Cobblestone, 5:2 Birch Planks
+  stair  780 cells (7.0%)  1:5 Andesite, 1:6 Polished Andesite, 1:0 Stone
   bluff  600 cells (5.4%)  2:0 Grass Block, 43:1 Double Sandstone Slab, 5:0 Oak Planks, 7:0 Bedrock, 35:1 Orange Wool, 35:3 Light Blue Wool
-  pierdeck  400 cells (3.6%)  5:0 Oak Planks, 17:2 Birch Log, 5:6 Oak Planks, 5:2 Birch Planks, 35:14 Red Wool, 35:11 Blue Wool
+  pierdeck  400 cells (3.6%)  5:0 Oak Planks, 17:2 Birch Log, 5:6 Oak Planks, 1:0 Stone, 1:5 Andesite, 1:6 Polished Andesite, 35:14 Red Wool, 35:11 Blue Wool
 borders:
   stair | strand  204 cells
-  backshore | dunetop  120 cells
+  dunetop | strand  110 cells
   strand | tideflat  80 cells
-  backshore | strand  60 cells
-  backshore | stair  48 cells
-  dunetop | strand  30 cells
-  dunetop | stair  24 cells
+  dunetop | stair  72 cells
   bluff | dunetop  20 cells

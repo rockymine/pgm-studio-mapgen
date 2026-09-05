@@ -1,59 +1,59 @@
 ## b1 (house) along x
-TRANSECT 24 stations from (-40, 71) to (-17, 71), every 1
+TRANSECT 24 stations from (-28, 64) to (-5, 64), every 1
   station        ground  surface  water  top  standing            step
-  (  -40,    71)                                                    void
-  (  -39,    71)                                                    void
-  (  -38,    71)                                                    void
-  (  -37,    71)                                                    void
-  (  -36,    71)                                                    void
-  (  -35,    71)      14       14           14                      
-  (  -34,    71)      14       14           14                      
-  (  -33,    71)      14       14           28  house b1            
-  (  -32,    71)      14       14           28  house b1            
-  (  -31,    71)      14       14           28  house b1            
-  (  -30,    71)      14       14           28  house b1            
-  (  -29,    71)      14       14           28  house b1            
-  (  -28,    71)      14       14           28  house b1            
-  (  -27,    71)      14       14           28  house b1            
-  (  -26,    71)      14       14           28  house b1            
-  (  -25,    71)      14       14           28  house b1            
-  (  -24,    71)      14       14           28  house b1            
-  (  -23,    71)      14       14           14                      
-  (  -22,    71)      14       14           14                      
-  (  -21,    71)      14       14           14                      
-  (  -20,    71)      14       14           19  house b2            
-  (  -19,    71)      14       14           20  house b2            
-  (  -18,    71)      14       14           21  house b2            
-  (  -17,    71)      14       14           22  house b2            
+  (  -28,    64)      14       14           14                      
+  (  -27,    64)      14       14           14                      
+  (  -26,    64)      14       14           14  stroke p1           
+  (  -25,    64)      14       14           14  stroke p1           
+  (  -24,    64)      14       14           14  stroke p1           
+  (  -23,    64)      14       14           14  stroke p1           
+  (  -22,    64)      14       14           14  stroke p1           
+  (  -21,    64)      14       14           28  house b1            
+  (  -20,    64)      14       14           28  house b1            
+  (  -19,    64)      14       14           28  house b1            
+  (  -18,    64)      14       14           28  house b1            
+  (  -17,    64)      14       14           28  house b1            
+  (  -16,    64)      14       14           28  house b1            
+  (  -15,    64)      14       14           28  house b1            
+  (  -14,    64)      14       14           28  house b1            
+  (  -13,    64)      14       14           28  house b1            
+  (  -12,    64)      14       14           28  house b1            
+  (  -11,    64)      14       14           14                      
+  (  -10,    64)      14       14           14                      
+  (   -9,    64)      14       14           14                      
+  (   -8,    64)      14       14           14                      
+  (   -7,    64)      14       14           14                      
+  (   -6,    64)      14       14           15  flora f2            
+  (   -5,    64)      14       14           14  stroke p2           
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: house b1 at (-33, 69), house b2 at (-21, 69)
+beside: stroke p1 at (-27, 62), house b1 at (-21, 62), flora f2 at (-6, 62), stroke p2 at (-5, 62)
 
 ## b1 (house) along z
-TRANSECT 24 stations from (-29, 60) to (-29, 83), every 1
+TRANSECT 24 stations from (-17, 53) to (-17, 76), every 1
   station        ground  surface  water  top  standing            step
-  (  -29,    60)      14       14           14                      
-  (  -29,    61)      14       14           14                      
-  (  -29,    62)      14       14           14                      
-  (  -29,    63)      14       14           14                      
-  (  -29,    64)      14       14           14                      
-  (  -29,    65)      14       14           14                      
-  (  -29,    66)      14       14           14                      
-  (  -29,    67)      14       14           24  house b1            
-  (  -29,    68)      14       14           25  house b1            
-  (  -29,    69)      14       14           26  house b1            
-  (  -29,    70)      14       14           27  house b1            
-  (  -29,    71)      14       14           28  house b1            
-  (  -29,    72)      14       14           28  house b1            
-  (  -29,    73)      14       14           27  house b1            
-  (  -29,    74)      14       14           26  house b1            
-  (  -29,    75)      14       14           25  house b1            
-  (  -29,    76)      14       14           24  house b1            
-  (  -29,    77)      14       14           14                      
-  (  -29,    78)      14       14           14                      
-  (  -29,    79)      14       14           14                      
-  (  -29,    80)                                                    void
-  (  -29,    81)                                                    void
-  (  -29,    82)                                                    void
-  (  -29,    83)                                                    void
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: house b1 at (-31, 67), tree t1 at (-31, 76)
+  (  -17,    53)       9        9            9                      
+  (  -17,    54)       9        9            9                      
+  (  -17,    55)       9        9            9                      
+  (  -17,    56)       9        9            9                      
+  (  -17,    57)       9        9            9                      
+  (  -17,    58)       9        9            9                      
+  (  -17,    59)       9        9            9                      
+  (  -17,    60)      14       14           24  house b1            BARRIER +5
+  (  -17,    61)      14       14           25  house b1            
+  (  -17,    62)      14       14           26  house b1            
+  (  -17,    63)      14       14           27  house b1            
+  (  -17,    64)      14       14           28  house b1            
+  (  -17,    65)      14       14           28  house b1            
+  (  -17,    66)      14       14           27  house b1            
+  (  -17,    67)      14       14           26  house b1            
+  (  -17,    68)      14       14           25  house b1            
+  (  -17,    69)      14       14           24  house b1            
+  (  -17,    70)      14       14           14                      
+  (  -17,    71)      14       14           14                      
+  (  -17,    72)      14       14           14                      
+  (  -17,    73)      14       14           14                      
+  (  -17,    74)      14       14           14                      
+  (  -17,    75)      14       14           14                      
+  (  -17,    76)      14       14           14                      
+rises 1, falls 0, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (-17, 60) | walked end to end
+beside: house b1 at (-19, 60), stroke p1 at (-16, 70), tree t2 at (-19, 74)

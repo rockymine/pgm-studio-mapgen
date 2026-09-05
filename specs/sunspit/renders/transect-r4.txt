@@ -1,8 +1,8 @@
 ## r4 (boulder) along x
 TRANSECT 25 stations from (21, 44) to (45, 44), every 1
   station        ground  surface  water  top  standing            step
-  (   21,    44)      10       10           10                      
-  (   22,    44)      11       11           11                      +1
+  (   21,    44)       9        9            9                      
+  (   22,    44)      11       11           11                      scramble +2
   (   23,    44)      11       11           11                      
   (   24,    44)      11       11           11                      
   (   25,    44)      11       11           11                      
@@ -26,7 +26,7 @@ TRANSECT 25 stations from (21, 44) to (45, 44), every 1
   (   43,    44)                                                    void
   (   44,    44)                                                    void
   (   45,    44)                                                    void
-rises 1, falls 1, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 1, falls 1, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (22, 44) | walked end to end
 beside: boulder r4 at (31, 43)
 
 ## r4 (boulder) along z
@@ -58,4 +58,4 @@ TRANSECT 25 stations from (33, 32) to (33, 56), every 1
   (   33,    55)      14       14           14                      
   (   33,    56)      14       14           14                      
 rises 1, falls 0, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (33, 50) | walked end to end
-beside: water w1 at (31, 30), boulder r4 at (32, 42), stroke p2 at (31, 52)
+beside: water w1 at (31, 30), boulder r4 at (32, 42)

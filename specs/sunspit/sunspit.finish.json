@@ -3,7 +3,6 @@
     "backshore-8": "tideflat",
     "backshore-8-2": "tideflat",
     "backshore-9": "strand",
-    "backshore-13": "backshore",
     "backshore-14": "dunetop",
     "backshore-16": "dunetop",
     "backshore-16-2": "bluff",
@@ -15,9 +14,6 @@
       "relief_scope": "exclude"
     },
     "backshore-8-2": {
-      "relief_scope": "exclude"
-    },
-    "backshore-13": {
       "relief_scope": "exclude"
     },
     "backshore-14": {
@@ -112,7 +108,7 @@
       "type": "polygon",
       "operation": "add",
       "floor": 0,
-      "base_height": 13,
+      "base_height": 14,
       "height_mode": "level",
       "skirt": 0,
       "relief_scope": "exclude",
@@ -120,26 +116,26 @@
       "vertices": [
         [
           -30,
-          38
+          48
         ],
         [
           -20,
-          38
+          48
         ],
         [
           -20,
-          51
+          61
         ],
         [
           -30,
-          51
+          61
         ]
       ],
       "anchor_heights": [
         9,
         9,
-        13,
-        13
+        14,
+        14
       ]
     },
     {
@@ -147,7 +143,7 @@
       "type": "polygon",
       "operation": "add",
       "floor": 0,
-      "base_height": 13,
+      "base_height": 14,
       "height_mode": "level",
       "skirt": 0,
       "relief_scope": "exclude",
@@ -155,26 +151,26 @@
       "vertices": [
         [
           -8,
-          38
+          48
         ],
         [
           2,
-          38
+          48
         ],
         [
           2,
-          51
+          61
         ],
         [
           -8,
-          51
+          61
         ]
       ],
       "anchor_heights": [
         9,
         9,
-        13,
-        13
+        14,
+        14
       ]
     },
     {
@@ -219,7 +215,7 @@
       "reach": 8,
       "step": 1,
       "grain": {
-        "amplitude": 0.8,
+        "amplitude": 0.0,
         "scale": 11,
         "seed": 21
       },
@@ -231,7 +227,7 @@
             -26,
             38
           ],
-          "h": 10,
+          "h": 9,
           "r": 5
         },
         {
@@ -241,7 +237,7 @@
             12,
             40
           ],
-          "h": 10,
+          "h": 9,
           "r": 4
         },
         {
@@ -251,7 +247,7 @@
             -6,
             30
           ],
-          "h": 10,
+          "h": 9,
           "r": 4
         }
       ],
@@ -292,11 +288,45 @@
             },
             {
               "kind": "solid",
+              "id": 12
+            },
+            {
+              "kind": "solid",
+              "id": 12
+            },
+            {
+              "kind": "solid",
               "id": 24
             },
             {
               "kind": "solid",
+              "id": 12
+            },
+            {
+              "kind": "solid",
+              "id": 12
+            },
+            {
+              "kind": "solid",
+              "id": 99,
+              "data": 0
+            },
+            {
+              "kind": "solid",
+              "id": 12
+            },
+            {
+              "kind": "solid",
+              "id": 12
+            },
+            {
+              "kind": "solid",
               "id": 24,
+              "data": 2
+            },
+            {
+              "kind": "solid",
+              "id": 5,
               "data": 2
             }
           ]
@@ -366,190 +396,6 @@
       "fill": {
         "kind": "solid",
         "id": 24
-      }
-    },
-    "backshore": {
-      "bedrock": {
-        "relative": false,
-        "value": 1
-      },
-      "rimEdges": "drop",
-      "wallOnTerrainFaces": true,
-      "rim": {
-        "material": {
-          "kind": "solid",
-          "id": 43,
-          "data": 1
-        },
-        "depth": 1,
-        "enabled": true
-      },
-      "surface": {
-        "material": {
-          "kind": "layered",
-          "axis": "depth",
-          "stack": {
-            "ending": "handOver",
-            "bands": [
-              {
-                "material": {
-                  "kind": "cell",
-                  "seed": 11,
-                  "cellSize": 8,
-                  "jitter": 60,
-                  "warp": 3,
-                  "palette": [
-                    {
-                      "kind": "solid",
-                      "id": 12
-                    },
-                    {
-                      "kind": "solid",
-                      "id": 12
-                    },
-                    {
-                      "kind": "solid",
-                      "id": 2
-                    }
-                  ]
-                },
-                "thickness": 1
-              },
-              {
-                "material": {
-                  "kind": "solid",
-                  "id": 12
-                },
-                "thickness": 1
-              }
-            ]
-          }
-        },
-        "depth": 1,
-        "enabled": true
-      },
-      "wall": {
-        "kind": "layered",
-        "axis": "depth",
-        "stack": {
-          "ending": "handOver",
-          "bands": [
-            {
-              "material": {
-                "kind": "wallDiagonal",
-                "slope": 1,
-                "runs": [
-                  {
-                    "material": {
-                      "kind": "teamTint",
-                      "blockId": 159,
-                      "neutral": {
-                        "kind": "solid",
-                        "id": 24,
-                        "data": 2
-                      }
-                    },
-                    "width": 2
-                  },
-                  {
-                    "material": {
-                      "kind": "solid",
-                      "id": 43,
-                      "data": 1
-                    },
-                    "width": 2
-                  }
-                ]
-              },
-              "thickness": 4
-            },
-            {
-              "material": {
-                "kind": "solid",
-                "id": 5,
-                "data": 2
-              },
-              "thickness": 2
-            }
-          ]
-        },
-        "beyond": {
-          "kind": "noise",
-          "seed": 41,
-          "scale": 4,
-          "octaves": 2,
-          "rise": 3,
-          "stops": [
-            {
-              "kind": "solid",
-              "id": 1
-            },
-            {
-              "kind": "solid",
-              "id": 1,
-              "data": 5
-            },
-            {
-              "kind": "solid",
-              "id": 1,
-              "data": 6
-            }
-          ]
-        }
-      },
-      "wallEnabled": true,
-      "fill": {
-        "kind": "layered",
-        "axis": "depth",
-        "stack": {
-          "ending": "handOver",
-          "bands": [
-            {
-              "material": {
-                "kind": "noise",
-                "seed": 43,
-                "scale": 5,
-                "octaves": 2,
-                "rise": 8,
-                "stops": [
-                  {
-                    "kind": "solid",
-                    "id": 3
-                  },
-                  {
-                    "kind": "solid",
-                    "id": 3,
-                    "data": 1
-                  }
-                ]
-              },
-              "thickness": 3
-            }
-          ]
-        },
-        "beyond": {
-          "kind": "noise",
-          "seed": 41,
-          "scale": 4,
-          "octaves": 2,
-          "rise": 3,
-          "stops": [
-            {
-              "kind": "solid",
-              "id": 1
-            },
-            {
-              "kind": "solid",
-              "id": 1,
-              "data": 5
-            },
-            {
-              "kind": "solid",
-              "id": 1,
-              "data": 6
-            }
-          ]
-        }
       }
     },
     "dunetop": {
@@ -1088,33 +934,47 @@
         "seed": 3,
         "points": [
           [
-            -3,
+            -6,
             84
           ],
           [
-            -4,
-            74
-          ],
-          [
-            -6,
-            64
+            -9,
+            76
           ],
           [
             -16,
-            58
+            68
           ],
           [
             -25,
-            52
+            63
           ]
         ],
         "radius": 2,
         "style": "solid",
         "coverage": 1.0,
         "pave": {
-          "kind": "solid",
-          "id": 5,
-          "data": 2
+          "kind": "noise",
+          "seed": 41,
+          "scale": 4,
+          "octaves": 2,
+          "rise": 3,
+          "stops": [
+            {
+              "kind": "solid",
+              "id": 1
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 5
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 6
+            }
+          ]
         }
       },
       {
@@ -1123,29 +983,47 @@
         "seed": 4,
         "points": [
           [
-            16,
-            64
+            0,
+            84
           ],
           [
-            26,
-            62
+            -2,
+            76
           ],
           [
-            30,
-            56
+            -3,
+            68
           ],
           [
-            30,
-            53
+            -3,
+            63
           ]
         ],
         "radius": 2,
-        "style": "worn",
-        "coverage": 0.8,
+        "style": "solid",
+        "coverage": 1.0,
         "pave": {
-          "kind": "solid",
-          "id": 24,
-          "data": 0
+          "kind": "noise",
+          "seed": 41,
+          "scale": 4,
+          "octaves": 2,
+          "rise": 3,
+          "stops": [
+            {
+              "kind": "solid",
+              "id": 1
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 5
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 6
+            }
+          ]
         }
       },
       {
@@ -1166,9 +1044,72 @@
         "style": "solid",
         "coverage": 1.0,
         "pave": {
-          "kind": "solid",
-          "id": 5,
-          "data": 2
+          "kind": "noise",
+          "seed": 41,
+          "scale": 4,
+          "octaves": 2,
+          "rise": 3,
+          "stops": [
+            {
+              "kind": "solid",
+              "id": 1
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 5
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 6
+            }
+          ]
+        }
+      },
+      {
+        "id": "p4",
+        "kind": "stroke",
+        "seed": 6,
+        "points": [
+          [
+            16,
+            64
+          ],
+          [
+            24,
+            60
+          ],
+          [
+            27,
+            53
+          ]
+        ],
+        "radius": 2,
+        "style": "solid",
+        "coverage": 1.0,
+        "pave": {
+          "kind": "noise",
+          "seed": 41,
+          "scale": 4,
+          "octaves": 2,
+          "rise": 3,
+          "stops": [
+            {
+              "kind": "solid",
+              "id": 1
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 5
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 6
+            }
+          ]
         }
       },
       {
@@ -1226,27 +1167,6 @@
           {
             "corners": [
               [
-                -32,
-                68
-              ],
-              [
-                -25,
-                75
-              ]
-            ]
-          }
-        ],
-        "style": "@stilts-grass"
-      },
-      {
-        "id": "b2",
-        "kind": "house",
-        "seed": 7,
-        "front": "negZ",
-        "wings": [
-          {
-            "corners": [
-              [
                 -20,
                 61
               ],
@@ -1254,28 +1174,10 @@
                 -13,
                 68
               ]
-            ],
-            "spec": {
-              "ridge": "AlongX"
-            }
-          },
-          {
-            "corners": [
-              [
-                -19,
-                69
-              ],
-              [
-                -15,
-                72
-              ]
-            ],
-            "spec": {
-              "ridge": "AlongZ"
-            }
+            ]
           }
         ],
-        "style": "@cottage"
+        "style": "@stilts-grass"
       },
       {
         "id": "b3",
@@ -1296,7 +1198,7 @@
             ]
           }
         ],
-        "style": "@workshop"
+        "style": "@stilts-ground"
       },
       {
         "id": "t1",

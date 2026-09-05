@@ -53,20 +53,20 @@ TRANSECT 29 stations from (2, -100) to (2, -72), every 1
   (    2,   -89)      16       16           22  spawn spawn-1#1     
   (    2,   -88)      16       16           23  spawn spawn-1#1     
   (    2,   -87)      16       16           16                      
-  (    2,   -86)      16       16           16  stroke p1#1         
-  (    2,   -85)      16       16           16  stroke p1#1         
-  (    2,   -84)      16       16           16  stroke p1#1         
-  (    2,   -83)      16       16           16  stroke p1#1         
-  (    2,   -82)      16       16           16  stroke p1#1         
-  (    2,   -81)      16       16           16  stroke p1#1         
-  (    2,   -80)      15       15           15  stroke p1#1         -1
-  (    2,   -79)      15       15           15  stroke p1#1         
-  (    2,   -78)      15       15           15  stroke p1#1         
-  (    2,   -77)      15       15           15  stroke p1#1         
-  (    2,   -76)      14       14           14  stroke p1#1         -1
-  (    2,   -75)      14       14           14  stroke p1#1         
-  (    2,   -74)      14       14           14  stroke p1#1         
-  (    2,   -73)      14       14           14  stroke p1#1         
-  (    2,   -72)      14       14           14  stroke p1#1         
+  (    2,   -86)      16       16           16                      
+  (    2,   -85)      16       16           16                      
+  (    2,   -84)      16       16           16                      
+  (    2,   -83)      16       16           16                      
+  (    2,   -82)      16       16           16  stroke p2#1         
+  (    2,   -81)      16       16           16  stroke p2#1         
+  (    2,   -80)      15       15           15  stroke p2#1         -1
+  (    2,   -79)      15       15           15  stroke p2#1         
+  (    2,   -78)      15       15           15  stroke p2#1         
+  (    2,   -77)      15       15           15  stroke p2#1         
+  (    2,   -76)      14       14           14  stroke p2#1         -1
+  (    2,   -75)      14       14           14  stroke p2#1         
+  (    2,   -74)      14       14           14  stroke p2#1         
+  (    2,   -73)      14       14           14  stroke p2#1         
+  (    2,   -72)      14       14           14  stroke p2#1         
 rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn spawn-1#1 at (0, -98), stroke p1#1 at (2, -86), ironcube spawn-1:0#1 at (0, -85)
+beside: spawn spawn-1#1 at (0, -98), stroke p2#1 at (0, -86), stroke p1#1 at (4, -85)
