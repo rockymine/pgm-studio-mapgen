@@ -1,12 +1,13 @@
-"""The built board as text, read off the API: a heightmap, a slope grid, two sections, a transect through
-every feature, a profile along every route, the theme census and the dressing pass's claims — the reads a
-model can subtract from, beside the pictures it can only gauge.
+"""The built board as text, read off the API: a heightmap, a slope grid, which ground no player can reach,
+two sections, a transect through every feature, a profile along every route, the theme census and the
+dressing pass's claims — the reads a model can subtract from, beside the pictures it can only gauge.
 
     python3 tools/render/textreads.py specs/<slug> [--into <dir>] [--slug <slug>] [--every N]
 
 `drive.py` runs the same pass after every export and prints the summaries inline; this entry re-reads a
 driven board without driving it again. Every grid is the studio's own answer on `?format=text` —
-`render/heightmap`, `slopes`, `render/section`, `transect`, `walk`, `themes/census` and `sketch/dressing`
+`render/heightmap`, `slopes`, `reach`, `render/section`, `transect`, `walk`, `themes/census` and
+`sketch/dressing`
 — so what a column carries, which layer drew it and what a goal keeps clear come from the build's own
 record rather than from a sidecar. What this pass adds is the extent: a transect through every spawn,
 goal, house, water prop, boulder and made thing on the board, its box taken from the documents, and a
@@ -135,6 +136,19 @@ def summary_of(text):
     return (text or "").strip().splitlines()[0] if text else "(no answer)"
 
 
+def reach_line(text):
+    """The reach read reduced to the one line a drive prints: the count and the largest patch, or that every
+    patch is reachable. The body carries the boxes; this says whether to open it."""
+    for line in text.split("\n"):
+        stripped = line.strip()
+        if "no player can get to" in stripped:
+            count = stripped.split(" patch(es)")[0]
+            return f"reach: {count} patch(es) out of reach — see 04-reach.txt"
+        if stripped.startswith("every patch of standing ground"):
+            return "reach: every patch reachable"
+    return "reach: no answer"
+
+
 def write_all(into, slug, intent, layout, fetch, every=None):
     """Every text read, written into `into`, and the summaries returned for the drive to print.
     `fetch(method, path, body=None)` answers the API's `text/plain` body, or None."""
@@ -153,6 +167,14 @@ def write_all(into, slug, intent, layout, fetch, every=None):
     heightmap = fetch("GET", f"/map/{slug}/render/heightmap?format=text{step}")
     put("02-heightmap.txt", heightmap)
     put("03-slopes.txt", fetch("GET", f"/map/{slug}/slopes?format=text{step}"))
+
+    # Which standing ground no player can get to. Not a fault — scenery and a side observer island read
+    # exactly like a shape stranded by accident — so it is printed for the author to judge rather than
+    # counted against the board.
+    reach = fetch("GET", f"/map/{slug}/reach")
+    put("04-reach.txt", reach)
+    if reach:
+        summaries.append("  " + reach_line(reach))
 
     board = extent(heightmap)
     if board:
