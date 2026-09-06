@@ -638,8 +638,15 @@ def patch_intent(intent, finish):
     and is the author's to state. `voidEnforcement` fills the board's void with the barrier PGM enforces,
     sparing the rects `voidExclusions` names.
 
+    `authors` rides on the meta as well as in the store call's own body. The store applies the body's list
+    to the map row and that is what the `<authors>` block is written from; the meta copy is what every
+    read taken against this intent afterwards is judged on, and `EX6` — the observer platform's authors
+    board — is one of them. Left off, a map whose XML names its author is reported as naming nobody.
+
     Which storey a goal stands on is the plan's to say: `DestroyablePlacement.layer` and
     `CorePlacement.layer` carry it through the compile onto every orbit image, so nothing is patched here."""
+    if authors := finish.get("authors"):
+        intent.setdefault("meta", {})["authors"] = authors
     if created := finish.get("created"):
         intent.setdefault("meta", {})["created"] = created
         print(f"    created {created}")

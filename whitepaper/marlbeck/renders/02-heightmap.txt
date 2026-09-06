@@ -1,0 +1,261 @@
+HEIGHTMAP  1 char = 1x1 blocks (the top-left block of each)  x -42..41 across, z -128..127 down
+KEY  char = ground height above y16 in bands of 1 block(s): 0 = y16..16, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
+      -4        -3        -2        -1         0         1         2         3         4 
+     210987654321098765432109876543210987654321012345678901234567890123456789012345678901
+-128                             dddddddddddddddddddddddddddd                            
+-127                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+-126                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+-125                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+-124                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+-123                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+-122                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+-121                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+-120                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+-119                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+-118                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+-117                             dddddddddddddddddddddddddddd                            
+-116 9aaabcddedeffggggggggggfffeedddddddddddddddddddddddddddeeeeedcba87544334444444444444
+-115 aaabcceeeeffghhhhhhhhhhgggffedddddddddddddddddddeeeeeeeeeeeeddba97544444444444444444
+-114 abbccdefffggghhhhhhhhhhhhggfeedddddddddddddddddeeeeeeeefffffedca97644444444444444444
+-113 abbcdeffgggghhhhhhhhihiihhggfeedddddddddddddddeeeeeefffffggggecb98654444444444444444
+-112 bbbddffggggghhhhhhhhiiiiihhggfedddddddddddddddeeeeeffggggggggecb98654444444444444444
+-111 bbcdefggggghhhhhhhhhiiiiiihhgfeedddddddddddddeeeeefffggggggggedba8754444444444444444
+-110 bcdefgggggghhhhhhiiiiiiiiihhgfeedddddddddddddeeeeefffggggggggfdca9764444444444444444
+-109 cdeffggggghhhhhiiiiiiiiiiiihgffeeddddddddddddeeeeffffgggggggggecb9865444444444444444
+-108 cdeffgggggghhhiiiiiiiiiiiihhgffeeddddddddddddeeeeffffgggggggggecb9865444444444444444
+-107 ddeffgggghhhhiiiiiiiiiiiiihhhgfeeeddddddddddeeeeeffffgggggggggedba875444444444444444
+-106 defffgggghhhhiiiiiiiiiiiiiiihggfeeddddddddddeeeeeffffgggggggggedba875444444444444444
+-105 defffgggghhhiiiiiiiiiiiiiiiihhgfeeddddddddddeeeeeffffgggggggggfdca976444444444444444
+-104 cefffgggghhhiiiiiiiiiiiiiiiihhgfeeddcdddddddeeeefffffggggggggggeca976544444444444444
+-103 cefffgggghhhhiiiiiiiiiiiiiiiihhgfeddcddddddeeeeefffffggggggggggecb986544444444444444
+-102 cdeeffgggghhhhhhiiiiiiiiiiiiihhgfeddcddddddeeeeeffffffgggggggggecb986544444444444444
+-101 bcdeefggggghhhhhhiihihiiiiiiiihgfeddcddddddeeeeeffffffgggggggggecb986544444444444444
+-100 bcdeefgggggghhhhhhhhhhhhhiiiiihgfeddcddddddeeeeffffffggggggggggecb986544444444444444
+ -99 bbcdeffgggggggghhhhhhhhhhhiiihgfeedccddddddeeeeffffffggggggggggedb986544444444444444
+ -98 abbcdeefggggggggghhhhhhhhhhhhgfeedccccdddddeeeeffffffggggggggggedb986544444444444444
+ -97 aabccdeffggggggggghhhhhhhhhggfeedcccccdddddeeeefffffgggggggggggedb986544444444444444
+ -96 aabbcceefffggggggggghhhhgggffeedccccccdddddeeeefffffgggggggggggecb986544444444444444
+ -95 9aabbcdeeefffggggggggggggffeeddcccccccdddddeeeeeffffgggggggggggecb986544444444444444
+ -94 99aabcdddeffffffffffffffeeedccbbbbcccccdddddeeeeffffgggggggggggecb986544444444444444
+ -93 899abcccddeeeeeeeeeeeeedcddcbbbbbbccccccddddeeeeffffgggggggggggeca976444444444444444
+ -92 8899abbccdddddddddddddccbbbbabbbbbbbccccddddeeeeeffffgggggggggfdca875444444444444444
+ -91 88899aabbccccccccccccbbaaaaaaabbbbbbbccccddddeeeeffffgggggggggedba875444444443344444
+ -90 8888899abbbbbbbbbbcbbaaa99aaaaaabbbbbbcccddddeeeeffffgggggggggedba865444444443334444
+ -89 778888899aaaabbbaabaaa99999aaaaaabbbbbccccddddeeeffffgggggggggedb9865444444443333444
+ -88 7778888889999aaaaaa999999999aaaaaabbbbbccccdddeeeffffgggggggggecb9865444444443333444
+ -87 77778888888899999999999999999aaaaaabbbbbcccdddeeefffggggggggggecb9865444444443333444
+ -86 7777888888888898888889999999999aaaaabbbbccccdddeefffggggggggggecb9765444444443333444
+ -85 77777888888888888888889999999999aaaaabbbbcccdddeefffggggggggggeca9764444444443334444
+ -84 777777787777888888888888999999999aaaaabbbbcccddeefffgggggggggfdca9754444444443334444
+ -83 7777777777777788888888888899999999aaaabbbbcccddeefffgggggggggfdca8754444444433334444
+ -82 77777777777777788888888888889999999aaaabbbcccddeeeffgggggggggedba8754444444433334444
+ -81 777777777777777788888888888888999999aaaabbbccdddeeffgggggggggedba8754444444433334444
+ -80 7777777777777777788888888888888999999aaabbbcccddeeffgggggggggedb98654444444443334444
+ -79 66677777777777777788888888888888899999aaabbbccddeeffggggggggfecb98654444444444334444
+ -78 666667777777777777778888888888888899999aabbbccddeeffggggggggfeca97644444444444444444
+ -77 6666666677777777777777788888888888889999aabbcccddeffggggggggfdca97644444444444444444
+ -76 6666666666777777777777777888888888888999aaabbccddeffggggggggfdca97644444444444444444
+ -75 66666666666677777777777777888888888888999aabbccddeffggggggggedba87544444444444444444
+ -74 666666666666667777777777888888888888888999aabccddefggggggggfedba87544444444444444444
+ -73 666666666666666777777788888888888888888899aabbcddefggggggggfecb986444444444444444444
+ -72 6666555666666666777778888888888888888888899abbcddefggggggggfdcb986444444444444444444
+ -71 5555555556666666777788888888888888888888889aabcddefggggggggfdca986444444444444444444
+ -70 5555555555666666777888888888888888888888889aabccdefggggggggfdca976444444444444444444
+ -69 5555555555566666777888888888HHHHH88888888899abccdefggggggggedca976444444444444444444
+ -68 5555555555556666678888888888HHHHH88888888889abccdefggggggggedca976444444444444444444
+ -67 4555555555555666678888888888HH!HH88888888889abbcdefggggggggedca976444444444444444444
+ -66 4444444555555666677888888888HHHHH88888888899abbcdefggggggggedca976444444444444444444
+ -65 4444444445555566667888888888HHHHH88888888899abbcdefggggggggedca976444444444444444444
+ -64 44444444444555556677888888888888888888888899abbcdefggggggggedca976444444444444444444
+ -63 44444444444455555667788888888888888888878899abbcdefggggggggedca976444444444444444444
+ -62 33333333444444555566778888888888888888778889aabcdefggggggggfdca976444444444444444444
+ -61 33333333334444445556677788888888888877777889aabcdefggggggggfecb976444444444444444444
+ -60 ~~~~33333333344445556667777888888777777778899abcdeegggggggggecb986544444444444444444
+ -59 ~~~~~~~~~333333444455566666777777666666677889abccdefggggggggecb986544444444444444444
+ -58 ~~~~~~~~~~~~~333344445555666666~~~~~~~~~67789aabcdefggggggggedba87544444444444444444
+ -57 ~~~~~~~~~~~~~~~~~33444455555~~~~~~~~~~~~~~7889abcdefggggggggedba87544444444444444444
+ -56 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~789abcdefggggggggedba87544444444444444444
+ -55 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~89abcdfggggggggedba97544444444444444444
+ -54 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~9abcdfggggggggedca97544444444444444444
+ -53 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~abcdeggggggggfdca97644444444444444444
+ -52 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~acdegggggggggecb98654444444444444444
+ -51 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~abdefggggggggecb98654444444444444444
+ -50 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~bcefggggggggedba8754444444444444444
+ -49 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~bcdfggggggggedba8754444444444444444
+ -48 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~cdeggggggggfdca9764444444444444444
+ -47 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~cdegggggggggecb9865444444444444444
+ -46 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~bdefggggggggecb9865444444444444444
+ -45 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~bcefggggggggedba875444444444444444
+ -44 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~bcdfggggggggedba875444444444444444
+ -43 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~bcdfggggggggfdca976444444444444444
+ -42 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~bcdegggggggggeca976544444444444444
+ -41 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~9bcdefggggggggecb986544444444444444
+ -40 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~9bcdefggggggggecb986544444444444444
+ -39 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~9bcdefggggggggecb986544444444444444
+ -38 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~9abcdefggggggggedba87544444444444444
+ -37 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~9abcdefggggggggedba87544444444444444
+ -36 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~89abcdefggggggggedba87544444444444444
+ -35 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~789abcdefggggggggedba87544444444444444
+ -34 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~7889abcdefggggggggedb986544444444444444
+ -33 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~67899abcdegggggggggecb986544444444444444
+ -32 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~5677899abcdfggggggggfeca976444444444444444
+ -31 1111~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~45567789aabcdfggggggggfdca976444444444444444
+ -30 1111111111~~~~~~~~~~~~~~~~~~~~~~~~~~334455667789aabcdfggggggggedba875444444444444444
+ -29 11111111111111111~~~~~~~~~~~~~~~2333344455667789aabcdeggggggggedba875444444444444444
+ -28 111111111111111111122222222222233333444455667789aabcdeffggggggecb9865444444444444444
+ -27 111111111111111111222222222223333334444555667889aabcddeffffffedca9865444444444444445
+ -26 0111111111111111222222222223333333444445556678899abccddeeeeeedcba9764444444444555555
+ -25 0111111111112222222222222233333334444455566678899abbccdddddddcbba9765555554455555555
+ -24 0111111111122222222222222233333344444455566778899aabbcccdddcccba98876655555555555555
+ -23 1111111111122222222222222333333444444555566778899aabbbccccccbbaa98876665555555555555
+ -22 1111111111122222222222222333333444444555566778899aaabbbccccbbbaa98877666555555555555
+ -21 11111111111122222222222233333344444445556667778899aabbbbbbbbbaa998877666655555555555
+ -20 11111111111111222222222233333344444445556667778899aaabbbbbbbaaa998877766665555555555
+ -19 11111111111111122222222233333344444455556667778899aaabbbbbbbaaa998877766666555555555
+ -18 111111111111111122222222333333444444555566677788999aaabbbbbaaa9998877766666555555555
+ -17 111111111111111112222222333333444444555566677788999aaabbbbbaaa9998877776666555555555
+ -16                                                                                     
+ -15                                                                                     
+ -14                                                                                     
+ -13                                                                                     
+ -12                                                                                     
+ -11                                                                                     
+ -10                                                                                     
+  -9                                                                                     
+  -8                                                                                     
+  -7                                                                                     
+  -6                                                                                     
+  -5                                                                                     
+  -4                                                                                     
+  -3                                                                                     
+  -2                                                                                     
+  -1                                                                                     
+   0                                                                                     
+   1                                                                                     
+   2                                                                                     
+   3                                                                                     
+   4                                                                                     
+   5                                                                                     
+   6                                                                                     
+   7                                                                                     
+   8                                                                                     
+   9                                                                                     
+  10                                                                                     
+  11                                                                                     
+  12                                                                                     
+  13                                                                                     
+  14                                                                                     
+  15                                                                                     
+  16 5555555556666777788999aaabbbbbaaa999887776665555444444333333222222211111111111111111
+  17 5555555556666677788999aaabbbbbaaa999887776665555444444333333222222221111111111111111
+  18 555555555666667778899aaabbbbbbbaaa99887776665555444444333333222222222111111111111111
+  19 555555555566667778899aaabbbbbbbaaa99887776665554444444333333222222222211111111111111
+  20 555555555556666778899aabbbbbbbbbaa99887776665554444444333333222222222222111111111111
+  21 55555555555566677889aabbbccccbbbaaa9988776655554444443333332222222222222211111111111
+  22 55555555555556667889aabbccccccbbbaa9988776655554444443333332222222222222211111111111
+  23 55555555555555667889abcccdddcccbbaa9988776655544444433333322222222222222211111111110
+  24 5555555544555555679abbcdddddddccbba9988766655544444333333322222222222222111111111110
+  25 5555554444444444679abcdeeeeeeddccba9988766555444443333333222222222221111111111111110
+  26 5444444444444445689acdeffffffeddcbaa988766555444433333322222222222111111111111111111
+  27 4444444444444445689bceggggggffedcbaa987766554444333332222222222221111111111111111111
+  28 444444444444444578abdeggggggggedcbaa9877665544433332~~~~~~~~~~~~~~~11111111111111111
+  29 444444444444444578abdeggggggggfdcbaa987766554433~~~~~~~~~~~~~~~~~~~~~~~~~~1111111111
+  30 444444444444444679acdfggggggggfdcbaa98776554~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~1111
+  31 444444444444444679acefggggggggfdcba9987765~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  32 444444444444445689bcegggggggggedcba99876~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  33 444444444444445689bdeggggggggfedcba9887~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  34 44444444444444578abdeggggggggfedcba987~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  35 44444444444444578abdeggggggggfedcba98~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  36 44444444444444578abdeggggggggfedcba9~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  37 44444444444444578abdeggggggggfedcba9~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  38 444444444444445689bceggggggggfedcb9~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  39 444444444444445689bceggggggggfedcb9~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  40 444444444444445689bceggggggggfedcb9~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  41 444444444444445679acegggggggggedcb~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  42 444444444444444679acdfggggggggfdcb~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  43 444444444444444578abdeggggggggfdcb~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  44 444444444444444578abdeggggggggfecb~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  45 4444444444444445689bceggggggggfedb~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  46 4444444444444445689bcegggggggggedc~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  47 4444444444444444679acdfggggggggedc~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  48 4444444444444444578abdeggggggggfdcb~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  49 4444444444444444578abdeggggggggfecb~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  50 44444444444444445689bceggggggggfedba~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  51 44444444444444445689bcegggggggggedca~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  52 44444444444444444679acdfggggggggedcba~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  53 44444444444444444579acdeggggggggfdcba9~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  54 44444444444444444579abdeggggggggfdcba98~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  55 44444444444444444578abdeggggggggfedcba987~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  56 44444444444444444578abdeggggggggfedcba9887~~~~~~~~~~~~~~55555444433~~~~~~~~~~~~~~~~~
+  57 44444444444444444578abdeggggggggfedcbaa98776~~~~~~~~~666666555544443333~~~~~~~~~~~~~
+  58 444444444444444445689bceggggggggfedccba988776666666777777666665554444333333~~~~~~~~~
+  59 444444444444444445689bcegggggggggeedcba99887777777788888877776665554444333333333~~~~
+  60 444444444444444444679bcefggggggggfedcbaa98877777888888888888777665554444443333333333
+  61 444444444444444444679acdfggggggggfedcbaa98887788888888888888887766555544444433333333
+  62 444444444444444444679acdeggggggggfedcbba99887888888888888888888776655555444444444444
+  63 444444444444444444679acdeggggggggfedcbba99888888888888888888888877665555544444444444
+  64 444444444444444444679acdeggggggggfedcbba99888888888HHHHH8888888887666655555444444444
+  65 444444444444444444679acdeggggggggfedcbba99888888888HHHHH8888888887766665555554444444
+  66 444444444444444444679acdeggggggggfedcbba98888888888HH!HH8888888888766665555555555554
+  67 444444444444444444679acdeggggggggfedccba98888888888HHHHH8888888888766666555555555555
+  68 444444444444444444679acdeggggggggfedccba99888888888HHHHH8888888887776666655555555555
+  69 444444444444444444679acdfggggggggfedccbaa9888888888888888888888887776666665555555555
+  70 444444444444444444689acdfggggggggfeddcbaa9888888888888888888888877776666666555555555
+  71 444444444444444444689bcdfggggggggfeddcbba9988888888888888888888777776666666665556666
+  72 444444444444444444689bcefggggggggfeddcbbaa998888888888888888887777777666666666666666
+  73 44444444444444444578abdefggggggggfeddccbaa999888888888888888777777777766666666666666
+  74 44444444444444444578abdeggggggggffeddccbbaa99988888888888877777777777777666666666666
+  75 44444444444444444679acdfggggggggffeddccbbaaa9998888888888887777777777777776666666666
+  76 44444444444444444679acdfggggggggffeddcccbbaa9999888888888888877777777777777766666666
+  77 44444444444444444679acefggggggggffeeddccbbbaa999998888888888888877777777777777766666
+  78 44443344444444445689bcefggggggggffeeddccbbbaaa99999888888888888888777777777777777666
+  79 44443334444444445689bdegggggggggffeeddcccbbbaaa9999998888888888888877777777777777777
+  80 4444333344444444578abdegggggggggffeedddccbbbaaaa999999888888888888887777777777777777
+  81 4444333344444444578abdegggggggggffeeeddcccbbbaaaa99999998888888888888777777777777777
+  82 4444333344444444578acdfgggggggggfffeeddcccbbbbaaaa9999999988888888888877777777777777
+  83 4444333444444444579acdfgggggggggfffeeddcccbbbbaaaaa999999999888888888888777787777777
+  84 4444333444444444679aceggggggggggfffeedddcccbbbbaaaaa99999999998888888888888888877777
+  85 4443333444444445679bceggggggggggfffeedddccccbbbbaaaaa9999999999888888988888888887777
+  86 4443333444444445689bceggggggggggfffeeedddcccbbbbbaaaaaa99999999999999999888888887777
+  87 4443333444444445689bcegggggggggffffeeedddccccbbbbbaaaaaa999999999aaaaaa9999888888777
+  88 4443333444444445689bdegggggggggffffeeeddddccccbbbbbaaaaaa99999aaabaabbbaaaa998888877
+  89 444433344444444568abdegggggggggffffeeeeddddcccbbbbbbaaaaaa99aaabbcbbbbbbbbbba9988888
+  90 444443344444444578abdegggggggggffffeeeeddddccccbbbbbbbaaaaaaabbccccccccccccbbaa99888
+  91 444444444444444578acdfgggggggggffffeeeeeddddccccbbbbbbbabbbbccdddddddddddddccbba9988
+  92 444444444444444679acegggggggggggffffeeeeddddccccccbbbbbbcddcdeeeeeeeeeeeeeddcccba998
+  93 444444444444445689bcegggggggggggffffeeeedddddcccccbbbbccdeeeffffffffffffffedddcbaa99
+  94 444444444444445689bcegggggggggggffffeeeeedddddcccccccddeeffggggggggggggfffeeedcbbaa9
+  95 444444444444445689bcegggggggggggfffffeeeedddddccccccdeeffggghhhhgggggggggfffeeccbbaa
+  96 444444444444445689bdegggggggggggfffffeeeedddddcccccdeefgghhhhhhhhhgggggggggffedccbaa
+  97 444444444444445689bdeggggggggggffffffeeeedddddccccdeefghhhhhhhhhhhhgggggggggfeedcbba
+  98 444444444444445689bdeggggggggggffffffeeeeddddddccdeefghiiihhhhhhhhhhhggggggggffedcbb
+  99 444444444444445689bceggggggggggffffffeeeeddddddcddefghiiiiihhhhhhhhhhhhhggggggfeedcb
+ 100 444444444444445689bcegggggggggffffffeeeeeddddddcddefghiiiiiiiihihiihhhhhhgggggfeedcb
+ 101 444444444444445689bcegggggggggffffffeeeeeddddddcddefghhiiiiiiiiiiiiihhhhhhggggffeedc
+ 102 444444444444445689bceggggggggggfffffeeeeeddddddcddefghhiiiiiiiiiiiiiiiihhhhggggfffec
+ 103 444444444444445679aceggggggggggfffffeeeedddddddcddeefghhiiiiiiiiiiiiiiiihhhggggfffec
+ 104 444444444444444679acdfgggggggggffffeeeeeddddddddddeefghhiiiiiiiiiiiiiiiihhhggggfffed
+ 105 444444444444444578abdegggggggggffffeeeeeddddddddddeefgghiiiiiiiiiiiiiiihhhhggggfffed
+ 106 444444444444444578abdegggggggggffffeeeeeddddddddddeeefghhhiiiiiiiiiiiiihhhhggggffedd
+ 107 4444444444444445689bcegggggggggffffeeeeddddddddddddeeffghhiiiiiiiiiiiihhhggggggffedc
+ 108 4444444444444445689bcegggggggggffffeeeeddddddddddddeeffghiiiiiiiiiiiihhhhhgggggffedc
+ 109 4444444444444444679acdfggggggggfffeeeeedddddddddddddeefghhiiiiiiiiihhhhhhggggggfedcb
+ 110 4444444444444444578abdeggggggggfffeeeeedddddddddddddeefghhiiiiiihhhhhhhhhgggggfedcbb
+ 111 44444444444444445689bceggggggggffeeeeedddddddddddddddefgghhiiiiihhhhhhhhgggggffddbbb
+ 112 44444444444444445689bceggggfffffeeeeeedddddddddddddddeefgghhiihihhhhhhhhggggffedcbba
+ 113 44444444444444444679acdefffffeeeeeeeedddddddddddddddddeefgghhhhhhhhhhhhgggfffedccbba
+ 114 44444444444444444579abddeeeeeeeeeeeedddddddddddddddddddeffggghhhhhhhhhhgffeeeeccbaaa
+ 115 44444444444443344578abcdeeeeedddddddddddddddddddddddddddeefffggggggggggffededdcbaaa9
+ 116                             dddddddddddddddddddddddddddd                            
+ 117                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+ 118                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+ 119                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+ 120                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+ 121                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+ 122                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+ 123                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+ 124                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+ 125                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+ 126                             ddddHHHHHHHHHHHHHHHHHHHHdddd                            
+ 127                             dddddddddddddddddddddddddddd                            
+low y16, high y34, range 18

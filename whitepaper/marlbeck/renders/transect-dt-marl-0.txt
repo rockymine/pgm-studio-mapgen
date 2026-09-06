@@ -1,0 +1,61 @@
+## dt-marl-0 (destroyable) along x
+TRANSECT 25 stations from (-24, -67) to (0, -67), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,   -67)      24       24           24                      
+  (  -23,   -67)      24       24           24                      
+  (  -22,   -67)      24       24           24                      
+  (  -21,   -67)      24       24           24                      
+  (  -20,   -67)      24       24           24                      
+  (  -19,   -67)      24       24           24                      
+  (  -18,   -67)      24       24           24                      
+  (  -17,   -67)      24       24           24                      
+  (  -16,   -67)      24       24           24                      
+  (  -15,   -67)      24       24           24                      
+  (  -14,   -67)      24       24           24  destroyable dt-marl  
+  (  -13,   -67)      24       24           70  destroyable dt-marl  
+  (  -12,   -67)      24       24           71  destroyable dt-marl  
+  (  -11,   -67)      24       24           70  destroyable dt-marl  
+  (  -10,   -67)      24       24           24  destroyable dt-marl  
+  (   -9,   -67)      24       24           24                      
+  (   -8,   -67)      24       24           24                      
+  (   -7,   -67)      24       24           24                      
+  (   -6,   -67)      24       24           24                      
+  (   -5,   -67)      24       24           24                      
+  (   -4,   -67)      24       24           24                      
+  (   -3,   -67)      24       24           24                      
+  (   -2,   -67)      24       24           24                      
+  (   -1,   -67)      24       24           24                      
+  (    0,   -67)      24       24           24                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable dt-marl at (-14, -69)
+
+## dt-marl-0 (destroyable) along z
+TRANSECT 25 stations from (-12, -79) to (-12, -55), every 1
+  station        ground  surface  water  top  standing            step
+  (  -12,   -79)      24       24           24  stroke haul         
+  (  -12,   -78)      24       24           24  stroke haul         
+  (  -12,   -77)      24       24           24  stroke haul         
+  (  -12,   -76)      24       24           24  stroke haul         
+  (  -12,   -75)      24       24           24  stroke haul         
+  (  -12,   -74)      24       24           24                      
+  (  -12,   -73)      24       24           24                      
+  (  -12,   -72)      24       24           24                      
+  (  -12,   -71)      24       24           24                      
+  (  -12,   -70)      24       24           24                      
+  (  -12,   -69)      24       24           24  destroyable dt-marl  
+  (  -12,   -68)      24       24           70  destroyable dt-marl  
+  (  -12,   -67)      24       24           71  destroyable dt-marl  
+  (  -12,   -66)      24       24           70  destroyable dt-marl  
+  (  -12,   -65)      24       24           24  destroyable dt-marl  
+  (  -12,   -64)      24       24           24                      
+  (  -12,   -63)      24       24           24                      
+  (  -12,   -62)      24       24           24                      
+  (  -12,   -61)      24       24           24                      
+  (  -12,   -60)      24       24           24                      
+  (  -12,   -59)      23       23           23                      -1
+  (  -12,   -58)      22       22           22                      -1
+  (  -12,   -57)      21       21           21  water beck-water    -1
+  (  -12,   -56)      20       20           20  water beck-water    -1
+  (  -12,   -55)      19       19           19  water beck-water    -1
+rises 0, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke haul at (-14, -81), destroyable dt-marl at (-14, -69), water beck-water at (-11, -58)

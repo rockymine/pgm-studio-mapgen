@@ -1,0 +1,76 @@
+## spawn-blue (spawn) along x
+TRANSECT 45 stations from (-22, 122) to (22, 122), every 1
+  station        ground  surface  water  top  standing            step
+  (  -22,   122)                                                    void
+  (  -21,   122)                                                    void
+  (  -20,   122)                                                    void
+  (  -19,   122)                                                    void
+  (  -18,   122)                                                    void
+  (  -17,   122)                                                    void
+  (  -16,   122)                                                    void
+  (  -15,   122)                                                    void
+  (  -14,   122)      29       29           29                      
+  (  -13,   122)      29       29           29                      
+  (  -12,   122)      29       29           29                      
+  (  -11,   122)      29       29           44                      
+  (  -10,   122)      29       29           44  spawn spawn-1#1     
+  (   -9,   122)      29       29           44  spawn spawn-1#1     
+  (   -8,   122)      29       29           44  spawn spawn-1#1     
+  (   -7,   122)      29       29           44  spawn spawn-1#1     
+  (   -6,   122)      29       29           44  spawn spawn-1#1     
+  (   -5,   122)      29       29           44  spawn spawn-1#1     
+  (   -4,   122)      29       29           44  spawn spawn-1#1     
+  (   -3,   122)      29       29           44  spawn spawn-1#1     
+  (   -2,   122)      29       29           44  spawn spawn-1#1     
+  (   -1,   122)      29       29           44  spawn spawn-1#1     
+  (    0,   122)      29       29           44  spawn spawn-1#1     
+  (    1,   122)      29       29           44  spawn spawn-1#1     
+  (    2,   122)      29       29           44  spawn spawn-1#1     
+  (    3,   122)      29       29           44  spawn spawn-1#1     
+  (    4,   122)      29       29           44  spawn spawn-1#1     
+  (    5,   122)      29       29           44  spawn spawn-1#1     
+  (    6,   122)      29       29           44  spawn spawn-1#1     
+  (    7,   122)      29       29           44  spawn spawn-1#1     
+  (    8,   122)      29       29           44  spawn spawn-1#1     
+  (    9,   122)      29       29           44  spawn spawn-1#1     
+  (   10,   122)      29       29           44                      
+  (   11,   122)      29       29           29                      
+  (   12,   122)      29       29           29                      
+  (   13,   122)      29       29           29                      
+  (   14,   122)                                                    void
+  (   15,   122)                                                    void
+  (   16,   122)                                                    void
+  (   17,   122)                                                    void
+  (   18,   122)                                                    void
+  (   19,   122)                                                    void
+  (   20,   122)                                                    void
+  (   21,   122)                                                    void
+  (   22,   122)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (-10, 120)
+
+## spawn-blue (spawn) along z
+TRANSECT 20 stations from (0, 108) to (0, 127), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,   108)      29       29           29  stroke haul#1       
+  (    0,   109)      29       29           29  stroke haul#1       
+  (    0,   110)      29       29           29  stroke haul#1       
+  (    0,   111)      29       29           29  stroke haul#1       
+  (    0,   112)      29       29           29  stroke haul#1       
+  (    0,   113)      29       29           29  stroke haul#1       
+  (    0,   114)      29       29           29  stroke haul#1       
+  (    0,   115)      29       29           29  stroke haul#1       
+  (    0,   116)      29       29           39                      
+  (    0,   117)      29       29           40  spawn spawn-1#1     
+  (    0,   118)      29       29           41  spawn spawn-1#1     
+  (    0,   119)      29       29           42  spawn spawn-1#1     
+  (    0,   120)      29       29           43  spawn spawn-1#1     
+  (    0,   121)      29       29           44  spawn spawn-1#1     
+  (    0,   122)      29       29           44  spawn spawn-1#1     
+  (    0,   123)      29       29           43  spawn spawn-1#1     
+  (    0,   124)      29       29           42  spawn spawn-1#1     
+  (    0,   125)      29       29           41  spawn spawn-1#1     
+  (    0,   126)      29       29           40  spawn spawn-1#1     
+  (    0,   127)      29       29           39                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke haul#1 at (-1, 106), spawn spawn-1#1 at (-2, 117)

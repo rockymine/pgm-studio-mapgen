@@ -1,0 +1,81 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Marlbeck"
+ },
+ "globals": {
+  "cell": 2,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 20,
+  "observerY": 78
+ },
+ "pieces": [
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    -7,
+    -64,
+    14,
+    6
+   ],
+   "surface": 21
+  },
+  {
+   "id": "moor",
+   "role": "piece",
+   "rect": [
+    -21,
+    -58,
+    42,
+    50
+   ],
+   "surface": 20
+  }
+ ],
+ "zones": [
+  {
+   "id": "crossing",
+   "rect": [
+    -21,
+    -8,
+    42,
+    16
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "camp",
+    "at": [
+     14,
+     6
+    ],
+    "facing": "back",
+    "footprint": [
+     4,
+     1,
+     20,
+     10
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "dt-marl",
+    "piece": "moor",
+    "at": [
+     30,
+     49
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "The Marlstone"
+   }
+  ]
+ }
+}

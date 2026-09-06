@@ -1,0 +1,61 @@
+## dt-marl-1 (destroyable) along x
+TRANSECT 25 stations from (-1, 66) to (23, 66), every 1
+  station        ground  surface  water  top  standing            step
+  (   -1,    66)      24       24           24                      
+  (    0,    66)      24       24           24                      
+  (    1,    66)      24       24           24                      
+  (    2,    66)      24       24           24                      
+  (    3,    66)      24       24           24                      
+  (    4,    66)      24       24           24                      
+  (    5,    66)      24       24           24                      
+  (    6,    66)      24       24           24                      
+  (    7,    66)      24       24           24                      
+  (    8,    66)      24       24           24                      
+  (    9,    66)      24       24           24  destroyable dt-marl#1  
+  (   10,    66)      24       24           70  destroyable dt-marl#1  
+  (   11,    66)      24       24           71  destroyable dt-marl#1  
+  (   12,    66)      24       24           70  destroyable dt-marl#1  
+  (   13,    66)      24       24           24  destroyable dt-marl#1  
+  (   14,    66)      24       24           24                      
+  (   15,    66)      24       24           24                      
+  (   16,    66)      24       24           24                      
+  (   17,    66)      24       24           24                      
+  (   18,    66)      24       24           24                      
+  (   19,    66)      24       24           24                      
+  (   20,    66)      24       24           24                      
+  (   21,    66)      24       24           24                      
+  (   22,    66)      24       24           24                      
+  (   23,    66)      24       24           24                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable dt-marl#1 at (9, 64)
+
+## dt-marl-1 (destroyable) along z
+TRANSECT 25 stations from (11, 54) to (11, 78), every 1
+  station        ground  surface  water  top  standing            step
+  (   11,    54)      19       19           19  water beck-water#1  
+  (   11,    55)      20       20           20  water beck-water#1  +1
+  (   11,    56)      21       21           21  water beck-water#1  +1
+  (   11,    57)      22       22           22                      +1
+  (   11,    58)      23       23           23                      +1
+  (   11,    59)      24       24           24                      +1
+  (   11,    60)      24       24           24                      
+  (   11,    61)      24       24           24                      
+  (   11,    62)      24       24           24                      
+  (   11,    63)      24       24           24                      
+  (   11,    64)      24       24           24  destroyable dt-marl#1  
+  (   11,    65)      24       24           70  destroyable dt-marl#1  
+  (   11,    66)      24       24           71  destroyable dt-marl#1  
+  (   11,    67)      24       24           70  destroyable dt-marl#1  
+  (   11,    68)      24       24           24  destroyable dt-marl#1  
+  (   11,    69)      24       24           24                      
+  (   11,    70)      24       24           24                      
+  (   11,    71)      24       24           24                      
+  (   11,    72)      24       24           24                      
+  (   11,    73)      24       24           24                      
+  (   11,    74)      24       24           24  stroke haul#1       
+  (   11,    75)      24       24           24  stroke haul#1       
+  (   11,    76)      24       24           24  stroke haul#1       
+  (   11,    77)      24       24           24  stroke haul#1       
+  (   11,    78)      24       24           24  stroke haul#1       
+rises 5, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water beck-water#1 at (9, 52), destroyable dt-marl#1 at (9, 64), stroke haul#1 at (10, 74)

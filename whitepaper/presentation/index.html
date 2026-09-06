@@ -1,0 +1,1184 @@
+<title>Marlbeck &amp; the Four Documents</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+
+<style>
+/* ── tokens ─────────────────────────────────────────────────────────────────────────────────────
+   The palette is the studio's own surface-render legend: the three slope bands a terrain theme
+   paints with (moor, shoulder, face), the water it draws, and the orange it draws a monument in. */
+:root{
+  --moor:#5E8A44; --shoulder:#8E6A42; --face:#8A8A86; --water:#2C7595; --marker:#DB6B1B;
+
+  --ground:#F3F2EC; --panel:#FBFAF6; --edge:#DCDAD0;
+  --ink:#161A17; --ink-2:#4A5049; --ink-3:#797F78;
+  --accent:var(--marker); --accent-soft:#F6E3D2;
+  --refusal:#B23C2E; --complaint:#9A7412; --pass:#4C7A2E;
+  --rail:rgba(22,26,23,.07);
+
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#12150F; --panel:#1B1F18; --edge:#2E332A;
+    --ink:#EDEEE7; --ink-2:#A9AFA5; --ink-3:#767D73;
+    --moor:#7FAE60; --shoulder:#B08454; --face:#A5A59F; --water:#4C9CBF;
+    --marker:#F0873A; --accent:var(--marker); --accent-soft:#3A2A1B;
+    --refusal:#E27364; --complaint:#D6A83A; --pass:#84B85E;
+    --rail:rgba(237,238,231,.08);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#12150F; --panel:#1B1F18; --edge:#2E332A;
+  --ink:#EDEEE7; --ink-2:#A9AFA5; --ink-3:#767D73;
+  --moor:#7FAE60; --shoulder:#B08454; --face:#A5A59F; --water:#4C9CBF;
+  --marker:#F0873A; --accent:var(--marker); --accent-soft:#3A2A1B;
+  --refusal:#E27364; --complaint:#D6A83A; --pass:#84B85E;
+  --rail:rgba(237,238,231,.08);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--ground);color:var(--ink);font-family:var(--sans);
+     -webkit-font-smoothing:antialiased;overflow:hidden}
+
+/* ── the deck ───────────────────────────────────────────────────────────────────────────────── */
+#deck{position:relative;height:100dvh;width:100vw}
+.slide{position:absolute;inset:0;display:none;flex-direction:column;
+       padding:clamp(28px,4.2vh,54px) clamp(28px,4.6vw,84px) 62px;overflow:hidden}
+.slide.on{display:flex}
+@media (prefers-reduced-motion:no-preference){
+  .slide.on{animation:rise .34s cubic-bezier(.2,.7,.3,1) both}
+  @keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+}
+
+/* the eyebrow reads like the studio's own breadcrumb */
+.eyebrow{font-family:var(--mono);font-size:clamp(10px,1.15vw,13px);letter-spacing:.14em;
+         text-transform:uppercase;color:var(--ink-3);margin:0 0 clamp(14px,2.4vh,26px);flex:none}
+.eyebrow b{color:var(--accent);font-weight:500}
+
+h1{font-family:var(--mono);font-weight:700;letter-spacing:-.03em;line-height:1.02;
+   font-size:clamp(34px,6.4vw,80px);margin:0 0 .35em;text-wrap:balance;max-width:19ch}
+h2{font-family:var(--mono);font-weight:700;letter-spacing:-.022em;line-height:1.08;
+   font-size:clamp(24px,3.5vw,46px);margin:0 0 .5em;text-wrap:balance;max-width:24ch}
+h3{font-family:var(--mono);font-weight:500;letter-spacing:.01em;font-size:clamp(13px,1.5vw,17px);
+   margin:0 0 .5em;color:var(--ink-2)}
+p{font-size:clamp(15px,1.55vw,21px);line-height:1.55;margin:0 0 .8em;max-width:62ch;color:var(--ink-2)}
+p strong{color:var(--ink);font-weight:600}
+p.lead{font-size:clamp(17px,2vw,26px);line-height:1.45;color:var(--ink);max-width:38ch}
+em{font-style:italic}
+code{font-family:var(--mono);font-size:.9em;background:var(--rail);padding:.1em .35em;border-radius:3px}
+a{color:var(--accent)}
+
+/* Sized for a 16:9 projector, where nothing scrolls. On a shorter window the body scrolls in its
+   own track rather than clipping a paragraph off the bottom of a slide. */
+.body{flex:1;min-height:0;display:flex;flex-direction:column;gap:clamp(10px,1.8vh,20px);
+      overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--edge) transparent}
+.cols{display:grid;gap:clamp(18px,2.6vw,42px);align-items:start;min-height:0;flex:1}
+.cols>*{min-height:0}
+.cols.two{grid-template-columns:1fr 1fr}
+.cols.narrow-left{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}
+.cols.wide-left{grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr)}
+@media (max-width:820px){.cols.two,.cols.narrow-left,.cols.wide-left{grid-template-columns:1fr}}
+
+/* ── figures ────────────────────────────────────────────────────────────────────────────────── */
+/* the image cell is the flexible row and the caption is auto, so a tall render shrinks to fit
+   instead of pushing its caption off the slide */
+figure{margin:0;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;gap:8px;
+       justify-items:center}
+/* a grid child sized by `align-items:start` takes its content height, and a portrait render's
+   content height is 2,500px — so the cap is stated against the viewport, not against the row */
+figure img{max-width:100%;max-height:min(100%,62vh);object-fit:contain;min-height:0;
+           border:1px solid var(--edge);border-radius:2px;background:var(--panel)}
+.cols>figure{align-self:stretch}
+figure figcaption{justify-self:stretch}
+figcaption{font-family:var(--mono);font-size:clamp(10px,1.05vw,12.5px);color:var(--ink-3);line-height:1.5}
+
+/* ── the terrain rail: the three slope bands a theme paints with ────────────────────────────── */
+.rail{position:fixed;left:0;right:0;bottom:0;height:4px;display:flex;z-index:5}
+.rail span{height:100%}
+.rail .a{background:var(--moor)} .rail .b{background:var(--shoulder)} .rail .c{background:var(--face)}
+.rail .rest{background:var(--rail);flex:1}
+
+.foot{position:fixed;left:clamp(28px,4.6vw,84px);right:clamp(28px,4.6vw,84px);bottom:20px;
+      display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+      font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--ink-3);z-index:6}
+.foot .title{text-transform:uppercase}
+.foot .n b{color:var(--ink);font-weight:500}
+
+/* ── data blocks: the studio's own answers, verbatim ────────────────────────────────────────── */
+pre{font-family:var(--mono);font-size:clamp(10.5px,1.08vw,14px);line-height:1.55;margin:0;
+    background:var(--panel);border:1px solid var(--edge);border-left:3px solid var(--face);
+    padding:clamp(12px,1.6vw,20px);overflow:auto;max-height:100%;white-space:pre;color:var(--ink-2)}
+pre.refuse{border-left-color:var(--refusal)}
+pre.warn{border-left-color:var(--complaint)}
+pre.ok{border-left-color:var(--pass)}
+pre b{color:var(--ink);font-weight:500}
+pre .r{color:var(--refusal);font-weight:500}
+pre .w{color:var(--complaint);font-weight:500}
+pre .g{color:var(--pass);font-weight:500}
+pre .d{color:var(--ink-3)}
+
+/* ── tables ─────────────────────────────────────────────────────────────────────────────────── */
+.tw{overflow:auto;min-height:0}
+table{border-collapse:collapse;width:100%;font-size:clamp(11.5px,1.22vw,16px)}
+th,td{text-align:left;padding:.5em .8em .5em 0;border-bottom:1px solid var(--edge);vertical-align:top}
+th{font-family:var(--mono);font-weight:500;font-size:.82em;letter-spacing:.08em;text-transform:uppercase;
+   color:var(--ink-3);white-space:nowrap}
+td{color:var(--ink-2);line-height:1.45}
+td strong,td b{color:var(--ink);font-weight:600}
+td.num,th.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+tr.hi td{color:var(--ink)}
+
+/* ── figure tiles: numbers that are the point ───────────────────────────────────────────────── */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:clamp(10px,1.4vw,20px)}
+.tile{border-top:2px solid var(--accent);padding-top:10px}
+.tile .v{font-family:var(--mono);font-weight:700;font-size:clamp(26px,3.6vw,46px);line-height:1;
+         letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.tile .k{font-family:var(--mono);font-size:clamp(10px,1.02vw,12px);letter-spacing:.09em;
+         text-transform:uppercase;color:var(--ink-3);margin-top:8px;line-height:1.45}
+.tile.moor{border-top-color:var(--moor)} .tile.water{border-top-color:var(--water)}
+.tile.face{border-top-color:var(--face)}
+
+/* ── list with a hanging mono marker ────────────────────────────────────────────────────────── */
+ul.marks{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:clamp(9px,1.5vh,16px)}
+ul.marks li{display:grid;grid-template-columns:auto 1fr;gap:.9em;align-items:baseline;
+            font-size:clamp(14px,1.5vw,20px);line-height:1.5;color:var(--ink-2)}
+ul.marks li>span:first-child{font-family:var(--mono);font-size:.82em;color:var(--accent);
+            letter-spacing:.06em;white-space:nowrap}
+ul.marks li b{color:var(--ink);font-weight:600}
+
+blockquote{margin:0;padding-left:clamp(14px,1.6vw,22px);border-left:2px solid var(--accent);
+           font-size:clamp(15px,1.75vw,23px);line-height:1.5;font-style:italic;color:var(--ink);
+           max-width:52ch}
+blockquote cite{display:block;font-family:var(--mono);font-style:normal;font-size:.62em;
+                letter-spacing:.06em;color:var(--ink-3);margin-top:.9em}
+
+.chip{display:inline-block;font-family:var(--mono);font-size:.72em;letter-spacing:.07em;
+      text-transform:uppercase;padding:.22em .6em;border:1px solid currentColor;border-radius:2px}
+.chip.r{color:var(--refusal)} .chip.w{color:var(--complaint)} .chip.g{color:var(--pass)}
+
+/* the title slide's contour ground — the map's own instrument, at 4% */
+.cover{justify-content:center}
+.cover::before{content:"";position:absolute;inset:0;z-index:-1;opacity:.22;
+  background:url("../marlbeck/renders/world-heightmap.png") right center/contain no-repeat;
+  -webkit-mask-image:linear-gradient(90deg,transparent 42%,#000 88%);
+          mask-image:linear-gradient(90deg,transparent 42%,#000 88%)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cover::before{opacity:.30}}
+:root[data-theme="dark"] .cover::before{opacity:.30}
+
+.hint{position:fixed;right:clamp(28px,4.6vw,84px);bottom:44px;font-family:var(--mono);font-size:10.5px;
+      letter-spacing:.1em;color:var(--ink-3);z-index:6;transition:opacity .4s}
+.hint.gone{opacity:0}
+
+@media print{
+  body{overflow:visible}
+  #deck{height:auto}
+  .slide{display:flex!important;position:relative;height:100vh;page-break-after:always;inset:auto}
+  .rail,.foot,.hint{display:none}
+}
+</style>
+
+<div id="deck"></div>
+
+<div class="rail" aria-hidden="true">
+  <span class="a" id="rail-a"></span><span class="b" id="rail-b"></span><span class="c" id="rail-c"></span>
+  <span class="rest"></span>
+</div>
+<div class="foot">
+  <span class="title">pgm-studio &middot; authoring PGM maps as documents</span>
+  <span class="n"><b id="cur">1</b> / <span id="tot">1</span></span>
+</div>
+<div class="hint" id="hint">&larr; &rarr; or click</div>
+
+<script type="text/html" id="slides">
+<!--S-->
+<section class="slide cover">
+  <p class="eyebrow"><b>a white paper, in slides</b> &middot; September 2026</p>
+  <h1>Marlbeck &amp;<br>the four documents</h1>
+  <p class="lead">A PGM map is a million blocks and a contract, and nothing connects them.
+     This is what changes when it is four documents and a compiler instead.</p>
+  <p style="max-width:46ch;margin-top:1.4em;font-size:clamp(13px,1.3vw,17px)">Every figure was produced by
+     the running studio while these slides were written. The board in them was built from nothing, in five
+     revisions, and every refusal it met is here.</p>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">01 &middot; the problem</p>
+  <h2>Two artifacts, and nothing joins them</h2>
+  <div class="cols two body">
+    <div>
+      <pre>&lt;map&gt;/region/*.mca   <span class="d">the world — every block</span>
+&lt;map&gt;/level.dat
+&lt;map&gt;/map.xml        <span class="d">what the server loads</span></pre>
+      <p style="margin-top:1.2em">The world is built by hand in creative, over days. The
+        <code>map.xml</code> is written in a text editor. The two are joined only by coordinates a person
+        typed into both.</p>
+    </div>
+    <ul class="marks">
+      <li><span>01</span><span><b>The XML has no feedback until it fails.</b> A region is a box of numbers.
+        Whether it holds ground, whether that ground is reachable, whether the barred team is the one meant
+        to be barred — none of it is in the file, and the file is all that gets read.</span></li>
+      <li><span>02</span><span><b>The world cannot be interrogated.</b> "Is this approach walkable" is
+        answered by walking it. "Is any of this ground used" is not answered at all — so it stops being
+        asked.</span></li>
+      <li><span>03</span><span><b>Nothing is reusable, because nothing is described.</b> A hill that works
+        is a hill. Every board starts at bedrock.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">01 &middot; the problem &middot; <b>what that costs, measured</b></p>
+  <h2>Two of the earliest boards<br>are 245 bytes of contract</h2>
+  <div class="cols narrow-left body">
+    <pre class="refuse">$ wc -c maps/haiku-r2-canonical-8/map.xml
+<b>245</b>
+
+$ grep -c '&lt;wool' maps/haiku-r2-canonical-8/map.xml
+<b>0</b>
+
+<span class="d">a name, an empty version, a gamemode,
+an empty objective, one include —
+over real region files</span></pre>
+    <div>
+      <p>The run that made them reported both as <em>"Compiled, sketched, finished, exported
+        successfully."</em> It was not lying: the only check that existed was whether the pipeline threw.</p>
+      <p>They are still in the repository, and the README says why:</p>
+      <blockquote>They are kept because they are evidence, not because they are playable — a map with nothing
+        on it satisfies every refusal the pipeline had at the time. <b>Do not load them.</b>
+        <cite>pgm-studio-mapgen/README.md</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">02 &middot; the idea</p>
+  <h2>A map is four documents</h2>
+  <div class="body">
+    <div class="tw">
+      <table>
+        <tr><th>Level</th><th>Describes</th><th>Document</th><th>Tool</th></tr>
+        <tr class="hi"><td><b>The board</b></td><td>rectangles on a coarse cell grid, what each is for,
+          where the objectives sit</td><td><code>PlanModel</code></td><td>Plan</td></tr>
+        <tr class="hi"><td><b>The ground</b></td><td>the real geometry at block resolution — outlines,
+          heights, relief, paint, props</td><td><code>SketchLayout</code></td><td>Sketch</td></tr>
+        <tr class="hi"><td><b>The play</b></td><td>teams, spawns, protections, build regions, objectives and
+          how they are captured</td><td><code>MapIntent</code></td><td>Configure</td></tr>
+        <tr class="hi"><td><b>The map</b></td><td>the voxel world and the <code>map.xml</code> a server
+          loads</td><td><code>VoxelWorld</code> + <code>MapXml</code></td><td>— (built)</td></tr>
+      </table>
+    </div>
+    <p style="margin-top:.6em"><strong>These are grains, not stages of completeness.</strong> A plan is not a
+      rough draft of a layout: it states things a layout cannot — <em>this rectangle is a wool room</em>,
+      <em>these two pieces share a defence wall</em> — and cannot state a curve or a one-block step. A layout
+      knows where every block of ground is and has no idea what any of it is for.</p>
+    <p><strong>Which is why each question can be asked where it has an answer.</strong> <em>Is the objective
+      too close to its own spawn?</em> is a question about the board, and it is answerable before a single
+      block exists.</p>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">02 &middot; the idea &middot; <b>the flow is one-way</b></p>
+  <h2>Five hand-offs,<br>and nothing reads back up</h2>
+  <div class="cols narrow-left body">
+    <pre>                ┌──► layout ──finish──► world ───┐
+plan ──compile──┤                                │──► what a
+                └──► intent ──project─► document ┘    server loads</pre>
+    <div>
+      <p>The two branches rejoin at the end rather than staying independent: building the world
+        <strong>resolves</strong> part of the intent — a monument's block volume can only be fixed by the
+        terrain it floats over — so the <code>map.xml</code> is rendered from a resolved copy.</p>
+      <p>There is <strong>no route back</strong>. No endpoint in the studio reads a <code>map.xml</code> at
+        all. A map reaches another studio only as a world, arriving without its plan, its drawing or its
+        intent, and can never be re-planned.</p>
+      <p>A browser walks the five one at a time. A program does not:
+        <code>POST /map/from-documents</code> takes all three together and stores the whole map in one call,
+        under a slug it states — so a corrected spec re-driven <em>replaces</em> its map instead of leaving
+        <code>board-2</code> and <code>board-3</code> behind.</p>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">03 &middot; the surfaces</p>
+  <h2>Seven tools, one level each</h2>
+  <figure class="tall body">
+    <img src="../figures/ui-home.png" alt="The studio's front door: four ways into a map and three tools for one under way">
+    <figcaption>Four ways in — plan a layout, browse generated boards, the shape catalog, the style and theme
+      library — and three tools for a map already under way. The counts are live: the studio is reading its
+      own database.</figcaption>
+  </figure>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">03 &middot; the surfaces &middot; <b>Sketch — the ground</b></p>
+  <figure class="tall body">
+    <img src="../figures/ui-sketch-relief.png" alt="The Relief phase of the Sketch tool, showing the four marks that shape Marlbeck">
+    <figcaption><b>STATED is the document.</b> <code>fell scarp 32 ↓ 20 · 7 pts</code> ·
+      <code>beck ridgeline at 16 · 4 pts</code> · <code>shelf bench at 24 · 14 pts</code> ·
+      <code>west-rise push +7 · 14 pts</code> — the same four marks the next slide authors as JSON, listed as
+      the editor sees them. The overlay is the solved height field; the lower half is the mirror image, drawn
+      and not editable.</figcaption>
+  </figure>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">03 &middot; the surfaces &middot; <b>Sketch — what it is made of</b></p>
+  <figure class="tall body">
+    <img src="../figures/ui-sketch-theme.png" alt="The Theme phase, showing the three-theme registry and the rule that decides a cell">
+    <figcaption>The strip along the bottom is the theme registry — <code>moor DEF</code>, <code>flash</code>,
+      <code>workings</code>. The panel states the rule that decides a cell: the map default paints what no
+      shape claims, and <em>"3 of 5 shapes are painted; the other 2 fall through to this."</em></figcaption>
+  </figure>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">03 &middot; the surfaces &middot; <b>Sketch — what stands on it</b></p>
+  <figure class="tall body">
+    <img src="../figures/ui-sketch-dressing.png" alt="The Dressing phase, listing every placed prop with its coordinates">
+    <figcaption>Every prop with its coordinates. The tree inspector is badged <b>affects play</b>, because a
+      tree is cover. The canvas draws the painted board under the props, so a placement is judged against the
+      ground it will actually stand on — and declined by name when it cannot.</figcaption>
+  </figure>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">04 &middot; a board, end to end &middot; <b>Marlbeck</b></p>
+  <h2>84 &times; 256 blocks.<br>Two pieces. Two markers.</h2>
+  <div class="cols two body">
+    <pre>{ <span class="d">"plan": 2, "meta": { "name": "Marlbeck" },</span>
+  "globals": { "cell": 2, "symmetry": "rot_180",
+               "maxPlayers": 16, "surface": 20 },
+  "pieces": [
+    { "id": "camp", "role": "spawn",
+      "rect": [-7,-64,14,6], "surface": 21 },
+    { "id": "moor", "role": "piece",
+      "rect": [-21,-58,42,50], "surface": 20 } ],
+  "zones": [ { "id": "crossing",
+               "rect": [-21,-8,42,16] } ],
+  "placements": {
+    "spawns": [ { "piece": "camp", "at": [14,6],
+                  "facing": "back" } ],
+    "destroyables": [ { "id": "dt-marl",
+        "piece": "moor", "at": [30,49],
+        "style": "pillar-3", "float": 4,
+        "name": "The Marlstone" } ] } }</pre>
+    <div>
+      <p>A destroy-the-monument board: one monument a team, the two halves joined only by a build zone over a
+        32-block strait.</p>
+      <p><strong>The plan states an arrangement, not a shape.</strong> Everything else — the fell, the mere,
+        the shelf, the wood, the paint — is in a second document, because a piece added to give a theme
+        somewhere to hang is the failure this corpus is named after.</p>
+      <p><code>rot_180</code> means everything here is <strong>half a board</strong>. The compiler fans it;
+        nothing is stated twice.</p>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">04 &middot; a board, end to end &middot; <b>the first answer</b></p>
+  <h2>Four findings, no blocks,<br>two seconds</h2>
+  <div class="cols narrow-left body">
+    <pre class="refuse">POST /api/plan/evaluate
+
+score <b>1.199</b>   valid <b>True</b>
+
+<span class="r">VIOL</span> <b>GO1</b>  goal-spawn-ratio <b>4.523</b>
+          outside authored band [3, 4]
+<span class="r">VIOL</span> <b>GO3</b>  opposing-goal-distance <b>155</b>
+          outside authored band [85, 150]
+<span class="w">lint</span> <b>SP8</b>  spawn egress steps 6 blocks at
+          'camp'–'moor' — use 1-level steps
+          or a ramp
+<span class="w">lint</span> <b>ST9</b>  the spawn building on 'camp' is
+          26×6 — a footprint is at most 20×20</pre>
+    <div>
+      <p>Each names <strong>the number it measured and the band it missed</strong>. <code>GO1</code> is the
+        destroy board's central proportion: a monument sits three to four times as far from the enemy's spawn
+        as from its own, by walk. 4.523 says it was too close to the team defending it.</p>
+      <p>The arithmetic is solvable on paper. With spawns <code>L</code> apart and the goal <code>d</code>
+        from its own, the ratio is about <code>(L − d) / d</code> — so the band puts the goal between
+        <code>L/5</code> and <code>L/4</code>.</p>
+      <pre class="ok" style="margin-top:1.2em">score <b>0</b>   valid <b>True</b>
+violations <b>0</b>   lint <b>0</b></pre>
+      <p style="margin-top:.9em">Ten blocks toward the middle answers <code>GO1</code> and <code>GO3</code>
+        together. Everything decided so far is the <em>arrangement</em>, and none of it has cost a build.</p>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">04 &middot; a board, end to end &middot; <b>the first build</b></p>
+  <h2>Eight findings, on a 200</h2>
+  <div class="body">
+    <pre class="warn"><span class="w">[complaint]</span> <b>SK3</b>      shape 'flash-w' states kind '', which is not a kind the studio draws — it has 5
+                     (rectangle, circle, polygon, lasso, polyline) — so it draws no ground
+                     <span class="d">@ layers[0].layout.shapes[6].type</span>
+<span class="w">[complaint]</span> <b>SK3</b>      shape 'flash-e' …   <span class="w">[complaint]</span> <b>SK3</b>  shape 'pit' …
+<span class="w">[complaint]</span> <b>RL1</b>      island 'team' says it is hills and measures rolling: 27 blocks of range over 11136 cells
+<span class="w">[complaint]</span> <b>RL5</b>      island 'team' is <b>26 % level ground</b>, the largest run of it 5 % of the island, against
+                     16 face(s). The elevation was graded everywhere and left nowhere to stand.
+<span class="w">[complaint]</span> <b>DR-DRY</b>   water 'beck-water' stands against 220 open column(s) of drawn ground — first at
+                     (-53, 16, -52), where the basin is dug to the water's own depth and holds none.
+<span class="w">[complaint]</span> <b>DR-BANK</b>  water 'beck-water' is 3 deep and its carve cut 8 course(s) of ground away above its
+                     own line — a straight-sided wall from y17 to y24 at (23, -53).
+<span class="r">[decline  ]</span> <b>DR-CLAIM</b> boulder 'b2' rests on (37, -45), claimed by the channel 'beck-water'
+<span class="r">[decline  ]</span> <b>DR-SITE</b>  tree 't7' has no ground at (-44, -15)</pre>
+    <div class="cols two" style="margin-top:auto">
+      <p><strong>Read what those sentences contain.</strong> <code>SK3</code> names the JSON path of a field
+        written <code>kind</code> where the studio reads <code>type</code> — and lists the five words it would
+        have accepted. Nothing failed: three theme patches simply drew no ground. <b>Four boards in this
+        corpus shipped unpainted before that finding existed</b>, and the run that made them believed they
+        were themed.</p>
+      <p><code>RL5</code> is the one worth dwelling on: the relief was graded everywhere and left nowhere to
+        stand. The cause was one number — <code>reach: 0</code>, which does not mean <em>no reach</em> but
+        <strong>unlimited</strong>, so every mark decided the whole surface and the board became continuous
+        transition.</p>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">04 &middot; a board, end to end &middot; <b>five revisions</b></p>
+  <h2>The third one made it worse,<br>and only a read said so</h2>
+  <div class="tw body">
+    <table>
+      <tr><th class="num">rev</th><th>what changed</th><th>what it moved</th><th class="num">dead</th></tr>
+      <tr><td class="num">1</td><td>first authored board</td>
+          <td><span class="chip w">SK3</span> &times;3 · <span class="chip w">RL1</span>
+              <span class="chip w">RL5</span> <span class="chip w">DR-DRY</span>
+              <span class="chip w">DR-BANK</span> <span class="chip r">DR-CLAIM</span>
+              <span class="chip r">DR-SITE</span></td><td class="num">48.0%</td></tr>
+      <tr><td class="num">2</td><td><code>type</code> not <code>kind</code>; <code>reach: 45</code>; water
+          states a <code>level</code>; board narrowed 108 → 84</td>
+          <td>six cleared. Two new: <span class="chip w">WX11</span> &times;2 — the monument standing four
+          blocks above the cell beside it</td><td class="num">32.6%</td></tr>
+      <tr class="hi"><td class="num">3</td><td>monument moved to the centre of the lane</td>
+          <td><span class="chip g">WX11 cleared</span> — and a new <span class="chip w">RL3</span>: the beck
+          and the fell meeting on an 8-block wall</td><td class="num"><b>56.9%</b></td></tr>
+      <tr><td class="num">4</td><td>monument back off-centre; the push moved <em>behind</em> the shelf</td>
+          <td>everything clear but one · 218 barrier cells · 4 faces</td><td class="num">34.2%</td></tr>
+      <tr><td class="num">5</td><td>channel <code>form: natural</code>, ended clear of the fell, bed matched
+          to the pool</td><td><b>0 barrier cells, 0 faces</b> · one open complaint</td>
+          <td class="num">34.4%</td></tr>
+    </table>
+    <div class="cols two" style="margin-top:1.2em">
+      <p><strong>Revision 3 is the useful row.</strong> Moving the monument to the middle of the lane cleared
+        a genuine fault — and turned both flanks into ground no journey passed. Nothing refused it. The board
+        still exported. The only thing that said so was a read nobody is required to take.</p>
+      <p>And the <code>WX11</code> it cleared had its cause twenty blocks away: a <strong>push is applied
+        after the marks are solved</strong>, so the west push's falloff reached across the monument's shelf
+        and tilted it. The monument stood on a ramp, and its foundation filled the drop in bedrock —
+        <em>"a wall a player cannot climb and nobody drew."</em></p>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">04 &middot; a board, end to end &middot; <b>what it is</b></p>
+  <figure class="tall body" style="align-items:center">
+    <img src="../marlbeck/renders/world-iso.png" alt="Marlbeck in isometric: two land masses either side of a void strait">
+    <figcaption style="text-align:center">Drawn from the per-column runs the studio answers, not by a camera
+      in the world. The strait, the spawn halls, the mere, the fell's stone face, the wood.</figcaption>
+  </figure>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">04 &middot; the board &middot; <b>three reads of one thing</b></p>
+  <div class="body" style="display:grid;grid-template-columns:1fr 1fr 1fr;
+       grid-template-rows:minmax(0,1fr);gap:clamp(14px,2vw,32px)">
+    <figure><img style="max-height:100%" src="../marlbeck/renders/world-topdown.png" alt="Marlbeck from above">
+      <figcaption><b>from above</b> — two land masses, the strait, one monument a side. <code>rot_180</code>
+        means the lower half is the upper half turned.</figcaption></figure>
+    <figure><img style="max-height:100%" src="../marlbeck/renders/world-heightmap.png" alt="Marlbeck as elevation with contours">
+      <figcaption><b>as elevation</b> — the ridge is the <code>scarp</code> mark, the pale blob the
+        <code>push</code>, the dark ring the <code>area</code> the monument stands on. Three marks and one
+        push.</figcaption></figure>
+    <figure><img style="max-height:100%" src="../marlbeck/renders/world-surface.png" alt="Marlbeck's paint by tone family">
+      <figcaption><b>as paint</b> — green under 24°, brown 24–40°, grey above. One statement, three
+        things.</figcaption></figure>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">04 &middot; a board, end to end &middot; <b>the one that matters</b></p>
+  <h2>Finish the ground by its angle,<br>not by its height</h2>
+  <div class="cols wide-left body">
+    <figure><img src="../marlbeck/renders/world-surface.png" alt="The surface render, showing three slope bands"
+                 style="max-height:min(100%,54vh)"></figure>
+    <div>
+      <pre>"surface": { "depth": 4, "material": {
+  "kind": "layered", "axis": <b>"slope"</b>,
+  "stack": { "ending": "repeat", "bands": [
+    { "thickness": <b>24</b>, <span class="d">// the moor</span>
+      "material": &lt;grass over dirt&gt; },
+    { "thickness": <b>16</b>, <span class="d">// the shoulder</span>
+      "material": &lt;coarse dirt&gt; },
+    { "thickness": <b>50</b>, <span class="d">// the face</span>
+      "material": &lt;stone, andesite&gt; } ]}}}</pre>
+      <p style="margin-top:1.1em"><strong>A thickness on the <code>slope</code> axis is a span of
+        degrees.</strong> The fell's face, the beck's banks and the shelf's rim are all drawn by these eleven
+        lines, and none is stated anywhere as a place.</p>
+      <p>A theme hung on plan pieces, or on height bands, paints a board flat from above however much relief
+        is under it — nothing in the geometry tells a 45° hillside from a meadow. It is the most common way a
+        board in this corpus has come out looking wrong. <code>GET …/incline?format=text</code> is the read
+        that says where the bands should cut.</p>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">04 &middot; a board, end to end &middot; <b>measured</b></p>
+  <h2>What Marlbeck is</h2>
+  <div class="body">
+    <div class="tiles">
+      <div class="tile moor"><div class="v">0</div><div class="k">barrier cells<br>and 0 faces</div></div>
+      <div class="tile"><div class="v">15,802</div><div class="k">walked cells<br>1,670 scrambled</div></div>
+      <div class="tile face"><div class="v">18</div><div class="k">blocks of relief<br>low 16, high 34</div></div>
+      <div class="tile water"><div class="v">0</div><div class="k">symmetry error<br>both teams, one board</div></div>
+      <div class="tile"><div class="v">90.7%</div><div class="k">one ground theme<br>+ 5.5% and 3.8% patches</div></div>
+      <div class="tile"><div class="v">28</div><div class="k">props placed<br>one declined</div></div>
+    </div>
+    <div class="cols two" style="margin-top:clamp(16px,2.6vh,30px)">
+      <pre class="ok">GET /map/marlbeck/preflight
+
+round-trip      <span class="g">✓</span>  no field lost in XML ↔ dict
+mirror check    <span class="g">✓</span>  spawn/protection, build
+buildability    <span class="g">✓</span>  all placements on solid ground
+traversability  <span class="g">✓</span>  spawn ↔ objective, per team
+
+<b>export gate OPEN</b> — GET /map/marlbeck/xml → 200</pre>
+      <div>
+        <p><strong>Every cell of the board is walkable</strong> — zero barrier cells and zero faces, on ground
+          with eighteen blocks of relief in it.</p>
+        <p>Three themes over 17,472 ground cells, in the proportion the corpus's own brief argues for:
+          <em>"a landscape board is one theme, a relief and a handful of patches."</em></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">04 &middot; a board, end to end &middot; <b>what it ships with</b></p>
+  <h2>One open complaint,<br>and that is a decision</h2>
+  <div class="cols narrow-left body">
+    <pre class="warn"><span class="w">[complaint]</span> <b>DR-DRY</b>
+
+water 'beck-water' stands against
+<b>122 open column(s)</b> of drawn ground —
+first at <b>(-42, 18, -58)</b>, where the
+basin is dug to the water's own depth
+and holds none.
+
+The hollow and the pool that fills it
+are two statements about one lake;
+where the hollow reaches further, the
+difference is a dry trench beside the
+water.
+
+<b>Widen the pool onto the ground that was
+dug for it, or stop digging it there.</b></pre>
+    <div>
+      <p>Two documents describe one lake — a relief mark that cuts the bed and a water prop that fills it —
+        and where the cut reaches further than the fill, ground is excavated and never covered.</p>
+      <p>Four attempts moved the count from <strong>400 to 122</strong> and none reached zero: the residue is
+        at the board's own western edge, where the mark's band is clipped and the pool's end-disc does not
+        cover it.</p>
+      <p>It is left in, and the rule itself says why that is a decision rather than an oversight:
+        <em>"A complaint: the world is built and the water is in it."</em></p>
+      <p><strong>That the number is 122 and not "some" is the whole difference between a system that reports
+        and one that nags.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">05 &middot; the mechanism</p>
+  <h2>One envelope, everywhere</h2>
+  <div class="cols two body">
+    <div>
+      <pre>{ "error":   "invalid house style",
+  "message": "doorHead.block (5) is not a stair…",
+  "findings": [
+    { "rule":     <b>"HS1"</b>,
+      "message":  "…",
+      "severity": <b>"refusal"</b>,
+      "field":    <b>"doorHead.block"</b> } ] }</pre>
+      <p style="margin-top:1.1em"><code>error</code> names the <strong>gate</strong>, never the fault.
+        <code>findings</code> is what to act on — each with a rule id, a sentence with the measured numbers in
+        it, and where the fault is.</p>
+      <p><strong>400</strong> wrong as posted · <strong>404</strong> no such subject ·
+         <strong>409</strong> conflicts with stored state · <strong>422</strong> cannot be processed ·
+         <strong>500</strong> the studio's own fault. <b>156 of 219 operations</b> declare theirs rather than
+         having it guessed from the path.</p>
+    </div>
+    <div>
+      <h3>Three severities — and a 200 is half an answer</h3>
+      <div class="tw"><table>
+        <tr><td><span class="chip r">refusal</span></td><td>the work stopped; nothing was written</td></tr>
+        <tr><td><span class="chip w">decline</span></td><td>the work happened and one piece of what you wrote
+          is <b>not in it</b></td></tr>
+        <tr><td><span class="chip g">complaint</span></td><td>the work happened and lost nothing; something is
+          worth saying anyway</td></tr>
+      </table></div>
+      <p style="margin-top:1.1em">Every 2xx JSON object answers a <code>warnings</code> array, and every
+        operation declares a <code>Pgm-Warnings</code> header — <code>6 RQ3 SK3 SK4</code> — so the count and
+        the rule ids are readable before the body is parsed.</p>
+      <p>There is a second header for the opposite case. <code>Pgm-Unwalked</code> names the rules a read
+        <strong>did not ask</strong>. <em>These were found</em> and <em>these were not asked</em> are
+        different claims and get different headers.</p>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">05 &middot; the mechanism &middot; <b>the vocabulary</b></p>
+  <h2>169 rules, and none of them<br>is a hand-written list</h2>
+  <div class="cols two body">
+    <div class="tw"><table>
+      <tr><th>family</th><th class="num">n</th><th>about</th></tr>
+      <tr><td><code>SK</code></td><td class="num">26</td><td>the sketch document, and what it rasterizes to</td></tr>
+      <tr><td><code>PL</code></td><td class="num">15</td><td>the plan's own structure</td></tr>
+      <tr><td><code>DR</code></td><td class="num">15</td><td>what the dressing pass could not place</td></tr>
+      <tr><td><code>WX</code></td><td class="num">13</td><td>rooms, footprints, and what they stand on</td></tr>
+      <tr><td><code>HS</code></td><td class="num">10</td><td>a house style's materials and forms</td></tr>
+      <tr><td><code>OB</code></td><td class="num">9</td><td>objective placement</td></tr>
+      <tr><td><code>RQ</code></td><td class="num">6</td><td>the request itself — including <code>RQ3</code></td></tr>
+      <tr><td><code>EX</code> <code>IM</code></td><td class="num">6</td><td>the export gate; the import</td></tr>
+      <tr><td><code>RL</code> <code>HJ</code></td><td class="num">5</td><td>relief against its stated landform; wing joints</td></tr>
+      <tr><td class="d">7 more</td><td class="num">13</td><td>paint, editors, props, casings, the composer</td></tr>
+      <tr class="hi"><td><b>gate rules</b></td><td class="num"><b>129</b></td><td>in 18 families</td></tr>
+      <tr class="hi"><td><b>layout law</b></td><td class="num"><b>40</b></td><td>what a board <em>should</em> be</td></tr>
+    </table></div>
+    <div>
+      <p><strong>129 are read by reflection off the constants that raise them</strong>, taking <em>what it
+        means</em> from each constant's own docstring and <em>how to fix it</em> from its remarks. The other
+        40 are parsed out of the generator's rule law, embedded as a resource — so the catalogue reads the law
+        rather than a copy of it.</p>
+      <pre style="margin-top:1.1em">GET /api/rules?rule=RL5
+
+<b>means</b>  The elevation was graded everywhere
+       and left nowhere to stand… under a
+       third of it level, so a player
+       crosses the whole board and can
+       stop nowhere on it.
+<b>fix</b>    Take the tread off the marks meant
+       to be flat to their edge, or widen
+       them.</pre>
+      <p style="margin-top:1.1em">Each also carries a <strong>category</strong> — one of eight words — and a
+        <strong>concerns</strong> list, so a caller can ask <em>should I fix the request, change the design,
+        or report a bug</em> without knowing all 129 ids.</p>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">05 &middot; the mechanism &middot; <b>what can be asked</b></p>
+  <h2>Fifteen pictures.<br>Fifteen answers in text.</h2>
+  <div class="tw body">
+    <table>
+      <tr><th>the question</th><th>the read</th></tr>
+      <tr class="hi"><td><b>What is actually at this coordinate?</b></td>
+        <td><code>GET …/column?at=x,z</code> — every block named, bedrock to sky. <b>The workhorse:</b> every
+        other read is a projection</td></tr>
+      <tr><td>Does this climb? Is that step walkable?</td>
+        <td><code>GET …/transect?points=…&amp;format=text</code> — a polyline walked block by block, every
+        event named with its coordinate</td></tr>
+      <tr><td>Where does the ground step, over the whole board?</td>
+        <td><code>GET …/slopes?format=text</code> — <code>.</code> walked <code>:</code> scrambled
+        <code>#</code> barrier, plus the per-face summary</td></tr>
+      <tr><td>How <em>steep</em> is it, and where?</td>
+        <td><code>GET …/incline?format=text</code> — the glyph is the tens of degrees, and under the grid, how
+        much ground stands in each ten</td></tr>
+      <tr><td>Is there anywhere to stand?</td>
+        <td><code>POST …/sketch/relief/read</code> → <code>level</code>, the share under 10°.
+        <code>RL5</code> fires under 30%</td></tr>
+      <tr><td>Which two <em>marks</em> built that wall?</td>
+        <td>the same read → <code>seams</code>, worst first, each naming the pair and the cell</td></tr>
+      <tr><td>What did the route actually cost?</td>
+        <td><code>GET …/walk?from=&amp;to=&amp;format=text</code> — rises, falls, worst step, and what stands
+        within two blocks</td></tr>
+      <tr><td>Is any ground unused?</td>
+        <td><code>GET …/coverage</code> — the only read that asks whether a journey <em>goes</em> somewhere
+        rather than whether it <em>can</em></td></tr>
+      <tr><td>Is the board joined up, <em>per team</em>?</td><td><code>GET …/preflight</code></td></tr>
+      <tr class="hi"><td><b>What is wrong with this map right now?</b></td>
+        <td><code>GET …/findings</code> — every gate the stored documents can reach, <b>plus the gates it did
+        not ask and the route that pays for them</b></td></tr>
+    </table>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">05 &middot; the mechanism &middot; <b>the discipline</b></p>
+  <h2>A picture answers <em>whether</em>.<br>A number answers <em>whether it is right</em>.</h2>
+  <div class="cols two body">
+    <div style="display:flex;flex-direction:column;gap:clamp(14px,2.4vh,26px)">
+      <blockquote>I read <code>world-material.png</code>, saw sand, and concluded the lake was missing.
+        <cite>the material top-down draws the top <em>solid</em> block, so water reads as its own bed</cite></blockquote>
+      <blockquote>I measured the channel off the picture at about 50 blocks deep and was about to redesign
+        around it. <code>--section</code> reported 43 void columns, which is the 22 + 22 I authored.
+        <cite>the picture answers <em>whether</em>, and I asked it <em>how much</em></cite></blockquote>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:clamp(14px,2.4vh,26px)">
+      <blockquote>Over seven builds I opened six renders. Of the twenty-five text reads the driver writes
+        beside them I opened exactly one.
+        <cite>it cost a fault that shipped in five consecutive builds — a one-block bump under a rail,
+        invisible in a heightmap and an isometric alike</cite></blockquote>
+      <blockquote>A transect of nothing is indistinguishable from a transect of flat ground; a column is not.
+        <cite>two structures drawn with their axes swapped, neither built, both reading <em>walked end to
+        end</em></cite></blockquote>
+      <p style="margin-top:auto"><strong>When two reads disagree, <code>column</code> is the one that is not a
+        projection.</strong> That is the most repeated conclusion in forty-nine run reports.</p>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">06 &middot; agentic map making</p>
+  <h2>111 worlds, and every<br>failure written down</h2>
+  <div class="body">
+    <div class="tiles">
+      <div class="tile moor"><div class="v">111</div><div class="k">built worlds<br>committed whole</div></div>
+      <div class="tile"><div class="v">94</div><div class="k">authored specs<br>plan + finish</div></div>
+      <div class="tile face"><div class="v">83</div><div class="k">measured records<br>one per board</div></div>
+      <div class="tile water"><div class="v">49</div><div class="k">run reports<br>what could not be said</div></div>
+      <div class="tile"><div class="v">23</div><div class="k">showcase folders<br>one technique each</div></div>
+    </div>
+    <div class="cols two" style="margin-top:clamp(18px,2.8vh,32px)">
+      <div>
+        <h3>What an agent is given</h3>
+        <p>Not a wrapper. Not a natural-language layer. <strong>The API, the rules endpoint, and two
+          documents.</strong></p>
+        <pre>GET /api/openapi/v1.json
+GET /api/rules</pre>
+        <blockquote style="margin-top:1.1em;font-size:clamp(13px,1.4vw,18px)">Do not learn the API from a
+          document — including this one. They are generated from the routes and the types, so they are current
+          by construction; a hand-written capability list is a copy free to disagree with the thing it
+          describes.<cite>AUTHORING-BRIEF.md</cite></blockquote>
+      </div>
+      <div>
+        <h3>And one rule with teeth</h3>
+        <p><strong>Do not write a second copy of the system.</strong> A <code>build-spec.py</code> generating
+          the plan and the finish <em>is</em> the authoring work. Anything that reads the <em>built world</em>
+          is not — because those reads exist, and the home-made version has been wrong every time:</p>
+        <blockquote style="font-size:clamp(13px,1.4vw,18px)">Then I wrote three ground-finders and two of them
+          were wrong. "The topmost solid block" reads a roof. <b>Three wrong readings all produced plausible
+          tables.</b></blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">06 &middot; agentic map making &middot; <b>the loop</b></p>
+  <h2>The board's shape is settled<br>before the second build</h2>
+  <div class="cols narrow-left body">
+    <pre>build-spec.py     <span class="d">write the plan and the finish</span>
+board.py          <span class="d">the grid — the relations
+                  between rectangles, before
+                  any map row exists</span>
+drive.py --dry    <span class="d">evaluate + inspect</span>
+   <span class="g">── iterate here ──</span>
+drive.py --out    <span class="d">compile, store, read back,
+                  pre-flight, export, render</span>
+<b>03/06/04-*.txt</b>     <span class="d">the three numbers,
+                  before the pictures</span>
+loop.py           <span class="d">every placement question
+                  after the first drive</span></pre>
+    <div>
+      <div class="tw"><table>
+        <tr><th>step</th><th class="num">n</th><th class="num">each</th></tr>
+        <tr><td>full drives</td><td class="num">5</td><td class="num">12–18 min</td></tr>
+        <tr><td><code>loop.py</code> passes</td><td class="num">17</td><td class="num">20–70 s</td></tr>
+        <tr class="hi"><td>plan variants posted to <code>/plan/evaluate</code></td><td class="num">11</td>
+            <td class="num"><b>2–4 s</b></td></tr>
+      </table></div>
+      <blockquote style="margin-top:1.3em">Every number in this report that decided something came out of a
+        loop pass or an evaluate probe. The drives confirmed and exported. The board's whole shape — the
+        width, the goal positions, the block step, the road grades, the prop positions — was settled before
+        the second stored build.<cite>one run's accounting of itself</cite></blockquote>
+      <p style="margin-top:1.1em">Marlbeck's last three water revisions were <code>loop.py</code> passes at
+        thirty seconds each. Only its first and last states cost a full drive.</p>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">06 &middot; agentic map making &middot; <b>the arc</b></p>
+  <h2>Every gap closed by<br>a specific capability</h2>
+  <div class="body">
+    <p style="max-width:74ch">The first fifteen boards were built on <strong>11–12 August 2026</strong>. Every
+      one of the nine destroy boards among them declares <code>&lt;gamemode&gt;ctw&lt;/gamemode&gt;</code>
+      while carrying no wool at all — <strong>the objective kind a board is played for could not be
+      stated.</strong></p>
+    <div class="tw">
+      <table>
+        <tr><th>what an agent could not do</th><th>what closed it</th></tr>
+        <tr><td>say that a destroy map is a destroy map</td>
+            <td><code>Gamemodes.From(hasWools, hasDestroyables, hasCores)</code> — derived from what the map carries</td></tr>
+        <tr class="hi"><td>read a built world vertically at all — <em>"six renderers, all plan-view"</em></td>
+            <td><code>column</code>, <code>transect</code>, <code>section?format=text</code> — <b>"the read
+            that settled every disagreement"</b></td></tr>
+        <tr><td>post a plan and a finish together</td>
+            <td><code>POST /map/from-documents</code> — one call, slug stated, replace on re-drive</td></tr>
+        <tr class="hi"><td>find out that a theme name matched nothing</td>
+            <td><code>SK3</code> — the finding four unpainted boards were shipped for want of</td></tr>
+        <tr class="hi"><td>know a field went unread</td><td><code>RQ3</code>, by JSON path</td></tr>
+        <tr><td>know which storey a walk was measured on</td>
+            <td><code>from=x,z,y</code> — the <code>y</code> picks the storey</td></tr>
+        <tr><td>reshape one vertex of a compiled outline</td>
+            <td><code>PATCH …/shapes/{id}/vertices/{index}</code> — one point moves, every other stays</td></tr>
+        <tr><td>draw a curve</td><td>a <code>polyline</code> shape, splined before its band is offset</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">06 &middot; agentic map making &middot; <b>the failure mode</b></p>
+  <h2>A correct measurement<br>plus an invented conclusion</h2>
+  <div class="cols two body">
+    <div>
+      <p>Not a hallucination, and not a wrong number. <strong>A real reading, generalised one step too far,
+        and then written down as though it had been checked.</strong></p>
+      <blockquote>I rebuilt a board at twice its size because an evaluator printed the word "hard"… I took
+        that for <em>this will not build</em>. <b>Nothing refuses on <code>G2</code> or <code>G5</code>.</b>
+        They are scoring terms. I never ran that test; I inferred the answer from a word.</blockquote>
+      <p style="margin-top:1.2em">The cascade is the instructive part: doubling the cell doubled the two
+        rectangles whose size is a fact in blocks, which tripped a cap, which forced a split, which needed
+        four shelf pieces nobody drew — <strong>4,944 blocks of dead-level pad, 21% of the board's
+        ground</strong>. Each step was locally reasonable and the chain was never re-read against the
+        original.</p>
+    </div>
+    <div>
+      <h3>The mitigations that work are all mechanical</h3>
+      <ul class="marks">
+        <li><span>id</span><span>a finding names a <b>rule id</b>, so <em>what does this mean</em> has a route
+          (<code>GET /api/rules?rule=…</code>) instead of an inference</span></li>
+        <li><span>path</span><span>a finding names a <b>JSON path</b>, so a wrong field is a fact rather than a
+          hunt</span></li>
+        <li><span>200</span><span>a success carries <b><code>warnings</code></b>, so <em>it worked</em> is not
+          a status code</span></li>
+        <li><span>×3</span><span>three verdicts are required before <em>"missing from the system"</em> may be
+          written: <b>missing</b> (no mechanism), <b>unreachable</b> (it exists, the surface hid it),
+          <b>mistaken</b> (it exists, documented, not found) — <em>"a verdict is not the model's to award on
+          its own claim"</em></span></li>
+      </ul>
+      <p style="margin-top:1.4em"><em>"Of the nine things in this report I could not say, <strong>five were the
+        schema being right and me reading it wrong</strong>, three were a deliberate rule saying no and saying
+        why, and one was the surface genuinely unable to answer. That ratio is the useful number."</em></p>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">07 &middot; collaboration</p>
+  <h2>The seam is not where<br>most people put it</h2>
+  <div class="cols narrow-left body">
+    <div>
+      <blockquote style="font-size:clamp(17px,2.1vw,28px)">The measurements and the code reading are the
+        model's. <b>Every correction that mattered about the map was the author's.</b>
+        <cite>the earliest report in the corpus, and unchanged since</cite></blockquote>
+    </div>
+    <div>
+      <h3>The oracle rule</h3>
+      <p>A rule about the map <strong>as it is played</strong> is not derivable from the repository. The corpus
+        shows what authors did; the code shows what the tool does; <strong>neither says what is
+        correct.</strong></p>
+      <p>So the discipline is: make the judgement, <em>build it</em>, and record the question in the report as
+        an open question rather than filing it as a fact.</p>
+      <h3 style="margin-top:1.6em">The failure this prevents has already happened</h3>
+      <p>A destroyable and a core <strong>float a few blocks above the terrain by design</strong> — a core on
+        the ground cannot leak, and a destroyable on the ground is trivially covered. That has been the
+        server's behaviour from the start.</p>
+      <p>Measuring the gap and reasoning from first principles produced a confident, filed, committed claim
+        that <strong>every generated destroy map was unwinnable</strong>.</p>
+      <p><strong>The measurement was right and the conclusion was invented.</strong> Neither the corpus nor
+        the code would have corrected it. One question would have.</p>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">07 &middot; collaboration &middot; <b>what a review looks like</b></p>
+  <h2>Eleven lines, none of them<br>a measurement</h2>
+  <div class="cols two body">
+    <pre style="font-size:clamp(10px,1.02vw,13px)">the water lane is encased by my own pieces;
+   that is not what a lane is
+dead space around the spawn; a spawn alone at
+   the back is normal; it should face mid
+the wools are not isolated enough and smush
+   into pieces
+the wall can be walked around; it belongs on
+   an interface in front of the wool, blocking
+   a full lane, void either side
+the large stone area in front of the wall
+   looks random
+the middle is too wide; players will not meet
+you want a U frontline, a double-hole hub,
+   I and L wool lanes
+one island in the middle
+you made three themes and did not use them
+four trees and no boulders, no water; the path
+   ends randomly
+keep the terrain the same or less</pre>
+    <div>
+      <p>Every one is a claim about how the board <em>plays</em>. The rebuild that followed:</p>
+      <div class="tw"><table>
+        <tr><th></th><th class="num">before</th><th class="num">after</th></tr>
+        <tr><td>ground cells</td><td class="num">533</td><td class="num"><b>207</b></td></tr>
+        <tr><td>navigable columns</td><td class="num">26,818</td><td class="num"><b>10,898</b></td></tr>
+        <tr><td>frontline edge</td><td class="num">140 blk</td><td class="num"><b>40 blk</b></td></tr>
+        <tr class="hi"><td>evaluator score</td><td class="num">3.243</td><td class="num"><b>0.0</b></td></tr>
+      </table></div>
+      <blockquote style="margin-top:1.3em;font-size:clamp(13px,1.4vw,18px)">I read the tool documents and not
+        the model. I treated the evaluator's one number as a matter of taste — it was reporting the absence of
+        a structure, and I answered it by trimming corners. I never drew the board. <b>I used features because
+        they existed:</b> the water lane went in because the format has one, not because the board had two
+        islands wanting a late connection.<cite>the agent's own post-mortem</cite></blockquote>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">07 &middot; collaboration &middot; <b>the round trip</b></p>
+  <h2>A person finishes it in game.<br>The finish comes back as documents.</h2>
+  <div class="cols two body">
+    <div>
+      <ul class="marks">
+        <li><span>01</span><span><b>A control.</b> Re-drive the original spec and diff it against the
+          committed world. <b>4,020 differing cells of 1,060,630 — 0.4%</b>, every one a tree or a spawn
+          terrace, and <em>"not one column of ground, water, wall, bridge, boulder or cairn moved."</em></span></li>
+        <li><span>02</span><span><b>The diff</b>, provenance-keyed, so a changed cell is attributed to the
+          pass that originally claimed it.</span></li>
+        <li><span>03</span><span><b>The translation table.</b> Each WorldEdit command mapped to the studio's
+          own word — a nested <code>#vor[n][#turb[m][…]]</code> becomes one <code>cell</code> material whose
+          palette is <code>turbulence</code> materials.</span></li>
+        <li><span>04</span><span><b>The trees</b>, matched by leaf set under the eight symmetries of the
+          square — <em>"forty-two bodies, every one a showcase tree at 0.99 or better"</em> — and cut into the
+          library.</span></li>
+        <li><span>05</span><span><b>Two boards come out</b>: the original restated with the human finish as
+          documents, and a new board built on a new layout using what it taught.</span></li>
+      </ul>
+    </div>
+    <div>
+      <p><strong>29,954 of 35,610 columns keep their surface height exactly.</strong> That number is what
+        makes the human diff readable at all: without determinism, <em>what the person changed</em> and
+        <em>what the build does differently this time</em> cannot be separated.</p>
+      <p>The round trip produced three studio fixes, one outright bug — <strong>25,000 blocks of void under
+        walls</strong> the person had filled by hand, now kept by the builder — and an eleven-item list of
+        what the studio cannot state. Its last item is the honest frontier:</p>
+      <blockquote>The chimneys, the flower pots, the player heads, the crates, the slab wall round the terrace,
+        the smooth slabs at every rise of the bridge and the path… are all dressing at a grain no prop has: a
+        block on a block. They are the "alive" the author was after, and each is a placement of one to twelve
+        blocks by hand.</blockquote>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">07 &middot; collaboration &middot; <b>the division</b></p>
+  <h2>And it moves</h2>
+  <div class="tw body">
+    <table>
+      <tr><th style="width:50%">the model is good at</th><th>the person is the only source of</th></tr>
+      <tr><td>holding a 169-rule vocabulary and acting on ids</td><td><b>whether a board is worth playing</b></td></tr>
+      <tr><td>arithmetic over a document — bay grids, per-course stairs, ramp anchors</td>
+          <td>what an objective needs around it</td></tr>
+      <tr><td>taking every read and reporting what moved</td>
+          <td>which of two correct-looking arrangements is the better contest</td></tr>
+      <tr><td>iterating twenty times at thirty seconds a try</td>
+          <td>the conventions a corpus records but does not state</td></tr>
+      <tr><td>writing down what it could not do, by name</td>
+          <td>the block-on-a-block grain that reads, from the ground, as care</td></tr>
+    </table>
+    <p style="margin-top:1.4em;max-width:74ch"><strong>Every row on the left was on the right a month before
+      the capability that moved it.</strong> That is the actual claim: the boundary moves when a capability
+      turns a question of taste into a question with a read behind it — and each of those is visible in the
+      corpus as a date. The <code>slope</code> band axis moved <em>"does this board look like anything"</em>
+      one notch toward answerable. <code>GET …/coverage</code> moved <em>"is any of this used"</em> all the
+      way. Neither existed in August.</p>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">08 &middot; limits</p>
+  <h2>What it does not do</h2>
+  <div class="cols wide-left body">
+    <div>
+      <ul class="marks">
+        <li><span>—</span><span><b>It does not decide whether a map is good.</b> It checks 169 named things,
+          none of which is <em>is this worth playing</em>. A board can pass every gate, score zero, and be
+          dull. Several in the corpus are.</span></li>
+        <li><span>—</span><span><b>No gate asks whether a board looks like anything.</b> A map's whole finish
+          is held to almost nothing — the half every run has got wrong at least once.</span></li>
+        <li><span>—</span><span><b>Coverage is a measurement, not a gate.</b> Two boards, one with a third of
+          its ground unused and one with an eighth, <em>"pass every gate identically."</em></span></li>
+        <li><span>—</span><span><b>The block-on-a-block grain is missing</b>, and it is the largest gap. A
+          person places a flower pot in a second; the studio's smallest instrument is a made thing of hundreds
+          of shapes.</span></li>
+        <li><span>—</span><span><b>The documentation drifts, measurably.</b> An audit for this paper found 34
+          factual errors in the studio's own docs — every stale figure of them in ungated prose, because three
+          tests hold the endpoint tables to the routes.</span></li>
+      </ul>
+    </div>
+    <figure><img src="../marlbeck/renders/coverage.png" alt="Marlbeck's coverage: green reached, red dead">
+      <figcaption>Green is ground a journey passes; red is ground none does. Marlbeck's own <b>34.4%</b> is a
+      number its author accepted, not one the studio approved.</figcaption></figure>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide">
+  <p class="eyebrow">09 &middot; what it adds up to</p>
+  <h2>Three claims</h2>
+  <div class="body" style="justify-content:center;gap:clamp(20px,3.4vh,40px)">
+    <div>
+      <h3>01 &middot; Describing a map as documents makes it checkable</h3>
+      <p>A plan is two pieces and two markers, and answers <code>GO1</code> in two seconds; a world is a
+        million blocks and answers nothing. The four-level split is not tidiness — it is what puts each question at the grain
+        where it has an answer.</p>
+    </div>
+    <div>
+      <h3>02 &middot; A system that refuses by name can be driven without a human watching each step</h3>
+      <p>111 worlds say so. The mechanisms are small and specific: a rule id per finding, a JSON path per
+        field, <code>warnings</code> on a 200, a text twin for every picture. Remove any one and the corpus
+        records what happens.</p>
+    </div>
+    <div>
+      <h3>03 &middot; The seam between the person and the model is real, and it moves</h3>
+      <p>The person owns what the map is for; the model owns what it measures. What has not moved, and shows
+        no sign of moving, is the first row: <strong>whether a board is worth playing is asked, not
+        derived.</strong> The one time this repository forgot that, it committed an entirely invented
+        conclusion from a measurement that was correct. The rule that prevents it costs one question.</p>
+    </div>
+  </div>
+</section>
+
+<!--S-->
+<section class="slide cover">
+  <p class="eyebrow">10 &middot; trying it</p>
+  <h1>Start here</h1>
+  <div class="cols two body" style="flex:none;margin-top:.6em">
+    <div>
+      <pre>sudo apt-get install -y dotnet-sdk-10.0 mariadb-server
+sudo service mariadb start
+export ConnectionStrings__PgmStudio="Server=localhost;\
+Database=pgm_studio;Uid=pgm;Pwd=pgm_dev_pw;"
+
+dotnet run --project src/PgmStudio.Import -- --migrate-only
+./tools/dev.sh restart          <span class="d"># :7894</span>
+
+export PGM_STUDIO_API=http://localhost:7894/api
+python3 tools/drive.py whitepaper/marlbeck "Marlbeck" \
+        --out /tmp/world --renders /tmp/renders</pre>
+    </div>
+    <ul class="marks">
+      <li><span>01</span><span><code>GET /api/rules</code> — the whole vocabulary of refusal.
+        <b>Cheaper to read 169 rows now than to meet them one build at a time.</b></span></li>
+      <li><span>02</span><span><code>docs/tools/flow.md</code> — the four levels and the five hand-offs. The
+        map over everything else.</span></li>
+      <li><span>03</span><span><code>showcase/</code> — <b>23 folders, one technique each.</b> Every one forks
+        the same 100 × 100 square and changes only what its technique needs, so <b>the diff is the
+        lesson</b>.</span></li>
+      <li><span>04</span><span><code>whitepaper/marlbeck/build-spec.py</code> — this deck's own board, 200
+        lines, every fault it went through recorded.</span></li>
+    </ul>
+  </div>
+</section>
+</script>
+
+<script>
+(() => {
+  const src = document.getElementById('slides').textContent;
+  document.getElementById('deck').innerHTML = src;
+  const slides = [...document.querySelectorAll('.slide')];
+  const total = slides.length;
+  document.getElementById('tot').textContent = total;
+  const cur = document.getElementById('cur');
+  const hint = document.getElementById('hint');
+  const bands = [document.getElementById('rail-a'), document.getElementById('rail-b'),
+                 document.getElementById('rail-c')];
+  let i = 0;
+
+  // The rail is the three slope bands a terrain theme paints with, filled in proportion to progress.
+  function paintRail(frac) {
+    const w = frac * 100, cuts = [0.42, 0.30, 0.28];
+    let left = w;
+    bands.forEach((el, n) => {
+      const share = Math.max(0, Math.min(cuts[n] * 100, left));
+      el.style.width = share + '%';
+      left -= share;
+    });
+  }
+
+  function show(n) {
+    i = Math.max(0, Math.min(total - 1, n));
+    slides.forEach((s, k) => s.classList.toggle('on', k === i));
+    cur.textContent = i + 1;
+    paintRail((i + 1) / total);
+    if (i > 0) hint.classList.add('gone');
+    if (location.hash !== '#' + (i + 1)) history.replaceState(null, '', '#' + (i + 1));
+  }
+
+  addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') { show(i + 1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { show(i - 1); e.preventDefault(); }
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(total - 1);
+  });
+  addEventListener('click', e => {
+    if (e.target.closest('a, pre, .tw')) return;      // let a link, a code block and a table be used
+    show(e.clientX > innerWidth * 0.5 ? i + 1 : i - 1);
+  });
+  let x0 = null;
+  addEventListener('touchstart', e => { x0 = e.touches[0].clientX; }, { passive: true });
+  addEventListener('touchend', e => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0;
+    if (Math.abs(dx) > 44) show(i + (dx < 0 ? 1 : -1));
+    x0 = null;
+  }, { passive: true });
+
+  addEventListener('hashchange', () => {
+    const n = (parseInt(location.hash.slice(1), 10) || 1) - 1;
+    if (n !== i) show(n);
+  });
+
+  show(Math.max(0, (parseInt(location.hash.slice(1), 10) || 1) - 1));
+})();
+</script>
