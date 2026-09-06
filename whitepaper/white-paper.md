@@ -28,7 +28,7 @@ paper's own demonstration board, in a sentence naming the rule, the coordinate a
 The evidence is a second repository. **`pgm-studio-mapgen` holds 111 built worlds, 94 authored specs and 49
 run reports** — every board authored by a language model driving the studio's HTTP API, and every failure
 written down. This paper takes its worked example from that corpus and adds one more: **Marlbeck**, a destroy
-board built from nothing while this document was being written, in three revisions, with every refusal and
+board built from nothing while this document was being written, in five revisions, with every refusal and
 every correction reproduced below exactly as the studio reported them.
 
 **What is claimed.** That describing a map as documents makes it checkable; that a system which refuses by
@@ -38,7 +38,7 @@ people would put it.
 
 **What is not claimed.** That the studio decides whether a map is good. It does not, it cannot, and the one
 place this repository tried to make it — a confident, filed, committed claim that every generated destroy map
-was unwinnable, derived from a correct measurement and an invented conclusion — is documented in §10 as the
+was unwinnable, derived from a correct measurement and an invented conclusion — is set out in §9.1 as the
 cautionary case it is.
 
 ---
@@ -1026,9 +1026,9 @@ python3 tools/drive.py whitepaper/marlbeck "Marlbeck" --out /tmp/world --renders
 Three claims, and what stands behind each.
 
 **Describing a map as documents makes it checkable.** A plan is two pieces and two markers and answers `GO1`
-in two seconds; a world is a million blocks and answers nothing. Every gate in §6 exists because there is a document to run it
-against. The four-level split is not tidiness — it is what puts each question at the grain where it has an
-answer.
+in two seconds; a world is a million blocks and answers nothing. Every gate in §6 exists because there is a
+document to run it against. The four-level split is not tidiness — it is what puts each question at the grain
+where it has an answer.
 
 **A system that refuses by name and answers in numbers can be driven without a human watching each step.**
 111 worlds say so. The mechanisms that made it work are small and specific: a rule id per finding, a JSON path
