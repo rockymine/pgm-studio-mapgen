@@ -585,7 +585,7 @@ FINISH = {
     "themes": THEMES,
     "relief": RELIEF,
     "addShapes": ADD_SHAPES,
-    "roomStyles": {"cage": HALL, "spawn": BARRACKS},
+    "roomStyles": {"wool": HALL, "spawn": BARRACKS},
     "dressing": {"props": PROPS, "styles": STYLES},
 }
 

@@ -752,7 +752,7 @@ def main():
     under = under_layer()
     finish = {
         "authors": ["Opus 5"],
-        "roomStyles": {"spawn": "@showcase-hall", "cage": "@showcase-cage"},
+        "roomStyles": {"spawn": "@showcase-hall", "wool": "@showcase-cage"},
         "themes": THEMES,
         "mapTheme": "pass",
         # one compiled shape: six nested rectangles resolve to a single open landmass, which is the

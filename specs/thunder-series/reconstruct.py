@@ -324,7 +324,7 @@ def main():
     layout['themes'] = themes
     layout['mapTheme'] = spec.get('mapTheme', 'dune')
     layout['relief'] = {'team': spec['relief']}
-    layout['roomStyles'] = {'cage': house, 'spawn': house}
+    layout['roomStyles'] = {'wool': house, 'spawn': house}
     layout['dressing'] = dressing
     json.dump(layout, open(f'{OUT}/{board}.layout.json', 'w'), indent=1)
     json.dump(intent, open(f'{OUT}/{board}.intent.json', 'w'), indent=1)

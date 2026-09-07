@@ -629,7 +629,7 @@ finish = {
     ],
     "themes": THEMES,
     "mapTheme": "plaza",
-    "roomStyles": {"cage": None, "spawn": "@interchange-spawn"},
+    "roomStyles": {"wool": None, "spawn": "@interchange-spawn"},
     "dressing": {"props": props},
     "voidEnforcement": True,
 }

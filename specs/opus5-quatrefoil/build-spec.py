@@ -287,7 +287,7 @@ def finish():
     return {
         "authors": ["Opus 5"],
         "created": "2026-09-04",
-        "roomStyles": {"spawn": "@hb-spawn", "cage": "@hb-cage"},
+        "roomStyles": {"spawn": "@hb-spawn", "wool": "@hb-cage"},
         "themes": THEMES,
         "mapTheme": "moor",
         # keyed on the compiled ids, because pieces at one height fuse into one shape and a height

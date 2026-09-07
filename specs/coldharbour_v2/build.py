@@ -107,7 +107,7 @@ def main():
     slopes = json.load(open(f'{HERE}/slopes.json'))
     for prop in dressing['props']:
         if prop['kind'] == 'house':
-            prop['style'] = rooms['cage']
+            prop['style'] = rooms['wool']
 
     print('== originate, store, compile')
     st, r = call('POST', '/plan', {'name': plan['meta']['name']})
@@ -140,7 +140,7 @@ def main():
     layout['themes'] = themes
     layout['mapTheme'] = MAP_THEME
     layout['relief'] = {'team': relief}
-    layout['roomStyles'] = {'cage': rooms['cage'], 'spawn': rooms['spawn']}
+    layout['roomStyles'] = {'wool': rooms['wool'], 'spawn': rooms['spawn']}
     layout['dressing'] = dressing
     json.dump(layout, open(f'{HERE}/coldharbour_v2.layout.json', 'w'), indent=1)
     json.dump(intent, open(f'{HERE}/coldharbour_v2.intent.json', 'w'), indent=1)

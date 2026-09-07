@@ -638,7 +638,7 @@ finish = {
     "relief": {"*": RELIEF_FLOOR, "walls": RELIEF_WALLS},
     "themes": THEMES,
     "mapTheme": "floor",
-    "roomStyles": {"cage": "@ow-cage", "spawn": "@ow-gate"},
+    "roomStyles": {"wool": "@ow-cage", "spawn": "@ow-gate"},
     "dressing": {"props": props},
 }
 

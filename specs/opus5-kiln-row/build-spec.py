@@ -344,7 +344,7 @@ finish = {
     "relief": RELIEF,
     "themes": THEMES,
     "mapTheme": "wadi",
-    "roomStyles": {"cage": "@kr-vault", "spawn": "@kr-gate"},
+    "roomStyles": {"wool": "@kr-vault", "spawn": "@kr-gate"},
     "dressing": {"props": props},
 }
 

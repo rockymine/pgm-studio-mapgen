@@ -594,7 +594,7 @@ finish = {
     "relief": RELIEF,
     "themes": THEMES,
     "mapTheme": "meadow",
-    "roomStyles": {"cage": None, "spawn": "@tf-cabin"},
+    "roomStyles": {"wool": None, "spawn": "@tf-cabin"},
     "dressing": {"props": props},
 }
 

@@ -75,7 +75,7 @@ What each key states:
   themes          the theme registry;  mapTheme  the map default (first key unless stated)
   biome           SketchLayout's own biome field: {"kind": "cell"|"noise"|"solid", ...}. The byte each
                   chunk carries, which tints grass, leaves and water. Absent is plains everywhere
-  roomStyles      {"cage": ..., "spawn": ...}; a "@name" string loads tools/styles/<name>.json
+  roomStyles      {"wool": ..., "spawn": ...}; a "@name" string loads tools/styles/<name>.json
   dressing        {"props": [...]};  a house prop's "style" takes the same "@name"
   voidEnforcement true -> patch intent.build.voidEnforcement (voidExclusions for the rects to spare)
   authors         ["Opus 5"], or [{"name", "uuid", "role", "contribution"}] -> the <authors> block. PGM

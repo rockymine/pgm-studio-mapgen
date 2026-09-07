@@ -353,7 +353,7 @@ finish = {
     "relief": RELIEF,
     "themes": THEMES,
     "mapTheme": "bench",
-    "roomStyles": {"cage": None, "spawn": "@dc-cabin"},
+    "roomStyles": {"wool": None, "spawn": "@dc-cabin"},
     "dressing": {"props": props},
 }
 

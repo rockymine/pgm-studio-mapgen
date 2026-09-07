@@ -838,7 +838,7 @@ FINISH = {
     "biome": {"kind": "noise", "seed": 23, "scale": 34, "octaves": 2, "stops": [2, 2, 3, 2]},
     # `cage` is the wool room's shell and `spawn` the berth's — the two rooms the studio stamps
     # itself from the plan's pieces rather than from a prop
-    "roomStyles": {"spawn": berth_style(), "cage": vault_style()},
+    "roomStyles": {"spawn": berth_style(), "wool": vault_style()},
     "dressing": {"props": PROPS, "styles": STYLES},
     "authors": ["Opus 5"],
     "created": "2026-09-03",

@@ -20,7 +20,7 @@ CELL = 5
 
 # THEME.md §"House styles", verbatim in intent: which style is the spawn building and which the wool one.
 ROOM_STYLES = {
-    'grok-ridge':       {'spawn': 'ridge-hall', 'cage': 'wool-shelter'},
+    'grok-ridge':       {'spawn': 'ridge-hall', 'wool': 'wool-shelter'},
     'sandscar':         {'spawn': 'desert-hall'},
     'sandscar-complex': {'spawn': 'desert-hall'},
 }

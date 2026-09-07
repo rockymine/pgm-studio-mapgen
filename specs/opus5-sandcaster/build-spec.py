@@ -659,7 +659,7 @@ def dressing():
 def main():
     finish = {
         "authors": ["Opus 5"],
-        "roomStyles": {"spawn": "@showcase-hall", "cage": "@showcase-cage"},
+        "roomStyles": {"spawn": "@showcase-hall", "wool": "@showcase-cage"},
         "themes": THEMES,
         "mapTheme": "pass",
         # s0 pass · s1 wash · s2 reef · s3 holt+apron+spawn, read off POST /plan/compile

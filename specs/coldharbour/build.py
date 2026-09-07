@@ -46,10 +46,10 @@ def main():
     relief = json.load(open(f'{HERE}/relief.json'))
     dressing = json.load(open(f'{HERE}/dressing.json'))
 
-    # every house wears the cage shell, so the yard byre and the wool cage are one building language
+    # every house wears the wool room's shell, so the yard byre and the wool room are one building language
     for prop in dressing['props']:
         if prop['kind'] == 'house':
-            prop['style'] = rooms['cage']
+            prop['style'] = rooms['wool']
 
     print('== originate and store')
     st, r = call('POST', '/plan', {'name': plan['meta']['name']})
@@ -81,7 +81,7 @@ def main():
         painted[shape.get('theme', MAP_THEME)] = painted.get(shape.get('theme', MAP_THEME), 0) + 1
     print(f'  shapes per theme: {painted}; relief_scope=hold on {held}')
     layout['relief'] = {'team': relief}
-    layout['roomStyles'] = {'cage': rooms['cage'], 'spawn': rooms['spawn']}
+    layout['roomStyles'] = {'wool': rooms['wool'], 'spawn': rooms['spawn']}
     layout['dressing'] = dressing
     json.dump(layout, open(f'{HERE}/coldharbour.layout.json', 'w'), indent=1)
     json.dump(intent, open(f'{HERE}/coldharbour.intent.json', 'w'), indent=1)

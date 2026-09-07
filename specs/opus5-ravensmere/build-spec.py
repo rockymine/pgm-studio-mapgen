@@ -672,7 +672,7 @@ def dressing():
 def main():
     finish = {
         "authors": ["Opus 5"],
-        "roomStyles": {"spawn": "@showcase-hall", "cage": "@showcase-cage"},
+        "roomStyles": {"spawn": "@showcase-hall", "wool": "@showcase-cage"},
         "themes": THEMES,
         "mapTheme": "sward",
         # one compiled shape: six nested tiers resolve to a single open landmass

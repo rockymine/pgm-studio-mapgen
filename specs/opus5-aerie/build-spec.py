@@ -352,7 +352,7 @@ finish = {
     "relief": RELIEF,
     "themes": THEMES,
     "mapTheme": "crag",
-    "roomStyles": {"cage": "@ae-fold", "spawn": "@ae-lodge"},
+    "roomStyles": {"wool": "@ae-fold", "spawn": "@ae-lodge"},
     "dressing": {"props": props},
 }
 

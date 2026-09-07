@@ -389,7 +389,7 @@ finish = {
     ],
     "themes": THEMES,
     "mapTheme": "heath",
-    "roomStyles": {"cage": "@rg-cage", "spawn": "@rg-gate"},
+    "roomStyles": {"wool": "@rg-cage", "spawn": "@rg-gate"},
     "dressing": {"props": props},
 }
 
