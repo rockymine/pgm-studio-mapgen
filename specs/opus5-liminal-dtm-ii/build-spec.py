@@ -152,7 +152,7 @@ def box(prefix, x0, z0, x1, z1, floor, height, theme_key=None, op="add", over=Fa
     return shape
 
 
-def island(ident, name, shapes, mirrors=True):
+def group(ident, name, shapes, mirrors=True):
     return {"id": ident, "name": name, "mirrors": mirrors,
             "shapeIds": [s["id"] for s in shapes]}
 
@@ -848,16 +848,16 @@ finish = {
     "addLayers": [
         {"id": "lid",   "name": "Backroom ceiling", "base_y": 0, "below": True,
          "shapes": lid,
-         "islands": [island("lid-maze", "Backroom ceiling", lid_whole, mirrors=False),
-                     island("lid-rooms", "Room ceilings", lid_sided)]},
+         "groups": [group("lid-maze", "Backroom ceiling", lid_whole, mirrors=False),
+                    group("lid-rooms", "Room ceilings", lid_sided)]},
         {"id": "under", "name": "Undercroft",       "base_y": 0, "below": True,
          "shapes": under,
-         "islands": [island("under-rock", "The rock", whole, mirrors=False),
-                     island("under-rooms", "The rooms", sided)]},
+         "groups": [group("under-rock", "The rock", whole, mirrors=False),
+                    group("under-rooms", "The rooms", sided)]},
         {"id": "bridge", "name": "Bridges", "base_y": 0,
-         "shapes": bridges, "islands": [island("bridge", "Bridges", bridges)]},
+         "shapes": bridges, "groups": [group("bridge", "Bridges", bridges)]},
         {"id": "sky",   "name": "Skyblocks",        "base_y": 0,
-         "shapes": sky,   "islands": [island("sky", "Skyblocks", sky)]},
+         "shapes": sky,   "groups": [group("sky", "Skyblocks", sky)]},
     ],
     "roomStyles": {"spawn": "@desert-pyramid"},
     "mapTheme": "desert",

@@ -40,7 +40,7 @@ over open void, because the marker is thirteen courses under the ground it names
     { "id": "hall", "type": "rectangle", "operation": "add", "floor": 0, "base_height": 8,
       "theme": "room", "min_x": -30, "min_z": -30, "max_x": 30, "max_z": 30 }
   ],
-  "islands": [ { "id": "under", "mirrors": false, "shapeIds": [ … ] } ] }
+  "groups": [ { "id": "under", "mirrors": false, "shapeIds": [ … ] } ] }
 ```
 
 `below: true` inserts the layer under the compiled ground rather than over it. Its shapes are all

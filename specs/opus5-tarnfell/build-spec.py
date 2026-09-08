@@ -344,11 +344,11 @@ RELIEF = {
 
 
 # ── the brush ─────────────────────────────────────────────────────────────────────────────────
-def stroke(ident, points, radius, pave, style="worn", coverage=0.4, route=False, seed=1):
+def stroke(ident, points, radius, pave, style="worn", coverage=0.4, claims_ground=False, seed=1):
     out = {"id": ident, "kind": "stroke", "seed": seed, "style": style, "radius": radius,
            "coverage": coverage, "pave": pave}
-    if route:
-        out["route"] = True
+    if claims_ground:
+        out["claimsGround"] = True
     out["points"] = [[x, z] for x, z in points]
     return out
 
@@ -374,17 +374,17 @@ FOOTWORN = voronoi(22, 3, [(COARSE, 2), (PODZOL, 1)])
 MAIN_PATH = [(0, 116), (-13, 106), (2, 95), (-11, 84), (5, 72), (-4, 62), (7, 54), (0, 47)]
 
 STROKES = [
-    stroke("path-main", MAIN_PATH, 3.5, TRACK, style="solid", coverage=1.0, route=True, seed=31),
+    stroke("path-main", MAIN_PATH, 3.5, TRACK, style="solid", coverage=1.0, claims_ground=True, seed=31),
 
     # the thinner ones, off it, to the four places somebody lives
     stroke("path-cabin-n", [(-13, 106), (-20, 102), (-27, 99)], 1.6, FOOTWORN,
-           coverage=0.85, route=True, seed=32),
+           coverage=0.85, claims_ground=True, seed=32),
     stroke("path-cabin-e", [(2, 95), (11, 93), (19, 91)], 1.6, FOOTWORN,
-           coverage=0.85, route=True, seed=33),
+           coverage=0.85, claims_ground=True, seed=33),
     stroke("path-cabin-w", [(-11, 84), (-22, 76), (-32, 69)], 1.6, FOOTWORN,
-           coverage=0.85, route=True, seed=34),
+           coverage=0.85, claims_ground=True, seed=34),
     stroke("path-camp", [(-4, 62), (4, 55), (14, 53)], 1.4, FOOTWORN,
-           coverage=0.8, route=True, seed=35),
+           coverage=0.8, claims_ground=True, seed=35),
 
     # ── the peaks, coloured strictly with the brush ──
     # The crag theme lays bare rock and stops there; every band above it is a stroke traced along

@@ -474,10 +474,10 @@ def house(prop_id, style, corners, front, seed, extra_wings=None, spec=None):
             "style": style, "wings": wings}
 
 
-def route(prop_id, points, radius, seed, style="solid", pave=None, is_route=True,
+def route(prop_id, points, radius, seed, style="solid", pave=None, claims_ground=True,
           coverage=1.0):
     return {"id": prop_id, "kind": "stroke", "seed": seed, "style": style, "radius": radius,
-            "coverage": coverage, "pave": pave or PAVE, "claimsGround": is_route, "points": points}
+            "coverage": coverage, "pave": pave or PAVE, "claimsGround": claims_ground, "points": points}
 
 
 def tree(prop_id, style, x, z, seed):

@@ -12,7 +12,7 @@ $ErrorActionPreference = 'Stop'
 # Read inline rather than through a helper: ConvertFrom-Json hands an array to the pipeline as one
 # object, and a function's return re-wraps it, so @(Read-Doc 'props.json') yields a single element.
 $base   = Get-Content (Join-Path $Dir 'base.json')   -Raw | ConvertFrom-Json   # setup, mapTheme, themes, roomStyles, relief
-$shapes = Get-Content (Join-Path $Dir 'shapes.json') -Raw | ConvertFrom-Json   # layout.islands + layout.shapes
+$shapes = Get-Content (Join-Path $Dir 'shapes.json') -Raw | ConvertFrom-Json   # layout.groups + layout.shapes
 $styles = Get-Content (Join-Path $Dir 'styles.json') -Raw | ConvertFrom-Json   # named HouseStyle snapshots
 $props  = Get-Content (Join-Path $Dir 'props.json')  -Raw | ConvertFrom-Json   # the authored prop list
 
@@ -38,13 +38,13 @@ function ConvertTo-JsonArray($items) {
   return "[$text]"
 }
 
-$islandsJson = ConvertTo-JsonArray $shapes.islands
+$groupsJson = ConvertTo-JsonArray $shapes.groups
 $shapesJson  = ConvertTo-JsonArray $shapes.shapes
 $propsJson   = ConvertTo-JsonArray $props
 
 $doc = [ordered]@{
   setup      = $base.setup
-  layout     = '@@LAYOUT@@'
+  layers     = '@@LAYERS@@'
   mapTheme   = $base.mapTheme
   themes     = $base.themes
   roomStyles = $base.roomStyles
@@ -52,16 +52,19 @@ $doc = [ordered]@{
   dressing   = '@@DRESSING@@'
 }
 
-$layoutJson   = "{ ""islands"": $islandsJson, ""shapes"": $shapesJson }"
+# A flat board is a stack of one, and that one is the ground.
+$layersJson   = "[{ ""id"": ""ground"", ""name"": ""Ground"", ""base_y"": 0, ""layout"": { ""groups"": $groupsJson, ""shapes"": $shapesJson } }]"
 $dressingJson = "{ ""props"": $propsJson }"
 
 $text = $doc | ConvertTo-Json -Depth 60
-$text = $text.Replace('"@@LAYOUT@@"', $layoutJson).Replace('"@@DRESSING@@"', $dressingJson)
+$text = $text.Replace('"@@LAYERS@@"', $layersJson).Replace('"@@DRESSING@@"', $dressingJson)
 
 # Fail loudly rather than writing a document the API will read as half a map.
 $check = $text | ConvertFrom-Json
-if (@($check.layout.shapes).Count -ne @($shapes.shapes).Count) { throw 'shape count did not survive assembly' }
+if (@($check.layers[0].layout.shapes).Count -ne @($shapes.shapes).Count) { throw 'shape count did not survive assembly' }
 if (@($check.dressing.props).Count -ne @($props).Count)        { throw 'prop count did not survive assembly' }
 
-$text | Set-Content (Join-Path $Dir $Out) -Encoding utf8
-"assembled $Out - $(@($check.layout.shapes).Count) shapes, $(@($check.dressing.props).Count) props, $(@($styles.PSObject.Properties).Count) house styles"
+# WriteAllText with a BOM-less encoder: PowerShell 5.1's `-Encoding utf8` writes a byte-order mark,
+# and Python's json.load - which is what drives the spec - refuses a document that starts with one.
+[System.IO.File]::WriteAllText((Join-Path $Dir $Out), $text, (New-Object System.Text.UTF8Encoding $false))
+"assembled $Out - $(@($check.layers[0].layout.shapes).Count) shapes, $(@($check.dressing.props).Count) props, $(@($styles.PSObject.Properties).Count) house styles"

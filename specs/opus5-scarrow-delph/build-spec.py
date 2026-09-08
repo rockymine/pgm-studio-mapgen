@@ -276,9 +276,9 @@ ROAD_PAVE = cell(4400, 5, [GRAVEL, COBBLE, GRAVEL])
 with open(os.path.join(HERE, "..", "..", "tools", "styles", "rk-shed.json")) as _fh:
     STAGE_STYLE = json.load(_fh)
 STAGE_STYLE["roof"]["slab"], STAGE_STYLE["roof"]["slabData"] = 44, 1
-def stroke(sid, pts, radius, seed, pave=None, route=True, style="solid", coverage=1.0):
+def stroke(sid, pts, radius, seed, pave=None, claims_ground=True, style="solid", coverage=1.0):
     return {"id": sid, "kind": "stroke", "seed": seed, "radius": radius, "style": style,
-            "coverage": coverage, "claimsGround": route, "pave": pave or ROAD_PAVE,
+            "coverage": coverage, "claimsGround": claims_ground, "pave": pave or ROAD_PAVE,
             "points": [list(p) for p in pts]}
 
 BANK = cell(4401, 6, [GRAVEL, COARSE])

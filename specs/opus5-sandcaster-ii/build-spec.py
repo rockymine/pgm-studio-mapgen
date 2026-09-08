@@ -765,8 +765,8 @@ def main():
         "addShapes": lid_and_cuttings() + brush(),
         "addLayers": [{"id": "under", "name": "The workings", "base_y": 0, "below": True,
                        "shapes": under,
-                       "islands": [{"id": "under", "name": "The workings", "mirrors": True,
-                                    "shapeIds": [s["id"] for s in under]}]}],
+                       "groups": [{"id": "under", "name": "The workings", "mirrors": True,
+                                   "shapeIds": [s["id"] for s in under]}]}],
         "dressing": dressing(),
     }
     out = os.path.join(HERE, f"{SLUG}.finish.json")

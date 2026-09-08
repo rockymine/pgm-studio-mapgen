@@ -252,11 +252,11 @@ def flora(ident, ring, coverage, seed, scale=7, fern=0.2, flower=0.2, tall=0.16)
                      "flowerShare": flower, "flowerScale": 5, "tallShare": tall}}
 
 
-def stroke(ident, points, radius, pave, style="worn", coverage=0.4, route=False, seed=1):
+def stroke(ident, points, radius, pave, style="worn", coverage=0.4, claims_ground=False, seed=1):
     out = {"id": ident, "kind": "stroke", "seed": seed, "style": style, "radius": radius,
            "coverage": coverage, "pave": pave}
-    if route:
-        out["route"] = True
+    if claims_ground:
+        out["claimsGround"] = True
     out["points"] = [[x, z] for x, z in points]
     return out
 
@@ -284,9 +284,9 @@ props = [
     # nothing across the gaps until somebody builds it
     stroke("home-path", [(0, 58), (-5, 51), (-12, 47), (-18, 45)], 2.2,
            voronoi(21, 4, [(GRAVEL, 1), (DIRT, 1), (COARSE, 1)]),
-           style="solid", coverage=1.0, route=True, seed=31),
+           style="solid", coverage=1.0, claims_ground=True, seed=31),
     stroke("fold-path", [(31, 22), (31, 30), (24, 33), (14, 33)], 2.0,
-           voronoi(22, 4, [(GRAVEL, 1), (COARSE, 1)]), coverage=0.85, route=True, seed=32),
+           voronoi(22, 4, [(GRAVEL, 1), (COARSE, 1)]), coverage=0.85, claims_ground=True, seed=32),
 ]
 
 

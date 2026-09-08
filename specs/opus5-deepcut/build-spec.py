@@ -262,11 +262,11 @@ def flora(ident, ring, coverage, seed, scale=9, fern=0.1, flower=0.3, tall=0.06)
                      "flowerShare": flower, "flowerScale": 6, "tallShare": tall}}
 
 
-def stroke(ident, points, radius, pave, style="worn", coverage=0.4, route=False, seed=1):
+def stroke(ident, points, radius, pave, style="worn", coverage=0.4, claims_ground=False, seed=1):
     out = {"id": ident, "kind": "stroke", "seed": seed, "style": style, "radius": radius,
            "coverage": coverage, "pave": pave}
-    if route:
-        out["route"] = True
+    if claims_ground:
+        out["claimsGround"] = True
     out["points"] = [[x, z] for x, z in points]
     return out
 
@@ -304,7 +304,7 @@ props = [
     # the haul road, and a wash of grit along the second bench
     stroke("haul-road", [(-10, 56), (-22, 53), (-30, 50), (-30, 42), (-27, 34), (-23, 26),
                          (-22, 20), (-12, 16), (0, 8)],
-           3.0, HAUL, style="solid", coverage=1.0, route=True, seed=31),
+           3.0, HAUL, style="solid", coverage=1.0, claims_ground=True, seed=31),
     stroke("bench-grit", [(-34, 30), (-16, 34), (4, 32), (22, 36)], 3.4,
            voronoi(22, 4, [(CLAY_LGREY, 1), (GRAVEL, 1)]), style="worn", coverage=0.45, seed=32),
     stroke("lip-wash", [(-34, RIM_Z - 1), (0, RIM_Z), (34, RIM_Z - 1)], 4.0, CLAY_WHITE,

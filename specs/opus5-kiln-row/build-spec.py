@@ -244,11 +244,11 @@ def flora(ident, ring, coverage, seed, scale=9, fern=0.05, flower=0.3, tall=0.05
                      "flowerShare": flower, "flowerScale": 6, "tallShare": tall}}
 
 
-def stroke(ident, points, radius, pave, style="worn", coverage=0.4, route=False, seed=1):
+def stroke(ident, points, radius, pave, style="worn", coverage=0.4, claims_ground=False, seed=1):
     out = {"id": ident, "kind": "stroke", "seed": seed, "style": style, "radius": radius,
            "coverage": coverage, "pave": pave}
-    if route:
-        out["route"] = True
+    if claims_ground:
+        out["claimsGround"] = True
     out["points"] = [[x, z] for x, z in points]
     return out
 
@@ -289,11 +289,11 @@ props = [
 props += [
     # the row's own street, and the ramp off the end of it
     stroke("street", [(-RAMP_X, 37), (-14, 44), (0, 45), (14, 44), (RAMP_X, 37)], 2.6, TRACK,
-           style="solid", coverage=1.0, route=True, seed=31),
+           style="solid", coverage=1.0, claims_ground=True, seed=31),
     stroke("ramp-track-e", [(RAMP_X, 37), (RAMP_X, 26), (RAMP_X + 1, 16), (20, 10)], 2.4, TRACK,
-           coverage=0.9, route=True, seed=32),
+           coverage=0.9, claims_ground=True, seed=32),
     stroke("ramp-track-w", [(-RAMP_X, 37), (-RAMP_X, 26), (-RAMP_X - 1, 16), (-20, 10)], 2.4, TRACK,
-           coverage=0.9, route=True, seed=36),
+           coverage=0.9, claims_ground=True, seed=36),
     # and the braid down the wadi, which is paint rather than a route
     stroke("braid-a", [(-34, 6), (-12, 15), (8, 5), (30, 14)], 3.0,
            voronoi(22, 5, [(GRAVEL, 1), (SAND, 4)]), style="worn", coverage=0.3, seed=33),

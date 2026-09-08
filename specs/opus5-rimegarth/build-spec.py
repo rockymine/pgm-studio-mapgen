@@ -258,11 +258,11 @@ def flora(ident, ring, coverage, seed, scale=8, fern=0.24, flower=0.1, tall=0.2)
                      "flowerShare": flower, "flowerScale": 6, "tallShare": tall}}
 
 
-def stroke(ident, points, radius, pave, style="worn", coverage=0.4, route=False, seed=1):
+def stroke(ident, points, radius, pave, style="worn", coverage=0.4, claims_ground=False, seed=1):
     out = {"id": ident, "kind": "stroke", "seed": seed, "style": style, "radius": radius,
            "coverage": coverage, "pave": pave}
-    if route:
-        out["route"] = True
+    if claims_ground:
+        out["claimsGround"] = True
     out["points"] = [[x, z] for x, z in points]
     return out
 
@@ -364,10 +364,10 @@ props += [
           fern=0.1, flower=0.04, tall=0.1),
 
     # the one road: out of the gatehouse, down the hall's length, over the green to the gill's lip
-    stroke("street", STREET, ROADS[0][1], TROD, style="solid", coverage=1.0, route=True, seed=31),
+    stroke("street", STREET, ROADS[0][1], TROD, style="solid", coverage=1.0, claims_ground=True, seed=31),
     # and the two ways round the garth, one to a lane, each through its own wall
-    stroke("garth-w", GARTH_W, ROADS[1][1], TROD, coverage=0.85, route=True, seed=32),
-    stroke("garth-e", GARTH_E, ROADS[2][1], TROD, coverage=0.8, route=True, seed=33),
+    stroke("garth-w", GARTH_W, ROADS[1][1], TROD, coverage=0.85, claims_ground=True, seed=32),
+    stroke("garth-e", GARTH_E, ROADS[2][1], TROD, coverage=0.8, claims_ground=True, seed=33),
 
     # and two that are paint rather than a way
     stroke("drift", [(RING[0] + 3, RING[1] + 3), (RING[0] + 3, RING[3] - 3),
@@ -384,8 +384,8 @@ finish = {
     "addLayers": [
         {"id": "garth-pool", "name": "The stank", "base_y": 0, "below": True,
          "shapes": pool,
-         "islands": [{"id": "stank", "name": "The stank", "mirrors": True,
-                      "shapeIds": [p["id"] for p in pool]}]},
+         "groups": [{"id": "stank", "name": "The stank", "mirrors": True,
+                     "shapeIds": [p["id"] for p in pool]}]},
     ],
     "themes": THEMES,
     "mapTheme": "heath",

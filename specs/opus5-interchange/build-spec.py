@@ -428,7 +428,7 @@ roofs = [
 ]
 
 
-def island(ident, name, shapes, mirrors=True):
+def group(ident, name, shapes, mirrors=True):
     return {"id": ident, "name": name, "mirrors": mirrors,
             "shapeIds": [s["id"] for s in shapes]}
 
@@ -619,13 +619,13 @@ finish = {
         # first in the stack, because the painter walks it in order and each storey paints its whole
         # column: a storey listed after one that stands over it never sees a stone block again
         {"id": "under", "name": "Service level", "base_y": 0, "below": True,
-         "shapes": under, "islands": [island("under", "Service level", under)]},
+         "shapes": under, "groups": [group("under", "Service level", under)]},
         {"id": "catwalk", "name": "Catwalk", "base_y": 0,
-         "shapes": catwalk, "islands": [island("catwalk", "Catwalk", catwalk)]},
+         "shapes": catwalk, "groups": [group("catwalk", "Catwalk", catwalk)]},
         {"id": "roofs", "name": "Spine roof", "base_y": 0,
-         "shapes": roofs, "islands": [island("roofs", "Spine roof", roofs)]},
+         "shapes": roofs, "groups": [group("roofs", "Spine roof", roofs)]},
         {"id": "deck", "name": "Car deck", "base_y": 0,
-         "shapes": deck, "islands": [island("deck", "Car deck", deck)]},
+         "shapes": deck, "groups": [group("deck", "Car deck", deck)]},
     ],
     "themes": THEMES,
     "mapTheme": "plaza",

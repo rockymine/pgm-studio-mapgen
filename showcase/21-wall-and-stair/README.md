@@ -84,7 +84,7 @@ This board carries both props to prove it:
 
 ```json
 "dressing": { "props": [
-  { "kind": "stroke", "id": "gate-road", "route": true, "radius": 3,
+  { "kind": "stroke", "id": "gate-road", "claimsGround": true, "radius": 3,
     "points": [[0, -16], [0, 16]], "pave": { "kind": "solid", "id": 13 } },
   { "kind": "water", "id": "moat", "radius": 5, "depth": 3, "shore": 3,
     "points": [[-40, 8], [40, 8]] }

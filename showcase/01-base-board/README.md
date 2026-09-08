@@ -101,7 +101,7 @@ s0  polygon  base_height 9      team 0's island — the canvas every later showc
 s1  polygon                     team 1's island
 spawn-red / spawn-blue          role spawn      — projected, not terrain
 wool-red-red / wool-blue-blue   role woolRoom   — projected, not terrain
-islands: [ team (mirrors) → s0, s1 ]
+groups: [ team (mirrors) → s0, s1 ]
 ```
 
 Those two ids are the handle a finish keys on: `themeById: {"s0": …, "s1": …}` paints the ground, and a
