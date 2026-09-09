@@ -30,7 +30,8 @@ document reads the way the world stands (`SK20`), and the layer ids are the auth
 the editor's timestamps, so a finding names something a reader recognises. The built heightmap is
 byte-identical before and after.
 
-`PROMPT.md` beside this file is the text an agent is given.
+`PROMPT.md` beside this file is the text an agent is given, and `load.py` puts the board on a studio under
+a slug of the run's own.
 
 Load it with `POST /map/from-documents` under a slug of the run's own, so a run never writes to the board it
 was copied from. The harness for that is `mint.py`, outside this repository beside the texture work.

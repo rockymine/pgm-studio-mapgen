@@ -11,13 +11,16 @@ no room shells — everything about how it *looks* is missing, and that is your 
 
 **Make it read like `<place>`.**
 
-Two things to author:
+Three things to author:
 
 1. **The terrain paint.** Register whatever themes the board needs and say which shape wears which. A theme
    states what its rim, surface, wall and fill are made of; a shape with no theme of its own takes the map
    default.
 2. **The wool room and spawn room shells.** Each is a room the build stamps — floor, walls, roof, a door.
    Author both so they belong to the place the rest of the board is.
+3. **The dressing, if the place wants any.** Trees, boulders, ground cover, paths, water. A tree or a
+   boulder is a recipe from the library named on a placement; a path or a channel is traced where it goes.
+   A board with nothing on it is a legitimate board, so this is yours to judge.
 
 Work only through the API. It is the whole of what you have and it answers for itself: every route, its
 parameters and its response schema are at `<base>/api-docs`, over the document at
@@ -35,8 +38,12 @@ The routes you will want:
 | `PUT /api/map/<slug>/sketch/map-theme` | which theme covers every shape that names none |
 | `PATCH /api/map/<slug>/sketch/shapes/{shapeId}` | put a theme on one shape |
 | `PUT /api/map/<slug>/sketch/room-styles/{part}` | bind a shell — `wool` or `spawn` |
+| `GET,POST /api/tree-styles` · `/api/boulder-styles` | the recipe library a placement names |
+| `POST /api/map/<slug>/sketch/props` | put one thing on the board |
+| `POST /api/map/<slug>/sketch/dressing` | write the placements whole |
 | `POST /api/terrain/theme-preview` | render a finish before committing to it |
 | `POST /api/room-styles/preview` | render a room shell the same way |
+| `POST /api/tree-styles/preview` · `/api/boulder-styles/preview` | render a recipe before saving it |
 | `GET /api/map/<slug>/render/surface?format=png` | the board as it now paints |
 | `GET /api/map/<slug>/render/section?format=png` | a cut through it |
 | `GET /api/map/<slug>/findings` | what the studio makes of the document |
@@ -54,19 +61,10 @@ When you are finished, say in a sentence or two what you were going for and wher
 `<slug>` must be a copy. Load the three documents beside this file under a slug of the run's own:
 
 ```sh
-python3 - <<'PY'
-import json, pathlib, urllib.request
-here = pathlib.Path(".")
-docs = {k: json.loads((here / f"rockymine-probe.{k}.json").read_text())
-        for k in ("layout", "intent", "plan")}
-docs["slug"] = "probe-run-1"
-docs["name"] = "Colour probe — run 1"
-body = json.dumps(docs).encode()
-req = urllib.request.Request("http://localhost:7894/api/map/from-documents", body,
-                             {"Content-Type": "application/json"})
-print(urllib.request.urlopen(req).read().decode()[:400])
-PY
+BASE=http://localhost:7894 SLUG=probe-run-1 python3 load.py
 ```
+
+Run it from this directory. `BASE` is whichever server the run is against and `SLUG` is that run's own.
 
 A freshly loaded board answers `SK8` — no finish — and three `SK11`, which are true of its geometry and not
 about paint. Neither is a run's to answer.
