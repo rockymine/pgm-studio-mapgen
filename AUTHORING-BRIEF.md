@@ -327,6 +327,48 @@ house on stone can be made to work and is a hard thing to get right; it is not t
 on grey stone. Name three families out loud before painting: which is ground, which is built, which is the
 accent. An accent that appears once is not an accent, and an ore block is never a building material.
 
+### Which blocks go beside which
+
+Read off ten painted boards in a built world. Every one is the author's ruling and none is derivable from the
+corpus or the code, so none of it is negotiable by argument from a mean colour.
+
+**A rock must not share a tone family with the ground it sits on.** It disappears — sandstone rocks on sand
+vanish into the sandstone behind them. When unsure the rock is stone, andesite and cobblestone: boring, and it
+works against sand, grass, dirt and red sand alike. A rock of a **single** clay also works, since no two clay
+colours are close enough to fight.
+
+**Do not randomise between two opposing colours.** Red clay against hardened clay in one pattern is noise, not
+variation. Two blocks in a pattern are near neighbours or they are a seam.
+
+**Where two blocks fight, a third can bridge them.** Coarse dirt and light grey clay do not sit together; add
+granite and they do. Reach for the bridging block before abandoning the pair.
+
+**A path is a near neighbour of the ground, never a contrast to it.** Coarse dirt and gravel on sand is too
+far, and so is red sand on sand, and sandstone on red sand. A path shows because feet wore it, not because it
+is a different colour.
+
+**Subtle beats separated on a surface.** Snow with quartz, hardened clay with red sand and orange clay, grey
+stained clay with black — these read as one ground with weather in it, which is what a surface wants. The
+failure at surface is almost never two blocks being too alike.
+
+**Mossy cobblestone belongs in specks, never in courses.** It carries too much noise of its own to be laid as
+a layer; it is a block for a rock or a scatter.
+
+**Podzol and grass do not combine.**
+
+**Obsidian is a floor.** One course above bedrock at most, never a course inside the map.
+
+**A stacked terrain wants stone at the bottom**, whatever the courses above it are made of.
+
+**Five materials in a platform floor is a mottle, not a texture.** Three at most, from one family, and if
+that reads as flat then the answer is a shape with its own theme rather than a wider pattern.
+
+**A rim clashes with a surface that is already natural.** Where the ground reads well on its own, turn the rim
+off; it belongs on an edge somebody made.
+
+**A checker in a wall must not use the wood the pillars use.** Oak in the wall and spruce on the posts reads
+as two things; the same log in both reads as one confused thing.
+
 ### The one thing that is not yours to decide
 
 **A rule about the map as it is *played* has a human oracle, and this session does not have one.** When you
