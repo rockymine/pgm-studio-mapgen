@@ -253,8 +253,8 @@ came apart. The observations below are measured off shipped boards and are enfor
 - **Start a house style from a shipped preset and fork it.** Ten exist, each demonstrating a technique;
   `GET /api/room-styles/{id}/json` answers one as the stamper's own JSON. Repaint `storeys[*].wall` as well
   as `wall`, or the fork is half applied.
-- **Look at a house in section before building a world.** `/api/room-styles/preview` answers plan, section,
-  isometric and cutaway. Every shipped roof fault was visible in a section and invisible from above.
+- **Look at a house in section before building a world.** `/api/room-styles/preview` answers `plan` and
+  `section`. Every shipped roof fault was visible in a section and invisible from above.
 
 ### What a board is painted with
 
