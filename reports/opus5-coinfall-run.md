@@ -12,8 +12,8 @@ true.
 Each team's ground falls in three steps and faces a neutral holm across a void. The camp and the long run sit
 at **y20**; the wool's plinth is raised to **y25** at the far east end of the run and is climbed rather than
 walked onto; the bank against the void drops to **y17**, and the only ways back up from it are the two flights
-cut into the seam. The middle is a third island at **y18** with a crown at **y23** and four brick stumps
-standing on it.
+cut into the seam. The middle is a third island at **y18** with a crown at **y23**, four brick stumps standing
+where the crown gives out, and a birch on the grass at each end of it.
 
 ```
        z −80  ┌──────────┐                          camp (spawn hall), y20
@@ -37,9 +37,19 @@ sits at the end of a walk rather than beside the spawn. The plinth's flight is *
 fifteen wide, five courses over twelve blocks — because a narrower one stands proud of the run on both cheeks
 and puts a four-block step beside itself (`RL3`). The two down onto the bank are narrower and drop three.
 
-Every cut face carries a diagonal of stone with one narrow course of the team's own stained clay in it, so a
-player at the bank reads whose ground stands above them; the holm's face carries the same diagonal running the
-other way in pale rock and no tint at all, because it belongs to nobody.
+Every cut face is read in **registers** rather than in one pattern. A board that drops twenty courses in one
+go and paints all of them the same way reads as a texture rather than as a wall, so the face is banded by
+depth from the top of its own wall bucket: **seven courses of the diagonal** under the rim, where a player
+standing above the drop actually meets it; a **two-course string** — a cobble cornice and a course of polished
+stone — closing that register; and below it a **vertical run** whose stripes stand as pilasters and wrap the
+whole perimeter, holding everything down to bedrock. The team's colour appears in both, as one narrow stripe
+in the shear and as the run's pilasters, so which ground stands above you is readable from either register.
+The holm is the same construction with the shear leaning the other way, gravel where a camp has clay and no
+tint anywhere — which is the whole of what says the middle is nobody's.
+
+Read down the frontline face at `column?at=0,-31`: cobble rim at `y 16`, the diagonal `y 15…9`, the cornice
+at `y 8`, polished andesite at `y 7`, and the run from `y 6` to bedrock — which across the face at
+`x −8…12` cycles stone, red clay, cobble, red clay, six and two and three and two wide.
 
 ## The keeper carries no position, and that is the whole placement rule
 
@@ -120,7 +130,7 @@ blocks disagree.
 ```
 03-slopes.txt   6646 walked, 0 scrambled, 80 barrier; faces 4, largest 20 at x −9..−5 z −8..−4
 05-themes.txt   4 themes over 6726 cells: holt 68.8% · holm 12.5% · track 9.8% · plinth 8.9%
-06-claims.txt   placed 24, declined 0
+06-claims.txt   placed 26, declined 0
 04-routes.txt   all four spawn → wool walks read "walked end to end", worst step 0
 coverage        reached 6674 of 6850, dead 176 = 2.6%, in two 88-cell patches at (±18, ∓43)
 01-flow.txt     attacker 160 blocks to the wool, defender 66 — ratio 0.41, one way in
