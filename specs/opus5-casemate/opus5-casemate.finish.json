@@ -318,7 +318,7 @@
           "max_z": -27,
           "floor": 0,
           "base_height": 6,
-          "theme": "works"
+          "theme": "works-red"
         },
         {
           "id": "traverse-1",
@@ -330,7 +330,7 @@
           "max_z": -27,
           "floor": 0,
           "base_height": 6,
-          "theme": "works"
+          "theme": "works-red"
         },
         {
           "id": "traverse-2",
@@ -342,7 +342,7 @@
           "max_z": 30,
           "floor": 0,
           "base_height": 6,
-          "theme": "works"
+          "theme": "works-blue"
         },
         {
           "id": "traverse-3",
@@ -354,7 +354,7 @@
           "max_z": 30,
           "floor": 0,
           "base_height": 6,
-          "theme": "works"
+          "theme": "works-blue"
         },
         {
           "id": "traverse-flank-0",
@@ -366,7 +366,7 @@
           "max_z": -23,
           "floor": 0,
           "base_height": 6,
-          "theme": "works"
+          "theme": "works-red"
         },
         {
           "id": "traverse-flank-1",
@@ -378,7 +378,7 @@
           "max_z": -23,
           "floor": 0,
           "base_height": 6,
-          "theme": "works"
+          "theme": "works-red"
         },
         {
           "id": "traverse-flank-2",
@@ -390,7 +390,7 @@
           "max_z": 26,
           "floor": 0,
           "base_height": 6,
-          "theme": "works"
+          "theme": "works-blue"
         },
         {
           "id": "traverse-flank-3",
@@ -402,7 +402,7 @@
           "max_z": 26,
           "floor": 0,
           "base_height": 6,
-          "theme": "works"
+          "theme": "works-blue"
         },
         {
           "id": "bay-outer-0",
@@ -1432,18 +1432,6 @@
                 },
                 {
                   "material": {
-                    "kind": "teamTint",
-                    "blockId": 159,
-                    "neutral": {
-                      "kind": "solid",
-                      "id": 4,
-                      "data": 0
-                    }
-                  },
-                  "thickness": 1
-                },
-                {
-                  "material": {
                     "kind": "solid",
                     "id": 4,
                     "data": 0
@@ -1457,18 +1445,6 @@
                     "data": 0
                   },
                   "thickness": 4
-                },
-                {
-                  "material": {
-                    "kind": "teamTint",
-                    "blockId": 159,
-                    "neutral": {
-                      "kind": "solid",
-                      "id": 98,
-                      "data": 2
-                    }
-                  },
-                  "thickness": 1
                 },
                 {
                   "material": {
@@ -1584,18 +1560,6 @@
                 },
                 {
                   "material": {
-                    "kind": "teamTint",
-                    "blockId": 159,
-                    "neutral": {
-                      "kind": "solid",
-                      "id": 4,
-                      "data": 0
-                    }
-                  },
-                  "thickness": 1
-                },
-                {
-                  "material": {
                     "kind": "solid",
                     "id": 4,
                     "data": 0
@@ -1609,18 +1573,6 @@
                     "data": 0
                   },
                   "thickness": 4
-                },
-                {
-                  "material": {
-                    "kind": "teamTint",
-                    "blockId": 159,
-                    "neutral": {
-                      "kind": "solid",
-                      "id": 98,
-                      "data": 2
-                    }
-                  },
-                  "thickness": 1
                 },
                 {
                   "material": {
@@ -1725,6 +1677,252 @@
       "fill": {
         "kind": "solid",
         "id": 98,
+        "data": 0
+      }
+    },
+    "works-red": {
+      "bedrock": {
+        "relative": false,
+        "value": 1
+      },
+      "rimEdges": "drop",
+      "wallOnTerrainFaces": true,
+      "rim": {
+        "material": {
+          "kind": "solid",
+          "id": 159,
+          "data": 14
+        },
+        "depth": 1,
+        "enabled": true
+      },
+      "surface": {
+        "material": {
+          "kind": "layered",
+          "stack": {
+            "ending": "repeat",
+            "bands": [
+              {
+                "material": {
+                  "kind": "cell",
+                  "seed": 7,
+                  "cellSize": 5,
+                  "jitter": 1,
+                  "warp": 1,
+                  "palette": [
+                    {
+                      "kind": "solid",
+                      "id": 98,
+                      "data": 0
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 98,
+                      "data": 3
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 98,
+                      "data": 0
+                    }
+                  ]
+                },
+                "thickness": 1
+              },
+              {
+                "material": {
+                  "kind": "solid",
+                  "id": 1,
+                  "data": 0
+                },
+                "thickness": 2
+              }
+            ]
+          }
+        },
+        "depth": 3,
+        "enabled": true
+      },
+      "wall": {
+        "kind": "wallRun",
+        "runs": [
+          {
+            "width": 4,
+            "material": {
+              "kind": "layered",
+              "layers": [
+                {
+                  "material": {
+                    "kind": "solid",
+                    "id": 98,
+                    "data": 0
+                  },
+                  "thickness": 2
+                },
+                {
+                  "material": {
+                    "kind": "solid",
+                    "id": 159,
+                    "data": 14
+                  },
+                  "thickness": 1
+                },
+                {
+                  "material": {
+                    "kind": "solid",
+                    "id": 98,
+                    "data": 0
+                  },
+                  "thickness": 2
+                },
+                {
+                  "material": {
+                    "kind": "solid",
+                    "id": 159,
+                    "data": 14
+                  },
+                  "thickness": 1
+                },
+                {
+                  "material": {
+                    "kind": "solid",
+                    "id": 98,
+                    "data": 0
+                  },
+                  "thickness": 2
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "wallEnabled": true,
+      "fill": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+      }
+    },
+    "works-blue": {
+      "bedrock": {
+        "relative": false,
+        "value": 1
+      },
+      "rimEdges": "drop",
+      "wallOnTerrainFaces": true,
+      "rim": {
+        "material": {
+          "kind": "solid",
+          "id": 159,
+          "data": 11
+        },
+        "depth": 1,
+        "enabled": true
+      },
+      "surface": {
+        "material": {
+          "kind": "layered",
+          "stack": {
+            "ending": "repeat",
+            "bands": [
+              {
+                "material": {
+                  "kind": "cell",
+                  "seed": 7,
+                  "cellSize": 5,
+                  "jitter": 1,
+                  "warp": 1,
+                  "palette": [
+                    {
+                      "kind": "solid",
+                      "id": 98,
+                      "data": 0
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 98,
+                      "data": 3
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 98,
+                      "data": 0
+                    }
+                  ]
+                },
+                "thickness": 1
+              },
+              {
+                "material": {
+                  "kind": "solid",
+                  "id": 1,
+                  "data": 0
+                },
+                "thickness": 2
+              }
+            ]
+          }
+        },
+        "depth": 3,
+        "enabled": true
+      },
+      "wall": {
+        "kind": "wallRun",
+        "runs": [
+          {
+            "width": 4,
+            "material": {
+              "kind": "layered",
+              "layers": [
+                {
+                  "material": {
+                    "kind": "solid",
+                    "id": 98,
+                    "data": 0
+                  },
+                  "thickness": 2
+                },
+                {
+                  "material": {
+                    "kind": "solid",
+                    "id": 159,
+                    "data": 11
+                  },
+                  "thickness": 1
+                },
+                {
+                  "material": {
+                    "kind": "solid",
+                    "id": 98,
+                    "data": 0
+                  },
+                  "thickness": 2
+                },
+                {
+                  "material": {
+                    "kind": "solid",
+                    "id": 159,
+                    "data": 11
+                  },
+                  "thickness": 1
+                },
+                {
+                  "material": {
+                    "kind": "solid",
+                    "id": 98,
+                    "data": 0
+                  },
+                  "thickness": 2
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "wallEnabled": true,
+      "fill": {
+        "kind": "solid",
+        "id": 4,
         "data": 0
       }
     }

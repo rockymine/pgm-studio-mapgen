@@ -101,12 +101,30 @@ for the same reason — one from each end, in line with the pad — and each ais
 on a board otherwise made of cobblestone and stone brick. The fill is cobblestone now, and both mossy
 variants are out of every palette — they were the only other green in it.
 
-**The team's colour is in the works.** `teamTint` stamps stained clay in the owning team's colour and falls
-back to a neutral where no team owns the cell, which is exactly the right instrument here: the ground says
-whose end you are at, and says nothing where the answer is the thing being fought over. It runs as a course
-through the terrain's wall run and as a band and a parapet in the gate house. Read back: the vault's west
-face carries `159:14` at y14 under its chiselled string course, red's gate carries `159:14` at y23 and y25,
-blue's carries `159:11` at the same courses.
+**The team's colour is in the works** — and the first way I put it there was wrong in a way worth writing
+down, because the board is the shape that makes it wrong.
+
+`teamTint` stamps stained clay in the owning team's colour and falls back to a neutral where no team owns
+the cell, so I ran it as a course through the terrain's wall run. The author spotted the result in the
+render: **it was red everywhere.** Counted over the world, `159:*` came to 752 red on the north half and,
+on the south half, **678 red against 74 blue** — and all 74 of the blue were the gate house, which is a
+structure stamp and knows its own team.
+
+It is not a bug in the tint. Ownership is resolved **per canonical island**: `TeamTerritory.Ownership`
+walks the spawns and does `anchor.TryAdd(id, s.Team)`, so the first spawn read wins the island and every
+later one is dropped. This board's ground is one continuous works — the terreplein and both gate plateaus
+are one 8-connected landmass — so it compiles to `islandTeams: {"1": "red"}` and the painter gives the whole
+map to red. `terrain-painting.md` already said *a whole team landmass takes one colour*; what it did not say
+is what happens when one landmass carries both teams, which is the ordinary shape of a capture board.
+Nothing reports it: the compile pre-fills that single entry, the store and the export gate are silent, and
+`themes/census` counts the material rather than its colour. Filed as `WE120`, and the paragraph is now in
+the doc.
+
+So the terrain carries no tint at all, which is also the truer answer — the works belong to nobody, and
+that is the point of a capture board. The colour is **stated** instead, on the two structures that are a
+team's own: the traverses across each gate house's run take a red or blue theme by which half the fan put
+them in, and the gate house itself keeps the band and parapet its room style stamps. Counted again after
+the change: **218 red on the north, 218 blue on the south, and no crossover either way.**
 
 **The roof plates read as masonry, not timber.** They were spruce-rimmed, which made the vault's lid look
 like a platform somebody left there rather than the ceiling of the room under it — and a lid nobody can

@@ -77,10 +77,19 @@ def rect(shape_id, box, floor, height, theme, group=None, layer=None):
     return out
 
 
-def fanned(shape_id, box, floor, height, theme):
-    """One structure and every image of it, written out."""
-    return [rect(f"{shape_id}-{at}", image, floor, height, theme)
-            for at, image in enumerate(images(*box))]
+def fanned(shape_id, box, floor, height, theme, by_end=False):
+    """One structure and every image of it, written out.
+
+    `by_end` gives each image the theme of the half it lands in -- red to the north, blue to the south --
+    for the structures that are a team's own. Everything else takes the theme it was given, because the
+    works in the middle are nobody's."""
+    out = []
+    for at, image in enumerate(images(*box)):
+        which = theme
+        if by_end:
+            which = "works-red" if (image[1] + image[3]) / 2 < -0.5 else "works-blue"
+        out.append(rect(f"{shape_id}-{at}", image, floor, height, which))
+    return out
 
 
 # ── the plan: two rectangles and nothing else ────────────────────────────────────────────────────
@@ -173,8 +182,10 @@ def structure():
     # The traverses: a wall across the run out of each gate house, so leaving the spawn is a choice of
     # lane rather than a straight line at the objective. This is the large cover of `match-flow.md`
     # §10.4 -- it takes a section out of play rather than breaking one line.
-    shapes += fanned("traverse", (-22, -30, -6, -28), 0, 6, "works")
-    shapes += fanned("traverse-flank", (-46, -26, -38, -24), 0, 6, "works")
+    # These two are a team's own -- they stand across the run out of that team's gate -- so they are the
+    # board's one place the colour is stated, and they take it by which half the image landed in.
+    shapes += fanned("traverse", (-22, -30, -6, -28), 0, 6, "works", by_end=True)
+    shapes += fanned("traverse-flank", (-46, -26, -38, -24), 0, 6, "works", by_end=True)
 
     # The bay: three walls and one mouth, so each flank point is entered from the middle or through its
     # own back door and from nowhere else. Drawn to the z axis; the mirror closes it.
@@ -304,18 +315,42 @@ FLAGS = depth_stack((cell(5, 7, solid(1, 6), solid(98), solid(1, 6), solid(98, 0
 SETTS = depth_stack((cell(9, 4, solid(4), solid(98, 2), solid(4), solid(98)), 1), (solid(1), 2))
 RUBBLE = cell(11, 5, solid(4), solid(98, 2), solid(98), solid(4))
 
-# The exposed riser, as bedded masonry with a course of the owner's colour banded through it. A wall
-# run varies along the arc and is flat inside a plateau, so this is what the casemate's seven-block face
-# and every wall the works raise are read off.
+# The exposed riser, as bedded masonry. **No team tint on the terrain**, and the reason is a fact about
+# the board rather than a taste: ownership is resolved per canonical ISLAND and the first spawn read wins
+# it, so a board whose ground is one continuous works hands every tinted terrain cell to one team. Measured
+# here before it came out: 678 red blocks on blue's half against 74 blue. The works belong to nobody, which
+# is the point of a capture board, so they are painted as nobody's (`WE120`).
 WALL_RUN = {"kind": "wallRun", "runs": [{"width": 4, "material": {"kind": "layered", "layers": [
     {"material": solid(98), "thickness": 3},
     {"material": solid(98, 3), "thickness": 1},
-    {"material": team_clay(solid(4)), "thickness": 1},
     {"material": solid(4), "thickness": 2},
     {"material": solid(98), "thickness": 4},
-    {"material": team_clay(solid(98, 2)), "thickness": 1},
     {"material": solid(98, 2), "thickness": 1},
 ]}}]}
+
+
+def gate_theme(damage):
+    """A team's own colour, stated rather than derived. The structures at a team's end of the board belong
+    to that team and nothing else does, so the colour is written onto those shapes by hand -- which is the
+    one way to put it there on a board the tint cannot read (`WE120`)."""
+    clay = solid(159, damage)
+    return {
+        "bedrock": {"relative": False, "value": 1},
+        "rimEdges": "drop",
+        "wallOnTerrainFaces": True,
+        "rim": {"material": clay, "depth": 1, "enabled": True},
+        "surface": {"material": depth_stack((cell(7, 5, solid(98), solid(98, 3), solid(98)), 1),
+                                            (solid(1), 2)), "depth": 3, "enabled": True},
+        "wall": {"kind": "wallRun", "runs": [{"width": 4, "material": {"kind": "layered", "layers": [
+            {"material": solid(98), "thickness": 2},
+            {"material": clay, "thickness": 1},
+            {"material": solid(98), "thickness": 2},
+            {"material": clay, "thickness": 1},
+            {"material": solid(98), "thickness": 2},
+        ]}}]},
+        "wallEnabled": True,
+        "fill": solid(4),
+    }
 
 
 def works_theme():
@@ -390,7 +425,8 @@ def finish():
              "groups": [{"id": "works", "shapeIds": [s["id"] for s in structure()]}]},
         ],
         "roomStyles": {"spawn": gate_house()},
-        "themes": {"works": works_theme(), "vault": vault_theme(), "lid": lid_theme()},
+        "themes": {"works": works_theme(), "vault": vault_theme(), "lid": lid_theme(),
+                   "works-red": gate_theme(14), "works-blue": gate_theme(11)},
         "mapTheme": "works",
         "controlPoints": [
             {"name": "The Cistern", "anchor": {"x": CISTERN_ANCHOR, "y": 0, "z": -1},

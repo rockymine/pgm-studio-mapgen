@@ -1,5 +1,9 @@
-THEMES  2 themes over 8688 ground cells, 8 distinct surface blocks
-  works  8028 cells (92.4%)  1:6 Polished Andesite, 98:0 Stone Bricks, 98:3 Chiseled Stone Bricks, 4:0 Cobblestone, 159:0 White Stained Clay, 98:2 Cracked Stone Bricks, 35:14 Red Wool, 35:11 Blue Wool
+THEMES  4 themes over 8688 ground cells, 10 distinct surface blocks
+  works  7836 cells (90.2%)  1:6 Polished Andesite, 98:0 Stone Bricks, 98:3 Chiseled Stone Bricks, 4:0 Cobblestone, 159:0 White Stained Clay, 98:2 Cracked Stone Bricks, 35:14 Red Wool, 35:11 Blue Wool
   lid  660 cells (7.6%)  98:0 Stone Bricks, 98:3 Chiseled Stone Bricks, 4:0 Cobblestone
+  works-red  96 cells (1.1%)  159:14 Red Stained Clay, 98:0 Stone Bricks
+  works-blue  96 cells (1.1%)  159:11 Blue Stained Clay, 98:0 Stone Bricks
 borders:
   lid | works  252 cells
+  works | works-red  100 cells
+  works | works-blue  100 cells
