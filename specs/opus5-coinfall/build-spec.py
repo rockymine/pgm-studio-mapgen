@@ -36,6 +36,7 @@ def solid(block_id, data=0):
 
 
 GRANITE, ANDESITE, DIORITE = solid(STONE, 1), solid(STONE, 5), solid(STONE, 3)
+POLISHED_ANDESITE, POLISHED_DIORITE = solid(STONE, 6), solid(STONE, 4)
 COARSE_DIRT, PLAIN_DIRT, SOD = solid(DIRT, 1), solid(DIRT), solid(GRASS)
 BRICK, MOSSY, CRACKED, CHISELLED = (solid(BRICKWORK, d) for d in (0, 1, 2, 3))
 
@@ -75,6 +76,22 @@ def diagonal(*runs, slope=1):
             "runs": [{"material": m, "width": w} for m, w in runs]}
 
 
+def wall_run(*runs):
+    """The same stripe cycle read without the shear, so the runs stand vertical and wrap the perimeter as
+    pilasters. A diagonal is this pattern sheared; the two belong in one face because the eye reads the shear
+    only against something straight."""
+    return {"kind": "wallRun", "runs": [{"material": m, "width": w} for m, w in runs]}
+
+
+def face(shear, cornice, string, run, shear_courses=7):
+    """A cut face read in registers, top down. The board drops twenty courses in one go, and one pattern over
+    all of it reads as a texture rather than as a wall — so the diagonal takes the seven courses under the rim
+    where a player standing above it actually meets it, a two-course string closes that register, and the
+    vertical run holds everything below (the last band claims the rest of the face). Depth is counted from the
+    top of the wall bucket, so a face that steps keeps its registers in register."""
+    return depth((shear, shear_courses), (cornice, 1), (string, 1), (run, 1))
+
+
 def theme(surface, wall, rim, fill, rim_edges="drop"):
     return {
         "bedrock": {"relative": False, "value": 1},
@@ -90,17 +107,25 @@ def theme(surface, wall, rim, fill, rim_edges="drop"):
 
 
 # The ground a team walks on, finished by its ANGLE: meadow to 30°, a worn shoulder to 45, bare rock above it.
-# Its cut faces carry the team's own colour as one narrow stripe in a diagonal of stone, so a player standing
-# at the bank reads whose ground the bank above them is.
+# Its cut faces carry the team's own colour twice over — as a narrow stripe in the diagonal under the rim, and
+# as the pilasters of the run below the string — so a player at the bank reads whose ground stands above them
+# whichever register they are looking at.
 HOLT = theme(
     surface=by_slope(
         (depth((SOD, 1), (PLAIN_DIRT, 2)), 10),
         (depth((COARSE_DIRT, 1), (PLAIN_DIRT, 2)), 10),
         (cells(9, ANDESITE, solid(COBBLE), rise=3), 70)),
-    wall=diagonal((cells(7, ANDESITE, solid(STONE), rise=3), 5),
-                  (team_tint(GRANITE), 1),
-                  (solid(COBBLE), 3),
-                  (team_tint(GRANITE), 1), slope=1),
+    wall=face(
+        shear=diagonal((cells(7, ANDESITE, solid(STONE), rise=3), 5),
+                       (team_tint(GRANITE), 1),
+                       (solid(COBBLE), 3),
+                       (team_tint(GRANITE), 1), slope=1),
+        cornice=solid(COBBLE),
+        string=POLISHED_ANDESITE,
+        run=wall_run((cells(6, solid(STONE), ANDESITE, rise=4), 6),
+                     (team_tint(GRANITE), 2),
+                     (solid(COBBLE), 3),
+                     (team_tint(GRANITE), 2))),
     rim=solid(COBBLE),
     fill=solid(STONE))
 
@@ -108,23 +133,38 @@ HOLT = theme(
 # stripe but a course of its own — a plinth read from the run below is mostly wall.
 PLINTH = theme(
     surface=depth((cells(5, BRICK, MOSSY, CRACKED, rise=2), 1), (solid(STONE), 2)),
-    wall=diagonal((cells(6, BRICK, MOSSY, rise=2), 4),
-                  (team_tint(CHISELLED), 2),
-                  (solid(BRICKWORK, 0), 4),
-                  (team_tint(CHISELLED), 2), slope=1),
+    wall=face(
+        shear=diagonal((cells(6, BRICK, MOSSY, rise=2), 4),
+                       (team_tint(CHISELLED), 2),
+                       (solid(BRICKWORK, 0), 4),
+                       (team_tint(CHISELLED), 2), slope=1),
+        cornice=CHISELLED,
+        string=POLISHED_ANDESITE,
+        run=wall_run((cells(6, BRICK, CRACKED, rise=3), 5),
+                     (team_tint(CHISELLED), 2),
+                     (MOSSY, 3),
+                     (team_tint(CHISELLED), 2))),
     rim=CHISELLED,
     fill=solid(STONE))
 
 # The holm belongs to nobody, so nothing on it is tinted: a pale, quarried rock that reads as a third place
-# from either camp.
+# from either camp. Its diagonal leans the other way and its run is gravel rather than clay, which is the
+# whole of what says the middle is not either team's.
 HOLM = theme(
     surface=by_slope(
         (depth((SOD, 1), (PLAIN_DIRT, 1), (solid(STONE), 1)), 10),
         (depth((cells(8, solid(GRAVEL), COARSE_DIRT, rise=2), 1), (solid(STONE), 2)), 15),
         (cells(7, DIORITE, ANDESITE, rise=2), 65)),
-    wall=diagonal((cells(8, DIORITE, solid(STONE), rise=3), 6),
-                  (solid(GRAVEL), 2),
-                  (ANDESITE, 4), slope=-1),
+    wall=face(
+        shear=diagonal((cells(8, DIORITE, solid(STONE), rise=3), 6),
+                       (solid(GRAVEL), 2),
+                       (ANDESITE, 4), slope=-1),
+        cornice=solid(COBBLE),
+        string=POLISHED_DIORITE,
+        run=wall_run((cells(7, DIORITE, solid(STONE), rise=4), 5),
+                     (ANDESITE, 2),
+                     (solid(GRAVEL), 1),
+                     (ANDESITE, 2))),
     rim=DIORITE,
     fill=solid(STONE))
 
@@ -344,6 +384,10 @@ DRESSING = {
         tree("bank-birch-a", "birch", 8, -34, 319), tree("bank-birch-b", "birch", -18, -43, 323),
         tree("run-birch-c", "birch", 14, -63, 331),
         tree("bank-fir", "fir", 30, -36, 341),
+        # The holm's own pair, on its grass shore clear of the crown and the stumps: one prop, and `rot_180`
+        # stands the second at (18, -2), so the middle keeps a tree at each end and neither team's half of it
+        # is the bare one.
+        tree("holm-birch", "birch", -18, 2, 347),
         {"id": "cover", "kind": "flora", "seed": 71,
          "spec": {"coverage": 0.45, "scale": 9, "octaves": 3, "fernShare": 0.35,
                   "flowerShare": 0.10, "flowerScale": 14, "tallShare": 0.08},
