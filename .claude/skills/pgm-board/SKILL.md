@@ -10,6 +10,13 @@ description: Author, revise or read a PGM map in this repository through the pgm
 Everything below is measured off the run reports in `reports/opus5-*.md`. Each rule cost at least one
 build, most of them more than one, and several were paid twice by different runs.
 
+**Read the budget before the table.** This repository is larger than any context window: the documents
+alone are ~82k tokens, every text render of one board is 30–57k, and two `*.layout.json` files exceed
+200k each. `pgm-board-warmup` carries the limits and the never-open list. A layout is queried with `jq`
+and never `cat`-ed, a one-line verdict is a `grep` rather than a file read, and **`specs/archive/` is a
+record rather than a set of examples** — the fifteen boards flat under `specs/` are the ones worth
+reading, and `showcase/` is smaller and more directed than either.
+
 ---
 
 ## 1. The lookup table — the question, and the read that already answers it
