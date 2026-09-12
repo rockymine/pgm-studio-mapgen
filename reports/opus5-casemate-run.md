@@ -79,6 +79,45 @@ cover, and a pillar a team can stand on is a firing platform in the middle of th
 casemate wall and the ramp cuts as steps two marks meet on; they are walls, and a fort's walls are what the
 board is read off.
 
+## The second pass: colour, symmetry, and what the middle is worth
+
+Six corrections from the author, and four of them changed the board's shape rather than its look.
+
+**The middle pays double.** All three points paid one a second, which is a board two teams settle by taking
+one each and standing on them. The Cistern pays **2** now and the bays **1**, and the flanks moved from 29
+blocks out to **38** — 0.86 of the centre-to-spawn distance, the top of the corpus's 0.52–0.88 range rather
+than its median — so that a team holding the middle does not also cover them. The corpus backs both:
+13 of 83 KotH boards vary the rate, 10 of those pay the most for the point named for the middle, and
+`koth/catre_koth` and `koth/abaddon_koth` are literally 1 / 2 / 1. It is written up as `match-flow.md` §10.6.
+
+**The board is symmetric across both axes now, not only under the half-turn.** Every structure is authored
+in the **north-west quadrant alone** and fanned four ways; a shape that straddles an axis is drawn up to it
+and its mirror completes it. rot_180 alone sends a wall on red's west to blue's east, so the two halves of
+the board differed in a way neither team's play could be compared across. The ramps moved onto the x axis
+for the same reason — one from each end, in line with the pad — and each aisle roof now carries a mirrored
+**pair** of drop holes instead of one hole off to a side.
+
+**The fill was the green block.** Eighteen courses of andesite under every exposed face and every pit wall,
+on a board otherwise made of cobblestone and stone brick. The fill is cobblestone now, and both mossy
+variants are out of every palette — they were the only other green in it.
+
+**The team's colour is in the works.** `teamTint` stamps stained clay in the owning team's colour and falls
+back to a neutral where no team owns the cell, which is exactly the right instrument here: the ground says
+whose end you are at, and says nothing where the answer is the thing being fought over. It runs as a course
+through the terrain's wall run and as a band and a parapet in the gate house. Read back: the vault's west
+face carries `159:14` at y14 under its chiselled string course, red's gate carries `159:14` at y23 and y25,
+blue's carries `159:11` at the same courses.
+
+**The roof plates read as masonry, not timber.** They were spruce-rimmed, which made the vault's lid look
+like a platform somebody left there rather than the ceiling of the room under it — and a lid nobody can
+name is a lid nobody knows to look under. Stone, with a chiselled rim so the edge a player drops past is
+legible.
+
+**The cover near the spawns is gone.** Cover in front of a door breaks nothing, because the ground there is
+where a team already stands. Five boxes per quadrant now, each on a line that needs breaking: the lane out
+of the traverse, the run down the ramp head, the bay's mouth, the vault rim, the outer lane before the
+rampart stair.
+
 ## What the studio still cannot see on a capture board
 
 Unchanged from the last board and now measured twice. `POST /plan/evaluate` raises `PL3` — *this plan has no
@@ -88,6 +127,6 @@ and `04-routes.txt` prints *no route between a spawn and a goal* while every one
 (`WS62`). On a capture board **dead space is a fault rather than a note** (`match-flow.md` §10.3), so the one
 read that would price this board's own law is the one that cannot see its objectives.
 
-Final reads: 6 312 walked · 608 scrambled · 1 768 barrier · 11 faces; 0 props placed and none declined — the
-cover here is structure, not dressing; three hills, nine regions, three white wool markers at y53–55; export
-gate OPEN.
+Final reads: 6 364 walked · 360 scrambled · 1 964 barrier · 20 faces, the largest of them the casemate's own
+seven-block wall at x −21..20 z −15..14; 0 props placed and none declined — the cover here is structure, not
+dressing; three hills paying 2 / 1 / 1, nine regions, three white wool markers at y53–55; export gate OPEN.
