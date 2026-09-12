@@ -87,6 +87,39 @@ way it checks a destroy board, and `PL3` in particular reads as a refusal to any
 The routes had to be walked by hand — `GET …/walk?from=0,-48&to=-33,-1` — to establish that the board is
 connected at all.
 
+## The spawn is a building, not the shell
+
+The default spawn shell is a plain box with a flat roof and a hole in it, and on a board finished as
+gritstone it reads as the one thing nobody drew. The style this board states is a **shooting box** — the
+field house a Pennine moor carries — and it is stated in the same finish as everything else, under
+`roomStyles.spawn`:
+
+```
+y 21  stone bricks                the ridge, two over the eave
+y 20  stone bricks                gable, slab-stepped roof over it
+y 19  spruce log (laid)           the wall plate
+y 18  chiselled stone bricks      the loft band
+y 17  mossy stone bricks
+y 16  spruce planks               the loft deck
+y 13  stone bricks                the room's wall, four courses
+y 12  cobblestone                 the plinth
+y 10  stone bricks                the plate the whole thing stands on
+```
+
+*(`GET …/column?at=0,-53`, the north wall of the red spawn.)*
+
+Two storeys, so the building stands high enough on the low moor to be seen from the crest; spruce corner
+posts and glass panes so it reads as framed masonry rather than a block of one material; a **gable** roof
+stepped in stone-brick slabs, which is how a flagged roof lies, at pitch 1 over an eleven-deep footprint —
+`GET …/render/section?axis=z&at=0` shows the ridge two courses over the eave with the overhang either side,
+and that cut is the only read that shows it: from above a gable and a flat roof are the same grey rectangle.
+
+`HS9` caught the one thing I had wrong and was right to. I gave the building projecting beam ends over a
+wall of stone brick — *"eight logs sticking out of masonry with nothing behind them, which is not a detail
+but a mistake about how the building is put together."* The fix is the detail the building wanted anyway: a
+**laid spruce log** as the loft's top course, a wall plate the beam ends actually come out of. A rule that
+teaches the building rather than just refusing it.
+
 ## What went in the other direction
 
 Two things the studio got right that I would have got wrong by hand. `06-claims.txt` plus

@@ -180,6 +180,72 @@ def theme():
     }
 
 
+# ── what a team walks out of ─────────────────────────────────────────────────────────────────────
+# The shooting box: the gritstone field house a moor like this carries, so the building a team spawns in
+# is made of the board's own rock rather than the default shell's plain box. Walls of stone brick on a
+# cobble plinth, spruce corner posts, and a gable roof stepped in stone-brick slabs the way a flagged
+# roof lies. It stands two storeys because the spawn plateau sits below the edge and the board needs a
+# thing on it that is visible from the crest.
+def band(*bands):
+    return {"stack": {"ending": "repeat",
+                      "bands": [{"material": m, "thickness": t} for m, t in bands]}}
+
+
+def window(form, block, width=1, height=2, sill=2, spacing=4, data=0):
+    return {"form": form, "block": block, "hostBlock": -1, "hostData": 0, "data": data,
+            "sill": sill, "width": width, "height": height, "spacing": spacing}
+
+
+STONE, MOSSY, CHISELLED = solid(98), solid(98, 1), solid(98, 3)
+# A laid log runs along the wall rather than standing up it, so the course shows bark down the side and
+# the sawn face at the corners. It is the wall plate the beam ends come out of: beams over a course of
+# masonry are eight logs stuck in stone with nothing behind them (`HS9`).
+WALL_PLATE = {"kind": "laidLog", "id": 17, "data": 1}
+COBBLE, SPRUCE_LOG, SPRUCE_PLANK = solid(4), solid(17, 1), solid(5, 1)
+DRYSTONE = band((COBBLE, 1), (STONE, 4))
+
+
+def spawn_house():
+    return {
+        "foundation": {
+            "plate": {**band((STONE, 1)), "extent": 2},
+            # A flagged floor inside a stone kerb, which is what the border is for.
+            "surface": {"field": SPRUCE_PLANK, "border": STONE, "borderWidth": 1,
+                        "inlay": None, "inlayInset": 2, "isPlain": False},
+            "footing": COBBLE,
+        },
+        "wall": {**DRYSTONE, "extent": 5},
+        "post": SPRUCE_LOG,
+        "windows": window("pane", 102),
+        "storeys": [
+            # The room itself: four clear, a plank floor, small lights high in the wall.
+            {"clear": 4, "wall": DRYSTONE, "post": SPRUCE_LOG, "windows": window("pane", 102),
+             "surface": {"field": SPRUCE_PLANK, "border": STONE, "borderWidth": 1,
+                         "inlay": None, "inlayInset": 2, "isPlain": False},
+             "deck": SPRUCE_PLANK, "headroom": 4},
+            # The loft over it: a mossy course, a chiselled band, and a spruce wall plate at the eave that
+            # the beam ends come out of.
+            {"clear": 3, "wall": band((MOSSY, 1), (CHISELLED, 1), (WALL_PLATE, 1)),
+             "post": SPRUCE_LOG, "windows": window("open", 0, width=1, height=1, sill=1, spacing=3),
+             "surface": None, "deck": SPRUCE_PLANK, "headroom": 3},
+        ],
+        "roof": {
+            "form": "gable", "pitch": 1,
+            # Stepped in stone-brick slabs: a flagged roof lies in halves, not in whole blocks.
+            "slab": 44, "slabData": 5,
+            "overhang": 1, "ridgeCap": True, "hole": False,
+            "body": STONE, "verge": MOSSY, "gable": COBBLE,
+            "gableWindows": window("open", 0, width=1, height=1, sill=1, spacing=3),
+        },
+        "beams": {"block": 17, "data": 1, "reach": 1},
+        "doorway": {"door": "air", "width": 3, "height": 3,
+                    "head": {"form": "arched", "block": 109, "fill": "upperSlab",
+                             "fillBlock": 44, "fillData": 5}},
+        "porch": None,
+        "front": None,
+    }
+
+
 # ── what stands on it ────────────────────────────────────────────────────────────────────────────
 # Only the north half is placed. The dressing pass fans every prop across the board's orbit, so a stone
 # put on the north moor stands again on the south and the two halves cannot drift apart by hand.
@@ -277,6 +343,7 @@ def finish():
                 ],
             },
         },
+        "roomStyles": {"spawn": spawn_house()},
         "dressing": {"styles": styles(), "props": props()},
         "themes": {"threap-moor": theme()},
         "mapTheme": "threap-moor",
