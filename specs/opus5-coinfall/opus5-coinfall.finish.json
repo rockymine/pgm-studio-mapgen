@@ -1,0 +1,190 @@
+{
+ "authors": [
+  "Opus 5"
+ ],
+ "created": "2026-09-12",
+ "themes": {
+  "coin": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 5
+    },
+    "depth": 1,
+    "enabled": false
+   },
+   "surface": {
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 2,
+             "data": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 30
+       },
+       {
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 15
+       },
+       {
+        "material": {
+         "kind": "cell",
+         "cellSize": 9,
+         "palette": [
+          {
+           "kind": "solid",
+           "id": 1,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 4,
+           "data": 0
+          }
+         ]
+        },
+        "thickness": 45
+       }
+      ]
+     }
+    },
+    "depth": 3
+   },
+   "wall": {
+    "kind": "cell",
+    "cellSize": 11,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     },
+     {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 13,
+      "data": 0
+     }
+    ],
+    "rise": 3
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "edgesFromGround": true
+  }
+ },
+ "mapTheme": "coin",
+ "shops": [
+  {
+   "id": "quartermaster",
+   "name": "Quartermaster",
+   "keeper": {
+    "name": "`6`lQuartermaster",
+    "mob": "Villager"
+   },
+   "categories": [
+    {
+     "id": "kit",
+     "material": "gold ingot",
+     "name": "`6Supplies",
+     "items": [
+      {
+       "material": "golden apple",
+       "name": "`6Runner's Apple",
+       "price": 16,
+       "currency": "wood"
+      },
+      {
+       "material": "arrow",
+       "amount": 16,
+       "price": 8,
+       "currency": "wood"
+      },
+      {
+       "material": "ladder",
+       "amount": 8,
+       "price": 8,
+       "currency": "wood"
+      },
+      {
+       "material": "stained clay",
+       "amount": 16,
+       "price": 12,
+       "currency": "wood",
+       "teamColor": true
+      },
+      {
+       "material": "iron fence",
+       "amount": 8,
+       "price": 24,
+       "currency": "wood"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

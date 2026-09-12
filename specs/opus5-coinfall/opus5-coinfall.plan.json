@@ -1,0 +1,93 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Coinfall"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 14
+ },
+ "pieces": [
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    -2,
+    -12,
+    4,
+    4
+   ],
+   "surface": 16
+  },
+  {
+   "id": "vault",
+   "role": "wool-room",
+   "rect": [
+    -12,
+    -8,
+    4,
+    3
+   ],
+   "surface": 15
+  },
+  {
+   "id": "apron",
+   "role": "piece",
+   "rect": [
+    -8,
+    -8,
+    16,
+    3
+   ],
+   "surface": 15
+  },
+  {
+   "id": "crossing",
+   "role": "piece",
+   "rect": [
+    -6,
+    -5,
+    12,
+    3
+   ],
+   "surface": 14
+  }
+ ],
+ "zones": [
+  {
+   "id": "ford",
+   "rect": [
+    -6,
+    -2,
+    12,
+    4
+   ]
+  }
+ ],
+ "walls": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "camp",
+    "at": [
+     10,
+     10
+    ],
+    "facing": "back"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "vault",
+    "at": [
+     10,
+     8
+    ]
+   }
+  ]
+ }
+}
