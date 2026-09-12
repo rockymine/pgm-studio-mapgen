@@ -491,3 +491,20 @@ Only **missing** is a capability gap. **Unreachable** is a surface defect and be
 studio. **Mistaken** is the most valuable of the three and the easiest to bury, because it reads as a
 limitation and is really a measurement of how legible the system is. A verdict is not the model's to award on
 its own claim: it is settled by reading the code, and the reading is cited.
+
+### Opus 5 — five boards, one idea each
+
+Five maps authored in one run against one instruction: decide what each board is *about* before deciding
+what it is made of, and keep it to one thing. Every one built, every one `export gate OPEN`, every one
+`declined 0`. What they share is method rather than subject — the ground on all five is finished on the
+**slope** band axis with its cuts read off `GET …/incline?format=text`, the plan on all five is a handful
+of rooms and corridors with the board's shape left to the relief, and every way up a face on any of them
+is an authored flight measured at worst step 1. [reports/opus5-five-boards.md](reports/opus5-five-boards.md)
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5-blackden-sough` | dtm | Opus 5 | **70 × 240, and a drainage sough driven under a gritstone edge** — a twelve-block scarp across each team's ground with one eighteen-wide nick in it, and a six-course passage under it that comes out on the dale floor behind the lot. The storey below is stated as adds banded round the corridor and **clipped out of the moor's own drawn outline**, so nothing of it stands past the coast as a ledge over the void; both flights walk for nothing in both directions (`walk?from=-21,45,18&to=-21,80` — 35 blocks, **0 placed, 0 drops**) |
+| `opus5-heftfold` | ctw | Opus 5 | **110 × 170 on the composer's own skeleton, with its three gaps filled** — a walled sheepfold on the saddle as the island the middle otherwise has none of, a team site split into a pasture at y11 and an intake at y16 rather than one rectangle, and the spawn standing **between** its two wools instead of behind both (25 and 32 blocks by walk). The intake is `relief_scope: exclude` so the two tiers meet at a face, its gateway is a rectangular re-entrant cut into the retaining wall, and **0.0% of the board is dead** |
+| `opus5-glassmere` | dtc | Opus 5 | **80 × 220 of snowfield where nothing hides you** — two shores of a mere whose middle never freezes, with the coast drawn into three headlands and two bays so the crossing is 24 blocks at one and 40 at the other. The ice is laid **solid** at the water and freckled with a second, wider `worn` stroke over it, because an edge between two grounds is drawn and never sampled. One theme, and its whole variation is the board's own angle: lying snow under 14°, snow and scoured grass to 30°, bare rock past it |
+| `opus5-burgage-terrace` | dtm | Opus 5 | **80 × 220 built entirely on one boundary** — a market terrace six courses over a water meadow, its front edge cut into two re-entrants and a salient, with a flight set **into** the wall at each re-entrant. The retaining wall is a `wallDiagonal` whose fourth run is a **`teamTint`**, so the town wears the colour of whoever holds it and you can read from the far bank whose terrace you are looking at. Three burgage plots a side, one style, differing in height and footprint and nothing else |
+| `opus5-lingbeck` | ctw | Opus 5 | **110 × 200 split by its own beck** — a six-course gill running the full depth of each team's ground with a wool on each bank, so every rotation between them is a crossing and there are exactly three: round the head, over the brig, or down through the water at the ford (worst step 1, 1 and 0). The gill is an **override add** cut out of one hub piece, because a plan piece at a lower surface enclosed by higher ones is not a cut at all; the brig is a one-course layer at `base_y 11` lapping neither bank. **0.0% dead** |
