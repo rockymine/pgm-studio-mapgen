@@ -1,0 +1,67 @@
+## spawn-blue (spawn) along x
+TRANSECT 37 stations from (-18, 48) to (18, 48), every 1
+  station        ground  surface  water  top  standing            step
+  (  -18,    48)                                                    void
+  (  -17,    48)                                                    void
+  (  -16,    48)                                                    void
+  (  -15,    48)                                                    void
+  (  -14,    48)                                                    void
+  (  -13,    48)                                                    void
+  (  -12,    48)                                                    void
+  (  -11,    48)                                                    void
+  (  -10,    48)      12       12           12                      
+  (   -9,    48)      12       12           20  spawn spawn-1#1     
+  (   -8,    48)      12       12           20  spawn spawn-1#1     
+  (   -7,    48)      12       12           20  spawn spawn-1#1     
+  (   -6,    48)      12       12           20  spawn spawn-1#1     
+  (   -5,    48)      12       12           20  spawn spawn-1#1     
+  (   -4,    48)      12       12           20  spawn spawn-1#1     
+  (   -3,    48)      12       12           20  spawn spawn-1#1     
+  (   -2,    48)      12       12           12  spawn spawn-1#1     
+  (   -1,    48)      12       12           12  spawn spawn-1#1     
+  (    0,    48)      12       12           12  spawn spawn-1#1     
+  (    1,    48)      12       12           12  spawn spawn-1#1     
+  (    2,    48)      12       12           20  spawn spawn-1#1     
+  (    3,    48)      12       12           20  spawn spawn-1#1     
+  (    4,    48)      12       12           20  spawn spawn-1#1     
+  (    5,    48)      12       12           20  spawn spawn-1#1     
+  (    6,    48)      12       12           20  spawn spawn-1#1     
+  (    7,    48)      12       12           20  spawn spawn-1#1     
+  (    8,    48)      12       12           20  spawn spawn-1#1     
+  (    9,    48)      12       12           12                      
+  (   10,    48)                                                    void
+  (   11,    48)                                                    void
+  (   12,    48)                                                    void
+  (   13,    48)                                                    void
+  (   14,    48)                                                    void
+  (   15,    48)                                                    void
+  (   16,    48)                                                    void
+  (   17,    48)                                                    void
+  (   18,    48)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (-9, 46)
+
+## spawn-blue (spawn) along z
+TRANSECT 19 stations from (0, 34) to (0, 52), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    34)      12       12           12                      
+  (    0,    35)      12       12           12                      
+  (    0,    36)      12       12           12                      
+  (    0,    37)      12       12           12                      
+  (    0,    38)      12       12           12                      
+  (    0,    39)      12       12           12                      
+  (    0,    40)      12       12           12                      
+  (    0,    41)      12       12           12                      
+  (    0,    42)      12       12           12                      
+  (    0,    43)      12       12           12  stroke track-east#1  
+  (    0,    44)      12       12           12  stroke track-east#1  
+  (    0,    45)      12       12           20  spawn spawn-1#1     
+  (    0,    46)      12       12           20  spawn spawn-1#1     
+  (    0,    47)      12       12           12  spawn spawn-1#1     
+  (    0,    48)      12       12           12  spawn spawn-1#1     
+  (    0,    49)      12       12           12  spawn spawn-1#1     
+  (    0,    50)      12       12           12  spawn spawn-1#1     
+  (    0,    51)      12       12           20  spawn spawn-1#1     
+  (    0,    52)      12       12           20  spawn spawn-1#1     
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track-east#1 at (-2, 42), stroke track-west#1 at (1, 42), spawn spawn-1#1 at (-2, 45)

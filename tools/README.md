@@ -45,6 +45,7 @@ and a ring bent twice.
 | `authors` | `["Opus 5"]`, or `[{"name": …, "uuid": …, "role": …, "contribution": …}]`. PGM takes a person as an **account or a pseudonym**: a bare name writes `<author>Opus 5</author>`, a uuid writes `<author uuid="…"/>` with the name as a sibling comment, and a pseudonym may still carry a `contribution` |
 | `created` | `"2026-08-25"` — when the map was made, onto `intent.meta.created` and out as `<created>`. The studio derives every other identity field and cannot derive this one, so a finish that states none builds a map with no date and the driver says so |
 | `voidEnforcement` | `true` patches `intent.build.voidEnforcement`, with `voidExclusions` for the rects to spare |
+| `controlPoints` · `scoreLimit` | a capture board's hills, onto `intent.controlPoints`, and the score the match ends at. Each point is `{name, anchor: {x, y, z}, size?, points?, captureTime?}` with the anchor in **blocks** — the pad is centred on it and cut into whatever ground the build solves there. The plan states no capture point, and a compiled intent carries no `symmetry`, so **every point of the board is stated here, already fanned**: a centre plus one side is a two-hill board. `scoreLimit` defaults to 750 on a board whose points pay, which is the corpus's own answer |
 | `addLayers` | `[{id, name, base_y, shapes, groups, below?}]` — the storeys a plan cannot state. `below` inserts one under the compiled ground, where the painter's bottom-up order needs it |
 
 ### The grid, before the plan is posted
