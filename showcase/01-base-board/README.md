@@ -69,7 +69,7 @@ No theme, no relief, no props. What it does have is **buildings**, because the a
 it is bedrock:
 
 ```json
-"roomStyles": { "spawn": "@showcase-hall", "cage": "@showcase-cage" }
+"roomStyles": { "spawn": "@showcase-hall", "wool": "@showcase-cage" }
 ```
 
 A spawn or a wool room with no bound style stamps the built-in shell, which is a bedrock box. That is never

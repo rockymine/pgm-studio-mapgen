@@ -1,7 +1,7 @@
 // Compile a plan, then replace its terrain shapes with authored polygons and attach every finish the
 // plan cannot state — relief, a theme registry, room shells and dressing — before building the world.
 //   dotnet run tools/world-build.cs -- <plan.json> <world.json> <themes.json> <rooms.json> <dressing.json> <name> <outZip>
-// rooms.json is {"cage": …, "spawn": …}; any of world/themes/rooms/dressing may be the literal "-" to skip.
+// rooms.json is {"wool": …, "spawn": …}; any of world/themes/rooms/dressing may be the literal "-" to skip.
 using System.Net.Http;
 using System.Text;
 using System.Text.Json.Nodes;

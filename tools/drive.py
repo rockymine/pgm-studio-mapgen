@@ -75,8 +75,13 @@ What each key states:
   themes          the theme registry;  mapTheme  the map default (first key unless stated)
   biome           SketchLayout's own biome field: {"kind": "cell"|"noise"|"solid", ...}. The byte each
                   chunk carries, which tints grass, leaves and water. Absent is plains everywhere
-  roomStyles      {"cage": ..., "spawn": ...}; a "@name" string loads tools/styles/<name>.json
-  dressing        {"props": [...]};  a house prop's "style" takes the same "@name"
+  roomStyles      {"wool": ..., "spawn": ...} -- the two members SketchRoomStyles carries; a "@name"
+                  string loads tools/styles/<name>.json. It was "cage" until 2026-09-07. A key
+                  neither of those names is dropped in silence by the whole-layout write below --
+                  no RQ3, and the room stamps the built-in bedrock box at 200
+  dressing        {"styles": ..., "props": [...]};  a house prop's "style" takes the same "@name".
+                  A style in "styles" is a discriminated PropStyle: a house is
+                  {"kind": "house", "shell": <HouseStyle>}, and a bare HouseStyle is a 500 / RQ2
   voidEnforcement true -> patch intent.build.voidEnforcement (voidExclusions for the rects to spare)
   authors         ["Opus 5"], or [{"name", "uuid", "role", "contribution"}] -> the <authors> block. PGM
                   takes a person as an account OR a pseudonym, so a bare name is a valid author

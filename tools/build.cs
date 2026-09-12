@@ -61,7 +61,7 @@ layout["themes"] = new JsonObject { ["clay"] = theme.DeepClone() };
 layout["mapTheme"] = "clay";
 layout["roomStyles"] = new JsonObject
 {
-    ["cage"] = room.DeepClone(),
+    ["wool"] = room.DeepClone(),
     ["spawn"] = spawnRoom.DeepClone(),
 };
 layout["dressing"] = dressing.DeepClone();

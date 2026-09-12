@@ -85,6 +85,21 @@ measures the plan's rectangles, which do not know about a layout `subtract`.
 with a void in them. Of the 98 shape cards, 73 are donuts. `examples/generator-32/` holds six of those boards
 as plans and as grids; `docs/gameplay/match-flow.md` §3.2 is what the holes are for.
 
+### A composed board's own proportions, counted
+
+`GET /api/compose?players=24&symmetry=rot_180&wools=i`, pinned through `POST /compose/pin`, answers a
+`PlanModel` whose team unit is **142 proxy cells** — hub 66, frontline 30 + 14, spawn 6 and its room 6, two
+wools 10 each — on a **22 × 36** bbox. Both halves and the mid together come to about **0.36** fill,
+comfortably inside the `fill-ratio` band of [0.201, 0.542] the term reports under `G8`. That term measures a
+**wool** board and answers `null` for any other kind, so the number is not a judgement about a destroy
+board's density and never will be.
+
+The shape that gets there is not symmetry about the centre line. The unit spans `x −11..3` of a board running
+`−11..11`: it is **offset**, its own `rot_180` image takes the other side, and the two interlock so that each
+row is about half land. A unit authored symmetric about `x = 0` fills its own bounding rectangle and is
+refused at **0.774**, with `FR6` on the 24-cell frontline that shape produces and `LN2` on its chain. All
+three name symptoms; the cause is the arrangement.
+
 ---
 
 ## Authoring the layout
@@ -112,7 +127,20 @@ Measured on a five-tier board at `x = 0`, with `shelf` (`base_height 22`, quartz
 problem does not arise at all. Where it is not, author the two edges to overlap by two to four blocks and the
 seam reads as a transition rather than a stripe.
 
-### Two ordering facts about a relief, and each one hides a landform
+### A piece at a lower surface, enclosed by higher ones, is not a cut
+
+The compiler traces **one outline per connected component**, and the rasterizer gives a contested column to
+the taller add. So a `beck` piece at surface 7 with hub pieces at 12 either side compiles to a shape that
+exists — `barn-7`, four vertices, listed in its group — and never appears in the world. Measured: a transect
+across it read `11 11 12 12 13 13 14` straight over the top, the water prop drawn for its bed sat on the
+surface like a puddle, and `GET …/preflight` answered **export gate OPEN**.
+
+What cuts it is an `addShapes` entry with **`override: true`**, which moves the shape into the second pass of
+`((adds − subtracts) ∪ override-adds) − override-subtracts` and overwrites the column it lands on outright.
+The plan then states one piece for the ground and the cut is made downstream, which is the right division
+anyway: a piece is a room or a corridor, and a cut is a shape.
+
+### Three ordering facts about a relief, and each one hides a landform
 
 **A push is applied to the solved surface, so a push over a hollow fills the hollow in.** A push and
 an `area` mark are not two statements about the same field: the marks are solved first and the pushes
@@ -124,7 +152,16 @@ mechanism the stacked-hollow idiom depends on — nested `area` rings written ou
 the same mechanism that silently overrode a bench with a knoll written after it and left a
 **21-block** face into a pit that no one authored.
 
-Neither shows up in the document, in a warning, or in a top-down. Both are one
+**And a push over a pan lowers the pan.** A `slack` push reaching a sough's tail lowered the ground the
+south flight was anchored to arrive on, and the flight came out landing **two blocks proud** of it — visible
+in `…/walk` and in nothing else, because the flight is correct and the ground is correct and only the join is
+wrong.
+
+The rule under all three is one line: **a push is added to the solved surface and marks negotiate with each
+other.** Where a landform has to agree with something already stated — a pan, a pad, the head of a flight —
+state it as a mark.
+
+None of the three shows up in the document, in a warning, or in a top-down. Each is one
 `GET /map/{slug}/column?at=…` transect across the join. Take one across every place two landforms
 share ground, before believing the JSON.
 
@@ -210,6 +247,17 @@ under them; `maps/fable-millrace-revamp` is the same layout built with the groun
 Measured down `x = −40`, joining a shelf at 22 to a crest at 26: z66 → y20, z70 → y22, z74 → y23, z80 → y25.
 A path prop laid over it paves the slope, so the ramp reads as a built stair. Four of these turn a stack of
 terraces from a series of one-way drops into a zigzag climb.
+
+### A flight's anchor is an absolute height, and the relief does not know about it
+
+`anchor_heights` on a `height_mode: "level"` polygon states world heights, so a flight arrives where it was
+told rather than where the ground is. Where the relief left a bank two courses above the anchor, the crossing
+read `BARRIER +3 at (−10, 51)`: the flight correct, the ground correct, the join unwalkable.
+
+The fix is an `area` mark pinning the ground flat at each end of the crossing, and it is that instrument's own
+case. An area pins a flat disc and is right **where flat is the point** — the ground a bridge lands on, the
+pan a sough discharges into, the shelf a goal stands on, the two banks of a ford. Everywhere else is a `point`
+at radius 4–6 with the relaxation between them.
 
 ### Bézier `controls` — the semantics, and where the curve actually is
 
@@ -324,6 +372,17 @@ eight samples a segment before offsetting the band, so four points become a twen
 the wall draws as a curve. `cairn-wall-0`–`2` are the same shape at nine or ten points over about twenty
 blocks. Reach for a polyline wherever a wall, a lane or a watercourse should flow; reach for `controls` only
 on a closed ring of ground.
+
+### A vertex insert names the edge leaving that vertex, and the index moves under it
+
+`POST …/sketch/shapes/{id}/vertices {"after": n}` inserts on the edge from vertex *n* to *n+1*, so the index
+to state is the one **before** the edge wanted — and after a run of inserts it is not the index that edge
+started at. Ten inserts on a six-vertex ring put the west flank at index 9 rather than 8, and `{"after": 8}`
+landed on the board's own back edge and folded the ring.
+
+A folded ring refuses nothing. The store answered 200, the export answered 200, `preflight` answered **export
+gate OPEN**, and the world carried **ten blocks of void inside the landmass** at `x −30, z 40..49`. A transect
+is what found it. Count the indices as the ring grows, or read back the index each insert answers with.
 
 ### Construction before dressing: a coherent terrain first, platforms as layers
 
@@ -456,6 +515,45 @@ through `surface` alone comes out banded in its top four courses and plain below
 **A style fork that repaints `wall` and not `storeys[*].wall` is half a fork.** The storey stack carries its
 own wall, and on a two-storey preset the storey is most of what a section shows. The exception is `Stilts`,
 whose whole idiom *is* storey 0's wall (air over a beam course) — repaint that and the stilts disappear.
+
+### `roomStyles` carries `wool` and `spawn`, and every spec on disk older than 2026-09-07 says `cage`
+
+`SketchRoomStyles` has exactly two members, and the wool one was renamed from `cage` on **2026-09-07**
+(`41242fe`, migration `M0033_WoolRoomWireWord`). The migration rewrote the key in every **stored** layout, so
+a board already in the database came across; a board driven from **its own document on disk** did not, and
+sixty-odd `*.layout.json` and `*.finish.json` files here still state the old word.
+
+**Which path the write takes decides whether anything says so.** The per-part route refuses an unknown one —
+`PUT …/sketch/room-styles/cage` answers **400**, *"a map binds a shell for wool and spawn, and nothing
+else"*, with `part` as the field. The **whole-layout** write does not: `SketchRoomStyles` is deserialized
+with the default unmapped-member handling, so a key it does not know is dropped in silence, and
+`POST /map/from-documents` is the path a spec drive takes. An absent key is not an error either — it is that
+kind's **built-in shell**. So a board keyed `cage` stores at 200, pre-flights **OPEN**, exports at 200, and
+builds its wool rooms as the built-in **bedrock box**:
+
+```
+GET …/column?at=-45,75   (cage)   y24 Bedrock · y16 Bedrock
+GET …/column?at=-45,75   (wool)   y26 Bricks  · y16 Gravel
+```
+
+This is the *dated evidence* rule with a measured cost: three states that each mean something different
+(`object` = the bound style, explicit `null` = open ground with no building, absent = the built-in shell) and
+a wrong key falling into the third one silently.
+
+### A house style in a dressing document is not a house style
+
+`roomStyles` takes a bare `HouseStyle`. `dressing.styles` takes a `PropStyle`, which is polymorphic — so the
+same document two keys away needs the discriminator: `{"kind": "house", "shell": <HouseStyle>}`. Without it
+`DressingJson.ParseStyles` throws and the answer is **500 / `RQ2`**, the studio's own fault rather than the
+document's, with the field that caused it named only in the server log.
+
+### The authors reach the map row and not the intent's meta
+
+`POST /map/from-documents` takes `authors` in the body and applies it to the map, and the export writes
+`<authors><author>…</author></authors>` correctly from there. The observer platform's board reads
+`intent.meta.authors`, which the compile leaves `[]` and no finish key reaches — `drive.py` patches `created`
+into `intent.meta` and not `authors`. So `EX6` fires on every board whose `map.xml` names its author
+perfectly well, and what is actually lost is the sign on the platform.
 
 ### A material's `kind` has to be the first property of its object
 
@@ -975,6 +1073,27 @@ answers an upper group in world coordinates.
 **The gap survives because `TerrainPainter.Paint` writes only over stone.** Its band stack runs
 bedrock-to-top and would fill the air between two slabs; the stone-only invariant is the one line
 that makes stacking work.
+
+### Two layers may share one course and no more
+
+A layer's span is inclusive of its top, so an upper layer sitting exactly at the lower one's top shares that
+course and is the ordinary seam. Past it the two build as one solid mass and the gap the layers were drawn to
+have is not in the world there.
+
+A bridge deck at `base_y 11` lapped two blocks onto banks topping at y11 read `SK10 — driven 2 block(s) into
+each other over 24 column(s), deepest at (−26, 62)`. The same deck sized to the cut's own columns exactly, one
+course thick, laps nothing, sits flush with both banks and leaves four courses of air under it.
+
+### A channel reads the surface top, so a bridge over a beck breaks the beck
+
+`TerrainBuilder.SurfaceTops` keeps the **maximum** `YTop` per `(x, z)` across every layer, and a water channel
+takes the lowest surface its band crosses as its water line. So a deck on a layer above a stream is that
+stream's bed as far as the channel is concerned. Measured: at `(−20, 63)` and `(−20, 67)` the transect
+answered ground **12**, which is the deck five courses over the bed, and one channel drawn the whole length of
+the gill ran dry from the bridge north.
+
+Two channels, one each side of the deck, is what carries water under a bridge. A reach left dry still lays its
+bank materials, which is worth having where the board can afford to call it a sink.
 
 ### Everything downstream of a stacked cell reads one number: the surface top
 

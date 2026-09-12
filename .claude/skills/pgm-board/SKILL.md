@@ -22,6 +22,8 @@ about it."*
 |---|---|---|
 | What is actually at this coordinate? | `GET /map/{slug}/column?at=x,z` | any render — every other read is a projection |
 | Does this climb? Is that step walkable? | `GET …/transect?points=x,z;x,z&beside=2&format=text`, or `03-slopes.txt` | eyeballing a heightmap shade |
+| Does this **flight** actually walk? | the same transect across the crossing — rises, falls, worst step, walked end to end | `EL1` or `WL11`, which walk the pieces flat and cannot see an authored flight at all |
+| Is the shape I authored in the world at all? | `GET …/column?at=x,z` at a cell it should own | the store's 200 and pre-flight's OPEN, neither of which looks |
 | Where does the ground step, over the whole board? | `03-slopes.txt` — `. walked · : scramble · # barrier`, plus a per-face summary | — |
 | How high is the ground along this line? | `tools/loop.py --profile x=<x>,z=<a>..<b>,step=1` | your own arithmetic over the anchors |
 | How **steep** is the ground, and where? | `GET …/incline?format=text` — the glyph is the tens of degrees, and under the grid, how much ground stands in each ten | `03-slopes.txt`, which answers a *step* (can it be walked) and not an *angle* (how should it be finished) |
@@ -33,12 +35,13 @@ about it."*
 | …and on a **stacked** board? | the same read, with **`from=x,z,y`** — the `y` picks which storey of the column is meant | `x,z` alone, which walks to the column *under* an elevated goal and calls it walked end to end |
 | Is a lower storey still made of what I painted it? | `GET …/column?at=x,z` | the isometric, the census, or the 200 — none of the three sees it |
 | Is the board joined up, per team? | `GET …/preflight` | the export, at 409, after a whole world is built |
-| Is any ground unused? | `GET …/coverage` (after) · `GET …/plan/flow` (before) | nothing — no gate asks this |
+| Is any ground unused — is it ground anybody **goes** to? | `GET …/coverage` (after) — reached / decorated / dead, with the five largest dead patches and their coordinates · `GET …/plan/flow` (before) | nothing — no gate asks this, and `preflight` asks only whether ground can be *reached* |
 | What is the board made of, and what borders what? | `05-themes.txt` (`themes/census?format=text`) | counting your own theme dict |
 | What is the plan's shape, before a map row exists? | `tools/board.py specs/<slug>/<slug>.plan.json` | a render of a built world |
 | Is this section of the world what I think? | `GET …/render/section?axis=&at=&from=&to=&format=text` — **`axis` names the direction the cut runs, so `at` is the other coordinate** | a PNG section, which blends renderer gridlines over it |
 | What fields does this pattern take? | `GET /api/terrain/patterns` — fourteen kinds with exact field names | guessing. One run invented **five field names out of five** |
 | What does this refusal mean? | `GET /api/rules?rule=<id>` | inferring from the sentence |
+| Is there a **number** for this, and what is the band? | `GET /api/rules/terms` — every evaluator term with its rule, its band and where the band came from | reading the rule prose, which states the mechanism and not the envelope |
 | What does the house style build? | `POST /room-styles/preview-snapshot?format=png&view=section` (and `plan`; other views 400) | a top-down — every shipped roof fault was visible in a section and invisible from above |
 | What does a whole multi-wing house build? | `POST /terrain/prop-preview` — the prop plus a theme | `preview-snapshot`, which draws a default box |
 | How do I reshape a compiled outline? | `PATCH …/sketch/shapes/{id}/vertices/{index}` moves **one** point; `POST …/vertices {"after": n}` adds one at that edge's midpoint; `DELETE …/vertices/{index}`. A spec states them as `editShapes`, replayed before any bend | a second shape added on top to enlarge it, a subtract to eat into it, or a bend to move one corner |
@@ -101,7 +104,7 @@ The one legitimate exception is §1's last row: a world that is not a stored map
 
 ---
 
-## 4. Seven failures that have each cost more than one run
+## 4. The failures that have each cost more than one run
 
 ### A picture that looks plausible is not a read
 
@@ -148,6 +151,54 @@ wrong explanation of `SK11` and filed a wrong bug against the 3-D preview that t
 Before writing that something is missing, look for it in `GET /api/openapi/v1.json` and say what you
 found. **missing** (no mechanism) · **unreachable** (exists, the surface hid it) · **mistaken** (exists,
 documented, not found) are three different verdicts and only the first is a capability gap.
+
+**Search the surface by what a thing would *do*, not by what you would call it.** `mistaken` is the usual
+verdict because the surface is indexed by name and a capability is wanted by function, so one grep of the
+obvious word answers nothing and reads as proof. Two gaps filed in one run, both wrong, neither caught by a
+read:
+
+- *Ground cover* — ferns, grass and flowers scattered over grass — was written up as absent. It is
+  `FloraProp`, carrying a `FloraSpec` of `points`, `coverage`, `scale`, `octaves`, `fernShare`,
+  `flowerShare`, `flowerScale` and `tallShare`, every one of them in `openapi.json`. The word **flora** was
+  never searched, because the question had been phrased as *grass coverage*.
+- The *intra-team build zone* was written up as something the composer does not model. It is on the wire
+  three times over. `CT4` names it in a clause rather than in its summary — *"a stone whose every
+  interfacing zone component touches only one team's islands is a **team transient-link**, not a mid stone —
+  the encased pad between a team's own islands"*, with `rotate-wide-frontline`'s four 100-block corner pads
+  cited; `BZ5` carries the same motif at the spawn as the **defender-egress bridge**; and it is *measured*,
+  as the `team-stepping-count` term under `CT4`, band **[0, 2]**. Not one of the three contains the word
+  **zone**, and the grep was for *zone*.
+
+So run **three** searches before writing the word missing: the name you would give it, the sentence
+describing what it would do to a board, and the term catalogue. `GET /api/rules` returns every rule with its
+prose in one fetch and is greppable, `GET /api/rules/terms` is the second index and answers what is
+*measured* rather than what is stated, and `openapi.json` is greppable for a field name. Search a rule's
+prose and not only its summary: `CT4`'s summary is an island-size gradient and the sentence wanted is six
+clauses in. A gap filed against a surface that has the feature is worse than no gap — it is a capability the
+next run also will not use, and nothing will ever contradict it.
+
+### The plan tier cannot see what you authored downstream, in both directions
+
+`EL1` and `WL11` walk the plan's pieces **flat**. A five-course seam with a flight cut into it reads to them
+as a five-course seam, and the finding is right about the plan and says nothing about the board. The answer is
+a transect, not a redesign: two boards of a recent run ship with standing `EL1` complaints whose crossings
+measure `worst step 1, 0 barrier, 0 scramble, walked end to end`.
+
+It runs the other way too, and that half is worse: **the plan tier passing says nothing about whether the
+shape is in the world.** A piece the rasterizer discarded for a taller neighbour, a ring a vertex insert
+folded, a room-style key the snapshot dropped — all three stored at 200 and pre-flighted **OPEN**. What sees
+them is `column` and `transect`. Nothing else does.
+
+### Coverage is the cheapest read on the board and the one nobody takes
+
+Nothing refuses on it, which is exactly why it goes unrun. It is the only read that asks whether any journey
+**goes** somewhere rather than whether it **can**.
+
+Measured on one board across one edit: a destroy board with its monument on the centre line read **62.0%
+dead** — four patches of about 2 000 cells each, every one of them one block from used ground. One objective
+and one spawn a side make two journeys, and the flanks are on neither. Moving the monument twelve blocks off
+the centre line and taking ten blocks off the board's width took it to **17.9%** with nothing else changed. A
+board with two objectives a side and a spawn between them reads **0.0%** by construction.
 
 ### The plan was cut up so a theme would have somewhere to hang
 
