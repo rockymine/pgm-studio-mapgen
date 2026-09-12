@@ -254,7 +254,7 @@ are relations between two of those rectangles: a stepping stone wider than the b
 wool room touching a piece its wall was meant to guard, a spur that connects to nothing. A grid puts the two
 rects on the same rows and a rendered picture does not.
 
-Run 4's own worked example is one line of it. In `specs/opus5-wheal-hazel/renders/00-board.txt`:
+Run 4's own worked example is one line of it. In `specs/archive/opus5-wheal-hazel/renders/00-board.txt`:
 
 ```
   -1 |    MMMMMMMMMMMMMMMM    |     M = the neutral bar, sixteen cells
@@ -262,7 +262,7 @@ Run 4's own worked example is one line of it. In `specs/opus5-wheal-hazel/render
 ```
 
 Sixteen against four is the whole of a dead landform, visible at a glance and invisible in the render
-that was actually looked at. `specs/opus5-wheal-hazel-v2/renders/00-board.txt` is
+that was actually looked at. `specs/archive/opus5-wheal-hazel-v2/renders/00-board.txt` is
 the same two rows agreeing.
 
 ## The world tools — reading a world a person finished
@@ -326,7 +326,7 @@ The account of what they are for and what they found is
 | `sculpt/models.py` | the nine sculptures — robot, droid, Rubik's cube, hooded statue, coupe, walker, dragon, starship, ring station |
 | `sculpt/board.py` | the themes (`solid`, `shaded`), the document, the minimal intent an export needs, and the calls that store a board, read its columns back and unzip its world |
 | `sculpt/gallery_forms.py` · `gallery_sculpture.py` | the two boards in `sculpture/`, each printing what it cost in layers and shapes and exporting a world into the directory named as its second argument |
-| `sculpt/make_board.py` | writes `specs/opus5-automaton`'s plan and finish, props and all, for `drive.py` to build |
+| `sculpt/make_board.py` | writes `specs/archive/opus5-automaton`'s plan and finish, props and all, for `drive.py` to build |
 | `render/png.py` | a PNG writer, a scanline polygon fill and a 5×7 face, in the standard library alone |
 | `render/iso.py` | isometric, **x-ray isometric**, orthographic elevation and one-panel-per-layer renders off `POST …/sketch/columns` — the built world, not the drawing. `drive.py` writes two isometrics per spec, so every board has a picture in the round, and two x-rays where the board holds a covered space. `cavities` beside them is the read on its own: every roofed void, its cell count, the blocks it lies between, and whether anything can walk into it |
 | `render/preview.py` | the same isometric taken straight off a model's voxels, for correcting a proportion without a build |

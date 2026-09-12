@@ -77,6 +77,15 @@ comes from the repository's author.
 
 Grouped by the run that produced them. Mode is what the map's own `<gamemode>` declares.
 
+**Fifteen boards sit directly under `specs/`, and the other 111 under `specs/archive/`.** The flat set is the
+one worth reading. The archive is a record rather than a catalogue of examples: probes, boards built to find
+the limit of one mechanism, early runs, and boards a later one superseded. The split is there because the
+cheapest thing a model does is imitate whatever it opens first, so what it opens first should be worth
+imitating — and for one technique at a time `showcase/` is the place rather than either of them.
+
+A spec a report or a review names at `specs/<slug>` and that is not there is at `specs/archive/<slug>`. Those
+accounts are dated and were right the day they were written, so their paths are left as they stand.
+
 **Most of these specs no longer compile, and that is settled rather than pending (author).** 72 of the 117
 plans here state `"plan": 1`, whose marker offsets are in cells where version 2 states them in blocks, so
 `POST /plan/compile` refuses one with `PL15`. The worlds under `maps/` were built from them and are what
@@ -301,7 +310,7 @@ four-team board built from that vocabulary at `rot_90`.
 
 ### The author's basin — three boards, a hand revamp, and the revamp restated
 
-`specs/rockymine-map-experiment` is a basin the author drew in the Sketch tool — a sunken canal between two
+`specs/archive/rockymine-map-experiment` is a basin the author drew in the Sketch tool — a sunken canal between two
 thirty-high masses, two destroyables a team, the hills hinted as stacked slabs — and its `BRIEF.md` is what
 three agents were asked to make of it. Then the author took one of the three onto a build server and finished
 it by hand, and that finished world is the first board here that was **not** built by the studio.

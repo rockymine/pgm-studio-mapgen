@@ -246,8 +246,8 @@ readable at the same time.
 ```bash
 python3 tools/sculpt/gallery_forms.py     /tmp/forms     maps/form-gallery        # nine parametric forms
 python3 tools/sculpt/gallery_sculpture.py /tmp/sculpture maps/sculpture-gallery   # seven compiled models
-python3 tools/sculpt/make_board.py        specs/opus5-automaton
-python3 tools/drive.py specs/opus5-automaton "Automaton" --out /tmp/automaton
+python3 tools/sculpt/make_board.py        specs/archive/opus5-automaton
+python3 tools/drive.py specs/archive/opus5-automaton "Automaton" --out /tmp/automaton
 ```
 
 The second argument to either gallery is the world directory to export into — `region/`, `level.dat` and
