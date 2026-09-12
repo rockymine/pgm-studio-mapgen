@@ -1,0 +1,73 @@
+## plot-c (house) along x
+TRANSECT 29 stations from (-40, 66) to (-12, 66), every 1
+  station        ground  surface  water  top  standing            step
+  (  -40,    66)      18       18           18                      
+  (  -39,    66)      18       18           18                      
+  (  -38,    66)      18       18           18                      
+  (  -37,    66)      18       18           18                      
+  (  -36,    66)      18       18           18                      
+  (  -35,    66)      18       18           18                      
+  (  -34,    66)      18       18           18                      
+  (  -33,    66)      18       18           31  house plot-c        
+  (  -32,    66)      18       18           31  house plot-c        
+  (  -31,    66)      18       18           31  house plot-c        
+  (  -30,    66)      18       18           31  house plot-c        
+  (  -29,    66)      18       18           31  house plot-c        
+  (  -28,    66)      18       18           31  house plot-c        
+  (  -27,    66)      18       18           31  house plot-c        
+  (  -26,    66)      18       18           31  house plot-c        
+  (  -25,    66)      18       18           31  house plot-c        
+  (  -24,    66)      18       18           31  house plot-c        
+  (  -23,    66)      18       18           31  house plot-c        
+  (  -22,    66)      18       18           31  house plot-c        
+  (  -21,    66)      18       18           31  house plot-c        
+  (  -20,    66)      18       18           31  house plot-c        
+  (  -19,    66)      18       18           31  house plot-c        
+  (  -18,    66)      18       18           18                      
+  (  -17,    66)      18       18           18                      
+  (  -16,    66)      18       18           18                      
+  (  -15,    66)      18       18           18                      
+  (  -14,    66)      18       18           18  stroke gate-road    
+  (  -13,    66)      18       18           18  stroke gate-road    
+  (  -12,    66)      18       18           18  stroke gate-road    
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house plot-c at (-33, 64), stroke gate-road at (-15, 64)
+
+## plot-c (house) along z
+TRANSECT 33 stations from (-26, 50) to (-26, 82), every 1
+  station        ground  surface  water  top  standing            step
+  (  -26,    50)      18       18           18                      
+  (  -26,    51)      18       18           18                      
+  (  -26,    52)      18       18           18                      
+  (  -26,    53)      18       18           18                      
+  (  -26,    54)      18       18           18                      
+  (  -26,    55)      18       18           18                      
+  (  -26,    56)      18       18           18                      
+  (  -26,    57)      18       18           27  house plot-c        
+  (  -26,    58)      18       18           29  house plot-c        
+  (  -26,    59)      18       18           31  house plot-c        
+  (  -26,    60)      18       18           33  house plot-c        
+  (  -26,    61)      18       18           35  house plot-c        
+  (  -26,    62)      18       18           37  house plot-c        
+  (  -26,    63)      18       18           37  house plot-c        
+  (  -26,    64)      18       18           35  house plot-c        
+  (  -26,    65)      18       18           33  house plot-c        
+  (  -26,    66)      18       18           31  house plot-c        
+  (  -26,    67)      18       18           30  house plot-c        
+  (  -26,    68)      18       18           30  house plot-c        
+  (  -26,    69)      18       18           30  house plot-c        
+  (  -26,    70)      18       18           30  house plot-c        
+  (  -26,    71)      18       18           30  house plot-c        
+  (  -26,    72)      18       18           30  house plot-c        
+  (  -26,    73)      18       18           30  house plot-c        
+  (  -26,    74)      18       18           30  house plot-c        
+  (  -26,    75)      18       18           30  house plot-c        
+  (  -26,    76)      18       18           18                      
+  (  -26,    77)      18       18           18                      
+  (  -26,    78)      18       18           18                      
+  (  -26,    79)      18       18           18                      
+  (  -26,    80)      18       18           18                      
+  (  -26,    81)      18       18           18                      
+  (  -26,    82)      18       18           18                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house plot-c at (-28, 57)

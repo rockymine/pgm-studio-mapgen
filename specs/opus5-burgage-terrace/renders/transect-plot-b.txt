@@ -1,0 +1,59 @@
+## plot-b (house) along x
+TRANSECT 22 stations from (18, 62) to (39, 62), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,    62)      18       18           39  house plot-a        
+  (   19,    62)      18       18           37  house plot-a        
+  (   20,    62)      18       18           35  house plot-a        
+  (   21,    62)      18       18           33  house plot-a        
+  (   22,    62)      18       18           31  house plot-a        
+  (   23,    62)      18       18           18                      
+  (   24,    62)      18       18           18                      
+  (   25,    62)      18       18           27  house plot-b        
+  (   26,    62)      18       18           29  house plot-b        
+  (   27,    62)      18       18           31  house plot-b        
+  (   28,    62)      18       18           33  house plot-b        
+  (   29,    62)      18       18           35  house plot-b        
+  (   30,    62)      18       18           37  house plot-b        
+  (   31,    62)      18       18           39  house plot-b        
+  (   32,    62)      18       18           39  house plot-b        
+  (   33,    62)      18       18           37  house plot-b        
+  (   34,    62)      18       18           35  house plot-b        
+  (   35,    62)      18       18           33  house plot-b        
+  (   36,    62)      18       18           31  house plot-b        
+  (   37,    62)      18       18           29  house plot-b        
+  (   38,    62)      18       18           27  house plot-b        
+  (   39,    62)      18       18           18                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house plot-a at (16, 60), house plot-b at (25, 60)
+
+## plot-b (house) along z
+TRANSECT 26 stations from (31, 50) to (31, 75), every 1
+  station        ground  surface  water  top  standing            step
+  (   31,    50)      18       18           18                      
+  (   31,    51)      18       18           18                      
+  (   31,    52)      18       18           18                      
+  (   31,    53)      18       18           18                      
+  (   31,    54)      18       18           18                      
+  (   31,    55)      18       18           18                      
+  (   31,    56)      18       18           18                      
+  (   31,    57)      18       18           39  house plot-b        
+  (   31,    58)      18       18           39  house plot-b        
+  (   31,    59)      18       18           39  house plot-b        
+  (   31,    60)      18       18           39  house plot-b        
+  (   31,    61)      18       18           39  house plot-b        
+  (   31,    62)      18       18           39  house plot-b        
+  (   31,    63)      18       18           39  house plot-b        
+  (   31,    64)      18       18           39  house plot-b        
+  (   31,    65)      18       18           39  house plot-b        
+  (   31,    66)      18       18           39  house plot-b        
+  (   31,    67)      18       18           39  house plot-b        
+  (   31,    68)      18       18           39  house plot-b        
+  (   31,    69)      18       18           18                      
+  (   31,    70)      18       18           18                      
+  (   31,    71)      18       18           18                      
+  (   31,    72)      18       18           18                      
+  (   31,    73)      18       18           18                      
+  (   31,    74)      18       18           18                      
+  (   31,    75)      18       18           18                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree lime-1 at (30, 48), house plot-b at (29, 57)
