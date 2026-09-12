@@ -82,6 +82,8 @@ What each key states:
   dressing        {"styles": ..., "props": [...]};  a house prop's "style" takes the same "@name".
                   A style in "styles" is a discriminated PropStyle: a house is
                   {"kind": "house", "shell": <HouseStyle>}, and a bare HouseStyle is a 500 / RQ2
+  shops           [{"id", "name", "keeper": {"name", "mob"}, "categories": [...]}] -> intent.shops. The
+                  menu only: where the keepers stand is the studio's, one per shop at every team's spawn
   voidEnforcement true -> patch intent.build.voidEnforcement (voidExclusions for the rects to spare)
   authors         ["Opus 5"], or [{"name", "uuid", "role", "contribution"}] -> the <authors> block. PGM
                   takes a person as an account OR a pseudonym, so a bare name is a valid author
@@ -653,6 +655,11 @@ def patch_intent(intent, finish):
     compiled intent carries no `symmetry` — the compiler has already placed the board's images — so nothing
     downstream will fan them either, and a centre point plus one side is a two-hill board, not three.
 
+    `shops` is the board's menus and the keepers that open them. It rides on the finish for the same reason
+    the hills do — the plan states no shop — and it carries no coordinates at all: a shop is a catalogue
+    rather than a place, and the studio puts one keeper per shop at every team's spawn
+    (`pgm-studio/docs/pgm/shops.md` §9).
+
     Which storey a goal stands on is the plan's to say: `DestroyablePlacement.layer` and
     `CorePlacement.layer` carry it through the compile onto every orbit image, so nothing is patched here."""
     if created := finish.get("created"):
@@ -675,6 +682,12 @@ def patch_intent(intent, finish):
     if (limit := finish.get("scoreLimit")) is not None:
         intent["scoreLimit"] = limit
         print(f"    score limit {limit}")
+    if shops := finish.get("shops"):
+        intent["shops"] = shops
+        for shop in shops:
+            items = sum(len(c.get("items") or []) for c in shop.get("categories") or [])
+            keeper = (shop.get("keeper") or {}).get("mob") or "villager"
+            print(f"    shop {shop.get('id')}: {items} item(s), a {keeper} at every spawn")
     return intent
 
 

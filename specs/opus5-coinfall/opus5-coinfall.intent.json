@@ -1,0 +1,266 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 16,
+    "z": -50
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -60,
+     "maxX": 10,
+     "maxZ": -40
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": null,
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 16,
+    "z": 50
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 40,
+     "maxX": 10,
+     "maxZ": 60
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": null,
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 29,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -30,
+    "minZ": -10,
+    "maxX": 30,
+    "maxZ": 10
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "protection": [
+    {
+     "minX": -60,
+     "minZ": -40,
+     "maxX": -40,
+     "maxZ": -25
+    }
+   ],
+   "spawn": {
+    "x": -50,
+    "y": 15,
+    "z": -32
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -40,
+     "minZ": -40,
+     "maxX": -40,
+     "maxZ": -25
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "protection": [
+    {
+     "minX": 40,
+     "minZ": 25,
+     "maxX": 60,
+     "maxZ": 40
+    }
+   ],
+   "spawn": {
+    "x": 50,
+    "y": 15,
+    "z": 32
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": 40,
+     "minZ": 25,
+     "maxX": 40,
+     "maxZ": 40
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "controlPoints": null,
+ "shops": [
+  {
+   "id": "quartermaster",
+   "name": "Quartermaster",
+   "keeper": {
+    "name": "`6`lQuartermaster",
+    "mob": "Villager"
+   },
+   "categories": [
+    {
+     "id": "kit",
+     "material": "gold ingot",
+     "name": "`6Supplies",
+     "items": [
+      {
+       "material": "golden apple",
+       "name": "`6Runner's Apple",
+       "price": 16,
+       "currency": "wood"
+      },
+      {
+       "material": "arrow",
+       "amount": 16,
+       "price": 8,
+       "currency": "wood"
+      },
+      {
+       "material": "ladder",
+       "amount": 8,
+       "price": 8,
+       "currency": "wood"
+      },
+      {
+       "material": "stained clay",
+       "amount": 16,
+       "price": 12,
+       "currency": "wood",
+       "teamColor": true
+      },
+      {
+       "material": "iron fence",
+       "amount": 8,
+       "price": 24,
+       "currency": "wood"
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "ctw"
+ ],
+ "meta": {
+  "name": "Coinfall",
+  "created": "2026-09-12",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": {
+  "layer": null,
+  "redstoneLines": [
+   {
+    "x1": -41,
+    "z1": -40,
+    "x2": -41,
+    "z2": -26,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "x1": 40,
+    "z1": 25,
+    "x2": 40,
+    "z2": 39,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1
+    }
+   }
+  ],
+  "ironCubes": [],
+  "walls": [],
+  "isEmpty": false
+ }
+}

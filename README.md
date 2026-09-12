@@ -516,6 +516,20 @@ anything. The mode was not the mistake; asserting it in a docstring instead of f
 | `haiku-harbor-district` | — | Haiku 4.5 | Nine pieces grading hinterland to beach to dock, called a mixed destroy-and-capture board. No objectives. `plan: 1` |
 | `haiku-forgotten-village` | — | Haiku 4.5 | Five pieces of snowed peak called king-of-the-hill, written when no control point existed. No objectives. `plan: 1` |
 
+### Opus 5 — the first board with a shop in it
+
+The studio grew shops this run: an intent takes a `shops` array, the export writes the `<shops>` menu and a
+`<shopkeeper>` at every team's spawn, and a map carrying either now parses, stores and re-emits instead of
+losing it. `opus5-coinfall` is two camps across a twenty-block void with a villager in each spawn, and the
+menu trades the kit's own wood for what a wool run needs. **A keeper carries no position at all** — a shop is
+a catalogue rather than a place, so the studio puts one per shop beside the point players arrive on, and PGM
+spawns the entity itself from the element, so nothing is stamped and the board exports the moment its intent
+is stored. [reports/opus5-coinfall-run.md](reports/opus5-coinfall-run.md)
+
+**A generated board mints no currency**, which is the run's finding rather than a fault in the map: the spawn
+kit and the kill reward derived from it are its only item sources, so a shop priced in the emerald or nugget
+764 of the corpus's 907 icons use is a menu nobody can open an account with (`PG14`).
+
 ### Opus 5 — the first two capture boards, and the law the second was built to
 
 The studio grew capture points this run: an intent takes a `controlPoints` array, the export stamps a clay
