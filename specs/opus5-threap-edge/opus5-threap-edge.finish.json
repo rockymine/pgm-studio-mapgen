@@ -138,6 +138,18 @@
       ]
     }
   },
+  "biome": {
+    "kind": "noise",
+    "seed": 11,
+    "scale": 46,
+    "octaves": 2,
+    "stops": [
+      6,
+      6,
+      37,
+      6
+    ]
+  },
   "roomStyles": {
     "spawn": {
       "foundation": {
@@ -406,7 +418,10 @@
         "size": 4,
         "rock": {
           "kind": "cell",
+          "seed": 3,
           "cellSize": 4,
+          "jitter": 1,
+          "warp": 1,
           "palette": [
             {
               "kind": "solid",
@@ -438,7 +453,10 @@
         "size": 6,
         "rock": {
           "kind": "cell",
+          "seed": 3,
           "cellSize": 4,
+          "jitter": 1,
+          "warp": 1,
           "palette": [
             {
               "kind": "solid",
@@ -470,7 +488,10 @@
         "size": 4,
         "rock": {
           "kind": "cell",
+          "seed": 3,
           "cellSize": 4,
+          "jitter": 1,
+          "warp": 1,
           "palette": [
             {
               "kind": "solid",
@@ -671,65 +692,17 @@
         "id": "cairn-mid",
         "kind": "boulder",
         "seed": 21,
-        "x": -11,
-        "z": -7,
+        "x": -12,
+        "z": -1,
         "style": "cairn"
       },
       {
         "id": "cairn-nab",
         "kind": "boulder",
         "seed": 22,
-        "x": -43,
-        "z": -7,
+        "x": -45,
+        "z": -1,
         "style": "cairn"
-      },
-      {
-        "id": "crag-a",
-        "kind": "boulder",
-        "seed": 31,
-        "x": -24,
-        "z": -13,
-        "style": "outcrop"
-      },
-      {
-        "id": "crag-b",
-        "kind": "boulder",
-        "seed": 32,
-        "x": 9,
-        "z": -14,
-        "style": "outcrop"
-      },
-      {
-        "id": "crag-c",
-        "kind": "boulder",
-        "seed": 33,
-        "x": 45,
-        "z": -12,
-        "style": "outcrop"
-      },
-      {
-        "id": "crag-d",
-        "kind": "boulder",
-        "seed": 34,
-        "x": -49,
-        "z": -11,
-        "style": "outcrop"
-      },
-      {
-        "id": "scree-a",
-        "kind": "boulder",
-        "seed": 41,
-        "x": -26,
-        "z": -24,
-        "style": "shattered"
-      },
-      {
-        "id": "scree-b",
-        "kind": "boulder",
-        "seed": 42,
-        "x": 25,
-        "z": -25,
-        "style": "shattered"
       },
       {
         "id": "erratic-a",
@@ -737,14 +710,6 @@
         "seed": 51,
         "x": -20,
         "z": -30,
-        "style": "erratic"
-      },
-      {
-        "id": "erratic-b",
-        "kind": "boulder",
-        "seed": 52,
-        "x": -46,
-        "z": -24,
         "style": "erratic"
       },
       {
@@ -756,12 +721,12 @@
         "style": "erratic"
       },
       {
-        "id": "erratic-d",
+        "id": "scree-a",
         "kind": "boulder",
-        "seed": 54,
-        "x": -47,
-        "z": -32,
-        "style": "erratic"
+        "seed": 41,
+        "x": -40,
+        "z": -30,
+        "style": "shattered"
       },
       {
         "id": "birch-a",
@@ -837,14 +802,11 @@
                     "bands": [
                       {
                         "material": {
-                          "kind": "cell",
-                          "cellSize": 13,
-                          "palette": [
-                            {
-                              "kind": "solid",
-                              "id": 2,
-                              "data": 0
-                            },
+                          "kind": "turbulence",
+                          "seed": 17,
+                          "scale": 5,
+                          "octaves": 3,
+                          "stops": [
                             {
                               "kind": "solid",
                               "id": 2,
@@ -859,6 +821,31 @@
                               "kind": "solid",
                               "id": 3,
                               "data": 2
+                            },
+                            {
+                              "kind": "solid",
+                              "id": 2,
+                              "data": 0
+                            },
+                            {
+                              "kind": "solid",
+                              "id": 2,
+                              "data": 0
+                            },
+                            {
+                              "kind": "solid",
+                              "id": 3,
+                              "data": 1
+                            },
+                            {
+                              "kind": "solid",
+                              "id": 3,
+                              "data": 2
+                            },
+                            {
+                              "kind": "solid",
+                              "id": 2,
+                              "data": 0
                             }
                           ]
                         },
@@ -886,7 +873,10 @@
                       {
                         "material": {
                           "kind": "cell",
+                          "seed": 3,
                           "cellSize": 9,
+                          "jitter": 3,
+                          "warp": 2,
                           "palette": [
                             {
                               "kind": "solid",
@@ -923,7 +913,10 @@
               {
                 "material": {
                   "kind": "cell",
+                  "seed": 3,
                   "cellSize": 9,
+                  "jitter": 3,
+                  "warp": 2,
                   "palette": [
                     {
                       "kind": "solid",

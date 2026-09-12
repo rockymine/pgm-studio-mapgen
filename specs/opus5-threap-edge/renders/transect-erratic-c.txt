@@ -1,9 +1,9 @@
 ## erratic-c (boulder) along x
 TRANSECT 25 stations from (25, -28) to (49, -28), every 1
   station        ground  surface  water  top  standing            step
-  (   25,   -28)      13       13           17  boulder scree-b     
-  (   26,   -28)      14       14           17  boulder scree-b     +1
-  (   27,   -28)      14       14           17  boulder scree-b     
+  (   25,   -28)      13       13           14  flora heather       
+  (   26,   -28)      14       14           14                      +1
+  (   27,   -28)      14       14           14                      
   (   28,   -28)      15       15           16  flora heather       +1
   (   29,   -28)      15       15           15  stroke track-east   
   (   30,   -28)      15       15           15  stroke track-east   
@@ -27,13 +27,13 @@ TRANSECT 25 stations from (25, -28) to (49, -28), every 1
   (   48,   -28)      12       12           13  flora heather       
   (   49,   -28)      12       12           14  flora heather       
 rises 2, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: flora heather at (23, -30), boulder scree-b at (23, -28), stroke track-east at (28, -30), boulder erratic-c at (33, -30)
+beside: flora heather at (23, -30), stroke track-east at (28, -30), boulder erratic-c at (33, -30)
 
 ## erratic-c (boulder) along z
 TRANSECT 25 stations from (37, -40) to (37, -16), every 1
   station        ground  surface  water  top  standing            step
   (   37,   -40)      12       12           14  flora heather       
-  (   37,   -39)      12       12           12                      
+  (   37,   -39)      12       12           14  flora heather       
   (   37,   -38)      12       12           13  flora heather       
   (   37,   -37)      12       12           14  flora heather       
   (   37,   -36)      12       12           14  flora heather       
@@ -58,4 +58,4 @@ TRANSECT 25 stations from (37, -40) to (37, -16), every 1
   (   37,   -17)      16       16           16                      
   (   37,   -16)      16       16           16                      
 rises 4, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: flora heather at (35, -42), boulder erratic-c at (35, -32), boulder crag-c at (39, -16)
+beside: flora heather at (35, -42), boulder erratic-c at (35, -32)

@@ -71,6 +71,41 @@ exposed risers. **One theme, no `themeByHeight`, no second piece to hang anythin
 answers podzol over dirt, at 18° coarse dirt, at 52° and 68° stone — which is the whole claim, and
 `GET …/column?at=` is the only read that settles it.
 
+## Podzol beside grass is a biome decision before it is a material one
+
+[author] **Grass and podzol together only work under a mesa or a swamp biome, or the two mixed.** The
+reason is that podzol's brown is fixed and grass's is not: a grass block is tinted by the biome byte of the
+column it stands in, so beside a plains green the podzol reads as a hole in the ground and beside an olive
+it reads as heather. `GET /api/terrain/biomes` prices it exactly — swampland tints `#6a7039`, mesa
+`#90814d`, and a plains green is neither. The board now carries a `noise` biome field drifting between the
+two, and the export writes **67% swampland, 25% mesa**, mirrored with everything else (`world.biome` at
+every column and its rot_180 image: zero disagreements).
+
+The mix was the other half of it, and my first one was wrong in the way a missing required field is wrong.
+A `cell` material takes `seed`, `cellSize`, `jitter`, `warp` and `palette`, and I gave it a size and a
+palette — so it defaulted to an unjittered, unwarped grid of 13-block squares, which is a chequerboard of
+fields, not a mottle. The fix is a **`turbulence`** field at scale 5, whose stops weight grass against
+podzol and coarse dirt; it reads as one material through another rather than as patches of each:
+
+```
+x −9..10 at z=−35:   G p G G G p G G c c c p c G c G G p G
+x −9..10 at z=−28:   G G G p p p p G G G G p p c G G p G G     G grass · p podzol · c coarse dirt
+```
+
+## Five boulders, and not one of them on the crag
+
+[author] **Too many, and mostly invisible.** Twelve authored (twenty-four after the fan) is a strewn board
+rather than a moor, and four of them stood along the edge's face — where the slope band paints the ground
+*stone*, so a gritstone boulder is the same rock as what it stands on and disappears into it. The lesson is
+that a prop's material and the ground's are decided by different things and nothing checks that they differ:
+`06-claims.txt` says a cell is free and `DR-SITE` says a prop has ground, and neither has an opinion about
+whether you will be able to see it.
+
+Five now, and every position read off `GET …/column?at=` before it was placed: two cairns on the crest's own
+flat beside the summit and the west nab (11–16°, so the shoulder's coarse dirt), three erratics out on the
+moor at 0°. The ground beside each of the ten, read back after the build, is coarse dirt, podzol, fern or
+double plant — brown and green, never the crag's grey.
+
 ## The board's own reads do not know what a capture point is
 
 Three of them, and all three are quiet rather than wrong-looking:

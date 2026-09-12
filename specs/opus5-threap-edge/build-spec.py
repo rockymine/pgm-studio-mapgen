@@ -122,7 +122,15 @@ def solid(block, data=0):
 
 
 def cell(size, *palette):
-    return {"kind": "cell", "cellSize": size, "palette": list(palette)}
+    return {"kind": "cell", "seed": 3, "cellSize": size, "jitter": max(1, size // 3),
+            "warp": max(1, size // 4), "palette": list(palette)}
+
+
+def mottle(seed, scale, *stops):
+    """A fractal field folded on itself — billowy rather than drifting, which is what puts two ground
+    materials through each other at the scale of a footstep instead of in fields of one and fields of the
+    other. `stops` is read by the field's value, so a material repeated is a material weighted."""
+    return {"kind": "turbulence", "seed": seed, "scale": scale, "octaves": 3, "stops": list(stops)}
 
 
 def depth_stack(*bands):
@@ -145,9 +153,12 @@ def by_slope(*bands):
                       "bands": [{"material": m, "thickness": t} for m, t in bands]}}
 
 
+# Heather moor: podzol through grass at the scale a moor actually mottles at, which is a few blocks and
+# not a few tens. Podzol beside grass is only a colour that works where the grass is **tinted away from
+# green** — the biome below puts the whole board in swampland and mesa for exactly that reason.
 MOOR_TOP = depth_stack(
-    # Heather moor: grass with podzol blown through it, splotched rather than patterned.
-    (cell(13, solid(2), solid(2), solid(2), solid(3, 2)), 1),
+    (mottle(17, 5, solid(2), solid(2), solid(3, 2), solid(2), solid(2), solid(3, 1),
+            solid(3, 2), solid(2)), 1),
     (solid(3), 2))
 SHOULDER = depth_stack((cell(9, solid(3, 1), solid(3, 1), solid(13)), 1), (solid(3), 2))
 CRAG = cell(9, solid(1), solid(4), solid(1, 5), solid(1))
@@ -273,22 +284,20 @@ def tree(prop_id, x, z, style, seed):
 
 
 def props():
+    # Five, not twelve, and not one of them on the crag. A gritstone boulder standing on the crag band is
+    # the same rock as the ground under it and disappears into it, so every position here is read off
+    # `GET .../column?at=` first and stands where the ground measures under 20 degrees — the moor's grass
+    # and podzol, or the shoulder's coarse dirt. The four that stood along the edge's face are gone.
     stones = [
-        # A cairn on a moor top is what marks a summit, so each hill gets one standing off its pad.
-        boulder("cairn-mid", -11, -7, "cairn", 21),
-        boulder("cairn-nab", -43, -7, "cairn", 22),
-        # The rock band itself, along the edge's north shoulder.
-        boulder("crag-a", -24, -13, "outcrop", 31),
-        boulder("crag-b", 9, -14, "outcrop", 32),
-        boulder("crag-c", 45, -12, "outcrop", 33),
-        boulder("crag-d", -49, -11, "outcrop", 34),
-        boulder("scree-a", -26, -24, "shattered", 41),
-        boulder("scree-b", 25, -25, "shattered", 42),
-        # Erratics dropped on the flat, which is what says the moor was left by ice.
+        # A cairn on a moor top is what marks a summit, so the summit and one nab carry one — standing on
+        # the crest's own flat (11-16 degrees, so the shoulder band's brown) rather than against the face.
+        boulder("cairn-mid", -12, -1, "cairn", 21),
+        boulder("cairn-nab", -45, -1, "cairn", 22),
+        # Erratics dropped on the flat, which is what says the moor was left by ice. All three stand at
+        # 0 degrees, where the ground is grass and podzol.
         boulder("erratic-a", -20, -30, "erratic", 51),
-        boulder("erratic-b", -46, -24, "erratic", 52),
         boulder("erratic-c", 37, -28, "erratic", 53),
-        boulder("erratic-d", -47, -32, "erratic", 54),
+        boulder("scree-a", -40, -30, "shattered", 41),
     ]
     # Sparse and low down: a moor top carries no trees, and the shelter is at the foot of the edge.
     trees = [
@@ -343,6 +352,11 @@ def finish():
                 ],
             },
         },
+        # Swampland drifting into mesa — 6 tints grass #6a7039 and 37 tints it #90814d, both olive rather
+        # than green. It is the biome that makes the ground's own palette legal: podzol reads as heather
+        # beside an olive grass and as a brown hole beside a green one, so the mix above is only right
+        # under these two. Folded through the board's symmetry with everything else.
+        "biome": {"kind": "noise", "seed": 11, "scale": 46, "octaves": 2, "stops": [6, 6, 37, 6]},
         "roomStyles": {"spawn": spawn_house()},
         "dressing": {"styles": styles(), "props": props()},
         "themes": {"threap-moor": theme()},
