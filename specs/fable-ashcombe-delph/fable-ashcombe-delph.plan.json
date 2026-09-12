@@ -8,28 +8,94 @@
   "symmetry": "rot_180",
   "maxPlayers": 12,
   "surface": 12,
-  "observerY": 58
+  "observerY": 60
  },
  "pieces": [
   {
-   "id": "yard",
+   "id": "yard-w",
    "role": "piece",
    "rect": [
     -10,
-    -6,
-    20,
+    -12,
+    5,
+    8
+   ],
+   "surface": 12
+  },
+  {
+   "id": "yard-mw",
+   "role": "piece",
+   "rect": [
+    -5,
+    -8,
+    5,
     4
    ],
    "surface": 12
   },
   {
-   "id": "bench",
+   "id": "yard-me",
+   "role": "piece",
+   "rect": [
+    0,
+    -11,
+    5,
+    7
+   ],
+   "surface": 12
+  },
+  {
+   "id": "yard-e",
+   "role": "piece",
+   "rect": [
+    5,
+    -9,
+    5,
+    5
+   ],
+   "surface": 12
+  },
+  {
+   "id": "bench-w",
    "role": "piece",
    "rect": [
     -10,
-    -14,
-    20,
+    -16,
+    5,
+    4
+   ],
+   "surface": 20
+  },
+  {
+   "id": "bench-mw",
+   "role": "piece",
+   "rect": [
+    -5,
+    -16,
+    5,
     8
+   ],
+   "surface": 20
+  },
+  {
+   "id": "bench-me",
+   "role": "piece",
+   "rect": [
+    0,
+    -16,
+    5,
+    5
+   ],
+   "surface": 20
+  },
+  {
+   "id": "bench-e",
+   "role": "piece",
+   "rect": [
+    5,
+    -16,
+    5,
+    7
    ],
    "surface": 20
   },
@@ -38,7 +104,7 @@
    "role": "piece",
    "rect": [
     -10,
-    -20,
+    -22,
     8,
     6
    ],
@@ -49,7 +115,7 @@
    "role": "piece",
    "rect": [
     -2,
-    -16,
+    -18,
     4,
     2
    ],
@@ -60,7 +126,7 @@
    "role": "spawn",
    "rect": [
     -2,
-    -20,
+    -22,
     4,
     4
    ],
@@ -71,7 +137,7 @@
    "role": "piece",
    "rect": [
     2,
-    -20,
+    -22,
     8,
     6
    ],
@@ -83,9 +149,9 @@
    "id": "sound",
    "rect": [
     -10,
-    -2,
+    -4,
     20,
-    4
+    8
    ],
    "holes": []
   }
@@ -113,10 +179,10 @@
   "destroyables": [
    {
     "id": "destroyable-1",
-    "piece": "bench",
+    "piece": "bench-me",
     "at": [
-     50,
-     18
+     2,
+     20
     ],
     "style": "pillar-3",
     "materials": "obsidian",

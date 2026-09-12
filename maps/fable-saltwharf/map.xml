@@ -1,8 +1,9 @@
 <map proto="1.5.0">
     <name>Saltwharf</name>
     <version>1.0.0</version>
+    <gamemode>dtm</gamemode>
     <gamemode>dtc</gamemode>
-    <objective>Leak the enemy's core!</objective>
+    <objective>Destroy the enemy's monument and leak the enemy's core!</objective>
     <created>2026-09-11</created>
     <phase>development</phase>
     <include id="gapple-kill-reward"/>
@@ -60,6 +61,10 @@
         <mode id="mode-gold-block" after="15m" material="gold block"/>
         <mode id="mode-glass" after="20m" material="glass"/>
     </modes>
+    <destroyables>
+        <destroyable id="saltwharf-beacon" name="Saltwharf Beacon" owner="red-team" materials="ender stone" repairable="false" mode-changes="true" region="saltwharf-beacon-region"/>
+        <destroyable id="saltwharf-beacon-2" name="Saltwharf Beacon" owner="blue-team" materials="ender stone" repairable="false" mode-changes="true" region="saltwharf-beacon-2-region"/>
+    </destroyables>
     <cores>
         <core id="red-core" team="red-team" mode-changes="true" region="red-core-region"/>
         <core id="blue-core" team="blue-team" mode-changes="true" region="blue-core-region"/>
@@ -90,13 +95,15 @@
         </not>
     </filters>
     <regions>
-        <point id="blue-spawn-point">20,22,67</point>
-        <point id="red-spawn-point">-20,22,-67</point>
+        <point id="blue-spawn-point">20,22,72</point>
+        <point id="red-spawn-point">-20,22,-72</point>
         <point id="observer-spawn">0,57,0</point>
-        <rectangle id="blue-spawn" min="10,60" max="30,75"/>
-        <rectangle id="red-spawn" min="-30,-75" max="-10,-60"/>
-        <cuboid id="red-core-region" min="-24,18,-24" max="-19,23,-19"/>
-        <cuboid id="blue-core-region" min="19,18,19" max="24,23,24"/>
+        <rectangle id="blue-spawn" min="10,65" max="30,80"/>
+        <rectangle id="red-spawn" min="-30,-80" max="-10,-65"/>
+        <cuboid id="saltwharf-beacon-region" min="29,33,-56" max="30,36,-55"/>
+        <cuboid id="saltwharf-beacon-2-region" min="-30,33,55" max="-29,36,56"/>
+        <cuboid id="red-core-region" min="-24,23,-29" max="-19,28,-24"/>
+        <cuboid id="blue-core-region" min="19,23,24" max="24,28,29"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -105,7 +112,7 @@
             <region id="spawns"/>
         </negative>
         <negative id="not-build-area">
-            <rectangle id="build-area-1" min="-50,-10" max="50,10"/>
+            <rectangle id="build-area-1" min="-50,-20" max="50,20"/>
         </negative>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
@@ -144,6 +151,7 @@
         <item>leather chestplate</item>
         <item>chainmail leggings</item>
         <item>leather boots</item>
+        <item>ender stone</item>
         <item>obsidian</item>
         <item>gold block</item>
         <item>glass</item>

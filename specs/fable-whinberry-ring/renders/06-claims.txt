@@ -17,13 +17,13 @@ KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn
  -58                                  777772227777                      000000000            
  -57                                  008882228880                   00000000bbbbbaa         
  -56                                   0888222888                 bb000000000bbbbbaaaaa      
- -55                              44444088822288800044444444444bbbbb000000000bbbbbaaaaaaa    
- -54                             444444488822288800044444444444bbbbb008888888bbbbbaaaaaaaa   
- -53                            4444444488822288800044444444444bbbbb008888888bbbbbbbbbbaaaa  
- -52                            444444448882228880000444444444bbbbbb008888888bbbbbbbbbbaaaaa 
- -51                           444444440888222888000044444444bbbbbbb008888888bbbbbbbbbbaaaaa6
- -50                          4444444440888222888000004444440bbbbbbb008888888bbbbbbbbbbaaaaa0
- -49                          4444444440888222888000000444400bbbbbbb008888888bbbbbbbbbbaaaaa 
+ -55                              444440888222888000000000000bbbbbbb000000000bbbbbaaaaaaa    
+ -54                             4444444888222888000000000000bbbbbbb008888888bbbbbaaaaaaaa   
+ -53                            44444444888222888000000000000bbbbbbb008888888bbbbbbbbbbaaaa  
+ -52                            44444444888222888000000000000bbbbbbb008888888bbbbbbbbbbaaaaa 
+ -51                           444444440888222888000000000000bbbbbbb008888888bbbbbbbbbbaaaaa6
+ -50                          4444444440888222888000000000000bbbbbbb008888888bbbbbbbbbbaaaaa0
+ -49                          4444444440888222888000000000000bbbbbbb008888888bbbbbbbbbbaaaaa 
  -48                           444444400882228888000000000000bbbbbbb008888888bbbbbbbbbbaaaa  
  -47                           044444000882228888000000666666bbbbbbb008888888bbbbbaaaaaaaa   
  -46                            00000000822228888000000666666bbbbbbb008888888bbbbbaaaaaaa    
@@ -32,18 +32,18 @@ KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn
  -43                666660       00000002228          6666666bbb        00000aaaa            
  -42             aaaabbbbba66    bbbbb022288          0666666666           066               
  -41           aaaaaabbbbba6666   bbbb022288          0666666666                             
- -40          aaaaaaabbbbba6666bbbbbbb02220000000000006644444666                             
- -39         aaaaaaaabbbbba8888bbbbbbb022200000000000004444444666                            
- -38        aaaabbbbbbbbbba8888bbbb22b222222222222222224444224466                            
- -37       0aaaabbbbbbbbbba8888bbbb22b2222222222222222222222222466                           
- -36      00aaaabbbbbbbbbba8888bbbb22b22222222222222222222222224466                          
- -35      00aaaabbbbbbbbbba8888bbbb22b22222222222000044222222244466                          
- -34       0aaaabbbbbbbbbba8888bbbbbbb0222000000000004444444444440                           
- -33        aaaabbbbbbbbbba8888bbbbbbb002220000000000444444444444                            
- -32         aaaaaaaabbbbba8888bbbbbbb002220000000000644444444444                            
- -31          aaaaaaabbbbba8888bbbbbbb00222000000000064444444444                             
- -30           aaaaaabbbbba000    bbbb002220          6444444446                             
- -29              aaabbbbba      bbbbb002220          66444444066                            
+ -40          aaaaaaabbbbba6666bbbbbbb02220000000000006666666666                             
+ -39         aaaaaaaabbbbba8888bbbbbbb022200000000000006666666666                            
+ -38        aaaabbbbbbbbbba8888bbbb22b222222222222222220006226666                            
+ -37       0aaaabbbbbbbbbba8888bbbb22b2222222222222222222222222666                           
+ -36      00aaaabbbbbbbbbba8888bbbb22b22222222222222222222222220666                          
+ -35      00aaaabbbbbbbbbba8888bbbb22b22222222222000066222222206666                          
+ -34       0aaaabbbbbbbbbba8888bbbbbbb0222000000000000666000006660                           
+ -33        aaaabbbbbbbbbba8888bbbbbbb002220000000000066600000666                            
+ -32         aaaaaaaabbbbba8888bbbbbbb002220000000000666666660006                            
+ -31          aaaaaaabbbbba8888bbbbbbb00222000000000066666666666                             
+ -30           aaaaaabbbbba000    bbbb002220          6666666066                             
+ -29              aaabbbbba      bbbbb002220          66666600066                            
  -28                 aaa         bbbbb000222          06600000000                            
  -27                             00555000222          00000000000                            
  -26                            005555500222          000000000000                           
@@ -100,18 +100,18 @@ KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn
   25                            000000000000          222005555500                           
   26                             00000000000          22200055500                            
   27                             00000000000          22200000000         000                
-  28                             66644444400          0222000bbbb      0bbbbbaaa             
-  29                              6444444440          0222000bbb    0660bbbbbaaaaaa          
-  30                              444444444400000000000222000bbbbbbb6666bbbbbaaaaaaa         
-  31                             4444444444400000000000222000bbbbbbb8888bbbbbaaaaaaaa        
-  32                            64444444444440000000000222000bbbbbbb8888bbbbbbbbbbaaaa       
-  33                            64444444444440000000000022200bbbbbbb8888bbbbbbbbbbaaaaa      
-  34                           00444222222244000022222222222222bbbbb8888bbbbbbbbbbaaaaa0     
-  35                           00442222222222222222222222222222bbbbb8888bbbbbbbbbbaaaaa0     
-  36                            0642222222222222222222222222222bbbbb8888bbbbbbbbbbaaaaa      
-  37                            0004422444422222222222222222222bbbbb8888bbbbbbbbbbaaaa       
-  38                             0004444444000000000000022200bbbbbbb8888bbbbbaaaaaaaa        
-  39                              000444440000000000000022266bbbbbbb8888bbbbbaaaaaaa         
+  28                             66666600000          0222000bbbb      0bbbbbaaa             
+  29                              6666666600          0222000bbb    0660bbbbbaaaaaa          
+  30                              666666666000000000000222000bbbbbbb6666bbbbbaaaaaaa         
+  31                             6666666666000000000000222000bbbbbbb8888bbbbbaaaaaaaa        
+  32                            66666666660000000000000222000bbbbbbb8888bbbbbbbbbbaaaa       
+  33                            66666666660000000000000022200bbbbbbb8888bbbbbbbbbbaaaaa      
+  34                           00066222222200000022222222222222bbbbb8888bbbbbbbbbbaaaaa0     
+  35                           00062222222222222222222222222222bbbbb8888bbbbbbbbbbaaaaa0     
+  36                            0662222222222222222222222222222bbbbb8888bbbbbbbbbbaaaaa      
+  37                            0006622660022222222222222222222bbbbb8888bbbbbbbbbbaaaa       
+  38                             0006660000000000000000022200bbbbbbb8888bbbbbaaaaaaaa        
+  39                              000660600000000000000022266bbbbbbb8888bbbbbaaaaaaa         
   40                              0000000600          0022266bbb   b0000bbbbbaaaaaa          
   41               0000           0000000000          8822266bbbb    000bbbbbaaaa            
   42            6000000000        0000000000          8222866bbbb       aaaaaa               
@@ -120,13 +120,13 @@ KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn
   45     aaaaaaabbbbba000000000bbbbbbb0000066666008882222886666666                           
   46    aaaaaaaabbbbba888888800bbbbbbb00000660660088822288866444440                          
   47   aaaabbbbbbbbbba888888800bbbbbbb00000660000088822288864444444                          
-  48  6aaaabbbbbbbbbba888888800bbbbbbb044446000000882228888444444444                         
-  49 00aaaabbbbbbbbbba888888800bbbbbbb444444000000882228888444444444                         
-  50 00aaaabbbbbbbbbba888888800bbbbbb444444440000088222888844444444                          
-  51  0aaaabbbbbbbbbba888888800bbbbb444444444000008822288844444444                           
-  52   aaaabbbbbbbbbba888888800bbbb4444444444400008822288844444444                           
-  53    aaaaaaaabbbbba888888860bbbb444444444440000882228884444444                            
-  54     aaaaaaabbbbba888888866bbbb44444444444000088222888844444                             
+  48  6aaaabbbbbbbbbba888888800bbbbbbb000006000000882228888444444444                         
+  49 00aaaabbbbbbbbbba888888800bbbbbbb000000000000882228888444444444                         
+  50 00aaaabbbbbbbbbba888888800bbbbbbb00000000000088222888844444444                          
+  51  0aaaabbbbbbbbbba888888800bbbbbbb0000000000008822288844444444                           
+  52   aaaabbbbbbbbbba888888800bbbbbbb0000000000008822288844444444                           
+  53    aaaaaaaabbbbba888888860bbbbbbb000000000000882228884444444                            
+  54     aaaaaaabbbbba888888866bbbbbbb00000000000088222888844444                             
   55      aaaaaabbbbba666666666b                 0882228888                                  
   56         aaabbbbba6666666                   008822288880                                 
   57            aaaaaa6666                      008822288886                                 
@@ -142,4 +142,4 @@ KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn
   67                                            777bbbbbb777                                 
   68                                            777777777777                                 
   69                                             7777777777                                  
-placed 16, declined 0
+placed 12, declined 0

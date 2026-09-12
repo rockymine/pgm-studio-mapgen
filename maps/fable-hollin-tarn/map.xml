@@ -3,7 +3,7 @@
     <version>1.0.0</version>
     <gamemode>dtm</gamemode>
     <objective>Destroy the enemy's monument!</objective>
-    <created>2026-09-11</created>
+    <created>2026-09-12</created>
     <phase>development</phase>
     <include id="gapple-kill-reward"/>
     <authors>
@@ -90,13 +90,13 @@
         </not>
     </filters>
     <regions>
-        <point id="blue-spawn-point">0,18,82</point>
-        <point id="red-spawn-point">0,18,-82</point>
+        <point id="blue-spawn-point">0,18,87</point>
+        <point id="red-spawn-point">0,18,-87</point>
         <point id="observer-spawn">0,57,0</point>
-        <rectangle id="blue-spawn" min="-10,75" max="10,90"/>
-        <rectangle id="red-spawn" min="-10,-90" max="10,-75"/>
-        <cuboid id="hollin-monument-region" min="0,18,-44" max="1,21,-43"/>
-        <cuboid id="hollin-monument-2-region" min="-1,18,43" max="0,21,44"/>
+        <rectangle id="blue-spawn" min="-10,80" max="10,95"/>
+        <rectangle id="red-spawn" min="-10,-95" max="10,-80"/>
+        <cuboid id="hollin-monument-region" min="-10,18,-49" max="-9,21,-48"/>
+        <cuboid id="hollin-monument-2-region" min="9,18,48" max="10,21,49"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>

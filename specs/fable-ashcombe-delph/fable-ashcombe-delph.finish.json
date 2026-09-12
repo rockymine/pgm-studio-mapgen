@@ -2,7 +2,7 @@
  "authors": [
   "Fable 5.1"
  ],
- "created": "2026-09-11",
+ "created": "2026-09-12",
  "themes": {
   "moor": {
    "bedrock": {
@@ -54,7 +54,7 @@
           ]
          }
         },
-        "thickness": 28
+        "thickness": 30
        },
        {
         "material": {
@@ -82,7 +82,7 @@
           ]
          }
         },
-        "thickness": 17
+        "thickness": 15
        },
        {
         "material": {
@@ -117,14 +117,6 @@
     "stack": {
      "ending": "repeat",
      "bands": [
-      {
-       "material": {
-        "kind": "solid",
-        "id": 3,
-        "data": 1
-       },
-       "thickness": 1
-      },
       {
        "material": {
         "kind": "solid",
@@ -203,7 +195,7 @@
     "material": {
      "kind": "cell",
      "seed": 12,
-     "cellSize": 7,
+     "cellSize": 6,
      "jitter": 40,
      "warp": 2,
      "palette": [
@@ -214,60 +206,37 @@
       },
       {
        "kind": "solid",
-       "id": 3,
-       "data": 1
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
       }
      ],
      "rise": 0
     }
    },
    "wall": {
-    "kind": "layered",
-    "axis": "depth",
-    "stack": {
-     "ending": "repeat",
-     "bands": [
-      {
-       "material": {
-        "kind": "solid",
-        "id": 3,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 3,
-        "data": 0
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "cell",
-        "seed": 31,
-        "cellSize": 9,
-        "jitter": 40,
-        "warp": 2,
-        "palette": [
-         {
-          "kind": "solid",
-          "id": 1,
-          "data": 0
-         },
-         {
-          "kind": "solid",
-          "id": 1,
-          "data": 5
-         }
-        ],
-        "rise": 3
-       },
-       "thickness": 40
-      }
-     ]
-    }
+    "kind": "cell",
+    "seed": 31,
+    "cellSize": 9,
+    "jitter": 40,
+    "warp": 2,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     }
+    ],
+    "rise": 3
    },
    "wallEnabled": true,
    "wallOnTerrainFaces": true,
@@ -477,14 +446,96 @@
     "id": 98,
     "data": 0
    }
+  },
+  "crag": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 2,
+    "material": {
+     "kind": "cell",
+     "seed": 31,
+     "cellSize": 9,
+     "jitter": 40,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     ],
+     "rise": 3
+    }
+   },
+   "wall": {
+    "kind": "cell",
+    "seed": 31,
+    "cellSize": 9,
+    "jitter": 40,
+    "warp": 2,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     }
+    ],
+    "rise": 3
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "cell",
+    "seed": 31,
+    "cellSize": 9,
+    "jitter": 40,
+    "warp": 2,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     }
+    ],
+    "rise": 3
+   }
   }
  },
  "mapTheme": "moor",
  "themeById": {
-  "bench-12": "yard"
+  "bench-e-12": "yard"
  },
  "shapePropsById": {
-  "bench-20": {
+  "bench-e-20": {
    "floor": 16,
    "base_height": 4
   }
@@ -753,9 +804,33 @@
      "type": "rectangle",
      "operation": "add",
      "min_x": -50,
-     "min_z": -70,
-     "max_x": 17,
-     "max_z": -30,
+     "min_z": -80,
+     "max_x": -25,
+     "max_z": -60,
+     "floor": 0,
+     "base_height": 16,
+     "theme": "rock"
+    },
+    {
+     "id": "rock-mw",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -25,
+     "min_z": -80,
+     "max_x": 0,
+     "max_z": -40,
+     "floor": 0,
+     "base_height": 16,
+     "theme": "rock"
+    },
+    {
+     "id": "rock-me",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 0,
+     "min_z": -80,
+     "max_x": 25,
+     "max_z": -55,
      "floor": 0,
      "base_height": 16,
      "theme": "rock"
@@ -764,37 +839,65 @@
      "id": "rock-e",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 22,
-     "min_z": -70,
+     "min_x": 25,
+     "min_z": -80,
      "max_x": 50,
-     "max_z": -30,
+     "max_z": -45,
      "floor": 0,
      "base_height": 16,
      "theme": "rock"
     },
     {
-     "id": "rock-s",
+     "id": "adit-e",
      "type": "rectangle",
      "operation": "add",
-     "min_x": 17,
+     "min_x": 12,
      "min_z": -70,
-     "max_x": 22,
-     "max_z": -64,
-     "floor": 0,
-     "base_height": 16,
-     "theme": "rock"
-    },
-    {
-     "id": "adit",
-     "type": "rectangle",
-     "operation": "add",
-     "min_x": 17,
-     "min_z": -64,
-     "max_x": 22,
-     "max_z": -30,
+     "max_x": 17,
+     "max_z": -55,
      "floor": 0,
      "base_height": 12,
-     "theme": "adit"
+     "theme": "adit",
+     "override": true
+    },
+    {
+     "id": "adit-far",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": 32,
+     "min_z": -70,
+     "max_x": 37,
+     "max_z": -45,
+     "floor": 0,
+     "base_height": 12,
+     "theme": "adit",
+     "override": true
+    },
+    {
+     "id": "gallery",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -36,
+     "min_z": -70,
+     "max_x": 37,
+     "max_z": -65,
+     "floor": 0,
+     "base_height": 12,
+     "theme": "adit",
+     "override": true
+    },
+    {
+     "id": "rise-c",
+     "type": "rectangle",
+     "operation": "add",
+     "min_x": -8,
+     "min_z": -65,
+     "max_x": -3,
+     "max_z": -49,
+     "floor": 0,
+     "base_height": 12,
+     "theme": "adit",
+     "override": true
     }
    ],
    "groups": [
@@ -804,9 +907,13 @@
      "mirrors": true,
      "shapeIds": [
       "rock-w",
+      "rock-mw",
+      "rock-me",
       "rock-e",
-      "rock-s",
-      "adit"
+      "adit-e",
+      "adit-far",
+      "gallery",
+      "rise-c"
      ]
     }
    ]
@@ -814,7 +921,7 @@
  ],
  "addShapes": [
   {
-   "id": "adit-flight",
+   "id": "flight-w",
    "type": "polygon",
    "operation": "add",
    "override": true,
@@ -827,20 +934,57 @@
    "relief_scope": "exclude",
    "vertices": [
     [
-     17,
-     -48
+     -36,
+     -70
     ],
     [
-     22,
-     -48
+     -20,
+     -70
     ],
     [
-     22,
-     -64
+     -20,
+     -65
     ],
     [
-     17,
-     -64
+     -36,
+     -65
+    ]
+   ],
+   "anchor_heights": [
+    8,
+    1,
+    1,
+    8
+   ]
+  },
+  {
+   "id": "flight-c",
+   "type": "polygon",
+   "operation": "add",
+   "override": true,
+   "keepClear": true,
+   "floor": 12,
+   "base_height": 8,
+   "theme": "stair",
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "vertices": [
+    [
+     -8,
+     -65
+    ],
+    [
+     -3,
+     -65
+    ],
+    [
+     -3,
+     -49
+    ],
+    [
+     -8,
+     -49
     ]
    ],
    "anchor_heights": [
@@ -849,8 +993,175 @@
     8,
     8
    ]
+  },
+  {
+   "id": "terrace-flight",
+   "type": "polygon",
+   "operation": "add",
+   "override": true,
+   "keepClear": true,
+   "floor": 16,
+   "base_height": 10,
+   "theme": "stair",
+   "height_mode": "level",
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "vertices": [
+    [
+     -3,
+     -77
+    ],
+    [
+     3,
+     -77
+    ],
+    [
+     3,
+     -90
+    ],
+    [
+     -3,
+     -90
+    ]
+   ],
+   "anchor_heights": [
+    4,
+    4,
+    10,
+    10
+   ]
+  },
+  {
+   "id": "crag",
+   "type": "polygon",
+   "operation": "add",
+   "theme": "crag",
+   "floor": 0,
+   "base_height": 34,
+   "height_mode": "level",
+   "skirt": 8,
+   "vertices": [
+    [
+     -50,
+     -80
+    ],
+    [
+     -40,
+     -80
+    ],
+    [
+     -38,
+     -74
+    ],
+    [
+     -40,
+     -68
+    ],
+    [
+     -46,
+     -66
+    ],
+    [
+     -50,
+     -68
+    ]
+   ]
+  },
+  {
+   "id": "wall-bench",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "keepClear": true,
+   "min_x": 1,
+   "min_z": -52,
+   "max_x": 11,
+   "max_z": -51,
+   "floor": 0,
+   "base_height": 2,
+   "height_mode": "raise",
+   "skirt": 0,
+   "theme": "stair"
+  },
+  {
+   "id": "wall-yard",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "keepClear": true,
+   "min_x": -22,
+   "min_z": -30,
+   "max_x": -8,
+   "max_z": -29,
+   "floor": 0,
+   "base_height": 2,
+   "height_mode": "raise",
+   "skirt": 0,
+   "theme": "stair"
   }
  ],
+ "editShapes": {
+  "bench-e-12": [
+   {
+    "after": 8,
+    "x": 34,
+    "z": -23
+   },
+   {
+    "after": 9,
+    "x": 20,
+    "z": -16
+   },
+   {
+    "after": 10,
+    "x": 6,
+    "z": -21
+   },
+   {
+    "after": 11,
+    "x": -8,
+    "z": -17
+   },
+   {
+    "after": 12,
+    "x": -24,
+    "z": -24
+   },
+   {
+    "after": 13,
+    "x": -40,
+    "z": -18
+   }
+  ],
+  "bench-e-26": [
+   {
+    "after": 0,
+    "x": -32,
+    "z": -110
+   },
+   {
+    "after": 4,
+    "x": -50,
+    "z": -94
+   },
+   {
+    "remove": 0
+   },
+   {
+    "after": 0,
+    "x": 32,
+    "z": -110
+   },
+   {
+    "after": 2,
+    "x": 50,
+    "z": -94
+   },
+   {
+    "remove": 2
+   }
+  ]
+ },
  "relief": {
   "team": {
    "base": 12,
@@ -864,30 +1175,112 @@
    },
    "marks": [
     {
-     "id": "face",
-     "kind": "scarp",
-     "points": [
+     "id": "yard-w",
+     "kind": "area",
+     "h": 16,
+     "bevel": 3,
+     "ring": [
       [
-       60,
-       -32
+       -50,
+       -20
       ],
       [
-       20,
-       -31
+       -27,
+       -20
       ],
       [
-       -20,
-       -32
+       -27,
+       -58
       ],
       [
-       -60,
-       -31
+       -50,
+       -58
       ]
-     ],
+     ]
+    },
+    {
+     "id": "yard-e",
+     "kind": "area",
+     "h": 12,
+     "bevel": 3,
+     "ring": [
+      [
+       3,
+       -20
+      ],
+      [
+       50,
+       -20
+      ],
+      [
+       50,
+       -43
+      ],
+      [
+       27,
+       -43
+      ],
+      [
+       23,
+       -53
+      ],
+      [
+       3,
+       -53
+      ]
+     ]
+    },
+    {
+     "id": "face-e",
+     "kind": "scarp",
      "high": 20,
      "low": 12,
      "face": 3,
-     "band": 4
+     "band": 3,
+     "points": [
+      [
+       60,
+       -46
+      ],
+      [
+       27,
+       -46
+      ],
+      [
+       23,
+       -56
+      ],
+      [
+       2,
+       -56
+      ],
+      [
+       -2,
+       -40
+      ],
+      [
+       -25,
+       -40
+      ]
+     ]
+    },
+    {
+     "id": "face-w",
+     "kind": "scarp",
+     "high": 20,
+     "low": 16,
+     "face": 3,
+     "band": 3,
+     "points": [
+      [
+       -25,
+       -60
+      ],
+      [
+       -60,
+       -60
+      ]
+     ]
     },
     {
      "id": "bench",
@@ -896,27 +1289,43 @@
      "ring": [
       [
        -50,
-       -36
+       -63
+      ],
+      [
+       -24,
+       -63
+      ],
+      [
+       -22,
+       -43
+      ],
+      [
+       -2,
+       -43
+      ],
+      [
+       2,
+       -58
+      ],
+      [
+       23,
+       -58
+      ],
+      [
+       27,
+       -48
       ],
       [
        50,
-       -36
+       -48
       ],
       [
        50,
-       -64
-      ],
-      [
-       30,
-       -68
-      ],
-      [
-       -30,
-       -68
+       -78
       ],
       [
        -50,
-       -64
+       -78
       ]
      ]
     },
@@ -924,35 +1333,22 @@
      "id": "terrace",
      "kind": "area",
      "h": 26,
-     "bevel": 5,
      "ring": [
       [
        -50,
-       -78
+       -81
       ],
       [
-       -30,
-       -76
+       40,
+       -81
       ],
       [
-       0,
-       -78
-      ],
-      [
-       30,
-       -76
-      ],
-      [
-       50,
-       -78
-      ],
-      [
-       50,
-       -100
+       40,
+       -110
       ],
       [
        -50,
-       -100
+       -110
       ]
      ]
     },
@@ -962,25 +1358,20 @@
      "points": [
       [
        -40,
-       -18
+       -50
       ],
       [
        -40,
-       -26
+       -58
       ],
       [
        -40,
-       -34
-      ],
-      [
-       -40,
-       -42
+       -66
       ]
      ],
      "h": [
-      12,
-      14,
-      17,
+      16,
+      18,
       20
      ],
      "r": 4,
@@ -999,36 +1390,6 @@
     "style": "solid",
     "claimsGround": true,
     "radius": 2,
-    "points": [
-     [
-      0,
-      -80
-     ],
-     [
-      0,
-      -72
-     ],
-     [
-      -14,
-      -62
-     ],
-     [
-      -30,
-      -50
-     ],
-     [
-      -40,
-      -40
-     ],
-     [
-      -40,
-      -22
-     ],
-     [
-      -30,
-      -14
-     ]
-    ],
     "pave": {
      "kind": "cell",
      "seed": 21,
@@ -1053,7 +1414,80 @@
       }
      ],
      "rise": 0
-    }
+    },
+    "points": [
+     [
+      0,
+      -95
+     ],
+     [
+      0,
+      -91
+     ]
+    ]
+   },
+   {
+    "id": "road-bench",
+    "kind": "stroke",
+    "seed": 6,
+    "style": "solid",
+    "claimsGround": true,
+    "radius": 2,
+    "pave": {
+     "kind": "cell",
+     "seed": 21,
+     "cellSize": 3,
+     "jitter": 40,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "points": [
+     [
+      0,
+      -77
+     ],
+     [
+      -12,
+      -71
+     ],
+     [
+      -26,
+      -66
+     ],
+     [
+      -38,
+      -62
+     ],
+     [
+      -40,
+      -56
+     ],
+     [
+      -40,
+      -34
+     ],
+     [
+      -32,
+      -26
+     ]
+    ]
    },
    {
     "id": "office",
@@ -1064,12 +1498,12 @@
      {
       "corners": [
        [
-        -46,
-        -58
+        -36,
+        -80
        ],
        [
-        -38,
-        -51
+        -28,
+        -73
        ]
       ]
      }
@@ -1335,12 +1769,12 @@
      {
       "corners": [
        [
-        22,
-        -92
+        26,
+        -104
        ],
        [
-        29,
-        -86
+        33,
+        -98
        ]
       ]
      }
@@ -1546,70 +1980,114 @@
     }
    },
    {
-    "id": "fir-1",
+    "id": "fir-0",
     "kind": "tree",
     "seed": 1,
     "layer": "ground",
     "form": "template",
     "species": "spruce",
     "height": 13,
-    "x": -42,
-    "z": -94
+    "x": -38,
+    "z": -98
    },
    {
-    "id": "fir-2",
+    "id": "fir-1",
     "kind": "tree",
     "seed": 2,
     "layer": "ground",
     "form": "template",
     "species": "spruce",
-    "height": 11,
-    "x": -36,
-    "z": -90
+    "height": 12,
+    "x": -30,
+    "z": -106
    },
    {
-    "id": "fir-3",
+    "id": "fir-2",
     "kind": "tree",
     "seed": 3,
     "layer": "ground",
     "form": "template",
     "species": "spruce",
     "height": 10,
-    "x": -44,
+    "x": -24,
     "z": -84
    },
    {
-    "id": "fir-4",
+    "id": "fir-3",
     "kind": "tree",
     "seed": 4,
     "layer": "ground",
     "form": "template",
     "species": "spruce",
-    "height": 12,
-    "x": 40,
-    "z": -96
+    "height": 13,
+    "x": 38,
+    "z": -98
    },
    {
-    "id": "fir-5",
+    "id": "fir-4",
     "kind": "tree",
     "seed": 5,
     "layer": "ground",
     "form": "template",
     "species": "spruce",
-    "height": 14,
-    "x": 45,
-    "z": -88
+    "height": 10,
+    "x": 36,
+    "z": -105
    },
    {
-    "id": "fir-6",
+    "id": "fir-5",
     "kind": "tree",
     "seed": 6,
     "layer": "ground",
     "form": "template",
     "species": "spruce",
     "height": 12,
-    "x": -46,
-    "z": -73
+    "x": 20,
+    "z": -101
+   },
+   {
+    "id": "fir-6",
+    "kind": "tree",
+    "seed": 7,
+    "layer": "ground",
+    "form": "template",
+    "species": "spruce",
+    "height": 11,
+    "x": 44,
+    "z": -88
+   },
+   {
+    "id": "fir-7",
+    "kind": "tree",
+    "seed": 8,
+    "layer": "ground",
+    "form": "template",
+    "species": "spruce",
+    "height": 12,
+    "x": -47,
+    "z": -84
+   },
+   {
+    "id": "fir-8",
+    "kind": "tree",
+    "seed": 9,
+    "layer": "ground",
+    "form": "template",
+    "species": "spruce",
+    "height": 11,
+    "x": 46,
+    "z": -72
+   },
+   {
+    "id": "fir-9",
+    "kind": "tree",
+    "seed": 10,
+    "layer": "ground",
+    "form": "template",
+    "species": "spruce",
+    "height": 10,
+    "x": -20,
+    "z": -78
    },
    {
     "id": "stone-1",
@@ -1617,9 +2095,9 @@
     "seed": 21,
     "layer": "ground",
     "x": -20,
-    "z": -18,
+    "z": -46,
     "form": "round",
-    "size": 4,
+    "size": 3,
     "mossy": false,
     "rock": {
      "kind": "noise",
@@ -1651,10 +2129,10 @@
     "kind": "boulder",
     "seed": 22,
     "layer": "ground",
-    "x": 30,
-    "z": -24,
+    "x": 40,
+    "z": -62,
     "form": "angular",
-    "size": 5,
+    "size": 4,
     "mossy": false,
     "rock": {
      "kind": "noise",
@@ -1686,45 +2164,10 @@
     "kind": "boulder",
     "seed": 23,
     "layer": "ground",
-    "x": 8,
-    "z": -14,
+    "x": 14,
+    "z": -72,
     "form": "round",
     "size": 3,
-    "mossy": false,
-    "rock": {
-     "kind": "noise",
-     "seed": 51,
-     "scale": 3,
-     "octaves": 1,
-     "stops": [
-      {
-       "kind": "solid",
-       "id": 1,
-       "data": 0
-      },
-      {
-       "kind": "solid",
-       "id": 4,
-       "data": 0
-      },
-      {
-       "kind": "solid",
-       "id": 1,
-       "data": 5
-      }
-     ],
-     "rise": 2
-    }
-   },
-   {
-    "id": "stone-4",
-    "kind": "boulder",
-    "seed": 24,
-    "layer": "ground",
-    "x": 42,
-    "z": -58,
-    "form": "angular",
-    "size": 4,
     "mossy": false,
     "rock": {
      "kind": "noise",
@@ -1758,19 +2201,19 @@
     "points": [
      [
       -50,
-      -100
+      -110
      ],
      [
       50,
-      -100
+      -110
      ],
      [
       50,
-      -10
+      -20
      ],
      [
       -50,
-      -10
+      -20
      ]
     ],
     "spec": {

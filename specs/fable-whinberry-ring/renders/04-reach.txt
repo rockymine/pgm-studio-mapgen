@@ -1,22 +1,18 @@
-components 15 · navigable 4004 columns · bridgeable 0 · build ceiling y45
+components 11 · navigable 4114 columns · bridgeable 0 · build ceiling y46
 
-14 patch(es) of standing ground no player can get to. None of this is a fault — scenery and a side observer island read exactly like this — but a shape stranded by accident reads like it too, and only the author can tell them apart.
+10 patch(es) of standing ground no player can get to. None of this is a fault — scenery and a side observer island read exactly like this — but a shape stranded by accident reads like it too, and only the author can tell them apart.
 
   cells  floor  reason          box
-   1909     y9  no-build-zone   x -39..43, z -70..-13
+   1844     y9  no-build-zone   x -39..43, z -70..-13
     160     y9  no-build-zone   x -8..7, z -8..7
-      2    y12  no-build-zone   x -11..-10, z 35..35
-      2    y11  no-build-zone   x -9..-9, z 33..34
-      2    y11  no-build-zone   x 8..8, z -35..-34
-      2    y12  no-build-zone   x 9..10, z -36..-36
-      1    y12  no-build-zone   x -14..-14, z 34..34
-      1    y12  no-build-zone   x -12..-12, z 34..34
-      1    y15  no-build-zone   x -11..-11, z 51..51
-      1    y11  no-build-zone   x -7..-7, z 34..34
-      1    y11  no-build-zone   x 6..6, z -35..-35
-      1    y15  no-build-zone   x 10..10, z -52..-52
-      1    y12  no-build-zone   x 11..11, z -35..-35
-      1    y12  no-build-zone   x 13..13, z -35..-35
+     35    y12  no-build-zone   x -38..-33, z 47..52
+     35    y12  no-build-zone   x -33..-28, z -38..-33
+     35    y12  no-build-zone   x 27..32, z 32..37
+     35    y12  no-build-zone   x 32..37, z -53..-48
+     29    y24  no-build-zone   x -39..-32, z 46..53
+     29    y24  no-build-zone   x -34..-27, z -39..-32
+     29    y24  no-build-zone   x 26..33, z 31..38
+     29    y24  no-build-zone   x 31..38, z -54..-47
 
   no-build-zone   nothing the map opens to bridging reaches it, and it is not walked to
   above-ceiling   its ground stands over the map's maxbuildheight and cannot be built up to

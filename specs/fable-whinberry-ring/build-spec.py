@@ -113,7 +113,8 @@ def shell(storeys, beams):
 GROUND = storey(3, [{"material": STONEWALL, "thickness": 3}, {"material": LAID, "thickness": 1}], LOG_S, WIN_LATTICE)
 LOFT = storey(3, [{"material": PLANK_S, "thickness": 2}, {"material": LAID, "thickness": 1}], LOG_S, WIN_LATTICE)
 HALL = shell([GROUND, LOFT], beams=True)
-CAGE = shell([GROUND], beams=False)
+UPPER = storey(3, [{"material": PLANK_S, "thickness": 2}, {"material": LAID, "thickness": 1}], LOG_S, WIN_LATTICE)
+CAGE = shell([GROUND, LOFT, UPPER], beams=True)
 CAGE["doorway"]["door"] = "stainedGlassPane"
 
 ERRATIC = {"kind": "noise", "seed": 51, "scale": 3, "octaves": 1, "stops": [STONE, COBBLE, ANDESITE], "rise": 2}
@@ -127,11 +128,11 @@ def track(pid, pts, seed):
     return {"id": pid, "kind": "stroke", "seed": seed, "style": "solid", "claimsGround": True, "radius": 1.5, "points": pts, "pave": TRACK}
 
 DRESSING = {
-  "styles": {"oak-a": body("oak-dense-1"), "oak-b": body("oak-dense-4"), "oak-c": body("oak-dense-3")},
+  "styles": {"oak-a": body("oak-dense-1")},
   "props": [
     track("road", [[5, 58], [5, 48], [8, 42], [8, 33], [7, 28], [7, 12]], 5),
     track("cross", [[-13, 36], [0, 36], [14, 36]], 6),
-    oak("oak-1", 13, 50, "oak-a", 1), oak("oak-2", -9, 52, "oak-b", 2), oak("oak-3", -12, 33, "oak-c", 3),
+    oak("oak-1", 13, 50, "oak-a", 1),
     boulder("stone-1", -10, 20, "round", 3, 21), boulder("stone-2", 12, 24, "angular", 3, 22),
     {"id": "bracken", "kind": "flora", "seed": 9, "points": [[-45, 0], [45, 0], [45, 75], [-45, 75]],
      "spec": {"coverage": 0.4, "scale": 11, "octaves": 3, "fernShare": 0.4, "flowerShare": 0.05, "flowerScale": 16, "tallShare": 0.04}},

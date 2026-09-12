@@ -24,14 +24,14 @@
    "point": {
     "x": 0,
     "y": 26,
-    "z": -92
+    "z": -102
    },
    "protection": [
     {
      "minX": -10,
-     "minZ": -100,
+     "minZ": -110,
      "maxX": 10,
-     "maxZ": -80
+     "maxZ": -90
     }
    ],
    "yaw": 0,
@@ -41,9 +41,9 @@
    ],
    "footprint": {
     "minX": -5,
-    "minZ": -97,
+    "minZ": -107,
     "maxX": 5,
-    "maxZ": -87
+    "maxZ": -97
    },
    "iron": []
   },
@@ -58,14 +58,14 @@
    "point": {
     "x": 0,
     "y": 26,
-    "z": 92
+    "z": 102
    },
    "protection": [
     {
      "minX": -10,
-     "minZ": 80,
+     "minZ": 90,
      "maxX": 10,
-     "maxZ": 100
+     "maxZ": 110
     }
    ],
    "yaw": 180,
@@ -75,9 +75,9 @@
    ],
    "footprint": {
     "minX": -5,
-    "minZ": 87,
+    "minZ": 97,
     "maxX": 5,
-    "maxZ": 97
+    "maxZ": 107
    },
    "iron": []
   }
@@ -85,7 +85,7 @@
  "observer": {
   "point": {
    "x": 0,
-   "y": 58,
+   "y": 60,
    "z": 0
   },
   "yaw": 0
@@ -95,9 +95,9 @@
   "areas": [
    {
     "minX": -50,
-    "minZ": -10,
+    "minZ": -20,
     "maxX": 50,
-    "maxZ": 10
+    "maxZ": 20
    }
   ],
   "holes": [],
@@ -119,9 +119,9 @@
    "materials": "obsidian",
    "repairable": false,
    "anchor": {
-    "x": 0,
+    "x": 2,
     "y": 20,
-    "z": -52
+    "z": -60
    },
    "float": 4,
    "box": null
@@ -139,9 +139,9 @@
    "materials": "obsidian",
    "repairable": false,
    "anchor": {
-    "x": -1,
+    "x": -3,
     "y": 20,
-    "z": 51
+    "z": 59
    },
    "float": 4,
    "box": null
@@ -154,7 +154,7 @@
  ],
  "meta": {
   "name": "Ashcombe Delph",
-  "created": "2026-09-11",
+  "created": "2026-09-12",
   "authors": [
    {
     "name": "Fable 5.1"

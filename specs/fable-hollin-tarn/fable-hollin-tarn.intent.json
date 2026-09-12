@@ -24,14 +24,14 @@
    "point": {
     "x": 0,
     "y": 18,
-    "z": -82
+    "z": -87
    },
    "protection": [
     {
      "minX": -10,
-     "minZ": -90,
+     "minZ": -95,
      "maxX": 10,
-     "maxZ": -75
+     "maxZ": -80
     }
    ],
    "yaw": 0,
@@ -41,9 +41,9 @@
    ],
    "footprint": {
     "minX": -6,
-    "minZ": -87,
+    "minZ": -92,
     "maxX": 6,
-    "maxZ": -77
+    "maxZ": -82
    },
    "iron": []
   },
@@ -58,14 +58,14 @@
    "point": {
     "x": 0,
     "y": 18,
-    "z": 82
+    "z": 87
    },
    "protection": [
     {
      "minX": -10,
-     "minZ": 75,
+     "minZ": 80,
      "maxX": 10,
-     "maxZ": 90
+     "maxZ": 95
     }
    ],
    "yaw": 180,
@@ -75,9 +75,9 @@
    ],
    "footprint": {
     "minX": -6,
-    "minZ": 77,
+    "minZ": 82,
     "maxX": 6,
-    "maxZ": 87
+    "maxZ": 92
    },
    "iron": []
   }
@@ -119,9 +119,9 @@
    "materials": "obsidian",
    "repairable": false,
    "anchor": {
-    "x": 0,
+    "x": -10,
     "y": 12,
-    "z": -44
+    "z": -49
    },
    "float": 4,
    "box": null
@@ -139,9 +139,9 @@
    "materials": "obsidian",
    "repairable": false,
    "anchor": {
-    "x": -1,
+    "x": 9,
     "y": 12,
-    "z": 43
+    "z": 48
    },
    "float": 4,
    "box": null
@@ -154,7 +154,7 @@
  ],
  "meta": {
   "name": "Hollin Tarn",
-  "created": "2026-09-11",
+  "created": "2026-09-12",
   "authors": [
    {
     "name": "Fable 5.1"

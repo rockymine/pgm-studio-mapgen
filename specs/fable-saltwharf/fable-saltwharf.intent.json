@@ -24,14 +24,14 @@
    "point": {
     "x": -20,
     "y": 22,
-    "z": -67
+    "z": -72
    },
    "protection": [
     {
      "minX": -30,
-     "minZ": -75,
+     "minZ": -80,
      "maxX": -10,
-     "maxZ": -60
+     "maxZ": -65
     }
    ],
    "yaw": 0,
@@ -41,9 +41,9 @@
    ],
    "footprint": {
     "minX": -25,
-    "minZ": -72,
+    "minZ": -77,
     "maxX": -15,
-    "maxZ": -63
+    "maxZ": -68
    },
    "iron": []
   },
@@ -58,14 +58,14 @@
    "point": {
     "x": 20,
     "y": 22,
-    "z": 67
+    "z": 72
    },
    "protection": [
     {
      "minX": 10,
-     "minZ": 60,
+     "minZ": 65,
      "maxX": 30,
-     "maxZ": 75
+     "maxZ": 80
     }
    ],
    "yaw": 180,
@@ -75,9 +75,9 @@
    ],
    "footprint": {
     "minX": 15,
-    "minZ": 63,
+    "minZ": 68,
     "maxX": 25,
-    "maxZ": 72
+    "maxZ": 77
    },
    "iron": []
   }
@@ -95,9 +95,9 @@
   "areas": [
    {
     "minX": -50,
-    "minZ": -10,
+    "minZ": -20,
     "maxX": 50,
-    "maxZ": 10
+    "maxZ": 20
    }
   ],
   "holes": [],
@@ -105,7 +105,48 @@
  },
  "waterLanes": null,
  "wools": [],
- "destroyables": null,
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Saltwharf Beacon",
+   "style": "pillar-3",
+   "materials": "ender stone",
+   "repairable": false,
+   "anchor": {
+    "x": 29,
+    "y": 22,
+    "z": -56
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Saltwharf Beacon",
+   "style": "pillar-3",
+   "materials": "ender stone",
+   "repairable": false,
+   "anchor": {
+    "x": -30,
+    "y": 22,
+    "z": 55
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
  "cores": [
   {
    "layer": null,
@@ -119,7 +160,7 @@
    "anchor": {
     "x": -22,
     "y": 12,
-    "z": -22
+    "z": -27
    },
    "lava": 3,
    "lavaHeight": 3,
@@ -141,7 +182,7 @@
    "anchor": {
     "x": 21,
     "y": 12,
-    "z": 21
+    "z": 26
    },
    "lava": 3,
    "lavaHeight": 3,
@@ -154,6 +195,7 @@
  ],
  "modes": null,
  "gamemodes": [
+  "dtm",
   "dtc"
  ],
  "meta": {

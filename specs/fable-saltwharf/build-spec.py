@@ -47,17 +47,19 @@ plan = {
   "plan": 2, "meta": {"name": "Saltwharf"},
   "globals": {"cell": 5, "symmetry": "rot_180", "maxPlayers": 12, "surface": 12, "observerY": 56},
   "pieces": [
-    {"id": "quay",   "role": "piece", "rect": [-10, -8, 14, 6], "surface": 12},
-    {"id": "strand", "role": "piece", "rect": [4, -8, 6, 6],    "surface": 13},
-    {"id": "head-w", "role": "piece", "rect": [-10, -15, 4, 7], "surface": 22},
-    {"id": "head-m", "role": "piece", "rect": [-6, -12, 4, 4],  "surface": 22},
-    {"id": "spawn",  "role": "spawn", "rect": [-6, -15, 4, 3],  "surface": 22},
-    {"id": "head-e", "role": "piece", "rect": [-2, -15, 12, 7], "surface": 22},
+    {"id": "quay",   "role": "piece", "rect": [-10, -9, 14, 5], "surface": 12},
+    {"id": "strand", "role": "piece", "rect": [4, -9, 6, 4],    "surface": 10},
+    {"id": "head-w", "role": "piece", "rect": [-10, -16, 4, 7], "surface": 22},
+    {"id": "head-m", "role": "piece", "rect": [-6, -13, 4, 4],  "surface": 22},
+    {"id": "spawn",  "role": "spawn", "rect": [-6, -16, 4, 3],  "surface": 22},
+    {"id": "head-e", "role": "piece", "rect": [-2, -16, 12, 7], "surface": 22},
   ],
-  "zones": [{"id": "sound", "rect": [-10, -2, 20, 4], "holes": []}],
+  "zones": [{"id": "sound", "rect": [-10, -4, 20, 8], "holes": []}],
   "placements": {
     "spawns": [{"id": "spawn-1", "piece": "spawn", "at": [10, 8], "facing": "back", "footprint": [5, 3, 10, 9]}],
-    "wools": [], "iron": [], "destroyables": [],
+    "wools": [], "iron": [],
+    "destroyables": [{"id": "destroyable-1", "piece": "head-e", "at": [39, 24], "style": "pillar-3",
+                      "materials": "ender stone", "float": 4, "name": "Saltwharf Beacon"}],
     "cores": [{"id": "core-1", "piece": "quay", "at": [28, 18], "lava": 3, "lavaHeight": 3, "float": 6, "leak": 5, "openTop": False}]},
   "walls": [], "boxes": []}
 
@@ -67,19 +69,29 @@ def flight(sid, x0, x1):
     return {"id": sid, "type": "polygon", "operation": "add", "override": True, "keepClear": True,
             "floor": 0, "base_height": 22, "theme": "stair", "height_mode": "level", "skirt": 0,
             "relief_scope": "exclude",
-            "vertices": [[x0, -40], [x1, -40], [x1, -60], [x0, -60]], "anchor_heights": [12, 12, 22, 22]}
+            "vertices": [[x0, -45], [x1, -45], [x1, -65], [x0, -65]], "anchor_heights": [12, 12, 22, 22]}
 FLIGHTS = [flight("flight-w", -34, -30), flight("flight-e", 14, 18)]
+# the core stands on a stepped plinth of the quay's own stone; the lava leaks off its sides all the same
+def plate(sid, half, top):
+    return {"id": sid, "type": "rectangle", "operation": "add", "override": True, "keepClear": True,
+            "min_x": -22 - half, "min_z": -27 - half, "max_x": -22 + half + 1, "max_z": -27 + half + 1,
+            "floor": 0, "base_height": top, "height_mode": "level", "skirt": 0, "relief_scope": "exclude", "theme": "stair"}
+PLINTH = [plate("plinth-1", 4, 13), plate("plinth-2", 2, 15), plate("plinth-3", 1, 17)]
+# a pier out into the sound, so the sea wall is not one line
+PIER = {"id": "pier", "type": "rectangle", "operation": "add", "override": True, "keepClear": False,
+        "min_x": -42, "min_z": -20, "max_x": -35, "max_z": -13, "floor": 0, "base_height": 12,
+        "height_mode": "level", "skirt": 0, "relief_scope": "exclude", "theme": "quay"}
 
 RELIEF = {"team": {
   "base": 22, "reach": 0, "step": 1, "landform": "rolling",
   "grain": {"amplitude": 0.7, "scale": 11, "seed": 3},
   "marks": [
-    {"id": "strand-floor", "kind": "area", "h": 12, "bevel": 3, "ring": [[20, -10], [50, -10], [50, -24], [36, -27], [20, -24]]},
+    {"id": "strand-floor", "kind": "area", "h": 9, "bevel": 3, "ring": [[20, -25], [50, -25], [50, -32], [36, -35], [20, -32]]},
     {"id": "brow", "kind": "area", "h": 22, "bevel": 4,
-     "ring": [[-50, -42], [-20, -42], [-10, -44], [10, -44], [22, -46], [50, -46], [50, -75], [-50, -75]]},
+     "ring": [[-50, -47], [-20, -47], [-10, -49], [10, -49], [22, -50], [50, -50], [50, -80], [-50, -80]]},
   ],
   "pushes": [
-    {"id": "knoll-e", "ring": [[28, -52], [40, -50], [48, -56], [46, -66], [36, -70], [28, -64]],
+    {"id": "knoll-e", "ring": [[22, -48], [32, -46], [40, -52], [38, -62], [28, -66], [22, -60]],
      "amount": 4, "falloff": 8, "roughness": 0.3, "crown": 3, "seed": 4},
   ]}}
 
@@ -106,9 +118,16 @@ def shell(storeys, beams):
       "doorway": {"door": "air", "head": {"form": "none", "block": 53, "fill": "upperSlab", "fillBlock": 126, "fillData": 0}, "width": 2, "height": 3}}
 GROUND = storey(3, [{"material": STONEWALL, "thickness": 3}, {"material": LAID, "thickness": 1}], LOG_S, WIN_LATTICE)
 LOFT = storey(3, [{"material": PLANK_S, "thickness": 2}, {"material": LAID, "thickness": 1}], LOG_S, WIN_PANE)
-STORE = shell([storey(4, [{"material": STONEWALL, "thickness": 4}, {"material": LAID, "thickness": 1}], LOG_S, WIN_LATTICE)], beams=False)
 HALL = shell([GROUND, LOFT], beams=True)
-WAREHOUSE = shell([GROUND, LOFT], beams=True)
+def warehouse():
+    w = shell([storey(4, [{"material": STONEWALL, "thickness": 5}], LOG_S, WIN_LATTICE),
+               storey(3, [{"material": STONEWALL, "thickness": 4}], LOG_S, WIN_LATTICE)], beams=False)
+    w["roof"] = {"form": "flat", "pitch": 1, "slab": -1, "slabData": 0, "overhang": 0, "ridgeCap": False, "hole": False,
+                 "body": PLANK_D, "verge": SBRICK, "gable": SBRICK, "gableWindows": WIN_NONE}
+    w["post"] = SBRICK_CH
+    for st in w["storeys"]: st["post"] = SBRICK_CH
+    return w
+WAREHOUSE = warehouse()
 
 TREES = json.load(open(f"{os.path.dirname(HERE)}/fable-millrace-revamp/trees.json"))
 def body(name): return {"kind": "tree", "form": "copied", "body": TREES[name]["body"]}
@@ -126,26 +145,34 @@ DRESSING = {
   "props": [
     # the road from the spawn door to the head of the east flight
     {"id": "road", "kind": "stroke", "seed": 5, "style": "solid", "claimsGround": True, "radius": 1.5,
-     "points": [[-20, -62], [-24, -56], [-32, -56], [-32, -61]], "pave": ROAD},
+     "points": [[-20, -67], [-27, -67], [-32, -66]], "pave": ROAD},
+    {"id": "road-east", "kind": "stroke", "seed": 7, "style": "solid", "claimsGround": True, "radius": 1.5,
+     "points": [[-18, -67], [-8, -62], [6, -60], [16, -66]], "pave": ROAD},
+    {"id": "road-strand", "kind": "stroke", "seed": 8, "style": "solid", "claimsGround": True, "radius": 1.5,
+     "points": [[18, -64], [28, -58], [38, -52], [42, -44], [40, -36], [36, -30]], "pave": ROAD},
     # the strand's edge against the grass, chopped up so the sand does not stop on a line
     {"id": "tide-line", "kind": "stroke", "seed": 6, "style": "worn", "coverage": 0.55, "claimsGround": False, "radius": 3,
-     "points": [[21, -25], [30, -28], [40, -30], [50, -29]], "pave": SHORE_MIX},
-    house("warehouse-w", -46, -38, -38, -30, WAREHOUSE, "posX", 11),
-    house("store-e", 4, -36, 12, -30, STORE, "negX", 12),
-    tree("oak-1", -42, -52, "oak-a", 1), tree("oak-2", 42, -70, "oak-b", 2), tree("oak-3", 8, -66, "oak-b", 3),
-    boulder("stone-1", 40, -18, "round", 4, 21), boulder("stone-2", 30, -34, "angular", 3, 22),
-    boulder("stone-3", 36, -60, "outcrop", 5, 23),
+     "points": [[21, -33], [30, -35], [40, -36], [50, -34]], "pave": SHORE_MIX},
+    {"id": "warehouse-w", "kind": "house", "seed": 11, "layer": "ground", "front": "posX", "style": WAREHOUSE,
+     "wings": [{"corners": [[-48, -43], [-41, -35]], "spec": {"ridge": "AlongZ"}},
+               {"corners": [[-40, -41], [-35, -37]], "spec": {"storeysHigh": 1}}]},
+    {"id": "store-e", "kind": "house", "seed": 12, "layer": "ground", "front": "negX", "style": WAREHOUSE,
+     "wings": [{"corners": [[6, -43], [13, -35]], "spec": {"ridge": "AlongZ"}},
+               {"corners": [[14, -41], [18, -37]], "spec": {"storeysHigh": 1}}]},
+    tree("oak-1", -42, -56, "oak-a", 1), tree("oak-2", 20, -76, "oak-b", 2), tree("oak-3", -4, -72, "oak-b", 3),
+    boulder("stone-1", 44, -28, "round", 4, 21), boulder("stone-2", 27, -40, "angular", 3, 22),
     {"id": "sward", "kind": "flora", "seed": 9, "points": [[-50, -75], [50, -75], [50, -10], [-50, -10]],
-     "spec": {"coverage": 0.3, "scale": 12, "octaves": 3, "fernShare": 0.1, "flowerShare": 0.08, "flowerScale": 16, "tallShare": 0.03}},
+     "spec": {"coverage": 0.45, "scale": 12, "octaves": 3, "fernShare": 0.25, "flowerShare": 0.08, "flowerScale": 16, "tallShare": 0.04}},
   ]}
 
 finish = {
   "authors": ["Fable 5.1"], "created": "2026-09-11",
   "themes": THEMES, "mapTheme": "headland",
-  "themeById": {"head-e-12": "quay", "head-e-13": "strand"},
+  "themeById": {"head-e-12": "quay", "head-e-10": "strand"},
   "shapePropsById": {"head-e-12": {"relief_scope": "exclude"}},
+  "biome": {"kind": "noise", "seed": 5, "scale": 40, "octaves": 2, "stops": [1, 4, 27]},
   "roomStyles": {"spawn": HALL},
-  "addShapes": FLIGHTS,
+  "addShapes": FLIGHTS + PLINTH + [PIER],
   "relief": RELIEF,
   "dressing": DRESSING,
 }

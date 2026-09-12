@@ -8,8 +8,8 @@
   "bbox": {
    "min_x": -55,
    "max_x": 55,
-   "min_z": -95,
-   "max_z": 95
+   "min_z": -100,
+   "max_z": 100
   }
  },
  "layers": [
@@ -38,11 +38,11 @@
       "vertices": [
        [
         -50,
-        -75
+        -80
        ],
        [
         50,
-        -75
+        -80
        ],
        [
         50,
@@ -85,20 +85,28 @@
       "radius": null,
       "vertices": [
        [
-        -50,
-        -90
+        -30,
+        -95
+       ],
+       [
+        30,
+        -95
        ],
        [
         50,
-        -90
+        -85
        ],
        [
         50,
-        -75
+        -80
        ],
        [
         -50,
-        -75
+        -80
+       ],
+       [
+        -50,
+        -85
        ]
       ],
       "controls": null,
@@ -125,9 +133,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -10,
-      "min_z": -90,
+      "min_z": -95,
       "max_x": 10,
-      "max_z": -75,
+      "max_z": -80,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -159,9 +167,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -6,
-      "min_z": -87,
+      "min_z": -92,
       "max_x": 6,
-      "max_z": -77,
+      "max_z": -82,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -190,9 +198,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -10,
-      "min_z": 75,
+      "min_z": 80,
       "max_x": 10,
-      "max_z": 90,
+      "max_z": 95,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -221,9 +229,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -6,
-      "min_z": 77,
+      "min_z": 82,
       "max_x": 6,
-      "max_z": 87,
+      "max_z": 92,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -304,6 +312,77 @@
         -31
        ]
       ]
+     },
+     {
+      "id": "brook",
+      "type": "polyline",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 11,
+      "height_mode": "level",
+      "skirt": 0,
+      "theme": "tarn",
+      "radius": 1.5,
+      "stroke_edge": "rough",
+      "stroke_seed": 3,
+      "vertices": [
+       [
+        -16,
+        -25
+       ],
+       [
+        -25,
+        -21
+       ],
+       [
+        -34,
+        -17
+       ],
+       [
+        -42,
+        -13
+       ],
+       [
+        -50,
+        -11
+       ]
+      ]
+     },
+     {
+      "id": "crag",
+      "type": "polygon",
+      "operation": "add",
+      "theme": "snow",
+      "floor": 0,
+      "base_height": 20,
+      "height_mode": "level",
+      "skirt": 6,
+      "vertices": [
+       [
+        24,
+        -12
+       ],
+       [
+        36,
+        -11
+       ],
+       [
+        42,
+        -17
+       ],
+       [
+        40,
+        -25
+       ],
+       [
+        30,
+        -27
+       ],
+       [
+        22,
+        -21
+       ]
+      ]
      }
     ],
     "groups": [
@@ -314,7 +393,9 @@
       "shapeIds": [
        "dale-12",
        "dale-18",
-       "ice-sheet"
+       "ice-sheet",
+       "brook",
+       "crag"
       ]
      }
     ]
@@ -7708,19 +7789,82 @@
     "points": [
      [
       0,
-      -70
-     ],
-     [
-      -2,
-      -62
+      -78
      ],
      [
       -4,
-      -54
+      -69
      ],
      [
-      -3,
-      -50
+      -14,
+      -56
+     ],
+     [
+      -24,
+      -46
+     ],
+     [
+      -27,
+      -34
+     ],
+     [
+      -23,
+      -24
+     ],
+     [
+      -19,
+      -16
+     ],
+     [
+      -17,
+      -11
+     ]
+    ],
+    "pave": {
+     "kind": "cell",
+     "seed": 21,
+     "cellSize": 3,
+     "jitter": 40,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    }
+   },
+   {
+    "id": "track-hut",
+    "kind": "stroke",
+    "seed": 6,
+    "style": "solid",
+    "claimsGround": true,
+    "radius": 1.5,
+    "points": [
+     [
+      -18,
+      -15
+     ],
+     [
+      -15,
+      -15
+     ],
+     [
+      -13,
+      -15
      ]
     ],
     "pave": {
@@ -7758,17 +7902,17 @@
      {
       "corners": [
        [
-        -30,
-        -22
+        -12,
+        -17
        ],
        [
-        -24,
-        -17
+        -6,
+        -12
        ]
       ]
      }
     ],
-    "front": "posX",
+    "front": "negX",
     "style": {
      "foundation": {
       "plate": {
@@ -7968,7 +8112,7 @@
     "seed": 1,
     "layer": "ground",
     "x": -40,
-    "z": -60,
+    "z": -65,
     "style": "fir-t1"
    },
    {
@@ -8013,7 +8157,7 @@
     "seed": 6,
     "layer": "ground",
     "x": -26,
-    "z": -62,
+    "z": -67,
     "style": "fir-s2"
    },
    {
@@ -8022,7 +8166,7 @@
     "seed": 7,
     "layer": "ground",
     "x": 40,
-    "z": -60,
+    "z": -65,
     "style": "fir-t2"
    },
    {
@@ -8067,7 +8211,7 @@
     "seed": 12,
     "layer": "ground",
     "x": 26,
-    "z": -62,
+    "z": -67,
     "style": "fir-t2"
    },
    {
@@ -8075,8 +8219,8 @@
     "kind": "tree",
     "seed": 13,
     "layer": "ground",
-    "x": -44,
-    "z": -84,
+    "x": -36,
+    "z": -87,
     "style": "fir-s1"
    },
    {
@@ -8084,8 +8228,8 @@
     "kind": "tree",
     "seed": 14,
     "layer": "ground",
-    "x": 44,
-    "z": -84,
+    "x": 36,
+    "z": -87,
     "style": "fir-s2"
    },
    {
@@ -8093,8 +8237,8 @@
     "kind": "boulder",
     "seed": 21,
     "layer": "ground",
-    "x": -20,
-    "z": -36,
+    "x": -26,
+    "z": -34,
     "form": "round",
     "size": 3,
     "mossy": false,
@@ -8129,7 +8273,7 @@
     "seed": 22,
     "layer": "ground",
     "x": 22,
-    "z": -60,
+    "z": -65,
     "form": "angular",
     "size": 4,
     "mossy": false,
@@ -8163,8 +8307,8 @@
     "kind": "boulder",
     "seed": 23,
     "layer": "ground",
-    "x": 16,
-    "z": -17,
+    "x": 12,
+    "z": -20,
     "form": "round",
     "size": 3,
     "mossy": false,
@@ -8200,11 +8344,11 @@
     "points": [
      [
       -50,
-      -90
+      -95
      ],
      [
       50,
-      -90
+      -95
      ],
      [
       50,
@@ -8307,44 +8451,44 @@
      "bevel": 4,
      "ring": [
       [
-       18,
-       -46
+       8,
+       -49
       ],
       [
-       13,
-       -41
-      ],
-      [
-       4,
-       -39
-      ],
-      [
-       -5,
-       -38
-      ],
-      [
-       -14,
-       -41
-      ],
-      [
-       -14,
-       -46
-      ],
-      [
-       -13,
-       -51
+       3,
+       -44
       ],
       [
        -6,
-       -55
+       -42
       ],
       [
-       5,
+       -15,
+       -41
+      ],
+      [
+       -24,
+       -44
+      ],
+      [
+       -24,
+       -49
+      ],
+      [
+       -23,
+       -54
+      ],
+      [
+       -16,
+       -58
+      ],
+      [
+       -5,
+       -56
+      ],
+      [
+       2,
        -53
-      ],
-      [
-       12,
-       -50
       ]
      ]
     },
@@ -8356,35 +8500,35 @@
      "ring": [
       [
        -50,
-       -68
+       -73
       ],
       [
        -30,
-       -70
+       -75
       ],
       [
        -10,
-       -67
+       -72
       ],
       [
        10,
-       -67
+       -72
       ],
       [
        30,
-       -70
+       -75
       ],
       [
        50,
-       -68
+       -73
       ],
       [
        50,
-       -90
+       -95
       ],
       [
        -50,
-       -90
+       -95
       ]
      ]
     }
@@ -8407,15 +8551,15 @@
       ],
       [
        -28,
-       -56
+       -60
       ],
       [
        -38,
-       -66
+       -71
       ],
       [
        -50,
-       -64
+       -69
       ]
      ],
      "amount": 5,
@@ -8441,15 +8585,15 @@
       ],
       [
        28,
-       -56
+       -60
       ],
       [
        38,
-       -66
+       -71
       ],
       [
        50,
-       -64
+       -69
       ]
      ],
      "amount": 5,

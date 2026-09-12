@@ -3,7 +3,7 @@
     <version>1.0.0</version>
     <gamemode>dtm</gamemode>
     <objective>Destroy the enemy's monument!</objective>
-    <created>2026-09-11</created>
+    <created>2026-09-12</created>
     <phase>development</phase>
     <include id="gapple-kill-reward"/>
     <authors>
@@ -90,13 +90,13 @@
         </not>
     </filters>
     <regions>
-        <point id="blue-spawn-point">0,25,92</point>
-        <point id="red-spawn-point">0,25,-92</point>
-        <point id="observer-spawn">0,59,0</point>
-        <rectangle id="blue-spawn" min="-10,80" max="10,100"/>
-        <rectangle id="red-spawn" min="-10,-100" max="10,-80"/>
-        <cuboid id="delph-monument-region" min="0,24,-52" max="1,27,-51"/>
-        <cuboid id="delph-monument-2-region" min="-1,24,51" max="0,27,52"/>
+        <point id="blue-spawn-point">0,26,102</point>
+        <point id="red-spawn-point">0,26,-102</point>
+        <point id="observer-spawn">0,61,0</point>
+        <rectangle id="blue-spawn" min="-10,90" max="10,110"/>
+        <rectangle id="red-spawn" min="-10,-110" max="10,-90"/>
+        <cuboid id="delph-monument-region" min="2,24,-60" max="3,27,-59"/>
+        <cuboid id="delph-monument-2-region" min="-3,24,59" max="-2,27,60"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -105,7 +105,7 @@
             <region id="spawns"/>
         </negative>
         <negative id="not-build-area">
-            <rectangle id="build-area-1" min="-50,-10" max="50,10"/>
+            <rectangle id="build-area-1" min="-50,-20" max="50,20"/>
         </negative>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
@@ -165,5 +165,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>56</maxbuildheight>
+    <maxbuildheight>57</maxbuildheight>
 </map>
