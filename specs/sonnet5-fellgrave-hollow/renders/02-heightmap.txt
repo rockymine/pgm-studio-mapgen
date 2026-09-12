@@ -1,0 +1,145 @@
+HEIGHTMAP  1 char = 2x2 blocks (the top-left block of each)  x -62..60 across, z -140..138 down
+KEY  char = ground height above y5 in bands of 2 block(s): 0 = y5..6, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
+     -6   -5   -4   -3   -2   -1    0    1    2    3    4    5    6
+     20864208642086420864208642086420246802468024680246802468024680
+-140                           3333333333                          
+-138                           3333333333                          
+-136                           3333333333                          
+-134                           3333333333                          
+-132                           3333333333                          
+-130                           3HHHHHHHH3                          
+-128                           3HHHHHHHH3                          
+-126                           3HHHHHHHH3                          
+-124                           3HHHHHHHH3                          
+-122                           3HHHHHHHH3                          
+-120                           3HHH33HHH3                          
+-118                           3333333333                          
+-116                           3333333333                          
+-114                           3333333333                          
+-112                           3333333333                          
+-110       nnljhgfdc97532333333333333333333333322356acfffhill      
+-108       nnljhgfec886323333333333333333333333224777ceffgikn      
+-106       nnljhgfea88722222222222222222222222222348acffghjll      
+-104       nnljhgfeb87622222222222222222222222222237bdffhiklj      
+-102       nnljhgfca765322222222222222222222222222259cffgijkk      
+-100       nmljhgec9866422222222222222222222222222248cffhijkl      
+ -98       nmljhged9676222222222222222222222222222249dffhhhjm      
+ -96       nnljhgfea754222222222222222222222222222269defhiimn      
+ -94       nnljhgffc75222222222222222222222222222234adffgiiln      
+ -92       nnljhgffd742222222222222222222222222222239dffghkln      
+ -90       nmljhgfec532222222222222222222222222222238cffgikmm      
+ -88       nmljhgfea632222222222222222222222222222349dffgiklk      
+ -86       nmljhgfeb632222222222222222222222222222369cefgikji      
+ -84       nmliggfed952222222222333333332222222222378dffgikig      
+ -82       nmkihgffeb73222222233333333333322222223488bdfgijhgffeb74
+ -80       nlkjhgfffc73222222333333333333332222223588aefgijhgffec95
+ -78       nmljhgfedb64222223333333333333333222223478cefgijhgfeec85
+ -76       nmljhgeda77322222333333333333333332222235adffghihgfeec95
+ -74       nmljhfda7543222223333333333333333322222248cffghhhgffda86
+ -72       nmljhgd86422222233333332HHH333333322222257dffghigffffb85
+ -70       nmljhfd97642222233333332H!H333333322222247cffghhggffda85
+ -68       nmlihfeda642222223333333HHH333333322222238cffghiggfdc863
+ -66       nmkjgffea732222223333333333333333322222236cffgijhg      
+ -64       nmkhhfffb5322222233333333333333332222222369dfgijih      
+ -62       nmkjhffed722222222233333333333332222222248adfgikjj      
+ -60       nmljhffec952222222223333333333322222222237defgiklk      
+ -58       nmkihffeb94222222222223333332222222222235acdfgiklm      
+ -56       nmkhgffeb75222222222222222222222222222237aadfgikln      
+ -54       nmjihffdb752222222222222222222222222222358acfgiklm      
+ -52       mljihfeda7532222222222222222222222222224569cfgiklm      
+ -50       mmjigfeb86432222222222222222222222222224588cegiklm      
+ -48       mmjgffd874432222222222222222222222222224779bfgiklm      
+ -46       mmkhfdc6534322222222222222222222222222367aacfgiklm      
+ -44       mmjieda8444422222222222222222222222222348abcfgiklm      
+ -42       mmkigec97533221111111111111111111111222378acfgijlm      
+ -40       mmkigfdc95432211111111111111111111111222269cfghjlm      
+ -38       mmkigfeeb6541111111111111111111111111111359ceghjlm      
+ -36       mmkigfeec854211111111111111111111111111136acefhjlm      
+ -34       mmkigfeeb7642111111111111111111111111111358defhjlm      
+ -32       mmkigfec97432111111111111111111111111111248defhjlm      
+ -30       mmkigfda97632111111111111111111111111111469befhjlm      
+ -28       mlkigfdb995211111111111111111111111111136789dfhjlm      
+ -26       mmkigfeb75541111111111111111111111111112357adfhjlm      
+ -24       llkigedc85642111111111111111111111111111347aefhjlm      
+ -22       kkkigfeca853211111111111111111111111111138beefhjlm      
+ -20       kkjigfeec88311111111111111111111111111114aeeefhjlm      
+ -18       jjjhgfeeb98411111111111111111111111111115beeefhjlm      
+ -16       lkkigfedba84211111111111111111111111111357deefhjlm      
+ -14                                                               
+ -12                                                               
+ -10                                                               
+  -8                                                               
+  -6                                                               
+  -4                                                               
+  -2                                                               
+   0                                                               
+   2                                                               
+   4                                                               
+   6                                                               
+   8                                                               
+  10                                                               
+  12                                                               
+  14       mmkigfeea64111111111111111111111111111258aceeghjkl      
+  16       mmkigfeec73111111111111111111111111111369bceeghijk      
+  18       mmkigfeed82111111111111111111111111111268adeeghijk      
+  20       mmkigfeec71111111111111111111111111111257aceefhjkk      
+  22       mmkigfdb8421111111111111111111111111113567bdefhjkk      
+  24       mmkigfb86421111111111111111111111111113556adefhjlm      
+  26       mmkigeb875421111111111111111111111111124689cefhjlm      
+  28       mmkigec98631111111111111111111111111112479aceghjlm      
+  30       mmkigeda6321111111111111111111111111113468acefhjlm      
+  32       mmkigfeb6311111111111111111111111111113468ceeghjlm      
+  34       mlkigfdb7411111111111111111111111111113569defghjlm      
+  36       mmkigfdb8421111111111111111111111111112569defghjlm      
+  38       mmkigfdb7421111111111111111111111111212458cefghjlm      
+  40       mmkihfeb8532221111111111111111111111222346acefhjlm      
+  42       mmkjhfeba95322111111111111111111111122244579degilm      
+  44       nmkjhfebb96422222222222222222222222222344459cdgilm      
+  46       nmkjhfeb98642222222222222222222222222224446aeegilm      
+  48       nmljhfda86532222222222222222222222222224468befgilm      
+  50       nmljhfda8642222222222222222222222222222468bdfghjkm      
+  52       nmljhfda8542222222222222222222222222222469cefgijkm      
+  54       nmljhfeba742222222222222222222222222222469cefghilm      
+  56       mmljhfecb842222222222222222222222222222369defghiln      
+  58       lmljhfedb63222222222233333333322222222237adefgikln      
+  60       jkljhffda62222222223333333333332222222226bdffgikln      
+  62       hijjhfec8522222222333333333333332222222249effghjln      
+  64       ghijhffd8522222223333333333333333222222248dffghjln      
+  66 236adefghihffe9522222223333333333333333322222259cefghkmn      
+  68 358bdffghihffea622222233333332!H1333333322222357adfgikmn      
+  70 479cfffghihgffa632222233333332HH13333333222222467afgikmn      
+  72 479cfffghhggffa6322222333333332223333333222222457bfgikmn      
+  74 47aceffghigffeb732222223333333333333333322222467adfgikmn      
+  76 37adeffgijhffeb84322222333333333333333332222358bdefgikmn      
+  78 37adeffgijhgeda86432222233333333333333322222249deffgikln      
+  80 36adfffgijhgec98643222222333333333333322222225aefffgikln      
+  82       fhijhgfda85322222222333333333322222222248ceffghjmn      
+  84       hhjjhgfeb84222222222223333332222222222236adffgikmn      
+  86       ijkjhgfeb742222222222222222222222222222248cffgikmn      
+  88       klljhgfeb632222222222222222222222222222238dffgikmn      
+  90       mmkjhgfeb62222222222222222222222222222224afffgikmn      
+  92       nmkihgfeb63222222222222222222222222222235aeffgikmn      
+  94       nmkihgfec842222222222222222222222222222469dffgikmn      
+  96       nmjihgfeb742222222222222222222222222223568cefgikmn      
+  98       mkjihgfea632222222222222222222222222224778adfgikln      
+ 100       lkjihgfea632222222222222222222222222225679bdfgikmn      
+ 102       lkljhgfeb942222222222222222222222222224668cefgikmn      
+ 104       llljhgfeb953222222222222222222222222224779dffhikmn      
+ 106       mljhgffd987432222222222222222222222222488acffhikmn      
+ 108       mljhgffea77532333333333333333333333322478adeghikmn      
+ 110                           3333333333                          
+ 112                           3333333333                          
+ 114                           3333333333                          
+ 116                           3333333333                          
+ 118                           3HHH333HH3                          
+ 120                           3HHH33HHH3                          
+ 122                           3HHHHHHHH3                          
+ 124                           3HHHHHHHH3                          
+ 126                           3HHHHHHHH3                          
+ 128                           3HHHHHHHH3                          
+ 130                           3333333333                          
+ 132                           3333333333                          
+ 134                           3333333333                          
+ 136                           3333333333                          
+ 138                           3333333333                          
+low y5, high y52, range 47

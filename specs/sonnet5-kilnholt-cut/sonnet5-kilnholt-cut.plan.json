@@ -1,0 +1,87 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Kilnholt Cut"
+ },
+ "globals": {
+  "cell": 2,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 16,
+  "observerY": 52
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -5,
+    -47,
+    10,
+    10
+   ],
+   "surface": 16
+  },
+  {
+   "id": "cut",
+   "role": "piece",
+   "rect": [
+    -20,
+    -37,
+    40,
+    29
+   ],
+   "surface": 16
+  }
+ ],
+ "zones": [
+  {
+   "id": "the-gap",
+   "rect": [
+    -20,
+    -8,
+    40,
+    16
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     10,
+     10
+    ],
+    "facing": "back"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "piece": "",
+    "at": [
+     -19,
+     -50
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Kilnholt's Deep Mark"
+   },
+   {
+    "id": "destroyable-2",
+    "piece": "",
+    "at": [
+     19,
+     -50
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Kilnholt's Shallow Mark"
+   }
+  ]
+ }
+}

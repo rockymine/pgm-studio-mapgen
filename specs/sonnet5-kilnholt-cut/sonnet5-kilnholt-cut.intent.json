@@ -1,0 +1,195 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 16,
+    "z": -84
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -94,
+     "maxX": 10,
+     "maxZ": -74
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": null,
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 16,
+    "z": 84
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 74,
+     "maxX": 10,
+     "maxZ": 94
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": null,
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 52,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -40,
+    "minZ": -16,
+    "maxX": 40,
+    "maxZ": 16
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Kilnholt's Deep Mark",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -19,
+    "y": 16,
+    "z": -50
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Kilnholt's Shallow Mark",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 19,
+    "y": 16,
+    "z": -50
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Kilnholt's Deep Mark",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 18,
+    "y": 16,
+    "z": 49
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-2",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Kilnholt's Shallow Mark",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -20,
+    "y": 16,
+    "z": 49
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Kilnholt Cut",
+  "created": "2026-09-11",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}

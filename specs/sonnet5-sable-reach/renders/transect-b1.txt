@@ -1,0 +1,61 @@
+## b1 (boulder) along x
+TRANSECT 25 stations from (60, 38) to (84, 38), every 1
+  station        ground  surface  water  top  standing            step
+  (   60,    38)                                                    void
+  (   61,    38)                                                    void
+  (   62,    38)                                                    void
+  (   63,    38)                                                    void
+  (   64,    38)                                                    void
+  (   65,    38)       7        7            7                      
+  (   66,    38)       7        7            7                      
+  (   67,    38)       7        7            7                      
+  (   68,    38)       7        7            7                      
+  (   69,    38)       7        7           10  boulder b1          
+  (   70,    38)       7        7           12  boulder b1          
+  (   71,    38)       7        7           12  boulder b1          
+  (   72,    38)       7        7           12  boulder b1          
+  (   73,    38)       7        7           12  boulder b1          
+  (   74,    38)       7        7           12  boulder b1          
+  (   75,    38)       7        7           11  boulder b1          
+  (   76,    38)       7        7            7                      
+  (   77,    38)       7        7            7                      
+  (   78,    38)       7        7            7                      
+  (   79,    38)       7        7            7                      
+  (   80,    38)       7        7            7                      
+  (   81,    38)       7        7            7                      
+  (   82,    38)       7        7            7                      
+  (   83,    38)       7        7            7                      
+  (   84,    38)       7        7            7                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder b1 at (69, 37)
+
+## b1 (boulder) along z
+TRANSECT 25 stations from (72, 26) to (72, 50), every 1
+  station        ground  surface  water  top  standing            step
+  (   72,    26)                                                    void
+  (   72,    27)                                                    void
+  (   72,    28)                                                    void
+  (   72,    29)                                                    void
+  (   72,    30)       7        7            7                      
+  (   72,    31)       7        7            7                      
+  (   72,    32)       7        7            7                      
+  (   72,    33)       7        7            7                      
+  (   72,    34)       7        7            7                      
+  (   72,    35)       7        7           10  boulder b1          
+  (   72,    36)       7        7           12  boulder b1          
+  (   72,    37)       7        7           12  boulder b1          
+  (   72,    38)       7        7           12  boulder b1          
+  (   72,    39)       7        7           12  boulder b1          
+  (   72,    40)       7        7           11  boulder b1          
+  (   72,    41)       7        7           10  boulder b1          
+  (   72,    42)       7        7            7                      
+  (   72,    43)       7        7            7                      
+  (   72,    44)       7        7            7                      
+  (   72,    45)       7        7            7  stroke path-skerry  
+  (   72,    46)       7        7            7                      
+  (   72,    47)       7        7            7  stroke path-skerry  
+  (   72,    48)       7        7            7  stroke path-skerry  
+  (   72,    49)       7        7            7                      
+  (   72,    50)       7        7            7                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder b1 at (71, 35), stroke path-skerry at (70, 45)

@@ -1,0 +1,85 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Talltimber Yard"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 10,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "spawn-0",
+   "role": "spawn",
+   "rect": [
+    -3,
+    -23,
+    6,
+    4
+   ]
+  },
+  {
+   "id": "yard-0",
+   "role": "piece",
+   "rect": [
+    -9,
+    -19,
+    18,
+    16
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "clearing",
+   "rect": [
+    -9,
+    -3,
+    18,
+    6
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-0",
+    "at": [
+     15,
+     10
+    ],
+    "facing": "back",
+    "footprint": [
+     5,
+     3,
+     20,
+     14
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [],
+  "destroyables": [],
+  "cores": [
+   {
+    "id": "core-0",
+    "piece": "yard-0",
+    "at": [
+     62,
+     33
+    ],
+    "lava": 3,
+    "lavaHeight": 3,
+    "float": 5,
+    "leak": 6,
+    "name": "Ledger"
+   }
+  ]
+ },
+ "walls": [],
+ "boxes": []
+}

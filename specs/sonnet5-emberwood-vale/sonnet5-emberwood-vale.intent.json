@@ -1,0 +1,298 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 10,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-red-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -20,
+    "y": 9,
+    "z": -80
+   },
+   "protection": [
+    {
+     "minX": -30,
+     "minZ": -95,
+     "maxX": -10,
+     "maxZ": -65
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+x",
+    "+z"
+   ],
+   "footprint": {
+    "minX": -27,
+    "minZ": -89,
+    "maxX": -13,
+    "maxZ": -71
+   },
+   "iron": [
+    {
+     "x": -23.5,
+     "y": 9,
+     "z": -67.5
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-red-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 20,
+    "y": 9,
+    "z": 80
+   },
+   "protection": [
+    {
+     "minX": 10,
+     "minZ": 65,
+     "maxX": 30,
+     "maxZ": 95
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-x",
+    "-z"
+   ],
+   "footprint": {
+    "minX": 13,
+    "minZ": 71,
+    "maxX": 27,
+    "maxZ": 89
+   },
+   "iron": [
+    {
+     "x": 23.5,
+     "y": 9,
+     "z": 67.5
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 34,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -10,
+    "minZ": -95,
+    "maxX": 0,
+    "maxZ": -65
+   },
+   {
+    "minX": 0,
+    "minZ": 65,
+    "maxX": 10,
+    "maxZ": 95
+   },
+   {
+    "minX": -55,
+    "minZ": -10,
+    "maxX": 20,
+    "maxZ": 10
+   },
+   {
+    "minX": -20,
+    "minZ": -10,
+    "maxX": 55,
+    "maxZ": 10
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-red-1",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -120,
+     "maxX": 10,
+     "maxZ": -95
+    }
+   ],
+   "spawn": {
+    "x": 0,
+    "y": 9,
+    "z": -108
+   },
+   "monuments": [],
+   "footprint": {
+    "minX": -9,
+    "minZ": -117,
+    "maxX": 9,
+    "maxZ": -99
+   },
+   "entries": [
+    {
+     "minX": 0,
+     "minZ": -95,
+     "maxX": 10,
+     "maxZ": -95
+    },
+    {
+     "minX": -10,
+     "minZ": -95,
+     "maxX": 0,
+     "maxZ": -95
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-red-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 95,
+     "maxX": 10,
+     "maxZ": 120
+    }
+   ],
+   "spawn": {
+    "x": 0,
+    "y": 9,
+    "z": 108
+   },
+   "monuments": [],
+   "footprint": {
+    "minX": -9,
+    "minZ": 99,
+    "maxX": 9,
+    "maxZ": 117
+   },
+   "entries": [
+    {
+     "minX": -10,
+     "minZ": 95,
+     "maxX": 0,
+     "maxZ": 95
+    },
+    {
+     "minX": 0,
+     "minZ": 95,
+     "maxX": 10,
+     "maxZ": 95
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "modes": null,
+ "gamemodes": [
+  "ctw"
+ ],
+ "meta": {
+  "name": "Emberwood Vale",
+  "created": "2026-09-11",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue",
+  "3": "neutral",
+  "4": "neutral"
+ },
+ "structures": {
+  "layer": null,
+  "redstoneLines": [
+   {
+    "x1": 0,
+    "z1": -96,
+    "x2": 9,
+    "z2": -96,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "x1": -10,
+    "z1": 95,
+    "x2": -1,
+    "z2": 95,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1
+    }
+   },
+   {
+    "x1": -10,
+    "z1": -96,
+    "x2": -1,
+    "z2": -96,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 0
+    }
+   },
+   {
+    "x1": 0,
+    "z1": 95,
+    "x2": 9,
+    "z2": 95,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 1
+    }
+   }
+  ],
+  "ironCubes": [],
+  "walls": [],
+  "isEmpty": false
+ }
+}

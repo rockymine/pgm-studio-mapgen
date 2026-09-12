@@ -1,0 +1,206 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Sable Reach"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 10,
+  "observerY": 46
+ },
+ "pieces": [
+  {
+   "id": "quay",
+   "role": "piece",
+   "rect": [
+    -10,
+    3,
+    20,
+    3
+   ],
+   "surface": 9
+  },
+  {
+   "id": "warehouse",
+   "role": "piece",
+   "rect": [
+    -10,
+    6,
+    20,
+    7
+   ],
+   "surface": 12
+  },
+  {
+   "id": "back-w",
+   "role": "piece",
+   "rect": [
+    -10,
+    13,
+    3,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -7,
+    13,
+    6,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "back-mid",
+   "role": "piece",
+   "rect": [
+    -1,
+    13,
+    1,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "back-e",
+   "role": "piece",
+   "rect": [
+    0,
+    13,
+    10,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "rear",
+   "role": "piece",
+   "rect": [
+    -10,
+    17,
+    20,
+    2
+   ],
+   "surface": 12
+  },
+  {
+   "id": "wool-w",
+   "role": "piece",
+   "rect": [
+    -10,
+    19,
+    4,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "wool",
+   "role": "wool-room",
+   "rect": [
+    -6,
+    19,
+    6,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "wool-e",
+   "role": "piece",
+   "rect": [
+    0,
+    19,
+    10,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "skerry",
+   "role": "piece",
+   "rect": [
+    13,
+    6,
+    7,
+    8
+   ],
+   "surface": 7
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -8,
+    -3,
+    16,
+    6
+   ],
+   "holes": []
+  },
+  {
+   "id": "skerry-link",
+   "rect": [
+    10,
+    6,
+    3,
+    7
+   ],
+   "holes": []
+  },
+  {
+   "id": "plaza-yard",
+   "rect": [
+    -3,
+    8,
+    6,
+    3
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     15,
+     10
+    ],
+    "facing": "front",
+    "footprint": [
+     5,
+     3,
+     20,
+     14
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool",
+    "at": [
+     15,
+     10
+    ],
+    "footprint": [
+     5,
+     3,
+     20,
+     14
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ }
+}

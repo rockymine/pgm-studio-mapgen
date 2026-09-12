@@ -1,0 +1,57 @@
+## red-0 (wool) along x
+TRANSECT 25 stations from (-27, 105) to (-3, 105), every 1
+  station        ground  surface  water  top  standing            step
+  (  -27,   105)      12       12           12                      
+  (  -26,   105)      12       12           27                      
+  (  -25,   105)      12       12           27  wool wool-1         
+  (  -24,   105)      12       12           27  wool wool-1         
+  (  -23,   105)      12       12           27  wool wool-1         
+  (  -22,   105)      12       12           27  wool wool-1         
+  (  -21,   105)      12       12           27  wool wool-1         
+  (  -20,   105)      12       12           27  wool wool-1         
+  (  -19,   105)      12       12           27  wool wool-1         
+  (  -18,   105)      12       12           27  wool wool-1         
+  (  -17,   105)      12       12           27  stroke path-wool    
+  (  -16,   105)      12       12           54  wool wool-1         
+  (  -15,   105)      12       12           54  wool wool-1         
+  (  -14,   105)      12       12           54  stroke path-wool    
+  (  -13,   105)      12       12           27  wool wool-1         
+  (  -12,   105)      12       12           27  wool wool-1         
+  (  -11,   105)      12       12           27  wool wool-1         
+  (  -10,   105)      12       12           27  wool wool-1         
+  (   -9,   105)      12       12           27  wool wool-1         
+  (   -8,   105)      12       12           27  wool wool-1         
+  (   -7,   105)      12       12           27  wool wool-1         
+  (   -6,   105)      12       12           27  wool wool-1         
+  (   -5,   105)      12       12           27                      
+  (   -4,   105)      12       12           12                      
+  (   -3,   105)      12       12           12                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-1 at (-25, 103), stroke path-wool at (-17, 103), redstoneline 2 at (-1, 103)
+
+## red-0 (wool) along z
+TRANSECT 21 stations from (-15, 93) to (-15, 113), every 1
+  station        ground  surface  water  top  standing            step
+  (  -15,    93)      12       12           12                      
+  (  -15,    94)      12       12           12                      
+  (  -15,    95)      12       12           13  redstoneline 0      
+  (  -15,    96)      12       12           12                      
+  (  -15,    97)      12       12           20                      
+  (  -15,    98)      12       12           21  stroke path-wool    
+  (  -15,    99)      12       12           22  stroke path-wool    
+  (  -15,   100)      12       12           23  stroke path-wool-flank-w  
+  (  -15,   101)      12       12           24  stroke path-wool    
+  (  -15,   102)      12       12           25  stroke path-wool    
+  (  -15,   103)      12       12           26  stroke path-wool    
+  (  -15,   104)      12       12           54  wool wool-1         
+  (  -15,   105)      12       12           54  wool wool-1         
+  (  -15,   106)      12       12           54  stroke path-wool    
+  (  -15,   107)      12       12           25  stroke path-wool    
+  (  -15,   108)      12       12           24  stroke path-wool    
+  (  -15,   109)      12       12           23  stroke path-wool    
+  (  -15,   110)      12       12           22  wool wool-1         
+  (  -15,   111)      12       12           21  wool wool-1         
+  (  -15,   112)      12       12           20                      
+  (  -15,   113)      12       12           12                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke path-wool at (-13, 91), redstoneline 0 at (-17, 95), wool wool-1 at (-13, 98), stroke path-wool-flank-w at (-17, 99)

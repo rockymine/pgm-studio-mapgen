@@ -1,0 +1,165 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 8,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 10,
+    "z": -124
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -140,
+     "maxX": 10,
+     "maxZ": -110
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -8,
+    "minZ": -130,
+    "maxX": 8,
+    "maxZ": -118
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 10,
+    "z": 124
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 110,
+     "maxX": 10,
+     "maxZ": 140
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": -8,
+    "minZ": 118,
+    "maxX": 8,
+    "maxZ": 130
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 58,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -50,
+    "minZ": -14,
+    "maxX": 50,
+    "maxZ": 14
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "relic-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Frozen Relic",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 0,
+    "y": 10,
+    "z": -70
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "relic-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Frozen Relic",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -1,
+    "y": 10,
+    "z": 69
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Fellgrave Hollow",
+  "created": "2026-09-11",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": null
+}
