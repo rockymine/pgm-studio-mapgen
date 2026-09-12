@@ -1,0 +1,61 @@
+## core-1-0 (core) along x
+TRANSECT 25 stations from (-6, 56) to (18, 56), every 1
+  station        ground  surface  water  top  standing            step
+  (   -6,    56)      20       20           32  house bothy         
+  (   -5,    56)      20       20           20                      
+  (   -4,    56)      20       20           20                      
+  (   -3,    56)      20       20           20                      
+  (   -2,    56)      20       20           20                      
+  (   -1,    56)      20       20           20                      
+  (    0,    56)      20       20           20                      
+  (    1,    56)      20       20           20                      
+  (    2,    56)      20       20           20                      
+  (    3,    56)      20       20           20                      
+  (    4,    56)      20       20           31  stroke way          
+  (    5,    56)      20       20     30    69  stroke way          
+  (    6,    56)      20       20     30    70  stroke way          
+  (    7,    56)      20       20     30    69  stroke way          
+  (    8,    56)      20       20           31  core core-1         
+  (    9,    56)      20       20           20                      
+  (   10,    56)      20       20           20                      
+  (   11,    56)      20       20           20                      
+  (   12,    56)      20       20           20                      
+  (   13,    56)      20       20           20                      
+  (   14,    56)      20       20           20                      
+  (   15,    56)      20       20           20                      
+  (   16,    56)      20       20           20                      
+  (   17,    56)      20       20           20                      
+  (   18,    56)      20       20           20                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house bothy at (-8, 54), stroke way at (4, 54), core core-1 at (8, 54)
+
+## core-1-0 (core) along z
+TRANSECT 25 stations from (6, 44) to (6, 68), every 1
+  station        ground  surface  water  top  standing            step
+  (    6,    44)      19       19           19                      
+  (    6,    45)      19       19           19                      
+  (    6,    46)      19       19           19  stroke way-down     
+  (    6,    47)      19       19           19  stroke way-down     
+  (    6,    48)      19       19           19  stroke way          
+  (    6,    49)      19       19           19  stroke way          
+  (    6,    50)      20       20           20  stroke way          +1
+  (    6,    51)      20       20           20  stroke way          
+  (    6,    52)      20       20           20  stroke way          
+  (    6,    53)      20       20           20  stroke way          
+  (    6,    54)      20       20           31  stroke way          
+  (    6,    55)      20       20     30    69  stroke way          
+  (    6,    56)      20       20     30    70  stroke way          
+  (    6,    57)      20       20     30    69  stroke way          
+  (    6,    58)      20       20           31  stroke way          
+  (    6,    59)      20       20           20  stroke way          
+  (    6,    60)      20       20           20  stroke way          
+  (    6,    61)      20       20           20  stroke way          
+  (    6,    62)      20       20           20  stroke way          
+  (    6,    63)      19       19           19  stroke way          -1
+  (    6,    64)      19       19           19  stroke way          
+  (    6,    65)      19       19           19  stroke way          
+  (    6,    66)      19       19           19  stroke way          
+  (    6,    67)      19       19           19  stroke way          
+  (    6,    68)      19       19           19                      
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke way-down at (4, 46), stroke way at (5, 48), core core-1 at (8, 54)

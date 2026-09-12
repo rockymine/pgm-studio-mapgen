@@ -1,0 +1,81 @@
+## spawn-red (spawn) along x
+TRANSECT 47 stations from (-23, 102) to (23, 102), every 1
+  station        ground  surface  water  top  standing            step
+  (  -23,   102)                                                    void
+  (  -22,   102)                                                    void
+  (  -21,   102)                                                    void
+  (  -20,   102)                                                    void
+  (  -19,   102)                                                    void
+  (  -18,   102)                                                    void
+  (  -17,   102)                                                    void
+  (  -16,   102)                                                    void
+  (  -15,   102)      18       18           21  ironcube spawn-1:0  
+  (  -14,   102)      18       18           21  ironcube spawn-1:0  
+  (  -13,   102)      18       18           21  ironcube spawn-1:0  
+  (  -12,   102)      18       18           18                      
+  (  -11,   102)      18       18           18                      
+  (  -10,   102)      18       18           31                      
+  (   -9,   102)      18       18           31  spawn spawn-1       
+  (   -8,   102)      18       18           31  spawn spawn-1       
+  (   -7,   102)      18       18           31  spawn spawn-1       
+  (   -6,   102)      18       18           31  spawn spawn-1       
+  (   -5,   102)      18       18           31  spawn spawn-1       
+  (   -4,   102)      18       18           31  spawn spawn-1       
+  (   -3,   102)      18       18           31  spawn spawn-1       
+  (   -2,   102)      18       18           31  spawn spawn-1       
+  (   -1,   102)      18       18           31  spawn spawn-1       
+  (    0,   102)      18       18           31  spawn spawn-1       
+  (    1,   102)      18       18           31  spawn spawn-1       
+  (    2,   102)      18       18           31  spawn spawn-1       
+  (    3,   102)      18       18           31  spawn spawn-1       
+  (    4,   102)      18       18           31  spawn spawn-1       
+  (    5,   102)      18       18           31  spawn spawn-1       
+  (    6,   102)      18       18           31  spawn spawn-1       
+  (    7,   102)      18       18           31  spawn spawn-1       
+  (    8,   102)      18       18           31  spawn spawn-1       
+  (    9,   102)      18       18           31                      
+  (   10,   102)      18       18           18                      
+  (   11,   102)      18       18           18                      
+  (   12,   102)      18       18           21  ironcube spawn-1:1  
+  (   13,   102)      18       18           21  ironcube spawn-1:1  
+  (   14,   102)      18       18           21  ironcube spawn-1:1  
+  (   15,   102)                                                    void
+  (   16,   102)                                                    void
+  (   17,   102)                                                    void
+  (   18,   102)                                                    void
+  (   19,   102)                                                    void
+  (   20,   102)                                                    void
+  (   21,   102)                                                    void
+  (   22,   102)                                                    void
+  (   23,   102)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: ironcube spawn-1:0 at (-15, 101), spawn spawn-1 at (-9, 100), stroke way at (-2, 100), ironcube spawn-1:1 at (12, 101)
+
+## spawn-red (spawn) along z
+TRANSECT 23 stations from (0, 87) to (0, 109), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    87)      19       19           19                      
+  (    0,    88)      19       19           19                      
+  (    0,    89)      19       19           19                      
+  (    0,    90)      18       18           18                      -1
+  (    0,    91)      18       18           18                      
+  (    0,    92)      18       18           18                      
+  (    0,    93)      18       18           18  stroke way          
+  (    0,    94)      18       18           18  stroke way          
+  (    0,    95)      18       18           18  stroke way          
+  (    0,    96)      18       18           21  stroke way          
+  (    0,    97)      18       18           23  stroke way          
+  (    0,    98)      18       18           25  stroke way          
+  (    0,    99)      18       18           27  stroke way          
+  (    0,   100)      18       18           29  stroke way          
+  (    0,   101)      18       18           31  spawn spawn-1       
+  (    0,   102)      18       18           31  spawn spawn-1       
+  (    0,   103)      18       18           29  spawn spawn-1       
+  (    0,   104)      18       18           27  spawn spawn-1       
+  (    0,   105)      18       18           25  spawn spawn-1       
+  (    0,   106)      18       18           23  spawn spawn-1       
+  (    0,   107)      18       18           21                      
+  (    0,   108)      18       18           18                      
+  (    0,   109)      18       18           18                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke way at (-2, 85), spawn spawn-1 at (1, 97)

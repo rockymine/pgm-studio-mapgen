@@ -1,0 +1,191 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 14,
+    "z": 102
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": 95,
+     "maxX": 15,
+     "maxZ": 110
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": -9,
+    "minZ": 97,
+    "maxX": 9,
+    "maxZ": 107
+   },
+   "iron": [
+    {
+     "x": -13,
+     "y": 14,
+     "z": 102
+    },
+    {
+     "x": 13,
+     "y": 14,
+     "z": 102
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 14,
+    "z": -102
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": -110,
+     "maxX": 15,
+     "maxZ": -95
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -9,
+    "minZ": -107,
+    "maxX": 9,
+    "maxZ": -97
+   },
+   "iron": [
+    {
+     "x": 13,
+     "y": 14,
+     "z": -102
+    },
+    {
+     "x": -13,
+     "y": 14,
+     "z": -102
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 56,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -40,
+    "minZ": -20,
+    "maxX": 40,
+    "maxZ": 20
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Beacon",
+   "anchor": {
+    "x": 6,
+    "y": 14,
+    "z": 56
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Beacon",
+   "anchor": {
+    "x": -7,
+    "y": 14,
+    "z": -57
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  }
+ ],
+ "modes": null,
+ "gamemodes": [
+  "dtc"
+ ],
+ "meta": {
+  "name": "Glassmere",
+  "created": "2026-09-12",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": null
+}
