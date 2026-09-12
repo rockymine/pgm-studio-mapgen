@@ -1,0 +1,50 @@
+{
+  "plan": 2,
+  "meta": {
+    "name": "Threap Edge"
+  },
+  "globals": {
+    "cell": 2,
+    "symmetry": "rot_180",
+    "maxPlayers": 16,
+    "surface": 12,
+    "observerY": 64
+  },
+  "pieces": [
+    {
+      "id": "moor",
+      "role": "piece",
+      "rect": [
+        -27,
+        -21,
+        54,
+        42
+      ],
+      "surface": 12
+    },
+    {
+      "id": "edge-head",
+      "role": "spawn",
+      "rect": [
+        -5,
+        -27,
+        10,
+        6
+      ],
+      "surface": 12
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "edge-head",
+        "at": [
+          10,
+          6
+        ],
+        "facing": "back"
+      }
+    ]
+  }
+}

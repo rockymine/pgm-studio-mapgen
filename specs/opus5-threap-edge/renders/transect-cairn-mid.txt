@@ -1,0 +1,61 @@
+## cairn-mid (boulder) along x
+TRANSECT 25 stations from (-24, -1) to (0, -1), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,    -1)      24       24           24                      
+  (  -23,    -1)      24       24           24                      
+  (  -22,    -1)      25       25           25                      +1
+  (  -21,    -1)      25       25           25                      
+  (  -20,    -1)      26       26           26                      +1
+  (  -19,    -1)      26       26           26                      
+  (  -18,    -1)      26       26           26                      
+  (  -17,    -1)      27       27           27                      +1
+  (  -16,    -1)      27       27           27                      
+  (  -15,    -1)      28       28           31  boulder cairn-mid   +1
+  (  -14,    -1)      28       28           36  boulder cairn-mid   
+  (  -13,    -1)      28       28           36  boulder cairn-mid   
+  (  -12,    -1)      29       29           35  boulder cairn-mid   +1
+  (  -11,    -1)      29       29           34  boulder cairn-mid   
+  (  -10,    -1)      29       29           32  boulder cairn-mid   
+  (   -9,    -1)      30       30           31  boulder cairn-mid   +1
+  (   -8,    -1)      30       30           30                      
+  (   -7,    -1)      30       30           30                      
+  (   -6,    -1)      31       31           31                      +1
+  (   -5,    -1)      31       31           31                      
+  (   -4,    -1)      31       31           32  controlpoint 0      
+  (   -3,    -1)      31       31           66  controlpoint 0      
+  (   -2,    -1)      32       32           66  controlpoint 0      +1
+  (   -1,    -1)      32       32           65  controlpoint 0      
+  (    0,    -1)      32       32           65  controlpoint 0      
+rises 8, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder cairn-mid at (-15, -2), controlpoint 0 at (-4, -3)
+
+## cairn-mid (boulder) along z
+TRANSECT 25 stations from (-12, -13) to (-12, 11), every 1
+  station        ground  surface  water  top  standing            step
+  (  -12,   -13)      23       23           23                      
+  (  -12,   -12)      25       25           25                      scramble +2
+  (  -12,   -11)      27       27           27                      scramble +2
+  (  -12,   -10)      29       29           29                      scramble +2
+  (  -12,    -9)      29       29           29                      
+  (  -12,    -8)      29       29           29                      
+  (  -12,    -7)      29       29           29                      
+  (  -12,    -6)      29       29           29                      
+  (  -12,    -5)      29       29           29                      
+  (  -12,    -4)      29       29           31  boulder cairn-mid   
+  (  -12,    -3)      29       29           32  boulder cairn-mid   
+  (  -12,    -2)      29       29           34  boulder cairn-mid   
+  (  -12,    -1)      29       29           35  boulder cairn-mid   
+  (  -12,     0)      28       28           36  boulder cairn-mid   -1
+  (  -12,     1)      28       28           34  boulder cairn-mid   
+  (  -12,     2)      28       28           31  boulder cairn-mid   
+  (  -12,     3)      28       28           28                      
+  (  -12,     4)      28       28           28                      
+  (  -12,     5)      28       28           28                      
+  (  -12,     6)      28       28           28                      
+  (  -12,     7)      28       28           28                      
+  (  -12,     8)      28       28           28                      
+  (  -12,     9)      28       28           28                      
+  (  -12,    10)      26       26           26                      -2
+  (  -12,    11)      24       24           24                      -2
+rises 3, falls 3, worst step 2: 0 barrier, 3 scramble, 0 drop — scramble +2 at (-12, -12); scramble +2 at (-12, -11); scramble +2 at (-12, -10) | walked end to end
+beside: boulder cairn-mid at (-13, -4)

@@ -643,6 +643,12 @@ def patch_intent(intent, finish):
     and is the author's to state. `voidEnforcement` fills the board's void with the barrier PGM enforces,
     sparing the rects `voidExclusions` names.
 
+    `controlPoints` is the capture board's hills and `scoreLimit` the score the match ends at. They ride on
+    the finish rather than on the plan because the plan states no capture point: the compiler fans spawns,
+    destroyables and cores, and a board that wants hills states every one of them here, already fanned. A
+    compiled intent carries no `symmetry` — the compiler has already placed the board's images — so nothing
+    downstream will fan them either, and a centre point plus one side is a two-hill board, not three.
+
     Which storey a goal stands on is the plan's to say: `DestroyablePlacement.layer` and
     `CorePlacement.layer` carry it through the compile onto every orbit image, so nothing is patched here."""
     if created := finish.get("created"):
@@ -661,6 +667,13 @@ def patch_intent(intent, finish):
     if finish.get("voidEnforcement"):
         intent.setdefault("build", {})["voidEnforcement"] = \
             {"exclusions": finish.get("voidExclusions", [])}
+    if points := finish.get("controlPoints"):
+        intent["controlPoints"] = points
+        named = ", ".join(p.get("name") or "?" for p in points)
+        print(f"    {len(points)} capture point(s): {named}")
+    if (limit := finish.get("scoreLimit")) is not None:
+        intent["scoreLimit"] = limit
+        print(f"    score limit {limit}")
     return intent
 
 
