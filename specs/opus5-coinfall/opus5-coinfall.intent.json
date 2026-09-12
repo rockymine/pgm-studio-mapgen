@@ -23,15 +23,15 @@
    "team": "red",
    "point": {
     "x": 0,
-    "y": 16,
-    "z": -50
+    "y": 20,
+    "z": -72
    },
    "protection": [
     {
      "minX": -10,
-     "minZ": -60,
+     "minZ": -80,
      "maxX": 10,
-     "maxZ": -40
+     "maxZ": -65
     }
    ],
    "yaw": 0,
@@ -51,15 +51,15 @@
    "team": "blue",
    "point": {
     "x": 0,
-    "y": 16,
-    "z": 50
+    "y": 20,
+    "z": 72
    },
    "protection": [
     {
      "minX": -10,
-     "minZ": 40,
+     "minZ": 65,
      "maxX": 10,
-     "maxZ": 60
+     "maxZ": 80
     }
    ],
    "yaw": 180,
@@ -73,7 +73,7 @@
  "observer": {
   "point": {
    "x": 0,
-   "y": 29,
+   "y": 35,
    "z": 0
   },
   "yaw": 0
@@ -82,10 +82,10 @@
   "maxHeight": null,
   "areas": [
    {
-    "minX": -30,
-    "minZ": -10,
-    "maxX": 30,
-    "maxZ": 10
+    "minX": -40,
+    "minZ": -30,
+    "maxX": 40,
+    "maxZ": 30
    }
   ],
   "holes": [],
@@ -104,25 +104,25 @@
    "color": "red",
    "protection": [
     {
-     "minX": -60,
-     "minZ": -40,
-     "maxX": -40,
-     "maxZ": -25
+     "minX": 50,
+     "minZ": -65,
+     "maxX": 70,
+     "maxZ": -50
     }
    ],
    "spawn": {
-    "x": -50,
-    "y": 15,
-    "z": -32
+    "x": 60,
+    "y": 25,
+    "z": -57
    },
    "monuments": [],
    "footprint": null,
    "entries": [
     {
-     "minX": -40,
-     "minZ": -40,
-     "maxX": -40,
-     "maxZ": -25
+     "minX": 50,
+     "minZ": -65,
+     "maxX": 50,
+     "maxZ": -50
     }
    ]
   },
@@ -137,25 +137,25 @@
    "color": "blue",
    "protection": [
     {
-     "minX": 40,
-     "minZ": 25,
-     "maxX": 60,
-     "maxZ": 40
+     "minX": -70,
+     "minZ": 50,
+     "maxX": -50,
+     "maxZ": 65
     }
    ],
    "spawn": {
-    "x": 50,
-    "y": 15,
-    "z": 32
+    "x": -60,
+    "y": 25,
+    "z": 57
    },
    "monuments": [],
    "footprint": null,
    "entries": [
     {
-     "minX": 40,
-     "minZ": 25,
-     "maxX": 40,
-     "maxZ": 40
+     "minX": -50,
+     "minZ": 50,
+     "maxX": -50,
+     "maxZ": 65
     }
    ]
   }
@@ -230,17 +230,18 @@
  },
  "symmetry": null,
  "islandTeams": {
-  "1": "red",
-  "2": "blue"
+  "1": "blue",
+  "2": "red",
+  "3": "neutral"
  },
  "structures": {
   "layer": null,
   "redstoneLines": [
    {
-    "x1": -41,
-    "z1": -40,
-    "x2": -41,
-    "z2": -26,
+    "x1": 50,
+    "z1": -65,
+    "x2": 50,
+    "z2": -51,
     "stamp": {
      "kind": "redstoneline",
      "unit": "0",
@@ -248,10 +249,10 @@
     }
    },
    {
-    "x1": 40,
-    "z1": 25,
-    "x2": 40,
-    "z2": 39,
+    "x1": -51,
+    "z1": 50,
+    "x2": -51,
+    "z2": 64,
     "stamp": {
      "kind": "redstoneline",
      "unit": "0",

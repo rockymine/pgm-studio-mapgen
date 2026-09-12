@@ -1,75 +1,70 @@
 ## spawn-blue (spawn) along x
-TRANSECT 37 stations from (-18, 50) to (18, 50), every 1
+TRANSECT 37 stations from (-18, 72) to (18, 72), every 1
   station        ground  surface  water  top  standing            step
-  (  -18,    50)                                                    void
-  (  -17,    50)                                                    void
-  (  -16,    50)                                                    void
-  (  -15,    50)                                                    void
-  (  -14,    50)                                                    void
-  (  -13,    50)                                                    void
-  (  -12,    50)                                                    void
-  (  -11,    50)                                                    void
-  (  -10,    50)      16       16           16                      
-  (   -9,    50)      16       16           24  spawn spawn-1#1     
-  (   -8,    50)      16       16           24  spawn spawn-1#1     
-  (   -7,    50)      16       16           24  spawn spawn-1#1     
-  (   -6,    50)      16       16           24  spawn spawn-1#1     
-  (   -5,    50)      16       16           24  spawn spawn-1#1     
-  (   -4,    50)      16       16           24  spawn spawn-1#1     
-  (   -3,    50)      16       16           24  spawn spawn-1#1     
-  (   -2,    50)      16       16           16  spawn spawn-1#1     
-  (   -1,    50)      16       16           16  spawn spawn-1#1     
-  (    0,    50)      16       16           16  spawn spawn-1#1     
-  (    1,    50)      16       16           16  spawn spawn-1#1     
-  (    2,    50)      16       16           24  spawn spawn-1#1     
-  (    3,    50)      16       16           24  spawn spawn-1#1     
-  (    4,    50)      16       16           24  spawn spawn-1#1     
-  (    5,    50)      16       16           24  spawn spawn-1#1     
-  (    6,    50)      16       16           24  spawn spawn-1#1     
-  (    7,    50)      16       16           24  spawn spawn-1#1     
-  (    8,    50)      16       16           24  spawn spawn-1#1     
-  (    9,    50)      16       16           16                      
-  (   10,    50)                                                    void
-  (   11,    50)                                                    void
-  (   12,    50)                                                    void
-  (   13,    50)                                                    void
-  (   14,    50)                                                    void
-  (   15,    50)                                                    void
-  (   16,    50)                                                    void
-  (   17,    50)                                                    void
-  (   18,    50)                                                    void
+  (  -18,    72)                                                    void
+  (  -17,    72)                                                    void
+  (  -16,    72)                                                    void
+  (  -15,    72)                                                    void
+  (  -14,    72)                                                    void
+  (  -13,    72)                                                    void
+  (  -12,    72)                                                    void
+  (  -11,    72)                                                    void
+  (  -10,    72)      20       20           41                      
+  (   -9,    72)      20       20           41  spawn spawn-1#1     
+  (   -8,    72)      20       20           41  spawn spawn-1#1     
+  (   -7,    72)      20       20           41  spawn spawn-1#1     
+  (   -6,    72)      20       20           41  spawn spawn-1#1     
+  (   -5,    72)      20       20           41  spawn spawn-1#1     
+  (   -4,    72)      20       20           41  spawn spawn-1#1     
+  (   -3,    72)      20       20           41  spawn spawn-1#1     
+  (   -2,    72)      20       20           41  spawn spawn-1#1     
+  (   -1,    72)      20       20           41  spawn spawn-1#1     
+  (    0,    72)      20       20           41  spawn spawn-1#1     
+  (    1,    72)      20       20           41  spawn spawn-1#1     
+  (    2,    72)      20       20           41  spawn spawn-1#1     
+  (    3,    72)      20       20           41  spawn spawn-1#1     
+  (    4,    72)      20       20           41  spawn spawn-1#1     
+  (    5,    72)      20       20           41  spawn spawn-1#1     
+  (    6,    72)      20       20           41  spawn spawn-1#1     
+  (    7,    72)      20       20           41  spawn spawn-1#1     
+  (    8,    72)      20       20           41  spawn spawn-1#1     
+  (    9,    72)      20       20           41                      
+  (   10,    72)                                                    void
+  (   11,    72)                                                    void
+  (   12,    72)                                                    void
+  (   13,    72)                                                    void
+  (   14,    72)                                                    void
+  (   15,    72)                                                    void
+  (   16,    72)                                                    void
+  (   17,    72)                                                    void
+  (   18,    72)                                                    void
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn spawn-1#1 at (-9, 48)
+beside: spawn spawn-1#1 at (-9, 70)
 
 ## spawn-blue (spawn) along z
-TRANSECT 27 stations from (0, 32) to (0, 58), every 1
+TRANSECT 22 stations from (0, 57) to (0, 78), every 1
   station        ground  surface  water  top  standing            step
-  (    0,    32)      15       15           15                      
-  (    0,    33)      15       15           15                      
-  (    0,    34)      15       15           15                      
-  (    0,    35)      15       15           15                      
-  (    0,    36)      15       15           15                      
-  (    0,    37)      15       15           15                      
-  (    0,    38)      15       15           15                      
-  (    0,    39)      15       15           15                      
-  (    0,    40)      16       16           16                      +1
-  (    0,    41)      16       16           16                      
-  (    0,    42)      16       16           16                      
-  (    0,    43)      16       16           16                      
-  (    0,    44)      16       16           16                      
-  (    0,    45)      16       16           24  spawn spawn-1#1     
-  (    0,    46)      16       16           24  spawn spawn-1#1     
-  (    0,    47)      16       16           24  spawn spawn-1#1     
-  (    0,    48)      16       16           24  spawn spawn-1#1     
-  (    0,    49)      16       16           24  spawn spawn-1#1     
-  (    0,    50)      16       16           16  spawn spawn-1#1     
-  (    0,    51)      16       16           16  spawn spawn-1#1     
-  (    0,    52)      16       16           16  spawn spawn-1#1     
-  (    0,    53)      16       16           16  spawn spawn-1#1     
-  (    0,    54)      16       16           24  spawn spawn-1#1     
-  (    0,    55)      16       16           24  spawn spawn-1#1     
-  (    0,    56)      16       16           24  spawn spawn-1#1     
-  (    0,    57)      16       16           24  spawn spawn-1#1     
-  (    0,    58)      16       16           24  spawn spawn-1#1     
-rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn spawn-1#1 at (-2, 45)
+  (    0,    57)      20       20           20                      
+  (    0,    58)      20       20           20                      
+  (    0,    59)      20       20           20                      
+  (    0,    60)      20       20           20                      
+  (    0,    61)      20       20           20                      
+  (    0,    62)      20       20           20                      
+  (    0,    63)      20       20           20                      
+  (    0,    64)      20       20           20                      
+  (    0,    65)      20       20           20                      
+  (    0,    66)      20       20           20                      
+  (    0,    67)      20       20           20                      
+  (    0,    68)      20       20           33                      
+  (    0,    69)      20       20           35  spawn spawn-1#1     
+  (    0,    70)      20       20           37  spawn spawn-1#1     
+  (    0,    71)      20       20           39  spawn spawn-1#1     
+  (    0,    72)      20       20           41  spawn spawn-1#1     
+  (    0,    73)      20       20           43  spawn spawn-1#1     
+  (    0,    74)      20       20           43  spawn spawn-1#1     
+  (    0,    75)      20       20           41  spawn spawn-1#1     
+  (    0,    76)      20       20           39  spawn spawn-1#1     
+  (    0,    77)      20       20           37  spawn spawn-1#1     
+  (    0,    78)      20       20           35  spawn spawn-1#1     
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (-2, 69)
