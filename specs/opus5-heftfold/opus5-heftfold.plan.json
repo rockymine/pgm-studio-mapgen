@@ -1,0 +1,176 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Heftfold"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 24,
+  "surface": 12,
+  "observerY": 48
+ },
+ "pieces": [
+  {
+   "id": "fold",
+   "role": "piece",
+   "rect": [
+    -3,
+    -2,
+    6,
+    4
+   ],
+   "surface": 14,
+   "mirrors": false
+  },
+  {
+   "id": "pasture",
+   "role": "piece",
+   "rect": [
+    -11,
+    4,
+    14,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "garth",
+   "role": "piece",
+   "rect": [
+    -11,
+    8,
+    10,
+    6
+   ],
+   "surface": 17
+  },
+  {
+   "id": "lane",
+   "role": "piece",
+   "rect": [
+    -1,
+    8,
+    4,
+    6
+   ],
+   "surface": 12
+  },
+  {
+   "id": "barn",
+   "role": "wool-room",
+   "rect": [
+    -11,
+    14,
+    4,
+    3
+   ],
+   "surface": 17
+  },
+  {
+   "id": "stell",
+   "role": "spawn",
+   "rect": [
+    -7,
+    14,
+    6,
+    3
+   ],
+   "surface": 17
+  },
+  {
+   "id": "byre",
+   "role": "wool-room",
+   "rect": [
+    -1,
+    14,
+    4,
+    3
+   ],
+   "surface": 17
+  }
+ ],
+ "zones": [
+  {
+   "id": "pass",
+   "rect": [
+    -11,
+    -4,
+    22,
+    8
+   ],
+   "kind": "build"
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "stell",
+    "at": [
+     15,
+     8
+    ],
+    "facing": "front",
+    "footprint": [
+     6,
+     3,
+     18,
+     9
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "stell",
+    "at": [
+     2,
+     7
+    ]
+   },
+   {
+    "id": "iron-2",
+    "piece": "stell",
+    "at": [
+     28,
+     7
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "barn",
+    "at": [
+     5,
+     10
+    ],
+    "footprint": [
+     2,
+     2,
+     16,
+     11
+    ]
+   },
+   {
+    "id": "wool-2",
+    "piece": "byre",
+    "at": [
+     15,
+     10
+    ],
+    "footprint": [
+     2,
+     2,
+     16,
+     11
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

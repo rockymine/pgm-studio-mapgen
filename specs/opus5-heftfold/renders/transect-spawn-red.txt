@@ -1,0 +1,80 @@
+## spawn-red (spawn) along x
+TRANSECT 47 stations from (-43, 77) to (3, 77), every 1
+  station        ground  surface  water  top  standing            step
+  (  -43,    77)      17       17           29  wool wool-1         
+  (  -42,    77)      17       17           29  wool wool-1         
+  (  -41,    77)      17       17           29  wool wool-1         
+  (  -40,    77)      17       17           29  wool wool-1         
+  (  -39,    77)      17       17           29  wool wool-1         
+  (  -38,    77)      17       17           29  wool wool-1         
+  (  -37,    77)      17       17           29                      
+  (  -36,    77)      17       17           18  redstoneline 2      
+  (  -35,    77)      17       17           20  ironcube spawn-1:0  
+  (  -34,    77)      17       17           20  ironcube spawn-1:0  
+  (  -33,    77)      17       17           20  stroke yard         
+  (  -32,    77)      17       17           17  stroke yard         
+  (  -31,    77)      17       17           17  stroke yard         
+  (  -30,    77)      17       17           32  stroke yard         
+  (  -29,    77)      17       17           32  stroke yard         
+  (  -28,    77)      17       17           32  stroke yard         
+  (  -27,    77)      17       17           32  stroke yard         
+  (  -26,    77)      17       17           32  stroke yard         
+  (  -25,    77)      17       17           32  stroke yard         
+  (  -24,    77)      17       17           32  stroke yard         
+  (  -23,    77)      17       17           32  stroke yard         
+  (  -22,    77)      17       17           32  stroke yard         
+  (  -21,    77)      17       17           32  spawn spawn-1       
+  (  -20,    77)      17       17           32  spawn spawn-1       
+  (  -19,    77)      17       17           32  spawn spawn-1       
+  (  -18,    77)      17       17           32  spawn spawn-1       
+  (  -17,    77)      17       17           32  spawn spawn-1       
+  (  -16,    77)      17       17           32  spawn spawn-1       
+  (  -15,    77)      17       17           32  spawn spawn-1       
+  (  -14,    77)      17       17           32  spawn spawn-1       
+  (  -13,    77)      17       17           32  spawn spawn-1       
+  (  -12,    77)      17       17           32  spawn spawn-1       
+  (  -11,    77)      17       17           32                      
+  (  -10,    77)      17       17           17                      
+  (   -9,    77)      17       17           20  ironcube spawn-1:1  
+  (   -8,    77)      17       17           20  ironcube spawn-1:1  
+  (   -7,    77)      17       17           20  ironcube spawn-1:1  
+  (   -6,    77)      17       17           17                      
+  (   -5,    77)      17       17           18  redstoneline 3      
+  (   -4,    77)      17       17           29                      
+  (   -3,    77)      17       17           29  wool wool-2         
+  (   -2,    77)      17       17           29  wool wool-2         
+  (   -1,    77)      17       17           29  wool wool-2         
+  (    0,    77)      17       17           29  wool wool-2         
+  (    1,    77)      17       17           29  wool wool-2         
+  (    2,    77)      17       17           29  wool wool-2         
+  (    3,    77)      17       17           29  wool wool-2         
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke yard at (-45, 75), wool wool-1 at (-45, 77), redstoneline 2 at (-36, 75), ironcube spawn-1:0 at (-35, 76), spawn spawn-1 at (-29, 78), ironcube spawn-1:1 at (-9, 76), redstoneline 3 at (-5, 75), wool wool-2 at (-3, 75), stroke lonnin at (4, 75)
+
+## spawn-red (spawn) along z
+TRANSECT 22 stations from (-20, 62) to (-20, 83), every 1
+  station        ground  surface  water  top  standing            step
+  (  -20,    62)      17       17           17                      
+  (  -20,    63)      17       17           17                      
+  (  -20,    64)      17       17           17                      
+  (  -20,    65)      17       17           17                      
+  (  -20,    66)      17       17           17  stroke drove        
+  (  -20,    67)      17       17           17  stroke drove        
+  (  -20,    68)      17       17           17  stroke drove        
+  (  -20,    69)      17       17           17  stroke drove        
+  (  -20,    70)      17       17           17  stroke drove        
+  (  -20,    71)      17       17           17  stroke drove        
+  (  -20,    72)      17       17           27  stroke drove        
+  (  -20,    73)      17       17           28  stroke drove        
+  (  -20,    74)      17       17           29  stroke yard         
+  (  -20,    75)      17       17           30  stroke yard         
+  (  -20,    76)      17       17           31  stroke yard         
+  (  -20,    77)      17       17           32  spawn spawn-1       
+  (  -20,    78)      17       17           31  spawn spawn-1       
+  (  -20,    79)      17       17           30  spawn spawn-1       
+  (  -20,    80)      17       17           29  spawn spawn-1       
+  (  -20,    81)      17       17           28  spawn spawn-1       
+  (  -20,    82)      17       17           27                      
+  (  -20,    83)      17       17           17                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke drove at (-22, 60), spawn spawn-1 at (-22, 73), stroke yard at (-22, 74)
