@@ -180,5 +180,5 @@ marker as `owner-display-region` — so both go the holder's colour on capture a
 point goes neutral. The marker is the change worth watching from a spawn: a wool room's and a
 destroyable's marker name a team for the whole match, and a hill's is the one that moves.
 
-Final reads: **8420 walked · 908 scrambled · 224 barrier · 8 faces**, 40 props placed and none declined,
+Final reads: **8420 walked · 908 scrambled · 224 barrier · 8 faces**, 26 props placed and none declined,
 9614 columns mirrored and none not, export gate OPEN.

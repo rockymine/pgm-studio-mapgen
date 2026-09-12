@@ -643,6 +643,10 @@ def patch_intent(intent, finish):
     and is the author's to state. `voidEnforcement` fills the board's void with the barrier PGM enforces,
     sparing the rects `voidExclusions` names.
 
+    `authors` rides on the intent's meta as well, because the observer platform's authors board reads
+    `meta.authors` (`EX6`) and a compiled intent leaves it empty: the body's `authors` credits the map row
+    and never reaches it. A bare name is carried as a plain credit and a record as it stands.
+
     `controlPoints` is the capture board's hills and `scoreLimit` the score the match ends at. They ride on
     the finish rather than on the plan because the plan states no capture point: the compiler fans spawns,
     destroyables and cores, and a board that wants hills states every one of them here, already fanned. A
@@ -654,16 +658,13 @@ def patch_intent(intent, finish):
     if created := finish.get("created"):
         intent.setdefault("meta", {})["created"] = created
         print(f"    created {created}")
-    # The observer platform's authors board reads the intent's own meta.authors (`EX6`), which a compiled
-    # intent leaves empty; the body's `authors` credits the map row and never reaches it. A bare name is a
-    # plain credit, and a record is carried as it is.
-    if authors := finish.get("authors"):
-        intent.setdefault("meta", {})["authors"] = [
-            {"name": person} if isinstance(person, str) else person for person in authors]
     elif (intent.get("meta") or {}).get("created"):
         print(f"    created {intent['meta']['created']}")
     else:
         print("    ! nothing states a `created` date, so the map will carry no <created> element")
+    if authors := finish.get("authors"):
+        intent.setdefault("meta", {})["authors"] = [
+            {"name": person} if isinstance(person, str) else person for person in authors]
     if finish.get("voidEnforcement"):
         intent.setdefault("build", {})["voidEnforcement"] = \
             {"exclusions": finish.get("voidExclusions", [])}

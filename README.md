@@ -77,10 +77,10 @@ comes from the repository's author.
 
 Grouped by the run that produced them. Mode is what the map's own `<gamemode>` declares.
 
-**Most of these specs no longer compile, and that is settled rather than pending (author).** 74 of the 85
+**Most of these specs no longer compile, and that is settled rather than pending (author).** 68 of the 112
 plans here state `"plan": 1`, whose marker offsets are in cells where version 2 states them in blocks, so
 `POST /plan/compile` refuses one with `PL15`. The worlds under `maps/` were built from them and are what
-those boards are; migrating the plans would move every marker on 74 boards to rebuild something already
+those boards are; migrating the plans would move every marker on 68 boards to rebuild something already
 built. **A version 1 spec is the record of a world, not a thing that rebuilds** — read it, do not re-drive
 it, and do not file the migration again.
 
@@ -429,6 +429,62 @@ tunnels cut through them, the bench's floor lifted over it, and two stairs cut b
 | `fable-saltwharf` | dtc · dtm | Fable 5.1 | a stone quay under a grass headland: the core on a stepped stone plinth twelve blocks behind the sea wall, a beacon of end stone on the knoll in the corner, a flat-roofed warehouse of two wings either side, the strand two blocks under the quay, a pier into the sound, the spawn ten blocks up behind with a road down the east flight to the sand |
 | `fable-hollin-tarn` | dtm | Fable 5.1 | a snowed valley head under a cold-taiga sky: the monument on a green knoll ten blocks off the axis behind a frozen tarn cut as a level plate, a brook of ice out of it, a crag on the east shore, spruce shoulders either side, a track from the lodge round the shore to the hut and on to the build zone |
 
+### Opus 5 — five boards, one idea each
+
+Five maps authored in one run against one instruction: decide what each board is *about* before deciding
+what it is made of, and keep it to one thing. Every one built, every one `export gate OPEN`, every one
+`declined 0`. What they share is method rather than subject — the ground on all five is finished on the
+**slope** band axis with its cuts read off `GET …/incline?format=text`, the plan on all five is a handful
+of rooms and corridors with the board's shape left to the relief, and every way up a face on any of them
+is an authored flight measured at worst step 1. [reports/opus5-five-boards.md](reports/opus5-five-boards.md)
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5-blackden-sough` | dtm | Opus 5 | **70 × 240, and a drainage sough driven under a gritstone edge** — a twelve-block scarp across each team's ground with one eighteen-wide nick in it, and a six-course passage under it that comes out on the dale floor behind the lot. The storey below is stated as adds banded round the corridor and **clipped out of the moor's own drawn outline**, so nothing of it stands past the coast as a ledge over the void; both flights walk for nothing in both directions (`walk?from=-21,45,18&to=-21,80` — 35 blocks, **0 placed, 0 drops**) |
+| `opus5-heftfold` | ctw | Opus 5 | **110 × 170 on the composer's own skeleton, with its three gaps filled** — a walled sheepfold on the saddle as the island the middle otherwise has none of, a team site split into a pasture at y11 and an intake at y16 rather than one rectangle, and the spawn standing **between** its two wools instead of behind both (25 and 32 blocks by walk). The intake is `relief_scope: exclude` so the two tiers meet at a face, its gateway is a rectangular re-entrant cut into the retaining wall, and **0.0% of the board is dead** |
+| `opus5-glassmere` | dtc | Opus 5 | **80 × 220 of snowfield where nothing hides you** — two shores of a mere whose middle never freezes, with the coast drawn into three headlands and two bays so the crossing is 24 blocks at one and 40 at the other. The ice is laid **solid** at the water and freckled with a second, wider `worn` stroke over it, because an edge between two grounds is drawn and never sampled. One theme, and its whole variation is the board's own angle: lying snow under 14°, snow and scoured grass to 30°, bare rock past it |
+| `opus5-burgage-terrace` | dtm | Opus 5 | **80 × 220 built entirely on one boundary** — a market terrace six courses over a water meadow, its front edge cut into two re-entrants and a salient, with a flight set **into** the wall at each re-entrant. The retaining wall is a `wallDiagonal` whose fourth run is a **`teamTint`**, so the town wears the colour of whoever holds it and you can read from the far bank whose terrace you are looking at. Three burgage plots a side, one style, differing in height and footprint and nothing else |
+| `opus5-lingbeck` | ctw | Opus 5 | **110 × 200 split by its own beck** — a six-course gill running the full depth of each team's ground with a wool on each bank, so every rotation between them is a crossing and there are exactly three: round the head, over the brig, or down through the water at the ford (worst step 1, 1 and 0). The gill is an **override add** cut out of one hub piece, because a plan piece at a lower surface enclosed by higher ones is not a cut at all; the brig is a one-course layer at `base_y 11` lapping neither bank. **0.0% dead** |
+
+### Sonnet 5 — five boards, each one its own place
+
+Five maps in one run, each written up on its own before the next was begun: a report and a review a board,
+in `reports/sonnet5-*.md` and `review/sonnet5-*.md`, rather than one account of the five. What they share is
+that the *place* was decided first and the mechanism second — a quarry, an estuary, a snowbound valley, a
+timber yard, an autumn wood — and that each report is asked the same three questions about the studio
+(**missing**, **unreachable**, **mistaken**), with the verdict settled by reading the code and the reading
+cited. Four of the five dressed with no decline at all.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `sonnet5-emberwood-vale` | ctw | Sonnet 5 | **Two hamlets at opposite ends of an autumn wood, and the wood is the only way across** — each keeps its wool at a shrine behind the village, and three things stand between them: a village-green void through each hamlet, a garden island cut off from the main approach and rejoined by a hand-built footbridge, and a ten-block brook of void across the centre clearing that every crossing must ford. A rougher west-flank trail is the wool's second and harder route. Three themes, and two timber house styles that differ by a roof swap and a repaint. **13 874 walked · 24 scrambled · 0 barrier**, 44 props placed and 1 declined |
+| `sonnet5-fellgrave-hollow` | dtm | Sonnet 5 | **Two highland mining camps digging for the same frost-locked relic** — one obsidian destroyable a team, each held in a hollow cut into the hillside at the head of its own dig. Deliberately the quietest of the five: one plan piece of shape decisions and a junction stub, with everything else left to the relief and three themes. The valley is finished on the **slope** axis — snow meadow, rocky shoulder, bare stone — under a cold biome, with one taiga-and-podzol stand kept off the grass, and the mandatory team-to-team void is dressed as a frozen tarn that has cracked through at its centre. Narrowed to 100 wide once, which took dead ground from 71.7% to 61.7%; 28 props placed and none declined |
+| `sonnet5-kilnholt-cut` | dtm | Sonnet 5 | **Two stonework guilds cut into opposite flanks of one worked-out quarry** — two buried obsidian monuments a side at the bottom of each cut, and a played-out adit under the west flank that still joins the two sides for anyone bold enough to use it. One landmass a side with the spawn fused to its own excavation, joined on the surface **only** by a permanent void gap spanned by a build zone, so the adit is the one way over that costs nothing placed. The ground is finished by slope angle rather than height — reclaimed floor, worked shoulder, bare cut face — and the tunnel is stacked bottom-up with a stair back to the surface at each end. One edit took the dead share from 30.3% to 9.4%, exactly the flank that was cut away; 16 props placed and none declined |
+| `sonnet5-sable-reach` | ctw | Sonnet 5 | **Two trading posts across a tidal river mouth, built past the composer's three known gaps** — each team's site is **two** landmasses (a settlement island and a flanking dock skerry) joined by a short build zone, a build zone sits **inside** the team's own ground as a plaza among the warehouses rather than only at the middle, and the crossing is a real route rather than a gap: one permanent `made`, `keepClear` bridge as the chokepoint with a pair of shallow sand fords as the second way over (`WL8`). The wool is in a dockside warehouse behind a seawall drawn with a diagonal pattern and a team-colour rim. Shore graded sand-then-mud, three themes, two house styles forked from one recipe. **23 636 walked · 12 scrambled**, 41 props placed and none declined, 37.2% dead |
+| `sonnet5-talltimber-yard` | dtc | Sonnet 5 | **Two logging outfits, and the core is the ledger** — one obsidian core a team, kept in a tall multi-wing counting-house at the middle of its own timber yard, with the two yards facing each other across the felled ground between them and a build zone spanning the void rather than land. Every house style is a fork of a shipped preset varied by wings and storeys rather than a design of its own, the three-colour paths are solid and drawn before any scenery, and the street trees are sparse. **15 600 walked · 0 scrambled · 0 barrier** — the flattest board of the five — 20 props placed and none declined, 27.7% dead |
+
+### Opus 5 — the first two capture boards, and the law the second was built to
+
+The studio grew capture points this run: an intent takes a `controlPoints` array, the export stamps a clay
+pad a point and writes the `<king>` block with a `<score>` beside it. These are the first two boards built
+through it, and they were built in that order on purpose — the first took the gamemode's name literally and
+stood its hills on a hill, the author read that board, and **the reading is now `match-flow.md` §10**:
+structural rather than landscape, no point over open ground, no line from a pad to a spawn, path options on
+three storeys, cover placed rather than strewn, one-way ground. The second is built to it.
+[reports/opus5-threap-edge-run.md](reports/opus5-threap-edge-run.md) ·
+[reports/opus5-casemate-run.md](reports/opus5-casemate-run.md)
+
+**Both boards are read wrongly by three reads that cannot see a capture point**, which is the run's finding
+rather than a fault in either map: `POST /plan/evaluate` raises `PL3` — *this plan has no objective* — on a
+board that exports as `<gamemode>koth</gamemode>` with three hills and a 750 limit (`TN19`);
+`04-routes.txt` prints *no route between a spawn and a goal* while every one of those routes walks (`WS62`);
+and `GET …/coverage` prices ground as dead that a capture board is built to contest.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5-threap-edge` | koth | Opus 5 | **A gritstone edge across a moor, with the three hills cut into its top** — `The Edge` on the summit at dead centre and `West Nab` and `East Nab` on the shoulders where the crest steps down, 32 blocks either side of it, each paying 1 to a limit of 750. Both teams spawn on the low moor, north and south, 96 blocks apart. Every pad is 64 blocks of white stained clay and every sky marker 7 of white wool at y57–59, and **both are regions the point displays through** — the pad as `progress-display-region`, the marker as `owner-display-region` — so both take the holder's colour on capture and go back to white when the point goes neutral. A wool room's marker and a destroyable's name a team for the whole match; a hill's is the one that moves. **8 420 walked · 908 scrambled · 224 barrier · 8 faces**, 26 props placed and none declined, export gate OPEN |
+| `opus5-casemate` | koth | Opus 5 | **A fort rather than a hill, and the middle pays double** — `The Cistern` in a lidded casemate at y13 pays 2, `West Bay` and `East Bay` pay 1 each from three-walled bays with one mouth apiece, to the same 750. Nothing stands over open ground and no pad has a line to a spawn: the terreplein at y20 carries the traverses and the pillars, the rampart rings it, and the ground is one-way. **The cover here is structure, not dressing — 0 props placed** — and the largest of its 20 faces is the casemate's own seven-block wall at x −21..20, z −15..14. **6 364 walked · 360 scrambled · 1 964 barrier**, nine regions, three white wool markers at y53–55, export gate OPEN. The team colour is **stated** rather than sampled, because on a one-island board the tint could not be read (`WE120`) |
+
 ## Three caveats about what is committed here
 
 **`*` — the mode is wrong, and the map is not.** Every board marked `ctw*` is a destroy board whose `map.xml`
@@ -506,20 +562,3 @@ Only **missing** is a capability gap. **Unreachable** is a surface defect and be
 studio. **Mistaken** is the most valuable of the three and the easiest to bury, because it reads as a
 limitation and is really a measurement of how legible the system is. A verdict is not the model's to award on
 its own claim: it is settled by reading the code, and the reading is cited.
-
-### Opus 5 — five boards, one idea each
-
-Five maps authored in one run against one instruction: decide what each board is *about* before deciding
-what it is made of, and keep it to one thing. Every one built, every one `export gate OPEN`, every one
-`declined 0`. What they share is method rather than subject — the ground on all five is finished on the
-**slope** band axis with its cuts read off `GET …/incline?format=text`, the plan on all five is a handful
-of rooms and corridors with the board's shape left to the relief, and every way up a face on any of them
-is an authored flight measured at worst step 1. [reports/opus5-five-boards.md](reports/opus5-five-boards.md)
-
-| Folder | Mode | Author | What it is |
-|---|---|---|---|
-| `opus5-blackden-sough` | dtm | Opus 5 | **70 × 240, and a drainage sough driven under a gritstone edge** — a twelve-block scarp across each team's ground with one eighteen-wide nick in it, and a six-course passage under it that comes out on the dale floor behind the lot. The storey below is stated as adds banded round the corridor and **clipped out of the moor's own drawn outline**, so nothing of it stands past the coast as a ledge over the void; both flights walk for nothing in both directions (`walk?from=-21,45,18&to=-21,80` — 35 blocks, **0 placed, 0 drops**) |
-| `opus5-heftfold` | ctw | Opus 5 | **110 × 170 on the composer's own skeleton, with its three gaps filled** — a walled sheepfold on the saddle as the island the middle otherwise has none of, a team site split into a pasture at y11 and an intake at y16 rather than one rectangle, and the spawn standing **between** its two wools instead of behind both (25 and 32 blocks by walk). The intake is `relief_scope: exclude` so the two tiers meet at a face, its gateway is a rectangular re-entrant cut into the retaining wall, and **0.0% of the board is dead** |
-| `opus5-glassmere` | dtc | Opus 5 | **80 × 220 of snowfield where nothing hides you** — two shores of a mere whose middle never freezes, with the coast drawn into three headlands and two bays so the crossing is 24 blocks at one and 40 at the other. The ice is laid **solid** at the water and freckled with a second, wider `worn` stroke over it, because an edge between two grounds is drawn and never sampled. One theme, and its whole variation is the board's own angle: lying snow under 14°, snow and scoured grass to 30°, bare rock past it |
-| `opus5-burgage-terrace` | dtm | Opus 5 | **80 × 220 built entirely on one boundary** — a market terrace six courses over a water meadow, its front edge cut into two re-entrants and a salient, with a flight set **into** the wall at each re-entrant. The retaining wall is a `wallDiagonal` whose fourth run is a **`teamTint`**, so the town wears the colour of whoever holds it and you can read from the far bank whose terrace you are looking at. Three burgage plots a side, one style, differing in height and footprint and nothing else |
-| `opus5-lingbeck` | ctw | Opus 5 | **110 × 200 split by its own beck** — a six-course gill running the full depth of each team's ground with a wool on each bank, so every rotation between them is a crossing and there are exactly three: round the head, over the brig, or down through the water at the ford (worst step 1, 1 and 0). The gill is an **override add** cut out of one hub piece, because a plan piece at a lower surface enclosed by higher ones is not a cut at all; the brig is a one-course layer at `base_y 11` lapping neither bank. **0.0% dead** |
