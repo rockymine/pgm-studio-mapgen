@@ -1,0 +1,61 @@
+## destroyable-1-0 (destroyable) along x
+TRANSECT 25 stations from (17, -56) to (41, -56), every 1
+  station        ground  surface  water  top  standing            step
+  (   17,   -56)      17       17           17                      
+  (   18,   -56)      24       24           24                      BARRIER +7
+  (   19,   -56)      25       25           25                      +1
+  (   20,   -56)      25       25           25                      
+  (   21,   -56)      26       26           26                      +1
+  (   22,   -56)      26       26           26                      
+  (   23,   -56)      26       26           26                      
+  (   24,   -56)      27       27           27                      +1
+  (   25,   -56)      27       27           27                      
+  (   26,   -56)      28       28           28                      +1
+  (   27,   -56)      28       28           28  destroyable destroyable-1  
+  (   28,   -56)      29       29           60  destroyable destroyable-1  +1
+  (   29,   -56)      29       29           61  stroke road-strand  
+  (   30,   -56)      29       29           60  stroke road-strand  
+  (   31,   -56)      29       29           29  stroke road-strand  
+  (   32,   -56)      29       29           29  stroke road-strand  
+  (   33,   -56)      28       28           28  stroke road-strand  -1
+  (   34,   -56)      28       28           28  stroke road-strand  
+  (   35,   -56)      27       27           27  stroke road-strand  -1
+  (   36,   -56)      27       27           28  flora sward         
+  (   37,   -56)      26       26           27  flora sward         -1
+  (   38,   -56)      26       26           27  flora sward         
+  (   39,   -56)      26       26           27  flora sward         
+  (   40,   -56)      25       25           26  flora sward         -1
+  (   41,   -56)      25       25           26  flora sward         
+rises 6, falls 4, worst step 7: 1 barrier, 0 scramble, 0 drop — BARRIER +7 at (18, -56) | walked end to end
+beside: stroke road-strand at (26, -58), destroyable destroyable-1 at (27, -57), flora sward at (30, -54)
+
+## destroyable-1-0 (destroyable) along z
+TRANSECT 25 stations from (29, -68) to (29, -44), every 1
+  station        ground  surface  water  top  standing            step
+  (   29,   -68)      25       25           26  flora sward         
+  (   29,   -67)      26       26           27  flora sward         +1
+  (   29,   -66)      26       26           27  flora sward         
+  (   29,   -65)      26       26           27  flora sward         
+  (   29,   -64)      26       26           27  flora sward         
+  (   29,   -63)      27       27           27                      +1
+  (   29,   -62)      27       27           27                      
+  (   29,   -61)      28       28           28                      +1
+  (   29,   -60)      28       28           28                      
+  (   29,   -59)      29       29           29  stroke road-strand  +1
+  (   29,   -58)      29       29           29  stroke road-strand  
+  (   29,   -57)      29       29           60  stroke road-strand  
+  (   29,   -56)      29       29           61  stroke road-strand  
+  (   29,   -55)      29       29           60  destroyable destroyable-1  
+  (   29,   -54)      28       28           28  destroyable destroyable-1  -1
+  (   29,   -53)      27       27           27                      -1
+  (   29,   -52)      26       26           26                      -1
+  (   29,   -51)      26       26           26                      
+  (   29,   -50)      25       25           26  flora sward         -1
+  (   29,   -49)      24       24           25  flora sward         -1
+  (   29,   -48)      23       23           24  flora sward         -1
+  (   29,   -47)      22       22           23  flora sward         -1
+  (   29,   -46)      21       21           21                      -1
+  (   29,   -45)      20       20           20                      -1
+  (   29,   -44)      19       19           19                      -1
+rises 4, falls 10, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora sward at (27, -70), stroke road-strand at (27, -60), destroyable destroyable-1 at (27, -57), boulder stone-2 at (27, -42)

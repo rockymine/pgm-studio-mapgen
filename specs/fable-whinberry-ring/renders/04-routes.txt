@@ -1,0 +1,23 @@
+## spawn-red -> red-0
+ROUTE (5, 65) -> (-35, 50) aim travel: unreachable
+
+## spawn-red -> orange-0
+ROUTE (5, 65) -> (30, 35) aim travel: unreachable
+
+## spawn-red -> blue-1
+ROUTE (5, 65) -> (35, -50) aim travel: unreachable
+
+## spawn-red -> light_blue-1
+ROUTE (5, 65) -> (-30, -35) aim travel: unreachable
+
+## spawn-blue -> red-0
+ROUTE (-5, -65) -> (-35, 50) aim travel: unreachable
+
+## spawn-blue -> orange-0
+ROUTE (-5, -65) -> (30, 35) aim travel: unreachable
+
+## spawn-blue -> blue-1
+ROUTE (-5, -65) -> (35, -50) aim travel: unreachable
+
+## spawn-blue -> light_blue-1
+ROUTE (-5, -65) -> (-30, -35) aim travel: unreachable

@@ -1,0 +1,61 @@
+## stone-2 (boulder) along x
+TRANSECT 25 stations from (0, 24) to (24, 24), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    24)                                                    void
+  (    1,    24)                                                    void
+  (    2,    24)                                                    void
+  (    3,    24)                                                    void
+  (    4,    24)                                                    void
+  (    5,    24)       9        9            9  stroke road         
+  (    6,    24)       9        9            9  stroke road         
+  (    7,    24)       9        9            9  stroke road         
+  (    8,    24)       9        9           10  flora bracken       
+  (    9,    24)       9        9            9                      
+  (   10,    24)       9        9           12  boulder stone-2     
+  (   11,    24)       9        9           13  boulder stone-2     
+  (   12,    24)       9        9           13  boulder stone-2     
+  (   13,    24)       9        9           13  boulder stone-2     
+  (   14,    24)       9        9           12  boulder stone-2     
+  (   15,    24)      10       10           11  boulder stone-2     +1
+  (   16,    24)      10       10           10                      
+  (   17,    24)                                                    void
+  (   18,    24)                                                    void
+  (   19,    24)                                                    void
+  (   20,    24)                                                    void
+  (   21,    24)                                                    void
+  (   22,    24)                                                    void
+  (   23,    24)                                                    void
+  (   24,    24)                                                    void
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke road at (5, 22), flora bracken at (8, 22), boulder stone-2 at (10, 22)
+
+## stone-2 (boulder) along z
+TRANSECT 25 stations from (12, 12) to (12, 36), every 1
+  station        ground  surface  water  top  standing            step
+  (   12,    12)                                                    void
+  (   12,    13)                                                    void
+  (   12,    14)       9        9            9                      
+  (   12,    15)       9        9            9                      
+  (   12,    16)       9        9            9                      
+  (   12,    17)       9        9            9                      
+  (   12,    18)       9        9            9                      
+  (   12,    19)       9        9            9                      
+  (   12,    20)       9        9            9                      
+  (   12,    21)       9        9           10  boulder stone-2     
+  (   12,    22)       9        9           12  boulder stone-2     
+  (   12,    23)       9        9           13  boulder stone-2     
+  (   12,    24)       9        9           13  boulder stone-2     
+  (   12,    25)      10       10           13  boulder stone-2     +1
+  (   12,    26)      10       10           12  boulder stone-2     
+  (   12,    27)      10       10           10                      
+  (   12,    28)      10       10           10                      
+  (   12,    29)      11       11           11                      +1
+  (   12,    30)      11       11           11                      
+  (   12,    31)      11       11           11                      
+  (   12,    32)      11       11           11                      
+  (   12,    33)      11       11           11                      
+  (   12,    34)      12       12           12  stroke cross        +1
+  (   12,    35)      12       12           12  stroke cross        
+  (   12,    36)      12       12           12  stroke cross        
+rises 3, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora bracken at (10, 16), boulder stone-2 at (11, 21), wall 1 at (14, 30), stroke cross at (10, 34)

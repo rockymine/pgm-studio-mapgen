@@ -1,0 +1,60 @@
+## warehouse-w (house) along x
+TRANSECT 24 stations from (-50, -39) to (-27, -39), every 1
+  station        ground  surface  water  top  standing            step
+  (  -50,   -39)      12       12           12                      
+  (  -49,   -39)      12       12           12  house warehouse-w   
+  (  -48,   -39)      12       12           21  house warehouse-w   
+  (  -47,   -39)      12       12           21  house warehouse-w   
+  (  -46,   -39)      12       12           21  house warehouse-w   
+  (  -45,   -39)      12       12           21  house warehouse-w   
+  (  -44,   -39)      12       12           21  house warehouse-w   
+  (  -43,   -39)      12       12           21  house warehouse-w   
+  (  -42,   -39)      12       12           21  house warehouse-w   
+  (  -41,   -39)      12       12           21  house warehouse-w   
+  (  -40,   -39)      12       12           17  house warehouse-w   
+  (  -39,   -39)      12       12           17  house warehouse-w   
+  (  -38,   -39)      12       12           17  house warehouse-w   
+  (  -37,   -39)      12       12           17  house warehouse-w   
+  (  -36,   -39)      12       12           17  house warehouse-w   
+  (  -35,   -39)      12       12           17  house warehouse-w   
+  (  -34,   -39)      12       12           12  house warehouse-w   
+  (  -33,   -39)      12       12           12                      
+  (  -32,   -39)      12       12           12                      
+  (  -31,   -39)      12       12           12                      
+  (  -30,   -39)      12       12           12                      
+  (  -29,   -39)      12       12           12                      
+  (  -28,   -39)      12       12           12                      
+  (  -27,   -39)      12       12           12                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house warehouse-w at (-49, -41)
+
+## warehouse-w (house) along z
+TRANSECT 25 stations from (-42, -51) to (-42, -27), every 1
+  station        ground  surface  water  top  standing            step
+  (  -42,   -51)      22       22           36  flora sward         
+  (  -42,   -50)      22       22           31  flora sward         
+  (  -42,   -49)      22       22           32  flora sward         
+  (  -42,   -48)      22       22           23  flora sward         
+  (  -42,   -47)      22       22           22                      
+  (  -42,   -46)      22       22           22                      
+  (  -42,   -45)      12       12           12                      DROP -10
+  (  -42,   -44)      12       12           12  house warehouse-w   
+  (  -42,   -43)      12       12           21  house warehouse-w   
+  (  -42,   -42)      12       12           21  house warehouse-w   
+  (  -42,   -41)      12       12           21  house warehouse-w   
+  (  -42,   -40)      12       12           21  house warehouse-w   
+  (  -42,   -39)      12       12           21  house warehouse-w   
+  (  -42,   -38)      12       12           21  house warehouse-w   
+  (  -42,   -37)      12       12           21  house warehouse-w   
+  (  -42,   -36)      12       12           21  house warehouse-w   
+  (  -42,   -35)      12       12           21  house warehouse-w   
+  (  -42,   -34)      12       12           12  house warehouse-w   
+  (  -42,   -33)      12       12           12                      
+  (  -42,   -32)      12       12           12                      
+  (  -42,   -31)      12       12           12                      
+  (  -42,   -30)      12       12           12                      
+  (  -42,   -29)      12       12           12                      
+  (  -42,   -28)      12       12           12                      
+  (  -42,   -27)      12       12           12                      
+rises 0, falls 1, worst step 10: 0 barrier, 0 scramble, 1 drop — DROP -10 at (-42, -45) | walked end to end
+beside: tree oak-1 at (-44, -53), flora sward at (-42, -53), house warehouse-w at (-44, -44)

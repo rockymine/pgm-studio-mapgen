@@ -1,0 +1,10 @@
+THEMES  4 themes over 17432 ground cells, 13 distinct surface blocks
+  moor  10664 cells (61.2%)  2:0 Grass Block, 3:1 Coarse Dirt, 1:0 Stone, 1:5 Andesite, 98:0 Stone Bricks, 4:0 Cobblestone, 13:0 Gravel, 17:1 Spruce Log, 17:9 Spruce Log, 35:14 Red Wool, 35:11 Blue Wool, 134:5 Spruce Stairs
+  yard  5960 cells (34.2%)  13:0 Gravel, 1:5 Andesite, 4:0 Cobblestone
+  stair  524 cells (3.0%)  98:0 Stone Bricks
+  crag  284 cells (1.6%)  1:5 Andesite, 1:0 Stone
+borders:
+  moor | yard  290 cells
+  moor | stair  244 cells
+  stair | yard  104 cells
+  crag | moor  80 cells

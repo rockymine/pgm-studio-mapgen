@@ -1,0 +1,11 @@
+THEMES  4 themes over 11798 ground cells, 13 distinct surface blocks
+  headland  6680 cells (56.6%)  2:0 Grass Block, 3:1 Coarse Dirt, 1:5 Andesite, 1:0 Stone, 13:0 Gravel, 98:0 Stone Bricks, 4:0 Cobblestone, 35:14 Red Wool, 35:11 Blue Wool
+  quay  3436 cells (29.1%)  98:0 Stone Bricks, 98:3 Chiseled Stone Bricks, 159:14 Red Stained Clay, 159:11 Blue Stained Clay, 2:0 Grass Block, 12:0 Sand
+  strand  1200 cells (10.2%)  12:0 Sand, 4:0 Cobblestone, 13:0 Gravel, 2:0 Grass Block, 1:5 Andesite, 1:0 Stone
+  stair  482 cells (4.1%)  98:0 Stone Bricks
+borders:
+  headland | stair  176 cells
+  headland | quay  124 cells
+  quay | stair  88 cells
+  headland | strand  60 cells
+  quay | strand  40 cells

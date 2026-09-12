@@ -1,0 +1,197 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Ashcombe Delph"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 12,
+  "observerY": 60
+ },
+ "pieces": [
+  {
+   "id": "yard-w",
+   "role": "piece",
+   "rect": [
+    -10,
+    -12,
+    5,
+    8
+   ],
+   "surface": 12
+  },
+  {
+   "id": "yard-mw",
+   "role": "piece",
+   "rect": [
+    -5,
+    -8,
+    5,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "yard-me",
+   "role": "piece",
+   "rect": [
+    0,
+    -11,
+    5,
+    7
+   ],
+   "surface": 12
+  },
+  {
+   "id": "yard-e",
+   "role": "piece",
+   "rect": [
+    5,
+    -9,
+    5,
+    5
+   ],
+   "surface": 12
+  },
+  {
+   "id": "bench-w",
+   "role": "piece",
+   "rect": [
+    -10,
+    -16,
+    5,
+    4
+   ],
+   "surface": 20
+  },
+  {
+   "id": "bench-mw",
+   "role": "piece",
+   "rect": [
+    -5,
+    -16,
+    5,
+    8
+   ],
+   "surface": 20
+  },
+  {
+   "id": "bench-me",
+   "role": "piece",
+   "rect": [
+    0,
+    -16,
+    5,
+    5
+   ],
+   "surface": 20
+  },
+  {
+   "id": "bench-e",
+   "role": "piece",
+   "rect": [
+    5,
+    -16,
+    5,
+    7
+   ],
+   "surface": 20
+  },
+  {
+   "id": "terrace-w",
+   "role": "piece",
+   "rect": [
+    -10,
+    -22,
+    8,
+    6
+   ],
+   "surface": 26
+  },
+  {
+   "id": "terrace-m",
+   "role": "piece",
+   "rect": [
+    -2,
+    -18,
+    4,
+    2
+   ],
+   "surface": 26
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -2,
+    -22,
+    4,
+    4
+   ],
+   "surface": 26
+  },
+  {
+   "id": "terrace-e",
+   "role": "piece",
+   "rect": [
+    2,
+    -22,
+    8,
+    6
+   ],
+   "surface": 26
+  }
+ ],
+ "zones": [
+  {
+   "id": "sound",
+   "rect": [
+    -10,
+    -4,
+    20,
+    8
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     10,
+     8
+    ],
+    "facing": "back",
+    "footprint": [
+     5,
+     3,
+     10,
+     10
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "piece": "bench-me",
+    "at": [
+     2,
+     20
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Delph Monument"
+   }
+  ],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

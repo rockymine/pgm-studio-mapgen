@@ -1,0 +1,54 @@
+## stone-1 (boulder) along x
+TRANSECT 18 stations from (32, -28) to (49, -28), every 1
+  station        ground  surface  water  top  standing            step
+  (   32,   -28)       9        9            9                      
+  (   33,   -28)       9        9            9                      
+  (   34,   -28)       9        9            9                      
+  (   35,   -28)       9        9            9                      
+  (   36,   -28)       9        9            9                      
+  (   37,   -28)       9        9            9                      
+  (   38,   -28)       9        9            9                      
+  (   39,   -28)       9        9            9                      
+  (   40,   -28)       9        9            9                      
+  (   41,   -28)       9        9           14  boulder stone-1     
+  (   42,   -28)       9        9           14  boulder stone-1     
+  (   43,   -28)       9        9           15  boulder stone-1     
+  (   44,   -28)       9        9           15  boulder stone-1     
+  (   45,   -28)       9        9           15  boulder stone-1     
+  (   46,   -28)       9        9           14  boulder stone-1     
+  (   47,   -28)       9        9           14  boulder stone-1     
+  (   48,   -28)       9        9            9                      
+  (   49,   -28)       9        9            9                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke road-strand at (35, -30), boulder stone-1 at (41, -30)
+
+## stone-1 (boulder) along z
+TRANSECT 25 stations from (44, -40) to (44, -16), every 1
+  station        ground  surface  water  top  standing            step
+  (   44,   -40)      14       14           14                      
+  (   44,   -39)      13       13           13                      -1
+  (   44,   -38)      13       13           13  stroke tide-line    
+  (   44,   -37)      12       12           12                      -1
+  (   44,   -36)      12       12           12  stroke tide-line    
+  (   44,   -35)      11       11           11  stroke tide-line    -1
+  (   44,   -34)      11       11           11  stroke tide-line    
+  (   44,   -33)      10       10           10                      -1
+  (   44,   -32)      10       10           10                      
+  (   44,   -31)       9        9           13  boulder stone-1     -1
+  (   44,   -30)       9        9           14  boulder stone-1     
+  (   44,   -29)       9        9           15  boulder stone-1     
+  (   44,   -28)       9        9           15  boulder stone-1     
+  (   44,   -27)       9        9           15  boulder stone-1     
+  (   44,   -26)       9        9           14  boulder stone-1     
+  (   44,   -25)                            13  boulder stone-1     void
+  (   44,   -24)                                                    void
+  (   44,   -23)                                                    void
+  (   44,   -22)                             2                      void
+  (   44,   -21)                                                    void
+  (   44,   -20)                                                    void
+  (   44,   -19)                                                    void
+  (   44,   -18)                                                    void
+  (   44,   -17)                                                    void
+  (   44,   -16)                                                    void
+rises 0, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke road-strand at (42, -42), stroke tide-line at (43, -39), flora sward at (43, -34), boulder stone-1 at (42, -31)

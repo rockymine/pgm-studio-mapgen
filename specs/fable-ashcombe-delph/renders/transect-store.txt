@@ -1,0 +1,56 @@
+## store (house) along x
+TRANSECT 24 stations from (18, -101) to (41, -101), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,  -101)      26       26           34  tree fir-5          
+  (   19,  -101)      26       26           36  tree fir-5          
+  (   20,  -101)      26       26           39  tree fir-5          
+  (   21,  -101)      26       26           38  tree fir-5          
+  (   22,  -101)      26       26           34  tree fir-5          
+  (   23,  -101)      26       26           26                      
+  (   24,  -101)      26       26           26                      
+  (   25,  -101)      26       26           33  house store         
+  (   26,  -101)      26       26           33  house store         
+  (   27,  -101)      26       26           33  house store         
+  (   28,  -101)      26       26           33  house store         
+  (   29,  -101)      26       26           33  house store         
+  (   30,  -101)      26       26           33  house store         
+  (   31,  -101)      26       26           33  house store         
+  (   32,  -101)      26       26           33  house store         
+  (   33,  -101)      26       26           33  house store         
+  (   34,  -101)      26       26           33  house store         
+  (   35,  -101)      26       26           27  flora sward         
+  (   36,  -101)      26       26           27  flora sward         
+  (   37,  -101)      26       26           33  flora sward         
+  (   38,  -101)      26       26           33  tree fir-3          
+  (   39,  -101)      26       26           33  tree fir-3          
+  (   40,  -101)      26       26           26                      
+  (   41,  -101)      26       26           26                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree fir-5 at (19, -103), house store at (25, -103), flora sward at (34, -100), tree fir-4 at (36, -103), tree fir-3 at (38, -101)
+
+## store (house) along z
+TRANSECT 21 stations from (29, -110) to (29, -90), every 1
+  station        ground  surface  water  top  standing            step
+  (   29,  -110)      26       26           26                      
+  (   29,  -109)      26       26           26                      
+  (   29,  -108)      26       26           26                      
+  (   29,  -107)      26       26           26                      
+  (   29,  -106)      26       26           26                      
+  (   29,  -105)      26       26           29  house store         
+  (   29,  -104)      26       26           30  house store         
+  (   29,  -103)      26       26           31  house store         
+  (   29,  -102)      26       26           32  house store         
+  (   29,  -101)      26       26           33  house store         
+  (   29,  -100)      26       26           32  house store         
+  (   29,   -99)      26       26           31  house store         
+  (   29,   -98)      26       26           30  house store         
+  (   29,   -97)      26       26           29  house store         
+  (   29,   -96)      26       26           26                      
+  (   29,   -95)      26       26           26                      
+  (   29,   -94)      26       26           26                      
+  (   29,   -93)      26       26           26                      
+  (   29,   -92)      26       26           26                      
+  (   29,   -91)      26       26           26                      
+  (   29,   -90)      26       26           26                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house store at (27, -105)

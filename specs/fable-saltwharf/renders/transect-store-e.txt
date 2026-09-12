@@ -1,0 +1,65 @@
+## store-e (house) along x
+TRANSECT 29 stations from (-2, -39) to (26, -39), every 1
+  station        ground  surface  water  top  standing            step
+  (   -2,   -39)      12       12           12                      
+  (   -1,   -39)      12       12           12                      
+  (    0,   -39)      12       12           12                      
+  (    1,   -39)      12       12           12                      
+  (    2,   -39)      12       12           12                      
+  (    3,   -39)      12       12           12                      
+  (    4,   -39)      12       12           12                      
+  (    5,   -39)      12       12           12  house store-e       
+  (    6,   -39)      12       12           21  house store-e       
+  (    7,   -39)      12       12           21  house store-e       
+  (    8,   -39)      12       12           21  house store-e       
+  (    9,   -39)      12       12           21  house store-e       
+  (   10,   -39)      12       12           21  house store-e       
+  (   11,   -39)      12       12           21  house store-e       
+  (   12,   -39)      12       12           21  house store-e       
+  (   13,   -39)      12       12           21  house store-e       
+  (   14,   -39)      12       12           17  house store-e       
+  (   15,   -39)      12       12           17  house store-e       
+  (   16,   -39)      12       12           17  house store-e       
+  (   17,   -39)      12       12           17  house store-e       
+  (   18,   -39)      12       12           17  house store-e       
+  (   19,   -39)      12       12           12  house store-e       
+  (   20,   -39)      14       14           14                      scramble +2
+  (   21,   -39)      14       14           14                      
+  (   22,   -39)      14       14           14                      
+  (   23,   -39)      14       14           14                      
+  (   24,   -39)      14       14           14                      
+  (   25,   -39)      14       14           16  boulder stone-2     
+  (   26,   -39)      14       14           17  boulder stone-2     
+rises 1, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (20, -39) | walked end to end
+beside: house store-e at (5, -41), stroke tide-line at (23, -37), flora sward at (24, -37), boulder stone-2 at (25, -41)
+
+## store-e (house) along z
+TRANSECT 25 stations from (12, -51) to (12, -27), every 1
+  station        ground  surface  water  top  standing            step
+  (   12,   -51)      22       22           22                      
+  (   12,   -50)      22       22           22                      
+  (   12,   -49)      22       22           22                      
+  (   12,   -48)      21       21           21                      -1
+  (   12,   -47)      21       21           21                      
+  (   12,   -46)      21       21           21                      
+  (   12,   -45)      12       12           12                      DROP -9
+  (   12,   -44)      12       12           12  house store-e       
+  (   12,   -43)      12       12           21  house store-e       
+  (   12,   -42)      12       12           21  house store-e       
+  (   12,   -41)      12       12           21  house store-e       
+  (   12,   -40)      12       12           21  house store-e       
+  (   12,   -39)      12       12           21  house store-e       
+  (   12,   -38)      12       12           21  house store-e       
+  (   12,   -37)      12       12           21  house store-e       
+  (   12,   -36)      12       12           21  house store-e       
+  (   12,   -35)      12       12           21  house store-e       
+  (   12,   -34)      12       12           12  house store-e       
+  (   12,   -33)      12       12           12                      
+  (   12,   -32)      12       12           12                      
+  (   12,   -31)      12       12           12                      
+  (   12,   -30)      12       12           12                      
+  (   12,   -29)      12       12           12                      
+  (   12,   -28)      12       12           12                      
+  (   12,   -27)      12       12           12                      
+rises 0, falls 2, worst step 9: 0 barrier, 0 scramble, 1 drop — DROP -9 at (12, -45) | walked end to end
+beside: flora sward at (10, -53), house store-e at (10, -44)

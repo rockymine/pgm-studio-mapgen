@@ -1,0 +1,60 @@
+## office (house) along x
+TRANSECT 25 stations from (-44, -77) to (-20, -77), every 1
+  station        ground  surface  water  top  standing            step
+  (  -44,   -77)      29       29           29                      
+  (  -43,   -77)      29       29           29                      
+  (  -42,   -77)      25       25           25                      DROP -4
+  (  -41,   -77)      23       23           23                      -2
+  (  -40,   -77)      22       22           22                      -1
+  (  -39,   -77)      20       20           20                      -2
+  (  -38,   -77)      20       20           20                      
+  (  -37,   -77)      20       20           31  house office        
+  (  -36,   -77)      20       20           31  house office        
+  (  -35,   -77)      20       20           31  house office        
+  (  -34,   -77)      20       20           31  house office        
+  (  -33,   -77)      20       20           31  house office        
+  (  -32,   -77)      20       20           31  house office        
+  (  -31,   -77)      20       20           31  house office        
+  (  -30,   -77)      20       20           31  house office        
+  (  -29,   -77)      20       20           31  house office        
+  (  -28,   -77)      20       20           31  house office        
+  (  -27,   -77)      20       20           31  house office        
+  (  -26,   -77)      20       20           20                      
+  (  -25,   -77)      20       20           20                      
+  (  -24,   -77)      20       20           20                      
+  (  -23,   -77)      20       20           20                      
+  (  -22,   -77)      20       20           25  tree fir-9          
+  (  -21,   -77)      20       20           27  tree fir-9          
+  (  -20,   -77)      20       20           27  tree fir-9          
+rises 0, falls 4, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-42, -77) | walked end to end
+beside: house office at (-37, -79), tree fir-9 at (-22, -79)
+
+## office (house) along z
+TRANSECT 24 stations from (-32, -88) to (-32, -65), every 1
+  station        ground  surface  water  top  standing            step
+  (  -32,   -88)      26       26           26                      
+  (  -32,   -87)      26       26           26                      
+  (  -32,   -86)      26       26           26                      
+  (  -32,   -85)      26       26           26                      
+  (  -32,   -84)      26       26           26                      
+  (  -32,   -83)      26       26           26                      
+  (  -32,   -82)      26       26           26                      
+  (  -32,   -81)      24       24           27  house office        -2
+  (  -32,   -80)      23       23           28  house office        -1
+  (  -32,   -79)      21       21           29  house office        -2
+  (  -32,   -78)      20       20           30  house office        -1
+  (  -32,   -77)      20       20           31  house office        
+  (  -32,   -76)      20       20           31  house office        
+  (  -32,   -75)      20       20           30  house office        
+  (  -32,   -74)      20       20           29  house office        
+  (  -32,   -73)      20       20           28  house office        
+  (  -32,   -72)      20       20           27  house office        
+  (  -32,   -71)      20       20           20                      
+  (  -32,   -70)      18       18           18                      -2
+  (  -32,   -69)      18       18           18                      
+  (  -32,   -68)      18       18           18                      
+  (  -32,   -67)      18       18           18                      
+  (  -32,   -66)      18       18           18                      
+  (  -32,   -65)      20       20           20  stroke road-bench   scramble +2
+rises 1, falls 5, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-32, -65) | walked end to end
+beside: house office at (-34, -81), stroke road-bench at (-34, -65)
