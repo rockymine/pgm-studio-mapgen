@@ -1,0 +1,61 @@
+## edge-rock-1 (boulder) along x
+TRANSECT 25 stations from (-26, 26) to (-2, 26), every 1
+  station        ground  surface  water  top  standing            step
+  (  -26,    26)      28       28           30  boulder edge-rock-0  
+  (  -25,    26)      28       28           29  boulder edge-rock-0  
+  (  -24,    26)      23       23           23                      DROP -5
+  (  -23,    26)      23       23           23                      
+  (  -22,    26)      23       23           23                      
+  (  -21,    26)      23       23           23                      
+  (  -20,    26)      23       23           23                      
+  (  -19,    26)      23       23           23                      
+  (  -18,    26)      28       28           28                      BARRIER +5
+  (  -17,    26)      28       28           30  boulder edge-rock-1  
+  (  -16,    26)      28       28           32  boulder edge-rock-1  
+  (  -15,    26)      28       28           32  boulder edge-rock-1  
+  (  -14,    26)      28       28           32  boulder edge-rock-1  
+  (  -13,    26)      28       28           32  boulder edge-rock-1  
+  (  -12,    26)      28       28           32  boulder edge-rock-1  
+  (  -11,    26)      28       28           28                      
+  (  -10,    26)      28       28           28                      
+  (   -9,    26)      29       29           29                      +1
+  (   -8,    26)      30       30           30                      +1
+  (   -7,    26)      30       30           30                      
+  (   -6,    26)      31       31           31                      +1
+  (   -5,    26)      31       31           31                      
+  (   -4,    26)      31       31           31                      
+  (   -3,    26)      31       31           31                      
+  (   -2,    26)      31       31           31                      
+rises 4, falls 1, worst step 5: 1 barrier, 0 scramble, 1 drop — DROP -5 at (-24, 26); BARRIER +5 at (-18, 26) | walked end to end
+beside: boulder edge-rock-0 at (-28, 24), boulder edge-rock-1 at (-17, 26), stroke way-nick at (-2, 27)
+
+## edge-rock-1 (boulder) along z
+TRANSECT 25 stations from (-14, 14) to (-14, 38), every 1
+  station        ground  surface  water  top  standing            step
+  (  -14,    14)      28       28           28                      
+  (  -14,    15)      28       28           28                      
+  (  -14,    16)      28       28           28                      
+  (  -14,    17)      28       28           28                      
+  (  -14,    18)      28       28           28                      
+  (  -14,    19)      28       28           28                      
+  (  -14,    20)      28       28           28                      
+  (  -14,    21)      28       28           28                      
+  (  -14,    22)      28       28           28                      
+  (  -14,    23)      28       28           28                      
+  (  -14,    24)      28       28           31  boulder edge-rock-1  
+  (  -14,    25)      28       28           32  boulder edge-rock-1  
+  (  -14,    26)      28       28           32  boulder edge-rock-1  
+  (  -14,    27)      28       28           32  boulder edge-rock-1  
+  (  -14,    28)      28       28           32  boulder edge-rock-1  
+  (  -14,    29)      31       31           31                      BARRIER +3
+  (  -14,    30)      34       34           34                      BARRIER +3
+  (  -14,    31)      37       37           37                      BARRIER +3
+  (  -14,    32)      40       40           40                      BARRIER +3
+  (  -14,    33)      40       40           40                      
+  (  -14,    34)      40       40           40                      
+  (  -14,    35)      40       40           40                      
+  (  -14,    36)      39       39           39                      -1
+  (  -14,    37)      39       39           39                      
+  (  -14,    38)      39       39           40  boulder edge-rock-4  
+rises 4, falls 1, worst step 3: 4 barrier, 0 scramble, 0 drop — BARRIER +3 at (-14, 29); BARRIER +3 at (-14, 30); BARRIER +3 at (-14, 31); BARRIER +3 at (-14, 32) | walked end to end
+beside: boulder edge-rock-1 at (-15, 24), boulder edge-rock-4 at (-16, 35)

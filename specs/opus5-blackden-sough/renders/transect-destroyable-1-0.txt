@@ -1,0 +1,61 @@
+## destroyable-1-0 (destroyable) along x
+TRANSECT 25 stations from (0, 62) to (24, 62), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    62)      34       34           34                      
+  (    1,    62)      33       33           33                      -1
+  (    2,    62)      33       33           33                      
+  (    3,    62)      33       33           33                      
+  (    4,    62)      32       32           32                      -1
+  (    5,    62)      32       32           32                      
+  (    6,    62)      32       32           32                      
+  (    7,    62)      32       32           32                      
+  (    8,    62)      32       32           32                      
+  (    9,    62)      32       32           32                      
+  (   10,    62)      32       32           32  stroke way-nick     
+  (   11,    62)      32       32           73  stroke way-nick     
+  (   12,    62)      32       32           74  stroke way-nick     
+  (   13,    62)      32       32           73  stroke way-nick     
+  (   14,    62)      32       32           32  destroyable destroyable-1  
+  (   15,    62)      32       32           32                      
+  (   16,    62)      32       32           32                      
+  (   17,    62)      32       32           32                      
+  (   18,    62)      32       32           32                      
+  (   19,    62)      32       32           32                      
+  (   20,    62)      32       32           32                      
+  (   21,    62)      33       33           33                      +1
+  (   22,    62)      33       33           33                      
+  (   23,    62)      34       34           34                      +1
+  (   24,    62)      34       34           34                      
+rises 2, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke way-nick at (9, 60), stroke way-dale at (10, 63), destroyable destroyable-1 at (14, 60)
+
+## destroyable-1-0 (destroyable) along z
+TRANSECT 25 stations from (12, 50) to (12, 74), every 1
+  station        ground  surface  water  top  standing            step
+  (   12,    50)      40       40           40                      
+  (   12,    51)      40       40           40                      
+  (   12,    52)      39       39           39                      -1
+  (   12,    53)      38       38           38                      -1
+  (   12,    54)      37       37           37                      -1
+  (   12,    55)      36       36           36                      -1
+  (   12,    56)      34       34           34                      -2
+  (   12,    57)      33       33           33                      -1
+  (   12,    58)      32       32           32  stroke way-nick     -1
+  (   12,    59)      32       32           32  stroke way-nick     
+  (   12,    60)      32       32           32  stroke way-nick     
+  (   12,    61)      32       32           73  stroke way-nick     
+  (   12,    62)      32       32           74  stroke way-nick     
+  (   12,    63)      32       32           73  stroke way-nick     
+  (   12,    64)      32       32           32  stroke way-dale     
+  (   12,    65)      32       32           32  stroke way-dale     
+  (   12,    66)      32       32           32  stroke way-dale     
+  (   12,    67)      32       32           32  stroke way-dale     
+  (   12,    68)      32       32           32  stroke way-dale     
+  (   12,    69)      32       32           32  stroke way-dale     
+  (   12,    70)      32       32           32  stroke way-dale     
+  (   12,    71)      33       33           33  stroke way-dale     +1
+  (   12,    72)      33       33           33  stroke way-dale     
+  (   12,    73)      33       33           33  stroke way-dale     
+  (   12,    74)      33       33           33  stroke way-dale     
+rises 1, falls 7, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke way-nick at (10, 53), destroyable destroyable-1 at (14, 60), stroke way-dale at (10, 63)

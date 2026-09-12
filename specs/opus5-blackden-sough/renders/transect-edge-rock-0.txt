@@ -1,0 +1,54 @@
+## edge-rock-0 (boulder) along x
+TRANSECT 18 stations from (-35, 25) to (-18, 25), every 1
+  station        ground  surface  water  top  standing            step
+  (  -35,    25)      24       24           30  boulder edge-rock-0  
+  (  -34,    25)      28       28           30  boulder edge-rock-0  BARRIER +4
+  (  -33,    25)      28       28           30  boulder edge-rock-0  
+  (  -32,    25)      28       28           31  boulder edge-rock-0  
+  (  -31,    25)      28       28           31  boulder edge-rock-0  
+  (  -30,    25)      28       28           31  boulder edge-rock-0  
+  (  -29,    25)      28       28           31  boulder edge-rock-0  
+  (  -28,    25)      28       28           31  boulder edge-rock-0  
+  (  -27,    25)      28       28           31  boulder edge-rock-0  
+  (  -26,    25)      28       28           30  boulder edge-rock-0  
+  (  -25,    25)      28       28           30  boulder edge-rock-0  
+  (  -24,    25)      24       24           24                      DROP -4
+  (  -23,    25)      24       24           24                      
+  (  -22,    25)      24       24           24                      
+  (  -21,    25)      24       24           24                      
+  (  -20,    25)      24       24           24                      
+  (  -19,    25)      24       24           24                      
+  (  -18,    25)      28       28           28                      BARRIER +4
+rises 2, falls 1, worst step 4: 2 barrier, 0 scramble, 1 drop — BARRIER +4 at (-34, 25); DROP -4 at (-24, 25); BARRIER +4 at (-18, 25) | walked end to end
+beside: boulder edge-rock-0 at (-35, 23), boulder edge-rock-1 at (-17, 26)
+
+## edge-rock-0 (boulder) along z
+TRANSECT 25 stations from (-30, 13) to (-30, 37), every 1
+  station        ground  surface  water  top  standing            step
+  (  -30,    13)                                                    void
+  (  -30,    14)                                                    void
+  (  -30,    15)                                                    void
+  (  -30,    16)                                                    void
+  (  -30,    17)      28       28           28                      
+  (  -30,    18)      28       28           28                      
+  (  -30,    19)      28       28           28                      
+  (  -30,    20)      28       28           29  boulder edge-rock-0  
+  (  -30,    21)      28       28           30  boulder edge-rock-0  
+  (  -30,    22)      28       28           30  boulder edge-rock-0  
+  (  -30,    23)      28       28           30  boulder edge-rock-0  
+  (  -30,    24)      28       28           31  boulder edge-rock-0  
+  (  -30,    25)      28       28           31  boulder edge-rock-0  
+  (  -30,    26)      28       28           31  boulder edge-rock-0  
+  (  -30,    27)      28       28           31  boulder edge-rock-0  
+  (  -30,    28)      28       28           31  boulder edge-rock-0  
+  (  -30,    29)      30       30           30  boulder edge-rock-0  scramble +2
+  (  -30,    30)      34       34           34                      BARRIER +4
+  (  -30,    31)      37       37           37                      BARRIER +3
+  (  -30,    32)      40       40           40                      BARRIER +3
+  (  -30,    33)      40       40           40                      
+  (  -30,    34)      40       40           40                      
+  (  -30,    35)      40       40           40                      
+  (  -30,    36)      39       39           39                      -1
+  (  -30,    37)      40       40           40                      +1
+rises 5, falls 1, worst step 4: 3 barrier, 1 scramble, 0 drop — scramble +2 at (-30, 29); BARRIER +4 at (-30, 30); BARRIER +3 at (-30, 31); BARRIER +3 at (-30, 32) | walked end to end
+beside: boulder edge-rock-0 at (-30, 20)

@@ -1,0 +1,104 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Blackden Sough"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 28,
+  "observerY": 62
+ },
+ "pieces": [
+  {
+   "id": "moor",
+   "role": "piece",
+   "rect": [
+    -7,
+    3,
+    14,
+    17
+   ],
+   "surface": 28
+  },
+  {
+   "id": "stell",
+   "role": "spawn",
+   "rect": [
+    -3,
+    20,
+    6,
+    4
+   ],
+   "surface": 28
+  }
+ ],
+ "zones": [
+  {
+   "id": "crossing",
+   "rect": [
+    -7,
+    -3,
+    14,
+    6
+   ],
+   "kind": "build"
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "stell",
+    "at": [
+     15,
+     12
+    ],
+    "facing": "front",
+    "footprint": [
+     8,
+     5,
+     14,
+     10
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "stell",
+    "at": [
+     4,
+     9
+    ]
+   },
+   {
+    "id": "iron-2",
+    "piece": "stell",
+    "at": [
+     26,
+     9
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "piece": "moor",
+    "at": [
+     47,
+     47
+    ],
+    "style": "pillar-2",
+    "materials": "obsidian",
+    "float": 2,
+    "name": "Blackden Stone"
+   }
+  ],
+  "cores": [],
+  "wools": []
+ },
+ "walls": [],
+ "boxes": []
+}

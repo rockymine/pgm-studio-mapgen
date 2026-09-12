@@ -1,0 +1,61 @@
+## edge-rock-5 (boulder) along x
+TRANSECT 25 stations from (8, 37) to (32, 37), every 1
+  station        ground  surface  water  top  standing            step
+  (    8,    37)      39       39           39                      
+  (    9,    37)      39       39           39                      
+  (   10,    37)      39       39           39                      
+  (   11,    37)      39       39           39                      
+  (   12,    37)      39       39           39                      
+  (   13,    37)      39       39           39                      
+  (   14,    37)      39       39           39                      
+  (   15,    37)      39       39           39                      
+  (   16,    37)      40       40           40                      +1
+  (   17,    37)      40       40           43  boulder edge-rock-5  
+  (   18,    37)      40       40           44  boulder edge-rock-5  
+  (   19,    37)      40       40           44  boulder edge-rock-5  
+  (   20,    37)      40       40           44  boulder edge-rock-5  
+  (   21,    37)      40       40           44  boulder edge-rock-5  
+  (   22,    37)      40       40           44  boulder edge-rock-5  
+  (   23,    37)      39       39           39                      -1
+  (   24,    37)      39       39           39                      
+  (   25,    37)      39       39           39                      
+  (   26,    37)      39       39           39                      
+  (   27,    37)      39       39           39                      
+  (   28,    37)      39       39           39                      
+  (   29,    37)      39       39           39                      
+  (   30,    37)      39       39           39                      
+  (   31,    37)                                                    void
+  (   32,    37)                                                    void
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder edge-rock-5 at (17, 37)
+
+## edge-rock-5 (boulder) along z
+TRANSECT 25 stations from (20, 25) to (20, 49), every 1
+  station        ground  surface  water  top  standing            step
+  (   20,    25)      28       28           30  boulder edge-rock-2  
+  (   20,    26)      28       28           30  boulder edge-rock-2  
+  (   20,    27)      28       28           31  boulder edge-rock-2  
+  (   20,    28)      28       28           30  boulder edge-rock-2  
+  (   20,    29)      31       31           31                      BARRIER +3
+  (   20,    30)      34       34           34                      BARRIER +3
+  (   20,    31)      37       37           37                      BARRIER +3
+  (   20,    32)      40       40           40                      BARRIER +3
+  (   20,    33)      40       40           40                      
+  (   20,    34)      40       40           40                      
+  (   20,    35)      40       40           43  boulder edge-rock-5  
+  (   20,    36)      40       40           44  boulder edge-rock-5  
+  (   20,    37)      40       40           44  boulder edge-rock-5  
+  (   20,    38)      40       40           44  boulder edge-rock-5  
+  (   20,    39)      40       40           43  boulder edge-rock-5  
+  (   20,    40)      40       40           40                      
+  (   20,    41)      40       40           40                      
+  (   20,    42)      40       40           40                      
+  (   20,    43)      40       40           40                      
+  (   20,    44)      40       40           40                      
+  (   20,    45)      40       40           40                      
+  (   20,    46)      40       40           40                      
+  (   20,    47)      40       40           40                      
+  (   20,    48)      40       40           40                      
+  (   20,    49)      40       40           40                      
+rises 4, falls 0, worst step 3: 4 barrier, 0 scramble, 0 drop — BARRIER +3 at (20, 29); BARRIER +3 at (20, 30); BARRIER +3 at (20, 31); BARRIER +3 at (20, 32) | walked end to end
+beside: boulder edge-rock-2 at (18, 23), boulder edge-rock-5 at (18, 35)

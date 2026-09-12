@@ -1,0 +1,187 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 28,
+    "z": 112
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": 100,
+     "maxX": 15,
+     "maxZ": 120
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": -7,
+    "minZ": 105,
+    "maxX": 7,
+    "maxZ": 115
+   },
+   "iron": [
+    {
+     "x": -11,
+     "y": 28,
+     "z": 109
+    },
+    {
+     "x": 11,
+     "y": 28,
+     "z": 109
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 28,
+    "z": -112
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": -120,
+     "maxX": 15,
+     "maxZ": -100
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -7,
+    "minZ": -115,
+    "maxX": 7,
+    "maxZ": -105
+   },
+   "iron": [
+    {
+     "x": 11,
+     "y": 28,
+     "z": -109
+    },
+    {
+     "x": -11,
+     "y": 28,
+     "z": -109
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 62,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -35,
+    "minZ": -15,
+    "maxX": 35,
+    "maxZ": 15
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Blackden Stone",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 12,
+    "y": 28,
+    "z": 62
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Blackden Stone",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -13,
+    "y": 28,
+    "z": -63
+   },
+   "float": 2,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Blackden Sough",
+  "created": "2026-09-12",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": null
+}

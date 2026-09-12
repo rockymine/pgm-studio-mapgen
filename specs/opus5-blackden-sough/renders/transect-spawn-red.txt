@@ -1,0 +1,86 @@
+## spawn-red (spawn) along x
+TRANSECT 47 stations from (-23, 110) to (23, 110), every 1
+  station        ground  surface  water  top  standing            step
+  (  -23,   110)                                                    void
+  (  -22,   110)                                                    void
+  (  -21,   110)                                                    void
+  (  -20,   110)                                                    void
+  (  -19,   110)                                                    void
+  (  -18,   110)                                                    void
+  (  -17,   110)                                                    void
+  (  -16,   110)                                                    void
+  (  -15,   110)      32       32           32                      
+  (  -14,   110)      32       32           32                      
+  (  -13,   110)      32       32           35  ironcube spawn-1:0  
+  (  -12,   110)      32       32           35  ironcube spawn-1:0  
+  (  -11,   110)      32       32           35  ironcube spawn-1:0  
+  (  -10,   110)      32       32           32                      
+  (   -9,   110)      32       32           32                      
+  (   -8,   110)      32       32           47                      
+  (   -7,   110)      32       32           47  spawn spawn-1       
+  (   -6,   110)      32       32           47  spawn spawn-1       
+  (   -5,   110)      32       32           47  spawn spawn-1       
+  (   -4,   110)      32       32           47  spawn spawn-1       
+  (   -3,   110)      32       32           47  spawn spawn-1       
+  (   -2,   110)      32       32           47  spawn spawn-1       
+  (   -1,   110)      32       32           47  spawn spawn-1       
+  (    0,   110)      32       32           47  spawn spawn-1       
+  (    1,   110)      32       32           47  spawn spawn-1       
+  (    2,   110)      32       32           47  spawn spawn-1       
+  (    3,   110)      32       32           47  spawn spawn-1       
+  (    4,   110)      32       32           47  spawn spawn-1       
+  (    5,   110)      32       32           47  spawn spawn-1       
+  (    6,   110)      32       32           47  spawn spawn-1       
+  (    7,   110)      32       32           47                      
+  (    8,   110)      32       32           32                      
+  (    9,   110)      32       32           32                      
+  (   10,   110)      32       32           35  ironcube spawn-1:1  
+  (   11,   110)      32       32           35  ironcube spawn-1:1  
+  (   12,   110)      32       32           35  ironcube spawn-1:1  
+  (   13,   110)      32       32           32                      
+  (   14,   110)      32       32           32                      
+  (   15,   110)                                                    void
+  (   16,   110)                                                    void
+  (   17,   110)                                                    void
+  (   18,   110)                                                    void
+  (   19,   110)                                                    void
+  (   20,   110)                                                    void
+  (   21,   110)                                                    void
+  (   22,   110)                                                    void
+  (   23,   110)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: ironcube spawn-1:0 at (-13, 108), spawn spawn-1 at (-7, 108), stroke way-dale at (-2, 108), ironcube spawn-1:1 at (10, 108)
+
+## spawn-red (spawn) along z
+TRANSECT 28 stations from (0, 92) to (0, 119), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    92)      30       30           30                      
+  (    0,    93)      31       31           31                      +1
+  (    0,    94)      31       31           31                      
+  (    0,    95)      31       31           31                      
+  (    0,    96)      31       31           31                      
+  (    0,    97)      31       31           31                      
+  (    0,    98)      32       32           32                      +1
+  (    0,    99)      32       32           32                      
+  (    0,   100)      32       32           32  stroke way-dale     
+  (    0,   101)      32       32           32  stroke way-dale     
+  (    0,   102)      32       32           32  stroke way-dale     
+  (    0,   103)      32       32           32  stroke way-dale     
+  (    0,   104)      32       32           42  stroke way-dale     
+  (    0,   105)      32       32           43  stroke way-dale     
+  (    0,   106)      32       32           44  stroke way-dale     
+  (    0,   107)      32       32           45  stroke way-dale     
+  (    0,   108)      32       32           46  stroke way-dale     
+  (    0,   109)      32       32           47  stroke way-dale     
+  (    0,   110)      32       32           47  spawn spawn-1       
+  (    0,   111)      32       32           46  spawn spawn-1       
+  (    0,   112)      32       32           45  spawn spawn-1       
+  (    0,   113)      32       32           44  spawn spawn-1       
+  (    0,   114)      32       32           43  spawn spawn-1       
+  (    0,   115)      32       32           42                      
+  (    0,   116)      32       32           32                      
+  (    0,   117)      32       32           32                      
+  (    0,   118)      32       32           32                      
+  (    0,   119)      32       32           32                      
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke way-dale at (2, 94), spawn spawn-1 at (-2, 105)
