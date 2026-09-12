@@ -57,8 +57,8 @@
         <spawn team="blue-team" kit="spawn-kit" yaw="180" region="blue-spawn-point"/>
     </spawns>
     <wools>
-        <wool team="blue-team" color="red" location="-50,14,-32" monument="red-blue-monument"/>
-        <wool team="red-team" color="blue" location="50,14,32" monument="blue-red-monument"/>
+        <wool team="blue-team" color="red" location="60,24,-57" monument="red-blue-monument"/>
+        <wool team="red-team" color="blue" location="-60,24,57" monument="blue-red-monument"/>
     </wools>
     <shops>
         <shop id="quartermaster" name="Quartermaster">
@@ -72,8 +72,8 @@
         </shop>
     </shops>
     <shopkeepers>
-        <shopkeeper shop="quartermaster" name="`6`lQuartermaster" mob="Villager" yaw="90">2.5,16,-49.5</shopkeeper>
-        <shopkeeper shop="quartermaster" name="`6`lQuartermaster" mob="Villager" yaw="-90">-1.5,16,50.5</shopkeeper>
+        <shopkeeper shop="quartermaster" name="`6`lQuartermaster" mob="Villager" yaw="90">2.5,20,-71.5</shopkeeper>
+        <shopkeeper shop="quartermaster" name="`6`lQuartermaster" mob="Villager" yaw="-90">-1.5,20,72.5</shopkeeper>
     </shopkeepers>
     <filters>
         <team id="only-blue">blue-team</team>
@@ -130,17 +130,17 @@
         </not>
     </filters>
     <regions>
-        <point id="blue-spawn-point">0,16,50</point>
-        <point id="red-spawn-point">0,16,-50</point>
-        <point id="blue-wool-spawn">50,14,32</point>
-        <point id="red-wool-spawn">-50,14,-32</point>
-        <point id="observer-spawn">0,30,0</point>
-        <block id="blue-red-monument">-8,17,-47</block>
-        <block id="red-blue-monument">-8,17,46</block>
-        <rectangle id="blue-spawn" min="-10,40" max="10,60"/>
-        <rectangle id="red-spawn" min="-10,-60" max="10,-40"/>
-        <rectangle id="blue-wool" min="40,25" max="60,40"/>
-        <rectangle id="red-wool" min="-60,-40" max="-40,-25"/>
+        <point id="blue-spawn-point">0,20,72</point>
+        <point id="red-spawn-point">0,20,-72</point>
+        <point id="blue-wool-spawn">-60,24,57</point>
+        <point id="red-wool-spawn">60,24,-57</point>
+        <point id="observer-spawn">0,36,0</point>
+        <block id="blue-red-monument">-8,21,-71</block>
+        <block id="red-blue-monument">-8,21,70</block>
+        <rectangle id="blue-spawn" min="-10,65" max="10,80"/>
+        <rectangle id="red-spawn" min="-10,-80" max="10,-65"/>
+        <rectangle id="blue-wool" min="-70,50" max="-50,65"/>
+        <rectangle id="red-wool" min="50,-65" max="70,-50"/>
         <union id="reds-woolrooms">
             <region id="red-wool"/>
         </union>
@@ -155,7 +155,7 @@
             <region id="spawns"/>
         </negative>
         <negative id="not-build-area">
-            <rectangle id="build-area-1" min="-30,-10" max="30,10"/>
+            <rectangle id="build-area-1" min="-40,-30" max="40,30"/>
         </negative>
         <complement id="spawns">
             <union id="spawn-areas">
@@ -234,5 +234,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>43</maxbuildheight>
+    <maxbuildheight>67</maxbuildheight>
 </map>

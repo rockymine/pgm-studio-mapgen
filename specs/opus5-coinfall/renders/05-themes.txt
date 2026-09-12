@@ -1,3 +1,9 @@
-THEMES  1 themes over 5600 ground cells, 4 distinct surface blocks
-  coin  5600 cells (100.0%)  2:0 Grass Block, 7:0 Bedrock, 35:14 Red Wool, 35:11 Blue Wool
+THEMES  4 themes over 6726 ground cells, 12 distinct surface blocks
+  holt  4626 cells (68.8%)  2:0 Grass Block, 4:0 Cobblestone, 3:1 Coarse Dirt, 1:5 Andesite, 98:0 Stone Bricks, 98:2 Cracked Stone Bricks, 1:3 Diorite, 13:0 Gravel, 98:1 Mossy Stone Bricks, 35:14 Red Wool, 35:11 Blue Wool
+  holm  840 cells (12.5%)  2:0 Grass Block, 4:0 Cobblestone, 3:1 Coarse Dirt, 1:5 Andesite, 13:0 Gravel, 1:3 Diorite
+  track  660 cells (9.8%)  3:1 Coarse Dirt, 13:0 Gravel, 3:0 Dirt, 4:0 Cobblestone, 1:3 Diorite
+  plinth  600 cells (8.9%)  98:0 Stone Bricks, 98:2 Cracked Stone Bricks, 4:0 Cobblestone, 98:1 Mossy Stone Bricks, 35:14 Red Wool, 35:11 Blue Wool
 borders:
+  holt | track  412 cells
+  holm | holt  48 cells
+  holt | plinth  30 cells
