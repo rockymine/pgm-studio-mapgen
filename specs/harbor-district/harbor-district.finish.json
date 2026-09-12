@@ -1,0 +1,97 @@
+{
+ "themeByHeight": {
+  "5": {
+   "bucket": "water",
+   "material": "water"
+  },
+  "7": {
+   "bucket": "sand",
+   "material": "sand"
+  },
+  "8": {
+   "bucket": "grass",
+   "material": "grass_block"
+  }
+ },
+ "relief": {
+  "coastal": {
+   "pieces": [
+    "grass-blue",
+    "grass-red"
+   ],
+   "marks": [
+    {
+     "id": "blue-slope",
+     "kind": "radial",
+     "at": [
+      -31,
+      -17
+     ],
+     "r": 8,
+     "h": 4,
+     "tread": 0
+    },
+    {
+     "id": "red-slope",
+     "kind": "radial",
+     "at": [
+      31,
+      -17
+     ],
+     "r": 8,
+     "h": 4,
+     "tread": 0
+    }
+   ]
+  }
+ },
+ "themes": {
+  "grass": {
+   "surfaces": [
+    "spawn-blue",
+    "spawn-red",
+    "grass-blue",
+    "grass-red"
+   ],
+   "material": {
+    "kind": "single",
+    "material": "grass_block"
+   }
+  },
+  "beach": {
+   "surfaces": [
+    "beach-blue",
+    "beach-red"
+   ],
+   "material": {
+    "kind": "single",
+    "material": "sand"
+   }
+  },
+  "dock": {
+   "surfaces": [
+    "dock-blue",
+    "dock-red"
+   ],
+   "material": {
+    "kind": "single",
+    "material": "oak_planks"
+   }
+  },
+  "water": {
+   "surfaces": [
+    "water"
+   ],
+   "material": {
+    "kind": "single",
+    "material": "water"
+   }
+  }
+ },
+ "mapTheme": {
+  "flood": {
+   "kind": "simple",
+   "material": "water"
+  }
+ }
+}

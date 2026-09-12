@@ -1,0 +1,92 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Mountain Stronghold"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 14,
+  "surface": 8
+ },
+ "pieces": [
+  {
+   "id": "spawn-blue",
+   "role": "piece",
+   "rect": [
+    -35,
+    -30,
+    12,
+    10
+   ],
+   "surface": 8
+  },
+  {
+   "id": "valley-blue",
+   "role": "piece",
+   "rect": [
+    -35,
+    -10,
+    12,
+    15
+   ],
+   "surface": 8
+  },
+  {
+   "id": "peak-blue",
+   "role": "piece",
+   "rect": [
+    -35,
+    5,
+    12,
+    15
+   ],
+   "surface": 14
+  },
+  {
+   "id": "center",
+   "role": "piece",
+   "rect": [
+    -15,
+    -15,
+    30,
+    30
+   ],
+   "surface": 9
+  },
+  {
+   "id": "peak-red",
+   "role": "piece",
+   "rect": [
+    23,
+    5,
+    12,
+    15
+   ],
+   "surface": 14
+  },
+  {
+   "id": "valley-red",
+   "role": "piece",
+   "rect": [
+    23,
+    -10,
+    12,
+    15
+   ],
+   "surface": 8
+  },
+  {
+   "id": "spawn-red",
+   "role": "piece",
+   "rect": [
+    23,
+    -30,
+    12,
+    10
+   ],
+   "surface": 8
+  }
+ ],
+ "walls": []
+}

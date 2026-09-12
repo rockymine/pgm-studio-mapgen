@@ -1,0 +1,71 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Forgotten Village"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 8,
+  "biome": "snowy_taiga"
+ },
+ "pieces": [
+  {
+   "id": "spawn-blue",
+   "role": "piece",
+   "rect": [
+    -50,
+    -45,
+    20,
+    15
+   ],
+   "surface": 8
+  },
+  {
+   "id": "slope-blue",
+   "role": "piece",
+   "rect": [
+    -50,
+    -20,
+    20,
+    20
+   ],
+   "surface": 9
+  },
+  {
+   "id": "peak",
+   "role": "piece",
+   "rect": [
+    -15,
+    -15,
+    30,
+    30
+   ],
+   "surface": 12
+  },
+  {
+   "id": "slope-red",
+   "role": "piece",
+   "rect": [
+    30,
+    -20,
+    20,
+    20
+   ],
+   "surface": 9
+  },
+  {
+   "id": "spawn-red",
+   "role": "piece",
+   "rect": [
+    30,
+    -45,
+    20,
+    15
+   ],
+   "surface": 8
+  }
+ ],
+ "walls": []
+}

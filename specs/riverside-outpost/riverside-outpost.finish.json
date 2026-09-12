@@ -1,0 +1,86 @@
+{
+ "themeByHeight": {
+  "6": {
+   "bucket": "water",
+   "material": "water"
+  },
+  "8": {
+   "bucket": "grass",
+   "material": "grass_block"
+  },
+  "10": {
+   "bucket": "stone",
+   "material": "stone"
+  }
+ },
+ "relief": {
+  "terrain": {
+   "pieces": [
+    "approach-blue",
+    "approach-red"
+   ],
+   "marks": [
+    {
+     "id": "blue-slope",
+     "kind": "radial",
+     "at": [
+      -32,
+      0
+     ],
+     "r": 8,
+     "h": 5,
+     "tread": 0
+    },
+    {
+     "id": "red-slope",
+     "kind": "radial",
+     "at": [
+      32,
+      0
+     ],
+     "r": 8,
+     "h": 5,
+     "tread": 0
+    }
+   ]
+  }
+ },
+ "themes": {
+  "grass": {
+   "surfaces": [
+    "spawn-blue",
+    "spawn-red",
+    "approach-blue",
+    "approach-red"
+   ],
+   "material": {
+    "kind": "single",
+    "material": "grass_block"
+   }
+  },
+  "water": {
+   "surfaces": [
+    "river"
+   ],
+   "material": {
+    "kind": "single",
+    "material": "water"
+   }
+  },
+  "stone": {
+   "surfaces": [
+    "outpost"
+   ],
+   "material": {
+    "kind": "single",
+    "material": "stone"
+   }
+  }
+ },
+ "mapTheme": {
+  "flood": {
+   "kind": "simple",
+   "material": "water"
+  }
+ }
+}

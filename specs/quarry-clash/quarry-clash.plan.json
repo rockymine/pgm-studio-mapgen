@@ -1,0 +1,92 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Quarry Clash"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 10,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "rim-blue",
+   "role": "piece",
+   "rect": [
+    -40,
+    -40,
+    18,
+    15
+   ],
+   "surface": 13
+  },
+  {
+   "id": "shelf-blue",
+   "role": "piece",
+   "rect": [
+    -40,
+    -15,
+    18,
+    15
+   ],
+   "surface": 10
+  },
+  {
+   "id": "floor-blue",
+   "role": "piece",
+   "rect": [
+    -40,
+    10,
+    18,
+    15
+   ],
+   "surface": 7
+  },
+  {
+   "id": "center",
+   "role": "piece",
+   "rect": [
+    -15,
+    -20,
+    30,
+    40
+   ],
+   "surface": 9
+  },
+  {
+   "id": "floor-red",
+   "role": "piece",
+   "rect": [
+    22,
+    10,
+    18,
+    15
+   ],
+   "surface": 7
+  },
+  {
+   "id": "shelf-red",
+   "role": "piece",
+   "rect": [
+    22,
+    -15,
+    18,
+    15
+   ],
+   "surface": 10
+  },
+  {
+   "id": "rim-red",
+   "role": "piece",
+   "rect": [
+    22,
+    -40,
+    18,
+    15
+   ],
+   "surface": 13
+  }
+ ],
+ "walls": []
+}

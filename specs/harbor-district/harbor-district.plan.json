@@ -1,0 +1,114 @@
+{
+ "plan": 1,
+ "meta": {
+  "name": "Harbor District"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 8
+ },
+ "pieces": [
+  {
+   "id": "spawn-blue",
+   "role": "piece",
+   "rect": [
+    -40,
+    -50,
+    18,
+    15
+   ],
+   "surface": 8
+  },
+  {
+   "id": "grass-blue",
+   "role": "piece",
+   "rect": [
+    -40,
+    -25,
+    18,
+    15
+   ],
+   "surface": 8
+  },
+  {
+   "id": "beach-blue",
+   "role": "piece",
+   "rect": [
+    -40,
+    0,
+    18,
+    12
+   ],
+   "surface": 7
+  },
+  {
+   "id": "dock-blue",
+   "role": "piece",
+   "rect": [
+    -40,
+    12,
+    18,
+    13
+   ],
+   "surface": 8
+  },
+  {
+   "id": "water",
+   "role": "piece",
+   "rect": [
+    -15,
+    -30,
+    30,
+    60
+   ],
+   "surface": 5
+  },
+  {
+   "id": "dock-red",
+   "role": "piece",
+   "rect": [
+    22,
+    12,
+    18,
+    13
+   ],
+   "surface": 8
+  },
+  {
+   "id": "beach-red",
+   "role": "piece",
+   "rect": [
+    22,
+    0,
+    18,
+    12
+   ],
+   "surface": 7
+  },
+  {
+   "id": "grass-red",
+   "role": "piece",
+   "rect": [
+    22,
+    -25,
+    18,
+    15
+   ],
+   "surface": 8
+  },
+  {
+   "id": "spawn-red",
+   "role": "piece",
+   "rect": [
+    22,
+    -50,
+    18,
+    15
+   ],
+   "surface": 8
+  }
+ ],
+ "walls": []
+}

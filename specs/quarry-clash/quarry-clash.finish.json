@@ -1,0 +1,76 @@
+{
+ "themeByHeight": {
+  "7": {
+   "bucket": "stone",
+   "material": "gravel"
+  },
+  "9": {
+   "bucket": "stone",
+   "material": "stone"
+  },
+  "10": {
+   "bucket": "stone",
+   "material": "cobblestone"
+  },
+  "13": {
+   "bucket": "stone",
+   "material": "andesite"
+  }
+ },
+ "relief": {
+  "quarry": {
+   "pieces": [
+    "rim-blue",
+    "rim-red",
+    "center"
+   ],
+   "marks": [
+    {
+     "id": "rim-blue-edge",
+     "kind": "radial",
+     "at": [
+      -31,
+      -32
+     ],
+     "r": 7,
+     "h": 8,
+     "tread": 0
+    },
+    {
+     "id": "rim-red-edge",
+     "kind": "radial",
+     "at": [
+      31,
+      -32
+     ],
+     "r": 7,
+     "h": 8,
+     "tread": 0
+    }
+   ]
+  }
+ },
+ "themes": {
+  "stone": {
+   "surfaces": [
+    "rim-blue",
+    "rim-red",
+    "shelf-blue",
+    "shelf-red",
+    "floor-blue",
+    "floor-red",
+    "center"
+   ],
+   "material": {
+    "kind": "single",
+    "material": "stone"
+   }
+  }
+ },
+ "mapTheme": {
+  "flood": {
+   "kind": "simple",
+   "material": "stone"
+  }
+ }
+}

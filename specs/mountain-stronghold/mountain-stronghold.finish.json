@@ -1,0 +1,72 @@
+{
+ "themeByHeight": {
+  "8": {
+   "bucket": "stone",
+   "material": "stone"
+  },
+  "9": {
+   "bucket": "stone",
+   "material": "gravel"
+  },
+  "14": {
+   "bucket": "stone",
+   "material": "cobblestone"
+  }
+ },
+ "relief": {
+  "mountains": {
+   "pieces": [
+    "peak-blue",
+    "peak-red",
+    "center"
+   ],
+   "marks": [
+    {
+     "id": "peak-blue-summit",
+     "kind": "radial",
+     "at": [
+      -29,
+      12
+     ],
+     "r": 8,
+     "h": 12,
+     "tread": 1
+    },
+    {
+     "id": "peak-red-summit",
+     "kind": "radial",
+     "at": [
+      29,
+      12
+     ],
+     "r": 8,
+     "h": 12,
+     "tread": 1
+    }
+   ]
+  }
+ },
+ "themes": {
+  "stone": {
+   "surfaces": [
+    "spawn-blue",
+    "spawn-red",
+    "valley-blue",
+    "valley-red",
+    "peak-blue",
+    "peak-red",
+    "center"
+   ],
+   "material": {
+    "kind": "single",
+    "material": "stone"
+   }
+  }
+ },
+ "mapTheme": {
+  "flood": {
+   "kind": "simple",
+   "material": "stone"
+  }
+ }
+}
