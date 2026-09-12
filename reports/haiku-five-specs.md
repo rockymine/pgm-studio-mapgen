@@ -1,12 +1,20 @@
 # Five New Maps — Design Concepts and Specifications
 
+> **This document describes five maps that were never built, and it is kept as the run's own record
+> rather than as a description of anything in `maps/`.** It was written before the first API call and
+> not revised after: it names a game mode for each board, three of which the studio had no objective
+> module for, and it states what each map's terrain and materials would be. Four of the five specs it
+> describes carry no spawn and no objective at all. What actually stopped each of them is in
+> `README.md`, under *Haiku 4.5 — five specs to one brief, and what stopped each of them*.
+
+
 ## Overview
 Five new maps have been designed for pgm-studio, each with a distinct story, game mode, and technical approach. All maps follow the user's detailed guidance on simplicity, coherence, terrain finishing, and gameplay mechanics.
 
 ---
 
 ## 1. **Riverside Outpost** — Capture the Wool
-**Location:** `/home/user/pgm-studio-mapgen/specs/riverside-outpost/`
+**Location:** ``specs/haiku-riverside-outpost/``
 
 ### Story & Vision
 A fortified wooden outpost holds the wool on a riverbank. The river provides natural separation between team spawns. Players approach from opposite banks through natural terrain, with a central elevated platform anchoring the wool room.
@@ -27,7 +35,7 @@ A fortified wooden outpost holds the wool on a riverbank. The river provides nat
 ---
 
 ## 2. **Mountain Pass Stronghold** — Destroy the Cores
-**Location:** `/home/user/pgm-studio-mapgen/specs/mountain-stronghold/`
+**Location:** ``specs/haiku-mountain-stronghold/``
 
 ### Story & Vision
 Two stone fortresses sit on mountain peaks overlooking a valley pass. The center valley provides approach routes, while high peaks create natural defensive positions. This design emphasizes terrain-based gameplay and natural height advantages.
@@ -47,7 +55,7 @@ Two stone fortresses sit on mountain peaks overlooking a valley pass. The center
 ---
 
 ## 3. **Quarry Clash** — Capture the Flag
-**Location:** `/home/user/pgm-studio-mapgen/specs/quarry-clash/`
+**Location:** ``specs/haiku-quarry-clash/``
 
 ### Story & Vision
 An abandoned stone quarry reveals excavation history through three distinct height levels. Flags sit in opposite pit areas. The layering emphasizes industrial aesthetics and height-based gameplay mechanics.
@@ -67,7 +75,7 @@ An abandoned stone quarry reveals excavation history through three distinct heig
 ---
 
 ## 4. **Harbor District** — Mixed Game (Destroy & Capture)
-**Location:** `/home/user/pgm-studio-mapgen/specs/harbor-district/`
+**Location:** ``specs/haiku-harbor-district/``
 
 ### Story & Vision
 A coastal trading port combines natural beach terrain with wooden docks and warehouses. The map transitions cleanly from hinterland through grassland to sandy beach to water. Objectives sit in harbor structures, encouraging coastal combat.
@@ -87,7 +95,7 @@ A coastal trading port combines natural beach terrain with wooden docks and ware
 ---
 
 ## 5. **Forgotten Village** — King of the Hill
-**Location:** `/home/user/pgm-studio-mapgen/specs/forgotten-village/`
+**Location:** ``specs/haiku-forgotten-village/``
 
 ### Story & Vision
 Snow-covered mountain settlement with control point atop natural peak. The single elevated objective encourages asymmetric approach routes. Cold-biome aesthetic with proper snow and ice theming throughout.

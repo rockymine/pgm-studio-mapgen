@@ -77,10 +77,10 @@ comes from the repository's author.
 
 Grouped by the run that produced them. Mode is what the map's own `<gamemode>` declares.
 
-**Most of these specs no longer compile, and that is settled rather than pending (author).** 68 of the 112
+**Most of these specs no longer compile, and that is settled rather than pending (author).** 72 of the 117
 plans here state `"plan": 1`, whose marker offsets are in cells where version 2 states them in blocks, so
 `POST /plan/compile` refuses one with `PL15`. The worlds under `maps/` were built from them and are what
-those boards are; migrating the plans would move every marker on 68 boards to rebuild something already
+those boards are; migrating the plans would move every marker on 72 boards to rebuild something already
 built. **A version 1 spec is the record of a world, not a thing that rebuilds** — read it, do not re-drive
 it, and do not file the migration again.
 
@@ -462,6 +462,50 @@ cited. Four of the five dressed with no decline at all.
 | `sonnet5-kilnholt-cut` | dtm | Sonnet 5 | **Two stonework guilds cut into opposite flanks of one worked-out quarry** — two buried obsidian monuments a side at the bottom of each cut, and a played-out adit under the west flank that still joins the two sides for anyone bold enough to use it. One landmass a side with the spawn fused to its own excavation, joined on the surface **only** by a permanent void gap spanned by a build zone, so the adit is the one way over that costs nothing placed. The ground is finished by slope angle rather than height — reclaimed floor, worked shoulder, bare cut face — and the tunnel is stacked bottom-up with a stair back to the surface at each end. One edit took the dead share from 30.3% to 9.4%, exactly the flank that was cut away; 16 props placed and none declined |
 | `sonnet5-sable-reach` | ctw | Sonnet 5 | **Two trading posts across a tidal river mouth, built past the composer's three known gaps** — each team's site is **two** landmasses (a settlement island and a flanking dock skerry) joined by a short build zone, a build zone sits **inside** the team's own ground as a plaza among the warehouses rather than only at the middle, and the crossing is a real route rather than a gap: one permanent `made`, `keepClear` bridge as the chokepoint with a pair of shallow sand fords as the second way over (`WL8`). The wool is in a dockside warehouse behind a seawall drawn with a diagonal pattern and a team-colour rim. Shore graded sand-then-mud, three themes, two house styles forked from one recipe. **23 636 walked · 12 scrambled**, 41 props placed and none declined, 37.2% dead |
 | `sonnet5-talltimber-yard` | dtc | Sonnet 5 | **Two logging outfits, and the core is the ledger** — one obsidian core a team, kept in a tall multi-wing counting-house at the middle of its own timber yard, with the two yards facing each other across the felled ground between them and a build zone spanning the void rather than land. Every house style is a fork of a shipped preset varied by wings and storeys rather than a design of its own, the three-colour paths are solid and drawn before any scenery, and the street trees are sparse. **15 600 walked · 0 scrambled · 0 barrier** — the flattest board of the five — 20 props placed and none declined, 27.7% dead |
+
+### Haiku 4.5 — five specs to one brief, and what stopped each of them
+
+The same brief the three runs above answered, taken in parallel: five specs written at once in about five
+minutes, against roughly half an hour a board for the others. **Nothing here built, and the run is kept
+because what stopped it is legible in the files.** No world, no render, no review.
+[reports/haiku-five-specs.md](reports/haiku-five-specs.md) is the design document it wrote before the first
+API call, and it describes all five as though they exist.
+
+Three things stopped them, and only the third is the one the run itself reported. **Four of the five state
+`"plan": 1`**, so `POST /plan/compile` refuses them with `PL15` before anything else is read — they were
+never drivable. **Four of the five carry no `placements` at all** — no spawn, no wool, no monument, no core
+— so they are terrain with nothing on it, and since the studio *derives* `<gamemode>` from the objective
+modules an intent carries, those four would declare no game mode whatever they were called. And **all five
+finishes state `themeByHeight`**, which is not one of the driver's keys and is dropped in silence on the
+whole-layout write — the same trap `roomStyles` sets, and the reason `tools/README.md` now says so in the
+row for each key.
+
+**The unsupported game modes are real but are the least of it, and they exist only in prose.** `quarry-clash`
+is called CTF in its docstring, `harbor-district` a mixed destroy-and-capture board and `forgotten-village`
+king-of-the-hill — in Python comments and in the design document, never in a document the studio reads,
+because there is no field in which a spec may assert a mode. A board names its mode by carrying the
+objectives, which four of these do not. **PGM knows all three words** — `ctf`, `mixed` and `koth` are in the
+same closed enum as `ctw` — so what was missing was never the id but the objective the studio builds it
+from, and the studio had three: wools, destroyables and cores.
+
+`haiku-riverside-outpost` is the one taken up again after the author's redirect, and it is the interesting
+one: **`plan: 2`, with spawns, wool rooms and wools on it**, which is the shape the brief asks for. It still
+does not evaluate — `PL4` (the overlapping `river` and `outpost` differ by 4 courses), `PL7` (a spawn at
+`[-32, -20]` outside its own piece), `PL5` (a wool naming the empty piece `''`) and `LN2` (a 150-block chain
+against an authored band of 25–110). The run's own account names `PL4` and `PL7` correctly and stops before
+fixing them.
+
+One of the three invented modes has since become real: **the section that follows authors king-of-the-hill
+boards**, because that run read PGM and the corpus first and wrote the contract down before it built
+anything. The mode was not the mistake; asserting it in a docstring instead of finding out was.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `haiku-riverside-outpost` | — | Haiku 4.5 | A wool board across a river, and the only one of the five with objectives on it: six pieces, `plan: 2`, two spawns, two wool rooms and two wools. Four refusals stand between it and a compile, two of which its own report names |
+| `haiku-mountain-stronghold` | — | Haiku 4.5 | Seven pieces called a monument board in its docstring, carrying no monument and no spawn. `plan: 1` |
+| `haiku-quarry-clash` | — | Haiku 4.5 | Seven pieces at three heights — rim, shelf, floor — called CTF, an id PGM knows and the studio has no objective for. No objectives on it either. `plan: 1` |
+| `haiku-harbor-district` | — | Haiku 4.5 | Nine pieces grading hinterland to beach to dock, called a mixed destroy-and-capture board. No objectives. `plan: 1` |
+| `haiku-forgotten-village` | — | Haiku 4.5 | Five pieces of snowed peak called king-of-the-hill, written when no control point existed. No objectives. `plan: 1` |
 
 ### Opus 5 — the first two capture boards, and the law the second was built to
 
