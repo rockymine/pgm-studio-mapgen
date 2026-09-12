@@ -1,0 +1,137 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 20,
+    "z": -44
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -50,
+     "maxX": 10,
+     "maxZ": -38
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": null,
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 20,
+    "z": 44
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 38,
+     "maxX": 10,
+     "maxZ": 50
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": null,
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 56,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": null,
+ "controlPoints": [
+  {
+   "name": "The Cistern",
+   "anchor": {
+    "x": -1,
+    "y": 0,
+    "z": -1
+   },
+   "size": 8,
+   "points": 1
+  },
+  {
+   "name": "West Bay",
+   "anchor": {
+    "x": -30,
+    "y": 0,
+    "z": -1
+   },
+   "size": 8,
+   "points": 1
+  },
+  {
+   "name": "East Bay",
+   "anchor": {
+    "x": 28,
+    "y": 0,
+    "z": -1
+   },
+   "size": 8,
+   "points": 1
+  }
+ ],
+ "scoreLimit": 750,
+ "modes": null,
+ "gamemodes": [],
+ "meta": {
+  "name": "Casemate",
+  "created": "2026-09-12",
+  "authors": [],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

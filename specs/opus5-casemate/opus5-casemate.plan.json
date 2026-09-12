@@ -1,0 +1,50 @@
+{
+  "plan": 2,
+  "meta": {
+    "name": "Casemate"
+  },
+  "globals": {
+    "cell": 2,
+    "symmetry": "rot_180",
+    "maxPlayers": 16,
+    "surface": 20,
+    "observerY": 56
+  },
+  "pieces": [
+    {
+      "id": "works",
+      "role": "piece",
+      "rect": [
+        -27,
+        -19,
+        54,
+        38
+      ],
+      "surface": 20
+    },
+    {
+      "id": "gate",
+      "role": "spawn",
+      "rect": [
+        -5,
+        -25,
+        10,
+        6
+      ],
+      "surface": 20
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "gate",
+        "at": [
+          10,
+          6
+        ],
+        "facing": "back"
+      }
+    ]
+  }
+}
