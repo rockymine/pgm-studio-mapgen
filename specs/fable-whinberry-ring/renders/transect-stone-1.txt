@@ -1,0 +1,61 @@
+## stone-1 (boulder) along x
+TRANSECT 25 stations from (-22, 20) to (2, 20), every 1
+  station        ground  surface  water  top  standing            step
+  (  -22,    20)                                                    void
+  (  -21,    20)                                                    void
+  (  -20,    20)                                                    void
+  (  -19,    20)                                                    void
+  (  -18,    20)                                                    void
+  (  -17,    20)       9        9           10  flora bracken       
+  (  -16,    20)       9        9           10  flora bracken       
+  (  -15,    20)       9        9            9                      
+  (  -14,    20)       9        9            9                      
+  (  -13,    20)       9        9            9                      
+  (  -12,    20)       9        9           13  boulder stone-1     
+  (  -11,    20)       9        9           13  boulder stone-1     
+  (  -10,    20)       9        9           14  boulder stone-1     
+  (   -9,    20)       9        9           13  boulder stone-1     
+  (   -8,    20)       9        9           13  boulder stone-1     
+  (   -7,    20)       9        9            9                      
+  (   -6,    20)       9        9            9                      
+  (   -5,    20)                                                    void
+  (   -4,    20)                                                    void
+  (   -3,    20)                                                    void
+  (   -2,    20)                                                    void
+  (   -1,    20)                                                    void
+  (    0,    20)                                                    void
+  (    1,    20)                                                    void
+  (    2,    20)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora bracken at (-18, 21), boulder stone-1 at (-12, 18)
+
+## stone-1 (boulder) along z
+TRANSECT 25 stations from (-10, 8) to (-10, 32), every 1
+  station        ground  surface  water  top  standing            step
+  (  -10,     8)                                                    void
+  (  -10,     9)                                                    void
+  (  -10,    10)                                                    void
+  (  -10,    11)                                                    void
+  (  -10,    12)       9        9           10  flora bracken       
+  (  -10,    13)       9        9            9                      
+  (  -10,    14)       9        9            9                      
+  (  -10,    15)       9        9            9                      
+  (  -10,    16)       9        9            9                      
+  (  -10,    17)       9        9            9                      
+  (  -10,    18)       9        9           13  boulder stone-1     
+  (  -10,    19)       9        9           13  boulder stone-1     
+  (  -10,    20)       9        9           14  boulder stone-1     
+  (  -10,    21)       9        9           13  boulder stone-1     
+  (  -10,    22)       9        9           13  boulder stone-1     
+  (  -10,    23)       9        9            9                      
+  (  -10,    24)      10       10           10                      +1
+  (  -10,    25)      10       10           10                      
+  (  -10,    26)      10       10           10                      
+  (  -10,    27)      10       10           10                      
+  (  -10,    28)      11       11           19  tree oak-3          +1
+  (  -10,    29)      11       11           22  flora bracken       
+  (  -10,    30)      11       11           23  flora bracken       
+  (  -10,    31)      11       11           24  flora bracken       
+  (  -10,    32)      11       11           23  flora bracken       
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora bracken at (-11, 12), boulder stone-1 at (-12, 18), tree oak-3 at (-10, 28)

@@ -1,0 +1,175 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -20,
+    "y": 22,
+    "z": -67
+   },
+   "protection": [
+    {
+     "minX": -30,
+     "minZ": -75,
+     "maxX": -10,
+     "maxZ": -60
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z",
+    "-x"
+   ],
+   "footprint": {
+    "minX": -25,
+    "minZ": -72,
+    "maxX": -15,
+    "maxZ": -63
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 20,
+    "y": 22,
+    "z": 67
+   },
+   "protection": [
+    {
+     "minX": 10,
+     "minZ": 60,
+     "maxX": 30,
+     "maxZ": 75
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z",
+    "+x"
+   ],
+   "footprint": {
+    "minX": 15,
+    "minZ": 63,
+    "maxX": 25,
+    "maxZ": 72
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 56,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -50,
+    "minZ": -10,
+    "maxX": 50,
+    "maxZ": 10
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "",
+   "anchor": {
+    "x": -22,
+    "y": 12,
+    "z": -22
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "",
+   "anchor": {
+    "x": 21,
+    "y": 12,
+    "z": 21
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  }
+ ],
+ "modes": null,
+ "gamemodes": [
+  "dtc"
+ ],
+ "meta": {
+  "name": "Saltwharf",
+  "created": "2026-09-11",
+  "authors": [
+   {
+    "name": "Fable 5.1"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}

@@ -643,6 +643,12 @@ def patch_intent(intent, finish):
     if created := finish.get("created"):
         intent.setdefault("meta", {})["created"] = created
         print(f"    created {created}")
+    # The observer platform's authors board reads the intent's own meta.authors (`EX6`), which a compiled
+    # intent leaves empty; the body's `authors` credits the map row and never reaches it. A bare name is a
+    # plain credit, and a record is carried as it is.
+    if authors := finish.get("authors"):
+        intent.setdefault("meta", {})["authors"] = [
+            {"name": person} if isinstance(person, str) else person for person in authors]
     elif (intent.get("meta") or {}).get("created"):
         print(f"    created {intent['meta']['created']}")
     else:

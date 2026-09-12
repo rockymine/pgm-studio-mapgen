@@ -1,0 +1,57 @@
+## warehouse-w (house) along x
+TRANSECT 21 stations from (-50, -34) to (-30, -34), every 1
+  station        ground  surface  water  top  standing            step
+  (  -50,   -34)      12       12           12                      
+  (  -49,   -34)      12       12           12                      
+  (  -48,   -34)      12       12           12                      
+  (  -47,   -34)      12       12           24  house warehouse-w   
+  (  -46,   -34)      12       12           24  house warehouse-w   
+  (  -45,   -34)      12       12           24  house warehouse-w   
+  (  -44,   -34)      12       12           24  house warehouse-w   
+  (  -43,   -34)      12       12           24  house warehouse-w   
+  (  -42,   -34)      12       12           24  house warehouse-w   
+  (  -41,   -34)      12       12           24  house warehouse-w   
+  (  -40,   -34)      12       12           24  house warehouse-w   
+  (  -39,   -34)      12       12           24  house warehouse-w   
+  (  -38,   -34)      12       12           24  house warehouse-w   
+  (  -37,   -34)      12       12           24  house warehouse-w   
+  (  -36,   -34)      12       12           12                      
+  (  -35,   -34)      12       12           12                      
+  (  -34,   -34)      12       12           12                      
+  (  -33,   -34)      12       12           12                      
+  (  -32,   -34)      12       12           12                      
+  (  -31,   -34)      12       12           12                      
+  (  -30,   -34)      12       12           12                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house warehouse-w at (-47, -36)
+
+## warehouse-w (house) along z
+TRANSECT 25 stations from (-42, -46) to (-42, -22), every 1
+  station        ground  surface  water  top  standing            step
+  (  -42,   -46)      22       22           31  tree oak-1          
+  (  -42,   -45)      22       22           32  tree oak-1          
+  (  -42,   -44)      22       22           22                      
+  (  -42,   -43)      22       22           22                      
+  (  -42,   -42)      22       22           22                      
+  (  -42,   -41)      22       22           22                      
+  (  -42,   -40)      12       12           12                      DROP -10
+  (  -42,   -39)      12       12           19  house warehouse-w   
+  (  -42,   -38)      12       12           20  house warehouse-w   
+  (  -42,   -37)      12       12           21  house warehouse-w   
+  (  -42,   -36)      12       12           22  house warehouse-w   
+  (  -42,   -35)      12       12           23  house warehouse-w   
+  (  -42,   -34)      12       12           24  house warehouse-w   
+  (  -42,   -33)      12       12           23  house warehouse-w   
+  (  -42,   -32)      12       12           22  house warehouse-w   
+  (  -42,   -31)      12       12           21  house warehouse-w   
+  (  -42,   -30)      12       12           20  house warehouse-w   
+  (  -42,   -29)      12       12           19  house warehouse-w   
+  (  -42,   -28)      12       12           12                      
+  (  -42,   -27)      12       12           12                      
+  (  -42,   -26)      12       12           12                      
+  (  -42,   -25)      12       12           12                      
+  (  -42,   -24)      12       12           12                      
+  (  -42,   -23)      12       12           12                      
+  (  -42,   -22)      12       12           12                      
+rises 0, falls 1, worst step 10: 0 barrier, 0 scramble, 1 drop — DROP -10 at (-42, -40) | walked end to end
+beside: tree oak-1 at (-44, -48), house warehouse-w at (-44, -39)

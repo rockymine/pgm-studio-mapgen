@@ -1,0 +1,58 @@
+## store (house) along x
+TRANSECT 24 stations from (14, -89) to (37, -89), every 1
+  station        ground  surface  water  top  standing            step
+  (   14,   -89)      26       26           26                      
+  (   15,   -89)      26       26           26                      
+  (   16,   -89)      26       26           26                      
+  (   17,   -89)      26       26           26                      
+  (   18,   -89)      26       26           26                      
+  (   19,   -89)      26       26           26                      
+  (   20,   -89)      26       26           26                      
+  (   21,   -89)      26       26           33  house store         
+  (   22,   -89)      26       26           33  house store         
+  (   23,   -89)      26       26           33  house store         
+  (   24,   -89)      26       26           33  house store         
+  (   25,   -89)      26       26           33  house store         
+  (   26,   -89)      26       26           33  house store         
+  (   27,   -89)      26       26           33  house store         
+  (   28,   -89)      26       26           33  house store         
+  (   29,   -89)      26       26           33  house store         
+  (   30,   -89)      26       26           33  house store         
+  (   31,   -89)      26       26           26                      
+  (   32,   -89)      26       26           26                      
+  (   33,   -89)      26       26           27  flora sward         
+  (   34,   -89)      26       26           27  flora sward         
+  (   35,   -89)      26       26           27  flora sward         
+  (   36,   -89)      26       26           27  flora sward         
+  (   37,   -89)      26       26           27  flora sward         
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house store at (21, -91), flora sward at (33, -91)
+
+## store (house) along z
+TRANSECT 23 stations from (25, -100) to (25, -78), every 1
+  station        ground  surface  water  top  standing            step
+  (   25,  -100)      26       26           26                      
+  (   25,   -99)      26       26           26                      
+  (   25,   -98)      26       26           26                      
+  (   25,   -97)      26       26           26                      
+  (   25,   -96)      26       26           26                      
+  (   25,   -95)      26       26           26                      
+  (   25,   -94)      26       26           26                      
+  (   25,   -93)      26       26           29  house store         
+  (   25,   -92)      26       26           30  house store         
+  (   25,   -91)      26       26           31  house store         
+  (   25,   -90)      26       26           32  house store         
+  (   25,   -89)      26       26           33  house store         
+  (   25,   -88)      26       26           32  house store         
+  (   25,   -87)      26       26           31  house store         
+  (   25,   -86)      26       26           30  house store         
+  (   25,   -85)      26       26           29  house store         
+  (   25,   -84)      26       26           26                      
+  (   25,   -83)      26       26           26                      
+  (   25,   -82)      26       26           26                      
+  (   25,   -81)      26       26           26                      
+  (   25,   -80)      25       25           25                      -1
+  (   25,   -79)      25       25           25                      
+  (   25,   -78)      24       24           24                      -1
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house store at (23, -93)

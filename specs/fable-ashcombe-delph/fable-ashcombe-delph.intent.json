@@ -1,0 +1,171 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 26,
+    "z": -92
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -100,
+     "maxX": 10,
+     "maxZ": -80
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z",
+    "-x"
+   ],
+   "footprint": {
+    "minX": -5,
+    "minZ": -97,
+    "maxX": 5,
+    "maxZ": -87
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 26,
+    "z": 92
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 80,
+     "maxX": 10,
+     "maxZ": 100
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z",
+    "+x"
+   ],
+   "footprint": {
+    "minX": -5,
+    "minZ": 87,
+    "maxX": 5,
+    "maxZ": 97
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 58,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -50,
+    "minZ": -10,
+    "maxX": 50,
+    "maxZ": 10
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Delph Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 0,
+    "y": 20,
+    "z": -52
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Delph Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -1,
+    "y": 20,
+    "z": 51
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Ashcombe Delph",
+  "created": "2026-09-11",
+  "authors": [
+   {
+    "name": "Fable 5.1"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}

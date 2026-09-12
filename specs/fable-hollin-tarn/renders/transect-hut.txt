@@ -1,0 +1,56 @@
+## hut (house) along x
+TRANSECT 23 stations from (-38, -20) to (-16, -20), every 1
+  station        ground  surface  water  top  standing            step
+  (  -38,   -20)      17       17           17                      
+  (  -37,   -20)      17       17           17                      
+  (  -36,   -20)      16       16           16                      -1
+  (  -35,   -20)      16       16           16                      
+  (  -34,   -20)      16       16           16                      
+  (  -33,   -20)      16       16           16                      
+  (  -32,   -20)      16       16           16                      
+  (  -31,   -20)      16       16           19  house hut           
+  (  -30,   -20)      16       16           19  house hut           
+  (  -29,   -20)      15       15           19  house hut           -1
+  (  -28,   -20)      15       15           19  house hut           
+  (  -27,   -20)      15       15           19  house hut           
+  (  -26,   -20)      15       15           19  house hut           
+  (  -25,   -20)      14       14           19  house hut           -1
+  (  -24,   -20)      14       14           19  house hut           
+  (  -23,   -20)      14       14           19  house hut           
+  (  -22,   -20)      14       14           14                      
+  (  -21,   -20)      13       13           13                      -1
+  (  -20,   -20)      13       13           13                      
+  (  -19,   -20)      13       13           13                      
+  (  -18,   -20)      13       13           13                      
+  (  -17,   -20)      13       13           13                      
+  (  -16,   -20)      12       12           12                      -1
+rises 0, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house hut at (-31, -22)
+
+## hut (house) along z
+TRANSECT 22 stations from (-27, -30) to (-27, -9), every 1
+  station        ground  surface  water  top  standing            step
+  (  -27,   -30)      17       17           17                      
+  (  -27,   -29)      17       17           17                      
+  (  -27,   -28)      17       17           17                      
+  (  -27,   -27)      17       17           17                      
+  (  -27,   -26)      17       17           17                      
+  (  -27,   -25)      16       16           16                      -1
+  (  -27,   -24)      16       16           16                      
+  (  -27,   -23)      16       16           16  house hut           
+  (  -27,   -22)      16       16           17  house hut           
+  (  -27,   -21)      15       15           18  house hut           -1
+  (  -27,   -20)      15       15           19  house hut           
+  (  -27,   -19)      15       15           19  house hut           
+  (  -27,   -18)      14       14           18  house hut           -1
+  (  -27,   -17)      14       14           17  house hut           
+  (  -27,   -16)      13       13           16  house hut           -1
+  (  -27,   -15)      13       13           13                      
+  (  -27,   -14)      13       13           13                      
+  (  -27,   -13)      13       13           13                      
+  (  -27,   -12)      13       13           13                      
+  (  -27,   -11)      13       13           13                      
+  (  -27,   -10)                                                    void
+  (  -27,    -9)                                                    void
+rises 0, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree fir-4 at (-29, -32), house hut at (-29, -23)

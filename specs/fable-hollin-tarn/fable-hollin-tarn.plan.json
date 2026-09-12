@@ -1,0 +1,109 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Hollin Tarn"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 12,
+  "observerY": 56
+ },
+ "pieces": [
+  {
+   "id": "dale",
+   "role": "piece",
+   "rect": [
+    -10,
+    -15,
+    20,
+    13
+   ],
+   "surface": 12
+  },
+  {
+   "id": "head-w",
+   "role": "piece",
+   "rect": [
+    -10,
+    -18,
+    8,
+    3
+   ],
+   "surface": 18
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -2,
+    -18,
+    4,
+    3
+   ],
+   "surface": 18
+  },
+  {
+   "id": "head-e",
+   "role": "piece",
+   "rect": [
+    2,
+    -18,
+    8,
+    3
+   ],
+   "surface": 18
+  }
+ ],
+ "zones": [
+  {
+   "id": "gap",
+   "rect": [
+    -10,
+    -2,
+    20,
+    4
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     10,
+     8
+    ],
+    "facing": "back",
+    "footprint": [
+     4,
+     3,
+     12,
+     10
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "piece": "dale",
+    "at": [
+     50,
+     31
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Hollin Monument"
+   }
+  ],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

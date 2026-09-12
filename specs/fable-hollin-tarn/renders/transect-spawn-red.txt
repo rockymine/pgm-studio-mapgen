@@ -1,0 +1,72 @@
+## spawn-red (spawn) along x
+TRANSECT 37 stations from (-18, -83) to (18, -83), every 1
+  station        ground  surface  water  top  standing            step
+  (  -18,   -83)      18       18           18                      
+  (  -17,   -83)      18       18           18                      
+  (  -16,   -83)      18       18           18                      
+  (  -15,   -83)      18       18           18                      
+  (  -14,   -83)      18       18           18                      
+  (  -13,   -83)      18       18           18                      
+  (  -12,   -83)      18       18           18                      
+  (  -11,   -83)      18       18           18                      
+  (  -10,   -83)      18       18           18                      
+  (   -9,   -83)      18       18           18                      
+  (   -8,   -83)      18       18           18                      
+  (   -7,   -83)      18       18           30                      
+  (   -6,   -83)      18       18           30  spawn spawn-1       
+  (   -5,   -83)      18       18           30  spawn spawn-1       
+  (   -4,   -83)      18       18           30  spawn spawn-1       
+  (   -3,   -83)      18       18           30  spawn spawn-1       
+  (   -2,   -83)      18       18           30  spawn spawn-1       
+  (   -1,   -83)      18       18           30  spawn spawn-1       
+  (    0,   -83)      18       18           30  spawn spawn-1       
+  (    1,   -83)      18       18           30  spawn spawn-1       
+  (    2,   -83)      18       18           30  spawn spawn-1       
+  (    3,   -83)      18       18           30  spawn spawn-1       
+  (    4,   -83)      18       18           30  spawn spawn-1       
+  (    5,   -83)      18       18           30  spawn spawn-1       
+  (    6,   -83)      18       18           30                      
+  (    7,   -83)      18       18           18                      
+  (    8,   -83)      18       18           18                      
+  (    9,   -83)      18       18           18                      
+  (   10,   -83)      18       18           18                      
+  (   11,   -83)      18       18           18                      
+  (   12,   -83)      18       18           18                      
+  (   13,   -83)      18       18           18                      
+  (   14,   -83)      18       18           18                      
+  (   15,   -83)      18       18           18                      
+  (   16,   -83)      18       18           18                      
+  (   17,   -83)      18       18           18                      
+  (   18,   -83)      18       18           18                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (-6, -85)
+
+## spawn-red (spawn) along z
+TRANSECT 24 stations from (0, -90) to (0, -67), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,   -90)      18       18           18                      
+  (    0,   -89)      18       18           18                      
+  (    0,   -88)      18       18           25                      
+  (    0,   -87)      18       18           26  spawn spawn-1       
+  (    0,   -86)      18       18           27  spawn spawn-1       
+  (    0,   -85)      18       18           28  spawn spawn-1       
+  (    0,   -84)      18       18           29  spawn spawn-1       
+  (    0,   -83)      18       18           30  spawn spawn-1       
+  (    0,   -82)      18       18           30  spawn spawn-1       
+  (    0,   -81)      18       18           29  spawn spawn-1       
+  (    0,   -80)      18       18           28  spawn spawn-1       
+  (    0,   -79)      18       18           27  spawn spawn-1       
+  (    0,   -78)      18       18           26  spawn spawn-1       
+  (    0,   -77)      18       18           25                      
+  (    0,   -76)      18       18           18                      
+  (    0,   -75)      18       18           18                      
+  (    0,   -74)      18       18           18                      
+  (    0,   -73)      18       18           18                      
+  (    0,   -72)      18       18           18                      
+  (    0,   -71)      18       18           18  stroke track        
+  (    0,   -70)      18       18           18  stroke track        
+  (    0,   -69)      18       18           18  stroke track        
+  (    0,   -68)      18       18           18  stroke track        
+  (    0,   -67)      17       17           17  stroke track        -1
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (-2, -87), stroke track at (-1, -71)

@@ -1,0 +1,132 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Saltwharf"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 12,
+  "observerY": 56
+ },
+ "pieces": [
+  {
+   "id": "quay",
+   "role": "piece",
+   "rect": [
+    -10,
+    -8,
+    14,
+    6
+   ],
+   "surface": 12
+  },
+  {
+   "id": "strand",
+   "role": "piece",
+   "rect": [
+    4,
+    -8,
+    6,
+    6
+   ],
+   "surface": 13
+  },
+  {
+   "id": "head-w",
+   "role": "piece",
+   "rect": [
+    -10,
+    -15,
+    4,
+    7
+   ],
+   "surface": 22
+  },
+  {
+   "id": "head-m",
+   "role": "piece",
+   "rect": [
+    -6,
+    -12,
+    4,
+    4
+   ],
+   "surface": 22
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -6,
+    -15,
+    4,
+    3
+   ],
+   "surface": 22
+  },
+  {
+   "id": "head-e",
+   "role": "piece",
+   "rect": [
+    -2,
+    -15,
+    12,
+    7
+   ],
+   "surface": 22
+  }
+ ],
+ "zones": [
+  {
+   "id": "sound",
+   "rect": [
+    -10,
+    -2,
+    20,
+    4
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     10,
+     8
+    ],
+    "facing": "back",
+    "footprint": [
+     5,
+     3,
+     10,
+     9
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [],
+  "destroyables": [],
+  "cores": [
+   {
+    "id": "core-1",
+    "piece": "quay",
+    "at": [
+     28,
+     18
+    ],
+    "lava": 3,
+    "lavaHeight": 3,
+    "float": 6,
+    "leak": 5,
+    "openTop": false
+   }
+  ]
+ },
+ "walls": [],
+ "boxes": []
+}

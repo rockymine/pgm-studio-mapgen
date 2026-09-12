@@ -1,0 +1,61 @@
+## stone-2 (boulder) along x
+TRANSECT 25 stations from (10, -60) to (34, -60), every 1
+  station        ground  surface  water  top  standing            step
+  (   10,   -60)      16       16           16                      
+  (   11,   -60)      16       16           16                      
+  (   12,   -60)      16       16           16                      
+  (   13,   -60)      16       16           16                      
+  (   14,   -60)      16       16           16                      
+  (   15,   -60)      17       17           17                      +1
+  (   16,   -60)      17       17           17                      
+  (   17,   -60)      18       18           18                      +1
+  (   18,   -60)      18       18           18                      
+  (   19,   -60)      18       18           23  boulder stone-2     
+  (   20,   -60)      19       19           24  boulder stone-2     +1
+  (   21,   -60)      19       19           35  tree fir-12         
+  (   22,   -60)      20       20           35  tree fir-12         +1
+  (   23,   -60)      20       20           35  tree fir-12         
+  (   24,   -60)      21       21           37  tree fir-12         +1
+  (   25,   -60)      21       21           42  tree fir-12         
+  (   26,   -60)      21       21           36  tree fir-12         
+  (   27,   -60)      21       21           41  tree fir-12         
+  (   28,   -60)      21       21           33  tree fir-12         
+  (   29,   -60)      21       21           37  tree fir-12         
+  (   30,   -60)      22       22           37  tree fir-12         +1
+  (   31,   -60)      22       22           32  tree fir-12         
+  (   32,   -60)      22       22           22                      
+  (   33,   -60)      22       22           22                      
+  (   34,   -60)      22       22           22                      
+rises 6, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder stone-2 at (19, -62), tree fir-12 at (20, -59), tree fir-7 at (35, -62)
+
+## stone-2 (boulder) along z
+TRANSECT 25 stations from (22, -72) to (22, -48), every 1
+  station        ground  surface  water  top  standing            step
+  (   22,   -72)      18       18           18                      
+  (   22,   -71)      18       18           18                      
+  (   22,   -70)      18       18           18                      
+  (   22,   -69)      19       19           19                      +1
+  (   22,   -68)      19       19           19                      
+  (   22,   -67)      19       19           19                      
+  (   22,   -66)      19       19           29  tree fir-12         
+  (   22,   -65)      19       19           30  tree fir-12         
+  (   22,   -64)      19       19           33  tree fir-12         
+  (   22,   -63)      19       19           33  tree fir-12         
+  (   22,   -62)      20       20           29  tree fir-12         +1
+  (   22,   -61)      20       20           36  tree fir-12         
+  (   22,   -60)      20       20           35  tree fir-12         
+  (   22,   -59)      20       20           34  tree fir-12         
+  (   22,   -58)      20       20           24  boulder stone-2     
+  (   22,   -57)      20       20           23  boulder stone-2     
+  (   22,   -56)      20       20           20                      
+  (   22,   -55)      20       20           20                      
+  (   22,   -54)      19       19           19                      -1
+  (   22,   -53)      19       19           19                      
+  (   22,   -52)      19       19           19                      
+  (   22,   -51)      19       19           19                      
+  (   22,   -50)      19       19           19                      
+  (   22,   -49)      19       19           19                      
+  (   22,   -48)      19       19           19                      
+rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree fir-12 at (24, -68), boulder stone-2 at (20, -63), tree fir-8 at (24, -52)

@@ -1,0 +1,131 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Ashcombe Delph"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 12,
+  "observerY": 58
+ },
+ "pieces": [
+  {
+   "id": "yard",
+   "role": "piece",
+   "rect": [
+    -10,
+    -6,
+    20,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "bench",
+   "role": "piece",
+   "rect": [
+    -10,
+    -14,
+    20,
+    8
+   ],
+   "surface": 20
+  },
+  {
+   "id": "terrace-w",
+   "role": "piece",
+   "rect": [
+    -10,
+    -20,
+    8,
+    6
+   ],
+   "surface": 26
+  },
+  {
+   "id": "terrace-m",
+   "role": "piece",
+   "rect": [
+    -2,
+    -16,
+    4,
+    2
+   ],
+   "surface": 26
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -2,
+    -20,
+    4,
+    4
+   ],
+   "surface": 26
+  },
+  {
+   "id": "terrace-e",
+   "role": "piece",
+   "rect": [
+    2,
+    -20,
+    8,
+    6
+   ],
+   "surface": 26
+  }
+ ],
+ "zones": [
+  {
+   "id": "sound",
+   "rect": [
+    -10,
+    -2,
+    20,
+    4
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     10,
+     8
+    ],
+    "facing": "back",
+    "footprint": [
+     5,
+     3,
+     10,
+     10
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "piece": "bench",
+    "at": [
+     50,
+     18
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Delph Monument"
+   }
+  ],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

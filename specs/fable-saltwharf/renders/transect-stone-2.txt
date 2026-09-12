@@ -1,0 +1,61 @@
+## stone-2 (boulder) along x
+TRANSECT 25 stations from (18, -34) to (42, -34), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,   -34)      12       12           12                      
+  (   19,   -34)      12       12           12                      
+  (   20,   -34)      17       17           17                      BARRIER +5
+  (   21,   -34)      17       17           17                      
+  (   22,   -34)      16       16           16                      -1
+  (   23,   -34)      16       16           16                      
+  (   24,   -34)      16       16           16                      
+  (   25,   -34)      16       16           16                      
+  (   26,   -34)      16       16           16                      
+  (   27,   -34)      16       16           16                      
+  (   28,   -34)      16       16           19  boulder stone-2     
+  (   29,   -34)      16       16           20  boulder stone-2     
+  (   30,   -34)      16       16           20  boulder stone-2     
+  (   31,   -34)      16       16           20  boulder stone-2     
+  (   32,   -34)      16       16           19  boulder stone-2     
+  (   33,   -34)      16       16           18  boulder stone-2     
+  (   34,   -34)      16       16           16                      
+  (   35,   -34)      16       16           16                      
+  (   36,   -34)      16       16           16                      
+  (   37,   -34)      16       16           16                      
+  (   38,   -34)      16       16           16                      
+  (   39,   -34)      16       16           16                      
+  (   40,   -34)      16       16           16                      
+  (   41,   -34)      16       16           16                      
+  (   42,   -34)      16       16           16                      
+rises 1, falls 1, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (20, -34) | walked end to end
+beside: boulder stone-2 at (28, -36), stroke tide-line at (33, -32)
+
+## stone-2 (boulder) along z
+TRANSECT 25 stations from (30, -46) to (30, -22), every 1
+  station        ground  surface  water  top  standing            step
+  (   30,   -46)      21       21           21                      
+  (   30,   -45)      20       20           20                      -1
+  (   30,   -44)      20       20           20                      
+  (   30,   -43)      19       19           19                      -1
+  (   30,   -42)      19       19           19                      
+  (   30,   -41)      18       18           18                      -1
+  (   30,   -40)      18       18           18                      
+  (   30,   -39)      18       18           18                      
+  (   30,   -38)      17       17           17                      -1
+  (   30,   -37)      17       17           17                      
+  (   30,   -36)      17       17           19  boulder stone-2     
+  (   30,   -35)      17       17           20  boulder stone-2     
+  (   30,   -34)      16       16           20  boulder stone-2     -1
+  (   30,   -33)      16       16           20  boulder stone-2     
+  (   30,   -32)      16       16           19  boulder stone-2     
+  (   30,   -31)      15       15           15                      -1
+  (   30,   -30)      15       15           15                      
+  (   30,   -29)      14       14           14  stroke tide-line    -1
+  (   30,   -28)      14       14           14  stroke tide-line    
+  (   30,   -27)      13       13           13                      -1
+  (   30,   -26)      13       13           13  stroke tide-line    
+  (   30,   -25)      12       12           12                      -1
+  (   30,   -24)      12       12           12                      
+  (   30,   -23)      12       12           12                      
+  (   30,   -22)      12       12           12                      
+rises 0, falls 9, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder stone-2 at (28, -36), stroke tide-line at (28, -30)

@@ -1,0 +1,71 @@
+## spawn-blue (spawn) along x
+TRANSECT 37 stations from (2, 67) to (38, 67), every 1
+  station        ground  surface  water  top  standing            step
+  (    2,    67)      22       22           22                      
+  (    3,    67)      22       22           22                      
+  (    4,    67)      22       22           22                      
+  (    5,    67)      22       22           22                      
+  (    6,    67)      22       22           22                      
+  (    7,    67)      22       22           22                      
+  (    8,    67)      22       22           22                      
+  (    9,    67)      22       22           22                      
+  (   10,    67)      22       22           22                      
+  (   11,    67)      22       22           22                      
+  (   12,    67)      22       22           22                      
+  (   13,    67)      22       22           22                      
+  (   14,    67)      22       22           34                      
+  (   15,    67)      22       22           34  spawn spawn-1#1     
+  (   16,    67)      22       22           34  spawn spawn-1#1     
+  (   17,    67)      22       22           34  spawn spawn-1#1     
+  (   18,    67)      22       22           34  spawn spawn-1#1     
+  (   19,    67)      22       22           34  spawn spawn-1#1     
+  (   20,    67)      22       22           34  spawn spawn-1#1     
+  (   21,    67)      22       22           34  spawn spawn-1#1     
+  (   22,    67)      22       22           34  spawn spawn-1#1     
+  (   23,    67)      22       22           34  spawn spawn-1#1     
+  (   24,    67)      22       22           34  spawn spawn-1#1     
+  (   25,    67)      22       22           34                      
+  (   26,    67)      22       22           22                      
+  (   27,    67)      22       22           22                      
+  (   28,    67)      22       22           22                      
+  (   29,    67)      22       22           22                      
+  (   30,    67)      22       22           22                      
+  (   31,    67)      22       22           22                      
+  (   32,    67)      22       22           22                      
+  (   33,    67)      22       22           22                      
+  (   34,    67)      22       22           22                      
+  (   35,    67)      22       22           22                      
+  (   36,    67)      22       22           22                      
+  (   37,    67)      22       22           22                      
+  (   38,    67)      22       22           22                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (15, 65)
+
+## spawn-blue (spawn) along z
+TRANSECT 23 stations from (20, 52) to (20, 74), every 1
+  station        ground  surface  water  top  standing            step
+  (   20,    52)      22       22           22                      
+  (   20,    53)      22       22           22                      
+  (   20,    54)      22       22           22                      
+  (   20,    55)      22       22           22                      
+  (   20,    56)      22       22           22                      
+  (   20,    57)      22       22           22                      
+  (   20,    58)      22       22           22  stroke road#1       
+  (   20,    59)      22       22           22  stroke road#1       
+  (   20,    60)      22       22           22  stroke road#1       
+  (   20,    61)      22       22           22  stroke road#1       
+  (   20,    62)      22       22           29  stroke road#1       
+  (   20,    63)      22       22           30  spawn spawn-1#1     
+  (   20,    64)      22       22           31  spawn spawn-1#1     
+  (   20,    65)      22       22           32  spawn spawn-1#1     
+  (   20,    66)      22       22           33  spawn spawn-1#1     
+  (   20,    67)      22       22           34  spawn spawn-1#1     
+  (   20,    68)      22       22           33  spawn spawn-1#1     
+  (   20,    69)      22       22           32  spawn spawn-1#1     
+  (   20,    70)      22       22           31  spawn spawn-1#1     
+  (   20,    71)      22       22           30  spawn spawn-1#1     
+  (   20,    72)      22       22           29                      
+  (   20,    73)      22       22           22                      
+  (   20,    74)      22       22           22                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke road#1 at (22, 55), spawn spawn-1#1 at (18, 63)

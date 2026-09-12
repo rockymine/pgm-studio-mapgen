@@ -414,6 +414,21 @@ theme's own surface nowhere on it (`SK23`). 38 shapes on it carry a theme and 36
 |---|---|---|---|
 | `opus5-tiefkreuz` | dtm | Opus 5 | **80 × 224 on seventeen layers, and the objectives stand on the rails** — two railways crossing at right angles over one block of city: a north–south **through** station in cut-and-cover with ballast at y5, rails a course proud of it, a concrete cess at each track edge so a track is a trough a player walks through rather than a ditch, an island between two side platforms at y8, a concourse at y18, the street at y29, and the rails running on through a portal into a vaulted bore at the back of the map. Over it, east–west on six brick piers with a 32-block clear span and a masonry soffit, an **elevated station** — platform, canopy, two-car train — with the second monument in its four-foot. Every flight is 45° with a rail two courses over its treads; behind the crossing an avenue with planted verges, an arterial road and six flat-roofed blocks, of which the spawn is the tallest. No relief at all: every height on it is stated |
 
+### Fable 5.1 — four boards to the author's spoken brief
+
+One sentence each, built through the driver and read back before any picture was opened; the account of
+the loop, the numbers and the three questions left for the author are
+[reports/fable-four-boards-run.md](reports/fable-four-boards-run.md). The quarry is the run's attempt at an
+underground passage, planned from the rock up: a `below` layer of rock banded round a corridor, the bench's
+floor lifted over it, and an override flight cut back up through the bench.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `fable-ashcombe-delph` | dtm | Fable 5.1 | a worked quarry on a moor: the monument on the bench above a five-block face, the loading yard below it where the bridges land, a haul ramp round the west end, and an **adit** through the face that runs under the bench and comes up a flight beside the monument — three ways in, at three prices |
+| `fable-whinberry-ring` | ctw | Fable 5.1 | composer seed 18 at sixteen players taken over by hand: three levels, a twin frontline with a bay of void between its prongs, a stepping stone on the axis, a bedrock wall on each wool approach, the outline reshaped one vertex at a time, the author's own oaks |
+| `fable-saltwharf` | dtc | Fable 5.1 | a stone quay under a grass headland: the core out on the quay twelve blocks behind the sea wall, a warehouse either side, the spawn ten blocks up behind it, two stone flights and a sandy bank down; the quay banded in the team's colour on its sea face |
+| `fable-hollin-tarn` | dtm | Fable 5.1 | a snowed valley head under a cold-taiga sky: the monument on a green knoll behind a frozen tarn cut as a level plate, spruce shoulders either side for the long way round, a timber lodge at the head |
+
 ## Three caveats about what is committed here
 
 **`*` — the mode is wrong, and the map is not.** Every board marked `ctw*` is a destroy board whose `map.xml`

@@ -1,0 +1,171 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 18,
+    "z": -82
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": -90,
+     "maxX": 10,
+     "maxZ": -75
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z",
+    "-x"
+   ],
+   "footprint": {
+    "minX": -6,
+    "minZ": -87,
+    "maxX": 6,
+    "maxZ": -77
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 18,
+    "z": 82
+   },
+   "protection": [
+    {
+     "minX": -10,
+     "minZ": 75,
+     "maxX": 10,
+     "maxZ": 90
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z",
+    "+x"
+   ],
+   "footprint": {
+    "minX": -6,
+    "minZ": 77,
+    "maxX": 6,
+    "maxZ": 87
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 56,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -50,
+    "minZ": -10,
+    "maxX": 50,
+    "maxZ": 10
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Hollin Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 0,
+    "y": 12,
+    "z": -44
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Hollin Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -1,
+    "y": 12,
+    "z": 43
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Hollin Tarn",
+  "created": "2026-09-11",
+  "authors": [
+   {
+    "name": "Fable 5.1"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}
