@@ -1,0 +1,80 @@
+## beck-south (water) along x
+TRANSECT 25 stations from (-32, 50) to (-8, 50), every 1
+  station        ground  surface  water  top  standing            step
+  (  -32,    50)      12       12           12                      
+  (  -31,    50)      12       12           12                      
+  (  -30,    50)      11       11           11                      -1
+  (  -29,    50)      10       10           10                      -1
+  (  -28,    50)       9        9            9                      -1
+  (  -27,    50)       8        8            8                      -1
+  (  -26,    50)       7        7            7                      -1
+  (  -25,    50)       7        7            7                      
+  (  -24,    50)       7        7            7  water beck-south    
+  (  -23,    50)       7        7            7  water beck-south    
+  (  -22,    50)       7        7      7     7  water beck-south    
+  (  -21,    50)       7        7      7     7  water beck-south    
+  (  -20,    50)       7        7      7     7  water beck-south    
+  (  -19,    50)       7        7      7     7  water beck-south    
+  (  -18,    50)       7        7            7  water beck-south    
+  (  -17,    50)       7        7            7                      
+  (  -16,    50)       7        7            7                      
+  (  -15,    50)       7        7            7                      
+  (  -14,    50)       8        8            8                      +1
+  (  -13,    50)       9        9            9                      +1
+  (  -12,    50)      10       10           10                      +1
+  (  -11,    50)      11       11           11                      +1
+  (  -10,    50)      12       12           12                      +1
+  (   -9,    50)      12       12           12                      
+  (   -8,    50)      12       12           12                      
+rises 5, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water beck-south at (-24, 50), stroke track at (-7, 48)
+
+## beck-south (water) along z
+TRANSECT 44 stations from (-20, 29) to (-20, 72), every 1
+  station        ground  surface  water  top  standing            step
+  (  -20,    29)      12       12           12                      
+  (  -20,    30)      12       12           12                      
+  (  -20,    31)      12       12           12                      
+  (  -20,    32)      12       12           12                      
+  (  -20,    33)      12       12           12                      
+  (  -20,    34)      11       11           11                      -1
+  (  -20,    35)      11       11           11                      
+  (  -20,    36)      10       10           10                      -1
+  (  -20,    37)      10       10           10                      
+  (  -20,    38)      10       10           10                      
+  (  -20,    39)       9        9            9                      -1
+  (  -20,    40)       9        9            9  water beck-south    
+  (  -20,    41)       8        8            8  water beck-south    -1
+  (  -20,    42)       8        8            8  water beck-south    
+  (  -20,    43)       8        8            8  water beck-south    
+  (  -20,    44)       7        7            7  water beck-south    -1
+  (  -20,    45)       7        7            7  water beck-south    
+  (  -20,    46)       7        7      7     7  water beck-south    
+  (  -20,    47)       7        7      7     7  water beck-south    
+  (  -20,    48)       7        7      7     7  water beck-south    
+  (  -20,    49)       7        7      7     7  water beck-south    
+  (  -20,    50)       7        7      7     7  water beck-south    
+  (  -20,    51)       7        7      7     7  water beck-south    
+  (  -20,    52)       7        7      7     7  water beck-south    
+  (  -20,    53)       7        7      7     7  water beck-south    
+  (  -20,    54)       7        7      7     7  water beck-south    
+  (  -20,    55)       7        7      7     7  water beck-south    
+  (  -20,    56)       7        7      7     7  water beck-south    
+  (  -20,    57)       7        7      7     7  water beck-south    
+  (  -20,    58)       7        7      7     7  water beck-south    
+  (  -20,    59)       7        7      7     7  water beck-south    
+  (  -20,    60)       7        7      7     7  water beck-south    
+  (  -20,    61)       7        7      7     7  water beck-south    
+  (  -20,    62)      12       12           12                      BARRIER +5
+  (  -20,    63)      12       12           12                      
+  (  -20,    64)      12       12           12                      
+  (  -20,    65)      12       12           12                      
+  (  -20,    66)      12       12           12                      
+  (  -20,    67)      12       12           12                      
+  (  -20,    68)       7        7            7                      DROP -5
+  (  -20,    69)       7        7            7  water beck-north    
+  (  -20,    70)       7        7            7  water beck-north    
+  (  -20,    71)       7        7            7  water beck-north    
+  (  -20,    72)       7        7            7  water beck-north    
+rises 1, falls 6, worst step 5: 1 barrier, 0 scramble, 1 drop — BARRIER +5 at (-20, 62); DROP -5 at (-20, 68) | walked end to end
+beside: water beck-south at (-21, 40), water beck-north at (-21, 69)

@@ -1,0 +1,74 @@
+## bastle (house) along x
+TRANSECT 29 stations from (-6, 56) to (22, 56), every 1
+  station        ground  surface  water  top  standing            step
+  (   -6,    56)      12       12           12  stroke track        
+  (   -5,    56)      13       13           13  stroke track        +1
+  (   -4,    56)      13       13           13  stroke track        
+  (   -3,    56)      13       13           13  stroke track        
+  (   -2,    56)      13       13           13                      
+  (   -1,    56)      14       14           14                      +1
+  (    0,    56)      14       14           14                      
+  (    1,    56)      14       14           27  house bastle        
+  (    2,    56)      14       14           27  house bastle        
+  (    3,    56)      15       15           27  house bastle        +1
+  (    4,    56)      15       15           27  house bastle        
+  (    5,    56)      15       15           27  house bastle        
+  (    6,    56)      15       15           27  house bastle        
+  (    7,    56)      15       15           27  house bastle        
+  (    8,    56)      16       16           27  house bastle        +1
+  (    9,    56)      16       16           27  house bastle        
+  (   10,    56)      16       16           27  house bastle        
+  (   11,    56)      16       16           27  house bastle        
+  (   12,    56)      16       16           27  house bastle        
+  (   13,    56)      16       16           27  house bastle        
+  (   14,    56)      16       16           27  house bastle        
+  (   15,    56)                            27  house bastle        void
+  (   16,    56)                                                    void
+  (   17,    56)                                                    void
+  (   18,    56)                                                    void
+  (   19,    56)                                                    void
+  (   20,    56)                                                    void
+  (   21,    56)                                                    void
+  (   22,    56)                                                    void
+rises 4, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track at (-6, 54), house bastle at (1, 54)
+
+## bastle (house) along z
+TRANSECT 34 stations from (8, 40) to (8, 73), every 1
+  station        ground  surface  water  top  standing            step
+  (    8,    40)      17       17           17                      
+  (    8,    41)      17       17           17                      
+  (    8,    42)      16       16           16                      -1
+  (    8,    43)      16       16           16                      
+  (    8,    44)      16       16           16                      
+  (    8,    45)      16       16           16                      
+  (    8,    46)      16       16           16                      
+  (    8,    47)      16       16           24  house bastle        
+  (    8,    48)      16       16           25  house bastle        
+  (    8,    49)      16       16           26  house bastle        
+  (    8,    50)      16       16           27  house bastle        
+  (    8,    51)      15       15           28  house bastle        -1
+  (    8,    52)      15       15           29  house bastle        
+  (    8,    53)      15       15           30  house bastle        
+  (    8,    54)      15       15           29  house bastle        
+  (    8,    55)      15       15           28  house bastle        
+  (    8,    56)      16       16           27  house bastle        +1
+  (    8,    57)      16       16           26  house bastle        
+  (    8,    58)      16       16           25  house bastle        
+  (    8,    59)      16       16           24  house bastle        
+  (    8,    60)      16       16           23  house bastle        
+  (    8,    61)      16       16           23  house bastle        
+  (    8,    62)      16       16           23  house bastle        
+  (    8,    63)      16       16           23  house bastle        
+  (    8,    64)      16       16           23  house bastle        
+  (    8,    65)      16       16           23  house bastle        
+  (    8,    66)      16       16           23  house bastle        
+  (    8,    67)      16       16           16                      
+  (    8,    68)      16       16           16                      
+  (    8,    69)      16       16           16                      
+  (    8,    70)      15       15           15                      -1
+  (    8,    71)      15       15           15                      
+  (    8,    72)      15       15           15                      
+  (    8,    73)      14       14           14                      -1
+rises 1, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house bastle at (6, 47)
