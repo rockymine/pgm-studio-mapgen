@@ -1,0 +1,59 @@
+## blue-1 (wool) along x
+TRANSECT 25 stations from (3, -105) to (27, -105), every 1
+  station        ground  surface  water  top  standing            step
+  (    3,  -105)      12       12           12                      
+  (    4,  -105)      12       12           27                      
+  (    5,  -105)      12       12           27  wool wool-1#1       
+  (    6,  -105)      12       12           27  wool wool-1#1       
+  (    7,  -105)      12       12           27  wool wool-1#1       
+  (    8,  -105)      12       12           27  wool wool-1#1       
+  (    9,  -105)      12       12           27  wool wool-1#1       
+  (   10,  -105)      12       12           27  wool wool-1#1       
+  (   11,  -105)      12       12           27  wool wool-1#1       
+  (   12,  -105)      12       12           27  wool wool-1#1       
+  (   13,  -105)      12       12           27  stroke path-wool#1  
+  (   14,  -105)      12       12           54  wool wool-1#1       
+  (   15,  -105)      12       12           54  wool wool-1#1       
+  (   16,  -105)      12       12           54  stroke path-wool#1  
+  (   17,  -105)      12       12           27  wool wool-1#1       
+  (   18,  -105)      12       12           27  wool wool-1#1       
+  (   19,  -105)      12       12           27  wool wool-1#1       
+  (   20,  -105)      12       12           27  wool wool-1#1       
+  (   21,  -105)      12       12           27  wool wool-1#1       
+  (   22,  -105)      12       12           27  wool wool-1#1       
+  (   23,  -105)      12       12           27  wool wool-1#1       
+  (   24,  -105)      12       12           27  wool wool-1#1       
+  (   25,  -105)      12       12           27                      
+  (   26,  -105)      12       12           12                      
+  (   27,  -105)      12       12           12                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-1#1 at (5, -107), stroke path-wool#1 at (13, -107), stroke path-wool-flank-w#1 at (26, -103), redstoneline 1#1 at (29, -107)
+
+## blue-1 (wool) along z
+TRANSECT 23 stations from (15, -115) to (15, -93), every 1
+  station        ground  surface  water  top  standing            step
+  (   15,  -115)      12       12           12                      
+  (   15,  -114)      12       12           12                      
+  (   15,  -113)      12       12           20                      
+  (   15,  -112)      12       12           21  wool wool-1#1       
+  (   15,  -111)      12       12           22  wool wool-1#1       
+  (   15,  -110)      12       12           23  stroke path-wool#1  
+  (   15,  -109)      12       12           24  stroke path-wool#1  
+  (   15,  -108)      12       12           25  stroke path-wool#1  
+  (   15,  -107)      12       12           26  stroke path-wool#1  
+  (   15,  -106)      12       12           54  wool wool-1#1       
+  (   15,  -105)      12       12           54  wool wool-1#1       
+  (   15,  -104)      12       12           54  stroke path-wool#1  
+  (   15,  -103)      12       12           25  stroke path-wool#1  
+  (   15,  -102)      12       12           24  stroke path-wool-flank-w#1  
+  (   15,  -101)      12       12           23  stroke path-wool-flank-w#1  
+  (   15,  -100)      12       12           22  stroke path-wool-flank-w#1  
+  (   15,   -99)      12       12           21  stroke path-wool#1  
+  (   15,   -98)      12       12           20                      
+  (   15,   -97)      12       12           12                      
+  (   15,   -96)      12       12           13  redstoneline 0#1    
+  (   15,   -95)      12       12           12                      
+  (   15,   -94)      12       12           12                      
+  (   15,   -93)      12       12           12                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-1#1 at (13, -112), stroke path-wool#1 at (14, -110), stroke path-wool-flank-w#1 at (15, -102), redstoneline 0#1 at (13, -96)

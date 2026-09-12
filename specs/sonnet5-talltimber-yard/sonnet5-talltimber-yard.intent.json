@@ -1,0 +1,173 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 10,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 9,
+    "z": -105
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": -115,
+     "maxX": 15,
+     "maxZ": -95
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -10,
+    "minZ": -112,
+    "maxX": 10,
+    "maxZ": -98
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 9,
+    "z": 105
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": 95,
+     "maxX": 15,
+     "maxZ": 115
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": -10,
+    "minZ": 98,
+    "maxX": 10,
+    "maxZ": 112
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 24,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -45,
+    "minZ": -15,
+    "maxX": 45,
+    "maxZ": 15
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-0",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Ledger",
+   "anchor": {
+    "x": 17,
+    "y": 9,
+    "z": -62
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 5,
+   "leak": 6,
+   "box": null,
+   "digDepth": 2
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-0",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Ledger",
+   "anchor": {
+    "x": -18,
+    "y": 9,
+    "z": 61
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 5,
+   "leak": 6,
+   "box": null,
+   "digDepth": 2
+  }
+ ],
+ "modes": null,
+ "gamemodes": [
+  "dtc"
+ ],
+ "meta": {
+  "name": "Talltimber Yard",
+  "created": "2026-09-11",
+  "authors": [
+   {
+    "name": "Sonnet 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}

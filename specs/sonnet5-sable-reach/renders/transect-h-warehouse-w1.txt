@@ -1,0 +1,67 @@
+## h-warehouse-w1 (house) along x
+TRANSECT 29 stations from (-54, 39) to (-26, 39), every 1
+  station        ground  surface  water  top  standing            step
+  (  -54,    39)                                                    void
+  (  -53,    39)                                                    void
+  (  -52,    39)                                                    void
+  (  -51,    39)                                                    void
+  (  -50,    39)      12       12           12                      
+  (  -49,    39)      12       12           12                      
+  (  -48,    39)      12       12           12                      
+  (  -47,    39)      12       12           26  house h-warehouse-w1  
+  (  -46,    39)      12       12           26  house h-warehouse-w1  
+  (  -45,    39)      12       12           26  house h-warehouse-w1  
+  (  -44,    39)      12       12           26  house h-warehouse-w1  
+  (  -43,    39)      12       12           26  house h-warehouse-w1  
+  (  -42,    39)      12       12           26  house h-warehouse-w1  
+  (  -41,    39)      12       12           26  house h-warehouse-w1  
+  (  -40,    39)      12       12           26  house h-warehouse-w1  
+  (  -39,    39)      12       12           26  house h-warehouse-w1  
+  (  -38,    39)      12       12           26  house h-warehouse-w1  
+  (  -37,    39)      12       12           26  house h-warehouse-w1  
+  (  -36,    39)      12       12           26  house h-warehouse-w1  
+  (  -35,    39)      12       12           26  house h-warehouse-w1  
+  (  -34,    39)      12       12           26  house h-warehouse-w1  
+  (  -33,    39)      12       12           26  house h-warehouse-w1  
+  (  -32,    39)      12       12           12                      
+  (  -31,    39)      12       12           12                      
+  (  -30,    39)      12       12           12                      
+  (  -29,    39)      12       12           12                      
+  (  -28,    39)      12       12           12                      
+  (  -27,    39)      12       12           12                      
+  (  -26,    39)      12       12           12                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house h-warehouse-w1 at (-47, 37)
+
+## h-warehouse-w1 (house) along z
+TRANSECT 27 stations from (-40, 26) to (-40, 52), every 1
+  station        ground  surface  water  top  standing            step
+  (  -40,    26)       9        9            9                      
+  (  -40,    27)       9        9            9                      
+  (  -40,    28)       9        9            9                      
+  (  -40,    29)       9        9            9                      
+  (  -40,    30)      12       12           12                      BARRIER +3
+  (  -40,    31)      12       12           12                      
+  (  -40,    32)      12       12           12                      
+  (  -40,    33)      12       12           20  house h-warehouse-w1  
+  (  -40,    34)      12       12           21  house h-warehouse-w1  
+  (  -40,    35)      12       12           22  house h-warehouse-w1  
+  (  -40,    36)      12       12           23  house h-warehouse-w1  
+  (  -40,    37)      12       12           24  house h-warehouse-w1  
+  (  -40,    38)      12       12           25  house h-warehouse-w1  
+  (  -40,    39)      12       12           26  house h-warehouse-w1  
+  (  -40,    40)      12       12           25  house h-warehouse-w1  
+  (  -40,    41)      12       12           24  house h-warehouse-w1  
+  (  -40,    42)      12       12           23  house h-warehouse-w1  
+  (  -40,    43)      12       12           22  house h-warehouse-w1  
+  (  -40,    44)      12       12           21  house h-warehouse-w1  
+  (  -40,    45)      12       12           20  house h-warehouse-w1  
+  (  -40,    46)      12       12           12                      
+  (  -40,    47)      12       12           20  house h-warehouse-w2  
+  (  -40,    48)      12       12           21  house h-warehouse-w2  
+  (  -40,    49)      12       12           22  house h-warehouse-w2  
+  (  -40,    50)      12       12           23  house h-warehouse-w2  
+  (  -40,    51)      12       12           24  house h-warehouse-w2  
+  (  -40,    52)      12       12           25  house h-warehouse-w2  
+rises 1, falls 0, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (-40, 30) | walked end to end
+beside: house h-warehouse-w1 at (-42, 33), house h-warehouse-w2 at (-42, 47)

@@ -1,0 +1,113 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Fellgrave Hollow"
+ },
+ "globals": {
+  "cell": 2,
+  "symmetry": "rot_180",
+  "maxPlayers": 8,
+  "surface": 10,
+  "observerY": 58
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -5,
+    -70,
+    10,
+    15
+   ]
+  },
+  {
+   "id": "ground-1",
+   "role": "piece",
+   "rect": [
+    -25,
+    -55,
+    50,
+    16
+   ]
+  },
+  {
+   "id": "ground-2",
+   "role": "piece",
+   "rect": [
+    -25,
+    -39,
+    50,
+    16
+   ]
+  },
+  {
+   "id": "ground-3",
+   "role": "piece",
+   "rect": [
+    -25,
+    -23,
+    50,
+    16
+   ]
+  },
+  {
+   "id": "east-adit",
+   "role": "piece",
+   "rect": [
+    25,
+    -41,
+    6,
+    8
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "tarn-crossing",
+   "rect": [
+    -25,
+    -7,
+    50,
+    14
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     10,
+     16
+    ],
+    "facing": "back",
+    "footprint": [
+     2,
+     10,
+     16,
+     12
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "relic-1",
+    "piece": "",
+    "at": [
+     0,
+     -70
+    ],
+    "style": "pillar-2",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Frozen Relic"
+   }
+  ],
+  "cores": [],
+  "wools": []
+ },
+ "walls": [],
+ "boxes": []
+}

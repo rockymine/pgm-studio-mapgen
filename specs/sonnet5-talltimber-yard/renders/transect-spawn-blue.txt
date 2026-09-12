@@ -1,0 +1,86 @@
+## spawn-blue (spawn) along x
+TRANSECT 47 stations from (-23, 105) to (23, 105), every 1
+  station        ground  surface  water  top  standing            step
+  (  -23,   105)                                                    void
+  (  -22,   105)                                                    void
+  (  -21,   105)                                                    void
+  (  -20,   105)                                                    void
+  (  -19,   105)                                                    void
+  (  -18,   105)                                                    void
+  (  -17,   105)                                                    void
+  (  -16,   105)                                                    void
+  (  -15,   105)      12       12           12                      
+  (  -14,   105)      12       12           12                      
+  (  -13,   105)      12       12           12                      
+  (  -12,   105)      12       12           12                      
+  (  -11,   105)      12       12           24                      
+  (  -10,   105)      12       12           24  spawn spawn-1#1     
+  (   -9,   105)      12       12           24  spawn spawn-1#1     
+  (   -8,   105)      12       12           24  spawn spawn-1#1     
+  (   -7,   105)      12       12           24  spawn spawn-1#1     
+  (   -6,   105)      12       12           24  spawn spawn-1#1     
+  (   -5,   105)      12       12           24  spawn spawn-1#1     
+  (   -4,   105)      12       12           24  spawn spawn-1#1     
+  (   -3,   105)      12       12           24  spawn spawn-1#1     
+  (   -2,   105)      12       12           24  spawn spawn-1#1     
+  (   -1,   105)      12       12           24  spawn spawn-1#1     
+  (    0,   105)      12       12           24  spawn spawn-1#1     
+  (    1,   105)      12       12           24  spawn spawn-1#1     
+  (    2,   105)      12       12           24  spawn spawn-1#1     
+  (    3,   105)      12       12           24  spawn spawn-1#1     
+  (    4,   105)      12       12           24  spawn spawn-1#1     
+  (    5,   105)      12       12           24  spawn spawn-1#1     
+  (    6,   105)      12       12           24  spawn spawn-1#1     
+  (    7,   105)      12       12           24  spawn spawn-1#1     
+  (    8,   105)      12       12           24  spawn spawn-1#1     
+  (    9,   105)      12       12           24  spawn spawn-1#1     
+  (   10,   105)      12       12           24                      
+  (   11,   105)      12       12           12                      
+  (   12,   105)      12       12           12                      
+  (   13,   105)      12       12           12                      
+  (   14,   105)      12       12           12                      
+  (   15,   105)                                                    void
+  (   16,   105)                                                    void
+  (   17,   105)                                                    void
+  (   18,   105)                                                    void
+  (   19,   105)                                                    void
+  (   20,   105)                                                    void
+  (   21,   105)                                                    void
+  (   22,   105)                                                    void
+  (   23,   105)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (-10, 103)
+
+## spawn-blue (spawn) along z
+TRANSECT 28 stations from (0, 87) to (0, 114), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    87)      10       10           10  stroke camp-road#1  
+  (    0,    88)      11       11           11  stroke camp-road#1  +1
+  (    0,    89)      11       11           11  stroke camp-road#1  
+  (    0,    90)      11       11           11  stroke camp-road#1  
+  (    0,    91)      11       11           11  stroke camp-road#1  
+  (    0,    92)      11       11           11  stroke camp-road#1  
+  (    0,    93)      12       12           12  stroke camp-road#1  +1
+  (    0,    94)      12       12           12  stroke camp-road#1  
+  (    0,    95)      12       12           12  stroke camp-road#1  
+  (    0,    96)      12       12           12  stroke camp-road#1  
+  (    0,    97)      12       12           17                      
+  (    0,    98)      12       12           18  spawn spawn-1#1     
+  (    0,    99)      12       12           19  spawn spawn-1#1     
+  (    0,   100)      12       12           20  spawn spawn-1#1     
+  (    0,   101)      12       12           21  spawn spawn-1#1     
+  (    0,   102)      12       12           22  spawn spawn-1#1     
+  (    0,   103)      12       12           23  spawn spawn-1#1     
+  (    0,   104)      12       12           24  spawn spawn-1#1     
+  (    0,   105)      12       12           24  spawn spawn-1#1     
+  (    0,   106)      12       12           23  spawn spawn-1#1     
+  (    0,   107)      12       12           22  spawn spawn-1#1     
+  (    0,   108)      12       12           21  spawn spawn-1#1     
+  (    0,   109)      12       12           20  spawn spawn-1#1     
+  (    0,   110)      12       12           19  spawn spawn-1#1     
+  (    0,   111)      12       12           18  spawn spawn-1#1     
+  (    0,   112)      12       12           17                      
+  (    0,   113)      12       12           12                      
+  (    0,   114)      12       12           12                      
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke cottage-road#1 at (-2, 85), stroke store-road#1 at (-1, 85), stroke camp-road#1 at (-2, 86), spawn spawn-1#1 at (-2, 98)
