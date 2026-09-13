@@ -277,6 +277,12 @@ front that was still grass. Four faults, and three of them are one mechanism.
 | gravel blots bridging to the middle island | one beach shape over the full front instead, ending exactly on the island's own coast vertices. Bridging the gap is the players' job |
 | the ground was still sand at depth | the `wall` bucket is banded on the **`height`** axis now: nine courses of stone and andesite, five of sandstone, then sand. Columns read `Grass · Dirt ×3 · Coarse Dirt ×2 · Stone/Andesite to bedrock` |
 
+One more, from the same board and the same reviewer: **a third of the quay deck was smooth
+sandstone**, because I had put it in the paving palette at cellSize 11. A built surface does
+not take the ground's material by accident — it takes it because somebody wrote it down — and
+at eleven blocks a cell is a patch, not a paving joint. The deck is stone brick, cobble,
+andesite and mossy cobble at cellSize 6 now.
+
 Two readings would have caught all of it before the author did, and neither was taken:
 `POST /sketch/relief/read` names a seam between `beach` and `dune-toe` — and `beach` is a
 **shape**, which is the whole story — while the theme census counts `strand` at 0.2%. The

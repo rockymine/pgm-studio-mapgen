@@ -5171,8 +5171,8 @@
         "material": {
          "kind": "cell",
          "seed": 53,
-         "cellSize": 11,
-         "jitter": 3,
+         "cellSize": 6,
+         "jitter": 2,
          "warp": 2,
          "rise": 3,
          "palette": [
@@ -5188,8 +5188,13 @@
           },
           {
            "kind": "solid",
-           "id": 24,
-           "data": 2
+           "id": 1,
+           "data": 5
+          },
+          {
+           "kind": "solid",
+           "id": 48,
+           "data": 0
           }
          ]
         },
@@ -5233,8 +5238,8 @@
        "blockId": 159,
        "neutral": {
         "kind": "solid",
-        "id": 24,
-        "data": 2
+        "id": 4,
+        "data": 0
        }
       },
       "width": 1

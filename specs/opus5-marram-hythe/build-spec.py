@@ -56,6 +56,7 @@ STONE       = solid(1, 0)
 ANDESITE    = solid(1, 5)
 COBBLE      = solid(4, 0)
 STONE_BRICK = solid(98, 0)
+MOSSY_COBBLE= solid(48, 0)
 QUARTZ      = solid(155, 0)
 CLAY_RED    = solid(159, 14)
 CLAY_WHITE  = solid(159, 0)
@@ -531,8 +532,8 @@ quay_theme = {
     "wallOnTerrainFaces": True,
     "rim": {"enabled": True, "depth": 1, "material": STONE_BRICK},
     "surface": {"enabled": True, "depth": 3, "material": depth_stack(
-        ({"kind": "cell", "seed": 53, "cellSize": 11, "jitter": 3, "warp": 2,
-          "rise": 3, "palette": [STONE_BRICK, COBBLE, SS_SMOOTH]}, 1),
+        ({"kind": "cell", "seed": 53, "cellSize": 6, "jitter": 2, "warp": 2,
+          "rise": 3, "palette": [STONE_BRICK, COBBLE, ANDESITE, MOSSY_COBBLE]}, 1),
         (COBBLE, 2), beyond=STONE)},
     # The made ground's face is where its paint goes. A wallDiagonal shears the
     # stripes by height so they climb the wall at a slope, and nothing sampled
@@ -542,7 +543,7 @@ quay_theme = {
         {"material": COBBLE, "width": 3},
         {"material": STONE_BRICK, "width": 1},
         {"material": {"kind": "teamTint", "blockId": 159,
-                      "neutral": SS_SMOOTH}, "width": 1},
+                      "neutral": COBBLE}, "width": 1},
         {"material": STONE, "width": 2},
     ]},
     "wallEnabled": True,

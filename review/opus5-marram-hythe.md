@@ -81,6 +81,13 @@ road running to a door.
 The face is where the quay's paint goes: a `wallDiagonal` at slope 2, four runs, one of them a
 **`teamTint`**, so a player reads whose quay they are looking at from the far bank.
 
+The deck is a `cell` field at cellSize 6 of stone brick, cobble, andesite and mossy cobble,
+and **nothing sandy is in it**. Smooth sandstone at cellSize 11 was a third of the deck and
+in eleven-block patches, which on a shore board does not read as paving at all — it reads as
+sand blown over the platform, which is a fact about the ground and not about the thing built
+on it. The one sandstone left on the board is the dune ramp, out on the east flank, where it
+is the local sand that the ramp is made of.
+
 ## What is on it
 
 Four themes, and the census agrees: `links` 62.8%, `quay` 19.0%, `strand` 12.5%, `foreshore`
