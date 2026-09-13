@@ -1,0 +1,61 @@
+## destroyable-1-0 (destroyable) along x
+TRANSECT 25 stations from (-34, -62) to (-10, -62), every 1
+  station        ground  surface  water  top  standing            step
+  (  -34,   -62)      19       19           19                      
+  (  -33,   -62)      19       19           19                      
+  (  -32,   -62)      19       19           19                      
+  (  -31,   -62)      19       19           19                      
+  (  -30,   -62)      19       19           19                      
+  (  -29,   -62)      19       19           19                      
+  (  -28,   -62)      19       19           19                      
+  (  -27,   -62)      19       19           19                      
+  (  -26,   -62)      20       20           20                      +1
+  (  -25,   -62)      20       20           20                      
+  (  -24,   -62)      20       20           20  destroyable destroyable-1  
+  (  -23,   -62)      20       20           52  destroyable destroyable-1  
+  (  -22,   -62)      20       20           53  destroyable destroyable-1  
+  (  -21,   -62)      20       20           52  destroyable destroyable-1  
+  (  -20,   -62)      20       20           20  destroyable destroyable-1  
+  (  -19,   -62)      20       20           20                      
+  (  -18,   -62)      18       18           18                      -2
+  (  -17,   -62)      18       18           18                      
+  (  -16,   -62)      18       18           18                      
+  (  -15,   -62)      18       18           18                      
+  (  -14,   -62)      18       18           18                      
+  (  -13,   -62)      18       18           18                      
+  (  -12,   -62)      20       20           20                      scramble +2
+  (  -11,   -62)      20       20           20                      
+  (  -10,   -62)      20       20           20                      
+rises 2, falls 1, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-12, -62) | walked end to end
+beside: destroyable destroyable-1 at (-24, -64)
+
+## destroyable-1-0 (destroyable) along z
+TRANSECT 25 stations from (-22, -74) to (-22, -50), every 1
+  station        ground  surface  water  top  standing            step
+  (  -22,   -74)      14       14           14                      
+  (  -22,   -73)      13       13           13                      -1
+  (  -22,   -72)      20       20           20                      BARRIER +7
+  (  -22,   -71)      20       20           20                      
+  (  -22,   -70)      20       20           20                      
+  (  -22,   -69)      20       20           20                      
+  (  -22,   -68)      20       20           20                      
+  (  -22,   -67)      20       20           20                      
+  (  -22,   -66)      20       20           20                      
+  (  -22,   -65)      20       20           20                      
+  (  -22,   -64)      20       20           20  destroyable destroyable-1  
+  (  -22,   -63)      20       20           52  destroyable destroyable-1  
+  (  -22,   -62)      20       20           53  destroyable destroyable-1  
+  (  -22,   -61)      20       20           52  destroyable destroyable-1  
+  (  -22,   -60)      20       20           20  destroyable destroyable-1  
+  (  -22,   -59)      20       20           20                      
+  (  -22,   -58)      20       20           20                      
+  (  -22,   -57)      20       20           20                      
+  (  -22,   -56)      20       20           20                      
+  (  -22,   -55)      22       22           22                      scramble +2
+  (  -22,   -54)      22       22           22                      
+  (  -22,   -53)      22       22           22                      
+  (  -22,   -52)       9        9            9                      DROP -13
+  (  -22,   -51)       9        9            9                      
+  (  -22,   -50)      16       16           16                      BARRIER +7
+rises 3, falls 2, worst step 13: 2 barrier, 1 scramble, 1 drop — BARRIER +7 at (-22, -72); scramble +2 at (-22, -55); DROP -13 at (-22, -52); BARRIER +7 at (-22, -50) | walked end to end
+beside: destroyable destroyable-1 at (-24, -64)

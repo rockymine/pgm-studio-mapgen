@@ -126,15 +126,32 @@ and carries the most impassable ground in the set at 8.0% barrier.
 Run this over the spec that was just written. A zero is not a fault; **four zeros is a board
 that used one instrument and called it terrain.**
 
-```bash
-grep -c 'relief_scope'      specs/<slug>/build-spec.py   # built ground meeting grown ground
-grep -c '"polyline"'        specs/<slug>/build-spec.py   # anything that flows
-grep -c '"height_mode": "level"' specs/<slug>/build-spec.py   # joins that were chosen
-grep -c '"kind": "made"'    specs/<slug>/build-spec.py   # a landmark that is not terrain
-python3 -c "import json,sys;d=json.load(open(sys.argv[1]));print(len(d.get('relief',{})))" \
-        specs/<slug>/<slug>.finish.json                  # reliefs — more than one is a meeting
-grep -c '"copied"'          specs/<slug>/<slug>.finish.json   # corpus trees
+```python
+# python3 - specs/<slug>/<slug>.finish.json
+import json, sys
+d = json.load(open(sys.argv[1]))
+shapes = list(d.get("addShapes") or [])
+layers = d.get("addLayers") or []
+for L in layers:
+    shapes += (L.get("shapes") or [])
+hm = [s.get("height_mode") for s in shapes]
+rel = d.get("relief") or {}
+marks = [m for g in rel.values() for m in g.get("marks", [])]
+styles = (d.get("dressing") or {}).get("styles") or {}
+print("reliefs", len(rel), "— two or more is two grounds meeting")
+print("marks", len(marks), sorted({m["kind"] for m in marks}))
+print("pushes", sum(len(g.get("pushes", [])) for g in rel.values()))
+print("level", hm.count("level"), "raise", hm.count("raise"), "sink", hm.count("sink"))
+print("made ground", sum(1 for s in shapes if s.get("relief_scope")))
+print("polyline", sum(1 for s in shapes if s.get("type") == "polyline"))
+print("made layers", sum(1 for L in layers if L.get("kind") == "made"))
+print("copied trees", sum(1 for v in styles.values()
+                          if isinstance(v, dict) and v.get("form") == "copied"))
 ```
+
+It reads the **finish the spec generated**, not the script that generated it. A
+`build-spec.py` that states a flight through a helper writes `height_mode` once and
+uses it four times, and a grep over the source counts one.
 
 And read `05-themes.txt`. A theme registered and not on the ground is a theme that painted
 nothing, and nothing anywhere raises a finding for it.

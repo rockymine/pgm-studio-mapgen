@@ -1,4 +1,4 @@
-# Run A — four boards, and what combining relief modes cost
+# Run A — four boards, a demonstration board, and what combining relief modes cost
 
 Two Opus 5 agents authored eight boards in one run. This is Agent A's four; Agent B's are in
 `reports/opus5-relief-run-b.md`. The organising idea was **combining relief modes** — a push
@@ -175,3 +175,72 @@ painted. `05-themes.txt` on every build, before the pictures.
    than depth. Whether `WL9`'s band is right for an island board is the author's call.
 4. **Is a corrie floor that is 26% level enough to fight in?** `RL5` says 30%. I chose the
    bowl over the bar.
+
+
+---
+
+## The demonstration board
+
+`opus5-marram-hythe` was built after the four above, against the standard the four did not
+meet. It is a shore: a strand, a dune field and a built quay, with the monument on the quay.
+
+**What it demonstrates that the four did not.** The audit the warmup now asks for, run on the
+generated finish rather than on the script that wrote it:
+
+| | `marram-hythe` | `ruddle-brink` |
+|---|---|---|
+| reliefs — two is two grounds meeting | **2** | 1 |
+| marks / kinds | **10**, four kinds | 4, two kinds |
+| pushes | **0** | 2 |
+| `level` flights | **4** | 2 |
+| `exclude` made ground | **1** | 0 |
+| polyline shapes | **1** | 0 |
+| `made` layers | **2** | 0 |
+| copied tree recipes | **8** | 0 |
+
+It exports with the gate OPEN and **no complaint, no refusal and no decline**.
+
+**The thing it is actually about** is that the beach meets the dunes two different ways, and
+both are one transect: at x −42, where nothing is stated between them, the shore rises at
+**worst step 1, walked end to end**; at x 10 and x 40, along a six-point `scarp`, it carries
+**BARRIER +3**. Not everything on a board meets the same way, and a board where everything
+meets the same way has one idea in it.
+
+**The move that made the flow possible was giving up a plan piece.** The first draft stated the
+strand as a full-width piece at surface 9 against one at 14 — a straight five-block step the
+width of the board. `fable-saltwharf` is one piece with `base` at the *high* value, `reach: 0`,
+and the beach as a small `area` mark scooped out of it; what lies between the mark and the
+brow is the solver. That is the flow, and it cannot be had from two pieces.
+
+**Two reference boards, read rather than remembered.** `fable-saltwharf` is the only one of the
+eight carrying both a core and an ender-stone pillar, and it is the beach-meets-grass-meets-made
+-ground board: one relief group, `reach 0`, two area marks thirteen blocks apart, grain 0.7.
+`fable-ashcombe-delph` is the fable board with the `under` layer and the most tunnel language:
+a six-point curving `scarp`, a ten-point `area` ring, grain 0.6, **zero pushes**, and its
+tunnels as a plain layer of rock rectangles at `base_height` 16 with the gallery at 12.
+
+Six of the eight reference boards carry **no push at all**. All four of mine carried two. A
+push is a landform somebody stamped; four `point` marks with the relaxation between them are
+a dune field.
+
+**New findings, measured on this board:**
+
+- A parapet stated from the surface it stands on **deletes that surface**. Among the shapes of
+  one layer the taller add wins the column *floor included*, so a sea wall at `floor 20,
+  base_height 2` over a quay topping at 20 left the world holding only the wall (`SK9`). From
+  `floor 0, base_height 22` it is simply the taller shape and the quay survives.
+- **`SketchShape.type` accepts `polyline`, and its own openapi description says `path`.** A
+  `path` draws no ground; `SK3` names it, on a 200.
+- **`radius` on a water pool is the shelf**, not a width — how far in from the outline the bed
+  is held up. A shelf on ground already at the water line is dug and holds nothing, which is
+  what `DR-DRY` reports.
+- `teamTint.neutral` is a **material**, not a block id.
+- `props.py` emits a `SketchLayer` — `{id, name, base_y, layout:{shapes, groups}}` — and
+  `drive.py`'s `addLayers` takes the same fields **flat**. The nesting has to be unwrapped.
+- A hollow sculpted tower with no door is a **SEALED void** the void scan reports and nothing
+  can enter. A landmark seen only from outside is stated solid.
+
+**Coverage calibration, which the four boards lacked.** The shipped boards read 17.9%
+(`blackden-sough`) and 35.6% (`burgage-terrace`) dead on a single-objective board;
+`heftfold` reads 0.0% and is a wool board. 24.7% here is mid-range, and the dead ground is the
+defender's rear. Chasing the number past that point reshapes a board for a measurement.

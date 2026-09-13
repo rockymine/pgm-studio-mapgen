@@ -1,0 +1,99 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Marram Hythe"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 14,
+  "surface": 9,
+  "observerY": 52
+ },
+ "pieces": [
+  {
+   "id": "shore",
+   "role": "piece",
+   "rect": [
+    -11,
+    -28,
+    22,
+    22
+   ],
+   "surface": 16
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -3,
+    -28,
+    6,
+    3
+   ],
+   "surface": 16
+  },
+  {
+   "id": "bar",
+   "role": "piece",
+   "rect": [
+    -7,
+    -2,
+    14,
+    4
+   ],
+   "surface": 10,
+   "mirrors": false
+  }
+ ],
+ "zones": [
+  {
+   "id": "channel",
+   "rect": [
+    -7,
+    -6,
+    14,
+    12
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     12,
+     6
+    ],
+    "facing": "back",
+    "footprint": [
+     5,
+     2,
+     14,
+     8
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [],
+  "cores": [],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "piece": "shore",
+    "at": [
+     22,
+     50
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Hythe Light"
+   }
+  ]
+ },
+ "walls": [],
+ "boxes": []
+}
