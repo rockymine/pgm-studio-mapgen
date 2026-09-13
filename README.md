@@ -77,7 +77,7 @@ comes from the repository's author.
 
 Grouped by the run that produced them. Mode is what the map's own `<gamemode>` declares.
 
-**Fifteen boards sit directly under `specs/`, and the other 111 under `specs/archive/`.** The flat set is the
+**Twenty-five boards sit directly under `specs/`, and the other 111 under `specs/archive/`.** The flat set is the
 one worth reading. The archive is a record rather than a catalogue of examples: probes, boards built to find
 the limit of one mechanism, early runs, and boards a later one superseded. The split is there because the
 cheapest thing a model does is imitate whatever it opens first, so what it opens first should be worth
@@ -86,7 +86,7 @@ imitating — and for one technique at a time `showcase/` is the place rather th
 A spec a report or a review names at `specs/<slug>` and that is not there is at `specs/archive/<slug>`. Those
 accounts are dated and were right the day they were written, so their paths are left as they stand.
 
-**Most of these specs no longer compile, and that is settled rather than pending (author).** 72 of the 117
+**Most of these specs no longer compile, and that is settled rather than pending (author).** 72 of the 127
 plans here state `"plan": 1`, whose marker offsets are in cells where version 2 states them in blocks, so
 `POST /plan/compile` refuses one with `PL15`. The worlds under `maps/` were built from them and are what
 those boards are; migrating the plans would move every marker on 72 boards to rebuild something already
@@ -535,6 +535,40 @@ as a `polyline` with a theme and nothing else, and painted nothing at all in sil
 `base_height` is one block thick, and a cell's theme goes to the smallest shape that reaches the ground stated
 there — never a terrace at 17, 20 or 25. Stating the terrace's own height is the whole fix, and costs the
 stroke nothing, because the relief still decides where the way ends up.
+
+### Opus 5 — eight boards by combining relief modes, and a ninth built to the standard they missed
+
+Two agents authored four boards each on one idea: a `push` for the landform, marks for the ground that has to
+agree with something, and `height_mode` shapes for what people built. The eight identities were written down
+together before a shape was authored and checked across the set, so the run would not come out as eight
+greys, and every one exports with the gate open and `symErr 0`.
+[reports/opus5-relief-run-a.md](reports/opus5-relief-run-a.md) and
+[reports/opus5-relief-run-b.md](reports/opus5-relief-run-b.md) are the two accounts, and each board has its
+review.
+
+`opus5-marram-hythe` came after the eight, as the demonstration board: built against the audit the four of
+run A did not meet — two reliefs, ten marks of four kinds, four `level` flights, two `made` layers — and
+exported with no complaint, no refusal and no decline. The run rewrote `pgm-board-warmup` around what that
+board is about, **how two grounds meet**, rather than around predicting a readout.
+
+**A theme patch with no `height_mode` paints nothing, and both agents found it independently.** A one-course
+add at bedrock under twelve courses of terrain is never the top of a cell, so it owns no scope, the census
+reads one theme at 100%, and nothing warns; `GENERATION-NOTES.md` carries the working form. **Two of the nine
+were briefed as capture boards and built as destroy boards**: the studio this run drove answered `RQ3` for
+`controlPoints` and `scoreLimit`, and both reports call that a regression. Studio main reads both (`PG5`), so
+it is not one there.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5-swallet-dale` | dtm | Opus 5 | **80 × 240, and the monument is inside the rock** — each team's monument stands in a chamber inside a limestone crag with three ways in: a drift, an adit and a hole in its roof you drop through and cannot climb back out of. The crag is three `made` layers over the dale, and its rock is computed as the complement of five corridors, so a corridor moved can never leave a wall behind. Finished with no complaint of any kind; 23.2% dead |
+| `opus5-ruddle-brink` | dtc | Opus 5 | **104 × 200, one red scarp climbed in exactly three places** — each team holds a low bench under an eleven-block sandstone brink, and the only ways up are a scree the relief was left to solve, a cut road and a long ramp. The two landmasses are joined by a build zone over 24 blocks of void and nothing else. `GO1` 3.24, 19.2% dead |
+| `opus5-blindtarn` | dtm | Opus 5 | **80 × 192, and the whole middle is a corrie** — a bowl with a frozen tarn in the bottom, made by a `push` with a negative crown, so every attack is a descent into the open and a climb under the far rim. Briefed as a capture board. `RL5` stands at 26% level against 30%, and whether a bowl is enough to fight in is the author's call; 13.6% dead |
+| `opus5-skerry-wick` | ctw | Opus 5 | **110 × 200 of bare skerries, and no land route anywhere** — a team's two wool rooms stand on two islands on two different seas, so every journey is a gap of 10 to 20 blocks somebody bridges under fire. The team unit is the composer's own answer, 105 land cells asked and 104 drawn, offset west so its `rot_180` image interlocks with it. 9.9% dead |
+| `opus5-goldbank-quarry` | dtm | Opus 5 | **104 × 224, one worked limestone quarry with both goals on its floor** — the rim at y32 and the pit at y15–22, entered through one notch a side and climbed out of by three-block benches or a haul road that keeps a player in the open its whole length. `GO1` 3.37. A red-wool cross over red's goal at (−32, 70..72, −49) is unexplained and reported with coordinates |
+| `opus5-lynchet-brow` | dtc | Opus 5 | **104 × 208, a hillside farmed into four terraces** — every fight is one drystone retaining wall, and the walked way up each is one of two flights staggered in x, so a route zigzags. The core stands on the second lynchet at (−24, −50), backed against the third's wall so a breach has ground to pool on. The highest barrier share of run B |
+| `opus5-scoriafell` | dtm | Opus 5 | **104 × 208, one mountain between two valleys, and the pass is the whole map** — one push builds a range coast to coast with its crest at y65–66, a second cuts a defile four blocks wide through it at y34. Briefed as a capture board; it carries one destroyable a side on its dale floor, and the three hills stay in the finish as the authored intent. 13.5% scramble, relief 8–66 |
+| `opus5-braidwater-ford` | dtm | Opus 5 | **104 × 224, a braided river crossed at three fords and nowhere else** — 32 blocks of braid round shingle bars between cut banks a player cannot walk up. Under `rot_180` three fords are at most two characters, one on the centre line and a mirrored pair, and the board says so rather than claiming three. 4 props declined (`DR-BANK`) |
+| `opus5-marram-hythe` | dtm | Opus 5 | **88 × 224, a shore where the beach meets the dunes two different ways** — by relaxation on the west, walked at worst step 1, and along a cut bank on the east, which is barrier. The monument stands on a built quay, and a fourteen-layer lighthouse stands on the bar at dead centre, the one landmark neither team owns. `GO1` 3.58, 30 props placed |
 
 ### Opus 5 — the first two capture boards, and the law the second was built to
 
