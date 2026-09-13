@@ -1,0 +1,27 @@
+Top block y of the shapes, built with and without the relief.
+
+Along the line where the upland meets the lowland, z -12..12:
+  z                           -12 -11 -10  -9  -8  -7  -6  -5  -4  -3  -2  -1   0   1   2   3   4   5   6   7   8   9  10  11  12
+  stepped (13 | 9), as drawn   12  12  12  12  12  12  12  12  12  12  12  12   8   8   8   8   8   8   8   8   8   8   8   8   8
+  level (9 | 9), as drawn       8   8   8   8   8   8   8   8   8   8   8   8   8   8   8   8   8   8   8   8   8   8   8   8   8
+  stepped, with the relief     12  12  12  12  11  11  11  11  10  10  10  10  10   9   9   9   9   9   8   8   8   8   8   8   8
+  level, with the relief       12  12  12  12  11  11  11  11  10  10  10  10  10   9   9   9   9   9   8   8   8   8   8   8   8
+
+Every column of the stepped island against the same column of the level one, 64 blocks east:
+  2304 columns compared, 0 differ
+
+On the held plot, along x 112, the upland (held at 13) meeting the lowland at z 0:
+  z                           -12 -11 -10  -9  -8  -7  -6  -5  -4  -3  -2  -1   0   1   2   3   4   5   6   7   8   9  10  11  12
+  as drawn                     12  12  12  12  12  12  12  12  12  12  12  12   8   8   8   8   8   8   8   8   8   8   8   8   8
+  upland hold, with the relief 12  12  12  12  12  12  12  12  12  12  12  12  12  11  11  10  10   9   9   8   8   8   8   8   8
+  upland exclude instead       12  12  12  12  12  12  12  12  12  12  12  12   8   8   8   8   8   8   8   8   8   8   8   8   8
+
+The held upland's own top along x 112, z -31..-1:  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12  12
+
+On the held plot, along x 88, the works block meeting the lowland at z 0 (z -3..6):
+  with the relief              17  17  17   9   8   8   8   8   8   8
+
+Along z -16, x -47..-33 — across the stepped island's works block:
+  x                    -47 -46 -45 -44 -43 -42 -41 -40 -39 -38 -37 -36 -35 -34 -33
+  relief_scope exclude  17  17  17  17  17  17  17  17  17  17  17  17  17  17  17
+  no relief_scope       11  11  11  11  11  11  11  11  11  11  11  11  11  11  11

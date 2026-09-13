@@ -1,0 +1,55 @@
+# island-one-cut: move vertex 2, the corner (20, 48), back along the east edge
+PATCH /api/map/technique-flat-ground/sketch/shapes/island-one-cut/vertices/2  {"x": 20, "z": 40}
+  -> 200  {"id": "island-one-cut", "index": 2, "vertices": 4}
+
+# island-one-cut: add a point on the edge leaving vertex 2; it lands at index 3 and the old vertex 3 becomes 4
+POST /api/map/technique-flat-ground/sketch/shapes/island-one-cut/vertices  {"after": 2, "x": 12, "z": 48}
+  -> 200  {"id": "island-one-cut", "index": 3, "vertices": 5}
+
+# island-ramp: move vertex 2, the corner (48, 48), back along the east edge
+PATCH /api/map/technique-flat-ground/sketch/shapes/island-ramp/vertices/2  {"x": 48, "z": 40}
+  -> 200  {"id": "island-ramp", "index": 2, "vertices": 4}
+
+# island-ramp: add a point on the edge leaving vertex 2; it lands at index 3 and the old vertex 3 becomes 4
+POST /api/map/technique-flat-ground/sketch/shapes/island-ramp/vertices  {"after": 2, "x": 40, "z": 48}
+  -> 200  {"id": "island-ramp", "index": 3, "vertices": 5}
+
+# island-two-cuts: move vertex 2, the corner (20, 76), back along the east edge
+PATCH /api/map/technique-flat-ground/sketch/shapes/island-two-cuts/vertices/2  {"x": 20, "z": 68}
+  -> 200  {"id": "island-two-cuts", "index": 2, "vertices": 4}
+
+# island-two-cuts: add a point on the edge leaving vertex 2; it lands at index 3 and the old vertex 3 becomes 4
+POST /api/map/technique-flat-ground/sketch/shapes/island-two-cuts/vertices  {"after": 2, "x": 12, "z": 76}
+  -> 200  {"id": "island-two-cuts", "index": 3, "vertices": 5}
+
+# island-two-cuts: move vertex 1, the corner (20, 56), along the east edge
+PATCH /api/map/technique-flat-ground/sketch/shapes/island-two-cuts/vertices/1  {"x": 20, "z": 64}
+  -> 200  {"id": "island-two-cuts", "index": 1, "vertices": 5}
+
+# island-two-cuts: add a point on the edge leaving vertex 0; it lands at index 1 and every later index moves up one
+POST /api/map/technique-flat-ground/sketch/shapes/island-two-cuts/vertices  {"after": 0, "x": 12, "z": 56}
+  -> 200  {"id": "island-two-cuts", "index": 1, "vertices": 6}
+
+# island-tilt: move vertex 2, the corner (48, 76), back along the east edge
+PATCH /api/map/technique-flat-ground/sketch/shapes/island-tilt/vertices/2  {"x": 48, "z": 68}
+  -> 200  {"id": "island-tilt", "index": 2, "vertices": 4}
+
+# island-tilt: add a point on the edge leaving vertex 2; it lands at index 3 and the old vertex 3 becomes 4
+POST /api/map/technique-flat-ground/sketch/shapes/island-tilt/vertices  {"after": 2, "x": 40, "z": 76}
+  -> 200  {"id": "island-tilt", "index": 3, "vertices": 5}
+
+# island-tilt: move vertex 1, the corner (48, 56), along the east edge
+PATCH /api/map/technique-flat-ground/sketch/shapes/island-tilt/vertices/1  {"x": 48, "z": 64}
+  -> 200  {"id": "island-tilt", "index": 1, "vertices": 5}
+
+# island-tilt: add a point on the edge leaving vertex 0; it lands at index 1 and every later index moves up one
+POST /api/map/technique-flat-ground/sketch/shapes/island-tilt/vertices  {"after": 0, "x": 40, "z": 56}
+  -> 200  {"id": "island-tilt", "index": 1, "vertices": 6}
+
+# island-ramp: one thickness per vertex, in ring order — 9 along its north edge, rising to 19 along its south edge
+PATCH /api/map/technique-flat-ground/sketch/shapes/island-ramp  {"anchor_heights": [9, 9, 15, 19, 19]}
+  -> 200  {"id": "island-ramp"}
+
+# island-tilt: one thickness per vertex, in ring order — the plane 9 + x/4 + z/4 in the island's own frame
+PATCH /api/map/technique-flat-ground/sketch/shapes/island-tilt  {"anchor_heights": [9, 12, 16, 17, 17, 14]}
+  -> 200  {"id": "island-tilt"}

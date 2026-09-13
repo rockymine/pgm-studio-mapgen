@@ -1,0 +1,375 @@
+{
+ "setup": {
+  "bbox": {
+   "min_x": -14,
+   "max_x": 122,
+   "min_z": -4,
+   "max_z": 44
+  },
+  "center": {
+   "cx": 54,
+   "cz": 20
+  },
+  "mirror_mode": "none"
+ },
+ "themes": {
+  "meadow": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "solid",
+         "id": 2,
+         "data": 0
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  },
+  "works": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 6
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "stack": {
+     "ending": "repeat",
+     "bands": [
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 159,
+        "data": 9
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       }
+      },
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 159,
+        "data": 9
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       }
+      },
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 159,
+        "data": 9
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       }
+      },
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 159,
+        "data": 9
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       }
+      }
+     ]
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  }
+ },
+ "mapTheme": "meadow",
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "flat-meadow",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": 0,
+      "min_z": 0,
+      "max_x": 30,
+      "max_z": 40
+     },
+     {
+      "id": "flat-spur",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "vertices": [
+       [
+        -10,
+        12
+       ],
+       [
+        0,
+        6
+       ],
+       [
+        0,
+        34
+       ],
+       [
+        -10,
+        28
+       ]
+      ]
+     },
+     {
+      "id": "flat-yard",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "theme": "works",
+      "min_x": 22,
+      "min_z": 8,
+      "max_x": 48,
+      "max_z": 32
+     },
+     {
+      "id": "flat-green",
+      "type": "circle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "theme": "meadow",
+      "center_x": 38,
+      "center_z": 20,
+      "radius": 6
+     },
+     {
+      "id": "step-meadow",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": 70,
+      "min_z": 0,
+      "max_x": 100,
+      "max_z": 40
+     },
+     {
+      "id": "step-spur",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 7,
+      "vertices": [
+       [
+        60,
+        12
+       ],
+       [
+        70,
+        6
+       ],
+       [
+        70,
+        34
+       ],
+       [
+        60,
+        28
+       ]
+      ]
+     },
+     {
+      "id": "step-yard",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 13,
+      "theme": "works",
+      "min_x": 92,
+      "min_z": 8,
+      "max_x": 118,
+      "max_z": 32
+     },
+     {
+      "id": "step-green",
+      "type": "circle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 15,
+      "theme": "meadow",
+      "center_x": 108,
+      "center_z": 20,
+      "radius": 6
+     }
+    ],
+    "groups": [
+     {
+      "id": "flat",
+      "name": "Flat",
+      "mirrors": false,
+      "shapeIds": [
+       "flat-meadow",
+       "flat-spur",
+       "flat-yard",
+       "flat-green"
+      ]
+     },
+     {
+      "id": "stepped",
+      "name": "Stepped",
+      "mirrors": false,
+      "shapeIds": [
+       "step-meadow",
+       "step-spur",
+       "step-yard",
+       "step-green"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

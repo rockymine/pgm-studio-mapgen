@@ -1,0 +1,646 @@
+{
+ "setup": {
+  "bbox": {
+   "min_x": -8,
+   "max_x": 66,
+   "min_z": -12,
+   "max_z": 30
+  },
+  "center": {
+   "cx": 29,
+   "cz": 9
+  },
+  "mirror_mode": "none"
+ },
+ "themes": {
+  "meadow": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "solid",
+         "id": 2,
+         "data": 0
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  }
+ },
+ "mapTheme": "meadow",
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "bench",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": -8,
+      "min_z": -12,
+      "max_x": 66,
+      "max_z": 30
+     }
+    ],
+    "groups": [
+     {
+      "id": "ground",
+      "name": "Ground",
+      "mirrors": false,
+      "shapeIds": [
+       "bench"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "flights",
+   "name": "Flights",
+   "base_y": 9,
+   "layout": {
+    "shapes": [
+     {
+      "id": "ramp",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 7,
+      "vertices": [
+       [
+        0,
+        0
+       ],
+       [
+        6,
+        0
+       ],
+       [
+        6,
+        7
+       ],
+       [
+        0,
+        7
+       ]
+      ],
+      "anchor_heights": [
+       1,
+       1,
+       7,
+       7
+      ],
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "ramp-top",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 8,
+      "min_x": 0,
+      "min_z": 7,
+      "max_x": 6,
+      "max_z": 15,
+      "material": {
+       "kind": "solid",
+       "id": 5,
+       "data": 0
+      }
+     },
+     {
+      "id": "stair",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 7.5,
+      "vertices": [
+       [
+        12,
+        0
+       ],
+       [
+        18,
+        0
+       ],
+       [
+        18,
+        14
+       ],
+       [
+        12,
+        14
+       ]
+      ],
+      "anchor_heights": [
+       0.5,
+       0.5,
+       7.5,
+       7.5
+      ],
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "stair-top",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 8,
+      "min_x": 12,
+      "min_z": 14,
+      "max_x": 18,
+      "max_z": 22,
+      "material": {
+       "kind": "solid",
+       "id": 5,
+       "data": 0
+      }
+     },
+     {
+      "id": "turn-lower",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 4.5,
+      "vertices": [
+       [
+        24,
+        0
+       ],
+       [
+        28,
+        0
+       ],
+       [
+        28,
+        8
+       ],
+       [
+        24,
+        8
+       ]
+      ],
+      "anchor_heights": [
+       0.5,
+       0.5,
+       4.5,
+       4.5
+      ],
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "turn-landing",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 5,
+      "min_x": 24,
+      "min_z": 8,
+      "max_x": 32,
+      "max_z": 12,
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "turn-upper",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 7.5,
+      "vertices": [
+       [
+        28,
+        8
+       ],
+       [
+        32,
+        8
+       ],
+       [
+        32,
+        4
+       ],
+       [
+        28,
+        4
+       ]
+      ],
+      "anchor_heights": [
+       5.5,
+       5.5,
+       7.5,
+       7.5
+      ],
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "turn-top",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 8,
+      "min_x": 28,
+      "min_z": -4,
+      "max_x": 32,
+      "max_z": 4,
+      "material": {
+       "kind": "solid",
+       "id": 5,
+       "data": 0
+      }
+     },
+     {
+      "id": "steps-1",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 1,
+      "min_x": 38,
+      "min_z": 0,
+      "max_x": 44,
+      "max_z": 2,
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "steps-2",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 2,
+      "min_x": 38,
+      "min_z": 2,
+      "max_x": 44,
+      "max_z": 4,
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "steps-3",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 3,
+      "min_x": 38,
+      "min_z": 4,
+      "max_x": 44,
+      "max_z": 6,
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "steps-4",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 4,
+      "min_x": 38,
+      "min_z": 6,
+      "max_x": 44,
+      "max_z": 8,
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "steps-5",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 5,
+      "min_x": 38,
+      "min_z": 8,
+      "max_x": 44,
+      "max_z": 10,
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "steps-6",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 6,
+      "min_x": 38,
+      "min_z": 10,
+      "max_x": 44,
+      "max_z": 12,
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "steps-7",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 7,
+      "min_x": 38,
+      "min_z": 12,
+      "max_x": 44,
+      "max_z": 14,
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "steps-top",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 8,
+      "min_x": 38,
+      "min_z": 14,
+      "max_x": 44,
+      "max_z": 22,
+      "material": {
+       "kind": "solid",
+       "id": 5,
+       "data": 0
+      }
+     },
+     {
+      "id": "float-1",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 1,
+      "min_x": 50,
+      "min_z": 0,
+      "max_x": 56,
+      "max_z": 2,
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "float-2",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 2,
+      "min_x": 50,
+      "min_z": 2,
+      "max_x": 56,
+      "max_z": 4,
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "float-3",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 1,
+      "base_height": 2,
+      "min_x": 50,
+      "min_z": 4,
+      "max_x": 56,
+      "max_z": 6,
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "float-4",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 2,
+      "base_height": 2,
+      "min_x": 50,
+      "min_z": 6,
+      "max_x": 56,
+      "max_z": 8,
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "float-5",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 3,
+      "base_height": 2,
+      "min_x": 50,
+      "min_z": 8,
+      "max_x": 56,
+      "max_z": 10,
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "float-6",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 4,
+      "base_height": 2,
+      "min_x": 50,
+      "min_z": 10,
+      "max_x": 56,
+      "max_z": 12,
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "float-7",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 5,
+      "base_height": 2,
+      "min_x": 50,
+      "min_z": 12,
+      "max_x": 56,
+      "max_z": 14,
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      }
+     },
+     {
+      "id": "float-top",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 8,
+      "min_x": 50,
+      "min_z": 14,
+      "max_x": 56,
+      "max_z": 22,
+      "material": {
+       "kind": "solid",
+       "id": 5,
+       "data": 0
+      }
+     }
+    ],
+    "groups": [
+     {
+      "id": "lane-ramp",
+      "name": "Ramp",
+      "mirrors": false,
+      "shapeIds": [
+       "ramp",
+       "ramp-top"
+      ]
+     },
+     {
+      "id": "lane-stair",
+      "name": "Stair",
+      "mirrors": false,
+      "shapeIds": [
+       "stair",
+       "stair-top"
+      ]
+     },
+     {
+      "id": "lane-turned",
+      "name": "Turned",
+      "mirrors": false,
+      "shapeIds": [
+       "turn-lower",
+       "turn-landing",
+       "turn-upper",
+       "turn-top"
+      ]
+     },
+     {
+      "id": "lane-steps",
+      "name": "Steps",
+      "mirrors": false,
+      "shapeIds": [
+       "steps-1",
+       "steps-2",
+       "steps-3",
+       "steps-4",
+       "steps-5",
+       "steps-6",
+       "steps-7",
+       "steps-top"
+      ]
+     },
+     {
+      "id": "lane-floating",
+      "name": "Floating",
+      "mirrors": false,
+      "shapeIds": [
+       "float-1",
+       "float-2",
+       "float-3",
+       "float-4",
+       "float-5",
+       "float-6",
+       "float-7",
+       "float-top"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

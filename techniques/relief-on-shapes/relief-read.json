@@ -1,0 +1,249 @@
+{
+ "groups": [
+  {
+   "group": "stepped",
+   "cells": 1792,
+   "low": 9,
+   "high": 17,
+   "relief": 8,
+   "steps": {
+    "walk": 3488
+   },
+   "tiers": [
+    {
+     "name": "walk",
+     "maxStep": 1,
+     "share": 1,
+     "places": 1,
+     "largestPlace": 1,
+     "ledges": 0,
+     "parts": [
+      {
+       "cells": 1792,
+       "share": 1,
+       "centroidX": -19,
+       "centroidZ": -6,
+       "minX": -48,
+       "minZ": -32,
+       "maxX": -1,
+       "maxZ": 15,
+       "place": true
+      }
+     ]
+    },
+    {
+     "name": "scramble",
+     "maxStep": 2,
+     "share": 1,
+     "places": 1,
+     "largestPlace": 1,
+     "ledges": 0,
+     "parts": [
+      {
+       "cells": 1792,
+       "share": 1,
+       "centroidX": -19,
+       "centroidZ": -6,
+       "minX": -48,
+       "minZ": -32,
+       "maxX": -1,
+       "maxZ": 15,
+       "place": true
+      }
+     ]
+    }
+   ],
+   "faces": [],
+   "faceCount": 0,
+   "cliffs": 0,
+   "acrossX": {
+    "rows": 48,
+    "onFoot": 48,
+    "withBlock": 48,
+    "descended": 48
+   },
+   "acrossZ": {
+    "rows": 48,
+    "onFoot": 48,
+    "withBlock": 48,
+    "descended": 48
+   },
+   "symmetryError": 0,
+   "landform": "rolling",
+   "smoothing": null,
+   "level": 0.5775669642857143,
+   "largestField": 0.28292410714285715,
+   "seams": [],
+   "silentMarks": [],
+   "pushes": [
+    {
+     "id": "knoll",
+     "skirt": 0.33,
+     "crown": 0.31,
+     "cells": 166
+    }
+   ]
+  },
+  {
+   "group": "level",
+   "cells": 1792,
+   "low": 9,
+   "high": 17,
+   "relief": 8,
+   "steps": {
+    "walk": 3488
+   },
+   "tiers": [
+    {
+     "name": "walk",
+     "maxStep": 1,
+     "share": 1,
+     "places": 1,
+     "largestPlace": 1,
+     "ledges": 0,
+     "parts": [
+      {
+       "cells": 1792,
+       "share": 1,
+       "centroidX": 44,
+       "centroidZ": -6,
+       "minX": 16,
+       "minZ": -32,
+       "maxX": 63,
+       "maxZ": 15,
+       "place": true
+      }
+     ]
+    },
+    {
+     "name": "scramble",
+     "maxStep": 2,
+     "share": 1,
+     "places": 1,
+     "largestPlace": 1,
+     "ledges": 0,
+     "parts": [
+      {
+       "cells": 1792,
+       "share": 1,
+       "centroidX": 44,
+       "centroidZ": -6,
+       "minX": 16,
+       "minZ": -32,
+       "maxX": 63,
+       "maxZ": 15,
+       "place": true
+      }
+     ]
+    }
+   ],
+   "faces": [],
+   "faceCount": 0,
+   "cliffs": 0,
+   "acrossX": {
+    "rows": 48,
+    "onFoot": 48,
+    "withBlock": 48,
+    "descended": 48
+   },
+   "acrossZ": {
+    "rows": 48,
+    "onFoot": 48,
+    "withBlock": 48,
+    "descended": 48
+   },
+   "symmetryError": 0,
+   "landform": "rolling",
+   "smoothing": null,
+   "level": 0.5775669642857143,
+   "largestField": 0.28292410714285715,
+   "seams": [],
+   "silentMarks": [],
+   "pushes": [
+    {
+     "id": "knoll",
+     "skirt": 0.33,
+     "crown": 0.31,
+     "cells": 166
+    }
+   ]
+  },
+  {
+   "group": "held",
+   "cells": 1792,
+   "low": 9,
+   "high": 13,
+   "relief": 4,
+   "steps": {
+    "walk": 3488
+   },
+   "tiers": [
+    {
+     "name": "walk",
+     "maxStep": 1,
+     "share": 1,
+     "places": 1,
+     "largestPlace": 1,
+     "ledges": 0,
+     "parts": [
+      {
+       "cells": 1792,
+       "share": 1,
+       "centroidX": 108,
+       "centroidZ": -6,
+       "minX": 80,
+       "minZ": -32,
+       "maxX": 127,
+       "maxZ": 15,
+       "place": true
+      }
+     ]
+    },
+    {
+     "name": "scramble",
+     "maxStep": 2,
+     "share": 1,
+     "places": 1,
+     "largestPlace": 1,
+     "ledges": 0,
+     "parts": [
+      {
+       "cells": 1792,
+       "share": 1,
+       "centroidX": 108,
+       "centroidZ": -6,
+       "minX": 80,
+       "minZ": -32,
+       "maxX": 127,
+       "maxZ": 15,
+       "place": true
+      }
+     ]
+    }
+   ],
+   "faces": [],
+   "faceCount": 0,
+   "cliffs": 0,
+   "acrossX": {
+    "rows": 48,
+    "onFoot": 48,
+    "withBlock": 48,
+    "descended": 48
+   },
+   "acrossZ": {
+    "rows": 48,
+    "onFoot": 48,
+    "withBlock": 48,
+    "descended": 48
+   },
+   "symmetryError": 0,
+   "landform": "plain",
+   "smoothing": null,
+   "level": 0.7845982142857143,
+   "largestField": 0.5502232142857143,
+   "seams": [],
+   "silentMarks": [],
+   "pushes": []
+  }
+ ]
+}

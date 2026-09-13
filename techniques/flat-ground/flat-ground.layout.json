@@ -1,0 +1,283 @@
+{
+ "setup": {
+  "bbox": {
+   "min_x": -4,
+   "max_x": 52,
+   "min_z": -4,
+   "max_z": 80
+  },
+  "center": {
+   "cx": 24,
+   "cz": 38
+  },
+  "mirror_mode": "none"
+ },
+ "themes": {
+  "meadow": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "solid",
+         "id": 2,
+         "data": 0
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  }
+ },
+ "mapTheme": "meadow",
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "island-rect",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": 0,
+      "min_z": 0,
+      "max_x": 20,
+      "max_z": 20
+     },
+     {
+      "id": "island-one-cut",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "vertices": [
+       [
+        0,
+        28
+       ],
+       [
+        20,
+        28
+       ],
+       [
+        20,
+        40
+       ],
+       [
+        12,
+        48
+       ],
+       [
+        0,
+        48
+       ]
+      ]
+     },
+     {
+      "id": "island-two-cuts",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "vertices": [
+       [
+        0,
+        56
+       ],
+       [
+        12,
+        56
+       ],
+       [
+        20,
+        64
+       ],
+       [
+        20,
+        68
+       ],
+       [
+        12,
+        76
+       ],
+       [
+        0,
+        76
+       ]
+      ]
+     },
+     {
+      "id": "island-ramp",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "vertices": [
+       [
+        28,
+        28
+       ],
+       [
+        48,
+        28
+       ],
+       [
+        48,
+        40
+       ],
+       [
+        40,
+        48
+       ],
+       [
+        28,
+        48
+       ]
+      ],
+      "anchor_heights": [
+       9,
+       9,
+       15,
+       19,
+       19
+      ]
+     },
+     {
+      "id": "island-tilt",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "vertices": [
+       [
+        28,
+        56
+       ],
+       [
+        40,
+        56
+       ],
+       [
+        48,
+        64
+       ],
+       [
+        48,
+        68
+       ],
+       [
+        40,
+        76
+       ],
+       [
+        28,
+        76
+       ]
+      ],
+      "anchor_heights": [
+       9,
+       12,
+       16,
+       17,
+       17,
+       14
+      ]
+     }
+    ],
+    "groups": [
+     {
+      "id": "island-rect",
+      "name": "island-rect",
+      "mirrors": false,
+      "shapeIds": [
+       "island-rect"
+      ]
+     },
+     {
+      "id": "island-one-cut",
+      "name": "island-one-cut",
+      "mirrors": false,
+      "shapeIds": [
+       "island-one-cut"
+      ]
+     },
+     {
+      "id": "island-two-cuts",
+      "name": "island-two-cuts",
+      "mirrors": false,
+      "shapeIds": [
+       "island-two-cuts"
+      ]
+     },
+     {
+      "id": "island-ramp",
+      "name": "island-ramp",
+      "mirrors": false,
+      "shapeIds": [
+       "island-ramp"
+      ]
+     },
+     {
+      "id": "island-tilt",
+      "name": "island-tilt",
+      "mirrors": false,
+      "shapeIds": [
+       "island-tilt"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

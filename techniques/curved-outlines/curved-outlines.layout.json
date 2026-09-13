@@ -1,0 +1,314 @@
+{
+ "setup": {
+  "bbox": {
+   "min_x": -4,
+   "max_x": 126,
+   "min_z": -10,
+   "max_z": 26
+  },
+  "center": {
+   "cx": 61,
+   "cz": 8
+  },
+  "mirror_mode": "none"
+ },
+ "themes": {
+  "meadow": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "solid",
+         "id": 2,
+         "data": 0
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  }
+ },
+ "mapTheme": "meadow",
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "island-circle",
+      "type": "circle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "center_x": 10,
+      "center_z": 10,
+      "radius": 10
+     },
+     {
+      "id": "island-lasso",
+      "type": "lasso",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "vertices": [
+       [
+        56,
+        10
+       ],
+       [
+        55,
+        15
+       ],
+       [
+        52,
+        18
+       ],
+       [
+        48,
+        19
+       ],
+       [
+        44,
+        17
+       ],
+       [
+        41,
+        17
+       ],
+       [
+        35,
+        19
+       ],
+       [
+        32,
+        15
+       ],
+       [
+        36,
+        10
+       ],
+       [
+        37,
+        7
+       ],
+       [
+        38,
+        4
+       ],
+       [
+        40,
+        1
+       ],
+       [
+        44,
+        -3
+       ],
+       [
+        49,
+        -2
+       ],
+       [
+        49,
+        5
+       ],
+       [
+        50,
+        7
+       ]
+      ]
+     },
+     {
+      "id": "island-bowed",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "vertices": [
+       [
+        68,
+        0
+       ],
+       [
+        88,
+        0
+       ],
+       [
+        88,
+        20
+       ],
+       [
+        68,
+        20
+       ]
+      ],
+      "controls": {
+       "0": {
+        "out": [
+         74.67,
+         -6
+        ]
+       },
+       "1": {
+        "in": [
+         81.33,
+         -6
+        ]
+       }
+      }
+     },
+     {
+      "id": "island-rounded",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "vertices": [
+       [
+        102,
+        0
+       ],
+       [
+        122,
+        0
+       ],
+       [
+        122,
+        20
+       ],
+       [
+        102,
+        20
+       ]
+      ],
+      "controls": {
+       "0": {
+        "in": [
+         98.67,
+         3.33
+        ],
+        "out": [
+         105.33,
+         -3.33
+        ]
+       },
+       "1": {
+        "in": [
+         118.67,
+         -3.33
+        ],
+        "out": [
+         125.33,
+         3.33
+        ]
+       },
+       "2": {
+        "in": [
+         125.33,
+         16.67
+        ],
+        "out": [
+         118.67,
+         23.33
+        ]
+       },
+       "3": {
+        "in": [
+         105.33,
+         23.33
+        ],
+        "out": [
+         98.67,
+         16.67
+        ]
+       }
+      }
+     }
+    ],
+    "groups": [
+     {
+      "id": "island-circle",
+      "name": "island-circle",
+      "mirrors": false,
+      "shapeIds": [
+       "island-circle"
+      ]
+     },
+     {
+      "id": "island-lasso",
+      "name": "island-lasso",
+      "mirrors": false,
+      "shapeIds": [
+       "island-lasso"
+      ]
+     },
+     {
+      "id": "island-bowed",
+      "name": "island-bowed",
+      "mirrors": false,
+      "shapeIds": [
+       "island-bowed"
+      ]
+     },
+     {
+      "id": "island-rounded",
+      "name": "island-rounded",
+      "mirrors": false,
+      "shapeIds": [
+       "island-rounded"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}
