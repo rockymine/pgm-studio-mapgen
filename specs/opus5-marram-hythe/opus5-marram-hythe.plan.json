@@ -8,7 +8,7 @@
   "symmetry": "rot_180",
   "maxPlayers": 14,
   "surface": 9,
-  "observerY": 52
+  "observerY": 74
  },
  "pieces": [
   {
@@ -38,9 +38,9 @@
    "role": "piece",
    "rect": [
     -7,
-    -2,
+    -3,
     14,
-    4
+    6
    ],
    "surface": 10,
    "mirrors": false
@@ -84,7 +84,7 @@
     "id": "destroyable-1",
     "piece": "shore",
     "at": [
-     22,
+     30,
      50
     ],
     "style": "pillar-3",

@@ -1598,27 +1598,24 @@
      "kind": "cell",
      "seed": 13,
      "cellSize": 9,
-     "entries": [
+     "jitter": 3,
+     "warp": 2,
+     "rise": 4,
+     "palette": [
       {
-       "material": {
-        "kind": "solid",
-        "id": 13,
-        "data": 0
-       }
+       "kind": "solid",
+       "id": 13,
+       "data": 0
       },
       {
-       "material": {
-        "kind": "solid",
-        "id": 1,
-        "data": 5
-       }
+       "kind": "solid",
+       "id": 1,
+       "data": 5
       },
       {
-       "material": {
-        "kind": "solid",
-        "id": 4,
-        "data": 0
-       }
+       "kind": "solid",
+       "id": 4,
+       "data": 0
       }
      ]
     },

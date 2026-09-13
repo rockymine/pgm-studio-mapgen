@@ -326,8 +326,11 @@ spawn_style = {
 }
 
 # ---------------------------------------------------------------- dressing
-PAVE = {"kind": "cell", "seed": 13, "cellSize": 9, "entries": [
-    {"material": GRAVEL}, {"material": ANDESITE}, {"material": COBBLE}]}
+# `cell` takes `palette`, and `jitter` and `warp` are required. `entries` is
+# not a field the studio reads, so a pattern stating it is dropped inside the
+# snapshot in silence and renders as a flat swatch.
+PAVE = {"kind": "cell", "seed": 13, "cellSize": 9, "jitter": 3,
+        "warp": 2, "rise": 4, "palette": [GRAVEL, ANDESITE, COBBLE]}
 
 dressing_props = [
     # The road off the spawn to the crag's south adit — the way the board is

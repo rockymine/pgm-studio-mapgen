@@ -92,11 +92,11 @@
     <regions>
         <point id="blue-spawn-point">0,16,106</point>
         <point id="red-spawn-point">0,16,-106</point>
-        <point id="observer-spawn">0,53,0</point>
+        <point id="observer-spawn">0,75,0</point>
         <rectangle id="blue-spawn" min="-12,100" max="12,112"/>
         <rectangle id="red-spawn" min="-12,-112" max="12,-100"/>
-        <cuboid id="hythe-light-region" min="-22,24,-62" max="-21,27,-61"/>
-        <cuboid id="hythe-light-2-region" min="21,24,61" max="22,27,62"/>
+        <cuboid id="hythe-light-region" min="-14,24,-62" max="-13,27,-61"/>
+        <cuboid id="hythe-light-2-region" min="13,24,61" max="14,27,62"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -165,5 +165,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>45</maxbuildheight>
+    <maxbuildheight>47</maxbuildheight>
 </map>

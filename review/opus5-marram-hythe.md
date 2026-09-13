@@ -86,14 +86,55 @@ as eight `copied` recipes — three squat `scrub` for the crests, five `pine` fo
 `tools/trees.py verify` matches every one back to its recipe: four exact, twelve at 0.94–0.97
 where a crown clipped a neighbour or the ground, which is what a hand-built tree does.
 
-**A lighthouse**, which is the one thing none of the eight reference boards has, because none
-was asked for one. It is `tapered_tower` under a `dome` from `tools/sculpt/props.py` — the
-studio's own emitters, not a new subsystem — on two layers carrying `kind: "made"` and
-`part_of: "lighthouse"`. Column at (−34, −56): quartz lantern y38–41 over a stone-brick tower.
-It is **solid**: hollow with no door, it read as a 212-cell SEALED void, which is dead space
-nothing can enter.
+**A lighthouse**, on the bar at dead centre — the thing both teams cross toward and the one
+landmark neither owns. It is **built**, not assembled out of two presets: a splayed plinth of
+two nested discs, eight stilts, a shaft of six bands alternating quartz and red stained clay
+and tapering 6 to 4, a colonnade of eight posts carrying an overhanging gallery, a parapet
+ring, a glazed lantern with a glowstone lamp standing in it, and a dome cap. **Fourteen
+layers**, every one `kind: "made"` and `part_of: "lighthouse"`.
 
-## What went wrong
+Each colour band is its own layer because a layer holds one span per column and a colour change
+splits a run as surely as air does. The hollow forms — shaft, rail, lantern — are single
+even-odd polygons (`props.annulus`), because an outer circle minus an inner one is a `subtract`
+and `SK13` reads a subtract as the board's negative space and refuses any add that fills it.
+
+`props.py`'s emitters are **primitives**, not a lighthouse. Only the cap is one of them.
+
+## What went wrong, second pass
+
+The first build of this board was reviewed and most of it was wrong. What that cost:
+
+- **The lighthouse built entirely out of grass and dirt.** The layer helper took a `material`
+  argument and never applied it, so every shape fell to the map default. A made thing carrying
+  neither a theme nor a material is terrain.
+- **`cell` takes `palette`, and `jitter` and `warp` are required.** I used `entries`, which the
+  studio does not read: inside a snapshot it is dropped in silence and the pattern renders as a
+  flat swatch, and in a surface bucket the theme gate throws on the null and answers `RQ2` — a
+  500 — rather than naming the field. Every path on every board of this run was a flat swatch
+  because of it; all five are rebuilt.
+- **The wall bucket painted every natural riser.** `wallOnTerrainFaces: True` over a grained
+  dune field lays a brown web of sandstone across the marram, because a dune with grain in it
+  is nothing but small risers. Off, and a dune's face is the surface stack's steep band, which
+  is what the slope axis is for.
+- **`17:5` is spruce on its side, not dark oak.** Dark oak log is `162:1`. Every post and beam
+  on the board was the wrong wood.
+- **Sand to bedrock.** Every surface band handed over to sandstone and the fill was a sandstone
+  voronoi, so the board was sand all the way down. Sand is a surface fact: it lies on the steep
+  faces and blows a course over the flats, and what is under it is soil and then rock.
+- **A `raise` of zero is not flush — it stands one course proud.** The gravel freckles were
+  plates somebody laid. `relief_scope: "follow"` takes the height the field settles on under
+  the shape and holds it there, so the patch's top equals the ground it paints.
+- **The board was a rectangle.** Seven of the eight reference boards reshape their compiled
+  outline per vertex with `editShapes`; none bends. Two corner moves and two inserts cut the
+  back corners off as triangles, and three more give the frontline a shape instead of a line.
+- **The quay was 4.3% of the board and empty.** It is 13.4% now and carries two sheds — one
+  style, two plots, differing in height and footprint and in nothing else — with the road
+  running to a door.
+- **There was no water at all.** Setting the pool's `radius` to 0 to silence `DR-DRY` deleted
+  it: `radius` on a pool is the **shelf**, not a width. The lagoon is now a `sink` basin, flat
+  to its own edge, with the pool sized to cover every column that was dug.
+
+## What went wrong, first pass
 
 - **`SK9`**: the sea-wall was stated as `floor 20, base_height 2` over a quay topping at 20.
   Among the shapes of one layer the taller add wins the column **floor included**, so the

@@ -244,3 +244,37 @@ a dune field.
 (`blackden-sough`) and 35.6% (`burgage-terrace`) dead on a single-objective board;
 `heftfold` reads 0.0% and is a wool board. 24.7% here is mid-range, and the dead ground is the
 defender's rear. Chasing the number past that point reshapes a board for a measurement.
+
+### The demonstration board, reviewed and rebuilt
+
+The first build of `opus5-marram-hythe` was shown to the author and most of it was wrong. The
+terrain read; nothing built on it did. What that pass cost, and what each fault actually was:
+
+| what looked wrong | what it was |
+|---|---|
+| the lighthouse was two presets stacked | `props.py` emits **primitives**. A lighthouse is a plinth, stilts, a banded shaft, a colonnade, a gallery, a lantern and a cap — 14 layers, each colour band its own, because a layer holds one span per column |
+| it stood on the quay | it belongs on the bar at dead centre: the thing both teams cross toward and the one landmark neither owns |
+| the whole board was sand | every surface band handed over to sandstone over a sandstone voronoi fill. Sand is a **surface** fact — the steep faces and a course over the flats — and under it is soil and then rock |
+| a pattern read as a wall run | `wallOnTerrainFaces: True` paints every exposed riser, and a grained dune field is nothing but small risers. The `wall` bucket is now a **noise with a `rise`**, and off on terrain faces |
+| gravel patches raised one block | **a `raise` of zero is not flush.** `relief_scope: "follow"` holds the patch at the height the field settles on |
+| no water anywhere | `radius` on a pool is the **shelf**, not a width. Setting it to 0 to silence `DR-DRY` deleted the pool outright |
+| the structure was too small | the quay went from 4.3% of the board to **13.4%**, and carries two sheds — one style, two plots |
+| the sea wall went nowhere | it returns at both ends and encloses the harbour |
+| dead back corners, flat frontline | **`editShapes`** — seven of the eight reference boards reshape their outline per vertex and none bends. Two moves and two inserts cut the corners off as triangles; three more give the frontline a shape |
+
+**Two defects worth more than this board.**
+
+**`cell` takes `palette`, and `jitter` and `warp` are required.** I wrote `entries` — a field the
+studio does not read. Inside a snapshot it is dropped in silence and the pattern renders as a
+flat swatch; in a surface bucket `TerrainThemeValidation.Blocks` throws on the null and the
+answer is `RQ2`, a 500, with the field named only in the server log. **Every path on all five of
+my boards was a flat swatch because of it.** All five are rebuilt; Agent B's four never used
+`cell` and are unaffected. That a missing required field gives a 500 rather than a named
+finding is the studio's own fault, not the document's.
+
+**`17:5` is spruce on its side, not dark oak** — dark oak log is `162:1`. Every post and beam I
+called dark oak was the wrong wood.
+
+And one correction to the warmup itself: its audit greped the **build script**, which
+under-counts any spec that states a flight through a helper or sets a key programmatically. It
+reads the generated finish now.

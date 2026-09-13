@@ -349,8 +349,11 @@ cot_style = {
 }
 
 # A path is solid and three colours a reader cannot quite tell apart.
-PAVE = {"kind": "cell", "seed": 31, "cellSize": 9, "entries": [
-    {"material": SANDSTONE}, {"material": SS_SMOOTH}, {"material": HARDENED_CLAY}]}
+# `cell` takes `palette`, and `jitter` and `warp` are required. `entries` is
+# not a field the studio reads, so a pattern stating it is dropped inside the
+# snapshot in silence and renders as a flat swatch.
+PAVE = {"kind": "cell", "seed": 31, "cellSize": 9, "jitter": 3,
+        "warp": 2, "rise": 4, "palette": [SANDSTONE, SS_SMOOTH, HARDENED_CLAY]}
 
 dressing_props = [
     # The made road: spawn door, down the cut, out to the core's ground.

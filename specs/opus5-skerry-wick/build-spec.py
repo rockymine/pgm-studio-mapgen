@@ -263,8 +263,11 @@ room_styles = {
     "spawn": shell(COBBLE, DARK_PLANK, SPRUCE_LOG, DARK_PLANK),
 }
 
-PAVE = {"kind": "cell", "seed": 5, "cellSize": 9, "entries": [
-    {"material": GRAVEL}, {"material": ANDESITE}, {"material": COBBLE}]}
+# `cell` takes `palette`, and `jitter` and `warp` are required. `entries` is
+# not a field the studio reads, so a pattern stating it is dropped inside the
+# snapshot in silence and renders as a flat swatch.
+PAVE = {"kind": "cell", "seed": 5, "cellSize": 9, "jitter": 3,
+        "warp": 2, "rise": 4, "palette": [GRAVEL, ANDESITE, COBBLE]}
 
 dressing_props = [
     {"id": "hub-track", "kind": "stroke", "style": "solid", "claimsGround": True,

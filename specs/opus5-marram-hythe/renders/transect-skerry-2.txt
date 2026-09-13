@@ -1,15 +1,15 @@
 ## skerry-2 (boulder) along x
 TRANSECT 18 stations from (26, -28) to (43, -28), every 1
   station        ground  surface  water  top  standing            step
-  (   26,   -28)       9        9            9                      
-  (   27,   -28)       9        9            9                      
-  (   28,   -28)       9        9            9                      
-  (   29,   -28)      10       10           10                      +1
-  (   30,   -28)      10       10           10                      
-  (   31,   -28)      10       10           10                      
-  (   32,   -28)      10       10           10                      
-  (   33,   -28)      10       10           10                      
-  (   34,   -28)       9        9            9                      -1
+  (   26,   -28)                                                    void
+  (   27,   -28)                                                    void
+  (   28,   -28)                                                    void
+  (   29,   -28)       9        9            9                      
+  (   30,   -28)       9        9            9                      
+  (   31,   -28)       9        9            9                      
+  (   32,   -28)       9        9            9                      
+  (   33,   -28)       9        9            9                      
+  (   34,   -28)       9        9            9                      
   (   35,   -28)       9        9           13  boulder skerry-2    
   (   36,   -28)       9        9           14  boulder skerry-2    
   (   37,   -28)       9        9           15  boulder skerry-2    
@@ -19,7 +19,7 @@ TRANSECT 18 stations from (26, -28) to (43, -28), every 1
   (   41,   -28)       9        9           14  boulder skerry-2    
   (   42,   -28)       9        9           12  boulder skerry-2    
   (   43,   -28)       9        9            9                      
-rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: boulder skerry-2 at (35, -30)
 
 ## skerry-2 (boulder) along z
@@ -39,8 +39,8 @@ TRANSECT 25 stations from (38, -40) to (38, -16), every 1
   (   38,   -29)       9        9           15  boulder skerry-2    
   (   38,   -28)       9        9           15  boulder skerry-2    
   (   38,   -27)       9        9           15  boulder skerry-2    
-  (   38,   -26)       9        9           14  boulder skerry-2    
-  (   38,   -25)       9        9           13  boulder skerry-2    
+  (   38,   -26)                            14  boulder skerry-2    void
+  (   38,   -25)                            13  boulder skerry-2    void
   (   38,   -24)                                                    void
   (   38,   -23)                                                    void
   (   38,   -22)                                                    void
