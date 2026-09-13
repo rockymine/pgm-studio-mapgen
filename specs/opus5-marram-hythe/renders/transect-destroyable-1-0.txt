@@ -12,9 +12,9 @@ TRANSECT 25 stations from (-26, -62) to (-2, -62), every 1
   (  -18,   -62)      20       20           20                      
   (  -17,   -62)      20       20           20                      
   (  -16,   -62)      20       20           20  destroyable destroyable-1  
-  (  -15,   -62)      20       20           54  destroyable destroyable-1  
-  (  -14,   -62)      20       20           55  destroyable destroyable-1  
-  (  -13,   -62)      20       20           54  destroyable destroyable-1  
+  (  -15,   -62)      20       20           55  destroyable destroyable-1  
+  (  -14,   -62)      20       20           56  destroyable destroyable-1  
+  (  -13,   -62)      20       20           55  destroyable destroyable-1  
   (  -12,   -62)      20       20           20  destroyable destroyable-1  
   (  -11,   -62)      20       20           20                      
   (  -10,   -62)      20       20           20                      
@@ -27,7 +27,7 @@ TRANSECT 25 stations from (-26, -62) to (-2, -62), every 1
   (   -3,   -62)      20       20           20                      
   (   -2,   -62)      20       20           20                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: destroyable destroyable-1 at (-16, -64), house warehouse at (-3, -64)
+beside: destroyable destroyable-1 at (-16, -64)
 
 ## destroyable-1-0 (destroyable) along z
 TRANSECT 25 stations from (-14, -74) to (-14, -50), every 1
@@ -43,9 +43,9 @@ TRANSECT 25 stations from (-14, -74) to (-14, -50), every 1
   (  -14,   -66)      20       20           20                      
   (  -14,   -65)      20       20           20                      
   (  -14,   -64)      20       20           20  destroyable destroyable-1  
-  (  -14,   -63)      20       20           54  destroyable destroyable-1  
-  (  -14,   -62)      20       20           55  destroyable destroyable-1  
-  (  -14,   -61)      20       20           54  destroyable destroyable-1  
+  (  -14,   -63)      20       20           55  destroyable destroyable-1  
+  (  -14,   -62)      20       20           56  destroyable destroyable-1  
+  (  -14,   -61)      20       20           55  destroyable destroyable-1  
   (  -14,   -60)      20       20           20  destroyable destroyable-1  
   (  -14,   -59)      20       20           20                      
   (  -14,   -58)      20       20           20                      
@@ -55,7 +55,7 @@ TRANSECT 25 stations from (-14, -74) to (-14, -50), every 1
   (  -14,   -54)      20       20           20                      
   (  -14,   -53)      20       20           20                      
   (  -14,   -52)      20       20           20                      
-  (  -14,   -51)      22       22           22                      scramble +2
-  (  -14,   -50)      22       22           22                      
-rises 1, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-14, -51) | walked end to end
+  (  -14,   -51)      20       20           20                      
+  (  -14,   -50)      20       20           20                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: destroyable destroyable-1 at (-16, -64)

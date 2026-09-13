@@ -10,18 +10,19 @@ west, where there is no mark between them at all, and along a cut bank on the ea
 
 88 × 224 blocks, `rot_180`, one ground piece at base 16, a bar in the channel at 10, a quay
 at 20. `GO1` own 52 · enemy 186 · **ratio 3.58**. Export gate OPEN, **no complaint, no
-refusal, no decline**, 26 props placed.
+refusal, no decline**, 30 props placed.
 
 ## The two meetings, measured
 
 This is the whole board, and it is one transect each.
 
-| where | what is stated between beach and dune | measured, z −26 → −78 |
+| where | what is stated between beach and dune | measured |
 |---|---|---|
-| x **−42** (west) | **nothing** — the strand mark at h9, the dune points at h19–23, and the relaxation between them | rises 6, **worst step 1**, walked end to end |
-| x **10** (east) | a `scarp`, `high 17 low 9`, `face 3`, six points | **BARRIER +3**, 2 scramble |
+| x **−34** (west) | **nothing but a berm** — the tide line at h9, a hummock, the dune toe at h13, relaxation between them | z −26 → −48: rises 4, **worst step 1**, walked |
+| x **−20** (west) | the same | z −26 → −48: rises 3, **worst step 1**, walked |
+| x **10** (east) | a `scarp`, `high 17 low 9`, `face 3`, six points | z −26 → −78: **BARRIER +3** at z −50, 2 scramble |
 | x **30** (east) | the same scarp, further along its curve | worst step 2, 1 scramble, walked |
-| x **40** (east) | the same | **BARRIER +3**, 2 scramble |
+| x **40** (east) | the same | **BARRIER +3** at z −48, 2 scramble |
 
 Not everything on a board meets the same way. The cut bank is six points, not two, so the
 edge curves; and it runs the **east half only**, so the west half is a shore that rises into
@@ -29,7 +30,7 @@ its own dunes with no line in it anywhere.
 
 ## What made the flow possible was giving up a piece
 
-The first draft had the strand as a plan piece at surface 9 against a links piece at 14 — a
+An early draft had the strand as a plan piece at surface 9 against a links piece at 14 — a
 straight five-block step the full 88-block width of the board, which is the straight meeting
 this board exists to avoid. `fable-saltwharf` is the answer and it is one piece: `base` is the
 **high** ground (there 22, here 16), `reach` is **0** so the marks decide the whole surface,
@@ -65,20 +66,30 @@ The quay is `relief_scope: "exclude"` with a `base_height` of 20 and **no** `hei
 `exclude` takes the footprint out of the solve, so the two tiers meet at a face. `hold` would
 have brought the lower tier up to it and left no step and no reason for a stair.
 
-Its landward edge is **notched twice**, and each notch is cut to exactly the flight that fills
-it — 12 blocks for the west gate and 14 for the east, both for a 6-block rise — so a stair is
-set *into* the wall rather than leaning on it. Both walk end to end at worst step 1. The
-slipway up the seaward face runs 24 for 11 and walks. A fourth flight, the dune ramp, climbs
-the east flank away from the quay entirely, so the board is not one way in.
+Its outline is a plain quadrilateral and **nothing is cut into it**: a stair set into a made
+face is a hole in the thing it is supposed to be, and a shed standing in that hole is inside
+the stair. The way up runs **against** the west face instead, on the strip of ground between
+the platform and the coast — 22 blocks of ramp for a 10-block rise, then six blocks of
+landing level with the deck, so a player arriving has somewhere to stand and turn rather than
+stepping off a slope straight onto a platform. It reads 9 → 20 station by station with a flat
+top: `9 9 10 10 … 19 20 20 20 20 20 20`. The dune ramp climbs the east flank away from the
+quay entirely, so the board is not one way in.
+
+Both sheds stand **on the deck**, at ground 20 for every station of both transects, with the
+road running to a door.
 
 The face is where the quay's paint goes: a `wallDiagonal` at slope 2, four runs, one of them a
 **`teamTint`**, so a player reads whose quay they are looking at from the far bank.
 
 ## What is on it
 
-Three themes, and the census agrees: `links` 84.7%, `strand` 11.0%, `quay` 4.3%, with 454 and
-300 cells of drawn border. The ground is finished **by angle** — marram on the flat and the
-shoulder, blown sand on a dune's steep face, which nothing but the `slope` axis can tell apart.
+Four themes, and the census agrees: `links` 62.8%, `quay` 19.0%, `strand` 12.5%, `foreshore`
+5.7%, with 776 cells of drawn border between them. The front of each island is a beach over
+its whole extent and in two bands: `strand`, gravel over sand, from the water back to the dune
+toe; and `foreshore` inside it along the tide line, a cell field of gravel, sand and clay, which
+is the one thing on the board that says where the water is. The ground behind them is finished
+**by angle** — marram on the flat and the shoulder, blown sand on a dune's steep face, which
+nothing but the `slope` axis can tell apart.
 Biome **Savanna**, whose grass tints `#bfb755`: Plains' `#91bd59` beside blown sand is a lawn.
 
 **Sixteen hand-built trees**, cut out of `showcase/tree-showcase` with `tools/trees.py bodies`
@@ -99,6 +110,44 @@ even-odd polygons (`props.annulus`), because an outer circle minus an inner one 
 and `SK13` reads a subtract as the board's negative space and refuses any add that fills it.
 
 `props.py`'s emitters are **primitives**, not a lighthouse. Only the cap is one of them.
+
+## What went wrong, third pass
+
+The board was reviewed again with the platform, the ramps and the front named as the faults.
+What that cost:
+
+- **A `follow` shape is a floor, not a patch — and that is what flattened the whole front.**
+  `relief_scope: "follow"` is answered outside the solver's three-way participation: the group
+  is solved once, the shape is *seated* at the height the field settled on under it, and that
+  one height is then pinned back over its **entire ring as a rigid area mark** and the group
+  re-solved. Over a spawn plot that is the point — a door opens onto ground, not into rock.
+  Over an eighty-block beach it is a slab: the strand came out level to the block for fifteen
+  courses and every mark drawn inside it — three hummocks, a dune toe — was overwritten in
+  silence. The reading names it plainly: `relief/read` reported a seam between `beach` and
+  `dune-toe`, and `beach` is a shape, not a mark. A themed terrain patch states **no**
+  `relief_scope` at all. It is then ordinary ground of the group: the marks shape it and the
+  theme says what it is made of.
+- **A theme only lands on a cell the shape FORMS the surface of.** `ShapeScopeOwners` gives a
+  cell to a non-standing shape only where its top equals the ground already claimed there, so
+  a patch stated at `base_height: 1` over an island stated at 16 runs nine courses under the
+  sand, forms nothing, and paints nothing — on a 200, with the shape in the layout and the
+  theme in the registry. It took 34 cells out of 15 178. Flush with the island at 16 and
+  smaller in area, the same polygon takes 12.5%.
+- **An `area` mark holds its height over everything inside its ring, the grain included.** The
+  beach was one `area` at h9 drawn over the whole front, which is why the front was a table.
+  The tide line is a `line` now, r3: it pins the water's edge and nothing else.
+- **`bevel` is measured inward from the ring, so a strip narrower than twice it never reaches
+  `h`.** A five-cell wet flat with `bevel: 4` is all shoulder — it solved two courses above the
+  height it stated.
+- **A push is a lift, not a texture.** `amount: 3` over a ring covering the whole strand raised
+  the whole strand by three and inverted the tide line with it. What puts shape into relaxed
+  ground is marks inside it, at small radii.
+- **The front was grass because nothing painted it.** It is a beach now in two bands: `strand`
+  (1 890 cells, gravel over sand) over the whole front, and `foreshore` (870) — a cell field of
+  gravel, sand and clay — along the water's edge inside it. 18.2% of the board, against 0.2%.
+- **The ground now has a shape.** `level` fell from 0.47 to 0.426 and `largestField` from 0.14
+  to 0.082: the strand climbs from y9 at the tide line over three hummocks to a dune toe at
+  y13, and the quay stands seven courses over it.
 
 ## What went wrong, second pass
 
@@ -127,12 +176,13 @@ The first build of this board was reviewed and most of it was wrong. What that c
 - **The board was a rectangle.** Seven of the eight reference boards reshape their compiled
   outline per vertex with `editShapes`; none bends. Two corner moves and two inserts cut the
   back corners off as triangles, and three more give the frontline a shape instead of a line.
-- **The quay was 4.3% of the board and empty.** It is 13.4% now and carries two sheds — one
+- **The quay was 4.3% of the board and empty.** It is 19.0% now and carries two sheds — one
   style, two plots, differing in height and footprint and in nothing else — with the road
   running to a door.
 - **There was no water at all.** Setting the pool's `radius` to 0 to silence `DR-DRY` deleted
-  it: `radius` on a pool is the **shelf**, not a width. The lagoon is now a `sink` basin, flat
-  to its own edge, with the pool sized to cover every column that was dug.
+  it: `radius` on a pool is the **shelf**, not a width. The lagoon it was dug for is gone from
+  the board — the front is a beach against the void now, and what says where the water is on a
+  board whose water is the crossing is the foreshore band, not a pool.
 
 ## What went wrong, first pass
 

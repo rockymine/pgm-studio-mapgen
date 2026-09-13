@@ -59,6 +59,7 @@ A shore board, worked all the way through, as the pattern to copy:
 | beach → dune | the two reliefs' own meeting, across the layer seam | the join has a shape because two fields made it |
 | dune → yard | an authored flight: `height_mode: "level"`, `anchor_heights`, `skirt: 0`, `keepClear: true`, a **`material`** rather than a theme, run **at least twice the rise** | a relief graded across the seam deletes the boundary; a flight states it |
 | yard → quay | a ramp of the same kind, or a **polyline** where the join is a wall | |
+| the sand ON the beach, the gravel ON the tide line | an add shape carrying a **`theme`**, `base_height` **equal to the ground it lies on**, and **no `relief_scope` at all** | a shape owns the paint only on a cell it *forms the surface of*: one stated lower runs under the ground, paints nothing, and says so on a 200. And a `relief_scope` is a statement about **height** — `follow` seats the shape on the solved field and then pins its whole ring there **rigid**, which over a terrain patch is a floor: the strand solves level to the block and every mark inside it is overwritten in silence |
 
 **One map needn't be one ground.** Plains everywhere is not simplicity, it is one instrument.
 
@@ -154,7 +155,16 @@ It reads the **finish the spec generated**, not the script that generated it. A
 uses it four times, and a grep over the source counts one.
 
 And read `05-themes.txt`. A theme registered and not on the ground is a theme that painted
-nothing, and nothing anywhere raises a finding for it.
+nothing, and nothing anywhere raises a finding for it. A theme at a fraction of a percent is
+the same fault: the shape is under the ground rather than on it, or another shape of equal
+area is taking the cell.
+
+And `POST /sketch/relief/read` with the stored layout, which is the only read that says what
+the marks did to **each other**: `silentMarks` is every mark that landed nowhere, `seams`
+names the pairs that meet on a step — and a seam naming a **shape** rather than a mark is a
+`relief_scope` pinning ground you meant the marks to shape. `level` and `largestField` are the
+two numbers that say whether the ground has a shape at all; over about 0.45 and 0.13 it is a
+table with edges.
 
 ## 5. Stop
 

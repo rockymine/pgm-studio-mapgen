@@ -25,7 +25,8 @@ And the joins, every one of them chosen:
 
   strand -> links   the stated five-block drop between two plan pieces, which
                     is what stops them merging into one shape
-  strand -> quay    the slipway, 24 of run for 11 of rise
+  strand -> quay    a ramp AGAINST the west face, parallel to it, with a
+                    landing at the top to stand and turn on
   links  -> quay    two gates, 12 and 14 of run for 6, each set INTO a notch
                     cut to its own length rather than leaning on a straight wall
   strand -> links   a dune ramp out on the east flank, 12 for 5
@@ -58,6 +59,7 @@ STONE_BRICK = solid(98, 0)
 QUARTZ      = solid(155, 0)
 CLAY_RED    = solid(159, 14)
 CLAY_WHITE  = solid(159, 0)
+CLAY        = solid(82, 0)
 GLASS       = solid(20, 0)
 GLOWSTONE   = solid(89, 0)
 DARK_PLANK  = solid(5, 5)
@@ -109,7 +111,7 @@ plan = {
         # across the width of the build zone that reaches it. The hop is 16
         # either side and the whole crossing 48 — G5 wants 10 to 20 for the
         # hop a route depends on, and 40 to 60 in total.
-        {"id": "channel", "rect": [-7, -6, 14, 12], "holes": []},
+        {"id": "channel", "rect": [-7, -9, 14, 18], "holes": []},
     ],
     "placements": {
         "spawns": [
@@ -139,14 +141,36 @@ relief = {
         "base": 16, "reach": 0, "step": 1, "landform": "rolling",
         "grain": {"amplitude": 0.7, "scale": 12, "seed": 29},
         "marks": [
-            # The beach, scooped out of the shore rather than butted against
-            # it. Its ring is drawn long and irregular so the transition is a
-            # different width at every point along it.
-            {"id": "strand-flat", "kind": "area", "h": 9, "bevel": 4,
-             "ring": [[-44, -30], [-36, -38], [-24, -34], [-14, -42],
-                      [-2, -37], [10, -43], [22, -38], [32, -44], [42, -40],
-                      [44, -26], [30, -22], [16, -26], [0, -22], [-16, -26],
-                      [-30, -22]]},
+            # The wet flat, pinned at the water: a strip along the coast
+            # itself rather than the whole front. An area mark holds one
+            # height everywhere inside its ring, so a ring drawn over the
+            # whole beach is a beach with no shape in it — which is what
+            # this was, twenty-four courses deep and level to the block.
+            # The tide line, pinned as a LINE and not as an area. An area
+            # mark holds one height over everything inside its ring and the
+            # grain with it, so a ring drawn over the front is twenty-four
+            # courses of ground level to the block — which is what this was.
+            # A line pins the water's edge and nothing else, and the beach
+            # behind it is relaxation with grain in it.
+            {"id": "tide-line", "kind": "line", "r": 3, "tread": 2,
+             "h": [9, 9, 9, 9, 9, 9, 9, 9, 9],
+             "points": [[-44, -24], [-30, -28], [-22, -34], [-10, -30],
+                        [0, -27], [12, -30], [22, -32], [34, -27], [44, -24]]},
+            # The dune toe: the low ridge of blown sand a beach piles up
+            # behind the tide line, so the ground climbs out of the water
+            # before the marram starts. It runs the middle of the front
+            # only — the ramp holds the west end and the cut bank the east,
+            # and a mark laid across either would fight it.
+            {"id": "dune-toe", "kind": "line", "r": 3, "tread": 2,
+             "h": [13, 12, 13],
+             "points": [[-34, -45], [-20, -43], [-8, -45]]},
+            # And three hummocks standing out of the strand between the two,
+            # which is the only thing that keeps fifteen courses of relaxed
+            # ground from solving level to the block. Small radii: a point
+            # mark pins a flat disc, so a wide one is a table.
+            {"id": "hump-w", "kind": "point", "at": [-36, -36], "r": 5, "h": 11},
+            {"id": "hump-m", "kind": "point", "at": [-14, -40], "r": 4, "h": 11},
+            {"id": "hump-e", "kind": "point", "at": [16, -38], "r": 5, "h": 11},
             # Kept clear of every dune: two marks that touch pin their bands
             # exactly, and the whole difference between them lands in one cell
             # (RL3). What is between them instead is the relaxation.
@@ -163,9 +187,10 @@ relief = {
              "points": [[-42, -74], [-20, -70], [4, -72], [26, -64]]},
             # And ONE stretch of it that does not flow: a cut bank where the
             # sea has been at the dunes, traced east to west so the high band
-            # lands landward. It runs the east half only — the west half has
-            # no mark between beach and dune at all, so the two meet there by
-            # relaxation. Not everything on a board meets the same way.
+            # lands landward. It runs the east half only — west of it the
+            # beach climbs its own berm and the berm relaxes into the dunes,
+            # with no mark on the seam at all. Not everything on a board
+            # meets the same way.
             {"id": "cut-bank", "kind": "scarp", "high": 17, "low": 9,
              "face": 3, "band": 3,
              "points": [[44, -44], [34, -49], [24, -45], [14, -50],
@@ -208,11 +233,11 @@ quay = {
     "id": "quay", "type": "polygon", "operation": "add",
     "relief_scope": "exclude", "base_height": 20, "floor": 0,
     "keepClear": True, "theme": "quay",
+    # No notches. A flight set INTO a platform is a hole in the platform, and
+    # the houses that went in the notches were standing in the stairwells.
+    # The way up runs along the OUTSIDE of the west face instead.
     "vertices": [
-        [-40, -48], [10, -48], [10, -78],
-        [2, -78], [2, -62], [-6, -62], [-6, -78],         # east gate notch, 16
-        [-16, -78], [-16, -64], [-26, -64], [-26, -78],   # west gate notch, 14
-        [-40, -78],
+        [-38, -48], [10, -48], [10, -78], [-38, -78],
     ],
 }
 
@@ -224,74 +249,60 @@ def flight(fid, verts, anchors, material=STONE_BRICK):
             "vertices": verts, "anchor_heights": anchors, "material": material}
 
 flights = [
-    # strand -> quay, up the seaward face: 24 of run for 11 of rise.
-    flight("slipway", [[10, -44], [10, -36], [-14, -42], [-14, -48]],
-           [9, 9, 20, 20]),
-    # links -> quay through the west notch: 12 for 6.
-    flight("gate-west", [[-26, -78], [-16, -78], [-16, -64], [-26, -64]],
-           [15, 15, 20, 20]),
-    # links -> quay through the east notch: 14 for 6, and longer, so the two
-    # gates do not cost the same thing.
-    flight("gate-east", [[-6, -78], [2, -78], [2, -62], [-6, -62]],
-           [15, 15, 20, 20]),
-    # strand -> links out on the east flank, away from the quay entirely.
+    # The way onto the quay: a ramp AGAINST its west face, on the strip of
+    # ground between the platform and the coast, running parallel to it for
+    # 22 blocks and rising 10. Nothing is cut into the platform.
+    flight("quay-ramp", [[-44, -50], [-38, -50], [-38, -72], [-44, -72]],
+           [10, 10, 20, 20]),
+    # And the landing at the top of it: six blocks of flat, level with the
+    # quay, so a player arriving has somewhere to stand and turn rather than
+    # stepping off a slope straight onto a platform.
+    flight("quay-landing", [[-44, -72], [-38, -72], [-38, -78], [-44, -78]],
+           [20, 20, 20, 20]),
+    # The other way up the board, out on the east flank and away from the
+    # quay entirely: strand to links.
     flight("dune-ramp", [[24, -58], [34, -58], [34, -42], [24, -42]],
            [17, 17, 9, 9], material=SS_SMOOTH),
 ]
 
-# A parapet along the quay's seaward edge, drawn as a POLYLINE: the rasterizer
-# splines its points before offsetting the band, so four points draw as a
-# flowing wall rather than a chain of chords.
-sea_wall = {
-    # `polyline`, not `path`: the openapi description for SketchShape.type
-    # lists "rectangle, circle, polygon, lasso, path", and the studio draws
-    # five kinds of which the fifth is polyline. A `path` draws no ground and
-    # says so as SK3, on a 200.
-    "id": "sea-wall", "type": "polyline", "operation": "add",
-    "vertices": [[-40, -44], [-40, -49], [-22, -50], [-2, -49],
-                 [10, -50], [10, -44]],
-    "radius": 1.5, "stroke_edge": "solid",
-    # From the quay's OWN floor to the parapet's top, not from the quay's top
-    # to it. Among the shapes of one layer the taller add wins the column
-    # floor included, so a parapet stated as [quay top, quay top + 2] deletes
-    # the quay under every cell it covers and the world keeps only the wall
-    # (SK9). Stated from 0 it is simply the taller shape and the quay survives.
-    "floor": 0, "base_height": 22, "keepClear": True, "material": STONE_BRICK,
-}
 
-# The lagoon. A `sink` is applied over the ground the relief solved, so it
-# cuts a real hollow in the strand without a second area mark pinning against
-# `strand-flat` and meeting it on a step (RL3). skirt 1 rather than 3: a
-# skirted sink has a sloped rim, and a pool laid across a slope takes the
-# lowest surface it crosses as its line and empties every column above it
-# (DR-BANK). Flat to its own edge, the pool fills it and nothing is dug that
-# the water does not reach. Three courses deep and under water, so the sheer
-# edge is a pool's edge rather than a pit.
-lagoon = {
-    "id": "lagoon", "type": "polygon", "operation": "add",
-    "height_mode": "sink", "base_height": 3, "skirt": 1, "floor": 0,
-    "vertices": ring(-8, -26, 8, 12, 0.16, 5),
+# THE BEACH AND ITS FORESHORE. Two shapes over the whole front of the island,
+# the second inside the first, so the ground reads out from the water in
+# bands: wet gravel at the edge, dry sand behind it, marram behind that.
+#
+# `base_height` matches the island's own, which is what makes the paint land.
+# A shape only owns the theme on a cell it FORMS the surface of; one stated
+# lower than the ground it lies on runs under it, forms nothing, and paints
+# nothing at all. Flush with the island and smaller in area, it wins the cell.
+#
+# And NO `relief_scope`. A shape that states one is a statement about height:
+# `follow` seats the shape on the solved field and then pins its whole ring
+# there RIGID, which over a footprint this size is a floor — the strand came
+# out level to the block and every mark inside it was overwritten. Stating
+# nothing leaves the shape as ordinary ground of the group, which is what a
+# beach is: the marks shape it and the theme says what it is made of.
+#
+# The outlines trace the island's own coast vertex for vertex, so the beach
+# reaches the water everywhere along it rather than stopping short in grass.
+COAST = [[-44, -24], [-30, -28], [-22, -34], [-10, -30], [0, -27],
+         [12, -30], [22, -32], [34, -27], [44, -24]]
+
+beach = {
+    "id": "beach", "type": "polygon", "operation": "add",
+    "base_height": 16, "floor": 0,
     "theme": "strand",
+    "vertices": COAST + [[44, -43], [32, -45], [22, -42], [10, -46],
+                         [-2, -43], [-14, -48], [-28, -44], [-44, -47]],
 }
 
-def freckle(fid, pts, theme):
-    """Solid first, freckled afterwards — and FLUSH. `height_mode: "raise"`
-    with a base_height of 0 does not sit level: it stands one course proud,
-    which on a beach reads as gravel plates somebody laid. `follow` takes the
-    height the field settles on under the shape and holds it there, so the
-    patch's top equals the ground it paints. A shore is painted one ground and then
-    the places that are genuinely something else are drawn ON it — a patch is a
-    shape, and a field sampled between two grounds is static, not a beach."""
-    return {"id": fid, "type": "polygon", "operation": "add",
-            "relief_scope": "follow", "base_height": 1, "floor": 0,
-            "vertices": pts, "theme": theme}
-
-freckles = [
-    freckle("wrack-1", ring(-30, -30, 9, 9, 0.24, 2), "strand"),
-    freckle("wrack-2", ring(4, -24, 11, 10, 0.22, 4), "strand"),
-    freckle("wrack-3", ring(30, -34, 8, 9, 0.26, 6), "strand"),
-    freckle("blowout", ring(8, -84, 7, 9, 0.2, 8), "strand"),
-]
+foreshore = {
+    "id": "foreshore", "type": "polygon", "operation": "add",
+    "base_height": 16, "floor": 0,
+    "theme": "foreshore",
+    "vertices": COAST + [[44, -28], [32, -32], [22, -37], [10, -35],
+                         [0, -32], [-10, -35], [-22, -39], [-32, -33],
+                         [-44, -28]],
+}
 
 # --------------------------------------------------------- the lighthouse
 # On the bar, dead centre of the board, which is where a light belongs: it is
@@ -432,8 +443,22 @@ links_theme = {
     # the field reads as bands down a cut face — which is a wall run wearing a
     # pattern's name. With one it is a volume, and a dune face reads as sand
     # with grain in it rather than as stratified rock.
-    "wall": {"kind": "noise", "seed": 41, "scale": 11, "octaves": 2, "rise": 7,
-             "stops": [SAND, SANDSTONE]},
+    # Banded on the HEIGHT axis, which is the one that can say what is deep.
+    # A cut face of sand and sandstone top to bottom is a board made of sand;
+    # the bottom nine courses are stone, then sandstone, then the sand that
+    # actually belongs at the surface.
+    "wall": {"kind": "layered", "axis": "height", "beyond": STONE,
+             "stack": {"ending": "handOver", "bands": [
+                 {"material": {"kind": "noise", "seed": 61, "scale": 10,
+                               "octaves": 2, "rise": 6,
+                               "stops": [STONE, ANDESITE]}, "thickness": 9},
+                 {"material": {"kind": "noise", "seed": 62, "scale": 9,
+                               "octaves": 2, "rise": 5,
+                               "stops": [SANDSTONE, STONE]}, "thickness": 5},
+                 {"material": {"kind": "noise", "seed": 63, "scale": 8,
+                               "octaves": 2, "rise": 5,
+                               "stops": [SAND, SANDSTONE]}, "thickness": 12},
+             ]}},
     "wallEnabled": True,
     # A voronoi is never ground: it goes in the fill, in STONE, where it is the
     # body of the rock nobody sees until a face is cut.
@@ -451,10 +476,51 @@ strand_theme = {
     # else. Five courses of it, handing over to sandstone, over a stone fill.
     "surface": {"enabled": True, "depth": 5, "material": depth_stack(
         (GRAVEL, 1), (SAND, 4), beyond=SANDSTONE)},
-    "wall": {"kind": "noise", "seed": 43, "scale": 9, "octaves": 2, "rise": 6,
-             "stops": [SAND, SANDSTONE]},
+    "wall": {"kind": "layered", "axis": "height", "beyond": STONE,
+             "stack": {"ending": "handOver", "bands": [
+                 {"material": {"kind": "noise", "seed": 64, "scale": 10,
+                               "octaves": 2, "rise": 6,
+                               "stops": [STONE, ANDESITE]}, "thickness": 9},
+                 {"material": {"kind": "noise", "seed": 65, "scale": 9,
+                               "octaves": 2, "rise": 5,
+                               "stops": [SANDSTONE, STONE]}, "thickness": 5},
+                 {"material": {"kind": "noise", "seed": 66, "scale": 8,
+                               "octaves": 2, "rise": 5,
+                               "stops": [SAND, SANDSTONE]}, "thickness": 12},
+             ]}},
     "wallEnabled": True,
     "fill": {"kind": "voronoi", "seed": 43, "cellSize": 12, "rise": 6,
+             "bands": [{"material": STONE, "depth": 3},
+                       {"material": ANDESITE, "depth": 1}]},
+}
+
+# The tide line. Sand that the sea is still reaching: gravel and clay laid
+# through the sand in a cell field, so the band reads as wet ground rather
+# than as a second flat colour. It is the one thing on the board that says
+# where the water is, on a map whose water is the void between the islands.
+foreshore_theme = {
+    "bedrock": {"relative": False, "value": 1},
+    "rimEdges": "void",
+    "wallOnTerrainFaces": True,
+    "rim": {"enabled": False, "depth": 1, "material": GRAVEL},
+    "surface": {"enabled": True, "depth": 4, "material": depth_stack(
+        ({"kind": "cell", "seed": 57, "cellSize": 5, "jitter": 2, "warp": 2,
+          "rise": 2, "palette": [GRAVEL, SAND, CLAY, GRAVEL]}, 1),
+        (SAND, 3), beyond=SANDSTONE)},
+    "wall": {"kind": "layered", "axis": "height", "beyond": STONE,
+             "stack": {"ending": "handOver", "bands": [
+                 {"material": {"kind": "noise", "seed": 67, "scale": 10,
+                               "octaves": 2, "rise": 6,
+                               "stops": [STONE, ANDESITE]}, "thickness": 9},
+                 {"material": {"kind": "noise", "seed": 68, "scale": 9,
+                               "octaves": 2, "rise": 5,
+                               "stops": [SANDSTONE, STONE]}, "thickness": 5},
+                 {"material": {"kind": "noise", "seed": 69, "scale": 8,
+                               "octaves": 2, "rise": 4,
+                               "stops": [GRAVEL, SANDSTONE]}, "thickness": 12},
+             ]}},
+    "wallEnabled": True,
+    "fill": {"kind": "voronoi", "seed": 44, "cellSize": 12, "rise": 6,
              "bands": [{"material": STONE, "depth": 3},
                        {"material": ANDESITE, "depth": 1}]},
 }
@@ -538,53 +604,68 @@ tree_styles = {k: {"kind": "tree", "form": "copied", "body": v["body"]}
 PAVE = {"kind": "cell", "seed": 19, "cellSize": 9, "jitter": 3, "warp": 2,
         "rise": 4, "palette": [GRAVEL, ANDESITE, COBBLE]}
 
+# A quay shed is not a cottage. It is low and wide, it sits on the stone it
+# is built on rather than on a plinth, its roof is a shallow HIP rather than
+# a gable so it reads as a shed from every side, and its walls are tarred
+# board over a stone base with the posts standing proud at the corners.
 quay_shell = {
     "kind": "house",
     "shell": {
         "foundation": {
+            # One course, flush with the platform: a shed on a quay stands on
+            # the quay. No footing — over a one-course plate it is a rim
+            # round a building with no foundation to speak of.
             "plate": {"stack": {"bands": [{"material": STONE_BRICK, "thickness": 1}],
-                                "ending": "repeat"}, "extent": 1},
+                                "ending": "repeat"}, "extent": 0},
             "surface": {"field": None, "border": None, "borderWidth": 1,
                         "inlay": None, "inlayInset": 2, "isPlain": True},
             "footing": None,
         },
-        "roof": {"form": "gable", "pitch": 1, "slab": -1, "slabData": 0,
+        "roof": {"form": "hip", "pitch": 1, "slab": -1, "slabData": 0,
                  "overhang": 1, "ridgeCap": True, "hole": False,
-                 "body": DARK_PLANK, "verge": solid(5, 1), "gable": solid(5, 1),
+                 "body": DARK_PLANK, "verge": DARK_PLANK, "gable": DARK_PLANK,
                  "gableWindows": {"form": "none", "block": 102, "hostBlock": -1,
                                   "hostData": 0, "data": 0, "sill": 2,
                                   "width": 2, "height": 2, "spacing": 3}},
+        # Stone to the sill, board above — which is how a store beside water
+        # is built, and it ties the shed to the platform under it.
         "wall": {"stack": {"bands": [
-            {"material": STONE_BRICK, "thickness": 2},
-            {"material": DARK_PLANK, "thickness": 4},
-        ], "ending": "repeat"}, "extent": 6},
+            {"material": COBBLE, "thickness": 2},
+            {"material": DARK_PLANK, "thickness": 3},
+        ], "ending": "repeat"}, "extent": 5},
         "post": DARK_LOG,
-        "windows": {"form": "arched", "block": 164, "hostBlock": 5,
-                    "hostData": 5, "data": 0, "sill": 3, "width": 1,
-                    "height": 2, "spacing": 3},
+        # Wide, low openings: a store takes cargo, not daylight.
+        # slabBanded raises half a cube for the sill and lowers half for the
+        # lintel, so its block has to be a single slab — 126:5 is dark oak.
+        "windows": {"form": "slabBanded", "block": 126, "hostBlock": 5,
+                    "hostData": 5, "data": 5, "sill": 2, "width": 2,
+                    "height": 1, "spacing": 4},
         "storeys": [], "porch": None, "front": None,
         "beams": {"block": 162, "data": 1, "reach": 1, "any": True},
-        "doorway": {"door": "air", "head": {"form": "arched", "block": 164,
+        "doorway": {"door": "air", "head": {"form": "none", "block": 164,
                     "fill": "upperSlab", "fillBlock": 126, "fillData": 5},
-                    "width": 2, "height": 3},
+                    "width": 3, "height": 3},
     },
 }
 
 dressing_props = [
     # Two sheds on the quay: one style, two plots, differing in height and
     # footprint and in nothing else. Three styles would be three ideas.
+    # Two sheds ON the quay — one style, two plots, differing in height and
+    # footprint and in nothing else. Both stand well inside the platform's
+    # own edges and clear of the goal's clearance.
     {"id": "net-store", "kind": "house", "seed": 21, "front": "posZ",
-     "style": "quay-shed", "wings": [{"corners": [[-34, -74], [-25, -66]]}]},
+     "style": "quay-shed", "wings": [{"corners": [[-34, -74], [-26, -67]]}]},
     {"id": "warehouse", "kind": "house", "seed": 22, "front": "posZ",
-     "style": "quay-shed", "wings": [{"corners": [[-2, -75], [8, -64]]}]},
+     "style": "quay-shed", "wings": [{"corners": [[0, -76], [7, -67]]}]},
     # A path is a claim about circulation, so it runs from the spawn door to
     # the west gate and stops there, at a door, rather than ending nowhere.
     {"id": "quay-road", "kind": "stroke", "style": "solid", "claimsGround": True,
      "radius": 2, "seed": 11, "pave": PAVE,
-     "points": [[0, -98], [-10, -90], [-20, -82], [-21, -70], [-18, -58]]},
+     "points": [[0, -98], [-14, -90], [-30, -84], [-40, -76], [-41, -62]]},
     # Scrub on the dune crests, pines in the slacks where there is shelter.
     {"id": "scrub-a", "kind": "tree", "seed": 700, "x": -34, "z": -92, "style": "scrub-1"},
-    {"id": "scrub-b", "kind": "tree", "seed": 701, "x": -34, "z": -80, "style": "scrub-2"},
+    {"id": "scrub-b", "kind": "tree", "seed": 701, "x": -26, "z": -92, "style": "scrub-2"},
     {"id": "scrub-c", "kind": "tree", "seed": 702, "x": 24,  "z": -94, "style": "scrub-3"},
     {"id": "scrub-d", "kind": "tree", "seed": 703, "x": 36,  "z": -76, "style": "scrub-1"},
     {"id": "pine-a",  "kind": "tree", "seed": 710, "x": -42, "z": -90, "style": "pine-1"},
@@ -595,24 +676,6 @@ dressing_props = [
     {"id": "skerry-0", "kind": "boulder", "x": -30, "z": -36, "seed": 61, "radius": 3},
     {"id": "skerry-1", "kind": "boulder", "x": 14,  "z": -40, "seed": 62, "radius": 2},
     {"id": "skerry-2", "kind": "boulder", "x": 38,  "z": -28, "seed": 63, "radius": 3},
-    # A tidal pool, drawn INSIDE ground that is already level: the strand is
-    # pinned flat at 9, so the pool fills a hollow rather than cutting one.
-    {"id": "tide-pool", "kind": "water", "seed": 3, "shape": "pool",
-     # The hollow and the pool that fills it are two statements about one
-     # lake: `shore` widens the dug basin past the outline, and the difference
-     # is a dry trench beside the water (DR-DRY). On ground already level the
-     # pool needs neither a shore band nor a dig.
-     # `radius` on a POOL is not a width — it is the shelf, how far in from
-     # the outline the bed is held up. A shelf on ground already at the water
-     # line is dug and holds nothing, which is the whole of DR-DRY's 56 dry
-     # columns. No shelf, and the bed is cut two below the line it fills to.
-     # It fills the hollow the sink cut, rather than cutting one: the basin
-     # floor is 6, the line is 8, and `radius` — which on a pool is the SHELF
-     # rather than a width — stays small. At radius 0 there is no pool at all.
-     "level": 8, "depth": 1, "shore": 0, "shoreWander": False, "radius": 1,
-     "bank": {"kind": "cell", "seed": 23, "cellSize": 9, "jitter": 3,
-              "warp": 2, "rise": 3, "palette": [GRAVEL, SAND]},
-     "points": ring(-8, -26, 10, 12, 0.14, 5)},
     # Ground cover is ONE shape over the whole board, and the density field
     # does the patchiness. Both gameplay numbers stay low: high coverage is
     # ground a player cannot read, and tall grass is cover nobody authored.
@@ -625,9 +688,10 @@ dressing_props = [
 finish = {
     "created": "2026-09-13",
     "authors": ["Opus 5"],
-    "themes": {"links": links_theme, "strand": strand_theme, "quay": quay_theme},
+    "themes": {"links": links_theme, "strand": strand_theme,
+               "foreshore": foreshore_theme, "quay": quay_theme},
     "mapTheme": "links",
-    "addShapes": [quay] + flights + [sea_wall, lagoon] + freckles,
+    "addShapes": [quay] + flights + [beach, foreshore],
     "addLayers": lighthouse,
     # The compiled ground is a rectangle, which is the board's shape and not
     # its coast. Seven of the eight boards this one was measured against

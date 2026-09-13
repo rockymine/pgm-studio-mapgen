@@ -258,9 +258,29 @@ terrain read; nothing built on it did. What that pass cost, and what each fault 
 | a pattern read as a wall run | `wallOnTerrainFaces: True` paints every exposed riser, and a grained dune field is nothing but small risers. The `wall` bucket is now a **noise with a `rise`**, and off on terrain faces |
 | gravel patches raised one block | **a `raise` of zero is not flush.** `relief_scope: "follow"` holds the patch at the height the field settles on |
 | no water anywhere | `radius` on a pool is the **shelf**, not a width. Setting it to 0 to silence `DR-DRY` deleted the pool outright |
-| the structure was too small | the quay went from 4.3% of the board to **13.4%**, and carries two sheds — one style, two plots |
-| the sea wall went nowhere | it returns at both ends and encloses the harbour |
+| the structure was too small | the quay went from 4.3% of the board to **19.0%**, and carries two sheds — one style, two plots |
+| the sea wall went nowhere | it was a parapet along one edge of a platform, and it is gone: what the front of the board needed was a beach, not a wall |
 | dead back corners, flat frontline | **`editShapes`** — seven of the eight reference boards reshape their outline per vertex and none bends. Two moves and two inserts cut the corners off as triangles; three more give the frontline a shape |
+
+### The same board, reviewed again: what a `relief_scope` costs
+
+The second build was shown to the author and the terrain was called pretty and the rest of it
+broken: two stairs cut **into** the platform with the sheds standing inside them, a diagonal
+ramp across its front, gravel blots that acted as a terrain bridge to the middle island, and a
+front that was still grass. Four faults, and three of them are one mechanism.
+
+| what looked wrong | what it was |
+|---|---|
+| stairs inside the quay, houses inside the stairs | a flight cut into a made face is a hole in the thing. The way up runs **against** the west face now — 22 blocks of ramp for a 10-block rise and six of landing level with the deck — and the outline is a plain quadrilateral with nothing cut into it |
+| the front was all grass | **a theme only lands on a cell its shape FORMS the surface of.** A patch stated at `base_height: 1` over an island stated at 16 runs nine courses under the sand: it painted **34 cells out of 15 178**, on a 200, with the shape in the layout and the theme in the registry. Flush at 16 the same polygon takes 12.5% |
+| the strand was level to the block | **`relief_scope: "follow"` is a floor.** The group is solved, the shape is seated at the height under it, and that one height is pinned back over its **whole ring, rigid**, and the group re-solved. Over a spawn plot that is the point; over an 88-block beach it is a slab, and the three hummocks and the dune toe drawn inside it were overwritten in silence. A themed terrain patch states **no** `relief_scope` |
+| gravel blots bridging to the middle island | one beach shape over the full front instead, ending exactly on the island's own coast vertices. Bridging the gap is the players' job |
+| the ground was still sand at depth | the `wall` bucket is banded on the **`height`** axis now: nine courses of stone and andesite, five of sandstone, then sand. Columns read `Grass · Dirt ×3 · Coarse Dirt ×2 · Stone/Andesite to bedrock` |
+
+Two readings would have caught all of it before the author did, and neither was taken:
+`POST /sketch/relief/read` names a seam between `beach` and `dune-toe` — and `beach` is a
+**shape**, which is the whole story — while the theme census counts `strand` at 0.2%. The
+pictures showed a board that looked finished.
 
 **Two defects worth more than this board.**
 

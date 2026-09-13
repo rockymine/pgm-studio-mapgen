@@ -105,7 +105,7 @@
             <region id="spawns"/>
         </negative>
         <negative id="not-build-area">
-            <rectangle id="build-area-1" min="-28,-24" max="28,24"/>
+            <rectangle id="build-area-1" min="-28,-36" max="28,36"/>
         </negative>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
@@ -165,5 +165,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>47</maxbuildheight>
+    <maxbuildheight>48</maxbuildheight>
 </map>

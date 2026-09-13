@@ -1,66 +1,61 @@
 ## warehouse (house) along x
-TRANSECT 27 stations from (-10, -70) to (16, -70), every 1
+TRANSECT 24 stations from (-8, -72) to (15, -72), every 1
   station        ground  surface  water  top  standing            step
-  (  -10,   -70)      20       20           20                      
-  (   -9,   -70)      20       20           20                      
-  (   -8,   -70)      20       20           20                      
-  (   -7,   -70)      20       20           20                      
-  (   -6,   -70)      17       17           17                      -3
-  (   -5,   -70)      17       17           17                      
-  (   -4,   -70)      17       17           17                      
-  (   -3,   -70)      17       17           22  house warehouse     
-  (   -2,   -70)      17       17           23  house warehouse     
-  (   -1,   -70)      17       17           24  house warehouse     
-  (    0,   -70)      17       17           25  house warehouse     
-  (    1,   -70)      17       17           26  house warehouse     
-  (    2,   -70)      20       20           27  house warehouse     BARRIER +3
-  (    3,   -70)      20       20           28  house warehouse     
-  (    4,   -70)      20       20           27  house warehouse     
-  (    5,   -70)      20       20           26  house warehouse     
-  (    6,   -70)      20       20           25  house warehouse     
-  (    7,   -70)      20       20           24  house warehouse     
-  (    8,   -70)      20       20           23  house warehouse     
-  (    9,   -70)      20       20           22  house warehouse     
-  (   10,   -70)      13       13           13                      DROP -7
-  (   11,   -70)      13       13           13                      
-  (   12,   -70)      13       13           13                      
-  (   13,   -70)      13       13           13                      
-  (   14,   -70)      13       13           13                      
-  (   15,   -70)      13       13           13                      
-  (   16,   -70)      14       14           14                      +1
-rises 2, falls 2, worst step 7: 1 barrier, 0 scramble, 1 drop — BARRIER +3 at (2, -70); DROP -7 at (10, -70) | walked end to end
-beside: house warehouse at (-3, -72)
+  (   -8,   -72)      20       20           20                      
+  (   -7,   -72)      20       20           20                      
+  (   -6,   -72)      20       20           20                      
+  (   -5,   -72)      20       20           20                      
+  (   -4,   -72)      20       20           20                      
+  (   -3,   -72)      20       20           20                      
+  (   -2,   -72)      20       20           20                      
+  (   -1,   -72)      20       20           25  house warehouse     
+  (    0,   -72)      20       20           26  house warehouse     
+  (    1,   -72)      20       20           27  house warehouse     
+  (    2,   -72)      20       20           28  house warehouse     
+  (    3,   -72)      20       20           29  house warehouse     
+  (    4,   -72)      20       20           29  house warehouse     
+  (    5,   -72)      20       20           28  house warehouse     
+  (    6,   -72)      20       20           27  house warehouse     
+  (    7,   -72)      20       20           26  house warehouse     
+  (    8,   -72)      20       20           25  house warehouse     
+  (    9,   -72)      20       20           20                      
+  (   10,   -72)      13       13           13                      DROP -7
+  (   11,   -72)      13       13           13                      
+  (   12,   -72)      13       13           13                      
+  (   13,   -72)      13       13           13                      
+  (   14,   -72)      14       14           14                      +1
+  (   15,   -72)      14       14           14                      
+rises 1, falls 1, worst step 7: 0 barrier, 0 scramble, 1 drop — DROP -7 at (10, -72) | walked end to end
+beside: house warehouse at (-1, -74)
 
 ## warehouse (house) along z
-TRANSECT 28 stations from (3, -83) to (3, -56), every 1
+TRANSECT 26 stations from (3, -84) to (3, -59), every 1
   station        ground  surface  water  top  standing            step
-  (    3,   -83)      17       17           17                      
-  (    3,   -82)      17       17           17                      
-  (    3,   -81)      17       17           17                      
-  (    3,   -80)      17       17           17                      
-  (    3,   -79)      17       17           17                      
-  (    3,   -78)      20       20           20                      BARRIER +3
-  (    3,   -77)      20       20           20                      
-  (    3,   -76)      20       20           28  house warehouse     
-  (    3,   -75)      20       20           28  house warehouse     
+  (    3,   -84)      18       18           18                      
+  (    3,   -83)      18       18           18                      
+  (    3,   -82)      18       18           18                      
+  (    3,   -81)      19       19           19                      +1
+  (    3,   -80)      19       19           19                      
+  (    3,   -79)      19       19           19                      
+  (    3,   -78)      20       20           20                      +1
+  (    3,   -77)      20       20           25  house warehouse     
+  (    3,   -76)      20       20           26  house warehouse     
+  (    3,   -75)      20       20           27  house warehouse     
   (    3,   -74)      20       20           28  house warehouse     
-  (    3,   -73)      20       20           28  house warehouse     
-  (    3,   -72)      20       20           28  house warehouse     
-  (    3,   -71)      20       20           28  house warehouse     
-  (    3,   -70)      20       20           28  house warehouse     
+  (    3,   -73)      20       20           29  house warehouse     
+  (    3,   -72)      20       20           29  house warehouse     
+  (    3,   -71)      20       20           29  house warehouse     
+  (    3,   -70)      20       20           29  house warehouse     
   (    3,   -69)      20       20           28  house warehouse     
-  (    3,   -68)      20       20           28  house warehouse     
-  (    3,   -67)      20       20           28  house warehouse     
-  (    3,   -66)      20       20           28  house warehouse     
-  (    3,   -65)      20       20           28  house warehouse     
-  (    3,   -64)      20       20           28  house warehouse     
-  (    3,   -63)      20       20           28  house warehouse     
+  (    3,   -68)      20       20           27  house warehouse     
+  (    3,   -67)      20       20           26  house warehouse     
+  (    3,   -66)      20       20           25  house warehouse     
+  (    3,   -65)      20       20           20                      
+  (    3,   -64)      20       20           20                      
+  (    3,   -63)      20       20           20                      
   (    3,   -62)      20       20           20                      
   (    3,   -61)      20       20           20                      
   (    3,   -60)      20       20           20                      
   (    3,   -59)      20       20           20                      
-  (    3,   -58)      20       20           20                      
-  (    3,   -57)      20       20           20                      
-  (    3,   -56)      20       20           20                      
-rises 1, falls 0, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (3, -78) | walked end to end
-beside: house warehouse at (1, -76)
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house warehouse at (1, -77)

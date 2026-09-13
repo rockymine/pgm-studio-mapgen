@@ -1,7 +1,11 @@
-THEMES  3 themes over 16129 ground cells, 19 distinct surface blocks
-  links  12849 cells (79.7%)  2:0 Grass Block, 3:1 Coarse Dirt, 98:0 Stone Bricks, 12:0 Sand, 24:2 Smooth Sandstone, 1:0 Stone, 13:0 Gravel, 4:0 Cobblestone, 9:0 Water, 1:5 Andesite, 5:5 Dark Oak Planks, 162:1 Dark Oak Log
-  quay  2158 cells (13.4%)  98:0 Stone Bricks, 4:0 Cobblestone, 24:2 Smooth Sandstone, 5:5 Dark Oak Planks, 5:1 Spruce Planks, 162:1 Dark Oak Log, 164:7 Dark Oak Stairs, 164:6 Dark Oak Stairs, 164:5 Dark Oak Stairs, 164:4 Dark Oak Stairs
-  strand  1122 cells (7.0%)  13:0 Gravel, 12:0 Sand, 9:0 Water
+THEMES  4 themes over 15178 ground cells, 12 distinct surface blocks
+  links  9538 cells (62.8%)  2:0 Grass Block, 3:1 Coarse Dirt, 12:0 Sand, 98:0 Stone Bricks, 24:2 Smooth Sandstone, 1:5 Andesite, 4:0 Cobblestone, 13:0 Gravel, 35:14 Red Wool, 35:11 Blue Wool
+  quay  2880 cells (19.0%)  98:0 Stone Bricks, 24:2 Smooth Sandstone, 4:0 Cobblestone
+  strand  1890 cells (12.5%)  13:0 Gravel, 1:0 Stone
+  foreshore  870 cells (5.7%)  13:0 Gravel, 12:0 Sand, 82:0 Clay, 1:0 Stone
 borders:
-  links | quay  516 cells
-  links | strand  165 cells
+  links | quay  306 cells
+  foreshore | strand  240 cells
+  links | strand  218 cells
+  foreshore | links  12 cells
+  quay | strand  6 cells
