@@ -49,8 +49,24 @@ Predicted before checking, scored before authoring.
 | `fable-mossgill` | 10 / **3.6** | 12 / **7.1** | 25 / **14** |
 | `opus5-millrace` | 8 / **0.9** | 2 / **8.0** | 35 / **20** |
 
-In the 3–8 band, so calibrated enough to proceed, with three biases worth writing down. I
-over-predicted scramble on all three — I was reading visual steepness on a heightmap where
+### The drill did not transfer, and it propagated a bias
+
+The scores are in the 3–8 band, and none of them changed an authoring decision. Nothing
+downstream consumes a predicted `scramble%`: a cliff is settled with `face`, a push with the
+arithmetic `RL6` measures, a flight with a transect. A figure read out of a built world is a
+diagnostic, and predicting it calibrates nothing.
+
+It also did measurable harm. I predicted high, wrote the bias into this report as the drill
+instructs, and Agent B reported: *"I over-corrected scramble downward after reading Agent A's
+upward bias."* Two agents, two wrong directions, the second caused by the first's report. Both
+of us were 2–4× high on faces, which the drill measured and neither of us learned from.
+
+One fact in it is worth keeping and is now a sentence in the warmup rather than an exercise:
+**barrier is not the tail of the scramble distribution.** The prediction exercise is replaced
+by reading two `showcase/` diffs against `02-theme`, which is one technique per map and
+therefore transfers to the next board directly.
+
+Three biases, recorded for the next reader. I over-predicted scramble on all three — I was reading visual steepness on a heightmap where
 1 char is 2–3 blocks and calling it scramble. I picked **mossgill** as the quiet-underfoot,
 most-impassable board; it is **millrace**, at 0.9% scramble and 8.0% barrier. Barrier is not
 the tail of the scramble distribution: it comes from vertical walls and shoreline, and the

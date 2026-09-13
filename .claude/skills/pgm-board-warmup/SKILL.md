@@ -1,14 +1,14 @@
 ---
 name: pgm-board-warmup
 description: The first ten minutes of an authoring run — what this repository costs to read,
-  what must never be opened, and one drill that checks whether a board can be read before one
-  is built. Load once, at the start of a run, before pgm-board.
+  what must never be opened, what a board is made of, and how its grounds are made to meet.
+  Load once, at the start of a run, before pgm-board.
 ---
 
 # Before the first board
 
-Two things, in order: what reading costs here, and one drill. Together they run about 15k
-tokens and ten minutes, and both are done before a plan is written.
+Two things, in order: what reading costs here, and what a board is made of. Together they run
+about 12k tokens and ten minutes, and both are done before a plan is written.
 
 ## 1. The budget, because this repository is larger than any context window
 
@@ -34,51 +34,111 @@ verdict is one line: `grep 'cells:' …/03-slopes.txt`.
 **`specs/` is split, and the split is the reading rule.** Fifteen boards sit flat and are worth
 reading; the other 111 are under `specs/archive/` — probes, experiments run to find the limit
 of one mechanism, early runs, superseded boards. **Nothing under `specs/archive/` is a model
-for anything.** It is kept as a record, and a board opened from it teaches whatever went wrong
-there. For one technique at a time, `showcase/` is smaller and directed, and is the right place
-over either.
+for anything.**
 
 When a *number* is wanted rather than an example, `GET /api/rules` and `GET /api/rules/terms`
 answer in one fetch and are greppable. That is cheaper than any board.
 
-## 2. The drill: predict three boards, then check
+## 2. A board is grounds that meet, and the meetings are the craft
 
-Three boards whose ground differs as much as anything in the flat set does. For each, read
-**only** `specs/<slug>/renders/02-heightmap.txt` — about 6k tokens for all three — and write
-down three numbers per board **before checking any of them**:
+**Decide what the board is about before deciding what it is made of, and keep it to one
+thing.** Write the sentence down. If it cannot be written, the board is not ready.
 
-- `scramble%` and `barrier%` — the share of cells that are a scramble, and that are barrier
-- how many **faces** the board has
+Then: a board is two or three or four *grounds*, each stated by the one instrument that can
+state it, and **every join between them is chosen rather than left over**. That is the whole
+technique, and it is what separates a board that reads as a place from a board that reads as
+one field with a gradient in it.
 
-| Board | |
-|---|---|
-| `opus5-alderfen` | a fen board |
-| `fable-mossgill` | a gill board |
-| `opus5-millrace` | a flooded basin |
+A shore board, worked all the way through, as the pattern to copy:
 
-Then check, at a cost of nothing:
+| the ground | stated by | why that instrument |
+|---|---|---|
+| the beach | a relief with flow — marks pinning only the waterline, `grain`, a low `step` | it has to read as deposited, so nothing is pinned that does not have to be |
+| the dunes behind it | **a second relief, on its own layer**, held a little higher | relief solves per layer and `ReliefFields` shifts each into world Y, so two reliefs can meet. One relief across both is one field, and no join at all |
+| the yard the houses stand on | a shape carrying `relief_scope: "exclude"` | `exclude` takes the footprint out of the solve, so the two tiers meet at a **face**. `hold` lets the relief bring the lower tier *up* to the shape, and then there is no step and no reason for a stair |
+| beach → dune | the two reliefs' own meeting, across the layer seam | the join has a shape because two fields made it |
+| dune → yard | an authored flight: `height_mode: "level"`, `anchor_heights`, `skirt: 0`, `keepClear: true`, a **`material`** rather than a theme, run **at least twice the rise** | a relief graded across the seam deletes the boundary; a flight states it |
+| yard → quay | a ramp of the same kind, or a **polyline** where the join is a wall | |
+
+**One map needn't be one ground.** Plains everywhere is not simplicity, it is one instrument.
+
+### The plan phase is small, and stays small
+
+**The plan states the arrangement and nothing else.** Two shapes it may take:
+
+- **three or four distinct height zones** as pieces, which the sketch then pulls into shape; or
+- **one rectangle**, with every landform authored downstream.
+
+A plan that grows a piece per landform is a plan whose paint will grow a theme per piece, and
+the board's look ends up decided by how it happened to be cut up. `firnline` is the worked
+failure: 13 pieces at 6 surface heights, then a theme per height.
+
+### What makes an area read as what it is
+
+The relief says where the ground goes. These say what the place is, and each one is placed
+because there is an answer to *why here*:
+
+- **a landmark sculpted out of layers** — `tools/sculpt/props.py` emits `dome`, `spire`,
+  `ring_wall`, `ellipse_wall`, `tapered_tower`, `arch`, `colonnade`, `ziggurat`, `bowl`,
+  `crenellated_wall`, `drum_tower` and a composite `gatehouse` as ordinary sketch shapes —
+  circles and polygons with a floor and a height, not stamped block soup. A lighthouse is a
+  `tapered_tower` under a `dome`; eight of the nine single forms cost one layer. Give the layer **`kind: "made"`** and
+  `part_of`, which keeps `SK10`'s pair walk and `SK11`'s reachability walk off it — a solid
+  standing in a hill has no gap to lose, and its roof is not a stair somebody forgot.
+- **tunnels, walls and undercrofts out of the same layers**, drawn as the complement of the
+  space rather than cut with a `subtract`: `SK13` reads a subtract as the board's negative
+  space and refuses any add that fills it, on any layer.
+- **copied trees rather than the vanilla stamp.** A `copied` recipe carries a `body` block for
+  block; `pgm-studio/tools/seed-trees.cs` files bodies out of a world into the library, and
+  `showcase/tree-showcase` is the world they come from. State them under names in
+  `dressing.styles` and let the placements name those — `specs/fable-millrace-revamp/trees.json`
+  is 22 of them, keyed the way its placements name them.
+- **boulders, which are stone** — stone, cobblestone, andesite, and nothing else.
+- **polylines for anything that flows.** The rasterizer splines a polyline's points before
+  offsetting the band, so four points draw as a curve: a wall, a lane, a watercourse.
+- **paths that are `solid`**, three blocks a reader cannot quite tell apart, running to a door.
+
+## 3. The ten minutes: read one showcase diff
+
+`showcase/` is one technique per map, and every one of them forks `02-theme` — a plain
+100 × 100 destroy board scoring 0 with no violation and no lint — changing **only** what its
+technique needs. The diff is therefore the lesson, with nothing else in it.
+
+Read `02-theme`'s finish, then the finish of the two showcases nearest the board about to be
+built. `06-ramp-and-slant`, `07-hill`, `08-cliff`, `09-mesa-and-hollow`, `10-landform-shapes`,
+`12-underpass`, `19-mountain-range`, `20-undercroft`, `21-wall-and-stair` are the ones that
+carry joins. Say what each diff changed before authoring anything.
+
+**Numbers off a finished board are a diagnostic, not a control.** `scramble%`, `barrier%` and
+the face count are read out of a built world, and no authoring decision is made against them:
+a cliff is settled with `face`, a push with the arithmetic `RL6` measures, a flight with a
+transect. Predicting them calibrates nothing, and a predicted figure written into a report
+becomes the next reader's bias.
+
+One fact about them is worth carrying anyway, because it is not what it looks like: **barrier
+is not the tail of the scramble distribution.** Scramble is ground a player climbs and barrier
+is ground a player cannot, and barrier comes from vertical walls and shoreline rather than from
+steepness — `opus5-millrace` is the quietest board on the shelf underfoot, at 0.9% scramble,
+and carries the most impassable ground in the set at 8.0% barrier.
+
+## 4. Before a board is called done, count its own instruments
+
+Run this over the spec that was just written. A zero is not a fault; **four zeros is a board
+that used one instrument and called it terrain.**
 
 ```bash
-for s in opus5-alderfen fable-mossgill opus5-millrace; do
-  echo "== $s"; grep -h 'cells:\|faces:' specs/$s/renders/03-slopes.txt
-done
+grep -c 'relief_scope'      specs/<slug>/build-spec.py   # built ground meeting grown ground
+grep -c '"polyline"'        specs/<slug>/build-spec.py   # anything that flows
+grep -c '"height_mode": "level"' specs/<slug>/build-spec.py   # joins that were chosen
+grep -c '"kind": "made"'    specs/<slug>/build-spec.py   # a landmark that is not terrain
+python3 -c "import json,sys;d=json.load(open(sys.argv[1]));print(len(d.get('relief',{})))" \
+        specs/<slug>/<slug>.finish.json                  # reliefs — more than one is a meeting
+grep -c '"copied"'          specs/<slug>/<slug>.finish.json   # corpus trees
 ```
 
-One of the three is quiet underfoot and still carries the most impassable ground in the set.
-A prediction that reads steepness and calls it passability will miss it, and missing it is the
-point: `scramble` is ground a player climbs and `barrier` is ground a player cannot, and a
-board is finished against the difference.
+And read `05-themes.txt`. A theme registered and not on the ground is a theme that painted
+nothing, and nothing anywhere raises a finding for it.
 
-**Score it and write the errors into the run's report before authoring anything.** Within 3
-percentage points on `scramble%` and `barrier%` is calibrated; outside 8 means the heightmap is
-not being read, and the answer is one more board and a second attempt rather than starting to
-build. A run that cannot predict a board it can see has no way to tell whether the board it
-builds is the board it intended.
+## 5. Stop
 
-*(The 3-and-8 bands are a first setting and are the author's to move once a few runs have
-scored.)*
-
-## 3. Stop
-
-Do not open a second render of any drill board, do not read their plans, and do not carry them
-forward as models — they are calibration, not reference. Load `pgm-board` and begin.
+Load `pgm-board` and begin.
