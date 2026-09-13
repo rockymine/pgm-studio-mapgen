@@ -1,0 +1,72 @@
+## spawn-blue (spawn) along x
+TRANSECT 41 stations from (-32, 94) to (8, 94), every 1
+  station        ground  surface  water  top  standing            step
+  (  -32,    94)      35       35           35                      
+  (  -31,    94)      35       35           35                      
+  (  -30,    94)      34       34           34                      -1
+  (  -29,    94)      33       33           33                      -1
+  (  -28,    94)      32       32           32                      -1
+  (  -27,    94)      30       30           30                      -2
+  (  -26,    94)      29       29           29                      -1
+  (  -25,    94)      28       28           28                      -1
+  (  -24,    94)      23       23           23                      DROP -5
+  (  -23,    94)      24       24           24                      +1
+  (  -22,    94)      24       24           24                      
+  (  -21,    94)      24       24           24                      
+  (  -20,    94)      24       24           34                      
+  (  -19,    94)      24       24           34  spawn spawn-1#1     
+  (  -18,    94)      24       24           34  spawn spawn-1#1     
+  (  -17,    94)      24       24           34  spawn spawn-1#1     
+  (  -16,    94)      24       24           34  spawn spawn-1#1     
+  (  -15,    94)      24       24           34  spawn spawn-1#1     
+  (  -14,    94)      24       24           34  spawn spawn-1#1     
+  (  -13,    94)      24       24           34  spawn spawn-1#1     
+  (  -12,    94)      24       24           34  spawn spawn-1#1     
+  (  -11,    94)      24       24           34  spawn spawn-1#1     
+  (  -10,    94)      24       24           34  spawn spawn-1#1     
+  (   -9,    94)      24       24           34  spawn spawn-1#1     
+  (   -8,    94)      24       24           34  spawn spawn-1#1     
+  (   -7,    94)      24       24           34  spawn spawn-1#1     
+  (   -6,    94)      24       24           34  spawn spawn-1#1     
+  (   -5,    94)      24       24           34                      
+  (   -4,    94)      24       24           24                      
+  (   -3,    94)      24       24           24                      
+  (   -2,    94)      24       24           24                      
+  (   -1,    94)      23       23           23                      -1
+  (    0,    94)      23       23           23                      
+  (    1,    94)      23       23           23                      
+  (    2,    94)      23       23           23                      
+  (    3,    94)      23       23           23                      
+  (    4,    94)      23       23           23                      
+  (    5,    94)      23       23           23                      
+  (    6,    94)      23       23           23                      
+  (    7,    94)      23       23           23                      
+  (    8,    94)      23       23           23                      
+rises 1, falls 8, worst step 5: 0 barrier, 0 scramble, 1 drop — DROP -5 at (-24, 94) | walked end to end
+beside: spawn spawn-1#1 at (-19, 92), stroke haul-road#1 at (-14, 92)
+
+## spawn-blue (spawn) along z
+TRANSECT 20 stations from (-12, 80) to (-12, 99), every 1
+  station        ground  surface  water  top  standing            step
+  (  -12,    80)      23       23           23                      
+  (  -12,    81)      23       23           23                      
+  (  -12,    82)      23       23           23                      
+  (  -12,    83)      23       23           23                      
+  (  -12,    84)      23       23           23                      
+  (  -12,    85)      23       23           23                      
+  (  -12,    86)      24       24           24                      +1
+  (  -12,    87)      24       24           24                      
+  (  -12,    88)      24       24           24  stroke haul-road#1  
+  (  -12,    89)      24       24           30  stroke haul-road#1  
+  (  -12,    90)      24       24           31  stroke haul-road#1  
+  (  -12,    91)      24       24           32  stroke haul-road#1  
+  (  -12,    92)      24       24           33  stroke haul-road#1  
+  (  -12,    93)      24       24           34  spawn spawn-1#1     
+  (  -12,    94)      24       24           34  spawn spawn-1#1     
+  (  -12,    95)      24       24           33  spawn spawn-1#1     
+  (  -12,    96)      24       24           32  spawn spawn-1#1     
+  (  -12,    97)      24       24           31  spawn spawn-1#1     
+  (  -12,    98)      24       24           30                      
+  (  -12,    99)      23       23           23                      -1
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke haul-road#1 at (-10, 85), spawn spawn-1#1 at (-14, 90)

@@ -1,0 +1,127 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Braidwater Ford"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 20,
+  "surface": 20
+ },
+ "pieces": [
+  {
+   "id": "head",
+   "role": "piece",
+   "rect": [
+    -13,
+    -28,
+    26,
+    5
+   ]
+  },
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    -3,
+    -27,
+    5,
+    4
+   ]
+  },
+  {
+   "id": "carr",
+   "role": "piece",
+   "rect": [
+    -13,
+    -23,
+    26,
+    9
+   ]
+  },
+  {
+   "id": "haugh",
+   "role": "piece",
+   "rect": [
+    -13,
+    -14,
+    26,
+    10
+   ]
+  },
+  {
+   "id": "braid-w",
+   "role": "piece",
+   "rect": [
+    -13,
+    -4,
+    9,
+    4
+   ]
+  },
+  {
+   "id": "braid-c",
+   "role": "piece",
+   "rect": [
+    -4,
+    -4,
+    8,
+    4
+   ]
+  },
+  {
+   "id": "braid-e",
+   "role": "piece",
+   "rect": [
+    4,
+    -4,
+    9,
+    4
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "water",
+   "rect": [
+    -13,
+    -5,
+    26,
+    10
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "camp",
+    "at": [
+     10,
+     8
+    ],
+    "facing": "back",
+    "footprint": [
+     2,
+     2,
+     16,
+     12
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "braidwater-stone",
+    "at": [
+     -26,
+     -58
+    ],
+    "style": "cube-4",
+    "materials": "ender stone",
+    "float": 4,
+    "name": "The Braidwater Stone"
+   }
+  ]
+ }
+}

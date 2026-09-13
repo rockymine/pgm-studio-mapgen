@@ -1,0 +1,61 @@
+## lynchet-core-0 (core) along x
+TRANSECT 25 stations from (-36, -50) to (-12, -50), every 1
+  station        ground  surface  water  top  standing            step
+  (  -36,   -50)      29       29           31  flora pasture-cover  
+  (  -35,   -50)      29       29           31  flora pasture-cover  
+  (  -34,   -50)      29       29           30  flora pasture-cover  
+  (  -33,   -50)      29       29           30  flora pasture-cover  
+  (  -32,   -50)      29       29           30  flora pasture-cover  
+  (  -31,   -50)      29       29           30  flora pasture-cover  
+  (  -30,   -50)      29       29           30  flora pasture-cover  
+  (  -29,   -50)      29       29           30  flora pasture-cover  
+  (  -28,   -50)      29       29           30  flora pasture-cover  
+  (  -27,   -50)      29       29           30  flora pasture-cover  
+  (  -26,   -50)      29       29           39  flora pasture-cover  
+  (  -25,   -50)      29       29     38    76  flora pasture-cover  
+  (  -24,   -50)      29       29     38    77  core lynchet-core   
+  (  -23,   -50)      29       29     38    76  core lynchet-core   
+  (  -22,   -50)      29       29           39  flora pasture-cover  
+  (  -21,   -50)      29       29           29                      
+  (  -20,   -50)      29       29           30  flora pasture-cover  
+  (  -19,   -50)      29       29           29                      
+  (  -18,   -50)      29       29           29                      
+  (  -17,   -50)      29       29           29                      
+  (  -16,   -50)      29       29           29                      
+  (  -15,   -50)      29       29           29                      
+  (  -14,   -50)      29       29           29                      
+  (  -13,   -50)      29       29           29                      
+  (  -12,   -50)      29       29           29                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora pasture-cover at (-38, -52), core lynchet-core at (-26, -52)
+
+## lynchet-core-0 (core) along z
+TRANSECT 25 stations from (-24, -62) to (-24, -38), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,   -62)      33       33           33  stroke headland-2   
+  (  -24,   -61)      33       33           33  stroke headland-2   
+  (  -24,   -60)      33       33           33  stroke headland-2   
+  (  -24,   -59)      33       33           33                      
+  (  -24,   -58)      33       33           33                      
+  (  -24,   -57)      33       33           33                      
+  (  -24,   -56)      33       33           33                      
+  (  -24,   -55)      33       33           33                      
+  (  -24,   -54)      33       33           33                      
+  (  -24,   -53)      27       27           27                      DROP -6
+  (  -24,   -52)      28       28           39  core lynchet-core   +1
+  (  -24,   -51)      29       29     38    76  flora pasture-cover  +1
+  (  -24,   -50)      29       29     38    77  core lynchet-core   
+  (  -24,   -49)      29       29     38    76  core lynchet-core   
+  (  -24,   -48)      29       29           39  flora pasture-cover  
+  (  -24,   -47)      29       29           30  flora pasture-cover  
+  (  -24,   -46)      29       29           30  flora pasture-cover  
+  (  -24,   -45)      29       29           30  flora pasture-cover  
+  (  -24,   -44)      29       29           29                      
+  (  -24,   -43)      29       29           31  flora pasture-cover  
+  (  -24,   -42)      29       29           30  flora pasture-cover  
+  (  -24,   -41)      29       29           30  flora pasture-cover  
+  (  -24,   -40)      29       29           30  flora pasture-cover  
+  (  -24,   -39)      29       29           29                      
+  (  -24,   -38)      29       29           29                      
+rises 2, falls 1, worst step 6: 0 barrier, 0 scramble, 1 drop — DROP -6 at (-24, -53) | walked end to end
+beside: stroke headland-2 at (-25, -63), core lynchet-core at (-26, -52), flora pasture-cover at (-26, -51)

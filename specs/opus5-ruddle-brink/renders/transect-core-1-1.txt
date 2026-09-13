@@ -1,0 +1,61 @@
+## core-1-1 (core) along x
+TRANSECT 25 stations from (9, 61) to (33, 61), every 1
+  station        ground  surface  water  top  standing            step
+  (    9,    61)      12       12           12                      
+  (   10,    61)      12       12           12                      
+  (   11,    61)      12       12           12                      
+  (   12,    61)      12       12           12                      
+  (   13,    61)      12       12           12                      
+  (   14,    61)      13       13           13                      +1
+  (   15,    61)      13       13           13                      
+  (   16,    61)      13       13           13                      
+  (   17,    61)      13       13           13                      
+  (   18,    61)      13       13           13                      
+  (   19,    61)      13       13           24  core core-1#1       
+  (   20,    61)      13       13     23    62  stroke haul-road#1  
+  (   21,    61)      13       13     23    63  stroke haul-road#1  
+  (   22,    61)      13       13     23    62  stroke haul-road#1  
+  (   23,    61)      13       13           24  core core-1#1       
+  (   24,    61)      13       13           13                      
+  (   25,    61)      13       13           13                      
+  (   26,    61)      13       13           13                      
+  (   27,    61)      13       13           13                      
+  (   28,    61)      13       13           13                      
+  (   29,    61)      13       13           13                      
+  (   30,    61)      13       13           13                      
+  (   31,    61)      13       13           13                      
+  (   32,    61)      12       12           12                      -1
+  (   33,    61)      12       12           12                      
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke haul-road#1 at (7, 59), core core-1#1 at (19, 61), boulder spall-0#1 at (30, 59)
+
+## core-1-1 (core) along z
+TRANSECT 25 stations from (21, 49) to (21, 73), every 1
+  station        ground  surface  water  top  standing            step
+  (   21,    49)      12       12           12                      
+  (   21,    50)      12       12           12                      
+  (   21,    51)      12       12           12                      
+  (   21,    52)      12       12           12                      
+  (   21,    53)      12       12           12                      
+  (   21,    54)      12       12           12                      
+  (   21,    55)      13       13           13                      +1
+  (   21,    56)      13       13           13                      
+  (   21,    57)      13       13           13                      
+  (   21,    58)      13       13           13  stroke haul-road#1  
+  (   21,    59)      13       13           24  stroke haul-road#1  
+  (   21,    60)      13       13     23    62  stroke haul-road#1  
+  (   21,    61)      13       13     23    63  stroke haul-road#1  
+  (   21,    62)      13       13     23    62  core core-1#1       
+  (   21,    63)      13       13           24  core core-1#1       
+  (   21,    64)      13       13           13                      
+  (   21,    65)      13       13           13                      
+  (   21,    66)      13       13           13                      
+  (   21,    67)      13       13           13                      
+  (   21,    68)      13       13           13                      
+  (   21,    69)      13       13           13                      
+  (   21,    70)      14       14           14                      +1
+  (   21,    71)      14       14           14                      
+  (   21,    72)      15       15           15                      +1
+  (   21,    73)      16       16           16                      +1
+rises 4, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke haul-road#1 at (19, 57), core core-1#1 at (19, 61)

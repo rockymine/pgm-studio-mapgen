@@ -1,0 +1,86 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Swallet Dale"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 12,
+  "observerY": 46
+ },
+ "pieces": [
+  {
+   "id": "dale",
+   "role": "piece",
+   "rect": [
+    -10,
+    -27,
+    20,
+    23
+   ]
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    2,
+    -30,
+    6,
+    3
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -10,
+    -4,
+    20,
+    8
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     12,
+     6
+    ],
+    "facing": "back",
+    "footprint": [
+     5,
+     2,
+     14,
+     8
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [],
+  "cores": [],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "piece": "dale",
+    "at": [
+     34,
+     38
+    ],
+    "layer": "ground",
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Swallet"
+   }
+  ]
+ },
+ "walls": [],
+ "boxes": []
+}

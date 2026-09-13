@@ -1,0 +1,61 @@
+## braidwater-stone-0 (destroyable) along x
+TRANSECT 25 stations from (-38, -58) to (-14, -58), every 1
+  station        ground  surface  water  top  standing            step
+  (  -38,   -58)      33       33           33                      
+  (  -37,   -58)      33       33           33                      
+  (  -36,   -58)      34       34           34                      +1
+  (  -35,   -58)      34       34           34                      
+  (  -34,   -58)      35       35           35                      +1
+  (  -33,   -58)      35       35           35                      
+  (  -32,   -58)      36       36           36                      +1
+  (  -31,   -58)      36       36           36                      
+  (  -30,   -58)      36       36           36                      
+  (  -29,   -58)      36       36           36                      
+  (  -28,   -58)      36       36           36  destroyable braidwater-stone  
+  (  -27,   -58)      36       36           71  destroyable braidwater-stone  
+  (  -26,   -58)      37       37           72  destroyable braidwater-stone  +1
+  (  -25,   -58)      37       37           71  destroyable braidwater-stone  
+  (  -24,   -58)      38       38           47  destroyable braidwater-stone  +1
+  (  -23,   -58)      38       38           38                      
+  (  -22,   -58)      38       38           38                      
+  (  -21,   -58)      38       38           38                      
+  (  -20,   -58)      38       38           38                      
+  (  -19,   -58)      37       37           37                      -1
+  (  -18,   -58)      37       37           37                      
+  (  -17,   -58)      37       37           37                      
+  (  -16,   -58)      37       37           37                      
+  (  -15,   -58)      37       37           37                      
+  (  -14,   -58)      37       37           37                      
+rises 5, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke ford-track-0 at (-40, -58), destroyable braidwater-stone at (-28, -60), boulder erratic-3 at (-13, -60)
+
+## braidwater-stone-0 (destroyable) along z
+TRANSECT 25 stations from (-26, -70) to (-26, -46), every 1
+  station        ground  surface  water  top  standing            step
+  (  -26,   -70)      35       35           35                      
+  (  -26,   -69)      35       35           35                      
+  (  -26,   -68)      35       35           35                      
+  (  -26,   -67)      35       35           35                      
+  (  -26,   -66)      35       35           35                      
+  (  -26,   -65)      35       35           35                      
+  (  -26,   -64)      35       35           35                      
+  (  -26,   -63)      38       38           38                      BARRIER +3
+  (  -26,   -62)      37       37           37                      -1
+  (  -26,   -61)      37       37           37                      
+  (  -26,   -60)      36       36           36  destroyable braidwater-stone  -1
+  (  -26,   -59)      36       36           71  destroyable braidwater-stone  
+  (  -26,   -58)      37       37           72  destroyable braidwater-stone  +1
+  (  -26,   -57)      37       37           71  destroyable braidwater-stone  
+  (  -26,   -56)      38       38           47  destroyable braidwater-stone  +1
+  (  -26,   -55)      38       38           38                      
+  (  -26,   -54)      38       38           38                      
+  (  -26,   -53)      38       38           38                      
+  (  -26,   -52)      38       38           38                      
+  (  -26,   -51)      37       37           37                      -1
+  (  -26,   -50)      37       37           37                      
+  (  -26,   -49)      37       37           37                      
+  (  -26,   -48)      37       37           37                      
+  (  -26,   -47)      37       37           37                      
+  (  -26,   -46)      38       38           38                      +1
+rises 4, falls 3, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (-26, -63) | walked end to end
+beside: destroyable braidwater-stone at (-28, -60)

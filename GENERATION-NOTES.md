@@ -1552,10 +1552,31 @@ Measured on `opus5-sandcaster`, whose lid over the workings is `relief_scope: "e
 punched holes. A transect at `z 51` read `x −50:0 −47:0 −44:0` against a reef surface of y21 four blocks
 away, and the same shapes re-authored as ordinary adds read `−50:21 −47:21 −44:21`.
 
-**So the form a brush takes is `operation: "add"`, `base_height: 1`, and no `override`.** Paint scopes to the
-smallest shape covering a cell, so the stroke still wins the colour; the height is decided by the taller add,
-so it can never lower what it is painted on. The one thing it must not do is hang over the void — a
-one-course add is the only shape on a cell with no ground under it, and there it builds a speck of bedrock.
+**A brush must declare a `height_mode`, and that is the whole of why it paints.** `ShapeScopeOwners` gives a
+cell to the smallest shape whose own top **equals** the tallest top there — `scopes && (standing || top ==
+held.Ground)` — so a one-course add at bedrock under twelve courses of terrain is never a candidate and paints
+nothing at all, in silence. `override: true` does not rescue it: only the *set* an override-add belongs to is
+privileged, and the scope test is the same. The exception is a **standing** shape, which
+`IsErected` defines as one declaring `height_mode` of `level`, `raise` or `sink`; a standing shape is always a
+candidate whatever its height. So the form a brush takes is:
+
+```json
+{ "id": "talus-1", "type": "polygon", "operation": "add",
+  "height_mode": "raise", "base_height": 0, "skirt": 0,
+  "vertices": [ … ], "theme": "scree" }
+```
+
+A `raise` of zero sits flush at the median ground under the patch and changes no height. Measured on
+`opus5-ruddle-brink`: three builds with `add` + `base_height: 1` and with `override: true` both read
+`themes/census` **1 theme, 100%**; the same patches with `height_mode` read **87.3% / 6.8% / 6.0%** with 376
+and 320 cells of drawn border. Nothing is raised in either case — **`05-themes.txt` is the only witness**, so
+read it on every board.
+
+**And a raise reads the MEDIAN of the ground under its footprint**, so a patch drawn across a slope flattens
+it to one height and reads as a plate. Draw a brush on ground that is already level, or expect a bench: on
+`opus5-skerry-wick` three-block benches came out as one-block steps for exactly this reason. The one thing a
+brush must not do is hang over the void — a one-course add is the only shape on a cell with no ground under
+it, and there it builds a speck of bedrock.
 
 For completeness, what the other three forms do to solved ground, all measured on `07-hill`:
 
@@ -1568,6 +1589,35 @@ For completeness, what the other three forms do to solved ground, all measured o
 
 This is the instrument a detailed surface is painted with — a drift of sand against rock, scree at the foot of
 a crag, mud in a hollow — and it is what a single large `voronoi` over a whole region is a substitute for.
+
+### A goal's `at` is in blocks, and naming no piece is not what loses its ratio
+
+`DestroyablePlacement.at` and `CorePlacement.at` are described as *"an [x, z] offset in half-blocks"*. They are
+read as **blocks** — from the piece's minimum corner where one is named, and from the symmetry centre where
+none is. Measured on `opus5-ruddle-brink` against `/plan/inspect`'s `goalDistances`:
+
+| the goal states | own | enemy | ratio |
+|---|---|---|---|
+| `piece: "fell"`, `at: [38, 42]` | 49 | 159 | 3.24 |
+| `piece: ""`, `at: [-22, -62]` | 49 | 159 | 3.24 |
+| `piece: ""`, `at: [-44, -124]` | null | null | null |
+
+The two readings are a factor of two apart and both answer 200, so the tell is the ratio rather than a
+finding. **A goal with no piece keeps its ratio perfectly well** — the `null`s in the third row are that
+position being off the board, not the missing piece — so a `null` ratio is a coordinate to check and never a
+reason to add a `piece`.
+
+### The intent carries no capture point, and the finish key for one reaches nothing
+
+`tools/README.md` documents `controlPoints` and `scoreLimit` as finish keys, and `drive.py` writes them onto
+`intent.controlPoints` / `intent.scoreLimit`. **`MapIntent` has neither field.** It carries `teams`,
+`maxPlayers`, `spawns`, `observer`, `build`, `waterLanes`, `wools`, `destroyables`, `cores`, `modes`, `meta`,
+`symmetry`, `islandTeams` and `structures`. `controlPoint` has no occurrence in `openapi.json`, no rule in
+`GET /api/rules`, no term in `/rules/terms`, and `MapParser` lists `control-points` as `CP/KOTH` among the
+elements the studio refuses to read. `PUT /map/{slug}/intent` answers the same two `RQ3` on a 200.
+
+So a capture board **stores at 200, pre-flights OPEN and exports a world with nothing to win**, and the two
+`RQ3` lines are the only report of it. Author hills as destroyables or cores until the intent grows the field.
 
 ## A mountain is a push. No mark can be one.
 

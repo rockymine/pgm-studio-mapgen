@@ -1,0 +1,59 @@
+## byre (house) along x
+TRANSECT 24 stations from (-52, -77) to (-29, -77), every 1
+  station        ground  surface  water  top  standing            step
+  (  -52,   -77)      33       33           33                      
+  (  -51,   -77)      33       33           33                      
+  (  -50,   -77)      33       33           35  flora pasture-cover  
+  (  -49,   -77)      33       33           34  flora pasture-cover  
+  (  -48,   -77)      33       33           33                      
+  (  -47,   -77)      33       33           40  house byre          
+  (  -46,   -77)      33       33           40  house byre          
+  (  -45,   -77)      33       33           40  house byre          
+  (  -44,   -77)      37       37           40  house byre          BARRIER +4
+  (  -43,   -77)      37       37           40  house byre          
+  (  -42,   -77)      37       37           40  house byre          
+  (  -41,   -77)      37       37           40  house byre          
+  (  -40,   -77)      37       37           40  house byre          
+  (  -39,   -77)      37       37           40  house byre          
+  (  -38,   -77)      37       37           40  house byre          
+  (  -37,   -77)      37       37           40  house byre          
+  (  -36,   -77)      37       37           40  house byre          
+  (  -35,   -77)      37       37           37                      
+  (  -34,   -77)      37       37           37                      
+  (  -33,   -77)      37       37           37                      
+  (  -32,   -77)      37       37           37                      
+  (  -31,   -77)      37       37           37                      
+  (  -30,   -77)      37       37           37                      
+  (  -29,   -77)      37       37           37                      
+rises 1, falls 0, worst step 4: 1 barrier, 0 scramble, 0 drop — BARRIER +4 at (-44, -77) | walked end to end
+beside: flora pasture-cover at (-50, -79), house byre at (-47, -79)
+
+## byre (house) along z
+TRANSECT 24 stations from (-42, -88) to (-42, -65), every 1
+  station        ground  surface  water  top  standing            step
+  (  -42,   -88)      36       36           36                      
+  (  -42,   -87)      36       36           36                      
+  (  -42,   -86)      36       36           36                      
+  (  -42,   -85)      36       36           36                      
+  (  -42,   -84)      37       37           37                      +1
+  (  -42,   -83)      37       37           37                      
+  (  -42,   -82)      37       37           37                      
+  (  -42,   -81)      37       37           42  house byre          
+  (  -42,   -80)      37       37           42  house byre          
+  (  -42,   -79)      37       37           41  house byre          
+  (  -42,   -78)      37       37           41  house byre          
+  (  -42,   -77)      37       37           40  house byre          
+  (  -42,   -76)      37       37           40  house byre          
+  (  -42,   -75)      37       37           39  house byre          
+  (  -42,   -74)      37       37           39  house byre          
+  (  -42,   -73)      37       37           38  house byre          
+  (  -42,   -72)      37       37           38  house byre          
+  (  -42,   -71)      37       37           37                      
+  (  -42,   -70)      37       37           37                      
+  (  -42,   -69)      31       31           31                      DROP -6
+  (  -42,   -68)      33       33           33                      scramble +2
+  (  -42,   -67)      33       33           33                      
+  (  -42,   -66)      33       33           34  flora pasture-cover  
+  (  -42,   -65)      33       33           35  flora pasture-cover  
+rises 2, falls 1, worst step 6: 0 barrier, 1 scramble, 1 drop — DROP -6 at (-42, -69); scramble +2 at (-42, -68) | walked end to end
+beside: house byre at (-44, -81), flora pasture-cover at (-44, -67), boulder clearance-2 at (-44, -65)

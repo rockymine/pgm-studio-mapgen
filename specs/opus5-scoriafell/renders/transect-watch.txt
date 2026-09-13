@@ -1,0 +1,57 @@
+## watch (house) along x
+TRANSECT 21 stations from (30, -84) to (50, -84), every 1
+  station        ground  surface  water  top  standing            step
+  (   30,   -84)      22       22           22                      
+  (   31,   -84)      22       22           22                      
+  (   32,   -84)      22       22           22                      
+  (   33,   -84)      22       22           22                      
+  (   34,   -84)      22       22           22                      
+  (   35,   -84)      22       22           22                      
+  (   36,   -84)      22       22           22                      
+  (   37,   -84)      22       22           28  house watch         
+  (   38,   -84)      22       22           28  house watch         
+  (   39,   -84)      22       22           29  house watch         
+  (   40,   -84)      22       22           29  house watch         
+  (   41,   -84)      22       22           30  house watch         
+  (   42,   -84)      22       22           30  house watch         
+  (   43,   -84)      22       22           30  house watch         
+  (   44,   -84)      22       22           29  house watch         
+  (   45,   -84)      22       22           29  house watch         
+  (   46,   -84)      22       22           28  house watch         
+  (   47,   -84)      22       22           28  house watch         
+  (   48,   -84)      22       22           22                      
+  (   49,   -84)      23       23           23                      +1
+  (   50,   -84)      23       23           23                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house watch at (37, -86)
+
+## watch (house) along z
+TRANSECT 25 stations from (42, -96) to (42, -72), every 1
+  station        ground  surface  water  top  standing            step
+  (   42,   -96)      23       23           23                      
+  (   42,   -95)      23       23           23                      
+  (   42,   -94)      23       23           23                      
+  (   42,   -93)      23       23           23                      
+  (   42,   -92)      23       23           23                      
+  (   42,   -91)      23       23           23                      
+  (   42,   -90)      23       23           23                      
+  (   42,   -89)      23       23           28  house watch         
+  (   42,   -88)      23       23           28  house watch         
+  (   42,   -87)      23       23           29  house watch         
+  (   42,   -86)      23       23           29  house watch         
+  (   42,   -85)      22       22           30  house watch         -1
+  (   42,   -84)      22       22           30  house watch         
+  (   42,   -83)      22       22           30  house watch         
+  (   42,   -82)      22       22           29  house watch         
+  (   42,   -81)      22       22           29  house watch         
+  (   42,   -80)      22       22           28  house watch         
+  (   42,   -79)      22       22           28  house watch         
+  (   42,   -78)      22       22           22                      
+  (   42,   -77)      22       22           22                      
+  (   42,   -76)      22       22           22                      
+  (   42,   -75)      22       22           22                      
+  (   42,   -74)      22       22           22                      
+  (   42,   -73)      22       22           22                      
+  (   42,   -72)      22       22           30  tree holt-5         
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house watch at (40, -89), tree holt-5 at (41, -72)

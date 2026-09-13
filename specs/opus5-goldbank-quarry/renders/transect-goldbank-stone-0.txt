@@ -1,0 +1,61 @@
+## goldbank-stone-0 (destroyable) along x
+TRANSECT 25 stations from (-44, -49) to (-20, -49), every 1
+  station        ground  surface  water  top  standing            step
+  (  -44,   -49)      17       17           17                      
+  (  -43,   -49)      17       17           17                      
+  (  -42,   -49)      18       18           18                      +1
+  (  -41,   -49)      18       18           18                      
+  (  -40,   -49)      18       18           18                      
+  (  -39,   -49)      19       19           19                      +1
+  (  -38,   -49)      19       19           19                      
+  (  -37,   -49)      19       19           19                      
+  (  -36,   -49)      20       20           20                      +1
+  (  -35,   -49)      20       20           20                      
+  (  -34,   -49)      21       21           21  destroyable goldbank-stone  +1
+  (  -33,   -49)      21       21           72  destroyable goldbank-stone  
+  (  -32,   -49)      21       21           73  destroyable goldbank-stone  
+  (  -31,   -49)      22       22           72  destroyable goldbank-stone  +1
+  (  -30,   -49)      22       22           30  destroyable goldbank-stone  
+  (  -29,   -49)      22       22           22                      
+  (  -28,   -49)      23       23           23                      +1
+  (  -27,   -49)      23       23           23                      
+  (  -26,   -49)      23       23           23                      
+  (  -25,   -49)      24       24           24                      +1
+  (  -24,   -49)      24       24           24                      
+  (  -23,   -49)      25       25           25                      +1
+  (  -22,   -49)      25       25           25                      
+  (  -21,   -49)      25       25           25                      
+  (  -20,   -49)      25       25           25                      
+rises 8, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable goldbank-stone at (-34, -51)
+
+## goldbank-stone-0 (destroyable) along z
+TRANSECT 25 stations from (-32, -61) to (-32, -37), every 1
+  station        ground  surface  water  top  standing            step
+  (  -32,   -61)      25       25           25                      
+  (  -32,   -60)      26       26           26                      +1
+  (  -32,   -59)      26       26           26                      
+  (  -32,   -58)      26       26           26                      
+  (  -32,   -57)      26       26           26                      
+  (  -32,   -56)      24       24           24                      -2
+  (  -32,   -55)      21       21           21                      -3
+  (  -32,   -54)      21       21           21                      
+  (  -32,   -53)      21       21           21                      
+  (  -32,   -52)      21       21           21                      
+  (  -32,   -51)      21       21           21  destroyable goldbank-stone  
+  (  -32,   -50)      21       21           72  destroyable goldbank-stone  
+  (  -32,   -49)      21       21           73  destroyable goldbank-stone  
+  (  -32,   -48)      21       21           72  destroyable goldbank-stone  
+  (  -32,   -47)      21       21           30  destroyable goldbank-stone  
+  (  -32,   -46)      21       21           21                      
+  (  -32,   -45)      21       21           21                      
+  (  -32,   -44)      21       21           21                      
+  (  -32,   -43)      21       21           21                      
+  (  -32,   -42)      21       21           21                      
+  (  -32,   -41)      21       21           21                      
+  (  -32,   -40)      21       21           21                      
+  (  -32,   -39)      21       21           21                      
+  (  -32,   -38)      21       21           21                      
+  (  -32,   -37)      21       21           21                      
+rises 1, falls 2, worst step 3: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder spoil-1 at (-30, -63), destroyable goldbank-stone at (-34, -51)

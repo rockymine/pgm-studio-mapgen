@@ -1,0 +1,172 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 20,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -2,
+    "y": 20,
+    "z": -92
+   },
+   "protection": [
+    {
+     "minX": -12,
+     "minZ": -100,
+     "maxX": 8,
+     "maxZ": -84
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -10,
+    "minZ": -98,
+    "maxX": 6,
+    "maxZ": -86
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 2,
+    "y": 20,
+    "z": 92
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": 84,
+     "maxX": 12,
+     "maxZ": 100
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": -6,
+    "minZ": 86,
+    "maxX": 10,
+    "maxZ": 98
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 35,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -52,
+    "minZ": -24,
+    "maxX": 52,
+    "maxZ": 24
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "lynchet-core",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Brow Core",
+   "anchor": {
+    "x": -24,
+    "y": 20,
+    "z": -50
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 5,
+   "leak": 4,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "lynchet-core",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Brow Core",
+   "anchor": {
+    "x": 23,
+    "y": 20,
+    "z": 49
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 5,
+   "leak": 4,
+   "box": null,
+   "digDepth": 0
+  }
+ ],
+ "modes": null,
+ "gamemodes": [
+  "dtc"
+ ],
+ "meta": {
+  "name": "Lynchet Brow",
+  "created": "2026-09-12",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

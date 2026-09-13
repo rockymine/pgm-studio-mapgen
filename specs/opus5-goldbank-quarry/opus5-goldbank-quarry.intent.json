@@ -1,0 +1,168 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 20,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -2,
+    "y": 32,
+    "z": -84
+   },
+   "protection": [
+    {
+     "minX": -12,
+     "minZ": -92,
+     "maxX": 8,
+     "maxZ": -76
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": -10,
+    "minZ": -90,
+    "maxX": 6,
+    "maxZ": -78
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 2,
+    "y": 32,
+    "z": 84
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": 76,
+     "maxX": 12,
+     "maxZ": 92
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -6,
+    "minZ": 78,
+    "maxX": 10,
+    "maxZ": 90
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 47,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -52,
+    "minZ": -28,
+    "maxX": 52,
+    "maxZ": 28
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "goldbank-stone",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Goldbank Stone",
+   "style": "cube-4",
+   "materials": "ender stone",
+   "repairable": false,
+   "anchor": {
+    "x": -32,
+    "y": 32,
+    "z": -49
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "goldbank-stone",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Goldbank Stone",
+   "style": "cube-4",
+   "materials": "ender stone",
+   "repairable": false,
+   "anchor": {
+    "x": 30,
+    "y": 32,
+    "z": 47
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Goldbank Quarry",
+  "created": "2026-09-12",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

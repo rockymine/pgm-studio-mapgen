@@ -1,0 +1,76 @@
+## braid-c (water) along x
+TRANSECT 26 stations from (-52, -10) to (-27, -10), every 1
+  station        ground  surface  water  top  standing            step
+  (  -52,   -10)       7        7     13    13  water braid-c       
+  (  -51,   -10)      14       14     13    13  water braid-c       BARRIER +7
+  (  -50,   -10)      14       14     13    13  water braid-c       
+  (  -49,   -10)      14       14     13    13  water braid-c       
+  (  -48,   -10)      14       14     13    13  water braid-c       
+  (  -47,   -10)      14       14     13    13  water braid-c       
+  (  -46,   -10)      14       14     13    13  water braid-c       
+  (  -45,   -10)      14       14     13    13  water braid-c       
+  (  -44,   -10)      14       14     13    13  water braid-c       
+  (  -43,   -10)      14       14     13    13  water braid-c       
+  (  -42,   -10)      14       14     13    13  water braid-c       
+  (  -41,   -10)      14       14     13    13  water braid-c       
+  (  -40,   -10)      15       15     13    13  water braid-c       +1
+  (  -39,   -10)      15       15     13    13  water braid-c       
+  (  -38,   -10)      15       15           15  water braid-c       
+  (  -37,   -10)      15       15           15                      
+  (  -36,   -10)      15       15           15                      
+  (  -35,   -10)      15       15           15  water braid-a       
+  (  -34,   -10)      15       15     13    13  water braid-a       
+  (  -33,   -10)      14       14     13    13  water braid-a       -1
+  (  -32,   -10)      14       14     13    13  water braid-a       
+  (  -31,   -10)      14       14     13    13  water braid-a       
+  (  -30,   -10)      14       14     13    13  water braid-a       
+  (  -29,   -10)      14       14     13    13  water braid-a       
+  (  -28,   -10)      14       14     13    13  water braid-a       
+  (  -27,   -10)      14       14     13    13  water braid-a       
+rises 2, falls 1, worst step 7: 1 barrier, 0 scramble, 0 drop — BARRIER +7 at (-51, -10) | walked end to end
+beside: water braid-c at (-52, -12), water braid-a at (-36, -12)
+
+## braid-c (water) along z
+TRANSECT 39 stations from (-46, -29) to (-46, 9), every 1
+  station        ground  surface  water  top  standing            step
+  (  -46,   -29)      22       22           34  tree alder-1        
+  (  -46,   -28)      22       22           33  tree alder-0        
+  (  -46,   -27)      22       22           34  tree alder-0        
+  (  -46,   -26)      22       22           34  tree alder-0        
+  (  -46,   -25)      22       22           34  tree alder-0        
+  (  -46,   -24)      22       22           32  tree alder-0        
+  (  -46,   -23)      22       22           31  tree alder-0        
+  (  -46,   -22)      22       22           22                      
+  (  -46,   -21)      22       22           22                      
+  (  -46,   -20)      22       22           22                      
+  (  -46,   -19)      22       22           22                      
+  (  -46,   -18)      18       18           18  water braid-c       DROP -4
+  (  -46,   -17)      15       15           15  water braid-c       -3
+  (  -46,   -16)      13       13     13    13  water braid-c       -2
+  (  -46,   -15)      13       13     13    13  water braid-c       
+  (  -46,   -14)      13       13     13    13  water braid-c       
+  (  -46,   -13)      13       13     13    13  water braid-c       
+  (  -46,   -12)      14       14     13    13  water braid-c       +1
+  (  -46,   -11)      14       14     13    13  water braid-c       
+  (  -46,   -10)      14       14     13    13  water braid-c       
+  (  -46,    -9)      14       14     13    13  water braid-c       
+  (  -46,    -8)      14       14     13    13  water braid-c       
+  (  -46,    -7)      14       14     13    13  water braid-c       
+  (  -46,    -6)      14       14     13    13  water braid-c       
+  (  -46,    -5)      14       14     13    13  water braid-c       
+  (  -46,    -4)      13       13     13    13  water braid-c       -1
+  (  -46,    -3)      13       13           13  water braid-c       
+  (  -46,    -2)      13       13           13                      
+  (  -46,    -1)      13       13           13                      
+  (  -46,     0)      13       13           13                      
+  (  -46,     1)      13       13           13                      
+  (  -46,     2)      13       13           13                      
+  (  -46,     3)      13       13           13                      
+  (  -46,     4)      13       13           13                      
+  (  -46,     5)      13       13           13                      
+  (  -46,     6)      13       13           13                      
+  (  -46,     7)      13       13           13                      
+  (  -46,     8)      13       13           13                      
+  (  -46,     9)      13       13           13                      
+rises 1, falls 4, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-46, -18) | walked end to end
+beside: tree alder-4 at (-48, -31), tree alder-1 at (-46, -31), tree alder-0 at (-48, -29), water braid-c at (-48, -20)

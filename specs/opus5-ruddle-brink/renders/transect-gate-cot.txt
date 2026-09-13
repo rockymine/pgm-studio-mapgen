@@ -1,0 +1,60 @@
+## gate-cot (house) along x
+TRANSECT 25 stations from (16, -84) to (40, -84), every 1
+  station        ground  surface  water  top  standing            step
+  (   16,   -84)      23       23           23                      
+  (   17,   -84)      23       23           23                      
+  (   18,   -84)      23       23           23                      
+  (   19,   -84)      23       23           23                      
+  (   20,   -84)      24       24           24                      +1
+  (   21,   -84)      24       24           24                      
+  (   22,   -84)      24       24           24                      
+  (   23,   -84)      24       24           32  house gate-cot      
+  (   24,   -84)      24       24           32  house gate-cot      
+  (   25,   -84)      24       24           32  house gate-cot      
+  (   26,   -84)      24       24           32  house gate-cot      
+  (   27,   -84)      24       24           32  house gate-cot      
+  (   28,   -84)      24       24           32  house gate-cot      
+  (   29,   -84)      24       24           32  house gate-cot      
+  (   30,   -84)      24       24           32  house gate-cot      
+  (   31,   -84)      24       24           32  house gate-cot      
+  (   32,   -84)      24       24           32  house gate-cot      
+  (   33,   -84)      24       24           32  house gate-cot      
+  (   34,   -84)      24       24           24                      
+  (   35,   -84)      25       25           25                      +1
+  (   36,   -84)      24       24           24                      -1
+  (   37,   -84)      24       24           24                      
+  (   38,   -84)      23       23           23                      -1
+  (   39,   -84)      23       23           23                      
+  (   40,   -84)      23       23           23                      
+rises 2, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house gate-cot at (23, -86)
+
+## gate-cot (house) along z
+TRANSECT 24 stations from (28, -95) to (28, -72), every 1
+  station        ground  surface  water  top  standing            step
+  (   28,   -95)      33       33           33                      
+  (   28,   -94)      33       33           33                      
+  (   28,   -93)      33       33           33                      
+  (   28,   -92)      31       31           31                      -2
+  (   28,   -91)      30       30           30                      -1
+  (   28,   -90)      30       30           30                      
+  (   28,   -89)      27       27           27                      -3
+  (   28,   -88)      25       25           28  house gate-cot      -2
+  (   28,   -87)      24       24           29  house gate-cot      -1
+  (   28,   -86)      24       24           30  house gate-cot      
+  (   28,   -85)      23       23           31  house gate-cot      -1
+  (   28,   -84)      24       24           32  house gate-cot      +1
+  (   28,   -83)      24       24           32  house gate-cot      
+  (   28,   -82)      24       24           31  house gate-cot      
+  (   28,   -81)      24       24           30  house gate-cot      
+  (   28,   -80)      24       24           29  house gate-cot      
+  (   28,   -79)      23       23           28  house gate-cot      -1
+  (   28,   -78)      23       23           23                      
+  (   28,   -77)      23       23           23                      
+  (   28,   -76)      23       23           23                      
+  (   28,   -75)      22       22           22                      -1
+  (   28,   -74)      22       22           22                      
+  (   28,   -73)      21       21           21                      -1
+  (   28,   -72)      21       21           21                      
+rises 1, falls 9, worst step 3: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house gate-cot at (26, -88)

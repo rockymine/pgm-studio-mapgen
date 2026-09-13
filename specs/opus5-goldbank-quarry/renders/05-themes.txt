@@ -1,0 +1,8 @@
+THEMES  3 themes over 23296 ground cells, 14 distinct surface blocks
+  goldmoor  11335 cells (48.7%)  2:0 Grass Block, 24:0 Sandstone, 3:1 Coarse Dirt, 13:0 Gravel, 98:0 Stone Bricks, 121:0 End Stone, 5:1 Spruce Planks, 24:2 Smooth Sandstone, 17:1 Spruce Log, 35:14 Red Wool, 35:11 Blue Wool, 65:3 Ladder
+  quarrypit  8755 cells (37.6%)  13:0 Gravel, 12:0 Sand, 121:0 End Stone, 98:0 Stone Bricks, 24:0 Sandstone, 24:2 Smooth Sandstone, 2:0 Grass Block, 5:1 Spruce Planks
+  quarryface  3206 cells (13.8%)  13:0 Gravel, 24:0 Sandstone, 24:2 Smooth Sandstone, 98:0 Stone Bricks, 2:0 Grass Block, 121:0 End Stone, 5:1 Spruce Planks, 17:1 Spruce Log
+borders:
+  goldmoor | quarryface  1202 cells
+  goldmoor | quarrypit  528 cells
+  quarryface | quarrypit  32 cells

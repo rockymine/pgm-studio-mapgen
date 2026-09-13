@@ -1,0 +1,61 @@
+## bomb-9 (boulder) along x
+TRANSECT 25 stations from (18, -60) to (42, -60), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,   -60)      23       23           23                      
+  (   19,   -60)      23       23           23                      
+  (   20,   -60)      23       23           23                      
+  (   21,   -60)      23       23           23                      
+  (   22,   -60)      23       23           23                      
+  (   23,   -60)      23       23           23                      
+  (   24,   -60)      23       23           23                      
+  (   25,   -60)      23       23           25  boulder bomb-9      
+  (   26,   -60)      23       23           27  boulder bomb-9      
+  (   27,   -60)      23       23           28  boulder bomb-9      
+  (   28,   -60)      23       23           29  boulder bomb-9      
+  (   29,   -60)      23       23           29  boulder bomb-9      
+  (   30,   -60)      23       23           29  boulder bomb-9      
+  (   31,   -60)      23       23           29  boulder bomb-9      
+  (   32,   -60)      23       23           29  boulder bomb-9      
+  (   33,   -60)      23       23           28  boulder bomb-9      
+  (   34,   -60)      23       23           27  boulder bomb-9      
+  (   35,   -60)      23       23           23                      
+  (   36,   -60)      23       23           23                      
+  (   37,   -60)      23       23           23                      
+  (   38,   -60)      23       23           23                      
+  (   39,   -60)      23       23           23                      
+  (   40,   -60)      22       22           22                      -1
+  (   41,   -60)      22       22           22                      
+  (   42,   -60)      22       22           22                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder bomb-9 at (25, -61), tree holt-7 at (44, -59)
+
+## bomb-9 (boulder) along z
+TRANSECT 25 stations from (30, -72) to (30, -48), every 1
+  station        ground  surface  water  top  standing            step
+  (   30,   -72)      23       23           23                      
+  (   30,   -71)      23       23           23  stroke dale-track   
+  (   30,   -70)      23       23           23  stroke dale-track   
+  (   30,   -69)      23       23           23                      
+  (   30,   -68)      23       23           23                      
+  (   30,   -67)      23       23           23                      
+  (   30,   -66)      23       23           23                      
+  (   30,   -65)      23       23           23                      
+  (   30,   -64)      23       23           26  boulder bomb-9      
+  (   30,   -63)      23       23           28  boulder bomb-9      
+  (   30,   -62)      23       23           29  boulder bomb-9      
+  (   30,   -61)      23       23           29  boulder bomb-9      
+  (   30,   -60)      23       23           29  boulder bomb-9      
+  (   30,   -59)      23       23           29  boulder bomb-9      
+  (   30,   -58)      22       22           29  boulder bomb-9      -1
+  (   30,   -57)      22       22           28  boulder bomb-9      
+  (   30,   -56)      23       23           27  boulder bomb-9      +1
+  (   30,   -55)      23       23           24  boulder bomb-9      
+  (   30,   -54)      23       23           23                      
+  (   30,   -53)      23       23           23                      
+  (   30,   -52)      23       23           23                      
+  (   30,   -51)      23       23           23                      
+  (   30,   -50)      23       23           23                      
+  (   30,   -49)      23       23           23                      
+  (   30,   -48)      23       23           23                      
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke dale-track at (32, -74), boulder bomb-9 at (28, -64)

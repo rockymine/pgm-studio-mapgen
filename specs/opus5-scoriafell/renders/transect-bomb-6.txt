@@ -1,0 +1,61 @@
+## bomb-6 (boulder) along x
+TRANSECT 25 stations from (-42, -14) to (-18, -14), every 1
+  station        ground  surface  water  top  standing            step
+  (  -42,   -14)      45       45           45                      
+  (  -41,   -14)      45       45           45                      
+  (  -40,   -14)      45       45           45                      
+  (  -39,   -14)      46       46           46                      +1
+  (  -38,   -14)      46       46           46                      
+  (  -37,   -14)      46       46           46                      
+  (  -36,   -14)      46       46           46                      
+  (  -35,   -14)      46       46           46                      
+  (  -34,   -14)      46       46           46                      
+  (  -33,   -14)      45       45           45  boulder bomb-6      -1
+  (  -32,   -14)      45       45           46  boulder bomb-6      
+  (  -31,   -14)      45       45           47  boulder bomb-6      
+  (  -30,   -14)      45       45           47  boulder bomb-6      
+  (  -29,   -14)      45       45           47  boulder bomb-6      
+  (  -28,   -14)      44       44           46  boulder bomb-6      -1
+  (  -27,   -14)      42       42           46  boulder bomb-6      -2
+  (  -26,   -14)      41       41           41                      -1
+  (  -25,   -14)      41       41           41                      
+  (  -24,   -14)      41       41           41                      
+  (  -23,   -14)      40       40           40                      -1
+  (  -22,   -14)      39       39           39                      -1
+  (  -21,   -14)      40       40           40                      +1
+  (  -20,   -14)      40       40           40                      
+  (  -19,   -14)      39       39           39                      -1
+  (  -18,   -14)      36       36           36                      -3
+rises 2, falls 8, worst step 3: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder bomb-6 at (-33, -16)
+
+## bomb-6 (boulder) along z
+TRANSECT 25 stations from (-30, -26) to (-30, -2), every 1
+  station        ground  surface  water  top  standing            step
+  (  -30,   -26)      25       25           25                      
+  (  -30,   -25)      26       26           26                      +1
+  (  -30,   -24)      27       27           27                      +1
+  (  -30,   -23)      29       29           29                      scramble +2
+  (  -30,   -22)      30       30           30                      +1
+  (  -30,   -21)      31       31           31                      +1
+  (  -30,   -20)      32       32           32                      +1
+  (  -30,   -19)      34       34           34                      scramble +2
+  (  -30,   -18)      36       36           44  boulder bomb-6      scramble +2
+  (  -30,   -17)      39       39           46  boulder bomb-6      BARRIER +3
+  (  -30,   -16)      41       41           46  boulder bomb-6      scramble +2
+  (  -30,   -15)      43       43           47  boulder bomb-6      scramble +2
+  (  -30,   -14)      45       45           47  boulder bomb-6      scramble +2
+  (  -30,   -13)      46       46           47  boulder bomb-6      +1
+  (  -30,   -12)      46       46           46  boulder bomb-6      
+  (  -30,   -11)      47       47           47                      +1
+  (  -30,   -10)      48       48           48                      +1
+  (  -30,    -9)      50       50           50                      scramble +2
+  (  -30,    -8)      52       52           52                      scramble +2
+  (  -30,    -7)      54       54           54                      scramble +2
+  (  -30,    -6)      55       55           55                      +1
+  (  -30,    -5)      56       56           56                      +1
+  (  -30,    -4)      58       58           58                      scramble +2
+  (  -30,    -3)      60       60           60                      scramble +2
+  (  -30,    -2)      61       61           61                      +1
+rises 23, falls 0, worst step 3: 1 barrier, 11 scramble, 0 drop — scramble +2 at (-30, -23); scramble +2 at (-30, -19); scramble +2 at (-30, -18); BARRIER +3 at (-30, -17); scramble +2 at (-30, -16); scramble +2 at (-30, -15); scramble +2 at (-30, -14); scramble +2 at (-30, -9); scramble +2 at (-30, -8); scramble +2 at (-30, -7); scramble +2 at (-30, -4); scramble +2 at (-30, -3) | walked end to end
+beside: boulder bomb-6 at (-31, -18)

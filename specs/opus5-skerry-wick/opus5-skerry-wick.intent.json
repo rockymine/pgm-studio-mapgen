@@ -1,0 +1,271 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -23,
+    "y": 14,
+    "z": -90
+   },
+   "protection": [
+    {
+     "minX": -45,
+     "minZ": -95,
+     "maxX": -20,
+     "maxZ": -85
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -41,
+    "minZ": -94,
+    "maxX": -25,
+    "maxZ": -86
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 23,
+    "y": 14,
+    "z": 90
+   },
+   "protection": [
+    {
+     "minX": 20,
+     "minZ": 85,
+     "maxX": 45,
+     "maxZ": 95
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": 25,
+    "minZ": 86,
+    "maxX": 41,
+    "maxZ": 94
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 44,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -35,
+    "minZ": -10,
+    "maxX": 35,
+    "maxZ": 10
+   },
+   {
+    "minX": -55,
+    "minZ": -75,
+    "maxX": 20,
+    "maxZ": -30
+   },
+   {
+    "minX": -20,
+    "minZ": 30,
+    "maxX": 55,
+    "maxZ": 75
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-far",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "protection": [
+    {
+     "minX": -55,
+     "minZ": -60,
+     "maxX": -35,
+     "maxZ": -40
+    }
+   ],
+   "spawn": {
+    "x": -45,
+    "y": 14,
+    "z": -50
+   },
+   "monuments": [],
+   "footprint": {
+    "minX": -50,
+    "minZ": -55,
+    "maxX": -40,
+    "maxZ": -45
+   },
+   "entries": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-near",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "orange",
+   "protection": [
+    {
+     "minX": 0,
+     "minZ": -65,
+     "maxX": 20,
+     "maxZ": -45
+    }
+   ],
+   "spawn": {
+    "x": 10,
+    "y": 14,
+    "z": -55
+   },
+   "monuments": [],
+   "footprint": {
+    "minX": 5,
+    "minZ": -60,
+    "maxX": 15,
+    "maxZ": -50
+   },
+   "entries": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-far",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "protection": [
+    {
+     "minX": 35,
+     "minZ": 40,
+     "maxX": 55,
+     "maxZ": 60
+    }
+   ],
+   "spawn": {
+    "x": 45,
+    "y": 14,
+    "z": 50
+   },
+   "monuments": [],
+   "footprint": {
+    "minX": 40,
+    "minZ": 45,
+    "maxX": 50,
+    "maxZ": 55
+   },
+   "entries": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-near",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "light_blue",
+   "protection": [
+    {
+     "minX": -20,
+     "minZ": 45,
+     "maxX": 0,
+     "maxZ": 65
+    }
+   ],
+   "spawn": {
+    "x": -10,
+    "y": 14,
+    "z": 55
+   },
+   "monuments": [],
+   "footprint": {
+    "minX": -15,
+    "minZ": 50,
+    "maxX": -5,
+    "maxZ": 60
+   },
+   "entries": []
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "modes": null,
+ "gamemodes": [
+  "ctw"
+ ],
+ "meta": {
+  "name": "Skerry Wick",
+  "created": "2026-09-12",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue",
+  "3": "neutral",
+  "4": "neutral",
+  "5": "red",
+  "6": "blue",
+  "7": "blue",
+  "8": "red"
+ },
+ "structures": null
+}

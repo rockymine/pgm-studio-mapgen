@@ -1,0 +1,67 @@
+## winding-house (house) along x
+TRANSECT 29 stations from (-2, -79) to (26, -79), every 1
+  station        ground  surface  water  top  standing            step
+  (   -2,   -79)      31       31           43  spawn spawn-1       
+  (   -1,   -79)      31       31           43  spawn spawn-1       
+  (    0,   -79)      31       31           43  spawn spawn-1       
+  (    1,   -79)      31       31           43  spawn spawn-1       
+  (    2,   -79)      31       31           43  spawn spawn-1       
+  (    3,   -79)      31       31           43  spawn spawn-1       
+  (    4,   -79)      31       31           43  spawn spawn-1       
+  (    5,   -79)      31       31           45  house winding-house  
+  (    6,   -79)      31       31           45  house winding-house  
+  (    7,   -79)      31       31           45  house winding-house  
+  (    8,   -79)      31       31           45  house winding-house  
+  (    9,   -79)      31       31           45  house winding-house  
+  (   10,   -79)      31       31           45  house winding-house  
+  (   11,   -79)      31       31           45  house winding-house  
+  (   12,   -79)      31       31           45  house winding-house  
+  (   13,   -79)      31       31           45  house winding-house  
+  (   14,   -79)      31       31           45  house winding-house  
+  (   15,   -79)      31       31           45  house winding-house  
+  (   16,   -79)      31       31           45  house winding-house  
+  (   17,   -79)      31       31           45  house winding-house  
+  (   18,   -79)      31       31           45  house winding-house  
+  (   19,   -79)      31       31           45  house winding-house  
+  (   20,   -79)      31       31           31                      
+  (   21,   -79)      31       31           31                      
+  (   22,   -79)      31       31           31                      
+  (   23,   -79)      31       31           31                      
+  (   24,   -79)      31       31           31                      
+  (   25,   -79)      31       31           31                      
+  (   26,   -79)      31       31           31                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (-4, -81), house winding-house at (5, -81)
+
+## winding-house (house) along z
+TRANSECT 27 stations from (12, -92) to (12, -66), every 1
+  station        ground  surface  water  top  standing            step
+  (   12,   -92)      32       32           32                      
+  (   12,   -91)      32       32           32                      
+  (   12,   -90)      32       32           32                      
+  (   12,   -89)      32       32           32  stroke turf-1       
+  (   12,   -88)      32       32           32  stroke turf-1       
+  (   12,   -87)      32       32           32                      
+  (   12,   -86)      32       32           32  stroke turf-1       
+  (   12,   -85)      32       32           42  house winding-house  
+  (   12,   -84)      32       32           42  house winding-house  
+  (   12,   -83)      32       32           43  house winding-house  
+  (   12,   -82)      32       32           43  house winding-house  
+  (   12,   -81)      32       32           44  house winding-house  
+  (   12,   -80)      31       31           44  house winding-house  -1
+  (   12,   -79)      31       31           45  house winding-house  
+  (   12,   -78)      31       31           44  house winding-house  
+  (   12,   -77)      31       31           44  house winding-house  
+  (   12,   -76)      31       31           43  house winding-house  
+  (   12,   -75)      31       31           43  house winding-house  
+  (   12,   -74)      32       32           42  house winding-house  +1
+  (   12,   -73)      32       32           42  house winding-house  
+  (   12,   -72)      32       32           32                      
+  (   12,   -71)      32       32           32                      
+  (   12,   -70)      30       30           30                      -2
+  (   12,   -69)      28       28           28                      -2
+  (   12,   -68)      28       28           28                      
+  (   12,   -67)      28       28           28                      
+  (   12,   -66)      28       28           28                      
+rises 1, falls 3, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke turf-1 at (14, -90), house winding-house at (10, -85), stroke haul-road at (13, -65)

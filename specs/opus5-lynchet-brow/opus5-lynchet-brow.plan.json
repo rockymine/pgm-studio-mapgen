@@ -1,0 +1,148 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Lynchet Brow"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 20,
+  "surface": 20
+ },
+ "pieces": [
+  {
+   "id": "brow",
+   "role": "piece",
+   "rect": [
+    -13,
+    -26,
+    26,
+    5
+   ]
+  },
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    -3,
+    -25,
+    5,
+    4
+   ]
+  },
+  {
+   "id": "lynch4",
+   "role": "piece",
+   "rect": [
+    -13,
+    -21,
+    26,
+    4
+   ]
+  },
+  {
+   "id": "lynch3",
+   "role": "piece",
+   "rect": [
+    -13,
+    -17,
+    26,
+    4
+   ]
+  },
+  {
+   "id": "lynch2",
+   "role": "piece",
+   "rect": [
+    -13,
+    -13,
+    26,
+    4
+   ]
+  },
+  {
+   "id": "lynch1",
+   "role": "piece",
+   "rect": [
+    -13,
+    -9,
+    26,
+    4
+   ]
+  },
+  {
+   "id": "holm",
+   "role": "piece",
+   "rect": [
+    -8,
+    -5,
+    16,
+    5
+   ]
+  },
+  {
+   "id": "ing-w",
+   "role": "piece",
+   "rect": [
+    -13,
+    -5,
+    5,
+    5
+   ]
+  },
+  {
+   "id": "ing-e",
+   "role": "piece",
+   "rect": [
+    8,
+    -5,
+    5,
+    5
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "bottom",
+   "rect": [
+    -13,
+    -6,
+    26,
+    12
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "camp",
+    "at": [
+     10,
+     8
+    ],
+    "facing": "back",
+    "footprint": [
+     2,
+     2,
+     16,
+     12
+    ]
+   }
+  ],
+  "cores": [
+   {
+    "id": "lynchet-core",
+    "at": [
+     -24,
+     -50
+    ],
+    "lava": 3,
+    "lavaHeight": 3,
+    "float": 5,
+    "leak": 4,
+    "name": "Brow Core"
+   }
+  ]
+ }
+}

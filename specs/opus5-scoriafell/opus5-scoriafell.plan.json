@@ -1,0 +1,127 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Scoriafell"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 20,
+  "surface": 22
+ },
+ "pieces": [
+  {
+   "id": "head",
+   "role": "piece",
+   "rect": [
+    -13,
+    -26,
+    26,
+    5
+   ]
+  },
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    -3,
+    -25,
+    5,
+    4
+   ]
+  },
+  {
+   "id": "dale",
+   "role": "piece",
+   "rect": [
+    -13,
+    -21,
+    26,
+    8
+   ]
+  },
+  {
+   "id": "flank",
+   "role": "piece",
+   "rect": [
+    -13,
+    -13,
+    26,
+    8
+   ]
+  },
+  {
+   "id": "pass",
+   "role": "piece",
+   "rect": [
+    -4,
+    -5,
+    8,
+    5
+   ]
+  },
+  {
+   "id": "scree-w",
+   "role": "piece",
+   "rect": [
+    -13,
+    -5,
+    9,
+    5
+   ]
+  },
+  {
+   "id": "scree-e",
+   "role": "piece",
+   "rect": [
+    4,
+    -5,
+    9,
+    5
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "saddle",
+   "rect": [
+    -13,
+    -5,
+    26,
+    10
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "camp",
+    "at": [
+     10,
+     8
+    ],
+    "facing": "back",
+    "footprint": [
+     2,
+     2,
+     16,
+     12
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "scoria-stone",
+    "at": [
+     -30,
+     -58
+    ],
+    "style": "cube-4",
+    "materials": "coal block",
+    "float": 4,
+    "name": "The Scoria Stone"
+   }
+  ]
+ }
+}

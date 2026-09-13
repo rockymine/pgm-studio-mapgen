@@ -1,0 +1,61 @@
+## destroyable-1-0 (destroyable) along x
+TRANSECT 25 stations from (-40, -56) to (-16, -56), every 1
+  station        ground  surface  water  top  standing            step
+  (  -40,   -56)      41       41           41                      
+  (  -39,   -56)      40       40           40                      -1
+  (  -38,   -56)      40       40           40                      
+  (  -37,   -56)      40       40           40                      
+  (  -36,   -56)      41       41           41                      +1
+  (  -35,   -56)      41       41           41                      
+  (  -34,   -56)      41       41           41                      
+  (  -33,   -56)      42       42           42                      +1
+  (  -32,   -56)      44       44           44                      scramble +2
+  (  -31,   -56)      44       44           44                      
+  (  -30,   -56)      44       44           44  destroyable destroyable-1  
+  (  -29,   -56)      44       44           73  destroyable destroyable-1  
+  (  -28,   -56)      44       44           74  destroyable destroyable-1  
+  (  -27,   -56)      44       44           73  destroyable destroyable-1  
+  (  -26,   -56)      44       44           44  stroke corrie-road  
+  (  -25,   -56)      45       45           45  stroke corrie-road  +1
+  (  -24,   -56)      45       45           45  stroke corrie-road  
+  (  -23,   -56)      45       45           45  stroke corrie-road  
+  (  -22,   -56)      44       44           44  stroke corrie-road  -1
+  (  -21,   -56)      44       44           44                      
+  (  -20,   -56)      43       43           43                      -1
+  (  -19,   -56)      43       43           43                      
+  (  -18,   -56)      43       43           43                      
+  (  -17,   -56)      43       43           43                      
+  (  -16,   -56)      43       43           43                      
+rises 4, falls 3, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-32, -56) | walked end to end
+beside: destroyable destroyable-1 at (-30, -58), stroke corrie-road at (-26, -56)
+
+## destroyable-1-0 (destroyable) along z
+TRANSECT 25 stations from (-28, -68) to (-28, -44), every 1
+  station        ground  surface  water  top  standing            step
+  (  -28,   -68)      35       35           35                      
+  (  -28,   -67)      36       36           36                      +1
+  (  -28,   -66)      37       37           37                      +1
+  (  -28,   -65)      38       38           38                      +1
+  (  -28,   -64)      37       37           37                      -1
+  (  -28,   -63)      38       38           38                      +1
+  (  -28,   -62)      40       40           40                      scramble +2
+  (  -28,   -61)      42       42           42                      scramble +2
+  (  -28,   -60)      43       43           43                      +1
+  (  -28,   -59)      45       45           45                      scramble +2
+  (  -28,   -58)      46       46           46  destroyable destroyable-1  +1
+  (  -28,   -57)      45       45           73  destroyable destroyable-1  -1
+  (  -28,   -56)      44       44           74  destroyable destroyable-1  -1
+  (  -28,   -55)      43       43           73  destroyable destroyable-1  -1
+  (  -28,   -54)      42       42           42  destroyable destroyable-1  -1
+  (  -28,   -53)      40       40           40                      -2
+  (  -28,   -52)      39       39           39  stroke corrie-road  -1
+  (  -28,   -51)      37       37           37  stroke corrie-road  -2
+  (  -28,   -50)      36       36           36  stroke corrie-road  -1
+  (  -28,   -49)      35       35           35  stroke corrie-road  -1
+  (  -28,   -48)      34       34           34  stroke corrie-road  -1
+  (  -28,   -47)      32       32           32  stroke corrie-road  -2
+  (  -28,   -46)      30       30           30  stroke corrie-road  -2
+  (  -28,   -45)      28       28           28  stroke corrie-road  -2
+  (  -28,   -44)      27       27           27  stroke corrie-road  -1
+rises 9, falls 15, worst step 2: 0 barrier, 3 scramble, 0 drop — scramble +2 at (-28, -62); scramble +2 at (-28, -61); scramble +2 at (-28, -59) | walked end to end
+beside: destroyable destroyable-1 at (-30, -58), stroke corrie-road at (-26, -56)

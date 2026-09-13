@@ -1,0 +1,137 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Goldbank Quarry"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 20,
+  "surface": 32
+ },
+ "pieces": [
+  {
+   "id": "fell",
+   "role": "piece",
+   "rect": [
+    -13,
+    -28,
+    26,
+    5
+   ]
+  },
+  {
+   "id": "brow",
+   "role": "piece",
+   "rect": [
+    -13,
+    -23,
+    26,
+    5
+   ]
+  },
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    -3,
+    -23,
+    5,
+    4
+   ]
+  },
+  {
+   "id": "brink",
+   "role": "piece",
+   "rect": [
+    -13,
+    -18,
+    26,
+    4
+   ]
+  },
+  {
+   "id": "floor",
+   "role": "piece",
+   "rect": [
+    -13,
+    -14,
+    26,
+    9
+   ]
+  },
+  {
+   "id": "waist",
+   "role": "piece",
+   "rect": [
+    -8,
+    -5,
+    16,
+    5
+   ]
+  },
+  {
+   "id": "shelf-w",
+   "role": "piece",
+   "rect": [
+    -13,
+    -5,
+    5,
+    5
+   ]
+  },
+  {
+   "id": "shelf-e",
+   "role": "piece",
+   "rect": [
+    8,
+    -5,
+    5,
+    5
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "pit",
+   "rect": [
+    -13,
+    -7,
+    26,
+    14
+   ]
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "camp",
+    "at": [
+     10,
+     8
+    ],
+    "facing": "back",
+    "footprint": [
+     2,
+     2,
+     16,
+     12
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "goldbank-stone",
+    "at": [
+     -32,
+     -49
+    ],
+    "style": "cube-4",
+    "materials": "ender stone",
+    "float": 4,
+    "name": "The Goldbank Stone"
+   }
+  ]
+ }
+}

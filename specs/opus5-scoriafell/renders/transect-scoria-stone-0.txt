@@ -1,0 +1,61 @@
+## scoria-stone-0 (destroyable) along x
+TRANSECT 25 stations from (-42, -58) to (-18, -58), every 1
+  station        ground  surface  water  top  standing            step
+  (  -42,   -58)      22       22           22                      
+  (  -41,   -58)      22       22           22                      
+  (  -40,   -58)      22       22           22                      
+  (  -39,   -58)      22       22           22                      
+  (  -38,   -58)      22       22           22                      
+  (  -37,   -58)      22       22           22                      
+  (  -36,   -58)      22       22           22                      
+  (  -35,   -58)      22       22           22                      
+  (  -34,   -58)      22       22           22                      
+  (  -33,   -58)      22       22           22                      
+  (  -32,   -58)      23       23           23  destroyable scoria-stone  +1
+  (  -31,   -58)      23       23           93  destroyable scoria-stone  
+  (  -30,   -58)      23       23           94  destroyable scoria-stone  
+  (  -29,   -58)      23       23           93  destroyable scoria-stone  
+  (  -28,   -58)      23       23           31  destroyable scoria-stone  
+  (  -27,   -58)      23       23           23                      
+  (  -26,   -58)      23       23           23                      
+  (  -25,   -58)      23       23           23                      
+  (  -24,   -58)      23       23           23                      
+  (  -23,   -58)      23       23           23                      
+  (  -22,   -58)      23       23           23                      
+  (  -21,   -58)      23       23           23                      
+  (  -20,   -58)      23       23           23                      
+  (  -19,   -58)      23       23           23                      
+  (  -18,   -58)      23       23           23                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree holt-6 at (-44, -60), destroyable scoria-stone at (-32, -60)
+
+## scoria-stone-0 (destroyable) along z
+TRANSECT 25 stations from (-30, -70) to (-30, -46), every 1
+  station        ground  surface  water  top  standing            step
+  (  -30,   -70)      23       23           23                      
+  (  -30,   -69)      23       23           23                      
+  (  -30,   -68)      23       23           23  stroke dale-track   
+  (  -30,   -67)      23       23           23  stroke dale-track   
+  (  -30,   -66)      23       23           23  stroke dale-track   
+  (  -30,   -65)      23       23           23  stroke dale-track   
+  (  -30,   -64)      23       23           23                      
+  (  -30,   -63)      23       23           23                      
+  (  -30,   -62)      23       23           23                      
+  (  -30,   -61)      23       23           23                      
+  (  -30,   -60)      23       23           23  destroyable scoria-stone  
+  (  -30,   -59)      23       23           93  destroyable scoria-stone  
+  (  -30,   -58)      23       23           94  destroyable scoria-stone  
+  (  -30,   -57)      22       22           93  destroyable scoria-stone  -1
+  (  -30,   -56)      22       22           31  destroyable scoria-stone  
+  (  -30,   -55)      22       22           22                      
+  (  -30,   -54)      22       22           22                      
+  (  -30,   -53)      22       22           22                      
+  (  -30,   -52)      22       22           22                      
+  (  -30,   -51)      22       22           22                      
+  (  -30,   -50)      22       22           22                      
+  (  -30,   -49)      22       22           22                      
+  (  -30,   -48)      22       22           22                      
+  (  -30,   -47)      22       22           22                      
+  (  -30,   -46)      22       22           22                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke dale-track at (-30, -68), destroyable scoria-stone at (-32, -60)

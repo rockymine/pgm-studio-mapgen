@@ -1,0 +1,61 @@
+## spoil-3 (boulder) along x
+TRANSECT 25 stations from (6, -90) to (30, -90), every 1
+  station        ground  surface  water  top  standing            step
+  (    6,   -90)      32       32           43                      
+  (    7,   -90)      32       32           32                      
+  (    8,   -90)      32       32           32                      
+  (    9,   -90)      32       32           32                      
+  (   10,   -90)      32       32           32                      
+  (   11,   -90)      32       32           32                      
+  (   12,   -90)      32       32           32                      
+  (   13,   -90)      32       32           32                      
+  (   14,   -90)      32       32           32  stroke turf-1       
+  (   15,   -90)      32       32           35  boulder spoil-3     
+  (   16,   -90)      32       32           36  boulder spoil-3     
+  (   17,   -90)      32       32           36  boulder spoil-3     
+  (   18,   -90)      32       32           36  boulder spoil-3     
+  (   19,   -90)      32       32           36  boulder spoil-3     
+  (   20,   -90)      32       32           36  boulder spoil-3     
+  (   21,   -90)      32       32           32  stroke turf-1       
+  (   22,   -90)      32       32           32                      
+  (   23,   -90)      32       32           32  stroke turf-1       
+  (   24,   -90)      32       32           32                      
+  (   25,   -90)      31       31           31                      -1
+  (   26,   -90)      31       31           31                      
+  (   27,   -90)      31       31           31                      
+  (   28,   -90)      31       31           31                      
+  (   29,   -90)      31       31           31                      
+  (   30,   -90)      31       31           31                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (4, -90), stroke turf-1 at (12, -89), boulder spoil-3 at (15, -91), tree fell-tree-9 at (19, -92)
+
+## spoil-3 (boulder) along z
+TRANSECT 25 stations from (18, -102) to (18, -78), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,  -102)      32       32           32                      
+  (   18,  -101)      32       32           32                      
+  (   18,  -100)      32       32           32                      
+  (   18,   -99)      32       32           32                      
+  (   18,   -98)      32       32           32                      
+  (   18,   -97)      32       32           32                      
+  (   18,   -96)      32       32           41  tree fell-tree-9    
+  (   18,   -95)      32       32           42  tree fell-tree-9    
+  (   18,   -94)      32       32           42  tree fell-tree-9    
+  (   18,   -93)      32       32           43  tree fell-tree-9    
+  (   18,   -92)      32       32           36  boulder spoil-3     
+  (   18,   -91)      32       32           36  boulder spoil-3     
+  (   18,   -90)      32       32           36  boulder spoil-3     
+  (   18,   -89)      32       32           36  boulder spoil-3     
+  (   18,   -88)      32       32           35  boulder spoil-3     
+  (   18,   -87)      32       32           32                      
+  (   18,   -86)      32       32           32  stroke turf-1       
+  (   18,   -85)      32       32           42  house winding-house  
+  (   18,   -84)      32       32           42  house winding-house  
+  (   18,   -83)      32       32           43  house winding-house  
+  (   18,   -82)      32       32           43  house winding-house  
+  (   18,   -81)      32       32           44  house winding-house  
+  (   18,   -80)      31       31           44  house winding-house  -1
+  (   18,   -79)      31       31           45  house winding-house  
+  (   18,   -78)      31       31           44  house winding-house  
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke turf-1 at (19, -98), tree fell-tree-9 at (18, -96), boulder spoil-3 at (16, -92), house winding-house at (16, -85)

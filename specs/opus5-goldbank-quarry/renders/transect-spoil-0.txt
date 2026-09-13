@@ -1,0 +1,61 @@
+## spoil-0 (boulder) along x
+TRANSECT 25 stations from (-52, -70) to (-28, -70), every 1
+  station        ground  surface  water  top  standing            step
+  (  -52,   -70)      29       29           29                      
+  (  -51,   -70)      29       29           29                      
+  (  -50,   -70)      29       29           29                      
+  (  -49,   -70)      29       29           29                      
+  (  -48,   -70)      29       29           29                      
+  (  -47,   -70)      29       29           29                      
+  (  -46,   -70)      29       29           29                      
+  (  -45,   -70)      29       29           29                      
+  (  -44,   -70)      29       29           33  boulder spoil-0     
+  (  -43,   -70)      29       29           34  boulder spoil-0     
+  (  -42,   -70)      29       29           35  boulder spoil-0     
+  (  -41,   -70)      29       29           35  boulder spoil-0     
+  (  -40,   -70)      29       29           35  boulder spoil-0     
+  (  -39,   -70)      29       29           35  boulder spoil-0     
+  (  -38,   -70)      29       29           35  boulder spoil-0     
+  (  -37,   -70)      29       29           34  boulder spoil-0     
+  (  -36,   -70)      29       29           33  boulder spoil-0     
+  (  -35,   -70)      29       29           29                      
+  (  -34,   -70)      29       29           29                      
+  (  -33,   -70)      29       29           29                      
+  (  -32,   -70)      29       29           29                      
+  (  -31,   -70)      29       29           29                      
+  (  -30,   -70)      29       29           29                      
+  (  -29,   -70)      29       29           29                      
+  (  -28,   -70)      29       29           29                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder spoil-0 at (-44, -72), boulder spoil-1 at (-31, -68)
+
+## spoil-0 (boulder) along z
+TRANSECT 25 stations from (-40, -82) to (-40, -58), every 1
+  station        ground  surface  water  top  standing            step
+  (  -40,   -82)      32       32           41  house crusher-shed  
+  (  -40,   -81)      32       32           40  house crusher-shed  
+  (  -40,   -80)      32       32           40  house crusher-shed  
+  (  -40,   -79)      31       31           39  house crusher-shed  -1
+  (  -40,   -78)      31       31           39  house crusher-shed  
+  (  -40,   -77)      31       31           38  house crusher-shed  
+  (  -40,   -76)      31       31           38  house crusher-shed  
+  (  -40,   -75)      31       31           37  house crusher-shed  
+  (  -40,   -74)      31       31           37  boulder spoil-0     
+  (  -40,   -73)      30       30           33  boulder spoil-0     -1
+  (  -40,   -72)      29       29           34  boulder spoil-0     -1
+  (  -40,   -71)      29       29           35  boulder spoil-0     
+  (  -40,   -70)      29       29           35  boulder spoil-0     
+  (  -40,   -69)      28       28           35  boulder spoil-0     -1
+  (  -40,   -68)      28       28           34  boulder spoil-0     
+  (  -40,   -67)      28       28           34  boulder spoil-0     
+  (  -40,   -66)      27       27           33  boulder spoil-0     -1
+  (  -40,   -65)      26       26           26                      -1
+  (  -40,   -64)      26       26           26                      
+  (  -40,   -63)      26       26           26                      
+  (  -40,   -62)      25       25           25                      -1
+  (  -40,   -61)      25       25           25                      
+  (  -40,   -60)      26       26           26                      +1
+  (  -40,   -59)      26       26           26                      
+  (  -40,   -58)      22       22           22                      DROP -4
+rises 1, falls 8, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-40, -58) | walked end to end
+beside: stroke turf-0 at (-39, -84), house crusher-shed at (-42, -83), boulder spoil-0 at (-42, -74)

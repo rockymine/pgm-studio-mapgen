@@ -1,0 +1,55 @@
+## spoil-w (boulder) along x
+TRANSECT 19 stations from (-40, -63) to (-22, -63), every 1
+  station        ground  surface  water  top  standing            step
+  (  -40,   -63)      24       24           24                      
+  (  -39,   -63)      22       22           22                      -2
+  (  -38,   -63)      21       21           21                      -1
+  (  -37,   -63)      20       20           20                      -1
+  (  -36,   -63)      18       18           20  boulder spoil-w     -2
+  (  -35,   -63)      17       17           21  boulder spoil-w     -1
+  (  -34,   -63)      16       16           21  boulder spoil-w     -1
+  (  -33,   -63)      15       15           21  boulder spoil-w     -1
+  (  -32,   -63)      13       13           20  boulder spoil-w     -2
+  (  -31,   -63)      12       12           20  boulder spoil-w     -1
+  (  -30,   -63)      12       12           12                      
+  (  -29,   -63)      12       12           12                      
+  (  -28,   -63)      13       21           21  storey              BARRIER +9
+  (  -27,   -63)      13       21           21  storey              
+  (  -26,   -63)      13       21           21  storey              
+  (  -25,   -63)      13       21           21  storey              
+  (  -24,   -63)      13       21           21  storey              
+  (  -23,   -63)      13       21           21  storey              
+  (  -22,   -63)      13       21           21  storey              
+rises 1, falls 9, worst step 9: 1 barrier, 0 scramble, 0 drop — BARRIER +9 at (-28, -63) | walked end to end
+beside: boulder spoil-w at (-36, -65)
+
+## spoil-w (boulder) along z
+TRANSECT 25 stations from (-34, -75) to (-34, -51), every 1
+  station        ground  surface  water  top  standing            step
+  (  -34,   -75)      16       16           16                      
+  (  -34,   -74)      15       15           15                      -1
+  (  -34,   -73)      14       14           14                      -1
+  (  -34,   -72)      14       14           14                      
+  (  -34,   -71)      14       14           14                      
+  (  -34,   -70)      14       14           14                      
+  (  -34,   -69)      14       14           14                      
+  (  -34,   -68)      14       14           14                      
+  (  -34,   -67)      14       14           14                      
+  (  -34,   -66)      14       14           19  boulder spoil-w     
+  (  -34,   -65)      15       15           20  boulder spoil-w     +1
+  (  -34,   -64)      16       16           21  boulder spoil-w     +1
+  (  -34,   -63)      16       16           21  boulder spoil-w     
+  (  -34,   -62)      16       16           21  boulder spoil-w     
+  (  -34,   -61)      16       16           20  boulder spoil-w     
+  (  -34,   -60)      16       16           19  boulder spoil-w     
+  (  -34,   -59)      17       17           17                      +1
+  (  -34,   -58)      16       16           16                      -1
+  (  -34,   -57)      16       16           16                      
+  (  -34,   -56)      15       15           15                      -1
+  (  -34,   -55)      17       17           17                      scramble +2
+  (  -34,   -54)      18       18           18                      +1
+  (  -34,   -53)      17       17           17                      -1
+  (  -34,   -52)      17       17           17                      
+  (  -34,   -51)      17       17           17                      
+rises 5, falls 5, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-34, -55) | walked end to end
+beside: boulder spoil-w at (-36, -66)

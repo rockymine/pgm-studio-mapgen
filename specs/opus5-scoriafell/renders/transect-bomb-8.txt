@@ -1,0 +1,61 @@
+## bomb-8 (boulder) along x
+TRANSECT 25 stations from (-32, -78) to (-8, -78), every 1
+  station        ground  surface  water  top  standing            step
+  (  -32,   -78)      23       23           23                      
+  (  -31,   -78)      23       23           23                      
+  (  -30,   -78)      23       23           23                      
+  (  -29,   -78)      23       23           23                      
+  (  -28,   -78)      23       23           23                      
+  (  -27,   -78)      23       23           23                      
+  (  -26,   -78)      23       23           23                      
+  (  -25,   -78)      23       23           23                      
+  (  -24,   -78)      24       24           30  tree holt-2         +1
+  (  -23,   -78)      24       24           30  tree holt-2         
+  (  -22,   -78)      24       24           28  boulder bomb-8      
+  (  -21,   -78)      24       24           29  boulder bomb-8      
+  (  -20,   -78)      24       24           29  boulder bomb-8      
+  (  -19,   -78)      24       24           29  boulder bomb-8      
+  (  -18,   -78)      24       24           29  boulder bomb-8      
+  (  -17,   -78)      24       24           28  boulder bomb-8      
+  (  -16,   -78)      24       24           25  boulder bomb-8      
+  (  -15,   -78)      24       24           24                      
+  (  -14,   -78)      24       24           24                      
+  (  -13,   -78)      24       24           24                      
+  (  -12,   -78)      24       24           24                      
+  (  -11,   -78)      23       23           23                      -1
+  (  -10,   -78)      23       23           23                      
+  (   -9,   -78)      23       23           23  stroke pass-track   
+  (   -8,   -78)      23       23           23  stroke pass-track   
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree holt-2 at (-26, -80), boulder bomb-8 at (-23, -77), stroke pass-track at (-9, -78)
+
+## bomb-8 (boulder) along z
+TRANSECT 25 stations from (-20, -90) to (-20, -66), every 1
+  station        ground  surface  water  top  standing            step
+  (  -20,   -90)      24       24           24                      
+  (  -20,   -89)      24       24           24                      
+  (  -20,   -88)      24       24           24                      
+  (  -20,   -87)      24       24           24                      
+  (  -20,   -86)      24       24           24                      
+  (  -20,   -85)      24       24           24                      
+  (  -20,   -84)      24       24           24                      
+  (  -20,   -83)      24       24           24                      
+  (  -20,   -82)      24       24           24                      
+  (  -20,   -81)      24       24           27  boulder bomb-8      
+  (  -20,   -80)      24       24           28  boulder bomb-8      
+  (  -20,   -79)      24       24           29  boulder bomb-8      
+  (  -20,   -78)      24       24           29  boulder bomb-8      
+  (  -20,   -77)      23       23           29  boulder bomb-8      -1
+  (  -20,   -76)      23       23           28  boulder bomb-8      
+  (  -20,   -75)      23       23           28  boulder bomb-8      
+  (  -20,   -74)      23       23           23                      
+  (  -20,   -73)      23       23           23                      
+  (  -20,   -72)      23       23           23                      
+  (  -20,   -71)      23       23           23  stroke dale-track   
+  (  -20,   -70)      23       23           23  stroke dale-track   
+  (  -20,   -69)      23       23           23  stroke dale-track   
+  (  -20,   -68)      23       23           23                      
+  (  -20,   -67)      23       23           23                      
+  (  -20,   -66)      23       23           23                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree holt-2 at (-22, -82), boulder bomb-8 at (-19, -82), stroke dale-track at (-21, -71)

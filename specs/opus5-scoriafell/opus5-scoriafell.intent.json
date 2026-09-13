@@ -1,0 +1,201 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 20,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -2,
+    "y": 22,
+    "z": -92
+   },
+   "protection": [
+    {
+     "minX": -12,
+     "minZ": -100,
+     "maxX": 8,
+     "maxZ": -84
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -10,
+    "minZ": -98,
+    "maxX": 6,
+    "maxZ": -86
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 2,
+    "y": 22,
+    "z": 92
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": 84,
+     "maxX": 12,
+     "maxZ": 100
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": -6,
+    "minZ": 86,
+    "maxX": 10,
+    "maxZ": 98
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 37,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -52,
+    "minZ": -20,
+    "maxX": 52,
+    "maxZ": 20
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "scoria-stone",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Scoria Stone",
+   "style": "cube-4",
+   "materials": "coal block",
+   "repairable": false,
+   "anchor": {
+    "x": -30,
+    "y": 22,
+    "z": -58
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "scoria-stone",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Scoria Stone",
+   "style": "cube-4",
+   "materials": "coal block",
+   "repairable": false,
+   "anchor": {
+    "x": 28,
+    "y": 22,
+    "z": 56
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Scoriafell",
+  "created": "2026-09-12",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null,
+ "controlPoints": [
+  {
+   "name": "The Scoria Pass",
+   "anchor": {
+    "x": -2,
+    "y": 0,
+    "z": 0
+   },
+   "size": 9,
+   "points": 2
+  },
+  {
+   "name": "North Dale",
+   "anchor": {
+    "x": -34,
+    "y": 0,
+    "z": -64
+   },
+   "size": 8,
+   "points": 1
+  },
+  {
+   "name": "South Dale",
+   "anchor": {
+    "x": 34,
+    "y": 0,
+    "z": 64
+   },
+   "size": 8,
+   "points": 1
+  }
+ ],
+ "scoreLimit": 750
+}

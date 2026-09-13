@@ -1,0 +1,95 @@
+## braid-b (water) along x
+TRANSECT 51 stations from (-44, 5) to (6, 5), every 1
+  station        ground  surface  water  top  standing            step
+  (  -44,     5)      14       14           14                      
+  (  -43,     5)      14       14           14                      
+  (  -42,     5)      14       14           14                      
+  (  -41,     5)      14       14           14                      
+  (  -40,     5)      14       14           14                      
+  (  -39,     5)      14       14           14                      
+  (  -38,     5)      14       14           14                      
+  (  -37,     5)      14       14           14                      
+  (  -36,     5)      14       14           14                      
+  (  -35,     5)      14       14           14  water braid-b       
+  (  -34,     5)      14       14           14  water braid-b       
+  (  -33,     5)      14       14     13    13  water braid-b       
+  (  -32,     5)      14       14     13    13  water braid-b       
+  (  -31,     5)      14       14     13    13  water braid-b       
+  (  -30,     5)      14       14     13    13  water braid-b       
+  (  -29,     5)      15       15     13    13  water braid-b       +1
+  (  -28,     5)      15       15     13    13  water braid-b       
+  (  -27,     5)      15       15     13    13  water braid-b       
+  (  -26,     5)      15       15     13    13  water braid-b       
+  (  -25,     5)      15       15     13    13  water braid-b       
+  (  -24,     5)      15       15     13    13  water braid-b       
+  (  -23,     5)      15       15     13    13  water braid-b       
+  (  -22,     5)      15       15     13    13  water braid-b       
+  (  -21,     5)      15       15     13    13  water braid-b       
+  (  -20,     5)      15       15     13    13  water braid-b       
+  (  -19,     5)      15       15     13    13  water braid-b       
+  (  -18,     5)      15       15     13    13  water braid-b       
+  (  -17,     5)      15       15     13    13  water braid-b       
+  (  -16,     5)      15       15     13    13  water braid-b       
+  (  -15,     5)      15       15     13    13  water braid-b       
+  (  -14,     5)      15       15     13    13  water braid-b       
+  (  -13,     5)      15       15     13    13  water braid-b       
+  (  -12,     5)      15       15     13    13  water braid-b       
+  (  -11,     5)      15       15     13    13  water braid-b       
+  (  -10,     5)      15       15     13    13  water braid-b       
+  (   -9,     5)      14       14     13    13  water braid-b       -1
+  (   -8,     5)      14       14     13    13  water braid-b       
+  (   -7,     5)      14       14     13    13  water braid-b       
+  (   -6,     5)      14       14     13    13  water braid-b       
+  (   -5,     5)      14       14     13    13  water braid-b       
+  (   -4,     5)      14       14           14  water braid-b       
+  (   -3,     5)      14       14           14                      
+  (   -2,     5)      14       14           14                      
+  (   -1,     5)      14       14           14                      
+  (    0,     5)      14       14           14                      
+  (    1,     5)      14       14           14                      
+  (    2,     5)      14       14           14                      
+  (    3,     5)      14       14           14  water braid-a#1     
+  (    4,     5)      14       14     13    13  water braid-a#1     
+  (    5,     5)      14       14     13    13  water braid-a#1     
+  (    6,     5)      14       14     13    13  water braid-a#1     
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water braid-b at (-35, 3), water braid-d#1 at (-33, 7), water braid-a#1 at (2, 7)
+
+## braid-b (water) along z
+TRANSECT 33 stations from (-19, -11) to (-19, 21), every 1
+  station        ground  surface  water  top  standing            step
+  (  -19,   -11)      14       14     13    13  water braid-a       
+  (  -19,   -10)      14       14     13    13  water braid-a       
+  (  -19,    -9)      14       14     13    13  water braid-a       
+  (  -19,    -8)      14       14     13    13  water braid-a       
+  (  -19,    -7)      14       14           14  water braid-a       
+  (  -19,    -6)      14       14           14  water braid-a       
+  (  -19,    -5)      13       13           13                      -1
+  (  -19,    -4)      13       13           13                      
+  (  -19,    -3)      14       14           14                      +1
+  (  -19,    -2)      14       14           14                      
+  (  -19,    -1)      14       14           14                      
+  (  -19,     0)      14       14           14  water braid-b       
+  (  -19,     1)      14       14     13    13  water braid-b       
+  (  -19,     2)      15       15     13    13  water braid-b       +1
+  (  -19,     3)      15       15     13    13  water braid-b       
+  (  -19,     4)      15       15     13    13  water braid-b       
+  (  -19,     5)      15       15     13    13  water braid-b       
+  (  -19,     6)      15       15     13    13  water braid-b       
+  (  -19,     7)      15       15     13    13  water braid-b       
+  (  -19,     8)      15       15     13    13  water braid-b       
+  (  -19,     9)      15       15     13    13  water braid-d#1     
+  (  -19,    10)      14       14     13    13  water braid-d#1     -1
+  (  -19,    11)      13       13     13    13  water braid-d#1     -1
+  (  -19,    12)      13       13     13    13  water braid-d#1     
+  (  -19,    13)      13       13     13    13  water braid-d#1     
+  (  -19,    14)      13       13     13    13  water braid-d#1     
+  (  -19,    15)      13       13           13  water braid-d#1     
+  (  -19,    16)      15       15           15                      scramble +2
+  (  -19,    17)      18       18           18                      BARRIER +3
+  (  -19,    18)      22       22           22                      BARRIER +4
+  (  -19,    19)      22       22           22                      
+  (  -19,    20)      22       22           22                      
+  (  -19,    21)      22       22           22                      
+rises 5, falls 3, worst step 4: 2 barrier, 1 scramble, 0 drop — scramble +2 at (-19, 16); BARRIER +3 at (-19, 17); BARRIER +4 at (-19, 18) | walked end to end
+beside: water braid-a at (-21, -13), water braid-b at (-18, -1), water braid-d#1 at (-20, 9)

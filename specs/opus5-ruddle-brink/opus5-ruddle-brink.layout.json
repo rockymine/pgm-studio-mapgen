@@ -1,0 +1,1935 @@
+{
+ "setup": {
+  "mirror_mode": "rot_180",
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "bbox": {
+   "min_x": -48,
+   "max_x": 48,
+   "min_z": -104,
+   "max_z": 104
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "kind": null,
+   "part_of": null,
+   "seat": null,
+   "layout": {
+    "shapes": [
+     {
+      "id": "bench-12",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -36,
+        -72
+       ],
+       [
+        -27,
+        -73.3
+       ],
+       [
+        -18,
+        -74.2
+       ],
+       [
+        -9,
+        -74.8
+       ],
+       [
+        0,
+        -74.8
+       ],
+       [
+        9,
+        -74.3
+       ],
+       [
+        18,
+        -73.5
+       ],
+       [
+        27,
+        -72.6
+       ],
+       [
+        36,
+        -72
+       ],
+       [
+        36.6,
+        -62
+       ],
+       [
+        37.2,
+        -52
+       ],
+       [
+        37.9,
+        -42
+       ],
+       [
+        38.5,
+        -32
+       ],
+       [
+        38.9,
+        -22
+       ],
+       [
+        36,
+        -12
+       ],
+       [
+        27,
+        -9.6
+       ],
+       [
+        18,
+        -10.5
+       ],
+       [
+        9,
+        -11.4
+       ],
+       [
+        0,
+        -11.9
+       ],
+       [
+        -9,
+        -11.9
+       ],
+       [
+        -18,
+        -11.3
+       ],
+       [
+        -27,
+        -10.3
+       ],
+       [
+        -36,
+        -12
+       ],
+       [
+        -38.5,
+        -22
+       ],
+       [
+        -38.2,
+        -32
+       ],
+       [
+        -37.8,
+        -42
+       ],
+       [
+        -37.3,
+        -52
+       ],
+       [
+        -36.8,
+        -62
+       ]
+      ],
+      "controls": {
+       "1": {
+        "in": [
+         -28.805247187130206,
+         -73.07935867712852
+        ],
+        "out": [
+         -25.204384368951587,
+         -73.5194641326837
+        ]
+       },
+       "2": {
+        "in": [
+         -19.802728965801,
+         -74.04977258618325
+        ],
+        "out": [
+         -16.202235871403325,
+         -74.34981367738305
+        ]
+       },
+       "3": {
+        "in": [
+         -10.802994180056757,
+         -74.73990019399811
+        ],
+        "out": [
+         -7.200999167437522,
+         -74.85996669441874
+        ]
+       },
+       "4": {
+        "in": [
+         -1.799305957174893,
+         -74.84998072103264
+        ],
+        "out": [
+         1.8020805246783027,
+         -74.74994220764782
+        ]
+       },
+       "5": {
+        "in": [
+         7.201907732071186,
+         -74.42986221935041
+        ],
+        "out": [
+         10.802402523257365,
+         -74.16982648443141
+        ]
+       },
+       "6": {
+        "in": [
+         16.20090879193082,
+         -73.66991416965098
+        ],
+        "out": [
+         19.800963369108125,
+         -73.32990901513979
+        ]
+       },
+       "7": {
+        "in": [
+         25.197271034199,
+         -72.75022741381675
+        ],
+        "out": [
+         28.797764128596675,
+         -72.45018632261694
+        ]
+       },
+       "9": {
+        "in": [
+         36.480000000000004,
+         -64
+        ],
+        "out": [
+         36.72,
+         -60
+        ]
+       },
+       "10": {
+        "in": [
+         37.070040460377825,
+         -53.9993775326489
+        ],
+        "out": [
+         37.33004368306876,
+         -49.999327952788384
+        ]
+       },
+       "11": {
+        "in": [
+         37.76995631693124,
+         -44.000672047211616
+        ],
+        "out": [
+         38.029959539622176,
+         -40.0006224673511
+        ]
+       },
+       "12": {
+        "in": [
+         38.39994515219851,
+         -34.00109695602972
+        ],
+        "out": [
+         38.59995510214036,
+         -30.000897957192752
+        ]
+       },
+       "13": {
+        "in": [
+         39.14826784543497,
+         -23.986142763479776
+        ],
+        "out": [
+         38.64170976372722,
+         -19.933678109817798
+        ]
+       },
+       "15": {
+        "in": [
+         28.85646605325725,
+         -9.754705504438103
+        ],
+        "out": [
+         25.197271034199,
+         -9.44977258618325
+        ]
+       },
+       "16": {
+        "in": [
+         19.8,
+         -10.32
+        ],
+        "out": [
+         16.2,
+         -10.68
+        ]
+       },
+       "17": {
+        "in": [
+         10.80353071321257,
+         -11.259725388972356
+        ],
+        "out": [
+         7.202652586483565,
+         -11.539793687717946
+        ]
+       },
+       "18": {
+        "in": [
+         1.8020805246783027,
+         -11.849942207647825
+        ],
+        "out": [
+         -1.799305957174893,
+         -11.949980721032636
+        ]
+       },
+       "19": {
+        "in": [
+         -7.200999167437522,
+         -11.95996669441875
+        ],
+        "out": [
+         -10.802994180056757,
+         -11.839900193998108
+        ]
+       },
+       "20": {
+        "in": [
+         -16.203089373369394,
+         -11.459725389033832
+        ],
+        "out": [
+         -19.80396427740677,
+         -11.139647619786066
+        ]
+       },
+       "21": {
+        "in": [
+         -25.190290908232544,
+         -10.229622424209044
+        ],
+        "out": [
+         -28.830446075726588,
+         -10.371184014056034
+        ]
+       },
+       "23": {
+        "in": [
+         -38.27458882764848,
+         -19.950807524077078
+        ],
+        "out": [
+         -38.71877934260554,
+         -23.988903114595853
+        ]
+       },
+       "24": {
+        "in": [
+         -38.26998863799522,
+         -30.000324628708057
+        ],
+        "out": [
+         -38.129986892285686,
+         -34.000374506123336
+        ]
+       },
+       "25": {
+        "in": [
+         -37.8899809116256,
+         -40.0004241860977
+        ],
+        "out": [
+         -37.70997867072433,
+         -44.000473983903674
+        ]
+       },
+       "26": {
+        "in": [
+         -37.4,
+         -50
+        ],
+        "out": [
+         -37.199999999999996,
+         -54
+        ]
+       },
+       "27": {
+        "in": [
+         -36.92988829874592,
+         -60.00171848083187
+        ],
+        "out": [
+         -36.669859295941095,
+         -64.00216467782924
+        ]
+       }
+      },
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 12,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "bench-23",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -44,
+        -100
+       ],
+       [
+        44,
+        -100
+       ],
+       [
+        44,
+        -72
+       ],
+       [
+        -44,
+        -72
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 23,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "spawn-red",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": 0,
+      "min_z": -100,
+      "max_x": 24,
+      "max_z": -88,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": "follow",
+      "base_height": 23,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "red",
+      "color": "red",
+      "height_authored": null,
+      "doors": [
+       "+z"
+      ],
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "spawn-red-building",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": 5,
+      "min_z": -98,
+      "max_x": 19,
+      "max_z": -90,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "building",
+      "intentRef": null,
+      "color": "red",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "spawn-blue",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -24,
+      "min_z": 88,
+      "max_x": 0,
+      "max_z": 100,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "spawn",
+      "intentRef": "blue",
+      "color": "blue",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "spawn-blue-building",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -19,
+      "min_z": 90,
+      "max_x": -5,
+      "max_z": 98,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "building",
+      "intentRef": null,
+      "color": "blue",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "cut-road",
+      "type": "polygon",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "height_mode": "level",
+      "skirt": 2,
+      "floor": 0,
+      "vertices": [
+       [
+        -7,
+        -52
+       ],
+       [
+        6,
+        -52
+       ],
+       [
+        6,
+        -76
+       ],
+       [
+        -7,
+        -76
+       ]
+      ],
+      "anchor_heights": [
+       12,
+       12,
+       23,
+       23
+      ],
+      "material": {
+       "kind": "solid",
+       "id": 24,
+       "data": 2
+      }
+     },
+     {
+      "id": "long-ramp",
+      "type": "polygon",
+      "operation": "add",
+      "override": true,
+      "keepClear": true,
+      "height_mode": "level",
+      "skirt": 2,
+      "floor": 0,
+      "vertices": [
+       [
+        22,
+        -46
+       ],
+       [
+        33,
+        -46
+       ],
+       [
+        33,
+        -76
+       ],
+       [
+        22,
+        -76
+       ]
+      ],
+      "anchor_heights": [
+       12,
+       12,
+       23,
+       23
+      ],
+      "material": {
+       "kind": "solid",
+       "id": 24,
+       "data": 2
+      }
+     },
+     {
+      "id": "talus-1",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+       [
+        -34,
+        -66
+       ],
+       [
+        -29,
+        -56
+       ],
+       [
+        -17,
+        -54
+       ],
+       [
+        -14,
+        -62
+       ],
+       [
+        -21,
+        -67
+       ]
+      ],
+      "theme": "scree"
+     },
+     {
+      "id": "talus-2",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+       [
+        -12,
+        -50
+       ],
+       [
+        -2,
+        -44
+       ],
+       [
+        10,
+        -47
+       ],
+       [
+        11,
+        -54
+       ],
+       [
+        -6,
+        -55
+       ]
+      ],
+      "theme": "scree"
+     },
+     {
+      "id": "talus-3",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+       [
+        19,
+        -44
+       ],
+       [
+        29,
+        -38
+       ],
+       [
+        36,
+        -42
+       ],
+       [
+        35,
+        -48
+       ],
+       [
+        23,
+        -49
+       ]
+      ],
+      "theme": "scree"
+     },
+     {
+      "id": "apron",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+       [
+        2,
+        -99
+       ],
+       [
+        22,
+        -99
+       ],
+       [
+        24,
+        -89
+       ],
+       [
+        16,
+        -86
+       ],
+       [
+        4,
+        -87
+       ],
+       [
+        0,
+        -92
+       ]
+      ],
+      "theme": "works"
+     },
+     {
+      "id": "head-cut",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+       [
+        -9,
+        -84
+       ],
+       [
+        8,
+        -84
+       ],
+       [
+        9,
+        -79
+       ],
+       [
+        -8,
+        -79
+       ]
+      ],
+      "theme": "works"
+     },
+     {
+      "id": "head-ramp",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+       [
+        20,
+        -84
+       ],
+       [
+        35,
+        -84
+       ],
+       [
+        35,
+        -79
+       ],
+       [
+        21,
+        -79
+       ]
+      ],
+      "theme": "works"
+     }
+    ],
+    "groups": [
+     {
+      "id": "team",
+      "name": "Team island",
+      "mirrors": true,
+      "shapeIds": [
+       "bench-12",
+       "bench-23",
+       "cut-road",
+       "long-ramp",
+       "talus-1",
+       "talus-2",
+       "talus-3",
+       "apron",
+       "head-cut",
+       "head-ramp"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "themes": {
+  "brink": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 179,
+     "data": 2
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 4,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "beyond": {
+          "kind": "solid",
+          "id": 179,
+          "data": 0
+         },
+         "stack": {
+          "ending": "handOver",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 12,
+             "data": 1
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 159,
+             "data": 1
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 18
+       },
+       {
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "beyond": {
+          "kind": "solid",
+          "id": 179,
+          "data": 0
+         },
+         "stack": {
+          "ending": "handOver",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 159,
+             "data": 1
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 159,
+             "data": 14
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 22
+       },
+       {
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "beyond": {
+          "kind": "solid",
+          "id": 179,
+          "data": 0
+         },
+         "stack": {
+          "ending": "handOver",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 179,
+             "data": 0
+            },
+            "thickness": 2
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 179,
+             "data": 2
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        },
+        "thickness": 50
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 179,
+       "data": 0
+      },
+      "width": 4
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 159,
+       "data": 14
+      },
+      "width": 1
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 179,
+       "data": 2
+      },
+      "width": 3
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 159,
+       "data": 12
+      },
+      "width": 1
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "voronoi",
+    "seed": 23,
+    "cellSize": 13,
+    "rise": 7,
+    "bands": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 179,
+       "data": 0
+      },
+      "depth": 2
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 172,
+       "data": 0
+      },
+      "depth": 1
+     }
+    ]
+   }
+  },
+  "scree": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 13,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 179,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 13,
+         "data": 0
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 5
+        },
+        "thickness": 2
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      "width": 3
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      "width": 1
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "voronoi",
+    "seed": 5,
+    "cellSize": 11,
+    "rise": 6,
+    "bands": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      "depth": 2
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      "depth": 1
+     }
+    ]
+   }
+  },
+  "works": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 1
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "beyond": {
+      "kind": "solid",
+      "id": 24,
+      "data": 0
+     },
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 24,
+         "data": 2
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 24,
+         "data": 0
+        },
+        "thickness": 2
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "wallDiagonal",
+    "slope": 2,
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 24,
+       "data": 0
+      },
+      "width": 3
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 24,
+       "data": 1
+      },
+      "width": 1
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 24,
+       "data": 2
+      },
+      "width": 2
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "voronoi",
+    "seed": 11,
+    "cellSize": 12,
+    "rise": 7,
+    "bands": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 24,
+       "data": 0
+      },
+      "depth": 2
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      "depth": 1
+     }
+    ]
+   }
+  }
+ },
+ "themeSources": null,
+ "mapTheme": "brink",
+ "roomStyles": {
+  "spawn": {
+   "foundation": {
+    "plate": {
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 24,
+         "data": 2
+        },
+        "thickness": 1
+       }
+      ],
+      "ending": "repeat"
+     },
+     "extent": 2
+    },
+    "surface": {
+     "field": null,
+     "border": null,
+     "borderWidth": 1,
+     "inlay": null,
+     "inlayInset": 2,
+     "isPlain": true
+    },
+    "footing": null
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 1,
+    "slab": -1,
+    "slabData": 0,
+    "overhang": 1,
+    "ridgeCap": true,
+    "hole": false,
+    "body": {
+     "kind": "solid",
+     "id": 5,
+     "data": 1
+    },
+    "verge": {
+     "kind": "solid",
+     "id": 5,
+     "data": 5
+    },
+    "gable": {
+     "kind": "solid",
+     "id": 5,
+     "data": 5
+    },
+    "gableWindows": {
+     "form": "none",
+     "block": 102,
+     "hostBlock": -1,
+     "hostData": 0,
+     "data": 0,
+     "sill": 2,
+     "width": 2,
+     "height": 2,
+     "spacing": 3
+    }
+   },
+   "wall": {
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 5,
+        "data": 1
+       },
+       "thickness": 4
+      }
+     ],
+     "ending": "repeat"
+    },
+    "extent": 6
+   },
+   "post": {
+    "kind": "solid",
+    "id": 17,
+    "data": 1
+   },
+   "windows": {
+    "form": "arched",
+    "block": 134,
+    "hostBlock": 5,
+    "hostData": 1,
+    "data": 0,
+    "sill": 4,
+    "width": 2,
+    "height": 2,
+    "spacing": 2
+   },
+   "storeys": [],
+   "porch": null,
+   "front": null,
+   "beams": {
+    "block": 17,
+    "data": 1,
+    "reach": 1,
+    "any": true
+   },
+   "doorway": {
+    "door": "air",
+    "head": {
+     "form": "arched",
+     "block": 134,
+     "fill": "upperSlab",
+     "fillBlock": 126,
+     "fillData": 1
+    },
+    "width": 3,
+    "height": 4
+   }
+  }
+ },
+ "dressing": {
+  "styles": {
+   "cot": {
+    "kind": "house",
+    "shell": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 24,
+           "data": 0
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 1
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": null
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 1,
+      "slab": -1,
+      "slabData": 0,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      },
+      "verge": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gableWindows": {
+       "form": "none",
+       "block": 102,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 2,
+       "width": 2,
+       "height": 2,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 24,
+          "data": 2
+         },
+         "thickness": 2
+        },
+        {
+         "material": {
+          "kind": "solid",
+          "id": 5,
+          "data": 1
+         },
+         "thickness": 3
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 5
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "windows": {
+      "form": "arched",
+      "block": 134,
+      "hostBlock": 5,
+      "hostData": 1,
+      "data": 0,
+      "sill": 3,
+      "width": 1,
+      "height": 2,
+      "spacing": 3
+     },
+     "storeys": [],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 1,
+      "any": true
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "arched",
+       "block": 134,
+       "fill": "upperSlab",
+       "fillBlock": 126,
+       "fillData": 1
+      },
+      "width": 2,
+      "height": 3
+     }
+    }
+   }
+  },
+  "props": [
+   {
+    "id": "haul-road",
+    "kind": "stroke",
+    "style": "solid",
+    "claimsGround": true,
+    "radius": 2,
+    "seed": 4,
+    "pave": {
+     "kind": "cell",
+     "seed": 31,
+     "cellSize": 9,
+     "entries": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       }
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+       }
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 172,
+        "data": 0
+       }
+      }
+     ]
+    },
+    "points": [
+     [
+      12,
+      -92
+     ],
+     [
+      6,
+      -84
+     ],
+     [
+      0,
+      -76
+     ],
+     [
+      -2,
+      -62
+     ],
+     [
+      -14,
+      -58
+     ],
+     [
+      -22,
+      -60
+     ]
+    ]
+   },
+   {
+    "id": "gate-cot",
+    "kind": "house",
+    "seed": 11,
+    "front": "posZ",
+    "style": "cot",
+    "wings": [
+     {
+      "corners": [
+       [
+        24,
+        -87
+       ],
+       [
+        32,
+        -80
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "spall-0",
+    "kind": "boulder",
+    "x": -34,
+    "z": -58,
+    "seed": 21,
+    "radius": 3
+   },
+   {
+    "id": "spall-1",
+    "kind": "boulder",
+    "x": -32,
+    "z": -48,
+    "seed": 22,
+    "radius": 2
+   },
+   {
+    "id": "spall-2",
+    "kind": "boulder",
+    "x": -12,
+    "z": -44,
+    "seed": 23,
+    "radius": 2
+   },
+   {
+    "id": "spall-3",
+    "kind": "boulder",
+    "x": 16,
+    "z": -40,
+    "seed": 24,
+    "radius": 3
+   },
+   {
+    "id": "spall-4",
+    "kind": "boulder",
+    "x": 30,
+    "z": -30,
+    "seed": 25,
+    "radius": 2
+   },
+   {
+    "id": "bench-cover",
+    "kind": "flora",
+    "seed": 9,
+    "points": [
+     [
+      -36,
+      -70
+     ],
+     [
+      36,
+      -70
+     ],
+     [
+      36,
+      -16
+     ],
+     [
+      0,
+      -14
+     ],
+     [
+      -36,
+      -18
+     ]
+    ],
+    "spec": {
+     "coverage": 0.18,
+     "scale": 26,
+     "octaves": 2,
+     "fernShare": 0.25,
+     "flowerShare": 0.05,
+     "flowerScale": 14,
+     "tallShare": 0.04
+    }
+   }
+  ]
+ },
+ "biome": {
+  "kind": "solid",
+  "biome": 37
+ },
+ "biomeSource": null,
+ "relief": {
+  "team": {
+   "base": 12,
+   "reach": 0,
+   "step": 1,
+   "landform": "rolling",
+   "grain": {
+    "amplitude": 1.6,
+    "scale": 21,
+    "seed": 41
+   },
+   "marks": [
+    {
+     "id": "plateau-pad",
+     "kind": "area",
+     "h": 23,
+     "bevel": 3,
+     "ring": [
+      [
+       -44,
+       -100
+      ],
+      [
+       -22,
+       -102
+      ],
+      [
+       2,
+       -100
+      ],
+      [
+       26,
+       -101
+      ],
+      [
+       44,
+       -100
+      ],
+      [
+       44,
+       -76
+      ],
+      [
+       34,
+       -74
+      ],
+      [
+       16,
+       -76
+      ],
+      [
+       -6,
+       -74
+      ],
+      [
+       -18,
+       -76
+      ],
+      [
+       -20,
+       -92
+      ],
+      [
+       -34,
+       -92
+      ],
+      [
+       -36,
+       -75
+      ],
+      [
+       -42,
+       -76
+      ]
+     ]
+    },
+    {
+     "id": "bench-pad",
+     "kind": "area",
+     "h": 12,
+     "bevel": 4,
+     "ring": [
+      [
+       -36,
+       -70
+      ],
+      [
+       -34,
+       -71
+      ],
+      [
+       -20,
+       -71
+      ],
+      [
+       -7,
+       -70
+      ],
+      [
+       6,
+       -71
+      ],
+      [
+       22,
+       -70
+      ],
+      [
+       33,
+       -71
+      ],
+      [
+       36,
+       -70
+      ],
+      [
+       36,
+       -18
+      ],
+      [
+       20,
+       -14
+      ],
+      [
+       0,
+       -17
+      ],
+      [
+       -20,
+       -14
+      ],
+      [
+       -36,
+       -18
+      ]
+     ]
+    },
+    {
+     "id": "lip-1",
+     "kind": "scarp",
+     "points": [
+      [
+       44,
+       -75
+      ],
+      [
+       -20,
+       -75
+      ]
+     ],
+     "high": 23,
+     "low": 12,
+     "face": 2,
+     "band": 7
+    },
+    {
+     "id": "lip-2",
+     "kind": "scarp",
+     "points": [
+      [
+       -34,
+       -75
+      ],
+      [
+       -44,
+       -75
+      ]
+     ],
+     "high": 23,
+     "low": 12,
+     "face": 2,
+     "band": 7
+    }
+   ],
+   "pushes": [
+    {
+     "id": "shoulder-w",
+     "amount": 7,
+     "falloff": 6,
+     "crown": 5,
+     "roughness": 3,
+     "seed": 7,
+     "ring": [
+      [
+       -42,
+       -100
+      ],
+      [
+       -34,
+       -98
+      ],
+      [
+       -26,
+       -100
+      ],
+      [
+       -26,
+       -90
+      ],
+      [
+       -34,
+       -88
+      ],
+      [
+       -42,
+       -90
+      ]
+     ]
+    },
+    {
+     "id": "shoulder-e",
+     "amount": 7,
+     "falloff": 6,
+     "crown": 5,
+     "roughness": 3,
+     "seed": 11,
+     "ring": [
+      [
+       26,
+       -100
+      ],
+      [
+       34,
+       -98
+      ],
+      [
+       42,
+       -100
+      ],
+      [
+       42,
+       -90
+      ],
+      [
+       34,
+       -88
+      ],
+      [
+       26,
+       -90
+      ]
+     ]
+    }
+   ]
+  }
+ }
+}

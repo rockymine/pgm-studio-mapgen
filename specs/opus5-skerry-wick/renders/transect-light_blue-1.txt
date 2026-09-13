@@ -1,0 +1,61 @@
+## light_blue-1 (wool) along x
+TRANSECT 25 stations from (-22, 55) to (2, 55), every 1
+  station        ground  surface  water  top  standing            step
+  (  -22,    55)                             2                      void
+  (  -21,    55)                                                    void
+  (  -20,    55)      16       16           16                      
+  (  -19,    55)      16       16           16                      
+  (  -18,    55)      16       16           16                      
+  (  -17,    55)      16       16           16                      
+  (  -16,    55)      16       16           16                      
+  (  -15,    55)      16       16           26                      
+  (  -14,    55)      16       16           26  wool wool-near#1    
+  (  -13,    55)      16       16           26  wool wool-near#1    
+  (  -12,    55)      16       16           26  wool wool-near#1    
+  (  -11,    55)      16       16           59  wool wool-near#1    
+  (  -10,    55)      16       16           59  wool wool-near#1    
+  (   -9,    55)      16       16           59  wool wool-near#1    
+  (   -8,    55)      16       16           26  wool wool-near#1    
+  (   -7,    55)      16       16           26  wool wool-near#1    
+  (   -6,    55)      16       16           26                      
+  (   -5,    55)      16       16           16                      
+  (   -4,    55)      16       16           16                      
+  (   -3,    55)      16       16           16                      
+  (   -2,    55)      15       15           15                      -1
+  (   -1,    55)      15       15           15                      
+  (    0,    55)                                                    void
+  (    1,    55)                                                    void
+  (    2,    55)                                                    void
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-near#1 at (-14, 53)
+
+## light_blue-1 (wool) along z
+TRANSECT 25 stations from (-10, 43) to (-10, 67), every 1
+  station        ground  surface  water  top  standing            step
+  (  -10,    43)                                                    void
+  (  -10,    44)                                                    void
+  (  -10,    45)      15       15           15                      
+  (  -10,    46)      15       15           15                      
+  (  -10,    47)      16       16           16                      +1
+  (  -10,    48)      16       16           16                      
+  (  -10,    49)      16       16           16                      
+  (  -10,    50)      16       16           22                      
+  (  -10,    51)      16       16           23  wool wool-near#1    
+  (  -10,    52)      16       16           24  wool wool-near#1    
+  (  -10,    53)      16       16           25  wool wool-near#1    
+  (  -10,    54)      16       16           59  wool wool-near#1    
+  (  -10,    55)      16       16           59  wool wool-near#1    
+  (  -10,    56)      16       16           59  wool wool-near#1    
+  (  -10,    57)      16       16           24  wool wool-near#1    
+  (  -10,    58)      16       16           23  wool wool-near#1    
+  (  -10,    59)      16       16           22                      
+  (  -10,    60)      16       16           16                      
+  (  -10,    61)      16       16           16                      
+  (  -10,    62)      16       16           16                      
+  (  -10,    63)      15       15           15                      -1
+  (  -10,    64)      15       15           15                      
+  (  -10,    65)                                                    void
+  (  -10,    66)                                                    void
+  (  -10,    67)                                                    void
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-near#1 at (-12, 51)

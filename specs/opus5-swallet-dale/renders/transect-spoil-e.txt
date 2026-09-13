@@ -1,0 +1,61 @@
+## spoil-e (boulder) along x
+TRANSECT 25 stations from (14, -65) to (38, -65), every 1
+  station        ground  surface  water  top  standing            step
+  (   14,   -65)      13       21           21  storey              
+  (   15,   -65)      13       21           21  storey              
+  (   16,   -65)      13       21           21  storey              
+  (   17,   -65)      13       21           21  storey              
+  (   18,   -65)      13       21           21  storey              
+  (   19,   -65)      13       21           21  storey              
+  (   20,   -65)      12       12           12                      DROP -9
+  (   21,   -65)      12       12           12                      
+  (   22,   -65)      12       12           15  boulder spoil-e     
+  (   23,   -65)      12       12           17  boulder spoil-e     
+  (   24,   -65)      12       12           17  boulder spoil-e     
+  (   25,   -65)      12       12           18  boulder spoil-e     
+  (   26,   -65)      12       12           18  boulder spoil-e     
+  (   27,   -65)      12       12           18  boulder spoil-e     
+  (   28,   -65)      12       12           17  boulder spoil-e     
+  (   29,   -65)      12       12           17  boulder spoil-e     
+  (   30,   -65)      12       12           15  boulder spoil-e     
+  (   31,   -65)      12       12           12                      
+  (   32,   -65)      12       12           12                      
+  (   33,   -65)      15       15           15                      BARRIER +3
+  (   34,   -65)      18       18           18                      BARRIER +3
+  (   35,   -65)      20       20           20                      scramble +2
+  (   36,   -65)      21       21           21                      +1
+  (   37,   -65)      22       22           22                      +1
+  (   38,   -65)      22       22           22                      
+rises 5, falls 1, worst step 9: 2 barrier, 1 scramble, 1 drop — DROP -9 at (20, -65); BARRIER +3 at (33, -65); BARRIER +3 at (34, -65); scramble +2 at (35, -65) | walked end to end
+beside: boulder spoil-e at (22, -66)
+
+## spoil-e (boulder) along z
+TRANSECT 25 stations from (26, -77) to (26, -53), every 1
+  station        ground  surface  water  top  standing            step
+  (   26,   -77)      12       12           12                      
+  (   26,   -76)      12       12           12                      
+  (   26,   -75)      12       12           12                      
+  (   26,   -74)      12       12           12                      
+  (   26,   -73)      12       12           12                      
+  (   26,   -72)      12       12           12                      
+  (   26,   -71)      12       12           12                      
+  (   26,   -70)      12       12           12                      
+  (   26,   -69)      12       12           12                      
+  (   26,   -68)      12       12           17  boulder spoil-e     
+  (   26,   -67)      12       12           17  boulder spoil-e     
+  (   26,   -66)      12       12           18  boulder spoil-e     
+  (   26,   -65)      12       12           18  boulder spoil-e     
+  (   26,   -64)      12       12           18  boulder spoil-e     
+  (   26,   -63)      12       12           17  boulder spoil-e     
+  (   26,   -62)      12       12           16  boulder spoil-e     
+  (   26,   -61)      12       12           12                      
+  (   26,   -60)      12       12           12                      
+  (   26,   -59)      12       12           12                      
+  (   26,   -58)      12       12           12                      
+  (   26,   -57)      12       12           12                      
+  (   26,   -56)      12       12           12                      
+  (   26,   -55)      12       12           12                      
+  (   26,   -54)      12       12           12                      
+  (   26,   -53)      12       12           12                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder spoil-e at (24, -68)

@@ -1,0 +1,61 @@
+## spoil-6 (boulder) along x
+TRANSECT 25 stations from (24, -34) to (48, -34), every 1
+  station        ground  surface  water  top  standing            step
+  (   24,   -34)      20       20           20                      
+  (   25,   -34)      20       20           20                      
+  (   26,   -34)      19       19           19                      -1
+  (   27,   -34)      19       19           19                      
+  (   28,   -34)      18       18           18                      -1
+  (   29,   -34)      18       18           18                      
+  (   30,   -34)      17       17           17                      -1
+  (   31,   -34)      21       21           30  boulder spoil-6     BARRIER +4
+  (   32,   -34)      26       26           31  boulder spoil-6     BARRIER +5
+  (   33,   -34)      26       26           32  boulder spoil-6     
+  (   34,   -34)      26       26           33  boulder spoil-6     
+  (   35,   -34)      26       26           33  boulder spoil-6     
+  (   36,   -34)      26       26           33  boulder spoil-6     
+  (   37,   -34)      26       26           33  boulder spoil-6     
+  (   38,   -34)      26       26           33  boulder spoil-6     
+  (   39,   -34)      26       26           32  boulder spoil-6     
+  (   40,   -34)      26       26           31  boulder spoil-6     
+  (   41,   -34)      26       26           29  boulder spoil-6     
+  (   42,   -34)      26       26           26                      
+  (   43,   -34)      26       26           26                      
+  (   44,   -34)      26       26           26                      
+  (   45,   -34)      26       26           26                      
+  (   46,   -34)      26       26           26                      
+  (   47,   -34)      26       26           26                      
+  (   48,   -34)      26       26           26                      
+rises 2, falls 3, worst step 5: 2 barrier, 0 scramble, 0 drop — BARRIER +4 at (31, -34); BARRIER +5 at (32, -34) | walked end to end
+beside: boulder spoil-6 at (31, -36)
+
+## spoil-6 (boulder) along z
+TRANSECT 25 stations from (36, -46) to (36, -22), every 1
+  station        ground  surface  water  top  standing            step
+  (   36,   -46)      26       26           26                      
+  (   36,   -45)      26       26           26                      
+  (   36,   -44)      26       26           26                      
+  (   36,   -43)      26       26           26                      
+  (   36,   -42)      26       26           26                      
+  (   36,   -41)      26       26           26                      
+  (   36,   -40)      26       26           26                      
+  (   36,   -39)      26       26           26                      
+  (   36,   -38)      26       26           31  boulder spoil-6     
+  (   36,   -37)      26       26           32  boulder spoil-6     
+  (   36,   -36)      26       26           33  boulder spoil-6     
+  (   36,   -35)      26       26           33  boulder spoil-6     
+  (   36,   -34)      26       26           33  boulder spoil-6     
+  (   36,   -33)      26       26           33  boulder spoil-6     
+  (   36,   -32)      26       26           33  boulder spoil-6     
+  (   36,   -31)      26       26           33  boulder spoil-6     
+  (   36,   -30)      21       21           32  boulder spoil-6     DROP -5
+  (   36,   -29)      17       17           17                      DROP -4
+  (   36,   -28)      18       18           18                      +1
+  (   36,   -27)      18       18           18                      
+  (   36,   -26)      16       16           16                      -2
+  (   36,   -25)      16       16           16                      
+  (   36,   -24)      16       16           16                      
+  (   36,   -23)      16       16           16                      
+  (   36,   -22)      16       16           16                      
+rises 1, falls 3, worst step 5: 0 barrier, 0 scramble, 2 drop — DROP -5 at (36, -30); DROP -4 at (36, -29) | walked end to end
+beside: boulder spoil-6 at (34, -38)

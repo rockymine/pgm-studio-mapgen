@@ -1,0 +1,72 @@
+## spawn-blue (spawn) along x
+TRANSECT 41 stations from (-40, 114) to (0, 114), every 1
+  station        ground  surface  water  top  standing            step
+  (  -40,   114)                                                    void
+  (  -39,   114)                                                    void
+  (  -38,   114)                                                    void
+  (  -37,   114)                                                    void
+  (  -36,   114)                                                    void
+  (  -35,   114)                                                    void
+  (  -34,   114)                                                    void
+  (  -33,   114)                                                    void
+  (  -32,   114)      12       12           12                      
+  (  -31,   114)      12       12           12                      
+  (  -30,   114)      12       12           12                      
+  (  -29,   114)      12       12           12                      
+  (  -28,   114)      12       12           22                      
+  (  -27,   114)      12       12           22  spawn spawn-1#1     
+  (  -26,   114)      12       12           22  spawn spawn-1#1     
+  (  -25,   114)      12       12           22  spawn spawn-1#1     
+  (  -24,   114)      12       12           22  spawn spawn-1#1     
+  (  -23,   114)      12       12           22  spawn spawn-1#1     
+  (  -22,   114)      12       12           22  spawn spawn-1#1     
+  (  -21,   114)      12       12           22  spawn spawn-1#1     
+  (  -20,   114)      12       12           22  spawn spawn-1#1     
+  (  -19,   114)      12       12           22  spawn spawn-1#1     
+  (  -18,   114)      12       12           22  spawn spawn-1#1     
+  (  -17,   114)      12       12           22  spawn spawn-1#1     
+  (  -16,   114)      12       12           22  spawn spawn-1#1     
+  (  -15,   114)      12       12           22  spawn spawn-1#1     
+  (  -14,   114)      12       12           22  spawn spawn-1#1     
+  (  -13,   114)      12       12           22                      
+  (  -12,   114)      12       12           12                      
+  (  -11,   114)      12       12           12                      
+  (  -10,   114)      12       12           12                      
+  (   -9,   114)      12       12           12                      
+  (   -8,   114)                                                    void
+  (   -7,   114)                                                    void
+  (   -6,   114)                                                    void
+  (   -5,   114)                                                    void
+  (   -4,   114)                                                    void
+  (   -3,   114)                                                    void
+  (   -2,   114)                                                    void
+  (   -1,   114)                                                    void
+  (    0,   114)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (-27, 112)
+
+## spawn-blue (spawn) along z
+TRANSECT 20 stations from (-20, 100) to (-20, 119), every 1
+  station        ground  surface  water  top  standing            step
+  (  -20,   100)      12       12           12                      
+  (  -20,   101)      12       12           12                      
+  (  -20,   102)      12       12           12                      
+  (  -20,   103)      12       12           12                      
+  (  -20,   104)      12       12           12                      
+  (  -20,   105)      12       12           12                      
+  (  -20,   106)      12       12           12                      
+  (  -20,   107)      12       12           12                      
+  (  -20,   108)      12       12           12                      
+  (  -20,   109)      12       12           18                      
+  (  -20,   110)      12       12           19  spawn spawn-1#1     
+  (  -20,   111)      12       12           20  spawn spawn-1#1     
+  (  -20,   112)      12       12           21  spawn spawn-1#1     
+  (  -20,   113)      12       12           22  spawn spawn-1#1     
+  (  -20,   114)      12       12           22  spawn spawn-1#1     
+  (  -20,   115)      12       12           21  spawn spawn-1#1     
+  (  -20,   116)      12       12           20  spawn spawn-1#1     
+  (  -20,   117)      12       12           19  spawn spawn-1#1     
+  (  -20,   118)      12       12           18                      
+  (  -20,   119)      12       12           12                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (-22, 110)

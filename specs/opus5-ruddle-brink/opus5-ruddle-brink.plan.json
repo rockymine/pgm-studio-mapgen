@@ -1,0 +1,98 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Ruddle Brink"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 23,
+  "observerY": 48
+ },
+ "pieces": [
+  {
+   "id": "brow",
+   "role": "piece",
+   "rect": [
+    -11,
+    -25,
+    22,
+    7
+   ],
+   "surface": 23
+  },
+  {
+   "id": "bench",
+   "role": "piece",
+   "rect": [
+    -9,
+    -18,
+    18,
+    15
+   ],
+   "surface": 12
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    0,
+    -25,
+    6,
+    3
+   ],
+   "surface": 23
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -9,
+    -3,
+    18,
+    6
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     12,
+     6
+    ],
+    "facing": "back",
+    "footprint": [
+     5,
+     2,
+     14,
+     8
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [],
+  "destroyables": [],
+  "cores": [
+   {
+    "id": "core-1",
+    "piece": "bench",
+    "at": [
+     14,
+     10
+    ],
+    "lava": 3,
+    "lavaHeight": 3,
+    "float": 6,
+    "leak": 5
+   }
+  ]
+ },
+ "walls": [],
+ "boxes": []
+}

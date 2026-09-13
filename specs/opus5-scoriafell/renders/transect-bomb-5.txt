@@ -1,0 +1,61 @@
+## bomb-5 (boulder) along x
+TRANSECT 25 stations from (18, -24) to (42, -24), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,   -24)      26       26           26                      
+  (   19,   -24)      26       26           26                      
+  (   20,   -24)      26       26           26                      
+  (   21,   -24)      25       25           25                      -1
+  (   22,   -24)      26       26           26                      +1
+  (   23,   -24)      26       26           26                      
+  (   24,   -24)      26       26           26                      
+  (   25,   -24)      25       25           28  boulder bomb-5      -1
+  (   26,   -24)      24       24           28  boulder bomb-5      -1
+  (   27,   -24)      23       23           30  boulder bomb-5      -1
+  (   28,   -24)      23       23           30  boulder bomb-5      
+  (   29,   -24)      24       24           30  boulder bomb-5      +1
+  (   30,   -24)      24       24           30  boulder bomb-5      
+  (   31,   -24)      24       24           30  boulder bomb-5      
+  (   32,   -24)      24       24           30  boulder bomb-5      
+  (   33,   -24)      24       24           30  boulder bomb-5      
+  (   34,   -24)      25       25           29  boulder bomb-5      +1
+  (   35,   -24)      25       25           28  boulder bomb-5      
+  (   36,   -24)      25       25           25                      
+  (   37,   -24)      25       25           25                      
+  (   38,   -24)      26       26           26                      +1
+  (   39,   -24)      26       26           26                      
+  (   40,   -24)      25       25           25                      -1
+  (   41,   -24)      24       24           24                      -1
+  (   42,   -24)      24       24           24                      
+rises 4, falls 6, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder bomb-5 at (25, -26)
+
+## bomb-5 (boulder) along z
+TRANSECT 25 stations from (30, -36) to (30, -12), every 1
+  station        ground  surface  water  top  standing            step
+  (   30,   -36)      22       22           22                      
+  (   30,   -35)      22       22           22                      
+  (   30,   -34)      22       22           22                      
+  (   30,   -33)      22       22           22                      
+  (   30,   -32)      22       22           22                      
+  (   30,   -31)      22       22           22                      
+  (   30,   -30)      22       22           22                      
+  (   30,   -29)      22       22           28  boulder bomb-5      
+  (   30,   -28)      22       22           29  boulder bomb-5      
+  (   30,   -27)      22       22           30  boulder bomb-5      
+  (   30,   -26)      22       22           30  boulder bomb-5      
+  (   30,   -25)      23       23           30  boulder bomb-5      +1
+  (   30,   -24)      24       24           30  boulder bomb-5      +1
+  (   30,   -23)      25       25           30  boulder bomb-5      +1
+  (   30,   -22)      26       26           30  boulder bomb-5      +1
+  (   30,   -21)      28       28           30  boulder bomb-5      scramble +2
+  (   30,   -20)      30       30           30  boulder bomb-5      scramble +2
+  (   30,   -19)      33       33           33                      BARRIER +3
+  (   30,   -18)      36       36           36                      BARRIER +3
+  (   30,   -17)      40       40           40                      BARRIER +4
+  (   30,   -16)      42       42           42                      scramble +2
+  (   30,   -15)      44       44           44                      scramble +2
+  (   30,   -14)      46       46           46                      scramble +2
+  (   30,   -13)      47       47           47                      +1
+  (   30,   -12)      48       48           48                      +1
+rises 14, falls 0, worst step 4: 3 barrier, 5 scramble, 0 drop — scramble +2 at (30, -21); scramble +2 at (30, -20); BARRIER +3 at (30, -19); BARRIER +3 at (30, -18); BARRIER +4 at (30, -17); scramble +2 at (30, -16); scramble +2 at (30, -15); scramble +2 at (30, -14) | walked end to end
+beside: boulder bomb-2 at (28, -38), boulder bomb-5 at (28, -29), boulder bomb-7 at (32, -12)

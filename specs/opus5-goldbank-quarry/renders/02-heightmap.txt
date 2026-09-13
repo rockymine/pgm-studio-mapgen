@@ -1,0 +1,117 @@
+HEIGHTMAP  1 char = 2x2 blocks (the top-left block of each)  x -52..50 across, z -112..110 down
+KEY  char = ground height above y16 in bands of 1 block(s): 0 = y16..16, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
+     -5   -4   -3   -2   -1    0    1    2    3    4    5
+     2086420864208642086420864202468024680246802468024680
+-112 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+-110 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+-108 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+-106 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+-104 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+-102 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+-100 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+ -98 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+ -96 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+ -94 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+ -92 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+ -90 gggggggggggggggggggggHHHHHHHHggggggggggfffgggggggggg
+ -88 gggggggggggggggggggggHHHHHHHHgggggggggffffffffffgggg
+ -86 gggggggggggggggggggggHHHHHHHHggggggggffffffffffffggg
+ -84 gggggggggggggggggggggHHHHHHHHHHHHHHHffffffffffffffgg
+ -82 gggHHHHHHggggggggggggHHHHHHHHHHHHHHHffffffffffffffgg
+ -80 gggHHHHHHgggggggfffffHHHHHHHHHHHHHHHfffffffffffffggg
+ -78 ggfHHHHHHffffffffffffffffffffHHHHHHHffffffffffffgggg
+ -76 gffHHHHHHffffffffffffffffffffHHHHHHHffffggfffggggggg
+ -74 ddeHHffHHggggggggggggggggggggHHHHHHHgggggggggggggggg
+ -72 ddddddddddddddddgggggggggggggggggggggggggggggggggggg
+ -70 ddddddddddddddddceeeeeeeeeeeeeeeeeeeeeeeeeggggggdddd
+ -68 dcccccccccccccccccccccccccccccccccccccccccccccccccdd
+ -66 dddddbbcccccbbbbcccccccccccccccccccccccccccccccccddd
+ -64 aaaaaaaaaaaaaaaaaaaaaaaaaaaddddddddggggddddddddddddd
+ -62 aaaaaa999999999999999999999999999999999999aaaaaaaadd
+ -60 aaaa6aaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbaaaaaaaaaaaaaa
+ -58 aaaa6166aaaaaaaaaaaaaaaaadddddddddddddaaaaaaaaaaaaaa
+ -56 aaaa1123478aaaaaaaaaaaaaaadddddddddddaaaaaaaaaaaaaaa
+ -54 aaaa1123445688aaaaaaaaaaaaaaadddddddaaaaaaaaaaaaaaaa
+ -52 aaaa12234456778aaaaaaaaaaaaaadddaaaaaaaaaaaaaaaaaaaa
+ -50 aaa512234HHH778999aaaaaaaaaadddaaaaaaaaaaaaaaaaaaaaa
+ -48 aaa512234H!H778999999aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ -46 aaa51223455678899999999aaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+ -44 aaa01223455678899999999999aaaaaaaaaaaaaaaaaaaaaaaaaa
+ -42 aaa0122345567888889999999988887887aaaaaaaaaaaaaaaaaa
+ -40 aaa012234556788888889999988766776543265aaaaaaaaaaaaa
+ -38 aa50122345567888888888898876655466554325aaaaaaaaaaaa
+ -36 aa501223455678888888888887665443325654325aaaaaaaaaaa
+ -34 aa5012234556777788888887766544322110454321aaaaaaaaaa
+ -32 aa00122345567777778888776654432210000024321aaaaaaaaa
+ -30 aa0012234556777777777776554432211000000013325aaaaaaa
+ -28 aa00122345567777777777655433221000000000000325aaaaaa
+ -26 aa011223455666777777765543321101000000000000025aaaaa
+ -24 a50012334556666667766554332110000000000000000001aaaa
+ -22 a600123345566666666654433211000000000000000000000aaa
+ -20 a510123345666666666544332110000000000000000000001aaa
+ -18 a500123345556666665443221100000000000000000000111aaa
+ -16 aa001233455555565544322101001000000000001000001115aa
+ -14 aa001233455555555443221000000000000000000000112215aa
+ -12 aa001233455555554332210000000000000000000001122215aa
+ -10 aa001233444555543321110010001001001000000011222215aa
+  -8 aa001233444445433211000001001001000000000112222215aa
+  -6 aa001233444444332110000000000000100101101123332215aa
+  -4 aa601233444443221100000000000000000000012233332210aa
+  -2 aa501233344432211000000000000100000000122333332210aa
+   0 aa501233333322111010000000001000000001223433332210aa
+   2 aa511233333221001001001000000000000112234444432210aa
+   4 aa511233332210000000000100000000101123344444432210aa
+   6 aaa112233211010001000000000000000112334444444322105a
+   8 aaa112222110000000100100100000001123345544444322116a
+  10 aaa112221100110000000000000000012233455555544322105a
+  12 aaa112211010000100100100000000122334555555544321105a
+  14 aaa111100000000000000000000001223445555555544321105a
+  16 aaa111000000000000000000000012234456666555544321105a
+  18 aaa511011111100100000100101122344566666665544321100a
+  20 aaa500000000000000000010011233445666666666544321100a
+  22 aaaa00001000000000000000112334556676666666544321100a
+  24 aaaaa1001001001011011011123345566777766666544321100a
+  26 aaaaaa521000000000010012233455677777777766544321105a
+  28 aaaaaaa52320000000100122344556777777777776544321105a
+  30 aaaaaaaa5123300000111223445567788777777776544321105a
+  32 aaaaaaaaaa1234410011223445667788888777777654432110aa
+  34 aaaaaaaaaaa123455212234456678888888888776654432110aa
+  36 aaaaaaaaaaaa62345664344566788888888888876654432110aa
+  38 aaaaaaaaaaaaa5233456755667889998888888876654332115aa
+  40 aaaaaaaaaaaaaaaa6665678778899999998888876654332105aa
+  42 aaaaaaaaaaaaaaaaaaaaaa8898999999999988876654332105aa
+  44 aaaaaaaaaaaaaaaaaaaaaaaaaaaa999999999987665433210aaa
+  46 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa999999987H!H433210aaa
+  48 aaaaaaaaaaaaaaaaaaaaaaddaaaaaaaaa9999987HHH433210aaa
+  50 aaaaaaaaaaaaaaaaaaaaaaddaaaaaaaaaaaa9987665433215aaa
+  52 aaaaaaaaaaaaaaaaaaaddddaaaaaaaaaaaaaaa87665433215aaa
+  54 aaaaaaaaaaaaaaaadddddddaadaaaaaaaaaaaaaa865433215aaa
+  56 aaaaaaaaaaaaaaaddddddddddddaaaaaaaaaaaaaaaa733215aaa
+  58 aaaaaaaaaaaaaaaddddddddddddaaaaaaaaaaaaaaaaaaa61aaaa
+  60 ddaaaaaaaa999999999999999999999999999999999999a8aaaa
+  62 dddaaaaaaaabbcccccbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaa
+  64 ddddddddddccceeeeeccccccccbbbbbbbbbbaaaaadddddaddddd
+  66 ddcccccccccccccccccccccccccccccccccccccccccccccccccd
+  68 ddddceeeeecccccccccccccccccccccccccccccccccccccddddd
+  70 ddggggggggggggggggggggggggggggggggggdddddddddddddddd
+  72 ggggggggggggggggHHHHHHHHggggggggggggggggggggeeeeeedd
+  74 ggggggggggggggffHHHHHHHHffffffffffffgggggggHHHHHHHeg
+  76 ggggggffffffffffHHHHHHHHfffffffffffffffffffHHHHHHHfg
+  78 ggggffffffffffffHHHHHHHHHHHHHHHfffffffffffgHHHHHHHgg
+  80 gggfffffffffffffHHHHHHHHHHHHHHHggggggggggggHHHHHHHgg
+  82 ggffffffffffffffHHHHHHHHHHHHHHHggggggggggggHHHHHHHgg
+  84 gggfffffffffffffHHHHHHHHHHHHHHHggggggggggggggggggggg
+  86 ggggfffffffffffggggggggHHHHHHHHggggggggggggggggggggg
+  88 gggggggfffffffgggggggggHHHHHHHHggggggggggggggggggggg
+  90 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+  92 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+  94 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+  96 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+  98 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+ 100 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+ 102 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+ 104 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+ 106 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+ 108 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+ 110 gggggggggggggggggggggggggggggggggggggggggggggggggggg
+low y16, high y32, range 16

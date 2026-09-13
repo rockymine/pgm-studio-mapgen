@@ -1,0 +1,74 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Blind Tarn"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 14,
+  "surface": 24,
+  "observerY": 62
+ },
+ "pieces": [
+  {
+   "id": "fell",
+   "role": "piece",
+   "rect": [
+    -10,
+    -24,
+    20,
+    26
+   ]
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -3,
+    -24,
+    6,
+    3
+   ]
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     12,
+     6
+    ],
+    "facing": "back",
+    "footprint": [
+     5,
+     2,
+     14,
+     8
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [],
+  "cores": [],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "piece": "fell",
+    "at": [
+     12,
+     40
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Tarnstone"
+   }
+  ]
+ },
+ "walls": [],
+ "boxes": []
+}

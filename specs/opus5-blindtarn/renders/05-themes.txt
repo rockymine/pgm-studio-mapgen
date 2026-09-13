@@ -1,0 +1,10 @@
+THEMES  4 themes over 15360 ground cells, 10 distinct surface blocks
+  fell  10013 cells (65.2%)  80:0 Snow Block, 1:0 Stone, 2:0 Grass Block, 98:0 Stone Bricks, 7:0 Bedrock, 35:14 Red Wool, 35:11 Blue Wool
+  crag  2848 cells (18.5%)  1:0 Stone, 1:5 Andesite
+  tarn  1652 cells (10.8%)  13:0 Gravel
+  ice  847 cells (5.5%)  80:0 Snow Block, 79:0 Ice
+borders:
+  crag | fell  388 cells
+  fell | tarn  144 cells
+  fell | ice  136 cells
+  ice | tarn  120 cells

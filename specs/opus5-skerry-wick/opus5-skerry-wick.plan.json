@@ -1,0 +1,151 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Skerry Wick"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 14,
+  "observerY": 44
+ },
+ "pieces": [
+  {
+   "id": "home",
+   "role": "piece",
+   "rect": [
+    -11,
+    -20,
+    8,
+    5
+   ]
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -9,
+    -19,
+    5,
+    2
+   ]
+  },
+  {
+   "id": "holm-far",
+   "role": "piece",
+   "rect": [
+    -11,
+    -12,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "holm-near",
+   "role": "piece",
+   "rect": [
+    0,
+    -13,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "reef",
+   "role": "piece",
+   "rect": [
+    -7,
+    -11,
+    4,
+    2
+   ]
+  },
+  {
+   "id": "hub",
+   "role": "piece",
+   "rect": [
+    -7,
+    -6,
+    8,
+    4
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "wick",
+   "rect": [
+    -7,
+    -2,
+    14,
+    4
+   ],
+   "holes": []
+  },
+  {
+   "id": "reaches",
+   "rect": [
+    -11,
+    -15,
+    15,
+    9
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     22,
+     5
+    ],
+    "facing": "back",
+    "footprint": [
+     4,
+     1,
+     16,
+     8
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-far",
+    "piece": "holm-far",
+    "at": [
+     10,
+     10
+    ],
+    "footprint": [
+     5,
+     5,
+     10,
+     10
+    ]
+   },
+   {
+    "id": "wool-near",
+    "piece": "holm-near",
+    "at": [
+     10,
+     10
+    ],
+    "footprint": [
+     5,
+     5,
+     10,
+     10
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}
