@@ -77,7 +77,7 @@ comes from the repository's author.
 
 Grouped by the run that produced them. Mode is what the map's own `<gamemode>` declares.
 
-**Twenty-five boards sit directly under `specs/`, and the other 111 under `specs/archive/`.** The flat set is the
+**Eighteen boards sit directly under `specs/`, and the other 118 under `specs/archive/`.** The flat set is the
 one worth reading. The archive is a record rather than a catalogue of examples: probes, boards built to find
 the limit of one mechanism, early runs, and boards a later one superseded. The split is there because the
 cheapest thing a model does is imitate whatever it opens first, so what it opens first should be worth

@@ -31,8 +31,8 @@ large `*.finish.json`.
 **A one-line answer is a `grep`, not a file read.** `03-slopes.txt` runs to 10k tokens and its
 verdict is one line: `grep 'cells:' …/03-slopes.txt`.
 
-**`specs/` is split, and the split is the reading rule.** Fifteen boards sit flat and are worth
-reading; the other 111 are under `specs/archive/` — probes, experiments run to find the limit
+**`specs/` is split, and the split is the reading rule.** Eighteen boards sit flat and are worth
+reading; the other 118 are under `specs/archive/` — probes, experiments run to find the limit
 of one mechanism, early runs, superseded boards. **Nothing under `specs/archive/` is a model
 for anything.**
 
