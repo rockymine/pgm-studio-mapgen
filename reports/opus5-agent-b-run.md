@@ -35,7 +35,7 @@ place every prop they state**.
 
 | slug | mode | board | score | declined | dead | themes | the one thing it is |
 |---|---|---|---|---|---|---|---|
-| `opus5-flintwick` | CTW | 80 × 200 | 1.48 | 0 of 42 | **0.0%** | chalk 61.9 · sward 18.9 · strand 13.5 · knap 5.7 | flint painted by angle, so the dark is only ever on a face |
+| `opus5-flintwick` | CTW | 80 × 220 | 1.12 | 0 of 42 | **0.0%** | chalk 64.3 · sward 20.0 · strand 13.3 · knap 2.4 | flint painted by angle, so the dark is only ever on a face |
 | `opus5-grykefell` | DTM | 80 × 200 | 0 | **0** of 36 | 13.1% | fell 70.1 · turf 27.5 · scree 2.4 | the ground is the cover; a coast drawn by sixteen vertex inserts |
 | `opus5-birkmire` | DTC | 80 × 200 | 0 | **0** of 44 | 14.7% | mire 61.0 · ice 34.2 · holm 3.0 · garth 1.9 | one place with nothing on it, and the core is on it |
 | `opus5-sparholt` | KotH | 80 × 150 | 0 | **0** of 8 | n/a | yard 65.1 · rock 26.1 · bank 6.4 · adit 2.4 | a building with a board in it, on two storeys |
@@ -260,6 +260,96 @@ board having no plan goal — not the empty-board fault. That is now stated as a
 | slug | props | dead | flights | trees on soil | gate |
 |---|---|---|---|---|---|
 | `opus5-flintwick` | 42 placed, 0 declined | **0.0%** | both clean | 9 of 9 | OPEN |
+
+*(superseded below: flintwick was rebuilt again with a lane per wool room.)*
 | `opus5-grykefell` | 36 placed, 0 declined | **13.1%** | n/a | 6 of 6 | OPEN |
 | `opus5-birkmire` | 44 placed, 0 declined | **14.7%** | clean | 11 of 11 | OPEN |
 | `opus5-sparholt` | 8 placed, 0 declined | artefact | clean | n/a | OPEN |
+
+
+---
+
+# The lane round: a wool room is not a thing you put beside a spawn
+
+`opus5-flintwick` shipped with its two wool rooms **flanking the spawn** — red's spawn footprint
+x −15..15 z 85..100 and its rooms x −40..−20 and 20..40 in the **same z band**, five blocks of void
+apart, with nothing between them. A room a defender is already standing in is not a room anybody has
+to commit to reaching, and this was the only one of my four boards where the objective was not at the
+end of something.
+
+**Nothing told me, and the reason is worth writing down.** `WL2`'s prose is *"on a different lane than
+the spawn; wool↔spawn ≥ 20"* and **only the second clause is implemented** — and it is measured from
+the spawn point to the wool block, which a twenty-block-wide room clears comfortably while its
+footprint sits alongside the spawn's. `WL6`, *each wool on a distinct lane*, **has no term at all**.
+The board evaluated `valid true` and pre-flighted `OPEN` with the fault in it. No read confirms this
+one; it is read off the plan by looking at it.
+
+## The shape, which the composer already knows
+
+`GET /api/compose` reports every wool unit as **`boxes: 2`** — the room *and* its lane — against
+`boxes: 1` for a spawn or a hub. `specs/opus5-coinfall` is the worked example in this repository:
+`camp` (spawn) `[-2,-16,4,3]` → `run` (piece) `[-5,-13,15,3]` → `plinth` (wool-room) `[10,-13,4,3]`.
+Spawn, then a lane, then the room at its end.
+
+Flintwick now:
+
+```
+ 13 |AAAAAACCCCBBBBBB|    A  west-nab   x −40..−10  z  10..70
+ 14 |DDDD  CCCC  EEEE|    D  lane-w     x −40..−20  z  70..80    ← the wall at this seam
+ 16 |DDDD  CCCC  EEEE|    D' head-w     x −40..−20  z  80..95
+ 17 |DDDD FFFFFF EEEE|    F  staith     x −15..15   z  85..100
+ 19 |GGGG FFFFFF HHHH|    G  knapp-w    x −40..−20  z  95..110
+```
+
+Twenty-five blocks of lane, the width of the room, running off the back of each nab, with a column of
+void either side of the spawn so the two never touch. The route is spawn → wick → nab → lane → room
+and there is no short way. The board grew from 200 to 220 blocks long and `fill-ratio` fell from
+**0.794 to 0.733** — the same measurement saying there is more void in it than there was.
+
+## The lane carries one thing, and it took three builds to make it carry that
+
+**The wall.** A `PlanWall` between `lane-w` and `head-w`, so it stamps at the seam **fifteen blocks
+in front of the room's door** — stated at the lane's mouth instead, `ST8` said *stands 25 blocks from
+the wool room's entrance; about 15 in front is the seat*. `column at (−30, 79)` reads three courses of
+bedrock with a **cobweb** cap over the lane's ground: the studio's standard approach wall, the one
+`B99` warns reads as impassable on the traversability render while being nothing of the kind.
+Preflight walks it.
+
+**A wall's height comes from the plan, not from the relief.** With the lane stated at surface 26 and
+the relief settling it at 31, the wall's top landed at y30 and the terrain **buried it** — bedrock,
+cobweb and all, under white clay. A wall in the document and no wall in the world, at 200 and `OPEN`.
+The lane's pieces are now stated at 31, read off the built world, and the wall stands `y27..33` with
+its cobweb at `y34`. `EL1`'s resulting five-block seam against `west-nab` is not in the world: both
+sides solve within a block and the transect reads `worst step 0`.
+
+**And a ramp cut a hole in the lane.** A `level` flight up the head, anchored 26 → 30 from the plan's
+numbers rather than from the ground, put a five-course slot across the mouth — `DROP −5 at (−30, 78)`
+— so the spur was one-way: you could fall in and not climb out. The lane's own terrain already climbs
+it. Both flights came off. *A lane needn't be flat; what it must not have is a hole.* That is the
+third time on this board that **one number taken from the plan instead of from a read** put a flight
+wrong, and it is the single most expensive habit of this whole run.
+
+Up the lane, (−30, 64) → (−30, 100): `rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop |
+walked end to end`. The wool sits at its end at `-30,30,102`. The two knapping yards moved off the
+lane and onto the rooms' own doorsteps — a fifteen-deep paved yard in the middle of a lane is exactly
+the filling a lane must not have — and one boulder that had come to stand on the east lane moved off
+it.
+
+## Flintwick, after
+
+```
+score 1.12  ·  valid true  ·  fill-ratio 0.733 (soft, standing)
+placed 42, declined 0        coverage 13 943 of 13 944 reached — 0.0% dead
+03-slopes  12 882 walked, 568 scrambled, 494 barrier, 16 faces
+themes     chalk 64.3 · sward 20.0 · strand 13.3 · knap 2.4
+preflight  round-trip ✓  mirror ✓  buildability ✓  traversability ✓   export OPEN
+stair-w    rises 1, falls 11, worst step 2: 0 barrier, 0 scramble, 0 drop
+ramp-e     rises 0, falls  8, worst step 3: 0 barrier, 0 scramble, 0 drop
+```
+
+One new open item, in the review: `04-reach.txt` now lists eight patches it says no player can get
+to, the largest 6 787 cells at floor y19 with reason `no-build-zone`. Two direct transects disagree —
+the west stair walks down to the strand and the strand walks the full width — and the file's own
+header says such patches need not be faults. Not settled.
+
+The other three boards are untouched by this round and stand as they were.

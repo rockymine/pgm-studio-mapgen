@@ -19,7 +19,8 @@ the hill is holding a place with no back to it.*
 **opus5-mirkholt — CTW.** *A wood dark enough that the only things you can see across are the two
 clearings the wools stand in, cut by one hollow way that is roofed and blind both ways — so a wool run
 is a choice between the lane you cannot see out of and the brow above it, where you are the one thing
-moving that anybody can see.*
+moving that anybody can see; and each wool stands 53 blocks down a bare spur of its own, so reaching
+one is a commitment rather than a step sideways out of the door.*
 
 **opus5-slakemoss — DTC.** *A hall the moss and the water took back: each core stands on a dry plinth
 in a ruined chapter house, and the middle is a roofless nave already under water — so the short way to
@@ -38,7 +39,7 @@ stained clay, dark oak, podzol and mossy cobble under swamp, deep-ocean and roof
 |---|---|---|---|---|---|---|
 | `opus5-peatgarth` | DTM | 80 × 200 | 91.4 / 5.7 / 2.9 | 11 790 · 74 · 296, 4 faces | 30 placed, **0 declined** | 25.3 % |
 | `opus5-basaltmere` | KotH | 90 × 190 | 64.2 / 27.0 / 5.8 / 3.0 | 12 781 · 234 · 720, 8 faces | 38 placed, 1 declined | 49.3 %* |
-| `opus5-mirkholt` | CTW | 100 × 200 | 51.4 / 37.1 / 11.4 | 9 980 · 220 · 300, 8 faces | 30 placed, 3 declined | 0.0 % |
+| `opus5-mirkholt` | CTW | 100 × 200 | 48.2 / 44.4 / 7.4 | 9 912 · 98 · 90, 4 faces | 46 placed, 1 declined | 0.1 % |
 | `opus5-slakemoss` | DTC | 90 × 200 | 40.4 / 31.5 / 28.1 | 14 292 · 182 · 326, 4 faces | 40 placed, 1 declined | 27.8 % |
 
 \* not a coverage figure that means anything: `GET /coverage` cannot see a control point, so on a KotH
@@ -50,7 +51,7 @@ Relief reads, all four with symmetry error 0 and no silent marks:
 |---|---|---|---|---|---|
 | peatgarth | 0.431 | 0.167 | 0 / 0 | rolling | none |
 | basaltmere | 0.649 | 0.477 | 4 / 1 | rolling | none |
-| mirkholt | 0.459 | 0.166 | 2 / 0 | rolling | none |
+| mirkholt | 0.457 | 0.343 | 0 / 0 | rolling | none |
 | slakemoss | 0.713 | 0.486 | 1 / 1 | plain | none |
 
 Incline distributions, which is where each board's slope bands were cut:
@@ -59,7 +60,7 @@ Incline distributions, which is where each board's slope bands were cut:
 |---|---|---|---|---|---|---|
 | peatgarth | 41.3 | 30.0 | 17.3 | 6.7 | 4.7 | 22 / 34 |
 | basaltmere | 47.2 | 22.9 | 16.5 | 5.3 | 8.1 | 18 / 32 |
-| mirkholt | 46.9 | 28.5 | 11.1 | 8.0 | 5.4 | 16 / 30 |
+| mirkholt | 46.7 | 25.9 | 17.8 | 7.9 | 1.7 | 16 / 30 |
 | slakemoss | 62.8 | 21.6 | 9.0 | 2.5 | 4.0 | 16 / 30 |
 
 No distribution has a spike in it, which is the read that says the board is reporting its own shape
@@ -76,7 +77,7 @@ Per-board detail is in `review/<slug>.md`; the summary:
   visible from the nave, the west bank and the head of the stair. Mirkholt: both wool blocks inside
   their own rooms with no terrain over them.
 - **Spawn faces away.** Yaw against the bearing to the target objective: peatgarth 4°, basaltmere 0°,
-  slakemoss 5°, mirkholt 1° and 17° (its two target rooms, both well inside the 90° the fault wants).
+  slakemoss 5°, mirkholt 12° and 10° (its two target rooms, both well inside the 90° the fault wants).
 - **Spawn faces a wall.** Door transects: every board reads worst step 1, 0 barrier, 0 scramble over
   the first fifteen blocks out of the door.
 - **Stairs that end nowhere.** Walked per flight rather than assumed. Basaltmere's east spit:
@@ -221,6 +222,43 @@ is the read declining to answer rather than the empty-board fault — its `journ
 slakemoss's 10 and mirkholt's 21 is the tell, and it is now footnoted in the table and rewritten in
 `review/opus5-basaltmere.md`. The oracle question below is kept, because the part of it that is about
 water is still open and is not a question about the tool.
+
+## Second round of author feedback: mirkholt's wool rooms
+
+**The finding was right and no read would have caught it.** All three back pieces shared edges —
+`west-cage` | `lodge` | `east-cage` — so each room's footprint stood **9 blocks** from the spawn's with
+no lane anywhere between them. `WL2` states *"on a different lane than the spawn; wool↔spawn ≥ 20"* and
+**only the distance clause is implemented**; it passes comfortably, because a room wide enough puts its
+wool block far away while the rooms still touch. `WL6` — each wool on a distinct lane — has **no term at
+all**. Score 0, no refusal, wrong board.
+
+**Rebuilt to the composer's own shape**, which is why it reports every wool unit as `boxes: 2` (room
+plus lane) against `boxes: 1` for a spawn or a hub, and which `opus5-coinfall` shows as `camp` → `run`
+→ `plinth`:
+
+- **west spur** — `lodge` (x −5..20) → `west-lane` (x −30..−5, **25 blocks**) → `west-cage` (x −50..−30),
+  all in the z 80..95 band.
+- **east spur** — off the garth's east side, running south into the quarter the shift left empty:
+  `east-lane` (x 20..35, z 55..80, **25 blocks**) → `east-cage` (x 20..35, z 35..55).
+
+Read back: wools at (−44, 15, 87) and (27, 15, 45), spawn at (7, 90), and the walk to each is **53
+blocks with 0 drops** — balanced to the block, which is `WL9` satisfied by construction. 82 blocks
+apart, inside `WL7`'s 46–143.
+
+**Both lanes are bare.** `column` at (−12, 87), (−20, 87), (−28, 87), (27, 60), (27, 68) and (27, 76)
+reads grass block with nothing standing. The tree lattice excludes the two lane rectangles outright,
+the understorey flora stops at z 80, and the four remaining boulders are in the wood and on the brow.
+
+**`fill-ratio` was re-read rather than assumed,** as instructed — two spurs are land. It came back
+**0.55**, outside `G8`'s band, and the plan was trimmed (toe 6 cells → 5, brow 10 → 8, garth 11 → 10)
+until the evaluate scored **0** again.
+
+**What else moved, and why it is better.** The stair off the brow is gone: a push whose skirt and crown
+climb at the same rate has no face, and a flight is for a face — its keep-out had also blanketed a
+20-block swathe of a 40-block wood. With it gone, the hollow way moved to hug the wood's east edge and
+its reach came down 12 → 9, so the plantable mass is one strip rather than two slivers. The wood went
+from **8 trunks a side to 17**, barrier from **300 to 90** in 4 faces instead of 8, `largestField` from
+0.166 to **0.343**, and the board now declines **one** prop out of 46.
 
 ## Where things are
 

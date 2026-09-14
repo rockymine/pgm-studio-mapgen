@@ -8,9 +8,9 @@
 *angle* rather than by place, so a black cell can only appear where the ground has an exposed face —
 the sea cliff, the cut behind each wool room, the sides of a stair.
 
-80 × 200 blocks, `rot_180`, cell 5, `maxPlayers` 24, ground y19–y35, observer y60. Six plan pieces,
-two build zones, six relief marks, two pushes, thirteen authored shapes, four themes, **42 props
-placed and none declined**.
+80 × 220 blocks, `rot_180`, cell 5, `maxPlayers` 24, ground y19–y35, observer y60. Ten plan pieces,
+two build zones, two plan walls, six relief marks, two pushes, eleven authored shapes, four themes,
+**42 props placed and none declined**.
 
 ## The wick, and why the plan has a hole in it
 
@@ -46,6 +46,79 @@ wide — a different board, and a thin one for 24 players. It is recorded rather
 *The same term is not measured at all on this run's two destroy boards, which have the identical
 piece geometry and score 0.*
 
+## A wool room stands at the end of its own spur
+
+The first shape of this board flanked the spawn with its two rooms: red's spawn footprint x −15..15
+z 85..100 and its rooms x −40..−20 and 20..40 **in the same z band**, five blocks of void apart. A
+room a defender is already standing in is not a room anybody has to reach.
+
+**No rule says so.** `WL2`'s text is *"on a different lane than the spawn; wool↔spawn ≥ 20"* and only
+the second clause is measured — and the hard floor clears easily, because a room 20 blocks wide can
+put its wool block far from the spawn point while the two footprints sit side by side. `WL6`, *each
+wool on a distinct lane*, has no term at all. The board evaluated at `valid true` with nothing to say
+about it.
+
+The shape it wants is the composer's own, which reports every wool unit as `boxes: 2` — the room
+**and** its lane — against `boxes: 1` for a spawn or a hub. `specs/opus5-coinfall` is the worked
+example here: `camp` (spawn) → `run` (piece) → `plinth` (wool-room). So:
+
+```
+ 13 |AAAAAACCCCBBBBBB|    A  west-nab   x −40..−10  z  10..70
+ 14 |DDDD  CCCC  EEEE|    D  lane-w     x −40..−20  z  70..80   ← wall at the far seam
+ 16 |DDDD  CCCC  EEEE|    D' head-w     x −40..−20  z  80..95
+ 17 |DDDD FFFFFF EEEE|    F  staith     x −15..15   z  85..100
+ 19 |GGGG FFFFFF HHHH|    G  knapp-w    x −40..−20  z  95..110
+ 21 |GGGG        HHHH|
+```
+
+Twenty-five blocks of lane, the width of the room, running off the back of each nab — with a column
+of void either side of the spawn so the two never touch. The route to a room is now spawn → wick →
+nab → lane → room, and there is no short way.
+
+`fill-ratio` fell from 0.794 to **0.733** with the lanes cut in, which is the same measurement saying
+the board has more void in it than it had.
+
+## The wall on the lane, and the two ways to get it wrong
+
+A lane is a way to walk and not a place to dress. This one carries one thing: a **bedrock approach
+wall**, stated as a `PlanWall` between `lane-w` and `head-w` so it stamps at the seam **fifteen blocks
+in front of the room's door**, which is where `ST8` seats one. Stated at the lane's mouth instead it
+read `approach wall … stands 25 blocks from the wool room's entrance — about 15 in front is the seat`.
+
+`column at (−30, 79)`:
+
+```
+y 34   30:0  Cobweb      the course you climb through
+y 33   7:0   Bedrock
+…
+y 27   7:0   Bedrock
+```
+
+Three courses of bedrock over the lane's own ground with a cobweb cap — the studio's standard
+approach wall, and the structure `B99` warns reads as impassable on the traversability render while
+being nothing of the kind. `GET …/preflight` walks it: *spawn ↔ objective chain connected across the
+build geometry*.
+
+**It had to be got wrong twice first.** A wall's height comes from the **plan's** surface, not from
+what the relief settles on: with the lane stated at 26 and the relief putting it at 31, the wall's
+top landed at y30 and the terrain buried it, cobweb and all — a wall in the document, no wall in the
+world, at 200 and `OPEN`. The lane's four pieces are now stated at 31, read off the built world, and
+`EL1`'s resulting five-block complaint against `west-nab` is not in the world: both solve within a
+block of each other and the transect up the lane reads `worst step 0`.
+
+And a **`level` flight on the lane cut a hole in it.** A ramp up the head, anchored 26 → 30 from the
+plan's numbers rather than from the ground, put a five-course slot across the mouth — `DROP −5 at
+(−30, 78)` — which made the spur one-way. The lane's own terrain already climbs it; both flights came
+off. A lane needn't be flat, and what it must not have is a hole.
+
+Up the lane now, (−30, 64) → (−30, 100):
+
+```
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+```
+
+and the wool sits at the end of it: `<wool team="blue-team" color="red" location="-30,30,102">`.
+
 ## The one argument the board makes
 
 ```json
@@ -69,8 +142,8 @@ grass one time in five, so the flat mottles rather than reading as a white plate
 `sward` — grass over coarse dirt over chalk — is painted in three hollows where soil actually stays:
 the coombe and the lee of each arm.
 
-`05-themes.txt`: `chalk 8 502 cells (61.9%)`, `sward 2 604 (18.9%)`, `strand 1 852 (13.5%)`,
-`knap 784 (5.7%)`, with `173:0 Coal Block` present in the chalk's surface census and in the knapping
+`05-themes.txt`: `chalk 8 966 cells (64.3%)`, `sward 2 790 (20.0%)`, `strand 1 852 (13.3%)`,
+`knap 336 (2.4%)`, with `173:0 Coal Block` present in the chalk's surface census and in the knapping
 yards' and nowhere else. Borders: `chalk | sward 478 cells`, `chalk | knap 224`, `chalk | strand 190`.
 
 Every one of the nine trees, read on the built world:
@@ -89,12 +162,12 @@ Angle distribution over 13 684 cells:
 8.0% at 40° or steeper
 ```
 
-`03-slopes.txt`: **12 182 walked, 782 scrambled, 778 barrier, 20 faces**, the largest 186 cells at
-x −37..11 z −72..−45.
+`03-slopes.txt`: **12 882 walked, 568 scrambled, 494 barrier, 16 faces**, the largest 148 cells at
+x −19..12 z −73..−45.
 
 ## The fault-catalogue reads
 
-**Empty board — 0.0% dead.** `GET …/coverage`: 13 742 ground cells, **13 741 reached, 1 dead**, no
+**Empty board — 0.0% dead.** `GET …/coverage`: 13 944 ground cells, **13 943 reached, 1 dead**, no
 dead patch large enough to list. Two objectives a side plus a spawn between them is the shape that
 reads this way by construction, and the wick is what keeps the two arms on separate journeys.
 
@@ -176,6 +249,8 @@ walks the spawn's own crossings at `worst step 1`.
 | `WL2` | `spawn-wool-distance 25`, band `[27, 170]` | wool rooms too close to the spawn |
 | `FR8`/`FR9` | a 10-block frontline is a funnel | the bay was not a build zone |
 | `ST9`/`ST10` | 24 × 11 footprint, 40 × 15 spawn piece | a spawn piece is at most 20 × 30 |
+| `ST8` | the approach wall stands 25 blocks from the room's entrance | about 15 in front is the seat, so the lane is two pieces and the wall stamps at their seam |
+| *(nothing)* | — | a wool room **butted onto the spawn**. `WL2` measures only its distance clause and `WL6` has no term, so a board with no lane at all evaluates clean |
 | `HS4` | `doorHead.block` stone brick, fill quartz | a head's two corners and the line between them are one material |
 | `SK4`/`SK3` | *'wall-e' is a path of width 0, so it draws no ground* | a **polyline states its band as `radius` and its centreline as `vertices`**, like every other shape. Given `width` and `points` it stores at 200, pre-flights OPEN, and is simply not in the world |
 | *(nothing)* | — | a `raise 0` paint patch drawn after a flight **flattens it**, in silence. No rule fires; only a transect along the flight says so |
@@ -196,6 +271,11 @@ world void       24 roofed void(s), 2 of them sealed
 
 - **The `garth` · `spawn-red` seam**, above.
 - **`fill-ratio 0.794`**, above.
+- **`04-reach.txt` now lists eight patches of standing ground it says no player can get to**, the
+  largest 6 787 cells at floor y19 with reason `no-build-zone`. Two direct reads disagree: the west
+  stair walks from the down to the strand (`(−29,40) → (−29,10)`: `worst step 2, 0 barrier`) and the
+  strand itself walks the full width at z 12 (`worst step 0`). The file's own header says such patches
+  need not be faults. Which of the two readings is right is not settled here.
 - **A question for the author, not a claim:** the wick is a build zone, so the bay can be bridged as
   well as the sound. That gives a raider three crossings — the sound at either arm, and the bay
   between them — and the bay crossing is the only one that is *not* overlooked by a cliff. Is that a
