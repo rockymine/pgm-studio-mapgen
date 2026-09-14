@@ -1,0 +1,87 @@
+## spawn-blue (spawn) along x
+TRANSECT 47 stations from (-23, -68) to (23, -68), every 1
+  station        ground  surface  water  top  standing            step
+  (  -23,   -68)      20       20           20                      
+  (  -22,   -68)      20       20           20                      
+  (  -21,   -68)      20       20           20                      
+  (  -20,   -68)      20       20           20                      
+  (  -19,   -68)      20       20           20                      
+  (  -18,   -68)      20       20           20                      
+  (  -17,   -68)      20       20           20                      
+  (  -16,   -68)      20       20           20                      
+  (  -15,   -68)      26       26           29  ironcube spawn-1:1#1  BARRIER +6
+  (  -14,   -68)      26       26           29  ironcube spawn-1:1#1  
+  (  -13,   -68)      26       26           29  ironcube spawn-1:1#1  
+  (  -12,   -68)      26       26           26                      
+  (  -11,   -68)      26       26           26                      
+  (  -10,   -68)      26       26           38                      
+  (   -9,   -68)      26       26           38  spawn spawn-1#1     
+  (   -8,   -68)      26       26           38  spawn spawn-1#1     
+  (   -7,   -68)      26       26           38  spawn spawn-1#1     
+  (   -6,   -68)      26       26           38  spawn spawn-1#1     
+  (   -5,   -68)      26       26           38  spawn spawn-1#1     
+  (   -4,   -68)      26       26           38  spawn spawn-1#1     
+  (   -3,   -68)      26       26           38  spawn spawn-1#1     
+  (   -2,   -68)      26       26           38  spawn spawn-1#1     
+  (   -1,   -68)      26       26           38  spawn spawn-1#1     
+  (    0,   -68)      26       26           38  spawn spawn-1#1     
+  (    1,   -68)      26       26           38  spawn spawn-1#1     
+  (    2,   -68)      26       26           38  spawn spawn-1#1     
+  (    3,   -68)      26       26           38  spawn spawn-1#1     
+  (    4,   -68)      26       26           38  spawn spawn-1#1     
+  (    5,   -68)      26       26           38  spawn spawn-1#1     
+  (    6,   -68)      26       26           38  spawn spawn-1#1     
+  (    7,   -68)      26       26           38  spawn spawn-1#1     
+  (    8,   -68)      26       26           38  spawn spawn-1#1     
+  (    9,   -68)      26       26           38                      
+  (   10,   -68)      26       26           26                      
+  (   11,   -68)      26       26           26                      
+  (   12,   -68)      26       26           29  ironcube spawn-1:0#1  
+  (   13,   -68)      26       26           29  ironcube spawn-1:0#1  
+  (   14,   -68)      26       26           29  ironcube spawn-1:0#1  
+  (   15,   -68)      20       20           20                      DROP -6
+  (   16,   -68)      20       20           20                      
+  (   17,   -68)      20       20           20                      
+  (   18,   -68)      20       20           20                      
+  (   19,   -68)      20       20           20                      
+  (   20,   -68)      20       20           20                      
+  (   21,   -68)      20       20           20                      
+  (   22,   -68)      20       20           20                      
+  (   23,   -68)      20       20           20                      
+rises 1, falls 1, worst step 6: 1 barrier, 0 scramble, 1 drop — BARRIER +6 at (-15, -68); DROP -6 at (15, -68) | walked end to end
+beside: ironcube spawn-1:1#1 at (-15, -69), spawn spawn-1#1 at (-9, -70), stroke tram-east#1 at (-7, -66), stroke tram-spine#1 at (-2, -67), ironcube spawn-1:0#1 at (12, -69)
+
+## spawn-blue (spawn) along z
+TRANSECT 29 stations from (0, -80) to (0, -52), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,   -80)      20       20           20                      
+  (    0,   -79)      20       20           20                      
+  (    0,   -78)      20       20           20                      
+  (    0,   -77)      20       20           20                      
+  (    0,   -76)      20       20           20                      
+  (    0,   -75)      26       26           26                      BARRIER +6
+  (    0,   -74)      26       26           26                      
+  (    0,   -73)      26       26           36                      
+  (    0,   -72)      26       26           36  spawn spawn-1#1     
+  (    0,   -71)      26       26           37  spawn spawn-1#1     
+  (    0,   -70)      26       26           37  spawn spawn-1#1     
+  (    0,   -69)      26       26           38  spawn spawn-1#1     
+  (    0,   -68)      26       26           38  spawn spawn-1#1     
+  (    0,   -67)      26       26           38  spawn spawn-1#1     
+  (    0,   -66)      26       26           37  stroke tram-spine#1  
+  (    0,   -65)      26       26           37  stroke tram-spine#1  
+  (    0,   -64)      26       26           36  stroke tram-spine#1  
+  (    0,   -63)      26       26           36  stroke tram-spine#1  
+  (    0,   -62)      26       26           26  stroke tram-spine#1  
+  (    0,   -61)      26       26           26  stroke tram-spine#1  
+  (    0,   -60)      26       26           26  stroke tram-spine#1  
+  (    0,   -59)      26       26           26  stroke tram-spine#1  
+  (    0,   -58)      26       26           26  stroke tram-spine#1  
+  (    0,   -57)      26       26           26  stroke tram-spine#1  
+  (    0,   -56)      26       26           26  stroke tram-spine#1  
+  (    0,   -55)      26       26           26  stroke tram-spine#1  
+  (    0,   -54)      26       26           26  stroke tram-spine#1  
+  (    0,   -53)      26       26           26  stroke tram-spine#1  
+  (    0,   -52)      26       26           26  stroke tram-spine#1  
+rises 1, falls 0, worst step 6: 1 barrier, 0 scramble, 0 drop — BARRIER +6 at (0, -75) | walked end to end
+beside: spawn spawn-1#1 at (-2, -72), stroke tram-spine#1 at (-2, -67)

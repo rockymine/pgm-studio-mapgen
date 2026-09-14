@@ -126,6 +126,30 @@
       "floor": 0,
       "base_height": 16,
       "theme": "adit"
+     },
+     {
+      "id": "step-e",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": 20,
+      "min_z": -3,
+      "max_x": 22,
+      "max_z": 3,
+      "floor": 0,
+      "base_height": 18,
+      "theme": "adit"
+     },
+     {
+      "id": "step-w",
+      "type": "rectangle",
+      "operation": "add",
+      "min_x": -22,
+      "min_z": -3,
+      "max_x": -20,
+      "max_z": 3,
+      "floor": 0,
+      "base_height": 18,
+      "theme": "adit"
      }
     ],
     "groups": [
@@ -141,7 +165,9 @@
        "adit-n",
        "adit-s",
        "adit-w",
-       "adit-e"
+       "adit-e",
+       "step-e",
+       "step-w"
       ]
      }
     ]

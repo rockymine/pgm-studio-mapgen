@@ -186,7 +186,7 @@ def works_theme():
 # The pans, stated in the stated half alone: the expander mirrors every mark, so eight drawn here
 # are sixteen on the board. Two rows of four, twenty by fourteen blocks each, on six-block banks.
 PAN_COLUMNS = [(-50, -30), (-24, -4), (2, 22), (28, 48)]
-PAN_ROWS = [(-70, -56), (-48, -34)]
+PAN_ROWS = [(-62, -48), (-40, -30)]
 
 
 def marks():
@@ -424,23 +424,24 @@ def dressing():
     ]
 
     # Three sheds on the flat behind the pans, differing in height and footprint and nothing else.
-    for at, (x0, z0, tall) in enumerate([(-46, -82, 0), (-20, -80, 1), (26, -82, 0)]):
+    for at, (x0, z0, tall) in enumerate([(-50, -76, 0), (-32, -76, 1),
+                                         (18, -76, 0), (36, -76, 1)]):
         props_out.append({"id": f"shed-{at}", "kind": "house", "seed": 501 + at,
                           "front": "posZ", "style": "shed",
                           "wings": [{"corners": [[x0, z0], [x0 + 11, z0 + 8]],
                                      "spec": {"storeysHigh": tall, "ridge": "alongX"}}]})
 
     # Boulders on the banks between the pans, where the works has not been swept.
-    for at, (bx, bz) in enumerate([(-27, -62), (-27, -40), (25, -62), (25, -40),
-                                   (-8, -30), (14, -30), (-44, -68), (44, -66)]):
+    for at, (bx, bz) in enumerate([(-27, -70), (-27, -44), (25, -70), (25, -44),
+                                   (-8, -28), (14, -28), (-44, -66), (44, -64)]):
         props_out.append({"id": f"rock-{at}", "kind": "boulder", "seed": 610 + at,
                           "x": bx, "z": bz, "style": "rock"})
 
     # Thorn at the works' edges only. A salt-works is scraped ground and carries nothing in the
     # middle of it, which is also what keeps the sightlines the walls break from growing back.
-    plant = [("thorn-1", -48, -74), ("thorn-2", 46, -74), ("spar-1", -50, -52),
-             ("spar-2", 48, -52), ("thorn-1", -50, -30), ("thorn-2", 50, -30),
-             ("spar-1", -12, -72), ("spar-2", 16, -72)]
+    plant = [("thorn-1", -48, -66), ("thorn-2", 46, -66), ("spar-1", -50, -44),
+             ("spar-2", 48, -44), ("thorn-1", -50, -40), ("thorn-2", 50, -40),
+             ("spar-1", 6, -66), ("spar-2", -6, -44)]
     for at, (style, tx, tz) in enumerate(plant):
         props_out.append({"id": f"thorn-{at}", "kind": "tree", "seed": 700 + at,
                           "x": tx, "z": tz, "style": style})
@@ -464,7 +465,9 @@ def finish():
         "mapTheme": "ochre",
         # the board's outer edge, drawn as an edge rather than as the rectangle the plan compiled
         # to. The pans and the yard keep their drawn corners, because they are cut and not coastal.
-        "bendShapes": {"works-n-22": {"k": 0.14, "wander": 3, "step": 13, "seed": 5}},
+        # the compiled ground is one component named for its first piece and the surface it
+        # stands at, which on this board is `stead`
+        "bendShapes": {"stead-22": {"k": 0.14, "wander": 3, "step": 13, "seed": 5}},
         "relief": {"*": {"base": FLAT, "reach": 0, "step": 1, "landform": "plain",
                          "grain": {"amplitude": 0.8, "scale": 17, "seed": 7},
                          "marks": marks(), "pushes": pushes()}},

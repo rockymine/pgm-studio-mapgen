@@ -74,10 +74,10 @@ def plan():
                         "footprint": [6, 3, 16, 14]}],
             "iron": [{"id": "iron-1", "piece": "camp", "at": [3, 10]},
                      {"id": "iron-2", "piece": "camp", "at": [25, 10]}],
-            # terrace's corner is (-52, -76), so the core is at (-32, -58): back off the lip's
-            # own grade onto flat terrace, and thirty-two off the centre line, which is what puts
-            # the far flank on somebody's journey rather than leaving it to be looked at
-            "cores": [{"id": "core-1", "piece": "terrace", "at": [20, 18], "lava": 3,
+            # terrace's corner is (-52, -76), so the core is at (-34, -60): out in the open
+            # between the two kiln yards and clear of the lip's own grade, and thirty-four off
+            # the centre line, which is what puts the far flank on somebody's journey
+            "cores": [{"id": "core-1", "piece": "terrace", "at": [18, 16], "lava": 3,
                        "lavaHeight": 3, "float": 6, "leak": 5, "name": "The Kiln Core"}],
             "destroyables": [],
             "wools": [],
@@ -244,7 +244,7 @@ def pushes():
     arrive at: the core's lip, the haul road's head and foot, and the sheds."""
     return [
         # spoil, thrown out of the pit onto the terrace behind it
-        {"id": "spoil-w", "ring": [[-50, -70], [-40, -68], [-36, -60], [-44, -55], [-52, -60]],
+        {"id": "spoil-w", "ring": [[-52, -60], [-44, -58], [-40, -54], [-48, -52], [-53, -55]],
          "amount": 2.6, "falloff": 12, "crown": 1.1, "roughness": 1.4, "seed": 4},
         {"id": "spoil-e", "ring": [[30, -70], [44, -68], [48, -58], [38, -54], [28, -60]],
          "amount": 2.2, "falloff": 11, "crown": 0.9, "roughness": 1.2, "seed": 11},
@@ -266,10 +266,10 @@ def shapes():
     # change of colour on flat ground. The kilns stand on them, and they are what the core has
     # behind it. Nothing is laid under the core itself: it stands on bare clay at the lip, which
     # is what puts it in the open.
-    for name, ring in (("yard-kiln-w", [[-51, -72], [-42, -74], [-33, -71],
-                                        [-32, -64], [-35, -59], [-45, -58], [-51, -64]]),
-                       ("yard-kiln-e", [[-23, -72], [-14, -74], [-5, -71],
-                                        [-4, -64], [-7, -59], [-17, -58], [-23, -64]])):
+    for name, ring in (("yard-kiln-w", [[-52, -74], [-46, -76], [-39, -74],
+                                        [-38, -68], [-40, -61], [-47, -60], [-52, -64]]),
+                       ("yard-kiln-e", [[-23, -74], [-16, -76], [-9, -74],
+                                        [-8, -68], [-10, -61], [-17, -60], [-23, -64]])):
         out.append({"id": name, "type": "polygon", "operation": "add",
                     "base_height": TERRACE + 1, "relief_scope": "exclude", "keepClear": True,
                     "theme": "works", "vertices": ring})
@@ -339,7 +339,7 @@ def kilns():
     made = []
     brickwork = {"kind": "cell", "seed": 57, "cellSize": 5, "jitter": 1, "warp": 2,
                  "palette": [BRICK, CLAY_BROWN, BRICK, CLAY_ORANGE], "rise": 4}
-    for kiln_id, cx, cz in (("kiln-w", -42, -65), ("kiln-e", -14, -65)):
+    for kiln_id, cx, cz in (("kiln-w", -46, -68), ("kiln-e", -16, -68)):
         layer = props.tapered_tower(kiln_id, cx, cz, base_radius=7, top_radius=3, thickness=2,
                                     floor=TERRACE + 1, height=15, theme=None,
                                     name=f"Kiln {kiln_id[-1]}", mirrors=False)
@@ -432,7 +432,7 @@ def dressing():
         # and the track west along the terrace to the core and its kilns
         {"id": "track-kiln", "kind": "stroke", "seed": 43, "radius": 2, "style": "solid",
          "coverage": 1.0, "claimsGround": True, "pave": paving,
-         "points": [[-2, -77], [-12, -70], [-22, -64], [-30, -59]]},
+         "points": [[-2, -77], [-12, -70], [-22, -65], [-32, -62]]},
         # the barrow run out of the pit onto the brickfield
         {"id": "track-step", "kind": "stroke", "seed": 44, "radius": 2, "style": "solid",
          "coverage": 0.9, "claimsGround": True, "pave": paving,
