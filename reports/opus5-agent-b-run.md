@@ -35,17 +35,17 @@ place every prop they state**.
 
 | slug | mode | board | score | declined | dead | themes | the one thing it is |
 |---|---|---|---|---|---|---|---|
-| `opus5-flintwick` | CTW | 80 × 200 | 1.48 | 0 of 42 | **0.0%** | chalk 80.7 · strand 13.5 · knap 5.7 | flint painted by angle, so the dark is only ever on a face |
-| `opus5-grykefell` | DTM | 80 × 200 | 0 | **0** of 36 | 14.6% | fell 82.1 · turf 15.4 · scree 2.5 | the ground is the cover; a coast drawn by sixteen vertex inserts |
-| `opus5-birkmire` | DTC | 80 × 200 | 0 | **0** of 44 | 16.0% | mire 61.0 · ice 34.2 · holm 3.0 · garth 1.9 | one place with nothing on it, and the core is on it |
+| `opus5-flintwick` | CTW | 80 × 200 | 1.48 | 0 of 42 | **0.0%** | chalk 61.9 · sward 18.9 · strand 13.5 · knap 5.7 | flint painted by angle, so the dark is only ever on a face |
+| `opus5-grykefell` | DTM | 80 × 200 | 0 | **0** of 36 | 13.1% | fell 70.1 · turf 27.5 · scree 2.4 | the ground is the cover; a coast drawn by sixteen vertex inserts |
+| `opus5-birkmire` | DTC | 80 × 200 | 0 | **0** of 44 | 14.7% | mire 61.0 · ice 34.2 · holm 3.0 · garth 1.9 | one place with nothing on it, and the core is on it |
 | `opus5-sparholt` | KotH | 80 × 150 | 0 | **0** of 8 | n/a | yard 65.1 · rock 26.1 · bank 6.4 · adit 2.4 | a building with a board in it, on two storeys |
 
 Instruments each board actually used, counted off the finish it generated:
 
 | | reliefs | marks | pushes | level | raise | sink | subtract | excluded ground | polyline | made layers | copied trees |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| `flintwick` | 1 | 6 (area · point · scarp) | 2 | 5 | 3 | 0 | 0 | **2** | **2** | 0 | 8 |
-| `grykefell` | 1 | 5 (area · line · scarp) | 2 | 1 | 4 | 0 | 0 | 0 | 0 | 0 | 5 |
+| `flintwick` | 1 | 6 (area · point · scarp) | 2 | 5 | 6 | 0 | 0 | **2** | **4** | 0 | 8 |
+| `grykefell` | 1 | 5 (area · line · scarp) | 2 | 1 | 6 | 0 | 0 | **1** | 0 | 0 | 5 |
 | `birkmire` | 1 | 8 (area · point) | 2 | 2 | 3 | 0 | 0 | **1** | 0 | 0 | 5 |
 | `sparholt` | 1 | 2 (area) | 0 | 1 | 1 | 1 | **2** | 0 | 0 | **4** | 0 |
 
@@ -165,3 +165,101 @@ settle. None of them is filed as a fault.
    taken across it was hue and value rather than subject. Does a four-map rotation in one palette read
    as a set, or as one map four times? That is a judgement about a rotation, and nothing in this
    repository measures it.
+
+
+---
+
+# The author's round: seven readings, and what each one was really about
+
+Every item below arrived as a read with coordinates in it, and every one was closed by taking that
+read again on the rebuilt world. Three of the seven turned out to have the same cause.
+
+## A prop seated on the wrong block raises nothing anywhere
+
+**Twelve trees across three boards stood on ground no tree grows in** and not one of them was
+declined, complained about or warned. `grykefell`: three birches on bare **Diorite**. `flintwick`:
+six on Quartz Block, Cobblestone, stained clay and one on **Coal Block** — because that board's whole
+palette was chalk, quartz, gravel, shingle and flint, and it had **no soil in it at all**.
+`birkmire`: three on **Packed Ice**, and one whose body began eight courses over the ground, seated in
+a neighbour's canopy.
+
+`DR-SITE` asks whether there is ground; `DR-CLAIM` asks whether something else holds it; `DR-ROAD` and
+`DR-KEEP` ask about standoffs. **Nothing asks what the block is.** The read that answers it is one
+`column` per prop with the leaves and logs filtered out, and it costs a second each.
+
+Two different fixes, and the author named both: *relocate them, or make more grass areas to seat
+them.*
+
+- `grykefell` got **two more shelves of turf** — `turf-scarth` west of the gill, `turf-nab` on the
+  northern shoulder — placed where soil gathers on a limestone fell, and one tree moved to reach one.
+  Turf went 15.4% → **27.5%**, and `fell | turf` 449 → 627 border cells.
+- `flintwick` got **a soil theme it did not have**: `sward`, grass over coarse dirt over chalk, in the
+  coombe and on each arm's lee — plus the under-12° band's top course mottled so it picks grass one
+  cell in five, because chalk downland is grass and the board was painting a white plate. Four themes
+  now: chalk **61.9%**, sward **18.9%**, strand 13.5%, knap 5.7%.
+- `birkmire` moved four, each to a position read off the built world first. Snow is not the fault ice
+  is — `column at (−36, 30)` reads snow over two courses of coarse dirt — so the snowy sites stand.
+
+All twenty-six trees across the three boards now read Grass, Coarse Dirt, Podzol or snow-over-soil.
+
+## A structure sized to one ground level, standing across two
+
+This is the shape the author gave both the barn and the ramp, and it was the right frame for one of
+them.
+
+**`grykefell`'s barn** was the only house in twelve boards with terrain inside its footprint: a
+transect across the cross wing read `BARRIER +5 at (18, 28)`, y22 west and y27 east. The fix is not a
+nudge, it is to give the building one ground level. The shelf right of the spawn stands **level at
+y31 from x 21 to x 37** — read at z 72, 78 and 84, every station 31 — and `barn-garth`, a
+`relief_scope: "exclude"` pad over x 17..37 z 70..84, holds it there. Across the cross wing now:
+`rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop`.
+
+**`flintwick`'s east ramp was not that fault at all.** `BARRIER +3 at (24, 44)` came from a plateau at
+y28 over z 40..44, and that plateau is `wall-e` — the board's own cliff-top wall standing two courses
+proud across the head of the flight. A wall drawn along one line without regard to where the ways come
+up. Each arm's wall is now two runs with a **gateway** between them, at the stair on the west and the
+ramp on the east, which is also what a drystone wall actually looks like.
+
+**And then the west stair failed a third way.** With the wall off it, it read `DROP −4 at (−29, 40)`
+and the stations showed dead-flat y31 from z 41 to 50 — the flight was not in the world. The cause:
+**`sward-west`, a `raise 0` paint patch drawn after the flights, sets those columns back to the median
+ground.** A later shape wins a contested cell, so paint drawn over a flight deletes it, silently, with
+no rule and no warning. The sward now goes down first and the flights are cut into it. Both flights:
+
+```
+stair-w  rises 1, falls 11, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+ramp-e   rises 0, falls  8, worst step 3: 0 barrier, 0 scramble, 0 drop | walked end to end
+```
+
+`stair-w-hi`'s two anchors are now read off the built world — y24 at (−29, 32) below the face, y31 at
+(−29, 48) above it — instead of taken from the plan's `DOWNLAND`. One number for two different grounds
+is exactly what put it wrong, twice.
+
+## The Cairn is a cube
+
+`grykefell`'s destroyable is now **`cube-3`** — 27 blocks of end stone round a bedrock core, region
+`19,31,53 … 22,34,56` — rather than `pillar-2`'s two. The goal is 42–43 blocks from its own spawn with
+20 of lateral offset, and the author's call is that the distance is only survivable if breaking the
+monument costs real time. Not a read: a judgement about how the map plays, and it is the author's.
+
+## Kept
+
+`flintwick`'s build zone is still **two stated rectangles** — `sound` across the strait and
+`wick-water` up the bay — which `rot_180` makes into a stepped edge rather than one ruler-straight run
+across the board. It has not been flattened, and the frontline still reads `profile offset`, (−40, 10)
+to (40, 45).
+
+## The correction taken
+
+`GET /coverage` cannot see a control point, so `sparholt`'s 72.1% dead is an artefact of a capture
+board having no plan goal — not the empty-board fault. That is now stated as a **studio gap** in
+`review/opus5-sparholt.md` rather than as anything the board should answer for.
+
+## Where the boards stand after the round
+
+| slug | props | dead | flights | trees on soil | gate |
+|---|---|---|---|---|---|
+| `opus5-flintwick` | 42 placed, 0 declined | **0.0%** | both clean | 9 of 9 | OPEN |
+| `opus5-grykefell` | 36 placed, 0 declined | **13.1%** | n/a | 6 of 6 | OPEN |
+| `opus5-birkmire` | 44 placed, 0 declined | **14.7%** | clean | 11 of 11 | OPEN |
+| `opus5-sparholt` | 8 placed, 0 declined | artefact | clean | n/a | OPEN |
