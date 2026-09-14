@@ -23,9 +23,20 @@ boundaries below are what separates authored work from anything done to it after
 | `33b15ed` | re-drives of mirkholt and ochrepans |
 | `68a57e1` | agent A's set complete |
 | `ca8c946` | **agent C's set complete — all twelve boards as authored** |
+| `1d24531` | this document |
+| `07e13e4` | the agents' responses to review — see the correction below |
+| `0267870` | agent B's report taking the coverage correction |
 
 `ca8c946` is the provenance boundary. Everything to that point is agent output with nothing of the
 orchestrator's in it. Anything after it is a response to review.
+
+**One commit message is wrong, and the record is corrected here rather than by rewriting it.** `07e13e4`
+says "Agents A and C answer the review". It in fact carries **all three** agents' responses, agent B's
+included: B finished writing its files before that commit was made and its completion notice arrived after,
+so a `git add -A` swept its work in under a message that does not name it. Grykefell's re-sited barn, its
+turf shelves and flintwick's `sward` theme are all in `07e13e4` despite what it says. Nothing was lost and
+no file is misattributed — only the message is — and a commit already pushed is left standing rather than
+force-rewritten, because a corrected sentence in the record costs less than a rewritten history.
 
 ## The twelve boards
 
@@ -144,3 +155,47 @@ convention. Whether a colonnade on a destroy board's main crossing is cover or n
 `fill-ratio`'s band of [0.201, 0.542] can be met by a CTW board authored as a landscape rather than as a
 composer's board — `flintwick` ships at 0.794 and `mirkholt` was redrawn as a shifted diagonal to get near it,
 which is why it is the only board of its set with void quarters.
+
+## What the review round found that no gate does
+
+The round after the review produced three findings about the pipeline, each invisible to every read except a
+transect or a column, and each caught only because an agent took one.
+
+**Nothing in the pipeline asks what block a prop is seated on.** `DR-SITE` asks whether there is ground under
+a prop, not what that ground is, so a birch on packed ice, a tree on coal ore and six trees on a ruin's
+masonry all placed cleanly and reported nothing. Thirty-five of ninety-eight trees across the run were seated
+on something that is not soil, and the only read that says so is one `column` per prop.
+
+**A paint patch drawn after a flight deletes it.** A `raise 0` shape drawn later in the document sets its
+columns back to median ground, which took out `flintwick`'s west stair — at 200, gate OPEN, no rule, no
+warning. Paint goes down before flights.
+
+**A wall drawn along one line stands across whatever flight arrives at it.** `flintwick`'s east ramp read
+`BARRIER +3` because the board's own cliff-top wall crossed the head of the flight. The answer is a gateway
+in the wall where the way comes up, not a change to the flight.
+
+The first of these is the one worth a task: it is the cause of the run's largest single fault class, and a
+`column` per prop is the whole of the check.
+
+## What the fixes came to
+
+| board | props | dead | trees on soil | gate |
+|---|---|---|---|---|
+| `opus5-flintwick` | 42, 0 declined | **0.0%** | 9 / 9 | OPEN |
+| `opus5-grykefell` | 36, 0 declined | 13.1% | 6 / 6 | OPEN |
+| `opus5-birkmire` | 44, 0 declined | 14.7% | 11 / 11 | OPEN |
+| `opus5-sparholt` | 8, 0 declined | artefact | — | OPEN |
+| `opus5-dustwath` | 0 declined | 18.7% | seated | OPEN |
+| `opus5-redmarl` | 0 declined | **0.0%** | seated | OPEN |
+| `opus5-potsherd` | 2 declined | 9.4% | seated | OPEN |
+| `opus5-ochrepans` | 1 declined | artefact | seated | OPEN |
+| `opus5-peatgarth` | 30, **0 declined** | 25.3% | seated | OPEN |
+| `opus5-basaltmere` | 38, 1 declined | artefact | 8 / 8 | OPEN |
+| `opus5-mirkholt` | 30, 3 declined | **0.0%** | seated | OPEN |
+| `opus5-slakemoss` | 40, 1 declined | 27.8% | 8 on soil, 2 kept in the ruin | OPEN |
+
+Grykefell's barn moved onto a `relief_scope: "exclude"` pad on the level shelf east of its spawn and its
+footprint now reads worst step 0. Every goal that was a pillar is a `cube-3`, which `DC3` builds in ender
+stone because obsidian is worth at most three blocks — and that substitution is the run's one open question
+for the author, since a 26-block cube of a soft material may break faster than the three obsidian blocks it
+replaced.
