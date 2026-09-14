@@ -9,7 +9,8 @@
 on the `slope` axis instead — where the pavement is flat you are seen, where it breaks you are not.
 
 80 × 200 blocks, `rot_180`, cell 5, `maxPlayers` 24, ground y21–y36, observer y58. Two plan pieces,
-five relief marks, two pushes, three themes, 28 props. `score 0`, `valid true`, nothing refused.
+five relief marks, two pushes, three themes, **36 props placed and none declined**. `score 0`,
+`valid true`, nothing refused.
 
 ## The board is two pieces and a drawn coast
 
@@ -92,35 +93,30 @@ construction. Both spawn→goal transects walk end to end, which is the read tha
 the scree is under the scar's face. Both boundaries are breaks of slope rather than lines drawn on a
 plane.
 
-**Empty board — 15.8% dead.** `GET …/coverage`: 12 918 ground cells, 10 196 reached, 684 decorated,
-**2 038 dead (15.8%)**. Every one of the five largest patches is **one block from used ground**:
+**Empty board — 14.6% dead.** `GET …/coverage`: 12 918 ground cells, 10 196 reached, 833 decorated,
+**1 889 dead (14.6%)**. Every one of the five largest patches is **one block from used ground**:
 
 | area | centroid | distance to used ground |
 |---|---|---|
-| 501 | (−37, −54) | 1 |
-| 496 | (35, 52) | 1 |
-| 292 | (33, −69) | 1 |
-| 274 | (−35, 68) | 1 |
-| 182 | (36, −24) | 1 |
+| 528 | (−36, −58) | 1 |
+| 519 | (34, 56) | 1 |
+| 137 | (36, −24) | 1 |
+| 132 | (36, −59) | 1 |
+| 129 | (−38, 58) | 1 |
 
 That is the Glassmere shape of dead ground — the board's own edges, a step off a route — and not the
 Ruddle Brink shape, which is a front nobody crosses.
 
-## What the dressing pass refused
+## What the dressing pass refused, and where the props went
 
-`placed 28, declined 5`:
+The first build of this board placed 28 and declined 5 — four of six erratics and one birch, on
+`OB19` (inside a goal's clearance), `DR-SITE` twice (no ground), `DR-CLAIM` (claimed by the paving
+`way-shore`) and `DR-ROAD`. The erratics were the thing meant to break the pavement's biggest flat and
+none of them was in the world.
 
-| rule | what | where |
-|---|---|---|
-| `OB19` | boulder `erratic-1` | (30, 46), inside a goal's clearance |
-| `DR-SITE` | boulder `erratic-3` | (35, 41), no ground |
-| `DR-CLAIM` | boulder `erratic-4` | (8, 30), claimed by the paving `way-shore` |
-| `DR-SITE` | boulder `erratic-5` | (−37, 31), no ground |
-| `DR-ROAD` | tree `birk-3` | (−22, 46), 2 blocks from the road at (−20, 44) |
-
-Five of six erratics and one birch are not in the world. Nothing else is missing, and the board reads
-without them — but the erratics were the thing meant to break the pavement's biggest flat, and that
-flat is now unbroken. `loop.py --candidates` answers the re-siting in one pass and it was not run.
+`loop.py --candidates` settled it in two passes of eight positions each: of fourteen tried, four
+stand — **(−30, 52), (−34, 22), (34, 60), (−8, 62)** — and the board is crowded enough that ten did
+not. The birch moved to (−30, 68). `placed 36, declined 0`.
 
 ## The gate
 
@@ -136,7 +132,6 @@ export gate      OPEN   GET /map/opus5-grykefell/xml → 200
 
 ## What is open
 
-- **The five declined erratics** above. They are a re-site, not a redesign.
 - **`largestField` 0.307** — a third of the fell is one flat field. For a limestone pavement that is
   the subject rather than a defect, but it is the number to watch if the board is ever called empty.
 - **A question for the author, not a claim:** the scar is deliberately one-way — 121 cells of barrier

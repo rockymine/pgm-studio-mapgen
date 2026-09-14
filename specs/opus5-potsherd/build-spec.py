@@ -249,8 +249,8 @@ def pushes():
         {"id": "spoil-e", "ring": [[30, -70], [44, -68], [48, -58], [38, -54], [28, -60]],
          "amount": 2.2, "falloff": 11, "crown": 0.9, "roughness": 1.2, "seed": 11},
         # a low swell across the brickfield, so the middle is not a table
-        {"id": "swell", "ring": [[-30, -22], [-10, -19], [4, -14], [-8, -8], [-28, -12]],
-         "amount": 1.6, "falloff": 15, "crown": 0.7, "roughness": 0.9, "seed": 21},
+        {"id": "swell", "ring": [[-30, -18], [-10, -15], [4, -10], [-8, -4], [-28, -8]],
+         "amount": 1.6, "falloff": 8, "crown": 0.7, "roughness": 0.9, "seed": 21},
         # and the heap the sheds stand behind
         {"id": "heap", "ring": [[14, -94], [30, -92], [32, -82], [20, -78], [12, -86]],
          "amount": 2.0, "falloff": 12, "crown": 0.8, "roughness": 1.1, "seed": 31},
@@ -266,10 +266,10 @@ def shapes():
     # change of colour on flat ground. The kilns stand on them, and they are what the core has
     # behind it. Nothing is laid under the core itself: it stands on bare clay at the lip, which
     # is what puts it in the open.
-    for name, ring in (("yard-kiln-w", [[-52, -74], [-46, -76], [-39, -74],
-                                        [-38, -68], [-40, -61], [-47, -60], [-52, -64]]),
-                       ("yard-kiln-e", [[-23, -74], [-16, -76], [-9, -74],
-                                        [-8, -68], [-10, -61], [-17, -60], [-23, -64]])):
+    for name, ring in (("yard-kiln-w", [[-53, -76], [-46, -76], [-39, -76],
+                                        [-38, -71], [-40, -66], [-47, -65], [-53, -69]]),
+                       ("yard-kiln-e", [[-23, -76], [-16, -76], [-9, -76],
+                                        [-8, -71], [-10, -66], [-17, -65], [-23, -69]])):
         out.append({"id": name, "type": "polygon", "operation": "add",
                     "base_height": TERRACE + 1, "relief_scope": "exclude", "keepClear": True,
                     "theme": "works", "vertices": ring})
@@ -339,8 +339,8 @@ def kilns():
     made = []
     brickwork = {"kind": "cell", "seed": 57, "cellSize": 5, "jitter": 1, "warp": 2,
                  "palette": [BRICK, CLAY_BROWN, BRICK, CLAY_ORANGE], "rise": 4}
-    for kiln_id, cx, cz in (("kiln-w", -46, -68), ("kiln-e", -16, -68)):
-        layer = props.tapered_tower(kiln_id, cx, cz, base_radius=7, top_radius=3, thickness=2,
+    for kiln_id, cx, cz in (("kiln-w", -46, -70), ("kiln-e", -16, -70)):
+        layer = props.tapered_tower(kiln_id, cx, cz, base_radius=6, top_radius=3, thickness=2,
                                     floor=TERRACE + 1, height=15, theme=None,
                                     name=f"Kiln {kiln_id[-1]}", mirrors=False)
         inner = layer.pop("layout")
@@ -425,14 +425,18 @@ def dressing():
         # worn band reads as litter and a path is a claim about where people walk.
         {"id": "track-out", "kind": "stroke", "seed": 41, "radius": 2, "style": "solid",
          "coverage": 1.0, "claimsGround": True, "pave": paving,
-         "points": [[-2, -77], [0, -70], [4, -63], [8, -58]]},
+         "points": [[-2, -77], [-5, -70], [-9, -64], [-13, -60]]},
+        # west along the terrace, in front of the kiln yards, to the core
+        {"id": "track-core", "kind": "stroke", "seed": 43, "radius": 2, "style": "solid",
+         "coverage": 1.0, "claimsGround": True, "pave": paving,
+         "points": [[-13, -60], [-20, -58], [-27, -58], [-33, -59]]},
+        # and east to the haul road's head, then down it
         {"id": "track-haul", "kind": "stroke", "seed": 42, "radius": 2, "style": "solid",
          "coverage": 1.0, "claimsGround": True, "pave": paving,
-         "points": [[8, -58], [11, -52], [13, -44], [13, -36]]},
-        # and the track west along the terrace to the core and its kilns
-        {"id": "track-kiln", "kind": "stroke", "seed": 43, "radius": 2, "style": "solid",
+         "points": [[-13, -60], [-2, -58], [6, -57], [12, -55]]},
+        {"id": "track-road", "kind": "stroke", "seed": 45, "radius": 2, "style": "solid",
          "coverage": 1.0, "claimsGround": True, "pave": paving,
-         "points": [[-2, -77], [-12, -70], [-22, -65], [-32, -62]]},
+         "points": [[12, -55], [12, -48], [13, -40], [13, -35]]},
         # the barrow run out of the pit onto the brickfield
         {"id": "track-step", "kind": "stroke", "seed": 44, "radius": 2, "style": "solid",
          "coverage": 0.9, "claimsGround": True, "pave": paving,
@@ -459,17 +463,17 @@ def dressing():
                                      "spec": {"storeysHigh": tall, "ridge": "alongX"}}]})
 
     # Boulders: the stone that came out of the clay, left where the digging left it.
-    for at, (bx, bz) in enumerate([(-26, -42), (-4, -44), (28, -42), (-8, -46),
-                                   (-48, -16), (30, -26), (-30, -78), (40, -80)]):
+    for at, (bx, bz) in enumerate([(-26, -42), (-4, -44), (28, -42), (2, -44),
+                                   (-48, -16), (30, -26), (-30, -80), (40, -80)]):
         props_out.append({"id": f"rock-{at}", "kind": "boulder", "seed": 610 + at,
                           "x": bx, "z": bz, "style": "rock"})
 
     # Birch on the terrace and the shed rows, a roundel where the spoil has grassed over. None in
     # the pit, which is worked ground and carries nothing tall.
-    plant = [("birk-1", -48, -56), ("birk-2", 24, -84), ("birk-3", -24, -86),
-             ("birk-1", 46, -88), ("roundel-1", -50, -50), ("birk-2", 44, -64),
+    plant = [("birk-1", -48, -56), ("birk-2", 44, -78), ("birk-3", 4, -66),
+             ("birk-1", 48, -70), ("roundel-1", -46, -40), ("birk-2", 44, -64),
              ("birk-3", -38, -80), ("roundel-1", 30, -74), ("birk-1", -40, -20),
-             ("birk-2", 24, -16), ("birk-3", -8, -18), ("roundel-1", 50, -44)]
+             ("birk-2", 24, -16), ("birk-3", -8, -18), ("roundel-1", 46, -42)]
     for at, (style, tx, tz) in enumerate(plant):
         props_out.append({"id": f"birk-{at}", "kind": "tree", "seed": 700 + at,
                           "x": tx, "z": tz, "style": style})

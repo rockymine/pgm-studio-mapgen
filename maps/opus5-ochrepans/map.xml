@@ -84,13 +84,13 @@
         <rectangle id="red-spawn" min="-16,-96" max="12,-76"/>
         <cuboid id="the-sump-capture" min="-3,18,-3" max="5,21,5"/>
         <cuboid id="the-sump-pad" min="-3,18,-3" max="5,19,5"/>
-        <cuboid id="the-sump-marker" min="-1,54,-1" max="2,57,2"/>
+        <cuboid id="the-sump-marker" min="-1,55,-1" max="2,58,2"/>
         <cuboid id="west-pan-capture" min="-44,25,-3" max="-36,28,5"/>
         <cuboid id="west-pan-pad" min="-44,25,-3" max="-36,26,5"/>
-        <cuboid id="west-pan-marker" min="-42,54,-1" max="-39,57,2"/>
+        <cuboid id="west-pan-marker" min="-42,55,-1" max="-39,58,2"/>
         <cuboid id="east-pan-capture" min="38,25,-3" max="46,28,5"/>
         <cuboid id="east-pan-pad" min="38,25,-3" max="46,26,5"/>
-        <cuboid id="east-pan-marker" min="40,54,-1" max="43,57,2"/>
+        <cuboid id="east-pan-marker" min="40,55,-1" max="43,58,2"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -161,5 +161,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>49</maxbuildheight>
+    <maxbuildheight>50</maxbuildheight>
 </map>

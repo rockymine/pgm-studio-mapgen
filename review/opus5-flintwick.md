@@ -73,8 +73,8 @@ Angle distribution over 13 684 cells:
 6.9% at 40° or steeper
 ```
 
-`03-slopes.txt`: **12 444 walked, 718 scrambled, 522 barrier, 20 faces**, the largest 66 cells at
-x 16..39 z −45..−39.
+`03-slopes.txt`: **12 476 walked, 688 scrambled, 520 barrier, 20 faces**, the largest 60 cells at
+x −37..−22 z −79..−68.
 
 ## The fault-catalogue reads
 
@@ -104,17 +104,22 @@ splits them exactly.
 
 **Stairs that end nowhere — two authored flights, one with a fault.**
 
-| flight | run / rise | transect |
-|---|---|---|
-| `ramp-e`, x 20..28, z 16..42 | 26 / 6 | `rises 0, falls 6, worst step 3: 0 barrier, 0 scramble, 0 drop | walked end to end` |
-| `stair-w-lo` + `stair-w-hi`, x −33..−22 | 13 + 15 / 3 + 4 | `rises 2, falls 7, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP −4 at (−29, 41)` |
+The west stair's top did **not** land on the first build. `stair-w-hi` was cut to `DOWNLAND − 1` = 26
+and the down it arrives on stands at 30 there, because the `nab-w` point mark and the grain are over
+it — the last tread four courses under the ground it was supposed to reach, read at **(−29, 41)**.
+That is `SK26`'s subject. Cut instead to the height the ground actually has, and extended from z 44 to
+z 48 so the gradient holds:
 
-The west stair's **top does not land**. `stair-w-hi` is cut to `DOWNLAND − 1` = 26 and the down it
-arrives on stands at 30 there, because the `nab-w` point mark and the grain are over it — so the last
-tread is four courses under the ground it is supposed to reach, read at **(−29, 41)**. That is
-`SK26`'s subject and it is open on this board. The ramp on the east arm has no such fault, and both
-flights walk end to end in the sense the read uses, which is exactly why the number and not the
-verdict is the thing to quote.
+| flight | run / rise | transect, after |
+|---|---|---|
+| `stair-w-lo` + `stair-w-hi`, x −33..−22, z 14..48 | 13 + 19 / 3 + 8 | `rises 1, falls 11, worst step 2: 0 barrier, 0 scramble, 0 drop \| walked end to end` |
+| `ramp-e`, x 20..28, z 16..46 | 30 / 6 | `rises 1, falls 7, worst step 4: 1 barrier, 0 scramble, 1 drop — BARRIER +3 at (24, 44); DROP −4 at (24, 39)` |
+
+**The east ramp's head is still not clean.** The down on that arm stands at 26 at (24, 46) and 29 at
+(24, 44), and the flight's head sits between the two: a three-course step onto it from the north and a
+four-course fall inside it. It walks end to end and it is not a way up anybody should have to use.
+The fix is the same one the west stair had — read the ground where the head lands and cut the anchor
+to it — and it is open.
 
 **Stark contrast with no area separation — no**, by construction: see the slope stack above.
 
@@ -156,8 +161,8 @@ world void       24 roofed void(s), 2 of them sealed
 
 ## What is open
 
-- **`SK26` on `stair-w-hi`** — the four-course drop at (−29, 41). Raise the flight's high anchor to
-  the ground the nab actually puts there, or take the nab off the stair head.
+- **`SK26` on `ramp-e`'s head** — `BARRIER +3 at (24, 44)` and `DROP −4 at (24, 39)`. The same fix
+  that cleared the west stair, applied to the east arm's own ground heights.
 - **The `garth` · `spawn-red` seam**, above.
 - **`fill-ratio 0.794`**, above.
 - **A question for the author, not a claim:** the wick is a build zone, so the bay can be bridged as

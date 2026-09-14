@@ -1,58 +1,61 @@
 ## erratic-5 (boulder) along x
-TRANSECT 22 stations from (-43, 32) to (-22, 32), every 1
+TRANSECT 25 stations from (-42, 52) to (-18, 52), every 1
   station        ground  surface  water  top  standing            step
-  (  -43,    32)                                                    void
-  (  -42,    32)                                                    void
-  (  -41,    32)                                                    void
-  (  -40,    32)                                                    void
-  (  -39,    32)                                                    void
-  (  -38,    32)                                                    void
-  (  -37,    32)                                                    void
-  (  -36,    32)      22       22           22                      
-  (  -35,    32)      22       22           22                      
-  (  -34,    32)      22       22           22                      
-  (  -33,    32)      22       22           22                      
-  (  -32,    32)      22       22           22                      
-  (  -31,    32)      22       22           31  tree birk-6         
-  (  -30,    32)      22       22           33  tree birk-6         
-  (  -29,    32)      22       22           31  tree birk-6         
-  (  -28,    32)      22       22           33  tree birk-6         
-  (  -27,    32)      22       22           32  tree birk-6         
-  (  -26,    32)      22       22           30  tree birk-6         
-  (  -25,    32)      22       22           30  tree birk-6         
-  (  -24,    32)      22       22           22                      
-  (  -23,    32)      27       27           27                      BARRIER +5
-  (  -22,    32)      27       27           27                      
-rises 1, falls 0, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (-23, 32) | walked end to end
-beside: tree birk-6 at (-32, 30), stroke way-west at (-22, 30)
+  (  -42,    52)                                                    void
+  (  -41,    52)                                                    void
+  (  -40,    52)                                                    void
+  (  -39,    52)      25       25           25                      
+  (  -38,    52)      26       26           26                      +1
+  (  -37,    52)      26       26           26                      
+  (  -36,    52)      27       27           27                      +1
+  (  -35,    52)      27       27           27                      
+  (  -34,    52)      27       27           27                      
+  (  -33,    52)      28       28           28  boulder erratic-5   +1
+  (  -32,    52)      29       29           29  boulder erratic-5   +1
+  (  -31,    52)      27       27           28  boulder erratic-5   -2
+  (  -30,    52)      27       27           28  boulder erratic-5   
+  (  -29,    52)      27       27           28  boulder erratic-5   
+  (  -28,    52)      27       27           28  boulder erratic-5   
+  (  -27,    52)      27       27           28  boulder erratic-5   
+  (  -26,    52)      27       27           27                      
+  (  -25,    52)      27       27           33  tree birk-4         
+  (  -24,    52)      27       27           35  tree birk-4         
+  (  -23,    52)      27       27           34  tree birk-4         
+  (  -22,    52)      32       32           35  tree birk-4         BARRIER +5
+  (  -21,    52)      32       32           34  tree birk-4         
+  (  -20,    52)      27       27           27                      DROP -5
+  (  -19,    52)      26       26           26                      -1
+  (  -18,    52)      26       26           26  stroke way-west     
+rises 5, falls 3, worst step 5: 1 barrier, 0 scramble, 1 drop — BARRIER +5 at (-22, 52); DROP -5 at (-20, 52) | walked end to end
+beside: boulder erratic-5 at (-33, 50), tree birk-4 at (-27, 50), flora sward at (-27, 54), stroke way-west at (-18, 50)
 
 ## erratic-5 (boulder) along z
-TRANSECT 25 stations from (-34, 20) to (-34, 44), every 1
+TRANSECT 25 stations from (-30, 40) to (-30, 64), every 1
   station        ground  surface  water  top  standing            step
-  (  -34,    20)      22       22           22                      
-  (  -34,    21)      22       22           22                      
-  (  -34,    22)      22       22           22                      
-  (  -34,    23)      22       22           22                      
-  (  -34,    24)      22       22           22                      
-  (  -34,    25)      22       22           22                      
-  (  -34,    26)      22       22           22                      
-  (  -34,    27)      22       22           22                      
-  (  -34,    28)      22       22           22                      
-  (  -34,    29)      22       22           22                      
-  (  -34,    30)      22       22           22                      
-  (  -34,    31)      22       22           22                      
-  (  -34,    32)      22       22           22                      
-  (  -34,    33)      22       22           22                      
-  (  -34,    34)      22       22           22                      
-  (  -34,    35)      22       22           22                      
-  (  -34,    36)      22       22           22                      
-  (  -34,    37)      22       22           33  tree birk-0         
-  (  -34,    38)      22       22           34  tree birk-0         
-  (  -34,    39)      22       22           33  tree birk-0         
-  (  -34,    40)      22       22           34  tree birk-0         
-  (  -34,    41)      22       22           35  tree birk-0         
-  (  -34,    42)      22       22           36  tree birk-0         
-  (  -34,    43)      22       22           34  tree birk-0         
-  (  -34,    44)      22       22           33  tree birk-0         
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree birk-6 at (-32, 28), tree birk-0 at (-36, 37)
+  (  -30,    40)      22       22           22                      
+  (  -30,    41)      22       22           22                      
+  (  -30,    42)      22       22           22                      
+  (  -30,    43)      22       22           22                      
+  (  -30,    44)      22       22           22                      
+  (  -30,    45)      22       22           22                      
+  (  -30,    46)      23       23           23                      +1
+  (  -30,    47)      24       24           24                      +1
+  (  -30,    48)      25       25           25                      +1
+  (  -30,    49)      27       27           28  flora sward         scramble +2
+  (  -30,    50)      27       27           28  boulder erratic-5   
+  (  -30,    51)      27       27           28  boulder erratic-5   
+  (  -30,    52)      27       27           28  boulder erratic-5   
+  (  -30,    53)      27       27           28  boulder erratic-5   
+  (  -30,    54)      27       27           28  boulder erratic-5   
+  (  -30,    55)      27       27           34  tree birk-1         
+  (  -30,    56)      27       27           37  tree birk-1         
+  (  -30,    57)      27       27           39  tree birk-1         
+  (  -30,    58)      27       27           39  tree birk-1         
+  (  -30,    59)      27       27           36  tree birk-1         
+  (  -30,    60)      27       27           37  tree birk-1         
+  (  -30,    61)      27       27           38  tree birk-1         
+  (  -30,    62)      27       27           37  tree birk-3         
+  (  -30,    63)      27       27           39  tree birk-3         
+  (  -30,    64)      27       27           40  tree birk-3         
+rises 4, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-30, 49) | walked end to end
+beside: tree birk-0 at (-32, 40), tree birk-4 at (-28, 46), flora sward at (-29, 47), boulder erratic-5 at (-32, 49), tree birk-1 at (-32, 55), tree birk-3 at (-30, 62)

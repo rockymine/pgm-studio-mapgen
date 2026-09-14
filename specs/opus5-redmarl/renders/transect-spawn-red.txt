@@ -52,8 +52,8 @@ beside: wool wool-1 at (-42, -98), redstoneline 0 at (-33, -98), ironcube spawn-
 ## spawn-red (spawn) along z
 TRANSECT 27 stations from (-18, -106) to (-18, -80), every 1
   station        ground  surface  water  top  standing            step
-  (  -18,  -106)                                                    void
-  (  -18,  -105)      27       27           27                      
+  (  -18,  -106)      26       26           26                      
+  (  -18,  -105)      27       27           27                      +1
   (  -18,  -104)      27       27           27                      
   (  -18,  -103)      27       27           27                      
   (  -18,  -102)      27       27           33                      
@@ -79,5 +79,5 @@ TRANSECT 27 stations from (-18, -106) to (-18, -80), every 1
   (  -18,   -82)      26       26           26  stroke track-out    
   (  -18,   -81)      26       26           26                      
   (  -18,   -80)      26       26           26                      
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: spawn spawn-1 at (-20, -101), stroke track-out at (-20, -87)

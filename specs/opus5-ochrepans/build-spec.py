@@ -185,8 +185,8 @@ def works_theme():
 # ── the works, as a grid ─────────────────────────────────────────────────────────────────────
 # The pans, stated in the stated half alone: the expander mirrors every mark, so eight drawn here
 # are sixteen on the board. Two rows of four, twenty by fourteen blocks each, on six-block banks.
-PAN_COLUMNS = [(-50, -30), (-24, -4), (2, 22), (28, 48)]
-PAN_ROWS = [(-62, -48), (-40, -30)]
+PAN_COLUMNS = [(-48, -30), (-24, -4), (2, 22), (28, 46)]
+PAN_ROWS = [(-62, -50), (-46, -36)]
 
 
 def marks():
@@ -197,11 +197,15 @@ def marks():
         for row, (z0, z1) in enumerate(PAN_ROWS):
             out.append({"id": f"pan-{at}-{row}", "kind": "area", "h": PAN, "bevel": 1,
                         "ring": [[x0, z0], [x1, z0], [x1, z1], [x0, z1]]})
-    # The west pan bank. Stated once: its own rot_180 image is the east bank, so drawing both
-    # would put four on the board.
+    # The west pan bank, drawn wholly in the stated half. The relief is solved for z <= 0 and
+    # rotated onto the rest, so a mark centred on the centre line is built on one side of it and
+    # not the other: a ring from z -19 to 19 gave a bank from z -19 to -1 and a seven-block fall
+    # at z 0, which `transect x=-45` read as `DROP -7 at (-45, 0)` and the pad sitting on the seam
+    # answered as `ground 61 degrees from level`. Off the centre line, its own image is the east
+    # bank and the two stand diagonally opposite -- which is what gives each team a near pad.
     out.append({"id": "bank-w", "kind": "area", "h": BANK, "bevel": 3,
-                "ring": [[-52, -16], [-42, -18], [-32, -15], [-30, 0],
-                         [-32, 15], [-42, 18], [-52, 16]]})
+                "ring": [[-52, -30], [-42, -32], [-32, -29], [-30, -18],
+                         [-32, -8], [-42, -6], [-52, -8]]})
     # The evaporation yard, sunk. Its ring is its own mirror, so it is drawn once and stays one.
     out.append({"id": "yard", "kind": "area", "h": YARD, "bevel": 1,
                 "ring": [[-22, -22], [0, -23], [22, -22], [23, 0],
@@ -234,13 +238,15 @@ def shapes():
             {"material": SMOOTH, "thickness": 2},
             {"material": SANDSTONE, "thickness": 4}]}}
 
-    # The yard wall, in four runs with a gate gap in the middle of each. The north run and the
-    # west run are drawn; their rot_180 images are the south run and the east run.
+    # The yard wall, four runs, every one of them drawn in the stated half: the north wall either
+    # side of its gate, and both side walls from the north corner down to the gate gap. Their
+    # rot_180 images are the south wall and the far halves of the two side walls, so each side is
+    # walled from z -26 to 26 with a sixteen-block gate gap across the centre.
     wall_runs = [
         ("wall-n-w", [[-26, -26], [-18, -26], [-10, -26], [-6, -26]]),
         ("wall-n-e", [[6, -26], [10, -26], [18, -26], [26, -26]]),
-        ("wall-w-n", [[-26, -26], [-26, -18], [-26, -10], [-26, -6]]),
-        ("wall-w-s", [[-26, 6], [-26, 10], [-26, 18], [-26, 26]]),
+        ("wall-w", [[-26, -26], [-26, -21], [-26, -15], [-26, -9]]),
+        ("wall-e", [[26, -26], [26, -21], [26, -15], [26, -9]]),
     ]
     for name, points in wall_runs:
         out.append({"id": name, "type": "polyline", "operation": "add",
@@ -258,11 +264,18 @@ def shapes():
                 "keepClear": True, "floor": 0,
                 "vertices": [[-5, -31], [5, -31], [5, -19], [-5, -19]],
                 "anchor_heights": [FLAT, FLAT, YARD, YARD], "material": flagging})
+    # The two side gates, both drawn in the stated half for the same reason the bank is; their
+    # images complete each gate on the far side of the centre line.
     out.append({"id": "gate-w", "type": "polygon", "operation": "add",
                 "height_mode": "level", "skirt": 0, "relief_scope": "exclude",
                 "keepClear": True, "floor": 0,
-                "vertices": [[-31, -5], [-31, 5], [-19, 5], [-19, -5]],
+                "vertices": [[-31, -8], [-31, 0], [-19, 0], [-19, -8]],
                 "anchor_heights": [FLAT, FLAT, YARD, YARD], "material": flagging})
+    out.append({"id": "gate-e", "type": "polygon", "operation": "add",
+                "height_mode": "level", "skirt": 0, "relief_scope": "exclude",
+                "keepClear": True, "floor": 0,
+                "vertices": [[19, -8], [19, 0], [31, 0], [31, -8]],
+                "anchor_heights": [YARD, YARD, FLAT, FLAT], "material": flagging})
 
     # The ramps onto the banks. One drawn north of the west bank and one south of it, so each
     # bank ends up with a ramp at either end once the images are in.
@@ -271,19 +284,19 @@ def shapes():
     out.append({"id": "bank-ramp-n", "type": "polygon", "operation": "add",
                 "height_mode": "level", "skirt": 0, "relief_scope": "exclude",
                 "keepClear": True, "floor": 0,
-                "vertices": [[-48, -30], [-40, -30], [-40, -16], [-48, -16]],
+                "vertices": [[-46, -36], [-38, -36], [-38, -26], [-46, -26]],
                 "anchor_heights": [FLAT, FLAT, BANK, BANK], "material": scree})
     out.append({"id": "bank-ramp-s", "type": "polygon", "operation": "add",
                 "height_mode": "level", "skirt": 0, "relief_scope": "exclude",
                 "keepClear": True, "floor": 0,
-                "vertices": [[-42, 30], [-34, 30], [-34, 16], [-42, 16]],
-                "anchor_heights": [FLAT, FLAT, BANK, BANK], "material": scree})
+                "vertices": [[-46, -12], [-38, -12], [-38, -2], [-46, -2]],
+                "anchor_heights": [BANK, BANK, FLAT, FLAT], "material": scree})
 
     # Two free-standing pan walls out on the flat, where a sightline from the stead to the yard
     # would otherwise run the length of the board. They are the same wall as the yard's and stand
     # on the same ground, which is what keeps them from reading as ornament.
-    for name, points in (("brake-w", [[-46, -26], [-38, -24], [-30, -26]]),
-                         ("brake-e", [[18, -26], [26, -24], [34, -26]])):
+    for name, points in (("brake-w", [[-34, -34], [-28, -32], [-22, -34]]),
+                         ("brake-e", [[22, -34], [28, -32], [34, -34]])):
         out.append({"id": name, "type": "polyline", "operation": "add",
                     "radius": 1.5, "stroke_edge": "solid", "base_height": WALL_TOP,
                     "relief_scope": "exclude", "keepClear": True,
@@ -319,7 +332,7 @@ def cisterns():
               "palette": [SMOOTH, SANDSTONE, CHIS, SANDSTONE], "rise": 3}
     brine = {"kind": "cell", "seed": 59, "cellSize": 3, "jitter": 1, "warp": 1,
              "palette": [CLAY_SILVER, CLAY_WHITE, CLAY_SILVER, SMOOTH], "rise": 2}
-    for at, (cx, cz) in enumerate([(-30, -34), (30, 34), (30, -34), (-30, 34)]):
+    for at, (cx, cz) in enumerate([(-14, -32), (14, 32)]):
         layer = props.ring_wall(f"cistern-{at}", cx, cz, outer=5, thickness=1, floor=FLAT,
                                 height=3, theme=None, inner_floor=None,
                                 name=f"Cistern {at}", mirrors=False)
@@ -410,17 +423,10 @@ def dressing():
         # as litter and a path is a claim about where people walk.
         {"id": "track-out", "kind": "stroke", "seed": 41, "radius": 2, "style": "solid",
          "coverage": 1.0, "claimsGround": True, "pave": paving,
-         "points": [[-2, -76], [-2, -68], [-1, -60], [0, -53]]},
+         "points": [[-2, -76], [-2, -70], [-2, -66], [-2, -63]]},
         {"id": "track-gate", "kind": "stroke", "seed": 42, "radius": 2, "style": "solid",
          "coverage": 1.0, "claimsGround": True, "pave": paving,
-         "points": [[0, -53], [0, -44], [0, -38], [0, -33]]},
-        # and the barrow runs out to the two banks
-        {"id": "track-bank-w", "kind": "stroke", "seed": 43, "radius": 2, "style": "solid",
-         "coverage": 0.9, "claimsGround": True, "pave": paving,
-         "points": [[-2, -62], [-16, -60], [-30, -56], [-44, -46]]},
-        {"id": "track-bank-e", "kind": "stroke", "seed": 44, "radius": 2, "style": "solid",
-         "coverage": 0.9, "claimsGround": True, "pave": paving,
-         "points": [[-2, -62], [12, -60], [26, -56], [40, -46]]},
+         "points": [[-2, -63], [-1, -54], [0, -44], [0, -33]]},
     ]
 
     # Three sheds on the flat behind the pans, differing in height and footprint and nothing else.
@@ -432,16 +438,17 @@ def dressing():
                                      "spec": {"storeysHigh": tall, "ridge": "alongX"}}]})
 
     # Boulders on the banks between the pans, where the works has not been swept.
-    for at, (bx, bz) in enumerate([(-27, -70), (-27, -44), (25, -70), (25, -44),
-                                   (-8, -28), (14, -28), (-44, -66), (44, -64)]):
+    # All six on the one wide bank the pan rows leave between them, ten blocks apart and off
+    # the road: two props inside one claim is two props the dressing pass declines.
+    for at, (bx, bz) in enumerate([(-22, -48), (-8, -48), (10, -48),
+                                   (24, -48), (0, -20), (14, -14)]):
         props_out.append({"id": f"rock-{at}", "kind": "boulder", "seed": 610 + at,
                           "x": bx, "z": bz, "style": "rock"})
 
     # Thorn at the works' edges only. A salt-works is scraped ground and carries nothing in the
     # middle of it, which is also what keeps the sightlines the walls break from growing back.
-    plant = [("thorn-1", -48, -66), ("thorn-2", 46, -66), ("spar-1", -50, -44),
-             ("spar-2", 48, -44), ("thorn-1", -50, -40), ("thorn-2", 50, -40),
-             ("spar-1", 6, -66), ("spar-2", -6, -44)]
+    plant = [("thorn-1", -51, -56), ("thorn-2", 51, -56),
+             ("spar-1", -51, -42), ("spar-2", 51, -42)]
     for at, (style, tx, tz) in enumerate(plant):
         props_out.append({"id": f"thorn-{at}", "kind": "tree", "seed": 700 + at,
                           "x": tx, "z": tz, "style": style})
@@ -479,8 +486,8 @@ def finish():
         # downstream fans a control point.
         "controlPoints": [
             {"name": "The Sump", "anchor": {"x": 0, "y": 0, "z": 0}, "size": 8, "points": 1},
-            {"name": "West Pan", "anchor": {"x": -41, "y": 0, "z": 0}, "size": 8, "points": 1},
-            {"name": "East Pan", "anchor": {"x": 41, "y": 0, "z": 0}, "size": 8, "points": 1},
+            {"name": "West Pan", "anchor": {"x": -41, "y": 0, "z": -19}, "size": 8, "points": 1},
+            {"name": "East Pan", "anchor": {"x": 41, "y": 0, "z": 19}, "size": 8, "points": 1},
         ],
         "scoreLimit": 750,
     }

@@ -1,61 +1,61 @@
 ## rock-3 (boulder) along x
-TRANSECT 25 stations from (13, -40) to (37, -40), every 1
+TRANSECT 25 stations from (-2, -44) to (22, -44), every 1
   station        ground  surface  water  top  standing            step
-  (   13,   -40)      23       23           23                      
-  (   14,   -40)      23       23           23                      
-  (   15,   -40)      23       23           23                      
-  (   16,   -40)      23       23           23                      
-  (   17,   -40)      23       23           23                      
-  (   18,   -40)      23       23           23                      
-  (   19,   -40)      23       23           23                      
-  (   20,   -40)      23       23           23                      
-  (   21,   -40)      21       21           21                      -2
-  (   22,   -40)      21       21           23  boulder rock-3      
-  (   23,   -40)      21       21           25  boulder rock-3      
-  (   24,   -40)      21       21           25  boulder rock-3      
-  (   25,   -40)      21       21           25  boulder rock-3      
-  (   26,   -40)      21       21           25  boulder rock-3      
-  (   27,   -40)      21       21           24  boulder rock-3      
-  (   28,   -40)      21       21           21                      
-  (   29,   -40)      22       22           22                      +1
-  (   30,   -40)      22       22           22                      
-  (   31,   -40)      22       22           22                      
-  (   32,   -40)      22       22           22                      
-  (   33,   -40)      22       22           22                      
-  (   34,   -40)      22       22           22                      
-  (   35,   -40)      22       22           22                      
-  (   36,   -40)      22       22           22                      
-  (   37,   -40)      22       22           22                      
-rises 1, falls 1, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder rock-3 at (22, -40)
+  (   -2,   -44)      23       23           23  stroke track-gate   
+  (   -1,   -44)      23       23           23  stroke track-gate   
+  (    0,   -44)      23       23           23  stroke track-gate   
+  (    1,   -44)      23       23           23  stroke track-gate   
+  (    2,   -44)      22       22           22                      -1
+  (    3,   -44)      22       22           22                      
+  (    4,   -44)      22       22           22                      
+  (    5,   -44)      22       22           22                      
+  (    6,   -44)      22       22           22                      
+  (    7,   -44)      22       22           24  boulder rock-3      
+  (    8,   -44)      22       22           26  boulder rock-3      
+  (    9,   -44)      22       22           26  boulder rock-3      
+  (   10,   -44)      22       22           26  boulder rock-3      
+  (   11,   -44)      22       22           26  boulder rock-3      
+  (   12,   -44)      22       22           25  boulder rock-3      
+  (   13,   -44)      22       22           22                      
+  (   14,   -44)      22       22           22                      
+  (   15,   -44)      22       22           22                      
+  (   16,   -44)      21       21           21                      -1
+  (   17,   -44)      21       21           21                      
+  (   18,   -44)      21       21           21                      
+  (   19,   -44)      21       21           21                      
+  (   20,   -44)      21       21           21                      
+  (   21,   -44)      21       21           21                      
+  (   22,   -44)      21       21           25  boulder rock-4      
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track-gate at (-2, -46), boulder rock-3 at (7, -44), boulder rock-4 at (22, -46)
 
 ## rock-3 (boulder) along z
-TRANSECT 25 stations from (25, -52) to (25, -28), every 1
+TRANSECT 25 stations from (10, -56) to (10, -32), every 1
   station        ground  surface  water  top  standing            step
-  (   25,   -52)      21       21           21                      
-  (   25,   -51)      21       21           21                      
-  (   25,   -50)      21       21           21                      
-  (   25,   -49)      21       21           21                      
-  (   25,   -48)      21       21           21                      
-  (   25,   -47)      21       21           21                      
-  (   25,   -46)      21       21           21                      
-  (   25,   -45)      21       21           21                      
-  (   25,   -44)      21       21           21                      
-  (   25,   -43)      21       21           21                      
-  (   25,   -42)      21       21           24  boulder rock-3      
-  (   25,   -41)      21       21           25  boulder rock-3      
-  (   25,   -40)      21       21           25  boulder rock-3      
-  (   25,   -39)      21       21           25  boulder rock-3      
-  (   25,   -38)      21       21           25  boulder rock-3      
-  (   25,   -37)      21       21           21                      
-  (   25,   -36)      21       25           25  storey              BARRIER +4
-  (   25,   -35)      21       25           25  storey              
-  (   25,   -34)      21       25           25  storey              
-  (   25,   -33)      21       25           25  storey              
-  (   25,   -32)      21       21           21                      DROP -4
-  (   25,   -31)      21       21           21                      
-  (   25,   -30)      21       21           21                      
-  (   25,   -29)      21       21           21                      
-  (   25,   -28)      21       21           21                      
-rises 1, falls 1, worst step 4: 1 barrier, 0 scramble, 1 drop — BARRIER +4 at (25, -36); DROP -4 at (25, -32) | walked end to end
-beside: stroke track-bank-e at (26, -54), boulder rock-3 at (23, -42)
+  (   10,   -56)      22       22           22                      
+  (   10,   -55)      22       22           22                      
+  (   10,   -54)      22       22           22                      
+  (   10,   -53)      22       22           22                      
+  (   10,   -52)      22       22           22                      
+  (   10,   -51)      22       22           22                      
+  (   10,   -50)      22       22           22                      
+  (   10,   -49)      22       22           22                      
+  (   10,   -48)      22       22           22                      
+  (   10,   -47)      22       22           22                      
+  (   10,   -46)      22       22           25  boulder rock-3      
+  (   10,   -45)      22       22           26  boulder rock-3      
+  (   10,   -44)      22       22           26  boulder rock-3      
+  (   10,   -43)      22       22           26  boulder rock-3      
+  (   10,   -42)      22       22           26  boulder rock-3      
+  (   10,   -41)      22       22           22                      
+  (   10,   -40)      21       21           21                      -1
+  (   10,   -39)      22       22           22                      +1
+  (   10,   -38)      22       22           22                      
+  (   10,   -37)      22       22           22                      
+  (   10,   -36)      22       22           22                      
+  (   10,   -35)      22       22           22                      
+  (   10,   -34)      22       22           22                      
+  (   10,   -33)      22       22           22                      
+  (   10,   -32)      22       22           22                      
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder rock-3 at (8, -46)

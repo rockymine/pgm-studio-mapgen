@@ -217,7 +217,9 @@ add_shapes = [
     # per pit, land in each other's columns — the image of a ramp cut beside the west pit is a ramp
     # beside the east one, running the other way — and two opposed ramps in one set of columns
     # resolve to a V with its floor four courses over the pit.
-    ramp("ramp-e", PIT_E - 11, PIT_E - 7, -13, 7, TREAD),
+    # x1 is exclusive when the polygon rasterizes, so the ramp is cut to the pit's own min_x to
+    # leave no column of deck standing between its foot and the step at the bottom.
+    ramp("ramp-e", PIT_E - 11, PIT_E - 6, -13, 7, TREAD),
     # the shed's plinth: one course proud of the deck, which is what makes the doorways read as
     # doorways rather than as gaps between walls
     rect("plinth", -SHED, -SHED, SHED, SHED, mode="raise", height=1, theme="bank", group="team",

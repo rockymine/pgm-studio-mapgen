@@ -224,8 +224,14 @@ add_shapes = [
     # ramp cut in the face. Both are run at more than twice their rise and both are authored, so
     # neither is a seam the relief happened to leave.
     flight("stair-w-lo", [(-33, 14), (-25, 14), (-25, 27), (-33, 27)], STRAND, LEDGE),
-    flight("stair-w-hi", [(-30, 29), (-22, 29), (-22, 44), (-30, 44)], LEDGE, DOWNLAND - 1),
-    flight("ramp-e",     [(20, 16), (28, 16), (28, 42), (20, 42)], STRAND, DOWNLAND - 1),
+    # The high end is cut to the height the down ACTUALLY stands at where the flight arrives — the
+    # nab and the grain carry it three courses over `DOWNLAND` there — because a flight that tops out
+    # under the ground beside it is a four-course drop at its head and is not a way up anything
+    # (`SK26`). Read at (-29, 41) on the build before this one.
+    flight("stair-w-hi", [(-30, 29), (-22, 29), (-22, 48), (-30, 48)], LEDGE, DOWNLAND + 3),
+    # The east arm is lower than the west where its ramp arrives: the down stands at 26 at
+    # (24, 46) and the head is cut to meet it, not to the west stair's number.
+    flight("ramp-e",     [(20, 16), (28, 16), (28, 46), (20, 46)], STRAND, DOWNLAND - 1),
     # the strand's own paint, drawn to the mark that made it
     paint("strand-floor", [[-44, 6], [-30, 13], [-14, 21], [6, 16], [22, 25], [38, 18], [44, 6]],
           "strand"),

@@ -501,17 +501,18 @@ def dressing():
                                  "spec": {"storeysHigh": 1, "ridge": "alongX"}}]})
 
     # Boulders, each where the bed dropped it or where the bank has calved.
-    for at, (bx, bz) in enumerate([(-21, -6), (-6, -18), (8, -10), (18, -4),
-                                   (-40, -30), (-34, -34), (22, -14), (12, -20)]):
+    # On the gully floor only, east of the two descents and clear of the bed's own stroke,
+    # with ten blocks between any two -- a prop inside another prop's claim is a prop the
+    # dressing pass declines and nothing in the world says so afterwards.
+    for at, (bx, bz) in enumerate([(8, -18), (18, -10), (4, -4), (16, 4), (-8, 2), (-18, 6)]):
         props_out.append({"id": f"rock-{at}", "kind": "boulder", "seed": 610 + at,
                           "x": bx, "z": bz, "style": "rock"})
 
     # Acacia on the bank and scrub where the dust is deepest. Every one is off a track and off a
     # yard, and none is on the gully floor, which is a bed and carries nothing tall.
-    plant = [("holt-1", -32, -78), ("holt-2", -34, -74), ("holt-3", -28, -76),
-             ("holt-1", -40, -46), ("holt-2", -44, -40), ("holt-3", -38, -36),
-             ("scrub-1", -14, -30), ("scrub-1", -36, -26), ("scrub-1", -28, -36),
-             ("scrub-1", -44, -30), ("scrub-1", -20, -26), ("scrub-1", -8, -28)]
+    plant = [("holt-1", -32, -70), ("holt-2", -14, -70), ("holt-3", -34, -80),
+             ("holt-1", -42, -42), ("holt-2", -30, -28),
+             ("scrub-1", 20, -20), ("scrub-1", -20, 16)]
     for at, (style, tx, tz) in enumerate(plant):
         props_out.append({"id": f"holt-{at}", "kind": "tree", "seed": 700 + at,
                           "x": tx, "z": tz, "style": style})

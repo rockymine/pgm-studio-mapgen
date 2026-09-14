@@ -1,57 +1,55 @@
 ## rock-4 (boulder) along x
-TRANSECT 21 stations from (-52, -24) to (-32, -24), every 1
+TRANSECT 19 stations from (-54, -16) to (-36, -16), every 1
   station        ground  surface  water  top  standing            step
-  (  -52,   -24)      20       20           20                      
-  (  -51,   -24)      20       20           20                      
-  (  -50,   -24)      20       20           20                      
-  (  -49,   -24)      20       20           20                      
-  (  -48,   -24)      20       20           20                      
-  (  -47,   -24)      20       20           20                      
-  (  -46,   -24)      20       20           20  stroke rows-w       
-  (  -45,   -24)      20       20           20  stroke rows-w       
-  (  -44,   -24)      20       20           20  stroke rows-w       
-  (  -43,   -24)      20       20           20  stroke rows-w       
-  (  -42,   -24)      20       20           20                      
-  (  -41,   -24)      20       20           20                      
-  (  -40,   -24)      20       20           20                      
-  (  -39,   -24)      20       20           20                      
-  (  -38,   -24)      21       21           21                      +1
-  (  -37,   -24)      21       21           21                      
-  (  -36,   -24)      21       21           21  stroke rows-w       
-  (  -35,   -24)      21       21           21  stroke rows-w       
-  (  -34,   -24)      21       21           21  stroke rows-w       
-  (  -33,   -24)      21       21           21  stroke rows-w       
-  (  -32,   -24)      21       21           21  stroke rows-w       
-rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke rows-w at (-47, -25), tree birk-8 at (-40, -22)
+  (  -54,   -16)                                                    void
+  (  -53,   -16)                                                    void
+  (  -52,   -16)      20       20           20                      
+  (  -51,   -16)      20       20           20                      
+  (  -50,   -16)      20       20           24  boulder rock-4      
+  (  -49,   -16)      20       20           24  boulder rock-4      
+  (  -48,   -16)      20       20           24  boulder rock-4      
+  (  -47,   -16)      20       20           24  boulder rock-4      
+  (  -46,   -16)      20       20           24  boulder rock-4      
+  (  -45,   -16)      20       20           22  boulder rock-4      
+  (  -44,   -16)      20       20           20                      
+  (  -43,   -16)      20       20           20                      
+  (  -42,   -16)      20       20           20                      
+  (  -41,   -16)      20       20           29  tree birk-8         
+  (  -40,   -16)      20       20           31  tree birk-8         
+  (  -39,   -16)      20       20           29  tree birk-8         
+  (  -38,   -16)      20       20           31  tree birk-8         
+  (  -37,   -16)      20       20           30  tree birk-8         
+  (  -36,   -16)      20       20           28  tree birk-8         
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder rock-4 at (-50, -18), tree birk-8 at (-42, -18)
 
 ## rock-4 (boulder) along z
-TRANSECT 25 stations from (-44, -36) to (-44, -12), every 1
+TRANSECT 25 stations from (-48, -28) to (-48, -4), every 1
   station        ground  surface  water  top  standing            step
-  (  -44,   -36)      22       22           22                      
-  (  -44,   -35)      22       22           22                      
-  (  -44,   -34)      22       22           22                      
-  (  -44,   -33)      21       21           21                      -1
-  (  -44,   -32)      21       21           21                      
-  (  -44,   -31)      21       21           21                      
-  (  -44,   -30)      21       21           21                      
-  (  -44,   -29)      20       20           20                      -1
-  (  -44,   -28)      20       20           20                      
-  (  -44,   -27)      20       20           20                      
-  (  -44,   -26)      20       20           20                      
-  (  -44,   -25)      20       20           20  stroke rows-w       
-  (  -44,   -24)      20       20           20  stroke rows-w       
-  (  -44,   -23)      20       20           20                      
-  (  -44,   -22)      20       20           20                      
-  (  -44,   -21)      20       20           20                      
-  (  -44,   -20)      20       20           20                      
-  (  -44,   -19)      20       20           20                      
-  (  -44,   -18)      20       20           20                      
-  (  -44,   -17)      20       20           20                      
-  (  -44,   -16)      20       20           20                      
-  (  -44,   -15)      20       20           20                      
-  (  -44,   -14)      20       20           20                      
-  (  -44,   -13)      20       20           20                      
-  (  -44,   -12)      20       20           20                      
-rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke rows-w at (-46, -25), tree birk-8 at (-42, -20)
+  (  -48,   -28)      20       20           20                      
+  (  -48,   -27)      20       20           20                      
+  (  -48,   -26)      20       20           20                      
+  (  -48,   -25)      20       20           20                      
+  (  -48,   -24)      20       20           20                      
+  (  -48,   -23)      20       20           20                      
+  (  -48,   -22)      20       20           20                      
+  (  -48,   -21)      20       20           20                      
+  (  -48,   -20)      20       20           20                      
+  (  -48,   -19)      20       20           20                      
+  (  -48,   -18)      20       20           24  boulder rock-4      
+  (  -48,   -17)      20       20           24  boulder rock-4      
+  (  -48,   -16)      20       20           24  boulder rock-4      
+  (  -48,   -15)      20       20           24  boulder rock-4      
+  (  -48,   -14)      20       20           23  boulder rock-4      
+  (  -48,   -13)      20       20           20                      
+  (  -48,   -12)                                                    void
+  (  -48,   -11)                                                    void
+  (  -48,   -10)                                                    void
+  (  -48,    -9)                                                    void
+  (  -48,    -8)                                                    void
+  (  -48,    -7)                                                    void
+  (  -48,    -6)                                                    void
+  (  -48,    -5)                                                    void
+  (  -48,    -4)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke rows-w at (-47, -25), boulder rock-4 at (-50, -18)

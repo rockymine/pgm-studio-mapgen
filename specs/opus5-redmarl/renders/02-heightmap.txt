@@ -2,32 +2,32 @@ HEIGHTMAP  1 char = 2x2 blocks (the top-left block of each)  x -53..51 across, z
 KEY  char = ground height above y16 in bands of 1 block(s): 0 = y16..16, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
       -5   -4   -3   -2   -1    0    1    2    3    4    5
      31975319753197531975319753113579135791357913579135791
--106     bb                      bbb                      
+-106     bb        aaaaaaaabaaaaabbb                      
 -104 bbbbbbbbbaHaabbbbbbbbaaaabbbbbbbbba                  
 -102 bbHHHHHHHHHabbbbbbbbbbaaabHHHHHHHHb                  
 -100 bbHHHHHHHHHabbHHHHHHHHaaabHHHHHHHHb                  
  -98 bbHHHHHHHHHHHbHHHHHHHHbHabHHHHHHHHb                  
  -96 bbHHHHHHHHHHHbHHHHHHHHbHabHHHHHHHHb                  
  -94 bbHbHHHHHHHabbHHHHHHHHaaabHHHHHHbHb                  
- -92 bbHHHHHHHHHabbHHHHHHHHaaabHHHHHHHHb                  
- -90  bbbbbbbbbHaabbbbbbbbbaaabbbbbbbbba                  
- -88  dcbbbbbcbaaaaaabbaaaaaabcccbbbbbcb                  
- -86  dddddddcbbaaaaaaaaaaaaabcccccccccc                  
- -84  dddddddccbaaaaaaaaaaaabbccddddddcc                  
- -82  eeeeeddccbaaaaaaaaaaaabbccdddddddd                  
- -80  ffffedddcbaaaaaaaaaaaabbccdeeeeedd                  
- -78  gfffeeddccbaaaaaaaaaaabcccdeeeeeee                  
- -76  fffffedddcbaaaaaaaaaaabccHHHHHHHed                  
+ -92 bbHHHHHHHHHabbHHHHHHHHaaabHHHHHHHHb9                 
+ -90  bbbbbbbbbHaabbbbbbbbbaaabbbbbbbbbaa                 
+ -88  dcbbbbbcbaaaaaabbaaaaaabcccbbbbbcba                 
+ -86  dddddddcbbaaaaaaaaaaaaabccccccccccb                 
+ -84  dddddddccbaaaaaaaaaaaabbccddddddccc                 
+ -82  eeeeeddccbaaaaaaaaaaaabbccdddddddcc                 
+ -80  ffffedddcbaaaaaaaaaaaabbccdeeeeedcc                 
+ -78  gfffeeddccbaaaaaaaaaaabcccdeeeeedcc                 
+ -76  fffffedddcbaaaaaaaaaaabccHHHHHHHdcc                 
  -74  fHHHHHHHdcbaaaaaaaaaaabccHHHHHHHdd                  
  -72  eHHHHHHHcbbaaaaaaaaaaabccHHHHHHHcc                  
  -70  dHHHHHHHcbbaaaaaaaaaaabbcHHHHHHHcc                  
  -68  dHHHHHHHbbbaabaaaaaaaaabbHHHHHHHcc                  
  -66  cHHHHHHHbaaaaaaaa9999aaabbbccccccb                  
- -64      aaaaaaaaa99999888889                            
- -62      997777aa999888777777                            
+ -64      aaaaaaaaa999998888899abbcccbb                   
+ -62      997777aa99988877777899a                         
  -60      87777777998887777777                            
  -58      77777777799877777777                            
- -56      77777777999777777776                            
+ -56      77777777999777777777                            
  -54      77777777999777777776                            
  -52      77777777999777777776                            
  -50      78877777999977777776                            
@@ -86,26 +86,26 @@ KEY  char = ground height above y16 in bands of 1 block(s): 0 = y16..16, 1 = …
   56                              77777777999777777777    
   58                              77777777899777777777    
   60                              77777788889977777788    
-  62                              88778889999aaa7aaaaa    
+  62                       ccbba9988778889999aaa7aaaaa    
   64                    bbccccbbaa999999999aaaaaabHHHHHHcc
   66                    ccHHHHHHbbaaaaaaaaaaaaaabbHHHHHHdd
-  68                    ccHHHHHHcbbaaaaaaaaaaabbbcHHHHHHdd
-  70                    cdHHHHHHccbaaaaaaaaaaabbccHHHHHHdd
-  72                    ddHHHHHHccbbaaaaaaaaaabbcdHHHHHHee
-  74                    deHHHHHHccbbaaaaaaaaaabbcdHHHHHHff
-  76                    eeHHHHHHccbbaaaaaaaaaaabcddeefffff
-  78                    eeeeeeddccbaaaaaaaaaaaabccddefffff
-  80                    ddeeeeddccbaaaaaaaaaaaabbcddeeeeff
-  82                    cdddddddccbaaaaaaaaaaaaabcddddeeee
-  84                    ccccccdccbbaaaaaaaaaaaaabcdddddddd
-  86                    bcccbccccbbaaaaaaaaaaaaabcccbbdddd
-  88                    HHHHHHHHHHaaaabbbbbbaaaaHHHHHHHHHH
-  90                    bHHHHHHHHHaaabbbbbbbbbaabHHHHHHHHb
-  92                    bHHHHHHHHHaabHHHHHHHHbaabHHHHHHHHb
+  68                   cccHHHHHHcbbaaaaaaaaaaabbbcHHHHHHdd
+  70                   ccdHHHHHHccbaaaaaaaaaaabbccHHHHHHdd
+  72                   cddHHHHHHccbbaaaaaaaaaabbcdHHHHHHee
+  74                   cdeHHHHHHccbbaaaaaaaaaabbcdHHHHHHff
+  76                   cdeHHHHHHccbbaaaaaaaaaaabcddeefffff
+  78                   cdeeeeeddccbaaaaaaaaaaaabccddefffff
+  80                   cddeeeeddccbaaaaaaaaaaaabbcddeeeeff
+  82                   ccdddddddccbaaaaaaaaaaaaabcddddeeee
+  84                   cccccccdccbbaaaaaaaaaaaaabcdddddddd
+  86                   bbcccbccccbbaaaaaaaaaaaaabcccbbdddd
+  88                   aHHHHHHHHHHaaaabbbbbbaaaaHHHHHHHHHH
+  90                   abHHHHHHHHHaaabbbbbbbbbaabHHHHHHHHb
+  92                   9bHHHHHHHHHaabHHHHHHHHbaabHHHHHHHHb
   94                   bbHHHHHHHHHaabHHHHHHHHbaabHHHHHHHHb
   96                   bbHHHHHHHHHHHbHHHHHHHHbHabHHHHHHHHb
   98                   bbHHHHHHHHHaabHHHHHHHHbaabHHHHHHHHb
  100                    bHHHHHHHHHaabHHHHHHHHbaabHHHHHHHHb
  102                    bbbbbbbbbHaabbbbbbbbbbaabbbbbbbbbb
- 104                      bbbbbb        bb         bbbbbb 
+ 104                     abbbbbbaaaaaaaabbaaaaaaa9abbbbbb 
 low y16, high y32, range 16

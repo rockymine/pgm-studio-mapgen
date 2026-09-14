@@ -1,5 +1,5 @@
 ## rock-7 (boulder) along x
-TRANSECT 23 stations from (28, -80) to (50, -80), every 1
+TRANSECT 25 stations from (28, -80) to (52, -80), every 1
   station        ground  surface  water  top  standing            step
   (   28,   -80)      27       27           27                      
   (   29,   -80)      27       27           27                      
@@ -16,29 +16,31 @@ TRANSECT 23 stations from (28, -80) to (50, -80), every 1
   (   40,   -80)      25       25           30  boulder rock-7      
   (   41,   -80)      25       25           29  boulder rock-7      
   (   42,   -80)      25       25           29  boulder rock-7      
-  (   43,   -80)      25       25           25                      
-  (   44,   -80)      25       25           25                      
-  (   45,   -80)      25       25           25                      
-  (   46,   -80)      25       25           25                      
+  (   43,   -80)      25       25           32  tree birk-1         
+  (   44,   -80)      25       25           34  tree birk-1         
+  (   45,   -80)      25       25           34  tree birk-1         
+  (   46,   -80)      25       25           33  tree birk-1         
   (   47,   -80)      25       25           25                      
   (   48,   -80)      25       25           25                      
   (   49,   -80)      25       25           25                      
   (   50,   -80)      25       25           25                      
+  (   51,   -80)      25       25           25                      
+  (   52,   -80)                                                    void
 rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree birk-7 at (29, -79), boulder rock-7 at (38, -81)
+beside: tree birk-7 at (29, -79), boulder rock-7 at (38, -81), tree birk-1 at (41, -78)
 
 ## rock-7 (boulder) along z
 TRANSECT 25 stations from (40, -92) to (40, -68), every 1
   station        ground  surface  water  top  standing            step
-  (   40,   -92)      25       25           25                      
-  (   40,   -91)      25       25           25                      
-  (   40,   -90)      25       25           25                      
-  (   40,   -89)      25       25           25                      
-  (   40,   -88)      25       25           25                      
-  (   40,   -87)      25       25           25                      
-  (   40,   -86)      25       25           25                      
-  (   40,   -85)      25       25           25                      
-  (   40,   -84)      25       25           25                      
+  (   40,   -92)      25       25           32  house shed-3        
+  (   40,   -91)      25       25           33  house shed-3        
+  (   40,   -90)      25       25           33  house shed-3        
+  (   40,   -89)      25       25           33  house shed-3        
+  (   40,   -88)      25       25           32  house shed-3        
+  (   40,   -87)      25       25           32  house shed-3        
+  (   40,   -86)      25       25           31  house shed-3        
+  (   40,   -85)      25       25           31  house shed-3        
+  (   40,   -84)      25       25           30  house shed-3        
   (   40,   -83)      25       25           25                      
   (   40,   -82)      25       25           29  boulder rock-7      
   (   40,   -81)      25       25           29  boulder rock-7      
@@ -56,4 +58,4 @@ TRANSECT 25 stations from (40, -92) to (40, -68), every 1
   (   40,   -69)      26       26           26                      
   (   40,   -68)      26       26           26                      
 rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder rock-7 at (39, -82)
+beside: house shed-3 at (38, -94), boulder rock-7 at (39, -82), tree birk-1 at (42, -79)
