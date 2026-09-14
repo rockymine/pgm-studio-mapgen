@@ -303,13 +303,13 @@ props = [
 # the hag: seven birches on the knoll and its shoulders, thrown rather than latticed and ten apart —
 # a copied body is wider than a template, and `DR-CLAIM` is footprint overlap rather than a standoff.
 # No road runs through a wood.
-for i, (x, z) in enumerate([(-36, 40), (-34, 54), (-35, 68), (-24, 44), (-23, 60), (-24, 76),
-                            (-30, 28)]):
+for i, (x, z) in enumerate([(-36, 40), (-34, 58), (-36, 76), (-24, 66), (-24, 46),
+                            (-26, 30)]):
     props.append({"id": f"birk-{i}", "kind": "tree", "seed": 700 + i, "x": x, "z": z,
                   "style": BIRCHES[i % len(BIRCHES)]})
 # erratics: stone, cobblestone and andesite and nothing else, each standing where the pavement gives
 # it a reason — along the slab's rim, at the gill's mouth, and on the open shore
-for i, (x, z) in enumerate([(-6, 40), (32, 48), (-12, 22), (32, 40), (8, 32), (-34, 32)]):
+for i, (x, z) in enumerate([(-6, 40), (30, 80), (-12, 22), (-2, 48), (-4, 30), (-28, 36)]):
     props.append(dict(BOULDER, id=f"erratic-{i}", kind="boulder", seed=800 + i, x=x, z=z,
                       size=4 if i % 2 == 0 else 3))
 

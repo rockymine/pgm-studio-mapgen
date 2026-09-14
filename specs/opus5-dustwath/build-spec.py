@@ -36,8 +36,8 @@ def plan():
         "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 12,
                     "surface": FLAT, "observerY": 52},
         "pieces": [
-            # the back dust, where the dunes stand                blocks x -44..44, z -104..-80
-            {"id": "head",  "role": "piece", "rect": [-11, -26, 22,  6], "surface": BACK},
+            # the back dust, where the dunes stand                blocks x -32..32, z -104..-80
+            {"id": "head",  "role": "piece", "rect": [-8,  -26, 16,  6], "surface": BACK},
             # the camp, standing in it. 16 x 16 blocks, because a protection region is at most
             # 20 x 30 (ST10) and the piece is what the protection is cut from.
             {"id": "camp",  "role": "spawn", "rect": [-2,  -25,  4,  4], "surface": BACK},
@@ -58,7 +58,7 @@ def plan():
             # bench's minimum corner is (-32, -56), so this is (-14, -51) -- 14 blocks off the
             # centre line, which is what keeps the flanks on a journey somebody makes
             "destroyables": [{"id": "destroyable-1", "piece": "bench", "at": [18, 5],
-                              "style": "cube-3", "materials": "obsidian", "float": 4,
+                              "style": "pillar-3", "materials": "obsidian", "float": 4,
                               "name": "The Wath Stone"}],
         },
     }
@@ -175,8 +175,8 @@ def marks():
     return [
         # the back dust the camp stands on
         {"id": "back-pan", "kind": "area", "h": 21, "bevel": 3,
-         "ring": [[-43, -103], [-14, -101], [16, -103], [43, -100],
-                  [42, -84], [12, -82], [-18, -83], [-42, -85]]},
+         "ring": [[-31, -103], [-12, -101], [14, -103], [31, -100],
+                  [30, -84], [10, -82], [-16, -83], [-30, -85]]},
         # the apron: the open ground the track crosses
         {"id": "apron-pan", "kind": "area", "h": 20, "bevel": 4,
          "ring": [[-43, -78], [-12, -76], [20, -78], [43, -75],
@@ -209,9 +209,9 @@ def pushes():
     """Added to the solved surface after the marks, so each is kept off the ground a mark had to
     arrive at: the flight's foot, the bench, and the lip."""
     return [
-        {"id": "dune-w", "ring": [[-43, -102], [-29, -100], [-24, -92], [-32, -85], [-42, -88]],
+        {"id": "dune-w", "ring": [[-31, -102], [-22, -100], [-18, -92], [-24, -85], [-30, -88]],
          "amount": 3.0, "falloff": 10, "crown": 2.5, "roughness": 1.5, "seed": 4},
-        {"id": "dune-e", "ring": [[21, -103], [38, -101], [43, -93], [33, -86], [21, -92]],
+        {"id": "dune-e", "ring": [[17, -103], [28, -101], [31, -93], [24, -86], [17, -92]],
          "amount": 2.2, "falloff": 9, "crown": 2.0, "roughness": 1.2, "seed": 11},
         # a low swell on the apron's east hand, so the open ground is not a table
         {"id": "swell", "ring": [[16, -76], [38, -74], [42, -64], [26, -60], [14, -66]],
@@ -380,16 +380,16 @@ def dressing():
                              "spec": {"storeysHigh": 1, "ridge": "alongX"}}]})
 
     # Boulders are stone and nothing else, and each one sits where the scour dropped it.
-    for at, (bx, bz) in enumerate([(-28, -47), (-19, -35), (38, -66), (24, -49), (-37, -87)]):
+    for at, (bx, bz) in enumerate([(-28, -47), (-19, -35), (38, -66), (16, -48), (-27, -90)]):
         props.append({"id": f"rock-{at}", "kind": "boulder", "seed": 610 + at,
                       "x": bx, "z": bz, "style": "rock"})
 
     # Thorn trees: the flat-topped acacias on the open ground, the slim ones where the dust is
     # deepest. Every one is placed off the track and off the bench's top, which is the goal's.
-    plant = [("thorn-1", -38, -96), ("thorn-2", 26, -95), ("thorn-3", -22, -83),
-             ("thorn-1", 34, -82), ("thorn-2", 14, -72), ("thorn-3", 12, -63),
+    plant = [("thorn-1", -26, -96), ("thorn-2", 22, -95), ("thorn-3", -22, -83),
+             ("thorn-1", 27, -84), ("thorn-2", 14, -72), ("thorn-3", 12, -63),
              ("spar-1", -40, -58), ("spar-2", 38, -60), ("spar-1", -42, -36),
-             ("spar-2", 8, -52), ("thorn-2", -22, -88), ("spar-1", 18, -100)]
+             ("spar-2", 8, -52), ("thorn-2", -18, -101), ("spar-1", 18, -100)]
     for at, (style, tx, tz) in enumerate(plant):
         props.append({"id": f"thorn-{at}", "kind": "tree", "seed": 700 + at,
                       "x": tx, "z": tz, "style": style})

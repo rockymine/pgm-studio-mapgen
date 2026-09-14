@@ -1,61 +1,61 @@
 ## erratic-4 (boulder) along x
-TRANSECT 25 stations from (-6, 30) to (18, 30), every 1
+TRANSECT 25 stations from (-4, 32) to (20, 32), every 1
   station        ground  surface  water  top  standing            step
-  (   -6,    30)      22       22           22                      
-  (   -5,    30)      22       22           22                      
-  (   -4,    30)      22       22           22                      
-  (   -3,    30)      22       22           22                      
-  (   -2,    30)      22       22           22                      
-  (   -1,    30)      22       22           22                      
-  (    0,    30)      22       22           22                      
-  (    1,    30)      22       22           24  boulder erratic-4   
-  (    2,    30)      22       22           24  boulder erratic-4   
-  (    3,    30)      22       22           24  boulder erratic-4   
-  (    4,    30)      22       22           25  boulder erratic-4   
-  (    5,    30)      22       22           25  boulder erratic-4   
-  (    6,    30)      22       22           25  boulder erratic-4   
-  (    7,    30)      22       22           25  boulder erratic-4   
-  (    8,    30)      22       22           25  boulder erratic-4   
-  (    9,    30)      22       22           25  boulder erratic-4   
-  (   10,    30)      22       22           24  boulder erratic-4   
-  (   11,    30)      22       22           24  boulder erratic-4   
-  (   12,    30)      22       22           22  stroke way-shore    
-  (   13,    30)      22       22           22  stroke way-shore    
-  (   14,    30)      22       22           22  stroke way-shore    
-  (   15,    30)      22       22           22  stroke way-shore    
-  (   16,    30)      22       22           22                      
-  (   17,    30)      22       22           22                      
-  (   18,    30)      22       22           22                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder erratic-4 at (1, 28), stroke way-shore at (12, 28)
+  (   -4,    32)      22       22           22                      
+  (   -3,    32)      22       22           22                      
+  (   -2,    32)      22       22           22                      
+  (   -1,    32)      22       22           22                      
+  (    0,    32)      22       22           22                      
+  (    1,    32)      22       22           22                      
+  (    2,    32)      22       22           22                      
+  (    3,    32)      22       22           22                      
+  (    4,    32)      22       22           22                      
+  (    5,    32)      22       22           22                      
+  (    6,    32)      22       22           22                      
+  (    7,    32)      22       22           22  stroke way-shore    
+  (    8,    32)      22       22           22  stroke way-barn     
+  (    9,    32)      22       22           22  stroke way-barn     
+  (   10,    32)      22       22           22  stroke way-barn     
+  (   11,    32)      22       22           22  stroke way-barn     
+  (   12,    32)      22       22           22                      
+  (   13,    32)      22       22           22                      
+  (   14,    32)      22       22           22                      
+  (   15,    32)      22       22           26  house barn          
+  (   16,    32)      22       22           26  house barn          
+  (   17,    32)      22       22           26  house barn          
+  (   18,    32)      22       22           26  house barn          
+  (   19,    32)      23       23           26  house barn          +1
+  (   20,    32)      24       24           26  house barn          +1
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke way-shore at (6, 30), stroke way-barn at (7, 30), house barn at (15, 30)
 
 ## erratic-4 (boulder) along z
-TRANSECT 25 stations from (6, 18) to (6, 42), every 1
+TRANSECT 25 stations from (8, 20) to (8, 44), every 1
   station        ground  surface  water  top  standing            step
-  (    6,    18)      22       22           22                      
-  (    6,    19)      22       22           22                      
-  (    6,    20)      22       22           22  stroke way-shore    
-  (    6,    21)      22       22           22  stroke way-shore    
-  (    6,    22)      22       22           22  stroke way-shore    
-  (    6,    23)      22       22           22  stroke way-shore    
-  (    6,    24)      22       22           22  stroke way-shore    
-  (    6,    25)      22       22           22                      
-  (    6,    26)      22       22           24  boulder erratic-4   
-  (    6,    27)      22       22           24  boulder erratic-4   
-  (    6,    28)      22       22           24  boulder erratic-4   
-  (    6,    29)      22       22           25  boulder erratic-4   
-  (    6,    30)      22       22           25  boulder erratic-4   
-  (    6,    31)      22       22           25  boulder erratic-4   
-  (    6,    32)      22       22           25  boulder erratic-4   
-  (    6,    33)      22       22           25  boulder erratic-4   
-  (    6,    34)      22       22           25  boulder erratic-4   
-  (    6,    35)      22       22           24  boulder erratic-4   
-  (    6,    36)      22       22           22                      
-  (    6,    37)      22       22           22                      
-  (    6,    38)      22       22           22                      
-  (    6,    39)      22       22           22                      
-  (    6,    40)      22       22           22                      
-  (    6,    41)      22       22           22                      
-  (    6,    42)      22       22           22                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke way-shore at (4, 18), boulder erratic-4 at (4, 26)
+  (    8,    20)      22       22           22                      
+  (    8,    21)      22       22           22                      
+  (    8,    22)      22       22           22                      
+  (    8,    23)      22       22           22                      
+  (    8,    24)      22       22           22                      
+  (    8,    25)      22       22           22                      
+  (    8,    26)      22       22           22  stroke way-shore    
+  (    8,    27)      22       22           22  stroke way-shore    
+  (    8,    28)      22       22           22  stroke way-shore    
+  (    8,    29)      22       22           22  stroke way-barn     
+  (    8,    30)      22       22           22  stroke way-barn     
+  (    8,    31)      22       22           22  stroke way-barn     
+  (    8,    32)      22       22           22  stroke way-barn     
+  (    8,    33)      22       22           22  stroke way-shore    
+  (    8,    34)      22       22           22                      
+  (    8,    35)      22       22           22                      
+  (    8,    36)      22       22           22                      
+  (    8,    37)      22       22           22                      
+  (    8,    38)      22       22           22                      
+  (    8,    39)      22       22           22                      
+  (    8,    40)      22       22           22                      
+  (    8,    41)      22       22           22                      
+  (    8,    42)      22       22           22                      
+  (    8,    43)      22       22           22                      
+  (    8,    44)      23       23           23                      +1
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke way-shore at (6, 23), stroke way-barn at (8, 29)

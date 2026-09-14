@@ -32,7 +32,7 @@ plan = {
         {"id": "mire", "role": "piece", "rect": [-8, 2, 16, 15], "surface": 20},
         {"id": "holt", "role": "spawn", "rect": [-3, 17, 6, 3],  "surface": 21},
     ],
-    "zones": [{"id": "lead", "rect": [-8, -2, 16, 4], "kind": "build"}],
+    "zones": [{"id": "lead", "rect": [-8, -4, 16, 8], "kind": "build"}],
     "placements": {
         "spawns": [{"id": "spawn-1", "piece": "holt", "at": [15, 7], "facing": "front",
                     "footprint": [7, 2, 16, 10]}],
@@ -264,29 +264,31 @@ props = [
     # the ways, drawn before the scenery. The mire is soft, so a track on it is laid: the spine runs
     # from the door to the pan's north rim and stops at the water, and the flank road serves the
     # holt and the east shore.
-    path("track", [[0, 86], [-6, 74], [-14, 66], [-18, 62]], 2, WAY, seed=51),
-    path("track-east", [[8, 86], [18, 74], [24, 62], [26, 46], [22, 30]], 2, WAY, seed=52),
-    path("track-shore", [[-30, 30], [-22, 24], [-8, 22], [6, 24]], 2, WAY, seed=53),
-    path("track-bothy", [[16, 78], [22, 78]], 2, WAY, seed=54),
-    # the bothy: a two-storey house with a low cross wing, on the holt's shoulder where the east road
-    # runs, and well outside the core's ten-block keep-out
-    {"id": "bothy", "kind": "house", "seed": 611, "front": "negX", "style": "bothy",
-     "wings": [{"corners": [[23, 72], [34, 82]], "spec": {"ridge": "alongZ"}},
-               {"corners": [[35, 74], [39, 80]], "spec": {"storeysHigh": 1, "ridge": "alongX"}}]},
+    path("track", [[0, 86], [-6, 74], [-14, 66], [-18, 64]], 2, WAY, seed=51),
+    path("track-east", [[8, 86], [14, 74], [18, 60], [22, 46], [26, 36]], 2, WAY, seed=52),
+    path("track-shore", [[-30, 26], [-18, 22], [-4, 22], [10, 26], [20, 32]], 2, WAY, seed=53),
+    path("track-bothy", [[-14, 80], [-20, 80]], 2, WAY, seed=54),
+    # the bothy: a two-storey house with a low cross wing, out on the north-west shoulder where the
+    # west road runs — clear of the spawn door's own approach (`DR-KEEP`), and nowhere near the
+    # Thaw's ten-block keep-out (`OB19`)
+    {"id": "bothy", "kind": "house", "seed": 611, "front": "posX", "style": "bothy",
+     "wings": [{"corners": [[-37, 76], [-27, 86]], "spec": {"ridge": "alongZ"}},
+               {"corners": [[-26, 78], [-21, 83]], "spec": {"storeysHigh": 1, "ridge": "alongX"}}]},
     {"id": "sward", "kind": "flora", "seed": 910,
      "points": [[-38, 12], [38, 12], [38, 98], [-38, 98]],
      "spec": {"coverage": 0.20, "scale": 24, "octaves": 3, "fernShare": 0.35,
               "flowerShare": 0.04, "flowerScale": 12, "tallShare": 0.04}},
 ]
-# the birches: on the hummocks and on the holt, eight apart, and none of them on the pan — the ice is
-# the one place with nothing on it and that is the whole point of the board
-for i, (x, z) in enumerate([(-34, 32), (-28, 38), (-36, 40), (-33, 68), (-27, 74), (-36, 76),
-                            (-6, 76), (2, 72), (24, 58), (30, 64), (22, 48), (8, 30)]):
+# the birches: on the hummocks and on the holt, ten apart, and none of them on the pan — the ice is
+# the one place with nothing on it, and that is the whole point of the board. `DR-CLAIM` is footprint
+# overlap rather than a standoff, and a copied body is wider than the template one.
+for i, (x, z) in enumerate([(-34, 32), (-24, 30), (-36, 68), (-24, 70), (26, 58), (36, 62),
+                            (28, 72), (38, 74), (14, 50), (30, 44), (2, 34)]):
     props.append({"id": f"birk-{i}", "kind": "tree", "seed": 710 + i, "x": x, "z": z,
                   "style": BIRCHES[i % len(BIRCHES)]})
 # erratics: stone, cobblestone and andesite and nothing else. Each is on the mire's own ground at a
 # place a player would otherwise cross without a decision.
-for i, (x, z) in enumerate([(-4, 60), (12, 60), (-30, 22), (34, 40), (14, 40), (-10, 86)]):
+for i, (x, z) in enumerate([(4, 70), (10, 64), (-32, 20), (34, 32), (16, 36), (-12, 86)]):
     props.append(dict(BOULDER, id=f"erratic-{i}", kind="boulder", seed=810 + i, x=x, z=z,
                       size=4 if i % 2 == 0 else 3))
 

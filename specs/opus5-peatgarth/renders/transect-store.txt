@@ -32,8 +32,8 @@ beside: house store at (-28, 82)
 ## store (house) along z
 TRANSECT 25 stations from (-23, 72) to (-23, 96), every 1
   station        ground  surface  water  top  standing            step
-  (  -23,    72)      14       14           14                      
-  (  -23,    73)      14       14           14                      
+  (  -23,    72)      13       13           13                      
+  (  -23,    73)      14       14           14                      +1
   (  -23,    74)      14       14           14                      
   (  -23,    75)      14       14           14                      
   (  -23,    76)      14       14           14                      
@@ -57,5 +57,5 @@ TRANSECT 25 stations from (-23, 72) to (-23, 96), every 1
   (  -23,    94)      14       14           14                      -1
   (  -23,    95)      14       14           14                      
   (  -23,    96)      14       14           14                      
-rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: house store at (-25, 79)

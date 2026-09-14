@@ -139,7 +139,7 @@ PLAN = {
 # bevel, because the whole point of it is that it has a face.
 RELIEF = {"*": {
     "base": SURFACE, "reach": 0, "step": 1,
-    "grain": {"amplitude": 1.2, "scale": 21, "seed": 5},
+    "grain": {"amplitude": 1.9, "scale": 15, "seed": 5},
     "marks": [
         {"id": "moor-flat", "kind": "area", "h": 14, "bevel": 3,
          "ring": [[-36, 13], [-18, 11], [0, 12], [18, 11], [36, 14],

@@ -1,8 +1,8 @@
 ## erratic-0 (boulder) along x
 TRANSECT 25 stations from (-18, 40) to (6, 40), every 1
   station        ground  surface  water  top  standing            step
-  (  -18,    40)      22       22           22                      
-  (  -17,    40)      22       22           22                      
+  (  -18,    40)      22       22           22  stroke way-west     
+  (  -17,    40)      22       22           22  stroke way-west     
   (  -16,    40)      22       22           22                      
   (  -15,    40)      22       22           22                      
   (  -14,    40)      22       22           22                      
@@ -27,7 +27,7 @@ TRANSECT 25 stations from (-18, 40) to (6, 40), every 1
   (    5,    40)      22       22           22                      
   (    6,    40)      22       22           22                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder erratic-0 at (-11, 39)
+beside: stroke way-west at (-20, 38), boulder erratic-0 at (-11, 39)
 
 ## erratic-0 (boulder) along z
 TRANSECT 25 stations from (-6, 28) to (-6, 52), every 1
