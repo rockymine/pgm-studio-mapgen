@@ -1,12 +1,12 @@
 ## spawn-blue (spawn) along x
 TRANSECT 33 stations from (-16, 92) to (16, 92), every 1
   station        ground  surface  water  top  standing            step
-  (  -16,    92)      22       22           22                      
-  (  -15,    92)      21       21           21                      -1
-  (  -14,    92)      21       21           21                      
-  (  -13,    92)      21       21           21                      
-  (  -12,    92)      21       21           21                      
-  (  -11,    92)      21       21           21                      
+  (  -16,    92)      23       23           23                      
+  (  -15,    92)      23       23           23                      
+  (  -14,    92)      22       22           22                      -1
+  (  -13,    92)      22       22           22                      
+  (  -12,    92)      22       22           22                      
+  (  -11,    92)      21       21           21                      -1
   (  -10,    92)      21       21           21                      
   (   -9,    92)      21       21           21                      
   (   -8,    92)      21       21           21                      
@@ -28,14 +28,14 @@ TRANSECT 33 stations from (-16, 92) to (16, 92), every 1
   (    8,    92)      21       21           21                      
   (    9,    92)      21       21           21                      
   (   10,    92)      21       21           21                      
-  (   11,    92)      21       21           21                      
-  (   12,    92)      21       21           21                      
-  (   13,    92)      21       21           21                      
-  (   14,    92)      21       21           21                      
-  (   15,    92)      21       21           21                      
-  (   16,    92)      21       21           21                      
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn spawn-1#1 at (-6, 90), tree thorn-10#1 at (17, 93)
+  (   11,    92)      22       22           22                      +1
+  (   12,    92)      22       22           22                      
+  (   13,    92)      22       22           22                      
+  (   14,    92)      23       23           23                      +1
+  (   15,    92)      23       23           23                      
+  (   16,    92)      23       23           23                      
+rises 2, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree thorn-1#1 at (-18, 93), spawn spawn-1#1 at (-6, 90), tree thorn-10#1 at (17, 93)
 
 ## spawn-blue (spawn) along z
 TRANSECT 30 stations from (0, 76) to (0, 105), every 1

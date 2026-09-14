@@ -27,11 +27,11 @@ beside: house shelter-e at (24, -68), boulder rock-2 at (35, -67), tree thorn-7 
 ## rock-2 (boulder) along z
 TRANSECT 25 stations from (38, -78) to (38, -54), every 1
   station        ground  surface  water  top  standing            step
-  (   38,   -78)      21       21           21                      
-  (   38,   -77)      21       21           26  tree thorn-3        
-  (   38,   -76)      21       21           21                      
-  (   38,   -75)      21       21           21                      
-  (   38,   -74)      20       20           27  tree thorn-3        -1
+  (   38,   -78)      20       20           20                      
+  (   38,   -77)      20       20           20                      
+  (   38,   -76)      20       20           20                      
+  (   38,   -75)      20       20           20                      
+  (   38,   -74)      20       20           20  stroke bed-e        
   (   38,   -73)      20       20           20  stroke bed-e        
   (   38,   -72)      20       20           20  stroke bed-e        
   (   38,   -71)      21       21           21  stroke bed-e        +1
@@ -52,5 +52,5 @@ TRANSECT 25 stations from (38, -78) to (38, -54), every 1
   (   38,   -56)      19       19           19                      
   (   38,   -55)                                                    void
   (   38,   -54)                                                    void
-rises 1, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree thorn-3 at (36, -80), stroke bed-e at (37, -75), boulder rock-2 at (36, -68), tree thorn-7 at (39, -64)
+rises 1, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke bed-e at (36, -75), boulder rock-2 at (36, -68), tree thorn-7 at (39, -64)

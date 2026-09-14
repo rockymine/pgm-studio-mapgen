@@ -76,12 +76,12 @@ def layered(bands, axis="depth", ending="handOver"):
 MOSS = cell_(31, 9, [SNOW, GRASS])          # lying snow with the mire's turf showing through
 SHOULDER = cell_(32, 6, [COARSE, SNOW])     # a hummock's drier flank
 HAG = cell_(33, 8, [PODZOL, COARSE], rise=4)  # a peat hag's cut face: the one dark thing here
-PEAT = cell_(34, 9, [PODZOL, DIRT], rise=6)   # the body, which nobody sees until a face is cut
+PEAT = cell_(34, 9, [COARSE, DIRT], rise=6)   # the body, which nobody sees until a face is cut
 
 MIRE_SURFACE = layered([
     (10, layered([(1, MOSS), (2, DIRT)])),        # under 10 degrees: the mire itself
     (16, layered([(1, SHOULDER), (2, COARSE)])),  # 10-26: a hummock's flank
-    (64, HAG),                                    # over 26: a cut peat face
+    (64, layered([(1, HAG), (3, COARSE)])),       # over 26: a cut peat face over its own soil
 ], axis="slope")
 
 themes = {
