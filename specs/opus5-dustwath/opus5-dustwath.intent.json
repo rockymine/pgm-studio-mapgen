@@ -93,9 +93,39 @@
   "areas": [
    {
     "minX": -44,
-    "minZ": -24,
+    "minZ": -28,
+    "maxX": -28,
+    "maxZ": 28
+   },
+   {
+    "minX": 28,
+    "minZ": -28,
     "maxX": 44,
-    "maxZ": 24
+    "maxZ": 28
+   },
+   {
+    "minX": -28,
+    "minZ": -36,
+    "maxX": 24,
+    "maxZ": 36
+   },
+   {
+    "minX": -24,
+    "minZ": -36,
+    "maxX": 28,
+    "maxZ": 36
+   },
+   {
+    "minX": 24,
+    "minZ": -28,
+    "maxX": 44,
+    "maxZ": 28
+   },
+   {
+    "minX": -44,
+    "minZ": -28,
+    "maxX": -24,
+    "maxZ": 28
    }
   ],
   "holes": [],
@@ -113,8 +143,8 @@
    },
    "owner": "red",
    "name": "The Wath Stone",
-   "style": "pillar-3",
-   "materials": "obsidian",
+   "style": "cube-3",
+   "materials": "ender stone",
    "repairable": false,
    "anchor": {
     "x": -14,
@@ -133,8 +163,8 @@
    },
    "owner": "blue",
    "name": "The Wath Stone",
-   "style": "pillar-3",
-   "materials": "obsidian",
+   "style": "cube-3",
+   "materials": "ender stone",
    "repairable": false,
    "anchor": {
     "x": 13,

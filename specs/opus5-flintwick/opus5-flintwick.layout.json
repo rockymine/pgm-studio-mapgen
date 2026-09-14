@@ -609,6 +609,135 @@
       "material": null
      },
      {
+      "id": "sward-coombe",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+       [
+        14.0,
+        67.7
+       ],
+       [
+        3.7,
+        72.5
+       ],
+       [
+        -7.2,
+        73.2
+       ],
+       [
+        -11.5,
+        63.4
+       ],
+       [
+        -14.0,
+        52.3
+       ],
+       [
+        -3.7,
+        47.5
+       ],
+       [
+        7.2,
+        46.8
+       ],
+       [
+        11.5,
+        56.6
+       ]
+      ],
+      "theme": "sward"
+     },
+     {
+      "id": "sward-west",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+       [
+        -18.6,
+        55.8
+       ],
+       [
+        -26.3,
+        60.8
+       ],
+       [
+        -34.5,
+        63.5
+       ],
+       [
+        -39.0,
+        56.2
+       ],
+       [
+        -43.4,
+        48.2
+       ],
+       [
+        -35.7,
+        43.2
+       ],
+       [
+        -27.5,
+        40.5
+       ],
+       [
+        -23.0,
+        47.8
+       ]
+      ],
+      "theme": "sward"
+     },
+     {
+      "id": "sward-east",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+       [
+        43.3,
+        66.7
+       ],
+       [
+        34.1,
+        73.5
+       ],
+       [
+        23.6,
+        76.3
+       ],
+       [
+        17.4,
+        67.6
+       ],
+       [
+        12.7,
+        57.3
+       ],
+       [
+        21.9,
+        50.5
+       ],
+       [
+        32.4,
+        47.7
+       ],
+       [
+        38.6,
+        56.4
+       ]
+      ],
+      "theme": "sward"
+     },
+     {
       "id": "stair-w-lo",
       "type": "polygon",
       "operation": "add",
@@ -675,7 +804,7 @@
       "override": true,
       "keepClear": true,
       "floor": 0,
-      "base_height": 30,
+      "base_height": 31,
       "material": {
        "kind": "cell",
        "seed": 35,
@@ -706,11 +835,11 @@
       "vertices": [
        [
         -30,
-        29
+        32
        ],
        [
         -22,
-        29
+        32
        ],
        [
         -22,
@@ -722,10 +851,10 @@
        ]
       ],
       "anchor_heights": [
-       22,
-       22,
-       30,
-       30
+       24,
+       24,
+       31,
+       31
       ]
      },
      {
@@ -884,7 +1013,7 @@
       ]
      },
      {
-      "id": "wall-w",
+      "id": "wall-w-a",
       "type": "polyline",
       "operation": "add",
       "height_mode": "raise",
@@ -926,15 +1055,66 @@
       "vertices": [
        [
         -40,
-        40
+        38
        ],
        [
-        -30,
-        44
+        -35,
+        42
        ],
        [
-        -20,
-        40
+        -31,
+        43
+       ]
+      ]
+     },
+     {
+      "id": "wall-w-b",
+      "type": "polyline",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 2,
+      "radius": 1.5,
+      "stroke_edge": "rough",
+      "stroke_seed": 9,
+      "skirt": 0,
+      "material": {
+       "kind": "cell",
+       "seed": 36,
+       "cellSize": 5,
+       "jitter": 1,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 173,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 4,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 5
+        },
+        {
+         "kind": "solid",
+         "id": 159,
+         "data": 0
+        }
+       ],
+       "rise": 2
+      },
+      "vertices": [
+       [
+        -21,
+        41
+       ],
+       [
+        -17,
+        43
        ],
        [
         -13,
@@ -943,7 +1123,7 @@
       ]
      },
      {
-      "id": "wall-e",
+      "id": "wall-e-a",
       "type": "polyline",
       "operation": "add",
       "height_mode": "raise",
@@ -984,15 +1164,66 @@
       },
       "vertices": [
        [
-        12,
-        48
+        10,
+        50
        ],
        [
-        20,
-        41
+        15,
+        44
        ],
        [
-        31,
+        19,
+        42
+       ]
+      ]
+     },
+     {
+      "id": "wall-e-b",
+      "type": "polyline",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 2,
+      "radius": 1.5,
+      "stroke_edge": "rough",
+      "stroke_seed": 10,
+      "skirt": 0,
+      "material": {
+       "kind": "cell",
+       "seed": 36,
+       "cellSize": 5,
+       "jitter": 1,
+       "warp": 1,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 173,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 4,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 5
+        },
+        {
+         "kind": "solid",
+         "id": 159,
+         "data": 0
+        }
+       ],
+       "rise": 2
+      },
+      "vertices": [
+       [
+        29,
+        44
+       ],
+       [
+        34,
         46
        ],
        [
@@ -1012,14 +1243,19 @@
        "east-nab-27",
        "east-nab-27-2",
        "east-nab-27-3",
+       "sward-coombe",
+       "sward-west",
+       "sward-east",
        "stair-w-lo",
        "stair-w-hi",
        "ramp-e",
        "strand-floor",
        "yard-w",
        "yard-e",
-       "wall-w",
-       "wall-e"
+       "wall-w-a",
+       "wall-w-b",
+       "wall-e-a",
+       "wall-e-b"
       ]
      }
     ]
@@ -1082,6 +1318,11 @@
               {
                "kind": "solid",
                "id": 159,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 2,
                "data": 0
               },
               {
@@ -1402,6 +1643,133 @@
      }
     ],
     "rise": 6
+   }
+  },
+  "sward": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 3,
+     "data": 1
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 4,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "stack": {
+      "ending": "handOver",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "cell",
+         "seed": 39,
+         "cellSize": 9,
+         "jitter": 3,
+         "warp": 2,
+         "palette": [
+          {
+           "kind": "solid",
+           "id": 2,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 2,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 3,
+           "data": 1
+          }
+         ],
+         "rise": 0
+        }
+       },
+       {
+        "thickness": 3,
+        "material": {
+         "kind": "cell",
+         "seed": 40,
+         "cellSize": 7,
+         "jitter": 2,
+         "warp": 1,
+         "palette": [
+          {
+           "kind": "solid",
+           "id": 3,
+           "data": 1
+          },
+          {
+           "kind": "solid",
+           "id": 159,
+           "data": 0
+          }
+         ],
+         "rise": 0
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "cell",
+    "seed": 41,
+    "cellSize": 6,
+    "jitter": 2,
+    "warp": 1,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 8
+     },
+     {
+      "kind": "solid",
+      "id": 173,
+      "data": 0
+     }
+    ],
+    "rise": 3
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "cell",
+    "seed": 42,
+    "cellSize": 9,
+    "jitter": 3,
+    "warp": 2,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 159,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     }
+    ],
+    "rise": 5
    }
   },
   "knap": {
@@ -10584,8 +10952,8 @@
     "id": "thorn-2",
     "kind": "tree",
     "seed": 703,
-    "x": -18,
-    "z": 56,
+    "x": -37,
+    "z": 48,
     "style": "tree-showcase-r4-3"
    },
    {
@@ -10600,16 +10968,16 @@
     "id": "thorn-4",
     "kind": "tree",
     "seed": 705,
-    "x": 34,
-    "z": 72,
+    "x": 36,
+    "z": 64,
     "style": "tree-showcase-r4-5"
    },
    {
     "id": "thorn-5",
     "kind": "tree",
     "seed": 706,
-    "x": 14,
-    "z": 50,
+    "x": 16,
+    "z": 58,
     "style": "tree-showcase-r4-1"
    },
    {
@@ -10632,8 +11000,8 @@
     "id": "birk-2",
     "kind": "tree",
     "seed": 723,
-    "x": -10,
-    "z": 50,
+    "x": 6,
+    "z": 54,
     "style": "tree-showcase-r13-5"
    },
    {
@@ -10703,8 +11071,8 @@
     },
     "id": "sarsen-1",
     "seed": 742,
-    "x": 12,
-    "z": 66
+    "x": 16,
+    "z": 20
    },
    {
     "kind": "boulder",

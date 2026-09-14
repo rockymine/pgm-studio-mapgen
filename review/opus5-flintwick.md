@@ -9,8 +9,8 @@
 the sea cliff, the cut behind each wool room, the sides of a stair.
 
 80 × 200 blocks, `rot_180`, cell 5, `maxPlayers` 24, ground y19–y35, observer y60. Six plan pieces,
-two build zones, six relief marks, two pushes, eight authored shapes, three themes, **42 props placed
-and none declined**.
+two build zones, six relief marks, two pushes, thirteen authored shapes, four themes, **42 props
+placed and none declined**.
 
 ## The wick, and why the plan has a hole in it
 
@@ -61,24 +61,40 @@ comes out made of its own skin. The `wall` bucket, which is the exposed riser, c
 flint. So every white-to-black boundary on this board is a break of slope, and there is no band of
 dark laid across a white plain anywhere on it.
 
-`05-themes.txt`: `chalk 11 048 cells (80.7%)`, `strand 1 852 (13.5%)`, `knap 784 (5.7%)`, with
-`173:0 Coal Block` present in the chalk's surface census and in the knapping yards' and nowhere else.
-Borders: `chalk | knap 224 cells`, `chalk | strand 190`. The first is the excluded pad's own face; the
-second is the cliff.
+**And chalk downland is grass.** The first build of this board had no soil anywhere in its palette —
+white clay, quartz, gravel, shingle, flint — so every tree on it stood on a built or a bare block:
+quartz, cobblestone, stained clay, and one thorn seated on **Coal Block**. A tree growing out of a
+floor is not a tree. Two things answer it. The under-12° band's top course is now a `cell` that picks
+grass one time in five, so the flat mottles rather than reading as a white plate; and a fourth theme,
+`sward` — grass over coarse dirt over chalk — is painted in three hollows where soil actually stays:
+the coombe and the lee of each arm.
+
+`05-themes.txt`: `chalk 8 502 cells (61.9%)`, `sward 2 604 (18.9%)`, `strand 1 852 (13.5%)`,
+`knap 784 (5.7%)`, with `173:0 Coal Block` present in the chalk's surface census and in the knapping
+yards' and nowhere else. Borders: `chalk | sward 478 cells`, `chalk | knap 224`, `chalk | strand 190`.
+
+Every one of the nine trees, read on the built world:
+
+| (−34,50) | (−38,56) | (−37,48) | (30,66) | (36,64) | (16,58) | (−8,58) | (8,62) | (6,54) |
+|---|---|---|---|---|---|---|---|---|
+| Grass | Coarse Dirt | Grass | Coarse Dirt | Coarse Dirt | Grass | Grass | Grass | Grass |
+
+One sarsen lies on the strand, which is where a chalk coast puts the flints the cliff has already
+given up.
 
 Angle distribution over 13 684 cells:
 
 ```
-00-09° 45.5%   10-19° 21.1%   20-29° 15.4%   30-39° 11.2%   40-49° 5.8%   50-59° 1.0%
-6.9% at 40° or steeper
+00-09° 54.7%   10-19° 15.3%   20-29° 12.3%   30-39° 9.7%   40-49° 6.6%   50-59° 1.4%
+8.0% at 40° or steeper
 ```
 
-`03-slopes.txt`: **12 476 walked, 688 scrambled, 520 barrier, 20 faces**, the largest 60 cells at
-x −37..−22 z −79..−68.
+`03-slopes.txt`: **12 182 walked, 782 scrambled, 778 barrier, 20 faces**, the largest 186 cells at
+x −37..11 z −72..−45.
 
 ## The fault-catalogue reads
 
-**Empty board — 0.0% dead.** `GET …/coverage`: 13 684 ground cells, **13 683 reached, 1 dead**, no
+**Empty board — 0.0% dead.** `GET …/coverage`: 13 742 ground cells, **13 741 reached, 1 dead**, no
 dead patch large enough to list. Two objectives a side plus a spawn between them is the shape that
 reads this way by construction, and the wick is what keeps the two arms on separate journeys.
 
@@ -104,22 +120,38 @@ splits them exactly.
 
 **Stairs that end nowhere — two authored flights, one with a fault.**
 
+## Both flights arrive, and neither fault was the flight's
+
 The west stair's top did **not** land on the first build. `stair-w-hi` was cut to `DOWNLAND − 1` = 26
 and the down it arrives on stands at 30 there, because the `nab-w` point mark and the grain are over
 it — the last tread four courses under the ground it was supposed to reach, read at **(−29, 41)**.
 That is `SK26`'s subject. Cut instead to the height the ground actually has, and extended from z 44 to
 z 48 so the gradient holds:
 
+It took three more reads to close, and **neither remaining fault turned out to be the flight's**.
+
+**The east ramp's head was blocked by the board's own wall.** `BARRIER +3 at (24, 44)` and
+`DROP −4 at (24, 39)` came from a plateau at y28 spanning z 40..44 — which is `wall-e`, the
+cliff-top field wall, standing two courses proud straight across the head of the ramp. A wall drawn
+along one line without regard to where the flight arrives. Each arm's wall is now **two runs with a
+gateway between them**, and the gateway is where the way comes up: `wall-e-a` ends at x 19 and
+`wall-e-b` starts at x 29, with the ramp at x 20..28 between them; the same on the west, gapped
+x −31..−21 for the stair. A drystone wall with two gates is also what one actually looks like.
+
+**The west stair was being flattened by its own paint.** Once the wall came off it, the stair read
+`DROP −4 at (−29, 40)` again and the stations showed a dead-flat y31 from z 41 to z 50 — the flight
+simply was not there. The cause is `sward-west`: a `raise 0` paint patch drawn **after** the flights
+sets those columns back to the median ground, so a shape the author can see on the canvas is not in
+the world. The three sward patches now go down first and the flights are cut into them.
+
 | flight | run / rise | transect, after |
 |---|---|---|
-| `stair-w-lo` + `stair-w-hi`, x −33..−22, z 14..48 | 13 + 19 / 3 + 8 | `rises 1, falls 11, worst step 2: 0 barrier, 0 scramble, 0 drop \| walked end to end` |
-| `ramp-e`, x 20..28, z 16..46 | 30 / 6 | `rises 1, falls 7, worst step 4: 1 barrier, 0 scramble, 1 drop — BARRIER +3 at (24, 44); DROP −4 at (24, 39)` |
+| `stair-w-lo` + `stair-w-hi`, x −33..−22, z 14..48 | 13 + 16 / 3 + 7 | `rises 1, falls 11, worst step 2: 0 barrier, 0 scramble, 0 drop \| walked end to end` |
+| `ramp-e`, x 20..28, z 16..46 | 30 / 6 | `rises 0, falls 8, worst step 3: 0 barrier, 0 scramble, 0 drop \| walked end to end` |
 
-**The east ramp's head is still not clean.** The down on that arm stands at 26 at (24, 46) and 29 at
-(24, 44), and the flight's head sits between the two: a three-course step onto it from the north and a
-four-course fall inside it. It walks end to end and it is not a way up anybody should have to use.
-The fix is the same one the west stair had — read the ground where the head lands and cut the anchor
-to it — and it is open.
+`stair-w-hi`'s anchors are now read off the built world at x −29 — y24 at z 32 below the face and y31
+at z 48 above it — rather than taken from the plan's `DOWNLAND`. One number for two different grounds
+is what put it wrong twice.
 
 **Stark contrast with no area separation — no**, by construction: see the slope stack above.
 
@@ -146,6 +178,7 @@ walks the spawn's own crossings at `worst step 1`.
 | `ST9`/`ST10` | 24 × 11 footprint, 40 × 15 spawn piece | a spawn piece is at most 20 × 30 |
 | `HS4` | `doorHead.block` stone brick, fill quartz | a head's two corners and the line between them are one material |
 | `SK4`/`SK3` | *'wall-e' is a path of width 0, so it draws no ground* | a **polyline states its band as `radius` and its centreline as `vertices`**, like every other shape. Given `width` and `points` it stores at 200, pre-flights OPEN, and is simply not in the world |
+| *(nothing)* | — | a `raise 0` paint patch drawn after a flight **flattens it**, in silence. No rule fires; only a transect along the flight says so |
 
 ## The gate
 
@@ -161,8 +194,6 @@ world void       24 roofed void(s), 2 of them sealed
 
 ## What is open
 
-- **`SK26` on `ramp-e`'s head** — `BARRIER +3 at (24, 44)` and `DROP −4 at (24, 39)`. The same fix
-  that cleared the west stair, applied to the east arm's own ground heights.
 - **The `garth` · `spawn-red` seam**, above.
 - **`fill-ratio 0.794`**, above.
 - **A question for the author, not a claim:** the wick is a build zone, so the bay can be bridged as

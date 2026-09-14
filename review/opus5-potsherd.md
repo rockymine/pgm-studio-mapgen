@@ -58,9 +58,9 @@ than as a hole with a colour change round it.
 | stairs that end nowhere | the three transects above | all three walk |
 | flat, one theme, empty | `coverage` · `incline` | **9.4% dead**, largest patch 482 cells **1 block** from used ground; angles 56.4 / 29.6 / 8.6 / 3.0 / 1.5 / 0.8 % — 2.3% at 40° or steeper, all of it pit wall |
 | straight frontline | the `pit-pan` ring, plus bent `camp-25`/`camp-24`/`camp-20` | the lip wanders; the board's outer edge is a drawn coast |
-| stark contrast, no separation | `05-themes.txt` | clay 91.3%, pit 4.9%, works 3.8%; `clay|pit` 516 cells of border, every one of them at the foot of the pit wall, and `clay|works` 242, every one at a one-course built riser |
+| stark contrast, no separation | `05-themes.txt` | clay 87.8%, pit 4.9%, sward 4.5%, works 2.8%; `clay|pit` 516 cells of border, every one of them at the foot of the pit wall, and `clay|works` at a one-course built riser |
 
-`03-slopes.txt`: **19 463 walked, 386 scrambled, 123 barrier; 7 faces, largest 35** at x 2..6 z -55..-47
+`03-slopes.txt`: **19 377 walked, 472 scrambled, 123 barrier; 7 faces, largest 35** at x 2..6 z -55..-47
 — the haul road's west revetment.
 
 ## Two things a picture would not have caught
@@ -72,6 +72,28 @@ the bevel is part of it — so the core moved to (-34,-60) and reads 11°.
 The track out of the spawn ran straight through its own kiln: a transect across it read
 `BARRIER +15, DROP -15 at (-15,-68)`. The kilns moved four blocks north and the track now runs in front
 of their yards rather than into them.
+
+## The author's pass: the core was already a cube, and six trees wanted soil
+
+**The goal is a core, and `CorePlacement` carries no `style` at all** — a core's casing size is set by
+`lava`, and `lava: 3` is a **5 × 5 × 5** obsidian cube. Measured rather than assumed:
+`render/section?axis=x&at=-60` draws the casing five wide and five tall with three courses of lava
+inside it, and `column?at=-34,-60` reads obsidian y31, lava y32–34, obsidian y35. That is 98 blocks of
+shell against a `cube-3`'s 27, so the *use a cube* item was already satisfied and nothing changed. If a
+bigger one is wanted, `lava` is the dial and it goes to 5.
+
+Six of the twelve copied bodies stood on hardened or stained clay — `birk-1` (44, −78), `birk-5`
+(44, −64), `birk-6` (−38, −80), `birk-9` (24, −16), `birk-10` (−8, −18), `birk-11` (46, −42). The board
+now carries a fourth theme, **`sward`**: grass over two dirt over hardened clay, laid as six seven-point
+rings under those six. Its cell carries coarse dirt beside the grass so the patch feathers, and Desert
+puts the grass at straw. `05-themes.txt` reads **sward 4.5%, 898 cells, Grass Block first**; columns
+confirm soil directly under `birk-5` (`y26 Grass Block · y25 Dirt`), `birk-10` (`y21 Grass Block`) and
+`birk-11` (`y23 Coarse Dirt · y22 Dirt`) — the other three sit under 11–13-block birch canopies that a
+column reads as leaves whichever cell it is pointed at.
+
+The three `birk` bodies themselves are genuine birch — `17:14` log under `18:14` leaves, 11–13 tall —
+and `roundel-1` is oak. Neither is the acacia-trunk-with-birch-leaves conifer the author found on the
+two desert boards, so nothing here was replaced.
 
 ## Limits
 

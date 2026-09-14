@@ -16,7 +16,7 @@ and the braided scours that run down to the bed are line marks with a narrow tre
 either side of each lofts back to the flat instead of walling itself.
 """
 
-import json, os
+import json, math, os
 
 SLUG = "opus5-dustwath"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -48,17 +48,28 @@ def plan():
             # the flats, falling to the lip of the bed            blocks x -44..44, z -40..-24
             {"id": "flats", "role": "piece", "rect": [-11, -10, 22,  4], "surface": LIP},
         ],
-        # the wath: the gap between the two teams' ground, spanned end to end and no further --
-        # a zone reaching past the last ground it docks overhangs into void (BZ9)
-        "zones": [{"id": "wath", "rect": [-11, -6, 22, 12]}],
+        # The wath. Three rectangles rather than one: a single zone across all twenty-two cells
+        # draws its landward edge as a ruled line the length of the board with nothing in the
+        # terrain under it. These step at the two braids' feet -- x -28 and x 24 -- and reach
+        # eight blocks further in over the middle, where the hollow and the causeway flight are.
+        # Each is symmetric about z 0, so each compiles to one build area rather than a pair.
+        "zones": [{"id": "wath-w", "rect": [-11, -7, 4, 14]},
+                  {"id": "wath-mid", "rect": [-7, -9, 13, 18]},
+                  {"id": "wath-e", "rect": [6, -7, 5, 14]}],
         "placements": {
             # camp's minimum corner is (-8, -100), so this is (0, -92): the spawns 184 apart
             "spawns": [{"id": "spawn-1", "piece": "camp", "at": [8, 8], "facing": "back",
                         "footprint": [2, 2, 12, 12]}],
             # bench's minimum corner is (-32, -56), so this is (-14, -51) -- 14 blocks off the
             # centre line, which is what keeps the flanks on a journey somebody makes
+            # A cube and not a pillar: `pillar-3` is three blocks of obsidian and `cube-3` is
+            # twenty-seven, and this goal stands forty blocks out of its own camp door -- the
+            # count is what gives a defender time to arrive. The material follows from the count:
+            # `DC3` holds obsidian worth at most three blocks, so twenty-seven of it is a grind
+            # rather than a raid, and ender stone is what the gate names for a cube. One of the
+            # four the stamper builds (obsidian · emerald block · gold block · ender stone).
             "destroyables": [{"id": "destroyable-1", "piece": "bench", "at": [18, 5],
-                              "style": "pillar-3", "materials": "obsidian", "float": 4,
+                              "style": "cube-3", "materials": "ender stone", "float": 4,
                               "name": "The Wath Stone"}],
         },
     }
@@ -90,6 +101,8 @@ def by_slope(*bands):
 
 
 SAND = solid(12)
+GRANITE = solid(1, 1)
+POLISHED = solid(1, 2)
 SANDSTONE = solid(24)
 SMOOTH = solid(24, 2)
 CHISELLED = solid(24, 1)
@@ -166,6 +179,39 @@ def works_theme():
         "wallEnabled": True,
         "fill": solid(24, 2),
     }
+
+
+def sward_theme():
+    """A seat of soil, and the only green on the board. The Savanna tint puts grass at #bfb755, so
+    a patch of it on a dust flat reads as scrub holding on rather than as a lawn; the cell carries
+    the flat's own sand as well, so the patch feathers out instead of ending on a line. A tree
+    wants soil under it -- grass over two dirt is what a copied body is seated on."""
+    return {
+        "bedrock": {"relative": False, "value": 1},
+        "rimEdges": "void",
+        "wallOnTerrainFaces": False,
+        "rim": {"material": COARSE, "depth": 1, "enabled": True},
+        "surface": {"depth": 3, "enabled": True, "material": depth_stack(
+            (cell(61, 6, GRASS, SAND, COARSE, GRASS), 1), (DIRT, 2), (SANDSTONE, 1))},
+        "wall": {"kind": "wallRun", "runs": [
+            {"material": DIRT, "width": 2}, {"material": COARSE, "width": 1}]},
+        "wallEnabled": True,
+        "fill": {"kind": "voronoi", "seed": 23, "cellSize": 11, "rise": 5, "bands": [
+            {"material": SANDSTONE, "depth": 2}, {"material": SMOOTH, "depth": 1}]},
+    }
+
+
+def patch(name, cx, cz, radius, seed):
+    """One sward patch: a seven-point ring with the radius wobbled per point, so a patch of grass
+    is a shape the ground could have made rather than a disc somebody stamped."""
+    ring = []
+    for step in range(7):
+        angle = 2 * math.pi * step / 7
+        wobble = radius * (0.72 + 0.28 * ((seed * (step + 3) * 37) % 11) / 10.0)
+        ring.append([round(cx + wobble * math.cos(angle)),
+                     round(cz + wobble * math.sin(angle))])
+    return {"id": name, "type": "polygon", "operation": "add", "height_mode": "raise",
+            "base_height": 0, "skirt": 0, "vertices": ring, "theme": "sward"}
 
 
 # ── the ground, as four things that meet ─────────────────────────────────────────────────────
@@ -281,6 +327,14 @@ def shapes():
         out.append({"id": name, "type": "polygon", "operation": "add",
                     "height_mode": "raise", "base_height": 0, "skirt": 0,
                     "vertices": ring, "theme": "scour"})
+
+    # The sward: six seats under the trees that stand on open flat, and three patches where the
+    # dust has held enough moisture for anything to grow. A brush states a height_mode or it is
+    # never a candidate for the paint at all, and a raise of zero changes no height.
+    for at, (px, pz, pr) in enumerate([(-40, -58, 6), (-42, -36, 5), (8, -52, 5),
+                                       (14, -72, 6), (12, -63, 5), (38, -60, 6),
+                                       (-30, -70, 8), (24, -66, 7), (-6, -62, 7)]):
+        out.append(patch(f"sward-{at}", px, pz, pr, 3 + at))
     return out
 
 
@@ -337,7 +391,12 @@ def shelter():
 
 
 def dressing():
-    trees = json.load(open(f"{HERE}/trees.json"))
+    # `spar-1` and `spar-2` are dropped rather than left unused: their bodies are acacia log
+    # under BIRCH leaves (162:12 under 18:14) at fourteen blocks, which is a pine silhouette and
+    # not a desert tree. The showcase library names rows rather than species, so what a body is
+    # has to be read off its leaf id -- `thorn-1/2/3` are acacia under acacia, eight or nine tall.
+    trees = {name: body for name, body in json.load(open(f"{HERE}/trees.json")).items()
+             if not name.startswith("spar-")}
     styles = dict(trees)
     styles["shelter"] = shelter()
 
@@ -347,15 +406,15 @@ def dressing():
         # because a worn band reads as litter and a path is a claim about where people walk.
         {"id": "track-camp", "kind": "stroke", "seed": 41, "radius": 2, "style": "solid",
          "coverage": 1.0, "claimsGround": True,
-         "pave": cell(43, 5, DIRT, COARSE, SPRUCE, DIRT),
+         "pave": cell(43, 5, SAND, GRANITE, POLISHED, SAND),
          "points": [[0, -84], [-8, -78], [-18, -72], [-26, -66]]},
         {"id": "track-bench", "kind": "stroke", "seed": 42, "radius": 2, "style": "solid",
          "coverage": 1.0, "claimsGround": True,
-         "pave": cell(44, 5, DIRT, COARSE, SPRUCE, DIRT),
+         "pave": cell(44, 5, SAND, GRANITE, POLISHED, SAND),
          "points": [[-26, -66], [-25, -56], [-21, -46], [-14, -38]]},
         {"id": "track-ford", "kind": "stroke", "seed": 45, "radius": 2, "style": "solid",
          "coverage": 1.0, "claimsGround": True,
-         "pave": cell(46, 5, DIRT, COARSE, SPRUCE, DIRT),
+         "pave": cell(46, 5, SAND, GRANITE, POLISHED, SAND),
          "points": [[-14, -38], [-8, -34], [-2, -31], [0, -28]]},
         # The braid floors: not a path, so not solid -- a scoured bed reads as stones left behind.
         {"id": "bed-w", "kind": "stroke", "seed": 47, "radius": 4, "style": "stones",
@@ -388,8 +447,8 @@ def dressing():
     # deepest. Every one is placed off the track and off the bench's top, which is the goal's.
     plant = [("thorn-1", -26, -96), ("thorn-2", 22, -95), ("thorn-3", -22, -83),
              ("thorn-1", 27, -84), ("thorn-2", 14, -72), ("thorn-3", 12, -63),
-             ("spar-1", -40, -58), ("spar-2", 38, -60), ("spar-1", -42, -36),
-             ("spar-2", 8, -52), ("thorn-2", -18, -101), ("spar-1", 18, -100)]
+             ("thorn-3", -40, -58), ("thorn-1", 38, -60), ("thorn-2", -42, -36),
+             ("thorn-3", 8, -52), ("thorn-2", -18, -101), ("thorn-1", 18, -100)]
     for at, (style, tx, tz) in enumerate(plant):
         props.append({"id": f"thorn-{at}", "kind": "tree", "seed": 700 + at,
                       "x": tx, "z": tz, "style": style})
@@ -417,7 +476,8 @@ def finish():
         # this board a block does not state for itself. A pale sand board on Plains has a summer
         # meadow running through it.
         "biome": {"kind": "solid", "id": 35},
-        "themes": {"dust": dust_theme(), "scour": scour_theme(), "works": works_theme()},
+        "themes": {"dust": dust_theme(), "scour": scour_theme(), "works": works_theme(),
+                   "sward": sward_theme()},
         "mapTheme": "dust",
         # the causeway head carries its own theme and its own relief_scope on the shape itself,
         # so nothing here has to key on a compiled id that a re-plan could rename

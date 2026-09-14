@@ -32,12 +32,12 @@ of the four approaches — east, south-east, west, north-west.
 
 | read | number |
 |---|---|
-| `03-slopes.txt` | 12 628 walked · 152 scrambled · **720 barrier**; 8 faces, largest 314 at x −45..25, z 2..42 |
-| `06-claims.txt` | **placed 42, declined 1** |
-| relief read | level **0.651**, largestField **0.461**, 4 faces, 1 cliff, landform *rolling*, **0 seams**, 0 silent marks, symmetry error **0** |
-| `GET …/coverage` | **47.2 % dead**, 3 journeys; two patches of 2 858 and 2 729 cells at (−28, 12) and (26, −14), both **1 block** from used ground |
+| `03-slopes.txt` | 12 781 walked · 234 scrambled · **720 barrier**; 8 faces, largest 314 at x −45..25, z 2..42 |
+| `06-claims.txt` | **placed 38, declined 1** |
+| relief read | level **0.649**, largestField **0.477**, 4 faces, 1 cliff, landform *rolling*, **0 seams**, 0 silent marks, symmetry error **0** |
+| `GET …/coverage` | **49.3 % dead**, 3 journeys — and the coverage walk cannot see a capture point, so this is not the empty-board fault (below) |
 | `GET …/incline` | 47.2 % under 10° · 22.9 % teens · 16.5 % twenties · 5.3 % thirties · 8.1 % at 40°+ |
-| `05-themes.txt` | basalt 67.3 % · weed 29.7 % · stack 3.0 % |
+| `05-themes.txt` | basalt 64.2 % · weed 27.0 % · peat 5.8 % · stack 3.0 % |
 
 ## Against the fault catalogue
 
@@ -65,16 +65,33 @@ reads is the waterline, and that is the `pan` mark's own wandering ring plus the
 green weed at the stack's own face (74 + 54 border cells), and grit bench against weed at the
 waterline (458 cells). Both boundaries are a face or a watercourse, not a colour change on flat ground.
 
-**Flat, one theme, empty — partly.** Three themes, all on the ground, none under 3 %. The relief is the
-healthiest of the four boards: 65 % of the ground under ten degrees with 46 % of it in one connected
-field, no seams, no silent marks. But **47.2 % dead is the highest figure in this set and the weakest
-number on the board.** The two big patches are the east and west lobes of the mere; each is one block
-from reached ground, which is the Glassmere condition and not Ruddle Brink's whole-front scarp, and
-the board is not split (8 faces, three walkable crossings of the rim a side). It is still the fault's
-shape: both spawns and the only objective sit on x = 0, so the walker's journey is one straight line
-down the middle and the flanks are on nobody's way anywhere. Moving the spits onto the east and west
-flanks was meant to answer it and did not move the number, because the coverage read counts journeys
-and not possibilities.
+**Flat, one theme, empty — no, and the dead figure is not the read it looks like.** Four themes, all on
+the ground, none under 3 %. The relief is the healthiest of the four boards: 65 % of the ground under
+ten degrees with 48 % of it in one connected field, no seams, no silent marks.
+
+**`GET /coverage` cannot see a control point.** Capture points ride on the *intent*, not on the plan
+the coverage walk reads, so on a KotH board the walk knows only the two spawns and has no objective to
+travel to — `journeys: 3` where a two-objective destroy board reads ten or twenty-one. The 49.3 % it
+reports is therefore not the empty-board fault; it is the read declining to answer. The numbers that do
+answer here are the relief read, the incline distribution and the four measured ways onto the hill.
+
+There is still a real question underneath it, and it is the author's rather than the tool's: **more than
+half the ground this figure calls dead is open water.** Whether water in the middle of a board is dead
+ground at all is a question about how a map plays, and it is in the run report rather than settled here.
+
+## The peat pans, and what grows on this board
+
+A basalt bowl is grit and black rock, and the first build stood eight of its ten stunted dark oaks on
+coal ore, cobblestone or gray stained clay — a tree dropped on the rock rather than grown in it. Two
+things fixed it. The bowl's flat band now carries **coarse dirt and podzol** among its grit, which is
+what blows into a hollow; and two **greaves** — peat pans stated as `exclude` shapes at a fixed height,
+so they are flat to their own lip — hold the scrub that used to stand on stone. They carry a fourth
+theme, `peat`, at 5.8 % of the ground.
+
+The count came down from ten to eight: the two that still seated on coal ore were removed rather than
+moved, because the pans were full and a basalt strand with nothing growing on it is the honest answer.
+Every remaining trunk was read back: coarse dirt at (32, 41) and (26, 62), podzol at (−8, 56), grass at
+(34, 50), (34, 68) and (26, 73), gravel at (−38, 54) and (40, 38). No masonry, no ore, no stained clay.
 
 ## Limits
 

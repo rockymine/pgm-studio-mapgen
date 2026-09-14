@@ -5,24 +5,24 @@ TRANSECT 21 stations from (-44, 40) to (-24, 40), every 1
   (  -43,    40)                                                    void
   (  -42,    40)                                                    void
   (  -41,    40)                            28  boulder sarsen-2    void
-  (  -40,    40)      29       29           29  boulder sarsen-2    
-  (  -39,    40)      29       29           29  boulder sarsen-2    
-  (  -38,    40)      29       29           29  boulder sarsen-2    
-  (  -37,    40)      29       29           29  boulder sarsen-2    
-  (  -36,    40)      29       29           29  boulder sarsen-2    
-  (  -35,    40)      26       26           29  boulder sarsen-2    -3
-  (  -34,    40)      26       26           29  boulder sarsen-2    
-  (  -33,    40)      26       26           28  boulder sarsen-2    
+  (  -40,    40)      26       26           29  boulder sarsen-2    
+  (  -39,    40)      28       28           29  boulder sarsen-2    scramble +2
+  (  -38,    40)      28       28           29  boulder sarsen-2    
+  (  -37,    40)      28       28           29  boulder sarsen-2    
+  (  -36,    40)      28       28           29  boulder sarsen-2    
+  (  -35,    40)      28       28           29  boulder sarsen-2    
+  (  -34,    40)      28       28           29  boulder sarsen-2    
+  (  -33,    40)      26       26           28  boulder sarsen-2    -2
   (  -32,    40)      26       26           28  boulder sarsen-2    
   (  -31,    40)      26       26           28  boulder sarsen-2    
-  (  -30,    40)      26       26           27  boulder sarsen-2    
-  (  -29,    40)      26       26           26                      
-  (  -28,    40)      26       26           26                      
-  (  -27,    40)      26       26           26                      
-  (  -26,    40)      29       29           29                      BARRIER +3
-  (  -25,    40)      29       29           29                      
-  (  -24,    40)      29       29           29                      
-rises 1, falls 1, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (-26, 40) | walked end to end
+  (  -30,    40)      27       27           27                      +1
+  (  -29,    40)      27       27           27                      
+  (  -28,    40)      27       27           27                      
+  (  -27,    40)      27       27           27                      
+  (  -26,    40)      27       27           27                      
+  (  -25,    40)      27       27           27                      
+  (  -24,    40)      27       27           27                      
+rises 2, falls 1, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-39, 40) | walked end to end
 beside: boulder sarsen-2 at (-41, 38)
 
 ## sarsen-2 (boulder) along z
@@ -39,19 +39,19 @@ TRANSECT 25 stations from (-36, 28) to (-36, 52), every 1
   (  -36,    36)      26       26           28  boulder sarsen-2    
   (  -36,    37)      26       26           28  boulder sarsen-2    
   (  -36,    38)      26       26           29  boulder sarsen-2    
-  (  -36,    39)      26       26           29  boulder sarsen-2    
-  (  -36,    40)      29       29           29  boulder sarsen-2    BARRIER +3
-  (  -36,    41)      29       29           29  boulder sarsen-2    
-  (  -36,    42)      29       29           29  boulder sarsen-2    
-  (  -36,    43)      29       29           29  boulder sarsen-2    
-  (  -36,    44)      27       27           28  boulder sarsen-2    -2
-  (  -36,    45)      28       28           28                      +1
-  (  -36,    46)      28       28           28                      
-  (  -36,    47)      28       28           28                      
-  (  -36,    48)      28       28           37  tree thorn-0        
-  (  -36,    49)      29       29           32  tree thorn-0        +1
-  (  -36,    50)      29       29           29                      
-  (  -36,    51)      29       29           29                      
-  (  -36,    52)      30       30           33  tree thorn-0        +1
-rises 5, falls 1, worst step 4: 2 barrier, 0 scramble, 0 drop — BARRIER +4 at (-36, 29); BARRIER +3 at (-36, 40) | walked end to end
-beside: boulder sarsen-2 at (-38, 36), tree thorn-0 at (-34, 47), tree thorn-1 at (-37, 53)
+  (  -36,    39)      28       28           29  boulder sarsen-2    scramble +2
+  (  -36,    40)      28       28           29  boulder sarsen-2    
+  (  -36,    41)      28       28           29  boulder sarsen-2    
+  (  -36,    42)      28       28           28  boulder sarsen-2    
+  (  -36,    43)      28       28           28  boulder sarsen-2    
+  (  -36,    44)      31       31           31  boulder sarsen-2    BARRIER +3
+  (  -36,    45)      31       31           31                      
+  (  -36,    46)      31       31           35  tree thorn-2        
+  (  -36,    47)      31       31           40  tree thorn-2        
+  (  -36,    48)      31       31           41  tree thorn-2        
+  (  -36,    49)      31       31           39  tree thorn-2        
+  (  -36,    50)      31       31           36  tree thorn-2        
+  (  -36,    51)      31       31           33  tree thorn-2        
+  (  -36,    52)      31       31           35  tree thorn-0        
+rises 3, falls 0, worst step 4: 2 barrier, 1 scramble, 0 drop — BARRIER +4 at (-36, 29); scramble +2 at (-36, 39); BARRIER +3 at (-36, 44) | walked end to end
+beside: boulder sarsen-2 at (-38, 36), tree thorn-2 at (-38, 45), tree thorn-0 at (-35, 50), tree thorn-1 at (-37, 53)

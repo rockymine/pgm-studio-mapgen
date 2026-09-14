@@ -1,11 +1,11 @@
 ## erratic-3 (boulder) along x
 TRANSECT 20 stations from (22, 32) to (41, 32), every 1
   station        ground  surface  water  top  standing            step
-  (   22,    32)      19       19           19                      
-  (   23,    32)      19       19           19                      
-  (   24,    32)      19       19           19                      
-  (   25,    32)      19       19           19                      
-  (   26,    32)      19       19           19                      
+  (   22,    32)      19       19           31  tree birk-1         
+  (   23,    32)      19       19           32  tree birk-1         
+  (   24,    32)      19       19           30  tree birk-1         
+  (   25,    32)      19       19           24  tree birk-1         
+  (   26,    32)      19       19           27  tree birk-1         
   (   27,    32)      19       19           19                      
   (   28,    32)      19       19           19                      
   (   29,    32)      19       19           19                      
@@ -22,7 +22,7 @@ TRANSECT 20 stations from (22, 32) to (41, 32), every 1
   (   40,    32)                                                    void
   (   41,    32)                                                    void
 rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke track-shore at (20, 30), boulder erratic-4 at (20, 33), stroke track-east at (25, 34), boulder erratic-3 at (30, 31)
+beside: tree birk-1 at (20, 30), boulder erratic-4 at (20, 34), boulder erratic-3 at (30, 31)
 
 ## erratic-3 (boulder) along z
 TRANSECT 25 stations from (34, 20) to (34, 44), every 1

@@ -1,7 +1,10 @@
-THEMES  3 themes over 19972 ground cells, 15 distinct surface blocks
-  clay  18435 cells (92.3%)  172:0 Hardened Clay, 159:1 Orange Stained Clay, 3:1 Coarse Dirt, 159:12 Brown Stained Clay, 45:0 Bricks, 13:0 Gravel, 24:1 Chiseled Sandstone, 24:0 Sandstone, 1:5 Andesite, 4:0 Cobblestone, 17:2 Birch Log, 35:14 Red Wool
+THEMES  4 themes over 19972 ground cells, 16 distinct surface blocks
+  clay  17537 cells (87.8%)  172:0 Hardened Clay, 3:1 Coarse Dirt, 159:12 Brown Stained Clay, 159:1 Orange Stained Clay, 45:0 Bricks, 13:0 Gravel, 24:1 Chiseled Sandstone, 24:0 Sandstone, 1:5 Andesite, 4:0 Cobblestone, 17:2 Birch Log, 35:14 Red Wool
   pit  977 cells (4.9%)  3:1 Coarse Dirt, 82:0 Clay, 13:0 Gravel, 159:12 Brown Stained Clay, 1:5 Andesite, 4:0 Cobblestone, 172:0 Hardened Clay
+  sward  898 cells (4.5%)  2:0 Grass Block, 3:1 Coarse Dirt, 172:0 Hardened Clay, 45:0 Bricks, 1:5 Andesite, 4:0 Cobblestone
   works  560 cells (2.8%)  45:0 Bricks, 98:0 Stone Bricks, 24:1 Chiseled Sandstone, 24:0 Sandstone
 borders:
   clay | pit  516 cells
-  clay | works  192 cells
+  clay | sward  480 cells
+  clay | works  188 cells
+  sward | works  4 cells

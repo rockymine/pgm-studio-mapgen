@@ -45,9 +45,9 @@ rise of 2). A core behind one stair is a core nobody takes.
 | read | number |
 |---|---|
 | `03-slopes.txt` | 14 292 walked · 182 scrambled · **326 barrier**; 4 faces, largest 86 at x 14..44, z −43..−35 |
-| `06-claims.txt` | **placed 38, declined 3** |
+| `06-claims.txt` | **placed 40, declined 1** |
 | relief read | level **0.713**, largestField **0.486**, 1 face, 1 cliff, landform *plain*, **0 seams**, 0 silent marks, symmetry error **0** |
-| `GET …/coverage` | **27.2 % dead**; largest patches 1 842 cells at (35, −2) and 1 823 at (−37, 0), both **1 block** from used ground |
+| `GET …/coverage` | **27.8 % dead**, 10 journeys; largest patches 2 095 cells at (34, 0) and 2 060 at (−36, −2), both **1 block** from used ground |
 | `GET …/incline` | 62.8 % under 10° · 21.6 % teens · 9 % twenties · 2.5 % thirties · 4 % at 40°+ |
 | `05-themes.txt` | slake 40.4 % · fen 31.5 % · garth 28.1 % — the most evenly divided board in this set |
 | `GET /plan/evaluate` | score **0**, and the goal term reads own 41 / enemy 154, ratio **3.76** (`GO1` wants 3–4) |
@@ -84,6 +84,20 @@ relief read calls the landform *plain* at level 0.713. That is what a hall's flo
 it should measure, and the board's verticality is in the ruin — a wall eight courses high, sixteen
 piers nine courses high, a plinth with a face — rather than in the terrain. It is the one board of the
 four where a reader could reasonably ask for more ground under the buildings.
+
+## What grows here, and where
+
+Ten trees, and where each one stands was read back rather than assumed. **Eight are on soil** — grass
+at (38, 40), coarse dirt at (−42, 40), (−10, 36), (34, 48) and (40, 56), gravel at (−42, 54) and
+(10, 36), podzol at (24, 44). **Two are deliberately in the ruin**, seated on mossy stone bricks at
+(2, 62) and (−26, 62), because a sapling in a broken floor is what a ruin does. The first build had six
+of ten on masonry, which reads as trees dropped on a building rather than growing through it; one
+exception is a note, six is a mistake.
+
+**The core casing is 98 blocks of obsidian.** `lava: 3` leaves the corpus's 5 × 5 × 5 shell round a
+3 × 3 × 3 interior — `column` at (−16, 54) and (−12, 58) reads solid obsidian y23–27 and at (−14, 56)
+obsidian, three courses of lava, obsidian. At 41 blocks of walk from its own spawn and 154 from the
+enemy's, that is a raid rather than a grind and wants no change.
 
 ## Limits
 

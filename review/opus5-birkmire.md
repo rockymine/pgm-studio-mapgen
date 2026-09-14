@@ -7,8 +7,8 @@
 hummocks and birch that ends with twenty blocks of flat ice nobody can cross unseen.
 
 80 × 200 blocks, `rot_180`, cell 5, `maxPlayers` 20, ground y16–y31, observer y54. Two plan pieces,
-eight relief marks, two pushes, five authored shapes, four themes, 44 props. `score 0`, `valid true`,
-nothing refused, **nothing declined**.
+eight relief marks, two pushes, five authored shapes, four themes, **44 props placed and none
+declined**. `score 0`, `valid true`, nothing refused.
 
 ## The arrangement
 
@@ -92,6 +92,29 @@ within a block. Measured across the shoulder at z 76 before the pad: y26 → y30
 `HP2` then refused the cross wing at 3 × 5 — a wing holds two walls and an inside, so four each way is
 the least any building footprint may be — and it went to 4 × 5.
 
+## Not one birch stands on the pan
+
+Four of the eleven were wrong and none of them raised a finding. `birk-0` (−38, 40), `birk-1`
+(−24, 30) and `birk-3` (−24, 70) each stood on **Packed Ice** — a birch growing out of a frozen lake,
+on the one ground this board means to carry nothing at all — and `birk-4` (26, 58) had its body
+starting at y36 over ground at y28, seated in a neighbour's canopy with eight courses of air under it.
+`column` says so in one line each and the dressing pass says nothing.
+
+Every position was re-read off the built world before it was written down. The wood now:
+
+| tree | ground | tree | ground |
+|---|---|---|---|
+| (−36, 30) | Snow over coarse dirt | (28, 72) | Podzol |
+| (24, 30) | Snow over coarse dirt | (38, 74) | Grass |
+| (−36, 68) | Podzol | (10, 44) | Snow over coarse dirt |
+| (−38, 64) | Coarse Dirt | (30, 44) | Snow over coarse dirt |
+| (32, 52) | Coarse Dirt | (2, 34) | Snow over coarse dirt |
+| (36, 62) | Podzol | | |
+
+Snow is not the fault ice is: `column at (−36, 30)` reads `y16 Snow Block, y15 Coarse Dirt,
+y14 Coarse Dirt` — lying snow over the mire's own soil, which is what a birch on this board should
+stand in.
+
 ## The fault-catalogue reads
 
 **Objective hidden — no.** `GET …/column?at=-18,52`:
@@ -128,7 +151,7 @@ the pan's own rim, which is an area mark's edge and therefore a bench. `garth | 
 that boundary is the excluded pad's face. `holm | ice` is 128 and that is the two-course step the
 board is played on.
 
-**Empty board — 16.0% dead.** 12 930 ground cells, 9 371 reached, 1 496 decorated, **2 063 dead**.
+**Empty board — 14.7% dead.** 12 930 ground cells, 9 371 reached, 1 659 decorated, **1 900 dead**.
 The five patches:
 
 | area | centroid | distance to used ground |

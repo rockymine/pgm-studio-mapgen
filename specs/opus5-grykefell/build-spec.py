@@ -46,7 +46,7 @@ plan = {
         # the monument stands 14 blocks off the centre line on purpose: a goal on the axis gives the
         # board two journeys down its middle and leaves both flanks dead (`coverage`)
         "destroyables": [{"id": "destroyable-1", "piece": "fell", "at": [60, 44],
-                          "style": "pillar-2", "float": 4, "name": "The Cairn"}],
+                          "style": "cube-3", "float": 4, "name": "The Cairn"}],
         "cores": [], "wools": [],
     },
     "walls": [], "boxes": [],
@@ -187,6 +187,16 @@ def flight(id_, ring, low, high):
             "anchor_heights": [low, low, high, high]}
 
 
+def pad(id_, ring, height, theme):
+    """Ground the relief is not allowed to touch. `relief_scope: "exclude"` takes the footprint out of
+    the solve, so a building stands on ONE level and the hill meets its yard at a face instead of
+    running through the walls."""
+    return {"id": id_, "type": "polygon", "operation": "add", "group": "team",
+            "height_mode": "level", "base_height": height, "skirt": 0,
+            "relief_scope": "exclude", "theme": theme,
+            "vertices": [[x, z] for x, z in ring]}
+
+
 def patch(id_, ring, theme):
     """A paint patch on solved ground. It has to declare a height_mode or ShapeScopeOwners never makes
     it a candidate and it paints nothing in silence; a raise of 0 sits flush at the median ground."""
@@ -206,6 +216,13 @@ add_shapes = [
     patch("turf-gill", [(-34, 70), (-26, 62), (-20, 46), (-14, 32), (-22, 30), (-28, 46), (-36, 62)],
           "turf"),
     patch("turf-rigg", lobe(30, 30, [13, 10, 12, 9, 13, 10, 12, 9], 0.2), "turf"),
+    # two more shelves, west of the gill and on the northern shoulder. A birch stands where soil has
+    # gathered and nowhere else: on bare pavement it reads as a tree growing out of a floor.
+    patch("turf-scarth", lobe(-34, 40, [13, 10, 12, 9, 13, 10, 12, 9], 0.4), "turf"),
+    patch("turf-nab",    lobe(-33, 74, [10, 8, 9, 7, 10, 8, 9, 7], 0.2), "turf"),
+    # the barn's garth: the shelf right of the spawn stands level at 31 from x 21 to x 37, and the
+    # pad holds it there so the byre cannot straddle two ground levels the way the old site did.
+    pad("barn-garth", [(17, 70), (37, 70), (37, 84), (17, 84)], 31, "turf"),
     # scree: the broken rock the scar sheds, in a tongue at its foot
     patch("scree-scar", [(14, 64), (28, 61), (39, 60), (39, 54), (26, 55), (16, 58)], "scree"),
 ]
@@ -286,13 +303,15 @@ props = [
     path("way-shore", [[20, 44], [12, 36], [6, 26], [2, 20]], 2, WAY, seed=42),
     path("way-west", [[-6, 86], [-12, 74], [-15, 58], [-18, 42], [-20, 28]], 2, WAY, seed=43),
     # the spur to the barn's door: a road ends at a door or it says the board was assembled
-    path("way-barn", [[9, 31], [14, 30]], 2, WAY, seed=44),
-    # the barn: a byre with a loft over it and a low cross wing, at the head of the shore road on
-    # the south-east, where the rigg gives it a shelf to stand on. It is off the spawn door's own
-    # approach (DR-KEEP), out of the Cairn's ten-block keep-out (OB19), and out of the wood.
+    path("way-barn", [[9, 75], [14, 76], [18, 77]], 2, WAY, seed=44),
+    # the barn: a byre with a loft over it and a low cross wing, on the level shelf right of the
+    # spawn. It stands on `barn-garth`, which is excluded from the relief, so the whole footprint is
+    # one ground level — the old site put its cross wing across a five-course rise and the hill came
+    # through the wall. It is off the spawn door's own approach (DR-KEEP), out of the Cairn's
+    # ten-block keep-out (OB19), and out of the wood.
     {"id": "barn", "kind": "house", "seed": 601, "front": "negX", "style": "barn",
-     "wings": [{"corners": [[22, 24], [33, 34]], "spec": {"ridge": "alongZ"}},
-               {"corners": [[16, 26], [21, 31]], "spec": {"storeysHigh": 1, "ridge": "alongX"}}]},
+     "wings": [{"corners": [[23, 72], [34, 82]], "spec": {"ridge": "alongZ"}},
+               {"corners": [[19, 74], [22, 79]], "spec": {"storeysHigh": 1, "ridge": "alongX"}}]},
     # ground cover: ONE shape, the whole board, and two numbers kept low. The patchiness is the
     # density field's and it is better at it than a hand-drawn polygon.
     {"id": "sward", "kind": "flora", "seed": 900,
@@ -304,7 +323,7 @@ props = [
 # a copied body is wider than a template, and `DR-CLAIM` is footprint overlap rather than a standoff.
 # No road runs through a wood.
 for i, (x, z) in enumerate([(-36, 40), (-34, 58), (-36, 76), (-30, 68), (-24, 46),
-                            (-26, 30)]):
+                            (-30, 36)]):
     props.append({"id": f"birk-{i}", "kind": "tree", "seed": 700 + i, "x": x, "z": z,
                   "style": BIRCHES[i % len(BIRCHES)]})
 # erratics: stone, cobblestone and andesite and nothing else, each standing where the pavement gives

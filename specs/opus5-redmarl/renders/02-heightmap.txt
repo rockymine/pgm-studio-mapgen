@@ -13,18 +13,18 @@ KEY  char = ground height above y16 in bands of 1 block(s): 0 = y16..16, 1 = …
  -90  bbbbbbbbbHaabbbbbbbbbaaabbbbbbbbbaa                 
  -88  dcbbbbbcbaaaaaabbaaaaaabcccbbbbbcba                 
  -86  dddddddcbbaaaaaaaaaaaaabccccccccccb                 
- -84  dddddddccbaaaaaaaaaaaabbccddddddccc                 
- -82  eeeeeddccbaaaaaaaaaaaabbccdddddddcc                 
- -80  ffffedddcbaaaaaaaaaaaabbccdeeeeedcc                 
- -78  gfffeeddccbaaaaaaaaaaabcccdeeeeedcc                 
- -76  fffffedddcbaaaaaaaaaaabccHHHHHHHdcc                 
- -74  fHHHHHHHdcbaaaaaaaaaaabccHHHHHHHdd                  
+ -84  dddddddccbaaaaaaaaaaabbbccddddddccc                 
+ -82  eeeeeddccbaaaaaaaaaabbbbccdddddddcc                 
+ -80  ffffedddcbaaaaaaaaabbbbbccdeeeeedcc                 
+ -78  gfffeeddccbaaaaaaaabbbbbccdeeeeedcc                 
+ -76  fffffedddcbaaaaaaaaabbbbcHHHHHHHdcc                 
+ -74  fHHHHHHHdcbaaaaaaaaaabbccHHHHHHHdd                  
  -72  eHHHHHHHcbbaaaaaaaaaaabccHHHHHHHcc                  
- -70  dHHHHHHHcbbaaaaaaaaaaabbcHHHHHHHcc                  
- -68  dHHHHHHHbbbaabaaaaaaaaabbHHHHHHHcc                  
- -66  cHHHHHHHbaaaaaaaa9999aaabbbccccccb                  
- -64      aaaaaaaaa999998888899abbcccbb                   
- -62      997777aa99988877777899a                         
+ -70  dHHHHHHHcccaaaaaaaaaaabbcHHHHHHHcc                  
+ -68  dHHHHHHHcccaabaaaaaaaaabbHHHHHHHcc                  
+ -66  cHHHHHHHccccaaaaa9999aaabbbccccccb                  
+ -64      aacccccaa999998888899abbcccbb                   
+ -62      997cccaa99988877777899a                         
  -60      87777777998887777777                            
  -58      77777777799877777777                            
  -56      77777777999777777777                            
@@ -32,25 +32,25 @@ KEY  char = ground height above y16 in bands of 1 block(s): 0 = y16..16, 1 = …
  -52      77777777999777777776                            
  -50      78877777999977777776                            
  -48      78888999998887777766                            
- -46      77778888888888666666                            
- -44      666777777777665555555555                        
- -42      556666676665555555555555                        
- -40      555556666555555555555555                        
- -38      555555555545555555555555                        
+ -46     777778888888888666666                            
+ -44     7777777777777665555555555                        
+ -42    77777666676665555555555555                        
+ -40     7777556666555555555555555                        
+ -38      777555555545555555555555                        
  -36      555555555544445556544446                        
  -34      555555555544445556544446                        
- -32      555555555533335556533336                        
- -30      555555555533335556533336                        
- -28      555555555522235556522226                        
- -26      555555555522225556522226                        
- -24                112245463111161111111111              
- -22                111133361111161111111111              
- -20                111112161111161111111111              
- -18               1011111122211111111111111              
- -16               1110111222222222111111111              
- -14               1111101233333322221111111              
- -12               1111111233333333321111111              
- -10               1111111223343333322111111              
+ -32      555556665533335556533336                        
+ -30      555556666533335556533336                        
+ -28      555566666622235556522226                        
+ -26      555556666522225556522226                        
+ -24            6   112245463111161111112221              
+ -22                111133361111161111122222              
+ -20                111112161111161111122222              
+ -18               1011113332211111111122222              
+ -16               1110113333222222111111111              
+ -14               1111103333333322221111111              
+ -12               1111113333333333321111111              
+ -10               1111111333343333322111111              
   -8                111111222224443332211111              
   -6                111111222222333332211111              
   -4                111112222222232332211111              
@@ -60,25 +60,25 @@ KEY  char = ground height above y16 in bands of 1 block(s): 0 = y16..16, 1 = …
    4                111122333332222222111111              
    6                111112333443222222111111              
    8                111112233334432222111111              
-  10                111111233333333321111111              
-  12                111111223333333332011111              
-  14                111111122222223322101111              
-  16                111111111122222221111011              
-  18                111111111111112211111110              
-  20                111111111161111622211111              
-  22                111111111161111644411111              
-  24                          622226555222235555555555    
-  26                          622226555222255555555555    
-  28                          633336555533355555555555    
-  30                          633336555533335555555555    
-  32                          644446555544335555555555    
+  10                111111233333333333111111              
+  12                111111223333333333311111              
+  14                111111122222223333301111              
+  16                222111111122222333111011              
+  18                222211111111112231111110              
+  20               2222211111161111622211111              
+  22                222211111161111644411111              
+  24                 22       622226555222235666555555    
+  26                          622226555222256666655555    
+  28                          633336555533356666655555    
+  30                          633336555533335666555555    
+  32                          644446555544335565555555    
   34                          644446555544445555555555    
   36                          655556555554445555555555    
-  38                          555555555555555566555555    
-  40                          555555555555556666665555    
-  42                          555555555556667777766555    
-  44                              55556677777888777766    
-  46                              67777788888988888777    
+  38                          555555555555555566555666    
+  40                          5555555555555566666666666   
+  42                          5555555555566677777666666   
+  44                              55556677777888777666    
+  46                              67777788888988888767    
   48                              67777778899999778877    
   50                              67777777999977777877    
   52                              67777777999777777777    
@@ -86,17 +86,17 @@ KEY  char = ground height above y16 in bands of 1 block(s): 0 = y16..16, 1 = …
   56                              77777777999777777777    
   58                              77777777899777777777    
   60                              77777788889977777788    
-  62                       ccbba9988778889999aaa7aaaaa    
-  64                    bbccccbbaa999999999aaaaaabHHHHHHcc
-  66                    ccHHHHHHbbaaaaaaaaaaaaaabbHHHHHHdd
-  68                   cccHHHHHHcbbaaaaaaaaaaabbbcHHHHHHdd
-  70                   ccdHHHHHHccbaaaaaaaaaaabbccHHHHHHdd
+  62                       ccbba9988778889999aacccaaaa    
+  64                    bbccccbbaa999999999aaaccccHHHHHHcc
+  66                    ccHHHHHHbbaaaaaaaaaaaaccccHHHHHHdd
+  68                   cccHHHHHHcbbaaaaaaaaaaaccccHHHHHHdd
+  70                   ccdHHHHHHccbaaaaaaaaaaabcccHHHHHHdd
   72                   cddHHHHHHccbbaaaaaaaaaabbcdHHHHHHee
-  74                   cdeHHHHHHccbbaaaaaaaaaabbcdHHHHHHff
-  76                   cdeHHHHHHccbbaaaaaaaaaaabcddeefffff
-  78                   cdeeeeeddccbaaaaaaaaaaaabccddefffff
-  80                   cddeeeeddccbaaaaaaaaaaaabbcddeeeeff
-  82                   ccdddddddccbaaaaaaaaaaaaabcddddeeee
+  74                   cdeHHHHHHccbbbaaaaaaaaabbcdHHHHHHff
+  76                   cdeHHHHHHccbbbbaaaaaaaaabcddeefffff
+  78                   cdeeeeeddcbbbbbaaaaaaaaabccddefffff
+  80                   cddeeeeddcbbbbbaaaaaaaaabbcddeeeeff
+  82                   ccdddddddccbbbaaaaaaaaaaabcddddeeee
   84                   cccccccdccbbaaaaaaaaaaaaabcdddddddd
   86                   bbcccbccccbbaaaaaaaaaaaaabcccbbdddd
   88                   aHHHHHHHHHHaaaabbbbbbaaaaHHHHHHHHHH

@@ -88,7 +88,7 @@ def layered(bands, axis="depth", ending="handOver"):
     return {"kind": "layered", "axis": axis, "stack": stack(bands, ending)}
 
 
-DOWN   = cell_(21, 11, [CHALK, QUARTZ, CHALK, RUBBLE])   # the chalk top: white, barely varied
+DOWN   = cell_(21, 11, [CHALK, QUARTZ, CHALK, GRASS, RUBBLE])  # chalk top, turf showing through
 SHOULD = cell_(22,  7, [RUBBLE, GRAVEL, CHALK])          # where it starts to shed
 KNAP   = cell_(23,  6, [FLINT, ANDESITE, GRAVEL])        # flint: faces only, never a flat
 SHINGLE = cell_(24, 5, [GRAVEL, COBBLE, ANDESITE, STONE])
@@ -122,6 +122,19 @@ themes = {
                     "material": layered([(1, SHINGLE), (2, cell_(28, 7, [GRAVEL, STONE]))])},
         "wall":    cell_(29, 8, [STONE, COBBLE, FLINT], rise=5), "wallEnabled": True,
         "fill":    cell_(30, 9, [STONE, ANDESITE], rise=6),
+    },
+    # the sward: the hollows and lee slopes where soil has stayed on the chalk. It is the only ground
+    # on this board a tree can stand on — a thorn seated on quartz or on flint reads as a tree
+    # growing out of a floor, and there is no other soil anywhere in the palette.
+    "sward": {
+        "bedrock": {"relative": False, "value": 1},
+        "rimEdges": "void", "wallOnTerrainFaces": True,
+        "rim":     {"enabled": True, "depth": 1, "material": COARSE},
+        "surface": {"enabled": True, "depth": 4,
+                    "material": layered([(1, cell_(39, 9, [GRASS, GRASS, COARSE])),
+                                         (3, cell_(40, 7, [COARSE, CHALK]))])},
+        "wall":    cell_(41, 6, [CHALK, RUBBLE, FLINT], rise=3), "wallEnabled": True,
+        "fill":    cell_(42, 9, [CHALK, STONE], rise=5),
     },
     # the knapping floors: the cut yards the two wool rooms stand in, and the working ground round
     # them. Flint chippings trodden into chalk rubble — the one place flint lies on a flat, and it
@@ -211,6 +224,16 @@ def pad(id_, ring, height, theme):
             "vertices": [[x, z] for x, z in ring]}
 
 
+def wall(id_, points, seed):
+    """A knapped field wall: a `polyline`, whose band is `radius` and whose centreline is `vertices`,
+    splined before the band is offset so four clicked points draw as a curve."""
+    return {"id": id_, "type": "polyline", "operation": "add", "group": "team",
+            "height_mode": "raise", "base_height": 2, "radius": 1.5, "stroke_edge": "rough",
+            "stroke_seed": seed, "skirt": 0,
+            "material": cell_(36, 5, [FLINT, COBBLE, ANDESITE, CHALK], rise=2),
+            "vertices": [[x, z] for x, z in points]}
+
+
 def paint(id_, ring, theme):
     """A paint patch on solved ground: it declares a height_mode or it is never a candidate for the
     cell and paints nothing, in silence. A raise of 0 sits flush at the median ground."""
@@ -220,15 +243,24 @@ def paint(id_, ring, theme):
 
 
 add_shapes = [
+    # The sward goes down FIRST. A later shape wins a contested cell, and a `raise 0` paint patch
+    # drawn over a flight sets that column back to the median ground — which flattened the west
+    # stair's upper half into the down and put a four-course drop at (-29, 40) that reads as terrain
+    # and names nothing. Paint the ground, then cut the flights into it.
+    # the sward, in the coombe and on each arm's lee. Every one of them is somewhere the ground is
+    # shallow and out of the wind, which is the answer to "why here".
+    paint("sward-coombe", lobe(0, 60, [16, 13, 15, 12, 16, 13, 15, 12], 0.5), "sward"),
+    paint("sward-west",   lobe(-31, 52, [13, 10, 12, 9, 13, 10, 12, 9], 0.3), "sward"),
+    paint("sward-east",   lobe(28, 62, [16, 13, 15, 12, 16, 13, 15, 12], 0.3), "sward"),
     # the two ways off the cliff. West is a stair in two flights off the shelf, east is one long
     # ramp cut in the face. Both are run at more than twice their rise and both are authored, so
     # neither is a seam the relief happened to leave.
     flight("stair-w-lo", [(-33, 14), (-25, 14), (-25, 27), (-33, 27)], STRAND, LEDGE),
-    # The high end is cut to the height the down ACTUALLY stands at where the flight arrives — the
-    # nab and the grain carry it three courses over `DOWNLAND` there — because a flight that tops out
-    # under the ground beside it is a four-course drop at its head and is not a way up anything
-    # (`SK26`). Read at (-29, 41) on the build before this one.
-    flight("stair-w-hi", [(-30, 29), (-22, 29), (-22, 48), (-30, 48)], LEDGE, DOWNLAND + 3),
+    # BOTH ends are cut to the height the ground ACTUALLY has where the flight meets it, read off the
+    # built world at x -29: y24 at z32 below the face and y31 at z48 above it. A flight given one
+    # number for two different grounds tops out under the down at one end or over the ledge at the
+    # other, and either way it is not a way up anything (`SK26`). Sixteen of run for seven of rise.
+    flight("stair-w-hi", [(-30, 32), (-22, 32), (-22, 48), (-30, 48)], 24, 31),
     # The east arm is lower than the west where its ramp arrives: the down stands at 26 at
     # (24, 46) and the head is cut to meet it, not to the west stair's number.
     flight("ramp-e",     [(20, 16), (28, 16), (28, 46), (20, 46)], STRAND, DOWNLAND - 1),
@@ -247,16 +279,14 @@ add_shapes = [
     # `radius` is the half-width and `vertices` the open centreline, which the rasterizer splines
     # before it offsets. Given `width` and `points` instead it is a path of width nought and draws
     # no ground at all, on a 200 (`SK4`).
-    {"id": "wall-w", "type": "polyline", "operation": "add", "group": "team",
-     "height_mode": "raise", "base_height": 2, "radius": 1.5, "stroke_edge": "rough",
-     "stroke_seed": 7, "skirt": 0,
-     "material": cell_(36, 5, [FLINT, COBBLE, ANDESITE, CHALK], rise=2),
-     "vertices": [[-40, 40], [-30, 44], [-20, 40], [-13, 48]]},
-    {"id": "wall-e", "type": "polyline", "operation": "add", "group": "team",
-     "height_mode": "raise", "base_height": 2, "radius": 1.5, "stroke_edge": "rough",
-     "stroke_seed": 8, "skirt": 0,
-     "material": cell_(36, 5, [FLINT, COBBLE, ANDESITE, CHALK], rise=2),
-     "vertices": [[12, 48], [20, 41], [31, 46], [40, 42]]},
+    # Each arm's wall is TWO runs with a gateway between them, and the gateway is where the flight
+    # comes up. Drawn as one run it stands two courses proud across the head of the ramp, which reads
+    # back as `BARRIER +3` at (24, 44) and a stair that arrives at a wall — a fault of the wall and
+    # not of the flight, and invisible to everything but a transect.
+    wall("wall-w-a", [[-40, 38], [-35, 42], [-31, 43]], 7),
+    wall("wall-w-b", [[-21, 41], [-17, 43], [-13, 48]], 9),
+    wall("wall-e-a", [[10, 50], [15, 44], [19, 42]], 8),
+    wall("wall-e-b", [[29, 44], [34, 46], [40, 42]], 10),
 ]
 
 # ── what is built ────────────────────────────────────────────────────────────────────────────────
@@ -355,15 +385,16 @@ props = [
 ]
 # thorn on the open down, birch down in the coombe. Nothing on the strand: the landing ground is
 # bare, and that is what makes crossing the sound the decision the board is about.
-for i, (x, z) in enumerate([(-34, 50), (-38, 56), (-18, 56), (30, 66), (34, 72), (14, 50)]):
+for i, (x, z) in enumerate([(-34, 50), (-38, 56), (-37, 48), (30, 66), (36, 64), (16, 58)]):
     props.append({"id": f"thorn-{i}", "kind": "tree", "seed": 701 + i, "x": x, "z": z,
                   "style": THORN[i % len(THORN)]})
-for i, (x, z) in enumerate([(-8, 58), (8, 62), (-10, 50)]):
+for i, (x, z) in enumerate([(-8, 58), (8, 62), (6, 54)]):
     props.append({"id": f"birk-{i}", "kind": "tree", "seed": 721 + i, "x": x, "z": z,
                   "style": BIRCH[i % len(BIRCH)]})
 # sarsens: stone, cobblestone and andesite and nothing else. Pale ground is exactly where a paled
-# boulder disappears, so these are left the colour stone is.
-for i, (x, z) in enumerate([(-32, 62), (12, 66), (-36, 40), (32, 44), (-20, 52), (28, 70)]):
+# boulder disappears, so these are left the colour stone is. One of them lies on the strand, which is
+# where a chalk coast puts the flints the cliff has already given up.
+for i, (x, z) in enumerate([(-32, 62), (16, 20), (-36, 40), (32, 44), (-20, 52), (28, 70)]):
     props.append(dict(BOULDER, id=f"sarsen-{i}", kind="boulder", seed=741 + i, x=x, z=z,
                       size=4 if i % 2 == 0 else 3))
 

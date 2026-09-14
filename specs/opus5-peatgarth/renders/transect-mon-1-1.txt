@@ -19,15 +19,15 @@ TRANSECT 25 stations from (-1, -53) to (23, -53), every 1
   (   14,   -53)      19       19           19                      
   (   15,   -53)      19       19           19                      
   (   16,   -53)      19       19           19                      
-  (   17,   -53)      19       19           19  stroke tramway#1    
-  (   18,   -53)      19       19           19  stroke tramway#1    
-  (   19,   -53)      19       19           19  stroke tramway#1    
-  (   20,   -53)      19       19           19  stroke tramway#1    
+  (   17,   -53)      19       19           19                      
+  (   18,   -53)      19       19           19                      
+  (   19,   -53)      19       19           19                      
+  (   20,   -53)      19       19           19                      
   (   21,   -53)      19       19           19                      
   (   22,   -53)      19       19           19                      
   (   23,   -53)      19       19           19                      
 rises 1, falls 0, worst step 7: 1 barrier, 0 scramble, 0 drop — BARRIER +7 at (0, -53) | walked end to end
-beside: destroyable mon-1#1 at (9, -55), stroke tramway#1 at (17, -55)
+beside: destroyable mon-1#1 at (9, -55)
 
 ## mon-1-1 (destroyable) along z
 TRANSECT 25 stations from (11, -65) to (11, -41), every 1
@@ -58,4 +58,4 @@ TRANSECT 25 stations from (11, -65) to (11, -41), every 1
   (   11,   -42)      14       14           14                      
   (   11,   -41)      14       14           14                      
 rises 0, falls 1, worst step 5: 0 barrier, 0 scramble, 1 drop — DROP -5 at (11, -44) | walked end to end
-beside: stroke tramway#1 at (13, -67), destroyable mon-1#1 at (9, -55)
+beside: destroyable mon-1#1 at (9, -55)

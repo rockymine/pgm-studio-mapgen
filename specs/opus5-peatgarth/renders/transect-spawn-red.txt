@@ -1,13 +1,13 @@
 ## spawn-red (spawn) along x
 TRANSECT 47 stations from (-23, 90) to (23, 90), every 1
   station        ground  surface  water  top  standing            step
-  (  -23,    90)      15       15           15                      
-  (  -22,    90)      15       15           15                      
-  (  -21,    90)      15       15           15                      
-  (  -20,    90)      15       15           15                      
-  (  -19,    90)      15       15           15                      
-  (  -18,    90)      15       15           15                      
-  (  -17,    90)      14       14           14                      -1
+  (  -23,    90)      14       14           14                      
+  (  -22,    90)      14       14           14                      
+  (  -21,    90)      14       14           14                      
+  (  -20,    90)      14       14           14                      
+  (  -19,    90)      14       14           14                      
+  (  -18,    90)      14       14           14                      
+  (  -17,    90)      14       14           14                      
   (  -16,    90)      14       14           14                      
   (  -15,    90)      14       14           14                      
   (  -14,    90)      14       14           14                      
@@ -48,8 +48,8 @@ TRANSECT 47 stations from (-23, 90) to (23, 90), every 1
   (   21,    90)                                                    void
   (   22,    90)                                                    void
   (   23,    90)                                                    void
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: house store at (-25, 88), spawn spawn-1 at (-6, 88)
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (-6, 88)
 
 ## spawn-red (spawn) along z
 TRANSECT 28 stations from (0, 72) to (0, 99), every 1

@@ -942,6 +942,123 @@
    "theme": "turf"
   },
   {
+   "id": "turf-scarth",
+   "type": "polygon",
+   "operation": "add",
+   "group": "team",
+   "height_mode": "raise",
+   "base_height": 0,
+   "skirt": 0,
+   "vertices": [
+    [
+     -22.0,
+     45.1
+    ],
+    [
+     -30.2,
+     49.3
+    ],
+    [
+     -38.7,
+     51.1
+    ],
+    [
+     -42.3,
+     43.4
+    ],
+    [
+     -46.0,
+     34.9
+    ],
+    [
+     -37.8,
+     30.7
+    ],
+    [
+     -29.3,
+     28.9
+    ],
+    [
+     -25.7,
+     36.6
+    ]
+   ],
+   "theme": "turf"
+  },
+  {
+   "id": "turf-nab",
+   "type": "polygon",
+   "operation": "add",
+   "group": "team",
+   "height_mode": "raise",
+   "base_height": 0,
+   "skirt": 0,
+   "vertices": [
+    [
+     -23.2,
+     76.0
+    ],
+    [
+     -28.6,
+     80.7
+    ],
+    [
+     -34.8,
+     82.8
+    ],
+    [
+     -38.8,
+     77.9
+    ],
+    [
+     -42.8,
+     72.0
+    ],
+    [
+     -37.4,
+     67.3
+    ],
+    [
+     -31.2,
+     65.2
+    ],
+    [
+     -27.2,
+     70.1
+    ]
+   ],
+   "theme": "turf"
+  },
+  {
+   "id": "barn-garth",
+   "type": "polygon",
+   "operation": "add",
+   "group": "team",
+   "height_mode": "level",
+   "base_height": 31,
+   "skirt": 0,
+   "relief_scope": "exclude",
+   "theme": "turf",
+   "vertices": [
+    [
+     17,
+     70
+    ],
+    [
+     37,
+     70
+    ],
+    [
+     37,
+     84
+    ],
+    [
+     17,
+     84
+    ]
+   ]
+  },
+  {
    "id": "scree-scar",
    "type": "polygon",
    "operation": "add",
@@ -10263,11 +10380,15 @@
     "points": [
      [
       9,
-      31
+      75
      ],
      [
       14,
-      30
+      76
+     ],
+     [
+      18,
+      77
      ]
     ]
    },
@@ -10281,12 +10402,12 @@
      {
       "corners": [
        [
-        22,
-        24
+        23,
+        72
        ],
        [
-        33,
-        34
+        34,
+        82
        ]
       ],
       "spec": {
@@ -10296,12 +10417,12 @@
      {
       "corners": [
        [
-        16,
-        26
+        19,
+        74
        ],
        [
-        21,
-        31
+        22,
+        79
        ]
       ],
       "spec": {
@@ -10387,8 +10508,8 @@
     "id": "birk-5",
     "kind": "tree",
     "seed": 705,
-    "x": -26,
-    "z": 30,
+    "x": -30,
+    "z": 36,
     "style": "tree-showcase-r13-1"
    },
    {

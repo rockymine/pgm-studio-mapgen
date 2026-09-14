@@ -78,7 +78,8 @@ def watch_shell():
 # The bowl's own stone, finished by the angle it stands at.  The incline read wants
 # roughly two thirds of the ground under twenty degrees on a terraced board, so the bands
 # cut at 18 and 32: grit pan, broken shoulder, black face.
-BOWL_PAN      = depth([(cell(11, 15, [GRAVEL, COAL_ORE, GRAY_CLAY]), 1), (ANDESITE, 2)], STONE)
+BOWL_PAN      = depth([(cell(11, 15, [GRAVEL, COAL_ORE, GRAY_CLAY, COARSE, PODZOL]), 1),
+                       (DIRT, 1), (ANDESITE, 2)], STONE)
 BOWL_SHOULDER = depth([(cell(13, 9, [COBBLE, ANDESITE, COAL_ORE]), 1), (STONE, 2)], STONE)
 BOWL_FACE     = depth([(cell(17, 7, [COAL_BLOCK, BLACK_CLAY, ANDESITE], rise=6), 2),
                        (ANDESITE, 2)], STONE)
@@ -112,6 +113,24 @@ THEME_WEED = {
                             (GRAVEL, 2)], ANDESITE), 70)], ANDESITE)},
     "wallEnabled": True,
     "wall": runs([(GRAVEL, 2), (CLAY, 2), (ANDESITE, 4)], STONE),
+    "fill": cell(3, 11, [STONE, ANDESITE], jitter=35, warp=5, rise=5),
+}
+
+# the greaves: peat pans in the bowl's low ground, and the only soil on the board.  A tree
+# seated on coal ore or on stained clay reads as dropped on the rock rather than grown in it.
+THEME_PEAT = {
+    "bedrock": {"relative": False, "value": 1},
+    "rimEdges": "void",
+    "wallOnTerrainFaces": True,
+    "rim": {"enabled": True, "depth": 1, "material": COARSE},
+    "surface": {"enabled": True, "depth": 3,
+                "material": slope([
+                    (depth([(cell(61, 11, [PODZOL, COARSE, GRASS]), 1), (DIRT, 2),
+                            (COARSE, 1)], GRAVEL), 20),
+                    (depth([(cell(67, 7, [COARSE, GRAVEL]), 1), (DIRT, 2)], GRAVEL), 70)],
+                    GRAVEL)},
+    "wallEnabled": True,
+    "wall": runs([(COARSE, 1), (DIRT, 2), (GRAVEL, 2), (ANDESITE, 3)], STONE),
     "fill": cell(3, 11, [STONE, ANDESITE], jitter=35, warp=5, rise=5),
 }
 
@@ -253,6 +272,17 @@ ADD_SHAPES = [
      "material": cell(47, 5, [GRAVEL, COBBLE], rise=4),
      "vertices": [[-24, 42], [-14, 42], [-14, 26], [-24, 26]],
      "anchor_heights": [BRINK, BRINK, STRAND, STRAND]},
+    # the two peat pans, stated as shapes because a pan has a lip: `exclude` takes them out
+    # of the solve so they are flat to their own edge, and they carry no keepClear because
+    # the whole point of them is that something grows there
+    {"id": "greave-e", "type": "polygon", "operation": "add", "floor": 0,
+     "base_height": 14, "relief_scope": "exclude", "skirt": 0, "theme": "peat",
+     "group": "team",
+     "vertices": [[28, 38], [36, 36], [42, 41], [41, 50], [33, 52], [28, 47]]},
+    {"id": "greave-n", "type": "polygon", "operation": "add", "floor": 0,
+     "base_height": 17, "relief_scope": "exclude", "skirt": 0, "theme": "peat",
+     "group": "team",
+     "vertices": [[22, 60], [31, 58], [38, 63], [37, 74], [28, 77], [22, 70]]},
     {"id": "beach-e", "type": "polygon", "operation": "add", "override": True,
      "floor": 0, "base_height": BRINK, "height_mode": "level", "skirt": 0,
      "relief_scope": "exclude", "keepClear": True, "group": "team",
@@ -343,8 +373,10 @@ PROPS = [
 
 # scrub in the lee of the crag and along the back bench, and nowhere near the water:
 # nothing grows on a basalt strand
-for i, (x, z) in enumerate([(-40, 46), (-38, 54), (-28, 58), (-8, 56), (12, 66),
-                            (14, 52), (34, 50), (40, 38), (-22, 70), (20, 70)]):
+# Eight, not ten: the two that seated on coal ore are gone rather than moved, because a
+# basalt strand with nothing growing on it is the honest answer and the pans are full.
+for i, (x, z) in enumerate([(32, 41), (-38, 54), (-8, 56), (34, 50),
+                            (26, 62), (40, 38), (34, 68), (26, 73)]):
     PROPS.append(tree(f"scrub-{i}", ["scrub-a", "scrub-b"][i % 2], x, z))
 
 # fallen blocks under the crag and out on the strand: stone, and the ones in the water
@@ -365,7 +397,8 @@ DRESSING = {"styles": STYLES, "props": PROPS}
 
 # ---------------------------------------------------------------- the finish
 FINISH = {
-    "themes": {"basalt": THEME_BASALT, "weed": THEME_WEED, "stack": THEME_STACK},
+    "themes": {"basalt": THEME_BASALT, "weed": THEME_WEED, "stack": THEME_STACK,
+               "peat": THEME_PEAT},
     "mapTheme": "basalt",
     # Deep ocean, so the mere reads blue-black rather than the peat-murk of a moss and the
     # two boards do not share a water colour

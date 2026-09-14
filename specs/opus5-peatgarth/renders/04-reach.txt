@@ -1,13 +1,13 @@
-components 11 · navigable 11538 columns · bridgeable 0 · build ceiling y49
+components 11 · navigable 11550 columns · bridgeable 0 · build ceiling y49
 
 8 patch(es) of standing ground no player can get to. None of this is a fault — scenery and a side observer island read exactly like this — but a shape stranded by accident reads like it too, and only the author can tell them apart.
 
   cells  floor  reason          box
-   5683    y11  no-build-zone   x -42..41, z 7..99
+   5670    y11  no-build-zone   x -42..41, z 7..99
+     49    y23  no-build-zone   x -31..-20, z 70..83
+     49    y23  no-build-zone   x 19..30, z -84..-71
      36    y57  above-ceiling   x -3..2, z -3..2
-     30    y21  no-build-zone   x -27..-19, z 80..88
      30    y25  no-build-zone   x -6..5, z -98..-87
-     30    y21  no-build-zone   x 18..26, z -89..-81
      29    y25  no-build-zone   x -6..5, z 86..97
       8    y25  no-build-zone   x -6..-3, z 86..89
       7    y25  no-build-zone   x 2..5, z -90..-87

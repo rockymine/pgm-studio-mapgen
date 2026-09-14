@@ -36,17 +36,20 @@ stained clay, dark oak, podzol and mossy cobble under swamp, deep-ocean and roof
 
 | slug | mode | size | themes | slopes (walked / scramble / barrier) | claims | dead |
 |---|---|---|---|---|---|---|
-| `opus5-peatgarth` | DTM | 80 × 200 | 94.2 / 2.9 / 2.9 | 11 790 · 74 · 296, 4 faces | 30 placed, 0 declined | 25.0 % |
-| `opus5-basaltmere` | KotH | 90 × 190 | 67.3 / 29.7 / 3.0 | 12 628 · 152 · 720, 8 faces | 42 placed, 1 declined | 47.2 % |
+| `opus5-peatgarth` | DTM | 80 × 200 | 91.4 / 5.7 / 2.9 | 11 790 · 74 · 296, 4 faces | 30 placed, **0 declined** | 25.3 % |
+| `opus5-basaltmere` | KotH | 90 × 190 | 64.2 / 27.0 / 5.8 / 3.0 | 12 781 · 234 · 720, 8 faces | 38 placed, 1 declined | 49.3 %* |
 | `opus5-mirkholt` | CTW | 100 × 200 | 51.4 / 37.1 / 11.4 | 9 980 · 220 · 300, 8 faces | 30 placed, 3 declined | 0.0 % |
-| `opus5-slakemoss` | DTC | 90 × 200 | 40.4 / 31.5 / 28.1 | 14 292 · 182 · 326, 4 faces | 38 placed, 3 declined | 27.2 % |
+| `opus5-slakemoss` | DTC | 90 × 200 | 40.4 / 31.5 / 28.1 | 14 292 · 182 · 326, 4 faces | 40 placed, 1 declined | 27.8 % |
+
+\* not a coverage figure that means anything: `GET /coverage` cannot see a control point, so on a KotH
+board the walk has two spawns and no objective to travel to. See *Author feedback* below.
 
 Relief reads, all four with symmetry error 0 and no silent marks:
 
 | slug | level | largestField | faces / cliffs | landform | seams |
 |---|---|---|---|---|---|
-| peatgarth | 0.426 | 0.151 | 0 / 0 | rolling | none |
-| basaltmere | 0.651 | 0.461 | 4 / 1 | rolling | none |
+| peatgarth | 0.431 | 0.167 | 0 / 0 | rolling | none |
+| basaltmere | 0.649 | 0.477 | 4 / 1 | rolling | none |
 | mirkholt | 0.459 | 0.166 | 2 / 0 | rolling | none |
 | slakemoss | 0.713 | 0.486 | 1 / 1 | plain | none |
 
@@ -142,16 +145,23 @@ Per-board detail is in `review/<slug>.md`; the summary:
 
 ## Questions for the human oracle — recorded as questions, not as facts
 
-1. **Basaltmere's coverage.** 47.2 % of the ground is dead and all of it is the mere's two flank
-   lobes, each a block from used ground. The documented calibration says *where* the dead ground is
-   decides it, and water in the middle of a board is not ground anybody walks. **Is open water on a
-   KotH board dead ground at all, or is the coverage read counting a thing it should not?** If it is
-   dead, the fix is a second hill or an off-centre one, and both change what the board is.
+1. **Is open water dead ground?** The coverage figure itself turned out not to be evidence — the walk
+   cannot see a capture point — but the question under it stands on any board with a lake in it: more
+   than half of what that read calls dead on basaltmere is the mere, and a player crosses water rather
+   than standing on it. **Does water in the middle of a board count as ground nobody goes to, or as a
+   route?** If it counts as dead, every board in this set with a pool in it is being marked down for
+   having one.
 2. **Slakemoss's cores stand on dry plinths above a flooded nave, and I moved them there to avoid a
    guess.** A core leaks when its lava reaches `y ≤ B − leak`; lava meeting water turns to stone. **Does
    a core over standing water leak at all in PGM?** I did not find out and did not build on the
    assumption either way — the plinth is four courses of dry ground with the water below and beside
    it, so the question is moot on this board but not on the next one.
+
+5. **The goal material follows the goal's size, and that takes it out of the board's palette.** A
+   `cube-3` may not be obsidian (`DC3`), so peatgarth's Peat Store is now 26 blocks of ender stone —
+   a pale sandy block, the one thing on a black-and-olive board that is not dark, wet or green. On the
+   studio's own reading that is correct (`OB26`: a goal reads as a goal). **Is a pale goal on a dark
+   board right, or should the board make room for it — a paler works stage under it, say?**
 3. **Mirkholt's two wool rooms of a side sit two courses apart** (y15 and y17), because the east room
    stands outside the `court-flat` mark's ring and takes the grain instead. `WL9` measures spawn↔wool
    *distance* balance and says nothing about height. **Is a height difference between a team's two wool
@@ -160,6 +170,57 @@ Per-board detail is in `review/<slug>.md`; the summary:
    the water down the nave's banks. It is meant to be cover a raider weaves through. **Is a colonnade
    on the main crossing of a destroy board cover or a nuisance?** The transect across the nave reads
    zero barrier, so it does not block; whether it *plays* is not derivable from here.
+
+## Author feedback, applied and re-driven
+
+All six items were applied and all four boards were re-driven. Mirkholt needed no change.
+
+**1 · peatgarth's bench now reads as built.** The `bench` shape carried no theme at all and inherited
+`mapTheme: "moss"`, so a raised disk of moor sat under an andesite ramp that said "built". It now
+carries the **`works`** theme — the same stone the ramp is cut from — so the surface, the face and the
+ramp agree. `column (−24, 48)` reads andesite over stone, `column (−6, 60)` polished andesite over
+stone over cobble. Only the scald on top of it is soil, and that is the cut peat drying on the stage.
+Stone on the ground went 2.9 % → **5.7 %**, and it is now where a player fights rather than behind the
+spawn.
+
+**2 · the slab and the second house style are gone.** `works-pad` is deleted; the ground under it was
+already flat under `back-flat`, and `column (−22, 86)` now reads podzol over dirt. The store is rebuilt
+in the **spawn's own shell** (`sb-spawn`, clear 5 then 4 under a gable) at x −30..−20, z 70..82, so the
+two buildings at the head of the tramway are one family. The first attempt at x −30..−20, z 80..92 was
+declined `DR-KEEP` at (−26, 86) for standing in the spawn door's approach; moved south, the board
+declines **nothing at all**.
+
+**3 · the goal is a `cube-3` in ender stone.** 3 × 3 × 3 with the studio's own 1 × 1 × 1 bedrock centre
+(`ObjectiveStamper`), so **26 breakable blocks** against a `pillar-3`'s three, at 40–42 blocks from its
+own door. The material follows the size rather than the palette: `DC3` reads obsidian as worth at most
+three blocks and names ender stone, gold or emerald for a cube — and a cube declared obsidian is built
+in ender stone anyway, with a complaint attached, so declaring it is the honest form. `column` at the
+cube's corners reads solid end stone y23–25; at its middle, end stone, bedrock, end stone.
+
+**Slakemoss's cores were checked and left alone.** `lava: 3` leaves the corpus's 5 × 5 × 5 casing round
+a 3 × 3 × 3 interior — **98 obsidian blocks** — confirmed by `column` at (−16, 54) and (−12, 58) reading
+solid obsidian y23–27. At 41 blocks of walk from its own spawn that is a raid, not a grind.
+
+**4 · nothing is growing out of masonry any more.**
+
+- *slakemoss*, ten trees, each seat read back: **eight on soil** — grass (38, 40); coarse dirt
+  (−42, 40), (−10, 36), (34, 48), (40, 56); gravel (−42, 54), (10, 36); podzol (24, 44) — and **two kept
+  deliberately in the ruin** on mossy stone bricks at (2, 62) and (−26, 62), which is the note worth
+  having. One exception is a sapling in a broken floor; six is a mistake.
+- *basaltmere* needed soil before it could seat anything: the bowl's flat band now carries **coarse
+  dirt and podzol** among its grit, and two **greaves** — peat pans stated as `exclude` shapes so they
+  are flat to their own lip — carry a fourth theme (`peat`, 5.8 % of the ground) and hold the scrub.
+  The count came down ten → **eight**: the two that still seated on coal ore were removed rather than
+  moved, because the pans were full and a basalt strand with nothing on it is the honest answer. Every
+  remaining trunk read back: coarse dirt (32, 41), (26, 62); podzol (−8, 56); grass (34, 50), (34, 68),
+  (26, 73); gravel (−38, 54), (40, 38).
+
+**6 · the coverage correction is taken, and it changes what one of my questions was about.**
+`controlPoints` reach the intent and not the plan the coverage walk reads, so basaltmere's dead figure
+is the read declining to answer rather than the empty-board fault — its `journeys: 3` against
+slakemoss's 10 and mirkholt's 21 is the tell, and it is now footnoted in the table and rewritten in
+`review/opus5-basaltmere.md`. The oracle question below is kept, because the part of it that is about
+water is still open and is not a question about the tool.
 
 ## Where things are
 

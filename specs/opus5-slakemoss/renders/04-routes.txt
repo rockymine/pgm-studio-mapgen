@@ -39,7 +39,7 @@ ROUTE (0, 92) -> (-14, 56) aim travel: 42 blocks, 1 placed, 0 drop(s), worst dro
   (-13, 57)         17
   (-14, 56)         18
 rises 1, falls 0, worst step 2: scramble +2 at (-9, 64)
-beside: core core-1 at (-14, 56) d0, spawn spawn-1 at (0, 86) d0, ironcube spawn-1:0 at (2, 81) d2
+beside: core core-1 at (-14, 56) d0, spawn spawn-1 at (0, 86) d0, ironcube spawn-1:0 at (2, 81) d2, tree carr-8 at (-5, 64) d2
 
 ## spawn-red -> core-1-1
 ROUTE (0, 92) -> (13, -57) aim travel: 161 blocks, 33 placed, 4 drop(s), worst drop 9
@@ -195,7 +195,7 @@ ROUTE (0, 92) -> (13, -57) aim travel: 161 blocks, 33 placed, 4 drop(s), worst d
   (13, -56)         17
   (13, -57)         18
 rises 5, falls 4, worst step 9: barrier +9 at (20, 12); drop -9 at (20, 10); barrier +9 at (21, 2); drop -9 at (21, 0); barrier +9 at (21, -2); drop -9 at (21, -4); barrier +9 at (21, -12); drop -9 at (21, -14); scramble +2 at (13, -36)
-beside: boulder fall-2 at (8, 46) d0, core core-1#1 at (13, -57) d0, spawn spawn-1 at (0, 86) d0, water slake#1 at (16, 23) d0, tree carr-7 at (3, 55) d1, boulder fall-4 at (7, 52) d2, ironcube spawn-1:0 at (2, 81) d2, water slake at (10, 25) d2
+beside: boulder fall-2 at (8, 46) d0, core core-1#1 at (13, -57) d0, spawn spawn-1 at (0, 86) d0, tree carr-4 at (8, 31) d0, tree carr-8 at (0, 57) d0, water slake#1 at (16, 23) d0, tree carr-3#1 at (12, -35) d1, boulder fall-4 at (7, 52) d2, ironcube spawn-1:0 at (2, 81) d2, water slake at (10, 25) d2
 
 ## spawn-blue -> core-1-0
 ROUTE (0, -92) -> (-14, 56) aim travel: 161 blocks, 1 placed, 0 drop(s), worst drop 0
@@ -350,7 +350,7 @@ ROUTE (0, -92) -> (-14, 56) aim travel: 161 blocks, 1 placed, 0 drop(s), worst d
   (-14, 55)         17
   (-14, 56)         18
 rises 1, falls 0, worst step 2: scramble +2 at (-14, 35)
-beside: core core-1 at (-14, 54) d0, spawn spawn-1#1 at (0, -92) d0, boulder fall-1#1 at (0, -41) d1, boulder fall-2#1 at (-1, -47) d1, water slake at (-18, -23) d1
+beside: core core-1 at (-14, 54) d0, spawn spawn-1#1 at (0, -92) d0, tree carr-4#1 at (-11, -32) d0, tree carr-8#1 at (0, -70) d0, boulder fall-1#1 at (0, -41) d1, boulder fall-2#1 at (-1, -47) d1, tree carr-3 at (-13, 34) d1, water slake at (-18, -23) d1
 
 ## spawn-blue -> core-1-1
 ROUTE (0, -92) -> (13, -57) aim travel: 40 blocks, 1 placed, 0 drop(s), worst drop 0
@@ -392,4 +392,4 @@ ROUTE (0, -92) -> (13, -57) aim travel: 40 blocks, 1 placed, 0 drop(s), worst dr
   (12, -58)         17
   (13, -57)         18
 rises 1, falls 0, worst step 2: scramble +2 at (8, -65)
-beside: core core-1#1 at (11, -59) d0, spawn spawn-1#1 at (0, -92) d0
+beside: core core-1#1 at (11, -59) d0, spawn spawn-1#1 at (0, -92) d0, tree carr-8#1 at (-1, -70) d2

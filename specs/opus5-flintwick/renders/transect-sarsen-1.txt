@@ -1,61 +1,61 @@
 ## sarsen-1 (boulder) along x
-TRANSECT 25 stations from (0, 66) to (24, 66), every 1
+TRANSECT 25 stations from (4, 20) to (28, 20), every 1
   station        ground  surface  water  top  standing            step
-  (    0,    66)      29       29           29  stroke way-spine    
-  (    1,    66)      29       29           29  stroke way-spine    
-  (    2,    66)      28       28           28  stroke way-spine    -1
-  (    3,    66)      28       28           28                      
-  (    4,    66)      27       27           27                      -1
-  (    5,    66)      27       27           27                      
-  (    6,    66)      27       27           27                      
-  (    7,    66)      27       27           35  tree birk-1         
-  (    8,    66)      26       26           37  tree birk-1         -1
-  (    9,    66)      26       26           35  tree birk-1         
-  (   10,    66)      26       26           37  tree birk-1         
-  (   11,    66)      26       26           36  tree birk-1         
-  (   12,    66)      25       25           34  tree birk-1         -1
-  (   13,    66)      24       24           34  tree birk-1         -1
-  (   14,    66)      25       25           26  boulder sarsen-1    +1
-  (   15,    66)      25       25           26  boulder sarsen-1    
-  (   16,    66)      26       26           26                      +1
-  (   17,    66)      27       27           27                      +1
-  (   18,    66)      29       29           29                      scramble +2
-  (   19,    66)      29       29           29                      
-  (   20,    66)      30       30           30  stroke way-east     +1
-  (   21,    66)      30       30           30  stroke way-east     
-  (   22,    66)      30       30           30  stroke way-east     
-  (   23,    66)      30       30           30  stroke way-east     
-  (   24,    66)      30       30           30  stroke way-east     
-rises 5, falls 5, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (18, 66) | walked end to end
-beside: stroke way-spine at (-1, 64), tree birk-1 at (6, 64), boulder sarsen-1 at (10, 67), stroke way-east at (20, 66), boulder sarsen-5 at (25, 68)
+  (    4,    20)                                                    void
+  (    5,    20)                                                    void
+  (    6,    20)                                                    void
+  (    7,    20)                                                    void
+  (    8,    20)                                                    void
+  (    9,    20)                                                    void
+  (   10,    20)      20       20           20                      
+  (   11,    20)      20       20           20                      
+  (   12,    20)      20       20           21  boulder sarsen-1    
+  (   13,    20)      20       20           22  boulder sarsen-1    
+  (   14,    20)      20       20           22  boulder sarsen-1    
+  (   15,    20)      20       20           22  boulder sarsen-1    
+  (   16,    20)      20       20           22  boulder sarsen-1    
+  (   17,    20)      20       20           22  boulder sarsen-1    
+  (   18,    20)      20       20           22  boulder sarsen-1    
+  (   19,    20)      20       20           22  boulder sarsen-1    
+  (   20,    20)      20       20           21  boulder sarsen-1    
+  (   21,    20)      20       20           20                      
+  (   22,    20)      20       20           20                      
+  (   23,    20)      20       20           20                      
+  (   24,    20)      20       20           20                      
+  (   25,    20)      20       20           20                      
+  (   26,    20)      20       20           20                      
+  (   27,    20)      20       20           20                      
+  (   28,    20)      20       20           20                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder sarsen-1 at (12, 20)
 
 ## sarsen-1 (boulder) along z
-TRANSECT 25 stations from (12, 54) to (12, 78), every 1
+TRANSECT 25 stations from (16, 8) to (16, 32), every 1
   station        ground  surface  water  top  standing            step
-  (   12,    54)      24       24           24                      
-  (   12,    55)      24       24           24                      
-  (   12,    56)      24       24           24                      
-  (   12,    57)      24       24           24                      
-  (   12,    58)      25       25           25                      +1
-  (   12,    59)      25       25           33  tree birk-1         
-  (   12,    60)      25       25           36  tree birk-1         
-  (   12,    61)      25       25           38  tree birk-1         
-  (   12,    62)      25       25           38  tree birk-1         
-  (   12,    63)      25       25           35  tree birk-1         
-  (   12,    64)      25       25           36  tree birk-1         
-  (   12,    65)      25       25           37  tree birk-1         
-  (   12,    66)      25       25           34  tree birk-1         
-  (   12,    67)      25       25           26  boulder sarsen-1    
-  (   12,    68)      24       24           26  boulder sarsen-1    -1
-  (   12,    69)      24       24           25  boulder sarsen-1    
-  (   12,    70)      24       24           24                      
-  (   12,    71)      25       25           25                      +1
-  (   12,    72)      25       25           25                      
-  (   12,    73)      26       26           26                      +1
-  (   12,    74)      27       27           27                      +1
-  (   12,    75)      28       28           28                      +1
-  (   12,    76)      28       28           28  stroke way-east     
-  (   12,    77)      28       28           28  stroke way-east     
-  (   12,    78)      28       28           28  stroke way-east     
-rises 5, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree thorn-5 at (12, 52), tree birk-1 at (10, 59), boulder sarsen-1 at (14, 66), stroke way-east at (13, 75), stroke way-yard-e at (13, 80)
+  (   16,     8)      20       20           20                      
+  (   16,     9)      20       20           20                      
+  (   16,    10)      20       20           20                      
+  (   16,    11)      20       20           20                      
+  (   16,    12)      20       20           20                      
+  (   16,    13)      20       20           20                      
+  (   16,    14)      20       20           20                      
+  (   16,    15)      20       20           20                      
+  (   16,    16)      20       20           20                      
+  (   16,    17)      20       20           22  boulder sarsen-1    
+  (   16,    18)      20       20           22  boulder sarsen-1    
+  (   16,    19)      20       20           22  boulder sarsen-1    
+  (   16,    20)      20       20           22  boulder sarsen-1    
+  (   16,    21)      20       20           22  boulder sarsen-1    
+  (   16,    22)      20       20           22  boulder sarsen-1    
+  (   16,    23)      21       21           21                      +1
+  (   16,    24)      21       21           21                      
+  (   16,    25)      21       21           21                      
+  (   16,    26)      21       21           21                      
+  (   16,    27)      21       21           21                      
+  (   16,    28)      21       21           21                      
+  (   16,    29)      21       21           21                      
+  (   16,    30)      21       21           21                      
+  (   16,    31)      21       21           21                      
+  (   16,    32)      21       21           21                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder sarsen-1 at (14, 17)

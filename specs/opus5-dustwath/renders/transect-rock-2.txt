@@ -3,10 +3,10 @@ TRANSECT 20 stations from (26, -66) to (45, -66), every 1
   station        ground  surface  water  top  standing            step
   (   26,   -66)      23       23           27  house shelter-e     
   (   27,   -66)      23       23           27  house shelter-e     
-  (   28,   -66)      22       22           27  house shelter-e     -1
-  (   29,   -66)      22       22           27  house shelter-e     
-  (   30,   -66)      21       21           27  house shelter-e     -1
-  (   31,   -66)      21       21           27  house shelter-e     
+  (   28,   -66)      23       23           27  house shelter-e     
+  (   29,   -66)      23       23           27  house shelter-e     
+  (   30,   -66)      23       23           27  house shelter-e     
+  (   31,   -66)      21       21           27  house shelter-e     -2
   (   32,   -66)      20       20           26  house shelter-e     -1
   (   33,   -66)      20       20           26  house shelter-e     
   (   34,   -66)      20       20           20                      
@@ -17,12 +17,12 @@ TRANSECT 20 stations from (26, -66) to (45, -66), every 1
   (   39,   -66)      21       21           25  boulder rock-2      
   (   40,   -66)      21       21           25  boulder rock-2      
   (   41,   -66)      21       21           21                      
-  (   42,   -66)      21       21           21                      
+  (   42,   -66)      21       21           27  tree thorn-7        
   (   43,   -66)      21       21           21                      
   (   44,   -66)      21       21           21                      
   (   45,   -66)                                                    void
-rises 2, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: house shelter-e at (24, -68), boulder rock-2 at (35, -67), tree thorn-7 at (39, -64)
+rises 2, falls 3, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house shelter-e at (24, -68), boulder rock-2 at (35, -67), tree thorn-7 at (39, -65)
 
 ## rock-2 (boulder) along z
 TRANSECT 25 stations from (38, -78) to (38, -54), every 1
@@ -43,14 +43,14 @@ TRANSECT 25 stations from (38, -78) to (38, -54), every 1
   (   38,   -65)      21       21           25  boulder rock-2      
   (   38,   -64)      21       21           25  boulder rock-2      
   (   38,   -63)      21       21           21                      
-  (   38,   -62)      21       21           30  tree thorn-7        
-  (   38,   -61)      20       20           33  tree thorn-7        -1
-  (   38,   -60)      20       20           32  tree thorn-7        
-  (   38,   -59)      20       20           29  tree thorn-7        
-  (   38,   -58)      20       20           20                      
-  (   38,   -57)      19       19           25  tree thorn-7        -1
-  (   38,   -56)      19       19           19                      
-  (   38,   -55)                                                    void
-  (   38,   -54)                                                    void
-rises 1, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke bed-e at (36, -75), boulder rock-2 at (36, -68), tree thorn-7 at (39, -64)
+  (   38,   -62)      21       21           28  tree thorn-7        
+  (   38,   -61)      21       21           27  tree thorn-7        
+  (   38,   -60)      21       21           22  tree thorn-7        
+  (   38,   -59)      21       21           26  tree thorn-7        
+  (   38,   -58)      21       21           21                      
+  (   38,   -57)      21       21           28  tree thorn-7        
+  (   38,   -56)      21       21           26  tree thorn-7        
+  (   38,   -55)                            29  tree thorn-7        void
+  (   38,   -54)                            26  tree thorn-7        void
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke bed-e at (36, -75), boulder rock-2 at (36, -68), tree thorn-7 at (39, -65)

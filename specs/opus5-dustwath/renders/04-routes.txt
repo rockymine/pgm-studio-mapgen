@@ -30,10 +30,10 @@ ROUTE (0, -92) -> (-14, -51) aim travel: 47 blocks, 1 placed, 0 drop(s), worst d
   (0, -66)          20
   (0, -65)          20
   (-1, -64)         20
-  (-2, -63)         20
-  (-3, -62)         20
-  (-4, -61)         20
-  (-5, -60)         20
+  (-2, -63)         21
+  (-3, -62)         21
+  (-4, -61)         21
+  (-5, -60)         21
   (-6, -59)         21
   (-7, -58)         21
   (-8, -57)         21
@@ -193,7 +193,7 @@ ROUTE (0, -92) -> (13, 50) aim travel: 147 blocks, 54 placed, 1 drop(s), worst d
   (12, 49)          23
   (13, 50)          24
 rises 1, falls 1, worst step 37: barrier +37 at (1, -7); drop -37 at (1, 8)
-beside: destroyable destroyable-1#1 at (11, 48) d0, spawn spawn-1 at (0, -92) d0
+beside: destroyable destroyable-1#1 at (11, 48) d0, spawn spawn-1 at (0, -92) d0, tree thorn-9 at (0, -52) d0
 
 ## spawn-blue -> destroyable-1-0
 ROUTE (0, 92) -> (-14, -51) aim travel: 149 blocks, 54 placed, 1 drop(s), worst drop 37
@@ -343,7 +343,7 @@ ROUTE (0, 92) -> (-14, -51) aim travel: 149 blocks, 54 placed, 1 drop(s), worst 
   (-13, -50)        23
   (-14, -51)        24
 rises 1, falls 1, worst step 37: barrier +37 at (-2, 7); drop -37 at (-2, -8)
-beside: destroyable destroyable-1 at (-14, -51) d0, spawn spawn-1#1 at (0, 86) d0
+beside: destroyable destroyable-1 at (-14, -51) d0, spawn spawn-1#1 at (0, 86) d0, tree thorn-9#1 at (0, 50) d0
 
 ## spawn-blue -> destroyable-1-1
 ROUTE (0, 92) -> (13, 50) aim travel: 47 blocks, 1 placed, 0 drop(s), worst drop 0
@@ -378,10 +378,10 @@ ROUTE (0, 92) -> (13, 50) aim travel: 47 blocks, 1 placed, 0 drop(s), worst drop
   (0, 65)           20
   (0, 64)           20
   (0, 63)           20
-  (1, 62)           20
-  (2, 61)           20
-  (3, 60)           20
-  (4, 59)           20
+  (1, 62)           21
+  (2, 61)           21
+  (3, 60)           21
+  (4, 59)           21
   (5, 58)           21
   (6, 57)           21
   (7, 56)           21

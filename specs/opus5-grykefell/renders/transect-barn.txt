@@ -1,72 +1,70 @@
 ## barn (house) along x
-TRANSECT 34 stations from (8, 29) to (41, 29), every 1
+TRANSECT 32 stations from (11, 77) to (42, 77), every 1
   station        ground  surface  water  top  standing            step
-  (    8,    29)      22       22           22  stroke way-barn     
-  (    9,    29)      22       22           22  stroke way-barn     
-  (   10,    29)      22       22           22  stroke way-barn     
-  (   11,    29)      22       22           22  stroke way-barn     
-  (   12,    29)      22       22           22  stroke way-barn     
-  (   13,    29)      22       22           22  stroke way-barn     
-  (   14,    29)      22       22           22  stroke way-barn     
-  (   15,    29)      22       22           29  house barn          
-  (   16,    29)      22       22           29  house barn          
-  (   17,    29)      22       22           29  house barn          
-  (   18,    29)      23       23           29  house barn          +1
-  (   19,    29)      27       27           29  house barn          BARRIER +4
-  (   20,    29)      27       27           29  house barn          
-  (   21,    29)      27       27           30  house barn          
-  (   22,    29)      27       27           31  house barn          
-  (   23,    29)      27       27           32  house barn          
-  (   24,    29)      27       27           33  house barn          
-  (   25,    29)      27       27           34  house barn          
-  (   26,    29)      27       27           35  house barn          
-  (   27,    29)      27       27           36  house barn          
-  (   28,    29)      27       27           36  house barn          
-  (   29,    29)      27       27           35  house barn          
-  (   30,    29)      27       27           34  house barn          
-  (   31,    29)      27       27           33  house barn          
-  (   32,    29)      27       27           32  house barn          
-  (   33,    29)      27       27           31  house barn          
-  (   34,    29)      27       27           30  house barn          
-  (   35,    29)      27       27           27                      
-  (   36,    29)      27       27           27                      
-  (   37,    29)      27       27           27                      
-  (   38,    29)      27       27           27                      
-  (   39,    29)      27       27           27                      
-  (   40,    29)      27       27           27                      
-  (   41,    29)                                                    void
-rises 2, falls 0, worst step 4: 1 barrier, 0 scramble, 0 drop — BARRIER +4 at (19, 29) | walked end to end
-beside: stroke way-shore at (6, 27), stroke way-barn at (8, 29), house barn at (15, 27)
+  (   11,    77)      30       30           30                      
+  (   12,    77)      30       30           30                      
+  (   13,    77)      30       30           30                      
+  (   14,    77)      29       29           29  stroke way-barn     -1
+  (   15,    77)      30       30           30  stroke way-barn     +1
+  (   16,    77)      30       30           30  stroke way-barn     
+  (   17,    77)      31       31           31  stroke way-barn     +1
+  (   18,    77)      31       31           38  house barn          
+  (   19,    77)      31       31           38  house barn          
+  (   20,    77)      31       31           38  house barn          
+  (   21,    77)      31       31           38  house barn          
+  (   22,    77)      31       31           39  house barn          
+  (   23,    77)      31       31           40  house barn          
+  (   24,    77)      31       31           41  house barn          
+  (   25,    77)      31       31           42  house barn          
+  (   26,    77)      31       31           43  house barn          
+  (   27,    77)      31       31           44  house barn          
+  (   28,    77)      31       31           45  house barn          
+  (   29,    77)      31       31           45  house barn          
+  (   30,    77)      31       31           44  house barn          
+  (   31,    77)      31       31           43  house barn          
+  (   32,    77)      31       31           42  house barn          
+  (   33,    77)      31       31           41  house barn          
+  (   34,    77)      31       31           40  house barn          
+  (   35,    77)      31       31           39  house barn          
+  (   36,    77)      31       31           31                      
+  (   37,    77)                                                    void
+  (   38,    77)                                                    void
+  (   39,    77)                                                    void
+  (   40,    77)                                                    void
+  (   41,    77)                                                    void
+  (   42,    77)                                                    void
+rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke way-barn at (14, 75), house barn at (18, 75)
 
 ## barn (house) along z
-TRANSECT 27 stations from (24, 16) to (24, 42), every 1
+TRANSECT 27 stations from (26, 64) to (26, 90), every 1
   station        ground  surface  water  top  standing            step
-  (   24,    16)                                                    void
-  (   24,    17)      22       22           22                      
-  (   24,    18)      22       22           22                      
-  (   24,    19)      23       23           23                      +1
-  (   24,    20)      23       23           23                      
-  (   24,    21)      24       24           24                      +1
-  (   24,    22)      27       27           27                      BARRIER +3
-  (   24,    23)      27       27           33  house barn          
-  (   24,    24)      27       27           33  house barn          
-  (   24,    25)      27       27           33  house barn          
-  (   24,    26)      27       27           33  house barn          
-  (   24,    27)      27       27           33  house barn          
-  (   24,    28)      27       27           33  house barn          
-  (   24,    29)      27       27           33  house barn          
-  (   24,    30)      27       27           33  house barn          
-  (   24,    31)      27       27           33  house barn          
-  (   24,    32)      27       27           33  house barn          
-  (   24,    33)      27       27           33  house barn          
-  (   24,    34)      27       27           33  house barn          
-  (   24,    35)      27       27           33  house barn          
-  (   24,    36)      27       27           27                      
-  (   24,    37)      27       27           27                      
-  (   24,    38)      25       25           25                      -2
-  (   24,    39)      25       25           25                      
-  (   24,    40)      24       24           24                      -1
-  (   24,    41)      25       25           25                      +1
-  (   24,    42)      25       25           25                      
-rises 4, falls 2, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (24, 22) | walked end to end
-beside: house barn at (22, 23)
+  (   26,    64)      26       26           26                      
+  (   26,    65)      26       26           26                      
+  (   26,    66)      26       26           26                      
+  (   26,    67)      26       26           26                      
+  (   26,    68)      27       27           27                      +1
+  (   26,    69)      29       29           29                      scramble +2
+  (   26,    70)      31       31           31                      scramble +2
+  (   26,    71)      31       31           43  house barn          
+  (   26,    72)      31       31           43  house barn          
+  (   26,    73)      31       31           43  house barn          
+  (   26,    74)      31       31           43  house barn          
+  (   26,    75)      31       31           43  house barn          
+  (   26,    76)      31       31           43  house barn          
+  (   26,    77)      31       31           43  house barn          
+  (   26,    78)      31       31           43  house barn          
+  (   26,    79)      31       31           43  house barn          
+  (   26,    80)      31       31           43  house barn          
+  (   26,    81)      31       31           43  house barn          
+  (   26,    82)      31       31           43  house barn          
+  (   26,    83)      31       31           43  house barn          
+  (   26,    84)      31       31           31                      
+  (   26,    85)                                                    void
+  (   26,    86)                                                    void
+  (   26,    87)                                                    void
+  (   26,    88)                                                    void
+  (   26,    89)                                                    void
+  (   26,    90)                                                    void
+rises 3, falls 0, worst step 2: 0 barrier, 2 scramble, 0 drop — scramble +2 at (26, 69); scramble +2 at (26, 70) | walked end to end
+beside: house barn at (24, 71)

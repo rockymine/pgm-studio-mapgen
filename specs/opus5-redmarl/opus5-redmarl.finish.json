@@ -490,6 +490,131 @@
         "id": 24,
         "data": 2
       }
+    },
+    "sward": {
+      "bedrock": {
+        "relative": false,
+        "value": 1
+      },
+      "rimEdges": "void",
+      "wallOnTerrainFaces": false,
+      "rim": {
+        "material": {
+          "kind": "solid",
+          "id": 3,
+          "data": 1
+        },
+        "depth": 1,
+        "enabled": true
+      },
+      "surface": {
+        "depth": 3,
+        "enabled": true,
+        "material": {
+          "kind": "layered",
+          "axis": "depth",
+          "stack": {
+            "ending": "repeat",
+            "bands": [
+              {
+                "material": {
+                  "kind": "cell",
+                  "seed": 61,
+                  "cellSize": 6,
+                  "jitter": 2,
+                  "warp": 3,
+                  "palette": [
+                    {
+                      "kind": "solid",
+                      "id": 2,
+                      "data": 0
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 12,
+                      "data": 1
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 3,
+                      "data": 1
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 2,
+                      "data": 0
+                    }
+                  ],
+                  "rise": 0
+                },
+                "thickness": 1
+              },
+              {
+                "material": {
+                  "kind": "solid",
+                  "id": 3,
+                  "data": 0
+                },
+                "thickness": 2
+              },
+              {
+                "material": {
+                  "kind": "solid",
+                  "id": 179,
+                  "data": 0
+                },
+                "thickness": 1
+              }
+            ]
+          }
+        }
+      },
+      "wall": {
+        "kind": "wallRun",
+        "runs": [
+          {
+            "material": {
+              "kind": "solid",
+              "id": 3,
+              "data": 0
+            },
+            "width": 2
+          },
+          {
+            "material": {
+              "kind": "solid",
+              "id": 3,
+              "data": 1
+            },
+            "width": 1
+          }
+        ]
+      },
+      "wallEnabled": true,
+      "fill": {
+        "kind": "voronoi",
+        "seed": 23,
+        "cellSize": 11,
+        "rise": 5,
+        "bands": [
+          {
+            "material": {
+              "kind": "solid",
+              "id": 179,
+              "data": 0
+            },
+            "depth": 2
+          },
+          {
+            "material": {
+              "kind": "solid",
+              "id": 179,
+              "data": 2
+            },
+            "depth": 1
+          }
+        ]
+      }
     }
   },
   "mapTheme": "marl",
@@ -1337,6 +1462,240 @@
         ]
       ],
       "theme": "wash"
+    },
+    {
+      "id": "sward-0",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+        [
+          -3,
+          -78
+        ],
+        [
+          -5,
+          -74
+        ],
+        [
+          -9,
+          -73
+        ],
+        [
+          -13,
+          -76
+        ],
+        [
+          -13,
+          -80
+        ],
+        [
+          -9,
+          -84
+        ],
+        [
+          -4,
+          -83
+        ]
+      ],
+      "theme": "sward"
+    },
+    {
+      "id": "sward-1",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+        [
+          -37,
+          -42
+        ],
+        [
+          -38,
+          -37
+        ],
+        [
+          -43,
+          -37
+        ],
+        [
+          -47,
+          -40
+        ],
+        [
+          -46,
+          -44
+        ],
+        [
+          -43,
+          -47
+        ],
+        [
+          -39,
+          -46
+        ]
+      ],
+      "theme": "sward"
+    },
+    {
+      "id": "sward-2",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+        [
+          25,
+          -20
+        ],
+        [
+          23,
+          -16
+        ],
+        [
+          19,
+          -16
+        ],
+        [
+          15,
+          -17
+        ],
+        [
+          15,
+          -22
+        ],
+        [
+          19,
+          -25
+        ],
+        [
+          23,
+          -24
+        ]
+      ],
+      "theme": "sward"
+    },
+    {
+      "id": "sward-3",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+        [
+          -5,
+          -14
+        ],
+        [
+          -6,
+          -10
+        ],
+        [
+          -11,
+          -8
+        ],
+        [
+          -14,
+          -12
+        ],
+        [
+          -14,
+          -16
+        ],
+        [
+          -11,
+          -19
+        ],
+        [
+          -7,
+          -18
+        ]
+      ],
+      "theme": "sward"
+    },
+    {
+      "id": "sward-4",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+        [
+          -28,
+          -66
+        ],
+        [
+          -31,
+          -62
+        ],
+        [
+          -35,
+          -60
+        ],
+        [
+          -39,
+          -64
+        ],
+        [
+          -40,
+          -69
+        ],
+        [
+          -35,
+          -72
+        ],
+        [
+          -30,
+          -71
+        ]
+      ],
+      "theme": "sward"
+    },
+    {
+      "id": "sward-5",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+        [
+          -24,
+          -28
+        ],
+        [
+          -27,
+          -24
+        ],
+        [
+          -31,
+          -23
+        ],
+        [
+          -35,
+          -26
+        ],
+        [
+          -34,
+          -30
+        ],
+        [
+          -31,
+          -33
+        ],
+        [
+          -27,
+          -32
+        ]
+      ],
+      "theme": "sward"
     }
   ],
   "addLayers": [
@@ -7498,8 +7857,8 @@
         "id": "holt-5",
         "kind": "tree",
         "seed": 705,
-        "x": -20,
-        "z": 16,
+        "x": -10,
+        "z": -14,
         "style": "scrub-1"
       },
       {

@@ -20,7 +20,7 @@
             <item slot="1" material="bow" unbreakable="true">
                 <enchantment level="1">infinity</enchantment>
             </item>
-            <item slot="2" material="diamond pickaxe" unbreakable="true">
+            <item slot="2" material="iron pickaxe" unbreakable="true">
                 <enchantment level="1">efficiency</enchantment>
             </item>
             <item slot="3" material="iron axe" unbreakable="true">
@@ -61,8 +61,8 @@
         <mode id="mode-glass" after="20m" material="glass"/>
     </modes>
     <destroyables>
-        <destroyable id="the-wath-stone" name="The Wath Stone" owner="red-team" materials="obsidian" repairable="false" mode-changes="true" region="the-wath-stone-region"/>
-        <destroyable id="the-wath-stone-2" name="The Wath Stone" owner="blue-team" materials="obsidian" repairable="false" mode-changes="true" region="the-wath-stone-2-region"/>
+        <destroyable id="the-wath-stone" name="The Wath Stone" owner="red-team" materials="ender stone" repairable="false" mode-changes="true" region="the-wath-stone-region"/>
+        <destroyable id="the-wath-stone-2" name="The Wath Stone" owner="blue-team" materials="ender stone" repairable="false" mode-changes="true" region="the-wath-stone-2-region"/>
     </destroyables>
     <filters>
         <team id="only-blue">blue-team</team>
@@ -95,8 +95,8 @@
         <point id="observer-spawn">0,53,0</point>
         <rectangle id="blue-spawn" min="-8,84" max="8,100"/>
         <rectangle id="red-spawn" min="-8,-100" max="8,-84"/>
-        <cuboid id="the-wath-stone-region" min="-14,27,-51" max="-13,30,-50"/>
-        <cuboid id="the-wath-stone-2-region" min="13,27,50" max="14,30,51"/>
+        <cuboid id="the-wath-stone-region" min="-15,27,-52" max="-12,30,-49"/>
+        <cuboid id="the-wath-stone-2-region" min="12,27,49" max="15,30,52"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -105,7 +105,14 @@
             <region id="spawns"/>
         </negative>
         <negative id="not-build-area">
-            <rectangle id="build-area-1" min="-44,-24" max="44,24"/>
+            <union id="build-area">
+                <rectangle id="build-area-1" min="-44,-28" max="-28,28"/>
+                <rectangle id="build-area-2" min="28,-28" max="44,28"/>
+                <rectangle id="build-area-3" min="-28,-36" max="24,36"/>
+                <rectangle id="build-area-4" min="-24,-36" max="28,36"/>
+                <rectangle id="build-area-5" min="24,-28" max="44,28"/>
+                <rectangle id="build-area-6" min="-44,-28" max="-24,28"/>
+            </union>
         </negative>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
@@ -129,7 +136,7 @@
     <itemkeep>
         <item>iron sword</item>
         <item>bow</item>
-        <item>diamond pickaxe</item>
+        <item>iron pickaxe</item>
         <item>iron axe</item>
         <item>water bucket</item>
         <item>golden apple</item>
@@ -144,14 +151,14 @@
         <item>leather chestplate</item>
         <item>chainmail leggings</item>
         <item>leather boots</item>
-        <item>obsidian</item>
+        <item>ender stone</item>
         <item>gold block</item>
         <item>glass</item>
     </itemremove>
     <toolrepair>
         <tool>iron sword</tool>
         <tool>bow</tool>
-        <tool>diamond pickaxe</tool>
+        <tool>iron pickaxe</tool>
         <tool>iron axe</tool>
         <tool>shears</tool>
         <tool>iron spade</tool>

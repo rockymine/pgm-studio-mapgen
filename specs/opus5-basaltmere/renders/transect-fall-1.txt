@@ -2,13 +2,13 @@
 TRANSECT 25 stations from (-45, 48) to (-21, 48), every 1
   station        ground  surface  water  top  standing            step
   (  -45,    48)      20       20           20                      
-  (  -44,    48)      21       21           29  tree scrub-0        +1
-  (  -43,    48)      21       21           27  tree scrub-0        
-  (  -42,    48)      22       22           30  tree scrub-0        +1
-  (  -41,    48)      22       22           28  tree scrub-0        
-  (  -40,    48)      22       22           30  tree scrub-0        
-  (  -39,    48)      22       22           29  tree scrub-0        
-  (  -38,    48)      22       22           26  tree scrub-0        
+  (  -44,    48)      21       21           21                      +1
+  (  -43,    48)      21       21           21                      
+  (  -42,    48)      22       22           22                      +1
+  (  -41,    48)      22       22           22                      
+  (  -40,    48)      22       22           22                      
+  (  -39,    48)      22       22           22                      
+  (  -38,    48)      22       22           22                      
   (  -37,    48)      23       23           26  boulder fall-1      +1
   (  -36,    48)      23       23           27  boulder fall-1      
   (  -35,    48)      24       24           28  boulder fall-1      +1
@@ -27,7 +27,7 @@ TRANSECT 25 stations from (-45, 48) to (-21, 48), every 1
   (  -22,    48)      22       22           22                      
   (  -21,    48)      21       21           21                      -1
 rises 4, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree scrub-0 at (-43, 47), tree scrub-1 at (-41, 50), boulder fall-1 at (-37, 48), stroke trod at (-29, 46)
+beside: tree scrub-1 at (-41, 50), boulder fall-1 at (-37, 48), stroke trod at (-29, 46)
 
 ## fall-1 (boulder) along z
 TRANSECT 25 stations from (-33, 36) to (-33, 60), every 1
@@ -58,4 +58,4 @@ TRANSECT 25 stations from (-33, 36) to (-33, 60), every 1
   (  -33,    59)                                                    void
   (  -33,    60)                                                    void
 rises 2, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke trod at (-33, 34), boulder fall-0 at (-35, 40), boulder fall-1 at (-35, 45), tree scrub-1 at (-35, 52), tree scrub-2 at (-31, 59)
+beside: stroke trod at (-33, 34), boulder fall-0 at (-35, 40), boulder fall-1 at (-35, 45), tree scrub-1 at (-35, 52)

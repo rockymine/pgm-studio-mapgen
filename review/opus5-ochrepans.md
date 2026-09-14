@@ -33,7 +33,7 @@ matters is not in the relief at all:
 | a pan bank | **4 up** | the flank pads are held from below |
 | the yard wall | **3 proud of the flat, 7 above the yard floor** | cannot be climbed and cannot be seen over |
 
-`03-slopes.txt`: **16 414 walked, 325 scrambled, 811 barrier; 10 faces, largest 148** at x 5..27
+`03-slopes.txt`: **16 536 walked, 325 scrambled, 811 barrier; 10 faces, largest 148** at x 5..27
 z -29..-9 — the yard's east wall, which is a wall.
 `incline`: 52 / 32.2 / 7.4 / 2.2 / **2.5 / 2.2 / 1.6** %. The tail past forty degrees is four times any
 other board here and every block of it is masonry or a cut face.
@@ -47,7 +47,7 @@ other board here and every block of it is masonry or a cut face.
 | spawn faces a wall | `transect -2,-86 → -2,-64` | worst step 0, 0 barrier, walked end to end |
 | stairs that end nowhere | `walk` from the spawn to each of the three pads | `(0,0)` worst step 0 · `(-41,-19)` worst step 0 · `(41,19)` worst step 0 — all three **walked end to end** |
 | flat, one theme, empty | `coverage` | **51.3% dead** — and this number is not about this board (below) |
-| stark contrast, no separation | `05-themes.txt` + `transect -52,-56 → -26,-56` | ochre 75.4%, crust 15.5%, works 9.1%; `crust|ochre` 864 cells of border and the transect across a pan reads `worst step 1` — every one of those cells is a one-block bench |
+| stark contrast, no separation | `05-themes.txt` + `transect -52,-56 → -26,-56` | ochre 73.9%, crust 13.8%, works 8.9%, sward 3.4%; `crust|ochre` 832 cells of border and the transect across a pan reads `worst step 1` — every one of those cells is a one-block bench |
 
 ## The coverage number is the read's blind spot, not the board's
 
@@ -74,6 +74,19 @@ The fix is the arrangement, not the ring: the bank moved wholly into z -32..-6, 
 east bank at z 6..32. The two now stand **diagonally opposite**, which gives each team a near pad and a
 far one, and both pads read `ground 0° from level`. `preflight` opened the gate on the broken version,
 `relief/read` reported `seams 0`, and no render showed it.
+
+## The author's pass: two conifers and four seats
+
+`spar-1` and `spar-2` carried the same bodies the author found on dustwath — **acacia log under birch
+leaves** (`162:12` under `18:14`) at thirteen and fifteen blocks, which is a pine silhouette on a
+salt-works. The feedback named dustwath only; the same check across all four boards found them here
+too. Both are dropped from the style registry rather than left unused, and their two placements are
+`thorn-1`/`thorn-2`, which are acacia under acacia at nine.
+
+All four thorns stood on scraped sand. The board now carries a fourth theme, **`sward`** — grass over
+two dirt over sandstone — laid as four seven-point rings, one under each. Savanna Plateau puts the grass
+at olive, and the cell carries the flat's own sand beside it. `column` at all four trunks now reads
+**`161:4 Acacia Leaves`**, and the dressing pass declines one boulder and nothing else.
 
 ## Limits
 

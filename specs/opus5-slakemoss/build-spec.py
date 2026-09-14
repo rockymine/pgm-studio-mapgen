@@ -337,10 +337,11 @@ PROPS = [
      "wings": [{"corners": [[14, 70], [22, 78]]}]},
 ]
 
-# the carr: alder and scrub round the fen's edge and out on the reedbed, and none of it
-# inside the ruin, where a hall's own floor is what a player reads
-for i, (x, z) in enumerate([(-40, 52), (-34, 44), (28, 44), (36, 52), (24, 56),
-                            (30, 64), (-32, 62), (6, 60), (20, 64), (-28, 74)]):
+# The carr: alder and scrub round the fen's edge and out on the reedbed, seated on soil.
+# The last two are deliberate -- a sapling in a broken floor is what a ruin does -- but a
+# tree standing on masonry is a tree dropped on a building unless it is the exception.
+for i, (x, z) in enumerate([(-42, 40), (-42, 54), (38, 40), (-10, 36), (10, 36),
+                            (24, 44), (34, 48), (40, 56), (2, 62), (-26, 62)]):
     PROPS.append(tree(f"carr-{i}", ["carr-tall", "carr-dense", "scrub-a", "scrub-b"][i % 4], x, z))
 
 # fallen masonry: stone, and only stone, whatever colour the ruin is painted

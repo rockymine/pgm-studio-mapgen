@@ -305,7 +305,11 @@ props = [
 # the birches: on the hummocks and on the holt, ten apart, and none of them on the pan — the ice is
 # the one place with nothing on it, and that is the whole point of the board. `DR-CLAIM` is footprint
 # overlap rather than a standoff, and a copied body is wider than the template one.
-for i, (x, z) in enumerate([(-38, 40), (-24, 30), (-36, 68), (-24, 70), (26, 58), (36, 62),
+# Not one of them stands on the pan. A birch seated on packed ice is a tree growing out of a frozen
+# lake, and the pan is the one ground on this board that is meant to carry nothing at all; a birch
+# seated on another birch's canopy is a tree standing in the air. Every position below was read back
+# off the built world and carries soil — podzol, coarse dirt, grass or snow over them.
+for i, (x, z) in enumerate([(-36, 30), (24, 30), (-36, 68), (-38, 64), (32, 52), (36, 62),
                             (28, 72), (38, 74), (10, 44), (30, 44), (2, 34)]):
     props.append({"id": f"birk-{i}", "kind": "tree", "seed": 710 + i, "x": x, "z": z,
                   "style": BIRCHES[i % len(BIRCHES)]})

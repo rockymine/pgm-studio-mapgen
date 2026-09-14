@@ -49,6 +49,16 @@ def cell(seed, size, palette, jitter=40, warp=6, rise=0):
     if rise: p["rise"] = rise
     return p
 
+def house_shell(name):
+    """A room style forked into a house prop. `beams: null` is legal in a room style and is
+    not a shape the house prop reads: the store answers 500 on it rather than a refusal, so
+    a building with no log ends states `block: -1`."""
+    st = style(name)
+    if not isinstance(st.get("beams"), dict):
+        st["beams"] = {"block": -1, "data": 0, "reach": 1, "any": True}
+    return st
+
+
 def style(name, footing=None):
     """A shipped preset, forked.  Footing is null by default and that is the answer:
     over a plate of one course it is a rim round a building with no foundation."""
@@ -127,8 +137,8 @@ PLAN = {
         "iron":   [{"id": "iron-1", "piece": "staith", "at": [18.5, 2.5]}],
         "wools": [],
         "destroyables": [{"id": "mon-1", "piece": "", "at": [-12, 52],
-                          "style": "pillar-3", "float": 4,
-                          "name": "Peat Store", "materials": "obsidian"}],
+                          "style": "cube-3", "float": 4,
+                          "name": "Peat Store", "materials": "ender stone"}],
         "cores": [],
     },
     "walls": [], "boxes": [],
@@ -171,6 +181,7 @@ ADD_SHAPES = [
     # takes the footprint out of the solve and the two tiers meet at one.
     {"id": "bench", "type": "polygon", "operation": "add", "floor": 0,
      "base_height": 19, "relief_scope": "exclude", "skirt": 0, "group": "team",
+     "theme": "works", "keepClear": True,
      "vertices": [[-26, 46], [-16, 43], [-4, 45], [0, 53], [-2, 64],
                   [-12, 68], [-22, 66], [-27, 57]]},
     # the tramway ramp up the bench's south face: a flight, stated rather than
@@ -184,11 +195,6 @@ ADD_SHAPES = [
     {"id": "bench-scald", "type": "polygon", "operation": "add",
      "floor": 0, "base_height": 19, "theme": "cutting", "group": "team",
      "vertices": [[-22, 50], [-10, 48], [-6, 57], [-15, 63], [-23, 59]]},
-    # the stone stage at the head of the tramway, one course over the back moor
-    {"id": "works-pad", "type": "rectangle", "operation": "add",
-     "min_x": -28, "min_z": 78, "max_x": -17, "max_z": 94,
-     "floor": 0, "base_height": 15, "theme": "works", "relief_scope": "exclude",
-     "skirt": 0, "keepClear": True, "group": "team"},
 ]
 
 # ---------------------------------------------------------------- dressing
@@ -205,7 +211,11 @@ DRESSING = {
         # drowned spruce: the only trees a peat moss carries, and they stand in a stand
         "spruce-tall":  {"kind": "tree", "form": "template", "species": "spruce", "height": 15},
         "spruce-short": {"kind": "tree", "form": "template", "species": "spruce", "height": 10},
-        "peat-store":   {"kind": "house", "shell": style("talltimber-store")},
+        # the same shell the spawn hall is built from, so the two buildings at the head
+        # of the tramway are one family rather than two styles eleven blocks apart. A
+        # house prop reads `beams` and a null is not a shape it reads, so a building with
+        # none states `block: -1`.
+        "peat-store":   {"kind": "house", "shell": house_shell("sb-spawn")},
     },
     "props": [
         # the water fills the cutting the relief already dug, so the two agree:
@@ -222,7 +232,7 @@ DRESSING = {
         # tramway ends, and not in the family the ground under it is painted in
         {"id": "store", "kind": "house", "seed": 485, "layer": "ground",
          "style": "peat-store", "front": "posZ",
-         "wings": [{"corners": [[-27, 80], [-19, 88]]}]},
+         "wings": [{"corners": [[-30, 70], [-20, 82]]}]},
         # the holt on the east front: cover to within a few blocks of the moor
         tree("holt-1", "spruce-tall", 12, 20), tree("holt-2", "spruce-short", 19, 16),
         tree("holt-3", "spruce-tall", 8, 27), tree("holt-4", "spruce-short", 21, 33),

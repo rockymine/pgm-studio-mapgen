@@ -22,7 +22,7 @@ The three points are then three different problems: the sump is held from above,
 below.
 """
 
-import json, os, sys
+import json, math, os, sys
 
 SLUG = "opus5-ochrepans"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -107,6 +107,7 @@ CLAY_ORANGE = solid(159, 1)
 HARDCLAY = solid(172)
 COARSE = solid(3, 1)
 DIRT = solid(3)
+GRASS = solid(2)
 GRAVEL = solid(13)
 STONE = solid(1)
 COBBLE = solid(4)
@@ -180,6 +181,39 @@ def works_theme():
         "wallEnabled": True,
         "fill": solid(24, 2),
     }
+
+
+def sward_theme():
+    """A seat of soil for a tree, and the only green on the board. The Savanna Plateau tint puts grass at olive, so a patch of grass on
+    dry ground reads as scrub holding on rather than as a lawn; the cell carries the ground's own
+    top block as well, so the patch feathers out instead of ending on a line. A copied tree body
+    wants soil under it, and sand over sandstone is not soil."""
+    return {
+        "bedrock": {"relative": False, "value": 1},
+        "rimEdges": "void",
+        "wallOnTerrainFaces": False,
+        "rim": {"material": COARSE, "depth": 1, "enabled": True},
+        "surface": {"depth": 3, "enabled": True, "material": depth_stack(
+            (cell(61, 6, GRASS, SAND, COARSE, GRASS), 1), (DIRT, 2), (SANDSTONE, 1))},
+        "wall": {"kind": "wallRun", "runs": [
+            {"material": DIRT, "width": 2}, {"material": COARSE, "width": 1}]},
+        "wallEnabled": True,
+        "fill": {"kind": "voronoi", "seed": 23, "cellSize": 11, "rise": 5, "bands": [
+            {"material": SANDSTONE, "depth": 2}, {"material": SMOOTH, "depth": 1}]},
+    }
+
+
+def patch(name, cx, cz, radius, seed):
+    """One sward patch: a seven-point ring with the radius wobbled per point, so a seat of soil is
+    a shape the ground could have made rather than a disc somebody stamped."""
+    ring = []
+    for step in range(7):
+        angle = 2 * math.pi * step / 7
+        wobble = radius * (0.72 + 0.28 * ((seed * (step + 3) * 37) % 11) / 10.0)
+        ring.append([round(cx + wobble * math.cos(angle)),
+                     round(cz + wobble * math.sin(angle))])
+    return {"id": name, "type": "polygon", "operation": "add", "height_mode": "raise",
+            "base_height": 0, "skirt": 0, "vertices": ring, "theme": "sward"}
 
 
 # ── the works, as a grid ─────────────────────────────────────────────────────────────────────
@@ -316,6 +350,12 @@ def shapes():
 
     # The yard's own floor, flagged: the middle pad stands on it and it is the one ground on this
     # board that is entirely somebody's work.
+    # The sward: a seat of soil under each of the four thorns out on the works' edge, which
+    # otherwise stand on scraped sand.
+    for at, (px, pz, pr) in enumerate([(-51, -56, 6), (51, -56, 6),
+                                       (-51, -42, 6), (51, -42, 6)]):
+        out.append(patch(f"sward-{at}", px, pz, pr, 3 + at))
+
     out.append({"id": "yard-floor", "type": "polygon", "operation": "add",
                 "height_mode": "raise", "base_height": 0, "skirt": 0, "theme": "works",
                 "vertices": [[-20, -20], [0, -21], [20, -20], [21, 0],
@@ -408,7 +448,12 @@ def pan_house():
 
 
 def dressing():
-    trees = json.load(open(f"{HERE}/trees.json"))
+    # `spar-1` and `spar-2` are dropped rather than left unused: their bodies are acacia log
+    # under BIRCH leaves (162:12 under 18:14) at thirteen and fifteen blocks, which is a pine
+    # silhouette and not a dry-country tree. The showcase library names rows rather than species,
+    # so what a body is has to be read off its leaf id -- `thorn-1/2` are acacia under acacia.
+    trees = {name: body for name, body in json.load(open(f"{HERE}/trees.json")).items()
+             if not name.startswith("spar-")}
     styles = dict(trees)
     styles["shed"] = pan_house()
     # A boulder is stone: stone, cobblestone and andesite is the whole palette that reads as rock
@@ -448,7 +493,7 @@ def dressing():
     # Thorn at the works' edges only. A salt-works is scraped ground and carries nothing in the
     # middle of it, which is also what keeps the sightlines the walls break from growing back.
     plant = [("thorn-1", -51, -56), ("thorn-2", 51, -56),
-             ("spar-1", -51, -42), ("spar-2", 51, -42)]
+             ("thorn-2", -51, -42), ("thorn-1", 51, -42)]
     for at, (style, tx, tz) in enumerate(plant):
         props_out.append({"id": f"thorn-{at}", "kind": "tree", "seed": 700 + at,
                           "x": tx, "z": tz, "style": style})
@@ -468,7 +513,8 @@ def finish():
         # Savanna Plateau: a dry tint over ochre ground, and the one colour on this board a block
         # does not state for itself.
         "biome": {"kind": "solid", "id": 36},
-        "themes": {"ochre": ochre_theme(), "crust": crust_theme(), "works": works_theme()},
+        "themes": {"ochre": ochre_theme(), "crust": crust_theme(), "works": works_theme(),
+                   "sward": sward_theme()},
         "mapTheme": "ochre",
         # the board's outer edge, drawn as an edge rather than as the rectangle the plan compiled
         # to. The pans and the yard keep their drawn corners, because they are cut and not coastal.

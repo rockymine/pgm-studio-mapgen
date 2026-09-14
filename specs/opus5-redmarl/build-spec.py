@@ -30,7 +30,7 @@ the revetments are walls, and the gully's own theme change follows the channel's
 Nothing pale is laid flush on red ground.
 """
 
-import json, os, sys
+import json, math, os, sys
 
 SLUG = "opus5-redmarl"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -130,6 +130,7 @@ SAND = solid(12)
 SANDSTONE = solid(24)
 SMOOTH = solid(24, 2)
 CHIS = solid(24, 1)
+GRASS = solid(2)
 GRAVEL = solid(13)
 DIRT = solid(3)
 COARSE = solid(3, 1)
@@ -210,6 +211,39 @@ def works_theme():
         "wallEnabled": True,
         "fill": solid(24, 2),
     }
+
+
+def sward_theme():
+    """A seat of soil for a tree, and the only green on the board. The Mesa tint pulls grass brown, so a patch of grass on
+    dry ground reads as scrub holding on rather than as a lawn; the cell carries the ground's own
+    top block as well, so the patch feathers out instead of ending on a line. A copied tree body
+    wants soil under it, and hardened clay is not soil."""
+    return {
+        "bedrock": {"relative": False, "value": 1},
+        "rimEdges": "void",
+        "wallOnTerrainFaces": False,
+        "rim": {"material": COARSE, "depth": 1, "enabled": True},
+        "surface": {"depth": 3, "enabled": True, "material": depth_stack(
+            (cell(61, 6, GRASS, RED_SAND, COARSE, GRASS), 1), (DIRT, 2), (RED_STONE, 1))},
+        "wall": {"kind": "wallRun", "runs": [
+            {"material": DIRT, "width": 2}, {"material": COARSE, "width": 1}]},
+        "wallEnabled": True,
+        "fill": {"kind": "voronoi", "seed": 23, "cellSize": 11, "rise": 5, "bands": [
+            {"material": RED_STONE, "depth": 2}, {"material": RED_SMOOTH, "depth": 1}]},
+    }
+
+
+def patch(name, cx, cz, radius, seed):
+    """One sward patch: a seven-point ring with the radius wobbled per point, so a seat of soil is
+    a shape the ground could have made rather than a disc somebody stamped."""
+    ring = []
+    for step in range(7):
+        angle = 2 * math.pi * step / 7
+        wobble = radius * (0.72 + 0.28 * ((seed * (step + 3) * 37) % 11) / 10.0)
+        ring.append([round(cx + wobble * math.cos(angle)),
+                     round(cz + wobble * math.sin(angle))])
+    return {"id": name, "type": "polygon", "operation": "add", "height_mode": "raise",
+            "base_height": 0, "skirt": 0, "vertices": ring, "theme": "sward"}
 
 
 # ── the ground, as four things that meet ─────────────────────────────────────────────────────
@@ -336,6 +370,13 @@ def shapes():
         out.append({"id": name, "type": "polygon", "operation": "add",
                     "height_mode": "raise", "base_height": 0, "skirt": 0,
                     "vertices": ring, "theme": "wash"})
+
+    # The sward: a seat of soil under every tree that would otherwise stand on hardened clay or
+    # bare marl, and two patches on the bank where the dust has held. Each is drawn in the stated
+    # half, so its own image seats the mirrored tree.
+    for at, (px, pz, pr) in enumerate([(-8, -78, 6), (-42, -42, 6), (20, -20, 6),
+                                       (-10, -14, 6), (-34, -66, 7), (-30, -28, 6)]):
+        out.append(patch(f"sward-{at}", px, pz, pr, 3 + at))
     return out
 
 
@@ -511,9 +552,11 @@ def dressing():
 
     # Acacia on the bank and scrub where the dust is deepest. Every one is off a track and off a
     # yard, and none is on the gully floor, which is a bed and carries nothing tall.
+    # Every one drawn in the stated half, because a prop is mirrored like anything else and a
+    # seat of soil drawn at z > 0 is drawn in the half the relief never solves.
     plant = [("holt-1", -34, -66), ("holt-2", -8, -78),
              ("holt-1", -42, -42), ("holt-2", -30, -28),
-             ("scrub-1", 20, -20), ("scrub-1", -20, 16)]
+             ("scrub-1", 20, -20), ("scrub-1", -10, -14)]
     for at, (style, tx, tz) in enumerate(plant):
         props_out.append({"id": f"holt-{at}", "kind": "tree", "seed": 700 + at,
                           "x": tx, "z": tz, "style": style})
@@ -535,7 +578,8 @@ def finish():
         # Mesa: the driest tint in the game, which pulls the acacia canopy brown rather than the
         # olive a savanna board carries. It is the one colour here a block does not state itself.
         "biome": {"kind": "solid", "id": 37},
-        "themes": {"marl": marl_theme(), "wash": wash_theme(), "works": works_theme()},
+        "themes": {"marl": marl_theme(), "wash": wash_theme(), "works": works_theme(),
+                   "sward": sward_theme()},
         "mapTheme": "marl",
         # the board's outer edge, drawn as an edge rather than as the staircase of rectangles the
         # plan compiled to. The gully's own edge is the gully-pan mark's ring and is not bent.

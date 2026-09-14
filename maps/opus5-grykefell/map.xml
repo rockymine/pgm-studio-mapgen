@@ -20,7 +20,7 @@
             <item slot="1" material="bow" unbreakable="true">
                 <enchantment level="1">infinity</enchantment>
             </item>
-            <item slot="2" material="diamond pickaxe" unbreakable="true">
+            <item slot="2" material="iron pickaxe" unbreakable="true">
                 <enchantment level="1">efficiency</enchantment>
             </item>
             <item slot="3" material="iron axe" unbreakable="true">
@@ -61,8 +61,8 @@
         <mode id="mode-glass" after="20m" material="glass"/>
     </modes>
     <destroyables>
-        <destroyable id="the-cairn" name="The Cairn" owner="red-team" materials="obsidian" repairable="false" mode-changes="true" region="the-cairn-region"/>
-        <destroyable id="the-cairn-2" name="The Cairn" owner="blue-team" materials="obsidian" repairable="false" mode-changes="true" region="the-cairn-2-region"/>
+        <destroyable id="the-cairn" name="The Cairn" owner="red-team" materials="ender stone" repairable="false" mode-changes="true" region="the-cairn-region"/>
+        <destroyable id="the-cairn-2" name="The Cairn" owner="blue-team" materials="ender stone" repairable="false" mode-changes="true" region="the-cairn-2-region"/>
     </destroyables>
     <filters>
         <team id="only-blue">blue-team</team>
@@ -101,8 +101,8 @@
         <point id="observer-spawn">0,59,0</point>
         <rectangle id="blue-spawn" min="-15,-100" max="15,-85"/>
         <rectangle id="red-spawn" min="-15,85" max="15,100"/>
-        <cuboid id="the-cairn-region" min="20,31,54" max="21,33,55"/>
-        <cuboid id="the-cairn-2-region" min="-21,31,-55" max="-20,33,-54"/>
+        <cuboid id="the-cairn-region" min="19,31,53" max="22,34,56"/>
+        <cuboid id="the-cairn-2-region" min="-22,31,-56" max="-19,34,-53"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -144,7 +144,7 @@
     <itemkeep>
         <item>iron sword</item>
         <item>bow</item>
-        <item>diamond pickaxe</item>
+        <item>iron pickaxe</item>
         <item>iron axe</item>
         <item>water bucket</item>
         <item>golden apple</item>
@@ -159,14 +159,14 @@
         <item>leather chestplate</item>
         <item>chainmail leggings</item>
         <item>leather boots</item>
-        <item>obsidian</item>
+        <item>ender stone</item>
         <item>gold block</item>
         <item>glass</item>
     </itemremove>
     <toolrepair>
         <tool>iron sword</tool>
         <tool>bow</tool>
-        <tool>diamond pickaxe</tool>
+        <tool>iron pickaxe</tool>
         <tool>iron axe</tool>
         <tool>shears</tool>
         <tool>iron spade</tool>
@@ -180,5 +180,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>55</maxbuildheight>
+    <maxbuildheight>64</maxbuildheight>
 </map>

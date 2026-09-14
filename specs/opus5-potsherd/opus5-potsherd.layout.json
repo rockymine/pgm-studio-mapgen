@@ -1647,6 +1647,240 @@
         -42
        ]
       ]
+     },
+     {
+      "id": "sward-0",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+       [
+        49,
+        -78
+       ],
+       [
+        47,
+        -74
+       ],
+       [
+        43,
+        -73
+       ],
+       [
+        39,
+        -76
+       ],
+       [
+        39,
+        -80
+       ],
+       [
+        43,
+        -84
+       ],
+       [
+        48,
+        -83
+       ]
+      ],
+      "theme": "sward"
+     },
+     {
+      "id": "sward-1",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+       [
+        49,
+        -64
+       ],
+       [
+        48,
+        -59
+       ],
+       [
+        43,
+        -59
+       ],
+       [
+        39,
+        -62
+       ],
+       [
+        40,
+        -66
+       ],
+       [
+        43,
+        -69
+       ],
+       [
+        47,
+        -68
+       ]
+      ],
+      "theme": "sward"
+     },
+     {
+      "id": "sward-2",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+       [
+        -33,
+        -80
+       ],
+       [
+        -35,
+        -76
+       ],
+       [
+        -39,
+        -76
+       ],
+       [
+        -43,
+        -77
+       ],
+       [
+        -43,
+        -82
+       ],
+       [
+        -39,
+        -85
+       ],
+       [
+        -35,
+        -84
+       ]
+      ],
+      "theme": "sward"
+     },
+     {
+      "id": "sward-3",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+       [
+        29,
+        -16
+       ],
+       [
+        28,
+        -12
+       ],
+       [
+        23,
+        -10
+       ],
+       [
+        20,
+        -14
+       ],
+       [
+        20,
+        -18
+       ],
+       [
+        23,
+        -21
+       ],
+       [
+        27,
+        -20
+       ]
+      ],
+      "theme": "sward"
+     },
+     {
+      "id": "sward-4",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+       [
+        -3,
+        -18
+       ],
+       [
+        -5,
+        -14
+       ],
+       [
+        -9,
+        -12
+       ],
+       [
+        -12,
+        -16
+       ],
+       [
+        -13,
+        -21
+       ],
+       [
+        -9,
+        -23
+       ],
+       [
+        -4,
+        -23
+       ]
+      ],
+      "theme": "sward"
+     },
+     {
+      "id": "sward-5",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+       [
+        52,
+        -42
+       ],
+       [
+        49,
+        -38
+       ],
+       [
+        45,
+        -37
+       ],
+       [
+        41,
+        -40
+       ],
+       [
+        42,
+        -44
+       ],
+       [
+        45,
+        -47
+       ],
+       [
+        49,
+        -46
+       ]
+      ],
+      "theme": "sward"
      }
     ],
     "groups": [
@@ -1670,7 +1904,13 @@
        "bench-step",
        "rim-step-w",
        "rim-step-e",
-       "pit-floor"
+       "pit-floor",
+       "sward-0",
+       "sward-1",
+       "sward-2",
+       "sward-3",
+       "sward-4",
+       "sward-5"
       ]
      }
     ]
@@ -5571,6 +5811,131 @@
     "kind": "solid",
     "id": 45,
     "data": 0
+   }
+  },
+  "sward": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": false,
+   "rim": {
+    "material": {
+     "kind": "solid",
+     "id": 3,
+     "data": 1
+    },
+    "depth": 1,
+    "enabled": true
+   },
+   "surface": {
+    "depth": 3,
+    "enabled": true,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "material": {
+         "kind": "cell",
+         "seed": 61,
+         "cellSize": 6,
+         "jitter": 2,
+         "warp": 3,
+         "palette": [
+          {
+           "kind": "solid",
+           "id": 2,
+           "data": 0
+          },
+          {
+           "kind": "solid",
+           "id": 3,
+           "data": 1
+          },
+          {
+           "kind": "solid",
+           "id": 3,
+           "data": 1
+          },
+          {
+           "kind": "solid",
+           "id": 2,
+           "data": 0
+          }
+         ],
+         "rise": 0
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        },
+        "thickness": 2
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 172,
+         "data": 0
+        },
+        "thickness": 1
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      },
+      "width": 2
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      "width": 1
+     }
+    ]
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "voronoi",
+    "seed": 23,
+    "cellSize": 11,
+    "rise": 5,
+    "bands": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 172,
+       "data": 0
+      },
+      "depth": 2
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 159,
+       "data": 12
+      },
+      "depth": 1
+     }
+    ]
    }
   }
  },

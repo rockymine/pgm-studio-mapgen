@@ -70,9 +70,9 @@ slip's foot and cut it to 15, two below the gully floor, so the slip ended in a 
 | stairs that end nowhere | the two transects above | both walk |
 | flat, one theme, empty | `coverage` · `incline` | **0.0% dead** — two wool rooms, a spawn and two plinths a side put every cell on somebody's journey; angles 45.8 / 35.6 / 13.7 / 3.3 / 1.2 / 0.3 % |
 | straight frontline | the `gully-pan` ring, plus bent `apron-26`/`apron-23` | the height boundary wanders; the theme boundary follows the channel |
-| stark contrast, no separation | `05-themes.txt` + `transect -36,-96 → -28,-96` | marl 72.0%, works 23.4%, wash 4.6%; **every** works cell stands one course proud — the transect reads `-1` then `+1` at the yard edge |
+| stark contrast, no separation | `05-themes.txt` + `transect -36,-96 → -28,-96` | marl 64.4%, works 23.2%, sward 7.9%, wash 4.5%; **every** works cell stands one course proud — the transect reads `-1` then `+1` at the yard edge |
 
-`03-slopes.txt`: **11 236 walked, 258 scrambled, 202 barrier; 14 faces, largest 38** at x 1..4
+`03-slopes.txt`: **11 191 walked, 341 scrambled, 210 barrier; 16 faces, largest 38** at x 1..4
 z -32..-19 — the stair's east revetment, which is a wall on purpose.
 
 The palette answer to *a sharp change of material needs a change of ground under it*: the pale built
@@ -80,6 +80,21 @@ family appears only on the three yards (a one-block plinth), on the revetments (
 stair (a flight), and its surface was warmed with hardened clay so that where it does meet red ground
 the two are nearer in value than smooth sandstone alone would be. The `wash` theme lies only in the
 channel's own pans, so its edge is a break of slope.
+
+## The author's pass: a seat of soil under four trees
+
+Four of the six copied bodies stood on hardened clay or bare marl — `holt-1` (−8, −78), `holt-2`
+(−42, −42), `holt-4` (20, −20) and `holt-5`, which stood at z +16, in the half the relief never solves,
+so a patch drawn under it there would have painted nothing. It moved to (−10, −14).
+
+The board now carries a fourth theme, **`sward`**: grass over two dirt over red sandstone, laid as
+six seven-point rings with the radius wobbled per point. The cell carries red sand beside the grass so
+the patch feathers out rather than ending on a line, and Mesa pulls the grass brown, so this is scrub
+holding on rather than a lawn.
+
+`transect (-46,-42) → (-38,-42)` reads flat ground at 23 with `tree holt-2` standing on it, and the
+column beside the trunk reads **`y22 Grass Block · y21 Dirt · y20 Dirt`**. `05-themes.txt`:
+`marl | sward` 376 cells of border, and the dressing pass declines **nothing**.
 
 ## Limits
 

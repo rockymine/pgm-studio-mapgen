@@ -23,7 +23,7 @@ Four ways off the pit floor a team, and every one is authored rather than graded
 from the terrace, a step out to the brickfield, and a step off each rim.
 """
 
-import json, os, sys
+import json, math, os, sys
 
 SLUG = "opus5-potsherd"
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -122,6 +122,7 @@ BRICK_STONE = solid(98)
 SANDSTONE = solid(24)
 SMOOTH = solid(24, 2)
 CHIS = solid(24, 1)
+GRASS = solid(2)
 GRAVEL = solid(13)
 DIRT = solid(3)
 COARSE = solid(3, 1)
@@ -201,6 +202,39 @@ def works_theme():
         "wallEnabled": True,
         "fill": solid(45),
     }
+
+
+def sward_theme():
+    """A seat of soil for a tree, and the only green on the board. The Desert tint puts grass at straw, so a patch of grass on
+    dry ground reads as scrub holding on rather than as a lawn; the cell carries the ground's own
+    top block as well, so the patch feathers out instead of ending on a line. A copied tree body
+    wants soil under it, and stained clay is not soil."""
+    return {
+        "bedrock": {"relative": False, "value": 1},
+        "rimEdges": "void",
+        "wallOnTerrainFaces": False,
+        "rim": {"material": COARSE, "depth": 1, "enabled": True},
+        "surface": {"depth": 3, "enabled": True, "material": depth_stack(
+            (cell(61, 6, GRASS, COARSE, COARSE, GRASS), 1), (DIRT, 2), (HARDCLAY, 1))},
+        "wall": {"kind": "wallRun", "runs": [
+            {"material": DIRT, "width": 2}, {"material": COARSE, "width": 1}]},
+        "wallEnabled": True,
+        "fill": {"kind": "voronoi", "seed": 23, "cellSize": 11, "rise": 5, "bands": [
+            {"material": HARDCLAY, "depth": 2}, {"material": CLAY_BROWN, "depth": 1}]},
+    }
+
+
+def patch(name, cx, cz, radius, seed):
+    """One sward patch: a seven-point ring with the radius wobbled per point, so a seat of soil is
+    a shape the ground could have made rather than a disc somebody stamped."""
+    ring = []
+    for step in range(7):
+        angle = 2 * math.pi * step / 7
+        wobble = radius * (0.72 + 0.28 * ((seed * (step + 3) * 37) % 11) / 10.0)
+        ring.append([round(cx + wobble * math.cos(angle)),
+                     round(cz + wobble * math.sin(angle))])
+    return {"id": name, "type": "polygon", "operation": "add", "height_mode": "raise",
+            "base_height": 0, "skirt": 0, "vertices": ring, "theme": "sward"}
 
 
 # ── the ground, as four things that meet ─────────────────────────────────────────────────────
@@ -329,6 +363,13 @@ def shapes():
                 "height_mode": "raise", "base_height": 0, "skirt": 0, "theme": "pit",
                 "vertices": [[-33, -49], [-20, -45], [-4, -50], [12, -44], [27, -49], [33, -44],
                              [32, -36], [16, -32], [0, -37], [-16, -33], [-29, -37], [-34, -42]]})
+
+    # The sward: a seat of soil under every tree the author found standing on hardened or stained
+    # clay. A brush states a height_mode or it is never a candidate for the paint at all, and a
+    # raise of zero sits flush on ground a mark already pinned.
+    for at, (px, pz, pr) in enumerate([(44, -78, 6), (44, -64, 6), (-38, -80, 6),
+                                       (24, -16, 6), (-8, -18, 6), (46, -42, 6)]):
+        out.append(patch(f"sward-{at}", px, pz, pr, 3 + at))
     return out
 
 
@@ -495,7 +536,8 @@ def finish():
         # Desert: no green tint at all, which is what a brickfield wants. It is the one colour
         # here a block does not state for itself.
         "biome": {"kind": "solid", "id": 2},
-        "themes": {"clay": clay_theme(), "pit": pit_theme(), "works": works_theme()},
+        "themes": {"clay": clay_theme(), "pit": pit_theme(), "works": works_theme(),
+                   "sward": sward_theme()},
         "mapTheme": "clay",
         # the board's outer edge, drawn as an edge rather than as the staircase of rectangles the
         # plan compiled to. The pit's own lip is the pit-pan mark's ring and is not bent.
