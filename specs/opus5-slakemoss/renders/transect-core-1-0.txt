@@ -1,0 +1,61 @@
+## core-1-0 (core) along x
+TRANSECT 25 stations from (-26, 56) to (-2, 56), every 1
+  station        ground  surface  water  top  standing            step
+  (  -26,    56)      21       21           21                      
+  (  -25,    56)      21       21           21                      
+  (  -24,    56)      17       18           18  storey              -3
+  (  -23,    56)      17       18           18  storey              
+  (  -22,    56)      17       18           18  storey              
+  (  -21,    56)      17       18           18  storey              
+  (  -20,    56)      17       18           18  storey              
+  (  -19,    56)      17       18           18  storey              
+  (  -18,    56)      17       17           17                      -1
+  (  -17,    56)      17       17           17                      
+  (  -16,    56)      17       17           28  core core-1         
+  (  -15,    56)      17       17     27    57  core core-1         
+  (  -14,    56)      17       17     27    58  core core-1         
+  (  -13,    56)      17       17     27    57  core core-1         
+  (  -12,    56)      17       17           28  core core-1         
+  (  -11,    56)      17       17           17                      
+  (  -10,    56)      17       17           17                      
+  (   -9,    56)      17       17           17                      
+  (   -8,    56)      17       25           25  storey              BARRIER +8
+  (   -7,    56)      17       25           25  storey              
+  (   -6,    56)      17       17           17                      DROP -8
+  (   -5,    56)      17       17           17                      
+  (   -4,    56)      15       15           15                      -2
+  (   -3,    56)      15       15           15                      
+  (   -2,    56)      15       15           15                      
+rises 1, falls 4, worst step 8: 1 barrier, 0 scramble, 1 drop — BARRIER +8 at (-8, 56); DROP -8 at (-6, 56) | walked end to end
+beside: tree carr-6 at (-28, 58), core core-1 at (-16, 54)
+
+## core-1-0 (core) along z
+TRANSECT 25 stations from (-14, 44) to (-14, 68), every 1
+  station        ground  surface  water  top  standing            step
+  (  -14,    44)      17       17           17                      
+  (  -14,    45)      17       17           17                      
+  (  -14,    46)      16       16           16                      -1
+  (  -14,    47)      17       17           17                      +1
+  (  -14,    48)      17       18           18  storey              +1
+  (  -14,    49)      17       18           18  storey              
+  (  -14,    50)      17       18           18  storey              
+  (  -14,    51)      17       18           18  storey              
+  (  -14,    52)      17       17           17                      -1
+  (  -14,    53)      17       17           17                      
+  (  -14,    54)      17       17           28  core core-1         
+  (  -14,    55)      17       17     27    57  core core-1         
+  (  -14,    56)      17       17     27    58  core core-1         
+  (  -14,    57)      17       17     27    57  core core-1         
+  (  -14,    58)      17       17           28  core core-1         
+  (  -14,    59)      17       18           18  storey              +1
+  (  -14,    60)      17       18           18  storey              
+  (  -14,    61)      17       18           18  storey              
+  (  -14,    62)      16       18           18  storey              
+  (  -14,    63)      16       18           18  storey              
+  (  -14,    64)      16       18           18  storey              
+  (  -14,    65)      16       18           18  storey              
+  (  -14,    66)      16       18           18  storey              
+  (  -14,    67)      16       16           16                      -2
+  (  -14,    68)      16       16           16                      
+rises 3, falls 3, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: core core-1 at (-16, 54)

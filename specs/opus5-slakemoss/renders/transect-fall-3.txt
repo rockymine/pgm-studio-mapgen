@@ -1,0 +1,61 @@
+## fall-3 (boulder) along x
+TRANSECT 25 stations from (-42, 70) to (-18, 70), every 1
+  station        ground  surface  water  top  standing            step
+  (  -42,    70)                                                    void
+  (  -41,    70)                                                    void
+  (  -40,    70)                                                    void
+  (  -39,    70)                                                    void
+  (  -38,    70)                                                    void
+  (  -37,    70)                                                    void
+  (  -36,    70)                                                    void
+  (  -35,    70)      15       15           15                      
+  (  -34,    70)      15       15           15                      
+  (  -33,    70)      15       15           19  boulder fall-3      
+  (  -32,    70)      15       15           20  boulder fall-3      
+  (  -31,    70)      15       15           21  boulder fall-3      
+  (  -30,    70)      15       15           21  boulder fall-3      
+  (  -29,    70)      15       15           22  tree carr-9         
+  (  -28,    70)      15       15           23  tree carr-9         
+  (  -27,    70)      15       15           20  tree carr-9         
+  (  -26,    70)      15       15           17  boulder fall-3      
+  (  -25,    70)      15       15           15                      
+  (  -24,    70)      15       15           15                      
+  (  -23,    70)      15       15           15                      
+  (  -22,    70)      15       15           15                      
+  (  -21,    70)      15       15           15                      
+  (  -20,    70)      15       15           15                      
+  (  -19,    70)      15       15           15                      
+  (  -18,    70)      15       15           15                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree carr-9 at (-34, 72), boulder fall-3 at (-33, 68), tree carr-6 at (-32, 68)
+
+## fall-3 (boulder) along z
+TRANSECT 25 stations from (-30, 58) to (-30, 82), every 1
+  station        ground  surface  water  top  standing            step
+  (  -30,    58)      21       21           26  tree carr-6         
+  (  -30,    59)      20       20           25  tree carr-6         -1
+  (  -30,    60)      20       20           26  tree carr-6         
+  (  -30,    61)      20       20           20                      
+  (  -30,    62)      19       19           27  tree carr-6         -1
+  (  -30,    63)      18       18           27  tree carr-6         -1
+  (  -30,    64)      18       18           28  tree carr-6         
+  (  -30,    65)      17       17           26  tree carr-6         -1
+  (  -30,    66)      17       17           28  tree carr-6         
+  (  -30,    67)      16       16           24  tree carr-6         -1
+  (  -30,    68)      16       16           26  tree carr-6         
+  (  -30,    69)      15       15           21  boulder fall-3      -1
+  (  -30,    70)      15       15           21  boulder fall-3      
+  (  -30,    71)      15       15           26  tree carr-9         
+  (  -30,    72)      15       15           28  tree carr-9         
+  (  -30,    73)      15       15           27  tree carr-9         
+  (  -30,    74)      15       15           28  tree carr-9         
+  (  -30,    75)      15       15           29  tree carr-9         
+  (  -30,    76)      15       15           29  tree carr-9         
+  (  -30,    77)      15       15           28  tree carr-9         
+  (  -30,    78)      15       15           28  tree carr-9         
+  (  -30,    79)      15       15           26  tree carr-9         
+  (  -30,    80)                            26  tree carr-9         void
+  (  -30,    81)                            25  tree carr-9         void
+  (  -30,    82)                            23  tree carr-9         void
+rises 0, falls 6, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree carr-6 at (-32, 56), boulder fall-3 at (-29, 68), tree carr-9 at (-29, 70)

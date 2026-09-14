@@ -1,0 +1,56 @@
+## fall-0 (boulder) along x
+TRANSECT 20 stations from (-45, 44) to (-26, 44), every 1
+  station        ground  surface  water  top  standing            step
+  (  -45,    44)      21       21           21                      
+  (  -44,    44)      21       21           21                      
+  (  -43,    44)      22       22           22                      +1
+  (  -42,    44)      22       22           25  boulder fall-0      
+  (  -41,    44)      22       22           27  boulder fall-0      
+  (  -40,    44)      22       22           27  boulder fall-0      
+  (  -39,    44)      22       22           28  boulder fall-0      
+  (  -38,    44)      23       23           28  boulder fall-0      +1
+  (  -37,    44)      23       23           28  boulder fall-0      
+  (  -36,    44)      24       24           27  boulder fall-0      +1
+  (  -35,    44)      24       24           27  boulder fall-0      
+  (  -34,    44)      24       24           25  boulder fall-0      
+  (  -33,    44)      24       24           24                      
+  (  -32,    44)      24       24           24                      
+  (  -31,    44)      24       24           24                      
+  (  -30,    44)      23       23           23                      -1
+  (  -29,    44)      23       23           23                      
+  (  -28,    44)      22       22           22                      -1
+  (  -27,    44)      22       22           22                      
+  (  -26,    44)      22       22           22                      
+rises 3, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder fall-0 at (-42, 44), tree carr-0 at (-41, 46)
+
+## fall-0 (boulder) along z
+TRANSECT 25 stations from (-38, 32) to (-38, 56), every 1
+  station        ground  surface  water  top  standing            step
+  (  -38,    32)      13       13           13                      
+  (  -38,    33)      14       14           14                      +1
+  (  -38,    34)      14       14           14                      
+  (  -38,    35)      21       21           21                      BARRIER +7
+  (  -38,    36)      22       22           22                      +1
+  (  -38,    37)      22       22           22                      
+  (  -38,    38)      22       22           22                      
+  (  -38,    39)      22       22           22                      
+  (  -38,    40)      22       22           22                      
+  (  -38,    41)      22       22           26  boulder fall-0      
+  (  -38,    42)      23       23           27  boulder fall-0      +1
+  (  -38,    43)      23       23           28  boulder fall-0      
+  (  -38,    44)      23       23           28  boulder fall-0      
+  (  -38,    45)      23       23           28  boulder fall-0      
+  (  -38,    46)      23       23           27  boulder fall-0      
+  (  -38,    47)      23       23           26  boulder fall-0      
+  (  -38,    48)      23       23           30  tree carr-0         
+  (  -38,    49)      23       23           31  tree carr-0         
+  (  -38,    50)      23       23           32  tree carr-0         
+  (  -38,    51)      23       23           36  tree carr-0         
+  (  -38,    52)      22       22           37  tree carr-0         -1
+  (  -38,    53)      22       22           39  tree carr-0         
+  (  -38,    54)      22       22           38  tree carr-0         
+  (  -38,    55)      21       21           33  tree carr-0         -1
+  (  -38,    56)      21       21           35  tree carr-0         
+rises 4, falls 2, worst step 7: 1 barrier, 0 scramble, 0 drop — BARRIER +7 at (-38, 35) | walked end to end
+beside: boulder fall-0 at (-40, 41), tree carr-0 at (-40, 47)

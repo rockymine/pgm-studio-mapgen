@@ -1,0 +1,61 @@
+## fall-1 (boulder) along x
+TRANSECT 25 stations from (-16, 38) to (8, 38), every 1
+  station        ground  surface  water  top  standing            step
+  (  -16,    38)      17       17           17                      
+  (  -15,    38)      17       17           17                      
+  (  -14,    38)      16       16           16                      -1
+  (  -13,    38)      16       16           16                      
+  (  -12,    38)      15       15           15                      -1
+  (  -11,    38)      15       15           15                      
+  (  -10,    38)      15       15           15                      
+  (   -9,    38)      15       15           15                      
+  (   -8,    38)      15       15           17  boulder fall-1      
+  (   -7,    38)      15       15           18  boulder fall-1      
+  (   -6,    38)      15       15           19  boulder fall-1      
+  (   -5,    38)      14       14           20  boulder fall-1      -1
+  (   -4,    38)      14       14           20  boulder fall-1      
+  (   -3,    38)      14       14           20  boulder fall-1      
+  (   -2,    38)      14       14           19  boulder fall-1      
+  (   -1,    38)      14       14           18  boulder fall-1      
+  (    0,    38)      14       14           17  boulder fall-1      
+  (    1,    38)      14       14           14                      
+  (    2,    38)      14       14           14                      
+  (    3,    38)      14       14           14                      
+  (    4,    38)      14       14           14                      
+  (    5,    38)      14       14           14                      
+  (    6,    38)      15       15           15                      +1
+  (    7,    38)      15       15           15                      
+  (    8,    38)      15       15           15                      
+rises 1, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder fall-1 at (-8, 38)
+
+## fall-1 (boulder) along z
+TRANSECT 25 stations from (-4, 26) to (-4, 50), every 1
+  station        ground  surface  water  top  standing            step
+  (   -4,    26)      13       13     14    14  water slake#1       
+  (   -4,    27)      13       13     14    14  water slake#1       
+  (   -4,    28)      13       13           13  water slake#1       
+  (   -4,    29)      13       13           13                      
+  (   -4,    30)      13       13           13                      
+  (   -4,    31)      12       12           12                      -1
+  (   -4,    32)      12       12           12                      
+  (   -4,    33)      12       12           12                      
+  (   -4,    34)      12       12           12                      
+  (   -4,    35)      14       14           19  boulder fall-1      scramble +2
+  (   -4,    36)      14       14           19  boulder fall-1      
+  (   -4,    37)      14       14           20  boulder fall-1      
+  (   -4,    38)      14       14           20  boulder fall-1      
+  (   -4,    39)      15       15           20  boulder fall-1      +1
+  (   -4,    40)      15       15           19  boulder fall-1      
+  (   -4,    41)      15       15           18  boulder fall-1      
+  (   -4,    42)      15       15           15                      
+  (   -4,    43)      15       15           15                      
+  (   -4,    44)      15       15           15                      
+  (   -4,    45)      15       15           15                      
+  (   -4,    46)      15       15           15                      
+  (   -4,    47)      15       15           15                      
+  (   -4,    48)      15       15           15                      
+  (   -4,    49)      15       15           15                      
+  (   -4,    50)      15       15           15                      
+rises 2, falls 1, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-4, 35) | walked end to end
+beside: water slake#1 at (-6, 24), water slake at (-6, 27), boulder fall-1 at (-6, 35)
