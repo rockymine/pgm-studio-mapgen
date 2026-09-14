@@ -1,55 +1,55 @@
 ## stone-0 (boulder) along x
-TRANSECT 19 stations from (-50, 20) to (-32, 20), every 1
+TRANSECT 19 stations from (-50, 32) to (-32, 32), every 1
   station        ground  surface  water  top  standing            step
-  (  -50,    20)      16       16           16                      
-  (  -49,    20)      16       16           16                      
-  (  -48,    20)      16       16           19  boulder stone-0     
-  (  -47,    20)      16       16           21  boulder stone-0     
-  (  -46,    20)      16       16           21  boulder stone-0     
-  (  -45,    20)      16       16           22  boulder stone-0     
-  (  -44,    20)      17       17           22  boulder stone-0     +1
-  (  -43,    20)      17       17           22  boulder stone-0     
-  (  -42,    20)      17       17           21  boulder stone-0     
-  (  -41,    20)      17       17           21  boulder stone-0     
-  (  -40,    20)      17       17           19  boulder stone-0     
-  (  -39,    20)      16       16           16                      -1
-  (  -38,    20)      16       16           22  tree holt-5         
-  (  -37,    20)      16       16           22  tree holt-5         
-  (  -36,    20)      15       15           23  tree holt-5         -1
-  (  -35,    20)      15       15           20  tree holt-0         
-  (  -34,    20)      15       15           23  tree holt-5         
-  (  -33,    20)      15       15           22  tree holt-5         
-  (  -32,    20)      14       14           21  tree holt-0         -1
-rises 1, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder stone-0 at (-48, 20), tree holt-5 at (-38, 19), tree holt-0 at (-35, 20), tree holt-2 at (-30, 18)
+  (  -50,    32)      21       21           21                      
+  (  -49,    32)      21       21           21                      
+  (  -48,    32)      21       21           24  boulder stone-0     
+  (  -47,    32)      22       22           26  boulder stone-0     +1
+  (  -46,    32)      22       22           26  boulder stone-0     
+  (  -45,    32)      22       22           27  boulder stone-0     
+  (  -44,    32)      22       22           27  boulder stone-0     
+  (  -43,    32)      21       21           27  boulder stone-0     -1
+  (  -42,    32)      21       21           26  boulder stone-0     
+  (  -41,    32)      21       21           26  boulder stone-0     
+  (  -40,    32)      20       20           24  boulder stone-0     -1
+  (  -39,    32)      20       20           20                      
+  (  -38,    32)      20       20           20                      
+  (  -37,    32)      19       19           25  tree holt-7         -1
+  (  -36,    32)      19       19           26  tree holt-7         
+  (  -35,    32)      18       18           27  tree holt-7         -1
+  (  -34,    32)      17       17           28  tree holt-7         -1
+  (  -33,    32)      16       16           28  tree holt-7         -1
+  (  -32,    32)      16       16           26  tree holt-7         
+rises 1, falls 6, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder stone-0 at (-48, 32), tree holt-7 at (-40, 34)
 
 ## stone-0 (boulder) along z
-TRANSECT 25 stations from (-44, 8) to (-44, 32), every 1
+TRANSECT 25 stations from (-44, 20) to (-44, 44), every 1
   station        ground  surface  water  top  standing            step
-  (  -44,     8)                                                    void
-  (  -44,     9)                                                    void
-  (  -44,    10)      14       14           14                      
-  (  -44,    11)      14       14           14                      
-  (  -44,    12)      14       14           14                      
-  (  -44,    13)      14       14           14                      
-  (  -44,    14)      14       14           14                      
-  (  -44,    15)      14       14           14                      
-  (  -44,    16)      15       15           15                      +1
-  (  -44,    17)      15       15           20  boulder stone-0     
-  (  -44,    18)      16       16           21  boulder stone-0     +1
-  (  -44,    19)      17       17           22  boulder stone-0     +1
-  (  -44,    20)      17       17           22  boulder stone-0     
-  (  -44,    21)      18       18           22  boulder stone-0     +1
-  (  -44,    22)      18       18           21  boulder stone-0     
-  (  -44,    23)      19       19           20  boulder stone-0     +1
-  (  -44,    24)      20       20           20                      +1
-  (  -44,    25)      20       20           26  tree holt-6         
-  (  -44,    26)      21       21           27  tree holt-6         +1
-  (  -44,    27)      21       21           25  tree holt-6         
-  (  -44,    28)      21       21           28  tree holt-6         
-  (  -44,    29)      21       21           21                      
-  (  -44,    30)      22       22           22                      +1
-  (  -44,    31)      22       22           22                      
-  (  -44,    32)      22       22           27  tree holt-9         
-rises 8, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder stone-0 at (-46, 17), tree holt-6 at (-43, 23), tree holt-9 at (-43, 30)
+  (  -44,    20)                                                    void
+  (  -44,    21)                             2                      void
+  (  -44,    22)                                                    void
+  (  -44,    23)                                                    void
+  (  -44,    24)                                                    void
+  (  -44,    25)                                                    void
+  (  -44,    26)                                                    void
+  (  -44,    27)                                                    void
+  (  -44,    28)                                                    void
+  (  -44,    29)                            25  boulder stone-0     void
+  (  -44,    30)      22       22           26  boulder stone-0     
+  (  -44,    31)      22       22           27  boulder stone-0     
+  (  -44,    32)      22       22           27  boulder stone-0     
+  (  -44,    33)      22       22           27  boulder stone-0     
+  (  -44,    34)      22       22           26  boulder stone-0     
+  (  -44,    35)      23       23           25  boulder stone-0     +1
+  (  -44,    36)      23       23           23                      
+  (  -44,    37)      23       23           23                      
+  (  -44,    38)      23       23           23                      
+  (  -44,    39)      23       23           23                      
+  (  -44,    40)      23       23           23                      
+  (  -44,    41)      23       23           23                      
+  (  -44,    42)      23       23           23                      
+  (  -44,    43)      23       23           23                      
+  (  -44,    44)      23       23           23                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder stone-0 at (-46, 29), tree holt-8 at (-42, 43)

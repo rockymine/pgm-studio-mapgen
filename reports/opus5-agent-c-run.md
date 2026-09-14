@@ -19,8 +19,8 @@ the hill is holding a place with no back to it.*
 **opus5-mirkholt — CTW.** *A wood dark enough that the only things you can see across are the two
 clearings the wools stand in, cut by one hollow way that is roofed and blind both ways — so a wool run
 is a choice between the lane you cannot see out of and the brow above it, where you are the one thing
-moving that anybody can see; and each wool stands 53 blocks down a bare spur of its own, so reaching
-one is a commitment rather than a step sideways out of the door.*
+moving that anybody can see; and each wool stands sixty-odd blocks down a bare spur of its own, so
+reaching one is a commitment rather than a step sideways out of the door.*
 
 **opus5-slakemoss — DTC.** *A hall the moss and the water took back: each core stands on a dry plinth
 in a ruined chapter house, and the middle is a roofless nave already under water — so the short way to
@@ -39,7 +39,7 @@ stained clay, dark oak, podzol and mossy cobble under swamp, deep-ocean and roof
 |---|---|---|---|---|---|---|
 | `opus5-peatgarth` | DTM | 80 × 200 | 91.4 / 5.7 / 2.9 | 11 790 · 74 · 296, 4 faces | 30 placed, **0 declined** | 25.3 % |
 | `opus5-basaltmere` | KotH | 90 × 190 | 64.2 / 27.0 / 5.8 / 3.0 | 12 781 · 234 · 720, 8 faces | 38 placed, 1 declined | 49.3 %* |
-| `opus5-mirkholt` | CTW | 100 × 200 | 48.2 / 44.4 / 7.4 | 9 912 · 98 · 90, 4 faces | 46 placed, 1 declined | 0.1 % |
+| `opus5-mirkholt` | CTW | 100 × 220 | 48.7 / 27.1 / 24.2 | 11 372 · 88 · 90, 4 faces | 36 placed, **0 declined** | 0.1 % |
 | `opus5-slakemoss` | DTC | 90 × 200 | 40.4 / 31.5 / 28.1 | 14 292 · 182 · 326, 4 faces | 40 placed, 1 declined | 27.8 % |
 
 \* not a coverage figure that means anything: `GET /coverage` cannot see a control point, so on a KotH
@@ -51,7 +51,7 @@ Relief reads, all four with symmetry error 0 and no silent marks:
 |---|---|---|---|---|---|
 | peatgarth | 0.431 | 0.167 | 0 / 0 | rolling | none |
 | basaltmere | 0.649 | 0.477 | 4 / 1 | rolling | none |
-| mirkholt | 0.457 | 0.343 | 0 / 0 | rolling | none |
+| mirkholt | 0.526 | 0.357 | 0 / 0 | rolling | none |
 | slakemoss | 0.713 | 0.486 | 1 / 1 | plain | none |
 
 Incline distributions, which is where each board's slope bands were cut:
@@ -60,7 +60,7 @@ Incline distributions, which is where each board's slope bands were cut:
 |---|---|---|---|---|---|---|
 | peatgarth | 41.3 | 30.0 | 17.3 | 6.7 | 4.7 | 22 / 34 |
 | basaltmere | 47.2 | 22.9 | 16.5 | 5.3 | 8.1 | 18 / 32 |
-| mirkholt | 46.7 | 25.9 | 17.8 | 7.9 | 1.7 | 16 / 30 |
+| mirkholt | 53.4 | 26.2 | 13.2 | 5.7 | 1.6 | 16 / 30 |
 | slakemoss | 62.8 | 21.6 | 9.0 | 2.5 | 4.0 | 16 / 30 |
 
 No distribution has a spike in it, which is the read that says the board is reporting its own shape
@@ -77,7 +77,7 @@ Per-board detail is in `review/<slug>.md`; the summary:
   visible from the nave, the west bank and the head of the stair. Mirkholt: both wool blocks inside
   their own rooms with no terrain over them.
 - **Spawn faces away.** Yaw against the bearing to the target objective: peatgarth 4°, basaltmere 0°,
-  slakemoss 5°, mirkholt 12° and 10° (its two target rooms, both well inside the 90° the fault wants).
+  slakemoss 5°, mirkholt 11° and 9° (its two target rooms, both well inside the 90° the fault wants).
 - **Spawn faces a wall.** Door transects: every board reads worst step 1, 0 barrier, 0 scramble over
   the first fifteen blocks out of the door.
 - **Stairs that end nowhere.** Walked per flight rather than assumed. Basaltmere's east spit:
@@ -259,6 +259,37 @@ climb at the same rate has no face, and a flight is for a face — its keep-out 
 its reach came down 12 → 9, so the plantable mass is one strip rather than two slivers. The wood went
 from **8 trunks a side to 17**, barrier from **300 to 90** in 4 faces instead of 8, `largestField` from
 0.166 to **0.343**, and the board now declines **one** prop out of 46.
+
+## Third round: mirkholt's fronts made to face, and the spawn pulled back
+
+**The two fronts were staggered by 35 blocks** — red's land met the strait over x −50..15 and blue's
+over x −15..50, sharing 30 blocks of a 65-block width, so most of each team's front looked across at
+void. Under `rot_180` a front spanning `[a, b]` is faced by one spanning `[−b, −a]`; they are equal
+only when `a = −b`, so the edge has to be symmetric about x = 0 and there is no way round it.
+
+**The fix was to make the front band alone symmetric and leave the rest of the unit offset.** A new
+`toe` piece runs x −35..35 at z 10..30 as one wet flat across the whole front; the wood, the brow, the
+garth, the lanes, the cages and the spawn stay where the diagonal put them. `GET /rules?rule=CT12` now
+reports both teams' frontline runs as **`x1: −35 … x2: 35`, 70 blocks**, facing over 69 of them.
+
+**`fill-ratio` was re-read rather than assumed, as instructed, and it holds: the evaluate scores 0.**
+`AUTHORING-BRIEF.md`'s warning is about a *whole unit* drawn symmetric, and only the front is symmetric
+here. It was not free — land added at the front came off the back, and the wood went from 45 blocks of
+depth to 25. The first cut of the new plan read 0.55 and outside the band; trimming the toe, brow and
+garth brought it back inside, and the longer board (z ±110 rather than ±100) then left headroom the
+wood took 5 blocks of width from.
+
+**The spawn is pulled back 15 blocks**, to z 95..110, standing on its own piece behind a new `apron` at
+z 80..95. It shares an edge with the apron and with nothing else — two pieces from either lane root,
+no edge with a wool room, and joined along an edge rather than at a corner, which `PC-C` reads as no
+connection at all. The walks are now **63 and 68 blocks, 0 placed, 0 drops**.
+
+**What it cost, stated as a number.** The wood stands **11 trunks a side** where it stood 17: the
+symmetric front takes 20 blocks of depth across the full width, and the width bought back with the
+headroom lies inside the hollow way's own exclusion. The fronts facing is worth more than the trees,
+but it is a real trade. Everything else improved or held — 36 props placed and **nothing declined**,
+barrier still 90 in 4 faces, `level` up to 0.526, `largestField` 0.357, no seams, no silent marks,
+symmetry error 0, both lanes still bare on six `column` reads.
 
 ## Where things are
 

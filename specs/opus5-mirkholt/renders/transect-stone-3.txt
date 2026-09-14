@@ -27,14 +27,14 @@ TRANSECT 25 stations from (-42, 58) to (-18, 58), every 1
   (  -19,    58)      11       11           11  stroke lane         
   (  -18,    58)      15       15           15                      BARRIER +4
 rises 1, falls 7, worst step 4: 1 barrier, 0 scramble, 0 drop — BARRIER +4 at (-18, 58) | walked end to end
-beside: boulder stone-2 at (-44, 57), tree holt-15 at (-34, 56), boulder stone-3 at (-33, 56), stroke lane at (-22, 58)
+beside: boulder stone-2 at (-44, 57), boulder stone-3 at (-33, 56), stroke lane at (-22, 58)
 
 ## stone-3 (boulder) along z
 TRANSECT 25 stations from (-30, 46) to (-30, 70), every 1
   station        ground  surface  water  top  standing            step
-  (  -30,    46)      16       16           21  tree holt-14        
-  (  -30,    47)      16       16           21  tree holt-14        
-  (  -30,    48)      16       16           22  tree holt-14        
+  (  -30,    46)      16       16           16                      
+  (  -30,    47)      16       16           16                      
+  (  -30,    48)      16       16           16                      
   (  -30,    49)      16       16           16                      
   (  -30,    50)      16       16           16                      
   (  -30,    51)      16       16           16                      
@@ -58,4 +58,4 @@ TRANSECT 25 stations from (-30, 46) to (-30, 70), every 1
   (  -30,    69)      16       16           16                      
   (  -30,    70)      17       17           17                      +1
 rises 3, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree holt-14 at (-32, 44), tree holt-13 at (-32, 45), tree holt-15 at (-32, 48), boulder stone-3 at (-30, 54), house hut at (-29, 70)
+beside: tree holt-8 at (-32, 44), boulder stone-3 at (-30, 54), house hut at (-29, 70)

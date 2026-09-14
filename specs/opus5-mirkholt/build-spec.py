@@ -154,13 +154,20 @@ PLAN = {
     "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 24,
                 "surface": HOLT, "observerY": 66},
     "pieces": [
-        {"id": "holt",  "role": "piece", "rect": [-10,  2,  8,  9], "surface": HOLT},
-        # the toe: the ground the crossing is made from, and the reason the two sides face
-        # each other across 31 blocks of strait rather than meeting at one corner
-        {"id": "toe",   "role": "piece", "rect": [ -2,  2,  5,  3], "surface": SIKE},
+        # The frontline band, and the one piece on this board that is NOT offset. Under
+        # rot_180 a front spanning [a, b] is faced by one spanning [-b, -a], so the two are
+        # opposite each other only where the edge is symmetric about x = 0: this piece runs
+        # x -35..35 and its image x -36..34, which face over 69 of their 70 blocks. The rest
+        # of the unit stays on the diagonal, which is what keeps the void in the board.
+        {"id": "toe",   "role": "piece", "rect": [ -7,  2, 14,  4], "surface": SIKE},
+        {"id": "holt",  "role": "piece", "rect": [-10,  6,  9,  5], "surface": HOLT},
         {"id": "brow",  "role": "piece", "rect": [-10, 11,  8,  2], "surface": BROW},
         {"id": "garth", "role": "piece", "rect": [ -6, 13, 10,  3], "surface": GARTH},
-        {"id": "lodge",     "role": "spawn",     "rect": [-1, 16, 5, 3], "surface": GARTH},
+        # the apron in front of the spawn door: the spawn is pulled 15 blocks further back
+        # from the strait and this is the ground it steps out onto, which is also what keeps
+        # it off the lane roots without leaving it joined to anything by a corner (PC-C)
+        {"id": "apron",     "role": "piece",     "rect": [-1, 16, 5, 3], "surface": GARTH},
+        {"id": "lodge",     "role": "spawn",     "rect": [-1, 19, 5, 3], "surface": GARTH},
         # the west spur: 25 blocks of bare lane out of the spawn band, room at its end
         {"id": "west-lane", "role": "piece",     "rect": [-6, 16, 5, 3], "surface": GARTH},
         {"id": "west-cage", "role": "wool-room", "rect": [-10, 16, 4, 3], "surface": GARTH},
@@ -175,6 +182,7 @@ PLAN = {
                     "facing": "front", "footprint": [6, 3, 13, 11]}],
         "iron":   [{"id": "iron-1", "piece": "lodge", "at": [3, 8]},
                    {"id": "iron-2", "piece": "lodge", "at": [22, 8]}],
+        # unchanged by the move: the wools stay at the far ends of their own spurs
         "wools":  [{"id": "wool-1", "piece": "west-cage", "at": [5, 7],
                     "footprint": [3, 2, 14, 11]},
                    {"id": "wool-2", "piece": "east-cage", "at": [7, 10],
@@ -185,8 +193,8 @@ PLAN = {
 }
 
 # The ground this side actually has, as blocks, so nothing downstream is placed over void.
-GROUND_RECTS = [(-50, 10, -10, 55), (-10, 10, 15, 25), (-50, 55, -10, 65), (-30, 65, 20, 80),
-                (-5, 80, 20, 95), (-30, 80, -5, 95), (-50, 80, -30, 95),
+GROUND_RECTS = [(-35, 10, 35, 30), (-50, 30, -5, 55), (-50, 55, -10, 65), (-30, 65, 20, 80),
+                (-5, 80, 20, 95), (-30, 80, -5, 95), (-50, 80, -30, 95), (-5, 95, 20, 110),
                 (20, 55, 35, 80), (20, 35, 35, 55)]
 
 # The two lanes, kept bare: a lane is a way to walk and not a place to dress, and a wood is
@@ -217,8 +225,13 @@ RELIEF = {"*": {
     "marks": [
         # the wood's floor, rolling, drawn inside the ground it actually has
         {"id": "floor", "kind": "area", "h": 14, "bevel": 4,
-         "ring": [[-48, 14], [-34, 12], [-20, 13], [-8, 13], [12, 15], [12, 22],
-                  [-12, 24], [-16, 40], [-14, 52], [-32, 54], [-48, 52]]},
+         "ring": [[-48, 32], [-34, 30], [-20, 31], [-8, 33], [-8, 44], [-14, 52],
+                  [-32, 54], [-48, 50]]},
+        # the wet flat the whole front drains to: the one band on this board that runs the
+        # same x range as the enemy's
+        {"id": "strandflat", "kind": "area", "h": 13, "bevel": 3,
+         "ring": [[-34, 12], [-18, 10], [0, 13], [16, 11], [34, 12],
+                  [34, 28], [14, 30], [-2, 27], [-20, 29], [-34, 27]]},
         # the hollow way: a line whose band is flat down the middle and lofts to the wood
         # either side, so the lane has banks and not walls
         # reach 9 rather than 12: a 24-block band through a 40-block wood leaves no wood,
@@ -227,7 +240,8 @@ RELIEF = {"*": {
          "h": [14, 11, 10, 10, 11, 12], "points": HOLLOW},
         # the garth and the back band, flat to their own edge because they are cut ground
         {"id": "glade", "kind": "area", "h": 16, "bevel": 3, "tread": 4,
-         "ring": [[-28, 68], [-12, 66], [6, 67], [18, 69], [18, 93], [-48, 93], [-48, 82]]},
+         "ring": [[-28, 68], [-12, 66], [6, 67], [18, 69], [18, 108], [-4, 108],
+                  [-4, 93], [-48, 93], [-48, 82]]},
         # the east spur, held at the garth's own height so the lane is a terrace and not a
         # ramp nobody asked for
         {"id": "spur", "kind": "area", "h": 16, "bevel": 2, "tread": 3,
@@ -286,7 +300,7 @@ def near_course(points, x, z, within):
     return best < within
 
 
-TROD = [[8, 84], [0, 80], [-8, 77], [-16, 74]]
+TROD = [[8, 97], [2, 91], [-4, 85], [-10, 78]]
 
 PROPS = [
     # the lane's own floor, painted wet rather than dug: a channel that states no level
@@ -308,7 +322,7 @@ PROPS = [
 
 # stone, and only stone -- and none of it on a spur: a big boulder is exactly what a bare
 # lane must not have
-BOULDERS = [(-44, 20, 3, 4), (8, 20, 2, 2), (-44, 60, 2, 3), (-30, 58, 2, 3)]
+BOULDERS = [(-44, 32, 3, 4), (8, 18, 2, 2), (-44, 60, 2, 3), (-30, 58, 2, 3)]
 for i, (x, z, r, h) in enumerate(BOULDERS):
     PROPS.append(boulder(f"stone-{i}", x, z, r, h, 71 + i))
 
@@ -317,7 +331,7 @@ KEEP_OFF = [(-28, 71, -20, 79, 8),       # the charcoal burner's hut
 KEEP_OFF += [(x - r, z - r, x + r, z + r, 4) for x, z, r, _ in BOULDERS]
 # the rooms and the ground in front of the spawn door
 # the rooms, and the ground in front of the spawn door, which reaches well south
-KEEP_OFF += [(-47, 82, -33, 93, 7), (21, 38, 34, 52, 7), (1, 66, 14, 93, 7)]
+KEEP_OFF += [(-47, 82, -33, 93, 7), (21, 38, 34, 52, 7), (1, 82, 14, 109, 7)]
 
 # A fine lattice, taken greedily: dense enough that two crowns close over the hollow way
 # and open enough that no tree is declined for standing in another's footprint.  The two
@@ -328,8 +342,8 @@ SCRUB = ["scrub-a", "scrub-b"]
 
 planted = []
 count = 0
-for row, z in enumerate(range(12, 100, 3)):
-    for col, x in enumerate(range(-48, 22, 3)):
+for row, z in enumerate(range(12, 112, 3)):
+    for col, x in enumerate(range(-48, 36, 3)):
         jx = ((row * 7 + col * 13) % 7) - 3
         jz = ((row * 11 + col * 5) % 7) - 3
         px, pz = x + jx, z + jz
@@ -350,7 +364,7 @@ for row, z in enumerate(range(12, 100, 3)):
         rank = (row * 3 + col) % 6
         kind = (CANOPY[row % 3] if rank == 0 else
                 DENSE[rank % 2] if rank < 4 else SCRUB[rank % 2])
-        room = 9 if rank == 0 else (8 if rank < 4 else 6)
+        room = 10 if rank == 0 else (9 if rank < 4 else 7)
         if any((px - ax) ** 2 + (pz - az) ** 2 < max(room, other) ** 2
                for ax, az, other in planted):
             continue
@@ -358,13 +372,18 @@ for row, z in enumerate(range(12, 100, 3)):
         PROPS.append(tree(f"holt-{count}", kind, px, pz))
         count += 1
 
+# Ground cover, fern-heavy because that is what grows under a closed canopy, in two
+# polygons rather than one: neither reaches a lane, and a lane is not dressed.
 PROPS.append(
-    # ground cover over the wood and the garth, fern-heavy because that is what grows under
-    # a closed canopy. It stops at the back band, so neither spur is dressed.
     {"id": "understorey", "kind": "flora", "seed": 13, "layer": "ground",
-     "points": [[-50, 10], [20, 10], [20, 80], [-50, 80]],
-     "spec": {"points": 3600, "coverage": 0.22, "scale": 22, "octaves": 3,
+     "points": [[-50, 10], [35, 10], [35, 50], [-50, 50]],
+     "spec": {"points": 3200, "coverage": 0.22, "scale": 22, "octaves": 3,
               "fernShare": 0.52, "flowerShare": 0.03, "flowerScale": 12, "tallShare": 0.06}})
+PROPS.append(
+    {"id": "backcover", "kind": "flora", "seed": 17, "layer": "ground",
+     "points": [[-50, 50], [18, 50], [18, 80], [-50, 80]],
+     "spec": {"points": 1400, "coverage": 0.2, "scale": 22, "octaves": 3,
+              "fernShare": 0.5, "flowerShare": 0.04, "flowerScale": 12, "tallShare": 0.05}})
 
 DRESSING = {"styles": STYLES, "props": PROPS}
 

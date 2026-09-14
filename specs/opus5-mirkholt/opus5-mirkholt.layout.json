@@ -8,8 +8,8 @@
   "bbox": {
    "min_x": -55,
    "max_x": 55,
-   "min_z": -100,
-   "max_z": 100
+   "min_z": -115,
+   "max_z": 115
   }
  },
  "layers": [
@@ -23,7 +23,7 @@
    "layout": {
     "shapes": [
      {
-      "id": "brow-13",
+      "id": "apron-13",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -37,20 +37,20 @@
       "radius": null,
       "vertices": [
        [
-        -10,
+        -35,
         10
        ],
        [
-        15,
+        35,
         10
        ],
        [
-        15,
-        25
+        35,
+        30
        ],
        [
-        -10,
-        25
+        -35,
+        30
        ]
       ],
       "controls": null,
@@ -71,7 +71,7 @@
       "material": null
      },
      {
-      "id": "brow-14",
+      "id": "apron-14",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -86,14 +86,14 @@
       "vertices": [
        [
         -50,
-        10
+        30
        ],
        [
-        -10,
-        10
+        -5,
+        30
        ],
        [
-        -10,
+        -5,
         55
        ],
        [
@@ -119,7 +119,7 @@
       "material": null
      },
      {
-      "id": "brow-15",
+      "id": "apron-15",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -167,7 +167,7 @@
       "material": null
      },
      {
-      "id": "brow-16",
+      "id": "apron-16",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -214,6 +214,14 @@
        ],
        [
         20,
+        110
+       ],
+       [
+        -5,
+        110
+       ],
+       [
+        -5,
         95
        ],
        [
@@ -245,9 +253,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -5,
-      "min_z": 80,
+      "min_z": 95,
       "max_x": 20,
-      "max_z": 95,
+      "max_z": 110,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -266,8 +274,7 @@
       "color": "red",
       "height_authored": null,
       "doors": [
-       "-z",
-       "-x"
+       "-z"
       ],
       "theme": null,
       "material": null
@@ -279,9 +286,9 @@
       "override": false,
       "keepClear": false,
       "min_x": 1,
-      "min_z": 83,
+      "min_z": 98,
       "max_x": 14,
-      "max_z": 94,
+      "max_z": 109,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -310,9 +317,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -20,
-      "min_z": -95,
+      "min_z": -110,
       "max_x": 5,
-      "max_z": -80,
+      "max_z": -95,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -341,9 +348,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -14,
-      "min_z": -94,
+      "min_z": -109,
       "max_x": -1,
-      "max_z": -83,
+      "max_z": -98,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -685,10 +692,10 @@
       "name": "Team island",
       "mirrors": true,
       "shapeIds": [
-       "brow-13",
-       "brow-14",
-       "brow-15",
-       "brow-16",
+       "apron-13",
+       "apron-14",
+       "apron-15",
+       "apron-16",
        "glade-gate"
       ]
      }
@@ -21645,19 +21652,19 @@
     "points": [
      [
       8,
-      84
+      97
      ],
      [
-      0,
-      80
+      2,
+      91
      ],
      [
-      -8,
-      77
+      -4,
+      85
      ],
      [
-      -16,
-      74
+      -10,
+      78
      ]
     ],
     "radius": 2,
@@ -21715,7 +21722,7 @@
     "id": "stone-0",
     "kind": "boulder",
     "x": -44,
-    "z": 20,
+    "z": 32,
     "radius": 3,
     "height": 4,
     "seed": 71,
@@ -21750,7 +21757,7 @@
     "id": "stone-1",
     "kind": "boulder",
     "x": 8,
-    "z": 20,
+    "z": 18,
     "radius": 2,
     "height": 2,
     "seed": 72,
@@ -21854,16 +21861,16 @@
    {
     "id": "holt-0",
     "kind": "tree",
-    "style": "scrub-a",
-    "x": -36,
+    "style": "scrub-b",
+    "x": -15,
     "z": 15,
     "layer": "ground"
    },
    {
     "id": "holt-1",
     "kind": "tree",
-    "style": "scrub-b",
-    "x": -15,
+    "style": "mirk-dense-b",
+    "x": 27,
     "z": 15,
     "layer": "ground"
    },
@@ -21878,113 +21885,65 @@
    {
     "id": "holt-3",
     "kind": "tree",
-    "style": "mirk-dense-a",
-    "x": -21,
-    "z": 21,
-    "layer": "ground"
-   },
-   {
-    "id": "holt-4",
-    "kind": "tree",
     "style": "scrub-a",
     "x": -30,
     "z": 23,
     "layer": "ground"
    },
    {
+    "id": "holt-4",
+    "kind": "tree",
+    "style": "scrub-b",
+    "x": -21,
+    "z": 21,
+    "layer": "ground"
+   },
+   {
     "id": "holt-5",
     "kind": "tree",
-    "style": "scrub-a",
-    "x": -36,
-    "z": 22,
+    "style": "mirk-dense-b",
+    "x": 25,
+    "z": 24,
     "layer": "ground"
    },
    {
     "id": "holt-6",
     "kind": "tree",
-    "style": "scrub-a",
-    "x": -42,
-    "z": 28,
+    "style": "mirk-dense-a",
+    "x": 10,
+    "z": 25,
     "layer": "ground"
    },
    {
     "id": "holt-7",
     "kind": "tree",
-    "style": "scrub-a",
-    "x": -30,
-    "z": 30,
-    "layer": "ground"
-   },
-   {
-    "id": "holt-8",
-    "kind": "tree",
-    "style": "scrub-a",
-    "x": -36,
-    "z": 29,
-    "layer": "ground"
-   },
-   {
-    "id": "holt-9",
-    "kind": "tree",
-    "style": "scrub-a",
-    "x": -42,
-    "z": 35,
-    "layer": "ground"
-   },
-   {
-    "id": "holt-10",
-    "kind": "tree",
-    "style": "scrub-a",
+    "style": "mirk-dense-b",
     "x": -36,
     "z": 36,
     "layer": "ground"
    },
    {
-    "id": "holt-11",
+    "id": "holt-8",
     "kind": "tree",
-    "style": "scrub-a",
-    "x": -42,
-    "z": 42,
+    "style": "mirk-dense-b",
+    "x": -38,
+    "z": 45,
     "layer": "ground"
    },
    {
-    "id": "holt-12",
+    "id": "holt-9",
     "kind": "tree",
-    "style": "scrub-a",
-    "x": -30,
-    "z": 37,
+    "style": "mirk-tall-b",
+    "x": 0,
+    "z": 70,
     "layer": "ground"
    },
    {
-    "id": "holt-13",
+    "id": "holt-10",
     "kind": "tree",
-    "style": "scrub-a",
-    "x": -36,
-    "z": 43,
-    "layer": "ground"
-   },
-   {
-    "id": "holt-14",
-    "kind": "tree",
-    "style": "scrub-a",
-    "x": -30,
-    "z": 44,
-    "layer": "ground"
-   },
-   {
-    "id": "holt-15",
-    "kind": "tree",
-    "style": "scrub-a",
-    "x": -36,
-    "z": 50,
-    "layer": "ground"
-   },
-   {
-    "id": "holt-16",
-    "kind": "tree",
-    "style": "scrub-a",
-    "x": -42,
-    "z": 49,
+    "style": "mirk-tall-b",
+    "x": 12,
+    "z": 72,
     "layer": "ground"
    },
    {
@@ -21998,11 +21957,45 @@
       10
      ],
      [
-      20,
+      35,
       10
      ],
      [
-      20,
+      35,
+      50
+     ],
+     [
+      -50,
+      50
+     ]
+    ],
+    "spec": {
+     "points": 3200,
+     "coverage": 0.22,
+     "scale": 22,
+     "octaves": 3,
+     "fernShare": 0.52,
+     "flowerShare": 0.03,
+     "flowerScale": 12,
+     "tallShare": 0.06
+    }
+   },
+   {
+    "id": "backcover",
+    "kind": "flora",
+    "seed": 17,
+    "layer": "ground",
+    "points": [
+     [
+      -50,
+      50
+     ],
+     [
+      18,
+      50
+     ],
+     [
+      18,
       80
      ],
      [
@@ -22011,14 +22004,14 @@
      ]
     ],
     "spec": {
-     "points": 3600,
-     "coverage": 0.22,
+     "points": 1400,
+     "coverage": 0.2,
      "scale": 22,
      "octaves": 3,
-     "fernShare": 0.52,
-     "flowerShare": 0.03,
+     "fernShare": 0.5,
+     "flowerShare": 0.04,
      "flowerScale": 12,
-     "tallShare": 0.06
+     "tallShare": 0.05
     }
    }
   ]
@@ -22047,35 +22040,23 @@
      "ring": [
       [
        -48,
-       14
+       32
       ],
       [
        -34,
-       12
+       30
       ],
       [
        -20,
-       13
+       31
       ],
       [
        -8,
-       13
+       33
       ],
       [
-       12,
-       15
-      ],
-      [
-       12,
-       22
-      ],
-      [
-       -12,
-       24
-      ],
-      [
-       -16,
-       40
+       -8,
+       44
       ],
       [
        -14,
@@ -22087,7 +22068,55 @@
       ],
       [
        -48,
-       52
+       50
+      ]
+     ]
+    },
+    {
+     "id": "strandflat",
+     "kind": "area",
+     "h": 13,
+     "bevel": 3,
+     "ring": [
+      [
+       -34,
+       12
+      ],
+      [
+       -18,
+       10
+      ],
+      [
+       0,
+       13
+      ],
+      [
+       16,
+       11
+      ],
+      [
+       34,
+       12
+      ],
+      [
+       34,
+       28
+      ],
+      [
+       14,
+       30
+      ],
+      [
+       -2,
+       27
+      ],
+      [
+       -20,
+       29
+      ],
+      [
+       -34,
+       27
       ]
      ]
     },
@@ -22156,6 +22185,14 @@
       ],
       [
        18,
+       108
+      ],
+      [
+       -4,
+       108
+      ],
+      [
+       -4,
        93
       ],
       [

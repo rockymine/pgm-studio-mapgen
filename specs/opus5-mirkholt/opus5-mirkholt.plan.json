@@ -13,26 +13,26 @@
  },
  "pieces": [
   {
+   "id": "toe",
+   "role": "piece",
+   "rect": [
+    -7,
+    2,
+    14,
+    4
+   ],
+   "surface": 13
+  },
+  {
    "id": "holt",
    "role": "piece",
    "rect": [
     -10,
-    2,
-    8,
-    9
+    6,
+    9,
+    5
    ],
    "surface": 14
-  },
-  {
-   "id": "toe",
-   "role": "piece",
-   "rect": [
-    -2,
-    2,
-    5,
-    3
-   ],
-   "surface": 13
   },
   {
    "id": "brow",
@@ -57,11 +57,22 @@
    "surface": 16
   },
   {
+   "id": "apron",
+   "role": "piece",
+   "rect": [
+    -1,
+    16,
+    5,
+    3
+   ],
+   "surface": 16
+  },
+  {
    "id": "lodge",
    "role": "spawn",
    "rect": [
     -1,
-    16,
+    19,
     5,
     3
    ],

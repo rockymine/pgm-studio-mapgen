@@ -5,8 +5,8 @@ TRANSECT 19 stations from (-50, 60) to (-32, 60), every 1
   (  -49,    60)      18       18           18                      +1
   (  -48,    60)      18       18           20  boulder stone-2     
   (  -47,    60)      19       19           21  boulder stone-2     +1
-  (  -46,    60)      19       19           22  boulder stone-2     
-  (  -45,    60)      18       18           23  boulder stone-2     -1
+  (  -46,    60)      18       18           22  boulder stone-2     -1
+  (  -45,    60)      18       18           23  boulder stone-2     
   (  -44,    60)      18       18           23  boulder stone-2     
   (  -43,    60)      17       17           23  boulder stone-2     -1
   (  -42,    60)      17       17           22  boulder stone-2     
@@ -26,8 +26,8 @@ beside: boulder stone-2 at (-48, 60), boulder stone-3 at (-33, 58)
 ## stone-2 (boulder) along z
 TRANSECT 25 stations from (-44, 48) to (-44, 72), every 1
   station        ground  surface  water  top  standing            step
-  (  -44,    48)      23       23           26  tree holt-16        
-  (  -44,    49)      23       23           29  tree holt-16        
+  (  -44,    48)      23       23           23                      
+  (  -44,    49)      23       23           23                      
   (  -44,    50)      22       22           22                      -1
   (  -44,    51)      22       22           22                      
   (  -44,    52)      21       21           21                      -1
@@ -40,8 +40,8 @@ TRANSECT 25 stations from (-44, 48) to (-44, 72), every 1
   (  -44,    59)      18       18           23  boulder stone-2     -1
   (  -44,    60)      18       18           23  boulder stone-2     
   (  -44,    61)      17       17           23  boulder stone-2     -1
-  (  -44,    62)      17       17           22  boulder stone-2     
-  (  -44,    63)      16       16           21  boulder stone-2     -1
+  (  -44,    62)      16       16           22  boulder stone-2     -1
+  (  -44,    63)      16       16           21  boulder stone-2     
   (  -44,    64)      15       15           15                      -1
   (  -44,    65)                                                    void
   (  -44,    66)                                                    void
@@ -52,4 +52,4 @@ TRANSECT 25 stations from (-44, 48) to (-44, 72), every 1
   (  -44,    71)                                                    void
   (  -44,    72)                                                    void
 rises 0, falls 8, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree holt-16 at (-44, 46), boulder stone-2 at (-45, 57)
+beside: tree holt-8 at (-43, 46), boulder stone-2 at (-45, 57)

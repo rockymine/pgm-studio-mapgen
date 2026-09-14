@@ -22,8 +22,12 @@ rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to en
 beside: wool wool-1#1 at (33, -89)
 
 ## blue-1 (wool) along z
-TRANSECT 21 stations from (45, -95) to (45, -75), every 1
+TRANSECT 25 stations from (45, -99) to (45, -75), every 1
   station        ground  surface  water  top  standing            step
+  (   45,   -99)                                                    void
+  (   45,   -98)                                                    void
+  (   45,   -97)                                                    void
+  (   45,   -96)                                                    void
   (   45,   -95)      16       16           16                      
   (   45,   -94)      16       16           29                      
   (   45,   -93)      16       16           29  wool wool-1#1       
