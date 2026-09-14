@@ -1,9 +1,9 @@
 ## spawn-blue (spawn) along x
 TRANSECT 47 stations from (-23, -93) to (23, -93), every 1
   station        ground  surface  water  top  standing            step
-  (  -23,   -93)      28       28           34  wool wool-2#1       
-  (  -22,   -93)      28       28           34                      
-  (  -21,   -93)      28       28           28                      
+  (  -23,   -93)      30       30           30                      
+  (  -22,   -93)      30       30           30                      
+  (  -21,   -93)      30       30           30                      
   (  -20,   -93)                                                    void
   (  -19,   -93)                                                    void
   (  -18,   -93)                                                    void
@@ -44,16 +44,24 @@ TRANSECT 47 stations from (-23, -93) to (23, -93), every 1
   (   17,   -93)                                                    void
   (   18,   -93)                                                    void
   (   19,   -93)                                                    void
-  (   20,   -93)      28       28           28                      
-  (   21,   -93)      28       28           34                      
-  (   22,   -93)      28       28           34  wool wool-1#1       
-  (   23,   -93)      28       28           35  wool wool-1#1       
+  (   20,   -93)      31       31           31                      
+  (   21,   -93)      31       31           31                      
+  (   22,   -93)      31       31           31                      
+  (   23,   -93)      31       31           31                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-2#1 at (-25, -95), ironcube spawn-1:1#1 at (-15, -94), spawn spawn-1#1 at (-9, -95), ironcube spawn-1:0#1 at (12, -94), wool wool-1#1 at (22, -95)
+beside: ironcube spawn-1:1#1 at (-15, -94), spawn spawn-1#1 at (-9, -95), ironcube spawn-1:0#1 at (12, -94)
 
 ## spawn-blue (spawn) along z
-TRANSECT 24 stations from (0, -100) to (0, -77), every 1
+TRANSECT 32 stations from (0, -108) to (0, -77), every 1
   station        ground  surface  water  top  standing            step
+  (    0,  -108)                                                    void
+  (    0,  -107)                                                    void
+  (    0,  -106)                                                    void
+  (    0,  -105)                                                    void
+  (    0,  -104)                                                    void
+  (    0,  -103)                                                    void
+  (    0,  -102)                                                    void
+  (    0,  -101)                                                    void
   (    0,  -100)      31       31           31                      
   (    0,   -99)      31       31           31                      
   (    0,   -98)      31       31           41                      

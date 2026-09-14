@@ -1,10 +1,10 @@
-THEMES  4 themes over 11742 ground cells, 22 distinct surface blocks
-  marl  7562 cells (64.4%)  12:1 Red Sand, 172:0 Hardened Clay, 3:1 Coarse Dirt, 179:0 Red Sandstone, 179:2 Smooth Red Sandstone, 159:12 Brown Stained Clay, 24:1 Chiseled Sandstone, 24:2 Smooth Sandstone, 24:0 Sandstone, 1:5 Andesite, 4:0 Cobblestone, 5:4 Acacia Planks
-  works  2722 cells (23.2%)  98:0 Stone Bricks, 24:1 Chiseled Sandstone, 172:0 Hardened Clay, 24:2 Smooth Sandstone, 24:0 Sandstone, 179:0 Red Sandstone, 35:14 Red Wool, 35:11 Blue Wool, 35:1 Orange Wool, 12:1 Red Sand, 35:3 Light Blue Wool
-  sward  933 cells (7.9%)  3:1 Coarse Dirt, 2:0 Grass Block, 12:1 Red Sand, 179:0 Red Sandstone, 13:0 Gravel, 172:0 Hardened Clay, 162:0 Acacia Log
-  wash  525 cells (4.5%)  12:0 Sand, 3:1 Coarse Dirt, 13:0 Gravel, 12:1 Red Sand, 24:0 Sandstone, 1:5 Andesite, 4:0 Cobblestone
+THEMES  4 themes over 13648 ground cells, 23 distinct surface blocks
+  marl  9859 cells (72.2%)  12:1 Red Sand, 172:0 Hardened Clay, 3:1 Coarse Dirt, 179:0 Red Sandstone, 179:2 Smooth Red Sandstone, 159:12 Brown Stained Clay, 7:0 Bedrock, 24:1 Chiseled Sandstone, 24:2 Smooth Sandstone, 24:0 Sandstone, 1:5 Andesite, 4:0 Cobblestone
+  works  2331 cells (17.1%)  98:0 Stone Bricks, 24:1 Chiseled Sandstone, 24:0 Sandstone, 179:0 Red Sandstone, 24:2 Smooth Sandstone, 172:0 Hardened Clay, 35:14 Red Wool, 35:11 Blue Wool, 35:1 Orange Wool, 35:3 Light Blue Wool
+  sward  933 cells (6.8%)  3:1 Coarse Dirt, 2:0 Grass Block, 12:1 Red Sand, 179:0 Red Sandstone, 13:0 Gravel, 172:0 Hardened Clay, 162:0 Acacia Log
+  wash  525 cells (3.8%)  12:0 Sand, 3:1 Coarse Dirt, 13:0 Gravel, 12:1 Red Sand, 24:0 Sandstone, 1:5 Andesite, 4:0 Cobblestone
 borders:
-  marl | works  613 cells
+  marl | works  501 cells
   marl | sward  376 cells
   marl | wash  140 cells
   sward | wash  24 cells

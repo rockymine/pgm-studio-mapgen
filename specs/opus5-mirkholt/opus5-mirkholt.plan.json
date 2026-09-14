@@ -2,7 +2,7 @@
  "plan": 2,
  "meta": {
   "name": "Mirkholt",
-  "notes": "CTW. A dark wood on a shifted diagonal: one hollow way a side runs from the clearings down to the strait, and the brow over it is the only ground the whole run is visible from."
+  "notes": "CTW. A dark wood on a shifted diagonal: one hollow way a side runs from the garth down to the strait, and each wool room stands at the end of its own bare spur."
  },
  "globals": {
   "cell": 5,
@@ -19,7 +19,7 @@
     -10,
     2,
     8,
-    10
+    9
    ],
    "surface": 14
   },
@@ -29,8 +29,8 @@
    "rect": [
     -2,
     2,
-    6,
-    4
+    5,
+    3
    ],
    "surface": 13
   },
@@ -39,8 +39,8 @@
    "role": "piece",
    "rect": [
     -10,
-    12,
-    14,
+    11,
+    8,
     2
    ],
    "surface": 15
@@ -49,21 +49,10 @@
    "id": "garth",
    "role": "piece",
    "rect": [
-    -9,
-    14,
+    -6,
     13,
-    2
-   ],
-   "surface": 16
-  },
-  {
-   "id": "west-cage",
-   "role": "wool-room",
-   "rect": [
-    -9,
-    16,
-    4,
-    4
+    10,
+    3
    ],
    "surface": 16
   },
@@ -71,10 +60,43 @@
    "id": "lodge",
    "role": "spawn",
    "rect": [
-    -5,
+    -1,
     16,
     5,
-    4
+    3
+   ],
+   "surface": 16
+  },
+  {
+   "id": "west-lane",
+   "role": "piece",
+   "rect": [
+    -6,
+    16,
+    5,
+    3
+   ],
+   "surface": 16
+  },
+  {
+   "id": "west-cage",
+   "role": "wool-room",
+   "rect": [
+    -10,
+    16,
+    4,
+    3
+   ],
+   "surface": 16
+  },
+  {
+   "id": "east-lane",
+   "role": "piece",
+   "rect": [
+    4,
+    11,
+    3,
+    5
    ],
    "surface": 16
   },
@@ -82,9 +104,9 @@
    "id": "east-cage",
    "role": "wool-room",
    "rect": [
-    0,
-    16,
     4,
+    7,
+    3,
     4
    ],
    "surface": 16
@@ -110,14 +132,14 @@
     "piece": "lodge",
     "at": [
      12,
-     12
+     10
     ],
     "facing": "front",
     "footprint": [
      6,
-     6,
-     12,
-     12
+     3,
+     13,
+     11
     ]
    }
   ],
@@ -127,7 +149,7 @@
     "piece": "lodge",
     "at": [
      3,
-     10
+     8
     ]
    },
    {
@@ -135,7 +157,7 @@
     "piece": "lodge",
     "at": [
      22,
-     10
+     8
     ]
    }
   ],
@@ -144,27 +166,27 @@
     "id": "wool-1",
     "piece": "west-cage",
     "at": [
-     4,
-     10
+     5,
+     7
     ],
     "footprint": [
      3,
-     3,
+     2,
      14,
-     14
+     11
     ]
    },
    {
     "id": "wool-2",
     "piece": "east-cage",
     "at": [
-     16,
+     7,
      10
     ],
     "footprint": [
+     1,
      3,
-     3,
-     14,
+     13,
      14
     ]
    }

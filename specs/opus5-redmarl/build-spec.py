@@ -38,7 +38,8 @@ sys.path.insert(0, os.path.join(HERE, "..", "..", "tools", "sculpt"))
 import props
 
 CELL = 4
-BANK = 26            # the marl bank the dyehouses and the spawn stand on
+BANK = 26            # the marl bank the spawn stands on, and the two lanes off it
+PLINTH = 28          # the dyehouse ground, at the far end of its own lane
 YARD = 27            # the built yards under them, one course proud of the bank
 APRON = 23           # the open ground the tracks cross
 BRINK = 21           # the lip above the gully
@@ -54,13 +55,22 @@ def plan():
         "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 20,
                     "surface": APRON, "observerY": 62},
         "pieces": [
-            # The back row: two dyehouses with the spawn between them, so both are on somebody's
-            # journey out of the door, and each wool marker sits at its room's FAR side -- which
-            # is what buys the 30 blocks WL2 wants out of a 28-block spawn piece (ST10 caps that
-            # piece at 30 x 20).                            blocks x -52..16, z -104..-88
-            {"id": "dye-w",  "role": "wool-room", "rect": [-13, -26, 5, 4], "surface": BANK},
+            # The spawn, on the bank's back edge.            blocks x -32..-4, z -104..-88
             {"id": "yard",   "role": "spawn",     "rect": [ -8, -26, 7, 4], "surface": BANK},
-            {"id": "dye-e",  "role": "wool-room", "rect": [ -1, -26, 5, 4], "surface": BANK},
+            # Two lanes off it, one either hand, each the width of the room at its end and
+            # twenty-four blocks long -- the spur a raider has to commit to walking. A wool room
+            # butted straight onto the spawn is the fault, and no rule catches it: `WL2`'s text
+            # says "on a different lane than the spawn" and only its distance clause is
+            # implemented, while `WL6` -- each wool on a distinct lane -- has no term at all. The
+            # composer builds a wool unit as two boxes, the room and its lane, which is what this
+            # is.                                blocks x -52..-32 and x -4..16, z -112..-88
+            {"id": "lane-w", "role": "piece",     "rect": [-13, -28, 5, 6], "surface": BANK},
+            {"id": "lane-e", "role": "piece",     "rect": [ -1, -28, 5, 6], "surface": BANK},
+            # and the dyehouse at the far end of each, standing two courses above its lane so the
+            # last stretch of the walk is a climb
+            #                                    blocks x -52..-32 and x -4..16, z -128..-112
+            {"id": "dye-w",  "role": "wool-room", "rect": [-13, -32, 5, 4], "surface": PLINTH},
+            {"id": "dye-e",  "role": "wool-room", "rect": [ -1, -32, 5, 4], "surface": PLINTH},
             # the bank the row stands on                    blocks x -52..16, z -88..-64
             {"id": "bank",   "role": "piece",     "rect": [-13, -22, 17, 6], "surface": BANK},
             # the apron, quarried back off both flanks      blocks x -44..-4, z -64..-44
@@ -81,11 +91,11 @@ def plan():
                         "footprint": [6, 3, 16, 10]}],
             "iron": [{"id": "iron-1", "piece": "yard", "at": [3, 8]},
                      {"id": "iron-2", "piece": "yard", "at": [26, 8]}],
-            # dye-w's corner is (-52, -104) and dye-e's is (-4, -104); both markers stand at the
-            # far side of their room, 30 blocks from the spawn and 60 from each other
-            "wools": [{"id": "wool-1", "piece": "dye-w", "at": [4, 8],
+            # dye-w's corner is (-52, -128) and dye-e's is (-4, -128); each marker stands at the
+            # deep outer corner of its room, forty from the spawn and fifty-six from the other
+            "wools": [{"id": "wool-1", "piece": "dye-w", "at": [6, 4],
                        "footprint": [2, 2, 16, 12]},
-                      {"id": "wool-2", "piece": "dye-e", "at": [16, 8],
+                      {"id": "wool-2", "piece": "dye-e", "at": [14, 4],
                        "footprint": [2, 2, 16, 12]}],
             "destroyables": [],
             "cores": [],
@@ -254,6 +264,22 @@ def marks():
         {"id": "bank-pan", "kind": "area", "h": BANK, "bevel": 4,
          "ring": [[-54, -106], [-30, -104], [-4, -106], [18, -103],
                   [17, -64], [-6, -61], [-30, -64], [-54, -62]]},
+        # the two lanes, held at the bank's own height for their whole run
+        {"id": "lane-pan-w", "kind": "area", "h": BANK, "bevel": 2,
+         "ring": [[-54, -114], [-42, -116], [-30, -114],
+                  [-30, -86], [-42, -84], [-54, -86]]},
+        {"id": "lane-pan-e", "kind": "area", "h": BANK, "bevel": 2,
+         "ring": [[-6, -114], [6, -116], [18, -114],
+                  [18, -86], [6, -84], [-6, -86]]},
+        # and the plinth at the end of each, two courses up. The bevel is what answers `WL11`:
+        # it grades the climb over the lane's last dozen blocks, so an attacker arrives up a ramp
+        # rather than at a wall. WL11 walks the pieces flat and cannot see it; a transect can.
+        {"id": "room-pan-w", "kind": "area", "h": PLINTH, "bevel": 2,
+         "ring": [[-54, -130], [-42, -132], [-30, -130],
+                  [-30, -114], [-42, -112], [-54, -114]]},
+        {"id": "room-pan-e", "kind": "area", "h": PLINTH, "bevel": 2,
+         "ring": [[-6, -130], [6, -132], [18, -130],
+                  [18, -114], [6, -112], [-6, -114]]},
         {"id": "apron-pan", "kind": "area", "h": APRON, "bevel": 4,
          "ring": [[-46, -66], [-28, -63], [-10, -66], [-2, -63],
                   [-3, -43], [-20, -41], [-38, -44], [-46, -42]]},
@@ -305,15 +331,46 @@ def shapes():
     # out of the solve, and a course above the bank makes every meeting a riser rather than a
     # change of colour on flat ground -- which is the one thing this palette cannot get away with.
     for name, ring in (
-            ("yard-dye-w", [[-53, -104], [-44, -106], [-33, -103], [-32, -96],
-                            [-34, -88], [-44, -86], [-53, -90]]),
+            ("yard-dye-w", [[-53, -127], [-44, -129], [-31, -127], [-30, -122],
+                            [-32, -117], [-44, -116], [-53, -118]]),
             ("yard-spawn", [[-29, -103], [-19, -105], [-9, -103], [-8, -96],
                             [-10, -89], [-19, -87], [-29, -90]]),
-            ("yard-dye-e", [[-4, -104], [6, -106], [16, -103], [17, -96],
-                            [15, -88], [6, -86], [-4, -90]])):
+            ("yard-dye-e", [[-5, -127], [6, -129], [17, -127], [18, -122],
+                            [16, -117], [6, -116], [-5, -118]])):
         out.append({"id": name, "type": "polygon", "operation": "add",
-                    "base_height": YARD, "relief_scope": "exclude", "keepClear": True,
+                    # The two dyehouse yards sit AT their plinth rather than a course proud
+                    # of it: a transect up the lane read the proud course as `scramble +2` on top
+                    # of the ramp's own rise, and `WL11` wants an attacker arriving in one-block
+                    # steps. The spawn's yard keeps its riser, which nobody has to climb under
+                    # fire.
+                    "base_height": (YARD if name == "yard-spawn" else PLINTH),
+                    "relief_scope": "exclude", "keepClear": True,
                     "theme": "works", "vertices": ring})
+
+    # The ramp up the lane's last stretch onto the plinth: fourteen blocks of run against two of
+    # rise, level and out of the solve so it arrives where it was told. This is what `WL11` asks
+    # for -- an attacker arrives up a ramp rather than at a face -- and `WL11` cannot see it,
+    # because it walks the pieces flat. A transect up the lane is what says whether it works.
+    scree = {"kind": "cell", "seed": 63, "cellSize": 7, "jitter": 2, "warp": 3,
+             "palette": [RED_SAND, HARDCLAY, COARSE, RED_STONE], "rise": 2}
+    for name, x0, x1 in (("ramp-dye-w", -46, -36), ("ramp-dye-e", -2, 8)):
+        out.append({"id": name, "type": "polygon", "operation": "add",
+                    "height_mode": "level", "skirt": 0, "relief_scope": "exclude",
+                    "keepClear": True, "floor": 0,
+                    "vertices": [[x0, -116], [x1, -116], [x1, -102], [x0, -102]],
+                    "anchor_heights": [PLINTH, PLINTH, BANK, BANK], "material": scree})
+
+    # A bedrock bar across each lane, with a six-block gate through it. The lane is a way to walk
+    # and not a place to dress -- no wood on it, no boulders -- and a bar is the one thing that
+    # belongs there, because it says where a raider has to come through.
+    for name, points in (("bar-w-a", [[-53, -100], [-48, -100], [-44, -100]]),
+                         ("bar-w-b", [[-38, -100], [-34, -100], [-31, -100]]),
+                         ("bar-e-a", [[-5, -100], [0, -100], [4, -100]]),
+                         ("bar-e-b", [[10, -100], [14, -100], [17, -100]])):
+        out.append({"id": name, "type": "polyline", "operation": "add",
+                    "radius": 1.5, "stroke_edge": "solid", "base_height": BANK + 4,
+                    "relief_scope": "exclude", "keepClear": True,
+                    "vertices": points, "material": solid(7)})
 
     # The washing stair: level, sheer-sided, out of the relief's solve so it arrives where it was
     # told. Sixteen blocks of run against four of rise, and a material rather than a theme --
@@ -516,10 +573,10 @@ def dressing():
         # the two haulage tracks along the bank to the dyehouses
         {"id": "track-dye-w", "kind": "stroke", "seed": 44, "radius": 2, "style": "solid",
          "coverage": 1.0, "claimsGround": True, "pave": paving,
-         "points": [[-28, -86], [-35, -88], [-42, -90], [-46, -92]]},
+         "points": [[-34, -86], [-40, -94], [-41, -102], [-42, -110]]},
         {"id": "track-dye-e", "kind": "stroke", "seed": 45, "radius": 2, "style": "solid",
          "coverage": 1.0, "claimsGround": True, "pave": paving,
-         "points": [[-10, -86], [0, -88], [8, -90], [12, -92]]},
+         "points": [[0, -86], [6, -94], [7, -102], [8, -110]]},
         # the slip's own worn line, off the apron and down onto the floor
         {"id": "track-slip", "kind": "stroke", "seed": 46, "radius": 2, "style": "solid",
          "coverage": 0.9, "claimsGround": True, "pave": paving,
@@ -565,7 +622,7 @@ def dressing():
     # patchiness than a hand-drawn outline is, and both gameplay numbers stay low -- tall grass is
     # cover nobody authored, in front of an objective nobody chose.
     props_out.append({"id": "cover", "kind": "flora", "seed": 800,
-                      "points": [[-58, -110], [24, -110], [28, 28], [-28, 28]],
+                      "points": [[-58, -134], [24, -134], [28, 28], [-28, 28]],
                       "spec": {"coverage": 0.13, "scale": 30, "octaves": 3, "fernShare": 0.06,
                                "flowerShare": 0.04, "flowerScale": 18, "tallShare": 0.03}})
     return {"styles": styles, "props": props_out}

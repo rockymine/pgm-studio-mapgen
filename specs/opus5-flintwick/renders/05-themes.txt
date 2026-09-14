@@ -1,10 +1,9 @@
-THEMES  4 themes over 13742 ground cells, 19 distinct surface blocks
-  chalk  8502 cells (61.9%)  159:0 White Stained Clay, 4:0 Cobblestone, 159:8 Light Gray Stained Clay, 13:0 Gravel, 1:5 Andesite, 1:0 Stone, 173:0 Coal Block, 155:0 Quartz Block, 98:0 Stone Bricks, 2:0 Grass Block, 35:14 Red Wool, 35:11 Blue Wool
-  sward  2604 cells (18.9%)  2:0 Grass Block, 3:1 Coarse Dirt, 159:0 White Stained Clay, 13:0 Gravel, 4:0 Cobblestone, 159:8 Light Gray Stained Clay, 1:5 Andesite, 98:3 Chiseled Stone Bricks, 1:0 Stone, 102:0 Glass Pane, 156:7 Quartz Stairs, 156:6 Quartz Stairs
-  strand  1852 cells (13.5%)  4:0 Cobblestone, 13:0 Gravel, 1:5 Andesite, 1:0 Stone
-  knap  784 cells (5.7%)  159:8 Light Gray Stained Clay, 173:0 Coal Block, 13:0 Gravel, 4:0 Cobblestone, 1:5 Andesite, 1:0 Stone, 159:0 White Stained Clay
+THEMES  4 themes over 13944 ground cells, 20 distinct surface blocks
+  chalk  8966 cells (64.3%)  159:0 White Stained Clay, 4:0 Cobblestone, 159:8 Light Gray Stained Clay, 13:0 Gravel, 1:5 Andesite, 1:0 Stone, 155:0 Quartz Block, 2:0 Grass Block, 98:0 Stone Bricks, 173:0 Coal Block, 7:0 Bedrock, 35:14 Red Wool
+  sward  2790 cells (20.0%)  2:0 Grass Block, 3:1 Coarse Dirt, 13:0 Gravel, 159:0 White Stained Clay, 159:8 Light Gray Stained Clay, 4:0 Cobblestone, 1:5 Andesite, 98:3 Chiseled Stone Bricks, 1:0 Stone, 102:0 Glass Pane, 156:7 Quartz Stairs, 156:6 Quartz Stairs
+  strand  1852 cells (13.3%)  4:0 Cobblestone, 13:0 Gravel, 1:5 Andesite, 1:0 Stone
+  knap  336 cells (2.4%)  173:0 Coal Block, 4:0 Cobblestone, 159:8 Light Gray Stained Clay, 13:0 Gravel, 159:0 White Stained Clay
 borders:
-  chalk | sward  524 cells
+  chalk | sward  560 cells
   chalk | strand  190 cells
-  chalk | knap  178 cells
-  knap | sward  46 cells
+  chalk | knap  160 cells

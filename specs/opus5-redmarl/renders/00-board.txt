@@ -1,57 +1,70 @@
       |   -1         0         1   |
       | 32109876543210123456789012 |
-  -26 | WWWWWSSSSSSSVVVVV          |
-  -25 | WWWWWSSS@SSSVVVVV          |
-  -24 | W¤WWWiSSSSSiVVVV¤          |
-  -23 | WWWWWSSSSSSSVVVVV          |
-  -22 | AAAAAAAAAAAAAAAAA          |
-  -21 | AAAAAAAAAAAAAAAAA          |
-  -20 | AAAAAAAAAAAAAAAAA          |
-  -19 | AAAAAAAAAAAAAAAAA          |
-  -18 | AAAAAAAAAAAAAAAAA          |
-  -17 | AAAAAAAAAAAAAAAAA          |
-  -16 |   BBBBBBBBBB               |
-  -15 |   BBBBBBBBBB               |
-  -14 |   BBBBBBBBBB               |
-  -13 |   BBBBBBBBBB               |
-  -12 |   BBBBBBBBBB               |
-  -11 |   CCCCCCCCCCCC             |
-  -10 |   CCCCCCCCCCCC             |
-   -9 |   CCCCCCCCCCCC             |
-   -8 |   CCCCCCCCCCCC             |
-   -7 |   CCCCCCCCCCCC++++++++++   |
-   -6 |   +++++DDDDDDDDDDDD+++++   |
-   -5 |   +++++DDDDDDDDDDDD+++++   |
-   -4 |   +++++DDDDDDDDDDDD+++++   |
-   -3 |   +++++DDDDDDDDDDDD+++++   |
-   -2 |   +++++DDDDDDDDDDDD+++++   |
-   -1 |   +++++DDDDDDDDDDDD+++++   |
-    0 |   +++++DDDDDDDDDDDD+++++   |
-    1 |   +++++DDDDDDDDDDDD+++++   |
-    2 |   +++++DDDDDDDDDDDD+++++   |
-    3 |   +++++DDDDDDDDDDDD+++++   |
-    4 |   +++++DDDDDDDDDDDD+++++   |
-    5 |   +++++DDDDDDDDDDDD+++++   |
-    6 |   ++++++++++CCCCCCCCCCCC   |
-    7 |             CCCCCCCCCCCC   |
-    8 |             CCCCCCCCCCCC   |
-    9 |             CCCCCCCCCCCC   |
-   10 |             CCCCCCCCCCCC   |
-   11 |               BBBBBBBBBB   |
-   12 |               BBBBBBBBBB   |
-   13 |               BBBBBBBBBB   |
-   14 |               BBBBBBBBBB   |
-   15 |               BBBBBBBBBB   |
-   16 |          AAAAAAAAAAAAAAAAA |
-   17 |          AAAAAAAAAAAAAAAAA |
-   18 |          AAAAAAAAAAAAAAAAA |
-   19 |          AAAAAAAAAAAAAAAAA |
-   20 |          AAAAAAAAAAAAAAAAA |
-   21 |          AAAAAAAAAAAAAAAAA |
-   22 |          VVVVVSSSSSSSWWWWW |
-   23 |          VVVVVSSSSSSSWWWWW |
-   24 |          V¤VVViSS@SSiWWWW¤ |
-   25 |          VVVVVSSSSSSSWWWWW |
-      26 × 52 cells drawn  ·  26 × 52 cells = 104 × 208 blocks  ·  cell 4
-      @ spawn   A bank (piece)   B apron (piece)   C brink (piece)   D strand (piece)   
-      S yard (spawn)   V dye-e (wool-room)   W dye-w (wool-room)   i iron   ¤ wool   
+  -32 | WWWWW       VVVVV          |
+  -31 | W¤WWW       VVV¤V          |
+  -30 | WWWWW       VVVVV          |
+  -29 | WWWWW       VVVVV          |
+  -28 | AAAAA       BBBBB          |
+  -27 | AAAAA       BBBBB          |
+  -26 | AAAAASSSSSSSBBBBB          |
+  -25 | AAAAASSS@SSSBBBBB          |
+  -24 | AAAAAiSSSSSiBBBBB          |
+  -23 | AAAAASSSSSSSBBBBB          |
+  -22 | CCCCCCCCCCCCCCCCC          |
+  -21 | CCCCCCCCCCCCCCCCC          |
+  -20 | CCCCCCCCCCCCCCCCC          |
+  -19 | CCCCCCCCCCCCCCCCC          |
+  -18 | CCCCCCCCCCCCCCCCC          |
+  -17 | CCCCCCCCCCCCCCCCC          |
+  -16 |   DDDDDDDDDD               |
+  -15 |   DDDDDDDDDD               |
+  -14 |   DDDDDDDDDD               |
+  -13 |   DDDDDDDDDD               |
+  -12 |   DDDDDDDDDD               |
+  -11 |   EEEEEEEEEEEE             |
+  -10 |   EEEEEEEEEEEE             |
+   -9 |   EEEEEEEEEEEE             |
+   -8 |   EEEEEEEEEEEE             |
+   -7 |   EEEEEEEEEEEE++++++++++   |
+   -6 |   +++++FFFFFFFFFFFF+++++   |
+   -5 |   +++++FFFFFFFFFFFF+++++   |
+   -4 |   +++++FFFFFFFFFFFF+++++   |
+   -3 |   +++++FFFFFFFFFFFF+++++   |
+   -2 |   +++++FFFFFFFFFFFF+++++   |
+   -1 |   +++++FFFFFFFFFFFF+++++   |
+    0 |   +++++FFFFFFFFFFFF+++++   |
+    1 |   +++++FFFFFFFFFFFF+++++   |
+    2 |   +++++FFFFFFFFFFFF+++++   |
+    3 |   +++++FFFFFFFFFFFF+++++   |
+    4 |   +++++FFFFFFFFFFFF+++++   |
+    5 |   +++++FFFFFFFFFFFF+++++   |
+    6 |   ++++++++++EEEEEEEEEEEE   |
+    7 |             EEEEEEEEEEEE   |
+    8 |             EEEEEEEEEEEE   |
+    9 |             EEEEEEEEEEEE   |
+   10 |             EEEEEEEEEEEE   |
+   11 |               DDDDDDDDDD   |
+   12 |               DDDDDDDDDD   |
+   13 |               DDDDDDDDDD   |
+   14 |               DDDDDDDDDD   |
+   15 |               DDDDDDDDDD   |
+   16 |          CCCCCCCCCCCCCCCCC |
+   17 |          CCCCCCCCCCCCCCCCC |
+   18 |          CCCCCCCCCCCCCCCCC |
+   19 |          CCCCCCCCCCCCCCCCC |
+   20 |          CCCCCCCCCCCCCCCCC |
+   21 |          CCCCCCCCCCCCCCCCC |
+   22 |          BBBBBSSSSSSSAAAAA |
+   23 |          BBBBBSSSSSSSAAAAA |
+   24 |          BBBBBiSS@SSiAAAAA |
+   25 |          BBBBBSSSSSSSAAAAA |
+   26 |          BBBBB       AAAAA |
+   27 |          BBBBB       AAAAA |
+   28 |          VVVVV       WWWWW |
+   29 |          VVVVV       WWWWW |
+   30 |          VVVVV       WWWWW |
+   31 |          V¤VVV       WWW¤W |
+      26 × 64 cells drawn  ·  26 × 64 cells = 104 × 256 blocks  ·  cell 4
+      @ spawn   A lane-w (piece)   B lane-e (piece)   C bank (piece)   D apron (piece)   
+      E brink (piece)   F strand (piece)   S yard (spawn)   V dye-e (wool-room)   
+      W dye-w (wool-room)   i iron   ¤ wool   

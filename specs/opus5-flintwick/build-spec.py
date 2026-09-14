@@ -38,12 +38,26 @@ plan = {
     "meta": {"name": "Flintwick"},
     "globals": {"cell": 5, "symmetry": "rot_180", "maxPlayers": 24, "surface": 26, "observerY": 60},
     "pieces": [
-        {"id": "west-nab", "role": "piece",     "rect": [-8,  2,  6, 15], "surface": 26},
-        {"id": "east-nab", "role": "piece",     "rect": [ 2,  2,  6, 15], "surface": 26},
+        {"id": "west-nab", "role": "piece",     "rect": [-8,  2,  6, 12], "surface": 26},
+        {"id": "east-nab", "role": "piece",     "rect": [ 2,  2,  6, 12], "surface": 26},
         {"id": "wick",     "role": "piece",     "rect": [-2,  9,  4,  8], "surface": 26},
-        {"id": "knapp-w",  "role": "wool-room", "rect": [-8, 17,  4,  3], "surface": 27},
+        # A wool room stands at the far end of a spur off the island, not alongside the spawn: a
+        # lane piece the width of the room and twenty-five blocks long, with the room on its tip.
+        # The spawn is a separate piece with void either side of it, so neither room is something a
+        # defender is already standing in.
+        #
+        # The lane's four pieces are stated at 31 and not at the 26 the rest of the board uses,
+        # because the relief settles this corner five courses over `base` and the WALL's height is
+        # taken from the plan: at 26 its top lands at y30 and the terrain buries it, cobweb course
+        # and all. The seam `EL1` then reports against `west-nab` is not in the world — the two
+        # solve within a block of each other, and the transect up the lane walks `worst step 1`.
+        {"id": "lane-w",   "role": "piece",     "rect": [-8, 14,  4,  2], "surface": 31},
+        {"id": "head-w",   "role": "piece",     "rect": [-8, 16,  4,  3], "surface": 31},
+        {"id": "lane-e",   "role": "piece",     "rect": [ 4, 14,  4,  2], "surface": 31},
+        {"id": "head-e",   "role": "piece",     "rect": [ 4, 16,  4,  3], "surface": 31},
         {"id": "staith",   "role": "spawn",     "rect": [-3, 17,  6,  3], "surface": 27},
-        {"id": "knapp-e",  "role": "wool-room", "rect": [ 4, 17,  4,  3], "surface": 27},
+        {"id": "knapp-w",  "role": "wool-room", "rect": [-8, 19,  4,  3], "surface": 31},
+        {"id": "knapp-e",  "role": "wool-room", "rect": [ 4, 19,  4,  3], "surface": 31},
     ],
     # The wick is a build zone as well as the sound is: a bay a player cannot bridge is a wall
     # drawn as water, and it also turns each arm's inner face into thirty blocks of frontline
@@ -59,7 +73,10 @@ plan = {
                   {"id": "wool-2", "piece": "knapp-e", "at": [10, 7], "footprint": [2, 2, 16, 11]}],
         "destroyables": [], "cores": [],
     },
-    "walls": [], "boxes": [],
+    # the bedrock wall along each lane, at the seam fifteen blocks in front of the room's door,
+    # which is where `ST8` seats one. It is the only thing a lane is dressed with.
+    "walls": [{"a": "lane-w", "b": "head-w"}, {"a": "lane-e", "b": "head-e"}],
+    "boxes": [],
 }
 
 # ── materials ────────────────────────────────────────────────────────────────────────────────────
@@ -183,7 +200,7 @@ relief = {
              "high": DOWNLAND - 1, "low": STRAND + 2, "face": 3, "band": 8},
             # the garth behind the spawn, which the two wool rooms open onto
             {"id": "garth", "kind": "area", "h": GARTH, "bevel": 4,
-             "ring": lobe(0, 90, [40, 34, 38, 31, 40, 34, 38, 31], 0.1)},
+             "ring": lobe(0, 92, [22, 18, 21, 16, 22, 18, 21, 16], 0.1)},
             # two chalk nabs on the down, which is what keeps the top from being one plane and gives
             # the board somewhere to stand that is not the route
             {"id": "nab-w", "kind": "point", "at": [-26, 58], "r": 7, "h": NAB},
@@ -267,10 +284,14 @@ add_shapes = [
     # the strand's own paint, drawn to the mark that made it
     paint("strand-floor", [[-44, 6], [-30, 13], [-14, 21], [6, 16], [22, 25], [38, 18], [44, 6]],
           "strand"),
+    # No flight on either lane. The ground already climbs it — read at x -30, the lane runs y26 at
+    # the wall to y31 at the room's door — and a `level` flight anchored to the plan's numbers
+    # instead of to that reading cut a five-course slot across the mouth and made the spur one-way.
+    # A lane needn't be flat and this one is not; what it must not have is a hole in it.
     # the two knapping yards: the wool rooms stand in cuts, not on the down. The cut's back wall is
     # a face, which is where the theme's flint lands — the dark is the reason the room is there.
-    pad("yard-w", [(-36, 68), (-22, 68), (-22, 82), (-36, 82)], GARTH - 2, "knap"),
-    pad("yard-e", [(22, 68), (36, 68), (36, 82), (22, 82)], GARTH - 2, "knap"),
+    pad("yard-w", [(-37, 88), (-23, 88), (-23, 94), (-37, 94)], 31, "knap"),
+    pad("yard-e", [(23, 88), (37, 88), (37, 94), (23, 94)], 31, "knap"),
     # a knapped wall along each arm's cliff top, drawn as a polyline so the rasterizer splines it:
     # four clicked points come out as a curve, which a chain of rectangles cannot do. It is the built
     # edge the down stops at, and it is the reason the one straight-looking line on the board is not
@@ -371,8 +392,8 @@ props = [
     path("way-spine",  [[0, 86], [-2, 74], [2, 62], [0, 52]], 2, WAY, seed=41),
     path("way-west",   [[-6, 80], [-18, 74], [-26, 60], [-27, 47]], 2, WAY, seed=42),
     path("way-east",   [[8, 80], [19, 74], [24, 60], [24, 47]], 2, WAY, seed=43),
-    path("way-yard-w", [[-14, 82], [-24, 78]], 2, WAY, seed=44),
-    path("way-yard-e", [[14, 82], [24, 78]], 2, WAY, seed=45),
+    path("way-yard-w", [[-26, 66], [-30, 76], [-30, 90]], 2, WAY, seed=44),
+    path("way-yard-e", [[26, 66], [30, 76], [30, 90]], 2, WAY, seed=45),
     # the watch: one small building on the nab east of the coombe, looking over the sound. It is on
     # the down rather than in a yard, so it stands where the two ways meet and nowhere near a door.
     {"id": "watch", "kind": "house", "seed": 601, "front": "negX", "style": "watch",
@@ -385,7 +406,7 @@ props = [
 ]
 # thorn on the open down, birch down in the coombe. Nothing on the strand: the landing ground is
 # bare, and that is what makes crossing the sound the decision the board is about.
-for i, (x, z) in enumerate([(-34, 50), (-38, 56), (-37, 48), (30, 66), (36, 64), (16, 58)]):
+for i, (x, z) in enumerate([(-34, 50), (-38, 56), (-37, 48), (16, 44), (36, 64), (16, 58)]):
     props.append({"id": f"thorn-{i}", "kind": "tree", "seed": 701 + i, "x": x, "z": z,
                   "style": THORN[i % len(THORN)]})
 for i, (x, z) in enumerate([(-8, 58), (8, 62), (6, 54)]):
@@ -394,7 +415,7 @@ for i, (x, z) in enumerate([(-8, 58), (8, 62), (6, 54)]):
 # sarsens: stone, cobblestone and andesite and nothing else. Pale ground is exactly where a paled
 # boulder disappears, so these are left the colour stone is. One of them lies on the strand, which is
 # where a chalk coast puts the flints the cliff has already given up.
-for i, (x, z) in enumerate([(-32, 62), (16, 20), (-36, 40), (32, 44), (-20, 52), (28, 70)]):
+for i, (x, z) in enumerate([(-32, 62), (16, 20), (-36, 40), (32, 44), (-20, 52), (12, 54)]):
     props.append(dict(BOULDER, id=f"sarsen-{i}", kind="boulder", seed=741 + i, x=x, z=z,
                       size=4 if i % 2 == 0 else 3))
 

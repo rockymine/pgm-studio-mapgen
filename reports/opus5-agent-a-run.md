@@ -41,7 +41,7 @@ All four numbers below are off the **final** drive, after the author's pass.
 | slug | mode | size | plan | dead | declines | 03-slopes |
 |---|---|---|---|---|---|---|
 | `opus5-dustwath` | DTM | 88 × 208 | 5 pieces, a void wath, 3 build zones | 18.7% | 0 | 12 072 walked · 307 scrambled · 158 barrier · 8 faces |
-| `opus5-redmarl` | CTW | 104 × 176 | 7 pieces, offset halves | **0.0%** | 0 | 11 191 walked · 341 scrambled · 210 barrier · 16 faces |
+| `opus5-redmarl` | CTW | 104 × 256 | 9 pieces, offset halves, a lane per wool room | **0.0%** | 0 | 12 694 walked · 441 scrambled · 513 barrier · 20 faces |
 | `opus5-potsherd` | DTC | 104 × 208 | 8 pieces, a cut pit | 9.4% | 2 | 19 377 walked · 472 scrambled · 123 barrier · 7 faces |
 | `opus5-ochrepans` | KotH | 104 × 192 | 2 pieces, everything authored | 50.8%, and the number is a blind spot — below | 1 | 16 536 walked · 325 scrambled · 811 barrier · 10 faces |
 
@@ -174,6 +174,38 @@ written on every drive and says all of this as a raster.
    is what forced the material once the count changed. Is the count what matters here — twenty-seven
    interruptible breaks a defender can arrive during — or should `cube-3` carry emerald block, which is
    the hardest of the four the gate still accepts at that size?
+
+## The rule that is written down and not implemented
+
+**A wool room needs its own lane, and nothing in the studio will tell you it does not have one.**
+
+Redmarl's first back row put both dyehouses and the spawn in one row sharing edges — `dye-w.maxX =
+yard.minX = −8`, `yard.maxX = dye-e.minX = −1` — so the rooms sat **eight blocks** from the spawn with
+no lane piece anywhere. `POST /plan/evaluate` answered **`score 0, valid true`**, and so did every gate
+downstream.
+
+Why nothing fired: `WL2` reads *"on a different lane than the spawn; wool↔spawn ≥ 20"* and **only the
+distance clause is implemented**. It measures the walk from the spawn point to the wool block, which was
+33 blocks — past the hard floor of 20 and past the soft band's 27 — because a room 20 blocks wide can
+put its wool block far from a spawn it is touching. `WL6`, *each wool on a distinct lane*, **has no term
+at all**. The composer knows better by construction: `GET /api/compose` reports every wool unit as
+`boxes: 2`, the room **and its lane**, against `boxes: 1` for a spawn or a hub.
+
+`specs/opus5-coinfall` is the shape in this repository — `camp` (spawn) → `run` (piece) → `plinth`
+(wool-room) at the run's far end, the plinth five courses above the run. Redmarl is now built that way:
+a 24-block lane the width of its room off each hand of the spawn, the room at its end two courses up,
+markers 37.5 from the spawn and 56 from each other.
+
+Two things the lane taught, both off a transect:
+
+- **The lane stays empty and carries a bedrock bar.** Nothing is planted on either one; each carries a
+  bar across it at z −100 in two runs with a six-block gate between, so a raider has one way through.
+  Board barrier went 210 → 513 and all of the new barrier is those four bars.
+- **A proud course on top of a ramp is a scramble.** The authored ramp up the lane's last fourteen
+  blocks still read `scramble +2 at (-41,-117)`, because the dyehouse yard stood a course proud of its
+  plinth and the two rises stacked. Seating the dyehouse yards flush — the spawn's keeps its riser,
+  nobody climbs that under fire — gives `worst step 1, 0 barrier, 0 scramble, walked end to end` up both
+  lanes. `WL11` still complains, because it walks the pieces flat and cannot see any of it.
 
 ## The author's pass, and what each item changed
 

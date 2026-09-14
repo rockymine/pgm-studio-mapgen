@@ -1,15 +1,15 @@
 ## spawn-red (spawn) along x
 TRANSECT 45 stations from (-40, -96) to (4, -96), every 1
   station        ground  surface  water  top  standing            step
-  (  -40,   -96)      27       27           37  wool wool-1         
-  (  -39,   -96)      27       27           37  wool wool-1         
-  (  -38,   -96)      27       27           37  wool wool-1         
-  (  -37,   -96)      27       27           37  wool wool-1         
-  (  -36,   -96)      27       27           37  wool wool-1         
-  (  -35,   -96)      27       27           37  wool wool-1         
-  (  -34,   -96)      27       27           37                      
-  (  -33,   -96)      27       27           37  redstoneline 0      
-  (  -32,   -96)      26       26           26                      -1
+  (  -40,   -96)      26       26           26  stroke track-dye-w  
+  (  -39,   -96)      26       26           26  stroke track-dye-w  
+  (  -38,   -96)      26       26           26                      
+  (  -37,   -96)      26       26           26                      
+  (  -36,   -96)      26       26           26                      
+  (  -35,   -96)      26       26           26                      
+  (  -34,   -96)      26       26           26                      
+  (  -33,   -96)      26       26           26                      
+  (  -32,   -96)      26       26           26                      
   (  -31,   -96)      26       26           30  ironcube spawn-1:0  
   (  -30,   -96)      26       26           30  ironcube spawn-1:0  
   (  -29,   -96)      27       27           30  ironcube spawn-1:0  +1
@@ -37,21 +37,27 @@ TRANSECT 45 stations from (-40, -96) to (4, -96), every 1
   (   -7,   -96)      26       26           29  ironcube spawn-1:1  
   (   -6,   -96)      26       26           29  ironcube spawn-1:1  
   (   -5,   -96)      26       26           26                      
-  (   -4,   -96)      27       27           37  redstoneline 2      +1
-  (   -3,   -96)      27       27           37                      
-  (   -2,   -96)      27       27           37  wool wool-2         
-  (   -1,   -96)      27       27           37  wool wool-2         
-  (    0,   -96)      27       27           37  wool wool-2         
-  (    1,   -96)      27       27           37  wool wool-2         
-  (    2,   -96)      27       27           37  wool wool-2         
-  (    3,   -96)      27       27           37  wool wool-2         
-  (    4,   -96)      27       27           37  wool wool-2         
-rises 2, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-1 at (-42, -98), redstoneline 0 at (-33, -98), ironcube spawn-1:0 at (-31, -98), spawn spawn-1 at (-26, -98), ironcube spawn-1:1 at (-8, -98), redstoneline 2 at (-4, -98), wool wool-2 at (-2, -98)
+  (   -4,   -96)      26       26           26                      
+  (   -3,   -96)      26       26           26                      
+  (   -2,   -96)      26       26           26                      
+  (   -1,   -96)      26       26           26                      
+  (    0,   -96)      26       26           26                      
+  (    1,   -96)      26       26           26                      
+  (    2,   -96)      26       26           26                      
+  (    3,   -96)      26       26           26                      
+  (    4,   -96)      26       26           26  stroke track-dye-e  
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track-dye-w at (-42, -98), ironcube spawn-1:0 at (-31, -98), spawn spawn-1 at (-26, -98), ironcube spawn-1:1 at (-8, -98), stroke track-dye-e at (3, -94)
 
 ## spawn-red (spawn) along z
-TRANSECT 27 stations from (-18, -106) to (-18, -80), every 1
+TRANSECT 33 stations from (-18, -112) to (-18, -80), every 1
   station        ground  surface  water  top  standing            step
+  (  -18,  -112)                                                    void
+  (  -18,  -111)                                                    void
+  (  -18,  -110)                                                    void
+  (  -18,  -109)                                                    void
+  (  -18,  -108)                                                    void
+  (  -18,  -107)                                                    void
   (  -18,  -106)      26       26           26                      
   (  -18,  -105)      27       27           27                      +1
   (  -18,  -104)      27       27           27                      

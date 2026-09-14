@@ -1,61 +1,61 @@
 ## stone-1 (boulder) along x
-TRANSECT 25 stations from (-28, 58) to (-4, 58), every 1
+TRANSECT 25 stations from (-4, 20) to (20, 20), every 1
   station        ground  surface  water  top  standing            step
-  (  -28,    58)      14       14           14                      
-  (  -27,    58)      14       14           14                      
-  (  -26,    58)      14       14           14                      
-  (  -25,    58)      14       14           30  tree holt-8         
-  (  -24,    58)      14       14           32  tree holt-8         
-  (  -23,    58)      14       14           32  tree holt-8         
-  (  -22,    58)      14       14           33  tree holt-8         
-  (  -21,    58)      14       14           33  tree holt-8         
-  (  -20,    58)      19       19           32  tree holt-8         BARRIER +5
-  (  -19,    58)      19       19           33  tree holt-8         
-  (  -18,    58)      19       19           29  tree holt-8         
-  (  -17,    58)      19       19           24  boulder stone-1     
-  (  -16,    58)      18       18           24  boulder stone-1     -1
-  (  -15,    58)      18       18           24  boulder stone-1     
-  (  -14,    58)      18       18           23  boulder stone-1     
-  (  -13,    58)      18       18           22  boulder stone-1     
-  (  -12,    58)      18       18           21  boulder stone-1     
-  (  -11,    58)      18       18           18                      
-  (  -10,    58)                                                    void
-  (   -9,    58)                                                    void
-  (   -8,    58)                                                    void
-  (   -7,    58)                                                    void
-  (   -6,    58)                                                    void
-  (   -5,    58)                                                    void
-  (   -4,    58)                                                    void
-rises 1, falls 1, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (-20, 58) | walked end to end
-beside: tree holt-8 at (-26, 56), boulder stone-1 at (-19, 60)
+  (   -4,    20)      12       12           12                      
+  (   -3,    20)      12       12           12                      
+  (   -2,    20)      12       12           12                      
+  (   -1,    20)      12       12           12                      
+  (    0,    20)      12       12           12                      
+  (    1,    20)      12       12           12                      
+  (    2,    20)      12       12           12                      
+  (    3,    20)      13       13           13                      +1
+  (    4,    20)      13       13           16  boulder stone-1     
+  (    5,    20)      13       13           17  boulder stone-1     
+  (    6,    20)      13       13           18  boulder stone-1     
+  (    7,    20)      13       13           19  boulder stone-1     
+  (    8,    20)      13       13           19  boulder stone-1     
+  (    9,    20)      13       13           19  boulder stone-1     
+  (   10,    20)      14       14           18  boulder stone-1     +1
+  (   11,    20)      14       14           17  boulder stone-1     
+  (   12,    20)      14       14           16  boulder stone-1     
+  (   13,    20)      14       14           14                      
+  (   14,    20)      14       14           14                      
+  (   15,    20)                                                    void
+  (   16,    20)                                                    void
+  (   17,    20)                                                    void
+  (   18,    20)                                                    void
+  (   19,    20)                                                    void
+  (   20,    20)                                                    void
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke lane at (-6, 18), boulder stone-1 at (4, 20)
 
 ## stone-1 (boulder) along z
-TRANSECT 25 stations from (-16, 46) to (-16, 70), every 1
+TRANSECT 25 stations from (8, 8) to (8, 32), every 1
   station        ground  surface  water  top  standing            step
-  (  -16,    46)      23       23           23                      
-  (  -16,    47)      23       23           23                      
-  (  -16,    48)      23       23           23                      
-  (  -16,    49)      23       23           27  tree holt-8         
-  (  -16,    50)      22       22           28  tree holt-8         -1
-  (  -16,    51)      21       21           27  tree holt-8         -1
-  (  -16,    52)      21       21           30  tree holt-8         
-  (  -16,    53)      21       21           29  tree holt-8         
-  (  -16,    54)      20       20           29  tree holt-8         -1
-  (  -16,    55)      20       20           30  tree holt-8         
-  (  -16,    56)      20       20           28  tree holt-8         
-  (  -16,    57)      19       19           24  boulder stone-1     -1
-  (  -16,    58)      18       18           24  boulder stone-1     -1
-  (  -16,    59)      18       18           24  boulder stone-1     
-  (  -16,    60)      17       17           23  boulder stone-1     -1
-  (  -16,    61)      16       16           22  boulder stone-1     -1
-  (  -16,    62)      16       16           16                      
-  (  -16,    63)      15       15           15                      -1
-  (  -16,    64)      15       15           15                      
-  (  -16,    65)      15       15           15                      
-  (  -16,    66)      15       15           15                      
-  (  -16,    67)      15       15           15                      
-  (  -16,    68)      15       15           15                      
-  (  -16,    69)      15       15           15                      
-  (  -16,    70)      16       16           16                      +1
-rises 1, falls 8, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree holt-8 at (-18, 47), boulder stone-1 at (-15, 55)
+  (    8,     8)                                                    void
+  (    8,     9)                                                    void
+  (    8,    10)      14       14           14                      
+  (    8,    11)      14       14           14                      
+  (    8,    12)      14       14           14                      
+  (    8,    13)      14       14           14                      
+  (    8,    14)      14       14           14                      
+  (    8,    15)      14       14           14                      
+  (    8,    16)      14       14           14                      
+  (    8,    17)      14       14           18  boulder stone-1     
+  (    8,    18)      14       14           18  boulder stone-1     
+  (    8,    19)      13       13           19  boulder stone-1     -1
+  (    8,    20)      13       13           19  boulder stone-1     
+  (    8,    21)      13       13           19  boulder stone-1     
+  (    8,    22)      13       13           18  boulder stone-1     
+  (    8,    23)      13       13           17  boulder stone-1     
+  (    8,    24)      14       14           14                      +1
+  (    8,    25)                                                    void
+  (    8,    26)                                                    void
+  (    8,    27)                                                    void
+  (    8,    28)                                                    void
+  (    8,    29)                                                    void
+  (    8,    30)                                                    void
+  (    8,    31)                                                    void
+  (    8,    32)                                                    void
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder stone-1 at (6, 17)

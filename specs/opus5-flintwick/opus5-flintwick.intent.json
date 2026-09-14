@@ -149,29 +149,29 @@
    "protection": [
     {
      "minX": -40,
-     "minZ": 85,
+     "minZ": 95,
      "maxX": -20,
-     "maxZ": 100
+     "maxZ": 110
     }
    ],
    "spawn": {
     "x": -30,
-    "y": 27,
-    "z": 92
+    "y": 31,
+    "z": 102
    },
    "monuments": [],
    "footprint": {
     "minX": -38,
-    "minZ": 87,
+    "minZ": 97,
     "maxX": -22,
-    "maxZ": 98
+    "maxZ": 108
    },
    "entries": [
     {
      "minX": -40,
-     "minZ": 85,
+     "minZ": 95,
      "maxX": -20,
-     "maxZ": 85
+     "maxZ": 95
     }
    ]
   },
@@ -187,29 +187,29 @@
    "protection": [
     {
      "minX": 20,
-     "minZ": 85,
+     "minZ": 95,
      "maxX": 40,
-     "maxZ": 100
+     "maxZ": 110
     }
    ],
    "spawn": {
     "x": 30,
-    "y": 27,
-    "z": 92
+    "y": 31,
+    "z": 102
    },
    "monuments": [],
    "footprint": {
     "minX": 22,
-    "minZ": 87,
+    "minZ": 97,
     "maxX": 38,
-    "maxZ": 98
+    "maxZ": 108
    },
    "entries": [
     {
      "minX": 20,
-     "minZ": 85,
+     "minZ": 95,
      "maxX": 40,
-     "maxZ": 85
+     "maxZ": 95
     }
    ]
   },
@@ -225,29 +225,29 @@
    "protection": [
     {
      "minX": 20,
-     "minZ": -100,
+     "minZ": -110,
      "maxX": 40,
-     "maxZ": -85
+     "maxZ": -95
     }
    ],
    "spawn": {
     "x": 30,
-    "y": 27,
-    "z": -92
+    "y": 31,
+    "z": -102
    },
    "monuments": [],
    "footprint": {
     "minX": 22,
-    "minZ": -98,
+    "minZ": -108,
     "maxX": 38,
-    "maxZ": -87
+    "maxZ": -97
    },
    "entries": [
     {
      "minX": 20,
-     "minZ": -85,
+     "minZ": -95,
      "maxX": 40,
-     "maxZ": -85
+     "maxZ": -95
     }
    ]
   },
@@ -263,29 +263,29 @@
    "protection": [
     {
      "minX": -40,
-     "minZ": -100,
+     "minZ": -110,
      "maxX": -20,
-     "maxZ": -85
+     "maxZ": -95
     }
    ],
    "spawn": {
     "x": -30,
-    "y": 27,
-    "z": -92
+    "y": 31,
+    "z": -102
    },
    "monuments": [],
    "footprint": {
     "minX": -38,
-    "minZ": -98,
+    "minZ": -108,
     "maxX": -22,
-    "maxZ": -87
+    "maxZ": -97
    },
    "entries": [
     {
      "minX": -40,
-     "minZ": -85,
+     "minZ": -95,
      "maxX": -20,
-     "maxZ": -85
+     "maxZ": -95
     }
    ]
   }
@@ -319,9 +319,9 @@
   "redstoneLines": [
    {
     "x1": -40,
-    "z1": 85,
+    "z1": 95,
     "x2": -21,
-    "z2": 85,
+    "z2": 95,
     "stamp": {
      "kind": "redstoneline",
      "unit": "0",
@@ -330,9 +330,9 @@
    },
    {
     "x1": 20,
-    "z1": -86,
+    "z1": -96,
     "x2": 39,
-    "z2": -86,
+    "z2": -96,
     "stamp": {
      "kind": "redstoneline",
      "unit": "0",
@@ -341,9 +341,9 @@
    },
    {
     "x1": 20,
-    "z1": 85,
+    "z1": 95,
     "x2": 39,
-    "z2": 85,
+    "z2": 95,
     "stamp": {
      "kind": "redstoneline",
      "unit": "1",
@@ -352,9 +352,9 @@
    },
    {
     "x1": -40,
-    "z1": -86,
+    "z1": -96,
     "x2": -21,
-    "z2": -86,
+    "z2": -96,
     "stamp": {
      "kind": "redstoneline",
      "unit": "1",
@@ -363,7 +363,60 @@
    }
   ],
   "ironCubes": [],
-  "walls": [],
+  "walls": [
+   {
+    "minX": -40,
+    "minZ": 79,
+    "maxX": -20,
+    "maxZ": 81,
+    "topY": 33,
+    "chestOnMinFace": true,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "minX": 20,
+    "minZ": -81,
+    "maxX": 40,
+    "maxZ": -79,
+    "topY": 33,
+    "chestOnMinFace": false,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 1
+    }
+   },
+   {
+    "minX": 20,
+    "minZ": 79,
+    "maxX": 40,
+    "maxZ": 81,
+    "topY": 33,
+    "chestOnMinFace": true,
+    "stamp": {
+     "kind": "wall",
+     "unit": "1",
+     "image": 0
+    }
+   },
+   {
+    "minX": -40,
+    "minZ": -81,
+    "maxX": -20,
+    "maxZ": -79,
+    "topY": 33,
+    "chestOnMinFace": false,
+    "stamp": {
+     "kind": "wall",
+     "unit": "1",
+     "image": 1
+    }
+   }
+  ],
   "isEmpty": false
  }
 }

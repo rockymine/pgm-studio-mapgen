@@ -8,8 +8,8 @@
   "bbox": {
    "min_x": -56,
    "max_x": 56,
-   "min_z": -108,
-   "max_z": 108
+   "min_z": -132,
+   "max_z": 132
   }
  },
  "layers": [
@@ -239,39 +239,43 @@
       "vertices": [
        [
         -52,
+        -112
+       ],
+       [
+        -32,
+        -112
+       ],
+       [
+        -32,
         -104
-       ],
-       [
-        -40.7,
-        -104.9
-       ],
-       [
-        -29.3,
-        -105.3
        ],
        [
         -18,
         -105.9
        ],
        [
-        -6.7,
-        -106.2
-       ],
-       [
-        4.7,
-        -106.1
-       ],
-       [
-        16,
+        -4,
         -104
        ],
        [
-        17.7,
-        -90.7
+        -4,
+        -112
+       ],
+       [
+        16,
+        -112
+       ],
+       [
+        17.6,
+        -100
        ],
        [
         17.7,
-        -77.3
+        -88
+       ],
+       [
+        17.7,
+        -76
        ],
        [
         16,
@@ -303,85 +307,59 @@
        ],
        [
         -52.1,
-        -77.3
+        -76
        ],
        [
-        -52.3,
-        -90.7
+        -52.2,
+        -88
+       ],
+       [
+        -52.6,
+        -100
        ]
       ],
       "controls": {
-       "1": {
-        "in": [
-         -42.51075850021114,
-         -104.79630017399673
-        ],
-        "out": [
-         -38.87786312952892,
-         -105.00435145073183
-        ]
-       },
-       "2": {
-        "in": [
-         -31.123354068797042,
-         -105.21967603221158
-        ],
-        "out": [
-         -27.491207391604036,
-         -105.37968249376193
-        ]
-       },
        "3": {
         "in": [
-         -19.809112936189543,
-         -105.82795567953228
+         -20.260534450080335,
+         -105.9
         ],
         "out": [
-         -16.192795374043172,
-         -105.97196832581244
-        ]
-       },
-       "4": {
-        "in": [
-         -8.508566861190856,
-         -106.18406549020978
-        ],
-        "out": [
-         -4.876000619599674,
-         -106.21607047912248
-        ]
-       },
-       "5": {
-        "in": [
-         2.884436481809148,
-         -106.27595769779823
-        ],
-        "out": [
-         6.530380147835455,
-         -105.92260632928466
+         -15.739465549919665,
+         -105.9
         ]
        },
        "7": {
         "in": [
-         17.563683065093528,
-         -92.84097774235458
+         17.463139346787973,
+         -101.93215039828746
         ],
         "out": [
-         17.83623350263915,
-         -88.56033263502042
+         17.735664808307707,
+         -98.08473211800886
         ]
        },
        "8": {
         "in": [
-         17.83623350263915,
-         -79.43966736497958
+         17.691999791672995,
+         -89.92004999848096
         ],
         "out": [
-         17.563683065093528,
-         -75.15902225764542
+         17.707999930556458,
+         -86.08001666644965
         ]
        },
-       "10": {
+       "9": {
+        "in": [
+         17.835660097969413,
+         -77.9152013830976
+        ],
+        "out": [
+         17.562985353130447,
+         -74.06567557360633
+        ]
+       },
+       "11": {
         "in": [
          6.537220647551207,
          -61.8023370757215
@@ -391,7 +369,7 @@
          -61.40031854181887
         ]
        },
-       "11": {
+       "12": {
         "in": [
          -4.876089100119957,
          -61.47589545066238
@@ -401,7 +379,7 @@
          -61.52390715091021
         ]
        },
-       "12": {
+       "13": {
         "in": [
          -16.193853228064818,
          -61.79610660161435
@@ -411,7 +389,7 @@
          -62.00415716488358
         ]
        },
-       "13": {
+       "14": {
         "in": [
          -27.490763197299582,
          -62.672476701131245
@@ -421,7 +399,7 @@
          -62.928487244877324
         ]
        },
-       "14": {
+       "15": {
         "in": [
          -38.87511272255841,
          -63.403530187976656
@@ -431,24 +409,34 @@
          -63.59553721207723
         ]
        },
-       "16": {
-        "in": [
-         -52.07609072098907,
-         -75.1720741680272
-        ],
-        "out": [
-         -52.12409105004456,
-         -79.44410345396572
-        ]
-       },
        "17": {
         "in": [
-         -52.30803080057592,
-         -88.55577624622752
+         -52.084,
+         -74.08
         ],
         "out": [
-         -52.29202799117701,
-         -92.82852635573894
+         -52.116,
+         -77.92
+        ]
+       },
+       "18": {
+        "in": [
+         -52.1600072891674,
+         -86.08034988003536
+        ],
+        "out": [
+         -52.240013533502314,
+         -89.92064960811092
+        ]
+       },
+       "19": {
+        "in": [
+         -52.61600833058596,
+         -98.0790003296846
+        ],
+        "out": [
+         -52.583980568704995,
+         -101.92233175540045
         ]
        }
       },
@@ -458,6 +446,102 @@
       "skirt": null,
       "relief_scope": null,
       "base_height": 26,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "apron-28",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -52,
+        -128
+       ],
+       [
+        -32,
+        -128
+       ],
+       [
+        -32,
+        -112
+       ],
+       [
+        -52,
+        -112
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 28,
+      "anchor_heights": null,
+      "floor": null,
+      "role": null,
+      "intentRef": null,
+      "color": null,
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "apron-28-2",
+      "type": "polygon",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": null,
+      "min_z": null,
+      "max_x": null,
+      "max_z": null,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": [
+       [
+        -4,
+        -128
+       ],
+       [
+        16,
+        -128
+       ],
+       [
+        16,
+        -112
+       ],
+       [
+        -4,
+        -112
+       ]
+      ],
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": 28,
       "anchor_heights": null,
       "floor": null,
       "role": null,
@@ -602,9 +686,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -52,
-      "min_z": -104,
+      "min_z": -128,
       "max_x": -32,
-      "max_z": -88,
+      "max_z": -112,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -615,7 +699,7 @@
       "height_mode": null,
       "skirt": null,
       "relief_scope": "follow",
-      "base_height": 26,
+      "base_height": 28,
       "anchor_heights": null,
       "floor": null,
       "role": "woolRoom",
@@ -623,7 +707,6 @@
       "color": "red",
       "height_authored": null,
       "doors": [
-       "+x",
        "+z"
       ],
       "theme": null,
@@ -636,9 +719,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -50,
-      "min_z": -102,
+      "min_z": -126,
       "max_x": -34,
-      "max_z": -90,
+      "max_z": -114,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -667,9 +750,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -4,
-      "min_z": -104,
+      "min_z": -128,
       "max_x": 16,
-      "max_z": -88,
+      "max_z": -112,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -680,7 +763,7 @@
       "height_mode": null,
       "skirt": null,
       "relief_scope": "follow",
-      "base_height": 26,
+      "base_height": 28,
       "anchor_heights": null,
       "floor": null,
       "role": "woolRoom",
@@ -688,7 +771,6 @@
       "color": "orange",
       "height_authored": null,
       "doors": [
-       "-x",
        "+z"
       ],
       "theme": null,
@@ -701,9 +783,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -2,
-      "min_z": -102,
+      "min_z": -126,
       "max_x": 14,
-      "max_z": -90,
+      "max_z": -114,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -732,9 +814,9 @@
       "override": false,
       "keepClear": false,
       "min_x": 32,
-      "min_z": 88,
+      "min_z": 112,
       "max_x": 52,
-      "max_z": 104,
+      "max_z": 128,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -763,9 +845,9 @@
       "override": false,
       "keepClear": false,
       "min_x": 34,
-      "min_z": 90,
+      "min_z": 114,
       "max_x": 50,
-      "max_z": 102,
+      "max_z": 126,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -794,9 +876,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -16,
-      "min_z": 88,
+      "min_z": 112,
       "max_x": 4,
-      "max_z": 104,
+      "max_z": 128,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -825,9 +907,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -14,
-      "min_z": 90,
+      "min_z": 114,
       "max_x": 2,
-      "max_z": 102,
+      "max_z": 126,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -853,38 +935,38 @@
       "id": "yard-dye-w",
       "type": "polygon",
       "operation": "add",
-      "base_height": 27,
+      "base_height": 28,
       "relief_scope": "exclude",
       "keepClear": true,
       "theme": "works",
       "vertices": [
        [
         -53,
-        -104
+        -127
        ],
        [
         -44,
-        -106
+        -129
        ],
        [
-        -33,
-        -103
+        -31,
+        -127
+       ],
+       [
+        -30,
+        -122
        ],
        [
         -32,
-        -96
-       ],
-       [
-        -34,
-        -88
+        -117
        ],
        [
         -44,
-        -86
+        -116
        ],
        [
         -53,
-        -90
+        -118
        ]
       ]
      },
@@ -931,40 +1013,284 @@
       "id": "yard-dye-e",
       "type": "polygon",
       "operation": "add",
-      "base_height": 27,
+      "base_height": 28,
       "relief_scope": "exclude",
       "keepClear": true,
       "theme": "works",
       "vertices": [
        [
-        -4,
-        -104
+        -5,
+        -127
        ],
        [
         6,
-        -106
-       ],
-       [
-        16,
-        -103
+        -129
        ],
        [
         17,
-        -96
+        -127
        ],
        [
-        15,
-        -88
+        18,
+        -122
+       ],
+       [
+        16,
+        -117
        ],
        [
         6,
-        -86
+        -116
        ],
        [
-        -4,
-        -90
+        -5,
+        -118
        ]
       ]
+     },
+     {
+      "id": "ramp-dye-w",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "floor": 0,
+      "vertices": [
+       [
+        -46,
+        -116
+       ],
+       [
+        -36,
+        -116
+       ],
+       [
+        -36,
+        -102
+       ],
+       [
+        -46,
+        -102
+       ]
+      ],
+      "anchor_heights": [
+       28,
+       28,
+       26,
+       26
+      ],
+      "material": {
+       "kind": "cell",
+       "seed": 63,
+       "cellSize": 7,
+       "jitter": 2,
+       "warp": 3,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 12,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 172,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 3,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 179,
+         "data": 0
+        }
+       ],
+       "rise": 2
+      }
+     },
+     {
+      "id": "ramp-dye-e",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "floor": 0,
+      "vertices": [
+       [
+        -2,
+        -116
+       ],
+       [
+        8,
+        -116
+       ],
+       [
+        8,
+        -102
+       ],
+       [
+        -2,
+        -102
+       ]
+      ],
+      "anchor_heights": [
+       28,
+       28,
+       26,
+       26
+      ],
+      "material": {
+       "kind": "cell",
+       "seed": 63,
+       "cellSize": 7,
+       "jitter": 2,
+       "warp": 3,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 12,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 172,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 3,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 179,
+         "data": 0
+        }
+       ],
+       "rise": 2
+      }
+     },
+     {
+      "id": "bar-w-a",
+      "type": "polyline",
+      "operation": "add",
+      "radius": 1.5,
+      "stroke_edge": "solid",
+      "base_height": 30,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "vertices": [
+       [
+        -53,
+        -100
+       ],
+       [
+        -48,
+        -100
+       ],
+       [
+        -44,
+        -100
+       ]
+      ],
+      "material": {
+       "kind": "solid",
+       "id": 7,
+       "data": 0
+      }
+     },
+     {
+      "id": "bar-w-b",
+      "type": "polyline",
+      "operation": "add",
+      "radius": 1.5,
+      "stroke_edge": "solid",
+      "base_height": 30,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "vertices": [
+       [
+        -38,
+        -100
+       ],
+       [
+        -34,
+        -100
+       ],
+       [
+        -31,
+        -100
+       ]
+      ],
+      "material": {
+       "kind": "solid",
+       "id": 7,
+       "data": 0
+      }
+     },
+     {
+      "id": "bar-e-a",
+      "type": "polyline",
+      "operation": "add",
+      "radius": 1.5,
+      "stroke_edge": "solid",
+      "base_height": 30,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "vertices": [
+       [
+        -5,
+        -100
+       ],
+       [
+        0,
+        -100
+       ],
+       [
+        4,
+        -100
+       ]
+      ],
+      "material": {
+       "kind": "solid",
+       "id": 7,
+       "data": 0
+      }
+     },
+     {
+      "id": "bar-e-b",
+      "type": "polyline",
+      "operation": "add",
+      "radius": 1.5,
+      "stroke_edge": "solid",
+      "base_height": 30,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "vertices": [
+       [
+        10,
+        -100
+       ],
+       [
+        14,
+        -100
+       ],
+       [
+        17,
+        -100
+       ]
+      ],
+      "material": {
+       "kind": "solid",
+       "id": 7,
+       "data": 0
+      }
      },
      {
       "id": "wash-stair",
@@ -1577,9 +1903,17 @@
        "apron-21",
        "apron-23",
        "apron-26",
+       "apron-28",
+       "apron-28-2",
        "yard-dye-w",
        "yard-spawn",
        "yard-dye-e",
+       "ramp-dye-w",
+       "ramp-dye-e",
+       "bar-w-a",
+       "bar-w-b",
+       "bar-e-a",
+       "bar-e-b",
        "wash-stair",
        "revet-w",
        "revet-e",
@@ -8070,20 +8404,20 @@
     },
     "points": [
      [
-      -28,
+      -34,
       -86
      ],
      [
-      -35,
-      -88
+      -40,
+      -94
+     ],
+     [
+      -41,
+      -102
      ],
      [
       -42,
-      -90
-     ],
-     [
-      -46,
-      -92
+      -110
      ]
     ]
    },
@@ -8127,20 +8461,20 @@
     },
     "points": [
      [
-      -10,
+      0,
       -86
      ],
      [
-      0,
-      -88
+      6,
+      -94
+     ],
+     [
+      7,
+      -102
      ],
      [
       8,
-      -90
-     ],
-     [
-      12,
-      -92
+      -110
      ]
     ]
    },
@@ -8382,11 +8716,11 @@
     "points": [
      [
       -58,
-      -110
+      -134
      ],
      [
       24,
-      -110
+      -134
      ],
      [
       28,
@@ -8463,6 +8797,134 @@
       [
        -54,
        -62
+      ]
+     ]
+    },
+    {
+     "id": "lane-pan-w",
+     "kind": "area",
+     "h": 26,
+     "bevel": 2,
+     "ring": [
+      [
+       -54,
+       -114
+      ],
+      [
+       -42,
+       -116
+      ],
+      [
+       -30,
+       -114
+      ],
+      [
+       -30,
+       -86
+      ],
+      [
+       -42,
+       -84
+      ],
+      [
+       -54,
+       -86
+      ]
+     ]
+    },
+    {
+     "id": "lane-pan-e",
+     "kind": "area",
+     "h": 26,
+     "bevel": 2,
+     "ring": [
+      [
+       -6,
+       -114
+      ],
+      [
+       6,
+       -116
+      ],
+      [
+       18,
+       -114
+      ],
+      [
+       18,
+       -86
+      ],
+      [
+       6,
+       -84
+      ],
+      [
+       -6,
+       -86
+      ]
+     ]
+    },
+    {
+     "id": "room-pan-w",
+     "kind": "area",
+     "h": 28,
+     "bevel": 2,
+     "ring": [
+      [
+       -54,
+       -130
+      ],
+      [
+       -42,
+       -132
+      ],
+      [
+       -30,
+       -130
+      ],
+      [
+       -30,
+       -114
+      ],
+      [
+       -42,
+       -112
+      ],
+      [
+       -54,
+       -114
+      ]
+     ]
+    },
+    {
+     "id": "room-pan-e",
+     "kind": "area",
+     "h": 28,
+     "bevel": 2,
+     "ring": [
+      [
+       -6,
+       -130
+      ],
+      [
+       6,
+       -132
+      ],
+      [
+       18,
+       -130
+      ],
+      [
+       18,
+       -114
+      ],
+      [
+       6,
+       -112
+      ],
+      [
+       -6,
+       -114
       ]
      ]
     },

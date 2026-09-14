@@ -1,61 +1,61 @@
 ## stone-4 (boulder) along x
-TRANSECT 25 stations from (-6, 22) to (18, 22), every 1
+TRANSECT 25 stations from (-36, 68) to (-12, 68), every 1
   station        ground  surface  water  top  standing            step
-  (   -6,    22)      13       13           13                      
-  (   -5,    22)      13       13           13                      
-  (   -4,    22)      13       13           13                      
-  (   -3,    22)      13       13           13                      
-  (   -2,    22)      13       13           13                      
-  (   -1,    22)      13       13           18  tree holt-3         
-  (    0,    22)      13       13           19  tree holt-3         
-  (    1,    22)      13       13           13                      
-  (    2,    22)      13       13           13                      
-  (    3,    22)      13       13           19  boulder stone-4     
-  (    4,    22)      13       13           19  boulder stone-4     
-  (    5,    22)      14       14           20  boulder stone-4     +1
-  (    6,    22)      14       14           20  boulder stone-4     
-  (    7,    22)      14       14           23  tree holt-3         
-  (    8,    22)      14       14           19  boulder stone-4     
-  (    9,    22)      14       14           19  tree holt-3         
-  (   10,    22)      14       14           19  tree holt-3         
-  (   11,    22)      14       14           18  tree holt-3         
-  (   12,    22)      14       14           14                      
-  (   13,    22)      14       14           18  boulder stone-2     
-  (   14,    22)      14       14           19  boulder stone-2     
-  (   15,    22)      14       14           20  boulder stone-2     
-  (   16,    22)      15       15           20  boulder stone-2     +1
-  (   17,    22)      15       15           20  boulder stone-2     
-  (   18,    22)      15       15           20  boulder stone-2     
-rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder stone-5 at (-3, 23), tree holt-3 at (-2, 21), boulder stone-4 at (3, 20), boulder stone-2 at (12, 20)
+  (  -36,    68)                                                    void
+  (  -35,    68)                                                    void
+  (  -34,    68)                                                    void
+  (  -33,    68)                                                    void
+  (  -32,    68)                                                    void
+  (  -31,    68)                                                    void
+  (  -30,    68)      16       16           16                      
+  (  -29,    68)      17       17           17                      +1
+  (  -28,    68)      17       17           17                      
+  (  -27,    68)      17       17           17                      
+  (  -26,    68)      17       17           17  stroke lane         
+  (  -25,    68)      18       18           18  stroke lane         +1
+  (  -24,    68)      18       18           18  stroke lane         
+  (  -23,    68)      17       17           17  stroke lane         -1
+  (  -22,    68)      18       18           18  stroke lane         +1
+  (  -21,    68)      18       18           18                      
+  (  -20,    68)      18       18           18                      
+  (  -19,    68)      19       19           19                      +1
+  (  -18,    68)      15       15           15                      DROP -4
+  (  -17,    68)      15       15           15                      
+  (  -16,    68)      15       15           15                      
+  (  -15,    68)      15       15           15                      
+  (  -14,    68)      15       15           15                      
+  (  -13,    68)      15       15           15                      
+  (  -12,    68)      15       15           15                      
+rises 4, falls 2, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-18, 68) | walked end to end
+beside: house hut at (-29, 70), stroke lane at (-26, 68)
 
 ## stone-4 (boulder) along z
-TRANSECT 25 stations from (6, 10) to (6, 34), every 1
+TRANSECT 25 stations from (-24, 56) to (-24, 80), every 1
   station        ground  surface  water  top  standing            step
-  (    6,    10)      14       14           14                      
-  (    6,    11)      14       14           23  tree holt-3         
-  (    6,    12)      14       14           27  tree holt-3         
-  (    6,    13)      14       14           32  tree holt-3         
-  (    6,    14)      14       14           31  tree holt-3         
-  (    6,    15)      14       14           27  tree holt-3         
-  (    6,    16)      14       14           35  tree holt-3         
-  (    6,    17)      14       14           36  tree holt-3         
-  (    6,    18)      14       14           29  tree holt-3         
-  (    6,    19)      13       13           21  tree holt-3         -1
-  (    6,    20)      14       14           28  tree holt-3         +1
-  (    6,    21)      14       14           28  tree holt-3         
-  (    6,    22)      14       14           20  boulder stone-4     
-  (    6,    23)      14       14           20  boulder stone-4     
-  (    6,    24)      14       14           19  boulder stone-4     
-  (    6,    25)      14       14           18  boulder stone-4     
-  (    6,    26)      14       14           14                      
-  (    6,    27)      14       14           14                      
-  (    6,    28)      14       14           14                      
-  (    6,    29)      14       14           14                      
-  (    6,    30)                                                    void
-  (    6,    31)                                                    void
-  (    6,    32)                                                    void
-  (    6,    33)                                                    void
-  (    6,    34)                                                    void
-rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree holt-3 at (4, 9), boulder stone-4 at (4, 21), boulder stone-5 at (4, 26)
+  (  -24,    56)      13       13           13                      
+  (  -24,    57)      13       13           13                      
+  (  -24,    58)      13       13           13                      
+  (  -24,    59)      13       13           13                      
+  (  -24,    60)      13       13           13                      
+  (  -24,    61)      14       14           14                      +1
+  (  -24,    62)      14       14           14                      
+  (  -24,    63)      14       14           14                      
+  (  -24,    64)      15       15           15  stroke lane         +1
+  (  -24,    65)      15       15           15  stroke lane         
+  (  -24,    66)      16       16           16  stroke lane         +1
+  (  -24,    67)      16       16           16  stroke lane         
+  (  -24,    68)      18       18           18  stroke lane         scramble +2
+  (  -24,    69)      19       19           19  stroke lane         +1
+  (  -24,    70)      20       20           22  house hut           +1
+  (  -24,    71)      20       20           23  house hut           
+  (  -24,    72)      19       19           24  house hut           -1
+  (  -24,    73)      19       19           25  house hut           
+  (  -24,    74)      19       19           26  house hut           
+  (  -24,    75)      19       19           27  house hut           
+  (  -24,    76)      18       18           26  house hut           -1
+  (  -24,    77)      18       18           25  house hut           
+  (  -24,    78)      18       18           24  house hut           
+  (  -24,    79)      17       17           23  house hut           -1
+  (  -24,    80)      17       17           22  house hut           
+rises 6, falls 3, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-24, 68) | walked end to end
+beside: boulder stone-3 at (-26, 58), stroke lane at (-22, 58), house hut at (-26, 70)

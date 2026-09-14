@@ -10,9 +10,14 @@ delivers a raider straight to the crossing.  The brow stands over it, and it is 
 ground the whole run is visible from.  So a wool run is a choice between the lane, which is
 blind both ways, and the brow, where you are the one thing moving that anybody can see.
 
-The two wool rooms stand in cut clearings at the back, and the clearings are the one lit
-ground on the board: everything else is dark-oak trunk, leaf litter and moss under a
-roofed-forest tint.
+Neither wool room stands beside the spawn.  Each sits at the far end of its own terrain
+spur running off the island -- the west room down a 25-block lane out of the back band, the
+east room down a 25-block lane south off the garth -- so reaching one is a commitment and
+not a step sideways out of the door.  The lanes are bare ground: void either side, nothing
+planted on them, and the emptiness is what makes the room a place.
+
+The clearings the rooms stand in are the one lit ground on the board; everything else is
+dark-oak trunk, leaf litter and moss under a roofed-forest tint.
 """
 import json, os
 
@@ -126,55 +131,68 @@ THEME_GLADE = {
 }
 
 # ---------------------------------------------------------------- the plan
-# The side is SHIFTED west, which is what puts the void in the board: each team's wood
-# runs from its own back corner down to a toe at the strait, and rot_180 lays the other
-# team's across the opposite diagonal.  What neither of them fills -- the two far quarters
-# -- is the board's own device rather than its margin, and it is what keeps the fill ratio
-# inside the band a wool board is measured in (G8).  The strait is 20 blocks, which is one
-# hop, and it is 41 blocks wide, so the crossing is a decision and not a doorway.
+# The side is SHIFTED west, which is what puts the void in the board: each team's wood runs
+# from its own back corner down to a toe at the strait, and rot_180 lays the other team's
+# across the opposite diagonal.  What neither of them fills -- the two far quarters -- is
+# the board's device rather than its margin, and it is what keeps the fill ratio inside the
+# band a wool board is measured in (G8).
+#
+# **Each wool room is the far end of a spur, never a neighbour of the spawn.** A room butted
+# onto the spawn passes every gate there is -- WL2's text asks for a different lane and only
+# its distance clause is implemented, and WL6 has no term at all -- and is still wrong: the
+# room has to be walked to. So the back band is spawn, then a 25-block lane, then the room
+# (opus5-coinfall's camp -> run -> plinth), and the second room hangs off the garth on a
+# lane of its own running south into what was void.
 CELL = 5
 SIKE, HOLT, BROW, GARTH = 13, 14, 15, 16
 PLAN = {
     "plan": 2,
     "meta": {"name": "Mirkholt",
              "notes": "CTW. A dark wood on a shifted diagonal: one hollow way a side runs "
-                      "from the clearings down to the strait, and the brow over it is the "
-                      "only ground the whole run is visible from."},
+                      "from the garth down to the strait, and each wool room stands at the "
+                      "end of its own bare spur."},
     "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 24,
                 "surface": HOLT, "observerY": 66},
     "pieces": [
-        {"id": "holt",  "role": "piece", "rect": [-10,  2,  8, 10], "surface": HOLT},
+        {"id": "holt",  "role": "piece", "rect": [-10,  2,  8,  9], "surface": HOLT},
         # the toe: the ground the crossing is made from, and the reason the two sides face
-        # each other across 41 blocks of strait rather than meeting at one corner
-        {"id": "toe",   "role": "piece", "rect": [ -2,  2,  6,  4], "surface": SIKE},
-        {"id": "brow",  "role": "piece", "rect": [-10, 12, 14,  2], "surface": BROW},
-        {"id": "garth", "role": "piece", "rect": [ -9, 14, 13,  2], "surface": GARTH},
-        # cage, lodge, cage in a row: the spawn stands between its two wools rather than
-        # behind both, so neither is the one nobody walks to
-        {"id": "west-cage", "role": "wool-room", "rect": [-9, 16, 4, 4], "surface": GARTH},
-        {"id": "lodge",     "role": "spawn",     "rect": [-5, 16, 5, 4], "surface": GARTH},
-        {"id": "east-cage", "role": "wool-room", "rect": [ 0, 16, 4, 4], "surface": GARTH},
+        # each other across 31 blocks of strait rather than meeting at one corner
+        {"id": "toe",   "role": "piece", "rect": [ -2,  2,  5,  3], "surface": SIKE},
+        {"id": "brow",  "role": "piece", "rect": [-10, 11,  8,  2], "surface": BROW},
+        {"id": "garth", "role": "piece", "rect": [ -6, 13, 10,  3], "surface": GARTH},
+        {"id": "lodge",     "role": "spawn",     "rect": [-1, 16, 5, 3], "surface": GARTH},
+        # the west spur: 25 blocks of bare lane out of the spawn band, room at its end
+        {"id": "west-lane", "role": "piece",     "rect": [-6, 16, 5, 3], "surface": GARTH},
+        {"id": "west-cage", "role": "wool-room", "rect": [-10, 16, 4, 3], "surface": GARTH},
+        # the east spur: 25 blocks of bare lane south off the garth, room at its end, out
+        # in the quarter the shift left empty
+        {"id": "east-lane", "role": "piece",     "rect": [4, 11, 3, 5], "surface": GARTH},
+        {"id": "east-cage", "role": "wool-room", "rect": [4,  7, 3, 4], "surface": GARTH},
     ],
     "zones": [{"id": "strait", "rect": [-10, -4, 20, 8], "kind": "build", "holes": []}],
     "placements": {
-        "spawns": [{"id": "spawn-1", "piece": "lodge", "at": [12, 12],
-                    "facing": "front", "footprint": [6, 6, 12, 12]}],
-        "iron":   [{"id": "iron-1", "piece": "lodge", "at": [3, 10]},
-                   {"id": "iron-2", "piece": "lodge", "at": [22, 10]}],
-        # the markers sit at the far end of each room: WL2 measures spawn-to-wool on the
-        # cell lattice, so a wool a room's width nearer reads as 25 and refuses
-        "wools":  [{"id": "wool-1", "piece": "west-cage", "at": [4, 10],
-                    "footprint": [3, 3, 14, 14]},
-                   {"id": "wool-2", "piece": "east-cage", "at": [16, 10],
-                    "footprint": [3, 3, 14, 14]}],
+        "spawns": [{"id": "spawn-1", "piece": "lodge", "at": [12, 10],
+                    "facing": "front", "footprint": [6, 3, 13, 11]}],
+        "iron":   [{"id": "iron-1", "piece": "lodge", "at": [3, 8]},
+                   {"id": "iron-2", "piece": "lodge", "at": [22, 8]}],
+        "wools":  [{"id": "wool-1", "piece": "west-cage", "at": [5, 7],
+                    "footprint": [3, 2, 14, 11]},
+                   {"id": "wool-2", "piece": "east-cage", "at": [7, 10],
+                    "footprint": [1, 3, 13, 14]}],
         "destroyables": [], "cores": [],
     },
     "walls": [], "boxes": [],
 }
 
 # The ground this side actually has, as blocks, so nothing downstream is placed over void.
-GROUND_RECTS = [(-50, 10, -10, 60), (-10, 10, 20, 30), (-50, 60, 20, 70),
-                (-45, 70, 20, 80), (-45, 80, 20, 100)]
+GROUND_RECTS = [(-50, 10, -10, 55), (-10, 10, 15, 25), (-50, 55, -10, 65), (-30, 65, 20, 80),
+                (-5, 80, 20, 95), (-30, 80, -5, 95), (-50, 80, -30, 95),
+                (20, 55, 35, 80), (20, 35, 35, 55)]
+
+# The two lanes, kept bare: a lane is a way to walk and not a place to dress, and a wood is
+# exactly the board that will grow into one if it is allowed to.
+LANES = [(-30, 80, -5, 95), (20, 55, 35, 80)]
+
 
 def on_ground(x, z, inset=4):
     """True where the +z side has ground under (x, z), with a margin off its edge. A prop
@@ -182,10 +200,16 @@ def on_ground(x, z, inset=4):
     return any(x0 + inset <= x <= x1 - inset and z0 + inset <= z <= z1 - inset
                for x0, z0, x1, z1 in GROUND_RECTS)
 
+
+def on_lane(x, z, margin=3):
+    return any(x0 - margin <= x <= x1 + margin and z0 - margin <= z <= z1 + margin
+               for x0, z0, x1, z1 in LANES)
+
+
 # ---------------------------------------------------------------- the relief
-# The hollow way runs from the clearings down through the wood to the toe, so the lane
-# arrives at the strait rather than stopping short of it.
-HOLLOW = [[-40, 76], [-38, 60], [-32, 44], [-24, 30], [-14, 20], [-2, 16]]
+# The hollow way runs from the garth down through the wood to the toe, so the lane arrives
+# at the strait rather than stopping short of it.
+HOLLOW = [[-26, 74], [-20, 60], [-16, 44], [-14, 30], [-10, 20], [-2, 15]]
 
 RELIEF = {"*": {
     "base": HOLT, "reach": 0, "step": 1,
@@ -193,46 +217,44 @@ RELIEF = {"*": {
     "marks": [
         # the wood's floor, rolling, drawn inside the ground it actually has
         {"id": "floor", "kind": "area", "h": 14, "bevel": 4,
-         "ring": [[-48, 14], [-34, 12], [-18, 14], [-6, 13], [17, 16], [17, 27],
-                  [-8, 28], [-14, 42], [-13, 56], [-30, 58], [-48, 56]]},
+         "ring": [[-48, 14], [-34, 12], [-20, 13], [-8, 13], [12, 15], [12, 22],
+                  [-12, 24], [-16, 40], [-14, 52], [-32, 54], [-48, 52]]},
         # the hollow way: a line whose band is flat down the middle and lofts to the wood
         # either side, so the lane has banks and not walls
-        {"id": "hollow", "kind": "line", "r": 12, "tread": 1,
-         "h": [13, 11, 10, 10, 11, 12], "points": HOLLOW},
-        # the clearings, flat to their own edge because that is what a cut clearing is
+        # reach 9 rather than 12: a 24-block band through a 40-block wood leaves no wood,
+        # and a hollow way's banks are steep anyway
+        {"id": "hollow", "kind": "line", "r": 9, "tread": 1,
+         "h": [14, 11, 10, 10, 11, 12], "points": HOLLOW},
+        # the garth and the back band, flat to their own edge because they are cut ground
         {"id": "glade", "kind": "area", "h": 16, "bevel": 3, "tread": 4,
-         "ring": [[-43, 72], [-20, 70], [2, 71], [18, 73], [18, 98], [-43, 98]]},
+         "ring": [[-28, 68], [-12, 66], [6, 67], [18, 69], [18, 93], [-48, 93], [-48, 82]]},
+        # the east spur, held at the garth's own height so the lane is a terrace and not a
+        # ramp nobody asked for
+        {"id": "spur", "kind": "area", "h": 16, "bevel": 2, "tread": 3,
+         "ring": [[22, 38], [33, 38], [33, 78], [22, 78]]},
     ],
     "pushes": [
-        # the brow: the shoulder between the hollow way and the wood's eastern edge, and
-        # the one ground the run is visible from.  amount/falloff 7/16 = 0.44 and the crown
-        # over the ring's half-width 3.1/7 = 0.44, which is the agreement RL6 reads.
-        {"id": "brow-rise", "ring": [[-24, 38], [-14, 36], [-13, 52], [-23, 54]],
-         "amount": 7, "falloff": 16, "crown": 3.1, "roughness": 1, "seed": 3},
-        # a swell behind the clearings so the back is not one table
-        {"id": "howe", "ring": [[-16, 78], [0, 76], [8, 84], [-8, 88]],
+        # the brow west of the hollow way: the one ground the run is visible from.
+        # amount/falloff 7/16 = 0.44, crown over the ring's half-width 2.6/6 = 0.44.
+        {"id": "brow-rise", "ring": [[-49, 30], [-41, 28], [-39, 50], [-47, 54]],
+         "amount": 7, "falloff": 16, "crown": 1.8, "roughness": 1, "seed": 3},
+        # a swell on the garth so the back is not one table.  It is kept off both lanes: a
+        # lane may step or ramp, but it should do it because the author said so.
+        {"id": "howe", "ring": [[-30, 66], [-14, 64], [-6, 72], [-22, 76]],
          "amount": 3, "falloff": 10, "crown": 1.7, "roughness": 1, "seed": 11},
     ],
 }}
 
 # ---------------------------------------------------------------- authored shapes
 ADD_SHAPES = [
-    # the way off the brow down into the hollow way: a flight, stated rather than graded,
-    # run at nearly three times its rise, with a material of its own rather than a theme
-    {"id": "brow-stair", "type": "polygon", "operation": "add", "override": True,
-     "floor": 0, "base_height": 14, "height_mode": "level", "skirt": 0,
-     "relief_scope": "exclude", "keepClear": True, "group": "team",
-     "material": cell(41, 5, [GRAVEL, COBBLE, MOSSY_COBBLE], rise=4),
-     "vertices": [[-20, 46], [-14, 46], [-14, 26], [-20, 26]],
-     "anchor_heights": [20, 20, 11, 11]},
-    # the threshold out of the west clearing and down into the wood: a made edge, which is
-    # what a boundary between two grounds of different value needs to be
+    # the threshold out of the garth and down into the wood: a made edge, which is what a
+    # boundary between two grounds of different value needs to be
     {"id": "glade-gate", "type": "polygon", "operation": "add", "override": True,
      "floor": 0, "base_height": 16, "height_mode": "level", "skirt": 0,
      "relief_scope": "exclude", "keepClear": True, "group": "team",
      "material": cell(43, 5, [COBBLE, MOSSY_COBBLE, GRAVEL], rise=4),
-     "vertices": [[-28, 70], [-20, 70], [-20, 56], [-28, 56]],
-     "anchor_heights": [16, 16, 14, 14]},
+     "vertices": [[-18, 70], [-10, 70], [-10, 56], [-18, 56]],
+     "anchor_heights": [16, 16, 15, 15]},
 ]
 
 # ---------------------------------------------------------------- dressing
@@ -252,12 +274,11 @@ def boulder(pid, x, z, r, h, seed):
             "material": cell(seed, 7, [STONE, COBBLE, ANDESITE], rise=4)}
 
 
-def near_hollow(x, z, within):
-    """Distance from the hollow way's course, so the lane's own floor can be left open --
-    a hollow way roofed at its edges and clear down the middle is what makes it read as a
-    lane rather than as a ditch full of trees."""
+def near_course(points, x, z, within):
+    """Distance from a drawn course. A trunk stands off a road by three blocks and a road
+    is three wide, so a tree inside six of a centreline is DR-ROAD."""
     best = 1e9
-    for (ax, az), (bx, bz) in zip(HOLLOW, HOLLOW[1:]):
+    for (ax, az), (bx, bz) in zip(points, points[1:]):
         dx, dz = bx - ax, bz - az
         span = dx * dx + dz * dz
         t = 0.0 if span == 0 else max(0.0, min(1.0, ((x - ax) * dx + (z - az) * dz) / span))
@@ -265,66 +286,46 @@ def near_hollow(x, z, within):
     return best < within
 
 
-TROD = [[-40, 86], [-26, 83], [-13, 83], [2, 85], [15, 87]]
+TROD = [[8, 84], [0, 80], [-8, 77], [-16, 74]]
 
 PROPS = [
-    # the beck in the bottom of the hollow way.  It states no level, so the line is the
-    # lowest surface it crosses and the fill never rises past a column's own surface --
-    # water cut into ground that was already there, which is what a lane's runnel is.
+    # the lane's own floor, painted wet rather than dug: a channel that states no level
+    # still empties every column over its own line
     {"id": "lane", "kind": "stroke", "seed": 21, "layer": "ground",
      "points": HOLLOW, "radius": 2, "style": "worn", "claimsGround": True,
      "material": cell(77, 7, [COARSE, GRAVEL, MOSSY_COBBLE, PODZOL], rise=3)},
-    # the trod along the back of the clearings, from one room past the spawn door to the
-    # other: the only lateral movement on this board that is not through the wood
+    # the trod out of the spawn door and across the garth into the wood.  It does not run
+    # down either spur: a lane is walked, not paved.
     {"id": "trod", "kind": "stroke", "seed": 5, "layer": "ground",
-     "points": TROD,
-     "radius": 2, "style": "solid", "claimsGround": True,
+     "points": TROD, "radius": 2, "style": "solid", "claimsGround": True,
      "material": cell(67, 5, [GRAVEL, COARSE, COBBLE], rise=3)},
-    # one building in the wood: a charcoal burner's hut, which is why there is a clearing
-    # in the trees at all
+    # one building on this side: a charcoal burner's hut on the garth, which is why there
+    # is a clearing in the trees at all
     {"id": "hut", "kind": "house", "seed": 311, "layer": "ground",
      "style": "hut", "front": "posZ",
-     "wings": [{"corners": [[4, 61], [12, 69]]}]},
+     "wings": [{"corners": [[-28, 71], [-20, 79]]}]},
 ]
 
-# The wood.  A jittered lattice over the ground this side actually has, three storeys deep
-# -- tall dark-oak-trunked canopy, dense crowns, scrub -- with the hollow way's own floor
-# and the door approaches left open.
+# stone, and only stone -- and none of it on a spur: a big boulder is exactly what a bare
+# lane must not have
+BOULDERS = [(-44, 20, 3, 4), (8, 20, 2, 2), (-44, 60, 2, 3), (-30, 58, 2, 3)]
+for i, (x, z, r, h) in enumerate(BOULDERS):
+    PROPS.append(boulder(f"stone-{i}", x, z, r, h, 71 + i))
+
+KEEP_OFF = [(-28, 71, -20, 79, 8),       # the charcoal burner's hut
+            (-18, 56, -10, 70, 3)]       # the threshold out of the clearing
+KEEP_OFF += [(x - r, z - r, x + r, z + r, 4) for x, z, r, _ in BOULDERS]
+# the rooms and the ground in front of the spawn door
+# the rooms, and the ground in front of the spawn door, which reaches well south
+KEEP_OFF += [(-47, 82, -33, 93, 7), (21, 38, 34, 52, 7), (1, 66, 14, 93, 7)]
+
+# A fine lattice, taken greedily: dense enough that two crowns close over the hollow way
+# and open enough that no tree is declined for standing in another's footprint.  The two
+# spurs are excluded outright.
 CANOPY = ["mirk-tall-a", "mirk-tall-b", "mirk-giant"]
 DENSE = ["mirk-dense-a", "mirk-dense-b"]
 SCRUB = ["scrub-a", "scrub-b"]
 
-count = 0
-# stone, and only stone -- and all of it on the brow strip and the toe, because a wood
-# 40 blocks wide with a 14-block lane down it has no room for a boulder as well as a tree
-BOULDERS = [(-44, 44, 3, 4), (-16, 58, 2, 3), (16, 20, 2, 3),
-            (-26, 16, 2, 3), (6, 22, 2, 2), (0, 26, 2, 2)]
-for i, (x, z, r, h) in enumerate(BOULDERS):
-    PROPS.append(boulder(f"stone-{i}", x, z, r, h, 71 + i))
-
-KEEP_OFF = [(4, 61, 12, 69, 8),          # the charcoal burner's hut
-            (-20, 26, -14, 46, 2),       # the flight off the brow
-            (-28, 56, -20, 70, 3)]       # the threshold out of the clearing
-KEEP_OFF += [(x - r, z - r, x + r, z + r, 4) for x, z, r, _ in BOULDERS]
-# the rooms and the ground in front of the spawn door: a room's own keep-out is stated by
-# the compile, and a tree inside it is DR-KEEP rather than a tree
-KEEP_OFF += [(-42, 72, -28, 97, 7), (3, 72, 17, 97, 7), (-19, 72, -7, 98, 7)]
-
-
-def near_trod(x, z, within):
-    """A trunk stands off a road by three blocks and the road is three wide, so a tree
-    inside six of its centreline is DR-ROAD."""
-    best = 1e9
-    for (ax, az), (bx, bz) in zip(TROD, TROD[1:]):
-        dx, dz = bx - ax, bz - az
-        span = dx * dx + dz * dz
-        t = 0.0 if span == 0 else max(0.0, min(1.0, ((x - ax) * dx + (z - az) * dz) / span))
-        best = min(best, ((x - ax - t * dx) ** 2 + (z - az - t * dz) ** 2) ** 0.5)
-    return best < within
-
-# A fine lattice, taken greedily at nine blocks between trunks: dense enough that two
-# crowns close over the lane and open enough that no tree is declined for standing in
-# another's footprint.  Three storeys -- dark-oak-trunked canopy, dense crowns, scrub.
 planted = []
 count = 0
 for row, z in enumerate(range(12, 100, 3)):
@@ -332,24 +333,24 @@ for row, z in enumerate(range(12, 100, 3)):
         jx = ((row * 7 + col * 13) % 7) - 3
         jz = ((row * 11 + col * 5) % 7) - 3
         px, pz = x + jx, z + jz
-        if not on_ground(px, pz, 2):
+        # five blocks off the edge, not two: a copied crown is nine to seventeen blocks
+        # across and DR-SITE reads the footprint, not the trunk
+        if not on_ground(px, pz, 5):
             continue
-        if near_hollow(px, pz, 6) or near_trod(px, pz, 6):
+        if on_lane(px, pz):
             continue
-        if pz > 68 and abs(px + 13) < 15:          # the spawn's own clearing
-            continue
-        if pz > 76 and (abs(px + 41) < 13 or abs(px - 16) < 13):   # the wool rooms'
+        if near_course(HOLLOW, px, pz, 7) or near_course(TROD, px, pz, 7):
             continue
         if any(x0 - m <= px <= x1 + m and z0 - m <= pz <= z1 + m
                for x0, z0, x1, z1, m in KEEP_OFF):
             continue
-        # A wood 36 blocks wide with a lane through it holds a great many small trees and
-        # a few large ones, so the mix is one canopy giant in six, three dense crowns and
-        # two of scrub -- and how close the next trunk may stand is the tree's own size.
+        # A wood 35 blocks wide with a lane down it holds a great many small trees and a
+        # few large ones, so the mix is one canopy giant in six, three dense crowns and two
+        # of scrub -- and how close the next trunk may stand is the tree's own size.
         rank = (row * 3 + col) % 6
         kind = (CANOPY[row % 3] if rank == 0 else
                 DENSE[rank % 2] if rank < 4 else SCRUB[rank % 2])
-        room = 11 if rank == 0 else (8 if rank < 4 else 6)
+        room = 9 if rank == 0 else (8 if rank < 4 else 6)
         if any((px - ax) ** 2 + (pz - az) ** 2 < max(room, other) ** 2
                for ax, az, other in planted):
             continue
@@ -358,11 +359,11 @@ for row, z in enumerate(range(12, 100, 3)):
         count += 1
 
 PROPS.append(
-    # ground cover: fern-heavy, because that is what grows under a closed canopy, and both
-    # gameplay numbers kept low
+    # ground cover over the wood and the garth, fern-heavy because that is what grows under
+    # a closed canopy. It stops at the back band, so neither spur is dressed.
     {"id": "understorey", "kind": "flora", "seed": 13, "layer": "ground",
-     "points": [[-50, 10], [20, 10], [20, 100], [-50, 100]],
-     "spec": {"points": 4200, "coverage": 0.22, "scale": 22, "octaves": 3,
+     "points": [[-50, 10], [20, 10], [20, 80], [-50, 80]],
+     "spec": {"points": 3600, "coverage": 0.22, "scale": 22, "octaves": 3,
               "fernShare": 0.52, "flowerShare": 0.03, "flowerScale": 12, "tallShare": 0.06}})
 
 DRESSING = {"styles": STYLES, "props": PROPS}

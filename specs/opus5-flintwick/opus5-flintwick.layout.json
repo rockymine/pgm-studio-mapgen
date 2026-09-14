@@ -8,8 +8,8 @@
   "bbox": {
    "min_x": -45,
    "max_x": 45,
-   "min_z": -105,
-   "max_z": 105
+   "min_z": -115,
+   "max_z": 115
   }
  },
  "layers": [
@@ -62,11 +62,27 @@
        ],
        [
         40,
+        70
+       ],
+       [
+        10,
+        70
+       ],
+       [
+        10,
         85
        ],
        [
-        -40,
+        -10,
         85
+       ],
+       [
+        -10,
+        70
+       ],
+       [
+        -40,
+        70
        ]
       ],
       "controls": null,
@@ -135,7 +151,7 @@
       "material": null
      },
      {
-      "id": "east-nab-27-2",
+      "id": "east-nab-31",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -150,19 +166,19 @@
       "vertices": [
        [
         -40,
-        85
+        70
        ],
        [
         -20,
-        85
+        70
        ],
        [
         -20,
-        100
+        110
        ],
        [
         -40,
-        100
+        110
        ]
       ],
       "controls": null,
@@ -171,7 +187,7 @@
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
-      "base_height": 27,
+      "base_height": 31,
       "anchor_heights": null,
       "floor": null,
       "role": null,
@@ -183,7 +199,7 @@
       "material": null
      },
      {
-      "id": "east-nab-27-3",
+      "id": "east-nab-31-2",
       "type": "polygon",
       "operation": "add",
       "override": false,
@@ -198,19 +214,19 @@
       "vertices": [
        [
         20,
-        85
+        70
        ],
        [
         40,
-        85
+        70
        ],
        [
         40,
-        100
+        110
        ],
        [
         20,
-        100
+        110
        ]
       ],
       "controls": null,
@@ -219,7 +235,7 @@
       "height_mode": null,
       "skirt": null,
       "relief_scope": null,
-      "base_height": 27,
+      "base_height": 31,
       "anchor_heights": null,
       "floor": null,
       "role": null,
@@ -363,9 +379,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -40,
-      "min_z": 85,
+      "min_z": 95,
       "max_x": -20,
-      "max_z": 100,
+      "max_z": 110,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -376,7 +392,7 @@
       "height_mode": null,
       "skirt": null,
       "relief_scope": "follow",
-      "base_height": 27,
+      "base_height": 31,
       "anchor_heights": null,
       "floor": null,
       "role": "woolRoom",
@@ -396,9 +412,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -38,
-      "min_z": 87,
+      "min_z": 97,
       "max_x": -22,
-      "max_z": 98,
+      "max_z": 108,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -427,9 +443,9 @@
       "override": false,
       "keepClear": false,
       "min_x": 20,
-      "min_z": 85,
+      "min_z": 95,
       "max_x": 40,
-      "max_z": 100,
+      "max_z": 110,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -440,7 +456,7 @@
       "height_mode": null,
       "skirt": null,
       "relief_scope": "follow",
-      "base_height": 27,
+      "base_height": 31,
       "anchor_heights": null,
       "floor": null,
       "role": "woolRoom",
@@ -460,9 +476,9 @@
       "override": false,
       "keepClear": false,
       "min_x": 22,
-      "min_z": 87,
+      "min_z": 97,
       "max_x": 38,
-      "max_z": 98,
+      "max_z": 108,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -491,9 +507,9 @@
       "override": false,
       "keepClear": false,
       "min_x": 20,
-      "min_z": -100,
+      "min_z": -110,
       "max_x": 40,
-      "max_z": -85,
+      "max_z": -95,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -522,9 +538,9 @@
       "override": false,
       "keepClear": false,
       "min_x": 22,
-      "min_z": -98,
+      "min_z": -108,
       "max_x": 38,
-      "max_z": -87,
+      "max_z": -97,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -553,9 +569,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -40,
-      "min_z": -100,
+      "min_z": -110,
       "max_x": -20,
-      "max_z": -85,
+      "max_z": -95,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -584,9 +600,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -38,
-      "min_z": -98,
+      "min_z": -108,
       "max_x": -22,
-      "max_z": -87,
+      "max_z": -97,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -961,26 +977,26 @@
       "type": "polygon",
       "operation": "add",
       "height_mode": "level",
-      "base_height": 26,
+      "base_height": 31,
       "skirt": 0,
       "relief_scope": "exclude",
       "theme": "knap",
       "vertices": [
        [
-        -36,
-        68
+        -37,
+        88
        ],
        [
-        -22,
-        68
+        -23,
+        88
        ],
        [
-        -22,
-        82
+        -23,
+        94
        ],
        [
-        -36,
-        82
+        -37,
+        94
        ]
       ]
      },
@@ -989,26 +1005,26 @@
       "type": "polygon",
       "operation": "add",
       "height_mode": "level",
-      "base_height": 26,
+      "base_height": 31,
       "skirt": 0,
       "relief_scope": "exclude",
       "theme": "knap",
       "vertices": [
        [
-        22,
-        68
+        23,
+        88
        ],
        [
-        36,
-        68
+        37,
+        88
        ],
        [
-        36,
-        82
+        37,
+        94
        ],
        [
-        22,
-        82
+        23,
+        94
        ]
       ]
      },
@@ -1241,8 +1257,8 @@
       "shapeIds": [
        "east-nab-26",
        "east-nab-27",
-       "east-nab-27-2",
-       "east-nab-27-3",
+       "east-nab-31",
+       "east-nab-31-2",
        "sward-coombe",
        "sward-west",
        "sward-east",
@@ -10807,12 +10823,16 @@
     },
     "points": [
      [
-      -14,
-      82
+      -26,
+      66
      ],
      [
-      -24,
-      78
+      -30,
+      76
+     ],
+     [
+      -30,
+      90
      ]
     ]
    },
@@ -10851,12 +10871,16 @@
     },
     "points": [
      [
-      14,
-      82
+      26,
+      66
      ],
      [
-      24,
-      78
+      30,
+      76
+     ],
+     [
+      30,
+      90
      ]
     ]
    },
@@ -10960,8 +10984,8 @@
     "id": "thorn-3",
     "kind": "tree",
     "seed": 704,
-    "x": 30,
-    "z": 66,
+    "x": 16,
+    "z": 44,
     "style": "tree-showcase-r4-4"
    },
    {
@@ -11211,8 +11235,8 @@
     },
     "id": "sarsen-5",
     "seed": 746,
-    "x": 28,
-    "z": 70
+    "x": 12,
+    "z": 54
    }
   ]
  },
@@ -11350,36 +11374,36 @@
      "bevel": 4,
      "ring": [
       [
-       39.8,
-       94.0
+       21.9,
+       94.2
       ],
       [
-       21.5,
-       116.3
+       11.4,
+       105.9
       ],
       [
-       -3.8,
-       127.8
+       -2.1,
+       112.9
       ],
       [
-       -24.0,
-       109.6
+       -12.4,
+       102.1
       ],
       [
-       -39.8,
-       86.0
+       -21.9,
+       89.8
       ],
       [
-       -21.5,
-       63.7
+       -11.4,
+       78.1
       ],
       [
-       3.8,
-       52.2
+       2.1,
+       71.1
       ],
       [
-       24.0,
-       70.4
+       12.4,
+       81.9
       ]
      ]
     },

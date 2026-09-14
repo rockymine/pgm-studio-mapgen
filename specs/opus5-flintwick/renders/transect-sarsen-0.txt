@@ -5,12 +5,12 @@ TRANSECT 25 stations from (-44, 62) to (-20, 62), every 1
   (  -43,    62)                                                    void
   (  -42,    62)                                                    void
   (  -41,    62)                                                    void
-  (  -40,    62)      30       30           30                      
-  (  -39,    62)      30       30           30                      
-  (  -38,    62)      30       30           30                      
-  (  -37,    62)      30       30           33  boulder sarsen-0    
-  (  -36,    62)      30       30           33  boulder sarsen-0    
-  (  -35,    62)      31       31           34  boulder sarsen-0    +1
+  (  -40,    62)      31       31           31                      
+  (  -39,    62)      31       31           31                      
+  (  -38,    62)      31       31           31                      
+  (  -37,    62)      31       31           33  boulder sarsen-0    
+  (  -36,    62)      31       31           33  boulder sarsen-0    
+  (  -35,    62)      31       31           34  boulder sarsen-0    
   (  -34,    62)      31       31           34  boulder sarsen-0    
   (  -33,    62)      31       31           34  boulder sarsen-0    
   (  -32,    62)      31       31           34  boulder sarsen-0    
@@ -24,10 +24,10 @@ TRANSECT 25 stations from (-44, 62) to (-20, 62), every 1
   (  -24,    62)      31       31           31  stroke way-west     
   (  -23,    62)      31       31           31                      
   (  -22,    62)      31       31           31                      
-  (  -21,    62)      31       31           31                      
-  (  -20,    62)      31       31           31                      
-rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder sarsen-0 at (-37, 60), stroke way-west at (-27, 60)
+  (  -21,    62)      32       32           32                      +1
+  (  -20,    62)      31       31           31                      -1
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder sarsen-0 at (-37, 60), stroke way-west at (-27, 60), stroke way-yard-w at (-26, 64)
 
 ## sarsen-0 (boulder) along z
 TRANSECT 25 stations from (-32, 50) to (-32, 74), every 1
@@ -48,14 +48,14 @@ TRANSECT 25 stations from (-32, 50) to (-32, 74), every 1
   (  -32,    63)      31       31           34  boulder sarsen-0    
   (  -32,    64)      31       31           34  boulder sarsen-0    
   (  -32,    65)      31       31           34  boulder sarsen-0    
-  (  -32,    66)      30       30           34  boulder sarsen-0    -1
-  (  -32,    67)      30       30           33  boulder sarsen-0    
-  (  -32,    68)      26       26           26                      DROP -4
-  (  -32,    69)      26       26           26                      
-  (  -32,    70)      26       26           26                      
-  (  -32,    71)      26       26           26                      
-  (  -32,    72)      26       26           26                      
-  (  -32,    73)      26       26           26                      
-  (  -32,    74)      26       26           26                      
-rises 0, falls 2, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-32, 68) | walked end to end
-beside: tree thorn-2 at (-34, 48), tree thorn-0 at (-32, 48), boulder sarsen-0 at (-34, 58)
+  (  -32,    66)      31       31           34  boulder sarsen-0    
+  (  -32,    67)      31       31           33  boulder sarsen-0    
+  (  -32,    68)      31       31           31                      
+  (  -32,    69)      31       31           31                      
+  (  -32,    70)      31       31           31                      
+  (  -32,    71)      31       31           31                      
+  (  -32,    72)      31       31           31                      
+  (  -32,    73)      31       31           31                      
+  (  -32,    74)      31       31           31  stroke way-yard-w   
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree thorn-2 at (-34, 48), tree thorn-0 at (-32, 48), boulder sarsen-0 at (-34, 58), stroke way-yard-w at (-30, 69)

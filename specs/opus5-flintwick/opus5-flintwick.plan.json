@@ -18,7 +18,7 @@
     -8,
     2,
     6,
-    15
+    12
    ],
    "surface": 26
   },
@@ -29,7 +29,7 @@
     2,
     2,
     6,
-    15
+    12
    ],
    "surface": 26
   },
@@ -45,15 +45,48 @@
    "surface": 26
   },
   {
-   "id": "knapp-w",
-   "role": "wool-room",
+   "id": "lane-w",
+   "role": "piece",
    "rect": [
     -8,
-    17,
+    14,
+    4,
+    2
+   ],
+   "surface": 31
+  },
+  {
+   "id": "head-w",
+   "role": "piece",
+   "rect": [
+    -8,
+    16,
     4,
     3
    ],
-   "surface": 27
+   "surface": 31
+  },
+  {
+   "id": "lane-e",
+   "role": "piece",
+   "rect": [
+    4,
+    14,
+    4,
+    2
+   ],
+   "surface": 31
+  },
+  {
+   "id": "head-e",
+   "role": "piece",
+   "rect": [
+    4,
+    16,
+    4,
+    3
+   ],
+   "surface": 31
   },
   {
    "id": "staith",
@@ -67,15 +100,26 @@
    "surface": 27
   },
   {
+   "id": "knapp-w",
+   "role": "wool-room",
+   "rect": [
+    -8,
+    19,
+    4,
+    3
+   ],
+   "surface": 31
+  },
+  {
    "id": "knapp-e",
    "role": "wool-room",
    "rect": [
     4,
-    17,
+    19,
     4,
     3
    ],
-   "surface": 27
+   "surface": 31
   }
  ],
  "zones": [
@@ -169,6 +213,15 @@
   "destroyables": [],
   "cores": []
  },
- "walls": [],
+ "walls": [
+  {
+   "a": "lane-w",
+   "b": "head-w"
+  },
+  {
+   "a": "lane-e",
+   "b": "head-e"
+  }
+ ],
  "boxes": []
 }

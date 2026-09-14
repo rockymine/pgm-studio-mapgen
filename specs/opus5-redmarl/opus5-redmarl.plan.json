@@ -12,17 +12,6 @@
   },
   "pieces": [
     {
-      "id": "dye-w",
-      "role": "wool-room",
-      "rect": [
-        -13,
-        -26,
-        5,
-        4
-      ],
-      "surface": 26
-    },
-    {
       "id": "yard",
       "role": "spawn",
       "rect": [
@@ -34,15 +23,48 @@
       "surface": 26
     },
     {
+      "id": "lane-w",
+      "role": "piece",
+      "rect": [
+        -13,
+        -28,
+        5,
+        6
+      ],
+      "surface": 26
+    },
+    {
+      "id": "lane-e",
+      "role": "piece",
+      "rect": [
+        -1,
+        -28,
+        5,
+        6
+      ],
+      "surface": 26
+    },
+    {
+      "id": "dye-w",
+      "role": "wool-room",
+      "rect": [
+        -13,
+        -32,
+        5,
+        4
+      ],
+      "surface": 28
+    },
+    {
       "id": "dye-e",
       "role": "wool-room",
       "rect": [
         -1,
-        -26,
+        -32,
         5,
         4
       ],
-      "surface": 26
+      "surface": 28
     },
     {
       "id": "bank",
@@ -142,8 +164,8 @@
         "id": "wool-1",
         "piece": "dye-w",
         "at": [
-          4,
-          8
+          6,
+          4
         ],
         "footprint": [
           2,
@@ -156,8 +178,8 @@
         "id": "wool-2",
         "piece": "dye-e",
         "at": [
-          16,
-          8
+          14,
+          4
         ],
         "footprint": [
           2,

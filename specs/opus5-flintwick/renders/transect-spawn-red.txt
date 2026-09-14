@@ -1,9 +1,9 @@
 ## spawn-red (spawn) along x
 TRANSECT 47 stations from (-23, 92) to (23, 92), every 1
   station        ground  surface  water  top  standing            step
-  (  -23,    92)      28       28           34  wool wool-1         
-  (  -22,    92)      28       28           34                      
-  (  -21,    92)      28       28           28                      
+  (  -23,    92)      31       31           31                      
+  (  -22,    92)      31       31           31                      
+  (  -21,    92)      31       31           31                      
   (  -20,    92)                                                    void
   (  -19,    92)                                                    void
   (  -18,    92)                                                    void
@@ -44,15 +44,15 @@ TRANSECT 47 stations from (-23, 92) to (23, 92), every 1
   (   17,    92)                                                    void
   (   18,    92)                                                    void
   (   19,    92)                                                    void
-  (   20,    92)      28       28           28                      
-  (   21,    92)      28       28           34                      
-  (   22,    92)      28       28           34  wool wool-2         
-  (   23,    92)      28       28           35  wool wool-2         
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-1 at (-25, 90), ironcube spawn-1:0 at (-15, 91), spawn spawn-1 at (-9, 90), ironcube spawn-1:1 at (12, 91), wool wool-2 at (22, 90)
+  (   20,    92)      30       30           30                      
+  (   21,    92)      30       30           30                      
+  (   22,    92)      30       30           30                      
+  (   23,    92)      31       31           31                      +1
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: ironcube spawn-1:0 at (-15, 91), spawn spawn-1 at (-9, 90), ironcube spawn-1:1 at (12, 91)
 
 ## spawn-red (spawn) along z
-TRANSECT 23 stations from (0, 77) to (0, 99), every 1
+TRANSECT 32 stations from (0, 77) to (0, 108), every 1
   station        ground  surface  water  top  standing            step
   (    0,    77)      32       32           32                      
   (    0,    78)      32       32           32                      
@@ -77,5 +77,14 @@ TRANSECT 23 stations from (0, 77) to (0, 99), every 1
   (    0,    97)      31       31           41                      
   (    0,    98)      31       31           31                      
   (    0,    99)      31       31           31                      
+  (    0,   100)                                                    void
+  (    0,   101)                                                    void
+  (    0,   102)                                                    void
+  (    0,   103)                                                    void
+  (    0,   104)                                                    void
+  (    0,   105)                                                    void
+  (    0,   106)                                                    void
+  (    0,   107)                                                    void
+  (    0,   108)                                                    void
 rises 1, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: stroke way-spine at (-2, 75), spawn spawn-1 at (-2, 88)

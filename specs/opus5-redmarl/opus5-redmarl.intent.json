@@ -139,35 +139,29 @@
    "protection": [
     {
      "minX": -52,
-     "minZ": -104,
+     "minZ": -128,
      "maxX": -32,
-     "maxZ": -88
+     "maxZ": -112
     }
    ],
    "spawn": {
-    "x": -48,
-    "y": 26,
-    "z": -96
+    "x": -46,
+    "y": 28,
+    "z": -124
    },
    "monuments": [],
    "footprint": {
     "minX": -50,
-    "minZ": -102,
+    "minZ": -126,
     "maxX": -34,
-    "maxZ": -90
+    "maxZ": -114
    },
    "entries": [
     {
-     "minX": -32,
-     "minZ": -104,
-     "maxX": -32,
-     "maxZ": -88
-    },
-    {
      "minX": -52,
-     "minZ": -88,
+     "minZ": -112,
      "maxX": -32,
-     "maxZ": -88
+     "maxZ": -112
     }
    ]
   },
@@ -183,35 +177,29 @@
    "protection": [
     {
      "minX": -4,
-     "minZ": -104,
+     "minZ": -128,
      "maxX": 16,
-     "maxZ": -88
+     "maxZ": -112
     }
    ],
    "spawn": {
-    "x": 12,
-    "y": 26,
-    "z": -96
+    "x": 10,
+    "y": 28,
+    "z": -124
    },
    "monuments": [],
    "footprint": {
     "minX": -2,
-    "minZ": -102,
+    "minZ": -126,
     "maxX": 14,
-    "maxZ": -90
+    "maxZ": -114
    },
    "entries": [
     {
      "minX": -4,
-     "minZ": -104,
-     "maxX": -4,
-     "maxZ": -88
-    },
-    {
-     "minX": -4,
-     "minZ": -88,
+     "minZ": -112,
      "maxX": 16,
-     "maxZ": -88
+     "maxZ": -112
     }
    ]
   },
@@ -227,35 +215,29 @@
    "protection": [
     {
      "minX": 32,
-     "minZ": 88,
+     "minZ": 112,
      "maxX": 52,
-     "maxZ": 104
+     "maxZ": 128
     }
    ],
    "spawn": {
-    "x": 48,
-    "y": 26,
-    "z": 96
+    "x": 46,
+    "y": 28,
+    "z": 124
    },
    "monuments": [],
    "footprint": {
     "minX": 34,
-    "minZ": 90,
+    "minZ": 114,
     "maxX": 50,
-    "maxZ": 102
+    "maxZ": 126
    },
    "entries": [
     {
      "minX": 32,
-     "minZ": 88,
-     "maxX": 32,
-     "maxZ": 104
-    },
-    {
-     "minX": 32,
-     "minZ": 88,
+     "minZ": 112,
      "maxX": 52,
-     "maxZ": 88
+     "maxZ": 112
     }
    ]
   },
@@ -271,35 +253,29 @@
    "protection": [
     {
      "minX": -16,
-     "minZ": 88,
+     "minZ": 112,
      "maxX": 4,
-     "maxZ": 104
+     "maxZ": 128
     }
    ],
    "spawn": {
-    "x": -12,
-    "y": 26,
-    "z": 96
+    "x": -10,
+    "y": 28,
+    "z": 124
    },
    "monuments": [],
    "footprint": {
     "minX": -14,
-    "minZ": 90,
+    "minZ": 114,
     "maxX": 2,
-    "maxZ": 102
+    "maxZ": 126
    },
    "entries": [
     {
-     "minX": 4,
-     "minZ": 88,
-     "maxX": 4,
-     "maxZ": 104
-    },
-    {
      "minX": -16,
-     "minZ": 88,
+     "minZ": 112,
      "maxX": 4,
-     "maxZ": 88
+     "maxZ": 112
     }
    ]
   }
@@ -331,90 +307,46 @@
   "layer": null,
   "redstoneLines": [
    {
-    "x1": -33,
-    "z1": -104,
-    "x2": -33,
-    "z2": -89,
-    "stamp": {
-     "kind": "redstoneline",
-     "unit": "0",
-     "image": 0
-    }
-   },
-   {
-    "x1": 32,
-    "z1": 88,
-    "x2": 32,
-    "z2": 103,
-    "stamp": {
-     "kind": "redstoneline",
-     "unit": "0",
-     "image": 1
-    }
-   },
-   {
     "x1": -52,
-    "z1": -89,
+    "z1": -113,
     "x2": -33,
-    "z2": -89,
+    "z2": -113,
     "stamp": {
      "kind": "redstoneline",
-     "unit": "1",
+     "unit": "0",
      "image": 0
     }
    },
    {
     "x1": 32,
-    "z1": 88,
+    "z1": 112,
     "x2": 51,
-    "z2": 88,
+    "z2": 112,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1
+    }
+   },
+   {
+    "x1": -4,
+    "z1": -113,
+    "x2": 15,
+    "z2": -113,
     "stamp": {
      "kind": "redstoneline",
      "unit": "1",
-     "image": 1
-    }
-   },
-   {
-    "x1": -4,
-    "z1": -104,
-    "x2": -4,
-    "z2": -89,
-    "stamp": {
-     "kind": "redstoneline",
-     "unit": "2",
-     "image": 0
-    }
-   },
-   {
-    "x1": 3,
-    "z1": 88,
-    "x2": 3,
-    "z2": 103,
-    "stamp": {
-     "kind": "redstoneline",
-     "unit": "2",
-     "image": 1
-    }
-   },
-   {
-    "x1": -4,
-    "z1": -89,
-    "x2": 15,
-    "z2": -89,
-    "stamp": {
-     "kind": "redstoneline",
-     "unit": "3",
      "image": 0
     }
    },
    {
     "x1": -16,
-    "z1": 88,
+    "z1": 112,
     "x2": 3,
-    "z2": 88,
+    "z2": 112,
     "stamp": {
      "kind": "redstoneline",
-     "unit": "3",
+     "unit": "1",
      "image": 1
     }
    }

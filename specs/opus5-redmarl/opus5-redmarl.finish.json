@@ -685,6 +685,134 @@
           ]
         },
         {
+          "id": "lane-pan-w",
+          "kind": "area",
+          "h": 26,
+          "bevel": 2,
+          "ring": [
+            [
+              -54,
+              -114
+            ],
+            [
+              -42,
+              -116
+            ],
+            [
+              -30,
+              -114
+            ],
+            [
+              -30,
+              -86
+            ],
+            [
+              -42,
+              -84
+            ],
+            [
+              -54,
+              -86
+            ]
+          ]
+        },
+        {
+          "id": "lane-pan-e",
+          "kind": "area",
+          "h": 26,
+          "bevel": 2,
+          "ring": [
+            [
+              -6,
+              -114
+            ],
+            [
+              6,
+              -116
+            ],
+            [
+              18,
+              -114
+            ],
+            [
+              18,
+              -86
+            ],
+            [
+              6,
+              -84
+            ],
+            [
+              -6,
+              -86
+            ]
+          ]
+        },
+        {
+          "id": "room-pan-w",
+          "kind": "area",
+          "h": 28,
+          "bevel": 2,
+          "ring": [
+            [
+              -54,
+              -130
+            ],
+            [
+              -42,
+              -132
+            ],
+            [
+              -30,
+              -130
+            ],
+            [
+              -30,
+              -114
+            ],
+            [
+              -42,
+              -112
+            ],
+            [
+              -54,
+              -114
+            ]
+          ]
+        },
+        {
+          "id": "room-pan-e",
+          "kind": "area",
+          "h": 28,
+          "bevel": 2,
+          "ring": [
+            [
+              -6,
+              -130
+            ],
+            [
+              6,
+              -132
+            ],
+            [
+              18,
+              -130
+            ],
+            [
+              18,
+              -114
+            ],
+            [
+              6,
+              -112
+            ],
+            [
+              -6,
+              -114
+            ]
+          ]
+        },
+        {
           "id": "apron-pan",
           "kind": "area",
           "h": 23,
@@ -984,38 +1112,38 @@
       "id": "yard-dye-w",
       "type": "polygon",
       "operation": "add",
-      "base_height": 27,
+      "base_height": 28,
       "relief_scope": "exclude",
       "keepClear": true,
       "theme": "works",
       "vertices": [
         [
           -53,
-          -104
+          -127
         ],
         [
           -44,
-          -106
+          -129
         ],
         [
-          -33,
-          -103
+          -31,
+          -127
+        ],
+        [
+          -30,
+          -122
         ],
         [
           -32,
-          -96
-        ],
-        [
-          -34,
-          -88
+          -117
         ],
         [
           -44,
-          -86
+          -116
         ],
         [
           -53,
-          -90
+          -118
         ]
       ]
     },
@@ -1062,40 +1190,284 @@
       "id": "yard-dye-e",
       "type": "polygon",
       "operation": "add",
-      "base_height": 27,
+      "base_height": 28,
       "relief_scope": "exclude",
       "keepClear": true,
       "theme": "works",
       "vertices": [
         [
-          -4,
-          -104
+          -5,
+          -127
         ],
         [
           6,
-          -106
-        ],
-        [
-          16,
-          -103
+          -129
         ],
         [
           17,
-          -96
+          -127
         ],
         [
-          15,
-          -88
+          18,
+          -122
+        ],
+        [
+          16,
+          -117
         ],
         [
           6,
-          -86
+          -116
         ],
         [
-          -4,
-          -90
+          -5,
+          -118
         ]
       ]
+    },
+    {
+      "id": "ramp-dye-w",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "floor": 0,
+      "vertices": [
+        [
+          -46,
+          -116
+        ],
+        [
+          -36,
+          -116
+        ],
+        [
+          -36,
+          -102
+        ],
+        [
+          -46,
+          -102
+        ]
+      ],
+      "anchor_heights": [
+        28,
+        28,
+        26,
+        26
+      ],
+      "material": {
+        "kind": "cell",
+        "seed": 63,
+        "cellSize": 7,
+        "jitter": 2,
+        "warp": 3,
+        "palette": [
+          {
+            "kind": "solid",
+            "id": 12,
+            "data": 1
+          },
+          {
+            "kind": "solid",
+            "id": 172,
+            "data": 0
+          },
+          {
+            "kind": "solid",
+            "id": 3,
+            "data": 1
+          },
+          {
+            "kind": "solid",
+            "id": 179,
+            "data": 0
+          }
+        ],
+        "rise": 2
+      }
+    },
+    {
+      "id": "ramp-dye-e",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "floor": 0,
+      "vertices": [
+        [
+          -2,
+          -116
+        ],
+        [
+          8,
+          -116
+        ],
+        [
+          8,
+          -102
+        ],
+        [
+          -2,
+          -102
+        ]
+      ],
+      "anchor_heights": [
+        28,
+        28,
+        26,
+        26
+      ],
+      "material": {
+        "kind": "cell",
+        "seed": 63,
+        "cellSize": 7,
+        "jitter": 2,
+        "warp": 3,
+        "palette": [
+          {
+            "kind": "solid",
+            "id": 12,
+            "data": 1
+          },
+          {
+            "kind": "solid",
+            "id": 172,
+            "data": 0
+          },
+          {
+            "kind": "solid",
+            "id": 3,
+            "data": 1
+          },
+          {
+            "kind": "solid",
+            "id": 179,
+            "data": 0
+          }
+        ],
+        "rise": 2
+      }
+    },
+    {
+      "id": "bar-w-a",
+      "type": "polyline",
+      "operation": "add",
+      "radius": 1.5,
+      "stroke_edge": "solid",
+      "base_height": 30,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "vertices": [
+        [
+          -53,
+          -100
+        ],
+        [
+          -48,
+          -100
+        ],
+        [
+          -44,
+          -100
+        ]
+      ],
+      "material": {
+        "kind": "solid",
+        "id": 7,
+        "data": 0
+      }
+    },
+    {
+      "id": "bar-w-b",
+      "type": "polyline",
+      "operation": "add",
+      "radius": 1.5,
+      "stroke_edge": "solid",
+      "base_height": 30,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "vertices": [
+        [
+          -38,
+          -100
+        ],
+        [
+          -34,
+          -100
+        ],
+        [
+          -31,
+          -100
+        ]
+      ],
+      "material": {
+        "kind": "solid",
+        "id": 7,
+        "data": 0
+      }
+    },
+    {
+      "id": "bar-e-a",
+      "type": "polyline",
+      "operation": "add",
+      "radius": 1.5,
+      "stroke_edge": "solid",
+      "base_height": 30,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "vertices": [
+        [
+          -5,
+          -100
+        ],
+        [
+          0,
+          -100
+        ],
+        [
+          4,
+          -100
+        ]
+      ],
+      "material": {
+        "kind": "solid",
+        "id": 7,
+        "data": 0
+      }
+    },
+    {
+      "id": "bar-e-b",
+      "type": "polyline",
+      "operation": "add",
+      "radius": 1.5,
+      "stroke_edge": "solid",
+      "base_height": 30,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "vertices": [
+        [
+          10,
+          -100
+        ],
+        [
+          14,
+          -100
+        ],
+        [
+          17,
+          -100
+        ]
+      ],
+      "material": {
+        "kind": "solid",
+        "id": 7,
+        "data": 0
+      }
     },
     {
       "id": "wash-stair",
@@ -7556,20 +7928,20 @@
         },
         "points": [
           [
-            -28,
+            -34,
             -86
           ],
           [
-            -35,
-            -88
+            -40,
+            -94
+          ],
+          [
+            -41,
+            -102
           ],
           [
             -42,
-            -90
-          ],
-          [
-            -46,
-            -92
+            -110
           ]
         ]
       },
@@ -7613,20 +7985,20 @@
         },
         "points": [
           [
-            -10,
+            0,
             -86
           ],
           [
-            0,
-            -88
+            6,
+            -94
+          ],
+          [
+            7,
+            -102
           ],
           [
             8,
-            -90
-          ],
-          [
-            12,
-            -92
+            -110
           ]
         ]
       },
@@ -7868,11 +8240,11 @@
         "points": [
           [
             -58,
-            -110
+            -134
           ],
           [
             24,
-            -110
+            -134
           ],
           [
             28,
