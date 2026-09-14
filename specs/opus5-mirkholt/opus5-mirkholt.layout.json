@@ -694,19 +694,19 @@
       },
       "vertices": [
        [
-        -40,
+        -28,
         70
        ],
        [
-        -32,
+        -20,
         70
        ],
        [
-        -32,
+        -20,
         56
        ],
        [
-        -40,
+        -28,
         56
        ]
       ],
@@ -21744,12 +21744,12 @@
      {
       "corners": [
        [
-        -46,
-        30
+        -48,
+        62
        ],
        [
-        -38,
-        38
+        -40,
+        70
        ]
       ]
      }
@@ -21758,8 +21758,8 @@
    {
     "id": "stone-0",
     "kind": "boulder",
-    "x": -16,
-    "z": 44,
+    "x": -34,
+    "z": 64,
     "radius": 3,
     "height": 4,
     "seed": 71,
@@ -21793,8 +21793,8 @@
    {
     "id": "stone-1",
     "kind": "boulder",
-    "x": -12,
-    "z": 52,
+    "x": -16,
+    "z": 64,
     "radius": 2,
     "height": 3,
     "seed": 72,
@@ -21828,8 +21828,8 @@
    {
     "id": "stone-2",
     "kind": "boulder",
-    "x": -24,
-    "z": 50,
+    "x": 6,
+    "z": 64,
     "radius": 2,
     "height": 3,
     "seed": 73,
@@ -21863,10 +21863,10 @@
    {
     "id": "stone-3",
     "kind": "boulder",
-    "x": -46,
-    "z": 48,
-    "radius": 3,
-    "height": 4,
+    "x": -26,
+    "z": 16,
+    "radius": 2,
+    "height": 3,
     "seed": 74,
     "layer": "ground",
     "material": {
@@ -21898,10 +21898,10 @@
    {
     "id": "stone-4",
     "kind": "boulder",
-    "x": -30,
-    "z": 62,
+    "x": 6,
+    "z": 22,
     "radius": 2,
-    "height": 3,
+    "height": 2,
     "seed": 75,
     "layer": "ground",
     "material": {
@@ -21933,8 +21933,8 @@
    {
     "id": "stone-5",
     "kind": "boulder",
-    "x": 10,
-    "z": 24,
+    "x": 16,
+    "z": 26,
     "radius": 2,
     "height": 2,
     "seed": 76,
@@ -21968,137 +21968,97 @@
    {
     "id": "holt-0",
     "kind": "tree",
-    "style": "mirk-tall-b",
-    "x": -41,
+    "style": "mirk-dense-b",
+    "x": -42,
     "z": 14,
     "layer": "ground"
    },
    {
     "id": "holt-1",
     "kind": "tree",
-    "style": "mirk-dense-a",
-    "x": -32,
-    "z": 15,
+    "style": "mirk-dense-b",
+    "x": -19,
+    "z": 12,
     "layer": "ground"
    },
    {
     "id": "holt-2",
     "kind": "tree",
-    "style": "mirk-giant",
-    "x": -13,
-    "z": 14,
+    "style": "mirk-tall-a",
+    "x": 6,
+    "z": 15,
     "layer": "ground"
    },
    {
     "id": "holt-3",
     "kind": "tree",
-    "style": "mirk-dense-b",
-    "x": 15,
-    "z": 14,
+    "style": "scrub-b",
+    "x": -34,
+    "z": 20,
     "layer": "ground"
    },
    {
     "id": "holt-4",
     "kind": "tree",
-    "style": "mirk-dense-a",
-    "x": -23,
-    "z": 17,
+    "style": "scrub-b",
+    "x": -34,
+    "z": 27,
     "layer": "ground"
    },
    {
     "id": "holt-5",
     "kind": "tree",
-    "style": "mirk-dense-a",
-    "x": 2,
-    "z": 19,
+    "style": "scrub-a",
+    "x": -42,
+    "z": 28,
     "layer": "ground"
    },
    {
     "id": "holt-6",
     "kind": "tree",
-    "style": "mirk-giant",
-    "x": -29,
-    "z": 23,
+    "style": "scrub-a",
+    "x": -42,
+    "z": 35,
     "layer": "ground"
    },
    {
     "id": "holt-7",
     "kind": "tree",
-    "style": "mirk-tall-b",
-    "x": -7,
-    "z": 27,
+    "style": "scrub-a",
+    "x": -42,
+    "z": 42,
     "layer": "ground"
    },
    {
     "id": "holt-8",
     "kind": "tree",
-    "style": "mirk-tall-b",
-    "x": 18,
-    "z": 22,
+    "style": "mirk-dense-a",
+    "x": -21,
+    "z": 49,
     "layer": "ground"
    },
    {
     "id": "holt-9",
     "kind": "tree",
-    "style": "scrub-b",
-    "x": -4,
-    "z": 62,
+    "style": "scrub-a",
+    "x": -42,
+    "z": 49,
     "layer": "ground"
    },
    {
     "id": "holt-10",
     "kind": "tree",
-    "style": "mirk-giant",
-    "x": 5,
-    "z": 63,
+    "style": "scrub-b",
+    "x": -15,
+    "z": 57,
     "layer": "ground"
    },
    {
     "id": "holt-11",
     "kind": "tree",
-    "style": "scrub-b",
-    "x": -13,
-    "z": 62,
-    "layer": "ground"
-   },
-   {
-    "id": "holt-12",
-    "kind": "tree",
-    "style": "mirk-tall-a",
-    "x": 15,
-    "z": 62,
-    "layer": "ground"
-   },
-   {
-    "id": "holt-13",
-    "kind": "tree",
-    "style": "mirk-dense-a",
-    "x": 2,
-    "z": 75,
-    "layer": "ground"
-   },
-   {
-    "id": "holt-14",
-    "kind": "tree",
-    "style": "mirk-dense-b",
-    "x": -35,
-    "z": 75,
-    "layer": "ground"
-   },
-   {
-    "id": "holt-15",
-    "kind": "tree",
     "style": "mirk-tall-b",
-    "x": 2,
-    "z": 85,
-    "layer": "ground"
-   },
-   {
-    "id": "holt-16",
-    "kind": "tree",
-    "style": "mirk-tall-b",
-    "x": 2,
-    "z": 94,
+    "x": 12,
+    "z": 72,
     "layer": "ground"
    },
    {

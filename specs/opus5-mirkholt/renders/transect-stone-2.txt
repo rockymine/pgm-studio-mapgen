@@ -1,61 +1,61 @@
 ## stone-2 (boulder) along x
-TRANSECT 25 stations from (-36, 50) to (-12, 50), every 1
+TRANSECT 25 stations from (-6, 64) to (18, 64), every 1
   station        ground  surface  water  top  standing            step
-  (  -36,    50)      11       11           11  stroke lane         
-  (  -35,    50)      11       11           11  stroke lane         
-  (  -34,    50)      12       12           12                      +1
-  (  -33,    50)      13       13           13                      +1
-  (  -32,    50)      14       14           14                      +1
-  (  -31,    50)      15       15           15                      +1
-  (  -30,    50)      16       16           16                      +1
-  (  -29,    50)      17       17           17                      +1
-  (  -28,    50)      17       17           23  boulder stone-2     
-  (  -27,    50)      18       18           24  boulder stone-2     +1
-  (  -26,    50)      19       19           25  boulder stone-2     +1
-  (  -25,    50)      20       20           26  boulder stone-2     +1
-  (  -24,    50)      20       20           26  boulder stone-2     
-  (  -23,    50)      21       21           26  boulder stone-2     +1
-  (  -22,    50)      22       22           25  boulder stone-2     +1
-  (  -21,    50)      23       23           24  boulder stone-2     +1
-  (  -20,    50)      23       23           23                      
-  (  -19,    50)      23       23           23                      
-  (  -18,    50)      23       23           23                      
-  (  -17,    50)      22       22           22                      -1
-  (  -16,    50)      22       22           22                      
-  (  -15,    50)      22       22           23  boulder stone-1     
-  (  -14,    50)      21       21           25  boulder stone-1     -1
-  (  -13,    50)      21       21           25  boulder stone-1     
-  (  -12,    50)      20       20           25  boulder stone-1     -1
-rises 12, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke lane at (-37, 48), boulder stone-2 at (-28, 50), boulder stone-1 at (-16, 52)
+  (   -6,    64)      15       15           15                      
+  (   -5,    64)      15       15           15                      
+  (   -4,    64)      15       15           15                      
+  (   -3,    64)      15       15           15                      
+  (   -2,    64)      15       15           15                      
+  (   -1,    64)      15       15           15                      
+  (    0,    64)      15       15           15                      
+  (    1,    64)      15       15           15                      
+  (    2,    64)      15       15           18  boulder stone-2     
+  (    3,    64)      15       15           19  boulder stone-2     
+  (    4,    64)      15       15           20  boulder stone-2     
+  (    5,    64)      15       15           21  boulder stone-2     
+  (    6,    64)      15       15           21  boulder stone-2     
+  (    7,    64)      15       15           21  boulder stone-2     
+  (    8,    64)      15       15           20  boulder stone-2     
+  (    9,    64)      15       15           19  boulder stone-2     
+  (   10,    64)      15       15           18  boulder stone-2     
+  (   11,    64)      15       15           15                      
+  (   12,    64)      15       15           15                      
+  (   13,    64)      15       15           15                      
+  (   14,    64)      15       15           15                      
+  (   15,    64)      15       15           15                      
+  (   16,    64)      16       16           16                      +1
+  (   17,    64)      16       16           16                      
+  (   18,    64)      16       16           16                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder stone-2 at (2, 64)
 
 ## stone-2 (boulder) along z
-TRANSECT 25 stations from (-24, 38) to (-24, 62), every 1
+TRANSECT 25 stations from (6, 52) to (6, 76), every 1
   station        ground  surface  water  top  standing            step
-  (  -24,    38)      19       19           19                      
-  (  -24,    39)      19       19           19                      
-  (  -24,    40)      19       19           19                      
-  (  -24,    41)      19       19           19                      
-  (  -24,    42)      19       19           19                      
-  (  -24,    43)      20       20           20                      +1
-  (  -24,    44)      20       20           20                      
-  (  -24,    45)      20       20           20                      
-  (  -24,    46)      20       20           22  boulder stone-2     
-  (  -24,    47)      20       20           25  boulder stone-2     
-  (  -24,    48)      20       20           25  boulder stone-2     
-  (  -24,    49)      20       20           26  boulder stone-2     
-  (  -24,    50)      20       20           26  boulder stone-2     
-  (  -24,    51)      20       20           26  boulder stone-2     
-  (  -24,    52)      21       21           25  boulder stone-2     +1
-  (  -24,    53)      21       21           24  boulder stone-2     
-  (  -24,    54)      21       21           21                      
-  (  -24,    55)      21       21           21                      
-  (  -24,    56)      21       21           21                      
-  (  -24,    57)      20       20           20                      -1
-  (  -24,    58)      19       19           19                      -1
-  (  -24,    59)      19       19           19                      
-  (  -24,    60)      18       18           18                      -1
-  (  -24,    61)      17       17           17                      -1
-  (  -24,    62)      16       16           16                      -1
-rises 2, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke lane at (-26, 36), boulder stone-2 at (-24, 46)
+  (    6,    52)                                                    void
+  (    6,    53)                                                    void
+  (    6,    54)                                                    void
+  (    6,    55)                                                    void
+  (    6,    56)                                                    void
+  (    6,    57)                                                    void
+  (    6,    58)                                                    void
+  (    6,    59)                                                    void
+  (    6,    60)      16       16           17  boulder stone-2     
+  (    6,    61)      15       15           20  boulder stone-2     -1
+  (    6,    62)      15       15           20  boulder stone-2     
+  (    6,    63)      15       15           21  boulder stone-2     
+  (    6,    64)      15       15           21  boulder stone-2     
+  (    6,    65)      15       15           21  boulder stone-2     
+  (    6,    66)      15       15           20  boulder stone-2     
+  (    6,    67)      15       15           19  boulder stone-2     
+  (    6,    68)      15       15           15                      
+  (    6,    69)      15       15           15                      
+  (    6,    70)      15       15           15                      
+  (    6,    71)      15       15           15                      
+  (    6,    72)      16       16           16                      +1
+  (    6,    73)      16       16           16                      
+  (    6,    74)      17       17           17                      +1
+  (    6,    75)      17       17           17                      
+  (    6,    76)      17       17           17                      
+rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder stone-2 at (6, 60)

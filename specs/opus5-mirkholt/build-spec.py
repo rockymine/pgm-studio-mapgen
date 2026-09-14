@@ -284,7 +284,7 @@ PROPS = [
     # in the trees at all
     {"id": "hut", "kind": "house", "seed": 311, "layer": "ground",
      "style": "hut", "front": "posZ",
-     "wings": [{"corners": [[-48, 62], [-40, 70]]}]},
+     "wings": [{"corners": [[-46, 61], [-38, 69]]}]},
 ]
 
 # The wood.  A jittered lattice over the ground this side actually has, three storeys deep
@@ -297,19 +297,18 @@ SCRUB = ["scrub-a", "scrub-b"]
 count = 0
 # stone, and only stone -- and all of it on the brow strip and the toe, because a wood
 # 40 blocks wide with a 14-block lane down it has no room for a boulder as well as a tree
-BOULDERS = [(-34, 64, 3, 4), (-16, 64, 2, 3), (6, 64, 2, 3),
+BOULDERS = [(-30, 66, 3, 4), (-6, 64, 2, 3), (8, 66, 2, 3),
             (-26, 16, 2, 3), (6, 22, 2, 2), (16, 26, 2, 2)]
 for i, (x, z, r, h) in enumerate(BOULDERS):
     PROPS.append(boulder(f"stone-{i}", x, z, r, h, 71 + i))
 
-KEEP_OFF = [(-48, 62, -40, 70, 8),       # the charcoal burner's hut
+KEEP_OFF = [(-46, 61, -38, 69, 8),       # the charcoal burner's hut
             (-20, 26, -14, 46, 2),       # the flight off the brow
             (-28, 56, -20, 70, 3)]       # the threshold out of the clearing
 KEEP_OFF += [(x - r, z - r, x + r, z + r, 4) for x, z, r, _ in BOULDERS]
 # the rooms and the ground in front of the spawn door: a room's own keep-out is stated by
 # the compile, and a tree inside it is DR-KEEP rather than a tree
-KEEP_OFF += [(-42, 83, -28, 97, 7), (3, 83, 17, 97, 7), (-19, 86, -7, 98, 7),
-             (-19, 68, -7, 86, 6)]
+KEEP_OFF += [(-42, 72, -28, 97, 7), (3, 72, 17, 97, 7), (-19, 72, -7, 98, 7)]
 
 
 def near_trod(x, z, within):

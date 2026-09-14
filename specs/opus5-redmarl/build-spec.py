@@ -501,16 +501,17 @@ def dressing():
                                  "spec": {"storeysHigh": 1, "ridge": "alongX"}}]})
 
     # Boulders, each where the bed dropped it or where the bank has calved.
-    # On the gully floor only, east of the two descents and clear of the bed's own stroke,
-    # with ten blocks between any two -- a prop inside another prop's claim is a prop the
-    # dressing pass declines and nothing in the world says so afterwards.
-    for at, (bx, bz) in enumerate([(8, -18), (18, -10), (4, -4), (16, 4), (-8, 2), (-18, 6)]):
+    # On the gully floor only, east of the two descents and clear of the bed's own stroke. Every
+    # one of them stands well back from the centre line, because a prop is mirrored like anything
+    # else and one drawn near z 0 collides with its own image -- which is what declined three of
+    # these when they were spread across the neck rather than up one end of it.
+    for at, (bx, bz) in enumerate([(8, -18), (18, -10), (4, -4)]):
         props_out.append({"id": f"rock-{at}", "kind": "boulder", "seed": 610 + at,
                           "x": bx, "z": bz, "style": "rock"})
 
     # Acacia on the bank and scrub where the dust is deepest. Every one is off a track and off a
     # yard, and none is on the gully floor, which is a bed and carries nothing tall.
-    plant = [("holt-1", -32, -70), ("holt-2", -14, -70), ("holt-3", -34, -80),
+    plant = [("holt-1", -34, -66), ("holt-2", -8, -78),
              ("holt-1", -42, -42), ("holt-2", -30, -28),
              ("scrub-1", 20, -20), ("scrub-1", -20, 16)]
     for at, (style, tx, tz) in enumerate(plant):

@@ -1,57 +1,55 @@
 ## hut (house) along x
-TRANSECT 21 stations from (-50, 34) to (-30, 34), every 1
+TRANSECT 19 stations from (-50, 66) to (-32, 66), every 1
   station        ground  surface  water  top  standing            step
-  (  -50,    34)      14       14           14                      
-  (  -49,    34)      14       14           14                      
-  (  -48,    34)      14       14           14                      
-  (  -47,    34)      14       14           23  house hut           
-  (  -46,    34)      14       14           23  house hut           
-  (  -45,    34)      14       14           23  house hut           
-  (  -44,    34)      14       14           23  house hut           
-  (  -43,    34)      14       14           23  house hut           
-  (  -42,    34)      14       14           23  house hut           
-  (  -41,    34)      14       14           23  house hut           
-  (  -40,    34)      14       14           23  house hut           
-  (  -39,    34)      13       13           23  house hut           -1
-  (  -38,    34)      13       13           23  house hut           
-  (  -37,    34)      13       13           23  house hut           
-  (  -36,    34)      13       13           13                      
-  (  -35,    34)      13       13           13                      
-  (  -34,    34)      13       13           13                      
-  (  -33,    34)      13       13           13                      
-  (  -32,    34)      14       14           14                      +1
-  (  -31,    34)      14       14           14  stroke lane         
-  (  -30,    34)      14       14           14                      
+  (  -50,    66)      13       13           13                      
+  (  -49,    66)      13       13           13                      
+  (  -48,    66)      13       13           13                      
+  (  -47,    66)      13       13           13                      
+  (  -46,    66)      13       13           13                      
+  (  -45,    66)      13       13           13                      
+  (  -44,    66)      13       13           13                      
+  (  -43,    66)      13       13           13                      
+  (  -42,    66)      13       13           13  stroke lane         
+  (  -41,    66)      13       13           13                      
+  (  -40,    66)      12       12           12  stroke lane         -1
+  (  -39,    66)      12       12           12  stroke lane         
+  (  -38,    66)      12       12           12  stroke lane         
+  (  -37,    66)      12       12           12  stroke lane         
+  (  -36,    66)      12       12           12                      
+  (  -35,    66)      12       12           12                      
+  (  -34,    66)      13       13           13                      +1
+  (  -33,    66)      13       13           13                      
+  (  -32,    66)      13       13           13                      
 rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: house hut at (-47, 32), stroke lane at (-32, 36)
+beside: stroke lane at (-42, 64)
 
 ## hut (house) along z
-TRANSECT 25 stations from (-42, 22) to (-42, 46), every 1
+TRANSECT 25 stations from (-44, 54) to (-44, 78), every 1
   station        ground  surface  water  top  standing            step
-  (  -42,    22)      14       14           14                      
-  (  -42,    23)      14       14           14                      
-  (  -42,    24)      14       14           14                      
-  (  -42,    25)      14       14           14                      
-  (  -42,    26)      14       14           14                      
-  (  -42,    27)      14       14           14                      
-  (  -42,    28)      14       14           14                      
-  (  -42,    29)      14       14           18  house hut           
-  (  -42,    30)      14       14           19  house hut           
-  (  -42,    31)      14       14           20  house hut           
-  (  -42,    32)      14       14           21  house hut           
-  (  -42,    33)      14       14           22  house hut           
-  (  -42,    34)      14       14           23  house hut           
-  (  -42,    35)      14       14           22  house hut           
-  (  -42,    36)      14       14           21  house hut           
-  (  -42,    37)      14       14           20  house hut           
-  (  -42,    38)      14       14           19  house hut           
-  (  -42,    39)      13       13           18  house hut           -1
-  (  -42,    40)      13       13           13                      
-  (  -42,    41)      13       13           13                      
-  (  -42,    42)      13       13           13                      
-  (  -42,    43)      13       13           13                      
-  (  -42,    44)      13       13           13                      
-  (  -42,    45)      13       13           13                      
-  (  -42,    46)      13       13           13                      
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree holt-0 at (-41, 20), house hut at (-44, 29), boulder stone-3 at (-44, 45)
+  (  -44,    54)      13       13           13                      
+  (  -44,    55)      13       13           13                      
+  (  -44,    56)      13       13           13                      
+  (  -44,    57)      13       13           13                      
+  (  -44,    58)      13       13           13                      
+  (  -44,    59)      13       13           13                      
+  (  -44,    60)      13       13           13                      
+  (  -44,    61)      13       13           13                      
+  (  -44,    62)      13       13           13                      
+  (  -44,    63)      13       13           13                      
+  (  -44,    64)      13       13           13                      
+  (  -44,    65)      13       13           13                      
+  (  -44,    66)      13       13           13                      
+  (  -44,    67)      13       13           13                      
+  (  -44,    68)      13       13           13                      
+  (  -44,    69)      13       13           13                      
+  (  -44,    70)      13       13           13                      
+  (  -44,    71)      14       14           14                      +1
+  (  -44,    72)      14       14           14                      
+  (  -44,    73)      14       14           14                      
+  (  -44,    74)      14       14           14                      
+  (  -44,    75)      15       15           15                      +1
+  (  -44,    76)      15       15           15                      
+  (  -44,    77)      15       15           15                      
+  (  -44,    78)      15       15           15                      
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke lane at (-42, 63), redstoneline 0 at (-45, 80)
