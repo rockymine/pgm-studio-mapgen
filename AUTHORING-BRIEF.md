@@ -457,6 +457,12 @@ anything sampled from the plane, and a retaining wall is the one surface on a bo
 `teamTint` in one run and the town wears the colour of whoever holds it, so a player reads whose terrace they
 are looking at from the far bank.
 
+That reads as ownership only where the ground under it is ownable. A tint is one colour per **canonical
+island**, so on a board whose land is a single landmass — the ordinary capture board — every tinted cell takes
+whichever team's spawn the ownership read first, and the whole map comes out one colour. `PT5` says so on the
+build. Where the land is one piece, put the tint on a **shape's own theme** — the terrace, the wall, the
+structure that actually belongs to somebody — rather than on the terrain.
+
 ### The one thing that is not yours to decide
 
 **A rule about the map as it is *played* has a human oracle, and this session does not have one.** When you
