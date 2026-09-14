@@ -1,0 +1,169 @@
+{
+  "plan": 2,
+  "meta": {
+    "name": "Potsherd"
+  },
+  "globals": {
+    "cell": 4,
+    "symmetry": "rot_180",
+    "maxPlayers": 16,
+    "surface": 20,
+    "observerY": 60
+  },
+  "pieces": [
+    {
+      "id": "works",
+      "role": "piece",
+      "rect": [
+        -13,
+        -24,
+        26,
+        5
+      ],
+      "surface": 25
+    },
+    {
+      "id": "camp",
+      "role": "spawn",
+      "rect": [
+        -4,
+        -24,
+        7,
+        5
+      ],
+      "surface": 25
+    },
+    {
+      "id": "terrace",
+      "role": "piece",
+      "rect": [
+        -13,
+        -19,
+        26,
+        6
+      ],
+      "surface": 24
+    },
+    {
+      "id": "pit",
+      "role": "piece",
+      "rect": [
+        -9,
+        -13,
+        18,
+        5
+      ],
+      "surface": 17
+    },
+    {
+      "id": "rim-w",
+      "role": "piece",
+      "rect": [
+        -13,
+        -13,
+        4,
+        5
+      ],
+      "surface": 23
+    },
+    {
+      "id": "rim-e",
+      "role": "piece",
+      "rect": [
+        9,
+        -13,
+        4,
+        5
+      ],
+      "surface": 23
+    },
+    {
+      "id": "field",
+      "role": "piece",
+      "rect": [
+        -13,
+        -8,
+        26,
+        5
+      ],
+      "surface": 20
+    },
+    {
+      "id": "mid",
+      "role": "piece",
+      "rect": [
+        -11,
+        -3,
+        22,
+        6
+      ],
+      "surface": 20
+    }
+  ],
+  "zones": [
+    {
+      "id": "brickfield",
+      "rect": [
+        -11,
+        -5,
+        22,
+        10
+      ],
+      "kind": "build"
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "camp",
+        "at": [
+          14,
+          10
+        ],
+        "facing": "back",
+        "footprint": [
+          6,
+          3,
+          16,
+          14
+        ]
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "camp",
+        "at": [
+          3,
+          10
+        ]
+      },
+      {
+        "id": "iron-2",
+        "piece": "camp",
+        "at": [
+          25,
+          10
+        ]
+      }
+    ],
+    "cores": [
+      {
+        "id": "core-1",
+        "piece": "terrace",
+        "at": [
+          18,
+          16
+        ],
+        "lava": 3,
+        "lavaHeight": 3,
+        "float": 6,
+        "leak": 5,
+        "name": "The Kiln Core"
+      }
+    ],
+    "destroyables": [],
+    "wools": []
+  }
+}

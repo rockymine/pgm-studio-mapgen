@@ -1,0 +1,67 @@
+## store (house) along x
+TRANSECT 27 stations from (-38, 76) to (-12, 76), every 1
+  station        ground  surface  water  top  standing            step
+  (  -38,    76)                                                    void
+  (  -37,    76)                                                    void
+  (  -36,    76)                                                    void
+  (  -35,    76)                                                    void
+  (  -34,    76)                                                    void
+  (  -33,    76)                                                    void
+  (  -32,    76)                                                    void
+  (  -31,    76)      13       13           23  house store         
+  (  -30,    76)      13       13           24  house store         
+  (  -29,    76)      13       13           25  house store         
+  (  -28,    76)      13       13           26  house store         
+  (  -27,    76)      14       14           27  house store         +1
+  (  -26,    76)      14       14           28  house store         
+  (  -25,    76)      14       14           29  house store         
+  (  -24,    76)      14       14           28  house store         
+  (  -23,    76)      14       14           27  house store         
+  (  -22,    76)      14       14           26  house store         
+  (  -21,    76)      14       14           25  house store         
+  (  -20,    76)      14       14           24  house store         
+  (  -19,    76)      14       14           23  house store         
+  (  -18,    76)      14       14           14                      
+  (  -17,    76)      14       14           14                      
+  (  -16,    76)      14       14           14                      
+  (  -15,    76)      14       14           14                      
+  (  -14,    76)      14       14           14                      
+  (  -13,    76)      14       14           14                      
+  (  -12,    76)      14       14           14  stroke tramway      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house store at (-31, 74), stroke tramway at (-14, 74)
+
+## store (house) along z
+TRANSECT 29 stations from (-25, 62) to (-25, 90), every 1
+  station        ground  surface  water  top  standing            step
+  (  -25,    62)      14       14           14                      
+  (  -25,    63)      14       14           14                      
+  (  -25,    64)      14       14           14                      
+  (  -25,    65)      14       14           14                      
+  (  -25,    66)      14       14           14                      
+  (  -25,    67)      14       14           14                      
+  (  -25,    68)      13       13           13                      -1
+  (  -25,    69)      13       13           29  house store         
+  (  -25,    70)      14       14           29  house store         +1
+  (  -25,    71)      14       14           29  house store         
+  (  -25,    72)      14       14           29  house store         
+  (  -25,    73)      14       14           29  house store         
+  (  -25,    74)      14       14           29  house store         
+  (  -25,    75)      14       14           29  house store         
+  (  -25,    76)      14       14           29  house store         
+  (  -25,    77)      14       14           29  house store         
+  (  -25,    78)      14       14           29  house store         
+  (  -25,    79)      14       14           29  house store         
+  (  -25,    80)      14       14           29  house store         
+  (  -25,    81)      14       14           29  house store         
+  (  -25,    82)      14       14           29  house store         
+  (  -25,    83)      15       15           29  house store         +1
+  (  -25,    84)      15       15           15                      
+  (  -25,    85)      15       15           15                      
+  (  -25,    86)      15       15           15                      
+  (  -25,    87)      15       15           15                      
+  (  -25,    88)      15       15           15                      
+  (  -25,    89)      15       15           15                      
+  (  -25,    90)      15       15           15                      
+rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house store at (-27, 69)

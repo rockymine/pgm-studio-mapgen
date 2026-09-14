@@ -1,0 +1,63 @@
+## shelter-w (house) along x
+TRANSECT 27 stations from (-44, -71) to (-18, -71), every 1
+  station        ground  surface  water  top  standing            step
+  (  -44,   -71)      18       18           18                      
+  (  -43,   -71)      18       18           18                      
+  (  -42,   -71)      18       18           18                      
+  (  -41,   -71)      18       18           18                      
+  (  -40,   -71)      19       19           19                      +1
+  (  -39,   -71)      19       19           19                      
+  (  -38,   -71)      20       20           20                      +1
+  (  -37,   -71)      21       21           26  house shelter-w     +1
+  (  -36,   -71)      21       21           26  house shelter-w     
+  (  -35,   -71)      21       21           27  house shelter-w     
+  (  -34,   -71)      21       21           27  house shelter-w     
+  (  -33,   -71)      21       21           28  house shelter-w     
+  (  -32,   -71)      21       21           28  house shelter-w     
+  (  -31,   -71)      21       21           28  house shelter-w     
+  (  -30,   -71)      21       21           28  house shelter-w     
+  (  -29,   -71)      21       21           28  house shelter-w     
+  (  -28,   -71)      21       21           27  house shelter-w     
+  (  -27,   -71)      21       21           27  house shelter-w     
+  (  -26,   -71)      21       21           26  house shelter-w     
+  (  -25,   -71)      21       21           26  house shelter-w     
+  (  -24,   -71)      21       21           21                      
+  (  -23,   -71)      21       21           21  stroke track-camp   
+  (  -22,   -71)      20       20           20  stroke track-camp   -1
+  (  -21,   -71)      20       20           20  stroke track-camp   
+  (  -20,   -71)      20       20           20  stroke track-camp   
+  (  -19,   -71)      20       20           20  stroke track-camp   
+  (  -18,   -71)      20       20           20  stroke track-camp   
+rises 3, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke bed-w at (-42, -70), house shelter-w at (-37, -73), stroke track-camp at (-24, -70)
+
+## shelter-w (house) along z
+TRANSECT 25 stations from (-31, -83) to (-31, -59), every 1
+  station        ground  surface  water  top  standing            step
+  (  -31,   -83)      21       21           21                      
+  (  -31,   -82)      21       21           27  tree thorn-2        
+  (  -31,   -81)      20       20           20                      -1
+  (  -31,   -80)      20       20           20                      
+  (  -31,   -79)      20       20           20                      
+  (  -31,   -78)      20       20           20                      
+  (  -31,   -77)      20       20           20                      
+  (  -31,   -76)      21       21           26  house shelter-w     +1
+  (  -31,   -75)      21       21           26  house shelter-w     
+  (  -31,   -74)      21       21           27  house shelter-w     
+  (  -31,   -73)      21       21           27  house shelter-w     
+  (  -31,   -72)      21       21           28  house shelter-w     
+  (  -31,   -71)      21       21           28  house shelter-w     
+  (  -31,   -70)      21       21           28  house shelter-w     
+  (  -31,   -69)      21       21           27  house shelter-w     
+  (  -31,   -68)      21       21           27  house shelter-w     
+  (  -31,   -67)      21       21           26  house shelter-w     
+  (  -31,   -66)      21       21           26  house shelter-w     
+  (  -31,   -65)      21       21           21                      
+  (  -31,   -64)      20       20           20                      -1
+  (  -31,   -63)      19       19           19                      -1
+  (  -31,   -62)      19       19           19                      
+  (  -31,   -61)      19       19           19                      
+  (  -31,   -60)      19       19           19                      
+  (  -31,   -59)      19       19           19                      
+rises 1, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree thorn-2 at (-29, -85), house shelter-w at (-33, -76), stroke bed-w at (-33, -57)

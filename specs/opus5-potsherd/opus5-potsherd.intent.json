@@ -1,0 +1,197 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -2,
+    "y": 25,
+    "z": -86
+   },
+   "protection": [
+    {
+     "minX": -16,
+     "minZ": -96,
+     "maxX": 12,
+     "maxZ": -76
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -10,
+    "minZ": -93,
+    "maxX": 6,
+    "maxZ": -79
+   },
+   "iron": [
+    {
+     "x": -13,
+     "y": 25,
+     "z": -86
+    },
+    {
+     "x": 9,
+     "y": 25,
+     "z": -86
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 2,
+    "y": 25,
+    "z": 86
+   },
+   "protection": [
+    {
+     "minX": -12,
+     "minZ": 76,
+     "maxX": 16,
+     "maxZ": 96
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": -6,
+    "minZ": 79,
+    "maxX": 10,
+    "maxZ": 93
+   },
+   "iron": [
+    {
+     "x": 13,
+     "y": 25,
+     "z": 86
+    },
+    {
+     "x": -9,
+     "y": 25,
+     "z": 86
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 60,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -44,
+    "minZ": -20,
+    "maxX": 44,
+    "maxZ": 20
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Kiln Core",
+   "anchor": {
+    "x": -34,
+    "y": 24,
+    "z": -60
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Kiln Core",
+   "anchor": {
+    "x": 33,
+    "y": 24,
+    "z": 59
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  }
+ ],
+ "controlPoints": null,
+ "shops": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtc"
+ ],
+ "meta": {
+  "name": "Potsherd",
+  "created": "2026-09-14",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

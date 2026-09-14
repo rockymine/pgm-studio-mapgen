@@ -1,0 +1,132 @@
+{
+  "plan": 2,
+  "meta": {
+    "name": "Dustwath"
+  },
+  "globals": {
+    "cell": 4,
+    "symmetry": "rot_180",
+    "maxPlayers": 12,
+    "surface": 20,
+    "observerY": 52
+  },
+  "pieces": [
+    {
+      "id": "head",
+      "role": "piece",
+      "rect": [
+        -8,
+        -26,
+        16,
+        6
+      ],
+      "surface": 21
+    },
+    {
+      "id": "camp",
+      "role": "spawn",
+      "rect": [
+        -2,
+        -25,
+        4,
+        4
+      ],
+      "surface": 21
+    },
+    {
+      "id": "apron",
+      "role": "piece",
+      "rect": [
+        -11,
+        -20,
+        22,
+        6
+      ],
+      "surface": 20
+    },
+    {
+      "id": "bench",
+      "role": "piece",
+      "rect": [
+        -8,
+        -14,
+        16,
+        4
+      ],
+      "surface": 23
+    },
+    {
+      "id": "flats",
+      "role": "piece",
+      "rect": [
+        -11,
+        -10,
+        22,
+        4
+      ],
+      "surface": 19
+    }
+  ],
+  "zones": [
+    {
+      "id": "wath-w",
+      "rect": [
+        -11,
+        -7,
+        4,
+        14
+      ]
+    },
+    {
+      "id": "wath-mid",
+      "rect": [
+        -7,
+        -9,
+        13,
+        18
+      ]
+    },
+    {
+      "id": "wath-e",
+      "rect": [
+        6,
+        -7,
+        5,
+        14
+      ]
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "camp",
+        "at": [
+          8,
+          8
+        ],
+        "facing": "back",
+        "footprint": [
+          2,
+          2,
+          12,
+          12
+        ]
+      }
+    ],
+    "destroyables": [
+      {
+        "id": "destroyable-1",
+        "piece": "bench",
+        "at": [
+          18,
+          5
+        ],
+        "style": "cube-3",
+        "materials": "emerald block",
+        "float": 4,
+        "name": "The Wath Stone"
+      }
+    ]
+  }
+}

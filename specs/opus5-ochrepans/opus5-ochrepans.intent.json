@@ -1,0 +1,174 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -2,
+    "y": 23,
+    "z": -86
+   },
+   "protection": [
+    {
+     "minX": -16,
+     "minZ": -96,
+     "maxX": 12,
+     "maxZ": -76
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -10,
+    "minZ": -93,
+    "maxX": 6,
+    "maxZ": -79
+   },
+   "iron": [
+    {
+     "x": -13,
+     "y": 23,
+     "z": -86
+    },
+    {
+     "x": 9,
+     "y": 23,
+     "z": -86
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 2,
+    "y": 23,
+    "z": 86
+   },
+   "protection": [
+    {
+     "minX": -12,
+     "minZ": 76,
+     "maxX": 16,
+     "maxZ": 96
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": -6,
+    "minZ": 79,
+    "maxX": 10,
+    "maxZ": 93
+   },
+   "iron": [
+    {
+     "x": 13,
+     "y": 23,
+     "z": 86
+    },
+    {
+     "x": -9,
+     "y": 23,
+     "z": 86
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 62,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": null,
+ "controlPoints": [
+  {
+   "name": "The Sump",
+   "anchor": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "size": 8,
+   "points": 1
+  },
+  {
+   "name": "West Pan",
+   "anchor": {
+    "x": -41,
+    "y": 0,
+    "z": -19
+   },
+   "size": 8,
+   "points": 1
+  },
+  {
+   "name": "East Pan",
+   "anchor": {
+    "x": 41,
+    "y": 0,
+    "z": 19
+   },
+   "size": 8,
+   "points": 1
+  }
+ ],
+ "shops": null,
+ "scoreLimit": 750,
+ "modes": null,
+ "gamemodes": [],
+ "meta": {
+  "name": "Ochrepans",
+  "created": "2026-09-14",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

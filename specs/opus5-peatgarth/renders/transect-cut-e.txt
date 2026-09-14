@@ -1,0 +1,102 @@
+## cut-e (water) along x
+TRANSECT 44 stations from (-4, 57) to (39, 57), every 1
+  station        ground  surface  water  top  standing            step
+  (   -4,    57)      19       19           19                      
+  (   -3,    57)      19       19           19                      
+  (   -2,    57)      19       19           19                      
+  (   -1,    57)      13       13           13                      DROP -6
+  (    0,    57)      13       13           13                      
+  (    1,    57)      12       12           12                      -1
+  (    2,    57)      12       12           12                      
+  (    3,    57)      12       12           12                      
+  (    4,    57)      12       12           12                      
+  (    5,    57)      12       12           12                      
+  (    6,    57)      12       12           12  water cut-e         
+  (    7,    57)      12       12           12  water cut-e         
+  (    8,    57)      12       12     10    10  water cut-e         
+  (    9,    57)      12       12     10    10  water cut-e         
+  (   10,    57)      11       11     10    10  water cut-e         -1
+  (   11,    57)      11       11     10    10  water cut-e         
+  (   12,    57)      11       11     10    10  water cut-e         
+  (   13,    57)      11       11     10    10  water cut-e         
+  (   14,    57)      11       11     10    10  water cut-e         
+  (   15,    57)      11       11     10    10  water cut-e         
+  (   16,    57)      11       11     10    10  water cut-e         
+  (   17,    57)      11       11     10    10  water cut-e         
+  (   18,    57)      11       11     10    10  water cut-e         
+  (   19,    57)      11       11     10    10  water cut-e         
+  (   20,    57)      11       11     10    10  water cut-e         
+  (   21,    57)      11       11     10    10  water cut-e         
+  (   22,    57)      11       11     10    10  water cut-e         
+  (   23,    57)      11       11     10    10  water cut-e         
+  (   24,    57)      11       11     10    10  water cut-e         
+  (   25,    57)      11       11     10    10  water cut-e         
+  (   26,    57)      11       11     10    10  water cut-e         
+  (   27,    57)      11       11           11  water cut-e         
+  (   28,    57)      11       11           11  water cut-e         
+  (   29,    57)      11       11           11                      
+  (   30,    57)                                                    void
+  (   31,    57)                                                    void
+  (   32,    57)                                                    void
+  (   33,    57)                                                    void
+  (   34,    57)                                                    void
+  (   35,    57)                                                    void
+  (   36,    57)                                                    void
+  (   37,    57)                                                    void
+  (   38,    57)                                                    void
+  (   39,    57)                                                    void
+rises 0, falls 3, worst step 6: 0 barrier, 0 scramble, 1 drop — DROP -6 at (-1, 57) | walked end to end
+beside: water cut-e at (6, 55)
+
+## cut-e (water) along z
+TRANSECT 47 stations from (17, 34) to (17, 80), every 1
+  station        ground  surface  water  top  standing            step
+  (   17,    34)      19       19           28  tree holt-5         
+  (   17,    35)      19       19           19                      
+  (   17,    36)      18       18           18                      -1
+  (   17,    37)      18       18           18                      
+  (   17,    38)      17       17           17                      -1
+  (   17,    39)      16       16           16                      -1
+  (   17,    40)      16       16           16                      
+  (   17,    41)      15       15           15                      -1
+  (   17,    42)      14       14           14                      -1
+  (   17,    43)      13       13           13                      -1
+  (   17,    44)      13       13           13  water cut-e         
+  (   17,    45)      12       12           12  water cut-e         -1
+  (   17,    46)      11       11     10    10  water cut-e         -1
+  (   17,    47)      11       11     10    10  water cut-e         
+  (   17,    48)      11       11     10    10  water cut-e         
+  (   17,    49)      11       11     10    10  water cut-e         
+  (   17,    50)      11       11     10    10  water cut-e         
+  (   17,    51)      11       11     10    10  water cut-e         
+  (   17,    52)      11       11     10    10  water cut-e         
+  (   17,    53)      11       11     10    10  water cut-e         
+  (   17,    54)      11       11     10    10  water cut-e         
+  (   17,    55)      11       11     10    10  water cut-e         
+  (   17,    56)      11       11     10    10  water cut-e         
+  (   17,    57)      11       11     10    10  water cut-e         
+  (   17,    58)      11       11     10    10  water cut-e         
+  (   17,    59)      11       11     10    10  water cut-e         
+  (   17,    60)      11       11     10    10  water cut-e         
+  (   17,    61)      11       11     10    10  water cut-e         
+  (   17,    62)      11       11     10    10  water cut-e         
+  (   17,    63)      11       11     10    10  water cut-e         
+  (   17,    64)      11       11     10    10  water cut-e         
+  (   17,    65)      11       11     10    10  water cut-e         
+  (   17,    66)      11       11     10    10  water cut-e         
+  (   17,    67)      12       12           12  water cut-e         +1
+  (   17,    68)      12       12           12  water cut-e         
+  (   17,    69)      12       12           12                      
+  (   17,    70)      12       12           12                      
+  (   17,    71)      13       13           13                      +1
+  (   17,    72)      13       13           13                      
+  (   17,    73)      13       13           13                      
+  (   17,    74)      13       13           13                      
+  (   17,    75)      14       14           14                      +1
+  (   17,    76)      14       14           14                      
+  (   17,    77)      14       14           14                      
+  (   17,    78)      14       14           14                      
+  (   17,    79)      14       14           14                      
+  (   17,    80)      14       14           14                      
+rises 3, falls 8, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree holt-5 at (15, 32), tree holt-4 at (19, 32), water cut-e at (16, 44)

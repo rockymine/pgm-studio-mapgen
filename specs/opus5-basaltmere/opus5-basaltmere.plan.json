@@ -1,0 +1,107 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Basaltmere",
+  "notes": "KotH. A black bowl with one mere in it; the hill is a basalt stack in the water, entered from all four quadrants."
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 20,
+  "surface": 14,
+  "observerY": 62
+ },
+ "pieces": [
+  {
+   "id": "strand",
+   "role": "piece",
+   "rect": [
+    -9,
+    -6,
+    18,
+    12
+   ],
+   "surface": 10
+  },
+  {
+   "id": "brink",
+   "role": "piece",
+   "rect": [
+    -9,
+    6,
+    18,
+    5
+   ],
+   "surface": 14
+  },
+  {
+   "id": "bield",
+   "role": "piece",
+   "rect": [
+    -6,
+    11,
+    12,
+    4
+   ],
+   "surface": 14
+  },
+  {
+   "id": "staith",
+   "role": "spawn",
+   "rect": [
+    -3,
+    15,
+    6,
+    4
+   ],
+   "surface": 15
+  }
+ ],
+ "zones": [
+  {
+   "id": "deep",
+   "rect": [
+    -9,
+    -6,
+    18,
+    12
+   ],
+   "kind": "build",
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "staith",
+    "at": [
+     15,
+     12
+    ],
+    "facing": "front",
+    "footprint": [
+     9,
+     6,
+     12,
+     12
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "staith",
+    "at": [
+     18.5,
+     2.5
+    ]
+   }
+  ],
+  "wools": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

@@ -1,0 +1,10 @@
+THEMES  4 themes over 12537 ground cells, 17 distinct surface blocks
+  dust  10062 cells (80.3%)  12:0 Sand, 2:0 Grass Block, 3:1 Coarse Dirt, 24:2 Smooth Sandstone, 45:0 Bricks, 24:0 Sandstone, 1:2 Polished Granite, 13:0 Gravel, 24:1 Chiseled Sandstone, 1:1 Granite, 1:5 Andesite, 4:0 Cobblestone
+  sward  1363 cells (10.9%)  2:0 Grass Block, 3:1 Coarse Dirt, 45:0 Bricks, 12:0 Sand, 5:1 Spruce Planks, 1:1 Granite, 102:0 Glass Pane, 17:1 Spruce Log, 13:0 Gravel, 1:2 Polished Granite, 1:5 Andesite
+  scour  781 cells (6.2%)  12:0 Sand, 3:1 Coarse Dirt, 13:0 Gravel, 24:0 Sandstone, 1:2 Polished Granite, 1:1 Granite
+  works  331 cells (2.6%)  45:0 Bricks, 24:1 Chiseled Sandstone, 5:1 Spruce Planks
+borders:
+  dust | sward  632 cells
+  dust | scour  278 cells
+  dust | works  104 cells
+  scour | sward  12 cells

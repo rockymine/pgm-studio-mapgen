@@ -1,0 +1,61 @@
+## cot (house) along x
+TRANSECT 25 stations from (6, 74) to (30, 74), every 1
+  station        ground  surface  water  top  standing            step
+  (    6,    74)      15       15           15                      
+  (    7,    74)      15       15           15                      
+  (    8,    74)      16       16           16                      +1
+  (    9,    74)      16       16           16                      
+  (   10,    74)      16       16           16                      
+  (   11,    74)      17       17           17                      +1
+  (   12,    74)      17       17           17                      
+  (   13,    74)      17       17           25  house cot           
+  (   14,    74)      18       18           25  house cot           +1
+  (   15,    74)      18       18           25  house cot           
+  (   16,    74)      18       18           25  house cot           
+  (   17,    74)      18       18           25  house cot           
+  (   18,    74)      18       18           25  house cot           
+  (   19,    74)      18       18           25  house cot           
+  (   20,    74)      18       18           25  house cot           
+  (   21,    74)      18       18           25  house cot           
+  (   22,    74)      18       18           25  house cot           
+  (   23,    74)      18       18           25  house cot           
+  (   24,    74)      17       17           17                      -1
+  (   25,    74)      17       17           17                      
+  (   26,    74)      17       17           17                      
+  (   27,    74)      17       17           17                      
+  (   28,    74)      17       17           17                      
+  (   29,    74)      17       17           17                      
+  (   30,    74)      17       17           17                      
+rises 3, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house cot at (13, 72)
+
+## cot (house) along z
+TRANSECT 25 stations from (18, 62) to (18, 86), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,    62)      18       18           18                      
+  (   18,    63)      18       18           18                      
+  (   18,    64)      19       19           19                      +1
+  (   18,    65)      19       19           19                      
+  (   18,    66)      20       20           20                      +1
+  (   18,    67)      20       20           20                      
+  (   18,    68)      20       20           20                      
+  (   18,    69)      20       20           29  house cot           
+  (   18,    70)      19       19           29  house cot           -1
+  (   18,    71)      19       19           28  house cot           
+  (   18,    72)      18       18           27  house cot           -1
+  (   18,    73)      18       18           26  house cot           
+  (   18,    74)      18       18           25  house cot           
+  (   18,    75)      18       18           24  house cot           
+  (   18,    76)      17       17           23  house cot           -1
+  (   18,    77)      17       17           22  house cot           
+  (   18,    78)      16       16           21  house cot           -1
+  (   18,    79)      16       16           20  house cot           
+  (   18,    80)                                                    void
+  (   18,    81)                                                    void
+  (   18,    82)                                                    void
+  (   18,    83)                                                    void
+  (   18,    84)                                                    void
+  (   18,    85)                                                    void
+  (   18,    86)                                                    void
+rises 2, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house cot at (16, 69)

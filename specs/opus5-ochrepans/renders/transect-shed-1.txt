@@ -1,0 +1,64 @@
+## shed-1 (house) along x
+TRANSECT 28 stations from (-40, -72) to (-13, -72), every 1
+  station        ground  surface  water  top  standing            step
+  (  -40,   -72)      21       21           28  house shed-0        
+  (  -39,   -72)      21       21           27  house shed-0        
+  (  -38,   -72)      22       22           27  house shed-0        +1
+  (  -37,   -72)      22       22           26  house shed-0        
+  (  -36,   -72)      22       22           22                      
+  (  -35,   -72)      22       22           22                      
+  (  -34,   -72)      23       23           28  house shed-1        +1
+  (  -33,   -72)      23       23           29  house shed-1        
+  (  -32,   -72)      23       23           29  house shed-1        
+  (  -31,   -72)      23       23           30  house shed-1        
+  (  -30,   -72)      23       23           30  house shed-1        
+  (  -29,   -72)      24       24           31  house shed-1        +1
+  (  -28,   -72)      24       24           31  house shed-1        
+  (  -27,   -72)      24       24           31  house shed-1        
+  (  -26,   -72)      24       24           31  house shed-1        
+  (  -25,   -72)      24       24           31  house shed-1        
+  (  -24,   -72)      24       24           31  house shed-1        
+  (  -23,   -72)      24       24           30  house shed-1        
+  (  -22,   -72)      24       24           30  house shed-1        
+  (  -21,   -72)      24       24           29  house shed-1        
+  (  -20,   -72)      24       24           29  house shed-1        
+  (  -19,   -72)      23       23           28  house shed-1        -1
+  (  -18,   -72)      23       23           23                      
+  (  -17,   -72)      23       23           23                      
+  (  -16,   -72)      23       23           23                      
+  (  -15,   -72)      23       23           23                      
+  (  -14,   -72)      23       23           23                      
+  (  -13,   -72)      22       22           22                      -1
+rises 3, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house shed-0 at (-42, -74), house shed-1 at (-34, -74)
+
+## shed-1 (house) along z
+TRANSECT 25 stations from (-27, -84) to (-27, -60), every 1
+  station        ground  surface  water  top  standing            step
+  (  -27,   -84)                                                    void
+  (  -27,   -83)                                                    void
+  (  -27,   -82)                                                    void
+  (  -27,   -81)                                                    void
+  (  -27,   -80)                                                    void
+  (  -27,   -79)                                                    void
+  (  -27,   -78)                            28  house shed-1        void
+  (  -27,   -77)      24       24           29  house shed-1        
+  (  -27,   -76)      24       24           29  house shed-1        
+  (  -27,   -75)      24       24           30  house shed-1        
+  (  -27,   -74)      24       24           30  house shed-1        
+  (  -27,   -73)      24       24           31  house shed-1        
+  (  -27,   -72)      24       24           31  house shed-1        
+  (  -27,   -71)      24       24           31  house shed-1        
+  (  -27,   -70)      23       23           30  house shed-1        -1
+  (  -27,   -69)      23       23           30  house shed-1        
+  (  -27,   -68)      23       23           29  house shed-1        
+  (  -27,   -67)      23       23           29  house shed-1        
+  (  -27,   -66)      23       23           28  house shed-1        
+  (  -27,   -65)      23       23           23                      
+  (  -27,   -64)      22       22           22                      -1
+  (  -27,   -63)      22       22           22                      
+  (  -27,   -62)      22       22           22                      
+  (  -27,   -61)      21       21           21                      -1
+  (  -27,   -60)      21       21           21                      
+rises 0, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house shed-1 at (-29, -78)

@@ -1,0 +1,61 @@
+## hut (house) along x
+TRANSECT 25 stations from (6, 80) to (30, 80), every 1
+  station        ground  surface  water  top  standing            step
+  (    6,    80)      20       20           20                      
+  (    7,    80)      19       19           19                      -1
+  (    8,    80)      19       19           19                      
+  (    9,    80)      19       19           19                      
+  (   10,    80)      19       19           19                      
+  (   11,    80)      19       19           19                      
+  (   12,    80)      18       18           18                      -1
+  (   13,    80)      18       18           26  house hut           
+  (   14,    80)      17       17           26  house hut           -1
+  (   15,    80)      17       17           26  house hut           
+  (   16,    80)      17       17           26  house hut           
+  (   17,    80)      16       16           26  house hut           -1
+  (   18,    80)      16       16           26  house hut           
+  (   19,    80)      16       16           26  house hut           
+  (   20,    80)      16       16           26  house hut           
+  (   21,    80)      16       16           26  house hut           
+  (   22,    80)      16       16           26  house hut           
+  (   23,    80)      16       16           26  house hut           
+  (   24,    80)      16       16           16                      
+  (   25,    80)      17       17           20  boulder stone-3     +1
+  (   26,    80)      16       16           21  boulder stone-3     -1
+  (   27,    80)      16       16           22  boulder stone-3     
+  (   28,    80)      16       16           22  boulder stone-3     
+  (   29,    80)      16       16           22  boulder stone-3     
+  (   30,    80)      16       16           21  boulder stone-3     
+rises 1, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house hut at (13, 78), boulder stone-3 at (25, 78)
+
+## hut (house) along z
+TRANSECT 25 stations from (18, 68) to (18, 92), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,    68)                                                    void
+  (   18,    69)                                                    void
+  (   18,    70)                                                    void
+  (   18,    71)                                                    void
+  (   18,    72)                                                    void
+  (   18,    73)                                                    void
+  (   18,    74)                                                    void
+  (   18,    75)      16       16           21  house hut           
+  (   18,    76)      16       16           22  house hut           
+  (   18,    77)      16       16           23  house hut           
+  (   18,    78)      16       16           24  house hut           
+  (   18,    79)      16       16           25  house hut           
+  (   18,    80)      16       16           26  house hut           
+  (   18,    81)      16       16           25  house hut           
+  (   18,    82)      16       16           24  house hut           
+  (   18,    83)      16       16           23  house hut           
+  (   18,    84)      16       16           22  house hut           
+  (   18,    85)      16       16           21  house hut           
+  (   18,    86)      16       16           16                      
+  (   18,    87)      16       16           16                      
+  (   18,    88)      16       16           16                      
+  (   18,    89)      16       16           16                      
+  (   18,    90)      16       16           16                      
+  (   18,    91)      16       16           16                      
+  (   18,    92)      16       16           16                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house hut at (16, 75)

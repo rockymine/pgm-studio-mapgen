@@ -1,0 +1,129 @@
+## frames (made) along x
+TRANSECT 87 stations from (-43, 0) to (43, 0), every 1
+  station        ground  surface  water  top  standing            step
+  (  -43,     0)      20       20           20                      
+  (  -42,     0)      20       20           20                      
+  (  -41,     0)      20       20           20                      
+  (  -40,     0)      26       26           26                      BARRIER +6
+  (  -39,     0)      26       26           26                      
+  (  -38,     0)      26       26           26                      
+  (  -37,     0)      26       26           26                      
+  (  -36,     0)      26       26           26                      
+  (  -35,     0)      26       30           30  storey              BARRIER +4
+  (  -34,     0)      26       30           30  storey              
+  (  -33,     0)      26       30           30  storey              
+  (  -32,     0)      16       30           30  storey              
+  (  -31,     0)      16       30           30  storey              
+  (  -30,     0)      16       30           30  controlpoint 1      
+  (  -29,     0)      16       30           30  controlpoint 1      
+  (  -28,     0)      16       30           64  controlpoint 1      
+  (  -27,     0)      16       30           65  controlpoint 1      
+  (  -26,     0)      16       30           64  controlpoint 1      
+  (  -25,     0)      16       30           30  controlpoint 1      
+  (  -24,     0)      16       30           30  controlpoint 1      
+  (  -23,     0)      16       30           30  storey              
+  (  -22,     0)      18       30           30  storey              
+  (  -21,     0)      18       30           30  storey              
+  (  -20,     0)      20       30           30  storey              
+  (  -19,     0)      20       30           30  storey              
+  (  -18,     0)      20       30           30  storey              
+  (  -17,     0)      20       20           20                      DROP -10
+  (  -16,     0)      20       34           34  storey              BARRIER +14
+  (  -15,     0)      27       39           39  storey              BARRIER +5
+  (  -14,     0)      27       39           39  storey              
+  (  -13,     0)      27       34           34  storey              DROP -5
+  (  -12,     0)      27       34           34  storey              
+  (  -11,     0)      27       35           35  storey              +1
+  (  -10,     0)      27       35           35  storey              
+  (   -9,     0)      27       34           34  storey              -1
+  (   -8,     0)      27       34           34  storey              
+  (   -7,     0)      27       34           34  storey              
+  (   -6,     0)      26       26           26                      DROP -8
+  (   -5,     0)      26       26           26                      
+  (   -4,     0)      26       26           26  controlpoint 0      
+  (   -3,     0)      26       26           67  controlpoint 0      
+  (   -2,     0)      26       26           67  controlpoint 0      
+  (   -1,     0)      26       26           66  controlpoint 0      
+  (    0,     0)      26       26           66  controlpoint 0      
+  (    1,     0)      26       26           67  controlpoint 0      
+  (    2,     0)      26       26           67  controlpoint 0      
+  (    3,     0)      26       26           26  controlpoint 0      
+  (    4,     0)      26       26           26  controlpoint 0      
+  (    5,     0)      26       26           26                      
+  (    6,     0)      27       34           34  storey              BARRIER +8
+  (    7,     0)      27       34           34  storey              
+  (    8,     0)      27       34           34  storey              
+  (    9,     0)      27       35           35  storey              +1
+  (   10,     0)      27       35           35  storey              
+  (   11,     0)      27       34           34  storey              -1
+  (   12,     0)      27       34           34  storey              
+  (   13,     0)      27       39           39  storey              BARRIER +5
+  (   14,     0)      27       39           39  storey              
+  (   15,     0)      20       34           34  storey              DROP -5
+  (   16,     0)      20       20           20                      DROP -14
+  (   17,     0)      20       30           30  storey              BARRIER +10
+  (   18,     0)      20       30           30  storey              
+  (   19,     0)      20       30           30  storey              
+  (   20,     0)      18       30           30  storey              
+  (   21,     0)      18       30           30  storey              
+  (   22,     0)      16       30           30  storey              
+  (   23,     0)      16       30           30  storey              
+  (   24,     0)      16       30           30  controlpoint 2      
+  (   25,     0)      16       30           30  controlpoint 2      
+  (   26,     0)      16       30           64  controlpoint 2      
+  (   27,     0)      16       30           65  controlpoint 2      
+  (   28,     0)      16       30           64  controlpoint 2      
+  (   29,     0)      16       30           30  controlpoint 2      
+  (   30,     0)      16       30           30  controlpoint 2      
+  (   31,     0)      16       30           30  storey              
+  (   32,     0)      26       30           30  storey              
+  (   33,     0)      26       30           30  storey              
+  (   34,     0)      26       30           30  storey              
+  (   35,     0)      26       26           26                      DROP -4
+  (   36,     0)      26       26           26                      
+  (   37,     0)      26       26           26                      
+  (   38,     0)      26       26           26                      
+  (   39,     0)      26       26           26                      
+  (   40,     0)      20       20           20                      DROP -6
+  (   41,     0)      20       20           20                      
+  (   42,     0)      20       20           20                      
+  (   43,     0)      20       20           20                      
+rises 9, falls 9, worst step 14: 7 barrier, 0 scramble, 7 drop — BARRIER +6 at (-40, 0); BARRIER +4 at (-35, 0); DROP -10 at (-17, 0); BARRIER +14 at (-16, 0); BARRIER +5 at (-15, 0); DROP -5 at (-13, 0); DROP -8 at (-6, 0); BARRIER +8 at (6, 0); BARRIER +5 at (13, 0); DROP -5 at (15, 0); DROP -14 at (16, 0); BARRIER +10 at (17, 0); DROP -4 at (35, 0); DROP -6 at (40, 0) | walked end to end
+beside: controlpoint 1 at (-30, -2), controlpoint 0 at (-4, -2), controlpoint 2 at (24, -2)
+
+## frames (made) along z
+TRANSECT 31 stations from (0, -15) to (0, 15), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,   -15)      27       39           39  storey              
+  (    0,   -14)      27       39           39  storey              
+  (    0,   -13)      27       34           34  storey              DROP -5
+  (    0,   -12)      27       34           34  storey              
+  (    0,   -11)      27       34           34  storey              
+  (    0,   -10)      27       34           34  storey              
+  (    0,    -9)      27       34           34  storey              
+  (    0,    -8)      27       34           34  storey              
+  (    0,    -7)      27       34           34  storey              
+  (    0,    -6)      26       26           26                      DROP -8
+  (    0,    -5)      26       26           26                      
+  (    0,    -4)      26       26           26  controlpoint 0      
+  (    0,    -3)      26       26           67  controlpoint 0      
+  (    0,    -2)      26       26           67  controlpoint 0      
+  (    0,    -1)      26       26           66  controlpoint 0      
+  (    0,     0)      26       26           66  controlpoint 0      
+  (    0,     1)      26       26           67  controlpoint 0      
+  (    0,     2)      26       26           67  controlpoint 0      
+  (    0,     3)      26       26           26  controlpoint 0      
+  (    0,     4)      26       26           26  controlpoint 0      
+  (    0,     5)      26       26           26                      
+  (    0,     6)      27       34           34  storey              BARRIER +8
+  (    0,     7)      27       34           34  storey              
+  (    0,     8)      27       34           34  storey              
+  (    0,     9)      27       34           34  storey              
+  (    0,    10)      27       34           34  storey              
+  (    0,    11)      27       34           34  storey              
+  (    0,    12)      27       34           34  storey              
+  (    0,    13)      27       39           39  storey              BARRIER +5
+  (    0,    14)      27       39           39  storey              
+  (    0,    15)      26       34           34  storey              DROP -5
+rises 2, falls 3, worst step 8: 2 barrier, 0 scramble, 3 drop — DROP -5 at (0, -13); DROP -8 at (0, -6); BARRIER +8 at (0, 6); BARRIER +5 at (0, 13); DROP -5 at (0, 15) | walked end to end
+beside: controlpoint 0 at (-2, -4)

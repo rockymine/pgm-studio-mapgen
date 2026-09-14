@@ -1,0 +1,61 @@
+## mon-1-1 (destroyable) along x
+TRANSECT 25 stations from (-1, -53) to (23, -53), every 1
+  station        ground  surface  water  top  standing            step
+  (   -1,   -53)      12       12           12                      
+  (    0,   -53)      19       19           19                      BARRIER +7
+  (    1,   -53)      19       19           19                      
+  (    2,   -53)      19       19           19                      
+  (    3,   -53)      19       19           19                      
+  (    4,   -53)      19       19           19                      
+  (    5,   -53)      19       19           19                      
+  (    6,   -53)      19       19           19                      
+  (    7,   -53)      19       19           19                      
+  (    8,   -53)      19       19           19                      
+  (    9,   -53)      19       19           19  destroyable mon-1#1  
+  (   10,   -53)      19       19           56  destroyable mon-1#1  
+  (   11,   -53)      19       19           57  destroyable mon-1#1  
+  (   12,   -53)      19       19           56  destroyable mon-1#1  
+  (   13,   -53)      19       19           19  destroyable mon-1#1  
+  (   14,   -53)      19       19           19                      
+  (   15,   -53)      19       19           19                      
+  (   16,   -53)      19       19           19                      
+  (   17,   -53)      19       19           19                      
+  (   18,   -53)      19       19           19                      
+  (   19,   -53)      19       19           19                      
+  (   20,   -53)      19       19           19                      
+  (   21,   -53)      19       19           19                      
+  (   22,   -53)      19       19           19                      
+  (   23,   -53)      19       19           19                      
+rises 1, falls 0, worst step 7: 1 barrier, 0 scramble, 0 drop — BARRIER +7 at (0, -53) | walked end to end
+beside: destroyable mon-1#1 at (9, -55)
+
+## mon-1-1 (destroyable) along z
+TRANSECT 25 stations from (11, -65) to (11, -41), every 1
+  station        ground  surface  water  top  standing            step
+  (   11,   -65)      19       19           19                      
+  (   11,   -64)      19       19           19                      
+  (   11,   -63)      19       19           19                      
+  (   11,   -62)      19       19           19                      
+  (   11,   -61)      19       19           19                      
+  (   11,   -60)      19       19           19                      
+  (   11,   -59)      19       19           19                      
+  (   11,   -58)      19       19           19                      
+  (   11,   -57)      19       19           19                      
+  (   11,   -56)      19       19           19                      
+  (   11,   -55)      19       19           19  destroyable mon-1#1  
+  (   11,   -54)      19       19           56  destroyable mon-1#1  
+  (   11,   -53)      19       19           57  destroyable mon-1#1  
+  (   11,   -52)      19       19           56  destroyable mon-1#1  
+  (   11,   -51)      19       19           19  destroyable mon-1#1  
+  (   11,   -50)      19       19           19                      
+  (   11,   -49)      19       19           19                      
+  (   11,   -48)      19       19           19                      
+  (   11,   -47)      19       19           19                      
+  (   11,   -46)      19       19           19                      
+  (   11,   -45)      19       19           19                      
+  (   11,   -44)      14       14           14                      DROP -5
+  (   11,   -43)      14       14           14                      
+  (   11,   -42)      14       14           14                      
+  (   11,   -41)      14       14           14                      
+rises 0, falls 1, worst step 5: 0 barrier, 0 scramble, 1 drop — DROP -5 at (11, -44) | walked end to end
+beside: destroyable mon-1#1 at (9, -55)

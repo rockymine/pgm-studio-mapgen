@@ -1,0 +1,61 @@
+## fall-2 (boulder) along x
+TRANSECT 25 stations from (-22, 50) to (2, 50), every 1
+  station        ground  surface  water  top  standing            step
+  (  -22,    50)      22       22           22                      
+  (  -21,    50)      21       21           21                      -1
+  (  -20,    50)      21       21           21                      
+  (  -19,    50)      20       20           20                      -1
+  (  -18,    50)      19       19           19                      -1
+  (  -17,    50)      19       19           19                      
+  (  -16,    50)      18       18           18                      -1
+  (  -15,    50)      17       17           17                      -1
+  (  -14,    50)      17       17           18  boulder fall-2      
+  (  -13,    50)      16       16           19  boulder fall-2      -1
+  (  -12,    50)      16       16           20  boulder fall-2      
+  (  -11,    50)      15       15           21  boulder fall-2      -1
+  (  -10,    50)      15       15           21  boulder fall-2      
+  (   -9,    50)      15       15           21  boulder fall-2      
+  (   -8,    50)      15       15           20  boulder fall-2      
+  (   -7,    50)      15       15           19  boulder fall-2      
+  (   -6,    50)      15       15           18  boulder fall-2      
+  (   -5,    50)      15       15           15                      
+  (   -4,    50)      15       15           15                      
+  (   -3,    50)      15       15           15                      
+  (   -2,    50)      15       15           15                      
+  (   -1,    50)      15       15           15                      
+  (    0,    50)      15       15           15                      
+  (    1,    50)      15       15           15                      
+  (    2,    50)      15       15           15                      
+rises 0, falls 7, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke trod at (-24, 48), boulder fall-2 at (-14, 50), tree scrub-2 at (-8, 52)
+
+## fall-2 (boulder) along z
+TRANSECT 25 stations from (-10, 38) to (-10, 62), every 1
+  station        ground  surface  water  top  standing            step
+  (  -10,    38)      16       16           16                      
+  (  -10,    39)      17       17           17                      +1
+  (  -10,    40)      17       17           17                      
+  (  -10,    41)      17       17           17                      
+  (  -10,    42)      16       16           16                      -1
+  (  -10,    43)      16       16           16                      
+  (  -10,    44)      16       16           17  boulder fall-7      
+  (  -10,    45)      16       16           17  boulder fall-7      
+  (  -10,    46)      16       16           17  boulder fall-2      
+  (  -10,    47)      16       16           20  boulder fall-2      
+  (  -10,    48)      15       15           20  boulder fall-2      -1
+  (  -10,    49)      15       15           21  boulder fall-2      
+  (  -10,    50)      15       15           21  boulder fall-2      
+  (  -10,    51)      15       15           21  boulder fall-2      
+  (  -10,    52)      15       15           20  boulder fall-2      
+  (  -10,    53)      15       15           19  boulder fall-2      
+  (  -10,    54)      16       16           16                      +1
+  (  -10,    55)      16       16           16                      
+  (  -10,    56)      17       17           17                      +1
+  (  -10,    57)      17       17           25  tree scrub-2        
+  (  -10,    58)      17       17           25  tree scrub-2        
+  (  -10,    59)      18       18           26  tree scrub-2        +1
+  (  -10,    60)      18       18           24  tree scrub-2        
+  (  -10,    61)      18       18           22  tree scrub-2        
+  (  -10,    62)      18       18           18                      
+rises 4, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder fall-7 at (-8, 41), boulder fall-2 at (-10, 46), tree scrub-2 at (-8, 52)

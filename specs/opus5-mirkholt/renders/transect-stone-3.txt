@@ -1,0 +1,61 @@
+## stone-3 (boulder) along x
+TRANSECT 25 stations from (16, 79) to (40, 79), every 1
+  station        ground  surface  water  top  standing            step
+  (   16,    79)      16       16           25  house hut           
+  (   17,    79)      16       16           25  house hut           
+  (   18,    79)      16       16           25  house hut           
+  (   19,    79)      16       16           25  house hut           
+  (   20,    79)      17       17           25  house hut           +1
+  (   21,    79)      17       17           25  house hut           
+  (   22,    79)      17       17           25  house hut           
+  (   23,    79)      17       17           25  house hut           
+  (   24,    79)      17       17           17                      
+  (   25,    79)      17       17           20  boulder stone-3     
+  (   26,    79)      16       16           21  boulder stone-3     -1
+  (   27,    79)      16       16           22  boulder stone-3     
+  (   28,    79)      16       16           22  boulder stone-3     
+  (   29,    79)      16       16           22  boulder stone-3     
+  (   30,    79)      16       16           21  boulder stone-3     
+  (   31,    79)      16       16           20  boulder stone-3     
+  (   32,    79)      16       16           18  boulder stone-3     
+  (   33,    79)      16       16           16                      
+  (   34,    79)      16       16           16                      
+  (   35,    79)                                                    void
+  (   36,    79)                                                    void
+  (   37,    79)                                                    void
+  (   38,    79)                                                    void
+  (   39,    79)                                                    void
+  (   40,    79)                                                    void
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house hut at (14, 77), boulder stone-3 at (25, 77)
+
+## stone-3 (boulder) along z
+TRANSECT 25 stations from (28, 67) to (28, 91), every 1
+  station        ground  surface  water  top  standing            step
+  (   28,    67)                                                    void
+  (   28,    68)                                                    void
+  (   28,    69)                                                    void
+  (   28,    70)                                                    void
+  (   28,    71)                                                    void
+  (   28,    72)                                                    void
+  (   28,    73)                                                    void
+  (   28,    74)                                                    void
+  (   28,    75)      16       16           18  boulder stone-3     
+  (   28,    76)      16       16           20  boulder stone-3     
+  (   28,    77)      16       16           21  boulder stone-3     
+  (   28,    78)      16       16           22  boulder stone-3     
+  (   28,    79)      16       16           22  boulder stone-3     
+  (   28,    80)      16       16           22  boulder stone-3     
+  (   28,    81)      16       16           21  boulder stone-3     
+  (   28,    82)      16       16           20  boulder stone-3     
+  (   28,    83)      16       16           16                      
+  (   28,    84)      16       16           16                      
+  (   28,    85)      16       16           16                      
+  (   28,    86)      16       16           16                      
+  (   28,    87)      16       16           16                      
+  (   28,    88)      16       16           16                      
+  (   28,    89)      16       16           16                      
+  (   28,    90)      16       16           16                      
+  (   28,    91)      16       16           16                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder stone-3 at (27, 75)

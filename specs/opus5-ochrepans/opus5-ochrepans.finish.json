@@ -1,0 +1,6881 @@
+{
+  "authors": [
+    {
+      "name": "Opus 5"
+    }
+  ],
+  "created": "2026-09-14",
+  "biome": {
+    "kind": "solid",
+    "id": 36
+  },
+  "themes": {
+    "ochre": {
+      "bedrock": {
+        "relative": false,
+        "value": 1
+      },
+      "rimEdges": "void",
+      "wallOnTerrainFaces": true,
+      "rim": {
+        "material": {
+          "kind": "solid",
+          "id": 24,
+          "data": 1
+        },
+        "depth": 1,
+        "enabled": true
+      },
+      "surface": {
+        "depth": 4,
+        "enabled": true,
+        "material": {
+          "kind": "layered",
+          "axis": "slope",
+          "stack": {
+            "ending": "repeat",
+            "bands": [
+              {
+                "material": {
+                  "kind": "layered",
+                  "axis": "depth",
+                  "stack": {
+                    "ending": "repeat",
+                    "bands": [
+                      {
+                        "material": {
+                          "kind": "cell",
+                          "seed": 21,
+                          "cellSize": 11,
+                          "jitter": 2,
+                          "warp": 3,
+                          "palette": [
+                            {
+                              "kind": "solid",
+                              "id": 12,
+                              "data": 0
+                            },
+                            {
+                              "kind": "solid",
+                              "id": 159,
+                              "data": 4
+                            },
+                            {
+                              "kind": "solid",
+                              "id": 12,
+                              "data": 0
+                            },
+                            {
+                              "kind": "solid",
+                              "id": 172,
+                              "data": 0
+                            }
+                          ],
+                          "rise": 0
+                        },
+                        "thickness": 1
+                      },
+                      {
+                        "material": {
+                          "kind": "solid",
+                          "id": 172,
+                          "data": 0
+                        },
+                        "thickness": 2
+                      },
+                      {
+                        "material": {
+                          "kind": "solid",
+                          "id": 24,
+                          "data": 0
+                        },
+                        "thickness": 1
+                      }
+                    ]
+                  }
+                },
+                "thickness": 10
+              },
+              {
+                "material": {
+                  "kind": "layered",
+                  "axis": "depth",
+                  "stack": {
+                    "ending": "repeat",
+                    "bands": [
+                      {
+                        "material": {
+                          "kind": "cell",
+                          "seed": 23,
+                          "cellSize": 8,
+                          "jitter": 2,
+                          "warp": 3,
+                          "palette": [
+                            {
+                              "kind": "solid",
+                              "id": 159,
+                              "data": 4
+                            },
+                            {
+                              "kind": "solid",
+                              "id": 3,
+                              "data": 1
+                            },
+                            {
+                              "kind": "solid",
+                              "id": 12,
+                              "data": 0
+                            },
+                            {
+                              "kind": "solid",
+                              "id": 159,
+                              "data": 1
+                            }
+                          ],
+                          "rise": 0
+                        },
+                        "thickness": 1
+                      },
+                      {
+                        "material": {
+                          "kind": "solid",
+                          "id": 12,
+                          "data": 0
+                        },
+                        "thickness": 1
+                      },
+                      {
+                        "material": {
+                          "kind": "solid",
+                          "id": 24,
+                          "data": 0
+                        },
+                        "thickness": 2
+                      }
+                    ]
+                  }
+                },
+                "thickness": 18
+              },
+              {
+                "material": {
+                  "kind": "layered",
+                  "axis": "depth",
+                  "stack": {
+                    "ending": "repeat",
+                    "bands": [
+                      {
+                        "material": {
+                          "kind": "solid",
+                          "id": 24,
+                          "data": 0
+                        },
+                        "thickness": 2
+                      },
+                      {
+                        "material": {
+                          "kind": "solid",
+                          "id": 159,
+                          "data": 1
+                        },
+                        "thickness": 1
+                      },
+                      {
+                        "material": {
+                          "kind": "solid",
+                          "id": 24,
+                          "data": 0
+                        },
+                        "thickness": 1
+                      }
+                    ]
+                  }
+                },
+                "thickness": 62
+              }
+            ]
+          }
+        }
+      },
+      "wall": {
+        "kind": "wallRun",
+        "runs": [
+          {
+            "material": {
+              "kind": "solid",
+              "id": 24,
+              "data": 0
+            },
+            "width": 2
+          },
+          {
+            "material": {
+              "kind": "solid",
+              "id": 159,
+              "data": 4
+            },
+            "width": 1
+          },
+          {
+            "material": {
+              "kind": "solid",
+              "id": 24,
+              "data": 0
+            },
+            "width": 2
+          },
+          {
+            "material": {
+              "kind": "solid",
+              "id": 24,
+              "data": 1
+            },
+            "width": 1
+          }
+        ]
+      },
+      "wallEnabled": true,
+      "fill": {
+        "kind": "voronoi",
+        "seed": 17,
+        "cellSize": 15,
+        "rise": 7,
+        "bands": [
+          {
+            "material": {
+              "kind": "solid",
+              "id": 24,
+              "data": 0
+            },
+            "depth": 2
+          },
+          {
+            "material": {
+              "kind": "solid",
+              "id": 24,
+              "data": 2
+            },
+            "depth": 1
+          }
+        ]
+      }
+    },
+    "crust": {
+      "bedrock": {
+        "relative": false,
+        "value": 1
+      },
+      "rimEdges": "void",
+      "wallOnTerrainFaces": false,
+      "rim": {
+        "material": {
+          "kind": "solid",
+          "id": 159,
+          "data": 4
+        },
+        "depth": 1,
+        "enabled": true
+      },
+      "surface": {
+        "depth": 3,
+        "enabled": true,
+        "material": {
+          "kind": "layered",
+          "axis": "depth",
+          "stack": {
+            "ending": "repeat",
+            "bands": [
+              {
+                "material": {
+                  "kind": "cell",
+                  "seed": 29,
+                  "cellSize": 6,
+                  "jitter": 2,
+                  "warp": 3,
+                  "palette": [
+                    {
+                      "kind": "solid",
+                      "id": 159,
+                      "data": 0
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 159,
+                      "data": 8
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 12,
+                      "data": 0
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 159,
+                      "data": 0
+                    }
+                  ],
+                  "rise": 0
+                },
+                "thickness": 1
+              },
+              {
+                "material": {
+                  "kind": "solid",
+                  "id": 12,
+                  "data": 0
+                },
+                "thickness": 1
+              },
+              {
+                "material": {
+                  "kind": "solid",
+                  "id": 24,
+                  "data": 0
+                },
+                "thickness": 1
+              }
+            ]
+          }
+        }
+      },
+      "wall": {
+        "kind": "wallRun",
+        "runs": [
+          {
+            "material": {
+              "kind": "solid",
+              "id": 159,
+              "data": 4
+            },
+            "width": 1
+          },
+          {
+            "material": {
+              "kind": "solid",
+              "id": 24,
+              "data": 0
+            },
+            "width": 2
+          }
+        ]
+      },
+      "wallEnabled": true,
+      "fill": {
+        "kind": "voronoi",
+        "seed": 19,
+        "cellSize": 12,
+        "rise": 6,
+        "bands": [
+          {
+            "material": {
+              "kind": "solid",
+              "id": 24,
+              "data": 0
+            },
+            "depth": 2
+          },
+          {
+            "material": {
+              "kind": "solid",
+              "id": 24,
+              "data": 2
+            },
+            "depth": 1
+          }
+        ]
+      }
+    },
+    "works": {
+      "bedrock": {
+        "relative": false,
+        "value": 1
+      },
+      "rimEdges": "drop",
+      "wallOnTerrainFaces": true,
+      "rim": {
+        "material": {
+          "kind": "solid",
+          "id": 24,
+          "data": 1
+        },
+        "depth": 1,
+        "enabled": true
+      },
+      "surface": {
+        "depth": 2,
+        "enabled": true,
+        "material": {
+          "kind": "layered",
+          "axis": "depth",
+          "stack": {
+            "ending": "repeat",
+            "bands": [
+              {
+                "material": {
+                  "kind": "cell",
+                  "seed": 31,
+                  "cellSize": 5,
+                  "jitter": 2,
+                  "warp": 3,
+                  "palette": [
+                    {
+                      "kind": "solid",
+                      "id": 24,
+                      "data": 2
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 24,
+                      "data": 0
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 24,
+                      "data": 1
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 24,
+                      "data": 2
+                    }
+                  ],
+                  "rise": 0
+                },
+                "thickness": 1
+              },
+              {
+                "material": {
+                  "kind": "solid",
+                  "id": 24,
+                  "data": 0
+                },
+                "thickness": 1
+              }
+            ]
+          }
+        }
+      },
+      "wall": {
+        "kind": "wallRun",
+        "runs": [
+          {
+            "material": {
+              "kind": "solid",
+              "id": 24,
+              "data": 2
+            },
+            "width": 3
+          },
+          {
+            "material": {
+              "kind": "solid",
+              "id": 24,
+              "data": 1
+            },
+            "width": 1
+          },
+          {
+            "material": {
+              "kind": "solid",
+              "id": 24,
+              "data": 0
+            },
+            "width": 2
+          }
+        ]
+      },
+      "wallEnabled": true,
+      "fill": {
+        "kind": "solid",
+        "id": 24,
+        "data": 2
+      }
+    },
+    "sward": {
+      "bedrock": {
+        "relative": false,
+        "value": 1
+      },
+      "rimEdges": "void",
+      "wallOnTerrainFaces": false,
+      "rim": {
+        "material": {
+          "kind": "solid",
+          "id": 3,
+          "data": 1
+        },
+        "depth": 1,
+        "enabled": true
+      },
+      "surface": {
+        "depth": 3,
+        "enabled": true,
+        "material": {
+          "kind": "layered",
+          "axis": "depth",
+          "stack": {
+            "ending": "repeat",
+            "bands": [
+              {
+                "material": {
+                  "kind": "cell",
+                  "seed": 61,
+                  "cellSize": 6,
+                  "jitter": 2,
+                  "warp": 3,
+                  "palette": [
+                    {
+                      "kind": "solid",
+                      "id": 2,
+                      "data": 0
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 12,
+                      "data": 0
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 3,
+                      "data": 1
+                    },
+                    {
+                      "kind": "solid",
+                      "id": 2,
+                      "data": 0
+                    }
+                  ],
+                  "rise": 0
+                },
+                "thickness": 1
+              },
+              {
+                "material": {
+                  "kind": "solid",
+                  "id": 3,
+                  "data": 0
+                },
+                "thickness": 2
+              },
+              {
+                "material": {
+                  "kind": "solid",
+                  "id": 24,
+                  "data": 0
+                },
+                "thickness": 1
+              }
+            ]
+          }
+        }
+      },
+      "wall": {
+        "kind": "wallRun",
+        "runs": [
+          {
+            "material": {
+              "kind": "solid",
+              "id": 3,
+              "data": 0
+            },
+            "width": 2
+          },
+          {
+            "material": {
+              "kind": "solid",
+              "id": 3,
+              "data": 1
+            },
+            "width": 1
+          }
+        ]
+      },
+      "wallEnabled": true,
+      "fill": {
+        "kind": "voronoi",
+        "seed": 23,
+        "cellSize": 11,
+        "rise": 5,
+        "bands": [
+          {
+            "material": {
+              "kind": "solid",
+              "id": 24,
+              "data": 0
+            },
+            "depth": 2
+          },
+          {
+            "material": {
+              "kind": "solid",
+              "id": 24,
+              "data": 2
+            },
+            "depth": 1
+          }
+        ]
+      }
+    }
+  },
+  "mapTheme": "ochre",
+  "bendShapes": {
+    "stead-22": {
+      "k": 0.14,
+      "wander": 3,
+      "step": 13,
+      "seed": 5
+    }
+  },
+  "relief": {
+    "*": {
+      "base": 22,
+      "reach": 0,
+      "step": 1,
+      "landform": "plain",
+      "grain": {
+        "amplitude": 0.8,
+        "scale": 17,
+        "seed": 7
+      },
+      "marks": [
+        {
+          "id": "pan-0-0",
+          "kind": "area",
+          "h": 21,
+          "bevel": 1,
+          "ring": [
+            [
+              -48,
+              -62
+            ],
+            [
+              -30,
+              -62
+            ],
+            [
+              -30,
+              -50
+            ],
+            [
+              -48,
+              -50
+            ]
+          ]
+        },
+        {
+          "id": "pan-0-1",
+          "kind": "area",
+          "h": 21,
+          "bevel": 1,
+          "ring": [
+            [
+              -48,
+              -46
+            ],
+            [
+              -30,
+              -46
+            ],
+            [
+              -30,
+              -36
+            ],
+            [
+              -48,
+              -36
+            ]
+          ]
+        },
+        {
+          "id": "pan-1-0",
+          "kind": "area",
+          "h": 21,
+          "bevel": 1,
+          "ring": [
+            [
+              -24,
+              -62
+            ],
+            [
+              -4,
+              -62
+            ],
+            [
+              -4,
+              -50
+            ],
+            [
+              -24,
+              -50
+            ]
+          ]
+        },
+        {
+          "id": "pan-1-1",
+          "kind": "area",
+          "h": 21,
+          "bevel": 1,
+          "ring": [
+            [
+              -24,
+              -46
+            ],
+            [
+              -4,
+              -46
+            ],
+            [
+              -4,
+              -36
+            ],
+            [
+              -24,
+              -36
+            ]
+          ]
+        },
+        {
+          "id": "pan-2-0",
+          "kind": "area",
+          "h": 21,
+          "bevel": 1,
+          "ring": [
+            [
+              2,
+              -62
+            ],
+            [
+              22,
+              -62
+            ],
+            [
+              22,
+              -50
+            ],
+            [
+              2,
+              -50
+            ]
+          ]
+        },
+        {
+          "id": "pan-2-1",
+          "kind": "area",
+          "h": 21,
+          "bevel": 1,
+          "ring": [
+            [
+              2,
+              -46
+            ],
+            [
+              22,
+              -46
+            ],
+            [
+              22,
+              -36
+            ],
+            [
+              2,
+              -36
+            ]
+          ]
+        },
+        {
+          "id": "pan-3-0",
+          "kind": "area",
+          "h": 21,
+          "bevel": 1,
+          "ring": [
+            [
+              28,
+              -62
+            ],
+            [
+              46,
+              -62
+            ],
+            [
+              46,
+              -50
+            ],
+            [
+              28,
+              -50
+            ]
+          ]
+        },
+        {
+          "id": "pan-3-1",
+          "kind": "area",
+          "h": 21,
+          "bevel": 1,
+          "ring": [
+            [
+              28,
+              -46
+            ],
+            [
+              46,
+              -46
+            ],
+            [
+              46,
+              -36
+            ],
+            [
+              28,
+              -36
+            ]
+          ]
+        },
+        {
+          "id": "bank-w",
+          "kind": "area",
+          "h": 26,
+          "bevel": 3,
+          "ring": [
+            [
+              -52,
+              -30
+            ],
+            [
+              -42,
+              -32
+            ],
+            [
+              -32,
+              -29
+            ],
+            [
+              -30,
+              -18
+            ],
+            [
+              -32,
+              -8
+            ],
+            [
+              -42,
+              -6
+            ],
+            [
+              -52,
+              -8
+            ]
+          ]
+        },
+        {
+          "id": "yard",
+          "kind": "area",
+          "h": 18,
+          "bevel": 1,
+          "ring": [
+            [
+              -22,
+              -22
+            ],
+            [
+              0,
+              -23
+            ],
+            [
+              22,
+              -22
+            ],
+            [
+              23,
+              0
+            ],
+            [
+              22,
+              22
+            ],
+            [
+              0,
+              23
+            ],
+            [
+              -22,
+              22
+            ],
+            [
+              -23,
+              0
+            ]
+          ]
+        }
+      ],
+      "pushes": [
+        {
+          "id": "heap-w",
+          "ring": [
+            [
+              -30,
+              -78
+            ],
+            [
+              -20,
+              -76
+            ],
+            [
+              -16,
+              -70
+            ],
+            [
+              -24,
+              -66
+            ],
+            [
+              -32,
+              -70
+            ]
+          ],
+          "amount": 2.2,
+          "falloff": 10,
+          "crown": 1.0,
+          "roughness": 1.3,
+          "seed": 4
+        },
+        {
+          "id": "heap-e",
+          "ring": [
+            [
+              24,
+              -80
+            ],
+            [
+              36,
+              -78
+            ],
+            [
+              38,
+              -70
+            ],
+            [
+              28,
+              -66
+            ],
+            [
+              20,
+              -72
+            ]
+          ],
+          "amount": 1.8,
+          "falloff": 9,
+          "crown": 0.8,
+          "roughness": 1.1,
+          "seed": 11
+        },
+        {
+          "id": "heap-mid",
+          "ring": [
+            [
+              -8,
+              -54
+            ],
+            [
+              6,
+              -52
+            ],
+            [
+              10,
+              -44
+            ],
+            [
+              -2,
+              -40
+            ],
+            [
+              -12,
+              -46
+            ]
+          ],
+          "amount": 1.6,
+          "falloff": 11,
+          "crown": 0.7,
+          "roughness": 1.0,
+          "seed": 21
+        }
+      ]
+    }
+  },
+  "addShapes": [
+    {
+      "id": "wall-n-w",
+      "type": "polyline",
+      "operation": "add",
+      "radius": 1.5,
+      "stroke_edge": "solid",
+      "base_height": 25,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "vertices": [
+        [
+          -26,
+          -26
+        ],
+        [
+          -18,
+          -26
+        ],
+        [
+          -10,
+          -26
+        ],
+        [
+          -6,
+          -26
+        ]
+      ],
+      "material": {
+        "kind": "layered",
+        "axis": "depth",
+        "stack": {
+          "ending": "repeat",
+          "bands": [
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 1
+              },
+              "thickness": 1
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 2
+              },
+              "thickness": 2
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 0
+              },
+              "thickness": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "wall-n-e",
+      "type": "polyline",
+      "operation": "add",
+      "radius": 1.5,
+      "stroke_edge": "solid",
+      "base_height": 25,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "vertices": [
+        [
+          6,
+          -26
+        ],
+        [
+          10,
+          -26
+        ],
+        [
+          18,
+          -26
+        ],
+        [
+          26,
+          -26
+        ]
+      ],
+      "material": {
+        "kind": "layered",
+        "axis": "depth",
+        "stack": {
+          "ending": "repeat",
+          "bands": [
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 1
+              },
+              "thickness": 1
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 2
+              },
+              "thickness": 2
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 0
+              },
+              "thickness": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "wall-w",
+      "type": "polyline",
+      "operation": "add",
+      "radius": 1.5,
+      "stroke_edge": "solid",
+      "base_height": 25,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "vertices": [
+        [
+          -26,
+          -26
+        ],
+        [
+          -26,
+          -21
+        ],
+        [
+          -26,
+          -15
+        ],
+        [
+          -26,
+          -9
+        ]
+      ],
+      "material": {
+        "kind": "layered",
+        "axis": "depth",
+        "stack": {
+          "ending": "repeat",
+          "bands": [
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 1
+              },
+              "thickness": 1
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 2
+              },
+              "thickness": 2
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 0
+              },
+              "thickness": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "wall-e",
+      "type": "polyline",
+      "operation": "add",
+      "radius": 1.5,
+      "stroke_edge": "solid",
+      "base_height": 25,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "vertices": [
+        [
+          26,
+          -26
+        ],
+        [
+          26,
+          -21
+        ],
+        [
+          26,
+          -15
+        ],
+        [
+          26,
+          -9
+        ]
+      ],
+      "material": {
+        "kind": "layered",
+        "axis": "depth",
+        "stack": {
+          "ending": "repeat",
+          "bands": [
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 1
+              },
+              "thickness": 1
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 2
+              },
+              "thickness": 2
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 0
+              },
+              "thickness": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "gate-n",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "floor": 0,
+      "vertices": [
+        [
+          -5,
+          -31
+        ],
+        [
+          5,
+          -31
+        ],
+        [
+          5,
+          -19
+        ],
+        [
+          -5,
+          -19
+        ]
+      ],
+      "anchor_heights": [
+        22,
+        22,
+        18,
+        18
+      ],
+      "material": {
+        "kind": "cell",
+        "seed": 37,
+        "cellSize": 5,
+        "jitter": 1,
+        "warp": 2,
+        "palette": [
+          {
+            "kind": "solid",
+            "id": 24,
+            "data": 2
+          },
+          {
+            "kind": "solid",
+            "id": 24,
+            "data": 1
+          },
+          {
+            "kind": "solid",
+            "id": 24,
+            "data": 2
+          },
+          {
+            "kind": "solid",
+            "id": 24,
+            "data": 0
+          }
+        ],
+        "rise": 3
+      }
+    },
+    {
+      "id": "gate-w",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "floor": 0,
+      "vertices": [
+        [
+          -31,
+          -8
+        ],
+        [
+          -31,
+          0
+        ],
+        [
+          -19,
+          0
+        ],
+        [
+          -19,
+          -8
+        ]
+      ],
+      "anchor_heights": [
+        22,
+        22,
+        18,
+        18
+      ],
+      "material": {
+        "kind": "cell",
+        "seed": 37,
+        "cellSize": 5,
+        "jitter": 1,
+        "warp": 2,
+        "palette": [
+          {
+            "kind": "solid",
+            "id": 24,
+            "data": 2
+          },
+          {
+            "kind": "solid",
+            "id": 24,
+            "data": 1
+          },
+          {
+            "kind": "solid",
+            "id": 24,
+            "data": 2
+          },
+          {
+            "kind": "solid",
+            "id": 24,
+            "data": 0
+          }
+        ],
+        "rise": 3
+      }
+    },
+    {
+      "id": "gate-e",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "floor": 0,
+      "vertices": [
+        [
+          19,
+          -8
+        ],
+        [
+          19,
+          0
+        ],
+        [
+          31,
+          0
+        ],
+        [
+          31,
+          -8
+        ]
+      ],
+      "anchor_heights": [
+        18,
+        18,
+        22,
+        22
+      ],
+      "material": {
+        "kind": "cell",
+        "seed": 37,
+        "cellSize": 5,
+        "jitter": 1,
+        "warp": 2,
+        "palette": [
+          {
+            "kind": "solid",
+            "id": 24,
+            "data": 2
+          },
+          {
+            "kind": "solid",
+            "id": 24,
+            "data": 1
+          },
+          {
+            "kind": "solid",
+            "id": 24,
+            "data": 2
+          },
+          {
+            "kind": "solid",
+            "id": 24,
+            "data": 0
+          }
+        ],
+        "rise": 3
+      }
+    },
+    {
+      "id": "bank-ramp-n",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "floor": 0,
+      "vertices": [
+        [
+          -46,
+          -36
+        ],
+        [
+          -38,
+          -36
+        ],
+        [
+          -38,
+          -26
+        ],
+        [
+          -46,
+          -26
+        ]
+      ],
+      "anchor_heights": [
+        22,
+        22,
+        26,
+        26
+      ],
+      "material": {
+        "kind": "cell",
+        "seed": 39,
+        "cellSize": 6,
+        "jitter": 2,
+        "warp": 3,
+        "palette": [
+          {
+            "kind": "solid",
+            "id": 3,
+            "data": 1
+          },
+          {
+            "kind": "solid",
+            "id": 12,
+            "data": 0
+          },
+          {
+            "kind": "solid",
+            "id": 159,
+            "data": 4
+          },
+          {
+            "kind": "solid",
+            "id": 13,
+            "data": 0
+          }
+        ],
+        "rise": 2
+      }
+    },
+    {
+      "id": "bank-ramp-s",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "floor": 0,
+      "vertices": [
+        [
+          -46,
+          -12
+        ],
+        [
+          -38,
+          -12
+        ],
+        [
+          -38,
+          -2
+        ],
+        [
+          -46,
+          -2
+        ]
+      ],
+      "anchor_heights": [
+        26,
+        26,
+        22,
+        22
+      ],
+      "material": {
+        "kind": "cell",
+        "seed": 39,
+        "cellSize": 6,
+        "jitter": 2,
+        "warp": 3,
+        "palette": [
+          {
+            "kind": "solid",
+            "id": 3,
+            "data": 1
+          },
+          {
+            "kind": "solid",
+            "id": 12,
+            "data": 0
+          },
+          {
+            "kind": "solid",
+            "id": 159,
+            "data": 4
+          },
+          {
+            "kind": "solid",
+            "id": 13,
+            "data": 0
+          }
+        ],
+        "rise": 2
+      }
+    },
+    {
+      "id": "brake-w",
+      "type": "polyline",
+      "operation": "add",
+      "radius": 1.5,
+      "stroke_edge": "solid",
+      "base_height": 25,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "vertices": [
+        [
+          -34,
+          -34
+        ],
+        [
+          -28,
+          -32
+        ],
+        [
+          -22,
+          -34
+        ]
+      ],
+      "material": {
+        "kind": "layered",
+        "axis": "depth",
+        "stack": {
+          "ending": "repeat",
+          "bands": [
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 1
+              },
+              "thickness": 1
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 2
+              },
+              "thickness": 2
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 0
+              },
+              "thickness": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "brake-e",
+      "type": "polyline",
+      "operation": "add",
+      "radius": 1.5,
+      "stroke_edge": "solid",
+      "base_height": 25,
+      "relief_scope": "exclude",
+      "keepClear": true,
+      "vertices": [
+        [
+          22,
+          -34
+        ],
+        [
+          28,
+          -32
+        ],
+        [
+          34,
+          -34
+        ]
+      ],
+      "material": {
+        "kind": "layered",
+        "axis": "depth",
+        "stack": {
+          "ending": "repeat",
+          "bands": [
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 1
+              },
+              "thickness": 1
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 2
+              },
+              "thickness": 2
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 0
+              },
+              "thickness": 4
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "crust-0-0",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "theme": "crust",
+      "vertices": [
+        [
+          -47,
+          -61
+        ],
+        [
+          -31,
+          -61
+        ],
+        [
+          -31,
+          -51
+        ],
+        [
+          -47,
+          -51
+        ]
+      ]
+    },
+    {
+      "id": "crust-0-1",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "theme": "crust",
+      "vertices": [
+        [
+          -47,
+          -45
+        ],
+        [
+          -31,
+          -45
+        ],
+        [
+          -31,
+          -37
+        ],
+        [
+          -47,
+          -37
+        ]
+      ]
+    },
+    {
+      "id": "crust-1-0",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "theme": "crust",
+      "vertices": [
+        [
+          -23,
+          -61
+        ],
+        [
+          -5,
+          -61
+        ],
+        [
+          -5,
+          -51
+        ],
+        [
+          -23,
+          -51
+        ]
+      ]
+    },
+    {
+      "id": "crust-1-1",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "theme": "crust",
+      "vertices": [
+        [
+          -23,
+          -45
+        ],
+        [
+          -5,
+          -45
+        ],
+        [
+          -5,
+          -37
+        ],
+        [
+          -23,
+          -37
+        ]
+      ]
+    },
+    {
+      "id": "crust-2-0",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "theme": "crust",
+      "vertices": [
+        [
+          3,
+          -61
+        ],
+        [
+          21,
+          -61
+        ],
+        [
+          21,
+          -51
+        ],
+        [
+          3,
+          -51
+        ]
+      ]
+    },
+    {
+      "id": "crust-2-1",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "theme": "crust",
+      "vertices": [
+        [
+          3,
+          -45
+        ],
+        [
+          21,
+          -45
+        ],
+        [
+          21,
+          -37
+        ],
+        [
+          3,
+          -37
+        ]
+      ]
+    },
+    {
+      "id": "crust-3-0",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "theme": "crust",
+      "vertices": [
+        [
+          29,
+          -61
+        ],
+        [
+          45,
+          -61
+        ],
+        [
+          45,
+          -51
+        ],
+        [
+          29,
+          -51
+        ]
+      ]
+    },
+    {
+      "id": "crust-3-1",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "theme": "crust",
+      "vertices": [
+        [
+          29,
+          -45
+        ],
+        [
+          45,
+          -45
+        ],
+        [
+          45,
+          -37
+        ],
+        [
+          29,
+          -37
+        ]
+      ]
+    },
+    {
+      "id": "sward-0",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+        [
+          -46,
+          -56
+        ],
+        [
+          -48,
+          -52
+        ],
+        [
+          -52,
+          -51
+        ],
+        [
+          -56,
+          -54
+        ],
+        [
+          -56,
+          -58
+        ],
+        [
+          -52,
+          -62
+        ],
+        [
+          -47,
+          -61
+        ]
+      ],
+      "theme": "sward"
+    },
+    {
+      "id": "sward-1",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+        [
+          56,
+          -56
+        ],
+        [
+          55,
+          -51
+        ],
+        [
+          50,
+          -51
+        ],
+        [
+          46,
+          -54
+        ],
+        [
+          47,
+          -58
+        ],
+        [
+          50,
+          -61
+        ],
+        [
+          54,
+          -60
+        ]
+      ],
+      "theme": "sward"
+    },
+    {
+      "id": "sward-2",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+        [
+          -46,
+          -42
+        ],
+        [
+          -48,
+          -38
+        ],
+        [
+          -52,
+          -38
+        ],
+        [
+          -56,
+          -39
+        ],
+        [
+          -56,
+          -44
+        ],
+        [
+          -52,
+          -47
+        ],
+        [
+          -48,
+          -46
+        ]
+      ],
+      "theme": "sward"
+    },
+    {
+      "id": "sward-3",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "vertices": [
+        [
+          56,
+          -42
+        ],
+        [
+          55,
+          -38
+        ],
+        [
+          50,
+          -36
+        ],
+        [
+          47,
+          -40
+        ],
+        [
+          47,
+          -44
+        ],
+        [
+          50,
+          -47
+        ],
+        [
+          54,
+          -46
+        ]
+      ],
+      "theme": "sward"
+    },
+    {
+      "id": "yard-floor",
+      "type": "polygon",
+      "operation": "add",
+      "height_mode": "raise",
+      "base_height": 0,
+      "skirt": 0,
+      "theme": "works",
+      "vertices": [
+        [
+          -20,
+          -20
+        ],
+        [
+          0,
+          -21
+        ],
+        [
+          20,
+          -20
+        ],
+        [
+          21,
+          0
+        ],
+        [
+          20,
+          20
+        ],
+        [
+          0,
+          21
+        ],
+        [
+          -20,
+          20
+        ],
+        [
+          -21,
+          0
+        ]
+      ]
+    }
+  ],
+  "addLayers": [
+    {
+      "id": "cistern-0",
+      "name": "Cistern 0",
+      "base_y": 0,
+      "shapes": [
+        {
+          "type": "polygon",
+          "vertices": [
+            [
+              -9.0,
+              -32.0
+            ],
+            [
+              -9.024076366639015,
+              -31.509914298352196
+            ],
+            [
+              -9.096073597983848,
+              -31.02454838991936
+            ],
+            [
+              -9.215298321338956,
+              -30.54857661372769
+            ],
+            [
+              -9.380602337443566,
+              -30.08658283817455
+            ],
+            [
+              -9.590393678258224,
+              -29.64301631587001
+            ],
+            [
+              -9.842651938487274,
+              -29.22214883490199
+            ],
+            [
+              -10.134947733186316,
+              -28.82803357918177
+            ],
+            [
+              -10.464466094067262,
+              -28.464466094067262
+            ],
+            [
+              -10.828033579181772,
+              -28.134947733186316
+            ],
+            [
+              -11.222148834901988,
+              -27.842651938487272
+            ],
+            [
+              -11.64301631587001,
+              -27.590393678258224
+            ],
+            [
+              -12.08658283817455,
+              -27.380602337443566
+            ],
+            [
+              -12.548576613727688,
+              -27.215298321338956
+            ],
+            [
+              -13.024548389919358,
+              -27.096073597983846
+            ],
+            [
+              -13.509914298352196,
+              -27.024076366639015
+            ],
+            [
+              -14.0,
+              -27.0
+            ],
+            [
+              -14.490085701647804,
+              -27.024076366639015
+            ],
+            [
+              -14.975451610080642,
+              -27.096073597983846
+            ],
+            [
+              -15.45142338627231,
+              -27.215298321338956
+            ],
+            [
+              -15.913417161825448,
+              -27.380602337443566
+            ],
+            [
+              -16.35698368412999,
+              -27.590393678258224
+            ],
+            [
+              -16.77785116509801,
+              -27.842651938487272
+            ],
+            [
+              -17.171966420818226,
+              -28.134947733186316
+            ],
+            [
+              -17.535533905932738,
+              -28.464466094067262
+            ],
+            [
+              -17.865052266813684,
+              -28.82803357918177
+            ],
+            [
+              -18.157348061512728,
+              -29.22214883490199
+            ],
+            [
+              -18.409606321741776,
+              -29.64301631587001
+            ],
+            [
+              -18.619397662556434,
+              -30.08658283817455
+            ],
+            [
+              -18.784701678661044,
+              -30.54857661372769
+            ],
+            [
+              -18.903926402016154,
+              -31.024548389919357
+            ],
+            [
+              -18.975923633360985,
+              -31.509914298352196
+            ],
+            [
+              -19.0,
+              -32.0
+            ],
+            [
+              -18.975923633360985,
+              -32.4900857016478
+            ],
+            [
+              -18.903926402016154,
+              -32.97545161008064
+            ],
+            [
+              -18.784701678661044,
+              -33.45142338627231
+            ],
+            [
+              -18.619397662556434,
+              -33.91341716182545
+            ],
+            [
+              -18.409606321741776,
+              -34.356983684129986
+            ],
+            [
+              -18.157348061512728,
+              -34.777851165098014
+            ],
+            [
+              -17.865052266813684,
+              -35.17196642081823
+            ],
+            [
+              -17.535533905932738,
+              -35.53553390593274
+            ],
+            [
+              -17.17196642081823,
+              -35.865052266813684
+            ],
+            [
+              -16.77785116509801,
+              -36.15734806151273
+            ],
+            [
+              -16.35698368412999,
+              -36.40960632174178
+            ],
+            [
+              -15.913417161825452,
+              -36.61939766255643
+            ],
+            [
+              -15.451423386272312,
+              -36.784701678661044
+            ],
+            [
+              -14.975451610080643,
+              -36.903926402016154
+            ],
+            [
+              -14.490085701647802,
+              -36.975923633360985
+            ],
+            [
+              -14.000000000000002,
+              -37.0
+            ],
+            [
+              -13.5099142983522,
+              -36.975923633360985
+            ],
+            [
+              -13.024548389919358,
+              -36.903926402016154
+            ],
+            [
+              -12.54857661372769,
+              -36.784701678661044
+            ],
+            [
+              -12.08658283817455,
+              -36.61939766255643
+            ],
+            [
+              -11.643016315870012,
+              -36.40960632174178
+            ],
+            [
+              -11.22214883490199,
+              -36.15734806151273
+            ],
+            [
+              -10.828033579181772,
+              -35.865052266813684
+            ],
+            [
+              -10.464466094067262,
+              -35.53553390593274
+            ],
+            [
+              -10.134947733186316,
+              -35.17196642081823
+            ],
+            [
+              -9.842651938487274,
+              -34.777851165098014
+            ],
+            [
+              -9.590393678258227,
+              -34.356983684129986
+            ],
+            [
+              -9.380602337443568,
+              -33.91341716182545
+            ],
+            [
+              -9.215298321338956,
+              -33.45142338627231
+            ],
+            [
+              -9.09607359798385,
+              -32.97545161008065
+            ],
+            [
+              -9.024076366639015,
+              -32.4900857016478
+            ],
+            [
+              -9.0,
+              -32.0
+            ],
+            [
+              -10.019261093311211,
+              -32.39206856131824
+            ],
+            [
+              -10.076858878387078,
+              -32.78036128806451
+            ],
+            [
+              -10.172238657071166,
+              -33.16113870901785
+            ],
+            [
+              -10.304481869954854,
+              -33.53073372946036
+            ],
+            [
+              -10.47231494260658,
+              -33.88558694730399
+            ],
+            [
+              -10.674121550789819,
+              -34.222280932078405
+            ],
+            [
+              -10.907958186549052,
+              -34.537573136654586
+            ],
+            [
+              -11.17157287525381,
+              -34.82842712474619
+            ],
+            [
+              -11.462426863345417,
+              -35.09204181345095
+            ],
+            [
+              -11.777719067921593,
+              -35.32587844921018
+            ],
+            [
+              -12.11441305269601,
+              -35.52768505739342
+            ],
+            [
+              -12.46926627053964,
+              -35.695518130045144
+            ],
+            [
+              -12.838861290982152,
+              -35.82776134292884
+            ],
+            [
+              -13.219638711935486,
+              -35.92314112161292
+            ],
+            [
+              -13.60793143868176,
+              -35.980738906688785
+            ],
+            [
+              -14.0,
+              -36.0
+            ],
+            [
+              -14.392068561318242,
+              -35.980738906688785
+            ],
+            [
+              -14.780361288064515,
+              -35.92314112161292
+            ],
+            [
+              -15.16113870901785,
+              -35.82776134292884
+            ],
+            [
+              -15.530733729460362,
+              -35.695518130045144
+            ],
+            [
+              -15.885586947303992,
+              -35.52768505739342
+            ],
+            [
+              -16.22228093207841,
+              -35.32587844921018
+            ],
+            [
+              -16.537573136654583,
+              -35.09204181345095
+            ],
+            [
+              -16.82842712474619,
+              -34.82842712474619
+            ],
+            [
+              -17.092041813450948,
+              -34.53757313665458
+            ],
+            [
+              -17.325878449210183,
+              -34.222280932078405
+            ],
+            [
+              -17.52768505739342,
+              -33.88558694730399
+            ],
+            [
+              -17.695518130045148,
+              -33.53073372946036
+            ],
+            [
+              -17.827761342928834,
+              -33.16113870901785
+            ],
+            [
+              -17.92314112161292,
+              -32.78036128806451
+            ],
+            [
+              -17.98073890668879,
+              -32.39206856131824
+            ],
+            [
+              -18.0,
+              -32.0
+            ],
+            [
+              -17.98073890668879,
+              -31.607931438681756
+            ],
+            [
+              -17.92314112161292,
+              -31.219638711935485
+            ],
+            [
+              -17.827761342928834,
+              -30.838861290982152
+            ],
+            [
+              -17.695518130045148,
+              -30.46926627053964
+            ],
+            [
+              -17.52768505739342,
+              -30.11441305269601
+            ],
+            [
+              -17.32587844921018,
+              -29.77771906792159
+            ],
+            [
+              -17.092041813450948,
+              -29.462426863345417
+            ],
+            [
+              -16.82842712474619,
+              -29.17157287525381
+            ],
+            [
+              -16.537573136654583,
+              -28.907958186549052
+            ],
+            [
+              -16.22228093207841,
+              -28.674121550789817
+            ],
+            [
+              -15.885586947303992,
+              -28.47231494260658
+            ],
+            [
+              -15.530733729460358,
+              -28.304481869954852
+            ],
+            [
+              -15.161138709017848,
+              -28.172238657071166
+            ],
+            [
+              -14.780361288064512,
+              -28.07685887838708
+            ],
+            [
+              -14.392068561318242,
+              -28.01926109331121
+            ],
+            [
+              -14.0,
+              -28.0
+            ],
+            [
+              -13.607931438681756,
+              -28.01926109331121
+            ],
+            [
+              -13.219638711935486,
+              -28.07685887838708
+            ],
+            [
+              -12.83886129098215,
+              -28.172238657071166
+            ],
+            [
+              -12.469266270539642,
+              -28.304481869954852
+            ],
+            [
+              -12.114413052696008,
+              -28.47231494260658
+            ],
+            [
+              -11.777719067921591,
+              -28.67412155078982
+            ],
+            [
+              -11.462426863345417,
+              -28.907958186549052
+            ],
+            [
+              -11.17157287525381,
+              -29.17157287525381
+            ],
+            [
+              -10.907958186549052,
+              -29.462426863345417
+            ],
+            [
+              -10.674121550789819,
+              -29.77771906792159
+            ],
+            [
+              -10.47231494260658,
+              -30.11441305269601
+            ],
+            [
+              -10.304481869954852,
+              -30.46926627053964
+            ],
+            [
+              -10.172238657071166,
+              -30.838861290982152
+            ],
+            [
+              -10.076858878387078,
+              -31.219638711935488
+            ],
+            [
+              -10.019261093311211,
+              -31.607931438681756
+            ],
+            [
+              -10.0,
+              -32.0
+            ],
+            [
+              -10.019261093311211,
+              -32.39206856131824
+            ]
+          ],
+          "floor": 22,
+          "base_height": 3,
+          "id": "cistern-0-0",
+          "operation": "add",
+          "keepClear": true,
+          "material": {
+            "kind": "cell",
+            "seed": 57,
+            "cellSize": 4,
+            "jitter": 1,
+            "warp": 2,
+            "palette": [
+              {
+                "kind": "solid",
+                "id": 24,
+                "data": 2
+              },
+              {
+                "kind": "solid",
+                "id": 24,
+                "data": 0
+              },
+              {
+                "kind": "solid",
+                "id": 24,
+                "data": 1
+              },
+              {
+                "kind": "solid",
+                "id": 24,
+                "data": 0
+              }
+            ],
+            "rise": 3
+          }
+        },
+        {
+          "id": "cistern-0-brine",
+          "type": "circle",
+          "operation": "add",
+          "center_x": -14,
+          "center_z": -32,
+          "radius": 3.5,
+          "floor": 22,
+          "base_height": 1,
+          "keepClear": true,
+          "override": true,
+          "material": {
+            "kind": "cell",
+            "seed": 59,
+            "cellSize": 3,
+            "jitter": 1,
+            "warp": 1,
+            "palette": [
+              {
+                "kind": "solid",
+                "id": 159,
+                "data": 8
+              },
+              {
+                "kind": "solid",
+                "id": 159,
+                "data": 0
+              },
+              {
+                "kind": "solid",
+                "id": 159,
+                "data": 8
+              },
+              {
+                "kind": "solid",
+                "id": 24,
+                "data": 2
+              }
+            ],
+            "rise": 2
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "cistern-0-body",
+          "name": "Cistern 0",
+          "mirrors": false,
+          "shapeIds": [
+            "cistern-0-0",
+            "cistern-0-brine"
+          ]
+        }
+      ],
+      "kind": "made",
+      "part_of": "saltworks"
+    },
+    {
+      "id": "cistern-1",
+      "name": "Cistern 1",
+      "base_y": 0,
+      "shapes": [
+        {
+          "type": "polygon",
+          "vertices": [
+            [
+              19.0,
+              32.0
+            ],
+            [
+              18.975923633360985,
+              32.4900857016478
+            ],
+            [
+              18.903926402016154,
+              32.97545161008064
+            ],
+            [
+              18.784701678661044,
+              33.45142338627231
+            ],
+            [
+              18.619397662556434,
+              33.91341716182545
+            ],
+            [
+              18.409606321741776,
+              34.356983684129986
+            ],
+            [
+              18.157348061512728,
+              34.777851165098014
+            ],
+            [
+              17.865052266813684,
+              35.17196642081823
+            ],
+            [
+              17.535533905932738,
+              35.53553390593274
+            ],
+            [
+              17.17196642081823,
+              35.865052266813684
+            ],
+            [
+              16.77785116509801,
+              36.15734806151273
+            ],
+            [
+              16.35698368412999,
+              36.40960632174178
+            ],
+            [
+              15.91341716182545,
+              36.61939766255644
+            ],
+            [
+              15.451423386272312,
+              36.784701678661044
+            ],
+            [
+              14.975451610080642,
+              36.903926402016154
+            ],
+            [
+              14.490085701647804,
+              36.975923633360985
+            ],
+            [
+              14.0,
+              37.0
+            ],
+            [
+              13.509914298352196,
+              36.975923633360985
+            ],
+            [
+              13.024548389919358,
+              36.903926402016154
+            ],
+            [
+              12.54857661372769,
+              36.784701678661044
+            ],
+            [
+              12.086582838174552,
+              36.61939766255644
+            ],
+            [
+              11.64301631587001,
+              36.40960632174178
+            ],
+            [
+              11.22214883490199,
+              36.15734806151273
+            ],
+            [
+              10.828033579181774,
+              35.865052266813684
+            ],
+            [
+              10.464466094067262,
+              35.53553390593274
+            ],
+            [
+              10.134947733186316,
+              35.17196642081823
+            ],
+            [
+              9.842651938487274,
+              34.777851165098014
+            ],
+            [
+              9.590393678258225,
+              34.356983684129986
+            ],
+            [
+              9.380602337443566,
+              33.91341716182545
+            ],
+            [
+              9.215298321338956,
+              33.45142338627231
+            ],
+            [
+              9.096073597983848,
+              32.97545161008064
+            ],
+            [
+              9.024076366639015,
+              32.49008570164781
+            ],
+            [
+              9.0,
+              32.0
+            ],
+            [
+              9.024076366639015,
+              31.509914298352196
+            ],
+            [
+              9.096073597983848,
+              31.024548389919357
+            ],
+            [
+              9.215298321338956,
+              30.54857661372769
+            ],
+            [
+              9.380602337443566,
+              30.08658283817455
+            ],
+            [
+              9.590393678258224,
+              29.64301631587001
+            ],
+            [
+              9.842651938487272,
+              29.22214883490199
+            ],
+            [
+              10.134947733186316,
+              28.828033579181774
+            ],
+            [
+              10.464466094067262,
+              28.464466094067262
+            ],
+            [
+              10.82803357918177,
+              28.134947733186316
+            ],
+            [
+              11.22214883490199,
+              27.842651938487272
+            ],
+            [
+              11.64301631587001,
+              27.590393678258224
+            ],
+            [
+              12.086582838174548,
+              27.38060233744357
+            ],
+            [
+              12.548576613727688,
+              27.215298321338956
+            ],
+            [
+              13.024548389919357,
+              27.09607359798385
+            ],
+            [
+              13.509914298352198,
+              27.024076366639015
+            ],
+            [
+              13.999999999999998,
+              27.0
+            ],
+            [
+              14.4900857016478,
+              27.024076366639015
+            ],
+            [
+              14.975451610080642,
+              27.096073597983846
+            ],
+            [
+              15.45142338627231,
+              27.215298321338956
+            ],
+            [
+              15.91341716182545,
+              27.380602337443566
+            ],
+            [
+              16.356983684129986,
+              27.590393678258224
+            ],
+            [
+              16.77785116509801,
+              27.842651938487272
+            ],
+            [
+              17.17196642081823,
+              28.134947733186316
+            ],
+            [
+              17.535533905932738,
+              28.464466094067262
+            ],
+            [
+              17.865052266813684,
+              28.82803357918177
+            ],
+            [
+              18.157348061512728,
+              29.22214883490199
+            ],
+            [
+              18.409606321741773,
+              29.64301631587001
+            ],
+            [
+              18.61939766255643,
+              30.086582838174547
+            ],
+            [
+              18.784701678661044,
+              30.548576613727686
+            ],
+            [
+              18.90392640201615,
+              31.024548389919357
+            ],
+            [
+              18.975923633360985,
+              31.509914298352196
+            ],
+            [
+              19.0,
+              32.0
+            ],
+            [
+              17.98073890668879,
+              31.607931438681756
+            ],
+            [
+              17.92314112161292,
+              31.219638711935485
+            ],
+            [
+              17.827761342928834,
+              30.838861290982152
+            ],
+            [
+              17.695518130045144,
+              30.469266270539638
+            ],
+            [
+              17.52768505739342,
+              30.11441305269601
+            ],
+            [
+              17.32587844921018,
+              29.77771906792159
+            ],
+            [
+              17.092041813450948,
+              29.462426863345417
+            ],
+            [
+              16.828427124746188,
+              29.17157287525381
+            ],
+            [
+              16.537573136654583,
+              28.907958186549052
+            ],
+            [
+              16.22228093207841,
+              28.674121550789817
+            ],
+            [
+              15.88558694730399,
+              28.47231494260658
+            ],
+            [
+              15.53073372946036,
+              28.304481869954852
+            ],
+            [
+              15.161138709017848,
+              28.172238657071166
+            ],
+            [
+              14.780361288064514,
+              28.07685887838708
+            ],
+            [
+              14.39206856131824,
+              28.01926109331121
+            ],
+            [
+              14.0,
+              28.0
+            ],
+            [
+              13.607931438681758,
+              28.01926109331121
+            ],
+            [
+              13.219638711935485,
+              28.07685887838708
+            ],
+            [
+              12.83886129098215,
+              28.172238657071166
+            ],
+            [
+              12.469266270539638,
+              28.304481869954856
+            ],
+            [
+              12.114413052696008,
+              28.47231494260658
+            ],
+            [
+              11.777719067921591,
+              28.67412155078982
+            ],
+            [
+              11.462426863345417,
+              28.907958186549052
+            ],
+            [
+              11.171572875253808,
+              29.17157287525381
+            ],
+            [
+              10.907958186549052,
+              29.46242686334542
+            ],
+            [
+              10.674121550789819,
+              29.77771906792159
+            ],
+            [
+              10.47231494260658,
+              30.11441305269601
+            ],
+            [
+              10.304481869954852,
+              30.46926627053964
+            ],
+            [
+              10.172238657071164,
+              30.838861290982152
+            ],
+            [
+              10.076858878387078,
+              31.219638711935488
+            ],
+            [
+              10.019261093311211,
+              31.607931438681756
+            ],
+            [
+              10.0,
+              32.0
+            ],
+            [
+              10.019261093311213,
+              32.39206856131824
+            ],
+            [
+              10.076858878387078,
+              32.78036128806451
+            ],
+            [
+              10.172238657071166,
+              33.16113870901785
+            ],
+            [
+              10.304481869954852,
+              33.53073372946036
+            ],
+            [
+              10.47231494260658,
+              33.88558694730399
+            ],
+            [
+              10.674121550789819,
+              34.222280932078405
+            ],
+            [
+              10.907958186549052,
+              34.53757313665458
+            ],
+            [
+              11.17157287525381,
+              34.82842712474619
+            ],
+            [
+              11.462426863345419,
+              35.09204181345095
+            ],
+            [
+              11.777719067921591,
+              35.32587844921018
+            ],
+            [
+              12.114413052696008,
+              35.52768505739342
+            ],
+            [
+              12.469266270539642,
+              35.695518130045144
+            ],
+            [
+              12.838861290982152,
+              35.82776134292884
+            ],
+            [
+              13.219638711935488,
+              35.92314112161292
+            ],
+            [
+              13.607931438681758,
+              35.980738906688785
+            ],
+            [
+              14.0,
+              36.0
+            ],
+            [
+              14.392068561318244,
+              35.980738906688785
+            ],
+            [
+              14.780361288064514,
+              35.92314112161292
+            ],
+            [
+              15.16113870901785,
+              35.82776134292884
+            ],
+            [
+              15.530733729460358,
+              35.695518130045144
+            ],
+            [
+              15.885586947303992,
+              35.52768505739342
+            ],
+            [
+              16.22228093207841,
+              35.32587844921018
+            ],
+            [
+              16.537573136654583,
+              35.09204181345095
+            ],
+            [
+              16.82842712474619,
+              34.82842712474619
+            ],
+            [
+              17.092041813450948,
+              34.53757313665458
+            ],
+            [
+              17.32587844921018,
+              34.222280932078405
+            ],
+            [
+              17.52768505739342,
+              33.88558694730399
+            ],
+            [
+              17.695518130045148,
+              33.53073372946036
+            ],
+            [
+              17.827761342928834,
+              33.16113870901785
+            ],
+            [
+              17.92314112161292,
+              32.78036128806451
+            ],
+            [
+              17.98073890668879,
+              32.39206856131824
+            ],
+            [
+              18.0,
+              32.0
+            ],
+            [
+              17.98073890668879,
+              31.607931438681756
+            ]
+          ],
+          "floor": 22,
+          "base_height": 3,
+          "id": "cistern-1-0",
+          "operation": "add",
+          "keepClear": true,
+          "material": {
+            "kind": "cell",
+            "seed": 57,
+            "cellSize": 4,
+            "jitter": 1,
+            "warp": 2,
+            "palette": [
+              {
+                "kind": "solid",
+                "id": 24,
+                "data": 2
+              },
+              {
+                "kind": "solid",
+                "id": 24,
+                "data": 0
+              },
+              {
+                "kind": "solid",
+                "id": 24,
+                "data": 1
+              },
+              {
+                "kind": "solid",
+                "id": 24,
+                "data": 0
+              }
+            ],
+            "rise": 3
+          }
+        },
+        {
+          "id": "cistern-1-brine",
+          "type": "circle",
+          "operation": "add",
+          "center_x": 14,
+          "center_z": 32,
+          "radius": 3.5,
+          "floor": 22,
+          "base_height": 1,
+          "keepClear": true,
+          "override": true,
+          "material": {
+            "kind": "cell",
+            "seed": 59,
+            "cellSize": 3,
+            "jitter": 1,
+            "warp": 1,
+            "palette": [
+              {
+                "kind": "solid",
+                "id": 159,
+                "data": 8
+              },
+              {
+                "kind": "solid",
+                "id": 159,
+                "data": 0
+              },
+              {
+                "kind": "solid",
+                "id": 159,
+                "data": 8
+              },
+              {
+                "kind": "solid",
+                "id": 24,
+                "data": 2
+              }
+            ],
+            "rise": 2
+          }
+        }
+      ],
+      "groups": [
+        {
+          "id": "cistern-1-body",
+          "name": "Cistern 1",
+          "mirrors": false,
+          "shapeIds": [
+            "cistern-1-0",
+            "cistern-1-brine"
+          ]
+        }
+      ],
+      "kind": "made",
+      "part_of": "saltworks"
+    }
+  ],
+  "roomStyles": {
+    "spawn": {
+      "foundation": {
+        "plate": {
+          "stack": {
+            "ending": "repeat",
+            "bands": [
+              {
+                "material": {
+                  "kind": "solid",
+                  "id": 24,
+                  "data": 2
+                },
+                "thickness": 1
+              }
+            ]
+          },
+          "extent": 1
+        },
+        "surface": {
+          "field": null,
+          "border": null,
+          "borderWidth": 1,
+          "inlay": null,
+          "inlayInset": 2,
+          "isPlain": true
+        },
+        "footing": null
+      },
+      "roof": {
+        "form": "hip",
+        "pitch": 1,
+        "slab": 44,
+        "slabData": 1,
+        "overhang": 1,
+        "ridgeCap": true,
+        "hole": false,
+        "body": {
+          "kind": "solid",
+          "id": 24,
+          "data": 0
+        },
+        "verge": {
+          "kind": "laidLog",
+          "id": 162,
+          "data": 0
+        },
+        "gable": {
+          "kind": "solid",
+          "id": 5,
+          "data": 4
+        },
+        "gableWindows": {
+          "form": "pane",
+          "block": 102,
+          "hostBlock": -1,
+          "hostData": 0,
+          "data": 0,
+          "sill": 1,
+          "width": 1,
+          "height": 2,
+          "spacing": 3
+        }
+      },
+      "wall": {
+        "stack": {
+          "ending": "repeat",
+          "bands": [
+            {
+              "material": {
+                "kind": "solid",
+                "id": 24,
+                "data": 0
+              },
+              "thickness": 4
+            },
+            {
+              "material": {
+                "kind": "solid",
+                "id": 5,
+                "data": 4
+              },
+              "thickness": 4
+            }
+          ]
+        },
+        "extent": 8
+      },
+      "post": {
+        "kind": "solid",
+        "id": 162,
+        "data": 0
+      },
+      "windows": {
+        "form": "pane",
+        "block": 102,
+        "hostBlock": -1,
+        "hostData": 0,
+        "data": 0,
+        "sill": 3,
+        "width": 2,
+        "height": 2,
+        "spacing": 4
+      },
+      "storeys": [
+        {
+          "clear": 5,
+          "wall": {
+            "stack": {
+              "ending": "repeat",
+              "bands": [
+                {
+                  "material": {
+                    "kind": "solid",
+                    "id": 24,
+                    "data": 0
+                  },
+                  "thickness": 2
+                },
+                {
+                  "material": {
+                    "kind": "solid",
+                    "id": 5,
+                    "data": 4
+                  },
+                  "thickness": 4
+                }
+              ]
+            },
+            "extent": 6
+          },
+          "post": {
+            "kind": "solid",
+            "id": 162,
+            "data": 0
+          },
+          "windows": {
+            "form": "pane",
+            "block": 102,
+            "hostBlock": -1,
+            "hostData": 0,
+            "data": 0,
+            "sill": 3,
+            "width": 2,
+            "height": 2,
+            "spacing": 4
+          },
+          "surface": {
+            "field": null,
+            "border": null,
+            "borderWidth": 1,
+            "inlay": null,
+            "inlayInset": 2,
+            "isPlain": true
+          },
+          "deck": null,
+          "headroom": 5
+        }
+      ],
+      "porch": null,
+      "front": null,
+      "beams": {
+        "block": 162,
+        "data": 0,
+        "reach": 1,
+        "any": false
+      },
+      "doorway": {
+        "door": "air",
+        "width": 2,
+        "height": 3,
+        "head": {
+          "form": "arched",
+          "block": 128,
+          "fill": "upperSlab",
+          "fillBlock": 44,
+          "fillData": 1
+        }
+      }
+    }
+  },
+  "dressing": {
+    "styles": {
+      "thorn-1": {
+        "kind": "tree",
+        "form": "copied",
+        "body": [
+          [
+            0,
+            0,
+            0,
+            162,
+            12
+          ],
+          [
+            1,
+            0,
+            0,
+            162,
+            12
+          ],
+          [
+            1,
+            0,
+            1,
+            162,
+            12
+          ],
+          [
+            2,
+            0,
+            1,
+            162,
+            12
+          ],
+          [
+            1,
+            0,
+            2,
+            162,
+            12
+          ],
+          [
+            1,
+            1,
+            1,
+            162,
+            12
+          ],
+          [
+            2,
+            1,
+            1,
+            162,
+            12
+          ],
+          [
+            1,
+            2,
+            1,
+            162,
+            12
+          ],
+          [
+            -5,
+            3,
+            -1,
+            161,
+            12
+          ],
+          [
+            -3,
+            3,
+            -1,
+            161,
+            12
+          ],
+          [
+            1,
+            3,
+            -1,
+            162,
+            12
+          ],
+          [
+            -3,
+            3,
+            0,
+            161,
+            12
+          ],
+          [
+            -2,
+            3,
+            0,
+            161,
+            12
+          ],
+          [
+            1,
+            3,
+            0,
+            162,
+            12
+          ],
+          [
+            -5,
+            3,
+            1,
+            161,
+            12
+          ],
+          [
+            1,
+            3,
+            1,
+            162,
+            12
+          ],
+          [
+            -3,
+            3,
+            2,
+            161,
+            12
+          ],
+          [
+            -5,
+            4,
+            -4,
+            161,
+            12
+          ],
+          [
+            1,
+            4,
+            -4,
+            161,
+            12
+          ],
+          [
+            -6,
+            4,
+            -3,
+            161,
+            12
+          ],
+          [
+            -5,
+            4,
+            -3,
+            161,
+            12
+          ],
+          [
+            -8,
+            4,
+            -2,
+            161,
+            12
+          ],
+          [
+            -5,
+            4,
+            -2,
+            161,
+            12
+          ],
+          [
+            -4,
+            4,
+            -2,
+            161,
+            12
+          ],
+          [
+            -2,
+            4,
+            -2,
+            161,
+            12
+          ],
+          [
+            -7,
+            4,
+            -1,
+            161,
+            12
+          ],
+          [
+            -1,
+            4,
+            -1,
+            161,
+            12
+          ],
+          [
+            1,
+            4,
+            -1,
+            162,
+            12
+          ],
+          [
+            3,
+            4,
+            -1,
+            161,
+            4
+          ],
+          [
+            -7,
+            4,
+            0,
+            161,
+            12
+          ],
+          [
+            -6,
+            4,
+            0,
+            161,
+            12
+          ],
+          [
+            -4,
+            4,
+            0,
+            161,
+            12
+          ],
+          [
+            -8,
+            4,
+            1,
+            161,
+            12
+          ],
+          [
+            -5,
+            4,
+            1,
+            161,
+            12
+          ],
+          [
+            -4,
+            4,
+            1,
+            161,
+            4
+          ],
+          [
+            -2,
+            4,
+            1,
+            162,
+            12
+          ],
+          [
+            -1,
+            4,
+            1,
+            162,
+            12
+          ],
+          [
+            0,
+            4,
+            1,
+            162,
+            12
+          ],
+          [
+            1,
+            4,
+            1,
+            162,
+            12
+          ],
+          [
+            -3,
+            4,
+            2,
+            161,
+            12
+          ],
+          [
+            3,
+            4,
+            2,
+            161,
+            12
+          ],
+          [
+            4,
+            4,
+            2,
+            161,
+            12
+          ],
+          [
+            5,
+            4,
+            2,
+            161,
+            12
+          ],
+          [
+            -5,
+            4,
+            3,
+            161,
+            12
+          ],
+          [
+            -4,
+            4,
+            3,
+            161,
+            12
+          ],
+          [
+            -2,
+            4,
+            3,
+            161,
+            12
+          ],
+          [
+            2,
+            4,
+            3,
+            161,
+            12
+          ],
+          [
+            -1,
+            4,
+            5,
+            161,
+            12
+          ],
+          [
+            4,
+            4,
+            5,
+            161,
+            4
+          ],
+          [
+            5,
+            4,
+            5,
+            161,
+            12
+          ],
+          [
+            1,
+            4,
+            6,
+            161,
+            12
+          ],
+          [
+            2,
+            4,
+            6,
+            161,
+            12
+          ],
+          [
+            0,
+            4,
+            7,
+            161,
+            12
+          ],
+          [
+            3,
+            4,
+            7,
+            161,
+            12
+          ],
+          [
+            5,
+            4,
+            7,
+            161,
+            12
+          ],
+          [
+            0,
+            4,
+            8,
+            161,
+            12
+          ],
+          [
+            0,
+            5,
+            -6,
+            161,
+            12
+          ],
+          [
+            -2,
+            5,
+            -5,
+            161,
+            4
+          ],
+          [
+            -1,
+            5,
+            -5,
+            161,
+            12
+          ],
+          [
+            3,
+            5,
+            -5,
+            161,
+            12
+          ],
+          [
+            0,
+            5,
+            -4,
+            161,
+            12
+          ],
+          [
+            2,
+            5,
+            -4,
+            161,
+            12
+          ],
+          [
+            5,
+            5,
+            -4,
+            161,
+            12
+          ],
+          [
+            -6,
+            5,
+            -3,
+            161,
+            12
+          ],
+          [
+            -3,
+            5,
+            -3,
+            161,
+            12
+          ],
+          [
+            0,
+            5,
+            -3,
+            161,
+            12
+          ],
+          [
+            4,
+            5,
+            -3,
+            161,
+            12
+          ],
+          [
+            1,
+            5,
+            -2,
+            162,
+            12
+          ],
+          [
+            2,
+            5,
+            -2,
+            161,
+            12
+          ],
+          [
+            4,
+            5,
+            -2,
+            161,
+            12
+          ],
+          [
+            -8,
+            5,
+            -1,
+            161,
+            12
+          ],
+          [
+            -6,
+            5,
+            -1,
+            161,
+            12
+          ],
+          [
+            -5,
+            5,
+            -1,
+            161,
+            12
+          ],
+          [
+            -3,
+            5,
+            -1,
+            162,
+            12
+          ],
+          [
+            1,
+            5,
+            -1,
+            162,
+            12
+          ],
+          [
+            3,
+            5,
+            -1,
+            161,
+            12
+          ],
+          [
+            -5,
+            5,
+            0,
+            161,
+            12
+          ],
+          [
+            -3,
+            5,
+            0,
+            162,
+            12
+          ],
+          [
+            -8,
+            5,
+            1,
+            161,
+            4
+          ],
+          [
+            -6,
+            5,
+            1,
+            161,
+            12
+          ],
+          [
+            -4,
+            5,
+            1,
+            162,
+            12
+          ],
+          [
+            -3,
+            5,
+            1,
+            162,
+            12
+          ],
+          [
+            -2,
+            5,
+            1,
+            162,
+            12
+          ],
+          [
+            1,
+            5,
+            1,
+            162,
+            12
+          ],
+          [
+            4,
+            5,
+            1,
+            161,
+            12
+          ],
+          [
+            -7,
+            5,
+            2,
+            161,
+            12
+          ],
+          [
+            -5,
+            5,
+            2,
+            161,
+            12
+          ],
+          [
+            1,
+            5,
+            2,
+            162,
+            12
+          ],
+          [
+            -6,
+            5,
+            3,
+            161,
+            12
+          ],
+          [
+            -3,
+            5,
+            3,
+            161,
+            12
+          ],
+          [
+            1,
+            5,
+            3,
+            162,
+            12
+          ],
+          [
+            4,
+            5,
+            3,
+            161,
+            12
+          ],
+          [
+            -4,
+            5,
+            4,
+            161,
+            12
+          ],
+          [
+            -3,
+            5,
+            4,
+            161,
+            12
+          ],
+          [
+            0,
+            5,
+            4,
+            161,
+            12
+          ],
+          [
+            2,
+            5,
+            4,
+            161,
+            4
+          ],
+          [
+            4,
+            5,
+            4,
+            161,
+            12
+          ],
+          [
+            6,
+            5,
+            4,
+            161,
+            12
+          ],
+          [
+            7,
+            5,
+            4,
+            161,
+            12
+          ],
+          [
+            -4,
+            5,
+            5,
+            161,
+            4
+          ],
+          [
+            0,
+            5,
+            5,
+            161,
+            12
+          ],
+          [
+            6,
+            5,
+            5,
+            161,
+            12
+          ],
+          [
+            -1,
+            5,
+            6,
+            161,
+            12
+          ],
+          [
+            0,
+            5,
+            6,
+            161,
+            12
+          ],
+          [
+            3,
+            5,
+            6,
+            161,
+            12
+          ],
+          [
+            5,
+            5,
+            6,
+            161,
+            12
+          ],
+          [
+            1,
+            5,
+            7,
+            161,
+            12
+          ],
+          [
+            2,
+            5,
+            7,
+            161,
+            12
+          ],
+          [
+            4,
+            5,
+            7,
+            161,
+            12
+          ],
+          [
+            2,
+            5,
+            8,
+            161,
+            12
+          ],
+          [
+            5,
+            5,
+            8,
+            161,
+            12
+          ],
+          [
+            6,
+            5,
+            8,
+            161,
+            4
+          ],
+          [
+            1,
+            5,
+            9,
+            161,
+            12
+          ],
+          [
+            4,
+            5,
+            9,
+            161,
+            12
+          ],
+          [
+            1,
+            6,
+            -8,
+            161,
+            12
+          ],
+          [
+            0,
+            6,
+            -7,
+            161,
+            12
+          ],
+          [
+            1,
+            6,
+            -7,
+            161,
+            12
+          ],
+          [
+            2,
+            6,
+            -6,
+            161,
+            12
+          ],
+          [
+            -1,
+            6,
+            -5,
+            161,
+            12
+          ],
+          [
+            0,
+            6,
+            -5,
+            161,
+            12
+          ],
+          [
+            2,
+            6,
+            -5,
+            161,
+            12
+          ],
+          [
+            1,
+            6,
+            -4,
+            161,
+            12
+          ],
+          [
+            4,
+            6,
+            -4,
+            161,
+            12
+          ],
+          [
+            -1,
+            6,
+            -3,
+            161,
+            12
+          ],
+          [
+            1,
+            6,
+            -3,
+            162,
+            12
+          ],
+          [
+            2,
+            6,
+            -3,
+            161,
+            12
+          ],
+          [
+            3,
+            6,
+            -3,
+            161,
+            12
+          ],
+          [
+            5,
+            6,
+            -3,
+            161,
+            12
+          ],
+          [
+            6,
+            6,
+            -3,
+            161,
+            12
+          ],
+          [
+            -7,
+            6,
+            -2,
+            161,
+            12
+          ],
+          [
+            -5,
+            6,
+            -2,
+            161,
+            12
+          ],
+          [
+            -3,
+            6,
+            -2,
+            161,
+            12
+          ],
+          [
+            1,
+            6,
+            -2,
+            162,
+            12
+          ],
+          [
+            3,
+            6,
+            -2,
+            161,
+            12
+          ],
+          [
+            -4,
+            6,
+            -1,
+            161,
+            12
+          ],
+          [
+            -3,
+            6,
+            -1,
+            161,
+            12
+          ],
+          [
+            -1,
+            6,
+            -1,
+            161,
+            12
+          ],
+          [
+            2,
+            6,
+            -1,
+            161,
+            12
+          ],
+          [
+            -7,
+            6,
+            0,
+            161,
+            12
+          ],
+          [
+            -6,
+            6,
+            0,
+            161,
+            12
+          ],
+          [
+            0,
+            6,
+            0,
+            161,
+            12
+          ],
+          [
+            1,
+            6,
+            0,
+            161,
+            12
+          ],
+          [
+            -7,
+            6,
+            1,
+            161,
+            12
+          ],
+          [
+            -2,
+            6,
+            1,
+            161,
+            12
+          ],
+          [
+            -6,
+            6,
+            2,
+            161,
+            12
+          ],
+          [
+            -4,
+            6,
+            2,
+            161,
+            12
+          ],
+          [
+            3,
+            6,
+            2,
+            161,
+            12
+          ],
+          [
+            -4,
+            6,
+            3,
+            161,
+            12
+          ],
+          [
+            -1,
+            6,
+            3,
+            161,
+            12
+          ],
+          [
+            1,
+            6,
+            3,
+            162,
+            12
+          ],
+          [
+            2,
+            6,
+            3,
+            162,
+            12
+          ],
+          [
+            5,
+            6,
+            3,
+            161,
+            12
+          ],
+          [
+            6,
+            6,
+            3,
+            161,
+            12
+          ],
+          [
+            -1,
+            6,
+            4,
+            161,
+            12
+          ],
+          [
+            2,
+            6,
+            4,
+            162,
+            12
+          ],
+          [
+            3,
+            6,
+            4,
+            162,
+            12
+          ],
+          [
+            4,
+            6,
+            4,
+            161,
+            4
+          ],
+          [
+            2,
+            6,
+            5,
+            162,
+            12
+          ],
+          [
+            4,
+            6,
+            5,
+            161,
+            12
+          ],
+          [
+            6,
+            6,
+            6,
+            161,
+            12
+          ],
+          [
+            0,
+            6,
+            7,
+            161,
+            12
+          ],
+          [
+            1,
+            6,
+            7,
+            161,
+            12
+          ],
+          [
+            3,
+            6,
+            8,
+            161,
+            12
+          ],
+          [
+            4,
+            6,
+            8,
+            161,
+            12
+          ],
+          [
+            2,
+            6,
+            9,
+            161,
+            4
+          ],
+          [
+            3,
+            6,
+            9,
+            161,
+            12
+          ],
+          [
+            3,
+            6,
+            10,
+            161,
+            12
+          ],
+          [
+            0,
+            7,
+            -7,
+            161,
+            4
+          ],
+          [
+            -1,
+            7,
+            -6,
+            161,
+            12
+          ],
+          [
+            0,
+            7,
+            -6,
+            161,
+            12
+          ],
+          [
+            1,
+            7,
+            -5,
+            161,
+            12
+          ],
+          [
+            3,
+            7,
+            -5,
+            161,
+            12
+          ],
+          [
+            -2,
+            7,
+            -4,
+            161,
+            12
+          ],
+          [
+            -1,
+            7,
+            -4,
+            161,
+            12
+          ],
+          [
+            2,
+            7,
+            -4,
+            161,
+            12
+          ],
+          [
+            4,
+            7,
+            -4,
+            161,
+            12
+          ],
+          [
+            0,
+            7,
+            -3,
+            161,
+            12
+          ],
+          [
+            -1,
+            7,
+            -2,
+            161,
+            12
+          ],
+          [
+            1,
+            7,
+            -2,
+            162,
+            12
+          ],
+          [
+            4,
+            7,
+            -2,
+            161,
+            12
+          ],
+          [
+            2,
+            7,
+            -1,
+            161,
+            12
+          ],
+          [
+            4,
+            7,
+            -1,
+            161,
+            4
+          ],
+          [
+            -1,
+            7,
+            0,
+            161,
+            12
+          ],
+          [
+            -4,
+            7,
+            1,
+            161,
+            12
+          ],
+          [
+            -3,
+            7,
+            1,
+            161,
+            12
+          ],
+          [
+            0,
+            7,
+            1,
+            161,
+            12
+          ],
+          [
+            -2,
+            7,
+            2,
+            161,
+            12
+          ],
+          [
+            2,
+            7,
+            2,
+            161,
+            12
+          ],
+          [
+            2,
+            7,
+            3,
+            161,
+            12
+          ],
+          [
+            0,
+            7,
+            4,
+            161,
+            12
+          ],
+          [
+            1,
+            7,
+            4,
+            161,
+            12
+          ],
+          [
+            4,
+            7,
+            4,
+            161,
+            12
+          ],
+          [
+            5,
+            7,
+            4,
+            161,
+            12
+          ],
+          [
+            0,
+            7,
+            5,
+            161,
+            12
+          ],
+          [
+            3,
+            7,
+            6,
+            161,
+            12
+          ],
+          [
+            4,
+            7,
+            6,
+            161,
+            12
+          ],
+          [
+            2,
+            7,
+            7,
+            161,
+            12
+          ],
+          [
+            1,
+            8,
+            -5,
+            161,
+            12
+          ],
+          [
+            0,
+            8,
+            -4,
+            161,
+            12
+          ],
+          [
+            2,
+            8,
+            -3,
+            161,
+            12
+          ],
+          [
+            3,
+            8,
+            -3,
+            161,
+            12
+          ],
+          [
+            -2,
+            8,
+            -2,
+            161,
+            12
+          ],
+          [
+            -1,
+            8,
+            -2,
+            161,
+            12
+          ],
+          [
+            2,
+            8,
+            -2,
+            161,
+            12
+          ],
+          [
+            -1,
+            8,
+            -1,
+            161,
+            12
+          ],
+          [
+            1,
+            8,
+            -1,
+            161,
+            12
+          ],
+          [
+            1,
+            8,
+            0,
+            161,
+            12
+          ],
+          [
+            2,
+            8,
+            0,
+            161,
+            12
+          ],
+          [
+            2,
+            8,
+            4,
+            161,
+            12
+          ],
+          [
+            3,
+            8,
+            5,
+            161,
+            12
+          ],
+          [
+            1,
+            8,
+            6,
+            161,
+            12
+          ],
+          [
+            2,
+            8,
+            6,
+            161,
+            12
+          ]
+        ]
+      },
+      "thorn-2": {
+        "kind": "tree",
+        "form": "copied",
+        "body": [
+          [
+            0,
+            0,
+            0,
+            162,
+            12
+          ],
+          [
+            0,
+            0,
+            1,
+            162,
+            12
+          ],
+          [
+            1,
+            0,
+            1,
+            162,
+            12
+          ],
+          [
+            1,
+            1,
+            1,
+            162,
+            12
+          ],
+          [
+            1,
+            2,
+            1,
+            162,
+            12
+          ],
+          [
+            4,
+            2,
+            1,
+            161,
+            12
+          ],
+          [
+            1,
+            2,
+            2,
+            162,
+            12
+          ],
+          [
+            -1,
+            2,
+            4,
+            161,
+            12
+          ],
+          [
+            -1,
+            2,
+            5,
+            161,
+            12
+          ],
+          [
+            1,
+            2,
+            5,
+            161,
+            4
+          ],
+          [
+            1,
+            3,
+            0,
+            161,
+            12
+          ],
+          [
+            3,
+            3,
+            0,
+            161,
+            12
+          ],
+          [
+            7,
+            3,
+            0,
+            161,
+            12
+          ],
+          [
+            3,
+            3,
+            1,
+            161,
+            12
+          ],
+          [
+            5,
+            3,
+            1,
+            161,
+            12
+          ],
+          [
+            -2,
+            3,
+            2,
+            161,
+            12
+          ],
+          [
+            1,
+            3,
+            2,
+            162,
+            12
+          ],
+          [
+            4,
+            3,
+            2,
+            161,
+            12
+          ],
+          [
+            5,
+            3,
+            3,
+            161,
+            12
+          ],
+          [
+            -1,
+            3,
+            4,
+            161,
+            12
+          ],
+          [
+            0,
+            3,
+            4,
+            161,
+            12
+          ],
+          [
+            1,
+            3,
+            5,
+            161,
+            4
+          ],
+          [
+            3,
+            3,
+            5,
+            161,
+            12
+          ],
+          [
+            1,
+            3,
+            6,
+            161,
+            4
+          ],
+          [
+            -1,
+            3,
+            7,
+            161,
+            12
+          ],
+          [
+            1,
+            3,
+            7,
+            161,
+            12
+          ],
+          [
+            2,
+            3,
+            8,
+            161,
+            12
+          ],
+          [
+            -2,
+            3,
+            9,
+            161,
+            4
+          ],
+          [
+            -1,
+            3,
+            9,
+            161,
+            4
+          ],
+          [
+            -2,
+            4,
+            -3,
+            161,
+            12
+          ],
+          [
+            -2,
+            4,
+            -2,
+            161,
+            12
+          ],
+          [
+            -1,
+            4,
+            -2,
+            161,
+            12
+          ],
+          [
+            0,
+            4,
+            -2,
+            161,
+            12
+          ],
+          [
+            2,
+            4,
+            -2,
+            161,
+            4
+          ],
+          [
+            -5,
+            4,
+            -1,
+            161,
+            12
+          ],
+          [
+            -4,
+            4,
+            -1,
+            161,
+            12
+          ],
+          [
+            -1,
+            4,
+            -1,
+            161,
+            12
+          ],
+          [
+            2,
+            4,
+            -1,
+            161,
+            12
+          ],
+          [
+            -1,
+            4,
+            0,
+            161,
+            12
+          ],
+          [
+            2,
+            4,
+            0,
+            161,
+            12
+          ],
+          [
+            6,
+            4,
+            0,
+            161,
+            12
+          ],
+          [
+            -2,
+            4,
+            1,
+            161,
+            4
+          ],
+          [
+            -1,
+            4,
+            1,
+            162,
+            12
+          ],
+          [
+            0,
+            4,
+            1,
+            162,
+            12
+          ],
+          [
+            1,
+            4,
+            1,
+            162,
+            12
+          ],
+          [
+            3,
+            4,
+            1,
+            161,
+            12
+          ],
+          [
+            6,
+            4,
+            1,
+            161,
+            12
+          ],
+          [
+            7,
+            4,
+            1,
+            161,
+            12
+          ],
+          [
+            -5,
+            4,
+            2,
+            161,
+            12
+          ],
+          [
+            1,
+            4,
+            2,
+            162,
+            12
+          ],
+          [
+            6,
+            4,
+            2,
+            161,
+            12
+          ],
+          [
+            -2,
+            4,
+            3,
+            161,
+            12
+          ],
+          [
+            -1,
+            4,
+            3,
+            161,
+            4
+          ],
+          [
+            1,
+            4,
+            3,
+            162,
+            12
+          ],
+          [
+            2,
+            4,
+            3,
+            162,
+            12
+          ],
+          [
+            5,
+            4,
+            3,
+            161,
+            12
+          ],
+          [
+            7,
+            4,
+            3,
+            161,
+            12
+          ],
+          [
+            0,
+            4,
+            4,
+            162,
+            12
+          ],
+          [
+            1,
+            4,
+            4,
+            162,
+            12
+          ],
+          [
+            4,
+            4,
+            4,
+            161,
+            12
+          ],
+          [
+            7,
+            4,
+            4,
+            161,
+            12
+          ],
+          [
+            8,
+            4,
+            4,
+            161,
+            12
+          ],
+          [
+            -4,
+            4,
+            5,
+            161,
+            12
+          ],
+          [
+            0,
+            4,
+            5,
+            162,
+            12
+          ],
+          [
+            4,
+            4,
+            5,
+            161,
+            12
+          ],
+          [
+            5,
+            4,
+            5,
+            161,
+            12
+          ],
+          [
+            -2,
+            4,
+            6,
+            161,
+            4
+          ],
+          [
+            0,
+            4,
+            6,
+            162,
+            12
+          ],
+          [
+            2,
+            4,
+            6,
+            161,
+            12
+          ],
+          [
+            3,
+            4,
+            6,
+            161,
+            12
+          ],
+          [
+            0,
+            4,
+            7,
+            161,
+            12
+          ],
+          [
+            -3,
+            4,
+            8,
+            161,
+            12
+          ],
+          [
+            0,
+            4,
+            8,
+            161,
+            12
+          ],
+          [
+            1,
+            4,
+            8,
+            161,
+            12
+          ],
+          [
+            -1,
+            4,
+            9,
+            161,
+            12
+          ],
+          [
+            1,
+            4,
+            9,
+            161,
+            12
+          ],
+          [
+            2,
+            4,
+            9,
+            161,
+            12
+          ],
+          [
+            3,
+            4,
+            9,
+            161,
+            12
+          ],
+          [
+            1,
+            4,
+            10,
+            161,
+            12
+          ],
+          [
+            -4,
+            5,
+            -3,
+            161,
+            12
+          ],
+          [
+            -1,
+            5,
+            -3,
+            161,
+            12
+          ],
+          [
+            -6,
+            5,
+            -1,
+            161,
+            12
+          ],
+          [
+            -3,
+            5,
+            -1,
+            161,
+            12
+          ],
+          [
+            3,
+            5,
+            -1,
+            161,
+            12
+          ],
+          [
+            -5,
+            5,
+            0,
+            161,
+            12
+          ],
+          [
+            -4,
+            5,
+            0,
+            161,
+            12
+          ],
+          [
+            -2,
+            5,
+            0,
+            161,
+            12
+          ],
+          [
+            0,
+            5,
+            0,
+            161,
+            12
+          ],
+          [
+            1,
+            5,
+            0,
+            161,
+            12
+          ],
+          [
+            4,
+            5,
+            0,
+            161,
+            12
+          ],
+          [
+            -7,
+            5,
+            1,
+            161,
+            12
+          ],
+          [
+            -6,
+            5,
+            1,
+            161,
+            12
+          ],
+          [
+            -5,
+            5,
+            1,
+            161,
+            12
+          ],
+          [
+            -4,
+            5,
+            1,
+            161,
+            12
+          ],
+          [
+            -1,
+            5,
+            1,
+            162,
+            12
+          ],
+          [
+            4,
+            5,
+            1,
+            161,
+            12
+          ],
+          [
+            5,
+            5,
+            1,
+            161,
+            4
+          ],
+          [
+            -6,
+            5,
+            2,
+            161,
+            12
+          ],
+          [
+            -1,
+            5,
+            2,
+            161,
+            12
+          ],
+          [
+            4,
+            5,
+            2,
+            161,
+            12
+          ],
+          [
+            8,
+            5,
+            2,
+            161,
+            12
+          ],
+          [
+            9,
+            5,
+            2,
+            161,
+            4
+          ],
+          [
+            -6,
+            5,
+            3,
+            161,
+            4
+          ],
+          [
+            -4,
+            5,
+            3,
+            161,
+            12
+          ],
+          [
+            2,
+            5,
+            3,
+            162,
+            12
+          ],
+          [
+            3,
+            5,
+            3,
+            162,
+            12
+          ],
+          [
+            4,
+            5,
+            3,
+            162,
+            12
+          ],
+          [
+            5,
+            5,
+            3,
+            162,
+            12
+          ],
+          [
+            8,
+            5,
+            3,
+            161,
+            12
+          ],
+          [
+            -4,
+            5,
+            4,
+            161,
+            12
+          ],
+          [
+            -2,
+            5,
+            4,
+            161,
+            12
+          ],
+          [
+            -1,
+            5,
+            4,
+            161,
+            12
+          ],
+          [
+            3,
+            5,
+            4,
+            162,
+            12
+          ],
+          [
+            6,
+            5,
+            5,
+            161,
+            12
+          ],
+          [
+            -2,
+            5,
+            6,
+            161,
+            12
+          ],
+          [
+            -1,
+            5,
+            6,
+            162,
+            12
+          ],
+          [
+            0,
+            5,
+            6,
+            162,
+            12
+          ],
+          [
+            2,
+            5,
+            6,
+            161,
+            12
+          ],
+          [
+            5,
+            5,
+            6,
+            161,
+            12
+          ],
+          [
+            6,
+            5,
+            6,
+            161,
+            12
+          ],
+          [
+            7,
+            5,
+            6,
+            161,
+            12
+          ],
+          [
+            -4,
+            5,
+            7,
+            161,
+            12
+          ],
+          [
+            -3,
+            5,
+            7,
+            161,
+            12
+          ],
+          [
+            -2,
+            5,
+            7,
+            161,
+            12
+          ],
+          [
+            0,
+            5,
+            7,
+            161,
+            4
+          ],
+          [
+            3,
+            5,
+            7,
+            161,
+            12
+          ],
+          [
+            5,
+            5,
+            7,
+            161,
+            12
+          ],
+          [
+            0,
+            5,
+            9,
+            161,
+            12
+          ],
+          [
+            -2,
+            5,
+            10,
+            161,
+            12
+          ],
+          [
+            -1,
+            5,
+            10,
+            161,
+            12
+          ],
+          [
+            2,
+            5,
+            10,
+            161,
+            12
+          ],
+          [
+            2,
+            5,
+            11,
+            161,
+            4
+          ],
+          [
+            -5,
+            6,
+            -2,
+            161,
+            12
+          ],
+          [
+            -4,
+            6,
+            -2,
+            161,
+            12
+          ],
+          [
+            -3,
+            6,
+            -2,
+            161,
+            12
+          ],
+          [
+            -3,
+            6,
+            -1,
+            161,
+            12
+          ],
+          [
+            -1,
+            6,
+            -1,
+            161,
+            12
+          ],
+          [
+            1,
+            6,
+            -1,
+            161,
+            12
+          ],
+          [
+            -5,
+            6,
+            0,
+            161,
+            12
+          ],
+          [
+            -1,
+            6,
+            0,
+            161,
+            12
+          ],
+          [
+            2,
+            6,
+            0,
+            161,
+            12
+          ],
+          [
+            -5,
+            6,
+            1,
+            161,
+            12
+          ],
+          [
+            -3,
+            6,
+            1,
+            162,
+            12
+          ],
+          [
+            -2,
+            6,
+            1,
+            162,
+            12
+          ],
+          [
+            -1,
+            6,
+            1,
+            162,
+            12
+          ],
+          [
+            3,
+            6,
+            1,
+            161,
+            12
+          ],
+          [
+            -3,
+            6,
+            2,
+            161,
+            12
+          ],
+          [
+            0,
+            6,
+            2,
+            161,
+            12
+          ],
+          [
+            1,
+            6,
+            2,
+            161,
+            12
+          ],
+          [
+            3,
+            6,
+            2,
+            161,
+            12
+          ],
+          [
+            5,
+            6,
+            2,
+            161,
+            12
+          ],
+          [
+            7,
+            6,
+            2,
+            161,
+            12
+          ],
+          [
+            -3,
+            6,
+            3,
+            161,
+            12
+          ],
+          [
+            6,
+            6,
+            3,
+            161,
+            12
+          ],
+          [
+            1,
+            6,
+            4,
+            161,
+            12
+          ],
+          [
+            5,
+            6,
+            4,
+            161,
+            12
+          ],
+          [
+            6,
+            6,
+            4,
+            161,
+            12
+          ],
+          [
+            -3,
+            6,
+            5,
+            161,
+            12
+          ],
+          [
+            -2,
+            6,
+            5,
+            161,
+            12
+          ],
+          [
+            2,
+            6,
+            5,
+            161,
+            12
+          ],
+          [
+            3,
+            6,
+            5,
+            161,
+            12
+          ],
+          [
+            -1,
+            6,
+            6,
+            161,
+            12
+          ],
+          [
+            4,
+            6,
+            6,
+            161,
+            4
+          ],
+          [
+            5,
+            6,
+            6,
+            161,
+            4
+          ],
+          [
+            -1,
+            6,
+            7,
+            161,
+            12
+          ],
+          [
+            1,
+            6,
+            7,
+            161,
+            12
+          ],
+          [
+            -2,
+            6,
+            8,
+            161,
+            12
+          ],
+          [
+            1,
+            6,
+            8,
+            161,
+            4
+          ],
+          [
+            2,
+            6,
+            8,
+            161,
+            4
+          ],
+          [
+            -2,
+            7,
+            -1,
+            161,
+            12
+          ],
+          [
+            1,
+            7,
+            -1,
+            161,
+            12
+          ],
+          [
+            -3,
+            7,
+            0,
+            161,
+            12
+          ],
+          [
+            -3,
+            7,
+            1,
+            161,
+            12
+          ],
+          [
+            0,
+            7,
+            1,
+            161,
+            12
+          ],
+          [
+            -4,
+            7,
+            2,
+            161,
+            12
+          ],
+          [
+            -3,
+            7,
+            2,
+            161,
+            12
+          ],
+          [
+            -1,
+            7,
+            2,
+            161,
+            12
+          ],
+          [
+            2,
+            7,
+            2,
+            161,
+            12
+          ],
+          [
+            -2,
+            7,
+            3,
+            161,
+            12
+          ],
+          [
+            0,
+            7,
+            3,
+            161,
+            12
+          ],
+          [
+            3,
+            7,
+            3,
+            161,
+            12
+          ],
+          [
+            4,
+            7,
+            3,
+            161,
+            12
+          ],
+          [
+            -1,
+            7,
+            4,
+            161,
+            4
+          ],
+          [
+            2,
+            7,
+            4,
+            161,
+            12
+          ],
+          [
+            -1,
+            7,
+            5,
+            161,
+            4
+          ],
+          [
+            0,
+            7,
+            5,
+            161,
+            4
+          ],
+          [
+            0,
+            7,
+            6,
+            161,
+            12
+          ],
+          [
+            -1,
+            8,
+            0,
+            161,
+            4
+          ],
+          [
+            -2,
+            8,
+            1,
+            161,
+            12
+          ],
+          [
+            -1,
+            8,
+            1,
+            161,
+            12
+          ]
+        ]
+      },
+      "shed": {
+        "kind": "house",
+        "shell": {
+          "foundation": {
+            "plate": {
+              "stack": {
+                "ending": "repeat",
+                "bands": [
+                  {
+                    "material": {
+                      "kind": "solid",
+                      "id": 24,
+                      "data": 2
+                    },
+                    "thickness": 1
+                  }
+                ]
+              },
+              "extent": 1
+            },
+            "surface": {
+              "field": null,
+              "border": null,
+              "borderWidth": 1,
+              "inlay": null,
+              "inlayInset": 2,
+              "isPlain": true
+            },
+            "footing": null
+          },
+          "roof": {
+            "form": "hip",
+            "pitch": 1,
+            "slab": 44,
+            "slabData": 1,
+            "overhang": 2,
+            "ridgeCap": false,
+            "hole": false,
+            "body": {
+              "kind": "solid",
+              "id": 24,
+              "data": 0
+            },
+            "verge": {
+              "kind": "laidLog",
+              "id": 162,
+              "data": 0
+            },
+            "gable": {
+              "kind": "solid",
+              "id": 5,
+              "data": 4
+            },
+            "gableWindows": {
+              "form": "pane",
+              "block": 102,
+              "hostBlock": -1,
+              "hostData": 0,
+              "data": 0,
+              "sill": 1,
+              "width": 1,
+              "height": 2,
+              "spacing": 3
+            }
+          },
+          "wall": {
+            "stack": {
+              "ending": "repeat",
+              "bands": [
+                {
+                  "material": {
+                    "kind": "solid",
+                    "id": 24,
+                    "data": 0
+                  },
+                  "thickness": 2
+                },
+                {
+                  "material": {
+                    "kind": "solid",
+                    "id": 5,
+                    "data": 4
+                  },
+                  "thickness": 3
+                }
+              ]
+            },
+            "extent": 5
+          },
+          "post": {
+            "kind": "solid",
+            "id": 162,
+            "data": 0
+          },
+          "windows": {
+            "form": "pane",
+            "block": 102,
+            "hostBlock": -1,
+            "hostData": 0,
+            "data": 0,
+            "sill": 2,
+            "width": 2,
+            "height": 2,
+            "spacing": 3
+          },
+          "storeys": [],
+          "porch": null,
+          "front": null,
+          "beams": {
+            "block": 162,
+            "data": 0,
+            "reach": 1,
+            "any": false
+          },
+          "doorway": {
+            "door": "air",
+            "width": 2,
+            "height": 3,
+            "head": {
+              "form": "arched",
+              "block": 128,
+              "fill": "upperSlab",
+              "fillBlock": 44,
+              "fillData": 1
+            }
+          }
+        }
+      },
+      "rock": {
+        "kind": "boulder",
+        "form": "angular",
+        "size": 3.0,
+        "mossy": false,
+        "rock": {
+          "kind": "cell",
+          "seed": 53,
+          "cellSize": 4,
+          "jitter": 2,
+          "warp": 3,
+          "palette": [
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 0
+            },
+            {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 5
+            },
+            {
+              "kind": "solid",
+              "id": 1,
+              "data": 0
+            }
+          ],
+          "rise": 0
+        }
+      }
+    },
+    "props": [
+      {
+        "id": "track-out",
+        "kind": "stroke",
+        "seed": 41,
+        "radius": 2,
+        "style": "solid",
+        "coverage": 1.0,
+        "claimsGround": true,
+        "pave": {
+          "kind": "cell",
+          "seed": 43,
+          "cellSize": 5,
+          "jitter": 2,
+          "warp": 3,
+          "palette": [
+            {
+              "kind": "solid",
+              "id": 3,
+              "data": 1
+            },
+            {
+              "kind": "solid",
+              "id": 12,
+              "data": 0
+            },
+            {
+              "kind": "solid",
+              "id": 159,
+              "data": 4
+            },
+            {
+              "kind": "solid",
+              "id": 3,
+              "data": 1
+            }
+          ],
+          "rise": 0
+        },
+        "points": [
+          [
+            -2,
+            -76
+          ],
+          [
+            -2,
+            -70
+          ],
+          [
+            -2,
+            -66
+          ],
+          [
+            -2,
+            -63
+          ]
+        ]
+      },
+      {
+        "id": "track-gate",
+        "kind": "stroke",
+        "seed": 42,
+        "radius": 2,
+        "style": "solid",
+        "coverage": 1.0,
+        "claimsGround": true,
+        "pave": {
+          "kind": "cell",
+          "seed": 43,
+          "cellSize": 5,
+          "jitter": 2,
+          "warp": 3,
+          "palette": [
+            {
+              "kind": "solid",
+              "id": 3,
+              "data": 1
+            },
+            {
+              "kind": "solid",
+              "id": 12,
+              "data": 0
+            },
+            {
+              "kind": "solid",
+              "id": 159,
+              "data": 4
+            },
+            {
+              "kind": "solid",
+              "id": 3,
+              "data": 1
+            }
+          ],
+          "rise": 0
+        },
+        "points": [
+          [
+            -2,
+            -63
+          ],
+          [
+            -1,
+            -54
+          ],
+          [
+            0,
+            -44
+          ],
+          [
+            0,
+            -33
+          ]
+        ]
+      },
+      {
+        "id": "shed-0",
+        "kind": "house",
+        "seed": 501,
+        "front": "posZ",
+        "style": "shed",
+        "wings": [
+          {
+            "corners": [
+              [
+                -50,
+                -76
+              ],
+              [
+                -39,
+                -68
+              ]
+            ],
+            "spec": {
+              "storeysHigh": 0,
+              "ridge": "alongX"
+            }
+          }
+        ]
+      },
+      {
+        "id": "shed-1",
+        "kind": "house",
+        "seed": 502,
+        "front": "posZ",
+        "style": "shed",
+        "wings": [
+          {
+            "corners": [
+              [
+                -32,
+                -76
+              ],
+              [
+                -21,
+                -68
+              ]
+            ],
+            "spec": {
+              "storeysHigh": 1,
+              "ridge": "alongX"
+            }
+          }
+        ]
+      },
+      {
+        "id": "shed-2",
+        "kind": "house",
+        "seed": 503,
+        "front": "posZ",
+        "style": "shed",
+        "wings": [
+          {
+            "corners": [
+              [
+                18,
+                -76
+              ],
+              [
+                29,
+                -68
+              ]
+            ],
+            "spec": {
+              "storeysHigh": 0,
+              "ridge": "alongX"
+            }
+          }
+        ]
+      },
+      {
+        "id": "shed-3",
+        "kind": "house",
+        "seed": 504,
+        "front": "posZ",
+        "style": "shed",
+        "wings": [
+          {
+            "corners": [
+              [
+                36,
+                -76
+              ],
+              [
+                47,
+                -68
+              ]
+            ],
+            "spec": {
+              "storeysHigh": 1,
+              "ridge": "alongX"
+            }
+          }
+        ]
+      },
+      {
+        "id": "rock-0",
+        "kind": "boulder",
+        "seed": 610,
+        "x": -22,
+        "z": -48,
+        "style": "rock"
+      },
+      {
+        "id": "rock-1",
+        "kind": "boulder",
+        "seed": 611,
+        "x": -8,
+        "z": -48,
+        "style": "rock"
+      },
+      {
+        "id": "rock-2",
+        "kind": "boulder",
+        "seed": 612,
+        "x": 10,
+        "z": -48,
+        "style": "rock"
+      },
+      {
+        "id": "rock-3",
+        "kind": "boulder",
+        "seed": 613,
+        "x": 24,
+        "z": -48,
+        "style": "rock"
+      },
+      {
+        "id": "rock-4",
+        "kind": "boulder",
+        "seed": 614,
+        "x": 0,
+        "z": -20,
+        "style": "rock"
+      },
+      {
+        "id": "rock-5",
+        "kind": "boulder",
+        "seed": 615,
+        "x": 14,
+        "z": -14,
+        "style": "rock"
+      },
+      {
+        "id": "thorn-0",
+        "kind": "tree",
+        "seed": 700,
+        "x": -51,
+        "z": -56,
+        "style": "thorn-1"
+      },
+      {
+        "id": "thorn-1",
+        "kind": "tree",
+        "seed": 701,
+        "x": 51,
+        "z": -56,
+        "style": "thorn-2"
+      },
+      {
+        "id": "thorn-2",
+        "kind": "tree",
+        "seed": 702,
+        "x": -51,
+        "z": -42,
+        "style": "thorn-2"
+      },
+      {
+        "id": "thorn-3",
+        "kind": "tree",
+        "seed": 703,
+        "x": 51,
+        "z": -42,
+        "style": "thorn-1"
+      },
+      {
+        "id": "cover",
+        "kind": "flora",
+        "seed": 800,
+        "points": [
+          [
+            -58,
+            -102
+          ],
+          [
+            58,
+            -102
+          ],
+          [
+            58,
+            14
+          ],
+          [
+            -58,
+            14
+          ]
+        ],
+        "spec": {
+          "coverage": 0.08,
+          "scale": 26,
+          "octaves": 3,
+          "fernShare": 0.04,
+          "flowerShare": 0.03,
+          "flowerScale": 14,
+          "tallShare": 0.02
+        }
+      }
+    ]
+  },
+  "controlPoints": [
+    {
+      "name": "The Sump",
+      "anchor": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "size": 8,
+      "points": 1
+    },
+    {
+      "name": "West Pan",
+      "anchor": {
+        "x": -41,
+        "y": 0,
+        "z": -19
+      },
+      "size": 8,
+      "points": 1
+    },
+    {
+      "name": "East Pan",
+      "anchor": {
+        "x": 41,
+        "y": 0,
+        "z": 19
+      },
+      "size": 8,
+      "points": 1
+    }
+  ],
+  "scoreLimit": 750
+}

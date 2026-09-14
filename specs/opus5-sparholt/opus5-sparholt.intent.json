@@ -1,0 +1,174 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 24,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 25,
+    "z": 67
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": 60,
+     "maxX": 15,
+     "maxZ": 75
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": -9,
+    "minZ": 63,
+    "maxX": 9,
+    "maxZ": 72
+   },
+   "iron": [
+    {
+     "x": -13,
+     "y": 25,
+     "z": 67
+    },
+    {
+     "x": 13,
+     "y": 25,
+     "z": 67
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 25,
+    "z": -67
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": -75,
+     "maxX": 15,
+     "maxZ": -60
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -9,
+    "minZ": -72,
+    "maxX": 9,
+    "maxZ": -63
+   },
+   "iron": [
+    {
+     "x": 13,
+     "y": 25,
+     "z": -67
+    },
+    {
+     "x": -13,
+     "y": 25,
+     "z": -67
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 56,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": null,
+ "controlPoints": [
+  {
+   "name": "The Cutting Shed",
+   "anchor": {
+    "x": 0,
+    "y": 0,
+    "z": 0
+   },
+   "size": 9,
+   "points": 2
+  },
+  {
+   "name": "West Sawpit",
+   "anchor": {
+    "x": -27,
+    "y": 0,
+    "z": 0
+   },
+   "size": 7,
+   "points": 1
+  },
+  {
+   "name": "East Sawpit",
+   "anchor": {
+    "x": 27,
+    "y": 0,
+    "z": 0
+   },
+   "size": 7,
+   "points": 1
+  }
+ ],
+ "shops": null,
+ "scoreLimit": 750,
+ "modes": null,
+ "gamemodes": [],
+ "meta": {
+  "name": "Sparholt",
+  "created": "2026-09-14",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

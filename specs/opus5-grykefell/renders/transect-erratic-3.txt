@@ -1,0 +1,61 @@
+## erratic-3 (boulder) along x
+TRANSECT 25 stations from (-20, 62) to (4, 62), every 1
+  station        ground  surface  water  top  standing            step
+  (  -20,    62)      32       32           32                      
+  (  -19,    62)      32       32           32                      
+  (  -18,    62)      32       32           32                      
+  (  -17,    62)      32       32           32                      
+  (  -16,    62)      32       32           32  stroke way-west     
+  (  -15,    62)      32       32           32  stroke way-west     
+  (  -14,    62)      28       28           28  stroke way-west     DROP -4
+  (  -13,    62)      27       27           27  stroke way-west     -1
+  (  -12,    62)      26       26           26                      -1
+  (  -11,    62)      25       25           26  boulder erratic-3   -1
+  (  -10,    62)      25       25           26  boulder erratic-3   
+  (   -9,    62)      25       25           26  boulder erratic-3   
+  (   -8,    62)      25       25           26  boulder erratic-3   
+  (   -7,    62)      25       25           26  boulder erratic-3   
+  (   -6,    62)      25       25           26  boulder erratic-3   
+  (   -5,    62)      25       25           26  boulder erratic-3   
+  (   -4,    62)      25       25           25                      
+  (   -3,    62)      25       25           25                      
+  (   -2,    62)      26       26           26                      +1
+  (   -1,    62)      26       26           26                      
+  (    0,    62)      26       26           26                      
+  (    1,    62)      26       26           26                      
+  (    2,    62)      26       26           26                      
+  (    3,    62)      26       26           26                      
+  (    4,    62)      26       26           26                      
+rises 1, falls 4, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (-14, 62) | walked end to end
+beside: flora sward at (-22, 60), stroke way-west at (-17, 60), boulder erratic-3 at (-11, 60)
+
+## erratic-3 (boulder) along z
+TRANSECT 25 stations from (-8, 50) to (-8, 74), every 1
+  station        ground  surface  water  top  standing            step
+  (   -8,    50)      22       22           22                      
+  (   -8,    51)      22       22           22                      
+  (   -8,    52)      22       22           22                      
+  (   -8,    53)      23       23           23                      +1
+  (   -8,    54)      23       23           23                      
+  (   -8,    55)      23       23           23                      
+  (   -8,    56)      24       24           24                      +1
+  (   -8,    57)      24       24           24                      
+  (   -8,    58)      24       24           24                      
+  (   -8,    59)      24       24           25  boulder erratic-3   
+  (   -8,    60)      24       24           26  boulder erratic-3   
+  (   -8,    61)      25       25           26  boulder erratic-3   +1
+  (   -8,    62)      25       25           26  boulder erratic-3   
+  (   -8,    63)      25       25           26  boulder erratic-3   
+  (   -8,    64)      25       25           26  boulder erratic-3   
+  (   -8,    65)      25       25           25  boulder erratic-3   
+  (   -8,    66)      25       25           25                      
+  (   -8,    67)      26       26           26                      +1
+  (   -8,    68)      26       26           26                      
+  (   -8,    69)      26       26           26                      
+  (   -8,    70)      26       26           26                      
+  (   -8,    71)      26       26           26                      
+  (   -8,    72)      26       26           26                      
+  (   -8,    73)      26       26           26                      
+  (   -8,    74)      27       27           27                      +1
+rises 5, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder erratic-3 at (-10, 59), stroke way-west at (-10, 75)

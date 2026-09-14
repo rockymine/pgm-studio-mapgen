@@ -1,0 +1,210 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Mirkholt",
+  "notes": "CTW. A dark wood on a shifted diagonal: one hollow way a side runs from the garth down to the strait, and each wool room stands at the end of its own bare lateral lane off the back."
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 24,
+  "surface": 14,
+  "observerY": 66
+ },
+ "pieces": [
+  {
+   "id": "toe",
+   "role": "piece",
+   "rect": [
+    -7,
+    3,
+    14,
+    2
+   ],
+   "surface": 13
+  },
+  {
+   "id": "holt",
+   "role": "piece",
+   "rect": [
+    -10,
+    5,
+    9,
+    9
+   ],
+   "surface": 14
+  },
+  {
+   "id": "brow",
+   "role": "piece",
+   "rect": [
+    -10,
+    14,
+    8,
+    1
+   ],
+   "surface": 15
+  },
+  {
+   "id": "garth",
+   "role": "piece",
+   "rect": [
+    -8,
+    15,
+    15,
+    2
+   ],
+   "surface": 16
+  },
+  {
+   "id": "west-cage",
+   "role": "wool-room",
+   "rect": [
+    -11,
+    17,
+    3,
+    3
+   ],
+   "surface": 16
+  },
+  {
+   "id": "west-lane",
+   "role": "piece",
+   "rect": [
+    -8,
+    17,
+    5,
+    3
+   ],
+   "surface": 16
+  },
+  {
+   "id": "apron",
+   "role": "piece",
+   "rect": [
+    -3,
+    17,
+    5,
+    3
+   ],
+   "surface": 16
+  },
+  {
+   "id": "east-lane",
+   "role": "piece",
+   "rect": [
+    2,
+    17,
+    5,
+    3
+   ],
+   "surface": 16
+  },
+  {
+   "id": "east-cage",
+   "role": "wool-room",
+   "rect": [
+    7,
+    17,
+    3,
+    3
+   ],
+   "surface": 16
+  },
+  {
+   "id": "lodge",
+   "role": "spawn",
+   "rect": [
+    -3,
+    20,
+    5,
+    3
+   ],
+   "surface": 16
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -7,
+    -3,
+    14,
+    6
+   ],
+   "kind": "build",
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "lodge",
+    "at": [
+     12,
+     10
+    ],
+    "facing": "front",
+    "footprint": [
+     6,
+     3,
+     13,
+     11
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "lodge",
+    "at": [
+     3,
+     8
+    ]
+   },
+   {
+    "id": "iron-2",
+    "piece": "lodge",
+    "at": [
+     22,
+     8
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "west-cage",
+    "at": [
+     5,
+     7
+    ],
+    "footprint": [
+     2,
+     2,
+     11,
+     11
+    ]
+   },
+   {
+    "id": "wool-2",
+    "piece": "east-cage",
+    "at": [
+     10,
+     7
+    ],
+    "footprint": [
+     2,
+     2,
+     11,
+     11
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

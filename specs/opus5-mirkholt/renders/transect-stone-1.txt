@@ -1,0 +1,61 @@
+## stone-1 (boulder) along x
+TRANSECT 25 stations from (6, 22) to (30, 22), every 1
+  station        ground  surface  water  top  standing            step
+  (    6,    22)      13       13           18  boulder stone-0     
+  (    7,    22)      13       13           18  boulder stone-0     
+  (    8,    22)      13       13           18  boulder stone-0     
+  (    9,    22)      13       13           18  boulder stone-0     
+  (   10,    22)      13       13           18  boulder stone-0     
+  (   11,    22)      14       14           16  boulder stone-0     +1
+  (   12,    22)      14       14           14                      
+  (   13,    22)      13       13           13                      -1
+  (   14,    22)      13       13           16  boulder stone-1     
+  (   15,    22)      14       14           17  boulder stone-1     +1
+  (   16,    22)      14       14           18  boulder stone-1     
+  (   17,    22)      14       14           19  boulder stone-1     
+  (   18,    22)      14       14           19  boulder stone-1     
+  (   19,    22)      14       14           19  boulder stone-1     
+  (   20,    22)      14       14           18  boulder stone-1     
+  (   21,    22)      14       14           17  boulder stone-1     
+  (   22,    22)      14       14           22  tree holt-0         
+  (   23,    22)      14       14           24  tree holt-0         
+  (   24,    22)      14       14           25  tree holt-0         
+  (   25,    22)      14       14           26  tree holt-0         
+  (   26,    22)      13       13           28  tree holt-0         -1
+  (   27,    22)      13       13           28  tree holt-0         
+  (   28,    22)      13       13           27  tree holt-0         
+  (   29,    22)      13       13           28  tree holt-0         
+  (   30,    22)      13       13           27  tree holt-0         
+rises 2, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder stone-0 at (4, 20), boulder stone-1 at (14, 22), tree holt-0 at (22, 20)
+
+## stone-1 (boulder) along z
+TRANSECT 25 stations from (18, 10) to (18, 34), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,    10)                                                    void
+  (   18,    11)                                                    void
+  (   18,    12)                                                    void
+  (   18,    13)                                                    void
+  (   18,    14)                                                    void
+  (   18,    15)      13       13           13                      
+  (   18,    16)      13       13           13                      
+  (   18,    17)      14       14           14                      +1
+  (   18,    18)      14       14           14                      
+  (   18,    19)      13       13           18  boulder stone-1     -1
+  (   18,    20)      13       13           18  boulder stone-1     
+  (   18,    21)      13       13           19  boulder stone-1     
+  (   18,    22)      14       14           19  boulder stone-1     +1
+  (   18,    23)      14       14           19  boulder stone-1     
+  (   18,    24)      14       14           18  boulder stone-1     
+  (   18,    25)                            17  boulder stone-1     void
+  (   18,    26)                                                    void
+  (   18,    27)                                                    void
+  (   18,    28)                                                    void
+  (   18,    29)                                                    void
+  (   18,    30)                                                    void
+  (   18,    31)                                                    void
+  (   18,    32)                                                    void
+  (   18,    33)                                                    void
+  (   18,    34)                                                    void
+rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder stone-1 at (16, 19)

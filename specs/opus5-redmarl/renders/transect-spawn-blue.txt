@@ -1,0 +1,89 @@
+## spawn-blue (spawn) along x
+TRANSECT 45 stations from (-4, 96) to (40, 96), every 1
+  station        ground  surface  water  top  standing            step
+  (   -4,    96)      26       26           26                      
+  (   -3,    96)      26       26           26                      
+  (   -2,    96)      26       26           26                      
+  (   -1,    96)      26       26           26                      
+  (    0,    96)      26       26           26                      
+  (    1,    96)      26       26           26                      
+  (    2,    96)      26       26           26                      
+  (    3,    96)      26       26           26                      
+  (    4,    96)      26       26           26                      
+  (    5,    96)      26       26           29  ironcube spawn-1:1#1  
+  (    6,    96)      26       26           29  ironcube spawn-1:1#1  
+  (    7,    96)      26       26           29  ironcube spawn-1:1#1  
+  (    8,    96)      27       27           27                      +1
+  (    9,    96)      27       27           35                      
+  (   10,    96)      27       27           35  spawn spawn-1#1     
+  (   11,    96)      27       27           35  spawn spawn-1#1     
+  (   12,    96)      27       27           35  spawn spawn-1#1     
+  (   13,    96)      27       27           35  spawn spawn-1#1     
+  (   14,    96)      27       27           35  spawn spawn-1#1     
+  (   15,    96)      27       27           35  spawn spawn-1#1     
+  (   16,    96)      27       27           35  spawn spawn-1#1     
+  (   17,    96)      27       27           35  spawn spawn-1#1     
+  (   18,    96)      27       27           35  spawn spawn-1#1     
+  (   19,    96)      27       27           35  spawn spawn-1#1     
+  (   20,    96)      27       27           35  spawn spawn-1#1     
+  (   21,    96)      27       27           35  spawn spawn-1#1     
+  (   22,    96)      27       27           35  spawn spawn-1#1     
+  (   23,    96)      27       27           35  spawn spawn-1#1     
+  (   24,    96)      27       27           35  spawn spawn-1#1     
+  (   25,    96)      27       27           35  spawn spawn-1#1     
+  (   26,    96)      27       27           35                      
+  (   27,    96)      27       27           27                      
+  (   28,    96)      27       27           30  ironcube spawn-1:0#1  
+  (   29,    96)      26       26           30  ironcube spawn-1:0#1  -1
+  (   30,    96)      26       26           30  ironcube spawn-1:0#1  
+  (   31,    96)      26       26           26                      
+  (   32,    96)      26       26           26                      
+  (   33,    96)      26       26           26                      
+  (   34,    96)      26       26           26                      
+  (   35,    96)      26       26           26                      
+  (   36,    96)      26       26           26                      
+  (   37,    96)      26       26           26                      
+  (   38,    96)      26       26           26                      
+  (   39,    96)      26       26           26  stroke track-dye-w#1  
+  (   40,    96)      26       26           26  stroke track-dye-w#1  
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track-dye-e#1 at (-6, 94), ironcube spawn-1:1#1 at (5, 95), spawn spawn-1#1 at (10, 94), ironcube spawn-1:0#1 at (28, 95), stroke track-dye-w#1 at (38, 94)
+
+## spawn-blue (spawn) along z
+TRANSECT 33 stations from (18, 80) to (18, 112), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,    80)      26       26           26  stroke track-out#1  
+  (   18,    81)      26       26           26  stroke track-out#1  
+  (   18,    82)      26       26           26  stroke track-out#1  
+  (   18,    83)      26       26           26  stroke track-out#1  
+  (   18,    84)      26       26           26  stroke track-out#1  
+  (   18,    85)      26       26           26  stroke track-out#1  
+  (   18,    86)      26       26           26  stroke track-out#1  
+  (   18,    87)      27       27           27                      +1
+  (   18,    88)      27       27           27                      
+  (   18,    89)      27       27           27                      
+  (   18,    90)      27       27           33                      
+  (   18,    91)      27       27           33  spawn spawn-1#1     
+  (   18,    92)      27       27           34  spawn spawn-1#1     
+  (   18,    93)      27       27           34  spawn spawn-1#1     
+  (   18,    94)      27       27           35  spawn spawn-1#1     
+  (   18,    95)      27       27           35  spawn spawn-1#1     
+  (   18,    96)      27       27           35  spawn spawn-1#1     
+  (   18,    97)      27       27           35  spawn spawn-1#1     
+  (   18,    98)      27       27           34  spawn spawn-1#1     
+  (   18,    99)      27       27           34  spawn spawn-1#1     
+  (   18,   100)      27       27           33  spawn spawn-1#1     
+  (   18,   101)      27       27           33                      
+  (   18,   102)      27       27           27                      
+  (   18,   103)      27       27           27                      
+  (   18,   104)      27       27           27                      
+  (   18,   105)      26       26           26                      -1
+  (   18,   106)                                                    void
+  (   18,   107)                                                    void
+  (   18,   108)                                                    void
+  (   18,   109)                                                    void
+  (   18,   110)                                                    void
+  (   18,   111)                                                    void
+  (   18,   112)                                                    void
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track-out#1 at (19, 78), spawn spawn-1#1 at (16, 91)

@@ -1,0 +1,120 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Slakemoss",
+  "notes": "DTC. A ruined hall taken back by moss and water: a core a team on a dry plinth in the chapter house, the nave between them under water."
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 20,
+  "surface": 14,
+  "observerY": 62
+ },
+ "pieces": [
+  {
+   "id": "nave",
+   "role": "piece",
+   "rect": [
+    -9,
+    -7,
+    18,
+    14
+   ],
+   "surface": 13
+  },
+  {
+   "id": "fen",
+   "role": "piece",
+   "rect": [
+    -9,
+    7,
+    18,
+    5
+   ],
+   "surface": 14
+  },
+  {
+   "id": "court",
+   "role": "piece",
+   "rect": [
+    -7,
+    12,
+    14,
+    4
+   ],
+   "surface": 15
+  },
+  {
+   "id": "frater",
+   "role": "spawn",
+   "rect": [
+    -3,
+    16,
+    6,
+    4
+   ],
+   "surface": 16
+  }
+ ],
+ "zones": [
+  {
+   "id": "nave-zone",
+   "rect": [
+    -4,
+    -7,
+    8,
+    14
+   ],
+   "kind": "build",
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "frater",
+    "at": [
+     15,
+     12
+    ],
+    "facing": "front",
+    "footprint": [
+     9,
+     6,
+     12,
+     12
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "frater",
+    "at": [
+     18.5,
+     2.5
+    ]
+   }
+  ],
+  "wools": [],
+  "destroyables": [],
+  "cores": [
+   {
+    "id": "core-1",
+    "piece": "",
+    "at": [
+     -14,
+     56
+    ],
+    "lava": 3,
+    "lavaHeight": 3,
+    "float": 6,
+    "leak": 5
+   }
+  ]
+ },
+ "walls": [],
+ "boxes": []
+}

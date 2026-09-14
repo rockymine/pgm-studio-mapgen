@@ -1,0 +1,61 @@
+## erratic-5 (boulder) along x
+TRANSECT 25 stations from (-42, 52) to (-18, 52), every 1
+  station        ground  surface  water  top  standing            step
+  (  -42,    52)                                                    void
+  (  -41,    52)                                                    void
+  (  -40,    52)                                                    void
+  (  -39,    52)      25       25           25                      
+  (  -38,    52)      25       25           25                      
+  (  -37,    52)      26       26           26                      +1
+  (  -36,    52)      27       27           27                      +1
+  (  -35,    52)      27       27           27                      
+  (  -34,    52)      27       27           27                      
+  (  -33,    52)      28       28           28  boulder erratic-5   +1
+  (  -32,    52)      29       29           29  boulder erratic-5   +1
+  (  -31,    52)      27       27           28  boulder erratic-5   -2
+  (  -30,    52)      27       27           28  boulder erratic-5   
+  (  -29,    52)      27       27           28  boulder erratic-5   
+  (  -28,    52)      27       27           28  boulder erratic-5   
+  (  -27,    52)      27       27           28  boulder erratic-5   
+  (  -26,    52)      27       27           27                      
+  (  -25,    52)      27       27           33  tree birk-4         
+  (  -24,    52)      27       27           35  tree birk-4         
+  (  -23,    52)      27       27           34  tree birk-4         
+  (  -22,    52)      32       32           35  tree birk-4         BARRIER +5
+  (  -21,    52)      32       32           34  tree birk-4         
+  (  -20,    52)      27       27           27                      DROP -5
+  (  -19,    52)      26       26           26                      -1
+  (  -18,    52)      26       26           26  stroke way-west     
+rises 5, falls 3, worst step 5: 1 barrier, 0 scramble, 1 drop — BARRIER +5 at (-22, 52); DROP -5 at (-20, 52) | walked end to end
+beside: boulder erratic-5 at (-33, 50), tree birk-4 at (-27, 50), flora sward at (-27, 54), stroke way-west at (-18, 50)
+
+## erratic-5 (boulder) along z
+TRANSECT 25 stations from (-30, 40) to (-30, 64), every 1
+  station        ground  surface  water  top  standing            step
+  (  -30,    40)      23       23           36  tree birk-5         
+  (  -30,    41)      23       23           36  tree birk-5         
+  (  -30,    42)      23       23           35  tree birk-5         
+  (  -30,    43)      23       23           23                      
+  (  -30,    44)      23       23           23                      
+  (  -30,    45)      23       23           23                      
+  (  -30,    46)      23       23           24  flora sward         
+  (  -30,    47)      23       23           24  flora sward         
+  (  -30,    48)      23       23           24  flora sward         
+  (  -30,    49)      27       27           28  flora sward         BARRIER +4
+  (  -30,    50)      27       27           28  boulder erratic-5   
+  (  -30,    51)      27       27           28  boulder erratic-5   
+  (  -30,    52)      27       27           28  boulder erratic-5   
+  (  -30,    53)      27       27           28  boulder erratic-5   
+  (  -30,    54)      27       27           28  boulder erratic-5   
+  (  -30,    55)      27       27           34  tree birk-1         
+  (  -30,    56)      27       27           37  tree birk-1         
+  (  -30,    57)      27       27           39  tree birk-1         
+  (  -30,    58)      27       27           39  tree birk-1         
+  (  -30,    59)      27       27           36  tree birk-1         
+  (  -30,    60)      27       27           37  tree birk-1         
+  (  -30,    61)      27       27           38  tree birk-1         
+  (  -30,    62)      27       27           35  tree birk-3         
+  (  -30,    63)      27       27           35  tree birk-3         
+  (  -30,    64)      27       27           36  tree birk-3         
+rises 1, falls 0, worst step 4: 1 barrier, 0 scramble, 0 drop — BARRIER +4 at (-30, 49) | walked end to end
+beside: tree birk-5 at (-32, 38), tree birk-0 at (-32, 42), flora sward at (-31, 46), tree birk-4 at (-28, 46), boulder erratic-5 at (-32, 49), tree birk-1 at (-32, 55), tree birk-3 at (-30, 62)

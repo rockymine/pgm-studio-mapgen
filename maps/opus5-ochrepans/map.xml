@@ -1,0 +1,165 @@
+<map proto="1.5.0">
+    <name>Ochrepans</name>
+    <version>1.0.0</version>
+    <gamemode>koth</gamemode>
+    <objective>Hold the hills!</objective>
+    <created>2026-09-14</created>
+    <phase>development</phase>
+    <include id="gapple-kill-reward"/>
+    <authors>
+        <author>Opus 5</author>
+    </authors>
+    <teams>
+        <team id="red-team" color="red" max="16">Red</team>
+        <team id="blue-team" color="blue" max="16">Blue</team>
+    </teams>
+    <kits>
+        <kit id="spawn-kit">
+            <clear/>
+            <item slot="0" material="iron sword" unbreakable="true"/>
+            <item slot="1" material="bow" unbreakable="true">
+                <enchantment level="1">infinity</enchantment>
+            </item>
+            <item slot="2" material="iron pickaxe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="3" material="iron axe" unbreakable="true">
+                <enchantment level="1">efficiency</enchantment>
+            </item>
+            <item slot="4" material="wood" amount="64"/>
+            <item slot="5" material="stained clay" amount="32" team-color="true"/>
+            <item slot="7" material="water bucket"/>
+            <item slot="8" material="golden apple"/>
+            <item slot="28" material="arrow"/>
+            <item slot="29" material="shears" unbreakable="true"/>
+            <item slot="30" material="iron spade" unbreakable="true"/>
+            <helmet material="leather helmet" unbreakable="true" team-color="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </helmet>
+            <chestplate material="leather chestplate" unbreakable="true" team-color="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </chestplate>
+            <leggings material="chainmail leggings" unbreakable="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </leggings>
+            <boots material="leather boots" unbreakable="true" team-color="true">
+                <enchantment level="1">projectile_protection</enchantment>
+            </boots>
+            <effect duration="oo" amplifier="100">damage resistance</effect>
+        </kit>
+        <kit id="reset-resistance-kit" force="true">
+            <effect duration="0" amplifier="0">damage resistance</effect>
+        </kit>
+    </kits>
+    <spawns>
+        <default region="observer-spawn"/>
+        <spawn team="red-team" kit="spawn-kit" region="red-spawn-point"/>
+        <spawn team="blue-team" kit="spawn-kit" yaw="180" region="blue-spawn-point"/>
+    </spawns>
+    <king>
+        <hills>
+            <hill id="the-sump" name="The Sump" capture-time="5s" incremental="true" time-multiplier="0" neutral-state="true" points="1" show-progress="true" required="false" capture-region="the-sump-capture" progress-display-region="the-sump-pad" owner-display-region="the-sump-marker"/>
+            <hill id="west-pan" name="West Pan" capture-time="5s" incremental="true" time-multiplier="0" neutral-state="true" points="1" show-progress="true" required="false" capture-region="west-pan-capture" progress-display-region="west-pan-pad" owner-display-region="west-pan-marker"/>
+            <hill id="east-pan" name="East Pan" capture-time="5s" incremental="true" time-multiplier="0" neutral-state="true" points="1" show-progress="true" required="false" capture-region="east-pan-capture" progress-display-region="east-pan-pad" owner-display-region="east-pan-marker"/>
+        </hills>
+    </king>
+    <score>
+        <limit>750</limit>
+    </score>
+    <filters>
+        <team id="only-blue">blue-team</team>
+        <team id="only-red">red-team</team>
+        <material id="only-air">air</material>
+        <material id="only-iron">iron block</material>
+        <all id="only-iron-cause-world">
+            <material>iron block</material>
+            <cause>world</cause>
+        </all>
+    </filters>
+    <regions>
+        <point id="blue-spawn-point">2,21,86</point>
+        <point id="red-spawn-point">-2,21,-86</point>
+        <point id="observer-spawn">0,63,0</point>
+        <rectangle id="blue-spawn" min="-12,76" max="16,96"/>
+        <rectangle id="red-spawn" min="-16,-96" max="12,-76"/>
+        <cuboid id="the-sump-capture" min="-3,18,-3" max="5,21,5"/>
+        <cuboid id="the-sump-pad" min="-3,18,-3" max="5,19,5"/>
+        <cuboid id="the-sump-marker" min="-1,55,-1" max="2,58,2"/>
+        <cuboid id="west-pan-capture" min="-44,25,-22" max="-36,28,-14"/>
+        <cuboid id="west-pan-pad" min="-44,25,-22" max="-36,26,-14"/>
+        <cuboid id="west-pan-marker" min="-42,55,-20" max="-39,58,-17"/>
+        <cuboid id="east-pan-capture" min="38,25,16" max="46,28,24"/>
+        <cuboid id="east-pan-pad" min="38,25,16" max="46,26,24"/>
+        <cuboid id="east-pan-marker" min="40,55,18" max="43,58,21"/>
+        <union id="spawns">
+            <region id="red-spawn"/>
+            <region id="blue-spawn"/>
+        </union>
+        <union id="iron-cubes">
+            <rectangle id="iron-cube-0" min="-15,-88" max="-13,-86"/>
+            <rectangle id="iron-cube-1" min="8,-88" max="10,-86"/>
+            <rectangle id="iron-cube-2" min="12,85" max="14,87"/>
+            <rectangle id="iron-cube-3" min="-11,85" max="-9,87"/>
+        </union>
+        <negative id="not-spawns">
+            <region id="spawns"/>
+        </negative>
+        <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
+        <apply kit="reset-resistance-kit" region="not-spawns"/>
+        <apply block-place="only-iron-cause-world" block-break="only-iron" region="spawns" message="You may not edit spawn!"/>
+    </regions>
+    <renewables>
+        <renewable region="iron-cubes" renew-filter="only-iron" replace-filter="only-air" avoid-players="2"/>
+    </renewables>
+    <block-drops>
+        <rule>
+            <filter>
+                <any>
+                    <material>wood</material>
+                    <material>stained clay</material>
+                </any>
+            </filter>
+            <drops>
+                <item material="wood" chance="0"/>
+            </drops>
+        </rule>
+    </block-drops>
+    <itemkeep>
+        <item>iron sword</item>
+        <item>bow</item>
+        <item>iron pickaxe</item>
+        <item>iron axe</item>
+        <item>water bucket</item>
+        <item>golden apple</item>
+        <item>arrow</item>
+        <item>shears</item>
+        <item>iron spade</item>
+        <item>wood</item>
+        <item>stained clay</item>
+    </itemkeep>
+    <itemremove>
+        <item>leather helmet</item>
+        <item>leather chestplate</item>
+        <item>chainmail leggings</item>
+        <item>leather boots</item>
+    </itemremove>
+    <toolrepair>
+        <tool>iron sword</tool>
+        <tool>bow</tool>
+        <tool>iron pickaxe</tool>
+        <tool>iron axe</tool>
+        <tool>shears</tool>
+        <tool>iron spade</tool>
+    </toolrepair>
+    <kill-rewards>
+        <kill-reward>
+            <item material="wood" amount="16"/>
+            <item material="stained clay" amount="8" team-color="true"/>
+        </kill-reward>
+    </kill-rewards>
+    <hunger>
+        <depletion>off</depletion>
+    </hunger>
+    <maxbuildheight>50</maxbuildheight>
+</map>

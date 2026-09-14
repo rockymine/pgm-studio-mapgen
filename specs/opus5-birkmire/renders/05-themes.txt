@@ -1,0 +1,11 @@
+THEMES  4 themes over 12930 ground cells, 12 distinct surface blocks
+  mire  7882 cells (61.0%)  3:1 Coarse Dirt, 80:0 Snow Block, 2:0 Grass Block, 3:2 Podzol, 4:0 Cobblestone, 13:0 Gravel, 1:5 Andesite, 1:0 Stone, 35:14 Red Wool, 35:11 Blue Wool
+  ice  4416 cells (34.2%)  174:0 Packed Ice, 79:0 Ice, 1:5 Andesite, 4:0 Cobblestone, 13:0 Gravel, 1:0 Stone
+  holm  392 cells (3.0%)  80:0 Snow Block, 13:0 Gravel
+  garth  240 cells (1.9%)  4:0 Cobblestone, 13:0 Gravel, 3:1 Coarse Dirt
+borders:
+  ice | mire  690 cells
+  holm | ice  128 cells
+  garth | mire  74 cells
+  garth | ice  14 cells
+  holm | mire  8 cells

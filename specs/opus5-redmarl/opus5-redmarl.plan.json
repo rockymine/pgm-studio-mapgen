@@ -1,0 +1,195 @@
+{
+  "plan": 2,
+  "meta": {
+    "name": "Redmarl"
+  },
+  "globals": {
+    "cell": 4,
+    "symmetry": "rot_180",
+    "maxPlayers": 20,
+    "surface": 23,
+    "observerY": 62
+  },
+  "pieces": [
+    {
+      "id": "yard",
+      "role": "spawn",
+      "rect": [
+        -8,
+        -26,
+        7,
+        4
+      ],
+      "surface": 26
+    },
+    {
+      "id": "lane-w",
+      "role": "piece",
+      "rect": [
+        -13,
+        -28,
+        5,
+        6
+      ],
+      "surface": 26
+    },
+    {
+      "id": "lane-e",
+      "role": "piece",
+      "rect": [
+        -1,
+        -28,
+        5,
+        6
+      ],
+      "surface": 26
+    },
+    {
+      "id": "dye-w",
+      "role": "wool-room",
+      "rect": [
+        -13,
+        -32,
+        5,
+        4
+      ],
+      "surface": 28
+    },
+    {
+      "id": "dye-e",
+      "role": "wool-room",
+      "rect": [
+        -1,
+        -32,
+        5,
+        4
+      ],
+      "surface": 28
+    },
+    {
+      "id": "bank",
+      "role": "piece",
+      "rect": [
+        -13,
+        -22,
+        17,
+        6
+      ],
+      "surface": 26
+    },
+    {
+      "id": "apron",
+      "role": "piece",
+      "rect": [
+        -11,
+        -16,
+        10,
+        5
+      ],
+      "surface": 23
+    },
+    {
+      "id": "brink",
+      "role": "piece",
+      "rect": [
+        -11,
+        -11,
+        12,
+        5
+      ],
+      "surface": 21
+    },
+    {
+      "id": "strand",
+      "role": "piece",
+      "rect": [
+        -6,
+        -6,
+        12,
+        12
+      ],
+      "surface": 17
+    }
+  ],
+  "zones": [
+    {
+      "id": "gully",
+      "rect": [
+        -11,
+        -7,
+        22,
+        14
+      ],
+      "kind": "build"
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "yard",
+        "at": [
+          14,
+          5
+        ],
+        "facing": "back",
+        "footprint": [
+          6,
+          3,
+          16,
+          10
+        ]
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "yard",
+        "at": [
+          3,
+          8
+        ]
+      },
+      {
+        "id": "iron-2",
+        "piece": "yard",
+        "at": [
+          26,
+          8
+        ]
+      }
+    ],
+    "wools": [
+      {
+        "id": "wool-1",
+        "piece": "dye-w",
+        "at": [
+          6,
+          4
+        ],
+        "footprint": [
+          2,
+          2,
+          16,
+          12
+        ]
+      },
+      {
+        "id": "wool-2",
+        "piece": "dye-e",
+        "at": [
+          14,
+          4
+        ],
+        "footprint": [
+          2,
+          2,
+          16,
+          12
+        ]
+      }
+    ],
+    "destroyables": [],
+    "cores": []
+  }
+}

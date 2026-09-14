@@ -1,0 +1,188 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 20,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 14,
+    "z": 92
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": 80,
+     "maxX": 15,
+     "maxZ": 100
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z",
+    "-x"
+   ],
+   "footprint": {
+    "minX": -6,
+    "minZ": 86,
+    "maxX": 6,
+    "maxZ": 98
+   },
+   "iron": [
+    {
+     "x": 3.5,
+     "y": 14,
+     "z": 82.5
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 14,
+    "z": -92
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": -100,
+     "maxX": 15,
+     "maxZ": -80
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z",
+    "+x"
+   ],
+   "footprint": {
+    "minX": -6,
+    "minZ": -98,
+    "maxX": 6,
+    "maxZ": -86
+   },
+   "iron": [
+    {
+     "x": -3.5,
+     "y": 14,
+     "z": -82.5
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 56,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -40,
+    "minZ": -10,
+    "maxX": 40,
+    "maxZ": 10
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": {
+   "exclusions": []
+  }
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "mon-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Peat Store",
+   "style": "cube-3",
+   "materials": "emerald block",
+   "repairable": false,
+   "anchor": {
+    "x": -12,
+    "y": 13,
+    "z": 52
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "mon-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Peat Store",
+   "style": "cube-3",
+   "materials": "emerald block",
+   "repairable": false,
+   "anchor": {
+    "x": 11,
+    "y": 13,
+    "z": -53
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Peatgarth",
+  "created": "2026-09-14",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": null
+}

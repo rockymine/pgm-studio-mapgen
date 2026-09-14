@@ -1,0 +1,202 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 21,
+    "z": -92
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": -100,
+     "maxX": 8,
+     "maxZ": -84
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -6,
+    "minZ": -98,
+    "maxX": 6,
+    "maxZ": -86
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 21,
+    "z": 92
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": 84,
+     "maxX": 8,
+     "maxZ": 100
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": -6,
+    "minZ": 86,
+    "maxX": 6,
+    "maxZ": 98
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 52,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -44,
+    "minZ": -28,
+    "maxX": -28,
+    "maxZ": 28
+   },
+   {
+    "minX": 28,
+    "minZ": -28,
+    "maxX": 44,
+    "maxZ": 28
+   },
+   {
+    "minX": -28,
+    "minZ": -36,
+    "maxX": 24,
+    "maxZ": 36
+   },
+   {
+    "minX": -24,
+    "minZ": -36,
+    "maxX": 28,
+    "maxZ": 36
+   },
+   {
+    "minX": 24,
+    "minZ": -28,
+    "maxX": 44,
+    "maxZ": 28
+   },
+   {
+    "minX": -44,
+    "minZ": -28,
+    "maxX": -24,
+    "maxZ": 28
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Wath Stone",
+   "style": "cube-3",
+   "materials": "emerald block",
+   "repairable": false,
+   "anchor": {
+    "x": -14,
+    "y": 23,
+    "z": -51
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Wath Stone",
+   "style": "cube-3",
+   "materials": "emerald block",
+   "repairable": false,
+   "anchor": {
+    "x": 13,
+    "y": 23,
+    "z": 50
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Dustwath",
+  "created": "2026-09-14",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}

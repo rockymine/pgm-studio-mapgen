@@ -1,0 +1,61 @@
+## sarsen-5 (boulder) along x
+TRANSECT 25 stations from (0, 54) to (24, 54), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    54)      29       29           29  stroke way-spine    
+  (    1,    54)      29       29           29  stroke way-spine    
+  (    2,    54)      29       29           29  stroke way-spine    
+  (    3,    54)      29       29           29                      
+  (    4,    54)      29       29           40  tree birk-2         
+  (    5,    54)      29       29           41  tree birk-2         
+  (    6,    54)      29       29           41  tree birk-2         
+  (    7,    54)      29       29           43  tree birk-2         
+  (    8,    54)      29       29           42  tree birk-2         
+  (    9,    54)      29       29           43  tree birk-2         
+  (   10,    54)      29       29           34  tree birk-2         
+  (   11,    54)      24       24           40  tree birk-2         DROP -5
+  (   12,    54)      24       24           37  tree birk-2         
+  (   13,    54)      24       24           39  tree birk-2         
+  (   14,    54)      25       25           34  tree birk-2         +1
+  (   15,    54)      25       25           26  boulder sarsen-5    
+  (   16,    54)      30       30           30                      BARRIER +5
+  (   17,    54)      30       30           34  tree thorn-5        
+  (   18,    54)      30       30           30                      
+  (   19,    54)      30       30           30                      
+  (   20,    54)      30       30           30                      
+  (   21,    54)      30       30           30                      
+  (   22,    54)      30       30           30  stroke way-east     
+  (   23,    54)      30       30           30  stroke way-east     
+  (   24,    54)      30       30           32  house watch         
+rises 2, falls 1, worst step 5: 1 barrier, 0 scramble, 1 drop — DROP -5 at (11, 54); BARRIER +5 at (16, 54) | walked end to end
+beside: stroke way-spine at (-2, 52), tree birk-2 at (4, 52), boulder sarsen-5 at (11, 52), tree thorn-5 at (15, 56), stroke way-east at (22, 52), house watch at (24, 53)
+
+## sarsen-5 (boulder) along z
+TRANSECT 25 stations from (12, 42) to (12, 66), every 1
+  station        ground  surface  water  top  standing            step
+  (   12,    42)      26       26           26                      
+  (   12,    43)      26       26           26                      
+  (   12,    44)      28       28           28                      scramble +2
+  (   12,    45)      28       28           28                      
+  (   12,    46)      28       28           28                      
+  (   12,    47)      28       28           28                      
+  (   12,    48)      28       28           28                      
+  (   12,    49)      24       24           24                      DROP -4
+  (   12,    50)      24       24           24                      
+  (   12,    51)      24       24           26  boulder sarsen-5    
+  (   12,    52)      24       24           26  boulder sarsen-5    
+  (   12,    53)      24       24           39  tree birk-2         
+  (   12,    54)      24       24           37  tree birk-2         
+  (   12,    55)      24       24           40  tree birk-2         
+  (   12,    56)      24       24           41  tree birk-2         
+  (   12,    57)      25       25           40  tree birk-2         +1
+  (   12,    58)      25       25           40  tree birk-2         
+  (   12,    59)      25       25           36  tree birk-1         
+  (   12,    60)      25       25           39  tree birk-1         
+  (   12,    61)      29       29           41  tree birk-1         BARRIER +4
+  (   12,    62)      29       29           41  tree birk-1         
+  (   12,    63)      29       29           38  tree birk-1         
+  (   12,    64)      29       29           39  tree birk-1         
+  (   12,    65)      29       29           40  tree birk-1         
+  (   12,    66)      29       29           37  tree birk-1         
+rises 3, falls 1, worst step 4: 1 barrier, 1 scramble, 1 drop — scramble +2 at (12, 44); DROP -4 at (12, 49); BARRIER +4 at (12, 61) | walked end to end
+beside: tree thorn-3 at (14, 43), tree birk-2 at (10, 51), boulder sarsen-5 at (11, 51), tree birk-1 at (11, 59)

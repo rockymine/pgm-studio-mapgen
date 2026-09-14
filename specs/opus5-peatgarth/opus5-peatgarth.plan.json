@@ -1,0 +1,120 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Peatgarth",
+  "notes": "DTM. A worked peat moss: one monument a team on a stripped bench, the hags open to the sky between the sides."
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 20,
+  "surface": 13,
+  "observerY": 56
+ },
+ "pieces": [
+  {
+   "id": "fore",
+   "role": "piece",
+   "rect": [
+    -8,
+    2,
+    16,
+    7
+   ],
+   "surface": 13
+  },
+  {
+   "id": "garth",
+   "role": "piece",
+   "rect": [
+    -6,
+    9,
+    12,
+    7
+   ],
+   "surface": 13
+  },
+  {
+   "id": "stage",
+   "role": "piece",
+   "rect": [
+    -6,
+    16,
+    3,
+    4
+   ],
+   "surface": 14
+  },
+  {
+   "id": "staith",
+   "role": "spawn",
+   "rect": [
+    -3,
+    16,
+    6,
+    4
+   ],
+   "surface": 14
+  }
+ ],
+ "zones": [
+  {
+   "id": "pass",
+   "rect": [
+    -8,
+    -2,
+    16,
+    4
+   ],
+   "kind": "build",
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "staith",
+    "at": [
+     15,
+     12
+    ],
+    "facing": "front",
+    "footprint": [
+     9,
+     6,
+     12,
+     12
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "staith",
+    "at": [
+     18.5,
+     2.5
+    ]
+   }
+  ],
+  "wools": [],
+  "destroyables": [
+   {
+    "id": "mon-1",
+    "piece": "",
+    "at": [
+     -12,
+     52
+    ],
+    "style": "cube-3",
+    "float": 4,
+    "name": "Peat Store",
+    "materials": "emerald block"
+   }
+  ],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

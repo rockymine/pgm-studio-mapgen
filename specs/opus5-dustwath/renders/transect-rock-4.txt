@@ -1,0 +1,61 @@
+## rock-4 (boulder) along x
+TRANSECT 25 stations from (-39, -90) to (-15, -90), every 1
+  station        ground  surface  water  top  standing            step
+  (  -39,   -90)                                                    void
+  (  -38,   -90)                                                    void
+  (  -37,   -90)                                                    void
+  (  -36,   -90)                                                    void
+  (  -35,   -90)                                                    void
+  (  -34,   -90)                                                    void
+  (  -33,   -90)      23       23           23                      
+  (  -32,   -90)      23       23           23                      
+  (  -31,   -90)      24       24           24                      +1
+  (  -30,   -90)      24       24           24                      
+  (  -29,   -90)      24       24           32  tree thorn-0        
+  (  -28,   -90)      25       25           32  tree thorn-0        +1
+  (  -27,   -90)      26       26           32  tree thorn-0        +1
+  (  -26,   -90)      26       26           31  tree thorn-0        
+  (  -25,   -90)      26       26           33  tree thorn-0        
+  (  -24,   -90)      25       25           33  tree thorn-0        -1
+  (  -23,   -90)      25       25           33  tree thorn-0        
+  (  -22,   -90)      24       24           24                      -1
+  (  -21,   -90)      24       24           24                      
+  (  -20,   -90)      24       24           27  tree thorn-2        
+  (  -19,   -90)      24       24           24                      
+  (  -18,   -90)      23       23           23                      -1
+  (  -17,   -90)      23       23           23                      
+  (  -16,   -90)      23       23           23                      
+  (  -15,   -90)      22       22           22                      -1
+rises 3, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree thorn-0 at (-32, -92), boulder rock-4 at (-29, -91), tree thorn-2 at (-24, -88)
+
+## rock-4 (boulder) along z
+TRANSECT 25 stations from (-27, -102) to (-27, -78), every 1
+  station        ground  surface  water  top  standing            step
+  (  -27,  -102)      24       24           24                      
+  (  -27,  -101)      24       24           24                      
+  (  -27,  -100)      25       25           25                      +1
+  (  -27,   -99)      25       25           31  tree thorn-0        
+  (  -27,   -98)      26       26           31  tree thorn-0        +1
+  (  -27,   -97)      26       26           26                      
+  (  -27,   -96)      26       26           33  tree thorn-0        
+  (  -27,   -95)      26       26           32  tree thorn-0        
+  (  -27,   -94)      26       26           31  tree thorn-0        
+  (  -27,   -93)      26       26           33  tree thorn-0        
+  (  -27,   -92)      26       26           30  tree thorn-0        
+  (  -27,   -91)      26       26           31  tree thorn-0        
+  (  -27,   -90)      26       26           32  tree thorn-0        
+  (  -27,   -89)      25       25           28  boulder rock-4      -1
+  (  -27,   -88)      24       24           32  tree thorn-0        -1
+  (  -27,   -87)      24       24           24                      
+  (  -27,   -86)      24       24           27  tree thorn-2        
+  (  -27,   -85)      23       23           28  tree thorn-2        -1
+  (  -27,   -84)      23       23           23                      
+  (  -27,   -83)      23       23           28  tree thorn-2        
+  (  -27,   -82)      22       22           29  tree thorn-2        -1
+  (  -27,   -81)      21       21           27  tree thorn-2        -1
+  (  -27,   -80)      21       21           28  tree thorn-2        
+  (  -27,   -79)      21       21           21                      
+  (  -27,   -78)      20       20           20                      -1
+rises 2, falls 6, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree thorn-10 at (-25, -103), tree thorn-0 at (-25, -101), boulder rock-4 at (-29, -91), tree thorn-2 at (-27, -86), house shelter-w at (-29, -76)

@@ -1,0 +1,59 @@
+## erratic-2 (boulder) along x
+TRANSECT 23 stations from (-42, 20) to (-20, 20), every 1
+  station        ground  surface  water  top  standing            step
+  (  -42,    20)                                                    void
+  (  -41,    20)                                                    void
+  (  -40,    20)      20       20           20                      
+  (  -39,    20)      20       20           20                      
+  (  -38,    20)      20       20           21  boulder erratic-2   
+  (  -37,    20)      20       20           22  boulder erratic-2   
+  (  -36,    20)      20       20           22  boulder erratic-2   
+  (  -35,    20)      20       20           22  boulder erratic-2   
+  (  -34,    20)      20       20           23  boulder erratic-2   
+  (  -33,    20)      20       20           23  boulder erratic-2   
+  (  -32,    20)      20       20           23  boulder erratic-2   
+  (  -31,    20)      20       20           23  boulder erratic-2   
+  (  -30,    20)      20       20           23  boulder erratic-2   
+  (  -29,    20)      20       20           22  boulder erratic-2   
+  (  -28,    20)      20       20           22  boulder erratic-2   
+  (  -27,    20)      20       20           22  boulder erratic-2   
+  (  -26,    20)      20       20           21  boulder erratic-2   
+  (  -25,    20)      20       20           20                      
+  (  -24,    20)      20       20           20                      
+  (  -23,    20)      20       20           20                      
+  (  -22,    20)      20       20           20                      
+  (  -21,    20)      20       20           20                      
+  (  -20,    20)      20       20           20  stroke track-shore  
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder erratic-2 at (-38, 19), stroke track-shore at (-26, 22)
+
+## erratic-2 (boulder) along z
+TRANSECT 25 stations from (-32, 8) to (-32, 32), every 1
+  station        ground  surface  water  top  standing            step
+  (  -32,     8)                                                    void
+  (  -32,     9)                                                    void
+  (  -32,    10)      19       19           19                      
+  (  -32,    11)      19       19           19                      
+  (  -32,    12)      20       20           20                      +1
+  (  -32,    13)      20       20           20                      
+  (  -32,    14)      20       20           20                      
+  (  -32,    15)      20       20           20                      
+  (  -32,    16)      20       20           22  boulder erratic-2   
+  (  -32,    17)      20       20           22  boulder erratic-2   
+  (  -32,    18)      20       20           23  boulder erratic-2   
+  (  -32,    19)      20       20           23  boulder erratic-2   
+  (  -32,    20)      20       20           23  boulder erratic-2   
+  (  -32,    21)      20       20           23  boulder erratic-2   
+  (  -32,    22)      20       20           23  boulder erratic-2   
+  (  -32,    23)      18       18           23  boulder erratic-2   -2
+  (  -32,    24)      18       18           22  boulder erratic-2   
+  (  -32,    25)      18       18           22  boulder erratic-2   
+  (  -32,    26)      18       18           24  tree birk-0         
+  (  -32,    27)      18       18           25  tree birk-0         
+  (  -32,    28)      18       18           26  tree birk-0         
+  (  -32,    29)      18       18           27  tree birk-0         
+  (  -32,    30)      18       18           30  tree birk-0         
+  (  -32,    31)      17       17           31  tree birk-0         -1
+  (  -32,    32)      17       17           29  tree birk-0         
+rises 1, falls 2, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder erratic-2 at (-34, 16), tree birk-0 at (-34, 26), stroke track-shore at (-31, 26)
