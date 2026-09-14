@@ -1,9 +1,9 @@
 ## shed-e (house) along x
 TRANSECT 27 stations from (-8, -72) to (18, -72), every 1
   station        ground  surface  water  top  standing            step
-  (   -8,   -72)      26       26           26                      
-  (   -7,   -72)      27       27           27                      +1
-  (   -6,   -72)      27       27           27                      
+  (   -8,   -72)      26       26           33  tree holt-1         
+  (   -7,   -72)      27       27           32  tree holt-1         +1
+  (   -6,   -72)      27       27           34  tree holt-1         
   (   -5,   -72)      28       28           28                      +1
   (   -4,   -72)      28       28           28                      
   (   -3,   -72)      28       28           28                      
@@ -29,7 +29,7 @@ TRANSECT 27 stations from (-8, -72) to (18, -72), every 1
   (   17,   -72)                                                    void
   (   18,   -72)                                                    void
 rises 4, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: house shed-e at (-1, -74)
+beside: tree holt-1 at (-10, -74), house shed-e at (-1, -74)
 
 ## shed-e (house) along z
 TRANSECT 25 stations from (5, -84) to (5, -60), every 1

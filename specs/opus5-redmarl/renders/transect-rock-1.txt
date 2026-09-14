@@ -27,21 +27,21 @@ TRANSECT 25 stations from (6, -10) to (30, -10), every 1
   (   29,   -10)                                                    void
   (   30,   -10)                                                    void
 rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder rock-1 at (15, -10), tree holt-6#1 at (20, -12)
+beside: boulder rock-1 at (15, -10), tree holt-5#1 at (20, -12)
 
 ## rock-1 (boulder) along z
 TRANSECT 25 stations from (18, -22) to (18, 2), every 1
   station        ground  surface  water  top  standing            step
-  (   18,   -22)      17       17           21  tree holt-5         
-  (   18,   -21)      17       17           22  tree holt-5         
-  (   18,   -20)      17       17           23  tree holt-5         
-  (   18,   -19)      17       17           22  tree holt-6#1       
-  (   18,   -18)      17       17           23  tree holt-6#1       
-  (   18,   -17)      17       17           22  tree holt-6#1       
-  (   18,   -16)      17       17           24  tree holt-6#1       
+  (   18,   -22)      17       17           21  tree holt-4         
+  (   18,   -21)      17       17           22  tree holt-4         
+  (   18,   -20)      17       17           23  tree holt-4         
+  (   18,   -19)      17       17           22  tree holt-5#1       
+  (   18,   -18)      17       17           23  tree holt-5#1       
+  (   18,   -17)      17       17           22  tree holt-5#1       
+  (   18,   -16)      17       17           24  tree holt-5#1       
   (   18,   -15)      17       17           17                      
-  (   18,   -14)      17       17           24  tree holt-6#1       
-  (   18,   -13)      17       17           23  tree holt-6#1       
+  (   18,   -14)      17       17           24  tree holt-5#1       
+  (   18,   -13)      17       17           23  tree holt-5#1       
   (   18,   -12)      17       17           21  boulder rock-1      
   (   18,   -11)      17       17           21  boulder rock-1      
   (   18,   -10)      17       17           21  boulder rock-1      
@@ -58,4 +58,4 @@ TRANSECT 25 stations from (18, -22) to (18, 2), every 1
   (   18,     1)      17       17           17                      
   (   18,     2)      17       17           17                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree holt-5 at (18, -24), tree holt-6#1 at (16, -20), boulder rock-1 at (17, -12)
+beside: tree holt-4 at (18, -24), tree holt-5#1 at (16, -20), boulder rock-1 at (17, -12)

@@ -21232,7 +21232,7 @@
       16
      ]
     ],
-    "radius": 3,
+    "radius": 2,
     "style": "worn",
     "claimsGround": true,
     "material": {
@@ -21333,11 +21333,11 @@
      {
       "corners": [
        [
-        -46,
+        4,
         61
        ],
        [
-        -38,
+        12,
         69
        ]
       ]
@@ -21347,8 +21347,8 @@
    {
     "id": "stone-0",
     "kind": "boulder",
-    "x": -30,
-    "z": 66,
+    "x": -44,
+    "z": 44,
     "radius": 3,
     "height": 4,
     "seed": 71,
@@ -21382,8 +21382,8 @@
    {
     "id": "stone-1",
     "kind": "boulder",
-    "x": -6,
-    "z": 64,
+    "x": -16,
+    "z": 58,
     "radius": 2,
     "height": 3,
     "seed": 72,
@@ -21417,8 +21417,8 @@
    {
     "id": "stone-2",
     "kind": "boulder",
-    "x": 8,
-    "z": 66,
+    "x": 16,
+    "z": 20,
     "radius": 2,
     "height": 3,
     "seed": 73,
@@ -21522,7 +21522,7 @@
    {
     "id": "stone-5",
     "kind": "boulder",
-    "x": 16,
+    "x": 0,
     "z": 26,
     "radius": 2,
     "height": 2,
@@ -21565,13 +21565,21 @@
    {
     "id": "holt-1",
     "kind": "tree",
+    "style": "scrub-b",
+    "x": -34,
+    "z": 13,
+    "layer": "ground"
+   },
+   {
+    "id": "holt-2",
+    "kind": "tree",
     "style": "mirk-dense-b",
     "x": -19,
     "z": 12,
     "layer": "ground"
    },
    {
-    "id": "holt-2",
+    "id": "holt-3",
     "kind": "tree",
     "style": "mirk-tall-a",
     "x": 6,
@@ -21579,7 +21587,7 @@
     "layer": "ground"
    },
    {
-    "id": "holt-3",
+    "id": "holt-4",
     "kind": "tree",
     "style": "scrub-b",
     "x": -34,
@@ -21587,19 +21595,11 @@
     "layer": "ground"
    },
    {
-    "id": "holt-4",
-    "kind": "tree",
-    "style": "scrub-b",
-    "x": -34,
-    "z": 27,
-    "layer": "ground"
-   },
-   {
     "id": "holt-5",
     "kind": "tree",
-    "style": "scrub-a",
-    "x": -42,
-    "z": 28,
+    "style": "mirk-dense-a",
+    "x": -40,
+    "z": 26,
     "layer": "ground"
    },
    {
@@ -21613,9 +21613,9 @@
    {
     "id": "holt-7",
     "kind": "tree",
-    "style": "scrub-a",
-    "x": -42,
-    "z": 42,
+    "style": "mirk-dense-a",
+    "x": -34,
+    "z": 34,
     "layer": "ground"
    },
    {
@@ -21624,30 +21624,6 @@
     "style": "mirk-dense-a",
     "x": -21,
     "z": 49,
-    "layer": "ground"
-   },
-   {
-    "id": "holt-9",
-    "kind": "tree",
-    "style": "scrub-a",
-    "x": -42,
-    "z": 49,
-    "layer": "ground"
-   },
-   {
-    "id": "holt-10",
-    "kind": "tree",
-    "style": "scrub-b",
-    "x": -15,
-    "z": 57,
-    "layer": "ground"
-   },
-   {
-    "id": "holt-11",
-    "kind": "tree",
-    "style": "scrub-b",
-    "x": -15,
-    "z": 64,
     "layer": "ground"
    },
    {

@@ -41,14 +41,14 @@ export writes into a region directory it never clears — which is how the first
 | `opus5-dustwath` | DTM | 88 × 208 | 5 pieces, a void wath | 18.7% | 12 246 walked · 100 scrambled · 146 barrier · 4 faces |
 | `opus5-redmarl` | CTW | 104 × 176 | 7 pieces, offset halves | 0.0% | 11 236 walked · 258 scrambled · 202 barrier · 14 faces |
 | `opus5-potsherd` | DTC | 104 × 208 | 8 pieces, a cut pit | 9.4% | 19 463 walked · 386 scrambled · 123 barrier · 7 faces |
-| `opus5-ochrepans` | KotH | 104 × 192 | 2 pieces, everything authored | see below | 15 678 walked · 346 scrambled · 904 barrier · 4 faces |
+| `opus5-ochrepans` | KotH | 104 × 192 | 2 pieces, everything authored | 51.3%, and the number is a blind spot — below | 16 414 walked · 325 scrambled · 811 barrier · 10 faces |
 
 The ground, read back: `level` / `largestField` / relief range —
 dustwath 0.446 / 0.145 / 10 · redmarl 0.464 / 0.121 / 17 · potsherd 0.615 / 0.231 / 11 ·
-ochrepans 0.719 / 0.316 / 8. The order is the order the four were meant to run in: the gully board
+ochrepans 0.682 / 0.282 / 8. The order is the order the four were meant to run in: the gully board
 has the most ground shape, the salt-works the least and carries its shape in walls instead.
 
-## Eight things the studio does that no document here said
+## Nine things the studio does that no document here said
 
 Each of these was measured, and each changed a board.
 
@@ -101,6 +101,12 @@ build the rest.** A pair of flank platforms cannot be centred on z 0; moved off 
 and its image are a diagonal pair, which is what the three destroy boards here do without anyone having
 to say so. Nothing refuses the centred version, no render shows it, `preflight` opens the gate and
 `relief/read` reports `seams 0` — the only thing that found it was a transect down the bank.
+
+**A dressing prop is mirrored like everything else.** Three of redmarl's boulders were declined
+`DR-CLAIM ... claimed by the prop 'rock-2'` when they were spread across the gully neck: each was
+sitting in the claim of another prop's own `rot_180` image. Props also want about eight blocks between
+them, and a door's keep-clear approach reaches further out than the building does. `06-claims.txt` is
+written on every drive and says all of this as a raster.
 
 ## What I got wrong
 

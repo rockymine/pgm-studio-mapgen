@@ -1,55 +1,61 @@
 ## hut (house) along x
-TRANSECT 19 stations from (-50, 66) to (-32, 66), every 1
+TRANSECT 25 stations from (-4, 65) to (20, 65), every 1
   station        ground  surface  water  top  standing            step
-  (  -50,    66)      13       13           13                      
-  (  -49,    66)      13       13           13                      
-  (  -48,    66)      13       13           13                      
-  (  -47,    66)      13       13           13                      
-  (  -46,    66)      13       13           13                      
-  (  -45,    66)      13       13           13                      
-  (  -44,    66)      13       13           13                      
-  (  -43,    66)      13       13           13                      
-  (  -42,    66)      13       13           13  stroke lane         
-  (  -41,    66)      13       13           13                      
-  (  -40,    66)      12       12           12  stroke lane         -1
-  (  -39,    66)      12       12           12  stroke lane         
-  (  -38,    66)      12       12           12  stroke lane         
-  (  -37,    66)      12       12           12  stroke lane         
-  (  -36,    66)      12       12           12                      
-  (  -35,    66)      12       12           12                      
-  (  -34,    66)      13       13           13                      +1
-  (  -33,    66)      13       13           13                      
-  (  -32,    66)      13       13           13                      
-rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke lane at (-42, 64)
+  (   -4,    65)      15       15           15                      
+  (   -3,    65)      15       15           15                      
+  (   -2,    65)      15       15           15                      
+  (   -1,    65)      15       15           15                      
+  (    0,    65)      15       15           15                      
+  (    1,    65)      15       15           15                      
+  (    2,    65)      15       15           15                      
+  (    3,    65)      15       15           25  house hut           
+  (    4,    65)      15       15           25  house hut           
+  (    5,    65)      15       15           25  house hut           
+  (    6,    65)      15       15           25  house hut           
+  (    7,    65)      15       15           25  house hut           
+  (    8,    65)      15       15           25  house hut           
+  (    9,    65)      15       15           25  house hut           
+  (   10,    65)      15       15           25  house hut           
+  (   11,    65)      15       15           25  house hut           
+  (   12,    65)      16       16           25  house hut           +1
+  (   13,    65)      16       16           25  house hut           
+  (   14,    65)      16       16           16                      
+  (   15,    65)      16       16           16                      
+  (   16,    65)      16       16           16                      
+  (   17,    65)      16       16           16                      
+  (   18,    65)      16       16           16                      
+  (   19,    65)      16       16           16                      
+  (   20,    65)                                                    void
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house hut at (3, 63)
 
 ## hut (house) along z
-TRANSECT 25 stations from (-44, 54) to (-44, 78), every 1
+TRANSECT 25 stations from (8, 53) to (8, 77), every 1
   station        ground  surface  water  top  standing            step
-  (  -44,    54)      13       13           13                      
-  (  -44,    55)      13       13           13                      
-  (  -44,    56)      13       13           13                      
-  (  -44,    57)      13       13           13                      
-  (  -44,    58)      13       13           13                      
-  (  -44,    59)      13       13           13                      
-  (  -44,    60)      13       13           13                      
-  (  -44,    61)      13       13           13                      
-  (  -44,    62)      13       13           13                      
-  (  -44,    63)      13       13           13                      
-  (  -44,    64)      13       13           13                      
-  (  -44,    65)      13       13           13                      
-  (  -44,    66)      13       13           13                      
-  (  -44,    67)      13       13           13                      
-  (  -44,    68)      13       13           13                      
-  (  -44,    69)      13       13           13                      
-  (  -44,    70)      13       13           13                      
-  (  -44,    71)      14       14           14                      +1
-  (  -44,    72)      14       14           14                      
-  (  -44,    73)      14       14           14                      
-  (  -44,    74)      14       14           14                      
-  (  -44,    75)      15       15           15                      +1
-  (  -44,    76)      15       15           15                      
-  (  -44,    77)      15       15           15                      
-  (  -44,    78)      15       15           15                      
-rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke lane at (-42, 63), redstoneline 0 at (-45, 80)
+  (    8,    53)                                                    void
+  (    8,    54)                                                    void
+  (    8,    55)                                                    void
+  (    8,    56)                                                    void
+  (    8,    57)                                                    void
+  (    8,    58)                                                    void
+  (    8,    59)                                                    void
+  (    8,    60)      16       16           20  house hut           
+  (    8,    61)      15       15           21  house hut           -1
+  (    8,    62)      15       15           22  house hut           
+  (    8,    63)      15       15           23  house hut           
+  (    8,    64)      15       15           24  house hut           
+  (    8,    65)      15       15           25  house hut           
+  (    8,    66)      15       15           24  house hut           
+  (    8,    67)      15       15           23  house hut           
+  (    8,    68)      15       15           22  house hut           
+  (    8,    69)      15       15           21  house hut           
+  (    8,    70)      15       15           20  house hut           
+  (    8,    71)      15       15           15                      
+  (    8,    72)      15       15           15                      
+  (    8,    73)      16       16           16                      +1
+  (    8,    74)      16       16           16                      
+  (    8,    75)      17       17           17                      +1
+  (    8,    76)      17       17           17                      
+  (    8,    77)      17       17           17                      
+rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house hut at (6, 60)

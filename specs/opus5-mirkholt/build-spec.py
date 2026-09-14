@@ -272,7 +272,7 @@ PROPS = [
     # lowest surface it crosses and the fill never rises past a column's own surface --
     # water cut into ground that was already there, which is what a lane's runnel is.
     {"id": "lane", "kind": "stroke", "seed": 21, "layer": "ground",
-     "points": HOLLOW, "radius": 3, "style": "worn", "claimsGround": True,
+     "points": HOLLOW, "radius": 2, "style": "worn", "claimsGround": True,
      "material": cell(77, 7, [COARSE, GRAVEL, MOSSY_COBBLE, PODZOL], rise=3)},
     # the trod along the back of the clearings, from one room past the spawn door to the
     # other: the only lateral movement on this board that is not through the wood
@@ -284,7 +284,7 @@ PROPS = [
     # in the trees at all
     {"id": "hut", "kind": "house", "seed": 311, "layer": "ground",
      "style": "hut", "front": "posZ",
-     "wings": [{"corners": [[-46, 61], [-38, 69]]}]},
+     "wings": [{"corners": [[4, 61], [12, 69]]}]},
 ]
 
 # The wood.  A jittered lattice over the ground this side actually has, three storeys deep
@@ -297,12 +297,12 @@ SCRUB = ["scrub-a", "scrub-b"]
 count = 0
 # stone, and only stone -- and all of it on the brow strip and the toe, because a wood
 # 40 blocks wide with a 14-block lane down it has no room for a boulder as well as a tree
-BOULDERS = [(-30, 66, 3, 4), (-6, 64, 2, 3), (8, 66, 2, 3),
-            (-26, 16, 2, 3), (6, 22, 2, 2), (16, 26, 2, 2)]
+BOULDERS = [(-44, 44, 3, 4), (-16, 58, 2, 3), (16, 20, 2, 3),
+            (-26, 16, 2, 3), (6, 22, 2, 2), (0, 26, 2, 2)]
 for i, (x, z, r, h) in enumerate(BOULDERS):
     PROPS.append(boulder(f"stone-{i}", x, z, r, h, 71 + i))
 
-KEEP_OFF = [(-46, 61, -38, 69, 8),       # the charcoal burner's hut
+KEEP_OFF = [(4, 61, 12, 69, 8),          # the charcoal burner's hut
             (-20, 26, -14, 46, 2),       # the flight off the brow
             (-28, 56, -20, 70, 3)]       # the threshold out of the clearing
 KEEP_OFF += [(x - r, z - r, x + r, z + r, 4) for x, z, r, _ in BOULDERS]
@@ -334,7 +334,7 @@ for row, z in enumerate(range(12, 100, 3)):
         px, pz = x + jx, z + jz
         if not on_ground(px, pz, 2):
             continue
-        if near_hollow(px, pz, 7) or near_trod(px, pz, 7):
+        if near_hollow(px, pz, 6) or near_trod(px, pz, 6):
             continue
         if pz > 68 and abs(px + 13) < 15:          # the spawn's own clearing
             continue
@@ -349,7 +349,7 @@ for row, z in enumerate(range(12, 100, 3)):
         rank = (row * 3 + col) % 6
         kind = (CANOPY[row % 3] if rank == 0 else
                 DENSE[rank % 2] if rank < 4 else SCRUB[rank % 2])
-        room = 12 if rank == 0 else (9 if rank < 4 else 7)
+        room = 11 if rank == 0 else (8 if rank < 4 else 6)
         if any((px - ax) ** 2 + (pz - az) ** 2 < max(room, other) ** 2
                for ax, az, other in planted):
             continue

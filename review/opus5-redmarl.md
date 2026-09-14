@@ -86,8 +86,10 @@ channel's own pans, so its edge is a break of slope.
 - `04-routes.txt` reports `barrier +3` and `+7` on the two routes out of red's own spawn. Those are
   the **iron cube** and the **spawn hall's wall**: the route walker treats both as terrain. The four
   routes that matter — each spawn to the two enemy wool rooms — read `worst step 0, walked end to end`.
-- The dressing pass declines a handful of props each build: the door approaches and the two vat pads
-  claim more ground than they look like they do, and two props cannot stand within about eight blocks
-  of each other. `06-claims.txt` is the raster that says where to try.
+- The dressing pass declined ten props on the first three builds and **nothing** on the last:
+  the door approaches and the two vat pads claim more ground than they look like they do, two props
+  cannot stand within about eight blocks of each other, and a prop is mirrored like everything else —
+  three boulders spread across the gully neck each landed inside their own image's claim.
+  `06-claims.txt` is the raster that says where to try; `placed 36, declined 0`.
 - Nobody has played it. Whether a four-block face with two ways down per team is the right amount of
   wall in front of a wool carry is a question for the author, not for a read.

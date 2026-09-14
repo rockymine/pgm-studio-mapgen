@@ -1,61 +1,61 @@
 ## rock-2 (boulder) along x
-TRANSECT 25 stations from (-20, -44) to (4, -44), every 1
+TRANSECT 25 stations from (-2, -48) to (22, -48), every 1
   station        ground  surface  water  top  standing            step
-  (  -20,   -44)      21       21           24  boulder rock-1      
-  (  -19,   -44)      21       21           23  boulder rock-1      
-  (  -18,   -44)      21       21           21                      
-  (  -17,   -44)      21       21           21                      
-  (  -16,   -44)      22       22           22                      +1
-  (  -15,   -44)      22       22           22                      
-  (  -14,   -44)      22       22           22                      
-  (  -13,   -44)      22       22           22                      
-  (  -12,   -44)      22       22           22                      
-  (  -11,   -44)      22       22           24  boulder rock-2      
-  (  -10,   -44)      22       22           26  boulder rock-2      
-  (   -9,   -44)      22       22           26  boulder rock-2      
-  (   -8,   -44)      22       22           26  boulder rock-2      
-  (   -7,   -44)      22       22           26  boulder rock-2      
-  (   -6,   -44)      22       22           26  boulder rock-2      
-  (   -5,   -44)      23       23           23                      +1
-  (   -4,   -44)      23       23           23                      
-  (   -3,   -44)      23       23           23                      
-  (   -2,   -44)      23       23           23  stroke track-gate   
-  (   -1,   -44)      23       23           23  stroke track-gate   
-  (    0,   -44)      23       23           23  stroke track-gate   
-  (    1,   -44)      23       23           23  stroke track-gate   
-  (    2,   -44)      22       22           22                      -1
-  (    3,   -44)      22       22           22                      
-  (    4,   -44)      22       22           22                      
-rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder rock-1 at (-22, -46), boulder rock-2 at (-11, -45), stroke track-gate at (-2, -46)
+  (   -2,   -48)      23       23           23  stroke track-gate   
+  (   -1,   -48)      23       23           23  stroke track-gate   
+  (    0,   -48)      23       23           23  stroke track-gate   
+  (    1,   -48)      23       23           23  stroke track-gate   
+  (    2,   -48)      23       23           23                      
+  (    3,   -48)      23       23           23                      
+  (    4,   -48)      23       23           23                      
+  (    5,   -48)      23       23           23                      
+  (    6,   -48)      23       23           23                      
+  (    7,   -48)      23       23           24  boulder rock-2      
+  (    8,   -48)      22       22           26  boulder rock-2      -1
+  (    9,   -48)      22       22           26  boulder rock-2      
+  (   10,   -48)      22       22           26  boulder rock-2      
+  (   11,   -48)      22       22           26  boulder rock-2      
+  (   12,   -48)      22       22           26  boulder rock-2      
+  (   13,   -48)      22       22           22                      
+  (   14,   -48)      22       22           22                      
+  (   15,   -48)      22       22           22                      
+  (   16,   -48)      21       21           21                      -1
+  (   17,   -48)      21       21           21                      
+  (   18,   -48)      21       21           21                      
+  (   19,   -48)      21       21           21                      
+  (   20,   -48)      21       21           21                      
+  (   21,   -48)      21       21           23  boulder rock-3      
+  (   22,   -48)      21       21           25  boulder rock-3      
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track-gate at (-2, -50), boulder rock-2 at (7, -49), boulder rock-3 at (21, -48)
 
 ## rock-2 (boulder) along z
-TRANSECT 25 stations from (-8, -56) to (-8, -32), every 1
+TRANSECT 25 stations from (10, -60) to (10, -36), every 1
   station        ground  surface  water  top  standing            step
-  (   -8,   -56)      22       22           22                      
-  (   -8,   -55)      22       22           22                      
-  (   -8,   -54)      22       22           22                      
-  (   -8,   -53)      22       22           22                      
-  (   -8,   -52)      22       22           22                      
-  (   -8,   -51)      22       22           22                      
-  (   -8,   -50)      22       22           22                      
-  (   -8,   -49)      23       23           23                      +1
-  (   -8,   -48)      23       23           23                      
-  (   -8,   -47)      23       23           23                      
-  (   -8,   -46)      23       23           26  boulder rock-2      
-  (   -8,   -45)      22       22           26  boulder rock-2      -1
-  (   -8,   -44)      22       22           26  boulder rock-2      
-  (   -8,   -43)      22       22           26  boulder rock-2      
-  (   -8,   -42)      22       22           26  boulder rock-2      
-  (   -8,   -41)      22       22           22                      
-  (   -8,   -40)      22       22           22                      
-  (   -8,   -39)      22       22           22                      
-  (   -8,   -38)      22       22           22                      
-  (   -8,   -37)      22       22           22                      
-  (   -8,   -36)      22       22           22                      
-  (   -8,   -35)      22       22           22                      
-  (   -8,   -34)      22       22           22                      
-  (   -8,   -33)      22       22           22                      
-  (   -8,   -32)      22       22           22                      
-rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder rock-2 at (-10, -46)
+  (   10,   -60)      22       22           22                      
+  (   10,   -59)      22       22           22                      
+  (   10,   -58)      22       22           22                      
+  (   10,   -57)      22       22           22                      
+  (   10,   -56)      22       22           22                      
+  (   10,   -55)      22       22           22                      
+  (   10,   -54)      22       22           22                      
+  (   10,   -53)      22       22           22                      
+  (   10,   -52)      22       22           22                      
+  (   10,   -51)      22       22           22                      
+  (   10,   -50)      22       22           26  boulder rock-2      
+  (   10,   -49)      22       22           26  boulder rock-2      
+  (   10,   -48)      22       22           26  boulder rock-2      
+  (   10,   -47)      22       22           26  boulder rock-2      
+  (   10,   -46)      22       22           26  boulder rock-2      
+  (   10,   -45)      23       23           23                      +1
+  (   10,   -44)      23       23           23                      
+  (   10,   -43)      23       23           23                      
+  (   10,   -42)      23       23           23                      
+  (   10,   -41)      23       23           23                      
+  (   10,   -40)      23       23           23                      
+  (   10,   -39)      23       23           23                      
+  (   10,   -38)      23       23           23                      
+  (   10,   -37)      21       21           21                      -2
+  (   10,   -36)      21       21           21                      
+rises 1, falls 1, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder rock-2 at (8, -50)
