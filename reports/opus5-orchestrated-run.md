@@ -30,13 +30,21 @@ boundaries below are what separates authored work from anything done to it after
 `ca8c946` is the provenance boundary. Everything to that point is agent output with nothing of the
 orchestrator's in it. Anything after it is a response to review.
 
-**One commit message is wrong, and the record is corrected here rather than by rewriting it.** `07e13e4`
-says "Agents A and C answer the review". It in fact carries **all three** agents' responses, agent B's
-included: B finished writing its files before that commit was made and its completion notice arrived after,
-so a `git add -A` swept its work in under a message that does not name it. Grykefell's re-sited barn, its
-turf shelves and flintwick's `sward` theme are all in `07e13e4` despite what it says. Nothing was lost and
-no file is misattributed — only the message is — and a commit already pushed is left standing rather than
-force-rewritten, because a corrected sentence in the record costs less than a rewritten history.
+**A commit message here names what prompted the commit, not everything inside it**, and that is a property
+of the arrangement rather than a mistake made twice. Three agents write into one tree while one committer
+runs `git add -A`; an agent that finishes between two commits has its work swept into whichever commit comes
+next, whatever that commit is about, because a completion notice arrives after the files are already on
+disk. Two commits are affected and are left standing rather than force-rewritten, since a corrected sentence
+costs less than a rewritten history:
+
+- **`07e13e4`** says "Agents A and C answer the review" and carries **all three** — grykefell's re-sited
+  barn, its turf shelves and flintwick's `sward` theme are in it.
+- **`3d7b6e9`** says "Redmarl's wool rooms move onto lanes of their own" and also carries **flintwick's
+  lanes**, its approach walls and its re-driven world.
+
+No file is misattributed and nothing is lost — a commit's *contents* are always the agents' own bytes. Only
+the sentence on the front is narrower than what follows it. The fix, for anyone repeating this arrangement,
+is to commit per agent by path rather than with `git add -A`.
 
 ## The twelve boards
 
