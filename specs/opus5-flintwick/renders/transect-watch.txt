@@ -1,0 +1,63 @@
+## watch (house) along x
+TRANSECT 27 stations from (17, 56) to (43, 56), every 1
+  station        ground  surface  water  top  standing            step
+  (   17,    56)      27       27           27                      
+  (   18,    56)      28       28           28                      +1
+  (   19,    56)      28       28           28                      
+  (   20,    56)      28       28           28                      
+  (   21,    56)      28       28           28                      
+  (   22,    56)      28       28           28  stroke way-east     
+  (   23,    56)      28       28           28  stroke way-east     
+  (   24,    56)      28       28           32  house watch         
+  (   25,    56)      28       28           32  house watch         
+  (   26,    56)      28       28           33  house watch         
+  (   27,    56)      28       28           33  house watch         
+  (   28,    56)      28       28           33  house watch         
+  (   29,    56)      28       28           32  house watch         
+  (   30,    56)      28       28           32  house watch         
+  (   31,    56)      28       28           33  house watch         
+  (   32,    56)      28       28           33  house watch         
+  (   33,    56)      28       28           34  house watch         
+  (   34,    56)      28       28           34  house watch         
+  (   35,    56)      28       28           33  house watch         
+  (   36,    56)      28       28           33  house watch         
+  (   37,    56)      28       28           32  house watch         
+  (   38,    56)      28       28           32  house watch         
+  (   39,    56)      28       28           28                      
+  (   40,    56)                                                    void
+  (   41,    56)                                                    void
+  (   42,    56)                                                    void
+  (   43,    56)                                                    void
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke way-east at (22, 54), house watch at (24, 54)
+
+## watch (house) along z
+TRANSECT 25 stations from (31, 44) to (31, 68), every 1
+  station        ground  surface  water  top  standing            step
+  (   31,    44)      28       28           28  boulder sarsen-3    
+  (   31,    45)      28       28           28  boulder sarsen-3    
+  (   31,    46)      28       28           28  boulder sarsen-3    
+  (   31,    47)      26       26           27  boulder sarsen-3    -2
+  (   31,    48)      26       26           26                      
+  (   31,    49)      27       27           27                      +1
+  (   31,    50)      27       27           27                      
+  (   31,    51)      27       27           32  house watch         
+  (   31,    52)      27       27           32  house watch         
+  (   31,    53)      27       27           33  house watch         
+  (   31,    54)      28       28           33  house watch         +1
+  (   31,    55)      28       28           33  house watch         
+  (   31,    56)      28       28           33  house watch         
+  (   31,    57)      28       28           33  house watch         
+  (   31,    58)      28       28           33  house watch         
+  (   31,    59)      29       29           33  house watch         +1
+  (   31,    60)      29       29           32  house watch         
+  (   31,    61)      29       29           32  house watch         
+  (   31,    62)      29       29           36  tree thorn-3        
+  (   31,    63)      29       29           35  tree thorn-3        
+  (   31,    64)      29       29           41  tree thorn-3        
+  (   31,    65)      29       29           40  tree thorn-3        
+  (   31,    66)      30       30           44  tree thorn-3        +1
+  (   31,    67)      30       30           41  tree thorn-3        
+  (   31,    68)      26       26           35  tree thorn-3        DROP -4
+rises 4, falls 2, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (31, 68) | walked end to end
+beside: boulder sarsen-3 at (29, 42), house watch at (29, 51), tree thorn-3 at (31, 62), boulder sarsen-5 at (30, 68), tree thorn-4 at (32, 69)

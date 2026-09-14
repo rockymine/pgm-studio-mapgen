@@ -1,0 +1,61 @@
+## sarsen-5 (boulder) along x
+TRANSECT 25 stations from (16, 70) to (40, 70), every 1
+  station        ground  surface  water  top  standing            step
+  (   16,    70)      25       25           25                      
+  (   17,    70)      26       26           26                      +1
+  (   18,    70)      28       28           28                      scramble +2
+  (   19,    70)      30       30           30  stroke way-east     scramble +2
+  (   20,    70)      30       30           30  stroke way-east     
+  (   21,    70)      30       30           30  stroke way-east     
+  (   22,    70)      26       26           26  stroke way-east     DROP -4
+  (   23,    70)      26       26           26                      
+  (   24,    70)      26       26           27  boulder sarsen-5    
+  (   25,    70)      26       26           28  boulder sarsen-5    
+  (   26,    70)      26       26           28  boulder sarsen-5    
+  (   27,    70)      26       26           28  boulder sarsen-5    
+  (   28,    70)      26       26           28  boulder sarsen-5    
+  (   29,    70)      26       26           28  boulder sarsen-5    
+  (   30,    70)      26       26           28  boulder sarsen-5    
+  (   31,    70)      26       26           34  tree thorn-3        
+  (   32,    70)      26       26           29  tree thorn-4        
+  (   33,    70)      26       26           30  tree thorn-4        
+  (   34,    70)      26       26           34  tree thorn-4        
+  (   35,    70)      26       26           35  tree thorn-4        
+  (   36,    70)      29       29           29                      BARRIER +3
+  (   37,    70)      29       29           29                      
+  (   38,    70)      29       29           29                      
+  (   39,    70)      29       29           29                      
+  (   40,    70)                                                    void
+rises 4, falls 1, worst step 4: 1 barrier, 2 scramble, 1 drop — scramble +2 at (18, 70); scramble +2 at (19, 70); DROP -4 at (22, 70); BARRIER +3 at (36, 70) | walked end to end
+beside: boulder sarsen-1 at (14, 68), stroke way-east at (18, 71), boulder sarsen-5 at (24, 69), tree thorn-3 at (29, 68), tree thorn-4 at (32, 69)
+
+## sarsen-5 (boulder) along z
+TRANSECT 25 stations from (28, 58) to (28, 82), every 1
+  station        ground  surface  water  top  standing            step
+  (   28,    58)      29       29           33  house watch         
+  (   28,    59)      29       29           32  house watch         
+  (   28,    60)      29       29           32  house watch         
+  (   28,    61)      29       29           29                      
+  (   28,    62)      30       30           30                      +1
+  (   28,    63)      30       30           30                      
+  (   28,    64)      30       30           30                      
+  (   28,    65)      30       30           34  tree thorn-3        
+  (   28,    66)      30       30           35  tree thorn-3        
+  (   28,    67)      30       30           38  tree thorn-3        
+  (   28,    68)      26       26           28  boulder sarsen-5    DROP -4
+  (   28,    69)      26       26           28  boulder sarsen-5    
+  (   28,    70)      26       26           28  boulder sarsen-5    
+  (   28,    71)      26       26           28  boulder sarsen-5    
+  (   28,    72)      26       26           28  boulder sarsen-5    
+  (   28,    73)      26       26           27  boulder sarsen-5    
+  (   28,    74)      26       26           26                      
+  (   28,    75)      26       26           26                      
+  (   28,    76)      26       26           26                      
+  (   28,    77)      26       26           26                      
+  (   28,    78)      26       26           26                      
+  (   28,    79)      26       26           26                      
+  (   28,    80)      26       26           26                      
+  (   28,    81)      26       26           26                      
+  (   28,    82)      28       28           28                      scramble +2
+rises 2, falls 1, worst step 4: 0 barrier, 1 scramble, 1 drop — DROP -4 at (28, 68); scramble +2 at (28, 82) | walked end to end
+beside: house watch at (26, 56), tree thorn-3 at (30, 64), boulder sarsen-5 at (26, 68)

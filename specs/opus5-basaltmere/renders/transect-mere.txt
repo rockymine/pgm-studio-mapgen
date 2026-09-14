@@ -1,0 +1,190 @@
+## mere (water) along x
+TRANSECT 90 stations from (-45, 0) to (44, 0), every 1
+  station        ground  surface  water  top  standing            step
+  (  -45,     0)      10       10           10                      
+  (  -44,     0)      10       10           10                      
+  (  -43,     0)      10       10           10                      
+  (  -42,     0)      10       10           10                      
+  (  -41,     0)      10       10           10                      
+  (  -40,     0)      10       10           10                      
+  (  -39,     0)      10       10           10                      
+  (  -38,     0)      10       10           10                      
+  (  -37,     0)      10       10     11    11  water mere#1        
+  (  -36,     0)      11       11           11  water mere#1        +1
+  (  -35,     0)      11       11           11  water mere#1        
+  (  -34,     0)      11       11           11  water mere#1        
+  (  -33,     0)      11       11           11  water mere#1        
+  (  -32,     0)      11       11           11  water mere#1        
+  (  -31,     0)      11       11           11  water mere#1        
+  (  -30,     0)      12       12           12  water mere#1        +1
+  (  -29,     0)      12       12           12  water mere#1        
+  (  -28,     0)      12       12           12  water mere#1        
+  (  -27,     0)      12       12           12  water mere#1        
+  (  -26,     0)      12       12           12  water mere#1        
+  (  -25,     0)      13       13           13  water mere#1        +1
+  (  -24,     0)      13       13           13  water mere#1        
+  (  -23,     0)      13       13           13  water mere#1        
+  (  -22,     0)      13       13           13  water mere#1        
+  (  -21,     0)      13       13           13  water mere#1        
+  (  -20,     0)      14       14           14  water mere#1        +1
+  (  -19,     0)      14       14           14  water mere#1        
+  (  -18,     0)      14       14           14  water mere#1        
+  (  -17,     0)      14       14           14  water mere#1        
+  (  -16,     0)      14       14           14  water mere#1        
+  (  -15,     0)      15       15           15  water mere#1        +1
+  (  -14,     0)      15       17           17  storey              scramble +2
+  (  -13,     0)      15       17           17  storey              
+  (  -12,     0)      15       17           17  storey              
+  (  -11,     0)      15       17           17  storey              
+  (  -10,     0)      15       17           17  storey              
+  (   -9,     0)      16       17           17  storey              
+  (   -8,     0)      16       17           17  storey              
+  (   -7,     0)      16       17           17  storey              
+  (   -6,     0)      16       16           16  water mere#1        -1
+  (   -5,     0)      16       16           16  water mere#1        
+  (   -4,     0)      16       16           16  water mere#1        
+  (   -3,     0)      16       16           64  water mere#1        
+  (   -2,     0)      16       16           64  water mere#1        
+  (   -1,     0)      16       16           63  water mere#1        
+  (    0,     0)      16       16           63  water mere#1        
+  (    1,     0)      16       16           64  water mere#1        
+  (    2,     0)      16       16           64  water mere#1        
+  (    3,     0)      16       16           16  water mere#1        
+  (    4,     0)      16       16           16  water mere#1        
+  (    5,     0)      16       17           17  storey              +1
+  (    6,     0)      16       17           17  storey              
+  (    7,     0)      16       17           17  storey              
+  (    8,     0)      16       17           17  storey              
+  (    9,     0)      16       17           17  storey              
+  (   10,     0)      15       17           17  storey              
+  (   11,     0)      15       17           17  storey              
+  (   12,     0)      15       17           17  storey              
+  (   13,     0)      15       15           15  water mere#1        -2
+  (   14,     0)      15       15           15  water mere#1        
+  (   15,     0)      14       14           14  water mere#1        -1
+  (   16,     0)      14       14           14  water mere#1        
+  (   17,     0)      14       14           14  water mere#1        
+  (   18,     0)      14       14           14  water mere#1        
+  (   19,     0)      14       14           14  water mere#1        
+  (   20,     0)      13       13           13  water mere#1        -1
+  (   21,     0)      13       13           13  water mere#1        
+  (   22,     0)      13       13           13  water mere#1        
+  (   23,     0)      13       13           13  water mere#1        
+  (   24,     0)      13       13           13  water mere#1        
+  (   25,     0)      12       12           12  water mere#1        -1
+  (   26,     0)      12       12           12  water mere#1        
+  (   27,     0)      12       12           12  water mere#1        
+  (   28,     0)      12       12           12  water mere#1        
+  (   29,     0)      12       12           12  water mere#1        
+  (   30,     0)      11       11           11  water mere#1        -1
+  (   31,     0)      11       11           11  water mere#1        
+  (   32,     0)      11       11           11  water mere#1        
+  (   33,     0)      11       11           11  water mere#1        
+  (   34,     0)      11       11           11  water mere#1        
+  (   35,     0)      11       11           11  water mere#1        
+  (   36,     0)      10       10     11    11  water mere#1        -1
+  (   37,     0)      10       10           10                      
+  (   38,     0)      10       10           10                      
+  (   39,     0)      10       10           10                      
+  (   40,     0)      10       10           10                      
+  (   41,     0)      10       10           10                      
+  (   42,     0)      10       10           10                      
+  (   43,     0)      10       10           10                      
+  (   44,     0)      10       10           10                      
+rises 7, falls 7, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-14, 0) | walked end to end
+beside: water mere#1 at (-39, 1), water mere at (-38, 1)
+
+## mere (water) along z
+TRANSECT 89 stations from (0, -44) to (0, 44), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,   -44)      15       15           15                      
+  (    0,   -43)      15       15           15                      
+  (    0,   -42)      15       15           15                      
+  (    0,   -41)      15       15           15                      
+  (    0,   -40)      15       15           15                      
+  (    0,   -39)      15       15           15                      
+  (    0,   -38)      15       15           15                      
+  (    0,   -37)      15       15           15                      
+  (    0,   -36)      14       14           14                      -1
+  (    0,   -35)      13       13           13                      -1
+  (    0,   -34)      13       13           13                      
+  (    0,   -33)      13       13           13  water mere#1        
+  (    0,   -32)      12       12           12  water mere          -1
+  (    0,   -31)      12       12           12  water mere          
+  (    0,   -30)       9        9            9  water mere          -3
+  (    0,   -29)      10       10           10  water mere          +1
+  (    0,   -28)      10       10     11    11  water mere#1        
+  (    0,   -27)      10       10     11    11  water mere#1        
+  (    0,   -26)      10       10     11    11  water mere#1        
+  (    0,   -25)      10       10     11    11  water mere#1        
+  (    0,   -24)      10       10     11    11  water mere#1        
+  (    0,   -23)      10       10     11    11  water mere#1        
+  (    0,   -22)      10       10     11    11  water mere#1        
+  (    0,   -21)      10       10     11    11  water mere#1        
+  (    0,   -20)      10       10     11    11  water mere#1        
+  (    0,   -19)      10       10     11    11  water mere#1        
+  (    0,   -18)      10       10     11    11  water mere#1        
+  (    0,   -17)      10       10     11    11  water mere#1        
+  (    0,   -16)      10       10     11    11  water mere#1        
+  (    0,   -15)      10       10     11    11  water mere#1        
+  (    0,   -14)      10       10     11    11  water mere#1        
+  (    0,   -13)      16       16           16  water mere#1        BARRIER +6
+  (    0,   -12)      16       16           16  water mere#1        
+  (    0,   -11)      16       20           20  storey              BARRIER +4
+  (    0,   -10)      16       20           20  storey              
+  (    0,    -9)      16       16           16  water mere#1        DROP -4
+  (    0,    -8)      16       16           16  water mere#1        
+  (    0,    -7)      16       16           16  water mere#1        
+  (    0,    -6)      16       16           16  water mere#1        
+  (    0,    -5)      16       16           16  water mere#1        
+  (    0,    -4)      16       16           16  water mere#1        
+  (    0,    -3)      16       16           64  water mere#1        
+  (    0,    -2)      16       16           64  water mere#1        
+  (    0,    -1)      16       16           63  water mere#1        
+  (    0,     0)      16       16           63  water mere#1        
+  (    0,     1)      16       16           64  water mere#1        
+  (    0,     2)      16       16           64  water mere#1        
+  (    0,     3)      16       16           16  water mere#1        
+  (    0,     4)      16       16           16  water mere#1        
+  (    0,     5)      16       16           16  water mere#1        
+  (    0,     6)      16       16           16  water mere#1        
+  (    0,     7)      16       16           16  water mere#1        
+  (    0,     8)      16       20           20  storey              BARRIER +4
+  (    0,     9)      16       20           20  storey              
+  (    0,    10)      16       16           16  water mere#1        DROP -4
+  (    0,    11)      16       16           16  water mere#1        
+  (    0,    12)      16       16           16  water mere#1        
+  (    0,    13)      10       10     11    11  water mere#1        DROP -6
+  (    0,    14)      10       10     11    11  water mere#1        
+  (    0,    15)      10       10     11    11  water mere#1        
+  (    0,    16)      10       10     11    11  water mere#1        
+  (    0,    17)      10       10     11    11  water mere#1        
+  (    0,    18)      10       10     11    11  water mere#1        
+  (    0,    19)      10       10     11    11  water mere#1        
+  (    0,    20)      10       10     11    11  water mere#1        
+  (    0,    21)      10       10     11    11  water mere#1        
+  (    0,    22)      10       10     11    11  water mere#1        
+  (    0,    23)      10       10     11    11  water mere#1        
+  (    0,    24)      10       10     11    11  water mere#1        
+  (    0,    25)      10       10     11    11  water mere#1        
+  (    0,    26)      10       10     11    11  water mere#1        
+  (    0,    27)      10       10     11    11  water mere#1        
+  (    0,    28)      10       10           10  water mere          
+  (    0,    29)       9        9            9  water mere          -1
+  (    0,    30)      12       12           12  water mere          BARRIER +3
+  (    0,    31)      12       12           12  water mere          
+  (    0,    32)      13       13           13                      +1
+  (    0,    33)      13       13           13                      
+  (    0,    34)      13       13           13                      
+  (    0,    35)      14       14           14                      +1
+  (    0,    36)      15       15           15                      +1
+  (    0,    37)      15       15           15                      
+  (    0,    38)      15       15           15                      
+  (    0,    39)      15       15           15                      
+  (    0,    40)      15       15           15                      
+  (    0,    41)      15       15           15                      
+  (    0,    42)      15       15           15                      
+  (    0,    43)      15       15           15                      
+  (    0,    44)      15       15           15                      
+rises 8, falls 8, worst step 6: 4 barrier, 0 scramble, 3 drop — BARRIER +6 at (0, -13); BARRIER +4 at (0, -11); DROP -4 at (0, -9); BARRIER +4 at (0, 8); DROP -4 at (0, 10); DROP -6 at (0, 13); BARRIER +3 at (0, 30) | walked end to end
+beside: boulder fall-7#1 at (2, -46), water mere#1 at (0, -33), water mere at (1, -33), boulder fall-7 at (-2, 44)

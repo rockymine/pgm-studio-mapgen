@@ -1,0 +1,59 @@
+## fall-4 (boulder) along x
+TRANSECT 23 stations from (22, 34) to (44, 34), every 1
+  station        ground  surface  water  top  standing            step
+  (   22,    34)      12       12           12                      
+  (   23,    34)      12       12           12                      
+  (   24,    34)      12       12           12                      
+  (   25,    34)      12       12           12                      
+  (   26,    34)      12       12           12                      
+  (   27,    34)      12       12           12                      
+  (   28,    34)      12       12           12                      
+  (   29,    34)      12       12           12                      
+  (   30,    34)      12       12           12                      
+  (   31,    34)      12       12           17  boulder fall-4      
+  (   32,    34)      13       13           17  boulder fall-4      +1
+  (   33,    34)      13       13           18  boulder fall-4      
+  (   34,    34)      13       13           18  boulder fall-4      
+  (   35,    34)      13       13           18  boulder fall-4      
+  (   36,    34)      13       13           17  boulder fall-4      
+  (   37,    34)      13       13           19  tree scrub-7        
+  (   38,    34)      13       13           21  tree scrub-7        
+  (   39,    34)      13       13           17  tree scrub-7        
+  (   40,    34)      13       13           20  tree scrub-7        
+  (   41,    34)      13       13           13                      
+  (   42,    34)      13       13           13                      
+  (   43,    34)      13       13           13                      
+  (   44,    34)      13       13           13                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder fall-4 at (31, 32), tree scrub-7 at (36, 35)
+
+## fall-4 (boulder) along z
+TRANSECT 25 stations from (34, 22) to (34, 46), every 1
+  station        ground  surface  water  top  standing            step
+  (   34,    22)      10       10           10                      
+  (   34,    23)      10       10           10                      
+  (   34,    24)      10       10           10                      
+  (   34,    25)      10       10           10                      
+  (   34,    26)      10       10           10                      
+  (   34,    27)      10       10           10                      
+  (   34,    28)      10       10           10                      
+  (   34,    29)      10       10           10                      
+  (   34,    30)      12       12           12                      scramble +2
+  (   34,    31)      12       12           17  boulder fall-4      
+  (   34,    32)      12       12           17  boulder fall-4      
+  (   34,    33)      12       12           18  boulder fall-4      
+  (   34,    34)      13       13           18  boulder fall-4      +1
+  (   34,    35)      13       13           18  boulder fall-4      
+  (   34,    36)      13       13           17  boulder fall-4      
+  (   34,    37)      13       13           16  boulder fall-4      
+  (   34,    38)      13       13           13                      
+  (   34,    39)      13       13           13                      
+  (   34,    40)      13       13           13                      
+  (   34,    41)      13       13           13                      
+  (   34,    42)      13       13           13                      
+  (   34,    43)      13       13           13                      
+  (   34,    44)      13       13           13                      
+  (   34,    45)      13       13           13                      
+  (   34,    46)      13       13           21  tree scrub-6        
+rises 2, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (34, 30) | walked end to end
+beside: water mere at (32, 20), boulder fall-4 at (32, 31), tree scrub-7 at (36, 35), boulder fall-5 at (35, 41), tree scrub-6 at (36, 45)

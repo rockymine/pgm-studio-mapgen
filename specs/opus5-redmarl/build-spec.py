@@ -1,28 +1,33 @@
 """Redmarl — a CTW board cut into a red marl gully.
 
-Each team's dyehouses stand on its own bank above a dry red watercourse. The wool is fetched out of
-the enemy's dyehouse, carried down into the gully and back up onto your own bank to a plinth at your
-back, so every carry crosses the one piece of ground both teams can reach.
+Each team's ground is offset to its own flank, so the dry red watercourse between them runs corner
+to corner and the two sides come onto it from opposite ends. The wool is fetched out of the enemy's
+dyehouse, carried down into the gully and back up the far bank to a plinth at your own back.
+
+A wool board is judged on how much of its bounding box is land — `fill-ratio`, band [0.201, 0.542],
+which no destroy board is asked — and that is what decides this plan's shape rather than any
+preference: half the box is void, and the void is the two corners each team's bank does not reach.
+The neck of gully floor between them is the only ground both teams stand on.
 
 Four grounds meet on it and each is stated by the one instrument that can state it:
 
   the marl bank      an area mark at 26 with two dunes pushed up behind the dyehouses
-  the apron          an area mark at 23, with one low swell so the open ground is not a table
+  the apron          an area mark at 23, narrower than the bank, with one low swell in it
   the brink          an area mark at 21 held to its edge, so the gully is a face and not a grade
-  the gully floor    an area mark at 17 whose ring wanders eight blocks either side of the plan's
+  the gully neck     an area mark at 17 whose ring wanders six blocks either side of the plan's
                      straight z, which is what stops the frontline reading as a ruled line
 
 and the watercourse itself is a line mark with a narrow tread, so the band either side of it lofts
 back to the floor rather than walling itself.
 
-Three descents a team, and every one of them is authored rather than graded: a built washing stair
-at the centre between two revetments, and a slumped marl slip on the west flank. Under rot_180 a
-team's slip is on the flank opposite its enemy's, so the gully is crossed on the diagonal.
+Two descents a team, and both are authored rather than graded: a built washing stair between two
+revetments, and a slumped marl slip at the neck's own corner. Under rot_180 a team's slip is on the
+flank opposite its enemy's, so the gully is crossed on the diagonal.
 
 The pale built family — smooth sandstone, stone brick — appears only where somebody built it, and
-every place it meets the marl it meets it over a face: the dye yards stand a course proud of the
-bank, the revetments are walls, and the gully's own theme change follows the channel's break of
-slope. Nothing pale is laid flush on red ground.
+every place it meets the marl it meets it over a face: the yards stand a course proud of the bank,
+the revetments are walls, and the gully's own theme change follows the channel's break of slope.
+Nothing pale is laid flush on red ground.
 """
 
 import json, os, sys
@@ -47,37 +52,40 @@ def plan():
         "plan": 2,
         "meta": {"name": "Redmarl"},
         "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 20,
-                    "surface": APRON, "observerY": 60},
+                    "surface": APRON, "observerY": 62},
         "pieces": [
-            # the bank                                            blocks x -64..64, z -96..-72
-            {"id": "bank",   "role": "piece",     "rect": [-16, -24, 32, 6], "surface": BANK},
-            # the two dyehouses on it. 20 x 16 blocks each: a protection region is at most
-            # 20 x 30 (ST10) and the piece is what the protection is cut from.
-            {"id": "dye-w",  "role": "wool-room", "rect": [-15, -23,  5, 4], "surface": BANK},
-            {"id": "dye-e",  "role": "wool-room", "rect": [ 10, -23,  5, 4], "surface": BANK},
-            # the spawn, between them, so both dyehouses are on somebody's journey out of the door
-            {"id": "yard",   "role": "spawn",     "rect": [ -3, -23,  6, 4], "surface": BANK},
-            # the apron                                           blocks x -64..64, z -72..-48
-            {"id": "apron",  "role": "piece",     "rect": [-16, -18, 32, 6], "surface": APRON},
-            # the brink                                           blocks x -64..64, z -48..-28
-            {"id": "brink",  "role": "piece",     "rect": [-16, -12, 32, 5], "surface": BRINK},
-            # the gully floor, the one piece both teams stand on  blocks x -64..64, z -28..28
-            {"id": "strand", "role": "piece",     "rect": [-16,  -7, 32, 14], "surface": FLOOR},
+            # The back row: two dyehouses with the spawn between them, so both are on somebody's
+            # journey out of the door, and each wool marker sits at its room's FAR side -- which
+            # is what buys the 30 blocks WL2 wants out of a 28-block spawn piece (ST10 caps that
+            # piece at 30 x 20).                            blocks x -52..16, z -104..-88
+            {"id": "dye-w",  "role": "wool-room", "rect": [-13, -26, 5, 4], "surface": BANK},
+            {"id": "yard",   "role": "spawn",     "rect": [ -8, -26, 7, 4], "surface": BANK},
+            {"id": "dye-e",  "role": "wool-room", "rect": [ -1, -26, 5, 4], "surface": BANK},
+            # the bank the row stands on                    blocks x -52..16, z -88..-64
+            {"id": "bank",   "role": "piece",     "rect": [-13, -22, 17, 6], "surface": BANK},
+            # the apron, quarried back off both flanks      blocks x -44..-4, z -64..-44
+            {"id": "apron",  "role": "piece",     "rect": [-11, -16, 10, 5], "surface": APRON},
+            # the brink, the lip over the gully             blocks x -44..4,  z -44..-24
+            {"id": "brink",  "role": "piece",     "rect": [-11, -11, 12, 5], "surface": BRINK},
+            # the neck: the gully floor, and the one piece both teams stand on. Each team's brink
+            # docks on its own half of it, so the two sides come on at opposite corners.
+            #                                               blocks x -24..24, z -24..24
+            {"id": "strand", "role": "piece",     "rect": [ -6,  -6, 12, 12], "surface": FLOOR},
         ],
-        # the gully is the build zone: there is ground under all of it, so nothing has to be
-        # bridged -- what is built there is cover, and a fourth way up somebody makes
-        "zones": [{"id": "gully", "rect": [-16, -7, 32, 14], "kind": "build"}],
+        # the build zone over the neck and the two brinks that dock on it
+        "zones": [{"id": "gully", "rect": [-11, -7, 22, 14], "kind": "build"}],
         "placements": {
-            # yard's minimum corner is (-12, -92), so the point is (0, -87) and the room
-            # x -8..8, z -89..-79: a 20 x 14 protection, inside ST10's 20 x 30
-            "spawns": [{"id": "spawn-1", "piece": "yard", "at": [12, 5], "facing": "back",
-                        "footprint": [4, 3, 16, 10]}],
-            "iron": [{"id": "iron-1", "piece": "yard", "at": [4, 8]},
-                     {"id": "iron-2", "piece": "yard", "at": [20, 8]}],
-            # dye-w's corner is (-60, -92) and dye-e's is (40, -92)
-            "wools": [{"id": "wool-1", "piece": "dye-w", "at": [10, 8],
+            # yard's corner is (-32, -104): the point is (-18, -99) and the room x -26..-10,
+            # which leaves each iron cube its 3 x 3 and two blocks of air to the shell
+            "spawns": [{"id": "spawn-1", "piece": "yard", "at": [14, 5], "facing": "back",
+                        "footprint": [6, 3, 16, 10]}],
+            "iron": [{"id": "iron-1", "piece": "yard", "at": [3, 8]},
+                     {"id": "iron-2", "piece": "yard", "at": [26, 8]}],
+            # dye-w's corner is (-52, -104) and dye-e's is (-4, -104); both markers stand at the
+            # far side of their room, 30 blocks from the spawn and 60 from each other
+            "wools": [{"id": "wool-1", "piece": "dye-w", "at": [4, 8],
                        "footprint": [2, 2, 16, 12]},
-                      {"id": "wool-2", "piece": "dye-e", "at": [10, 8],
+                      {"id": "wool-2", "piece": "dye-e", "at": [16, 8],
                        "footprint": [2, 2, 16, 12]}],
             "destroyables": [],
             "cores": [],
@@ -128,6 +136,7 @@ COARSE = solid(3, 1)
 STONE = solid(1)
 COBBLE = solid(4)
 ANDESITE = solid(1, 5)
+BRICK = solid(45)
 BRICK_STONE = solid(98)
 ACACIA = solid(5, 4)
 ACACIA_LOG = solid(162)
@@ -193,7 +202,7 @@ def works_theme():
         "wallOnTerrainFaces": True,
         "rim": {"material": CHIS, "depth": 1, "enabled": True},
         "surface": {"depth": 2, "enabled": True, "material": depth_stack(
-            (cell(31, 6, SMOOTH, BRICK_STONE, SMOOTH, SANDSTONE), 1), (SANDSTONE, 1))},
+            (cell(31, 6, SANDSTONE, BRICK_STONE, SMOOTH, HARDCLAY), 1), (HARDCLAY, 1))},
         "wall": {"kind": "wallRun", "runs": [
             {"material": SANDSTONE, "width": 2},
             {"material": CHIS, "width": 1},
@@ -209,30 +218,30 @@ def marks():
     the back forward and the gully last, cutting its own edge through the brink."""
     return [
         {"id": "bank-pan", "kind": "area", "h": BANK, "bevel": 4,
-         "ring": [[-63, -99], [-34, -97], [-4, -99], [28, -96], [62, -98],
-                  [61, -74], [30, -71], [0, -73], [-30, -70], [-62, -73]]},
+         "ring": [[-54, -106], [-30, -104], [-4, -106], [18, -103],
+                  [17, -64], [-6, -61], [-30, -64], [-54, -62]]},
         {"id": "apron-pan", "kind": "area", "h": APRON, "bevel": 4,
-         "ring": [[-63, -73], [-30, -70], [2, -72], [34, -69], [62, -72],
-                  [61, -49], [28, -47], [-2, -50], [-32, -47], [-62, -50]]},
-        # held to its edge -- a small bevel is what makes the lip a lip
+         "ring": [[-46, -66], [-28, -63], [-10, -66], [-2, -63],
+                  [-3, -43], [-20, -41], [-38, -44], [-46, -42]]},
+        # held to its edge -- a small bevel is what makes the lip a lip. West of x = -24 its own
+        # south edge fronts void, which is the promontory the gully has cut back behind.
         {"id": "brink-pan", "kind": "area", "h": BRINK, "bevel": 2,
-         "ring": [[-63, -50], [-30, -47], [2, -50], [34, -47], [62, -50],
-                  [62, -30], [30, -27], [0, -31], [-30, -28], [-62, -31]]},
-        # the gully. Its north edge wanders eight blocks either side of the plan's z = -28, which
-        # is what keeps the frontline off a ruled line; the ring reaches past the centre so its
-        # own mirror overlaps it and the floor is continuous across z = 0.
+         "ring": [[-46, -46], [-28, -43], [-10, -46], [6, -43],
+                  [5, -26], [-12, -22], [-30, -26], [-46, -23]]},
+        # the neck. Its north edge wanders six blocks either side of the plan's z = -24, which is
+        # what keeps the frontline off a ruled line; the ring reaches past the centre so its own
+        # mirror overlaps it and the floor is continuous across z = 0.
         {"id": "gully-pan", "kind": "area", "h": FLOOR, "bevel": 1,
-         "ring": [[-64, -30], [-48, -25], [-34, -31], [-18, -24], [-2, -30],
-                  [14, -23], [30, -29], [46, -23], [64, -27],
-                  [64, 6], [40, 4], [16, 8], [-10, 3], [-36, 7], [-64, 2]]},
-        # the watercourse. A narrow tread and the rest of the band lofts, so it is a channel cut
-        # in the floor rather than a trench with a wall down both sides. Its own mirror comes up
-        # the other arm of the S and the two nearly meet at the centre, leaving a bar between.
-        {"id": "channel", "kind": "line", "h": CHANNEL, "r": 7, "tread": 2,
-         "points": [[-66, -18], [-46, -10], [-26, -16], [-6, -6], [-1, -2]]},
-        # a side braid joining it off the west slip's foot
+         "ring": [[-26, -26], [-12, -20], [2, -27], [16, -20], [26, -25],
+                  [26, 4], [10, 8], [-6, 2], [-20, 7], [-26, 3]]},
+        # the watercourse, running the neck's diagonal. A narrow tread and the rest of the band
+        # lofts, so it is a channel cut in the floor and not a trench walled down both sides; its
+        # own mirror comes up the other diagonal and the two meet at the centre.
+        {"id": "channel", "kind": "line", "h": CHANNEL, "r": 6, "tread": 2,
+         "points": [[-26, -14], [-14, -8], [-2, -2]]},
+        # a side braid joining it off the slip's foot
         {"id": "braid", "kind": "line", "h": 15.5, "r": 4, "tread": 1,
-         "points": [[-54, -26], [-46, -18], [-38, -11]]},
+         "points": [[-24, -13], [-20, -9], [-15, -5]]},
     ]
 
 
@@ -240,91 +249,90 @@ def pushes():
     """Added to the solved surface after the marks, so each is kept off ground a mark had to
     arrive at: the yards, the stair's head and foot, and the lip."""
     return [
-        {"id": "dune-w", "ring": [[-62, -97], [-48, -95], [-42, -86], [-50, -76], [-62, -80]],
-         "amount": 3.2, "falloff": 11, "crown": 2.5, "roughness": 1.6, "seed": 4},
-        {"id": "dune-e", "ring": [[44, -98], [60, -96], [62, -84], [52, -76], [42, -85]],
+        {"id": "dune-w", "ring": [[-52, -86], [-40, -84], [-36, -74], [-46, -66], [-52, -70]],
+         "amount": 3.0, "falloff": 11, "crown": 2.4, "roughness": 1.5, "seed": 4},
+        {"id": "dune-e", "ring": [[0, -86], [16, -84], [18, -72], [6, -66], [-2, -74]],
          "amount": 2.4, "falloff": 10, "crown": 2.0, "roughness": 1.3, "seed": 11},
-        {"id": "swell", "ring": [[8, -70], [34, -67], [42, -57], [20, -52], [4, -60]],
-         "amount": 1.8, "falloff": 13, "crown": 1.5, "roughness": 1.0, "seed": 21},
+        {"id": "swell", "ring": [[-38, -62], [-26, -60], [-20, -52], [-30, -46], [-40, -52]],
+         "amount": 1.6, "falloff": 14, "crown": 0.6, "roughness": 1.0, "seed": 21},
         # a bar in the bed: cover on the one piece of ground both teams fight over
-        {"id": "bar", "ring": [[-14, -17], [6, -15], [10, -6], [-8, -4], [-18, -10]],
+        {"id": "bar", "ring": [[-8, -14], [6, -12], [10, -4], [-2, 0], [-12, -6]],
          "amount": 1.7, "falloff": 8, "crown": 1.2, "roughness": 0.9, "seed": 31},
     ]
 
 
 def shapes():
-    """What the plan cannot state: the yards the buildings stand on, the three descents into the
+    """What the plan cannot state: the yards the buildings stand on, the two descents into the
     gully, the revetments holding the stair, and the pans the channel left."""
     out = []
 
-    # The three yards. relief_scope exclude takes each footprint out of the solve, and a course
-    # above the bank makes the meeting a riser rather than a change of colour on flat ground.
+    # The three yards, one per building, with three blocks of marl left between them so they read
+    # as three works on a bank rather than one platform. relief_scope exclude takes each footprint
+    # out of the solve, and a course above the bank makes every meeting a riser rather than a
+    # change of colour on flat ground -- which is the one thing this palette cannot get away with.
     for name, ring in (
-            ("yard-dye-w", [[-63, -94], [-52, -96], [-39, -94], [-36, -84],
-                            [-38, -74], [-52, -71], [-63, -75]]),
-            ("yard-dye-e", [[37, -94], [50, -96], [63, -94], [62, -75],
-                            [50, -71], [37, -74], [35, -84]]),
-            ("yard-spawn", [[-15, -93], [0, -95], [15, -93], [16, -80],
-                            [1, -76], [-14, -78], [-16, -84]])):
+            ("yard-dye-w", [[-53, -104], [-44, -106], [-33, -103], [-32, -96],
+                            [-34, -88], [-44, -86], [-53, -90]]),
+            ("yard-spawn", [[-29, -103], [-19, -105], [-9, -103], [-8, -96],
+                            [-10, -89], [-19, -87], [-29, -90]]),
+            ("yard-dye-e", [[-4, -104], [6, -106], [16, -103], [17, -96],
+                            [15, -88], [6, -86], [-4, -90]])):
         out.append({"id": name, "type": "polygon", "operation": "add",
                     "base_height": YARD, "relief_scope": "exclude", "keepClear": True,
                     "theme": "works", "vertices": ring})
 
     # The washing stair: level, sheer-sided, out of the relief's solve so it arrives where it was
-    # told. Fourteen blocks of run against four of rise, and a material rather than a theme --
+    # told. Sixteen blocks of run against four of rise, and a material rather than a theme --
     # a stair is a thing somebody built and a theme is a place.
     out.append({"id": "wash-stair", "type": "polygon", "operation": "add",
                 "height_mode": "level", "skirt": 0, "relief_scope": "exclude",
                 "keepClear": True, "floor": 0,
-                "vertices": [[-9, -32], [9, -32], [9, -18], [-9, -18]],
+                "vertices": [[-6, -36], [2, -36], [2, -20], [-6, -20]],
                 "anchor_heights": [BRINK, BRINK, FLOOR, FLOOR],
                 "material": {"kind": "cell", "seed": 37, "cellSize": 6, "jitter": 1, "warp": 2,
                              "palette": [SMOOTH, BRICK_STONE, SMOOTH, SANDSTONE], "rise": 3}})
 
     # The revetments either side of it. Out of the solve, so they hold the height they were drawn
     # at while the ground falls away under them: a course proud at the head, four at the foot.
-    for side, xs in (("w", -11), ("e", 10)):
+    for side, xs in (("w", -8), ("e", 3)):
         out.append({"id": f"revet-{side}", "type": "polyline", "operation": "add",
                     "radius": 1, "stroke_edge": "solid", "base_height": BRINK + 1,
                     "relief_scope": "exclude", "keepClear": True,
-                    "vertices": [[xs, -34], [xs, -29], [xs, -23], [xs, -17]],
+                    "vertices": [[xs, -37], [xs, -31], [xs, -25], [xs, -19]],
                     "material": {"kind": "layered", "axis": "depth", "stack": {
                         "ending": "repeat", "bands": [
                             {"material": CHIS, "thickness": 1},
                             {"material": SANDSTONE, "thickness": 4}]}}})
 
-    # The west slip: the bank slumped into the gully. Same arithmetic as the stair and the
-    # opposite material -- red scree, so it reads as ground giving way rather than as masonry.
-    # Under rot_180 a team's own slip is on the flank opposite its enemy's.
+    # The slip at the neck's west corner: the bank slumped into the gully. Same arithmetic as the
+    # stair and the opposite material -- red scree, so it reads as ground giving way rather than
+    # as masonry. Under rot_180 a team's own slip is on the flank opposite its enemy's, so the
+    # two sides come onto the neck at opposite corners and the crossing is a diagonal.
     out.append({"id": "slip-w", "type": "polygon", "operation": "add",
                 "height_mode": "level", "skirt": 0, "relief_scope": "exclude",
                 "keepClear": True, "floor": 0,
-                "vertices": [[-57, -35], [-40, -32], [-38, -15], [-55, -17]],
+                "vertices": [[-24, -38], [-16, -36], [-15, -18], [-23, -20]],
                 "anchor_heights": [BRINK, BRINK, FLOOR, FLOOR],
                 "material": {"kind": "cell", "seed": 39, "cellSize": 7, "jitter": 2, "warp": 3,
                              "palette": [RED_SAND, HARDCLAY, COARSE, RED_STONE], "rise": 2}})
 
-    # A bench jutting over the gully on the east flank: brink height, out of the solve, so its
-    # three open sides are faces. Somewhere to shoot the floor from, and no way down off it.
-    out.append({"id": "bench-e", "type": "polygon", "operation": "add",
-                "base_height": BRINK, "relief_scope": "exclude", "keepClear": False,
-                "vertices": [[38, -33], [56, -31], [58, -21], [40, -23]]})
-
     # The pads the vats stand on, so the made layer over them lands on ground of a known height.
-    for name, ring in (("pad-w", [[-42, -68], [-27, -70], [-24, -58], [-38, -55], [-44, -61]]),
-                       ("pad-e", [[24, -66], [39, -68], [44, -60], [34, -53], [22, -57]])):
+    for name, ring in (("pad-w", [[-41, -61], [-33, -63], [-26, -58],
+                                  [-28, -49], [-37, -48], [-42, -54]]),
+                       ("pad-e", [[-20, -59], [-12, -61], [-5, -56],
+                                  [-7, -47], [-16, -46], [-21, -52]])):
         out.append({"id": name, "type": "polygon", "operation": "add",
                     "base_height": APRON, "relief_scope": "exclude", "keepClear": True,
                     "theme": "works", "vertices": ring})
 
     # Where the channel widens, the ground the water left. A brush states a height_mode or it is
     # never a candidate for the paint at all; a raise of zero sits flush and changes no height.
-    for name, ring in (("wash-w", [[-58, -22], [-44, -16], [-36, -9],
-                                   [-44, -5], [-58, -11], [-63, -17]]),
-                       ("wash-mid", [[-30, -20], [-16, -14], [-10, -6],
-                                     [-20, -2], [-32, -8], [-35, -15]]),
-                       ("wash-bar", [[-6, -11], [6, -9], [9, -2],
-                                     [-2, 1], [-10, -4]])):
+    # Every one of these lies along the channel, so its edge is a break of slope and not a line
+    # drawn across flat red ground.
+    for name, ring in (("wash-w", [[-25, -19], [-15, -13], [-9, -6],
+                                   [-17, -2], [-25, -8]]),
+                       ("wash-mid", [[-11, -11], [-1, -7], [4, 0],
+                                     [-5, 4], [-13, -3]])):
         out.append({"id": name, "type": "polygon", "operation": "add",
                     "height_mode": "raise", "base_height": 0, "skirt": 0,
                     "vertices": ring, "theme": "wash"})
@@ -332,16 +340,18 @@ def shapes():
 
 
 def vats():
-    """The dye vats: two stone-lined rings on each apron pad, one holding red liquor and one
-    orange -- the two colours the dyehouses behind them send out. They stand where the sightline
-    across the apron wants breaking, and they are the only stained clay on the board."""
+    """The dye vats: two stone-lined rings on the apron, one holding red liquor and one orange --
+    the two colours the dyehouses behind them send out. They stand where the sightline across the
+    apron wants breaking, and they are the only stained clay on the board."""
     made = []
-    plan_vats = [("vat-w", -33, -62, CLAY_RED), ("vat-e", 33, -60, CLAY_ORANGE)]
+    plan_vats = [("vat-w", -34, -55, CLAY_RED), ("vat-e", -13, -53, CLAY_ORANGE)]
+    # a fill's field is sampled in the plane, so a rise is what stops a face reading as vertical
+    # stripes (PT4) -- a made layer's material is resolved as a fill
     lining = {"kind": "cell", "seed": 57, "cellSize": 4, "jitter": 1, "warp": 2,
-              "palette": [BRICK_STONE, SANDSTONE, BRICK_STONE, COBBLE], "rise": 0}
-    for name, cx, cz, liquor in plan_vats:
-        layer = props.ring_wall(name, cx, cz, outer=6, thickness=1, floor=APRON, height=3,
-                                theme=None, inner_floor=None, name=f"Vat {name[-1]}",
+              "palette": [BRICK_STONE, SANDSTONE, BRICK_STONE, COBBLE], "rise": 3}
+    for vat_id, cx, cz, liquor in plan_vats:
+        layer = props.ring_wall(vat_id, cx, cz, outer=5, thickness=1, floor=APRON, height=3,
+                                theme=None, inner_floor=None, name=f"Vat {vat_id[-1]}",
                                 mirrors=False)
         inner = layer.pop("layout")
         layer["shapes"] = inner["shapes"]
@@ -351,12 +361,12 @@ def vats():
         for shape in layer["shapes"]:
             shape.pop("theme", None)
             shape["material"] = lining
-        # the liquor itself: one course inside the ring, laid over the wall's own floor
-        layer["shapes"].append({"id": f"{name}-liquor", "type": "circle", "operation": "add",
-                                "center_x": cx, "center_z": cz, "radius": 4.5,
+        # the liquor itself: one course inside the ring, an override add so it beats the wall
+        layer["shapes"].append({"id": f"{vat_id}-liquor", "type": "circle", "operation": "add",
+                                "center_x": cx, "center_z": cz, "radius": 3.5,
                                 "floor": APRON, "base_height": 1, "keepClear": True,
                                 "override": True, "material": liquor})
-        layer["groups"][0]["shapeIds"].append(f"{name}-liquor")
+        layer["groups"][0]["shapeIds"].append(f"{vat_id}-liquor")
         made.append(layer)
     return made
 
@@ -383,9 +393,11 @@ def guild_hall():
     under it is the change of material this board is most exposed to."""
     return {
         "foundation": {"plate": band((RED_STONE, 1)), "surface": PLAIN_SURFACE, "footing": None},
-        "roof": {"form": "gable", "pitch": 1, "slab": 182, "slabData": 0, "overhang": 1,
+        # the slab that halves a roof course continues the body, so it is the body's own
+        # material (HS3), and the door head's stair and its fill are one material too (HS4)
+        "roof": {"form": "gable", "pitch": 1, "slab": 44, "slabData": 4, "overhang": 1,
                  "ridgeCap": True, "hole": False,
-                 "body": HARDCLAY, "verge": {"kind": "laidLog", "id": 162, "data": 0},
+                 "body": BRICK, "verge": {"kind": "laidLog", "id": 162, "data": 0},
                  "gable": ACACIA,
                  "gableWindows": window("pane", 102, width=1, height=2, sill=1, spacing=3)},
         "wall": band((HARDCLAY, 3), (ACACIA, 4)),
@@ -399,8 +411,8 @@ def guild_hall():
         "porch": None, "front": None,
         "beams": {"block": 162, "data": 0, "reach": 1, "any": False},
         "doorway": {"door": "air", "width": 2, "height": 3,
-                    "head": {"form": "arched", "block": 134, "fill": "upperSlab",
-                             "fillBlock": 182, "fillData": 0}},
+                    "head": {"form": "arched", "block": 108, "fill": "upperSlab",
+                             "fillBlock": 44, "fillData": 4}},
     }
 
 
@@ -419,7 +431,10 @@ def dyehouse():
          "surface": PLAIN_SURFACE, "deck": None, "headroom": 6},
     ]
     shell["roof"] = dict(shell["roof"], form="gable", pitch=1, overhang=2, ridgeCap=True,
-                         body=BRICK_STONE, gable=ACACIA)
+                         body=BRICK_STONE, slab=44, slabData=5, gable=ACACIA)
+    shell["doorway"] = dict(shell["doorway"],
+                            head={"form": "arched", "block": 109, "fill": "upperSlab",
+                                  "fillBlock": 44, "fillData": 5})
     return shell
 
 
@@ -445,56 +460,58 @@ def dressing():
 
     paving = cell(43, 5, HARDCLAY, COARSE, RED_SAND, HARDCLAY)
     props_out = [
-        # Out of the spawn door, across the apron between the vats, and onto the stair's head.
-        # Three blocks a reader cannot quite tell apart, solid, because a worn band reads as
-        # litter and a path is a claim about where people walk.
+        # Out of the spawn door, down the bank, across the apron between the vats and onto the
+        # stair's head. Three blocks a reader cannot quite tell apart, solid, because a worn band
+        # reads as litter and a path is a claim about where people walk.
         {"id": "track-out", "kind": "stroke", "seed": 41, "radius": 2, "style": "solid",
          "coverage": 1.0, "claimsGround": True, "pave": paving,
-         "points": [[0, -76], [-3, -68], [-1, -58], [0, -50]]},
-        {"id": "track-stair", "kind": "stroke", "seed": 42, "radius": 2, "style": "solid",
+         "points": [[-18, -86], [-21, -78], [-25, -70], [-26, -62]]},
+        {"id": "track-apron", "kind": "stroke", "seed": 42, "radius": 2, "style": "solid",
          "coverage": 1.0, "claimsGround": True, "pave": paving,
-         "points": [[0, -50], [0, -42], [0, -36], [0, -33]]},
-        # and the two haulage tracks to the dyehouses
-        {"id": "track-dye-w", "kind": "stroke", "seed": 43, "radius": 2, "style": "solid",
+         "points": [[-26, -62], [-22, -54], [-14, -48], [-6, -43]]},
+        {"id": "track-stair", "kind": "stroke", "seed": 43, "radius": 2, "style": "solid",
          "coverage": 1.0, "claimsGround": True, "pave": paving,
-         "points": [[-14, -80], [-24, -78], [-34, -80], [-40, -78]]},
-        {"id": "track-dye-e", "kind": "stroke", "seed": 44, "radius": 2, "style": "solid",
+         "points": [[-6, -43], [-4, -40], [-3, -37], [-3, -34]]},
+        # the two haulage tracks along the bank to the dyehouses
+        {"id": "track-dye-w", "kind": "stroke", "seed": 44, "radius": 2, "style": "solid",
          "coverage": 1.0, "claimsGround": True, "pave": paving,
-         "points": [[14, -80], [24, -78], [34, -80], [40, -78]]},
-        # the slip's own worn line, down onto the floor
-        {"id": "track-slip", "kind": "stroke", "seed": 45, "radius": 2, "style": "solid",
+         "points": [[-28, -86], [-35, -88], [-42, -90], [-46, -92]]},
+        {"id": "track-dye-e", "kind": "stroke", "seed": 45, "radius": 2, "style": "solid",
+         "coverage": 1.0, "claimsGround": True, "pave": paving,
+         "points": [[-10, -86], [0, -88], [8, -90], [12, -92]]},
+        # the slip's own worn line, off the apron and down onto the floor
+        {"id": "track-slip", "kind": "stroke", "seed": 46, "radius": 2, "style": "solid",
          "coverage": 0.9, "claimsGround": True, "pave": paving,
-         "points": [[-48, -44], [-48, -38], [-48, -30], [-47, -20]]},
+         "points": [[-32, -48], [-27, -44], [-22, -40], [-20, -36]]},
         # The channel floor: not a path, so not solid -- a scoured bed reads as stones left.
         {"id": "bed", "kind": "stroke", "seed": 47, "radius": 4, "style": "stones",
          "coverage": 0.7, "claimsGround": True,
          "pave": cell(48, 6, GRAVEL, SAND, RED_SAND, COARSE),
-         "points": [[-64, -18], [-46, -10], [-26, -16], [-6, -6]]},
+         "points": [[-26, -14], [-14, -8], [-2, -2]]},
     ]
 
-    # Two drying sheds on the apron flanks. They are here because the flanks need a reason to be
-    # walked and the sightline across the apron needs breaking, and a track runs to one's door.
+    # Two drying sheds on the bank. They are here because the bank needs a reason to be crossed
+    # anywhere but along the track, and a sightline down it needs breaking.
     props_out.append({"id": "shed-w", "kind": "house", "seed": 501, "front": "posZ",
                       "style": "shed",
-                      "wings": [{"corners": [[-58, -70], [-46, -61]], "spec": {"ridge": "alongX"}}]})
+                      "wings": [{"corners": [[-48, -74], [-38, -66]], "spec": {"ridge": "alongX"}}]})
     props_out.append({"id": "shed-e", "kind": "house", "seed": 502, "front": "negZ",
                       "style": "shed",
-                      "wings": [{"corners": [[48, -66], [60, -57]],
+                      "wings": [{"corners": [[0, -76], [10, -68]],
                                  "spec": {"storeysHigh": 1, "ridge": "alongX"}}]})
 
     # Boulders, each where the bed dropped it or where the bank has calved.
-    for at, (bx, bz) in enumerate([(-30, -14), (-12, -22), (18, -18), (36, -12),
-                                   (-52, -8), (24, -40), (-20, -56), (52, -88)]):
+    for at, (bx, bz) in enumerate([(-21, -6), (-6, -18), (8, -10), (18, -4),
+                                   (-40, -30), (-34, -34), (22, -14), (12, -20)]):
         props_out.append({"id": f"rock-{at}", "kind": "boulder", "seed": 610 + at,
                           "x": bx, "z": bz, "style": "rock"})
 
-    # Acacia on the open ground and scrub where the dust is deepest. Every one is off a track and
-    # off the yards, and none is on the gully floor, which is a bed and carries nothing tall.
-    plant = [("holt-1", -30, -92), ("holt-2", 26, -90), ("holt-3", -20, -70),
-             ("holt-1", 30, -76), ("holt-2", 8, -64), ("holt-3", -44, -88),
-             ("scrub-1", -56, -46), ("scrub-1", 54, -44), ("scrub-1", -12, -44),
-             ("scrub-1", 16, -46), ("holt-2", 58, -92), ("holt-3", -60, -64),
-             ("scrub-1", 44, -34), ("scrub-1", -34, -38)]
+    # Acacia on the bank and scrub where the dust is deepest. Every one is off a track and off a
+    # yard, and none is on the gully floor, which is a bed and carries nothing tall.
+    plant = [("holt-1", -32, -78), ("holt-2", -34, -74), ("holt-3", -28, -76),
+             ("holt-1", -40, -46), ("holt-2", -44, -40), ("holt-3", -38, -36),
+             ("scrub-1", -14, -30), ("scrub-1", -36, -26), ("scrub-1", -28, -36),
+             ("scrub-1", -44, -30), ("scrub-1", -20, -26), ("scrub-1", -8, -28)]
     for at, (style, tx, tz) in enumerate(plant):
         props_out.append({"id": f"holt-{at}", "kind": "tree", "seed": 700 + at,
                           "x": tx, "z": tz, "style": style})
@@ -503,8 +520,8 @@ def dressing():
     # patchiness than a hand-drawn outline is, and both gameplay numbers stay low -- tall grass is
     # cover nobody authored, in front of an objective nobody chose.
     props_out.append({"id": "cover", "kind": "flora", "seed": 800,
-                      "points": [[-68, -100], [68, -100], [68, 0], [-68, 0]],
-                      "spec": {"coverage": 0.14, "scale": 30, "octaves": 3, "fernShare": 0.06,
+                      "points": [[-58, -110], [24, -110], [28, 28], [-28, 28]],
+                      "spec": {"coverage": 0.13, "scale": 30, "octaves": 3, "fernShare": 0.06,
                                "flowerShare": 0.04, "flowerScale": 18, "tallShare": 0.03}})
     return {"styles": styles, "props": props_out}
 
@@ -520,7 +537,9 @@ def finish():
         "mapTheme": "marl",
         # the board's outer edge, drawn as an edge rather than as the staircase of rectangles the
         # plan compiled to. The gully's own edge is the gully-pan mark's ring and is not bent.
-        "bendShapes": {"bank-26": {"k": 0.16, "wander": 3, "step": 11, "seed": 5},
+        # the compiled ground is one component named for its first piece, with a shape per
+        # surface it stands at -- `apron-26` is the bank, `apron-23` the apron itself
+        "bendShapes": {"apron-26": {"k": 0.16, "wander": 3, "step": 11, "seed": 5},
                        "apron-23": {"k": 0.18, "wander": 3, "step": 11, "seed": 9}},
         "relief": {"*": {"base": APRON, "reach": 0, "step": 1, "landform": "rolling",
                          "grain": {"amplitude": 1.1, "scale": 19, "seed": 7},

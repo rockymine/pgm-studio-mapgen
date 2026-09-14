@@ -1,0 +1,88 @@
+{
+  "plan": 2,
+  "meta": {
+    "name": "Ochrepans"
+  },
+  "globals": {
+    "cell": 4,
+    "symmetry": "rot_180",
+    "maxPlayers": 16,
+    "surface": 22,
+    "observerY": 62
+  },
+  "pieces": [
+    {
+      "id": "works-n",
+      "role": "piece",
+      "rect": [
+        -13,
+        -19,
+        26,
+        12
+      ],
+      "surface": 22
+    },
+    {
+      "id": "works-mid",
+      "role": "piece",
+      "rect": [
+        -13,
+        -7,
+        26,
+        14
+      ],
+      "surface": 22
+    },
+    {
+      "id": "stead",
+      "role": "spawn",
+      "rect": [
+        -4,
+        -24,
+        7,
+        5
+      ],
+      "surface": 23
+    }
+  ],
+  "placements": {
+    "spawns": [
+      {
+        "id": "spawn-1",
+        "piece": "stead",
+        "at": [
+          14,
+          10
+        ],
+        "facing": "back",
+        "footprint": [
+          6,
+          3,
+          16,
+          14
+        ]
+      }
+    ],
+    "iron": [
+      {
+        "id": "iron-1",
+        "piece": "stead",
+        "at": [
+          3,
+          10
+        ]
+      },
+      {
+        "id": "iron-2",
+        "piece": "stead",
+        "at": [
+          25,
+          10
+        ]
+      }
+    ],
+    "wools": [],
+    "destroyables": [],
+    "cores": []
+  }
+}

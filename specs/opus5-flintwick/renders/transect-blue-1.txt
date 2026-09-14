@@ -1,0 +1,57 @@
+## blue-1 (wool) along x
+TRANSECT 25 stations from (18, -92) to (42, -92), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,   -92)                                                    void
+  (   19,   -92)                                                    void
+  (   20,   -92)      28       28           28                      
+  (   21,   -92)      28       28           34                      
+  (   22,   -92)      28       28           34  wool wool-1#1       
+  (   23,   -92)      28       28           35  wool wool-1#1       
+  (   24,   -92)      28       28           35  wool wool-1#1       
+  (   25,   -92)      28       28           36  wool wool-1#1       
+  (   26,   -92)      28       28           36  wool wool-1#1       
+  (   27,   -92)      28       28           36  wool wool-1#1       
+  (   28,   -92)      28       28           36  wool wool-1#1       
+  (   29,   -92)      28       28           70  wool wool-1#1       
+  (   30,   -92)      28       28           70  wool wool-1#1       
+  (   31,   -92)      28       28           70  wool wool-1#1       
+  (   32,   -92)      28       28           36  wool wool-1#1       
+  (   33,   -92)      28       28           36  wool wool-1#1       
+  (   34,   -92)      28       28           36  wool wool-1#1       
+  (   35,   -92)      28       28           35  wool wool-1#1       
+  (   36,   -92)      28       28           35  wool wool-1#1       
+  (   37,   -92)      28       28           34  wool wool-1#1       
+  (   38,   -92)      28       28           34                      
+  (   39,   -92)      28       28           28                      
+  (   40,   -92)                                                    void
+  (   41,   -92)                                                    void
+  (   42,   -92)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-1#1 at (22, -94)
+
+## blue-1 (wool) along z
+TRANSECT 21 stations from (30, -100) to (30, -80), every 1
+  station        ground  surface  water  top  standing            step
+  (   30,  -100)      28       28           28                      
+  (   30,   -99)      28       28           34                      
+  (   30,   -98)      28       28           34  wool wool-1#1       
+  (   30,   -97)      28       28           35  wool wool-1#1       
+  (   30,   -96)      28       28           35  wool wool-1#1       
+  (   30,   -95)      28       28           36  wool wool-1#1       
+  (   30,   -94)      28       28           36  wool wool-1#1       
+  (   30,   -93)      28       28           70  wool wool-1#1       
+  (   30,   -92)      28       28           70  wool wool-1#1       
+  (   30,   -91)      28       28           70  wool wool-1#1       
+  (   30,   -90)      28       28           35  wool wool-1#1       
+  (   30,   -89)      28       28           35  wool wool-1#1       
+  (   30,   -88)      28       28           34  wool wool-1#1       
+  (   30,   -87)      28       28           34                      
+  (   30,   -86)      28       28           29  redstoneline 0#1    
+  (   30,   -85)      28       28           28                      
+  (   30,   -84)      28       28           28                      
+  (   30,   -83)      28       28           28                      
+  (   30,   -82)      26       26           26                      -2
+  (   30,   -81)      26       26           26                      
+  (   30,   -80)      26       26           26                      
+rises 0, falls 1, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-1#1 at (28, -98), redstoneline 0#1 at (28, -86)

@@ -1,0 +1,8 @@
+THEMES  3 themes over 13500 ground cells, 19 distinct surface blocks
+  basalt  9379 cells (69.5%)  16:0 Coal Ore, 13:0 Gravel, 4:0 Cobblestone, 1:5 Andesite, 159:7 Gray Stained Clay, 1:0 Stone, 5:0 Oak Planks, 173:0 Coal Block, 159:15 Black Stained Clay, 98:0 Stone Bricks, 1:6 Polished Andesite, 48:0 Mossy Cobblestone
+  weed  3712 cells (27.5%)  9:0 Water, 48:0 Mossy Cobblestone, 159:13 Green Stained Clay, 168:2 Dark Prismarine, 16:0 Coal Ore, 4:0 Cobblestone, 1:0 Stone, 13:0 Gravel
+  stack  409 cells (3.0%)  159:15 Black Stained Clay, 159:0 White Stained Clay, 1:5 Andesite, 173:0 Coal Block
+borders:
+  basalt | weed  475 cells
+  stack | weed  53 cells
+  basalt | stack  49 cells

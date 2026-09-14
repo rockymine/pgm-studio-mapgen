@@ -1,0 +1,61 @@
+## rock-6 (boulder) along x
+TRANSECT 25 stations from (-48, -66) to (-24, -66), every 1
+  station        ground  surface  water  top  standing            step
+  (  -48,   -66)      25       35           35  storey              
+  (  -47,   -66)      25       35           35  storey              
+  (  -46,   -66)      25       40           40  storey              BARRIER +5
+  (  -45,   -66)      25       40           40  storey              
+  (  -44,   -66)      25       25           25                      DROP -15
+  (  -43,   -66)      25       25           25                      
+  (  -42,   -66)      25       25           25                      
+  (  -41,   -66)      25       25           25                      
+  (  -40,   -66)      25       40           40  storey              BARRIER +15
+  (  -39,   -66)      25       40           40  storey              
+  (  -38,   -66)      25       35           35  storey              DROP -5
+  (  -37,   -66)      25       35           35  storey              
+  (  -36,   -66)      25       30           30  storey              DROP -5
+  (  -35,   -66)      25       25           25                      DROP -5
+  (  -34,   -66)      25       25           25                      
+  (  -33,   -66)      25       25           25                      
+  (  -32,   -66)      24       24           24                      -1
+  (  -31,   -66)      24       24           24                      
+  (  -30,   -66)      24       24           24                      
+  (  -29,   -66)      24       24           24                      
+  (  -28,   -66)      24       24           24                      
+  (  -27,   -66)      24       24           24                      
+  (  -26,   -66)      24       24           24                      
+  (  -25,   -66)      24       24           24                      
+  (  -24,   -66)      24       24           24                      
+rises 2, falls 5, worst step 15: 2 barrier, 0 scramble, 4 drop — BARRIER +5 at (-46, -66); DROP -15 at (-44, -66); BARRIER +15 at (-40, -66); DROP -5 at (-38, -66); DROP -5 at (-36, -66); DROP -5 at (-35, -66) | walked end to end
+beside: stroke track-kiln at (-27, -64)
+
+## rock-6 (boulder) along z
+TRANSECT 25 stations from (-36, -78) to (-36, -54), every 1
+  station        ground  surface  water  top  standing            step
+  (  -36,   -78)      25       25           25                      
+  (  -36,   -77)      25       25           25                      
+  (  -36,   -76)      25       25           25                      
+  (  -36,   -75)      24       24           24                      -1
+  (  -36,   -74)      24       24           24                      
+  (  -36,   -73)      24       24           24                      
+  (  -36,   -72)      25       25           25                      +1
+  (  -36,   -71)      25       25           25                      
+  (  -36,   -70)      25       25           25                      
+  (  -36,   -69)      25       25           25                      
+  (  -36,   -68)      25       30           30  storey              BARRIER +5
+  (  -36,   -67)      25       30           30  storey              
+  (  -36,   -66)      25       30           30  storey              
+  (  -36,   -65)      25       30           30  storey              
+  (  -36,   -64)      25       30           30  storey              
+  (  -36,   -63)      25       30           30  storey              
+  (  -36,   -62)      25       25           25                      DROP -5
+  (  -36,   -61)      25       25           25                      
+  (  -36,   -60)      25       25           25                      
+  (  -36,   -59)      26       26           26                      +1
+  (  -36,   -58)      26       26           26                      
+  (  -36,   -57)      26       26           26                      
+  (  -36,   -56)      26       26           26                      
+  (  -36,   -55)      25       25           25                      -1
+  (  -36,   -54)      25       25           25                      
+rises 3, falls 3, worst step 5: 1 barrier, 0 scramble, 1 drop — BARRIER +5 at (-36, -68); DROP -5 at (-36, -62) | walked end to end
+beside: (none)

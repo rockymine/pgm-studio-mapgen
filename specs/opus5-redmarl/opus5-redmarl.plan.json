@@ -8,37 +8,15 @@
     "symmetry": "rot_180",
     "maxPlayers": 20,
     "surface": 23,
-    "observerY": 60
+    "observerY": 62
   },
   "pieces": [
-    {
-      "id": "bank",
-      "role": "piece",
-      "rect": [
-        -16,
-        -24,
-        32,
-        6
-      ],
-      "surface": 26
-    },
     {
       "id": "dye-w",
       "role": "wool-room",
       "rect": [
-        -15,
-        -23,
-        5,
-        4
-      ],
-      "surface": 26
-    },
-    {
-      "id": "dye-e",
-      "role": "wool-room",
-      "rect": [
-        10,
-        -23,
+        -13,
+        -26,
         5,
         4
       ],
@@ -48,10 +26,32 @@
       "id": "yard",
       "role": "spawn",
       "rect": [
-        -3,
-        -23,
-        6,
+        -8,
+        -26,
+        7,
         4
+      ],
+      "surface": 26
+    },
+    {
+      "id": "dye-e",
+      "role": "wool-room",
+      "rect": [
+        -1,
+        -26,
+        5,
+        4
+      ],
+      "surface": 26
+    },
+    {
+      "id": "bank",
+      "role": "piece",
+      "rect": [
+        -13,
+        -22,
+        17,
+        6
       ],
       "surface": 26
     },
@@ -59,10 +59,10 @@
       "id": "apron",
       "role": "piece",
       "rect": [
+        -11,
         -16,
-        -18,
-        32,
-        6
+        10,
+        5
       ],
       "surface": 23
     },
@@ -70,9 +70,9 @@
       "id": "brink",
       "role": "piece",
       "rect": [
-        -16,
-        -12,
-        32,
+        -11,
+        -11,
+        12,
         5
       ],
       "surface": 21
@@ -81,10 +81,10 @@
       "id": "strand",
       "role": "piece",
       "rect": [
-        -16,
-        -7,
-        32,
-        14
+        -6,
+        -6,
+        12,
+        12
       ],
       "surface": 17
     }
@@ -93,9 +93,9 @@
     {
       "id": "gully",
       "rect": [
-        -16,
+        -11,
         -7,
-        32,
+        22,
         14
       ],
       "kind": "build"
@@ -107,12 +107,12 @@
         "id": "spawn-1",
         "piece": "yard",
         "at": [
-          12,
+          14,
           5
         ],
         "facing": "back",
         "footprint": [
-          4,
+          6,
           3,
           16,
           10
@@ -124,7 +124,7 @@
         "id": "iron-1",
         "piece": "yard",
         "at": [
-          4,
+          3,
           8
         ]
       },
@@ -132,7 +132,7 @@
         "id": "iron-2",
         "piece": "yard",
         "at": [
-          20,
+          26,
           8
         ]
       }
@@ -142,7 +142,7 @@
         "id": "wool-1",
         "piece": "dye-w",
         "at": [
-          10,
+          4,
           8
         ],
         "footprint": [
@@ -156,7 +156,7 @@
         "id": "wool-2",
         "piece": "dye-e",
         "at": [
-          10,
+          16,
           8
         ],
         "footprint": [

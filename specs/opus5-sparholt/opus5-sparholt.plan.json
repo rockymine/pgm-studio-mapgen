@@ -1,0 +1,91 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Sparholt"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 24,
+  "surface": 24,
+  "observerY": 56
+ },
+ "pieces": [
+  {
+   "id": "works",
+   "role": "piece",
+   "rect": [
+    -8,
+    0,
+    16,
+    4
+   ],
+   "surface": 24
+  },
+  {
+   "id": "yard",
+   "role": "piece",
+   "rect": [
+    -8,
+    4,
+    16,
+    8
+   ],
+   "surface": 24
+  },
+  {
+   "id": "lodge",
+   "role": "spawn",
+   "rect": [
+    -3,
+    12,
+    6,
+    3
+   ],
+   "surface": 25
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "lodge",
+    "at": [
+     15,
+     7
+    ],
+    "facing": "front",
+    "footprint": [
+     6,
+     3,
+     18,
+     9
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "lodge",
+    "at": [
+     2,
+     7
+    ]
+   },
+   {
+    "id": "iron-2",
+    "piece": "lodge",
+    "at": [
+     28,
+     7
+    ]
+   }
+  ],
+  "wools": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}
