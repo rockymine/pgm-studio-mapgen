@@ -61,8 +61,8 @@
         <mode id="mode-glass" after="20m" material="glass"/>
     </modes>
     <destroyables>
-        <destroyable id="peat-store" name="Peat Store" owner="red-team" materials="ender stone" repairable="false" mode-changes="true" region="peat-store-region"/>
-        <destroyable id="peat-store-2" name="Peat Store" owner="blue-team" materials="ender stone" repairable="false" mode-changes="true" region="peat-store-2-region"/>
+        <destroyable id="peat-store" name="Peat Store" owner="red-team" materials="emerald block" repairable="false" mode-changes="true" region="peat-store-region"/>
+        <destroyable id="peat-store-2" name="Peat Store" owner="blue-team" materials="emerald block" repairable="false" mode-changes="true" region="peat-store-2-region"/>
     </destroyables>
     <filters>
         <team id="only-blue">blue-team</team>
@@ -159,7 +159,7 @@
         <item>leather chestplate</item>
         <item>chainmail leggings</item>
         <item>leather boots</item>
-        <item>ender stone</item>
+        <item>emerald block</item>
         <item>gold block</item>
         <item>glass</item>
     </itemremove>

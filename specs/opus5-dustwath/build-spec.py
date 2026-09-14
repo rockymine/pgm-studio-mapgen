@@ -64,12 +64,12 @@ def plan():
             # centre line, which is what keeps the flanks on a journey somebody makes
             # A cube and not a pillar: `pillar-3` is three blocks of obsidian and `cube-3` is
             # twenty-seven, and this goal stands forty blocks out of its own camp door -- the
-            # count is what gives a defender time to arrive. The material follows from the count:
-            # `DC3` holds obsidian worth at most three blocks, so twenty-seven of it is a grind
-            # rather than a raid, and ender stone is what the gate names for a cube. One of the
-            # four the stamper builds (obsidian · emerald block · gold block · ender stone).
+            # count is what gives a defender time to arrive. `DC3` holds obsidian worth at most
+            # three blocks, so a cube states one of the other three the stamper builds, and
+            # emerald block is the hardest of them: the count buys the defender time only if each
+            # block also costs something to break.
             "destroyables": [{"id": "destroyable-1", "piece": "bench", "at": [18, 5],
-                              "style": "cube-3", "materials": "ender stone", "float": 4,
+                              "style": "cube-3", "materials": "emerald block", "float": 4,
                               "name": "The Wath Stone"}],
         },
     }

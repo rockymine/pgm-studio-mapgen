@@ -61,8 +61,8 @@
         <mode id="mode-glass" after="20m" material="glass"/>
     </modes>
     <destroyables>
-        <destroyable id="the-cairn" name="The Cairn" owner="red-team" materials="ender stone" repairable="false" mode-changes="true" region="the-cairn-region"/>
-        <destroyable id="the-cairn-2" name="The Cairn" owner="blue-team" materials="ender stone" repairable="false" mode-changes="true" region="the-cairn-2-region"/>
+        <destroyable id="the-cairn" name="The Cairn" owner="red-team" materials="emerald block" repairable="false" mode-changes="true" region="the-cairn-region"/>
+        <destroyable id="the-cairn-2" name="The Cairn" owner="blue-team" materials="emerald block" repairable="false" mode-changes="true" region="the-cairn-2-region"/>
     </destroyables>
     <filters>
         <team id="only-blue">blue-team</team>
@@ -159,7 +159,7 @@
         <item>leather chestplate</item>
         <item>chainmail leggings</item>
         <item>leather boots</item>
-        <item>ender stone</item>
+        <item>emerald block</item>
         <item>gold block</item>
         <item>glass</item>
     </itemremove>

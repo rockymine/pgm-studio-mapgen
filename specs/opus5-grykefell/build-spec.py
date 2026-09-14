@@ -45,8 +45,12 @@ plan = {
                    {"id": "iron-2", "piece": "bield", "at": [28, 7]}],
         # the monument stands 14 blocks off the centre line on purpose: a goal on the axis gives the
         # board two journeys down its middle and leaves both flanks dead (`coverage`)
+        # emerald block rather than the default: `DC3` holds obsidian worth at most three blocks
+        # and substitutes ender stone for a cube, which is the softest of the four the stamper
+        # builds -- emerald is the hardest, so twenty-seven of it costs a raider something
         "destroyables": [{"id": "destroyable-1", "piece": "fell", "at": [60, 44],
-                          "style": "cube-3", "float": 4, "name": "The Cairn"}],
+                          "style": "cube-3", "float": 4, "name": "The Cairn",
+                          "materials": "emerald block"}],
         "cores": [], "wools": [],
     },
     "walls": [], "boxes": [],

@@ -138,7 +138,7 @@ PLAN = {
         "wools": [],
         "destroyables": [{"id": "mon-1", "piece": "", "at": [-12, 52],
                           "style": "cube-3", "float": 4,
-                          "name": "Peat Store", "materials": "ender stone"}],
+                          "name": "Peat Store", "materials": "emerald block"}],
         "cores": [],
     },
     "walls": [], "boxes": [],
