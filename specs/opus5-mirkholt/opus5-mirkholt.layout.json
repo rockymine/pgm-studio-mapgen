@@ -6,10 +6,10 @@
    "cz": 0
   },
   "bbox": {
-   "min_x": -55,
-   "max_x": 55,
-   "min_z": -115,
-   "max_z": 115
+   "min_x": -60,
+   "max_x": 60,
+   "min_z": -120,
+   "max_z": 120
   }
  },
  "layers": [
@@ -38,19 +38,19 @@
       "vertices": [
        [
         -35,
-        10
+        15
        ],
        [
         35,
-        10
+        15
        ],
        [
         35,
-        30
+        25
        ],
        [
         -35,
-        30
+        25
        ]
       ],
       "controls": null,
@@ -86,19 +86,19 @@
       "vertices": [
        [
         -50,
-        30
+        25
        ],
        [
         -5,
-        30
+        25
        ],
        [
         -5,
-        55
+        70
        ],
        [
         -50,
-        55
+        70
        ]
       ],
       "controls": null,
@@ -134,19 +134,19 @@
       "vertices": [
        [
         -50,
-        55
+        70
        ],
        [
         -10,
-        55
+        70
        ],
        [
         -10,
-        65
+        75
        ],
        [
         -50,
-        65
+        75
        ]
       ],
       "controls": null,
@@ -181,52 +181,52 @@
       "radius": null,
       "vertices": [
        [
-        -50,
-        80
+        -55,
+        85
        ],
        [
-        -30,
-        80
+        -40,
+        85
        ],
        [
-        -30,
-        65
-       ],
-       [
-        20,
-        65
-       ],
-       [
-        20,
-        35
+        -40,
+        75
        ],
        [
         35,
-        35
+        75
        ],
        [
         35,
-        80
+        85
        ],
        [
-        20,
-        80
+        50,
+        85
        ],
        [
-        20,
-        110
+        50,
+        100
        ],
        [
-        -5,
-        110
+        10,
+        100
        ],
        [
-        -5,
-        95
+        10,
+        115
        ],
        [
-        -50,
-        95
+        -15,
+        115
+       ],
+       [
+        -15,
+        100
+       ],
+       [
+        -55,
+        100
        ]
       ],
       "controls": null,
@@ -252,10 +252,10 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": -5,
-      "min_z": 95,
-      "max_x": 20,
-      "max_z": 110,
+      "min_x": -15,
+      "min_z": 100,
+      "max_x": 10,
+      "max_z": 115,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -285,10 +285,10 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": 1,
-      "min_z": 98,
-      "max_x": 14,
-      "max_z": 109,
+      "min_x": -9,
+      "min_z": 103,
+      "max_x": 4,
+      "max_z": 114,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -316,10 +316,10 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": -20,
-      "min_z": -110,
-      "max_x": 5,
-      "max_z": -95,
+      "min_x": -10,
+      "min_z": -115,
+      "max_x": 15,
+      "max_z": -100,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -347,10 +347,10 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": -14,
-      "min_z": -109,
-      "max_x": -1,
-      "max_z": -98,
+      "min_x": -4,
+      "min_z": -114,
+      "max_x": 9,
+      "max_z": -103,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -378,10 +378,10 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": -50,
-      "min_z": 80,
-      "max_x": -30,
-      "max_z": 95,
+      "min_x": -55,
+      "min_z": 85,
+      "max_x": -40,
+      "max_z": 100,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -411,10 +411,10 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": -47,
-      "min_z": 82,
-      "max_x": -33,
-      "max_z": 93,
+      "min_x": -53,
+      "min_z": 87,
+      "max_x": -42,
+      "max_z": 98,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -442,10 +442,10 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": 20,
-      "min_z": 35,
-      "max_x": 35,
-      "max_z": 55,
+      "min_x": 35,
+      "min_z": 85,
+      "max_x": 50,
+      "max_z": 100,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -464,7 +464,7 @@
       "color": "orange",
       "height_authored": null,
       "doors": [
-       "+z"
+       "-x"
       ],
       "theme": null,
       "material": null
@@ -475,10 +475,10 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": 21,
-      "min_z": 38,
-      "max_x": 34,
-      "max_z": 52,
+      "min_x": 37,
+      "min_z": 87,
+      "max_x": 48,
+      "max_z": 98,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -506,10 +506,10 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": 30,
-      "min_z": -95,
-      "max_x": 50,
-      "max_z": -80,
+      "min_x": 40,
+      "min_z": -100,
+      "max_x": 55,
+      "max_z": -85,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -537,10 +537,10 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": 33,
-      "min_z": -93,
-      "max_x": 47,
-      "max_z": -82,
+      "min_x": 42,
+      "min_z": -98,
+      "max_x": 53,
+      "max_z": -87,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -568,10 +568,10 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": -35,
-      "min_z": -55,
-      "max_x": -20,
-      "max_z": -35,
+      "min_x": -50,
+      "min_z": -100,
+      "max_x": -35,
+      "max_z": -85,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -599,10 +599,10 @@
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": -34,
-      "min_z": -52,
-      "max_x": -21,
-      "max_z": -38,
+      "min_x": -48,
+      "min_z": -98,
+      "max_x": -37,
+      "max_z": -87,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -663,26 +663,26 @@
       "vertices": [
        [
         -18,
-        70
+        81
        ],
        [
         -10,
-        70
+        81
        ],
        [
         -10,
-        56
+        69
        ],
        [
         -18,
-        56
+        69
        ]
       ],
       "anchor_heights": [
        16,
        16,
-       15,
-       15
+       14,
+       14
       ]
      }
     ],
@@ -21587,27 +21587,27 @@
     "points": [
      [
       -26,
-      74
+      81
      ],
      [
       -20,
-      60
+      71
      ],
      [
       -16,
-      44
+      53
      ],
      [
       -14,
-      30
+      38
      ],
      [
       -10,
-      20
+      24
      ],
      [
       -2,
-      15
+      18
      ]
     ],
     "radius": 2,
@@ -21652,19 +21652,19 @@
     "points": [
      [
       8,
-      97
+      102
      ],
      [
       2,
-      91
+      96
      ],
      [
       -4,
-      85
+      90
      ],
      [
       -10,
-      78
+      82
      ]
     ],
     "radius": 2,
@@ -21707,12 +21707,12 @@
      {
       "corners": [
        [
-        -28,
-        71
+        14,
+        76
        ],
        [
-        -20,
-        79
+        22,
+        84
        ]
       ]
      }
@@ -21721,10 +21721,10 @@
    {
     "id": "stone-0",
     "kind": "boulder",
-    "x": -44,
-    "z": 32,
-    "radius": 3,
-    "height": 4,
+    "x": 8,
+    "z": 20,
+    "radius": 2,
+    "height": 2,
     "seed": 71,
     "layer": "ground",
     "material": {
@@ -21756,8 +21756,8 @@
    {
     "id": "stone-1",
     "kind": "boulder",
-    "x": 8,
-    "z": 18,
+    "x": 18,
+    "z": 22,
     "radius": 2,
     "height": 2,
     "seed": 72,
@@ -21791,10 +21791,10 @@
    {
     "id": "stone-2",
     "kind": "boulder",
-    "x": -44,
-    "z": 60,
-    "radius": 2,
-    "height": 3,
+    "x": -34,
+    "z": 79,
+    "radius": 3,
+    "height": 4,
     "seed": 73,
     "layer": "ground",
     "material": {
@@ -21826,8 +21826,8 @@
    {
     "id": "stone-3",
     "kind": "boulder",
-    "x": -30,
-    "z": 58,
+    "x": 28,
+    "z": 79,
     "radius": 2,
     "height": 3,
     "seed": 74,
@@ -21861,17 +21861,17 @@
    {
     "id": "holt-0",
     "kind": "tree",
-    "style": "scrub-b",
-    "x": -15,
-    "z": 15,
+    "style": "mirk-dense-b",
+    "x": 27,
+    "z": 20,
     "layer": "ground"
    },
    {
     "id": "holt-1",
     "kind": "tree",
-    "style": "mirk-dense-b",
-    "x": 27,
-    "z": 15,
+    "style": "mirk-dense-a",
+    "x": -40,
+    "z": 31,
     "layer": "ground"
    },
    {
@@ -21879,71 +21879,71 @@
     "kind": "tree",
     "style": "scrub-a",
     "x": -30,
-    "z": 16,
+    "z": 35,
     "layer": "ground"
    },
    {
     "id": "holt-3",
     "kind": "tree",
-    "style": "scrub-a",
-    "x": -30,
-    "z": 23,
+    "style": "scrub-b",
+    "x": -21,
+    "z": 33,
     "layer": "ground"
    },
    {
     "id": "holt-4",
     "kind": "tree",
-    "style": "scrub-b",
-    "x": -21,
-    "z": 21,
+    "style": "scrub-a",
+    "x": -42,
+    "z": 40,
     "layer": "ground"
    },
    {
     "id": "holt-5",
     "kind": "tree",
-    "style": "mirk-dense-b",
-    "x": 25,
-    "z": 24,
+    "style": "scrub-a",
+    "x": -42,
+    "z": 47,
     "layer": "ground"
    },
    {
     "id": "holt-6",
     "kind": "tree",
-    "style": "mirk-dense-a",
-    "x": 10,
-    "z": 25,
+    "style": "mirk-dense-b",
+    "x": -32,
+    "z": 44,
     "layer": "ground"
    },
    {
     "id": "holt-7",
     "kind": "tree",
-    "style": "mirk-dense-b",
-    "x": -36,
-    "z": 36,
+    "style": "mirk-dense-a",
+    "x": -34,
+    "z": 53,
     "layer": "ground"
    },
    {
     "id": "holt-8",
     "kind": "tree",
     "style": "mirk-dense-b",
-    "x": -38,
-    "z": 45,
+    "x": -42,
+    "z": 61,
     "layer": "ground"
    },
    {
     "id": "holt-9",
     "kind": "tree",
-    "style": "mirk-tall-b",
-    "x": 0,
-    "z": 70,
+    "style": "mirk-dense-b",
+    "x": -32,
+    "z": 65,
     "layer": "ground"
    },
    {
     "id": "holt-10",
     "kind": "tree",
-    "style": "mirk-tall-b",
-    "x": 12,
-    "z": 72,
+    "style": "scrub-a",
+    "x": -11,
+    "z": 65,
     "layer": "ground"
    },
    {
@@ -21954,19 +21954,19 @@
     "points": [
      [
       -50,
-      10
+      15
      ],
      [
       35,
-      10
+      15
      ],
      [
       35,
-      50
+      68
      ],
      [
       -50,
-      50
+      68
      ]
     ],
     "spec": {
@@ -21988,19 +21988,19 @@
     "points": [
      [
       -50,
-      50
+      68
      ],
      [
-      18,
-      50
+      35,
+      68
      ],
      [
-      18,
-      80
+      35,
+      85
      ],
      [
       -50,
-      80
+      85
      ]
     ],
     "spec": {
@@ -22040,35 +22040,35 @@
      "ring": [
       [
        -48,
-       32
+       28
       ],
       [
        -34,
-       30
+       27
       ],
       [
        -20,
-       31
+       28
       ],
       [
        -8,
-       33
+       30
       ],
       [
        -8,
-       44
+       53
       ],
       [
        -14,
-       52
+       63
       ],
       [
        -32,
-       54
+       67
       ],
       [
        -48,
-       50
+       64
       ]
      ]
     },
@@ -22080,43 +22080,43 @@
      "ring": [
       [
        -34,
-       12
+       17
       ],
       [
        -18,
-       10
+       15
       ],
       [
        0,
-       13
+       18
       ],
       [
        16,
-       11
+       16
       ],
       [
        34,
-       12
+       17
       ],
       [
        34,
-       28
+       23
       ],
       [
        14,
-       30
+       25
       ],
       [
        -2,
-       27
+       22
       ],
       [
        -20,
-       29
+       24
       ],
       [
        -34,
-       27
+       23
       ]
      ]
     },
@@ -22136,27 +22136,27 @@
      "points": [
       [
        -26,
-       74
+       81
       ],
       [
        -20,
-       60
+       71
       ],
       [
        -16,
-       44
+       53
       ],
       [
        -14,
-       30
+       38
       ],
       [
        -10,
-       20
+       24
       ],
       [
        -2,
-       15
+       18
       ]
      ]
     },
@@ -22168,65 +22168,65 @@
      "tread": 4,
      "ring": [
       [
-       -28,
-       68
+       -38,
+       78
       ],
       [
-       -12,
-       66
+       -18,
+       76
       ],
       [
-       6,
-       67
-      ],
-      [
-       18,
-       69
+       0,
+       77
       ],
       [
        18,
-       108
+       77
       ],
       [
-       -4,
-       108
+       33,
+       78
       ],
       [
-       -4,
-       93
+       48,
+       87
       ],
       [
-       -48,
-       93
+       48,
+       98
       ],
       [
-       -48,
-       82
+       -53,
+       98
+      ],
+      [
+       -53,
+       87
       ]
      ]
     },
     {
-     "id": "spur",
+     "id": "bield",
      "kind": "area",
      "h": 16,
      "bevel": 2,
      "tread": 3,
      "ring": [
       [
-       22,
-       38
+       -13,
+       98
       ],
       [
-       33,
-       38
+       8,
+       98
       ],
       [
-       33,
-       78
+       8,
+       113
       ],
       [
-       22,
-       78
+       -13,
+       113
       ]
      ]
     }
@@ -22237,19 +22237,19 @@
      "ring": [
       [
        -49,
-       30
+       34
       ],
       [
        -41,
-       28
+       32
       ],
       [
        -39,
-       50
+       56
       ],
       [
        -47,
-       54
+       60
       ]
      ],
      "amount": 7,
@@ -22262,20 +22262,20 @@
      "id": "howe",
      "ring": [
       [
-       -30,
-       66
-      ],
-      [
-       -14,
-       64
-      ],
-      [
-       -6,
-       72
-      ],
-      [
-       -22,
+       -8,
        76
+      ],
+      [
+       4,
+       75
+      ],
+      [
+       10,
+       82
+      ],
+      [
+       -2,
+       84
       ]
      ],
      "amount": 3,

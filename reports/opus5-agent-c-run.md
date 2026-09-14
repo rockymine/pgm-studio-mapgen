@@ -19,8 +19,8 @@ the hill is holding a place with no back to it.*
 **opus5-mirkholt — CTW.** *A wood dark enough that the only things you can see across are the two
 clearings the wools stand in, cut by one hollow way that is roofed and blind both ways — so a wool run
 is a choice between the lane you cannot see out of and the brow above it, where you are the one thing
-moving that anybody can see; and each wool stands sixty-odd blocks down a bare spur of its own, so
-reaching one is a commitment rather than a step sideways out of the door.*
+moving that anybody can see; and each wool stands sixty blocks down a bare lane of its own, so reaching
+one is a commitment rather than a step sideways out of the door.*
 
 **opus5-slakemoss — DTC.** *A hall the moss and the water took back: each core stands on a dry plinth
 in a ruined chapter house, and the middle is a roofless nave already under water — so the short way to
@@ -39,7 +39,7 @@ stained clay, dark oak, podzol and mossy cobble under swamp, deep-ocean and roof
 |---|---|---|---|---|---|---|
 | `opus5-peatgarth` | DTM | 80 × 200 | 91.4 / 5.7 / 2.9 | 11 790 · 74 · 296, 4 faces | 30 placed, **0 declined** | 25.3 % |
 | `opus5-basaltmere` | KotH | 90 × 190 | 64.2 / 27.0 / 5.8 / 3.0 | 12 781 · 234 · 720, 8 faces | 38 placed, 1 declined | 49.3 %* |
-| `opus5-mirkholt` | CTW | 100 × 220 | 48.7 / 27.1 / 24.2 | 11 372 · 88 · 90, 4 faces | 36 placed, **0 declined** | 0.1 % |
+| `opus5-mirkholt` | CTW | 110 × 230 | 47.1 / 40.4 / 12.4 | 11 160 · 42 · 48, 4 faces | 34 placed, 1 declined | 0.0 % |
 | `opus5-slakemoss` | DTC | 90 × 200 | 40.4 / 31.5 / 28.1 | 14 292 · 182 · 326, 4 faces | 40 placed, 1 declined | 27.8 % |
 
 \* not a coverage figure that means anything: `GET /coverage` cannot see a control point, so on a KotH
@@ -51,7 +51,7 @@ Relief reads, all four with symmetry error 0 and no silent marks:
 |---|---|---|---|---|---|
 | peatgarth | 0.431 | 0.167 | 0 / 0 | rolling | none |
 | basaltmere | 0.649 | 0.477 | 4 / 1 | rolling | none |
-| mirkholt | 0.526 | 0.357 | 0 / 0 | rolling | none |
+| mirkholt | 0.458 | 0.326 | 0 / 0 | rolling | none |
 | slakemoss | 0.713 | 0.486 | 1 / 1 | plain | none |
 
 Incline distributions, which is where each board's slope bands were cut:
@@ -60,7 +60,7 @@ Incline distributions, which is where each board's slope bands were cut:
 |---|---|---|---|---|---|---|
 | peatgarth | 41.3 | 30.0 | 17.3 | 6.7 | 4.7 | 22 / 34 |
 | basaltmere | 47.2 | 22.9 | 16.5 | 5.3 | 8.1 | 18 / 32 |
-| mirkholt | 53.4 | 26.2 | 13.2 | 5.7 | 1.6 | 16 / 30 |
+| mirkholt | 45.4 | 30.0 | 17.1 | 7.1 | 0.4 | 16 / 30 |
 | slakemoss | 62.8 | 21.6 | 9.0 | 2.5 | 4.0 | 16 / 30 |
 
 No distribution has a spike in it, which is the read that says the board is reporting its own shape
@@ -77,7 +77,7 @@ Per-board detail is in `review/<slug>.md`; the summary:
   visible from the nave, the west bank and the head of the stair. Mirkholt: both wool blocks inside
   their own rooms with no terrain over them.
 - **Spawn faces away.** Yaw against the bearing to the target objective: peatgarth 4°, basaltmere 0°,
-  slakemoss 5°, mirkholt 11° and 9° (its two target rooms, both well inside the 90° the fault wants).
+  slakemoss 5°, mirkholt 13° and 11° (its two target rooms, both well inside the 90° the fault wants).
 - **Spawn faces a wall.** Door transects: every board reads worst step 1, 0 barrier, 0 scramble over
   the first fifteen blocks out of the door.
 - **Stairs that end nowhere.** Walked per flight rather than assumed. Basaltmere's east spit:
@@ -290,6 +290,45 @@ headroom lies inside the hollow way's own exclusion. The fronts facing is worth 
 but it is a real trade. Everything else improved or held — 36 props placed and **nothing declined**,
 barrier still 90 in 4 faces, `level` up to 0.526, `largestField` 0.357, no seams, no silent marks,
 symmetry error 0, both lanes still bare on six `column` reads.
+
+## Fourth round: the strait, the east spur, and a soft band shipped outside
+
+**The build zone was wrong in both directions and is now exact.** It ran x −50..50, z −20..20 — ten
+blocks of it over each team's own land, and a hundred blocks wide against a seventy-block front.
+`intent.build.areas` now reads `minX −35, minZ −15, maxX 35, maxZ 15`: the width of the fronts and the
+gap between them, nothing over land, nothing over void. The fronts moved to z ±15, so `CT12` reads the
+strait as **30 blocks**, inside the 25–30 the author wanted, and both frontline runs come back
+`x1 −35 … x2 35`, 70 blocks, **`profile: "straight"`**.
+
+**The east spur was backwards and is rotated.** Its room had sat five blocks behind the front band with
+its lane *behind* it, so a raider reached it straight off the front and the lane did nothing. The whole
+back row now reads `west-cage | west-lane | apron | east-lane | east-cage`, all at z 85..100, with the
+spawn behind the apron at z 100..115. Wools at (−50, 92) and (45, 92); walks from the spawn **58 and 59
+blocks, 0 placed, 0 drops** — one block of `WL9` spread. Both lanes still bare on four `column` reads.
+
+**The wood is back to 45 blocks deep, and the board grew rather than the wood shrinking.** The trade I
+made last round was wrong and the ruling is taken: a soft term off a corpus envelope does not get to
+delete the thing a board is named for. The remedies were worked in the order given — **bigger** first
+(110 × 230), which took `fill-ratio` off the board entirely and kept it off at every later step; then
+**move**, which cleared `max-chain-length` (115 → 105, band max 110) by narrowing the cages from 20 to
+15 and paring the brow to one cell and the garth to two.
+
+**Two soft terms remain outside their bands, and the numbers are here rather than hidden.**
+
+| term | reads | band | kind |
+|---|---|---|---|
+| `WL10` `wool-front-remoteness` | **128** | [22, 118] | soft, envelope |
+| `WL10` `wool-front-ratio` | **1.488** | [1, 1.474] | soft, envelope |
+
+Both are distances from the frontline to the rooms, and the only lever left that would move them is
+shortening the wood — which is what this round forbade. Shifting the back row a cell east was measured
+rather than reasoned and read **worse** on both (1.583 and 133), so it sits a cell west of centre.
+128 against 118 is a long raid rather than a stalemate, and `wool-front-remoteness` is described as
+catching exactly that stalemate, so it is the author's call and not mine: the board ships at 128 with
+the wood intact.
+
+The board otherwise improved: barrier **48** in 4 faces (from 90), scrambles 42, **0.0 % dead**, no
+seams, no silent marks, symmetry error 0, one prop declined of 34.
 
 ## Where things are
 

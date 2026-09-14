@@ -8,8 +8,8 @@ and blind in both directions, and the brow above it, from which you can see the 
 making it — and neither room is a step out of the spawn door: each is 53 blocks down a bare spur of
 its own.
 
-100 × 220 blocks, `rot_180`, ten pieces at four surfaces, maxPlayers 24, ground y11..y25, observer
-y66. Two wools a team, each at the far end of its own lane.
+110 × 230 blocks, `rot_180`, ten pieces at four surfaces, maxPlayers 24, ground y11..y25, observer
+y66. Two wools a team, each at the far end of its own lane, and a 30-block strait between the fronts.
 
 ## The front faces, the back is offset
 
@@ -19,16 +19,15 @@ The board's first shape put red's front at x −50..15 and blue's at x −15..50
 sharing 30 blocks of a 65-block width, so most of each team's front looked across at void.
 
 So the **front band alone is symmetric** and everything behind it stays on the diagonal. `toe` runs
-x −35..35 at z 10..30 and its image x −36..34, and `GET /rules?rule=CT12` reports both frontline runs
-as `x1: −35 … x2: 35` — 70 blocks, facing over 69 of them. The wood, the brow, the garth, the lanes,
-the cages and the spawn are all where the shift put them, which is what keeps the two far quarters
-void.
+x −35..35 at z 15..25, and `GET /rules?rule=CT12` reports both frontline runs as
+**`x1: −35 … x2: 35`, 70 blocks, `profile: "straight"`** — flat, parallel and opposite. The wood, the
+brow, the garth, the lanes, the cages and the spawn are all where the shift put them, which is what
+keeps the two far quarters void.
 
-**That was the thing to check rather than assume**, because `AUTHORING-BRIEF.md` warns that a team unit
-drawn symmetric about x = 0 cannot reach `fill-ratio`'s band at any size. The warning is about the
-whole unit, and only the front is symmetric here: the evaluate scores **0** with the fronts facing.
-Land added at the front came off the back — the wood dropped from 45 blocks of depth to 25 and then
-took 5 blocks of width back out of the headroom the longer board left.
+**The build zone is exactly the band between them and no wider.** `intent.build.areas` reads
+`minX −35, minZ −15, maxX 35, maxZ 15`: 70 by 30, the width of the fronts and the gap between them,
+with nothing over either team's land and nothing hanging over void. `CT12` reads the gap as **30
+blocks**, which is the span the author asked for.
 
 That is not decoration. `G8`'s `fill-ratio` term measures a **wool board and no other kind**: filled
 land over the bounding box of the land, band [0.201, 0.542], learned from the seeds, because
@@ -58,20 +57,24 @@ shape: `camp` → `run` → `plinth`.
 
 - **the west spur** — `apron` (x −5..20) → `west-lane` (x −30..−5, **25 blocks**) → `west-cage`
   (x −50..−30), all in the z 80..95 band.
-- **the east spur** — off the garth's east side, running south into the quarter the shift left empty:
-  `east-lane` (x 20..35, z 55..80, **25 blocks**) → `east-cage` (x 20..35, z 35..55).
+- **the east spur** — the mirror of the west one, laterally off the same back row:
+  `apron` → `east-lane` (x 10..35, **25 blocks**) → `east-cage` (x 35..50).
 
-The spawn stands 15 blocks further back again, at z 95..110, on its own piece behind the `apron`. It
-shares an edge with the apron and with nothing else, so it is two pieces from either lane root and
-touches no wool room — and it is joined along an edge rather than at a corner, which `PC-C` reads as no
-connection at all.
+The whole row reads `west-cage | west-lane | apron | east-lane | east-cage`, all at z 85..100, so
+neither room sits between the frontline and its own lane and the two are the same distance back. The
+east spur's first shape had the room *in front of* its lane, five blocks behind the front band, which
+meant a raider reached it straight off the front and the lane did nothing at all.
 
-The wools resolve to (−44, 15, 87) and (27, 15, 45) and the spawn to (7, 105). The walk to each is
-**63 and 68 blocks, 0 placed, 0 drops** — `WL9`'s spread is 5 blocks over runs of that length — and the
-two are 82 blocks apart, inside `WL7`'s 46–143.
+The spawn stands behind the `apron` at z 100..115. It shares an edge with the apron and with nothing
+else, so it is two pieces from either lane root and touches no wool room — and it is joined along an
+edge rather than at a corner, which `PC-C` reads as no connection at all.
 
-**Both lanes are bare, and that is the point.** `column` at (−12, 87), (−20, 87), (−28, 87), (27, 60),
-(27, 68) and (27, 76) reads grass block with nothing standing on any of them. No tree, no boulder, no
+The wools resolve to (−50, 15, 92) and (45, 15, 92) and the spawn to (−3, 110). The walk to each is
+**58 and 59 blocks, 0 placed, 0 drops** — one block of `WL9` spread — and the two are 95 blocks apart,
+inside `WL7`'s 46–143.
+
+**Both lanes are bare, and that is the point.** `column` at (−20, 92), (−30, 92), (20, 92) and (30, 92)
+reads grass block with nothing standing on any of them. No tree, no boulder, no
 paving: the tree lattice excludes the two lane rectangles outright, the ground cover is drawn as two
 polygons neither of which reaches a lane, and the four boulders are in the wood and on the brow. A lane
 is a way to walk, and emptiness is what makes the room at its end a place a raider has to commit to
@@ -92,13 +95,14 @@ its edges and open down the middle is what makes it read as a lane.
 
 | read | number |
 |---|---|
-| `03-slopes.txt` | 11 372 walked · 88 scrambled · **90 barrier**; 4 faces, largest 23 at x 10..18, z −60..−56 |
-| `06-claims.txt` | **placed 36, declined 0** |
-| relief read | level **0.526**, largestField **0.357**, 0 faces, 0 cliffs, landform *rolling*, **0 seams**, 0 silent marks, symmetry error **0** |
-| `GET …/coverage` | **0.1 % dead** — two wools a team, each down its own spur, puts every piece of ground on somebody's way somewhere |
-| `GET …/incline` | 53.4 % under 10° · 26.2 % teens · 13.2 % twenties · 5.7 % thirties · 1.6 % at 40°+ |
-| `05-themes.txt` | glade 48.7 % · mirk 27.1 % · sike 24.2 % |
-| `GET /rules?rule=CT12` | both teams' frontline runs `x1 −35 … x2 35`, 70 blocks, across a 20-block strait |
+| `03-slopes.txt` | 11 160 walked · 42 scrambled · **48 barrier**; 4 faces, largest 20 at x 9..18, z −71..−69 |
+| `06-claims.txt` | **placed 34, declined 1** |
+| relief read | level **0.458**, largestField **0.326**, 0 faces, 0 cliffs, landform *rolling*, **0 seams**, 0 silent marks, symmetry error **0** |
+| `GET …/coverage` | **0.0 % dead** — two wools a team, each down its own lane, puts every piece of ground on somebody's way somewhere |
+| `GET …/incline` | 45.4 % under 10° · 30 % teens · 17.1 % twenties · 7.1 % thirties · 0.4 % at 40°+ |
+| `05-themes.txt` | glade 47.1 % · mirk 40.4 % · sike 12.4 % |
+| `GET /rules?rule=CT12` | both teams' frontline runs `x1 −35 … x2 35`, 70 blocks, `straight`, across a **30-block** strait |
+| `POST /plan/evaluate` | score **0.27**; `fill-ratio` and `max-chain-length` inside their bands, `WL10` outside (below) |
 | `GET …/preflight` | traversability **pass**, `componentCount` 1 — all six spawn and wool points on one component |
 
 ## Against the fault catalogue
@@ -108,8 +112,8 @@ shell (stone brick courses, spruce posts, mushroom-stem infill) with the wool bl
 and no terrain over it, and both now sit at **y15** — the `glade` and `spur` marks hold the back band
 and the east spur at the same course, so the two wools of a side are level with each other.
 
-**Spawn faces away — no.** Red spawns at (7, 105) with yaw 180 — due −z. The two enemy rooms it is
-running for stand at (44, −87) and (−27, −45), which bear 11° and 9° off that line.
+**Spawn faces away — no.** Red spawns at (−3, 110) with yaw 180 — due −z. The two enemy rooms it is
+running for stand at (50, −92) and (−45, −92), which bear 13° and 11° off that line.
 
 **Spawn faces a wall — no.** The transect out of the door reads flat for the first fifteen blocks,
 0 barrier, 0 scramble.
@@ -135,12 +139,15 @@ one-course step.
 
 ## Limits
 
-- **The wood stands eleven trunks a side, and squaring the front is what cost it.** The symmetric
-  front band takes 20 blocks of depth across the whole width, so the `holt` went from 45 deep to 25;
-  widening it 5 blocks out of the longer board's headroom bought reach but no trunks, because the
-  ground it added lies inside the hollow way's own exclusion. Eleven a side is a wood a player cannot
-  see across, and it is thinner than the board's own sentence implies. The fronts facing is worth more
-  than the trees, but it is a real trade and this is the number it cost.
+- **`WL10` ships outside its band, deliberately, and here are the numbers.** `wool-front-remoteness`
+  reads **128** against a band of [22, 118] and `wool-front-ratio` **1.488** against [1, 1.474]. Both
+  are soft terms off a corpus envelope. The remedies were worked in the order the author set: the board
+  was made **bigger** (110 × 230, which is what took `fill-ratio` from a refusal to well inside the band
+  at every step after), then pieces were **moved** — the back row centred on the front, the brow cut to
+  one cell, the garth to two, the cages narrowed from 20 to 15, which cleared `max-chain-length` — and
+  the only lever left was cutting the wood, which is the thing this board is named for. Shifting the
+  back row a cell east was measured rather than reasoned and read **worse** (1.583 / 133), so it sits a
+  cell west of centre. 128 against 118 is a long raid, not a stalemate; it is the author's to judge.
 - `04-reach.txt` reports the opposite half as `no-build-zone` unreachable while `preflight` reports
   one traversable component containing all six spawn and wool points, and `coverage` reports 0.1 %
   dead. Two of the three reads say the board is joined and one says it is not; the strait is 21 blocks

@@ -150,56 +150,61 @@ PLAN = {
     "meta": {"name": "Mirkholt",
              "notes": "CTW. A dark wood on a shifted diagonal: one hollow way a side runs "
                       "from the garth down to the strait, and each wool room stands at the "
-                      "end of its own bare spur."},
+                      "end of its own bare lateral lane off the back."},
     "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 24,
                 "surface": HOLT, "observerY": 66},
     "pieces": [
         # The frontline band, and the one piece on this board that is NOT offset. Under
         # rot_180 a front spanning [a, b] is faced by one spanning [-b, -a], so the two are
         # opposite each other only where the edge is symmetric about x = 0: this piece runs
-        # x -35..35 and its image x -36..34, which face over 69 of their 70 blocks. The rest
-        # of the unit stays on the diagonal, which is what keeps the void in the board.
-        {"id": "toe",   "role": "piece", "rect": [ -7,  2, 14,  4], "surface": SIKE},
-        {"id": "holt",  "role": "piece", "rect": [-10,  6,  9,  5], "surface": HOLT},
-        {"id": "brow",  "role": "piece", "rect": [-10, 11,  8,  2], "surface": BROW},
-        {"id": "garth", "role": "piece", "rect": [ -6, 13, 10,  3], "surface": GARTH},
-        # the apron in front of the spawn door: the spawn is pulled 15 blocks further back
-        # from the strait and this is the ground it steps out onto, which is also what keeps
-        # it off the lane roots without leaving it joined to anything by a corner (PC-C)
-        {"id": "apron",     "role": "piece",     "rect": [-1, 16, 5, 3], "surface": GARTH},
-        {"id": "lodge",     "role": "spawn",     "rect": [-1, 19, 5, 3], "surface": GARTH},
-        # the west spur: 25 blocks of bare lane out of the spawn band, room at its end
-        {"id": "west-lane", "role": "piece",     "rect": [-6, 16, 5, 3], "surface": GARTH},
-        {"id": "west-cage", "role": "wool-room", "rect": [-10, 16, 4, 3], "surface": GARTH},
-        # the east spur: 25 blocks of bare lane south off the garth, room at its end, out
-        # in the quarter the shift left empty
-        {"id": "east-lane", "role": "piece",     "rect": [4, 11, 3, 5], "surface": GARTH},
-        {"id": "east-cage", "role": "wool-room", "rect": [4,  7, 3, 4], "surface": GARTH},
+        # x -35..35 and its image x -36..34. The rest of the unit stays on the diagonal,
+        # which is what keeps the void in the board.
+        {"id": "toe",   "role": "piece", "rect": [ -7,  3, 14,  2], "surface": SIKE},
+        # the wood, 45 blocks deep, which is what this board is named for. Everything
+        # behind it is pared to the bone instead, because three soft terms read the
+        # distance from the front to the rooms and the wood is not what pays for them.
+        {"id": "holt",  "role": "piece", "rect": [-10,  5,  9,  9], "surface": HOLT},
+        {"id": "brow",  "role": "piece", "rect": [-10, 14,  8,  1], "surface": BROW},
+        {"id": "garth", "role": "piece", "rect": [ -8, 15, 15,  2], "surface": GARTH},
+        # the back row: cage | lane | apron | lane | cage, so each room is the far end of
+        # its own 25-block lateral lane and the two are as far from the front as each other
+        # centred on the front rather than hung off one end of it, so the two rooms are
+        # the same distance from the frontline (WL10's ratio)
+        {"id": "west-cage", "role": "wool-room", "rect": [-11, 17, 3, 3], "surface": GARTH},
+        {"id": "west-lane", "role": "piece",     "rect": [ -8, 17, 5, 3], "surface": GARTH},
+        {"id": "apron",     "role": "piece",     "rect": [ -3, 17, 5, 3], "surface": GARTH},
+        {"id": "east-lane", "role": "piece",     "rect": [  2, 17, 5, 3], "surface": GARTH},
+        {"id": "east-cage", "role": "wool-room", "rect": [  7, 17, 3, 3], "surface": GARTH},
+        # the spawn behind the apron: off both lane roots, sharing an edge with neither
+        # room, and joined along an edge rather than at a corner (PC-C)
+        {"id": "lodge",     "role": "spawn",     "rect": [ -3, 20, 5, 3], "surface": GARTH},
     ],
-    "zones": [{"id": "strait", "rect": [-10, -4, 20, 8], "kind": "build", "holes": []}],
+    # exactly the band between the two frontlines and no wider than they are: 30 blocks of
+    # gap, spanned end to end, with nothing over land and nothing over void
+    "zones": [{"id": "strait", "rect": [-7, -3, 14, 6], "kind": "build", "holes": []}],
     "placements": {
         "spawns": [{"id": "spawn-1", "piece": "lodge", "at": [12, 10],
                     "facing": "front", "footprint": [6, 3, 13, 11]}],
         "iron":   [{"id": "iron-1", "piece": "lodge", "at": [3, 8]},
                    {"id": "iron-2", "piece": "lodge", "at": [22, 8]}],
-        # unchanged by the move: the wools stay at the far ends of their own spurs
         "wools":  [{"id": "wool-1", "piece": "west-cage", "at": [5, 7],
-                    "footprint": [3, 2, 14, 11]},
-                   {"id": "wool-2", "piece": "east-cage", "at": [7, 10],
-                    "footprint": [1, 3, 13, 14]}],
+                    "footprint": [2, 2, 11, 11]},
+                   {"id": "wool-2", "piece": "east-cage", "at": [10, 7],
+                    "footprint": [2, 2, 11, 11]}],
         "destroyables": [], "cores": [],
     },
     "walls": [], "boxes": [],
 }
 
 # The ground this side actually has, as blocks, so nothing downstream is placed over void.
-GROUND_RECTS = [(-35, 10, 35, 30), (-50, 30, -5, 55), (-50, 55, -10, 65), (-30, 65, 20, 80),
-                (-5, 80, 20, 95), (-30, 80, -5, 95), (-50, 80, -30, 95), (-5, 95, 20, 110),
-                (20, 55, 35, 80), (20, 35, 35, 55)]
+GROUND_RECTS = [(-35, 15, 35, 25), (-50, 25, -5, 70), (-50, 70, -10, 75),
+                (-40, 75, 35, 85), (-55, 85, -40, 100), (-40, 85, -15, 100),
+                (-15, 85, 10, 100), (10, 85, 35, 100), (35, 85, 50, 100),
+                (-15, 100, 10, 115)]
 
 # The two lanes, kept bare: a lane is a way to walk and not a place to dress, and a wood is
 # exactly the board that will grow into one if it is allowed to.
-LANES = [(-30, 80, -5, 95), (20, 55, 35, 80)]
+LANES = [(-40, 85, -15, 100), (10, 85, 35, 100)]
 
 
 def on_ground(x, z, inset=4):
@@ -217,7 +222,7 @@ def on_lane(x, z, margin=3):
 # ---------------------------------------------------------------- the relief
 # The hollow way runs from the garth down through the wood to the toe, so the lane arrives
 # at the strait rather than stopping short of it.
-HOLLOW = [[-26, 74], [-20, 60], [-16, 44], [-14, 30], [-10, 20], [-2, 15]]
+HOLLOW = [[-26, 81], [-20, 71], [-16, 53], [-14, 38], [-10, 24], [-2, 18]]
 
 RELIEF = {"*": {
     "base": HOLT, "reach": 0, "step": 1,
@@ -225,13 +230,13 @@ RELIEF = {"*": {
     "marks": [
         # the wood's floor, rolling, drawn inside the ground it actually has
         {"id": "floor", "kind": "area", "h": 14, "bevel": 4,
-         "ring": [[-48, 32], [-34, 30], [-20, 31], [-8, 33], [-8, 44], [-14, 52],
-                  [-32, 54], [-48, 50]]},
+         "ring": [[-48, 28], [-34, 27], [-20, 28], [-8, 30], [-8, 53], [-14, 63],
+                  [-32, 67], [-48, 64]]},
         # the wet flat the whole front drains to: the one band on this board that runs the
         # same x range as the enemy's
         {"id": "strandflat", "kind": "area", "h": 13, "bevel": 3,
-         "ring": [[-34, 12], [-18, 10], [0, 13], [16, 11], [34, 12],
-                  [34, 28], [14, 30], [-2, 27], [-20, 29], [-34, 27]]},
+         "ring": [[-34, 17], [-18, 15], [0, 18], [16, 16], [34, 17],
+                  [34, 23], [14, 25], [-2, 22], [-20, 24], [-34, 23]]},
         # the hollow way: a line whose band is flat down the middle and lofts to the wood
         # either side, so the lane has banks and not walls
         # reach 9 rather than 12: a 24-block band through a 40-block wood leaves no wood,
@@ -240,21 +245,20 @@ RELIEF = {"*": {
          "h": [14, 11, 10, 10, 11, 12], "points": HOLLOW},
         # the garth and the back band, flat to their own edge because they are cut ground
         {"id": "glade", "kind": "area", "h": 16, "bevel": 3, "tread": 4,
-         "ring": [[-28, 68], [-12, 66], [6, 67], [18, 69], [18, 108], [-4, 108],
-                  [-4, 93], [-48, 93], [-48, 82]]},
-        # the east spur, held at the garth's own height so the lane is a terrace and not a
-        # ramp nobody asked for
-        {"id": "spur", "kind": "area", "h": 16, "bevel": 2, "tread": 3,
-         "ring": [[22, 38], [33, 38], [33, 78], [22, 78]]},
+         "ring": [[-38, 78], [-18, 76], [0, 77], [18, 77], [33, 78], [48, 87],
+                  [48, 98], [-53, 98], [-53, 87]]},
+        # the ground the spawn hall stands on, one piece behind the back row
+        {"id": "bield", "kind": "area", "h": 16, "bevel": 2, "tread": 3,
+         "ring": [[-13, 98], [8, 98], [8, 113], [-13, 113]]},
     ],
     "pushes": [
         # the brow west of the hollow way: the one ground the run is visible from.
         # amount/falloff 7/16 = 0.44, crown over the ring's half-width 2.6/6 = 0.44.
-        {"id": "brow-rise", "ring": [[-49, 30], [-41, 28], [-39, 50], [-47, 54]],
+        {"id": "brow-rise", "ring": [[-49, 34], [-41, 32], [-39, 56], [-47, 60]],
          "amount": 7, "falloff": 16, "crown": 1.8, "roughness": 1, "seed": 3},
         # a swell on the garth so the back is not one table.  It is kept off both lanes: a
         # lane may step or ramp, but it should do it because the author said so.
-        {"id": "howe", "ring": [[-30, 66], [-14, 64], [-6, 72], [-22, 76]],
+        {"id": "howe", "ring": [[-8, 76], [4, 75], [10, 82], [-2, 84]],
          "amount": 3, "falloff": 10, "crown": 1.7, "roughness": 1, "seed": 11},
     ],
 }}
@@ -267,8 +271,8 @@ ADD_SHAPES = [
      "floor": 0, "base_height": 16, "height_mode": "level", "skirt": 0,
      "relief_scope": "exclude", "keepClear": True, "group": "team",
      "material": cell(43, 5, [COBBLE, MOSSY_COBBLE, GRAVEL], rise=4),
-     "vertices": [[-18, 70], [-10, 70], [-10, 56], [-18, 56]],
-     "anchor_heights": [16, 16, 15, 15]},
+     "vertices": [[-18, 81], [-10, 81], [-10, 69], [-18, 69]],
+     "anchor_heights": [16, 16, 14, 14]},
 ]
 
 # ---------------------------------------------------------------- dressing
@@ -300,7 +304,7 @@ def near_course(points, x, z, within):
     return best < within
 
 
-TROD = [[8, 97], [2, 91], [-4, 85], [-10, 78]]
+TROD = [[8, 102], [2, 96], [-4, 90], [-10, 82]]
 
 PROPS = [
     # the lane's own floor, painted wet rather than dug: a channel that states no level
@@ -317,21 +321,21 @@ PROPS = [
     # is a clearing in the trees at all
     {"id": "hut", "kind": "house", "seed": 311, "layer": "ground",
      "style": "hut", "front": "posZ",
-     "wings": [{"corners": [[-28, 71], [-20, 79]]}]},
+     "wings": [{"corners": [[14, 76], [22, 84]]}]},
 ]
 
 # stone, and only stone -- and none of it on a spur: a big boulder is exactly what a bare
 # lane must not have
-BOULDERS = [(-44, 32, 3, 4), (8, 18, 2, 2), (-44, 60, 2, 3), (-30, 58, 2, 3)]
+BOULDERS = [(8, 20, 2, 2), (18, 22, 2, 2), (-34, 79, 3, 4), (28, 79, 2, 3)]
 for i, (x, z, r, h) in enumerate(BOULDERS):
     PROPS.append(boulder(f"stone-{i}", x, z, r, h, 71 + i))
 
-KEEP_OFF = [(-28, 71, -20, 79, 8),       # the charcoal burner's hut
-            (-18, 56, -10, 70, 3)]       # the threshold out of the clearing
+KEEP_OFF = [(14, 76, 22, 84, 8),         # the charcoal burner's hut
+            (-18, 69, -10, 81, 3)]       # the threshold out of the clearing
 KEEP_OFF += [(x - r, z - r, x + r, z + r, 4) for x, z, r, _ in BOULDERS]
 # the rooms and the ground in front of the spawn door
 # the rooms, and the ground in front of the spawn door, which reaches well south
-KEEP_OFF += [(-47, 82, -33, 93, 7), (21, 38, 34, 52, 7), (1, 82, 14, 109, 7)]
+KEEP_OFF += [(-53, 87, -42, 98, 7), (37, 87, 48, 98, 7), (-9, 87, 4, 114, 7)]
 
 # A fine lattice, taken greedily: dense enough that two crowns close over the hollow way
 # and open enough that no tree is declined for standing in another's footprint.  The two
@@ -342,7 +346,7 @@ SCRUB = ["scrub-a", "scrub-b"]
 
 planted = []
 count = 0
-for row, z in enumerate(range(12, 112, 3)):
+for row, z in enumerate(range(17, 87, 3)):
     for col, x in enumerate(range(-48, 36, 3)):
         jx = ((row * 7 + col * 13) % 7) - 3
         jz = ((row * 11 + col * 5) % 7) - 3
@@ -353,6 +357,8 @@ for row, z in enumerate(range(12, 112, 3)):
             continue
         if on_lane(px, pz):
             continue
+        # seven from the centreline, not six: the stroke wanders, so the road cell can lie
+        # a block or two off the line it was drawn on and DR-ROAD measures the cell
         if near_course(HOLLOW, px, pz, 7) or near_course(TROD, px, pz, 7):
             continue
         if any(x0 - m <= px <= x1 + m and z0 - m <= pz <= z1 + m
@@ -376,12 +382,12 @@ for row, z in enumerate(range(12, 112, 3)):
 # polygons rather than one: neither reaches a lane, and a lane is not dressed.
 PROPS.append(
     {"id": "understorey", "kind": "flora", "seed": 13, "layer": "ground",
-     "points": [[-50, 10], [35, 10], [35, 50], [-50, 50]],
+     "points": [[-50, 15], [35, 15], [35, 68], [-50, 68]],
      "spec": {"points": 3200, "coverage": 0.22, "scale": 22, "octaves": 3,
               "fernShare": 0.52, "flowerShare": 0.03, "flowerScale": 12, "tallShare": 0.06}})
 PROPS.append(
     {"id": "backcover", "kind": "flora", "seed": 17, "layer": "ground",
-     "points": [[-50, 50], [18, 50], [18, 80], [-50, 80]],
+     "points": [[-50, 68], [35, 68], [35, 85], [-50, 85]],
      "spec": {"points": 1400, "coverage": 0.2, "scale": 22, "octaves": 3,
               "fernShare": 0.5, "flowerShare": 0.04, "flowerScale": 12, "tallShare": 0.05}})
 

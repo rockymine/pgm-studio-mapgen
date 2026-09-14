@@ -1,50 +1,52 @@
-      | 1         0          |
-      | 09876543210123456789 |
-  -22 |       SSSSS          |
-  -21 |       iS@Si          |
-  -20 |       SSSSS          |
-  -19 |       EEEEEFFFFFWWWW |
-  -18 |       EEEEEFFFFFWWW¤ |
-  -17 |       EEEEEFFFFFWWWW |
-  -16 |    GGGDDDDDDDDDD     |
-  -15 |    GGGDDDDDDDDDD     |
-  -14 |    GGGDDDDDDDDDD     |
-  -13 |    GGG      CCCCCCCC |
-  -12 |    GGG      CCCCCCCC |
-  -11 |    VVV     BBBBBBBBB |
-  -10 |    VVV     BBBBBBBBB |
-   -9 |    V¤V     BBBBBBBBB |
-   -8 |    VVV     BBBBBBBBB |
-   -7 |            BBBBBBBBB |
-   -6 |    AAAAAAAAAAAAAA    |
-   -5 |    AAAAAAAAAAAAAA    |
-   -4 | +++AAAAAAAAAAAAAA+++ |
-   -3 | +++AAAAAAAAAAAAAA+++ |
-   -2 | ++++++++++++++++++++ |
-   -1 | ++++++++++++++++++++ |
-    0 | ++++++++++++++++++++ |
-    1 | ++++++++++++++++++++ |
-    2 | +++AAAAAAAAAAAAAA+++ |
-    3 | +++AAAAAAAAAAAAAA+++ |
-    4 |    AAAAAAAAAAAAAA    |
-    5 |    AAAAAAAAAAAAAA    |
-    6 | BBBBBBBBB            |
-    7 | BBBBBBBBB     VVV    |
-    8 | BBBBBBBBB     VVV    |
-    9 | BBBBBBBBB     V¤V    |
-   10 | BBBBBBBBB     VVV    |
-   11 | CCCCCCCC      GGG    |
-   12 | CCCCCCCC      GGG    |
-   13 |     DDDDDDDDDDGGG    |
-   14 |     DDDDDDDDDDGGG    |
-   15 |     DDDDDDDDDDGGG    |
-   16 | WWWWFFFFFEEEEE       |
-   17 | W¤WWFFFFFEEEEE       |
-   18 | WWWWFFFFFEEEEE       |
-   19 |          SSSSS       |
-   20 |          iSSSi       |
-   21 |          SS@SS       |
-      20 × 44 cells drawn  ·  20 × 44 cells = 100 × 220 blocks  ·  cell 5
+      | -1         0         1 |
+      | 1098765432101234567890 |
+  -23 |          SSSSS         |
+  -22 |          iS@Si         |
+  -21 |          SSSSS         |
+  -20 |  VVVGGGGGFFFFFEEEEEWWW |
+  -19 |  V¤VGGGGGFFFFFEEEEEWW¤ |
+  -18 |  VVVGGGGGFFFFFEEEEEWWW |
+  -17 |     DDDDDDDDDDDDDDD    |
+  -16 |     DDDDDDDDDDDDDDD    |
+  -15 |              CCCCCCCC  |
+  -14 |             BBBBBBBBB  |
+  -13 |             BBBBBBBBB  |
+  -12 |             BBBBBBBBB  |
+  -11 |             BBBBBBBBB  |
+  -10 |             BBBBBBBBB  |
+   -9 |             BBBBBBBBB  |
+   -8 |             BBBBBBBBB  |
+   -7 |             BBBBBBBBB  |
+   -6 |             BBBBBBBBB  |
+   -5 |     AAAAAAAAAAAAAA     |
+   -4 |     AAAAAAAAAAAAAA     |
+   -3 |     ++++++++++++++     |
+   -2 |     ++++++++++++++     |
+   -1 |     ++++++++++++++     |
+    0 |     ++++++++++++++     |
+    1 |     ++++++++++++++     |
+    2 |     ++++++++++++++     |
+    3 |     AAAAAAAAAAAAAA     |
+    4 |     AAAAAAAAAAAAAA     |
+    5 |  BBBBBBBBB             |
+    6 |  BBBBBBBBB             |
+    7 |  BBBBBBBBB             |
+    8 |  BBBBBBBBB             |
+    9 |  BBBBBBBBB             |
+   10 |  BBBBBBBBB             |
+   11 |  BBBBBBBBB             |
+   12 |  BBBBBBBBB             |
+   13 |  BBBBBBBBB             |
+   14 |  CCCCCCCC              |
+   15 |    DDDDDDDDDDDDDDD     |
+   16 |    DDDDDDDDDDDDDDD     |
+   17 | WWWEEEEEFFFFFGGGGGVVV  |
+   18 | W¤WEEEEEFFFFFGGGGGVV¤  |
+   19 | WWWEEEEEFFFFFGGGGGVVV  |
+   20 |         SSSSS          |
+   21 |         iSSSi          |
+   22 |         SS@SS          |
+      22 × 46 cells drawn  ·  22 × 46 cells = 110 × 230 blocks  ·  cell 5
       @ spawn   A toe (piece)   B holt (piece)   C brow (piece)   D garth (piece)   
-      E apron (piece)   F west-lane (piece)   G east-lane (piece)   S lodge (spawn)   
+      E west-lane (piece)   F apron (piece)   G east-lane (piece)   S lodge (spawn)   
       V east-cage (wool-room)   W west-cage (wool-room)   i iron   ¤ wool   
