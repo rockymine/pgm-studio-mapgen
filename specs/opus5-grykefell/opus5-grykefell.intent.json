@@ -1,0 +1,194 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 24,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 25,
+    "z": 92
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": 85,
+     "maxX": 15,
+     "maxZ": 100
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": -9,
+    "minZ": 87,
+    "maxX": 9,
+    "maxZ": 97
+   },
+   "iron": [
+    {
+     "x": -13,
+     "y": 25,
+     "z": 92
+    },
+    {
+     "x": 13,
+     "y": 25,
+     "z": 92
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 25,
+    "z": -92
+   },
+   "protection": [
+    {
+     "minX": -15,
+     "minZ": -100,
+     "maxX": 15,
+     "maxZ": -85
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -9,
+    "minZ": -97,
+    "maxX": 9,
+    "maxZ": -87
+   },
+   "iron": [
+    {
+     "x": 13,
+     "y": 25,
+     "z": -92
+    },
+    {
+     "x": -13,
+     "y": 25,
+     "z": -92
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 58,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -40,
+    "minZ": -10,
+    "maxX": 40,
+    "maxZ": 10
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Cairn",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 20,
+    "y": 24,
+    "z": 54
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Cairn",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -21,
+    "y": 24,
+    "z": -55
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Grykefell",
+  "created": "2026-09-13",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": null
+}

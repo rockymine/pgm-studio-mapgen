@@ -1,0 +1,58 @@
+## rock-4 (boulder) along x
+TRANSECT 22 stations from (-46, -87) to (-25, -87), every 1
+  station        ground  surface  water  top  standing            step
+  (  -46,   -87)                                                    void
+  (  -45,   -87)                                                    void
+  (  -44,   -87)      23       23           23                      
+  (  -43,   -87)      23       23           23                      
+  (  -42,   -87)      23       23           23                      
+  (  -41,   -87)      23       23           31  tree thorn-0        
+  (  -40,   -87)      23       23           31  tree thorn-0        
+  (  -39,   -87)      23       23           27  boulder rock-4      
+  (  -38,   -87)      24       24           32  tree thorn-0        +1
+  (  -37,   -87)      24       24           27  boulder rock-4      
+  (  -36,   -87)      24       24           32  tree thorn-0        
+  (  -35,   -87)      24       24           27  boulder rock-4      
+  (  -34,   -87)      24       24           25  boulder rock-4      
+  (  -33,   -87)      24       24           24                      
+  (  -32,   -87)      24       24           24                      
+  (  -31,   -87)      24       24           24                      
+  (  -30,   -87)      24       24           24                      
+  (  -29,   -87)      24       24           24                      
+  (  -28,   -87)      24       24           27  tree thorn-10       
+  (  -27,   -87)      23       23           27  tree thorn-10       -1
+  (  -26,   -87)      23       23           26  tree thorn-10       
+  (  -25,   -87)      23       23           28  tree thorn-10       
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree thorn-0 at (-41, -87), boulder rock-4 at (-39, -89), tree thorn-10 at (-28, -88), tree thorn-2 at (-28, -85)
+
+## rock-4 (boulder) along z
+TRANSECT 25 stations from (-37, -99) to (-37, -75), every 1
+  station        ground  surface  water  top  standing            step
+  (  -37,   -99)      25       25           32  tree thorn-0        
+  (  -37,   -98)      25       25           32  tree thorn-0        
+  (  -37,   -97)      26       26           32  tree thorn-0        +1
+  (  -37,   -96)      26       26           33  tree thorn-0        
+  (  -37,   -95)      26       26           34  tree thorn-0        
+  (  -37,   -94)      26       26           32  tree thorn-0        
+  (  -37,   -93)      26       26           31  tree thorn-0        
+  (  -37,   -92)      26       26           33  tree thorn-0        
+  (  -37,   -91)      25       25           34  tree thorn-0        -1
+  (  -37,   -90)      25       25           33  tree thorn-0        
+  (  -37,   -89)      25       25           31  tree thorn-0        
+  (  -37,   -88)      24       24           33  tree thorn-0        -1
+  (  -37,   -87)      24       24           27  boulder rock-4      
+  (  -37,   -86)      24       24           27  boulder rock-4      
+  (  -37,   -85)      23       23           26  boulder rock-4      -1
+  (  -37,   -84)      23       23           23                      
+  (  -37,   -83)      22       22           22                      -1
+  (  -37,   -82)      22       22           22                      
+  (  -37,   -81)      21       21           21                      -1
+  (  -37,   -80)      21       21           26  tree thorn-2        
+  (  -37,   -79)      20       20           20                      -1
+  (  -37,   -78)      20       20           26  tree thorn-2        
+  (  -37,   -77)      20       20           26  tree thorn-2        
+  (  -37,   -76)      20       20           27  tree thorn-2        
+  (  -37,   -75)      20       20           27  tree thorn-2        
+rises 1, falls 6, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree thorn-0 at (-37, -101), boulder rock-4 at (-39, -89), tree thorn-2 at (-35, -81)

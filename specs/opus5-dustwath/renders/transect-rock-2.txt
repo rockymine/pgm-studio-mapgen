@@ -1,0 +1,61 @@
+## rock-2 (boulder) along x
+TRANSECT 25 stations from (17, -52) to (41, -52), every 1
+  station        ground  surface  water  top  standing            step
+  (   17,   -52)      22       22           22                      
+  (   18,   -52)      22       22           22                      
+  (   19,   -52)      21       21           21                      -1
+  (   20,   -52)      21       21           21                      
+  (   21,   -52)      21       21           21                      
+  (   22,   -52)      20       20           20                      -1
+  (   23,   -52)      20       20           20                      
+  (   24,   -52)      20       20           20                      
+  (   25,   -52)      19       19           19  stroke bed-e        -1
+  (   26,   -52)      19       19           19  stroke bed-e        
+  (   27,   -52)      18       18           18  stroke bed-e        -1
+  (   28,   -52)      18       18           18  stroke bed-e        
+  (   29,   -52)      18       18           18  stroke bed-e        
+  (   30,   -52)      18       18           18  stroke bed-e        
+  (   31,   -52)      18       18           18                      
+  (   32,   -52)                                                    void
+  (   33,   -52)                                                    void
+  (   34,   -52)                                                    void
+  (   35,   -52)                                                    void
+  (   36,   -52)                                                    void
+  (   37,   -52)                                                    void
+  (   38,   -52)                                                    void
+  (   39,   -52)                                                    void
+  (   40,   -52)                                                    void
+  (   41,   -52)                                                    void
+rises 0, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke bed-e at (25, -52)
+
+## rock-2 (boulder) along z
+TRANSECT 25 stations from (29, -64) to (29, -40), every 1
+  station        ground  surface  water  top  standing            step
+  (   29,   -64)      21       21           26  house shelter-e     
+  (   29,   -63)      21       21           21  stroke bed-e        
+  (   29,   -62)      20       20           20  stroke bed-e        -1
+  (   29,   -61)      20       20           20  stroke bed-e        
+  (   29,   -60)      20       20           20  stroke bed-e        
+  (   29,   -59)      19       19           19                      -1
+  (   29,   -58)      19       19           19                      
+  (   29,   -57)      19       19           19                      
+  (   29,   -56)      19       19           19                      
+  (   29,   -55)      19       19           19                      
+  (   29,   -54)      18       18           18                      -1
+  (   29,   -53)      18       18           18  stroke bed-e        
+  (   29,   -52)      18       18           18  stroke bed-e        
+  (   29,   -51)      18       18           18  stroke bed-e        
+  (   29,   -50)      18       18           18  stroke bed-e        
+  (   29,   -49)      18       18           18  stroke bed-e        
+  (   29,   -48)      18       18           18                      
+  (   29,   -47)      18       18           18                      
+  (   29,   -46)      18       18           18                      
+  (   29,   -45)      19       19           19                      +1
+  (   29,   -44)      19       19           19                      
+  (   29,   -43)      19       19           19                      
+  (   29,   -42)      19       19           19                      
+  (   29,   -41)      19       19           19                      
+  (   29,   -40)      19       19           19                      
+rises 1, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house shelter-e at (27, -66), stroke bed-e at (29, -63), boulder rock-3 at (31, -40)

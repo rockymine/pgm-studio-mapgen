@@ -1,0 +1,61 @@
+## mon-1-0 (destroyable) along x
+TRANSECT 25 stations from (-24, 52) to (0, 52), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,    52)      19       19           19                      
+  (  -23,    52)      19       19           19                      
+  (  -22,    52)      19       19           19                      
+  (  -21,    52)      19       19           19  stroke tramway      
+  (  -20,    52)      19       19           19  stroke tramway      
+  (  -19,    52)      19       19           19  stroke tramway      
+  (  -18,    52)      19       19           19  stroke tramway      
+  (  -17,    52)      19       19           19                      
+  (  -16,    52)      19       19           19                      
+  (  -15,    52)      19       19           19                      
+  (  -14,    52)      19       19           19  destroyable mon-1   
+  (  -13,    52)      19       19           56  destroyable mon-1   
+  (  -12,    52)      19       19           57  destroyable mon-1   
+  (  -11,    52)      19       19           56  destroyable mon-1   
+  (  -10,    52)      19       19           19  destroyable mon-1   
+  (   -9,    52)      19       19           19                      
+  (   -8,    52)      19       19           19                      
+  (   -7,    52)      19       19           19                      
+  (   -6,    52)      19       19           19                      
+  (   -5,    52)      19       19           19                      
+  (   -4,    52)      19       19           19                      
+  (   -3,    52)      19       19           19                      
+  (   -2,    52)      19       19           19                      
+  (   -1,    52)      19       19           19                      
+  (    0,    52)      12       12           12                      DROP -7
+rises 0, falls 1, worst step 7: 0 barrier, 0 scramble, 1 drop — DROP -7 at (0, 52) | walked end to end
+beside: stroke tramway at (-21, 50), destroyable mon-1 at (-14, 50)
+
+## mon-1-0 (destroyable) along z
+TRANSECT 25 stations from (-12, 40) to (-12, 64), every 1
+  station        ground  surface  water  top  standing            step
+  (  -12,    40)      14       14           14                      
+  (  -12,    41)      14       14           14                      
+  (  -12,    42)      14       14           14                      
+  (  -12,    43)      14       14           14                      
+  (  -12,    44)      19       19           19                      BARRIER +5
+  (  -12,    45)      19       19           19                      
+  (  -12,    46)      19       19           19                      
+  (  -12,    47)      19       19           19                      
+  (  -12,    48)      19       19           19                      
+  (  -12,    49)      19       19           19                      
+  (  -12,    50)      19       19           19  destroyable mon-1   
+  (  -12,    51)      19       19           56  destroyable mon-1   
+  (  -12,    52)      19       19           57  destroyable mon-1   
+  (  -12,    53)      19       19           56  destroyable mon-1   
+  (  -12,    54)      19       19           19  destroyable mon-1   
+  (  -12,    55)      19       19           19                      
+  (  -12,    56)      19       19           19                      
+  (  -12,    57)      19       19           19                      
+  (  -12,    58)      19       19           19                      
+  (  -12,    59)      19       19           19                      
+  (  -12,    60)      19       19           19                      
+  (  -12,    61)      19       19           19                      
+  (  -12,    62)      19       19           19                      
+  (  -12,    63)      19       19           19                      
+  (  -12,    64)      19       19           19                      
+rises 1, falls 0, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (-12, 44) | walked end to end
+beside: destroyable mon-1 at (-14, 50), stroke tramway at (-14, 66)

@@ -1,0 +1,61 @@
+## store (house) along x
+TRANSECT 25 stations from (-35, 84) to (-11, 84), every 1
+  station        ground  surface  water  top  standing            step
+  (  -35,    84)                                                    void
+  (  -34,    84)                                                    void
+  (  -33,    84)                                                    void
+  (  -32,    84)                                                    void
+  (  -31,    84)                                                    void
+  (  -30,    84)      14       14           14                      
+  (  -29,    84)      14       14           14                      
+  (  -28,    84)      15       15           20  house store         +1
+  (  -27,    84)      15       15           21  house store         
+  (  -26,    84)      15       15           22  house store         
+  (  -25,    84)      15       15           23  house store         
+  (  -24,    84)      15       15           24  house store         
+  (  -23,    84)      15       15           25  house store         
+  (  -22,    84)      15       15           24  house store         
+  (  -21,    84)      15       15           23  house store         
+  (  -20,    84)      15       15           22  house store         
+  (  -19,    84)      15       15           21  house store         
+  (  -18,    84)      15       15           20  house store         
+  (  -17,    84)      14       14           14                      -1
+  (  -16,    84)      14       14           14                      
+  (  -15,    84)      14       14           14                      
+  (  -14,    84)      14       14           14                      
+  (  -13,    84)      14       14           14                      
+  (  -12,    84)      14       14           14                      
+  (  -11,    84)      14       14           14                      
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house store at (-28, 82)
+
+## store (house) along z
+TRANSECT 25 stations from (-23, 72) to (-23, 96), every 1
+  station        ground  surface  water  top  standing            step
+  (  -23,    72)      14       14           14                      
+  (  -23,    73)      14       14           14                      
+  (  -23,    74)      14       14           14                      
+  (  -23,    75)      14       14           14                      
+  (  -23,    76)      14       14           14                      
+  (  -23,    77)      14       14           14                      
+  (  -23,    78)      15       15           15                      +1
+  (  -23,    79)      15       15           20  house store         
+  (  -23,    80)      15       15           21  house store         
+  (  -23,    81)      15       15           22  house store         
+  (  -23,    82)      15       15           23  house store         
+  (  -23,    83)      15       15           24  house store         
+  (  -23,    84)      15       15           25  house store         
+  (  -23,    85)      15       15           24  house store         
+  (  -23,    86)      15       15           23  house store         
+  (  -23,    87)      15       15           22  house store         
+  (  -23,    88)      15       15           21  house store         
+  (  -23,    89)      15       15           20  house store         
+  (  -23,    90)      15       15           15                      
+  (  -23,    91)      15       15           15                      
+  (  -23,    92)      15       15           15                      
+  (  -23,    93)      15       15           15                      
+  (  -23,    94)      14       14           14                      -1
+  (  -23,    95)      14       14           14                      
+  (  -23,    96)      14       14           14                      
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house store at (-25, 79)
