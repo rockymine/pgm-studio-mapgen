@@ -103,6 +103,17 @@ themes = {
         "wall":    cell_(36, 9, [PACKED, ICE], rise=5), "wallEnabled": True,
         "fill":    cell_(37, 9, [STONE, GRAVEL], rise=6),
     },
+    # the garth: the pad cut into the north-west shoulder that the bothy stands on. Trodden ground
+    # rather than mire — gravel walked bare over its own coarse soil, so the cut reads as used.
+    "garth": {
+        "bedrock": {"relative": False, "value": 1},
+        "rimEdges": "void", "wallOnTerrainFaces": True,
+        "rim":     {"enabled": True, "depth": 1, "material": COBBLE},
+        "surface": {"enabled": True, "depth": 3,
+                    "material": layered([(1, cell_(42, 5, [GRAVEL, COARSE, COBBLE])), (2, COARSE)])},
+        "wall":    cell_(43, 7, [STONE, COBBLE, ANDESITE], rise=4), "wallEnabled": True,
+        "fill":    cell_(44, 9, [STONE, ANDESITE], rise=5),
+    },
     # the holm: shingle washed up round a knuckle of rock, two courses over the ice
     "holm": {
         "bedrock": {"relative": False, "value": 1},
@@ -144,11 +155,15 @@ relief = {
              "ring": lobe(0, 92, [26, 22, 25, 20, 26, 22, 25, 20], 0.1)},
             # the hummocks: the dry ground a birch can stand on, and the only cover on the board.
             # Small radii, left to the relaxation — a wide radius pins a flat disc and builds a mesa.
-            {"id": "hum-w",  "kind": "point", "at": [-32, 34], "r": 5, "h": HUMMOCK},
+            # There is no hummock on the pan's own ground: a mark standing seven courses over an area
+            # mark's pinned band puts the whole difference in one cell (`RL3`), and the pan is the
+            # one place on this board that is meant to have nothing on it at all.
             {"id": "hum-nw", "kind": "point", "at": [-34, 70], "r": 4, "h": HUMMOCK + 1},
             {"id": "hum-n",  "kind": "point", "at": [-6, 74],  "r": 5, "h": HUMMOCK},
             {"id": "hum-e",  "kind": "point", "at": [26, 44],  "r": 4, "h": HUMMOCK},
-            {"id": "hum-s",  "kind": "point", "at": [8, 32],   "r": 4, "h": HUMMOCK - 1},
+            # hum-s stands on the bank, so it is two courses over it rather than three — a step a
+            # player scrambles instead of a seam that reads back as a wall.
+            {"id": "hum-s",  "kind": "point", "at": [8, 32],   "r": 5, "h": BANK + 2},
         ],
         "pushes": [
             # the holt: the rise the wood stands on, east of the pan. The two gradients agree —
@@ -194,6 +209,14 @@ add_shapes = [
     patch("holm-top", lobe(-18, 52, [9.5, 7.5, 8.5, 7.5, 9.5, 7.5, 8.5, 7.5], 0.2), "holm"),
     # and the shore of the sound, which is the same ice at the board's own edge
     patch("ice-shore", [(-40, 12), (40, 12), (40, 21), (12, 24), (-14, 22), (-40, 24)], "ice"),
+    # the garth: a pad cut level into the north-west shoulder. `relief_scope: "exclude"` takes the
+    # footprint out of the solve, so the shoulder — which stands at 30 over the crown and 25 at the
+    # track — meets the pad at a face instead of being graded into it. The back of the garth is that
+    # face; the track comes in over the low east side, where the two are within a block.
+    {"id": "garth-pad", "type": "polygon", "operation": "add", "group": "team",
+     "height_mode": "level", "base_height": 26, "skirt": 0, "relief_scope": "exclude",
+     "theme": "garth",
+     "vertices": [[-37, 73], [-25, 73], [-25, 83], [-37, 83]]},
 ]
 
 # ── the bothy ────────────────────────────────────────────────────────────────────────────────────
@@ -267,13 +290,13 @@ props = [
     path("track", [[0, 86], [-6, 74], [-14, 66], [-18, 64]], 2, WAY, seed=51),
     path("track-east", [[8, 86], [14, 74], [18, 60], [22, 46], [26, 36]], 2, WAY, seed=52),
     path("track-shore", [[-30, 26], [-18, 22], [-4, 22], [10, 26], [20, 32]], 2, WAY, seed=53),
-    path("track-bothy", [[-14, 80], [-20, 80]], 2, WAY, seed=54),
+    path("track-bothy", [[-12, 80], [-18, 79], [-24, 79]], 2, WAY, seed=54),
     # the bothy: a two-storey house with a low cross wing, out on the north-west shoulder where the
     # west road runs — clear of the spawn door's own approach (`DR-KEEP`), and nowhere near the
     # Thaw's ten-block keep-out (`OB19`)
     {"id": "bothy", "kind": "house", "seed": 611, "front": "posX", "style": "bothy",
-     "wings": [{"corners": [[-37, 76], [-27, 86]], "spec": {"ridge": "alongZ"}},
-               {"corners": [[-26, 78], [-21, 83]], "spec": {"storeysHigh": 1, "ridge": "alongX"}}]},
+     "wings": [{"corners": [[-36, 74], [-30, 82]], "spec": {"ridge": "alongZ"}},
+               {"corners": [[-29, 77], [-26, 81]], "spec": {"storeysHigh": 1, "ridge": "alongX"}}]},
     {"id": "sward", "kind": "flora", "seed": 910,
      "points": [[-38, 12], [38, 12], [38, 98], [-38, 98]],
      "spec": {"coverage": 0.20, "scale": 24, "octaves": 3, "fernShare": 0.35,
@@ -282,13 +305,13 @@ props = [
 # the birches: on the hummocks and on the holt, ten apart, and none of them on the pan — the ice is
 # the one place with nothing on it, and that is the whole point of the board. `DR-CLAIM` is footprint
 # overlap rather than a standoff, and a copied body is wider than the template one.
-for i, (x, z) in enumerate([(-34, 32), (-24, 30), (-36, 68), (-24, 70), (26, 58), (36, 62),
-                            (28, 72), (38, 74), (14, 50), (30, 44), (2, 34)]):
+for i, (x, z) in enumerate([(-38, 40), (-24, 30), (-36, 68), (-24, 70), (26, 58), (36, 62),
+                            (28, 72), (38, 74), (10, 44), (30, 44), (2, 34)]):
     props.append({"id": f"birk-{i}", "kind": "tree", "seed": 710 + i, "x": x, "z": z,
                   "style": BIRCHES[i % len(BIRCHES)]})
 # erratics: stone, cobblestone and andesite and nothing else. Each is on the mire's own ground at a
 # place a player would otherwise cross without a decision.
-for i, (x, z) in enumerate([(4, 70), (10, 64), (-32, 20), (34, 32), (16, 36), (-12, 86)]):
+for i, (x, z) in enumerate([(-4, 58), (6, 58), (-32, 20), (34, 32), (16, 36), (20, 76)]):
     props.append(dict(BOULDER, id=f"erratic-{i}", kind="boulder", seed=810 + i, x=x, z=z,
                       size=4 if i % 2 == 0 else 3))
 
