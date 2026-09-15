@@ -1607,17 +1607,13 @@ finding. **A goal with no piece keeps its ratio perfectly well** — the `null`s
 position being off the board, not the missing piece — so a `null` ratio is a coordinate to check and never a
 reason to add a `piece`.
 
-### The intent carries no capture point, and the finish key for one reaches nothing
+### A field the intent does not carry is a 200 with an `RQ3` beside it
 
-`tools/README.md` documents `controlPoints` and `scoreLimit` as finish keys, and `drive.py` writes them onto
-`intent.controlPoints` / `intent.scoreLimit`. **`MapIntent` has neither field.** It carries `teams`,
-`maxPlayers`, `spawns`, `observer`, `build`, `waterLanes`, `wools`, `destroyables`, `cores`, `modes`, `meta`,
-`symmetry`, `islandTeams` and `structures`. `controlPoint` has no occurrence in `openapi.json`, no rule in
-`GET /api/rules`, no term in `/rules/terms`, and `MapParser` lists `control-points` as `CP/KOTH` among the
-elements the studio refuses to read. `PUT /map/{slug}/intent` answers the same two `RQ3` on a 200.
-
-So a capture board **stores at 200, pre-flights OPEN and exports a world with nothing to win**, and the two
-`RQ3` lines are the only report of it. Author hills as destroyables or cores until the intent grows the field.
+`PUT /map/{slug}/intent` stores what it reads and reports what it did not as `RQ3`, naming the JSON path — so
+a key the record has no field for costs nothing, changes nothing, and answers 200. A board posted that way
+**stores, pre-flights OPEN and exports a world missing whatever the key was for**, and the `RQ3` line is the
+only report of it. Read the `RQ3`s on every intent write; they are the difference between a field that landed
+and a field that was spelled at a version of the studio that no longer exists.
 
 ## A mountain is a push. No mark can be one.
 
