@@ -15,6 +15,7 @@ specs/<slug>/provenance.json          what each pass placed, and which prop plac
 review/<slug>.md                      the measured record for that map
 reports/<model>-runN.md               one agent run: what it could not say, what it got wrong, what worked
 showcase/<nn>-<concept>/              one technique, end to end — documents, world, renders, README
+techniques/<concept>/                 one mechanism, on a sketch board with no map around it
 sculpture/                            structures built out of the layer system — the two galleries
 tools/                                the driver that posts those documents to the API, the loop beside it, and the world tools
 ```
@@ -46,6 +47,14 @@ blocks deep round that, rolling downs cut by three crevasses, a wood, a brick-an
 cottages off it, and a range standing behind each spawn. `maps/opus5-thornfell` is the same technique on a
 capture board: void down the middle, two wool rooms hung off the back of each half on spurs a raider walks
 out along, and a range behind every one of them.
+
+## Technique cards
+
+`techniques/` is smaller than `showcase/` and answers a different question. A showcase is a whole map that
+demonstrates one thing; a technique card is a **sketch board and nothing else** — no plan, no intent, no
+objectives — holding several plots side by side so one mechanism can be read against itself arranged
+differently. `techniques/README.md` is the index, and `techniques/tunnels` with `techniques/tunnel-mouths`
+are the pair on covered space: what a bore is made of, and the four ways one meets the sky.
 
 ## Sculpting with layers
 

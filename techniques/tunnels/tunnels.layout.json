@@ -1,0 +1,939 @@
+{
+  "setup": {
+    "bbox": {
+      "min_x": -6,
+      "max_x": 98,
+      "min_z": -6,
+      "max_z": 96
+    },
+    "center": {
+      "cx": 46,
+      "cz": 45
+    },
+    "mirror_mode": "none"
+  },
+  "themes": {
+    "meadow": {
+      "bedrock": {
+        "relative": false,
+        "value": 1
+      },
+      "rimEdges": "void",
+      "rim": {
+        "enabled": false,
+        "depth": 1,
+        "material": {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+        }
+      },
+      "surface": {
+        "enabled": true,
+        "depth": 3,
+        "material": {
+          "kind": "layered",
+          "axis": "depth",
+          "beyond": {
+            "kind": "solid",
+            "id": 1,
+            "data": 0
+          },
+          "stack": {
+            "ending": "handOver",
+            "bands": [
+              {
+                "thickness": 1,
+                "material": {
+                  "kind": "solid",
+                  "id": 2,
+                  "data": 0
+                }
+              },
+              {
+                "thickness": 2,
+                "material": {
+                  "kind": "solid",
+                  "id": 3,
+                  "data": 0
+                }
+              }
+            ]
+          }
+        }
+      },
+      "wall": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+      },
+      "wallEnabled": true,
+      "wallOnTerrainFaces": true,
+      "fill": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+      }
+    }
+  },
+  "mapTheme": "meadow",
+  "layers": [
+    {
+      "id": "base",
+      "name": "Base",
+      "base_y": 0,
+      "layout": {
+        "shapes": [
+          {
+            "id": "an-base",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 0,
+            "base_height": 4,
+            "min_x": 0,
+            "min_z": 0,
+            "max_x": 24,
+            "max_z": 40,
+            "material": {
+              "kind": "solid",
+              "id": 98,
+              "data": 0
+            }
+          },
+          {
+            "id": "co-base",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 0,
+            "base_height": 4,
+            "min_x": 34,
+            "min_z": 0,
+            "max_x": 58,
+            "max_z": 40,
+            "material": {
+              "kind": "solid",
+              "id": 98,
+              "data": 0
+            }
+          },
+          {
+            "id": "le-base-low",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 0,
+            "base_height": 4,
+            "min_x": 68,
+            "min_z": 0,
+            "max_x": 92,
+            "max_z": 22,
+            "material": {
+              "kind": "solid",
+              "id": 98,
+              "data": 0
+            }
+          },
+          {
+            "id": "le-ramp",
+            "type": "polygon",
+            "operation": "add",
+            "floor": 0,
+            "base_height": 8.5,
+            "vertices": [
+              [
+                78,
+                22
+              ],
+              [
+                83,
+                22
+              ],
+              [
+                83,
+                26
+              ],
+              [
+                78,
+                26
+              ]
+            ],
+            "anchor_heights": [
+              4.5,
+              4.5,
+              8.5,
+              8.5
+            ],
+            "material": {
+              "kind": "solid",
+              "id": 98,
+              "data": 0
+            }
+          },
+          {
+            "id": "le-mid-w",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 0,
+            "base_height": 8,
+            "min_x": 68,
+            "min_z": 22,
+            "max_x": 78,
+            "max_z": 26,
+            "material": {
+              "kind": "solid",
+              "id": 98,
+              "data": 0
+            }
+          },
+          {
+            "id": "le-mid-e",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 0,
+            "base_height": 8,
+            "min_x": 83,
+            "min_z": 22,
+            "max_x": 92,
+            "max_z": 26,
+            "material": {
+              "kind": "solid",
+              "id": 98,
+              "data": 0
+            }
+          },
+          {
+            "id": "le-base-high",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 0,
+            "base_height": 8,
+            "min_x": 68,
+            "min_z": 26,
+            "max_x": 92,
+            "max_z": 40,
+            "material": {
+              "kind": "solid",
+              "id": 98,
+              "data": 0
+            }
+          },
+          {
+            "id": "cr-base",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 0,
+            "base_height": 4,
+            "min_x": 0,
+            "min_z": 50,
+            "max_x": 24,
+            "max_z": 90,
+            "material": {
+              "kind": "solid",
+              "id": 98,
+              "data": 0
+            }
+          },
+          {
+            "id": "st-base",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 0,
+            "base_height": 4,
+            "min_x": 34,
+            "min_z": 50,
+            "max_x": 58,
+            "max_z": 90,
+            "material": {
+              "kind": "solid",
+              "id": 98,
+              "data": 0
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": "anatomy-base",
+            "name": "anatomy base",
+            "mirrors": false,
+            "shapeIds": [
+              "an-base"
+            ]
+          },
+          {
+            "id": "corner-base",
+            "name": "corner base",
+            "mirrors": false,
+            "shapeIds": [
+              "co-base"
+            ]
+          },
+          {
+            "id": "levels-base",
+            "name": "levels base",
+            "mirrors": false,
+            "shapeIds": [
+              "le-base-low",
+              "le-ramp",
+              "le-mid-w",
+              "le-mid-e",
+              "le-base-high"
+            ]
+          },
+          {
+            "id": "crossing-base",
+            "name": "crossing base",
+            "mirrors": false,
+            "shapeIds": [
+              "cr-base"
+            ]
+          },
+          {
+            "id": "storeys-base",
+            "name": "storeys base",
+            "mirrors": false,
+            "shapeIds": [
+              "st-base"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "walls",
+      "name": "Walls",
+      "base_y": 0,
+      "layout": {
+        "shapes": [
+          {
+            "id": "an-wall-w",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 4,
+            "base_height": 4,
+            "min_x": 0,
+            "min_z": 0,
+            "max_x": 10,
+            "max_z": 40,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "an-wall-e",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 4,
+            "base_height": 4,
+            "min_x": 15,
+            "min_z": 0,
+            "max_x": 24,
+            "max_z": 40,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "co-rock-w",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 4,
+            "base_height": 4,
+            "min_x": 34,
+            "min_z": 0,
+            "max_x": 44,
+            "max_z": 40,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "co-rock-ne",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 4,
+            "base_height": 4,
+            "min_x": 49,
+            "min_z": 0,
+            "max_x": 58,
+            "max_z": 21,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "co-rock-s",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 4,
+            "base_height": 4,
+            "min_x": 44,
+            "min_z": 26,
+            "max_x": 58,
+            "max_z": 40,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "le-wall-lw",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 4,
+            "base_height": 4,
+            "min_x": 68,
+            "min_z": 0,
+            "max_x": 78,
+            "max_z": 22,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "le-wall-le",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 4,
+            "base_height": 4,
+            "min_x": 83,
+            "min_z": 0,
+            "max_x": 92,
+            "max_z": 22,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "le-wall-mw",
+            "type": "polygon",
+            "operation": "add",
+            "floor": 8,
+            "base_height": 4.5,
+            "vertices": [
+              [
+                68,
+                22
+              ],
+              [
+                78,
+                22
+              ],
+              [
+                78,
+                26
+              ],
+              [
+                68,
+                26
+              ]
+            ],
+            "anchor_heights": [
+              0.5,
+              0.5,
+              4.5,
+              4.5
+            ],
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "le-wall-me",
+            "type": "polygon",
+            "operation": "add",
+            "floor": 8,
+            "base_height": 4.5,
+            "vertices": [
+              [
+                83,
+                22
+              ],
+              [
+                92,
+                22
+              ],
+              [
+                92,
+                26
+              ],
+              [
+                83,
+                26
+              ]
+            ],
+            "anchor_heights": [
+              0.5,
+              0.5,
+              4.5,
+              4.5
+            ],
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "le-wall-hw",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 8,
+            "base_height": 4,
+            "min_x": 68,
+            "min_z": 26,
+            "max_x": 78,
+            "max_z": 40,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "le-wall-he",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 8,
+            "base_height": 4,
+            "min_x": 83,
+            "min_z": 26,
+            "max_x": 92,
+            "max_z": 40,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "cr-rock-nw",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 4,
+            "base_height": 4,
+            "min_x": 0,
+            "min_z": 50,
+            "max_x": 10,
+            "max_z": 68,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "cr-rock-ne",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 4,
+            "base_height": 4,
+            "min_x": 15,
+            "min_z": 50,
+            "max_x": 24,
+            "max_z": 68,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "cr-rock-sw",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 4,
+            "base_height": 4,
+            "min_x": 0,
+            "min_z": 73,
+            "max_x": 10,
+            "max_z": 90,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "cr-rock-se",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 4,
+            "base_height": 4,
+            "min_x": 15,
+            "min_z": 73,
+            "max_x": 24,
+            "max_z": 90,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "st-rock-n",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 4,
+            "base_height": 4,
+            "min_x": 34,
+            "min_z": 50,
+            "max_x": 58,
+            "max_z": 66,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "st-rock-s",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 4,
+            "base_height": 4,
+            "min_x": 34,
+            "min_z": 71,
+            "max_x": 58,
+            "max_z": 90,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": "anatomy-walls",
+            "name": "anatomy walls",
+            "mirrors": false,
+            "shapeIds": [
+              "an-wall-w",
+              "an-wall-e"
+            ]
+          },
+          {
+            "id": "corner-walls",
+            "name": "corner walls",
+            "mirrors": false,
+            "shapeIds": [
+              "co-rock-w",
+              "co-rock-ne",
+              "co-rock-s"
+            ]
+          },
+          {
+            "id": "levels-walls",
+            "name": "levels walls",
+            "mirrors": false,
+            "shapeIds": [
+              "le-wall-lw",
+              "le-wall-le",
+              "le-wall-mw",
+              "le-wall-me",
+              "le-wall-hw",
+              "le-wall-he"
+            ]
+          },
+          {
+            "id": "crossing-walls",
+            "name": "crossing walls",
+            "mirrors": false,
+            "shapeIds": [
+              "cr-rock-nw",
+              "cr-rock-ne",
+              "cr-rock-sw",
+              "cr-rock-se"
+            ]
+          },
+          {
+            "id": "storeys-walls",
+            "name": "storeys walls",
+            "mirrors": false,
+            "shapeIds": [
+              "st-rock-n",
+              "st-rock-s"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lid",
+      "name": "Lid",
+      "base_y": 0,
+      "layout": {
+        "shapes": [
+          {
+            "id": "an-lid",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 8,
+            "base_height": 4,
+            "min_x": 0,
+            "min_z": 0,
+            "max_x": 24,
+            "max_z": 40,
+            "theme": "meadow"
+          },
+          {
+            "id": "co-lid",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 8,
+            "base_height": 4,
+            "min_x": 34,
+            "min_z": 0,
+            "max_x": 58,
+            "max_z": 40,
+            "theme": "meadow"
+          },
+          {
+            "id": "le-lid-low",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 8,
+            "base_height": 4,
+            "min_x": 68,
+            "min_z": 0,
+            "max_x": 92,
+            "max_z": 22,
+            "theme": "meadow"
+          },
+          {
+            "id": "le-lid-s1",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 9,
+            "base_height": 4,
+            "min_x": 68,
+            "min_z": 22,
+            "max_x": 92,
+            "max_z": 23,
+            "theme": "meadow"
+          },
+          {
+            "id": "le-lid-s2",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 10,
+            "base_height": 4,
+            "min_x": 68,
+            "min_z": 23,
+            "max_x": 92,
+            "max_z": 24,
+            "theme": "meadow"
+          },
+          {
+            "id": "le-lid-s3",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 11,
+            "base_height": 4,
+            "min_x": 68,
+            "min_z": 24,
+            "max_x": 92,
+            "max_z": 25,
+            "theme": "meadow"
+          },
+          {
+            "id": "le-lid-s4",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 12,
+            "base_height": 4,
+            "min_x": 68,
+            "min_z": 25,
+            "max_x": 92,
+            "max_z": 26,
+            "theme": "meadow"
+          },
+          {
+            "id": "le-lid-high",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 12,
+            "base_height": 4,
+            "min_x": 68,
+            "min_z": 26,
+            "max_x": 92,
+            "max_z": 40,
+            "theme": "meadow"
+          },
+          {
+            "id": "cr-lid",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 8,
+            "base_height": 4,
+            "min_x": 0,
+            "min_z": 50,
+            "max_x": 24,
+            "max_z": 90,
+            "theme": "meadow"
+          },
+          {
+            "id": "st-deck",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 8,
+            "base_height": 4,
+            "min_x": 34,
+            "min_z": 50,
+            "max_x": 58,
+            "max_z": 90,
+            "material": {
+              "kind": "solid",
+              "id": 98,
+              "data": 0
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": "anatomy-lid",
+            "name": "anatomy lid",
+            "mirrors": false,
+            "shapeIds": [
+              "an-lid"
+            ]
+          },
+          {
+            "id": "corner-lid",
+            "name": "corner lid",
+            "mirrors": false,
+            "shapeIds": [
+              "co-lid"
+            ]
+          },
+          {
+            "id": "levels-lid",
+            "name": "levels lid",
+            "mirrors": false,
+            "shapeIds": [
+              "le-lid-low",
+              "le-lid-s1",
+              "le-lid-s2",
+              "le-lid-s3",
+              "le-lid-s4",
+              "le-lid-high"
+            ]
+          },
+          {
+            "id": "crossing-lid",
+            "name": "crossing lid",
+            "mirrors": false,
+            "shapeIds": [
+              "cr-lid"
+            ]
+          },
+          {
+            "id": "storeys-lid",
+            "name": "storeys lid",
+            "mirrors": false,
+            "shapeIds": [
+              "st-deck"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "walls-2",
+      "name": "Walls 2",
+      "base_y": 0,
+      "layout": {
+        "shapes": [
+          {
+            "id": "st-rock-w",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 12,
+            "base_height": 4,
+            "min_x": 34,
+            "min_z": 50,
+            "max_x": 44,
+            "max_z": 90,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          },
+          {
+            "id": "st-rock-e",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 12,
+            "base_height": 4,
+            "min_x": 49,
+            "min_z": 50,
+            "max_x": 58,
+            "max_z": 90,
+            "material": {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+            }
+          }
+        ],
+        "groups": [
+          {
+            "id": "storeys-walls-2",
+            "name": "storeys walls-2",
+            "mirrors": false,
+            "shapeIds": [
+              "st-rock-w",
+              "st-rock-e"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "lid-2",
+      "name": "Lid 2",
+      "base_y": 0,
+      "layout": {
+        "shapes": [
+          {
+            "id": "st-lid",
+            "type": "rectangle",
+            "operation": "add",
+            "floor": 16,
+            "base_height": 4,
+            "min_x": 34,
+            "min_z": 50,
+            "max_x": 58,
+            "max_z": 90,
+            "theme": "meadow"
+          }
+        ],
+        "groups": [
+          {
+            "id": "storeys-lid-2",
+            "name": "storeys lid-2",
+            "mirrors": false,
+            "shapeIds": [
+              "st-lid"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}
