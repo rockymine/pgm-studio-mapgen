@@ -1,0 +1,53 @@
+## byre (house) along x
+TRANSECT 21 stations from (-33, -37) to (-13, -37), every 1
+  station        ground  surface  water  top  standing            step
+  (  -33,   -37)                                                    void
+  (  -32,   -37)                                                    void
+  (  -31,   -37)                                                    void
+  (  -30,   -37)                                                    void
+  (  -29,   -37)                                                    void
+  (  -28,   -37)                                                    void
+  (  -27,   -37)                                                    void
+  (  -26,   -37)                            17  house byre          void
+  (  -25,   -37)       9        9           17  house byre          
+  (  -24,   -37)       9        9           17  house byre          
+  (  -23,   -37)       9        9           17  house byre          
+  (  -22,   -37)       9        9           17  house byre          
+  (  -21,   -37)       9        9           17  house byre          
+  (  -20,   -37)       9        9           17  house byre          
+  (  -19,   -37)       9        9            9                      
+  (  -18,   -37)       9        9            9                      
+  (  -17,   -37)       9        9            9                      
+  (  -16,   -37)       9        9            9                      
+  (  -15,   -37)       9        9            9                      
+  (  -14,   -37)       8        8            8                      -1
+  (  -13,   -37)       8        8            8                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house byre at (-26, -39)
+
+## byre (house) along z
+TRANSECT 21 stations from (-23, -47) to (-23, -27), every 1
+  station        ground  surface  water  top  standing            step
+  (  -23,   -47)      10       10           24  house longhouse     
+  (  -23,   -46)      10       10           23  house longhouse     
+  (  -23,   -45)      10       10           22  house longhouse     
+  (  -23,   -44)      10       10           21  house longhouse     
+  (  -23,   -43)       9        9           20  house longhouse     -1
+  (  -23,   -42)       9        9            9                      
+  (  -23,   -41)       9        9            9                      
+  (  -23,   -40)       9        9           14  house byre          
+  (  -23,   -39)       9        9           15  house byre          
+  (  -23,   -38)       9        9           16  house byre          
+  (  -23,   -37)       9        9           17  house byre          
+  (  -23,   -36)       9        9           16  house byre          
+  (  -23,   -35)       9        9           15  house byre          
+  (  -23,   -34)       9        9           14  house byre          
+  (  -23,   -33)       9        9            9                      
+  (  -23,   -32)       9        9            9                      
+  (  -23,   -31)       9        9            9                      
+  (  -23,   -30)       9        9           12  boulder shore-rock-0  
+  (  -23,   -29)       9        9           12  boulder shore-rock-0  
+  (  -23,   -28)       9        9           12  boulder shore-rock-0  
+  (  -23,   -27)       9        9            9                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house longhouse at (-25, -49), house byre at (-25, -40), boulder shore-rock-0 at (-24, -30)

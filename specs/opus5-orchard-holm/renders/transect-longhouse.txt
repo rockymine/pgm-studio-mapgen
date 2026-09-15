@@ -1,0 +1,63 @@
+## longhouse (house) along x
+TRANSECT 26 stations from (-33, -49) to (-8, -49), every 1
+  station        ground  surface  water  top  standing            step
+  (  -33,   -49)                                                    void
+  (  -32,   -49)                                                    void
+  (  -31,   -49)                                                    void
+  (  -30,   -49)                                                    void
+  (  -29,   -49)                                                    void
+  (  -28,   -49)                                                    void
+  (  -27,   -49)                                                    void
+  (  -26,   -49)                            25  house longhouse     void
+  (  -25,   -49)      10       10           25  house longhouse     
+  (  -24,   -49)      10       10           25  house longhouse     
+  (  -23,   -49)      10       10           25  house longhouse     
+  (  -22,   -49)      10       10           25  house longhouse     
+  (  -21,   -49)      10       10           25  house longhouse     
+  (  -20,   -49)      10       10           25  house longhouse     
+  (  -19,   -49)      10       10           25  house longhouse     
+  (  -18,   -49)      10       10           25  house longhouse     
+  (  -17,   -49)      11       11           25  house longhouse     +1
+  (  -16,   -49)      11       11           25  house longhouse     
+  (  -15,   -49)      11       11           25  house longhouse     
+  (  -14,   -49)      11       11           11                      
+  (  -13,   -49)      11       11           11                      
+  (  -12,   -49)      11       11           11                      
+  (  -11,   -49)      11       11           11                      
+  (  -10,   -49)      11       11           11                      
+  (   -9,   -49)      11       11           11                      
+  (   -8,   -49)      11       11           11                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house longhouse at (-26, -51)
+
+## longhouse (house) along z
+TRANSECT 26 stations from (-21, -61) to (-21, -36), every 1
+  station        ground  surface  water  top  standing            step
+  (  -21,   -61)      11       11           21  tree bank-1         
+  (  -21,   -60)      11       11           21  tree bank-1         
+  (  -21,   -59)      11       11           21  tree bank-1         
+  (  -21,   -58)      11       11           20  tree bank-1         
+  (  -21,   -57)      11       11           11                      
+  (  -21,   -56)      11       11           11                      
+  (  -21,   -55)      11       11           11                      
+  (  -21,   -54)      10       10           20  house longhouse     -1
+  (  -21,   -53)      10       10           21  house longhouse     
+  (  -21,   -52)      10       10           22  house longhouse     
+  (  -21,   -51)      10       10           23  house longhouse     
+  (  -21,   -50)      10       10           24  house longhouse     
+  (  -21,   -49)      10       10           25  house longhouse     
+  (  -21,   -48)      10       10           25  house longhouse     
+  (  -21,   -47)      10       10           24  house longhouse     
+  (  -21,   -46)      10       10           23  house longhouse     
+  (  -21,   -45)      10       10           22  house longhouse     
+  (  -21,   -44)      10       10           21  house longhouse     
+  (  -21,   -43)       9        9           20  house longhouse     -1
+  (  -21,   -42)       9        9            9                      
+  (  -21,   -41)       9        9            9                      
+  (  -21,   -40)       9        9           14  house byre          
+  (  -21,   -39)       9        9           15  house byre          
+  (  -21,   -38)       9        9           16  house byre          
+  (  -21,   -37)       9        9           17  house byre          
+  (  -21,   -36)       9        9           16  house byre          
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree bank-1 at (-21, -62), house longhouse at (-23, -54), house byre at (-23, -40)

@@ -1,0 +1,53 @@
+## wool-store (house) along x
+TRANSECT 21 stations from (6, -42) to (26, -42), every 1
+  station        ground  surface  water  top  standing            step
+  (    6,   -42)       9        9            9                      
+  (    7,   -42)       9        9            9                      
+  (    8,   -42)       9        9            9                      
+  (    9,   -42)       9        9            9                      
+  (   10,   -42)       9        9            9                      
+  (   11,   -42)       9        9            9                      
+  (   12,   -42)       9        9            9                      
+  (   13,   -42)       9        9           13  house wool-store    
+  (   14,   -42)       9        9           14  house wool-store    
+  (   15,   -42)       9        9           15  house wool-store    
+  (   16,   -42)       9        9           16  house wool-store    
+  (   17,   -42)       9        9           17  house wool-store    
+  (   18,   -42)       9        9           18  house wool-store    
+  (   19,   -42)       9        9           18  house wool-store    
+  (   20,   -42)                                                    void
+  (   21,   -42)                                                    void
+  (   22,   -42)                                                    void
+  (   23,   -42)                                                    void
+  (   24,   -42)                                                    void
+  (   25,   -42)                                                    void
+  (   26,   -42)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house wool-store at (13, -44)
+
+## wool-store (house) along z
+TRANSECT 21 stations from (16, -52) to (16, -32), every 1
+  station        ground  surface  water  top  standing            step
+  (   16,   -52)      10       10           10                      
+  (   16,   -51)      10       10           10                      
+  (   16,   -50)      10       10           10                      
+  (   16,   -49)       9        9            9                      -1
+  (   16,   -48)       9        9            9                      
+  (   16,   -47)       9        9            9                      
+  (   16,   -46)       9        9            9                      
+  (   16,   -45)       9        9           16  house wool-store    
+  (   16,   -44)       9        9           16  house wool-store    
+  (   16,   -43)       9        9           16  house wool-store    
+  (   16,   -42)       9        9           16  house wool-store    
+  (   16,   -41)       9        9           16  house wool-store    
+  (   16,   -40)       9        9           16  house wool-store    
+  (   16,   -39)       9        9           16  house wool-store    
+  (   16,   -38)       9        9            9                      
+  (   16,   -37)       9        9            9                      
+  (   16,   -36)       9        9            9                      
+  (   16,   -35)       9        9            9                      
+  (   16,   -34)       9        9            9                      
+  (   16,   -33)       8        8            8                      -1
+  (   16,   -32)       8        8            8                      
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house wool-store at (14, -45), boulder shore-rock-1 at (17, -31)
