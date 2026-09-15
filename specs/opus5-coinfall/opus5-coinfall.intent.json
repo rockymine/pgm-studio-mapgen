@@ -180,33 +180,53 @@
       {
        "material": "golden apple",
        "name": "`6Runner's Apple",
-       "price": 16,
-       "currency": "wood"
+       "payments": [
+        {
+         "price": 16,
+         "currency": "wood"
+        }
+       ]
       },
       {
        "material": "arrow",
        "amount": 16,
-       "price": 8,
-       "currency": "wood"
+       "payments": [
+        {
+         "price": 8,
+         "currency": "wood"
+        }
+       ]
       },
       {
        "material": "ladder",
        "amount": 8,
-       "price": 8,
-       "currency": "wood"
+       "payments": [
+        {
+         "price": 8,
+         "currency": "wood"
+        }
+       ]
       },
       {
        "material": "stained clay",
        "amount": 16,
-       "price": 12,
-       "currency": "wood",
-       "teamColor": true
+       "teamColor": true,
+       "payments": [
+        {
+         "price": 12,
+         "currency": "wood"
+        }
+       ]
       },
       {
        "material": "iron fence",
        "amount": 8,
-       "price": 24,
-       "currency": "wood"
+       "payments": [
+        {
+         "price": 24,
+         "currency": "wood"
+        }
+       ]
       }
      ]
     }

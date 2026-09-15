@@ -522,13 +522,16 @@ The studio grew shops this run: an intent takes a `shops` array, the export writ
 `<shopkeeper>` at every team's spawn, and a map carrying either now parses, stores and re-emits instead of
 losing it. `opus5-coinfall` is two three-step camps facing a neutral holm across a pair of twenty-block
 voids, with a villager in each spawn hall, and the menu trades the kit's own wood for what a wool run needs.
-**A keeper carries no position at all** — a shop is a catalogue rather than a place, so the studio puts one
-per shop beside the point players arrive on, and PGM spawns the entity itself from the element, so nothing is
-stamped and the board exports the moment its intent is stored. [reports/opus5-coinfall-run.md](reports/opus5-coinfall-run.md)
+**A keeper's position is derived unless it names one** — a keeper that says nothing gets one per shop beside
+the point players arrive on at every spawn, and one naming a block or a region stands there once. PGM spawns
+the entity itself from the element, so nothing is stamped and the board exports the moment its intent is
+stored. [reports/opus5-coinfall-run.md](reports/opus5-coinfall-run.md)
 
-**A generated board mints no currency**, which is the run's finding rather than a fault in the map: the spawn
-kit and the kill reward derived from it are its only item sources, so a shop priced in the emerald or nugget
-764 of the corpus's 907 icons use is a menu nobody can open an account with (`PG14`).
+**A generated board minted no currency**, which was the run's finding rather than a fault in the map: the
+spawn kit and the kill reward derived from it were its only item sources, so a shop priced in the emerald or
+nugget 764 of the corpus's 907 icons use was a menu nobody could open an account with. The studio takes
+`spawners` on the intent now — a place, a rate, a cap and what drops — which is what the corpus mints with:
+374 of the 429 entries yielding one of the eight commonest shop currencies are a spawner's items.
 
 **A path paints only where it reaches the ground the shapes draw.** The board's two brown ways were authored
 as a `polyline` with a theme and nothing else, and painted nothing at all in silence: a stroke with no
