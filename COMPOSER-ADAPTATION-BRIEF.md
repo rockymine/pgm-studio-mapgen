@@ -137,6 +137,38 @@ stamped block soup. Give the layer `kind: "made"` and a `part_of`, which keeps `
 **Flow with a polyline.** The rasterizer splines a polyline's points before offsetting the band, so four
 points draw as a curve — a wall, a lane, a watercourse. Never a chain of rectangles.
 
+## 4a. What the adaptation must not break
+
+These are the repository author's rulings, and they bind. `pgm-studio/docs/gameplay/approaches.md` is where
+they live in full; this is what they mean when a composed plan is being reshaped.
+
+**Sixteen blocks is the floor for a bay touching a goal or a spawn.** Negative space between two pieces is
+crossed by jumping long before it is crossed by building: a short gap between a frontline and a wool room, or
+between a spawn and a wool room, lets a player tower at the near edge and jump straight in, and the approach
+the board was built around stops mattering. A plain hole in a team's own ground may be twelve. The number is
+in **blocks** — the composer's own floor is two cells, which is ten blocks at the default scale and eight at
+cell 4, so a cell count is not the thing to copy.
+
+Three of this run's boards went under it while reshaping: `opus5-quadrangle` left five cells-worth between its
+spawn and the wool-b enclosure (six blocks in the built world), `opus5-medlock-drift` five between `clamp-head`
+and its wool room, `opus5-sallyport` five between `hub-back` and `wool-a-s`. Measure every gap a move opens —
+the composer never emits one under ten, so a short bay on an adapted board is always the adaptation's.
+
+**A wool room is defended from its corner.** The room wants **two faces on void**: it sits in a corner, a
+defender holds two lines, an attacker picks between two. Three faces open is the ordinary composed shape and is
+fine. A room with ground on **every** side is the failure — there is nothing to hold and nowhere for the fight
+to be, and the room becomes a spot in a field rather than a place. It happens by adding area around the room
+while reshaping the ground near it, so when a ring is bent or a vertex moved near a wool room, check what the
+room still fronts onto. A room at the end of a spur is the milder failure: defensible, and one queue.
+
+**The defence wall is meant to be in the way.** A `walls` entry is bedrock across the interface it names, and
+blocking the way into a wool is its entire purpose — it gives the defence a prepared line before it has built
+anything and costs a tunneller the shortcut. Reading a walled approach as a wool that cannot be reached is
+reading the wall as damage. **One wall on one interface**, narrow enough to be a line rather than a barricade,
+and — the part reshaping breaks — **no ground pulled out past its ends**. A wall spans the interface it is
+authored on, so terrain widened beyond that interface leaves an open shoulder beside it, and a wall players
+stroll around is only in the defence's way. Reshape the interface with the approach.
+
 ## 5. Relief: the instrument, and the danger
 
 **Relief is not the board.** The author's words: relief should be used, and *solid structural areas are
