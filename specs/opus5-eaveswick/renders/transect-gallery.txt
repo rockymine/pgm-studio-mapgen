@@ -1,0 +1,89 @@
+## gallery (made) along x
+TRANSECT 46 stations from (-22, 33) to (23, 33), every 1
+  station        ground  surface  water  top  standing            step
+  (  -22,    33)                                                    void
+  (  -21,    33)                                                    void
+  (  -20,    33)      15       15           15                      
+  (  -19,    33)      15       15           15                      
+  (  -18,    33)      15       15           15                      
+  (  -17,    33)      15       15           15                      
+  (  -16,    33)      15       15           15                      
+  (  -15,    33)      15       15           15                      
+  (  -14,    33)      12       19           19  storey              BARRIER +4
+  (  -13,    33)      12       19           19  storey              
+  (  -12,    33)      12       19           19  storey              
+  (  -11,    33)      12       19           19  storey              
+  (  -10,    33)      12       19           19  storey              
+  (   -9,    33)      12       19           19  storey              
+  (   -8,    33)      12       19           19  storey              
+  (   -7,    33)      12       19           19  storey              
+  (   -6,    33)      12       19           19  storey              
+  (   -5,    33)      12       19           19  storey              
+  (   -4,    33)      12       19           19  storey              
+  (   -3,    33)      12       19           19  storey              
+  (   -2,    33)      12       19           19  storey              
+  (   -1,    33)      12       19           19  storey              
+  (    0,    33)      12       19           19  storey              
+  (    1,    33)      12       19           19  storey              
+  (    2,    33)      12       19           19  storey              
+  (    3,    33)      12       19           19  storey              
+  (    4,    33)      12       19           19  storey              
+  (    5,    33)      12       19           19  storey              
+  (    6,    33)      12       19           19  storey              
+  (    7,    33)      12       19           19  storey              
+  (    8,    33)      12       19           19  storey              
+  (    9,    33)      12       19           19  storey              
+  (   10,    33)      12       19           19  storey              
+  (   11,    33)      12       19           19  storey              
+  (   12,    33)      12       19           19  storey              
+  (   13,    33)      12       19           19  storey              
+  (   14,    33)      15       19           19  storey              
+  (   15,    33)      15       15           15                      DROP -4
+  (   16,    33)      15       15           15                      
+  (   17,    33)      15       15           15  stroke quay-road    
+  (   18,    33)      15       15           15  stroke quay-road    
+  (   19,    33)      15       15           16  wall 0              
+  (   20,    33)      17       17           17  wall 0              scramble +2
+  (   21,    33)      18       18           18                      +1
+  (   22,    33)      19       19           19                      +1
+  (   23,    33)      19       19           19                      
+rises 4, falls 1, worst step 4: 1 barrier, 1 scramble, 1 drop — BARRIER +4 at (-14, 33); DROP -4 at (15, 33); scramble +2 at (20, 33) | walked end to end
+beside: stroke quay-road at (17, 31), wall 0 at (19, 31)
+
+## gallery (made) along z
+TRANSECT 32 stations from (0, 18) to (0, 49), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    18)      13       13           25  house wharf-shed    
+  (    0,    19)      12       12           26  house wharf-shed    -1
+  (    0,    20)      12       12           26  house wharf-shed    
+  (    0,    21)      12       12           12                      
+  (    0,    22)      12       12           12                      
+  (    0,    23)      12       12           12                      
+  (    0,    24)      12       12           12                      
+  (    0,    25)      12       12           12                      
+  (    0,    26)      12       20           20  storey              BARRIER +8
+  (    0,    27)      12       19           19  storey              -1
+  (    0,    28)      12       19           19  storey              
+  (    0,    29)      12       19           19  storey              
+  (    0,    30)      12       19           19  storey              
+  (    0,    31)      12       19           19  storey              
+  (    0,    32)      12       19           19  storey              
+  (    0,    33)      12       19           19  storey              
+  (    0,    34)      12       19           19  storey              
+  (    0,    35)      12       19           19  storey              
+  (    0,    36)      12       19           19  storey              
+  (    0,    37)      12       19           19  storey              
+  (    0,    38)      12       19           19  storey              
+  (    0,    39)      14       19           19  storey              
+  (    0,    40)      16       19           19  storey              
+  (    0,    41)      19       19           19                      
+  (    0,    42)      19       19           19                      
+  (    0,    43)      19       19           19                      
+  (    0,    44)      19       19           19                      
+  (    0,    45)      19       19           19                      
+  (    0,    46)      19       19           19                      
+  (    0,    47)      19       19           19                      
+  (    0,    48)      19       19           19                      
+  (    0,    49)      19       19           19                      
+rises 1, falls 2, worst step 8: 1 barrier, 0 scramble, 0 drop — BARRIER +8 at (0, 26) | walked end to end
+beside: house wharf-shed at (-2, 16), tree wharf-3 at (-2, 20), stroke quay-road at (2, 49)

@@ -1,0 +1,53 @@
+## spawn-blue (spawn) along x
+TRANSECT 23 stations from (-3, -45) to (19, -45), every 1
+  station        ground  surface  water  top  standing            step
+  (   -3,   -45)                                                    void
+  (   -2,   -45)                                                    void
+  (   -1,   -45)                                                    void
+  (    0,   -45)                                                    void
+  (    1,   -45)                                                    void
+  (    2,   -45)                                                    void
+  (    3,   -45)                                                    void
+  (    4,   -45)                                                    void
+  (    5,   -45)      14       14           28                      
+  (    6,   -45)      14       14           28  spawn spawn-1#1     
+  (    7,   -45)      14       14           28  spawn spawn-1#1     
+  (    8,   -45)      14       14           28  spawn spawn-1#1     
+  (    9,   -45)      14       14           28  spawn spawn-1#1     
+  (   10,   -45)      14       14           28  spawn spawn-1#1     
+  (   11,   -45)      14       14           28  spawn spawn-1#1     
+  (   12,   -45)      14       14           28  spawn spawn-1#1     
+  (   13,   -45)      14       14           28  spawn spawn-1#1     
+  (   14,   -45)      14       14           28                      
+  (   15,   -45)      14       14           14                      
+  (   16,   -45)      14       14           14                      
+  (   17,   -45)      14       14           17  ironcube spawn-1:0#1  
+  (   18,   -45)      14       14           17  ironcube spawn-1:0#1  
+  (   19,   -45)      14       14           17  ironcube spawn-1:0#1  
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (6, -47), ironcube spawn-1:0#1 at (17, -47)
+
+## spawn-blue (spawn) along z
+TRANSECT 19 stations from (12, -50) to (12, -32), every 1
+  station        ground  surface  water  top  standing            step
+  (   12,   -50)      14       14           24                      
+  (   12,   -49)      14       14           25  spawn spawn-1#1     
+  (   12,   -48)      14       14           26  spawn spawn-1#1     
+  (   12,   -47)      14       14           27  spawn spawn-1#1     
+  (   12,   -46)      14       14           28  spawn spawn-1#1     
+  (   12,   -45)      14       14           28  spawn spawn-1#1     
+  (   12,   -44)      14       14           27  spawn spawn-1#1     
+  (   12,   -43)      14       14           26  spawn spawn-1#1     
+  (   12,   -42)      14       14           25  spawn spawn-1#1     
+  (   12,   -41)      14       14           24                      
+  (   12,   -40)      14       14           14                      
+  (   12,   -39)      14       14           14                      
+  (   12,   -38)      14       14           14                      
+  (   12,   -37)      14       14           14                      
+  (   12,   -36)      14       14           14                      
+  (   12,   -35)      14       14           14                      
+  (   12,   -34)      14       14           14                      
+  (   12,   -33)      14       14           14                      
+  (   12,   -32)      14       14           14                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (10, -49)

@@ -1,0 +1,61 @@
+## spawn-blue (spawn) along x
+TRANSECT 23 stations from (22, -35) to (44, -35), every 1
+  station        ground  surface  water  top  standing            step
+  (   22,   -35)      21       21           21  stroke quay-road#1  
+  (   23,   -35)      21       21           21  stroke quay-road#1  
+  (   24,   -35)      20       20           20  stroke quay-road#1  -1
+  (   25,   -35)      20       20           20  stroke quay-road#1  
+  (   26,   -35)      19       19           19  stroke quay-road#1  -1
+  (   27,   -35)      18       18           18  stroke quay-road#1  -1
+  (   28,   -35)      18       18           18  stroke quay-road#1  
+  (   29,   -35)      17       17           17  stroke quay-road#1  -1
+  (   30,   -35)      17       17           17  stroke quay-road#1  
+  (   31,   -35)      17       17           20  stroke quay-road#1  
+  (   32,   -35)      17       17           20  ironcube spawn-1:0#1  
+  (   33,   -35)      17       17           20  ironcube spawn-1:0#1  
+  (   34,   -35)      17       17           17                      
+  (   35,   -35)      17       17           31                      
+  (   36,   -35)      17       17           31  spawn spawn-1#1     
+  (   37,   -35)      17       17           31  spawn spawn-1#1     
+  (   38,   -35)      17       17           31  spawn spawn-1#1     
+  (   39,   -35)      17       17           31  spawn spawn-1#1     
+  (   40,   -35)      17       17           31  spawn spawn-1#1     
+  (   41,   -35)      17       17           31  spawn spawn-1#1     
+  (   42,   -35)      17       17           31  spawn spawn-1#1     
+  (   43,   -35)      17       17           31  spawn spawn-1#1     
+  (   44,   -35)      17       17           31                      
+rises 0, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke quay-road#1 at (20, -36), ironcube spawn-1:0#1 at (31, -37), spawn spawn-1#1 at (36, -37)
+
+## spawn-blue (spawn) along z
+TRANSECT 27 stations from (37, -48) to (37, -22), every 1
+  station        ground  surface  water  top  standing            step
+  (   37,   -48)                                                    void
+  (   37,   -47)                                                    void
+  (   37,   -46)                                                    void
+  (   37,   -45)                                                    void
+  (   37,   -44)                                                    void
+  (   37,   -43)                                                    void
+  (   37,   -42)                                                    void
+  (   37,   -41)                                                    void
+  (   37,   -40)                            27                      void
+  (   37,   -39)      17       17           28  spawn spawn-1#1     
+  (   37,   -38)      17       17           29  spawn spawn-1#1     
+  (   37,   -37)      17       17           30  spawn spawn-1#1     
+  (   37,   -36)      17       17           31  spawn spawn-1#1     
+  (   37,   -35)      17       17           31  spawn spawn-1#1     
+  (   37,   -34)      17       17           30  spawn spawn-1#1     
+  (   37,   -33)      17       17           29  spawn spawn-1#1     
+  (   37,   -32)      17       17           28  spawn spawn-1#1     
+  (   37,   -31)                            27                      void
+  (   37,   -30)                                                    void
+  (   37,   -29)                                                    void
+  (   37,   -28)                                                    void
+  (   37,   -27)                                                    void
+  (   37,   -26)                                                    void
+  (   37,   -25)                                                    void
+  (   37,   -24)                                                    void
+  (   37,   -23)                                                    void
+  (   37,   -22)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (36, -39)

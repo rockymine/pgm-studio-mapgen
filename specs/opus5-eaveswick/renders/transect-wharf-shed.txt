@@ -1,0 +1,65 @@
+## wharf-shed (house) along x
+TRANSECT 28 stations from (-19, 14) to (8, 14), every 1
+  station        ground  surface  water  top  standing            step
+  (  -19,    14)      12       12           23  tree wharf-1        
+  (  -18,    14)      12       12           23  tree wharf-1        
+  (  -17,    14)      13       13           23  tree wharf-1        +1
+  (  -16,    14)      13       13           22  tree wharf-1        
+  (  -15,    14)      13       13           21  tree wharf-1        
+  (  -14,    14)      13       13           13                      
+  (  -13,    14)      13       13           13                      
+  (  -12,    14)      13       13           21  house wharf-shed    
+  (  -11,    14)      13       13           21  house wharf-shed    
+  (  -10,    14)      13       13           21  house wharf-shed    
+  (   -9,    14)      13       13           21  house wharf-shed    
+  (   -8,    14)      13       13           21  house wharf-shed    
+  (   -7,    14)      13       13           21  house wharf-shed    
+  (   -6,    14)      13       13           21  house wharf-shed    
+  (   -5,    14)      13       13           21  house wharf-shed    
+  (   -4,    14)      13       13           21  house wharf-shed    
+  (   -3,    14)      13       13           21  house wharf-shed    
+  (   -2,    14)      13       13           21  house wharf-shed    
+  (   -1,    14)      13       13           21  house wharf-shed    
+  (    0,    14)      13       13           21  house wharf-shed    
+  (    1,    14)      13       13           21  house wharf-shed    
+  (    2,    14)      13       13           13                      
+  (    3,    14)      13       13           13                      
+  (    4,    14)      13       13           13                      
+  (    5,    14)      13       13           13                      
+  (    6,    14)      13       13           13                      
+  (    7,    14)      13       13           13                      
+  (    8,    14)      13       13           13                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree wharf-1 at (-20, 12), house wharf-shed at (-12, 12)
+
+## wharf-shed (house) along z
+TRANSECT 26 stations from (-6, 2) to (-6, 27), every 1
+  station        ground  surface  water  top  standing            step
+  (   -6,     2)                                                    void
+  (   -6,     3)                                                    void
+  (   -6,     4)                                                    void
+  (   -6,     5)                                                    void
+  (   -6,     6)                                                    void
+  (   -6,     7)                                                    void
+  (   -6,     8)                                                    void
+  (   -6,     9)      13       13           16  house wharf-shed    
+  (   -6,    10)      13       13           17  house wharf-shed    
+  (   -6,    11)      13       13           18  house wharf-shed    
+  (   -6,    12)      13       13           19  house wharf-shed    
+  (   -6,    13)      13       13           20  house wharf-shed    
+  (   -6,    14)      13       13           21  house wharf-shed    
+  (   -6,    15)      13       13           22  house wharf-shed    
+  (   -6,    16)      13       13           23  house wharf-shed    
+  (   -6,    17)      13       13           24  house wharf-shed    
+  (   -6,    18)      12       12           25  house wharf-shed    -1
+  (   -6,    19)      12       12           26  house wharf-shed    
+  (   -6,    20)      12       12           26  tree wharf-3        
+  (   -6,    21)      12       12           21  tree wharf-3        
+  (   -6,    22)      12       12           21  tree wharf-3        
+  (   -6,    23)      12       12           22  tree wharf-3        
+  (   -6,    24)      12       12           21  tree wharf-3        
+  (   -6,    25)      12       12           20  tree wharf-3        
+  (   -6,    26)      12       20           20  storey              BARRIER +8
+  (   -6,    27)      12       19           19  storey              -1
+rises 1, falls 2, worst step 8: 1 barrier, 0 scramble, 0 drop — BARRIER +8 at (-6, 26) | walked end to end
+beside: house wharf-shed at (-8, 9), tree wharf-3 at (-6, 20)

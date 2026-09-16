@@ -1,0 +1,91 @@
+## causeway (made) along x
+TRANSECT 57 stations from (-70, 19) to (-14, 19), every 1
+  station        ground  surface  water  top  standing            step
+  (  -70,    19)      15       15           15                      
+  (  -69,    19)      15       15           15                      
+  (  -68,    19)      17       17           17                      scramble +2
+  (  -67,    19)      17       17           17                      
+  (  -66,    19)      17       17           17                      
+  (  -65,    19)      17       17           17                      
+  (  -64,    19)      17       17           17                      
+  (  -63,    19)      17       17           17                      
+  (  -62,    19)      18       19           19  storey              scramble +2
+  (  -61,    19)      19       19           19                      
+  (  -60,    19)      19       19           19                      
+  (  -59,    19)      19       19           19                      
+  (  -58,    19)      19       19           19                      
+  (  -57,    19)      19       19           19                      
+  (  -56,    19)      19       19           19                      
+  (  -55,    19)      19       19           19                      
+  (  -54,    19)      19       19           19                      
+  (  -53,    19)      18       19           19  storey              
+  (  -52,    19)      18       19           19  storey              
+  (  -51,    19)      17       19           19  storey              
+  (  -50,    19)      17       19           19  storey              
+  (  -49,    19)      16       19           19  storey              
+  (  -48,    19)      16       19           19  storey              
+  (  -47,    19)      15       19           19  storey              
+  (  -46,    19)      14       19           19  storey              
+  (  -45,    19)      13       19           19  storey              
+  (  -44,    19)      13       19           19  storey              
+  (  -43,    19)      13       19           19  storey              
+  (  -42,    19)      12       19           19  storey              
+  (  -41,    19)      12       19           19  storey              
+  (  -40,    19)      12       19           19  storey              
+  (  -39,    19)      12       19           19  storey              
+  (  -38,    19)      12       19           19  storey              
+  (  -37,    19)      12       19           19  storey              
+  (  -36,    19)      12       19           19  storey              
+  (  -35,    19)      12       19           19  storey              
+  (  -34,    19)      12       19           19  storey              
+  (  -33,    19)      12       19           19  storey              
+  (  -32,    19)      12       19           19  storey              
+  (  -31,    19)      12       19           19  storey              
+  (  -30,    19)      12       19           19  storey              
+  (  -29,    19)      12       19           19  storey              
+  (  -28,    19)      12       19           19  storey              
+  (  -27,    19)      12       19           19  storey              
+  (  -26,    19)      12       19           19  storey              
+  (  -25,    19)      12       19           19  storey              
+  (  -24,    19)      12       19           19  storey              
+  (  -23,    19)      12       19           19  storey              
+  (  -22,    19)      18       18           18                      -1
+  (  -21,    19)      18       18           18                      
+  (  -20,    19)      17       17           17                      -1
+  (  -19,    19)      17       17           17                      
+  (  -18,    19)      16       16           16                      -1
+  (  -17,    19)      16       16           16                      
+  (  -16,    19)      15       15           15                      -1
+  (  -15,    19)      15       15           15                      
+  (  -14,    19)      14       14           14                      -1
+rises 2, falls 5, worst step 2: 0 barrier, 2 scramble, 0 drop — scramble +2 at (-68, 19); scramble +2 at (-62, 19) | walked end to end
+beside: (none)
+
+## causeway (made) along z
+TRANSECT 23 stations from (-42, 8) to (-42, 30), every 1
+  station        ground  surface  water  top  standing            step
+  (  -42,     8)                                                    void
+  (  -42,     9)                                                    void
+  (  -42,    10)                                                    void
+  (  -42,    11)                                                    void
+  (  -42,    12)                                                    void
+  (  -42,    13)                                                    void
+  (  -42,    14)                                                    void
+  (  -42,    15)      13       13           13                      
+  (  -42,    16)      13       20           20  storey              BARRIER +7
+  (  -42,    17)      13       19           19  storey              -1
+  (  -42,    18)      13       19           19  storey              
+  (  -42,    19)      12       19           19  storey              
+  (  -42,    20)      12       19           19  storey              
+  (  -42,    21)      13       19           19  storey              
+  (  -42,    22)      13       13           13                      DROP -6
+  (  -42,    23)      13       13           13                      
+  (  -42,    24)      13       13           13                      
+  (  -42,    25)                                                    void
+  (  -42,    26)                                                    void
+  (  -42,    27)                                                    void
+  (  -42,    28)                                                    void
+  (  -42,    29)                                                    void
+  (  -42,    30)                                                    void
+rises 1, falls 2, worst step 7: 1 barrier, 0 scramble, 1 drop — BARRIER +7 at (-42, 16); DROP -6 at (-42, 22) | walked end to end
+beside: (none)

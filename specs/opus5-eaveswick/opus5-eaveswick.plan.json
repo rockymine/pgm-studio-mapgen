@@ -1,0 +1,172 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Eaveswick",
+  "notes": "CTW. A three-tier river terrace: the frontline is a quay seven blocks down, and the hub's ground is carried out over it on a timber gallery. Two wools, one off each end of the hub."
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "mirror_z",
+  "maxPlayers": 12,
+  "surface": 19,
+  "observerY": 50
+ },
+ "pieces": [
+  {
+   "id": "quay",
+   "role": "piece",
+   "rect": [
+    -4,
+    2,
+    8,
+    6
+   ],
+   "surface": 12
+  },
+  {
+   "id": "hub",
+   "role": "piece",
+   "rect": [
+    -4,
+    8,
+    8,
+    3
+   ],
+   "surface": 19
+  },
+  {
+   "id": "spawn-t1",
+   "role": "piece",
+   "rect": [
+    -2,
+    11,
+    4,
+    1
+   ],
+   "surface": 19
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    -2,
+    12,
+    4,
+    2
+   ],
+   "surface": 19
+  },
+  {
+   "id": "wool-a-t1",
+   "role": "piece",
+   "rect": [
+    -8,
+    8,
+    4,
+    2
+   ],
+   "surface": 16
+  },
+  {
+   "id": "wool-a-room",
+   "role": "wool-room",
+   "rect": [
+    -10,
+    8,
+    2,
+    2
+   ],
+   "surface": 16
+  },
+  {
+   "id": "wool-b-t1",
+   "role": "piece",
+   "rect": [
+    4,
+    6,
+    4,
+    4
+   ],
+   "surface": 19
+  },
+  {
+   "id": "wool-b-room",
+   "role": "wool-room",
+   "rect": [
+    8,
+    8,
+    2,
+    2
+   ],
+   "surface": 19
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -4,
+    -2,
+    8,
+    4
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     10,
+     5
+    ],
+    "facing": "front",
+    "footprint": [
+     1,
+     1,
+     10,
+     8
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-a-room",
+    "at": [
+     5,
+     5
+    ]
+   },
+   {
+    "id": "wool-2",
+    "piece": "wool-b-room",
+    "at": [
+     5,
+     5
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "spawn-room",
+    "at": [
+     15,
+     5
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [
+  {
+   "a": "quay",
+   "b": "wool-b-t1"
+  }
+ ],
+ "boxes": []
+}

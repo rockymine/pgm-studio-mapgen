@@ -1,0 +1,65 @@
+## blockhouse (house) along x
+TRANSECT 28 stations from (0, 14) to (27, 14), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    14)      15       15           15                      
+  (    1,    14)      15       15           15                      
+  (    2,    14)      15       15           15                      
+  (    3,    14)      15       15           15                      
+  (    4,    14)      15       15           15                      
+  (    5,    14)      15       15           15                      
+  (    6,    14)      15       15           15                      
+  (    7,    14)      15       15           20  house blockhouse    
+  (    8,    14)      15       15           20  house blockhouse    
+  (    9,    14)      15       15           20  house blockhouse    
+  (   10,    14)      15       15           20  house blockhouse    
+  (   11,    14)      15       15           20  house blockhouse    
+  (   12,    14)      15       15           20  house blockhouse    
+  (   13,    14)      15       15           20  house blockhouse    
+  (   14,    14)      15       15           20  house blockhouse    
+  (   15,    14)      15       15           20  house blockhouse    
+  (   16,    14)      15       15           20  house blockhouse    
+  (   17,    14)      15       15           20  house blockhouse    
+  (   18,    14)      15       15           20  house blockhouse    
+  (   19,    14)      15       15           20  house blockhouse    
+  (   20,    14)                            20  house blockhouse    void
+  (   21,    14)                                                    void
+  (   22,    14)                                                    void
+  (   23,    14)                                                    void
+  (   24,    14)                                                    void
+  (   25,    14)                                                    void
+  (   26,    14)                                                    void
+  (   27,    14)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house blockhouse at (7, 12)
+
+## blockhouse (house) along z
+TRANSECT 26 stations from (13, 2) to (13, 27), every 1
+  station        ground  surface  water  top  standing            step
+  (   13,     2)                                                    void
+  (   13,     3)                                                    void
+  (   13,     4)                                                    void
+  (   13,     5)                                                    void
+  (   13,     6)                                                    void
+  (   13,     7)                                                    void
+  (   13,     8)                                                    void
+  (   13,     9)                            20  house blockhouse    void
+  (   13,    10)      15       15           20  house blockhouse    
+  (   13,    11)      15       15           20  house blockhouse    
+  (   13,    12)      15       15           20  house blockhouse    
+  (   13,    13)      15       15           20  house blockhouse    
+  (   13,    14)      15       15           20  house blockhouse    
+  (   13,    15)      15       15           20  house blockhouse    
+  (   13,    16)      15       15           20  house blockhouse    
+  (   13,    17)      16       16           20  house blockhouse    +1
+  (   13,    18)      17       17           20  house blockhouse    +1
+  (   13,    19)      18       18           20  house blockhouse    +1
+  (   13,    20)      20       20           20  house blockhouse    scramble +2
+  (   13,    21)      20       20           20                      
+  (   13,    22)      21       21           21                      +1
+  (   13,    23)      21       21           21                      
+  (   13,    24)      21       21           21                      
+  (   13,    25)      21       21           28  tree front-2        
+  (   13,    26)      21       21           30  tree front-2        
+  (   13,    27)      21       21           30  tree front-2        
+rises 5, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (13, 20) | walked end to end
+beside: house blockhouse at (11, 9), tree front-2 at (13, 25)

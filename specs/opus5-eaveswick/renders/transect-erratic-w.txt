@@ -1,0 +1,61 @@
+## erratic-w (boulder) along x
+TRANSECT 25 stations from (-31, 20) to (-7, 20), every 1
+  station        ground  surface  water  top  standing            step
+  (  -31,    20)                                                    void
+  (  -30,    20)                                                    void
+  (  -29,    20)                                                    void
+  (  -28,    20)                                                    void
+  (  -27,    20)                                                    void
+  (  -26,    20)                                                    void
+  (  -25,    20)                                                    void
+  (  -24,    20)                                                    void
+  (  -23,    20)                            14  boulder erratic-w   void
+  (  -22,    20)                            17  boulder erratic-w   void
+  (  -21,    20)                            17  boulder erratic-w   void
+  (  -20,    20)      13       13           18  boulder erratic-w   
+  (  -19,    20)      12       12           18  boulder erratic-w   -1
+  (  -18,    20)      12       12           18  boulder erratic-w   
+  (  -17,    20)      12       12           17  boulder erratic-w   
+  (  -16,    20)      12       12           17  boulder erratic-w   
+  (  -15,    20)      12       12           12                      
+  (  -14,    20)      12       12           12                      
+  (  -13,    20)      12       12           12                      
+  (  -12,    20)      12       12           26  house wharf-shed    
+  (  -11,    20)      12       12           26  house wharf-shed    
+  (  -10,    20)      12       12           26  house wharf-shed    
+  (   -9,    20)      12       12           26  house wharf-shed    
+  (   -8,    20)      12       12           26  house wharf-shed    
+  (   -7,    20)      12       12           26  house wharf-shed    
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder erratic-w at (-23, 20), house wharf-shed at (-12, 18), tree wharf-3 at (-7, 21)
+
+## erratic-w (boulder) along z
+TRANSECT 25 stations from (-19, 8) to (-19, 32), every 1
+  station        ground  surface  water  top  standing            step
+  (  -19,     8)                                                    void
+  (  -19,     9)                                                    void
+  (  -19,    10)      12       12           12                      
+  (  -19,    11)      12       12           20  tree wharf-1        
+  (  -19,    12)      12       12           21  tree wharf-1        
+  (  -19,    13)      12       12           23  tree wharf-1        
+  (  -19,    14)      12       12           23  tree wharf-1        
+  (  -19,    15)      12       12           22  tree wharf-1        
+  (  -19,    16)      12       12           22  tree wharf-1        
+  (  -19,    17)      12       12           21  tree wharf-1        
+  (  -19,    18)      12       12           17  boulder erratic-w   
+  (  -19,    19)      12       12           18  boulder erratic-w   
+  (  -19,    20)      12       12           18  boulder erratic-w   
+  (  -19,    21)      12       12           18  boulder erratic-w   
+  (  -19,    22)      12       12           17  boulder erratic-w   
+  (  -19,    23)      12       12           17  boulder erratic-w   
+  (  -19,    24)      12       12           14  boulder erratic-w   
+  (  -19,    25)      12       12           12                      
+  (  -19,    26)      12       12           12                      
+  (  -19,    27)      12       12           12                      
+  (  -19,    28)      13       13           13                      +1
+  (  -19,    29)      13       13           13                      
+  (  -19,    30)      14       14           14                      +1
+  (  -19,    31)      14       14           14                      
+  (  -19,    32)      15       15           15                      +1
+rises 3, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree wharf-1 at (-19, 11), boulder erratic-w at (-21, 17)
