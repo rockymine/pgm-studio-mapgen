@@ -248,8 +248,11 @@ def pier(pid, x0, z0):
             "min_x": x0, "max_x": x0 + 2, "min_z": z0, "max_z": z0 + 2,
             "floor": 0, "base_height": DECK_FLOOR, "material": PIER_MAT}
 
-PIERS = [pier(f"pier-w{n}", -6, z) for n, z in enumerate((-10, -5, 1, 6))] \
-      + [pier(f"pier-e{n}", 4, z) for n, z in enumerate((-10, -5, 1, 6))]
+# The offsets are symmetric about the centre line, so each trestle's rot_180 image is another
+# trestle: the deck and the kerb are their own images and the piers under them have to be too,
+# or the two teams meet a neutral crossing propped at different spacings.
+PIERS = [pier(f"pier-w{n}", -6, z) for n, z in enumerate((-10, -4, 2, 8))] \
+      + [pier(f"pier-e{n}", 4, z) for n, z in enumerate((-10, -4, 2, 8))]
 
 DECK = [{"id": "deck", "type": "rectangle", "operation": "add", "keepClear": True,
          "min_x": -6, "max_x": 6, "min_z": -10, "max_z": 10,

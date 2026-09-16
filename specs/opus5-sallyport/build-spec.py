@@ -268,11 +268,16 @@ relief = {"team": {
 }}
 
 # ── the structures ───────────────────────────────────────────────────────────────────────────────
-def made(layers, part, material):
+def made(layers, part, material, mirrors=True):
     out = []
     for layer in (layers if isinstance(layers, list) else [layers]):
         inner = layer.pop("layout")
         layer["shapes"], layer["groups"] = inner["shapes"], inner["groups"]
+        # A structure standing inside one team's ground is that team's, so it fans with the board:
+        # the rasterizer copies a group's shapes onto every orbit axis only where the group says it
+        # mirrors, and props.LayerBuilder leaves that off for a landmark seated on the centre.
+        for group in layer["groups"]:
+            group["mirrors"] = mirrors
         layer["kind"], layer["part_of"] = "made", part
         for shape in layer["shapes"]:
             shape.pop("theme", None)

@@ -933,7 +933,7 @@
     {
      "id": "par-west-body",
      "name": "Parapet par-west",
-     "mirrors": false,
+     "mirrors": true,
      "shapeIds": [
       "par-west-0",
       "par-west-1",
@@ -1052,7 +1052,7 @@
     {
      "id": "par-gate-body",
      "name": "Parapet par-gate",
-     "mirrors": false,
+     "mirrors": true,
      "shapeIds": [
       "par-gate-0",
       "par-gate-1",
@@ -1233,7 +1233,7 @@
     {
      "id": "par-mid-body",
      "name": "Parapet par-mid",
-     "mirrors": false,
+     "mirrors": true,
      "shapeIds": [
       "par-mid-0",
       "par-mid-1",
@@ -1416,7 +1416,7 @@
     {
      "id": "par-east-body",
      "name": "Parapet par-east",
-     "mirrors": false,
+     "mirrors": true,
      "shapeIds": [
       "par-east-0",
       "par-east-1",
@@ -1599,7 +1599,7 @@
     {
      "id": "par-bastion-body",
      "name": "Bastion breastwork",
-     "mirrors": false,
+     "mirrors": true,
      "shapeIds": [
       "par-bastion-0",
       "par-bastion-1",
@@ -2172,7 +2172,7 @@
     {
      "id": "tower-wl-body",
      "name": "West gate tower",
-     "mirrors": false,
+     "mirrors": true,
      "shapeIds": [
       "tower-wl-0"
      ]
@@ -2793,7 +2793,7 @@
     {
      "id": "tower-wl-crown-body",
      "name": "West gate tower crown",
-     "mirrors": false,
+     "mirrors": true,
      "shapeIds": [
       "tower-wl-crown-0",
       "tower-wl-crown-1",
@@ -3368,7 +3368,7 @@
     {
      "id": "tower-wr-body",
      "name": "West gate tower, east side",
-     "mirrors": false,
+     "mirrors": true,
      "shapeIds": [
       "tower-wr-0"
      ]
@@ -4075,7 +4075,7 @@
     {
      "id": "tower-wr-crown-body",
      "name": "West gate tower, east side crown",
-     "mirrors": false,
+     "mirrors": true,
      "shapeIds": [
       "tower-wr-crown-0",
       "tower-wr-crown-1",
@@ -5751,7 +5751,7 @@
     {
      "id": "turret-east-body",
      "name": "East turret",
-     "mirrors": false,
+     "mirrors": true,
      "shapeIds": [
       "turret-east-0",
       "turret-east-1",
@@ -6322,7 +6322,7 @@
     {
      "id": "tower-ward-w-body",
      "name": "West ward tower",
-     "mirrors": false,
+     "mirrors": true,
      "shapeIds": [
       "tower-ward-w-0"
      ]
@@ -7115,7 +7115,7 @@
     {
      "id": "tower-ward-w-crown-body",
      "name": "West ward tower crown",
-     "mirrors": false,
+     "mirrors": true,
      "shapeIds": [
       "tower-ward-w-crown-0",
       "tower-ward-w-crown-1",
@@ -7692,7 +7692,7 @@
     {
      "id": "tower-ward-e-body",
      "name": "East ward tower",
-     "mirrors": false,
+     "mirrors": true,
      "shapeIds": [
       "tower-ward-e-0"
      ]
@@ -8485,7 +8485,7 @@
     {
      "id": "tower-ward-e-crown-body",
      "name": "East ward tower crown",
-     "mirrors": false,
+     "mirrors": true,
      "shapeIds": [
       "tower-ward-e-crown-0",
       "tower-ward-e-crown-1",

@@ -25,14 +25,14 @@ KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn
  -65             0000000bbbbbbb0000000002222222288822222222888000000000000bbbbbbb000000            
  -64             0000000bbbbbbb0000000222222222888882222222288000000000000bbbbbbb000000            
  -63             0000000bbbbbbb0000022222222228888888222222222000000000000bbbbbbb000000            
- -62             0000000bbbbbbb0002222222222888888888822222222220000000000bbbbbbb000000            
- -61             0000000bbbbbbb0022222222228888888888888222222222200000000bbbbbbb000000            
- -60           880000000bbbbbbb2222222222008888888888888822222222222200000bbbbbbb00000008          
- -59       8888880000000bbbbb2b2222222200008888888888888888222222222222000bbbbbbb000000088888      
- -58   08888888880000000bbbb22b2222220000008888888888888888882222222222200bbbbbbb0000000888888888  
- -57 bbbbbbbbbbbbbba0000b2bb22b2222200000008888888888888888888022222222222bbbbbbb0000bbbbbbbbbbbbbb
- -56 bbbbbbbbbbbbbba000022bb22bbbbbbbbbbbbb00000000bbbbbbbbbbbbbbbbb22222222bbbbb0000bbbbbbbbbbbbbb
- -55 bbbbbbbbbbbbbba0022222222bb          b00000000b               b2222222222bbb0000bbbbbbbbbbbbbb
+ -62             0000000bbbbbbb0002222222222888888888822222222220000000000bbbbbbbbbbbb0            
+ -61             0000000bbbbbbb0022222222228888888888888222222222200000000bbbbbbbbbbbb0            
+ -60           880000000bbbbbbb2222222222008888888888888822222222222200000bbbbbbbb00bbb08          
+ -59       8888880000000bbbbb2b2222222200008888888888888888222222222222000bbbbbbb0000bb088888      
+ -58   08888888880000000bbbb22b2222220000008888888888888888882222222222200bbbbbbb0000bb0888888888  
+ -57 bbbbbbbbbbbbbba0000b2bb22b2222200000008888888888888888888022222222222bbbbbbbb00bbbbbbbbbbbbbbb
+ -56 bbbbbbbbbbbbbba000022bb22bbbbbbbbbbbbb00000000bbbbbbbbbbbbbbbbb22222222bbbbbbbbbbbbbbbbbbbbbbb
+ -55 bbbbbbbbbbbbbba0022222222bb          b00000000b               b2222222222bbbbbbbbbbbbbbbbbbbbb
  -54 bbbbbbbbbbbbbba2222222222bb          b00000000b               b022222222222b8888bbbbbbbbbbbbbb
  -53 bbbbbbbbbbbbbb22222bbbbbbbb          b00000000b               b000222bbbbbbb2222bbbbbbbbbbbbbb
  -52 bbbbbbbbbbbbbb222222220000b          b00000000b               b00000222222222222bbbbbbbbbbbbbb
@@ -41,22 +41,22 @@ KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn
  -49 bbbbbbbbbbbbbb228888880000b          b00000000b               b00000000008882222bbbbbbbbbbbbbb
  -48 bbbbbbbbbbbbbba88888880000b          b00000000b               b00000000008888888bbbbbbbbbbbbbb
  -47 bbbbbbbbbbbbbba8888bbbbbbbb          b00000000b               b000000bbbbbbb8888bbbbbbbbbbbbbb
- -46 bbbbbbbbbbbbbba8888bbbbbbbb          b00000000b               b000000bbbbbbb8888bbbbbbbbbbbbbb
- -45 bbbbbbbbbbbbbba0000bbbbbbbbbbbbbbbbbbb00000000bbbbbbbbbbbbbbbbb000000bbbbbbb0000bbbbbbbbbbbbbb
- -44 bbbbbbbbbbbbbba0000bbbbbbb0000000000000000000000000000000000000000000bbbbbbb0000bbbbbbbbbbbbbb
- -43   aaaaaaaaaaaaa0000bbbbbbb0000000000000000000000000000000000000000000bbbbbbb0000aaaaaaaaaaaa  
- -42       8888880000000bbbbbbb0000000000000000000000000000000000000000000bbbbbbb000000088888      
- -41           880000000bbbbbbb0000000000000000000000000000000000000000000bbbbbbb00000008          
- -40             0000000bbbbbbb0000000000000000000000000000000000000000000bbbbbbb000000            
- -39             0000000bbbbbbbbbbbbbb0000000000000000000000bbbbbbbbbb0000bbbbbbb000000            
- -38             0000000bbbbbbbbbbbbbb0000000000000000000000bbbbbbbbbb0000bbbbbbb000000            
- -37             0000000bbbbbbbbbbbbbb0000000000000000000000bbbbbbbbbb0000bbbbbbb000000            
- -36             0000000bbbbbbbbbbbbbb0000000000000000000000bbbbbbbbbb0000bbbbbbb000000            
- -35                       bbbbbbbbbbb0000000000000000000000bbbbbbbbbb044444b                      
+ -46 bbbbbbbbbbbbbbbbbbbbbbbbbbb          b00000000b               b000000bbbbbbb8888bbbbbbbbbbbbbb
+ -45 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb00000000bbbbbbbbbbbbbbbbb000000bbbbbbb0000bbbbbbbbbbbbbb
+ -44 bbbbbbbbbbbbbbb00bbbbbbbbb0000000000000000000000000000000000000000000bbbbbbb0000bbbbbbbbbbbbbb
+ -43   aaaaaaaaaabba000bbbbbbbb0000000000000000000000000000000000000000000bbbbbbb0000aaaaaaaaaaaa  
+ -42       888888bb0bbbbbbbbbbb0000000000000000000000bbbbb0000000000000000bbbbbbb000000088888      
+ -41           88bbbbbbbbbbbbbb0000000000000000000000bbbbbbb00000000000bbbbbbbbbb00000008          
+ -40             bbbbbbbbbbbbbb000000000000000000000bbb00bbb0000000000bbbbbbbbbbb000000            
+ -39             0bbbbbbbbbbbbbbbbbbbb00000000000000bb0000bbbbbbbbbbbbbb00bbbbbbb000000            
+ -38             0bbbbbbbbbbbbbbbbbbbb00000000000000bb0000bbbbbbbbbbbbbb00bbbbbbb000000            
+ -37             bbbbbbbbbbbbbbbbbbbbbbbbbbbbb000000bbb00bbbbbbbbbbbbbbbbbbbbbbbbbbbbbb            
+ -36             bbbbbbbbbbbbbbbbbbbbbbbbbbbbb000000bbbbbbb0bbbbbbbbbbbbbbbbbbbbbbbbbbb            
+ -35                       bbbbbbbbbbb0000000000000000bbbbb0bbbbbbbbbb044444b                      
  -34                       bbbbbbbbbbb0000000000000000000000bbbbbbbbbb044444b                      
  -33                       bbbbbbbbbbb0445550000000000000000bbbbbbbbbb044444                       
- -32                       0bbbbbbbbbb4445550000000000000000bbbbbbbbbb044444                       
- -31                        bbbbbbbbb44445550000000000000000bbbbbbbbbb004444                       
+ -32                       0bbbbbbbbbb44455500000bbbbbb00000bbbbbbbbbb044444                       
+ -31                        bbbbbbbbb444455500000bbbbbb00000bbbbbbbbbb004444                       
  -30                        bbbbbbbbb44443333333330000000000bbbbbbbbbb000000                       
  -29                        bbbbbbbbbb4443333333330000000000bbbbbbbbbb00000                        
  -28                        bbbbbbbbbb0003333333330000000000bbbbbbbbbb00000                        

@@ -208,6 +208,29 @@ stepped board, because "add relief" is not available as a later fix.
 `hold` and `exclude` differ in how the join reads, not in whether the shape stays flat: `hold` lets the ground
 ramp up to meet the shape, `exclude` meets the tier below at a face. A terrace wants `exclude`.
 
+### A made layer is built once unless its group says it mirrors
+
+A layer's shapes are fanned onto the symmetry's orbit axes only where the group carrying them has
+`mirrors: true`. A group is the unit, not the layer and not the shape, and `SketchGroup.Mirrors` defaults
+to `true` on the wire — but `tools/sculpt/props.py`'s `LayerBuilder` defaults it to **`false`**, which is
+right for a landmark seated on the symmetry centre and wrong for everything a team owns. Every factory in
+that module forwards `**kw`, so `mirrors=True` is how a per-team structure asks to be fanned.
+
+**Nothing reports the difference.** The store answers 200, `preflight` opens, and its mirror check reads
+spawns, wool rooms and build zones rather than made geometry, so a curtain wall, a gatehouse or a cloister
+built for one team and no other passes every gate the pipeline has. On a `rot_90` board three of the four
+teams simply have no castle; on `rot_180` one side has one and the other does not.
+
+`GET /api/map/{slug}/column` is what sees it, and the image coordinate has to be exact: the reflection of
+block `z` is **`−z−1`**, not `−z`, so under `mirror_z` the image of `(x, z)` is `(x, −z−1)`, under `rot_180`
+it is `(−x−1, −z−1)`, and under `rot_90` it is `(−z−1, x)`. Probing `(x, −z)` lands one block off the
+image and reports a difference on a board that is exactly symmetric.
+
+A structure that *is* its own image — one centred on the origin under `rot_180`, or on `z = 0` under
+`mirror_z` — keeps `mirrors: false`, and then its own shapes have to be symmetric too: eight causeway
+trestles at `z −10, −5, 1, 6` are not, and the deck above them is, so the two teams meet a neutral
+crossing propped at different spacings.
+
 ### A fill pattern is a plane until it states a `rise`
 
 Every area pattern — `cell`, `voronoi`, `noise`, `turbulence`, `electric` — samples the plane by default

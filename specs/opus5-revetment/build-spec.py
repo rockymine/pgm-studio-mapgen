@@ -298,11 +298,16 @@ relief = {"team": {
 # Every one of these is circles, polygons and rectangles on a layer of its own, `kind: "made"` so
 # SK10's pair walk and SK11's reachability walk leave them alone, and `part_of` so the storey strip
 # groups them as one thing.
-def made(layers, part):
+def made(layers, part, mirrors=True):
     out = []
     for layer in (layers if isinstance(layers, list) else [layers]):
         inner = layer.pop("layout")
         layer["shapes"], layer["groups"] = inner["shapes"], inner["groups"]
+        # A structure standing inside one team's ground is that team's, so it fans with the board:
+        # the rasterizer copies a group's shapes onto every orbit axis only where the group says it
+        # mirrors, and props.LayerBuilder leaves that off for a landmark seated on the centre.
+        for group in layer["groups"]:
+            group["mirrors"] = mirrors
         layer["kind"], layer["part_of"] = "made", part
         for shape in layer["shapes"]:
             shape.pop("theme", None)

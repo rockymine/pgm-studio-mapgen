@@ -272,11 +272,16 @@ relief = {"team": {
 }}
 
 # ── the structures: layers, not block soup ───────────────────────────────────────────────────────
-def made(layers, part, material):
+def made(layers, part, material, mirrors=True):
     out = []
     for layer in (layers if isinstance(layers, list) else [layers]):
         inner = layer.pop("layout")
         layer["shapes"], layer["groups"] = inner["shapes"], inner["groups"]
+        # A structure standing inside one team's ground is that team's, so it fans with the board:
+        # the rasterizer copies a group's shapes onto every orbit axis only where the group says it
+        # mirrors, and props.LayerBuilder leaves that off for a landmark seated on the centre.
+        for group in layer["groups"]:
+            group["mirrors"] = mirrors
         layer["kind"], layer["part_of"] = "made", part
         for shape in layer["shapes"]:
             shape.pop("theme", None)
@@ -305,7 +310,7 @@ structures += made(props.drum_tower("tower-east", 21, 21, 3, 1, DECK_Y, 10, None
 # and the beacon on the pier, which is the only made thing on the board that belongs to nobody
 structures += made(props.drum_tower("beacon", 2, 0, 4, 1, PIER_Y, 12, None, merlons=8, parapet=3,
                                     inner_floor=None, mirrors=False, name="The beacon"),
-                   "portway", MADE_GREY)
+                   "portway", MADE_GREY, mirrors=False)
 
 # ── dressing ─────────────────────────────────────────────────────────────────────────────────────
 ROAD_PAVE = cell_(38, 4, [GRAVEL, COARSE, HARDCLAY])

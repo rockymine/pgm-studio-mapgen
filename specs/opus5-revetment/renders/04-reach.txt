@@ -1,17 +1,22 @@
-components 31 · navigable 7350 columns · bridgeable 0 · build ceiling y50
+components 37 · navigable 7354 columns · bridgeable 0 · build ceiling y50
 
-30 patch(es) of standing ground no player can get to. None of this is a fault — scenery and a side observer island read exactly like this — but a shape stranded by accident reads like it too, and only the author can tell them apart.
+36 patch(es) of standing ground no player can get to. None of this is a fault — scenery and a side observer island read exactly like this — but a shape stranded by accident reads like it too, and only the author can tell them apart.
 
   cells  floor  reason          box
-   3449    y10  no-build-zone   x -47..46, z 11..84
+   3443    y10  no-build-zone   x -47..46, z -85..-12
      43    y28  no-build-zone   x -9..8, z -84..-78
      43    y28  no-build-zone   x -9..8, z 77..83
      40    y30  no-build-zone   x -35..-28, z 54..61
      40    y28  no-build-zone   x -8..-1, z 34..41
+     40    y28  no-build-zone   x 0..7, z -42..-35
+     40    y30  no-build-zone   x 27..34, z -62..-55
      36    y59  above-ceiling   x -3..2, z -3..2
      28    y28  no-build-zone   x -24..-19, z 35..40
+     28    y28  no-build-zone   x 18..23, z -41..-36
      12    y17  no-build-zone   x -33..-30, z 56..59
      12    y17  no-build-zone   x -6..-3, z 36..39
+     12    y17  no-build-zone   x 2..5, z -40..-37
+     12    y17  no-build-zone   x 29..32, z -60..-57
       4    y23  no-build-zone   x -44..-43, z -54..-53
       4    y23  no-build-zone   x -44..-43, z -48..-47
       4    y23  no-build-zone   x -44..-43, z 46..47
@@ -21,6 +26,7 @@ components 31 · navigable 7350 columns · bridgeable 0 · build ceiling y50
       4    y23  no-build-zone   x -38..-37, z 46..47
       4    y23  no-build-zone   x -38..-37, z 52..53
       4    y17  no-build-zone   x -22..-21, z 37..38
+      4    y17  no-build-zone   x 20..21, z -39..-38
       4    y23  no-build-zone   x 36..37, z -54..-53
       4    y23  no-build-zone   x 36..37, z -48..-47
       4    y23  no-build-zone   x 36..37, z 46..47

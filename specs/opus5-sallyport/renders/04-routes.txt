@@ -187,7 +187,7 @@ rises 4, falls 2, worst step 17: scramble +2 at (15, 52); scramble +2 at (13, 52
 beside: house watch-house at (-16, 52) d0, spawn spawn-1 at (48, 52) d0, wool wool-2 at (-50, 50) d0
 
 ## spawn-red -> blue-1
-ROUTE (52, 52) -> (20, -80) aim travel: 197 blocks, 88 placed, 6 drop(s), worst drop 48
+ROUTE (52, 52) -> (20, -80) aim travel: 197 blocks, 94 placed, 7 drop(s), worst drop 48
   place            y   step
   (52, 52)          12
   (51, 52)          12
@@ -309,9 +309,9 @@ ROUTE (52, 52) -> (20, -80) aim travel: 197 blocks, 88 placed, 6 drop(s), worst 
   (14, -33)         12
   (14, -34)         12
   (14, -35)         12
-  (14, -36)         14   scramble +2
-  (14, -37)         14
-  (14, -38)         14
+  (14, -36)         20   barrier +8
+  (14, -37)         20
+  (14, -38)         14   drop -6
   (14, -39)         14
   (14, -40)         14
   (14, -41)         14
@@ -357,11 +357,11 @@ ROUTE (52, 52) -> (20, -80) aim travel: 197 blocks, 88 placed, 6 drop(s), worst 
   (18, -78)         14
   (19, -79)         14
   (20, -80)         14
-rises 5, falls 6, worst step 57: barrier +4 at (15, 36); drop -7 at (13, 34); drop -9 at (-11, 10); barrier +57 at (-5, 4); drop -48 at (10, -6); scramble +2 at (14, -36); drop -4 at (14, -46); barrier +4 at (14, -47); drop -4 at (14, -55); barrier +4 at (9, -65); drop -4 at (9, -67)
+rises 5, falls 7, worst step 57: barrier +4 at (15, 36); drop -7 at (13, 34); drop -9 at (-11, 10); barrier +57 at (-5, 4); drop -48 at (10, -6); barrier +8 at (14, -36); drop -6 at (14, -38); drop -4 at (14, -46); barrier +4 at (14, -47); drop -4 at (14, -55); barrier +4 at (9, -65); drop -4 at (9, -67)
 beside: house steading#1 at (14, -30) d0, house watch-house#1 at (14, -54) d0, spawn spawn-1 at (48, 52) d0, wool wool-1#1 at (18, -78) d0, boulder clint-1#1 at (11, -61) d1, house steading at (-5, 22) d1
 
 ## spawn-red -> light_blue-1
-ROUTE (52, 52) -> (50, -50) aim travel: 192 blocks, 112 placed, 4 drop(s), worst drop 48
+ROUTE (52, 52) -> (50, -50) aim travel: 192 blocks, 121 placed, 6 drop(s), worst drop 48
   place            y   step
   (52, 52)          12
   (51, 52)          12
@@ -483,9 +483,9 @@ ROUTE (52, 52) -> (50, -50) aim travel: 192 blocks, 112 placed, 4 drop(s), worst
   (14, -33)         12
   (14, -34)         12
   (14, -35)         12
-  (14, -36)         14   scramble +2
-  (14, -37)         14
-  (14, -38)         14
+  (14, -36)         20   barrier +8
+  (14, -37)         20
+  (14, -38)         14   drop -6
   (14, -39)         14
   (14, -40)         14
   (14, -41)         14
@@ -511,10 +511,10 @@ ROUTE (52, 52) -> (50, -50) aim travel: 192 blocks, 112 placed, 4 drop(s), worst
   (30, -45)          2
   (31, -45)          2
   (32, -45)          2
-  (33, -45)          2
-  (34, -45)         13   barrier +11
-  (35, -45)         13
-  (36, -45)         13
+  (33, -45)         17   barrier +15
+  (34, -45)         17
+  (35, -45)         17
+  (36, -45)         13   drop -4
   (37, -45)         13
   (38, -45)         13
   (39, -45)         13
@@ -529,11 +529,11 @@ ROUTE (52, 52) -> (50, -50) aim travel: 192 blocks, 112 placed, 4 drop(s), worst
   (48, -49)         13
   (49, -49)         13
   (50, -50)         13
-rises 4, falls 4, worst step 57: barrier +4 at (15, 36); drop -7 at (13, 34); drop -9 at (-11, 10); barrier +57 at (-5, 4); drop -48 at (10, -6); scramble +2 at (14, -36); drop -12 at (16, -45); barrier +11 at (34, -45)
+rises 4, falls 6, worst step 57: barrier +4 at (15, 36); drop -7 at (13, 34); drop -9 at (-11, 10); barrier +57 at (-5, 4); drop -48 at (10, -6); barrier +8 at (14, -36); drop -6 at (14, -38); drop -12 at (16, -45); barrier +15 at (33, -45); drop -4 at (36, -45)
 beside: house steading#1 at (14, -30) d0, spawn spawn-1 at (48, 52) d0, wool wool-2#1 at (46, -49) d0, house steading at (-5, 22) d1, house watch-house#1 at (12, -47) d2
 
 ## spawn-blue -> red-0
-ROUTE (-52, -52) -> (-20, 80) aim travel: 196 blocks, 94 placed, 6 drop(s), worst drop 57
+ROUTE (-52, -52) -> (-20, 80) aim travel: 196 blocks, 97 placed, 7 drop(s), worst drop 57
   place            y   step
   (-52, -52)        12
   (-51, -52)        12
@@ -576,9 +576,9 @@ ROUTE (-52, -52) -> (-20, 80) aim travel: 196 blocks, 94 placed, 6 drop(s), wors
   (-14, -40)        14
   (-13, -39)        14
   (-12, -38)        14
-  (-11, -37)        14
-  (-10, -36)        14
-  (-9, -35)         11
+  (-11, -37)        18   barrier +4
+  (-10, -36)        18
+  (-9, -35)         11   drop -7
   (-8, -34)         11
   (-7, -33)         11
   (-6, -32)         11
@@ -702,11 +702,11 @@ ROUTE (-52, -52) -> (-20, 80) aim travel: 196 blocks, 94 placed, 6 drop(s), wors
   (-18, 78)         14
   (-19, 79)         14
   (-20, 80)         14
-rises 6, falls 6, worst step 57: barrier +48 at (7, -8); drop -57 at (-8, 5); barrier +9 at (-12, 9); barrier +5 at (-13, 22); drop -4 at (-13, 30); barrier +8 at (-13, 35); drop -6 at (-13, 37); drop -4 at (-13, 45); barrier +4 at (-13, 46); drop -5 at (-13, 54); barrier +4 at (-10, 64); drop -4 at (-10, 66)
+rises 7, falls 7, worst step 57: barrier +4 at (-11, -37); drop -7 at (-9, -35); barrier +48 at (7, -8); drop -57 at (-8, 5); barrier +9 at (-12, 9); barrier +5 at (-13, 22); drop -4 at (-13, 30); barrier +8 at (-13, 35); drop -6 at (-13, 37); drop -4 at (-13, 45); barrier +4 at (-13, 46); drop -5 at (-13, 54); barrier +4 at (-10, 64); drop -4 at (-10, 66)
 beside: house steading at (-13, 22) d0, house watch-house at (-13, 46) d0, spawn spawn-1#1 at (-52, -52) d0, wool wool-1 at (-20, 80) d0, boulder clint-1 at (-12, 57) d1, house steading#1 at (4, -24) d1
 
 ## spawn-blue -> orange-0
-ROUTE (-52, -52) -> (-50, 50) aim travel: 192 blocks, 109 placed, 4 drop(s), worst drop 57
+ROUTE (-52, -52) -> (-50, 50) aim travel: 192 blocks, 112 placed, 5 drop(s), worst drop 57
   place            y   step
   (-52, -52)        12
   (-51, -52)        12
@@ -749,9 +749,9 @@ ROUTE (-52, -52) -> (-50, 50) aim travel: 192 blocks, 109 placed, 4 drop(s), wor
   (-14, -40)        14
   (-13, -39)        14
   (-12, -38)        14
-  (-11, -37)        14
-  (-10, -36)        14
-  (-9, -35)         11
+  (-11, -37)        18   barrier +4
+  (-10, -36)        18
+  (-9, -35)         11   drop -7
   (-8, -34)         11
   (-7, -33)         11
   (-6, -32)         11
@@ -874,7 +874,7 @@ ROUTE (-52, -52) -> (-50, 50) aim travel: 192 blocks, 109 placed, 4 drop(s), wor
   (-48, 48)         13
   (-49, 49)         13
   (-50, 50)         13
-rises 5, falls 4, worst step 57: barrier +48 at (7, -8); drop -57 at (-8, 5); barrier +9 at (-12, 9); barrier +8 at (-15, 35); drop -6 at (-15, 37); drop -4 at (-15, 45); barrier +4 at (-16, 46); barrier +5 at (-26, 46); drop -6 at (-37, 46)
+rises 6, falls 5, worst step 57: barrier +4 at (-11, -37); drop -7 at (-9, -35); barrier +48 at (7, -8); drop -57 at (-8, 5); barrier +9 at (-12, 9); barrier +8 at (-15, 35); drop -6 at (-15, 37); drop -4 at (-15, 45); barrier +4 at (-16, 46); barrier +5 at (-26, 46); drop -6 at (-37, 46)
 beside: house steading at (-15, 23) d0, house watch-house at (-16, 46) d0, spawn spawn-1#1 at (-52, -52) d0, wool wool-2 at (-50, 50) d0, house steading#1 at (4, -24) d1
 
 ## spawn-blue -> blue-1
@@ -909,28 +909,28 @@ ROUTE (-52, -52) -> (20, -80) aim travel: 83 blocks, 4 placed, 1 drop(s), worst 
   (-26, -54)        12
   (-25, -55)        13
   (-24, -55)        13
-  (-23, -55)        13
-  (-22, -55)        13
-  (-21, -55)        13
-  (-20, -55)        13
-  (-19, -55)        13
-  (-18, -55)        13
-  (-17, -55)        13
-  (-16, -55)        13
-  (-15, -55)        13
-  (-14, -55)        13
-  (-13, -55)        13
-  (-12, -55)        13
-  (-11, -55)        13
-  (-10, -55)        13
-  (-9, -55)         13
-  (-8, -55)         11
-  (-7, -56)         11
-  (-6, -57)         11
-  (-5, -58)         11
-  (-4, -59)         11
-  (-3, -60)         11
-  (-2, -61)         11
+  (-23, -56)        13
+  (-22, -57)        11
+  (-21, -58)        11
+  (-20, -59)        11
+  (-19, -60)        11
+  (-18, -61)        11
+  (-17, -62)        12
+  (-16, -62)        13
+  (-15, -62)        13
+  (-14, -62)        13
+  (-13, -62)        13
+  (-12, -62)        13
+  (-11, -62)        13
+  (-10, -62)        13
+  (-9, -62)         13
+  (-8, -62)         13
+  (-7, -62)         13
+  (-6, -62)         13
+  (-5, -62)         13
+  (-4, -62)         11
+  (-3, -62)         11
+  (-2, -62)         10
   (-1, -62)         10
   (0, -63)          10
   (1, -64)          10
@@ -954,10 +954,10 @@ ROUTE (-52, -52) -> (20, -80) aim travel: 83 blocks, 4 placed, 1 drop(s), worst 
   (19, -79)         14
   (20, -80)         14
 rises 1, falls 1, worst step 5: barrier +5 at (2, -65); drop -4 at (4, -67)
-beside: spawn spawn-1#1 at (-52, -52) d0, wool wool-1#1 at (16, -79) d0, tree fir-0#1 at (1, -60) d2
+beside: spawn spawn-1#1 at (-52, -52) d0, wool wool-1#1 at (16, -79) d0, boulder clint-0#1 at (-23, -58) d1, tree fir-0#1 at (1, -60) d2
 
 ## spawn-blue -> light_blue-1
-ROUTE (-52, -52) -> (50, -50) aim travel: 103 blocks, 33 placed, 1 drop(s), worst drop 12
+ROUTE (-52, -52) -> (50, -50) aim travel: 103 blocks, 39 placed, 2 drop(s), worst drop 12
   place            y   step
   (-52, -52)        12
   (-51, -52)        12
@@ -994,26 +994,26 @@ ROUTE (-52, -52) -> (50, -50) aim travel: 103 blocks, 33 placed, 1 drop(s), wors
   (-20, -52)        11
   (-19, -52)        11
   (-18, -52)        11
-  (-17, -52)        11
-  (-16, -52)        11
-  (-15, -52)        11
-  (-14, -52)        11
-  (-13, -52)        11
-  (-12, -52)        11
-  (-11, -52)        11
-  (-10, -52)        11
-  (-9, -52)         11
-  (-8, -51)         11
-  (-7, -51)         11
-  (-6, -51)         11
-  (-5, -51)         11
-  (-4, -51)         11
-  (-3, -51)         11
-  (-2, -51)         11
-  (-1, -51)         10
-  (0, -51)          10
-  (1, -51)          10
-  (2, -51)           9
+  (-17, -51)        11
+  (-16, -50)        10
+  (-15, -50)        10
+  (-14, -50)        11
+  (-13, -50)        11
+  (-12, -50)        11
+  (-11, -50)        11
+  (-10, -50)        11
+  (-9, -50)         11
+  (-8, -50)         11
+  (-7, -50)         11
+  (-6, -50)         11
+  (-5, -50)         11
+  (-4, -50)         11
+  (-3, -50)         11
+  (-2, -50)         11
+  (-1, -50)         11
+  (0, -50)          10
+  (1, -50)          10
+  (2, -50)          10
   (3, -50)          10
   (4, -50)          14   barrier +4
   (5, -50)          15
@@ -1042,11 +1042,11 @@ ROUTE (-52, -52) -> (50, -50) aim travel: 103 blocks, 33 placed, 1 drop(s), wors
   (28, -50)          2
   (29, -50)          2
   (30, -50)          2
-  (31, -50)         13   barrier +11
-  (32, -50)         13
-  (33, -50)         13
-  (34, -50)         13
-  (35, -50)         13
+  (31, -50)         19   barrier +17
+  (32, -50)         19
+  (33, -50)         19
+  (34, -50)         19
+  (35, -50)         13   drop -6
   (36, -50)         13
   (37, -50)         13
   (38, -50)         13
@@ -1062,5 +1062,5 @@ ROUTE (-52, -52) -> (50, -50) aim travel: 103 blocks, 33 placed, 1 drop(s), wors
   (48, -50)         13
   (49, -50)         13
   (50, -50)         13
-rises 2, falls 1, worst step 12: barrier +4 at (4, -50); drop -12 at (22, -50); barrier +11 at (31, -50)
+rises 2, falls 2, worst step 17: barrier +4 at (4, -50); drop -12 at (22, -50); barrier +17 at (31, -50); drop -6 at (35, -50)
 beside: house watch-house#1 at (4, -50) d0, spawn spawn-1#1 at (-52, -52) d0, wool wool-2#1 at (46, -50) d0
