@@ -1,0 +1,61 @@
+## crag-1 (boulder) along x
+TRANSECT 25 stations from (49, 31) to (73, 31), every 1
+  station        ground  surface  water  top  standing            step
+  (   49,    31)      11       11           11                      
+  (   50,    31)      11       11           11                      
+  (   51,    31)      12       12           12                      +1
+  (   52,    31)      12       12           12                      
+  (   53,    31)      11       11           11                      -1
+  (   54,    31)      11       11           15  wall 0              
+  (   55,    31)      11       11           15  wall 0              
+  (   56,    31)      10       10           10                      -1
+  (   57,    31)      10       10           10                      
+  (   58,    31)      10       10           10                      
+  (   59,    31)      10       10           10                      
+  (   60,    31)      10       10           13  boulder crag-1      
+  (   61,    31)      10       10           13  boulder crag-1      
+  (   62,    31)      10       10           13  boulder crag-1      
+  (   63,    31)      10       10           12  boulder crag-1      
+  (   64,    31)       9        9            9                      -1
+  (   65,    31)       9        9            9                      
+  (   66,    31)       9        9            9                      
+  (   67,    31)       9        9            9                      
+  (   68,    31)       9        9            9                      
+  (   69,    31)       9        9            9                      
+  (   70,    31)       9        9            9                      
+  (   71,    31)       9        9            9                      
+  (   72,    31)       9        9            9                      
+  (   73,    31)       9        9            9                      
+rises 1, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wall 0 at (54, 30), boulder crag-1 at (60, 30)
+
+## crag-1 (boulder) along z
+TRANSECT 25 stations from (61, 19) to (61, 43), every 1
+  station        ground  surface  water  top  standing            step
+  (   61,    19)                                                    void
+  (   61,    20)                                                    void
+  (   61,    21)                                                    void
+  (   61,    22)                                                    void
+  (   61,    23)                                                    void
+  (   61,    24)                                                    void
+  (   61,    25)                                                    void
+  (   61,    26)                                                    void
+  (   61,    27)                                                    void
+  (   61,    28)                                                    void
+  (   61,    29)                            12  boulder crag-1      void
+  (   61,    30)      10       10           13  boulder crag-1      
+  (   61,    31)      10       10           13  boulder crag-1      
+  (   61,    32)      10       10           13  boulder crag-1      
+  (   61,    33)      10       10           10                      
+  (   61,    34)      10       10           10                      
+  (   61,    35)      10       10           10                      
+  (   61,    36)      10       10           10                      
+  (   61,    37)      10       10           10                      
+  (   61,    38)      10       10           10                      
+  (   61,    39)      10       10           10                      
+  (   61,    40)      10       10           10                      
+  (   61,    41)      10       10           10                      
+  (   61,    42)      10       10           10                      
+  (   61,    43)      10       10           18  tree thorn-1        
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder crag-1 at (61, 29), tree thorn-1 at (61, 43)

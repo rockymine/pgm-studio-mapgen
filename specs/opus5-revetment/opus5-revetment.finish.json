@@ -1,0 +1,9224 @@
+{
+ "authors": [
+  "Opus 5"
+ ],
+ "created": "2026-09-15",
+ "voidEnforcement": true,
+ "mapTheme": "lea",
+ "themes": {
+  "lea": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 4,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 14,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "handOver",
+          "bands": [
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 2,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            }
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 14,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "handOver",
+          "bands": [
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            }
+           },
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            }
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 62,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "handOver",
+          "bands": [
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 24,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 3,
+            "material": {
+             "kind": "solid",
+             "id": 1,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 4,
+            "material": {
+             "kind": "solid",
+             "id": 1,
+             "data": 5
+            }
+           }
+          ]
+         },
+         "beyond": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         }
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 24,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 5,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       }
+      }
+     ]
+    },
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 5
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "voronoi",
+    "seed": 31,
+    "cellSize": 11,
+    "rise": 4,
+    "bands": [
+     {
+      "depth": 1,
+      "material": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     },
+     {
+      "depth": 2,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     },
+     {
+      "depth": 1,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      }
+     }
+    ]
+   }
+  },
+  "revet": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 3
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 2,
+    "material": {
+     "kind": "cell",
+     "seed": 41,
+     "cellSize": 5,
+     "jitter": 2,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     ],
+     "rise": 3
+    }
+   },
+   "wallEnabled": true,
+   "wall": {
+    "kind": "wallDiagonal",
+    "slope": 2,
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      "width": 4
+     },
+     {
+      "material": {
+       "kind": "teamTint",
+       "blockId": 159,
+       "neutral": {
+        "kind": "solid",
+        "id": 159,
+        "data": 8
+       }
+      },
+      "width": 1
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      "width": 3
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      "width": 2
+     }
+    ]
+   },
+   "fill": {
+    "kind": "voronoi",
+    "seed": 31,
+    "cellSize": 11,
+    "rise": 4,
+    "bands": [
+     {
+      "depth": 1,
+      "material": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     },
+     {
+      "depth": 2,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     },
+     {
+      "depth": 1,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      }
+     }
+    ]
+   }
+  },
+  "garth": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 2,
+    "material": {
+     "kind": "cell",
+     "seed": 42,
+     "cellSize": 6,
+     "jitter": 2,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     ],
+     "rise": 2
+    }
+   },
+   "wallEnabled": true,
+   "wall": {
+    "kind": "wallRun",
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 98,
+       "data": 0
+      },
+      "width": 3
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      "width": 2
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      "width": 1
+     }
+    ]
+   },
+   "fill": {
+    "kind": "voronoi",
+    "seed": 31,
+    "cellSize": 11,
+    "rise": 4,
+    "bands": [
+     {
+      "depth": 1,
+      "material": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     },
+     {
+      "depth": 2,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     },
+     {
+      "depth": 1,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      }
+     }
+    ]
+   }
+  }
+ },
+ "themeById": {
+  "frontline-t1-11": "lea",
+  "frontline-t1-17": "revet"
+ },
+ "shapePropsById": {
+  "frontline-t1-17": {
+   "relief_scope": "exclude"
+  }
+ },
+ "editShapes": {
+  "frontline-t1-17": [
+   {
+    "after": 2,
+    "x": -18,
+    "z": 35
+   },
+   {
+    "after": 3,
+    "x": -18,
+    "z": 39
+   },
+   {
+    "after": 4,
+    "x": -8,
+    "z": 39
+   },
+   {
+    "after": 5,
+    "x": -8,
+    "z": 35
+   },
+   {
+    "after": 6,
+    "x": -6,
+    "z": 35
+   },
+   {
+    "after": 7,
+    "x": -3,
+    "z": 29
+   },
+   {
+    "after": 8,
+    "x": 3,
+    "z": 29
+   },
+   {
+    "after": 9,
+    "x": 6,
+    "z": 35
+   },
+   {
+    "after": 10,
+    "x": 14,
+    "z": 35
+   },
+   {
+    "after": 11,
+    "x": 14,
+    "z": 39
+   },
+   {
+    "after": 12,
+    "x": 24,
+    "z": 39
+   },
+   {
+    "after": 13,
+    "x": 24,
+    "z": 35
+   },
+   {
+    "index": 0,
+    "x": -47,
+    "z": 43
+   },
+   {
+    "index": 17,
+    "x": 47,
+    "z": 43
+   },
+   {
+    "index": 18,
+    "x": 47,
+    "z": 57
+   },
+   {
+    "index": 27,
+    "x": -47,
+    "z": 57
+   }
+  ],
+  "frontline-t1-11": [
+   {
+    "after": 0,
+    "x": -16,
+    "z": 14
+   },
+   {
+    "after": 1,
+    "x": -7,
+    "z": 11
+   },
+   {
+    "after": 2,
+    "x": 2,
+    "z": 15
+   },
+   {
+    "after": 3,
+    "x": 11,
+    "z": 12
+   },
+   {
+    "after": 4,
+    "x": 18,
+    "z": 16
+   },
+   {
+    "after": 6,
+    "x": 21,
+    "z": 20
+   },
+   {
+    "after": 7,
+    "x": 24,
+    "z": 28
+   },
+   {
+    "after": 10,
+    "x": -23,
+    "z": 27
+   },
+   {
+    "after": 11,
+    "x": -20,
+    "z": 19
+   }
+  ]
+ },
+ "addShapes": [
+  {
+   "id": "stair-west",
+   "type": "polygon",
+   "operation": "add",
+   "override": true,
+   "keepClear": true,
+   "group": "team",
+   "floor": 0,
+   "base_height": 17,
+   "material": {
+    "kind": "cell",
+    "seed": 44,
+    "cellSize": 4,
+    "jitter": 2,
+    "warp": 2,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     }
+    ],
+    "rise": 2
+   },
+   "height_mode": "level",
+   "skirt": 0,
+   "vertices": [
+    [
+     -18,
+     26
+    ],
+    [
+     -8,
+     26
+    ],
+    [
+     -8,
+     39
+    ],
+    [
+     -18,
+     39
+    ]
+   ],
+   "anchor_heights": [
+    11,
+    11,
+    17,
+    17
+   ]
+  },
+  {
+   "id": "stair-east",
+   "type": "polygon",
+   "operation": "add",
+   "override": true,
+   "keepClear": true,
+   "group": "team",
+   "floor": 0,
+   "base_height": 17,
+   "material": {
+    "kind": "cell",
+    "seed": 44,
+    "cellSize": 4,
+    "jitter": 2,
+    "warp": 2,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     }
+    ],
+    "rise": 2
+   },
+   "height_mode": "level",
+   "skirt": 0,
+   "vertices": [
+    [
+     14,
+     26
+    ],
+    [
+     24,
+     26
+    ],
+    [
+     24,
+     39
+    ],
+    [
+     14,
+     39
+    ]
+   ],
+   "anchor_heights": [
+    11,
+    11,
+    17,
+    17
+   ]
+  },
+  {
+   "id": "garth-w",
+   "type": "polygon",
+   "operation": "add",
+   "group": "team",
+   "base_height": 17,
+   "theme": "garth",
+   "vertices": [
+    [
+     -47,
+     43
+    ],
+    [
+     -36,
+     41
+    ],
+    [
+     -26,
+     44
+    ],
+    [
+     -26,
+     56
+    ],
+    [
+     -36,
+     59
+    ],
+    [
+     -47,
+     57
+    ]
+   ]
+  },
+  {
+   "id": "garth-e",
+   "type": "polygon",
+   "operation": "add",
+   "group": "team",
+   "base_height": 17,
+   "theme": "garth",
+   "vertices": [
+    [
+     47,
+     43
+    ],
+    [
+     36,
+     41
+    ],
+    [
+     26,
+     44
+    ],
+    [
+     26,
+     56
+    ],
+    [
+     36,
+     59
+    ],
+    [
+     47,
+     57
+    ]
+   ]
+  }
+ ],
+ "addLayers": [
+  {
+   "id": "par-west",
+   "name": "Parapet par-west",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "rectangle",
+     "min_x": -35,
+     "min_z": 35,
+     "max_x": -27,
+     "max_z": 37,
+     "floor": 17,
+     "base_height": 3,
+     "id": "par-west-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -35,
+     "min_z": 35,
+     "max_x": -32,
+     "max_z": 36,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-west-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -35,
+     "min_z": 36,
+     "max_x": -32,
+     "max_z": 37,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-west-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -30,
+     "min_z": 35,
+     "max_x": -27,
+     "max_z": 36,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-west-3",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -30,
+     "min_z": 36,
+     "max_x": -27,
+     "max_z": 37,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-west-4",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "par-west-body",
+     "name": "Parapet par-west",
+     "mirrors": false,
+     "shapeIds": [
+      "par-west-0",
+      "par-west-1",
+      "par-west-2",
+      "par-west-3",
+      "par-west-4"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "revetment"
+  },
+  {
+   "id": "par-gate",
+   "name": "Parapet par-gate",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "rectangle",
+     "min_x": -23,
+     "min_z": 35,
+     "max_x": -18,
+     "max_z": 37,
+     "floor": 17,
+     "base_height": 3,
+     "id": "par-gate-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -23,
+     "min_z": 35,
+     "max_x": -20,
+     "max_z": 36,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-gate-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -23,
+     "min_z": 36,
+     "max_x": -20,
+     "max_z": 37,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-gate-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "par-gate-body",
+     "name": "Parapet par-gate",
+     "mirrors": false,
+     "shapeIds": [
+      "par-gate-0",
+      "par-gate-1",
+      "par-gate-2"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "revetment"
+  },
+  {
+   "id": "par-mid",
+   "name": "Parapet par-mid",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "rectangle",
+     "min_x": 6,
+     "min_z": 35,
+     "max_x": 14,
+     "max_z": 37,
+     "floor": 17,
+     "base_height": 3,
+     "id": "par-mid-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 6,
+     "min_z": 35,
+     "max_x": 9,
+     "max_z": 36,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-mid-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 6,
+     "min_z": 36,
+     "max_x": 9,
+     "max_z": 37,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-mid-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 11,
+     "min_z": 35,
+     "max_x": 14,
+     "max_z": 36,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-mid-3",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 11,
+     "min_z": 36,
+     "max_x": 14,
+     "max_z": 37,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-mid-4",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "par-mid-body",
+     "name": "Parapet par-mid",
+     "mirrors": false,
+     "shapeIds": [
+      "par-mid-0",
+      "par-mid-1",
+      "par-mid-2",
+      "par-mid-3",
+      "par-mid-4"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "revetment"
+  },
+  {
+   "id": "par-east",
+   "name": "Parapet par-east",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "rectangle",
+     "min_x": 27,
+     "min_z": 35,
+     "max_x": 35,
+     "max_z": 37,
+     "floor": 17,
+     "base_height": 3,
+     "id": "par-east-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 27,
+     "min_z": 35,
+     "max_x": 30,
+     "max_z": 36,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-east-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 27,
+     "min_z": 36,
+     "max_x": 30,
+     "max_z": 37,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-east-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 32,
+     "min_z": 35,
+     "max_x": 35,
+     "max_z": 36,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-east-3",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 32,
+     "min_z": 36,
+     "max_x": 35,
+     "max_z": 37,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-east-4",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "par-east-body",
+     "name": "Parapet par-east",
+     "mirrors": false,
+     "shapeIds": [
+      "par-east-0",
+      "par-east-1",
+      "par-east-2",
+      "par-east-3",
+      "par-east-4"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "revetment"
+  },
+  {
+   "id": "par-bastion",
+   "name": "Bastion breastwork",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "rectangle",
+     "min_x": -3,
+     "min_z": 30,
+     "max_x": 3,
+     "max_z": 32,
+     "floor": 17,
+     "base_height": 3,
+     "id": "par-bastion-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -3,
+     "min_z": 30,
+     "max_x": -1,
+     "max_z": 31,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-bastion-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -3,
+     "min_z": 31,
+     "max_x": -1,
+     "max_z": 32,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-bastion-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 1,
+     "min_z": 30,
+     "max_x": 3,
+     "max_z": 31,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-bastion-3",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 1,
+     "min_z": 31,
+     "max_x": 3,
+     "max_z": 32,
+     "floor": 17,
+     "base_height": 5,
+     "id": "par-bastion-4",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "par-bastion-body",
+     "name": "Bastion breastwork",
+     "mirrors": false,
+     "shapeIds": [
+      "par-bastion-0",
+      "par-bastion-1",
+      "par-bastion-2",
+      "par-bastion-3",
+      "par-bastion-4"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "revetment"
+  },
+  {
+   "id": "tower-wl",
+   "name": "West gate tower",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -18.0,
+       38.0
+      ],
+      [
+       -18.014445819983408,
+       38.29405142098868
+      ],
+      [
+       -18.05764415879031,
+       38.585270966048384
+      ],
+      [
+       -18.129178992803375,
+       38.870854031763386
+      ],
+      [
+       -18.228361402466142,
+       39.14805029709527
+      ],
+      [
+       -18.354236206954933,
+       39.41419021047799
+      ],
+      [
+       -18.505591163092365,
+       39.666710699058804
+      ],
+      [
+       -18.68096863991179,
+       39.903179852490936
+      ],
+      [
+       -18.878679656440358,
+       40.121320343559645
+      ],
+      [
+       -19.096820147509064,
+       40.31903136008821
+      ],
+      [
+       -19.333289300941193,
+       40.49440883690764
+      ],
+      [
+       -19.585809789522006,
+       40.64576379304506
+      ],
+      [
+       -19.85194970290473,
+       40.77163859753386
+      ],
+      [
+       -20.129145968236614,
+       40.870821007196625
+      ],
+      [
+       -20.414729033951616,
+       40.94235584120969
+      ],
+      [
+       -20.705948579011316,
+       40.98555418001659
+      ],
+      [
+       -21.0,
+       41.0
+      ],
+      [
+       -21.294051420988684,
+       40.98555418001659
+      ],
+      [
+       -21.585270966048384,
+       40.94235584120969
+      ],
+      [
+       -21.870854031763386,
+       40.870821007196625
+      ],
+      [
+       -22.14805029709527,
+       40.77163859753386
+      ],
+      [
+       -22.414190210477994,
+       40.64576379304506
+      ],
+      [
+       -22.666710699058807,
+       40.49440883690764
+      ],
+      [
+       -22.903179852490936,
+       40.31903136008821
+      ],
+      [
+       -23.121320343559642,
+       40.121320343559645
+      ],
+      [
+       -23.31903136008821,
+       39.903179852490936
+      ],
+      [
+       -23.494408836907635,
+       39.666710699058804
+      ],
+      [
+       -23.645763793045063,
+       39.41419021047799
+      ],
+      [
+       -23.771638597533858,
+       39.14805029709527
+      ],
+      [
+       -23.870821007196625,
+       38.870854031763386
+      ],
+      [
+       -23.94235584120969,
+       38.585270966048384
+      ],
+      [
+       -23.985554180016592,
+       38.29405142098868
+      ],
+      [
+       -24.0,
+       38.0
+      ],
+      [
+       -23.985554180016592,
+       37.70594857901132
+      ],
+      [
+       -23.94235584120969,
+       37.414729033951616
+      ],
+      [
+       -23.870821007196625,
+       37.129145968236614
+      ],
+      [
+       -23.77163859753386,
+       36.85194970290473
+      ],
+      [
+       -23.645763793045067,
+       36.58580978952201
+      ],
+      [
+       -23.49440883690764,
+       36.333289300941196
+      ],
+      [
+       -23.31903136008821,
+       36.096820147509064
+      ],
+      [
+       -23.121320343559642,
+       35.878679656440355
+      ],
+      [
+       -22.903179852490936,
+       35.68096863991179
+      ],
+      [
+       -22.666710699058807,
+       35.50559116309236
+      ],
+      [
+       -22.414190210477994,
+       35.35423620695494
+      ],
+      [
+       -22.14805029709527,
+       35.22836140246614
+      ],
+      [
+       -21.870854031763386,
+       35.129178992803375
+      ],
+      [
+       -21.585270966048387,
+       35.05764415879031
+      ],
+      [
+       -21.29405142098868,
+       35.01444581998341
+      ],
+      [
+       -21.0,
+       35.0
+      ],
+      [
+       -20.70594857901132,
+       35.01444581998341
+      ],
+      [
+       -20.414729033951616,
+       35.05764415879031
+      ],
+      [
+       -20.129145968236614,
+       35.129178992803375
+      ],
+      [
+       -19.85194970290473,
+       35.22836140246614
+      ],
+      [
+       -19.585809789522006,
+       35.35423620695494
+      ],
+      [
+       -19.333289300941196,
+       35.50559116309236
+      ],
+      [
+       -19.096820147509064,
+       35.68096863991179
+      ],
+      [
+       -18.878679656440358,
+       35.878679656440355
+      ],
+      [
+       -18.68096863991179,
+       36.096820147509064
+      ],
+      [
+       -18.505591163092365,
+       36.333289300941196
+      ],
+      [
+       -18.354236206954937,
+       36.585809789522
+      ],
+      [
+       -18.228361402466142,
+       36.851949702904726
+      ],
+      [
+       -18.129178992803375,
+       37.129145968236614
+      ],
+      [
+       -18.05764415879031,
+       37.414729033951616
+      ],
+      [
+       -18.014445819983408,
+       37.70594857901132
+      ],
+      [
+       -18.0,
+       38.0
+      ],
+      [
+       -20.004815273327804,
+       37.90198285967044
+      ],
+      [
+       -20.01921471959677,
+       37.80490967798387
+      ],
+      [
+       -20.04305966426779,
+       37.70971532274554
+      ],
+      [
+       -20.076120467488714,
+       37.61731656763491
+      ],
+      [
+       -20.118078735651647,
+       37.528603263174006
+      ],
+      [
+       -20.168530387697455,
+       37.4444297669804
+      ],
+      [
+       -20.226989546637263,
+       37.36560671583636
+      ],
+      [
+       -20.292893218813454,
+       37.292893218813454
+      ],
+      [
+       -20.365606715836353,
+       37.22698954663726
+      ],
+      [
+       -20.4444297669804,
+       37.16853038769745
+      ],
+      [
+       -20.528603263174002,
+       37.11807873565164
+      ],
+      [
+       -20.61731656763491,
+       37.076120467488714
+      ],
+      [
+       -20.709715322745538,
+       37.043059664267794
+      ],
+      [
+       -20.804909677983872,
+       37.01921471959677
+      ],
+      [
+       -20.90198285967044,
+       37.0048152733278
+      ],
+      [
+       -21.0,
+       37.0
+      ],
+      [
+       -21.09801714032956,
+       37.0048152733278
+      ],
+      [
+       -21.195090322016128,
+       37.01921471959677
+      ],
+      [
+       -21.290284677254462,
+       37.043059664267794
+      ],
+      [
+       -21.38268343236509,
+       37.076120467488714
+      ],
+      [
+       -21.471396736825998,
+       37.11807873565164
+      ],
+      [
+       -21.5555702330196,
+       37.16853038769745
+      ],
+      [
+       -21.634393284163647,
+       37.22698954663726
+      ],
+      [
+       -21.707106781186546,
+       37.292893218813454
+      ],
+      [
+       -21.773010453362737,
+       37.36560671583636
+      ],
+      [
+       -21.831469612302545,
+       37.4444297669804
+      ],
+      [
+       -21.881921264348357,
+       37.528603263174006
+      ],
+      [
+       -21.923879532511286,
+       37.61731656763491
+      ],
+      [
+       -21.95694033573221,
+       37.70971532274554
+      ],
+      [
+       -21.980785280403232,
+       37.80490967798387
+      ],
+      [
+       -21.995184726672196,
+       37.90198285967044
+      ],
+      [
+       -22.0,
+       38.0
+      ],
+      [
+       -21.995184726672196,
+       38.09801714032956
+      ],
+      [
+       -21.980785280403232,
+       38.19509032201613
+      ],
+      [
+       -21.95694033573221,
+       38.29028467725446
+      ],
+      [
+       -21.923879532511286,
+       38.38268343236509
+      ],
+      [
+       -21.881921264348357,
+       38.471396736825994
+      ],
+      [
+       -21.831469612302545,
+       38.5555702330196
+      ],
+      [
+       -21.773010453362737,
+       38.63439328416364
+      ],
+      [
+       -21.707106781186546,
+       38.707106781186546
+      ],
+      [
+       -21.634393284163647,
+       38.77301045336274
+      ],
+      [
+       -21.5555702330196,
+       38.83146961230255
+      ],
+      [
+       -21.471396736825998,
+       38.88192126434836
+      ],
+      [
+       -21.38268343236509,
+       38.923879532511286
+      ],
+      [
+       -21.290284677254462,
+       38.956940335732206
+      ],
+      [
+       -21.195090322016128,
+       38.98078528040323
+      ],
+      [
+       -21.09801714032956,
+       38.9951847266722
+      ],
+      [
+       -21.0,
+       39.0
+      ],
+      [
+       -20.90198285967044,
+       38.9951847266722
+      ],
+      [
+       -20.804909677983872,
+       38.98078528040323
+      ],
+      [
+       -20.709715322745538,
+       38.956940335732206
+      ],
+      [
+       -20.61731656763491,
+       38.923879532511286
+      ],
+      [
+       -20.528603263174002,
+       38.88192126434836
+      ],
+      [
+       -20.4444297669804,
+       38.83146961230255
+      ],
+      [
+       -20.365606715836353,
+       38.77301045336274
+      ],
+      [
+       -20.292893218813454,
+       38.707106781186546
+      ],
+      [
+       -20.226989546637263,
+       38.63439328416364
+      ],
+      [
+       -20.168530387697455,
+       38.5555702330196
+      ],
+      [
+       -20.118078735651643,
+       38.471396736825994
+      ],
+      [
+       -20.076120467488714,
+       38.38268343236509
+      ],
+      [
+       -20.04305966426779,
+       38.29028467725446
+      ],
+      [
+       -20.019214719596768,
+       38.19509032201613
+      ],
+      [
+       -20.004815273327804,
+       38.09801714032956
+      ],
+      [
+       -20.0,
+       38.0
+      ],
+      [
+       -20.004815273327804,
+       37.90198285967044
+      ]
+     ],
+     "floor": 17,
+     "base_height": 11,
+     "id": "tower-wl-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "tower-wl-body",
+     "name": "West gate tower",
+     "mirrors": false,
+     "shapeIds": [
+      "tower-wl-0"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "revetment"
+  },
+  {
+   "id": "tower-wl-crown",
+   "name": "West gate tower crown",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -17.6,
+       38.0
+      ],
+      [
+       -17.60950708958399,
+       38.254082318193845
+      ],
+      [
+       -17.637975190834563,
+       38.506743704998996
+      ],
+      [
+       -17.6852450985818,
+       38.75657117545147
+      ],
+      [
+       -17.751052460327124,
+       39.002167592997075
+      ],
+      [
+       -17.835029254609704,
+       39.24215948284574
+      ],
+      [
+       -17.936705849131776,
+       39.4752047129997
+      ],
+      [
+       -20.09903113209758,
+       38.43388373911756
+      ],
+      [
+       -20.069126251355797,
+       38.365341024366394
+      ],
+      [
+       -20.04442719421386,
+       38.2947551744109
+      ],
+      [
+       -20.025072087818177,
+       38.22252093395632
+      ],
+      [
+       -20.01116917377487,
+       38.149042266176174
+      ],
+      [
+       -20.00279620281882,
+       38.074730093586425
+      ],
+      [
+       -20.0,
+       38.0
+      ]
+     ],
+     "floor": 28,
+     "base_height": 3,
+     "id": "tower-wl-crown-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -18.880134673680306,
+       40.6582270403913
+      ],
+      [
+       -19.084711802583683,
+       40.80921183267438
+      ],
+      [
+       -19.3,
+       40.94448637286709
+      ],
+      [
+       -19.524795287000302,
+       41.063294150868224
+      ],
+      [
+       -19.757840517154257,
+       41.16497074539029
+      ],
+      [
+       -19.997832407002925,
+       41.248947539672876
+      ],
+      [
+       -20.24342882454853,
+       41.3147549014182
+      ],
+      [
+       -20.777479066043686,
+       38.974927912181826
+      ],
+      [
+       -20.705244825589094,
+       38.95557280578614
+      ],
+      [
+       -20.634658975633606,
+       38.9308737486442
+      ],
+      [
+       -20.566116260882442,
+       38.90096886790242
+      ],
+      [
+       -20.5,
+       38.86602540378444
+      ],
+      [
+       -20.43667994193638,
+       38.826238774315996
+      ],
+      [
+       -20.376510198141265,
+       38.78183148246803
+      ]
+     ],
+     "floor": 28,
+     "base_height": 3,
+     "id": "tower-wl-crown-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -21.75657117545147,
+       41.3147549014182
+      ],
+      [
+       -22.002167592997075,
+       41.248947539672876
+      ],
+      [
+       -22.242159482845743,
+       41.16497074539029
+      ],
+      [
+       -22.475204712999698,
+       41.063294150868224
+      ],
+      [
+       -22.7,
+       40.94448637286709
+      ],
+      [
+       -22.915288197416317,
+       40.80921183267438
+      ],
+      [
+       -23.119865326319694,
+       40.6582270403913
+      ],
+      [
+       -21.623489801858735,
+       38.78183148246803
+      ],
+      [
+       -21.56332005806362,
+       38.826238774315996
+      ],
+      [
+       -21.5,
+       38.86602540378444
+      ],
+      [
+       -21.433883739117558,
+       38.90096886790242
+      ],
+      [
+       -21.365341024366394,
+       38.9308737486442
+      ],
+      [
+       -21.294755174410906,
+       38.95557280578614
+      ],
+      [
+       -21.222520933956314,
+       38.974927912181826
+      ]
+     ],
+     "floor": 28,
+     "base_height": 3,
+     "id": "tower-wl-crown-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -24.063294150868224,
+       39.4752047129997
+      ],
+      [
+       -24.164970745390292,
+       39.24215948284574
+      ],
+      [
+       -24.24894753967288,
+       39.002167592997075
+      ],
+      [
+       -24.3147549014182,
+       38.75657117545147
+      ],
+      [
+       -24.362024809165437,
+       38.506743704998996
+      ],
+      [
+       -24.39049291041601,
+       38.254082318193845
+      ],
+      [
+       -24.4,
+       38.0
+      ],
+      [
+       -22.0,
+       38.0
+      ],
+      [
+       -21.99720379718118,
+       38.074730093586425
+      ],
+      [
+       -21.98883082622513,
+       38.149042266176174
+      ],
+      [
+       -21.974927912181823,
+       38.22252093395632
+      ],
+      [
+       -21.95557280578614,
+       38.2947551744109
+      ],
+      [
+       -21.930873748644203,
+       38.365341024366394
+      ],
+      [
+       -21.90096886790242,
+       38.43388373911756
+      ]
+     ],
+     "floor": 28,
+     "base_height": 3,
+     "id": "tower-wl-crown-3",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -24.063294150868224,
+       36.5247952870003
+      ],
+      [
+       -23.944486372867093,
+       36.300000000000004
+      ],
+      [
+       -23.809211832674382,
+       36.08471180258368
+      ],
+      [
+       -23.658227040391303,
+       35.88013467368031
+      ],
+      [
+       -23.49237636422141,
+       35.68741269157888
+      ],
+      [
+       -23.312587308421126,
+       35.50762363577859
+      ],
+      [
+       -23.119865326319694,
+       35.3417729596087
+      ],
+      [
+       -21.623489801858735,
+       37.21816851753197
+      ],
+      [
+       -21.68017273777092,
+       37.26694812817017
+      ],
+      [
+       -21.733051871829826,
+       37.31982726222908
+      ],
+      [
+       -21.78183148246803,
+       37.37651019814127
+      ],
+      [
+       -21.826238774315996,
+       37.436679941936376
+      ],
+      [
+       -21.866025403784437,
+       37.5
+      ],
+      [
+       -21.90096886790242,
+       37.566116260882445
+      ]
+     ],
+     "floor": 28,
+     "base_height": 3,
+     "id": "tower-wl-crown-4",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -21.75657117545147,
+       34.6852450985818
+      ],
+      [
+       -21.506743704998993,
+       34.63797519083457
+      ],
+      [
+       -21.254082318193845,
+       34.609507089583985
+      ],
+      [
+       -21.0,
+       34.6
+      ],
+      [
+       -20.74591768180616,
+       34.609507089583985
+      ],
+      [
+       -20.493256295001007,
+       34.63797519083456
+      ],
+      [
+       -20.24342882454853,
+       34.6852450985818
+      ],
+      [
+       -20.777479066043686,
+       37.025072087818174
+      ],
+      [
+       -20.850957733823826,
+       37.011169173774874
+      ],
+      [
+       -20.925269906413575,
+       37.00279620281882
+      ],
+      [
+       -21.0,
+       37.0
+      ],
+      [
+       -21.074730093586425,
+       37.00279620281882
+      ],
+      [
+       -21.149042266176174,
+       37.011169173774874
+      ],
+      [
+       -21.222520933956314,
+       37.025072087818174
+      ]
+     ],
+     "floor": 28,
+     "base_height": 3,
+     "id": "tower-wl-crown-5",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -18.880134673680306,
+       35.3417729596087
+      ],
+      [
+       -18.687412691578874,
+       35.50762363577859
+      ],
+      [
+       -18.507623635778593,
+       35.68741269157887
+      ],
+      [
+       -18.341772959608697,
+       35.8801346736803
+      ],
+      [
+       -18.190788167325618,
+       36.08471180258368
+      ],
+      [
+       -18.05551362713291,
+       36.3
+      ],
+      [
+       -17.936705849131776,
+       36.5247952870003
+      ],
+      [
+       -20.09903113209758,
+       37.56611626088244
+      ],
+      [
+       -20.133974596215563,
+       37.5
+      ],
+      [
+       -20.173761225684004,
+       37.436679941936376
+      ],
+      [
+       -20.21816851753197,
+       37.37651019814127
+      ],
+      [
+       -20.266948128170174,
+       37.31982726222908
+      ],
+      [
+       -20.31982726222908,
+       37.26694812817017
+      ],
+      [
+       -20.37651019814127,
+       37.21816851753197
+      ]
+     ],
+     "floor": 28,
+     "base_height": 3,
+     "id": "tower-wl-crown-6",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "tower-wl-crown-body",
+     "name": "West gate tower crown",
+     "mirrors": false,
+     "shapeIds": [
+      "tower-wl-crown-0",
+      "tower-wl-crown-1",
+      "tower-wl-crown-2",
+      "tower-wl-crown-3",
+      "tower-wl-crown-4",
+      "tower-wl-crown-5",
+      "tower-wl-crown-6"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "revetment"
+  },
+  {
+   "id": "tower-wr",
+   "name": "West gate tower, east side",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       0.0,
+       38.0
+      ],
+      [
+       -0.019261093311212285,
+       38.39206856131824
+      ],
+      [
+       -0.07685887838707828,
+       38.78036128806451
+      ],
+      [
+       -0.1722386570711647,
+       39.16113870901785
+      ],
+      [
+       -0.30448186995485305,
+       39.53073372946036
+      ],
+      [
+       -0.4723149426065798,
+       39.88558694730399
+      ],
+      [
+       -0.6741215507898191,
+       40.222280932078405
+      ],
+      [
+       -0.907958186549052,
+       40.53757313665458
+      ],
+      [
+       -1.1715728752538097,
+       40.82842712474619
+      ],
+      [
+       -1.462426863345418,
+       41.09204181345095
+      ],
+      [
+       -1.7777190679215908,
+       41.32587844921018
+      ],
+      [
+       -2.1144130526960088,
+       41.52768505739342
+      ],
+      [
+       -2.4692662705396407,
+       41.695518130045144
+      ],
+      [
+       -2.838861290982151,
+       41.82776134292884
+      ],
+      [
+       -3.219638711935487,
+       41.92314112161292
+      ],
+      [
+       -3.607931438681757,
+       41.980738906688785
+      ],
+      [
+       -3.9999999999999996,
+       42.0
+      ],
+      [
+       -4.392068561318243,
+       41.980738906688785
+      ],
+      [
+       -4.780361288064513,
+       41.92314112161292
+      ],
+      [
+       -5.161138709017848,
+       41.82776134292884
+      ],
+      [
+       -5.5307337294603585,
+       41.695518130045144
+      ],
+      [
+       -5.885586947303991,
+       41.52768505739342
+      ],
+      [
+       -6.222280932078408,
+       41.32587844921018
+      ],
+      [
+       -6.537573136654581,
+       41.09204181345095
+      ],
+      [
+       -6.82842712474619,
+       40.82842712474619
+      ],
+      [
+       -7.0920418134509475,
+       40.53757313665458
+      ],
+      [
+       -7.325878449210181,
+       40.222280932078405
+      ],
+      [
+       -7.52768505739342,
+       39.88558694730399
+      ],
+      [
+       -7.695518130045147,
+       39.53073372946036
+      ],
+      [
+       -7.827761342928835,
+       39.16113870901785
+      ],
+      [
+       -7.923141121612922,
+       38.78036128806451
+      ],
+      [
+       -7.980738906688787,
+       38.39206856131824
+      ],
+      [
+       -8.0,
+       38.0
+      ],
+      [
+       -7.980738906688788,
+       37.60793143868176
+      ],
+      [
+       -7.923141121612922,
+       37.21963871193549
+      ],
+      [
+       -7.827761342928836,
+       36.83886129098215
+      ],
+      [
+       -7.695518130045148,
+       36.46926627053964
+      ],
+      [
+       -7.52768505739342,
+       36.11441305269601
+      ],
+      [
+       -7.325878449210181,
+       35.777719067921595
+      ],
+      [
+       -7.092041813450948,
+       35.46242686334542
+      ],
+      [
+       -6.828427124746191,
+       35.17157287525381
+      ],
+      [
+       -6.537573136654584,
+       34.90795818654905
+      ],
+      [
+       -6.222280932078409,
+       34.67412155078982
+      ],
+      [
+       -5.885586947303992,
+       34.47231494260658
+      ],
+      [
+       -5.530733729460361,
+       34.304481869954856
+      ],
+      [
+       -5.16113870901785,
+       34.17223865707116
+      ],
+      [
+       -4.7803612880645145,
+       34.07685887838708
+      ],
+      [
+       -4.392068561318242,
+       34.019261093311215
+      ],
+      [
+       -4.000000000000001,
+       34.0
+      ],
+      [
+       -3.6079314386817596,
+       34.019261093311215
+      ],
+      [
+       -3.219638711935487,
+       34.07685887838708
+      ],
+      [
+       -2.838861290982152,
+       34.17223865707116
+      ],
+      [
+       -2.4692662705396398,
+       34.304481869954856
+      ],
+      [
+       -2.1144130526960097,
+       34.47231494260658
+      ],
+      [
+       -1.7777190679215926,
+       34.67412155078982
+      ],
+      [
+       -1.4624268633454176,
+       34.90795818654905
+      ],
+      [
+       -1.1715728752538106,
+       35.17157287525381
+      ],
+      [
+       -0.9079581865490534,
+       35.462426863345414
+      ],
+      [
+       -0.6741215507898191,
+       35.777719067921595
+      ],
+      [
+       -0.4723149426065807,
+       36.11441305269601
+      ],
+      [
+       -0.30448186995485393,
+       36.46926627053964
+      ],
+      [
+       -0.1722386570711647,
+       36.83886129098215
+      ],
+      [
+       -0.07685887838707872,
+       37.21963871193549
+      ],
+      [
+       -0.019261093311212285,
+       37.60793143868176
+      ],
+      [
+       0.0,
+       38.0
+      ],
+      [
+       -2.009630546655606,
+       37.80396571934088
+      ],
+      [
+       -2.038429439193539,
+       37.609819355967744
+      ],
+      [
+       -2.0861193285355824,
+       37.419430645491076
+      ],
+      [
+       -2.152240934977427,
+       37.23463313526982
+      ],
+      [
+       -2.23615747130329,
+       37.057206526348004
+      ],
+      [
+       -2.3370607753949093,
+       36.8888595339608
+      ],
+      [
+       -2.4539790932745267,
+       36.73121343167271
+      ],
+      [
+       -2.585786437626905,
+       36.58578643762691
+      ],
+      [
+       -2.7312134316727086,
+       36.453979093274526
+      ],
+      [
+       -2.8888595339607965,
+       36.33706077539491
+      ],
+      [
+       -3.057206526348005,
+       36.23615747130329
+      ],
+      [
+       -3.23463313526982,
+       36.15224093497743
+      ],
+      [
+       -3.419430645491076,
+       36.08611932853558
+      ],
+      [
+       -3.609819355967743,
+       36.038429439193536
+      ],
+      [
+       -3.80396571934088,
+       36.00963054665561
+      ],
+      [
+       -4.0,
+       36.0
+      ],
+      [
+       -4.196034280659121,
+       36.00963054665561
+      ],
+      [
+       -4.390180644032258,
+       36.03842943919354
+      ],
+      [
+       -4.580569354508925,
+       36.08611932853558
+      ],
+      [
+       -4.765366864730181,
+       36.15224093497743
+      ],
+      [
+       -4.942793473651996,
+       36.23615747130329
+      ],
+      [
+       -5.111140466039204,
+       36.33706077539491
+      ],
+      [
+       -5.268786568327291,
+       36.453979093274526
+      ],
+      [
+       -5.414213562373096,
+       36.58578643762691
+      ],
+      [
+       -5.546020906725474,
+       36.73121343167271
+      ],
+      [
+       -5.662939224605091,
+       36.8888595339608
+      ],
+      [
+       -5.76384252869671,
+       37.057206526348004
+      ],
+      [
+       -5.847759065022574,
+       37.23463313526982
+      ],
+      [
+       -5.913880671464418,
+       37.419430645491076
+      ],
+      [
+       -5.961570560806461,
+       37.609819355967744
+      ],
+      [
+       -5.990369453344394,
+       37.80396571934088
+      ],
+      [
+       -6.0,
+       38.0
+      ],
+      [
+       -5.990369453344393,
+       38.19603428065912
+      ],
+      [
+       -5.961570560806461,
+       38.390180644032256
+      ],
+      [
+       -5.913880671464417,
+       38.580569354508924
+      ],
+      [
+       -5.847759065022574,
+       38.76536686473018
+      ],
+      [
+       -5.76384252869671,
+       38.942793473651996
+      ],
+      [
+       -5.662939224605091,
+       39.1111404660392
+      ],
+      [
+       -5.546020906725474,
+       39.26878656832729
+      ],
+      [
+       -5.414213562373095,
+       39.41421356237309
+      ],
+      [
+       -5.2687865683272905,
+       39.546020906725474
+      ],
+      [
+       -5.111140466039204,
+       39.66293922460509
+      ],
+      [
+       -4.942793473651996,
+       39.76384252869671
+      ],
+      [
+       -4.765366864730179,
+       39.84775906502257
+      ],
+      [
+       -4.580569354508924,
+       39.91388067146442
+      ],
+      [
+       -4.390180644032256,
+       39.961570560806464
+      ],
+      [
+       -4.196034280659121,
+       39.99036945334439
+      ],
+      [
+       -4.0,
+       40.0
+      ],
+      [
+       -3.8039657193408782,
+       39.99036945334439
+      ],
+      [
+       -3.609819355967743,
+       39.961570560806464
+      ],
+      [
+       -3.4194306454910754,
+       39.91388067146442
+      ],
+      [
+       -3.2346331352698203,
+       39.84775906502257
+      ],
+      [
+       -3.057206526348004,
+       39.76384252869671
+      ],
+      [
+       -2.8888595339607956,
+       39.66293922460509
+      ],
+      [
+       -2.731213431672709,
+       39.546020906725474
+      ],
+      [
+       -2.585786437626905,
+       39.41421356237309
+      ],
+      [
+       -2.4539790932745262,
+       39.26878656832729
+      ],
+      [
+       -2.3370607753949093,
+       39.1111404660392
+      ],
+      [
+       -2.23615747130329,
+       38.942793473651996
+      ],
+      [
+       -2.1522409349774265,
+       38.76536686473018
+      ],
+      [
+       -2.0861193285355824,
+       38.580569354508924
+      ],
+      [
+       -2.038429439193539,
+       38.390180644032256
+      ],
+      [
+       -2.009630546655606,
+       38.19603428065912
+      ],
+      [
+       -2.0,
+       38.0
+      ],
+      [
+       -2.009630546655606,
+       37.80396571934088
+      ]
+     ],
+     "floor": 17,
+     "base_height": 11,
+     "id": "tower-wr-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "tower-wr-body",
+     "name": "West gate tower, east side",
+     "mirrors": false,
+     "shapeIds": [
+      "tower-wr-0"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "revetment"
+  },
+  {
+   "id": "tower-wr-crown",
+   "name": "West gate tower, east side crown",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       0.40000000000000036,
+       38.0
+      ],
+      [
+       0.3905792622498554,
+       38.28777376861263
+      ],
+      [
+       0.36235739004476564,
+       38.574315245768226
+      ],
+      [
+       0.31545523377421425,
+       38.858397416870964
+      ],
+      [
+       0.25007363567190133,
+       39.13880379845109
+      ],
+      [
+       0.16649256977846516,
+       39.41433364733391
+      ],
+      [
+       0.06506994304966174,
+       39.6838071024064
+      ],
+      [
+       -2.1522409349774265,
+       38.76536686473018
+      ],
+      [
+       -2.1061397410097884,
+       38.64287893060632
+      ],
+      [
+       -2.0681483474218636,
+       38.51763809020504
+      ],
+      [
+       -2.038429439193539,
+       38.390180644032256
+      ],
+      [
+       -2.017110277252379,
+       38.261052384440106
+      ],
+      [
+       -2.004282153522793,
+       38.13080625846029
+      ],
+      [
+       -2.0,
+       38.0
+      ]
+     ],
+     "floor": 28,
+     "base_height": 3,
+     "id": "tower-wr-crown-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -0.8887301627791904,
+       41.11126983722081
+      ],
+      [
+       -1.0988784135596967,
+       41.3080951529075
+      ],
+      [
+       -1.3214497123616291,
+       41.49075469728143
+      ],
+      [
+       -1.5554909747137495,
+       41.6584662941312
+      ],
+      [
+       -1.7999999999999994,
+       41.81051177665153
+      ],
+      [
+       -2.053929763036394,
+       41.946240062743826
+      ],
+      [
+       -2.316192897593605,
+       42.065069943049664
+      ],
+      [
+       -3.2346331352698203,
+       39.84775906502257
+      ],
+      [
+       -3.1154226195619974,
+       39.79374548306538
+      ],
+      [
+       -3.0,
+       39.732050807568875
+      ],
+      [
+       -2.8888595339607956,
+       39.66293922460509
+      ],
+      [
+       -2.7824771419825587,
+       39.58670668058247
+      ],
+      [
+       -2.6813083697998623,
+       39.50367961495795
+      ],
+      [
+       -2.585786437626905,
+       39.41421356237309
+      ]
+     ],
+     "floor": 28,
+     "base_height": 3,
+     "id": "tower-wr-crown-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -3.9999999999999996,
+       42.4
+      ],
+      [
+       -4.287773768612629,
+       42.39057926224986
+      ],
+      [
+       -4.5743152457682275,
+       42.362357390044764
+      ],
+      [
+       -4.8583974168709645,
+       42.315455233774216
+      ],
+      [
+       -5.138803798451091,
+       42.2500736356719
+      ],
+      [
+       -5.414333647333911,
+       42.16649256977846
+      ],
+      [
+       -5.683807102406395,
+       42.065069943049664
+      ],
+      [
+       -4.765366864730179,
+       39.84775906502257
+      ],
+      [
+       -4.642878930606323,
+       39.89386025899021
+      ],
+      [
+       -4.5176380902050415,
+       39.93185165257814
+      ],
+      [
+       -4.390180644032256,
+       39.961570560806464
+      ],
+      [
+       -4.261052384440103,
+       39.98288972274762
+      ],
+      [
+       -4.130806258460286,
+       39.995717846477206
+      ],
+      [
+       -4.0,
+       40.0
+      ]
+     ],
+     "floor": 28,
+     "base_height": 3,
+     "id": "tower-wr-crown-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -7.111269837220809,
+       41.11126983722081
+      ],
+      [
+       -7.3080951529075,
+       40.901121586440304
+      ],
+      [
+       -7.490754697281435,
+       40.67855028763837
+      ],
+      [
+       -7.6584662941312,
+       40.44450902528625
+      ],
+      [
+       -7.810511776651531,
+       40.2
+      ],
+      [
+       -7.946240062743829,
+       39.94607023696361
+      ],
+      [
+       -8.06506994304966,
+       39.6838071024064
+      ],
+      [
+       -5.847759065022574,
+       38.76536686473018
+      ],
+      [
+       -5.7937454830653765,
+       38.884577380438
+      ],
+      [
+       -5.732050807568878,
+       39.0
+      ],
+      [
+       -5.662939224605091,
+       39.1111404660392
+      ],
+      [
+       -5.58670668058247,
+       39.21752285801744
+      ],
+      [
+       -5.503679614957955,
+       39.318691630200135
+      ],
+      [
+       -5.414213562373095,
+       39.41421356237309
+      ]
+     ],
+     "floor": 28,
+     "base_height": 3,
+     "id": "tower-wr-crown-3",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -8.4,
+       38.0
+      ],
+      [
+       -8.390579262249855,
+       37.71222623138737
+      ],
+      [
+       -8.362357390044767,
+       37.425684754231774
+      ],
+      [
+       -8.315455233774214,
+       37.141602583129036
+      ],
+      [
+       -8.250073635671901,
+       36.86119620154891
+      ],
+      [
+       -8.166492569778466,
+       36.58566635266609
+      ],
+      [
+       -8.065069943049663,
+       36.3161928975936
+      ],
+      [
+       -5.847759065022574,
+       37.23463313526982
+      ],
+      [
+       -5.893860258990212,
+       37.35712106939368
+      ],
+      [
+       -5.931851652578136,
+       37.48236190979496
+      ],
+      [
+       -5.961570560806461,
+       37.609819355967744
+      ],
+      [
+       -5.982889722747621,
+       37.738947615559894
+      ],
+      [
+       -5.995717846477207,
+       37.86919374153972
+      ],
+      [
+       -6.0,
+       38.0
+      ]
+     ],
+     "floor": 28,
+     "base_height": 3,
+     "id": "tower-wr-crown-4",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -7.11126983722081,
+       34.88873016277919
+      ],
+      [
+       -6.901121586440304,
+       34.6919048470925
+      ],
+      [
+       -6.678550287638372,
+       34.50924530271857
+      ],
+      [
+       -6.44450902528625,
+       34.3415337058688
+      ],
+      [
+       -6.200000000000002,
+       34.18948822334847
+      ],
+      [
+       -5.946070236963609,
+       34.053759937256174
+      ],
+      [
+       -5.683807102406398,
+       33.934930056950336
+      ],
+      [
+       -4.765366864730181,
+       36.15224093497743
+      ],
+      [
+       -4.884577380438004,
+       36.20625451693462
+      ],
+      [
+       -5.000000000000001,
+       36.267949192431125
+      ],
+      [
+       -5.111140466039204,
+       36.33706077539491
+      ],
+      [
+       -5.217522858017442,
+       36.413293319417534
+      ],
+      [
+       -5.318691630200139,
+       36.49632038504205
+      ],
+      [
+       -5.414213562373096,
+       36.58578643762691
+      ]
+     ],
+     "floor": 28,
+     "base_height": 3,
+     "id": "tower-wr-crown-5",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -4.000000000000001,
+       33.6
+      ],
+      [
+       -3.7122262313873695,
+       33.60942073775014
+      ],
+      [
+       -3.4256847542317743,
+       33.637642609955236
+      ],
+      [
+       -3.1416025831290355,
+       33.684544766225784
+      ],
+      [
+       -2.861196201548907,
+       33.7499263643281
+      ],
+      [
+       -2.5856663526660895,
+       33.83350743022154
+      ],
+      [
+       -2.316192897593604,
+       33.934930056950336
+      ],
+      [
+       -3.23463313526982,
+       36.15224093497743
+      ],
+      [
+       -3.357121069393677,
+       36.10613974100979
+      ],
+      [
+       -3.4823619097949576,
+       36.06814834742186
+      ],
+      [
+       -3.609819355967743,
+       36.038429439193536
+      ],
+      [
+       -3.7389476155598973,
+       36.01711027725238
+      ],
+      [
+       -3.8691937415397133,
+       36.004282153522794
+      ],
+      [
+       -4.0,
+       36.0
+      ]
+     ],
+     "floor": 28,
+     "base_height": 3,
+     "id": "tower-wr-crown-6",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -0.8887301627791913,
+       34.88873016277919
+      ],
+      [
+       -0.6919048470925011,
+       35.098878413559696
+      ],
+      [
+       -0.5092453027185662,
+       35.32144971236163
+      ],
+      [
+       -0.34153370586880083,
+       35.55549097471375
+      ],
+      [
+       -0.1894882233484707,
+       35.8
+      ],
+      [
+       -0.05375993725617345,
+       36.05392976303639
+      ],
+      [
+       0.06506994304966085,
+       36.3161928975936
+      ],
+      [
+       -2.152240934977427,
+       37.23463313526982
+      ],
+      [
+       -2.2062545169346244,
+       37.115422619562
+      ],
+      [
+       -2.2679491924311233,
+       37.0
+      ],
+      [
+       -2.3370607753949093,
+       36.8888595339608
+      ],
+      [
+       -2.41329331941753,
+       36.78247714198256
+      ],
+      [
+       -2.496320385042046,
+       36.68130836979986
+      ],
+      [
+       -2.585786437626905,
+       36.58578643762691
+      ]
+     ],
+     "floor": 28,
+     "base_height": 3,
+     "id": "tower-wr-crown-7",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "tower-wr-crown-body",
+     "name": "West gate tower, east side crown",
+     "mirrors": false,
+     "shapeIds": [
+      "tower-wr-crown-0",
+      "tower-wr-crown-1",
+      "tower-wr-crown-2",
+      "tower-wr-crown-3",
+      "tower-wr-crown-4",
+      "tower-wr-crown-5",
+      "tower-wr-crown-6",
+      "tower-wr-crown-7"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "revetment"
+  },
+  {
+   "id": "turret-east",
+   "name": "East turret",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       34.0,
+       38.0
+      ],
+      [
+       33.980738906688785,
+       38.39206856131824
+      ],
+      [
+       33.92314112161292,
+       38.78036128806451
+      ],
+      [
+       33.82776134292884,
+       39.16113870901785
+      ],
+      [
+       33.695518130045144,
+       39.53073372946036
+      ],
+      [
+       33.52768505739342,
+       39.88558694730399
+      ],
+      [
+       33.32587844921018,
+       40.222280932078405
+      ],
+      [
+       33.09204181345095,
+       40.53757313665458
+      ],
+      [
+       32.82842712474619,
+       40.82842712474619
+      ],
+      [
+       32.53757313665458,
+       41.09204181345095
+      ],
+      [
+       32.22228093207841,
+       41.32587844921018
+      ],
+      [
+       31.88558694730399,
+       41.52768505739342
+      ],
+      [
+       31.53073372946036,
+       41.695518130045144
+      ],
+      [
+       31.161138709017848,
+       41.82776134292884
+      ],
+      [
+       30.780361288064512,
+       41.92314112161292
+      ],
+      [
+       30.392068561318244,
+       41.980738906688785
+      ],
+      [
+       30.0,
+       42.0
+      ],
+      [
+       29.607931438681756,
+       41.980738906688785
+      ],
+      [
+       29.219638711935488,
+       41.92314112161292
+      ],
+      [
+       28.838861290982152,
+       41.82776134292884
+      ],
+      [
+       28.46926627053964,
+       41.695518130045144
+      ],
+      [
+       28.11441305269601,
+       41.52768505739342
+      ],
+      [
+       27.77771906792159,
+       41.32587844921018
+      ],
+      [
+       27.462426863345417,
+       41.09204181345095
+      ],
+      [
+       27.17157287525381,
+       40.82842712474619
+      ],
+      [
+       26.907958186549052,
+       40.53757313665458
+      ],
+      [
+       26.67412155078982,
+       40.222280932078405
+      ],
+      [
+       26.47231494260658,
+       39.88558694730399
+      ],
+      [
+       26.304481869954852,
+       39.53073372946036
+      ],
+      [
+       26.172238657071166,
+       39.16113870901785
+      ],
+      [
+       26.07685887838708,
+       38.78036128806451
+      ],
+      [
+       26.01926109331121,
+       38.39206856131824
+      ],
+      [
+       26.0,
+       38.0
+      ],
+      [
+       26.01926109331121,
+       37.60793143868176
+      ],
+      [
+       26.07685887838708,
+       37.21963871193549
+      ],
+      [
+       26.172238657071166,
+       36.83886129098215
+      ],
+      [
+       26.304481869954852,
+       36.46926627053964
+      ],
+      [
+       26.47231494260658,
+       36.11441305269601
+      ],
+      [
+       26.674121550789817,
+       35.777719067921595
+      ],
+      [
+       26.907958186549052,
+       35.46242686334542
+      ],
+      [
+       27.17157287525381,
+       35.17157287525381
+      ],
+      [
+       27.462426863345417,
+       34.90795818654905
+      ],
+      [
+       27.77771906792159,
+       34.67412155078982
+      ],
+      [
+       28.11441305269601,
+       34.47231494260658
+      ],
+      [
+       28.469266270539638,
+       34.304481869954856
+      ],
+      [
+       28.838861290982152,
+       34.17223865707116
+      ],
+      [
+       29.219638711935485,
+       34.07685887838708
+      ],
+      [
+       29.607931438681756,
+       34.019261093311215
+      ],
+      [
+       30.0,
+       34.0
+      ],
+      [
+       30.39206856131824,
+       34.019261093311215
+      ],
+      [
+       30.780361288064512,
+       34.07685887838708
+      ],
+      [
+       31.161138709017848,
+       34.17223865707116
+      ],
+      [
+       31.53073372946036,
+       34.304481869954856
+      ],
+      [
+       31.88558694730399,
+       34.47231494260658
+      ],
+      [
+       32.222280932078405,
+       34.67412155078982
+      ],
+      [
+       32.53757313665458,
+       34.90795818654905
+      ],
+      [
+       32.82842712474619,
+       35.17157287525381
+      ],
+      [
+       33.09204181345095,
+       35.462426863345414
+      ],
+      [
+       33.32587844921018,
+       35.777719067921595
+      ],
+      [
+       33.52768505739342,
+       36.11441305269601
+      ],
+      [
+       33.695518130045144,
+       36.46926627053964
+      ],
+      [
+       33.82776134292884,
+       36.83886129098215
+      ],
+      [
+       33.92314112161292,
+       37.21963871193549
+      ],
+      [
+       33.980738906688785,
+       37.60793143868176
+      ],
+      [
+       34.0,
+       38.0
+      ],
+      [
+       31.990369453344393,
+       37.80396571934088
+      ],
+      [
+       31.96157056080646,
+       37.609819355967744
+      ],
+      [
+       31.91388067146442,
+       37.419430645491076
+      ],
+      [
+       31.847759065022572,
+       37.23463313526982
+      ],
+      [
+       31.76384252869671,
+       37.057206526348004
+      ],
+      [
+       31.66293922460509,
+       36.8888595339608
+      ],
+      [
+       31.546020906725474,
+       36.73121343167271
+      ],
+      [
+       31.414213562373096,
+       36.58578643762691
+      ],
+      [
+       31.26878656832729,
+       36.453979093274526
+      ],
+      [
+       31.111140466039203,
+       36.33706077539491
+      ],
+      [
+       30.942793473651996,
+       36.23615747130329
+      ],
+      [
+       30.76536686473018,
+       36.15224093497743
+      ],
+      [
+       30.580569354508924,
+       36.08611932853558
+      ],
+      [
+       30.390180644032256,
+       36.038429439193536
+      ],
+      [
+       30.19603428065912,
+       36.00963054665561
+      ],
+      [
+       30.0,
+       36.0
+      ],
+      [
+       29.80396571934088,
+       36.00963054665561
+      ],
+      [
+       29.609819355967744,
+       36.03842943919354
+      ],
+      [
+       29.419430645491076,
+       36.08611932853558
+      ],
+      [
+       29.23463313526982,
+       36.15224093497743
+      ],
+      [
+       29.057206526348004,
+       36.23615747130329
+      ],
+      [
+       28.888859533960797,
+       36.33706077539491
+      ],
+      [
+       28.731213431672707,
+       36.453979093274526
+      ],
+      [
+       28.585786437626904,
+       36.58578643762691
+      ],
+      [
+       28.453979093274526,
+       36.73121343167271
+      ],
+      [
+       28.33706077539491,
+       36.8888595339608
+      ],
+      [
+       28.23615747130329,
+       37.057206526348004
+      ],
+      [
+       28.152240934977428,
+       37.23463313526982
+      ],
+      [
+       28.08611932853558,
+       37.419430645491076
+      ],
+      [
+       28.03842943919354,
+       37.609819355967744
+      ],
+      [
+       28.009630546655607,
+       37.80396571934088
+      ],
+      [
+       28.0,
+       38.0
+      ],
+      [
+       28.009630546655607,
+       38.19603428065912
+      ],
+      [
+       28.03842943919354,
+       38.390180644032256
+      ],
+      [
+       28.08611932853558,
+       38.580569354508924
+      ],
+      [
+       28.152240934977428,
+       38.76536686473018
+      ],
+      [
+       28.23615747130329,
+       38.942793473651996
+      ],
+      [
+       28.33706077539491,
+       39.1111404660392
+      ],
+      [
+       28.453979093274526,
+       39.26878656832729
+      ],
+      [
+       28.585786437626904,
+       39.41421356237309
+      ],
+      [
+       28.73121343167271,
+       39.546020906725474
+      ],
+      [
+       28.888859533960797,
+       39.66293922460509
+      ],
+      [
+       29.057206526348004,
+       39.76384252869671
+      ],
+      [
+       29.23463313526982,
+       39.84775906502257
+      ],
+      [
+       29.419430645491076,
+       39.91388067146442
+      ],
+      [
+       29.609819355967744,
+       39.961570560806464
+      ],
+      [
+       29.80396571934088,
+       39.99036945334439
+      ],
+      [
+       30.0,
+       40.0
+      ],
+      [
+       30.19603428065912,
+       39.99036945334439
+      ],
+      [
+       30.390180644032256,
+       39.961570560806464
+      ],
+      [
+       30.580569354508924,
+       39.91388067146442
+      ],
+      [
+       30.76536686473018,
+       39.84775906502257
+      ],
+      [
+       30.942793473651996,
+       39.76384252869671
+      ],
+      [
+       31.111140466039206,
+       39.66293922460509
+      ],
+      [
+       31.26878656832729,
+       39.546020906725474
+      ],
+      [
+       31.414213562373096,
+       39.41421356237309
+      ],
+      [
+       31.546020906725474,
+       39.26878656832729
+      ],
+      [
+       31.66293922460509,
+       39.1111404660392
+      ],
+      [
+       31.76384252869671,
+       38.942793473651996
+      ],
+      [
+       31.847759065022572,
+       38.76536686473018
+      ],
+      [
+       31.91388067146442,
+       38.580569354508924
+      ],
+      [
+       31.96157056080646,
+       38.390180644032256
+      ],
+      [
+       31.990369453344393,
+       38.19603428065912
+      ],
+      [
+       32.0,
+       38.0
+      ],
+      [
+       31.990369453344393,
+       37.80396571934088
+      ]
+     ],
+     "floor": 17,
+     "base_height": 5,
+     "id": "turret-east-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       33.333333333333336,
+       38.0
+      ],
+      [
+       33.31728242224066,
+       38.32672380109854
+      ],
+      [
+       33.269284268010765,
+       38.65030107338709
+      ],
+      [
+       33.189801119107365,
+       38.967615590848204
+      ],
+      [
+       33.07959844170429,
+       39.27561144121697
+      ],
+      [
+       32.93973754782785,
+       39.57132245608666
+      ],
+      [
+       32.77156537434182,
+       39.85190077673201
+      ],
+      [
+       32.57670151120912,
+       40.114644280545484
+      ],
+      [
+       32.35702260395516,
+       40.35702260395516
+      ],
+      [
+       32.114644280545484,
+       40.57670151120912
+      ],
+      [
+       31.85190077673201,
+       40.77156537434182
+      ],
+      [
+       31.57132245608666,
+       40.939737547827846
+      ],
+      [
+       31.275611441216967,
+       41.07959844170429
+      ],
+      [
+       30.967615590848208,
+       41.189801119107365
+      ],
+      [
+       30.650301073387094,
+       41.269284268010765
+      ],
+      [
+       30.326723801098534,
+       41.31728242224066
+      ],
+      [
+       30.0,
+       41.333333333333336
+      ],
+      [
+       29.673276198901466,
+       41.31728242224066
+      ],
+      [
+       29.349698926612906,
+       41.269284268010765
+      ],
+      [
+       29.032384409151792,
+       41.189801119107365
+      ],
+      [
+       28.724388558783033,
+       41.07959844170429
+      ],
+      [
+       28.42867754391334,
+       40.93973754782785
+      ],
+      [
+       28.148099223267995,
+       40.77156537434182
+      ],
+      [
+       27.885355719454516,
+       40.57670151120912
+      ],
+      [
+       27.64297739604484,
+       40.35702260395516
+      ],
+      [
+       27.423298488790877,
+       40.114644280545484
+      ],
+      [
+       27.22843462565818,
+       39.85190077673201
+      ],
+      [
+       27.06026245217215,
+       39.57132245608666
+      ],
+      [
+       26.920401558295712,
+       39.27561144121697
+      ],
+      [
+       26.81019888089264,
+       38.96761559084821
+      ],
+      [
+       26.730715731989232,
+       38.6503010733871
+      ],
+      [
+       26.682717577759345,
+       38.32672380109854
+      ],
+      [
+       26.666666666666668,
+       38.0
+      ],
+      [
+       26.682717577759345,
+       37.67327619890146
+      ],
+      [
+       26.730715731989232,
+       37.3496989266129
+      ],
+      [
+       26.810198880892635,
+       37.032384409151796
+      ],
+      [
+       26.920401558295712,
+       36.72438855878303
+      ],
+      [
+       27.06026245217215,
+       36.42867754391334
+      ],
+      [
+       27.22843462565818,
+       36.14809922326799
+      ],
+      [
+       27.423298488790877,
+       35.885355719454516
+      ],
+      [
+       27.64297739604484,
+       35.64297739604484
+      ],
+      [
+       27.885355719454513,
+       35.42329848879088
+      ],
+      [
+       28.14809922326799,
+       35.22843462565818
+      ],
+      [
+       28.42867754391334,
+       35.060262452172154
+      ],
+      [
+       28.724388558783033,
+       34.92040155829571
+      ],
+      [
+       29.032384409151792,
+       34.810198880892635
+      ],
+      [
+       29.349698926612906,
+       34.730715731989235
+      ],
+      [
+       29.673276198901466,
+       34.68271757775934
+      ],
+      [
+       30.0,
+       34.666666666666664
+      ],
+      [
+       30.326723801098534,
+       34.68271757775934
+      ],
+      [
+       30.650301073387094,
+       34.730715731989235
+      ],
+      [
+       30.967615590848208,
+       34.810198880892635
+      ],
+      [
+       31.275611441216967,
+       34.92040155829571
+      ],
+      [
+       31.57132245608666,
+       35.06026245217215
+      ],
+      [
+       31.851900776732005,
+       35.22843462565818
+      ],
+      [
+       32.114644280545484,
+       35.42329848879088
+      ],
+      [
+       32.35702260395516,
+       35.64297739604484
+      ],
+      [
+       32.57670151120912,
+       35.885355719454516
+      ],
+      [
+       32.77156537434182,
+       36.14809922326799
+      ],
+      [
+       32.939737547827846,
+       36.42867754391334
+      ],
+      [
+       33.07959844170429,
+       36.72438855878303
+      ],
+      [
+       33.189801119107365,
+       37.03238440915179
+      ],
+      [
+       33.269284268010765,
+       37.3496989266129
+      ],
+      [
+       33.31728242224066,
+       37.67327619890146
+      ],
+      [
+       33.333333333333336,
+       38.0
+      ],
+      [
+       31.326912968896263,
+       37.86931047956059
+      ],
+      [
+       31.307713707204307,
+       37.739879570645165
+      ],
+      [
+       31.275920447642946,
+       37.61295376366072
+      ],
+      [
+       31.231839376681716,
+       37.489755423513216
+      ],
+      [
+       31.17589501913114,
+       37.371471017565334
+      ],
+      [
+       31.10862614973673,
+       37.25923968930719
+      ],
+      [
+       31.03068060448365,
+       37.1541422877818
+      ],
+      [
+       30.942809041582063,
+       37.057190958417934
+      ],
+      [
+       30.845857712218194,
+       36.96931939551635
+      ],
+      [
+       30.740760310692803,
+       36.89137385026327
+      ],
+      [
+       30.628528982434663,
+       36.82410498086886
+      ],
+      [
+       30.510244576486787,
+       36.76816062331829
+      ],
+      [
+       30.387046236339284,
+       36.724079552357054
+      ],
+      [
+       30.26012042935484,
+       36.69228629279569
+      ],
+      [
+       30.130689520439415,
+       36.67308703110374
+      ],
+      [
+       30.0,
+       36.666666666666664
+      ],
+      [
+       29.869310479560585,
+       36.67308703110374
+      ],
+      [
+       29.73987957064516,
+       36.69228629279569
+      ],
+      [
+       29.612953763660716,
+       36.724079552357054
+      ],
+      [
+       29.489755423513213,
+       36.76816062331829
+      ],
+      [
+       29.371471017565337,
+       36.82410498086886
+      ],
+      [
+       29.259239689307197,
+       36.89137385026327
+      ],
+      [
+       29.154142287781806,
+       36.96931939551635
+      ],
+      [
+       29.057190958417937,
+       37.057190958417934
+      ],
+      [
+       28.96931939551635,
+       37.15414228778181
+      ],
+      [
+       28.89137385026327,
+       37.2592396893072
+      ],
+      [
+       28.82410498086886,
+       37.371471017565334
+      ],
+      [
+       28.768160623318284,
+       37.489755423513216
+      ],
+      [
+       28.724079552357054,
+       37.61295376366072
+      ],
+      [
+       28.692286292795693,
+       37.739879570645165
+      ],
+      [
+       28.673087031103737,
+       37.86931047956059
+      ],
+      [
+       28.666666666666668,
+       38.0
+      ],
+      [
+       28.673087031103737,
+       38.13068952043941
+      ],
+      [
+       28.692286292795693,
+       38.260120429354835
+      ],
+      [
+       28.724079552357054,
+       38.38704623633928
+      ],
+      [
+       28.768160623318284,
+       38.510244576486784
+      ],
+      [
+       28.82410498086886,
+       38.628528982434666
+      ],
+      [
+       28.89137385026327,
+       38.74076031069281
+      ],
+      [
+       28.96931939551635,
+       38.84585771221819
+      ],
+      [
+       29.057190958417937,
+       38.942809041582066
+      ],
+      [
+       29.154142287781806,
+       39.03068060448365
+      ],
+      [
+       29.259239689307197,
+       39.10862614973673
+      ],
+      [
+       29.371471017565337,
+       39.17589501913114
+      ],
+      [
+       29.489755423513213,
+       39.23183937668171
+      ],
+      [
+       29.612953763660716,
+       39.275920447642946
+      ],
+      [
+       29.73987957064516,
+       39.30771370720431
+      ],
+      [
+       29.869310479560585,
+       39.32691296889626
+      ],
+      [
+       30.0,
+       39.333333333333336
+      ],
+      [
+       30.130689520439415,
+       39.32691296889626
+      ],
+      [
+       30.26012042935484,
+       39.30771370720431
+      ],
+      [
+       30.387046236339284,
+       39.275920447642946
+      ],
+      [
+       30.510244576486787,
+       39.23183937668171
+      ],
+      [
+       30.628528982434663,
+       39.17589501913114
+      ],
+      [
+       30.740760310692803,
+       39.10862614973673
+      ],
+      [
+       30.845857712218194,
+       39.03068060448365
+      ],
+      [
+       30.942809041582063,
+       38.942809041582066
+      ],
+      [
+       31.03068060448365,
+       38.84585771221819
+      ],
+      [
+       31.10862614973673,
+       38.74076031069281
+      ],
+      [
+       31.17589501913114,
+       38.628528982434666
+      ],
+      [
+       31.231839376681716,
+       38.510244576486784
+      ],
+      [
+       31.275920447642946,
+       38.38704623633928
+      ],
+      [
+       31.307713707204307,
+       38.260120429354835
+      ],
+      [
+       31.326912968896263,
+       38.13068952043941
+      ],
+      [
+       31.333333333333332,
+       38.0
+      ],
+      [
+       31.326912968896263,
+       37.86931047956059
+      ]
+     ],
+     "floor": 17,
+     "base_height": 10,
+     "id": "turret-east-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       32.666666666666664,
+       38.0
+      ],
+      [
+       32.653825937792526,
+       38.26137904087883
+      ],
+      [
+       32.615427414408614,
+       38.52024085870968
+      ],
+      [
+       32.55184089528589,
+       38.77409247267857
+      ],
+      [
+       32.46367875336343,
+       39.020489152973575
+      ],
+      [
+       32.35179003826228,
+       39.257057964869325
+      ],
+      [
+       32.21725229947346,
+       39.481520621385606
+      ],
+      [
+       32.0613612089673,
+       39.69171542443639
+      ],
+      [
+       31.885618083164125,
+       39.885618083164125
+      ],
+      [
+       31.69171542443639,
+       40.0613612089673
+      ],
+      [
+       31.481520621385606,
+       40.21725229947346
+      ],
+      [
+       31.25705796486933,
+       40.35179003826228
+      ],
+      [
+       31.020489152973575,
+       40.46367875336343
+      ],
+      [
+       30.774092472678568,
+       40.55184089528589
+      ],
+      [
+       30.520240858709677,
+       40.615427414408614
+      ],
+      [
+       30.26137904087883,
+       40.653825937792526
+      ],
+      [
+       30.0,
+       40.666666666666664
+      ],
+      [
+       29.73862095912117,
+       40.653825937792526
+      ],
+      [
+       29.479759141290323,
+       40.615427414408614
+      ],
+      [
+       29.225907527321436,
+       40.55184089528589
+      ],
+      [
+       28.97951084702643,
+       40.46367875336343
+      ],
+      [
+       28.74294203513067,
+       40.35179003826228
+      ],
+      [
+       28.518479378614394,
+       40.21725229947346
+      ],
+      [
+       28.30828457556361,
+       40.0613612089673
+      ],
+      [
+       28.114381916835875,
+       39.885618083164125
+      ],
+      [
+       27.9386387910327,
+       39.69171542443639
+      ],
+      [
+       27.782747700526546,
+       39.481520621385606
+      ],
+      [
+       27.64820996173772,
+       39.257057964869325
+      ],
+      [
+       27.536321246636568,
+       39.020489152973575
+      ],
+      [
+       27.448159104714108,
+       38.77409247267857
+      ],
+      [
+       27.384572585591386,
+       38.52024085870968
+      ],
+      [
+       27.346174062207474,
+       38.26137904087883
+      ],
+      [
+       27.333333333333332,
+       38.0
+      ],
+      [
+       27.346174062207474,
+       37.73862095912117
+      ],
+      [
+       27.384572585591386,
+       37.47975914129032
+      ],
+      [
+       27.448159104714108,
+       37.22590752732143
+      ],
+      [
+       27.536321246636568,
+       36.979510847026425
+      ],
+      [
+       27.64820996173772,
+       36.742942035130675
+      ],
+      [
+       27.782747700526546,
+       36.518479378614394
+      ],
+      [
+       27.9386387910327,
+       36.30828457556361
+      ],
+      [
+       28.11438191683587,
+       36.114381916835875
+      ],
+      [
+       28.30828457556361,
+       35.9386387910327
+      ],
+      [
+       28.518479378614394,
+       35.78274770052654
+      ],
+      [
+       28.74294203513067,
+       35.64820996173772
+      ],
+      [
+       28.979510847026425,
+       35.53632124663657
+      ],
+      [
+       29.225907527321432,
+       35.44815910471411
+      ],
+      [
+       29.479759141290323,
+       35.384572585591386
+      ],
+      [
+       29.73862095912117,
+       35.346174062207474
+      ],
+      [
+       30.0,
+       35.333333333333336
+      ],
+      [
+       30.261379040878825,
+       35.346174062207474
+      ],
+      [
+       30.520240858709677,
+       35.384572585591386
+      ],
+      [
+       30.774092472678564,
+       35.44815910471411
+      ],
+      [
+       31.020489152973575,
+       35.53632124663657
+      ],
+      [
+       31.257057964869325,
+       35.64820996173772
+      ],
+      [
+       31.481520621385606,
+       35.78274770052654
+      ],
+      [
+       31.69171542443639,
+       35.9386387910327
+      ],
+      [
+       31.885618083164125,
+       36.114381916835875
+      ],
+      [
+       32.0613612089673,
+       36.30828457556361
+      ],
+      [
+       32.21725229947346,
+       36.518479378614394
+      ],
+      [
+       32.35179003826228,
+       36.742942035130675
+      ],
+      [
+       32.46367875336343,
+       36.979510847026425
+      ],
+      [
+       32.55184089528589,
+       37.22590752732143
+      ],
+      [
+       32.615427414408614,
+       37.47975914129032
+      ],
+      [
+       32.653825937792526,
+       37.73862095912117
+      ],
+      [
+       32.666666666666664,
+       38.0
+      ],
+      [
+       30.663456484448133,
+       37.93465523978029
+      ],
+      [
+       30.653856853602154,
+       37.86993978532258
+      ],
+      [
+       30.637960223821473,
+       37.806476881830356
+      ],
+      [
+       30.61591968834086,
+       37.74487771175661
+      ],
+      [
+       30.58794750956557,
+       37.68573550878267
+      ],
+      [
+       30.554313074868364,
+       37.6296198446536
+      ],
+      [
+       30.515340302241825,
+       37.577071143890905
+      ],
+      [
+       30.471404520791033,
+       37.52859547920897
+      ],
+      [
+       30.4229288561091,
+       37.484659697758175
+      ],
+      [
+       30.3703801553464,
+       37.44568692513164
+      ],
+      [
+       30.314264491217333,
+       37.41205249043443
+      ],
+      [
+       30.255122288243392,
+       37.38408031165914
+      ],
+      [
+       30.19352311816964,
+       37.36203977617853
+      ],
+      [
+       30.130060214677417,
+       37.34614314639784
+      ],
+      [
+       30.065344760219705,
+       37.33654351555187
+      ],
+      [
+       30.0,
+       37.333333333333336
+      ],
+      [
+       29.934655239780295,
+       37.33654351555187
+      ],
+      [
+       29.869939785322583,
+       37.34614314639784
+      ],
+      [
+       29.80647688183036,
+       37.36203977617853
+      ],
+      [
+       29.744877711756608,
+       37.38408031165914
+      ],
+      [
+       29.685735508782667,
+       37.41205249043443
+      ],
+      [
+       29.629619844653597,
+       37.44568692513164
+      ],
+      [
+       29.5770711438909,
+       37.484659697758175
+      ],
+      [
+       29.528595479208967,
+       37.52859547920897
+      ],
+      [
+       29.484659697758175,
+       37.577071143890905
+      ],
+      [
+       29.445686925131636,
+       37.6296198446536
+      ],
+      [
+       29.41205249043443,
+       37.68573550878267
+      ],
+      [
+       29.38408031165914,
+       37.74487771175661
+      ],
+      [
+       29.362039776178527,
+       37.806476881830356
+      ],
+      [
+       29.346143146397846,
+       37.86993978532258
+      ],
+      [
+       29.336543515551867,
+       37.93465523978029
+      ],
+      [
+       29.333333333333332,
+       38.0
+      ],
+      [
+       29.336543515551867,
+       38.06534476021971
+      ],
+      [
+       29.346143146397846,
+       38.13006021467742
+      ],
+      [
+       29.362039776178527,
+       38.193523118169644
+      ],
+      [
+       29.38408031165914,
+       38.25512228824339
+      ],
+      [
+       29.41205249043443,
+       38.31426449121733
+      ],
+      [
+       29.445686925131636,
+       38.3703801553464
+      ],
+      [
+       29.484659697758175,
+       38.422928856109095
+      ],
+      [
+       29.528595479208967,
+       38.47140452079103
+      ],
+      [
+       29.577071143890905,
+       38.515340302241825
+      ],
+      [
+       29.629619844653597,
+       38.55431307486836
+      ],
+      [
+       29.685735508782667,
+       38.58794750956557
+      ],
+      [
+       29.744877711756608,
+       38.61591968834086
+      ],
+      [
+       29.80647688183036,
+       38.63796022382147
+      ],
+      [
+       29.869939785322583,
+       38.65385685360216
+      ],
+      [
+       29.934655239780295,
+       38.66345648444813
+      ],
+      [
+       30.0,
+       38.666666666666664
+      ],
+      [
+       30.065344760219705,
+       38.66345648444813
+      ],
+      [
+       30.130060214677417,
+       38.65385685360216
+      ],
+      [
+       30.19352311816964,
+       38.63796022382147
+      ],
+      [
+       30.255122288243392,
+       38.61591968834086
+      ],
+      [
+       30.314264491217333,
+       38.58794750956557
+      ],
+      [
+       30.370380155346403,
+       38.55431307486836
+      ],
+      [
+       30.4229288561091,
+       38.515340302241825
+      ],
+      [
+       30.471404520791033,
+       38.47140452079103
+      ],
+      [
+       30.515340302241825,
+       38.422928856109095
+      ],
+      [
+       30.554313074868364,
+       38.3703801553464
+      ],
+      [
+       30.58794750956557,
+       38.31426449121733
+      ],
+      [
+       30.61591968834086,
+       38.25512228824339
+      ],
+      [
+       30.637960223821473,
+       38.193523118169644
+      ],
+      [
+       30.653856853602154,
+       38.13006021467742
+      ],
+      [
+       30.663456484448133,
+       38.06534476021971
+      ],
+      [
+       30.666666666666668,
+       38.0
+      ],
+      [
+       30.663456484448133,
+       37.93465523978029
+      ]
+     ],
+     "floor": 17,
+     "base_height": 15,
+     "id": "turret-east-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "turret-east-body",
+     "name": "East turret",
+     "mirrors": false,
+     "shapeIds": [
+      "turret-east-0",
+      "turret-east-1",
+      "turret-east-2"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "revetment"
+  },
+  {
+   "id": "tower-ward-w",
+   "name": "West ward tower",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -27.0,
+       58.0
+      ],
+      [
+       -27.01926109331121,
+       58.39206856131824
+      ],
+      [
+       -27.07685887838708,
+       58.78036128806451
+      ],
+      [
+       -27.172238657071166,
+       59.16113870901785
+      ],
+      [
+       -27.304481869954852,
+       59.53073372946036
+      ],
+      [
+       -27.47231494260658,
+       59.88558694730399
+      ],
+      [
+       -27.67412155078982,
+       60.222280932078405
+      ],
+      [
+       -27.907958186549052,
+       60.53757313665458
+      ],
+      [
+       -28.17157287525381,
+       60.82842712474619
+      ],
+      [
+       -28.462426863345417,
+       61.09204181345095
+      ],
+      [
+       -28.77771906792159,
+       61.32587844921018
+      ],
+      [
+       -29.11441305269601,
+       61.52768505739342
+      ],
+      [
+       -29.46926627053964,
+       61.695518130045144
+      ],
+      [
+       -29.838861290982152,
+       61.82776134292884
+      ],
+      [
+       -30.219638711935488,
+       61.92314112161292
+      ],
+      [
+       -30.607931438681756,
+       61.980738906688785
+      ],
+      [
+       -31.0,
+       62.0
+      ],
+      [
+       -31.392068561318244,
+       61.980738906688785
+      ],
+      [
+       -31.780361288064512,
+       61.92314112161292
+      ],
+      [
+       -32.16113870901785,
+       61.82776134292884
+      ],
+      [
+       -32.53073372946036,
+       61.695518130045144
+      ],
+      [
+       -32.88558694730399,
+       61.52768505739342
+      ],
+      [
+       -33.222280932078405,
+       61.32587844921018
+      ],
+      [
+       -33.53757313665458,
+       61.09204181345095
+      ],
+      [
+       -33.82842712474619,
+       60.82842712474619
+      ],
+      [
+       -34.09204181345095,
+       60.53757313665458
+      ],
+      [
+       -34.32587844921018,
+       60.222280932078405
+      ],
+      [
+       -34.52768505739342,
+       59.88558694730399
+      ],
+      [
+       -34.695518130045144,
+       59.53073372946036
+      ],
+      [
+       -34.82776134292884,
+       59.16113870901785
+      ],
+      [
+       -34.92314112161292,
+       58.78036128806451
+      ],
+      [
+       -34.980738906688785,
+       58.39206856131824
+      ],
+      [
+       -35.0,
+       58.0
+      ],
+      [
+       -34.980738906688785,
+       57.60793143868176
+      ],
+      [
+       -34.92314112161292,
+       57.21963871193549
+      ],
+      [
+       -34.82776134292884,
+       56.83886129098215
+      ],
+      [
+       -34.695518130045144,
+       56.46926627053964
+      ],
+      [
+       -34.52768505739342,
+       56.11441305269601
+      ],
+      [
+       -34.32587844921018,
+       55.777719067921595
+      ],
+      [
+       -34.09204181345095,
+       55.46242686334542
+      ],
+      [
+       -33.82842712474619,
+       55.17157287525381
+      ],
+      [
+       -33.537573136654586,
+       54.90795818654905
+      ],
+      [
+       -33.222280932078405,
+       54.67412155078982
+      ],
+      [
+       -32.88558694730399,
+       54.47231494260658
+      ],
+      [
+       -32.53073372946036,
+       54.304481869954856
+      ],
+      [
+       -32.16113870901785,
+       54.17223865707116
+      ],
+      [
+       -31.780361288064515,
+       54.07685887838708
+      ],
+      [
+       -31.392068561318244,
+       54.019261093311215
+      ],
+      [
+       -31.0,
+       54.0
+      ],
+      [
+       -30.60793143868176,
+       54.019261093311215
+      ],
+      [
+       -30.219638711935488,
+       54.07685887838708
+      ],
+      [
+       -29.838861290982152,
+       54.17223865707116
+      ],
+      [
+       -29.46926627053964,
+       54.304481869954856
+      ],
+      [
+       -29.11441305269601,
+       54.47231494260658
+      ],
+      [
+       -28.77771906792159,
+       54.67412155078982
+      ],
+      [
+       -28.462426863345417,
+       54.90795818654905
+      ],
+      [
+       -28.171572875253812,
+       55.17157287525381
+      ],
+      [
+       -27.907958186549052,
+       55.462426863345414
+      ],
+      [
+       -27.67412155078982,
+       55.777719067921595
+      ],
+      [
+       -27.47231494260658,
+       56.11441305269601
+      ],
+      [
+       -27.304481869954856,
+       56.46926627053964
+      ],
+      [
+       -27.172238657071166,
+       56.83886129098215
+      ],
+      [
+       -27.07685887838708,
+       57.21963871193549
+      ],
+      [
+       -27.01926109331121,
+       57.60793143868176
+      ],
+      [
+       -27.0,
+       58.0
+      ],
+      [
+       -29.009630546655607,
+       57.80396571934088
+      ],
+      [
+       -29.03842943919354,
+       57.609819355967744
+      ],
+      [
+       -29.08611932853558,
+       57.419430645491076
+      ],
+      [
+       -29.152240934977428,
+       57.23463313526982
+      ],
+      [
+       -29.23615747130329,
+       57.057206526348004
+      ],
+      [
+       -29.33706077539491,
+       56.8888595339608
+      ],
+      [
+       -29.453979093274526,
+       56.73121343167271
+      ],
+      [
+       -29.585786437626904,
+       56.58578643762691
+      ],
+      [
+       -29.73121343167271,
+       56.453979093274526
+      ],
+      [
+       -29.888859533960797,
+       56.33706077539491
+      ],
+      [
+       -30.057206526348004,
+       56.23615747130329
+      ],
+      [
+       -30.23463313526982,
+       56.15224093497743
+      ],
+      [
+       -30.419430645491076,
+       56.08611932853558
+      ],
+      [
+       -30.609819355967744,
+       56.038429439193536
+      ],
+      [
+       -30.80396571934088,
+       56.00963054665561
+      ],
+      [
+       -31.0,
+       56.0
+      ],
+      [
+       -31.19603428065912,
+       56.00963054665561
+      ],
+      [
+       -31.390180644032256,
+       56.03842943919354
+      ],
+      [
+       -31.580569354508924,
+       56.08611932853558
+      ],
+      [
+       -31.76536686473018,
+       56.15224093497743
+      ],
+      [
+       -31.942793473651996,
+       56.23615747130329
+      ],
+      [
+       -32.1111404660392,
+       56.33706077539491
+      ],
+      [
+       -32.26878656832729,
+       56.453979093274526
+      ],
+      [
+       -32.41421356237309,
+       56.58578643762691
+      ],
+      [
+       -32.546020906725474,
+       56.73121343167271
+      ],
+      [
+       -32.66293922460509,
+       56.8888595339608
+      ],
+      [
+       -32.76384252869671,
+       57.057206526348004
+      ],
+      [
+       -32.84775906502257,
+       57.23463313526982
+      ],
+      [
+       -32.91388067146442,
+       57.419430645491076
+      ],
+      [
+       -32.961570560806464,
+       57.609819355967744
+      ],
+      [
+       -32.99036945334439,
+       57.80396571934088
+      ],
+      [
+       -33.0,
+       58.0
+      ],
+      [
+       -32.99036945334439,
+       58.19603428065912
+      ],
+      [
+       -32.961570560806464,
+       58.390180644032256
+      ],
+      [
+       -32.91388067146442,
+       58.580569354508924
+      ],
+      [
+       -32.84775906502257,
+       58.76536686473018
+      ],
+      [
+       -32.76384252869671,
+       58.942793473651996
+      ],
+      [
+       -32.66293922460509,
+       59.1111404660392
+      ],
+      [
+       -32.546020906725474,
+       59.26878656832729
+      ],
+      [
+       -32.41421356237309,
+       59.41421356237309
+      ],
+      [
+       -32.26878656832729,
+       59.546020906725474
+      ],
+      [
+       -32.1111404660392,
+       59.66293922460509
+      ],
+      [
+       -31.942793473651996,
+       59.76384252869671
+      ],
+      [
+       -31.76536686473018,
+       59.84775906502257
+      ],
+      [
+       -31.580569354508924,
+       59.91388067146442
+      ],
+      [
+       -31.390180644032256,
+       59.961570560806464
+      ],
+      [
+       -31.19603428065912,
+       59.99036945334439
+      ],
+      [
+       -31.0,
+       60.0
+      ],
+      [
+       -30.80396571934088,
+       59.99036945334439
+      ],
+      [
+       -30.609819355967744,
+       59.961570560806464
+      ],
+      [
+       -30.419430645491076,
+       59.91388067146442
+      ],
+      [
+       -30.23463313526982,
+       59.84775906502257
+      ],
+      [
+       -30.057206526348004,
+       59.76384252869671
+      ],
+      [
+       -29.888859533960794,
+       59.66293922460509
+      ],
+      [
+       -29.73121343167271,
+       59.546020906725474
+      ],
+      [
+       -29.585786437626904,
+       59.41421356237309
+      ],
+      [
+       -29.453979093274526,
+       59.26878656832729
+      ],
+      [
+       -29.33706077539491,
+       59.1111404660392
+      ],
+      [
+       -29.23615747130329,
+       58.942793473651996
+      ],
+      [
+       -29.152240934977428,
+       58.76536686473018
+      ],
+      [
+       -29.08611932853558,
+       58.580569354508924
+      ],
+      [
+       -29.03842943919354,
+       58.390180644032256
+      ],
+      [
+       -29.009630546655607,
+       58.19603428065912
+      ],
+      [
+       -29.0,
+       58.0
+      ],
+      [
+       -29.009630546655607,
+       57.80396571934088
+      ]
+     ],
+     "floor": 17,
+     "base_height": 13,
+     "id": "tower-ward-w-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "tower-ward-w-body",
+     "name": "West ward tower",
+     "mirrors": false,
+     "shapeIds": [
+      "tower-ward-w-0"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "revetment"
+  },
+  {
+   "id": "tower-ward-w-crown",
+   "name": "West ward tower crown",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -26.6,
+       58.0
+      ],
+      [
+       -26.60744410360642,
+       58.255837247206095
+      ],
+      [
+       -26.62975122593545,
+       58.51080882215101
+      ],
+      [
+       -26.666845886746284,
+       58.7640519817345
+      ],
+      [
+       -26.718602569448777,
+       59.014709831266735
+      ],
+      [
+       -26.784846145811848,
+       59.2619342239288
+      ],
+      [
+       -26.865352468542003,
+       59.50488863063294
+      ],
+      [
+       -29.120614758428182,
+       58.68404028665134
+      ],
+      [
+       -29.08402097536902,
+       58.57360646542218
+      ],
+      [
+       -29.053910258840354,
+       58.46123174148488
+      ],
+      [
+       -29.030384493975586,
+       58.34729635533386
+      ],
+      [
+       -29.013523284516115,
+       58.23218582825046
+      ],
+      [
+       -29.003383683457464,
+       58.11628965782095
+      ],
+      [
+       -29.0,
+       58.0
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-w-crown-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -27.629404450276496,
+       60.82826548262077
+      ],
+      [
+       -27.799555977078587,
+       61.019463206622426
+      ],
+      [
+       -27.98053679337757,
+       61.20044402292142
+      ],
+      [
+       -28.171734517379225,
+       61.370595549723504
+      ],
+      [
+       -28.37250219650774,
+       61.529342048122196
+      ],
+      [
+       -28.582160496488452,
+       61.67614637021692
+      ],
+      [
+       -28.8,
+       61.81051177665153
+      ],
+      [
+       -30.0,
+       59.732050807568875
+      ],
+      [
+       -29.900982043858388,
+       59.67097562282587
+      ],
+      [
+       -29.805682816594427,
+       59.60424638551009
+      ],
+      [
+       -29.71442478062692,
+       59.53208888623796
+      ],
+      [
+       -29.627516724262534,
+       59.4547472831461
+      ],
+      [
+       -29.545252716853902,
+       59.372483275737466
+      ],
+      [
+       -29.467911113762042,
+       59.28557521937308
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-w-crown-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -30.235948018265507,
+       62.33315411325371
+      ],
+      [
+       -30.489191177848987,
+       62.37024877406455
+      ],
+      [
+       -30.744162752793905,
+       62.39255589639358
+      ],
+      [
+       -31.0,
+       62.4
+      ],
+      [
+       -31.25583724720609,
+       62.39255589639358
+      ],
+      [
+       -31.510808822151013,
+       62.37024877406455
+      ],
+      [
+       -31.764051981734493,
+       62.33315411325371
+      ],
+      [
+       -31.34729635533386,
+       59.96961550602442
+      ],
+      [
+       -31.23218582825046,
+       59.98647671548389
+      ],
+      [
+       -31.11628965782095,
+       59.996616316542536
+      ],
+      [
+       -31.0,
+       60.0
+      ],
+      [
+       -30.883710342179047,
+       59.996616316542536
+      ],
+      [
+       -30.76781417174954,
+       59.98647671548389
+      ],
+      [
+       -30.65270364466614,
+       59.96961550602442
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-w-crown-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -33.2,
+       61.81051177665153
+      ],
+      [
+       -33.417839503511544,
+       61.67614637021692
+      ],
+      [
+       -33.62749780349226,
+       61.529342048122196
+      ],
+      [
+       -33.82826548262077,
+       61.370595549723504
+      ],
+      [
+       -34.019463206622426,
+       61.20044402292142
+      ],
+      [
+       -34.20044402292142,
+       61.01946320662243
+      ],
+      [
+       -34.370595549723504,
+       60.82826548262077
+      ],
+      [
+       -32.53208888623796,
+       59.28557521937308
+      ],
+      [
+       -32.4547472831461,
+       59.372483275737466
+      ],
+      [
+       -32.372483275737466,
+       59.4547472831461
+      ],
+      [
+       -32.28557521937308,
+       59.53208888623796
+      ],
+      [
+       -32.19431718340557,
+       59.60424638551009
+      ],
+      [
+       -32.09901795614161,
+       59.67097562282587
+      ],
+      [
+       -32.0,
+       59.732050807568875
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-w-crown-3",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -35.134647531458,
+       59.50488863063294
+      ],
+      [
+       -35.21515385418815,
+       59.2619342239288
+      ],
+      [
+       -35.28139743055122,
+       59.014709831266735
+      ],
+      [
+       -35.33315411325371,
+       58.7640519817345
+      ],
+      [
+       -35.37024877406455,
+       58.51080882215101
+      ],
+      [
+       -35.39255589639358,
+       58.255837247206095
+      ],
+      [
+       -35.4,
+       58.0
+      ],
+      [
+       -33.0,
+       58.0
+      ],
+      [
+       -32.996616316542536,
+       58.11628965782095
+      ],
+      [
+       -32.98647671548389,
+       58.23218582825046
+      ],
+      [
+       -32.96961550602442,
+       58.34729635533386
+      ],
+      [
+       -32.946089741159646,
+       58.46123174148488
+      ],
+      [
+       -32.91597902463098,
+       58.57360646542218
+      ],
+      [
+       -32.87938524157182,
+       58.68404028665134
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-w-crown-4",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -35.134647531458,
+       56.49511136936706
+      ],
+      [
+       -35.04015087027321,
+       56.25724902942771
+      ],
+      [
+       -34.931983617423015,
+       56.02528360711797
+      ],
+      [
+       -34.81051177665153,
+       55.8
+      ],
+      [
+       -34.67614637021692,
+       55.582160496488456
+      ],
+      [
+       -34.529342048122196,
+       55.37250219650774
+      ],
+      [
+       -34.370595549723504,
+       55.17173451737923
+      ],
+      [
+       -32.53208888623796,
+       56.71442478062692
+      ],
+      [
+       -32.60424638551009,
+       56.80568281659443
+      ],
+      [
+       -32.67097562282587,
+       56.90098204385839
+      ],
+      [
+       -32.732050807568875,
+       57.0
+      ],
+      [
+       -32.78726528064682,
+       57.10240163959907
+      ],
+      [
+       -32.836432213760546,
+       57.207840467921685
+      ],
+      [
+       -32.87938524157182,
+       57.31595971334866
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-w-crown-5",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -33.2,
+       54.18948822334847
+      ],
+      [
+       -32.97471639288204,
+       54.068016382576985
+      ],
+      [
+       -32.742750970572295,
+       53.9598491297268
+      ],
+      [
+       -32.50488863063295,
+       53.86535246854201
+      ],
+      [
+       -32.2619342239288,
+       53.78484614581185
+      ],
+      [
+       -32.01470983126674,
+       53.71860256944878
+      ],
+      [
+       -31.764051981734497,
+       53.66684588674629
+      ],
+      [
+       -31.347296355333864,
+       56.03038449397558
+      ],
+      [
+       -31.461231741484884,
+       56.053910258840354
+      ],
+      [
+       -31.57360646542218,
+       56.08402097536902
+      ],
+      [
+       -31.68404028665134,
+       56.12061475842818
+      ],
+      [
+       -31.792159532078315,
+       56.163567786239454
+      ],
+      [
+       -31.897598360400924,
+       56.21273471935318
+      ],
+      [
+       -32.0,
+       56.267949192431125
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-w-crown-6",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -30.235948018265507,
+       53.66684588674629
+      ],
+      [
+       -29.985290168733265,
+       53.71860256944878
+      ],
+      [
+       -29.738065776071206,
+       53.78484614581185
+      ],
+      [
+       -29.49511136936706,
+       53.865352468542
+      ],
+      [
+       -29.25724902942771,
+       53.95984912972679
+      ],
+      [
+       -29.02528360711797,
+       54.068016382576985
+      ],
+      [
+       -28.800000000000004,
+       54.18948822334847
+      ],
+      [
+       -30.0,
+       56.267949192431125
+      ],
+      [
+       -30.102401639599076,
+       56.21273471935317
+      ],
+      [
+       -30.207840467921688,
+       56.163567786239454
+      ],
+      [
+       -30.315959713348665,
+       56.12061475842818
+      ],
+      [
+       -30.42639353457782,
+       56.08402097536902
+      ],
+      [
+       -30.53876825851512,
+       56.053910258840354
+      ],
+      [
+       -30.65270364466614,
+       56.03038449397558
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-w-crown-7",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -27.629404450276496,
+       55.17173451737923
+      ],
+      [
+       -27.470657951877808,
+       55.37250219650774
+      ],
+      [
+       -27.32385362978308,
+       55.58216049648845
+      ],
+      [
+       -27.18948822334847,
+       55.8
+      ],
+      [
+       -27.068016382576985,
+       56.02528360711796
+      ],
+      [
+       -26.959849129726795,
+       56.257249029427705
+      ],
+      [
+       -26.865352468542003,
+       56.49511136936705
+      ],
+      [
+       -29.120614758428182,
+       57.31595971334866
+      ],
+      [
+       -29.163567786239454,
+       57.207840467921685
+      ],
+      [
+       -29.212734719353175,
+       57.10240163959907
+      ],
+      [
+       -29.267949192431125,
+       57.0
+      ],
+      [
+       -29.32902437717413,
+       56.900982043858384
+      ],
+      [
+       -29.395753614489912,
+       56.80568281659443
+      ],
+      [
+       -29.467911113762046,
+       56.71442478062692
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-w-crown-8",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "tower-ward-w-crown-body",
+     "name": "West ward tower crown",
+     "mirrors": false,
+     "shapeIds": [
+      "tower-ward-w-crown-0",
+      "tower-ward-w-crown-1",
+      "tower-ward-w-crown-2",
+      "tower-ward-w-crown-3",
+      "tower-ward-w-crown-4",
+      "tower-ward-w-crown-5",
+      "tower-ward-w-crown-6",
+      "tower-ward-w-crown-7",
+      "tower-ward-w-crown-8"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "revetment"
+  },
+  {
+   "id": "tower-ward-e",
+   "name": "East ward tower",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       35.0,
+       42.0
+      ],
+      [
+       34.980738906688785,
+       42.39206856131824
+      ],
+      [
+       34.92314112161292,
+       42.78036128806451
+      ],
+      [
+       34.82776134292884,
+       43.16113870901785
+      ],
+      [
+       34.695518130045144,
+       43.53073372946036
+      ],
+      [
+       34.52768505739342,
+       43.88558694730399
+      ],
+      [
+       34.32587844921018,
+       44.222280932078405
+      ],
+      [
+       34.09204181345095,
+       44.53757313665458
+      ],
+      [
+       33.82842712474619,
+       44.82842712474619
+      ],
+      [
+       33.53757313665458,
+       45.09204181345095
+      ],
+      [
+       33.22228093207841,
+       45.32587844921018
+      ],
+      [
+       32.88558694730399,
+       45.52768505739342
+      ],
+      [
+       32.53073372946036,
+       45.695518130045144
+      ],
+      [
+       32.16113870901785,
+       45.82776134292884
+      ],
+      [
+       31.780361288064512,
+       45.92314112161292
+      ],
+      [
+       31.392068561318244,
+       45.980738906688785
+      ],
+      [
+       31.0,
+       46.0
+      ],
+      [
+       30.607931438681756,
+       45.980738906688785
+      ],
+      [
+       30.219638711935488,
+       45.92314112161292
+      ],
+      [
+       29.838861290982152,
+       45.82776134292884
+      ],
+      [
+       29.46926627053964,
+       45.695518130045144
+      ],
+      [
+       29.11441305269601,
+       45.52768505739342
+      ],
+      [
+       28.77771906792159,
+       45.32587844921018
+      ],
+      [
+       28.462426863345417,
+       45.09204181345095
+      ],
+      [
+       28.17157287525381,
+       44.82842712474619
+      ],
+      [
+       27.907958186549052,
+       44.53757313665458
+      ],
+      [
+       27.67412155078982,
+       44.222280932078405
+      ],
+      [
+       27.47231494260658,
+       43.88558694730399
+      ],
+      [
+       27.304481869954852,
+       43.53073372946036
+      ],
+      [
+       27.172238657071166,
+       43.16113870901785
+      ],
+      [
+       27.07685887838708,
+       42.78036128806451
+      ],
+      [
+       27.01926109331121,
+       42.39206856131824
+      ],
+      [
+       27.0,
+       42.0
+      ],
+      [
+       27.01926109331121,
+       41.60793143868176
+      ],
+      [
+       27.07685887838708,
+       41.21963871193549
+      ],
+      [
+       27.172238657071166,
+       40.83886129098215
+      ],
+      [
+       27.304481869954852,
+       40.46926627053964
+      ],
+      [
+       27.47231494260658,
+       40.11441305269601
+      ],
+      [
+       27.674121550789817,
+       39.777719067921595
+      ],
+      [
+       27.907958186549052,
+       39.46242686334542
+      ],
+      [
+       28.17157287525381,
+       39.17157287525381
+      ],
+      [
+       28.462426863345417,
+       38.90795818654905
+      ],
+      [
+       28.77771906792159,
+       38.67412155078982
+      ],
+      [
+       29.11441305269601,
+       38.47231494260658
+      ],
+      [
+       29.469266270539638,
+       38.304481869954856
+      ],
+      [
+       29.838861290982152,
+       38.17223865707116
+      ],
+      [
+       30.219638711935485,
+       38.07685887838708
+      ],
+      [
+       30.607931438681756,
+       38.019261093311215
+      ],
+      [
+       31.0,
+       38.0
+      ],
+      [
+       31.39206856131824,
+       38.019261093311215
+      ],
+      [
+       31.780361288064512,
+       38.07685887838708
+      ],
+      [
+       32.16113870901785,
+       38.17223865707116
+      ],
+      [
+       32.53073372946036,
+       38.304481869954856
+      ],
+      [
+       32.88558694730399,
+       38.47231494260658
+      ],
+      [
+       33.222280932078405,
+       38.67412155078982
+      ],
+      [
+       33.53757313665458,
+       38.90795818654905
+      ],
+      [
+       33.82842712474619,
+       39.17157287525381
+      ],
+      [
+       34.09204181345095,
+       39.462426863345414
+      ],
+      [
+       34.32587844921018,
+       39.777719067921595
+      ],
+      [
+       34.52768505739342,
+       40.11441305269601
+      ],
+      [
+       34.695518130045144,
+       40.46926627053964
+      ],
+      [
+       34.82776134292884,
+       40.83886129098215
+      ],
+      [
+       34.92314112161292,
+       41.21963871193549
+      ],
+      [
+       34.980738906688785,
+       41.60793143868176
+      ],
+      [
+       35.0,
+       42.0
+      ],
+      [
+       32.99036945334439,
+       41.80396571934088
+      ],
+      [
+       32.96157056080646,
+       41.609819355967744
+      ],
+      [
+       32.91388067146442,
+       41.419430645491076
+      ],
+      [
+       32.84775906502257,
+       41.23463313526982
+      ],
+      [
+       32.763842528696706,
+       41.057206526348004
+      ],
+      [
+       32.66293922460509,
+       40.8888595339608
+      ],
+      [
+       32.546020906725474,
+       40.73121343167271
+      ],
+      [
+       32.41421356237309,
+       40.58578643762691
+      ],
+      [
+       32.26878656832729,
+       40.453979093274526
+      ],
+      [
+       32.1111404660392,
+       40.33706077539491
+      ],
+      [
+       31.942793473651996,
+       40.23615747130329
+      ],
+      [
+       31.76536686473018,
+       40.15224093497743
+      ],
+      [
+       31.580569354508924,
+       40.08611932853558
+      ],
+      [
+       31.390180644032256,
+       40.038429439193536
+      ],
+      [
+       31.19603428065912,
+       40.00963054665561
+      ],
+      [
+       31.0,
+       40.0
+      ],
+      [
+       30.80396571934088,
+       40.00963054665561
+      ],
+      [
+       30.609819355967744,
+       40.03842943919354
+      ],
+      [
+       30.419430645491076,
+       40.08611932853558
+      ],
+      [
+       30.23463313526982,
+       40.15224093497743
+      ],
+      [
+       30.057206526348004,
+       40.23615747130329
+      ],
+      [
+       29.888859533960797,
+       40.33706077539491
+      ],
+      [
+       29.731213431672707,
+       40.453979093274526
+      ],
+      [
+       29.585786437626904,
+       40.58578643762691
+      ],
+      [
+       29.453979093274526,
+       40.73121343167271
+      ],
+      [
+       29.33706077539491,
+       40.8888595339608
+      ],
+      [
+       29.23615747130329,
+       41.057206526348004
+      ],
+      [
+       29.152240934977428,
+       41.23463313526982
+      ],
+      [
+       29.08611932853558,
+       41.419430645491076
+      ],
+      [
+       29.03842943919354,
+       41.609819355967744
+      ],
+      [
+       29.009630546655607,
+       41.80396571934088
+      ],
+      [
+       29.0,
+       42.0
+      ],
+      [
+       29.009630546655607,
+       42.19603428065912
+      ],
+      [
+       29.03842943919354,
+       42.390180644032256
+      ],
+      [
+       29.08611932853558,
+       42.580569354508924
+      ],
+      [
+       29.152240934977428,
+       42.76536686473018
+      ],
+      [
+       29.23615747130329,
+       42.942793473651996
+      ],
+      [
+       29.33706077539491,
+       43.1111404660392
+      ],
+      [
+       29.453979093274526,
+       43.26878656832729
+      ],
+      [
+       29.585786437626904,
+       43.41421356237309
+      ],
+      [
+       29.73121343167271,
+       43.546020906725474
+      ],
+      [
+       29.888859533960797,
+       43.66293922460509
+      ],
+      [
+       30.057206526348004,
+       43.76384252869671
+      ],
+      [
+       30.23463313526982,
+       43.84775906502257
+      ],
+      [
+       30.419430645491076,
+       43.91388067146442
+      ],
+      [
+       30.609819355967744,
+       43.961570560806464
+      ],
+      [
+       30.80396571934088,
+       43.99036945334439
+      ],
+      [
+       31.0,
+       44.0
+      ],
+      [
+       31.19603428065912,
+       43.99036945334439
+      ],
+      [
+       31.390180644032256,
+       43.961570560806464
+      ],
+      [
+       31.580569354508924,
+       43.91388067146442
+      ],
+      [
+       31.76536686473018,
+       43.84775906502257
+      ],
+      [
+       31.942793473651996,
+       43.76384252869671
+      ],
+      [
+       32.1111404660392,
+       43.66293922460509
+      ],
+      [
+       32.26878656832729,
+       43.546020906725474
+      ],
+      [
+       32.41421356237309,
+       43.41421356237309
+      ],
+      [
+       32.546020906725474,
+       43.26878656832729
+      ],
+      [
+       32.66293922460509,
+       43.1111404660392
+      ],
+      [
+       32.76384252869671,
+       42.942793473651996
+      ],
+      [
+       32.84775906502257,
+       42.76536686473018
+      ],
+      [
+       32.91388067146442,
+       42.580569354508924
+      ],
+      [
+       32.961570560806464,
+       42.390180644032256
+      ],
+      [
+       32.99036945334439,
+       42.19603428065912
+      ],
+      [
+       33.0,
+       42.0
+      ],
+      [
+       32.99036945334439,
+       41.80396571934088
+      ]
+     ],
+     "floor": 17,
+     "base_height": 13,
+     "id": "tower-ward-e-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "tower-ward-e-body",
+     "name": "East ward tower",
+     "mirrors": false,
+     "shapeIds": [
+      "tower-ward-e-0"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "revetment"
+  },
+  {
+   "id": "tower-ward-e-crown",
+   "name": "East ward tower crown",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       35.4,
+       42.0
+      ],
+      [
+       35.39255589639358,
+       42.255837247206095
+      ],
+      [
+       35.37024877406455,
+       42.51080882215101
+      ],
+      [
+       35.33315411325371,
+       42.7640519817345
+      ],
+      [
+       35.28139743055122,
+       43.014709831266735
+      ],
+      [
+       35.21515385418815,
+       43.2619342239288
+      ],
+      [
+       35.134647531458,
+       43.50488863063294
+      ],
+      [
+       32.87938524157182,
+       42.68404028665134
+      ],
+      [
+       32.91597902463098,
+       42.57360646542218
+      ],
+      [
+       32.946089741159646,
+       42.46123174148488
+      ],
+      [
+       32.96961550602442,
+       42.34729635533386
+      ],
+      [
+       32.98647671548389,
+       42.23218582825046
+      ],
+      [
+       32.996616316542536,
+       42.11628965782095
+      ],
+      [
+       33.0,
+       42.0
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-e-crown-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       34.370595549723504,
+       44.82826548262077
+      ],
+      [
+       34.20044402292142,
+       45.019463206622426
+      ],
+      [
+       34.019463206622426,
+       45.20044402292142
+      ],
+      [
+       33.82826548262077,
+       45.370595549723504
+      ],
+      [
+       33.62749780349226,
+       45.529342048122196
+      ],
+      [
+       33.417839503511544,
+       45.67614637021692
+      ],
+      [
+       33.2,
+       45.81051177665153
+      ],
+      [
+       32.0,
+       43.732050807568875
+      ],
+      [
+       32.099017956141616,
+       43.67097562282587
+      ],
+      [
+       32.19431718340557,
+       43.60424638551009
+      ],
+      [
+       32.28557521937308,
+       43.53208888623796
+      ],
+      [
+       32.372483275737466,
+       43.4547472831461
+      ],
+      [
+       32.4547472831461,
+       43.372483275737466
+      ],
+      [
+       32.53208888623796,
+       43.28557521937308
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-e-crown-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       31.764051981734493,
+       46.33315411325371
+      ],
+      [
+       31.510808822151013,
+       46.37024877406455
+      ],
+      [
+       31.255837247206095,
+       46.39255589639358
+      ],
+      [
+       31.0,
+       46.4
+      ],
+      [
+       30.74416275279391,
+       46.39255589639358
+      ],
+      [
+       30.489191177848987,
+       46.37024877406455
+      ],
+      [
+       30.235948018265507,
+       46.33315411325371
+      ],
+      [
+       30.65270364466614,
+       43.96961550602442
+      ],
+      [
+       30.76781417174954,
+       43.98647671548389
+      ],
+      [
+       30.88371034217905,
+       43.996616316542536
+      ],
+      [
+       31.0,
+       44.0
+      ],
+      [
+       31.116289657820953,
+       43.996616316542536
+      ],
+      [
+       31.23218582825046,
+       43.98647671548389
+      ],
+      [
+       31.34729635533386,
+       43.96961550602442
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-e-crown-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       28.8,
+       45.81051177665153
+      ],
+      [
+       28.582160496488456,
+       45.67614637021692
+      ],
+      [
+       28.372502196507742,
+       45.529342048122196
+      ],
+      [
+       28.171734517379228,
+       45.370595549723504
+      ],
+      [
+       27.980536793377574,
+       45.20044402292142
+      ],
+      [
+       27.799555977078587,
+       45.01946320662243
+      ],
+      [
+       27.629404450276496,
+       44.82826548262077
+      ],
+      [
+       29.467911113762042,
+       43.28557521937308
+      ],
+      [
+       29.545252716853902,
+       43.372483275737466
+      ],
+      [
+       29.627516724262534,
+       43.4547472831461
+      ],
+      [
+       29.71442478062692,
+       43.53208888623796
+      ],
+      [
+       29.805682816594427,
+       43.60424638551009
+      ],
+      [
+       29.900982043858388,
+       43.67097562282587
+      ],
+      [
+       30.0,
+       43.732050807568875
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-e-crown-3",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       26.865352468542003,
+       43.50488863063294
+      ],
+      [
+       26.784846145811848,
+       43.2619342239288
+      ],
+      [
+       26.718602569448777,
+       43.014709831266735
+      ],
+      [
+       26.666845886746284,
+       42.7640519817345
+      ],
+      [
+       26.62975122593545,
+       42.51080882215101
+      ],
+      [
+       26.60744410360642,
+       42.255837247206095
+      ],
+      [
+       26.6,
+       42.0
+      ],
+      [
+       29.0,
+       42.0
+      ],
+      [
+       29.003383683457464,
+       42.11628965782095
+      ],
+      [
+       29.013523284516115,
+       42.23218582825046
+      ],
+      [
+       29.030384493975586,
+       42.34729635533386
+      ],
+      [
+       29.053910258840354,
+       42.46123174148488
+      ],
+      [
+       29.08402097536902,
+       42.57360646542218
+      ],
+      [
+       29.120614758428182,
+       42.68404028665134
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-e-crown-4",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       26.865352468542003,
+       40.49511136936706
+      ],
+      [
+       26.959849129726795,
+       40.25724902942771
+      ],
+      [
+       27.068016382576985,
+       40.02528360711797
+      ],
+      [
+       27.18948822334847,
+       39.8
+      ],
+      [
+       27.32385362978308,
+       39.582160496488456
+      ],
+      [
+       27.470657951877808,
+       39.37250219650774
+      ],
+      [
+       27.629404450276496,
+       39.17173451737923
+      ],
+      [
+       29.467911113762042,
+       40.71442478062692
+      ],
+      [
+       29.395753614489912,
+       40.80568281659443
+      ],
+      [
+       29.32902437717413,
+       40.90098204385839
+      ],
+      [
+       29.26794919243112,
+       41.0
+      ],
+      [
+       29.212734719353175,
+       41.10240163959907
+      ],
+      [
+       29.16356778623945,
+       41.207840467921685
+      ],
+      [
+       29.120614758428182,
+       41.31595971334866
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-e-crown-5",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       28.799999999999997,
+       38.18948822334847
+      ],
+      [
+       29.025283607117967,
+       38.068016382576985
+      ],
+      [
+       29.257249029427705,
+       37.9598491297268
+      ],
+      [
+       29.495111369367056,
+       37.86535246854201
+      ],
+      [
+       29.738065776071203,
+       37.78484614581185
+      ],
+      [
+       29.985290168733258,
+       37.71860256944878
+      ],
+      [
+       30.235948018265503,
+       37.66684588674629
+      ],
+      [
+       30.652703644666136,
+       40.03038449397558
+      ],
+      [
+       30.538768258515116,
+       40.053910258840354
+      ],
+      [
+       30.42639353457782,
+       40.08402097536902
+      ],
+      [
+       30.31595971334866,
+       40.12061475842818
+      ],
+      [
+       30.207840467921685,
+       40.163567786239454
+      ],
+      [
+       30.102401639599076,
+       40.21273471935318
+      ],
+      [
+       30.0,
+       40.267949192431125
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-e-crown-6",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       31.764051981734493,
+       37.66684588674629
+      ],
+      [
+       32.014709831266735,
+       37.71860256944878
+      ],
+      [
+       32.26193422392879,
+       37.78484614581185
+      ],
+      [
+       32.50488863063294,
+       37.865352468542
+      ],
+      [
+       32.74275097057229,
+       37.95984912972679
+      ],
+      [
+       32.97471639288203,
+       38.068016382576985
+      ],
+      [
+       33.199999999999996,
+       38.18948822334847
+      ],
+      [
+       32.0,
+       40.267949192431125
+      ],
+      [
+       31.897598360400924,
+       40.21273471935317
+      ],
+      [
+       31.792159532078312,
+       40.163567786239454
+      ],
+      [
+       31.684040286651335,
+       40.12061475842818
+      ],
+      [
+       31.57360646542218,
+       40.08402097536902
+      ],
+      [
+       31.46123174148488,
+       40.053910258840354
+      ],
+      [
+       31.34729635533386,
+       40.03038449397558
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-e-crown-7",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       34.370595549723504,
+       39.17173451737923
+      ],
+      [
+       34.529342048122196,
+       39.37250219650774
+      ],
+      [
+       34.67614637021692,
+       39.58216049648845
+      ],
+      [
+       34.81051177665153,
+       39.8
+      ],
+      [
+       34.931983617423015,
+       40.02528360711796
+      ],
+      [
+       35.0401508702732,
+       40.257249029427705
+      ],
+      [
+       35.13464753145799,
+       40.49511136936705
+      ],
+      [
+       32.87938524157182,
+       41.31595971334866
+      ],
+      [
+       32.836432213760546,
+       41.207840467921685
+      ],
+      [
+       32.78726528064682,
+       41.10240163959907
+      ],
+      [
+       32.732050807568875,
+       41.0
+      ],
+      [
+       32.67097562282587,
+       40.900982043858384
+      ],
+      [
+       32.60424638551009,
+       40.80568281659443
+      ],
+      [
+       32.53208888623796,
+       40.71442478062692
+      ]
+     ],
+     "floor": 30,
+     "base_height": 3,
+     "id": "tower-ward-e-crown-8",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "tower-ward-e-crown-body",
+     "name": "East ward tower crown",
+     "mirrors": false,
+     "shapeIds": [
+      "tower-ward-e-crown-0",
+      "tower-ward-e-crown-1",
+      "tower-ward-e-crown-2",
+      "tower-ward-e-crown-3",
+      "tower-ward-e-crown-4",
+      "tower-ward-e-crown-5",
+      "tower-ward-e-crown-6",
+      "tower-ward-e-crown-7",
+      "tower-ward-e-crown-8"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "revetment"
+  },
+  {
+   "id": "well-rails",
+   "name": "Well rails",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "rectangle",
+     "min_x": -16,
+     "min_z": 44,
+     "max_x": 1,
+     "max_z": 45,
+     "floor": 17,
+     "base_height": 2,
+     "id": "rail-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -16,
+     "min_z": 55,
+     "max_x": 1,
+     "max_z": 56,
+     "floor": 17,
+     "base_height": 2,
+     "id": "rail-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -16,
+     "min_z": 45,
+     "max_x": -15,
+     "max_z": 55,
+     "floor": 17,
+     "base_height": 2,
+     "id": "rail-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 0,
+     "min_z": 45,
+     "max_x": 1,
+     "max_z": 55,
+     "floor": 17,
+     "base_height": 2,
+     "id": "rail-3",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 9,
+     "min_z": 44,
+     "max_x": 21,
+     "max_z": 45,
+     "floor": 17,
+     "base_height": 2,
+     "id": "rail-4",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 9,
+     "min_z": 55,
+     "max_x": 21,
+     "max_z": 56,
+     "floor": 17,
+     "base_height": 2,
+     "id": "rail-5",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 9,
+     "min_z": 45,
+     "max_x": 10,
+     "max_z": 55,
+     "floor": 17,
+     "base_height": 2,
+     "id": "rail-6",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 20,
+     "min_z": 45,
+     "max_x": 21,
+     "max_z": 55,
+     "floor": 17,
+     "base_height": 2,
+     "id": "rail-7",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 43,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "well-rails-body",
+     "name": "Well rails",
+     "mirrors": true,
+     "shapeIds": [
+      "rail-0",
+      "rail-1",
+      "rail-2",
+      "rail-3",
+      "rail-4",
+      "rail-5",
+      "rail-6",
+      "rail-7"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "revetment"
+  }
+ ],
+ "relief": {
+  "team": {
+   "base": 11,
+   "step": 1,
+   "reach": 18,
+   "landform": "plain",
+   "grain": {
+    "amplitude": 1,
+    "scale": 15,
+    "seed": 6
+   },
+   "marks": [
+    {
+     "id": "apron",
+     "kind": "area",
+     "h": 10,
+     "ring": [
+      [
+       22.0,
+       19.0
+      ],
+      [
+       12.4,
+       32.4
+      ],
+      [
+       -1.0,
+       41.0
+      ],
+      [
+       -10.2,
+       28.2
+      ],
+      [
+       -22.0,
+       19.0
+      ],
+      [
+       -14.4,
+       5.6
+      ],
+      [
+       -1.0,
+       -4.0
+      ],
+      [
+       8.2,
+       9.8
+      ]
+     ]
+    },
+    {
+     "id": "knoll-west",
+     "kind": "point",
+     "at": [
+      -22,
+      30
+     ],
+     "r": 5,
+     "h": 14
+    },
+    {
+     "id": "knoll-east",
+     "kind": "point",
+     "at": [
+      23,
+      21
+     ],
+     "r": 4,
+     "h": 12,
+     "tread": 3
+    },
+    {
+     "id": "bench",
+     "kind": "area",
+     "h": 12,
+     "ring": [
+      [
+       22.0,
+       31.0
+      ],
+      [
+       18.8,
+       33.8
+      ],
+      [
+       16.0,
+       36.0
+      ],
+      [
+       13.2,
+       33.8
+      ],
+      [
+       10.0,
+       31.0
+      ],
+      [
+       13.2,
+       28.2
+      ],
+      [
+       16.0,
+       26.0
+      ],
+      [
+       18.8,
+       28.2
+      ]
+     ]
+    },
+    {
+     "id": "sump",
+     "kind": "point",
+     "at": [
+      7,
+      32
+     ],
+     "r": 4,
+     "h": 10,
+     "tread": 3
+    }
+   ],
+   "pushes": [
+    {
+     "id": "knowe",
+     "ring": [
+      [
+       11.0,
+       15.0
+      ],
+      [
+       6.4,
+       21.4
+      ],
+      [
+       0.0,
+       25.0
+      ],
+      [
+       -5.7,
+       20.7
+      ],
+      [
+       -11.0,
+       15.0
+      ],
+      [
+       -6.4,
+       8.6
+      ],
+      [
+       -0.0,
+       5.0
+      ],
+      [
+       5.7,
+       9.3
+      ]
+     ],
+     "amount": 2,
+     "falloff": 8,
+     "crown": 2,
+     "roughness": 1.2,
+     "seed": 4
+    }
+   ]
+  }
+ },
+ "roomStyles": {
+  "spawn": "@sb-spawn",
+  "wool": "@ow-cage"
+ },
+ "dressing": {
+  "props": [
+   {
+    "id": "way-west",
+    "kind": "stroke",
+    "seed": 61,
+    "radius": 2.5,
+    "style": "solid",
+    "coverage": 1.0,
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 45,
+     "cellSize": 4,
+     "jitter": 2,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "points": [
+     [
+      0,
+      78
+     ],
+     [
+      0,
+      68
+     ],
+     [
+      -6,
+      62
+     ],
+     [
+      -16,
+      57
+     ],
+     [
+      -26,
+      52
+     ],
+     [
+      -33,
+      50
+     ]
+    ]
+   },
+   {
+    "id": "way-east",
+    "kind": "stroke",
+    "seed": 62,
+    "radius": 2.5,
+    "style": "solid",
+    "coverage": 1.0,
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 45,
+     "cellSize": 4,
+     "jitter": 2,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "points": [
+     [
+      0,
+      72
+     ],
+     [
+      7,
+      65
+     ],
+     [
+      17,
+      59
+     ],
+     [
+      26,
+      54
+     ],
+     [
+      33,
+      50
+     ]
+    ]
+   },
+   {
+    "id": "sward",
+    "kind": "flora",
+    "seed": 9,
+    "points": [
+     [
+      -25,
+      10
+     ],
+     [
+      25,
+      10
+     ],
+     [
+      25,
+      35
+     ],
+     [
+      -25,
+      35
+     ]
+    ],
+    "spec": {
+     "coverage": 0.22,
+     "scale": 14,
+     "octaves": 3,
+     "fernShare": 0.14,
+     "flowerShare": 0.05,
+     "flowerScale": 18,
+     "tallShare": 0.03
+    }
+   },
+   {
+    "id": "spall-0",
+    "kind": "boulder",
+    "x": -16,
+    "z": 19,
+    "form": "angular",
+    "size": 2,
+    "mossy": true,
+    "rock": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "seed": 80
+   },
+   {
+    "id": "spall-1",
+    "kind": "boulder",
+    "x": -3,
+    "z": 21,
+    "form": "angular",
+    "size": 3,
+    "mossy": false,
+    "rock": {
+     "kind": "solid",
+     "id": 1,
+     "data": 5
+    },
+    "seed": 81
+   },
+   {
+    "id": "spall-2",
+    "kind": "boulder",
+    "x": 9,
+    "z": 31,
+    "form": "round",
+    "size": 2,
+    "mossy": true,
+    "rock": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "seed": 82
+   },
+   {
+    "id": "spall-3",
+    "kind": "boulder",
+    "x": 14,
+    "z": 20,
+    "form": "angular",
+    "size": 2,
+    "mossy": false,
+    "rock": {
+     "kind": "solid",
+     "id": 1,
+     "data": 5
+    },
+    "seed": 83
+   },
+   {
+    "id": "thorn-0",
+    "kind": "tree",
+    "x": -22,
+    "z": 32,
+    "form": "Template",
+    "species": "oak",
+    "height": 8,
+    "seed": 90
+   },
+   {
+    "id": "thorn-1",
+    "kind": "tree",
+    "x": 12,
+    "z": 30,
+    "form": "Template",
+    "species": "birch",
+    "height": 9,
+    "seed": 91
+   },
+   {
+    "id": "thorn-2",
+    "kind": "tree",
+    "x": -6,
+    "z": 18,
+    "form": "Template",
+    "species": "oak",
+    "height": 7,
+    "seed": 92
+   },
+   {
+    "id": "byre",
+    "kind": "house",
+    "seed": 51,
+    "front": "negZ",
+    "style": "@talltimber-store",
+    "wings": [
+     {
+      "corners": [
+       [
+        3,
+        24
+       ],
+       [
+        9,
+        28
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

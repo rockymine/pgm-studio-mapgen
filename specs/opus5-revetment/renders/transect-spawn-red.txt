@@ -1,0 +1,66 @@
+## spawn-red (spawn) along x
+TRANSECT 37 stations from (-18, 80) to (18, 80), every 1
+  station        ground  surface  water  top  standing            step
+  (  -18,    80)                                                    void
+  (  -17,    80)                                                    void
+  (  -16,    80)                                                    void
+  (  -15,    80)                                                    void
+  (  -14,    80)                                                    void
+  (  -13,    80)                                                    void
+  (  -12,    80)                                                    void
+  (  -11,    80)                                                    void
+  (  -10,    80)      17       17           31                      
+  (   -9,    80)      17       17           31  spawn spawn-1       
+  (   -8,    80)      17       17           31  spawn spawn-1       
+  (   -7,    80)      17       17           31  spawn spawn-1       
+  (   -6,    80)      17       17           31  spawn spawn-1       
+  (   -5,    80)      17       17           31  spawn spawn-1       
+  (   -4,    80)      17       17           31  spawn spawn-1       
+  (   -3,    80)      17       17           31  spawn spawn-1       
+  (   -2,    80)      17       17           31  spawn spawn-1       
+  (   -1,    80)      17       17           31  spawn spawn-1       
+  (    0,    80)      17       17           31  spawn spawn-1       
+  (    1,    80)      17       17           31  spawn spawn-1       
+  (    2,    80)      17       17           31  spawn spawn-1       
+  (    3,    80)      17       17           31  spawn spawn-1       
+  (    4,    80)      17       17           31  spawn spawn-1       
+  (    5,    80)      17       17           31  spawn spawn-1       
+  (    6,    80)      17       17           31  spawn spawn-1       
+  (    7,    80)      17       17           31  spawn spawn-1       
+  (    8,    80)      17       17           31  spawn spawn-1       
+  (    9,    80)      17       17           31                      
+  (   10,    80)                                                    void
+  (   11,    80)                                                    void
+  (   12,    80)                                                    void
+  (   13,    80)                                                    void
+  (   14,    80)                                                    void
+  (   15,    80)                                                    void
+  (   16,    80)                                                    void
+  (   17,    80)                                                    void
+  (   18,    80)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (-9, 78), stroke way-west at (-2, 78)
+
+## spawn-red (spawn) along z
+TRANSECT 18 stations from (0, 67) to (0, 84), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    67)      17       17           17  stroke way-west     
+  (    0,    68)      17       17           17  stroke way-east     
+  (    0,    69)      17       17           17  stroke way-east     
+  (    0,    70)      17       17           17  stroke way-east     
+  (    0,    71)      17       17           17  stroke way-east     
+  (    0,    72)      17       17           17  stroke way-east     
+  (    0,    73)      17       17           17  stroke way-east     
+  (    0,    74)      17       17           17  stroke way-west     
+  (    0,    75)      17       17           17  stroke way-west     
+  (    0,    76)      17       17           27  stroke way-west     
+  (    0,    77)      17       17           28  stroke way-west     
+  (    0,    78)      17       17           29  stroke way-west     
+  (    0,    79)      17       17           30  spawn spawn-1       
+  (    0,    80)      17       17           31  spawn spawn-1       
+  (    0,    81)      17       17           30  spawn spawn-1       
+  (    0,    82)      17       17           29  spawn spawn-1       
+  (    0,    83)      17       17           28  spawn spawn-1       
+  (    0,    84)      17       17           27                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke way-west at (-2, 65), stroke way-east at (2, 66), spawn spawn-1 at (2, 78)

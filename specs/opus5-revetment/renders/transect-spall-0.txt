@@ -1,0 +1,61 @@
+## spall-0 (boulder) along x
+TRANSECT 25 stations from (-28, 19) to (-4, 19), every 1
+  station        ground  surface  water  top  standing            step
+  (  -28,    19)                                                    void
+  (  -27,    19)                                                    void
+  (  -26,    19)                                                    void
+  (  -25,    19)                                                    void
+  (  -24,    19)                                                    void
+  (  -23,    19)                                                    void
+  (  -22,    19)                                                    void
+  (  -21,    19)                                                    void
+  (  -20,    19)      10       10           10                      
+  (  -19,    19)      10       10           10                      
+  (  -18,    19)      10       10           10                      
+  (  -17,    19)      10       10           13  boulder spall-0     
+  (  -16,    19)      10       10           13  boulder spall-0     
+  (  -15,    19)      10       10           13  boulder spall-0     
+  (  -14,    19)      10       10           10                      
+  (  -13,    19)      11       11           11                      +1
+  (  -12,    19)      11       11           11                      
+  (  -11,    19)      11       11           11                      
+  (  -10,    19)      11       11           11                      
+  (   -9,    19)      12       12           12                      +1
+  (   -8,    19)      12       12           18  tree thorn-2        
+  (   -7,    19)      12       12           19  tree thorn-2        
+  (   -6,    19)      12       12           20  tree thorn-2        
+  (   -5,    19)      12       12           19  tree thorn-2        
+  (   -4,    19)      12       12           18  tree thorn-2        
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder spall-0 at (-17, 18), tree thorn-2 at (-8, 17), boulder spall-1 at (-6, 21)
+
+## spall-0 (boulder) along z
+TRANSECT 25 stations from (-16, 7) to (-16, 31), every 1
+  station        ground  surface  water  top  standing            step
+  (  -16,     7)                                                    void
+  (  -16,     8)                                                    void
+  (  -16,     9)                                                    void
+  (  -16,    10)                                                    void
+  (  -16,    11)                             2                      void
+  (  -16,    12)                                                    void
+  (  -16,    13)                                                    void
+  (  -16,    14)      11       11           11                      
+  (  -16,    15)      11       11           11                      
+  (  -16,    16)      11       11           11                      
+  (  -16,    17)      10       10           10                      -1
+  (  -16,    18)      10       10           13  boulder spall-0     
+  (  -16,    19)      10       10           13  boulder spall-0     
+  (  -16,    20)      10       10           13  boulder spall-0     
+  (  -16,    21)      10       10           11  boulder spall-0     
+  (  -16,    22)      10       10           10                      
+  (  -16,    23)      10       10           10                      
+  (  -16,    24)      11       11           11                      +1
+  (  -16,    25)      11       11           11                      
+  (  -16,    26)      11       11           11                      
+  (  -16,    27)      11       11           11                      
+  (  -16,    28)      12       12           12                      +1
+  (  -16,    29)      12       12           12                      
+  (  -16,    30)      13       13           13                      +1
+  (  -16,    31)      13       13           13                      
+rises 3, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder spall-0 at (-17, 18)

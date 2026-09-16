@@ -1,0 +1,280 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Portway"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "mirror_z",
+  "maxPlayers": 30,
+  "surface": 12,
+  "observerY": 58
+ },
+ "pieces": [
+  {
+   "id": "hub-t1",
+   "role": "piece",
+   "rect": [
+    -4,
+    8,
+    9,
+    6
+   ],
+   "surface": 12
+  },
+  {
+   "id": "frontline-t1",
+   "role": "piece",
+   "rect": [
+    -4,
+    5,
+    9,
+    3
+   ],
+   "surface": 12
+  },
+  {
+   "id": "frontline-t2",
+   "role": "piece",
+   "rect": [
+    -4,
+    3,
+    3,
+    2
+   ],
+   "surface": 16
+  },
+  {
+   "id": "frontline-t3",
+   "role": "piece",
+   "rect": [
+    2,
+    3,
+    3,
+    2
+   ],
+   "surface": 16
+  },
+  {
+   "id": "pier",
+   "role": "piece",
+   "rect": [
+    -1,
+    -1,
+    3,
+    2
+   ],
+   "surface": 14,
+   "mirrors": false
+  },
+  {
+   "id": "spawn-t1",
+   "role": "piece",
+   "rect": [
+    -1,
+    14,
+    3,
+    2
+   ],
+   "surface": 12
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    -1,
+    16,
+    3,
+    2
+   ],
+   "surface": 12
+  },
+  {
+   "id": "wool-a-app",
+   "role": "piece",
+   "rect": [
+    -6,
+    9,
+    2,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "wool-a-room",
+   "role": "wool-room",
+   "rect": [
+    -8,
+    10,
+    2,
+    2
+   ],
+   "surface": 12
+  },
+  {
+   "id": "wool-a-n",
+   "role": "piece",
+   "rect": [
+    -9,
+    12,
+    3,
+    1
+   ],
+   "surface": 12
+  },
+  {
+   "id": "wool-a-s",
+   "role": "piece",
+   "rect": [
+    -9,
+    9,
+    3,
+    1
+   ],
+   "surface": 12
+  },
+  {
+   "id": "wool-a-w",
+   "role": "piece",
+   "rect": [
+    -9,
+    10,
+    1,
+    2
+   ],
+   "surface": 12
+  },
+  {
+   "id": "wool-b-app",
+   "role": "piece",
+   "rect": [
+    5,
+    8,
+    2,
+    4
+   ],
+   "surface": 12
+  },
+  {
+   "id": "wool-b-room",
+   "role": "wool-room",
+   "rect": [
+    7,
+    8,
+    2,
+    2
+   ],
+   "surface": 12
+  },
+  {
+   "id": "wool-b-n",
+   "role": "piece",
+   "rect": [
+    7,
+    10,
+    3,
+    1
+   ],
+   "surface": 12
+  },
+  {
+   "id": "wool-b-e",
+   "role": "piece",
+   "rect": [
+    9,
+    8,
+    1,
+    2
+   ],
+   "surface": 12
+  },
+  {
+   "id": "wool-b-s",
+   "role": "piece",
+   "rect": [
+    7,
+    7,
+    3,
+    1
+   ],
+   "surface": 12
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-n",
+   "rect": [
+    -4,
+    1,
+    9,
+    2
+   ],
+   "holes": []
+  },
+  {
+   "id": "mid-w",
+   "rect": [
+    -4,
+    -1,
+    3,
+    2
+   ],
+   "holes": []
+  },
+  {
+   "id": "mid-e",
+   "rect": [
+    2,
+    -1,
+    3,
+    2
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     7,
+     8
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-a-room",
+    "at": [
+     5,
+     5
+    ]
+   },
+   {
+    "id": "wool-2",
+    "piece": "wool-b-room",
+    "at": [
+     5,
+     5
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [
+  {
+   "a": "wool-a-app",
+   "b": "hub-t1"
+  },
+  {
+   "a": "wool-b-app",
+   "b": "hub-t1"
+  }
+ ],
+ "boxes": []
+}
