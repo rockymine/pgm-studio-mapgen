@@ -1,0 +1,68 @@
+## spawn-blue (spawn) along x
+TRANSECT 27 stations from (-13, -88) to (13, -88), every 1
+  station        ground  surface  water  top  standing            step
+  (  -13,   -88)      12       12           12                      
+  (  -12,   -88)      12       12           12                      
+  (  -11,   -88)      12       12           12                      
+  (  -10,   -88)      12       12           12                      
+  (   -9,   -88)      12       12           12                      
+  (   -8,   -88)      12       12           12                      
+  (   -7,   -88)      12       12           12                      
+  (   -6,   -88)      12       12           12                      
+  (   -5,   -88)      12       12           12                      
+  (   -4,   -88)      12       12           22                      
+  (   -3,   -88)      12       12           23  spawn spawn-1#1     
+  (   -2,   -88)      12       12           25  spawn spawn-1#1     
+  (   -1,   -88)      12       12           26  spawn spawn-1#1     
+  (    0,   -88)      12       12           26  spawn spawn-1#1     
+  (    1,   -88)      12       12           25  spawn spawn-1#1     
+  (    2,   -88)      12       12           24  spawn spawn-1#1     
+  (    3,   -88)      12       12           23  spawn spawn-1#1     
+  (    4,   -88)      12       12           22                      
+  (    5,   -88)      12       12           12                      
+  (    6,   -88)      12       12           12                      
+  (    7,   -88)      12       12           12                      
+  (    8,   -88)      12       12           12                      
+  (    9,   -88)      12       12           12                      
+  (   10,   -88)      12       12           12                      
+  (   11,   -88)      12       12           12                      
+  (   12,   -88)      12       12           12                      
+  (   13,   -88)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (-3, -90), stroke tramway#1 at (-1, -86)
+
+## spawn-blue (spawn) along z
+TRANSECT 30 stations from (0, -101) to (0, -72), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,  -101)      12       12           12                      
+  (    0,  -100)      12       12           12                      
+  (    0,   -99)      12       12           12                      
+  (    0,   -98)      12       12           12                      
+  (    0,   -97)      12       12           12                      
+  (    0,   -96)      12       12           12                      
+  (    0,   -95)      12       12           26                      
+  (    0,   -94)      12       12           26  spawn spawn-1#1     
+  (    0,   -93)      12       12           26  spawn spawn-1#1     
+  (    0,   -92)      12       12           26  spawn spawn-1#1     
+  (    0,   -91)      12       12           26  spawn spawn-1#1     
+  (    0,   -90)      12       12           26  spawn spawn-1#1     
+  (    0,   -89)      12       12           26  spawn spawn-1#1     
+  (    0,   -88)      12       12           26  spawn spawn-1#1     
+  (    0,   -87)      12       12           26  spawn spawn-1#1     
+  (    0,   -86)      12       12           26  stroke tramway#1    
+  (    0,   -85)      12       12           26  stroke tramway#1    
+  (    0,   -84)      12       12           26  stroke tramway#1    
+  (    0,   -83)      12       12           26  stroke tramway#1    
+  (    0,   -82)      12       12           26  stroke tramway#1    
+  (    0,   -81)      12       12           12  stroke tramway#1    
+  (    0,   -80)      12       12           12  stroke tramway#1    
+  (    0,   -79)      12       12           12  stroke tramway#1    
+  (    0,   -78)      12       12           12  stroke tramway#1    
+  (    0,   -77)      12       12           12  stroke tramway#1    
+  (    0,   -76)      12       12           12  stroke tramway#1    
+  (    0,   -75)      16       16           16  stroke tramway#1    BARRIER +4
+  (    0,   -74)      16       16           16  stroke tramway#1    
+  (    0,   -73)      18       18           18  stroke tramway#1    scramble +2
+  (    0,   -72)      18       18           18  stroke tramway#1    
+rises 2, falls 0, worst step 4: 1 barrier, 1 scramble, 0 drop — BARRIER +4 at (0, -75); scramble +2 at (0, -73) | walked end to end
+beside: spawn spawn-1#1 at (-2, -94), stroke tramway#1 at (-1, -86)

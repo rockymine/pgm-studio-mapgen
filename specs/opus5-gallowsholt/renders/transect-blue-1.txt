@@ -1,0 +1,61 @@
+## blue-1 (wool) along x
+TRANSECT 25 stations from (-42, -80) to (-18, -80), every 1
+  station        ground  surface  water  top  standing            step
+  (  -42,   -80)                                                    void
+  (  -41,   -80)                                                    void
+  (  -40,   -80)      11       11           11                      
+  (  -39,   -80)      14       14           14                      BARRIER +3
+  (  -38,   -80)      14       14           14                      
+  (  -37,   -80)      11       11           11                      -3
+  (  -36,   -80)      11       11           11                      
+  (  -35,   -80)      11       11           21                      
+  (  -34,   -80)      11       11           21  wool wool-1#1       
+  (  -33,   -80)      11       11           21  wool wool-1#1       
+  (  -32,   -80)      11       11           21  wool wool-1#1       
+  (  -31,   -80)      11       11           52  wool wool-1#1       
+  (  -30,   -80)      11       11           52  wool wool-1#1       
+  (  -29,   -80)      11       11           52  wool wool-1#1       
+  (  -28,   -80)      11       11           21  wool wool-1#1       
+  (  -27,   -80)      11       11           21  wool wool-1#1       
+  (  -26,   -80)      11       11           21  redstoneline 0#1    
+  (  -25,   -80)      11       11           11                      
+  (  -24,   -80)      11       11           11                      
+  (  -23,   -80)      11       11           11                      
+  (  -22,   -80)      11       11           11                      
+  (  -21,   -80)      11       11           11                      
+  (  -20,   -80)      11       11           11                      
+  (  -19,   -80)      11       11           11                      
+  (  -18,   -80)      11       11           11                      
+rises 1, falls 1, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (-39, -80) | walked end to end
+beside: wool wool-1#1 at (-34, -82), redstoneline 0#1 at (-26, -82)
+
+## blue-1 (wool) along z
+TRANSECT 25 stations from (-30, -92) to (-30, -68), every 1
+  station        ground  surface  water  top  standing            step
+  (  -30,   -92)      11       11           11                      
+  (  -30,   -91)      11       11           11                      
+  (  -30,   -90)      11       11           11                      
+  (  -30,   -89)      11       11           11                      
+  (  -30,   -88)      11       11           11                      
+  (  -30,   -87)      11       11           11                      
+  (  -30,   -86)      11       11           11                      
+  (  -30,   -85)      11       11           17                      
+  (  -30,   -84)      11       11           18  wool wool-1#1       
+  (  -30,   -83)      11       11           19  wool wool-1#1       
+  (  -30,   -82)      11       11           20  wool wool-1#1       
+  (  -30,   -81)      11       11           52  wool wool-1#1       
+  (  -30,   -80)      11       11           52  wool wool-1#1       
+  (  -30,   -79)      11       11           52  wool wool-1#1       
+  (  -30,   -78)      11       11           19  wool wool-1#1       
+  (  -30,   -77)      11       11           18  wool wool-1#1       
+  (  -30,   -76)      11       11           17                      
+  (  -30,   -75)      11       11           11                      
+  (  -30,   -74)      11       11           11                      
+  (  -30,   -73)      11       11           11                      
+  (  -30,   -72)      11       11           11                      
+  (  -30,   -71)      14       14           14                      BARRIER +3
+  (  -30,   -70)      14       14           14                      
+  (  -30,   -69)      11       11           11                      -3
+  (  -30,   -68)      11       11           11                      
+rises 1, falls 1, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (-30, -71) | walked end to end
+beside: wool wool-1#1 at (-32, -84)

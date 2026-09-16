@@ -1,0 +1,59 @@
+## orange-0 (wool) along x
+TRANSECT 23 stations from (-50, 80) to (-28, 80), every 1
+  station        ground  surface  water  top  standing            step
+  (  -50,    80)                                                    void
+  (  -49,    80)                                                    void
+  (  -48,    80)      11       11           11                      
+  (  -47,    80)      11       11           11                      
+  (  -46,    80)      11       11           11                      
+  (  -45,    80)      11       11           21                      
+  (  -44,    80)      11       11           21  wool wool-2         
+  (  -43,    80)      11       11           21  wool wool-2         
+  (  -42,    80)      11       11           21  wool wool-2         
+  (  -41,    80)      11       11           52  wool wool-2         
+  (  -40,    80)      11       11           52  wool wool-2         
+  (  -39,    80)      11       11           52  wool wool-2         
+  (  -38,    80)      11       11           21  wool wool-2         
+  (  -37,    80)      11       11           21  wool wool-2         
+  (  -36,    80)      11       11           21                      
+  (  -35,    80)      11       11           11                      
+  (  -34,    80)      11       11           11                      
+  (  -33,    80)      14       14           14                      BARRIER +3
+  (  -32,    80)      14       14           14                      
+  (  -31,    80)      11       11           11                      -3
+  (  -30,    80)                                                    void
+  (  -29,    80)                                                    void
+  (  -28,    80)                                                    void
+rises 1, falls 1, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (-33, 80) | walked end to end
+beside: wool wool-2 at (-44, 78), stroke lane-to-b at (-40, 78)
+
+## orange-0 (wool) along z
+TRANSECT 25 stations from (-40, 68) to (-40, 92), every 1
+  station        ground  surface  water  top  standing            step
+  (  -40,    68)      11       11           18  tree thorn-2        
+  (  -40,    69)      11       11           18  tree thorn-2        
+  (  -40,    70)      11       11           11                      
+  (  -40,    71)      11       11           11                      
+  (  -40,    72)      11       11           11                      
+  (  -40,    73)      11       11           11                      
+  (  -40,    74)      14       14           14                      BARRIER +3
+  (  -40,    75)      14       14           17  redstoneline 1      
+  (  -40,    76)      11       11           18  wool wool-2         -3
+  (  -40,    77)      11       11           19  stroke lane-to-b    
+  (  -40,    78)      11       11           20  stroke lane-to-b    
+  (  -40,    79)      11       11           52  wool wool-2         
+  (  -40,    80)      11       11           52  wool wool-2         
+  (  -40,    81)      11       11           52  wool wool-2         
+  (  -40,    82)      11       11           19  wool wool-2         
+  (  -40,    83)      10       10           18  wool wool-2         -1
+  (  -40,    84)      11       11           17                      +1
+  (  -40,    85)      11       11           11                      
+  (  -40,    86)      11       11           11                      
+  (  -40,    87)      11       11           11                      
+  (  -40,    88)      11       11           11                      
+  (  -40,    89)      11       11           11                      
+  (  -40,    90)      11       11           11                      
+  (  -40,    91)      11       11           11                      
+  (  -40,    92)      11       11           11                      
+rises 2, falls 2, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (-40, 74) | walked end to end
+beside: tree thorn-2 at (-41, 66), redstoneline 1 at (-42, 75), wool wool-2 at (-42, 76), stroke lane-to-b at (-40, 77)

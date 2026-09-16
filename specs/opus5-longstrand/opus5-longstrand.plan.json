@@ -1,0 +1,276 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Longstrand"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "mirror_z",
+  "maxPlayers": 20,
+  "surface": 10,
+  "observerY": 42
+ },
+ "pieces": [
+  {
+   "id": "front-bar",
+   "role": "piece",
+   "rect": [
+    -7,
+    3,
+    12,
+    3
+   ]
+  },
+  {
+   "id": "neck",
+   "role": "piece",
+   "rect": [
+    -3,
+    6,
+    5,
+    3
+   ]
+  },
+  {
+   "id": "hub",
+   "role": "piece",
+   "rect": [
+    -6,
+    9,
+    12,
+    2
+   ]
+  },
+  {
+   "id": "lonning",
+   "role": "piece",
+   "rect": [
+    -2,
+    11,
+    4,
+    7
+   ]
+  },
+  {
+   "id": "spawn-t1",
+   "role": "piece",
+   "rect": [
+    -2,
+    18,
+    4,
+    2
+   ]
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    -1,
+    20,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "dune-w",
+   "role": "piece",
+   "rect": [
+    3,
+    11,
+    2,
+    7
+   ]
+  },
+  {
+   "id": "dune-n",
+   "role": "piece",
+   "rect": [
+    5,
+    11,
+    3,
+    2
+   ]
+  },
+  {
+   "id": "dune-s",
+   "role": "piece",
+   "rect": [
+    5,
+    16,
+    3,
+    2
+   ]
+  },
+  {
+   "id": "dune-e",
+   "role": "piece",
+   "rect": [
+    8,
+    11,
+    2,
+    7
+   ]
+  },
+  {
+   "id": "wool-a-room",
+   "role": "wool-room",
+   "rect": [
+    10,
+    16,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "strand-w",
+   "role": "piece",
+   "rect": [
+    -6,
+    11,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "wool-b-t1",
+   "role": "piece",
+   "rect": [
+    -9,
+    12,
+    3,
+    4
+   ]
+  },
+  {
+   "id": "wool-b-room",
+   "role": "wool-room",
+   "rect": [
+    -11,
+    14,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "stone-w",
+   "role": "piece",
+   "rect": [
+    -5,
+    -1,
+    3,
+    2
+   ],
+   "mirrors": false
+  },
+  {
+   "id": "stone-e",
+   "role": "piece",
+   "rect": [
+    2,
+    -1,
+    3,
+    2
+   ],
+   "mirrors": false
+  }
+ ],
+ "zones": [
+  {
+   "id": "hop-w-n",
+   "rect": [
+    -5,
+    1,
+    3,
+    2
+   ],
+   "holes": []
+  },
+  {
+   "id": "hop-w-s",
+   "rect": [
+    -5,
+    -3,
+    3,
+    2
+   ],
+   "holes": []
+  },
+  {
+   "id": "hop-e-n",
+   "rect": [
+    2,
+    1,
+    3,
+    2
+   ],
+   "holes": []
+  },
+  {
+   "id": "hop-e-s",
+   "rect": [
+    2,
+    -3,
+    3,
+    2
+   ],
+   "holes": []
+  },
+  {
+   "id": "hop-mid",
+   "rect": [
+    -2,
+    -1,
+    4,
+    2
+   ],
+   "holes": []
+  },
+  {
+   "id": "tide",
+   "rect": [
+    -7,
+    -3,
+    2,
+    6
+   ],
+   "holes": [],
+   "kind": "water-lane"
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     5,
+     7
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-a-room",
+    "at": [
+     5,
+     5
+    ]
+   },
+   {
+    "id": "wool-2",
+    "piece": "wool-b-room",
+    "at": [
+     5,
+     5
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

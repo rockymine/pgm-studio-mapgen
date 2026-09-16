@@ -1,0 +1,44 @@
+HOW THIS BOARD IS COME AT
+
+  wool at (45, -50)
+    The attacker walks 158 blocks to it; the defender 64, a ratio of 0.41.
+    A player already at the crossing is 48 blocks from it — nearer than a respawn, so the defence that matters is whoever was already out.
+      Neither side is obviously first to it.
+    4 ways in. The last choice is made at (5, 65) and closes at (15, -40), 34 blocks short of the objective.
+      Going round the merge saves the defender 13 blocks, so the defence arrives from behind the objective while the attack arrives at its front. Those are different ground and the objective is the easier for it.
+    The attack covers 22% of the ground the defence crosses to get here. The two sides share some of the approach and not all of it.
+    Walking attack — 158 blocks, 4 ways, 3 decisions:
+      round the 20-cell hole at (0, 0): choose at (5, 65), live over 109 blocks, the other way 1.13× the shortest.
+      round the 2-cell hole at (-20, 50): choose at (5, 65), live over 109 blocks, the other way 1.27× the shortest.
+      round the 2-cell hole at (10, 50): choose at (5, 65), live over 109 blocks, the other way 1.03× the shortest.
+    Walking back-run — 158 blocks, 4 ways, 3 decisions:
+      round the 20-cell hole at (0, 0): choose at (25, -50), live over 138 blocks, the other way 1.13× the shortest.
+      round the 2-cell hole at (-20, 50): choose at (15, 15), live over 69 blocks, the other way 1.27× the shortest.
+      round the 2-cell hole at (10, 50): choose at (15, 30), live over 54 blocks, the other way 1.03× the shortest.
+    Walking defend — 64 blocks, 2 ways, 1 decision:
+      round the 2-cell hole at (10, -55): choose at (-5, -65), live over 44 blocks, the other way 1.11× the shortest.
+    Walking chase — 48 blocks, 2 ways, 1 decision:
+      round the 2-cell hole at (10, -55): choose at (5, -30), live over 38 blocks, the other way 1.54× the shortest.
+
+  wool at (-50, -50)
+    The attacker walks 167 blocks to it; the defender 58, a ratio of 0.35.
+    A player already at the crossing is 52 blocks from it — nearer than a respawn, so the defence that matters is whoever was already out.
+      Neither side is obviously first to it.
+    4 ways in. The last choice is made at (5, 65) and closes at (-20, -45), 32 blocks short of the objective.
+      Going round the merge saves the defender 15 blocks, so the defence arrives from behind the objective while the attack arrives at its front. Those are different ground and the objective is the easier for it.
+    The attack covers 35% of the ground the defence crosses to get here. The two sides share some of the approach and not all of it.
+    Walking attack — 167 blocks, 4 ways, 3 decisions:
+      round the 20-cell hole at (0, 0): choose at (0, 35), live over 74 blocks, the other way 1.06× the shortest.
+      round the 2-cell hole at (-20, 50): choose at (5, 65), live over 120 blocks, the other way 1.10× the shortest.
+      round the 2-cell hole at (10, 50): choose at (5, 65), live over 32 blocks, the other way 1.07× the shortest.
+    Walking back-run — 167 blocks, 4 ways, 3 decisions:
+      round the 20-cell hole at (0, 0): choose at (-25, -50), live over 120 blocks, the other way 1.06× the shortest.
+      round the 2-cell hole at (-20, 50): choose at (-20, 35), live over 26 blocks, the other way 1.10× the shortest.
+      round the 2-cell hole at (10, 50): choose at (-20, 15), live over 75 blocks, the other way 1.07× the shortest.
+    Walking defend — 58 blocks, 2 ways, 1 decision:
+      round the 2-cell hole at (-10, -55): choose at (-5, -75), live over 48 blocks, the other way 1.33× the shortest.
+    Walking chase — 52 blocks, one way, no choice to make.
+
+WHAT NO JOURNEY REACHES
+
+  Every piece of ground is on somebody's way somewhere.

@@ -1,0 +1,215 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Gallowsholt"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 20,
+  "surface": 11,
+  "observerY": 40
+ },
+ "pieces": [
+  {
+   "id": "hub-back",
+   "role": "piece",
+   "rect": [
+    -3,
+    13,
+    8,
+    2
+   ]
+  },
+  {
+   "id": "hub-front",
+   "role": "piece",
+   "rect": [
+    -3,
+    9,
+    8,
+    2
+   ]
+  },
+  {
+   "id": "hub-west",
+   "role": "piece",
+   "rect": [
+    -3,
+    11,
+    4,
+    2
+   ]
+  },
+  {
+   "id": "hub-east",
+   "role": "piece",
+   "rect": [
+    3,
+    11,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "front-bar",
+   "role": "piece",
+   "rect": [
+    -4,
+    6,
+    9,
+    3
+   ]
+  },
+  {
+   "id": "front-w",
+   "role": "piece",
+   "rect": [
+    -4,
+    4,
+    3,
+    2
+   ]
+  },
+  {
+   "id": "front-e",
+   "role": "piece",
+   "rect": [
+    1,
+    4,
+    3,
+    2
+   ]
+  },
+  {
+   "id": "spawn-t1",
+   "role": "piece",
+   "rect": [
+    -2,
+    15,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    -2,
+    17,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "wool-a-t1",
+   "role": "piece",
+   "rect": [
+    3,
+    15,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "wool-a-room",
+   "role": "wool-room",
+   "rect": [
+    5,
+    15,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "wool-b-t1",
+   "role": "piece",
+   "rect": [
+    -9,
+    13,
+    6,
+    2
+   ]
+  },
+  {
+   "id": "wool-b-room",
+   "role": "wool-room",
+   "rect": [
+    -9,
+    15,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "causey",
+   "role": "piece",
+   "rect": [
+    -3,
+    -1,
+    6,
+    2
+   ],
+   "surface": 15,
+   "mirrors": false
+  }
+ ],
+ "zones": [
+  {
+   "id": "crossing-s",
+   "rect": [
+    -4,
+    1,
+    8,
+    3
+   ],
+   "holes": []
+  },
+  {
+   "id": "crossing-n",
+   "rect": [
+    -4,
+    -4,
+    8,
+    3
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     5,
+     7
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-a-room",
+    "at": [
+     5,
+     5
+    ]
+   },
+   {
+    "id": "wool-2",
+    "piece": "wool-b-room",
+    "at": [
+     5,
+     5
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

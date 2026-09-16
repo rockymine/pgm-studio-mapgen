@@ -1,0 +1,64 @@
+## spawn-blue (spawn) along x
+TRANSECT 27 stations from (-13, -108) to (13, -108), every 1
+  station        ground  surface  water  top  standing            step
+  (  -13,  -108)      12       12           12                      
+  (  -12,  -108)      12       12           12                      
+  (  -11,  -108)      12       12           12                      
+  (  -10,  -108)      12       12           12                      
+  (   -9,  -108)      12       12           12                      
+  (   -8,  -108)      12       12           12                      
+  (   -7,  -108)      12       12           12                      
+  (   -6,  -108)      12       12           12                      
+  (   -5,  -108)      12       12           22                      
+  (   -4,  -108)      12       12           23  spawn spawn-1#1     
+  (   -3,  -108)      12       12           24  spawn spawn-1#1     
+  (   -2,  -108)      12       12           25  spawn spawn-1#1     
+  (   -1,  -108)      12       12           26  spawn spawn-1#1     
+  (    0,  -108)      12       12           26  spawn spawn-1#1     
+  (    1,  -108)      11       11           25  spawn spawn-1#1     -1
+  (    2,  -108)      12       12           24  spawn spawn-1#1     +1
+  (    3,  -108)      12       12           23  spawn spawn-1#1     
+  (    4,  -108)      12       12           22                      
+  (    5,  -108)                                                    void
+  (    6,  -108)                                                    void
+  (    7,  -108)                                                    void
+  (    8,  -108)                                                    void
+  (    9,  -108)                                                    void
+  (   10,  -108)                                                    void
+  (   11,  -108)                                                    void
+  (   12,  -108)                                                    void
+  (   13,  -108)                                                    void
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (-4, -110)
+
+## spawn-blue (spawn) along z
+TRANSECT 26 stations from (0, -117) to (0, -92), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,  -117)                                                    void
+  (    0,  -116)      12       12           12                      
+  (    0,  -115)      12       12           22                      
+  (    0,  -114)      12       12           23  spawn spawn-1#1     
+  (    0,  -113)      12       12           24  spawn spawn-1#1     
+  (    0,  -112)      12       12           25  spawn spawn-1#1     
+  (    0,  -111)      11       11           26  spawn spawn-1#1     -1
+  (    0,  -110)      12       12           26  spawn spawn-1#1     +1
+  (    0,  -109)      11       11           26  spawn spawn-1#1     -1
+  (    0,  -108)      12       12           26  spawn spawn-1#1     +1
+  (    0,  -107)      12       12           25  spawn spawn-1#1     
+  (    0,  -106)      12       12           24  spawn spawn-1#1     
+  (    0,  -105)      12       12           23  spawn spawn-1#1     
+  (    0,  -104)      12       12           22                      
+  (    0,  -103)      12       12           12                      
+  (    0,  -102)      12       12           12                      
+  (    0,  -101)      12       12           12                      
+  (    0,  -100)      12       12           12                      
+  (    0,   -99)      12       12           12                      
+  (    0,   -98)      12       12           12                      
+  (    0,   -97)      12       12           12                      
+  (    0,   -96)      12       12           12                      
+  (    0,   -95)      12       12           12                      
+  (    0,   -94)      12       12           12                      
+  (    0,   -93)      12       12           12                      
+  (    0,   -92)      12       12           12                      
+rises 2, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (-2, -114)

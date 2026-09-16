@@ -1,0 +1,61 @@
+## erratic-1 (boulder) along x
+TRANSECT 25 stations from (-24, 30) to (0, 30), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,    30)      12       12           12                      
+  (  -23,    30)      12       12           12                      
+  (  -22,    30)      12       12           12                      
+  (  -21,    30)      11       11           11                      -1
+  (  -20,    30)      12       12           12                      +1
+  (  -19,    30)      12       12           12                      
+  (  -18,    30)      12       12           12                      
+  (  -17,    30)      11       11           11                      -1
+  (  -16,    30)      12       12           12                      +1
+  (  -15,    30)      12       12           12                      
+  (  -14,    30)      12       12           16  boulder erratic-1   
+  (  -13,    30)      12       12           16  boulder erratic-1   
+  (  -12,    30)      12       12           17  boulder erratic-1   
+  (  -11,    30)      12       12           16  boulder erratic-1   
+  (  -10,    30)      12       12           16  boulder erratic-1   
+  (   -9,    30)      12       12           12                      
+  (   -8,    30)      12       12           12  stroke tramway      
+  (   -7,    30)      12       12           12  stroke tramway      
+  (   -6,    30)      12       12           12  stroke tramway      
+  (   -5,    30)      12       12           12  stroke tramway      
+  (   -4,    30)      12       12           12                      
+  (   -3,    30)      12       12           12                      
+  (   -2,    30)      12       12           12                      
+  (   -1,    30)      12       12           12                      
+  (    0,    30)      12       12           12                      
+rises 2, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree birk-0 at (-26, 28), boulder erratic-1 at (-14, 29), stroke tramway at (-8, 29)
+
+## erratic-1 (boulder) along z
+TRANSECT 25 stations from (-12, 18) to (-12, 42), every 1
+  station        ground  surface  water  top  standing            step
+  (  -12,    18)                                                    void
+  (  -12,    19)                                                    void
+  (  -12,    20)                                                    void
+  (  -12,    21)                                                    void
+  (  -12,    22)                                                    void
+  (  -12,    23)                                                    void
+  (  -12,    24)      12       12           12                      
+  (  -12,    25)      12       12           12                      
+  (  -12,    26)      12       12           12                      
+  (  -12,    27)      12       12           12                      
+  (  -12,    28)      12       12           15  boulder erratic-1   
+  (  -12,    29)      12       12           16  boulder erratic-1   
+  (  -12,    30)      12       12           17  boulder erratic-1   
+  (  -12,    31)      12       12           16  boulder erratic-1   
+  (  -12,    32)      12       12           16  boulder erratic-1   
+  (  -12,    33)      12       12           14  boulder erratic-1   
+  (  -12,    34)      12       12           12                      
+  (  -12,    35)      12       12           12                      
+  (  -12,    36)      12       12           12                      
+  (  -12,    37)      12       12           12                      
+  (  -12,    38)      12       12           12                      
+  (  -12,    39)      12       12           12                      
+  (  -12,    40)      12       12           12                      
+  (  -12,    41)      12       12           12                      
+  (  -12,    42)      14       14           14                      scramble +2
+rises 1, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-12, 42) | walked end to end
+beside: boulder erratic-1 at (-13, 28), house cabin-1 at (-14, 41)
