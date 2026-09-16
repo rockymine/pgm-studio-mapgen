@@ -1,0 +1,363 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Stavelbridge"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 32,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "hub-t1",
+   "role": "piece",
+   "rect": [
+    -10,
+    15,
+    16,
+    3
+   ]
+  },
+  {
+   "id": "hub-t2",
+   "role": "piece",
+   "rect": [
+    -10,
+    7,
+    10,
+    3
+   ]
+  },
+  {
+   "id": "hub-t3",
+   "role": "piece",
+   "rect": [
+    -10,
+    10,
+    3,
+    5
+   ]
+  },
+  {
+   "id": "hub-t4",
+   "role": "piece",
+   "rect": [
+    -3,
+    10,
+    3,
+    5
+   ]
+  },
+  {
+   "id": "hub-t5",
+   "role": "piece",
+   "rect": [
+    3,
+    7,
+    3,
+    8
+   ]
+  },
+  {
+   "id": "spawn-t1",
+   "role": "piece",
+   "rect": [
+    -11,
+    14,
+    1,
+    3
+   ]
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    -13,
+    14,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "wool-a-t1",
+   "role": "piece",
+   "rect": [
+    -2,
+    21,
+    3,
+    9
+   ]
+  },
+  {
+   "id": "wool-a-t2",
+   "role": "piece",
+   "rect": [
+    1,
+    21,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "wool-a-t3",
+   "role": "piece",
+   "rect": [
+    1,
+    27,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "wool-a-t4",
+   "role": "piece",
+   "rect": [
+    -2,
+    18,
+    5,
+    3
+   ]
+  },
+  {
+   "id": "wool-a-t5",
+   "role": "piece",
+   "rect": [
+    3,
+    21,
+    3,
+    6
+   ]
+  },
+  {
+   "id": "wool-a-room",
+   "role": "wool-room",
+   "rect": [
+    3,
+    27,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "wool-b-t1",
+   "role": "piece",
+   "rect": [
+    6,
+    7,
+    6,
+    3
+   ]
+  },
+  {
+   "id": "wool-b-room",
+   "role": "wool-room",
+   "rect": [
+    12,
+    7,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "wool-c-t1",
+   "role": "piece",
+   "rect": [
+    -13,
+    7,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "wool-c-room",
+   "role": "wool-room",
+   "rect": [
+    -15,
+    7,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "frontline-t1",
+   "role": "piece",
+   "rect": [
+    -10,
+    4,
+    16,
+    3
+   ]
+  },
+  {
+   "id": "frontline-t2",
+   "role": "piece",
+   "rect": [
+    -7,
+    2,
+    7,
+    2
+   ]
+  },
+  {
+   "id": "frontline-t3",
+   "role": "piece",
+   "rect": [
+    2,
+    2,
+    4,
+    2
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -7,
+    -2,
+    14,
+    4
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     5,
+     7
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-a-room",
+    "at": [
+     7.5,
+     7.5
+    ]
+   },
+   {
+    "id": "wool-2",
+    "piece": "wool-b-room",
+    "at": [
+     5,
+     7
+    ]
+   },
+   {
+    "id": "wool-3",
+    "piece": "wool-c-room",
+    "at": [
+     5,
+     7
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": [
+  {
+   "id": "hub",
+   "kind": "hub",
+   "rect": [
+    -10,
+    7,
+    16,
+    11
+   ],
+   "members": [
+    "hub-t1",
+    "hub-t2",
+    "hub-t3",
+    "hub-t4",
+    "hub-t5"
+   ]
+  },
+  {
+   "id": "spawn",
+   "kind": "spawn",
+   "rect": [
+    -13,
+    14,
+    3,
+    3
+   ],
+   "members": [
+    "spawn-t1",
+    "spawn-room"
+   ]
+  },
+  {
+   "id": "wool-a",
+   "kind": "wool",
+   "rect": [
+    -2,
+    18,
+    8,
+    12
+   ],
+   "members": [
+    "wool-a-t1",
+    "wool-a-t2",
+    "wool-a-t3",
+    "wool-a-t4",
+    "wool-a-t5",
+    "wool-a-room"
+   ]
+  },
+  {
+   "id": "wool-b",
+   "kind": "wool",
+   "rect": [
+    6,
+    7,
+    8,
+    3
+   ],
+   "members": [
+    "wool-b-t1",
+    "wool-b-room"
+   ]
+  },
+  {
+   "id": "wool-c",
+   "kind": "wool",
+   "rect": [
+    -15,
+    7,
+    5,
+    3
+   ],
+   "members": [
+    "wool-c-t1",
+    "wool-c-room"
+   ]
+  },
+  {
+   "id": "frontline",
+   "kind": "frontline",
+   "rect": [
+    -10,
+    2,
+    16,
+    5
+   ],
+   "members": [
+    "frontline-t1",
+    "frontline-t2",
+    "frontline-t3"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,60 @@
+## spawn-red (spawn) along x
+TRANSECT 32 stations from (-13, 95) to (18, 95), every 1
+  station        ground  surface  water  top  standing            step
+  (  -13,    95)                                                    void
+  (  -12,    95)                                                    void
+  (  -11,    95)                                                    void
+  (  -10,    95)                                                    void
+  (   -9,    95)                                                    void
+  (   -8,    95)                                                    void
+  (   -7,    95)                                                    void
+  (   -6,    95)                                                    void
+  (   -5,    95)      21       21           35                      
+  (   -4,    95)      21       21           35  spawn spawn-1       
+  (   -3,    95)      21       21           35  spawn spawn-1       
+  (   -2,    95)      21       21           35  spawn spawn-1       
+  (   -1,    95)      21       21           35  spawn spawn-1       
+  (    0,    95)      21       21           35  spawn spawn-1       
+  (    1,    95)      21       21           35  spawn spawn-1       
+  (    2,    95)      21       21           35  spawn spawn-1       
+  (    3,    95)      21       21           35  spawn spawn-1       
+  (    4,    95)      21       21           35  spawn spawn-1       
+  (    5,    95)      21       21           35  spawn spawn-1       
+  (    6,    95)      21       21           35  spawn spawn-1       
+  (    7,    95)      21       21           35  spawn spawn-1       
+  (    8,    95)      21       21           35  spawn spawn-1       
+  (    9,    95)      21       21           35                      
+  (   10,    95)                                                    void
+  (   11,    95)                                                    void
+  (   12,    95)                                                    void
+  (   13,    95)                                                    void
+  (   14,    95)                                                    void
+  (   15,    95)                                                    void
+  (   16,    95)                                                    void
+  (   17,    95)                                                    void
+  (   18,    95)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (-4, 93)
+
+## spawn-red (spawn) along z
+TRANSECT 17 stations from (2, 82) to (2, 98), every 1
+  station        ground  surface  water  top  standing            step
+  (    2,    82)      21       21           21                      
+  (    2,    83)      21       21           21                      
+  (    2,    84)      21       21           21                      
+  (    2,    85)      21       21           21                      
+  (    2,    86)      21       21           21                      
+  (    2,    87)      21       21           21                      
+  (    2,    88)      21       21           21                      
+  (    2,    89)      21       21           21                      
+  (    2,    90)      21       21           21                      
+  (    2,    91)      21       21           31                      
+  (    2,    92)      21       21           32  spawn spawn-1       
+  (    2,    93)      21       21           33  spawn spawn-1       
+  (    2,    94)      21       21           34  spawn spawn-1       
+  (    2,    95)      21       21           35  spawn spawn-1       
+  (    2,    96)      21       21           34  spawn spawn-1       
+  (    2,    97)      21       21           33  spawn spawn-1       
+  (    2,    98)      21       21           32  spawn spawn-1       
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (0, 92)
