@@ -1,0 +1,234 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Stannerford"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 8,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "hub-t1",
+   "role": "piece",
+   "rect": [
+    -5,
+    16,
+    11,
+    3
+   ]
+  },
+  {
+   "id": "hub-t2",
+   "role": "piece",
+   "rect": [
+    -5,
+    10,
+    11,
+    3
+   ]
+  },
+  {
+   "id": "hub-t3",
+   "role": "piece",
+   "rect": [
+    -5,
+    13,
+    5,
+    3
+   ]
+  },
+  {
+   "id": "hub-t4",
+   "role": "piece",
+   "rect": [
+    3,
+    13,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "spawn-t1",
+   "role": "piece",
+   "rect": [
+    1,
+    19,
+    3,
+    2
+   ]
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    1,
+    21,
+    3,
+    2
+   ]
+  },
+  {
+   "id": "wool-a-t1",
+   "role": "piece",
+   "rect": [
+    -8,
+    12,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "wool-a-room",
+   "role": "wool-room",
+   "rect": [
+    -10,
+    12,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "frontline-t1",
+   "role": "piece",
+   "rect": [
+    -4,
+    7,
+    8,
+    3
+   ]
+  },
+  {
+   "id": "frontline-t2",
+   "role": "piece",
+   "rect": [
+    -4,
+    5,
+    3,
+    2
+   ]
+  },
+  {
+   "id": "frontline-t3",
+   "role": "piece",
+   "rect": [
+    2,
+    5,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "mid-stone-0",
+   "role": "piece",
+   "rect": [
+    -3,
+    -2,
+    6,
+    4
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -4,
+    -5,
+    8,
+    10
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     6,
+     4
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-a-room",
+    "at": [
+     4,
+     6
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": [
+  {
+   "id": "hub",
+   "kind": "hub",
+   "rect": [
+    -5,
+    10,
+    11,
+    9
+   ],
+   "members": [
+    "hub-t1",
+    "hub-t2",
+    "hub-t3",
+    "hub-t4"
+   ]
+  },
+  {
+   "id": "spawn",
+   "kind": "spawn",
+   "rect": [
+    1,
+    19,
+    3,
+    4
+   ],
+   "members": [
+    "spawn-t1",
+    "spawn-room"
+   ]
+  },
+  {
+   "id": "wool-a",
+   "kind": "wool",
+   "rect": [
+    -10,
+    12,
+    5,
+    3
+   ],
+   "members": [
+    "wool-a-t1",
+    "wool-a-room"
+   ]
+  },
+  {
+   "id": "frontline",
+   "kind": "frontline",
+   "rect": [
+    -4,
+    5,
+    8,
+    5
+   ],
+   "members": [
+    "frontline-t1",
+    "frontline-t2",
+    "frontline-t3"
+   ]
+  }
+ ]
+}

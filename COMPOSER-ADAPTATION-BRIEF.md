@@ -14,7 +14,8 @@ answer here is not to avoid the composer but to refuse its output as a finished 
 
 **What it buys.** The composer knows how a CTW board is put together: a hub with a spawn hung off it, one
 or two wool approaches hanging off the hub's real free surface, a frontline fronting it, a mid band between
-the two fanned images, and a land budget that keeps a wool board about a third land. That arrangement is
+the two fanned images with a row of stepping stones in it, and a land budget that keeps a wool board about
+a third land. That arrangement is
 the thing that is hard to invent and easy to get wrong, and a board drawn from scratch that ignores it
 comes out illogical in ways no gate catches. **Take the arrangement.**
 
@@ -22,7 +23,7 @@ comes out illogical in ways no gate catches. **Take the arrangement.**
 
 | The composer does not | So the board arrives |
 |---|---|
-| place middle islands | one plain mid band, twenty blocks of build zone flush against both fronts, no stones, no centre island — the same crossing on every board |
+| vary the crossing's ground | the mid now carries a row of up to three stones astride the axis, funded from the units' own land — but the row is one lateral line at one depth, so there is no tiered island, no staggered pair and no stone off the band's own centre line |
 | place defence walls | `"walls": []`, always. A defence wall is authored, never composed |
 | state any elevation | no piece carries a `surface`; the whole board is flat at `globals.surface` 9 |
 | draw anything but rectangles | every piece is an axis-aligned cell rect; there is no curve, no spur, no taper anywhere in the document |

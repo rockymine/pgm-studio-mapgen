@@ -1,0 +1,52 @@
+HOW THIS BOARD IS COME AT
+
+  wool at (-28, -140)
+    The attacker walks 232 blocks to it; the defender 77, a ratio of 0.33.
+      Neither side is obviously first to it.
+    4 ways in. The last choice is made at (-16, 76) and closes at (-24, -136), 6 blocks short of the objective.
+      The defender's own walk runs through that merge, so both sides come up the same road. A defence has to be pushed forward to hold it, and the further forward the merge sits the more of the board it gives up to do so.
+    The attack covers 55% of the ground the defence crosses to get here. The two sides share some of the approach and not all of it.
+    Walking attack — 232 blocks, 4 ways, 3 decisions:
+      round the 6-cell hole at (-16, -128): choose at (-16, 76), live over 215 blocks, the other way 1.05× the shortest.
+      round the 4-cell hole at (-4, -72): choose at (-16, 76), live over 188 blocks, the other way 1.06× the shortest.
+      round the 4-cell hole at (0, 72): choose at (-24, 84), live over 199 blocks, the other way 1.13× the shortest.
+    Walking back-run — 232 blocks, 4 ways, 3 decisions:
+      round the 6-cell hole at (-16, -128): choose at (-28, -140), live over 221 blocks, the other way 1.05× the shortest.
+      round the 4-cell hole at (-4, -72): choose at (-16, -100), live over 176 blocks, the other way 1.06× the shortest.
+      round the 4-cell hole at (0, 72): choose at (-16, -52), live over 134 blocks, the other way 1.13× the shortest.
+    Walking defend — 77 blocks, 2 ways, 1 decision:
+      round the 4-cell hole at (-4, -72): choose at (16, -84), live over 35 blocks, the other way 1.52× the shortest.
+
+  wool at (-40, -56)
+    The attacker walks 165 blocks to it; the defender 72, a ratio of 0.44.
+      Neither side is obviously first to it.
+    2 ways in. The last choice is made at (-24, 84) and closes at (-16, -52), 26 blocks short of the objective.
+      Going round the merge saves the defender 3 blocks, so the defence arrives from behind the objective while the attack arrives at its front. Those are different ground and the objective is the easier for it.
+    The attack covers 20% of the ground the defence crosses to get here. The two sides share some of the approach and not all of it.
+    Walking attack — 165 blocks, 2 ways, 1 decision:
+      round the 4-cell hole at (0, 72): choose at (-24, 84), live over 139 blocks, the other way 1.18× the shortest.
+    Walking back-run — 165 blocks, 2 ways, 1 decision:
+      round the 4-cell hole at (0, 72): choose at (-16, -52), live over 134 blocks, the other way 1.18× the shortest.
+    Walking defend — 72 blocks, 2 ways, 1 decision:
+      round the 4-cell hole at (-4, -72): choose at (16, -84), live over 43 blocks, the other way 1.07× the shortest.
+
+  wool at (32, -56)
+    The attacker walks 172 blocks to it; the defender 46, a ratio of 0.27.
+      Neither side is obviously first to it.
+    2 ways in. The last choice is made at (-24, 84) and closes at (8, -48), 27 blocks short of the objective.
+      Going round the merge saves the defender 19 blocks, so the defence arrives from behind the objective while the attack arrives at its front. Those are different ground and the objective is the easier for it.
+    The attack covers 27% of the ground the defence crosses to get here. The two sides share some of the approach and not all of it.
+    Walking attack — 172 blocks, 2 ways, 1 decision:
+      round the 4-cell hole at (0, 72): choose at (-24, 84), live over 145 blocks, the other way 1.09× the shortest.
+    Walking back-run — 172 blocks, 2 ways, 1 decision:
+      round the 4-cell hole at (0, 72): choose at (8, 48), live over 43 blocks, the other way 1.09× the shortest.
+    Walking defend — 46 blocks, 2 ways, 1 decision:
+      round the 4-cell hole at (-4, -72): choose at (16, -84), live over 26 blocks, the other way 1.87× the shortest.
+
+WHAT NO JOURNEY REACHES
+
+  224 of 9472 blocks (2%) sit off every route between the places this board has. Reachable, and on the way to nothing.
+       112 blocks at (-8, -140) — wool-a-t1 (96), wool-a-t3 (16)
+       112 blocks at (4, 136) — wool-a-t1 (96), wool-a-t3 (16)
+
+  Ground is dead because no journey passes it, not because it is far out. Bring an objective to it, put a route through it, or take it off the board — decorating it only means players look at it on the way past.

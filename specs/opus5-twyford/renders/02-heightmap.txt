@@ -1,0 +1,133 @@
+HEIGHTMAP  1 char = 2x2 blocks (the top-left block of each)  x -84..82 across, z -128..126 down
+KEY  char = ground height above y8 in bands of 1 block(s): 0 = y8..8, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
+      -8   -7   -6   -5   -4   -3   -2   -1    0    1    2    3    4    5    6    7    8 
+     420864208642086420864208642086420864208642024680246802468024680246802468024680246802
+-128                   8888888888888999                                                  
+-126                   8HHH888888889999                                                  
+-124                   8HHH888888889999                                                  
+-122                   8HHH888888999999                                                  
+-120                   8HHH888889999999                                                  
+-118                   8HHH888889999999                                                  
+-116                   8HHH888899999999                                                  
+-114                   8HHH888899999999                                                  
+-112                           999999aa                                                  
+-110                           9aaaaaaa                                                  
+-108                           aaaaaaab                                                  
+-106                           aaaabbbb                                                  
+-104                           bbbbbbbc                                                  
+-102                           bbbbcccd                                                  
+-100                           bbbcccdd                                                  
+ -98                           bbcccddd                                                  
+ -96                 aaaaaaaaabbcccdddddddddddddddddccbaa99988888                        
+ -94                 a9aaaaaaabbcccddddddddddddddddddcbbaa9988888                        
+ -92                 a9aaaaaaabbccdddddddddddddddddddcbbaa9988788                        
+ -90                 a99aaaaaabbbcdddddddddddddddddddcbbaa9988788                        
+ -88                 aaaaaaaaabbbcdddddddddddddddddddcbaa99888777                        
+ -86                 aaaaaaaaabbbccdddddddddddddddddcbba998887777                        
+ -84                 aaaaaaaaabbbccdddddddddddddddddcbaa988887777                        
+ -82                 aaaaaaaaabbbccdddddddddddddddddcaa9888877777                        
+ -80                 aaaaaaaa        dddddddd        999888777777766666                  
+ -78                 aaaaaaaa        dddddddd        888877777677766HHH                  
+ -76                 aaaaaaaa        dddddddd        888777777677766HHH                  
+ -74                 aaaaaaaa        dddddddd        777777777677666HHH                  
+ -72 8887788999aaaaaaaaaaaaaa        ccdddddd        777776677667666HHH                  
+ -70 8888888999aaaaaaaaaaaaaa        cccccccc        666666667666666HHH                  
+ -68 8888888999aaaaaaaaaaaaaa        bbbbbbbb        666666666666666HHH                  
+ -66 8887888999aaaaaaaaaaaaaa        aaaaaaaa        666666666666666HHH                  
+ -64 8888888999aaaaaaaaaaaaaa        9aa99aa988777766666666666666                        
+ -62 8888888999aaaaaaaaaaaaaa        9999999988777766666666666666                        
+ -60 8888888899aaaaaaaaaaaaaa        8888888888777776666666666666                        
+ -58 8888888899aaaaaaaaaaaaaa        8887788887777766666655555555                        
+ -56 HHHHHHHH        aaaaaaaa        7777777777777766666655555555                        
+ -54 8HHHHHHH        aaaaaaaa        7777777777777776666555555555                        
+ -52 8HHHHHHH        aaaaaaaa        7777777777777776666555555555                        
+ -50 8HHHHHHH        aaaaaaaa        7777777777777776665555555555                        
+ -48                 aaaaaaaa988777777777777777777776665555555555                        
+ -46                 99999a99988777777777777777777777666555555555                        
+ -44                 99999999888777777777777777777777666555555444                        
+ -42                 99999988888777777777777777777776665555544444                        
+ -40                 99998888888777777777777777777776655544444444                        
+ -38                 98888888888877777777777777777776555444444444                        
+ -36                 88888888888777777777777777777766554444444444                        
+ -34                 88888888888877777777777777777765544444444444                        
+ -32                       888888777777777777      55444444444444                        
+ -30                       888888777777777777      54444444444444                        
+ -28                       788888777777777777      44444444444444                        
+ -26                       788887777777777777      44444444444444                        
+ -24                                                                                     
+ -22                                                                                     
+ -20                                                                                     
+ -18                                                                                     
+ -16                                                                                     
+ -14                                                                                     
+ -12                         11111111111111        11111111111111                        
+ -10                         11111111111111        11111111111111                        
+  -8                         11111111111111        11111111111111                        
+  -6                         11111111111111        11111111111111                        
+  -4                         11111111111111        11111111111111                        
+  -2                         11121111111111        11111111111011                        
+   0                         11101111112111        11111111112211                        
+   2                         11101111111111        11111111111211                        
+   4                         11111111111111        11111111111111                        
+   6                         11111111111111        11111111111111                        
+   8                         11111111111111        11111111111111                        
+  10                         11111111111111        11111111111111                        
+  12                                                                                     
+  14                                                                                     
+  16                                                                                     
+  18                                                                                     
+  20                                                                                     
+  22                                                                                     
+  24                         44444444444444      777777777777778887                      
+  26                         44444444444444      777777777777788887                      
+  28                         44444444444444      777777777777788888                      
+  30                         44444444444445      777777777777788888                      
+  32                         44444444444455677777777777777777788888888888                
+  34                         44444444444556777777777777777777788888888888                
+  36                         44444444445566777777777777777777788888888888                
+  38                         44444444455567777777777777777777788888888889                
+  40                         44444444555667777777777777777777788888899999                
+  42                         44445555556667777777777777777777788888999999                
+  44                         54455555556667777777777777777777788899999999                
+  46                         55555555556667777777777777777777778899aaaaaa                
+  48                         5555555555666777777777777777        aaaaaaaa        88888888
+  50                         5555555555666777777777777777        aaaaaaaa        8HHHHHHH
+  52                         5555555555666677777777777777        aaaaaaaa        8HHHHHHH
+  54                         5555555556666677777777777777        aaaaaaaa        8HHHHHHH
+  56                         5555555556666677777777777788        aaaaaaaaaaaaaa9988888888
+  58                         5566666566666677777888888888        aaaaaaaaaaaaaa9998888888
+  60                         5666666666666677777889988899        aaaaaaaaaaaaaa9998888888
+  62                         6666666666666667777899999999        aaaaaaaaaaaaaa9998888888
+  64                   666666666666666666        aaaaaaaa        aaaaaaaaaaaaaaa998888888
+  66                   6HHH66666666666666        bbbbbbbb        aaaaaaaaaaaaaaa998888788
+  68                   6HHH66666666666666        cccccccb        aaaaaaaaaaaaaaa999888888
+  70                   6HHH66676676666666        ddddddcc        aaaaaaaaaaaaaaa998887788
+  72                   6HHH66676677677777        dddddddc        aaaaaaaa                
+  74                   6HHH66777777777777        dddddddd        aaaaaaaa                
+  76                   6HHH66776677777888        dddddddd        aaaaaaaa                
+  78                   6HHH66777777788889        dddddddd        aaaaaaaa                
+  80                         77777788889abcdddddddddddddddddccbbbaaaaaaaa                
+  82                         7777788899aabcddddddddddddddddccbbbbaaaaaaaa                
+  84                         7777888899abcddddddddddddddddddcbbbbaaaaaaaa                
+  86                         777788899abbcddddddddddddddddddccbbbaaaaaaaa                
+  88                         77778899aabccddddddddddddddddddccbbbaaaaaaaa                
+  90                         78778899aabccddddddddddddddddddccbbbaaaaaa99                
+  92                         88888899aabccddddddddddddddddddccbbbaaaaaaa9                
+  94                         88888899aabbcddddddddddddddddddccbbbaaaaaaa9                
+  96                                                   ddddcccb                          
+  98                                                   dddcccbb                          
+ 100                                                   ddcccbbb                          
+ 102                                                   dccbbbbb                          
+ 104                                                   cbbbbbaa                          
+ 106                                                   bbaaaaaa                          
+ 108                                                   aaaaaaaa                          
+ 110                                                   aaaaaa99                          
+ 112                                                   a99999999888H888                  
+ 114                                                   999999998888HHHH                  
+ 116                                                   999999998888HHHH                  
+ 118                                                   999999988888HHHH                  
+ 120                                                   998999988888HHHH                  
+ 122                                                   999998888888HHHH                  
+ 124                                                   999998888888HHHH                  
+ 126                                                   999988888888HHHH                  
+low y8, high y21, range 13
