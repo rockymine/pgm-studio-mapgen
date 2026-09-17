@@ -1516,9 +1516,10 @@ reproduces each board, its score, a structural read and a board SVG; `POST /comp
 from that descriptor; `GET /plans/{id}/png` renders it as an image; `POST /plan/{id}/author` makes a
 map row. Ninety-six seeds, eleven pins and two contact sheets is a few minutes.
 
-Two things a scan says that nothing else does. **Cell 5 is the only scale it works at** — cell 4
-produced nothing in ninety-six seeds and cell 3 nothing in twelve, both `exhausted`. And **10 and 12
-players give identical boards**, so the land budget buckets rather than scaling. Hub forms observed
+Two things a scan says that nothing else does. **The cell is a drawing scale, and the composer draws on
+four blocks** — every width it builds to is stated in blocks and divided by the cell, so cells 3 through 6
+all compose and only cell 3 at nano comes back `exhausted`. And **10 and 12 players give identical boards**,
+because the count names a size band rather than a budget of its own, and both counts are nano. Hub forms observed
 in 48 seeds at 16 players: `bar`, `ring`, `single`, `twin`, `g`, `double-hole`, `p`; wool shapes
 `i`, `l` and — five times in forty-eight — `donut`, which is five pieces round a hole.
 

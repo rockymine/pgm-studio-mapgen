@@ -146,8 +146,8 @@ they live in full; this is what they mean when a composed plan is being reshaped
 crossed by jumping long before it is crossed by building: a short gap between a frontline and a wool room, or
 between a spawn and a wool room, lets a player tower at the near edge and jump straight in, and the approach
 the board was built around stops mattering. A plain hole in a team's own ground may be twelve. The number is
-in **blocks** — the composer's own floor is two cells, which is ten blocks at the default scale and eight at
-cell 4, so a cell count is not the thing to copy.
+in **blocks** — the composer's own floor is two cells, which is eight blocks at the default scale and ten at
+cell 5, so a cell count is not the thing to copy.
 
 Three of this run's boards went under it while reshaping: `opus5-quadrangle` left five cells-worth between its
 spawn and the wool-b enclosure (six blocks in the built world), `opus5-medlock-drift` five between `clamp-head`
