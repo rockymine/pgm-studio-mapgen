@@ -1,0 +1,198 @@
+\chapter{Structures: Houses, Rooms and the Course Stack}
+\label{ch:structures}
+
+\section{A Stamp Is One Course}
+
+The phrase recurs throughout the studio's documentation and it is a claim about
+architecture rather than about blocks. A shell is not a hard-coded building. It is
+a stack of courses per part, and any shipped shell is one edit of that stack away
+from any other.
+
+\begin{quote}
+A cage and a spawn differ only in their band material, their door and their
+contents, and everything below is one course stack away from being something else.
+\end{quote}
+
+\Cref{tab:shells} is the whole of the two shipped shells, numbered from the floor.
+Reading the two columns against each other is the argument: three fixed layers are
+ordinary courses, the coloured band is a team-tinted course, and the light slit is
+a course of air.
+
+\begin{table}[htbp]
+\caption{The two shipped room shells. A wool cage and a spawn cube are two bound
+styles rather than two code paths.}
+\label{tab:shells}
+\small
+\begin{tabularx}{\textwidth}{L{2.6cm} Y Y}
+\toprule
+\textbf{Layer} & \textbf{Wool cage} & \textbf{Spawn cube} \\
+\midrule
+8 (roof) & bedrock, centred hole, proportional and capped at 4$\times$4 &
+  bedrock, centred hole \\
+7 & bedrock & bedrock \\
+6 & missing: a light slit around all four walls & missing: a light slit \\
+5 & bedrock & bedrock \\
+4 (colour strip) & wool, in the room colour & stained clay, in the team colour \\
+3 & bedrock & bedrock \\
+2 & bedrock & bedrock \\
+1 (doors begin) & bedrock with a door opening & bedrock with a door opening \\
+0 (floor) & bedrock with a wool pad, the wool spawn point &
+  bedrock with a wool pad, the player spawn \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+There is a second, unrelated sense of the same phrase, and it is worth separating
+because both appear in the painting model. When the painter excludes a stamp, the
+exclusion is of the \emph{course}, not of the column: the painter keeps a stamp's
+own blocks and paints the ground under it.
+
+\section{Parts, and What a Style May Not Decide}
+
+A shell is parts and overrides. A wall and a foundation's plate are each a part: a
+band stack plus an extent saying how far the part goes. Over them sit the two
+things a style may not decide, and each is excluded for a stated reason. The
+\textbf{pad} is excluded because the exported wool or spawn location is derived
+from it. The \textbf{doorway} is excluded because it is the entry contract.
+
+\begin{ruling}{A Statement About One Piece Lives on That Piece}
+What a building stands on is a foundation, what stands above the eave is a roof
+style, and the way in is a doorway. A field that only \emph{looks} like part of one
+is the trap: which wall the doorway is cut through is the building's \emph{front},
+not the doorway's, because it is the same wall a shed roof falls toward and a porch
+stands against.
+\end{ruling}
+
+\subsection{Direction Is Load-Bearing}
+
+A stack is read from its part's own base outward: a floor \emph{downward} from the
+course players stand on, a wall and a roof \emph{upward}. That direction is not a
+convention. A floor that grew upward would lift the pad, and lifting the pad would
+move the exported point.
+
+The last band repeats past the end of the stack, so an extent can move without the
+stack being re-authored. Repeating is the stack's own statement rather than the
+axis's, and the two are kept separate for a reason already met in
+\cref{ch:terrain}: repeating is right where a stack owns its whole space, and
+handing over is right where it is a band inside a larger one. A repeating band does
+not reseed a pattern.
+
+\begin{ruling}{Air Is a Gap, Not a Block}
+A part's air course is skipped rather than written, so no style can erase what
+another stamp already placed. A doorway's air \emph{is} written, because it cuts
+the opening out of the wall the same pass just built. Windows follow the doorway's
+rule for the same reason.
+\end{ruling}
+
+\section{The Roof Is a Height Field}
+
+Six roof forms exist, and they are one object with one formula.
+
+\begin{quote}
+Every roof is one height field: for each cell of the roof's plan, how far the
+roof's own surface stands above its base there, and how many courses that column
+writes to close the step down to its neighbours. The stamper walks that plan once.
+The forms differ in a single formula over the same two distances, how far the cell
+stands from each wall line, and in nothing else.
+\end{quote}
+
+\begin{table}[htbp]
+\caption{The six roof forms, as one formula over two distances.}
+\label{tab:roofs}
+\small
+\begin{tabularx}{\textwidth}{L{2.2cm} Y}
+\toprule
+\textbf{Form} & \textbf{Rise over a cell, per block travelled} \\
+\midrule
+\id{Flat} & the base course, everywhere \\
+\id{Gable} & the smaller distance across the building's \emph{shorter} side, times
+  the pitch \\
+\id{Hip} & the smallest of all four wall distances, times the pitch \\
+\id{Shed} & the distance from the front wall, held to the shorter side's run,
+  times the pitch \\
+\id{Gambrel} & as \id{Gable}, at pitch plus one for the first quarter-span in from
+  each eave, then at the pitch \\
+\id{Saltbox} & as \id{Gable}, but the two distances across the shorter side climb
+  at different rates: the front's side at pitch plus one, the other at the pitch \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+A hip over a square footprint is a pyramid. A shed and a saltbox need to know which
+wall is the front, and the front is the wall the doors are cut through.
+
+\subsection{No Roof Climbs with the Long Side}
+
+The constraint that keeps this usable is that every form measures across the
+\emph{shorter} side. Without it, a 10$\times$60 building would carry a lean-to sixty
+courses over its wall: a tower with a door in it, produced from a footprint an
+author drew flat. A shed therefore rises at its pitch until it has risen the shorter
+side's worth, then runs flat the rest of the way, which is a lean-to that levels
+off.
+
+\subsection{Eaves, and Where the Fall Stops}
+
+Distances are measured from the wall line and are allowed to go negative, which is
+what makes the eave part of the slope rather than a separate thing bolted on. The
+fall then stops two courses down, and the bound is derived rather than chosen. One
+course is what a pitch of 1 needs to read at all. Past two, the eave hangs in front
+of the wall it shelters rather than over it: at an overhang of 2 and a pitch of 4,
+an unfloored eave lands two courses \emph{below} the floor the building stands on.
+
+Walls climb to meet the roof wherever the roof stands above them, which is the
+gable's two ends, the shed's back wall and both its flanks, and nothing at all
+under a hip, whose slopes come down to the wall line on every side. What they climb
+in is the \textbf{gable}, a part of its own; unbound, it is the wall's top course
+carried up, so a wall that bands as it rises goes flat the moment it turns into a
+gable. The \textbf{verge} is a different piece again, being the roof's own
+outermost ring: on a flush roof it is the raking edge directly over the gable, and
+under an eave it moves out to the overhang.
+
+\subsection{Halves, and What a Slab Roof Is}
+
+A roof laid in cubes steps two halves per block travelled. The field is measured in
+halves, and naming a roof slab on the style puts the roof on one: it then climbs
+half a block per block, laying that slab on every odd step with the roof's own
+material filling the cubes between. The halving has to floor rather than truncate,
+because the eave's rise goes negative below the base plane.
+
+\subsection{One Material, and One Refusal}
+
+A roof is one material, and the slab is that material in halves. The body and the
+verge are each a single block, and a pattern is refused in either, because a roof
+is read as one plane from below and a scattered material across it is several
+blocks in one surface.
+
+Logs are a special case with a tidy explanation. A log's data value records which
+way it lies, so a log named as a plain solid has none: every one of them stands
+upright and shows a sawn face out at the slope. A \emph{laid} log takes the axis of
+the surface it is on, and for a roof that axis is the ridge. A laid log carries its
+own whole-course rise and no slab is cut from one, so a roof slab over a log roof
+is refused.
+
+\begin{ruling}{A Roof Has No Thickness Knob}
+The height field is the reason: a column writes as many courses as the step down to
+its neighbours needs, so thickness is not a free parameter. Two fields did once
+carry such a number, and nothing ever read either. Both were dropped rather than
+implemented.
+\end{ruling}
+
+\section{Wings: A Building of More Than One Rectangle}
+
+Every roof is a height field over one rectangle, and a building is not always one
+rectangle. A building plan is one or more touching \textbf{wings}, and everything
+below the eave reads the plan's own cells, so an L, a T or a U is built as one
+house on one outline.
+
+A wall stands wherever the plan is exposed, diagonals included. Where two wings
+meet, the two walls running into the turn touch along one vertical edge and nothing
+else, and the cell behind that edge, which has building on all four sides of it, is
+the corner. It takes a post like any corner, so an L stands on six.
+
+\begin{ruling}{A Storey Is a Plan of Its Own}
+That is the whole of how a building of unequal wings works. A wing carries a storey
+count, the plan at a storey is the set of wings still standing there, and every
+pass reads the plan for the storey it is on. A two-storey hall with a single-storey
+range attached is therefore not a special case; it is one plan at the ground floor
+and a smaller plan above it.
+\end{ruling}

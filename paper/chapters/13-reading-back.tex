@@ -1,0 +1,187 @@
+\chapter{Reading a World Back}
+\label{ch:reading}
+
+\section{Why the Reads Are the Interface}
+
+An agent cannot look at the map. Everything it learns about what it has built comes
+through a read, and the quality of those reads therefore bounds the quality of the
+authoring. This is the chapter that makes the rest of the system operable.
+
+The studio offers about thirty of them. They divide cleanly into pictures and
+numbers, and most have both forms: a PNG for a person, and a \id{?format=text}
+twin that answers the same question as characters or a table. The rule the corpus
+settled on is that the text comes first. A picture answers \emph{whether} something
+came out. A number answers \emph{whether it is right}.
+
+\section{Every Read States What It Cannot Answer}
+
+The property that distinguishes this surface from an ordinary set of debugging
+endpoints is that each one documents its own blind spot. The studio's published
+schema gives every read a summary and, beside it, a clause headed \textsc{misleads}
+naming the wrong conclusion a reader is likely to draw from it.
+
+This is unusual enough to deserve examples, because the clauses are not
+boilerplate. They are the specific mistakes that have been made.
+
+\begin{quote}
+\textbf{Column.} A column through the middle of a house reads floor, air, roof. The
+walls are at the perimeter; that is a correct building, not a broken one.
+\end{quote}
+
+\begin{quote}
+\textbf{Top-down render.} It keeps no Y at all, so a riser, a ramp's step heights, a
+stamped room's floor and a goal's clearance are none of them in it.
+\end{quote}
+
+\begin{quote}
+\textbf{Transect.} A transect answers exactly the line asked for and nothing either
+side of it. A barrier two cells off the stated points is invisible to it.
+\end{quote}
+
+\begin{quote}
+\textbf{Reach.} It names nothing as wrong. Scenery, a side observer island and a
+shelf over the ceiling all read exactly like a shape stranded by accident, and only
+the author can tell them apart.
+\end{quote}
+
+\Cref{ch:session} recounted several runs that redesigned correct boards on the
+strength of a reading, and every one of them was a case of a reader taking an answer
+as a verdict when the instrument had been asked a different question.
+
+\section{The Workhorse}
+
+\route{GET /map/\{slug\}/column} answers one or more columns from bedrock to sky
+with every block named. The studio's own description of it is unambiguous about its
+status:
+
+\begin{quote}
+\textsc{the workhorse}: every picture beside it is a projection, and this is what is
+actually at a coordinate, which is why it is the read to reach for when a picture
+and a document disagree.
+\end{quote}
+
+One run recorded that nine of its ten faults were found by reading a column and
+counting courses, with the renders confirming them afterwards. When two reads
+disagree, the column is the one that is not a projection.
+
+\section{A Shape Is a Profile, Never a Point}
+
+A column answers about a coordinate. Many claims an author wants to check are
+claims about a \emph{shape}: a bank, a wall, a stair, a basin. Those need a
+\textbf{transect}, which walks a polyline block by block and answers numbers.
+
+Each station carries the ground, the storey stood on, the water and the highest
+block in its column, and the step from the station before it, classed as walked,
+scrambled, a barrier or a drop. Two parameters matter: \id{every} thins the
+stations, and \id{beside} lists every distinct claim within a stated number of cells
+of the line, which is the answer to the transect's own blind spot.
+
+This read settles the class of question that arithmetic gets wrong. The corpus
+carries several ramps whose anchors were computed in absolute terms and landed ten
+or more blocks below a relief-solved hill, showing as a barrier. None was visible in
+any render. Each was one transect.
+
+\section{Four Answers in Four Units}
+
+The \textbf{walk} is the read that prices a journey, and its design deserves note
+because it refuses to summarise:
+
+\begin{quote}
+Whether the place can be reached, how far it is in blocks, how many blocks a player
+must place to get there, and how many falls over the free height it takes. Four
+answers in four units, none weighed against the others, so a caller reads the field
+its own rule is stated in.
+\end{quote}
+
+The climb at a rise of $\delta$ costs $\delta - 1$ blocks placed, and bridging void
+costs one per cell. \id{aim} picks which route is measured: the shortest
+(\id{travel}), the one placing fewest blocks (\id{reach}), or the least
+edge-hugging of the routes within ten blocks of the shortest (\id{comfort}).
+
+Refusing to combine the four into a score is the right decision for a system whose
+rules are stated in different units. A rule about how far a goal stands from a spawn
+is stated in blocks; a rule about whether a fresh kit can reach a wool is stated in
+blocks placed. A single number would serve neither.
+
+\section{The Instruments, and What Each Is For}
+
+\begin{table}[htbp]
+\caption{The principal reads. Every one has a \id{?format=text} twin unless noted.}
+\label{tab:reads}
+\small
+\begin{tabularx}{\textwidth}{L{3.2cm} Y}
+\toprule
+\textbf{Read} & \textbf{The question it answers} \\
+\midrule
+\route{column} & what is actually at this coordinate, block by block \\
+\route{transect} & what a line across a shape does, station by station \\
+\route{slopes} & the worst step to a neighbour per cell, classed walked,
+  scrambled or barrier. A cliff reads as a line, a ramp as a band crossing it, and
+  an overdone relief as a page \\
+\route{walk} & what a journey costs, in four units \\
+\route{incline} & how steeply each cell is inclined, and how much ground stands in
+  each ten degrees \\
+\route{coverage} & where the ground is lived on and where it is dead, with the dead
+  patches named by coordinate \\
+\route{reach} & which standing ground no player can get to, and why \\
+\route{themes/census} & every ground cell counted by the theme that paints it \\
+\route{render/mirror} & whether a board somebody believes is symmetric actually is \\
+\route{render/section} & a vertical cut with a Y scale \\
+\route{render/topdown} & what was built and where, one subject per image \\
+\route{plan/flow} & what the board asks of the two sides, and what that leaves
+  unreached \\
+\route{findings} & everything wrong with this map right now, from every gate its
+  stored documents can reach \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{The Incline Read, and Why It Cannot Disagree with the Paint}
+
+\route{incline} deserves a note because of a property it has by construction. Each
+cell's glyph is the \emph{tens} of its angle, so a mask cut at 20 and 45 has both
+boundaries visible on the page as the step from \id{1} to \id{2} and from \id{4} to
+\id{5}. Beneath the grid it prints how much ground stands in each ten degrees,
+which is the reading a cut is actually chosen on.
+
+It runs the same formula the painter resolves against, so the two cannot disagree.
+The one caveat is stated in its own misleads clause: a wider \id{window} answers a
+different question from the one the paint was chosen by.
+
+\subsection{Two Reads Keep Y}
+
+Only \route{section} and \route{column} keep elevation. Every other picture is a
+projection onto the plan, which is why a top-down render can show a board that looks
+complete and conceal a storey, a riser, a ramp's tread heights or a goal's
+clearance. An author checking anything vertical has exactly two instruments.
+
+\section{Findings, and the Gate That Runs Nowhere Else}
+
+\route{GET /map/\{slug\}/findings} answers what is wrong with a map right now from
+every gate its stored documents can reach, and names the gates it did \emph{not}
+ask along with the route that pays for them. It is the read that answers a question
+no other channel carries, because a decline published on one route's warnings is
+not published on another's.
+
+Its pair is \route{GET /map/\{slug\}/state}, which answers where the map has got
+to, which artifacts it holds, and which moves those artifacts allow, each with its
+route. An agent that has lost track of a map asks those two and needs nothing else.
+
+\section{What the Reads Do Not Do}
+
+Three limits are worth stating plainly, because each has produced a wrong report.
+
+A read names nothing as \emph{wrong}. Several of them partition a board and hand
+back the partition; deciding which part is a defect and which is scenery is the
+author's. Dead-ground calibration is meaningless on a board whose objective the
+coverage model does not yet understand, and on control-point boards it has
+misreported badly for exactly that reason.
+
+A read answers about the world as it stands, not about the world as played. Nothing
+in this surface can say whether a map is good.
+
+And a plan-tier read is not a world-tier read. Plan-level distances are computed
+over pieces and build zones; the same journey over built ground can be shorter or
+longer, and on a board with a maze in it one run measured plan-tier ratios of 2.19
+to 5.31 where the built world answered 1.70 to 2.77. The plan-tier reads are a floor
+and nothing more on a board authored that way.

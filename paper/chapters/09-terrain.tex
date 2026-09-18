@@ -1,0 +1,227 @@
+\chapter{Terrain: Themes, Materials and the Slope Axis}
+\label{ch:terrain}
+
+\section{A Second Pass over a Finished World}
+
+Painting terrain is not part of building it. It is a second pass over the realized
+world, run after every structure has been stamped, and it adds no geometry at all.
+It reads the terrain the world builder placed and rewrites its surface.
+
+\begin{quote}
+Where the stampers write rooms, cubes and objectives onto the terrain, this pass
+dresses the terrain \emph{itself}, bucket by bucket, through whichever theme
+applies; unthemed, every bucket stays the raw stone it already is.
+\end{quote}
+
+One invariant makes the whole model safe to state simply: \textbf{the painter
+touches only stone}. Terrain arrives as a bedrock floor at $y=0$ with a stone
+column above it, and every structure the stampers add is bedrock, wool, obsidian,
+anything but stone. So the pass runs last and rewrites stone blocks only. Bedrock
+is excluded by construction rather than by a special case.
+
+Two refinements of that invariant were each learned as a defect. The test is over
+the whole block and not over its id, because stone's id is shared by granite,
+diorite, andesite and their polished forms; a plinth in polished diorite under a
+red prop came back red until the check compared the pair rather than the id. And
+the ground a room stands on is not a stamp, so it is painted like any other ground:
+a room levels its own footprint by filling upward in stone, and the result comes
+out in whatever the board's theme paints there.
+
+\section{Four Buckets}
+
+Every column splits into at most three painted parts and one kept part. The four
+names are the shared vocabulary that every later stage speaks.
+
+\begin{description}[leftmargin=1.6em,style=nextline,itemsep=4pt]
+  \item[Rim] The edge lip: a single block, the top of an edge column. Not a volume.
+    A map's rim is therefore a one-block-wide line tracing every lip, quartz
+    against the grass.
+  \item[Wall] The exposed riser below the rim, painted only on the face that is
+    actually exposed. Stone below the shallowest drop stays stone, because it is
+    buried behind the neighbour that made the drop and painting it would tint
+    blocks nobody can see.
+  \item[Surface] The top of the interior, as a layered stack to a configured depth
+    rather than a fixed single block. One block of stone by default; grass over two
+    dirt, three deep, in a meadow finish.
+  \item[Fill] The interior body below the surface. This is the \emph{required}
+    bucket: it claims whatever no other enabled bucket took, so a theme is never
+    partial.
+\end{description}
+
+A freestanding nine-tall column against the void therefore reads, bottom to top,
+one bedrock, seven wall, one rim.
+
+\subsection{Edges over Eight Neighbours}
+
+A column is an edge when any of its \emph{eight} neighbours is void or carries a
+strictly lower surface. The four-neighbour test is wrong here, and the reason is
+geometric: at a reentrant corner of an L or a comb, the corner block's only lower
+neighbour is diagonal, so a four-neighbour test leaves a one-block hole and the rim
+reads as broken. The extra four neighbours are exactly the reentrant corner cells,
+so the rule thickens nothing and only completes the turn.
+
+How wide a net the lip casts is itself authorable, through three nested tests.
+\id{drop}, the default, lips only drops. \id{boundary} traces the whole plateau
+outline, adding the edges that face something \emph{taller}, such as a room or an
+approach wall. \id{void} narrows instead of widening: a column is rim only where a
+neighbour is off the footprint entirely.
+
+The difference matters on stepped ground. A staircase of five shapes each a block
+above the last is a drop at every tread, so \id{drop} draws a lip on each one and
+the body reads as five plateaus that happen to touch. \id{void} caps the outside
+and leaves every tread bare, so it reads as one body with a rim around it.
+
+\section{Materials and the Band Stack}
+
+A material is either simple or composed. The composed one is the interesting case:
+
+\begin{quote}
+\id{LayeredMaterial} is a \id{BandStack}, an ordered run of \id{(material,
+thickness)}, plus the \textbf{axis} it is read along. The stack states its bands
+and what happens where they run out, and deliberately not the distance, because
+the distance belongs to whoever is measuring it.
+\end{quote}
+
+That last clause is the design decision the whole section rests on. There is one
+type with the axis named, not four types, because the bands, the thicknesses and
+the run-out rule are identical whichever way the stack is read and only the
+distance differs.
+
+\begin{table}[htbp]
+\caption{The four band axes. The stack is the same object in each row; only what
+is measured changes.}
+\label{tab:axes}
+\small
+\begin{tabularx}{\textwidth}{L{2.0cm} L{4.2cm} Y}
+\toprule
+\textbf{Axis} & \textbf{The distance} & \textbf{What it draws} \\
+\midrule
+\id{depth} & courses down from the top of the bucket (the default) &
+  grass over two dirt; a wall's banded riser \\
+\id{inward} & steps in from the landmass's void-facing edge &
+  a cobble rim, two rings of stone brick, then a field \\
+\id{height} & courses up from a stated world $Y$ &
+  a hull's waterline; a tower banded by course, whatever the ground beneath it
+  does \\
+\id{slope} & how steeply the ground is inclined here, 0 to 89 degrees from level &
+  meadow on the flat, coarse dirt on the shoulder, bare rock on the face of the
+  same hill \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Running Out}
+
+\id{ending} decides what happens past the last band, and \id{beyond} says what
+shows there. Under \id{repeat} the last band claims everything further along, which
+is right where the stack owns its whole space. A ring stack usually does not own
+its whole space: it is meant to run a few rings in and then stop, so it ends
+\id{handOver}, and \id{beyond} answers for everything past it.
+
+This is the mechanism behind a trap worth stating in its own right, because it
+produces documents that look wrong and are not. A stack does not cycle. Striping a
+face sixteen courses tall with a four-course pattern under \id{repeat} means writing
+the four courses out four times, because past the last band the last band claims
+everything.
+
+\subsection{Why the Height Axis Exists}
+
+\id{depth} and \id{inward} both measure from the shape the block is in, so a colour
+change along either splits nothing. A colour change stated as \emph{geometry} is a
+different matter: a layer holds one theme, so banding a form by splitting it into a
+layer per colour costs a layer per band, and that, rather than the shape, is what a
+sculpture costs.
+
+Measured over nine models, the layer count a shape alone needs against the count it
+actually took: a starship 2 against 4, a robot 5 against 16, and a Rubik's cube,
+which is a solid box with one run per column, 1 against 7. Read along \id{height}
+the same banding is one material on one layer.
+
+\section{The Slope Axis}
+
+This is the load-bearing one, and it is the axis a board should be finished along.
+
+\begin{quote}
+The slope axis is an angle mask, and a thickness on it is a span of degrees.
+\end{quote}
+
+A stack of grass at 30, coarse dirt at 15 and cobblestone at 45 is therefore meadow
+up to 29 degrees, coarse dirt from 30 to 44, and bare rock above.
+
+\begin{lstlisting}[language=json]
+{"kind":"layered","axis":"slope","stack":{"ending":"repeat","bands":[
+   {"material":{"kind":"solid","id":2,"data":0},"thickness":30},
+   {"material":{"kind":"solid","id":3,"data":1},"thickness":15},
+   {"material":{"kind":"solid","id":4,"data":0},"thickness":45}]}}
+\end{lstlisting}
+
+The angle comes from Horn's 3$\times$3 gradient over the neighbouring surface tops,
+so a ramp climbing one block a cell answers 45 exactly and level ground answers 0.
+It is a fact about the \emph{surface}, carried by the whole column, which is why a
+face's fill and the block on top of it resolve to the same band and a hillside comes
+out finished top to bottom.
+
+\begin{ruling}{Nothing Else Distinguishes a Hillside from a Field}
+The wall bucket is the exposed riser, and a surface climbing one block a cell has
+no riser at all, because its drop is one course and the top course already claims
+it. Every other axis therefore paints a 45-degree hillside and a flat meadow alike.
+A board finished on plan pieces or on height bands is painted flat from above
+however much relief is under it.
+\end{ruling}
+
+The void is deliberately not a slope. A neighbour off the footprint, or one
+carrying a structure, reads as level with the cell itself, so a coastline is flat
+ground that stops, and the ground beside a building does not take the building's
+roof for a gradient.
+
+\subsection{The Window Is Two Cells}
+
+The gradient is read two cells either side rather than one, and the reason is that
+a gentle slope in a voxel world is a staircase.
+
+\begin{quote}
+Ground falling one block every four cells is four flat treads and a one-block
+riser, and a window one cell wide reads each riser on its own, 27 degrees on the
+riser and nothing on the treads, so a uniform gentle grade comes out speckled with
+whatever the theme paints at 27.
+\end{quote}
+
+The tell is in the distribution rather than in the picture: read one cell either
+side, a board authored at a one-block step puts a quarter of its ground in a spike
+at 20 to 29 degrees with almost nothing at 30 to 39, which is a board reporting its
+own quantum rather than its shape.
+
+The arithmetic for why two is the right number is worth recording. A
+\emph{sustained} slope reads its true angle at every window, so one block per four
+cells is 14 degrees at windows of 1, 2, 3 and 4, and widening costs a real slope
+nothing. What widening costs is a face, whose drop is spread over more cells: the
+lip of a six-block drop reads 72 degrees at a window of one, 56 at two and 45 at
+three, where it can no longer be told from a walkable ramp. The isolated one-block
+contour that should be suppressed falls from 27 degrees to 14 to 9.5 over the same
+range. Two is where the contour is already under any threshold an author would set
+and the face is still unmistakably a face.
+
+\subsection{Where the Cuts Go Is Read, Not Guessed}
+
+\route{GET /map/\{slug\}/incline} answers how much ground stands in each ten
+degrees. It is the only thing that says whether a band cut lands where the author
+thinks it does, and \id{?window=} answers the same board read wider, so both
+decisions a mask needs are made without an export.
+
+Two corpus episodes show what happens without it. A first cut at 24 degrees put an
+entire hill onto one band, and the board came out grey with green only at its
+edges; recut at 32 after reading the histogram, it was right. On another board the
+reading answered 77\% of cells under ten degrees, 22.6\% in the teens, 0.5\% above
+twenty and nothing past forty, which is to say that a board about to be finished by
+angle had almost no angle in it.
+
+\section{Composition, and the Commonest Mistake}
+
+The axes compose, and this removes the need for several knobs that would otherwise
+be necessary. A surface material that is a \id{depth} stack whose first band is one
+course thick, and is \emph{itself} an \id{inward} stack, rings the top course and
+leaves the courses beneath it alone.
+
+That same composition is what keeps a grass ring one block thick rather than three.
+A palette that repeats grass down every course is, by the repository's own account,
+the most-repeated authoring mistake in it.
