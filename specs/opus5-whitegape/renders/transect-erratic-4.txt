@@ -1,0 +1,53 @@
+## erratic-4 (boulder) along x
+TRANSECT 17 stations from (-28, -64) to (-12, -64), every 1
+  station        ground  surface  water  top  standing            step
+  (  -28,   -64)      22       22           22                      
+  (  -27,   -64)      22       22           22                      
+  (  -26,   -64)      22       22           22                      
+  (  -25,   -64)      22       22           22                      
+  (  -24,   -64)      22       22           22  stroke lip-path     
+  (  -23,   -64)      22       22           22  stroke lip-path     
+  (  -22,   -64)      19       19           19                      -3
+  (  -21,   -64)      19       19           19                      
+  (  -20,   -64)      19       19           19                      
+  (  -19,   -64)      18       18           18                      -1
+  (  -18,   -64)      18       18           18                      
+  (  -17,   -64)      18       18           18                      
+  (  -16,   -64)      18       18           18                      
+  (  -15,   -64)      22       22           22                      BARRIER +4
+  (  -14,   -64)      22       22           22                      
+  (  -13,   -64)      22       22           22                      
+  (  -12,   -64)      22       22           22                      
+rises 1, falls 2, worst step 4: 1 barrier, 0 scramble, 0 drop — BARRIER +4 at (-15, -64) | walked end to end
+beside: stroke lip-path at (-25, -62)
+
+## erratic-4 (boulder) along z
+TRANSECT 25 stations from (-24, -76) to (-24, -52), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,   -76)      23       23           30  house winding-house  
+  (  -24,   -75)      23       23           29  house winding-house  
+  (  -24,   -74)      23       23           29  house winding-house  
+  (  -24,   -73)      23       23           23  stroke haul-road    
+  (  -24,   -72)      23       23           23  stroke haul-road    
+  (  -24,   -71)      22       22           22                      -1
+  (  -24,   -70)      22       22           22                      
+  (  -24,   -69)      21       21           21                      -1
+  (  -24,   -68)      21       21           21                      
+  (  -24,   -67)      21       21           21                      
+  (  -24,   -66)      22       22           22                      +1
+  (  -24,   -65)      22       22           22  stroke lip-path     
+  (  -24,   -64)      22       22           22  stroke lip-path     
+  (  -24,   -63)      22       22           22  stroke lip-path     
+  (  -24,   -62)      22       22           22  stroke lip-path     
+  (  -24,   -61)      22       22           22  stroke lip-path     
+  (  -24,   -60)      22       22           22  stroke lip-path     
+  (  -24,   -59)      22       22           22  stroke lip-path     
+  (  -24,   -58)      22       22           22  stroke lip-path     
+  (  -24,   -57)      22       22           22  stroke lip-path     
+  (  -24,   -56)      22       22           22  stroke lip-path     
+  (  -24,   -55)      22       22           22  stroke lip-path     
+  (  -24,   -54)      22       22           22  stroke lip-path     
+  (  -24,   -53)      22       22           22                      
+  (  -24,   -52)      22       22           22                      
+rises 1, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house winding-house at (-26, -78), stroke haul-road at (-25, -73), stroke lip-path at (-24, -65)

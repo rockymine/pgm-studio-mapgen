@@ -1,0 +1,52 @@
+## winding-house (house) along x
+TRANSECT 17 stations from (-28, -79) to (-12, -79), every 1
+  station        ground  surface  water  top  standing            step
+  (  -28,   -79)      24       24           31  house winding-house  
+  (  -27,   -79)      24       24           31  house winding-house  
+  (  -26,   -79)      24       24           31  house winding-house  
+  (  -25,   -79)      24       24           31  house winding-house  
+  (  -24,   -79)      24       24           31  house winding-house  
+  (  -23,   -79)      24       24           31  house winding-house  
+  (  -22,   -79)      24       24           31  house winding-house  
+  (  -21,   -79)      24       24           31  house winding-house  
+  (  -20,   -79)      24       24           31  house winding-house  
+  (  -19,   -79)      24       24           31  house winding-house  
+  (  -18,   -79)      24       24           24  stroke haul-road    
+  (  -17,   -79)      24       24           24  stroke haul-road    
+  (  -16,   -79)      24       24           24  stroke haul-road    
+  (  -15,   -79)      24       24           24  stroke haul-road    
+  (  -14,   -79)      24       24           24                      
+  (  -13,   -79)      25       25           25                      +1
+  (  -12,   -79)      25       25           25                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house winding-house at (-28, -81), stroke haul-road at (-18, -81), stroke lip-path at (-18, -77)
+
+## winding-house (house) along z
+TRANSECT 24 stations from (-24, -90) to (-24, -67), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,   -90)      25       25           25                      
+  (  -24,   -89)      25       25           25                      
+  (  -24,   -88)      25       25           25                      
+  (  -24,   -87)      25       25           25                      
+  (  -24,   -86)      25       25           25                      
+  (  -24,   -85)      25       25           25                      
+  (  -24,   -84)      25       25           25                      
+  (  -24,   -83)      25       25           29  house winding-house  
+  (  -24,   -82)      24       24           29  house winding-house  -1
+  (  -24,   -81)      24       24           30  house winding-house  
+  (  -24,   -80)      24       24           30  house winding-house  
+  (  -24,   -79)      24       24           31  house winding-house  
+  (  -24,   -78)      24       24           31  house winding-house  
+  (  -24,   -77)      23       23           30  house winding-house  -1
+  (  -24,   -76)      23       23           30  house winding-house  
+  (  -24,   -75)      23       23           29  house winding-house  
+  (  -24,   -74)      23       23           29  house winding-house  
+  (  -24,   -73)      23       23           23  stroke haul-road    
+  (  -24,   -72)      23       23           23  stroke haul-road    
+  (  -24,   -71)      22       22           22                      -1
+  (  -24,   -70)      22       22           22                      
+  (  -24,   -69)      21       21           21                      -1
+  (  -24,   -68)      21       21           21                      
+  (  -24,   -67)      21       21           21                      
+rises 0, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house winding-house at (-26, -83), stroke haul-road at (-25, -73), stroke lip-path at (-24, -65)
