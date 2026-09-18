@@ -1,0 +1,51 @@
+## light_blue-0 (wool) along x
+TRANSECT 15 stations from (52, 116) to (66, 116), every 1
+  station        ground  surface  water  top  standing            step
+  (   52,   116)      17       17           17                      
+  (   53,   116)      17       17           17                      
+  (   54,   116)      17       17           17                      
+  (   55,   116)      17       17           17                      
+  (   56,   116)      17       17           17                      
+  (   57,   116)      17       17           17                      
+  (   58,   116)      18       18           18                      +1
+  (   59,   116)      18       18           18                      
+  (   60,   116)      17       17           22  redstoneline 2      -1
+  (   61,   116)      17       17           23  wool wool-3         
+  (   62,   116)      17       17           24  wool wool-3         
+  (   63,   116)      17       17           58  wool wool-3         
+  (   64,   116)      17       17           58  wool wool-3         
+  (   65,   116)      17       17           58  wool wool-3         
+  (   66,   116)      17       17           23  wool wool-3         
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: redstoneline 2 at (60, 114), wool wool-3 at (61, 114)
+
+## light_blue-0 (wool) along z
+TRANSECT 25 stations from (64, 104) to (64, 128), every 1
+  station        ground  surface  water  top  standing            step
+  (   64,   104)                                                    void
+  (   64,   105)                                                    void
+  (   64,   106)                                                    void
+  (   64,   107)                                                    void
+  (   64,   108)      17       17           22                      
+  (   64,   109)      17       17           23  wool wool-3         
+  (   64,   110)      17       17           24  wool wool-3         
+  (   64,   111)      17       17           25  wool wool-3         
+  (   64,   112)      17       17           25  wool wool-3         
+  (   64,   113)      17       17           25  wool wool-3         
+  (   64,   114)      17       17           25  wool wool-3         
+  (   64,   115)      17       17           58  wool wool-3         
+  (   64,   116)      17       17           58  wool wool-3         
+  (   64,   117)      17       17           58  wool wool-3         
+  (   64,   118)      17       17           25  wool wool-3         
+  (   64,   119)      17       17           25  wool wool-3         
+  (   64,   120)      17       17           25  wool wool-3         
+  (   64,   121)      17       17           24  wool wool-3         
+  (   64,   122)      17       17           23  wool wool-3         
+  (   64,   123)      17       17           22                      
+  (   64,   124)                                                    void
+  (   64,   125)                                                    void
+  (   64,   126)                                                    void
+  (   64,   127)                                                    void
+  (   64,   128)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-3 at (62, 109)

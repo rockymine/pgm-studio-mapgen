@@ -1,0 +1,314 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 32,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -52,
+    "y": 9,
+    "z": 72
+   },
+   "protection": [
+    {
+     "minX": -56,
+     "minZ": 64,
+     "maxX": -48,
+     "maxZ": 80
+    }
+   ],
+   "yaw": 270,
+   "doors": [
+    "+x"
+   ],
+   "footprint": null,
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 52,
+    "y": 9,
+    "z": -72
+   },
+   "protection": [
+    {
+     "minX": 48,
+     "minZ": -80,
+     "maxX": 56,
+     "maxZ": -64
+    }
+   ],
+   "yaw": 90,
+   "doors": [
+    "-x"
+   ],
+   "footprint": null,
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 24,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -44,
+    "minZ": -40,
+    "maxX": 44,
+    "maxZ": 40
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": {
+   "exclusions": []
+  }
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "protection": [
+    {
+     "minX": -4,
+     "minZ": 160,
+     "maxX": 12,
+     "maxZ": 168
+    }
+   ],
+   "spawn": {
+    "x": 4,
+    "y": 9,
+    "z": 164
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -4,
+     "minZ": 160,
+     "maxX": 12,
+     "maxZ": 160
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-2",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "orange",
+   "protection": [
+    {
+     "minX": 64,
+     "minZ": 64,
+     "maxX": 72,
+     "maxZ": 80
+    }
+   ],
+   "spawn": {
+    "x": 68,
+    "y": 9,
+    "z": 72
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": 64,
+     "minZ": 64,
+     "maxX": 64,
+     "maxZ": 80
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "protection": [
+    {
+     "minX": -12,
+     "minZ": -168,
+     "maxX": 4,
+     "maxZ": -160
+    }
+   ],
+   "spawn": {
+    "x": -4,
+    "y": 9,
+    "z": -164
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -12,
+     "minZ": -160,
+     "maxX": 4,
+     "maxZ": -160
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-2",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "light_blue",
+   "protection": [
+    {
+     "minX": -72,
+     "minZ": -80,
+     "maxX": -64,
+     "maxZ": -64
+    }
+   ],
+   "spawn": {
+    "x": -68,
+    "y": 9,
+    "z": -72
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -64,
+     "minZ": -80,
+     "maxX": -64,
+     "maxZ": -64
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "ctw"
+ ],
+ "meta": {
+  "name": "Widdop",
+  "created": "2026-09-17",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red",
+  "3": "neutral",
+  "4": "neutral",
+  "5": "neutral",
+  "6": "neutral",
+  "7": "neutral",
+  "8": "neutral"
+ },
+ "structures": {
+  "layer": null,
+  "redstoneLines": [
+   {
+    "x1": -4,
+    "z1": 160,
+    "x2": 11,
+    "z2": 160,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "x1": -12,
+    "z1": -161,
+    "x2": 3,
+    "z2": -161,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1
+    }
+   },
+   {
+    "x1": 64,
+    "z1": 64,
+    "x2": 64,
+    "z2": 79,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 0
+    }
+   },
+   {
+    "x1": -65,
+    "z1": -80,
+    "x2": -65,
+    "z2": -65,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 1
+    }
+   }
+  ],
+  "ironCubes": [],
+  "walls": [],
+  "isEmpty": false
+ }
+}

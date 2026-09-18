@@ -1,0 +1,51 @@
+## orange-0 (wool) along x
+TRANSECT 15 stations from (56, 72) to (70, 72), every 1
+  station        ground  surface  water  top  standing            step
+  (   56,    72)      15       15           15                      
+  (   57,    72)      15       15           15                      
+  (   58,    72)      15       15           15                      
+  (   59,    72)      15       15           15                      
+  (   60,    72)      15       15           15                      
+  (   61,    72)      15       15           15                      
+  (   62,    72)      15       15           15                      
+  (   63,    72)      15       15           15                      
+  (   64,    72)      15       15           20  redstoneline 1      
+  (   65,    72)      15       15           21  wool wool-2         
+  (   66,    72)      15       15           22  wool wool-2         
+  (   67,    72)      15       15           58  wool wool-2         
+  (   68,    72)      15       15           58  wool wool-2         
+  (   69,    72)      15       15           58  wool wool-2         
+  (   70,    72)      15       15           21  wool wool-2         
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: redstoneline 1 at (64, 70), wool wool-2 at (65, 70)
+
+## orange-0 (wool) along z
+TRANSECT 25 stations from (68, 60) to (68, 84), every 1
+  station        ground  surface  water  top  standing            step
+  (   68,    60)                                                    void
+  (   68,    61)                                                    void
+  (   68,    62)                                                    void
+  (   68,    63)                                                    void
+  (   68,    64)      15       15           20                      
+  (   68,    65)      15       15           21  wool wool-2         
+  (   68,    66)      15       15           22  wool wool-2         
+  (   68,    67)      15       15           23  wool wool-2         
+  (   68,    68)      15       15           23  wool wool-2         
+  (   68,    69)      15       15           23  wool wool-2         
+  (   68,    70)      15       15           23  wool wool-2         
+  (   68,    71)      15       15           58  wool wool-2         
+  (   68,    72)      15       15           58  wool wool-2         
+  (   68,    73)      15       15           58  wool wool-2         
+  (   68,    74)      15       15           23  wool wool-2         
+  (   68,    75)      15       15           23  wool wool-2         
+  (   68,    76)      15       15           23  wool wool-2         
+  (   68,    77)      15       15           22  wool wool-2         
+  (   68,    78)      15       15           21  wool wool-2         
+  (   68,    79)      15       15           20                      
+  (   68,    80)                                                    void
+  (   68,    81)                                                    void
+  (   68,    82)                                                    void
+  (   68,    83)                                                    void
+  (   68,    84)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-2 at (66, 65)

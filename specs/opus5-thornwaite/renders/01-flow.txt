@@ -1,0 +1,49 @@
+HOW THIS BOARD IS COME AT
+
+  wool at (8, -140)
+    The attacker walks 303 blocks to it; the defender 105, a ratio of 0.35.
+      Neither side is obviously first to it.
+    2 ways in. The last choice is made at (40, 60) and closes at (28, -100), 91 blocks short of the objective.
+      The defender's own walk runs through that merge, so both sides come up the same road. A defence has to be pushed forward to hold it, and the further forward the merge sits the more of the board it gives up to do so.
+    The attack covers 82% of the ground the defence crosses to get here. The two sides are on the same ground almost the whole way, so however many ways in this board counts, none of them misses the reinforcement lane.
+    Walking attack — 303 blocks, 2 ways, 2 decisions:
+      round the 6-cell hole at (36, -48): choose at (40, 60), live over 165 blocks, the other way 1.01× the shortest.
+      round the 6-cell hole at (36, 40): choose at (40, 60), live over 165 blocks, the other way 1.01× the shortest.
+    Walking back-run — 303 blocks, 3 ways, 2 decisions:
+      round the 6-cell hole at (36, -48): choose at (28, -68), live over 165 blocks, the other way 1.01× the shortest.
+      round the 6-cell hole at (36, 40): choose at (28, -4), live over 101 blocks, the other way 1.01× the shortest.
+    Walking defend — 105 blocks, one way, no choice to make.
+
+  wool at (-108, -100)
+    The attacker walks 358 blocks to it; the defender 164, a ratio of 0.46.
+      Neither side is obviously first to it.
+    4 ways in. The last choice is made at (8, -100) and closes at (-104, -96), 6 blocks short of the objective.
+      The defender's own walk runs through that merge, so both sides come up the same road. A defence has to be pushed forward to hold it, and the further forward the merge sits the more of the board it gives up to do so.
+    The attack covers 88% of the ground the defence crosses to get here. The two sides are on the same ground almost the whole way, so however many ways in this board counts, none of them misses the reinforcement lane.
+    Walking attack — 358 blocks, 4 ways, 4 decisions:
+      round the 20-cell hole at (-16, -88): choose at (8, -100), live over 120 blocks, the other way 1.03× the shortest.
+      round the 8-cell hole at (-80, -88): choose at (-64, -88), live over 43 blocks, the other way 1.01× the shortest.
+      round the 6-cell hole at (36, -48): choose at (40, 60), live over 165 blocks, the other way 1.01× the shortest.
+      round the 6-cell hole at (36, 40): choose at (40, 60), live over 165 blocks, the other way 1.01× the shortest.
+    Walking back-run — 358 blocks, 5 ways, 4 decisions:
+      round the 20-cell hole at (-16, -88): choose at (-60, -88), live over 73 blocks, the other way 1.03× the shortest.
+      round the 8-cell hole at (-80, -88): choose at (-108, -100), live over 73 blocks, the other way 1.01× the shortest.
+      round the 6-cell hole at (36, -48): choose at (28, -68), live over 165 blocks, the other way 1.01× the shortest.
+      round the 6-cell hole at (36, 40): choose at (28, -4), live over 101 blocks, the other way 1.01× the shortest.
+    Walking defend — 164 blocks, 3 ways, 2 decisions:
+      round the 20-cell hole at (-16, -88): choose at (8, -100), live over 120 blocks, the other way 1.07× the shortest.
+      round the 8-cell hole at (-80, -88): choose at (-64, -88), live over 43 blocks, the other way 1.02× the shortest.
+
+WHAT NO JOURNEY REACHES
+
+  5440 of 17728 blocks (31%) sit off every route between the places this board has. Reachable, and on the way to nothing.
+      1600 blocks at (-36, 68) — hub-t2 (832), wool-b-t1 (464), hub-t4 (160), wool-b-t4 (112), hub-t3 (16), wool-b-t3 (16)
+      1456 blocks at (-32, -72) — hub-t2 (832), wool-b-t1 (336), hub-t4 (160), wool-b-t4 (96), hub-t3 (32)
+       832 blocks at (72, -56) — frontline-t1 (736), frontline-t3 (96)
+       832 blocks at (72, 52) — frontline-t1 (736), frontline-t3 (96)
+       128 blocks at (-16, -144) — wool-a-t2 (128)
+       128 blocks at (60, -20) — mid-stone-1 (128)
+    and 1 smaller.
+    5 further stretches are under 100 blocks: a sliver between corridors rather than a place.
+
+  Ground is dead because no journey passes it, not because it is far out. Bring an objective to it, put a route through it, or take it off the board — decorating it only means players look at it on the way past.

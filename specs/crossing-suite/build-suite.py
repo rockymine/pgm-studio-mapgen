@@ -1,21 +1,24 @@
 #!/usr/bin/env python3
 """The crossing suite — six composed boards chosen for what their middles are, finished with one document.
 
-The composer funds the mid out of the units' own land and lays a row of stones inside the band, and **where
-that row stands is the whole difference**. A **single rank** sits astride the symmetry axis, so each stone's
-own fanned image abuts it into one shared island both teams reach at once. A **double rank** sits one hop
-clear of the axis, so the image is a second rank facing it across a centre void of two hops — a stone each,
-met before the enemy's, and a crossing half again as deep. These six are picked to show both, at every band
-the ladder now runs to: nano, micro, milli and centi.
+The composer funds the mid out of the units' own land and lays a row of stones inside the band. Two words
+settle what that row is, and these six are picked so each can be seen against its neighbour.
 
-The pair is only offered where the crossing's share can pay for two ranks of ground, which is milli and
-centi. Where it is drawn it spends 95–99% of that share against the single rank's 33–85%, so the same
-allowance buys more ground in the middle rather than a bigger slice of the board.
+**Where the row stands** is its form. A **single rank** sits astride the symmetry axis, so each stone's own
+fanned image abuts it into one shared island both teams reach at once. A **double rank** sits one hop clear
+of the axis, so the image is a second rank facing it across a centre void of two hops — a stone each, met
+before the enemy's.
 
-`Caldermoss` is the honest one. It carries `MD6`'s maximum row — three stones on a mirror — and a hub whose
-enclosed void runs **72 blocks** on its longest side, against the 40 the author reads as the point where a
-loop round a hole stops being a loop and becomes a wall. That is `G272`, still open, and it is in the suite
-so it can be looked at rather than described.
+**How finely it is cut** is its grain. A **broad** row is one stone the band's own depth. A **fine** row is
+one corridor deep, so the crossing it opens is shorter and each stone small enough that several stand in a
+row: checkpoints on the way across instead of one meeting ground. Where the unit's front presents more than
+one face, a fine row **keys** to them — a stone centred on each leg, so a team steps straight forward off
+ground it already holds rather than sideways onto a common island.
+
+`Garsdale` and `Widdop` are the controlled pair: the same band, the same symmetry, one board apart, and only
+the grain between them. `Ravenstone` and `Thornwaite` are the keyed rows, which land on one or two boards in
+twenty-four because a front presents a single face on about two in three — the rest of the fine boards centre
+their row at the same shallower depth.
 
     python3 specs/crossing-suite/build-suite.py       # writes specs/opus5-<slug>/ for each board
     tools/drive.py specs/opus5-stannerford "Stannerford" --out maps/opus5-stannerford
@@ -41,12 +44,12 @@ STONE_PREFIX = "mid-stone-"
 
 # One board per kind of middle. The seed is the board: a request reproduces its plan byte for byte.
 BOARDS = [
-    ("opus5-oakshott",    "Oakshott",     8, 2, "rot_180",  3),   # nano  · single rank, the smallest shared stone
-    ("opus5-fellgarth",   "Fellgarth",   16, 2, "rot_180",  3),   # micro · single rank, an L and a U wool
-    ("opus5-dunnerholme", "Dunnerholme", 24, 2, "rot_180",  0),   # milli · single rank on a double-hole hub
-    ("opus5-stennerwath", "Stennerwath", 24, 2, "rot_180",  3),   # milli · DOUBLE rank, three wools, no hole
-    ("opus5-harrowbeck",  "Harrowbeck",  32, 2, "rot_180",  7),   # centi · DOUBLE rank on a P hub
-    ("opus5-caldermoss",  "Caldermoss",  32, 2, "mirror_z", 13),  # centi · three stones, and a 72-block hole
+    ("opus5-netherby",    "Netherby",     8, 2, "rot_180",  0),   # nano  · broad single rank, the smallest stone
+    ("opus5-skelwith",    "Skelwith",    16, 2, "rot_180",  0),   # micro · broad single rank, an I and a U wool
+    ("opus5-garsdale",    "Garsdale",    32, 2, "rot_180",  1),   # centi · BROAD double rank — the deep crossing
+    ("opus5-widdop",      "Widdop",      32, 2, "rot_180",  3),   # centi · FINE double rank — six islands, shorter
+    ("opus5-ravenstone",  "Ravenstone",  24, 2, "rot_180",  7),   # milli · KEYED to a twin front's two legs
+    ("opus5-thornwaite",  "Thornwaite",  32, 2, "mirror_z", 11),  # centi · KEYED, stones of unequal width
 ]
 
 
