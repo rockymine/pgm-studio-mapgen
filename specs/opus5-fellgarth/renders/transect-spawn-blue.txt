@@ -1,0 +1,61 @@
+## spawn-blue (spawn) along x
+TRANSECT 17 stations from (-44, -72) to (-28, -72), every 1
+  station        ground  surface  water  top  standing            step
+  (  -44,   -72)      18       18           28                      
+  (  -43,   -72)      18       18           29  spawn spawn-1#1     
+  (  -42,   -72)      18       18           30  spawn spawn-1#1     
+  (  -41,   -72)      18       18           31  spawn spawn-1#1     
+  (  -40,   -72)      18       18           31  spawn spawn-1#1     
+  (  -39,   -72)      18       18           30  spawn spawn-1#1     
+  (  -38,   -72)      18       18           29  spawn spawn-1#1     
+  (  -37,   -72)      18       18           28                      
+  (  -36,   -72)      18       18           18                      
+  (  -35,   -72)      18       18           18                      
+  (  -34,   -72)      18       18           18                      
+  (  -33,   -72)      18       18           18                      
+  (  -32,   -72)      18       18           18                      
+  (  -31,   -72)      18       18           18                      
+  (  -30,   -72)      18       18           18                      
+  (  -29,   -72)      18       18           18                      
+  (  -28,   -72)      18       18           18                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (-43, -74)
+
+## spawn-blue (spawn) along z
+TRANSECT 33 stations from (-40, -88) to (-40, -56), every 1
+  station        ground  surface  water  top  standing            step
+  (  -40,   -88)                                                    void
+  (  -40,   -87)                                                    void
+  (  -40,   -86)                                                    void
+  (  -40,   -85)                                                    void
+  (  -40,   -84)                                                    void
+  (  -40,   -83)                                                    void
+  (  -40,   -82)                                                    void
+  (  -40,   -81)                                                    void
+  (  -40,   -80)      18       18           31                      
+  (  -40,   -79)      18       18           31  spawn spawn-1#1     
+  (  -40,   -78)      18       18           31  spawn spawn-1#1     
+  (  -40,   -77)      18       18           31  spawn spawn-1#1     
+  (  -40,   -76)      18       18           31  spawn spawn-1#1     
+  (  -40,   -75)      18       18           31  spawn spawn-1#1     
+  (  -40,   -74)      18       18           31  spawn spawn-1#1     
+  (  -40,   -73)      18       18           31  spawn spawn-1#1     
+  (  -40,   -72)      18       18           31  spawn spawn-1#1     
+  (  -40,   -71)      18       18           31  spawn spawn-1#1     
+  (  -40,   -70)      18       18           31  spawn spawn-1#1     
+  (  -40,   -69)      18       18           31  spawn spawn-1#1     
+  (  -40,   -68)      18       18           31  spawn spawn-1#1     
+  (  -40,   -67)      18       18           31  spawn spawn-1#1     
+  (  -40,   -66)      18       18           31  spawn spawn-1#1     
+  (  -40,   -65)      18       18           31                      
+  (  -40,   -64)                                                    void
+  (  -40,   -63)                                                    void
+  (  -40,   -62)                                                    void
+  (  -40,   -61)                                                    void
+  (  -40,   -60)                                                    void
+  (  -40,   -59)                                                    void
+  (  -40,   -58)                                                    void
+  (  -40,   -57)                                                    void
+  (  -40,   -56)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (-42, -79)

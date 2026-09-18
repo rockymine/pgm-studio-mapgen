@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
 """The crossing suite — six composed boards chosen for what their middles are, finished with one document.
 
-The composer funds the mid out of the units' own land and lays a row of stones astride the symmetry axis
-inside the band. A stone sitting on the axis has its own fanned image abut it, so the pair is **one shared
-island** both teams reach at once rather than a stone each — which is the thing these six are picked to
-show. Between them they carry one shared stone, none, one shared, a mirrored pair, three on a mirror and
-three islands from two authored stones on a rotation, at all five size bands.
+The composer funds the mid out of the units' own land and lays a row of stones inside the band, and **where
+that row stands is the whole difference**. A **single rank** sits astride the symmetry axis, so each stone's
+own fanned image abuts it into one shared island both teams reach at once. A **double rank** sits one hop
+clear of the axis, so the image is a second rank facing it across a centre void of two hops — a stone each,
+met before the enemy's, and a crossing half again as deep. These six are picked to show both, at every band
+the ladder now runs to: nano, micro, milli and centi.
 
-A board asking for a **split band** takes the empty crossing and no stone, because the bay between the
-split's two legs is meant to be the island. `Cleftmoor` is that case: its frontline offered no split the
-carve would take, the legs are one band, and the crossing is plain void — the contrast the other five are
-read against.
+The pair is only offered where the crossing's share can pay for two ranks of ground, which is milli and
+centi. Where it is drawn it spends 95–99% of that share against the single rank's 33–85%, so the same
+allowance buys more ground in the middle rather than a bigger slice of the board.
+
+`Caldermoss` is the honest one. It carries `MD6`'s maximum row — three stones on a mirror — and a hub whose
+enclosed void runs **72 blocks** on its longest side, against the 40 the author reads as the point where a
+loop round a hole stops being a loop and becomes a wall. That is `G272`, still open, and it is in the suite
+so it can be looked at rather than described.
 
     python3 specs/crossing-suite/build-suite.py       # writes specs/opus5-<slug>/ for each board
     tools/drive.py specs/opus5-stannerford "Stannerford" --out maps/opus5-stannerford
@@ -36,12 +41,12 @@ STONE_PREFIX = "mid-stone-"
 
 # One board per kind of middle. The seed is the board: a request reproduces its plan byte for byte.
 BOARDS = [
-    ("opus5-stannerford", "Stannerford",  8, 2, "rot_180",  6),   # nano  · one shared stone, twin front
-    ("opus5-cleftmoor",   "Cleftmoor",    8, 2, "rot_180",  2),   # nano  · a split band asked for, no stone
-    ("opus5-ringmere",    "Ringmere",    16, 2, "rot_180",  1),   # micro · one stone, three wools with a donut
-    ("opus5-twyford",     "Twyford",     24, 2, "rot_180",  0),   # milli · a mirrored pair, two islands
-    ("opus5-threapland",  "Threapland",  32, 2, "mirror_z", 0),   # centi · three stones, MD6's maximum
-    ("opus5-broadstang",  "Broadstang",  52, 2, "rot_180",  7),   # hecto · three islands from two authored
+    ("opus5-oakshott",    "Oakshott",     8, 2, "rot_180",  3),   # nano  · single rank, the smallest shared stone
+    ("opus5-fellgarth",   "Fellgarth",   16, 2, "rot_180",  3),   # micro · single rank, an L and a U wool
+    ("opus5-dunnerholme", "Dunnerholme", 24, 2, "rot_180",  0),   # milli · single rank on a double-hole hub
+    ("opus5-stennerwath", "Stennerwath", 24, 2, "rot_180",  3),   # milli · DOUBLE rank, three wools, no hole
+    ("opus5-harrowbeck",  "Harrowbeck",  32, 2, "rot_180",  7),   # centi · DOUBLE rank on a P hub
+    ("opus5-caldermoss",  "Caldermoss",  32, 2, "mirror_z", 13),  # centi · three stones, and a 72-block hole
 ]
 
 
@@ -218,6 +223,17 @@ def stones(plan):
     return [p for p in plan["pieces"] if p["id"].startswith(STONE_PREFIX)]
 
 
+def rank_form(plan, row):
+    """Which of the two rows this is, read off where the first stone stands: a rank symmetric about the axis
+    is the shared one, and a rank wholly to one side of it has the fan for its opposite number."""
+    if not row:
+        return "none"
+    axis = 1 if plan["globals"]["symmetry"] in ("rot_180", "mirror_z", "rot_90") else 0
+    rect = row[0]["rect"]
+    near, far = (rect[1], rect[1] + rect[3]) if axis else (rect[0], rect[0] + rect[2])
+    return "single" if near == -far else "double"
+
+
 def main():
     print(f"studio at {API}\n")
     for slug, name, players, teams, symmetry, seed in BOARDS:
@@ -231,11 +247,13 @@ def main():
         with open(os.path.join(directory, f"{slug}.finish.json"), "w") as handle:
             json.dump(finish(plan, cell), handle, indent=1)
         row = stones(plan)
-        shapes = " ".join(f"{p['rect'][3]}x{p['rect'][2]}" for p in row) or "—"
-        print(f"  {name:13} {spend['band']:6} p{players:<3} {symmetry:9} seed {seed}  cell {cell}  "
+        shapes = " ".join(f"{p['rect'][2] * cell}x{p['rect'][3] * cell}" for p in row) or "—"
+        print(f"  {name:13} {spend['band']:6} p{players:<3} {symmetry:9} seed {seed:<3} cell {cell}  "
+              f"{rank_form(plan, row):6} rank  "
               f"unit {spend['unit']['cells']}/{spend['unit']['budgetCells']:.0f}  "
-              f"mid {spend['mid']['cells']}/{spend['mid']['budgetCells']:.0f}  "
-              f"stones {len(row)} {shapes:14} hub {structure['hub']}  "
+              f"mid {spend['mid']['cells']}/{spend['mid']['budgetCells']:.0f} "
+              f"{spend['mid']['cells'] / spend['mid']['budgetCells']:.0%}  "
+              f"stones {len(row)} {shapes:20} hub {structure['hub']}  "
               f"wools {','.join(structure['wools'])}  front {structure['frontline']}")
 
 

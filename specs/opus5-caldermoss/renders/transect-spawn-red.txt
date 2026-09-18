@@ -1,0 +1,59 @@
+## spawn-red (spawn) along x
+TRANSECT 15 stations from (52, 64) to (66, 64), every 1
+  station        ground  surface  water  top  standing            step
+  (   52,    64)      18       18           18                      
+  (   53,    64)      18       18           18                      
+  (   54,    64)      18       18           18                      
+  (   55,    64)      18       18           18                      
+  (   56,    64)      18       18           18                      
+  (   57,    64)      18       18           18                      
+  (   58,    64)      18       18           18                      
+  (   59,    64)      18       18           18                      
+  (   60,    64)      18       18           28                      
+  (   61,    64)      18       18           29  spawn spawn-1       
+  (   62,    64)      18       18           30  spawn spawn-1       
+  (   63,    64)      18       18           31  spawn spawn-1       
+  (   64,    64)      18       18           31  spawn spawn-1       
+  (   65,    64)      18       18           30  spawn spawn-1       
+  (   66,    64)      18       18           29  spawn spawn-1       
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (61, 62)
+
+## spawn-red (spawn) along z
+TRANSECT 33 stations from (64, 48) to (64, 80), every 1
+  station        ground  surface  water  top  standing            step
+  (   64,    48)                                                    void
+  (   64,    49)                                                    void
+  (   64,    50)                                                    void
+  (   64,    51)                                                    void
+  (   64,    52)                                                    void
+  (   64,    53)                                                    void
+  (   64,    54)                                                    void
+  (   64,    55)                                                    void
+  (   64,    56)      18       18           31                      
+  (   64,    57)      18       18           31  spawn spawn-1       
+  (   64,    58)      18       18           31  spawn spawn-1       
+  (   64,    59)      18       18           31  spawn spawn-1       
+  (   64,    60)      18       18           31  spawn spawn-1       
+  (   64,    61)      18       18           31  spawn spawn-1       
+  (   64,    62)      18       18           31  spawn spawn-1       
+  (   64,    63)      18       18           31  spawn spawn-1       
+  (   64,    64)      18       18           31  spawn spawn-1       
+  (   64,    65)      18       18           31  spawn spawn-1       
+  (   64,    66)      18       18           31  spawn spawn-1       
+  (   64,    67)      18       18           31  spawn spawn-1       
+  (   64,    68)      18       18           31  spawn spawn-1       
+  (   64,    69)      18       18           31  spawn spawn-1       
+  (   64,    70)      18       18           31  spawn spawn-1       
+  (   64,    71)      18       18           31                      
+  (   64,    72)                                                    void
+  (   64,    73)                                                    void
+  (   64,    74)                                                    void
+  (   64,    75)                                                    void
+  (   64,    76)                                                    void
+  (   64,    77)                                                    void
+  (   64,    78)                                                    void
+  (   64,    79)                                                    void
+  (   64,    80)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (62, 57)

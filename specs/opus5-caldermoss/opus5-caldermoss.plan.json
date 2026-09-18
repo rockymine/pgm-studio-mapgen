@@ -1,0 +1,262 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Caldermoss"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "mirror_z",
+  "maxPlayers": 32,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "hub-t1",
+   "role": "piece",
+   "rect": [
+    -13,
+    21,
+    26,
+    4
+   ]
+  },
+  {
+   "id": "hub-t2",
+   "role": "piece",
+   "rect": [
+    -13,
+    6,
+    26,
+    4
+   ]
+  },
+  {
+   "id": "hub-t3",
+   "role": "piece",
+   "rect": [
+    -13,
+    10,
+    4,
+    11
+   ]
+  },
+  {
+   "id": "hub-t4",
+   "role": "piece",
+   "rect": [
+    9,
+    10,
+    4,
+    11
+   ]
+  },
+  {
+   "id": "spawn-t1",
+   "role": "piece",
+   "rect": [
+    13,
+    14,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    15,
+    14,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "wool-a-t1",
+   "role": "piece",
+   "rect": [
+    1,
+    25,
+    4,
+    8
+   ]
+  },
+  {
+   "id": "wool-a-room",
+   "role": "wool-room",
+   "rect": [
+    5,
+    29,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "wool-b-t1",
+   "role": "piece",
+   "rect": [
+    -18,
+    17,
+    5,
+    4
+   ]
+  },
+  {
+   "id": "wool-b-t2",
+   "role": "piece",
+   "rect": [
+    -22,
+    14,
+    4,
+    7
+   ]
+  },
+  {
+   "id": "wool-b-room",
+   "role": "wool-room",
+   "rect": [
+    -22,
+    12,
+    4,
+    2
+   ]
+  },
+  {
+   "id": "mid-stone-0",
+   "role": "piece",
+   "rect": [
+    -12,
+    -3,
+    6,
+    6
+   ]
+  },
+  {
+   "id": "mid-stone-1",
+   "role": "piece",
+   "rect": [
+    -3,
+    -3,
+    6,
+    6
+   ]
+  },
+  {
+   "id": "mid-stone-2",
+   "role": "piece",
+   "rect": [
+    6,
+    -3,
+    6,
+    6
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -13,
+    -6,
+    26,
+    12
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     4,
+     8
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-a-room",
+    "at": [
+     4,
+     8
+    ]
+   },
+   {
+    "id": "wool-2",
+    "piece": "wool-b-room",
+    "at": [
+     8,
+     4
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": [
+  {
+   "id": "hub",
+   "kind": "hub",
+   "rect": [
+    -13,
+    6,
+    26,
+    19
+   ],
+   "members": [
+    "hub-t1",
+    "hub-t2",
+    "hub-t3",
+    "hub-t4"
+   ]
+  },
+  {
+   "id": "spawn",
+   "kind": "spawn",
+   "rect": [
+    13,
+    14,
+    4,
+    4
+   ],
+   "members": [
+    "spawn-t1",
+    "spawn-room"
+   ]
+  },
+  {
+   "id": "wool-a",
+   "kind": "wool",
+   "rect": [
+    1,
+    25,
+    6,
+    8
+   ],
+   "members": [
+    "wool-a-t1",
+    "wool-a-room"
+   ]
+  },
+  {
+   "id": "wool-b",
+   "kind": "wool",
+   "rect": [
+    -22,
+    12,
+    9,
+    9
+   ],
+   "members": [
+    "wool-b-t1",
+    "wool-b-t2",
+    "wool-b-room"
+   ]
+  }
+ ]
+}
