@@ -1,0 +1,747 @@
+%% Generated from the running pgm-studio API (http://localhost:7894/api) --- do not edit by hand.
+%% Source: GET /api/rules
+% 183 rules in 28 families, one longtable per family, families by size.
+
+% ---- family SK ----
+\subsection*{Family \id{SK} \textnormal{\textcolor{ink60}{--- 28 rules}}}
+\addcontentsline{toc}{subsection}{Family SK}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family SK, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{SK1} & A relief the recompile does not keep. Either a group the author had drawn relief onto no longer exists to carry it, because the board fused differently --- or the merge carried the stored relief over one the posted body states for the same group, so the board builds the terrain it already had. & plan, terrain \\
+\id{SK2} & The board spans more ground than the studio will realize: the extent every shape and its symmetry images cover, measured in columns, is past what a build can walk. Refused before anything is built, because the cost is paid per column of the extent whether or not ground is drawn there --- a board that large does not fail, it takes the machine with it. & plan, studio \\
+\id{SK3} & The document names something that is not there --- a shape kind nobody has, a mirror mode nobody has, a group listing a shape id the layout does not carry, a relief keyed to a group that does not exist. A complaint rather than a refusal: the board still builds, and it builds without whatever the name was for, which is the thing worth saying out loud. & plan, terrain, theme \\
+\id{SK4} & A shape draws no ground: a polygon or lasso with fewer than three vertices, a circle or path of no width, a rectangle with no area. The shape is in the document and contributes nothing to the board, which reads exactly like a shape that was never drawn. & plan, terrain \\
+\id{SK5} & A shape states a column the world cannot hold: a floor below bedrock, a top above the world roof, or a thickness that is negative. The build clamps it into the world rather than refusing, so what stands is not what the document asked for. & plan, terrain, world \\
+\id{SK6} & Nothing has been stored to finish. The map is at the sketch stage and no layout has been written for it, so there is no document to rasterize into world geometry. 422. & request, plan \\
+\id{SK7} & The stored layout rasterizes to no ground at all. Every shape in it draws nothing --- an empty document, or one whose shapes are all of the kinds SK3 and SK4 report --- so finishing it would write a world with no land in it. 422, and the one place the sketch's complaints become fatal: finishing is what declares the drawing done. & plan, terrain \\
+\id{SK8} & A board is finished carrying no finish: no theme registry, no relief and no props. Ground alone is a legitimate board --- a test piece, a shape being tried --- so this is a complaint and never a refusal. It exists because it is the one silence this stage kept: SK3 names a shape citing a theme the layout does not carry, SK4 a shape drawing nothing and SK7 a layout rasterizing to no ground, and all three need something stated to disagree with.\,\textcolor{ink30}{\ldots} & terrain, world \\
+\id{SK9} & Two shapes on one layer stack over the same ground, and the lower one is not in the world. A layer is a slab: it holds one span per column, and a taller add replaces a shorter one outright, floor included. So a floor with a roof drawn over it on the same layer builds as the roof alone, over open air, and reads as a board the author never drew. & terrain \\
+\id{SK10} & Two layers are driven into each other by more than the one course a stack shares at its seam. A layer is a slab and the stack is what puts air between two of them, so where their spans meet they build as one solid mass: the gap the layers were drawn to have is not in the world there, and nothing under the upper slab can be stood in. & terrain \\
+\id{SK11} & A mass of standable ground under open sky that no route reaches from the rest of the board. Ground under a roof is a room and says nothing; ground with sky over it and no way onto it is either a second landmass the author meant or an upper level whose stair was never drawn, and only the author knows which. & terrain, world \\
+\id{SK12} & Two groups answering to the same id. A group id is the key a relief is stored under and the handle a placement names, so a board carrying it twice has no single answer to either --- and which way it goes wrong depends on where the second one is. On one layer the last group solved takes the terrain over its own cells and the ones before it build flat.\,\textcolor{ink30}{\ldots} & terrain \\
+\id{SK13} & An add covers ground a subtract takes away. A subtract is how a board states its negative space --- the void a plan's buffer pieces compile to, the hole a composed footprint leaves --- and a hole is never scenery: what a body encircles is ground players go round, and a board's walls are drawn to guard it.\,\textcolor{ink30}{\ldots} & terrain \\
+\id{SK14} & An override add states a top its group's relief will solve straight through. An override add says the column is its own, floor and all --- it is what a wall, a flight of stairs, a crop bed or a stepped mound is drawn as --- and a relief replaces the top of every column of its group. Only a shape naming a height\_mode stands out of that field, and only a relief\_scope keeps its ground out of the solve, so a made thing carrying neither is built to whatever the relief says and the author's number is nowhere in the world.\,\textcolor{ink30}{\ldots} & terrain \\
+\id{SK15} & A shape states a theme over ground another shape stands taller on, so the theme is on none of it. Two override adds over one column is not a fault --- the taller wins it, which is what ``the tallest add is the height'' means --- and paint follows the shape that forms the surface, so the taller shape's own theme is what shows and the shorter one's is nowhere on the columns the two share.\,\textcolor{ink30}{\ldots} & terrain, theme \\
+\id{SK16} & A made thing asks to be seated on the ground and has none under it. A layer that seats takes its floors from the lowest solid column of its own footprint, so a thing whose footprint covers no ground at all has nothing to measure against and stays at the height it was drawn. A complaint: a sculpture hanging in open sky is a legitimate board --- a balloon, a ship in the air, a thing on a spire --- and the word for that is simply to state no seat.\,\textcolor{ink30}{\ldots} & terrain \\
+\id{SK17} & A shape no group on its layer lists. A group is the unit the symmetry orbit is fanned by --- the build reads each mirroring group's shapeIds and copies those shapes onto their images --- so a shape no list names is drawn once, on the side it was drawn on, and has no image anywhere. Nothing else catches it: the shape is in the document, it rasterizes where the author put it, the drawn mirror outline still covers it because a group's outline is the union of the ground it fused and not the shapes it lists, and half a landmass is missing only in the world.\,\textcolor{ink30}{\ldots} & terrain \\
+\id{SK18} & A made thing and a built thing holding the same courses. A made thing --- a layer stating kind: ``made'' --- is laid by the rasterizer, before anything is stamped, and every stamper writes where it is told: a wool cage, a spawn cube, an objective and a dressing-placed building all seat on the terrain's surface, which is every column's top with the made things taken out.\,\textcolor{ink30}{\ldots} & structure, feature \\
+\id{SK19} & A placement naming a recipe the document does not state. A tree, a boulder and a building each carry a key into the layout's own dressing.styles registry --- what is placed is a position, what stands there is a recipe named once --- and a key the registry has no entry for names nothing at all. Every read of the dressing refuses it already, naming the placement and the key, so the world is never built from one.\,\textcolor{ink30}{\ldots} & feature \\
+\id{SK20} & The layers of a stack are not in the order their ground stands in --- a later layer starts below an earlier one. A layer's position in the list is its draw order and base\_y is its height, so the two say different things and a document where they disagree reads as a stack that is not the one it builds: a reader walking the list top to bottom meets the storeys out of order, and a strip drawn from it puts the cellar above the roof.\,\textcolor{ink30}{\ldots} & terrain \\
+\id{SK21} & A bend that could not pull every point it inserted. A coast is drawn by resampling an outline's long edges and pulling each inserted point to the side the bend asks for, and a point whose two offsets both land on the wrong side --- a neck or a notch narrower than twice the wander --- stays on the edge it was cut from.\,\textcolor{ink30}{\ldots} & terrain \\
+\id{SK22} & A shape stating a height per vertex that its kind has no reader for, so the world builds one uniform thickness and the author's numbers are nowhere in it. anchor\_heights is interpolated across a footprint as a TIN over the shape's own ring, which only a polygon or a lasso has: a rectangle and a circle state bounds rather than vertices, and a polyline's vertices are its centreline rather than its footprint --- the band around them carries many more points, and a thickness graded along one would have to interpolate along the arc instead.\,\textcolor{ink30}{\ldots} & terrain, world \\
+\id{SK23} & A theme scoped to a shape that has no interior column, so the only buckets that ever paint it are the rim and the wall and the theme's own surface is nowhere on the board. A theme is a recipe for ground: which of its five buckets a block takes is decided per column by whether that column is an edge, and every column of a shape whose whole footprint touches the void is an edge under every rimEdges setting there is.\,\textcolor{ink30}{\ldots} & terrain, world \\
+\id{SK24} & A shape stating both a theme and a material. The two answer one question --- what paints this shape --- at two grains, and a document holding both says nothing about which was meant: the build takes the material, because it is the narrower statement, and the theme the author also wrote is read by nothing. & terrain \\
+\id{SK25} & A polyline whose band crosses itself. The two offset edges are stored as one outline and an outline is filled even-odd, so where a centreline winds back beside itself the two windings cancel and the lap comes back as void: a spiral drawn as one stroke builds with a gap between every turn, and a hairpin tighter than the band is wide builds with a hole in its elbow. & terrain \\
+\id{SK26} & A tilted shape whose climb ends at a drop. A flight is one shape at any gradient, so nothing in the document says where it arrives --- and a flight that tops out level with the ground beside it for one cell and then falls is walkable by every measure taken of its treads and is not a way up anything. Read at both ends, in the shape's own direction of slope: the high end wants somewhere to arrive and the low end wants somewhere to step on from.\,\textcolor{ink30}{\ldots} & terrain \\
+\id{SK27} & One landform painted a theme per step. A plan component spanning several surfaces compiles to one shape per surface --- a stepped island becomes stacked plateaus, each addressable by its own id --- and a theme scoped per plateau paints one hillside as two or three grounds with a hard line at every riser.\,\textcolor{ink30}{\ldots} & terrain, theme \\
+\id{SK28} & A group that declines the fan while standing wholly inside one orbit image. The orbit is fanned per group, so a group stating mirrors: false is built once, where it was drawn --- which is right for a landmark on the symmetry centre, because such a thing is already its own image, and wrong for anything a team owns.\,\textcolor{ink30}{\ldots} & terrain \\
+\end{longtable}
+
+% ---- family DR ----
+\subsection*{Family \id{DR} \textnormal{\textcolor{ink60}{--- 17 rules}}}
+\addcontentsline{toc}{subsection}{Family DR}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family DR, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{DR-BANK} & A body of water that dug a shaft rather than filled a hollow. Its line is one plane across the whole run --- by default the lowest surface it crosses --- and every bed column standing above that line is emptied down to it. depth bounds how far below the line the bed goes and nothing bounds how far above it the carve reaches, so a pond drawn across a slope comes out as a straight-sided pit as deep as the ground falls, whatever depth was asked for.\,\textcolor{ink30}{\ldots} & feature, terrain, world \\
+\id{DR-CLAIM} & A prop rests on ground something already standing has claimed --- a channel, a road, a building or an earlier prop. The pass places in priority order and the first claimant keeps the cell, so this is the collision itself rather than a near miss; the finding names the cell and what holds it. A building holds the ground it stamps andStructureClearance blocks of ring beyond it, so a prop seating under an eave is this fault rather than a silent build.\,\textcolor{ink30}{\ldots} & feature, terrain \\
+\id{DR-CROSS} & A building stands across a route: the road it covers carries on out the other side, so what was one way through the board is now two dead ends at a wall. A road that simply ends at the building is a porch and stands --- that is what a road running to a door is --- and the two are told apart by what is left of the stroke once the footprint is out of it: one run of paving is an end, two or more is a crossing.\,\textcolor{ink30}{\ldots} & structure, feature, terrain \\
+\id{DR-CUT} & A prop the world cut down. A prop seats on its feet --- the cells of its lowest course are what the keep-outs, the claims and the ground are asked about --- and everything it reaches over is written only where it meets air. So a prop that stands clear of a building may still have most of its body inside one, and the blocks that land are whatever the wall left: a rock flattened along a face, or a crown cut off from its own trunk and standing in the air on the far side.\,\textcolor{ink30}{\ldots} & feature, terrain \\
+\id{DR-DOC} & The rule this refusal carries into the export gate, so a caller can act on the id rather than parse the sentence. & request, feature \\
+\id{DR-DRY} & Water standing against a hole in its own basin. A pool fills the bed it carves, and the hollow it sits in is very often dug by something else --- a relief mark, a shape's own floor --- so where that hollow reaches further than the bed does, the extra is excavated and never filled: a trench as deep as the water is, running alongside it, with the water standing against open air and nothing said.\,\textcolor{ink30}{\ldots} & feature, terrain, world \\
+\id{DR-FACE} & A block of a copied body naming a face it has nothing to cling to. A copied body is written block for block with the data it was cut with --- that is what makes it a copy --- so a block whose data is a direction has to point at something the body actually holds. A vine states every side it clings to at once; a side naming air is a curtain hanging on nothing, and a pair of opposite sides is that same fault seen from the front, as a vine with two faces in one block.\,\textcolor{ink30}{\ldots} & feature, material \\
+\id{DR-KEEP} & A prop rests on a column the map keeps clear of everything: a spawn point or its room, a wool room or its monument, a structure the plan stated, a column whose surface is built rather than terrain, or the lane in front of a spawn or wool-room door. The finding names which of those it was and the cell it happened at. & feature, spawn, objective \\
+\id{DR-LAYER} & A prop names a layer this board does not have ground on. A stacked board carries a surface per storey and a prop may say which one it rests on; naming one that is not there is not the same as naming none, so it is declined rather than quietly seated on the top surface --- which is exactly the storey the author was saying they did not mean. & feature, terrain \\
+\id{DR-PASS} & A building leaves no way past itself: a side of it carries fewer than 8 blocks of passable ground alongside its whole run (the author's number). Every side is asked, because the lane a building stands in is the ground players arrive on rather than a way round it --- a house in the middle of a route corks it however far the route runs on ahead.\,\textcolor{ink30}{\ldots} & structure, feature, terrain \\
+\id{DR-ROAD} & A prop rests nearer to the road than its kind's standoff allows: a tree 3 blocks, a boulder 2, measured from its resting cells to the nearest paved cell (Chebyshev; exactly-at-distance stands). The numbers are each kind's own RouteStandoff --- the author's ruling, stated on the type so there is exactly one place they live. & feature, terrain \\
+\id{DR-SITE} & A prop has no ground to rest on: one of the cells it rests at is off the map's terrain altogether, so there is no column to seat it in. A building is held to every cell of its footprint --- it seats on its lowest column, so one cell on land and the rest over void builds a house hanging off a corner --- and the finding names the first bare column it stopped at. & feature, terrain \\
+\id{DR-SIZE} & A building's box is smaller than 5$\times$5 blocks: a footprint four blocks deep is a wall with a roof, not a building anyone enters, and a corpus run produced eight of fourteen that way. Measured on the plan's bounding box, so a multi-wing building is judged as the one building it is. & structure \\
+\id{DR-SLOPE} & A building's own footprint is not level enough to stand on: the ground across it rises by at least the height of the building itself --- its wall courses plus the rise of its roof. A building seats on the lowest column of its plan and the terrain standing over that floor is carved out of it, so a footprint spanning more relief than the building is tall comes out with its uphill wall entirely below the ground beside it --- a house hidden in a hill rather than one dug into a slope.\,\textcolor{ink30}{\ldots} & structure, feature, terrain \\
+\id{DR-STEEP} & A boulder standing on a face rather than on ground. An erratic is a mass left where the ice dropped it, which is ground flat enough to hold one; a rock pinned to a steep hillside reads as neither --- the slope is already the feature there, and the rock sitting on it only interrupts a line that was doing the work.\,\textcolor{ink30}{\ldots} & feature, terrain, world \\
+\id{DR-TONE} & A boulder built out of nothing but the tones of the ground it stands on. A rock is an erratic --- a mass carried here and left --- so it reads as a rock by not being made of the field it sits in, and one whose every tone family the ground already states has no silhouette at any size: it is a patch of the same ground standing up.\,\textcolor{ink30}{\ldots} & feature, material, terrain \\
+\id{DR-WAY} & A prop closes the way between two of the places the map is played between --- its spawns, its monuments, its goals --- or sends that way further round than a player will go. Measured by walking the terrain between every pair of waypoints and walking it again with the prop's footprint taken out of the ground: a pair that had a route and now has none is a way closed, and a route surviving more than ten blocks longer is the same fault at a lesser degree, ten being how far out of their way a player goes.\,\textcolor{ink30}{\ldots} & structure, feature, terrain \\
+\end{longtable}
+
+% ---- family PL ----
+\subsection*{Family \id{PL} \textnormal{\textcolor{ink60}{--- 16 rules}}}
+\addcontentsline{toc}{subsection}{Family PL}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family PL, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{PL1} & No generating piece: there is no land, so there is nothing to build. & plan \\
+\id{PL2} & No spawn: PGM has nowhere to put a player and the map cannot be entered. & plan, spawn \\
+\id{PL3} & The plan states no objective of any kind --- a complaint, since which goal a map carries is the author's. All four families count: a wool, a destroyable, a core, and the capture points a board states a count of. It is a statement about the plan and says nothing about the match. A board can state its goals downstream instead, on the intent the configure tool and the API write, and a plan-tier rule cannot see that --- so what this reports is a plan with nothing in it to win on, not a map that cannot be won.\,\textcolor{ink30}{\ldots} & plan, objective \\
+\id{PL4} & Two pieces claim the same ground at incompatible heights, so there is no coherent surface. & plan \\
+\id{PL5} & A placement names a piece the plan does not have. & plan \\
+\id{PL6} & A placement stands on a buffer, which is reserved empty space and produces no terrain. & plan \\
+\id{PL7} & A placement falls outside the piece it names. & plan \\
+\id{PL8} & A spawn room cannot seat every monument its team will capture. & plan, spawn, objective, structure \\
+\id{PL9} & A wool cannot be reached from a capturing team's spawn at all. & plan, objective, spawn \\
+\id{PL10} & A destroyable style names something that is not a style. & plan, objective, style \\
+\id{PL11} & A wall is drawn on a pair of pieces that share no land interface. & plan, structure \\
+\id{PL12} & A connected landmass mixes fanned and non-fanned pieces, so it has no coherent orbit image. & plan \\
+\id{PL13} & A bedrock wall is drawn on the wool room's own interface, so the wall and the room stand through each other and the room can barely be entered. The wool's own edge is never a wall seat. & plan, structure, objective \\
+\id{PL14} & A wool colour names something that is not a dye. & plan, objective \\
+\id{PL15} & The document states a shape version this build does not read. A marker's at is an offset in blocks from its piece's minimum corner, and an earlier version stated the same field in cells --- the same numbers, a different distance --- so a document that names another version is refused rather than read under the wrong unit. & plan \\
+\id{PL16} & A capture-point count the board's own symmetry cannot lay out. A point belongs to nobody, so it has to be the same walk for every team, and the only positions that are lie on the board's axes: the centre of symmetry, which is one point, and a ring the orbit fans from a single side point, which is as many as the orbit has images.\,\textcolor{ink30}{\ldots} & plan, objective \\
+\end{longtable}
+
+% ---- family WX ----
+\subsection*{Family \id{WX} \textnormal{\textcolor{ink60}{--- 13 rules}}}
+\addcontentsline{toc}{subsection}{Family WX}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family WX, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{WX1} & The shell's footprint is the piece rect inset one block on every side. The ring of clean floor around a room is part of what a piece promises, so a 10$\times$10 piece carries an 8$\times$8 shell and a 10$\times$20 piece an 8$\times$18 one; the shell takes the rect's own orientation, and the fanned rect orients the orbit images. & plan, structure \\
+\id{WX2} & The footprint cannot hold a room of the least legal span. A wall is what the interior is inset by and what the pad keeps its clearance to, so the span a shell needs is four blocks more on each axis than the span a pad and its chest corners need on open ground. & plan, structure \\
+\id{WX3} & The marker's block-lattice parity differs between axes, and the pad is always square. & plan, structure, spawn \\
+\id{WX4} & The pad keeps at least one block of clear floor to every wall. A marker sitting too close has its pad shifted inward by the minimum that restores the clearance --- the exported point moves with it --- and a 3$\times$3 is chosen only where it still fits after that shift. An interior with no room for the pad even shifted is refused. & plan, structure, spawn \\
+\id{WX5} & The exported spawn or wool location is the pad's centre, after any WX4 shift. The world is the ground truth the map document has to agree with, so the point follows the pad rather than the marker that asked for it, and it snaps to the half-block lattice rather than to an integer. & structure, spawn, objective, world \\
+\id{WX6} & A wool room with no seam and no abutting build zone has nothing to enter it by. & plan, structure, objective \\
+\id{WX7} & A door's width follows the wall it is cut into. An odd interior wall centres a 3-wide door; an even wall takes 4 once the interior is at least 6 across and narrows to 2 at the 4-across minimum. The invariant under the numbers is that a door is at least one block narrower than the interior on each side, so the corner cells a spawn cube seats monuments in are never opened to the outside. & structure \\
+\id{WX8} & An iron cube is IronSpan blocks square and stands outside the room shell, inside the piece, holding IronGap blocks of clear air to the wall --- the standing room a player has to get round it. It fits where its marker puts it or it does not: the room keeps the footprint WX1 gave it and never yields an edge, and the cube is one size whatever the marker's parity.\,\textcolor{ink30}{\ldots} & plan, structure, spawn \\
+\id{WX9} & Every structure marker resolves to placeable or not, and an unplaceable one is not an error the export throws on: it stamps nothing, the room takes its full WX1 footprint, and the marker stays on the board where the author put it. Validation flags it and the structure preview draws only what will be placed, so the iso view never shows a cube the export declines. & structure, world \\
+\id{WX10} & A bound room style builds a shell taller than the build ceiling --- BuildCeiling's clearance over the ground it stands on. A room's shell is authored geometry and is subject to no cap of its own, so a tall storey stack swallows the goal marker that hangs MarkerOver blocks over that ceiling, and the map's own sky sign ends up inside the building it points at.\,\textcolor{ink30}{\ldots} & style, structure, objective \\
+\id{WX11} & A stamped structure stands well above the ground beside it. Its foundation fills the column under its whole footprint and levels it at the footprint's highest, so where a neighbouring cell sits well below that floor what the building meets the world with is a sheer face of bedrock --- a wall nobody drew, at a height nobody chose, which a player cannot climb and no other read reports.\,\textcolor{ink30}{\ldots} & structure, world, terrain \\
+\id{WX12} & The footprint reaches outside the piece it stands on. A piece is one rectangle at one surface, so a footprint inside it is on ground by construction and crosses no interface; one that reaches past it is over whatever the neighbour happens to be, or over the void. & plan, structure \\
+\id{WX13} & The room a region raises is larger than a room. A shell's footprint is the region inset one block on every side wherever the document states no footprint of its own, so an oversized region does not overflow anything --- it is the building, and the hall comes out as long as the region is. Read off the resolved frame rather than off a plan piece, so a hand-authored intent meets the same cap a compiled one does.\,\textcolor{ink30}{\ldots} & structure, spawn \\
+\end{longtable}
+
+% ---- family OB ----
+\subsection*{Family \id{OB} \textnormal{\textcolor{ink60}{--- 12 rules}}}
+\addcontentsline{toc}{subsection}{Family OB}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family OB, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{OB14} & A destroyable and a core are authored at orbit order 2 only --- one team's to defend and every other team's to break, which only means anything with two teams. & objective, intent \\
+\id{OB17} & The three places a goal may not stand: over the void, inside a spawn room, or inside a wool room --- everywhere the map's own rules would leave its blocks unbreakable. & objective, structure, terrain \\
+\id{OB19} & A tree, boulder or building stands inside a goal's clearance: the ground its structure covers grown by four blocks, and never nearer than ten blocks to the marker itself (the author's numbers). The prop is declined --- a goal is what the map is for, and a prop is removable, so the map is built without it rather than refused for it. & objective, feature \\
+\id{OB20} & A declared \textless{}gamemode\textgreater{} is outside PGM's own closed enum, so the map fails to load however clean everything else is. & intent, world \\
+\id{OB22} & A goal is authored floating further over the ground than a goal may float. The stated float is a distance from whatever the relief leaves under the column, and without a maximum it puts a goal anywhere --- including where reaching it is a build project rather than a raid. & objective \\
+\id{OB23} & A goal's own structure reaches above the height players may build to --- the build ceiling over the terrain and the buildings the map actually builds, which a goal is deliberately not counted among. The blocks above it can still be broken, so the map is not unwinnable; a goal standing over the line players may reach by building is a goal contested from nowhere. & objective, world \\
+\id{OB24} & Two goals are built into the same blocks. A destroyable stamped inside a core's casing is one structure serving two objectives: breaking either is breaking the other, and the blocks a match is played for belong to whichever stamper ran last. The usual cause is the symmetry rather than the author's hand --- a goal drawn at one position and a second at the position the orbit maps the first onto, so each lands on the other's image and nothing in the plan looks wrong.\,\textcolor{ink30}{\ldots} & objective, world \\
+\id{OB25} & A wool's monument was authored somewhere and the world carries it somewhere else. The capturing team's spawn structure stamps the monument block it is won on, so the exported location is the air cell that stamp produced and a stated one is not in the world --- three write paths take a location, every read answers it, and the export replaces it. & objective, world \\
+\id{OB26} & A destroy map with no way to end. A monument or a core is obsidian because obsidian reads as a goal --- opaque, slow, unmistakable --- and that same slowness is what lets the defending team hold one for the whole match: the attacker's pick is what drops the obsidian the defender rebuilds with, and PGM lets the owner repair unless the map says otherwise.\,\textcolor{ink30}{\ldots} & objective, intent \\
+\id{OB27} & A capture point that ends the match the moment somebody takes it. required is a Goal's attribute and PGM defaults it to true at proto 1.4.0 and above, which is every map the studio reads, so a point that leaves it off is a goal a competitor completes by standing on it --- and GoalsVictoryCondition ends the match the instant one competitor holds all of its required goals.\,\textcolor{ink30}{\ldots} & objective \\
+\id{OB28} & A capture point that pays into no score. ControlPoint.tickScore looks up ScoreMatchModule every tick, and PGM builds one only for a document carrying a \textless{}score\textgreater{} element --- so a point naming a points rate or an owner-points bonus on a map that declares no score pays nothing at all, for the whole match, with no error anywhere.\,\textcolor{ink30}{\ldots} & objective \\
+\id{OB29} & A capture point built out of blocks PGM will not recolour. A point's display regions are filtered through ColorUtils's colour-affected set --- wool, carpet, stained clay, stained glass and its pane, a banner --- and a block outside it is left exactly as it was found. Colour is the map's only signal that a point was captured, so a pad of hardened clay, stone or planks parses, exports, loads and shows nothing at all.\,\textcolor{ink30}{\ldots} & objective, material \\
+\end{longtable}
+
+% ---- family CT ----
+\subsection*{Family \id{CT} \textnormal{\textcolor{ink60}{--- 10 rules}}}
+\addcontentsline{toc}{subsection}{Family CT}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family CT, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{BZ5} & [expert, retired as a prohibition] Build zones \textbf{may touch spawn pieces} --- a zone at the spawn is a real motif: the \textbf{defender-egress bridge} (\id{four-team-wool-two-sided}: the spawn's second exit is a bridge mainly for defenders rotating to their wool; attackers push the other crossings). No proximity rule; the old lint is dropped.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{BZ6} & [author] \textbf{The mid build region never interfaces a wool piece --- and never contains a wool position.} Otherwise players bridge freely through the mid straight into the point and there is no gameplay direction. A zone touching a wool room exists only as the \emph{deliberate} WL8 two-approach variant (BZ5's wool note), never as mid-band spillover. & \textcolor{ink30}{---} \\
+\id{BZ9} & [author] \textbf{Fit --- a zone is bounded by the ground it docks, not by a width.} What it may not do is \textbf{overhang}: carry a stretch beyond the last ground it meets, which connects nothing and reads as no man's land a player walks into and stops. Oversized mid regions spanning the whole board width ``AND more'' are that fault at its limit.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{BZ11} & [author] \textbf{One zone for a compact middle.} Several zones merging into one region whose union is itself a \textbf{plain rectangle} are a stitch one zone would have drawn --- the author reads one crossing, the player a patchwork (the four-zones-over-a-30-block-middle fault). An \textbf{L/T-shaped union is not stitching}: rectangles are the only shape a zone comes in, so a region that turns a corner needs several.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{CT1} & the mid is an interface, not a cut. There is no team-separation cut --- the symmetry axis already plays that part. What the author shapes as ``the middle'' is the \textbf{interface between the two team territories}, and that interface always connects through bridge zones. Its physical forms, author-labeled across the corpus: \textbullet{} \textbf{Clean} --- one connected build region holding \textbf{0..n mid islands}\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{CT4} & the island-size gradient . Measured over the 90 fanned islands of the ten-seed corpus (\id{docs/\allowbreak{}generator/\allowbreak{}seed-stats.\allowbreak{}md}, ``Island gradient sweep''): islands \textbf{grow} with distance from the centre --- pooled Spearman(area, centroid-distance) \textbf{+0.61}, holds per-seed in \textbf{8/10}. Stepping-stone candidates are islands fully submerged in a build zone, or small ($\leq$100-block) islands with exactly two\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{CT5} & carve the mid, cut the team side. ``Cut'' is the wrong picture for the middle --- it can hold many islands; the mid operator is \textbf{carving}: shaping the interface's islands and zones directly into one of CT1's forms. Cutting belongs to the \textbf{team side}: severing a piece from its parent isolates it behind a bridge --- the isolated wool (WL4), the isolated spawn (SP6) --- and, deliberate variants aside, each team side stays internally land-traversable after cutting.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{CT8} & internal holes are the rotation device [corpus, author; amendment 2026-07-04]. The closure encloses internal void pockets --- \textbf{holes} --- in \textbf{12/12 seeds} (2--13 per fanned board, 4--72 cells... sizes in proxy cells; always in symmetric orbit multiples). ``These holes are what enables player rotation'' (author): a loop around a hole gives alternative routes between lanes without retreating through a single chokepoint.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{CT9} & [author] \textbf{The frontline rotation hole.} A split frontline + hub + band \textbf{encloses a rotation hole} in the tip-gap: the hub caps it above, the band (or a bridge) below, and a \textbf{buffer gap between band/bridge and the hub} is the void (mirror-mid \id{ex-6} \id{hole-6} between the tips under \id{hub-6}; \id{ex-8} \id{bridge-8b} splits the gap into \id{hole-8a}/\id{8b}; \id{ex-11} \id{hole-11}).\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{CT12} & [author] \textbf{The CTW strait is 15--40 blocks.} On a two-team wool board, the \textbf{direct crossing} between the two team islands --- a build region carrying the pair with no third landmass in it --- spans 15--40 blocks (the walk over the empty cells). Closer is two halves all but merged (the flush-fan fault produced literally one landmass); farther is a crossing nobody bridges.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\end{longtable}
+
+% ---- family HS ----
+\subsection*{Family \id{HS} \textnormal{\textcolor{ink60}{--- 10 rules}}}
+\addcontentsline{toc}{subsection}{Family HS}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family HS, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{HS1} & A block named for a geometric role --- which way a stair climbs, which half a slab fills --- is not that kind of block: doorHead.block, its fillBlock under upperSlab, a window's block under stairLattice, arched or slabBanded, or roofSlab itself. & style, material \\
+\id{HS2} & A doorway does not clear the least height a door may, once its head is written into the top course. & style, structure \\
+\id{HS3} & A roof is not one material. Its body and its verge are each a single block --- never a pattern, so nothing spreads a voronoi across a roof --- and the half-course slab continues the body in the body's own material. A bare log or a ground material is not a roof material at all, and a slab named as the whole-block body with no half-course companion builds a roof with a gap in every course.\,\textcolor{ink30}{\ldots} & style, material \\
+\id{HS4} & A part built of two blocks is built of two materials --- a door head whose stair and whose slab fill are cut from different stone, a window whose block and whose host disagree. The two blocks are one line of the building and read as one thing or as a mistake. & style, material \\
+\id{HS5} & An ore is used as a building material. An ore is stone with something in it --- it belongs in the ground a map is dug out of, and in a wall, a post or a beam it reads as a mistake rather than as a material. & style, material \\
+\id{HS6} & A door is cut through a wall that is not there. A storey whose wall is air over the doorway's own courses --- a house on stilts, an open undercroft --- has nothing to cut, so a doorway and its head are a lintel standing in mid-air. & style, world \\
+\id{HS7} & A footing round a plate one course deep. The footing is what a foundation stands on, so over a plate that is a single course it is a one-block rim round a building with no foundation under it --- noise at every wall, on every house, and the commonest thing wrong with how a village reads. & style, world \\
+\id{HS8} & A porch whose canopy climbs past the wall it is attached to. A canopy is seated by its own lowest course clearing the doorway it fronts --- which is what keeps the way out of that door walkable, and is the reason it is not seated under the eave, where on a tower it would ride the wall up and leave a colonnade open to the sky --- and its ridge then follows by however far the form happens to rise.\,\textcolor{ink30}{\ldots} & style, structure \\
+\id{HS9} & Beams over a wall that is carrying nothing. A beam end is the end of a floor timber, left long the way a log building leaves them --- so the course it comes out of has to be that timber, which is a laid log running along the wall. Over a course of brick or clay the ends are eight logs sticking out of masonry with nothing behind them, which is not a detail but a mistake about how the building is put together.\,\textcolor{ink30}{\ldots} & style, structure, material \\
+\id{HS10} & A house on stilts standing on a floor. The point of a stilt storey is that the ground runs on underneath it --- a bank, a mire, a shore --- and a plate laid across the footprint puts a plank rectangle on that ground and stops it. Nothing is wrong with the building; what is wrong is that the ground it was raised to leave alone has a lid on it. & style, world, terrain \\
+\end{longtable}
+
+% ---- family WL ----
+\subsection*{Family \id{WL} \textnormal{\textcolor{ink60}{--- 8 rules}}}
+\addcontentsline{toc}{subsection}{Family WL}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family WL, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{WL1} & At the far/back end of a dead-end lane, inset \textasciitilde{}\textbf{5}. Two-sided wools are authored twice (\id{four-team-wool-two-sided}: two stepped land seams into the room; \id{mirror-big-board}). & \textcolor{ink30}{---} \\
+\id{WL2} & On a different lane than the spawn; wool$\leftrightarrow$spawn $\geq$ \textbf{20} --- all 17 corpus pairs pass, tightest 22.4 (the base seeds), typical 36--58, up to 101 on the big board. & \textcolor{ink30}{---} \\
+\id{WL7} & Separation between a team's wools, measured over 8 multi-wool pairs: \textbf{46--143} blocks (46.1 / 58.3 / 64 / 70 / 75 / 85.6 / 95.5 / 143). Working minimum $\approx$\textbf{45}. That sweep was taken with a cardinal walk; the same routes cost up to a quarter less under the octile walk the preamble states, so the band reads high by that much and the sweep behind it is not in the repository to re-run (amendment 21).\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{WL8} & [expert; amendment 2026-08-31 --- the term is retired] Wool approach routes: the default is a \textbf{single chokepoint route}; real maps sometimes add \textbf{alternative routes} to the wool (and then a build zone may touch the wool room --- see BZ5). \textbf{This is a description and no longer a scored term.} The \id{wool-ringed-hole} term that carried it decided its verdict on \textbf{piece names}: a hole ringed around a wool passed only where the ring's ids shared the room's prefix, so \id{south-rim} beside room \id{wool-south} failed hard and \id{wool-south-rim} --- the same rectangles --- passed.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{WL9} & [author] \textbf{Spawn$\leftrightarrow$wool balance.} A team's wools sit \textbf{comparably far from the spawn}: the spread (max $-$ min) of the per-wool spawn$\rightarrow$wool traversal distances stays modest. A large spread means one wool is trivially defended (the spawn on its doorstep) while another is left to fend for itself. Bands learned from the teaching seeds (\id{spawn-wool-spread}).\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{WL10} & [author] \textbf{The spawn--wool--frontline triangle.} Two reads, both by surface traversal: (a) each wool keeps a real distance to the \textbf{frontline edge} --- the seam where the mid build band meets the land, the line an attacker crosses (\id{wool-front-distance}, measured at the most exposed wool); (b) across a team's wools the triangle stays \textbf{balanced}: per wool, the \emph{defence deficit} is its spawn distance minus its frontline distance, and the deficits' spread stays modest (\id{wool-front-balance}).\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{WL11} & [author] A wool room's \textbf{approach steps by 1 level or takes a ramp}: an entry seam at \textbf{$\Delta$$\geq$2} is un-walkable bare, the same reading \id{SP8} takes of a spawn's egress and for the same reason (EL1's palette steps by 2). The player who crosses that seam is the \textbf{attacker} --- a team is kept out of its own wool, so nobody defends through the door --- which is what makes the step worse here than at a spawn: it is met at the end of the run that decides the map, either as a wall to build up or as a drop that cannot be climbed back out of.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{WL12} & [author] \textbf{A bay or a hole beside a goal is at least 16 blocks across.} Negative space is crossed by \textbf{jumping} long before it is crossed by building: a short gap between a frontline and a wool room, or between a spawn and a wool room, lets a player tower at the near edge and jump in, and the approach the board was drawn around stops being walked at all.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\end{longtable}
+
+% ---- family EX ----
+\subsection*{Family \id{EX} \textnormal{\textcolor{ink60}{--- 6 rules}}}
+\addcontentsline{toc}{subsection}{Family EX}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family EX, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{EX1} & Some part of the map cannot be walked to from the rest of it. & world, terrain \\
+\id{EX2} & Nobody can enter the map: it declares no spawn of any kind. & intent, spawn \\
+\id{EX3} & What the intent declared is not in the document about to be written. & intent, world, studio \\
+\id{EX4} & A map with something to win has nobody to win it: it declares an objective and no team. & intent, objective \\
+\id{EX5} & The observer platform stands higher than the intent asked, because the board builds something over the point it named. & intent, world \\
+\id{EX6} & The map names nobody who made it, so the observer platform's authors board has a heading and nothing under it. & intent, world \\
+\end{longtable}
+
+% ---- family IM ----
+\subsection*{Family \id{IM} \textnormal{\textcolor{ink60}{--- 6 rules}}}
+\addcontentsline{toc}{subsection}{Family IM}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family IM, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{IM1} & The url names a host the import does not fetch from. The allowlist is the studio's SSRF guard --- an import fetches server-side, so an arbitrary host would make the studio a proxy into whatever its network can reach. 403. & request, studio \\
+\id{IM2} & The host answered, and not with the archive: a 404, a 403, a 5xx. Nothing about the request is wrong, so it is reported as what it is --- 502, the upstream's answer rather than the studio's. & request, studio \\
+\id{IM3} & The archive states more bytes than the import will fetch. 413, before anything is downloaded. & request, studio \\
+\id{IM4} & What arrived is not a zip: it does not begin with the header. 415, before extraction, so a login page served as HTML fails here rather than inside the unpacker. & request \\
+\id{IM5} & There is no world in it. The import reads region/*.mca and nothing else, so an archive or folder without them carries nothing the studio can scan. 422. & request, world \\
+\id{IM6} & The folder is a map already: it carries a map.xml. Importing originates a new map from a world, and one that already has a map document is a map to open rather than a world to originate from. 422. & request, world \\
+\end{longtable}
+
+% ---- family RL ----
+\subsection*{Family \id{RL} \textnormal{\textcolor{ink60}{--- 6 rules}}}
+\addcontentsline{toc}{subsection}{Family RL}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family RL, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{RL1} & The ground is not the landform the island says it is. The island states what it is meant to be --- a plain, rolling ground, hills, a mountain --- and the solved surface measures as something else, which is a board that got away from its author between the marks and the field. & terrain \\
+\id{RL2} & The elevation is there and was never graded. Ground that rolls keeps more two-block scrambles than barriers; ground where every height change is a wall keeps the reverse, whatever its range --- a quarry and a mountainside carry the same elevation and are not the same ground. & terrain \\
+\id{RL3} & Two marks' ground meets on a step taller than a player can scramble. A mark pins every cell in its band exactly, so two placed to describe one slope describe a wall instead --- and the wall reads back as terrain, a step and a face and a barrier cell, with no mark's name on any of it. Neither mark looks wrong on its own, which is why this has to be said rather than seen. & terrain \\
+\id{RL4} & A mark pinned no cell at all. It was placed off its group's footprint, or over ground a shape took out of the solve, so the surface is the surface it would have been without it --- and nothing else says so, since a mark that did nothing leaves nothing behind to notice. & terrain \\
+\id{RL5} & The elevation was graded everywhere and left nowhere to stand. RL2's twin: where that one names ground whose every height change is a wall, this names ground that is all transition --- under a third of it level, so a player crosses the whole board and can stop nowhere on it. It is an angle rather than a step, and that is why nothing else reports it: a surface graded end to end is walkable end to end, one connected place with no ledge, and the step histogram calls it perfect.\,\textcolor{ink30}{\ldots} & terrain \\
+\id{RL6} & A push climbs at two different rates and the landform has a step at its own outline. A push rises at amount / falloff over its skirt, from the ground outside in to the drawn ring, and again at crown / deepest from that ring in to its medial axis --- and where the two disagree what stands there is a cliff with a hill on top of it, whatever its height.\,\textcolor{ink30}{\ldots} & terrain \\
+\end{longtable}
+
+% ---- family RQ ----
+\subsection*{Family \id{RQ} \textnormal{\textcolor{ink60}{--- 6 rules}}}
+\addcontentsline{toc}{subsection}{Family RQ}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family RQ, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{RQ1} & A posted document could not be read --- absent, empty, malformed, or naming a kind that does not exist. The caller's to fix, so it answers 400. & request \\
+\id{RQ2} & Not the caller's fault. Something escaped an endpoint that no gate refused, which is a defect in the studio; it answers 500 and stays a 500, because dressing a bug as a bad request sends the author looking for a mistake they did not make. What it buys is that the caller gets the one envelope every other refusal arrives in rather than a .NET stack trace, and the trace goes to the log where it belongs.\,\textcolor{ink30}{\ldots} & studio \\
+\id{RQ3} & A complaint, never a refusal. The document carried a property the reader had nowhere to keep --- a typo, or a field from a document this is not. It rides on the success response under warnings because the work did succeed and the rest of the document was read; refusing it would refuse every snapshot written before the last shape change, since a stored document legitimately holds retired names an upgrade carries forward.\,\textcolor{ink30}{\ldots} & request \\
+\id{RQ4} & The route names a subject the studio does not have --- a slug no map is stored under, an id no library row carries, an artifact a map has not produced yet. It answers 404 with a body, because an empty one cannot say whether the identifier was wrong or the route was, and only one of those is something the caller can correct. & request \\
+\id{RQ5} & The request is well-formed and conflicts with what is stored: a name already taken, or a row something still binds. It answers 409, and the finding names what is in the way --- the maps or styles still referencing it, so the caller can act rather than guess. & request \\
+\id{RQ6} & A document the studio stored will not read back --- a plan row, an artifact, a snapshot written under a shape no upgrade claims. It answers 422 rather than 500 because it is data rather than a defect and the author clears it by writing the document again; and deliberately not RQ1, which would blame the request that merely asked to read it and send the author looking at what they just posted. & request, studio \\
+\end{longtable}
+
+% ---- family HJ ----
+\subsection*{Family \id{HJ} \textnormal{\textcolor{ink60}{--- 5 rules}}}
+\addcontentsline{toc}{subsection}{Family HJ}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family HJ, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{HJ1} & Two rectangles share blocks. A plan states its ground once. & structure \\
+\id{HJ2} & They touch over part of an edge only, so neither joint can happen along it. & structure \\
+\id{HJ3} & Both ridges run along the shared edge --- two ranges side by side, meeting in a gutter. & structure, style \\
+\id{HJ4} & Both ridges run into it --- one longer range, which wants drawing as one rectangle. & structure \\
+\id{HJ5} & The wing reaches further along the shared edge than the hall reaches across it, so its roof stands taller than the one it is meant to run into. & structure \\
+\end{longtable}
+
+% ---- family PT ----
+\subsection*{Family \id{PT} \textnormal{\textcolor{ink60}{--- 5 rules}}}
+\addcontentsline{toc}{subsection}{Family PT}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family PT, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{PT1} & A block that surfaces ground is painted below the course it surfaces. Grass, podzol, mycelium and farmland are each exactly one course thick --- what is under them is soil --- so a bucket deeper than one course filled with one writes it into every course of its depth, and the ground comes out made of its own skin. & theme, terrain \\
+\id{PT2} & A pattern states a band, a stop or a side and carries no material in it. The member reads as present and holds nothing, so the painter meets it with no block to write --- and it meets it while the world is being built, long after the document was stored. & theme, terrain \\
+\id{PT3} & A sampled pattern's brush is finer than the blocks it paints. A cell size or a field scale is the period a pattern varies over, in blocks, so below two it changes faster than the ground it is laid on can show: every block is its own feature, the pattern resolves to noise at any distance, and no palette rescues it.\,\textcolor{ink30}{\ldots} & theme, terrain \\
+\id{PT4} & A sampled field paints a bucket a player reads from the side and states no vertical period, so every block in a column resolves the same and the face comes out in vertical stripes. A field of the plane is a fabric for ground seen from above; a wall or a fill is seen edge-on, and the one thing that gives a face its grain there is the field varying with height. & theme, terrain \\
+\id{PT5} & A theme tints its ground by team over land more than one team enters. The tint is one colour per canonical island, which is what makes it readable --- a player standing anywhere on a landmass knows whose it is --- and an island two teams' spawns stand on has one colour for both, so the whole of it wears whichever team the ownership resolved.\,\textcolor{ink30}{\ldots} & theme, terrain \\
+\end{longtable}
+
+% ---- family ST ----
+\subsection*{Family \id{ST} \textnormal{\textcolor{ink60}{--- 5 rules}}}
+\addcontentsline{toc}{subsection}{Family ST}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family ST, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{ST1} & \emph{Wool room piece} (optional): defines the full room \textbf{region} and \textbf{sizes the stamped cage} --- the shell footprint is the piece inset one block, per the WX rules (\id{docs/\allowbreak{}world-export/\allowbreak{}structures.\allowbreak{}md}). Nothing under it is sealed --- the room region's own \id{enter} filter is what keeps an enemy out, at any depth; a \textbf{redstone line with a torch at either end} lies on the last block row at each of the room's \textbf{entry interfaces} --- every terrain$\leftrightarrow$room land seam and every abutting build-zone edge (WX6) --- the conventional marker for where entrance protection begins.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{ST2} & \emph{Spawn piece} (optional): defines the spawn \textbf{region} and \textbf{the ground the spawn room is framed on} (the WX footprint rule). Iron placed inside it is \textbf{auto-renewed} in the generated XML (load-bearing for gameplay); lint: every iron marker's \textbf{whole cube} belongs inside a spawn piece, since one half in renews half of itself and one outside is a block a team mines once.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{ST8} & [author] \emph{Approach wall geometry}: the interface a wall bars is a \textbf{10--20 block lane mouth} (a wall across a 30-block face bars a room, not a lane), and the wall stands \textbf{about 15 blocks in front of} the wool room's entrance --- judged against the \textbf{nearest parallel} entry seam, since a wall on a side interface defends a flank and its entry distance means nothing.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{ST9} & [author] \emph{Building cap}: the building a role piece raises is at most \textbf{20$\times$20 blocks} --- the footprint the shell stands on, which is what a player walks into, so past it the room is a field with a roof. The cap is on the rectangle the export actually stamps: the one the placement states, or the one \id{WX1} defaults from the region where it states none.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{ST10} & [author] \emph{Region cap}: a wool-room or spawn piece is at most \textbf{20$\times$30 blocks}, in either orientation. The piece is the protection region \emph{and} the ground the building stands on, so its long axis is the approach a room is entered along; past 30 it stops being a room's ground and becomes a field of immunity a team cannot be fought out of.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\end{longtable}
+
+% ---- family FR ----
+\subsection*{Family \id{FR} \textnormal{\textcolor{ink60}{--- 4 rules}}}
+\addcontentsline{toc}{subsection}{Family FR}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family FR, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{FR4} & [expert, split] Two distinct ``angles of attack'': \textbullet{} \textbf{Team approaches} --- ways to reach the enemy's side: \textbf{1--3} (corpus: 1 on six seeds, 3 on three); 1 is acceptable only if it is wide. \textbullet{} \textbf{Wool approaches} --- ways to reach a wool room: WL8. & \textcolor{ink30}{---} \\
+\id{FR6} & [author] \textbf{Split vs wide frontline; the band docks flush.} A frontline is either \textbf{split} --- two tips with a gap, hung off a hub (the common form: mirror-mid \id{ex-6} \id{frontline-6a}/\id{6b} off \id{hub-6}) --- or \textbf{wide}, one broad face (\id{ex-2}/\id{3}/\id{4}, 6--8 cells). The mid band docks \textbf{flush} against the front edge: across \textbf{both tips} of a split frontline (\id{band-6} spans \id{frontline-6a}..\id{6b}), or aligned to the \textbf{corners} of a wide frontline (\id{band-3} kept aligned to \id{frontline-3}'s ends).\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{FR8} & [author] \textbf{A crossing spans the face it docks against.} Measured per piece side as the \textbf{frontline share} of the exposed run: authored crossing faces read \textbf{1.00} across the corpus (the BZ8/BZ9 fit), the worst incidental partial \textbf{0.40}, and the funnel fault \textbf{0.25} --- a 10-block zone on an 80-block face, invisible to players as a front.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{FR9} & [author; amendment 2026-08-31] \textbf{A crossing is at least 15 blocks of frontline.} The share \id{FR8} measures cannot see a front that is narrow in blocks and wide in proportion: a 10-block frontline on a 10-block exposed face reads \textbf{1.00} and is still a funnel. Lint fires on any face carrying a frontline under \textbf{15} blocks.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\end{longtable}
+
+% ---- family GO ----
+\subsection*{Family \id{GO} \textnormal{\textcolor{ink60}{--- 4 rules}}}
+\addcontentsline{toc}{subsection}{Family GO}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family GO, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{GO1} & [author; amendment 2026-08-16] \textbf{A destroy goal sits three to four times as far from the enemy's spawn as from its own, by walk.} Per goal: the traversal from the owning team's nearest spawn and from the enemy's, both over the fanned closure (pieces $\cup$ build zones --- the cross-team leg crosses the axis, so the un-fanned surface would cut it), ratio enemy $\div$ own held to \textbf{[3.0, 4.0]}.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{GO2} & \textbf{A team's own destroy goals stand 35--65 blocks apart, by walk.} Two goals a team defends from one position are one goal with two names, and two so far apart that no position covers both make the defence a shuttle rather than a stand. The measure is the walk between them over the fanned closure, in the octile unit the preamble states --- the destroy-side counterpart of \id{WL7}, which separates a team's wools.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{GO3} & \textbf{Opposing destroy goals stand 85--150 blocks apart, by walk.} This is what the contest spans: under the band the two objectives are close enough that a rush reaches one before the other team has formed, and over it the attacker crosses a board's width into a set defence and the match settles into a stalemate.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{GO4} & [author] \textbf{A destroy goal sits 40 to 90 blocks from its own spawn, by walk.} The measure is \id{GoalDistances}' own-spawn leg --- the same walk GO1's ratio is built from, judged here on its own rather than against the enemy's. Under the band the spawn is already standing on the goal, leaving nothing to defend; over it the spawn cannot reinforce before the goal falls.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\end{longtable}
+
+% ---- family SP ----
+\subsection*{Family \id{SP} \textnormal{\textcolor{ink60}{--- 4 rules}}}
+\addcontentsline{toc}{subsection}{Family SP}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family SP, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{SP1} & The frontline$\rightarrow$wool path never passes \textbf{through} the spawn (protection regions enforce this anyway); it \textbf{may pass around it} on a wide or split lane. & \textcolor{ink30}{---} \\
+\id{SP2} & Near the \textbf{back} of its lane --- otherwise the space behind spawn is dead space with no purpose. (The current lint approximates ``back'' per-piece and misreads spawns placed mid-chain; honest measurement needs lane chains --- \id{G24}.) & \textcolor{ink30}{---} \\
+\id{SP8} & [author] A spawn's \textbf{egress steps by 1 level or takes a ramp}: a seam at \textbf{$\Delta$$\geq$2} ahead of the door is un-walkable bare (EL1's palette steps by 2, so bare seams are un-walkable by construction; bridgid-ii was hand-carved). Lint over the spawn piece's forward land seams; a cliff at the spawn's \emph{back} is a legitimate wall and is not the egress.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{SP9} & [author] A spawn door stands \textbf{$\geq$15 blocks from bare void}, measured along the door's own line. A \textbf{build zone counts as ground} --- the gap-only spawn (SP6) whose door opens onto its egress bridge is an authored motif; a \emph{buffer} is exactly the declared emptiness this keeps off the doorstep (the \id{entrance-void} fault: a 25-deep drop at the door face). & \textcolor{ink30}{---} \\
+\end{longtable}
+
+% ---- family DC ----
+\subsection*{Family \id{DC} \textnormal{\textcolor{ink60}{--- 3 rules}}}
+\addcontentsline{toc}{subsection}{Family DC}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family DC, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{DC1} & A core casing has no interior left to hold lava --- a solid casing is a goal that can never leak, so the match it is the objective of cannot be won. & objective, style \\
+\id{DC2} & A core's float and leak are one knob: together they say how far players must dig under it, and either alone says nothing. & objective \\
+\id{DC3} & A destroyable is built in a material its size is wrong for: obsidian is worth at most three blocks, so a cube or a plus-section column carrying it is a grind rather than a raid --- or the material names nothing the studio builds at all, which writes into the map.xml verbatim while the blocks come out obsidian, and a declared material matching nothing in its own region is a goal at zero health (OB3). & objective, material \\
+\end{longtable}
+
+% ---- family G ----
+\subsection*{Family \id{G} \textnormal{\textcolor{ink60}{--- 3 rules}}}
+\addcontentsline{toc}{subsection}{Family G}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family G, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{G2} & [corpus, revised] The map's corridor width is the \textbf{size band's}, stated in blocks: \textbf{12} at nano, \textbf{14} at micro, \textbf{16} at milli and centi --- and the wool approach one rung under it at \textbf{10 $\cdot$ 12 $\cdot$ 14 $\cdot$ 14}. Measured over 359 built CTW maps (\id{docs/\allowbreak{}world-scan/\allowbreak{}map-size-ladder.\allowbreak{}md}): the modal local thickness of a map's ground runs 8 $\cdot$ 10 $\cdot$ 14 $\cdot$ 16 from the smallest maps up to the top of the ladder, the quartile a working lane sits at runs 8 $\cdot$ 12 $\cdot$ 14 $\cdot$ 16, and ground narrower than \textbf{8 blocks} is 1.5--4\% of a map at every size, which is the floor authors build to.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{G5} & [expert, refined] Void gaps between \emph{individual} landmasses: \textbf{10--20} for the crossing a route \emph{depends on} --- but a longer hop is fine when the \textbf{same buildable region offers a shorter alternative} (\id{four-team-towers-big}'s 25 sits beside 15- and 20-hops in one region). Lint therefore judges a region's \textbf{minimal} crossing, not every pair.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\id{G8} & [corpus, revised] Map size is driven by the intended player count --- \id{maxPlayers} is an \emph{input} to the board envelope, not an afterthought --- and the count's job is to name a \textbf{size band}. A map is not built for one count: it works across a range, and the ranges are the author's --- \textbf{nano} 6--13 players a team, \textbf{micro} 14--21, \textbf{milli} 22--31, \textbf{centi} 32 and up.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\end{longtable}
+
+% ---- family HP ----
+\subsection*{Family \id{HP} \textnormal{\textcolor{ink60}{--- 3 rules}}}
+\addcontentsline{toc}{subsection}{Family HP}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family HP, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{HP1} & No rectangles at all --- there is no building to place. & structure \\
+\id{HP2} & A wing is not two opposite corners, or is too thin to hold two walls and an inside. & structure \\
+\id{HP3} & The wings cover more ground than a placed building may take. & structure \\
+\end{longtable}
+
+% ---- family ED ----
+\subsection*{Family \id{ED} \textnormal{\textcolor{ink60}{--- 2 rules}}}
+\addcontentsline{toc}{subsection}{Family ED}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family ED, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{ED1} & A reference the document cannot resolve. An apply-rule or a filter naming a region or a filter that is not in the registry and is not a builtin, or a filter naming itself --- which would be a cycle of one. The wiring is what makes a PGM map mean anything, so a rule pointing at nothing is a rule that silently never fires. & request, world \\
+\id{ED2} & An edit the document is not in a state to take. The payload is well-formed and everything it names exists; what it would produce cannot mean anything --- a group with fewer children than its type takes, a compound with no children to remove one from, an apply-rule carrying no region, filter or action, a build-void enforcement with no build region to enforce. & request, world \\
+\end{longtable}
+
+% ---- family LN ----
+\subsection*{Family \id{LN} \textnormal{\textcolor{ink60}{--- 2 rules}}}
+\addcontentsline{toc}{subsection}{Family LN}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family LN, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{LN1} & Width \textbf{10} base --- piece min-dims across 150 corpus pieces: 5-wide $\times$54 (the step/ledge idiom, \textbf{not} corridors), 10 $\times$81, 15 $\times$15, 20+ $\times$0 (the ``\textgreater{}20 near mid/spawn'' case is authored via assembled footprints, not single pieces). The stretch \textbf{in front of a wool stays $\leq$ \textasciitilde{}16}. & \textcolor{ink30}{---} \\
+\id{LN2} & Length \textbf{20--50} before a junction or dead end; a lane may include a turn/twist (the L-shape case). & \textcolor{ink30}{---} \\
+\end{longtable}
+
+% ---- family CO ----
+\subsection*{Family \id{CO} \textnormal{\textcolor{ink60}{--- 1 rules}}}
+\addcontentsline{toc}{subsection}{Family CO}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family CO, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{CO1} & The descriptor is well-formed and names a board the composer cannot emit: a spawn profile outside the two forms it builds, a hub arm count it has no shape for, a frontline form off its menu, a unit whose hub publishes no offer to consume. The sentence carries which, because the emitter that stopped is the only thing that knows. 422 --- the request was read and acted on, and there is no board at the end of it.\,\textcolor{ink30}{\ldots} & plan, studio \\
+\end{longtable}
+
+% ---- family EL ----
+\subsection*{Family \id{EL} \textnormal{\textcolor{ink60}{--- 1 rules}}}
+\addcontentsline{toc}{subsection}{Family EL}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family EL, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{EL1} & [corpus; amendment 2026-08-31] \textbf{A land seam of $\Delta$$\geq$2 is ground a player cannot walk up}, and the rule is the list of those seams. The plateau step unit is \textbf{2} --- the authored surface palette was base 9 + even steps up (9/11/13/15/17/19, all odd), extended \textbf{below base} by the traced \id{big-board-.\allowbreak{}.\allowbreak{}.\allowbreak{}-parallel-mid} (frontline at 7 and 5) and down to \textbf{3} by \id{mirror-tiny-map-cliff}, so the palette is \textbf{3--19} and the 137 measured land-interface deltas are even by construction: histogram $\Delta$0 $\times$47, $\Delta$2 $\times$73, $\Delta$4 $\times$10, $\Delta$6 $\times$4, $\Delta$8+ $\times$3.\,\textcolor{ink30}{\ldots} & \textcolor{ink30}{---} \\
+\end{longtable}
+
+% ---- family EZ ----
+\subsection*{Family \id{EZ} \textnormal{\textcolor{ink60}{--- 1 rules}}}
+\addcontentsline{toc}{subsection}{Family EZ}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family EZ, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{EZ1} & Ground a player can stand on and nobody can edit, outside the zones a map protects on purpose. A spawn and a wool room are sealed by design and are excluded by the rule that seals them --- they restrict entry, and a place you may not walk into is not a place you were expecting to build in. What is left is ground the author can reach, cannot touch, and did not say so: a canopy hanging over the void outside every build zone, a crag the void rule closed along with the air around it, a platform whose supporting column never reached y=0.\,\textcolor{ink30}{\ldots} & terrain, intent \\
+\end{longtable}
+
+% ---- family PC ----
+\subsection*{Family \id{PC} \textnormal{\textcolor{ink60}{--- 1 rules}}}
+\addcontentsline{toc}{subsection}{Family PC}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family PC, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{PC-C} & Two pieces meet at a single point and along no edge, and nothing else joins them. A corner is never a connection --- a point has no walkable corridor mouth --- so the board reads as one area where players find two, and the diagonal is the sneaky crossing that is not there. Suppressed where the pair already reaches the same land component through real interfaces, since the corner is then redundant rather than misleading.\,\textcolor{ink30}{\ldots} & plan \\
+\end{longtable}
+
+% ---- family SH ----
+\subsection*{Family \id{SH} \textnormal{\textcolor{ink60}{--- 1 rules}}}
+\addcontentsline{toc}{subsection}{Family SH}
+\begin{longtable}{@{}L{14mm}L{96mm}L{30mm}@{}}
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endfirsthead
+\multicolumn{3}{@{}l}{\footnotesize\itshape\color{ink60}Family SH, continued}\\[2pt]
+\toprule
+\textbf{Rule} & \textbf{What it means} & \textbf{Concerns} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{3}{r@{}}{\footnotesize\color{ink60}continued}\\
+\endfoot
+\bottomrule
+\endlastfoot
+\id{SH1} & A shop reference names something the document does not define, so PGM refuses the whole map at load rather than opening a menu without it. Three references are read: a keeper's shop, which throws ``No shop with id '\ldots{}' could be found''; a keeper's region, and an icon's action, which are feature references and throw when nothing resolves them. & intent, studio \\
+\end{longtable}
+

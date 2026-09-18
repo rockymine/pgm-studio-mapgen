@@ -1,0 +1,189 @@
+\chapter{Ground: Outlines and Their Construction}
+\label{ch:ground}
+
+\section{Islands and the Height Convention}
+
+The ground level deals in \textbf{shapes} on \textbf{layers}, grouped into
+\textbf{groups}. A shape has an outline, a floor and a thickness, and where its
+ground touches or overlaps another shape's in the same group, the two build one
+\textbf{island}.
+
+The first thing to get right is the height convention, because it is off by one
+from the obvious reading and an agent gets it wrong every time otherwise:
+\id{base\_height: 9} puts the top block at $y=8$, not $y=9$. A column read at such
+a shape answers grass at $y8$, dirt at $y7$ and $y6$, stone from $y5$ to $y1$, and
+bedrock at $y0$.
+
+\section{Four Forms of Outline}
+
+\subsection{Polygons and the Rectangle}
+
+A polygon is a ring of points. A rectangle is not: it states bounds rather than
+points, and so it is restated as a four-point polygon before any point of it can
+move. That restatement is invisible in the document and load-bearing in practice.
+
+Three routes edit one point without disturbing any other:
+
+\begin{lstlisting}
+PATCH  /api/map/{slug}/sketch/shapes/{id}/vertices/{index}   {x, z}
+POST   /api/map/{slug}/sketch/shapes/{id}/vertices           {after, x, z}
+DELETE /api/map/{slug}/sketch/shapes/{id}/vertices/{index}
+\end{lstlisting}
+
+The insert has index arithmetic that bites. A point added \id{after: 0} lands at
+index 1, and every later index goes up by one, so a pair of points previously at
+2 and 3 migrates to 3 and 4. An agent replaying a list of edits by index, computed
+against the original ring, will scramble the outline.
+
+\subsection{Height as a Per-Vertex Field}
+
+\id{anchor\_heights} is one thickness per vertex, in the same ring order, and the
+surface between them is interpolated across the face. A six-point island carrying
+\id{[9, 12, 16, 17, 17, 14]} is the plane $9 + x/4 + z/4$ in the island's own
+frame. That is a tilt, authored with six numbers.
+
+\subsection{Curves and B\'ezier Handles}
+
+Four ways to state an outline that is not made of straight edges. A \textbf{circle}
+takes a centre and a radius and the studio draws it as a 64-sided polygon. A
+\textbf{lasso} is, in the document, simply a polygon. The difference is the
+canvas, which traces it freehand and simplifies the trace at a four-block
+tolerance. And any polygon edge can be bowed with Bézier handles.
+
+The Bézier contract is worth stating exactly, because every part of it is a place
+to go wrong:
+
+\begin{quote}
+\id{controls} is keyed by a vertex's index as a string, and every handle is an
+\textbf{absolute point on the board}. The edge from vertex $i$ to vertex $i+1$ is a
+cubic curve from vertex $i$, pulled by \id{controls[i].out} and
+\id{controls[i+1].in}, to vertex $i+1$. So a vertex's \id{out} bends the edge after
+it, and its \id{in} bends the edge before it. The studio samples every curved edge
+16 times, and the curve still passes through every vertex.
+\end{quote}
+
+Bowing one edge is two handles:
+
+\begin{lstlisting}[language=json]
+"controls": { "0": { "out": [74.67, -6] }, "1": { "in": [81.33, -6] } }
+\end{lstlisting}
+
+Rounding a whole ring is a closed-form recipe rather than a hand fit: at each
+vertex $P$ with neighbours $\mathit{previous}$ and $\mathit{next}$,
+\[
+\mathit{in} = P - \frac{\mathit{next} - \mathit{previous}}{6}, \qquad
+\mathit{out} = P + \frac{\mathit{next} - \mathit{previous}}{6}.
+\]
+
+\begin{ruling}{Limits on a B\'ezier Handle}
+Keep each handle at least as far \emph{along} its edge as it is \emph{away} from
+it, and keep the bulge under about a third of the edge's length. Past that the
+curve crosses itself.
+\end{ruling}
+
+\subsection{Polylines}
+
+A polyline is a line with a width: its points are a centreline, and the band
+\id{radius} blocks to each side of it is ground. The order of operations is the
+fact to know:
+
+\begin{quote}
+The points are \textbf{smoothed first}, by a centripetal Catmull--Rom spline with
+eight samples between each pair, and only then offset \id{radius} blocks to either
+side, so four points draw a curve rather than three chords. The ends are cut
+square.
+\end{quote}
+
+\begin{lstlisting}[language=json]
+{"id":"line-solid","type":"polyline","operation":"add","floor":0,
+ "base_height":9,"vertices":[[0,10],[13,3],[27,17],[40,10]],
+ "radius":3,"stroke_edge":"solid","stroke_seed":7}
+\end{lstlisting}
+
+\id{stroke\_edge} takes three values with numbers attached. \id{solid} keeps one
+width. \id{rough} lets it swing up to 45\% either way with the two sides wandering
+apart, seeded by \id{stroke\_seed}. \id{tapered} narrows it to 35\% at the ends.
+A polyline also takes \id{anchor\_heights}, which are heights at its points, with
+every block taking the height of the nearest place along the line. A lane can
+therefore rise.
+
+Two facts separate a polyline from things that look like it. A polyline whose ends
+lie \emph{inside} two islands joins them into one, which is how a land bridge is
+drawn. And, in the distinction that costs an afternoon, a polyline shape \emph{is
+ground}, whereas the \id{stroke} prop, which looks alike, repaints the top course
+of what it crosses and adds no ground at all.
+
+\begin{ruling}{Self-Overlap in a Polyline}
+The band is one outline filled even--odd, so where its two sides cross they cancel
+and build void. The studio names it \id{SK25}. Four points across 26 blocks at
+radius 3 lap in every bend; the same four points spread over 40 blocks clear. A
+coil is drawn as one polyline per part-turn.
+\end{ruling}
+
+\section{Overlap: Height and Paint}
+
+Where two shapes cover a cell, two questions are settled separately, and conflating
+them is a common error.
+
+\begin{quote}
+The height and the paint of an overlap are decided separately. Where two shapes
+cover a cell, the taller one gives the column its height, and the paint goes to the
+\textbf{smallest themed shape whose top is that tallest top}.
+\end{quote}
+
+So on a flat island where a yard and a meadow both stand at 9, the yard being
+smaller means the overlap paints as the yard. A lawn smaller again paints as the
+lawn inside the yard. Height is decided by tallest; paint, among the shapes that
+tie for tallest, by smallest.
+
+\begin{ruling}{Occlusion Within a Layer}
+On one layer the taller shape takes the whole column, so a lower shape drawn inside
+a higher one simply is not there, and the studio names it \id{SK9}. A sunken place
+inside a raised one is drawn as shapes \emph{around} it, or on a layer of its own. This is the same rule \cref{ch:layers} states from the other side.
+\end{ruling}
+
+\section{Faces and Band Stacks}
+
+Where a shape's ground drops, whether over lower ground or over the void, the
+exposed side is a \textbf{face}, and a theme can stripe it with a band stack.
+
+One property of that stack is not what it looks like:
+
+\begin{quote}
+A band stack does not cycle: past its last band, \id{"ending": "repeat"} hands
+every further course to that last band.
+\end{quote}
+
+So striping a face sixteen courses tall with a four-course pattern means writing
+the four courses out four times. A stack that reads as four bands in the author's
+head is twelve bands in the document.
+
+The other property is that only the courses standing \emph{above} the neighbouring
+ground are face. The same yard, stepped up from a meadow on one side and dropping
+to the void on the other, reads four striped courses on the first and the whole
+stripe from top to bedrock on the second.
+
+\section{Five Forms of Ascent}
+
+Getting from one height to another is its own small craft, and the studio offers
+five forms: a ramp (one polygon with anchors at each end), a stair (one polygon
+with deeper treads), a turned flight (two polygons with a landing between), a run
+of steps (one rectangle per tread), and a floating flight (one raised slab per
+tread, with air under each).
+
+One rule governs all of them and it is the most counter-intuitive fact in the whole
+ground model:
+
+\begin{quote}
+\id{anchor\_heights} are heights at a polygon's corners, and every block reads the
+slope at its own centre and rounds. A flight therefore comes out even \textbf{only
+when the anchors sit half a riser past its first and last tread}: a 2-deep stair
+whose treads are 1 to 7 states 0.5 and 7.5. Whole-number anchors 8 and 1 over 16
+blocks build treads 1, 2 and 3 deep. The ramp works with whole numbers because one
+block up per block rounds cleanly.
+\end{quote}
+
+And a consequence that decides how a flight can be authored at all: the studio's
+canvas rounds anchor heights to whole blocks, so the half-block form can only be
+written into the document. Drawing an even stair by hand means one rectangle per
+tread instead.

@@ -1,0 +1,293 @@
+\chapter{The Rule System and Its Refusals}
+\label{ch:refusals}
+
+\section{Two Distinct Rule Sets}
+
+A reader who goes looking for `the rules' will find two collections with
+overlapping names, and confusing them makes the system incomprehensible. They
+answer different questions.
+
+The first is the \textbf{composer's law}: \LawRuleCount{} identifiers under
+\LawFamilyCount{} headings, spanning \LawIdPrefixCount{} id prefixes, held in a
+single document that is embedded in the application and parsed rather than
+transcribed. It says what a well-formed CTW board \emph{is}: how wide a lane runs,
+how far a wool room stands from a spawn, what a build zone may touch. It is
+a design document with identifiers attached, and most of its rules are enforced
+during composition, where the thing being judged still has a name.
+
+The second is the \textbf{finding catalogue}: \RuleCount{} rules across
+\RuleFamilyCount{} families, served live at \route{GET /api/rules}. It is the set of every rule that something,
+somewhere, can raise as a complaint about a document. Its scope is the whole
+studio rather than the composer, covering sketch geometry, dressing, house styles,
+export and the request itself.
+
+The two overlap without either containing the other. The composer's law carries
+rules that nothing raises as a finding, and those are deliberately not served: the
+question the catalogue exists to answer is \emph{what is this finding}, and a rule
+nothing raises has no finding to explain. Measured against the running studio,
+\LawServedCount{} of the law's \LawRuleCount{} ids are answered by the catalogue.
+Everything else in the catalogue belongs to a gate the composer never touches.
+
+\begin{table}[htbp]
+\caption{The finding catalogue by family, generated from the running studio. A
+family is the field the API answers with, not the id's prefix: the four
+build-zone rules are numbered \id{BZ} and belong to family \id{CT}, so
+\RuleIdPrefixCount{} prefixes span \RuleFamilyCount{} families.}
+\label{tab:families-live}
+\scriptsize
+\input{data/rule-families}
+\end{table}
+
+The full catalogue, rule by rule, is \cref{app:rules}.
+
+\section{Anatomy of a Finding}
+
+Every gate in the studio answers in one shape. A client rendering a refusal never
+has to know which gate produced it before it can read one, and this uniformity is
+the single most useful property the API has for a machine operator.
+
+A finding is three things: a \textbf{rule id}, a \textbf{sentence}, and
+\textbf{what it is about}.
+
+The id is machine-legible and stable forever, so it outlives the task that added
+it and never doubles as a task-tracking identifier. The sentence carries the
+measured numbers, on an explicit principle. The word \emph{invalid} tells an
+author nothing they can fix, so a refusal says \emph{this one is
+2\,$\times$\,8} rather than \emph{this one is too small}. What it is about is a \textbf{field} where a
+document field can be named, and \textbf{subjects} where the fault indicts things
+an editor could highlight. A finding may carry either, both or neither.
+
+One further field matters more to a machine than to a person. A finding states its
+\textbf{edit} where the fix is mechanical: a document, a path, an operation and a
+value. A reader applies it rather than re-deriving it from the rule's prose. It
+is, as the documentation puts it, the half of a finding a model acts on where the
+sentence alone is inspected and left.
+
+What a finding deliberately does \emph{not} carry is the rule's classification.
+The category and the concerns list are fixed by the id rather than by the raising
+site, so they live on the rule and a caller joins them from the catalogue. Putting
+them on the finding would put one fact at 96 sites.
+
+\section{Three Severities}
+
+This is the part of the system that has cost authoring runs the most, and it is
+the first thing an agent should learn.
+
+\begin{description}[leftmargin=1.6em,style=nextline,itemsep=4pt]
+  \item[A refusal] stops the request. The work did not happen. It arrives in the
+    error envelope's \id{findings}, and nothing rode along with it.
+  \item[A decline] says that a piece of what was posted is \emph{not in what was
+    built}. The request succeeded. Something you sent was dropped.
+  \item[A complaint] is a remark. The request succeeded and the studio has an
+    observation about it.
+\end{description}
+
+Both surviving severities ride on a success, under one key:
+
+\begin{quote}
+A 2xx JSON object answers \id{warnings} when something was complained about or
+declined, and carries no such key when nothing was. \ldots A caller reads
+\id{warnings ?? []} and is done.
+\end{quote}
+
+The consequence is blunt. A driver that reads only the status code throws away
+half of every answer. A board can store at 200 with a floor missing under its
+walls, with a theme that painted nothing, with a field it misspelled silently
+unread, and the only place any of that is said is \id{warnings}. One run report
+names this the dominant failure class in the whole corpus and calls it, exactly, a
+200 that isn't a yes.
+
+The distinction between the two is carried on each finding's \id{severity}, and
+the documentation is explicit about why it could not be carried anywhere else:
+\id{warnings.some(w => w.severity === "decline")} is \emph{something I sent was
+dropped}, which no status code and no other field says.
+
+\begin{ruling}{The Findings Read}
+\route{GET /map/\{slug\}/findings} is asked on every run beside the others,
+because it is the only read that answers \id{SK9}, the gate that knows two shapes
+on one layer stacked and the lower one is not in the world. It is a
+decline, the channel every other route publishes on keeps complaints alone, and so
+a board can store at 200 with a floor missing under its walls and nothing anywhere
+says so.
+\end{ruling}
+
+\section{The Refusal Envelope and Status Codes}
+
+A refusal on the wire looks like this:
+
+\begin{lstlisting}[language=json]
+{ "error": "invalid house style",
+  "message": "...",
+  "findings": [ { "rule": "HS1", "message": "...",
+                  "severity": "refusal", "field": "doorHead.block" } ] }
+\end{lstlisting}
+
+\id{error} names the \emph{gate}, such as \emph{objective placement},
+\emph{unknown gamemode} or \emph{plan not compilable}, and never the fault itself.
+\id{message} is the findings' sentences joined together.
+
+Status codes stay the gate's own, and each means one thing: \textbf{400} a
+document wrong as posted, \textbf{404} a subject the route names and the studio
+does not have, \textbf{409} well-formed but conflicting with the map's state,
+\textbf{422} cannot be processed, \textbf{500} the studio's own fault. Each route
+declares which of them it can answer, 95 of 149 operations carrying at least one,
+and a test fails if a documented row and its route stop agreeing.
+
+The edge answers in the same shape as the gates. No route under \route{/api}
+answers a failure in a shape of its own, and none answers one with no body at all.
+A request the framework itself could not bind becomes \id{RQ1} per field under
+\emph{request will not read}, naming each field \emph{as the wire spells it}:
+\id{region\_id}, not \id{regionId}.
+
+\section{Faults of the Request Itself}
+
+Six rules are about the request rather than the map, and they exist because the
+uniform shape held everywhere except at the door. Three are worth knowing by name.
+
+\id{RQ1} is \emph{the document could not be read}: a 400, carrying the field where
+the reader knew one.
+
+\id{RQ3} is \emph{a field went unread}, and it is a complaint on a success rather
+than a refusal. It is the rule that catches a typo: \id{roof.pich},
+\id{wings[1].ptch}. The check walks down the posted value, matching by the name the
+\emph{document} uses rather than the name the C\# type uses, and it runs over the
+body as posted, before any merge. This is the studio's answer to the failure mode
+where an agent posts a field the reader silently drops and believes it took effect.
+
+\id{RQ5} is \emph{the request conflicts with what is stored}: a 409, and the one
+refusal where nothing is wrong with the request at all. Every document carries a
+revision, a read answers it as an \id{ETag}, and a write may state it back as an
+\id{If-Match}. A request with no \id{If-Match} states no precondition and writes.
+Protection is opted into by having read first, which is the only way it can mean
+anything.
+
+\section{One Question at Four Grains}
+
+The most interesting structural property of the rule system is that the same
+question recurs at four resolutions, with a different id at each, and each id can
+only see what its own level knows.
+
+Reachability is the worked example.
+
+\begin{table}[htbp]
+\caption{One question, \emph{can this be reached?}, asked at four grains. Read
+down the column: a board can pass every gate above and still read a third dead.}
+\label{tab:one-question}
+\small
+\begin{tabularx}{\textwidth}{l L{3.6cm} Y}
+\toprule
+\textbf{Rule} & \textbf{Grain} & \textbf{The question it asks} \\
+\midrule
+\id{WX6} & one piece of the plan & can a door be cut into this room at all \\
+\id{PL9} & the whole plan & can a capturing team's spawn reach this wool \\
+\id{EX1} & the built world & is the ground the rasterizer produced connected \\
+\id{DR-PASS} & one building & does this building leave eight blocks to get past it \\
+\id{DR-SLOPE} & one footprint & is this building's footprint level enough \\
+(none) & a measurement & is reachable ground ground any journey actually uses \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The documentation draws the conclusion, and it is the best argument in the system
+for why there are four documents rather than one:
+
+\begin{quote}
+A finer grain exists only because a coarser one does \ldots Collapsing the four
+documents into one would not simplify the rules. It would remove the vocabulary
+each rule uses to say precisely what is wrong.
+\end{quote}
+
+Ids are grouped by what they are \emph{about}, never by which gate happens to ask.
+The same objective rule is asked at the compile gate against a plan's pieces and
+at the export gate against the ground the rasterizer produced, and a rule that
+changed its name between the two would be two rules.
+
+\section{Bands and Targets}
+
+\Cref{ch:division} stated this as a finding; here is the mechanism. Rules divide
+by \emph{kind}, and the two kinds most often confused are the target and the band.
+
+A \textbf{target} is prescriptive and per-request: this compose wants exactly two
+frontline runs, connected. A \textbf{band} is descriptive and measured off the
+corpus: authored maps run one to seven frontline runs. The distinction is load
+bearing, and the documentation states the failure precisely. A band pressed into
+service as a target silently turns an observation about the corpus into a
+requirement on the generator.
+
+Several rules therefore read authored bands whose values depend on what the board
+is played for. A frontline width cap of six to eight cells is the wool board's
+figure; on a board played for cores or destroyables there is no width cap at all,
+because a wide front feeds a wool lane and a destroy board has none. One run put
+it as the most transferable thing it learned: three boards of experience on one
+objective family taught it nothing about the next.
+
+This is why \route{GET /api/rules/terms} exists. A driver asks what band is
+enforced on \emph{this} board rather than writing down a number that was true of
+the last one. The \ScoredTermCount{} scored terms and their bands are \cref{app:terms}.
+
+\section{Nine Representative Rules}
+
+The law is large and mostly technical, but a handful of its rules carry most of
+what a reader needs to know about what the studio thinks a map is. These are
+quoted as the law states them.
+
+\paragraph{The corridor ladder.} \id{G2} fixes the whole board's scale:
+the map's corridor width is the size band's, stated in blocks (12 at nano, 14 at
+micro, 16 at milli and centi), with the wool approach one rung under it.
+Measured over 359 built CTW maps.
+
+\paragraph{The jump, not the bridge.} \id{WL12} is the newest wool rule and the
+one an adapting agent breaks most often:
+
+\begin{quote}
+A bay or a hole beside a goal is at least 16 blocks across. Negative space is
+crossed by \textbf{jumping} long before it is crossed by building \ldots Stated in
+\textbf{blocks}, never in cells: a floor stated as a cell count moves with the
+grid scale, and a jump does not care what the grid was.
+\end{quote}
+
+The floor is 16 blocks where the space touches a wool room or spawn and 12 where
+it touches neither, because a hole in a team's own ground is crossed on purpose.
+
+\paragraph{Holes are the rotation device.} \id{CT8} is the clearest statement in
+the law of a rule that exists for a gameplay reason rather than a geometric one.
+The closure encloses internal void pockets in every seed measured, and the
+author's reason is that a loop around a hole gives alternative routes between
+lanes without retreating through a single chokepoint. It is not mandatory, since
+not every map has to have one though most do, so a holeless plan is flagged and
+never blocked.
+
+\paragraph{The strait.} \id{CT12}: on a two-team wool board the direct crossing
+between the two team islands spans 15 to 40 blocks. Closer is two halves all but
+merged; farther is a crossing nobody bridges.
+
+\paragraph{The unwalkable seam.} \id{EL1}: a land seam of two blocks or more is
+ground a player cannot walk up. The consequence is what the rule is for. On a
+board built from the authored height palette every non-flush seam is a step nobody
+walks, so the seam wants a ramp or a flight carved into it, and the check's output
+is the work list for that pass rather than a fault to redraw around.
+
+\paragraph{The mid never touches a wool.} \id{BZ6}, short and absolute: otherwise
+players bridge freely through the mid straight into the point and there is no
+gameplay direction.
+
+\paragraph{A zone is bounded by the ground it docks.} \id{BZ9} forbids the
+\emph{overhang}: a stretch carried beyond the last ground it meets, which connects
+nothing and reads as no man's land a player walks into and stops.
+
+\paragraph{The defence triangle.} \id{WL10} bans a specific failure: a front-near
+wool whose spawn is far, beside a back wool whose spawn is adjacent, so that the
+defender always guards the wrong door.
+
+\paragraph{The destroy goal's ratio.} \id{GO1}: a destroy goal sits three to four
+times as far from the enemy's spawn as from its own, measured by the walk over the
+surface. Under the band the goal falls to a rush before a defence can form; over
+it the attack is a march across the whole board into a set defence.
+
+\begin{ruling}{Distance Is Measured as a Walk}
+A distance between two things on a board is the walk between them over the
+walkable surface. It is eight-connected, a diagonal costs what a player walks
+rather than two steps, a climb is charged the blocks it takes to place, a fall is
+counted but not charged, and the route goes around voids. Never the straight line through the air. Every
+distance in every rule is this.
+\end{ruling}

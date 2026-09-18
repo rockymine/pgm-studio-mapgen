@@ -1,0 +1,144 @@
+\chapter{Maps, Objectives and the Two Authors}
+
+\section{The Anatomy of a PGM Map}
+
+PGM is a server plugin that runs competitive Minecraft matches. It loads a map,
+which is two things bundled together: a Minecraft world, meaning the blocks, the
+terrain and the buildings; and a file called \id{map.xml} that says what the world
+is \emph{for}. Without the XML the world is scenery. The XML is what states that
+this team spawns here, that this region cannot be built in, that the match ends
+when that block is broken.
+
+Objectives come in a handful of kinds, and two of them carry this paper. A
+\textbf{Capture the Wool} map, universally abbreviated CTW, hides coloured wool in
+rooms, and a team wins by carrying the right wool back to its own monument. A
+\textbf{destroy-the-monument} map, DTM, puts a block or a small structure in each
+team's ground, and a team wins by breaking the enemy's. Others exist: a core that
+leaks lava when broken, a control point held over time. The studio builds them
+all, but CTW and DTM are the two worked examples here.
+
+\section{Team Counts by Objective}
+\label{sec:team-counts}
+
+The number of teams a map can hold is not one question but two, and they have
+different answers. One is about the objective and belongs to PGM. The other is
+about symmetry and belongs to the studio.
+
+Capture the Wool works at two teams or four, and four-team CTW maps have been
+built. It works at four because each team has a \emph{distinct} objective:
+capturing the other three teams' wools. Control points, whose support is recent,
+take four teams or more, usually an even number, simply because maps are usually
+symmetric.
+
+Destroyables and cores are different, and the reason is worth stating properly
+because it is easy to mistake for a software limit. It is not one. The difficulty
+is \textbf{ownership}. A destroyable cannot be assigned to a team the way a wool
+can. If a team's monument is destroyed then that team has, in a sense, lost. But
+that does not determine a \emph{winner}, and with more than two teams there is no
+well-defined one. PGM maps work around it in two ways. Some make the match blitz,
+so the last surviving team wins. Others move the players of a team that has lost
+its monument onto another team, so that one team can truly win. Neither of those
+is raw DTM or DTC. A destroy map without one of those modes layered on it is
+therefore a two-team map in practice.
+
+\begin{ruling}{The Studio's Team Ceiling}
+The studio's automatic symmetry fan tops out at four teams, because \id{rot\_90}
+is the only four-image mode it has. That is what caps the studio, rather than
+anything about the objectives. An agent driving the API directly can author
+anything, a six-team map included. What it gives up is the automatic fan, so each
+team's ground has to be authored rather than mirrored into place.
+\end{ruling}
+
+The blocks and the XML have to agree with each other, and that is harder than it
+sounds. A wool room's position in the XML is a coordinate; whether that coordinate
+is inside a room a player can reach is a fact about the blocks. A build region
+drawn in the XML means nothing if the ground it covers was never placed. Most of
+what a map-authoring program does is keeping those two descriptions true of one
+another.
+
+\section{The Studio: Scope and Interface}
+
+\textsf{pgm-studio} is an ASP.NET Core application with a browser client, a
+database, and an HTTP API of \RoutePathCount{} paths carrying \RouteCount{}
+operations. It authors maps: it plans a layout, draws its ground, states what the
+map is played for, and writes out the world and the \id{map.xml} a server can
+load.
+
+The browser client exists and is used. But the API is the whole surface, and every
+map described in this paper was made without opening the client once. A caller
+with a terminal can compose a board, reshape its ground, state its objectives,
+build the world and read the result back, entirely over HTTP. That property is
+what makes the rest of this paper possible, and it was designed in rather than
+discovered. The documentation for each tool carries that tool's endpoints, on the
+principle that a description which cannot be acted on is a description of nothing.
+
+\section{The Authoring Agent}
+
+For most of the maps in the repository this paper draws on, the operator is a
+language model running in a terminal. It reads documentation, writes a Python
+script that emits two JSON documents, posts them, reads the studio's answer and
+corrects. It has no eyes on the world. It cannot walk around the map. Every belief
+it holds about what it has built comes from a number the studio handed back, and a
+good deal of the discipline described in Part~III exists because that is a
+genuinely difficult position to author from.
+
+This paper calls that operator \agent{the agent} throughout, and the program it
+drives \studio{the studio}. The two words are used precisely and always mean those
+two things.
+
+\section{The Central Argument}
+
+It is tempting to describe a system like this as a generator with a human in the
+loop, or as an editor with some automation in it. Neither is right, and the reason
+neither is right is the substance of this paper.
+
+The studio is not a generator, because it does not produce maps. Its composer
+produces an \emph{arrangement}: where the hub sits, how far the wool rooms stand
+off it, which side the front line faces. An arrangement is not a map. It has no
+elevation, no curve, no building, no second storey, no material. Every composed
+board is flat, rectangular and grey. What it buys is the one thing that is hard to
+invent and easy to get wrong, and the repository's own brief on the subject puts it
+as sharply as it can be put: a composed board is a suggestion, not a plan.
+
+The studio is not an editor either, because a very large amount of what ends up in
+the world was never stated by the agent. The agent says a theme should follow the
+ground's slope, and the studio decides which of five materials lands on each of
+several hundred thousand cells. The agent says a house stands here, and the studio
+decides its storey heights, its roof pitch, where its door goes and which way the
+door faces. The agent says the two halves of the board are mirror images, and the
+studio decides what that means for every shape, every prop and every region. These
+are not defaults in the sense of values that could have been typed out. They are
+derivations, and the agent could not have produced them by hand in any reasonable
+time.
+
+The honest description is therefore the third one: two parties, a boundary between
+them, and the boundary in a different place at every stage. At the board level the
+studio arranges and the agent adapts. At the ground level the agent states intent
+and the studio computes geometry. At the paint level the agent picks a rule and the
+studio applies it. At the objective level the agent decides almost everything, and
+the studio's task is to refuse the decisions that cannot be built.
+
+That last one deserves its own sentence, because it is the part least visible from
+outside. A large fraction of the studio consists of gates: \RuleCount{} rules
+across \RuleFamilyCount{} families, each of which can stop a request and say why.
+They are not validation in the defensive sense. They are the accumulated knowledge
+of what makes a map fail, expressed as things the software will not let happen, and
+an agent authoring against them is being taught as much as it is being checked.
+
+\section{Structure of This Paper}
+
+The paper works through the stack once, in the order a map passes through it, and
+at each stage says which party decided what. Then it builds two maps.
+
+The first is a CTW board in the \emph{micro} size band, pulled straight off the
+composer and then adapted: reshaped, given elevation, given buildings, given a
+second storey, until it is a place rather than a diagram. The second is a DTM
+board authored from nothing, with no composed arrangement to start from, by an
+agent given no brief beyond the objective. Both are shown at every stage of the
+pipeline, from the bare rectangles the composer emitted to the finished world.
+
+The last chapter is about the agent rather than the map. While the DTM board was
+being authored, every HTTP call its author made was recorded: the route, the
+status, the rules that fired, the time it took. That recording is what the chapter
+is written from, so the account of how an authoring session goes is taken off the
+wire rather than from the agent's own description of itself.
