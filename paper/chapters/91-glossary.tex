@@ -1,0 +1,159 @@
+\chapter{Glossary}
+\label{app:glossary}
+
+Terms are defined where they are first used in the text. This collects them, so
+that a reader who begins at Part~III can follow it without the middle.
+
+\begin{description}[leftmargin=0pt,style=nextline,itemsep=3pt,font=\normalfont\sffamily\bfseries]
+
+\item[Abutment] The interval where two footprints genuinely touch, obtained by
+  intersecting the two rectangles. Never a point and never a node.
+
+\item[Agent] In this paper, the operator driving the studio's HTTP API, which for
+  the maps described here is a language model in a terminal.
+
+\item[Band (paint)] One entry in a band stack: a material and a thickness. What the
+  thickness counts depends on the stack's axis, so on the slope axis it is a span of
+  degrees rather than a count of blocks.
+
+\item[Band (rule)] A descriptive envelope measured off the corpus, against which a
+  scored term reports a distance. Contrast \emph{target}.
+
+\item[Band stack] An ordered run of bands plus the axis it is read along, and a rule
+  for what happens past the last band.
+
+\item[Bucket] One of the four parts a painted column splits into: rim, wall, surface
+  and fill.
+
+\item[Box] A typed bounding envelope the composer's allocator places, carrying a
+  footprint and a land target. Five kinds: spawn, hub, wools, frontline, mid. Boxes
+  exist only during composition.
+
+\item[CTW] Capture the Wool. Two or four teams; each team's objective is capturing
+  the others' wools.
+
+\item[Cell] The plan's coarse grid scale, four blocks by default.
+
+\item[Complaint] A finding on a successful request that remarks on something without
+  saying anything was dropped. Rides on \id{warnings}.
+
+\item[Composer] The studio's board arranger. It emits a plan, not a layout, and
+  builds two-team boards only.
+
+\item[Decline] A finding on a successful request saying that a piece of what was
+  posted is not in the world. Rides on \id{warnings} and is distinguished by
+  \id{severity}.
+
+\item[Descriptor] A composed board's identity: players, teams, symmetry, cell, seed,
+  composer version and schema. Reproduces the board rather than storing it.
+
+\item[Destroyable] The DTM objective's element and the studio's name for it. Never
+  called a monument in code, because that word names the CTW wool-monument.
+
+\item[DTM / DTC] Destroy the Monument; Destroy the Core. Two-team in practice,
+  because the objective has one owner and $N-1$ attackers and nothing determines a
+  winner beyond two.
+
+\item[Face] In the plan model, the front-most row of a unit's terrain and the only
+  part the mid band docks. In the paint model, the exposed side where a shape's
+  ground drops.
+
+\item[Fill] The bucket claiming whatever no other bucket took. Required, so a theme
+  is never partial.
+
+\item[Finding] A rule id, a sentence carrying the measured numbers, and what it is
+  about. Optionally an edit stating a mechanical fix.
+
+\item[Footprint] Total box area, meaning terrain plus build zone plus gap. A build
+  zone costs footprint but not land.
+
+\item[Grant] The corridor width a consumer was given across an abutment. A
+  selection, where an \emph{offer} is a capacity.
+
+\item[Hub] The designation with no terminal, placed first, taking what the budget
+  leaves and never under a third of it. Publishes the width each free run of its
+  edge can carry.
+
+\item[Intent] The third document: teams, spawns, protections, build regions and
+  objectives. The one about the match rather than the ground.
+
+\item[Island] The union, over land interfaces, of the terrain pieces that touch.
+
+\item[Land] Walkable terrain area, set by the player count and spent by every
+  emitted piece.
+
+\item[Layer] A slab holding exactly one span per column, where a taller add replaces
+  a shorter one outright. A stack of layers is a set of height fields with air
+  between them.
+
+\item[Made layer] A layer out of the stacking rules: painted over its own span and
+  exempt from the pair and reachability walks.
+
+\item[Mark] A patch of a footprint held at a chosen height, which a relief solves
+  between. Five kinds: point, line, area, rim, scarp.
+
+\item[Mid band] The neutral crossing between the two fanned halves. Laterally the
+  hull of the opposing front faces; in depth, the gap.
+
+\item[Offer] A run published with the width it can carry. Bounds a search rather
+  than filtering its output.
+
+\item[Orbit] The set of images a symmetry mode fans an authored unit into.
+
+\item[Plan] The first document: rectangles on a cell grid, what each is for, and
+  where the objectives sit.
+
+\item[Push] A relief instrument raising a region by an amount over a falloff, with a
+  crown. Its two gradients must agree or it steps at its own outline.
+
+\item[Refusal] A finding that stopped the request. Arrives in the error envelope;
+  nothing rode along with it.
+
+\item[Relief] The interior half of the height model: a field authored out of marks
+  and solved into a surface between them.
+
+\item[\id{relief\_scope}] What a relief does to a shape that has a height. Absent,
+  the shape joins the solve; \id{hold} pins it and the ground is solved to meet it;
+  \id{exclude} makes it a hole the relief bends around.
+
+\item[Rim] The edge lip: a single block at the top of an edge column.
+
+\item[Run] One contiguous interval of real material on one edge, measured from that
+  edge's origin. Not an edge and not a side.
+
+\item[Seat] The single integer offset at which a neighbour's extent begins along the
+  hub's edge. Because the search runs in one integer, nothing is built and then
+  moved.
+
+\item[Size band] One of four named player ranges a board is built for: nano 6--13,
+  micro 14--21, milli 22--31, centi 32 and up. Two counts in one band compose to the
+  same budget.
+
+\item[Sketch layout] The second document: real geometry at block resolution, being
+  outlines, heights, relief, paint and props.
+
+\item[Slug] The identifier a map is stored under. Loading the same documents twice
+  under one slug is a reload, not a second map.
+
+\item[Stamp] A structure written onto terrain, as a stack of courses per part rather
+  than as a fixed building.
+
+\item[Strait] The direct crossing between two team islands on a two-team wool board,
+  bounded at 15 to 40 blocks.
+
+\item[Target] A prescriptive, per-request constraint a compose holds and verifies.
+  Contrast \emph{band}.
+
+\item[Term] A scored measurable. Hard terms are an acceptance gate; soft terms score
+  distance from a band.
+
+\item[Theme] A named set of materials per bucket, applied to ground.
+
+\item[Unit] One team's composed half. The board is that unit repeated through its
+  symmetry.
+
+\item[Wool lane] The corridor a wool room owns, found by stacking a fixed-width band
+  outward from where the room meets terrain until it reaches void, build or a
+  crossbar. Only wools stack a lane.
+
+\end{description}

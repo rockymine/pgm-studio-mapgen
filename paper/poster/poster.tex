@@ -1,0 +1,172 @@
+% The pipeline plate: one A1 sheet showing a map being made, stage by stage.
+% Built with pdflatex. Shares the paper's palette and fonts.
+\documentclass[a1paper,landscape]{article}
+
+% A1 is four times A3 by area, so the body type is scaled to match: a poster set
+% at 10pt on this sheet reads as a footnote from two metres away.
+\usepackage[fontsize=21pt]{fontsize}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{libertinus-type1}
+\usepackage[scaled=0.82]{beramono}
+\usepackage[a1paper,landscape,top=40mm,bottom=34mm,left=40mm,right=40mm]{geometry}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usetikzlibrary{positioning,arrows.meta,calc,fit}
+
+\definecolor{ink}       {HTML}{1A1D21}
+\definecolor{ink60}     {HTML}{5B6169}
+\definecolor{ink30}     {HTML}{9AA1A9}
+\definecolor{rule}      {HTML}{D8DBDF}
+\definecolor{wash}      {HTML}{F4F5F7}
+\definecolor{accent}    {HTML}{1F5C8B}
+\definecolor{accentsoft}{HTML}{DCE8F1}
+\definecolor{studioC}   {HTML}{1F5C8B}
+\definecolor{agentC}    {HTML}{C86A3A}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcommand{\id}[1]{{\ttfamily #1}}
+\newcommand{\studio}[1]{\textcolor{studioC}{\textbf{#1}}}
+\newcommand{\agent}[1]{\textcolor{agentC}{\textbf{#1}}}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\renewcommand{\arraystretch}{1.22}
+
+% A stage card: the render, its number, its name, and one line of what it added.
+\newcommand{\stagecard}[4]{%
+  \begin{minipage}[t]{0.129\textwidth}
+    \fbox{\includegraphics[width=\linewidth]{#1}}\\[5pt]
+    {\sffamily\small\color{ink30} #2}\ \ {\sffamily\small\bfseries\color{ink} #3}\\[2pt]
+    {\footnotesize\color{ink60} #4}
+  \end{minipage}%
+}
+
+% A stage card with no picture yet, so the sheet lays out before the renders land.
+\newcommand{\stageplaceholder}[3]{%
+  \begin{minipage}[t]{0.129\textwidth}
+    \fcolorbox{rule}{wash}{\parbox[c][104mm][c]{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\color{ink30}\footnotesize stage render}}\\[5pt]
+    {\sffamily\small\color{ink30} #1}\ \ {\sffamily\small\bfseries\color{ink} #2}\\[2pt]
+    {\footnotesize\color{ink60} #3}
+  \end{minipage}%
+}
+
+\begin{document}
+
+% ---------------------------------------------------------------- masthead ----
+{\sffamily\fontsize{104}{110}\selectfont\bfseries\color{ink} How a PGM Map Gets Made}\\[14pt]
+{\sffamily\fontsize{40}{46}\selectfont\color{ink60}
+ A map is made by two parties, and the line between them moves at every stage}\\[14pt]
+{\color{rule}\rule{\textwidth}{1.6pt}}\\[18pt]
+
+% ------------------------------------------------------------ stage ladder ----
+{\sffamily\Large\bfseries\color{ink} One board, seven stages}\\[4pt]
+{\large\color{ink60} Each picture is the same map exported again with one more
+instrument switched on. Nothing between them is drawn by hand.}\\[12pt]
+
+\IfFileExists{../figures/generated/stages/01-ground.png}{%
+  \stagecard{../figures/generated/stages/01-ground.png}{1}{Ground}{The plan compiled. Flat, grey, rectangular.}\hfill
+  \stagecard{../figures/generated/stages/02-relief.png}{2}{Relief}{Marks pinned; the solve fills between them.}\hfill
+  \stagecard{../figures/generated/stages/03-paint.png}{3}{Paint}{A theme per bucket, banded by the ground's angle.}\hfill
+  \stagecard{../figures/generated/stages/04-shapes.png}{4}{Shapes}{Outlines deformed and bent; landforms added.}\hfill
+  \stagecard{../figures/generated/stages/05-layers.png}{5}{Layers}{Storeys. Depth in the literal sense.}\hfill
+  \stagecard{../figures/generated/stages/06-rooms.png}{6}{Rooms}{The shells a spawn and a wool are stamped as.}\hfill
+  \stagecard{../figures/generated/stages/07-dressed.png}{7}{Dressed}{Trees, boulders and paths, each one placed.}%
+}{%
+  \stageplaceholder{1}{Ground}{The plan compiled. Flat, grey, rectangular.}\hfill
+  \stageplaceholder{2}{Relief}{Marks pinned; the solve fills between them.}\hfill
+  \stageplaceholder{3}{Paint}{A theme per bucket, banded by the ground's angle.}\hfill
+  \stageplaceholder{4}{Shapes}{Outlines deformed and bent; landforms added.}\hfill
+  \stageplaceholder{5}{Layers}{Storeys. Depth in the literal sense.}\hfill
+  \stageplaceholder{6}{Rooms}{The shells a spawn and a wool are stamped as.}\hfill
+  \stageplaceholder{7}{Dressed}{Trees, boulders and paths, each one placed.}%
+}
+
+\vspace{16pt}
+{\color{rule}\rule{\textwidth}{1pt}}\par\vspace{16pt}
+
+% ----------------------------------------------------------- lower register ---
+\noindent\begin{minipage}[t]{\textwidth}
+\noindent
+\begin{minipage}[t]{0.305\textwidth}
+{\sffamily\Large\bfseries\color{ink} A map is four documents}\\[8pt]
+{\color{ink60} Not four drafts. Four descriptions of the whole map at four grains,
+each owned by a different tool.}\\[9pt]
+
+\begin{tabularx}{\linewidth}{L{74mm} Y}
+\toprule
+\textbf{Level} & \textbf{What it states} \\
+\midrule
+The board & rectangles on a coarse grid, what each is for, where the objectives sit \\
+The ground & real geometry at block resolution: outlines, heights, relief, paint \\
+The play & teams, spawns, build regions, objectives and how they are captured \\
+The map & the voxel world and the \id{map.xml} a server loads \\
+\bottomrule
+\end{tabularx}
+
+\vspace{14pt}
+{\color{ink60} The flow is one way. Nothing reads back up, and a finished map cannot
+be decompiled into the plan that would have produced it.}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.305\textwidth}
+{\sffamily\Large\bfseries\color{ink} Who decided this?}\\[8pt]
+{\color{ink60} The question the whole paper asks, stage by stage.
+\studio{Blue} is the studio. \agent{Orange} is the agent driving it.}\\[9pt]
+
+\begin{tabularx}{\linewidth}{L{62mm} Y Y}
+\toprule
+\textbf{Stage} & \textbf{\studio{Studio}} & \textbf{\agent{Agent}} \\
+\midrule
+Arrangement & hub, spawn, wool approaches, frontline, land budget & which board, and everything the composer does not state \\
+Elevation & the solved field & the marks, the grain, the pushes \\
+Paint & which block on which cell & the theme, the axis, where the bands cut \\
+Structures & storey heights, roof pitch, door side & which style, which seat from the offered set \\
+Dressing & the legal seats & which seats to take \\
+Objectives & regions, filters, monuments & what the map is played for \\
+Refusal & what may not be built & what to do about it \\
+\bottomrule
+\end{tabularx}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.305\textwidth}
+{\sffamily\Large\bfseries\color{ink} The rules are most of the studio}\\[8pt]
+{\color{ink60} 183 of them, over 28 families, each able to stop a request and say
+why. Not validation: the accumulated knowledge of what makes a map fail, written as
+things the software will not let happen.}\\[9pt]
+
+\begin{tabularx}{\linewidth}{L{52mm} Y}
+\toprule
+\textbf{Family} & \textbf{About} \\
+\midrule
+\id{SK} 28 & the sketch: shapes, layers, what drew no ground \\
+\id{DR} 17 & dressing: where a thing may rest, what it may not close off \\
+\id{PL} 16 & the plan: pieces, walls, spawns, objectives \\
+\id{WX} 13 & the room stamped for a spawn or a wool \\
+\id{OB} 12 & objectives: where a goal may stand, how a match can end \\
+\id{CT} 10 & the middle: the crossing, its holes, its build zones \\
+\bottomrule
+\end{tabularx}
+
+\vspace{12pt}
+{\color{ink60}\small A rule is not a constant. Many read \emph{bands} whose values
+depend on what the board is played for, so three boards of experience on one
+objective teach nothing about the next.}
+\end{minipage}
+\end{minipage}
+
+\vspace{16pt}
+{\color{rule}\rule{\textwidth}{1pt}}\par\vspace{8pt}
+{\footnotesize\sffamily\color{ink60}
+Every figure on this sheet was drawn by the studio being described.
+The full paper, with both worked maps and the complete rule catalogue, is
+\textit{How a PGM Map Gets Made}.}
+
+\end{document}
