@@ -1,0 +1,62 @@
+{
+ "score": 0,
+ "structure": {
+  "wools": [
+   "i",
+   "i"
+  ],
+  "hub": "ring",
+  "frontline": "single"
+ },
+ "spend": {
+  "band": "micro",
+  "unit": {
+   "cells": 250,
+   "budgetCells": 226.40625
+  },
+  "mid": {
+   "cells": 0,
+   "budgetCells": 50.3125
+  },
+  "footprintCells": 280,
+  "byKind": [
+   {
+    "kind": "hub",
+    "boxes": 1,
+    "landCells": 128,
+    "footprintCells": 144
+   },
+   {
+    "kind": "frontline",
+    "boxes": 1,
+    "landCells": 64,
+    "footprintCells": 72
+   },
+   {
+    "kind": "wool",
+    "boxes": 2,
+    "landCells": 42,
+    "footprintCells": 48
+   },
+   {
+    "kind": "spawn",
+    "boxes": 1,
+    "landCells": 16,
+    "footprintCells": 16
+   }
+  ]
+ },
+ "topSoft": [],
+ "descriptor": {
+  "players": 18,
+  "teams": 2,
+  "symmetry": "rot_180",
+  "cell": 4,
+  "seed": 5,
+  "composerVersion": "body-first-1",
+  "schema": 1
+ },
+ "pieces": 12,
+ "zones": 1,
+ "walls": 0
+}
