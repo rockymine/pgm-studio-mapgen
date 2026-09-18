@@ -42,6 +42,41 @@ A \textbf{mark} pins ground. An \id{area} mark holds the middle of a region at a
 stated height, and its \id{bevel} softens the edge. A \textbf{push} raises a region
 by an amount over a falloff, with a crown and an optional roughness.
 
+\Cref{tab:marks} is the full set. A mark is placed rather than sampled, for the
+same reason a prop is: a decision about where the high ground is decides how the map
+plays, so it belongs to the person making it rather than to a noise field.
+
+\begin{table}[htbp]
+\caption{The five marks. Each pins part of the footprint at a chosen height; the
+solve fills between them.}
+\label{tab:marks}
+\small
+\begin{tabularx}{\textwidth}{L{1.7cm} L{5.2cm} Y}
+\toprule
+\textbf{Mark} & \textbf{Pins} & \textbf{Says} \\
+\midrule
+\id{point} & a disc of a given radius & a summit, a hollow, a spot height \\
+\id{line} & a band reaching \id{r} either side of a polyline, optionally with
+  several heights along its run and a tread held flat &
+  a ridge, a valley floor, a shoulder falling as it runs, a road switching back
+  down a hill \\
+\id{area} & every cell inside a ring, at one height or one per vertex, with an
+  optional graded bevel inside its edge &
+  a bench, a mesa top, a sunken floor, a shelf cut into a hillside \\
+\id{rim} & the footprint's own outer rings & where the land meets the void \\
+\id{scarp} & a band either side of a drawn line, at two heights, with the face
+  between them left free &
+  a break of slope, and the mark that decides where players can go \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+A line mark's \id{r} reaches either side of the centreline, so the band it writes is
+\emph{twice} it: a stated 6 holds a twelve-block strip. The rim is optional, and it
+is what keeps a hill inside its shape. Without one, marks alone decide the whole
+surface, so a shape carrying a single high mark rises to that height everywhere and
+runs off its own edge.
+
 The most useful sentence about marks is about the space \emph{between} them:
 
 \begin{quote}

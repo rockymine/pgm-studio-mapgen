@@ -171,8 +171,11 @@ The practice exists because of a specific failure. An earlier run measured that
 destroyables and cores float a few blocks above the terrain, reasoned from first
 principles that this made every generated destroy map unwinnable, and filed and
 committed the claim. The measurement was right and the conclusion was invented.
-The float is deliberate PGM behaviour and has been from the start, because a core
-on the ground cannot leak and a destroyable on the ground is trivially covered.
+Floating is deliberate: a core on the ground cannot leak, and a destroyable on the
+ground is trivially covered, so the studio's generator floats one three to five
+blocks and an author's cap bounds it at twelve. The corpus, measured afterwards,
+does not float them at all (\cref{ch:export}), which makes the invented claim
+doubly wrong.
 Neither the corpus nor the code would have corrected it. One question would have.
 
 \section{The Intermediate Category}
