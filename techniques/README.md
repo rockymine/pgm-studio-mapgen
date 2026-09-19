@@ -9,7 +9,7 @@ the card rather than finding the thing inside a thousand-line finish.
 itself, one claim to a paragraph; a card holds one instrument worked all the way through, with the reads
 beside it. Where a card exists, the notes point at it rather than repeating it.
 
-## The eight that exist
+## The nine that exist
 
 | Card | Holds |
 |---|---|
@@ -21,18 +21,12 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `relief-on-shapes` | `stepped`, `level` and `held` — a relief against the shapes standing in it |
 | `hollows` | a negative push, a `sink` shape and an `area` mark, each cutting the same floor |
 | `winding-roads` | a line mark that comes back past itself — `tread`, `batter`, and the pitch window |
+| `pushes` | the instrument that builds a landform — four outlines of one, and four arrangements of several |
 
-## The nine that are missing
+## The eight that are missing
 
 Each entry names what the card would demonstrate, and which of the notes' entries it would absorb — the
 notes carry the measurements already and have nowhere to put the worked comparison.
-
-**`pushes` — the instrument that builds a landform, and the only one that can.** Three or four ranges in one
-world at different `amounts`, `crown`, `falloff` and `roughness`, with the two gradients a push has —
-`amount / falloff` outside the ring, `crown / half` inside it — set to agree on one and to disagree on
-another, so the step at the outline is visible rather than argued. Absorbs *A mountain is a push* and *A
-range is a wall unless its two gradients agree*, which are the two most load-bearing entries in the file and
-are taught nowhere.
 
 **`marks-and-seams` — how two *different* marks negotiate the ground they share.** One board, one pair of
 marks, three times: butted, gapped, and with a `bevel` on the area. Beside them a mark whose centre lies off

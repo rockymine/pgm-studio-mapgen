@@ -143,8 +143,8 @@ A hollow needs a second mark holding the land. `bevel` then grades inward out of
 
 ## 8. A pinned room inside a negative push applies the push twice
 
-Probe board `probe-room`: the push plot with its land mark removed, carrying the same spawn room
-the committed board carries. Read along z 16, clear of the room and the house.
+Probe board `probe-room`: the push plot with its land mark removed, carrying one 9x9 `role: "spawn"`
+room at (-32, -9), inside the push's ring. Read along z 16, clear of the room itself.
 
 no land mark, with the room:   void void 20 20 20 20 20 19 17 14 11  9  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  9 11 14 17 19 20 20 20 20 20 void void void
 no land mark, no room:         void void 32 32 32 32 32 31 29 26 23 21 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 20 21 23 26 29 31 32 32 32 32 32 void void void

@@ -8,7 +8,11 @@ they merge, and a hairpin's apex under grain.
 No intent and no spawn: the renders read the stored layout through `POST /sketch/columns`, so a card
 needs no world and no player.
 """
-import json, math, os
+import json, math, os, sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+from cards import MOOR, depth_stack, SOLID
+from cards import turned as cards_turned
 
 PANEL_W, PANEL_D, GAP = 90, 70, 16
 COL_X = [-155 + c * (PANEL_W + GAP) for c in range(3)]
@@ -25,10 +29,7 @@ def turned(points, cx=45, cz=35, degrees=SKEW):
     """The form rotated about the panel's middle. On the grid a winding road's risers land as straight
     bands one cell wide; a few degrees off it and every step is a stair of its own, which is what ground
     cut by a road actually looks like."""
-    a = math.radians(degrees)
-    cos, sin = math.cos(a), math.sin(a)
-    return [[round(cx + (px - cx) * cos - (pz - cz) * sin, 2),
-             round(cz + (px - cx) * sin + (pz - cz) * cos, 2)] for px, pz in points]
+    return cards_turned(points, cx, cz, degrees)
 
 
 def serpentine(pitches, limb=66, inset=12, z0=9):
@@ -53,42 +54,6 @@ def spiral(cx=45, cz=35, r0=34, r1=4, turns=4, per_turn=56):
 EVEN = [26] * 2            # one pitch, the clean case
 LADDER = [22, 16, 11, 7]   # 2r is 16 and 2*tread is 6: above, at, inside, and nearly merged
 
-
-def depth_stack(*bands):
-    """A depth stack: one course of the first material over the rest."""
-    return {"kind": "layered", "stack": {"ending": "repeat", "bands": [
-        {"material": m, "thickness": t} for m, t in bands]}}
-
-
-SOLID = lambda i, d=0: {"kind": "solid", "id": i, "data": d}
-
-# The ground is finished by its ANGLE, not its height: a thickness on the slope axis is a span of
-# degrees, so one stack answers the flat tread, the graded shoulder and the batter's face.
-#
-# Where the bands cut is the whole decision. A shoulder lofted at one course a cell stands at 45°
-# exactly, so a rock band starting there paints every graded shoulder as cliff; starting it at 55°
-# leaves the shoulders as scree and keeps rock for the batter, which falls at the angle it states.
-MOOR = {
-    "bedrock": {"relative": False, "value": 1},
-    "rimEdges": "void",
-    "rim": {"enabled": False, "depth": 1, "material": SOLID(1)},
-    "wallEnabled": True,
-    "wallOnTerrainFaces": True,
-    "wall": SOLID(1),
-    "fill": SOLID(1),
-    "surface": {"enabled": True, "depth": 3, "material": {
-        "kind": "layered", "axis": "slope", "stack": {"ending": "repeat", "bands": [
-            # the road and the fell it crosses
-            {"thickness": 15, "material": depth_stack((SOLID(2), 1), (SOLID(3), 2))},
-            # the graded shoulder: scree rather than turf, and not yet rock
-            {"thickness": 25, "material": depth_stack((SOLID(3, 1), 1), (SOLID(3), 2))},
-            # the batter's own face — 23.7% of this board stands at 40 deg or steeper, which is what
-            # `incline` answered and what decides the cut. Starting rock at 45 leaves every shoulder
-            # lofted at one course a cell reading as turf, because that grade IS 45 deg.
-            {"thickness": 50, "material": depth_stack(
-                ({"kind": "cell", "cellSize": 11, "palette": [SOLID(1), SOLID(4)]}, 3))},
-        ]}}},
-}
 
 PANELS = [
     ("serp-plain",   0, 0, serpentine(EVEN),   dict(r=14, tread=None, batter=0)),

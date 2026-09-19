@@ -3,8 +3,8 @@
 A hollow is ground lower than what is around it, with a floor things stand **in** rather than on. The studio
 offers three instruments that could cut one and they are not interchangeable. The card holds all three side
 by side: a negative relief **push** at x −32, a **sink** shape at x 32, and an **area mark** at x 96, each
-asked for the same 36×36 floor twelve blocks down, each with a house and a spawn room standing on that floor.
-Open it in the studio as `technique-hollows`, or read `hollows.layout.json`.
+asked for the same 36×36 floor twelve blocks down. Open it in the studio as `technique-hollows`, or read
+`hollows.layout.json`.
 
 **The short answer is that a push is the hollow instrument and the other two are something else.** A push
 states the floor and grades the wall outside it; a sink stamps a flat plate through whatever the ground is
@@ -24,10 +24,9 @@ so the wall each instrument makes paints itself.
 | `sink` x 4…60 | `sink` | a 36×36 rectangle, `height_mode: "sink"`, `base_height` 12, `skirt` 0 | x 14…49, 36 cells | none — `32` then `20` |
 | `mark` x 68…124 | `mark` | a `land` area mark at `h` 32 and a `basin` area mark at `h` 20, `bevel` 4 | x 82…109, 28 cells | x 78…81, `30 28 24 22` |
 
-The `push` and `mark` plots each carry a `land` area mark holding their own ground at 32, and the `sink`
-plot needs none because its hollow is stamped after the solve. Every plot carries a `role: "spawn"` pad with
-`relief_scope: "follow"` and a 7×7 `hoar-store` house. The push plot's `land` mark is not decoration — *The
-one mistake* is what happens without it.
+The `push` and `mark` plots each carry a `land` area mark holding their own ground at 32, and the `sink` plot
+needs none because its hollow is stamped after the solve. Nothing else stands on any of the three floors: a
+hollow is terrain, and the card is a reading of terrain.
 
 ```json
 "push": {"base": 32, "reach": 0, "step": 1,
@@ -95,14 +94,18 @@ the solve, and a sink is not in it.
 ## An area mark states a height, and alone it moves the island
 
 **One `area` mark at a low `h` does not make a hollow — it flattens the whole island to that height.** The
-mark plot with `basin` alone reads 20 at every ground station across the plot, wall to wall. A relief's `base` is
-what an unmarked field settles at rather than a rim the marks are cut into, and with a single constraint the
-smoothest field is the constant one.
+mark plot with `basin` alone reads 20 at every ground station across the plot, wall to wall. A relief's `base`
+is what an unmarked field settles at rather than a rim the marks are cut into, and with a single constraint
+the smoothest field is the constant one.
 
 **A hollow needs a second mark holding the land, and then `bevel` grades the wall inward.** `land` at `h` 32
 over the whole plot, then `basin` at `h` 20: `bevel` 0 is sheer, 2 costs four cells of floor, 4 costs eight,
 8 costs sixteen. **`tread` does nothing on an area mark** — the profile with `tread: 8` is the `bevel: 0`
 profile block for block.
+
+**The bevel is the one wall of the three the relief read calls a seam.** The `mark` group reports
+`basin | land-96`, step 2, 144 cells, at (78, −18) — two marks stating different heights along a shared edge,
+which is what a seam is. The push's wall is one mark's own grade and raises nothing.
 
 ## What each is for, measured on tilted ground
 
@@ -139,18 +142,6 @@ incline in each `column` header, against the theme's 0–30 / 30–45 / 45–90 
 two cells — the lip outside and the floor cell inside — and a graded one claims the floor's edge at the
 shoulder band. Board-wide `incline` reads 68.1% at 0–9° and 22.6% at 40° or steeper.
 
-## Building in it
-
-**A house and a spawn room both stand on a hollow's floor with nothing carved and nothing refused.** All
-three plots carry a 7×7 `hoar-store` house and a `role: "spawn"` room, and every one of the six is placed.
-The rooms' floors are at y19, the hollow's own, rather than at the `base_height` 32 their pads state: a
-`follow` room is seated on the terrain, and a hollow is terrain.
-
-**`Decorator.Ground` seats a building one below the lowest first-air-Y over its whole footprint and
-`Decorator.Excavate` then clears every footprint column from that course up to its old surface.** On a flat
-floor the rise is 0 and neither does anything. Over a rim the same pair is a hole punched through the pit
-wall.
-
 ## The recipe
 
 **A pit you can build in is a negative push with `crown: 0`, a `falloff` of about half the depth, and an
@@ -177,49 +168,25 @@ the floor, and the erect pass runs after the solve so nothing can feed back into
 basin or a valley floor; alone it takes the whole island with it, and it needs a second mark holding the land
 before it makes a hollow at all.
 
-## The one mistake
-
-**A room pinned inside a negative push applies the push twice and takes the whole island down with it.** The
-push plot with its `land` mark removed and the spawn room left in reads `20` where the rim should be and `8`
-where the floor should be, with the room standing on a twelve-block plinth in the middle. The seating in
-`relief.md` §11 solves the group once without the room, reads the pit floor off that solve, pins the room at
-20 — and that pin is then the group's only constraint, so the second field relaxes to a constant 20 and the
-push subtracts its twelve from that.
-
-**The threshold is one pin: any room, goal or held shape inside the ring is enough.** There is no rule id for
-it, because nothing refuses — the store answers 200, the export gate opens, and the relief read reports the
-group as `rolling` with a `relief` of 12, which is true of the numbers and wrong about the board.
-
-**One `area` mark holding the land at the surrounding height fixes it exactly.** `compare.txt` §8 has the
-three profiles: without the mark, without the room, and with both. The last two are identical station for
-station.
-
-**The second mistake is smaller and has a rule: a house straddling the rim eats the wall, and `DR-SLOPE` is
-gated on the building's own height rather than on the wall's.** It declines at a rise of `wallCourses + 2 ×
-roof pitch` — 7 for the one-storey `hoar-store`, which refuses all three rims here at rises of 11 and 12, and
-13 for the two-storey `sn-compass-well`, which is allowed all three. **The taller the building, the deeper
-the pit wall it may quietly carve away**; built, the column at (−53, 0) has lost the six courses above the
-house's floor while (−57, 0) one cell out is whole.
+**The `land` mark is load-bearing rather than tidy, because a pin inside the ring applies the push twice.**
+`compare.txt` §8 is the probe: with a room inside the ring and no `land` mark the rim reads 20 and the floor
+8, and the mark restores the profile station for station. The law is in `GENERATION-NOTES.md`, under relief.
 
 ## What checks it
 
 - `transects.txt` — the three hollows along z 0, station by station with the steps named.
 - `compare.txt` — the sweeps: push `amount` −1 to −48, `falloff` 0 to 48, `crown` −6 to 12 with the relief
   read's two gradients beside each, ring sizes 2×2 to 48×48, the sink's depth, clamp and skirt, the area
-  mark's `bevel` and its do-nothing `tread`, the room collapse and its fix, and all three on tilted ground.
-- `columns.txt` — each floor, its outermost cell, its wall and its rim, with the incline in every header;
-  then the three spawn rooms and the three houses.
-- `dressing.txt` — the `DR-SLOPE` table and the built column through an excavated rim.
+  mark's `bevel` and its do-nothing `tread`, the pin collapse and its fix, and all three on tilted ground.
+- `columns.txt` — each floor, its outermost cell, its wall and its rim, with the incline in every header.
 - `relief-read.json` — the three groups. `push` and `mark` read `relief` 12 over 3,136 cells; `sink` reads
-  `relief` 0 and `landform: "plain"`, which is the read being blind to it. The `push` group's one seam,
-  `land--32 | spawn-red`, step 12 at (−37, −14), is not in the world — the seams are measured on the field
-  before the push is applied, and that ground builds flush at y20.
+  `relief` 0 and `landform: "plain"`, which is the read being blind to it. The only seam on the board is the
+  `mark` group's bevel.
 - `slopes.txt` — 7,580 cells walked, 816 scrambled, 1,012 barrier, three faces, the largest 476 cells.
-- `incline.txt` and `census.txt` — the angle histogram, and one theme over 9,408 cells in seven surface
+- `incline.txt` and `census.txt` — the angle histogram, and one theme over 9,408 cells in three surface
   blocks.
-
-- `hollows.layout.json` and `hollows.intent.json` — the two documents the board was stored from, posted
-  together to `POST /api/map/from-documents` with no plan. The intent is needed as well as the layout
-  here, because a `role: "spawn"` shape stamps nothing without the `intent.spawns` entry it names.
+- `hollows.layout.json` — the one document the board was stored from, posted to `POST
+  /api/map/from-documents` with no plan and no intent. A terrain card needs neither: the renders read the
+  stored layout through `POST /sketch/columns`.
 
 Renders: `iso.png` (south-east) and `iso-turned.png` (south-west).

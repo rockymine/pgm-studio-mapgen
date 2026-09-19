@@ -177,16 +177,7 @@
    "smoothing": 0.975,
    "level": 0.5522959183673469,
    "largestField": 0.32653061224489793,
-   "seams": [
-    {
-     "a": "land--32",
-     "b": "spawn-red",
-     "step": 12,
-     "x": -37,
-     "z": -14,
-     "cells": 36
-    }
-   ],
+   "seams": [],
    "silentMarks": [],
    "pushes": [
     {
@@ -461,16 +452,6 @@
    "severity": "complaint",
    "subjects": [
     "push"
-   ]
-  },
-  {
-   "rule": "RL3",
-   "message": "on group 'push', 'land--32' and 'spawn-red' meet on a 12-block step, worst at (-37, -14) along 36 cell(s) of boundary. Two marks pin their bands exactly, so where they touch the whole difference lands in one cell.",
-   "severity": "complaint",
-   "subjects": [
-    "push",
-    "land--32",
-    "spawn-red"
    ]
   }
  ]

@@ -451,8 +451,9 @@ reads as a row of oil drums.
 A **push** is the other operation. It takes a drawn ring and lifts the solved surface inside it, and three of
 its fields are the landform:
 
-- **`amounts`** — one lift per ring vertex, interpolated along the arc and wrapped, so the crest falls along
-  the ring the way it was drawn. A massif's spine is six numbers.
+- **`amounts`** — one lift per position round the ring, in place of the single `amount`. The positions are
+  spaced by **arc**: index `i` is read at fraction `i / count` of the perimeter, which coincides with the
+  drawn vertices only where every side is the same length.
 - **`crown`** — how much higher the middle stands than the edge, where the middle is the ring's **medial
   axis**: a point for a round ring (a dome), a line for a long one (a crest). **The record's default is `0`**,
   so a push authored without touching it is a plateau. This one field is the difference between a mountain and
@@ -463,6 +464,9 @@ its fields are the landform:
 
 `roughness` wobbles the skirt against a noise field so it is not a clean offset of the outline, and a
 **negative crown** dishes the ring rather than doming it — a corrie, a quarry floor, a pond basin.
+
+`techniques/pushes` is the worked card: four outlines of one push side by side, four arrangements of several,
+and the two grades read back per push.
 
 **The second half is what is *not* written.** Pinning a region with an `area` mark because it should be about
 that height leaves the solver nothing to solve, and a board with a mark on every region is a table with bumps
@@ -499,9 +503,56 @@ The rule under all three is one line: **a push is added to the solved surface an
 other.** Where a landform has to agree with something already stated — a pan, a pad, the head of a flight —
 state it as a mark.
 
+### Pushes add to each other, so a massif is several of them
+
+**Every push in a group is summed into one lift field**, which makes a smaller ring inside a larger one a
+terrace on it rather than a replacement for it. Three concentric rings at `+10`, `+8` and `+6` on a plain at
+8 build terraces at 18, 26 and 36 — each the running total, each with its own skirt down to the one below.
+One ring with a large crown is a single cone whose only shape is its outline.
+
+**Two rings that cross give the sum in the crossing, not the larger of the two.** Two radius-16 rings twenty
+apart at `amount` 14 each read 22 under either alone and **36** where both contain the cell.
+
+**The skirts add as well, and that is where the unauthored steep ground comes from.** On that same pair the
+relief read counts 112 barrier steps, and the cells sit north and south of the waist between the two rings —
+x −62…−49 at z 22…28 and again at z 60…67 — not one of them inside either ring. Two grades of 1.17 meeting
+there make 2.34.
+
+**A negative push inside a positive one cuts the hill after it is raised, and the order they are written in
+changes nothing.** `+20` over a radius-22 ring and `−14` over a radius-11 ring inside it build a rim at 28
+and a floor at 14, six blocks above the plain the cone rose from. A sum has no sequence: what makes the
+caldera a hollow is that its ring lies inside the cone's.
+
+### `amounts` is read at the nearest ring point, so it cuts the interior into wedges
+
+**Each interior cell takes the lift of the ring position nearest it**, and that partition is the ring's
+medial axis — so a ring of few positions builds that many wedges with a step down every seam between them. A
+40×40 square carrying `[26, 26, 6, 6]` builds two wedges at 34 and two at 14 with a **20-block cliff along
+both diagonals**, two cells wide, which nothing in the document or the read names.
+
+**Two things remove the seam and a spur wants both.** Enough positions that neighbours differ by little, and
+a form long enough that the two sides facing each other across the middle carry the same lift — which means
+stating the lifts as a function of position *along* the form rather than of angle round it.
+
 None of the three shows up in the document, in a warning, or in a top-down. Each is one
 `GET /map/{slug}/column?at=…` transect across the join. Take one across every place two landforms
 share ground, before believing the JSON.
+
+### A pin inside a push's ring applies the push twice
+
+A room, a goal or a held shape standing inside a negative push takes the whole island down with it. The group
+is solved once without the room, the floor is read off that solve and the room is pinned at it — and that pin
+is then the group's only constraint, so the second field relaxes to a constant at the room's height and the
+push subtracts its whole amount from that.
+
+Measured on a pit meant to read rim 32 and floor 20: with a room inside the ring and nothing else pinned, the
+rim reads **20** and the floor **8**, with the room standing on a twelve-block plinth in the middle.
+
+**The threshold is one pin, and nothing refuses.** The store answers 200, the export gate opens, and the
+relief read calls the group `rolling` with a relief of 12 — true of the numbers and wrong about the board.
+
+**One `area` mark holding the land at the surrounding height fixes it exactly**, and the profile is then
+station-for-station identical to the same push with no room in it at all.
 
 ### A relief is solved on the group's primary half, and its surface is copied through the mirror
 
@@ -1445,6 +1496,16 @@ three-storey building read as three rooms rather than as one tall wall.
 plus a theme, and answers plan and section as PNG at `?format=png&view=…&scale=8`.
 `room-styles/preview-snapshot` draws the style on a default box, which for an L or a U is not the
 building being placed.
+
+### `DR-SLOPE` is gated on the building's own height, not on the wall it stands against
+
+A house straddling the rim of a pit eats the wall. The decline fires at a rise of `wallCourses + 2 × roof
+pitch` — 7 for a one-storey shell, 13 for a two-storey one — so **the taller the building, the deeper the
+pit wall it may quietly carve away**. A one-storey shell is refused at rises of 11 and 12 where a two-storey
+one is allowed all three.
+
+Built, the column under such a house has lost every course above its floor while the column one cell outside
+the footprint is whole. Check a footprint against the rim it sits on rather than against the rule.
 
 ### Wing corners are inclusive, and the joint roles are ridge-derived
 
