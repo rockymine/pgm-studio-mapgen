@@ -22,15 +22,12 @@ that a reader who begins at Part~III can follow it without the middle.
 \item[Band stack] An ordered run of bands plus the axis it is read along, and a rule
   for what happens past the last band.
 
-\item[Bucket] One of the four parts a painted column splits into: rim, wall, surface
-  and fill.
-
 \item[Box] A typed bounding envelope the composer's allocator places, carrying a
   footprint and a land target. Five kinds: spawn, hub, wools, frontline, mid. Boxes
   exist only during composition.
 
-\item[CTW] Capture the Wool. Two or four teams; each team's objective is capturing
-  the others' wools.
+\item[Bucket] One of the four parts a painted column splits into: rim, wall, surface
+  and fill.
 
 \item[Cell] The plan's coarse grid scale, four blocks by default.
 
@@ -39,6 +36,13 @@ that a reader who begins at Part~III can follow it without the middle.
 
 \item[Composer] The studio's board arranger. It emits a plan, not a layout, and
   builds two-team boards only.
+
+\item[Corridor minimum] Ten blocks, the width below which a shared edge between two
+  pieces is classified \emph{narrow} rather than \emph{land}. A narrow seam is still
+  a way in: it carries a door and an entrance line exactly as a full-width one does.
+
+\item[CTW] Capture the Wool. Two or four teams; each team's objective is capturing
+  the others' wools.
 
 \item[Decline] A finding on a successful request saying that a piece of what was
   posted is not in the world. Rides on \id{warnings} and is distinguished by
@@ -63,6 +67,10 @@ that a reader who begins at Part~III can follow it without the middle.
 
 \item[Finding] A rule id, a sentence carrying the measured numbers, and what it is
   about. Optionally an edit stating a mechanical fix.
+
+\item[Flight] A polygon given a height per vertex and a level height mode, so it keeps
+  its stated top and its sides stay sheer. Stairs, ramps and cuttings are all flights;
+  what separates one from a wall is that its run is at least twice its rise.
 
 \item[Footprint] Total box area, meaning terrain plus build zone plus gap. A build
   zone costs footprint but not land.
@@ -125,12 +133,20 @@ that a reader who begins at Part~III can follow it without the middle.
   hub's edge. Because the search runs in one integer, nothing is built and then
   moved.
 
+\item[Sink] A height mode that cuts a shape's outline down sheer and leaves a flat
+  floor at the stated depth. A pit is a sink; nested marks at descending heights build
+  a funnel instead.
+
 \item[Size band] One of four named player ranges a board is built for: nano 6--13,
   micro 14--21, milli 22--31, centi 32 and up. Two counts in one band compose to the
   same budget.
 
 \item[Sketch layout] The second document: real geometry at block resolution, being
   outlines, heights, relief, paint and props.
+
+\item[Slope axis] The band-stack axis that reads the angle the ground lies at rather
+  than its height. A theme banded by height paints contour lines over relief; a theme
+  banded by slope tells a hillside from a meadow.
 
 \item[Slug] The identifier a map is stored under. Loading the same documents twice
   under one slug is a reload, not a second map.
@@ -151,6 +167,10 @@ that a reader who begins at Part~III can follow it without the middle.
 
 \item[Unit] One team's composed half. The board is that unit repeated through its
   symmetry.
+
+\item[Wall run] A wall material made of horizontal courses of stated widths, striping
+  along a face. It is what made ground reads as, against the bedded layered material a
+  cut through grown rock reads as.
 
 \item[Wool lane] The corridor a wool room owns, found by stacking a fixed-width band
   outward from where the room meets terrain until it reaches void, build or a
