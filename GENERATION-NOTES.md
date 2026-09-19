@@ -505,23 +505,40 @@ other.** Where a landform has to agree with something already stated — a pan, 
 state it as a mark.
 
 **A push carries the ground rather than replacing it, so a landform wanting a flat top needs flat ground
-under it.** A dale falling 20 → 12 under a push's ring came out as a summit running 38 at the rim, 33 in the
-middle and 37 again — twenty cells of hilltop, none of it level, with the dale's own shape on it. The group
-read `relief` 18, `rolling`, one push, two sane grades and no finding.
+under it.** A hillside reading 15 → 10 → 14 under a push's ring, lifted 12 with `crown` 0, came out as a
+summit reading **27 → 22 → 26** — the same shape plus twelve, block for block, with a hollow on its top. The
+group read `rolling`, one push, a sane skirt and no finding, and its `relief` came out *lower* than the bare
+hillside's because filling a hollow's neighbourhood shortened the range.
 
-**A push cannot be kept off a mark: only its ring and its `falloff` can.** With the same push moved twenty
-cells clear of a holm pinned at 12, the holm read **27**, **20** and its stated **12** across ten cells,
-reaching 12 only five cells past its own centre. Ring plus falloff is the push's whole extent, and every cell
-inside that circle is lifted whatever states it.
+**A push cannot be kept off a mark: only its ring and its `falloff` can.** With the same push moved
+twenty-four cells clear of a holm pinned at 10, the holm read **22**, **12** and its stated **10** across
+eight cells. Ring plus falloff is the push's whole extent, and every cell inside that circle is lifted
+whatever states it.
 
-**How much of a board to pin is one dial with a complaint at each end.** Pinning every region built three
-plates the read called `landform: mountain` at `relief` 45 and `level` **0.45**; pinning only the ground a
-player stands on built flowing terrain at `level` **0.19** and raised `RL5` — *graded everywhere and left
-nowhere to stand*. `relief` cannot tell a range from a staircase; `level` is the field that can.
+**How much of a board to pin is one dial, and `level` is the reading.** Pinning every region built three
+plates at `level` **0.51**; pinning only the ground a player stands on built flowing terrain at **0.30**,
+which is exactly where `RL5` begins — *graded everywhere and left nowhere to stand*. `relief` cannot tell a
+range from a staircase and called the staircase the bigger landform, 32 against 21.
 
 **`reach: 0` is what a board wants, and a finite reach is an instrument for isolating something.** The same
-document at `reach: 16` sagged its unpinned middle from 23…18 to 12…15 — within a few blocks of its `base` —
-and the shelf and the fell that had been one landform came apart into two mounds.
+document at `reach: 16` sagged its unpinned north half from 25…20 to 11…13 — within a few blocks of its
+`base` — and a shelf pinned at 30 stopped reaching a line twenty-two cells away from it. Built, a shelf and a
+fell that had been one flowing landform came apart into two mounds on low ground.
+
+**A field pinned only in patches relaxes into fans radiating from each patch; a field pinned along two
+opposite edges relaxes into the ramp between them.** The fans paint as a spray of contour streaks over ground
+that is otherwise flat, which is what an island carrying three small scattered `area` marks and nothing else
+looks like. Two long marks facing each other are what a hillside is made of.
+
+**A `bevel` wider than half a mark's narrow dimension pins nothing, and nothing reports it.** A bevel is paid
+for out of the mark's own floor from every side at once, so a nine-cell band at `bevel` 4 has no floor left —
+and `relief/read` does not list it under `silent`, because its ring does cover cells. The group comes out at
+whatever else is speaking.
+
+**A push's skirt is gentler than its stated grade at the ends and half again steeper in the middle.** The
+smoothstep a `falloff` eases with peaks at 1.5× the average, so a skirt the read calls 0.55 reaches 39° and
+one it calls 1.33 reaches 63°. That is the difference between a landform the slope bands paint as scree and
+one they paint as crag.
 
 ### Pushes add to each other, so a massif is several of them
 

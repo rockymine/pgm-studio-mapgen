@@ -56,22 +56,28 @@ def depth_stack(*bands):
 # The ground is finished by its ANGLE, not its height: a thickness on the slope axis is a span of degrees,
 # so one stack answers a flat top, a graded skirt and a bank steep enough to be rock.
 #
-# Where the bands cut is the whole decision. A grade of one course a cell stands at 45 deg exactly, so a
-# rock band starting there paints every gentle shoulder as cliff; starting it at 40 leaves a skirt under
-# 0.84 blocks a cell as scree and keeps rock for what is genuinely a face.
-MOOR = {
-    "bedrock": {"relative": False, "value": 1},
-    "rimEdges": "void",
-    "rim": {"enabled": False, "depth": 1, "material": SOLID(1)},
-    "wallEnabled": True,
-    "wallOnTerrainFaces": True,
-    "wall": SOLID(1),
-    "fill": SOLID(1),
-    "surface": {"enabled": True, "depth": 3, "material": {
-        "kind": "layered", "axis": "slope", "stack": {"ending": "repeat", "bands": [
-            {"thickness": 15, "material": depth_stack((SOLID(2), 1), (SOLID(3), 2))},
-            {"thickness": 25, "material": depth_stack((SOLID(3, 1), 1), (SOLID(3), 2))},
-            {"thickness": 50, "material": depth_stack(
-                ({"kind": "cell", "cellSize": 11, "palette": [SOLID(1), SOLID(4)]}, 3))},
-        ]}}},
-}
+# Where the bands cut is a per-board decision and `GET .../incline?format=text` is what makes it. A cut
+# through the angle most of a board actually stands at dithers row by row: a board holding 30% of its ground
+# between 10 and 19 degrees, banded at 15, comes out striped. The defaults here are cut for a board whose
+# landforms are pushes on flat ground, which stands either level or on a skirt.
+def moor(grass_to=15, dirt_to=40):
+    """The ground every card is finished with, its two band edges stated in degrees."""
+    return {
+        "bedrock": {"relative": False, "value": 1},
+        "rimEdges": "void",
+        "rim": {"enabled": False, "depth": 1, "material": SOLID(1)},
+        "wallEnabled": True,
+        "wallOnTerrainFaces": True,
+        "wall": SOLID(1),
+        "fill": SOLID(1),
+        "surface": {"enabled": True, "depth": 3, "material": {
+            "kind": "layered", "axis": "slope", "stack": {"ending": "repeat", "bands": [
+                {"thickness": grass_to, "material": depth_stack((SOLID(2), 1), (SOLID(3), 2))},
+                {"thickness": dirt_to - grass_to, "material": depth_stack((SOLID(3, 1), 1), (SOLID(3), 2))},
+                {"thickness": 90 - dirt_to, "material": depth_stack(
+                    ({"kind": "cell", "cellSize": 11, "palette": [SOLID(1), SOLID(4)]}, 3))},
+            ]}}},
+    }
+
+
+MOOR = moor()
