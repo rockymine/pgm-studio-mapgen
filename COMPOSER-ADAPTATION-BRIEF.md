@@ -85,14 +85,18 @@ And **destroy objectives are order-2 only**: a `rot_90` board is CTW and cannot 
 The composer gives a direction. These are the instruments that turn a direction into a place. Reach for
 them by name; every one of them is documented and none of them is new.
 
-**Deform the footprint.** A compiled rectangle is reshaped one point at a time —
+**Deform the footprint.** A compiled rectangle is reshaped one point at a time.
 `PATCH …/sketch/shapes/{id}/vertices/{index}` moves one vertex and leaves every other exactly where it was,
-`POST …/vertices {"after": n}` adds one, `DELETE` takes one out; a spec states them as `editShapes`, an
-ordered list per shape replayed before any bend. `bendShapes` is the *roughener* — it moves every cut point
-at once and `side: out|in|both` decides whether the outline bloats, holds its footprint or wanders. Widen an
-approach, taper a spur, eat a bite out of a hub flank, make one edge read as a coast. **Do not add a second
-shape on top to enlarge the first, and do not `subtract` into it to shrink it** — that is the move that
-produces a board nobody can read.
+`POST …/vertices {"after": n}` adds one, and `DELETE` takes one out; a spec states them as `editShapes`, an
+ordered list per shape replayed before any bend.
+
+**`bendShapes` is the roughener.** It moves every cut point at once, so `side: out|in|both` decides whether
+the outline bloats, holds its footprint or wanders.
+
+Widen an approach, taper a spur, eat a bite out of a hub flank, make one edge read as a coast.
+
+**Do not add a second shape on top to enlarge the first, and do not `subtract` into it to shrink it.** That
+is the move that produces a board nobody can read.
 
 **Cut with `subtract`, and cut in the plan with `buffer`.** A `subtract` removes ground entirely and is the
 instrument for a channel or a chasm. No relief mark of any kind cuts a hole. At the plan tier the `buffer`
@@ -115,15 +119,20 @@ approach wall — bedrock, two thick, three courses, across the full interface w
 side. It is an error on a pair that shares no land interface (`PL11`) and on the wool room's own interface
 (`PL13`) — the device belongs an approach out, around 15 blocks from the room.
 
-**Add the second dimension.** `addLayers` is `[{id, name, base_y, shapes, groups, below?}]` — the storeys a
-plan cannot state. **The stack is written bottom-up and the painter walks it in document order**, so a
-storey listed after one that stands over it finds no stone left to paint; an undercroft goes *before* the
-compiled ground and `below` is what puts it there. A tunnel, an underpass, a bottom lane, a deck over a
-lower street, a bridge a raider walks out along — all of them are this. A placement names its storey with
-`layer`; naming none takes the top surface, which on a roofed goal is the roof. And on a stacked board:
-**a plain layer's bands run from the bedrock course whatever its `base_y`** — only `kind: "made"` is painted
-over its own span — so give every ground theme a `fill` that is not `1:0`, and `column` a cell where two
-plain layers overlap before believing any render.
+**Add the second dimension.** `addLayers` is `[{id, name, base_y, shapes, groups, below?}]`: the storeys a
+plan cannot state. A tunnel, an underpass, a bottom lane, a deck over a lower street, a bridge a raider
+walks out along are all of them this.
+
+**The stack is written bottom-up and the painter walks it in document order.** A storey listed after one
+that stands over it finds no stone left to paint. An undercroft goes *before* the compiled ground, and
+`below` is what puts it there.
+
+**A placement names its storey with `layer`.** Naming none takes the top surface, which on a roofed goal is
+the roof.
+
+**And on a stacked board, a plain layer's bands run from the bedrock course whatever its `base_y`.** Only
+`kind: "made"` is painted over its own span, so give every ground theme a `fill` that is not `1:0`, and
+`column` a cell where two plain layers overlap before believing any render.
 
 Draw a tunnel, a wall or an undercroft as the **complement of the space** — the solid around the hole —
 rather than cutting it with a `subtract`: `SK13` reads a subtract as the board's negative space and refuses
@@ -144,11 +153,14 @@ These are the repository author's rulings, and they bind. `pgm-studio/docs/gamep
 they live in full; this is what they mean when a composed plan is being reshaped.
 
 **Sixteen blocks is the floor for a bay touching a goal or a spawn.** Negative space between two pieces is
-crossed by jumping long before it is crossed by building: a short gap between a frontline and a wool room, or
+crossed by jumping long before it is crossed by building. A short gap between a frontline and a wool room, or
 between a spawn and a wool room, lets a player tower at the near edge and jump straight in, and the approach
-the board was built around stops mattering. A plain hole in a team's own ground may be twelve. The number is
-in **blocks** — the composer's own floor is two cells, which is eight blocks at the default scale and ten at
-cell 5, so a cell count is not the thing to copy.
+the board was built around stops mattering.
+
+A plain hole in a team's own ground may be twelve.
+
+**The number is in blocks, never in cells.** The composer's own floor is two cells, which is eight blocks at
+the default scale and ten at cell 5, so a cell count is not the thing to copy.
 
 Three of this run's boards went under it while reshaping: `opus5-quadrangle` left five cells-worth between its
 spawn and the wool-b enclosure (six blocks in the built world), `opus5-medlock-drift` five between `clamp-head`
@@ -156,39 +168,56 @@ and its wool room, `opus5-sallyport` five between `hub-back` and `wool-a-s`. Mea
 the composer never emits one under ten, so a short bay on an adapted board is always the adaptation's.
 
 **A wool room is defended from its corner.** The room wants **two faces on void**: it sits in a corner, a
-defender holds two lines, an attacker picks between two. Three faces open is the ordinary composed shape and is
-fine. A room with ground on **every** side is the failure — there is nothing to hold and nowhere for the fight
-to be, and the room becomes a spot in a field rather than a place. It happens by adding area around the room
-while reshaping the ground near it, so when a ring is bent or a vertex moved near a wool room, check what the
-room still fronts onto. A room at the end of a spur is the milder failure: defensible, and one queue.
+defender holds two lines, an attacker picks between two. Three faces open is the ordinary composed shape and
+is fine.
+
+**A room with ground on every side is the failure.** There is nothing to hold and nowhere for the fight to
+be, and the room becomes a spot in a field rather than a place.
+
+It happens by adding area around the room while reshaping the ground near it, so when a ring is bent or a
+vertex moved near a wool room, check what the room still fronts onto.
+
+A room at the end of a spur is the milder failure: defensible, and one queue.
 
 **The defence wall is meant to be in the way.** A `walls` entry is bedrock across the interface it names, and
-blocking the way into a wool is its entire purpose — it gives the defence a prepared line before it has built
+blocking the way into a wool is its entire purpose: it gives the defence a prepared line before it has built
 anything and costs a tunneller the shortcut. Reading a walled approach as a wool that cannot be reached is
-reading the wall as damage. **One wall on one interface**, narrow enough to be a line rather than a barricade,
-and — the part reshaping breaks — **no ground pulled out past its ends**. A wall spans the interface it is
-authored on, so terrain widened beyond that interface leaves an open shoulder beside it, and a wall players
-stroll around is only in the defence's way. Reshape the interface with the approach.
+reading the wall as damage.
+
+**One wall on one interface**, narrow enough to be a line rather than a barricade.
+
+**No ground pulled out past its ends**, and this is the part reshaping breaks. A wall spans the interface it
+is authored on, so terrain widened beyond that interface leaves an open shoulder beside it, and a wall
+players stroll around is only in the defence's way. Reshape the interface with the approach.
 
 ## 5. Relief: the instrument, and the danger
 
 **Relief is not the board.** The author's words: relief should be used, and *solid structural areas are
 likewise important*; overdoing it is a danger. What that means concretely:
 
-**Pick the areas.** Some areas of the board carry relief that reads as natural terrain — a rise, a bank, a
-dale, a hillside. Other shapes are **explicitly excluded from the relief**, and that exclusion is stated
-rather than left to happen: a shape carrying `relief_scope: "exclude"` is taken out of the solve, so the
-made ground and the grown ground meet at a **face** rather than being graded into each other. That face is
-the join, and it is where a stair, a flight or a wall goes. `hold` is the other one and does the opposite —
-it lets the relief bring the lower tier *up* to the shape, and then there is no step and no reason for a
-stair. A frontline that has to be fought over, a wool room's apron, a causeway, a keep's yard: those are
-ground that should be flat and stated to be flat.
+**Pick the areas.** Some areas of the board carry relief that reads as natural terrain: a rise, a bank, a
+dale, a hillside.
+
+**Other shapes are explicitly excluded from the relief**, and that exclusion is stated rather than left to
+happen. A shape carrying `relief_scope: "exclude"` is taken out of the solve, so the made ground and the
+grown ground meet at a **face** rather than being graded into each other. That face is the join, and it is
+where a stair, a flight or a wall goes.
+
+**`hold` is the other one and does the opposite.** It lets the relief bring the lower tier *up* to the
+shape, and then there is no step and no reason for a stair.
+
+A frontline that has to be fought over, a wool room's apron, a causeway, a keep's yard: those are ground
+that should be flat and stated to be flat.
 
 **Do not put a `tread` on every mark.** A tread grades a mark's shoulder into its neighbour, so a board
-whose every mark carries one is a board of nothing but shoulders — no flat to fight on, no face to decide
-where anyone goes. It reads walkable, which is why nothing else catches it; `RL5` does, off `level` in the
-relief read, with 30% the bar. State a tread **where two marks would otherwise meet on a wall**, and leave
-it off ground meant to be flat to its edge.
+whose every mark carries one is a board of nothing but shoulders: no flat to fight on, no face to decide
+where anyone goes.
+
+It reads walkable, which is why nothing else catches it. `RL5` does, off `level` in the relief read, with
+30% the bar.
+
+State a tread **where two marks would otherwise meet on a wall**, and leave it off ground meant to be flat
+to its edge.
 *Measured: five marks all carrying a tread → 25.4% level, no face at all. The same marks with the treads off
 → 43.6% and 70 faces.*
 

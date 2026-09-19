@@ -36,3 +36,24 @@ Three things that are true before the skill loads:
   report here has complained about.
 - **Read the text before the pictures.** `tools/drive.py` writes ~25 `?format=text` reads beside every
   render. A picture answers *whether* something came out; a number answers *whether it is right*.
+
+## How an instruction here is written
+
+**One paragraph, one claim. The claim first, the evidence after.**
+
+An instruction is not read the way an essay is read. It is scanned for the sentence that applies right
+now, so a paragraph carrying six claims hides five of them. The failure has one shape: a paragraph opens
+with a bolded claim and then four more are appended with semicolons and dashes until the opening claim is
+the only one anyone sees.
+
+The claim is the first sentence and stays bolded where the document bolds its claims. Everything after it
+supports that claim — the mechanism, the number, the failure it prevents, the worked case. Where a
+paragraph makes two claims it is two paragraphs.
+
+**`tools/prose-check.py` is the gate.** It lists every prose paragraph over 110 words or 4 sentences and
+exits non-zero while any remain; a table, a fenced block, a list and a heading are none of its business.
+Run it over a brief or a skill before the commit that changes one.
+
+**A structural pass may not lose a claim.** `tools/prose-check.py --preserved <before> <after>` compares
+the two versions word for word and names anything that disappeared, so splitting a paragraph cannot
+quietly drop the clause it was splitting off.
