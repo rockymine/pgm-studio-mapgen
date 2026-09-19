@@ -27,7 +27,7 @@ What is decided before a shape exists, and what cannot be recovered by deciding 
 The plan states the board's **arrangement** — which ground is where, at what height, next to what. It is not
 the board's shape, and cutting it into more pieces to get a shape is the failure this section exists to name.
 
-`firnline` is the worked example of doing it wrong: **13 plan pieces at 6 surface heights**, then
+The worked failure is **13 plan pieces at 6 surface heights**, then
 `themeByHeight` mapping each of those 6 heights to a theme. The theme partition is therefore the height
 partition, which is the piece partition — the board's look is decided by how it happened to be cut up rather
 than by any reading of the terrain, and it comes out chopped instead of coherent.
@@ -35,8 +35,8 @@ than by any reading of the terrain, and it comes out chopped instead of coherent
 The order that works is the other way round. Author the terrain the map is played on as **one shape**, or as
 few as the arrangement genuinely needs, and reshape it per vertex until it reads as ground. Then put the
 platforms a match needs — a monument shelf, a middle plateau — on **layers over it**, which is what a layer
-is for: `addLayers` with a `base_y`, a footprint, and its own theme. `firnline`'s 13 pieces are one terrain
-shape plus two platforms.
+is for: `addLayers` with a `base_y`, a footprint, and its own theme. Those 13 pieces are one terrain shape
+plus two platforms.
 
 A plan piece earns its place by stating something the arrangement needs: a height a lane climbs, a room a
 building is seated in, a footprint the symmetry fans. A piece that exists only so a theme can be hung on it
@@ -45,8 +45,8 @@ is a piece that should have been a shape scope.
 ### A core is the forward objective and a wool is the deep one
 
 A core cannot be carried anywhere; it is breached where it stands, so it belongs where it will be
-fought over. A wool has to be fetched and brought home, so it belongs behind. On `opus5-aerie` the
-first draft had them the other way round and `WL10` read a wool-front-distance of 8.
+fought over. A wool has to be fetched and brought home, so it belongs behind. Drafted the other way round,
+`WL10` reads a wool-front-distance of 8.
 
 Two things about a core in particular: `float` and `leak` are one knob (the lava free-falls to the
 terrain at `float` below the casing and leaks a course below `leak`), and **a core on a group in
@@ -88,7 +88,7 @@ apart on a 130 × 120 board and a goal a distance `d` along the line between the
 The plan tier walks the pieces flat, so a gill cut eight courses deep or a single bridge lengthens no route it
 measures.
 
-The terms are soft, and `fable-mossgill` takes `d` = 33 — the ratio in band, the other two read and left —
+The terms are soft, and a board may take `d` = 33 — the ratio in band, the other two read and left —
 because it is the built board that decides the walk, and there the beck makes every enemy route go by the
 bridge.
 
@@ -100,16 +100,10 @@ there**. A board can pass all of them while carrying whole landforms no player h
 
 `GET /api/map/{slug}/coverage` is the read that answers the other question, and
 `GET /api/map/{slug}/plan/flow` is the same question off the plan alone, before a world exists to measure.
-Rebuilt today, the two Wheal Hazel boards read:
-
-| board | ground | reached | decorated | dead | dead share |
-|---|---|---|---|---|---|
-| `opus5-wheal-hazel` | 9 798 | 5 656 | 1 474 | 2 668 | **27.2%** |
-| `opus5-wheal-hazel-v2` | 11 276 | 10 980 | 209 | 87 | **0.8%** |
-
-The difference between them is one decision: v1's neutral bar spans `x −40..40` and the build zone that
-crosses it spans `x −10..10`, so every journey over the bar is a bridge through that twenty-block window and
-the ground either side of it is dead by construction. v2 cut the bar to the build zone's own width.
+Two builds of one board differing in a single decision read **27.2%** of their ground dead and **0.8%**.
+The first spanned its neutral bar `x −40..40` while the build zone crossing it spanned `x −10..10`, so every
+journey over the bar was a bridge through that twenty-block window and the ground either side of it was dead
+by construction. The second cut the bar to the build zone's own width.
 
 The general shape of the mistake: **a mid-board stepping stone is used only across the width of the build zone
 that reaches it**, and the corridor margin buys back six blocks and no more.
@@ -168,7 +162,7 @@ the surrounding piece into rectangles that tile around the room instead.
 ### A wool room's foundation is bedrock to y 0, so it needs land on all four sides
 
 A stamped wool room fills its whole piece and fills **downward in bedrock**: the column under
-`opus5-thornfell`'s room reads floor at `y 25` and bedrock from `y 24` to `y 0`. Nothing about that is visible
+such a room reads floor at `y 25` and bedrock from `y 24` to `y 0`. Nothing about that is visible
 in a plan view, in the relief read-back, or at the export gate. It is visible in the world as a 25-course
 bedrock cliff wherever the cell beside the room is void or lower, which on a board where the room piece is the
 full width of the spur it hangs off is every cell of two of its four sides.
@@ -229,9 +223,9 @@ enclose something, that is not the same as closing the way through: a `donut` wo
 down **each** side of its hole, and a wall on one is walked past on the other.
 
 Count the ways round the thing before counting the walls. Where the plan has no seam at the place a
-wall is needed, **split a piece to make one**: on `opus5-rimegarth` the two long ring arms are each
-cut in two level with the middle of the hole, twelve pieces to fourteen, which puts one interface in
-each lane facing the other across the yard and gives both walls somewhere to stand.
+wall is needed, **split a piece to make one**: cutting a ring's two long arms in two level with the middle
+of its hole takes twelve pieces to fourteen, which puts one interface in each lane facing the other across
+the yard and gives both walls somewhere to stand.
 
 ### On a bridging board the gaps are the design, so state them first
 
@@ -337,8 +331,8 @@ into one polygon, which is what makes a composed board paintable — but `PlanVo
 
 **The merge is a consequence of the pieces being flat, and stating a `surface` per piece ends it.** Give every
 piece its own height and there is nothing left to merge: the same twelve-piece plan compiles to **one polygon
-per distinct height and no subtract at all** — nine of them on `opus5-rimegarth`, `s0` at base 9 through `s8`
-at base 15 — with the hole simply a place no polygon covers.
+per distinct height and no subtract at all** — nine of them on one twelve-piece board, `s0` at base 9
+through `s8` at base 15 — with the hole simply a place no polygon covers.
 
 That is also the only way a composed board can be painted in more than one theme: a theme is stated **on a
 shape**, a flat plan has one shape, and `themeByHeight` therefore has nothing to bind to until the heights
@@ -351,7 +345,7 @@ what is not a piece is void. Placing props by eye on one gave fourteen declines,
 `DR-SITE — has no ground`. Given the piece rectangles, the roads with their radii, the buildings and
 the doorways and the wall seams, a search over every block of the authored half is instant and
 returns the truth: on
-`opus5-rimegarth` it is **nine** places in a half.
+one composed board it is **nine** places in a half.
 
 Two of the rules that search has to know. **A road's standoff is measured to its paved cells, not its
 centreline** — clear the stroke's radius *plus* the kind's standoff, three for a tree and two for a boulder.
@@ -439,8 +433,8 @@ in.
 A `line` mark with per-vertex heights is the same object stretched along an arc: a ridge-shaped wall with a
 flat top.
 
-Both were built on `showcase/19-mountain-range` before the pushes were, and both produced correct relief
-numbers (`low 11 · high 55`, `symErr 0`, gate OPEN) over a landform that reads as a row of oil drums.
+Both produce correct relief numbers — `low 11 · high 55`, `symErr 0`, gate OPEN — over a landform that
+reads as a row of oil drums.
 
 A **push** is the other operation. It takes a drawn ring and lifts the solved surface inside it, and three of
 its fields are the landform:
@@ -460,9 +454,9 @@ its fields are the landform:
 
 **The second half is what is *not* written.** Pinning a region with an `area` mark because it should be about
 that height leaves the solver nothing to solve, and a board with a mark on every region is a table with bumps
-on it however tall the bumps are. `19-mountain-range` pins four things — the coast, the dale floor, the goal's
-shelf and the spawn's apron, every one of them ground a player walks — and the flanks carry no mark at all.
-`opus5-sandcaster` pins all four of its regions, and is flat for exactly that reason.
+on it however tall the bumps are. A range that reads pins four things — the coast, the dale floor, the
+goal's shelf and the spawn's apron, every one of them ground a player walks — and the flanks carry no mark
+at all. A board that pins all four of its regions is flat for exactly that reason.
 
 `reach: 0` goes with it: a finite reach pulls ground back toward `base` at that distance from any constraint,
 which between two distant marks means the flanks decay to the base and the range becomes separate hills.
@@ -503,13 +497,9 @@ share ground, before believing the JSON.
 constraints — the relaxation only shapes what is left between them. Marks placed at radius 16–32 on
 a 176-wide board nearly tile it, and the ground builds as stacked plateaus with vertical faces.
 
-Measured on `opus5-tarnfell`, the same thirty marks at two radii, off `…/sketch/relief/read`:
-
-| | radius 16–32 | radius 3–6 |
-|---|---|---|
-| walkable at one-block steps | terraced throughout | **95.1 %** |
-| largest place at that tier | — | 86.5 % |
-| cliffs | one at every mark's edge | **6** |
+Measured off `…/sketch/relief/read`, the same thirty marks at two radii: at 16–32 the board is terraced
+throughout, with a cliff at every mark's edge; at 3–6 it is **95.1%** walkable at one-block steps, its
+largest place holds 86.5% of that, and six cliffs remain on the whole board.
 
 **The rolling is the relaxation's**; a radius is how much of the landform you are refusing to let it
 do. Keep a summit at three to six and let `reach` spread it. An `area` mark is the other instrument
@@ -523,7 +513,7 @@ medial axis, at `crown / half` — `half` being the half-width the ribbon was dr
 the landform has a step in it at its own outline, and a range with a large `amount` and a short `falloff` is a
 cliff with a hill on top of it whatever its height.
 
-Measured on `opus5-thornfell`, behind the spawn: `amount 26 · falloff 8` against `crown 10 · half 7` is 3.25
+Measured behind a spawn: `amount 26 · falloff 8` against `crown 10 · half 7` is 3.25
 courses a block for ten blocks and then 1.4, and the section at `x 0` reads as a sheer face standing directly
 on the building's back wall. The same range at `amounts 13–17 · falloff 10` against `crown 12 · half 7` — 1.7
 either side — reads as one mountainside from the wall to the board's back edge.
@@ -549,7 +539,7 @@ first point to its last — **south** of a lip traced west to east, **north** of
 The field carries no `side` word, so a lip drawn along a beck's north bank with `x` increasing puts the shelf
 in the beck and the drop on the bank.
 
-Measured on `fable-mossgill`: with `lip-n` traced west to east the bank north of the beck solved at **8–9**
+Measured: with a lip traced west to east the bank north of the beck solved at **8–9**
 against the 14 it states and the relief read counted **418** barrier steps; the same points reversed put the
 bank at 13–14 and the count at 268, which is the two scarp faces and nothing else.
 
@@ -568,7 +558,7 @@ It is the right instrument for a board whose groups are level with each other an
 otherwise. To shoulder groups that stand at different heights, draw each one's polygon wider than
 the `area` mark that states its top and set `base` **under all of them**: the fringe between polygon
 and area is unpinned and decays toward base, so every edge falls a course or two before its drop, at
-its own height (`opus5-aerie`).
+its own height.
 
 ### A relief mark's centre may lie outside the land, and that is how a map edge cuts a mountain
 
@@ -578,9 +568,8 @@ polyline that may lie anywhere. So a ridge traced twelve blocks past the coast w
 fourteen pins the coastal strip at its own heights and leaves the crest off the map — and the
 board's edge is a mountainside cut through rather than ground decaying to `base`.
 
-Three of `opus5-tarnfell`'s mountain marks lie entirely outside its polygon and a fourth runs out
-through both ends of it; every contour band in its heightmap closes on the frame rather than inside
-it. A mark placed *wholly* out of reach does nothing and raises nothing — no `SK3`, no warning — so
+On one board three mountain marks lay entirely outside its polygon and a fourth ran out through both ends
+of it; every contour band in its heightmap closed on the frame rather than inside it. A mark placed *wholly* out of reach does nothing and raises nothing — no `SK3`, no warning — so
 the check is the heightmap, not the document.
 
 ### Two flat marks butted together build two terraces and a step at the seam
@@ -602,14 +591,14 @@ from — 16 → 17 → 18.
 
 ### `step` with `stairs` is the instrument for a quarry — the terracing that ruins a hillside
 
-`ReliefSpec.Step` snaps the finished surface to a quantum, which is what turned `opus5-tarnfell`'s hills into
-stacked plateaus. A worked pit **wants** that: state the rim and the floor as two `area` marks, let the
+`ReliefSpec.Step` snaps the finished surface to a quantum, which is what turns a board's hills into stacked
+plateaus. A worked pit **wants** that: state the rim and the floor as two `area` marks, let the
 relaxation solve a smooth bowl between them, and set `step` to the bench height. `stairs: true` then cuts a
 way up out of every place the terracing stranded, so the pit is walkable without stopping being terraced.
 
 Every stated level must be a multiple of the step or the knob rounds it away.
 
-`opus5-deepcut`: four marks and `step 4` give six benches where thirty marks gave a hillside nobody wanted.
+Four marks and `step 4` give six benches where thirty marks gave a hillside nobody wanted.
 
 ### Water fills whatever is level, so the pan is the size of the pool
 
@@ -620,8 +609,8 @@ it. Draw the mark at the size of the water and let the surrounding floor sit a f
 
 `form: "canal"` holds its stated width: a centreline down the middle of a fifteen-wide hole at radius
 3 is a six-wide channel with dry ground either side of it, however flat the pan under it. The band
-**is** the pond and the radius is the knob. This is the same fact `opus5-deepcut` learned from the
-other end, where an oversized flat `area` mark became an oversized lake: a water prop is a stroke
+**is** the pond and the radius is the knob. It is the same fact met from the other end, where an oversized
+flat `area` mark becomes an oversized lake: a water prop is a stroke
 that carves, not a fluid that finds its level.
 
 ### Relief is keyed by group id across the whole stack, and `*` is the ground's alone
@@ -673,9 +662,9 @@ Only the *set* an override-add belongs to is privileged; within that set, docume
 That reads as an implementation detail and it is the difference between a tunnel and a sealed one. An end
 wall drawn as one rectangle across the mouth of a ramp is 15 courses tall where the ramp under it is 7, so
 the wall wins every column they share — and the way down ends in solid rock. Measured on
-`opus5-sandcaster-ii` before the fix: `(−8, 60)` read solid `y0..21` with no air in it, a three-block plug
-at `z 59..61` sealing both mouths, with `SK11` reporting 676 and 294 places of standable ground with no
-route onto them. The same wall shape had shipped on the first Sandcaster.
+one board before the fix: `(−8, 60)` read solid `y0..21` with no air in it, a three-block plug at
+`z 59..61` sealing both mouths, with `SK11` reporting 676 and 294 places of standable ground with no route
+onto them.
 
 **So a wall that meets a ramp is drawn in halves, one either side of it.** The general form: on one layer,
 *anything shorter than what crosses it is not in the world there*, which is the same fact `SK9` reports for
@@ -697,19 +686,15 @@ state a floor a few courses under the bed — `floor: 12` against a bed at 17 �
 A deck stated above the ground's top keeps the air beneath it, and a slab over open void still lays the
 bedrock plate below.
 
-Measured on `opus5-millrace`: the canal walls, the spawn stair and the cairn walls stood over a void from y0
-to their floors, and `maps/rockymine-ruediger-millrace` carries 25,000 blocks of hand fill under them;
-`maps/fable-millrace-revamp` is the same layout built with the ground kept.
+Measured: canal walls, a spawn stair and cairn walls standing over a void from y0 to their floors cost
+25,000 blocks of hand fill under them, where the same layout with the ground kept costs none.
 
 ### `skirt` decides whether an erected shape is a landform or a monument
 
-One measurement covers the whole range, probed on flat ground at y11:
-
-| `skirt` vs `base_height` | The edge builds | Reads as |
-|---|---|---|
-| `0` | one sheer step of the whole lift | a monolith, a cut face |
-| about half the lift | **two**-block risers | a lip: crossed with a placed block, not on foot |
-| **≥ the lift** | **one**-block risers, all the way round | a landform: walked onto from any side |
+One measurement covers the whole range, probed on flat ground. A `skirt` of **0** builds the edge as one
+sheer step of the whole lift and reads as a monolith. A skirt of about **half the lift** builds two-block
+risers — a lip crossed with a placed block rather than on foot. A skirt **at or over the lift** builds
+one-block risers all the way round, which is a landform walked onto from any side.
 
 So `raise 7, skirt 10` is an outcrop a player strolls up and `raise 7, skirt 0` is a standing stone,
 from the same two fields. A shape meant to belong to the terrain wants the third row and a theme in
@@ -902,24 +887,18 @@ each point landed:
                             {"remove": 7}]}
 ```
 
-`rockymine-map-experiment` is the scale a hand actually works at, and it is larger than a bend's. Its four
-ground shapes are the plan's four rectangles reshaped by hand:
-
-| plan rectangle | compiled | drawn | vertices | Δ |
-|---|---|---|---|---|
-| `piece-25` | 3850 | 3920 | 4 → 11 | +70 |
-| `piece-30` | 5500 | 6351 | 4 → 10 | +851 |
-| `piece-30-2` | 3325 | 3962 | 4 → 9 | +637 |
-| `piece-4-35` | 1575 | 1774 | 4 → 6 | +199 |
-| total | 14250 | 16008 | | **+1758 (+12.3%)** |
+A hand works at a larger scale than a bend does. One board's four
+ground shapes are the plan's four rectangles reshaped by hand, each grown from four vertices to between six
+and eleven, and 14,250 blocks² of compiled rectangle became 16,008 drawn — **+12.3%**, with every one of the
+four larger than the rectangle it came from.
 
 Every one grew. Of the 36 drawn vertices, 19 sit **outside** the rectangle they came from by 2 to 20 blocks,
 7 sit inside by 4 to 8, and 10 stay on the edge. The document carries **no Bézier handles at all**. A reshape
 that far outward and that uneven is not reachable by any whole-ring transform, and it is reachable one point
 at a time.
 
-`opus5-millrace` inherits `s0`–`s3` and both spawns from this board **vertex for vertex** and adds no handles
-either — its curves are `path` shapes, which is the layout's other curve and the one nothing has to author.
+A board inheriting those shapes **vertex for vertex** adds no handles either — its curves are `path` shapes,
+which is the layout's other curve and the one nothing has to author.
 
 The three canal walls are `wall-s`, `wall-n-w` and `wall-n-e`: three or four clicked points, `radius 1`,
 `stroke_edge: solid`. The rasterizer runs a polyline's points through a centripetal Catmull-Rom spline at
@@ -944,14 +923,9 @@ The side is decided by offering each inserted point both perpendiculars and taki
 was asked to — right for a ring wound either way and for a concave stretch as readily as a convex one, which a
 shoelace sign is not.
 
-Measured on `opus5-alderfen`'s two rings, compiled against each side:
-
-| ring | compiled | `side: out` | `side: in` |
-|---|---|---|---|
-| `garth-14` | 9750 | 11033 (**+1283**) | 8467 (**−1283**) |
-| `holm-mid-14` | 4800 | 5477 (**+677**) | 4123 (**−677**) |
-
-The same magnitude with the sign reversed, which is the whole of what the side chooses. The studio's outward
+Measured on two rings compiled against each side: one at 9,750 blocks² bent to 11,033 outward and 8,467
+inward, the other at 4,800 to 5,477 and 4,123 — **+1,283 against −1,283**, and **+677 against −677**. The
+same magnitude with the sign reversed is the whole of what the side chooses. The studio's outward
 coast is vertex-for-vertex the coast every bent board in `specs/` was authored against, so those boards
 re-drive to the ground their props were placed on.
 
@@ -983,12 +957,9 @@ worthless — the vertex is a fixed point of the curve. Probe near `t = 0.5`.
 
 **A handle that travels further away from its edge than along it makes a lobe, not a corner.** Place every
 handle as `c1 = p0 + d·t + n·bulge`, `c2 = p3 − d·t + n·bulge`, with `d` the edge vector, `n` its outward unit
-normal and `t` a forward fraction (0.3 works). Two constraints keep it a corner:
-
-| | |
-|---|---|
-| `t·\|d\| ≥ bulge` | the handle travels further along the edge than away from it |
-| `bulge ≤ 0.35·\|d\|` | a short edge cannot carry a big bulge |
+normal and `t` a forward fraction (0.3 works). Two constraints keep it a corner: `t·|d| ≥ bulge`, so the
+handle travels further along the edge than away from it, and `bulge ≤ 0.35·|d|`, because a short edge cannot
+carry a big bulge.
 
 Break the first and the cubic doubles back into a cusp, and past that a self-intersecting loop that rasterizes
 as a detached scrap of land. Break the second — an 8-block handle on a 15-block edge — and you get a deep U
@@ -1085,7 +1056,7 @@ course thick, laps nothing, sits flush with both banks and leaves four courses o
 
 `TerrainBuilder.SurfaceTops` keeps the **maximum** `YTop` per `(x, z)`, and that single grid is what
 the painter, the structure floors, the placements, the dressing and every 2-D render consume. Four
-consequences, all measured on `maps/opus5-undercroft`:
+consequences, all measured:
 
 - **A placement climbs onto the upper layer by itself.** A destroyable stated in plan cells with
   `float: 4` landed at y34 over a terrace and at y19 on the same plan with the layers stripped.
@@ -1152,7 +1123,7 @@ top surface again. A wool's or a spawn's storey has no plan field yet and is sti
 ### A stroke ignores `layer`, so a floor with a roof over it is marked with a shape
 
 Every prop kind takes `layer` and `DressingContext.GroundFor` reads it — a house, a tree and a boulder all
-seat on the storey they name; measured on `opus5-interchange`, a kiosk stated for the pool hall stands with
+seat on the storey they name; measured, a kiosk stated for a pool hall stands with
 its roof at y10 under a concourse whose floor is y12, and an oak stated for the car deck stands at y42.
 
 **A stroke does not.** Two lane markings carrying `"layer": "under"` came back from `POST …/sketch/dressing`
@@ -1185,11 +1156,10 @@ deep as the underlap.
 Measured on a five-tier board at `x = 0`, with `shelf` (`base_height 22`, quartz, ~3 300 cells) overlapping
 `terr-mid` (`base_height 18`, grass over sandstone, ~1 500 cells):
 
-| column | ground top | painted | should be |
-|---|---|---|---|
-| `(0, 70)` | y21 | Quartz Block | Quartz — shelf alone, correct |
-| `(0, 58)` | **y21** | **Grass / Dirt / Sandstone** | Quartz — shelf's height, `terr-mid`'s paint |
-| `(0, 50)` | y17 | Grass / Dirt / Sandstone | correct — `terr-mid` alone |
+Three columns down one line tell the whole story. Where the shelf stands alone it reads y21 and quartz,
+which is right; where `terr-mid` stands alone it reads y17 over grass, dirt and sandstone, also right; and
+where the two overlap it reads **y21** — the shelf's height — under **grass, dirt and sandstone**, which is
+`terr-mid`'s paint on the shelf's blocks.
 
 **Check which way round each join sits before building.** Where the upper tier is the smaller shape the
 problem does not arise at all. Where it is not, author the two edges to overlap by two to four blocks and the
@@ -1214,15 +1184,15 @@ completely differently:
 `RasterizeLayout` writes the solved surface back over every cell in a solved group's footprint:
 `cells[(x,z)] = (Math.Max(column.Floor + 1, field.At(x, z)), column.Floor)`. So an override-add's flattened
 column is repaired to the solved height, and on a board where every cell is in some group's solve an
-override brush works perfectly. Measured that way on `showcase/07-hill`, a bare `override: true` rectangle
-over the west hill read **y13 · y16 · y12** across the summit — the hill, repainted.
+override brush works perfectly. Measured that way, a bare `override: true` rectangle over a hill reads
+**y13 · y16 · y12** across the summit — the hill, repainted.
 
 **Where there is no field, there is no repair.** A shape carrying `relief_scope: "exclude"` takes its cells
 *out* of the group's footprint (`SolveRelief` puts them in `excluded`, and the relaxation bends round them
 as it bends round void), so nothing writes a height back. An override brush stroke over such ground stays
 what the rasterizer made it: one course on the bedrock, twenty below the ground beside it.
 
-Measured on `opus5-sandcaster`, whose lid over the workings is `relief_scope: "exclude"`: eleven strokes
+Measured on a board whose lid over its workings is `relief_scope: "exclude"`: eleven strokes
 punched holes. A transect at `z 51` read `x −50:0 −47:0 −44:0` against a reef surface of y21 four blocks
 away, and the same shapes re-authored as ordinary adds read `−50:21 −47:21 −44:21`.
 
@@ -1244,25 +1214,23 @@ The exception is a **standing** shape, which `IsErected` defines as one declarin
 ```
 
 A `raise` of zero sits flush at the median ground under the patch and changes no height. Measured on
-`opus5-ruddle-brink`: three builds with `add` + `base_height: 1` and with `override: true` both read
+Measured: three builds with `add` + `base_height: 1` and with `override: true` both read
 `themes/census` **1 theme, 100%**; the same patches with `height_mode` read **87.3% / 6.8% / 6.0%** with 376
 and 320 cells of drawn border. Nothing is raised in either case — **`05-themes.txt` is the only witness**, so
 read it on every board.
 
 **And a raise reads the MEDIAN of the ground under its footprint**, so a patch drawn across a slope flattens
 it to one height and reads as a plate. Draw a brush on ground that is already level, or expect a bench: on
-`opus5-skerry-wick` three-block benches came out as one-block steps for exactly this reason. The one thing a
+three-block benches come out as one-block steps for exactly this reason. The one thing a
 brush must not do is hang over the void — a one-course add is the only shape on a cell with no ground under
 it, and there it builds a speck of bedrock.
 
-For completeness, what the other three forms do to solved ground, all measured on `07-hill`:
+For completeness, what the other three forms do to solved ground, all measured across one summit. An
+ordinary `add` at `base_height: 1` repaints the ground and is safe over excluded ground too, where a bare
+`override: true` repaints it **only** where a relief covers the cell.
 
-| The patch says | Reads across the summit |
-|---|---|
-| `add`, `base_height: 1`, no override | the ground, repainted — and safe over excluded ground |
-| `override: true`, nothing else | the ground, repainted — **only** where a relief covers the cell |
-| `base_height: 9`, `relief_scope: "hold"` | y8 flat — a plate punched through the hill |
-| `relief_scope: "hold"`, no height | y0 bedrock — a shape with no override and no height loses every merge |
+A `base_height: 9` with `relief_scope: "hold"` punches a flat plate through the hill at y8, and a `hold` with
+no height at all reads y0 bedrock — a shape with neither an override nor a height loses every merge.
 
 This is the instrument a detailed surface is painted with — a drift of sand against rock, scree at the foot of
 a crag, mud in a hollow — and it is what a single large `voronoi` over a whole region is a substitute for.
@@ -1274,15 +1242,15 @@ Every area pattern — `cell`, `voronoi`, `noise`, `turbulence`, `electric` — 
 course or three deep that is right and cheap.
 
 On a **fill** it is a cliff of vertical stripes: a six-stone body stated as a `cell` of `turbulence` mixes
-with `rise` at its default came out of `fable-millrace-revamp`'s first build with every cut face striped floor
-to sky, one cell's stone the whole height of the column.
+with `rise` at its default builds with every cut face striped floor to sky, one cell's stone the whole
+height of the column.
 
 State a `rise` and the field is a volume — but a cell as tall as it is wide still reads as a column on a cut,
 because a cut face shows a cell's width and its height side by side and a square blob of stone is a post. The
 second Millrace build stated cells of 7 with a rise of 7 and its cliffs still read as vertical runs.
 
-Make the cells wider than tall: `fable-millrace-revamp` and `fable-mossgill` state the body as a `cell` nine
-across with a rise of five over turbulences seven across with a rise of four, and the built body's runs of one
+Make the cells wider than tall. A body stated as a `cell` nine across with a rise of five, over turbulences
+seven across with a rise of four, builds runs of one
 material down a column are 40% one block long, 23% two and 16% three, a mean of **2.5** — a blob, not a
 stripe.
 
@@ -1309,11 +1277,11 @@ Nothing bands by world height and nothing needs to. A `layered` stack on the **w
 by `DepthFromTop`, which on a wall counts down from the top of the face — so on a board whose drops
 all begin at one shelf, banding by depth **is** banding by altitude. One stack shared as the wall
 material of every theme makes every cut on the board the same rock in the same order, and puts those
-colours nowhere else (`opus5-kiln-row`).
+colours nowhere else.
 
 The counterpart: **`wallRun` stands vertical**, because its stripes wrap the perimeter and are
 constant up a column. A weathered cliff is bedded and a sawn one is scored, and the two are one
-bucket and two materials (`opus5-deepcut`).
+bucket and two materials.
 
 ### `globals.surface` is a floor and the theme's `surface.depth` is a thickness
 
@@ -1358,7 +1326,7 @@ actually stamps — the stated one, or `WX1`'s default. So a wide protected apro
 *is* expressible, since the piece is still the protection region and the spawn's own ground.
 
 *Measured: `[3, 3, 12, 8]` on an 18 × 14 piece, and `POST /plan/inspect` answered
-`wool-cage minX -29 minZ 73 maxX -17 maxZ 81` before a map row existed (`opus5-mootgate`).*
+`wool-cage minX -29 minZ 73 maxX -17 maxZ 81` before a map row existed.*
 
 Watch the marker parity while shrinking it (`WX3`): a piece of an even number of cells takes a whole
 `at`, an odd number takes a half, and mixing them refuses.
@@ -1460,13 +1428,9 @@ Cut a mound out of what it may not land on rather than trusting the heights to s
 **A flight is one shape, and the gradient is what decides whether it walks.** A polygon carries a height
 per vertex (`anchor_heights`) and the rasterizer interpolates between them, so a tilted quad *is* a
 stair — the courses are what a sloped surface rasterizes to. What separates a stair from a wall is the
-run per course, measured on a 24-block quad:
-
-| run : rise | worst step | walks |
-|---|---|---|
-| 1 : 1 | **2 blocks**, nine of them in twenty-four | no — a two-block rise costs a placed block |
-| 2 : 1 | 1 | yes |
-| 3 : 1 | 1 | yes |
+run per course, measured on a 24-block quad. At **1:1** the worst step is two blocks and nine of the
+twenty-four are, which does not walk because a two-block rise costs a placed block. At **2:1** and at
+**3:1** the worst step is one and the flight walks.
 
 So **the run must be at least twice the rise**, and where it is, a flight is a single polygon with
 `height_mode: "level"`, `skirt: 0` and a thickness per vertex. The four flights up this board's Town
@@ -1524,7 +1488,7 @@ market cross or a stair flight authored as terrain and marked that way declines 
 Test every footprint against every *unmarked* authored shape's ring yourself.
 
 *Measured: `b-berm-e rests on (35, 32), which is kept clear for a stated structure` — a boulder declined
-for leaning on a `keepClear` town wall (`opus5-mootgate`).*
+for leaning on a `keepClear` town wall.*
 
 **A prop is judged at every image of its orbit.** A rock beside a building on an on-axis group is a
 rock inside that building's own rot_180 twin, and the pass declines the whole prop rather than the
@@ -1547,8 +1511,7 @@ The registry key minted for one stated inline counts its blocks (`copied-716`), 
 names in `dressing.styles` — `oak-dense-2`, `fir-tall-6` — and let the placements name those.
 
 The bodies come out of a world with `pgm-studio/tools/seed-trees.cs`, which files them in the library under
-`<world>-r<row>-<n>`; `specs/fable-millrace-revamp/trees.json` is the sixteen the Millrace revamp planted,
-keyed the way its placements name them.
+`<world>-r<row>-<n>`, and a spec's own tree file keys them the way its placements name them.
 
 A body is written block for block, so its seat is its foot's column and a crown overhanging a slope is cut
 where it meets it, exactly as a grown one.
@@ -1628,8 +1591,8 @@ shore — and leave the wood's floor to the theme and the flora overlay.
 per-cell gate. Only `PathStyle.Worn` has the gate (`PatternNoise.Unit(x, z, seed + 11) < coverage`).
 `Rough` spends its knob on the band's *edge* instead, wandering the half-width by ±45 % over a
 7-block scale, and fills everything inside it. So `style="rough", coverage=0.26` is a **solid belt**,
-not a freckle, and sixteen seam strokes written that way turned every boundary on `opus5-tarnfell`
-into a stripe of a third material laid over the join.
+not a freckle, and sixteen seam strokes written that way turn every boundary on a board into a stripe of a
+third material laid over the join.
 
 A seam wants `worn`, and it wants **two grounds freckling into each other, one material to a
 stroke**: a wide thin stroke at the far edge and a narrow dense one over it, so the density ramps
@@ -1663,13 +1626,10 @@ rasterizer built.
 
 `DestroyablePlacement.at` and `CorePlacement.at` are described as *"an [x, z] offset in half-blocks"*. They are
 read as **blocks** — from the piece's minimum corner where one is named, and from the symmetry centre where
-none is. Measured on `opus5-ruddle-brink` against `/plan/inspect`'s `goalDistances`:
-
-| the goal states | own | enemy | ratio |
-|---|---|---|---|
-| `piece: "fell"`, `at: [38, 42]` | 49 | 159 | 3.24 |
-| `piece: ""`, `at: [-22, -62]` | 49 | 159 | 3.24 |
-| `piece: ""`, `at: [-44, -124]` | null | null | null |
+none is. Measured against `/plan/inspect`'s `goalDistances`: a goal stating `piece: "fell"` with
+`at: [38, 42]` and the same goal stating no piece with `at: [-22, -62]` both read 49 blocks from their own
+spawn, 159 from the enemy's and a ratio of **3.24**. The same goal at `at: [-44, -124]` — the half-block
+reading, twice as far out — answers `null` to all three, because that position is off the board.
 
 The two readings are a factor of two apart and both answer 200, so the tell is the ratio rather than a
 finding.
@@ -1684,8 +1644,8 @@ off the board, not the missing piece — so a `null` ratio is a coordinate to ch
 set of `(x, z)` the rasterizer produced across **every** layer, so a column under a slab is land.
 `EX1` reads the same spans and a cell on two layers answers twice, so an undercroft is a place the
 walk can stand in. A monument sealed under a concourse exports at 200 as long as something walks to
-it — which on `opus5-interchange` is a ramp, and before the ramp had headroom was `SK11` naming
-3,336 places nothing could reach.
+it. Where that way in is a ramp without headroom, `SK11` names the places nothing can reach — 3,336 of
+them on one measured board.
 
 ### An erected shape raises the build cap twenty blocks above itself
 
