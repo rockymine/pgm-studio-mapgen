@@ -9,7 +9,7 @@ the card rather than finding the thing inside a thousand-line finish.
 itself, one claim to a paragraph; a card holds one instrument worked all the way through, with the reads
 beside it. Where a card exists, the notes point at it rather than repeating it.
 
-## The ten that exist
+## The eleven that exist
 
 | Card | Holds |
 |---|---|
@@ -23,8 +23,9 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `winding-roads` | a line mark that comes back past itself — `tread`, `batter`, and the pitch window |
 | `pushes` | the instrument that builds a landform — four outlines of one, and four arrangements of several |
 | `marks-and-pushes` | a push landing on ground marks already pin, and how much of a board to pin at all |
+| `made-ground` | `relief_scope` against `height_mode` — whether a shape is ground or stands in it |
 
-## The nine that are missing
+## The eight that are missing
 
 Each entry names what the card would demonstrate, and which of the notes' entries it would absorb — the
 notes carry the measurements already and have nowhere to put the worked comparison.
@@ -39,11 +40,6 @@ itself is `winding-roads` and how a push meets them all is `marks-and-pushes`, w
 over solved ground, side by side on one hill, with `themes/census` under each. The scope test is the content:
 a shape owns a cell only where it forms that cell's surface, so a one-course add at bedrock paints nothing
 and says so on a 200. Absorbs the file's second-longest entry whole.
-
-**`made-ground-meets-grown` — a terrace over a meadow, four ways.** `hold`, `exclude`, `follow` and a plain
-shape, each meeting the same lower tier, with a flight cut into one of the seams and a transect across every
-join. The card that would stop an author writing `height_mode` and `relief_scope` on one shape, which is the
-mistake the field pair invites and which nothing reports.
 
 **`stacking-layers` — two storeys and the air between them.** A deck over a hall: the shared course that is a
 seam and the second one that is a collision, a ramp meeting the upper slab, a goal and a prop naming their

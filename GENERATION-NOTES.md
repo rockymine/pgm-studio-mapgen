@@ -930,6 +930,39 @@ room wants, since a plan states its piece's height before any ground exists. `ho
 against the relief, `exclude` takes the footprint out of the solve, and absent is `inherit`: the shape is
 part of the group's ground.
 
+**Measured, a shape stating both comes out identical to the same shape stating only the `height_mode`** — a
+`level` plate at `skirt` 0 with and without `relief_scope: "hold"`, compared column by column over both
+panels, differs in not one of 7,296. `ScopeOf` returns `Inherit` for any shape declaring a `height_mode`, so
+the field bound without being asked. Nothing refuses it and `RQ3` does not fire, because the field was read
+and discarded rather than left unread. `techniques/made-ground` is the worked card.
+
+**`follow` is not the gentle option: it seats the shape and then solves the group a second time.** `SeatOf`
+reads the field just outside the footprint on every edge and takes the **median** of it, pins that as a rigid
+`AreaMark` and re-solves — so the land around a `follow` shape is re-graded to arrive at it exactly as
+`hold`'s is, and the only difference between the two words is who chose the height. On a hillside falling 26
+to 10, a piece stating 24 came out at **18**, which is in no document.
+
+**`exclude` keeps the raw column, and the raw column is not the excluded shape's.** A piece stating
+`base_height` 24 inside an island stating 44 built a plinth at **44**: the taller add still wins the column,
+and the word only says the relief may not answer for those cells. Rebuilt with the island at 30 the plinth
+reads 30. A shape wanting a plinth at its own height has to be the taller add over its cells, or say
+`height_mode`.
+
+**A `skirt` is paid for from every side at once, so one over half the shape's narrow dimension leaves no
+top.** On a 26-deep plate: `skirt` 0 leaves all 26 cells at the stated height, `skirt` 6 leaves 15, and
+`skirt` 14 leaves **2**. It is the same arithmetic that empties a mark whose `bevel` is wider than half its
+band.
+
+**The relief read cannot see an erected shape at all, and `RL5` will say so out loud.** Eight panels
+differing only in these words all read `relief` 16 and `landform: rolling`, while the built worlds ran from a
+bare hillside to a 44-block plinth; `level` moved with the three scopes (0.18, 0.44, 0.35, 0.32) and not at
+all with the three skirts. `RL5` fired on the panel carrying a ten-block sheer plate, saying it *presents no
+face at all — it is a ramp end to end*, which is true of the solve and false of the world.
+
+**A `cell` pattern is anchored in world space, so one shape built at two places on a board does not paint
+alike.** Two panels identical in every column stood 330 blocks apart and disagreed on 92 cells, every one of
+them in the rock band, each reading stone where the other read cobblestone.
+
 ### A ramp between two tiers is four fields and works first time
 
 `height_mode: "level"` plus `anchor_heights` is a tilted plane — vertices in order, one height each:
