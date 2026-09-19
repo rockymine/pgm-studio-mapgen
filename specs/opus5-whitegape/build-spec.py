@@ -352,7 +352,7 @@ flight("tramway", [[-13, -25], [-6, -25], [-6, -42], [-13, -42]],
 # The charging ramp: off the yard up to the kiln's rim, three courses over seven, so a barrow of
 # limestone goes from the quarry floor up the haul ramp, across the yard and straight into the top
 # of the kiln. It is the reason the kiln stands where it does.
-flight("charge-ramp", [[-3, -32], [1, -32], [1, -25], [-3, -25]],
+flight("charge-ramp", [[-3, -34], [1, -34], [1, -25], [-3, -25]],
        [YARD, YARD, DOCK + 8, DOCK + 8], material=HARDCORE)
 
 MASONRY = cell([STONEBRICK, STONE, COBBLE], 4, 63, jitter=20, warp=2, rise=3)
@@ -388,27 +388,37 @@ for pid, pts in (("kerb-w", [[-13, -16], [-10, -17], [-8, -16]]),
 # It stands on the dock (surface y18) with its back against the yard (y23), which is the whole point
 # of a bank kiln: you draw burnt lime out of the arch at the bottom and tip limestone into the top
 # from the bank behind. Layer base_y is DOCK + 1, so a shape's floor f tops out at y = 19 + f.
-KILN_LAYER = P.LayerBuilder("kiln", name="The lime kiln", base_y=DOCK + 1, mirrors=True, tag="kiln")
-# the base, five courses, drawn in four pieces around a draw arch four wide and three high that
-# opens toward the chasm
-KILN_LAYER.rect(-5, -24, -3, -17, 0, 5, "kiln")          # west cheek
-KILN_LAYER.rect(2, -24, 4, -17, 0, 5, "kiln")            # east cheek
-KILN_LAYER.rect(-2, -24, 1, -21, 0, 5, "kiln")           # the back, behind the draw hole
-KILN_LAYER.rect(-2, -20, 1, -17, 3, 2, "kiln")           # the lintel over the arch
-# the stack: a hollow shell stepped in one block all round, so the kiln tapers
-KILN_LAYER.rect(-4, -23, -3, -18, 5, 3, "kiln")
-KILN_LAYER.rect(1, -23, 2, -18, 5, 3, "kiln")
-KILN_LAYER.rect(-2, -23, 0, -22, 5, 3, "kiln")
-KILN_LAYER.rect(-2, -19, 0, -18, 5, 3, "kiln")
-# the rim, stepped in again, leaving the charging mouth open down the shaft
-KILN_LAYER.rect(-3, -22, -3, -19, 8, 1, "kiln")
-KILN_LAYER.rect(1, -22, 1, -19, 8, 1, "kiln")
-KILN_LAYER.rect(-2, -22, 0, -22, 8, 1, "kiln")
-KILN_LAYER.rect(-2, -19, 0, -19, 8, 1, "kiln")
-_k = KILN_LAYER.done()
-LAYERS = [{"id": _k["id"], "name": _k["name"], "base_y": _k["base_y"],
-           "kind": "made", "part_of": "kiln",
-           "shapes": _k["layout"]["shapes"], "groups": _k["layout"]["groups"]}]
+# A layer holds ONE span per column (SK9), so the base and the stack are two layers rather than two
+# heights on one. A rectangle is [min, max), so every piece here has max > min or it draws no ground
+# (SK4), and no two pieces of one layer share a column.
+def kiln_layer(lid, base_y, pieces):
+    b = P.LayerBuilder(lid, name="The lime kiln", base_y=base_y, mirrors=True, tag=lid)
+    for x0, z0, x1, z1, floor, height in pieces:
+        b.rect(x0, z0, x1, z1, floor, height, "kiln")
+    d = b.done()
+    return {"id": d["id"], "name": d["name"], "base_y": d["base_y"], "kind": "made",
+            "part_of": "kiln", "shapes": d["layout"]["shapes"], "groups": d["layout"]["groups"]}
+
+
+LAYERS = [
+    # The base, five courses, drawn in four pieces AROUND a draw arch four wide and three high that
+    # opens toward the chasm — the masonry is the complement of the opening rather than a subtract
+    # out of it, because SK13 reads a subtract as the board's negative space.
+    kiln_layer("kiln-base", DOCK + 1, [
+        (-5, -24, -2, -17, 0, 5),      # west cheek
+        (2, -24, 5, -17, 0, 5),        # east cheek
+        (-2, -24, 2, -21, 0, 5),       # the back, behind the draw hole
+        (-2, -21, 2, -17, 3, 2),       # the lintel over the arch
+    ]),
+    # The stack: a hollow shell stepped in one block all round, so the kiln tapers, with the shaft
+    # open from the charging mouth at its rim down onto the burning floor.
+    kiln_layer("kiln-stack", DOCK + 6, [
+        (-4, -23, 4, -22, 0, 3),
+        (-4, -19, 4, -18, 0, 3),
+        (-4, -22, -3, -19, 0, 3),
+        (3, -22, 4, -19, 0, 3),
+    ]),
+]
 
 # ── buildings ─────────────────────────────────────────────────────────────────────────────────────
 SHELL = json.load(open(os.path.join(ROOT, "tools", "styles", "showcase-hall.json")))
