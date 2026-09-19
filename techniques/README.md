@@ -27,9 +27,9 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `stacking-layers` | two solid spans in one column, and the three ways the air between them is lost |
 | `water` | a bed carved under a level fill — five bodies of water and five ways to lose one |
 | `theme-buckets` | bedrock, fill, wall, surface and rim, switched on one at a time over one ground |
-| `painting-a-patch` | what a shape must say about its own height before it owns any of the paint it carries |
+| `painting-a-patch` | which shape forms a cell's surface — a patch's own height, and what a second layer changes |
 
-## The four that are missing
+## The five that are missing
 
 Each entry names what the card would demonstrate, and which of the notes' entries it would absorb — the
 notes carry the measurements already and have nowhere to put the worked comparison.
@@ -39,6 +39,13 @@ marks, three times: butted, gapped, and with a `bevel` on the area. Beside them 
 the land and a mark that pinned nothing at all, read back through `relief/read`'s `seams` and `silentMarks`.
 Absorbs five relief entries, including the radius that makes a mesa instead of a summit. How *one* mark meets
 itself is `winding-roads` and how a push meets them all is `marks-and-pushes`, which are both built.
+
+**`painting-with-a-stroke` — the other instrument that paints.** A path prop's `pave` replaces a surface
+finish without adding a cell, so a `worn` tongue at partial coverage feathers one theme into another where a
+shape's outline stops dead. Beside it the same stroke as `rough`, the `coverage` gate only `worn` spends, and
+what `DR-ROAD` charges: a tree keeps three blocks off every paved cell, so a radius-10 brush is a 26-wide
+strip nothing plants in. Absorbs the dressing chapter's texture-brush half. What a *shape* can paint is
+`painting-a-patch`, which is built.
 
 **`objectives-and-clearances` — where a goal may stand.** A monument, a core and a wool on one board with
 their clearances drawn, the `at` read in blocks, a core's `float` and `leak`, and the two gates heard only at

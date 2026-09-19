@@ -1467,9 +1467,20 @@ once, which turns a brush drawn across a flank into a bench.
 A shape carrying `relief_scope: "exclude"` takes its cells out of the group's footprint, and an override
 stroke over such ground punches a hole to y0 rather than repainting anything.
 
+**A shape on a second layer never enters that contest at all, and that is why it is not paint.**
+`ShapeScopeOwners` keys by `(layer, x, z)`, so the shape owns its own layer outright and what is *seen* is
+settled afterwards by which layer's top block is higher. A twelve-course patch on a layer at `base_y: 0` is a
+slab that buries itself in the terrain — `SK10`, "driven 9 blocks into each other … they build as one solid
+mass" — and over a hill the ground wins most of it.
+
+**The one second-layer form that behaves like paint is a single course at the ground's own top**, `base_y`
+set to the surface below plus one. `base_y` is one constant for a whole layer, so it works exactly as far as
+that ground is level, and giving the layer its own relief makes it worse: two fields solved over two
+footprints do not agree.
+
 **`GET .../themes/census` is the only witness either way**, because a patch that owns nothing builds a world
-that looks exactly right. `techniques/painting-a-patch` is the worked card: eight statements of one outline
-under one paint, of which four land.
+that looks exactly right. `techniques/painting-a-patch` is the worked card: twelve statements of one outline
+under one paint, of which eight land.
 
 This is the instrument a detailed surface is painted with — a drift of sand against rock, scree at the foot of
 a crag, mud in a hollow — and it is what a single large `voronoi` over a whole region is a substitute for.

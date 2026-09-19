@@ -1,11 +1,19 @@
-THEMES  5 themes over 30772 ground cells, 4 distinct surface blocks
-  moor  29732 cells (96.6%)  2:0 Grass Block, 7:0 Bedrock, 3:1 Coarse Dirt
-  scree-level-with-it  260 cells (0.8%)  13:0 Gravel
-  scree-raise-flush  260 cells (0.8%)  13:0 Gravel
-  scree-across-a-slope  260 cells (0.8%)  13:0 Gravel
-  scree-over-the-void  260 cells (0.8%)  13:0 Gravel
+THEMES  9 themes over 46132 ground cells, 4 distinct surface blocks
+  moor  44455 cells (96.4%)  2:0 Grass Block, 7:0 Bedrock, 3:1 Coarse Dirt
+  scree-level-with-it  260 cells (0.6%)  13:0 Gravel
+  scree-raise-flush  260 cells (0.6%)  13:0 Gravel
+  scree-across-a-slope  260 cells (0.6%)  13:0 Gravel
+  scree-over-the-void  260 cells (0.6%)  13:0 Gravel
+  scree-on-a-layer  260 cells (0.6%)  13:0 Gravel
+  scree-layer-on-top  260 cells (0.6%)  13:0 Gravel
+  scree-layer-on-a-hill  81 cells (0.2%)  13:0 Gravel
+  scree-layer-solved  36 cells (0.1%)  13:0 Gravel
 borders:
   moor | scree-level-with-it  88 cells
   moor | scree-raise-flush  88 cells
   moor | scree-across-a-slope  88 cells
+  moor | scree-on-a-layer  88 cells
+  moor | scree-layer-on-top  88 cells
+  moor | scree-layer-on-a-hill  74 cells
   moor | scree-over-the-void  58 cells
+  moor | scree-layer-solved  54 cells

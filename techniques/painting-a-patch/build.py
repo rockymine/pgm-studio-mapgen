@@ -1,9 +1,10 @@
-"""Writes painting-a-patch.layout.json — eight panels asking one question of one shape: does it own the
-paint it carries?
+"""Writes painting-a-patch.layout.json — twelve panels asking one question of one shape: whose surface does
+a cell wear?
 
 Every panel is the same island — a plain at 8 with one hill pushed up on its east side — and the same
-lobed outline drawn on it carrying the same scree theme. What changes between two panels is only what
-that shape says about its own height, which is the whole of what decides whether any of its paint lands.
+lobed outline drawn on it carrying the same scree theme. What changes between two panels is what that
+shape says about its own height, and which layer it is drawn on. Both decide the same thing: whether the
+shape forms the surface of the cells it covers, which is the whole of whether any of its paint lands.
 """
 import json, os, sys
 
@@ -11,7 +12,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from cards import SOLID, depth_stack, grid, lobed_ring, moor
 
 PANEL_W, PANEL_D = 64, 60
-COL_X, ROW_Z = grid(4, 2, PANEL_W, PANEL_D)
+COL_X, ROW_Z = grid(4, 3, PANEL_W, PANEL_D)
 GROUND_TOP = 12          # the island's own drawn thickness, which is the top every patch is tested against
 PLAIN = 8
 
@@ -22,32 +23,42 @@ GROUND = moor(GRASS_TO, DIRT_TO)
 
 def scree():
     """The patch's theme: the moor with a drift of scree for a surface, everything under it unchanged. One
-    paint over all eight panels, so a panel that differs in its picture differs in what its shape said."""
+    paint over all twelve panels, so a panel that differs in its picture differs in what its shape said."""
     theme = json.loads(json.dumps(GROUND))
     theme["surface"]["material"] = depth_stack((SOLID(13), 1), (SOLID(3, 1), 2))
     return theme
 
 
-# The eight statements, in the order the card reads them. `patch` is what the shape carrying the theme says
+# The twelve statements, in the order the card reads them. `patch` is what the shape carrying the theme says
 # about its own height; `where` is which outline it is drawn on; a panel needing a second shape says so by
-# its `where`. Row 1 asks whether the patch owns any paint at all; row 2 asks what owning it costs the
-# ground underneath.
+# its `where`. `layer` moves the patch off the ground layer onto one of its own, stating that layer's
+# `base_y` and whether its group carries a relief.
+#
+# Row 1 asks whether the patch owns any paint at all. Row 2 asks what owning it costs the ground
+# underneath. Row 3 asks the same two questions of a patch that is not on the ground layer at all.
 PANELS = [
-    ("says-nothing",   "flat",  {"operation": "add"}),
-    ("one-short",      "flat",  {"operation": "add", "base_height": GROUND_TOP - 1}),
-    ("level-with-it",  "flat",  {"operation": "add", "base_height": GROUND_TOP}),
-    ("override-thin",  "flat",  {"operation": "add", "base_height": 1, "override": True}),
+    ("says-nothing",   "flat",  {"operation": "add"}, None),
+    ("one-short",      "flat",  {"operation": "add", "base_height": GROUND_TOP - 1}, None),
+    ("level-with-it",  "flat",  {"operation": "add", "base_height": GROUND_TOP}, None),
+    ("override-thin",  "flat",  {"operation": "add", "base_height": 1, "override": True}, None),
     ("raise-flush",    "flat",  {"operation": "add", "height_mode": "raise",
-                                 "base_height": 0, "skirt": 0}),
+                                 "base_height": 0, "skirt": 0}, None),
     ("across-a-slope", "flank", {"operation": "add", "height_mode": "raise",
-                                 "base_height": 0, "skirt": 0}),
-    ("over-excluded",  "shelf", {"operation": "add", "base_height": 1, "override": True}),
-    ("over-the-void",  "coast", {"operation": "add", "base_height": GROUND_TOP}),
+                                 "base_height": 0, "skirt": 0}, None),
+    ("over-excluded",  "shelf", {"operation": "add", "base_height": 1, "override": True}, None),
+    ("over-the-void",  "coast", {"operation": "add", "base_height": GROUND_TOP}, None),
+    # A second layer keeps its own span per column and its own owner per cell, so a patch on one is not a
+    # patch: it is a slab standing at whatever height the layer and the shape between them state.
+    ("on-a-layer",     "flat",  {"operation": "add", "base_height": GROUND_TOP}, {"base_y": 0}),
+    ("layer-on-a-hill", "flank", {"operation": "add", "base_height": GROUND_TOP}, {"base_y": 0}),
+    ("layer-on-top",   "flat",  {"operation": "add", "base_height": 1}, {"base_y": PLAIN}),
+    ("layer-solved",   "flank", {"operation": "add", "base_height": GROUND_TOP},
+                                {"base_y": 0, "relief": True}),
 ]
 
 THEMES = {"moor": GROUND}
-shapes, groups, relief = [], [], {}
-for index, (name, where, patch) in enumerate(PANELS):
+shapes, groups, relief, over_layers = [], [], {}, []
+for index, (name, where, patch, layer) in enumerate(PANELS):
     col, row = index % 4, index // 4
     x0, z0 = COL_X[col], ROW_Z[row]
     cx, cz = x0 + PANEL_W / 2, z0 + PANEL_D / 2
@@ -72,9 +83,16 @@ for index, (name, where, patch) in enumerate(PANELS):
             "shelf": lobed_ring(cx - 12, cz, 8, lobes=4, depth=0.20),
             "flank": lobed_ring(cx + 14, cz + 13, 9, lobes=4, depth=0.20),
             "coast": lobed_ring(cx - 15, z0 + 4, 9, lobes=4, depth=0.20)}[where]
-    members.append(f"patch-{name}")
-    shapes.append({"id": f"patch-{name}", "type": "polygon", "floor": 0,
-                   "vertices": ring, "theme": f"scree-{name}", **patch})
+    drawn = {"id": f"patch-{name}", "type": "polygon", "floor": 0,
+             "vertices": ring, "theme": f"scree-{name}", **patch}
+    if layer is None:
+        members.append(f"patch-{name}")
+        shapes.append(drawn)
+    else:
+        over_layers.append({"id": f"over-{name}", "name": f"Over {name}", "base_y": layer["base_y"],
+                            "layout": {"shapes": [drawn],
+                                       "groups": [{"id": f"over-{name}", "name": f"over-{name}",
+                                                   "mirrors": False, "shapeIds": [f"patch-{name}"]}]}})
 
     groups.append({"id": name, "name": name, "mirrors": False, "shapeIds": members})
     # One hill on the east half of every panel, so each has a summit, a flank and a plain. A crown on a
@@ -83,6 +101,10 @@ for index, (name, where, patch) in enumerate(PANELS):
     relief[name] = {"base": PLAIN, "reach": 0, "step": 1, "marks": [], "pushes": [
         {"id": "hill", "ring": lobed_ring(cx + 14, cz, 9, lobes=5, depth=0.20),
          "amount": 10, "falloff": 13, "crown": 8, "roughness": 0, "seed": 3}]}
+    # The same field again, for the one panel that asks what it costs to make a second layer follow the
+    # terrain: the only way is to state the ground's relief a second time, over the patch's own group.
+    if layer and layer.get("relief"):
+        relief[f"over-{name}"] = json.loads(json.dumps(relief[name]))
 
 layout = {
     "setup": {"bbox": {"min_x": COL_X[0] - 8, "max_x": COL_X[-1] + PANEL_W + 8,
@@ -92,12 +114,16 @@ layout = {
     "mapTheme": "moor",
     "relief": relief,
     "layers": [{"id": "ground", "name": "Ground", "base_y": 0,
-                "layout": {"shapes": shapes, "groups": groups}}],
+                "layout": {"shapes": shapes, "groups": groups}}]
+              # Ordered by base_y, because the list order and the base_y order stating different things
+              # about which layer is on top is `SK20`.
+              + sorted(over_layers, key=lambda over: over["base_y"]),
 }
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "painting-a-patch.layout.json")
 json.dump(layout, open(out, "w"), indent=1)
-print(f"{len(PANELS)} panels, {len(THEMES)} themes -> {out}")
-for index, (name, where, patch) in enumerate(PANELS):
+print(f"{len(PANELS)} panels, {len(THEMES)} themes, {1 + len(over_layers)} layers -> {out}")
+for index, (name, where, patch, layer) in enumerate(PANELS):
     x0, z0 = COL_X[index % 4], ROW_Z[index // 4]
     said = " ".join(f"{k}={v}" for k, v in patch.items() if k != "operation")
-    print(f"  {name:14s} on {where:6s} at x{x0:5d} z{z0:5d}  {said}")
+    on = "ground" if layer is None else f"over-{name} (base_y {layer['base_y']})"
+    print(f"  {name:15s} on {where:6s} at x{x0:5d} z{z0:5d}  [{on}]  {said}")
