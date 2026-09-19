@@ -153,6 +153,12 @@ therefore has no frontline at all, and every wool on it refuses with *"only reac
 piece"* however open the board is. The canonical two-wool seed carries a `mid-band` zone for exactly
 this reason.
 
+### Raising the terrain under a stamped room is the plan's statement to make
+
+A piece states its `surface`. Lifting the ground with an override add instead leaves the room correctly
+seated on the higher ground and its spawn marker at the height the plan still states, inside the mass — both
+spawns then leave the objective chain and `EX1` refuses the export.
+
 ### A wool room must abut ground, not sit inside a piece
 
 A `wool-room` piece drawn inside a larger `piece` rectangle shares no edge with it, and the plan tier
@@ -491,6 +497,18 @@ None of the three shows up in the document, in a warning, or in a top-down. Each
 `GET /map/{slug}/column?at=…` transect across the join. Take one across every place two landforms
 share ground, before believing the JSON.
 
+### A relief is solved on the group's primary half, and its surface is copied through the mirror
+
+A mark on the far half constrains cells the solve never visits and is overwritten by the image of the near
+half. State every mark on the side the plan's pieces are authored on, and pin a footprint that straddles the
+axis on both sides.
+
+### A mark pins its own cells and the relaxation slopes everything within `reach`
+
+Two regions at different heights with nothing between them come out as one long ramp, so a floor that must
+stay level next to a lower one needs a verge pinned at its own height. Otherwise a wall's footing, and the
+gate in it, follow the neighbour down.
+
 ### A point mark's radius pins a flat disc, so a radius is a mesa and not a summit
 
 `PointMark.Pins` yields **every** cell inside its radius at the stated height, and those cells are
@@ -677,6 +695,18 @@ blocks the whole way; a plugged one reads a solid run where the air should be, a
 says so — the export gate stays open, `render/traversability` can still answer one component, and the only
 complaint is an `SK11` that is easy to write off as a quirk of a stacked board.
 
+### An override add is still part of its group's relief
+
+Override decides who wins the column among the shapes on a layer and says nothing about the solve, so a
+relief's surface replaces the top of a wall, a flight, a hill or a rim as readily as it does bare ground.
+
+A made thing keeps its stated top only with `"height_mode": "level"` and `"skirt": 0` — level for an absolute
+top, skirt zero for a sheer face. `relief_scope: "exclude"` is the stronger form, keeping the shape's ground
+out of the solve entirely.
+
+`SK14` names an override add carrying neither, which is what leaves a twenty-seven-course wall level with the
+ground beside it.
+
 ### An override add standing in ground keeps the ground under its floor
 
 An override add overwrites the column it lands on, and where the ground's ordinary span reaches the override's
@@ -791,6 +821,17 @@ six steps of two — and `…/walk?aim=reach` answered `blocks 3` climbing it, b
 rise of δ at δ−1 placed blocks. The same 12 courses over **20** cells reads one course a cell and
 walks both ways for nothing. The rule to author by: **run at least twice the rise** on any stair
 meant to be climbed rather than fallen down. (A 20-course ramp over 32 cells was right first time.)
+
+**A flight is one shape, and the gradient is the whole of what decides it.** A polygon carries a height per
+vertex and the rasterizer interpolates between them, so a tilted quad *is* a stair — the courses are what a
+sloped surface rasterizes to. At 1:1 the worst step is two blocks; at 2:1 and 3:1 it is one. Where the ratio
+holds, a flight is a single polygon with `height_mode: "level"`, `skirt: 0` and a thickness per vertex, in
+place of one rectangle a course.
+
+**Where the space is fixed, one rectangle a course is the only correct form.** A shaft 24 blocks long that
+must fall 24 courses cannot be 2:1, and neither can a slipway climbing 8 courses out of a river 16 wide.
+Those stay per-course, and so does anything **clipped round an obstacle** — rectangles can be cut round a
+rectangle with plain arithmetic and a single tilted polygon cannot.
 
 ### Three points and a plane is how you tilt a shape deliberately
 
@@ -1165,6 +1206,13 @@ where the two overlap it reads **y21** — the shelf's height — under **grass,
 problem does not arise at all. Where it is not, author the two edges to overlap by two to four blocks and the
 seam reads as a transition rather than a stripe.
 
+**It reaches made things too, and there it is worse.** A hill's outer ring crossing a town wall leaves the
+wall built to its own twenty-seven courses and finished in the hill's grass-over-dirt, sides included,
+because the hill theme's wall material is dirt. `SK15` names the pair, both themes and the columns they
+contest; before it, a column read was the only thing that saw it.
+
+**Cut a mound out of what it may not land on** rather than trusting the heights to sort it.
+
 ### A paint patch on solved ground is an ordinary one-course add, not an override
 
 Scoping a theme to a patch of ground is an authored shape carrying a `theme`. What that shape may say about
@@ -1409,98 +1457,44 @@ document's, with the field that caused it named only in the server log.
 
 The dressing pass seats props against a book of claims. A decline arrives on a 200 and means the thing is not in the world, so what the pass will refuse is worth knowing before it is asked.
 
-### Three things nothing checks about a placed building
+### A thing built out of terrain has to say so, or a road and a river will eat it
 
-A house is placed by hand and no gate filters it the way the pass filters a scattered prop, so three
-faults reach the world silently and each is cheap to check before posting.
-
-**Two override adds over one column build one shape and paint the other.** The taller add wins the *geometry*,
-and the theme is scoped separately — a cell goes to the **smallest-area** themed shape covering it — so where
-the smaller is also the shorter it paints the taller one's blocks. A hill's outer ring crossing a town wall
-leaves a wall built to its own twenty-seven courses and finished in the hill's grass-over-dirt, sides
-included, since the hill theme's wall material is dirt.
-
-`SK15` names it now (pair, both themes, the columns they contest); before that it was visible only in a column
-read or in the world.
-
-Cut a mound out of what it may not land on rather than trusting the heights to sort it.
-
-**A flight is one shape, and the gradient is what decides whether it walks.** A polygon carries a height
-per vertex (`anchor_heights`) and the rasterizer interpolates between them, so a tilted quad *is* a
-stair — the courses are what a sloped surface rasterizes to. What separates a stair from a wall is the
-run per course, measured on a 24-block quad. At **1:1** the worst step is two blocks and nine of the
-twenty-four are, which does not walk because a two-block rise costs a placed block. At **2:1** and at
-**3:1** the worst step is one and the flight walks.
-
-So **the run must be at least twice the rise**, and where it is, a flight is a single polygon with
-`height_mode: "level"`, `skirt: 0` and a thickness per vertex. The four flights up this board's Town
-Wall are one quad each — 16 blocks of run for 8 courses — where they were nine rectangles each.
-
-**Where the space is fixed, one rectangle a course is the only correct form.** A shaft 24 blocks long
-that must fall 24 courses cannot be 2:1, and neither can a slipway climbing 8 courses out of a river
-16 wide. Those stay per-course, and so does anything **clipped round an obstacle**: rectangles can be
-cut round a rectangle with plain arithmetic, and a single tilted polygon cannot.
-
-**An `override: true` add is still part of its group's relief.** Override decides who wins the column among
-the shapes on a layer and says nothing about the solve, so a relief's surface replaces the top of a wall, a
-flight, a hill or a rim as readily as it does bare ground.
-
-A made thing keeps its stated top only with `"height_mode": "level"` and `"skirt": 0` (level for an absolute
-top, skirt zero for a sheer face); `relief_scope: "exclude"` is the stronger form, keeping the shape's ground
-out of the solve entirely.
-
-`SK14` names an override add carrying neither — it was silent when this board first hit it, and a
-twenty-seven-course wall came out level with the ground beside it.
-
-**A relief is solved on the group's primary half, and its surface is copied through the mirror.** A
-mark on the far half constrains cells the solve never visits and is overwritten by the image of the
-near half. State every mark on the side the plan's pieces are authored on, and pin a footprint that
-straddles the axis on both sides.
-
-**A mark pins its own cells and the relaxation slopes everything within `reach`.** Two regions at
-different heights with nothing between them come out as one long ramp, so a floor that must stay level
-next to a lower one needs a verge pinned at its own height — otherwise a wall's footing, and the gate
-in it, follow the neighbour down.
-
-**Raising terrain under a stamped room needs the PLAN to say so.** A piece states `"surface"`; lifting
-the ground with an override add instead leaves the room correctly seated on the higher ground and its
-spawn marker at the height the plan still states, inside the mass. Both spawns then leave the objective
-chain and `EX1` refuses the export.
-
-**A thing built out of terrain has to say so, or a road and a river will eat it.** An override add on the
-ground layer — a town wall, a crop bed, a well's rim, a flight of stairs — is written by the painter with a
-theme like any other ground, so nothing separates it from the sand beside it.
+An override add on the ground layer — a town wall, a crop bed, a well's rim, a flight of stairs — is written
+by the painter with a theme like any other ground, so nothing separates it from the sand beside it.
 
 A stroke repaints the top block of every column it crosses, and a channel takes the *lowest* surface its band
 crosses as its water line and cuts every other column in the band down to it: a wall standing seventeen
 courses over a river comes out as a hole through the wall, filled with water.
 
-Mark such a shape `keepClear` and its columns join the dressing keep-out exactly, with no margin, so
-a road still runs through a gate.
+Mark such a shape `keepClear` and its columns join the dressing keep-out exactly, with no margin, so a road
+still runs through a gate. A keep-out **stops** a prop rather than routing one, so a stroke that would have
+crossed the marked shape wants redrawing too.
 
-A keep-out **stops** a prop rather than routing one, so a stroke that would have crossed the marked shape
-wants redrawing too.
+### A standing stone is terrain, and `keepClear` is what makes the pass see it
 
-**A standing stone is terrain, and `keepClear` is what makes the pass see it.** An authored `addShapes`
-polygon is ground, not a prop, so a building drawn over one stands inside it and is reported by nothing —
-*unless the shape sets* `keepClear`, which makes it a real dressing keep-out with no margin. A wall, a
-market cross or a stair flight authored as terrain and marked that way declines what leans on it by name.
-Test every footprint against every *unmarked* authored shape's ring yourself.
+An authored `addShapes` polygon is ground, not a prop, so a building drawn over one stands inside it and is
+reported by nothing — *unless the shape sets* `keepClear`, which makes it a real dressing keep-out with no
+margin. A wall, a market cross or a stair flight authored as terrain and marked that way declines what leans
+on it by name.
 
-*Measured: `b-berm-e rests on (35, 32), which is kept clear for a stated structure` — a boulder declined
-for leaning on a `keepClear` town wall.*
+Test every footprint against every *unmarked* authored shape's ring yourself. *Measured:
+`b-berm-e rests on (35, 32), which is kept clear for a stated structure` — a boulder declined for leaning on
+a `keepClear` town wall.*
 
-**A prop is judged at every image of its orbit.** A rock beside a building on an on-axis group is a
-rock inside that building's own rot_180 twin, and the pass declines the whole prop rather than the
-image — so a site filter that tests only the authored cell is testing half the map. Measured: three of
-one build's four declines were images rather than originals. Test `(x, z)` and its orbit image against
-everything.
+### A prop is judged at every image of its orbit
 
-**The authored ring is not the coast.** A Bézier edge bulges *outside* the vertex polygon on a convex
-stretch and *inside* it on a concave one, so testing a footprint against the raw vertices rejects good
-sites and passes bad ones. One house corner sat 1.5 blocks inside the drawn polygon and 1 block past
-the built shore; `DR-SITE` was the first thing to say so. Flatten every ring at the rasterizer's own
-16 samples per edge before testing anything against it.
+A rock beside a building on an on-axis group is a rock inside that building's own rot_180 twin, and the pass
+declines the whole prop rather than the image — so a site filter that tests only the authored cell is testing
+half the map. Measured: three of one build's four declines were images rather than originals. Test `(x, z)`
+and its orbit image against everything.
+
+### The authored ring is not the coast
+
+A Bézier edge bulges *outside* the vertex polygon on a convex stretch and *inside* it on a concave one, so
+testing a footprint against the raw vertices rejects good sites and passes bad ones. One house corner sat 1.5
+blocks inside the drawn polygon and 1 block past the built shore, and `DR-SITE` was the first thing to say so.
+
+Flatten every ring at the rasterizer's own 16 samples per edge before testing anything against it.
 
 ### A copied tree is a recipe with a body, and the body is the whole of it
 
