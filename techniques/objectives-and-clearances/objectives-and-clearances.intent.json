@@ -1,0 +1,128 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "team": "red",
+   "yaw": 90,
+   "iron": [],
+   "point": {
+    "x": -180,
+    "y": 12,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": -190,
+     "minZ": -10,
+     "maxX": -170,
+     "maxZ": 10
+    }
+   ]
+  },
+  {
+   "team": "blue",
+   "yaw": 270,
+   "iron": [],
+   "point": {
+    "x": 180,
+    "y": 22,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": 170,
+     "minZ": -10,
+     "maxX": 190,
+     "maxZ": 10
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 41,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "destroyables": [
+  {
+   "owner": "blue",
+   "name": "Fold Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "float": 4,
+   "anchor": {
+    "x": -70,
+    "y": 11,
+    "z": 0
+   }
+  }
+ ],
+ "cores": [
+  {
+   "owner": "red",
+   "name": "Bank Core",
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "digDepth": 0,
+   "anchor": {
+    "x": 30,
+    "y": 19,
+    "z": 0
+   }
+  }
+ ],
+ "wools": [
+  {
+   "owner": "red",
+   "color": "red",
+   "spawn": {
+    "x": 130,
+    "y": 22,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": 118,
+     "minZ": -10,
+     "maxX": 142,
+     "maxZ": 10
+    }
+   ],
+   "entries": [
+    {
+     "minX": 118,
+     "minZ": -2,
+     "maxX": 118,
+     "maxZ": 2
+    }
+   ],
+   "monuments": []
+  }
+ ],
+ "meta": {
+  "name": "Objectives And Clearances",
+  "created": "2026-09-19",
+  "authors": [
+   "the technique cards"
+  ],
+  "contributors": []
+ }
+}

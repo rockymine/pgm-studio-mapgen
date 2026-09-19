@@ -1,0 +1,25 @@
+The objective half of the map.xml this board exports. A core states its leak only when it is not
+PGM's own default of 5, and neither a float nor a leak is anywhere in the world's blocks.
+
+    <teams>
+        <team id="red-team" color="red" max="12">Red</team>
+        <team id="blue-team" color="blue" max="12">Blue</team>
+    </teams>
+
+    <spawns>
+        <default region="observer-spawn"/>
+        <spawn team="red-team" kit="spawn-kit" yaw="90" region="red-spawn-point"/>
+        <spawn team="blue-team" kit="spawn-kit" yaw="270" region="blue-spawn-point"/>
+    </spawns>
+
+    <wools>
+        <wool team="blue-team" color="red" location="130,25,0" monument="red-blue-monument"/>
+    </wools>
+
+    <destroyables>
+        <destroyable id="fold-monument" name="Fold Monument" owner="blue-team" materials="obsidian" repairable="false" mode-changes="true" region="fold-monument-region"/>
+    </destroyables>
+
+    <cores>
+        <core id="bank-core" name="Bank Core" team="red-team" mode-changes="true" region="bank-core-region"/>
+    </cores>

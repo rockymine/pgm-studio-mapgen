@@ -1880,6 +1880,40 @@ four ways, the same verge with and without a claim, and one bridge crossed twice
 
 Two gates are heard for the first time at the export, after the whole world is built, and nothing earlier predicts them.
 
+`techniques/objectives-and-clearances` is the worked card: one island with a monument, a core and a wool on
+it, and the same board exported again with one fault in it at a time.
+
+### `float` is geometry and `leak` is an attribute, and a goal at float 0 is not a goal
+
+**A goal's base is the standing level plus its `float`.** Over ground topping at y11 a `pillar-3` starts at
+y16 at `float` 4 and at y20 at `float` 8; a core's casing sits at y27 over a bank topping at y19 at `float` 6.
+
+**At `float` 0 a destroyable comes out as one obsidian block and a core loses its floor.** The monument's
+lower courses are where its chest and the ground already are, and the core reads three lava with a lid and
+no casing under them — nowhere for the lava to fall, which is the whole of what a core is. The four and the
+six are not clearance; they are what makes the goal completable.
+
+**`leak` changes no block at all.** Exported at 0, 5 and 10 with `float` held, the core's column is
+identical; the number is an attribute on the `<core>` element, and the studio writes it only when it is not
+PGM's own default of 5. A question about a leak is answered by the map.xml and never by a column.
+
+### `OB17` refuses at 409 and `OB19` warns at 200
+
+**`OB17` names which of its three places the goal hit** — over the void, inside a spawn's protection, inside
+a wool room — each in its own words, and it refuses the whole export. Nothing earlier sees it: the board
+stores clean and finishes clean.
+
+**`OB19` is a decline rather than a refusal.** A tree, boulder or building inside the ten-block square about
+a marker is left out and the world is built anyway, at 200 with a `Pgm-Warnings` header — *a goal is what the
+map is for, and a prop is removable*. Measured: a boulder six blocks off the marker is declined, the same
+boulder sixteen off is built.
+
+### A placement carrying `"stamp": null` voids the whole intent PUT
+
+The call answers **200** with an empty body and stores nothing — not the placement, not the teams, not
+`maxPlayers`. Omit the field rather than stating it null. It is the only call in the studio that reports
+success for having done nothing.
+
 ### `OB19`'s keep-out is bigger than it sounds
 
 A **10-block square about the goal's anchor**, tested against a prop's footprint **plus its eaves**, and

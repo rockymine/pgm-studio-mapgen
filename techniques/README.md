@@ -9,7 +9,7 @@ the card rather than finding the thing inside a thousand-line finish.
 itself, one claim to a paragraph; a card holds one instrument worked all the way through, with the reads
 beside it. Where a card exists, the notes point at it rather than repeating it.
 
-## The seventeen that exist
+## The eighteen that exist
 
 | Card | Holds |
 |---|---|
@@ -30,15 +30,12 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `painting-a-patch` | which shape forms a cell's surface — a patch's own height, and what a second layer changes |
 | `painting-with-a-stroke` | the band of surface along a drawn line: a feathered seam, a paved road, a claim, a keep-out |
 | `marks-and-seams` | what two marks do to the ground they share, and the two faults the relief read cannot see |
+| `objectives-and-clearances` | where a goal may stand: what `float` builds, where `leak` lives, and the two gates heard only at the export |
 
-## The three that are missing
+## The two that are missing
 
 Each entry names what the card would demonstrate, and which of the notes' entries it would absorb — the
 notes carry the measurements already and have nowhere to put the worked comparison.
-
-**`objectives-and-clearances` — where a goal may stand.** A monument, a core and a wool on one board with
-their clearances drawn, the `at` read in blocks, a core's `float` and `leak`, and the two gates heard only at
-the export. Absorbs the whole export chapter's placement half.
 
 **`a-house-and-its-wings` — what a hall and a wing do to each other.** Two wings meeting on a shared edge,
 the ridge that decides which rectangle is which, the storey stack sized to its own clear, and the section

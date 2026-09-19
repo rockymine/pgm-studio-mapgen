@@ -1,0 +1,27 @@
+GET /api/map/technique-objectives-and-clearances/export — the same board, one fault at a time.
+The status is the export's; a 200 with a `Pgm-Warnings` header is a world that was built anyway.
+
+### as drawn
+200  no warnings
+
+### the monument moved past the coast, to x -230
+409  OB17 — destroyable 'Fold Monument' is 1×1 and overhangs the void — the build slice denies breaking blocks out there, so the goal could never be completed
+
+### the monument moved into red's spawn protection
+409  OB17 — destroyable 'Fold Monument' is 1×1 and reaches into the spawn on 'red' — spawn protection denies breaking blocks to every team, so the goal could never be broken
+
+### the monument moved into the wool room
+409  OB17 — destroyable 'Fold Monument' is 1×1 and reaches into the wool room on 'red' — the room's own rules would cover the goal
+
+### a boulder six blocks from the monument, inside its clearance
+200  1 OB19
+
+### the same boulder sixteen blocks out
+200  no warnings
+
+### the monument at float 0
+200  no warnings
+
+### as drawn, restored
+200  no warnings
+
