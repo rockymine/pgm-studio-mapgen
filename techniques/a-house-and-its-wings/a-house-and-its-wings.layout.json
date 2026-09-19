@@ -1,0 +1,1421 @@
+{
+ "setup": {
+  "bbox": {
+   "min_x": -157,
+   "max_x": 157,
+   "min_z": -106,
+   "max_z": 106
+  },
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "mirror_mode": "none"
+ },
+ "themes": {
+  "moor": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 35,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 2,
+             "data": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 20,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 35,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 11,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 4,
+               "data": 0
+              }
+             ]
+            },
+            "thickness": 3
+           }
+          ]
+         }
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "yard": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 13,
+         "data": 0
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 1
+        },
+        "thickness": 2
+       }
+      ]
+     }
+    }
+   }
+  }
+ },
+ "mapTheme": "moor",
+ "relief": {
+  "one-range": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "marching": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "projecting": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "lower-wing": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "a-t-plan": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "side-by-side": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "end-to-end": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "wing-overtops": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "overlapping": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "partial-edge": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "apart": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "a-u-plan": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "island-one-range",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": -149,
+      "min_z": -98,
+      "max_x": -85,
+      "max_z": -42
+     },
+     {
+      "id": "yard-one-range",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": -131,
+      "min_z": -82,
+      "max_x": -103,
+      "max_z": -56
+     },
+     {
+      "id": "island-marching",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": -71,
+      "min_z": -98,
+      "max_x": -7,
+      "max_z": -42
+     },
+     {
+      "id": "yard-marching",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": -53,
+      "min_z": -82,
+      "max_x": -25,
+      "max_z": -56
+     },
+     {
+      "id": "island-projecting",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": 7,
+      "min_z": -98,
+      "max_x": 71,
+      "max_z": -42
+     },
+     {
+      "id": "yard-projecting",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": 25,
+      "min_z": -82,
+      "max_x": 53,
+      "max_z": -56
+     },
+     {
+      "id": "island-lower-wing",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": 85,
+      "min_z": -98,
+      "max_x": 149,
+      "max_z": -42
+     },
+     {
+      "id": "yard-lower-wing",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": 103,
+      "min_z": -82,
+      "max_x": 131,
+      "max_z": -56
+     },
+     {
+      "id": "island-a-t-plan",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": -149,
+      "min_z": -28,
+      "max_x": -85,
+      "max_z": 28
+     },
+     {
+      "id": "yard-a-t-plan",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": -131,
+      "min_z": -12,
+      "max_x": -103,
+      "max_z": 14
+     },
+     {
+      "id": "island-side-by-side",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": -71,
+      "min_z": -28,
+      "max_x": -7,
+      "max_z": 28
+     },
+     {
+      "id": "yard-side-by-side",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": -53,
+      "min_z": -12,
+      "max_x": -25,
+      "max_z": 14
+     },
+     {
+      "id": "island-end-to-end",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": 7,
+      "min_z": -28,
+      "max_x": 71,
+      "max_z": 28
+     },
+     {
+      "id": "yard-end-to-end",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": 25,
+      "min_z": -12,
+      "max_x": 53,
+      "max_z": 14
+     },
+     {
+      "id": "island-wing-overtops",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": 85,
+      "min_z": -28,
+      "max_x": 149,
+      "max_z": 28
+     },
+     {
+      "id": "yard-wing-overtops",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": 103,
+      "min_z": -12,
+      "max_x": 131,
+      "max_z": 14
+     },
+     {
+      "id": "island-overlapping",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": -149,
+      "min_z": 42,
+      "max_x": -85,
+      "max_z": 98
+     },
+     {
+      "id": "yard-overlapping",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": -131,
+      "min_z": 58,
+      "max_x": -103,
+      "max_z": 84
+     },
+     {
+      "id": "island-partial-edge",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": -71,
+      "min_z": 42,
+      "max_x": -7,
+      "max_z": 98
+     },
+     {
+      "id": "yard-partial-edge",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": -53,
+      "min_z": 58,
+      "max_x": -25,
+      "max_z": 84
+     },
+     {
+      "id": "island-apart",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": 7,
+      "min_z": 42,
+      "max_x": 71,
+      "max_z": 98
+     },
+     {
+      "id": "yard-apart",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": 25,
+      "min_z": 58,
+      "max_x": 53,
+      "max_z": 84
+     },
+     {
+      "id": "island-a-u-plan",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": 85,
+      "min_z": 42,
+      "max_x": 149,
+      "max_z": 98
+     },
+     {
+      "id": "yard-a-u-plan",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": 103,
+      "min_z": 58,
+      "max_x": 131,
+      "max_z": 84
+     }
+    ],
+    "groups": [
+     {
+      "id": "one-range",
+      "name": "one-range",
+      "mirrors": false,
+      "shapeIds": [
+       "island-one-range",
+       "yard-one-range"
+      ]
+     },
+     {
+      "id": "marching",
+      "name": "marching",
+      "mirrors": false,
+      "shapeIds": [
+       "island-marching",
+       "yard-marching"
+      ]
+     },
+     {
+      "id": "projecting",
+      "name": "projecting",
+      "mirrors": false,
+      "shapeIds": [
+       "island-projecting",
+       "yard-projecting"
+      ]
+     },
+     {
+      "id": "lower-wing",
+      "name": "lower-wing",
+      "mirrors": false,
+      "shapeIds": [
+       "island-lower-wing",
+       "yard-lower-wing"
+      ]
+     },
+     {
+      "id": "a-t-plan",
+      "name": "a-t-plan",
+      "mirrors": false,
+      "shapeIds": [
+       "island-a-t-plan",
+       "yard-a-t-plan"
+      ]
+     },
+     {
+      "id": "side-by-side",
+      "name": "side-by-side",
+      "mirrors": false,
+      "shapeIds": [
+       "island-side-by-side",
+       "yard-side-by-side"
+      ]
+     },
+     {
+      "id": "end-to-end",
+      "name": "end-to-end",
+      "mirrors": false,
+      "shapeIds": [
+       "island-end-to-end",
+       "yard-end-to-end"
+      ]
+     },
+     {
+      "id": "wing-overtops",
+      "name": "wing-overtops",
+      "mirrors": false,
+      "shapeIds": [
+       "island-wing-overtops",
+       "yard-wing-overtops"
+      ]
+     },
+     {
+      "id": "overlapping",
+      "name": "overlapping",
+      "mirrors": false,
+      "shapeIds": [
+       "island-overlapping",
+       "yard-overlapping"
+      ]
+     },
+     {
+      "id": "partial-edge",
+      "name": "partial-edge",
+      "mirrors": false,
+      "shapeIds": [
+       "island-partial-edge",
+       "yard-partial-edge"
+      ]
+     },
+     {
+      "id": "apart",
+      "name": "apart",
+      "mirrors": false,
+      "shapeIds": [
+       "island-apart",
+       "yard-apart"
+      ]
+     },
+     {
+      "id": "a-u-plan",
+      "name": "a-u-plan",
+      "mirrors": false,
+      "shapeIds": [
+       "island-a-u-plan",
+       "yard-a-u-plan"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "dressing": {
+  "styles": {
+   "bothy": {
+    "kind": "house",
+    "shell": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "ending": "repeat",
+        "bands": [
+         {
+          "thickness": 1,
+          "material": {
+           "kind": "solid",
+           "id": 4,
+           "data": 0
+          }
+         }
+        ]
+       },
+       "extent": 1
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": null
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 2,
+      "slab": -1,
+      "slabData": 0,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "verge": {
+       "kind": "laidLog",
+       "id": 17,
+       "data": 1
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gableWindows": {
+       "form": "pane",
+       "block": 102,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 1,
+       "width": 1,
+       "height": 1,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "ending": "repeat",
+       "bands": [
+        {
+         "thickness": 1,
+         "material": {
+          "kind": "solid",
+          "id": 98,
+          "data": 0
+         }
+        }
+       ]
+      },
+      "extent": 5
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "windows": {
+      "form": "pane",
+      "block": 102,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 2,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "storeys": [
+      {
+       "clear": 5,
+       "post": {
+        "kind": "solid",
+        "id": 17,
+        "data": 1
+       },
+       "deck": null,
+       "wall": {
+        "stack": {
+         "ending": "repeat",
+         "bands": [
+          {
+           "thickness": 2,
+           "material": {
+            "kind": "cell",
+            "seed": 29,
+            "cellSize": 3,
+            "jitter": 2,
+            "warp": 2,
+            "palette": [
+             {
+              "kind": "solid",
+              "id": 4,
+              "data": 0
+             },
+             {
+              "kind": "solid",
+              "id": 1,
+              "data": 5
+             }
+            ],
+            "rise": 0
+           }
+          },
+          {
+           "thickness": 3,
+           "material": {
+            "kind": "solid",
+            "id": 98,
+            "data": 0
+           }
+          }
+         ]
+        },
+        "extent": 5
+       },
+       "windows": {
+        "form": "pane",
+        "block": 102,
+        "hostBlock": -1,
+        "hostData": 0,
+        "data": 0,
+        "sill": 2,
+        "width": 2,
+        "height": 2,
+        "spacing": 3
+       }
+      },
+      {
+       "clear": 4,
+       "post": {
+        "kind": "solid",
+        "id": 17,
+        "data": 1
+       },
+       "deck": null,
+       "wall": {
+        "stack": {
+         "ending": "repeat",
+         "bands": [
+          {
+           "thickness": 3,
+           "material": {
+            "kind": "solid",
+            "id": 98,
+            "data": 0
+           }
+          },
+          {
+           "thickness": 1,
+           "material": {
+            "kind": "laidLog",
+            "id": 17,
+            "data": 1
+           }
+          }
+         ]
+        },
+        "extent": 4
+       },
+       "windows": {
+        "form": "pane",
+        "block": 102,
+        "hostBlock": -1,
+        "hostData": 0,
+        "data": 0,
+        "sill": 1,
+        "width": 1,
+        "height": 2,
+        "spacing": 4
+       }
+      }
+     ],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 1,
+      "any": true
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "none",
+       "block": 53,
+       "fill": "upperSlab",
+       "fillBlock": 126,
+       "fillData": 1
+      },
+      "width": 2,
+      "height": 3
+     }
+    }
+   }
+  },
+  "props": [
+   {
+    "id": "one-range",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        -123,
+        -76
+       ],
+       [
+        -112,
+        -69
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     }
+    ]
+   },
+   {
+    "id": "marching",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        -45,
+        -76
+       ],
+       [
+        -34,
+        -69
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     },
+     {
+      "corners": [
+       [
+        -42,
+        -68
+       ],
+       [
+        -37,
+        -61
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ"
+      }
+     }
+    ]
+   },
+   {
+    "id": "projecting",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        33,
+        -76
+       ],
+       [
+        44,
+        -69
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     },
+     {
+      "corners": [
+       [
+        36,
+        -68
+       ],
+       [
+        41,
+        -61
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ",
+       "projects": true
+      }
+     }
+    ]
+   },
+   {
+    "id": "lower-wing",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        111,
+        -76
+       ],
+       [
+        122,
+        -69
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     },
+     {
+      "corners": [
+       [
+        114,
+        -68
+       ],
+       [
+        119,
+        -61
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ",
+       "storeysHigh": 1
+      }
+     }
+    ]
+   },
+   {
+    "id": "a-t-plan",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        -123,
+        -6
+       ],
+       [
+        -112,
+        1
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     },
+     {
+      "corners": [
+       [
+        -119,
+        2
+       ],
+       [
+        -115,
+        9
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ"
+      }
+     },
+     {
+      "corners": [
+       [
+        -119,
+        -14
+       ],
+       [
+        -115,
+        -7
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ"
+      }
+     }
+    ]
+   },
+   {
+    "id": "side-by-side",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        -45,
+        -6
+       ],
+       [
+        -34,
+        0
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     },
+     {
+      "corners": [
+       [
+        -45,
+        1
+       ],
+       [
+        -34,
+        7
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     }
+    ]
+   },
+   {
+    "id": "end-to-end",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        33,
+        -6
+       ],
+       [
+        44,
+        0
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ"
+      }
+     },
+     {
+      "corners": [
+       [
+        33,
+        1
+       ],
+       [
+        44,
+        7
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ"
+      }
+     }
+    ]
+   },
+   {
+    "id": "wing-overtops",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        113,
+        -6
+       ],
+       [
+        120,
+        1
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     },
+     {
+      "corners": [
+       [
+        110,
+        2
+       ],
+       [
+        123,
+        7
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ"
+      }
+     }
+    ]
+   },
+   {
+    "id": "overlapping",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        -123,
+        64
+       ],
+       [
+        -112,
+        71
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     },
+     {
+      "corners": [
+       [
+        -120,
+        69
+       ],
+       [
+        -115,
+        76
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ"
+      }
+     }
+    ]
+   },
+   {
+    "id": "partial-edge",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        -45,
+        64
+       ],
+       [
+        -34,
+        71
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     },
+     {
+      "corners": [
+       [
+        -36,
+        72
+       ],
+       [
+        -31,
+        79
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ"
+      }
+     }
+    ]
+   },
+   {
+    "id": "apart",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        33,
+        64
+       ],
+       [
+        44,
+        71
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     },
+     {
+      "corners": [
+       [
+        36,
+        76
+       ],
+       [
+        41,
+        83
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ"
+      }
+     }
+    ]
+   },
+   {
+    "id": "a-u-plan",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        111,
+        64
+       ],
+       [
+        122,
+        71
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     },
+     {
+      "corners": [
+       [
+        111,
+        72
+       ],
+       [
+        115,
+        79
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ"
+      }
+     },
+     {
+      "corners": [
+       [
+        118,
+        72
+       ],
+       [
+        122,
+        79
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ"
+      }
+     }
+    ]
+   }
+  ]
+ }
+}

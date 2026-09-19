@@ -9,7 +9,7 @@ the card rather than finding the thing inside a thousand-line finish.
 itself, one claim to a paragraph; a card holds one instrument worked all the way through, with the reads
 beside it. Where a card exists, the notes point at it rather than repeating it.
 
-## The eighteen that exist
+## The nineteen that exist
 
 | Card | Holds |
 |---|---|
@@ -31,21 +31,34 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `painting-with-a-stroke` | the band of surface along a drawn line: a feathered seam, a paved road, a claim, a keep-out |
 | `marks-and-seams` | what two marks do to the ground they share, and the two faults the relief read cannot see |
 | `objectives-and-clearances` | where a goal may stand: what `float` builds, where `leak` lives, and the two gates heard only at the export |
+| `a-house-and-its-wings` | how two rectangles of one plan meet — marching against projecting, and the five `HJ` refusals |
 
-## The two that are missing
+## The three that are missing
 
 Each entry names what the card would demonstrate, and which of the notes' entries it would absorb — the
 notes carry the measurements already and have nowhere to put the worked comparison.
-
-**`a-house-and-its-wings` — what a hall and a wing do to each other.** Two wings meeting on a shared edge,
-the ridge that decides which rectangle is which, the storey stack sized to its own clear, and the section
-that shows all of it before a world is built. Absorbs the buildings chapter.
 
 **`taking-over-a-composed-board` — a plan somebody else arranged.** One pinned board edited four ways: a
 surface per piece, a piece split to make an interface, a hole left alone and a subtract redrawn. Absorbs the
 composer chapter, which is currently the only place a capture board's author is told what the arrangement
 costs.
 
+
+**`trees-and-boulders` — the props that stand on ground, and what they keep off.** One board of roads,
+rocks and trees at measured distances: a tree three blocks off a paved cell and a boulder two, `DR-CLAIM`
+between two props that overlap, and a tree asked to stand on a boulder. Beside them the placement order
+that decides which of a pair survives — boulders before trees, so a wood grows round a rock rather than a
+rock landing in the wood — and the same props inside a goal's clearance, which is `OB19` seen from the
+prop's end. Absorbs the dressing chapter's standoff half.
+
+**`sculpture-with-layers` — a built thing made from nothing but shapes.** One wall three ways: a few
+rectangles, a polyline, and the same wall again on four layers with a plinth, a string course, a parapet
+and an arch through it. Beside it a group of boxes arranged as cover, and one structure built from scratch
+rather than from a preset.
+
+**It is also where a terrain material and a theme stop being interchangeable.** A sculpture is small,
+made ground with faces on every side, so what the fill does and what the surface does are two different
+answers rather than one look from above.
 ## What a card needs before it can be written
 
 A running studio and a real build. A card's claim is its committed reads — `column`, `transect`, `slopes`,

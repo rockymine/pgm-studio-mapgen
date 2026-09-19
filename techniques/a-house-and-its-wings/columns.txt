@@ -1,0 +1,74 @@
+GET /api/map/technique-a-house-and-its-wings/column?at=x,z — marching against projecting, cell for cell.
+Both panels state the same hall (x cx-6..cx+5, z -76..-69) and the same cross wing hanging off its
+south edge. Only the wing's `projects` differs, and the two panels are 78 blocks apart in x.
+
+### marching — the hall's own ridge, over the middle of the hall
+=== column (-39, -72) — 11 solid block(s), ground 0° from level ===
+  y 24    17:5   Spruce Log
+  y 23    17:5   Spruce Log
+  y 13     4:0   Cobblestone
+  y  7     4:0   Cobblestone
+  y  6     3:1   Coarse Dirt
+  y  5     3:1   Coarse Dirt
+  y  4     1:0   Stone
+
+### projecting — the same ridge: the projection lengthens the roof without raising it
+=== column (39, -72) — 11 solid block(s), ground 0° from level ===
+  y 24    17:5   Spruce Log
+  y 23    17:5   Spruce Log
+  y 13     4:0   Cobblestone
+  y  7     4:0   Cobblestone
+  y  6     3:1   Coarse Dirt
+  y  5     3:1   Coarse Dirt
+  y  4     1:0   Stone
+
+### marching — the hall's FAR wall, on the wing's axis: the hall's own roof over it
+=== column (-39, -76) — 16 solid block(s), ground 0° from level ===
+  y 18     5:5   Dark Oak Planks
+  y 17     5:5   Dark Oak Planks
+  y 16    98:0   Stone Bricks
+  y 15    98:0   Stone Bricks
+  y 14    98:0   Stone Bricks
+  y 13    98:0   Stone Bricks
+  y 12    98:0   Stone Bricks
+
+### projecting — the same cell: the wing's roof carried across, four courses higher
+=== column (39, -76) — 20 solid block(s), ground 0° from level ===
+  y 22    17:9   Spruce Log
+  y 21    17:9   Spruce Log
+  y 20     5:5   Dark Oak Planks
+  y 19     5:5   Dark Oak Planks
+  y 18     5:5   Dark Oak Planks
+  y 17    17:5   Spruce Log
+  y 16    98:0   Stone Bricks
+
+### marching — one cell past that wall: the hall's eave overhang
+=== column (-39, -77) — 9 solid block(s), ground 0° from level ===
+  y 16    17:5   Spruce Log
+  y  7    13:0   Gravel
+  y  6     3:1   Coarse Dirt
+  y  5     3:1   Coarse Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+
+### projecting — the same cell: the projecting gable's verge, overhanging past the wall
+=== column (39, -77) — 10 solid block(s), ground 0° from level ===
+  y 22    17:9   Spruce Log
+  y 21    17:9   Spruce Log
+  y  7    13:0   Gravel
+  y  6     3:1   Coarse Dirt
+  y  5     3:1   Coarse Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+
+### lower-wing — the lower wing's own wall top, one storey down
+=== column (117, -64) — 10 solid block(s), ground 0° from level ===
+  y 17    17:9   Spruce Log
+  y 16    17:9   Spruce Log
+  y  7     4:0   Cobblestone
+  y  6     3:1   Coarse Dirt
+  y  5     3:1   Coarse Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+
