@@ -1,0 +1,72 @@
+## stonework (made) along x
+TRANSECT 33 stations from (-8, 81) to (24, 81), every 1
+  station        ground  surface  water  top  standing            step
+  (   -8,    81)      18       18           18  water dam           
+  (   -7,    81)      18       18           18  water dam           
+  (   -6,    81)      18       18           18  water dam           
+  (   -5,    81)      18       18           18                      
+  (   -4,    81)      18       18           18                      
+  (   -3,    81)      18       18           18                      
+  (   -2,    81)      18       18           18  stroke road-spine   
+  (   -1,    81)      18       18           18  stroke road-spine   
+  (    0,    81)      18       18           18  stroke road-spine   
+  (    1,    81)      18       18           18  stroke road-spine   
+  (    2,    81)      18       18           18                      
+  (    3,    81)      18       18           18                      
+  (    4,    81)      18       18           18                      
+  (    5,    81)      18       18           18                      
+  (    6,    81)      18       18           18                      
+  (    7,    81)      18       18           18                      
+  (    8,    81)      18       18           18                      
+  (    9,    81)      18       18           18                      
+  (   10,    81)      18       18           18                      
+  (   11,    81)      18       18           18                      
+  (   12,    81)      18       18           18                      
+  (   13,    81)      18       22           22  storey              BARRIER +4
+  (   14,    81)      18       22           22  storey              
+  (   15,    81)      18       22           22  storey              
+  (   16,    81)      18       18           18                      DROP -4
+  (   17,    81)      18       18           18                      
+  (   18,    81)      18       18           18                      
+  (   19,    81)      18       18           18                      
+  (   20,    81)      18       18           18                      
+  (   21,    81)      18       18           18                      
+  (   22,    81)      18       18           18                      
+  (   23,    81)      18       18           18                      
+  (   24,    81)                                                    void
+rises 1, falls 1, worst step 4: 1 barrier, 0 scramble, 1 drop — BARRIER +4 at (13, 81); DROP -4 at (16, 81) | walked end to end
+beside: water dam at (-10, 79), flora dam-fringe at (-5, 80), stroke road-spine at (-2, 79)
+
+## stonework (made) along z
+TRANSECT 28 stations from (8, 68) to (8, 95), every 1
+  station        ground  surface  water  top  standing            step
+  (    8,    68)                                                    void
+  (    8,    69)                                                    void
+  (    8,    70)                                                    void
+  (    8,    71)                                                    void
+  (    8,    72)                                                    void
+  (    8,    73)                                                    void
+  (    8,    74)                                                    void
+  (    8,    75)                                                    void
+  (    8,    76)      18       24           24  storey              
+  (    8,    77)      18       24           24  storey              
+  (    8,    78)      18       24           24  storey              
+  (    8,    79)      18       18           18                      DROP -6
+  (    8,    80)      18       18           18                      
+  (    8,    81)      18       18           18                      
+  (    8,    82)      18       18           18                      
+  (    8,    83)      18       18           18                      
+  (    8,    84)      18       18           18                      
+  (    8,    85)      18       18           18                      
+  (    8,    86)      18       18           18                      
+  (    8,    87)      18       18           18                      
+  (    8,    88)      18       18           18                      
+  (    8,    89)      18       18           18                      
+  (    8,    90)      18       18           18                      
+  (    8,    91)      18       18           18                      
+  (    8,    92)                                                    void
+  (    8,    93)                                                    void
+  (    8,    94)                                                    void
+  (    8,    95)                                                    void
+rises 0, falls 1, worst step 6: 0 barrier, 0 scramble, 1 drop — DROP -6 at (8, 79) | walked end to end
+beside: (none)

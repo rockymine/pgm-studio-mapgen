@@ -8,7 +8,7 @@ TRANSECT 17 stations from (-60, -70) to (-44, -70), every 1
   (  -56,   -70)      18       18           59  wool wool-2#1       
   (  -55,   -70)      18       18           59  wool wool-2#1       
   (  -54,   -70)      18       18           24  wool wool-2#1       
-  (  -53,   -70)      18       18           23  redstoneline 1#1    
+  (  -53,   -70)      18       18           23  redstoneline 2#1    
   (  -52,   -70)      18       18           18                      
   (  -51,   -70)      18       18           18                      
   (  -50,   -70)      18       18           18                      
@@ -19,7 +19,7 @@ TRANSECT 17 stations from (-60, -70) to (-44, -70), every 1
   (  -45,   -70)      18       18           18                      
   (  -44,   -70)      18       18           18                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-2#1 at (-59, -72), redstoneline 1#1 at (-53, -72)
+beside: wool wool-2#1 at (-59, -72), redstoneline 2#1 at (-53, -72)
 
 ## light_blue-1 (wool) along z
 TRANSECT 25 stations from (-56, -82) to (-56, -58), every 1
@@ -30,7 +30,7 @@ TRANSECT 25 stations from (-56, -82) to (-56, -58), every 1
   (  -56,   -79)                                                    void
   (  -56,   -78)                                                    void
   (  -56,   -77)                                                    void
-  (  -56,   -76)      18       18           23  redstoneline 2#1    
+  (  -56,   -76)      18       18           23  redstoneline 4#1    
   (  -56,   -75)      18       18           24  wool wool-2#1       
   (  -56,   -74)      18       18           25  wool wool-2#1       
   (  -56,   -73)      18       18           26  wool wool-2#1       
@@ -41,7 +41,7 @@ TRANSECT 25 stations from (-56, -82) to (-56, -58), every 1
   (  -56,   -68)      18       18           26  wool wool-2#1       
   (  -56,   -67)      18       18           25  wool wool-2#1       
   (  -56,   -66)      18       18           24  wool wool-2#1       
-  (  -56,   -65)      18       18           23                      
+  (  -56,   -65)      18       18           23  redstoneline 3#1    
   (  -56,   -64)      18       18           18                      
   (  -56,   -63)      18       18           18                      
   (  -56,   -62)      18       18           18                      
@@ -50,4 +50,4 @@ TRANSECT 25 stations from (-56, -82) to (-56, -58), every 1
   (  -56,   -59)                                                    void
   (  -56,   -58)                                                    void
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: redstoneline 2#1 at (-56, -76), wool wool-2#1 at (-58, -75)
+beside: redstoneline 4#1 at (-56, -76), wool wool-2#1 at (-58, -75), redstoneline 3#1 at (-58, -65)

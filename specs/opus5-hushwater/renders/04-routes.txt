@@ -1,6 +1,10 @@
 ## spawn-red -> red-0
-ROUTE (0, 104) -> (-46, 68) aim travel: 73 blocks, 4 placed, 1 drop(s), worst drop 7
+ROUTE (0, 108) -> (-46, 68) aim travel: 76 blocks, 0 placed, 0 drop(s), worst drop 0
   place            y   step
+  (0, 108)          19
+  (0, 107)          19
+  (0, 106)          19
+  (0, 105)          19
   (0, 104)          19
   (0, 103)          19
   (0, 102)          19
@@ -21,22 +25,20 @@ ROUTE (0, 104) -> (-46, 68) aim travel: 73 blocks, 4 placed, 1 drop(s), worst dr
   (0, 87)           18
   (0, 86)           18
   (0, 85)           18
-  (0, 84)           18
-  (0, 83)           18
-  (-1, 82)          18
-  (-2, 81)          18
-  (-3, 80)          18
-  (-4, 79)          18
-  (-5, 78)          18
-  (-6, 77)          18
-  (-7, 76)          18
-  (-8, 75)          17
-  (-9, 75)          17
-  (-10, 75)         17
-  (-11, 75)         17
-  (-12, 75)         17
-  (-13, 74)         17
-  (-14, 74)         17
+  (-1, 84)          18
+  (-2, 83)          18
+  (-3, 82)          18
+  (-4, 81)          18
+  (-5, 80)          19
+  (-6, 79)          18
+  (-7, 78)          18
+  (-8, 77)          18
+  (-9, 77)          18
+  (-10, 77)         18
+  (-11, 77)         18
+  (-12, 77)         18
+  (-13, 76)         18
+  (-14, 75)         17
   (-15, 74)         18
   (-16, 73)         17
   (-17, 72)         17
@@ -61,20 +63,24 @@ ROUTE (0, 104) -> (-46, 68) aim travel: 73 blocks, 4 placed, 1 drop(s), worst dr
   (-36, 72)         18
   (-37, 72)         18
   (-38, 72)         18
-  (-39, 72)         18
-  (-40, 72)         18
-  (-41, 72)         18
-  (-42, 72)         18
-  (-43, 71)         23   barrier +5
-  (-44, 70)         24
-  (-45, 69)         25
-  (-46, 68)         18   drop -7
-rises 1, falls 1, worst step 7: barrier +5 at (-43, 71); drop -7 at (-46, 68)
-beside: spawn spawn-1 at (0, 101) d0, tree birk-2 at (-29, 72) d0, tree birk-4 at (-19, 72) d0, wool wool-1 at (-46, 68) d0, water dam at (-13, 76) d1, tree birk-1 at (-35, 74) d2, tree birk-3 at (-25, 74) d2
+  (-39, 71)         18
+  (-40, 70)         18
+  (-41, 69)         19
+  (-42, 68)         18
+  (-43, 68)         18
+  (-44, 68)         18
+  (-45, 68)         18
+  (-46, 68)         18
+rises 0, falls 0, worst step 0: walked end to end
+beside: spawn spawn-1 at (0, 105) d0, tree birk-2 at (-29, 72) d0, tree birk-4 at (-19, 72) d0, water dam at (-13, 76) d0, wool wool-1 at (-46, 68) d0, tree birk-1 at (-35, 74) d2, tree birk-3 at (-25, 74) d2
 
 ## spawn-red -> orange-0
-ROUTE (0, 104) -> (56, 70) aim travel: 73 blocks, 3 placed, 0 drop(s), worst drop 0
+ROUTE (0, 108) -> (56, 70) aim travel: 77 blocks, 8 placed, 1 drop(s), worst drop 4
   place            y   step
+  (0, 108)          19
+  (0, 107)          19
+  (0, 106)          19
+  (0, 105)          19
   (0, 104)          19
   (0, 103)          19
   (0, 102)          19
@@ -94,10 +100,10 @@ ROUTE (0, 104) -> (56, 70) aim travel: 73 blocks, 3 placed, 0 drop(s), worst dro
   (10, 88)          18
   (11, 87)          18
   (12, 86)          18
-  (13, 85)          18
-  (14, 84)          18
-  (15, 83)          18
-  (16, 82)          18
+  (13, 85)          24   barrier +6
+  (14, 84)          24
+  (15, 83)          22
+  (16, 82)          18   drop -4
   (17, 81)          18
   (18, 80)          18
   (19, 79)          18
@@ -138,12 +144,16 @@ ROUTE (0, 104) -> (56, 70) aim travel: 73 blocks, 3 placed, 0 drop(s), worst dro
   (54, 71)          18
   (55, 71)          18
   (56, 70)          18
-rises 1, falls 0, worst step 4: barrier +4 at (35, 74)
-beside: spawn spawn-1 at (0, 101) d0, wool wool-2 at (53, 71) d0, house head-store at (16, 84) d1
+rises 2, falls 1, worst step 6: barrier +6 at (13, 85); drop -4 at (16, 82); barrier +4 at (35, 74)
+beside: spawn spawn-1 at (0, 105) d0, wool wool-2 at (53, 71) d0, house head-store at (16, 84) d1
 
 ## spawn-red -> blue-1
-ROUTE (0, 104) -> (46, -68) aim travel: 206 blocks, 30 placed, 1 drop(s), worst drop 7
+ROUTE (0, 108) -> (46, -68) aim travel: 210 blocks, 26 placed, 0 drop(s), worst drop 0
   place            y   step
+  (0, 108)          19
+  (0, 107)          19
+  (0, 106)          19
+  (0, 105)          19
   (0, 104)          19
   (0, 103)          19
   (0, 102)          19
@@ -170,8 +180,8 @@ ROUTE (0, 104) -> (46, -68) aim travel: 206 blocks, 30 placed, 1 drop(s), worst 
   (0, 81)           18
   (0, 80)           18
   (0, 79)           18
-  (0, 78)           18
-  (0, 77)           18
+  (-1, 78)          18
+  (-1, 77)          18
   (-1, 76)          18
   (-1, 75)          17
   (-1, 74)          17
@@ -334,19 +344,23 @@ ROUTE (0, 104) -> (46, -68) aim travel: 206 blocks, 30 placed, 1 drop(s), worst 
   (37, -67)         18
   (38, -67)         18
   (39, -67)         18
-  (40, -67)         23   barrier +5
-  (41, -67)         24
-  (42, -67)         25
-  (43, -67)         25
-  (44, -67)         25
-  (45, -67)         25
-  (46, -68)         18   drop -7
-rises 2, falls 1, worst step 7: barrier +3 at (-1, 13); barrier +5 at (40, -67); drop -7 at (46, -68)
-beside: house powder#1 at (23, -65) d0, spawn spawn-1 at (0, 101) d0, wool wool-1#1 at (41, -67) d0, boulder rock-3#1 at (34, -65) d1, tree birk-5#1 at (12, -62) d2
+  (40, -67)         19
+  (41, -68)         18
+  (42, -68)         18
+  (43, -68)         18
+  (44, -68)         18
+  (45, -68)         18
+  (46, -68)         18
+rises 1, falls 0, worst step 3: barrier +3 at (-1, 13)
+beside: house powder#1 at (23, -65) d0, spawn spawn-1 at (0, 105) d0, wool wool-1#1 at (41, -68) d0, boulder rock-3#1 at (34, -65) d1, tree birk-5#1 at (12, -62) d2
 
 ## spawn-red -> light_blue-1
-ROUTE (0, 104) -> (-56, -70) aim travel: 211 blocks, 30 placed, 1 drop(s), worst drop 4
+ROUTE (0, 108) -> (-56, -70) aim travel: 215 blocks, 30 placed, 1 drop(s), worst drop 4
   place            y   step
+  (0, 108)          19
+  (0, 107)          19
+  (0, 106)          19
+  (0, 105)          19
   (0, 104)          19
   (0, 103)          19
   (0, 102)          19
@@ -546,11 +560,15 @@ ROUTE (0, 104) -> (-56, -70) aim travel: 211 blocks, 30 placed, 1 drop(s), worst
   (-55, -69)        18
   (-56, -70)        18
 rises 4, falls 1, worst step 4: scramble +2 at (-6, 13); drop -4 at (-6, -15); scramble +2 at (-6, -22); scramble +2 at (-6, -31); barrier +4 at (-36, -62)
-beside: spawn spawn-1 at (0, 101) d0, wool wool-2#1 at (-56, -70) d0
+beside: spawn spawn-1 at (0, 105) d0, wool wool-2#1 at (-56, -70) d0
 
 ## spawn-blue -> red-0
-ROUTE (0, -104) -> (-46, 68) aim travel: 204 blocks, 30 placed, 1 drop(s), worst drop 7
+ROUTE (0, -108) -> (-46, 68) aim travel: 208 blocks, 26 placed, 0 drop(s), worst drop 0
   place            y   step
+  (0, -108)         19
+  (0, -107)         19
+  (0, -106)         19
+  (0, -105)         19
   (0, -104)         19
   (0, -103)         19
   (0, -102)         19
@@ -740,18 +758,22 @@ ROUTE (0, -104) -> (-46, 68) aim travel: 204 blocks, 30 placed, 1 drop(s), worst
   (-38, 66)         18
   (-39, 66)         18
   (-40, 66)         18
-  (-41, 66)         23   barrier +5
-  (-42, 66)         24
-  (-43, 66)         25
-  (-44, 66)         25
-  (-45, 67)         18   drop -7
+  (-41, 66)         19
+  (-42, 67)         18
+  (-43, 67)         18
+  (-44, 67)         18
+  (-45, 67)         18
   (-46, 68)         18
-rises 2, falls 1, worst step 7: barrier +3 at (0, -14); barrier +5 at (-41, 66); drop -7 at (-45, 67)
-beside: house powder at (-32, 65) d0, spawn spawn-1#1 at (0, -104) d0, wool wool-1 at (-46, 68) d0, boulder rock-3 at (-36, 64) d1, tree birk-5 at (-14, 61) d2
+rises 1, falls 0, worst step 3: barrier +3 at (0, -14)
+beside: house powder at (-32, 65) d0, spawn spawn-1#1 at (0, -108) d0, wool wool-1 at (-46, 68) d0, boulder rock-3 at (-36, 64) d1, tree birk-5 at (-14, 61) d2
 
 ## spawn-blue -> orange-0
-ROUTE (0, -104) -> (56, 70) aim travel: 211 blocks, 30 placed, 1 drop(s), worst drop 4
+ROUTE (0, -108) -> (56, 70) aim travel: 215 blocks, 30 placed, 1 drop(s), worst drop 4
   place            y   step
+  (0, -108)         19
+  (0, -107)         19
+  (0, -106)         19
+  (0, -105)         19
   (0, -104)         19
   (0, -103)         19
   (0, -102)         19
@@ -951,11 +973,15 @@ ROUTE (0, -104) -> (56, 70) aim travel: 211 blocks, 30 placed, 1 drop(s), worst 
   (55, 69)          18
   (56, 70)          18
 rises 4, falls 1, worst step 4: scramble +2 at (5, -14); drop -4 at (5, 14); scramble +2 at (5, 21); scramble +2 at (5, 30); barrier +4 at (35, 61)
-beside: spawn spawn-1#1 at (0, -104) d0, wool wool-2 at (53, 68) d0
+beside: spawn spawn-1#1 at (0, -108) d0, wool wool-2 at (53, 68) d0, water dam#1 at (6, -78) d2
 
 ## spawn-blue -> blue-1
-ROUTE (0, -104) -> (46, -68) aim travel: 68 blocks, 4 placed, 1 drop(s), worst drop 6
+ROUTE (0, -108) -> (46, -68) aim travel: 72 blocks, 0 placed, 0 drop(s), worst drop 0
   place            y   step
+  (0, -108)         19
+  (0, -107)         19
+  (0, -106)         19
+  (0, -105)         19
   (0, -104)         19
   (0, -103)         19
   (0, -102)         19
@@ -1006,22 +1032,26 @@ ROUTE (0, -104) -> (46, -68) aim travel: 68 blocks, 4 placed, 1 drop(s), worst d
   (34, -74)         18
   (35, -74)         18
   (36, -74)         18
-  (37, -74)         18
-  (38, -74)         18
-  (39, -74)         18
-  (40, -74)         18
-  (41, -73)         18
-  (42, -72)         23   barrier +5
-  (43, -71)         24
-  (44, -70)         18   drop -6
+  (37, -73)         18
+  (38, -72)         18
+  (39, -71)         18
+  (40, -70)         19
+  (41, -69)         18
+  (42, -69)         18
+  (43, -69)         18
+  (44, -69)         18
   (45, -69)         18
   (46, -68)         18
-rises 1, falls 1, worst step 6: barrier +5 at (42, -72); drop -6 at (44, -70)
-beside: spawn spawn-1#1 at (0, -104) d0, tree birk-2#1 at (27, -74) d0, tree birk-4#1 at (16, -75) d0, water dam#1 at (8, -83) d0, wool wool-1#1 at (43, -71) d0, tree birk-1#1 at (32, -75) d1, tree birk-3#1 at (22, -75) d1
+rises 0, falls 0, worst step 0: walked end to end
+beside: spawn spawn-1#1 at (0, -108) d0, tree birk-2#1 at (27, -74) d0, tree birk-4#1 at (16, -75) d0, water dam#1 at (7, -84) d0, wool wool-1#1 at (41, -69) d0, tree birk-1#1 at (32, -75) d1, tree birk-3#1 at (22, -75) d1
 
 ## spawn-blue -> light_blue-1
-ROUTE (0, -104) -> (-56, -70) aim travel: 72 blocks, 3 placed, 0 drop(s), worst drop 0
+ROUTE (0, -108) -> (-56, -70) aim travel: 76 blocks, 8 placed, 1 drop(s), worst drop 4
   place            y   step
+  (0, -108)         19
+  (0, -107)         19
+  (0, -106)         19
+  (0, -105)         19
   (0, -104)         19
   (0, -103)         19
   (0, -102)         19
@@ -1040,10 +1070,10 @@ ROUTE (0, -104) -> (-56, -70) aim travel: 72 blocks, 3 placed, 0 drop(s), worst 
   (-11, -89)        18
   (-12, -88)        18
   (-13, -87)        18
-  (-14, -86)        18
-  (-15, -85)        18
-  (-16, -84)        18
-  (-17, -83)        18
+  (-14, -86)        24   barrier +6
+  (-15, -85)        24
+  (-16, -84)        22
+  (-17, -83)        18   drop -4
   (-18, -82)        18
   (-19, -81)        18
   (-20, -80)        18
@@ -1083,5 +1113,5 @@ ROUTE (0, -104) -> (-56, -70) aim travel: 72 blocks, 3 placed, 0 drop(s), worst 
   (-54, -72)        18
   (-55, -71)        18
   (-56, -70)        18
-rises 1, falls 0, worst step 4: barrier +4 at (-36, -75)
-beside: spawn spawn-1#1 at (0, -104) d0, wool wool-2#1 at (-56, -70) d0, house head-store#1 at (-17, -85) d1
+rises 2, falls 1, worst step 6: barrier +6 at (-14, -86); drop -4 at (-17, -83); barrier +4 at (-36, -75)
+beside: spawn spawn-1#1 at (0, -108) d0, wool wool-2#1 at (-56, -70) d0, house head-store#1 at (-17, -85) d1

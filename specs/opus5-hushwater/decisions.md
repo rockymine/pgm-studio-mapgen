@@ -403,3 +403,121 @@ solid, and `GENERATION-NOTES.md` is what told me the builder defaults `mirrors` 
 landmark on the symmetry centre, and on a team's own ground it means one side simply has no chimney, with
 nothing anywhere reporting it.
 **Composer's part:** none. The composer has no storeys at all.
+
+## 30. What stands on the bing, now that nothing is taken off a shelf of forms
+**Chose:** an engine house and its stack, stated as twenty-one spans on one made layer — a footing
+ring, four walls seven courses high, a doorway cut as an override, three roof rings each a course
+higher and a block further in, and three nested squares for the stack, 7 x 7 to 5 x 5 to 3 x 3 with
+tops at y22, y28 and y35.
+**Because:** the ruling is that a building on this board is built here. A parametric tower is one call
+and says nothing about the place; a house with a stack beside it says a winding engine stood on the
+spoil. The shape of the statement is forced by the layer rule — a layer holds one span per column and
+the taller add wins it outright, floor included — so a taper is nested squares sharing a floor and a
+roof is rings that do not overlap what they stand over.
+**Read first:** `sketch/relief/read` on the first cut, which declined nine `SK9` pairs at once:
+*"'eh-footing' and 'eh-eaves-s' stack over the same ground on layer 'enginehouse' … the world keeps
+'eh-eaves-s' and 'eh-footing' is not in it."* The footing was a solid plate under the whole building
+and the roof rings stood over it. Cutting the footing down to a ring cleared all nine.
+**Studio's part:** `SK9` is the whole of why this is right rather than plausible — nothing else sees a
+span that lost its column, and the store answers 200 either way. `PT4` is the second: every cell
+pattern that can land on a face states a `rise`, and four of mine did not.
+**Composer's part:** none.
+
+## 31. The rock is stated in beds, on the height axis
+**Chose:** one `layered` stack on `axis: "height"`, repeating 4 courses of hard rock, 2 of a parting
+and 3 of hard rock from y1 up, each bed a cell patch of its own; it is the fill of all four themes,
+the `beyond` of every wall stack, and the surface band of the moor's crag and the hush's washed rock.
+**Because:** the ruling is that the raw rock has no pattern. A pattern on a rock has to be a fact
+about the rock rather than a texture: bedding is what a fell is made of, it varies with world height
+rather than with position, and so the same stack draws ledges on a crag, bands on a cut face and a
+different top bed on two outcrops twenty blocks apart. A cell patch alone cannot do that — it
+resolves a whole column alike, which is what `PT4` says in so many words.
+**Read first:** `GET …/incline?format=text` — `00-09° 62.6% · 10-19° 27.4% · 20-29° 6.7% · 30-39°
+2.4% · 40-49° 0.5% · 50-59° 0.3%` — which says the crag band is about a tenth of the board and the
+pattern therefore has to reach the fill and the walls to be seen at all.
+**Studio's part:** the `height` axis and `ending: "repeat"`, which is what makes one stack a stratum
+rather than a gradient; and `GET /api/terrain/patterns`, which is where the field names came from.
+**Composer's part:** none.
+
+## 32. The dressing floor is worked, and its face wears the team's clay
+**Chose:** the floor theme's surface as a seven-block palette of cobble, stone brick, cracked and
+mossy brick, andesite and gravel on a four-block patch; its wall as a `wallDiagonal` whose runs
+include two of `teamTint` over stained clay, falling back to hardened clay.
+**Because:** the ruling asks for two things — ground that reads used rather than laid this morning,
+and a wall carrying the team's clay colour as a run or a diagonal stripe. The patch is four blocks
+because a player crossing the head has to see it change; the tint is on the wall rather than on the
+ground because the wall is what is read from the far bank.
+**Read first:** `GET /api/terrain/patterns`, which is the only place `wallDiagonal` and `teamTint`
+are named with their fields — `runs: wallStripe[]` with a `slope`, and `blockId` with a `neutral`.
+`AUTHORING-BRIEF.md` carries the condition: a tint is one colour per canonical island, so on a board
+whose land is one landmass it comes out one colour. This board's `intent.islandTeams` reads
+`{1: blue, 2: red, 3-5: neutral}`, which is the case the tint was made for.
+**Studio's part:** both patterns, and the island ownership the tint reads. I chose only which runs.
+**Composer's part:** the two-island land, which is what makes a tint mean anything here.
+
+## 33. Two walls against the hole, and where they could stand was arithmetic
+**Chose:** a four-course wall along the hole's north lip from x 0 to x 15 with three piers two
+courses over it, and a second wall turning north off its east end at x 13..15, z 79..86. Both in the
+diagonal stripe, the piers in courses read straight up the world.
+**Because:** the ruling asks for walls at the stony area and against the hole. The hole is the ring
+hub's own 16 x 16 void and its north lip is the mine head, which is the stony area — so the two
+sentences name one place. The lip is where a wall is *for* something: it is a fall guard on a void
+and the only cover on forty blocks of open floor.
+**Read first:** `GET …/column` at nine positions to find the lip: `(8, 74)`, `(8, 75)` and `(0, 70)`
+all `void — no block recorded at any height`, `(8, 76)` stone brick to bedrock (the rim), `(16, 70)`
+and `(-1, 70)` ground at y16. So the hole is x 0..15, z 60..75 and the wall stands on z 76..78.
+`04-routes.txt` is what kept it off the traffic: the red raid leaves the spawn down x 0 to `(0, 83)`
+and then cuts west — `(-1, 82) (-2, 81) (-3, 80) (-4, 79) (-5, 78)` — so the lip wall is on the other
+side of the hole from every route that crosses the head.
+**Studio's part:** the ring hub and its hole are the composer's; that a made layer is what states a
+wall is the studio's.
+**Composer's part:** the hole itself — `CT8`'s rotation device, and the thing the walls are against.
+
+## 34. The house on the stone has its own style; the one on the moor keeps the old one
+**Chose:** a second style, `tools/styles/hw-stonehouse.json`, for the whim house at the mine head —
+hardened clay three courses of five, a stone brick course over it and a `teamTint` course of stained
+clay under it, a brick roof on a stone brick verge with a hardened clay gable, and no beams. The
+powder house out on the spur keeps `hw-minehouse` and its timber.
+**Because:** the ruling is about *the house that's sitting on the stone*, and the two buildings stand
+on two different grounds. A masonry house on the laid floor and a timber one on the moor is the same
+split the board's two themes already make, so the styles say what the ground says.
+**Read first:** three refusals, in order. `HS3` — *"roof is a cell pattern rather than one block. A
+roof's body and its verge are each a single material"* — so the brick-ish roof is brick, and what
+keeps the house off full-on brick is the wall. `HS1` — *"beams.block (172) is not a log"*. `HS9` —
+*"the building lays beams … and no course of any of its walls is a laid log … or drop the beams."*
+**Studio's part:** all three refusals, and a defect with them: `"beams": null` is not how a style
+drops its beams, and it does not refuse — `HouseStyleValidation.CheckBeams` dereferences it and the
+whole `POST /map/from-documents` answers **500 / RQ2**. The sentinel is `block: -1` with `any: false`,
+which `CheckBeams` reads as nothing to judge.
+**Composer's part:** none.
+
+## 35. Trees at the front, on the turf half of the shore and nowhere else
+**Chose:** six trees between the crossing and the bank — `(13, 25)`, `(14, 30)`, `(20, 34)`,
+`(24, 41)`, `(29, 34)` and `(12, 22)` — birch and spruce alternating, all of them east of x 12.
+**Because:** the ruling is that the natural half near the front has no trees. Which half is natural is
+already stated on this board: the hush scoured the shore's west and the east kept its ground, which is
+what the `shore-turf` brush says. So the trees stop where the gravel starts, and a player crossing the
+gill reads the two halves of the shore apart at a glance.
+**Read first:** `tools/loop.py` dressing preview, which declined the first cut of one of them —
+`DR-SITE tree 'shore-birk-6' has no ground at (19, 24)`, because `frontline-t2` ends at x 16 and the
+row below z 28 is only sixteen blocks of ground either side of the centre. Moved to `(12, 22)`:
+`placed 21, declined 0`.
+**Studio's part:** the decline and its coordinate. Twenty seconds against a ten-minute drive.
+**Composer's part:** the frontline's own width, which is what put the edge at x 16.
+
+## 36. The pond was not moved; the ground under it was
+**Chose:** a fourth theme, `mire` — peat, clay, podzol and trodden turf — brushed over the mine head's
+west rows as `dam-bed`, the pool pulled in to sit inside it with a clay and coarse-dirt bank, and a
+fringe of rushes round it.
+**Because:** the ruling offers two answers and asks for the pond to stop being a hole in laid stone.
+Moving it is the one that costs a board: the route read is the only instrument that sees a pond as an
+obstacle, and this pond was already moved once for exactly that — the four raids read
+`206 / 211 / 204 / 211 blocks, 30 placed` where it stands and `55 placed` where it stood before. The
+head is also the only flat excluded ground on the board, which is what a prop that carves its own bed
+needs. So the honest change is the other one the ruling names: state the ground it is dug into.
+**Read first:** `GET …/column?at=-12,84` on the shipped world — `y 17 Water · y 16 Water · y 15
+Cobblestone · y 14 Stone` — and `(-17, 84)` `void`, which says the pan also ran to the board's own
+edge. The new pool's points are pulled two blocks in and its radius is 2 rather than 3.
+**Studio's part:** that a water prop carves its own band rather than finding a level, so the pan is
+the pool; and `themeById`/an add shape with a theme, which is how a bed is stated at all.
+**Composer's part:** none.

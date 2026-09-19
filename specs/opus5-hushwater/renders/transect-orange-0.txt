@@ -9,7 +9,7 @@ TRANSECT 15 stations from (44, 70) to (58, 70), every 1
   (   49,    70)      18       18           18                      
   (   50,    70)      18       18           18                      
   (   51,    70)      18       18           18                      
-  (   52,    70)      18       18           23  redstoneline 1      
+  (   52,    70)      18       18           23  redstoneline 2      
   (   53,    70)      18       18           24  wool wool-2         
   (   54,    70)      18       18           25  wool wool-2         
   (   55,    70)      18       18           59  wool wool-2         
@@ -17,7 +17,7 @@ TRANSECT 15 stations from (44, 70) to (58, 70), every 1
   (   57,    70)      18       18           59  wool wool-2         
   (   58,    70)      18       18           24  wool wool-2         
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: redstoneline 1 at (52, 68), wool wool-2 at (53, 68)
+beside: redstoneline 2 at (52, 68), wool wool-2 at (53, 68)
 
 ## orange-0 (wool) along z
 TRANSECT 25 stations from (56, 58) to (56, 82), every 1
@@ -28,7 +28,7 @@ TRANSECT 25 stations from (56, 58) to (56, 82), every 1
   (   56,    61)      18       18           18                      
   (   56,    62)      18       18           18                      
   (   56,    63)      18       18           18                      
-  (   56,    64)      18       18           23                      
+  (   56,    64)      18       18           23  redstoneline 3      
   (   56,    65)      18       18           24  wool wool-2         
   (   56,    66)      18       18           25  wool wool-2         
   (   56,    67)      18       18           26  wool wool-2         
@@ -48,4 +48,4 @@ TRANSECT 25 stations from (56, 58) to (56, 82), every 1
   (   56,    81)                                                    void
   (   56,    82)                                                    void
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-2 at (54, 65), redstoneline 2 at (54, 75)
+beside: redstoneline 3 at (54, 64), wool wool-2 at (54, 65), redstoneline 4 at (54, 75)

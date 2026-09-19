@@ -15,11 +15,7 @@ is given a spoil bank to fight over.
     PGM_STUDIO_API=... python3 specs/opus5-hushwater/build-spec.py
     tools/drive.py specs/opus5-hushwater "Hushwater" --out maps/opus5-hushwater
 """
-import json, os, sys, urllib.request
-
-sys.path.insert(0, os.path.join(
-    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "tools"))
-from sculpt import props  # noqa: E402  — the parametric forms, emitted as ordinary sketch shapes
+import json, os, urllib.request
 
 API = os.environ.get("PGM_STUDIO_API", "http://localhost:7894/api")
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -162,14 +158,26 @@ BOXES = [
 # bank, the shore it dumped at the gill and the spoil bank standing in it, which is the same
 # ground at both ends of the fall and is what the board is named for.
 
-STONE       = {"kind": "solid", "id": 1,  "data": 0}
-ANDESITE    = {"kind": "solid", "id": 1,  "data": 5}
-GRASS       = {"kind": "solid", "id": 2,  "data": 0}
-DIRT        = {"kind": "solid", "id": 3,  "data": 0}
-COARSE_DIRT = {"kind": "solid", "id": 3,  "data": 1}
-COBBLE      = {"kind": "solid", "id": 4,  "data": 0}
-GRAVEL      = {"kind": "solid", "id": 13, "data": 0}
-STONE_BRICK = {"kind": "solid", "id": 98, "data": 0}
+STONE        = {"kind": "solid", "id": 1,   "data": 0}
+ANDESITE     = {"kind": "solid", "id": 1,   "data": 5}
+GRASS        = {"kind": "solid", "id": 2,   "data": 0}
+DIRT         = {"kind": "solid", "id": 3,   "data": 0}
+COARSE_DIRT  = {"kind": "solid", "id": 3,   "data": 1}
+PODZOL       = {"kind": "solid", "id": 3,   "data": 2}
+COBBLE       = {"kind": "solid", "id": 4,   "data": 0}
+GRAVEL       = {"kind": "solid", "id": 13,  "data": 0}
+MOSSY_COBBLE = {"kind": "solid", "id": 48,  "data": 0}
+CLAY         = {"kind": "solid", "id": 82,  "data": 0}
+STONE_BRICK  = {"kind": "solid", "id": 98,  "data": 0}
+MOSSY_BRICK  = {"kind": "solid", "id": 98,  "data": 1}
+CRACK_BRICK  = {"kind": "solid", "id": 98,  "data": 2}
+BRICK        = {"kind": "solid", "id": 45,  "data": 0}
+HARD_CLAY    = {"kind": "solid", "id": 172, "data": 0}
+# the one material on the board that knows whose ground it is standing on: stained clay stamped
+# with the owning island's team colour, hardened clay where nobody owns the cell. The land here is
+# two team islands and three neutral ones, which is the condition PT5 names for a tint to mean
+# anything at all.
+TEAM_CLAY    = {"kind": "teamTint", "blockId": 159, "neutral": HARD_CLAY}
 
 
 def depth_stack(*courses, beyond=None):
@@ -179,11 +187,33 @@ def depth_stack(*courses, beyond=None):
                       "bands": [{"thickness": t, "material": m} for t, m in courses]}}
 
 
+def strata(seed, weathered=False):
+    """The rock, in beds. A thickness on the HEIGHT axis is a span of world courses, so one stack
+    puts a hard bed at y1-4, a parting at y5-6 and another hard bed at y7-9 and then repeats it up
+    the whole fell: a cut face reads as bedding, a crag reads as ledges, and two crags at different
+    heights are not the same grey. Each bed carries a cell patch of its own so the bed is mottled
+    as well as banded."""
+    hard = [STONE, ANDESITE, MOSSY_COBBLE] if weathered else [STONE, ANDESITE]
+    parting = [GRAVEL, COARSE_DIRT, COBBLE] if weathered else [COBBLE, GRAVEL]
+    return {"kind": "layered", "axis": "height", "from": 1, "beyond": STONE,
+            "stack": {"ending": "repeat", "bands": [
+                {"thickness": 4, "material": {"kind": "cell", "seed": seed, "cellSize": 7,
+                                              "jitter": 45, "warp": 3, "rise": 4,
+                                              "palette": hard}},
+                {"thickness": 2, "material": {"kind": "cell", "seed": seed + 1, "cellSize": 5,
+                                              "jitter": 55, "warp": 3, "rise": 2,
+                                              "palette": parting}},
+                {"thickness": 3, "material": {"kind": "cell", "seed": seed + 2, "cellSize": 6,
+                                              "jitter": 45, "warp": 2, "rise": 3,
+                                              "palette": [ANDESITE, COBBLE]}},
+            ]}}
+
+
 def body():
-    """The rock under everything, in the fill where a body belongs — two stones at a cell
-    wider than it is tall, so a cut face reads as blobs rather than as vertical runs."""
-    return {"kind": "cell", "seed": 21, "cellSize": 9, "jitter": 40, "warp": 3, "rise": 5,
-            "palette": [STONE, ANDESITE]}
+    """The rock under everything, in the fill where a body belongs. The fill carries the same beds
+    the exposed rock does, because a theme's surface is only its top courses and a bank sliced by a
+    gill shows twenty of them."""
+    return strata(21)
 
 
 def moor_surface():
@@ -198,10 +228,9 @@ def moor_surface():
                 {"thickness": 14, "material": depth_stack(
                     (1, {"kind": "cell", "seed": 23, "cellSize": 5, "jitter": 55, "warp": 3,
                          "palette": [COARSE_DIRT, GRASS]}), (2, DIRT))},
-                # the face: rock, mottled so a crag is not one flat grey
-                {"thickness": 70, "material": depth_stack(
-                    (2, {"kind": "cell", "seed": 5, "cellSize": 6, "jitter": 45, "warp": 2,
-                         "palette": [STONE, COBBLE]}), (3, STONE))},
+                # the face: rock in its beds, weathered where the fell has been open to the
+                # weather — the band a player reads as a crag, and the one the rock has to pattern
+                {"thickness": 70, "material": strata(5, weathered=True)},
             ]}}
 
 
@@ -219,7 +248,8 @@ def hush_surface():
                 {"thickness": 14, "material": depth_stack(
                     (1, {"kind": "cell", "seed": 19, "cellSize": 5, "jitter": 50, "warp": 2,
                          "palette": [GRAVEL, STONE]}), (2, GRAVEL))},
-                {"thickness": 70, "material": depth_stack((2, STONE), (2, COBBLE))},
+                # the scoured rock: the same beds, washed clean rather than weathered
+                {"thickness": 70, "material": strata(9)},
             ]}}
 
 
@@ -233,7 +263,7 @@ THEMES = {
         "rim": {"enabled": False, "depth": 1, "material": COARSE_DIRT},
         "surface": {"enabled": True, "depth": 3, "material": moor_surface()},
         # a cut face is a soil profile, which is what a bank sliced by a gill looks like
-        "wall": depth_stack((1, COARSE_DIRT), (2, DIRT), (3, GRAVEL)),
+        "wall": depth_stack((1, COARSE_DIRT), (2, DIRT), (3, GRAVEL), beyond=strata(5)),
         "wallEnabled": True,
         "fill": body(),
     },
@@ -243,16 +273,28 @@ THEMES = {
         "wallOnTerrainFaces": True,
         # the made ground DOES want a rim: its edge is a built lip, not a hillside
         "rim": {"enabled": True, "depth": 1, "material": STONE_BRICK},
+        # a dressing floor is a floor that has been worked on: the courses are cracked and
+        # mossed where the ore was barrowed over them, the bed shows through as andesite where
+        # they wore off it, and gravel is trodden into the gaps. The patch is four blocks so a
+        # player crossing the head sees it change under them rather than reading one grey sheet.
         "surface": {"enabled": True, "depth": 3, "material": depth_stack(
-            (1, {"kind": "cell", "seed": 9, "cellSize": 6, "jitter": 25, "warp": 1,
-                 "palette": [COBBLE, STONE_BRICK]}), (2, GRAVEL))},
-        # a retaining wall is the one surface on a board that wants a wallRun: the courses
-        # stripe along the perimeter instead of being sampled from the plane
-        "wall": {"kind": "wallRun", "runs": [
-            {"material": STONE_BRICK, "width": 1},
-            {"material": COBBLE, "width": 2},
-            {"material": ANDESITE, "width": 1},
+            (1, {"kind": "cell", "seed": 9, "cellSize": 4, "jitter": 55, "warp": 3,
+                 "palette": [COBBLE, STONE_BRICK, CRACK_BRICK, MOSSY_COBBLE, GRAVEL,
+                             ANDESITE, MOSSY_BRICK, COBBLE]}),
+            (2, {"kind": "cell", "seed": 11, "cellSize": 5, "jitter": 45, "warp": 2,
+                 "palette": [GRAVEL, COBBLE]}), beyond=strata(21))},
+        # a retaining wall is the one surface on a board that wants stripes along its arc, and
+        # wallDiagonal shears them by height so they climb the face instead of standing upright.
+        # One run is TEAM_CLAY, so the head wears the colour of the side that holds it and a
+        # player on the far bank reads whose stonework they are looking at.
+        "wall": {"kind": "wallDiagonal", "slope": 2, "runs": [
+            {"material": STONE_BRICK, "width": 2},
             {"material": COBBLE, "width": 3},
+            {"material": TEAM_CLAY, "width": 1},
+            {"material": CRACK_BRICK, "width": 2},
+            {"material": COBBLE, "width": 2},
+            {"material": TEAM_CLAY, "width": 1},
+            {"material": ANDESITE, "width": 2},
         ]},
         "wallEnabled": True,
         "fill": body(),
@@ -263,7 +305,23 @@ THEMES = {
         "wallOnTerrainFaces": True,
         "rim": {"enabled": False, "depth": 1, "material": GRAVEL},
         "surface": {"enabled": True, "depth": 3, "material": hush_surface()},
-        "wall": depth_stack((2, GRAVEL), (3, STONE)),
+        "wall": depth_stack((2, GRAVEL), (3, STONE), beyond=strata(9)),
+        "wallEnabled": True,
+        "fill": body(),
+    },
+    # the dam end of the mine head, which is not laid stone at all: peat, clay and trodden turf,
+    # the ground a pond can be dug in. A pool needs a bed, and the bed is what this theme is.
+    "mire": {
+        "bedrock": {"relative": False, "value": 1},
+        "rimEdges": "drop",
+        "wallOnTerrainFaces": True,
+        "rim": {"enabled": True, "depth": 1, "material": COARSE_DIRT},
+        "surface": {"enabled": True, "depth": 4, "material": depth_stack(
+            (1, {"kind": "cell", "seed": 27, "cellSize": 4, "jitter": 55, "warp": 3,
+                 "palette": [PODZOL, COARSE_DIRT, GRASS, CLAY, PODZOL, GRAVEL]}),
+            (3, {"kind": "cell", "seed": 29, "cellSize": 5, "jitter": 50, "warp": 2,
+                 "palette": [CLAY, DIRT, GRAVEL]}), beyond=strata(21))},
+        "wall": depth_stack((1, PODZOL), (2, CLAY), (3, GRAVEL), beyond=strata(21)),
         "wallEnabled": True,
         "fill": body(),
     },
@@ -382,6 +440,13 @@ ADD_SHAPES = [
     # and turf coming the other way, down onto the shore where nothing scoured it — the
     # scoured half of the shore is the west, and the east half kept its ground
     brush("shore-turf", "moor", [[0, 21], [15, 21], [15, 31], [0, 30]]),
+    # the dam end of the mine head is not a dressing floor at all: peat, clay and trodden turf,
+    # which is the ground a pond can be dug in. It states the head's own exclusion and its own
+    # flat height, because the relief would otherwise solve a surface straight through it, and
+    # it is drawn to the head's west rows so the laid floor starts where the working does.
+    {"id": "dam-bed", "type": "polygon", "operation": "add", "theme": "mire",
+     "height_mode": "level", "base_height": 18, "skirt": 0, "relief_scope": "exclude",
+     "vertices": [[-16, 76], [-2, 76], [-2, 92], [-16, 92]]},
 ]
 
 # ── what stands on it ─────────────────────────────────────────────────────────────────────
@@ -392,37 +457,109 @@ ADD_SHAPES = [
 # answer to *why here*: the trees are in the lee behind the head and on the spur's north
 # edge where the wind is off them, and the rocks are on the knoll the relief raised.
 
-BRICKWORK = {"kind": "cell", "seed": 51, "cellSize": 4, "jitter": 30, "warp": 1, "rise": 4,
-             "palette": [{"kind": "solid", "id": 45, "data": 0}, STONE_BRICK]}
+RUBBLE = {"kind": "cell", "seed": 51, "cellSize": 3, "jitter": 45, "warp": 2, "rise": 2,
+          "palette": [STONE_BRICK, COBBLE, CRACK_BRICK, MOSSY_BRICK, ANDESITE, STONE_BRICK]}
+FOOTING = {"kind": "cell", "seed": 53, "cellSize": 3, "jitter": 40, "warp": 2, "rise": 2,
+           "palette": [COBBLE, ANDESITE, GRAVEL, STONE]}
+ROOFING = {"kind": "cell", "seed": 55, "cellSize": 3, "jitter": 35, "warp": 1, "rise": 2,
+           "palette": [BRICK, HARD_CLAY, BRICK, COBBLE]}
+FLUE = {"kind": "cell", "seed": 57, "cellSize": 2, "jitter": 35, "warp": 1, "rise": 3,
+        "palette": [BRICK, HARD_CLAY, BRICK, CRACK_BRICK]}
+
+# The two ways a wall carries the colour of the side that holds it, both of them asked for by
+# name. The stripes wrap the arc and shear by height, so they climb a face diagonally; the
+# courses are read straight up the world, so they band it. TEAM_CLAY is the run in each.
+TEAM_STRIPE = {"kind": "wallDiagonal", "slope": 2, "runs": [
+    {"material": STONE_BRICK, "width": 3},
+    {"material": TEAM_CLAY, "width": 1},
+    {"material": COBBLE, "width": 3},
+    {"material": TEAM_CLAY, "width": 1},
+    {"material": CRACK_BRICK, "width": 2},
+]}
+TEAM_COURSES = {"kind": "layered", "axis": "height", "from": 18, "beyond": STONE_BRICK,
+                "stack": {"ending": "repeat", "bands": [
+                    {"thickness": 2, "material": COBBLE},
+                    {"thickness": 1, "material": TEAM_CLAY},
+                    {"thickness": 2, "material": STONE_BRICK}]}}
 
 
-def chimney():
-    """The mine's stack, standing on the bing — a tapered tower off
-    `tools/sculpt/props.py`, which emits circles and polygons rather than stamped block soup.
+def span(shape_id, x0, z0, x1, z1, floor, height, material, **rest):
+    """One span of a built thing: a rectangle standing from `floor` for `height` courses, so its
+    top block is `floor + height - 1`. Two spans may not overlap in plan unless the taller is
+    meant to take the whole column — a layer is one height field and the tallest add wins a
+    column outright, floor included."""
+    return {"id": shape_id, "type": "rectangle", "min_x": x0, "min_z": z0, "max_x": x1,
+            "max_z": z1, "floor": floor, "base_height": height, "material": material,
+            "operation": "add", "keepClear": True, **rest}
 
-    Three things it has to say for itself. `kind: "made"` takes it out of the stacking
-    rules and paints it over its own span, and with `part_of` it keeps `SK10`'s pair walk
-    and `SK11`'s reachability walk off a solid that has no gap to lose. Its group states
-    `mirrors: True`, because the builder defaults that to False — right for a landmark on
-    the symmetry centre and wrong for anything a team owns, and nothing reports the
-    difference: one team would simply have no chimney. And it takes a `material` rather
-    than a theme, because a building is never the ground it stands on and the ground it
-    stands on is the dressing floor.
 
-    It stands on the bing rather than beside the engine house because a made layer raises
-    the surface every downstream read takes, and a stack on the head put the defence's own
-    walk to its east wool over the top of it: `04-routes.txt` went from `3 placed` to
-    `30 placed, worst drop 13`. The bing is the one piece of ground no land route passes,
-    which is exactly what makes it the right plinth for a landmark."""
-    layer = props.tapered_tower(
-        "chimney", cx=48, cz=94, base_radius=3.4, top_radius=2.2, thickness=1.6,
-        floor=18, height=17, theme=None, courses=5, mirrors=True, name="Chimney")
-    for shape in layer["layout"]["shapes"]:
-        shape.pop("theme", None)
-        shape["material"] = BRICKWORK
-    return {"id": layer["id"], "name": layer["name"], "base_y": 0,
-            "kind": "made", "part_of": "chimney",
-            "shapes": layer["layout"]["shapes"], "groups": layer["layout"]["groups"]}
+def course_ring(prefix, x0, z0, x1, z1, thick, floor, height, material):
+    """A course of wall round a footprint, as four spans with the inside left open. Four spans
+    rather than a hollowed polygon: a subtract states the board's negative space and `SK13`
+    refuses any add over one, so nothing here is hollowed by cutting."""
+    return [span(f"{prefix}-s", x0, z0, x1, z0 + thick, floor, height, material),
+            span(f"{prefix}-n", x0, z1 - thick, x1, z1, floor, height, material),
+            span(f"{prefix}-w", x0, z0 + thick, x0 + thick, z1 - thick, floor, height, material),
+            span(f"{prefix}-e", x1 - thick, z0 + thick, x1, z1 - thick, floor, height, material)]
+
+
+def made_layer(layer_id, name, shapes, mirrors=True):
+    """A run of spans as one made layer. `kind: "made"` paints it over its own span and takes it
+    out of the stacking rules, `part_of` keeps `SK10`'s pair walk and `SK11`'s reachability walk
+    off a solid that has no gap to lose, and the group states `mirrors` because the builder
+    defaults it to False — on a team's own ground that means one side simply has nothing, with
+    nothing anywhere reporting the difference."""
+    return {"id": layer_id, "name": name, "base_y": 0, "kind": "made", "part_of": layer_id,
+            "shapes": shapes,
+            "groups": [{"id": f"{layer_id}-body", "name": name, "mirrors": mirrors,
+                        "shapeIds": [s["id"] for s in shapes]}]}
+
+
+def engine_house():
+    """What stands on the bing: a winding-engine house with its stack, built here course by
+    course rather than taken off a shelf of forms.
+
+    The building is eight by eight of walling seven courses high on a footing that oversails it,
+    a doorway cut through the south wall as an override — the one add that replaces the column it
+    lands on whatever its height — and a roof of three rings, each standing a course higher and a
+    block further in than the one outside it, so the pitch is stated by the rings rather than by a
+    pitch field. The stack beside it is three nested squares on one floor, 7 x 7 to 5 x 5 to
+    3 x 3, each taller than the one around it: the taller add wins its column outright, so nesting
+    is how a taper is stated and the ring of each course is what shows.
+
+    It stands on the bing because a made layer raises the surface every downstream read takes, and
+    a building on the head put the defence's own walk to its east wool over the top of it. The
+    bing is the one piece of ground no land route crosses."""
+    shapes = course_ring("eh-footing", 40, 89, 50, 99, 1, 18, 1, FOOTING)
+    shapes += course_ring("eh-wall", 41, 90, 49, 98, 1, 18, 7, RUBBLE)
+    shapes += [span("eh-door", 44, 90, 46, 91, 18, 1, FOOTING, override=True)]
+    shapes += course_ring("eh-eaves", 42, 91, 48, 97, 1, 25, 1, ROOFING)
+    shapes += course_ring("eh-slope", 43, 92, 47, 96, 1, 26, 1, ROOFING)
+    shapes += [span("eh-ridge", 44, 93, 46, 95, 27, 1, ROOFING),
+               # the stack: a plinth, a shaft and the flue head, each nested inside the last and
+               # each taller, which is the whole of how a taper is stated on a layer
+               span("eh-stack-0", 50, 92, 56, 98, 18, 5, FOOTING),
+               span("eh-stack-1", 51, 93, 55, 97, 18, 11, RUBBLE),
+               span("eh-stack-2", 52, 94, 54, 96, 18, 18, FLUE)]
+    return made_layer("enginehouse", "Engine house", shapes)
+
+
+def stonework():
+    """The two walls on the mine head, standing against the hole the ring goes round.
+
+    The long one runs the hole's north lip from x 0 to x 15, four courses over the floor, with
+    three piers standing two courses over it and a block further out — so the wall has a profile
+    rather than a face. The second turns north off its east end and screens the head's working
+    corner. Both are stated in TEAM_STRIPE, whose diagonal run of TEAM_CLAY is what makes a
+    player on the far bank read whose head they are looking at; the piers take TEAM_COURSES,
+    which says the same thing as bands read straight up the world."""
+    shapes = [span("hw-lip", 0, 76, 16, 78, 18, 4, TEAM_STRIPE),
+              span("hw-pier-w", 0, 76, 3, 79, 18, 6, TEAM_COURSES),
+              span("hw-pier-m", 6, 76, 9, 79, 18, 6, TEAM_COURSES),
+              span("hw-pier-e", 13, 76, 16, 79, 18, 6, TEAM_COURSES),
+              span("hw-bay", 13, 79, 16, 86, 18, 4, TEAM_STRIPE),
+              span("hw-bay-end", 13, 84, 16, 87, 18, 6, TEAM_COURSES)]
+    return made_layer("stonework", "Head walls", shapes)
 
 
 DRESSING = {
@@ -455,16 +592,26 @@ DRESSING = {
          "points": [[-8, 66], [-24, 70], [-40, 68]], "radius": 2, "style": "solid",
          "pave": {"kind": "cell", "seed": 14, "cellSize": 4, "jitter": 40, "warp": 2,
                   "palette": [GRAVEL, ANDESITE, COBBLE]}},
-        # the dam the hush was let go from, on the head's own flat ground. A water prop
-        # carves its own bed rather than finding a level, so the pan IS the pool and the
-        # launder that leaves it is the polyline shape beside it.
+        # the dam the hush was let go from, dug into the peat at the head's west end rather
+        # than into its laid floor: the `dam-bed` shape above states that ground, and the bank
+        # is the clay and trodden soil a pond edge is made of. A water prop carves its own bed
+        # rather than finding a level, so the pan IS the pool, and the launder that leaves it
+        # is the polyline shape beside it.
         {"id": "dam", "kind": "water", "seed": 7, "shape": "pool", "form": "natural",
-         "points": [[-15, 79], [-9, 78], [-8, 86], [-13, 90], [-16, 85]],
-         "radius": 3, "depth": 2, "level": 17, "edge": 1, "shore": 2, "shoreWander": True,
-         "bank": {"kind": "cell", "seed": 71, "cellSize": 4, "jitter": 40, "rise": 2,
-                  "palette": [COBBLE, GRAVEL]}},
-        # the whim house stands over the shaft at the head, facing the yard it worked
-        {"id": "head-store", "kind": "house", "seed": 101, "style": "@hw-minehouse", "front": "negZ",
+         "points": [[-14, 80], [-9, 79], [-8, 85], [-11, 89], [-14, 85]],
+         "radius": 2, "depth": 2, "level": 17, "edge": 1, "shore": 3, "shoreWander": True,
+         "bank": {"kind": "cell", "seed": 71, "cellSize": 3, "jitter": 45, "rise": 2,
+                  "palette": [CLAY, COARSE_DIRT, PODZOL, GRAVEL, CLAY]}},
+        # rushes and rough grass round the pond, which is what tells a reader the water has
+        # been there a while
+        {"id": "dam-fringe", "kind": "flora", "seed": 91,
+         "spec": {"coverage": 0.5, "scale": 6, "octaves": 2, "fernShare": 0.45,
+                  "flowerShare": 0.03, "flowerScale": 9, "tallShare": 0.3},
+         "points": [[-16, 77], [-3, 77], [-3, 91], [-16, 91]]},
+        # the whim house stands over the shaft at the head, facing the yard it worked. It is
+        # the one building on the laid stone and it takes its own style: hardened clay walls
+        # over a stone footing, and a roof that reads brick without being a course of brick.
+        {"id": "head-store", "kind": "house", "seed": 101, "style": "@hw-stonehouse", "front": "negZ",
          "wings": [{"corners": [[17, 85], [23, 91]]}]},
         # the powder house, out on the spur away from everything, as a powder house is
         {"id": "powder", "kind": "house", "seed": 102, "style": "@hw-minehouse", "front": "posZ",
@@ -475,6 +622,15 @@ DRESSING = {
         {"id": "birk-3", "kind": "tree", "style": "birk", "x": -24, "z": 75},
         {"id": "birk-4", "kind": "tree", "style": "fir",  "x": -19, "z": 74},
         {"id": "birk-5", "kind": "tree", "style": "birk", "x": -13, "z": 62},
+        # the front of the board: the shore's east half kept its turf where the hush scoured
+        # the west, so the trees stand on the turf and stop where the gravel starts. They are
+        # what tells a player crossing the gill which half of the shore is worked ground.
+        {"id": "shore-birk-1", "kind": "tree", "style": "birk", "x": 13, "z": 25},
+        {"id": "shore-birk-2", "kind": "tree", "style": "fir",  "x": 14, "z": 30},
+        {"id": "shore-birk-3", "kind": "tree", "style": "birk", "x": 20, "z": 34},
+        {"id": "shore-birk-4", "kind": "tree", "style": "fir",  "x": 24, "z": 41},
+        {"id": "shore-birk-5", "kind": "tree", "style": "birk", "x": 29, "z": 34},
+        {"id": "shore-birk-6", "kind": "tree", "style": "fir",  "x": 12, "z": 22},
         # and rocks on the knoll the relief raised at the bank's east end
         {"id": "rock-1", "kind": "boulder", "style": "erratic", "x": 24, "z": 30},
         {"id": "rock-2", "kind": "boulder", "style": "erratic-round", "x": 28, "z": 42},
@@ -516,7 +672,7 @@ def finish_document():
         "shapePropsByHeight": SHAPE_PROPS_BY_HEIGHT,
         "relief": RELIEF,
         "addShapes": ADD_SHAPES,
-        "addLayers": [chimney()],
+        "addLayers": [engine_house(), stonework()],
         "dressing": DRESSING,
         "roomStyles": {"spawn": "@hw-minehouse", "wool": "@hw-assay"},
         # the fell's own green: Extreme hills tints grass #8ab689, a grey-green that agrees

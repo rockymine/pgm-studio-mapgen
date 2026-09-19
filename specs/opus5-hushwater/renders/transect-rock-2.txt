@@ -8,9 +8,9 @@ TRANSECT 25 stations from (16, 42) to (40, 42), every 1
   (   20,    42)      20       20           20                      
   (   21,    42)      20       20           20                      
   (   22,    42)      20       20           20                      
-  (   23,    42)      20       20           20                      
-  (   24,    42)      19       19           19                      -1
-  (   25,    42)      19       19           19                      
+  (   23,    42)      20       20           26  tree shore-birk-4   
+  (   24,    42)      19       19           28  tree shore-birk-4   -1
+  (   25,    42)      19       19           24  tree shore-birk-4   
   (   26,    42)      19       19           21  boulder rock-2      
   (   27,    42)      19       19           22  boulder rock-2      
   (   28,    42)      18       18           22  boulder rock-2      -1
@@ -27,7 +27,7 @@ TRANSECT 25 stations from (16, 42) to (40, 42), every 1
   (   39,    42)                                                    void
   (   40,    42)                                                    void
 rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: flora fell-cover at (14, 40), boulder rock-2 at (26, 41)
+beside: flora fell-cover at (14, 40), tree shore-birk-4 at (22, 41), boulder rock-2 at (26, 42)
 
 ## rock-2 (boulder) along z
 TRANSECT 25 stations from (28, 30) to (28, 54), every 1
@@ -35,9 +35,9 @@ TRANSECT 25 stations from (28, 30) to (28, 54), every 1
   (   28,    30)      18       18           18                      
   (   28,    31)      18       18           18                      
   (   28,    32)      18       18           18                      
-  (   28,    33)      18       18           18                      
-  (   28,    34)      18       18           18                      
-  (   28,    35)      18       18           18                      
+  (   28,    33)      18       18           25  tree shore-birk-5   
+  (   28,    34)      18       18           25  tree shore-birk-5   
+  (   28,    35)      18       18           25  tree shore-birk-5   
   (   28,    36)      18       18           18                      
   (   28,    37)      18       18           18                      
   (   28,    38)      18       18           18                      
@@ -58,4 +58,4 @@ TRANSECT 25 stations from (28, 30) to (28, 54), every 1
   (   28,    53)                                                    void
   (   28,    54)                                                    void
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder rock-1 at (26, 28), boulder rock-2 at (27, 40)
+beside: boulder rock-1 at (26, 28), tree shore-birk-5 at (28, 33), boulder rock-2 at (27, 40), tree shore-birk-4 at (26, 41)
