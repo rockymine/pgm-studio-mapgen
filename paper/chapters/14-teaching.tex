@@ -1,11 +1,12 @@
-\chapter{Teaching Material: The Technique Cards}
+\chapter{Teaching Material and the Instruction Corpus}
 \label{ch:teaching}
 
 \section{A Third Party in the Division of Labour}
 
 The paper has so far described two parties. There is a third, and it is easy to
-miss because it does not run: the body of worked examples an agent reads before it
-authors anything.
+miss because it does not run: everything an agent reads before it authors anything.
+That is two bodies of material, the worked examples and the instructions, and this
+chapter takes them in that order.
 
 This matters more here than it would in most systems, because an agent authoring
 blind cannot learn a primitive by trying it and looking. It learns by reading an
@@ -145,16 +146,106 @@ are used in practice: one orchestrated run, briefing twelve authoring agents,
 records giving them the cards in preference to the showcase, alongside a ground
 family chosen to stop twelve boards coming out as twelve greys.
 
+\section{The Instruction Corpus}
+
+The worked examples are one half of what an agent reads. The other half is a body
+of instructions, and it is worth describing because its shape has been argued over
+as carefully as the cards' and for the same reason.
+
+There are seven documents, coming to about 3{,}800 lines. Four are briefs, naming
+what a board should be: a general authoring brief, a revamp brief for changing an
+existing board, a brief on sculpting with layers, and one on adapting a composed
+board. One is a notes file recording what the API still cannot be asked. Two are
+skills, loaded by name rather than read as prose, and they are the ones that carry
+the procedure.
+
+\subsection{Two Skills, Loaded in Order}
+
+The first skill is a warm-up, loaded once at the start of a run and before
+anything else. Its subject is what reading costs. The documents an agent is
+pointed at come to roughly 82{,}000 tokens, which is 41\% of a two-hundred-thousand
+token window spent before a single map is opened, and the skill's first table is a
+budget: what each read costs and when it may be taken. It carries a never-open
+list. Two stored layouts exceed a whole context window at 397{,}000 and 367{,}000
+tokens, and the skill states plainly that opening either one ends the run.
+
+The rule that follows from the budget is that a layout is queried rather than read,
+and that a one-line answer is a search rather than a file read. A slope grid runs
+to ten thousand tokens and its verdict is one line.
+
+The second skill is the authoring procedure, loaded whenever a board is built,
+changed, diagnosed or read. It opens with a lookup table of about thirty rows, and
+the table has three columns: the question, the read that answers it, and
+\emph{what not to use instead}. The third column is the unusual one and is the
+reason the table works.
+
+\subsection{The Third Column}
+
+A row of that table reads: \emph{how steep is the ground, and where} is answered by
+the incline report, and \emph{not} by the slope grid, which answers whether a step
+can be walked and not what angle the ground lies at. Another reads: \emph{is the
+shape I authored in the world at all} is answered by a column read, and not by the
+store's 200 or the export gate opening, neither of which looks.
+
+Each of those negatives is a specific mistake that happened. The corpus of
+seventy-one run reports behind the skill records the most-repeated sentence in it
+as a variant of \emph{the instrument I should have used exists and I did not know
+about it}, and the second most common as using a read that answers a neighbouring
+question. A table that named only the right read would not prevent the second.
+
+\subsection{The Two Moments}
+
+The skill names two places to stop, and that is all it names. The first is after
+the plan is written and before the first world is built: render the plan as a grid
+and read it, because a plan is a list of rectangles and most of what goes wrong
+with one is a relation between two of them, which no render of a built world can
+show, because by then they are terrain.
+
+The second is after every build and before any picture is opened: three text reads,
+named individually, whose numbers are to be said out loud. The ordering is stated
+as a rule rather than a preference, in a sentence the repository repeats
+everywhere: a picture answers whether a thing came out, and a number answers
+whether it is right. The example attached to it is a one-block bump under a rail,
+which is one shade in a heightmap and nothing at all in an isometric, and which
+shipped in five consecutive builds of one board because nobody opened the file that
+named it with coordinates.
+
+\subsection{One Paragraph, One Claim}
+
+The instruction corpus has its own writing rule, and it is enforced by a script
+rather than by review.
+
+An instruction is not read the way an essay is read. It is scanned for the sentence
+that applies right now, so a paragraph carrying six claims hides five of them. The
+failure has one shape: a paragraph opens with a claim in bold and then four more
+are appended with semicolons and dashes until the opening claim is the only one
+anyone sees.
+
+The rule is therefore that the claim is the first sentence, everything after it
+supports that claim, and a paragraph making two claims is two paragraphs. The gate
+lists every prose paragraph over 110 words or four sentences and fails while any
+remain. Tables, fenced blocks, lists and headings are outside its scope, because
+none of them is read as prose.
+
+The gate has a second mode that matters more than the first. A structural pass over
+a document can split a paragraph and quietly drop the clause it was splitting off,
+and nothing about the result looks wrong. So the tool will compare two versions of
+a file word for word and name anything that disappeared. That check caught five
+genuinely lost words during the pass that introduced it.
+
 \section{Why the Format Is Part of the System}
 
 It would be possible to treat all of this as documentation hygiene. It is not, and
 the reason returns to the paper's argument.
 
-The studio's knowledge reaches an agent through exactly three channels. The
+The studio's knowledge reaches an agent through exactly four channels. The
 \textbf{API} tells it what may be asked. The \textbf{refusals} tell it what may not
 be built, and \cref{ch:refusals} showed how much design is carried in them. The
-\textbf{worked examples} tell it what is worth building, and that third channel is
-the only one with any opinion about quality.
+\textbf{worked examples} tell it what is worth building. The \textbf{instructions}
+tell it how to find out what it has actually built, which is the one thing an agent
+authoring blind cannot discover by looking.
+
+Only the last two have any opinion about quality, and neither of them runs.
 
 Nothing in the first two channels would stop an agent building a board that used
 one instrument and called it terrain. No rule fires. Every gate passes. The board
