@@ -1,6 +1,9 @@
 # Generation notes — what the API does not say
 
-Everything here was learned by driving the live API and reading a column back.
+Everything here was learned by driving the live API and reading a column back. `ORDER-OF-WORK.md` is the page
+that comes first and says *when* each decision is made; this is what none of the studio's own answers can say
+about the instruments, in thirteen chapters in that same order. Open the chapter for the stage being worked
+on rather than the file.
 
 **What the studio can state about itself is not repeated here**: the routes and their fields are in
 `GET /api/openapi/v1.json`, every rule id is in `GET /api/rules` with what it means and how to fix it, and a
@@ -1367,9 +1370,10 @@ round each patch. A voronoi is a diagram, not a mixture.
 
 ### A cliff's strata belong in the `wall` bucket, because a cliff is what that bucket paints
 
-Nothing bands by world height and nothing needs to. A `layered` stack on the **wall** bucket is read
-by `DepthFromTop`, which on a wall counts down from the top of the face — so on a board whose drops
-all begin at one shelf, banding by depth **is** banding by altitude. One stack shared as the wall
+A band stack takes one of four axes — `depth` down the column, `inward` from the void-facing edge, `height`
+up from a stated world Y, and `slope` by the ground's angle. A `wall` stack on `depth` is read from the top
+of the face, so on a board whose drops all begin at one shelf, banding by depth **is** banding by altitude
+and `height` is not needed. One stack shared as the wall
 material of every theme makes every cut on the board the same rock in the same order, and puts those
 colours nowhere else.
 
@@ -1700,8 +1704,6 @@ keeps it out of the way.
 
 ---
 
----
-
 ## Reading it back
 
 Every read but one is a projection. Which one to reach for is decided by what the question is about, and the picture is never the answer to a question about a number.
@@ -1804,8 +1806,8 @@ shows the column's own top — and the picture's legend says which reading it us
 
 ### The provenance sidecar records an intent to claim, not the blocks
 
-`--topdown --layer structure` reads the provenance sidecar and says so
-(`STRUCTURE READING: RECORDED PROVENANCE`). Its owners list is a literal census of the dressing, and a prop
+A structure read says which reading it used — `STRUCTURE READING: RECORDED PROVENANCE` where the sidecar is
+there, and the material estimate where it is not. Its owners list is a literal census of the dressing, and a prop
 that landed nothing has no row at all:
 
 ```python
@@ -1835,17 +1837,14 @@ a key the record has no field for costs nothing, changes nothing, and answers 20
 only report of it. Read the `RQ3`s on every intent write; they are the difference between a field that landed
 and a field that was spelled at a version of the studio that no longer exists.
 
-### A material's `kind` has to be the first property of its object
+### A material's `kind` is written first, though it no longer has to be
 
-`kind` is read positionally, so moving it and nothing else turns a document that answers 200 into a **400
-naming a kind that is right there** — *"a material names no kind, or names one that does not exist"*. Any
-generic tool that reorders JSON does this: a formatter, a re-serializer, `json.dumps(…, sort_keys=True)`.
-Measured on a room style that previews at 200 as authored and 400 with `kind` moved last in every material,
-the two documents comparing equal as data.
+The reader takes `kind` wherever it sits, so a style round-tripped through a formatter, a re-serializer or
+`json.dumps(…, sort_keys=True)` still previews.
 
-The reader takes `kind` wherever it sits, so a document round-tripped through a formatter reads. Write
-materials `kind` first anyway: it is what every committed theme and style here states, and it is what a
-build older than this one needs.
+Write materials `kind` first anyway. It is what every committed theme and style here states, and a build
+older than this one reads the discriminator positionally — where it does, moving the key and nothing else
+turns a document that answers 200 into a **400 naming a kind that is right there**.
 
 ### Two words differ between a save request and a snapshot
 

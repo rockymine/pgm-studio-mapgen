@@ -69,9 +69,15 @@ written from and `maps/opus5-automaton` is a played board furnished with them.
 
 ## Authoring a map here
 
-**Two documents, and the API.** [AUTHORING-BRIEF.md](AUTHORING-BRIEF.md) is what an authoring agent is
-given, end to end. [GENERATION-NOTES.md](GENERATION-NOTES.md) is what the API cannot state about itself —
-a fact about how two correct mechanisms interact, a number no gate checks, a read-back that lies.
+**[ORDER-OF-WORK.md](ORDER-OF-WORK.md) is the one page that is read before anything is posted** — the nine
+decisions a board is made of, in the order they are made, and the four that cannot be taken back. It explains
+no instrument; it says when each one is reached for and what is unrecoverable if it is reached for late.
+
+**Then the API, and three documents opened at a question.** [AUTHORING-BRIEF.md](AUTHORING-BRIEF.md) is what
+an authoring agent is given, end to end.
+
+[GENERATION-NOTES.md](GENERATION-NOTES.md) is what the API cannot state about itself — a fact about how two
+correct mechanisms interact, a number no gate checks, a read-back that lies.
 [REVAMP-BRIEF.md](REVAMP-BRIEF.md) is the loop after a person has finished a board in game: the two
 worlds read against each other, the commands named, the finish restated as documents, and a new board
 built with what it taught.

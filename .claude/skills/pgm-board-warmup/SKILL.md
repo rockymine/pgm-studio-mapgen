@@ -4,8 +4,11 @@ grounds are made to meet. Load once, at the start of a run, before pgm-board. --
 
 # Before the first board
 
-Two things, in order: what reading costs here, and what a board is made of. Together they run
-about 12k tokens and ten minutes, and both are done before a plan is written.
+`ORDER-OF-WORK.md` is the page that comes before this one: the nine decisions a board is made of, in
+order, and the four that cannot be taken back. Read it first and this skill second.
+
+Two things here, in order: what reading costs, and what a board is made of. Together they run about
+12k tokens and ten minutes, and both are done before a plan is written.
 
 ## 1. The budget, because this repository is larger than any context window
 
@@ -71,8 +74,8 @@ A shore board, worked all the way through, as the pattern to copy:
 - **one rectangle**, with every landform authored downstream.
 
 A plan that grows a piece per landform is a plan whose paint will grow a theme per piece, and
-the board's look ends up decided by how it happened to be cut up. `firnline` is the worked
-failure: 13 pieces at 6 surface heights, then a theme per height.
+the board's look ends up decided by how it happened to be cut up. The worked failure is 13 pieces
+at 6 surface heights, then a theme per height.
 
 ### What makes an area read as what it is
 

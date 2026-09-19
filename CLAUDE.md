@@ -3,9 +3,13 @@
 Maps authored by driving pgm-studio's HTTP API. `AUTHORING-BRIEF.md` is what a board should be;
 `README.md` is what is here.
 
-**Building, changing, diagnosing or reading a map: invoke the `pgm-board` skill first.** It carries the
-lookup table from question to the read that already answers it, and the two moments to stop at. It is
-distilled from 27 run reports and every rule in it cost at least one build.
+**Building a map: read [ORDER-OF-WORK.md](ORDER-OF-WORK.md) first.** One page, the nine decisions a board
+is made of and the order they are made in, with the four that cannot be taken back named at the end. It is
+the only document that has to be read before the first request; everything else is opened at a question.
+
+**Changing, diagnosing or reading a map: invoke the `pgm-board` skill.** It carries the lookup table from
+question to the read that already answers it, and the two moments to stop at. It is distilled from 27 run
+reports and every rule in it cost at least one build, and it is worth having for an authoring run too.
 
 Three things that are true before the skill loads:
 
