@@ -174,6 +174,34 @@ not land.
 Converting a terrain piece into a build zone therefore keeps the size and drops
 the land, so fragmenting a board conserves footprint and spends land.
 
+\begin{figure}[htbp]
+\centering
+\begin{minipage}[b]{0.30\textwidth}\centering
+  \input{figures/diagrams/hushwater-boxes}\\[5pt]
+  {\footnotesize\sffamily\color{ink60} allocate}
+\end{minipage}%
+\hfill
+\begin{minipage}[b]{0.30\textwidth}\centering
+  \input{figures/diagrams/hushwater-fill}\\[5pt]
+  {\footnotesize\sffamily\color{ink60} fill}
+\end{minipage}%
+\hfill
+\begin{minipage}[b]{0.34\textwidth}\small
+The same unit at two moments. \textbf{Left}, allocation has finished and nothing is
+made of anything: five typed envelopes in plan cells, their kinds on their corners.
+\textbf{Right}, each envelope has been filled with its member pieces.
+
+\medskip
+Reading the two together is what makes the model's central claim visible rather
+than asserted. A box is an \emph{envelope, not a fill target}: its contents must
+touch its edges and stay connected, and need not fill it solid. The wool boxes are
+the clearest case, and the hub's ring leaves a hole in the middle of its own.
+\end{minipage}
+\caption{Allocate, then fill. Every footprint is placed before any terrain exists,
+and filling never grows a box outward to accommodate what is put in it.}
+\label{fig:boxes}
+\end{figure}
+
 \subsection{The Hub as Constraint Source}
 
 The hub is placed first and is the unit's only absolute rectangle; everything else
@@ -208,6 +236,39 @@ double-hole and so on. The body is what publishes, per free run of its edge, the
 width that run can carry. Those publications are \textbf{offers},
 and an offer's width is a capacity: it bounds the search rather than filtering its
 output.
+
+\begin{figure}[htbp]
+\centering
+\input{figures/diagrams/families}
+
+\medskip
+{\small\begin{minipage}{0.95\textwidth}
+The seven approach families a wool box may be filled with, each emitted at its own
+minimum box, all drawn to one scale so the minima are comparable. The room is picked
+out and the rest is the run that reaches it. An \textbf{I} is a corridor and a room,
+and every other family is a way of making that walk longer, turning it a corner, or
+giving it two ends. The escalation in minimum box is the cost of each: an \textbf{I}
+needs 2$\times$3 cells and a \textbf{Donut} needs 5$\times$10.
+\end{minipage}}
+\caption{The wool approach vocabulary. The geometry is the emitter's, read back
+from a probe of each family at its stated minimum.}
+\label{fig:families}
+\end{figure}
+
+An eighth form, the \emph{scythe}, exists in the vocabulary and is not on this box
+kind's menu. Asking for one is answered rather than ignored:
+
+\begin{lstlisting}
+{"code": "not-on-menu",
+ "detail": "Not on this box kind's fill menu -- it offers
+            I, L, Z, U, H, Donut, Clamp."}
+\end{lstlisting}
+
+That is worth noticing as a piece of interface design. The refusal names the menu
+rather than saying no, so a caller that guessed wrong learns the whole answer from
+one request. The probe behaves the same way about size: a \id{too-small} refusal
+always reports the minimum \emph{for the knobs asked for}, so the number to build
+against comes from the refusal rather than from the schema.
 
 \subsection{Seating and Single-Integer Search}
 
