@@ -1,52 +1,57 @@
 ## erratic (boulder) along x
-TRANSECT 16 stations from (8, -13) to (23, -13), every 1
+TRANSECT 21 stations from (9, -30) to (29, -30), every 1
   station        ground  surface  water  top  standing            step
-  (    8,   -13)      19       19           19                      
-  (    9,   -13)      19       19           19                      
-  (   10,   -13)      19       19           19                      
-  (   11,   -13)      19       19           19                      
-  (   12,   -13)      19       19           19                      
-  (   13,   -13)      19       19           19                      
-  (   14,   -13)      19       19           19                      
-  (   15,   -13)      19       19           19                      
-  (   16,   -13)      19       19           19                      
-  (   17,   -13)      19       19           20  boulder erratic     
-  (   18,   -13)      19       19           22  boulder erratic     
-  (   19,   -13)      19       19           22  boulder erratic     
-  (   20,   -13)      19       19           23  boulder erratic     
-  (   21,   -13)      19       19           22  boulder erratic     
-  (   22,   -13)      19       19           22  boulder erratic     
-  (   23,   -13)      19       19           19                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder erratic at (17, -13)
+  (    9,   -30)      20       20           20                      
+  (   10,   -30)      20       20           20                      
+  (   11,   -30)      20       20           20                      
+  (   12,   -30)      20       20           20                      
+  (   13,   -30)      20       20           20                      
+  (   14,   -30)      20       20           20                      
+  (   15,   -30)      20       20           20                      
+  (   16,   -30)      20       20           20                      
+  (   17,   -30)      20       20           20                      
+  (   18,   -30)      20       20           21  boulder erratic     
+  (   19,   -30)      20       20           23  boulder erratic     
+  (   20,   -30)      20       20           23  boulder erratic     
+  (   21,   -30)      19       19           24  boulder erratic     -1
+  (   22,   -30)      19       19           23  boulder erratic     
+  (   23,   -30)      19       19           23  boulder erratic     
+  (   24,   -30)      19       19           19                      
+  (   25,   -30)      19       19           19                      
+  (   26,   -30)      19       19           19                      
+  (   27,   -30)      19       19           19                      
+  (   28,   -30)      19       19           19                      
+  (   29,   -30)                                                    void
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder erratic at (18, -30)
 
 ## erratic (boulder) along z
-TRANSECT 25 stations from (20, -25) to (20, -1), every 1
+TRANSECT 25 stations from (21, -42) to (21, -18), every 1
   station        ground  surface  water  top  standing            step
-  (   20,   -25)      13       13           13                      
-  (   20,   -24)      13       13           13                      
-  (   20,   -23)      13       13           20  tree shelter-2      
-  (   20,   -22)      14       14           19  tree shelter-2      +1
-  (   20,   -21)      15       15           15                      +1
-  (   20,   -20)      15       15           15                      
-  (   20,   -19)      16       16           16                      +1
-  (   20,   -18)      16       16           16                      
-  (   20,   -17)      17       17           17                      +1
-  (   20,   -16)      17       17           17                      
-  (   20,   -15)      18       18           22  boulder erratic     +1
-  (   20,   -14)      18       18           22  boulder erratic     
-  (   20,   -13)      19       19           23  boulder erratic     +1
-  (   20,   -12)      20       20           22  boulder erratic     +1
-  (   20,   -11)      20       20           21  boulder erratic     
-  (   20,   -10)      20       20           20                      
-  (   20,    -9)      20       20           20                      
-  (   20,    -8)                                                    void
-  (   20,    -7)                                                    void
-  (   20,    -6)                                                    void
-  (   20,    -5)                                                    void
-  (   20,    -4)                                                    void
-  (   20,    -3)                                                    void
-  (   20,    -2)                                                    void
-  (   20,    -1)                                                    void
-rises 7, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree shelter-1 at (18, -25), tree shelter-2 at (18, -24), boulder erratic at (19, -16)
+  (   21,   -42)      16       16           16                      
+  (   21,   -41)      16       16           16                      
+  (   21,   -40)      16       16           16                      
+  (   21,   -39)      17       17           17                      +1
+  (   21,   -38)      17       17           17                      
+  (   21,   -37)      17       17           17                      
+  (   21,   -36)      18       18           18                      +1
+  (   21,   -35)      18       18           18                      
+  (   21,   -34)      18       18           18                      
+  (   21,   -33)      19       19           19                      +1
+  (   21,   -32)      19       19           23  boulder erratic     
+  (   21,   -31)      19       19           23  boulder erratic     
+  (   21,   -30)      19       19           24  boulder erratic     
+  (   21,   -29)      20       20           23  boulder erratic     +1
+  (   21,   -28)      20       20           22  boulder erratic     
+  (   21,   -27)      20       20           21  boulder erratic     
+  (   21,   -26)      20       20           20                      
+  (   21,   -25)      21       21           21                      +1
+  (   21,   -24)      21       21           21                      
+  (   21,   -23)      21       21           21                      
+  (   21,   -22)      21       21           21                      
+  (   21,   -21)      21       21           21                      
+  (   21,   -20)      20       20           20                      -1
+  (   21,   -19)      20       20           20                      
+  (   21,   -18)      20       20           20                      
+rises 5, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder erratic at (20, -33)

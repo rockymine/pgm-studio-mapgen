@@ -1,58 +1,61 @@
 ## destroyable-1-1 (destroyable) along x
-TRANSECT 22 stations from (2, 21) to (23, 21), every 1
+TRANSECT 25 stations from (4, 45) to (28, 45), every 1
   station        ground  surface  water  top  standing            step
-  (    2,    21)      14       14           14                      
-  (    3,    21)      13       13           13                      -1
-  (    4,    21)      13       13           13                      
-  (    5,    21)      13       13           13                      
-  (    6,    21)      13       13           13                      
-  (    7,    21)      13       13           13                      
-  (    8,    21)      13       13           13                      
-  (    9,    21)      13       13           14  flora sward         
-  (   10,    21)      13       13           14  flora sward         
-  (   11,    21)      13       13           14  flora sward         
-  (   12,    21)      13       13           14  flora sward         
-  (   13,    21)      13       13           63  flora sward         
-  (   14,    21)      13       13           64  destroyable destroyable-1#1  
-  (   15,    21)      13       13           63  flora sward         
-  (   16,    21)      13       13           14  flora sward         
-  (   17,    21)      14       14           15  flora sward         +1
-  (   18,    21)      14       14           15  flora sward         
-  (   19,    21)      13       13           14  flora sward         -1
-  (   20,    21)      14       14           15  flora sward         +1
-  (   21,    21)      14       14           14                      
-  (   22,    21)      13       13           13                      -1
-  (   23,    21)      13       13           13                      
-rises 2, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: flora sward at (9, 20), destroyable destroyable-1#1 at (12, 19)
+  (    4,    45)      13       13           13                      
+  (    5,    45)      13       13           13                      
+  (    6,    45)      13       13           13                      
+  (    7,    45)      13       13           13                      
+  (    8,    45)      13       13           13                      
+  (    9,    45)      13       13           13                      
+  (   10,    45)      13       13           13                      
+  (   11,    45)      13       13           13                      
+  (   12,    45)      13       13           13                      
+  (   13,    45)      13       13           13                      
+  (   14,    45)      13       13           13  destroyable destroyable-1#1  
+  (   15,    45)      13       13           64  destroyable destroyable-1#1  
+  (   16,    45)      13       13           65  destroyable destroyable-1#1  
+  (   17,    45)      13       13           64  destroyable destroyable-1#1  
+  (   18,    45)      13       13           13  destroyable destroyable-1#1  
+  (   19,    45)      13       13           13                      
+  (   20,    45)      13       13           13                      
+  (   21,    45)      13       13           13                      
+  (   22,    45)      13       13           13                      
+  (   23,    45)      13       13           13                      
+  (   24,    45)      14       14           14                      +1
+  (   25,    45)      14       14           14                      
+  (   26,    45)      14       14           14                      
+  (   27,    45)      14       14           14                      
+  (   28,    45)      14       14           14                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable destroyable-1#1 at (14, 43)
 
 ## destroyable-1-1 (destroyable) along z
-TRANSECT 25 stations from (14, 9) to (14, 33), every 1
+TRANSECT 25 stations from (16, 33) to (16, 57), every 1
   station        ground  surface  water  top  standing            step
-  (   14,     9)      20       20           20                      
-  (   14,    10)      20       20           20                      
-  (   14,    11)      20       20           20                      
-  (   14,    12)      20       20           20                      
-  (   14,    13)      19       19           19                      -1
-  (   14,    14)      18       18           18                      -1
-  (   14,    15)      17       17           17                      -1
-  (   14,    16)      17       17           17                      
-  (   14,    17)      16       16           16                      -1
-  (   14,    18)      15       15           15                      -1
-  (   14,    19)      14       14           14  destroyable destroyable-1#1  -1
-  (   14,    20)      14       14           63  flora sward         
-  (   14,    21)      13       13           64  destroyable destroyable-1#1  -1
-  (   14,    22)      13       13           63  destroyable destroyable-1#1  
-  (   14,    23)      13       13           13  destroyable destroyable-1#1  
-  (   14,    24)      13       13           13                      
-  (   14,    25)      13       13           13                      
-  (   14,    26)      13       13           13                      
-  (   14,    27)      13       13           13                      
-  (   14,    28)                                                    void
-  (   14,    29)                                                    void
-  (   14,    30)                                                    void
-  (   14,    31)                                                    void
-  (   14,    32)                                                    void
-  (   14,    33)                                                    void
-rises 0, falls 7, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: flora sward at (15, 17), destroyable destroyable-1#1 at (12, 19)
+  (   16,    33)      16       16           16                      
+  (   16,    34)      15       15           15                      -1
+  (   16,    35)      15       15           15                      
+  (   16,    36)      15       15           15                      
+  (   16,    37)      14       14           14                      -1
+  (   16,    38)      14       14           14                      
+  (   16,    39)      14       14           14                      
+  (   16,    40)      14       14           14                      
+  (   16,    41)      14       14           14                      
+  (   16,    42)      13       13           13                      -1
+  (   16,    43)      13       13           13  destroyable destroyable-1#1  
+  (   16,    44)      13       13           64  destroyable destroyable-1#1  
+  (   16,    45)      13       13           65  destroyable destroyable-1#1  
+  (   16,    46)      13       13           64  destroyable destroyable-1#1  
+  (   16,    47)      13       13           13  destroyable destroyable-1#1  
+  (   16,    48)      13       13           13                      
+  (   16,    49)      13       13           13                      
+  (   16,    50)      13       13           13                      
+  (   16,    51)      13       13           13                      
+  (   16,    52)      13       13           13                      
+  (   16,    53)      13       13           13                      
+  (   16,    54)      13       13           13                      
+  (   16,    55)      13       13           13                      
+  (   16,    56)      13       13           13                      
+  (   16,    57)      13       13           13                      
+rises 0, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable destroyable-1#1 at (14, 43)

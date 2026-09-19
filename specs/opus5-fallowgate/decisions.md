@@ -127,3 +127,63 @@ the stone family of the yard under it.
 footprint the transect along z at x 6 read the hall's structure to z −30 with the fold's last
 ground row at z −29 and `DROP −9 at (6, −28)`: one block of yard between a wall and a
 nine-block fall. The stamp reaches about two blocks past the stated footprint.
+
+---
+
+# Revision pass
+
+## The board
+
+**56 × 160, which is 56 × 68 a side with a 24-block crossing.** The size line is a cap of
+eighty by eighty *per side*, so the board grew in z and the width did not change. The areas
+scaled with it: `fold` 24 × 16, `flat` 56 × 28, `pasture` 56 × 24.
+
+**The spawn moved to (0, −78) and the monument to (−17, −46).** Mine, found by sweeping
+spawn-z × monument-(x, z) through `/plan/evaluate` and taking a cell that refuses nothing at
+all. `score 0  valid True`, empty `violations` — `GO3` and `GO4` are met by the length rather
+than argued with.
+
+## The relief
+
+**Two line marks, both running down the fall line, across the axis the two benches share.**
+Mine. Two benches at two heights can only solve one gradient between them, and a slope-banded
+paint over one gradient draws contour ribbons. `spur` is held above the grade and `gill` cut
+below it, each with a `tread` so its band lofts rather than walling.
+
+**One push, crowning the shelf.** Mine. Without it the shelf solves as a terrace: seven
+identical rows.
+
+**Each of the three was justified by measurement before it was kept.**
+`POST …/sketch/relief?heights=true` answers the solved surface without a build, so the test
+cost seconds: `spur` changes 668 cells of 2,912, `gill` 466, `knoll` 524. Dropping `gill`
+grows the hollow's identical run from 2 rows to 8; dropping the push grows the shelf's from 2
+to 7.
+
+**The gill's tail bends west.** Mine, after measuring. Run straight it printed four identical
+rows at z −60..−57 — the same fault at a smaller scale.
+
+**Grain stays at amplitude 1, scale 9.** Amplitude 2 buys two more distinct rows and costs
+four more scramble steps and two rows of `acrossZ.onFoot`. Walkable ground is worth more than
+a row count.
+
+## The coast
+
+**Three vertex ops, all on the lip the crossing is bridged onto.** Mine: a headland at
+(15, −8), a bay back to (2, −17), a second headland at (−13, −9). `editShapes` states the
+places that are meant, and where a bridgehead lands is a decision.
+
+**One bend each on the two grown outlines, `side: "out"`.** Mine. `flat-13` came back with 20
+drawn vertices and `flat-20` with 14, against four each as compiled. Out only bloats, so
+nothing is left hanging over void.
+
+**The fold is not shaped, and the studio is why.** A re-entrant cut into the yard's front wall
+opened void rather than a step — `transect (2, −74) → (2, −58)` read `void` at z −69..−67
+between the yard at 24 and the hollow at 13, because nothing else on the board covers ground a
+made shape gives up. A salient collides with the flight, which fronts that whole wall.
+
+## The paint
+
+**The band cuts moved from 20/34 to 14/30.** Mine, off a fresh `incline`. The same seven
+blocks of rise now run over sixteen rather than eleven, so the board is far gentler:
+`00-09 42.8% · 10-19 32.5% · 20-29 13.5% · 30-39 6%`. At 20/34 that is 75% turf, one green
+sheet; at 12/24 the board came out a stone mesa. 14/30 divides it about 56 / 33 / 11.

@@ -24,14 +24,14 @@
    "point": {
     "x": 0,
     "y": 24,
-    "z": -32
+    "z": -78
    },
    "protection": [
     {
      "minX": -12,
-     "minZ": -40,
+     "minZ": -80,
      "maxX": 12,
-     "maxZ": -28
+     "maxZ": -64
     }
    ],
    "yaw": 0,
@@ -40,9 +40,9 @@
    ],
    "footprint": {
     "minX": -8,
-    "minZ": -39,
+    "minZ": -79,
     "maxX": 12,
-    "maxZ": -33
+    "maxZ": -71
    },
    "iron": []
   },
@@ -57,14 +57,14 @@
    "point": {
     "x": 0,
     "y": 24,
-    "z": 32
+    "z": 78
    },
    "protection": [
     {
      "minX": -12,
-     "minZ": 28,
+     "minZ": 64,
      "maxX": 12,
-     "maxZ": 40
+     "maxZ": 80
     }
    ],
    "yaw": 180,
@@ -73,9 +73,9 @@
    ],
    "footprint": {
     "minX": -12,
-    "minZ": 33,
+    "minZ": 71,
     "maxX": 8,
-    "maxZ": 39
+    "maxZ": 79
    },
    "iron": []
   }
@@ -92,10 +92,10 @@
   "maxHeight": null,
   "areas": [
    {
-    "minX": -24,
-    "minZ": -8,
-    "maxX": 24,
-    "maxZ": 8
+    "minX": -28,
+    "minZ": -12,
+    "maxX": 28,
+    "maxZ": 12
    }
   ],
   "holes": [],
@@ -117,9 +117,9 @@
    "materials": "obsidian",
    "repairable": false,
    "anchor": {
-    "x": -15,
+    "x": -17,
     "y": 13,
-    "z": -22
+    "z": -46
    },
    "float": 2,
    "box": null
@@ -137,9 +137,9 @@
    "materials": "obsidian",
    "repairable": false,
    "anchor": {
-    "x": 14,
+    "x": 16,
     "y": 13,
-    "z": 21
+    "z": 45
    },
    "float": 2,
    "box": null

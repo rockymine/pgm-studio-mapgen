@@ -90,13 +90,13 @@
         </not>
     </filters>
     <regions>
-        <point id="blue-spawn-point">0,24,36</point>
-        <point id="red-spawn-point">0,24,-36</point>
+        <point id="blue-spawn-point">0,24,76</point>
+        <point id="red-spawn-point">0,24,-76</point>
         <point id="observer-spawn">0,47,0</point>
-        <rectangle id="blue-spawn" min="-12,28" max="12,40"/>
-        <rectangle id="red-spawn" min="-12,-40" max="12,-28"/>
-        <cuboid id="the-fallowgate-stone-region" min="-15,15,-22" max="-14,17,-21"/>
-        <cuboid id="the-fallowgate-stone-2-region" min="14,15,21" max="15,17,22"/>
+        <rectangle id="blue-spawn" min="-12,64" max="12,80"/>
+        <rectangle id="red-spawn" min="-12,-80" max="12,-64"/>
+        <cuboid id="the-fallowgate-stone-region" min="-17,15,-46" max="-16,17,-45"/>
+        <cuboid id="the-fallowgate-stone-2-region" min="16,15,45" max="17,17,46"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -105,7 +105,7 @@
             <region id="spawns"/>
         </negative>
         <negative id="not-build-area">
-            <rectangle id="build-area-1" min="-24,-8" max="24,8"/>
+            <rectangle id="build-area-1" min="-28,-12" max="28,12"/>
         </negative>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
@@ -165,5 +165,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>56</maxbuildheight>
+    <maxbuildheight>57</maxbuildheight>
 </map>

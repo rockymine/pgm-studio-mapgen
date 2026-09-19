@@ -16,9 +16,9 @@
    "role": "spawn",
    "rect": [
     -3,
-    -10,
+    -20,
     6,
-    3
+    4
    ],
    "surface": 24
   },
@@ -26,10 +26,10 @@
    "id": "flat",
    "role": "piece",
    "rect": [
-    -6,
     -7,
-    12,
-    3
+    -16,
+    14,
+    7
    ],
    "surface": 13
   },
@@ -37,10 +37,10 @@
    "id": "pasture",
    "role": "piece",
    "rect": [
-    -6,
-    -4,
-    12,
-    2
+    -7,
+    -9,
+    14,
+    6
    ],
    "surface": 20
   }
@@ -49,10 +49,10 @@
   {
    "id": "crossing",
    "rect": [
-    -6,
-    -2,
-    12,
-    4
+    -7,
+    -3,
+    14,
+    6
    ],
    "kind": "build"
   }
@@ -65,14 +65,14 @@
     "piece": "fold",
     "at": [
      12,
-     8
+     2
     ],
     "facing": "back",
     "footprint": [
      4,
      1,
      20,
-     6
+     8
     ]
    }
   ],
@@ -81,8 +81,8 @@
     "id": "destroyable-1",
     "piece": "flat",
     "at": [
-     9,
-     6
+     11,
+     18
     ],
     "style": "pillar-2",
     "materials": "obsidian",
