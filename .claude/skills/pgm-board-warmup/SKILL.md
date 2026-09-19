@@ -99,7 +99,14 @@ because there is an answer to *why here*:
   offsetting the band, so four points draw as a curve: a wall, a lane, a watercourse.
 - **paths that are `solid`**, three blocks a reader cannot quite tell apart, running to a door.
 
-## 3. The ten minutes: read one showcase diff
+## 3. The ten minutes: read one card, then one showcase diff
+
+`techniques/` is one card per instrument, each holding its variants **side by side** in one world with the
+text reads that prove them. Read the card nearest the thing about to be built — `relief-on-shapes` and
+`hollows` are the two that carry ground, `ramp-and-stair` and `polylines` the two that carry a join — before
+opening anything else. `techniques/README.md` indexes them.
+
+
 
 `showcase/` is one technique per map, and every one of them forks `02-theme` — a plain
 100 × 100 destroy board scoring 0 with no violation and no lint — changing **only** what its
