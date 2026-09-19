@@ -1508,7 +1508,17 @@ no height at all reads y0 bedrock — a shape with neither an override nor a hei
 This is the instrument a detailed surface is painted with — a drift of sand against rock, scree at the foot of
 a crag, mud in a hollow — and it is what a single large `voronoi` over a whole region is a substitute for.
 
-### A fill pattern is a plane until it states a `rise`
+### A fill pattern is a plane until it states a `rise`, and the gate now refuses one without
+
+**`PT4` refuses a fill or wall pattern that states no `rise`** — *fill samples its field in the plane only,
+so every block of a column resolves alike and it reads as vertical stripes. A rise is the vertical period
+that gives a face its grain.* The board does not store until it is added, so this is no longer a trap to
+remember.
+
+**`PT1` refuses a surfacing block as a band's whole material** — *a surfacing block is exactly one course
+thick and what is under it is soil*. So every band of a `height`, `slope` or `inward` stack is itself a small
+`depth` stack: one course of the surfacing block over earth. Both refusals are at the store door and name the
+exact JSON path.
 
 Every area pattern — `cell`, `voronoi`, `noise`, `turbulence`, `electric` — samples the plane by default
 (`TP15`): a column resolves to one block, so the pattern decides the ground and nothing else. On a surface a
@@ -1546,12 +1556,25 @@ round each patch. A voronoi is a diagram, not a mixture.
 
 ### A cliff's strata belong in the `wall` bucket, because a cliff is what that bucket paints
 
+**The wall is the column's body at an edge, not a coat on a slope**, so nothing of it shows from above: it
+replaces the fill from the bottom of the surface down, wherever the column stands on a void-facing edge or —
+with `wallOnTerrainFaces` — on a terrain face. Measured on one board that was 612 columns, 340 round the
+island's rim and **272 inland** on a mesa's own skirt. A wall and a fill are read on a cut.
+
+**`rimEdges` decides how much the rim claims and the difference is large.** `void` caps only the landmass's
+true outside; `boundary` caps every plateau boundary in it, which on the same board was **1,110 further
+cells**, every one inland. `techniques/theme-buckets` switches the four buckets on one at a time over one
+ground.
+
+
 A band stack takes one of four axes — `depth` down the column, `inward` from the void-facing edge, `height`
 up from a stated world Y, and `slope` by the ground's angle. A `wall` stack on `depth` is read from the top
 of the face, so on a board whose drops all begin at one shelf, banding by depth **is** banding by altitude
-and `height` is not needed. One stack shared as the wall
-material of every theme makes every cut on the board the same rock in the same order, and puts those
-colours nowhere else.
+and `height` is not needed. One stack shared as the wall material of every theme makes every cut on the board
+the same rock in the same order, and puts those colours nowhere else.
+
+**A `height` stack leaves everything under its own `from` to the bucket beneath.** A stack stated `from: 8`
+over a plain topping at y7 read back as the fill's own block, and nothing reports it.
 
 The counterpart: **`wallRun` stands vertical**, because its stripes wrap the perimeter and are
 constant up a column. A weathered cliff is bedded and a sawn one is scored, and the two are one

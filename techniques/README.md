@@ -9,7 +9,7 @@ the card rather than finding the thing inside a thousand-line finish.
 itself, one claim to a paragraph; a card holds one instrument worked all the way through, with the reads
 beside it. Where a card exists, the notes point at it rather than repeating it.
 
-## The thirteen that exist
+## The fourteen that exist
 
 | Card | Holds |
 |---|---|
@@ -26,8 +26,9 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `made-ground` | `relief_scope` against `height_mode` — whether a shape is ground or stands in it |
 | `stacking-layers` | two solid spans in one column, and the three ways the air between them is lost |
 | `water` | a bed carved under a level fill — five bodies of water and five ways to lose one |
+| `theme-buckets` | bedrock, fill, wall, surface and rim, switched on one at a time over one ground |
 
-## The six that are missing
+## The five that are missing
 
 Each entry names what the card would demonstrate, and which of the notes' entries it would absorb — the
 notes carry the measurements already and have nowhere to put the worked comparison.
@@ -42,12 +43,6 @@ itself is `winding-roads` and how a push meets them all is `marks-and-pushes`, w
 over solved ground, side by side on one hill, with `themes/census` under each. The scope test is the content:
 a shape owns a cell only where it forms that cell's surface, so a one-course add at bedrock paints nothing
 and says so on a 200. Absorbs the file's second-longest entry whole.
-
-**`theme-buckets` — surface, wall, fill and rim, and the `slope` axis.** One ground theme banded four ways
-over one relief, read through `incline` so the bands are seen to cut where the angles are. This is the card
-`CLAUDE.md` asks for by name — *finish the ground by its angle, not by its height*. `winding-roads` states
-the one rule that cannot wait for it, that a band edge at 45° is the worst place to cut because a gap lofted
-at one course a cell stands at exactly that.
 
 **`objectives-and-clearances` — where a goal may stand.** A monument, a core and a wool on one board with
 their clearances drawn, the `at` read in blocks, a core's `float` and `leak`, and the two gates heard only at
