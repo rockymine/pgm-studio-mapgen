@@ -155,6 +155,11 @@ single cone whose only shape is its outline.
 **Cut hollows into raised ground with a negative push inside the positive one, and into flat ground on its
 own** — that second case, its depth, its wall and what a floor costs, is the `hollows` card.
 
+**Every panel here states its push against an unmarked field at `reach: 0`, which is not how a board uses
+one.** Of the 216 pushes in this repository's `specs/`, 137 have a mark's ring under them and only 38 of the
+79 groups carrying a push state `reach: 0`; the knobs are legible here because the ground under them says
+nothing. What a push does to ground a mark has already pinned is the `marks-and-pushes` card.
+
 ## What checks it
 
 - `relief-read.json` — every push's two grades and cell count, per group, and the two complaints on

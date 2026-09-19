@@ -9,7 +9,7 @@ the card rather than finding the thing inside a thousand-line finish.
 itself, one claim to a paragraph; a card holds one instrument worked all the way through, with the reads
 beside it. Where a card exists, the notes point at it rather than repeating it.
 
-## The nine that exist
+## The ten that exist
 
 | Card | Holds |
 |---|---|
@@ -22,8 +22,9 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `hollows` | a negative push, a `sink` shape and an `area` mark, each cutting the same floor |
 | `winding-roads` | a line mark that comes back past itself — `tread`, `batter`, and the pitch window |
 | `pushes` | the instrument that builds a landform — four outlines of one, and four arrangements of several |
+| `marks-and-pushes` | a push landing on ground marks already pin, and how much of a board to pin at all |
 
-## The eight that are missing
+## The nine that are missing
 
 Each entry names what the card would demonstrate, and which of the notes' entries it would absorb — the
 notes carry the measurements already and have nowhere to put the worked comparison.
@@ -32,7 +33,7 @@ notes carry the measurements already and have nowhere to put the worked comparis
 marks, three times: butted, gapped, and with a `bevel` on the area. Beside them a mark whose centre lies off
 the land and a mark that pinned nothing at all, read back through `relief/read`'s `seams` and `silentMarks`.
 Absorbs five relief entries, including the radius that makes a mesa instead of a summit. How *one* mark meets
-itself is `winding-roads`, which is built.
+itself is `winding-roads` and how a push meets them all is `marks-and-pushes`, which are both built.
 
 **`painting-a-patch` — what a shape has to say before it owns any paint.** The four forms a patch may take
 over solved ground, side by side on one hill, with `themes/census` under each. The scope test is the content:

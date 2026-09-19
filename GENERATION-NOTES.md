@@ -466,7 +466,8 @@ its fields are the landform:
 **negative crown** dishes the ring rather than doming it — a corrie, a quarry floor, a pond basin.
 
 `techniques/pushes` is the worked card: four outlines of one push side by side, four arrangements of several,
-and the two grades read back per push.
+and the two grades read back per push. `techniques/marks-and-pushes` is the same instrument once there is a
+board under it.
 
 **The second half is what is *not* written.** Pinning a region with an `area` mark because it should be about
 that height leaves the solver nothing to solve, and a board with a mark on every region is a table with bumps
@@ -502,6 +503,25 @@ wrong.
 The rule under all three is one line: **a push is added to the solved surface and marks negotiate with each
 other.** Where a landform has to agree with something already stated — a pan, a pad, the head of a flight —
 state it as a mark.
+
+**A push carries the ground rather than replacing it, so a landform wanting a flat top needs flat ground
+under it.** A dale falling 20 → 12 under a push's ring came out as a summit running 38 at the rim, 33 in the
+middle and 37 again — twenty cells of hilltop, none of it level, with the dale's own shape on it. The group
+read `relief` 18, `rolling`, one push, two sane grades and no finding.
+
+**A push cannot be kept off a mark: only its ring and its `falloff` can.** With the same push moved twenty
+cells clear of a holm pinned at 12, the holm read **27**, **20** and its stated **12** across ten cells,
+reaching 12 only five cells past its own centre. Ring plus falloff is the push's whole extent, and every cell
+inside that circle is lifted whatever states it.
+
+**How much of a board to pin is one dial with a complaint at each end.** Pinning every region built three
+plates the read called `landform: mountain` at `relief` 45 and `level` **0.45**; pinning only the ground a
+player stands on built flowing terrain at `level` **0.19** and raised `RL5` — *graded everywhere and left
+nowhere to stand*. `relief` cannot tell a range from a staircase; `level` is the field that can.
+
+**`reach: 0` is what a board wants, and a finite reach is an instrument for isolating something.** The same
+document at `reach: 16` sagged its unpinned middle from 23…18 to 12…15 — within a few blocks of its `base` —
+and the shelf and the fell that had been one landform came apart into two mounds.
 
 ### Pushes add to each other, so a massif is several of them
 
