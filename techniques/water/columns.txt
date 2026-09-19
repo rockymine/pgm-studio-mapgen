@@ -1,67 +1,66 @@
-GET /api/map/technique-water/column?at=x,z — one column per claim. A water prop carves a bed and fills it,
-so every one of these is a body of water read where it stands.
+GET /api/map/technique-water/column?at=x,z — one column per claim.
 
-### beach — in the bay: four courses of water to the stated line of 16, on the bank it laid
-=== column (-220, -22) — 17 solid block(s), ground 0° from level ===
+### beach — in the sea, six courses to the stated line of 16
+=== column (-220, -18) — 17 solid block(s), ground 0° from level ===
   y 16     9:0   Water
   y 15     9:0   Water
   y 14     9:0   Water
   y 13     9:0   Water
-  y 12     3:1   Coarse Dirt
-  y 11     1:0   Stone
-  y 10     1:0   Stone
-  y  9     1:0   Stone
-  y  8     1:0   Stone
-  y  7     1:0   Stone
-  y  6     1:0   Stone
-  y  5     1:0   Stone
-  y  4     1:0   Stone
-  y  3     1:0   Stone
-  y  2     1:0   Stone
-  y  1     1:0   Stone
+  y 12     9:0   Water
+  y 11     9:0   Water
+  y 10     3:1   Coarse Dirt
+  y  9    12:0   Sand
+  y  8    24:0   Sandstone
+  y  7    24:0   Sandstone
+  y  6    24:0   Sandstone
+  y  5    24:0   Sandstone
+  y  4    24:0   Sandstone
+  y  3    24:0   Sandstone
+  y  2    24:0   Sandstone
+  y  1    24:0   Sandstone
   y  0     7:0   Bedrock
 
-### beach — on the strand, inside the 5-wide shore band
-=== column (-220, -10) — 17 solid block(s), ground 0° from level ===
-  y 16     3:1   Coarse Dirt
-  y 15     3:0   Dirt
-  y 14     3:0   Dirt
-  y 13     1:0   Stone
-  y 12     1:0   Stone
-  y 11     1:0   Stone
-  y 10     1:0   Stone
-  y  9     1:0   Stone
-  y  8     1:0   Stone
-  y  7     1:0   Stone
-  y  6     1:0   Stone
-  y  5     1:0   Stone
-  y  4     1:0   Stone
-  y  3     1:0   Stone
-  y  2     1:0   Stone
-  y  1     1:0   Stone
+### beach — on the strand, where the sand theme meets the bank band
+=== column (-220, -34) — 17 solid block(s), ground 27° from level ===
+  y 16     9:0   Water
+  y 15     9:0   Water
+  y 14     9:0   Water
+  y 13     9:0   Water
+  y 12     9:0   Water
+  y 11    13:0   Gravel
+  y 10    24:0   Sandstone
+  y  9    24:0   Sandstone
+  y  8    24:0   Sandstone
+  y  7    24:0   Sandstone
+  y  6    24:0   Sandstone
+  y  5    24:0   Sandstone
+  y  4    24:0   Sandstone
+  y  3    24:0   Sandstone
+  y  2    24:0   Sandstone
+  y  1    24:0   Sandstone
   y  0     7:0   Bedrock
 
-### beach — one cell further out: grass, at the same height
+### beach — the island's last column before the void, still water
 === column (-220, -8) — 17 solid block(s), ground 0° from level ===
-  y 16     2:0   Grass Block
-  y 15     3:0   Dirt
-  y 14     3:0   Dirt
-  y 13     1:0   Stone
-  y 12     1:0   Stone
-  y 11     1:0   Stone
-  y 10     1:0   Stone
-  y  9     1:0   Stone
-  y  8     1:0   Stone
-  y  7     1:0   Stone
-  y  6     1:0   Stone
-  y  5     1:0   Stone
-  y  4     1:0   Stone
-  y  3     1:0   Stone
-  y  2     1:0   Stone
-  y  1     1:0   Stone
+  y 16     9:0   Water
+  y 15     9:0   Water
+  y 14     9:0   Water
+  y 13     9:0   Water
+  y 12     9:0   Water
+  y 11     9:0   Water
+  y 10     3:1   Coarse Dirt
+  y  9    12:0   Sand
+  y  8    24:0   Sandstone
+  y  7    24:2   Smooth Sandstone
+  y  6    24:2   Smooth Sandstone
+  y  5    24:2   Smooth Sandstone
+  y  4    24:2   Smooth Sandstone
+  y  3    24:2   Smooth Sandstone
+  y  2    24:2   Smooth Sandstone
+  y  1    24:2   Smooth Sandstone
   y  0     7:0   Bedrock
 
-### pond — in the tarn: three courses to a line of 21, which no document states
+### pond — three courses to a line of 21, which no document states
 === column (-110, -45) — 22 solid block(s), ground 0° from level ===
   y 21     9:0   Water
   y 20     9:0   Water
@@ -182,6 +181,53 @@ so every one of these is a body of water read where it stands.
   y 15     9:0   Water
   y 14     9:0   Water
   y 13    13:0   Gravel
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### no-layer — under the bridge: the beck took the deck as its ground and bit it through
+=== column (110, 45) — 20 solid block(s), ground 0° from level ===
+  y 19     9:0   Water
+  y 18     9:0   Water
+  y 17    13:0   Gravel
+  y 16     1:0   Stone
+  y 15     1:0   Stone
+  y 14     1:0   Stone
+  y 13     1:0   Stone
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### named-layer — the same beck naming layer ground: planks at 25, water under them
+=== column (220, 45) — 21 solid block(s), ground 0° from level ===
+  y 25     5:1   Spruce Planks
+  y 19     9:0   Water
+  y 18     9:0   Water
+  y 17    12:0   Sand
+  y 16     1:0   Stone
+  y 15     1:0   Stone
+  y 14     1:0   Stone
+  y 13     1:0   Stone
   y 12     1:0   Stone
   y 11     1:0   Stone
   y 10     1:0   Stone

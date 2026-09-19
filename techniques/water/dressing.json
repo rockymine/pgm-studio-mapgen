@@ -2,12 +2,12 @@
  "props": [
   {
    "kind": "water",
-   "id": "beach-bay",
+   "id": "beach-sea",
    "image": 0,
    "layer": "prop",
-   "cells": 2093,
-   "x": -256,
-   "z": -26,
+   "cells": 3399,
+   "x": -268,
+   "z": -41,
    "y": 16
   },
   {
@@ -92,7 +92,7 @@
   },
   {
    "kind": "water",
-   "id": "one-channel-beck",
+   "id": "no-layer-beck",
    "image": 0,
    "layer": "prop",
    "cells": 734,
@@ -102,22 +102,12 @@
   },
   {
    "kind": "water",
-   "id": "two-channels-beck-north",
+   "id": "named-layer-beck",
    "image": 0,
    "layer": "prop",
-   "cells": 325,
+   "cells": 738,
    "x": 219,
    "z": 11,
-   "y": 19
-  },
-  {
-   "kind": "water",
-   "id": "two-channels-beck-south",
-   "image": 0,
-   "layer": "prop",
-   "cells": 326,
-   "x": 218,
-   "z": 54,
    "y": 19
   }
  ],
@@ -132,10 +122,10 @@
   },
   {
    "rule": "DR-BANK",
-   "message": "water 'one-channel-beck' is 3 deep and its carve cut 6 course(s) of ground away above its own line \u2014 a straight-sided wall from y20 to y25 at (106, 39). The line is the lowest surface the body crosses and every column over it is emptied down to it, so a pool drawn across a slope digs a pit as deep as the ground falls. Draw it inside ground that is already level, or state a `level` and let it fill the hollow there is.",
+   "message": "water 'no-layer-beck' is 3 deep and its carve cut 6 course(s) of ground away above its own line \u2014 a straight-sided wall from y20 to y25 at (106, 39). The line is the lowest surface the body crosses and every column over it is emptied down to it, so a pool drawn across a slope digs a pit as deep as the ground falls. Draw it inside ground that is already level, or state a `level` and let it fill the hollow there is.",
    "severity": "complaint",
    "subjects": [
-    "one-channel-beck"
+    "no-layer-beck"
    ]
   }
  ]

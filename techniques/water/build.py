@@ -13,9 +13,18 @@ from cards import SOLID, depth_stack, grid, lobed_ring, moor
 
 PANEL_W, PANEL_D = 96, 76
 COL_X, ROW_Z = grid(5, 2, PANEL_W, PANEL_D)
-MOOR = moor(grass_to=25, dirt_to=45)
+MOOR = moor(grass_to=35, dirt_to=55)
 GROUND_TOP = 40
 
+STRAND = {  # the shore: sand over sandstone, so a beach reads as a beach rather than as grass with a rim
+    "bedrock": {"relative": False, "value": 1},
+    "rimEdges": "void",
+    "rim": {"enabled": False, "depth": 1, "material": SOLID(12)},
+    "wallEnabled": True, "wallOnTerrainFaces": True,
+    "wall": SOLID(24, 2), "fill": SOLID(24),
+    "surface": {"enabled": True, "depth": 3,
+                "material": depth_stack((SOLID(12), 2), (SOLID(24), 1))},
+}
 PLANK = {   # the bridge, so it can be told from the grass it crosses
     "bedrock": {"relative": False, "value": 1},
     "rimEdges": "void",
@@ -57,11 +66,17 @@ def water(prop_id, shape, points, **words):
 
 # Each panel: the relief its ground is solved to, any shape it cuts, and the water drawn on it.
 def beach(cx, cz):
-    """A pool against a bank that shelves. `shore` is how wide a beach the water meets the land through,
-    and `shoreWander` opens and closes it along the run so the strand is ragged rather than ruled."""
-    return ([area("fell", 30, band(cx, cz, -35, -26)), area("strand", 17, band(cx, cz, 10, 35))],
-            [], [water("bay", "pool", box(cx, cz + 23, 70, 22), level=16, radius=8, depth=4,
-                       form="natural", shore=5, edge=2)])
+    """A sea, not a pond: the pool's ring is drawn PAST the island's own edge, so the water fills to the
+    board's rim and meets the void there rather than stopping in a basin with a lip round it.
+
+    The ground shelves from a fell at 30 to a sea floor at 11, and the southern half carries a sand theme
+    of its own — a beach is a surface, and `shore` only lays the bank band where the water meets it."""
+    return ([area("fell", 30, band(cx, cz, -35, -24)), area("shelf", 11, band(cx, cz, 16, 35))],
+            [{"id": f"strand-{cx:.0f}", "type": "rectangle", "operation": "add", "floor": 0,
+              "base_height": GROUND_TOP, "theme": "strand",
+              "min_x": cx - 48, "min_z": cz + 2, "max_x": cx + 48, "max_z": cz + 38}],
+            [water("sea", "pool", box(cx, cz + 26, 108, 44), level=16, radius=10, depth=6,
+                   form="natural", shore=3, edge=2, layer="ground")])
 
 
 def pond(cx, cz):
@@ -116,18 +131,14 @@ def pan_fits(cx, cz):
                        radius=5, depth=3, form="natural", shore=2, edge=1.5)])
 
 
-def under_a_bridge(cx, cz, split=False):
-    """A beck across level ground with a deck thrown over it. The channel's line is the lowest surface its
-    band crosses — the open holm at 20 — and every column over that line inside the band is emptied down
-    to it, the deck's own columns included. Two channels stopping at the deck's edges leave it standing."""
+def under_a_bridge(cx, cz, layer=None):
+    """A beck across level ground with a plank deck thrown over it, drawn twice and differing in one
+    field. A water prop carves against the ground of the layer it NAMES; naming none takes the top
+    surface of the stack, which here is the deck, so the carve bites the bridge through."""
     marks = [area("holm", 20, band(cx, cz, -35, 35))]
-    if not split:
-        return marks, [], [water("beck", "channel", [[cx, cz - 32], [cx, cz + 32]],
-                                 radius=4, depth=3, form="stream", shore=3, edge=1.5)]
-    return marks, [], [water("beck-north", "channel", [[cx, cz - 32], [cx, cz - 11]],
-                             radius=4, depth=3, form="stream", shore=3, edge=1.5),
-                       water("beck-south", "channel", [[cx, cz + 11], [cx, cz + 32]],
-                             radius=4, depth=3, form="stream", shore=3, edge=1.5)]
+    words = {"layer": layer} if layer else {}
+    return marks, [], [water("beck", "channel", [[cx, cz - 32], [cx, cz + 32]],
+                             radius=4, depth=3, form="stream", shore=3, edge=1.5, **words)]
 
 
 def down_a_hill(cx, cz):
@@ -143,8 +154,8 @@ PANELS = [
     ("beach", 0, 0, beach), ("pond", 1, 0, pond), ("no-shore", 2, 0, no_shore),
     ("two-forms", 3, 0, two_forms), ("basin", 4, 0, basin),
     ("pan-too-big", 0, 1, pan_too_big), ("pan-fits", 1, 1, pan_fits), ("down-a-hill", 2, 1, down_a_hill),
-    ("one-channel", 3, 1, under_a_bridge),
-    ("two-channels", 4, 1, lambda cx, cz: under_a_bridge(cx, cz, split=True)),
+    ("no-layer", 3, 1, under_a_bridge),
+    ("named-layer", 4, 1, lambda cx, cz: under_a_bridge(cx, cz, layer="ground")),
 ]
 
 shapes, groups, relief, props = [], [], {}, []
@@ -165,7 +176,7 @@ for name, col, row, make in PANELS:
     for prop in water_props:
         prop["id"] = f"{name}-{prop['id']}"   # a prop id is the handle a decline names
     props += water_props
-    if name in ("one-channel", "two-channels"):
+    if name in ("no-layer", "named-layer"):
         deck_layer.append({"id": f"deck-{name}", "type": "rectangle", "operation": "add", "floor": 0,
                            "base_height": 1, "theme": "plank",
                            "min_x": cx - 24, "min_z": cz - 6, "max_x": cx + 24, "max_z": cz + 6})
@@ -181,7 +192,7 @@ layout = {
     "setup": {"bbox": {"min_x": COL_X[0] - 8, "max_x": COL_X[-1] + PANEL_W + 8,
                        "min_z": ROW_Z[0] - 8, "max_z": ROW_Z[-1] + PANEL_D + 8},
               "center": {"cx": 0, "cz": 0}, "mirror_mode": "none"},
-    "themes": {"moor": MOOR, "plank": PLANK},
+    "themes": {"moor": MOOR, "strand": STRAND, "plank": PLANK},
     "mapTheme": "moor",
     "relief": relief,
     "layers": layers,

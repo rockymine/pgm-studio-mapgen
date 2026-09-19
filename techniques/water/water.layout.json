@@ -50,7 +50,7 @@
       "ending": "repeat",
       "bands": [
        {
-        "thickness": 25,
+        "thickness": 35,
         "material": {
          "kind": "layered",
          "stack": {
@@ -104,7 +104,7 @@
         }
        },
        {
-        "thickness": 45,
+        "thickness": 35,
         "material": {
          "kind": "layered",
          "stack": {
@@ -132,6 +132,62 @@
           ]
          }
         }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "strand": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 12,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 24,
+    "data": 2
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 24,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 12,
+         "data": 0
+        },
+        "thickness": 2
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 24,
+         "data": 0
+        },
+        "thickness": 1
        }
       ]
      }
@@ -199,27 +255,27 @@
       ],
       [
        -175.0,
-       -71.0
+       -69.0
       ],
       [
        -265.0,
-       -71.0
+       -69.0
       ]
      ]
     },
     {
-     "id": "strand",
+     "id": "shelf",
      "kind": "area",
-     "h": 17,
+     "h": 11,
      "bevel": 0,
      "ring": [
       [
        -265.0,
-       -35.0
+       -29.0
       ],
       [
        -175.0,
-       -35.0
+       -29.0
       ],
       [
        -175.0,
@@ -706,7 +762,7 @@
    ],
    "pushes": []
   },
-  "one-channel": {
+  "no-layer": {
    "base": 18,
    "reach": 0,
    "step": 1,
@@ -738,7 +794,7 @@
    ],
    "pushes": []
   },
-  "two-channels": {
+  "named-layer": {
    "base": 18,
    "reach": 0,
    "step": 1,
@@ -789,6 +845,18 @@
       "min_z": -83,
       "max_x": -172,
       "max_z": -7
+     },
+     {
+      "id": "strand--220",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "strand",
+      "min_x": -268.0,
+      "min_z": -43.0,
+      "max_x": -172.0,
+      "max_z": -7.0
      },
      {
       "id": "island-pond",
@@ -889,7 +957,7 @@
       "max_z": 83
      },
      {
-      "id": "island-one-channel",
+      "id": "island-no-layer",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
@@ -901,7 +969,7 @@
       "max_z": 83
      },
      {
-      "id": "island-two-channels",
+      "id": "island-named-layer",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
@@ -919,7 +987,8 @@
       "name": "beach",
       "mirrors": false,
       "shapeIds": [
-       "island-beach"
+       "island-beach",
+       "strand--220"
       ]
      },
      {
@@ -980,19 +1049,19 @@
       ]
      },
      {
-      "id": "one-channel",
-      "name": "one-channel",
+      "id": "no-layer",
+      "name": "no-layer",
       "mirrors": false,
       "shapeIds": [
-       "island-one-channel"
+       "island-no-layer"
       ]
      },
      {
-      "id": "two-channels",
-      "name": "two-channels",
+      "id": "named-layer",
+      "name": "named-layer",
       "mirrors": false,
       "shapeIds": [
-       "island-two-channels"
+       "island-named-layer"
       ]
      }
     ]
@@ -1005,7 +1074,7 @@
    "layout": {
     "shapes": [
      {
-      "id": "deck-one-channel",
+      "id": "deck-no-layer",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
@@ -1017,7 +1086,7 @@
       "max_z": 51.0
      },
      {
-      "id": "deck-two-channels",
+      "id": "deck-named-layer",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
@@ -1035,8 +1104,8 @@
       "name": "deck",
       "mirrors": false,
       "shapeIds": [
-       "deck-one-channel",
-       "deck-two-channels"
+       "deck-no-layer",
+       "deck-named-layer"
       ]
      }
     ]
@@ -1046,32 +1115,32 @@
  "dressing": {
   "props": [
    {
-    "id": "beach-bay",
+    "id": "beach-sea",
     "kind": "water",
     "shape": "pool",
     "points": [
      [
-      -255.0,
-      -33.0
+      -274.0,
+      -41.0
      ],
      [
-      -185.0,
-      -33.0
+      -166.0,
+      -41.0
      ],
      [
-      -185.0,
-      -11.0
+      -166.0,
+      3.0
      ],
      [
-      -255.0,
-      -11.0
+      -274.0,
+      3.0
      ]
     ],
-    "radius": 8,
-    "depth": 4,
+    "radius": 10,
+    "depth": 6,
     "form": "natural",
     "edge": 2,
-    "shore": 5,
+    "shore": 3,
     "shoreWander": true,
     "seed": 7,
     "bank": {
@@ -1105,7 +1174,8 @@
       }
      ]
     },
-    "level": 16
+    "level": 16,
+    "layer": "ground"
    },
    {
     "id": "pond-tarn",
@@ -2277,7 +2347,7 @@
     }
    },
    {
-    "id": "one-channel-beck",
+    "id": "no-layer-beck",
     "kind": "water",
     "shape": "channel",
     "points": [
@@ -2330,66 +2400,13 @@
     }
    },
    {
-    "id": "two-channels-beck-north",
+    "id": "named-layer-beck",
     "kind": "water",
     "shape": "channel",
     "points": [
      [
       220.0,
       13.0
-     ],
-     [
-      220.0,
-      34.0
-     ]
-    ],
-    "radius": 4,
-    "depth": 3,
-    "form": "stream",
-    "edge": 1.5,
-    "shore": 3,
-    "shoreWander": true,
-    "seed": 7,
-    "bank": {
-     "kind": "voronoi",
-     "seed": 5,
-     "cellSize": 5,
-     "bands": [
-      {
-       "material": {
-        "kind": "solid",
-        "id": 13,
-        "data": 0
-       },
-       "thickness": 2
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 3,
-        "data": 1
-       },
-       "thickness": 1
-      },
-      {
-       "material": {
-        "kind": "solid",
-        "id": 12,
-        "data": 0
-       },
-       "thickness": 1
-      }
-     ]
-    }
-   },
-   {
-    "id": "two-channels-beck-south",
-    "kind": "water",
-    "shape": "channel",
-    "points": [
-     [
-      220.0,
-      56.0
      ],
      [
       220.0,
@@ -2433,7 +2450,8 @@
        "thickness": 1
       }
      ]
-    }
+    },
+    "layer": "ground"
    }
   ]
  }

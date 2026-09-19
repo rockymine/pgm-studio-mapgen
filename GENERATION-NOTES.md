@@ -759,6 +759,12 @@ author then owns the rim: water rises to the line inside the prop's footprint an
 from `themes/census` with eight distinct surface blocks, gravel and sand among them, because the bank is a
 material the prop lays rather than a theme the document scopes.
 
+**A sea is a pool whose ring is drawn past the edge of the land, so the water fills to the board's rim.** A
+ring kept inside the island stops in a basin with a lip round it, which reads as a tank; `opus5-millrace`
+draws its ring to x −132 on a board whose bbox ends at −130, and the last column before the void comes back
+as water. `shore` is a bank band a few cells wide and not a beach — a shore that should read as sand for
+twenty cells wants a theme of its own on the ground under it.
+
 ### Relief is keyed by group id across the whole stack, and `*` is the ground's alone
 
 `SketchRasterizer.ReliefFields` walks every layer and looks each of its groups up in the one
@@ -1342,15 +1348,18 @@ says it: *the line is the lowest surface the body crosses and every column over 
 **So a channel run down a fall is built as a trench, not as a beck.** One drawn from a head at 30 to a foot
 at 16 took 16 as its line and reported *cut **14 course(s)** of ground away above its own line — a
 straight-sided wall from y16 to y29*. Keep a run within a course or two of level, state a `level` and accept
-the rim, or break it into reaches that each cross flat ground.
+the rim, or break it into reaches that each cross flat ground — a reach left dry still lays its bank
+materials, which is worth having where the board can afford to call it a sink.
 
-**The same rule bites a bridge through.** A beck across level ground at 20 with a deck at y25 cut *6
-course(s) … from y20 to y25* — the deck's own columns, because the channel's band crosses them. Two channels
-stopped clear of the deck's band raise nothing and leave the bridge whole.
+**A bridge is bitten through only when the prop names no layer, and naming one is the whole fix.** A water
+prop carves against `DressingContext.GroundFor`, which is the ground of the layer it **names**; with none it
+takes the top of the stack, so a beck under a deck at y25 read the deck as its own ground and cut *6
+course(s) … from y20 to y25*. The same beck with `"layer": "ground"` builds planks at y25 with water at y19
+under them and declines nothing.
 
-**What that costs is the water under it: the reach between them is dry.** A board can have the water under
-the bridge or the bridge, not both. A reach left dry still lays its bank materials, which is worth having
-where the board can afford to call it a sink.
+**So a board can have the water and the bridge, and every prop kind takes the field.** This is the prop rule
+met where it matters most rather than a rule about water, because water is the one prop that changes the
+ground it is placed on.
 
 `techniques/water` is the worked card, with both cases side by side.
 
