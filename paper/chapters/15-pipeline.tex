@@ -1,0 +1,112 @@
+\chapter{The Pipeline in Seven Stages}
+\label{ch:pipeline}
+
+\section{Method}
+
+The chapters of Part~II describe the instruments one at a time. This chapter shows
+them accumulating on a single board.
+
+The subject is Whitegape, the destroy board of \cref{ch:dtm}. Its finish was
+truncated to a prefix of its keys seven times, and each truncation was driven
+through the studio under a slug of its own, exported, and rendered from the same
+camera. Nothing between the pictures was drawn by hand, and nothing about the plan
+changed: the only difference between one panel and the next is that one more key
+of the finish was present.
+
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}{0.48\textwidth}\includegraphics[width=\linewidth]{stages/01-ground.png}
+  \caption{Ground. The plan compiled and nothing else.}\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\includegraphics[width=\linewidth]{stages/02-relief.png}
+  \caption{Relief. Four marks and their pushes carve the fell.}\end{subfigure}
+
+\medskip
+\begin{subfigure}{0.48\textwidth}\includegraphics[width=\linewidth]{stages/03-paint.png}
+  \caption{Paint. A theme per bucket, banded by the ground's own angle.}\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\includegraphics[width=\linewidth]{stages/04-shapes.png}
+  \caption{Shapes. Nine authored: the pit, the dock, two flights, two ramps, a wall,
+  two kerbs.}\end{subfigure}
+
+\medskip
+\begin{subfigure}{0.48\textwidth}\includegraphics[width=\linewidth]{stages/05-layers.png}
+  \caption{Layers. One made layer, the kiln, at base 18.}\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}\includegraphics[width=\linewidth]{stages/06-rooms.png}
+  \caption{Rooms. The spawn shell, in place of the built-in box.}\end{subfigure}
+
+\medskip
+\begin{subfigure}{0.48\textwidth}\includegraphics[width=\linewidth]{stages/07-dressed.png}
+  \caption{Dressed. Ten styles and 27 props.}\end{subfigure}
+\caption{One board, seven exports. Each panel adds one key of the finish to the one
+before it.}
+\label{fig:stages}
+\end{figure}
+
+\section{What Each Stage Adds}
+
+\Cref{tab:stages} is the same sequence as numbers: what the finish carried, how many
+shapes the stored layout held, how many distinct surface blocks the built world's
+theme census counted, and what the store and the export answered with.
+
+\begin{table}[htbp]
+\caption{The seven stages, measured. The key added at each stage is bold; the rest
+is inherited.}
+\label{tab:stages}
+\scriptsize
+\input{data/stages}
+\end{table}
+
+\section{Four Observations}
+
+\subsection{The First Panel Is What a Plan Actually Buys}
+
+Stage one is the plan compiled with an empty finish: two flat grey slabs, a gap
+between them, and the objective markers. It is worth looking at for a moment,
+because it is exactly what \cref{ch:division} claims a composed or authored plan
+provides. The arrangement is entirely present. The place is entirely absent.
+
+The spawn and wool shells are already standing, which is easy to misread as the
+finish having leaked into the stage. It has not. Those structures are stamped from
+the \emph{plan's} own pieces rather than from the finish's room styles, which is
+why stage six, where the room style arrives, changes their material and not their
+existence.
+
+\subsection{The Block Count Is the Whole Story in One Column}
+
+The census of distinct surface blocks runs 4, 4, 8, 10, 10, 10, 11 across the seven
+stages. Two things fall out of that sequence.
+
+Relief adds nothing to it. Stage two reshapes the entire board and leaves the block
+count exactly where stage one had it, because relief decides where ground goes and
+never what it is made of. The two concerns are orthogonal in the model and the
+measurement shows it.
+
+Paint doubles it, from four to eight, in one key. Then authored shapes add two more,
+and everything after that adds one between them. By far the largest single change in
+what the board is \emph{made of} is the theme registry, and by far the largest
+single change in what the board \emph{is} comes later.
+
+\subsection{Most Stages Are Silent}
+
+Only two of the seven answered with any finding at all. Stage one drew \id{SK8}.
+Stage seven drew six rules at once, every one of them from the dressing family:
+\id{DR-CLAIM}, \id{DR-CUT}, \id{DR-KEEP}, \id{DR-PASS}, \id{DR-ROAD} and
+\id{DR-STEEP}.
+
+That distribution is not an accident of this board. Dressing is the stage that
+places things on ground it did not make, so it is the stage with the most to
+complain about: a prop claiming a cell another prop claimed, a prop cut in two by
+an obstruction, a prop on ground too steep to stand on, a road crossing something
+it should not. Everything before it is authored against an empty board and has
+nothing to collide with.
+
+\subsection{The Plan's Own Verdict Never Moves}
+
+Every one of the seven runs drew the same plan-level complaint: a dead-share of
+0.198, outside its authored band. It is identical in all seven because it judges
+the \emph{plan}, and the plan did not change.
+
+This is a useful demonstration of a distinction \cref{ch:refusals} makes in the
+abstract. A plan-tier rule reads pieces and build zones. It cannot see relief, paint,
+layers, rooms or props, so no amount of finishing will move it. An author trying to
+answer a plan-tier complaint by improving the finish is working at the wrong level,
+and the seven identical readings are what that looks like from outside.

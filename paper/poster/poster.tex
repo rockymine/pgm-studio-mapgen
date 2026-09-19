@@ -4,7 +4,7 @@
 
 % A1 is four times A3 by area, so the body type is scaled to match: a poster set
 % at 10pt on this sheet reads as a footnote from two metres away.
-\usepackage[fontsize=21pt]{fontsize}
+\usepackage[fontsize=18pt]{fontsize}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -42,7 +42,7 @@
 
 % A stage card: the render, its number, its name, and one line of what it added.
 \newcommand{\stagecard}[4]{%
-  \begin{minipage}[t]{0.129\textwidth}
+  \begin{minipage}[t]{0.132\textwidth}
     \fbox{\includegraphics[width=\linewidth]{#1}}\\[5pt]
     {\sffamily\small\color{ink30} #2}\ \ {\sffamily\small\bfseries\color{ink} #3}\\[2pt]
     {\footnotesize\color{ink60} #4}
@@ -51,8 +51,8 @@
 
 % A stage card with no picture yet, so the sheet lays out before the renders land.
 \newcommand{\stageplaceholder}[3]{%
-  \begin{minipage}[t]{0.129\textwidth}
-    \fcolorbox{rule}{wash}{\parbox[c][104mm][c]{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\color{ink30}\footnotesize stage render}}\\[5pt]
+  \begin{minipage}[t]{0.132\textwidth}
+    \fcolorbox{rule}{wash}{\parbox[c][88mm][c]{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\color{ink30}\footnotesize stage render}}\\[5pt]
     {\sffamily\small\color{ink30} #1}\ \ {\sffamily\small\bfseries\color{ink} #2}\\[2pt]
     {\footnotesize\color{ink60} #3}
   \end{minipage}%
@@ -61,8 +61,8 @@
 \begin{document}
 
 % ---------------------------------------------------------------- masthead ----
-{\sffamily\fontsize{104}{110}\selectfont\bfseries\color{ink} How a PGM Map Gets Made}\\[14pt]
-{\sffamily\fontsize{40}{46}\selectfont\color{ink60}
+{\sffamily\fontsize{92}{98}\selectfont\bfseries\color{ink} How a PGM Map Gets Made}\\[14pt]
+{\sffamily\fontsize{34}{40}\selectfont\color{ink60}
  A map is made by two parties, and the line between them moves at every stage}\\[14pt]
 {\color{rule}\rule{\textwidth}{1.6pt}}\\[18pt]
 
@@ -89,8 +89,8 @@ instrument switched on. Nothing between them is drawn by hand.}\\[12pt]
   \stageplaceholder{7}{Dressed}{Trees, boulders and paths, each one placed.}%
 }
 
-\vspace{16pt}
-{\color{rule}\rule{\textwidth}{1pt}}\par\vspace{16pt}
+\vspace{12pt}
+{\color{rule}\rule{\textwidth}{1pt}}\par\vspace{12pt}
 
 % ----------------------------------------------------------- lower register ---
 \noindent\begin{minipage}[t]{\textwidth}
@@ -162,8 +162,46 @@ objective teach nothing about the next.}
 \end{minipage}
 \end{minipage}
 
-\vspace{16pt}
-{\color{rule}\rule{\textwidth}{1pt}}\par\vspace{8pt}
+\vspace{14pt}
+{\color{rule}\rule{\textwidth}{1pt}}\par\vspace{12pt}
+
+% ------------------------------------------------------------- the two maps ---
+{\sffamily\Large\bfseries\color{ink} Two boards made this way}\par\vspace{8pt}
+
+\noindent\begin{minipage}[t]{\textwidth}
+\noindent
+\begin{minipage}[t]{0.315\textwidth}
+  \IfFileExists{../figures/generated/maps/whitegape-iso.png}{%
+    \includegraphics[width=\linewidth]{../figures/generated/maps/whitegape-iso.png}}{%
+    \fcolorbox{rule}{wash}{\parbox[c][62mm][c]{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\color{ink30}\footnotesize board render}}}\\[6pt]
+  {\sffamily\bfseries\color{ink} Whitegape}\ \ {\color{ink60}destroy, 14 a side}\\[2pt]
+  {\footnotesize\color{ink60} Authored from nothing, to no brief. A limestone gorge
+  quarried from both rims, each team's monument on the floor of its own pit.}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.315\textwidth}
+  \IfFileExists{../figures/generated/maps/hushwater-iso.png}{%
+    \includegraphics[width=\linewidth]{../figures/generated/maps/hushwater-iso.png}}{%
+    \fcolorbox{rule}{wash}{\parbox[c][62mm][c]{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\centering\color{ink30}\footnotesize board render}}}\\[6pt]
+  {\sffamily\bfseries\color{ink} Hushwater}\ \ {\color{ink60}capture the wool, 18 a side}\\[2pt]
+  {\footnotesize\color{ink60} Pulled off the composer at seed 5 and then adapted.
+  The arrangement is the studio's; the place is the author's.}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.305\textwidth}
+  {\sffamily\bfseries\color{ink} What a session looks like}\\[8pt]
+  {\color{ink60}\small Every call each board's author made was recorded. An
+  authoring run is not a single request: it is hundreds of reads against a handful
+  of writes, because an agent cannot see the map and every belief it holds is a
+  number the studio handed back.}\\[10pt]
+  {\color{ink60}\small A 200 is not a yes. A request can succeed and still drop
+  what it was sent, and the only place that is said is the \id{warnings} key. That
+  is the most expensive lesson in the whole corpus.}
+\end{minipage}
+\end{minipage}
+
+\vspace{12pt}
+{\color{rule}\rule{\textwidth}{1pt}}\par\vspace{6pt}
 {\footnotesize\sffamily\color{ink60}
 Every figure on this sheet was drawn by the studio being described.
 The full paper, with both worked maps and the complete rule catalogue, is
