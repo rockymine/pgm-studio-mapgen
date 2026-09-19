@@ -78,12 +78,15 @@ picture makes a long bar look like a good idea. Nothing in the picture states th
 reaches it. The same grid catches the rest of the family: a wool room touching the spawn apron (`LN1`), an
 approach whose wall can be walked round because the ground reaches past it, a spur that connects to nothing.
 
-### On half a box the three goal bands cannot all hold at the plan tier
+### On half a box the goal bands cannot all hold at the plan tier
 
-`GO1` wants a goal three to four times as far from the enemy's door as from its own, `GO4` wants it at least
-40 blocks from its own, and `GO3` wants the two teams' goals at least 85 apart. With the doors 134 blocks
-apart on a 130 × 120 board and a goal a distance `d` along the line between them, that is `d` in [27, 34], `d`
-≥ 40 and `134 − 2d` ≥ 85 — three bands with no common point.
+Four terms measure where a goal stands and every one of them is a band with two ends. The ratio of the enemy
+walk to the author's own wants **[3.0, 4.0]**; the walk from its own spawn wants **[40, 90]** blocks; two
+goals of one team want **[35, 65]** between them; and the two teams' goals want **[85, 150]**.
+
+With the doors 134 blocks apart on a 130 × 120 board and a goal a distance `d` along the line between them,
+that is `d` in [27, 34], `d` ≥ 40 and `134 − 2d` ≥ 85 — three of them with no common point. A board too small
+cannot satisfy them, and neither can one whose halves are too far apart to be reached.
 
 The plan tier walks the pieces flat, so a gill cut eight courses deep or a single bridge lengthens no route it
 measures.
@@ -1119,6 +1122,11 @@ What the order still decides is where a shape naming no layer lands: the first o
 takes `"below": true` to insert a storey under the compiled ground, which moves that target, so a finish
 adding an undercroft states the layer its shapes belong to rather than relying on the position.
 
+**`SK20` complains where the list is not in the order the world builds.** The list is what a reader and the
+storey strip walk and `base_y` is what the world is built from, so the two disagreeing is worth saying even
+though nothing is lost. A sculpture drawn out of layers has no stacking order to be in, which is what
+`kind: "made"` says.
+
 ### Two layers may share one course and no more
 
 A layer's span is inclusive of its top, so an upper layer sitting exactly at the lower one's top shares that
@@ -1155,13 +1163,15 @@ a group in the air.
 **Overlap the two footprints by a column** and check it with a transect, because no read will say:
 `traversability` and `WorldColumns.Membership` both discard Y, so a layered board is always "one component".
 
-### A layer over open void leaves a bedrock plate at the bottom of the world
+### The bedrock floor goes under what rests on it, and under nothing else
 
-`TerrainBuilder.Build` writes bedrock at y0 under every footprint cell it fills, per layer. A bridge
-slab across a strait therefore drops its own 20 × 20 shadow at y0 in the abyss, and an overhanging
-deck does the same over whatever it hangs past. The theme's `bedrock` value does not reach it — the
-painter only overwrites stone — and those columns join the Y0 set a void filter reads. There is no
-knob; a slab over void costs this.
+`TerrainBuilder.Build` writes bedrock at y0 under a column whose own floor is the bedrock course or the
+first block over it. A bridge slab across a strait, a deck overhanging a court and any layer standing at a
+`base_y` of its own stand on nothing and are plated with nothing, so the fall under them stays void and those
+columns stay out of the Y0 set a void filter reads.
+
+A one-thick slab at `floor: 0` writes no stone at all and the bedrock is its whole ground, which is why the
+test reads the floor rather than what the fill wrote.
 
 ### A channel reads the surface top, so a bridge over a beck breaks the beck
 
@@ -1453,32 +1463,20 @@ reference.
 
 ---
 
-### `roomStyles` carries `wool` and `spawn`, and every spec on disk older than 2026-09-07 says `cage`
+### `roomStyles` has three states and the third one is silent
 
-`SketchRoomStyles` has exactly two members, and the wool one was renamed from `cage` on **2026-09-07**
-(`41242fe`, migration `M0033_WoolRoomWireWord`). The migration rewrote the key in every **stored** layout, so
-a board already in the database came across; a board driven from **its own document on disk** did not, and
-sixty-odd `*.layout.json` and `*.finish.json` files here still state the old word.
+`roomStyles` binds a shell for `wool` and for `spawn`, and each of the three things it can say means
+something different: an **object** is the bound style, an explicit **`null`** is open ground with no
+building, and an **absent** key is that kind's built-in shell — a bedrock box.
 
-**Which path the write takes decides whether anything says so.** The per-part route refuses an unknown one —
-`PUT …/sketch/room-styles/cage` answers **400**, *"a map binds a shell for wool and spawn, and nothing else"*,
-with `part` as the field.
+The third is the one that costs a build, because nothing is wrong with the document. A board whose key the
+studio does not bind stores at 200, pre-flights **OPEN**, exports at 200, and builds its rooms as the box:
+`y24 Bedrock · y16 Bedrock` where the bound style reads `y26 Bricks · y16 Gravel`.
 
-The **whole-layout** write does not: `SketchRoomStyles` is deserialized with the default unmapped-member
-handling, so a key it does not know is dropped in silence, and `POST /map/from-documents` is the path a spec
-drive takes.
-
-An absent key is not an error either — it is that kind's **built-in shell**. So a board keyed `cage` stores at
-200, pre-flights **OPEN**, exports at 200, and builds its wool rooms as the built-in **bedrock box**:
-
-```
-GET …/column?at=-45,75   (cage)   y24 Bedrock · y16 Bedrock
-GET …/column?at=-45,75   (wool)   y26 Bricks  · y16 Gravel
-```
-
-This is the *dated evidence* rule with a measured cost: three states that each mean something different
-(`object` = the bound style, explicit `null` = open ground with no building, absent = the built-in shell) and
-a wrong key falling into the third one silently.
+Two things now say so. The per-part route refuses an unknown part outright — 400, *"a map binds a shell for
+wool and spawn, and nothing else"* — and the whole-layout write names the key under `RQ3`, because the
+unread walk descends into the type and reports a property it has nowhere to keep. Read the `RQ3`s and a
+mis-keyed shell cannot reach a world.
 
 ### A house style in a dressing document is not a house style
 
@@ -1617,12 +1615,19 @@ shore — and leave the wood's floor to the theme and the flora overlay.
 
 ### Only `worn` spends `coverage` — `rough` fills its band solid
 
-`StrokeFill` decides a cell's membership in two steps: a half-width the style shapes, and then a
-per-cell gate. Only `PathStyle.Worn` has the gate (`PatternNoise.Unit(x, z, seed + 11) < coverage`).
-`Rough` spends its knob on the band's *edge* instead, wandering the half-width by ±45 % over a
-7-block scale, and fills everything inside it. So `style="rough", coverage=0.26` is a **solid belt**,
-not a freckle, and sixteen seam strokes written that way turn every boundary on a board into a stripe of a
-third material laid over the join.
+`StrokeFill` decides a cell's membership in two steps: a half-width the style shapes, and then a per-cell
+gate. Only `worn` has that gate — `PatternNoise.Unit(x, z, seed + 11) < coverage`.
+
+`rough` spends its knob on the band's *edge* instead, wandering the half-width by ±45% over a 7-block scale
+and filling everything inside it. So `style="rough", coverage=0.26` is a **solid belt**, not a freckle, and
+sixteen seam strokes written that way turn every boundary on a board into a stripe of a third material laid
+over the join.
+
+**A stroke prop takes five styles and a polyline shape takes three.** The prop's are `solid`, `worn`,
+`rough`, `tapered` and `stones` — discs at intervals along the arc with gaps between them, spaced on arc
+length so the spacing stays even round a bend, which is the stepping-stone crossing nothing else draws. A
+polyline shape's `stroke_edge` is `solid`, `rough` or `tapered`: it is an outline, and an outline cannot
+express a gap or a per-cell dice.
 
 A seam wants `worn`, and it wants **two grounds freckling into each other, one material to a
 stroke**: a wide thin stroke at the far edge and a narrow dense one over it, so the density ramps
