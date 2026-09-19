@@ -1820,10 +1820,34 @@ length so the spacing stays even round a bend, which is the stepping-stone cross
 polyline shape's `stroke_edge` is `solid`, `rough` or `tapered`: it is an outline, and an outline cannot
 express a gap or a per-cell dice.
 
-A seam wants `worn`, and it wants **two grounds freckling into each other, one material to a
-stroke**: a wide thin stroke at the far edge and a narrow dense one over it, so the density ramps
-from a scatter to about half cover. A voronoi of three materials in one stroke is a new ground over
-the boundary, which reads as noise wherever the two it stands between already differed.
+**A seam wants two tongues with their bands left whole, and the mixing belongs in the pave rather than in
+the brush** (the author's ruling). A `rough` stroke of the shore's material reaching up and a second reaching
+down give a zone instead of a line, and where one of them should read as a gradient its pave is a small
+`cell` pattern over both grounds' own blocks. The same move is what weathers a road: `worn` takes the band
+apart, and a cell pattern mixing the path's stones with the meadow's grass does not.
+
+### A pave is a full terrain material, but a stroke answers only one of its four axes
+
+`PlaceStroke` resolves the pave at `new BucketContext(x, top - 1, z, TerrainBucket.Surface, 0)` — a world
+coordinate, the surface bucket, and nothing else. So a `height` stack **works**, and bands the path by
+altitude; `depth` and `slope` are handed 0 and always resolve to the stack's first band; and `inward` is
+handed `Inset` of **−1**, which `LayeredMaterial.Resolve` answers with the `beyond` material on every cell.
+
+**So a path cannot be banded across its own width by its material — it takes two strokes.** A wide stroke in
+the verge's material with a narrow one over it in the path's, on one centerline, is the ring an `inward`
+stack cannot give. Nothing reports the failed stack: a board whose road came out entirely in its `beyond`
+block looks deliberate.
+
+### A stroke is turned away by `keepClear`, and by a stamped block, and by nothing else
+
+The keep-out mask is about things that *stand* on ground and a stroke stands on nothing, so a road runs
+through a spawn's protection and up to a door. What stops it is a shape marked `"keepClear": true` — a
+bridge deck, a town wall, a crop bed, a flight of steps — whose columns it skips exactly, with no margin, so
+the way runs to the deck and resumes beyond it. `DressingPalette.IsStamp` covers the rest for free: bedrock,
+obsidian, wool, gold, iron, emerald, chests and stained glass are never a road's to take.
+
+`techniques/painting-with-a-stroke` is the worked card: a strand feathered into a meadow, a serpentine paved
+four ways, the same verge with and without a claim, and one bridge crossed twice.
 
 ---
 

@@ -1,0 +1,122 @@
+GET /api/map/technique-painting-with-a-stroke/column?at=x,z — one column per claim. A stroke repaints the top
+course and adds no cell, so every column here is the same height it would be with no prop on the board.
+
+### butted — north of the drawn seam: the meadow
+=== column (-165, -95) — 18 solid block(s), ground 27° from level ===
+  y 17    31:1   Grass
+  y 16     2:0   Grass Block
+  y 15     3:0   Dirt
+  y 14     3:0   Dirt
+
+### butted — three blocks south of it: the strand, on a ruled line
+=== column (-165, -89) — 15 solid block(s), ground 14° from level ===
+  y 14    12:0   Sand
+  y 13    12:0   Sand
+  y 12    24:0   Sandstone
+  y 11    24:0   Sandstone
+
+### feathered — the same cell north of the seam, inside the brush: sand
+=== column (-55, -96) — 17 solid block(s), ground 14° from level ===
+  y 16    12:0   Sand
+  y 15     3:0   Dirt
+  y 14     3:0   Dirt
+  y 13     1:0   Stone
+
+### two-tongues — inside the mottled zone, a cell the shore pattern left as meadow
+=== column (55, -96) — 18 solid block(s), ground 14° from level ===
+  y 17    31:1   Grass
+  y 16     2:0   Grass Block
+  y 15     3:0   Dirt
+  y 14     3:0   Dirt
+
+### tapered-tongue — mid-line, where the taper is at full width: sand
+=== column (165, -95) — 17 solid block(s), ground 27° from level ===
+  y 16    12:0   Sand
+  y 15     3:0   Dirt
+  y 14     3:0   Dirt
+  y 13     1:0   Stone
+
+### tapered-tongue — three cells off the line near its end, where the taper has run out
+=== column (125, -95) — 18 solid block(s), ground 27° from level ===
+  y 17    31:2   Fern
+  y 16     2:0   Grass Block
+  y 15     3:0   Dirt
+  y 14     3:0   Dirt
+
+### road — on the paving: one of the three stones of the road pattern
+=== column (-165, -30) — 28 solid block(s), ground 14° from level ===
+  y 27     1:5   Andesite
+  y 26     3:0   Dirt
+  y 25     3:0   Dirt
+  y 24     1:0   Stone
+
+### weathered — the same cell of the same road, its pave mixed with the meadow's grass
+=== column (-55, -30) — 28 solid block(s), ground 14° from level ===
+  y 27     1:5   Andesite
+  y 26     3:0   Dirt
+  y 25     3:0   Dirt
+  y 24     1:0   Stone
+
+### verge — the wide stroke, outside the narrow one: coarse dirt
+=== column (55, -36) — 28 solid block(s), ground 14° from level ===
+  y 27     3:1   Coarse Dirt
+  y 26     3:0   Dirt
+  y 25     3:0   Dirt
+  y 24     1:0   Stone
+
+### claimed — the same cell of the same verge, under a claim
+=== column (165, -36) — 28 solid block(s), ground 14° from level ===
+  y 27     3:1   Coarse Dirt
+  y 26     3:0   Dirt
+  y 25     3:0   Dirt
+  y 24     1:0   Stone
+
+### by-height — the road at y11, inside the stack's first band
+=== column (-190, 106) — 12 solid block(s), ground 0° from level ===
+  y 11     3:1   Coarse Dirt
+  y 10     3:0   Dirt
+  y  9     3:0   Dirt
+  y  8     1:0   Stone
+
+### by-height — the same road at y20, inside the second
+=== column (-150, 84) — 21 solid block(s), ground 14° from level ===
+  y 20     4:0   Cobblestone
+  y 19     3:0   Dirt
+  y 18     3:0   Dirt
+  y 17     1:0   Stone
+
+### by-height — and at y30, inside the third
+=== column (-190, 62) — 31 solid block(s), ground 0° from level ===
+  y 30     1:5   Andesite
+  y 29     3:0   Dirt
+  y 28     3:0   Dirt
+  y 27     1:0   Stone
+
+### by-inward — the whole stroke, resolved to the material named as `beyond`
+=== column (-60, 84) — 19 solid block(s), ground 14° from level ===
+  y 18     5:1   Spruce Planks
+  y 17     3:0   Dirt
+  y 16     3:0   Dirt
+  y 15     1:0   Stone
+
+### over-a-deck — the bridge deck: repainted by the road crossing it
+=== column (55, 90) — 14 solid block(s), ground 0° from level ===
+  y 13     1:5   Andesite
+  y 12    98:0   Stone Bricks
+  y 11    98:0   Stone Bricks
+  y 10    98:0   Stone Bricks
+
+### keep-clear — the same deck, marked `keepClear`: its own boards
+=== column (165, 90) — 14 solid block(s), ground 0° from level ===
+  y 13     5:1   Spruce Planks
+  y 12    98:0   Stone Bricks
+  y 11    98:0   Stone Bricks
+  y 10    98:0   Stone Bricks
+
+### keep-clear — the road on the bank, which the keep-out does not touch
+=== column (165, 70) — 14 solid block(s), ground 0° from level ===
+  y 13     1:5   Andesite
+  y 12     3:0   Dirt
+  y 11     3:0   Dirt
+  y 10     1:0   Stone
+

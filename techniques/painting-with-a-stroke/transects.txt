@@ -1,0 +1,150 @@
+GET /api/map/technique-painting-with-a-stroke/transect?points=…&every=N — what a stroke does to a profile.
+The `standing` column names the prop covering each station, which is how a claim is read cell by cell.
+
+### butted — down the beach: the ground shelves into the sea and the brush changes none of it
+TRANSECT 26 stations from (-165, -128) to (-165, -52), every 3
+  station        ground  surface  water  top  standing            step
+  ( -165,  -128)      22       22           22                      
+  ( -165,  -125)      22       22           22                      
+  ( -165,  -122)      22       22           22                      
+  ( -165,  -119)      22       22           22                      
+  ( -165,  -116)      22       22           22                      
+  ( -165,  -113)      22       22           22                      
+  ( -165,  -110)      22       22           22                      
+  ( -165,  -107)      21       21           22  flora cover-butted  -1
+  ( -165,  -104)      20       20           21  flora cover-butted  -1
+  ( -165,  -101)      19       19           19                      -1
+  ( -165,   -98)      18       18           19  flora cover-butted  -1
+  ( -165,   -95)      17       17           18  flora cover-butted  -1
+  ( -165,   -92)      16       16           16                      -1
+  ( -165,   -89)      15       15           15                      -1
+  ( -165,   -86)      14       14           14                      -1
+  ( -165,   -83)      13       13           13                      -1
+  ( -165,   -80)      12       12     12    12  water sea-butted    -1
+  ( -165,   -77)      12       12     12    12  water sea-butted    
+  ( -165,   -74)      11       11     12    12  water sea-butted    -1
+  ( -165,   -71)      10       10     12    12  water sea-butted    -1
+  ( -165,   -68)      10       10     12    12  water sea-butted    
+  ( -165,   -65)      10       10     12    12  water sea-butted    
+  ( -165,   -62)      10       10     12    12  water sea-butted    
+  ( -165,   -59)      10       10     12    12  water sea-butted    
+  ( -165,   -56)      10       10     12    12  water sea-butted    
+  ( -165,   -53)      10       10     12    12  water sea-butted    
+rises 0, falls 12, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+
+### verge — across the road: three cells of verge, six of road, three of verge
+TRANSECT 31 stations from (55, -42) to (55, -12), every 1
+  station        ground  surface  water  top  standing            step
+  (   55,   -42)                                                    void
+  (   55,   -41)                                                    void
+  (   55,   -40)                                                    void
+  (   55,   -39)                                                    void
+  (   55,   -38)      28       28           28                      
+  (   55,   -37)      28       28           28  stroke verge-verge  
+  (   55,   -36)      28       28           28  stroke verge-verge  
+  (   55,   -35)      28       28           28  stroke verge-verge  
+  (   55,   -34)      28       28           28  stroke way-verge    
+  (   55,   -33)      28       28           28  stroke way-verge    
+  (   55,   -32)      28       28           28  stroke way-verge    
+  (   55,   -31)      28       28           28  stroke way-verge    
+  (   55,   -30)      28       28           28  stroke way-verge    
+  (   55,   -29)      28       28           28  stroke way-verge    
+  (   55,   -28)      28       28           28  stroke verge-verge  
+  (   55,   -27)      28       28           28  stroke verge-verge  
+  (   55,   -26)      28       28           28  stroke verge-verge  
+  (   55,   -25)      28       28           28                      
+  (   55,   -24)      27       27           28  flora cover-verge   -1
+  (   55,   -23)      27       27           28  flora cover-verge   
+  (   55,   -22)      26       26           27  flora cover-verge   -1
+  (   55,   -21)      26       26           27  flora cover-verge   
+  (   55,   -20)      25       25           26  flora cover-verge   -1
+  (   55,   -19)      25       25           26  flora cover-verge   
+  (   55,   -18)      24       24           25  flora cover-verge   -1
+  (   55,   -17)      23       23           24  flora cover-verge   -1
+  (   55,   -16)      23       23           24  flora cover-verge   
+  (   55,   -15)      22       22           23  flora cover-verge   -1
+  (   55,   -14)      22       22           23  flora cover-verge   
+  (   55,   -13)      21       21           22  flora cover-verge   -1
+  (   55,   -12)      21       21           22  flora cover-verge   
+rises 0, falls 7, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+
+### claimed — the same section of the same pair, cell for cell, under a claim
+TRANSECT 31 stations from (165, -42) to (165, -12), every 1
+  station        ground  surface  water  top  standing            step
+  (  165,   -42)                                                    void
+  (  165,   -41)                                                    void
+  (  165,   -40)                                                    void
+  (  165,   -39)                                                    void
+  (  165,   -38)      28       28           28                      
+  (  165,   -37)      28       28           28  stroke verge-claimed  
+  (  165,   -36)      28       28           28  stroke verge-claimed  
+  (  165,   -35)      28       28           28  stroke verge-claimed  
+  (  165,   -34)      28       28           28  stroke way-claimed  
+  (  165,   -33)      28       28           28  stroke way-claimed  
+  (  165,   -32)      28       28           28  stroke way-claimed  
+  (  165,   -31)      28       28           28  stroke way-claimed  
+  (  165,   -30)      28       28           28  stroke way-claimed  
+  (  165,   -29)      28       28           28  stroke way-claimed  
+  (  165,   -28)      28       28           28  stroke verge-claimed  
+  (  165,   -27)      28       28           28  stroke verge-claimed  
+  (  165,   -26)      28       28           28  stroke verge-claimed  
+  (  165,   -25)      28       28           29  flora cover-claimed  
+  (  165,   -24)      27       27           28  flora cover-claimed  -1
+  (  165,   -23)      27       27           27                      
+  (  165,   -22)      26       26           26                      -1
+  (  165,   -21)      26       26           27  flora cover-claimed  
+  (  165,   -20)      25       25           26  flora cover-claimed  -1
+  (  165,   -19)      25       25           25                      
+  (  165,   -18)      24       24           24                      -1
+  (  165,   -17)      23       23           23                      -1
+  (  165,   -16)      23       23           23                      
+  (  165,   -15)      22       22           22                      -1
+  (  165,   -14)      22       22           22                      
+  (  165,   -13)      21       21           21                      -1
+  (  165,   -12)      21       21           21  stroke verge-claimed  
+rises 0, falls 7, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+
+### over-a-deck — along the way, over the gorge
+TRANSECT 17 stations from (55, 58) to (55, 122), every 4
+  station        ground  surface  water  top  standing            step
+  (   55,    58)      14       14           14  stroke way-over-a-deck  
+  (   55,    62)      14       14           14  stroke way-over-a-deck  
+  (   55,    66)      14       14           14  stroke way-over-a-deck  
+  (   55,    70)      14       14           14  stroke way-over-a-deck  
+  (   55,    74)      14       14           14  stroke way-over-a-deck  
+  (   55,    78)      14       14           14  stroke way-over-a-deck  
+  (   55,    82)      14       14           14  stroke way-over-a-deck  
+  (   55,    86)      14       14           14  stroke way-over-a-deck  
+  (   55,    90)      14       14           14  stroke way-over-a-deck  
+  (   55,    94)      14       14           14  stroke way-over-a-deck  
+  (   55,    98)      14       14           14  stroke way-over-a-deck  
+  (   55,   102)      14       14           14  stroke way-over-a-deck  
+  (   55,   106)      14       14           14  stroke way-over-a-deck  
+  (   55,   110)      14       14           14  stroke way-over-a-deck  
+  (   55,   114)      14       14           14  stroke way-over-a-deck  
+  (   55,   118)      14       14           14  stroke way-over-a-deck  
+  (   55,   122)      14       14           14  stroke way-over-a-deck  
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+
+### over-a-deck — beside it, through the gorge the deck bridges
+TRANSECT 17 stations from (70, 58) to (70, 122), every 4
+  station        ground  surface  water  top  standing            step
+  (   70,    58)      14       14           14                      
+  (   70,    62)      14       14           14                      
+  (   70,    66)      14       14           14                      
+  (   70,    70)      14       14           14                      
+  (   70,    74)      14       14           14                      
+  (   70,    78)      14       14           14                      
+  (   70,    82)      14       14           14                      
+  (   70,    86)       3        3            3                      DROP -11
+  (   70,    90)       3        3            3                      
+  (   70,    94)      14       14           14                      BARRIER +11
+  (   70,    98)      14       14           14                      
+  (   70,   102)      14       14           14                      
+  (   70,   106)      14       14           14                      
+  (   70,   110)      14       14           14                      
+  (   70,   114)      14       14           14                      
+  (   70,   118)      14       14           14                      
+  (   70,   122)      14       14           14                      
+rises 1, falls 1, worst step 11: 1 barrier, 0 scramble, 1 drop — DROP -11 at (70, 86); BARRIER +11 at (70, 94) | walked end to end
+
