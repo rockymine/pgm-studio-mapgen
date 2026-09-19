@@ -14,6 +14,15 @@ board is of, what its ground does, what a player sees, or what any of it is
 made of, because it has no representation for any of those. A composed board is
 flat, grey and rectangular, and it is a complete description of an arrangement.
 
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{maps/hushwater-iso.png}
+\caption{Hushwater as exported. The lead hush runs from the mine heads at the top
+of each half down to the gill between them, and the two halves are one unit fanned
+by \id{rot\_180}. The arrangement under all of it is the composer's.}
+\label{fig:hushwater-iso}
+\end{figure}
+
 Both boards are drawn side by side in \cref{fig:composed-card}, which this chapter
 is the commentary on. The hub's ring, its yard hole, the frontline's single run and
 both wool families survive the adaptation unchanged.
@@ -178,6 +187,34 @@ deliberate pad; Whitegape's is three unvisited corners of fell.
 The composer's spawn box is sixteen cells and stays sixteen cells. It moves onto
 the board's centre line, which is a decision about what a player sees on
 spawning rather than about area, and the composer has no term for that.
+
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{maps/hushwater-made.png}
+  \caption{Made ground. Every column a shape or a layer owns, against the ground
+  the relief solved.}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{maps/hushwater-heightmap.png}
+  \caption{The height ladder. One surface as composed; seven as shipped.}
+\end{subfigure}
+
+\medskip
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{maps/hushwater-traversability.png}
+  \caption{Traversability. The bedrock wall over the east lane is the one barrier
+  the adaptation added.}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{maps/hushwater-objectives.png}
+  \caption{Objectives and their clearances, with the bing off to one side.}
+\end{subfigure}
+\caption{Four read-backs of the shipped board. None of these is drawn for this
+paper; each is a route on the running API, and the middle two are what the row
+\emph{distinct piece surfaces} in \cref{tab:hushwater-delta} looks like.}
+\label{fig:hushwater-reads}
+\end{figure}
 
 \section{Where the Studio Said No}
 

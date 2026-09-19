@@ -16,6 +16,36 @@ bedrock at $y0$.
 
 \section{Four Forms of Outline}
 
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{techniques/curved-outlines.png}
+  \caption{Four outlines: a circle drawn as a 64-sided polygon, a lasso of sixteen
+  traced points, a square bowed out by two handles, and the same square with a
+  handle at every corner.}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{techniques/polylines.png}
+  \caption{Polylines. The rasterizer splines the points before it offsets the band,
+  so four clicked points draw as a curve.}
+\end{subfigure}
+
+\medskip
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{techniques/flat-ground.png}
+  \caption{Islands on flat ground, and the vertex edits that reshape one.}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{techniques/combined-shapes.png}
+  \caption{Shapes overlapping, where the taller add wins the column outright.}
+\end{subfigure}
+\caption{The outline vocabulary, built. Each panel is one of the repository's
+technique cards, which state every variant side by side in one world rather than
+one per folder.}
+\label{fig:outlines}
+\end{figure}
+
+
 \subsection{Polygons and the Rectangle}
 
 A polygon is a ring of points. A rectangle is not: it states bounds rather than
@@ -170,6 +200,22 @@ five forms: a ramp (one polygon with anchors at each end), a stair (one polygon
 with deeper treads), a turned flight (two polygons with a landing between), a run
 of steps (one rectangle per tread), and a floating flight (one raised slab per
 tread, with air under each).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.86\textwidth]{techniques/ramp-and-stair.png}
+
+\medskip
+{\small\begin{minipage}{0.9\textwidth}
+Five flights climbing the same eight blocks, drawn beside each other so the
+difference is in the picture rather than in the reader's memory. The counter-
+intuitive rule below governs all five: whole-number anchors at 8 and 1 over sixteen
+blocks build treads one, two and three deep, and a flight comes out even only with
+anchors half a riser past its first and last tread.
+\end{minipage}}
+\caption{The five forms of ascent, at one scale.}
+\label{fig:ascent}
+\end{figure}
 
 One rule governs all of them and it is the most counter-intuitive fact in the whole
 ground model:
