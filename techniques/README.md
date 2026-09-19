@@ -9,7 +9,7 @@ the card rather than finding the thing inside a thousand-line finish.
 itself, one claim to a paragraph; a card holds one instrument worked all the way through, with the reads
 beside it. Where a card exists, the notes point at it rather than repeating it.
 
-## The seven that exist
+## The eight that exist
 
 | Card | Holds |
 |---|---|
@@ -20,8 +20,9 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `ramp-and-stair` | a tilted polygon against a stack of plates, and which one walks |
 | `relief-on-shapes` | `stepped`, `level` and `held` — a relief against the shapes standing in it |
 | `hollows` | a negative push, a `sink` shape and an `area` mark, each cutting the same floor |
+| `winding-roads` | a line mark that comes back past itself — `tread`, `batter`, and the pitch window |
 
-## The ten that are missing
+## The nine that are missing
 
 Each entry names what the card would demonstrate, and which of the notes' entries it would absorb — the
 notes carry the measurements already and have nowhere to put the worked comparison.
@@ -33,11 +34,11 @@ another, so the step at the outline is visible rather than argued. Absorbs *A mo
 range is a wall unless its two gradients agree*, which are the two most load-bearing entries in the file and
 are taught nowhere.
 
-**`marks-and-seams` — how two marks negotiate the ground they share.** One board, one pair of marks, four
-times: butted, gapped, with a `tread` on the later one, and with a `bevel` on an area. Beside them a mark
-whose centre lies off the land and a mark that pinned nothing at all, read back through `relief/read`'s
-`seams` and `silentMarks`. Absorbs six relief entries, including the radius that makes a mesa instead of a
-summit.
+**`marks-and-seams` — how two *different* marks negotiate the ground they share.** One board, one pair of
+marks, three times: butted, gapped, and with a `bevel` on the area. Beside them a mark whose centre lies off
+the land and a mark that pinned nothing at all, read back through `relief/read`'s `seams` and `silentMarks`.
+Absorbs five relief entries, including the radius that makes a mesa instead of a summit. How *one* mark meets
+itself is `winding-roads`, which is built.
 
 **`painting-a-patch` — what a shape has to say before it owns any paint.** The four forms a patch may take
 over solved ground, side by side on one hill, with `themes/census` under each. The scope test is the content:
@@ -60,8 +61,9 @@ half of the same surprise.
 
 **`theme-buckets` — surface, wall, fill and rim, and the `slope` axis.** One ground theme banded four ways
 over one relief, read through `incline` so the bands are seen to cut where the angles are. This is the card
-`CLAUDE.md` asks for by name — *finish the ground by its angle, not by its height* — and there is nothing
-that shows it.
+`CLAUDE.md` asks for by name — *finish the ground by its angle, not by its height*. `winding-roads` states
+the one rule that cannot wait for it, that a band edge at 45° is the worst place to cut because a gap lofted
+at one course a cell stands at exactly that.
 
 **`objectives-and-clearances` — where a goal may stand.** A monument, a core and a wool on one board with
 their clearances drawn, the `at` read in blocks, a core's `float` and `leak`, and the two gates heard only at
