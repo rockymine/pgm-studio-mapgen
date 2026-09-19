@@ -15,10 +15,10 @@ COL_X, ROW_Z = grid(5, 2, PANEL_W, PANEL_D)
 GROUND_TOP = 44
 PLAIN = 8
 
+# One landscape, not a swatch book: a grassy upland on sandstone. Meadow over earth, a stone body, a
+# sandstone bed the cuts show, a weathered cobble lip, and scree between the turf and the bare rock.
 GRASS, DIRT, STONE = SOLID(2), SOLID(3), SOLID(1)
-# The buckets are told apart by colour on purpose: a grey body, a pale wall, a dark cap.
-SANDSTONE, NETHER_BRICK = SOLID(24), SOLID(112)
-SAND, SNOW, GRAVEL, ANDESITE = SOLID(12), SOLID(80), SOLID(13), SOLID(1, 5)
+SANDSTONE, COBBLE, GRAVEL, ANDESITE = SOLID(24), SOLID(4), SOLID(13), SOLID(1, 5)
 
 
 def stack(*bands, ending="repeat"):
@@ -62,26 +62,28 @@ THEMES = {
     "fill-only":     theme(fill=STONE),
     "and-surface":   theme(fill=STONE, surface=SOIL),
     "and-wall":      theme(fill=STONE, surface=SOIL, wall=SANDSTONE),
-    "and-rim":       theme(fill=STONE, surface=SOIL, wall=SANDSTONE, rim=NETHER_BRICK, rim_edges="void"),
-    "rim-boundary":  theme(fill=STONE, surface=SOIL, wall=SANDSTONE, rim=NETHER_BRICK, rim_edges="boundary"),
+    "and-rim":       theme(fill=STONE, surface=SOIL, wall=SANDSTONE, rim=COBBLE, rim_edges="void"),
+    "rim-boundary":  theme(fill=STONE, surface=SOIL, wall=SANDSTONE, rim=COBBLE, rim_edges="boundary"),
     # The same three blocks banded two ways. `height` pins them to world Y, so a stack lands at one
     # altitude in every column; `slope` reads the ground's angle, so one stack puts meadow on the flat and
     # bare rock on the face of the same hill.
+    # The same three surfacings in the same order on both axes — meadow, scree, bare rock — so the only
+    # difference between the two panels is what decides where they land.
     "axis-height":   theme(fill=STONE, wall=SANDSTONE, surface=layered(
-        "height", (over_soil(SAND), 8), (over_soil(GRASS), 12), (over_soil(SNOW), 70),
+        "height", (over_soil(GRASS), 12), (over_soil(GRAVEL), 8), (over_soil(STONE), 70),
         **{"from": PLAIN})),
     "axis-slope":    theme(fill=STONE, wall=SANDSTONE, surface=layered(
-        "slope", (over_soil(GRASS), 20), (over_soil(SAND), 25), (over_soil(SNOW), 45))),
-    # The fourth axis: bands as concentric rings in from the landmass's void-facing edge.
+        "slope", (over_soil(GRASS), 20), (over_soil(GRAVEL), 25), (over_soil(STONE), 45))),
+    # The fourth axis: bands as concentric rings in from the landmass's void-facing edge — a scree apron.
     "axis-inward":   theme(fill=STONE, wall=SANDSTONE, surface=layered(
-        "inward", (over_soil(SAND), 4), (over_soil(GRAVEL), 3), (over_soil(GRASS), 60))),
+        "inward", (over_soil(GRAVEL), 4), (over_soil(STONE), 3), (over_soil(GRASS), 60))),
     # A fill is the tall bucket, so a pattern on it is read on every cut face rather than from above, and
     # `PT4` refuses one with no `rise` because a plane-sampled field stripes every face floor to sky.
     "fill-rise":     theme(surface=SOIL, fill={"kind": "cell", "cellSize": 9, "rise": 5,
                                                "palette": [STONE, ANDESITE, SANDSTONE]}),
     # A wall run varies along the perimeter arc and is constant up a column: a sawn cliff, not a bedded one.
     "wall-run":      theme(fill=STONE, surface=SOIL, wall={"kind": "wallRun", "runs": [
-        {"material": SANDSTONE, "width": 6}, {"material": NETHER_BRICK, "width": 3},
+        {"material": SANDSTONE, "width": 6}, {"material": COBBLE, "width": 3},
         {"material": ANDESITE, "width": 4}]}),
 }
 PANELS = [(name, i % 5, i // 5) for i, name in enumerate(THEMES)]

@@ -175,7 +175,7 @@
     "depth": 1,
     "material": {
      "kind": "solid",
-     "id": 112,
+     "id": 4,
      "data": 0
     }
    },
@@ -232,7 +232,7 @@
     "depth": 1,
     "material": {
      "kind": "solid",
-     "id": 112,
+     "id": 4,
      "data": 0
     }
    },
@@ -303,34 +303,6 @@
       "ending": "repeat",
       "bands": [
        {
-        "thickness": 8,
-        "material": {
-         "kind": "layered",
-         "axis": "depth",
-         "stack": {
-          "ending": "handOver",
-          "bands": [
-           {
-            "thickness": 1,
-            "material": {
-             "kind": "solid",
-             "id": 12,
-             "data": 0
-            }
-           },
-           {
-            "thickness": 2,
-            "material": {
-             "kind": "solid",
-             "id": 3,
-             "data": 0
-            }
-           }
-          ]
-         }
-        }
-       },
-       {
         "thickness": 12,
         "material": {
          "kind": "layered",
@@ -359,6 +331,34 @@
         }
        },
        {
+        "thickness": 8,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "handOver",
+          "bands": [
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 13,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            }
+           }
+          ]
+         }
+        }
+       },
+       {
         "thickness": 70,
         "material": {
          "kind": "layered",
@@ -370,7 +370,7 @@
             "thickness": 1,
             "material": {
              "kind": "solid",
-             "id": 80,
+             "id": 1,
              "data": 0
             }
            },
@@ -468,7 +468,7 @@
             "thickness": 1,
             "material": {
              "kind": "solid",
-             "id": 12,
+             "id": 13,
              "data": 0
             }
            },
@@ -496,7 +496,7 @@
             "thickness": 1,
             "material": {
              "kind": "solid",
-             "id": 80,
+             "id": 1,
              "data": 0
             }
            },
@@ -565,7 +565,7 @@
             "thickness": 1,
             "material": {
              "kind": "solid",
-             "id": 12,
+             "id": 13,
              "data": 0
             }
            },
@@ -593,7 +593,7 @@
             "thickness": 1,
             "material": {
              "kind": "solid",
-             "id": 13,
+             "id": 1,
              "data": 0
             }
            },
@@ -788,7 +788,7 @@
      {
       "material": {
        "kind": "solid",
-       "id": 112,
+       "id": 4,
        "data": 0
       },
       "width": 3

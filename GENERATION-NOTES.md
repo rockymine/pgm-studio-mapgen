@@ -1558,12 +1558,12 @@ round each patch. A voronoi is a diagram, not a mixture.
 
 **The wall is the column's body at an edge, not a coat on a slope**, so nothing of it shows from above: it
 replaces the fill from the bottom of the surface down, wherever the column stands on a void-facing edge or —
-with `wallOnTerrainFaces` — on a terrain face. Measured on one board that was 612 columns, 340 round the
-island's rim and **272 inland** on a mesa's own skirt. A wall and a fill are read on a cut.
+with `wallOnTerrainFaces` — on a terrain face. Measured on one board that was 440 columns, 244 round the
+island's rim and **196 inland** on a mesa's own skirt. A wall and a fill are read on a cut.
 
 **`rimEdges` decides how much the rim claims and the difference is large.** `void` caps only the landmass's
-true outside; `boundary` caps every plateau boundary in it, which on the same board was **1,110 further
-cells**, every one inland. `techniques/theme-buckets` switches the four buckets on one at a time over one
+true outside; `boundary` caps every plateau boundary in it, which on the same board was **1,310 further
+cells**, 1,244 of them inland. `techniques/theme-buckets` switches the four buckets on one at a time over one
 ground.
 
 
@@ -1573,8 +1573,9 @@ of the face, so on a board whose drops all begin at one shelf, banding by depth 
 and `height` is not needed. One stack shared as the wall material of every theme makes every cut on the board
 the same rock in the same order, and puts those colours nowhere else.
 
-**A `height` stack leaves everything under its own `from` to the bucket beneath.** A stack stated `from: 8`
-over a plain topping at y7 read back as the fill's own block, and nothing reports it.
+**A `height` stack leaves everything under its own `from` to the bucket beneath, and one block is enough.**
+A stack stated `from: 8` over a plain topping at y7 read back as the fill's own block — the whole plain
+unpainted for an off-by-one — and nothing reports it.
 
 The counterpart: **`wallRun` stands vertical**, because its stripes wrap the perimeter and are
 constant up a column. A weathered cliff is bedded and a sawn one is scored, and the two are one

@@ -9,6 +9,10 @@ studio as `technique-theme-buckets`, or run `build.py`.
 every one has flat ground, a graded shoulder, a face and a rim against the void — one of each thing a bucket
 can claim.
 
+**The whole board is one landscape and not a swatch book**, which a card about finishing ground has no
+business being: meadow over earth, a stone body, a sandstone bed the cuts show, a weathered cobble lip, and
+scree where the turf gives out. Four surface blocks over ten themes, and `census.txt` says so.
+
 ## The document
 
 Ten groups on the `ground` layer, ten themes, one relief per group with the same two pushes. A bucket is
@@ -19,11 +23,11 @@ switched off by `enabled: false` on its band, or by `wallEnabled: false`.
 | `fill-only` | surface, wall and rim all off | the rim column is stone from bedrock to top |
 | `and-surface` | + a 3-deep `depth` stack, turf over earth | the same column, with grass over two dirt on it |
 | `and-wall` | + `wallEnabled`, `wallOnTerrainFaces` | the **body under the soil** is sandstone, not stone |
-| `and-rim` | + a 1-deep rim, `rimEdges: "void"` | the top course is nether brick, the wall still under it |
-| `rim-boundary` | the same rim at `rimEdges: "boundary"` | **1,110 more cells** capped, every one of them inland |
-| `axis-height` | the surface banded on `height`, `from` 8 | snow on the mesa, grass mid-slope, the plain unpainted |
-| `axis-slope` | the same three blocks banded on `slope` | grass on every flat, snow on every face, whatever the altitude |
-| `axis-inward` | the same three banded on `inward` | a sand border and a gravel ring round the island's edge |
+| `and-rim` | + a 1-deep rim, `rimEdges: "void"` | the top course is cobble, the sandstone wall still under it |
+| `rim-boundary` | the same rim at `rimEdges: "boundary"` | **1,310 more cells** capped, 1,244 of them inland |
+| `axis-height` | the surface banded on `height`, `from` 8 | bare rock on the mesa, meadow below, the plain unpainted |
+| `axis-slope` | the same three blocks banded on `slope` | meadow on every flat, bare rock on every face, whatever the altitude |
+| `axis-inward` | the same three, reordered | a scree apron round the island's edge, meadow inland |
 | `fill-rise` | a `cell` fill with a `rise` of 5 | blobs of three stones through the body, read on a cut |
 | `wall-run` | a `wallRun` wall of three stripes | stripes wrapping the perimeter, constant up a column |
 
@@ -31,7 +35,7 @@ switched off by `enabled: false` on its band, or by `wallEnabled: false`.
 "and-rim": {
   "bedrock": {"relative": false, "value": 1},
   "rimEdges": "void",
-  "rim":     {"enabled": true, "depth": 1, "material": {"kind": "solid", "id": 112}},
+  "rim":     {"enabled": true, "depth": 1, "material": {"kind": "solid", "id": 4}},
   "surface": {"enabled": true, "depth": 3,
               "material": {"kind": "layered", "axis": "depth", "stack": {"ending": "repeat", "bands": [
                  {"thickness": 1, "material": {"kind": "solid", "id": 2}},
@@ -45,12 +49,12 @@ switched off by `enabled: false` on its band, or by `wallEnabled: false`.
 
 **One column at the island's rim, read in four panels, is the whole of row 1.** At (−188, −67) with fill
 alone it is stone from bedrock to top; at (−110, −67) a surface puts grass over two dirt on it; at
-(−32, −67) a wall makes the body under that soil **sandstone**; at (46, −67) a rim caps it with nether brick.
+(−32, −67) a wall makes the body under that soil **sandstone**; at (46, −67) a rim caps it with cobble.
 Four panels, four courses of one column, one bucket each.
 
 **So the wall is the column's body at an edge, not a coat on a slope.** It replaces the fill from the bottom
 of the surface down, wherever the column stands on a void-facing edge or — with `wallOnTerrainFaces` — on a
-terrain face. On this board that is 612 columns, 340 of them round the island's rim and **272 inland**, on
+terrain face. On this board that is 440 columns, 244 of them round the island's rim and **196 inland**, on
 the mesa's own skirt.
 
 **Which means a cliff's strata belong in the wall bucket and are read on a cut.** Nothing of the wall shows
@@ -59,8 +63,8 @@ at all, and the isometric is where it cannot.
 
 **`rimEdges` decides how much the rim claims, and the difference is large.** `void` caps only the landmass's
 true outside; `boundary` caps every plateau boundary including the mesa's and the swell's, which on this
-board is **1,110 further cells**, all of them inland. At (130, −50) the `void` panel reads grass and the
-`boundary` panel reads nether brick.
+board is **1,310 further cells**, 1,244 of them inland. At (130, −50) the `void` panel reads grass and the
+`boundary` panel reads cobble.
 
 ## How a bucket's material is banded
 
@@ -68,23 +72,25 @@ board is **1,110 further cells**, all of them inland. At (130, −50) the `void`
 what every other panel's soil uses; `height` pins bands to world Y; `inward` runs in from the void-facing
 edge; and on `slope` a band's thickness is a **span of degrees** rather than a count of blocks.
 
-**The same three blocks banded on `height` and on `slope` land in different places, and that is the card.**
-On `height` the mesa's top at y31 is snow and the swell's at y19 is grass — altitude decides. On `slope` the
-mesa's top is **grass** because it is flat, and a cell of its skirt at 74° is **snow** — angle decides, and
-the same stack now puts meadow on every flat and bare face on every steep, whatever height they stand at.
+**The same three surfacings in the same order — meadow, scree, bare rock — land in different places on the
+two axes, and that is the card.** On `height` the mesa's top at y31 is **stone** and the swell's at y19 is
+**grass**: altitude decides. On `slope` the mesa's top is **grass** because it is flat, and a cell of its
+skirt at 74° is **stone**: angle decides, and the same stack now puts meadow on every flat and bare rock on
+every face, whatever height they stand at.
 
-**A `height` stack leaves everything under its own `from` to the bucket beneath.** The `axis-height` panel
-states `from: 8` and the plain tops at y7, so at (−135, 20) the column reads **stone** — the fill, showing
-through where the stack does not start. Nothing reports it.
+**A `height` stack leaves everything under its own `from` to the bucket beneath, and one block is enough.**
+The `axis-height` panel states `from: 8` and the plain tops at **y7**, so at (−135, 20) the column reads the
+fill's own stone rather than any band of the stack — the whole plain, unpainted, for an off-by-one. Nothing
+reports it, and it is the grey floor in that panel's picture.
 
-**`inward` is concentric rings from the edge**, and reads as a border: at (−30, 10), four cells in from the
-rim, the column is sand, with a gravel ring behind it and grass inland.
+**`inward` is concentric rings from the edge**, and reads as an apron: at (−30, 10), four cells in from the
+rim, the column is gravel, with a stone ring behind it and meadow inland.
 
 ## A pattern on a fill is read on a cut
 
 **A fill is the tall bucket, so a pattern on it is seen edge-on rather than from above.** `fill-rise` states
-a `cell` nine across with a `rise` of 5 over three stones, and from above the panel is plain grass — the
-whole of it is in `section-fill.png`, where the mesa's cut face is blobs of sandstone, andesite and stone.
+a `cell` nine across with a `rise` of 5 over three stones, and from above the panel is plain meadow — the
+whole of it is in `section-fill.png`, where the mesa's cut face is blobs of stone, andesite and sandstone.
 
 **A pattern with no `rise` is refused outright, by `PT4`.** *"fill samples its field in the plane only, so
 every block of a column resolves alike and it reads as vertical stripes. A rise is the vertical period that
@@ -136,7 +142,7 @@ and again after the relief changes.
   surfacing block.
 - **a `height` stack's `from` leaves the ground under it to the fill.**
 - **a pattern on the fill needs a `rise`**, and cells wider than tall, or a cut reads as posts.
-- **`rimEdges: "void"` caps the landmass; `"boundary"` caps every plateau in it** — on this board, 1,110
+- **`rimEdges: "void"` caps the landmass; `"boundary"` caps every plateau in it** — on this board, 1,310
   more cells.
 - **cut the slope bands against `incline`**, never against a number from another board.
 
@@ -145,7 +151,7 @@ and again after the relief changes.
 - `columns.txt` — eleven columns: the same rim column in the four additive panels, an inland cell `void`
   leaves and `boundary` caps, the mesa top and the plain on `height`, the mesa top and its skirt on `slope`,
   the border on `inward`, and a blob inside the `fill-rise` mesa.
-- `census.txt` — ten themes over 38,400 cells and six distinct surface blocks.
+- `census.txt` — ten themes over 38,400 cells and four distinct surface blocks, which is the palette.
 - `incline.txt` — the histogram the slope bands were cut against.
 - `theme-buckets.layout.json` — the one document the board was stored from. It would not store until `PT1`
   and `PT4` were satisfied, which is two of this card's claims.

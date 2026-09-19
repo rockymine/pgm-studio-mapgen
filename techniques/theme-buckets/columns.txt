@@ -34,9 +34,9 @@ ground: a plain at 8, a swell to 20, and a mesa to 32 with a skirt of 4.8 blocks
   y  1    24:0   Sandstone
   y  0     7:0   Bedrock
 
-### and-rim — and now the top course is the rim's own block
+### and-rim — and now the top course is the rim's own cobble
 === column (46, -67) — 8 solid block(s), ground 0° from level ===
-  y  7   112:0   Nether Bricks
+  y  7     4:0   Cobblestone
   y  6    24:0   Sandstone
   y  5    24:0   Sandstone
   y  4    24:0   Sandstone
@@ -47,7 +47,7 @@ ground: a plain at 8, a swell to 20, and a mesa to 32 with a skirt of 4.8 blocks
 
 ### rim-boundary — a cell inland that `void` never caps and `boundary` does
 === column (130, -50) — 8 solid block(s), ground 45° from level ===
-  y  7   112:0   Nether Bricks
+  y  7     4:0   Cobblestone
   y  6     1:0   Stone
   y  5     1:0   Stone
   y  4     1:0   Stone
@@ -56,9 +56,9 @@ ground: a plain at 8, a swell to 20, and a mesa to 32 with a skirt of 4.8 blocks
   y  1     1:0   Stone
   y  0     7:0   Bedrock
 
-### axis-height — the mesa top at y31, in the band from 28 up
+### axis-height — the mesa top at y31, in the band from 28 up: bare rock
 === column (-172, 37) — 32 solid block(s), ground 0° from level ===
-  y 31    80:0   Snow Block
+  y 31     1:0   Stone
   y 30     3:0   Dirt
   y 29     3:0   Dirt
   y 28     1:0   Stone
@@ -91,7 +91,7 @@ ground: a plain at 8, a swell to 20, and a mesa to 32 with a skirt of 4.8 blocks
   y  1     1:0   Stone
   y  0     7:0   Bedrock
 
-### axis-height — the plain at y7, under the stack's own `from` of 8, so the fill shows through
+### axis-height — the plain at y7, one under the stack's own `from` of 8, so the fill shows through
 === column (-135, 20) — 8 solid block(s), ground 16° from level ===
   y  7     1:0   Stone
   y  6     1:0   Stone
@@ -102,7 +102,7 @@ ground: a plain at 8, a swell to 20, and a mesa to 32 with a skirt of 4.8 blocks
   y  1     1:0   Stone
   y  0     7:0   Bedrock
 
-### axis-slope — the mesa top, flat, so the first band takes it
+### axis-slope — the mesa top, flat, so the first band takes it: meadow
 === column (-94, 37) — 32 solid block(s), ground 0° from level ===
   y 31     2:0   Grass Block
   y 30     3:0   Dirt
@@ -137,9 +137,9 @@ ground: a plain at 8, a swell to 20, and a mesa to 32 with a skirt of 4.8 blocks
   y  1     1:0   Stone
   y  0     7:0   Bedrock
 
-### axis-slope — a cell of the mesa's skirt at 74 degrees, so the last band takes it
+### axis-slope — a cell of the mesa's skirt at 74 degrees, so the last band takes it: bare rock
 === column (-104, 37) — 30 solid block(s), ground 74° from level ===
-  y 29    80:0   Snow Block
+  y 29     1:0   Stone
   y 28     3:0   Dirt
   y 27     3:0   Dirt
   y 26    24:0   Sandstone
@@ -170,9 +170,9 @@ ground: a plain at 8, a swell to 20, and a mesa to 32 with a skirt of 4.8 blocks
   y  1     1:0   Stone
   y  0     7:0   Bedrock
 
-### axis-inward — four cells in from the rim, where the first band runs as a border
+### axis-inward — four cells in from the rim, where the first band runs as a scree apron
 === column (-30, 10) — 8 solid block(s), ground 0° from level ===
-  y  7    12:0   Sand
+  y  7    13:0   Gravel
   y  6     3:0   Dirt
   y  5     3:0   Dirt
   y  4     1:0   Stone

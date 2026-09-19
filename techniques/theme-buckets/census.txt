@@ -1,12 +1,12 @@
-THEMES  10 themes over 38400 ground cells, 6 distinct surface blocks
+THEMES  10 themes over 38400 ground cells, 4 distinct surface blocks
   fill-only  3840 cells (10.0%)  1:0 Stone
   and-surface  3840 cells (10.0%)  2:0 Grass Block
   and-wall  3840 cells (10.0%)  2:0 Grass Block
-  and-rim  3840 cells (10.0%)  2:0 Grass Block, 112:0 Nether Bricks
-  rim-boundary  3840 cells (10.0%)  2:0 Grass Block, 112:0 Nether Bricks
-  axis-height  3840 cells (10.0%)  1:0 Stone, 12:0 Sand, 2:0 Grass Block, 80:0 Snow Block
-  axis-slope  3840 cells (10.0%)  2:0 Grass Block, 80:0 Snow Block, 12:0 Sand
-  axis-inward  3840 cells (10.0%)  2:0 Grass Block, 12:0 Sand, 13:0 Gravel
+  and-rim  3840 cells (10.0%)  2:0 Grass Block, 4:0 Cobblestone
+  rim-boundary  3840 cells (10.0%)  2:0 Grass Block, 4:0 Cobblestone
+  axis-height  3840 cells (10.0%)  1:0 Stone, 2:0 Grass Block, 13:0 Gravel
+  axis-slope  3840 cells (10.0%)  2:0 Grass Block, 1:0 Stone, 13:0 Gravel
+  axis-inward  3840 cells (10.0%)  2:0 Grass Block, 13:0 Gravel, 1:0 Stone
   fill-rise  3840 cells (10.0%)  2:0 Grass Block
   wall-run  3840 cells (10.0%)  2:0 Grass Block
 borders:
