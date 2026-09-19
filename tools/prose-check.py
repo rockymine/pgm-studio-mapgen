@@ -28,6 +28,14 @@ DEFAULT = ["AUTHORING-BRIEF.md", "GENERATION-NOTES.md", "COMPOSER-ADAPTATION-BRI
 
 SKIP = ("```", "|", "- ", "* ", "#", ">", "    ", "\t")
 
+# An ordered list item — "1. ", "12) " — is a list, and a list is not prose.
+ORDERED = re.compile(r"^\d+[.)]\s")
+
+
+def is_prose(block):
+    head = block.lstrip()
+    return not head.startswith(SKIP) and not ORDERED.match(head)
+
 
 def paragraphs(text):
     """Prose paragraphs, with fenced blocks removed so a code comment is never counted."""
@@ -45,7 +53,7 @@ def paragraphs(text):
             out.append("\n".join(block)); block = []
     if block:
         out.append("\n".join(block))
-    return [b for b in out if not b.lstrip().startswith(SKIP)]
+    return [b for b in out if is_prose(b)]
 
 
 def sentences(para):

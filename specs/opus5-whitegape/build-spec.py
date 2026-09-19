@@ -236,21 +236,24 @@ BENDS = {"fell-24": {"wander": 2.5, "step": 11, "seed": 23, "side": "out"}}
 # made ground and takes no part in the solve at all, which is what keeps the relief from piling up in
 # one place: it has half a board to spread over and marks at both ends to do it between.
 MARKS = [
-    {"id": "shelf", "kind": "area", "h": SHELF, "bevel": 3, "ring": [
-        [-27, -100], [-27, -88], [-22, -80], [-12, -78], [-2, -83], [-1, -96], [-3, -100]]},
-    # The bank the works are cut against: the foot of the retaining face, so the flights have a
-    # definite height to arrive at.
-    {"id": "gatebank", "kind": "area", "h": GATEBANK, "bevel": 4, "ring": [
-        [-28, -74], [-14, -78], [2, -76], [16, -78], [28, -72],
-        [28, -62], [12, -66], [-4, -68], [-20, -64], [-28, -66]]},
+    {"id": "shelf", "kind": "area", "h": SHELF, "bevel": 2, "ring": [
+        [-28, -100], [-28, -88], [-23, -79], [-12, -77], [-1, -82], [0, -96], [-2, -100]]},
+    # The two gate aprons: the foot of each flight up onto the yard, pinned so the flight has a
+    # definite height to arrive at — and pinned ONLY there. A band across the whole width was what
+    # made the grown half read as a table: `sketch/relief/read` gave level 0.54 and largestField
+    # 0.21 with it, both over the numbers that say a surface has no shape left.
+    {"id": "gate-apron-w", "kind": "area", "h": GATEBANK, "bevel": 4, "ring": [
+        [-26, -72], [-20, -77], [-12, -75], [-10, -66], [-16, -61], [-24, -64]]},
+    {"id": "gate-apron-e", "kind": "area", "h": GATEBANK, "bevel": 4, "ring": [
+        [2, -72], [8, -77], [16, -75], [20, -66], [14, -61], [4, -64]]},
     # The lip either side of the dock. The gorge edge wants one height, or the cliff reads as a
     # ragged accident rather than as a rim.
-    {"id": "liprim", "kind": "area", "h": LIPFELL, "bevel": 3, "ring": [
+    {"id": "liprim", "kind": "area", "h": LIPFELL, "bevel": 6, "ring": [
         [-28, -26], [-16, -29], [0, -26], [16, -29], [28, -24],
         [28, -12], [0, -16], [-28, -12]]},
     # The cart road down off the fell to the works gate.
     {"id": "cartway", "kind": "line", "r": 6, "tread": 3,
-     "points": [[-13, -84], [-18, -76], [-19, -68]], "h": [SHELF, 23, GATEBANK]},
+     "points": [[-14, -80], [-18, -74], [-19, -68]], "h": [24, 23, GATEBANK]},
 ]
 
 PUSHES = [
@@ -263,7 +266,11 @@ PUSHES = [
     # The slack: a damp hollow on the west fell the cart road skirts, so the two flanks of the grown
     # half are not one gradient.
     {"id": "slack", "seed": 19, "roughness": 2, "falloff": 10, "crown": -3,
-     "amount": -5, "ring": [[-27, -78], [-20, -74], [-16, -82], [-23, -88]]},
+     "amount": -5, "ring": [[-27, -80], [-20, -76], [-16, -84], [-23, -90]]},
+    # The rigg: a low rise on the west flank between the works and the lip, so the flank route is
+    # not one flat run and a player crossing it has something to get behind.
+    {"id": "rigg", "seed": 23, "roughness": 3, "falloff": 8, "crown": 2,
+     "amounts": [3, 5, 4, 3], "ring": [[-29, -58], [-22, -52], [-25, -40], [-31, -46]]},
 ]
 
 RELIEF = {"*": {"base": 22, "reach": 0, "step": 1,
@@ -490,7 +497,7 @@ def house(pid, wings, seed, front):
 
 
 # Two ways, each of them somewhere a load or a man actually went.
-road("cart-road", [[-14, -88], [-18, -78], [-19, -70]], 3, 81)      # spawn to the works gate
+road("cart-road", [[-14, -86], [-18, -78], [-19, -70]], 3, 81)      # spawn to the works gate
 road("fell-path", [[8, -88], [11, -78], [11, -70]], 2, 85)          # the east fell to the east gate
 
 # THE WORKS SHED. One building on one outline: a two-storey hall with a single-storey range built
@@ -519,18 +526,24 @@ for i, (x, z, st) in enumerate([] if SEAT_PASS else
                                # (18,-70) andesite, (2,-66) stone or (20,-58) gravel reads as
                                # nothing, and no rule in the studio says so. These stand on grass
                                # and on coarse dirt.
-                               [(6, -80, "clint"), (16, -92, "limestone"),
-                                (22, -72, "limestone"), (-22, -62, "clint")]):
+                               # Asked of `seats` with the ROCK's own 7x7 footprint rather than a
+                               # 1x1 trunk, because a boulder rests on every cell of its body and
+                               # that is what the declines measure.
+                               # Two, not three: the west fell's free ground is a strip seven
+                               # blocks wide between the coast and the cart road, and a rock of this
+                               # size has nowhere on it that is neither void nor paving.
+                               [(16, -92, "limestone"), (22, -72, "clint")]):
     boulder(f"erratic-{i}", x, z, st)
 
 # Scrub where sheep cannot reach it — the fell's steeper shoulders and the gorge lip — and a planted
 # shelter belt behind the spawn. Nothing in the pit and nothing on the yard: a working floor is
 # swept, and OB19 keeps ten blocks round the goal clear anyway.
 for i, (x, z, st) in enumerate([] if SEAT_PASS else [
-        # The gorge lip, both flanks: thorn grows on a crag edge because nothing grazes it there.
-        (-27, -28, SCRUB[0]), (-24, -22, SCRUB[1]), (-26, -36, SCRUB[2]),
-        (-27, -50, SCRUB[3]), (-25, -44, SCRUB[4]),
-        (21, -20, SCRUB[0]), (16, -26, SCRUB[1]), (23, -28, SCRUB[2]), (24, -34, SCRUB[3]),
+        # The gorge lip, both flanks: thorn grows above a crag because nothing grazes it there. Every
+        # one of these stands at least five blocks inland — `seats` answers for the trunk's cell and
+        # a canopy is wider than that, so a tree seated at the coast hangs its leaves over the void.
+        (-24, -28, SCRUB[0]), (-20, -24, SCRUB[1]), (-23, -36, SCRUB[2]),
+        (18, -20, SCRUB[3]), (14, -28, SCRUB[4]), (21, -34, SCRUB[0]),
         # The knott's shoulders and the ground behind the works.
         (14, -62, SCRUB[4]), (4, -66, SCRUB[0]), (6, -74, SCRUB[2]),
         # A planted shelter belt behind the spawn — the only trees on the board somebody chose.

@@ -97,7 +97,11 @@ PIECES = [
     ("hub-t4",       "piece",     [ 4, 15,  5, 4], 17),   # the east nose the lane leaves from
     ("hub-t1",       "piece",     [-4, 19, 10, 4], 18),
     ("spawn-t1",     "piece",     [-2, 23,  4, 2], 19),
-    ("spawn-room",   "spawn",     [-2, 25,  4, 2], 19),
+    # 4 x 3 cells = 17 x 13 blocks. The room piece is deeper than the building it raises on
+    # purpose: RoomFrames.DefaultFootprint insets a DOOR edge by up to IronSpan + IronGap =
+    # 5 blocks where the room still seats its pad, so a 13-deep piece raises the same 15 x 7
+    # shell a 9-deep one did and leaves the five-block row the iron cube stands in (WX8).
+    ("spawn-room",   "spawn",     [-2, 25,  4, 3], 19),
     # west: the open spur out to the powder house, on moor rather than on made ground
     ("wool-a-t1",    "piece",     [-10, 15, 6, 4], 16),
     ("wool-a-room",  "wool-room", [-13, 16, 3, 2], 16),
@@ -127,19 +131,20 @@ ZONES = [
 WALLS = [("hub-t4", "wool-b-t1")]
 
 PLACEMENTS = {
-    "spawns": [{"id": "spawn-1", "piece": "spawn-room", "at": [8, 4], "facing": "front"}],
+    "spawns": [{"id": "spawn-1", "piece": "spawn-room", "at": [8, 8], "facing": "front"}],
     "wools": [{"id": "wool-1", "piece": "wool-a-room", "at": [6, 4]},
               {"id": "wool-2", "piece": "wool-b-room", "at": [4, 6]}],
-    # no iron: WX8 wants the cube inside the spawn piece and clear of the shell, and WX1
-    # makes the shell that piece inset one block, so a plan-compiled spawn has no room for one
-    "iron": [],
+    # The cube's centre, on the half-block lattice PieceRoom.Iron answers in: its 3x3 span
+    # starts on the piece's own front row and holds IronGap = 2 blocks of air to the shell,
+    # beside the door corridor rather than in it.
+    "iron": [{"id": "iron-1", "piece": "spawn-room", "at": [12.5, 1.5]}],
     "destroyables": [], "cores": [],
 }
 
 BOXES = [
     ("hub",       "hub",       [-4, 11, 13, 12],
      ["hub-t1", "hub-t2", "hub-t3", "hub-t4"]),
-    ("spawn",     "spawn",     [-2, 23, 4, 4], ["spawn-t1", "spawn-room"]),
+    ("spawn",     "spawn",     [-2, 23, 4, 5], ["spawn-t1", "spawn-room"]),
     ("wool-a",    "wool",      [-13, 15, 9, 4], ["wool-a-t1", "wool-a-room", "wool-a-apron"]),
     ("wool-b",    "wool",      [9, 15, 6, 4], ["wool-b-t1", "wool-b-room", "wool-b-apron"]),
     ("frontline", "frontline", [-4, 5, 12, 6], ["frontline-t1", "frontline-t2"]),

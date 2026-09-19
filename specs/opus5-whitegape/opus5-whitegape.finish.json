@@ -788,83 +788,99 @@
      "id": "shelf",
      "kind": "area",
      "h": 25,
-     "bevel": 3,
+     "bevel": 2,
      "ring": [
       [
-       -27,
+       -28,
        -100
       ],
       [
-       -27,
+       -28,
        -88
       ],
       [
-       -22,
-       -80
+       -23,
+       -79
       ],
       [
        -12,
-       -78
-      ],
-      [
-       -2,
-       -83
+       -77
       ],
       [
        -1,
+       -82
+      ],
+      [
+       0,
        -96
       ],
       [
-       -3,
+       -2,
        -100
       ]
      ]
     },
     {
-     "id": "gatebank",
+     "id": "gate-apron-w",
      "kind": "area",
      "h": 21,
      "bevel": 4,
      "ring": [
       [
-       -28,
-       -74
-      ],
-      [
-       -14,
-       -78
-      ],
-      [
-       2,
-       -76
-      ],
-      [
-       16,
-       -78
-      ],
-      [
-       28,
+       -26,
        -72
       ],
       [
-       28,
-       -62
-      ],
-      [
-       12,
-       -66
-      ],
-      [
-       -4,
-       -68
-      ],
-      [
        -20,
-       -64
+       -77
       ],
       [
-       -28,
+       -12,
+       -75
+      ],
+      [
+       -10,
        -66
+      ],
+      [
+       -16,
+       -61
+      ],
+      [
+       -24,
+       -64
+      ]
+     ]
+    },
+    {
+     "id": "gate-apron-e",
+     "kind": "area",
+     "h": 21,
+     "bevel": 4,
+     "ring": [
+      [
+       2,
+       -72
+      ],
+      [
+       8,
+       -77
+      ],
+      [
+       16,
+       -75
+      ],
+      [
+       20,
+       -66
+      ],
+      [
+       14,
+       -61
+      ],
+      [
+       4,
+       -64
       ]
      ]
     },
@@ -872,7 +888,7 @@
      "id": "liprim",
      "kind": "area",
      "h": 19,
-     "bevel": 3,
+     "bevel": 6,
      "ring": [
       [
        -28,
@@ -915,12 +931,12 @@
      "tread": 3,
      "points": [
       [
-       -13,
-       -84
+       -14,
+       -80
       ],
       [
        -18,
-       -76
+       -74
       ],
       [
        -19,
@@ -928,7 +944,7 @@
       ]
      ],
      "h": [
-      25,
+      24,
       23,
       21
      ]
@@ -991,19 +1007,50 @@
      "ring": [
       [
        -27,
-       -78
+       -80
       ],
       [
        -20,
-       -74
+       -76
       ],
       [
        -16,
-       -82
+       -84
       ],
       [
        -23,
-       -88
+       -90
+      ]
+     ]
+    },
+    {
+     "id": "rigg",
+     "seed": 23,
+     "roughness": 3,
+     "falloff": 8,
+     "crown": 2,
+     "amounts": [
+      3,
+      5,
+      4,
+      3
+     ],
+     "ring": [
+      [
+       -29,
+       -58
+      ],
+      [
+       -22,
+       -52
+      ],
+      [
+       -25,
+       -40
+      ],
+      [
+       -31,
+       -46
       ]
      ]
     }
@@ -11263,7 +11310,7 @@
     "points": [
      [
       -14,
-      -88
+      -86
      ],
      [
       -18,
@@ -11415,109 +11462,69 @@
    {
     "id": "erratic-0",
     "kind": "boulder",
-    "seed": 334,
-    "x": 6,
-    "z": -80,
-    "style": "clint"
-   },
-   {
-    "id": "erratic-1",
-    "kind": "boulder",
     "seed": 284,
     "x": 16,
     "z": -92,
     "style": "limestone"
    },
    {
-    "id": "erratic-2",
+    "id": "erratic-1",
     "kind": "boulder",
     "seed": 118,
     "x": 22,
     "z": -72,
-    "style": "limestone"
-   },
-   {
-    "id": "erratic-3",
-    "kind": "boulder",
-    "seed": 552,
-    "x": -22,
-    "z": -62,
     "style": "clint"
    },
    {
     "id": "thorn-0",
     "kind": "tree",
-    "seed": 1313,
-    "x": -27,
+    "seed": 1220,
+    "x": -24,
     "z": -28,
     "style": "fir-small-1"
    },
    {
     "id": "thorn-1",
     "kind": "tree",
-    "seed": 1118,
-    "x": -24,
-    "z": -22,
+    "seed": 1028,
+    "x": -20,
+    "z": -24,
     "style": "fir-small-2"
    },
    {
     "id": "thorn-2",
     "kind": "tree",
-    "seed": 1418,
-    "x": -26,
+    "seed": 1325,
+    "x": -23,
     "z": -36,
     "style": "fir-small-3"
    },
    {
     "id": "thorn-3",
     "kind": "tree",
-    "seed": 1687,
-    "x": -27,
-    "z": -50,
+    "seed": 218,
+    "x": 18,
+    "z": -20,
     "style": "fir-small-4"
    },
    {
     "id": "thorn-4",
     "kind": "tree",
-    "seed": 1523,
-    "x": -25,
-    "z": -44,
+    "seed": 42,
+    "x": 14,
+    "z": -28,
     "style": "fir-small-5"
    },
    {
     "id": "thorn-5",
     "kind": "tree",
-    "seed": 311,
+    "seed": 73,
     "x": 21,
-    "z": -20,
+    "z": -34,
     "style": "fir-small-1"
    },
    {
     "id": "thorn-6",
-    "kind": "tree",
-    "seed": 54,
-    "x": 16,
-    "z": -26,
-    "style": "fir-small-2"
-   },
-   {
-    "id": "thorn-7",
-    "kind": "tree",
-    "seed": 237,
-    "x": 23,
-    "z": -28,
-    "style": "fir-small-3"
-   },
-   {
-    "id": "thorn-8",
-    "kind": "tree",
-    "seed": 166,
-    "x": 24,
-    "z": -34,
-    "style": "fir-small-4"
-   },
-   {
-    "id": "thorn-9",
     "kind": "tree",
     "seed": 620,
     "x": 14,
@@ -11525,7 +11532,7 @@
     "style": "fir-small-5"
    },
    {
-    "id": "thorn-10",
+    "id": "thorn-7",
     "kind": "tree",
     "seed": 998,
     "x": 4,
@@ -11533,7 +11540,7 @@
     "style": "fir-small-1"
    },
    {
-    "id": "thorn-11",
+    "id": "thorn-8",
     "kind": "tree",
     "seed": 1072,
     "x": 6,
@@ -11541,7 +11548,7 @@
     "style": "fir-small-3"
    },
    {
-    "id": "thorn-12",
+    "id": "thorn-9",
     "kind": "tree",
     "seed": 1570,
     "x": 2,
@@ -11549,7 +11556,7 @@
     "style": "oak-dense-1"
    },
    {
-    "id": "thorn-13",
+    "id": "thorn-10",
     "kind": "tree",
     "seed": 1356,
     "x": 10,
@@ -11557,7 +11564,7 @@
     "style": "fir-small-2"
    },
    {
-    "id": "thorn-14",
+    "id": "thorn-11",
     "kind": "tree",
     "seed": 1400,
     "x": 2,

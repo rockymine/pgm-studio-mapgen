@@ -1,9 +1,6 @@
----
-name: pgm-board-warmup
-description: The first ten minutes of an authoring run — what this repository costs to read,
-  what must never be opened, what a board is made of, and how its grounds are made to meet.
-  Load once, at the start of a run, before pgm-board.
----
+--- name: pgm-board-warmup description: The first ten minutes of an authoring run — what this
+repository costs to read, what must never be opened, what a board is made of, and how its
+grounds are made to meet. Load once, at the start of a run, before pgm-board. ---
 
 # Before the first board
 
@@ -33,8 +30,9 @@ verdict is one line: `grep 'cells:' …/03-slopes.txt`.
 
 **`specs/` is split, and the split is the reading rule.** Eighteen boards sit flat and are worth
 reading; the other 118 are under `specs/archive/` — probes, experiments run to find the limit
-of one mechanism, early runs, superseded boards. **Nothing under `specs/archive/` is a model
-for anything.**
+of one mechanism, early runs, superseded boards.
+
+**Nothing under `specs/archive/` is a model for anything.**
 
 When a *number* is wanted rather than an example, `GET /api/rules` and `GET /api/rules/terms`
 answer in one fetch and are greppable. That is cheaper than any board.
@@ -161,10 +159,13 @@ area is taking the cell.
 
 And `POST /sketch/relief/read` with the stored layout, which is the only read that says what
 the marks did to **each other**: `silentMarks` is every mark that landed nowhere, `seams`
-names the pairs that meet on a step — and a seam naming a **shape** rather than a mark is a
-`relief_scope` pinning ground you meant the marks to shape. `level` and `largestField` are the
-two numbers that say whether the ground has a shape at all; over about 0.45 and 0.13 it is a
-table with edges.
+names the pairs that meet on a step.
+
+And a seam naming a **shape** rather than a mark is a `relief_scope` pinning ground you meant
+the marks to shape.
+
+`level` and `largestField` are the two numbers that say whether the ground has a shape at all;
+over about 0.45 and 0.13 it is a table with edges.
 
 ## 5. Stop
 

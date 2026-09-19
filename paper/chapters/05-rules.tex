@@ -161,6 +161,62 @@ revision, a read answers it as an \id{ETag}, and a write may state it back as an
 Protection is opted into by having read first, which is the only way it can mean
 anything.
 
+\section{A Predicate Used Once and Re-Derived Twice}
+
+One defect found while this paper was being written is worth setting out in full,
+because it is the exact failure the repository's own rules warn about and it shows
+what the cost of that failure looks like in a built world.
+
+A wool room is reached across an \emph{interface}: the shared edge where its piece
+meets the ground beside it. The contact model classifies every such edge, and two
+of its kinds are walkable. \id{Land} is an interface at least as wide as the band's
+corridor minimum, which is ten blocks. \id{Narrow} is a shorter one, and the code
+that defines it says exactly what it is:
+
+\begin{quote}
+a shorter positive border is a \id{Narrow} seam, still a walkable connection, just
+too thin to fight through.
+\end{quote}
+
+The model has a named predicate for the union of the two, and its own docstring
+states the intent without ambiguity:
+
+\begin{lstlisting}
+public static bool IsLandInterface(ContactKind kind)
+    => kind is ContactKind.Land or ContactKind.Narrow;
+\end{lstlisting}
+
+Six call sites use it. Two did not. Both were in the plan compiler, and both
+pattern-matched \id{Kind: ContactKind.Land} inline: the one that lays a room's
+entrance redstone, and the one that answers which segments a room's cage cuts its
+doors from.
+
+The consequence is not cosmetic. The second function's own documentation states
+that an empty answer means the room is unreachable and the validator refuses on it.
+A wool room whose only way in is eight blocks wide therefore compiled to a room
+with \textbf{no door cut and no entrance marked}, having been classified unreachable
+by a filter that the rest of the system would have called reachable.
+
+What makes it a good example rather than merely a bug is where the inconsistency
+sat. The flag that marks a segment as a wool-room interface in the first place is
+computed \emph{with} the correct predicate, and the comment above it says so:
+\emph{flags apply to land interfaces (full-width or narrow)}. So a segment was
+correctly flagged as a room's interface and then discarded by a filter that
+disagreed with the flag it was reading.
+
+\begin{ruling}{One Concept, One Predicate}
+The repository states the general rule and this is an instance of it: a concept
+gets one type and one verb across the whole codebase, and the failure is never a
+decision to duplicate. It is a second site quietly growing its own copy because
+reaching for the first one was one grep further away.
+\end{ruling}
+
+Found by looking at a rendered board and noticing that one room's entrance marking
+appeared on one side and not another, then measuring rather than assuming: the
+interface read \id{"kind": "narrow", "length": 8, "delta": 0, "woolRoom": true},
+which is a flush, walked, eight-block entrance flagged as a room's own and filtered
+out by width.
+
 \section{One Question at Four Grains}
 
 The most interesting structural property of the rule system is that the same
