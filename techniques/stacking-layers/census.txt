@@ -1,5 +1,8 @@
-THEMES  2 themes over 45168 ground cells, 2 distinct surface blocks
-  court  29760 cells (65.9%)  24:0 Sandstone
-  gantry  15408 cells (34.1%)  5:1 Spruce Planks
+THEMES  3 themes over 16896 ground cells, 3 distinct surface blocks
+  court  13068 cells (77.3%)  24:0 Sandstone
+  deck  3580 cells (21.2%)  5:1 Spruce Planks
+  masonry  248 cells (1.5%)  98:1 Mossy Stone Bricks
 borders:
-  court | gantry  1016 cells
+  court | deck  824 cells
+  deck | masonry  128 cells
+  court | masonry  4 cells

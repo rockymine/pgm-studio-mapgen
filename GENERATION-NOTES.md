@@ -1265,10 +1265,11 @@ course thick, laps nothing, sits flush with both banks and leaves four courses o
 block is one lower.** A court stating `base_height` 14 has its top block at y13, so a one-course deck at
 `base_y` **14** rests on it, shares one course by the gate's arithmetic and raises nothing.
 
-**One lower than that is `SK10`, and the deck is then not in the world at all.** The column reads fourteen
-blocks of court with no deck course in it and a transect down the panel reads rises 0, falls 0, worst step 0.
-Nothing downstream can report a storey that was silently absorbed, because the world is built and the column
-is valid.
+**One lower than that is `SK10`, and the slab is absorbed exactly where the layer below reaches it.** A
+gallery's roof set one course into its wall heads left mossy brick on top of the wall line and no plank
+anywhere in that column, while inside the gallery — away from the walls — the same roof stood a course lower
+with its storey intact. The fault is local, the world is built, the column is valid, and the gate at the door
+is the only thing that reports it.
 
 ### Everything downstream of a stacked cell reads one number: the surface top
 
@@ -1283,6 +1284,8 @@ consequences, all measured:
   surface and paints each over its own span, so a court under a deck and the same court beside it come
   back block for block alike — measured on a theme whose `fill` is deliberately a different block from
   its surface, which is what makes the two tellable apart at all.
+- **A covered floor is not in `themes/census`.** The census counts each column's *top* surface, so a
+  board stating four themes reported three: every cell of the fourth had a roof over it.
 - **The covered ground cannot be dressed.** A tree stated at `(8, 53)`, where the ground is a hall
   floor at y14, stood at y28 on the roof. No decline mentions it.
 - **Theme scope is per layer.** `ShapeScopeOwners` keys on `(layer, x, z)`, so a shape owns the paint

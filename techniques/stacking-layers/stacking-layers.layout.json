@@ -1,10 +1,10 @@
 {
  "setup": {
   "bbox": {
-   "min_x": -166,
-   "max_x": 166,
-   "min_z": -91,
-   "max_z": 91
+   "min_x": -118,
+   "max_x": 118,
+   "min_z": -59,
+   "max_z": 59
   },
   "center": {
    "cx": 0,
@@ -69,7 +69,7 @@
     }
    }
   },
-  "gantry": {
+  "masonry": {
    "bedrock": {
     "relative": false,
     "value": 1
@@ -82,6 +82,80 @@
      "kind": "solid",
      "id": 98,
      "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 1
+    }
+   }
+  },
+  "paving": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 6
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 6
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 6
+    }
+   }
+  },
+  "deck": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 5,
+     "data": 1
     }
    },
    "wallEnabled": true,
@@ -117,161 +191,235 @@
    "layout": {
     "shapes": [
      {
-      "id": "court-air",
+      "id": "court-open",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
-      "min_x": -158.0,
-      "min_z": -83.0,
-      "max_x": -62.0,
-      "max_z": -7.0,
+      "min_x": -110,
+      "min_z": -51,
+      "max_x": -46,
+      "max_z": -7,
       "base_height": 14,
       "theme": "court"
      },
      {
-      "id": "court-seam",
+      "id": "paving-open",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
-      "min_x": -48.0,
-      "min_z": -83.0,
-      "max_x": 48.0,
-      "max_z": -7.0,
+      "min_x": -102.0,
+      "min_z": -35.0,
+      "max_x": -50.0,
+      "max_z": -29.0,
+      "base_height": 14,
+      "theme": "paving"
+     },
+     {
+      "id": "court-low",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -32,
+      "min_z": -51,
+      "max_x": 32,
+      "max_z": -7,
       "base_height": 14,
       "theme": "court"
+     },
+     {
+      "id": "paving-low",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -24.0,
+      "min_z": -35.0,
+      "max_x": 28.0,
+      "max_z": -29.0,
+      "base_height": 14,
+      "theme": "paving"
      },
      {
       "id": "court-driven",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
-      "min_x": 62.0,
-      "min_z": -83.0,
-      "max_x": 158.0,
-      "max_z": -7.0,
+      "min_x": 46,
+      "min_z": -51,
+      "max_x": 110,
+      "max_z": -7,
       "base_height": 14,
       "theme": "court"
      },
      {
-      "id": "court-ramp-meets",
+      "id": "paving-driven",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
-      "min_x": -158.0,
-      "min_z": 7.0,
-      "max_x": -62.0,
-      "max_z": 83.0,
+      "min_x": 54.0,
+      "min_z": -35.0,
+      "max_x": 106.0,
+      "max_z": -29.0,
+      "base_height": 14,
+      "theme": "paving"
+     },
+     {
+      "id": "court-stair-meets",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -110,
+      "min_z": 7,
+      "max_x": -46,
+      "max_z": 51,
       "base_height": 14,
       "theme": "court"
      },
      {
-      "id": "causeway-ramp-meets",
+      "id": "paving-stair-meets",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -102.0,
+      "min_z": 23.0,
+      "max_x": -50.0,
+      "max_z": 29.0,
+      "base_height": 14,
+      "theme": "paving"
+     },
+     {
+      "id": "stair-stair-meets",
       "type": "polygon",
       "operation": "add",
       "floor": 0,
-      "base_height": 19,
+      "base_height": 20,
       "height_mode": "level",
       "skirt": 0,
       "theme": "court",
       "vertices": [
        [
-        -122.0,
-        79.0
+        -74.0,
+        47.0
        ],
        [
-        -98.0,
-        79.0
+        -58.0,
+        47.0
        ],
        [
-        -98.0,
-        59.0
+        -58.0,
+        29.0
        ],
        [
-        -122.0,
-        59.0
+        -74.0,
+        29.0
        ]
       ],
       "anchor_heights": [
        14,
        14,
-       19,
-       19
+       20,
+       20
       ]
      },
      {
-      "id": "court-ramp-short",
+      "id": "court-stair-short",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
-      "min_x": -48.0,
-      "min_z": 7.0,
-      "max_x": 48.0,
-      "max_z": 83.0,
+      "min_x": -32,
+      "min_z": 7,
+      "max_x": 32,
+      "max_z": 51,
       "base_height": 14,
       "theme": "court"
      },
      {
-      "id": "causeway-ramp-short",
+      "id": "paving-stair-short",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -24.0,
+      "min_z": 23.0,
+      "max_x": 28.0,
+      "max_z": 29.0,
+      "base_height": 14,
+      "theme": "paving"
+     },
+     {
+      "id": "stair-stair-short",
       "type": "polygon",
       "operation": "add",
       "floor": 0,
-      "base_height": 19,
+      "base_height": 20,
       "height_mode": "level",
       "skirt": 0,
       "theme": "court",
       "vertices": [
        [
-        -12.0,
-        79.0
+        4.0,
+        47.0
        ],
        [
-        12.0,
-        79.0
+        20.0,
+        47.0
        ],
        [
-        12.0,
-        60.0
+        20.0,
+        30.0
        ],
        [
-        -12.0,
-        60.0
+        4.0,
+        30.0
        ]
       ],
       "anchor_heights": [
        14,
        14,
-       19,
-       19
+       20,
+       20
       ]
      },
      {
-      "id": "court-three-storeys",
+      "id": "court-two-storeys",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
-      "min_x": 62.0,
-      "min_z": 7.0,
-      "max_x": 158.0,
-      "max_z": 83.0,
+      "min_x": 46,
+      "min_z": 7,
+      "max_x": 110,
+      "max_z": 51,
       "base_height": 14,
       "theme": "court"
+     },
+     {
+      "id": "paving-two-storeys",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": 54.0,
+      "min_z": 23.0,
+      "max_x": 106.0,
+      "max_z": 29.0,
+      "base_height": 14,
+      "theme": "paving"
      }
     ],
     "groups": [
      {
-      "id": "court-air",
-      "name": "air",
+      "id": "court-open",
+      "name": "open",
       "mirrors": false,
       "shapeIds": [
-       "court-air"
+       "court-open",
+       "paving-open"
       ]
      },
      {
-      "id": "court-seam",
-      "name": "seam",
+      "id": "court-low",
+      "name": "low",
       "mirrors": false,
       "shapeIds": [
-       "court-seam"
+       "court-low",
+       "paving-low"
       ]
      },
      {
@@ -279,250 +427,562 @@
       "name": "driven",
       "mirrors": false,
       "shapeIds": [
-       "court-driven"
+       "court-driven",
+       "paving-driven"
       ]
      },
      {
-      "id": "court-ramp-meets",
-      "name": "ramp-meets",
+      "id": "court-stair-meets",
+      "name": "stair-meets",
       "mirrors": false,
       "shapeIds": [
-       "court-ramp-meets",
-       "causeway-ramp-meets"
+       "court-stair-meets",
+       "paving-stair-meets",
+       "stair-stair-meets"
       ]
      },
      {
-      "id": "court-ramp-short",
-      "name": "ramp-short",
+      "id": "court-stair-short",
+      "name": "stair-short",
       "mirrors": false,
       "shapeIds": [
-       "court-ramp-short",
-       "causeway-ramp-short"
+       "court-stair-short",
+       "paving-stair-short",
+       "stair-stair-short"
       ]
      },
      {
-      "id": "court-three-storeys",
-      "name": "three-storeys",
+      "id": "court-two-storeys",
+      "name": "two-storeys",
       "mirrors": false,
       "shapeIds": [
-       "court-three-storeys"
+       "court-two-storeys",
+       "paving-two-storeys"
       ]
      }
     ]
    }
   },
   {
-   "id": "driven",
-   "name": "driven",
-   "base_y": 13,
-   "layout": {
-    "shapes": [
-     {
-      "id": "deck-driven",
-      "type": "rectangle",
-      "operation": "add",
-      "floor": 0,
-      "min_x": 58.0,
-      "min_z": -59.0,
-      "max_x": 162.0,
-      "max_z": -31.0,
-      "base_height": 1,
-      "theme": "gantry"
-     }
-    ],
-    "groups": [
-     {
-      "id": "deck-driven",
-      "name": "driven",
-      "mirrors": false,
-      "shapeIds": [
-       "deck-driven"
-      ]
-     }
-    ]
-   }
-  },
-  {
-   "id": "seam",
-   "name": "seam",
+   "id": "walls-open",
+   "name": "walls-open",
    "base_y": 14,
    "layout": {
     "shapes": [
      {
-      "id": "deck-seam",
+      "id": "back-open",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
-      "min_x": -52.0,
-      "min_z": -59.0,
-      "max_x": 52.0,
-      "max_z": -31.0,
-      "base_height": 1,
-      "theme": "gantry"
+      "min_x": -106.0,
+      "min_z": -39.0,
+      "max_x": -50.0,
+      "max_z": -35.0,
+      "base_height": 5,
+      "theme": "masonry"
+     },
+     {
+      "id": "west-open",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -106.0,
+      "min_z": -39.0,
+      "max_x": -102.0,
+      "max_z": -29.0,
+      "base_height": 5,
+      "theme": "masonry"
      }
     ],
     "groups": [
      {
-      "id": "deck-seam",
-      "name": "seam",
+      "id": "walls-open",
+      "name": "walls-open",
       "mirrors": false,
       "shapeIds": [
-       "deck-seam"
+       "back-open",
+       "west-open"
       ]
      }
     ]
    }
   },
   {
-   "id": "air",
-   "name": "air",
+   "id": "walls-low",
+   "name": "walls-low",
+   "base_y": 14,
+   "layout": {
+    "shapes": [
+     {
+      "id": "back-low",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -28.0,
+      "min_z": -39.0,
+      "max_x": 28.0,
+      "max_z": -35.0,
+      "base_height": 1,
+      "theme": "masonry"
+     },
+     {
+      "id": "west-low",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -28.0,
+      "min_z": -39.0,
+      "max_x": -24.0,
+      "max_z": -29.0,
+      "base_height": 1,
+      "theme": "masonry"
+     }
+    ],
+    "groups": [
+     {
+      "id": "walls-low",
+      "name": "walls-low",
+      "mirrors": false,
+      "shapeIds": [
+       "back-low",
+       "west-low"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "walls-driven",
+   "name": "walls-driven",
+   "base_y": 14,
+   "layout": {
+    "shapes": [
+     {
+      "id": "back-driven",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": 50.0,
+      "min_z": -39.0,
+      "max_x": 106.0,
+      "max_z": -35.0,
+      "base_height": 5,
+      "theme": "masonry"
+     },
+     {
+      "id": "west-driven",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": 50.0,
+      "min_z": -39.0,
+      "max_x": 54.0,
+      "max_z": -29.0,
+      "base_height": 5,
+      "theme": "masonry"
+     }
+    ],
+    "groups": [
+     {
+      "id": "walls-driven",
+      "name": "walls-driven",
+      "mirrors": false,
+      "shapeIds": [
+       "back-driven",
+       "west-driven"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "walls-stair-meets",
+   "name": "walls-stair-meets",
+   "base_y": 14,
+   "layout": {
+    "shapes": [
+     {
+      "id": "back-stair-meets",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -106.0,
+      "min_z": 19.0,
+      "max_x": -50.0,
+      "max_z": 23.0,
+      "base_height": 5,
+      "theme": "masonry"
+     },
+     {
+      "id": "west-stair-meets",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -106.0,
+      "min_z": 19.0,
+      "max_x": -102.0,
+      "max_z": 29.0,
+      "base_height": 5,
+      "theme": "masonry"
+     }
+    ],
+    "groups": [
+     {
+      "id": "walls-stair-meets",
+      "name": "walls-stair-meets",
+      "mirrors": false,
+      "shapeIds": [
+       "back-stair-meets",
+       "west-stair-meets"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "walls-stair-short",
+   "name": "walls-stair-short",
+   "base_y": 14,
+   "layout": {
+    "shapes": [
+     {
+      "id": "back-stair-short",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -28.0,
+      "min_z": 19.0,
+      "max_x": 28.0,
+      "max_z": 23.0,
+      "base_height": 5,
+      "theme": "masonry"
+     },
+     {
+      "id": "west-stair-short",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -28.0,
+      "min_z": 19.0,
+      "max_x": -24.0,
+      "max_z": 29.0,
+      "base_height": 5,
+      "theme": "masonry"
+     }
+    ],
+    "groups": [
+     {
+      "id": "walls-stair-short",
+      "name": "walls-stair-short",
+      "mirrors": false,
+      "shapeIds": [
+       "back-stair-short",
+       "west-stair-short"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "walls-two-storeys-0",
+   "name": "walls-two-storeys-0",
+   "base_y": 14,
+   "layout": {
+    "shapes": [
+     {
+      "id": "back-two-storeys-0",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": 50.0,
+      "min_z": 19.0,
+      "max_x": 106.0,
+      "max_z": 23.0,
+      "base_height": 5,
+      "theme": "masonry"
+     },
+     {
+      "id": "west-two-storeys-0",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": 50.0,
+      "min_z": 19.0,
+      "max_x": 54.0,
+      "max_z": 29.0,
+      "base_height": 5,
+      "theme": "masonry"
+     }
+    ],
+    "groups": [
+     {
+      "id": "walls-two-storeys-0",
+      "name": "walls-two-storeys-0",
+      "mirrors": false,
+      "shapeIds": [
+       "back-two-storeys-0",
+       "west-two-storeys-0"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "roof-low",
+   "name": "roof-low",
+   "base_y": 15,
+   "layout": {
+    "shapes": [
+     {
+      "id": "roof-low",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -29.0,
+      "min_z": -40.0,
+      "max_x": 29.0,
+      "max_z": -29.0,
+      "base_height": 1,
+      "theme": "deck"
+     }
+    ],
+    "groups": [
+     {
+      "id": "roof-low",
+      "name": "roof-low",
+      "mirrors": false,
+      "shapeIds": [
+       "roof-low"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "roof-driven",
+   "name": "roof-driven",
    "base_y": 18,
    "layout": {
     "shapes": [
      {
-      "id": "deck-air",
+      "id": "roof-driven",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
-      "min_x": -162.0,
-      "min_z": -59.0,
-      "max_x": -58.0,
-      "max_z": -31.0,
+      "min_x": 49.0,
+      "min_z": -40.0,
+      "max_x": 107.0,
+      "max_z": -29.0,
       "base_height": 1,
-      "theme": "gantry"
+      "theme": "deck"
      }
     ],
     "groups": [
      {
-      "id": "deck-air",
-      "name": "air",
+      "id": "roof-driven",
+      "name": "roof-driven",
       "mirrors": false,
       "shapeIds": [
-       "deck-air"
+       "roof-driven"
       ]
      }
     ]
    }
   },
   {
-   "id": "meets",
-   "name": "meets",
-   "base_y": 18,
+   "id": "roof-open",
+   "name": "roof-open",
+   "base_y": 19,
    "layout": {
     "shapes": [
      {
-      "id": "deck-meets",
+      "id": "roof-open",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
-      "min_x": -162.0,
-      "min_z": 31.0,
-      "max_x": -58.0,
-      "max_z": 59.0,
+      "min_x": -107.0,
+      "min_z": -40.0,
+      "max_x": -49.0,
+      "max_z": -29.0,
       "base_height": 1,
-      "theme": "gantry"
+      "theme": "deck"
      }
     ],
     "groups": [
      {
-      "id": "deck-meets",
-      "name": "meets",
+      "id": "roof-open",
+      "name": "roof-open",
       "mirrors": false,
       "shapeIds": [
-       "deck-meets"
+       "roof-open"
       ]
      }
     ]
    }
   },
   {
-   "id": "short",
-   "name": "short",
-   "base_y": 18,
+   "id": "roof-stair-meets",
+   "name": "roof-stair-meets",
+   "base_y": 19,
    "layout": {
     "shapes": [
      {
-      "id": "deck-short",
+      "id": "roof-stair-meets",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
-      "min_x": -52.0,
-      "min_z": 31.0,
-      "max_x": 52.0,
-      "max_z": 59.0,
+      "min_x": -107.0,
+      "min_z": 18.0,
+      "max_x": -49.0,
+      "max_z": 29.0,
       "base_height": 1,
-      "theme": "gantry"
+      "theme": "deck"
      }
     ],
     "groups": [
      {
-      "id": "deck-short",
-      "name": "short",
+      "id": "roof-stair-meets",
+      "name": "roof-stair-meets",
       "mirrors": false,
       "shapeIds": [
-       "deck-short"
+       "roof-stair-meets"
       ]
      }
     ]
    }
   },
   {
-   "id": "mezz",
-   "name": "mezz",
-   "base_y": 18,
+   "id": "roof-stair-short",
+   "name": "roof-stair-short",
+   "base_y": 19,
    "layout": {
     "shapes": [
      {
-      "id": "deck-mezz",
+      "id": "roof-stair-short",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
-      "min_x": 58.0,
-      "min_z": 31.0,
-      "max_x": 162.0,
-      "max_z": 59.0,
+      "min_x": -29.0,
+      "min_z": 18.0,
+      "max_x": 29.0,
+      "max_z": 29.0,
       "base_height": 1,
-      "theme": "gantry"
+      "theme": "deck"
      }
     ],
     "groups": [
      {
-      "id": "deck-mezz",
-      "name": "mezz",
+      "id": "roof-stair-short",
+      "name": "roof-stair-short",
       "mirrors": false,
       "shapeIds": [
-       "deck-mezz"
+       "roof-stair-short"
       ]
      }
     ]
    }
   },
   {
-   "id": "roof",
-   "name": "roof",
-   "base_y": 24,
+   "id": "roof-two-storeys-0",
+   "name": "roof-two-storeys-0",
+   "base_y": 19,
    "layout": {
     "shapes": [
      {
-      "id": "deck-roof",
+      "id": "roof-two-storeys-0",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
-      "min_x": 58.0,
-      "min_z": 25.0,
-      "max_x": 162.0,
-      "max_z": 41.0,
+      "min_x": 49.0,
+      "min_z": 18.0,
+      "max_x": 107.0,
+      "max_z": 29.0,
       "base_height": 1,
-      "theme": "gantry"
+      "theme": "deck"
      }
     ],
     "groups": [
      {
-      "id": "deck-roof",
-      "name": "roof",
+      "id": "roof-two-storeys-0",
+      "name": "roof-two-storeys-0",
       "mirrors": false,
       "shapeIds": [
-       "deck-roof"
+       "roof-two-storeys-0"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "walls-two-storeys-1",
+   "name": "walls-two-storeys-1",
+   "base_y": 20,
+   "layout": {
+    "shapes": [
+     {
+      "id": "back-two-storeys-1",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": 50.0,
+      "min_z": 19.0,
+      "max_x": 106.0,
+      "max_z": 23.0,
+      "base_height": 5,
+      "theme": "masonry"
+     },
+     {
+      "id": "west-two-storeys-1",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": 50.0,
+      "min_z": 19.0,
+      "max_x": 54.0,
+      "max_z": 29.0,
+      "base_height": 5,
+      "theme": "masonry"
+     }
+    ],
+    "groups": [
+     {
+      "id": "walls-two-storeys-1",
+      "name": "walls-two-storeys-1",
+      "mirrors": false,
+      "shapeIds": [
+       "back-two-storeys-1",
+       "west-two-storeys-1"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "roof-two-storeys-1",
+   "name": "roof-two-storeys-1",
+   "base_y": 25,
+   "layout": {
+    "shapes": [
+     {
+      "id": "roof-two-storeys-1",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": 49.0,
+      "min_z": 18.0,
+      "max_x": 107.0,
+      "max_z": 29.0,
+      "base_height": 1,
+      "theme": "deck"
+     }
+    ],
+    "groups": [
+     {
+      "id": "roof-two-storeys-1",
+      "name": "roof-two-storeys-1",
+      "mirrors": false,
+      "shapeIds": [
+       "roof-two-storeys-1"
       ]
      }
     ]
