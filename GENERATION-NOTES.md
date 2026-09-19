@@ -563,12 +563,24 @@ bank at 13–14 and the count at 268, which is the two scarp faces and nothing e
 
 Under `rot_180` the image reverses with the original, so one lip traced the right way is both.
 
-### A line mark's `width` reaches either side of the line
+### A line mark's reach is either side of the line, and its name is `r`
 
-Not a half-width and not a one-sided band. A `line` at z 50 with `width: 12` writes over everything
-from z 38 to z 62, so a mark drawn to make a bank behind a frontline erases the frontline. Then a
-push stacked on that band and the result was a seven-block wall across the necks of the launch
-ground. Halve every width that was reasoned about as a corridor.
+Not a half-width and not a one-sided band. A `line` at z 50 with `r: 12` writes over everything from z 38 to
+z 62, so a mark drawn to make a bank behind a frontline erases the frontline — and a push stacked on that
+band makes a seven-block wall across the necks of the launch ground. Halve every reach that was reasoned
+about as a corridor.
+
+`width` is the same number under an older name, read on the way in and never written back, so a document
+saved through the studio comes out spelling `r`.
+
+**`tread` is how much of the band is flat**, in cells either side of the centreline, and the rest is a loft:
+a cell out past the tread takes a straight ramp between the two treads' edges instead of snapping to
+whichever pass of the line is nearer. That is what turns a serpentine or a spiral haul road from flat road
+and vertical wall into flat road and graded batter.
+
+**`batter` states how steeply that shoulder falls**, in degrees from level, and may only be steeper than the
+run allows — a gentler angle would not have arrived by the next tread, so it is raised to what the gap needs.
+Two passes `pitch` apart falling `drop` between them grade over `pitch − 2·tread`.
 
 ### A `rim` mark states one height for **every** group in the relief
 
@@ -598,25 +610,34 @@ unpinned ground between them and the same two marks read `7 7 7 7 9 11 12 13 13`
 
 **The gap between two marks is not a gap in the design; it is where the design happens.**
 
-### Two `hold` pads side by side cannot be ramped between
+### A pad meets its neighbour on a step unless it states how far in to grade
 
-`relief_scope: hold` keeps a shape at its own level and the surrounding surface is solved knowing
-where it has to arrive — which is exactly the pre-raise a spawn or a wool room wants. But a relief
-mark cannot climb *between* two held shapes, because neither of them will move: a room pad at 18
-beside an approach pad at 14 is a hundred cells of floor nobody can walk onto, and `relief/read`
-reports it only as a rise in the place count. Each pad climbs one block over the pad it is reached
-from — 16 → 17 → 18.
+`relief_scope: hold` keeps a shape at its own level and the surrounding surface is solved knowing where it
+has to arrive, which is the pre-raise a spawn or a wool room wants. Stated to its own outline it meets
+whatever is beside it on a face, so a room pad at 18 beside an approach pad at 14 is a hundred cells of floor
+nobody can walk onto, and `relief/read` reports it only as a rise in the place count.
 
-### `step` with `stairs` is the instrument for a quarry — the terracing that ruins a hillside
+**A held shape's `skirt` is how far inside its ring the height gives way**, read as the bevel of the mark it
+becomes: the pins near the edge are soft and the relaxation pulls them toward the neighbour, so the pad keeps
+its flat core and arrives on a grade. An `area` mark states the same thing directly as `bevel`.
 
-`ReliefSpec.Step` snaps the finished surface to a quantum, which is what turns a board's hills into stacked
-plateaus. A worked pit **wants** that: state the rim and the floor as two `area` marks, let the
-relaxation solve a smooth bowl between them, and set `step` to the bench height. `stairs: true` then cuts a
-way up out of every place the terracing stranded, so the pit is walkable without stopping being terraced.
+A floor wants none of it and ground wants all of it. Where two pads must stay flat to their own edges, each
+still climbs one block over the pad it is reached from — 16 → 17 → 18.
 
-Every stated level must be a multiple of the step or the knob rounds it away.
+### `step` is the instrument for a quarry, and the terracing that ruins a hillside
 
-Four marks and `step 4` give six benches where thirty marks gave a hillside nobody wanted.
+`step` snaps the finished surface to a quantum, which is what turns a board's hills into stacked plateaus. A
+worked pit **wants** that: state the rim and the floor as two `area` marks, let the relaxation solve a smooth
+bowl between them, and set `step` to the bench height. Four marks and `step 4` give six benches where thirty
+marks gave a hillside nobody wanted.
+
+**A mark states its own `step`**, and ground no mark claimed takes the group's — so a worked terrace and a
+walkable ramp state different quanta and share one island. A cell takes the step of the last mark to claim
+it.
+
+Every stated level must be a multiple of the step or the knob rounds it away. **Nothing repairs what the
+terracing strands**: a pit with no way out of it is a pit, and the walk is what says so — `EX1` where the
+board is no longer one place, and the steepness tiers short of that.
 
 ### Water fills whatever is level, so the pan is the size of the pool
 
@@ -700,9 +721,10 @@ complaint is an `SK11` that is easy to write off as a quirk of a stacked board.
 Override decides who wins the column among the shapes on a layer and says nothing about the solve, so a
 relief's surface replaces the top of a wall, a flight, a hill or a rim as readily as it does bare ground.
 
-A made thing keeps its stated top only with `"height_mode": "level"` and `"skirt": 0` — level for an absolute
-top, skirt zero for a sheer face. `relief_scope: "exclude"` is the stronger form, keeping the shape's ground
-out of the solve entirely.
+A made thing keeps its stated top with `"height_mode": "level"` and `"skirt": 0` — level for an absolute
+top, skirt zero for a sheer face — because an erected shape is applied over ground the relief has already
+made. A shape with no `height_mode` says the same thing as `relief_scope: "exclude"`, which takes its
+footprint out of the solve. One or the other, never both.
 
 `SK14` names an override add carrying neither, which is what leaves a twenty-seven-course wall level with the
 ground beside it.
@@ -794,11 +816,25 @@ Past the coast there is no ground to read, so the column falls back to the shape
 that overhangs the sea by two cells builds two seven-block stubs at bedrock beside the group. It is
 terrain, so nothing declines it. Audit every ring for sea cells as well as hole cells before using it.
 
-### Only `relief_scope: "exclude"` makes a vertical-sided spire
+### A mark cannot make a vertical-sided spire, and an excluded shape can
 
-Every mark is a constraint the relaxation smooths *through*, so a point mark makes a cone. An
-excluded shape leaves the field entirely — the solver bends round it as it bends round the void — and
-keeps the column it was drawn with: a flat crown on vertical sides, joined to nothing.
+Every mark is a constraint the relaxation smooths *through*, so a point mark makes a cone. A shape carrying
+`relief_scope: "exclude"` and no `height_mode` leaves the field entirely — the solver bends round it as it
+bends round the void — and keeps the column it was drawn with: a flat crown on vertical sides, joined to
+nothing. A `height_mode` of `level` states the same crown at an absolute height and is the other way to ask.
+
+### `relief_scope` is not read on a shape that declares a `height_mode`
+
+They are alternatives rather than a pair. A `height_mode` says the shape stands **out** of the field — it is
+applied over ground the relief has already made, so the solve never had an opinion about its top. A
+`relief_scope` says how a shape that is part of the ground **takes part** in the solve. A shape stating both
+has the scope ignored, silently, because the field bound and was simply not consulted.
+
+The scope has four words and the fourth goes unused. `follow` takes the height the field settles on under the
+shape and holds it flat there, so the shape moves with the terrain and keeps a level floor — which is what a
+room wants, since a plan states its piece's height before any ground exists. `hold` pins the stated height
+against the relief, `exclude` takes the footprint out of the solve, and absent is `inherit`: the shape is
+part of the group's ground.
 
 ### A ramp between two tiers is four fields and works first time
 
@@ -806,7 +842,7 @@ keeps the column it was drawn with: a flat crown on vertical sides, joined to no
 
 ```json
 { "id": "ramp-d", "type": "polygon", "operation": "add", "floor": 0,
-  "base_height": 22, "height_mode": "level", "skirt": 0, "relief_scope": "exclude",
+  "base_height": 22, "height_mode": "level", "skirt": 0,
   "vertices": [[-46,68],[-34,68],[-34,82],[-46,82]], "anchor_heights": [22,22,26,26] }
 ```
 
@@ -1294,8 +1330,8 @@ with `rise` at its default builds with every cut face striped floor to sky, one 
 height of the column.
 
 State a `rise` and the field is a volume — but a cell as tall as it is wide still reads as a column on a cut,
-because a cut face shows a cell's width and its height side by side and a square blob of stone is a post. The
-second Millrace build stated cells of 7 with a rise of 7 and its cliffs still read as vertical runs.
+because a cut face shows a cell's width and its height side by side and a square blob of stone is a post. A body
+stated as cells of 7 with a rise of 7 still reads as vertical runs on every cut face.
 
 Make the cells wider than tall. A body stated as a `cell` nine across with a rise of five, over turbulences
 seven across with a rise of four, builds runs of one
@@ -1665,14 +1701,16 @@ keeps it out of the way.
 
 Every read but one is a projection. Which one to reach for is decided by what the question is about, and the picture is never the answer to a question about a number.
 
-**The reads answer over HTTP now**, one route each under `GET /api/map/{slug}/…` — `render/topdown`,
+**Sixteen routes answer under `GET /api/map/{slug}/…`.** Seven draw pictures — `render/topdown`,
 `render/section`, `render/heightmap`, `render/surface`, `render/traversability`, `render/structures`,
-`render/mirror`, `render/walk`, `walk`, and `column`. The schema names each one's own query words, and every route's summary carries
-what it draws and where it is known to mislead, so what follows here is only what a summary cannot hold. The
-`PgmStudio.RoundTrip` flags still take the same readings off a region directory, and `--help` prints the same
-sentences.
+`render/mirror` and `render/walk`. The rest answer numbers: `column` at a coordinate, `transect` along a
+line, `slopes` over the board as steps, `incline` over it as **angles**, `walk` and `reach` for what a
+journey costs, `stroke` for a band, and `themes/census` for what the board is made of.
 
-### `--column` is the only honest answer
+The schema names each route's own query words, and every summary says what it draws and where it is known to
+mislead, so what follows is only what a summary cannot hold.
+
+### `column` is the only honest answer
 
 Every other read is a projection. Probe the coordinate you already expect something at.
 
@@ -1695,9 +1733,9 @@ answers.
 `render/mirror` compares blocks, and two halves can be block-identical while the ground between them charges
 one team eleven blocks the other does not pay.
 
-On Elderwold, `rot_180`, the spawn-to-cairn lines agree to within one block and the river corridor does not:
-`(−24, −16)` is river bed at y5 while `(24, 16)` is bank top at y17, and the walk turns that into 11 placed
-blocks for one team and 0 for the other.
+Measured on a `rot_180` board whose spawn-to-goal lines agree to within one block: the river corridor does
+not, with `(−24, −16)` river bed at y5 against `(24, 16)` bank top at y17, which the walk turns into 11
+placed blocks for one team and 0 for the other.
 
 The relief mark's own point list is rotationally symmetric; what moves the edge is what is laid over it
 unmirrored — the `grain` field and the water props' `shoreWander`.
@@ -1715,15 +1753,20 @@ layers, and `render/section` cuts a plane:
     GET /map/{slug}/render/section?axis=x&at=<z>&from=<x0>&to=<x1>&ymin=&ymax=
 
 **`axis` names the direction the cut runs, so `at` is the other coordinate** — `axis=x` takes a z,
-`axis=z` takes an x. An `at` outside the world answers 200 with a blank image rather than refusing.
+`axis=z` takes an x, and an `at` outside the world is refused with the range it could have taken.
 
-### A section's lines are the renderer's, not the world's
+### A section's horizontal lines are the renderer's, and its vertical divisions are the world's
 
-`--section` blends a horizontal scale over the image: a white line at 16% alpha every `--ticks` blocks of Y
-(default 8) and a **yellow** one at 36% every fifth tick. There are **no vertical gridlines at all** — every
-vertical division in a section is a real block. The two backgrounds are two different answers: pale `#E7ECF3`
-is air inside a loaded chunk, near-black `#0E0E12` is no chunk at all. And it samples **one plane**, so
-anything a few blocks either side of the cut is not in the picture.
+The picture blends a Y scale over itself — a pale line every few blocks of height and a brighter one every
+fifth. There are **no vertical gridlines at all**, so every vertical division in a section is a real block.
+The two backgrounds are two different answers: pale is air inside a loaded chunk, near-black is no chunk at
+all.
+
+**It samples one plane unless `depth` says otherwise**, so a cut through a house that misses its walls reads
+floor, air, roof — a correct reading of that plane rather than a broken building. `depth` projects that many
+blocks behind the cut, each column taking the nearest block there, drawn dimmed by how far back it stands.
+
+An `at` outside the world is refused, and the refusal names the range a cut can be taken at.
 
 ### The material top-down draws the top *solid* block, so water reads as its own bed
 
