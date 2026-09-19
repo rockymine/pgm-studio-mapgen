@@ -6,8 +6,8 @@ from 27 Opus 5 runs. ---
 
 # Authoring a board here
 
-`ORDER-OF-WORK.md` is the order a board is decided in and `AUTHORING-BRIEF.md` is what the board should be.
-This is how not to lose a build finding out.
+`ORDER-OF-WORK.md` is the order a board is decided in, `WHAT-A-BOARD-IS-MADE-OF.md` is how one should look,
+and `AUTHORING-BRIEF.md` is the run it is authored in. This is how not to lose a build finding out.
 
 Everything below is measured off the run reports in `reports/opus5-*.md`. Each rule cost at least one
 build, most of them more than one, and several were paid twice by different runs.

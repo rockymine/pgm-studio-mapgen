@@ -73,6 +73,10 @@ written from and `maps/opus5-automaton` is a played board furnished with them.
 decisions a board is made of, in the order they are made, and the four that cannot be taken back. It explains
 no instrument; it says when each one is reached for and what is unrecoverable if it is reached for late.
 
+**[WHAT-A-BOARD-IS-MADE-OF.md](WHAT-A-BOARD-IS-MADE-OF.md) is the author's ruling on how a board should
+look** — the paint, the buildings, the ground cover, the seam where made ground meets grown ground. Nothing
+in it is enforced by any gate, which is why it is written down.
+
 **Then the API, and three documents opened at a question.** [AUTHORING-BRIEF.md](AUTHORING-BRIEF.md) is what
 an authoring agent is given, end to end.
 

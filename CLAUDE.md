@@ -4,8 +4,16 @@ Maps authored by driving pgm-studio's HTTP API. `AUTHORING-BRIEF.md` is what a b
 `README.md` is what is here.
 
 **Building a map: read [ORDER-OF-WORK.md](ORDER-OF-WORK.md) first.** One page, the nine decisions a board
-is made of and the order they are made in, with the four that cannot be taken back named at the end. It is
-the only document that has to be read before the first request; everything else is opened at a question.
+is made of and the order they are made in, with the four that cannot be taken back named at the end.
+
+**Then [WHAT-A-BOARD-IS-MADE-OF.md](WHAT-A-BOARD-IS-MADE-OF.md), once, before the first theme is written.**
+The author's ruling on how a board should look — the paint, the buildings, the ground cover, where made
+ground meets grown. None of it is enforced anywhere, which is the half of authoring every previous run got
+wrong.
+
+Those two and `AUTHORING-BRIEF.md` are about 12k tokens together and are the whole of what is read before
+the first request. Everything else is opened at a question, and the brief's §4 says which question opens
+what.
 
 **Changing, diagnosing or reading a map: invoke the `pgm-board` skill.** It carries the lookup table from
 question to the read that already answers it, and the two moments to stop at. It is distilled from 27 run

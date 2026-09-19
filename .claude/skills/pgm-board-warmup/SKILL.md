@@ -5,7 +5,8 @@ grounds are made to meet. Load once, at the start of a run, before pgm-board. --
 # Before the first board
 
 `ORDER-OF-WORK.md` is the page that comes before this one: the nine decisions a board is made of, in
-order, and the four that cannot be taken back. Read it first and this skill second.
+order, and the four that cannot be taken back. `WHAT-A-BOARD-IS-MADE-OF.md` is the author's ruling on how
+a board should look. Read those two, then this skill.
 
 Two things here, in order: what reading costs, and what a board is made of. Together they run about
 12k tokens and ten minutes, and both are done before a plan is written.

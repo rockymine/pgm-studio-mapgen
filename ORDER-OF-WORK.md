@@ -23,8 +23,13 @@ and be taken over.
 
 **State the extent, the aspect and the two lines before any shape exists.** Where each spawn sits, where each
 objective sits, and the two routes between them. Five numbers and two lines are the board; everything after
-them is detail. A goal's distance from its own spawn is solvable with arithmetic at this point, and a board
-whose size cannot satisfy it will not be rescued downstream.
+them is detail.
+
+**A goal's position is arithmetic at this point, not a thing to be found later.** With the goal `d` blocks
+along the lane from its own spawn and the spawns `L` apart, the enemy-to-own ratio is about `(L − d) / d`, so
+the band that gates it puts the goal between `L/5` and `L/4` from its own spawn — 42 to 52 blocks on a
+208-block lane. Place it there and the plan agrees on the first read; place it wrong and no downstream edit
+rescues it.
 
 **Choose the biome now, with the three tone families.** A tinted block takes its colour from the chunk's
 biome byte and nothing else on a board does, so the biome is a palette decision rather than a line added at
@@ -165,6 +170,10 @@ number no gate checks, a read-back that misleads. It is thirteen chapters in thi
 for the stage being worked on rather than the file: *the board · the plan · a board somebody else arranged ·
 the compile · relief · shapes · layers · painting · buildings · dressing · the export · reading it back ·
 what an answer says*.
+
+**`WHAT-A-BOARD-IS-MADE-OF.md` is the author's ruling on how a board should look**, and it is the one other
+document read before authoring rather than at a question: what a board is painted with, what a building is
+made of, how ground cover is stated, and how made ground meets grown ground.
 
 **`techniques/` is one card per instrument**, each holding its variants side by side in one world with the
 reads that prove them. Read the card nearest what is being built.
