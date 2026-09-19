@@ -763,13 +763,13 @@
  },
  "addShapes": [
   {
-   "id": "flight-w",
+   "id": "flight-shore",
    "type": "polygon",
    "operation": "add",
    "override": true,
    "keepClear": true,
    "floor": 0,
-   "base_height": 18,
+   "base_height": 17,
    "material": {
     "kind": "cell",
     "seed": 31,
@@ -794,31 +794,31 @@
    "skirt": 0,
    "vertices": [
     [
-     -6,
-     33
+     3,
+     20
     ],
     [
-     2,
-     33
+     11,
+     20
     ],
     [
-     2,
-     48
+     11,
+     34
     ],
     [
-     -6,
-     48
+     3,
+     34
     ]
    ],
    "anchor_heights": [
-    14,
-    14,
-    18,
-    18
+    11,
+    11,
+    17,
+    17
    ]
   },
   {
-   "id": "flight-e",
+   "id": "flight-bank",
    "type": "polygon",
    "operation": "add",
    "override": true,
@@ -849,25 +849,25 @@
    "skirt": 0,
    "vertices": [
     [
-     14,
+     -6,
      33
     ],
     [
-     22,
+     2,
      33
     ],
     [
-     22,
+     2,
      48
     ],
     [
-     14,
+     -6,
      48
     ]
    ],
    "anchor_heights": [
-    15,
-    15,
+    14,
+    14,
     18,
     18
    ]

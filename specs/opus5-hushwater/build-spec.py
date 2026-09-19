@@ -324,7 +324,7 @@ LAUNDER = {"kind": "cell", "seed": 41, "cellSize": 5, "jitter": 40, "warp": 2, "
            "palette": [GRAVEL, ANDESITE]}
 
 
-def flight(shape_id, x0, x1, foot, head, z_foot=33, z_head=48):
+def flight(shape_id, x0, x1, foot, head, z_foot, z_head):
     """One cut in the dressing floor's face. A flight is a made thing, so it takes a
     material rather than a theme and the same one the whole way up; level with anchors at
     the foot and the head is what states the face instead of grading it away."""
@@ -346,9 +346,12 @@ def brush(shape_id, theme, vertices):
 
 
 ADD_SHAPES = [
-    # the two ways up off the bank into the dressing floor, ten of run for three of rise
-    flight("flight-w", -6, 2, 14, 18),
-    flight("flight-e", 14, 22, 15, 18),
+    # the two cut tracks up the fell. The shore track is the one that earns its place: the
+    # ground it replaces climbs off the landing in two-block scrambles at (8, 21) and
+    # (8, 31), measured on a transect, and a flight is what states that rise instead.
+    # Fourteen of run for six of rise, which is over twice the rise the ruling asks for.
+    flight("flight-shore", 3, 11, 11, 17, 20, 34),
+    flight("flight-bank", -6, 2, 14, 18, 33, 48),
     # the launder that fed the hush, laid into the mine head's floor — four points, which
     # the rasterizer splines before it offsets the band, so it draws as a curve. It shares
     # the head's own exclusion, or the relief solves a surface straight through it (SK14)
