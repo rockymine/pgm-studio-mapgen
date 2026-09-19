@@ -1852,6 +1852,12 @@ prop's own layer. So a ground-layer way across a bridged gorge paves the **gorge
 never touches it, and paving the deck takes a stroke drawn on the bridge's layer. A causeway is the other
 thing: ground, solid to the bedrock, and indistinguishable from the bank it joins until it is marked.
 
+**And a deck lands on its banks only if the marks that cut the gorge share their boundary coordinate.** A
+ring covers the cells whose centres fall inside it, so a bank band stopping one short of the cut leaves that
+cell pinned by neither mark: the relaxation splits the difference into a one-cell ledge halfway down, and
+the deck spanning the stated gap ends over air. Stated as abutting bands the walk reads worst step 0 from
+bank to deck to bank.
+
 `techniques/painting-with-a-stroke` is the worked card: a strand feathered into a meadow, a serpentine paved
 four ways, the same verge with and without a claim, and one bridge crossed twice.
 

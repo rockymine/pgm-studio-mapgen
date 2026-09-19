@@ -8,8 +8,7 @@ is what lays a road down a hillside without becoming a ramp. Open it in the stud
 
 **Row 1 is a strand meeting a meadow four ways, row 2 a serpentine cut into a hillside and paved four ways,
 row 3 what a pave may read and what turns the brush away.** Twenty-eight props over twelve panels and three
-layers. The only findings are two `SK11` complaints, about a gorge floor and a deck nothing can walk onto,
-which is a question about reach rather than about paint.
+layers, and the board stores and builds with no finding at all.
 
 ## The document
 
@@ -38,7 +37,7 @@ band, `pave` is what fills it, and `claimsGround` is whether it holds what it pa
 | `by-height` | the pave as a `height` stack | coarse dirt at y11, cobble at y20, andesite at y30 |
 | `by-inward` | the pave as an `inward` stack | **every cell the `beyond` material**; neither band lands |
 | `over-a-crossing` | a way over a causeway and a way over a bridge | the causeway repainted; the bridge untouched, and the way paving the gorge floor under it |
-| `keep-clear` | the causeway marked, the bridge paved on its own layer | 416 cells become **320**; the bridge takes 84 from a stroke of its own |
+| `keep-clear` | the causeway marked, the bridge paved on its own layer | 416 cells become **314**; the bridge takes 90 from a stroke of its own |
 
 ## A seam a shape cannot make
 
@@ -139,7 +138,7 @@ own, `base_y` set so its top block is level with the banks and the gap under it 
 
 **A causeway is repainted, because the brush cannot tell it from the bank it joins.** In `over-a-crossing`
 its column reads **Cobblestone**; in `keep-clear`, marked, it reads **Spruce Planks**. The way paves 416
-cells across the unmarked panel and **320** across the marked one, and it still runs to the causeway and
+cells across the unmarked panel and **314** across the marked one, and it still runs to the causeway and
 resumes beyond it — the keep-out is exact, with no margin.
 
 **A bridge is not repainted, and it needs no marking: it is on another layer, and a stroke paves the layer
@@ -152,7 +151,13 @@ The stroke never stops — 416 cells over a 64-cell line.
 
 **So a way over a bridge is three strokes, and `keep-clear` is the worked one.** Two on the ground layer
 that stop at the lip on each side (176 cells each), and one on the bridge's own layer that paves the deck
-(84). That deck's column reads **Cobblestone**, and the gorge floor under it is left alone.
+(90). That deck's column reads **Cobblestone**, and the gorge floor under it is left alone.
+
+**A deck lands on its banks when the marks that make the gorge share their boundary, and not otherwise.** A
+ring covers the cells whose centres fall inside it, so a bank stopping one short of the cut leaves the cell
+between them pinned by neither mark and the relaxation splits the difference — a ledge halfway down, and a
+deck with nothing under its ends. Stated as abutting bands the walk reads **worst step 0, walked end to
+end** from bank to deck to bank.
 
 **A stamped block is never a road's to take, with no marking at all.** `DressingPalette.IsStamp` names
 bedrock, obsidian, wool, gold, iron, emerald, chests and stained glass, and `PlaceStroke` skips any column
@@ -204,12 +209,12 @@ is a 26-wide strip nothing plants in, and this card's claimed verge is radius 6.
 
 - `dressing.json` — every prop and the cells it laid: the pair that differs in one word (3,302 against
   3,302, 1,622 against 1,622, 2,927 plants against 1,791), and the pair that differs in a keep-out (416
-  against 320, with 176 + 176 + 84 in its place). No declines.
-- `columns.txt` — twenty-one columns: both sides of the ruled seam, the same cell brushed, the taper at its
+  against 314, with 176 + 176 + 90 in its place). No declines.
+- `columns.txt` — twenty-two columns: both sides of the ruled seam, the same cell brushed, the taper at its
   middle and at its end, the three altitudes of one `height` stack and the stone at its foot, the whole of
-  an `inward` one, and all four crossings.
+  an `inward` one, all four crossings and the bank a deck lands on.
 - `transects.txt` — five profiles: the beach the brush did not move, the same road section on both sides of
-  the claim, and the two crossings along their own ways.
+  the claim, the causeway along its way, and the bridge cell by cell from bank to bank.
 - `census.txt` — three themes and nine surface blocks, which is what says a stroke changes blocks without
   changing themes.
 - `incline.txt` · `slopes.txt` — the histogram the bands were cut against, and what the paving did to the

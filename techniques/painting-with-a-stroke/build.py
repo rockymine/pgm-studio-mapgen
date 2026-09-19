@@ -61,8 +61,9 @@ def flora(prop_id, ring, coverage=0.55):
 
 
 def zband(cx, z_from, z_to, inset=3):
-    """A band across the panel between two z, which is how a bank and the cut beside it are stated without
-    their rings overlapping — two marks fighting over one cell is what leaves a wall half cut."""
+    """A band across the panel between two z. Bands are stated to SHARE their boundary coordinate: a ring
+    covers the cells whose centres fall inside it, so two bands that stop one apart leave the cell between
+    them pinned by neither mark, and the relaxation splits the difference into a ledge halfway down."""
     half = PANEL_W / 2 - inset
     return [[cx - half, z_from], [cx + half, z_from], [cx + half, z_to], [cx - half, z_to]]
 
@@ -139,8 +140,8 @@ for index, name in enumerate(PANELS):
         # Two banks and a cut between them: one mark with nothing to argue against pins a whole group, so
         # the banks have to be stated as well as the cut, and abutting marks make the walls sheer.
         relief[name] = {"base": 14, "reach": 0, "step": 1, "pushes": [], "marks": [
-            area(f"north-{name}", 14, zband(cx, z0 + 4, cz - 8)),
-            area(f"gill-{name}", 3, zband(cx, cz - 7, cz + 7)),
+            area(f"north-{name}", 14, zband(cx, z0 + 4, cz - 7)),
+            area(f"gill-{name}", 3, zband(cx, cz - 7, cz + 8)),
             area(f"south-{name}", 14, zband(cx, cz + 8, z0 + PANEL_D - 4))]}
 
         # A causeway: ground, solid to the bedrock, constrained to the gap with one block of landing either
@@ -148,7 +149,7 @@ for index, name in enumerate(PANELS):
         members.append(f"causeway-{name}")
         causeway = {"id": f"causeway-{name}", "type": "rectangle", "operation": "add", "floor": 13,
                     "height_mode": "level", "base_height": 1, "skirt": 0, "theme": "deck",
-                    "min_x": cx - 29, "min_z": cz - 8, "max_x": cx - 19, "max_z": cz + 8}
+                    "min_x": cx - 29, "min_z": cz - 8, "max_x": cx - 19, "max_z": cz + 9}
         if name == "keep-clear":
             causeway["keepClear"] = True
         shapes.append(causeway)
@@ -160,7 +161,7 @@ for index, name in enumerate(PANELS):
                             "layout": {"shapes": [{"id": f"span-{name}", "type": "rectangle",
                                                    "operation": "add", "floor": 0, "base_height": 1,
                                                    "theme": "deck", "min_x": cx + 19, "min_z": cz - 7,
-                                                   "max_x": cx + 29, "max_z": cz + 7}],
+                                                   "max_x": cx + 29, "max_z": cz + 8}],
                                        "groups": [{"id": f"span-{name}", "name": f"span-{name}",
                                                    "mirrors": False, "shapeIds": [f"span-{name}"]}]}})
 

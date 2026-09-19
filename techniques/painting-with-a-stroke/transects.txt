@@ -126,25 +126,33 @@ TRANSECT 17 stations from (31, 58) to (31, 122), every 4
   (   31,   122)      14       14           14  stroke way-causeway-over-a-crossing  
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
 
-### over-a-crossing — along the bridge: the ground layer falls into the gorge, and the way with it
-TRANSECT 17 stations from (79, 58) to (79, 122), every 4
+### over-a-crossing — along the bridge, cell by cell over the gorge: bank, deck, bank
+TRANSECT 25 stations from (79, 78) to (79, 102), every 1
   station        ground  surface  water  top  standing            step
-  (   79,    58)      14       14           14  stroke way-span-over-a-crossing  
-  (   79,    62)      14       14           14  stroke way-span-over-a-crossing  
-  (   79,    66)      14       14           14  stroke way-span-over-a-crossing  
-  (   79,    70)      14       14           14  stroke way-span-over-a-crossing  
-  (   79,    74)      14       14           14  stroke way-span-over-a-crossing  
   (   79,    78)      14       14           14  stroke way-span-over-a-crossing  
-  (   79,    82)       9        9            9  stroke way-span-over-a-crossing  DROP -5
-  (   79,    86)      14       14           14  stroke way-span-over-a-crossing  BARRIER +5
+  (   79,    79)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    80)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    81)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    82)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    83)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    84)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    85)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    86)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    87)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    88)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    89)      14       14           14  stroke way-span-over-a-crossing  
   (   79,    90)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    91)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    92)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    93)      14       14           14  stroke way-span-over-a-crossing  
   (   79,    94)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    95)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    96)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    97)      14       14           14  stroke way-span-over-a-crossing  
   (   79,    98)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    99)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,   100)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,   101)      14       14           14  stroke way-span-over-a-crossing  
   (   79,   102)      14       14           14  stroke way-span-over-a-crossing  
-  (   79,   106)      14       14           14  stroke way-span-over-a-crossing  
-  (   79,   110)      14       14           14  stroke way-span-over-a-crossing  
-  (   79,   114)      14       14           14  stroke way-span-over-a-crossing  
-  (   79,   118)      14       14           14  stroke way-span-over-a-crossing  
-  (   79,   122)      14       14           14  stroke way-span-over-a-crossing  
-rises 1, falls 1, worst step 5: 1 barrier, 0 scramble, 1 drop — DROP -5 at (79, 82); BARRIER +5 at (79, 86) | walked end to end
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
 

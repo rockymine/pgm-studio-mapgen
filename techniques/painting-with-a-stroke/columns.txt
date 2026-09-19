@@ -113,7 +113,14 @@ course and adds no cell, so every column here is the same height it would be wit
   y 11    98:0   Stone Bricks
   y 10    98:0   Stone Bricks
 
-### over-a-crossing — the bridge, one course on its own layer: untouched
+### over-a-crossing — the bank the bridge lands on
+=== column (79, 82) — 14 solid block(s), ground 0° from level ===
+  y 13     4:0   Cobblestone
+  y 12     4:0   Cobblestone
+  y 11     4:0   Cobblestone
+  y 10     1:0   Stone
+
+### over-a-crossing — the bridge deck, one course on its own layer: untouched
 === column (79, 90) — 4 solid block(s), ground 0° from level ===
   y 13     5:1   Spruce Planks
   y  2     1:0   Stone
@@ -121,10 +128,10 @@ course and adds no cell, so every column here is the same height it would be wit
   y  0     7:0   Bedrock
 
 ### over-a-crossing — the gorge floor under that bridge, inside the way's band
-=== column (79, 95) — 4 solid block(s), ground 51° from level ===
+=== column (79, 95) — 4 solid block(s), ground 0° from level ===
   y 13     5:1   Spruce Planks
   y  2     1:5   Andesite
-  y  1     4:0   Cobblestone
+  y  1     3:0   Dirt
   y  0     7:0   Bedrock
 
 ### over-a-crossing — the gorge floor beside it, outside the band
