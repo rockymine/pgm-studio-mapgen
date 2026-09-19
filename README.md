@@ -50,10 +50,11 @@ out along, and a range behind every one of them.
 ## The technique cards
 
 `techniques/` is one card per instrument, each a complete world holding its variants **side by side** so the
-comparison is the lesson. Seven exist — outlines, overlapping shapes, Bézier rings, polylines, ramps,
-relief against shapes, and hollows — and each commits the text reads that prove its claims and names no past
-map. [techniques/README.md](techniques/README.md) indexes them and names the ten that are missing, with what
-each would demonstrate.
+comparison is the lesson. Fifteen exist — from outlines, overlapping shapes and Bézier rings through pushes,
+stacked layers, water and the theme buckets to what a shape must say before it owns any paint — and each
+commits the text reads that prove its claims and names no past map.
+[techniques/README.md](techniques/README.md) indexes them and names the four that are missing, with what each
+would demonstrate.
 
 A card differs from a showcase in what it is for. A showcase forks one base board and changes the one thing
 its README names, so the **diff** is the lesson; a card puts the variants in one world, so the **comparison**

@@ -1,0 +1,129 @@
+GET /api/map/technique-painting-a-patch/transect?points=…&every=N — the profile a patch leaves in the ground.
+`ground` is the level a player stands at, which is one course above the top block a column read names.
+
+### level-with-it — west to east through the patch: the gravel changes nothing about the height
+TRANSECT 21 stations from (5, -37) to (45, -37), every 2
+  station        ground  surface  water  top  standing            step
+  (    5,   -37)                                                    void
+  (    7,   -37)       8        8            8                      
+  (    9,   -37)       8        8            8                      
+  (   11,   -37)       8        8            8                      
+  (   13,   -37)       8        8            8                      
+  (   15,   -37)       8        8            8                      
+  (   17,   -37)       8        8            8                      
+  (   19,   -37)       8        8            8                      
+  (   21,   -37)       8        8            8                      
+  (   23,   -37)       8        8            8                      
+  (   25,   -37)       8        8            8                      
+  (   27,   -37)       8        8            8                      
+  (   29,   -37)       8        8            8                      
+  (   31,   -37)       8        8            8                      
+  (   33,   -37)       8        8            8                      
+  (   35,   -37)       9        9            9                      +1
+  (   37,   -37)      11       11           11                      scramble +2
+  (   39,   -37)      13       13           13                      scramble +2
+  (   41,   -37)      15       15           15                      scramble +2
+  (   43,   -37)      17       17           17                      scramble +2
+  (   45,   -37)      18       18           18                      +1
+rises 6, falls 0, worst step 2: 0 barrier, 4 scramble, 0 drop — scramble +2 at (37, -37); scramble +2 at (39, -37); scramble +2 at (41, -37); scramble +2 at (43, -37) | walked end to end
+
+### raise-flush — the same line through the raise brush: a one-course plate with a step round it
+TRANSECT 21 stations from (-149, 37) to (-109, 37), every 2
+  station        ground  surface  water  top  standing            step
+  ( -149,    37)       8        8            8                      
+  ( -147,    37)       8        8            8                      
+  ( -145,    37)       8        8            8                      
+  ( -143,    37)       9        9            9                      +1
+  ( -141,    37)       9        9            9                      
+  ( -139,    37)       9        9            9                      
+  ( -137,    37)       9        9            9                      
+  ( -135,    37)       9        9            9                      
+  ( -133,    37)       9        9            9                      
+  ( -131,    37)       9        9            9                      
+  ( -129,    37)       9        9            9                      
+  ( -127,    37)       9        9            9                      
+  ( -125,    37)       9        9            9                      
+  ( -123,    37)       9        9            9                      
+  ( -121,    37)       9        9            9                      
+  ( -119,    37)      11       11           11                      scramble +2
+  ( -117,    37)      13       13           13                      scramble +2
+  ( -115,    37)      15       15           15                      scramble +2
+  ( -113,    37)      17       17           17                      scramble +2
+  ( -111,    37)      18       18           18                      +1
+  ( -109,    37)      20       20           20                      scramble +2
+rises 7, falls 0, worst step 2: 0 barrier, 5 scramble, 0 drop — scramble +2 at (-119, 37); scramble +2 at (-117, 37); scramble +2 at (-115, 37); scramble +2 at (-113, 37); scramble +2 at (-109, 37) | walked end to end
+
+### across-a-slope — north to south down the hill through the patch: flat, at the median
+TRANSECT 21 stations from (-25, 30) to (-25, 70), every 2
+  station        ground  surface  water  top  standing            step
+  (  -25,    30)      20       20           20                      
+  (  -25,    32)      22       22           22                      scramble +2
+  (  -25,    34)      25       25           25                      BARRIER +3
+  (  -25,    36)      26       26           26                      +1
+  (  -25,    38)      26       26           26                      
+  (  -25,    40)      15       15           15                      DROP -11
+  (  -25,    42)      15       15           15                      
+  (  -25,    44)      15       15           15                      
+  (  -25,    46)      15       15           15                      
+  (  -25,    48)      15       15           15                      
+  (  -25,    50)      15       15           15                      
+  (  -25,    52)      15       15           15                      
+  (  -25,    54)      15       15           15                      
+  (  -25,    56)      15       15           15                      
+  (  -25,    58)      15       15           15                      
+  (  -25,    60)      15       15           15                      
+  (  -25,    62)       8        8            8                      DROP -7
+  (  -25,    64)       8        8            8                      
+  (  -25,    66)       8        8            8                      
+  (  -25,    68)                                                    void
+  (  -25,    70)                                                    void
+rises 3, falls 2, worst step 11: 1 barrier, 1 scramble, 2 drop — scramble +2 at (-25, 32); BARRIER +3 at (-25, 34); DROP -11 at (-25, 40); DROP -7 at (-25, 62) | walked end to end
+
+### over-excluded — through the hole the override punched in ground the relief never solved
+TRANSECT 21 stations from (9, 37) to (49, 37), every 2
+  station        ground  surface  water  top  standing            step
+  (    9,    37)       8        8            8                      
+  (   11,    37)       8        8            8                      
+  (   13,    37)      12       12           12                      BARRIER +4
+  (   15,    37)      12       12           12                      
+  (   17,    37)      12       12           12                      
+  (   19,    37)       1        1            1                      DROP -11
+  (   21,    37)       1        1            1                      
+  (   23,    37)       1        1            1                      
+  (   25,    37)       1        1            1                      
+  (   27,    37)       1        1            1                      
+  (   29,    37)       1        1            1                      
+  (   31,    37)       1        1            1                      
+  (   33,    37)       1        1            1                      
+  (   35,    37)       1        1            1                      
+  (   37,    37)      12       12           12                      BARRIER +11
+  (   39,    37)      12       12           12                      
+  (   41,    37)      15       15           15                      BARRIER +3
+  (   43,    37)      17       17           17                      scramble +2
+  (   45,    37)      18       18           18                      +1
+  (   47,    37)      20       20           20                      scramble +2
+  (   49,    37)      23       23           23                      BARRIER +3
+rises 7, falls 1, worst step 11: 4 barrier, 2 scramble, 1 drop — BARRIER +4 at (13, 37); DROP -11 at (19, 37); BARRIER +11 at (37, 37); BARRIER +3 at (41, 37); scramble +2 at (43, 37); scramble +2 at (47, 37); BARRIER +3 at (49, 37) | walked end to end
+
+### over-the-void — north out of the void into the island, along the patch
+TRANSECT 17 stations from (102, -4) to (102, 28), every 2
+  station        ground  surface  water  top  standing            step
+  (  102,    -4)                                                    void
+  (  102,    -2)                                                    void
+  (  102,     0)       8        8            8                      
+  (  102,     2)       8        8            8                      
+  (  102,     4)       8        8            8                      
+  (  102,     6)       8        8            8                      
+  (  102,     8)       8        8            8                      
+  (  102,    10)       8        8            8                      
+  (  102,    12)       8        8            8                      
+  (  102,    14)       8        8            8                      
+  (  102,    16)       8        8            8                      
+  (  102,    18)       8        8            8                      
+  (  102,    20)       8        8            8                      
+  (  102,    22)       8        8            8                      
+  (  102,    24)       8        8            8                      
+  (  102,    26)       8        8            8                      
+  (  102,    28)       8        8            8                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+

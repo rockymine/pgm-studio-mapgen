@@ -1438,72 +1438,38 @@ contest; before it, a column read was the only thing that saw it.
 
 **Cut a mound out of what it may not land on** rather than trusting the heights to sort it.
 
-### A paint patch on solved ground is an ordinary one-course add, not an override
+### A shape owns the paint on a cell only where its own drawn top is the tallest drawn top there
 
-Scoping a theme to a patch of ground is an authored shape carrying a `theme`. What that shape may say about
-its own height is narrower than it looks, and the narrowing is measured rather than reasoned.
+Scoping a theme to a patch of ground is an authored shape carrying a `theme`, and whether that shape owns
+any of the paint it carries is decided by one comparison. `SketchRasterizer.ShapeScopeOwners` gives a cell to
+the smallest shape whose own top **equals** the tallest one on it —
+`scopes && (standing || top == held.Ground) && area < held.Area`.
 
-**Every shape rasterizes to a real span.** `SketchRasterizer.RasterShape` takes `floor` from `Floor ?? 0` and
-its thickness from `HeightFn`, whose last line is `double bh = s.BaseHeight ?? 1` — so a shape stating **no
-height at all** is one course at bedrock, not "no opinion". `RasterGroup` then resolves
-`((adds − subtracts) ∪ override-adds) − override-subtracts`, and the two branches treat that course
-completely differently:
+**A shape stating no height at all is one course at bedrock, not "no opinion".** `RasterShape` takes its floor
+from `Floor ?? 0` and its thickness from `HeightFn`, whose last line is `double bh = s.BaseHeight ?? 1`. So a
+brush drawn thinner than the landmass under it reaches no surface, owns nothing, and reports nothing.
 
-- an **ordinary add** goes through `MergeCell`, where *the taller add wins the column*, so a one-course
-  stroke laid over ground twenty courses high changes nothing about the height;
-- an **override-add** does `result[k] = v`, which **overwrites the column outright** — floor and all.
+**`override: true` does not rescue a brush that is too short.** Only the *set* an override-add belongs to is
+privileged in `((adds − subtracts) ∪ override-adds) − override-subtracts`; the ownership test inside that set
+is the same one. It is, however, the one form the store complains about, as `SK14`.
 
-**The relief usually hides the difference, and that is the trap.** After the set algebra,
-`RasterizeLayout` writes the solved surface back over every cell in a solved group's footprint:
-`cells[(x,z)] = (Math.Max(column.Floor + 1, field.At(x, z)), column.Floor)`. So an override-add's flattened
-column is repaired to the solved height, and on a board where every cell is in some group's solve an
-override brush works perfectly. Measured that way, a bare `override: true` rectangle over a hill reads
-**y13 · y16 · y12** across the summit — the hill, repainted.
+**So the form a patch takes is the ground's own `floor` and `base_height`, and the relief settles the
+height.** `RasterizeLayout` writes the solved surface back over every cell of a solved group's footprint, so
+a twelve-course patch on a plain that solves to y7 is built at y7 and differs from its neighbours only in
+paint.
 
-**Where there is no field, there is no repair.** A shape carrying `relief_scope: "exclude"` takes its cells
-*out* of the group's footprint (`SolveRelief` puts them in `excluded`, and the relaxation bends round them
-as it bends round void), so nothing writes a height back. An override brush stroke over such ground stays
-what the rasterizer made it: one course on the bedrock, twenty below the ground beside it.
+**A shape declaring `height_mode` is a candidate whatever its height, and is never flush.** `Erect` settles a
+cell at `datum + rise * Math.Max(1, floor(surface))`, so a `raise` of zero stands one course above the datum
+and a `sink` of zero one below. The datum for both is the **median** of the ground under the footprint, read
+once, which turns a brush drawn across a flank into a bench.
 
-Measured on a board whose lid over its workings is `relief_scope: "exclude"`: eleven strokes
-punched holes. A transect at `z 51` read `x −50:0 −47:0 −44:0` against a reef surface of y21 four blocks
-away, and the same shapes re-authored as ordinary adds read `−50:21 −47:21 −44:21`.
+**Where the relief never solved, nothing writes a height back and an override stays one course on bedrock.**
+A shape carrying `relief_scope: "exclude"` takes its cells out of the group's footprint, and an override
+stroke over such ground punches a hole to y0 rather than repainting anything.
 
-**A brush must declare a `height_mode`, and that is the whole of why it paints.** `ShapeScopeOwners` gives a
-cell to the smallest shape whose own top **equals** the tallest top there —
-`scopes && (standing || top == held.Ground)` — so a one-course add at bedrock under twelve courses of terrain
-is never a candidate and paints nothing at all, in silence.
-
-`override: true` does not rescue it: only the *set* an override-add belongs to is privileged, and the scope
-test is the same.
-
-The exception is a **standing** shape, which `IsErected` defines as one declaring `height_mode` of `level`,
-`raise` or `sink`; a standing shape is always a candidate whatever its height. So the form a brush takes is:
-
-```json
-{ "id": "talus-1", "type": "polygon", "operation": "add",
-  "height_mode": "raise", "base_height": 0, "skirt": 0,
-  "vertices": [ … ], "theme": "scree" }
-```
-
-A `raise` of zero sits flush at the median ground under the patch and changes no height. Measured on
-Measured: three builds with `add` + `base_height: 1` and with `override: true` both read
-`themes/census` **1 theme, 100%**; the same patches with `height_mode` read **87.3% / 6.8% / 6.0%** with 376
-and 320 cells of drawn border. Nothing is raised in either case — **`05-themes.txt` is the only witness**, so
-read it on every board.
-
-**And a raise reads the MEDIAN of the ground under its footprint**, so a patch drawn across a slope flattens
-it to one height and reads as a plate. Draw a brush on ground that is already level, or expect a bench: on
-three-block benches come out as one-block steps for exactly this reason. The one thing a
-brush must not do is hang over the void — a one-course add is the only shape on a cell with no ground under
-it, and there it builds a speck of bedrock.
-
-For completeness, what the other three forms do to solved ground, all measured across one summit. An
-ordinary `add` at `base_height: 1` repaints the ground and is safe over excluded ground too, where a bare
-`override: true` repaints it **only** where a relief covers the cell.
-
-A `base_height: 9` with `relief_scope: "hold"` punches a flat plate through the hill at y8, and a `hold` with
-no height at all reads y0 bedrock — a shape with neither an override nor a height loses every merge.
+**`GET .../themes/census` is the only witness either way**, because a patch that owns nothing builds a world
+that looks exactly right. `techniques/painting-a-patch` is the worked card: eight statements of one outline
+under one paint, of which four land.
 
 This is the instrument a detailed surface is painted with — a drift of sand against rock, scree at the foot of
 a crag, mud in a hollow — and it is what a single large `voronoi` over a whole region is a substitute for.
