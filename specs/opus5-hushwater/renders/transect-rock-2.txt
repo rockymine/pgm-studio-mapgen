@@ -1,13 +1,13 @@
 ## rock-2 (boulder) along x
 TRANSECT 25 stations from (16, 42) to (40, 42), every 1
   station        ground  surface  water  top  standing            step
-  (   16,    42)      16       16           16                      
-  (   17,    42)      16       16           16                      
-  (   18,    42)      16       16           16                      
-  (   19,    42)      16       16           16                      
-  (   20,    42)      16       16           16                      
-  (   21,    42)      16       16           16                      
-  (   22,    42)      20       20           20                      BARRIER +4
+  (   16,    42)      20       20           20                      
+  (   17,    42)      20       20           20                      
+  (   18,    42)      20       20           20                      
+  (   19,    42)      20       20           20                      
+  (   20,    42)      20       20           20                      
+  (   21,    42)      20       20           20                      
+  (   22,    42)      20       20           20                      
   (   23,    42)      20       20           20                      
   (   24,    42)      19       19           19                      -1
   (   25,    42)      19       19           19                      
@@ -26,8 +26,8 @@ TRANSECT 25 stations from (16, 42) to (40, 42), every 1
   (   38,    42)                                                    void
   (   39,    42)                                                    void
   (   40,    42)                                                    void
-rises 1, falls 2, worst step 4: 1 barrier, 0 scramble, 0 drop — BARRIER +4 at (22, 42) | walked end to end
-beside: boulder rock-2 at (26, 41)
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora fell-cover at (14, 40), boulder rock-2 at (26, 41)
 
 ## rock-2 (boulder) along z
 TRANSECT 25 stations from (28, 30) to (28, 54), every 1

@@ -1,61 +1,61 @@
 ## destroyable-1-1 (destroyable) along x
 TRANSECT 25 stations from (-4, 49) to (20, 49), every 1
   station        ground  surface  water  top  standing            step
-  (   -4,    49)      22       22           22                      
-  (   -3,    49)      16       16           16                      DROP -6
-  (   -2,    49)      11       11           11                      DROP -5
-  (   -1,    49)      11       11           11                      
-  (    0,    49)      11       11           11                      
-  (    1,    49)      11       11           11                      
-  (    2,    49)      11       11           11                      
-  (    3,    49)      11       11           11                      
-  (    4,    49)      11       11           11                      
-  (    5,    49)      11       11           11                      
-  (    6,    49)      11       11           11  destroyable destroyable-1#1  
-  (    7,    49)      11       11           64  destroyable destroyable-1#1  
-  (    8,    49)      11       11           65  destroyable destroyable-1#1  
-  (    9,    49)      11       11           64  destroyable destroyable-1#1  
-  (   10,    49)      11       11           11  destroyable destroyable-1#1  
-  (   11,    49)      11       11           11                      
-  (   12,    49)      11       11           11                      
-  (   13,    49)      12       12           12                      +1
-  (   14,    49)      11       11           11                      -1
-  (   15,    49)      12       12           12                      +1
-  (   16,    49)      11       11           11                      -1
-  (   17,    49)      11       11           11                      
-  (   18,    49)      11       11           11                      
-  (   19,    49)      16       16           16                      BARRIER +5
-  (   20,    49)      22       22           22                      BARRIER +6
-rises 4, falls 4, worst step 6: 2 barrier, 0 scramble, 2 drop — DROP -6 at (-3, 49); DROP -5 at (-2, 49); BARRIER +5 at (19, 49); BARRIER +6 at (20, 49) | walked end to end
-beside: destroyable destroyable-1#1 at (6, 47)
+  (   -4,    49)      24       24           35  house works-shed#1  
+  (   -3,    49)      24       24           35  house works-shed#1  
+  (   -2,    49)      24       24           24                      
+  (   -1,    49)      24       24           24                      
+  (    0,    49)      24       24           24                      
+  (    1,    49)      19       19           19                      DROP -5
+  (    2,    49)      14       14           14                      DROP -5
+  (    3,    49)      14       14           14                      
+  (    4,    49)      14       14           14                      
+  (    5,    49)      14       14           14                      
+  (    6,    49)      14       14           14  destroyable destroyable-1#1  
+  (    7,    49)      14       14           63  destroyable destroyable-1#1  
+  (    8,    49)      14       14           64  destroyable destroyable-1#1  
+  (    9,    49)      14       14           63  destroyable destroyable-1#1  
+  (   10,    49)      14       14           14  destroyable destroyable-1#1  
+  (   11,    49)      14       14           14                      
+  (   12,    49)      14       14           14                      
+  (   13,    49)      14       14           14                      
+  (   14,    49)      14       14           14                      
+  (   15,    49)      14       14           14                      
+  (   16,    49)      14       14           14                      
+  (   17,    49)      14       14           14                      
+  (   18,    49)      19       19           19                      BARRIER +5
+  (   19,    49)      24       24           24                      BARRIER +5
+  (   20,    49)      24       24           24                      
+rises 2, falls 2, worst step 5: 2 barrier, 0 scramble, 2 drop — DROP -5 at (1, 49); DROP -5 at (2, 49); BARRIER +5 at (18, 49); BARRIER +5 at (19, 49) | walked end to end
+beside: house works-shed#1 at (-6, 47), destroyable destroyable-1#1 at (6, 47), tree thorn-3#1 at (21, 50)
 
 ## destroyable-1-1 (destroyable) along z
 TRANSECT 25 stations from (8, 37) to (8, 61), every 1
   station        ground  surface  water  top  standing            step
-  (    8,    37)      21       21           21                      
-  (    8,    38)      22       22           22                      +1
-  (    8,    39)      22       22           22                      
-  (    8,    40)      22       22           22                      
-  (    8,    41)      22       22           22                      
-  (    8,    42)      22       22           22                      
-  (    8,    43)      16       16           16                      DROP -6
-  (    8,    44)      11       11           11                      DROP -5
-  (    8,    45)      11       11           11                      
-  (    8,    46)      11       11           11                      
-  (    8,    47)      11       11           11  destroyable destroyable-1#1  
-  (    8,    48)      11       11           64  destroyable destroyable-1#1  
-  (    8,    49)      11       11           65  destroyable destroyable-1#1  
-  (    8,    50)      11       11           64  destroyable destroyable-1#1  
-  (    8,    51)      11       11           11  destroyable destroyable-1#1  
-  (    8,    52)      12       12           12                      +1
-  (    8,    53)      11       11           11                      -1
-  (    8,    54)      11       11           11                      
-  (    8,    55)      11       11           11                      
-  (    8,    56)      11       11           11                      
-  (    8,    57)      11       11           11                      
-  (    8,    58)      11       11           11                      
-  (    8,    59)      11       11           11                      
-  (    8,    60)      11       11           11                      
-  (    8,    61)      11       11           11                      
-rises 2, falls 3, worst step 6: 0 barrier, 0 scramble, 2 drop — DROP -6 at (8, 43); DROP -5 at (8, 44) | walked end to end
+  (    8,    37)      24       24           24                      
+  (    8,    38)      24       24           24                      
+  (    8,    39)      19       19           19                      DROP -5
+  (    8,    40)      14       14           14                      DROP -5
+  (    8,    41)      14       14           14                      
+  (    8,    42)      14       14           14                      
+  (    8,    43)      14       14           14                      
+  (    8,    44)      14       14           14                      
+  (    8,    45)      14       14           14                      
+  (    8,    46)      14       14           14                      
+  (    8,    47)      14       14           14  destroyable destroyable-1#1  
+  (    8,    48)      14       14           63  destroyable destroyable-1#1  
+  (    8,    49)      14       14           64  destroyable destroyable-1#1  
+  (    8,    50)      14       14           63  destroyable destroyable-1#1  
+  (    8,    51)      14       14           14  destroyable destroyable-1#1  
+  (    8,    52)      14       14           14                      
+  (    8,    53)      14       14           14                      
+  (    8,    54)      14       14           14                      
+  (    8,    55)      14       14           14                      
+  (    8,    56)      14       14           14                      
+  (    8,    57)      14       14           14                      
+  (    8,    58)      14       14           14                      
+  (    8,    59)      14       14           14                      
+  (    8,    60)      19       19           19                      BARRIER +5
+  (    8,    61)      24       24           24                      BARRIER +5
+rises 2, falls 2, worst step 5: 2 barrier, 0 scramble, 2 drop — DROP -5 at (8, 39); DROP -5 at (8, 40); BARRIER +5 at (8, 60); BARRIER +5 at (8, 61) | walked end to end
 beside: destroyable destroyable-1#1 at (6, 47)

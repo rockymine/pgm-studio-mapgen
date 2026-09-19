@@ -3,7 +3,7 @@
     <version>1.0.0</version>
     <gamemode>dtm</gamemode>
     <objective>Destroy the enemy's monument!</objective>
-    <created>2026-09-18</created>
+    <created>2026-09-19</created>
     <phase>development</phase>
     <include id="gapple-kill-reward"/>
     <authors>
@@ -90,13 +90,13 @@
         </not>
     </filters>
     <regions>
-        <point id="blue-spawn-point">12,25,92</point>
-        <point id="red-spawn-point">-12,25,-92</point>
+        <point id="blue-spawn-point">12,23,92</point>
+        <point id="red-spawn-point">-12,23,-92</point>
         <point id="observer-spawn">0,53,0</point>
         <rectangle id="blue-spawn" min="4,84" max="20,100"/>
         <rectangle id="red-spawn" min="-20,-100" max="-4,-84"/>
-        <cuboid id="the-whitegape-pillar-region" min="-9,15,-50" max="-8,18,-49"/>
-        <cuboid id="the-whitegape-pillar-2-region" min="8,15,49" max="9,18,50"/>
+        <cuboid id="the-whitegape-pillar-region" min="-9,18,-50" max="-8,21,-49"/>
+        <cuboid id="the-whitegape-pillar-2-region" min="8,18,49" max="9,21,50"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -165,5 +165,5 @@
     <hunger>
         <depletion>off</depletion>
     </hunger>
-    <maxbuildheight>57</maxbuildheight>
+    <maxbuildheight>56</maxbuildheight>
 </map>

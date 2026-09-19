@@ -1,0 +1,72 @@
+## works-shed (house) along x
+TRANSECT 31 stations from (-5, -50) to (25, -50), every 1
+  station        ground  surface  water  top  standing            step
+  (   -5,   -50)      14       14           14                      
+  (   -4,   -50)      14       14           14                      
+  (   -3,   -50)      14       14           14                      
+  (   -2,   -50)      19       19           19                      BARRIER +5
+  (   -1,   -50)      24       24           24                      BARRIER +5
+  (    0,   -50)      24       24           24                      
+  (    1,   -50)      24       24           24                      
+  (    2,   -50)      24       24           35  house works-shed    
+  (    3,   -50)      24       24           35  house works-shed    
+  (    4,   -50)      24       24           36  house works-shed    
+  (    5,   -50)      24       24           36  house works-shed    
+  (    6,   -50)      24       24           37  house works-shed    
+  (    7,   -50)      24       24           37  house works-shed    
+  (    8,   -50)      24       24           36  house works-shed    
+  (    9,   -50)      24       24           36  house works-shed    
+  (   10,   -50)      24       24           35  house works-shed    
+  (   11,   -50)      24       24           35  house works-shed    
+  (   12,   -50)      24       24           31  house works-shed    
+  (   13,   -50)      24       24           31  house works-shed    
+  (   14,   -50)      24       24           31  house works-shed    
+  (   15,   -50)      24       24           31  house works-shed    
+  (   16,   -50)      24       24           31  house works-shed    
+  (   17,   -50)      24       24           31  house works-shed    
+  (   18,   -50)      24       24           31  house works-shed    
+  (   19,   -50)      24       24           24                      
+  (   20,   -50)      24       24           24                      
+  (   21,   -50)      24       24           24                      
+  (   22,   -50)      24       24           24                      
+  (   23,   -50)      24       24           24                      
+  (   24,   -50)      24       24           24                      
+  (   25,   -50)      24       24           24                      
+rises 2, falls 0, worst step 5: 2 barrier, 0 scramble, 0 drop — BARRIER +5 at (-2, -50); BARRIER +5 at (-1, -50) | walked end to end
+beside: destroyable destroyable-1 at (-7, -52), house works-shed at (2, -52)
+
+## works-shed (house) along z
+TRANSECT 30 stations from (10, -64) to (10, -35), every 1
+  station        ground  surface  water  top  standing            step
+  (   10,   -64)      23       23           23                      
+  (   10,   -63)      23       23           23                      
+  (   10,   -62)      23       23           23                      
+  (   10,   -61)      23       23           23                      
+  (   10,   -60)      24       24           24                      +1
+  (   10,   -59)      24       24           24                      
+  (   10,   -58)      24       24           24                      
+  (   10,   -57)      24       24           35  house works-shed    
+  (   10,   -56)      24       24           35  house works-shed    
+  (   10,   -55)      24       24           35  house works-shed    
+  (   10,   -54)      24       24           35  house works-shed    
+  (   10,   -53)      24       24           35  house works-shed    
+  (   10,   -52)      24       24           35  house works-shed    
+  (   10,   -51)      24       24           35  house works-shed    
+  (   10,   -50)      24       24           35  house works-shed    
+  (   10,   -49)      24       24           35  house works-shed    
+  (   10,   -48)      24       24           35  house works-shed    
+  (   10,   -47)      24       24           35  house works-shed    
+  (   10,   -46)      24       24           35  house works-shed    
+  (   10,   -45)      24       24           35  house works-shed    
+  (   10,   -44)      24       24           35  house works-shed    
+  (   10,   -43)      24       24           35  house works-shed    
+  (   10,   -42)      24       24           35  house works-shed    
+  (   10,   -41)      24       24           24                      
+  (   10,   -40)      24       24           24                      
+  (   10,   -39)      24       24           24                      
+  (   10,   -38)      24       24           24                      
+  (   10,   -37)      24       24           24                      
+  (   10,   -36)      23       23           23                      -1
+  (   10,   -35)      23       23           23                      
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree thorn-10 at (8, -66), tree thorn-9 at (12, -65), house works-shed at (8, -57)

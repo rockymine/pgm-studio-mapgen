@@ -1,61 +1,61 @@
 ## erratic-0 (boulder) along x
-TRANSECT 25 stations from (-8, -84) to (16, -84), every 1
+TRANSECT 25 stations from (-6, -80) to (18, -80), every 1
   station        ground  surface  water  top  standing            step
-  (   -8,   -84)      25       25           25                      
-  (   -7,   -84)      25       25           25                      
-  (   -6,   -84)      25       25           26  boulder erratic-0   
-  (   -5,   -84)      25       25           27  boulder erratic-0   
-  (   -4,   -84)      25       25           28  boulder erratic-0   
-  (   -3,   -84)      25       25           28  boulder erratic-0   
-  (   -2,   -84)      25       25           28  boulder erratic-0   
-  (   -1,   -84)      25       25           28  boulder erratic-0   
-  (    0,   -84)      25       25           28  boulder erratic-0   
-  (    1,   -84)      24       24           28  boulder erratic-0   -1
-  (    2,   -84)      24       24           28  boulder erratic-0   
-  (    3,   -84)      24       24           28  boulder erratic-0   
-  (    4,   -84)      24       24           28  boulder erratic-0   
-  (    5,   -84)      25       25           28  boulder erratic-0   +1
-  (    6,   -84)      25       25           28  boulder erratic-0   
-  (    7,   -84)      25       25           28  boulder erratic-0   
-  (    8,   -84)      25       25           28  boulder erratic-0   
-  (    9,   -84)      26       26           28  boulder erratic-0   +1
-  (   10,   -84)      26       26           28  boulder erratic-0   
-  (   11,   -84)      26       26           27  boulder erratic-0   
-  (   12,   -84)      26       26           27  boulder erratic-0   
-  (   13,   -84)      26       26           26  boulder erratic-0   
-  (   14,   -84)      26       26           26                      
-  (   15,   -84)      26       26           26                      
-  (   16,   -84)      27       27           27                      +1
-rises 3, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder erratic-0 at (-6, -84)
+  (   -6,   -80)      23       23           23                      
+  (   -5,   -80)      23       23           27  house powder-house  
+  (   -4,   -80)      23       23           27  house powder-house  
+  (   -3,   -80)      22       22           27  house powder-house  -1
+  (   -2,   -80)      22       22           27  house powder-house  
+  (   -1,   -80)      22       22           27  house powder-house  
+  (    0,   -80)      22       22           27  house powder-house  
+  (    1,   -80)      22       22           27  house powder-house  
+  (    2,   -80)      22       22           27  house powder-house  
+  (    3,   -80)      22       22           27  house powder-house  
+  (    4,   -80)      22       22           27  house powder-house  
+  (    5,   -80)      22       22           22                      
+  (    6,   -80)      23       23           23                      +1
+  (    7,   -80)      23       23           23                      
+  (    8,   -80)      24       24           24                      +1
+  (    9,   -80)      24       24           24  stroke fell-path    
+  (   10,   -80)      24       24           24  stroke fell-path    
+  (   11,   -80)      24       24           24  stroke fell-path    
+  (   12,   -80)      24       24           24  stroke fell-path    
+  (   13,   -80)      24       24           24                      
+  (   14,   -80)      24       24           24                      
+  (   15,   -80)      25       25           25                      +1
+  (   16,   -80)      25       25           25                      
+  (   17,   -80)      26       26           26                      +1
+  (   18,   -80)      27       27           27                      +1
+rises 5, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house powder-house at (-5, -81), tree thorn-14 at (3, -82), stroke fell-path at (8, -82)
 
 ## erratic-0 (boulder) along z
-TRANSECT 25 stations from (4, -96) to (4, -72), every 1
+TRANSECT 25 stations from (6, -92) to (6, -68), every 1
   station        ground  surface  water  top  standing            step
-  (    4,   -96)      25       25           25                      
-  (    4,   -95)      25       25           25                      
-  (    4,   -94)      25       25           25                      
-  (    4,   -93)      25       25           25                      
-  (    4,   -92)      25       25           26  boulder erratic-0   
-  (    4,   -91)      25       25           27  boulder erratic-0   
-  (    4,   -90)      25       25           27  boulder erratic-0   
-  (    4,   -89)      25       25           28  boulder erratic-0   
-  (    4,   -88)      25       25           28  boulder erratic-0   
-  (    4,   -87)      24       24           28  boulder erratic-0   -1
-  (    4,   -86)      24       24           28  boulder erratic-0   
-  (    4,   -85)      24       24           28  boulder erratic-0   
-  (    4,   -84)      24       24           28  boulder erratic-0   
-  (    4,   -83)      24       24           28  boulder erratic-0   
-  (    4,   -82)      24       24           28  boulder erratic-0   
-  (    4,   -81)      24       24           28  boulder erratic-0   
-  (    4,   -80)      24       24           28  boulder erratic-0   
-  (    4,   -79)      24       24           28  boulder erratic-0   
-  (    4,   -78)      24       24           27  boulder erratic-0   
-  (    4,   -77)      24       24           27  boulder erratic-0   
-  (    4,   -76)      24       24           26  boulder erratic-1   
-  (    4,   -75)      24       24           27  boulder erratic-1   
-  (    4,   -74)      24       24           30  boulder erratic-1   
-  (    4,   -73)      24       24           30  boulder erratic-1   
-  (    4,   -72)      24       24           31  boulder erratic-1   
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: flora fell-cover at (2, -94), boulder erratic-0 at (2, -92), boulder erratic-1 at (4, -76)
+  (    6,   -92)      23       23           34  tree thorn-12       
+  (    6,   -91)      23       23           31  tree thorn-12       
+  (    6,   -90)      23       23           23                      
+  (    6,   -89)      23       23           23  stroke fell-path    
+  (    6,   -88)      23       23           23  stroke fell-path    
+  (    6,   -87)      24       24           26  tree thorn-14       +1
+  (    6,   -86)      24       24           27  tree thorn-14       
+  (    6,   -85)      24       24           24                      
+  (    6,   -84)      23       23           23                      -1
+  (    6,   -83)      23       23           23                      
+  (    6,   -82)      23       23           23                      
+  (    6,   -81)      23       23           23                      
+  (    6,   -80)      23       23           23                      
+  (    6,   -79)      23       23           23                      
+  (    6,   -78)      22       22           22                      -1
+  (    6,   -77)      22       22           25  tree thorn-11       
+  (    6,   -76)      22       22           28  tree thorn-11       
+  (    6,   -75)      22       22           32  tree thorn-11       
+  (    6,   -74)      22       22           34  tree thorn-11       
+  (    6,   -73)      22       22           33  tree thorn-11       
+  (    6,   -72)      22       22           30  tree thorn-11       
+  (    6,   -71)      22       22           25  tree thorn-11       
+  (    6,   -70)      22       22           22                      
+  (    6,   -69)      22       22           22                      
+  (    6,   -68)      22       22           32  tree thorn-10       
+rises 1, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree thorn-12 at (4, -94), stroke fell-path at (7, -90), tree thorn-14 at (4, -89), house powder-house at (4, -81), tree thorn-11 at (5, -77), tree thorn-10 at (5, -70)

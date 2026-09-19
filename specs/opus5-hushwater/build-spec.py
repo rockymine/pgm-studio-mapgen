@@ -15,7 +15,11 @@ is given a spoil bank to fight over.
     PGM_STUDIO_API=... python3 specs/opus5-hushwater/build-spec.py
     tools/drive.py specs/opus5-hushwater "Hushwater" --out maps/opus5-hushwater
 """
-import json, os, urllib.request
+import json, os, sys, urllib.request
+
+sys.path.insert(0, os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "tools"))
+from sculpt import props  # noqa: E402  — the parametric forms, emitted as ordinary sketch shapes
 
 API = os.environ.get("PGM_STUDIO_API", "http://localhost:7894/api")
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -358,7 +362,7 @@ ADD_SHAPES = [
     {"id": "launder", "type": "polyline", "operation": "add", "override": True,
      "base_height": 18, "floor": 0, "stroke_edge": "solid", "material": LAUNDER,
      "relief_scope": "exclude",
-     "vertices": [[-14, 88], [-2, 82], [10, 87], [22, 81]], "radius": 2},
+     "vertices": [[-6, 84], [2, 80], [11, 86], [22, 81]], "radius": 2},
     # the tramway from the gate to the assay house door, on the lane behind the wall
     {"id": "tramway", "type": "polyline", "operation": "add", "override": True,
      "base_height": 18, "floor": 0, "stroke_edge": "solid", "material": LAUNDER,
@@ -382,6 +386,39 @@ ADD_SHAPES = [
 # and two wool rooms does not want five more. Everything else is placed because there is an
 # answer to *why here*: the trees are in the lee behind the head and on the spur's north
 # edge where the wind is off them, and the rocks are on the knoll the relief raised.
+
+BRICKWORK = {"kind": "cell", "seed": 51, "cellSize": 4, "jitter": 30, "warp": 1, "rise": 4,
+             "palette": [{"kind": "solid", "id": 45, "data": 0}, STONE_BRICK]}
+
+
+def chimney():
+    """The mine's stack, standing on the bing — a tapered tower off
+    `tools/sculpt/props.py`, which emits circles and polygons rather than stamped block soup.
+
+    Three things it has to say for itself. `kind: "made"` takes it out of the stacking
+    rules and paints it over its own span, and with `part_of` it keeps `SK10`'s pair walk
+    and `SK11`'s reachability walk off a solid that has no gap to lose. Its group states
+    `mirrors: True`, because the builder defaults that to False — right for a landmark on
+    the symmetry centre and wrong for anything a team owns, and nothing reports the
+    difference: one team would simply have no chimney. And it takes a `material` rather
+    than a theme, because a building is never the ground it stands on and the ground it
+    stands on is the dressing floor.
+
+    It stands on the bing rather than beside the engine house because a made layer raises
+    the surface every downstream read takes, and a stack on the head put the defence's own
+    walk to its east wool over the top of it: `04-routes.txt` went from `3 placed` to
+    `30 placed, worst drop 13`. The bing is the one piece of ground no land route passes,
+    which is exactly what makes it the right plinth for a landmark."""
+    layer = props.tapered_tower(
+        "chimney", cx=48, cz=94, base_radius=3.4, top_radius=2.2, thickness=1.6,
+        floor=18, height=17, theme=None, courses=5, mirrors=True, name="Chimney")
+    for shape in layer["layout"]["shapes"]:
+        shape.pop("theme", None)
+        shape["material"] = BRICKWORK
+    return {"id": layer["id"], "name": layer["name"], "base_y": 0,
+            "kind": "made", "part_of": "chimney",
+            "shapes": layer["layout"]["shapes"], "groups": layer["layout"]["groups"]}
+
 
 DRESSING = {
     "styles": {
@@ -413,6 +450,14 @@ DRESSING = {
          "points": [[-8, 66], [-24, 70], [-40, 68]], "radius": 2, "style": "solid",
          "pave": {"kind": "cell", "seed": 14, "cellSize": 4, "jitter": 40, "warp": 2,
                   "palette": [GRAVEL, ANDESITE, COBBLE]}},
+        # the dam the hush was let go from, on the head's own flat ground. A water prop
+        # carves its own bed rather than finding a level, so the pan IS the pool and the
+        # launder that leaves it is the polyline shape beside it.
+        {"id": "dam", "kind": "water", "seed": 7, "shape": "pool", "form": "natural",
+         "points": [[-15, 79], [-9, 78], [-8, 86], [-13, 90], [-16, 85]],
+         "radius": 3, "depth": 2, "level": 17, "edge": 1, "shore": 2, "shoreWander": True,
+         "bank": {"kind": "cell", "seed": 71, "cellSize": 4, "jitter": 40, "rise": 2,
+                  "palette": [COBBLE, GRAVEL]}},
         # the whim house stands over the shaft at the head, facing the yard it worked
         {"id": "head-store", "kind": "house", "seed": 101, "style": "@hw-minehouse", "front": "negZ",
          "wings": [{"corners": [[17, 85], [23, 91]]}]},
@@ -437,6 +482,9 @@ DRESSING = {
 def adapt(plan):
     plan["meta"] = {"name": NAME}
     plan["globals"]["surface"] = 12
+    # the observer platform lands on the board's own centre, which here is the crown of
+    # the shoal; lifting it clears the one piece of ground both teams fight over
+    plan["globals"]["observerY"] = 32
     pieces = []
     for entry in PIECES:
         piece = {"id": entry[0], "role": entry[1], "rect": entry[2], "surface": entry[3]}
@@ -463,6 +511,7 @@ def finish_document():
         "shapePropsByHeight": SHAPE_PROPS_BY_HEIGHT,
         "relief": RELIEF,
         "addShapes": ADD_SHAPES,
+        "addLayers": [chimney()],
         "dressing": DRESSING,
         "roomStyles": {"spawn": "@hw-minehouse", "wool": "@hw-assay"},
         # the fell's own green: Extreme hills tints grass #8ab689, a grey-green that agrees

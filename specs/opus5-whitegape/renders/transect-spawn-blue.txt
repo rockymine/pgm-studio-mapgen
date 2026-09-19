@@ -1,67 +1,68 @@
 ## spawn-blue (spawn) along x
-TRANSECT 32 stations from (-4, 92) to (27, 92), every 1
+TRANSECT 33 stations from (-4, 92) to (28, 92), every 1
   station        ground  surface  water  top  standing            step
-  (   -4,    92)      25       25           25                      
-  (   -3,    92)      25       25           26  flora fell-cover#1  
-  (   -2,    92)      25       25           26  flora fell-cover#1  
-  (   -1,    92)      25       25           26  flora fell-cover#1  
-  (    0,    92)      25       25           26  flora fell-cover#1  
-  (    1,    92)      25       25           26  flora fell-cover#1  
-  (    2,    92)      25       25           25                      
-  (    3,    92)      25       25           25                      
-  (    4,    92)      25       25           25                      
-  (    5,    92)      25       25           25                      
-  (    6,    92)      25       25           38                      
-  (    7,    92)      25       25           38  spawn spawn-1#1     
-  (    8,    92)      25       25           38  spawn spawn-1#1     
-  (    9,    92)      25       25           38  spawn spawn-1#1     
-  (   10,    92)      25       25           38  spawn spawn-1#1     
-  (   11,    92)      25       25           38  spawn spawn-1#1     
-  (   12,    92)      25       25           38  spawn spawn-1#1     
-  (   13,    92)      25       25           38  spawn spawn-1#1     
-  (   14,    92)      25       25           38  spawn spawn-1#1     
-  (   15,    92)      25       25           38  spawn spawn-1#1     
-  (   16,    92)      25       25           38  spawn spawn-1#1     
-  (   17,    92)      25       25           38                      
-  (   18,    92)      25       25           25                      
-  (   19,    92)      25       25           25                      
-  (   20,    92)      25       25           25                      
-  (   21,    92)      25       25           25                      
-  (   22,    92)      25       25           25                      
-  (   23,    92)      25       25           25                      
-  (   24,    92)      25       25           25                      
-  (   25,    92)      25       25           25                      
-  (   26,    92)      25       25           25                      
-  (   27,    92)      25       25           25                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder erratic-0#1 at (-6, 90), flora fell-cover#1 at (-3, 92), spawn spawn-1#1 at (7, 90), stroke haul-road#1 at (12, 90)
+  (   -4,    92)      23       23           37  tree thorn-12#1     
+  (   -3,    92)      23       23           37  tree thorn-12#1     
+  (   -2,    92)      23       23           36  tree thorn-12#1     
+  (   -1,    92)      23       23           33  tree thorn-12#1     
+  (    0,    92)      23       23           35  tree thorn-12#1     
+  (    1,    92)      23       23           30  tree thorn-12#1     
+  (    2,    92)      23       23           23                      
+  (    3,    92)      23       23           23                      
+  (    4,    92)      23       23           23                      
+  (    5,    92)      23       23           37                      
+  (    6,    92)      23       23           37  spawn spawn-1#1     
+  (    7,    92)      23       23           37  spawn spawn-1#1     
+  (    8,    92)      23       23           37  spawn spawn-1#1     
+  (    9,    92)      23       23           37  spawn spawn-1#1     
+  (   10,    92)      23       23           37  spawn spawn-1#1     
+  (   11,    92)      23       23           37  spawn spawn-1#1     
+  (   12,    92)      23       23           37  spawn spawn-1#1     
+  (   13,    92)      23       23           37  spawn spawn-1#1     
+  (   14,    92)      23       23           37  spawn spawn-1#1     
+  (   15,    92)      23       23           37  spawn spawn-1#1     
+  (   16,    92)      23       23           37  spawn spawn-1#1     
+  (   17,    92)      23       23           37  spawn spawn-1#1     
+  (   18,    92)      23       23           37                      
+  (   19,    92)      23       23           23                      
+  (   20,    92)      23       23           23                      
+  (   21,    92)      23       23           23                      
+  (   22,    92)      22       22           22                      -1
+  (   23,    92)      23       23           23                      +1
+  (   24,    92)      23       23           23                      
+  (   25,    92)                                                    void
+  (   26,    92)                                                    void
+  (   27,    92)                                                    void
+  (   28,    92)                                                    void
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree thorn-12#1 at (-6, 90), flora fell-cover#1 at (1, 90), spawn spawn-1#1 at (6, 90), stroke cart-road#1 at (12, 90)
 
 ## spawn-blue (spawn) along z
 TRANSECT 24 stations from (12, 76) to (12, 99), every 1
   station        ground  surface  water  top  standing            step
-  (   12,    76)      24       24           24                      
-  (   12,    77)      25       25           25                      +1
-  (   12,    78)      25       25           25                      
-  (   12,    79)      25       25           25                      
-  (   12,    80)      25       25           25                      
-  (   12,    81)      25       25           25                      
-  (   12,    82)      25       25           25                      
-  (   12,    83)      25       25           25  stroke haul-road#1  
-  (   12,    84)      25       25           25  stroke haul-road#1  
-  (   12,    85)      25       25           25  stroke haul-road#1  
-  (   12,    86)      25       25           36  stroke haul-road#1  
-  (   12,    87)      25       25           36  stroke haul-road#1  
-  (   12,    88)      25       25           37  stroke haul-road#1  
-  (   12,    89)      25       25           37  stroke haul-road#1  
-  (   12,    90)      25       25           38  stroke haul-road#1  
-  (   12,    91)      25       25           38  spawn spawn-1#1     
-  (   12,    92)      25       25           38  spawn spawn-1#1     
-  (   12,    93)      25       25           38  spawn spawn-1#1     
-  (   12,    94)      25       25           37  spawn spawn-1#1     
-  (   12,    95)      25       25           37  spawn spawn-1#1     
-  (   12,    96)      25       25           36  spawn spawn-1#1     
-  (   12,    97)      25       25           36                      
-  (   12,    98)      25       25           25                      
-  (   12,    99)      25       25           25                      
-rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke lip-path#1 at (14, 75), stroke haul-road#1 at (14, 78), spawn spawn-1#1 at (10, 87)
+  (   12,    76)      22       22           22                      
+  (   12,    77)      22       22           22                      
+  (   12,    78)      22       22           22                      
+  (   12,    79)      22       22           22                      
+  (   12,    80)      21       21           21                      -1
+  (   12,    81)      21       21           21                      
+  (   12,    82)      22       22           22                      +1
+  (   12,    83)      23       23           23                      +1
+  (   12,    84)      23       23           23  stroke cart-road#1  
+  (   12,    85)      23       23           34  stroke cart-road#1  
+  (   12,    86)      23       23           34  stroke cart-road#1  
+  (   12,    87)      23       23           35  stroke cart-road#1  
+  (   12,    88)      23       23           35  stroke cart-road#1  
+  (   12,    89)      23       23           36  stroke cart-road#1  
+  (   12,    90)      23       23           36  stroke cart-road#1  
+  (   12,    91)      23       23           37  spawn spawn-1#1     
+  (   12,    92)      23       23           37  spawn spawn-1#1     
+  (   12,    93)      23       23           36  spawn spawn-1#1     
+  (   12,    94)      23       23           36  spawn spawn-1#1     
+  (   12,    95)      23       23           35  spawn spawn-1#1     
+  (   12,    96)      23       23           35  spawn spawn-1#1     
+  (   12,    97)      23       23           34  spawn spawn-1#1     
+  (   12,    98)      23       23           34                      
+  (   12,    99)      23       23           23                      
+rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke cart-road#1 at (14, 79), spawn spawn-1#1 at (10, 86)

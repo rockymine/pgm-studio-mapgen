@@ -36,10 +36,13 @@ what looked good in the SVG.
 **Composer's part:** everything about the arrangement. Hub form, frontline form, the number and family of
 the wool approaches, the land budget (250 cells against a 226 budget), the 32-block strait.
 
-## 3. Micro means 14–21 players and the board does not change inside that
+## 3. Micro means 14–21 players *a team*, and the board does not change inside that
 **Chose:** 18.
 **Because:** I asked for 14, 16, 18, 20 and 21 and got byte-identical boards at seed 0. The player count
-names a size band, not a budget, so 18 is the middle of micro and carries no other meaning.
+names a size band, not a budget, so 18 is the middle of micro and carries no other meaning. The units are
+the trap the brief names: `G8` says *"nano 6–13 players a team, micro 14–21"*, and `maxPlayers` is the cap
+the export writes into **every team's** max — so this ships as 18 against 18, not 9 against 9, and the
+board's 8864 cells are about 246 blocks² a player against the band's measured 242.
 **Read first:** five `GET /compose` calls across the band — identical `unit 192/226 mid 36` on all five.
 **Studio's part:** the band table (`G8`) is the studio's; the number 18 is only a label on it.
 **Composer's part:** the whole of it — this is the composer's sizing law, not mine.
@@ -271,3 +274,132 @@ edge are sixteen blocks apart, so a pad sixteen from the lane has only four bloc
 mine head, which `G2` then refuses at corridor width. Twelve on that plank is the studio's floor, not a
 compromise I chose.
 **Composer's part:** none.
+
+## 21. The rooms stop being made of the ground they stand on
+**Chose:** forked `showcase-hall` and `showcase-cage` into `tools/styles/hw-minehouse.json` and
+`hw-assay.json` — spruce boarding over a course of laid spruce log, spruce posts and beams, a brick
+roof with dark-oak verges, and the footing set back to null.
+**Because:** both presets are walled in cobblestone, stone brick and andesite, which is the ground's own
+family on this board — a stone building on stone, which the brief names as the hard thing to get right
+and not the one to attempt. Timber is the other family, and a mine's buildings are timber anyway.
+**Read first:** `POST /room-styles/preview-snapshot?format=png&view=section` on the fork — a two-storey
+spruce shell with a brick roof and a dark beam course, warm against grey. And the two presets' own JSON:
+`wall` bands of `98:0`, `4:0`, `1:5`.
+**Studio's part:** `HS4` refused the first fork outright — *"beams are dark oak and post is spruce. A
+post, the beam ends docking against it and the course they are the ends of are one frame, so they are cut
+from one wood."* The studio decided the beams' material for me. `HS7` is why the footing went to null.
+**Composer's part:** none — the composer emits no room style.
+
+## 22. The east flight was cutting a trench, so it moved to where the ground actually steps
+**Chose:** deleted the flight at x 14..22 and put one at x 3..11 running from the shore at 11 up to 17,
+fourteen of run for six of rise.
+**Because:** I authored two flights up the bank before the ground existed to measure, and a flight's
+anchor is an absolute height the relief knows nothing about. The transect at x 18 read
+`(18,32) 20 · (18,33) 15 DROP -5` — the east bank is higher than the yard it was supposed to climb to,
+because the `knowe` mark and the `brow` push put it there, so the flight was a five-block trench cut
+across a knoll. The west bank does step: `(8,21) scramble +2` and `(8,31) scramble +2` on the main
+landing route, which is exactly what a flight is for.
+**Read first:** `GET …/transect?points=18,26;18,52` and `points=8,19;8,40`, quoted above. Board-wide, the
+move took `03-slopes` from `132 barrier, 8 faces, largest 44` to **`54 barrier, 6 faces, largest 16`**.
+**Studio's part:** nothing refused the trench. `EL1` and `WL11` walk the plan flat and cannot see an
+authored flight at all; the transect is the only thing that saw it.
+**Composer's part:** none.
+
+## 23. The wall bars the defence too, and the bing is the answer to that
+**Chose:** left the bedrock wall across the only land way into wool-b, and let the bing's south plank
+land *behind* it.
+**Because:** a `walls` entry is bedrock with no door, so it costs the team that owns the wool as much as
+the team raiding it. Measured, the defence pays 3 placed blocks to reach its own east wool against 4 to
+reach the west one — the wall is a real cost to both sides and the plank is how the defence pays it
+cheaply if it has thought ahead. That is what makes the wall a prepared line rather than damage.
+**Read first:** `04-routes.txt` — `spawn-red -> orange-0: 73 blocks, 3 placed` against
+`spawn-red -> red-0: 68 blocks, 4 placed`, and `barrier +4 at (35, 74)`, which is the wall.
+**Studio's part:** `ST8`'s 10–20 block lane mouth and ~15 blocks in front of the room decided where the
+wall could stand; `PL11` and `PL13` decided which pair it could name.
+**Composer's part:** `"walls": []`. The wall is added; the *interface* it stands on is the composer's
+wool-b seam, moved 12 blocks east so the ring's east nose protrudes past its neighbours.
+
+## 24. The sky wool over each room is the studio's, and I checked before filing it
+**Chose:** nothing — left it alone.
+**Because:** the column at the wool read `y 58/57/56 Red Wool` with 30 courses of air under it, which
+looks exactly like a stray write. It is `GoalMarkerStamper`: a 3³ wool cube stamped
+`BuildCeiling.MarkerOver` = 5 blocks over the build cap, deliberately out of reach so nobody can bury or
+grief it, one per fanned goal. The board's cap is y51, so the marker is y56–58.
+**Read first:** `GET …/column?at=-46,68`, then `GET …/render/section?axis=z&at=-46`, then
+`pgm-studio/src/PgmStudio.Minecraft/Stamping/GoalMarkerStamper.cs`. Three boards in `specs/` read
+`top 21..23` at their wools, which is what made it look anomalous — their build caps are lower.
+**Studio's part:** the whole of it. This is a feature, and a gap filed against it would have been the
+third wrong capability claim in this repository's history.
+**Composer's part:** none.
+
+## 25. The bing is dead ground on the flow read and it stays
+**Chose:** kept the bing, knowing `plan/flow` calls 144 of its 192 blocks "off every route".
+**Because:** the flow read walks *land* routes between the places the board has. A team transient-link is
+by definition not on one — it is a pad reached only over its own team's build zones, which is what makes
+it a lane an attacker cannot flank. Reading it as dead ground is reading the instrument as damage. The
+built read agrees the board is fine: `coverage` says 1.6% dead, 146 cells of 8864.
+**Read first:** `01-flow.txt` — *"144 blocks at (-48, -96) — bing (144)"* — against
+`GET …/coverage` — `reached 8718 · dead 146 · 1.6%`.
+**Studio's part:** neither read refuses on this; both are measurements. The disagreement between them is
+the honest answer and I am recording it rather than choosing one.
+**Composer's part:** none — the composer models no intra-team zone at all.
+
+## 26. Where the buildings went was the studio's answer, not mine
+**Chose:** the store at the mine head's north-east corner, `[[17, 85], [23, 91]]`, and the powder house
+on the west spur, `[[-31, 60], [-25, 64]]`.
+**Because:** I picked the head's *centre* first, which is where a whim house belongs over a shaft, and it
+was refused twice — once for standing in the spawn door's approach and once for leaving under eight
+blocks of way past it on two sides. A 16-deep strip cannot hold a 5-deep building anywhere but against
+its own edge, which is arithmetic rather than taste.
+**Read first:** `POST …/sketch/seats?kind=house&width=7&depth=5` — 396 seats over the whole board, as a
+raster — then `loop.py`, three passes: `DR-KEEP building 'whim' stands on (-7,-81), which is kept clear
+as the approach in front of a door`; `DR-PASS … a side has fewer than 8 blocks of passable ground`;
+`DR-SITE … has no ground under (18, 92)`, which is how I learned the head's last land row is z 91.
+**Studio's part:** all of it. Every one of the seven first-pass declines carried a rule and a coordinate,
+and `--candidates` answered eight alternative rock positions in one pass.
+**Composer's part:** none.
+
+## 27. A dam on the mine head, because the board is called Hushwater
+**Chose:** a `pool` water prop on the head's flat made ground, with the launder polyline leaving its east
+edge — and then moved it eight blocks west when it turned out to sit in the spawn's own door lane.
+**Because:** a hush is water let go down a fellside, and the board had no water in it at all. The head is
+`exclude`d flat ground at a known height, which is the one place on this board a prop that *carves* its
+own bed can be given a level with confidence.
+**Read first:** the first placement preview said `placed 14, declined 0` — and then `04-routes.txt` read
+`ROUTE (0,104) -> (46,-68): 206 blocks, 55 placed, 3 drops, worst drop 10` against **30 placed** on its
+own mirror. A pond is an obstacle a walk routes round, and only the walk read saw it. Moved west, all four
+raids read `206 / 211 / 204 / 211 blocks, 30 placed` — symmetric again.
+**Studio's part:** the water prop carves its own band rather than finding a level, so the pan *is* the
+pool and `radius`/`depth`/`level` are the whole of it. The dressing pass placed it without complaint; the
+route read is what refused it, and nothing refuses on a route read.
+**Composer's part:** none.
+
+## 28. The observer platform was sitting on the one piece of ground both teams fight over
+**Chose:** `globals.observerY: 32`, up from the derived 27.
+**Because:** a board whose ground crosses the origin gets a bedrock observer platform in its middle, and
+this board's middle is the crown of the spoil bank in the gill — the contested stone. At the derived
+height it caps the island thirteen blocks up. At 32 it is eighteen clear of the crown and still a sensible
+place to watch from.
+**Read first:** `GET …/column?at=0,0` — `y 32 Bedrock` over `y 14 Coarse Dirt`, and the long section
+`world-section-x0.txt`, which draws the platform directly over the shoal's mound.
+**Studio's part:** the default, `surface + 15`, and the fact that the platform exists at all.
+**Composer's part:** none.
+
+## 29. The chimney went on the bing, because a made layer is ground to everything downstream
+**Chose:** a `tapered_tower` off `tools/sculpt/props.py` at `(48, 94)` on the bing, `kind: "made"`,
+`part_of: "chimney"`, `mirrors: true`, five polygons on one layer, in brick and stone brick rather than
+in the dressing floor's own material.
+**Because:** the board had no vertical landmark, and on a board whose two halves are rotations of each
+other a stack is what tells a player which end they are looking at. I put it beside the engine house at
+the mine head first, and the defence's own walk to its east wool went from **3 placed** to **30 placed,
+worst drop 13** — everything downstream of a stacked cell reads one number, the surface top, so the walk
+climbed the chimney and fell off it. The bing is the one piece of ground no land route passes, which is
+what makes it the right plinth.
+**Read first:** `04-routes.txt` before and after — `ROUTE (0,104) -> (56,70): 73 blocks, 30 placed,
+worst drop 13` against `73 blocks, 3 placed, 0 drops`. Nothing else saw it: the store answered 200, the
+export gate stayed OPEN, and `03-slopes` did not move.
+**Studio's part:** `kind: "made"` is what keeps `SK10`'s pair walk and `SK11`'s reachability walk off a
+solid, and `GENERATION-NOTES.md` is what told me the builder defaults `mirrors` to **False** — right for a
+landmark on the symmetry centre, and on a team's own ground it means one side simply has no chimney, with
+nothing anywhere reporting it.
+**Composer's part:** none. The composer has no storeys at all.

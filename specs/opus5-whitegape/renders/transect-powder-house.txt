@@ -1,52 +1,59 @@
 ## powder-house (house) along x
-TRANSECT 17 stations from (-28, -33) to (-12, -33), every 1
+TRANSECT 24 stations from (-12, -77) to (11, -77), every 1
   station        ground  surface  water  top  standing            step
-  (  -28,   -33)      22       22           29  house powder-house  
-  (  -27,   -33)      22       22           29  house powder-house  
-  (  -26,   -33)      22       22           29  house powder-house  
-  (  -25,   -33)      22       22           29  house powder-house  
-  (  -24,   -33)      22       22           29  house powder-house  
-  (  -23,   -33)      22       22           29  house powder-house  
-  (  -22,   -33)      22       22           29  house powder-house  
-  (  -21,   -33)      22       22           29  house powder-house  
-  (  -20,   -33)      22       22           29  house powder-house  
-  (  -19,   -33)      21       21           29  house powder-house  -1
-  (  -18,   -33)      21       21           21                      
-  (  -17,   -33)      21       21           22  flora fell-cover    
-  (  -16,   -33)      21       21           21                      
-  (  -15,   -33)      21       21           21                      
-  (  -14,   -33)      21       21           21                      
-  (  -13,   -33)      21       21           21                      
-  (  -12,   -33)      22       22           22                      +1
-rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: house powder-house at (-28, -35), flora fell-cover at (-17, -35)
+  (  -12,   -77)      22       22           22                      
+  (  -11,   -77)      23       23           23                      +1
+  (  -10,   -77)      23       23           23                      
+  (   -9,   -77)      23       23           23                      
+  (   -8,   -77)      22       22           22                      -1
+  (   -7,   -77)      22       22           22                      
+  (   -6,   -77)      22       22           22                      
+  (   -5,   -77)      22       22           29  house powder-house  
+  (   -4,   -77)      22       22           29  house powder-house  
+  (   -3,   -77)      22       22           29  house powder-house  
+  (   -2,   -77)      22       22           29  house powder-house  
+  (   -1,   -77)      22       22           29  house powder-house  
+  (    0,   -77)      22       22           29  house powder-house  
+  (    1,   -77)      22       22           29  house powder-house  
+  (    2,   -77)      22       22           29  house powder-house  
+  (    3,   -77)      22       22           29  house powder-house  
+  (    4,   -77)      22       22           29  house powder-house  
+  (    5,   -77)      22       22           24  tree thorn-11       
+  (    6,   -77)      22       22           25  tree thorn-11       
+  (    7,   -77)      22       22           22                      
+  (    8,   -77)      22       22           22                      
+  (    9,   -77)      23       23           23  stroke fell-path    +1
+  (   10,   -77)      23       23           23  stroke fell-path    
+  (   11,   -77)      24       24           24  stroke fell-path    +1
+rises 3, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house powder-house at (-5, -79), tree thorn-11 at (4, -75), stroke fell-path at (9, -79)
 
 ## powder-house (house) along z
-TRANSECT 24 stations from (-24, -44) to (-24, -21), every 1
+TRANSECT 24 stations from (-1, -88) to (-1, -65), every 1
   station        ground  surface  water  top  standing            step
-  (  -24,   -44)      22       22           22  stroke lip-path     
-  (  -24,   -43)      22       22           22  stroke lip-path     
-  (  -24,   -42)      22       22           22  stroke lip-path     
-  (  -24,   -41)      22       22           22  stroke lip-path     
-  (  -24,   -40)      22       22           22  stroke lip-path     
-  (  -24,   -39)      22       22           22  stroke lip-path     
-  (  -24,   -38)      22       22           22  stroke lip-path     
-  (  -24,   -37)      22       22           27  house powder-house  
-  (  -24,   -36)      22       22           27  house powder-house  
-  (  -24,   -35)      22       22           28  house powder-house  
-  (  -24,   -34)      22       22           28  house powder-house  
-  (  -24,   -33)      22       22           29  house powder-house  
-  (  -24,   -32)      22       22           29  house powder-house  
-  (  -24,   -31)      22       22           28  house powder-house  
-  (  -24,   -30)      22       22           28  house powder-house  
-  (  -24,   -29)      22       22           27  house powder-house  
-  (  -24,   -28)      21       21           27  house powder-house  -1
-  (  -24,   -27)      21       21           21                      
-  (  -24,   -26)      21       21           21                      
-  (  -24,   -25)      21       21           25  tree thorn-8        
-  (  -24,   -24)      21       21           26  tree thorn-8        
-  (  -24,   -23)      21       21           29  tree thorn-8        
-  (  -24,   -22)      21       21           21                      
-  (  -24,   -21)      21       21           21                      
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke lip-path at (-26, -46), house powder-house at (-26, -37), tree thorn-8 at (-22, -26), tree thorn-9 at (-24, -20)
+  (   -1,   -88)      23       23           24  flora fell-cover    
+  (   -1,   -87)      23       23           24  flora fell-cover    
+  (   -1,   -86)      23       23           24  flora fell-cover    
+  (   -1,   -85)      23       23           23                      
+  (   -1,   -84)      23       23           23                      
+  (   -1,   -83)      23       23           23                      
+  (   -1,   -82)      22       22           22                      -1
+  (   -1,   -81)      22       22           27  house powder-house  
+  (   -1,   -80)      22       22           27  house powder-house  
+  (   -1,   -79)      22       22           28  house powder-house  
+  (   -1,   -78)      22       22           28  house powder-house  
+  (   -1,   -77)      22       22           29  house powder-house  
+  (   -1,   -76)      21       21           29  house powder-house  -1
+  (   -1,   -75)      21       21           28  house powder-house  
+  (   -1,   -74)      21       21           28  house powder-house  
+  (   -1,   -73)      21       21           27  house powder-house  
+  (   -1,   -72)      21       21           27  house powder-house  
+  (   -1,   -71)      21       21           21                      
+  (   -1,   -70)      21       21           21                      
+  (   -1,   -69)      21       21           21                      
+  (   -1,   -68)      21       21           21                      
+  (   -1,   -67)      21       21           21                      
+  (   -1,   -66)      21       21           21                      
+  (   -1,   -65)      26       26           26                      BARRIER +5
+rises 1, falls 2, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (-1, -65) | walked end to end
+beside: flora fell-cover at (-1, -90), tree thorn-12 at (0, -90), tree thorn-14 at (0, -87), house powder-house at (-3, -81)

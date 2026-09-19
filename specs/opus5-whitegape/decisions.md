@@ -185,3 +185,52 @@ that a boulder on stone reads as nothing.
 caught myself is (5): `DR-SITE` asks whether there is ground under a prop, not what that ground is made
 of, so a `column` read per boulder was always available to me and I never took it.
 **Studio's part:** none, and that is the finding. The studio raises no rule for any of the six.
+
+## 15. The natural half and the made half, and the line between them
+**Chose:** the back of the board (z -100..-64) is grown ground — relief only, no authored shape on it
+except two roads — and the front (z -64..-12) is made ground: one level stone yard with the quarry pit
+sunk into it, a loading dock cut five courses lower at the lip, and the works shed and kiln on them. The
+boundary is the yard's own retaining face, with two flights let into it.
+**Because:** the author's ruling. The board's first build treated the whole map as one undifferentiated
+terrain with a pit in it; the split makes the two halves look like different kinds of place and gives the
+journey from spawn to objective a line to cross.
+**Read first:** nothing of mine — this was a ruling. What I read afterwards was `sketch/relief/read` and the
+`incline` distribution, to see what taking the front half out of the solve did to the rest.
+**Studio's part:** `relief_scope: "exclude"` is the whole mechanism — it takes the yard's footprint out of
+the solve so the two tiers meet at a face instead of being graded into each other, and it is the difference
+between a terrace and a ramp.
+
+## 16. The outline was a literal square
+**Chose:** fourteen `editShapes` ops on the compiled ring `fell-24` — four inserted points on each flank,
+six along the lip, and three corners moved — then one `bendShapes` pass at `wander 2.5, step 11, side: out`.
+**Because:** the author's first words about the board. The compiler emits the plan's rectangles, which is
+the board's shape and not its coast.
+**Read first:** the compiled ring itself, out of `opus5-whitegape.layout.json` — eight vertices, three of
+them long straight runs. That is what a bend needs to know: an edge with room for fewer than two cuts is
+left straight, so the spawn notch (16 blocks at step 11) comes out as the plan drew it.
+**Studio's part:** the choice of `side`. `out` only bloats, which is what lets the yard and the dock keep
+their ground: a coast that moved inward would have left the dock's front edge hanging over void. The lip is
+cut only outside the dock's own span, so the made edge is straight and the grown edge is not — which turned
+out to be the cheapest way to say the two halves are different kinds of place.
+
+## 17. Boulders on stone, which nothing in the studio refuses
+**Chose:** `column`-read every boulder site before using it, and moved all four onto grass or coarse dirt.
+**Because:** the author's ruling, and the one item of the six I could have caught myself. The measured
+answer: (18,-70) andesite, (2,-66) stone, (20,-58) gravel, (24,-86) andesite — all legal seats, all of them
+a stone boulder standing on stone. The four that shipped read `Grass Block` or `Coarse Dirt`.
+**Read first:** `GET …/column?at=x,z`, once per candidate, beside `POST …/sketch/seats?kind=boulder`.
+**Studio's part:** `DR-SITE` asks whether there is ground under a prop, not what that ground is, and
+`DR-STEEP` asks the angle rather than the block. Nothing in the studio reads what a prop stands on.
+
+## 18. `sketch/seats` — the read that answers forwards
+**Chose:** placed both buildings and every prop from `POST …/sketch/seats`, asked of a board with no props
+on it at all, instead of guessing and reading the declines.
+**Because:** the author's ruling, and it immediately found something I would never have found by guessing:
+**a 15x14 house seated nowhere on the board**, and neither did an 8x8 except in one small patch. The cause
+was mine — I had marked the entire yard `keepClear: true`, which makes the whole made half a dressing
+keep-out, so no building could stand on the ground I built for it. With that off, a 15x14 seats in exactly
+one place on this half (minimum corner x 2..5, z -58..-52) and that is where the works shed stands.
+**Read first:** `POST …/sketch/seats?kind=house&width=15&depth=14&format=text` — one raster, the whole
+board, the answer read as coordinates rather than eyeballed.
+**Studio's part:** all of it. The five declines only ever answer backwards; this one runs the same
+predicates forwards. It is the single most useful call I made on this board.
