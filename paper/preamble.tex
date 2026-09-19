@@ -85,6 +85,9 @@
 \titleformat{\subsection}{\normalfont\sffamily\normalsize\bfseries\color{ink}}{\thesubsection}{0.7em}{}
 \titleformat{\subsubsection}{\normalfont\sffamily\small\bfseries\color{ink60}}{}{0em}{}
 
+% Routes and rule ids are long unbreakable words; a little emergency stretch keeps one
+% from running past the margin instead of loosening the line that holds it.
+\setlength{\emergencystretch}{2em}
 \setlength{\parskip}{0pt}
 \setlength{\parindent}{1.2em}
 \linespread{1.06}
@@ -121,7 +124,11 @@
 
 % A monospaced cell for rule ids, endpoints and field names.
 \newcommand{\id}[1]{{\ttfamily\small #1}}
+% A route is monospaced and often longer than a line can hold. Breaking one mid-segment
+% reads as two routes, so it is set unbroken and the surrounding paragraph is given room
+% to stretch around it.
 \newcommand{\route}[1]{{\ttfamily\small #1}}
+
 
 % --- code --------------------------------------------------------------------
 \lstdefinelanguage{json}{

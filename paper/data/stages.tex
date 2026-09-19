@@ -5,29 +5,28 @@
 %% The key added at each stage is bold; the rest is what the stage inherited.
 %% Shapes: shapes in the stored layout, over every layer. Blocks: distinct surface blocks
 %% the built world's theme census counted (GET /map/{slug}/themes/census).
-%% Findings: the rule ids the store and the export answered with, on a 2xx. Every stage also
+%% Findings: every rule id raised on a 2xx, grouped by the route that raised it. Every stage also
 %% drew G8 (dead-share 0.198 outside the authored band) from POST /plan/evaluate, which
 %% judges the plan --- identical in all seven runs --- and not the finish.
-%% This spec states no themeByHeight, themeById, shapeProps*, editShapes or bendShapes, so
-%% those keys appear in no stage.
+%% A key the spec does not state is carried by no stage, so it appears in no row.
 
 \begin{tabularx}{\linewidth}{@{}l >{\raggedright\arraybackslash}X r r >{\raggedright\arraybackslash}p{27mm}@{}}
 \toprule
 \textbf{Stage} & \textbf{What the finish carried} & \textbf{Shapes} & \textbf{Blocks} & \textbf{Findings} \\
 \midrule
-\id{01-ground} & \textbf{\id{created}}, \textbf{\id{authors}}\newline\textit{the plan compiled and nothing else: bedrock and stone at the surface the plan states} & 6 & 4 & \id{SK8} \\
+\id{01-ground} & \textbf{\id{created}}, \textbf{\id{authors}}\newline\textit{the plan compiled and nothing else: bedrock and stone at the surface the plan states} & 6 & 4 & \id{SK8}\ \textit{\scriptsize(the store)} \\
 \addlinespace[2pt]
-\id{02-relief} & \id{created}, \id{authors}, \textbf{\id{relief}}\newline\textit{four marks and their pushes carve the fell} & 6 & 4 & --- \\
+\id{02-relief} & \id{created}, \id{authors}, \textbf{\id{relief}}\newline\textit{5 marks and 3 pushes carve the fell} & 6 & 4 & \id{RL2}, \id{RL3}\ \textit{\scriptsize(relief read)} \\
 \addlinespace[2pt]
-\id{03-paint} & \id{created}, \id{authors}, \id{relief}, \textbf{\id{themes}}, \textbf{\id{mapTheme}}, \textbf{\id{biome}}\newline\textit{the theme registry, the map default and a solid biome} & 6 & 8 & --- \\
+\id{03-paint} & \id{created}, \id{authors}, \id{relief}, \textbf{\id{themes}}, \textbf{\id{mapTheme}}, \textbf{\id{biome}}\newline\textit{5 themes, the map default and a solid biome} & 6 & 8 & \id{RL2}, \id{RL3}\ \textit{\scriptsize(relief read)} \\
 \addlinespace[2pt]
-\id{04-shapes} & \id{created}, \id{authors}, \id{relief}, \id{themes}, \id{mapTheme}, \id{biome}, \textbf{\id{addShapes}}\newline\textit{nine authored shapes: pit, dock, two flights, two ramps, wall, two kerbs} & 15 & 10 & --- \\
+\id{04-shapes} & \id{created}, \id{authors}, \id{relief}, \id{themes}, \id{mapTheme}, \id{biome}, \textbf{\id{addShapes}}, \textbf{\id{editShapes}}, \textbf{\id{bendShapes}}\newline\textit{15 authored shapes, plus the coast edited and bent} & 21 & 10 & \id{RL2}, \id{RL3}\ \textit{\scriptsize(relief read)} \\
 \addlinespace[2pt]
-\id{05-layers} & \id{created}, \id{authors}, \id{relief}, \id{themes}, \id{mapTheme}, \id{biome}, \id{addShapes}, \textbf{\id{addLayers}}\newline\textit{one made layer, the kiln, at base 18} & 17 & 10 & --- \\
+\id{05-layers} & \id{created}, \id{authors}, \id{relief}, \id{themes}, \id{mapTheme}, \id{biome}, \id{addShapes}, \id{editShapes}, \id{bendShapes}, \textbf{\id{addLayers}}\newline\textit{2 made layers: kiln-base, kiln-stack} & 29 & 10 & \id{RL2}, \id{RL3}\ \textit{\scriptsize(relief read)} \\
 \addlinespace[2pt]
-\id{06-rooms} & \id{created}, \id{authors}, \id{relief}, \id{themes}, \id{mapTheme}, \id{biome}, \id{addShapes}, \id{addLayers}, \textbf{\id{roomStyles}}\newline\textit{the spawn shell, in place of the built-in box} & 17 & 10 & --- \\
+\id{06-rooms} & \id{created}, \id{authors}, \id{relief}, \id{themes}, \id{mapTheme}, \id{biome}, \id{addShapes}, \id{editShapes}, \id{bendShapes}, \id{addLayers}, \textbf{\id{roomStyles}}\newline\textit{the spawn shell, in place of the built-in box} & 29 & 10 & \id{RL2}, \id{RL3}\ \textit{\scriptsize(relief read)} \\
 \addlinespace[2pt]
-\id{07-dressed} & \id{created}, \id{authors}, \id{relief}, \id{themes}, \id{mapTheme}, \id{biome}, \id{addShapes}, \id{addLayers}, \id{roomStyles}, \textbf{\id{dressing}}\newline\textit{ten styles and 27 props: trees, boulders, paving, sheds} & 17 & 11 & \id{DR-CLAIM}, \id{DR-CUT}, \id{DR-KEEP}, \id{DR-PASS}, \id{DR-ROAD}, \id{DR-STEEP} \\
+\id{07-dressed} & \id{created}, \id{authors}, \id{relief}, \id{themes}, \id{mapTheme}, \id{biome}, \id{addShapes}, \id{editShapes}, \id{bendShapes}, \id{addLayers}, \id{roomStyles}, \textbf{\id{dressing}}\newline\textit{10 styles and 19 props} & 29 & 17 & \id{RL2}, \id{RL3}\ \textit{\scriptsize(relief read)} \\
 \addlinespace[2pt]
 \bottomrule
 \end{tabularx}
