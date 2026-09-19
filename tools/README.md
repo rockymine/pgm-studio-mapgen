@@ -47,7 +47,7 @@ and a ring bent twice.
 | `voidEnforcement` | `true` patches `intent.build.voidEnforcement`, with `voidExclusions` for the rects to spare |
 | `controlPoints` · `scoreLimit` | a capture board's hills, onto `intent.controlPoints`, and the score the match ends at. Each point is `{name, anchor: {x, y, z}, size?, points?, captureTime?}` with the anchor in **blocks** — the pad is centred on it and cut into whatever ground the build solves there. The plan states no capture point, and a compiled intent carries no `symmetry`, so **every point of the board is stated here, already fanned**: a centre plus one side is a two-hill board. `scoreLimit` defaults to 750 on a board whose points pay, which is the corpus's own answer |
 | `shops` | a board's menus and the keepers that open them, onto `intent.shops`. A shop is `{id, name?, keeper?: {name?, mob?}, categories: [{id, material, name?, items: [{material, amount?, name?, price?, currency?, teamColor?}]}]}`. **It carries no coordinates at all** — a shop is a catalogue rather than a place, and the studio puts one keeper per shop at every team's spawn, beside the point players arrive on and facing them, held inside the spawn's room. PGM spawns the entity itself from the element, so nothing is stamped and a shop board exports the moment the intent is stored. A shop stating no category is left out rather than written as a menu PGM refuses (`pgm-studio/docs/pgm/shops.md` §9) |
-| `addLayers` | `[{id, name, base_y, shapes, groups, below?}]` — the storeys a plan cannot state. `below` inserts one under the compiled ground, where the painter's bottom-up order needs it |
+| `addLayers` | `[{id, name, base_y, shapes, groups, below?}]` — the storeys a plan cannot state. `below` inserts one under the compiled ground, which is also the layer a shape naming none joins |
 
 ### The grid, before the plan is posted
 
@@ -182,8 +182,9 @@ refused for skipping is the read nobody takes.** Every shipped roof fault was vi
 invisible from above, and no board in this repository had one until an author drew them by hand. Taking a
 picture is not the same as looking at one; what this removes is the excuse.
 
-**A style is serialized in the author's own key order.** A material's `kind` is read positionally, so sorting
-the keys of a style that previews at 200 turns it into a 400 naming a kind that is right there (`TL2`).
+**A style is serialized in the author's own key order.** The reader takes a material's `kind` wherever it
+sits, so a style round-tripped through a formatter still previews; writing `kind` first is what every style
+here states and what a build older than this one needs.
 
 A refusal stops the run rather than being skipped. **A refusal is a fault to fix, not a step to work around.**
 

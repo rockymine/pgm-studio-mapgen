@@ -143,8 +143,8 @@ computed it, **transect the thing you computed** before building on it.
 the compile refused: *version 2 states marker offsets in blocks from the piece corner.* Two spec
 documents in `specs/` disagree with the API by exactly one cell size.
 
-The same applies to `GENERATION-NOTES.md`, which is headed *"Measured against pgm-studio at b45b154"*.
-Four of its entries cited a task id as an open gap that has since shipped.
+The same applied to `GENERATION-NOTES.md`, where nine entries described a fault the studio had since fixed.
+It now carries no task id at all, which is the discipline that keeps it from happening again.
 
 **Order of authority: the API's own answer › the schema in `openapi.json` › the notes › a committed
 spec.** Read source only where two of those disagree, and then read the narrowest thing that settles it.
@@ -302,22 +302,6 @@ nothing, so the list is the fault and not the arrangement.
 `33 33 33 DROP −9 24`. The read named it `crest | terrace, step 10 at (7, −80), 43 cells`. With `tread: 7` on
 the terrace the transect reads `33 33 32 31 29 28 26 25 24` and the seam is gone. Board-wide, 1,006 barrier
 cells became 480.*
-
-### A layer's paint reaches further down than the layer does
-
-A **plain** stacked layer's bands run from the **bedrock course**, whatever its `base_y`; only a made
-layer (`kind: "made"`) is painted over its own span. The one thing keeping a pass off the layer below
-is the stone-only invariant — it writes over `(1, 0)` and nothing else — so a ground theme filling in
-plain stone hands the whole column to whatever is drawn above it.
-
-> *"`y 42..39 Iron Block` the viaduct rail, `y 29..27 Stone Bricks` the street lid, `y 26..1 Iron
-> Block` — twenty-six courses of city painted as rail."* — `opus5-tiefkreuz`
-
-Nothing says so. The store answers 200, the export gate answers OPEN, `themes/census` counts the
-**surface** and is right, and a top-down of a lit street is grey either way.
-
-**On any board of more than one plain layer, `column` a cell where two of them overlap before you believe
-the render** — and give every ground theme a `fill` that is not `1:0`.
 
 ### Dressing placed by eye is dressing declined
 

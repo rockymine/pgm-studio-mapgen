@@ -134,15 +134,14 @@ The ground keeps its shading.
 nonsense for a sculpture flying at y24, whose fill band then claims the whole column beneath it. Only the
 stone-only invariant stops the damage, and that makes two things load-bearing that do not look it.
 
-**The layer list has to be written bottom-up.** The painter walks the layers in document order, so a made
-thing listed before the plinth it stands on paints that plinth in its own material and the plinth's own pass
-then finds nothing left to do. `opus5-automaton`'s colossus did exactly that — brass at y9–11 where the
-granite ziggurat should be — until the plinth was moved ahead of it in `addLayers`. `WE56` is the fix that
-removes the hazard: a prop layer resolving its bands over its own span rather than the whole column.
+**Every layer is painted over its own span**, so a made thing standing on a plinth takes its own courses and
+leaves the plinth's to the plinth. The painter orders the stack by the lowest surface each layer carries and
+the document's order is only a tiebreak between layers at one height, so a sculpture's layers may be listed
+in whatever order the model builds them in.
 
-**The stone-only invariant was over the id and not the block, and that was a defect** (`WE58`, fixed). Stone's
-id is shared by granite, diorite, andesite and their polished forms, so a course a lower layer had already
-finished in one of those still read as stone and the pass above painted through it: a plinth in polished
+**The stone-only invariant is over the whole block and not its id**, which is what keeps two passes off each
+other where their spans do meet. Stone's id is shared by granite, diorite, andesite and their polished forms,
+so an id-only test read a course a lower layer had already finished as unpainted ground: a plinth in polished
 diorite under a red car came back red at y1–5, while the same plinth in sandstone came back sandstone. The
 read now compares `(id, data)` against `(Stone, 0)`, which is what the write beside it always compared.
 

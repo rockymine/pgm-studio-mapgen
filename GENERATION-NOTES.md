@@ -9,8 +9,10 @@ posted field that went unread comes back as `RQ3` naming its own JSON path.
 This file is only what none of those can say — a fact about how two correct mechanisms interact, a number a
 gate does not check, a read-back that lies.
 
-Measured against `pgm-studio` at `b45b154` (22 August 2026) by rebuilding `opus5-wheal-hazel` and
-`opus5-wheal-hazel-v2` through `tools/drive.py`.
+**A fault the studio has since fixed does not belong here.** An entry naming a task id as an open gap is a
+debt that comes due the moment the task ships, and it then reads as a limitation the studio no longer has —
+so every claim is checked against the running API, and against the source where two answers disagree, before
+it is kept. This file carries no task ids for that reason.
 
 ---
 
@@ -609,14 +611,6 @@ same document two keys away needs the discriminator: `{"kind": "house", "shell":
 `DressingJson.ParseStyles` throws and the answer is **500 / `RQ2`**, the studio's own fault rather than the
 document's, with the field that caused it named only in the server log.
 
-### The authors reach the map row and not the intent's meta
-
-`POST /map/from-documents` takes `authors` in the body and applies it to the map, and the export writes
-`<authors><author>…</author></authors>` correctly from there. The observer platform's board reads
-`intent.meta.authors`, which the compile leaves `[]` and no finish key reaches — `drive.py` patches `created`
-into `intent.meta` and not `authors`. So `EX6` fires on every board whose `map.xml` names its author
-perfectly well, and what is actually lost is the sign on the platform.
-
 ### A material's `kind` has to be the first property of its object
 
 `kind` is read positionally, so moving it and nothing else turns a document that answers 200 into a **400
@@ -648,10 +642,10 @@ Two consequences worth having before authoring one. **Nothing on `neutral` is mi
 group's relief is stated once and used once, so every mark on it has to be authored as an explicit pair about
 the origin or the two teams play different ground in the middle.
 
-And **`tools/drive.py` appends every `addShapes` entry to `groups[0]`**, so an authored shape joins the fanned
-group and is fanned — right for a shape on the team group, and right for one on an on-axis group **only if
-that group is its own rot_180 image**. Authoring such a ring as half its points plus their negations makes it
-exactly that, at no cost.
+And **an authored shape naming no group joins the first one**, which on a compiled board is the fanned one,
+so it is fanned. That is right for a shape meant to be a team's, and right for one on an on-axis group **only
+if that group is its own rot_180 image** — authoring such a ring as half its points plus their negations makes
+it exactly that, at no cost. A shape that belongs somewhere else names its group.
 
 ## Buildings
 
@@ -837,7 +831,7 @@ A stroke repaints the top block of every column it crosses, and a channel takes 
 crosses as its water line and cuts every other column in the band down to it: a wall standing seventeen
 courses over a river comes out as a hole through the wall, filled with water.
 
-Mark such a shape `keepClear` (`TS34`) and its columns join the dressing keep-out exactly, with no margin, so
+Mark such a shape `keepClear` and its columns join the dressing keep-out exactly, with no margin, so
 a road still runs through a gate.
 
 A keep-out **stops** a prop rather than routing one, so a stroke that would have crossed the marked shape
@@ -909,12 +903,6 @@ The compiled intent puts the observer at `(0, observerY, 0)` and `observerY` def
 bedrock pad over the centre of the board. `globals.observerY` is the only control a plan has over it; 55–60
 keeps it out of the way.
 
-### A spawn shape's interior is never painted by its theme
-
-Measured again today on `opus5-wheal-hazel-v2`: `(0, 85)`, inside the spawn, tops out at raw `Stone` y12,
-while `(0, 70)` on the same board and the same theme reads Grass Block over Coarse Dirt. Four runs have now
-reported it. On an otherwise fully themed map that is a stone patch under every spawn.
-
 ---
 
 ## Reading the world back
@@ -976,18 +964,8 @@ The export writes it into the world's own `region/`; the driver moves it beside 
 `maps/<slug>/` is what a game server is handed. A CLI read-back pointed at that region directory finds no
 record and falls back to the material estimate, stating which reading it used on its scale line.
 
-**An approach wall is recorded one column wider than it is built, on both axes.** `StructureStamper.StampWall`
-walks its footprint max-**exclusive**, which is what the intent's rect means; `ClaimStructures` hands the same
-rect to `WorldProvenance.ClaimRect`, which walks it max-**inclusive**. A 25 × 2 wall draws as a 26 × 3 bar.
-Measured on `maps/grok-ridge`:
-
-| column | top block |
-|---|---|
-| `(−25, 34)` · `(−25, 35)` · `(−12, 34)` · `(−12, 35)` · `(−1, 34)` | cobweb y21 over bedrock y20…16 — the wall |
-| `(−25, 36)` · `(−12, 36)` · `(−1, 36)` | stone brick y17 — the mid terrace, no wall |
-
-Worth knowing twice over: a wall read from a render looks thicker than it plays, and a bedrock line's
-thickness is exactly what decides whether it can be built over.
+A claim is the walk that stamped it, so a structure is recorded at exactly the cells it fills. A wall read
+from a render is the width it plays, which is what decides whether it can be built over.
 
 ### A section's lines are the renderer's, not the world's
 
@@ -1216,21 +1194,15 @@ layers, and `render/section` cuts a plane:
 **`axis` names the direction the cut runs, so `at` is the other coordinate** — `axis=x` takes a z,
 `axis=z` takes an x. An `at` outside the world answers 200 with a blank image rather than refusing.
 
-### The stack is written bottom-up, or the lower storeys are painted by the upper ones
+### The order a stack is written in decides which layer an unnamed shape joins, and nothing else
 
-`TerrainPainter.Paint` walks `SurfaceByLayer` **in document order**, and each pass paints its layer's
-whole column from the bedrock course to that layer's surface; the stone-only invariant is the only
-thing keeping two passes off each other. So a storey listed *after* one that stands over it finds no
-stone left, and takes whatever theme the upper storey resolved.
+`TerrainPainter.Paint` orders the layers by the lowest surface each one carries and paints each over its
+own span, so a storey's bands stop at its own floor and the document's order is a tiebreak between layers
+standing at one height. A storey listed after one that stands over it is painted correctly either way.
 
-A compiled plan emits `layers[0] = ground`, so appending an undercroft to the end is exactly that
-case. Measured on `opus5-interchange` before the fix, at `(20, 70)`: a 2 × 4 glass door panel on the
-ground layer painted its own column **yellow stained glass from y0 to y25**, twenty-six courses,
-including the pool floor twelve blocks under it. With the same layer inserted at index 0 the pool
-reads `y5..y3` white clay and `y2..y1` hardened clay, and the corridor above it is unchanged.
-
-`drive.py`'s `addLayers` takes `"below": true` for this. The rule is one line: **order `layers[]` by
-the height its shapes stand at, lowest first**, whatever the compile handed you.
+What the order still decides is where a shape naming no layer lands: the first one. `drive.py`'s `addLayers`
+takes `"below": true` to insert a storey under the compiled ground, which moves that target, so a finish
+adding an undercroft states the layer its shapes belong to rather than relying on the position.
 
 ### A goal states its storey on the plan
 
@@ -1261,7 +1233,7 @@ view of it, so two props are in each other's way only where they share ground: a
 `deck` layer at y38 and one on `ground` at y18 do not collide, and neither does an oak on a floating
 group and the river under it. `DR-CLAIM` and `DR-ROAD` both read that book, so the standoff to a
 road is measured against roads on the prop's own storey. Two props on the **same** layer still have
-to be moved apart in plan (`WE49`).
+to be moved apart in plan.
 
 ### A storey read only reaches its own top where the spans are read half-open
 
@@ -1432,15 +1404,6 @@ in the hall is unplaceable.
 
 Shrinking the building widens the ring, which is what makes a seat beside the door possible at all — and
 `/plan/room` hands it over rather than being guessed at.
-
-### `04-routes.txt` is not written on a board whose goals are wools
-
-`tools/drive.py` ends every run with *the three numbers*, and on a capture board the third is always
-`no route between a spawn and a goal`. The read it is made of answers fine asked by hand —
-`GET /map/{slug}/walk?from=&to=&aim=reach&format=text` gave `153 blocks, 19 placed, 2 drop(s), worst drop
-10` from a spawn point to an enemy wool on `opus5-quatrefoil` — so what a raid costs is knowable and is
-simply not in the sweep. On a wool board, take the walks by hand: own wool, each enemy wool, and read the
-placed count, which is the whole of what a crossing costs an attacker.
 
 ### A wool room must abut ground, not sit inside a piece
 
@@ -1825,31 +1788,3 @@ and the room's own wall starts at `y 25`: the plinth is under the land rather th
 The gate that hides the fault is that **a push is applied after every constraint**, so a range whose skirt
 crosses the room lifts the pad the room is stamped on and the plinth grows by exactly as much. Before the
 ranges were set back, the same room read floor at `y 43` over 42 courses of bedrock, with void either side.
-
-## A finish is applied to a compiled layout, and `drive.py` writes its output under the input's name
-
-`drive.py` ends a run by writing the layout and intent it posted into the spec directory, as
-`<base>.layout.json` and `<base>.intent.json` — the same two names a board **drawn** in the Sketch tool
-carries as its authored geometry. Reading those back on the next run therefore fed the driver its own output
-and applied the finish a second time, and the finish's three appending keys are all silently additive:
-`addLayers` inserts a storey per entry, `addShapes` appends to the first group, `bendShapes` bends a ring
-that is already bent.
-
-A spec whose finish adds two storeys stores them once on the first run and twice on the second, and the
-studio says so twice:
-
-```
-SK12  2 groups answer to the id 'under', so terrain and placements stored under it have no single group
-      to belong to — the first one solved takes them and the rest build flat
-SK10  layers 'under' and 'ground' are driven 17 block(s) into each other over 64 column(s)
-```
-
-Nothing refuses it. The board still exports, the gate still opens, and the committed spec now differs from
-the board it describes.
-
-**The finish is what decides which shape a spec is.** A spec carrying one is compiled from its plan every
-run and its layout is the run's output; a spec with no finish is a drawing and its layout is the input. That
-is what the driver's own docstring always said — "either `<base>.finish.json`, or a hand-drawn
-`<base>.layout.json`" — and the load now honours it. Every one of the 65 specs holding both is a compiled
-board whose layout the driver wrote, so re-driving one is idempotent again; the 23 holding a layout and no
-finish are the genuinely drawn ones and are unaffected.

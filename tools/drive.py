@@ -67,8 +67,8 @@ What each key states:
                   names -- the studio's POST /map/{slug}/sketch/layers/{layerId}/shapes?group={id}. A shape
                   naming neither takes the compiled ground's first group
   addLayers       [{id, name, base_y, shapes, groups, below?, kind?, part_of?, seat?}]  stacked slabs;
-                  `below` puts one under the compiled ground, where the painter's bottom-up order
-                  needs it. `kind: "made"` marks a made thing — out of the stacking rules, painted
+                  `below` puts one under the compiled ground, which is also the layer a shape
+                  naming none joins. `kind: "made"` marks a made thing — out of the stacking rules, painted
                   over its own span; `part_of` names the thing a run of layers is sliced from and `seat:
                   "ground"` settles them onto the terrain together
   relief          {"<groupId>": {...}} or {"*": {...}} applied to every group
