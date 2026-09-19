@@ -4,7 +4,8 @@
 decided entirely by how much ground neither one claimed. Twelve panels: one pair of pads meeting four ways,
 the mark that states a step on purpose beside three that state nothing anybody can see, and what a mark's
 shape and its fall-back do to the field. Open it in the studio as `technique-marks-and-seams`, or run
-`build.py`.
+`build.py`. The high ground is north in every panel, because the camera looks from the south-east and
+ground that rises toward it hides its own face.
 
 **A ring covers the cells whose centres fall inside it, so a boundary coordinate is a statement.** Two bands
 stated to share one leave no cell between them; two stated one apart leave exactly one, and the relaxation
@@ -22,11 +23,11 @@ three marks. Row 1's four panels state the *same* two pads at the *same* two hei
 
 | panel | what it states | what it solved to |
 |---|---|---|
-| `butted` | two pads sharing their boundary | **one +12 wall**, and `seams` names it |
-| `one-apart` | the same, one cell apart | **+6 and +6** — and `seams` is **empty** |
-| `gapped` | the same, ten cells apart | +1 a cell: a walkable grade |
-| `bevelled` | butted, `bevel: 6` on the upper pad | the grade inside the pad: +2 a cell over seven |
-| `a-scarp` | one `scarp`: `high` 20, `low` 8, `face` 2 | three +4 steps, authored, and no seam |
+| `butted` | two pads sharing their boundary | **one 12-block wall**, and `seams` names it |
+| `one-apart` | the same, one cell apart | **two steps of 6** — and `seams` is **empty** |
+| `gapped` | the same, ten cells apart | a block a cell: a walkable grade |
+| `bevelled` | butted, `bevel: 6` on the upper pad | the grade inside the pad: two a cell over seven |
+| `a-scarp` | one `scarp`: `high` 20, `low` 8, `face` 2 | three steps of 4, authored, and no seam |
 | `bevel-too-wide` | a nine-cell band at `bevel: 5` | nothing: the panel is the other mark's 8 |
 | `off-the-land` | the butted pair, plus a ring off the footprint | the same wall; the third mark is **silent** |
 | `half-off` | a ridge traced 26 blocks past the coast | the strip pinned at 26, the crest off the map, **nothing reported** |
@@ -43,22 +44,23 @@ three marks. Row 1's four panels state the *same* two pads at the *same* two hei
 
 ## One pair of pads, four meetings
 
-**Butted, two pads build two terraces and a wall.** `butted`'s transect reads eight for ten cells, then
-**+12**, then twenty: a sheer twelve-block face right across the panel. `relief/read` names it exactly —
-`{"a": "high-butted", "b": "low-butted", "step": 12, "x": -209, "z": -90, "cells": 88}` — a pair, a step, a
+**Butted, two pads build two terraces and a wall.** `butted`'s transect reads twenty for ten cells, then
+**−12**, then eight: a sheer twelve-block face right across the panel. `relief/read` names it exactly —
+`{"a": "high-butted", "b": "low-butted", "step": 12, "x": -209, "z": -91, "cells": 88}` — a pair, a step, a
 coordinate to stand at, and how far the boundary runs.
 
-**One cell of unpinned ground between them halves the wall and hides it from the read.** `one-apart` builds
-**+6 and +6**, because the relaxation has one free cell to answer for and puts it midway. Its `seams` is
+**One cell of unpinned ground between them halves the wall and hides it from the read.** `one-apart` reads
+twenty, then **14**, then eight — two six-block steps, because the relaxation has one free cell to answer
+for and puts it midway. Its `seams` is
 **empty**: a seam is measured between a cell one mark last claimed and a neighbour the other did, and there
 is no longer any such pair. The ground is still a barrier and nothing says so.
 
-**Ten cells of it is a grade, and that is where the design happens.** `gapped` climbs +1 a cell with one +2,
-which is ground a player walks up. The two pads are identical in all three panels; the gap is the whole
+**Ten cells of it is a grade, and that is where the design happens.** `gapped` falls a block a cell — 19,
+18, 17, 16, 15, 13, 12, 11, 10, 9, 8 — which is ground a player walks down. The two pads are identical in all three panels; the gap is the whole
 instrument.
 
 **A `bevel` buys the same grade out of the mark's own floor.** `bevelled` is butted again with `bevel: 6` on
-the upper pad, and the climb happens inside that pad's footprint: +2, +1, +2, +2, +2, +1, +2. Six cells
+the upper pad, and the fall happens inside that pad's footprint: 20, 18, 17, 15, 13, 11, 10, 8. Six cells
 against a twelve-block rise is two blocks a cell, so **a bevel wants to be at least the rise it is
 absorbing** for one-block steps — and it is paid for out of the pad's flat top, from every side at once.
 
@@ -69,8 +71,8 @@ a face. `row1-sections.png` is the four of them cut through the same place.
 ## The step you meant
 
 **A `scarp` is one mark that states both sides and the face between them, so the step is authored rather
-than left over.** `a-scarp` states `high: 20`, `low: 8`, `face: 2`, `band: 14` and builds three **+4** steps
-where the butted pads built one +12 — the drop spread across the width the face asks for.
+than left over.** `a-scarp` states `high: 20`, `low: 8`, `face: 2`, `band: 14` and builds **three steps of four**
+where the butted pads built one of twelve — the drop spread across the width the face asks for.
 
 **And its `seams` is empty, which is correct and worth knowing.** A seam is a fault between *two* marks; one
 mark that states a step has no pair to be reported against. The read is quiet because there is nothing

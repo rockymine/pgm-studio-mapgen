@@ -35,11 +35,12 @@ def zband(cx, z_from, z_to, inset=4):
 
 
 def pads(cx, cz, z0, gap=0, bevel=0):
-    """A low pad in the north half and a high one in the south, with `gap` cells of unpinned ground between
-    them. The two pads never move; only what is between them does."""
+    """A high pad in the north half and a low one in the south, with `gap` cells of unpinned ground between
+    them. High to the north because the camera looks from the south-east: ground that rises away shows its
+    face, and ground that rises toward the camera hides everything behind its own flat top."""
     seam = cz
-    return [area("low", LOW, zband(cx, z0 + 8, seam - gap)),
-            area("high", HIGH, zband(cx, seam, z0 + PANEL_D - 8), bevel=bevel)]
+    return [area("low", LOW, zband(cx, seam, z0 + PANEL_D - 8)),
+            area("high", HIGH, zband(cx, z0 + 8, seam - gap), bevel=bevel)]
 
 
 PANELS = ["butted", "one-apart", "gapped", "bevelled",
@@ -69,22 +70,20 @@ for index, name in enumerate(PANELS):
         # authored rather than left over. `face` is how far the drop runs across and `band` how far either
         # side is held before the surface is free again.
         marks = [{"id": "brink", "kind": "scarp", "high": HIGH, "low": LOW, "face": 2, "band": 14,
-                  "points": [[x0 + 6, cz], [x0 + PANEL_W - 6, cz]]}]
+                  "points": [[x0 + PANEL_W - 6, cz], [x0 + 6, cz]]}]
     elif name == "bevel-too-wide":
         # A bevel is paid for out of the mark's own floor from every side at once, so a nine-cell band at
         # bevel 5 has no floor left. It pins nothing and is NOT silent: its ring does cover cells.
-        marks = [area("low", LOW, zband(cx, z0 + 8, cz)),
-                 area("crest", HIGH, zband(cx, cz + 10, cz + 19), bevel=5)]
+        marks = [area("low", LOW, zband(cx, cz, z0 + PANEL_D - 8)),
+                 area("crest", HIGH, zband(cx, cz - 19, cz - 10), bevel=5)]
     elif name == "off-the-land":
         # A ring drawn wholly off the footprint pins nothing at all, which IS what `silentMarks` is for.
-        marks = [area("low", LOW, zband(cx, z0 + 8, cz)),
-                 area("high", HIGH, zband(cx, cz, z0 + PANEL_D - 8)),
-                 area("elsewhere", 30, round_ring(cx, z0 - 40, 12))]
+        marks = [*pads(cx, cz, z0), area("elsewhere", 30, round_ring(cx, z0 - 40, 12))]
     elif name == "half-off":
         # A ridge traced past the coast pins the coastal strip at its own heights and leaves its crest off
         # the map — a mountainside cut through rather than ground decaying to base. Nothing reports it.
         marks = [{"id": "ridge", "kind": "line", "r": 14, "h": [LOW, 34],
-                  "points": [[cx, z0 + 12], [cx, z0 + PANEL_D + 26]]}]
+                  "points": [[cx, z0 + PANEL_D - 12], [cx, z0 - 26]]}]
     elif name == "one-height":
         marks = [area("plateau", 30, lobed_ring(cx, cz, 20, lobes=5, depth=0.14))]
     elif name == "a-summit":
