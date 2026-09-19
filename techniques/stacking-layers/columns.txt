@@ -1,0 +1,134 @@
+GET /api/map/technique-stacking-layers/column?at=x,z — one column per claim. The court's top block is
+y13 everywhere; every deck is one course of spruce planks on its own layer.
+
+### air, under the deck
+=== column (-110, -45) — 15 solid block(s), ground 0° from level ===
+  y 18     5:1   Spruce Planks
+  y 13    24:0   Sandstone
+  y 12    24:1   Chiseled Sandstone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### air, beside the deck
+=== column (-110, -78) — 14 solid block(s), ground 0° from level ===
+  y 13    24:0   Sandstone
+  y 12    24:1   Chiseled Sandstone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### air, past the court's edge
+=== column (-160, -45) — 1 solid block(s), ground 0° from level ===
+  y 18     5:1   Spruce Planks
+
+### seam, base_y 14
+=== column (0, -45) — 15 solid block(s), ground 0° from level ===
+  y 14     5:1   Spruce Planks
+  y 13    24:0   Sandstone
+  y 12    24:1   Chiseled Sandstone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### driven, base_y 13
+=== column (110, -45) — 14 solid block(s), ground 0° from level ===
+  y 13    24:0   Sandstone
+  y 12    24:1   Chiseled Sandstone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### three-storeys
+=== column (110, 35) — 16 solid block(s), ground 0° from level ===
+  y 24     5:1   Spruce Planks
+  y 18     5:1   Spruce Planks
+  y 13    24:0   Sandstone
+  y 12    24:1   Chiseled Sandstone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### ramp-meets
+=== column (-110, 59) — 18 solid block(s), ground 14° from level ===
+  y 17    24:0   Sandstone
+  y 16    24:1   Chiseled Sandstone
+  y 15    24:2   Smooth Sandstone
+  y 14    24:2   Smooth Sandstone
+  y 13     1:0   Stone
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### ramp-short
+=== column (0, 59) — 14 solid block(s), ground 14° from level ===
+  y 13    24:0   Sandstone
+  y 12    24:1   Chiseled Sandstone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+

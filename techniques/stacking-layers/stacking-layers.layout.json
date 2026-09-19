@@ -1,0 +1,532 @@
+{
+ "setup": {
+  "bbox": {
+   "min_x": -166,
+   "max_x": 166,
+   "min_z": -91,
+   "max_z": 91
+  },
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "mirror_mode": "none"
+ },
+ "themes": {
+  "court": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 24,
+    "data": 2
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 2,
+    "material": {
+     "kind": "layered",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 24,
+         "data": 0
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 24,
+         "data": 1
+        },
+        "thickness": 1
+       }
+      ]
+     }
+    }
+   }
+  },
+  "gantry": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 5,
+     "data": 1
+    }
+   }
+  }
+ },
+ "mapTheme": "court",
+ "relief": {},
+ "layers": [
+  {
+   "id": "court",
+   "name": "Court",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "court-air",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -158.0,
+      "min_z": -83.0,
+      "max_x": -62.0,
+      "max_z": -7.0,
+      "base_height": 14,
+      "theme": "court"
+     },
+     {
+      "id": "court-seam",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -48.0,
+      "min_z": -83.0,
+      "max_x": 48.0,
+      "max_z": -7.0,
+      "base_height": 14,
+      "theme": "court"
+     },
+     {
+      "id": "court-driven",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": 62.0,
+      "min_z": -83.0,
+      "max_x": 158.0,
+      "max_z": -7.0,
+      "base_height": 14,
+      "theme": "court"
+     },
+     {
+      "id": "court-ramp-meets",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -158.0,
+      "min_z": 7.0,
+      "max_x": -62.0,
+      "max_z": 83.0,
+      "base_height": 14,
+      "theme": "court"
+     },
+     {
+      "id": "causeway-ramp-meets",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 19,
+      "height_mode": "level",
+      "skirt": 0,
+      "theme": "court",
+      "vertices": [
+       [
+        -122.0,
+        79.0
+       ],
+       [
+        -98.0,
+        79.0
+       ],
+       [
+        -98.0,
+        59.0
+       ],
+       [
+        -122.0,
+        59.0
+       ]
+      ],
+      "anchor_heights": [
+       14,
+       14,
+       19,
+       19
+      ]
+     },
+     {
+      "id": "court-ramp-short",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -48.0,
+      "min_z": 7.0,
+      "max_x": 48.0,
+      "max_z": 83.0,
+      "base_height": 14,
+      "theme": "court"
+     },
+     {
+      "id": "causeway-ramp-short",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 19,
+      "height_mode": "level",
+      "skirt": 0,
+      "theme": "court",
+      "vertices": [
+       [
+        -12.0,
+        79.0
+       ],
+       [
+        12.0,
+        79.0
+       ],
+       [
+        12.0,
+        60.0
+       ],
+       [
+        -12.0,
+        60.0
+       ]
+      ],
+      "anchor_heights": [
+       14,
+       14,
+       19,
+       19
+      ]
+     },
+     {
+      "id": "court-three-storeys",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": 62.0,
+      "min_z": 7.0,
+      "max_x": 158.0,
+      "max_z": 83.0,
+      "base_height": 14,
+      "theme": "court"
+     }
+    ],
+    "groups": [
+     {
+      "id": "court-air",
+      "name": "air",
+      "mirrors": false,
+      "shapeIds": [
+       "court-air"
+      ]
+     },
+     {
+      "id": "court-seam",
+      "name": "seam",
+      "mirrors": false,
+      "shapeIds": [
+       "court-seam"
+      ]
+     },
+     {
+      "id": "court-driven",
+      "name": "driven",
+      "mirrors": false,
+      "shapeIds": [
+       "court-driven"
+      ]
+     },
+     {
+      "id": "court-ramp-meets",
+      "name": "ramp-meets",
+      "mirrors": false,
+      "shapeIds": [
+       "court-ramp-meets",
+       "causeway-ramp-meets"
+      ]
+     },
+     {
+      "id": "court-ramp-short",
+      "name": "ramp-short",
+      "mirrors": false,
+      "shapeIds": [
+       "court-ramp-short",
+       "causeway-ramp-short"
+      ]
+     },
+     {
+      "id": "court-three-storeys",
+      "name": "three-storeys",
+      "mirrors": false,
+      "shapeIds": [
+       "court-three-storeys"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "driven",
+   "name": "driven",
+   "base_y": 13,
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-driven",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": 58.0,
+      "min_z": -59.0,
+      "max_x": 162.0,
+      "max_z": -31.0,
+      "base_height": 1,
+      "theme": "gantry"
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-driven",
+      "name": "driven",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-driven"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "seam",
+   "name": "seam",
+   "base_y": 14,
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-seam",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -52.0,
+      "min_z": -59.0,
+      "max_x": 52.0,
+      "max_z": -31.0,
+      "base_height": 1,
+      "theme": "gantry"
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-seam",
+      "name": "seam",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-seam"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "air",
+   "name": "air",
+   "base_y": 18,
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-air",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -162.0,
+      "min_z": -59.0,
+      "max_x": -58.0,
+      "max_z": -31.0,
+      "base_height": 1,
+      "theme": "gantry"
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-air",
+      "name": "air",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-air"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "meets",
+   "name": "meets",
+   "base_y": 18,
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-meets",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -162.0,
+      "min_z": 31.0,
+      "max_x": -58.0,
+      "max_z": 59.0,
+      "base_height": 1,
+      "theme": "gantry"
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-meets",
+      "name": "meets",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-meets"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "short",
+   "name": "short",
+   "base_y": 18,
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-short",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": -52.0,
+      "min_z": 31.0,
+      "max_x": 52.0,
+      "max_z": 59.0,
+      "base_height": 1,
+      "theme": "gantry"
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-short",
+      "name": "short",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-short"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "mezz",
+   "name": "mezz",
+   "base_y": 18,
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-mezz",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": 58.0,
+      "min_z": 31.0,
+      "max_x": 162.0,
+      "max_z": 59.0,
+      "base_height": 1,
+      "theme": "gantry"
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-mezz",
+      "name": "mezz",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-mezz"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "roof",
+   "name": "roof",
+   "base_y": 24,
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-roof",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "min_x": 58.0,
+      "min_z": 25.0,
+      "max_x": 162.0,
+      "max_z": 41.0,
+      "base_height": 1,
+      "theme": "gantry"
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-roof",
+      "name": "roof",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-roof"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

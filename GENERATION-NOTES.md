@@ -1261,6 +1261,15 @@ A bridge deck at `base_y 11` lapped two blocks onto banks topping at y11 read `S
 each other over 24 column(s), deepest at (−26, 62)`. The same deck sized to the cut's own columns exactly, one
 course thick, laps nothing, sits flush with both banks and leaves four courses of air under it.
 
+**The seam sits where it does because a layer's segment top is `base_y + base_height` while its built top
+block is one lower.** A court stating `base_height` 14 has its top block at y13, so a one-course deck at
+`base_y` **14** rests on it, shares one course by the gate's arithmetic and raises nothing.
+
+**One lower than that is `SK10`, and the deck is then not in the world at all.** The column reads fourteen
+blocks of court with no deck course in it and a transect down the panel reads rises 0, falls 0, worst step 0.
+Nothing downstream can report a storey that was silently absorbed, because the world is built and the column
+is valid.
+
 ### Everything downstream of a stacked cell reads one number: the surface top
 
 `TerrainBuilder.SurfaceTops` keeps the **maximum** `YTop` per `(x, z)`, and that single grid is what
@@ -1270,8 +1279,10 @@ consequences, all measured:
 - **A placement climbs onto the upper layer by itself.** A destroyable stated in plan cells with
   `float: 4` landed at y34 over a terrace and at y19 on the same plan with the layers stripped.
   Putting an objective on a deck is not stated anywhere — it follows from drawing the deck over it.
-- **The covered ground is unpainted.** One column resolves one band stack, so ground under a slab
-  falls inside the `fill` band: no turf, no rim, no wall.
+- **The covered ground keeps its own paint.** `TerrainPainter.Paint` orders the layers by lowest
+  surface and paints each over its own span, so a court under a deck and the same court beside it come
+  back block for block alike — measured on a theme whose `fill` is deliberately a different block from
+  its surface, which is what makes the two tellable apart at all.
 - **The covered ground cannot be dressed.** A tree stated at `(8, 53)`, where the ground is a hall
   floor at y14, stood at y28 on the roof. No decline mentions it.
 - **Theme scope is per layer.** `ShapeScopeOwners` keys on `(layer, x, z)`, so a shape owns the paint
@@ -1284,8 +1295,14 @@ the join is a single one-block rise. The failure is one column wide: a causeway 
 beside a terrace drawn to x ±18 left one column of hall floor between them — a twelve-block slot, and the deck
 a group in the air.
 
-**Overlap the two footprints by a column** and check it with a transect, because no read will say:
-`traversability` and `WorldColumns.Membership` both discard Y, so a layered board is always "one component".
+**Overlap the two footprints by a column**, or arrive one course under the slab, which is enough: a causeway
+climbing to y17 beside a deck at y18 joins it on a one-block rise. Check it with a transect either way.
+
+**`SK11` at the store door is what reports the miss, and it is silent on the join.** The same causeway stopped
+one column short left a single column of court five below the deck, and the store answered *2,912 place(s) of
+standable ground … have open sky over them and no route onto them from the rest of the board* for both the
+deck and the court it sits over — and said nothing about the panel that met. `traversability` and
+`WorldColumns.Membership` still both discard Y, so those two go on calling a layered board one component.
 
 ### The bedrock floor goes under what rests on it, and under nothing else
 
@@ -1296,6 +1313,10 @@ columns stay out of the Y0 set a void filter reads.
 
 A one-thick slab at `floor: 0` writes no stone at all and the bedrock is its whole ground, which is why the
 test reads the floor rather than what the fill wrote.
+
+Measured on a deck oversailing its court by four columns: out past the court's edge the column is **one solid
+block** — the deck's own course, no fill under it and no bedrock. `techniques/stacking-layers` is the worked
+card for all of this.
 
 ### A channel reads the surface top, so a bridge over a beck breaks the beck
 

@@ -9,7 +9,7 @@ the card rather than finding the thing inside a thousand-line finish.
 itself, one claim to a paragraph; a card holds one instrument worked all the way through, with the reads
 beside it. Where a card exists, the notes point at it rather than repeating it.
 
-## The eleven that exist
+## The twelve that exist
 
 | Card | Holds |
 |---|---|
@@ -24,8 +24,9 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `pushes` | the instrument that builds a landform — four outlines of one, and four arrangements of several |
 | `marks-and-pushes` | a push landing on ground marks already pin, and how much of a board to pin at all |
 | `made-ground` | `relief_scope` against `height_mode` — whether a shape is ground or stands in it |
+| `stacking-layers` | two solid spans in one column, and the three ways the air between them is lost |
 
-## The eight that are missing
+## The seven that are missing
 
 Each entry names what the card would demonstrate, and which of the notes' entries it would absorb — the
 notes carry the measurements already and have nowhere to put the worked comparison.
@@ -40,11 +41,6 @@ itself is `winding-roads` and how a push meets them all is `marks-and-pushes`, w
 over solved ground, side by side on one hill, with `themes/census` under each. The scope test is the content:
 a shape owns a cell only where it forms that cell's surface, so a one-course add at bedrock paints nothing
 and says so on a 200. Absorbs the file's second-longest entry whole.
-
-**`stacking-layers` — two storeys and the air between them.** A deck over a hall: the shared course that is a
-seam and the second one that is a collision, a ramp meeting the upper slab, a goal and a prop naming their
-storey, and a stroke that cannot. Absorbs most of the Layers chapter, which is mechanism with no worked
-example anywhere.
 
 **`water` — a pan, a channel and a prop that carves.** The same water asked for three ways, plus a bridge
 over a beck breaking it and the two channels that carry it under. Absorbs four entries that each state one
