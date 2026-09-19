@@ -1,0 +1,2440 @@
+{
+ "setup": {
+  "bbox": {
+   "min_x": -276,
+   "max_x": 276,
+   "min_z": -91,
+   "max_z": 91
+  },
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "mirror_mode": "none"
+ },
+ "themes": {
+  "moor": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 25,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 2,
+             "data": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 20,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 45,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 11,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 4,
+               "data": 0
+              }
+             ]
+            },
+            "thickness": 3
+           }
+          ]
+         }
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "plank": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 5,
+     "data": 1
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 5,
+     "data": 1
+    }
+   }
+  }
+ },
+ "mapTheme": "moor",
+ "relief": {
+  "beach": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "fell",
+     "kind": "area",
+     "h": 30,
+     "bevel": 0,
+     "ring": [
+      [
+       -265.0,
+       -80.0
+      ],
+      [
+       -175.0,
+       -80.0
+      ],
+      [
+       -175.0,
+       -71.0
+      ],
+      [
+       -265.0,
+       -71.0
+      ]
+     ]
+    },
+    {
+     "id": "strand",
+     "kind": "area",
+     "h": 17,
+     "bevel": 0,
+     "ring": [
+      [
+       -265.0,
+       -35.0
+      ],
+      [
+       -175.0,
+       -35.0
+      ],
+      [
+       -175.0,
+       -10.0
+      ],
+      [
+       -265.0,
+       -10.0
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "pond": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "land",
+     "kind": "area",
+     "h": 22,
+     "bevel": 0,
+     "ring": [
+      [
+       -155.0,
+       -80.0
+      ],
+      [
+       -65.0,
+       -80.0
+      ],
+      [
+       -65.0,
+       -10.0
+      ],
+      [
+       -155.0,
+       -10.0
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "no-shore": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "land",
+     "kind": "area",
+     "h": 22,
+     "bevel": 0,
+     "ring": [
+      [
+       -45.0,
+       -80.0
+      ],
+      [
+       45.0,
+       -80.0
+      ],
+      [
+       45.0,
+       -10.0
+      ],
+      [
+       -45.0,
+       -10.0
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "two-forms": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "holm",
+     "kind": "area",
+     "h": 20,
+     "bevel": 0,
+     "ring": [
+      [
+       65.0,
+       -80.0
+      ],
+      [
+       155.0,
+       -80.0
+      ],
+      [
+       155.0,
+       -10.0
+      ],
+      [
+       65.0,
+       -10.0
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "basin": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "quay",
+     "kind": "area",
+     "h": 22,
+     "bevel": 0,
+     "ring": [
+      [
+       175.0,
+       -80.0
+      ],
+      [
+       265.0,
+       -80.0
+      ],
+      [
+       265.0,
+       -10.0
+      ],
+      [
+       175.0,
+       -10.0
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "pan-too-big": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "land",
+     "kind": "area",
+     "h": 20,
+     "bevel": 0,
+     "ring": [
+      [
+       -265.0,
+       10.0
+      ],
+      [
+       -175.0,
+       10.0
+      ],
+      [
+       -175.0,
+       80.0
+      ],
+      [
+       -265.0,
+       80.0
+      ]
+     ]
+    },
+    {
+     "id": "pan",
+     "kind": "area",
+     "h": 14,
+     "bevel": 6,
+     "ring": [
+      [
+       -254.0,
+       23.0
+      ],
+      [
+       -186.0,
+       23.0
+      ],
+      [
+       -186.0,
+       67.0
+      ],
+      [
+       -254.0,
+       67.0
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "pan-fits": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "land",
+     "kind": "area",
+     "h": 20,
+     "bevel": 0,
+     "ring": [
+      [
+       -155.0,
+       10.0
+      ],
+      [
+       -65.0,
+       10.0
+      ],
+      [
+       -65.0,
+       80.0
+      ],
+      [
+       -155.0,
+       80.0
+      ]
+     ]
+    },
+    {
+     "id": "pan",
+     "kind": "area",
+     "h": 14,
+     "bevel": 6,
+     "ring": [
+      [
+       -93.76,
+       45.0
+      ],
+      [
+       -94.36,
+       47.06
+      ],
+      [
+       -95.92,
+       48.77
+      ],
+      [
+       -97.86,
+       50.03
+      ],
+      [
+       -99.56,
+       51.03
+      ],
+      [
+       -100.65,
+       52.17
+      ],
+      [
+       -101.22,
+       53.78
+      ],
+      [
+       -101.66,
+       55.87
+      ],
+      [
+       -102.44,
+       58.09
+      ],
+      [
+       -103.85,
+       59.85
+      ],
+      [
+       -105.82,
+       60.61
+      ],
+      [
+       -107.99,
+       60.23
+      ],
+      [
+       -110.0,
+       59.0
+      ],
+      [
+       -111.65,
+       57.53
+      ],
+      [
+       -113.06,
+       56.43
+      ],
+      [
+       -114.57,
+       56.02
+      ],
+      [
+       -116.44,
+       56.15
+      ],
+      [
+       -118.7,
+       56.34
+      ],
+      [
+       -121.02,
+       56.02
+      ],
+      [
+       -122.87,
+       54.87
+      ],
+      [
+       -123.8,
+       52.97
+      ],
+      [
+       -123.73,
+       50.69
+      ],
+      [
+       -122.96,
+       48.47
+      ],
+      [
+       -122.12,
+       46.6
+      ],
+      [
+       -121.76,
+       45.0
+      ],
+      [
+       -122.12,
+       43.4
+      ],
+      [
+       -122.96,
+       41.53
+      ],
+      [
+       -123.73,
+       39.31
+      ],
+      [
+       -123.8,
+       37.03
+      ],
+      [
+       -122.87,
+       35.13
+      ],
+      [
+       -121.02,
+       33.98
+      ],
+      [
+       -118.7,
+       33.66
+      ],
+      [
+       -116.44,
+       33.85
+      ],
+      [
+       -114.57,
+       33.98
+      ],
+      [
+       -113.06,
+       33.57
+      ],
+      [
+       -111.65,
+       32.47
+      ],
+      [
+       -110.0,
+       31.0
+      ],
+      [
+       -107.99,
+       29.77
+      ],
+      [
+       -105.82,
+       29.39
+      ],
+      [
+       -103.85,
+       30.15
+      ],
+      [
+       -102.44,
+       31.91
+      ],
+      [
+       -101.66,
+       34.13
+      ],
+      [
+       -101.22,
+       36.22
+      ],
+      [
+       -100.65,
+       37.83
+      ],
+      [
+       -99.56,
+       38.97
+      ],
+      [
+       -97.86,
+       39.97
+      ],
+      [
+       -95.92,
+       41.23
+      ],
+      [
+       -94.36,
+       42.94
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "down-a-hill": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "head",
+     "kind": "area",
+     "h": 30,
+     "bevel": 0,
+     "ring": [
+      [
+       -45.0,
+       10.0
+      ],
+      [
+       45.0,
+       10.0
+      ],
+      [
+       45.0,
+       19.0
+      ],
+      [
+       -45.0,
+       19.0
+      ]
+     ]
+    },
+    {
+     "id": "foot",
+     "kind": "area",
+     "h": 16,
+     "bevel": 0,
+     "ring": [
+      [
+       -45.0,
+       71.0
+      ],
+      [
+       45.0,
+       71.0
+      ],
+      [
+       45.0,
+       80.0
+      ],
+      [
+       -45.0,
+       80.0
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "one-channel": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "holm",
+     "kind": "area",
+     "h": 20,
+     "bevel": 0,
+     "ring": [
+      [
+       65.0,
+       10.0
+      ],
+      [
+       155.0,
+       10.0
+      ],
+      [
+       155.0,
+       80.0
+      ],
+      [
+       65.0,
+       80.0
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "two-channels": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "holm",
+     "kind": "area",
+     "h": 20,
+     "bevel": 0,
+     "ring": [
+      [
+       175.0,
+       10.0
+      ],
+      [
+       265.0,
+       10.0
+      ],
+      [
+       265.0,
+       80.0
+      ],
+      [
+       175.0,
+       80.0
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "island-beach",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": -268,
+      "min_z": -83,
+      "max_x": -172,
+      "max_z": -7
+     },
+     {
+      "id": "island-pond",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": -158,
+      "min_z": -83,
+      "max_x": -62,
+      "max_z": -7
+     },
+     {
+      "id": "island-no-shore",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": -48,
+      "min_z": -83,
+      "max_x": 48,
+      "max_z": -7
+     },
+     {
+      "id": "island-two-forms",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": 62,
+      "min_z": -83,
+      "max_x": 158,
+      "max_z": -7
+     },
+     {
+      "id": "island-basin",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": 172,
+      "min_z": -83,
+      "max_x": 268,
+      "max_z": -7
+     },
+     {
+      "id": "dock",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 8,
+      "height_mode": "sink",
+      "skirt": 0,
+      "theme": "moor",
+      "min_x": 190.0,
+      "min_z": -61.0,
+      "max_x": 250.0,
+      "max_z": -29.0
+     },
+     {
+      "id": "island-pan-too-big",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": -268,
+      "min_z": 7,
+      "max_x": -172,
+      "max_z": 83
+     },
+     {
+      "id": "island-pan-fits",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": -158,
+      "min_z": 7,
+      "max_x": -62,
+      "max_z": 83
+     },
+     {
+      "id": "island-down-a-hill",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": -48,
+      "min_z": 7,
+      "max_x": 48,
+      "max_z": 83
+     },
+     {
+      "id": "island-one-channel",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": 62,
+      "min_z": 7,
+      "max_x": 158,
+      "max_z": 83
+     },
+     {
+      "id": "island-two-channels",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": 172,
+      "min_z": 7,
+      "max_x": 268,
+      "max_z": 83
+     }
+    ],
+    "groups": [
+     {
+      "id": "beach",
+      "name": "beach",
+      "mirrors": false,
+      "shapeIds": [
+       "island-beach"
+      ]
+     },
+     {
+      "id": "pond",
+      "name": "pond",
+      "mirrors": false,
+      "shapeIds": [
+       "island-pond"
+      ]
+     },
+     {
+      "id": "no-shore",
+      "name": "no-shore",
+      "mirrors": false,
+      "shapeIds": [
+       "island-no-shore"
+      ]
+     },
+     {
+      "id": "two-forms",
+      "name": "two-forms",
+      "mirrors": false,
+      "shapeIds": [
+       "island-two-forms"
+      ]
+     },
+     {
+      "id": "basin",
+      "name": "basin",
+      "mirrors": false,
+      "shapeIds": [
+       "island-basin",
+       "dock"
+      ]
+     },
+     {
+      "id": "pan-too-big",
+      "name": "pan-too-big",
+      "mirrors": false,
+      "shapeIds": [
+       "island-pan-too-big"
+      ]
+     },
+     {
+      "id": "pan-fits",
+      "name": "pan-fits",
+      "mirrors": false,
+      "shapeIds": [
+       "island-pan-fits"
+      ]
+     },
+     {
+      "id": "down-a-hill",
+      "name": "down-a-hill",
+      "mirrors": false,
+      "shapeIds": [
+       "island-down-a-hill"
+      ]
+     },
+     {
+      "id": "one-channel",
+      "name": "one-channel",
+      "mirrors": false,
+      "shapeIds": [
+       "island-one-channel"
+      ]
+     },
+     {
+      "id": "two-channels",
+      "name": "two-channels",
+      "mirrors": false,
+      "shapeIds": [
+       "island-two-channels"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "deck",
+   "name": "Deck",
+   "base_y": 25,
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-one-channel",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 1,
+      "theme": "plank",
+      "min_x": 86.0,
+      "min_z": 39.0,
+      "max_x": 134.0,
+      "max_z": 51.0
+     },
+     {
+      "id": "deck-two-channels",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 1,
+      "theme": "plank",
+      "min_x": 196.0,
+      "min_z": 39.0,
+      "max_x": 244.0,
+      "max_z": 51.0
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck",
+      "name": "deck",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-one-channel",
+       "deck-two-channels"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "dressing": {
+  "props": [
+   {
+    "id": "beach-bay",
+    "kind": "water",
+    "shape": "pool",
+    "points": [
+     [
+      -255.0,
+      -33.0
+     ],
+     [
+      -185.0,
+      -33.0
+     ],
+     [
+      -185.0,
+      -11.0
+     ],
+     [
+      -255.0,
+      -11.0
+     ]
+    ],
+    "radius": 8,
+    "depth": 4,
+    "form": "natural",
+    "edge": 2,
+    "shore": 5,
+    "shoreWander": true,
+    "seed": 7,
+    "bank": {
+     "kind": "voronoi",
+     "seed": 5,
+     "cellSize": 5,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 12,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    },
+    "level": 16
+   },
+   {
+    "id": "pond-tarn",
+    "kind": "water",
+    "shape": "pool",
+    "points": [
+     [
+      -89.94,
+      -45.0
+     ],
+     [
+      -90.74,
+      -42.46
+     ],
+     [
+      -92.81,
+      -40.4
+     ],
+     [
+      -95.38,
+      -38.94
+     ],
+     [
+      -97.57,
+      -37.83
+     ],
+     [
+      -98.92,
+      -36.5
+     ],
+     [
+      -99.51,
+      -34.51
+     ],
+     [
+      -99.89,
+      -31.83
+     ],
+     [
+      -100.73,
+      -28.95
+     ],
+     [
+      -102.41,
+      -26.68
+     ],
+     [
+      -104.84,
+      -25.72
+     ],
+     [
+      -107.54,
+      -26.3
+     ],
+     [
+      -110.0,
+      -28.0
+     ],
+     [
+      -111.98,
+      -29.99
+     ],
+     [
+      -113.63,
+      -31.43
+     ],
+     [
+      -115.42,
+      -31.91
+     ],
+     [
+      -117.73,
+      -31.6
+     ],
+     [
+      -120.59,
+      -31.2
+     ],
+     [
+      -123.55,
+      -31.45
+     ],
+     [
+      -125.89,
+      -32.8
+     ],
+     [
+      -127.02,
+      -35.17
+     ],
+     [
+      -126.79,
+      -38.05
+     ],
+     [
+      -125.66,
+      -40.81
+     ],
+     [
+      -124.45,
+      -43.1
+     ],
+     [
+      -123.94,
+      -45.0
+     ],
+     [
+      -124.45,
+      -46.9
+     ],
+     [
+      -125.66,
+      -49.19
+     ],
+     [
+      -126.79,
+      -51.95
+     ],
+     [
+      -127.02,
+      -54.83
+     ],
+     [
+      -125.89,
+      -57.2
+     ],
+     [
+      -123.55,
+      -58.55
+     ],
+     [
+      -120.59,
+      -58.8
+     ],
+     [
+      -117.74,
+      -58.4
+     ],
+     [
+      -115.42,
+      -58.09
+     ],
+     [
+      -113.63,
+      -58.57
+     ],
+     [
+      -111.98,
+      -60.01
+     ],
+     [
+      -110.0,
+      -62.0
+     ],
+     [
+      -107.54,
+      -63.7
+     ],
+     [
+      -104.84,
+      -64.28
+     ],
+     [
+      -102.41,
+      -63.32
+     ],
+     [
+      -100.73,
+      -61.05
+     ],
+     [
+      -99.89,
+      -58.17
+     ],
+     [
+      -99.51,
+      -55.49
+     ],
+     [
+      -98.92,
+      -53.5
+     ],
+     [
+      -97.57,
+      -52.17
+     ],
+     [
+      -95.38,
+      -51.06
+     ],
+     [
+      -92.81,
+      -49.6
+     ],
+     [
+      -90.74,
+      -47.54
+     ]
+    ],
+    "radius": 6,
+    "depth": 3,
+    "form": "natural",
+    "edge": 2,
+    "shore": 3,
+    "shoreWander": true,
+    "seed": 7,
+    "bank": {
+     "kind": "voronoi",
+     "seed": 5,
+     "cellSize": 5,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 12,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "no-shore-tarn",
+    "kind": "water",
+    "shape": "pool",
+    "points": [
+     [
+      20.06,
+      -45.0
+     ],
+     [
+      19.26,
+      -42.46
+     ],
+     [
+      17.19,
+      -40.4
+     ],
+     [
+      14.62,
+      -38.94
+     ],
+     [
+      12.43,
+      -37.83
+     ],
+     [
+      11.08,
+      -36.5
+     ],
+     [
+      10.49,
+      -34.51
+     ],
+     [
+      10.11,
+      -31.83
+     ],
+     [
+      9.27,
+      -28.95
+     ],
+     [
+      7.59,
+      -26.68
+     ],
+     [
+      5.16,
+      -25.72
+     ],
+     [
+      2.46,
+      -26.3
+     ],
+     [
+      0.0,
+      -28.0
+     ],
+     [
+      -1.98,
+      -29.99
+     ],
+     [
+      -3.63,
+      -31.43
+     ],
+     [
+      -5.42,
+      -31.91
+     ],
+     [
+      -7.73,
+      -31.6
+     ],
+     [
+      -10.59,
+      -31.2
+     ],
+     [
+      -13.55,
+      -31.45
+     ],
+     [
+      -15.89,
+      -32.8
+     ],
+     [
+      -17.02,
+      -35.17
+     ],
+     [
+      -16.79,
+      -38.05
+     ],
+     [
+      -15.66,
+      -40.81
+     ],
+     [
+      -14.45,
+      -43.1
+     ],
+     [
+      -13.94,
+      -45.0
+     ],
+     [
+      -14.45,
+      -46.9
+     ],
+     [
+      -15.66,
+      -49.19
+     ],
+     [
+      -16.79,
+      -51.95
+     ],
+     [
+      -17.02,
+      -54.83
+     ],
+     [
+      -15.89,
+      -57.2
+     ],
+     [
+      -13.55,
+      -58.55
+     ],
+     [
+      -10.59,
+      -58.8
+     ],
+     [
+      -7.74,
+      -58.4
+     ],
+     [
+      -5.42,
+      -58.09
+     ],
+     [
+      -3.63,
+      -58.57
+     ],
+     [
+      -1.98,
+      -60.01
+     ],
+     [
+      -0.0,
+      -62.0
+     ],
+     [
+      2.46,
+      -63.7
+     ],
+     [
+      5.16,
+      -64.28
+     ],
+     [
+      7.59,
+      -63.32
+     ],
+     [
+      9.27,
+      -61.05
+     ],
+     [
+      10.11,
+      -58.17
+     ],
+     [
+      10.49,
+      -55.49
+     ],
+     [
+      11.08,
+      -53.5
+     ],
+     [
+      12.43,
+      -52.17
+     ],
+     [
+      14.62,
+      -51.06
+     ],
+     [
+      17.19,
+      -49.6
+     ],
+     [
+      19.26,
+      -47.54
+     ]
+    ],
+    "radius": 6,
+    "depth": 3,
+    "form": "natural",
+    "edge": 2,
+    "shore": 0,
+    "shoreWander": true,
+    "seed": 7,
+    "bank": {
+     "kind": "voronoi",
+     "seed": 5,
+     "cellSize": 5,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 12,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "two-forms-cut",
+    "kind": "water",
+    "shape": "channel",
+    "points": [
+     [
+      68.0,
+      -61.0
+     ],
+     [
+      152.0,
+      -61.0
+     ]
+    ],
+    "radius": 4,
+    "depth": 3,
+    "form": "canal",
+    "edge": 0.8,
+    "shore": 2,
+    "shoreWander": true,
+    "seed": 7,
+    "bank": {
+     "kind": "voronoi",
+     "seed": 5,
+     "cellSize": 5,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 12,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "two-forms-beck",
+    "kind": "water",
+    "shape": "channel",
+    "points": [
+     [
+      68.0,
+      -29.0
+     ],
+     [
+      152.0,
+      -29.0
+     ]
+    ],
+    "radius": 4,
+    "depth": 3,
+    "form": "stream",
+    "edge": 1.5,
+    "shore": 3,
+    "shoreWander": true,
+    "seed": 7,
+    "bank": {
+     "kind": "voronoi",
+     "seed": 5,
+     "cellSize": 5,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 12,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "basin-dock-water",
+    "kind": "water",
+    "shape": "pool",
+    "points": [
+     [
+      190.0,
+      -61.0
+     ],
+     [
+      250.0,
+      -61.0
+     ],
+     [
+      250.0,
+      -29.0
+     ],
+     [
+      190.0,
+      -29.0
+     ]
+    ],
+    "radius": 4,
+    "depth": 1,
+    "form": "canal",
+    "edge": 0.8,
+    "shore": 0,
+    "shoreWander": true,
+    "seed": 7,
+    "bank": {
+     "kind": "voronoi",
+     "seed": 5,
+     "cellSize": 5,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 12,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    },
+    "level": 20
+   },
+   {
+    "id": "pan-too-big-sump",
+    "kind": "water",
+    "shape": "pool",
+    "points": [
+     [
+      -208.4,
+      45.0
+     ],
+     [
+      -208.83,
+      46.47
+     ],
+     [
+      -209.94,
+      47.7
+     ],
+     [
+      -211.33,
+      48.59
+     ],
+     [
+      -212.54,
+      49.31
+     ],
+     [
+      -213.32,
+      50.12
+     ],
+     [
+      -213.73,
+      51.27
+     ],
+     [
+      -214.04,
+      52.77
+     ],
+     [
+      -214.6,
+      54.35
+     ],
+     [
+      -215.61,
+      55.6
+     ],
+     [
+      -217.01,
+      56.15
+     ],
+     [
+      -218.57,
+      55.88
+     ],
+     [
+      -220.0,
+      55.0
+     ],
+     [
+      -221.18,
+      53.95
+     ],
+     [
+      -222.19,
+      53.17
+     ],
+     [
+      -223.26,
+      52.87
+     ],
+     [
+      -224.6,
+      52.97
+     ],
+     [
+      -226.21,
+      53.1
+     ],
+     [
+      -227.87,
+      52.87
+     ],
+     [
+      -229.19,
+      52.05
+     ],
+     [
+      -229.86,
+      50.69
+     ],
+     [
+      -229.8,
+      49.06
+     ],
+     [
+      -229.26,
+      47.48
+     ],
+     [
+      -228.66,
+      46.14
+     ],
+     [
+      -228.4,
+      45.0
+     ],
+     [
+      -228.66,
+      43.86
+     ],
+     [
+      -229.26,
+      42.52
+     ],
+     [
+      -229.8,
+      40.94
+     ],
+     [
+      -229.86,
+      39.31
+     ],
+     [
+      -229.19,
+      37.95
+     ],
+     [
+      -227.87,
+      37.13
+     ],
+     [
+      -226.21,
+      36.9
+     ],
+     [
+      -224.6,
+      37.03
+     ],
+     [
+      -223.26,
+      37.13
+     ],
+     [
+      -222.19,
+      36.83
+     ],
+     [
+      -221.18,
+      36.05
+     ],
+     [
+      -220.0,
+      35.0
+     ],
+     [
+      -218.57,
+      34.12
+     ],
+     [
+      -217.01,
+      33.85
+     ],
+     [
+      -215.61,
+      34.4
+     ],
+     [
+      -214.6,
+      35.65
+     ],
+     [
+      -214.04,
+      37.23
+     ],
+     [
+      -213.73,
+      38.73
+     ],
+     [
+      -213.32,
+      39.88
+     ],
+     [
+      -212.54,
+      40.69
+     ],
+     [
+      -211.33,
+      41.41
+     ],
+     [
+      -209.94,
+      42.3
+     ],
+     [
+      -208.83,
+      43.53
+     ]
+    ],
+    "radius": 5,
+    "depth": 3,
+    "form": "natural",
+    "edge": 1.5,
+    "shore": 2,
+    "shoreWander": true,
+    "seed": 7,
+    "bank": {
+     "kind": "voronoi",
+     "seed": 5,
+     "cellSize": 5,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 12,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "pan-fits-sump",
+    "kind": "water",
+    "shape": "pool",
+    "points": [
+     [
+      -98.4,
+      45.0
+     ],
+     [
+      -98.83,
+      46.47
+     ],
+     [
+      -99.94,
+      47.7
+     ],
+     [
+      -101.33,
+      48.59
+     ],
+     [
+      -102.54,
+      49.31
+     ],
+     [
+      -103.32,
+      50.12
+     ],
+     [
+      -103.73,
+      51.27
+     ],
+     [
+      -104.04,
+      52.77
+     ],
+     [
+      -104.6,
+      54.35
+     ],
+     [
+      -105.61,
+      55.6
+     ],
+     [
+      -107.01,
+      56.15
+     ],
+     [
+      -108.57,
+      55.88
+     ],
+     [
+      -110.0,
+      55.0
+     ],
+     [
+      -111.18,
+      53.95
+     ],
+     [
+      -112.19,
+      53.17
+     ],
+     [
+      -113.26,
+      52.87
+     ],
+     [
+      -114.6,
+      52.97
+     ],
+     [
+      -116.21,
+      53.1
+     ],
+     [
+      -117.87,
+      52.87
+     ],
+     [
+      -119.19,
+      52.05
+     ],
+     [
+      -119.86,
+      50.69
+     ],
+     [
+      -119.8,
+      49.06
+     ],
+     [
+      -119.26,
+      47.48
+     ],
+     [
+      -118.66,
+      46.14
+     ],
+     [
+      -118.4,
+      45.0
+     ],
+     [
+      -118.66,
+      43.86
+     ],
+     [
+      -119.26,
+      42.52
+     ],
+     [
+      -119.8,
+      40.94
+     ],
+     [
+      -119.86,
+      39.31
+     ],
+     [
+      -119.19,
+      37.95
+     ],
+     [
+      -117.87,
+      37.13
+     ],
+     [
+      -116.21,
+      36.9
+     ],
+     [
+      -114.6,
+      37.03
+     ],
+     [
+      -113.26,
+      37.13
+     ],
+     [
+      -112.19,
+      36.83
+     ],
+     [
+      -111.18,
+      36.05
+     ],
+     [
+      -110.0,
+      35.0
+     ],
+     [
+      -108.57,
+      34.12
+     ],
+     [
+      -107.01,
+      33.85
+     ],
+     [
+      -105.61,
+      34.4
+     ],
+     [
+      -104.6,
+      35.65
+     ],
+     [
+      -104.04,
+      37.23
+     ],
+     [
+      -103.73,
+      38.73
+     ],
+     [
+      -103.32,
+      39.88
+     ],
+     [
+      -102.54,
+      40.69
+     ],
+     [
+      -101.33,
+      41.41
+     ],
+     [
+      -99.94,
+      42.3
+     ],
+     [
+      -98.83,
+      43.53
+     ]
+    ],
+    "radius": 5,
+    "depth": 3,
+    "form": "natural",
+    "edge": 1.5,
+    "shore": 2,
+    "shoreWander": true,
+    "seed": 7,
+    "bank": {
+     "kind": "voronoi",
+     "seed": 5,
+     "cellSize": 5,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 12,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "down-a-hill-beck",
+    "kind": "water",
+    "shape": "channel",
+    "points": [
+     [
+      0.0,
+      13.0
+     ],
+     [
+      0.0,
+      77.0
+     ]
+    ],
+    "radius": 4,
+    "depth": 3,
+    "form": "stream",
+    "edge": 1.5,
+    "shore": 3,
+    "shoreWander": true,
+    "seed": 7,
+    "bank": {
+     "kind": "voronoi",
+     "seed": 5,
+     "cellSize": 5,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 12,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "one-channel-beck",
+    "kind": "water",
+    "shape": "channel",
+    "points": [
+     [
+      110.0,
+      13.0
+     ],
+     [
+      110.0,
+      77.0
+     ]
+    ],
+    "radius": 4,
+    "depth": 3,
+    "form": "stream",
+    "edge": 1.5,
+    "shore": 3,
+    "shoreWander": true,
+    "seed": 7,
+    "bank": {
+     "kind": "voronoi",
+     "seed": 5,
+     "cellSize": 5,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 12,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "two-channels-beck-north",
+    "kind": "water",
+    "shape": "channel",
+    "points": [
+     [
+      220.0,
+      13.0
+     ],
+     [
+      220.0,
+      34.0
+     ]
+    ],
+    "radius": 4,
+    "depth": 3,
+    "form": "stream",
+    "edge": 1.5,
+    "shore": 3,
+    "shoreWander": true,
+    "seed": 7,
+    "bank": {
+     "kind": "voronoi",
+     "seed": 5,
+     "cellSize": 5,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 12,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "two-channels-beck-south",
+    "kind": "water",
+    "shape": "channel",
+    "points": [
+     [
+      220.0,
+      56.0
+     ],
+     [
+      220.0,
+      77.0
+     ]
+    ],
+    "radius": 4,
+    "depth": 3,
+    "form": "stream",
+    "edge": 1.5,
+    "shore": 3,
+    "shoreWander": true,
+    "seed": 7,
+    "bank": {
+     "kind": "voronoi",
+     "seed": 5,
+     "cellSize": 5,
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       },
+       "thickness": 2
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       "thickness": 1
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 12,
+        "data": 0
+       },
+       "thickness": 1
+      }
+     ]
+    }
+   }
+  ]
+ }
+}

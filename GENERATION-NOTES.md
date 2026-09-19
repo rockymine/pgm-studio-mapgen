@@ -746,6 +746,19 @@ it. Draw the mark at the size of the water and let the surrounding floor sit a f
 flat `area` mark becomes an oversized lake: a water prop is a stroke
 that carves, not a fluid that finds its level.
 
+**`radius` is half the width on a channel and the *shelf* on a pool** — how far in from the shore the bed
+reaches full depth — so the same number means two things and which it means is `shape`. **`shore` is the
+beach**, in blocks, and 0 is a hard edge where the water meets the grass.
+
+**With no `level` the line is found and with one it is stated, and only a stated line fills dug ground.** A
+pool on flat ground at 21 came out at 21 with nothing saying so; a basin cut with a `height_mode: "sink"`
+shape has no surface up at the line for a derived one to find, so a dock or a harbour can only be stated. The
+author then owns the rim: water rises to the line inside the prop's footprint and nowhere else.
+
+**A water prop's bank is counted against the theme of the ground it carved.** A board of two themes came back
+from `themes/census` with eight distinct surface blocks, gravel and sand among them, because the bank is a
+material the prop lays rather than a theme the document scopes.
+
 ### Relief is keyed by group id across the whole stack, and `*` is the ground's alone
 
 `SketchRasterizer.ReliefFields` walks every layer and looks each of its groups up in the one
@@ -1321,16 +1334,25 @@ Measured on a deck oversailing its court by four columns: out past the court's e
 block** — the deck's own course, no fill under it and no bedrock. `techniques/stacking-layers` is the worked
 card for all of this.
 
-### A channel reads the surface top, so a bridge over a beck breaks the beck
+### A channel's line is the lowest surface its band crosses, and everything over that line is emptied to it
 
-`TerrainBuilder.SurfaceTops` keeps the **maximum** `YTop` per `(x, z)` across every layer, and a water channel
-takes the lowest surface its band crosses as its water line. So a deck on a layer above a stream is that
-stream's bed as far as the channel is concerned. Measured: at `(−20, 63)` and `(−20, 67)` the transect
-answered ground **12**, which is the deck five courses over the bed, and one channel drawn the whole length of
-the gill ran dry from the bridge north.
+**This is the one sentence most of a water prop's behaviour follows from**, and `DR-BANK` is the rule that
+says it: *the line is the lowest surface the body crosses and every column over it is emptied down to it*.
 
-Two channels, one each side of the deck, is what carries water under a bridge. A reach left dry still lays its
-bank materials, which is worth having where the board can afford to call it a sink.
+**So a channel run down a fall is built as a trench, not as a beck.** One drawn from a head at 30 to a foot
+at 16 took 16 as its line and reported *cut **14 course(s)** of ground away above its own line — a
+straight-sided wall from y16 to y29*. Keep a run within a course or two of level, state a `level` and accept
+the rim, or break it into reaches that each cross flat ground.
+
+**The same rule bites a bridge through.** A beck across level ground at 20 with a deck at y25 cut *6
+course(s) … from y20 to y25* — the deck's own columns, because the channel's band crosses them. Two channels
+stopped clear of the deck's band raise nothing and leave the bridge whole.
+
+**What that costs is the water under it: the reach between them is dry.** A board can have the water under
+the bridge or the bridge, not both. A reach left dry still lays its bank materials, which is worth having
+where the board can afford to call it a sink.
+
+`techniques/water` is the worked card, with both cases side by side.
 
 ### A prop's claim is a claim of one storey
 

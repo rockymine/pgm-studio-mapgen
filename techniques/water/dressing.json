@@ -1,0 +1,142 @@
+{
+ "props": [
+  {
+   "kind": "water",
+   "id": "beach-bay",
+   "image": 0,
+   "layer": "prop",
+   "cells": 2093,
+   "x": -256,
+   "z": -26,
+   "y": 16
+  },
+  {
+   "kind": "water",
+   "id": "pond-tarn",
+   "image": 0,
+   "layer": "prop",
+   "cells": 1141,
+   "x": -127,
+   "z": -56,
+   "y": 21
+  },
+  {
+   "kind": "water",
+   "id": "no-shore-tarn",
+   "image": 0,
+   "layer": "prop",
+   "cells": 883,
+   "x": -17,
+   "z": -56,
+   "y": 21
+  },
+  {
+   "kind": "water",
+   "id": "two-forms-cut",
+   "image": 0,
+   "layer": "prop",
+   "cells": 932,
+   "x": 66,
+   "z": -65,
+   "y": 19
+  },
+  {
+   "kind": "water",
+   "id": "two-forms-beck",
+   "image": 0,
+   "layer": "prop",
+   "cells": 910,
+   "x": 116,
+   "z": -34,
+   "y": 19
+  },
+  {
+   "kind": "water",
+   "id": "basin-dock-water",
+   "image": 0,
+   "layer": "prop",
+   "cells": 1920,
+   "x": 190,
+   "z": -61,
+   "y": 20
+  },
+  {
+   "kind": "water",
+   "id": "pan-too-big-sump",
+   "image": 0,
+   "layer": "prop",
+   "cells": 415,
+   "x": -230,
+   "z": 38,
+   "y": 13
+  },
+  {
+   "kind": "water",
+   "id": "pan-fits-sump",
+   "image": 0,
+   "layer": "prop",
+   "cells": 440,
+   "x": -120,
+   "z": 39,
+   "y": 13
+  },
+  {
+   "kind": "water",
+   "id": "down-a-hill-beck",
+   "image": 0,
+   "layer": "prop",
+   "cells": 709,
+   "x": -1,
+   "z": 11,
+   "y": 15
+  },
+  {
+   "kind": "water",
+   "id": "one-channel-beck",
+   "image": 0,
+   "layer": "prop",
+   "cells": 734,
+   "x": 109,
+   "z": 11,
+   "y": 19
+  },
+  {
+   "kind": "water",
+   "id": "two-channels-beck-north",
+   "image": 0,
+   "layer": "prop",
+   "cells": 325,
+   "x": 219,
+   "z": 11,
+   "y": 19
+  },
+  {
+   "kind": "water",
+   "id": "two-channels-beck-south",
+   "image": 0,
+   "layer": "prop",
+   "cells": 326,
+   "x": 218,
+   "z": 54,
+   "y": 19
+  }
+ ],
+ "declines": [
+  {
+   "rule": "DR-BANK",
+   "message": "water 'down-a-hill-beck' is 3 deep and its carve cut 14 course(s) of ground away above its own line \u2014 a straight-sided wall from y16 to y29 at (-1, 11). The line is the lowest surface the body crosses and every column over it is emptied down to it, so a pool drawn across a slope digs a pit as deep as the ground falls. Draw it inside ground that is already level, or state a `level` and let it fill the hollow there is.",
+   "severity": "complaint",
+   "subjects": [
+    "down-a-hill-beck"
+   ]
+  },
+  {
+   "rule": "DR-BANK",
+   "message": "water 'one-channel-beck' is 3 deep and its carve cut 6 course(s) of ground away above its own line \u2014 a straight-sided wall from y20 to y25 at (106, 39). The line is the lowest surface the body crosses and every column over it is emptied down to it, so a pool drawn across a slope digs a pit as deep as the ground falls. Draw it inside ground that is already level, or state a `level` and let it fill the hollow there is.",
+   "severity": "complaint",
+   "subjects": [
+    "one-channel-beck"
+   ]
+  }
+ ]
+}
