@@ -1,0 +1,164 @@
+\chapter{Teaching Material: The Technique Cards}
+\label{ch:teaching}
+
+\section{A Third Party in the Division of Labour}
+
+The paper has so far described two parties. There is a third, and it is easy to
+miss because it does not run: the body of worked examples an agent reads before it
+authors anything.
+
+This matters more here than it would in most systems, because an agent authoring
+blind cannot learn a primitive by trying it and looking. It learns by reading an
+example, and what it reads shapes what it builds. A teaching corpus that
+demonstrates one instrument per map teaches an agent to reach for one instrument
+per map. The repository has learned this the expensive way and has changed its
+teaching format accordingly, which makes the change itself worth documenting.
+
+\section{Two Formats, and What Each Holds Constant}
+
+The repository carries two bodies of worked examples.
+
+The older is a \textbf{showcase} of twenty-three boards, one technique each. Its
+method is to hold everything else fixed: every board forks one control board, a
+plain hundred-by-hundred destroy board that scores zero with no violation and no
+complaint, and changes \emph{only} what its technique needs. The diff is therefore
+the lesson, with nothing else in it.
+
+The newer is a set of six \textbf{technique cards}. Its method is more radical: it
+deletes the board. A technique card has no teams, no spawns, no objectives, no
+gamemode and no plan at all. Its whole document is a setup, its themes, a map theme
+and its layers. There is nothing to diff against because there is nothing else
+present.
+
+The size difference follows from that and is not incidental. The six cards come to
+392\,KB. The twenty-three showcase boards come to 12\,MB, because each carries a
+built world. The showcase's own README promises examples short enough to read in
+full and small enough to paste; the cards are what actually delivers it, with four
+complete outlines stated in 4{,}395 bytes.
+
+\section{Five Differences That Change What Is Learned}
+
+\subsection{Removing the Symmetry Confounder}
+
+Every technique card states \id{mirror\_mode: "none"} and every group in it states
+that it does not mirror. The showcase cannot: it is made of real boards, so it must
+spend a section of its README on what the symmetry fan decides, and it records
+three boards whose pieces landed in each other because of it, at the cost of a
+rebuild.
+
+Mirroring is a real subject and an agent must learn it. The point is that it
+becomes a subject one can learn \emph{separately}, rather than a tax on learning
+anything else. The relief card still states the fact, that any symmetry mode folds
+the relief across the centre and a group's own setting does not change it. It
+simply does not make the reader pay for it while learning about relief.
+
+\subsection{Comparison Inside One Render}
+
+This is the largest pedagogical change. The showcase is one technique per map, so a
+reader comparing two treatments reads two folders and holds the difference in their
+head. A card puts the variants side by side in one world: five flights up the same
+eight blocks; the same island flat and at four heights; three relief plots
+sixty-four blocks apart; four outlines in a row.
+
+The controlled comparison is then \emph{in the picture}, and the relief card takes
+it further by making it quantitative. Its two plots differ only in the heights their
+shapes are drawn at, and the committed check reads: every one of one plot's 2{,}304
+columns has the same top as the column sixty-four blocks east of it, and none
+differ. That is a proof that a solved shape's drawn height decides nothing, rather
+than an assertion of it.
+
+\subsection{The One Mistake as a Standing Section}
+
+Five of the six cards carry a heading titled, literally, \emph{The one mistake}. It
+names the failure, its rule id, and the threshold at which it fires. The set is a
+good summary of where a terrain author actually goes wrong:
+
+\begin{table}[htbp]
+\caption{The mistake each card guards against, with the threshold where each one
+begins to bite.}
+\label{tab:one-mistake}
+\small
+\begin{tabularx}{\textwidth}{L{3.5cm} L{1.6cm} Y}
+\toprule
+\textbf{Card} & \textbf{Rule} & \textbf{The mistake} \\
+\midrule
+combined shapes & \id{SK9} & a lower shape drawn inside a higher one on the same
+  layer is not in the world \\
+polylines & \id{SK25} & a band that turns tighter than it is wide laps itself.
+  Four points across 26 blocks at radius 3 lap in every bend; the same four spread
+  over 40 clear \\
+curved outlines & --- & a handle pulling further from its edge than along it draws
+  a loop rather than a bulge \\
+ramp and stair & --- & whole-number anchors 8 and 1 over 16 blocks build treads 1,
+  2 and 3 deep. A flight comes out even only with anchors half a riser past its
+  first and last tread \\
+relief on shapes & --- & a made shape with no \id{relief\_scope} joins the solve.
+  The same yard reads $y11$ instead of $y17$ \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+The showcase scatters the equivalent knowledge through prose and collects it in a
+thirty-row index at the end. Making it structural and local is what lets an agent
+find it at the moment it is about to make the mistake.
+
+\subsection{Verification Committed as Text}
+
+The repository's own rule is to read the text before the pictures, and the cards
+implement it literally. Every card ends with a section naming the committed read
+that proves each of its claims: a census, a column, a section, a heightmap, a set
+of transects, a walk, a slope grid, a comparison, a relief read.
+
+Those are the API's actual answers, verbatim, re-checkable, and diffable across a
+studio upgrade. The showcase's verification is a folder of pictures plus a table of
+numbers typed into its README, which cannot be re-run.
+
+The strongest instance is the relief card's comparison file, which prints the same
+rows three times: as drawn, with \id{hold}, and with \id{exclude}. The
+counterfactual is committed alongside the fact, which is a standard of evidence
+most documentation does not attempt.
+
+\subsection{Teaching the Revision Surface}
+
+The showcase is document-in, world-out: one call drives a whole spec. That teaches
+an agent to author, and teaches it nothing about \emph{revising}.
+
+One technique card is the only place in either body that demonstrates the
+incremental editing surface, with every request and its response committed: moving
+a vertex, inserting one, deleting one, and setting a shape's anchor heights. It
+also captures the arithmetic that bites, which is that an insert lands one past the
+index it names and every later index moves up by one. An agent replaying a list of
+edits computed against the original ring will scramble the outline, and this is the
+only example anywhere that would have warned it.
+
+\section{What the Older Format Still Holds}
+
+The honest framing is narrower than \emph{the cards replace the showcase}. The
+cards cover geometry and paint, on ground with nothing on it. The showcase covers
+the entire non-terrain half of the system: objectives and their gate rules,
+plan-tier authoring, walls, dressing, room styles, coverage, traversability,
+symmetry and the export gate.
+
+So the cards supersede the showcase for the terrain-authoring primitives, and the
+showcase remains the record for everything board-shaped. That is already how they
+are used in practice: one orchestrated run, briefing twelve authoring agents,
+records giving them the cards in preference to the showcase, alongside a ground
+family chosen to stop twelve boards coming out as twelve greys.
+
+\section{Why the Format Is Part of the System}
+
+It would be possible to treat all of this as documentation hygiene. It is not, and
+the reason returns to the paper's argument.
+
+The studio's knowledge reaches an agent through exactly three channels. The
+\textbf{API} tells it what may be asked. The \textbf{refusals} tell it what may not
+be built, and \cref{ch:refusals} showed how much design is carried in them. The
+\textbf{worked examples} tell it what is worth building, and that third channel is
+the only one with any opinion about quality.
+
+Nothing in the first two channels would stop an agent building a board that used
+one instrument and called it terrain. No rule fires. Every gate passes. The board
+exports. The only thing that prevents it is having read an example that put five
+treatments side by side and made the difference visible, and the only thing that
+prevents the subtler version of the same failure is a card that says, in a section
+of its own, which mistake this instrument invites.
