@@ -1842,9 +1842,15 @@ block looks deliberate.
 
 The keep-out mask is about things that *stand* on ground and a stroke stands on nothing, so a road runs
 through a spawn's protection and up to a door. What stops it is a shape marked `"keepClear": true` — a
-bridge deck, a town wall, a crop bed, a flight of steps — whose columns it skips exactly, with no margin, so
-the way runs to the deck and resumes beyond it. `DressingPalette.IsStamp` covers the rest for free: bedrock,
+causeway, a town wall, a crop bed, a flight of steps — whose columns it skips exactly, with no margin, so
+the way runs to it and resumes beyond it. `DressingPalette.IsStamp` covers the rest for free: bedrock,
 obsidian, wool, gold, iron, emerald, chests and stained glass are never a road's to take.
+
+**A bridge needs no marking, because it is not on the layer the stroke names.** A deck with air under it is
+one course on a layer of its own, and `PlaceStroke` reads `context.GroundFor(path)` — the surface of the
+prop's own layer. So a ground-layer way across a bridged gorge paves the **gorge floor** under the deck and
+never touches it, and paving the deck takes a stroke drawn on the bridge's layer. A causeway is the other
+thing: ground, solid to the bedrock, and indistinguishable from the bank it joins until it is marked.
 
 `techniques/painting-with-a-stroke` is the worked card: a strand feathered into a meadow, a serpentine paved
 four ways, the same verge with and without a claim, and one bridge crossed twice.

@@ -7,8 +7,9 @@ is what lays a road down a hillside without becoming a ramp. Open it in the stud
 `technique-painting-with-a-stroke`, or run `build.py`.
 
 **Row 1 is a strand meeting a meadow four ways, row 2 a serpentine cut into a hillside and paved four ways,
-row 3 what a pave may read and what turns the brush away.** Twenty-four props over twelve panels, no
-refusals and no complaints.
+row 3 what a pave may read and what turns the brush away.** Twenty-eight props over twelve panels and three
+layers. The only findings are two `SK11` complaints, about a gorge floor and a deck nothing can walk onto,
+which is a question about reach rather than about paint.
 
 ## The document
 
@@ -36,8 +37,8 @@ band, `pave` is what fills it, and `claimsGround` is whether it holds what it pa
 | `claimed` | the identical pair, `claimsGround: true` | the same paving; **1,136 fewer plants** |
 | `by-height` | the pave as a `height` stack | coarse dirt at y11, cobble at y20, andesite at y30 |
 | `by-inward` | the pave as an `inward` stack | **every cell the `beyond` material**; neither band lands |
-| `over-a-deck` | a way across a bridged gorge | 416 cells, the deck's boards repainted |
-| `keep-clear` | the same, the deck marked `keepClear` | **284 cells** — the deck keeps its own boards |
+| `over-a-crossing` | a way over a causeway and a way over a bridge | the causeway repainted; the bridge untouched, and the way paving the gorge floor under it |
+| `keep-clear` | the causeway marked, the bridge paved on its own layer | 416 cells become **320**; the bridge takes 84 from a stroke of its own |
 
 ## A seam a shape cannot make
 
@@ -108,7 +109,12 @@ courses from y6, then cobble for nine, then andesite: one stroke, and the road r
 the foot, cobble at y20 halfway up and andesite at y30 at the top. A track that turns to bare stone as it
 climbs is one prop.
 
-**An `inward` stack does not land, and it fails silently.** `by-inward` states a cobble rim over a
+**The same rule clips the foot of a `height` stack, and this board shows it.** `by-height` states
+`from: 6`, and where the serpentine runs out below that — at (−129, 106), whose top block is y5 — the step
+is negative and the column reads plain **Stone**, the default when no `beyond` is named. It is a pale patch
+at the bottom of the road, and it is the one thing on this board that was not meant to be there.
+
+**An `inward` stack does not land, and it fails the same way.** `by-inward` states a cobble rim over a
 coarse-dirt middle and names spruce planks as `beyond`, and every cell of the stroke comes out spruce
 planks: `LayeredMaterial.Resolve` returns `Beyond` when the step is negative, and a stroke's `Inset` is −1
 because a stroke is not inside a landmass footprint. There is no finding.
@@ -121,18 +127,36 @@ document order, which gives the ring a single `inward` pave could not.
 
 **A stroke is turned away by ground somebody drew, and by nothing else.** The keep-out mask is about things
 that *stand* on ground, and a stroke stands on nothing — held to the whole mask a road stops short of every
-spawn and tapers away under an approach rect. What it does respect is
-**`"keepClear": true`** on a shape: *"a shape drawn to be something — a town wall, a crop bed, a well's rim,
-a flight of stairs — is terrain by construction and indistinguishable from the ground beside it."*
+spawn and tapers away under an approach rect. What it does respect is **`"keepClear": true`** on a shape:
+*"a shape drawn to be something — a town wall, a crop bed, a well's rim, a flight of stairs — is terrain by
+construction and indistinguishable from the ground beside it."*
 
-**Measured on one bridge.** `over-a-deck` and `keep-clear` are the same gorge, the same plank deck and the
-same way across it. The unmarked deck's column reads **Andesite** — the road repainted its boards — and the
-marked one reads **Spruce Planks**. The stroke paves 416 cells in one panel and **284** in the other: the
-132 the deck covers, and nothing else. The road still runs to the deck and resumes beyond it.
+**The two crossings in row 3 are the two things a deck can be, and only one of them is terrain.** A
+**causeway** is a ground-layer shape: `height_mode: "level"` at the bank's own top, solid to the bedrock,
+constrained to the gap with one block of landing each side. A **bridge** is one course on a layer of its
+own, `base_y` set so its top block is level with the banks and the gap under it stays open —
+`section-crossing.png` is that gap.
+
+**A causeway is repainted, because the brush cannot tell it from the bank it joins.** In `over-a-crossing`
+its column reads **Cobblestone**; in `keep-clear`, marked, it reads **Spruce Planks**. The way paves 416
+cells across the unmarked panel and **320** across the marked one, and it still runs to the causeway and
+resumes beyond it — the keep-out is exact, with no margin.
+
+**A bridge is not repainted, and it needs no marking: it is on another layer, and a stroke paves the layer
+it names.** Its column reads Spruce Planks in `over-a-crossing` with no `keepClear` anywhere.
+
+**Which is also why a ground-layer way across a bridged gorge paves the gorge floor.** The stroke asks
+`context.GroundFor(path)` for the surface of *its* layer, and over the gorge that is the floor eleven blocks
+down: at (79, 95) it reads andesite from the road's own pave where (70, 90), outside the band, is grass.
+The stroke never stops — 416 cells over a 64-cell line.
+
+**So a way over a bridge is three strokes, and `keep-clear` is the worked one.** Two on the ground layer
+that stop at the lip on each side (176 cells each), and one on the bridge's own layer that paves the deck
+(84). That deck's column reads **Cobblestone**, and the gorge floor under it is left alone.
 
 **A stamped block is never a road's to take, with no marking at all.** `DressingPalette.IsStamp` names
 bedrock, obsidian, wool, gold, iron, emerald, chests and stained glass, and `PlaceStroke` skips any column
-whose top is one of them. A monument does not need `keepClear`; a plank deck does.
+whose top is one of them. A monument does not need `keepClear`; a causeway does.
 
 ## Where the bands were cut
 
@@ -142,7 +166,7 @@ whose top is one of them. A monument does not need `keepClear`; a plank deck doe
 
 **A stroke is finished after the painter, so the bands do not decide what a road is made of.** `census.txt`
 says it plainly: the `moor` theme carries **seven** distinct surface blocks over this board — grass, coarse
-dirt, cobble, stone, andesite, spruce planks and sand — because fourteen strokes wrote over it.
+dirt, cobble, stone, andesite, spruce planks and sand — because eighteen strokes wrote over it.
 
 ## The recipe
 
@@ -161,7 +185,9 @@ dirt, cobble, stone, andesite, spruce planks and sand — because fourteen strok
 - **`claimsGround` only for what must stay clear** — a road, a protected verge, a crop bed's margin. Paint
   is planted over, and that is the default for a reason.
 - **the pave can be banded by `height` and by nothing else**; across the width, use two strokes.
-- **mark a deck, a wall or a flight `"keepClear": true`**, or the way over it repaints it.
+- **name a `beyond` on any stack**, or every cell whose step falls negative comes out plain stone.
+- **mark a causeway, a wall or a flight `"keepClear": true`**, or the way over it repaints it. A bridge on
+  its own layer needs no marking, and needs its own stroke to be paved at all.
 - **budget a claim like a road**: three blocks of standoff for a tree round every paved cell.
 
 ## Limits
@@ -178,16 +204,17 @@ is a 26-wide strip nothing plants in, and this card's claimed verge is radius 6.
 
 - `dressing.json` — every prop and the cells it laid: the pair that differs in one word (3,302 against
   3,302, 1,622 against 1,622, 2,927 plants against 1,791), and the pair that differs in a keep-out (416
-  against 284). No declines.
-- `columns.txt` — seventeen columns: both sides of the ruled seam, the same cell brushed, the taper at its
-  middle and at its end, the three altitudes of one `height` stack, the whole of an `inward` one, and the
-  two bridge decks.
+  against 320, with 176 + 176 + 84 in its place). No declines.
+- `columns.txt` — twenty-one columns: both sides of the ruled seam, the same cell brushed, the taper at its
+  middle and at its end, the three altitudes of one `height` stack and the stone at its foot, the whole of
+  an `inward` one, and all four crossings.
 - `transects.txt` — five profiles: the beach the brush did not move, the same road section on both sides of
-  the claim, and the gorge the deck bridges.
+  the claim, and the two crossings along their own ways.
 - `census.txt` — three themes and nine surface blocks, which is what says a stroke changes blocks without
   changing themes.
 - `incline.txt` · `slopes.txt` — the histogram the bands were cut against, and what the paving did to the
   walk, which is nothing.
 - `painting-with-a-stroke.layout.json` — the one document the board was stored from.
 
-Renders: `row1-seam.png`, `row2-path.png`, `row3-limits.png`, and `iso.png` for all twelve.
+Renders: `row1-seam.png`, `row2-path.png`, `row3-limits.png`; `crossings.png` for the two decks and
+`section-crossing.png` for the gap under one of them; `iso.png` for all twelve.

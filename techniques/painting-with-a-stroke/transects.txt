@@ -104,47 +104,47 @@ TRANSECT 31 stations from (165, -42) to (165, -12), every 1
   (  165,   -12)      21       21           21  stroke verge-claimed  
 rises 0, falls 7, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 
-### over-a-deck — along the way, over the gorge
-TRANSECT 17 stations from (55, 58) to (55, 122), every 4
+### over-a-crossing — along the causeway: the way runs over it without a step
+TRANSECT 17 stations from (31, 58) to (31, 122), every 4
   station        ground  surface  water  top  standing            step
-  (   55,    58)      14       14           14  stroke way-over-a-deck  
-  (   55,    62)      14       14           14  stroke way-over-a-deck  
-  (   55,    66)      14       14           14  stroke way-over-a-deck  
-  (   55,    70)      14       14           14  stroke way-over-a-deck  
-  (   55,    74)      14       14           14  stroke way-over-a-deck  
-  (   55,    78)      14       14           14  stroke way-over-a-deck  
-  (   55,    82)      14       14           14  stroke way-over-a-deck  
-  (   55,    86)      14       14           14  stroke way-over-a-deck  
-  (   55,    90)      14       14           14  stroke way-over-a-deck  
-  (   55,    94)      14       14           14  stroke way-over-a-deck  
-  (   55,    98)      14       14           14  stroke way-over-a-deck  
-  (   55,   102)      14       14           14  stroke way-over-a-deck  
-  (   55,   106)      14       14           14  stroke way-over-a-deck  
-  (   55,   110)      14       14           14  stroke way-over-a-deck  
-  (   55,   114)      14       14           14  stroke way-over-a-deck  
-  (   55,   118)      14       14           14  stroke way-over-a-deck  
-  (   55,   122)      14       14           14  stroke way-over-a-deck  
+  (   31,    58)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,    62)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,    66)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,    70)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,    74)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,    78)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,    82)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,    86)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,    90)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,    94)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,    98)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,   102)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,   106)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,   110)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,   114)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,   118)      14       14           14  stroke way-causeway-over-a-crossing  
+  (   31,   122)      14       14           14  stroke way-causeway-over-a-crossing  
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
 
-### over-a-deck — beside it, through the gorge the deck bridges
-TRANSECT 17 stations from (70, 58) to (70, 122), every 4
+### over-a-crossing — along the bridge: the ground layer falls into the gorge, and the way with it
+TRANSECT 17 stations from (79, 58) to (79, 122), every 4
   station        ground  surface  water  top  standing            step
-  (   70,    58)      14       14           14                      
-  (   70,    62)      14       14           14                      
-  (   70,    66)      14       14           14                      
-  (   70,    70)      14       14           14                      
-  (   70,    74)      14       14           14                      
-  (   70,    78)      14       14           14                      
-  (   70,    82)      14       14           14                      
-  (   70,    86)       3        3            3                      DROP -11
-  (   70,    90)       3        3            3                      
-  (   70,    94)      14       14           14                      BARRIER +11
-  (   70,    98)      14       14           14                      
-  (   70,   102)      14       14           14                      
-  (   70,   106)      14       14           14                      
-  (   70,   110)      14       14           14                      
-  (   70,   114)      14       14           14                      
-  (   70,   118)      14       14           14                      
-  (   70,   122)      14       14           14                      
-rises 1, falls 1, worst step 11: 1 barrier, 0 scramble, 1 drop — DROP -11 at (70, 86); BARRIER +11 at (70, 94) | walked end to end
+  (   79,    58)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    62)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    66)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    70)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    74)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    78)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    82)       9        9            9  stroke way-span-over-a-crossing  DROP -5
+  (   79,    86)      14       14           14  stroke way-span-over-a-crossing  BARRIER +5
+  (   79,    90)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    94)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,    98)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,   102)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,   106)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,   110)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,   114)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,   118)      14       14           14  stroke way-span-over-a-crossing  
+  (   79,   122)      14       14           14  stroke way-span-over-a-crossing  
+rises 1, falls 1, worst step 5: 1 barrier, 0 scramble, 1 drop — DROP -5 at (79, 82); BARRIER +5 at (79, 86) | walked end to end
 

@@ -60,6 +60,13 @@ def flora(prop_id, ring, coverage=0.55):
                      "fernShare": 0.25, "flowerShare": 0.2, "flowerScale": 14}}
 
 
+def zband(cx, z_from, z_to, inset=3):
+    """A band across the panel between two z, which is how a bank and the cut beside it are stated without
+    their rings overlapping — two marks fighting over one cell is what leaves a wall half cut."""
+    half = PANEL_W / 2 - inset
+    return [[cx - half, z_from], [cx + half, z_from], [cx + half, z_to], [cx - half, z_to]]
+
+
 def box(cx, cz, width, depth):
     return [[cx - width / 2, cz - depth / 2], [cx + width / 2, cz - depth / 2],
             [cx + width / 2, cz + depth / 2], [cx - width / 2, cz + depth / 2]]
@@ -78,10 +85,10 @@ def serpentine(x0, z0, limbs=(22, 22), limb=72, inset=12, z_from=10):
     return [[round(x0 + px, 2), round(z0 + pz, 2)] for px, pz in points]
 
 
-shapes, groups, relief, props = [], [], {}, []
+shapes, groups, relief, props, over_layers = [], [], {}, [], []
 PANELS = ["butted", "feathered", "two-tongues", "tapered-tongue",
           "road", "weathered", "verge", "claimed",
-          "by-height", "by-inward", "over-a-deck", "keep-clear"]
+          "by-height", "by-inward", "over-a-crossing", "keep-clear"]
 
 for index, name in enumerate(PANELS):
     col, row = index % 4, index // 4
@@ -127,22 +134,49 @@ for index, name in enumerate(PANELS):
         # tongue reads as thinned meadow rather than as bare ground.
         props.append(flora(f"cover-{name}", box(cx, seam, PANEL_W - 8, 34)))
 
-    elif name in ("over-a-deck", "keep-clear"):
-        # A gill cut across the panel and a plank deck bridging it, with the path running over the deck.
-        # Two banks and a gorge between them. One mark with nothing to argue against pins a whole group,
-        # so the banks have to be stated as well as the cut; abutting marks make the walls sheer.
+    elif name in ("over-a-crossing", "keep-clear"):
+        # A gorge across the panel and two ways over it, so the two kinds of crossing stand side by side.
+        # Two banks and a cut between them: one mark with nothing to argue against pins a whole group, so
+        # the banks have to be stated as well as the cut, and abutting marks make the walls sheer.
         relief[name] = {"base": 14, "reach": 0, "step": 1, "pushes": [], "marks": [
-            area(f"north-{name}", 14, box(cx, z0 + 20, PANEL_W - 6, 32)),
-            area(f"gill-{name}", 3, box(cx, cz, PANEL_W - 6, 14)),
-            area(f"south-{name}", 14, box(cx, z0 + 56, PANEL_W - 6, 32))]}
-        members.append(f"deck-{name}")
-        deck = {"id": f"deck-{name}", "type": "rectangle", "operation": "add", "floor": 13,
-                "height_mode": "level", "base_height": 1, "skirt": 0, "theme": "deck",
-                "min_x": cx - 6, "min_z": cz - 11, "max_x": cx + 6, "max_z": cz + 11}
+            area(f"north-{name}", 14, zband(cx, z0 + 4, cz - 8)),
+            area(f"gill-{name}", 3, zband(cx, cz - 7, cz + 7)),
+            area(f"south-{name}", 14, zband(cx, cz + 8, z0 + PANEL_D - 4))]}
+
+        # A causeway: ground, solid to the bedrock, constrained to the gap with one block of landing either
+        # side. It is terrain by construction, so the brush cannot tell it from the bank it joins.
+        members.append(f"causeway-{name}")
+        causeway = {"id": f"causeway-{name}", "type": "rectangle", "operation": "add", "floor": 13,
+                    "height_mode": "level", "base_height": 1, "skirt": 0, "theme": "deck",
+                    "min_x": cx - 29, "min_z": cz - 8, "max_x": cx - 19, "max_z": cz + 8}
         if name == "keep-clear":
-            deck["keepClear"] = True
-        shapes.append(deck)
-        props.append(stroke(f"way-{name}", [[cx, z0 + 6], [cx, z0 + PANEL_D - 6]], ROAD, radius=3))
+            causeway["keepClear"] = True
+        shapes.append(causeway)
+
+        # A bridge: one course on a layer of its own, `base_y` set so its top block is level with the banks
+        # and the gap under it stays open. Nothing of it is on the ground layer, so a ground-layer stroke
+        # never sees it — what it sees there is the gorge floor, eleven blocks down.
+        over_layers.append({"id": f"span-{name}", "name": f"Span {name}", "base_y": 13,
+                            "layout": {"shapes": [{"id": f"span-{name}", "type": "rectangle",
+                                                   "operation": "add", "floor": 0, "base_height": 1,
+                                                   "theme": "deck", "min_x": cx + 19, "min_z": cz - 7,
+                                                   "max_x": cx + 29, "max_z": cz + 7}],
+                                       "groups": [{"id": f"span-{name}", "name": f"span-{name}",
+                                                   "mirrors": False, "shapeIds": [f"span-{name}"]}]}})
+
+        west, east = cx - 24, cx + 24
+        if name == "over-a-crossing":
+            props.append(stroke(f"way-causeway-{name}", [[west, z0 + 6], [west, z0 + PANEL_D - 6]], ROAD))
+            props.append(stroke(f"way-span-{name}", [[east, z0 + 6], [east, z0 + PANEL_D - 6]], ROAD))
+        else:
+            # The way over the causeway runs the whole panel and is turned away by the marking alone.
+            props.append(stroke(f"way-causeway-{name}", [[west, z0 + 6], [west, z0 + PANEL_D - 6]], ROAD))
+            # The way over the bridge is three strokes: the two banks on the ground layer, and the deck on
+            # the bridge's own, because a stroke paves the layer it names and no other.
+            props.append(stroke(f"way-north-{name}", [[east, z0 + 6], [east, cz - 8]], ROAD))
+            props.append(stroke(f"way-south-{name}", [[east, cz + 8], [east, z0 + PANEL_D - 6]], ROAD))
+            props.append(stroke(f"way-span-{name}", [[east, cz - 7], [east, cz + 7]], ROAD,
+                                layer=f"span-{name}"))
 
     else:
         # A serpentine cut into a hillside: the relief makes the road BED and the stroke paves it.
@@ -186,12 +220,12 @@ layout = {
     "mapTheme": "moor",
     "relief": relief,
     "layers": [{"id": "ground", "name": "Ground", "base_y": 0,
-                "layout": {"shapes": shapes, "groups": groups}}],
+                "layout": {"shapes": shapes, "groups": groups}}] + over_layers,
     "dressing": {"props": props},
 }
 out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "painting-with-a-stroke.layout.json")
 json.dump(layout, open(out, "w"), indent=1)
-print(f"{len(PANELS)} panels, {len(props)} props -> {out}")
+print(f"{len(PANELS)} panels, {len(props)} props, {1 + len(over_layers)} layers -> {out}")
 for index, name in enumerate(PANELS):
     x0, z0 = COL_X[index % 4], ROW_Z[index // 4]
     mine = [p for p in props if p["id"].endswith(name)]

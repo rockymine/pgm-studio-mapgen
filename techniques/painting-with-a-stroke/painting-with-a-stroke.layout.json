@@ -722,38 +722,38 @@
     }
    ]
   },
-  "over-a-deck": {
+  "over-a-crossing": {
    "base": 14,
    "reach": 0,
    "step": 1,
    "pushes": [],
    "marks": [
     {
-     "id": "north-over-a-deck",
+     "id": "north-over-a-crossing",
      "kind": "area",
      "h": 14,
      "bevel": 0,
      "ring": [
       [
        10.0,
-       56.0
+       56
       ],
       [
        100.0,
-       56.0
+       56
       ],
       [
        100.0,
-       88.0
+       82.0
       ],
       [
        10.0,
-       88.0
+       82.0
       ]
      ]
     },
     {
-     "id": "gill-over-a-deck",
+     "id": "gill-over-a-crossing",
      "kind": "area",
      "h": 3,
      "bevel": 0,
@@ -777,26 +777,26 @@
      ]
     },
     {
-     "id": "south-over-a-deck",
+     "id": "south-over-a-crossing",
      "kind": "area",
      "h": 14,
      "bevel": 0,
      "ring": [
       [
        10.0,
-       92.0
+       98.0
       ],
       [
        100.0,
-       92.0
+       98.0
       ],
       [
        100.0,
-       124.0
+       124
       ],
       [
        10.0,
-       124.0
+       124
       ]
      ]
     }
@@ -816,19 +816,19 @@
      "ring": [
       [
        120.0,
-       56.0
+       56
       ],
       [
        210.0,
-       56.0
+       56
       ],
       [
        210.0,
-       88.0
+       82.0
       ],
       [
        120.0,
-       88.0
+       82.0
       ]
      ]
     },
@@ -864,19 +864,19 @@
      "ring": [
       [
        120.0,
-       92.0
+       98.0
       ],
       [
        210.0,
-       92.0
+       98.0
       ],
       [
        210.0,
-       124.0
+       124
       ],
       [
        120.0,
-       124.0
+       124
       ]
      ]
     }
@@ -1059,7 +1059,7 @@
       "max_z": 128
      },
      {
-      "id": "island-over-a-deck",
+      "id": "island-over-a-crossing",
       "type": "rectangle",
       "operation": "add",
       "floor": 0,
@@ -1071,7 +1071,7 @@
       "max_z": 128
      },
      {
-      "id": "deck-over-a-deck",
+      "id": "causeway-over-a-crossing",
       "type": "rectangle",
       "operation": "add",
       "floor": 13,
@@ -1079,10 +1079,10 @@
       "base_height": 1,
       "skirt": 0,
       "theme": "deck",
-      "min_x": 49.0,
-      "min_z": 79.0,
-      "max_x": 61.0,
-      "max_z": 101.0
+      "min_x": 26.0,
+      "min_z": 82.0,
+      "max_x": 36.0,
+      "max_z": 98.0
      },
      {
       "id": "island-keep-clear",
@@ -1097,7 +1097,7 @@
       "max_z": 128
      },
      {
-      "id": "deck-keep-clear",
+      "id": "causeway-keep-clear",
       "type": "rectangle",
       "operation": "add",
       "floor": 13,
@@ -1105,10 +1105,10 @@
       "base_height": 1,
       "skirt": 0,
       "theme": "deck",
-      "min_x": 159.0,
-      "min_z": 79.0,
-      "max_x": 171.0,
-      "max_z": 101.0,
+      "min_x": 136.0,
+      "min_z": 82.0,
+      "max_x": 146.0,
+      "max_z": 98.0,
       "keepClear": true
      }
     ],
@@ -1198,12 +1198,12 @@
       ]
      },
      {
-      "id": "over-a-deck",
-      "name": "over-a-deck",
+      "id": "over-a-crossing",
+      "name": "over-a-crossing",
       "mirrors": false,
       "shapeIds": [
-       "island-over-a-deck",
-       "deck-over-a-deck"
+       "island-over-a-crossing",
+       "causeway-over-a-crossing"
       ]
      },
      {
@@ -1212,7 +1212,69 @@
       "mirrors": false,
       "shapeIds": [
        "island-keep-clear",
-       "deck-keep-clear"
+       "causeway-keep-clear"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "span-over-a-crossing",
+   "name": "Span over-a-crossing",
+   "base_y": 13,
+   "layout": {
+    "shapes": [
+     {
+      "id": "span-over-a-crossing",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 1,
+      "theme": "deck",
+      "min_x": 74.0,
+      "min_z": 83.0,
+      "max_x": 84.0,
+      "max_z": 97.0
+     }
+    ],
+    "groups": [
+     {
+      "id": "span-over-a-crossing",
+      "name": "span-over-a-crossing",
+      "mirrors": false,
+      "shapeIds": [
+       "span-over-a-crossing"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "span-keep-clear",
+   "name": "Span keep-clear",
+   "base_y": 13,
+   "layout": {
+    "shapes": [
+     {
+      "id": "span-keep-clear",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 1,
+      "theme": "deck",
+      "min_x": 184.0,
+      "min_z": 83.0,
+      "max_x": 194.0,
+      "max_z": 97.0
+     }
+    ],
+    "groups": [
+     {
+      "id": "span-keep-clear",
+      "name": "span-keep-clear",
+      "mirrors": false,
+      "shapeIds": [
+       "span-keep-clear"
       ]
      }
     ]
@@ -2222,16 +2284,16 @@
     "seed": 4
    },
    {
-    "id": "way-over-a-deck",
+    "id": "way-causeway-over-a-crossing",
     "kind": "stroke",
     "layer": "ground",
     "points": [
      [
-      55.0,
+      31.0,
       58
      ],
      [
-      55.0,
+      31.0,
       122
      ]
     ],
@@ -2262,17 +2324,177 @@
     "seed": 4
    },
    {
-    "id": "way-keep-clear",
+    "id": "way-span-over-a-crossing",
     "kind": "stroke",
     "layer": "ground",
     "points": [
      [
-      165.0,
+      79.0,
       58
      ],
      [
-      165.0,
+      79.0,
       122
+     ]
+    ],
+    "radius": 3,
+    "style": "solid",
+    "claimsGround": false,
+    "pave": {
+     "kind": "cell",
+     "cellSize": 4,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     ]
+    },
+    "seed": 4
+   },
+   {
+    "id": "way-causeway-keep-clear",
+    "kind": "stroke",
+    "layer": "ground",
+    "points": [
+     [
+      141.0,
+      58
+     ],
+     [
+      141.0,
+      122
+     ]
+    ],
+    "radius": 3,
+    "style": "solid",
+    "claimsGround": false,
+    "pave": {
+     "kind": "cell",
+     "cellSize": 4,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     ]
+    },
+    "seed": 4
+   },
+   {
+    "id": "way-north-keep-clear",
+    "kind": "stroke",
+    "layer": "ground",
+    "points": [
+     [
+      189.0,
+      58
+     ],
+     [
+      189.0,
+      82.0
+     ]
+    ],
+    "radius": 3,
+    "style": "solid",
+    "claimsGround": false,
+    "pave": {
+     "kind": "cell",
+     "cellSize": 4,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     ]
+    },
+    "seed": 4
+   },
+   {
+    "id": "way-south-keep-clear",
+    "kind": "stroke",
+    "layer": "ground",
+    "points": [
+     [
+      189.0,
+      98.0
+     ],
+     [
+      189.0,
+      122
+     ]
+    ],
+    "radius": 3,
+    "style": "solid",
+    "claimsGround": false,
+    "pave": {
+     "kind": "cell",
+     "cellSize": 4,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     ]
+    },
+    "seed": 4
+   },
+   {
+    "id": "way-span-keep-clear",
+    "kind": "stroke",
+    "layer": "span-keep-clear",
+    "points": [
+     [
+      189.0,
+      83.0
+     ],
+     [
+      189.0,
+      97.0
      ]
     ],
     "radius": 3,
