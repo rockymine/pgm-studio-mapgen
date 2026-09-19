@@ -12,9 +12,9 @@ Everything below is measured off the run reports in `reports/opus5-*.md`. Each r
 build, most of them more than one, and several were paid twice by different runs.
 
 **Read the budget before the table.** This repository is larger than any context window: the documents
-alone are ~82k tokens, every text render of one board is 30–57k, and two `*.layout.json` files exceed
-200k each. `pgm-board-warmup` carries the limits and the never-open list. A layout is queried with `jq`
-and never `cat`-ed, and a one-line verdict is a `grep` rather than a file read.
+the brief points at are ~241k tokens, every text render of one board is 30–57k, and two `*.layout.json`
+files exceed 200k each. `pgm-board-warmup` carries the limits and the never-open list. A layout is queried
+with `jq` and never `cat`-ed, and a one-line verdict is a `grep` rather than a file read.
 
 **And `specs/archive/` is a record rather than a set of examples** — the eighteen boards flat under
 `specs/` are the ones worth reading, and `showcase/` is smaller and more directed than either.
@@ -119,10 +119,8 @@ The one legitimate exception is §1's last row: a world that is not a stored map
 
 `opus5-thunder-series` reconstructed three boards from top-down renders and had to redo them.
 `opus5-tarnfell` read `world-material.png`, saw sand, and concluded the lake was missing — the material
-top-down draws the top **solid** block, so water reads as its own bed. `opus5-run4` read the
-traversability map and nearly redesigned a correct board (`B99`: an approach wall's cobweb reads as
-impassable). `opus5-undercroft` read a transect through a filter capped at y22 and concluded a causeway
-was six blocks low.
+top-down draws the top **solid** block, so water reads as its own bed. `opus5-undercroft` read a transect
+through a filter capped at y22 and concluded a causeway was six blocks low.
 
 > *"`GET /api/map/{slug}/column` is the read that settled every disagreement."* — `opus5-interchange`
 
@@ -146,7 +144,7 @@ the compile refused: *version 2 states marker offsets in blocks from the piece c
 documents in `specs/` disagree with the API by exactly one cell size.
 
 The same applies to `GENERATION-NOTES.md`, which is headed *"Measured against pgm-studio at b45b154"*.
-Its claim that theme scope is cross-layer is **stale** — `ShapeScopeOwners` keys on `(layer, x, z)`.
+Four of its entries cited a task id as an open gap that has since shipped.
 
 **Order of authority: the API's own answer › the schema in `openapi.json` › the notes › a committed
 spec.** Read source only where two of those disagree, and then read the narrowest thing that settles it.

@@ -625,9 +625,9 @@ generic tool that reorders JSON does this: a formatter, a re-serializer, `json.d
 Measured on a room style that previews at 200 as authored and 400 with `kind` moved last in every material,
 the two documents comparing equal as data.
 
-Write materials `kind` first, and never round-trip a theme or a style through anything that sorts keys.
-Fixed in the studio as `TL2` — the reader takes `kind` wherever it sits. A theme or a style written against
-an older build still wants `kind` first.
+The reader takes `kind` wherever it sits, so a document round-tripped through a formatter reads. Write
+materials `kind` first anyway: it is what every committed theme and style here states, and it is what a
+build older than this one needs.
 
 ### Two words differ between a save request and a snapshot
 
@@ -915,13 +915,6 @@ Measured again today on `opus5-wheal-hazel-v2`: `(0, 85)`, inside the spawn, top
 while `(0, 70)` on the same board and the same theme reads Grass Block over Coarse Dirt. Four runs have now
 reported it. On an otherwise fully themed map that is a stone patch under every spawn.
 
-### Export into a fresh, empty directory
-
-A rebuild writes over a region directory it never clears (`B102`, open), so an `.mca` a previous build left
-behind survives into the new map and reads back as part of it. `tools/drive.py` deletes its `--out` before
-extracting for exactly this reason. If two builds of the same map disagree in a way that makes no sense, this
-is why.
-
 ---
 
 ## Reading the world back
@@ -1003,14 +996,6 @@ thickness is exactly what decides whether it can be built over.
 vertical division in a section is a real block. The two backgrounds are two different answers: pale `#E7ECF3`
 is air inside a loaded chunk, near-black `#0E0E12` is no chunk at all. And it samples **one plane**, so
 anything a few blocks either side of the cut is not in the picture.
-
-### `--traversability-map` reports an approach wall's cobweb as impassable
-
-Every board carrying an approach wall reads isolated except one whose wool lane has a second land seam. The
-renderer's ground search steps past decoration but its headroom test does not, so the cobweb course capping
-every wall reads as blocking (`B99`, open). The export gate navigates on `WorldColumns.Membership` and never
-sees it, so all of those boards pass. A wall is meant to be crossed — over the top, cutting the web with the
-shears the kit carries.
 
 ### A composed board is JSON, and taking it over is four edits
 
@@ -1199,8 +1184,8 @@ consequences, all measured on `maps/opus5-undercroft`:
   falls inside the `fill` band: no turf, no rim, no wall.
 - **The covered ground cannot be dressed.** A tree stated at `(8, 53)`, where the ground is a hall
   floor at y14, stood at y28 on the roof. No decline mentions it.
-- **Theme scope is 2-D.** `ShapeThemeOwners` gives a cell to the smallest-area themed shape covering
-  it across every layer, so an upper shape's theme owns the ground beneath it too.
+- **Theme scope is per layer.** `ShapeScopeOwners` keys on `(layer, x, z)`, so a shape owns the paint
+  only on its own storey and ground under a slab keeps whatever its own layer states.
 
 ### A ground ramp meets an upper slab by touching it, and nothing else is needed
 
@@ -1284,7 +1269,8 @@ to be moved apart in plan (`WE49`).
 rock at `under[1..18]` under `ground[18..28]`, which is what stating the rock under a landmass looks
 like — is the case a closed reading gets wrong: nothing is found above, the storey is handed the rest
 of the world, and `?layer=under` draws the surface under the undercroft's name. A layer with air over
-it reads correctly, so the fault shows on some storeys of a board and not others (`WS18`, fixed).
+it reads correctly either way, so the half-open reading is what makes a storey read answer for the
+board's lower layers at all.
 
 The provenance record travels with it: a claim is recorded per column and carries no course, so under
 a storey read it describes the column's top rather than the course being drawn. It is narrowed with

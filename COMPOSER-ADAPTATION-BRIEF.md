@@ -4,9 +4,9 @@ A composed board is a **suggestion**, not a plan. This brief is what the reposit
 that gap, what was measured off the running composer to confirm it, and what an authoring agent is
 therefore expected to do with a board it pulls off `GET /api/compose`.
 
-It **overrides one line of `AUTHORING-BRIEF.md`** — *"Do not author from a composed board"* — for this run
-and this run only. The reason that line exists is the fifteen boards that looked like each other, and the
-answer here is not to avoid the composer but to refuse its output as a finished thing.
+It is what `AUTHORING-BRIEF.md` §4 sends a capture board's author here for. The fifteen boards that looked
+like each other are why the composer's output is refused as a finished thing, not why the composer is
+avoided.
 
 ---
 
@@ -23,7 +23,7 @@ comes out illogical in ways no gate catches. **Take the arrangement.**
 
 | The composer does not | So the board arrives |
 |---|---|
-| vary the crossing's ground | the mid now carries a row of up to three stones astride the axis, funded from the units' own land — but the row is one lateral line at one depth, so there is no tiered island, no staggered pair and no stone off the band's own centre line |
+| tier or elevate the crossing's ground | the mid carries a row of stones funded from the units' own land, and `MidForm` decides where they stand — `SingleRank` astride the axis so each stone merges with its own image, `DoubleRank` clear of it so each team meets its own first, `None` for an open crossing. `MidGrain` cuts the row `Broad` or `Fine`, and a `SplitBand` makes the bay between two crossings the island. What none of them states is a **height**: every stone is flat at `globals.surface`, so a tiered island is authored downstream |
 | place defence walls | `"walls": []`, always. A defence wall is authored, never composed |
 | state any elevation | no piece carries a `surface`; the whole board is flat at `globals.surface` 9 |
 | draw anything but rectangles | every piece is an axis-aligned cell rect; there is no curve, no spur, no taper anywhere in the document |

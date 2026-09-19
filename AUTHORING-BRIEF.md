@@ -567,10 +567,17 @@ that read like compile errors and are not.
 9. **`docs/generator/model.md`** — read for the **box model as vocabulary**: what a body is, how a hub, a
    lane, a frontline and a dock relate, what a wool approach is made of.
 
-**Do not author from a composed board.** `/generator` composes whole boards from a player count, a symmetry
-and a seed. Understand the box model — that is why `model.md` is on the list — but painting a theme onto a
-composed board is what produced fifteen boards that look like each other. Draw your own, informed by the
-model rather than emitted by it.
+**A composed board is a suggestion, and a capture board may start from one.** `GET /api/compose` knows how
+a CTW board is put together — hub, spawn, wool approaches, frontline, a mid band with a row of stepping
+stones in it — and that arrangement is the thing hard to invent and easy to get wrong.
+
+**What it hands over is a plan and nothing else.** It states no elevation, draws nothing but axis-aligned
+rectangles, places no defence wall and carries no layer, so the ground, the edge that is not straight, the
+second storey and the wall are all still yours to author.
+
+**Painting a theme onto a composed board and stopping there is what produced fifteen boards that look like
+each other.** `COMPOSER-ADAPTATION-BRIEF.md` is what taking one over costs and what the adaptation must not
+break; read it before pulling a board, and draw a destroy board yourself.
 
 ---
 
@@ -600,9 +607,6 @@ model rather than emitted by it.
   that reaches it, a wall on the only throat, a room whose door opens onto its own apron. A top-down of the
   built world cannot show that, because by then they are terrain. `tools/board.py` is the same read off the
   plan file, before a map row exists.
-- **Export into a fresh, empty directory every time.** A rebuild writes over a region directory it never
-  clears (`B102`, open), so an `.mca` a previous build left behind survives into the new map. If two builds
-  disagree in a way that makes no sense, this is why.
 
 ---
 

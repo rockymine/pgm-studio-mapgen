@@ -9,8 +9,10 @@ about 12k tokens and ten minutes, and both are done before a plan is written.
 
 ## 1. The budget, because this repository is larger than any context window
 
-The documents a run is pointed at come to **~82k tokens** — 41% of a 200k window before a
-single map is opened. Everything below assumes that is already spent.
+The documents a run is pointed at come to **~241k tokens** — more than a 200k window holds,
+before a single map is opened. `AUTHORING-BRIEF.md` §4's reading list is 187k of that on its own,
+and the four briefs and two skills here are the other 54k. Nothing below assumes it can all be
+read: open a tool document at the question that needs it, not at the start.
 
 | Read | ~tokens | When |
 |---|---|---|
