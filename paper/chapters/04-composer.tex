@@ -124,34 +124,35 @@ lane is a chokepoint, two the unstable middle, three multi-access.
 
 \begin{figure}[htbp]
 \centering
-\begin{minipage}[c]{0.34\textwidth}
-  \centering
-  \includegraphics[height=0.52\textheight]{figures/generated/composed-hushwater.pdf}
+\begin{minipage}[b]{0.56\textwidth}\raggedright
+  \input{figures/diagrams/plan-composed}
 \end{minipage}%
 \hfill
-\begin{minipage}[c]{0.60\textwidth}
-\small
-The board the worked example of \cref{ch:ctw} begins from, drawn by the studio
-itself. Eighteen players a side, two teams, \id{rot\_180}, cell 4, seed 5. It
-scores 0, meaning no term falls outside its band.
-
-\medskip
-Every element of \cref{tab:shares} is visible. The \textbf{hub} is the large violet
-body, here in its \emph{ring} form, and the white square inside it is the hole that
-\id{CT8} calls the rotation device. The \textbf{spawn} hangs off the hub's far
-edge. The two \textbf{wool} approaches, both of the \emph{i} family, stand off its
-flanks. The \textbf{frontline} fronts it in orange, in its \emph{single} form. The
-pink band across the middle is the \textbf{mid}: the only build zone a composed
-board carries.
-
-\medskip
-The whole of it is one authored unit repeated through the board's symmetry. Nothing
-in the picture is curved, nothing is at a different elevation, and nothing is made
-of anything. That is the state a board arrives in, and \cref{ch:ctw} is the account
-of what an author does to it next.
+\begin{minipage}[b]{0.40\textwidth}\raggedleft
+  \input{figures/diagrams/plan-adapted}
 \end{minipage}
-\caption{A composed board, as \route{GET /api/compose} draws it. The studio renders
-this card itself; the figure is its SVG, unedited.}
+
+\medskip
+\planlegend
+
+\medskip
+{\small
+\begin{minipage}{0.96\textwidth}
+\textbf{Left:} the board as the composer emits it. Twelve pieces, one build zone,
+no wall. The hub is in its \emph{ring} form, and the square it encloses is the hole
+\id{CT8} calls the rotation device. The spawn hangs off the hub's far edge, the two
+wool approaches stand off its flanks, and the band across the middle is the only
+build zone a composed board carries. The lower half is the same unit fanned through
+\id{rot\_180}, drawn faintly; the parts are named on the upper half only.
+
+\smallskip
+\textbf{Right:} the same board after an author has worked on it. Seventeen pieces,
+three build zones, one wall. Most of the difference is one move: an island added
+off a flank with a build zone reaching it, so one wool is approached across a gap
+rather than walked to.
+\end{minipage}}
+\caption{A composed board and an adapted one, drawn from the two stored plans.
+Only the geometry is the studio's; the drawing is this paper's.}
 \label{fig:composed-card}
 \end{figure}
 

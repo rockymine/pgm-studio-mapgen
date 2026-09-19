@@ -42,8 +42,11 @@
 \usepackage[nameinlink]{cleveref}
 
 % --- palette -----------------------------------------------------------------
-% One ink, one accent, and a muted categorical set. The categorical colours are
-% ordered so that adjacent series stay distinguishable in greyscale.
+% One ink, one accent, and a categorical set validated for colour-vision
+% deficiency: every adjacent pair clears the CVD separation floor under protan,
+% deutan and tritan simulation, the chroma floor, and 3:1 contrast against the
+% page. The order is fixed and is never cycled; a seventh series folds into
+% "other" rather than taking a generated hue.
 \definecolor{ink}       {HTML}{1A1D21}
 \definecolor{ink60}     {HTML}{5B6169}
 \definecolor{ink30}     {HTML}{9AA1A9}
@@ -53,16 +56,16 @@
 \definecolor{accent}    {HTML}{1F5C8B}
 \definecolor{accentsoft}{HTML}{DCE8F1}
 
-\definecolor{catA}{HTML}{1F5C8B}
-\definecolor{catB}{HTML}{C86A3A}
-\definecolor{catC}{HTML}{4C7A4A}
-\definecolor{catD}{HTML}{8A5A93}
-\definecolor{catE}{HTML}{B03A48}
-\definecolor{catF}{HTML}{6E7A86}
+\definecolor{catA} {HTML}{0072B2}
+\definecolor{catB} {HTML}{D55E00}
+\definecolor{catC} {HTML}{A054A0}
+\definecolor{catD} {HTML}{009E73}
+\definecolor{catE} {HTML}{9C6B00}
+\definecolor{catF} {HTML}{3C8DC4}
 
 % The two parties the paper is about, given one colour each and used nowhere else.
-\definecolor{studioC}{HTML}{1F5C8B}
-\definecolor{agentC} {HTML}{C86A3A}
+\definecolor{studioC} {HTML}{0072B2}
+\definecolor{agentC} {HTML}{D55E00}
 
 \hypersetup{
   colorlinks=false,
@@ -169,3 +172,32 @@
 % Totals measured off the running studio, so the prose cites the measurement
 % rather than a literal. Regenerated with the rest of data/.
 \input{data/facts}
+
+% --- plan diagrams ------------------------------------------------------------
+% Four inks, not seven. A piece that is only ground stays quiet; the three things
+% a reader has to tell apart take an accent each, and one legend serves every
+% plan figure in the paper.
+\definecolor{planGround}    {HTML}{E7EAEE}
+\definecolor{planGroundEdge}{HTML}{A8B0B9}
+\definecolor{planSpawn}     {HTML}{CBE3DA}
+\definecolor{planSpawnEdge} {HTML}{009E73}
+\definecolor{planWool}      {HTML}{F3DCC8}
+\definecolor{planWoolEdge}  {HTML}{D55E00}
+\definecolor{planBuffer}    {HTML}{FFFFFF}
+\definecolor{planBufferEdge}{HTML}{A8B0B9}
+\definecolor{planZone}      {HTML}{0072B2}
+\definecolor{planAxis}      {HTML}{9AA1A9}
+
+% The legend, stated once and reused, so no plan figure carries its own key.
+\newcommand{\planlegend}{%
+  \begin{tikzpicture}[baseline=-0.55ex, x=1mm, y=1mm]
+    \fill[planGround, draw=planGroundEdge] (0,-1.4) rectangle (3.4,2);
+    \node[anchor=west, font=\footnotesize\color{ink60}] at (4.2,0.3) {ground};
+    \fill[planSpawn, draw=planSpawnEdge] (20,-1.4) rectangle (23.4,2);
+    \node[anchor=west, font=\footnotesize\color{ink60}] at (24.2,0.3) {spawn};
+    \fill[planWool, draw=planWoolEdge] (38,-1.4) rectangle (41.4,2);
+    \node[anchor=west, font=\footnotesize\color{ink60}] at (42.2,0.3) {wool room};
+    \draw[planZone, dashed, line width=0.7pt] (62,-1.4) rectangle (65.4,2);
+    \node[anchor=west, font=\footnotesize\color{ink60}] at (66.2,0.3) {build zone};
+  \end{tikzpicture}%
+}
