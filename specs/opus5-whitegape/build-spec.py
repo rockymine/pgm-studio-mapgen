@@ -85,9 +85,9 @@ FELL = {
     # The ground is finished by its ANGLE. A limestone fell is meadow where it lies flat, worn
     # ground where it leans, and bare rock where it stands up.
     "surface": {"enabled": True, "depth": 3, "material": layered([
-        (layered([(GRASS, 1), (COARSE, 1), (DIRT, 1)], beyond=STONE), 20),
-        (layered([(cell([COARSE, GRAVEL], 9, 43), 1), (DIRT, 2)], beyond=STONE), 16),
-        (layered([(cell([STONE, ANDESITE], 11, 45, rise=4), 2), (STONE, 1)], beyond=STONE), 54),
+        (layered([(GRASS, 1), (COARSE, 1), (DIRT, 1)], beyond=STONE), 16),
+        (layered([(cell([COARSE, GRAVEL], 9, 43), 1), (DIRT, 2)], beyond=STONE), 18),
+        (layered([(cell([STONE, ANDESITE], 11, 45, rise=4), 2), (STONE, 1)], beyond=STONE), 56),
     ], axis="slope", ending="repeat", beyond=STONE)},
     "wall": BEDS,
     "wallEnabled": True,
@@ -114,7 +114,8 @@ DOCK = {
     "wallOnTerrainFaces": True,
     "rim": {"enabled": True, "depth": 1, "material": STONEBRICK},
     "surface": {"enabled": True, "depth": 2, "material": layered([
-        (HARDCORE, 1), (STONE, 1)], beyond=STONE)},
+        (cell([STONEBRICK, STONE, COBBLE], 9, 51, jitter=20, warp=3, rise=4), 1),
+        (STONE, 1)], beyond=STONE)},
     "wall": {"kind": "wallRun", "runs": [
         {"material": STONEBRICK, "width": 5},
         {"material": STONE, "width": 3},
@@ -189,11 +190,11 @@ MARKS = [
 
 PUSHES = [
     # The knott: the east fell, the one landform the board has that nobody made. Its two gradients
-    # agree — amount/falloff 8/9 outside against crown/half 8/9 inside — so it is a hillside and
-    # not a wall with a hill on top of it.
-    {"id": "knott", "seed": 11, "roughness": 3, "falloff": 9, "crown": 8,
-     "amounts": [4, 6, 8, 7, 5, 4, 5], "ring": [
-         [16, -88], [24, -85], [27, -74], [26, -56], [20, -46], [15, -56], [13, -72]]},
+    # agree — amount/falloff 5/14 outside (20°) against crown/half 4/8 inside (27°) — so it is a
+    # hillside a player walks up and not a wall with a hill on top of it.
+    {"id": "knott", "seed": 11, "roughness": 3, "falloff": 14, "crown": 4,
+     "amounts": [3, 4, 5, 5, 4, 3, 4], "ring": [
+         [17, -88], [25, -85], [27, -74], [26, -56], [21, -46], [16, -56], [15, -72]]},
 ]
 
 RELIEF = {"*": {"base": BASE, "reach": 0, "step": 1,
@@ -256,7 +257,7 @@ made({"id": "pit-wall", "type": "polyline", "operation": "add", "keepClear": Tru
       "stroke_edge": "solid", "radius": 1.5, "material": DRYSTONE,
       "height_mode": "level", "skirt": 0, "relief_scope": "exclude",
       "floor": 0, "base_height": PAD + 3,
-      "vertices": [[-11, -68], [-3, -66], [4, -64], [8, -60]]})
+      "vertices": [[-13, -69], [-7, -67], [-1, -66], [2, -64]]})
 
 # The dock's parapet, three blocks in from the void so there is a walkway outside it. Split, so the
 # middle of the dock is open to the chasm — which is where a bridge wants to leave from.
@@ -350,27 +351,28 @@ def house(pid, corners, seed, front):
 # Three ways, each of them somewhere a load or a man actually went.
 road("haul-road", [[-22, -71], [-17, -80], [-14, -88]], 3, 81)         # ramp head to the spawn
 road("tramway", [[18, -24], [15, -28], [12, -33]], 2, 83)              # incline head to the east bay
-road("lip-path", [[-16, -76], [-24, -58], [-27, -44], [-24, -32], [-18, -26]], 2, 85)  # west flank
+road("lip-path", [[-16, -76], [-24, -58], [-26, -46], [-23, -38]], 2, 85)   # west flank, to the door
 
 # The winding house, at the head of the haul ramp: the drum that hauled wagons out of the pit.
 house("winding-house", [[-27, -82], [-20, -75]], 601, "posZ")
-# The weigh house, beside the dock's west flight: loads were weighed before they went over.
-house("weigh-house", [[-21, -36], [-14, -29]], 607, "posZ")
+# The powder house: a magazine stands apart from the works, which is why it is out on the west
+# flank on its own with a track running to its door and nothing else near it.
+house("powder-house", [[-27, -36], [-20, -29]], 607, "negZ")
 
 # Boulders where a limestone fell has them: broken off the knott's shoulder, and one pair on the
 # bare pavement west of the cart road.
-for i, (x, z, st) in enumerate([(17, -78, "clint"), (22, -66, "limestone"), (14, -50, "limestone"),
-                                (-25, -92, "limestone"), (-24, -64, "clint")]):
+for i, (x, z, st) in enumerate([(4, -84, "clint"), (6, -70, "limestone"), (24, -88, "limestone"),
+                                (21, -58, "clint")]):
     boulder(f"erratic-{i}", x, z, st)
 
 # Scrub in the lee of the knott and a shelter belt behind the spawn hall. Nothing in the pit and
 # nothing on the dock: a working floor is bare, and OB19 keeps 10 blocks round the goal clear.
 for i, (x, z, st) in enumerate([
-        (9, -84, SCRUB[0]), (11, -90, SCRUB[1]), (6, -76, SCRUB[2]), (3, -92, SCRUB[3]),
-        (10, -44, SCRUB[4]), (10, -34, SCRUB[0]), (21, -40, SCRUB[1]),
-        (-24, -70, SCRUB[2]), (-27, -60, SCRUB[3]), (-26, -50, SCRUB[4]),
-        (-16, -96, SHELTER[0]), (-5, -98, SHELTER[1]), (2, -96, SHELTER[0]),
-        (-2, -66, SCRUB[1]), (-5, -76, SCRUB[2]), (-11, -72, SCRUB[3])]):
+        (18, -34, SCRUB[0]), (22, -46, SCRUB[1]), (17, -44, SCRUB[2]), (24, -32, SCRUB[3]),
+        (12, -52, SCRUB[4]), (2, -32, SCRUB[0]), (6, -58, SCRUB[1]),
+        (-27, -66, SCRUB[2]), (-22, -24, SCRUB[3]), (-25, -16, SCRUB[4]),
+        (16, -20, SCRUB[0]), (26, -68, SCRUB[1]), (12, -98, SHELTER[0]),
+        (16, -92, SCRUB[2]), (20, -96, SCRUB[3]), (24, -76, SCRUB[4])]):
     tree(f"thorn-{i}", x, z, st)
 
 # Ground cover over the whole half, not a patch of it — the density field is better at patchiness

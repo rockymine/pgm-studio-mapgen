@@ -1,0 +1,61 @@
+## red-0 (wool) along x
+TRANSECT 25 stations from (-58, 68) to (-34, 68), every 1
+  station        ground  surface  water  top  standing            step
+  (  -58,    68)                                                    void
+  (  -57,    68)                                                    void
+  (  -56,    68)                                                    void
+  (  -55,    68)                                                    void
+  (  -54,    68)                                                    void
+  (  -53,    68)                                                    void
+  (  -52,    68)      18       18           23                      
+  (  -51,    68)      18       18           24  wool wool-1         
+  (  -50,    68)      18       18           25  wool wool-1         
+  (  -49,    68)      18       18           26  wool wool-1         
+  (  -48,    68)      18       18           26  wool wool-1         
+  (  -47,    68)      18       18           59  wool wool-1         
+  (  -46,    68)      18       18           59  wool wool-1         
+  (  -45,    68)      18       18           59  wool wool-1         
+  (  -44,    68)      18       18           26  wool wool-1         
+  (  -43,    68)      18       18           25  wool wool-1         
+  (  -42,    68)      18       18           24  stroke road-west    
+  (  -41,    68)      18       18           23  stroke road-west    
+  (  -40,    68)      18       18           18  stroke road-west    
+  (  -39,    68)      18       18           18  stroke road-west    
+  (  -38,    68)      18       18           18  stroke road-west    
+  (  -37,    68)      18       18           18  stroke road-west    
+  (  -36,    68)      18       18           18  stroke road-west    
+  (  -35,    68)      18       18           18  stroke road-west    
+  (  -34,    68)      18       18           18  stroke road-west    
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-1 at (-51, 66), stroke road-west at (-42, 67)
+
+## red-0 (wool) along z
+TRANSECT 25 stations from (-46, 56) to (-46, 80), every 1
+  station        ground  surface  water  top  standing            step
+  (  -46,    56)                                                    void
+  (  -46,    57)                                                    void
+  (  -46,    58)                                                    void
+  (  -46,    59)                                                    void
+  (  -46,    60)                                                    void
+  (  -46,    61)                                                    void
+  (  -46,    62)                                                    void
+  (  -46,    63)                                                    void
+  (  -46,    64)      18       18           23                      
+  (  -46,    65)      18       18           24  wool wool-1         
+  (  -46,    66)      18       18           25  wool wool-1         
+  (  -46,    67)      18       18           59  wool wool-1         
+  (  -46,    68)      18       18           59  wool wool-1         
+  (  -46,    69)      18       18           59  wool wool-1         
+  (  -46,    70)      18       18           24  wool wool-1         
+  (  -46,    71)      18       18           23  redstoneline 0      
+  (  -46,    72)      18       18           18                      
+  (  -46,    73)      18       18           18                      
+  (  -46,    74)      18       18           18                      
+  (  -46,    75)      18       18           18                      
+  (  -46,    76)                                                    void
+  (  -46,    77)                                                    void
+  (  -46,    78)                                                    void
+  (  -46,    79)                                                    void
+  (  -46,    80)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-1 at (-48, 65), redstoneline 0 at (-48, 71)

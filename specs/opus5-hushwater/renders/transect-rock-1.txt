@@ -1,0 +1,61 @@
+## rock-1 (boulder) along x
+TRANSECT 25 stations from (12, 30) to (36, 30), every 1
+  station        ground  surface  water  top  standing            step
+  (   12,    30)      13       13           13                      
+  (   13,    30)      13       13           13                      
+  (   14,    30)      13       13           13                      
+  (   15,    30)      17       17           17                      BARRIER +4
+  (   16,    30)      18       18           18                      +1
+  (   17,    30)      18       18           18                      
+  (   18,    30)      19       19           19                      +1
+  (   19,    30)      20       20           20                      +1
+  (   20,    30)      20       20           20                      
+  (   21,    30)      20       20           20                      
+  (   22,    30)      19       19           22  boulder rock-1      -1
+  (   23,    30)      19       19           22  boulder rock-1      
+  (   24,    30)      19       19           22  boulder rock-1      
+  (   25,    30)      19       19           22  boulder rock-1      
+  (   26,    30)      18       18           21  boulder rock-1      -1
+  (   27,    30)      18       18           18                      
+  (   28,    30)      18       18           18                      
+  (   29,    30)      18       18           18                      
+  (   30,    30)      18       18           18                      
+  (   31,    30)      18       18           18                      
+  (   32,    30)                                                    void
+  (   33,    30)                                                    void
+  (   34,    30)                                                    void
+  (   35,    30)                                                    void
+  (   36,    30)                                                    void
+rises 4, falls 2, worst step 4: 1 barrier, 0 scramble, 0 drop — BARRIER +4 at (15, 30) | walked end to end
+beside: stroke road-spine at (10, 32), boulder rock-1 at (22, 29)
+
+## rock-1 (boulder) along z
+TRANSECT 25 stations from (24, 18) to (24, 42), every 1
+  station        ground  surface  water  top  standing            step
+  (   24,    18)                                                    void
+  (   24,    19)                                                    void
+  (   24,    20)                                                    void
+  (   24,    21)                                                    void
+  (   24,    22)                                                    void
+  (   24,    23)                                                    void
+  (   24,    24)                                                    void
+  (   24,    25)                                                    void
+  (   24,    26)                                                    void
+  (   24,    27)                                                    void
+  (   24,    28)      19       19           22  boulder rock-1      
+  (   24,    29)      19       19           22  boulder rock-1      
+  (   24,    30)      19       19           22  boulder rock-1      
+  (   24,    31)      19       19           22  boulder rock-1      
+  (   24,    32)      19       19           21  boulder rock-1      
+  (   24,    33)      19       19           20  boulder rock-1      
+  (   24,    34)      19       19           19                      
+  (   24,    35)      19       19           19                      
+  (   24,    36)      19       19           19                      
+  (   24,    37)      19       19           19                      
+  (   24,    38)      19       19           19                      
+  (   24,    39)      19       19           19                      
+  (   24,    40)      19       19           19                      
+  (   24,    41)      19       19           19                      
+  (   24,    42)      19       19           19                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder rock-1 at (23, 28), boulder rock-2 at (26, 41)

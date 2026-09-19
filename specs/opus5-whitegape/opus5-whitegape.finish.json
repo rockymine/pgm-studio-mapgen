@@ -68,7 +68,7 @@
           "data": 0
          }
         },
-        "thickness": 20
+        "thickness": 16
        },
        {
         "material": {
@@ -116,7 +116,7 @@
           "data": 0
          }
         },
-        "thickness": 16
+        "thickness": 18
        },
        {
         "material": {
@@ -164,7 +164,7 @@
           "data": 0
          }
         },
-        "thickness": 54
+        "thickness": 56
        }
       ]
      },
@@ -456,20 +456,20 @@
        {
         "material": {
          "kind": "cell",
-         "seed": 47,
-         "cellSize": 7,
-         "jitter": 30,
+         "seed": 51,
+         "cellSize": 9,
+         "jitter": 20,
          "warp": 3,
          "palette": [
           {
            "kind": "solid",
-           "id": 13,
+           "id": 98,
            "data": 0
           },
           {
            "kind": "solid",
            "id": 1,
-           "data": 5
+           "data": 0
           },
           {
            "kind": "solid",
@@ -833,24 +833,24 @@
      "id": "knott",
      "seed": 11,
      "roughness": 3,
-     "falloff": 9,
-     "crown": 8,
+     "falloff": 14,
+     "crown": 4,
      "amounts": [
+      3,
       4,
-      6,
-      8,
-      7,
+      5,
       5,
       4,
-      5
+      3,
+      4
      ],
      "ring": [
       [
-       16,
+       17,
        -88
       ],
       [
-       24,
+       25,
        -85
       ],
       [
@@ -862,15 +862,15 @@
        -56
       ],
       [
-       20,
+       21,
        -46
       ],
       [
-       15,
+       16,
        -56
       ],
       [
-       13,
+       15,
        -72
       ]
      ]
@@ -1274,20 +1274,20 @@
    "base_height": 25,
    "vertices": [
     [
-     -11,
-     -68
+     -13,
+     -69
     ],
     [
-     -3,
+     -7,
+     -67
+    ],
+    [
+     -1,
      -66
     ],
     [
-     4,
+     2,
      -64
-    ],
-    [
-     8,
-     -60
     ]
    ]
   },
@@ -11760,16 +11760,12 @@
       -58
      ],
      [
-      -27,
-      -44
+      -26,
+      -46
      ],
      [
-      -24,
-      -32
-     ],
-     [
-      -18,
-      -26
+      -23,
+      -38
      ]
     ],
     "pave": {
@@ -11820,19 +11816,19 @@
     "style": "works-shed"
    },
    {
-    "id": "weigh-house",
+    "id": "powder-house",
     "kind": "house",
     "seed": 607,
-    "front": "posZ",
+    "front": "negZ",
     "wings": [
      {
       "corners": [
        [
-        -21,
+        -27,
         -36
        ],
        [
-        -14,
+        -20,
         -29
        ]
       ]
@@ -11843,170 +11839,162 @@
    {
     "id": "erratic-0",
     "kind": "boulder",
-    "seed": 203,
-    "x": 17,
-    "z": -78,
+    "seed": 376,
+    "x": 4,
+    "z": -84,
     "style": "clint"
    },
    {
     "id": "erratic-1",
     "kind": "boulder",
-    "seed": 88,
-    "x": 22,
-    "z": -66,
+    "seed": 284,
+    "x": 6,
+    "z": -70,
     "style": "limestone"
    },
    {
     "id": "erratic-2",
     "kind": "boulder",
-    "seed": 96,
-    "x": 14,
-    "z": -50,
+    "seed": 176,
+    "x": 24,
+    "z": -88,
     "style": "limestone"
    },
    {
     "id": "erratic-3",
     "kind": "boulder",
-    "seed": 735,
-    "x": -25,
-    "z": -92,
-    "style": "limestone"
-   },
-   {
-    "id": "erratic-4",
-    "kind": "boulder",
-    "seed": 584,
-    "x": -24,
-    "z": -64,
+    "seed": 59,
+    "x": 21,
+    "z": -58,
     "style": "clint"
    },
    {
     "id": "thorn-0",
     "kind": "tree",
-    "seed": 1149,
-    "x": 9,
-    "z": -84,
+    "seed": 20,
+    "x": 18,
+    "z": -34,
     "style": "fir-small-1"
    },
    {
     "id": "thorn-1",
     "kind": "tree",
-    "seed": 1189,
-    "x": 11,
-    "z": -90,
+    "seed": 100,
+    "x": 22,
+    "z": -46,
     "style": "fir-small-2"
    },
    {
     "id": "thorn-2",
     "kind": "tree",
-    "seed": 1106,
-    "x": 6,
-    "z": -76,
+    "seed": 221,
+    "x": 17,
+    "z": -44,
     "style": "fir-small-3"
    },
    {
     "id": "thorn-3",
     "kind": "tree",
-    "seed": 1471,
-    "x": 3,
-    "z": -92,
+    "seed": 200,
+    "x": 24,
+    "z": -32,
     "style": "fir-small-4"
    },
    {
     "id": "thorn-4",
     "kind": "tree",
-    "seed": 438,
-    "x": 10,
-    "z": -44,
+    "seed": 512,
+    "x": 12,
+    "z": -52,
     "style": "fir-small-5"
    },
    {
     "id": "thorn-5",
     "kind": "tree",
-    "seed": 268,
-    "x": 10,
-    "z": -34,
+    "seed": 482,
+    "x": 2,
+    "z": -32,
     "style": "fir-small-1"
    },
    {
     "id": "thorn-6",
     "kind": "tree",
-    "seed": 29,
-    "x": 21,
-    "z": -40,
+    "seed": 800,
+    "x": 6,
+    "z": -58,
     "style": "fir-small-2"
    },
    {
     "id": "thorn-7",
     "kind": "tree",
-    "seed": 1934,
-    "x": -24,
-    "z": -70,
+    "seed": 1959,
+    "x": -27,
+    "z": -66,
     "style": "fir-small-3"
    },
    {
     "id": "thorn-8",
     "kind": "tree",
-    "seed": 1857,
-    "x": -27,
-    "z": -60,
+    "seed": 1090,
+    "x": -22,
+    "z": -24,
     "style": "fir-small-4"
    },
    {
     "id": "thorn-9",
     "kind": "tree",
-    "seed": 1656,
-    "x": -26,
-    "z": -50,
+    "seed": 1047,
+    "x": -25,
+    "z": -16,
     "style": "fir-small-5"
    },
    {
     "id": "thorn-10",
     "kind": "tree",
-    "seed": 2128,
-    "x": -16,
-    "z": -96,
-    "style": "oak-dense-1"
+    "seed": 156,
+    "x": 16,
+    "z": -20,
+    "style": "fir-small-1"
    },
    {
     "id": "thorn-11",
     "kind": "tree",
-    "seed": 1821,
-    "x": -5,
-    "z": -98,
-    "style": "oak-dense-4"
+    "seed": 350,
+    "x": 26,
+    "z": -68,
+    "style": "fir-small-2"
    },
    {
     "id": "thorn-12",
     "kind": "tree",
-    "seed": 1570,
-    "x": 2,
-    "z": -96,
+    "seed": 1294,
+    "x": 12,
+    "z": -98,
     "style": "oak-dense-1"
    },
    {
     "id": "thorn-13",
     "kind": "tree",
-    "seed": 1184,
-    "x": -2,
-    "z": -66,
-    "style": "fir-small-2"
+    "seed": 1068,
+    "x": 16,
+    "z": -92,
+    "style": "fir-small-3"
    },
    {
     "id": "thorn-14",
     "kind": "tree",
-    "seed": 1447,
-    "x": -5,
-    "z": -76,
-    "style": "fir-small-3"
+    "seed": 1012,
+    "x": 20,
+    "z": -96,
+    "style": "fir-small-4"
    },
    {
     "id": "thorn-15",
     "kind": "tree",
-    "seed": 1565,
-    "x": -11,
-    "z": -72,
-    "style": "fir-small-4"
+    "seed": 548,
+    "x": 24,
+    "z": -76,
+    "style": "fir-small-5"
    },
    {
     "id": "fell-cover",

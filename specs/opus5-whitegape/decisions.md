@@ -119,3 +119,69 @@ the land-per-player law.
 **Open question:** whether a bridging DTM *should* be held to a wool board's dead-share envelope at all.
 I decided it should not, and I will check the real answer with `GET …/coverage` on the built world rather
 than argue from the plan-tier proxy.
+
+## 10. The ground finished by angle, and where the bands cut
+**Chose:** the ground theme's surface is a `layered` stack on the **slope** axis, cut at 16° and 34°:
+meadow (grass over coarse dirt over dirt), worn shoulder (a cell of coarse dirt and gravel over dirt),
+bare rock (a cell of stone and andesite). One `layered` depth stack — stone, diorite, stone, andesite,
+stone, diorite, repeating — is the `wall` bucket of every theme on the board, so the gorge walls, the
+quarry faces and the cut banks are the same limestone beds in the same order.
+**Read first:** `GET …/incline?format=text`. My first cuts were 20°/36° and the distribution said that
+made the board two thirds meadow: 36.2% of the ground under 10°, 27% from 10 to 19, 15% from 20 to 29,
+11.2% from 30 to 39, 10.6% at 40 or steeper. Cutting at 16 and 34 splits it about half meadow, a quarter
+shoulder, a fifth rock. Verified in the world: `column (-20, -13)` on the gorge lip reads grass / coarse
+dirt / dirt and then stone·2, diorite, stone·3, andesite, stone·4, diorite — the beds, on the cliff.
+**Studio's part:** the 34° band edge became the studio's own threshold for `DR-STEEP` — its refusals
+quote "the theme painting that cell calls the ground a face from 36°", reading *my* band edge back at me.
+The theme decides what counts as a face, and then the dressing pass enforces it.
+
+## 11. The east knott was a wall, and the boulders are what said so
+**Chose:** softened the push from amount 8 / falloff 9 / crown 8 to amount 5 / falloff 14 / crown 4.
+**Because:** three of five boulders were declined `DR-STEEP` at 56°, 53° and 37°. I had checked the two
+gradients agreed with each other (8/9 outside against 8/8 inside) and never checked what the number *was*:
+0.89 courses a block is 42°, and a 42° hillside is a cliff with grass on it. The fixed pair is 5/14 = 20°
+outside against 4/8 = 27° inside. Board-wide: scramble 712 → 304 cells, barrier 1061 → 969, and the share
+of ground at 40° or steeper fell from 16.5% to 10.6%.
+**Read first:** the three `DR-STEEP` declines with their measured angles, then `GET …/incline?format=text`
+before and after.
+**Studio's part:** all of it. `GENERATION-NOTES.md`'s range rule made me check that the gradients agreed;
+the studio's own declines made me check what they agreed *on*.
+**Refusal log:** `DR-STEEP` ×3 (decline) — fixed by softening the landform, not by moving the rocks.
+
+## 12. Sixteen dressing declines, and the instrument that ended them
+**Chose:** placed every prop by reading `06-claims.txt` and then testing sites with
+`loop.py --candidates`, eight to twelve at a time, instead of choosing coordinates by eye.
+**Because:** my first pass put every prop where the map looked empty to me, and the pass declined 16 of
+them — door approaches, a keep-out round the ramps, a road standoff, one boulder claiming eight blocks in
+every direction, one tree with 64 of its 424 blocks inside a hillside. The claims raster shows the whole
+board as one character per block; the candidate loop says whether a given prop actually seats there.
+Four passes took it from 16 declines to 0, and none of them cost a build.
+**Read first:** `06-claims.txt`, then `loop.py --candidates` — ten sites a pass, twenty seconds a pass.
+**Studio's part:** every decline was the studio telling me something I could not see, with coordinates.
+**Refusal log:** `DR-PASS` ×1, `DR-STEEP` ×3, `DR-KEEP` ×6, `DR-CLAIM` ×4, `DR-ROAD` ×2, `DR-SITE` ×2,
+`DR-CUT` ×2 (complaint) — all cleared.
+
+## 13. PT4 — a cell pattern used as a shape's whole material needs a rise
+**Chose:** gave `HARDCORE` (the ramps' and flights' material) `rise: 4` and the drystone wall `rise: 2`.
+**Because:** a shape's `material` stands in for every bucket including `fill`, and a field sampled in the
+plane alone makes every block of a column resolve alike.
+**Read first:** the refusal: five `PT4`s at 400, one per shape, each naming its own JSON path
+(`layers.ground.shapes.haul-ramp.material.fill.rise`).
+**Studio's part:** the studio's, and it refused the whole store rather than building striped ramps.
+**Refusal log:** `PT4` ×5 (refusal, 400) — fixed.
+
+## 14. This pass was directed by the repository's author, not by my own reading
+**Chose:** to stop and rework the board against six rulings handed down after the first complete build:
+(1) the outline is a literal square and must be deformed; (2) there is no separation between natural and
+structural ground, which is the biggest miss; (3) too much relief piled in one place; (4) the houses are
+far too small and use none of the multi-wing model; (5) stone boulders are seated on stone; (6) use the
+seats read and the candidate loop rather than my eye.
+**Because:** these are rulings from the human oracle, not suggestions, and four of the six are things no
+gate in the studio raises. The board had passed every gate it has — `valid: true`, export gate OPEN, zero
+dressing declines, coverage inside its band — and was still wrong in ways only a person could say. That is
+the whole point of the oracle: the studio can tell me a boulder has no ground under it, and cannot tell me
+that a boulder on stone reads as nothing.
+**Read first:** nothing — this arrived as a judgement on the built board. The one item I *could* have
+caught myself is (5): `DR-SITE` asks whether there is ground under a prop, not what that ground is made
+of, so a `column` read per boulder was always available to me and I never took it.
+**Studio's part:** none, and that is the finding. The studio raises no rule for any of the six.
