@@ -7,7 +7,8 @@ rectangle is the hall and which the cross wing follows from the ridges and the e
 
 Row 1 is one hall and one wing at the SAME height, met three ways, against the lower wing the corpus
 already has. Row 2 is what the ridges decide. Row 3 is the three ways two rectangles fail to be one plan,
-and the U-plan an author actually wants.
+and the U-plan an author actually wants. Row 4 is the other thing a wing states about itself: its own roof
+form and its own pitch, so one building can carry two.
 """
 import json, os, sys
 
@@ -15,7 +16,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from cards import SOLID, depth_stack, grid, moor
 
 PANEL_W, PANEL_D = 64, 56
-COL_X, ROW_Z = grid(4, 3, PANEL_W, PANEL_D)
+COL_X, ROW_Z = grid(4, 4, PANEL_W, PANEL_D)
 GROUND_TOP = 20
 PLAIN = 8
 
@@ -69,12 +70,19 @@ def plan(name, cx, cz):
         "apart":       [hall(), wing(cx - WING_W // 2, hz + HALL_D + 4, WING_W, WING_D, ridge="alongZ")],
         "a-u-plan":    [hall(), wing(hx, hz + HALL_D, 5, WING_D, ridge="alongZ"),
                         wing(hx + HALL_W - 5, hz + HALL_D, 5, WING_D, ridge="alongZ")],
+        # Row 4 — a wing states its own roof, so a plan can carry two forms. A lower wing running into a
+        # flat-topped range meets a WALL rather than a roof, which is the case a gable hall cannot give.
+        "flat-hall":   [hall(form="flat"), cross(form="gable", storeysHigh=1)],
+        "flat-wing":   [hall(), cross(form="flat", storeysHigh=1)],
+        "shed-wing":   [hall(), cross(form="shed", storeysHigh=1)],
+        "shallow-wing": [hall(), cross(form="gable", pitch=1, storeysHigh=1)],
     }[name]
 
 
 PANELS = ["one-range", "marching", "projecting", "lower-wing",
           "a-t-plan", "side-by-side", "end-to-end", "wing-overtops",
-          "overlapping", "partial-edge", "apart", "a-u-plan"]
+          "overlapping", "partial-edge", "apart", "a-u-plan",
+          "flat-hall", "flat-wing", "shed-wing", "shallow-wing"]
 
 shapes, groups, relief, props = [], [], {}, []
 for index, name in enumerate(PANELS):

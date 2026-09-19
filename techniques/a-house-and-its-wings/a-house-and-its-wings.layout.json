@@ -3,8 +3,8 @@
   "bbox": {
    "min_x": -157,
    "max_x": 157,
-   "min_z": -106,
-   "max_z": 106
+   "min_z": -141,
+   "max_z": 141
   },
   "center": {
    "cx": 0,
@@ -280,6 +280,34 @@
    "step": 1,
    "marks": [],
    "pushes": []
+  },
+  "flat-hall": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "flat-wing": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "shed-wing": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "shallow-wing": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
   }
  },
  "layers": [
@@ -297,9 +325,9 @@
       "base_height": 20,
       "theme": "moor",
       "min_x": -149,
-      "min_z": -98,
+      "min_z": -133,
       "max_x": -85,
-      "max_z": -42
+      "max_z": -77
      },
      {
       "id": "yard-one-range",
@@ -309,9 +337,9 @@
       "base_height": 20,
       "theme": "yard",
       "min_x": -131,
-      "min_z": -82,
+      "min_z": -117,
       "max_x": -103,
-      "max_z": -56
+      "max_z": -91
      },
      {
       "id": "island-marching",
@@ -321,9 +349,9 @@
       "base_height": 20,
       "theme": "moor",
       "min_x": -71,
-      "min_z": -98,
+      "min_z": -133,
       "max_x": -7,
-      "max_z": -42
+      "max_z": -77
      },
      {
       "id": "yard-marching",
@@ -333,9 +361,9 @@
       "base_height": 20,
       "theme": "yard",
       "min_x": -53,
-      "min_z": -82,
+      "min_z": -117,
       "max_x": -25,
-      "max_z": -56
+      "max_z": -91
      },
      {
       "id": "island-projecting",
@@ -345,9 +373,9 @@
       "base_height": 20,
       "theme": "moor",
       "min_x": 7,
-      "min_z": -98,
+      "min_z": -133,
       "max_x": 71,
-      "max_z": -42
+      "max_z": -77
      },
      {
       "id": "yard-projecting",
@@ -357,9 +385,9 @@
       "base_height": 20,
       "theme": "yard",
       "min_x": 25,
-      "min_z": -82,
+      "min_z": -117,
       "max_x": 53,
-      "max_z": -56
+      "max_z": -91
      },
      {
       "id": "island-lower-wing",
@@ -369,9 +397,9 @@
       "base_height": 20,
       "theme": "moor",
       "min_x": 85,
-      "min_z": -98,
+      "min_z": -133,
       "max_x": 149,
-      "max_z": -42
+      "max_z": -77
      },
      {
       "id": "yard-lower-wing",
@@ -381,9 +409,9 @@
       "base_height": 20,
       "theme": "yard",
       "min_x": 103,
-      "min_z": -82,
+      "min_z": -117,
       "max_x": 131,
-      "max_z": -56
+      "max_z": -91
      },
      {
       "id": "island-a-t-plan",
@@ -393,9 +421,9 @@
       "base_height": 20,
       "theme": "moor",
       "min_x": -149,
-      "min_z": -28,
+      "min_z": -63,
       "max_x": -85,
-      "max_z": 28
+      "max_z": -7
      },
      {
       "id": "yard-a-t-plan",
@@ -405,9 +433,9 @@
       "base_height": 20,
       "theme": "yard",
       "min_x": -131,
-      "min_z": -12,
+      "min_z": -47,
       "max_x": -103,
-      "max_z": 14
+      "max_z": -21
      },
      {
       "id": "island-side-by-side",
@@ -417,9 +445,9 @@
       "base_height": 20,
       "theme": "moor",
       "min_x": -71,
-      "min_z": -28,
+      "min_z": -63,
       "max_x": -7,
-      "max_z": 28
+      "max_z": -7
      },
      {
       "id": "yard-side-by-side",
@@ -429,9 +457,9 @@
       "base_height": 20,
       "theme": "yard",
       "min_x": -53,
-      "min_z": -12,
+      "min_z": -47,
       "max_x": -25,
-      "max_z": 14
+      "max_z": -21
      },
      {
       "id": "island-end-to-end",
@@ -441,9 +469,9 @@
       "base_height": 20,
       "theme": "moor",
       "min_x": 7,
-      "min_z": -28,
+      "min_z": -63,
       "max_x": 71,
-      "max_z": 28
+      "max_z": -7
      },
      {
       "id": "yard-end-to-end",
@@ -453,9 +481,9 @@
       "base_height": 20,
       "theme": "yard",
       "min_x": 25,
-      "min_z": -12,
+      "min_z": -47,
       "max_x": 53,
-      "max_z": 14
+      "max_z": -21
      },
      {
       "id": "island-wing-overtops",
@@ -465,9 +493,9 @@
       "base_height": 20,
       "theme": "moor",
       "min_x": 85,
-      "min_z": -28,
+      "min_z": -63,
       "max_x": 149,
-      "max_z": 28
+      "max_z": -7
      },
      {
       "id": "yard-wing-overtops",
@@ -477,9 +505,9 @@
       "base_height": 20,
       "theme": "yard",
       "min_x": 103,
-      "min_z": -12,
+      "min_z": -47,
       "max_x": 131,
-      "max_z": 14
+      "max_z": -21
      },
      {
       "id": "island-overlapping",
@@ -489,9 +517,9 @@
       "base_height": 20,
       "theme": "moor",
       "min_x": -149,
-      "min_z": 42,
+      "min_z": 7,
       "max_x": -85,
-      "max_z": 98
+      "max_z": 63
      },
      {
       "id": "yard-overlapping",
@@ -501,9 +529,9 @@
       "base_height": 20,
       "theme": "yard",
       "min_x": -131,
-      "min_z": 58,
+      "min_z": 23,
       "max_x": -103,
-      "max_z": 84
+      "max_z": 49
      },
      {
       "id": "island-partial-edge",
@@ -513,9 +541,9 @@
       "base_height": 20,
       "theme": "moor",
       "min_x": -71,
-      "min_z": 42,
+      "min_z": 7,
       "max_x": -7,
-      "max_z": 98
+      "max_z": 63
      },
      {
       "id": "yard-partial-edge",
@@ -525,9 +553,9 @@
       "base_height": 20,
       "theme": "yard",
       "min_x": -53,
-      "min_z": 58,
+      "min_z": 23,
       "max_x": -25,
-      "max_z": 84
+      "max_z": 49
      },
      {
       "id": "island-apart",
@@ -537,9 +565,9 @@
       "base_height": 20,
       "theme": "moor",
       "min_x": 7,
-      "min_z": 42,
+      "min_z": 7,
       "max_x": 71,
-      "max_z": 98
+      "max_z": 63
      },
      {
       "id": "yard-apart",
@@ -549,9 +577,9 @@
       "base_height": 20,
       "theme": "yard",
       "min_x": 25,
-      "min_z": 58,
+      "min_z": 23,
       "max_x": 53,
-      "max_z": 84
+      "max_z": 49
      },
      {
       "id": "island-a-u-plan",
@@ -561,9 +589,9 @@
       "base_height": 20,
       "theme": "moor",
       "min_x": 85,
-      "min_z": 42,
+      "min_z": 7,
       "max_x": 149,
-      "max_z": 98
+      "max_z": 63
      },
      {
       "id": "yard-a-u-plan",
@@ -573,9 +601,105 @@
       "base_height": 20,
       "theme": "yard",
       "min_x": 103,
-      "min_z": 58,
+      "min_z": 23,
       "max_x": 131,
-      "max_z": 84
+      "max_z": 49
+     },
+     {
+      "id": "island-flat-hall",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": -149,
+      "min_z": 77,
+      "max_x": -85,
+      "max_z": 133
+     },
+     {
+      "id": "yard-flat-hall",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": -131,
+      "min_z": 93,
+      "max_x": -103,
+      "max_z": 119
+     },
+     {
+      "id": "island-flat-wing",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": -71,
+      "min_z": 77,
+      "max_x": -7,
+      "max_z": 133
+     },
+     {
+      "id": "yard-flat-wing",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": -53,
+      "min_z": 93,
+      "max_x": -25,
+      "max_z": 119
+     },
+     {
+      "id": "island-shed-wing",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": 7,
+      "min_z": 77,
+      "max_x": 71,
+      "max_z": 133
+     },
+     {
+      "id": "yard-shed-wing",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": 25,
+      "min_z": 93,
+      "max_x": 53,
+      "max_z": 119
+     },
+     {
+      "id": "island-shallow-wing",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "moor",
+      "min_x": 85,
+      "min_z": 77,
+      "max_x": 149,
+      "max_z": 133
+     },
+     {
+      "id": "yard-shallow-wing",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "yard",
+      "min_x": 103,
+      "min_z": 93,
+      "max_x": 131,
+      "max_z": 119
      }
     ],
     "groups": [
@@ -685,6 +809,42 @@
       "shapeIds": [
        "island-a-u-plan",
        "yard-a-u-plan"
+      ]
+     },
+     {
+      "id": "flat-hall",
+      "name": "flat-hall",
+      "mirrors": false,
+      "shapeIds": [
+       "island-flat-hall",
+       "yard-flat-hall"
+      ]
+     },
+     {
+      "id": "flat-wing",
+      "name": "flat-wing",
+      "mirrors": false,
+      "shapeIds": [
+       "island-flat-wing",
+       "yard-flat-wing"
+      ]
+     },
+     {
+      "id": "shed-wing",
+      "name": "shed-wing",
+      "mirrors": false,
+      "shapeIds": [
+       "island-shed-wing",
+       "yard-shed-wing"
+      ]
+     },
+     {
+      "id": "shallow-wing",
+      "name": "shallow-wing",
+      "mirrors": false,
+      "shapeIds": [
+       "island-shallow-wing",
+       "yard-shallow-wing"
       ]
      }
     ]
@@ -931,11 +1091,11 @@
       "corners": [
        [
         -123,
-        -76
+        -111
        ],
        [
         -112,
-        -69
+        -104
        ]
       ],
       "spec": {
@@ -956,11 +1116,11 @@
       "corners": [
        [
         -45,
-        -76
+        -111
        ],
        [
         -34,
-        -69
+        -104
        ]
       ],
       "spec": {
@@ -971,11 +1131,11 @@
       "corners": [
        [
         -42,
-        -68
+        -103
        ],
        [
         -37,
-        -61
+        -96
        ]
       ],
       "spec": {
@@ -996,11 +1156,11 @@
       "corners": [
        [
         33,
-        -76
+        -111
        ],
        [
         44,
-        -69
+        -104
        ]
       ],
       "spec": {
@@ -1011,11 +1171,11 @@
       "corners": [
        [
         36,
-        -68
+        -103
        ],
        [
         41,
-        -61
+        -96
        ]
       ],
       "spec": {
@@ -1037,11 +1197,11 @@
       "corners": [
        [
         111,
-        -76
+        -111
        ],
        [
         122,
-        -69
+        -104
        ]
       ],
       "spec": {
@@ -1052,11 +1212,11 @@
       "corners": [
        [
         114,
-        -68
+        -103
        ],
        [
         119,
-        -61
+        -96
        ]
       ],
       "spec": {
@@ -1078,11 +1238,11 @@
       "corners": [
        [
         -123,
-        -6
+        -41
        ],
        [
         -112,
-        1
+        -34
        ]
       ],
       "spec": {
@@ -1093,11 +1253,11 @@
       "corners": [
        [
         -119,
-        2
+        -33
        ],
        [
         -115,
-        9
+        -26
        ]
       ],
       "spec": {
@@ -1108,11 +1268,11 @@
       "corners": [
        [
         -119,
-        -14
+        -49
        ],
        [
         -115,
-        -7
+        -42
        ]
       ],
       "spec": {
@@ -1133,11 +1293,11 @@
       "corners": [
        [
         -45,
-        -6
+        -41
        ],
        [
         -34,
-        0
+        -35
        ]
       ],
       "spec": {
@@ -1148,11 +1308,11 @@
       "corners": [
        [
         -45,
-        1
+        -34
        ],
        [
         -34,
-        7
+        -28
        ]
       ],
       "spec": {
@@ -1173,11 +1333,11 @@
       "corners": [
        [
         33,
-        -6
+        -41
        ],
        [
         44,
-        0
+        -35
        ]
       ],
       "spec": {
@@ -1188,11 +1348,11 @@
       "corners": [
        [
         33,
-        1
+        -34
        ],
        [
         44,
-        7
+        -28
        ]
       ],
       "spec": {
@@ -1213,11 +1373,11 @@
       "corners": [
        [
         113,
-        -6
+        -41
        ],
        [
         120,
-        1
+        -34
        ]
       ],
       "spec": {
@@ -1228,11 +1388,11 @@
       "corners": [
        [
         110,
-        2
+        -33
        ],
        [
         123,
-        7
+        -28
        ]
       ],
       "spec": {
@@ -1253,11 +1413,11 @@
       "corners": [
        [
         -123,
-        64
+        29
        ],
        [
         -112,
-        71
+        36
        ]
       ],
       "spec": {
@@ -1268,11 +1428,11 @@
       "corners": [
        [
         -120,
-        69
+        34
        ],
        [
         -115,
-        76
+        41
        ]
       ],
       "spec": {
@@ -1293,11 +1453,11 @@
       "corners": [
        [
         -45,
-        64
+        29
        ],
        [
         -34,
-        71
+        36
        ]
       ],
       "spec": {
@@ -1308,11 +1468,11 @@
       "corners": [
        [
         -36,
-        72
+        37
        ],
        [
         -31,
-        79
+        44
        ]
       ],
       "spec": {
@@ -1333,11 +1493,11 @@
       "corners": [
        [
         33,
-        64
+        29
        ],
        [
         44,
-        71
+        36
        ]
       ],
       "spec": {
@@ -1348,11 +1508,11 @@
       "corners": [
        [
         36,
-        76
+        41
        ],
        [
         41,
-        83
+        48
        ]
       ],
       "spec": {
@@ -1373,11 +1533,11 @@
       "corners": [
        [
         111,
-        64
+        29
        ],
        [
         122,
-        71
+        36
        ]
       ],
       "spec": {
@@ -1388,11 +1548,11 @@
       "corners": [
        [
         111,
-        72
+        37
        ],
        [
         115,
-        79
+        44
        ]
       ],
       "spec": {
@@ -1403,15 +1563,185 @@
       "corners": [
        [
         118,
-        72
+        37
        ],
        [
         122,
-        79
+        44
        ]
       ],
       "spec": {
        "ridge": "alongZ"
+      }
+     }
+    ]
+   },
+   {
+    "id": "flat-hall",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        -123,
+        99
+       ],
+       [
+        -112,
+        106
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX",
+       "form": "flat"
+      }
+     },
+     {
+      "corners": [
+       [
+        -120,
+        107
+       ],
+       [
+        -115,
+        114
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ",
+       "form": "gable",
+       "storeysHigh": 1
+      }
+     }
+    ]
+   },
+   {
+    "id": "flat-wing",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        -45,
+        99
+       ],
+       [
+        -34,
+        106
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     },
+     {
+      "corners": [
+       [
+        -42,
+        107
+       ],
+       [
+        -37,
+        114
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ",
+       "form": "flat",
+       "storeysHigh": 1
+      }
+     }
+    ]
+   },
+   {
+    "id": "shed-wing",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        33,
+        99
+       ],
+       [
+        44,
+        106
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     },
+     {
+      "corners": [
+       [
+        36,
+        107
+       ],
+       [
+        41,
+        114
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ",
+       "form": "shed",
+       "storeysHigh": 1
+      }
+     }
+    ]
+   },
+   {
+    "id": "shallow-wing",
+    "kind": "house",
+    "layer": "ground",
+    "seed": 5,
+    "front": "negZ",
+    "style": "bothy",
+    "wings": [
+     {
+      "corners": [
+       [
+        111,
+        99
+       ],
+       [
+        122,
+        106
+       ]
+      ],
+      "spec": {
+       "ridge": "alongX"
+      }
+     },
+     {
+      "corners": [
+       [
+        114,
+        107
+       ],
+       [
+        119,
+        114
+       ]
+      ],
+      "spec": {
+       "ridge": "alongZ",
+       "form": "gable",
+       "pitch": 1,
+       "storeysHigh": 1
       }
      }
     ]

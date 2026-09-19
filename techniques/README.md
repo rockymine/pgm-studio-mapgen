@@ -31,7 +31,7 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `painting-with-a-stroke` | the band of surface along a drawn line: a feathered seam, a paved road, a claim, a keep-out |
 | `marks-and-seams` | what two marks do to the ground they share, and the two faults the relief read cannot see |
 | `objectives-and-clearances` | where a goal may stand: what `float` builds, where `leak` lives, and the two gates heard only at the export |
-| `a-house-and-its-wings` | how two rectangles of one plan meet — marching against projecting, and the five `HJ` refusals |
+| `a-house-and-its-wings` | how two rectangles of one plan meet — marching against projecting, two roof forms on one building, and the five `HJ` refusals |
 
 ## The three that are missing
 
