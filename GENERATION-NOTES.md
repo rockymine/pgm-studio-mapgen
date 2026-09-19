@@ -530,10 +530,10 @@ opposite edges relaxes into the ramp between them.** The fans paint as a spray o
 that is otherwise flat, which is what an island carrying three small scattered `area` marks and nothing else
 looks like. Two long marks facing each other are what a hillside is made of.
 
-**A `bevel` wider than half a mark's narrow dimension pins nothing, and nothing reports it.** A bevel is paid
-for out of the mark's own floor from every side at once, so a nine-cell band at `bevel` 4 has no floor left —
-and `relief/read` does not list it under `silent`, because its ring does cover cells. The group comes out at
-whatever else is speaking.
+**A `bevel` wider than half a mark's narrow dimension pins nothing, and `relief/read` calls it silent.** A
+bevel is paid for out of the mark's own floor from every side at once, so a nine-cell band at `bevel` 5 has
+no floor left and the group comes out at whatever else is speaking — measured, a panel carrying that band
+and one other pad reads `relief` 0 and `silentMarks: ["crest"]`.
 
 **A push's skirt is gentler than its stated grade at the ends and half again steeper in the middle.** The
 smoothstep a `falloff` eases with peaks at 1.5× the average, so a skirt the read calls 0.55 reaches 39° and
@@ -703,6 +703,19 @@ A `line` mark at y8 with radius 7 and another at y14 with radius 6, their bands 
 unpinned ground between them and the same two marks read `7 7 7 7 9 11 12 13 13`.
 
 **The gap between two marks is not a gap in the design; it is where the design happens.**
+
+**One cell of gap halves the wall and hides it from the read.** A ring covers the cells whose centres fall
+inside it, so two bands stated one apart leave exactly one cell pinned by neither, and the relaxation puts
+it midway: a 12-block butted step becomes +6 and +6. `seams` then comes back **empty**, because a seam is
+measured between a cell one mark last claimed and a neighbour the other did, and there is no longer such a
+pair. The ground is still a barrier and nothing says so.
+
+**A group whose marks all state one height comes out at that height everywhere.** A landform is a fall, and
+the fall is either a second mark at another height or a finite `reach` — one ring at 30 over a `base` of 8
+with `reach` 0 reads `low` 30, `high` 30, `relief` 0.
+
+`techniques/marks-and-seams` is the worked card: one pair of pads meeting four ways, a `scarp` beside three
+marks that pinned nothing anybody can see, and four fields from four statements.
 
 ### A pad meets its neighbour on a step unless it states how far in to grade
 

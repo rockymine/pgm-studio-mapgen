@@ -1,0 +1,288 @@
+GET /api/map/technique-marks-and-seams/transect?points=…&every=N — the profile each pair of marks solved to.
+`ground` is the level a player stands at. Row 1's four panels state the same two pads at the same two
+heights; only the ground between them differs.
+
+### butted — the two pads sharing their boundary: one twelve-block wall
+TRANSECT 21 stations from (-165, -100) to (-165, -80), every 1
+  station        ground  surface  water  top  standing            step
+  ( -165,  -100)       8        8            8                      
+  ( -165,   -99)       8        8            8                      
+  ( -165,   -98)       8        8            8                      
+  ( -165,   -97)       8        8            8                      
+  ( -165,   -96)       8        8            8                      
+  ( -165,   -95)       8        8            8                      
+  ( -165,   -94)       8        8            8                      
+  ( -165,   -93)       8        8            8                      
+  ( -165,   -92)       8        8            8                      
+  ( -165,   -91)       8        8            8                      
+  ( -165,   -90)      20       20           20                      BARRIER +12
+  ( -165,   -89)      20       20           20                      
+  ( -165,   -88)      20       20           20                      
+  ( -165,   -87)      20       20           20                      
+  ( -165,   -86)      20       20           20                      
+  ( -165,   -85)      20       20           20                      
+  ( -165,   -84)      20       20           20                      
+  ( -165,   -83)      20       20           20                      
+  ( -165,   -82)      20       20           20                      
+  ( -165,   -81)      20       20           20                      
+  ( -165,   -80)      20       20           20                      
+rises 1, falls 0, worst step 12: 1 barrier, 0 scramble, 0 drop — BARRIER +12 at (-165, -90) | walked end to end
+
+### one-apart — one cell pinned by neither: the relaxation splits it into two
+TRANSECT 21 stations from (-55, -100) to (-55, -80), every 1
+  station        ground  surface  water  top  standing            step
+  (  -55,  -100)       8        8            8                      
+  (  -55,   -99)       8        8            8                      
+  (  -55,   -98)       8        8            8                      
+  (  -55,   -97)       8        8            8                      
+  (  -55,   -96)       8        8            8                      
+  (  -55,   -95)       8        8            8                      
+  (  -55,   -94)       8        8            8                      
+  (  -55,   -93)       8        8            8                      
+  (  -55,   -92)       8        8            8                      
+  (  -55,   -91)      14       14           14                      BARRIER +6
+  (  -55,   -90)      20       20           20                      BARRIER +6
+  (  -55,   -89)      20       20           20                      
+  (  -55,   -88)      20       20           20                      
+  (  -55,   -87)      20       20           20                      
+  (  -55,   -86)      20       20           20                      
+  (  -55,   -85)      20       20           20                      
+  (  -55,   -84)      20       20           20                      
+  (  -55,   -83)      20       20           20                      
+  (  -55,   -82)      20       20           20                      
+  (  -55,   -81)      20       20           20                      
+  (  -55,   -80)      20       20           20                      
+rises 2, falls 0, worst step 6: 2 barrier, 0 scramble, 0 drop — BARRIER +6 at (-55, -91); BARRIER +6 at (-55, -90) | walked end to end
+
+### gapped — ten cells of unpinned ground: the grade the design happens in
+TRANSECT 21 stations from (55, -100) to (55, -80), every 1
+  station        ground  surface  water  top  standing            step
+  (   55,  -100)       9        9            9                      
+  (   55,   -99)      10       10           10                      +1
+  (   55,   -98)      11       11           11                      +1
+  (   55,   -97)      12       12           12                      +1
+  (   55,   -96)      13       13           13                      +1
+  (   55,   -95)      15       15           15                      scramble +2
+  (   55,   -94)      16       16           16                      +1
+  (   55,   -93)      17       17           17                      +1
+  (   55,   -92)      18       18           18                      +1
+  (   55,   -91)      19       19           19                      +1
+  (   55,   -90)      20       20           20                      +1
+  (   55,   -89)      20       20           20                      
+  (   55,   -88)      20       20           20                      
+  (   55,   -87)      20       20           20                      
+  (   55,   -86)      20       20           20                      
+  (   55,   -85)      20       20           20                      
+  (   55,   -84)      20       20           20                      
+  (   55,   -83)      20       20           20                      
+  (   55,   -82)      20       20           20                      
+  (   55,   -81)      20       20           20                      
+  (   55,   -80)      20       20           20                      
+rises 10, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (55, -95) | walked end to end
+
+### bevelled — butted again, with `bevel` 6 on the upper pad: the grade is inside its own footprint
+TRANSECT 21 stations from (165, -100) to (165, -80), every 1
+  station        ground  surface  water  top  standing            step
+  (  165,  -100)       8        8            8                      
+  (  165,   -99)       8        8            8                      
+  (  165,   -98)       8        8            8                      
+  (  165,   -97)       8        8            8                      
+  (  165,   -96)       8        8            8                      
+  (  165,   -95)       8        8            8                      
+  (  165,   -94)       8        8            8                      
+  (  165,   -93)       8        8            8                      
+  (  165,   -92)       8        8            8                      
+  (  165,   -91)       8        8            8                      
+  (  165,   -90)      10       10           10                      scramble +2
+  (  165,   -89)      11       11           11                      +1
+  (  165,   -88)      13       13           13                      scramble +2
+  (  165,   -87)      15       15           15                      scramble +2
+  (  165,   -86)      17       17           17                      scramble +2
+  (  165,   -85)      18       18           18                      +1
+  (  165,   -84)      20       20           20                      scramble +2
+  (  165,   -83)      20       20           20                      
+  (  165,   -82)      20       20           20                      
+  (  165,   -81)      20       20           20                      
+  (  165,   -80)      20       20           20                      
+rises 7, falls 0, worst step 2: 0 barrier, 5 scramble, 0 drop — scramble +2 at (165, -90); scramble +2 at (165, -88); scramble +2 at (165, -87); scramble +2 at (165, -86); scramble +2 at (165, -84) | walked end to end
+
+### a-scarp — one mark stating both sides and the face between them
+TRANSECT 37 stations from (-165, -18) to (-165, 18), every 1
+  station        ground  surface  water  top  standing            step
+  ( -165,   -18)       8        8            8                      
+  ( -165,   -17)       8        8            8                      
+  ( -165,   -16)       8        8            8                      
+  ( -165,   -15)       8        8            8                      
+  ( -165,   -14)       8        8            8                      
+  ( -165,   -13)       8        8            8                      
+  ( -165,   -12)       8        8            8                      
+  ( -165,   -11)       8        8            8                      
+  ( -165,   -10)       8        8            8                      
+  ( -165,    -9)       8        8            8                      
+  ( -165,    -8)       8        8            8                      
+  ( -165,    -7)       8        8            8                      
+  ( -165,    -6)       8        8            8                      
+  ( -165,    -5)       8        8            8                      
+  ( -165,    -4)       8        8            8                      
+  ( -165,    -3)       8        8            8                      
+  ( -165,    -2)       8        8            8                      
+  ( -165,    -1)      12       12           12                      BARRIER +4
+  ( -165,     0)      16       16           16                      BARRIER +4
+  ( -165,     1)      20       20           20                      BARRIER +4
+  ( -165,     2)      20       20           20                      
+  ( -165,     3)      20       20           20                      
+  ( -165,     4)      20       20           20                      
+  ( -165,     5)      20       20           20                      
+  ( -165,     6)      20       20           20                      
+  ( -165,     7)      20       20           20                      
+  ( -165,     8)      20       20           20                      
+  ( -165,     9)      20       20           20                      
+  ( -165,    10)      20       20           20                      
+  ( -165,    11)      20       20           20                      
+  ( -165,    12)      20       20           20                      
+  ( -165,    13)      20       20           20                      
+  ( -165,    14)      20       20           20                      
+  ( -165,    15)      20       20           20                      
+  ( -165,    16)      20       20           20                      
+  ( -165,    17)      20       20           20                      
+  ( -165,    18)      20       20           20                      
+rises 3, falls 0, worst step 4: 3 barrier, 0 scramble, 0 drop — BARRIER +4 at (-165, -1); BARRIER +4 at (-165, 0); BARRIER +4 at (-165, 1) | walked end to end
+
+### bevel-too-wide — a nine-cell band at `bevel` 5: the panel is whatever else was speaking
+TRANSECT 18 stations from (-55, -34) to (-55, 34), every 4
+  station        ground  surface  water  top  standing            step
+  (  -55,   -34)       8        8            8                      
+  (  -55,   -30)       8        8            8                      
+  (  -55,   -26)       8        8            8                      
+  (  -55,   -22)       8        8            8                      
+  (  -55,   -18)       8        8            8                      
+  (  -55,   -14)       8        8            8                      
+  (  -55,   -10)       8        8            8                      
+  (  -55,    -6)       8        8            8                      
+  (  -55,    -2)       8        8            8                      
+  (  -55,     2)       8        8            8                      
+  (  -55,     6)       8        8            8                      
+  (  -55,    10)       8        8            8                      
+  (  -55,    14)       8        8            8                      
+  (  -55,    18)       8        8            8                      
+  (  -55,    22)       8        8            8                      
+  (  -55,    26)       8        8            8                      
+  (  -55,    30)       8        8            8                      
+  (  -55,    34)       8        8            8                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+
+### half-off — a ridge traced past the coast: the crest is off the map and the strip is pinned
+TRANSECT 18 stations from (165, -34) to (165, 34), every 4
+  station        ground  surface  water  top  standing            step
+  (  165,   -34)       8        8            8                      
+  (  165,   -30)       8        8            8                      
+  (  165,   -26)       8        8            8                      
+  (  165,   -22)       9        9            9                      +1
+  (  165,   -18)      10       10           10                      +1
+  (  165,   -14)      12       12           12                      scramble +2
+  (  165,   -10)      13       13           13                      +1
+  (  165,    -6)      14       14           14                      +1
+  (  165,    -2)      15       15           15                      +1
+  (  165,     2)      16       16           16                      +1
+  (  165,     6)      17       17           17                      +1
+  (  165,    10)      19       19           19                      scramble +2
+  (  165,    14)      20       20           20                      +1
+  (  165,    18)      21       21           21                      +1
+  (  165,    22)      22       22           22                      +1
+  (  165,    26)      23       23           23                      +1
+  (  165,    30)      24       24           24                      +1
+  (  165,    34)      25       25           25                      +1
+rises 15, falls 0, worst step 2: 0 barrier, 2 scramble, 0 drop — scramble +2 at (165, -14); scramble +2 at (165, 10) | walked end to end
+
+### one-height — one mark, one height, `reach` 0: the whole panel at 30
+TRANSECT 18 stations from (-165, 56) to (-165, 124), every 4
+  station        ground  surface  water  top  standing            step
+  ( -165,    56)      30       30           30                      
+  ( -165,    60)      30       30           30                      
+  ( -165,    64)      30       30           30                      
+  ( -165,    68)      30       30           30                      
+  ( -165,    72)      30       30           30                      
+  ( -165,    76)      30       30           30                      
+  ( -165,    80)      30       30           30                      
+  ( -165,    84)      30       30           30                      
+  ( -165,    88)      30       30           30                      
+  ( -165,    92)      30       30           30                      
+  ( -165,    96)      30       30           30                      
+  ( -165,   100)      30       30           30                      
+  ( -165,   104)      30       30           30                      
+  ( -165,   108)      30       30           30                      
+  ( -165,   112)      30       30           30                      
+  ( -165,   116)      30       30           30                      
+  ( -165,   120)      30       30           30                      
+  ( -165,   124)      30       30           30                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+
+### a-summit — a point mark at `reach` 24: a cone
+TRANSECT 18 stations from (-55, 56) to (-55, 124), every 4
+  station        ground  surface  water  top  standing            step
+  (  -55,    56)      14       14           14                      
+  (  -55,    60)      14       14           14                      
+  (  -55,    64)      15       15           15                      +1
+  (  -55,    68)      16       16           16                      +1
+  (  -55,    72)      18       18           18                      scramble +2
+  (  -55,    76)      20       20           20                      scramble +2
+  (  -55,    80)      24       24           24                      BARRIER +4
+  (  -55,    84)      30       30           30                      BARRIER +6
+  (  -55,    88)      30       30           30                      
+  (  -55,    92)      30       30           30                      
+  (  -55,    96)      28       28           28                      -2
+  (  -55,   100)      23       23           23                      DROP -5
+  (  -55,   104)      19       19           19                      DROP -4
+  (  -55,   108)      17       17           17                      -2
+  (  -55,   112)      16       16           16                      -1
+  (  -55,   116)      15       15           15                      -1
+  (  -55,   120)      14       14           14                      -1
+  (  -55,   124)      14       14           14                      
+rises 6, falls 7, worst step 6: 2 barrier, 2 scramble, 2 drop — scramble +2 at (-55, 72); scramble +2 at (-55, 76); BARRIER +4 at (-55, 80); BARRIER +6 at (-55, 84); DROP -5 at (-55, 100); DROP -4 at (-55, 104) | walked end to end
+
+### a-plateau — the same height as a wide ring: a flat top and a skirt
+TRANSECT 18 stations from (55, 56) to (55, 124), every 4
+  station        ground  surface  water  top  standing            step
+  (   55,    56)      23       23           23                      
+  (   55,    60)      24       24           24                      +1
+  (   55,    64)      26       26           26                      scramble +2
+  (   55,    68)      29       29           29                      BARRIER +3
+  (   55,    72)      30       30           30                      +1
+  (   55,    76)      30       30           30                      
+  (   55,    80)      30       30           30                      
+  (   55,    84)      30       30           30                      
+  (   55,    88)      30       30           30                      
+  (   55,    92)      30       30           30                      
+  (   55,    96)      30       30           30                      
+  (   55,   100)      30       30           30                      
+  (   55,   104)      30       30           30                      
+  (   55,   108)      30       30           30                      
+  (   55,   112)      28       28           28                      -2
+  (   55,   116)      25       25           25                      -3
+  (   55,   120)      24       24           24                      -1
+  (   55,   124)      23       23           23                      -1
+rises 4, falls 4, worst step 3: 1 barrier, 1 scramble, 0 drop — scramble +2 at (55, 64); BARRIER +3 at (55, 68) | walked end to end
+
+### facing — two marks at two heights: the ramp between them
+TRANSECT 18 stations from (165, 56) to (165, 124), every 4
+  station        ground  surface  water  top  standing            step
+  (  165,    56)      30       30           30                      
+  (  165,    60)      30       30           30                      
+  (  165,    64)      30       30           30                      
+  (  165,    68)      30       30           30                      
+  (  165,    72)      28       28           28                      -2
+  (  165,    76)      26       26           26                      -2
+  (  165,    80)      24       24           24                      -2
+  (  165,    84)      22       22           22                      -2
+  (  165,    88)      20       20           20                      -2
+  (  165,    92)      18       18           18                      -2
+  (  165,    96)      16       16           16                      -2
+  (  165,   100)      13       13           13                      -3
+  (  165,   104)      11       11           11                      -2
+  (  165,   108)       9        9            9                      -2
+  (  165,   112)       8        8            8                      -1
+  (  165,   116)       8        8            8                      
+  (  165,   120)       8        8            8                      
+  (  165,   124)       8        8            8                      
+rises 0, falls 11, worst step 3: 0 barrier, 0 scramble, 0 drop | walked end to end
+
