@@ -1,0 +1,39 @@
+POST /api/plan/compile — a composed plan in, a layout out. A plan has no subtract of its own: a
+hole in a plan is a gap no piece covers. The compiler is what turns that gap into an instrument.
+
+  answered 200: 6 add(s), 2 subtract(s)
+
+The first of them, verbatim and entire:
+
+  {
+   "id": "void-1-cut",
+   "type": "polygon",
+   "operation": "subtract",
+   "vertices": [
+    [
+     -20,
+     32
+    ],
+    [
+     -8,
+     32
+    ],
+    [
+     -8,
+     44
+    ],
+    [
+     -20,
+     44
+    ]
+   ]
+  }
+
+It carries 29 fields and states 4 of them; every other one is null.
+
+`id`, `type`, `operation`, `vertices`. No `floor` and no `base_height`, because a subtract has
+no use for either — which is the same fact `height-not-read` reads out of the built world.
+
+The names are `void-1-cut` and `void-2-cut`: `PlanVoids.Declare` names every gap between pieces
+a `void-N` buffer on every compile, drawn or not, and each one compiles to a cut.
+`techniques/taking-over-a-composed-board` is where the plan side of that is worked.

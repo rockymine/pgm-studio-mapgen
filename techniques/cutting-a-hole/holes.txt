@@ -1,0 +1,16 @@
+GET …/transect — each island read across its own middle, west to east. `ground` is null on a void
+column, which the text read prints as ` ·`, so a hole is visible as a gap in the row.
+
+a-hole             9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9
+height-not-read    9  9  9  9  9  9  9  9  9  9  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  9  9  9  9  9  9  9  9  9  9  9  9  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  9  9  9  9  9  9  9  9  9
+a-lid              9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9
+a-room             9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  3  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9
+override-wins      9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  4  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9
+the-taller-wins    9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14 14  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9
+a-declared-void    9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9
+
+A transect walks every block between the points it is given, so an island 68 wide comes back as 67
+figures however few points asked for it.
+
+`a-hole` reads 20 of them as void, which is its cut's own width. `height-not-read` reads 36, which is its two
+cuts together — the same count from a one-course subtract and a forty-course one.

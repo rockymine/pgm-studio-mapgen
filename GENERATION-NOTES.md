@@ -120,8 +120,9 @@ inert — it can declare a void but never destroy ground — so the fill ratio d
 A hole in a plan is made by **arrangement**: pieces ring a gap, no piece covers it, and `PlanVoids.Declare`
 names every such gap a `void-N` buffer on every compile whether or not the author drew one.
 
-The instrument for cutting a hole *through* ground is a layout `subtract`, which is downstream. Shape the
-**pieces** to shape a coast, and cut the holes in the layout.
+The instrument for cutting a hole *through* ground is a layout `subtract`, and the compiler is what supplies
+one: every declared `void-N` comes back as a polygon subtract named `void-N-cut`. Shape the **pieces** to
+shape a coast, and cut any further holes in the layout. `techniques/cutting-a-hole` is the worked card.
 
 This is also why `POST /api/plan/evaluate`'s `G8 fill-ratio` reads a board denser than it is built: it
 measures the plan's rectangles, which do not know about a layout `subtract`.
@@ -744,6 +745,7 @@ while carving exactly as before.
 
 Relief moves a surface and a subtract removes it. What puts ground back over a cut is an override add at a
 floor **above** the subtract's, which bridges it; the same shape at the cut's own floor refills it.
+`techniques/cutting-a-hole` is the worked card.
 
 ### A ring is one polygon, and it is what a floor that rises or a surface that falls is drawn with
 
