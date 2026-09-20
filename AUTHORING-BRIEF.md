@@ -260,6 +260,7 @@ that would have answered faster.
 | What are the four levels a map is described at, and what hands off to what? | `pgm-studio/docs/tools/flow.md`, which also carries where each document nests and the address that reads it |
 | What does a `subtract` do, and what cuts a hole? | `techniques/cutting-a-hole` — the cut, the override add over it, and the `void-N-cut` a compile writes |
 | What does a destroy goal look like, and which words make one? | `techniques/destroy-goals`, or `GET /api/objectives/vocabulary` for the two closed sets alone |
+| What does a `HouseStyle` actually state, and what is it refused for? | `techniques/a-house-style` — twelve pads, one field changed on each |
 | How is a defence wall or an iron cube authored, and where may one stand? | `techniques/walls-and-iron` — both are plan-only, and `PL13` and `WX8` are the two that refuse |
 | What does an objective need around it? | `docs/gameplay/approaches.md` — every claim marked `[author]` and settled, so law rather than advice |
 | How does a match actually flow, and what does a player do with the ground? | `docs/gameplay/match-flow.md` — §4, §6, and §10 for a capture board |
