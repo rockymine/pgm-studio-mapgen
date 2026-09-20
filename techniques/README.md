@@ -9,7 +9,7 @@ the card rather than finding the thing inside a thousand-line finish.
 itself, one claim to a paragraph; a card holds one instrument worked all the way through, with the reads
 beside it. Where a card exists, the notes point at it rather than repeating it.
 
-## The twenty that exist
+## The twenty-one that exist
 
 | Card | Holds |
 |---|---|
@@ -33,10 +33,11 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `objectives-and-clearances` | where a goal may stand: what `float` builds, where `leak` lives, and the two gates heard only at the export |
 | `a-house-and-its-wings` | how two rectangles of one plan meet — marching against projecting, two roof forms on one building, and the five `HJ` refusals |
 | `sculpture-with-layers` | the ladder a made thing is built up: one shape, a polyline, layers, rings, and a solid compiled — and what each rung costs |
+| `trees-and-boulders` | what a prop is refused for — a ladder per rule: paving, another prop, a canopy, a kept-clear wall, a goal's clearance |
 
-## The two that are missing
+## The one that is missing
 
-Each entry names what the card would demonstrate, and which of the notes' entries it would absorb — the
+The entry names what the card would demonstrate, and which of the notes' entries it would absorb — the
 notes carry the measurements already and have nowhere to put the worked comparison.
 
 **`taking-over-a-composed-board` — a plan somebody else arranged.** One pinned board edited four ways: a
@@ -44,12 +45,6 @@ surface per piece, a piece split to make an interface, a hole left alone and a s
 composer chapter, which is currently the only place a capture board's author is told what the arrangement
 costs.
 
-**`trees-and-boulders` — the props that stand on ground, and what they keep off.** One board of roads,
-rocks and trees at measured distances: a tree three blocks off a paved cell and a boulder two, `DR-CLAIM`
-between two props that overlap, and a tree asked to stand on a boulder. Beside them the placement order
-that decides which of a pair survives — boulders before trees, so a wood grows round a rock rather than a
-rock landing in the wood — and the same props inside a goal's clearance, which is `OB19` seen from the
-prop's end. Absorbs the dressing chapter's standoff half.
 
 ## What a card needs before it can be written
 

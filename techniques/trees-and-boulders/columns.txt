@@ -1,0 +1,135 @@
+GET /api/map/technique-trees-and-boulders/column?at=x,z — a prop seats on the surface top, so what a column shows is
+where the pass put it. Every pad is a plain solved to y7 and every authored wall tops at y13.
+
+
+### an-unmarked-wall — an oak whose trunk starts on the wall's own top course, six over the meadow
+=== column (-29, 70) — 24 solid block(s), ground 0° from level ===
+  y 23    18:4   Oak Leaves
+  y 22    18:4   Oak Leaves
+  y 21    18:4   Oak Leaves
+  y 20    18:4   Oak Leaves
+  y 19    17:12  Oak Log
+  y 18    17:12  Oak Log
+  y 17    17:12  Oak Log
+  y 16    17:12  Oak Log
+  y 15    17:12  Oak Log
+  y 14    17:12  Oak Log
+  y 13    98:0   Stone Bricks
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+
+### an-unmarked-wall — the boulder beside it, bedded into the same wall head
+=== column (-49, 70) — 18 solid block(s), ground 0° from level ===
+  y 17    48:0   Mossy Cobblestone
+  y 16     1:5   Andesite
+  y 15    48:0   Mossy Cobblestone
+  y 14     1:5   Andesite
+  y 13     4:0   Cobblestone
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+
+### a-kept-clear-wall — the same wall with `keepClear`: its top course, and nothing standing on it
+=== column (-117, 70) — 14 solid block(s), ground 0° from level ===
+  y 13    98:0   Stone Bricks
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+
+### tree-standoff — `off-2`, three from the road's band: the trunk, and the paving two cells north of it
+=== column (-124, -66) — 18 solid block(s), ground 0° from level ===
+  y 17    18:4   Oak Leaves
+  y 16    18:4   Oak Leaves
+  y 15    18:4   Oak Leaves
+  y 14    18:4   Oak Leaves
+  y 13    17:12  Oak Log
+  y 12    17:12  Oak Log
+  y 11    17:12  Oak Log
+  y 10    17:12  Oak Log
+  y  9    17:12  Oak Log
+  y  8    17:12  Oak Log
+  y  7     2:0   Grass Block
+
+### tree-standoff — the road itself, whose top block is what a standoff is measured to
+=== column (-117, -70) — 8 solid block(s), ground 0° from level ===
+  y  7     4:0   Cobblestone
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### tree-standoff — the cell `off-1` was asked for and declined: bare meadow
+=== column (-138, -67) — 8 solid block(s), ground 0° from level ===
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### boulder-standoff — `rock-off-2`, bedded into the meadow rather than standing on it
+=== column (-46, -66) — 12 solid block(s), ground 0° from level ===
+  y 11    48:0   Mossy Cobblestone
+  y 10     1:5   Andesite
+  y  9    48:0   Mossy Cobblestone
+  y  8     1:5   Andesite
+  y  7     4:0   Cobblestone
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+
+### a-wood — under the canopy of a thrown oak
+=== column (117, 0) — 23 solid block(s), ground 0° from level ===
+  y 22    18:4   Oak Leaves
+  y 21    18:4   Oak Leaves
+  y 20    18:4   Oak Leaves
+  y 19    18:4   Oak Leaves
+  y 18    18:4   Oak Leaves
+  y 17    17:12  Oak Log
+  y 16    17:12  Oak Log
+  y 15    17:12  Oak Log
+  y 14    17:12  Oak Log
+  y 13    17:12  Oak Log
+  y 12    17:12  Oak Log
+
+### flora-overlay — a cell the overlay wrote, which no prop had claimed
+=== column (125, 62) — 9 solid block(s), ground 0° from level ===
+  y  8    31:2   Fern
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### a-goal-clearance — the monument, floating four over the ground its clearance covers
+=== column (39, 70) — 15 solid block(s), ground 0° from level ===
+  y 42    35:11  Blue Wool
+  y 41    35:11  Blue Wool
+  y 40    35:11  Blue Wool
+  y 14    49:0   Obsidian
+  y 13    49:0   Obsidian
+  y 12    49:0   Obsidian
+  y  8    54:3   Chest
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     7:0   Bedrock

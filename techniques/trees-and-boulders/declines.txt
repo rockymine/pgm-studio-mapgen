@@ -1,0 +1,79 @@
+POST /api/map/technique-trees-and-boulders/sketch/dressing — 90 props placed, 16 declined,
+7490 cells claimed. A decline arrives on a 200: the prop is simply not in the world,
+and this read is the only thing that says so.
+
+### tree-standoff — an oak at a stated Chebyshev reach from the road's nearest claimed cell
+  off-1            2 from the band edge         DECLINED  DR-ROAD  tree 'off-1' rests on (-138, -67), nearer than 3 blocks to the road at (-140, -69)
+  off-2            3 from the band edge         placed
+  off-3            4 from the band edge         placed
+  off-4            5 from the band edge         placed
+
+### boulder-standoff — the same ladder in rock, measured from the boulder's own footprint
+  rock-off-1       2 from the band edge         DECLINED  DR-ROAD  boulder 'rock-off-1' rests on (-62, -68), nearer than 2 blocks to the road at (-63, -69)
+  rock-off-2       3 from the band edge         placed
+  rock-off-3       4 from the band edge         placed
+  rock-off-4       5 from the band edge         placed
+
+### a-wide-brush — four oaks at ONE distance, eleven off a radius-8 `rough` brush's centreline
+  brush-at-0       at x offset -24              placed
+  brush-at-1       at x offset -8               DECLINED  DR-ROAD  tree 'brush-at-1' rests on (31, -59), nearer than 3 blocks to the road at (33, -61)
+  brush-at-2       at x offset 8                placed
+  brush-at-3       at x offset 24               placed
+
+### set-back — nine oaks thrown inside the pad and clear of a radius-2 road
+  back-0           in the wood                  placed
+  back-1           in the wood                  placed
+  back-2           in the wood                  placed
+  back-3           in the wood                  placed
+  back-4           in the wood                  placed
+  back-5           in the wood                  placed
+  back-6           in the wood                  placed
+  back-7           in the wood                  placed
+  back-8           in the wood                  placed
+
+### two-boulders — one pair three apart, one pair nine apart
+  pair-near-a      first of the near pair       placed
+  pair-near-b      three from it                DECLINED  DR-CLAIM  boulder 'pair-near-b' rests on (-131, -7), claimed by the prop 'pair-near-a'
+  pair-clear-a     first of the clear pair      placed
+  pair-clear-b     nine from it                 placed
+
+### kind-decides — a rock and an oak two apart, twice, with the document order opposite
+  rock-first       stated first                 placed
+  tree-second      stated second                DECLINED  DR-CLAIM  tree 'tree-second' rests on (-51, 0), claimed by the prop 'rock-first'
+  tree-first       stated first                 DECLINED  DR-CLAIM  tree 'tree-first' rests on (-25, 0), claimed by the prop 'rock-second'
+  rock-second      stated second                placed
+
+### two-trees — a pair of nines and a pair of fourteens, one seed pair per ladder, x-step only
+  nine-1-b         1 from its pair              DECLINED  DR-CLAIM  tree 'nine-1-b' rests on (16, -14), claimed by the prop 'nine-1-a'
+  nine-2-b         2 from its pair              DECLINED  DR-CLAIM  tree 'nine-2-b' rests on (33, -14), claimed by the prop 'nine-2-a'
+  nine-3-b         3 from its pair              DECLINED  DR-CLAIM  tree 'nine-3-b' rests on (50, -14), claimed by the prop 'nine-3-a'
+  nine-4-b         4 from its pair              placed
+  tall-2-b         2 from its pair              DECLINED  DR-CLAIM  tree 'tall-2-b' rests on (17, 14), claimed by the prop 'tall-2-a'
+  tall-3-b         3 from its pair              DECLINED  DR-CLAIM  tree 'tall-3-b' rests on (34, 14), claimed by the prop 'tall-3-a'
+  tall-4-b         4 from its pair              DECLINED  DR-CLAIM  tree 'tall-4-b' rests on (51, 14), claimed by the prop 'tall-4-a'
+  tall-5-b         5 from its pair              placed
+
+### a-wood — forty-five darts accepted against the measured crown reach
+  wood-0           first                        placed
+  wood-22          middle                       placed
+  wood-44          last                         placed
+  wood-cover       the overlay over it          placed
+
+### a-kept-clear-wall — an override add on the ground layer that states `keepClear`
+  kept-rock        leaning on it                DECLINED  DR-KEEP  boulder 'kept-rock' rests on (-128, 69), which is kept clear for a stated structure
+  kept-tree        leaning on it                DECLINED  DR-KEEP  tree 'kept-tree' rests on (-107, 70), which is kept clear for a stated structure
+
+### an-unmarked-wall — the same wall with the field left out
+  plain-rock       leaning on it                placed
+  plain-tree       leaning on it                placed
+
+### a-goal-clearance — a monument's 21 x 21 clearance, bracketed
+  goal-off-9       Chebyshev 9 from the anchor  DECLINED  OB19  tree 'goal-off-9' rests on (48, 70), inside a goal's clearance
+  goal-off-10      Chebyshev 10 from the anchor DECLINED  OB19  tree 'goal-off-10' rests on (39, 80), inside a goal's clearance
+  goal-off-11      Chebyshev 11 from the anchor placed
+  goal-off-12      Chebyshev 12 from the anchor placed
+
+### flora-overlay — a road, a rock and an overlay over what they left
+  road-cover       the road                     placed
+  cover-rock       the rock                     placed
+  cover            the overlay                  placed

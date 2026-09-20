@@ -1809,6 +1809,15 @@ Test every footprint against every *unmarked* authored shape's ring yourself. *M
 `b-berm-e rests on (35, 32), which is kept clear for a stated structure` — a boulder declined for leaning on
 a `keepClear` town wall.*
 
+**Without the flag a prop does not stand beside the shape, it stands on top of it, and that is what nothing
+reports.** Measured on two identical six-course walls: the marked one declined both props by `DR-KEEP`, and
+on the unmarked one an oak's trunk began at y14 — the wall's own top course, six over the meadow — with a
+boulder bedded into the head beside it. Only a column read says so.
+
+**And an authored shape needs a field for each pass it crosses.** `height_mode: "level"` with `skirt: 0` is
+what the relief wants — without it `SK14` fires and the wall comes out level with the ground — and
+`keepClear` is what the dressing pass wants. Neither substitutes for the other.
+
 ### A prop is judged at every image of its orbit
 
 A rock beside a building on an on-axis group is a rock inside that building's own rot_180 twin, and the pass
@@ -1838,34 +1847,43 @@ The bodies come out of a world with `pgm-studio/tools/seed-trees.cs`, which file
 A body is written block for block, so its seat is its foot's column and a crown overhanging a slope is cut
 where it meets it, exactly as a grown one.
 
-### A tree's ground claim scales with its height, and varies with its seed
+### A prop is tested at its lowest course and claims everything it covers, and every distance follows
 
-`DR-CLAIM` names the pair after the fact; nothing answers how far apart two oaks must stand *before* they
-are placed. Measured against the pass over four builds of the same wood, two template oaks clash below a
-Chebyshev separation of roughly
+`Decorator.Seats` walks only the cells a prop rests on — `prop.Min(cell => cell.Y)` and nothing above it —
+so a tree is judged by its **trunk** and a boulder by its **footprint**. What a placed prop then registers
+is every cell it covered, crown and all.
 
-```
-(height_a + height_b) / 5
-```
+**So what two trees need between them is one crown and not two.** The second oak is declined exactly where
+its trunk falls inside the first one's claimed canopy, which makes the distance the *larger* of the two
+crowns rather than the sum. Measured with one seed pair down each ladder, stepping along x only: a pair of
+nines is refused at 1, 2 and 3 and stands at **4**; a pair of fourteens is refused at 2, 3 and 4 and stands
+at **5**.
 
-so a pair of 9s may stand 4 apart and a pair of 14s may not stand 5 apart. It is not a species constant:
-`Decorator.CanopyRadius` measures the crown the build will actually write, and the crown is hash-keyed
-off the prop's `seed`, so **the same pair of heights is not always the same distance** — a `(9, 11)` pair
-at Chebyshev 4 survived one build and was declined the next after an unrelated edit shifted the seeds.
-Divide by 4.7 rather than 5 to sit clear of the variance; at 5 exactly, a board builds clean and its next
-revision does not.
+The crown is still hash-keyed off the prop's `seed` — `Decorator.CanopyRadius` measures what the build
+writes — so a rung right on the threshold is not stable across an edit that shifts seeds. Four for a nine
+and five for a fourteen are the measured floors; add one where a board is going to be revised.
 
-Dart-throwing beats a jittered lattice here for the same reason. A lattice at the spacing either reads as
-a grid (no jitter) or breaks its own minimum (with jitter, which is what the rule charges for); thrown
-points accepted against the test pack right up against it. On a 40 × 50 wood: 60 trees thrown against
-23 latticed, at the same rule.
+**And a boulder's standoff is measured from its body, so its centre owes the standoff plus its own reach.**
+A size-3 erratic stated 3 blocks off a road was declined at (−62, −68) for a road cell at (−63, −69): the
+prop was two blocks out and its footprint was one.
+
+Dart-throwing beats a jittered lattice here. A lattice at the spacing either reads as a grid (no jitter) or
+breaks its own minimum (with jitter, which is what the rule charges for); thrown points accept right up
+against it. Forty-five darts on a 53 × 45 pad were all taken, and the same box packs 98 at the limit.
+`techniques/trees-and-boulders` is the worked card, every rule of it a ladder.
 
 ### DR-CLAIM between props is footprint overlap, not a standoff
 
 `claims.Holds(x, z)` — a prop is declined for resting on a cell another prop has claimed, and that is
 the whole rule. Reserving three blocks around each boulder cost twelve trees on a board that had
-three hundred plantable cells; `body + size + 1` is the real margin. The tree-to-tree distance is the
-separate one, and it is a Chebyshev step that grows with the two canopies: `ceil((ha + hb) / 4.7)`.
+three hundred plantable cells; `body + size + 1` is the real margin. Two size-3 erratics three apart
+contest and the same two nine apart do not.
+
+**The order the pass runs in is by kind, and the document's order is the order only within a kind.**
+`Decorator` walks water, then strokes, then houses, then boulders, then trees, then flora, so a rock always
+beats a tree for a contested cell whatever the props array says. Measured: the same rock-and-oak overlap
+stated twice with the order opposite declined **both** oaks. A wood grows round a rock because it cannot do
+anything else, and the only order an author controls is between two rocks or between two trees.
 
 ### A path's band follows the spline, not your polyline
 
@@ -1895,7 +1913,24 @@ a keep-out computed at `radius × coverage` lets props through that the gate the
 wanders to its full radius, so a keep-out at `radius + standoff` is right — and twenty-one path props over a
 110 × 220 board with that keep-out leave **eleven** plantable cells on the whole map.
 
+**A `solid` band has a constant edge and a `rough` one does not, so a rough brush's keep-out is a range.**
+Measured off the claims map: a radius-2 `solid` road was 4 cells wide at every one of its 57 columns, while
+a radius-8 `rough` brush beside it ran **11 to 18 cells wide** and reached 5 to 10 either side of its
+centreline. Four oaks all stated eleven off that centreline came back three placed and one declined, which
+is the wander and not a threshold — budget a rough brush from its wide end.
+
 Texture brushes are paths. Budget them like roads: one tongue per feature, radius 3–4, not two at 6–7.
+
+### `DR-STEEP` declines a prop where the theme calls the ground a face
+
+A prop is refused for standing on ground inclined past what its own theme paints as flat, and the message
+names the angle: *"stands at (−49, 70) on ground inclined 56°, and the theme painting that cell calls the
+ground a face"*. It is the theme's own slope band that decides, not a constant, so the same rock stands on
+the same grade under a theme whose bands cut higher.
+
+Measured while building a card: a six-course wall five cells deep has no flat ground on its head at all —
+every cell of it is an edge — and a boulder placed there was declined for the face. At eleven cells deep the
+middle of the head reads 0° and the same boulder stands.
 
 ### A texture path is an exclusion zone as wide as itself
 
@@ -2004,13 +2039,19 @@ The call answers **200** with an empty body and stores nothing — not the place
 `maxPlayers`. Omit the field rather than stating it null. It is the only call in the studio that reports
 success for having done nothing.
 
-### `OB19`'s keep-out is bigger than it sounds
+### `OB19`'s keep-out is bigger than it sounds, and it is the first thing a prop hits
 
-A **10-block square about the goal's anchor**, tested against a prop's footprint **plus its eaves**, and
-against **every orbit image** of it. For a goal at `(0, 45)` the box is `x −10..10, z 35..55`, and a building
-drawn at `x −12..−1, z 54..61` is refused on its eave. It is raised by the export, at 409, after the whole
-world has been built — nothing earlier predicts it. Compute the box, add one for the overhang, and keep
-buildings, trees and boulders out of it.
+A **10-block square about the goal's anchor** — 441 cells reaching Chebyshev 10 — tested against a prop's
+footprint **plus its eaves**, and against **every orbit image** of it. For a goal at `(0, 45)` the box is
+`x −10..10, z 35..55`, and a building drawn at `x −12..−1, z 54..61` is refused on its eave. Measured with a
+ladder of oaks round one destroyable: 9 and 10 declined, 11 and 12 placed, so eleven off the anchor is the
+first clear ring.
+
+**`Seats` asks `context.AllowsProp` before any other claim, so the clearance answers on the dressing read
+rather than at the export.** It arrives as a decline on a 200 — *"rests on (48, 70), inside a goal's
+clearance"* — which is early enough to fix and quiet enough to miss. Compute the box, add one for the
+overhang, and keep buildings, trees and boulders out of it; `techniques/trees-and-boulders` reads the rule
+from the prop's end and `techniques/objectives-and-clearances` from the goal's.
 
 ### A compile cannot see a layout `subtract`
 

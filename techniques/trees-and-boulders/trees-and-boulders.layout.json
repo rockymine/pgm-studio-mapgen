@@ -1,0 +1,1776 @@
+{
+ "setup": {
+  "bbox": {
+   "min_x": -157,
+   "max_x": 157,
+   "min_z": -106,
+   "max_z": 106
+  },
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "mirror_mode": "none"
+ },
+ "themes": {
+  "meadow": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 35,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 2,
+             "data": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 20,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 35,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 11,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 4,
+               "data": 0
+              }
+             ]
+            },
+            "thickness": 3
+           }
+          ]
+         }
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "masonry": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "boundary",
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 3
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   }
+  }
+ },
+ "mapTheme": "meadow",
+ "relief": {
+  "tree-standoff": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "boulder-standoff": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "a-wide-brush": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "set-back": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "two-boulders": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "kind-decides": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "two-trees": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "a-wood": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "a-kept-clear-wall": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "an-unmarked-wall": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "a-goal-clearance": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "flora-overlay": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "island-tree-standoff",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "meadow",
+      "min_x": -149,
+      "min_z": -98,
+      "max_x": -85,
+      "max_z": -42
+     },
+     {
+      "id": "island-boulder-standoff",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "meadow",
+      "min_x": -71,
+      "min_z": -98,
+      "max_x": -7,
+      "max_z": -42
+     },
+     {
+      "id": "island-a-wide-brush",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "meadow",
+      "min_x": 7,
+      "min_z": -98,
+      "max_x": 71,
+      "max_z": -42
+     },
+     {
+      "id": "island-set-back",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "meadow",
+      "min_x": 85,
+      "min_z": -98,
+      "max_x": 149,
+      "max_z": -42
+     },
+     {
+      "id": "island-two-boulders",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "meadow",
+      "min_x": -149,
+      "min_z": -28,
+      "max_x": -85,
+      "max_z": 28
+     },
+     {
+      "id": "island-kind-decides",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "meadow",
+      "min_x": -71,
+      "min_z": -28,
+      "max_x": -7,
+      "max_z": 28
+     },
+     {
+      "id": "island-two-trees",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "meadow",
+      "min_x": 7,
+      "min_z": -28,
+      "max_x": 71,
+      "max_z": 28
+     },
+     {
+      "id": "island-a-wood",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "meadow",
+      "min_x": 85,
+      "min_z": -28,
+      "max_x": 149,
+      "max_z": 28
+     },
+     {
+      "id": "island-a-kept-clear-wall",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "meadow",
+      "min_x": -149,
+      "min_z": 42,
+      "max_x": -85,
+      "max_z": 98
+     },
+     {
+      "id": "island-an-unmarked-wall",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "meadow",
+      "min_x": -71,
+      "min_z": 42,
+      "max_x": -7,
+      "max_z": 98
+     },
+     {
+      "id": "island-a-goal-clearance",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "meadow",
+      "min_x": 7,
+      "min_z": 42,
+      "max_x": 71,
+      "max_z": 98
+     },
+     {
+      "id": "island-flora-overlay",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 20,
+      "theme": "meadow",
+      "min_x": 85,
+      "min_z": 42,
+      "max_x": 149,
+      "max_z": 98
+     },
+     {
+      "id": "kept-wall",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "floor": 0,
+      "base_height": 14,
+      "theme": "masonry",
+      "min_x": -135,
+      "min_z": 65,
+      "max_x": -99,
+      "max_z": 75,
+      "keepClear": true
+     },
+     {
+      "id": "plain-wall",
+      "type": "rectangle",
+      "operation": "add",
+      "override": true,
+      "height_mode": "level",
+      "skirt": 0,
+      "floor": 0,
+      "base_height": 14,
+      "theme": "masonry",
+      "min_x": -57,
+      "min_z": 65,
+      "max_x": -21,
+      "max_z": 75
+     }
+    ],
+    "groups": [
+     {
+      "id": "tree-standoff",
+      "name": "tree-standoff",
+      "mirrors": false,
+      "shapeIds": [
+       "island-tree-standoff"
+      ]
+     },
+     {
+      "id": "boulder-standoff",
+      "name": "boulder-standoff",
+      "mirrors": false,
+      "shapeIds": [
+       "island-boulder-standoff"
+      ]
+     },
+     {
+      "id": "a-wide-brush",
+      "name": "a-wide-brush",
+      "mirrors": false,
+      "shapeIds": [
+       "island-a-wide-brush"
+      ]
+     },
+     {
+      "id": "set-back",
+      "name": "set-back",
+      "mirrors": false,
+      "shapeIds": [
+       "island-set-back"
+      ]
+     },
+     {
+      "id": "two-boulders",
+      "name": "two-boulders",
+      "mirrors": false,
+      "shapeIds": [
+       "island-two-boulders"
+      ]
+     },
+     {
+      "id": "kind-decides",
+      "name": "kind-decides",
+      "mirrors": false,
+      "shapeIds": [
+       "island-kind-decides"
+      ]
+     },
+     {
+      "id": "two-trees",
+      "name": "two-trees",
+      "mirrors": false,
+      "shapeIds": [
+       "island-two-trees"
+      ]
+     },
+     {
+      "id": "a-wood",
+      "name": "a-wood",
+      "mirrors": false,
+      "shapeIds": [
+       "island-a-wood"
+      ]
+     },
+     {
+      "id": "a-kept-clear-wall",
+      "name": "a-kept-clear-wall",
+      "mirrors": false,
+      "shapeIds": [
+       "island-a-kept-clear-wall",
+       "kept-wall"
+      ]
+     },
+     {
+      "id": "an-unmarked-wall",
+      "name": "an-unmarked-wall",
+      "mirrors": false,
+      "shapeIds": [
+       "island-an-unmarked-wall",
+       "plain-wall"
+      ]
+     },
+     {
+      "id": "a-goal-clearance",
+      "name": "a-goal-clearance",
+      "mirrors": false,
+      "shapeIds": [
+       "island-a-goal-clearance"
+      ]
+     },
+     {
+      "id": "flora-overlay",
+      "name": "flora-overlay",
+      "mirrors": false,
+      "shapeIds": [
+       "island-flora-overlay"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "dressing": {
+  "styles": {
+   "oak-9": {
+    "kind": "tree",
+    "form": "template",
+    "species": "oak",
+    "height": 9
+   },
+   "oak-14": {
+    "kind": "tree",
+    "form": "template",
+    "species": "oak",
+    "height": 14
+   },
+   "rock-3": {
+    "kind": "boulder",
+    "form": "round",
+    "size": 3,
+    "mossy": true,
+    "rock": {
+     "kind": "turbulence",
+     "seed": 3302,
+     "scale": 3,
+     "octaves": 3,
+     "rise": 3,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 48,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     ]
+    }
+   }
+  },
+  "props": [
+   {
+    "id": "road-trees",
+    "kind": "stroke",
+    "seed": 3311,
+    "radius": 2,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 3301,
+     "cellSize": 3,
+     "jitter": 55,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ]
+    },
+    "points": [
+     [
+      -147,
+      -70
+     ],
+     [
+      -127,
+      -70
+     ],
+     [
+      -107,
+      -70
+     ],
+     [
+      -87,
+      -70
+     ]
+    ]
+   },
+   {
+    "id": "off-1",
+    "kind": "tree",
+    "seed": 3605,
+    "x": -138,
+    "z": -67,
+    "style": "oak-9"
+   },
+   {
+    "id": "off-2",
+    "kind": "tree",
+    "seed": 3590,
+    "x": -124,
+    "z": -66,
+    "style": "oak-9"
+   },
+   {
+    "id": "off-3",
+    "kind": "tree",
+    "seed": 3575,
+    "x": -110,
+    "z": -65,
+    "style": "oak-9"
+   },
+   {
+    "id": "off-4",
+    "kind": "tree",
+    "seed": 3560,
+    "x": -96,
+    "z": -64,
+    "style": "oak-9"
+   },
+   {
+    "id": "road-rocks",
+    "kind": "stroke",
+    "seed": 3311,
+    "radius": 2,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 3301,
+     "cellSize": 3,
+     "jitter": 55,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ]
+    },
+    "points": [
+     [
+      -69,
+      -70
+     ],
+     [
+      -49,
+      -70
+     ],
+     [
+      -29,
+      -70
+     ],
+     [
+      -9,
+      -70
+     ]
+    ]
+   },
+   {
+    "id": "rock-off-1",
+    "kind": "boulder",
+    "seed": 3627,
+    "x": -60,
+    "z": -67,
+    "style": "rock-3"
+   },
+   {
+    "id": "rock-off-2",
+    "kind": "boulder",
+    "seed": 3612,
+    "x": -46,
+    "z": -66,
+    "style": "rock-3"
+   },
+   {
+    "id": "rock-off-3",
+    "kind": "boulder",
+    "seed": 3597,
+    "x": -32,
+    "z": -65,
+    "style": "rock-3"
+   },
+   {
+    "id": "rock-off-4",
+    "kind": "boulder",
+    "seed": 3582,
+    "x": -18,
+    "z": -64,
+    "style": "rock-3"
+   },
+   {
+    "id": "brush",
+    "kind": "stroke",
+    "seed": 3311,
+    "radius": 8,
+    "style": "rough",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 3301,
+     "cellSize": 3,
+     "jitter": 55,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ]
+    },
+    "points": [
+     [
+      9,
+      -70
+     ],
+     [
+      29,
+      -70
+     ],
+     [
+      49,
+      -70
+     ],
+     [
+      69,
+      -70
+     ]
+    ],
+    "coverage": 0.3
+   },
+   {
+    "id": "brush-at-0",
+    "kind": "tree",
+    "seed": 3470,
+    "x": 15,
+    "z": -59,
+    "style": "oak-9"
+   },
+   {
+    "id": "brush-at-1",
+    "kind": "tree",
+    "seed": 3471,
+    "x": 31,
+    "z": -59,
+    "style": "oak-9"
+   },
+   {
+    "id": "brush-at-2",
+    "kind": "tree",
+    "seed": 3472,
+    "x": 47,
+    "z": -59,
+    "style": "oak-9"
+   },
+   {
+    "id": "brush-at-3",
+    "kind": "tree",
+    "seed": 3473,
+    "x": 63,
+    "z": -59,
+    "style": "oak-9"
+   },
+   {
+    "id": "road-back",
+    "kind": "stroke",
+    "seed": 3311,
+    "radius": 2,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 3301,
+     "cellSize": 3,
+     "jitter": 55,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ]
+    },
+    "points": [
+     [
+      87,
+      -70
+     ],
+     [
+      107,
+      -70
+     ],
+     [
+      127,
+      -70
+     ],
+     [
+      147,
+      -70
+     ]
+    ]
+   },
+   {
+    "id": "back-0",
+    "kind": "tree",
+    "seed": 3600,
+    "x": 138,
+    "z": -60,
+    "style": "oak-14"
+   },
+   {
+    "id": "back-1",
+    "kind": "tree",
+    "seed": 3601,
+    "x": 119,
+    "z": -60,
+    "style": "oak-14"
+   },
+   {
+    "id": "back-2",
+    "kind": "tree",
+    "seed": 3602,
+    "x": 131,
+    "z": -61,
+    "style": "oak-9"
+   },
+   {
+    "id": "back-3",
+    "kind": "tree",
+    "seed": 3603,
+    "x": 140,
+    "z": -53,
+    "style": "oak-14"
+   },
+   {
+    "id": "back-4",
+    "kind": "tree",
+    "seed": 3604,
+    "x": 129,
+    "z": -46,
+    "style": "oak-14"
+   },
+   {
+    "id": "back-5",
+    "kind": "tree",
+    "seed": 3605,
+    "x": 114,
+    "z": -57,
+    "style": "oak-14"
+   },
+   {
+    "id": "back-6",
+    "kind": "tree",
+    "seed": 3606,
+    "x": 93,
+    "z": -55,
+    "style": "oak-9"
+   },
+   {
+    "id": "back-7",
+    "kind": "tree",
+    "seed": 3607,
+    "x": 115,
+    "z": -47,
+    "style": "oak-9"
+   },
+   {
+    "id": "back-8",
+    "kind": "tree",
+    "seed": 3608,
+    "x": 95,
+    "z": -48,
+    "style": "oak-9"
+   },
+   {
+    "id": "pair-near-a",
+    "kind": "boulder",
+    "seed": 3639,
+    "x": -133,
+    "z": -6,
+    "style": "rock-3"
+   },
+   {
+    "id": "pair-near-b",
+    "kind": "boulder",
+    "seed": 3636,
+    "x": -130,
+    "z": -6,
+    "style": "rock-3"
+   },
+   {
+    "id": "pair-clear-a",
+    "kind": "boulder",
+    "seed": 3615,
+    "x": -109,
+    "z": -6,
+    "style": "rock-3"
+   },
+   {
+    "id": "pair-clear-b",
+    "kind": "boulder",
+    "seed": 3606,
+    "x": -100,
+    "z": -6,
+    "style": "rock-3"
+   },
+   {
+    "id": "rock-first",
+    "kind": "boulder",
+    "seed": 3553,
+    "x": -53,
+    "z": 0,
+    "style": "rock-3"
+   },
+   {
+    "id": "tree-second",
+    "kind": "tree",
+    "seed": 3451,
+    "x": -51,
+    "z": 0,
+    "style": "oak-9"
+   },
+   {
+    "id": "tree-first",
+    "kind": "tree",
+    "seed": 3425,
+    "x": -25,
+    "z": 0,
+    "style": "oak-9"
+   },
+   {
+    "id": "rock-second",
+    "kind": "boulder",
+    "seed": 3523,
+    "x": -23,
+    "z": 0,
+    "style": "rock-3"
+   },
+   {
+    "id": "nine-1-a",
+    "kind": "tree",
+    "seed": 3411,
+    "x": 15,
+    "z": -14,
+    "style": "oak-9"
+   },
+   {
+    "id": "nine-1-b",
+    "kind": "tree",
+    "seed": 3412,
+    "x": 16,
+    "z": -14,
+    "style": "oak-9"
+   },
+   {
+    "id": "nine-2-a",
+    "kind": "tree",
+    "seed": 3411,
+    "x": 31,
+    "z": -14,
+    "style": "oak-9"
+   },
+   {
+    "id": "nine-2-b",
+    "kind": "tree",
+    "seed": 3412,
+    "x": 33,
+    "z": -14,
+    "style": "oak-9"
+   },
+   {
+    "id": "nine-3-a",
+    "kind": "tree",
+    "seed": 3411,
+    "x": 47,
+    "z": -14,
+    "style": "oak-9"
+   },
+   {
+    "id": "nine-3-b",
+    "kind": "tree",
+    "seed": 3412,
+    "x": 50,
+    "z": -14,
+    "style": "oak-9"
+   },
+   {
+    "id": "nine-4-a",
+    "kind": "tree",
+    "seed": 3411,
+    "x": 63,
+    "z": -14,
+    "style": "oak-9"
+   },
+   {
+    "id": "nine-4-b",
+    "kind": "tree",
+    "seed": 3412,
+    "x": 67,
+    "z": -14,
+    "style": "oak-9"
+   },
+   {
+    "id": "tall-2-a",
+    "kind": "tree",
+    "seed": 3431,
+    "x": 15,
+    "z": 14,
+    "style": "oak-14"
+   },
+   {
+    "id": "tall-2-b",
+    "kind": "tree",
+    "seed": 3432,
+    "x": 17,
+    "z": 14,
+    "style": "oak-14"
+   },
+   {
+    "id": "tall-3-a",
+    "kind": "tree",
+    "seed": 3431,
+    "x": 31,
+    "z": 14,
+    "style": "oak-14"
+   },
+   {
+    "id": "tall-3-b",
+    "kind": "tree",
+    "seed": 3432,
+    "x": 34,
+    "z": 14,
+    "style": "oak-14"
+   },
+   {
+    "id": "tall-4-a",
+    "kind": "tree",
+    "seed": 3431,
+    "x": 47,
+    "z": 14,
+    "style": "oak-14"
+   },
+   {
+    "id": "tall-4-b",
+    "kind": "tree",
+    "seed": 3432,
+    "x": 51,
+    "z": 14,
+    "style": "oak-14"
+   },
+   {
+    "id": "tall-5-a",
+    "kind": "tree",
+    "seed": 3431,
+    "x": 63,
+    "z": 14,
+    "style": "oak-14"
+   },
+   {
+    "id": "tall-5-b",
+    "kind": "tree",
+    "seed": 3432,
+    "x": 68,
+    "z": 14,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-0",
+    "kind": "tree",
+    "seed": 3600,
+    "x": 134,
+    "z": -16,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-1",
+    "kind": "tree",
+    "seed": 3601,
+    "x": 114,
+    "z": 12,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-2",
+    "kind": "tree",
+    "seed": 3602,
+    "x": 93,
+    "z": -14,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-3",
+    "kind": "tree",
+    "seed": 3603,
+    "x": 105,
+    "z": -21,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-4",
+    "kind": "tree",
+    "seed": 3604,
+    "x": 139,
+    "z": 9,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-5",
+    "kind": "tree",
+    "seed": 3605,
+    "x": 95,
+    "z": 21,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-6",
+    "kind": "tree",
+    "seed": 3606,
+    "x": 103,
+    "z": -13,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-7",
+    "kind": "tree",
+    "seed": 3607,
+    "x": 99,
+    "z": 5,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-8",
+    "kind": "tree",
+    "seed": 3608,
+    "x": 129,
+    "z": -11,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-9",
+    "kind": "tree",
+    "seed": 3609,
+    "x": 133,
+    "z": -5,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-10",
+    "kind": "tree",
+    "seed": 3610,
+    "x": 143,
+    "z": 21,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-11",
+    "kind": "tree",
+    "seed": 3611,
+    "x": 117,
+    "z": 0,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-12",
+    "kind": "tree",
+    "seed": 3612,
+    "x": 120,
+    "z": -6,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-13",
+    "kind": "tree",
+    "seed": 3613,
+    "x": 103,
+    "z": 18,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-14",
+    "kind": "tree",
+    "seed": 3614,
+    "x": 140,
+    "z": -11,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-15",
+    "kind": "tree",
+    "seed": 3615,
+    "x": 125,
+    "z": 10,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-16",
+    "kind": "tree",
+    "seed": 3616,
+    "x": 122,
+    "z": -11,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-17",
+    "kind": "tree",
+    "seed": 3617,
+    "x": 129,
+    "z": 5,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-18",
+    "kind": "tree",
+    "seed": 3618,
+    "x": 142,
+    "z": -7,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-19",
+    "kind": "tree",
+    "seed": 3619,
+    "x": 103,
+    "z": 8,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-20",
+    "kind": "tree",
+    "seed": 3620,
+    "x": 136,
+    "z": 2,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-21",
+    "kind": "tree",
+    "seed": 3621,
+    "x": 132,
+    "z": 22,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-22",
+    "kind": "tree",
+    "seed": 3622,
+    "x": 116,
+    "z": 18,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-23",
+    "kind": "tree",
+    "seed": 3623,
+    "x": 119,
+    "z": 10,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-24",
+    "kind": "tree",
+    "seed": 3624,
+    "x": 110,
+    "z": 5,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-25",
+    "kind": "tree",
+    "seed": 3625,
+    "x": 133,
+    "z": 9,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-26",
+    "kind": "tree",
+    "seed": 3626,
+    "x": 129,
+    "z": -20,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-27",
+    "kind": "tree",
+    "seed": 3627,
+    "x": 102,
+    "z": -8,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-28",
+    "kind": "tree",
+    "seed": 3628,
+    "x": 113,
+    "z": -21,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-29",
+    "kind": "tree",
+    "seed": 3629,
+    "x": 91,
+    "z": 1,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-30",
+    "kind": "tree",
+    "seed": 3630,
+    "x": 128,
+    "z": 20,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-31",
+    "kind": "tree",
+    "seed": 3631,
+    "x": 95,
+    "z": -2,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-32",
+    "kind": "tree",
+    "seed": 3632,
+    "x": 108,
+    "z": -9,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-33",
+    "kind": "tree",
+    "seed": 3633,
+    "x": 125,
+    "z": 1,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-34",
+    "kind": "tree",
+    "seed": 3634,
+    "x": 104,
+    "z": 0,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-35",
+    "kind": "tree",
+    "seed": 3635,
+    "x": 95,
+    "z": 14,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-36",
+    "kind": "tree",
+    "seed": 3636,
+    "x": 118,
+    "z": 14,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-37",
+    "kind": "tree",
+    "seed": 3637,
+    "x": 134,
+    "z": -11,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-38",
+    "kind": "tree",
+    "seed": 3638,
+    "x": 98,
+    "z": -7,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-39",
+    "kind": "tree",
+    "seed": 3639,
+    "x": 140,
+    "z": -16,
+    "style": "oak-14"
+   },
+   {
+    "id": "wood-40",
+    "kind": "tree",
+    "seed": 3640,
+    "x": 94,
+    "z": 7,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-41",
+    "kind": "tree",
+    "seed": 3641,
+    "x": 109,
+    "z": 12,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-42",
+    "kind": "tree",
+    "seed": 3642,
+    "x": 113,
+    "z": -11,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-43",
+    "kind": "tree",
+    "seed": 3643,
+    "x": 140,
+    "z": -1,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-44",
+    "kind": "tree",
+    "seed": 3644,
+    "x": 122,
+    "z": 17,
+    "style": "oak-9"
+   },
+   {
+    "id": "wood-cover",
+    "kind": "flora",
+    "seed": 3700,
+    "spec": {
+     "coverage": 0.8,
+     "scale": 8,
+     "octaves": 3,
+     "fernShare": 0.5,
+     "flowerShare": 0.08,
+     "flowerScale": 14,
+     "tallShare": 0.06
+    },
+    "points": [
+     [
+      144,
+      0
+     ],
+     [
+      140,
+      11
+     ],
+     [
+      130,
+      20
+     ],
+     [
+      117,
+      23
+     ],
+     [
+      104,
+      20
+     ],
+     [
+      94,
+      11
+     ],
+     [
+      90,
+      0
+     ],
+     [
+      94,
+      -11
+     ],
+     [
+      103,
+      -20
+     ],
+     [
+      117,
+      -23
+     ],
+     [
+      130,
+      -20
+     ],
+     [
+      140,
+      -12
+     ]
+    ]
+   },
+   {
+    "id": "kept-rock",
+    "kind": "boulder",
+    "seed": 3557,
+    "x": -127,
+    "z": 70,
+    "style": "rock-3"
+   },
+   {
+    "id": "kept-tree",
+    "kind": "tree",
+    "seed": 3437,
+    "x": -107,
+    "z": 70,
+    "style": "oak-9"
+   },
+   {
+    "id": "plain-rock",
+    "kind": "boulder",
+    "seed": 3521,
+    "x": -49,
+    "z": 70,
+    "style": "rock-3"
+   },
+   {
+    "id": "plain-tree",
+    "kind": "tree",
+    "seed": 3441,
+    "x": -29,
+    "z": 70,
+    "style": "oak-9"
+   },
+   {
+    "id": "goal-off-9",
+    "kind": "tree",
+    "seed": 3451,
+    "x": 48,
+    "z": 70,
+    "style": "oak-9"
+   },
+   {
+    "id": "goal-off-10",
+    "kind": "tree",
+    "seed": 3452,
+    "x": 39,
+    "z": 80,
+    "style": "oak-9"
+   },
+   {
+    "id": "goal-off-11",
+    "kind": "tree",
+    "seed": 3453,
+    "x": 28,
+    "z": 70,
+    "style": "oak-9"
+   },
+   {
+    "id": "goal-off-12",
+    "kind": "tree",
+    "seed": 3454,
+    "x": 39,
+    "z": 58,
+    "style": "oak-9"
+   },
+   {
+    "id": "road-cover",
+    "kind": "stroke",
+    "seed": 3311,
+    "radius": 2,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 3301,
+     "cellSize": 3,
+     "jitter": 55,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ]
+    },
+    "points": [
+     [
+      87,
+      70
+     ],
+     [
+      107,
+      70
+     ],
+     [
+      127,
+      70
+     ],
+     [
+      147,
+      70
+     ]
+    ]
+   },
+   {
+    "id": "cover-rock",
+    "kind": "boulder",
+    "seed": 3685,
+    "x": 103,
+    "z": 82,
+    "style": "rock-3"
+   },
+   {
+    "id": "cover",
+    "kind": "flora",
+    "seed": 3700,
+    "spec": {
+     "coverage": 0.8,
+     "scale": 8,
+     "octaves": 3,
+     "fernShare": 0.5,
+     "flowerShare": 0.08,
+     "flowerScale": 14,
+     "tallShare": 0.06
+    },
+    "points": [
+     [
+      144,
+      70
+     ],
+     [
+      140,
+      82
+     ],
+     [
+      130,
+      90
+     ],
+     [
+      117,
+      93
+     ],
+     [
+      104,
+      90
+     ],
+     [
+      94,
+      82
+     ],
+     [
+      90,
+      70
+     ],
+     [
+      94,
+      59
+     ],
+     [
+      103,
+      50
+     ],
+     [
+      117,
+      47
+     ],
+     [
+      130,
+      50
+     ],
+     [
+      140,
+      58
+     ]
+    ]
+   }
+  ]
+ }
+}
