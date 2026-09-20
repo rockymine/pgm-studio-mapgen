@@ -95,7 +95,7 @@ because there is an answer to *why here*:
   space and refuses any add that fills it, on any layer.
 - **copied trees rather than the vanilla stamp.** A `copied` recipe carries a `body` block for
   block; `pgm-studio/tools/seed-trees.cs` files bodies out of a world into the library, and
-  `showcase/tree-showcase` is the world they come from. State them under names in
+  `corpus/tree-showcase` is the world they come from. State them under names in
   `dressing.styles` and let the placements name those — `specs/fable-millrace-revamp/trees.json`
   is 22 of them, keyed the way its placements name them.
 - **boulders, which are stone** — stone, cobblestone, andesite, and nothing else.
@@ -103,23 +103,16 @@ because there is an answer to *why here*:
   offsetting the band, so four points draw as a curve: a wall, a lane, a watercourse.
 - **paths that are `solid`**, three blocks a reader cannot quite tell apart, running to a door.
 
-## 3. The ten minutes: read one card, then one showcase diff
+## 3. The ten minutes: read the card nearest the thing being built
 
 `techniques/` is one card per instrument, each holding its variants **side by side** in one world with the
 text reads that prove them. Read the card nearest the thing about to be built — `relief-on-shapes` and
 `hollows` are the two that carry ground, `ramp-and-stair` and `polylines` the two that carry a join — before
 opening anything else. `techniques/README.md` indexes them.
 
-
-
-`showcase/` is one technique per map, and every one of them forks `02-theme` — a plain
-100 × 100 destroy board scoring 0 with no violation and no lint — changing **only** what its
-technique needs. The diff is therefore the lesson, with nothing else in it.
-
-Read `02-theme`'s finish, then the finish of the two showcases nearest the board about to be
-built. `06-ramp-and-slant`, `07-hill`, `08-cliff`, `09-mesa-and-hollow`, `10-landform-shapes`,
-`12-underpass`, `19-mountain-range`, `20-undercroft`, `21-wall-and-stair` are the ones that
-carry joins. Say what each diff changed before authoring anything.
+**A card's variants stand side by side in one world, which is what makes the comparison the lesson.** Read
+the two nearest what is about to be built, and say what separates their panels before authoring anything —
+the card's committed reads are what settle a number, not a picture of one of them.
 
 **Numbers off a finished board are a diagnostic, not a control.** `scramble%`, `barrier%` and
 the face count are read out of a built world, and no authoring decision is made against them:

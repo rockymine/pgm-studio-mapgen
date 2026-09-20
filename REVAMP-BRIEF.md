@@ -26,7 +26,7 @@ difference between the studio's world and the person's a statement about the per
   half of the read a diff cannot recover: a diff says what the blocks became, and the list says what was
   asked. `review/rockymine-ruediger-millrace.md` is the shape.
 - Trees, statues, boats: anything pasted in from elsewhere is committed as the world it was pasted from,
-  under `showcase/` (`showcase/tree-showcase` is 74 trees on platforms), so the paste can be matched back
+  under `corpus/` (`corpus/tree-showcase` is 74 trees on platforms), so the paste can be matched back
   to its original rather than guessed.
 
 ## 2. The control: rebuild the original and diff it against itself
@@ -103,9 +103,9 @@ courses deep with a tall rise so its mix shows across the ground. `probe.py` is 
 ## 5. The trees
 
 ```bash
-python3 tools/trees.py catalogue showcase/<trees>/region
-python3 tools/trees.py match showcase/<trees>/region maps/<author>-<slug>/region --against maps/<slug>/region
-python3 tools/trees.py bodies showcase/<trees>/region --row <z>=<prefix> [--row …] --out specs/<new-slug>/trees.json
+python3 tools/trees.py catalogue corpus/<trees>/region
+python3 tools/trees.py match corpus/<trees>/region maps/<author>-<slug>/region --against maps/<slug>/region
+python3 tools/trees.py bodies corpus/<trees>/region --row <z>=<prefix> [--row …] --out specs/<new-slug>/trees.json
 ```
 
 `match` finds, for every tree body the person's world has and the studio's lacks, which catalogue tree it is

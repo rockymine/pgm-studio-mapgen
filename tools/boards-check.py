@@ -9,7 +9,7 @@ exactly the shape of thing that goes unwritten, so this counts.
 
 Every folder under `maps/`, `specs/` and `specs/archive/` has to be accounted for in one of three ways:
 
-  written up      named in the log, in `README.md`'s showcase library, or in `showcase/README.md`
+  written up      named in the log or in `README.md`
   not a board     named under `## Not boards` — a probe suite, a test world, a generated library map
   not yet         named under `## Not yet written up`, which is a debt the log carries in the open
 
@@ -20,8 +20,8 @@ import os, re, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LOG = os.path.join(ROOT, "BOARDS-BUILT.md")
-# The log is where a board is written up; the other two describe the boards they are indexes of.
-INDEXES = ["README.md", "showcase/README.md"]
+# The log is where a board is written up; the README describes the few boards it is the index of.
+INDEXES = ["README.md"]
 NOT_BOARDS = "## Not boards"
 NOT_YET = "## Not yet written up"
 

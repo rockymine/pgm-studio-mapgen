@@ -243,12 +243,13 @@ it by hand, and that finished world is the first board here that was **not** bui
 | `sonnet-fallowmere` | dtm | Sonnet 4.5 | the same basin **left open** — the same canal, the same single bridge, the same edgy coast, and then less of everything else: two quiet grass banks, a hollow dug under the forward goal, a lone knoll-island either side of the crossing, and just enough made — a croft, a grounded biplane, a rowboat, a scatter of stone — to give the ground a reason without covering it |
 | `opus5-weirbank` | dtm | Opus 5 | half of Millrace's box, the same art direction on a quarter of the area — `review/opus5-weirbank.md` |
 | `rockymine-ruediger-millrace` | dtm | rockymine, Ruediger_LP | **Millrace finished by hand**, five hours of WorldEdit and Arceon over the studio's world: the stone body re-laid as a six-stone voronoi, three courses of earth under every surface, the canal walls in double slab and grey wool, granite paths, ferns on every grass block, four biomes, the eighteen grown trees replaced by sixteen of the author's own showcase trees, a team-coloured statue on the small island, a tug in the race, a balloon holding the observer spawn, beacons over the monuments. The terrain, water, walls, bridges and boulders are the studio's, unmoved. `review/rockymine-ruediger-millrace.md` is the author's own account with the commands; `review/fable-millrace-revamp.md` is the measured diff |
-| `fable-millrace-revamp` | dtm | Fable 5.1 | **the hand revamp restated as documents** over the original's own layout: the six-stone body as one nested cell-and-turbulence pattern, the earth as a depth stack, the author's trees planted as `copied` recipes cut out of `showcase/tree-showcase`, the statue, the tug, the balloon and the beacon frames lifted out of the hand-built world as made things. Every gap between the two is in the review |
+| `fable-millrace-revamp` | dtm | Fable 5.1 | **the hand revamp restated as documents** over the original's own layout: the six-stone body as one nested cell-and-turbulence pattern, the earth as a depth stack, the author's trees planted as `copied` recipes cut out of `corpus/tree-showcase`, the statue, the tug, the balloon and the beacon frames lifted out of the hand-built world as made things. Every gap between the two is in the review |
 | `fable-mossgill` | dtm | Fable 5.1 | **the same techniques on half the box and a new layout** — 130 × 120: one moor split by a beck cut eight courses into it on a shallow diagonal, a crag a team spawns on in each corner, a brow down onto an apron where the monument stands in a quay-walled sheepfold, a plank bridge between two quays at the axis. The six-stone body as a volume of cells wider than tall, three courses of earth as a volume, the author's copied oaks and conifers, granite roads, ferns, four biomes. `review/fable-mossgill.md` |
 
-`showcase/tree-showcase/` is the author's tree corpus beside the technique showcases: 75 hand-built trees on
-their own platforms, the measured ground truth behind `pgm-studio/docs/world-export/tree-corpus.md`, and now
-the world `pgm-studio/tools/seed-trees.cs` cuts copied tree recipes out of.
+`corpus/tree-showcase/` is the author's tree corpus: 75 hand-built trees on their own platforms, the measured
+ground truth behind `pgm-studio/docs/world-export/tree-corpus.md`, and the world
+`pgm-studio/tools/seed-trees.cs` cuts copied tree recipes out of. It is not a board and `corpus/README.md`
+says what else it is read by.
 
 ### Boards built to put a rule on live ground
 

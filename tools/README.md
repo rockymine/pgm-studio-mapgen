@@ -279,14 +279,14 @@ they were written to produce.
 | `anvil.py` | the reader the other four import — `World(regionDir)` with `get`, `blocks`, `columns`, `voxels`, `bounds`, `biome` — and, run on its own, a census of a world. Numeric ids, 1.8 Anvil, nothing installed |
 | `world-diff.py` | two worlds of one board against each other, keyed by the first's `provenance.json`: how many columns kept their surface, what each block became by pass and depth, every added and removed thing with its box, the bed under the water, the plants, the biomes, and how much of each material shows on a face. `--json` writes it all for a lift or a review |
 | `lift.py` | a box cut out of a world into `models/<name>.json`, rows of `[x, y, z, id, data]`, which a spec's `build.py` turns into a made thing through `sculpt/layers.py`. `--against` keeps only what the other world lacks, `--ground-below` drops the terrain a footing stands in, `--cost` prints what it costs in layers and shapes, `--plan` prints the box as a plan of top blocks |
-| `trees.py` | `catalogue` every tree standing in a world; `match` planted trees back to their originals on leaf shape under the eight symmetries of the square; `bodies` a showcase row into the `trees.json` a `copied` recipe carries; `verify` that a built world planted them block for block and every leaf no-decay |
+| `trees.py` | `catalogue` every tree standing in a world; `match` planted trees back to their originals on leaf shape under the eight symmetries of the square; `bodies` a corpus row into the `trees.json` a `copied` recipe carries; `verify` that a built world planted them block for block and every leaf no-decay |
 | `probe.py` | whether the ground varies down a column or each column is one material — the run lengths of one stone through the body, the earth's uniformity, a face as characters, and the floating columns bucketed by what stands at their top |
 
 ```bash
 python3 tools/world-diff.py maps/<slug>/region maps/<author>-<slug>/region \
         --provenance specs/<slug>/provenance.json --json specs/<author>-<slug>/diff.json
-python3 tools/trees.py match showcase/tree-showcase/region maps/<author>-<slug>/region --against maps/<slug>/region
-python3 tools/trees.py bodies showcase/tree-showcase/region --row -75=oak-dense --row -242=fir-tall --out specs/<new>/trees.json
+python3 tools/trees.py match corpus/tree-showcase/region maps/<author>-<slug>/region --against maps/<slug>/region
+python3 tools/trees.py bodies corpus/tree-showcase/region --row -75=oak-dense --row -242=fir-tall --out specs/<new>/trees.json
 python3 tools/lift.py maps/<author>-<slug>/region statue --box -61 31 -75 -29 72 -38 \
         --against maps/<slug>/region --ground-below 36 --out specs/<new>/models --cost
 python3 tools/probe.py maps/<new>/region --floating

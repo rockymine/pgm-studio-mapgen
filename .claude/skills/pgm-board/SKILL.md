@@ -18,7 +18,7 @@ files exceed 200k each. `pgm-board-warmup` carries the limits and the never-open
 with `jq` and never `cat`-ed, and a one-line verdict is a `grep` rather than a file read.
 
 **And `specs/archive/` is a record rather than a set of examples** — the eighteen boards flat under
-`specs/` are the ones worth reading, and `showcase/` is smaller and more directed than either.
+`specs/` are the ones worth reading, and `techniques/` is smaller and more directed than either.
 
 ---
 

@@ -213,24 +213,52 @@ answers for the drawing defaults instead — a front door and the room the piece
 square, stands **in the ring between the shell and the piece edge**, and holds `IronGap` blocks of clear air
 to the wall.
 
-On a 20 x 20 piece whose shell is the piece inset one and five in front of the door, that ring is the
+On a 20 × 20 piece whose shell is the piece inset one and five in front of the door, that ring is the
 five-block door apron and nothing else: the cube fills it, three blocks of cube and two of air, and anywhere
-in the hall is unplaceable.
+in the hall is unplaceable. Shrinking the building widens the ring, and `/plan/room` hands it over rather than
+being guessed at.
 
-Shrinking the building widens the ring, which is what makes a seat beside the door possible at all — and
-`/plan/room` hands it over rather than being guessed at.
+**The same `placements.iron` entry builds two different structures, and the piece it rides decides which.**
+An iron marker on a piece that also carries a spawn never reaches the standalone loop: it rides
+`SpawnIntent.Iron`, is resolved beside the framed room, and comes out a **3 × 3 × 3** block sized to the slot
+the framing carved for it. On any other piece it falls through to the standalone path and stamps a plain
+**4 × 4 × 4** cube.
+
+**An iron marker beside a spawn takes a bite out of the building rather than adding to it.** Measured on one
+board: the spawn cube framed 18 blocks wide with the marker absent and 14 with it present, and the four blocks
+given up are exactly where the armoury stands.
+
+**`ST2` complains about an iron marker outside the spawn piece and keeps it.** `/plan/evaluate` still answers
+`valid: true`, so a standalone cube is a deliberate choice rather than a mistake the gate caught — and only
+the spawn-bound one is wired to regrow in the `map.xml` the studio writes.
+
 
 ### A `walls` entry closes an interface, not a route
 
-A plan wall stamps bedrock two thick and three tall across the interface it names, over that
-interface's full width, on the attack side — so it closes exactly one seam. On a plan whose pieces
-enclose something, that is not the same as closing the way through: a `donut` wool box has a lane
-down **each** side of its hole, and a wall on one is walked past on the other.
+A plan wall stamps bedrock two thick and three tall across the interface it names, over that interface's full
+width, on the attack side — so it closes exactly one seam. On a plan whose pieces enclose something that is not
+the same as closing the way through: a `donut` wool box has a lane down **each** side of its hole, and a wall
+on one is walked past on the other.
 
-Count the ways round the thing before counting the walls. Where the plan has no seam at the place a
-wall is needed, **split a piece to make one**: cutting a ring's two long arms in two level with the middle
-of its hole takes twelve pieces to fourteen, which puts one interface in each lane facing the other across
-the yard and gives both walls somewhere to stand.
+Count the ways round the thing before counting the walls. Where the plan has no seam at the place a wall is
+needed, **split a piece to make one**: cutting a ring's two long arms in two level with the middle of its hole
+takes twelve pieces to fourteen, which puts one interface in each lane facing the other across the yard.
+
+**Two refusals bound where a wall may stand, and both are 422 rather than lint.** `PL11` names a pair with no
+shared land border, and `PL13` names the wool room's own interface — a wall there stamps through the room it
+defends. A pair that is both answers both in one response, so isolating `PL11` takes a pair that touches
+nothing and has no room in it.
+
+**Which face opens for the chests is not a field, and a `side` was removed because the geometry answers it.**
+The wall is two blocks thick, so exactly one face can be opened without breaching it, and
+`ContactGraph.ApproachSide` takes the side further from the wool — the side both the raiders and the defence
+reach the line across. It is carried as a **piece** rather than a compass direction so that it survives the
+orbit, and `GET /api/plan/inspect` reports the resolved answer as `wallChest` before anything is built.
+
+**The chests are two, on the approach column, at a third and two-thirds along the interface.** The defence
+face one block over carries none: the wall does not have two faces with a chest each, it has one face with
+two.
+
 
 ### On a bridging board the gaps are the design, so state them first
 
@@ -560,6 +588,16 @@ uninterrupted climb and the crest reads as being behind the map. Strokes placed 
 nothing to clamp to, so take those from a crest point inside the outline instead.
 
 
+### A relief mark's own fields are resolved past `RQ3`, so a wrong field name defaults to nought
+
+`RQ3` names an unread field on a posted document's own path, and a mark's inside is resolved past that walk —
+so a `scarp` written with a `line` mark's field names takes `high` and `low` as **0** and pins the middle of
+the board to bedrock. The relief read answered `low 0 · high 20 · relief 20` and the export gate stayed
+**OPEN**.
+
+**Check a relief against `POST …/sketch/relief/read`'s `low` before building.** A `low` that is not roughly
+the group's `base` is a mark that did not land, and it is the only thing that says so.
+
 ### A scarp's shelf is on the +z hand of the direction its lip is traced
 
 A `scarp` pins `high` on one side of its line and `low` on the other, and which side is which is the order the
@@ -696,6 +734,16 @@ The cheap check is a column transect down the way in. A ramp that works reads on
 blocks the whole way; a plugged one reads a solid run where the air should be, and the export gate stays open
 either way.
 
+
+### A subtract's `floor` and `base_height` are not read: the whole column goes
+
+`RasterGroup` resolves the subtract side of a group as a **set of columns to delete**, so the shape's own
+height never enters the calculation — `base_height: 1` and `base_height: 40` on one footprint carve the same
+channel. Only the shape's own bounds are checked, and `SK5` complains about a height past the world roof
+while carving exactly as before.
+
+Relief moves a surface and a subtract removes it. What puts ground back over a cut is an override add at a
+floor **above** the subtract's, which bridges it; the same shape at the cut's own floor refills it.
 
 ### A ring is one polygon, and it is what a floor that rises or a surface that falls is drawn with
 
@@ -1098,6 +1146,16 @@ the surface top, so nothing can be placed under a deck.
 one block short reads as standable ground with no route onto it.
 
 
+### Lifting the ground to make room for a storey under it is a plan edit as well as a finish edit
+
+`shapePropsByHeight` moves the landmass's **floor** and leaves its surface where it was, which is what makes
+room for a storey underneath. The plan states where the spawns and the goals sit, so moving the finish alone
+leaves every marker at its old height under ground that has risen — thirteen courses under, on one measured
+board — and the buildability check then reports every placement as over open void.
+
+**A placement reads as over open void unless its column has a span at Y = 0.** A storey resting at `floor: 1`
+leaves the whole board without one, so the board that looks right in a section answers wrong at the gate.
+
 ### The bedrock floor goes under what rests on it, and under nothing else
 
 `TerrainBuilder.Build` writes bedrock at y0 under a column whose own floor is the bedrock course or the
@@ -1195,6 +1253,13 @@ gravel*; it is a **gravel bed with sand along the cracks**, because gravel takes
 Write the ground the board is made of **last** and put the veining before it:
 `[(GRAVEL, 1), (RED_SAND, 2), (SAND, 1)]` is a sand wadi with gravel in the cracks and a red margin
 round each patch. A voronoi is a diagram, not a mixture.
+
+### A theme has no bucket keyed on elevation, so rock above a treeline is a second shape
+
+A relief moves the surface inside one shape and a theme is scoped to a shape, so nothing paints by altitude:
+`layered`'s axis is `depth` or `inward`, and a pattern's `rise` makes its field three-dimensional rather than
+selecting by height. Ground that changes material where it gets high is a second shape standing where the
+high ground is, with `relief_scope: "hold"` and its own theme.
 
 ### A cliff's strata belong in the `wall` bucket, because a cliff is what that bucket paints
 

@@ -14,7 +14,8 @@ specs/<slug>/renders/                 the images the map was reviewed from, stag
 specs/<slug>/provenance.json          what each pass placed, and which prop placed it
 review/<slug>.md                      the measured record for that map
 reports/<model>-runN.md               one agent run: what it could not say, what it got wrong, what worked
-showcase/<nn>-<concept>/              one technique, end to end — documents, world, renders, README
+techniques/<card>/                    one instrument, its variants side by side in one world, with the reads
+corpus/                               hand-built worlds nothing can re-derive — the tree corpus
 sculpture/                            structures built out of the layer system — the two galleries
 tools/                                the driver that posts those documents to the API, the loop beside it, and the world tools
 ```
@@ -28,15 +29,10 @@ A map's `specs/` are the whole of what was authored; the world is derived from t
 the artifact rather than as a source. Rebuilding one needs a running pgm-studio API and a migrated
 database.
 
-## The showcase library
+## The boards the cards add up to
 
-`showcase/` is a teaching set: **one folder per technique**, each a complete map whose
-only reason to exist is the one thing its README names. Every one forks the same base board and changes one
-thing, so the diff is the lesson — a reader who wants to know how a cliff is stated reads the eleven lines
-that state it rather than finding the cliff inside a thousand-line finish. `showcase/README.md` is the index.
-
-`maps/opus5-whinnymoor` is the board they add up to, and `review/opus5-whinnymoor.md` says which showcase
-every part of it came from.
+`maps/opus5-whinnymoor` is the board built out of the techniques one at a time, and
+`review/opus5-whinnymoor.md` says which of them each part came from.
 
 `maps/opus5-sandcaster` is the destroy board built on top of that: 110 × 400, three land regions on one hue
 axis, a chasm down the middle and a tiled service corridor under the reef — two sketch layers, forty-two
@@ -60,10 +56,11 @@ arranged. Each commits the text reads that prove its claims and names no past ma
 [techniques/README.md](techniques/README.md) indexes them; a new card is written when a new instrument
 lands.
 
-A card differs from a showcase in what it is for. A showcase forks one base board and changes the one thing
-its README names, so the **diff** is the lesson; a card puts the variants in one world, so the
-**comparison** is. `taking-over-a-composed-board` is the one exception, and says why: four compiles of one
-plan cannot share a world.
+**One world a card, with the variants in it, is what the cards settled on.** A teaching set of one board per
+technique was here first and the diff between two boards was meant to be the lesson; putting the variants
+side by side in one world made the comparison the lesson instead, and made a card's claims measurable in
+reads taken over the same ground. `taking-over-a-composed-board` is the one exception and says why: four
+compiles of one plan cannot share a world.
 
 ## Sculpting with layers
 
@@ -122,7 +119,7 @@ it is appended to, which is why it is not here.
 one worth reading; the archive is a record rather than a catalogue of examples — probes, boards built to find
 the limit of one mechanism, early runs, and boards a later one superseded. The split is there because the
 cheapest thing a model does is imitate whatever it opens first, so what it opens first should be worth
-imitating — and for one technique at a time, `showcase/` and `techniques/` are the place rather than either.
+imitating — and for one technique at a time, `techniques/` is the place rather than either.
 
 **Most of these specs no longer compile, and that is settled rather than pending (author).** 72 of the 127
 plans here state `"plan": 1`, whose marker offsets are in cells where version 2 states them in blocks, so
