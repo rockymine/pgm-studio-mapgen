@@ -369,6 +369,26 @@ player walks is a run of pieces and nothing else: a cross-piece three cells deep
 stepped 10, 11, 12 between a bar at 9 and a bar at 13, gives four one-block risers that `walk` crosses end
 to end with nothing placed. Unsplit, the same climb is one four-block face.
 
+### A contested middle wants a structure, and a structure is one made layer per span
+
+The neutral holm both teams bridge to is the piece most worth building on, and a flat island is nothing to
+arrive at. What it wants is a **double deck**: four legs at the corners, a floor with three blocks clear
+under it and a roof with four clear between, so the same piece is a height to hold and a room to hide in
+(the author's ruling).
+
+**A leg passing a floor is two spans in one column, which one layer cannot hold.** A sketch layer is one
+`[floor, floor + base_height)` per column, so the legs are cut at each floor instead — under the lower one,
+then between the two — and every span gets its own layer marked `kind: "made"`. Four layers and ten
+rectangles built the one measured here.
+
+**Make the footprint odd in both axes about the centre, and it is its own image.** A deck spanning columns
+−8..8 by −4..4 maps onto itself under `rot_180` and needs no mirror; an even span is one block off-centre,
+which on a rotational board is one team's middle.
+
+**A field with `rise: 0` on a fill is refused by `PT4`.** A plane-sampled pattern resolves every block of a
+column alike, so a leg of it comes out in vertical stripes. Two courses of vertical period is enough for
+anything a deck is made of.
+
 ### A piece taken out for a build zone is the cheapest edit that changes how a board is fought over
 
 A plan's `zones` is what it says about the void, and the compiler turns an entry there into the intent's own
@@ -407,14 +427,38 @@ belongs in the keep-out list beside the rooms.
 
 **The search is only as good as what it searched against, and two things are easy to leave out.** The rooms,
 the doors and the spawns are not in the claims map until the compiled **intent is stored**: run before that,
-one board's search answered 1,494 cells and 52 sites, and four of the first twenty were then declined
-`DR-KEEP`. Run with the intent but without testing each cell's **orbit image** it answered 1,370 and 45 —
-no decline on that board, and still not optional, since the orbit is what the last 220 cells cost.
+one board's search answered 1,398 cells and 52 sites, and four of the first twenty were then declined
+`DR-KEEP`. Run with the intent but without testing each cell's **orbit image** it answered 1,274 and 45 —
+no decline on that board, and still not optional, since the orbit is what the last 212 cells cost.
 
 **Ask the search about a board with no props on it.** A tree raises its own column's top and claims every
 cell its crown covers, so a layout that already carries one is a different board to search: the same board
-answered 1,150 cells with the props stripped out and 222 with them left in. Strip every prop but the
-strokes, search, then place.
+answered 1,062 cells with the props stripped out and 748 with seven of them standing. Strip every prop but
+the strokes, search, then place.
+
+**What the search answers is where a prop MAY stand, and how many stand there is the author's** (his
+ruling). Planting every site a legal field offers is a forest, and a board of ten-block corridors has no
+room for one: 34 spaced sites on that board came down to **seven** planted. The rules the seven follow are
+worth more than the list.
+
+**Toward the OUTSIDE of a piece, never down its middle.** With no road on it a player still runs down the
+centre of a corridor, so a line of trees along the rim reads as an alley and the same trees in the middle
+read as an obstacle course. Two in front of each hole, on the rim between the ground and the void.
+
+**Nothing where a build zone is ARRIVED at, and nothing on the brink it is bridged from.** A player who
+crosses a lane and lands in three trees has been given an obstacle the arrangement never asked for; a tree
+two blocks off a bridging edge crowds the edge itself. Both belong on the far side of the piece.
+
+**Nothing on the approach in front of a wall, and nothing on a contested middle.** The first the studio
+enforces on its own — a wall's keep-out plus a road left **0** legal cells on a whole wool approach — and
+the second is a place for a structure rather than for scenery. One tree in the corner behind the wall, in
+front of the room, is what that approach carries.
+
+**A prop on a rim hangs a crown over the void, and the walk stands on it.** A leaf course over a void column
+is a standing place for `walk` while `column` and `transect` both call that column void, so a route will
+climb through a canopy and report a `barrier +8` that no player meets. Which read is wrong is
+`pgm-studio`'s `WS71`, parked on the question; keeping trees off the rims beside a void is the authoring
+answer either way.
 
 **A `walls` entry stamps a barrier with no gate, and that barrier is the feature.** Four courses of
 bedrock over the ground either side, two columns deep, along the whole interval the two pieces share: a

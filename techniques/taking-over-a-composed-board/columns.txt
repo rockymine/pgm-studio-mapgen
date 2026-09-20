@@ -3,8 +3,8 @@ course. Every piece stands over void, so every column of it is a rim column, and
 the nine the plan states.
 
 
-### an oak the search sited, standing on the front bar's grass at 9
-=== column (-30, 22) — 19 solid block(s), ground 0° from level ===
+### an oak on the front bar's rim in front of hole-1, at 9
+=== column (-18, 30) — 19 solid block(s), ground 0° from level ===
   y 18    18:4   Oak Leaves
   y 17    18:4   Oak Leaves
   y 16    18:4   Oak Leaves
@@ -97,9 +97,31 @@ the nine the plan states.
 === column (-26, 38) — 0 solid block(s) ===
   (void — no block recorded at any height)
 
-### the neutral mid at the origin, gravel over sandstone, with the observer block over it
-=== column (0, 0) — 9 solid block(s), ground 0° from level ===
+### the mid at the origin, under the deck: gravel, then its two floors and the observer block
+=== column (0, 0) — 11 solid block(s), ground 0° from level ===
   y 24     7:0   Bedrock
+  y 16    98:1   Mossy Stone Bricks
+  y 11    98:0   Stone Bricks
+  y  7    13:0   Gravel
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### one of the deck's four legs, cobble from the holm to each floor in turn
+=== column (-8, -4) — 17 solid block(s), ground 0° from level ===
+  y 16    98:0   Stone Bricks
+  y 15     4:0   Cobblestone
+  y 14     4:0   Cobblestone
+  y 13     4:0   Cobblestone
+  y 12     4:0   Cobblestone
+  y 11    98:1   Mossy Stone Bricks
+  y 10     4:0   Cobblestone
+  y  9     4:0   Cobblestone
+  y  8     4:0   Cobblestone
   y  7    13:0   Gravel
   y  6     3:0   Dirt
   y  5     3:0   Dirt

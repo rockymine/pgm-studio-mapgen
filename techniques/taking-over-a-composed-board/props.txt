@@ -1,50 +1,39 @@
 POST /api/map/technique-composed-4-taken-over/sketch/dressing — where a prop may stand on a board
-that is nothing but corridors, computed and then checked.
+that is nothing but corridors, and which of those places is planted.
 
 ### the search, three passes of it, each asked of the board with no props on it
-  against the layout alone                    1,494 cells, 52 sites — 4 of the first 20 refused
-  against the layout and the stored intent    1,370 cells, 45 sites — 0 of the first 20 refused
-  the same, with every cell's rot_180 image   1,150 cells, 34 sites — all 34 placed
+  against the layout alone                     1,398 cells,  52 sites
+  against the layout and the stored intent     1,274 cells,  45 sites
+  the same, with every cell's rot_180 image    1,062 cells,  34 sites
 
-  The four the first pass loses are all `DR-KEEP`: a room, a door approach and a spawn are keep-outs
-  that do not exist in the claims map until the compiled intent is stored. The orbit pass refuses
-  nothing here and is still not optional — it is what takes the field from 1,370 cells to 1,150.
+  The first pass loses four of the first twenty sites to `DR-KEEP`: a room, a door approach and a
+  spawn are keep-outs that do not exist in the claims map until the compiled intent is stored. The
+  orbit pass refuses nothing here and is still not optional — it is the last 212 cells of the field.
 
-### the thirty-four the last pass returned
-  searched-0     at ( -30,  22)   placed
-  searched-1     at ( -30,  27)   placed
-  searched-2     at ( -30,  46)   placed
-  searched-3     at ( -30,  51)   placed
-  searched-4     at ( -26, -27)   placed
-  searched-5     at ( -26, -22)   placed
-  searched-6     at ( -25,  22)   placed
-  searched-7     at ( -25,  27)   placed
-  searched-8     at ( -25,  46)   placed
-  searched-9     at ( -25,  51)   placed
-  searched-10    at ( -21, -27)   placed
-  searched-11    at ( -21, -22)   placed
-  searched-12    at ( -20,  22)   placed
-  searched-13    at ( -20,  27)   placed
-  searched-14    at ( -20,  46)   placed
-  searched-15    at ( -20,  51)   placed
-  searched-16    at ( -18,  76)   placed
-  searched-17    at ( -16, -27)   placed
-  searched-18    at ( -16, -22)   placed
-  searched-19    at ( -15,  22)   placed
-  searched-20    at ( -15,  27)   placed
-  searched-21    at ( -11, -30)   placed
-  searched-22    at ( -11, -25)   placed
-  searched-23    at ( -10,  -6)   placed
-  searched-24    at ( -10,  -1)   placed
-  searched-25    at ( -10,   4)   placed
-  searched-26    at ( -10,  22)   placed
-  searched-27    at ( -10,  27)   placed
-  searched-28    at (  -6, -30)   placed
-  searched-29    at (  -6, -25)   placed
-  searched-30    at (  -5,  -6)   placed
-  searched-31    at (  -5,  -1)   placed
-  searched-32    at (  -5,   4)   placed
-  searched-33    at (   0,  -6)   placed
+### that field by region, which is most of the placement decision
+  the front bar, its rim in front of hole-1                        84  rows z 24..30
+  the front bar, its rim in front of hole-2                        72  rows z 24..30
+  the front bar, the mid-facing brink                              92  rows z 22..23
+  the back bar, the far lane's far side                           103  rows z 46..54
+  the back bar, the paved middle and the spawn end                  0  nowhere
+  the two staircases, three one-cell treads each                    0  nowhere
+  the spawn shelf and its room                                      0  nowhere
+  the approach in front of the wall                                 0  nowhere
+  behind the wall, in front of the room                             6  rows z 76..78
+  the mid, under and around the deck                              106  rows z -6..6
+
+  A one-cell tread can never hold a prop: its eight neighbours are at another height by
+  construction. The approach in front of the wall is kept clear by the wall's own keep-out, and the
+  paved stretch of the back bar by 916 paved cells each owing a tree three blocks.
+
+### the seven planted out of that field, and why each one is where it is
+  oak-front-west-a     at ( -18,  30)   placed    the rim between the front bar and hole-1
+  oak-front-west-b     at ( -11,  30)   placed    and its pair, seven blocks along
+  oak-front-east-a     at (   5,  30)   placed    the same rim in front of hole-2
+  oak-front-east-b     at (  11,  30)   placed    and its pair
+  oak-lane-far-a       at ( -29,  54)   placed    the back bar's far side, eight blocks off the lane's shore
+  oak-lane-far-b       at ( -23,  54)   placed    and its pair
+  oak-room-corner      at ( -18,  78)   placed    the corner behind the wall, in front of the room
 
 ### five placed the way an author places them on a board that looks like a landscape
   eye-on-the-road        at (   0,  50)   DECLINED  DR-CLAIM  tree 'eye-on-the-road' rests on (0, 50), claimed by the paving 'spine'
@@ -53,4 +42,7 @@ that is nothing but corridors, computed and then checked.
   eye-in-the-doorway     at ( -12,  77)   DECLINED  DR-KEEP  tree 'eye-in-the-doorway' rests on (-12, 77), which is kept clear as the approach in front of a door
   eye-against-the-wall   at ( -14,  67)   DECLINED  DR-KEEP  tree 'eye-against-the-wall' rests on (-14, 67), which is built ground rather than terrain
 
-placed 72, refused 5, 2814 cells claimed
+placed 18, refused 5, 1342 cells claimed — the seven oaks claim 316 of them and the two roads 916.
+
+The field with those seven on the board is 748 cells against 1,062 without them, which is why a
+search is asked of a board with no props on it.

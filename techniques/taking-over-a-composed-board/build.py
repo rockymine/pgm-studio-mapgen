@@ -164,6 +164,53 @@ def ground(surface, wall, rim):
             "surface": {"enabled": True, "depth": 3, "material": depth((SOLID(surface), 1), (SOLID(3), 2))}}
 
 
+# ── the structure the mid carries: a double deck on four legs ──────────────────────────────────────────
+# The neutral holm is the one piece both teams bridge to, and a flat stone island is nothing to arrive at.
+# A deck gives it what a contested middle wants: a roof to stand on for the height, and a room under it to
+# stand in for the cover, with the legs at the corners so neither is a box.
+#
+# It is drawn as four MADE layers, because a sketch layer is one span per column — `[floor, floor +
+# base_height)` — and a leg passing a deck would be two. So the legs are cut at each deck instead: y8-10
+# under the lower floor, y12-15 between the two. Nothing overlaps, and `kind: "made"` is what says the
+# layers are a built thing rather than terrain driven into itself.
+#
+# The footprint is odd in both axes about the origin (x -8..8, z -4..4 in columns), so it is its own rot_180
+# image and needs no mirror: a board whose middle is one block off-centre is one team's middle.
+# `rise` is the field's vertical period and `PT4` refuses a nought on a fill: a plane-sampled field resolves
+# every block of a column alike, so a face of it comes out in vertical stripes. Two courses is enough here,
+# where the thickest thing the paint covers is a four-block leg.
+DECK_STONE = {"kind": "cell", "cellSize": 4, "rise": 2,
+              "palette": [SOLID(98), SOLID(98, 1), SOLID(1, 6)]}
+LEG_STONE = SOLID(4)
+DECK = (-8, 9, -4, 5)                    # min/max exclusive, so columns -8..8 by rows -4..4
+
+
+def deck_layers():
+    """The mid's deck, one layer per span: legs, floor, legs, floor. Clear under the lower deck is three
+    blocks and between the decks four, so both storeys are stood in rather than crawled through."""
+    x0, x1, z0, z1 = DECK
+    legs = [(x0, x0 + 2, z0, z0 + 2), (x1 - 2, x1, z0, z0 + 2),
+            (x0, x0 + 2, z1 - 2, z1), (x1 - 2, x1, z1 - 2, z1)]
+    floors = [(x0, x1, z0, z1)]
+    out = []
+    for name, rects, floor, thickness, paint in (
+            ("legs-lower", legs, 8, 3, LEG_STONE),
+            ("floor-lower", floors, 11, 1, DECK_STONE),
+            ("legs-upper", legs, 12, 4, LEG_STONE),
+            ("floor-upper", floors, 16, 1, DECK_STONE)):
+        shapes = [{"id": f"deck-{name}-{index}", "type": "rectangle", "operation": "add",
+                   "floor": floor, "base_height": thickness, "material": paint,
+                   "min_x": a, "max_x": b, "min_z": c, "max_z": d}
+                  for index, (a, b, c, d) in enumerate(rects)]
+        out.append({"id": f"deck-{name}", "name": f"deck {name}", "base_y": 0, "kind": "made",
+                    "part_of": "mid-deck",
+                    "layout": {"shapes": shapes,
+                               "groups": [{"id": f"deck-{name}", "name": "the mid's deck",
+                                           "mirrors": False,
+                                           "shapeIds": [shape["id"] for shape in shapes]}]}})
+    return out
+
+
 FINISH = {
     # A theme is stated on a SHAPE, and a flat plan has one shape — so `themeByHeight` has nothing to bind
     # to until the heights exist. Heights first, then paint.
@@ -178,6 +225,7 @@ FINISH = {
     },
     "themeByHeight": {str(height): zone for height, zone in ZONES.items()},
     "mapTheme": "front",
+    "layers": deck_layers(),
 }
 
 
@@ -187,29 +235,45 @@ FINISH = {
 ROAD = {"kind": "cell", "seed": 7701, "cellSize": 3, "jitter": 55, "warp": 1, "rise": 0,
         "palette": [SOLID(4), SOLID(1), SOLID(1, 6)]}
 
-# Where a prop may stand, computed rather than eyed. The search is over every built cell: keep the cell and
-# its eight neighbours, all at one height, none of them claimed, three clear of every paved cell — and the
-# same of the cell's own rot_180 image, because a prop is judged at every image of its orbit. On this board
-# it answers 1,150 cells and thirty-four sites, and the roads are most of why: 916 paved cells, each owing
-# a tree three blocks, take out more ground than every keep-out on the board together.
+# Where a prop MAY stand is computed; which of those places takes one, and how many, is the author's. The
+# search is over every built cell: keep the cell and its eight neighbours, all at one height, none of them
+# claimed, three clear of every paved cell — and the same of the cell's own rot_180 image, because a prop is
+# judged at every image of its orbit. On this board it answers 1,062 cells and 34 spaced sites. Planting all
+# 34 is a forest on a board of ten-block corridors, which is not what the arrangement is for.
 #
-# The search is asked of the board WITHOUT these props on it. A tree raises its own column's top and claims
-# the cells its crown covers, so a list searched over a layout already carrying one is a list about a
-# different board — which here cuts the field from 1,150 cells to 222.
+# So the sites below are chosen out of that legal set, to the author's rules for where a tree belongs:
 #
-# Every pass that left something out was wrong, and the numbers are worth keeping. Against the layout alone
-# it answers 1,494 cells and 52 sites, and four of the first twenty are then refused `DR-KEEP`: the rooms,
-# the doors and the spawns are not in the claims map until the compiled INTENT is stored. With the intent
-# but not the ORBIT it answers 1,370 and 45. With both it answers 1,150 and 34, and all thirty-four place.
+#   * toward the OUTSIDE of a piece, never down its middle. With no road on it a player still runs down the
+#     centre of a corridor, and trees along the rim read as an alley rather than as an obstacle course.
+#   * two in front of each hole, on the rim between the bar and the void, and nothing on the mid-facing
+#     brink, which is the edge the front line is bridged from.
+#   * nothing where a build zone is ARRIVED at. Three trees stood eight blocks from the far lane's north
+#     shore, so a player who crossed the lane landed in them; the pair that stays is on the bar's far side.
+#   * nothing on the approach in front of the wall, and one tree in the corner behind it, in front of the
+#     room.
+#   * nothing on the mid. A contested holm is where a structure goes, and this one carries the deck below.
 #
-# And it is re-run after every edit that moves ground. Every reshaping on this card invalidated the
-# list before it, and a list carried over from one of them left sites the pass then refused.
-SEARCHED = [(-30, 22), (-30, 27), (-30, 46), (-30, 51), (-26, -27), (-26, -22),
-            (-25, 22), (-25, 27), (-25, 46), (-25, 51), (-21, -27), (-21, -22),
-            (-20, 22), (-20, 27), (-20, 46), (-20, 51), (-18, 76), (-16, -27),
-            (-16, -22), (-15, 22), (-15, 27), (-11, -30), (-11, -25), (-10, -6),
-            (-10, -1), (-10, 4), (-10, 22), (-10, 27), (-6, -30), (-6, -25),
-            (-5, -6), (-5, -1), (-5, 4), (0, -6)]
+# The board's own arithmetic does much of this unasked. The whole spawn-to-wall run answers ZERO legal
+# cells except the back bar's west end: a one-cell tread can never hold a prop, because its eight
+# neighbours are at another height by construction; the spawn shelf is claimed; and the approach in front
+# of the wall is kept clear by the wall's own keep-out. 916 paved cells each owing a tree three blocks is
+# what takes the rest.
+#
+# Three things the search itself has to get right, each of which cost a list. It is asked of the board
+# WITHOUT these props on it, because a tree raises its own column's top and claims the cells its crown
+# covers — the same board answers 1,062 cells stripped and 748 with these seven on it. It is asked with the
+# compiled INTENT stored, because the rooms, the doors and the spawns are not in the claims map until then:
+# without it the board answers 1,398 cells and 52 sites, four of the first twenty then refused `DR-KEEP`.
+# And it tests every cell's ORBIT IMAGE as well as the cell, which is the last 212 cells of the field.
+TREES = [
+    ("oak-front-west-a", -18, 30),   # in front of hole-1, on the rim between the bar and the void
+    ("oak-front-west-b", -11, 30),
+    ("oak-front-east-a", 5, 30),     # and in front of hole-2
+    ("oak-front-east-b", 11, 30),
+    ("oak-lane-far-a", -29, 54),     # the far side of the back bar, eight blocks off the lane's shore
+    ("oak-lane-far-b", -23, 54),
+    ("oak-room-corner", -18, 78),    # behind the wall, in the corner in front of the room
+]
 
 # And five placed the way an author places them when the board looks like a landscape: on the road, beside
 # it, over a hole, in the doorway of the wool room, and against the bedrock wall. Four rules between them.
@@ -240,12 +304,11 @@ DRESSING = {
          "claimsGround": True, "pave": ROAD,
          "points": [[-2, 50], [-2, 46], [-2, 42], [-2, 38], [-2, 34], [-2, 28], [-2, 21]]},
     ] + [
-        # All thirty-four are oaks: a boulder rests on a footprint seven cells across and the search above
-        # tests a cell and its eight neighbours, so a rock wants its own wider test — which is
+        # All seven are oaks: a boulder rests on a footprint seven cells across and the search above tests a
+        # cell and its eight neighbours, so a rock wants its own wider test — which is
         # `techniques/trees-and-boulders`, not this card.
-        {"id": f"searched-{index}", "kind": "tree", "seed": 7710 + index, "x": x, "z": z,
-         "style": "oak-9"}
-        for index, (x, z) in enumerate(SEARCHED)
+        {"id": name, "kind": "tree", "seed": 7710 + index, "x": x, "z": z, "style": "oak-9"}
+        for index, (name, x, z) in enumerate(TREES)
     ] + [
         {"id": name, "kind": "tree", "seed": 7740 + index, "x": x, "z": z, "style": "oak-9"}
         for index, (name, x, z) in enumerate(BY_EYE)

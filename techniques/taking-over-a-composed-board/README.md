@@ -30,7 +30,7 @@ blocks**, with two enclosed holes the hub's own shape makes and a neutral mid at
 | `1-as-pinned` | none | 8 shapes: **2 polygons, 2 subtracts**, one height |
 | `2-void-redrawn` | one void ring's corners taken off, in the **layout** | the same 8, and 32 blocks of hole that are now ground |
 | `3-a-surface-per-piece` | a `surface` on every piece, in the **plan** | 13 shapes: **7 polygons over 7 heights**, subtracts intact |
-| `4-taken-over` | + two pieces split into staircases, a piece replaced by a build zone, a coast chamfered, a bedrock wall, two roads, five themes, thirty-four oaks | 17 shapes: **12 polygons over 9 heights**, 1 cut, 72 props |
+| `4-taken-over` | + two pieces split into staircases, a piece replaced by a build zone, a coast chamfered, a bedrock wall, a deck on the mid, two roads, five themes, seven oaks | 17 shapes: **12 polygons over 9 heights**, 1 cut, **4 made layers**, 18 props |
 
 ## What a flat plan compiles to
 
@@ -94,8 +94,8 @@ want.
 
 **The heights are one decision and it is where the hard cut goes.** The front bar stays at the board's own
 9, flat and low; everything behind it is raised to 13. That four-course step is a thing a defender shoots
-over and an attacker climbs, and it is what gives the paint a boundary instead of a stripe — `section-risers.png`
-is the cut.
+over and an attacker climbs, and it is what gives the paint a boundary instead of a stripe.
+`section-risers.png` is the cut.
 
 **A piece split into treads is how a plan states a staircase.** A plan piece has one height, so a slope is a
 run of pieces and nothing else. Each cross-piece between the bars is three cells deep, so cutting it at
@@ -134,30 +134,60 @@ the middle staircase to the brink facing the mid, which is this board's front �
 frontline piece, so the front is the bridge. Both run down the **middle** of a corridor and never across
 one, because a stroke repaints the top block of every column it crosses and a corridor's lip is its rim.
 
+**A structure is four made layers, because a sketch layer is one span per column.** The mid is the one
+piece both teams bridge to, and a flat stone island is nothing to arrive at — so it carries a double deck:
+four cobble legs, a floor at y11 with three clear under it and a roof at y16 with four clear between. A leg
+passing a floor would be two spans in one column, so the legs are cut at each floor instead and each span
+gets its own `kind: "made"` layer.
+
+**It is a height nobody is given and anybody can take.** `walk` prices the lower floor at `barrier +4` from
+the holm and the roof at `barrier +9`, both built up from ground a player has just bridged to. Its footprint
+is odd in both axes about the origin, so it is its own `rot_180` image and needs no mirror — a board whose
+middle is one block off-centre is one team's middle.
+
 **Five themes, cut at the risers, and the board stops looking composed.** `census.txt`: `front` 29.1%,
 `back` 28.3%, `stair` 17.4%, `approach` 17.4%, `mid` 7.7% over 4,956 ground cells, with the borders between
 them counted. `rimEdges: "void"` caps every piece all the way round, because a composed piece stands over
 nothing on every side.
 
-## Where a prop may stand is computed, and the search is only as good as what it searched
+## Where a prop may stand is computed; how many stand there is not
 
-**On a board of corridors there is no landscape to judge by eye, so the sites are searched for.** Keep a
-cell whose eight neighbours are all ground at the same height, none of them claimed, three clear of every
-paved cell — and require the same of the cell's own `rot_180` image, because a prop is judged at every image
-of its orbit. It answers **1,150 cells and 34 sites**, and all 34 take an oak.
+**On a board of corridors there is no landscape to judge by eye, so the legal places are searched for.**
+Keep a cell whose eight neighbours are all ground at the same height, none of them claimed, three clear of
+every paved cell — and require the same of the cell's own `rot_180` image, because a prop is judged at every
+image of its orbit. It answers **1,062 cells and 34 spaced sites**.
 
-**Every pass that left something out was wrong, and the card keeps the numbers.** Against the layout alone
-it answers 1,494 cells and 52 sites, and four of the first twenty are then refused `DR-KEEP`: the rooms, the
-doors and the spawns are not in the claims map until the compiled **intent is stored**. With the intent but
-without the orbit it answers 1,370 and 45. The orbit pass refuses nothing here and is still not optional.
+**Planting all 34 is a forest, and this board is ten-block corridors.** Legality is computed and composition
+is not: the search says where a tree *may* go, and which of those places takes one is the author's. Seven
+are planted here, fourteen with the orbit, and the rules they follow are his.
+
+**A tree goes toward the outside of a piece, never down its middle.** With no road on it a player still runs
+down the centre of a corridor, so trees along the rim read as an alley and trees in the middle read as an
+obstacle course. Two stand on the front bar's rim in front of each hole; the mid-facing brink stays empty,
+because that is the edge the front line is bridged from.
+
+**Nothing stands where a build zone is arrived at.** Three oaks eight blocks off the far lane's north shore
+meant a player who crossed the lane landed in them. The pair that stays is on the bar's far side, which is
+also the run from the spawn — and a tree on a rim is what puts a crown over the void, which is the one thing
+that spoils a walk of the crossing.
+
+**The approach in front of the wall is clear, and the studio keeps it that way.** The wall's own keep-out
+plus the road leave **0 legal cells** on the whole approach, and 0 on both staircases and the spawn shelf as
+well: a one-cell tread can never hold a prop, because its eight neighbours are at another height by
+construction. One tree stands in the corner behind the wall, in front of the room.
+
+**And nothing stands on the mid.** A contested holm is where a structure goes, not scenery; its 106 legal
+cells are left to the deck and to the ground under it.
+
+**Every pass of the search that left something out was wrong, and the card keeps the numbers.** Against the
+layout alone it answers 1,398 cells and 52 sites, and four of the first twenty are then refused `DR-KEEP`:
+the rooms, the doors and the spawns are not in the claims map until the compiled **intent is stored**. With
+the intent but without the orbit it answers 1,274 and 45. `props.txt` has all three, and the legal field
+broken down by region.
 
 **The search is asked of the board without the props on it.** A tree raises its own column's top and claims
 the cells its crown covers, so a list searched over a layout that already carries one is a list about a
-different board — which on this board cuts the field from 1,150 cells to 222.
-
-**It is also re-run after every edit that moves ground.** Every reshaping on this card invalidated the list
-before it; a list carried over from one of them left sites the pass then refused. A site is an answer about
-a board, not about a plan.
+different board: the field is 1,062 cells stripped and 748 with the seven standing.
 
 **And two roads is most of a corridor board gone.** 916 paved cells, each owing a tree three blocks, take
 out more ground than every keep-out on the board together — which is the whole reason the notes say to
@@ -193,6 +223,11 @@ different wordings. `props.txt` is the table.
 - **test every candidate's orbit image**, not just the candidate.
 - **a texture brush is a keep-out as wide as itself** — on a board of ten-block pieces there may be nothing
   left to stand on.
+- **the search says where a prop may stand, not how many should.** Plant to the outside of a piece, two in
+  front of a hole, none where a build zone is arrived at, none on the approach in front of a wall, and none
+  on a contested middle. A board of ten-block corridors has no room for a forest.
+- **a structure is one made layer per span.** A leg passing a floor is two spans in one column, so cut the
+  leg at each floor and give every span its own layer.
 
 ## Limits
 
@@ -206,10 +241,10 @@ leaves a void the compiler emits no cut for, and the built world has it void any
 traces round it. So read the outline as well as the cuts — a void needs a subtract only where it is
 *enclosed*.
 
-**Two of this board's reads have to be argued with, and both are filed.** `walk` calls the stated bedrock
-wall a `barrier +4` (`WS69`, and `WS70` for a `beside` that cannot name it), and a crown leaning over the
-far lane makes a crossing of that build zone read as a climb of seven blocks where the same crossing from
-the front bar is level (`WS71`). `walk.txt` carries both, with the coordinates.
+**One of this board's reads has to be argued with, and it is filed.** `walk` calls the stated bedrock wall
+a `barrier +4` — right about walking, wrong about a wall that is bridged (`WS69`, with `WS70` for a `beside`
+that cannot name it). A second finding is parked on a question rather than a fix: a crown hanging over a rim
+is a standing place for the walk and a void column for every other read, which is `WS71`.
 
 ## What checks it
 
@@ -220,19 +255,20 @@ the front bar is level (`WS71`). `walk.txt` carries both, with the coordinates.
   with `transect` because a render payload counts a crown over the rim as if it stood on something.
 - `findings.txt` — the two `SK13` wordings for a plain add and an override add over the same hole, and the
   `SK27` the painted board raises. All three on a 200.
-- `props.txt` — the search's three passes, the thirty-four sites the last one returned, and the five placed
-  by eye with the rule each one hit.
-- `columns.txt` — twelve columns: an oak the search sited, a road's paving, two treads and the front bar
-  under them, the bedrock wall and the ground short of it, the surviving hole and its rim, the far lane, the
-  mid, and a spawn room's floor.
-- `walk.txt` — five walks: the two staircases, the build zone crossed from either side, and the approach
-  through the wall.
+- `props.txt` — the search's three passes, the legal field broken down by the region an author wants a tree
+  in, the seven planted out of it with the reason for each, and the five placed by eye with the rule each
+  one hit.
+- `columns.txt` — thirteen columns: an oak on the front bar's rim, a road's paving, two treads and the
+  front bar under them, the bedrock wall and the ground short of it, the surviving hole and its rim, the far
+  lane, the mid under its deck, one of the deck's legs, and a spawn room's floor.
+- `walk.txt` — eight walks: the two staircases, both build zones crossed, the approach through the wall, and
+  the deck's two floors.
 - `census.txt` — five themes over 4,956 cells, and the borders between them.
 - `pinned.plan.json` — the composer's own answer, committed. `1-as-pinned.plan.json`,
   `3-a-surface-per-piece.plan.json`, `4-taken-over.plan.json` and `4-taken-over.finish.json` are what
   `build.py` writes from it.
 
 Renders: `1-as-pinned.png`, `2-void-redrawn.png`, `3-a-surface-per-piece.png`, `4-taken-over.png` and
-`four-ways.png`, the four together; `section-risers.png` — the board cut along x−2, where the mid, the front
-bar, the treads and the back bar each stand at their own height; and `the-staircase.png`, the three treads
-cut through off the road, 13 down to 9.
+`four-ways.png`, the four together; `section-risers.png` — the board cut at x−6..−2, where the mid, the front
+bar, the treads and the back bar each stand at their own height; `the-staircase.png`, the three treads cut
+through off the road, 13 down to 9; and `the-mid-deck.png`, the holm's double deck on its four legs.
