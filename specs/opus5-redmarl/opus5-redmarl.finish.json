@@ -2658,7 +2658,7 @@
         {
           "id": "vat-w-body",
           "name": "Vat w",
-          "mirrors": false,
+          "mirrors": true,
           "shapeIds": [
             "vat-w-0",
             "vat-w-liquor"
@@ -3255,7 +3255,7 @@
         {
           "id": "vat-e-body",
           "name": "Vat e",
-          "mirrors": false,
+          "mirrors": true,
           "shapeIds": [
             "vat-e-0",
             "vat-e-liquor"

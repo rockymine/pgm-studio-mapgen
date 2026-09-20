@@ -50,10 +50,10 @@ twelve-block wall, and a threshold through a doorway, with neither shape cut aga
 keep only its own ring is also the tallest thing over the middle — nested discs come out as a flat plate.
 A falling field needs shapes that do not overlap at all.
 
-**A layer is built once unless the group carrying its shapes says `mirrors`.** The rasterizer fans a group
-onto the symmetry's orbit axes only where that flag is true, and `tools/sculpt/props.py`'s `LayerBuilder`
-leaves it false — right for a landmark seated on the symmetry centre, wrong for a sculpture one team owns.
-Every emitter forwards `**kw`, so `mirrors=True` is what a per-team structure states.
+**A layer is fanned onto the symmetry's orbit unless the group carrying its shapes says otherwise.** The
+rasterizer copies a group onto every orbit axis where `mirrors` is true, which `tools/sculpt/props.py`'s
+`LayerBuilder` leaves it, so a sculpture one team owns is built for every team without asking. A landmark
+seated on the symmetry centre is the case that states `mirrors=False`, and every emitter forwards `**kw`.
 
 **Nothing refuses a sculpture built for one team and no other.** The store answers 200, pre-flight opens,
 and its mirror check reads spawns, wool rooms and build zones rather than made geometry. `column` at the

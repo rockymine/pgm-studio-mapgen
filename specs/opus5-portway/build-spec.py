@@ -279,7 +279,7 @@ def made(layers, part, material, mirrors=True):
         layer["shapes"], layer["groups"] = inner["shapes"], inner["groups"]
         # A structure standing inside one team's ground is that team's, so it fans with the board:
         # the rasterizer copies a group's shapes onto every orbit axis only where the group says it
-        # mirrors, and props.LayerBuilder leaves that off for a landmark seated on the centre.
+        # mirrors, and a landmark seated on the symmetry centre is what turns that off.
         for group in layer["groups"]:
             group["mirrors"] = mirrors
         layer["kind"], layer["part_of"] = "made", part

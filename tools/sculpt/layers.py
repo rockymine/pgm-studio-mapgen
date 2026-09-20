@@ -69,14 +69,15 @@ def rectangles(cells):
     return out
 
 
-def compile_layers(voxels, prefix="s", layer_prefix="L", mirrors=False, group_name=None,
+def compile_layers(voxels, prefix="s", layer_prefix="L", mirrors=True, group_name=None,
                    part_of=None, seat=None):
     """A `{(x, y, z): material}` model as the `layers` array of a sketch layout.
 
     Every layer sits at `base_y` 0 and every shape states its own `floor`, which is what lets one layer hold
     runs at different heights: the layer is a slot in the per-column run order, not a storey at a height.
     Each layer's shapes are grouped into one group so the mirror can be turned off for the whole sculpture at
-    once — a group's `mirrors` flag is the only thing that decides whether the fan copies it.
+    once — a group's `mirrors` flag is the only thing that decides whether the fan copies it, and it is true
+    unless stated, so a sculpture one team owns is built for every team.
 
     Every layer states `kind: "made"`, which is what keeps the stacking rules off a made thing: `SK10` reads
     two layers whose spans meet as a lost gap and `SK11` reads an overhang as standable ground nothing

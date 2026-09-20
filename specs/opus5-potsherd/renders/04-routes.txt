@@ -343,7 +343,7 @@ rises 0, falls 0, worst step 0: walked end to end
 beside: spawn spawn-1#1 at (2, 79) d0, boulder rock-1#1 at (0, 43) d1, core core-1 at (-35, -61) d1, boulder rock-0 at (-25, -44) d2
 
 ## spawn-blue -> core-1-1
-ROUTE (2, 86) -> (33, 59) aim travel: 42 blocks, 5 placed, 1 drop(s), worst drop 6
+ROUTE (2, 86) -> (33, 59) aim travel: 42 blocks, 13 placed, 3 drop(s), worst drop 6
   place            y   step
   (2, 86)           25
   (3, 85)           25
@@ -360,12 +360,12 @@ ROUTE (2, 86) -> (33, 59) aim travel: 42 blocks, 5 placed, 1 drop(s), worst drop
   (14, 78)          25
   (15, 77)          25
   (16, 76)          25
-  (17, 75)          25
-  (18, 74)          25
-  (19, 73)          25
-  (20, 72)          25
-  (21, 71)          25
-  (22, 70)          25
+  (17, 75)          30   barrier +5
+  (18, 74)          30
+  (19, 73)          35   barrier +5
+  (20, 72)          30   drop -5
+  (21, 71)          30
+  (22, 70)          25   drop -5
   (23, 69)          24
   (24, 68)          24
   (25, 67)          24
@@ -377,5 +377,5 @@ ROUTE (2, 86) -> (33, 59) aim travel: 42 blocks, 5 placed, 1 drop(s), worst drop
   (31, 61)          24
   (32, 60)          24
   (33, 59)          25
-rises 1, falls 1, worst step 6: barrier +6 at (9, 79); drop -6 at (11, 79)
+rises 3, falls 3, worst step 6: barrier +6 at (9, 79); drop -6 at (11, 79); barrier +5 at (17, 75); barrier +5 at (19, 73); drop -5 at (20, 72); drop -5 at (22, 70)
 beside: core core-1#1 at (31, 61) d0, spawn spawn-1#1 at (2, 86) d0

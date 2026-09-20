@@ -375,15 +375,16 @@ def shapes():
 
 def kilns():
     """Two bottle kilns on the terrace, one each side of the core and set back from it, so they
-    frame the approach rather than stand in it. A tapered tower is nested annuli whose tops rise
-    inward, which is one layer and not a stack of block soup."""
+    frame the approach rather than stand in it. The pair is drawn once and fanned, so each team's
+    core is framed by its own two. A tapered tower is nested annuli whose tops rise inward, which is
+    one layer and not a stack of block soup."""
     made = []
     brickwork = {"kind": "cell", "seed": 57, "cellSize": 5, "jitter": 1, "warp": 2,
                  "palette": [BRICK, CLAY_BROWN, BRICK, CLAY_ORANGE], "rise": 4}
     for kiln_id, cx, cz in (("kiln-w", -46, -70), ("kiln-e", -16, -70)):
         layer = props.tapered_tower(kiln_id, cx, cz, base_radius=6, top_radius=3, thickness=2,
                                     floor=TERRACE + 1, height=15, theme=None,
-                                    name=f"Kiln {kiln_id[-1]}", mirrors=False)
+                                    name=f"Kiln {kiln_id[-1]}")
         inner = layer.pop("layout")
         layer["shapes"] = inner["shapes"]
         layer["groups"] = inner["groups"]

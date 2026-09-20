@@ -438,9 +438,10 @@ def shapes():
 
 
 def vats():
-    """The dye vats: two stone-lined rings on the apron, one holding red liquor and one orange --
-    the two colours the dyehouses behind them send out. They stand where the sightline across the
-    apron wants breaking, and they are the only stained clay on the board."""
+    """The dye vats: two stone-lined rings on each team's apron, one holding red liquor and one
+    orange -- the two colours the dyehouses behind them send out. The pair is drawn once and fanned,
+    so both teams get it. They stand where the sightline across the apron wants breaking, and they
+    are the only stained clay on the board."""
     made = []
     plan_vats = [("vat-w", -34, -55, CLAY_RED), ("vat-e", -13, -53, CLAY_ORANGE)]
     # a fill's field is sampled in the plane, so a rise is what stops a face reading as vertical
@@ -449,8 +450,7 @@ def vats():
               "palette": [BRICK_STONE, SANDSTONE, BRICK_STONE, COBBLE], "rise": 3}
     for vat_id, cx, cz, liquor in plan_vats:
         layer = props.ring_wall(vat_id, cx, cz, outer=5, thickness=1, floor=APRON, height=3,
-                                theme=None, inner_floor=None, name=f"Vat {vat_id[-1]}",
-                                mirrors=False)
+                                theme=None, inner_floor=None, name=f"Vat {vat_id[-1]}")
         inner = layer.pop("layout")
         layer["shapes"] = inner["shapes"]
         layer["groups"] = inner["groups"]

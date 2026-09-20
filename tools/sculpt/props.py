@@ -24,11 +24,11 @@ so the deck a tower stands on and the roof over it both collide with the subtrac
 themselves by height and the override adds then overwrite them, so a layer carries two height fields, one
 masking the other. That is what puts a floor inside a wall and a threshold through a doorway.
 
-**A layer is built once unless its group says it mirrors.** The rasterizer fans a group's shapes onto the
-symmetry's orbit axes only where `mirrors` is true, and `LayerBuilder` leaves it false — right for a landmark
-seated on the symmetry centre, wrong for everything one team owns. Every emitter here forwards `**kw`, so
-`mirrors=True` is how a per-team structure asks for its images, and nothing in the pipeline refuses a board
-whose castle stands on one side of two.
+**A layer is fanned onto the symmetry's orbit unless its group says otherwise.** The rasterizer copies a
+group's shapes onto every orbit axis where `mirrors` is true, which `LayerBuilder` leaves it, so a tower one
+team owns is built for every team without asking. A landmark seated on the symmetry centre is the case that
+states `mirrors=False`, and every emitter here forwards `**kw` to say it. Nothing in the pipeline refuses a
+board whose castle stands on one side of two, so the flag is the whole of what decides it.
 
 Every emitter returns layers ready to drop into a document, and takes the theme id its shapes paint with.
 """
@@ -37,10 +37,10 @@ import math
 
 class LayerBuilder:
     """One layer under construction: shapes get their ids here, and the group is closed at the end so a
-    whole structure can be turned off the mirror in one flag. `mirrors` is false unless stated, so a
-    structure standing on one team's ground is built once and every other team gets bare ground."""
+    whole structure can be turned off the mirror in one flag. `mirrors` is true unless stated, which is what
+    a structure one team owns needs; a landmark seated on the symmetry centre states `mirrors=False`."""
 
-    def __init__(self, layer_id, name=None, base_y=0, mirrors=False, tag=None):
+    def __init__(self, layer_id, name=None, base_y=0, mirrors=True, tag=None):
         self.id = layer_id
         self.name = name or layer_id
         self.base_y = base_y

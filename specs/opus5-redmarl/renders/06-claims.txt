@@ -260,4 +260,6 @@ KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn
  126                                     bbbbbbbbbbbbbbbbbbbbbb                          bbbbbbbbbbbbbbbbbbbbbb
  127                                      aabbbbbbbbbbbbbbbbaa                            aabbbbbbbbbbbbbbbbba 
  128                                             bbbbbb                                            bbbbb       
-placed 36, declined 0
+decline DR-PASS building 'shed-w' leaves no way past it: a side has fewer than 8 blocks of passable ground along its whole run, and is not the edge of the ground it stands on
+decline DR-PASS building 'shed-e' leaves no way past it: a side has fewer than 8 blocks of passable ground along its whole run, and is not the edge of the ground it stands on
+placed 36, declined 2

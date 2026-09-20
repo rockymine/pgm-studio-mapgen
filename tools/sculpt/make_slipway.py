@@ -180,8 +180,10 @@ def place(model, at, quarter=0):
 
 def made(name, voxels, seat=None):
     """A model compiled to layers, in the shape `addLayers` takes. `kind`, `part_of` and `seat` ride with it."""
+    # The ship is one landmark on the symmetry centre, so it states its own images rather than taking
+    # the fan's: mirrors=False for every layer of it.
     layers = compile_layers(voxels, prefix=f"{name}-", layer_prefix=f"{name}-L", group_name=name,
-                            part_of=name, seat=seat)
+                            part_of=name, seat=seat, mirrors=False)
     return [{"id": layer["id"], "name": layer["name"], "base_y": 0, "kind": layer["kind"],
              "part_of": layer["part_of"], **({"seat": layer["seat"]} if "seat" in layer else {}),
              "shapes": layer["layout"]["shapes"], "groups": layer["layout"]["groups"]}
