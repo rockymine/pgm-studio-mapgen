@@ -60,13 +60,18 @@ them, and each one costs a context window it does not have.
 | `pgm-studio/docs/tools/plan.md` | 12,374 |
 | `pgm-studio/docs/gameplay/match-flow.md` | 12,199 |
 | `pgm-studio/docs/tools/library.md` | 11,292 |
-| `pgm-studio/docs/tools/capabilities.md` | 9,418 |
+| `pgm-studio/docs/tools/capabilities.md` | 9,418 |   ← retired since; see below
 | `pgm-studio/docs/gameplay/approaches.md` | 3,899 |
 | `pgm-studio/docs/tools/flow.md` | 3,530 |
 | **total** | **138,289** |
 
 That is roughly 180,000 tokens, before `GENERATION-NOTES.md`, before the skills, and
 before a single request is made.
+
+**`capabilities.md` no longer exists.** It was retired in `pgm-studio` as `RP23`: what the system
+can be asked for is answered by `/api/openapi/v1.json`, `GET /api/rules` and
+`GET /api/map/{slug}/state`, and the three things only it held moved to `flow.md`, `plan.md` and
+`tools/seeds/README.md`. Its row above is left as measured.
 
 ### The budget an agent is handed is itself wrong
 

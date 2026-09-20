@@ -249,7 +249,7 @@ a reading list rather than that they exist.
 | What does an objective need around it? | `docs/gameplay/approaches.md` — every claim marked `[author]` and settled, so law rather than advice |
 | How does a match actually flow? | `docs/gameplay/match-flow.md` §4 and §6 |
 | What is the box model's vocabulary — a hub, a lane, a frontline, a dock? | `docs/generator/model.md` |
-| What does the export write into a world? | `docs/world-export/relief.md`, `decoration.md` |
+| What does the export write into a world? | `techniques/`, the card nearest the instrument; `pgm-studio/docs/world-export/relief.md` and `decoration.md` are the deeper reference behind them |
 | How is a board driven, and what do its two files carry? | `tools/README.md` |
 
 **A composed board is a suggestion, and a capture board may start from one.** `GET /api/compose` knows how
