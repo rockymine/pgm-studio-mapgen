@@ -3,7 +3,7 @@ where the pass put it. Every pad is a plain solved to y7 and every authored wall
 
 
 ### an-unmarked-wall — an oak whose trunk starts on the wall's own top course, six over the meadow
-=== column (-29, 70) — 24 solid block(s), ground 0° from level ===
+=== column (-29, 35) — 24 solid block(s), ground 0° from level ===
   y 23    18:4   Oak Leaves
   y 22    18:4   Oak Leaves
   y 21    18:4   Oak Leaves
@@ -19,8 +19,8 @@ where the pass put it. Every pad is a plain solved to y7 and every authored wall
   y 11     1:0   Stone
 
 ### an-unmarked-wall — the boulder beside it, bedded into the same wall head
-=== column (-49, 70) — 18 solid block(s), ground 0° from level ===
-  y 17    48:0   Mossy Cobblestone
+=== column (-49, 35) — 18 solid block(s), ground 0° from level ===
+  y 17     1:5   Andesite
   y 16     1:5   Andesite
   y 15    48:0   Mossy Cobblestone
   y 14     1:5   Andesite
@@ -33,7 +33,7 @@ where the pass put it. Every pad is a plain solved to y7 and every authored wall
   y  7     1:0   Stone
 
 ### a-kept-clear-wall — the same wall with `keepClear`: its top course, and nothing standing on it
-=== column (-117, 70) — 14 solid block(s), ground 0° from level ===
+=== column (-117, 35) — 14 solid block(s), ground 0° from level ===
   y 13    98:0   Stone Bricks
   y 12     1:0   Stone
   y 11     1:0   Stone
@@ -45,7 +45,7 @@ where the pass put it. Every pad is a plain solved to y7 and every authored wall
   y  5     1:0   Stone
 
 ### tree-standoff — `off-2`, three from the road's band: the trunk, and the paving two cells north of it
-=== column (-124, -66) — 18 solid block(s), ground 0° from level ===
+=== column (-124, -101) — 18 solid block(s), ground 0° from level ===
   y 17    18:4   Oak Leaves
   y 16    18:4   Oak Leaves
   y 15    18:4   Oak Leaves
@@ -59,7 +59,7 @@ where the pass put it. Every pad is a plain solved to y7 and every authored wall
   y  7     2:0   Grass Block
 
 ### tree-standoff — the road itself, whose top block is what a standoff is measured to
-=== column (-117, -70) — 8 solid block(s), ground 0° from level ===
+=== column (-117, -105) — 8 solid block(s), ground 0° from level ===
   y  7     4:0   Cobblestone
   y  6     3:0   Dirt
   y  5     3:0   Dirt
@@ -70,7 +70,7 @@ where the pass put it. Every pad is a plain solved to y7 and every authored wall
   y  0     7:0   Bedrock
 
 ### tree-standoff — the cell `off-1` was asked for and declined: bare meadow
-=== column (-138, -67) — 8 solid block(s), ground 0° from level ===
+=== column (-138, -102) — 8 solid block(s), ground 0° from level ===
   y  7     2:0   Grass Block
   y  6     3:0   Dirt
   y  5     3:0   Dirt
@@ -81,21 +81,18 @@ where the pass put it. Every pad is a plain solved to y7 and every authored wall
   y  0     7:0   Bedrock
 
 ### boulder-standoff — `rock-off-2`, bedded into the meadow rather than standing on it
-=== column (-46, -66) — 12 solid block(s), ground 0° from level ===
-  y 11    48:0   Mossy Cobblestone
-  y 10     1:5   Andesite
-  y  9    48:0   Mossy Cobblestone
-  y  8     1:5   Andesite
-  y  7     4:0   Cobblestone
+=== column (-46, -101) — 8 solid block(s), ground 0° from level ===
+  y  7     2:0   Grass Block
   y  6     3:0   Dirt
   y  5     3:0   Dirt
   y  4     1:0   Stone
   y  3     1:0   Stone
   y  2     1:0   Stone
   y  1     1:0   Stone
+  y  0     7:0   Bedrock
 
 ### a-wood — under the canopy of a thrown oak
-=== column (117, 0) — 23 solid block(s), ground 0° from level ===
+=== column (117, -35) — 23 solid block(s), ground 0° from level ===
   y 22    18:4   Oak Leaves
   y 21    18:4   Oak Leaves
   y 20    18:4   Oak Leaves
@@ -109,8 +106,8 @@ where the pass put it. Every pad is a plain solved to y7 and every authored wall
   y 12    17:12  Oak Log
 
 ### flora-overlay — a cell the overlay wrote, which no prop had claimed
-=== column (125, 62) — 9 solid block(s), ground 0° from level ===
-  y  8    31:2   Fern
+=== column (125, 27) — 9 solid block(s), ground 0° from level ===
+  y  8    31:1   Grass
   y  7     2:0   Grass Block
   y  6     3:0   Dirt
   y  5     3:0   Dirt
@@ -121,10 +118,10 @@ where the pass put it. Every pad is a plain solved to y7 and every authored wall
   y  0     7:0   Bedrock
 
 ### a-goal-clearance — the monument, floating four over the ground its clearance covers
-=== column (39, 70) — 15 solid block(s), ground 0° from level ===
-  y 42    35:11  Blue Wool
-  y 41    35:11  Blue Wool
-  y 40    35:11  Blue Wool
+=== column (39, 35) — 15 solid block(s), ground 0° from level ===
+  y 49    35:11  Blue Wool
+  y 48    35:11  Blue Wool
+  y 47    35:11  Blue Wool
   y 14    49:0   Obsidian
   y 13    49:0   Obsidian
   y 12    49:0   Obsidian
@@ -133,3 +130,51 @@ where the pass put it. Every pad is a plain solved to y7 and every authored wall
   y  6     3:0   Dirt
   y  5     3:0   Dirt
   y  4     7:0   Bedrock
+
+### a-copied-tree — `showcase-tall`'s trunk: 162:13 is a hand-placed log, not a species' timber
+=== column (-135, 105) — 11 solid block(s), ground 0° from level ===
+  y 20   162:13  Dark Oak Log
+  y  9   162:13  Dark Oak Log
+  y  8   162:13  Dark Oak Log
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### a-copied-tree — the template oak beside it, whose whole statement was a species and a 14
+=== column (-95, 107) — 23 solid block(s), ground 0° from level ===
+  y 22    18:4   Oak Leaves
+  y 21    18:4   Oak Leaves
+  y 20    18:4   Oak Leaves
+  y 19    18:4   Oak Leaves
+  y 18    18:4   Oak Leaves
+  y 17    17:12  Oak Log
+  y 16    17:12  Oak Log
+  y 15    17:12  Oak Log
+  y 14    17:12  Oak Log
+  y 13    17:12  Oak Log
+  y 12    17:12  Oak Log
+
+### a-body-s-foot — the road cell the buttressed giant's own foot came within two of
+=== column (-39, 106) — 8 solid block(s), ground 0° from level ===
+  y  7     1:6   Polished Andesite
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+
+### props-on-a-grade — the face, fourteen blocks over six cells: 63 degrees, over this theme's cliff band
+=== column (131, 105) — 13 solid block(s), ground 63° from level ===
+  y 12     1:5   Andesite
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     4:0   Cobblestone
+  y  6     1:0   Stone

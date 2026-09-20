@@ -33,7 +33,7 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `objectives-and-clearances` | where a goal may stand: what `float` builds, where `leak` lives, and the two gates heard only at the export |
 | `a-house-and-its-wings` | how two rectangles of one plan meet — marching against projecting, two roof forms on one building, and the five `HJ` refusals |
 | `sculpture-with-layers` | the ladder a made thing is built up: one shape, a polyline, layers, rings, and a solid compiled — and what each rung costs |
-| `trees-and-boulders` | what a prop is refused for — a ladder per rule: paving, another prop, a canopy, a kept-clear wall, a goal's clearance |
+| `trees-and-boulders` | what a prop is refused for, and what it is only complained about — a ladder per rule, and a hand-built tree's own foot and crown |
 
 ## The one that is missing
 

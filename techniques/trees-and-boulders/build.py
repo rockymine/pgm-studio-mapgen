@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.dirname(HERE))
 from cards import SOLID, grid, moor
 
 PANEL_W, PANEL_D = 64, 56
-COL_X, ROW_Z = grid(4, 3, PANEL_W, PANEL_D)
+COL_X, ROW_Z = grid(4, 4, PANEL_W, PANEL_D)
 GROUND_TOP = 20
 PLAIN = 8                 # the solved plain: its top block is y7
 
@@ -37,13 +37,32 @@ MASONRY = {"bedrock": {"relative": False, "value": 1}, "rimEdges": "boundary",
 # nines stands at four and not at three, a pair of fourteens at five and not at four.
 CROWN = {9: 4, 14: 5}
 
+# The two hand-built recipes, cut out of `tree-showcase` with `pgm-studio/tools/seed-trees.cs` and carried
+# here as their bodies. A body cannot be re-derived from anything, so it is committed data rather than a
+# script's output — `trees.json` beside this file, keyed the way the placements name it.
+SEEDED = json.load(open(os.path.join(HERE, "trees.json")))
+
 STYLES = {
     "oak-9":  {"kind": "tree", "form": "template", "species": "oak", "height": 9},
     "oak-14": {"kind": "tree", "form": "template", "species": "oak", "height": 14},
     "rock-3": {"kind": "boulder", "form": "round", "size": 3, "mossy": True,
                "rock": {"kind": "turbulence", "seed": 3302, "scale": 3, "octaves": 3, "rise": 3,
                         "stops": [SOLID(4), SOLID(48), SOLID(1, 5)]}},
+    **SEEDED,
 }
+
+
+def ramp(cx, z0):
+    """Two facing bands butted close, twenty-two at the north and eight at the south, so the six cells
+    between them fall fourteen blocks and read past sixty degrees — clear of this theme's own cliff band at
+    fifty-five, which is the angle `DR-STEEP` is measured against. The card's other fifteen pads are flat on
+    purpose: a slope puts a second rule into every measurement, which is what this one is for."""
+    half = PANEL_W / 2 - 4
+    def band(mark_id, height, z_from, z_to):
+        return {"id": mark_id, "kind": "area", "h": height, "bevel": 0,
+                "ring": [[cx - half, z_from], [cx + half, z_from],
+                         [cx + half, z_to], [cx - half, z_to]]}
+    return [band("fell", 22, z0 + 4, z0 + 24), band("dale", 8, z0 + 30, z0 + PANEL_D - 4)]
 
 
 def centre(name):
@@ -126,7 +145,8 @@ def flora(prop_id, cx, cz):
 
 PANELS = ["tree-standoff", "boulder-standoff", "a-wide-brush", "set-back",
           "two-boulders", "kind-decides", "two-trees", "a-wood",
-          "a-kept-clear-wall", "an-unmarked-wall", "a-goal-clearance", "flora-overlay"]
+          "a-kept-clear-wall", "an-unmarked-wall", "a-goal-clearance", "flora-overlay",
+          "a-copied-tree", "a-body-s-foot", "a-copied-crown", "props-on-a-grade"]
 
 # ── the props, panel by panel ──────────────────────────────────────────────────────────────────────────
 props, extra_shapes = [], []
@@ -204,10 +224,50 @@ props.append(road("road-cover", cx, cz))
 props.append(rock("cover-rock", cx - 14, cz + 12))
 props.append(flora("cover", cx, cz))
 
+cx, cz = centre("a-copied-tree")
+# What a body is: 299 blocks and 22 courses against 412 and 25, beside a template of the same order of
+# height whose whole statement is a species and a number.
+props += [tree("showcase-tall-one", cx - 18, cz, "showcase-tall", seed=3801),
+          tree("showcase-giant-one", cx + 2, cz, "showcase-giant", seed=3802),
+          tree("template-beside", cx + 22, cz + 2, "oak-14", seed=3803)]
+
+cx, cz = centre("a-body-s-foot")
+# Both anchored three off the same road band. `showcase-tall` rests on one cell and `showcase-giant` on
+# nine, spanning x 0..3 and z -1..3 — so the giant's own foot reaches a block nearer the paving than its
+# anchor does, and the test walks every cell of the lowest course.
+props.append(road("road-foot", cx, cz))
+props += [tree("foot-slender", cx - 14, cz + 4, "showcase-tall", seed=3811),
+          tree("foot-buttressed", cx + 12, cz + 4, "showcase-giant", seed=3812)]
+
+cx, cz = centre("a-copied-crown")
+# A hand-built crown is not a disc and not even solid: `showcase-tall`'s plan footprint reads
+# `#######..####` across its own trunk row, so (1, 0) and (2, 0) are HOLES in it. Which decides which
+# answer a neighbour gets. Two apart the second tree's foot finds the hole and is placed, three apart it
+# lands on a written cell and is declined, and the overlap that survives is a COMPLAINT with a block count
+# rather than a refusal. Four pairs, stepped along x: two, three, eight and sixteen.
+props += [tree("crown-2-a", cx - 24, cz - 15, "showcase-tall", seed=3821),
+          tree("crown-2-b", cx - 22, cz - 15, "showcase-tall", seed=3822),
+          tree("crown-3-a", cx + 4, cz - 15, "showcase-tall", seed=3823),
+          tree("crown-3-b", cx + 7, cz - 15, "showcase-tall", seed=3824),
+          tree("crown-8-a", cx - 24, cz + 15, "showcase-tall", seed=3825),
+          tree("crown-8-b", cx - 16, cz + 15, "showcase-tall", seed=3826),
+          tree("crown-16-a", cx + 2, cz + 15, "showcase-tall", seed=3827),
+          tree("crown-16-b", cx + 18, cz + 15, "showcase-tall", seed=3828)]
+
+cx, cz = centre("props-on-a-grade")
+# The one pad with ground in it. `DR-STEEP` is a ROCK's rule and nobody else's — `PlaceBoulder` asks it
+# and `PlaceTree` does not — and the angle it compares against is the theme's own cliff band rather than a
+# constant, so the same face refuses a rock under one theme and takes it under another.
+props += [tree("grade-top", cx - 20, cz - 17, "showcase-giant", seed=3831),
+          tree("grade-face", cx - 4, cz, "oak-14", seed=3832),
+          rock("grade-face-rock", cx + 14, cz),
+          tree("grade-foot", cx + 18, cz + 14, "showcase-tall", seed=3833)]
+
 # ── the pads ───────────────────────────────────────────────────────────────────────────────────────────
 shapes, groups, relief = [], [], {}
 for index, name in enumerate(PANELS):
     x0, z0 = COL_X[index % 4], ROW_Z[index // 4]
+    cx, cz = x0 + PANEL_W // 2, z0 + PANEL_D // 2
     shapes.append({"id": f"island-{name}", "type": "rectangle", "operation": "add", "floor": 0,
                    "base_height": GROUND_TOP, "theme": "meadow",
                    "min_x": x0, "min_z": z0, "max_x": x0 + PANEL_W, "max_z": z0 + PANEL_D})
@@ -215,7 +275,8 @@ for index, name in enumerate(PANELS):
     # nowhere, which is a wall that declines what leans on it and cannot be seen.
     own = [f"island-{name}"] + [shape["id"] for panel, shape in extra_shapes if panel == name]
     groups.append({"id": name, "name": name, "mirrors": False, "shapeIds": own})
-    relief[name] = {"base": PLAIN, "reach": 0, "step": 1, "marks": [], "pushes": []}
+    relief[name] = {"base": PLAIN, "reach": 0, "step": 1, "pushes": [],
+                    "marks": ramp(cx, z0) if name == "props-on-a-grade" else []}
 
 layout = {
     "setup": {"bbox": {"min_x": COL_X[0] - 8, "max_x": COL_X[-1] + PANEL_W + 8,

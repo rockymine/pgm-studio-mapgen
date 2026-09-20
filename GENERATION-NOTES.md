@@ -1833,6 +1833,20 @@ blocks inside the drawn polygon and 1 block past the built shore, and `DR-SITE` 
 
 Flatten every ring at the rasterizer's own 16 samples per edge before testing anything against it.
 
+### A decline and a complaint are two answers, and only one takes the prop out of the world
+
+Both arrive in the dressing read's `declines` array on a 200, and the `severity` field is the whole
+difference. A **decline** means the prop was never written; a **complaint** means it stands, minus what was
+cut off it. Measured on one board of 124 props: 18 declines and 4 complaints among 22 entries.
+
+**`DR-CUT` is the complaint that matters for a body.** *"seats clear of what it then reaches into: 70 of its
+299 blocks are inside something already standing and were not written, and that cut 51 more off its own
+footing, which stand in the air. 229 block(s) are in the world."* A prop seats on its **feet** and is then
+written wherever it meets air, so standing clear of something is not the same as fitting beside it.
+
+The count falls with separation and goes silent: measured on pairs of one 299-block tree, 70 blocks lost at
+2 apart, 17 at 8, and nothing at 16.
+
 ### A copied tree is a recipe with a body, and the body is the whole of it
 
 A `copied` tree recipe carries `body: [[x, y, z, id, data], …]` from its foot, and the placement is a point
@@ -1846,6 +1860,20 @@ The bodies come out of a world with `pgm-studio/tools/seed-trees.cs`, which file
 
 A body is written block for block, so its seat is its foot's column and a crown overhanging a slope is cut
 where it meets it, exactly as a grown one.
+
+**A body's foot is every cell of its lowest course, and that is what a standoff is measured from.** Measured
+on two `tree-showcase` recipes: `r2-1` rests on one cell and `r3-1` on **nine**, spanning x 0..3 and z −1..3.
+Anchored at the same three blocks off one road the slender one stood and the buttressed one was declined,
+the message naming a foot cell rather than the anchor.
+
+**And a hand-built crown is not a disc, not symmetric, and not even solid.** `r2-1` covers 144 plan cells
+spanning x −9..+7 and z −7..+8, and its own trunk row reads `#######..####` — the cells at (1, 0) and (2, 0)
+are holes in it. Which answer a neighbour gets depends on the cell its foot lands in and not on the
+distance: a second copy two blocks east found the hole and was placed, and one three blocks east landed on
+a written cell and was declined.
+
+For scale against a template: those two bodies cover 144 and 147 plan cells where an `oak` of height 14
+covers **67**.
 
 ### A prop is tested at its lowest course and claims everything it covers, and every distance follows
 
@@ -1921,16 +1949,18 @@ is the wander and not a threshold — budget a rough brush from its wide end.
 
 Texture brushes are paths. Budget them like roads: one tongue per feature, radius 3–4, not two at 6–7.
 
-### `DR-STEEP` declines a prop where the theme calls the ground a face
+### `DR-STEEP` is a rock's rule and nobody else's, and it complains rather than refusing
 
-A prop is refused for standing on ground inclined past what its own theme paints as flat, and the message
-names the angle: *"stands at (−49, 70) on ground inclined 56°, and the theme painting that cell calls the
-ground a face"*. It is the theme's own slope band that decides, not a constant, so the same rock stands on
-the same grade under a theme whose bands cut higher.
+`PlaceBoulder` asks it and `PlaceTree` does not, so a face that keeps an oak without a word keeps the
+boulder beside it with a note: *"stands at (131, 105) on ground inclined 63°, and the theme painting that
+cell calls the ground a face"*. The rock is in the world; the pass has said it looks wrong.
 
-Measured while building a card: a six-course wall five cells deep has no flat ground on its head at all —
-every cell of it is an edge — and a boulder placed there was declined for the face. At eleven cells deep the
-middle of the head reads 0° and the same boulder stands.
+**The angle it compares against is the theme's own cliff band, not a constant.** Measured on one board
+whose `meadow` put grass under 35° and coarse dirt to 55°: a 51° face raised nothing at all and a 63° one
+raised the complaint. The same rock on the same grade is quiet under a theme whose bands cut higher.
+
+A six-course wall five cells deep has no flat ground on its head at all — every cell of it is an edge, and
+a boulder placed there came back at 56°. At eleven cells deep the middle of the head reads 0°.
 
 ### A texture path is an exclusion zone as wide as itself
 
