@@ -17,11 +17,13 @@ from cards import SOLID, MOOR, grid  # noqa: E402
 
 FOOT, HEAD = 9, 17          # the lane's two surfaces: base_height, so the top blocks are y8 and y16
 WIDE, LONG = 12, 48         # every lane, every panel
-COL_X, ROW_Z = grid(3, 3, panel_w=WIDE, panel_d=LONG, gap=28)
+COL_X, ROW_Z = grid(3, 4, panel_w=WIDE, panel_d=LONG, gap=28)
+ARM = 36                    # how far the L's arm reaches east of its stem
 
 PANELS = ["piece-steps", "piece-treads", "tilted",
-          "plates", "raise-skirted", "raise-sheer",
-          "marks", "push", "deck"]
+          "plates", "raise-ridge", "raise-sheer",
+          "marks", "push", "deck",
+          "raise-on-an-l"]
 
 
 def centre(name):
@@ -94,14 +96,14 @@ def lane(name):
             shapes.append(band(f"{name}-{index}", cx, z0 + index * (LONG / 9),
                                z1, FOOT + index, override=True))
 
-    elif name in ("raise-skirted", "raise-sheer"):
+    elif name in ("raise-ridge", "raise-sheer"):
         # One erected shelf over the lane's far half. `skirt` is the whole difference: at the lift it is
         # walked onto from any side, at 0 it is a monument with a sheer face.
         # A raise states its lift as `base_height` — the top stands that far over whatever ground the
         # footprint covers — and `skirt` is how far in from the outline it grades back down to it.
         # A skirt is paid out of the shape's own top from every side at once, so on a lane 12 wide the
         # most it can afford is 5 — anything over half the narrow dimension leaves no top at all.
-        skirt = 5 if name == "raise-skirted" else 0
+        skirt = 5 if name == "raise-ridge" else 0
         shapes.append(box(f"{name}-ground", cx, cz, WIDE, LONG, FOOT))
         # No `override`: an override add is a privileged SET and wins the column whatever its height, so a
         # shelf written as one replaces the ground under it instead of standing on it. A plain add taller
@@ -127,6 +129,23 @@ def lane(name):
                   "roughness": 0, "seed": 1,
                   "ring": [[cx - WIDE / 2 - 4, z1 - 14], [cx + WIDE / 2 + 4, z1 - 14],
                            [cx + WIDE / 2 + 4, z1 + 4], [cx - WIDE / 2 - 4, z1 + 4]]}]
+
+    elif name == "raise-on-an-l":
+        # The same raise on a lane that turns. A skirt is measured in from the OUTLINE, so at the arm's
+        # outside corner it comes in from one edge and at the inside corner from two at once.
+        ground = {"id": f"{name}-ground", "type": "polygon", "operation": "add", "floor": 0,
+                  "base_height": FOOT,
+                  "vertices": [[round(cx - WIDE / 2), round(z0)], [round(cx + WIDE / 2), round(z0)],
+                               [round(cx + WIDE / 2), round(z1 - WIDE)],
+                               [round(cx + WIDE / 2 + ARM), round(z1 - WIDE)],
+                               [round(cx + WIDE / 2 + ARM), round(z1)], [round(cx - WIDE / 2), round(z1)]]}
+        shelf = {"id": f"{name}-shelf", "type": "polygon", "operation": "add", "floor": 0,
+                 "base_height": HEAD - FOOT, "height_mode": "raise", "skirt": 5,
+                 "vertices": [[round(cx - WIDE / 2), round(cz)], [round(cx + WIDE / 2), round(cz)],
+                              [round(cx + WIDE / 2), round(z1 - WIDE)],
+                              [round(cx + WIDE / 2 + ARM), round(z1 - WIDE)],
+                              [round(cx + WIDE / 2 + ARM), round(z1)], [round(cx - WIDE / 2), round(z1)]]}
+        shapes += [ground, shelf]
 
     elif name == "deck":
         # The tier that does not raise the lane: the lane stays at its foot and a storey crosses over it.

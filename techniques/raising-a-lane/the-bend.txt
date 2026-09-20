@@ -1,0 +1,17 @@
+GET …/transect — the L's bend read as a grid: every second block across the stem and into the arm,
+every second row through the corner. The figures are the standing top; `·` is void.
+
+  z   98    ·  ·  3  6  8 11 14 17 17 14 11  8  6  3  ·  ·  ·  ·  ·  ·  ·  ·  ·
+  z  100    ·  ·  3  6  8 11 14 17 17 14 11  8  6  3  ·  ·  ·  ·  ·  ·  ·  ·  ·
+  z  102    ·  ·  3  6  8 11 14 17 17 17 14 11  8  6  3  3  3  3  3  3  3  3  3
+  z  104    ·  ·  3  6  8 11 14 17 17 17 17 17 14 11  8  8  8  8  8  8  8  8  8
+  z  106    ·  ·  3  6  8 11 14 17 17 17 17 17 17 17 14 14 14 14 14 14 14 14 14
+  z  108    ·  ·  3  6  8 11 14 17 17 17 17 17 17 17 17 17 17 17 17 17 17 17 17
+  z  110    ·  ·  3  6  8 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11 11
+  z  112    ·  ·  3  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6  6
+  z  114    ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·  ·
+           x -54 to -32, every second block
+
+The stem is 12 wide and a skirt of 5 is taken off each side, so its top is two columns. Where the
+arm opens the top widens with it, and the corner is the only place on this lane a skirt has room
+to end. The last row is void because a polygon's max edge is exclusive.

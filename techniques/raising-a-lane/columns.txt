@@ -1,8 +1,8 @@
 GET /api/map/technique-raising-a-lane/column?at=x,z — what is under the standing top, which is where
 the tiers differ and a profile cannot say.
 
-### plates at (-46, -16) — under an override plate: the ground the lane was drawn at is gone, not buried
-=== column (-46, -16) — 15 solid block(s), ground 14° from level ===
+### plates at (-46, -54) — under an override plate: the ground the lane was drawn at is gone, not buried
+=== column (-46, -54) — 15 solid block(s), ground 14° from level ===
   y 14     2:0   Grass Block
   y 13     3:0   Dirt
   y 12     3:0   Dirt
@@ -11,8 +11,8 @@ the tiers differ and a profile cannot say.
   y  9     1:0   Stone
   y  8     1:0   Stone
 
-### piece-treads at (-6, -92) — under a tread of ground at the same height, for the comparison
-=== column (-6, -92) — 15 solid block(s), ground 14° from level ===
+### piece-treads at (-6, -130) — under a tread of ground at the same height, for the comparison
+=== column (-6, -130) — 15 solid block(s), ground 14° from level ===
   y 14     2:0   Grass Block
   y 13     3:0   Dirt
   y 12     3:0   Dirt
@@ -21,8 +21,8 @@ the tiers differ and a profile cannot say.
   y  9     1:0   Stone
   y  8     1:0   Stone
 
-### deck at (34, 64) — the deck's own column: the lane at its foot, the slab sixteen courses over it
-=== column (34, 64) — 10 solid block(s), ground 0° from level ===
+### deck at (34, 26) — the deck's own column: the lane at its foot, the slab sixteen courses over it
+=== column (34, 26) — 10 solid block(s), ground 0° from level ===
   y 16    98:1   Mossy Stone Bricks
   y  8     2:0   Grass Block
   y  7     3:0   Dirt
@@ -31,8 +31,8 @@ the tiers differ and a profile cannot say.
   y  4     1:0   Stone
   y  3     1:0   Stone
 
-### raise-sheer at (34, -16) — the sheer shelf, whose face is the whole lift
-=== column (34, -16) — 17 solid block(s), ground 0° from level ===
+### raise-sheer at (34, -54) — the sheer shelf, whose face is the whole lift
+=== column (34, -54) — 17 solid block(s), ground 0° from level ===
   y 16     2:0   Grass Block
   y 15     3:0   Dirt
   y 14     3:0   Dirt
@@ -41,8 +41,8 @@ the tiers differ and a profile cannot say.
   y 11     1:0   Stone
   y 10     1:0   Stone
 
-### marks at (-46, 52) — the middle of the graded lane, which no shape states
-=== column (-46, 52) — 12 solid block(s), ground 14° from level ===
+### marks at (-46, 14) — the middle of the graded lane, which no shape states
+=== column (-46, 14) — 12 solid block(s), ground 14° from level ===
   y 11     2:0   Grass Block
   y 10     3:0   Dirt
   y  9     3:0   Dirt
@@ -51,8 +51,8 @@ the tiers differ and a profile cannot say.
   y  6     1:0   Stone
   y  5     1:0   Stone
 
-### push at (-6, 60) — the push's skirt, where the lane climbs the landform
-=== column (-6, 60) — 16 solid block(s), ground 14° from level ===
+### push at (-6, 22) — the push's skirt, where the lane climbs the landform
+=== column (-6, 22) — 16 solid block(s), ground 14° from level ===
   y 15     2:0   Grass Block
   y 14     3:0   Dirt
   y 13     3:0   Dirt
@@ -60,3 +60,23 @@ the tiers differ and a profile cannot say.
   y 11     1:0   Stone
   y 10     1:0   Stone
   y  9     1:0   Stone
+
+### raise-on-an-l at (-46, 108) — the middle of the L's bend, where the two legs give a skirt room to end
+=== column (-46, 108) — 17 solid block(s), ground 55° from level ===
+  y 16     1:0   Stone
+  y 15     1:0   Stone
+  y 14     1:0   Stone
+  y 13     1:0   Stone
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+
+### raise-on-an-l at (-46, 102) — one row south of it, where the stem alone is 12 wide
+=== column (-46, 102) — 17 solid block(s), ground 21° from level ===
+  y 16     3:1   Coarse Dirt
+  y 15     3:0   Dirt
+  y 14     3:0   Dirt
+  y 13     1:0   Stone
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
