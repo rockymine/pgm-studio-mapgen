@@ -245,6 +245,7 @@ a reading list rather than that they exist.
 | What are the four levels a map is described at, and what hands off to what? | `pgm-studio/docs/tools/flow.md` — the one tool document worth reading whole |
 | What does a `subtract` do, and what cuts a hole? | `techniques/cutting-a-hole` — the cut, the override add over it, and the `void-N-cut` a compile writes |
 | What does a destroy goal look like, and which words make one? | `techniques/destroy-goals`, or `GET /api/objectives/vocabulary` for the two closed sets alone |
+| How is a defence wall or an iron cube authored, and where may one stand? | `techniques/walls-and-iron` — both are plan-only, and `PL13` and `WX8` are the two that refuse |
 | What does an objective need around it? | `docs/gameplay/approaches.md` — every claim marked `[author]` and settled, so law rather than advice |
 | How does a match actually flow? | `docs/gameplay/match-flow.md` §4 and §6 |
 | What is the box model's vocabulary — a hub, a lane, a frontline, a dock? | `docs/generator/model.md` |

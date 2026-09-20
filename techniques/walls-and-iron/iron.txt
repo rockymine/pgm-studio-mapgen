@@ -1,0 +1,36 @@
+POST /api/plan/evaluate, then GET …/column — two iron markers authored on one spawn piece, and what
+each of them became.
+
+  spawn piece   20 x 20 blocks
+  its building  [4, 1, 12, 12] — x, z, width, depth in blocks from the piece's corner
+
+  iron-yard    authored at [10.0, 16.5] on 'spawn-red'
+  iron-inside  authored at [10.0, 10.0] on 'spawn-red'
+
+  the compile kept both points: [{"x": 194, "y": 9, "z": 32.5}, {"x": 194, "y": 9, "z": 26}]
+
+### WX8 complaint
+  iron at (194, 26) on 'spawn-red' cannot be placed: the cube needs its 3×3 footprint inside the piece and
+  2 blocks of clear air to the shell, and the room keeps the footprint it was given
+
+### the column at (194, 32) — in the yard, where WX8 allows one
+  === column (194, 32) — 12 solid block(s), ground 0° from level ===
+  y 11    42:0   Iron Block
+  y 10    42:0   Iron Block
+  y  9    42:0   Iron Block
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+
+### the column at (194, 26) — in the middle of the building
+  === column (194, 26) — 10 solid block(s), ground 0° from level ===
+  y 16     7:0   Bedrock
+  y  8    35:14  Red Wool
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+
+Two markers were authored and one cube stands. `WX9` is why the export did not say so: an
+unplaceable marker is not an error, it stamps nothing and the room takes its full clearance. So
+a cube missing from a built world is a plan finding to go back and read, never an export one.
