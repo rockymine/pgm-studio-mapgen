@@ -925,10 +925,10 @@ keeps a beach an even band round a shore that is nowhere an arc.
 ### A made layer is built once unless its group says it mirrors
 
 A layer's shapes are fanned onto the symmetry's orbit axes only where the group carrying them has
-`mirrors: true`. A group is the unit, not the layer and not the shape, and `SketchGroup.Mirrors` defaults
-to `true` on the wire — but `tools/sculpt/props.py`'s `LayerBuilder` defaults it to **`false`**, which is
-right for a landmark seated on the symmetry centre and wrong for everything a team owns. Every factory in
-that module forwards `**kw`, so `mirrors=True` is how a per-team structure asks to be fanned.
+`mirrors: true`. A group is the unit, not the layer and not the shape, and both `SketchGroup.Mirrors` on the
+wire and `tools/sculpt/props.py`'s `LayerBuilder` default it to `true`, so everything a team owns is fanned
+without asking. Every factory in that module forwards `**kw`, so `mirrors=False` is how a landmark seated on
+the symmetry centre says it is already its own image.
 
 **Nothing reports the difference.** The store answers 200, `preflight` opens, and its mirror check reads
 spawns, wool rooms and build zones rather than made geometry, so a curtain wall, a gatehouse or a cloister
