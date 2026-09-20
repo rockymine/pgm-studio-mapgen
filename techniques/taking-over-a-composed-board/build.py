@@ -19,17 +19,28 @@ import json, math, os
 HERE = os.path.dirname(os.path.abspath(__file__))
 PINNED = json.load(open(os.path.join(HERE, "pinned.plan.json")))
 
-# The height each piece stands at, which is what ends the merge. Six distinct values over thirteen pieces:
-# the hub's ring at the board's own 9, its arms stepping in and up, the spawn highest and the mid lowest.
+# The height each piece stands at, which is what ends the merge. Six distinct values, and they are chosen
+# to say something: the two long bars of the hub at the board's own 9, the crosses between them a step up,
+# the wool approach climbing 11-12-13 to its room, the spawn level with the approach's foot, the neutral
+# mid one below everything so the middle reads as the low ground it is.
 SURFACES = {
-    "hub-t1": 9, "hub-t2": 9,
-    "hub-t3": 10, "hub-t4": 10,
-    "hub-t5": 11, "hub-t6": 11,
-    "hub-t7": 12,
-    "spawn-t1": 13, "spawn-room": 13,
-    "wool-a-t1": 10, "wool-a-t2": 11, "wool-a-room": 12,
+    "hub-t1": 9, "hub-t1-west": 9, "hub-t1-mouth": 10, "hub-t1-east": 9,
+    "hub-t2": 9, "hub-t5": 9, "hub-t6": 9,
+    "hub-t3": 10, "hub-t4": 10, "hub-t7": 10,
+    "spawn-t1": 11, "spawn-room": 11,
+    "wool-a-t1": 11, "wool-a-t2": 12, "wool-a-room": 13,
     "mid-stone-0": 8,
 }
+
+# The piece that comes out and the zone that replaces it, which is the one edit on this card made for a
+# reason the studio cannot check. Looking west out of the spawn, the double-hole hub is three bars with a
+# void between each pair, and `hub-t3` is the far one — 12 x 12 blocks at the end of that view.
+#
+# The author's ruling, and the whole of why it is here: the board is rot_180 with one wool a team, so both
+# sides spawn, turn the same way and run past each other down the far lane. Taking the far bar out and
+# declaring a build zone over it means an attacker either takes the lane nearer their own spawn or bridges
+# a void gap under fire, and the two teams meet instead of trading. Two bars could go; one is enough.
+FAR_LANE = "hub-t3"
 
 
 def plan_with_surfaces(plan):
@@ -43,20 +54,71 @@ def plan_with_surfaces(plan):
 
 
 def plan_taken_over(plan):
-    """The same, plus the one plan edit that is not a number: `hub-t1` split in two at a different height
-    each, which makes an interface where there was none, and a `walls` entry to close it."""
+    """The same heights, plus every other edit a plan takes: a piece cut in three, a piece replaced by a
+    build zone, and a wall where the approach wants one."""
     out = plan_with_surfaces(plan)
     pieces = out["pieces"]
-    original = next(p for p in pieces if p["id"] == "hub-t1")
+
+    # A piece SPLIT, so the mouth of the wool approach is its own place at its own height. `hub-t1` runs
+    # nine cells and the approach leaves it from the middle three; cut there and the mouth can step up to
+    # meet the climb instead of the whole bar having to.
+    original = next(piece for piece in pieces if piece["id"] == "hub-t1")
     x, z, w, h = original["rect"]
+    index = pieces.index(original)
     pieces.remove(original)
-    pieces.insert(0, {"id": "hub-t1-west", "role": "piece", "rect": [x, z, 4, h], "surface": 9})
-    pieces.insert(1, {"id": "hub-t1-east", "role": "piece", "rect": [x + 4, z, w - 4, h], "surface": 10})
-    for box in out.get("boxes", []):
-        if "hub-t1" in box.get("members", []):
-            box["members"] = [m for m in box["members"] if m != "hub-t1"] + ["hub-t1-west", "hub-t1-east"]
-    out["walls"] = [{"a": "hub-t1-west", "b": "hub-t1-east"}]
+    for offset, (name, width) in enumerate([("hub-t1-west", 3), ("hub-t1-mouth", 3), ("hub-t1-east", 3)]):
+        pieces.insert(index + offset, {"id": name, "role": "piece",
+                                       "rect": [x + offset * 3, z, width, h],
+                                       "surface": SURFACES[name]})
+    rename(out, "hub-t1", ["hub-t1-west", "hub-t1-mouth", "hub-t1-east"])
+
+    # A piece REMOVED and a build zone declared over its rect. The zone rides in `zones`, which is what a
+    # plan says about the void; the compiler turns it into the intent's own `build.areas`, fanned.
+    far = next(piece for piece in pieces if piece["id"] == FAR_LANE)
+    pieces.remove(far)
+    rename(out, FAR_LANE, [])
+    out["zones"].append({"id": "far-lane", "rect": far["rect"], "holes": []})
+
+    # No `walls` entry, and the reason is measured rather than chosen. A barrier belongs on the wool
+    # approach and not in the hub (the author's ruling) — but this approach is an L of three pieces in a
+    # line, so every interface in it IS the route, and a `walls` entry stamped across the middle of it
+    # stood four courses over the ground either side with no way through: `walk` called it *"barrier +4 at
+    # (-9, 67)"* and the wool was unreachable. `findings.txt` has the reading.
+    #
+    # So the barrier is drawn instead, in the finish, as two override adds with a gate between them on the
+    # road's own line. A `walls` entry closes an interface; a gate is what closes an interface and keeps a
+    # route.
+    out["walls"] = []
     return out
+
+
+def rename(plan, gone, arrivals):
+    """A box is a list of member ids, so a piece that is split or removed has to leave the box it was in."""
+    for box in plan.get("boxes", []):
+        if gone in box.get("members", []):
+            box["members"] = [m for m in box["members"] if m != gone] + list(arrivals)
+
+
+def chamfer(ring, at, back=6):
+    """One corner of a compiled outline taken off. A piece's own coast is as editable as the void's: the
+    vertices are in the layout the compiler answered with, and moving one is the same kind of edit as
+    redrawing a subtract. `at` is the corner to replace and `back` how far along each edge to cut it."""
+    out = []
+    for index, point in enumerate(ring):
+        if tuple(point) != tuple(at):
+            out.append(point)
+            continue
+        before = ring[index - 1]
+        after = ring[(index + 1) % len(ring)]
+        out.append(_towards(point, before, back))
+        out.append(_towards(point, after, back))
+    return out
+
+
+def _towards(point, other, distance):
+    span = math.hypot(other[0] - point[0], other[1] - point[1]) or 1
+    return [round(point[0] + (other[0] - point[0]) * distance / span),
+            round(point[1] + (other[1] - point[1]) * distance / span)]
 
 
 def rounded(ring, corner=4):
@@ -90,6 +152,18 @@ def ground(surface, wall, rim):
             "surface": {"enabled": True, "depth": 3, "material": depth((SOLID(surface), 1), (SOLID(3), 2))}}
 
 
+# The barrier on the wool approach: two override adds across the t1/t2 interface with six blocks of gate
+# between them, where the road runs. `keepClear` is what makes the dressing pass see it and `height_mode`
+# with `skirt` is what makes the relief leave its stated top alone — both, or it is neither.
+def barrier(shape_id, min_x, max_x):
+    return {"id": shape_id, "type": "rectangle", "operation": "add", "override": True,
+            "keepClear": True, "height_mode": "level", "skirt": 0,
+            "floor": 0, "base_height": 15, "theme": "keep",
+            "min_x": min_x, "min_z": 66, "max_x": max_x, "max_z": 69}
+
+
+BARRIER = [barrier("gate-west", -20, -17), barrier("gate-east", -11, -8)]
+
 FINISH = {
     # A theme is stated on a SHAPE, and a flat plan has one shape — so `themeByHeight` has nothing to bind
     # to until the heights exist. Heights first, then paint.
@@ -103,6 +177,7 @@ FINISH = {
     },
     "themeByHeight": {"8": "mid", "9": "ring", "10": "arm", "11": "inner", "12": "keep", "13": "camp"},
     "mapTheme": "ring",
+    "barrier": BARRIER,
 }
 
 
@@ -115,21 +190,22 @@ ROAD = {"kind": "cell", "seed": 7701, "cellSize": 3, "jitter": 55, "warp": 1, "r
 # Where a prop may stand, computed rather than eyed. The search is over every built cell: keep the cell and
 # its eight neighbours, all at one height, none of them claimed, three clear of every paved cell — and the
 # same of the cell's own rot_180 image, because a prop is judged at every image of its orbit. On this board
-# that is 1,899 cells, thinning to 56 once an oak's crown is spaced for, images included. These are the
-# first twenty of that list; every one of them is in the authored half and the fan draws its twin.
+# it answers 272 cells and fifteen sites, and the roads are why: 886 paved cells on 5,280 of land, each
+# owing a tree three blocks, is most of the board gone.
 #
-# What the search answers depends on what it searched against, and two passes of this one were wrong. Run
-# before the compiled INTENT was stored it answered 3,164 cells, because the rooms, the doors and the
-# spawns are not in the claims map until the intent is: five of its twenty were then declined `DR-KEEP`.
-# Run without the ORBIT it answered 2,293, and a tree sat two blocks from another tree's image.
-SEARCHED = [(-30, 22), (-30, 34), (-30, 52), (-26, -27), (-25, 22), (-25, 34), (-25, 52), (-21, -54),
-            (-21, -22), (-20, 27), (-18, 65), (-18, 75), (-16, -27), (-15, 22), (-13, 60), (-11, -54),
-            (-11, -25), (-10, -6), (-10, 4), (-10, 27)]
+# Every pass of this search that left something out was wrong, and the numbers are worth keeping. Against
+# the layout alone it said 512 cells: the rooms, the doors and the spawns are not in the claims map until
+# the compiled INTENT is stored. With the intent but not the ORBIT it said 404, and a tree landed two
+# blocks from another tree's image. And it is re-run after every edit that moves ground — an earlier list
+# was searched before the far lane came out and the roads were redrawn, and six of its twenty sites were
+# then refused.
+SEARCHED = [(-30, 51), (-26, -27), (-25, 51), (-24, 22), (-21, -27), (-21, -22), (-20, 30), (-18, 76),
+            (-16, -27), (-16, -22), (-14, 22), (-11, -24), (-10, -6), (-10, 5), (-8, 28)]
 
-# And five placed the way an author places them when the board looks like a landscape: down the middle of
-# the corridor, beside the road, over a hole, in the wool room, in the spawn. Each names a different rule.
-BY_EYE = [("eye-on-the-road", 0, 46), ("eye-beside-it", 0, 43), ("eye-over-a-hole", -14, 38),
-          ("eye-in-the-wool-room", 0, 74), ("eye-in-the-spawn", 36, 34)]
+# And five placed the way an author places them when the board looks like a landscape: on the road, beside
+# it, over a hole, in the doorway of the wool room, and on one jamb of the gate. Four rules between them.
+BY_EYE = [("eye-on-the-road", 0, 50), ("eye-beside-it", 0, 47), ("eye-over-a-hole", 10, 38),
+          ("eye-in-the-doorway", -12, 77), ("eye-on-the-gate-jamb", -19, 67)]
 
 DRESSING = {
     "styles": {
@@ -138,12 +214,21 @@ DRESSING = {
                    "rock": {"kind": "turbulence", "seed": 7702, "scale": 3, "octaves": 3, "rise": 3,
                             "stops": [SOLID(4), SOLID(48), SOLID(1, 5)]}},
     },
-    # The spine of the hub, drawn ALONG a corridor rather than across one: a stroke repaints the top block
-    # of every column it crosses, and a corridor is what there is to cross.
+    # Two roads, and both go somewhere. A road on a board of corridors runs ALONG one and never across
+    # one, because a stroke repaints the top block of every column it crosses — and it is drawn down the
+    # middle of a piece rather than along its lip, because a corridor's lip is its rim.
+    #
+    # `spine` leaves the spawn, turns down the hub's far bar, climbs the wool approach and ends on the
+    # room's own floor. `sally` drops off it through the middle cross-piece to the brink facing the mid,
+    # which is this board's front: the seed composed no frontline piece, so the front is the bridge.
     "props": [
         {"id": "spine", "kind": "stroke", "seed": 7703, "radius": 2, "style": "solid",
          "claimsGround": True, "pave": ROAD,
-         "points": [[-30, 46], [-10, 46], [10, 46], [26, 46]]},
+         "points": [[36, 34], [30, 34], [26, 36], [22, 41], [22, 47], [16, 50], [4, 50], [-8, 50],
+                    [-12, 51], [-14, 55], [-14, 62], [-14, 70], [-10, 74], [0, 74]]},
+        {"id": "sally", "kind": "stroke", "seed": 7704, "radius": 2, "style": "solid",
+         "claimsGround": True, "pave": ROAD,
+         "points": [[-2, 50], [-2, 44], [-2, 38], [-2, 32], [-2, 26], [-2, 21]]},
     ] + [
         # All twenty are oaks: a boulder rests on a footprint seven cells across and the search above
         # tests a cell and its eight neighbours, so a rock wants its own wider test — which is

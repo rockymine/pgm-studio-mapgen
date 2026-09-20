@@ -364,6 +364,22 @@ paints … one landform with a hard line at every riser, where a theme is a plac
 fault: a terraced hub really is ten plateaus, and the hard line at each riser is the author's to want.
 `techniques/taking-over-a-composed-board` is the worked card, one pinned board edited four ways.
 
+### A piece taken out for a build zone is the cheapest edit that changes how a board is fought over
+
+A plan's `zones` is what it says about the void, and the compiler turns an entry there into the intent's own
+`build.areas`, fanned with everything else. So replacing a piece is two edits: drop it from `pieces`, and
+add a zone over the rect it had.
+
+**And it changes which voids are holes.** A void bounded by the piece that came out is no longer *enclosed*,
+so the compiler emits one cut fewer and the merged outline traces round what is left. Measured on a
+double-hole hub with its far bar removed: two subtracts became one, and 13 of that hole's 144 blocks came
+out as ground.
+
+**Why to do it at all is a gameplay decision and belongs to the author.** On a `rot_180` board with one
+wool a team, both sides spawn, turn the same way and run past each other down whichever lane is furthest
+from their own spawn; taking that lane out and declaring it buildable means an attacker takes the near lane
+or bridges a gap under fire, and the two teams meet instead of trading (the author's ruling).
+
 ### A composed board is corridors, so compute where a prop may stand
 
 Every piece is ten blocks wide with a road down the middle, and there is no landscape around them —
@@ -385,9 +401,15 @@ one board's search answered 3,164 free cells and five of the twenty sites it ret
 `DR-KEEP`. Run with the intent but without testing each cell's **orbit image** it answered 2,293, and a tree
 landed two blocks from another tree's image. With both it answered 1,899, and all twenty sites took a tree.
 
-**A `walls` entry is stamped as a barrier, not drawn as a line.** Measured on one split piece: bedrock from
-the floor to y11 with a cobweb over it, two columns wide, along the whole interval the two pieces share,
-where the ground either side of it tops at 8 and 9.
+**A `walls` entry is stamped as a barrier with no gate, so on a single-corridor approach it closes the
+route.** Measured on a wool approach that is an L of three pieces in a line: the entry stamped bedrock to
+y14 with a cobweb over it, two columns deep, along the whole interval the two pieces share — four courses
+over the ground either side, `walk` answering *"barrier +4 at (−9, 67)"*, and the wool unreachable.
+
+**A barrier a player has to pass is drawn instead.** Two override adds either side of a six-block gap on
+the road's own line, both `keepClear` so the dressing pass sees them and both `height_mode: "level"` with
+`skirt: 0` so the relief leaves their stated tops alone. `walk` up the gate then reads *walked end to end,
+0 placed*, and four blocks east of it *barrier +4*.
 
 ---
 

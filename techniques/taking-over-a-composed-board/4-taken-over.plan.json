@@ -16,21 +16,32 @@
    "rect": [
     -8,
     11,
-    4,
+    3,
     3
    ],
    "surface": 9
   },
   {
-   "id": "hub-t1-east",
+   "id": "hub-t1-mouth",
    "role": "piece",
    "rect": [
-    -4,
+    -5,
     11,
-    5,
+    3,
     3
    ],
    "surface": 10
+  },
+  {
+   "id": "hub-t1-east",
+   "role": "piece",
+   "rect": [
+    -2,
+    11,
+    3,
+    3
+   ],
+   "surface": 9
   },
   {
    "id": "hub-t2",
@@ -42,17 +53,6 @@
     3
    ],
    "surface": 9
-  },
-  {
-   "id": "hub-t3",
-   "role": "piece",
-   "rect": [
-    -8,
-    8,
-    3,
-    3
-   ],
-   "surface": 10
   },
   {
    "id": "hub-t4",
@@ -74,7 +74,7 @@
     6,
     3
    ],
-   "surface": 11
+   "surface": 9
   },
   {
    "id": "hub-t6",
@@ -85,7 +85,7 @@
     6,
     3
    ],
-   "surface": 11
+   "surface": 9
   },
   {
    "id": "hub-t7",
@@ -96,7 +96,7 @@
     3,
     3
    ],
-   "surface": 12
+   "surface": 10
   },
   {
    "id": "spawn-t1",
@@ -107,7 +107,7 @@
     1,
     3
    ],
-   "surface": 13
+   "surface": 11
   },
   {
    "id": "spawn-room",
@@ -118,7 +118,7 @@
     2,
     3
    ],
-   "surface": 13
+   "surface": 11
   },
   {
    "id": "wool-a-t1",
@@ -129,7 +129,7 @@
     3,
     3
    ],
-   "surface": 10
+   "surface": 11
   },
   {
    "id": "wool-a-t2",
@@ -140,7 +140,7 @@
     4,
     3
    ],
-   "surface": 11
+   "surface": 12
   },
   {
    "id": "wool-a-room",
@@ -151,7 +151,7 @@
     2,
     3
    ],
-   "surface": 12
+   "surface": 13
   },
   {
    "id": "mid-stone-0",
@@ -173,6 +173,16 @@
     -5,
     16,
     10
+   ],
+   "holes": []
+  },
+  {
+   "id": "far-lane",
+   "rect": [
+    -8,
+    8,
+    3,
+    3
    ],
    "holes": []
   }
@@ -203,12 +213,7 @@
   "destroyables": [],
   "cores": []
  },
- "walls": [
-  {
-   "a": "hub-t1-west",
-   "b": "hub-t1-east"
-  }
- ],
+ "walls": [],
  "boxes": [
   {
    "id": "hub",
@@ -221,12 +226,12 @@
    ],
    "members": [
     "hub-t2",
-    "hub-t3",
     "hub-t4",
     "hub-t5",
     "hub-t6",
     "hub-t7",
     "hub-t1-west",
+    "hub-t1-mouth",
     "hub-t1-east"
    ]
   },

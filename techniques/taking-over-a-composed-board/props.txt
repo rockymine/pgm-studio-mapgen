@@ -7,32 +7,27 @@ that is nothing but corridors, computed and then checked.
   the same, with every cell's rot_180 image   1,899 cells,  56 spaced — twenty of twenty placed
 
 ### the twenty the last pass returned
-  searched-0     at ( -30,  22)   placed
-  searched-1     at ( -30,  34)   placed
-  searched-2     at ( -30,  52)   placed
-  searched-3     at ( -26, -27)   placed
-  searched-4     at ( -25,  22)   placed
-  searched-5     at ( -25,  34)   placed
-  searched-6     at ( -25,  52)   placed
-  searched-7     at ( -21, -54)   placed
-  searched-8     at ( -21, -22)   placed
-  searched-9     at ( -20,  27)   placed
-  searched-10    at ( -18,  65)   placed
-  searched-11    at ( -18,  75)   placed
-  searched-12    at ( -16, -27)   placed
-  searched-13    at ( -15,  22)   placed
-  searched-14    at ( -13,  60)   placed
-  searched-15    at ( -11, -54)   placed
-  searched-16    at ( -11, -25)   placed
-  searched-17    at ( -10,  -6)   placed
-  searched-18    at ( -10,   4)   placed
-  searched-19    at ( -10,  27)   placed
+  searched-0     at ( -30,  51)   placed
+  searched-1     at ( -26, -27)   placed
+  searched-2     at ( -25,  51)   placed
+  searched-3     at ( -24,  22)   placed
+  searched-4     at ( -21, -27)   placed
+  searched-5     at ( -21, -22)   placed
+  searched-6     at ( -20,  30)   placed
+  searched-7     at ( -18,  76)   placed
+  searched-8     at ( -16, -27)   placed
+  searched-9     at ( -16, -22)   placed
+  searched-10    at ( -14,  22)   placed
+  searched-11    at ( -11, -24)   placed
+  searched-12    at ( -10,  -6)   placed
+  searched-13    at ( -10,   5)   placed
+  searched-14    at (  -8,  28)   placed
 
 ### five placed the way an author places them on a board that looks like a landscape
-  eye-on-the-road        at (   0,  46)   DECLINED  DR-CLAIM  tree 'eye-on-the-road' rests on (0, 46), claimed by the paving 'spine'
-  eye-beside-it          at (   0,  43)   DECLINED  DR-ROAD  tree 'eye-beside-it' rests on (0, 43), nearer than 3 blocks to the road at (-1, 44)
-  eye-over-a-hole        at ( -14,  38)   DECLINED  DR-SITE  tree 'eye-over-a-hole' has no ground at (-14, 38)
-  eye-in-the-wool-room   at (   0,  74)   DECLINED  DR-KEEP  tree 'eye-in-the-wool-room' rests on (0, 74), which is built ground rather than terrain
-  eye-in-the-spawn       at (  36,  34)   DECLINED  DR-KEEP  tree 'eye-in-the-spawn' rests on (36, 34), which is built ground rather than terrain
+  eye-on-the-road        at (   0,  50)   DECLINED  DR-CLAIM  tree 'eye-on-the-road' rests on (0, 50), claimed by the paving 'spine'
+  eye-beside-it          at (   0,  47)   DECLINED  DR-ROAD  tree 'eye-beside-it' rests on (0, 47), nearer than 3 blocks to the road at (-1, 46)
+  eye-over-a-hole        at (  10,  38)   DECLINED  DR-SITE  tree 'eye-over-a-hole' has no ground at (10, 38)
+  eye-in-the-doorway     at ( -12,  77)   DECLINED  DR-KEEP  tree 'eye-in-the-doorway' rests on (-12, 77), which is kept clear as the approach in front of a door
+  eye-on-the-gate-jamb   at ( -19,  67)   DECLINED  DR-KEEP  tree 'eye-on-the-gate-jamb' rests on (-19, 67), which is kept clear for a stated structure
 
-placed 42, refused 5, 1596 cells claimed
+placed 34, refused 5, 1796 cells claimed

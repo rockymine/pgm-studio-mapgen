@@ -5,8 +5,8 @@ variant                  shapes  adds polys  cuts themes  heights
 
 1-as-pinned                   8     6     2     2      0  [9]
 2-void-redrawn                8     6     2     2      0  [9]
-3-a-surface-per-piece        18    16    12     2      0  [8, 9, 10, 11, 12, 13]
-4-taken-over                 17    15    11     2      6  [8, 9, 10, 11, 12, 13]
+3-a-surface-per-piece        16    14    10     2      0  [8, 9, 10, 11, 12, 13]
+4-taken-over                 17    16    10     1      6  [8, 9, 10, 11, 12, 13, 15]
 
 The two adds of `1-as-pinned` are one merged polygon per COMPONENT — the team unit and the
 neutral mid — not one per board. A surface per piece ends the merge inside a component and
@@ -23,14 +23,12 @@ The shapes of `3-a-surface-per-piece`, in the order the compiler wrote them:
   hub-t1-10-3           polygon   add      base_height 10
   hub-t1-11             polygon   add      base_height 11
   hub-t1-11-2           polygon   add      base_height 11
-  hub-t1-11-3           polygon   add      base_height 11
   hub-t1-12             polygon   add      base_height 12
-  hub-t1-12-2           polygon   add      base_height 12
   hub-t1-13             polygon   add      base_height 13
   mid-stone-0-8         polygon   add      base_height 8
   void-1-cut            polygon   subtract base_height None
   void-2-cut            polygon   subtract base_height None
-  spawn-red             rectangle add      base_height 13
+  spawn-red             rectangle add      base_height 11
   spawn-blue            rectangle add      base_height None
-  wool-red-red          rectangle add      base_height 12
+  wool-red-red          rectangle add      base_height 13
   wool-blue-blue        rectangle add      base_height None

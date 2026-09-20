@@ -1,0 +1,21 @@
+GET /api/map/technique-composed-4-taken-over/walk — the wool approach, once it has a barrier across
+it. `from` and `to` are `x,z`. A `walls` entry gave no way through at all and `walk` said so; the
+drawn gate is what a route needs.
+
+### up the approach on the road's own line, through the gate
+  from=-14,60&to=-14,76
+  ROUTE (-14, 60) -> (-14, 76) aim travel: 16 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+
+### the same journey a few blocks east, where the jamb stands
+  from=-10,60&to=-10,76
+  ROUTE (-10, 60) -> (-10, 76) aim travel: 16 blocks, 3 placed, 0 drop(s), worst drop 0
+  rises 1, falls 0, worst step 4: barrier +4 at (-10, 66)
+
+### the spawn to the wool room, end to end
+  from=36,34&to=0,74
+  ROUTE (36, 34) -> (0, 74) aim travel: 78 blocks, 10 placed, 1 drop(s), worst drop 8
+  rises 3, falls 1, worst step 8: barrier +4 at (-9, 66); scramble +2 at (-4, 70); barrier +7 at (-3, 71); drop -8 at (-1, 73)
+
+A jamb is a +4 barrier and the gate is level ground: the gap is what a route is, and a line a few
+blocks off it is not one. `walk` is the read that tells the two apart.

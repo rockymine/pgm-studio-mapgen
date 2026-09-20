@@ -352,6 +352,40 @@
   "13": "camp"
  },
  "mapTheme": "ring",
+ "barrier": [
+  {
+   "id": "gate-west",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "keepClear": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "floor": 0,
+   "base_height": 15,
+   "theme": "keep",
+   "min_x": -20,
+   "min_z": 66,
+   "max_x": -17,
+   "max_z": 69
+  },
+  {
+   "id": "gate-east",
+   "type": "rectangle",
+   "operation": "add",
+   "override": true,
+   "keepClear": true,
+   "height_mode": "level",
+   "skirt": 0,
+   "floor": 0,
+   "base_height": 15,
+   "theme": "keep",
+   "min_x": -11,
+   "min_z": 66,
+   "max_x": -8,
+   "max_z": 69
+  }
+ ],
  "dressing": {
   "styles": {
    "oak-9": {
@@ -426,20 +460,119 @@
     },
     "points": [
      [
-      -30,
-      46
+      36,
+      34
      ],
      [
-      -10,
-      46
-     ],
-     [
-      10,
-      46
+      30,
+      34
      ],
      [
       26,
-      46
+      36
+     ],
+     [
+      22,
+      41
+     ],
+     [
+      22,
+      47
+     ],
+     [
+      16,
+      50
+     ],
+     [
+      4,
+      50
+     ],
+     [
+      -8,
+      50
+     ],
+     [
+      -12,
+      51
+     ],
+     [
+      -14,
+      55
+     ],
+     [
+      -14,
+      62
+     ],
+     [
+      -14,
+      70
+     ],
+     [
+      -10,
+      74
+     ],
+     [
+      0,
+      74
+     ]
+    ]
+   },
+   {
+    "id": "sally",
+    "kind": "stroke",
+    "seed": 7704,
+    "radius": 2,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 7701,
+     "cellSize": 3,
+     "jitter": 55,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ]
+    },
+    "points": [
+     [
+      -2,
+      50
+     ],
+     [
+      -2,
+      44
+     ],
+     [
+      -2,
+      38
+     ],
+     [
+      -2,
+      32
+     ],
+     [
+      -2,
+      26
+     ],
+     [
+      -2,
+      21
      ]
     ]
    },
@@ -448,159 +581,119 @@
     "kind": "tree",
     "seed": 7710,
     "x": -30,
-    "z": 22,
+    "z": 51,
     "style": "oak-9"
    },
    {
     "id": "searched-1",
     "kind": "tree",
     "seed": 7711,
-    "x": -30,
-    "z": 34,
+    "x": -26,
+    "z": -27,
     "style": "oak-9"
    },
    {
     "id": "searched-2",
     "kind": "tree",
     "seed": 7712,
-    "x": -30,
-    "z": 52,
+    "x": -25,
+    "z": 51,
     "style": "oak-9"
    },
    {
     "id": "searched-3",
     "kind": "tree",
     "seed": 7713,
-    "x": -26,
-    "z": -27,
+    "x": -24,
+    "z": 22,
     "style": "oak-9"
    },
    {
     "id": "searched-4",
     "kind": "tree",
     "seed": 7714,
-    "x": -25,
-    "z": 22,
+    "x": -21,
+    "z": -27,
     "style": "oak-9"
    },
    {
     "id": "searched-5",
     "kind": "tree",
     "seed": 7715,
-    "x": -25,
-    "z": 34,
+    "x": -21,
+    "z": -22,
     "style": "oak-9"
    },
    {
     "id": "searched-6",
     "kind": "tree",
     "seed": 7716,
-    "x": -25,
-    "z": 52,
+    "x": -20,
+    "z": 30,
     "style": "oak-9"
    },
    {
     "id": "searched-7",
     "kind": "tree",
     "seed": 7717,
-    "x": -21,
-    "z": -54,
+    "x": -18,
+    "z": 76,
     "style": "oak-9"
    },
    {
     "id": "searched-8",
     "kind": "tree",
     "seed": 7718,
-    "x": -21,
-    "z": -22,
+    "x": -16,
+    "z": -27,
     "style": "oak-9"
    },
    {
     "id": "searched-9",
     "kind": "tree",
     "seed": 7719,
-    "x": -20,
-    "z": 27,
+    "x": -16,
+    "z": -22,
     "style": "oak-9"
    },
    {
     "id": "searched-10",
     "kind": "tree",
     "seed": 7720,
-    "x": -18,
-    "z": 65,
+    "x": -14,
+    "z": 22,
     "style": "oak-9"
    },
    {
     "id": "searched-11",
     "kind": "tree",
     "seed": 7721,
-    "x": -18,
-    "z": 75,
+    "x": -11,
+    "z": -24,
     "style": "oak-9"
    },
    {
     "id": "searched-12",
     "kind": "tree",
     "seed": 7722,
-    "x": -16,
-    "z": -27,
+    "x": -10,
+    "z": -6,
     "style": "oak-9"
    },
    {
     "id": "searched-13",
     "kind": "tree",
     "seed": 7723,
-    "x": -15,
-    "z": 22,
+    "x": -10,
+    "z": 5,
     "style": "oak-9"
    },
    {
     "id": "searched-14",
     "kind": "tree",
     "seed": 7724,
-    "x": -13,
-    "z": 60,
-    "style": "oak-9"
-   },
-   {
-    "id": "searched-15",
-    "kind": "tree",
-    "seed": 7725,
-    "x": -11,
-    "z": -54,
-    "style": "oak-9"
-   },
-   {
-    "id": "searched-16",
-    "kind": "tree",
-    "seed": 7726,
-    "x": -11,
-    "z": -25,
-    "style": "oak-9"
-   },
-   {
-    "id": "searched-17",
-    "kind": "tree",
-    "seed": 7727,
-    "x": -10,
-    "z": -6,
-    "style": "oak-9"
-   },
-   {
-    "id": "searched-18",
-    "kind": "tree",
-    "seed": 7728,
-    "x": -10,
-    "z": 4,
-    "style": "oak-9"
-   },
-   {
-    "id": "searched-19",
-    "kind": "tree",
-    "seed": 7729,
-    "x": -10,
-    "z": 27,
+    "x": -8,
+    "z": 28,
     "style": "oak-9"
    },
    {
@@ -608,7 +701,7 @@
     "kind": "tree",
     "seed": 7740,
     "x": 0,
-    "z": 46,
+    "z": 50,
     "style": "oak-9"
    },
    {
@@ -616,31 +709,31 @@
     "kind": "tree",
     "seed": 7741,
     "x": 0,
-    "z": 43,
+    "z": 47,
     "style": "oak-9"
    },
    {
     "id": "eye-over-a-hole",
     "kind": "tree",
     "seed": 7742,
-    "x": -14,
+    "x": 10,
     "z": 38,
     "style": "oak-9"
    },
    {
-    "id": "eye-in-the-wool-room",
+    "id": "eye-in-the-doorway",
     "kind": "tree",
     "seed": 7743,
-    "x": 0,
-    "z": 74,
+    "x": -12,
+    "z": 77,
     "style": "oak-9"
    },
    {
-    "id": "eye-in-the-spawn",
+    "id": "eye-on-the-gate-jamb",
     "kind": "tree",
     "seed": 7744,
-    "x": 36,
-    "z": 34,
+    "x": -19,
+    "z": 67,
     "style": "oak-9"
    }
   ]

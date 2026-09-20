@@ -15,7 +15,12 @@ The board's own negative space, three ways of asking.
     1-as-pinned              land  5372   hole-1   0/144   hole-2   0/144
     2-void-redrawn           land  5436   hole-1  32/144   hole-2   0/144
     3-a-surface-per-piece    land  5372   hole-1   0/144   hole-2   0/144
-    4-taken-over             land  5416   hole-1   0/144   hole-2   0/144
+    4-taken-over             land  5145   hole-1  13/144   hole-2   0/144
 
-`2-void-redrawn` is the only one with ground in a hole, and it is there because the SUBTRACT was
-redrawn with its corners taken off — 32 blocks of ground the board now states. Nothing was added.
+`2-void-redrawn` has 32 blocks of ground in hole-1 because its SUBTRACT was redrawn with the
+corners taken off. No add was written; the board simply states less negative space than it did.
+
+`4-taken-over` has 13 there for a different reason, and it is the one worth knowing: the far bar
+came out, so that void is no longer ENCLOSED. The compiler emits one cut instead of two and the
+merged outline traces round what is left of the hole, keeping the corners the bar used to bound.
+Taking a piece away changes which voids are holes, and the cuts change with it.
