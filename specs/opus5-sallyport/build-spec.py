@@ -340,7 +340,6 @@ props_list.append({"id": "steading", "kind": "house", "seed": 42, "front": "posZ
 finish = {
     "authors": ["Opus 5"],
     "created": "2026-09-16",
-    "voidEnforcement": True,
     "mapTheme": "moor",
     "themes": themes,
     "biome": {"kind": "solid", "id": 32},

@@ -172,7 +172,6 @@ boulders = [
 finish = {
     "authors": ["Opus 5"],
     "created": "2026-09-15",
-    "voidEnforcement": True,
     "mapTheme": "pasture",
     "themes": {
         "pasture": ground_theme(turf, shoulder, bank_wall),

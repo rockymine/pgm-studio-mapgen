@@ -202,4 +202,5 @@ KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn
   97             000000000000077777777777777777777777777777777                           
   98             000000000000077777777777777777777777777777777                           
   99             000000000000077777777777777777777777777777777                           
-placed 30, declined 0
+decline DR-PASS building 'store' leaves no way past it: a side has fewer than 8 blocks of passable ground along its whole run, and is not the edge of the ground it stands on
+placed 30, declined 1

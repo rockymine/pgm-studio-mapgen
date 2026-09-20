@@ -99,7 +99,7 @@ POST  /api/plan/evaluate    <plan>       score, valid, the hard/soft terms, the 
 POST  /api/plan/inspect     <plan>       goalDistances (GO1), islandGaps (CT12), the wall rects, frontline runs
 POST  /api/plan/compile     <plan>       → {layout, intent}. Read the SHAPE IDS here and key the finish on them
       ── patch the compiled layout: themes, relief_scope, controls, addShapes, relief, rooms, dressing ──
-      ── patch the compiled intent: voidEnforcement, a goal's layer ──
+      ── patch the compiled intent: a goal's layer, the authors, the date ──
 POST  /api/map/from-documents            {slug, name, plan, layout, intent, authors} — the whole map, one call
 GET   /api/map/{slug}/plan/ascii         the board as a grid, one character per cell (?every=N)
 GET   /api/map/{slug}/plan/flow          what the board asks of the two sides, in prose

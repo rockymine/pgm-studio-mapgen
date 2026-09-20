@@ -416,7 +416,6 @@ FINISH = {
     "scoreLimit": 750,
     "authors": ["Opus 5"],
     "created": "2026-09-14",
-    "voidEnforcement": True,
 }
 
 

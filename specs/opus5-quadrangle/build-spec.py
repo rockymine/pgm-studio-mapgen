@@ -315,7 +315,6 @@ for i, (tx, tz, sp, h) in enumerate([(47, 36, "oak", 8), (61, 46, "oak", 9), (30
 finish = {
     "authors": ["Opus 5"],
     "created": "2026-09-16",
-    "voidEnforcement": True,
     "mapTheme": "court",
     "themes": themes,
     "biome": {"kind": "solid", "id": 35},

@@ -664,7 +664,6 @@ def finish_document():
     return {
         "authors": ["Opus 5"],
         "created": "2026-09-18",
-        "voidEnforcement": True,
         "mapTheme": "moor",
         "themes": THEMES,
         "themeByHeight": THEME_BY_HEIGHT,

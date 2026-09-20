@@ -37,7 +37,6 @@ the route is right and this file is wrong. Each row names its route.
   roomStyles          PUT    /map/{slug}/sketch/room-styles/{part}
   dressing            POST   /map/{slug}/sketch/props
   biome               PUT    /map/{slug}/sketch/biome
-  voidEnforcement     PUT    /map/{slug}/intent
   authors · created   PUT    /map/{slug}/intent
 
 **Two keys address the compiler's own output.** `themeById` and `shapePropsById` name a shape by the id the
@@ -89,7 +88,6 @@ What each key states:
                   `at` names a square of ground, not a point: the block it is the centre of where it is a
                   block centre, the four it corners where it is a whole number -- so a 2x2 pad on a board's
                   own centre line is stated as a whole number and a 1x1 as a .5
-  voidEnforcement true -> patch intent.build.voidEnforcement (voidExclusions for the rects to spare)
   authors         ["Opus 5"], or [{"name", "uuid", "role", "contribution"}] -> the <authors> block. PGM
                   takes a person as an account OR a pseudonym, so a bare name is a valid author
   created         "2026-08-25" -> intent.meta.created -> <created>. The studio cannot know when a map was
@@ -647,8 +645,7 @@ def patch_intent(intent, finish):
     """Everything the finish says about the compiled intent.
 
     `created` is the map's own date, which the studio has no way to derive: it rides on the intent's meta
-    and is the author's to state. `voidEnforcement` fills the board's void with the barrier PGM enforces,
-    sparing the rects `voidExclusions` names.
+    and is the author's to state.
 
     `authors` rides on the intent's meta as well, because the observer platform's authors board reads
     `meta.authors` (`EX6`) and a compiled intent leaves it empty: the body's `authors` credits the map row
@@ -678,9 +675,6 @@ def patch_intent(intent, finish):
     if authors := finish.get("authors"):
         intent.setdefault("meta", {})["authors"] = [
             {"name": person} if isinstance(person, str) else person for person in authors]
-    if finish.get("voidEnforcement"):
-        intent.setdefault("build", {})["voidEnforcement"] = \
-            {"exclusions": finish.get("voidExclusions", [])}
     if points := finish.get("controlPoints"):
         intent["controlPoints"] = points
         named = ", ".join(p.get("name") or "?" for p in points)

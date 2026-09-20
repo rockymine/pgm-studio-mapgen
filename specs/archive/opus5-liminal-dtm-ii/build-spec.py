@@ -872,7 +872,6 @@ finish = {
          "radius": 7, "depth": 4, "form": "natural", "edge": 1.2,
          "shore": 3, "shoreWander": True, "bank": solid(12)},
     ]},
-    "voidEnforcement": True,
 }
 
 

@@ -395,7 +395,6 @@ props_list.append({"id": "byre", "kind": "house", "seed": 51, "front": "negZ",
 finish = {
     "authors": ["Opus 5"],
     "created": "2026-09-15",
-    "voidEnforcement": True,
     "mapTheme": "lea",
     "themes": themes,
     "themeById": {LEA_SHAPE: "lea", FORT_SHAPE: "revet"},
