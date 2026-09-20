@@ -124,6 +124,26 @@ at 15 and 40 — four different boards, four different histograms, four differen
 **So the number is never remembered, it is read.** `GET …/incline?format=text` before the theme is written,
 and again after the relief changes.
 
+## One bucket's material reads the teams, and its unit is the island
+
+**`teamTint` is the one pattern that varies with who owns the ground rather than with where the cell is.**
+`GET /api/terrain/patterns` says so in its own `reads` field — `["team"]` — against `position` for a
+voronoi or a cell. It takes a `blockId` for a colour-by-damage block (stained clay, wool, stained glass)
+and a `neutral` material for ground no team owns.
+
+**Its unit is a canonical island, not a cell and not a team's half.** A player standing anywhere on a
+landmass is meant to know whose it is, so the whole island takes one colour — which means a board whose
+land is a single island wears one team's colour end to end, and `PT5` is the complaint that says so.
+
+**Measured on a two-team probe rather than on this card's board, which has no teams.** One island 260
+blocks wide with a spawn at each end exports `Pgm-Warnings: … PT5`, and the column reads **Red Stained
+Clay** at x −60 *and* at x +60. Cut the same ground into two islands joined by a build zone and the
+warning goes: x −60 reads Red Stained Clay and x +60 reads **Blue Stained Clay**.
+
+**So the fix is the land, not the theme.** Split what the tint is meant to distinguish — the decomposition
+is the same one `islands_json` uses — or drop `teamTint` from the buckets a shared island paints through
+and say whose ground it is some other way.
+
 ## The recipe
 
 **Write the buckets from the bottom up and give each one a job.**
@@ -152,6 +172,8 @@ and again after the relief changes.
   leaves and `boundary` caps, the mesa top and the plain on `height`, the mesa top and its skirt on `slope`,
   the border on `inward`, and a blob inside the `fill-rise` mesa.
 - `census.txt` — ten themes over 38,400 cells and four distinct surface blocks, which is the palette.
+- `GET /api/terrain/patterns` — where `teamTint`'s `reads: ["team"]` comes from, and the two fields it
+  takes. The tint measurement above is a two-team probe rather than a panel: this board has no teams.
 - `incline.txt` — the histogram the slope bands were cut against.
 - `theme-buckets.layout.json` — the one document the board was stored from. It would not store until `PT1`
   and `PT4` were satisfied, which is two of this card's claims.

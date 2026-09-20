@@ -234,6 +234,14 @@ between a theme using two buckets and a theme using four.
 `two-colours`' three paints are all filed under `moor`, the board's ground theme, so `census.txt` reads
 seven surface blocks for that theme and two for `masonry` — a material is paint, not membership.
 
+## A made thing and a stamp do not read each other
+
+**Everything above is laid by the rasterizer, and a stamper writes where it is told.** A wall, a spawn
+building, a wool cage and an objective seat on the terrain's surface with the made things taken out, so a
+made thing sharing a stamp's courses loses every cell they share and is not in the world there. `SK18` is
+the complaint, it is heard only at the export, and `techniques/walls-and-iron` measures both halves of it
+against a bedrock wall.
+
 ## The recipe
 
 - **nest from one floor and let the taller add win** — a ziggurat, a dome and a stepped plinth are all that

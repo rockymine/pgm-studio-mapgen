@@ -1,0 +1,23 @@
+PUT …/sketch, POST …/sketch/finish, GET …/export — a made parapet drawn along the `line` wall's
+head, and the same parapet three courses clear of it. The wall is bedrock from y0 to y11.
+
+### the parapet on the wall's head — `floor: 10`, three courses
+  PUT 200 · finish 200 · export 200 · Pgm-Warnings: 1 SK18
+  the column where the two meet, (8, 32):
+  === column (8, 32) — 13 solid block(s), ground 0° from level ===
+  y 12    30:0   Cobweb
+  y 11     7:0   Bedrock
+  y 10     7:0   Bedrock
+  y  9     7:0   Bedrock
+
+### the parapet clear above it — `floor: 14`, three courses
+  PUT 200 · finish 200 · export 200 · Pgm-Warnings: none
+
+The card's own layout is stored again after these, so the renders read the clean board.
+
+The parapet on the head is not in the world at all: the column reads bedrock to y11 and the
+cobweb course over it, and no stone brick anywhere. The store answered 200, the finish answered
+200, and the only thing that said so was one word in a header at the export.
+
+`Pgm-Warnings: 1 SK18` is the whole of what the wire carries — a count and a rule id, with no
+message and no coordinate. `GET /api/rules?rule=SK18` is where the sentence is.

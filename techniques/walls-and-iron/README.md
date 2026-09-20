@@ -82,6 +82,30 @@ nothing but the spawn floor at (194, 26). The compile kept **both** points; the 
 and the room takes its full clearance. A cube missing from a built world is a **plan** finding to go back
 and read, never an export one, and `POST /api/plan/evaluate` is where the `WX8` complaint was waiting.
 
+## A made thing drawn on a stamp is not in the world
+
+**The rasterizer lays a made layer and every stamper writes where it is told, and neither reads the other.**
+A wall, a spawn building, a wool cage and an objective all seat on the terrain's surface — the top of every
+column with the made things taken out — so a parapet drawn along a wall's head and the wall itself both
+claim the same courses, and the stamp wins every cell it writes.
+
+**`sk18.txt` draws the same parapet twice.** At `floor: 10`, across the `line` wall's head, the export
+answers `Pgm-Warnings: 1 SK18` and the column at (8, 32) reads bedrock to y11 and the cobweb course over
+it — **no stone brick anywhere**. At `floor: 14`, three courses clear, the export answers no warnings and
+the parapet stands.
+
+**Nothing says so until the export.** The store answered 200 and the finish answered 200 both times. One
+run in this repository drew made things through stamped bedrock nine times across four builds before the
+header was read.
+
+**And the header is all there is.** `Pgm-Warnings: 1 SK18` carries a count and a rule id, with no message
+and no coordinate; `GET /api/rules?rule=SK18` is where the sentence lives. It is a complaint rather than a
+refusal, because a thing deliberately built into a wall is a thing somebody meant.
+
+**The fix is usually to raise the made thing.** It is drawn at an absolute floor with nothing seated on it,
+where a building is placed against the ground, the routes and the other buildings. The honest alternative
+is to stop the made thing short: where a bedrock wall stands, the bedrock *is* the parapet.
+
 ## The recipe
 
 - **state a wall as the two pieces it stands between.** Everything else — its length, its thickness, its
@@ -96,6 +120,9 @@ and read, never an export one, and `POST /api/plan/evaluate` is where the `WX8` 
   marker is an id collision rather than an opponent.
 - **give a spawn a `footprint` smaller than its piece before authoring an iron cube.** The default shell
   leaves a one-block ring, which is not a yard.
+- **keep a made thing off a stamp's courses.** A parapet on a wall's head, a gantry through a shed, a
+  frame across a spawn: the stamp wins and the made thing is simply absent. Only the export's
+  `Pgm-Warnings` header says `SK18`, and it says nothing else.
 - **read `POST /plan/evaluate` before the export.** `WX8` complains there; `WX9` means the export will
   build the board without the cube and without a word.
 
@@ -118,6 +145,8 @@ what decides it, and what the chests hold, is the compiler's and is not read her
 - `walls.txt` — a walk straight at each wall, the three legs round the `shoulder` wall's end, the columns
   that are void beside `line`, and what a wall is made of.
 - `iron.txt` — the two markers, the `WX8` complaint on one of them, and the column where each landed.
+- `sk18.txt` — a made parapet on the wall's head and three courses clear of it: two exports, two
+  answers, and the column that shows the first one is not in the world.
 - `walls-and-iron.plan.json` — 14 pieces, 4 walls, 2 iron markers, `symmetry: "none"`.
 
 Renders, off the **built** world: `board.png`, the four stations from above, where the `shoulder` wall is
