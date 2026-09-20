@@ -307,6 +307,9 @@ Into `/home/user/pgm-studio-mapgen`, on the branch this session was given:
   top-down at the end, and `provenance.json`, which the driver moves here out of the exported `region/`.
 - **`review/<slug>.md`** — what the board is, how it is meant to play, the techniques used, and what went
   wrong. Follow `review/tallow-mirefast.md` for shape.
+- **a row in [BOARDS-BUILT.md](BOARDS-BUILT.md)** — under the run's own heading, saying what the board
+  turned out to be. Nothing derives that column from a folder, and the run that built the board is the only
+  party that knows it. `tools/boards-check.py` fails on a folder nobody wrote up.
 - **`reports/<your-model>-<run>.md`** — one for the run:
   - **What you set out to build**, at the top, before anything else.
   - **What you could not say**, item by item. For each: what you wanted, what you tried, the exact endpoint

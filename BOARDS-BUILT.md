@@ -4,8 +4,9 @@ One entry per board, grouped by the run that produced it, with what the run was 
 turned out to be. Mode is what the map's own `<gamemode>` declares.
 
 **This is a log and it is appended to, which is why it is not in `README.md`.** A board lands here when its
-world and its spec are committed; the README says what the repository is and stays the size a reader will
-read. Measured on disk: **60 spec folders under `specs/`**, **118 more under `specs/archive/`**, **187
+world and its spec are committed, written up by the run that built it (`AUTHORING-BRIEF.md` §6);
+`tools/boards-check.py` fails on a folder nobody wrote up. The README says what the repository is and stays
+the size a reader will read. Measured on disk: **60 spec folders under `specs/`**, **118 more under `specs/archive/`**, **187
 worlds** under `maps/` and **71 reports**.
 
 A spec a report or a review names at `specs/<slug>` and that is not there is at `specs/archive/<slug>`. Those
@@ -529,3 +530,47 @@ and `GET …/coverage` prices ground as dead that a capture board is built to co
 |---|---|---|---|
 | `opus5-threap-edge` | koth | Opus 5 | **A gritstone edge across a moor, with the three hills cut into its top** — `The Edge` on the summit at dead centre and `West Nab` and `East Nab` on the shoulders where the crest steps down, 32 blocks either side of it, each paying 1 to a limit of 750. Both teams spawn on the low moor, north and south, 96 blocks apart. Every pad is 64 blocks of white stained clay and every sky marker 7 of white wool at y57–59, and **both are regions the point displays through** — the pad as `progress-display-region`, the marker as `owner-display-region` — so both take the holder's colour on capture and go back to white when the point goes neutral. A wool room's marker and a destroyable's name a team for the whole match; a hill's is the one that moves. **8 420 walked · 908 scrambled · 224 barrier · 8 faces**, 26 props placed and none declined, export gate OPEN |
 | `opus5-casemate` | koth | Opus 5 | **A fort rather than a hill, and the middle pays double** — `The Cistern` in a lidded casemate at y13 pays 2, `West Bay` and `East Bay` pay 1 each from three-walled bays with one mouth apiece, to the same 750. Nothing stands over open ground and no pad has a line to a spawn: the terreplein at y20 carries the traverses and the pillars, the rampart rings it, and the ground is one-way. **The cover here is structure, not dressing — 0 props placed** — and the largest of its 20 faces is the casemate's own seven-block wall at x −21..20, z −15..14. **6 364 walked · 360 scrambled · 1 964 barrier**, nine regions, three white wool markers at y53–55, export gate OPEN. The team colour is **stated** rather than sampled, because on a one-island board the tint could not be read (`WE120`) |
+
+---
+
+## Not boards
+
+Folders under `maps/` or `specs/` that exist for a reading rather than for a game. They are named
+here so `tools/boards-check.py` can tell them from a board nobody wrote up.
+
+| Folder | What it is |
+|---|---|
+| `band-suite` | a probe suite: one band axis per panel, driven to read the slope bands back |
+| `crossing-suite` | a probe suite: one crossing per panel, driven to read what a hop costs |
+| `geometry-showcase` | a world built to look at shape geometry, not to be played |
+| `probe-ashfield-1` | a biome probe world: ashfield, tint read back off the chunk's biome byte |
+| `probe-ashfield-2` | a biome probe world: ashfield, tint read back off the chunk's biome byte |
+| `probe-badlands-1` | a biome probe world: badlands, tint read back off the chunk's biome byte |
+| `probe-badlands-2` | a biome probe world: badlands, tint read back off the chunk's biome byte |
+| `probe-desert-1` | a biome probe world: desert, tint read back off the chunk's biome byte |
+| `probe-desert-2` | a biome probe world: desert, tint read back off the chunk's biome byte |
+| `probe-plains-1` | a biome probe world: plains, tint read back off the chunk's biome byte |
+| `probe-plains-2` | a biome probe world: plains, tint read back off the chunk's biome byte |
+| `probe-snowfield-1` | a biome probe world: snowfield, tint read back off the chunk's biome byte |
+| `probe-snowfield-2` | a biome probe world: snowfield, tint read back off the chunk's biome byte |
+| `rockymine-probe` | the author's own probe spec |
+
+## Not yet written up
+
+A board lands in `maps/` and `specs/` the moment it is driven, and its entry above is written by the
+run that built it (`AUTHORING-BRIEF.md` §6). These predate that rule and have no entry yet.
+
+**The list is the debt, carried in the open rather than discovered again later.** A slug leaves it by
+getting a row above, written by somebody who knows what the board turned out to be — `reports/` says
+what most of these runs were for, and reconstructing the column from a report is how a log comes to
+describe boards that were never quite like that.
+
+`opus5-basaltmere` `opus5-birkmire` `opus5-burrowgate` `opus5-clints-scar` `opus5-corbel-scar`
+`opus5-crossdyke` `opus5-drystone-ring` `opus5-dustwath` `opus5-eaveswick` `opus5-fallowgate`
+`opus5-flintwick` `opus5-gallowsholt` `opus5-garsdale` `opus5-grykefell` `opus5-harrowgate` `opus5-hollowbeck`
+`opus5-hushwater` `opus5-kettleshulme` `opus5-longstrand` `opus5-medlock-drift` `opus5-mirkholt`
+`opus5-mootgate` `opus5-netherby` `opus5-ochrepans` `opus5-orchard-holm` `opus5-oxenholme` `opus5-peatgarth`
+`opus5-portway` `opus5-potsherd` `opus5-quadrangle` `opus5-ravenstone` `opus5-redmarl` `opus5-revetment`
+`opus5-sallowmere` `opus5-sallyport` `opus5-scarp-mask` `opus5-scarrow-delph` `opus5-skelwith`
+`opus5-slakemoss` `opus5-sparholt` `opus5-stavelbridge` `opus5-thornwaite` `opus5-thrushgate`
+`opus5-thwaite-ghyll` `opus5-whitegape` `opus5-widdop`
