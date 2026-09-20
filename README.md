@@ -53,9 +53,9 @@ comparison is the lesson. **Twenty-three exist, which is all of them** — from 
 Bézier rings through pushes, stacked layers, water and the theme buckets to what a shape must say before it
 owns any paint, on to sculpture built out of nothing but shapes and a board somebody else arranged.
 
-**One of them compares the tiers rather than working an instrument.** `raising-a-lane` puts the same lane up
-the same eight blocks ten ways — by the plan, by the layout, by the relief and by a storey over it — and
-measures what each climb costs a player. Each commits the text reads that prove its claims and names no past map.
+**One of them compares the tiers rather than working an instrument.** `raising-a-lane` puts the same L-shaped lane up
+eight blocks seven ways — by the plan, by the layout, by the relief and by a storey over it — and measures
+what each climb costs a player and what the corner does to it. Each commits the text reads that prove its claims and names no past map.
 [techniques/README.md](techniques/README.md) indexes them; a new card is written when a new instrument
 lands.
 

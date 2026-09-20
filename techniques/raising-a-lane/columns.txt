@@ -1,82 +1,48 @@
-GET /api/map/technique-raising-a-lane/column?at=x,z — what is under the standing top, which is where
-the tiers differ and a profile cannot say.
+GET …/column?at=x,z — what is under the standing top, which is where the tiers differ and neither
+profile can say.
 
-### plates at (-46, -54) — under an override plate: the ground the lane was drawn at is gone, not buried
-=== column (-46, -54) — 15 solid block(s), ground 14° from level ===
-  y 14     2:0   Grass Block
-  y 13     3:0   Dirt
-  y 12     3:0   Dirt
-  y 11     1:0   Stone
-  y 10     1:0   Stone
-  y  9     1:0   Stone
-  y  8     1:0   Stone
-
-### piece-treads at (-6, -130) — under a tread of ground at the same height, for the comparison
-=== column (-6, -130) — 15 solid block(s), ground 14° from level ===
-  y 14     2:0   Grass Block
-  y 13     3:0   Dirt
-  y 12     3:0   Dirt
-  y 11     1:0   Stone
-  y 10     1:0   Stone
-  y  9     1:0   Stone
-  y  8     1:0   Stone
-
-### deck at (34, 26) — the deck's own column: the lane at its foot, the slab sixteen courses over it
-=== column (34, 26) — 10 solid block(s), ground 0° from level ===
-  y 16    98:1   Mossy Stone Bricks
-  y  8     2:0   Grass Block
-  y  7     3:0   Dirt
-  y  6     3:0   Dirt
-  y  5     1:0   Stone
-  y  4     1:0   Stone
-  y  3     1:0   Stone
-
-### raise-sheer at (34, -54) — the sheer shelf, whose face is the whole lift
-=== column (34, -54) — 17 solid block(s), ground 0° from level ===
-  y 16     2:0   Grass Block
-  y 15     3:0   Dirt
-  y 14     3:0   Dirt
-  y 13     1:0   Stone
-  y 12     1:0   Stone
-  y 11     1:0   Stone
-  y 10     1:0   Stone
-
-### marks at (-46, 14) — the middle of the graded lane, which no shape states
-=== column (-46, 14) — 12 solid block(s), ground 14° from level ===
+### plates at (69, -39) — under an override plate: the lane it was drawn on is gone, not buried
+=== column (69, -39) — 12 solid block(s), ground 0° from level ===
   y 11     2:0   Grass Block
   y 10     3:0   Dirt
   y  9     3:0   Dirt
   y  8     1:0   Stone
   y  7     1:0   Stone
   y  6     1:0   Stone
+
+### piece-treads at (-79, -39) — under a tread of ground at the same height, for the comparison
+=== column (-79, -39) — 12 solid block(s), ground 0° from level ===
+  y 11     2:0   Grass Block
+  y 10     3:0   Dirt
+  y  9     3:0   Dirt
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+
+### deck at (-5, 27) — the deck's own column: the lane at its foot, the storey sixteen over it
+=== column (-5, 27) — 10 solid block(s), ground 0° from level ===
+  y 16     1:6   Polished Andesite
+  y  8     2:0   Grass Block
+  y  7     3:0   Dirt
+  y  6     3:0   Dirt
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+
+### tilted at (-11, -47) — the low side of the leaning stem
+=== column (-11, -47) — 11 solid block(s), ground 0° from level ===
+  y 10     2:0   Grass Block
+  y  9     3:0   Dirt
+  y  8     3:0   Dirt
+  y  7     1:0   Stone
+  y  6     1:0   Stone
   y  5     1:0   Stone
 
-### push at (-6, 22) — the push's skirt, where the lane climbs the landform
-=== column (-6, 22) — 16 solid block(s), ground 14° from level ===
-  y 15     2:0   Grass Block
-  y 14     3:0   Dirt
-  y 13     3:0   Dirt
-  y 12     1:0   Stone
-  y 11     1:0   Stone
+### tilted at (0, -47) — and its high side, twelve blocks away
+=== column (0, -47) — 14 solid block(s), ground 16° from level ===
+  y 13     3:1   Coarse Dirt
+  y 12     3:0   Dirt
+  y 11     3:0   Dirt
   y 10     1:0   Stone
   y  9     1:0   Stone
+  y  8     1:0   Stone
 
-### raise-on-an-l at (-46, 108) — the middle of the L's bend, where the two legs give a skirt room to end
-=== column (-46, 108) — 17 solid block(s), ground 55° from level ===
-  y 16     1:0   Stone
-  y 15     1:0   Stone
-  y 14     1:0   Stone
-  y 13     1:0   Stone
-  y 12     1:0   Stone
-  y 11     1:0   Stone
-  y 10     1:0   Stone
-
-### raise-on-an-l at (-46, 102) — one row south of it, where the stem alone is 12 wide
-=== column (-46, 102) — 17 solid block(s), ground 21° from level ===
-  y 16     3:1   Coarse Dirt
-  y 15     3:0   Dirt
-  y 14     3:0   Dirt
-  y 13     1:0   Stone
-  y 12     1:0   Stone
-  y 11     1:0   Stone
-  y 10     1:0   Stone
