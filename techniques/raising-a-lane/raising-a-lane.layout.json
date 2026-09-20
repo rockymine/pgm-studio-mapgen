@@ -1,8 +1,8 @@
 {
  "setup": {
   "bbox": {
-   "min_x": -183,
-   "max_x": 135,
+   "min_x": -220,
+   "max_x": 172,
    "min_z": -93,
    "max_z": 53
   },
@@ -153,19 +153,19 @@
      "bevel": 0,
      "ring": [
       [
-       -159,
+       -122,
        -7
       ],
       [
-       -147,
+       -110,
        -7
       ],
       [
-       -147,
+       -110,
        1
       ],
       [
-       -159,
+       -122,
        1
       ]
      ]
@@ -177,19 +177,19 @@
      "bevel": 0,
      "ring": [
       [
-       -119,
+       -82,
        21
       ],
       [
-       -111,
+       -74,
        21
       ],
       [
-       -111,
+       -74,
        33
       ],
       [
-       -119,
+       -82,
        33
       ]
      ]
@@ -212,19 +212,19 @@
      "seed": 1,
      "ring": [
       [
-       -51,
+       -14,
        21
       ],
       [
-       -35,
+       2,
        21
       ],
       [
-       -35,
+       2,
        33
       ],
       [
-       -51,
+       -14,
        33
       ]
      ]
@@ -245,8 +245,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 9,
-      "min_x": -159,
-      "max_x": -147,
+      "min_x": -196,
+      "max_x": -184,
       "min_z": -73,
       "max_z": -64
      },
@@ -256,8 +256,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 9,
-      "min_x": -159,
-      "max_x": -147,
+      "min_x": -196,
+      "max_x": -184,
       "min_z": -64,
       "max_z": -54
      },
@@ -267,8 +267,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 11,
-      "min_x": -159,
-      "max_x": -147,
+      "min_x": -196,
+      "max_x": -184,
       "min_z": -54,
       "max_z": -45
      },
@@ -278,8 +278,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 13,
-      "min_x": -159,
-      "max_x": -147,
+      "min_x": -196,
+      "max_x": -184,
       "min_z": -45,
       "max_z": -33
      },
@@ -289,8 +289,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 13,
-      "min_x": -147,
-      "max_x": -140,
+      "min_x": -184,
+      "max_x": -177,
       "min_z": -45,
       "max_z": -33
      },
@@ -300,8 +300,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 15,
-      "min_x": -140,
-      "max_x": -133,
+      "min_x": -177,
+      "max_x": -170,
       "min_z": -45,
       "max_z": -33
      },
@@ -311,8 +311,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 15,
-      "min_x": -133,
-      "max_x": -125,
+      "min_x": -170,
+      "max_x": -162,
       "min_z": -45,
       "max_z": -33
      },
@@ -322,8 +322,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 17,
-      "min_x": -125,
-      "max_x": -118,
+      "min_x": -162,
+      "max_x": -155,
       "min_z": -45,
       "max_z": -33
      },
@@ -333,8 +333,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 17,
-      "min_x": -118,
-      "max_x": -111,
+      "min_x": -155,
+      "max_x": -148,
       "min_z": -45,
       "max_z": -33
      },
@@ -344,8 +344,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 9,
-      "min_x": -85,
-      "max_x": -73,
+      "min_x": -122,
+      "max_x": -110,
       "min_z": -73,
       "max_z": -64
      },
@@ -355,8 +355,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 10,
-      "min_x": -85,
-      "max_x": -73,
+      "min_x": -122,
+      "max_x": -110,
       "min_z": -64,
       "max_z": -54
      },
@@ -366,8 +366,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 11,
-      "min_x": -85,
-      "max_x": -73,
+      "min_x": -122,
+      "max_x": -110,
       "min_z": -54,
       "max_z": -45
      },
@@ -377,8 +377,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 12,
-      "min_x": -85,
-      "max_x": -73,
+      "min_x": -122,
+      "max_x": -110,
       "min_z": -45,
       "max_z": -33
      },
@@ -388,8 +388,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 13,
-      "min_x": -73,
-      "max_x": -66,
+      "min_x": -110,
+      "max_x": -103,
       "min_z": -45,
       "max_z": -33
      },
@@ -399,8 +399,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 14,
-      "min_x": -66,
-      "max_x": -59,
+      "min_x": -103,
+      "max_x": -96,
       "min_z": -45,
       "max_z": -33
      },
@@ -410,8 +410,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 15,
-      "min_x": -59,
-      "max_x": -51,
+      "min_x": -96,
+      "max_x": -88,
       "min_z": -45,
       "max_z": -33
      },
@@ -421,8 +421,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 16,
-      "min_x": -51,
-      "max_x": -44,
+      "min_x": -88,
+      "max_x": -81,
       "min_z": -45,
       "max_z": -33
      },
@@ -432,8 +432,8 @@
       "operation": "add",
       "floor": 0,
       "base_height": 17,
-      "min_x": -44,
-      "max_x": -37,
+      "min_x": -81,
+      "max_x": -74,
       "min_z": -45,
       "max_z": -33
      },
@@ -445,27 +445,27 @@
       "base_height": 9,
       "vertices": [
        [
-        -11,
+        -48,
         -73
        ],
        [
-        1,
+        -36,
         -73
        ],
        [
-        1,
+        -36,
         -45
        ],
        [
-        37,
+        0,
         -45
        ],
        [
-        37,
+        0,
         -33
        ],
        [
-        -11,
+        -48,
         -33
        ]
       ],
@@ -479,6 +479,141 @@
       ]
      },
      {
+      "id": "two-ramps-stem",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "vertices": [
+       [
+        26,
+        -73
+       ],
+       [
+        38,
+        -73
+       ],
+       [
+        38,
+        -33
+       ],
+       [
+        26,
+        -33
+       ]
+      ],
+      "anchor_heights": [
+       9,
+       9,
+       13,
+       13
+      ]
+     },
+     {
+      "id": "two-ramps-arm",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 13,
+      "vertices": [
+       [
+        38,
+        -45
+       ],
+       [
+        74,
+        -45
+       ],
+       [
+        74,
+        -33
+       ],
+       [
+        38,
+        -33
+       ]
+      ],
+      "anchor_heights": [
+       13,
+       17,
+       17,
+       13
+      ]
+     },
+     {
+      "id": "ramps-and-landing-stem",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "vertices": [
+       [
+        100,
+        -73
+       ],
+       [
+        112,
+        -73
+       ],
+       [
+        112,
+        -45
+       ],
+       [
+        100,
+        -45
+       ]
+      ],
+      "anchor_heights": [
+       9,
+       9,
+       13,
+       13
+      ]
+     },
+     {
+      "id": "ramps-and-landing-arm",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 13,
+      "vertices": [
+       [
+        112,
+        -45
+       ],
+       [
+        148,
+        -45
+       ],
+       [
+        148,
+        -33
+       ],
+       [
+        112,
+        -33
+       ]
+      ],
+      "anchor_heights": [
+       13,
+       17,
+       17,
+       13
+      ]
+     },
+     {
+      "id": "ramps-and-landing-landing",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 13,
+      "min_x": 100,
+      "max_x": 112,
+      "min_z": -45,
+      "max_z": -33
+     },
+     {
       "id": "plates-ground",
       "type": "polygon",
       "operation": "add",
@@ -486,28 +621,28 @@
       "base_height": 9,
       "vertices": [
        [
-        63,
-        -73
+        -196,
+        -7
        ],
        [
-        75,
-        -73
+        -184,
+        -7
        ],
        [
-        75,
-        -45
+        -184,
+        21
        ],
        [
-        111,
-        -45
+        -148,
+        21
        ],
        [
-        111,
-        -33
+        -148,
+        33
        ],
        [
-        63,
-        -33
+        -196,
+        33
        ]
       ]
      },
@@ -517,10 +652,10 @@
       "operation": "add",
       "floor": 0,
       "base_height": 9,
-      "min_x": 63,
-      "max_x": 75,
-      "min_z": -73,
-      "max_z": -64,
+      "min_x": -196,
+      "max_x": -184,
+      "min_z": -7,
+      "max_z": 2,
       "override": true
      },
      {
@@ -529,10 +664,10 @@
       "operation": "add",
       "floor": 0,
       "base_height": 10,
-      "min_x": 63,
-      "max_x": 75,
-      "min_z": -64,
-      "max_z": -54,
+      "min_x": -196,
+      "max_x": -184,
+      "min_z": 2,
+      "max_z": 12,
       "override": true
      },
      {
@@ -541,10 +676,10 @@
       "operation": "add",
       "floor": 0,
       "base_height": 11,
-      "min_x": 63,
-      "max_x": 75,
-      "min_z": -54,
-      "max_z": -45,
+      "min_x": -196,
+      "max_x": -184,
+      "min_z": 12,
+      "max_z": 21,
       "override": true
      },
      {
@@ -553,10 +688,10 @@
       "operation": "add",
       "floor": 0,
       "base_height": 12,
-      "min_x": 63,
-      "max_x": 75,
-      "min_z": -45,
-      "max_z": -33,
+      "min_x": -196,
+      "max_x": -184,
+      "min_z": 21,
+      "max_z": 33,
       "override": true
      },
      {
@@ -565,10 +700,10 @@
       "operation": "add",
       "floor": 0,
       "base_height": 13,
-      "min_x": 75,
-      "max_x": 82,
-      "min_z": -45,
-      "max_z": -33,
+      "min_x": -184,
+      "max_x": -177,
+      "min_z": 21,
+      "max_z": 33,
       "override": true
      },
      {
@@ -577,10 +712,10 @@
       "operation": "add",
       "floor": 0,
       "base_height": 14,
-      "min_x": 82,
-      "max_x": 89,
-      "min_z": -45,
-      "max_z": -33,
+      "min_x": -177,
+      "max_x": -170,
+      "min_z": 21,
+      "max_z": 33,
       "override": true
      },
      {
@@ -589,10 +724,10 @@
       "operation": "add",
       "floor": 0,
       "base_height": 15,
-      "min_x": 89,
-      "max_x": 97,
-      "min_z": -45,
-      "max_z": -33,
+      "min_x": -170,
+      "max_x": -162,
+      "min_z": 21,
+      "max_z": 33,
       "override": true
      },
      {
@@ -601,10 +736,10 @@
       "operation": "add",
       "floor": 0,
       "base_height": 16,
-      "min_x": 97,
-      "max_x": 104,
-      "min_z": -45,
-      "max_z": -33,
+      "min_x": -162,
+      "max_x": -155,
+      "min_z": 21,
+      "max_z": 33,
       "override": true
      },
      {
@@ -613,10 +748,10 @@
       "operation": "add",
       "floor": 0,
       "base_height": 17,
-      "min_x": 104,
-      "max_x": 111,
-      "min_z": -45,
-      "max_z": -33,
+      "min_x": -155,
+      "max_x": -148,
+      "min_z": 21,
+      "max_z": 33,
       "override": true
      },
      {
@@ -627,27 +762,27 @@
       "base_height": 9,
       "vertices": [
        [
-        -159,
+        -122,
         -7
        ],
        [
-        -147,
+        -110,
         -7
        ],
        [
-        -147,
+        -110,
         21
        ],
        [
-        -111,
+        -74,
         21
        ],
        [
-        -111,
+        -74,
         33
        ],
        [
-        -159,
+        -122,
         33
        ]
       ]
@@ -660,27 +795,27 @@
       "base_height": 9,
       "vertices": [
        [
-        -85,
+        -48,
         -7
        ],
        [
-        -73,
+        -36,
         -7
        ],
        [
-        -73,
+        -36,
         21
        ],
        [
-        -37,
+        0,
         21
        ],
        [
-        -37,
+        0,
         33
        ],
        [
-        -85,
+        -48,
         33
        ]
       ]
@@ -693,27 +828,27 @@
       "base_height": 9,
       "vertices": [
        [
-        -11,
+        26,
         -7
        ],
        [
-        1,
+        38,
         -7
        ],
        [
-        1,
+        38,
         21
        ],
        [
-        37,
+        74,
         21
        ],
        [
-        37,
+        74,
         33
        ],
        [
-        -11,
+        26,
         33
        ]
       ]
@@ -758,6 +893,25 @@
       "mirrors": false,
       "shapeIds": [
        "tilted"
+      ]
+     },
+     {
+      "id": "two-ramps",
+      "name": "two-ramps",
+      "mirrors": false,
+      "shapeIds": [
+       "two-ramps-stem",
+       "two-ramps-arm"
+      ]
+     },
+     {
+      "id": "ramps-and-landing",
+      "name": "ramps-and-landing",
+      "mirrors": false,
+      "shapeIds": [
+       "ramps-and-landing-stem",
+       "ramps-and-landing-arm",
+       "ramps-and-landing-landing"
       ]
      },
      {
@@ -840,8 +994,8 @@
         }
        ]
       },
-      "min_x": -11,
-      "max_x": -9,
+      "min_x": 26,
+      "max_x": 28,
       "min_z": 21,
       "max_z": 23
      },
@@ -873,8 +1027,8 @@
         }
        ]
       },
-      "min_x": 15,
-      "max_x": 17,
+      "min_x": 52,
+      "max_x": 54,
       "min_z": 21,
       "max_z": 23
      },
@@ -906,8 +1060,8 @@
         }
        ]
       },
-      "min_x": -11,
-      "max_x": -9,
+      "min_x": 26,
+      "max_x": 28,
       "min_z": 31,
       "max_z": 33
      },
@@ -939,8 +1093,8 @@
         }
        ]
       },
-      "min_x": 15,
-      "max_x": 17,
+      "min_x": 52,
+      "max_x": 54,
       "min_z": 31,
       "max_z": 33
      }
@@ -996,8 +1150,8 @@
         }
        ]
       },
-      "min_x": -11,
-      "max_x": 17,
+      "min_x": 26,
+      "max_x": 54,
       "min_z": 21,
       "max_z": 33
      }

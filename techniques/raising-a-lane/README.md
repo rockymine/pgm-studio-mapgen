@@ -6,7 +6,7 @@ under all of them; a made layer puts a storey over the lot. Every tier can raise
 is what the climb costs a player — and what the **corner** does to it. Open the card in the studio as
 `technique-raising-a-lane`, or run `build.py`.
 
-Seven panels, each the same L: a stem **12 wide** running 40 north, a **12 × 12** corner at its head, and an
+Nine panels, each the same L: a stem **12 wide** running 40 north, a **12 × 12** corner at its head, and an
 arm **36** east of it, with the foot at surface 9 and the arm's end eight blocks up at 17. The lane is an L
 because a composed one is — a wool approach turns, a hub arm turns into its spawn — and a bar hides
 everything a bend decides.
@@ -16,6 +16,8 @@ everything a bend decides.
 | `piece-steps` | plan | 5 heights, every seam a step of 2 | **4 × `scramble +2`**, 4 placed | level |
 | `piece-treads` | plan | 9 heights, one course a seam | walked, 0 placed | level |
 | `tilted` | layout | one polygon, an anchor at each of six vertices | walked, 0 placed | **leans 3 blocks in 12** |
+| `two-ramps` | layout | one tilted polygon a leg, the corner given to the stem's | walked, 0 placed | level |
+| `ramps-and-landing` | layout | the same two, the corner held level between them | walked, 0 placed | level |
 | `plates` | layout | 9 override plates over a lane left at its foot | walked, 0 placed | level |
 | `marks` | relief | two `area` marks, everything between unpinned | walked, 0 placed | level but at the corner |
 | `push` | relief | one push of 8 at the arm's end, `falloff` 22 | walked, 0 placed | level |
@@ -39,8 +41,24 @@ along the stem and east along the arm at once, so it splits the difference and t
 corner.
 
 **The studio says the other half out loud.** Storing that panel answers `SK26` at 200: *"'tilted' … climbs,
-and its high end arrives nowhere — from (31, −45) at course 17 the ground falls 17 within four cells"*. A
+and its high end arrives nowhere — from (−6, −45) at course 17 the ground falls 17 within four cells"*. A
 tilt has to land on something, and on a lane whose arm ends at the void it lands on nothing.
+
+**So an L takes one tilt a leg, and the join is flush by construction rather than by arithmetic.**
+`two-ramps` climbs the stem from 9 to a middle height of 13 and the arm from 13 to 17. The stem's ramp holds
+13 across its whole east edge and the arm's holds 13 down its whole west edge, because an anchor pair states
+one height along the edge it spans — so the two meet at one course with nothing to line up by hand. Across
+the stem it reads **12 12 12 12 12 12 12 12 12 12 12 12**: level, where one polygon leaned.
+
+**Whether the corner climbs or waits is the knob between the two ramp panels.** `two-ramps` gives the corner
+square to the stem's ramp, so the climb runs through the turn. `ramps-and-landing` holds it level at 13, and
+the path reads twenty blocks of flat where a player changes direction — the landing a turned flight is
+usually drawn with, and the place a defender stands.
+
+**A tilted surface is rounded per column, so a riser line can miss a cell.** Counted over every riser line
+of all three, the stem's rows and the arm's columns alike: `tilted` carries **6**, `ramps-and-landing` **2**
+and `two-ramps` **1**. A notch is a one-block hole in a line that is otherwise flat — a rounding artefact
+rather than a fault, and none of the three is free of it.
 
 **The relief grades the path and cuts the corner on the diagonal.** `marks` pins the first eight blocks of
 the stem and the last eight of the arm and leaves the stem, the corner and most of the arm to the relaxation,
@@ -73,8 +91,10 @@ was drawn at.
   placed block, and `EL1` names a land seam of 2 before anything is built.
 - **a bend costs a piece.** A step is a rectangle and the corner of an L belongs to neither leg, so it takes
   a step of its own — which is also the step a theme, a relief scope or a keep-out can be hung on.
-- **do not tilt an L.** One surface has one gradient; a lane that changes direction needs a statement per
-  leg, and a tilt across a corner leans the ground under the player.
+- **do not tilt an L with one polygon: use one a leg.** Give both legs the same height along the edge they
+  share and the join is flush with no arithmetic. One polygon over a bend leans the ground under the player.
+- **decide whether the corner climbs or waits.** Giving it to a leg's ramp keeps the climb continuous;
+  holding it level makes a landing, which is where a turn is actually taken.
 - **a tilt has to arrive somewhere.** `SK26` names a climb whose high end falls away, which is what a ramp
   drawn to the edge of a piece does.
 - **the relief grades between what it pins, not along what you drew.** Pin the corner too if the corner is
@@ -106,8 +126,10 @@ grade; a shorter one does not. What transfers is the rule, not the profile.
   a plain walk.
 - `columns.txt` — five columns: under a plate against under a tread, the deck's own column, and the two
   sides of the leaning stem.
-- `raising-a-lane.layout.json` — what `build.py` writes: 32 ground shapes in seven groups, and two made
+- `across.txt` also counts every riser row of the three tilted panels, which is where the rounding notch is.
+- `raising-a-lane.layout.json` — what `build.py` writes: 37 ground shapes in nine groups, and two made
   layers for the deck.
 
-Renders: `iso.png`, the seven Ls together; `piece-treads.png`, `tilted.png` and `marks.png`, the three
-panels whose corners differ, each close enough to see what the bend did.
+Renders: `iso.png`, the nine Ls together; `piece-treads.png`, `tilted.png`, `two-ramps.png`,
+`ramps-and-landing.png` and `marks.png`, the panels whose corners differ, each close enough to see what the
+bend did.

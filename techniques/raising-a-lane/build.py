@@ -18,18 +18,22 @@ from cards import SOLID, MOOR, grid  # noqa: E402
 FOOT, HEAD = 9, 17
 WIDE = 12                   # every leg of every L
 STEM, ARM = 40, 36          # the stem runs north, the arm east off its head
-COL_X, ROW_Z = grid(4, 2, panel_w=WIDE + ARM, panel_d=STEM, gap=26)
+COL_X, ROW_Z = grid(5, 2, panel_w=WIDE + ARM, panel_d=STEM, gap=26)
 
-PANELS = ["piece-steps", "piece-treads", "tilted", "plates", "marks", "push", "deck"]
+PANELS = ["piece-steps", "piece-treads", "tilted", "two-ramps", "ramps-and-landing",
+          "plates", "marks", "push", "deck"]
 
 # Where each step falls along the path: three on the stem, one on the corner, five on the arm. A plan piece
 # is a rectangle, so the corner is a piece of its own — that is what a bend costs at this tier.
 STEM_STEPS, ARM_STEPS = 3, 5
 
+# Where a two-ramp L changes hands: half the climb up the stem and half along the arm.
+MIDDLE = FOOT + 4
+
 
 def centre(name):
     index = PANELS.index(name)
-    return COL_X[index % 4], ROW_Z[index // 4]
+    return COL_X[index % 5], ROW_Z[index // 5]
 
 
 def limits(name):
@@ -105,6 +109,26 @@ def lane(name):
         shapes = [{"id": name, "type": "polygon", "operation": "add", "floor": 0, "base_height": FOOT,
                    "vertices": corners,
                    "anchor_heights": [FOOT, FOOT, HEAD - 3, HEAD, HEAD, FOOT + 3]}]
+
+    elif name in ("two-ramps", "ramps-and-landing"):
+        # A tilt is one surface, so an L takes one a leg. Both climb to the same MIDDLE height where they
+        # meet: the stem's ramp holds it across its whole east edge and the arm's holds it down its west
+        # one, so the two edges are flush by construction rather than by arithmetic.
+        #
+        # The knob between the two panels is the corner square. `two-ramps` gives it to the stem's ramp, so
+        # the climb never stops; `ramps-and-landing` keeps it level at the middle height, which is the
+        # landing a turned flight is usually drawn with.
+        stem_end = z1 if name == "two-ramps" else z1 - WIDE
+        shapes = [{"id": f"{name}-stem", "type": "polygon", "operation": "add", "floor": 0,
+                   "base_height": FOOT,
+                   "vertices": [[x0, z0], [x1, z0], [x1, round(stem_end)], [x0, round(stem_end)]],
+                   "anchor_heights": [FOOT, FOOT, MIDDLE, MIDDLE]},
+                  {"id": f"{name}-arm", "type": "polygon", "operation": "add", "floor": 0,
+                   "base_height": MIDDLE,
+                   "vertices": [[x1, z1 - WIDE], [x1 + ARM, z1 - WIDE], [x1 + ARM, z1], [x1, z1]],
+                   "anchor_heights": [MIDDLE, HEAD, HEAD, MIDDLE]}]
+        if name == "ramps-and-landing":
+            shapes.append(rect(f"{name}-landing", x0, x1, z1 - WIDE, z1, MIDDLE))
 
     elif name == "plates":
         # The lane left at its foot with nine override plates stepping over it, which is the same staircase

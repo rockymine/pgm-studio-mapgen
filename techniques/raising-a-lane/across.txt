@@ -17,6 +17,16 @@ across; what is not level here is the instrument leaning.
   stem, z0+26   11 11 11 11 11 11 12 12 13 13 13 14
   corner, z1-6  12 12 12 12 13 13 13 13 13 13 13 13 14 14 14 14 14 14
 
+### two-ramps — one tilted polygon a leg, the corner given to the stem's
+  stem, z0+10   10 10 10 10 10 10 10 10 10 10 10 10
+  stem, z0+26   12 12 12 12 12 12 12 12 12 12 12 12
+  corner, z1-6  12 12 12 12 12 12 12 12 12 12 12 12 13 13 13 13 14 14
+
+### ramps-and-landing — the same two, with the corner held level between them
+  stem, z0+10   11 11 10 11 11 11 11 11 11 11 11 11
+  stem, z0+26   13 13 13 13 13 13 13 13 13 13 13 13
+  corner, z1-6  13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 14 14
+
 ### plates — nine override plates over a lane left at its foot
   stem, z0+10   10 10 10 10 10 10 10 10 10 10 10 10
   stem, z0+26   11 11 11 11 11 11 11 11 11 11 11 11
@@ -36,6 +46,15 @@ across; what is not level here is the instrument leaning.
   stem, z0+10    9  9  9  9  9  9  9  9  9  9  9  9
   stem, z0+26    9  9  9  9  9  9  9  9  9  9  9  9
   corner, z1-6   9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9
+
+### every riser line of the three tilted panels, counted — the stem's rows and the arm's columns
+  tilted               stem  4 · arm  2   lines where one cell of twelve sits a course off the rest
+  two-ramps            stem  0 · arm  1   lines where one cell of twelve sits a course off the rest
+  ramps-and-landing    stem  1 · arm  1   lines where one cell of twelve sits a course off the rest
+
+A tilted surface is rounded per column, so a riser line that falls between two courses can miss a
+cell: a one-block notch in a line that is otherwise flat. It is a rounding artefact rather than a
+fault, and no instrument here is free of it — the fewest belong to the longest run.
 
 A rectangle is level across by construction, so every stepped panel reads one figure a row. The
 tilted polygon does not: a tilt is one plane and an L asks it to climb in two directions, so the

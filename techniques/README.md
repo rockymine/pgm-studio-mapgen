@@ -35,7 +35,7 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `sculpture-with-layers` | the ladder a made thing is built up: one shape, a polyline, layers, rings, and a solid compiled — and what each rung costs |
 | `trees-and-boulders` | what a prop is refused for, and what it is only complained about — a ladder per rule, and a hand-built tree's own foot and crown |
 | `taking-over-a-composed-board` | one pinned plan edited four ways — what a flat compile merges, what a height per piece buys, a lane replaced by a build zone, and why a hole is nobody's to fill |
-| `raising-a-lane` | seven ways up eight blocks on a lane that bends — the plan, the layout, the relief and a storey over it, and what the corner does to each |
+| `raising-a-lane` | nine ways up eight blocks on a lane that bends — the plan, the layout, the relief and a storey over it, why one tilted polygon cannot turn a corner and two can |
 
 ## Nothing is missing
 

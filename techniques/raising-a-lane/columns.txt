@@ -1,8 +1,8 @@
 GET …/column?at=x,z — what is under the standing top, which is where the tiers differ and neither
 profile can say.
 
-### plates at (69, -39) — under an override plate: the lane it was drawn on is gone, not buried
-=== column (69, -39) — 12 solid block(s), ground 0° from level ===
+### plates at (-190, 27) — under an override plate: the lane it was drawn on is gone, not buried
+=== column (-190, 27) — 12 solid block(s), ground 0° from level ===
   y 11     2:0   Grass Block
   y 10     3:0   Dirt
   y  9     3:0   Dirt
@@ -10,8 +10,8 @@ profile can say.
   y  7     1:0   Stone
   y  6     1:0   Stone
 
-### piece-treads at (-79, -39) — under a tread of ground at the same height, for the comparison
-=== column (-79, -39) — 12 solid block(s), ground 0° from level ===
+### piece-treads at (-116, -39) — under a tread of ground at the same height, for the comparison
+=== column (-116, -39) — 12 solid block(s), ground 0° from level ===
   y 11     2:0   Grass Block
   y 10     3:0   Dirt
   y  9     3:0   Dirt
@@ -19,17 +19,17 @@ profile can say.
   y  7     1:0   Stone
   y  6     1:0   Stone
 
-### deck at (-5, 27) — the deck's own column: the lane at its foot, the storey sixteen over it
-=== column (-5, 27) — 10 solid block(s), ground 0° from level ===
-  y 16     1:6   Polished Andesite
+### deck at (32, 27) — the deck's own column: the lane at its foot, the storey sixteen over it
+=== column (32, 27) — 10 solid block(s), ground 0° from level ===
+  y 16    98:0   Stone Bricks
   y  8     2:0   Grass Block
   y  7     3:0   Dirt
   y  6     3:0   Dirt
   y  5     1:0   Stone
   y  4     1:0   Stone
 
-### tilted at (-11, -47) — the low side of the leaning stem
-=== column (-11, -47) — 11 solid block(s), ground 0° from level ===
+### tilted at (-48, -47) — the low side of the leaning stem
+=== column (-48, -47) — 11 solid block(s), ground 0° from level ===
   y 10     2:0   Grass Block
   y  9     3:0   Dirt
   y  8     3:0   Dirt
@@ -37,8 +37,8 @@ profile can say.
   y  6     1:0   Stone
   y  5     1:0   Stone
 
-### tilted at (0, -47) — and its high side, twelve blocks away
-=== column (0, -47) — 14 solid block(s), ground 16° from level ===
+### tilted at (-37, -47) — and its high side, twelve blocks away
+=== column (-37, -47) — 14 solid block(s), ground 16° from level ===
   y 13     3:1   Coarse Dirt
   y 12     3:0   Dirt
   y 11     3:0   Dirt
