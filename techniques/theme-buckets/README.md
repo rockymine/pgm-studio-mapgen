@@ -135,10 +135,15 @@ and a `neutral` material for ground no team owns.
 landmass is meant to know whose it is, so the whole island takes one colour — which means a board whose
 land is a single island wears one team's colour end to end, and `PT5` is the complaint that says so.
 
-**Measured on a two-team probe rather than on this card's board, which has no teams.** One island 260
+**Measured on a two-team probe, because this card's board has no teams to tint for.** One island 260
 blocks wide with a spawn at each end exports `Pgm-Warnings: … PT5`, and the column reads **Red Stained
 Clay** at x −60 *and* at x +60. Cut the same ground into two islands joined by a build zone and the
 warning goes: x −60 reads Red Stained Clay and x +60 reads **Blue Stained Clay**.
+
+**`techniques/taking-over-a-composed-board` is the same instrument on a real map.** Every one of its five
+themes puts a tint in its wall, and a composed board is all rim, so the tint is what a player sees from the
+next piece across: red's half, blue's half, and a neutral holm between them that keeps the theme's own
+sandstone. Three answers from one material, which a board with no void in it cannot show.
 
 **So the fix is the land, not the theme.** Split what the tint is meant to distinguish — the decomposition
 is the same one `islands_json` uses — or drop `teamTint` from the buckets a shared island paints through
@@ -173,7 +178,8 @@ and say whose ground it is some other way.
   the border on `inward`, and a blob inside the `fill-rise` mesa.
 - `census.txt` — ten themes over 38,400 cells and four distinct surface blocks, which is the palette.
 - `GET /api/terrain/patterns` — where `teamTint`'s `reads: ["team"]` comes from, and the two fields it
-  takes. The tint measurement above is a two-team probe rather than a panel: this board has no teams.
+  takes. The tint measurement above is a two-team probe rather than a panel, because this board has no
+  teams; `techniques/taking-over-a-composed-board`'s `tint.txt` is the same read on a real map.
 - `incline.txt` — the histogram the slope bands were cut against.
 - `theme-buckets.layout.json` — the one document the board was stored from. It would not store until `PT1`
   and `PT4` were satisfied, which is two of this card's claims.

@@ -157,9 +157,17 @@ def depth(*bands):
 
 def ground(surface, wall, rim):
     """One theme per height: a surfacing block, the strata a cut shows, and the cap on the void edge. A
-    composed board's pieces stand over nothing, so every one of them is rim all the way round."""
+    composed board's pieces stand over nothing, so every one of them is rim all the way round.
+
+    The wall is a `teamTint` over the stated stone rather than the stone itself. A tint resolves per
+    canonical island and falls back to its `neutral` where nobody owns the ground, and on this board that
+    is three answers: red's half, blue's half, and the neutral holm between them. It is put in the WALL
+    because a composed board is all rim — every piece stands over void — so the wall is the course a
+    player sees from the next piece across."""
     return {"bedrock": {"relative": False, "value": 1},
-            "fill": SOLID(1), "wall": SOLID(wall), "wallEnabled": True, "wallOnTerrainFaces": True,
+            "fill": SOLID(1),
+            "wall": {"kind": "teamTint", "blockId": 159, "neutral": SOLID(wall)},
+            "wallEnabled": True, "wallOnTerrainFaces": True,
             "rim": {"enabled": True, "depth": 1, "material": SOLID(rim)}, "rimEdges": "void",
             "surface": {"enabled": True, "depth": 3, "material": depth((SOLID(surface), 1), (SOLID(3), 2))}}
 
@@ -202,14 +210,20 @@ def deck_layers():
                    "floor": floor, "base_height": thickness, "material": paint,
                    "min_x": a, "max_x": b, "min_z": c, "max_z": d}
                   for index, (a, b, c, d) in enumerate(rects)]
+        # The `addLayers` shape `tools/drive.py` takes: `shapes` and `groups` at the top level, which the
+        # driver wraps into the layer's own `layout` when it posts them.
         out.append({"id": f"deck-{name}", "name": f"deck {name}", "base_y": 0, "kind": "made",
-                    "part_of": "mid-deck",
-                    "layout": {"shapes": shapes,
-                               "groups": [{"id": f"deck-{name}", "name": "the mid's deck",
-                                           "mirrors": False,
-                                           "shapeIds": [shape["id"] for shape in shapes]}]}})
+                    "part_of": "mid-deck", "shapes": shapes,
+                    "groups": [{"id": f"deck-{name}", "name": "the mid's deck", "mirrors": False,
+                                "shapeIds": [shape["id"] for shape in shapes]}]})
     return out
 
+
+# The one coast this board chamfers, and where. `hub-t1-13` is the compiled polygon the hub's own bar
+# becomes; its vertex 2 is the corner the front line and the mid band both meet, and taking it off is what
+# stops a bridger arriving at a point. The ring is the compiler's, read off `POST /api/plan/compile`.
+CHAMFER_SHAPE, CHAMFER_AT = "hub-t1-13", 2
+CHAMFERED = chamfer([[-32, 44], [28, 44], [28, 56], [-32, 56]], (28, 56))
 
 FINISH = {
     # A theme is stated on a SHAPE, and a flat plan has one shape — so `themeByHeight` has nothing to bind
@@ -225,7 +239,13 @@ FINISH = {
     },
     "themeByHeight": {str(height): zone for height, zone in ZONES.items()},
     "mapTheme": "front",
-    "layers": deck_layers(),
+    # The coast's own corner, taken off. `chamfer` answers the ring; `editShapes` is how the ring is said
+    # to the studio — one point moved back along the first edge, one inserted on the second — which is the
+    # same two routes the canvas uses to drag a vertex and add one.
+    "editShapes": {CHAMFER_SHAPE: [
+        {"index": CHAMFER_AT, "x": CHAMFERED[CHAMFER_AT][0], "z": CHAMFERED[CHAMFER_AT][1]},
+        {"after": CHAMFER_AT, "x": CHAMFERED[CHAMFER_AT + 1][0], "z": CHAMFERED[CHAMFER_AT + 1][1]}]},
+    "addLayers": deck_layers(),
 }
 
 

@@ -11,9 +11,13 @@
     "data": 0
    },
    "wall": {
-    "kind": "solid",
-    "id": 24,
-    "data": 0
+    "kind": "teamTint",
+    "blockId": 159,
+    "neutral": {
+     "kind": "solid",
+     "id": 24,
+     "data": 0
+    }
    },
    "wallEnabled": true,
    "wallOnTerrainFaces": true,
@@ -68,9 +72,13 @@
     "data": 0
    },
    "wall": {
-    "kind": "solid",
-    "id": 1,
-    "data": 0
+    "kind": "teamTint",
+    "blockId": 159,
+    "neutral": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
    },
    "wallEnabled": true,
    "wallOnTerrainFaces": true,
@@ -125,9 +133,13 @@
     "data": 0
    },
    "wall": {
-    "kind": "solid",
-    "id": 98,
-    "data": 0
+    "kind": "teamTint",
+    "blockId": 159,
+    "neutral": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
    },
    "wallEnabled": true,
    "wallOnTerrainFaces": true,
@@ -182,9 +194,13 @@
     "data": 0
    },
    "wall": {
-    "kind": "solid",
-    "id": 98,
-    "data": 0
+    "kind": "teamTint",
+    "blockId": 159,
+    "neutral": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
    },
    "wallEnabled": true,
    "wallOnTerrainFaces": true,
@@ -239,9 +255,13 @@
     "data": 0
    },
    "wall": {
-    "kind": "solid",
-    "id": 4,
-    "data": 0
+    "kind": "teamTint",
+    "blockId": 159,
+    "neutral": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
    },
    "wallEnabled": true,
    "wallOnTerrainFaces": true,
@@ -298,94 +318,106 @@
   "16": "approach"
  },
  "mapTheme": "front",
- "layers": [
+ "editShapes": {
+  "hub-t1-13": [
+   {
+    "index": 2,
+    "x": 28,
+    "z": 50
+   },
+   {
+    "after": 2,
+    "x": 22,
+    "z": 56
+   }
+  ]
+ },
+ "addLayers": [
   {
    "id": "deck-legs-lower",
    "name": "deck legs-lower",
    "base_y": 0,
    "kind": "made",
    "part_of": "mid-deck",
-   "layout": {
-    "shapes": [
-     {
-      "id": "deck-legs-lower-0",
-      "type": "rectangle",
-      "operation": "add",
-      "floor": 8,
-      "base_height": 3,
-      "material": {
-       "kind": "solid",
-       "id": 4,
-       "data": 0
-      },
-      "min_x": -8,
-      "max_x": -6,
-      "min_z": -4,
-      "max_z": -2
+   "shapes": [
+    {
+     "id": "deck-legs-lower-0",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 8,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
      },
-     {
-      "id": "deck-legs-lower-1",
-      "type": "rectangle",
-      "operation": "add",
-      "floor": 8,
-      "base_height": 3,
-      "material": {
-       "kind": "solid",
-       "id": 4,
-       "data": 0
-      },
-      "min_x": 7,
-      "max_x": 9,
-      "min_z": -4,
-      "max_z": -2
+     "min_x": -8,
+     "max_x": -6,
+     "min_z": -4,
+     "max_z": -2
+    },
+    {
+     "id": "deck-legs-lower-1",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 8,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
      },
-     {
-      "id": "deck-legs-lower-2",
-      "type": "rectangle",
-      "operation": "add",
-      "floor": 8,
-      "base_height": 3,
-      "material": {
-       "kind": "solid",
-       "id": 4,
-       "data": 0
-      },
-      "min_x": -8,
-      "max_x": -6,
-      "min_z": 3,
-      "max_z": 5
+     "min_x": 7,
+     "max_x": 9,
+     "min_z": -4,
+     "max_z": -2
+    },
+    {
+     "id": "deck-legs-lower-2",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 8,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
      },
-     {
-      "id": "deck-legs-lower-3",
-      "type": "rectangle",
-      "operation": "add",
-      "floor": 8,
-      "base_height": 3,
-      "material": {
-       "kind": "solid",
-       "id": 4,
-       "data": 0
-      },
-      "min_x": 7,
-      "max_x": 9,
-      "min_z": 3,
-      "max_z": 5
-     }
-    ],
-    "groups": [
-     {
-      "id": "deck-legs-lower",
-      "name": "the mid's deck",
-      "mirrors": false,
-      "shapeIds": [
-       "deck-legs-lower-0",
-       "deck-legs-lower-1",
-       "deck-legs-lower-2",
-       "deck-legs-lower-3"
-      ]
-     }
-    ]
-   }
+     "min_x": -8,
+     "max_x": -6,
+     "min_z": 3,
+     "max_z": 5
+    },
+    {
+     "id": "deck-legs-lower-3",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 8,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     "min_x": 7,
+     "max_x": 9,
+     "min_z": 3,
+     "max_z": 5
+    }
+   ],
+   "groups": [
+    {
+     "id": "deck-legs-lower",
+     "name": "the mid's deck",
+     "mirrors": false,
+     "shapeIds": [
+      "deck-legs-lower-0",
+      "deck-legs-lower-1",
+      "deck-legs-lower-2",
+      "deck-legs-lower-3"
+     ]
+    }
+   ]
   },
   {
    "id": "deck-floor-lower",
@@ -393,53 +425,51 @@
    "base_y": 0,
    "kind": "made",
    "part_of": "mid-deck",
-   "layout": {
-    "shapes": [
-     {
-      "id": "deck-floor-lower-0",
-      "type": "rectangle",
-      "operation": "add",
-      "floor": 11,
-      "base_height": 1,
-      "material": {
-       "kind": "cell",
-       "cellSize": 4,
-       "rise": 2,
-       "palette": [
-        {
-         "kind": "solid",
-         "id": 98,
-         "data": 0
-        },
-        {
-         "kind": "solid",
-         "id": 98,
-         "data": 1
-        },
-        {
-         "kind": "solid",
-         "id": 1,
-         "data": 6
-        }
-       ]
-      },
-      "min_x": -8,
-      "max_x": 9,
-      "min_z": -4,
-      "max_z": 5
-     }
-    ],
-    "groups": [
-     {
-      "id": "deck-floor-lower",
-      "name": "the mid's deck",
-      "mirrors": false,
-      "shapeIds": [
-       "deck-floor-lower-0"
+   "shapes": [
+    {
+     "id": "deck-floor-lower-0",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 11,
+     "base_height": 1,
+     "material": {
+      "kind": "cell",
+      "cellSize": 4,
+      "rise": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 1
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       }
       ]
-     }
-    ]
-   }
+     },
+     "min_x": -8,
+     "max_x": 9,
+     "min_z": -4,
+     "max_z": 5
+    }
+   ],
+   "groups": [
+    {
+     "id": "deck-floor-lower",
+     "name": "the mid's deck",
+     "mirrors": false,
+     "shapeIds": [
+      "deck-floor-lower-0"
+     ]
+    }
+   ]
   },
   {
    "id": "deck-legs-upper",
@@ -447,87 +477,85 @@
    "base_y": 0,
    "kind": "made",
    "part_of": "mid-deck",
-   "layout": {
-    "shapes": [
-     {
-      "id": "deck-legs-upper-0",
-      "type": "rectangle",
-      "operation": "add",
-      "floor": 12,
-      "base_height": 4,
-      "material": {
-       "kind": "solid",
-       "id": 4,
-       "data": 0
-      },
-      "min_x": -8,
-      "max_x": -6,
-      "min_z": -4,
-      "max_z": -2
+   "shapes": [
+    {
+     "id": "deck-legs-upper-0",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 12,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
      },
-     {
-      "id": "deck-legs-upper-1",
-      "type": "rectangle",
-      "operation": "add",
-      "floor": 12,
-      "base_height": 4,
-      "material": {
-       "kind": "solid",
-       "id": 4,
-       "data": 0
-      },
-      "min_x": 7,
-      "max_x": 9,
-      "min_z": -4,
-      "max_z": -2
+     "min_x": -8,
+     "max_x": -6,
+     "min_z": -4,
+     "max_z": -2
+    },
+    {
+     "id": "deck-legs-upper-1",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 12,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
      },
-     {
-      "id": "deck-legs-upper-2",
-      "type": "rectangle",
-      "operation": "add",
-      "floor": 12,
-      "base_height": 4,
-      "material": {
-       "kind": "solid",
-       "id": 4,
-       "data": 0
-      },
-      "min_x": -8,
-      "max_x": -6,
-      "min_z": 3,
-      "max_z": 5
+     "min_x": 7,
+     "max_x": 9,
+     "min_z": -4,
+     "max_z": -2
+    },
+    {
+     "id": "deck-legs-upper-2",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 12,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
      },
-     {
-      "id": "deck-legs-upper-3",
-      "type": "rectangle",
-      "operation": "add",
-      "floor": 12,
-      "base_height": 4,
-      "material": {
-       "kind": "solid",
-       "id": 4,
-       "data": 0
-      },
-      "min_x": 7,
-      "max_x": 9,
-      "min_z": 3,
-      "max_z": 5
-     }
-    ],
-    "groups": [
-     {
-      "id": "deck-legs-upper",
-      "name": "the mid's deck",
-      "mirrors": false,
-      "shapeIds": [
-       "deck-legs-upper-0",
-       "deck-legs-upper-1",
-       "deck-legs-upper-2",
-       "deck-legs-upper-3"
-      ]
-     }
-    ]
-   }
+     "min_x": -8,
+     "max_x": -6,
+     "min_z": 3,
+     "max_z": 5
+    },
+    {
+     "id": "deck-legs-upper-3",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 12,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     "min_x": 7,
+     "max_x": 9,
+     "min_z": 3,
+     "max_z": 5
+    }
+   ],
+   "groups": [
+    {
+     "id": "deck-legs-upper",
+     "name": "the mid's deck",
+     "mirrors": false,
+     "shapeIds": [
+      "deck-legs-upper-0",
+      "deck-legs-upper-1",
+      "deck-legs-upper-2",
+      "deck-legs-upper-3"
+     ]
+    }
+   ]
   },
   {
    "id": "deck-floor-upper",
@@ -535,53 +563,51 @@
    "base_y": 0,
    "kind": "made",
    "part_of": "mid-deck",
-   "layout": {
-    "shapes": [
-     {
-      "id": "deck-floor-upper-0",
-      "type": "rectangle",
-      "operation": "add",
-      "floor": 16,
-      "base_height": 1,
-      "material": {
-       "kind": "cell",
-       "cellSize": 4,
-       "rise": 2,
-       "palette": [
-        {
-         "kind": "solid",
-         "id": 98,
-         "data": 0
-        },
-        {
-         "kind": "solid",
-         "id": 98,
-         "data": 1
-        },
-        {
-         "kind": "solid",
-         "id": 1,
-         "data": 6
-        }
-       ]
-      },
-      "min_x": -8,
-      "max_x": 9,
-      "min_z": -4,
-      "max_z": 5
-     }
-    ],
-    "groups": [
-     {
-      "id": "deck-floor-upper",
-      "name": "the mid's deck",
-      "mirrors": false,
-      "shapeIds": [
-       "deck-floor-upper-0"
+   "shapes": [
+    {
+     "id": "deck-floor-upper-0",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 16,
+     "base_height": 1,
+     "material": {
+      "kind": "cell",
+      "cellSize": 4,
+      "rise": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 1
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       }
       ]
-     }
-    ]
-   }
+     },
+     "min_x": -8,
+     "max_x": 9,
+     "min_z": -4,
+     "max_z": 5
+    }
+   ],
+   "groups": [
+    {
+     "id": "deck-floor-upper",
+     "name": "the mid's deck",
+     "mirrors": false,
+     "shapeIds": [
+      "deck-floor-upper-0"
+     ]
+    }
+   ]
   }
  ],
  "dressing": {

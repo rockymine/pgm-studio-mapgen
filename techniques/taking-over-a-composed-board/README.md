@@ -150,6 +150,20 @@ middle is one block off-centre is one team's middle.
 them counted. `rimEdges: "void"` caps every piece all the way round, because a composed piece stands over
 nothing on every side.
 
+**And every one of those themes puts a `teamTint` in its wall bucket, which is the one paint on this board
+that reads the map rather than the ground.** A composed board is all rim — every piece stands over void —
+so the wall is not a hidden stratum here, it is the course a player sees from the next piece across. The
+tint resolves per canonical island and falls back to the theme's own `neutral` where nobody owns the land.
+
+**So one material answers three ways, and `tint.txt` reads all three.** Red's half comes out red stained
+clay (103 columns in the sweep), blue's blue (92), and the neutral holm keeps the sandstone its theme
+states (77 ground columns, none tinted). `section-tint.png` is the cut where the three sit side by side.
+
+**A board with no void in it never gets the third answer.** `PT5` fires where a tint has one island to
+resolve over and the whole map wears one team's colour; this board has three islands because its halves are
+joined by build zones rather than by ground. `techniques/theme-buckets` is where the bucket and the rule
+are worked, on a board that has no teams to tint for.
+
 ## Where a prop may stand is computed; how many stand there is not
 
 **On a board of corridors there is no landscape to judge by eye, so the legal places are searched for.**
@@ -282,11 +296,18 @@ is a standing place for the walk and a void column for every other read, which i
 - `walk.txt` — nine walks: the two staircases, both build zones crossed, the approach through the wall, the
   deck's two floors, and the canopy hanging past the back bar's rim.
 - `census.txt` — five themes over 4,956 cells, and the borders between them.
+- `tint.txt` — the wall bucket over the whole board as a character map, the three counts, and one rim
+  column of each owner, each taken from the sweep rather than chosen.
+- `4-taken-over.finish.json` carries the chamfer as an `editShapes` pair — one vertex moved back along
+  the first edge and one inserted on the second — so `tools/drive.py <spec> --slug …` reproduces this board
+  from the two committed documents and nothing else. The census answering 4,956 cells again is the check.
 - `pinned.plan.json` — the composer's own answer, committed. `1-as-pinned.plan.json`,
   `3-a-surface-per-piece.plan.json`, `4-taken-over.plan.json` and `4-taken-over.finish.json` are what
   `build.py` writes from it.
 
 Renders: `1-as-pinned.png`, `2-void-redrawn.png`, `3-a-surface-per-piece.png`, `4-taken-over.png` and
-`four-ways.png`, the four together; `section-risers.png` — the board cut at x−6..−2, where the mid, the front
+`four-ways.png`, the four together; `section-tint.png` — the same cut carried the length of the board,
+where blue's tinted pieces, the sandstone holm and red's sit in one picture;
+`section-risers.png` — the board cut at x−6..−2, where the mid, the front
 bar, the treads and the back bar each stand at their own height; `the-staircase.png`, the three treads cut
 through off the road, 13 down to 9; and `the-mid-deck.png`, the holm's double deck on its four legs.
