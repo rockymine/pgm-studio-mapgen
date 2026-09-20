@@ -1322,6 +1322,47 @@ anywhere in that column, while inside the gallery — away from the walls — th
 with its storey intact. The fault is local, the world is built, the column is valid, and the gate at the door
 is the only thing that reports it.
 
+### `kind: "made"` and `seat: "ground"` are what a layer says when it is a thing rather than terrain
+
+A layer with no `kind` is ground, and every stacking rule is written for ground: `SK10` reads two layers
+whose spans meet as a lost gap and `SK11` reads an overhang as standable ground nothing reaches. Neither is
+true of a sculpture, and `kind: "made"` is what takes the layer out of both walks. Measured on one board of
+twenty made things, all fourteen `SK11` findings were ground layers — a torus on edge, a hollow sphere and a
+wheel raised none between them.
+
+**`seat: "ground"` is what puts one on the ground, and it reads the ground itself.** A shape on an ordinary
+layer states an absolute floor, so on a grade it is buried at one end or hanging at the other whatever
+number is chosen. A seated layer is dropped until its lowest floor is one above the lowest ground under its
+footprint, and the terrain under that footprint is then **cut to that course**, so the thing beds in rather
+than perching on the uphill side.
+
+Measured on one grade: a crate stated at `base_y` 15 — read off `POST …/sketch/columns` as the highest ground
+under it — came out brick y15–19 over a gap at y14 and grass at y13. The same crate ten blocks away stating
+no height at all came out brick y12–16 on grass at y11, where the grade beside it tops at y13.
+
+**`part_of` is what keeps a thing in one piece.** A sculpture is one thing to an author and many layers to
+the rasterizer, and layers naming the same `part_of` are seated together over the union of what they cover —
+without it a two-layer wheel would be seated twice, by different amounts, and come apart at its run boundary.
+
+### A thing that cannot be drawn is written as a solid and compiled, and the layer count is then measured
+
+`tools/sculpt/solid.py` states a model — boxes, ellipsoids, frusta, tori, revolves, swept tubes, lifted
+sheets, and union, intersect, difference and shell over them — and `tools/sculpt/layers.py` compiles
+`{(x, y, z): material}` into layers by run index. Nothing states a layer count: a column's blocks split into
+maximal runs of one material, the n-th run of every column goes on layer n, and the stack is as deep as the
+busiest column is complicated.
+
+**On a shape a hand would have drawn it draws exactly that**, which is why it is the top of one ladder rather
+than a second system: a 32 × 2 × 7 wall written as a `box` compiled to **one layer and one rectangle**, the
+same rectangle the hand states. A torus on edge came out two layers and 116 shapes from 1,472 blocks; a
+hollow sphere two thick, two layers and 190 shapes — two runs is what a hollow ball has, whatever its radius.
+
+**What it costs is editability and `SK23`.** A compiled document is rectangles that happen to look like a
+wheel, where a drawn one is a circle with a radius an author can still drag; and every compiled shape is a
+thin strip, so 217 of one board's 240 `SK23` shapes were the compiled four of twenty panels. A compiled
+thing wants a solid theme or a material, never five buckets. `techniques/sculpture-with-layers` is the
+worked ladder, one shape to a compiled solid.
+
 ### What a made thing costs in layers is its columns, not its palette
 
 A layer holds one span per column and a run of one block is what a span is, so the question a layer count

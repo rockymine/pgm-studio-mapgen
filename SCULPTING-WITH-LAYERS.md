@@ -165,34 +165,45 @@ standing above the terrain, and a prop that starts at y=0 will have a bedrock so
 
 ## 5. Where it stops
 
-Four limits, each measured rather than reasoned:
+**Three of the four limits this section recorded are answered, and the two words that answer them are on the
+layer.** `kind: "made"` says a layer is a thing standing on the ground rather than being it, and `seat:
+"ground"` says where it stands. The measurements below are `techniques/sculpture-with-layers`, which carries
+them as panels.
 
-**A made thing cannot be seated on a relief.** Its shapes state an absolute `floor`; a relief moves the ground
-under them. On rolling terrain every made thing either floats or is buried, and `SK10` names all of them — the
-first `opus5-automaton` build raised nine of these, up to seven courses deep.
+**A made thing seated on a relief is `seat: "ground"`, and the studio does the reading.** The whole thing is
+dropped until its lowest floor is one above the lowest ground under its footprint, and the terrain under it
+is cut to that course, so it beds into a grade instead of perching on the uphill end. Layers naming one
+`part_of` are seated together, which is what keeps a model whose runs are split across layers in one piece.
 
-`height_mode: raise` is the studio's answer for a shape *inside* a group's relief, and it does not reach a shape
-on another layer. The board here is flat because of it.
+**Measured on one grade:** a crate stated at `base_y` 15, from a `sketch/columns` read of the highest ground
+under it, comes out brick y15–19 over a gap at y14 and grass at y13 — hovering. The same crate ten blocks
+away with no height stated at all comes out brick y12–16 on grass at y11, where the grade beside it tops at
+y13.
 
-**The fix is two-pass and cheap**: post the ground-only layout, read `POST …/sketch/columns` for the solved top
-at the prop's centre, and set the prop's floor from it. Nothing in the API is missing; nothing calls it in that
-order yet.
+**`SK10` and `SK11` come off a made layer, and that is measured too.** A board of twenty sculptures raises
+fourteen `SK11` findings and every one of them is a ground layer: a torus on edge, a hollow sphere and a
+compiled wheel raise none between them, though all three are pure overhang.
 
-**`SK10` misreads a prop as a storey.** A solid sculpture standing on a hill *should* sink into the hill —
-there is no gap to lose. The rule's sentence ("the gap between the two storeys is not in the world there") is
-about a gallery under a deck and is simply not true of a statue. It fired on nine made things that were correct.
-
-**`SK11` fires on every made thing with a roof or an overhang.** The gallery raises twenty-two of them: a dome on
-columns, a raised arm, an antenna ball. All are true statements ("standable ground with sky over it and no
-route onto it") and none is a fault. A made-thing layer would want to be out of that walk.
+**What is left is the editability the drawn half has and the compiled half does not.** A compiled wheel is
+116 rectangles nobody can adjust as a wheel, and a board's layer list stops being readable well before the
+count a big model needs — the limit below is the one still standing.
 
 **A board's layer list stops being readable.** `opus5-automaton` carries thirty-one layers, twenty-four of
 which are `colossus-L0 … sentinel-L7`. `GET …/render/topdown?layer=` takes a sketch layer id, and the refusal
-message for a bad one now prints all thirty-one. The layer strip in the Draw phase would be unusable.
+message for a bad one now prints all thirty-one. `part_of` is what a strip would group them by; the strip
+itself is still one row a layer.
 
 ## 6. What could become a tool
 
-Three things, in the order they pay off.
+**Two of the four below have shipped and are §5's subject: `kind: "made"` and `seat: "ground"`.** They are
+left here with what they were asked for, because the argument for them is the measurement that produced
+them, and the entries are marked where the studio now answers.
+
+**A prop library is not one of the remaining two, and the author's ruling is that it should not be.** A
+catalogue of parametric forms is what this exercise produced and what agents then reached for, and a dozen
+building-shaped emitters is a vocabulary nobody chose — the thing worth carrying across is the ladder from
+one shape to a compiled solid, which is `techniques/sculpture-with-layers`. What follows is kept as the
+record of what was measured, not as a plan.
 
 **A prop library of parametric forms, emitting sketch shapes.** `tools/sculpt/props.py` is the prototype:
 `ring_wall`, `ellipse_wall`, `dome`, `spire`, `ziggurat`, `arch`, `colonnade`, `tapered_tower`, `bowl`. Each
@@ -229,13 +240,13 @@ merlon from the wall's own floor to the merlon's top — then it is simply the t
 and the wall beneath survives. It is the one place in this whole exercise where the rule that makes sculpture
 possible also bites.
 
-**Seat a prop against the solved ground.** Either the two-pass read above, or a `height_mode` for a whole
-layer: a layer that says `"seat": "raise"` takes each shape's floor from the top of whatever ground stands
-under it. That one field removes the whole `SK10` class and is what lets a prop be dragged around a hillside.
+**Seat a prop against the solved ground. — shipped, as `seat: "ground"`.** It asked for a field on the layer
+taking each shape's floor from the ground under it; what landed drops the thing as a unit to the lowest
+ground under its footprint and cuts the terrain to receive it, which removes the whole `SK10` class.
 
-**Say that a layer is a made thing.** One flag on the layer — `"kind": "made"` — would take it out of `SK10`'s pair
-walk and `SK11`'s reachability walk, and would let the storey strip and the topdown render group thirty-one
-layers into four props. None of the three needs the rasterizer to change.
+**Say that a layer is a made thing. — shipped, as `kind: "made"`, with `part_of` beside it.** It takes the
+layer out of `SK10`'s pair walk and `SK11`'s reachability walk, and `part_of` names the thing a stack of
+layers is one slice of, which is what seats them together and what a strip would group by.
 
 And one more, which is the largest of the four and the cheapest:
 

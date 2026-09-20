@@ -32,7 +32,7 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `marks-and-seams` | what two marks do to the ground they share, and the two faults the relief read cannot see |
 | `objectives-and-clearances` | where a goal may stand: what `float` builds, where `leak` lives, and the two gates heard only at the export |
 | `a-house-and-its-wings` | how two rectangles of one plan meet — marching against projecting, two roof forms on one building, and the five `HJ` refusals |
-| `sculpture-with-layers` | a built thing out of nothing but shapes — nesting against rings, what a span and a colour each cost a layer, and a material against a theme |
+| `sculpture-with-layers` | the ladder a made thing is built up: one shape, a polyline, layers, rings, and a solid compiled — and what each rung costs |
 
 ## The two that are missing
 

@@ -68,9 +68,10 @@ of rectangles. [SCULPTING-WITH-LAYERS.md](SCULPTING-WITH-LAYERS.md) is the accou
 how far it goes, the four limits, and what could become a tool. `sculpture/` holds the two galleries it was
 written from and `maps/opus5-automaton` is a played board furnished with them.
 
-`techniques/sculpture-with-layers` is the worked card beside it: sixteen made things on one board, none of
-them a preset, with the columns that prove each claim. It is where the account's rules are measured rather
-than recounted — nesting against rings, what a second span costs, and what a colour costs.
+`techniques/sculpture-with-layers` is the worked card beside it, and it is the **ladder** rather than a
+catalogue: one shape, a polyline, four layers, rings for a field that will not nest, and a solid put through
+`tools/sculpt/layers.py` — twenty made things on one board with the columns that measure each rung. The
+forms in `sculpture/forms` are what one early exercise reached for and are not a vocabulary to stamp from.
 
 ## Authoring a map here
 

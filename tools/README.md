@@ -318,14 +318,27 @@ serves any more and is gone.
 
 `sculpt/` writes sketch documents that hold things which are not terrain, and `render/` takes their picture.
 The account of what they are for and what they found is
-[SCULPTING-WITH-LAYERS.md](../SCULPTING-WITH-LAYERS.md); this is the file map.
+[SCULPTING-WITH-LAYERS.md](../SCULPTING-WITH-LAYERS.md), and the worked ladder — one shape, a polyline, four
+layers, rings, and a solid compiled — is `techniques/sculpture-with-layers`.
+
+**Two of these files are the method and the rest are boards that were built once.** `solid.py` and
+`layers.py` are what any made thing goes through, whatever it is: a vocabulary of solids, and the compiler
+that turns a model into layers by run index. They are reused by `specs/*/build.py` and by the technique card,
+and they are the half worth reaching for.
+
+**`props.py` is not a primitive library and nothing should treat it as one.** It is one early answer to
+"what can the sketch's own shapes say", and what it says is a dozen building-shaped forms — a roundhouse, a
+gatehouse, a colonnade — which are the shapes that exercise happened to reach for rather than a vocabulary
+anything should be built out of. Read it for the moves inside it (a merlon stated from the wall's own floor,
+an annulus as one polygon) and write the thing wanted; do not stamp a drum tower because there is a
+`drum_tower`.
 
 | File | Is |
 |---|---|
-| `sculpt/props.py` | parametric structures emitted as **sketch shapes** — `ring_wall`, `ellipse_wall`, `dome`, `spire`, `ziggurat`, `arch`, `colonnade`, `tapered_tower`, `bowl`, `crenellated_wall`, `drum_tower`, and `gatehouse` — a composite of five of them, which is the shape a stamper in the tool would have. Eight of the nine are one layer, and what lands in the document is circles and polygons an author can still drag |
+| `sculpt/props.py` | one board's worth of parametric building forms — `ring_wall`, `dome`, `spire`, `ziggurat`, `arch`, `colonnade`, `tapered_tower`, `bowl`, `crenellated_wall`, `drum_tower`, `gatehouse` — emitted as sketch shapes so they stay draggable. **Examples, not primitives**: they are what `sculpture/forms` is made of and they are building-shaped because that board was |
 | `sculpt/solid.py` | the modelling kit: a solid is a membership test plus its own box. Boxes, ellipsoids, cylinders (upright and laid down), frusta, tori, capsules, half-spaces; plans and side profiles extruded along any axis; revolves about the vertical (`revolve`) **and about the north-south axis** (`revolve_z`, which is what a fuselage or a nacelle is); `tube`, a radius swept along a 3-D polyline, and `sheet`, a plan outline lifted onto a surface — the two a creature needs and nothing else does; union / intersect / difference / shell; translate, mirror, rotate |
-| `sculpt/layers.py` | the compiler — a `{(x, y, z): material}` model into layers, by **run index**: per column, maximal runs of one material, and the *n*-th run of every column onto layer *n*. Nothing contests anything, so `SK9` and `SK10` stay silent |
-| `sculpt/models.py` | the nine sculptures — robot, droid, Rubik's cube, hooded statue, coupe, walker, dragon, starship, ring station |
+| `sculpt/layers.py` | **the converter, and the general answer**: a `{(x, y, z): material}` model into layers by **run index** — per column, maximal runs of one material, and the *n*-th run of every column onto layer *n*. The layer count is therefore measured rather than chosen, nothing contests anything, so `SK9` and `SK10` stay silent, and every layer it writes states `kind: "made"` with a `part_of`, optionally `seat: "ground"` |
+| `sculpt/models.py` | the nine sculptures `sculpture/models` is made of — robot, droid, Rubik's cube, hooded statue, coupe, walker, dragon, starship, ring station. One board, written once; the reusable part of it is `solid.py` underneath |
 | `sculpt/board.py` | the themes (`solid`, `shaded`), the document, the minimal intent an export needs, and the calls that store a board, read its columns back and unzip its world |
 | `sculpt/gallery_forms.py` · `gallery_sculpture.py` | the two boards in `sculpture/`, each printing what it cost in layers and shapes and exporting a world into the directory named as its second argument |
 | `sculpt/make_board.py` | writes `specs/archive/opus5-automaton`'s plan and finish, props and all, for `drive.py` to build |

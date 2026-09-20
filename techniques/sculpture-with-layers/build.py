@@ -1,4 +1,4 @@
-"""Writes sculpture-with-layers.layout.json — twelve pads and twelve made things, none of them a preset.
+"""Writes sculpture-with-layers.layout.json — twenty pads and twenty made things, none of them a preset.
 
 A layer is not a slab. It is one arbitrary height field — a `(floor, top)` pair per column — and the taller
 add wins a column and brings its own floor with it. That one rule is the whole of what makes a wall, a
@@ -11,14 +11,25 @@ thing there is no primitive for, solid out of discs and hollow out of rings, and
 made thing: a terrain material against a theme. Row 4 is what the rings are actually for — a field that
 falls, a closed form of revolution, the reason a painted thing costs layers, and the one trap: a made thing
 states an absolute floor and the ground does not know about it.
+
+Row 5 is the rung above all of them. Where a thing stops being describable as shapes, it is written as a
+SOLID and compiled — `tools/sculpt/solid.py` states it, `tools/sculpt/layers.py` splits every column into
+maximal runs and puts the n-th run of every column on layer n. The layer count is then measured rather than
+guessed, and on a shape a hand would have drawn the compiler draws exactly that.
 """
 import json, math, os, sys
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.dirname(HERE))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(HERE)), "tools", "sculpt"))
 from cards import SOLID, depth_stack, grid, moor
+# The converter is the repository's, not a copy: a solid vocabulary and the run-index compiler behind
+# `sculpture/models`. Row 5 is what it is for.
+import layers as compiler
+import solid
 
 PANEL_W, PANEL_D = 64, 56
-COL_X, ROW_Z = grid(4, 4, PANEL_W, PANEL_D)
+COL_X, ROW_Z = grid(4, 5, PANEL_W, PANEL_D)
 GROUND_TOP = 20
 PLAIN = 8                 # the solved plain: its top block is y7, so a made layer rests at base_y 8
 
@@ -101,6 +112,28 @@ def ramp(cx, z0):
                 "ring": [[cx - half, z_from], [cx + half, z_from],
                          [cx + half, z_to], [cx - half, z_to]]}
     return [band("fell", 20, z0 + 4, z0 + 14), band("dale", 8, z0 + PANEL_D - 14, z0 + PANEL_D - 4)]
+
+
+def compiled(name, cx, cz, seat=None):
+    """A panel written as a SOLID and put through the run-index compiler, which answers with layers.
+
+    A column's blocks split into maximal runs of one material and the n-th run of every column goes on
+    layer n, so the stack is as deep as the busiest column is complicated and never deeper. Nothing here
+    states a layer count; every one of them is read off the model."""
+    if name == "compiled-wall":                     # the same wall `one-shape` draws, written as a box
+        body = solid.box(cx - 16, cx + 15, PLAIN, PLAIN + 6, cz - 1, cz)
+    elif name == "a-wheel":                         # a torus stood on edge: two runs in every column
+        body = solid.torus(cx, PLAIN + 11, cz, major=8, minor=3, axis="z")
+    elif name == "a-shell":                         # a hollow sphere: two runs, whatever the radius
+        body = solid.shell(solid.sphere(cx, PLAIN + 10, cz, 9), thickness=2)
+    elif name == "seated":                          # the wheel again, but told to settle onto the ground
+        body = solid.torus(cx, PLAIN + 11, cz, major=8, minor=3, axis="z")
+    else:
+        raise KeyError(name)
+    model = {cell: "masonry" for cell in body.cells()}
+    built = compiler.compile_layers(model, prefix=f"{name}-", layer_prefix=f"{name}-run",
+                                    group_name=name, part_of=name, seat=seat)
+    return model, built
 
 
 def sculpture(name, cx, cz):
@@ -192,13 +225,16 @@ def sculpture(name, cx, cz):
                   for k in range(3)]
         return [(PLAIN, west + beside + banded[0][1]), banded[1], banded[2]]
     if name == "on-a-slope":
-        # The one trap. A made thing states an absolute floor; the ground under it is whatever the relief
-        # solved. `seated` stands at 15 because `POST /sketch/columns` reads y14 as the highest ground
-        # under its footprint — and the ground falls to y12 across the same seven cells, which is why a
-        # crate on a grade is flush at one end whatever number is stated.
-        return [(PLAIN, [rect("buried", cx - 16, cz - 14, 3, 3, height=5)]),
-                (15, [rect("seated", cx, cz, 3, 3, height=5)]),
-                (20, [rect("floating", cx + 16, cz + 14, 3, 3, height=5)])]
+        # The one trap, and its answer, on one grade. `by-hand` states 15 because `POST /sketch/columns`
+        # reads y14 as the highest ground under its footprint; `told-to-settle` beside it, on the same
+        # ground, states no height at all and is put there by the studio.
+        return [(PLAIN, [rect("buried", cx - 14, cz - 16, 3, 3, height=5)]),
+                (15, [rect("by-hand", cx - 5, cz, 3, 3, height=5)]),
+                (20, [rect("floating", cx + 14, cz + 16, 3, 3, height=5)]),
+                # The fourth states the two words instead of a number. `kind` keeps the stacking rules off
+                # a made thing and `seat` takes the whole layer down onto the lowest ground under it.
+                (PLAIN, [rect("told-to-settle", cx + 5, cz, 3, 3, height=5)],
+                 {"kind": "made", "part_of": "on-a-slope-crate", "seat": "ground"})]
     if name in ("material-only", "a-theme"):
         # Nested from ONE floor, not stacked on each other's tops: the taller add wins the column, so a
         # ziggurat is four rectangles sharing a floor. Stacking them instead is `SK9`, and the world keeps
@@ -213,9 +249,12 @@ def sculpture(name, cx, cz):
 PANELS = ["one-shape", "a-polyline", "detailed", "an-arch",
           "a-basin", "cover", "a-bridge", "a-tower",
           "a-dome", "a-hollow-dome", "material-only", "a-theme",
-          "a-bowl", "a-balloon", "two-colours", "on-a-slope"]
+          "a-bowl", "a-balloon", "two-colours", "on-a-slope",
+          "compiled-wall", "a-wheel", "a-shell", "seated"]
+# Row 5 is compiled rather than drawn, and the last of them is told to settle onto a grade.
+COMPILED = {"compiled-wall": None, "a-wheel": None, "a-shell": None, "seated": "ground"}
 
-shapes, groups, relief, layers = [], [], {}, []
+shapes, groups, relief, layers, stats = [], [], {}, [], {}
 for index, name in enumerate(PANELS):
     col, row = index % 4, index // 4
     x0, z0 = COL_X[col], ROW_Z[row]
@@ -225,19 +264,28 @@ for index, name in enumerate(PANELS):
                    "min_x": x0, "min_z": z0, "max_x": x0 + PANEL_W, "max_z": z0 + PANEL_D})
     groups.append({"id": name, "name": name, "mirrors": False, "shapeIds": [f"island-{name}"]})
     relief[name] = {"base": PLAIN, "reach": 0, "step": 1, "pushes": [],
-                    # Eleven pads are flat, because a made thing is not seated on a relief. The twelfth
-                    # is a ramp on purpose: it is the panel about what that costs.
-                    "marks": ramp(cx, z0) if name == "on-a-slope" else []}
+                    # Eighteen pads are flat, because a shape on a ground layer states an absolute floor.
+                    # Two are a ramp on purpose: the panel about what that costs, and the panel that
+                    # answers it.
+                    "marks": ramp(cx, z0) if name in ("on-a-slope", "seated") else []}
+
+    if name in COMPILED:
+        model, built = compiled(name, cx, cz, seat=COMPILED[name])
+        stats[name] = compiler.stats(model, built)
+        layers.extend(built)
+        continue
 
     paint = ({"material": PLAIN_STONE} if name == "material-only" else {"theme": "masonry"})
-    for tier, (base_y, drawn) in enumerate(sculpture(name, cx, cz)):
+    for tier, entry in enumerate(sculpture(name, cx, cz)):
+        base_y, drawn = entry[0], entry[1]
+        words = entry[2] if len(entry) > 2 else {}
         layer_id = f"{name}-{tier}"
         for shape in drawn:
             shape["id"] = f"{shape['id']}-{name}"
             # A shape that states its own paint keeps it; everything else takes the board's masonry.
             if "material" not in shape:
                 shape.update(paint)
-        layers.append({"id": layer_id, "name": layer_id, "base_y": base_y,
+        layers.append({"id": layer_id, "name": layer_id, "base_y": base_y, **words,
                        "layout": {"shapes": drawn,
                                   "groups": [{"id": layer_id, "name": layer_id, "mirrors": False,
                                               "shapeIds": [s["id"] for s in drawn]}]}})
@@ -254,11 +302,32 @@ layout = {
                 "layout": {"shapes": shapes, "groups": groups}}]
               + sorted(layers, key=lambda tier: tier["base_y"]),
 }
-out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "sculpture-with-layers.layout.json")
+out = os.path.join(HERE, "sculpture-with-layers.layout.json")
 json.dump(layout, open(out, "w"), indent=1)
 print(f"{len(PANELS)} panels, {1 + len(layers)} layers -> {out}")
+
+# What the compiler charged, written beside the board: the layer count of a compiled thing is the busiest
+# column's run count, and nothing in row 5 states one.
+with open(os.path.join(HERE, "compiled.txt"), "w") as report:
+    report.write("tools/sculpt/layers.py — what the run-index compiler answered for row 5.\n"
+                 "A column's blocks split into maximal runs of one material; the n-th run of every column\n"
+                 "goes on layer n. The layer count is read off the model, never stated.\n\n")
+    report.write(f"{'panel':16s}{'blocks':>8s}{'layers':>8s}{'shapes':>8s}{'blocks/shape':>14s}\n")
+    for name in PANELS:
+        if name not in stats:
+            continue
+        got = stats[name]
+        report.write(f"{name:16s}{got['blocks']:8d}{got['layers']:8d}{got['shapes']:8d}"
+                     f"{got['blocks_per_shape']:14.1f}\n")
+    report.write("\nthe same four solids, by hand: `compiled-wall` is one rectangle and the other three\n"
+                 "have no statement in rectangles and circles at all.\n")
 for index, name in enumerate(PANELS):
     x0, z0 = COL_X[index % 4], ROW_Z[index // 4]
+    if name in COMPILED:
+        got = stats[name]
+        print(f"  {name:14s} at x{x0:5d} z{z0:5d}  {got['layers']} layer(s), {got['shapes']} shape(s)"
+              f"   compiled from {got['blocks']} block(s)")
+        continue
     tiers = sculpture(name, x0 + PANEL_W // 2, z0 + PANEL_D // 2)
     print(f"  {name:14s} at x{x0:5d} z{z0:5d}  {len(tiers)} layer(s), "
-          f"{sum(len(d) for _, d in tiers)} shape(s)")
+          f"{sum(len(tier[1]) for tier in tiers)} shape(s)")

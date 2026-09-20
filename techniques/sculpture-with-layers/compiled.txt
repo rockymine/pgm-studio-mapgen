@@ -1,0 +1,12 @@
+tools/sculpt/layers.py — what the run-index compiler answered for row 5.
+A column's blocks split into maximal runs of one material; the n-th run of every column
+goes on layer n. The layer count is read off the model, never stated.
+
+panel             blocks  layers  shapes  blocks/shape
+compiled-wall        448       1       1         448.0
+a-wheel             1472       2     116          12.7
+a-shell             1448       2     190           7.6
+seated              1472       2     116          12.7
+
+the same four solids, by hand: `compiled-wall` is one rectangle and the other three
+have no statement in rectangles and circles at all.

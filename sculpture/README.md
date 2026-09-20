@@ -6,6 +6,17 @@ loads — `maps/form-gallery` and `maps/sculpture-gallery` — so either can be 
 at. Each declares one visitor team and a pad at the south edge, because `EX2` refuses to export a map no
 player can enter, and states no objective at all.
 
+**These are measurements, not a library.** The forms below are what one early exercise reached for when it
+asked what the sketch's own shapes can say, and the answer came out building-shaped — a roundhouse, a
+gatehouse, a colonnade — because the question was asked with buildings in mind. The numbers beside them are
+worth keeping and the forms themselves are worth reading; neither is a vocabulary to stamp from.
+
+**What is general is the ladder, and it is written up as a technique card.**
+`techniques/sculpture-with-layers` is one shape, then a polyline, then four layers, then rings for a field
+that will not nest, then a solid put through the compiler — with the columns that measure each rung. When a
+made thing is wanted, that is the order to go up, and `tools/sculpt/solid.py` with `tools/sculpt/layers.py`
+is the top of it.
+
 ## `forms/` — written in the sketch's own shapes
 
 Nine parametric structures and one composite on one deck, every one of them circles, polygons and rectangles

@@ -1,9 +1,10 @@
-GET /api/map/technique-sculpture-with-layers/column?at=x,z — what a made thing is, course by course. Every shape here is a
-rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain whose top block is y7.
+GET /api/map/technique-sculpture-with-layers/column?at=x,z — what a made thing is, course by course. Rows 1-4 are drawn
+out of rectangles, circles and polygons on layers resting at base_y 8, over plains whose top block
+is y7; row 5 is compiled from solids and states its floors absolutely.
 
 
 ### one-shape — the wall: one rectangle, seven courses
-=== column (-117, -105) — 15 solid block(s), ground 0° from level ===
+=== column (-117, -140) — 15 solid block(s), ground 0° from level ===
   y 14    98:3   Chiseled Stone Bricks
   y 13    98:0   Stone Bricks
   y 12    98:0   Stone Bricks
@@ -16,7 +17,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  5     3:0   Dirt
 
 ### a-polyline — the middle of the band: three cells wide, so the theme's surface has somewhere to go
-=== column (-39, -106) — 15 solid block(s), ground 0° from level ===
+=== column (-39, -141) — 15 solid block(s), ground 0° from level ===
   y 14    98:1   Mossy Stone Bricks
   y 13    98:0   Stone Bricks
   y 12     1:0   Stone
@@ -29,7 +30,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  5     3:0   Dirt
 
 ### a-polyline — one cell off it, at the band's edge: the rim, the block the whole of `one-shape` is
-=== column (-39, -105) — 15 solid block(s), ground 60° from level ===
+=== column (-39, -140) — 15 solid block(s), ground 60° from level ===
   y 14    98:3   Chiseled Stone Bricks
   y 13    98:0   Stone Bricks
   y 12    98:0   Stone Bricks
@@ -42,7 +43,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  5     3:0   Dirt
 
 ### detailed — a merlon on the fourth layer, standing on the string course
-=== column (24, -105) — 17 solid block(s), ground 60° from level ===
+=== column (24, -140) — 17 solid block(s), ground 60° from level ===
   y 16    98:3   Chiseled Stone Bricks
   y 15    98:0   Stone Bricks
   y 14    98:1   Mossy Stone Bricks
@@ -55,7 +56,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  7     2:0   Grass Block
 
 ### detailed — one cell along: the string course, with no merlon over it
-=== column (26, -105) — 15 solid block(s), ground 60° from level ===
+=== column (26, -140) — 15 solid block(s), ground 60° from level ===
   y 14    98:1   Mossy Stone Bricks
   y 13    98:3   Chiseled Stone Bricks
   y 12    98:0   Stone Bricks
@@ -68,7 +69,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  5     3:0   Dirt
 
 ### an-arch — under the lintel: the gateway is ground nobody drew on
-=== column (117, -105) — 10 solid block(s), ground 0° from level ===
+=== column (117, -140) — 10 solid block(s), ground 0° from level ===
   y 16    98:3   Chiseled Stone Bricks
   y 15    98:0   Stone Bricks
   y  7     2:0   Grass Block
@@ -81,7 +82,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  0     7:0   Bedrock
 
 ### a-basin — the middle: an override-add one course high, and the rim is what is left
-=== column (-117, -35) — 9 solid block(s), ground 0° from level ===
+=== column (-117, -70) — 9 solid block(s), ground 0° from level ===
   y  8    98:1   Mossy Stone Bricks
   y  7     2:0   Grass Block
   y  6     3:0   Dirt
@@ -93,7 +94,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  0     7:0   Bedrock
 
 ### a-basin — the rim beside it
-=== column (-107, -35) — 14 solid block(s), ground 14° from level ===
+=== column (-107, -70) — 14 solid block(s), ground 14° from level ===
   y 13    98:3   Chiseled Stone Bricks
   y 12    98:0   Stone Bricks
   y 11    98:0   Stone Bricks
@@ -106,7 +107,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  4     1:0   Stone
 
 ### a-bridge — mid-span: the deck on its own layer, and eight courses of air under it
-=== column (39, -35) — 9 solid block(s), ground 14° from level ===
+=== column (39, -70) — 9 solid block(s), ground 14° from level ===
   y 16    98:1   Mossy Stone Bricks
   y  7     2:0   Grass Block
   y  6     3:0   Dirt
@@ -118,7 +119,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  0     7:0   Bedrock
 
 ### a-bridge — the deck's north edge, where the rail stands on it — a second span, a second layer
-=== column (39, -38) — 10 solid block(s), ground 66° from level ===
+=== column (39, -73) — 10 solid block(s), ground 66° from level ===
   y 17    98:3   Chiseled Stone Bricks
   y 16    98:3   Chiseled Stone Bricks
   y  7     2:0   Grass Block
@@ -131,7 +132,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  0     7:0   Bedrock
 
 ### a-tower — the middle: shaft, corbel and cap, three layers read as one column
-=== column (117, -35) — 25 solid block(s), ground 0° from level ===
+=== column (117, -70) — 25 solid block(s), ground 0° from level ===
   y 24    98:1   Mossy Stone Bricks
   y 23    98:0   Stone Bricks
   y 22    98:1   Mossy Stone Bricks
@@ -144,7 +145,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y 15     1:0   Stone
 
 ### a-tower — under the corbel, a block past the shaft: an overhang with air beneath it
-=== column (124, -35) — 10 solid block(s), ground 78° from level ===
+=== column (124, -70) — 10 solid block(s), ground 78° from level ===
   y 22    98:3   Chiseled Stone Bricks
   y 21    98:0   Stone Bricks
   y  7     2:0   Grass Block
@@ -157,7 +158,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  0     7:0   Bedrock
 
 ### a-dome — the crown of eleven nested discs sharing one floor
-=== column (-117, 35) — 19 solid block(s), ground 0° from level ===
+=== column (-117, 0) — 19 solid block(s), ground 0° from level ===
   y 18    98:1   Mossy Stone Bricks
   y 17    98:0   Stone Bricks
   y 16     1:0   Stone
@@ -170,7 +171,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  9     1:0   Stone
 
 ### a-hollow-dome — the crown of eleven rings: four courses of shell over eight of air
-=== column (-39, 35) — 12 solid block(s), ground 5° from level ===
+=== column (-39, 0) — 12 solid block(s), ground 5° from level ===
   y 19    98:1   Mossy Stone Bricks
   y 18    98:0   Stone Bricks
   y 17     1:0   Stone
@@ -183,7 +184,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  2     1:0   Stone
 
 ### a-hollow-dome — the springing, where the shell meets the ground it stands on
-=== column (-48, 35) — 15 solid block(s), ground 63° from level ===
+=== column (-48, 0) — 15 solid block(s), ground 63° from level ===
   y 14    98:3   Chiseled Stone Bricks
   y 13     1:0   Stone
   y 12     1:0   Stone
@@ -196,33 +197,33 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  5     3:0   Dirt
 
 ### material-only — the ziggurat's top, painted by one terrain material
-=== column (39, 35) — 21 solid block(s), ground 45° from level ===
-  y 20     1:0   Stone
-  y 19     1:0   Stone
-  y 18     1:0   Stone
-  y 17     1:0   Stone
-  y 16     1:0   Stone
-  y 15     1:0   Stone
-  y 14     1:0   Stone
-  y 13     1:0   Stone
-  y 12    98:3   Chiseled Stone Bricks
-  y 11    98:3   Chiseled Stone Bricks
-
-### material-only — its own face, three courses down
-=== column (30, 35) — 14 solid block(s), ground 37° from level ===
+=== column (39, 0) — 21 solid block(s), ground 45° from level ===
+  y 20    98:1   Mossy Stone Bricks
+  y 19    98:1   Mossy Stone Bricks
+  y 18    98:1   Mossy Stone Bricks
+  y 17    98:1   Mossy Stone Bricks
+  y 16    98:1   Mossy Stone Bricks
+  y 15    98:1   Mossy Stone Bricks
+  y 14    98:1   Mossy Stone Bricks
   y 13    98:1   Mossy Stone Bricks
   y 12    98:0   Stone Bricks
   y 11    98:0   Stone Bricks
-  y 10    98:0   Stone Bricks
-  y  9    98:0   Stone Bricks
-  y  8    98:0   Stone Bricks
+
+### material-only — its own face, three courses down
+=== column (30, 0) — 14 solid block(s), ground 37° from level ===
+  y 13    98:3   Chiseled Stone Bricks
+  y 12    98:3   Chiseled Stone Bricks
+  y 11    98:3   Chiseled Stone Bricks
+  y 10    98:3   Chiseled Stone Bricks
+  y  9    98:3   Chiseled Stone Bricks
+  y  8    98:1   Mossy Stone Bricks
   y  7     2:0   Grass Block
   y  6     3:0   Dirt
   y  5     3:0   Dirt
   y  4     1:0   Stone
 
 ### a-theme — the same ziggurat's top, painted by five buckets
-=== column (117, 35) — 21 solid block(s), ground 45° from level ===
+=== column (117, 0) — 21 solid block(s), ground 45° from level ===
   y 20    98:1   Mossy Stone Bricks
   y 19    98:0   Stone Bricks
   y 18     1:0   Stone
@@ -235,7 +236,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y 11     1:0   Stone
 
 ### a-theme — the same face
-=== column (108, 35) — 14 solid block(s), ground 37° from level ===
+=== column (108, 0) — 14 solid block(s), ground 37° from level ===
   y 13    98:3   Chiseled Stone Bricks
   y 12    98:0   Stone Bricks
   y 11    98:0   Stone Bricks
@@ -248,7 +249,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  4     1:0   Stone
 
 ### a-bowl — the floor in the middle, three courses over the pad: a field that falls inward
-=== column (-117, 105) — 11 solid block(s), ground 10° from level ===
+=== column (-117, 70) — 11 solid block(s), ground 10° from level ===
   y 10    98:3   Chiseled Stone Bricks
   y  9     1:0   Stone
   y  8     1:0   Stone
@@ -261,7 +262,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  1     1:0   Stone
 
 ### a-bowl — the rim it falls from, eleven courses up
-=== column (-127, 105) — 18 solid block(s), ground 60° from level ===
+=== column (-127, 70) — 18 solid block(s), ground 60° from level ===
   y 17    98:3   Chiseled Stone Bricks
   y 16    98:0   Stone Bricks
   y 15     1:0   Stone
@@ -274,7 +275,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  8     1:0   Stone
 
 ### a-balloon — under one rope: basket, rope, two courses of air, then the envelope
-=== column (-43, 101) — 31 solid block(s), ground 35° from level ===
+=== column (-43, 66) — 31 solid block(s), ground 35° from level ===
   y 32    98:3   Chiseled Stone Bricks
   y 31     1:0   Stone
   y 30     1:0   Stone
@@ -302,7 +303,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  6     3:0   Dirt
 
 ### two-colours — one box, one paint, one layer: nine courses of the same block
-=== column (19, 105) — 17 solid block(s), ground 0° from level ===
+=== column (19, 70) — 17 solid block(s), ground 0° from level ===
   y 16    24:0   Sandstone
   y 15    24:0   Sandstone
   y 14    24:0   Sandstone
@@ -315,7 +316,7 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  7     2:0   Grass Block
 
 ### two-colours — the same box in three paints, which is three layers because it is three runs
-=== column (39, 105) — 17 solid block(s), ground 0° from level ===
+=== column (39, 70) — 17 solid block(s), ground 0° from level ===
   y 16     5:1   Spruce Planks
   y 15     5:1   Spruce Planks
   y 14     5:1   Spruce Planks
@@ -327,8 +328,8 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  8    24:0   Sandstone
   y  7     2:0   Grass Block
 
-### on-a-slope — the crate stated at base_y 8, on ground the relief solved to y19: it is under the hill
-=== column (101, 91) — 20 solid block(s), ground 14° from level ===
+### on-a-slope — `buried`, stated at base_y 8 on ground the relief solved to y19: it is under the hill
+=== column (103, 54) — 20 solid block(s), ground 0° from level ===
   y 19     2:0   Grass Block
   y 18     3:0   Dirt
   y 17     3:0   Dirt
@@ -343,8 +344,21 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  8     1:0   Stone
   y  7     1:0   Stone
 
-### on-a-slope — the crate seated at 15, where the ground under its own footprint runs y14 down to y12
-=== column (117, 105) — 19 solid block(s), ground 0° from level ===
+### on-a-slope — the grade itself, between the two crates that stand on it
+=== column (108, 70) — 14 solid block(s), ground 57° from level ===
+  y 13     2:0   Grass Block
+  y 12     3:0   Dirt
+  y 11     3:0   Dirt
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+
+### on-a-slope — `by-hand`, stated at 15 from a columns read: it hovers a course over this cell
+=== column (112, 70) — 19 solid block(s), ground 0° from level ===
   y 19    98:1   Mossy Stone Bricks
   y 18    98:0   Stone Bricks
   y 17     1:0   Stone
@@ -356,8 +370,21 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y 10     1:0   Stone
   y  9     1:0   Stone
 
-### on-a-slope — the same crate at 20, over ground at y7: twelve courses of air
-=== column (133, 119) — 13 solid block(s), ground 0° from level ===
+### on-a-slope — `told-to-settle` beside it: kind made, seat ground, no height stated at all
+=== column (122, 70) — 17 solid block(s), ground 0° from level ===
+  y 16    98:1   Mossy Stone Bricks
+  y 15    98:0   Stone Bricks
+  y 14     1:0   Stone
+  y 13     1:0   Stone
+  y 12     1:0   Stone
+  y 11     2:0   Grass Block
+  y 10     3:0   Dirt
+  y  9     3:0   Dirt
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+
+### on-a-slope — `floating`, stated at 20 over ground at y7
+=== column (131, 86) — 13 solid block(s), ground 0° from level ===
   y 24    98:1   Mossy Stone Bricks
   y 23    98:0   Stone Bricks
   y 22     1:0   Stone
@@ -368,3 +395,63 @@ rectangle, a circle or a polygon on a layer resting at base_y 8, over a plain wh
   y  5     3:0   Dirt
   y  4     1:0   Stone
   y  3     1:0   Stone
+
+### compiled-wall — the solid box compiled: one layer, one rectangle, the same wall as `one-shape`
+=== column (-117, 140) — 15 solid block(s), ground 0° from level ===
+  y 14    98:3   Chiseled Stone Bricks
+  y 13    98:0   Stone Bricks
+  y 12    98:0   Stone Bricks
+  y 11    98:0   Stone Bricks
+  y 10    98:0   Stone Bricks
+  y  9    98:0   Stone Bricks
+  y  8    98:0   Stone Bricks
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+
+### a-wheel — off the hub: the pad, the lower rim, the upper rim — three spans, two made layers
+=== column (-44, 140) — 24 solid block(s), ground 0° from level ===
+  y 28    98:3   Chiseled Stone Bricks
+  y 27    98:0   Stone Bricks
+  y 26    98:0   Stone Bricks
+  y 25    98:0   Stone Bricks
+  y 24    98:0   Stone Bricks
+  y 23    98:0   Stone Bricks
+  y 22    98:0   Stone Bricks
+  y 21    98:0   Stone Bricks
+  y 16    98:3   Chiseled Stone Bricks
+  y 15    98:0   Stone Bricks
+  y 14     1:0   Stone
+  y 13     1:0   Stone
+  y 12     1:0   Stone
+
+### a-shell — through the middle of a hollow sphere: two runs, so two layers
+=== column (39, 140) — 12 solid block(s), ground 0° from level ===
+  y 26    98:1   Mossy Stone Bricks
+  y 25    98:0   Stone Bricks
+  y 10    98:1   Mossy Stone Bricks
+  y  9    98:0   Stone Bricks
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### seated — the same wheel told to settle: it rests on ground cut to receive it
+=== column (112, 140) — 28 solid block(s), ground 0° from level ===
+  y 32    98:3   Chiseled Stone Bricks
+  y 31    98:0   Stone Bricks
+  y 30    98:0   Stone Bricks
+  y 29    98:0   Stone Bricks
+  y 28    98:0   Stone Bricks
+  y 27    98:0   Stone Bricks
+  y 26    98:0   Stone Bricks
+  y 25    98:0   Stone Bricks
+  y 20    98:3   Chiseled Stone Bricks
+  y 19    98:0   Stone Bricks
+  y 18     1:0   Stone
+  y 17     1:0   Stone
+  y 16     1:0   Stone
