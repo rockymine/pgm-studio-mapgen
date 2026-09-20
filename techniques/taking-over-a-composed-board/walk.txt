@@ -42,6 +42,11 @@ reading on it that has to be argued with. `from` and `to` are `x,z`, or `x,z,y` 
   ROUTE (0, 6) -> (0, 0) aim travel: 6 blocks, 8 placed, 0 drop(s), worst drop 0
   rises 1, falls 0, worst step 9: barrier +9 at (0, 4)
 
+### off the back bar's rim into the canopy hanging past it
+  from=-2,54&to=-4,57
+  ROUTE (-2, 54) -> (-4, 57) aim travel: 5 blocks, 7 placed, 0 drop(s), worst drop 0
+  rises 1, falls 0, worst step 8: barrier +8 at (-2, 56)
+
 The staircases walk. Four one-block risers between a bar at 9 and a bar at 13, and nothing
 placed either way — which is the whole of what splitting a piece into treads buys.
 
@@ -59,7 +64,9 @@ the author's reading of why so few maps have ever carried one: the read condemns
 roof, built up from the holm a player has just bridged to — a height nobody is given and anybody can
 take.
 
-**A prop leaning over a rim is what spoils these numbers, which is why no tree here stands on one.**
-Three oaks put back on the lane's shore hang a leaf at y20 over the void; `column` and `transect` both
-call that column void, and a walk to it answers reachable, `barrier +8`, standing at y21 and y22 in the
-canopy on the way. Filed as `WS71`, with the question it turns on.
+**The last read is the one to argue with, and it is about a crown rather than about the board.** A bar
+twelve deep with a road down it leaves only its outer rim three clear of the paving, so the three oaks
+along the path stand there and their crowns hang past it. `column?at=-4,57` is four blocks of leaves
+over void and `transect` calls that station void — and the walk offers three places in the canopy and
+prices the climb at `barrier +8`. Filed as `WS71`, parked on the question it turns on: may a walk stand
+on a prop at all.

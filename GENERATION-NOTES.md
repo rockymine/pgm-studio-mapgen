@@ -438,7 +438,7 @@ the strokes, search, then place.
 
 **What the search answers is where a prop MAY stand, and how many stand there is the author's** (his
 ruling). Planting every site a legal field offers is a forest, and a board of ten-block corridors has no
-room for one: 34 spaced sites on that board came down to **seven** planted. The rules the seven follow are
+room for one: 34 spaced sites on that board came down to **ten** planted. The rules the ten follow are
 worth more than the list.
 
 **Toward the OUTSIDE of a piece, never down its middle.** With no road on it a player still runs down the
@@ -453,6 +453,15 @@ two blocks off a bridging edge crowds the edge itself. Both belong on the far si
 enforces on its own — a wall's keep-out plus a road left **0** legal cells on a whole wool approach — and
 the second is a place for a structure rather than for scenery. One tree in the corner behind the wall, in
 front of the room, is what that approach carries.
+
+**A search is narrower than the studio, so a site is checked against the DRESSING PASS.** A filter that
+keeps only cells with eight level neighbours refuses every **rim** cell on a board, because beyond a rim is
+void and a neighbour that is not ground fails the test. What the studio asks is ground under the trunk,
+three clear of the paving, unclaimed and not kept clear.
+
+**The rim passes all four, and a road often leaves nothing else.** On a bar twelve deep with a five-wide
+road down it, three clear of the paving is the rim or nowhere — so the search's silence there is
+conservatism and not a refusal. Probe the stretch a candidate at a time and read the rule each one hits.
 
 **A prop on a rim hangs a crown over the void, and the walk stands on it.** A leaf course over a void column
 is a standing place for `walk` while `column` and `transect` both call that column void, so a route will

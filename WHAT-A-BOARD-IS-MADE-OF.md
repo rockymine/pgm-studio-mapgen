@@ -203,6 +203,32 @@ cannot be read at a glance, which undoes the slope banding it was painted with. 
 character in `scale` — small is speckle, large is meadows and clearings — and in `flowerShare` with
 `flowerScale`, which cluster into fields rather than confetti.
 
+## Where a tree stands, and how many
+
+**A possible placement is not a required one.** Anything that answers where a prop *may* stand — a search
+over the board, a legal field, a list of sites — answers legality and says nothing about composition, and
+planting every site it offers is how a board of ten-block corridors comes out as a forest. Ask how many the
+piece wants first, then which of the legal places those are.
+
+**To the outside of a piece, never down its middle.** With no road on it a player still runs down the centre
+of a corridor, so a line of trees along the rim reads as an alley and the same trees in the middle read as an
+obstacle course. Two in front of a hole, three along a road, one in a corner: a piece takes a handful, not a
+field.
+
+**Nothing where a player arrives, and nothing on the brink they leave from.** A bridger who crosses a void
+and lands in three trees has been handed an obstacle the arrangement never asked for, and a tree two blocks
+off a bridging edge crowds the edge itself. Both belong on the far side of the piece.
+
+**Nothing on the approach in front of a wall, and nothing on a contested middle.** The ground in front of a
+defensive wall is fought over and wants to be read at a glance, and a neutral middle is where a structure
+goes rather than scenery. A deck on four legs is worth more there than any number of oaks.
+
+**The studio's own rules are narrower than any search, so check a site against the dressing pass.** What it
+asks is ground under the trunk, three blocks clear of paving, unclaimed, and not kept clear; a search that
+also demands eight level neighbours refuses every rim cell on the board, and the rim is often the only place
+a road leaves. A search is a way of proposing sites nobody has to think about — its silence is conservatism,
+not a refusal.
+
 ## What a building is made of
 
 The two sections above are what the ground is made of. This is the other half, and it is shorter, because a

@@ -318,6 +318,17 @@ tree, goal clearance, spawn keep-out.
 **The raster says where to try; `loop.py --candidates` says whether the try lands**, eight candidates for
 one pass. Neither costs a build.
 
+**A placement that lands is not a placement that belongs, and that is the other half of the same mistake.**
+A search over the board answers legality and says nothing about composition, so planting every site it
+offers puts a forest on ten-block corridors; `WHAT-A-BOARD-IS-MADE-OF.md` §where a tree stands carries the
+author's rules, and `techniques/taking-over-a-composed-board` is the worked case — 34 legal sites, ten
+planted.
+
+**A search is also narrower than the studio, so let the dressing pass decide.** A filter that keeps only
+cells with eight level neighbours refuses every rim cell on a board, and a rim is often the only row a road
+leaves; what the studio asks is ground under the trunk, three clear of paving, unclaimed and not kept
+clear.
+
 ---
 
 ## 5. The order a board is built in

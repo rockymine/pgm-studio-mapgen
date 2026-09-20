@@ -34,6 +34,9 @@ that is nothing but corridors, and which of those places is planted.
   oak-lane-far-a       at ( -29,  54)   placed    the back bar's far side, eight blocks off the lane's shore
   oak-lane-far-b       at ( -23,  54)   placed    and its pair
   oak-room-corner      at ( -18,  78)   placed    the corner behind the wall, in front of the room
+  oak-path-a           at (  16,  55)   placed    along the road on the bar's outer rim, outside what the search offers
+  oak-path-b           at (   6,  54)   placed    the same rim, ten blocks along
+  oak-path-c           at (  -4,  55)   placed    and the third, west of the middle
 
 ### five placed the way an author places them on a board that looks like a landscape
   eye-on-the-road        at (   0,  50)   DECLINED  DR-CLAIM  tree 'eye-on-the-road' rests on (0, 50), claimed by the paving 'spine'
@@ -42,7 +45,26 @@ that is nothing but corridors, and which of those places is planted.
   eye-in-the-doorway     at ( -12,  77)   DECLINED  DR-KEEP  tree 'eye-in-the-doorway' rests on (-12, 77), which is kept clear as the approach in front of a door
   eye-against-the-wall   at ( -14,  67)   DECLINED  DR-KEEP  tree 'eye-against-the-wall' rests on (-14, 67), which is built ground rather than terrain
 
-placed 18, refused 5, 1342 cells claimed — the seven oaks claim 316 of them and the two roads 916.
+placed 24, refused 5, 1516 cells claimed.
 
-The field with those seven on the board is 748 cells against 1,062 without them, which is why a
-search is asked of a board with no props on it.
+The last three are outside the field above, and that is the point of the distinction. The search
+keeps a cell whose eight neighbours are ground at one height, so it refuses every RIM cell on the
+board: beyond a rim is void, and a neighbour that is not ground fails the test. What the studio
+asks is narrower — ground under the trunk, three clear of the paving, unclaimed, not kept clear —
+and the bar's outer rim passes all four. A site is checked against the dressing pass; the search's
+silence is conservatism and not a refusal.
+
+### what the studio allows along the back bar's road, one candidate at a time
+  Every second column of six rows, each put to the dressing pass on its own, on a board with no
+  trees on it — so what the marks show is the roads, the rooms and the rim.
+  z  45  . . . . . R C C R . . . . . . . . R C C R .
+  z  46  . R R R R R C C R R R R R R R R R R C C R R
+  z  47  R R R R R R C C R R R R R R R R R R C C R R
+  z  53  C C R R R R R R R R R R R R R R R R R R R S
+  z  54  C C R R . . . . . . . . . . . R R R R R S S
+  z  55  C C R . . . . . . . . . . . . . . . . S S S
+         the leftmost mark is x -16 and each one after it is two columns east, to x 26
+         . allowed   R DR-ROAD   C DR-CLAIM   S DR-SITE
+
+The rows the road leaves are 45 and 54-55, and 54-55 is the outer rim. On a bar twelve deep with
+a five-wide road down it there is nowhere else: three clear of the paving is the rim or nothing.

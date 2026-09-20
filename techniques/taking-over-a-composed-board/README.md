@@ -30,7 +30,7 @@ blocks**, with two enclosed holes the hub's own shape makes and a neutral mid at
 | `1-as-pinned` | none | 8 shapes: **2 polygons, 2 subtracts**, one height |
 | `2-void-redrawn` | one void ring's corners taken off, in the **layout** | the same 8, and 32 blocks of hole that are now ground |
 | `3-a-surface-per-piece` | a `surface` on every piece, in the **plan** | 13 shapes: **7 polygons over 7 heights**, subtracts intact |
-| `4-taken-over` | + two pieces split into staircases, a piece replaced by a build zone, a coast chamfered, a bedrock wall, a deck on the mid, two roads, five themes, seven oaks | 17 shapes: **12 polygons over 9 heights**, 1 cut, **4 made layers**, 18 props |
+| `4-taken-over` | + two pieces split into staircases, a piece replaced by a build zone, a coast chamfered, a bedrock wall, a deck on the mid, two roads, five themes, ten oaks | 17 shapes: **12 polygons over 9 heights**, 1 cut, **4 made layers**, 24 props |
 
 ## What a flat plan compiles to
 
@@ -158,8 +158,8 @@ every paved cell — and require the same of the cell's own `rot_180` image, bec
 image of its orbit. It answers **1,062 cells and 34 spaced sites**.
 
 **Planting all 34 is a forest, and this board is ten-block corridors.** Legality is computed and composition
-is not: the search says where a tree *may* go, and which of those places takes one is the author's. Seven
-are planted here, fourteen with the orbit, and the rules they follow are his.
+is not: the search says where a tree *may* go, and which of those places takes one is the author's. Ten are
+planted here, twenty with the orbit, and the rules they follow are his.
 
 **A tree goes toward the outside of a piece, never down its middle.** With no road on it a player still runs
 down the centre of a corridor, so trees along the rim read as an alley and trees in the middle read as an
@@ -179,6 +179,17 @@ construction. One tree stands in the corner behind the wall, in front of the roo
 **And nothing stands on the mid.** A contested holm is where a structure goes, not scenery; its 106 legal
 cells are left to the deck and to the ground under it.
 
+**Three stand along the road, and they are outside what the search offers.** The search keeps a cell whose
+eight neighbours are ground at one height, so it refuses every **rim** cell on the board — beyond a rim is
+void, and a neighbour that is not ground fails the test. The studio asks something narrower, and the back
+bar's outer rim passes all of it: ground under the trunk, three clear of the paving, unclaimed, not kept
+clear. `props.txt` has the whole stretch probed a candidate at a time.
+
+**So a site is checked against the dressing pass, and the search only proposes.** Its silence is
+conservatism, not a refusal — which matters most where a road has taken everything else: on a bar twelve
+deep with a five-wide road down it, three clear of the paving is the rim or nowhere. The cost is that a crown
+there hangs over the void, which is what `WS71` is about, and the trade is the author's.
+
 **Every pass of the search that left something out was wrong, and the card keeps the numbers.** Against the
 layout alone it answers 1,398 cells and 52 sites, and four of the first twenty are then refused `DR-KEEP`:
 the rooms, the doors and the spawns are not in the claims map until the compiled **intent is stored**. With
@@ -187,7 +198,7 @@ broken down by region.
 
 **The search is asked of the board without the props on it.** A tree raises its own column's top and claims
 the cells its crown covers, so a list searched over a layout that already carries one is a list about a
-different board: the field is 1,062 cells stripped and 748 with the seven standing.
+different board: the field is 1,062 cells stripped and 748 with seven of them standing.
 
 **And two roads is most of a corridor board gone.** 916 paved cells, each owing a tree three blocks, take
 out more ground than every keep-out on the board together — which is the whole reason the notes say to
@@ -223,9 +234,11 @@ different wordings. `props.txt` is the table.
 - **test every candidate's orbit image**, not just the candidate.
 - **a texture brush is a keep-out as wide as itself** — on a board of ten-block pieces there may be nothing
   left to stand on.
-- **the search says where a prop may stand, not how many should.** Plant to the outside of a piece, two in
-  front of a hole, none where a build zone is arrived at, none on the approach in front of a wall, and none
-  on a contested middle. A board of ten-block corridors has no room for a forest.
+- **a possible placement is not a required one.** The search says where a prop may stand; how many stand
+  there is the author's. Plant to the outside of a piece, two in front of a hole, three along a road, none
+  where a build zone is arrived at, none on the approach in front of a wall, none on a contested middle.
+- **check a site against the dressing pass, not against your own filter.** A search that wants eight level
+  neighbours refuses every rim cell, and a rim is often the only row a road leaves.
 - **a structure is one made layer per span.** A leg passing a floor is two spans in one column, so cut the
   leg at each floor and give every span its own layer.
 
@@ -261,8 +274,8 @@ is a standing place for the walk and a void column for every other read, which i
 - `columns.txt` — thirteen columns: an oak on the front bar's rim, a road's paving, two treads and the
   front bar under them, the bedrock wall and the ground short of it, the surviving hole and its rim, the far
   lane, the mid under its deck, one of the deck's legs, and a spawn room's floor.
-- `walk.txt` — eight walks: the two staircases, both build zones crossed, the approach through the wall, and
-  the deck's two floors.
+- `walk.txt` — nine walks: the two staircases, both build zones crossed, the approach through the wall, the
+  deck's two floors, and the canopy hanging past the back bar's rim.
 - `census.txt` — five themes over 4,956 cells, and the borders between them.
 - `pinned.plan.json` — the composer's own answer, committed. `1-as-pinned.plan.json`,
   `3-a-surface-per-piece.plan.json`, `4-taken-over.plan.json` and `4-taken-over.finish.json` are what

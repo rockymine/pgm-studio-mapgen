@@ -265,6 +265,17 @@ ROAD = {"kind": "cell", "seed": 7701, "cellSize": 3, "jitter": 55, "warp": 1, "r
 # compiled INTENT stored, because the rooms, the doors and the spawns are not in the claims map until then:
 # without it the board answers 1,398 cells and 52 sites, four of the first twenty then refused `DR-KEEP`.
 # And it tests every cell's ORBIT IMAGE as well as the cell, which is the last 212 cells of the field.
+# And the last three are outside what that search offers, which is the whole reason it is not the authority.
+# The search keeps a cell whose eight neighbours are ground at one height, so it refuses every RIM cell on
+# the board — beyond the rim is void, and a neighbour that is not ground fails the test. The studio's own
+# rules ask something narrower: ground under the trunk (`DR-SITE`), three clear of the paving (`DR-ROAD`),
+# unclaimed (`DR-CLAIM`), not kept clear (`DR-KEEP`). The back bar's outer rim passes all four and the
+# search's silence there is conservatism, not a refusal — so a site is checked against the DRESSING PASS,
+# and the search is only a way of proposing sites nobody has to think about.
+#
+# On a bar twelve deep with a five-wide road down it, the rim is the only place left: three blocks off the
+# paving puts a tree at z 54 or 55, and its crown then hangs over the void, which is the configuration
+# `WS71` is about. The trade is the author's and he wants the trees.
 TREES = [
     ("oak-front-west-a", -18, 30),   # in front of hole-1, on the rim between the bar and the void
     ("oak-front-west-b", -11, 30),
@@ -273,6 +284,9 @@ TREES = [
     ("oak-lane-far-a", -29, 54),     # the far side of the back bar, eight blocks off the lane's shore
     ("oak-lane-far-b", -23, 54),
     ("oak-room-corner", -18, 78),    # behind the wall, in the corner in front of the room
+    ("oak-path-a", 16, 55),          # three along the road itself, on the bar's outer rim
+    ("oak-path-b", 6, 54),
+    ("oak-path-c", -4, 55),
 ]
 
 # And five placed the way an author places them when the board looks like a landscape: on the road, beside
@@ -304,7 +318,7 @@ DRESSING = {
          "claimsGround": True, "pave": ROAD,
          "points": [[-2, 50], [-2, 46], [-2, 42], [-2, 38], [-2, 34], [-2, 28], [-2, 21]]},
     ] + [
-        # All seven are oaks: a boulder rests on a footprint seven cells across and the search above tests a
+        # All ten are oaks: a boulder rests on a footprint seven cells across and the search above tests a
         # cell and its eight neighbours, so a rock wants its own wider test — which is
         # `techniques/trees-and-boulders`, not this card.
         {"id": name, "kind": "tree", "seed": 7710 + index, "x": x, "z": z, "style": "oak-9"}
