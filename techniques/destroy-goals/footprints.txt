@@ -1,0 +1,66 @@
+GET …/column — every block within 3 of each anchor, marked where it carries the structure.
+This is the shape from above, which is the half a column cannot say.
+
+  #  a block of the goal      .  nothing over the ground      +  the anchor's own column
+
+### pillar-1
+  . . . . . . .
+  . . . . . . .
+  . . . . . . .
+  . . . + . . .
+  . . . . . . .
+  . . . . . . .
+  . . . . . . .
+
+### pillar-2
+  . . . . . . .
+  . . . . . . .
+  . . . . . . .
+  . . . + . . .
+  . . . . . . .
+  . . . . . . .
+  . . . . . . .
+
+### pillar-3
+  . . . . . . .
+  . . . . . . .
+  . . . . . . .
+  . . . + . . .
+  . . . . . . .
+  . . . . . . .
+  . . . . . . .
+
+### cube-3
+  . . . . . . .
+  . . . . . . .
+  . . # # # . .
+  . . # + # . .
+  . . # # # . .
+  . . . . . . .
+  . . . . . . .
+
+### cube-4
+  . . . . . . .
+  . . . . . . .
+  . . # # # # .
+  . . # + # # .
+  . . # # # # .
+  . . # # # # .
+  . . . . . . .
+
+### column-plus
+  . . . . . . .
+  . . . . . . .
+  . . . # . . .
+  . . # + # . .
+  . . . # . . .
+  . . . . . . .
+  . . . . . . .
+
+A `pillar` is one column however tall it is. `cube-3` and `cube-4` are solid squares, and
+`column-plus` is the one that is neither — five cells a layer with its corners left open, which
+is why it reads as a cross rather than as a block.
+
+An even-sided cube has no centre column, so a `cube-4`'s anchor sits on one of its four middle
+cells rather than in the middle of the square. Where a goal has to be centred on something, that
+is an offset to author rather than a fact to assume.

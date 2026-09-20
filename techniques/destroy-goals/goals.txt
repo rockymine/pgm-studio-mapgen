@@ -1,0 +1,27 @@
+GET …/column?at=x,z — a column through the middle of every goal, showing what stands over the
+island's own top block at y11. Every station states `float` 4, so every
+structure starts at y16.
+
+### the six styles, every one of them authored `materials: "obsidian"`
+  pillar-1     at (-100, -28)  y16 Obsidian  y12 Chest
+  pillar-2     at (-60, -28)  y17 Obsidian  y16 Obsidian  y12 Chest
+  pillar-3     at (-20, -28)  y18 Obsidian  y17 Obsidian  y16 Obsidian  y12 Chest
+  cube-3       at (20, -28)  y18 End Stone  y17 Bedrock  y16 End Stone  y12 Chest
+  cube-4       at (60, -28)  y19 End Stone  y18 Bedrock  y17 Bedrock  y16 End Stone  y12 Chest
+  column-plus  at (100, -28)  y18 End Stone  y17 End Stone  y16 End Stone  y12 Chest
+
+### the four materials, every one of them a `cube-4`
+  obsidian       at (-90, 28)  y19 End Stone  y18 Bedrock  y17 Bedrock  y16 End Stone  y12 Chest
+  emerald block  at (-30, 28)  y19 Emerald Block  y18 Bedrock  y17 Bedrock  y16 Emerald Block  y12 Chest
+  gold block     at (30, 28)  y19 Gold Block  y18 Bedrock  y17 Bedrock  y16 Gold Block  y12 Chest
+  ender stone    at (90, 28)  y19 End Stone  y18 Bedrock  y17 Bedrock  y16 End Stone  y12 Chest
+
+### the core, which states no material anywhere in the pipeline
+  core           at (150, 0)  y22 Obsidian  y21 Lava  y20 Lava  y19 Lava  y18 Obsidian  y12 Chest
+
+The chest a course over the ground is not part of any goal: it is the defence chest the stamper
+puts under every one of them. Higher still — left out of these rows — every goal carries a wool
+beacon far over the board, which is how a player finds it.
+
+Three of the six styles did not come out in the material they were authored in. That is `DC3`,
+and `export.txt` is where the studio says so.

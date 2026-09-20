@@ -9,7 +9,7 @@ the card rather than finding the thing inside a thousand-line finish.
 itself, one claim to a paragraph; a card holds one instrument worked all the way through, with the reads
 beside it. Where a card exists, the notes point at it rather than repeating it.
 
-## The twenty-four, which is all of them
+## The twenty-five, which is all of them
 
 | Card | Holds |
 |---|---|
@@ -36,6 +36,7 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `trees-and-boulders` | what a prop is refused for, and what it is only complained about — a ladder per rule, and a hand-built tree's own foot and crown |
 | `taking-over-a-composed-board` | one pinned plan edited four ways — what a flat compile merges, what a height per piece buys, a lane replaced by a build zone, and why a hole is nobody's to fill |
 | `raising-a-lane` | nine ways up eight blocks on a lane that bends — the plan, the layout, the relief and a storey over it, why one tilted polygon cannot turn a corner and two can |
+| `destroy-goals` | every destroyable the studio builds, in a row — six styles, four materials, a core, and why three obsidian goals came out in ender stone |
 | `cutting-a-hole` | the subtract and the override add — a cut with no depth, a deck over it, a room either side of it, and the `void-N-cut` a compile writes |
 
 ## Nothing is missing
