@@ -1,21 +1,24 @@
----
-name: pgm-board
-description: Author, revise or read a PGM map in this repository through the pgm-studio API — a destroy/capture/core board, a spec under specs/, a world under maps/. Use whenever the task is to build a map, change one, diagnose one that built wrong, or read an existing PGM world. Carries the read-before-you-believe procedure and the lookup table from question to the read that answers it, distilled from 27 Opus 5 runs.
----
+--- name: pgm-board description: Author, revise or read a PGM map in this repository through the pgm-studio
+API — a destroy/capture/core board, a spec under specs/, a world under maps/. Use whenever the task is to
+build a map, change one, diagnose one that built wrong, or read an existing PGM world. Carries the
+read-before-you-believe procedure and the lookup table from question to the read that answers it, distilled
+from 27 Opus 5 runs. ---
 
 # Authoring a board here
 
-`AUTHORING-BRIEF.md` is what the board should be. This is how not to lose a build finding out.
+`ORDER-OF-WORK.md` is the order a board is decided in, `WHAT-A-BOARD-IS-MADE-OF.md` is how one should look,
+and `AUTHORING-BRIEF.md` is the run it is authored in. This is how not to lose a build finding out.
 
 Everything below is measured off the run reports in `reports/opus5-*.md`. Each rule cost at least one
 build, most of them more than one, and several were paid twice by different runs.
 
 **Read the budget before the table.** This repository is larger than any context window: the documents
-alone are ~82k tokens, every text render of one board is 30–57k, and two `*.layout.json` files exceed
-200k each. `pgm-board-warmup` carries the limits and the never-open list. A layout is queried with `jq`
-and never `cat`-ed, a one-line verdict is a `grep` rather than a file read, and **`specs/archive/` is a
-record rather than a set of examples** — the eighteen boards flat under `specs/` are the ones worth
-reading, and `showcase/` is smaller and more directed than either.
+the brief points at are ~241k tokens, every text render of one board is 30–57k, and two `*.layout.json`
+files exceed 200k each. `pgm-board-warmup` carries the limits and the never-open list. A layout is queried
+with `jq` and never `cat`-ed, and a one-line verdict is a `grep` rather than a file read.
+
+**And `specs/archive/` is a record rather than a set of examples** — the eighteen boards flat under
+`specs/` are the ones worth reading, and `techniques/` is smaller and more directed than either.
 
 ---
 
@@ -37,7 +40,8 @@ about it."*
 | Is there anywhere to **stand**? | `POST …/sketch/relief/read` → `level` (share under 10°) and `largestField`; `RL5` fires under 30% | the walk tier, which answers one place and no ledge for a board that is one long ramp |
 | Which two **marks** built that wall? | `POST …/sketch/relief/read` → `seams`, worst first, each naming the pair and the cell; `RL3` fires above a scramble | a face in `03-slopes.txt` or the relief read, which report the wall as terrain and attribute it to nothing |
 | What does a column hold, layer by layer? | `tools/loop.py --column x,z` | reading a world file yourself |
-| May a prop stand here? | `06-claims.txt` (`POST …/sketch/dressing?format=text`), then `tools/loop.py --candidates <propId> x,z …` | placing it and reading the decline |
+| **Where may a prop stand at all?** | `POST …/sketch/seats?kind=tree\|boulder\|house[&width=&depth=]&format=text` — **the stored layout goes in the body** — a raster marking every cell a footprint's *minimum corner* may sit on, and a `refused` list of rule → cells, largest first | placing one by eye. Three runs declined 5–7 props a pass that way and 0 once every position came off this mask |
+| May *this* prop stand *here*? | `06-claims.txt` (`POST …/sketch/dressing?format=text`), then `tools/loop.py --candidates <propId> x,z …` | placing it and reading the decline |
 | What did the route actually cost? | `GET …/walk?from=&to=&aim=&format=text`, or `04-routes.txt` | assuming the shortest line is the route |
 | …and on a **stacked** board? | the same read, with **`from=x,z,y`** — the `y` picks which storey of the column is meant | `x,z` alone, which walks to the column *under* an elevated goal and calls it walked end to end |
 | Is a lower storey still made of what I painted it? | `GET …/column?at=x,z` | the isometric, the census, or the 200 — none of the three sees it |
@@ -117,10 +121,8 @@ The one legitimate exception is §1's last row: a world that is not a stored map
 
 `opus5-thunder-series` reconstructed three boards from top-down renders and had to redo them.
 `opus5-tarnfell` read `world-material.png`, saw sand, and concluded the lake was missing — the material
-top-down draws the top **solid** block, so water reads as its own bed. `opus5-run4` read the
-traversability map and nearly redesigned a correct board (`B99`: an approach wall's cobweb reads as
-impassable). `opus5-undercroft` read a transect through a filter capped at y22 and concluded a causeway
-was six blocks low.
+top-down draws the top **solid** block, so water reads as its own bed. `opus5-undercroft` read a transect
+through a filter capped at y22 and concluded a causeway was six blocks low.
 
 > *"`GET /api/map/{slug}/column` is the read that settled every disagreement."* — `opus5-interchange`
 
@@ -143,8 +145,8 @@ computed it, **transect the thing you computed** before building on it.
 the compile refused: *version 2 states marker offsets in blocks from the piece corner.* Two spec
 documents in `specs/` disagree with the API by exactly one cell size.
 
-The same applies to `GENERATION-NOTES.md`, which is headed *"Measured against pgm-studio at b45b154"*.
-Its claim that theme scope is cross-layer is **stale** — `ShapeScopeOwners` keys on `(layer, x, z)`.
+The same applied to `GENERATION-NOTES.md`, where nine entries described a fault the studio had since fixed.
+It now carries no task id at all, which is the discipline that keeps it from happening again.
 
 **Order of authority: the API's own answer › the schema in `openapi.json` › the notes › a committed
 spec.** Read source only where two of those disagree, and then read the narrowest thing that settles it.
@@ -156,7 +158,9 @@ system"* — **false**; *"relief marks with area scope — missing"* — **false
 wrong explanation of `SK11` and filed a wrong bug against the 3-D preview that the author caught.
 
 Before writing that something is missing, look for it in `GET /api/openapi/v1.json` and say what you
-found. **missing** (no mechanism) · **unreachable** (exists, the surface hid it) · **mistaken** (exists,
+found.
+
+**missing** (no mechanism) · **unreachable** (exists, the surface hid it) · **mistaken** (exists,
 documented, not found) are three different verdicts and only the first is a capability gap.
 
 **Search the surface by what a thing would *do*, not by what you would call it.** `mistaken` is the usual
@@ -179,9 +183,12 @@ read:
 So run **three** searches before writing the word missing: the name you would give it, the sentence
 describing what it would do to a board, and the term catalogue. `GET /api/rules` returns every rule with its
 prose in one fetch and is greppable, `GET /api/rules/terms` is the second index and answers what is
-*measured* rather than what is stated, and `openapi.json` is greppable for a field name. Search a rule's
-prose and not only its summary: `CT4`'s summary is an island-size gradient and the sentence wanted is six
-clauses in. A gap filed against a surface that has the feature is worse than no gap — it is a capability the
+*measured* rather than what is stated, and `openapi.json` is greppable for a field name.
+
+Search a rule's prose and not only its summary: `CT4`'s summary is an island-size gradient and the sentence
+wanted is six clauses in.
+
+A gap filed against a surface that has the feature is worse than no gap — it is a capability the
 next run also will not use, and nothing will ever contradict it.
 
 ### The plan tier cannot see what you authored downstream, in both directions
@@ -255,6 +262,7 @@ shoulders: no flat to fight on, and no face to decide where anyone goes. It read
 place, no ledge, every step within a jump — which is exactly why nothing else catches it.
 
 `RL5` does, off `level` in the relief read: the share of an island under ten degrees, with 30% the bar.
+
 **State a tread where two marks would otherwise meet on a wall, and leave it off the ground meant to be flat
 to its edge.**
 
@@ -265,17 +273,26 @@ the treads off: 43.6% and 70 faces. Grain is not the difference — removing tha
 
 **A road drawn as a line walls itself.** A `line` mark pins every cell to whichever pass of the line is
 nearest, so a serpentine, a switchback or a spiral haul road puts the cells either side of the midline between
-two passes a whole winding apart in height. State a **`tread`** narrower than `r` and the rest of the band
-lofts — a ramp between the two treads' edges. Left alone it spreads over the whole run,
-`atan(drop / (pitch − 2·tread))`, and for a spiral the pitch is `(r0 − r1) / turns`; **`batter`**, in degrees,
-makes it steeper and puts a flat bench at the toe, which is what a worked quarry looks like. Work the pitch out
-before building — under `2·tread` there is no run to grade in, whatever is stated.
+two passes a whole winding apart in height.
+
+State a **`tread`** narrower than `r` and the rest of the band lofts — a ramp between the two treads' edges.
+Left alone it spreads over the whole run, `atan(drop / (pitch − 2·tread))`, and for a spiral the pitch is
+`(r0 − r1) / turns`.
+
+**`batter`**, in degrees, makes it steeper and puts a flat bench at the toe, which is what a worked quarry
+looks like.
+
+Work the pitch out before building — under `2·tread` there is no run to grade in, whatever is stated.
 
 **Two different marks whose bands touch do the same thing**, and this one is easy to miss because neither mark
 looks wrong on its own. The later one wins its cells outright and the seam is one cell carrying the whole
-difference. A `tread` on the later mark grades it: the shoulder states its height softly and blends into
-whatever the earlier mark put there. The shoulder's **width** sets the grade — 22 blocks over a 4-cell shoulder
-is 5.5 a cell, over 10 cells it is 2 — so a gentler seam means a narrower tread or a longer reach.
+difference.
+
+A `tread` on the later mark grades it: the shoulder states its height softly and blends into
+whatever the earlier mark put there.
+
+The shoulder's **width** sets the grade — 22 blocks over a 4-cell shoulder is 5.5 a cell, over 10 cells it
+is 2 — so a gentler seam means a narrower tread or a longer reach.
 
 **Do not go looking for these in a render.** `POST …/sketch/relief/read` answers `seams` per group — every
 pair of marks whose ground meets on a step of more than a block, worst first, each with the coordinate to
@@ -288,21 +305,6 @@ nothing, so the list is the fault and not the arrangement.
 the terrace the transect reads `33 33 32 31 29 28 26 25 24` and the seam is gone. Board-wide, 1,006 barrier
 cells became 480.*
 
-### A layer's paint reaches further down than the layer does
-
-A **plain** stacked layer's bands run from the **bedrock course**, whatever its `base_y`; only a made
-layer (`kind: "made"`) is painted over its own span. The one thing keeping a pass off the layer below
-is the stone-only invariant — it writes over `(1, 0)` and nothing else — so a ground theme filling in
-plain stone hands the whole column to whatever is drawn above it.
-
-> *"`y 42..39 Iron Block` the viaduct rail, `y 29..27 Stone Bricks` the street lid, `y 26..1 Iron
-> Block` — twenty-six courses of city painted as rail."* — `opus5-tiefkreuz`
-
-Nothing says so. The store answers 200, the export gate answers OPEN, `themes/census` counts the
-**surface** and is right, and a top-down of a lit street is grey either way. **On any board of more than
-one plain layer, `column` a cell where two of them overlap before you believe the render** — and give
-every ground theme a `fill` that is not `1:0`.
-
 ### Dressing placed by eye is dressing declined
 
 `opus5-hoarstone`: *"My site filter ignored the fan"* — a prop is judged at **every image of its orbit**;
@@ -312,8 +314,21 @@ bulges outside the vertex ring on a convex stretch and inside it on a concave on
 declined `DR-KEEP` at once.
 
 `06-claims.txt` is the whole board as one raster of what claims each cell — free, route, structure,
-tree, goal clearance, spawn keep-out. **The raster says where to try; `loop.py --candidates` says
-whether the try lands**, eight candidates for one pass. Neither costs a build.
+tree, goal clearance, spawn keep-out.
+
+**The raster says where to try; `loop.py --candidates` says whether the try lands**, eight candidates for
+one pass. Neither costs a build.
+
+**A placement that lands is not a placement that belongs, and that is the other half of the same mistake.**
+A search over the board answers legality and says nothing about composition, so planting every site it
+offers puts a forest on ten-block corridors; `WHAT-A-BOARD-IS-MADE-OF.md` §where a tree stands carries the
+author's rules, and `techniques/taking-over-a-composed-board` is the worked case — 34 legal sites, ten
+planted.
+
+**A search is also narrower than the studio, so let the dressing pass decide.** A filter that keeps only
+cells with eight level neighbours refuses every rim cell on a board, and a rim is often the only row a road
+leaves; what the studio asks is ground under the trunk, three clear of paving, unclaimed and not kept
+clear.
 
 ---
 

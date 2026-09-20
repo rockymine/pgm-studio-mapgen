@@ -1,0 +1,7 @@
+THEMES  3 themes over 87552 ground cells, 9 distinct surface blocks
+  moor  71552 cells (81.7%)  2:0 Grass Block, 3:1 Coarse Dirt, 4:0 Cobblestone, 1:0 Stone, 1:5 Andesite, 5:1 Spruce Planks, 12:0 Sand
+  strand  15360 cells (17.5%)  9:0 Water, 12:0 Sand, 24:2 Smooth Sandstone, 2:0 Grass Block
+  deck  640 cells (0.7%)  5:1 Spruce Planks, 4:0 Cobblestone, 1:0 Stone, 1:5 Andesite
+borders:
+  moor | strand  384 cells
+  deck | moor  208 cells

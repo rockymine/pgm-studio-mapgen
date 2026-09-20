@@ -1,0 +1,38 @@
+components 31 · navigable 8942 columns · bridgeable 0 · build ceiling y51
+
+30 patch(es) of standing ground no player can get to. None of this is a fault — scenery and a side observer island read exactly like this — but a shape stranded by accident reads like it too, and only the author can tell them apart.
+
+  cells  floor  reason          box
+   3936    y11  no-build-zone   x -52..59, z 20..111
+    384    y12  no-build-zone   x -16..15, z -8..7
+    150    y18  no-build-zone   x -56..-41, z -100..-89
+    150    y18  no-build-zone   x 40..55, z 88..99
+     39    y28  no-build-zone   x -25..-17, z -93..-85
+     39    y28  no-build-zone   x 16..24, z 84..92
+     33    y30  no-build-zone   x -7..6, z -111..-106
+     33    y30  no-build-zone   x -7..6, z 105..110
+     27    y28  no-build-zone   x -32..-24, z 59..64
+     27    y28  no-build-zone   x 23..31, z -65..-60
+     26    y25  no-build-zone   x -49..-42, z -98..-91
+     26    y25  no-build-zone   x 41..48, z 90..97
+     21    y24  no-build-zone   x -51..-42, z 65..70
+     21    y24  no-build-zone   x 41..50, z -71..-66
+     14    y24  no-build-zone   x -59..-58, z -75..-66
+     14    y24  no-build-zone   x 57..58, z 65..74
+     12    y29  no-build-zone   x -55..-52, z -97..-94
+     12    y29  no-build-zone   x 51..54, z 93..96
+      5    y24  no-build-zone   x -55..-54, z -75..-73
+      5    y24  no-build-zone   x -55..-54, z -68..-66
+      5    y24  no-build-zone   x -44..-42, z 69..70
+      5    y24  no-build-zone   x 41..43, z -71..-70
+      5    y24  no-build-zone   x 53..54, z 65..67
+      5    y24  no-build-zone   x 53..54, z 72..74
+      4    y36  no-build-zone   x -54..-53, z -96..-95
+      4    y36  no-build-zone   x 52..53, z 94..95
+      1    y30  no-build-zone   x -27..-27, z 63..63
+      1    y30  no-build-zone   x -20..-20, z -87..-87
+      1    y30  no-build-zone   x 21..21, z 86..86
+      1    y30  no-build-zone   x 28..28, z -64..-64
+
+  no-build-zone   nothing the map opens to bridging reaches it, and it is not walked to
+  above-ceiling   its ground stands over the map's maxbuildheight and cannot be built up to

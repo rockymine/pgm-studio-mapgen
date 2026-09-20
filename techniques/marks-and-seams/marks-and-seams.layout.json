@@ -1,0 +1,1413 @@
+{
+ "setup": {
+  "bbox": {
+   "min_x": -223,
+   "max_x": 223,
+   "min_z": -138,
+   "max_z": 138
+  },
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "mirror_mode": "none"
+ },
+ "themes": {
+  "moor": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 35,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 2,
+             "data": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 20,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 35,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 11,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 4,
+               "data": 0
+              }
+             ]
+            },
+            "thickness": 3
+           }
+          ]
+         }
+        }
+       }
+      ]
+     }
+    }
+   }
+  }
+ },
+ "mapTheme": "moor",
+ "relief": {
+  "butted": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "low-butted",
+     "kind": "area",
+     "h": 8,
+     "bevel": 0,
+     "ring": [
+      [
+       -209.0,
+       -90.0
+      ],
+      [
+       -121.0,
+       -90.0
+      ],
+      [
+       -121.0,
+       -60
+      ],
+      [
+       -209.0,
+       -60
+      ]
+     ]
+    },
+    {
+     "id": "high-butted",
+     "kind": "area",
+     "h": 20,
+     "bevel": 0,
+     "ring": [
+      [
+       -209.0,
+       -120
+      ],
+      [
+       -121.0,
+       -120
+      ],
+      [
+       -121.0,
+       -90.0
+      ],
+      [
+       -209.0,
+       -90.0
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "one-apart": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "low-one-apart",
+     "kind": "area",
+     "h": 8,
+     "bevel": 0,
+     "ring": [
+      [
+       -99.0,
+       -90.0
+      ],
+      [
+       -11.0,
+       -90.0
+      ],
+      [
+       -11.0,
+       -60
+      ],
+      [
+       -99.0,
+       -60
+      ]
+     ]
+    },
+    {
+     "id": "high-one-apart",
+     "kind": "area",
+     "h": 20,
+     "bevel": 0,
+     "ring": [
+      [
+       -99.0,
+       -120
+      ],
+      [
+       -11.0,
+       -120
+      ],
+      [
+       -11.0,
+       -91.0
+      ],
+      [
+       -99.0,
+       -91.0
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "gapped": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "low-gapped",
+     "kind": "area",
+     "h": 8,
+     "bevel": 0,
+     "ring": [
+      [
+       11.0,
+       -90.0
+      ],
+      [
+       99.0,
+       -90.0
+      ],
+      [
+       99.0,
+       -60
+      ],
+      [
+       11.0,
+       -60
+      ]
+     ]
+    },
+    {
+     "id": "high-gapped",
+     "kind": "area",
+     "h": 20,
+     "bevel": 0,
+     "ring": [
+      [
+       11.0,
+       -120
+      ],
+      [
+       99.0,
+       -120
+      ],
+      [
+       99.0,
+       -100.0
+      ],
+      [
+       11.0,
+       -100.0
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "bevelled": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "low-bevelled",
+     "kind": "area",
+     "h": 8,
+     "bevel": 0,
+     "ring": [
+      [
+       121.0,
+       -90.0
+      ],
+      [
+       209.0,
+       -90.0
+      ],
+      [
+       209.0,
+       -60
+      ],
+      [
+       121.0,
+       -60
+      ]
+     ]
+    },
+    {
+     "id": "high-bevelled",
+     "kind": "area",
+     "h": 20,
+     "bevel": 6,
+     "ring": [
+      [
+       121.0,
+       -120
+      ],
+      [
+       209.0,
+       -120
+      ],
+      [
+       209.0,
+       -90.0
+      ],
+      [
+       121.0,
+       -90.0
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "a-scarp": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "brink-a-scarp",
+     "kind": "scarp",
+     "high": 20,
+     "low": 8,
+     "face": 2,
+     "band": 14,
+     "points": [
+      [
+       -123,
+       0.0
+      ],
+      [
+       -207,
+       0.0
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "bevel-too-wide": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "low-bevel-too-wide",
+     "kind": "area",
+     "h": 8,
+     "bevel": 0,
+     "ring": [
+      [
+       -99.0,
+       0.0
+      ],
+      [
+       -11.0,
+       0.0
+      ],
+      [
+       -11.0,
+       30
+      ],
+      [
+       -99.0,
+       30
+      ]
+     ]
+    },
+    {
+     "id": "crest-bevel-too-wide",
+     "kind": "area",
+     "h": 20,
+     "bevel": 5,
+     "ring": [
+      [
+       -99.0,
+       -19.0
+      ],
+      [
+       -11.0,
+       -19.0
+      ],
+      [
+       -11.0,
+       -10.0
+      ],
+      [
+       -99.0,
+       -10.0
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "off-the-land": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "low-off-the-land",
+     "kind": "area",
+     "h": 8,
+     "bevel": 0,
+     "ring": [
+      [
+       11.0,
+       0.0
+      ],
+      [
+       99.0,
+       0.0
+      ],
+      [
+       99.0,
+       30
+      ],
+      [
+       11.0,
+       30
+      ]
+     ]
+    },
+    {
+     "id": "high-off-the-land",
+     "kind": "area",
+     "h": 20,
+     "bevel": 0,
+     "ring": [
+      [
+       11.0,
+       -30
+      ],
+      [
+       99.0,
+       -30
+      ],
+      [
+       99.0,
+       0.0
+      ],
+      [
+       11.0,
+       0.0
+      ]
+     ]
+    },
+    {
+     "id": "elsewhere-off-the-land",
+     "kind": "area",
+     "h": 30,
+     "bevel": 0,
+     "ring": [
+      [
+       67.0,
+       -78.0
+      ],
+      [
+       66.77,
+       -75.66
+      ],
+      [
+       66.09,
+       -73.41
+      ],
+      [
+       64.98,
+       -71.33
+      ],
+      [
+       63.49,
+       -69.51
+      ],
+      [
+       61.67,
+       -68.02
+      ],
+      [
+       59.59,
+       -66.91
+      ],
+      [
+       57.34,
+       -66.23
+      ],
+      [
+       55.0,
+       -66.0
+      ],
+      [
+       52.66,
+       -66.23
+      ],
+      [
+       50.41,
+       -66.91
+      ],
+      [
+       48.33,
+       -68.02
+      ],
+      [
+       46.51,
+       -69.51
+      ],
+      [
+       45.02,
+       -71.33
+      ],
+      [
+       43.91,
+       -73.41
+      ],
+      [
+       43.23,
+       -75.66
+      ],
+      [
+       43.0,
+       -78.0
+      ],
+      [
+       43.23,
+       -80.34
+      ],
+      [
+       43.91,
+       -82.59
+      ],
+      [
+       45.02,
+       -84.67
+      ],
+      [
+       46.51,
+       -86.49
+      ],
+      [
+       48.33,
+       -87.98
+      ],
+      [
+       50.41,
+       -89.09
+      ],
+      [
+       52.66,
+       -89.77
+      ],
+      [
+       55.0,
+       -90.0
+      ],
+      [
+       57.34,
+       -89.77
+      ],
+      [
+       59.59,
+       -89.09
+      ],
+      [
+       61.67,
+       -87.98
+      ],
+      [
+       63.49,
+       -86.49
+      ],
+      [
+       64.98,
+       -84.67
+      ],
+      [
+       66.09,
+       -82.59
+      ],
+      [
+       66.77,
+       -80.34
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "half-off": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "ridge-half-off",
+     "kind": "line",
+     "r": 14,
+     "h": [
+      8,
+      34
+     ],
+     "points": [
+      [
+       165.0,
+       26
+      ],
+      [
+       165.0,
+       -64
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "one-height": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "plateau-one-height",
+     "kind": "area",
+     "h": 30,
+     "bevel": 0,
+     "ring": [
+      [
+       -142.2,
+       90.0
+      ],
+      [
+       -142.97,
+       92.9
+      ],
+      [
+       -144.98,
+       95.36
+      ],
+      [
+       -147.51,
+       97.24
+      ],
+      [
+       -149.78,
+       98.79
+      ],
+      [
+       -151.34,
+       100.49
+      ],
+      [
+       -152.26,
+       102.74
+      ],
+      [
+       -153.05,
+       105.58
+      ],
+      [
+       -154.3,
+       108.53
+      ],
+      [
+       -156.36,
+       110.87
+      ],
+      [
+       -159.12,
+       111.93
+      ],
+      [
+       -162.17,
+       111.52
+      ],
+      [
+       -165.0,
+       110.0
+      ],
+      [
+       -167.39,
+       108.14
+      ],
+      [
+       -169.48,
+       106.71
+      ],
+      [
+       -171.66,
+       106.09
+      ],
+      [
+       -174.3,
+       106.11
+      ],
+      [
+       -177.4,
+       106.16
+      ],
+      [
+       -180.54,
+       105.54
+      ],
+      [
+       -183.07,
+       103.87
+      ],
+      [
+       -184.42,
+       101.21
+      ],
+      [
+       -184.47,
+       98.06
+      ],
+      [
+       -183.62,
+       94.99
+      ],
+      [
+       -182.63,
+       92.32
+      ],
+      [
+       -182.2,
+       90.0
+      ],
+      [
+       -182.63,
+       87.68
+      ],
+      [
+       -183.62,
+       85.01
+      ],
+      [
+       -184.47,
+       81.94
+      ],
+      [
+       -184.42,
+       78.79
+      ],
+      [
+       -183.07,
+       76.13
+      ],
+      [
+       -180.54,
+       74.46
+      ],
+      [
+       -177.4,
+       73.84
+      ],
+      [
+       -174.3,
+       73.89
+      ],
+      [
+       -171.66,
+       73.91
+      ],
+      [
+       -169.48,
+       73.29
+      ],
+      [
+       -167.39,
+       71.86
+      ],
+      [
+       -165.0,
+       70.0
+      ],
+      [
+       -162.17,
+       68.48
+      ],
+      [
+       -159.12,
+       68.07
+      ],
+      [
+       -156.36,
+       69.13
+      ],
+      [
+       -154.3,
+       71.47
+      ],
+      [
+       -153.05,
+       74.42
+      ],
+      [
+       -152.26,
+       77.26
+      ],
+      [
+       -151.34,
+       79.51
+      ],
+      [
+       -149.78,
+       81.21
+      ],
+      [
+       -147.51,
+       82.76
+      ],
+      [
+       -144.98,
+       84.64
+      ],
+      [
+       -142.97,
+       87.1
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "a-summit": {
+   "base": 8,
+   "reach": 24,
+   "step": 1,
+   "marks": [
+    {
+     "id": "summit-a-summit",
+     "kind": "point",
+     "at": [
+      -55.0,
+      90.0
+     ],
+     "h": 30,
+     "r": 6
+    }
+   ],
+   "pushes": []
+  },
+  "a-plateau": {
+   "base": 8,
+   "reach": 24,
+   "step": 1,
+   "marks": [
+    {
+     "id": "plateau-a-plateau",
+     "kind": "area",
+     "h": 30,
+     "bevel": 0,
+     "ring": [
+      [
+       77.8,
+       90.0
+      ],
+      [
+       77.03,
+       92.9
+      ],
+      [
+       75.02,
+       95.36
+      ],
+      [
+       72.49,
+       97.24
+      ],
+      [
+       70.22,
+       98.79
+      ],
+      [
+       68.66,
+       100.49
+      ],
+      [
+       67.74,
+       102.74
+      ],
+      [
+       66.95,
+       105.58
+      ],
+      [
+       65.7,
+       108.53
+      ],
+      [
+       63.64,
+       110.87
+      ],
+      [
+       60.88,
+       111.93
+      ],
+      [
+       57.83,
+       111.52
+      ],
+      [
+       55.0,
+       110.0
+      ],
+      [
+       52.61,
+       108.14
+      ],
+      [
+       50.52,
+       106.71
+      ],
+      [
+       48.34,
+       106.09
+      ],
+      [
+       45.7,
+       106.11
+      ],
+      [
+       42.6,
+       106.16
+      ],
+      [
+       39.46,
+       105.54
+      ],
+      [
+       36.93,
+       103.87
+      ],
+      [
+       35.58,
+       101.21
+      ],
+      [
+       35.53,
+       98.06
+      ],
+      [
+       36.38,
+       94.99
+      ],
+      [
+       37.37,
+       92.32
+      ],
+      [
+       37.8,
+       90.0
+      ],
+      [
+       37.37,
+       87.68
+      ],
+      [
+       36.38,
+       85.01
+      ],
+      [
+       35.53,
+       81.94
+      ],
+      [
+       35.58,
+       78.79
+      ],
+      [
+       36.93,
+       76.13
+      ],
+      [
+       39.46,
+       74.46
+      ],
+      [
+       42.6,
+       73.84
+      ],
+      [
+       45.7,
+       73.89
+      ],
+      [
+       48.34,
+       73.91
+      ],
+      [
+       50.52,
+       73.29
+      ],
+      [
+       52.61,
+       71.86
+      ],
+      [
+       55.0,
+       70.0
+      ],
+      [
+       57.83,
+       68.48
+      ],
+      [
+       60.88,
+       68.07
+      ],
+      [
+       63.64,
+       69.13
+      ],
+      [
+       65.7,
+       71.47
+      ],
+      [
+       66.95,
+       74.42
+      ],
+      [
+       67.74,
+       77.26
+      ],
+      [
+       68.66,
+       79.51
+      ],
+      [
+       70.22,
+       81.21
+      ],
+      [
+       72.49,
+       82.76
+      ],
+      [
+       75.02,
+       84.64
+      ],
+      [
+       77.03,
+       87.1
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  },
+  "facing": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "north-facing",
+     "kind": "area",
+     "h": 30,
+     "bevel": 0,
+     "ring": [
+      [
+       121.0,
+       58
+      ],
+      [
+       209.0,
+       58
+      ],
+      [
+       209.0,
+       70
+      ],
+      [
+       121.0,
+       70
+      ]
+     ]
+    },
+    {
+     "id": "south-facing",
+     "kind": "area",
+     "h": 8,
+     "bevel": 0,
+     "ring": [
+      [
+       121.0,
+       110
+      ],
+      [
+       209.0,
+       110
+      ],
+      [
+       209.0,
+       122
+      ],
+      [
+       121.0,
+       122
+      ]
+     ]
+    }
+   ],
+   "pushes": []
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "island-butted",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": -213,
+      "min_z": -128,
+      "max_x": -117,
+      "max_z": -52
+     },
+     {
+      "id": "island-one-apart",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": -103,
+      "min_z": -128,
+      "max_x": -7,
+      "max_z": -52
+     },
+     {
+      "id": "island-gapped",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": 7,
+      "min_z": -128,
+      "max_x": 103,
+      "max_z": -52
+     },
+     {
+      "id": "island-bevelled",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": 117,
+      "min_z": -128,
+      "max_x": 213,
+      "max_z": -52
+     },
+     {
+      "id": "island-a-scarp",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": -213,
+      "min_z": -38,
+      "max_x": -117,
+      "max_z": 38
+     },
+     {
+      "id": "island-bevel-too-wide",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": -103,
+      "min_z": -38,
+      "max_x": -7,
+      "max_z": 38
+     },
+     {
+      "id": "island-off-the-land",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": 7,
+      "min_z": -38,
+      "max_x": 103,
+      "max_z": 38
+     },
+     {
+      "id": "island-half-off",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": 117,
+      "min_z": -38,
+      "max_x": 213,
+      "max_z": 38
+     },
+     {
+      "id": "island-one-height",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": -213,
+      "min_z": 52,
+      "max_x": -117,
+      "max_z": 128
+     },
+     {
+      "id": "island-a-summit",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": -103,
+      "min_z": 52,
+      "max_x": -7,
+      "max_z": 128
+     },
+     {
+      "id": "island-a-plateau",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": 7,
+      "min_z": 52,
+      "max_x": 103,
+      "max_z": 128
+     },
+     {
+      "id": "island-facing",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": 117,
+      "min_z": 52,
+      "max_x": 213,
+      "max_z": 128
+     }
+    ],
+    "groups": [
+     {
+      "id": "butted",
+      "name": "butted",
+      "mirrors": false,
+      "shapeIds": [
+       "island-butted"
+      ]
+     },
+     {
+      "id": "one-apart",
+      "name": "one-apart",
+      "mirrors": false,
+      "shapeIds": [
+       "island-one-apart"
+      ]
+     },
+     {
+      "id": "gapped",
+      "name": "gapped",
+      "mirrors": false,
+      "shapeIds": [
+       "island-gapped"
+      ]
+     },
+     {
+      "id": "bevelled",
+      "name": "bevelled",
+      "mirrors": false,
+      "shapeIds": [
+       "island-bevelled"
+      ]
+     },
+     {
+      "id": "a-scarp",
+      "name": "a-scarp",
+      "mirrors": false,
+      "shapeIds": [
+       "island-a-scarp"
+      ]
+     },
+     {
+      "id": "bevel-too-wide",
+      "name": "bevel-too-wide",
+      "mirrors": false,
+      "shapeIds": [
+       "island-bevel-too-wide"
+      ]
+     },
+     {
+      "id": "off-the-land",
+      "name": "off-the-land",
+      "mirrors": false,
+      "shapeIds": [
+       "island-off-the-land"
+      ]
+     },
+     {
+      "id": "half-off",
+      "name": "half-off",
+      "mirrors": false,
+      "shapeIds": [
+       "island-half-off"
+      ]
+     },
+     {
+      "id": "one-height",
+      "name": "one-height",
+      "mirrors": false,
+      "shapeIds": [
+       "island-one-height"
+      ]
+     },
+     {
+      "id": "a-summit",
+      "name": "a-summit",
+      "mirrors": false,
+      "shapeIds": [
+       "island-a-summit"
+      ]
+     },
+     {
+      "id": "a-plateau",
+      "name": "a-plateau",
+      "mirrors": false,
+      "shapeIds": [
+       "island-a-plateau"
+      ]
+     },
+     {
+      "id": "facing",
+      "name": "facing",
+      "mirrors": false,
+      "shapeIds": [
+       "island-facing"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

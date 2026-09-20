@@ -1,0 +1,415 @@
+\chapter{Whitegape: A Destroy Board Authored From Nothing}
+\label{ch:dtm}
+
+\section{The Subject and Why It Is First}
+
+Whitegape is a destroy-the-monument board for twenty players a side, authored
+against no brief and taken from no composed arrangement. Every rectangle in its
+plan was placed by its author, and the studio's only contribution to the
+arrangement was to refuse the arrangements it would not accept.
+
+That is what makes it the first of the two worked examples. Nothing about it is
+inherited, so every decision in it is attributable, and the question this paper
+asks at every stage has an answer that can be checked. Hushwater, in
+\cref{ch:ctw}, begins from a board the studio produced, and the interesting
+question there is the opposite one: what is left to decide once the arrangement
+arrives already made.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{maps/whitegape-iso.png}
+\caption{Whitegape as exported. The near half is team~A's: a stone quarry yard on
+the rim, the monument on the floor of the pit cut into it, and a loading dock five
+courses lower at the lip. \id{rot\_180} fans the whole of it to the far side.}
+\label{fig:whitegape-iso}
+\end{figure}
+
+\section{The Board in One Sentence}
+
+The board's author states it in the first line of the build specification: two
+teams face each other across a chasm, each holding a stone-built quarry yard on
+its own rim, with its monument on the floor of the pit cut into that yard, and
+the only way over is a bridge the attackers build.
+
+Everything downstream is a consequence of that sentence, and the sentence
+is not the studio's. The studio has no opinion about what a map is of. It
+will not suggest a quarry, it will not object to one, and it has no
+representation in which \emph{limestone gorge} is distinguishable from
+\emph{any other pair of rectangles at those coordinates}. What it has is a
+refusal surface, and the sentence has to survive it.
+
+The board is deliberately two kinds of place, and the seam between them is a
+line a player can see. The back half, from $z=-100$ to $z=-64$, is grown
+ground: open limestone fell, rolling, pinned in five places and left to the
+solver everywhere else. The front half, from $z=-64$ to $z=-12$, is made
+ground: one level stone yard with the pit sunk into it, a loading dock cut
+five courses lower at the lip, a kiln on the dock and a works shed on the
+yard. The retaining face between them carries two flights, and those two
+flights are the only ways through it.
+
+\section{The Plan: Four Rectangles and a Pillar}
+
+The plan document is small. \Cref{tab:whitegape-plan} is the whole arrangement.
+
+\begin{table}[htbp]
+\caption{Whitegape's plan, in full. Rectangles are in cells; the grid is four
+blocks to the cell.}
+\label{tab:whitegape-plan}
+\small
+\begin{tabularx}{\textwidth}{L{2.6cm} L{2.4cm} L{3.4cm} Y}
+\toprule
+\textbf{Id} & \textbf{Role} & \textbf{Rect (cells)} & \textbf{What it is} \\
+\midrule
+\id{fell}   & \id{piece} & $[-7,-21,14,18]$ & the body of the board \\
+\id{fell-w} & \id{piece} & $[-7,-25,2,4]$ & fell west of the spawn \\
+\id{fell-e} & \id{piece} & $[-1,-25,8,4]$ & fell east of the spawn \\
+\id{head}   & \id{spawn} & $[-5,-25,4,4]$ & the spawn shelf, one step higher \\
+\id{chasm}  & zone & $[-7,-6,14,12]$ & the build region, over the whole gap \\
+\id{destroyable-1} & objective & at $(-9,-50)$ & \id{pillar-3}, obsidian, float 4 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Two facts about that table carry most of the plan's weight.
+
+The first is that the fell is tiled \emph{around} the spawn rather than drawn
+under it. \id{PL4} refuses two pieces that overlap at different surfaces, and
+the spawn shelf stands one block above the moor. The alternative was to
+abandon the step, and the step is what \id{SP8} allows and what makes a spawn
+read as a place rather than as a painted square, so the tiling is what gave
+way. The board's back edge is therefore three rectangles where a reader looking
+at the world sees one continuous fell.
+
+The second is that the destroyable names no piece. Its \id{piece} field is
+empty and its position is stated in blocks, because by the time it is placed
+there is no rectangle under it: the pit is a shape sunk ten courses into the
+yard, and the yard is a shape drawn over the fell. The plan level cannot
+describe a hole, so the objective's home is described at the level that can,
+and the plan states only where it is.
+
+\subsection{Five Numbers, and Which of Them Are the Studio's}
+
+The specification opens by naming five measurements and the rules they answer:
+176 blocks from spawn to spawn along the lane, 42 blocks from a team's own
+spawn to its goal, 56 blocks of width before the coast is cut, and a 24-block
+void gap across the chasm. The rules cited are \id{GO1} (three to four goals
+of separation), \id{GO3} (at least 85), and \id{GO4} (at least 40).
+
+Every one of those bands is the studio's and every one of the numbers is the
+author's. This is the division of labour in its plainest form: the studio does
+not know what distance a board wants, and it knows exactly which distances it
+will not accept. An author who does not read the bands first discovers them one
+refusal at a time, which is the slowest way to learn a number that
+\route{GET /api/rules} will print.
+
+\section{The Coast: Editing an Outline the Studio Compiled}
+
+Compiling the plan produces the board's ground, and the ground the plan
+describes is rectangular. The compiled outline of the fell, which the studio
+names \id{fell-24}, comes back as eight vertices, and three of its edges are
+long straight runs down the flanks and across the lip.
+
+A board that is left there reads as a rectangle from every camera. Whitegape's
+author changes it in two ways, and the two are worth separating because they
+are different instruments.
+
+The first is deliberate: fourteen vertices are inserted and four are moved,
+each one stating one place. A bay is pulled back into the west lip. The two
+back corners are cut off. Nine points are run along the flanks and the lip, and
+the lip's points stop short of the dock's own span, because a made edge is
+straight and a grown one is not, and that difference is the whole argument of
+the board.
+
+The operations run in descending index. An insert shifts every index after it,
+so a list written forwards and applied forwards addresses the wrong vertices
+from the second operation onward. The specification replays each run in reverse
+for it to come out forwards, which is a mechanical detail that costs a rebuild
+to discover and nothing at all to state.
+
+The second change is not deliberate in the same sense: a bend is applied to the
+whole outline, with a wander of 2.5, a step of 11 and \id{side: out}. The
+author chooses the parameters; the studio chooses every vertex the bend
+produces. \id{side: out} is the one decision in it that is fully the author's,
+and it is a safety decision rather than an aesthetic one: a bend that only
+bloats cannot leave the yard or the dock hanging over void, and it cannot
+narrow the strait out of \id{CT12}'s band of 15 to 40 blocks.
+
+\section{Relief: Five Marks Over Half a Board}
+
+\Cref{ch:relief} describes the height model. Whitegape uses it in the way that
+model rewards and in one way it punished.
+
+The rewarded use is that the relief is given half a board to spread over. Five
+marks and three pushes are stated, and every one of them is in the back half or
+along the lip. The front half is made ground, excluded from the solve entirely,
+and takes no part in it. The consequence is that the solver is interpolating
+between pins that are far apart, which is the condition under which it produces
+ground rather than terraces.
+
+The punished use was an earlier arrangement of the same marks. A single area
+mark ran across the full width of the board at the foot of the retaining face,
+which is the obvious way to state \emph{the fell meets the works at this
+height}. It is also the way to flatten everything behind it, because a mark
+pinned across the whole width leaves the solver nothing to interpolate
+\emph{between}. The measurement that named it is the relief read: level 0.54
+and largest field 0.21, both over the thresholds at which a surface is reported
+to have no shape left. The fix was to replace the band with two aprons, one at
+the foot of each flight, pinned only where a flight has to arrive at a definite
+height.
+
+That failure is worth stating in full because of its shape. Nothing refused it.
+The board built, the export gate opened, and every picture of it looked like a
+map. What said so was a number, and the number was available before the world
+was built.
+
+\begin{table}[htbp]
+\caption{Whitegape's relief, stated in full. \id{base} 22, \id{reach} 0,
+\id{step} 1, with a grain of amplitude 1.2 at scale 16.}
+\label{tab:whitegape-relief}
+\small
+\begin{tabularx}{\textwidth}{L{3.0cm} L{1.8cm} Y}
+\toprule
+\textbf{Id} & \textbf{Kind} & \textbf{What it pins} \\
+\midrule
+\id{shelf}        & area & the spawn shelf at 25, one step over the moor \\
+\id{gate-apron-w} & area & the foot of the west flight at 21 \\
+\id{gate-apron-e} & area & the foot of the east flight at 21 \\
+\id{liprim}       & area & the gorge lip at 19, either side of the dock \\
+\id{cartway}      & line & the road off the fell down to the works gate \\
+\midrule
+\id{knott} & push & a rise on the fell \\
+\id{slack} & push & a damp hollow the cart road skirts, $-5$ \\
+\id{rigg}  & push & a low rise on the west flank, so the flank is not one gradient \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{The Ground Finished by Its Angle}
+
+The single most consequential decision about how Whitegape looks is that its
+grown half is painted on the \id{slope} axis rather than on \id{height}.
+
+A theme banded by height paints contour lines. Every column at $y=24$ takes the
+same block whether it sits on a meadow or halfway up a cliff, and the result is
+a board that reads flat from above however much relief is under it. A theme
+banded by slope asks a different question of each column: not how high it is,
+but how steeply the ground runs through it.
+
+Whitegape's fell states three bands on that axis. Ground lying at up to
+sixteen degrees takes grass over coarse dirt over dirt. From sixteen to
+thirty-four degrees it takes a worn shoulder of coarse dirt and gravel over
+dirt. Past thirty-four it takes bare rock, stone and andesite in a cell
+pattern, two deep over stone. Each band is itself a layered material on the
+\id{depth} axis, so the paint is a stack of stacks: slope chooses which
+column profile applies, and depth walks it downward.
+
+The cuts are not guessed. \route{GET .../incline?format=text} reports where the
+board's ground actually lies, and the three bands are cut where that read said
+the population divides. An author who picks band edges by eye produces a board
+where one band is empty and another carries 90\% of the surface, and neither
+the export nor any gate will mention it.
+
+\section{The Made Half}
+
+Fifteen shapes are added, and they are the front half of the board.
+
+\begin{table}[htbp]
+\caption{The fifteen added shapes, in the order the specification states them.}
+\label{tab:whitegape-shapes}
+\small
+\begin{tabularx}{\textwidth}{L{2.4cm} L{1.9cm} L{1.9cm} Y}
+\toprule
+\textbf{Id} & \textbf{Type} & \textbf{Height} & \textbf{What it is} \\
+\midrule
+\id{yard} & polygon & level 24 & the terrace, 23 vertices, three notches cut into its front edge \\
+\id{dock} & polygon & level 19 & the loading dock at the lip, front edge straight \\
+\id{pit} & polygon & sink 10 & the quarry, sheer sides and a flat floor \\
+\id{gate-w}, \id{gate-e} & polygon & flight & the two ways up through the retaining face \\
+\id{stair-w}, \id{stair-e} & polygon & flight & yard down into the dock, filling two notches \\
+\id{haul-ramp} & polygon & flight & the defenders' way down into the pit \\
+\id{tramway} & polygon & flight & the attackers' way in: dock to pit floor, through the yard \\
+\id{charge-ramp} & polygon & flight & yard up to the kiln's charging mouth \\
+\id{revet-w}, \id{revet-m}, \id{revet-e} & polyline & level 27 & the retaining wall, in three runs \\
+\id{kerb-w}, \id{kerb-e} & polyline & level 21 & the dock's parapet, split at the middle \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Three things in that table are decisions rather than descriptions.
+
+The pit is a \id{sink}, not a set of nested area marks. A sink cuts sheer and
+leaves a flat floor. Nested marks at descending heights build a funnel, which is
+what a quarry is not: a quarry has a floor and walls, and the floor is where
+the monument stands.
+
+The yard's three notches are sized to exactly the flights that fill them. A
+flight drawn \emph{into} the yard would lose every one of its columns, because
+the taller add wins the column outright and the yard stands five courses over
+the dock. Cutting the notch out of the yard's own ring and dropping the flight
+into it is the only arrangement in which both survive.
+
+The revetment is in three runs rather than one. Its two gaps are exactly the
+two gate flights, so the wall has ends, it has gates, and it has the fell on
+one side and the works on the other. A single run with the flights drawn over
+it would produce the same picture and a different fact: the wall would own
+those columns and the flights would be decoration on top of a barrier.
+
+\subsection{Made Ground Is Coursed, Not Bedded}
+
+Whitegape's rock is stated once, as a six-band layered material on the depth
+axis: two of stone, one of diorite, three of stone, one of andesite, four of
+stone, two of diorite, repeating. Every cut face on the board reads those same
+beds in that same order. The gorge walls, the quarry faces and the bank behind
+the yard are one limestone rather than three separate decisions, and that is a
+consequence of stating the material once and referring to it, not of any rule.
+
+The made ground does not use it. The yard and the dock take a \id{wallRun}
+instead: horizontal courses of stone brick five wide, stone three wide and
+cobblestone two wide, striping along the perimeter. The distinction is
+legible in the world at a glance, and it is the one place on the board where
+\id{wallRun} is the right instrument. A run stripes along a face, which is what
+masonry does and what a geological bed does not.
+
+\section{The Kiln, Built Rather Than Emitted}
+
+The board's one landmark is a lime kiln standing on the dock with its back
+against the yard.
+
+It is built out of rectangles on two made layers. That is a ruling rather than a
+preference: the studio ships a library of parametric forms, and a tapered tower
+off that library would have produced a kiln-shaped object in one call. The map
+author's judgement, recorded during this run, is that a structure emitted from a
+library does not read as a building, and that anything meant to be a building is
+constructed by the author.
+
+What the construction has to know is small and unforgiving. A layer holds one
+span per column, so the base and the stack are two layers rather than two
+heights on one; \id{SK9} declines the second span on a 200 and says so only in
+\id{warnings}. The draw arch is drawn as the masonry \emph{around} the opening
+rather than as a subtraction, because \id{SK13} reads a subtract as the board's
+negative space and refuses any add that fills it. A rectangle is half-open, so
+every piece needs a maximum strictly over its minimum or it draws no ground at
+all, which \id{SK4} reports. The taper is five courses, each stepped in one
+block, stated one rectangle at a time.
+
+The kiln's material is brick over hardened clay, and it is the only brick on the
+board. It is the one thing read from the far rim, and a landmark may not be the
+ground it stands on.
+
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{maps/whitegape-made.png}
+  \caption{Made ground. Every column a shape or a layer owns.}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{maps/whitegape-structure.png}
+  \caption{Structures. The spawn shell, the works shed, the kiln.}
+\end{subfigure}
+\caption{The made half, isolated by two of the studio's own read-backs. Neither
+picture is drawn for this paper; both are routes on the running API.}
+\label{fig:whitegape-made}
+\end{figure}
+
+\section{What the Board Says When It Is Read Back}
+
+The export is not the end of the run. \Cref{ch:reading} describes the reads a
+built world answers, and Whitegape's author takes roughly twenty-five of them on
+every build. Three are worth reproducing, because each answers a question no
+picture answers.
+
+\subsection{The Heightmap Says Whether the Relief Solved}
+
+The heightmap read prints one character per block, banded in single blocks above
+a floor. Whitegape's back half runs from band 4 to band 9 across forty blocks
+of the west flank and climbs to band \texttt{g} on the east, which is a
+difference of twelve blocks over the width of the board. A flattened board
+prints as a field of one character, and that is exactly what the earlier
+full-width gate mark produced.
+
+\subsection{The Slope Read Says Whether It Can Be Walked}
+
+The slopes read prints the worst step from each block to a neighbour: a
+full stop where the rise is nought or one, a colon where it is two, a hash where
+it is three or more. Whitegape's fell is almost entirely full stops. The two
+columns of hashes running down the middle of the back half are the spawn
+shelf's own face, which is a wall by design, and the band of hashes across
+$z=-85$ is the shelf's front. Everything an attacker crosses is walked.
+
+\subsection{The Flow Read Says What the Board Does Not Use}
+
+The flow read is the one that changes a board. It reports that 1952 of 9856
+blocks, just under a fifth of the ground, sit off every route between the places
+the board has, and it gives the coordinates: 848 blocks around $(-20, 68)$, 608
+around $(16, -84)$, 432 around $(-24, -64)$.
+
+The read's own wording is the point. Ground is dead because no journey passes
+it, not because it is far out, and decorating it only means players look at it
+on the way past. A fifth of Whitegape is ground nobody has a reason to stand on,
+and the studio said so with coordinates rather than with an adjective.
+
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{maps/whitegape-traversability.png}
+  \caption{Traversability. Where the worst step to a neighbour is a barrier.}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{maps/whitegape-objectives.png}
+  \caption{Objectives and their clearances.}
+\end{subfigure}
+\caption{Two read-backs of the finished world. Both are pictures of a
+measurement rather than of the board.}
+\label{fig:whitegape-reads}
+\end{figure}
+
+\section{What the Export Wrote}
+
+The intent document states what the board is played for, and the export turns it
+into a \id{map.xml} of 169 lines and a region folder of four files. The
+gamemode is \id{dtm}. Two teams are declared at a maximum of twenty each, which
+is the plan's \id{maxPlayers} carried through unchanged, and it is a cap per
+team rather than for the board.
+
+The monument is a three-block obsidian pillar floating four above the terrain.
+The float is not a mistake and not a stylistic choice: a destroyable resting on
+the ground is trivially covered, and floating it is what PGM has always done.
+This is the one claim in this chapter that the repository cannot settle. Neither
+the corpus nor the studio's own code says what a destroyable needs around it;
+the map author does, and the answer is recorded rather than derived.
+
+\section{The Division of Labour on This Board}
+
+\Cref{tab:whitegape-labour} is the chapter in one table.
+
+\begin{table}[htbp]
+\caption{Whitegape, stage by stage: what the studio settled and what was left
+to its author.}
+\label{tab:whitegape-labour}
+\small
+\begin{tabularx}{\textwidth}{L{2.6cm} Y Y}
+\toprule
+\textbf{Stage} & \textbf{\studio{The studio}} & \textbf{\agent{The author}} \\
+\midrule
+Arrangement & \id{PL4}: no two pieces overlapping at different surfaces.
+  \id{GO1}, \id{GO3}, \id{GO4}: the distance bands &
+  four rectangles, one zone, one objective, and the five numbers inside
+  the bands \\
+Coast & every vertex the bend produced; the compiled eight-vertex outline &
+  fourteen inserts, four moves, and \id{side: out} \\
+Relief & the solved field between the pins; the level and field measures
+  that named the flattening &
+  five marks, three pushes, and the decision to exclude the front half \\
+Paint & which block lands on which cell; the incline report &
+  four themes, the slope axis, and where the three bands cut \\
+Shapes & the taller add wins; \id{SK4}, \id{SK9}, \id{SK13} &
+  fifteen outlines, and a notch sized to each flight \\
+Structures & storey heights, roof pitch, which side the door takes &
+  the kiln as rectangles, and the refusal to emit one \\
+Dressing & the legal seats and every decline &
+  ten styles and nineteen props \\
+Objectives & the region, the filter, the monument's own blocks &
+  what the board is played for, and the float \\
+\bottomrule
+\end{tabularx}
+\end{table}

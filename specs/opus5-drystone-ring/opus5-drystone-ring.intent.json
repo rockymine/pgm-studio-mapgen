@@ -1,0 +1,274 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 8,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 10,
+    "y": 14,
+    "z": 45
+   },
+   "protection": [
+    {
+     "minX": 5,
+     "minZ": 40,
+     "maxX": 20,
+     "maxZ": 50
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": 6,
+    "minZ": 41,
+    "maxX": 14,
+    "maxZ": 49
+   },
+   "iron": [
+    {
+     "x": 18,
+     "y": 14,
+     "z": 45
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 10,
+    "y": 14,
+    "z": -45
+   },
+   "protection": [
+    {
+     "minX": 5,
+     "minZ": -50,
+     "maxX": 20,
+     "maxZ": -40
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": 6,
+    "minZ": -49,
+    "maxX": 14,
+    "maxZ": -41
+   },
+   "iron": [
+    {
+     "x": 18,
+     "y": 14,
+     "z": -45
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 44,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -10,
+    "minZ": -10,
+    "maxX": 15,
+    "maxZ": 10
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "protection": [
+    {
+     "minX": -70,
+     "minZ": 40,
+     "maxX": -60,
+     "maxZ": 50
+    }
+   ],
+   "spawn": {
+    "x": -65,
+    "y": 12,
+    "z": 45
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -70,
+     "minZ": 40,
+     "maxX": -60,
+     "maxZ": 40
+    },
+    {
+     "minX": -60,
+     "minZ": 40,
+     "maxX": -60,
+     "maxZ": 50
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "protection": [
+    {
+     "minX": -70,
+     "minZ": -50,
+     "maxX": -60,
+     "maxZ": -40
+    }
+   ],
+   "spawn": {
+    "x": -65,
+    "y": 12,
+    "z": -45
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -70,
+     "minZ": -40,
+     "maxX": -60,
+     "maxZ": -40
+    },
+    {
+     "minX": -60,
+     "minZ": -50,
+     "maxX": -60,
+     "maxZ": -40
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "ctw"
+ ],
+ "meta": {
+  "name": "Drystone Ring",
+  "created": "2026-09-16",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": {
+  "layer": null,
+  "redstoneLines": [
+   {
+    "x1": -70,
+    "z1": 40,
+    "x2": -61,
+    "z2": 40,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "x1": -70,
+    "z1": -41,
+    "x2": -61,
+    "z2": -41,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1
+    }
+   },
+   {
+    "x1": -61,
+    "z1": 40,
+    "x2": -61,
+    "z2": 49,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 0
+    }
+   },
+   {
+    "x1": -61,
+    "z1": -50,
+    "x2": -61,
+    "z2": -41,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 1
+    }
+   }
+  ],
+  "ironCubes": [],
+  "walls": [],
+  "isEmpty": false
+ }
+}

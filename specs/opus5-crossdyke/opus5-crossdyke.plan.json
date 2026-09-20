@@ -1,0 +1,153 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Crossdyke",
+  "notes": "CTW. One wool a team behind a limestone moor; the middle is a reef with a causeway over it, and the two storeys are two crossings."
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 8,
+  "surface": 14,
+  "observerY": 44
+ },
+ "pieces": [
+  {
+   "id": "bank-w",
+   "role": "piece",
+   "rect": [
+    -5,
+    5,
+    4,
+    3
+   ]
+  },
+  {
+   "id": "bank-e",
+   "role": "piece",
+   "rect": [
+    -1,
+    5,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "spawn-t1",
+   "role": "piece",
+   "rect": [
+    -6,
+    6,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    -9,
+    6,
+    3,
+    2
+   ]
+  },
+  {
+   "id": "wool-t1",
+   "role": "piece",
+   "rect": [
+    1,
+    9,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "wool-room",
+   "role": "wool-room",
+   "rect": [
+    1,
+    11,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "reef",
+   "role": "piece",
+   "rect": [
+    -5,
+    -2,
+    10,
+    4
+   ],
+   "surface": 9,
+   "mirrors": false
+  }
+ ],
+ "zones": [
+  {
+   "id": "cross-n",
+   "rect": [
+    -5,
+    2,
+    10,
+    3
+   ],
+   "holes": []
+  },
+  {
+   "id": "cross-s",
+   "rect": [
+    -5,
+    -5,
+    10,
+    3
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     5,
+     5
+    ],
+    "facing": "right",
+    "footprint": [
+     1,
+     1,
+     8,
+     8
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-room",
+    "at": [
+     5,
+     5
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "spawn-room",
+    "at": [
+     13,
+     5
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

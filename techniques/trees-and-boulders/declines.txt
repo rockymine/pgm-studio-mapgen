@@ -1,0 +1,101 @@
+POST /api/map/technique-trees-and-boulders/sketch/dressing — 106 props placed, 18 declined and 4 complained about,
+9627 cells claimed. Both arrive on a 200 and they are not the same answer: a
+DECLINE means the prop is not in the world, a COMPLAINT means it is, minus what was cut off it.
+
+### tree-standoff — an oak at a stated Chebyshev reach from the road's nearest claimed cell
+  off-1              2 from the band edge           DECLINED  DR-ROAD  tree 'off-1' rests on (-138, -102), nearer than 3 blocks to the road at (-140, -104)
+  off-2              3 from the band edge           placed
+  off-3              4 from the band edge           placed
+  off-4              5 from the band edge           placed
+
+### boulder-standoff — the same ladder in rock, measured from the boulder's own footprint
+  rock-off-1         2 from the band edge           DECLINED  DR-ROAD  boulder 'rock-off-1' rests on (-62, -103), nearer than 2 blocks to the road at (-63, -104)
+  rock-off-2         3 from the band edge           DECLINED  DR-ROAD  boulder 'rock-off-2' rests on (-45, -103), nearer than 2 blocks to the road at (-46, -104)
+  rock-off-3         4 from the band edge           placed
+  rock-off-4         5 from the band edge           placed
+
+### a-wide-brush — four oaks at ONE distance, eleven off a radius-8 `rough` brush's centreline
+  brush-at-0         at x offset -24                placed
+  brush-at-1         at x offset -8                 placed
+  brush-at-2         at x offset 8                  placed
+  brush-at-3         at x offset 24                 placed
+
+### set-back — nine oaks thrown inside the pad and clear of a radius-2 road
+  back-0             in the wood                    placed
+  back-1             in the wood                    placed
+  back-2             in the wood                    placed
+  back-3             in the wood                    placed
+  back-4             in the wood                    placed
+  back-5             in the wood                    placed
+  back-6             in the wood                    placed
+  back-7             in the wood                    placed
+  back-8             in the wood                    placed
+
+### two-boulders — one pair three apart, one pair nine apart
+  pair-near-a        first of the near pair         placed
+  pair-near-b        three from it                  DECLINED  DR-CLAIM  boulder 'pair-near-b' rests on (-131, -43), claimed by the prop 'pair-near-a'
+  pair-clear-a       first of the clear pair        placed
+  pair-clear-b       nine from it                   placed
+
+### kind-decides — a rock and an oak two apart, twice, with the document order opposite
+  rock-first         stated first                   placed
+  tree-second        stated second                  DECLINED  DR-CLAIM  tree 'tree-second' rests on (-51, -35), claimed by the prop 'rock-first'
+  tree-first         stated first                   DECLINED  DR-CLAIM  tree 'tree-first' rests on (-25, -35), claimed by the prop 'rock-second'
+  rock-second        stated second                  placed
+
+### two-trees — a pair of nines and a pair of fourteens, one seed pair per ladder, x-step only
+  nine-1-b           1 from its pair                DECLINED  DR-CLAIM  tree 'nine-1-b' rests on (16, -49), claimed by the prop 'nine-1-a'
+  nine-2-b           2 from its pair                DECLINED  DR-CLAIM  tree 'nine-2-b' rests on (33, -49), claimed by the prop 'nine-2-a'
+  nine-3-b           3 from its pair                DECLINED  DR-CLAIM  tree 'nine-3-b' rests on (50, -49), claimed by the prop 'nine-3-a'
+  nine-4-b           4 from its pair                placed
+  tall-2-b           2 from its pair                DECLINED  DR-CLAIM  tree 'tall-2-b' rests on (17, -21), claimed by the prop 'tall-2-a'
+  tall-3-b           3 from its pair                DECLINED  DR-CLAIM  tree 'tall-3-b' rests on (34, -21), claimed by the prop 'tall-3-a'
+  tall-4-b           4 from its pair                DECLINED  DR-CLAIM  tree 'tall-4-b' rests on (51, -21), claimed by the prop 'tall-4-a'
+  tall-5-b           5 from its pair                placed
+
+### a-wood — forty-five darts accepted against the measured crown reach
+  wood-0             first                          placed
+  wood-22            middle                         placed
+  wood-44            last                           placed
+  wood-cover         the overlay over it            placed
+
+### a-kept-clear-wall — an override add on the ground layer that states `keepClear`
+  kept-rock          leaning on it                  DECLINED  DR-KEEP  boulder 'kept-rock' rests on (-128, 34), which is kept clear for a stated structure
+  kept-tree          leaning on it                  DECLINED  DR-KEEP  tree 'kept-tree' rests on (-107, 35), which is kept clear for a stated structure
+
+### an-unmarked-wall — the same wall with the field left out
+  plain-rock         leaning on it                  placed
+  plain-tree         leaning on it                  placed
+
+### a-goal-clearance — a monument's 21 x 21 clearance, bracketed
+  goal-off-9         Chebyshev 9 from the anchor    DECLINED  OB19  tree 'goal-off-9' rests on (48, 35), inside a goal's clearance
+  goal-off-10        Chebyshev 10 from the anchor   DECLINED  OB19  tree 'goal-off-10' rests on (39, 45), inside a goal's clearance
+  goal-off-11        Chebyshev 11 from the anchor   placed
+  goal-off-12        Chebyshev 12 from the anchor   placed
+
+### flora-overlay — a road, a rock and an overlay over what they left
+  road-cover         the road                       placed
+  cover-rock         the rock                       placed
+  cover              the overlay                    placed
+
+### a-copied-tree — two bodies cut out of `tree-showcase`, and a template beside them
+  showcase-tall-one  tree-showcase-r2-1, 299 blocks placed
+  showcase-giant-one tree-showcase-r3-1, 412 blocks placed
+  template-beside    oak, height 14                 placed
+
+### a-body-s-foot — both anchored three off one road; the giant's foot spans nine cells
+  foot-slender       foot: one cell                 placed
+  foot-buttressed    foot: nine cells               DECLINED  DR-ROAD  tree 'foot-buttressed' rests on (-26, 108), nearer than 3 blocks to the road at (-28, 106)
+
+### a-copied-crown — pairs of `showcase-tall`, whose trunk row reads `#######..####`
+  crown-2-b          two apart, into a hole         placed    DR-CUT  tree 'crown-2-b' seats clear of what it then reaches into: 70 of its 299 blocks are inside something already standing and were not written, and that cut 51 more off its own footing, which stand in the air. 229 block(s) are in the world; first stopped at (13, 10, 84). A prop seats on its feet and is written wherever it meets air, so standing clear of a wall is not the same as fitting beside one — move it further off, or make it smaller
+  crown-3-b          three apart, onto a block      DECLINED  DR-CLAIM  tree 'crown-3-b' rests on (46, 90), claimed by the prop 'crown-3-a'
+  crown-8-b          eight apart                    placed    DR-CUT  tree 'crown-8-b' seats clear of what it then reaches into: 17 of its 299 blocks are inside something already standing and were not written, and that cut 12 more off its own footing, which stand in the air. 282 block(s) are in the world; first stopped at (21, 11, 117). A prop seats on its feet and is written wherever it meets air, so standing clear of a wall is not the same as fitting beside one — move it further off, or make it smaller
+  crown-16-b         sixteen apart                  placed
+
+### props-on-a-grade — a face at sixty-three degrees, over this theme's cliff band of fifty-five
+  grade-top          on the flat top                placed
+  grade-face         an oak on the face             placed
+  grade-face-rock    a rock on the face             placed    DR-STEEP  boulder 'grade-face-rock' stands at (131, 105) on ground inclined 63°, and the theme painting that cell calls the ground a face from 55° — the slope is already the feature there and a rock pinned to it reads as neither. Move it onto the flat, or onto the graded band below the face
+  grade-face-rock    a rock on the face             placed    DR-CUT  boulder 'grade-face-rock' seats clear of what it then reaches into: 62 of its 99 blocks are inside something already standing and were not written, and that cut 0 more off its own footing, which stand in the air. 37 block(s) are in the world; first stopped at (130, 8, 103). Over half of it is buried, so what stands there is not the prop that was placed — a prop seats on the lowest column its feet cover, which on stepped ground is the bottom of a step, so move it onto one step or the other
+  grade-foot         on the flat foot               placed

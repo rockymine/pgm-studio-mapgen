@@ -1,0 +1,173 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 10,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 24,
+    "z": -78
+   },
+   "protection": [
+    {
+     "minX": -12,
+     "minZ": -80,
+     "maxX": 12,
+     "maxZ": -64
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -8,
+    "minZ": -79,
+    "maxX": 12,
+    "maxZ": -71
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 24,
+    "z": 78
+   },
+   "protection": [
+    {
+     "minX": -12,
+     "minZ": 64,
+     "maxX": 12,
+     "maxZ": 80
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": -12,
+    "minZ": 71,
+    "maxX": 8,
+    "maxZ": 79
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 46,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -28,
+    "minZ": -12,
+    "maxX": 28,
+    "maxZ": 12
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Fallowgate Stone",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -17,
+    "y": 13,
+    "z": -46
+   },
+   "float": 2,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Fallowgate Stone",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 16,
+    "y": 13,
+    "z": 45
+   },
+   "float": 2,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Fallowgate",
+  "created": "2026-09-19",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}

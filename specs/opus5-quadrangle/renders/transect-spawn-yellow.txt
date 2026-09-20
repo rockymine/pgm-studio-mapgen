@@ -1,0 +1,65 @@
+## spawn-yellow (spawn) along x
+TRANSECT 27 stations from (-83, -60) to (-57, -60), every 1
+  station        ground  surface  water  top  standing            step
+  (  -83,   -60)                                                    void
+  (  -82,   -60)                                                    void
+  (  -81,   -60)                                                    void
+  (  -80,   -60)                                                    void
+  (  -79,   -60)                                                    void
+  (  -78,   -60)                                                    void
+  (  -77,   -60)                                                    void
+  (  -76,   -60)                                                    void
+  (  -75,   -60)      11       11           18                      
+  (  -74,   -60)      11       11           18  spawn spawn-1#2     
+  (  -73,   -60)      11       11           18  spawn spawn-1#2     
+  (  -72,   -60)      11       11           18  spawn spawn-1#2     
+  (  -71,   -60)      11       11           18  spawn spawn-1#2     
+  (  -70,   -60)      11       11           18  spawn spawn-1#2     
+  (  -69,   -60)      11       11           18  spawn spawn-1#2     
+  (  -68,   -60)      11       11           18  stroke way#2        
+  (  -67,   -60)      11       11           18  stroke way#2        
+  (  -66,   -60)      11       11           18  stroke way#2        
+  (  -65,   -60)      11       11           11  stroke way#2        
+  (  -64,   -60)      11       11           11  stroke way#2        
+  (  -63,   -60)      11       11           11  stroke way#2        
+  (  -62,   -60)      11       11           11  stroke way#2        
+  (  -61,   -60)      11       11           11  stroke way#2        
+  (  -60,   -60)      11       11           11                      
+  (  -59,   -60)      11       11           11                      
+  (  -58,   -60)      11       11           11                      
+  (  -57,   -60)      11       11           11                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#2 at (-74, -62), stroke way#2 at (-68, -62)
+
+## spawn-yellow (spawn) along z
+TRANSECT 27 stations from (-70, -73) to (-70, -47), every 1
+  station        ground  surface  water  top  standing            step
+  (  -70,   -73)                                                    void
+  (  -70,   -72)                                                    void
+  (  -70,   -71)                                                    void
+  (  -70,   -70)                                                    void
+  (  -70,   -69)                                                    void
+  (  -70,   -68)                                                    void
+  (  -70,   -67)                                                    void
+  (  -70,   -66)                                                    void
+  (  -70,   -65)      11       11           18                      
+  (  -70,   -64)      11       11           18  spawn spawn-1#2     
+  (  -70,   -63)      11       11           18  spawn spawn-1#2     
+  (  -70,   -62)      11       11           18  spawn spawn-1#2     
+  (  -70,   -61)      11       11           18  spawn spawn-1#2     
+  (  -70,   -60)      11       11           18  spawn spawn-1#2     
+  (  -70,   -59)      11       11           18  spawn spawn-1#2     
+  (  -70,   -58)      11       11           18  spawn spawn-1#2     
+  (  -70,   -57)      11       11           18  spawn spawn-1#2     
+  (  -70,   -56)      11       11           18                      
+  (  -70,   -55)                                                    void
+  (  -70,   -54)                                                    void
+  (  -70,   -53)                                                    void
+  (  -70,   -52)                                                    void
+  (  -70,   -51)                                                    void
+  (  -70,   -50)                                                    void
+  (  -70,   -49)      10       10           10                      
+  (  -70,   -48)      10       10           10                      
+  (  -70,   -47)      10       10           10                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#2 at (-72, -64), stroke way#2 at (-68, -62), redstoneline 6#2 at (-72, -45)

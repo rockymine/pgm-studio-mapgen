@@ -1,0 +1,316 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Walls And Iron",
+  "authors": [
+   "the technique cards"
+  ]
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "none",
+  "maxPlayers": 10,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "line-room",
+   "role": "wool-room",
+   "rect": [
+    0,
+    0,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "line-approach",
+   "role": "piece",
+   "rect": [
+    0,
+    4,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "line-field",
+   "role": "piece",
+   "rect": [
+    0,
+    8,
+    4,
+    8
+   ]
+  },
+  {
+   "id": "shoulder-room",
+   "role": "wool-room",
+   "rect": [
+    14,
+    0,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "shoulder-approach",
+   "role": "piece",
+   "rect": [
+    14,
+    4,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "shoulder-west",
+   "role": "piece",
+   "rect": [
+    10,
+    4,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "shoulder-east",
+   "role": "piece",
+   "rect": [
+    18,
+    4,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "shoulder-field",
+   "role": "piece",
+   "rect": [
+    10,
+    8,
+    12,
+    8
+   ]
+  },
+  {
+   "id": "sealed-room",
+   "role": "wool-room",
+   "rect": [
+    32,
+    0,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "sealed-inner",
+   "role": "piece",
+   "rect": [
+    32,
+    4,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "sealed-middle",
+   "role": "piece",
+   "rect": [
+    32,
+    8,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "sealed-outer",
+   "role": "piece",
+   "rect": [
+    32,
+    12,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "spawn-red",
+   "role": "spawn",
+   "rect": [
+    46,
+    4,
+    5,
+    5
+   ]
+  },
+  {
+   "id": "spawn-red-yard",
+   "role": "piece",
+   "rect": [
+    46,
+    9,
+    5,
+    5
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid",
+   "rect": [
+    0,
+    16,
+    36,
+    4
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-red",
+    "at": [
+     10.0,
+     10.0
+    ],
+    "facing": "back",
+    "footprint": [
+     4,
+     1,
+     12,
+     12
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-line",
+    "piece": "line-room",
+    "at": [
+     8,
+     8
+    ]
+   },
+   {
+    "id": "wool-shoulder",
+    "piece": "shoulder-room",
+    "at": [
+     8,
+     8
+    ]
+   },
+   {
+    "id": "wool-sealed",
+    "piece": "sealed-room",
+    "at": [
+     8,
+     8
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-yard",
+    "piece": "spawn-red",
+    "at": [
+     10.0,
+     16.5
+    ]
+   },
+   {
+    "id": "iron-inside",
+    "piece": "spawn-red",
+    "at": [
+     10.0,
+     10.0
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [
+  {
+   "a": "line-field",
+   "b": "line-approach"
+  },
+  {
+   "a": "shoulder-field",
+   "b": "shoulder-approach"
+  },
+  {
+   "a": "sealed-outer",
+   "b": "sealed-middle"
+  },
+  {
+   "a": "sealed-middle",
+   "b": "sealed-inner"
+  }
+ ],
+ "boxes": [
+  {
+   "id": "line",
+   "kind": "wool",
+   "rect": [
+    0,
+    0,
+    4,
+    16
+   ],
+   "members": [
+    "line-room",
+    "line-approach",
+    "line-field"
+   ]
+  },
+  {
+   "id": "shoulder",
+   "kind": "wool",
+   "rect": [
+    10,
+    0,
+    12,
+    16
+   ],
+   "members": [
+    "shoulder-room",
+    "shoulder-approach",
+    "shoulder-west",
+    "shoulder-east",
+    "shoulder-field"
+   ]
+  },
+  {
+   "id": "sealed",
+   "kind": "wool",
+   "rect": [
+    32,
+    0,
+    4,
+    16
+   ],
+   "members": [
+    "sealed-room",
+    "sealed-inner",
+    "sealed-middle",
+    "sealed-outer"
+   ]
+  },
+  {
+   "id": "spawn",
+   "kind": "spawn",
+   "rect": [
+    46,
+    4,
+    5,
+    10
+   ],
+   "members": [
+    "spawn-red",
+    "spawn-red-yard"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,371 @@
+{
+ "setup": {
+  "bbox": {
+   "min_x": -64,
+   "max_x": 128,
+   "min_z": -32,
+   "max_z": 32
+  },
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "mirror_mode": "none"
+ },
+ "mapTheme": "ground",
+ "themes": {
+  "ground": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "beyond": {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     },
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 30,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "beyond": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         "stack": {
+          "ending": "handOver",
+          "bands": [
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 2,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            }
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 15,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "beyond": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         "stack": {
+          "ending": "handOver",
+          "bands": [
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 13,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            }
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 45,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "beyond": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         },
+         "stack": {
+          "ending": "handOver",
+          "bands": [
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 4,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 1,
+             "data": 0
+            }
+           }
+          ]
+         }
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   }
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "push-plot",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 32,
+      "min_x": -60,
+      "min_z": -28,
+      "max_x": -4,
+      "max_z": 28
+     },
+     {
+      "id": "sink-plot",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 32,
+      "min_x": 4,
+      "min_z": -28,
+      "max_x": 60,
+      "max_z": 28
+     },
+     {
+      "id": "sink-pit",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 12,
+      "min_x": 14,
+      "min_z": -18,
+      "max_x": 50,
+      "max_z": 18,
+      "height_mode": "sink",
+      "skirt": 0
+     },
+     {
+      "id": "mark-plot",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 32,
+      "min_x": 68,
+      "min_z": -28,
+      "max_x": 124,
+      "max_z": 28
+     }
+    ],
+    "groups": [
+     {
+      "id": "push",
+      "name": "Push",
+      "mirrors": false,
+      "shapeIds": [
+       "push-plot"
+      ]
+     },
+     {
+      "id": "sink",
+      "name": "Sink",
+      "mirrors": false,
+      "shapeIds": [
+       "sink-plot",
+       "sink-pit"
+      ]
+     },
+     {
+      "id": "mark",
+      "name": "Mark",
+      "mirrors": false,
+      "shapeIds": [
+       "mark-plot"
+      ]
+     }
+    ]
+   }
+  }
+ ],
+ "relief": {
+  "push": {
+   "base": 32,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "land--32",
+     "kind": "area",
+     "h": 32,
+     "bevel": 0,
+     "ring": [
+      [
+       -60,
+       -28
+      ],
+      [
+       -4,
+       -28
+      ],
+      [
+       -4,
+       28
+      ],
+      [
+       -60,
+       28
+      ]
+     ]
+    }
+   ],
+   "pushes": [
+    {
+     "id": "pit",
+     "ring": [
+      [
+       -50,
+       -18
+      ],
+      [
+       -14,
+       -18
+      ],
+      [
+       -14,
+       18
+      ],
+      [
+       -50,
+       18
+      ]
+     ],
+     "amount": -12,
+     "falloff": 6,
+     "crown": 0,
+     "roughness": 0,
+     "seed": 1
+    }
+   ]
+  },
+  "sink": {
+   "base": 32,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": []
+  },
+  "mark": {
+   "base": 32,
+   "reach": 0,
+   "step": 1,
+   "pushes": [],
+   "marks": [
+    {
+     "id": "land-96",
+     "kind": "area",
+     "h": 32,
+     "bevel": 0,
+     "ring": [
+      [
+       68,
+       -28
+      ],
+      [
+       124,
+       -28
+      ],
+      [
+       124,
+       28
+      ],
+      [
+       68,
+       28
+      ]
+     ]
+    },
+    {
+     "id": "basin",
+     "kind": "area",
+     "h": 20,
+     "ring": [
+      [
+       78,
+       -18
+      ],
+      [
+       114,
+       -18
+      ],
+      [
+       114,
+       18
+      ],
+      [
+       78,
+       18
+      ]
+     ],
+     "bevel": 4
+    }
+   ]
+  }
+ }
+}

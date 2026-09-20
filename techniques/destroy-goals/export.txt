@@ -1,0 +1,20 @@
+GET …/export — the board as the card commits it. A 200 carrying a `Pgm-Warnings` header is a world
+that was built anyway, and the warnings say what the studio changed.
+
+  200  Pgm-Warnings: 4 DC3
+
+`GET /api/rules?rule=DC3`:
+
+  means:
+    A destroyable is built in a material its size is wrong for: obsidian is worth at most three blocks, so a
+    cube or a plus-section column carrying it is a grind rather than a raid — or the material names nothing
+    the studio builds at all, which writes into the map.xml verbatim while the blocks come out obsidian, and
+    a declared material matching nothing in its own region is a goal at zero health (OB3).
+
+  fix:
+    Name a material the goal's size is built for: obsidian for a pillar, ender stone, gold or emerald for a
+    cube or a column. This is a complaint — the world is built and the goal stands, in ender stone rather
+    than in what was named, and the map.xml declares what was actually laid.
+
+Four goals tripped it: the three obsidian shapes bigger than a pillar in the style row, and the
+obsidian `cube-4` in the material row. All four were built in ender stone instead.

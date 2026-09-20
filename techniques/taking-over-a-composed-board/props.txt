@@ -1,0 +1,70 @@
+POST /api/map/technique-composed-4-taken-over/sketch/dressing — where a prop may stand on a board
+that is nothing but corridors, and which of those places is planted.
+
+### the search, three passes of it, each asked of the board with no props on it
+  against the layout alone                     1,398 cells,  52 sites
+  against the layout and the stored intent     1,274 cells,  45 sites
+  the same, with every cell's rot_180 image    1,062 cells,  34 sites
+
+  The first pass loses four of the first twenty sites to `DR-KEEP`: a room, a door approach and a
+  spawn are keep-outs that do not exist in the claims map until the compiled intent is stored. The
+  orbit pass refuses nothing here and is still not optional — it is the last 212 cells of the field.
+
+### that field by region, which is most of the placement decision
+  the front bar, its rim in front of hole-1                        84  rows z 24..30
+  the front bar, its rim in front of hole-2                        72  rows z 24..30
+  the front bar, the mid-facing brink                              92  rows z 22..23
+  the back bar, the far lane's far side                           103  rows z 46..54
+  the back bar, the paved middle and the spawn end                  0  nowhere
+  the two staircases, three one-cell treads each                    0  nowhere
+  the spawn shelf and its room                                      0  nowhere
+  the approach in front of the wall                                 0  nowhere
+  behind the wall, in front of the room                             6  rows z 76..78
+  the mid, under and around the deck                              106  rows z -6..6
+
+  A one-cell tread can never hold a prop: its eight neighbours are at another height by
+  construction. The approach in front of the wall is kept clear by the wall's own keep-out, and the
+  paved stretch of the back bar by 916 paved cells each owing a tree three blocks.
+
+### the seven planted out of that field, and why each one is where it is
+  oak-front-west-a     at ( -18,  30)   placed    the rim between the front bar and hole-1
+  oak-front-west-b     at ( -11,  30)   placed    and its pair, seven blocks along
+  oak-front-east-a     at (   5,  30)   placed    the same rim in front of hole-2
+  oak-front-east-b     at (  11,  30)   placed    and its pair
+  oak-lane-far-a       at ( -29,  54)   placed    the back bar's far side, eight blocks off the lane's shore
+  oak-lane-far-b       at ( -23,  54)   placed    and its pair
+  oak-room-corner      at ( -18,  78)   placed    the corner behind the wall, in front of the room
+  oak-path-a           at (  16,  55)   placed    along the road on the bar's outer rim, outside what the search offers
+  oak-path-b           at (   6,  54)   placed    the same rim, ten blocks along
+  oak-path-c           at (  -4,  55)   placed    and the third, west of the middle
+
+### five placed the way an author places them on a board that looks like a landscape
+  eye-on-the-road        at (   0,  50)   DECLINED  DR-CLAIM  tree 'eye-on-the-road' rests on (0, 50), claimed by the paving 'spine'
+  eye-beside-it          at (   0,  47)   DECLINED  DR-ROAD  tree 'eye-beside-it' rests on (0, 47), nearer than 3 blocks to the road at (-1, 46)
+  eye-over-a-hole        at (  10,  38)   DECLINED  DR-SITE  tree 'eye-over-a-hole' has no ground at (10, 38)
+  eye-in-the-doorway     at ( -12,  77)   DECLINED  DR-KEEP  tree 'eye-in-the-doorway' rests on (-12, 77), which is kept clear as the approach in front of a door
+  eye-against-the-wall   at ( -14,  67)   DECLINED  DR-KEEP  tree 'eye-against-the-wall' rests on (-14, 67), which is built ground rather than terrain
+
+placed 24, refused 5, 1516 cells claimed.
+
+The last three are outside the field above, and that is the point of the distinction. The search
+keeps a cell whose eight neighbours are ground at one height, so it refuses every RIM cell on the
+board: beyond a rim is void, and a neighbour that is not ground fails the test. What the studio
+asks is narrower — ground under the trunk, three clear of the paving, unclaimed, not kept clear —
+and the bar's outer rim passes all four. A site is checked against the dressing pass; the search's
+silence is conservatism and not a refusal.
+
+### what the studio allows along the back bar's road, one candidate at a time
+  Every second column of six rows, each put to the dressing pass on its own, on a board with no
+  trees on it — so what the marks show is the roads, the rooms and the rim.
+  z  45  . . . . . R C C R . . . . . . . . R C C R .
+  z  46  . R R R R R C C R R R R R R R R R R C C R R
+  z  47  R R R R R R C C R R R R R R R R R R C C R R
+  z  53  C C R R R R R R R R R R R R R R R R R R R S
+  z  54  C C R R . . . . . . . . . . . R R R R R S S
+  z  55  C C R . . . . . . . . . . . . . . . . S S S
+         the leftmost mark is x -16 and each one after it is two columns east, to x 26
+         . allowed   R DR-ROAD   C DR-CLAIM   S DR-SITE
+
+The rows the road leaves are 45 and 54-55, and 54-55 is the outer rim. On a bar twelve deep with
+a five-wide road down it there is nowhere else: three clear of the paving is the rim or nothing.

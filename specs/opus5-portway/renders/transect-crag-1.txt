@@ -1,0 +1,61 @@
+## crag-1 (boulder) along x
+TRANSECT 25 stations from (8, 52) to (32, 52), every 1
+  station        ground  surface  water  top  standing            step
+  (    8,    52)      12       12           12                      
+  (    9,    52)      12       12           12                      
+  (   10,    52)      12       12           12                      
+  (   11,    52)      12       12           12                      
+  (   12,    52)      12       12           12                      
+  (   13,    52)      12       12           12                      
+  (   14,    52)      12       12           12                      
+  (   15,    52)      12       12           12                      
+  (   16,    52)      12       12           12                      
+  (   17,    52)      12       12           12                      
+  (   18,    52)      12       12           15  boulder crag-1      
+  (   19,    52)      12       12           16  boulder crag-1      
+  (   20,    52)      11       11           16  boulder crag-1      -1
+  (   21,    52)      11       11           16  boulder crag-1      
+  (   22,    52)      11       11           15  boulder crag-1      
+  (   23,    52)      10       10           14  boulder crag-1      -1
+  (   24,    52)      10       10           16  wall 1              
+  (   25,    52)      10       10           16  wall 1              
+  (   26,    52)      10       10           10                      
+  (   27,    52)      10       10           10                      
+  (   28,    52)      10       10           10                      
+  (   29,    52)      10       10           10                      
+  (   30,    52)      10       10           10                      
+  (   31,    52)      10       10           10                      
+  (   32,    52)      11       11           11                      +1
+rises 1, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder crag-0 at (12, 54), boulder crag-1 at (18, 51), wall 1 at (24, 50)
+
+## crag-1 (boulder) along z
+TRANSECT 25 stations from (20, 40) to (20, 64), every 1
+  station        ground  surface  water  top  standing            step
+  (   20,    40)      12       21           21  storey              
+  (   20,    41)      12       21           21  storey              
+  (   20,    42)      12       21           21  storey              
+  (   20,    43)      12       21           21  storey              
+  (   20,    44)      12       12           12                      DROP -9
+  (   20,    45)      12       12           12                      
+  (   20,    46)      12       12           12                      
+  (   20,    47)      12       12           12                      
+  (   20,    48)      12       12           12                      
+  (   20,    49)      11       11           13  boulder crag-1      -1
+  (   20,    50)      11       11           15  boulder crag-1      
+  (   20,    51)      11       11           15  boulder crag-1      
+  (   20,    52)      11       11           16  boulder crag-1      
+  (   20,    53)      11       11           16  boulder crag-1      
+  (   20,    54)      11       11           15  boulder crag-1      
+  (   20,    55)      12       12           12                      +1
+  (   20,    56)      12       12           12                      
+  (   20,    57)      13       13           13                      +1
+  (   20,    58)      14       14           14                      +1
+  (   20,    59)      14       14           14                      
+  (   20,    60)      14       14           14                      
+  (   20,    61)      14       14           14                      
+  (   20,    62)      14       14           14                      
+  (   20,    63)      14       14           14                      
+  (   20,    64)      14       14           14                      
+rises 3, falls 2, worst step 9: 0 barrier, 0 scramble, 1 drop — DROP -9 at (20, 44) | walked end to end
+beside: boulder crag-1 at (20, 49)

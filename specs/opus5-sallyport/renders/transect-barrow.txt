@@ -1,0 +1,69 @@
+## barrow (made) along x
+TRANSECT 29 stations from (-4, 56) to (24, 56), every 1
+  station        ground  surface  water  top  standing            step
+  (   -4,    56)       9        9            9                      
+  (   -3,    56)       9        9            9                      
+  (   -2,    56)       9        9            9                      
+  (   -1,    56)       9        9            9                      
+  (    0,    56)      11       11           11                      scramble +2
+  (    1,    56)      11       11           11                      
+  (    2,    56)      11       11           11                      
+  (    3,    56)      11       11           11                      
+  (    4,    56)      11       13           13  storey              scramble +2
+  (    5,    56)      11       13           13  storey              
+  (    6,    56)      11       15           15  storey              scramble +2
+  (    7,    56)      11       15           15  storey              
+  (    8,    56)      11       17           17  storey              scramble +2
+  (    9,    56)      11       17           17  storey              
+  (   10,    56)      11       17           17  storey              
+  (   11,    56)      11       17           17  storey              
+  (   12,    56)      11       15           15  storey              -2
+  (   13,    56)      13       15           15  storey              
+  (   14,    56)      13       13           13                      -2
+  (   15,    56)      13       13           13                      
+  (   16,    56)      13       13           13                      
+  (   17,    56)      13       13           13                      
+  (   18,    56)      13       13           13                      
+  (   19,    56)      13       13           13                      
+  (   20,    56)      13       13           13                      
+  (   21,    56)      11       11           11                      -2
+  (   22,    56)      11       11           11                      
+  (   23,    56)      11       11           11                      
+  (   24,    56)      11       11           11                      
+rises 4, falls 3, worst step 2: 0 barrier, 4 scramble, 0 drop — scramble +2 at (0, 56); scramble +2 at (4, 56); scramble +2 at (6, 56); scramble +2 at (8, 56) | walked end to end
+beside: tree fir-0 at (-4, 57), boulder clint-0 at (21, 57)
+
+## barrow (made) along z
+TRANSECT 29 stations from (10, 42) to (10, 70), every 1
+  station        ground  surface  water  top  standing            step
+  (   10,    42)      14       26           26  storey              
+  (   10,    43)      14       29           29  storey              BARRIER +3
+  (   10,    44)      14       14           14                      DROP -15
+  (   10,    45)      11       11           11                      -3
+  (   10,    46)      11       11           11                      
+  (   10,    47)      11       11           11                      
+  (   10,    48)      11       11           11                      
+  (   10,    49)      11       11           11                      
+  (   10,    50)      11       13           13  storey              scramble +2
+  (   10,    51)      11       13           13  storey              
+  (   10,    52)      11       15           15  storey              scramble +2
+  (   10,    53)      13       15           15  storey              
+  (   10,    54)      13       17           17  storey              scramble +2
+  (   10,    55)      13       17           17  storey              
+  (   10,    56)      11       17           17  storey              
+  (   10,    57)      11       17           17  storey              
+  (   10,    58)      11       15           15  storey              -2
+  (   10,    59)      11       15           15  storey              
+  (   10,    60)      11       13           13  storey              -2
+  (   10,    61)      11       13           13  storey              
+  (   10,    62)      11       11           11                      -2
+  (   10,    63)                                                    void
+  (   10,    64)                                                    void
+  (   10,    65)                                                    void
+  (   10,    66)                                                    void
+  (   10,    67)                                                    void
+  (   10,    68)                                                    void
+  (   10,    69)                                                    void
+  (   10,    70)                                                    void
+rises 4, falls 5, worst step 15: 1 barrier, 3 scramble, 1 drop — BARRIER +3 at (10, 43); DROP -15 at (10, 44); scramble +2 at (10, 50); scramble +2 at (10, 52); scramble +2 at (10, 54) | walked end to end
+beside: stroke way at (8, 40)

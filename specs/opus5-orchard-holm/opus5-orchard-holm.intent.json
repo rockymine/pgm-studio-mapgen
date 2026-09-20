@@ -1,0 +1,320 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -12.5,
+    "y": 9,
+    "z": -77.5
+   },
+   "protection": [
+    {
+     "minX": -20,
+     "minZ": -85,
+     "maxX": -5,
+     "maxZ": -70
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": null,
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 12.5,
+    "y": 9,
+    "z": 77.5
+   },
+   "protection": [
+    {
+     "minX": 5,
+     "minZ": 70,
+     "maxX": 20,
+     "maxZ": 85
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": null,
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 24,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -25,
+    "minZ": -25,
+    "maxX": 20,
+    "maxZ": -10
+   },
+   {
+    "minX": -20,
+    "minZ": 10,
+    "maxX": 25,
+    "maxZ": 25
+   },
+   {
+    "minX": 20,
+    "minZ": -45,
+    "maxX": 40,
+    "maxZ": -30
+   },
+   {
+    "minX": -40,
+    "minZ": 30,
+    "maxX": -20,
+    "maxZ": 45
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": {
+   "exclusions": []
+  }
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "protection": [
+    {
+     "minX": 40,
+     "minZ": -70,
+     "maxX": 55,
+     "maxZ": -55
+    }
+   ],
+   "spawn": {
+    "x": 47.5,
+    "y": 9,
+    "z": -62.5
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": 40,
+     "minZ": -70,
+     "maxX": 40,
+     "maxZ": -55
+    },
+    {
+     "minX": 40,
+     "minZ": -55,
+     "maxX": 55,
+     "maxZ": -55
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "protection": [
+    {
+     "minX": -55,
+     "minZ": 55,
+     "maxX": -40,
+     "maxZ": 70
+    }
+   ],
+   "spawn": {
+    "x": -47.5,
+    "y": 9,
+    "z": 62.5
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -40,
+     "minZ": 55,
+     "maxX": -40,
+     "maxZ": 70
+    },
+    {
+     "minX": -55,
+     "minZ": 55,
+     "maxX": -40,
+     "maxZ": 55
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": [
+  {
+   "id": "orchard-apples",
+   "at": {
+    "x": 0,
+    "y": 11,
+    "z": 0
+   },
+   "pad": "gold block",
+   "reach": 8,
+   "protect": 7,
+   "delay": "45s",
+   "maxEntities": 4,
+   "drops": [
+    {
+     "material": "golden apple",
+     "amount": 1
+    }
+   ]
+  }
+ ],
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "ctw"
+ ],
+ "meta": {
+  "name": "Orchard Holm",
+  "created": "2026-09-15",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red",
+  "3": "neutral"
+ },
+ "structures": {
+  "layer": null,
+  "redstoneLines": [
+   {
+    "x1": 40,
+    "z1": -70,
+    "x2": 40,
+    "z2": -56,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "x1": -41,
+    "z1": 55,
+    "x2": -41,
+    "z2": 69,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1
+    }
+   },
+   {
+    "x1": 40,
+    "z1": -56,
+    "x2": 54,
+    "z2": -56,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 0
+    }
+   },
+   {
+    "x1": -55,
+    "z1": 55,
+    "x2": -41,
+    "z2": 55,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 1
+    }
+   }
+  ],
+  "ironCubes": [],
+  "walls": [
+   {
+    "minX": 24,
+    "minZ": -70,
+    "maxX": 26,
+    "maxZ": -55,
+    "topY": 11,
+    "chestOnMinFace": true,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "minX": -26,
+    "minZ": 55,
+    "maxX": -24,
+    "maxZ": 70,
+    "topY": 11,
+    "chestOnMinFace": false,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 1
+    }
+   }
+  ],
+  "isEmpty": false
+ }
+}

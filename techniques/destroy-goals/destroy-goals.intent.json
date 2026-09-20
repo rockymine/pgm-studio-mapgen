@@ -1,0 +1,209 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "team": "red",
+   "yaw": 90,
+   "iron": [],
+   "point": {
+    "x": -180,
+    "y": 12,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": -190,
+     "minZ": -10,
+     "maxX": -170,
+     "maxZ": 10
+    }
+   ]
+  },
+  {
+   "team": "blue",
+   "yaw": 270,
+   "iron": [],
+   "point": {
+    "x": 180,
+    "y": 12,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": 170,
+     "minZ": -10,
+     "maxX": 190,
+     "maxZ": 10
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 51,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "destroyables": [
+  {
+   "owner": "blue",
+   "name": "pillar-1",
+   "style": "pillar-1",
+   "materials": "obsidian",
+   "float": 4,
+   "anchor": {
+    "x": -100,
+    "y": 11,
+    "z": -28
+   }
+  },
+  {
+   "owner": "blue",
+   "name": "pillar-2",
+   "style": "pillar-2",
+   "materials": "obsidian",
+   "float": 4,
+   "anchor": {
+    "x": -60,
+    "y": 11,
+    "z": -28
+   }
+  },
+  {
+   "owner": "blue",
+   "name": "pillar-3",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "float": 4,
+   "anchor": {
+    "x": -20,
+    "y": 11,
+    "z": -28
+   }
+  },
+  {
+   "owner": "blue",
+   "name": "cube-3",
+   "style": "cube-3",
+   "materials": "obsidian",
+   "float": 4,
+   "anchor": {
+    "x": 20,
+    "y": 11,
+    "z": -28
+   }
+  },
+  {
+   "owner": "blue",
+   "name": "cube-4",
+   "style": "cube-4",
+   "materials": "obsidian",
+   "float": 4,
+   "anchor": {
+    "x": 60,
+    "y": 11,
+    "z": -28
+   }
+  },
+  {
+   "owner": "blue",
+   "name": "column-plus",
+   "style": "column-plus",
+   "materials": "obsidian",
+   "float": 4,
+   "anchor": {
+    "x": 100,
+    "y": 11,
+    "z": -28
+   }
+  },
+  {
+   "owner": "blue",
+   "name": "obsidian",
+   "style": "cube-4",
+   "materials": "obsidian",
+   "float": 4,
+   "anchor": {
+    "x": -90,
+    "y": 11,
+    "z": 28
+   }
+  },
+  {
+   "owner": "blue",
+   "name": "emerald block",
+   "style": "cube-4",
+   "materials": "emerald block",
+   "float": 4,
+   "anchor": {
+    "x": -30,
+    "y": 11,
+    "z": 28
+   }
+  },
+  {
+   "owner": "blue",
+   "name": "gold block",
+   "style": "cube-4",
+   "materials": "gold block",
+   "float": 4,
+   "anchor": {
+    "x": 30,
+    "y": 11,
+    "z": 28
+   }
+  },
+  {
+   "owner": "blue",
+   "name": "ender stone",
+   "style": "cube-4",
+   "materials": "ender stone",
+   "float": 4,
+   "anchor": {
+    "x": 90,
+    "y": 11,
+    "z": 28
+   }
+  }
+ ],
+ "cores": [
+  {
+   "owner": "red",
+   "name": "core",
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "digDepth": 0,
+   "anchor": {
+    "x": 150,
+    "y": 11,
+    "z": 0
+   }
+  }
+ ],
+ "wools": [],
+ "meta": {
+  "name": "Destroy Goals",
+  "created": "2026-09-20",
+  "authors": [
+   "the technique cards"
+  ],
+  "contributors": []
+ }
+}

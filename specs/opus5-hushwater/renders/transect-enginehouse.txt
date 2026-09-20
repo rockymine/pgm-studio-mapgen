@@ -1,0 +1,65 @@
+## enginehouse (made) along x
+TRANSECT 27 stations from (32, 94) to (58, 94), every 1
+  station        ground  surface  water  top  standing            step
+  (   32,    94)                                                    void
+  (   33,    94)                                                    void
+  (   34,    94)                                                    void
+  (   35,    94)                                                    void
+  (   36,    94)                                                    void
+  (   37,    94)                                                    void
+  (   38,    94)                                                    void
+  (   39,    94)                                                    void
+  (   40,    94)      18       19           19  storey              
+  (   41,    94)      18       25           25  storey              BARRIER +6
+  (   42,    94)      18       26           26  storey              +1
+  (   43,    94)      18       27           27  storey              +1
+  (   44,    94)      18       28           28  storey              +1
+  (   45,    94)      18       28           28  storey              
+  (   46,    94)      18       27           27  storey              -1
+  (   47,    94)      18       26           26  storey              -1
+  (   48,    94)      18       25           25  storey              -1
+  (   49,    94)      18       19           19  storey              DROP -6
+  (   50,    94)      18       23           23  storey              BARRIER +4
+  (   51,    94)      18       29           29  storey              BARRIER +6
+  (   52,    94)      18       36           36  storey              BARRIER +7
+  (   53,    94)      18       36           36  storey              
+  (   54,    94)      18       29           29  storey              DROP -7
+  (   55,    94)      18       23           23  storey              DROP -6
+  (   56,    94)                                                    void
+  (   57,    94)                                                    void
+  (   58,    94)                                                    void
+rises 7, falls 6, worst step 7: 4 barrier, 0 scramble, 3 drop — BARRIER +6 at (41, 94); DROP -6 at (49, 94); BARRIER +4 at (50, 94); BARRIER +6 at (51, 94); BARRIER +7 at (52, 94); DROP -7 at (54, 94); DROP -6 at (55, 94) | walked end to end
+beside: (none)
+
+## enginehouse (made) along z
+TRANSECT 27 stations from (48, 81) to (48, 107), every 1
+  station        ground  surface  water  top  standing            step
+  (   48,    81)                                                    void
+  (   48,    82)                                                    void
+  (   48,    83)                                                    void
+  (   48,    84)                                                    void
+  (   48,    85)                                                    void
+  (   48,    86)                                                    void
+  (   48,    87)                                                    void
+  (   48,    88)      18       18           18                      
+  (   48,    89)      18       19           19  storey              +1
+  (   48,    90)      18       25           25  storey              BARRIER +6
+  (   48,    91)      18       25           25  storey              
+  (   48,    92)      18       25           25  storey              
+  (   48,    93)      18       25           25  storey              
+  (   48,    94)      18       25           25  storey              
+  (   48,    95)      18       25           25  storey              
+  (   48,    96)      18       25           25  storey              
+  (   48,    97)      18       25           25  storey              
+  (   48,    98)      18       19           19  storey              DROP -6
+  (   48,    99)      18       18           18                      -1
+  (   48,   100)                                                    void
+  (   48,   101)                                                    void
+  (   48,   102)                                                    void
+  (   48,   103)                                                    void
+  (   48,   104)                                                    void
+  (   48,   105)                                                    void
+  (   48,   106)                                                    void
+  (   48,   107)                                                    void
+rises 2, falls 2, worst step 6: 1 barrier, 0 scramble, 1 drop — BARRIER +6 at (48, 90); DROP -6 at (48, 98) | walked end to end
+beside: (none)

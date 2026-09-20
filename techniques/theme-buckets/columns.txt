@@ -1,0 +1,218 @@
+GET /api/map/technique-theme-buckets/column?at=x,z — one column per claim. Every panel carries the same
+ground: a plain at 8, a swell to 20, and a mesa to 32 with a skirt of 4.8 blocks a cell.
+
+### fill-only — the island's rim column: one material from bedrock to the top
+=== column (-188, -67) — 8 solid block(s), ground 0° from level ===
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### and-surface — the same cell with a surface: three courses of soil over the fill
+=== column (-110, -67) — 8 solid block(s), ground 0° from level ===
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### and-wall — the same cell again, and the body under the soil is sandstone, not stone
+=== column (-32, -67) — 8 solid block(s), ground 0° from level ===
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4    24:0   Sandstone
+  y  3    24:0   Sandstone
+  y  2    24:0   Sandstone
+  y  1    24:0   Sandstone
+  y  0     7:0   Bedrock
+
+### and-rim — and now the top course is the rim's own cobble
+=== column (46, -67) — 8 solid block(s), ground 0° from level ===
+  y  7     4:0   Cobblestone
+  y  6    24:0   Sandstone
+  y  5    24:0   Sandstone
+  y  4    24:0   Sandstone
+  y  3    24:0   Sandstone
+  y  2    24:0   Sandstone
+  y  1    24:0   Sandstone
+  y  0     7:0   Bedrock
+
+### rim-boundary — a cell inland that `void` never caps and `boundary` does
+=== column (130, -50) — 8 solid block(s), ground 45° from level ===
+  y  7     4:0   Cobblestone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### axis-height — the mesa top at y31, in the band from 28 up: bare rock
+=== column (-172, 37) — 32 solid block(s), ground 0° from level ===
+  y 31     1:0   Stone
+  y 30     3:0   Dirt
+  y 29     3:0   Dirt
+  y 28     1:0   Stone
+  y 27     1:0   Stone
+  y 26     1:0   Stone
+  y 25     1:0   Stone
+  y 24     1:0   Stone
+  y 23     1:0   Stone
+  y 22     1:0   Stone
+  y 21     1:0   Stone
+  y 20     1:0   Stone
+  y 19     1:0   Stone
+  y 18     1:0   Stone
+  y 17     1:0   Stone
+  y 16     1:0   Stone
+  y 15     1:0   Stone
+  y 14     1:0   Stone
+  y 13     1:0   Stone
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### axis-height — the plain at y7, one under the stack's own `from` of 8, so the fill shows through
+=== column (-135, 20) — 8 solid block(s), ground 16° from level ===
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### axis-slope — the mesa top, flat, so the first band takes it: meadow
+=== column (-94, 37) — 32 solid block(s), ground 0° from level ===
+  y 31     2:0   Grass Block
+  y 30     3:0   Dirt
+  y 29     3:0   Dirt
+  y 28     1:0   Stone
+  y 27     1:0   Stone
+  y 26     1:0   Stone
+  y 25     1:0   Stone
+  y 24     1:0   Stone
+  y 23     1:0   Stone
+  y 22     1:0   Stone
+  y 21     1:0   Stone
+  y 20     1:0   Stone
+  y 19     1:0   Stone
+  y 18     1:0   Stone
+  y 17     1:0   Stone
+  y 16     1:0   Stone
+  y 15     1:0   Stone
+  y 14     1:0   Stone
+  y 13     1:0   Stone
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### axis-slope — a cell of the mesa's skirt at 74 degrees, so the last band takes it: bare rock
+=== column (-104, 37) — 30 solid block(s), ground 74° from level ===
+  y 29     1:0   Stone
+  y 28     3:0   Dirt
+  y 27     3:0   Dirt
+  y 26    24:0   Sandstone
+  y 25    24:0   Sandstone
+  y 24    24:0   Sandstone
+  y 23     1:0   Stone
+  y 22     1:0   Stone
+  y 21     1:0   Stone
+  y 20     1:0   Stone
+  y 19     1:0   Stone
+  y 18     1:0   Stone
+  y 17     1:0   Stone
+  y 16     1:0   Stone
+  y 15     1:0   Stone
+  y 14     1:0   Stone
+  y 13     1:0   Stone
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### axis-inward — four cells in from the rim, where the first band runs as a scree apron
+=== column (-30, 10) — 8 solid block(s), ground 0° from level ===
+  y  7    13:0   Gravel
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### fill-rise — inside the mesa, where the cell pattern reads as blobs on a cut
+=== column (62, 37) — 32 solid block(s), ground 0° from level ===
+  y 31     2:0   Grass Block
+  y 30     3:0   Dirt
+  y 29     3:0   Dirt
+  y 28    24:0   Sandstone
+  y 27    24:0   Sandstone
+  y 26    24:0   Sandstone
+  y 25    24:0   Sandstone
+  y 24    24:0   Sandstone
+  y 23    24:0   Sandstone
+  y 22    24:0   Sandstone
+  y 21    24:0   Sandstone
+  y 20    24:0   Sandstone
+  y 19    24:0   Sandstone
+  y 18    24:0   Sandstone
+  y 17    24:0   Sandstone
+  y 16    24:0   Sandstone
+  y 15    24:0   Sandstone
+  y 14    24:0   Sandstone
+  y 13    24:0   Sandstone
+  y 12    24:0   Sandstone
+  y 11    24:0   Sandstone
+  y 10    24:0   Sandstone
+  y  9    24:0   Sandstone
+  y  8    24:0   Sandstone
+  y  7    24:0   Sandstone
+  y  6    24:0   Sandstone
+  y  5    24:0   Sandstone
+  y  4    24:0   Sandstone
+  y  3    24:0   Sandstone
+  y  2    24:0   Sandstone
+  y  1    24:0   Sandstone
+  y  0     7:0   Bedrock
+

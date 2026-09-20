@@ -1,22 +1,33 @@
----
-name: pgm-board-warmup
-description: The first ten minutes of an authoring run — what this repository costs to read,
-  what must never be opened, what a board is made of, and how its grounds are made to meet.
-  Load once, at the start of a run, before pgm-board.
----
+--- name: pgm-board-warmup description: The first ten minutes of an authoring run — what this
+repository costs to read, what must never be opened, what a board is made of, and how its
+grounds are made to meet. Load once, at the start of a run, before pgm-board. ---
 
 # Before the first board
 
-Two things, in order: what reading costs here, and what a board is made of. Together they run
-about 12k tokens and ten minutes, and both are done before a plan is written.
+`ORDER-OF-WORK.md` is the page that comes before this one: the nine decisions a board is made of, in
+order, and the four that cannot be taken back. `WHAT-A-BOARD-IS-MADE-OF.md` is the author's ruling on how
+a board should look. Read those two, then this skill.
+
+Two things here, in order: what reading costs, and what a board is made of. Together they run about
+12k tokens and ten minutes, and both are done before a plan is written.
 
 ## 1. The budget, because this repository is larger than any context window
 
-The documents a run is pointed at come to **~82k tokens** — 41% of a 200k window before a
-single map is opened. Everything below assumes that is already spent.
+**What is read up front is small and everything else is opened at a question.** The three documents
+before this skill — `ORDER-OF-WORK.md`, `WHAT-A-BOARD-IS-MADE-OF.md` and `AUTHORING-BRIEF.md` — come
+to **~13k tokens**, and the two skills to **~9k**. That is the whole of what a run loads before its
+first request.
+
+**What is reachable is far more than a window holds, and none of it is a reading list.** The studio
+documents the brief's question table names come to **~105k tokens**, this repository's own
+long-form — `GENERATION-NOTES.md`, the two adaptation briefs, `tools/README.md`, `BOARDS-BUILT.md` —
+to **~54k**, and the 27 technique cards to **~66k**. Open one at the question that needs it.
 
 | Read | ~tokens | When |
 |---|---|---|
+| one technique card | ~2.4k median | freely — the card nearest what is being built |
+| `pgm-studio/docs/gameplay/match-flow.md` | ~16k | **once, before the board is decided** — or its §4, §6 and §10 alone |
+| `pgm-studio/docs/gameplay/approaches.md` | ~5k | with it; every claim is the author's and settled |
 | `00-board.txt` | 0.4–3k | freely |
 | one named `renders/*.txt` | ~1.1k median | freely, **named individually** |
 | `02-heightmap.txt` · `03-slopes.txt` | 1.3–10k | one board at a time |
@@ -33,8 +44,9 @@ verdict is one line: `grep 'cells:' …/03-slopes.txt`.
 
 **`specs/` is split, and the split is the reading rule.** Eighteen boards sit flat and are worth
 reading; the other 118 are under `specs/archive/` — probes, experiments run to find the limit
-of one mechanism, early runs, superseded boards. **Nothing under `specs/archive/` is a model
-for anything.**
+of one mechanism, early runs, superseded boards.
+
+**Nothing under `specs/archive/` is a model for anything.**
 
 When a *number* is wanted rather than an example, `GET /api/rules` and `GET /api/rules/terms`
 answer in one fetch and are greppable. That is cheaper than any board.
@@ -43,6 +55,17 @@ answer in one fetch and are greppable. That is cheaper than any board.
 
 **Decide what the board is about before deciding what it is made of, and keep it to one
 thing.** Write the sentence down. If it cannot be written, the board is not ready.
+
+**That decision is a question about how the map is played, and this repository cannot answer it.** The
+cards measure what an instrument does and the API answers what it will accept, and neither says what makes
+a match. Two documents in the studio do, and they are the only ones worth opening whole.
+
+**`docs/gameplay/approaches.md` is the author's law on what an objective needs around it**, every claim
+marked and settled, so it governs rather than advises.
+
+**`docs/gameplay/match-flow.md` is how a map is actually played** — the funnel, the wall and the pit, where
+the ground game ends and the sky begins, which wool falls first — read off recorded matches rather than
+reasoned. Its §4, §6 and §10 are the three to open if the whole is too much.
 
 Then: a board is two or three or four *grounds*, each stated by the one instrument that can
 state it, and **every join between them is chosen rather than left over**. That is the whole
@@ -71,8 +94,8 @@ A shore board, worked all the way through, as the pattern to copy:
 - **one rectangle**, with every landform authored downstream.
 
 A plan that grows a piece per landform is a plan whose paint will grow a theme per piece, and
-the board's look ends up decided by how it happened to be cut up. `firnline` is the worked
-failure: 13 pieces at 6 surface heights, then a theme per height.
+the board's look ends up decided by how it happened to be cut up. The worked failure is 13 pieces
+at 6 surface heights, then a theme per height.
 
 ### What makes an area read as what it is
 
@@ -91,24 +114,35 @@ because there is an answer to *why here*:
   space and refuses any add that fills it, on any layer.
 - **copied trees rather than the vanilla stamp.** A `copied` recipe carries a `body` block for
   block; `pgm-studio/tools/seed-trees.cs` files bodies out of a world into the library, and
-  `showcase/tree-showcase` is the world they come from. State them under names in
+  `corpus/tree-showcase` is the world they come from. State them under names in
   `dressing.styles` and let the placements name those — `specs/fable-millrace-revamp/trees.json`
   is 22 of them, keyed the way its placements name them.
+  **A seeded name is `showcase-r<row>-<n>` and says only where the tree stood**, so which one to
+  ask for is `corpus/README.md`'s table: the row is a band, the band is a kind, and the kind is the
+  author's — a pine, an olive, a jungle tree, a willow. The log a tree is built of is **not** what it is.
 - **boulders, which are stone** — stone, cobblestone, andesite, and nothing else.
 - **polylines for anything that flows.** The rasterizer splines a polyline's points before
   offsetting the band, so four points draw as a curve: a wall, a lane, a watercourse.
 - **paths that are `solid`**, three blocks a reader cannot quite tell apart, running to a door.
 
-## 3. The ten minutes: read one showcase diff
+## 3. The ten minutes: read the card nearest the thing being built
 
-`showcase/` is one technique per map, and every one of them forks `02-theme` — a plain
-100 × 100 destroy board scoring 0 with no violation and no lint — changing **only** what its
-technique needs. The diff is therefore the lesson, with nothing else in it.
+`techniques/` is one card per instrument, each holding its variants **side by side** in one world with the
+text reads that prove them. Read the card nearest the thing about to be built — `relief-on-shapes` and
+`hollows` are the two that carry ground, `ramp-and-stair` and `polylines` the two that carry a join — before
+opening anything else. `techniques/README.md` indexes them.
 
-Read `02-theme`'s finish, then the finish of the two showcases nearest the board about to be
-built. `06-ramp-and-slant`, `07-hill`, `08-cliff`, `09-mesa-and-hollow`, `10-landform-shapes`,
-`12-underpass`, `19-mountain-range`, `20-undercroft`, `21-wall-and-stair` are the ones that
-carry joins. Say what each diff changed before authoring anything.
+**Every card's world is in the studio, so a card can be opened as well as read.** Each names its slug —
+`technique-<card>` — and `tools/seed-studio.py --check` says whether this database has them.
+
+**It answers for the copied trees too, and those are the half a fresh studio is missing.** A studio seeds
+its own library on every boot — materials, house presets, themes, biomes, four boulders and the six
+vanilla tree species — but the 84 trees cut out of `corpus/tree-showcase` are this repository's, and
+`--check` reporting none of them means the recipe named two sections below does not exist yet.
+
+**A card's variants stand side by side in one world, which is what makes the comparison the lesson.** Read
+the two nearest what is about to be built, and say what separates their panels before authoring anything —
+the card's committed reads are what settle a number, not a picture of one of them.
 
 **Numbers off a finished board are a diagnostic, not a control.** `scramble%`, `barrier%` and
 the face count are read out of a built world, and no authoring decision is made against them:
@@ -161,10 +195,13 @@ area is taking the cell.
 
 And `POST /sketch/relief/read` with the stored layout, which is the only read that says what
 the marks did to **each other**: `silentMarks` is every mark that landed nowhere, `seams`
-names the pairs that meet on a step — and a seam naming a **shape** rather than a mark is a
-`relief_scope` pinning ground you meant the marks to shape. `level` and `largestField` are the
-two numbers that say whether the ground has a shape at all; over about 0.45 and 0.13 it is a
-table with edges.
+names the pairs that meet on a step.
+
+And a seam naming a **shape** rather than a mark is a `relief_scope` pinning ground you meant
+the marks to shape.
+
+`level` and `largestField` are the two numbers that say whether the ground has a shape at all;
+over about 0.45 and 0.13 it is a table with edges.
 
 ## 5. Stop
 

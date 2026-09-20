@@ -1,0 +1,303 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Medlock Drift"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "mirror_z",
+  "maxPlayers": 20,
+  "surface": 12,
+  "observerY": 44
+ },
+ "pieces": [
+  {
+   "id": "front-w",
+   "role": "piece",
+   "rect": [
+    -9,
+    3,
+    5,
+    2
+   ]
+  },
+  {
+   "id": "front-e",
+   "role": "piece",
+   "rect": [
+    -1,
+    3,
+    5,
+    2
+   ]
+  },
+  {
+   "id": "front-bar",
+   "role": "piece",
+   "rect": [
+    -9,
+    5,
+    13,
+    3
+   ]
+  },
+  {
+   "id": "hub-sw",
+   "role": "piece",
+   "rect": [
+    -4,
+    8,
+    5,
+    2
+   ]
+  },
+  {
+   "id": "hub-nw",
+   "role": "piece",
+   "rect": [
+    -4,
+    12,
+    5,
+    2
+   ]
+  },
+  {
+   "id": "hub-w",
+   "role": "piece",
+   "rect": [
+    -4,
+    10,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "hub-mid",
+   "role": "piece",
+   "rect": [
+    -1,
+    10,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "hub-se",
+   "role": "piece",
+   "rect": [
+    1,
+    8,
+    4,
+    2
+   ]
+  },
+  {
+   "id": "hub-ne",
+   "role": "piece",
+   "rect": [
+    1,
+    12,
+    4,
+    2
+   ]
+  },
+  {
+   "id": "hub-e",
+   "role": "piece",
+   "rect": [
+    3,
+    10,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "spawn-t1",
+   "role": "piece",
+   "rect": [
+    -1,
+    14,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    -1,
+    16,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "clamp-w",
+   "role": "piece",
+   "rect": [
+    5,
+    12,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "clamp-head",
+   "role": "piece",
+   "rect": [
+    7,
+    12,
+    2,
+    1
+   ]
+  },
+  {
+   "id": "clamp-e",
+   "role": "piece",
+   "rect": [
+    9,
+    12,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "wool-a-room",
+   "role": "wool-room",
+   "rect": [
+    7,
+    14,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "wool-b-t1",
+   "role": "piece",
+   "rect": [
+    -6,
+    12,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "wool-b-t2",
+   "role": "piece",
+   "rect": [
+    -8,
+    12,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "wool-b-room",
+   "role": "wool-room",
+   "rect": [
+    -10,
+    13,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "wool-b-t3",
+   "role": "piece",
+   "rect": [
+    -6,
+    14,
+    2,
+    2
+   ]
+  },
+  {
+   "id": "back-pad",
+   "role": "piece",
+   "rect": [
+    -6,
+    16,
+    2,
+    2
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "crossing-e",
+   "rect": [
+    -1,
+    -3,
+    5,
+    6
+   ],
+   "holes": []
+  },
+  {
+   "id": "crossing-w",
+   "rect": [
+    -9,
+    -3,
+    5,
+    6
+   ],
+   "holes": []
+  },
+  {
+   "id": "egress",
+   "rect": [
+    -4,
+    16,
+    3,
+    2
+   ],
+   "holes": []
+  },
+  {
+   "id": "egress-2",
+   "rect": [
+    -4,
+    -18,
+    3,
+    2
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     5,
+     7
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-a-room",
+    "at": [
+     5,
+     5
+    ]
+   },
+   {
+    "id": "wool-2",
+    "piece": "wool-b-room",
+    "at": [
+     5,
+     5
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

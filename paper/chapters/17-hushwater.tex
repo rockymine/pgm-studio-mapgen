@@ -1,0 +1,333 @@
+\chapter{Hushwater: A Composed Board Adapted Into a Place}
+\label{ch:ctw}
+
+\section{The Opposite Experiment}
+
+Whitegape answers the question \emph{what does an author decide when nothing is
+given}. Hushwater answers the harder one. Its arrangement arrived already made,
+emitted by the composer described in \cref{ch:composer} from four numbers and a
+seed, and the interesting question is what work is left once that has happened.
+
+The answer is most of the work, and none of the same work. The composer settles
+where the rectangles go and what each is for. It settles nothing about what the
+board is of, what its ground does, what a player sees, or what any of it is
+made of, because it has no representation for any of those. A composed board is
+flat, grey and rectangular, and it is a complete description of an arrangement.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{maps/hushwater-iso.png}
+\caption{Hushwater as exported. The lead hush runs from the mine heads at the top
+of each half down to the gill between them, and the two halves are one unit fanned
+by \id{rot\_180}. The arrangement under all of it is the composer's.}
+\label{fig:hushwater-iso}
+\end{figure}
+
+Both boards are drawn side by side in \cref{fig:composed-card}, which this chapter
+is the commentary on. The hub's ring, its yard hole, the frontline's single run and
+both wool families survive the adaptation unchanged.
+
+\section{Reproducing the Starting Point}
+
+The board begins at a descriptor of six fields, and the descriptor is the whole
+of what has to be kept for the starting point to be reproducible:
+
+\begin{lstlisting}[language=json]
+GET  /api/compose?players=18&teams=2&symmetry=rot_180&seedStart=5&count=1
+POST /api/compose/pin  { players: 18, teams: 2, symmetry: "rot_180",
+                         cell: 4, seed: 5, composerVersion: "body-first-1",
+                         schema: 1, index: 0 }
+\end{lstlisting}
+
+The composer version is in that descriptor for a reason that the previous
+chapter's subject also demonstrates: the composer is not frozen, and a change
+to how it lays out a board moves the geometry a seed produces. The version
+string is what makes \emph{seed 5} a stable address rather than a description
+of whatever the composer did on the day. Three of the hundred and twenty boards
+the repository records moved when a defect in the plan compiler was fixed
+during the writing of this paper, and the version went from \id{body-first-1}
+to \id{body-first-2} in the same commit.
+
+Before anything was changed, the pinned card was read back and written to disk.
+Every comparison in this chapter is against that file rather than against a
+recollection of it.
+
+\subsection{The Player Count Names a Band, Not a Budget}
+
+The author asked the composer for fourteen, sixteen, eighteen, twenty and
+twenty-one players and received byte-identical boards. That is not a defect. The
+count selects a size band, and micro spans fourteen to twenty-one, so every
+request inside the band composes the same board at the same seed.
+
+Eighteen was kept because it is the middle of the band and carries no other
+meaning. What the number does carry is into the export: \id{maxPlayers} becomes
+every team's maximum, so the board ships as eighteen against eighteen rather
+than nine against nine, and its 8864 cells work out at about 246 square blocks
+a player against the band's measured 242.
+
+\section{What Survived the Adaptation}
+
+The most useful way to read an adaptation is by what it did \emph{not} touch,
+because those are the places where the composer's answer was accepted.
+
+The hub kept its ring body and both of its yard holes, sixteen cells each, at
+their composed narrowest crossing of sixteen blocks. The frontline kept its
+single form and its rectangles: \route{POST /plan/inspect} reads
+\id{widthBlocks 32, profile straight} on both teams after the adaptation, as it
+did before. Both wool approaches kept the \id{i} family they were emitted with.
+
+The ring in particular is the thing the author records as unable to have been
+invented as convincingly. It comes with a sixteen-by-sixteen enclosed yard,
+which is a hole players go round, and going round a hole is the rotation device
+the composer's own law names in \id{CT8}. An author drawing rectangles from
+nothing tends not to produce an enclosure, because an enclosure looks like a
+mistake until it is played.
+
+\begin{table}[htbp]
+\caption{Hushwater as composed against Hushwater as shipped. Every composed
+figure is off the pinned card; every adapted figure is a read off the built
+board.}
+\label{tab:hushwater-delta}
+\small
+\begin{tabularx}{\textwidth}{L{4.0cm} L{3.6cm} Y}
+\toprule
+& \textbf{Composed} & \textbf{Adapted} \\
+\midrule
+Evaluator score & 0.000, no hard term & 0, \id{valid: true} \\
+Plan lint & 1 complaint (\id{WL12}) & 1 complaint (\id{EL1}) \\
+Unit land & 250 cells against a 226.4 budget & 265 cells \\
+Mid land & 0 cells against a 50.3 budget & 24 cells \\
+Hub & 1 box, 128 land / 144 footprint & 116 land, three arms re-cut \\
+Frontline & 1 box, 64 / 72 & unchanged \\
+Wool & 2 boxes, 42 / 48 & 2 boxes, 57 land \\
+Spawn & 1 box, 16 / 16 & 16 cells, moved 16 blocks west \\
+Pieces, zones, walls & 12, 1, 0 & 17, 3, 1 \\
+Distinct piece surfaces & 1 & 7 \\
+Strait & 32 blocks, one hop, empty & 40 blocks with a bank in it \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{The One Row That Is the Whole Argument}
+
+The last row of \cref{tab:hushwater-delta} is the one to read twice. The
+composed board has \textbf{one} distinct piece surface. The shipped board has
+\textbf{seven}.
+
+A composed board is flat because the composer has no height model, no theme and
+no material. Its \id{globals.surface} is 9 and not one piece overrides it. The
+adaptation gives the board a ladder from the gill at the bottom to the mine head
+at the top, and seven surfaces is what that ladder is, stated at the level where
+the studio will enforce it.
+
+Everything an observer would call the character of the map lives in the
+difference between those two numbers. The composer decided where the wool rooms
+are and how far apart; it had nothing to say about whether the ground between
+them falls forty feet.
+
+\section{What the Adaptation Changed, and Why Each Change Was Forced}
+
+Five changes are substantive. Each was made for a stated reason, and in four of
+the five the reason is a rule band rather than a preference.
+
+\subsection{The Unit Moved One Cell Back}
+
+Every piece was pushed one cell in $z$, taking the strait from 32 blocks to 40.
+
+The reason is that the author wanted a bank in the gill, and a mid island splits
+one crossing into two hops. \id{G5} wants each hop between 10 and 20 blocks. On
+a 32-block strait an eight-block island leaves two twelve-block hops but is too
+thin to fight on. At 40 the island can be eight deep in two staggered legs and
+still leave twelve and twenty.
+
+The strait itself is the composer's idea and the author moved its ends rather
+than its idea. This is the only change in the run that altered composed
+geometry, and the journal records it as such.
+
+\subsection{The Crossing Acquired a Bank}
+
+The composed mid is empty: zero cells against a budget of 50.3. The adaptation
+puts a Z of two neutral legs in it, each the other's \id{rot\_180} image,
+meeting at the origin.
+
+What that does to the crossing is the interesting part. The composed board
+offers one hop of 32 blocks. The adapted board offers two, of twelve and twenty,
+and \id{rot\_180} hands each team the short one on the opposite hand. A single
+symmetric crossing becomes an asymmetric pair that is nonetheless perfectly
+fair, because the asymmetry is the same for both teams read from their own end.
+
+\subsection{Two Rooms Acquired Aprons, and One Acquired a Wall}
+
+The two wool approaches keep their \id{i} family and are given opposite
+characters: the west one open across moor, the east one a lane behind a bedrock
+wall five courses above it, on sixteen blocks of interface.
+
+The wall is the board's only defence wall and the composed board has none. It is
+also the reason the two rooms are not the same room twice, which a symmetric
+board otherwise tends to produce: both teams get one open approach and one
+covered one, and which is which depends on the end they start from.
+
+\subsection{A Bing Was Cut Off the Team's Own Ground}
+
+A bing is a spoil heap. Hushwater's is a pad cut off the team's own land and
+bridged back to it, and it is there because a board wants somewhere a player
+has a reason to go that is not on the way to anything else.
+
+The flow read confirms exactly that and is worth quoting in its own terms: 368
+of 8864 blocks, four per cent, sit off every land route, and 144 of those are
+the bing. A pad no land route passes is what a team transient link is, so the
+figure is the design working rather than a fault.
+
+That number is also the right comparison to make with Whitegape, where the same
+read returned just under a fifth of the board. Hushwater's dead ground is one
+deliberate pad; Whitegape's is three unvisited corners of fell.
+
+\subsection{The Spawn Moved Sixteen Blocks West}
+
+The composer's spawn box is sixteen cells and stays sixteen cells. It moves onto
+the board's centre line, which is a decision about what a player sees on
+spawning rather than about area, and the composer has no term for that.
+
+\begin{figure}[htbp]
+\centering
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{maps/hushwater-made.png}
+  \caption{Made ground. Every column a shape or a layer owns, against the ground
+  the relief solved.}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{maps/hushwater-heightmap.png}
+  \caption{The height ladder. One surface as composed; seven as shipped.}
+\end{subfigure}
+
+\medskip
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{maps/hushwater-traversability.png}
+  \caption{Traversability. The bedrock wall over the east lane is the one barrier
+  the adaptation added.}
+\end{subfigure}\hfill
+\begin{subfigure}{0.48\textwidth}
+  \includegraphics[width=\linewidth]{maps/hushwater-objectives.png}
+  \caption{Objectives and their clearances, with the bing off to one side.}
+\end{subfigure}
+\caption{Four read-backs of the shipped board. None of these is drawn for this
+paper; each is a route on the running API, and the middle two are what the row
+\emph{distinct piece surfaces} in \cref{tab:hushwater-delta} looks like.}
+\label{fig:hushwater-reads}
+\end{figure}
+
+\section{Where the Studio Said No}
+
+Ten distinct rule ids refused or declined something during this run.
+\Cref{tab:hushwater-refusals} lists each with the author's response, and the
+pattern in the right-hand column is the substance of this section: a refusal is
+rarely answered by arguing with the rule.
+
+\begin{table}[htbp]
+\caption{Every rule that stopped or dropped something on the Hushwater run.}
+\label{tab:hushwater-refusals}
+\small
+\begin{tabularx}{\textwidth}{L{1.9cm} L{5.4cm} Y}
+\toprule
+\textbf{Id} & \textbf{What it said} & \textbf{What was done} \\
+\midrule
+\id{G2} & zone \id{staithe-link-e} corridor width 8 < 10, hard, score 2000 &
+  every build zone widened to 12 blocks or more \\
+\id{G5} & gap hop 8 outside 10..20, hard &
+  the pad moved so both hops are 12 to 16 \\
+\id{ST2} & the iron cube does not stand inside a spawn piece &
+  moved onto the spawn-role piece \\
+\id{WX8} & the cube needs 3$\times$3 inside the piece and 2 clear of the shell &
+  the iron dropped: \id{WX1} insets the shell one block from the piece, so the
+  three cannot hold on a plan-compiled spawn \\
+\id{DR-DOC} & field \id{pave.jitter} could not be read &
+  \id{jitter} is an integer percentage, not a fraction; fixed everywhere,
+  including inside the themes \\
+\id{PT4} & a material sampled in the plane reads as vertical stripes &
+  a \id{rise} given to the stair and lane materials \\
+\id{HS4} & beams are dark oak and the post is spruce &
+  beams cut from the same wood as the posts \\
+\id{SK14} & two override adds state a top the relief solves through &
+  both given \id{relief\_scope: "exclude"} \\
+\id{SK13} & \id{spill-yard} draws nothing over 130 columns; \id{void-1-cut}
+  takes them away &
+  the brush moved off the composer's yard hole. A hole is never scenery \\
+\id{DR} family & seven declines on the first dressing pass &
+  each seat moved by reading \route{sketch/seats} \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Two complaints ship standing, and both are answered by a read rather than by a
+change. \id{EL1} reports that \id{frontline-t1} steps three blocks to
+\id{hub-t2}, which is true of the plan and false of the world: the plan tier
+walks pieces flat and cannot see the relief, and the built crossing transects at
+\emph{rises 6, falls 1, worst step 1, no barrier, no scramble, walked end to
+end}. \id{SK27} reports seven plateaus carrying three paints; two of those
+boundaries are what the board is about, and the third is crossed deliberately by
+four brushes drawn over the risers rather than inside a plateau.
+
+\section{The Defect This Board Found}
+
+Hushwater is also the board that exposed a studio defect.
+\Cref{ch:refusals} sets out the code structure that produced it; this section is
+the sequence by which it was found, which is the part that generalises to any
+board.
+
+The map author, looking at the built world, observed that one wool room's
+entrance redstone appeared on its front face only. \id{ST1} says the entrance
+line lies on the last block row at \emph{each} of the room's entry interfaces,
+and \route{POST /plan/inspect} reported two for that room: an eight-block flush
+seam to \id{wool-a-t1}, classified \id{narrow}, and a twelve-block one to
+\id{wool-a-apron}, classified \id{land}. Its mirror image carried two lines. This
+one carried one.
+
+\id{ContactGraph} defines the predicate exactly once, and it answers \id{Land}
+\emph{or} \id{Narrow}: an interface under the ten-block corridor minimum is a
+doorway rather than a wall. The \id{woolRoom} flag each segment carries is
+raised through that predicate. Two sites in the plan compiler re-derived the
+test inline as \id{Kind: ContactKind.Land}, so a segment was flagged by one
+reading and then discarded by another that disagreed with the flag it was
+reading.
+
+The consequence was larger than a missing marker. The second of those two sites
+is what the exporter cuts cage doors from, so a room whose only interface is
+narrower than ten blocks compiled with no door at all, in a room the validator
+considers reachable. Nothing refused it and nothing warned.
+
+\begin{ruling}{What the author saw, and what it turned out to be}
+``The redstone line is sort of not appearing all the way around it. It only
+seems to appear at the front face and not like the other sides, which I'm not
+sure why that's happening.'' The observation was of one marker. The defect was a
+room that could not be entered.
+\end{ruling}
+
+\section{The Division of Labour on This Board}
+
+\Cref{tab:hushwater-labour} is the counterpart of the table that closes
+\cref{ch:dtm}. The rows are the same rows; the middle column has grown.
+
+\begin{table}[htbp]
+\caption{Hushwater, stage by stage. The composer's column exists only on this
+board.}
+\label{tab:hushwater-labour}
+\small
+\begin{tabularx}{\textwidth}{L{2.2cm} L{4.2cm} L{4.2cm} Y}
+\toprule
+\textbf{Stage} & \textbf{The composer} & \textbf{\studio{The studio}} &
+\textbf{\agent{The author}} \\
+\midrule
+Arrangement & hub form, frontline form, both wool families, the land budget,
+  the 32-block strait & \id{G2}, \id{G5}, the evaluator's gate &
+  which of 48 boards, and one cell of push \\
+Elevation & nothing & the solved field & seven surfaces and every mark \\
+Paint & nothing & which block on which cell & three themes and where the bands
+  cut \\
+Structures & nothing & storey heights, roof pitch, door side & the style, and
+  what stands where \\
+Dressing & nothing & the legal seats, ten declines & which seats to take \\
+Objectives & where the wools are & the region and the filter & what the board is
+  played for \\
+\bottomrule
+\end{tabularx}
+\end{table}

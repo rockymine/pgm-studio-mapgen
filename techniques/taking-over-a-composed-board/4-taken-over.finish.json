@@ -1,0 +1,929 @@
+{
+ "authors": [
+  "the technique cards"
+ ],
+ "created": "2026-09-20",
+ "themes": {
+  "mid": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wall": {
+    "kind": "teamTint",
+    "blockId": 159,
+    "neutral": {
+     "kind": "solid",
+     "id": 24,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 24,
+     "data": 0
+    }
+   },
+   "rimEdges": "void",
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "solid",
+         "id": 13,
+         "data": 0
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "front": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wall": {
+    "kind": "teamTint",
+    "blockId": 159,
+    "neutral": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "rimEdges": "void",
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "solid",
+         "id": 2,
+         "data": 0
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "stair": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wall": {
+    "kind": "teamTint",
+    "blockId": 159,
+    "neutral": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
+   "rimEdges": "void",
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 0
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "back": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wall": {
+    "kind": "teamTint",
+    "blockId": 159,
+    "neutral": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
+   "rimEdges": "void",
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "solid",
+         "id": 2,
+         "data": 0
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "approach": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wall": {
+    "kind": "teamTint",
+    "blockId": 159,
+    "neutral": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 4,
+     "data": 0
+    }
+   },
+   "rimEdges": "void",
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "solid",
+         "id": 2,
+         "data": 0
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   }
+  }
+ },
+ "themeByHeight": {
+  "8": "mid",
+  "9": "front",
+  "10": "stair",
+  "11": "stair",
+  "12": "stair",
+  "13": "back",
+  "14": "approach",
+  "15": "approach",
+  "16": "approach"
+ },
+ "mapTheme": "front",
+ "editShapes": {
+  "hub-t1-13": [
+   {
+    "index": 2,
+    "x": 28,
+    "z": 50
+   },
+   {
+    "after": 2,
+    "x": 22,
+    "z": 56
+   }
+  ]
+ },
+ "addLayers": [
+  {
+   "id": "deck-legs-lower",
+   "name": "deck legs-lower",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "mid-deck",
+   "shapes": [
+    {
+     "id": "deck-legs-lower-0",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 8,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     "min_x": -8,
+     "max_x": -6,
+     "min_z": -4,
+     "max_z": -2
+    },
+    {
+     "id": "deck-legs-lower-1",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 8,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     "min_x": 7,
+     "max_x": 9,
+     "min_z": -4,
+     "max_z": -2
+    },
+    {
+     "id": "deck-legs-lower-2",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 8,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     "min_x": -8,
+     "max_x": -6,
+     "min_z": 3,
+     "max_z": 5
+    },
+    {
+     "id": "deck-legs-lower-3",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 8,
+     "base_height": 3,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     "min_x": 7,
+     "max_x": 9,
+     "min_z": 3,
+     "max_z": 5
+    }
+   ],
+   "groups": [
+    {
+     "id": "deck-legs-lower",
+     "name": "the mid's deck",
+     "mirrors": false,
+     "shapeIds": [
+      "deck-legs-lower-0",
+      "deck-legs-lower-1",
+      "deck-legs-lower-2",
+      "deck-legs-lower-3"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "deck-floor-lower",
+   "name": "deck floor-lower",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "mid-deck",
+   "shapes": [
+    {
+     "id": "deck-floor-lower-0",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 11,
+     "base_height": 1,
+     "material": {
+      "kind": "cell",
+      "cellSize": 4,
+      "rise": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 1
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       }
+      ]
+     },
+     "min_x": -8,
+     "max_x": 9,
+     "min_z": -4,
+     "max_z": 5
+    }
+   ],
+   "groups": [
+    {
+     "id": "deck-floor-lower",
+     "name": "the mid's deck",
+     "mirrors": false,
+     "shapeIds": [
+      "deck-floor-lower-0"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "deck-legs-upper",
+   "name": "deck legs-upper",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "mid-deck",
+   "shapes": [
+    {
+     "id": "deck-legs-upper-0",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 12,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     "min_x": -8,
+     "max_x": -6,
+     "min_z": -4,
+     "max_z": -2
+    },
+    {
+     "id": "deck-legs-upper-1",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 12,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     "min_x": 7,
+     "max_x": 9,
+     "min_z": -4,
+     "max_z": -2
+    },
+    {
+     "id": "deck-legs-upper-2",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 12,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     "min_x": -8,
+     "max_x": -6,
+     "min_z": 3,
+     "max_z": 5
+    },
+    {
+     "id": "deck-legs-upper-3",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 12,
+     "base_height": 4,
+     "material": {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     "min_x": 7,
+     "max_x": 9,
+     "min_z": 3,
+     "max_z": 5
+    }
+   ],
+   "groups": [
+    {
+     "id": "deck-legs-upper",
+     "name": "the mid's deck",
+     "mirrors": false,
+     "shapeIds": [
+      "deck-legs-upper-0",
+      "deck-legs-upper-1",
+      "deck-legs-upper-2",
+      "deck-legs-upper-3"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "deck-floor-upper",
+   "name": "deck floor-upper",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "mid-deck",
+   "shapes": [
+    {
+     "id": "deck-floor-upper-0",
+     "type": "rectangle",
+     "operation": "add",
+     "floor": 16,
+     "base_height": 1,
+     "material": {
+      "kind": "cell",
+      "cellSize": 4,
+      "rise": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 98,
+        "data": 1
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 6
+       }
+      ]
+     },
+     "min_x": -8,
+     "max_x": 9,
+     "min_z": -4,
+     "max_z": 5
+    }
+   ],
+   "groups": [
+    {
+     "id": "deck-floor-upper",
+     "name": "the mid's deck",
+     "mirrors": false,
+     "shapeIds": [
+      "deck-floor-upper-0"
+     ]
+    }
+   ]
+  }
+ ],
+ "dressing": {
+  "styles": {
+   "oak-9": {
+    "kind": "tree",
+    "form": "template",
+    "species": "oak",
+    "height": 9
+   },
+   "rock-3": {
+    "kind": "boulder",
+    "form": "round",
+    "size": 3,
+    "mossy": true,
+    "rock": {
+     "kind": "turbulence",
+     "seed": 7702,
+     "scale": 3,
+     "octaves": 3,
+     "rise": 3,
+     "stops": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 48,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     ]
+    }
+   }
+  },
+  "props": [
+   {
+    "id": "spine",
+    "kind": "stroke",
+    "seed": 7703,
+    "radius": 2,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 7701,
+     "cellSize": 3,
+     "jitter": 55,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ]
+    },
+    "points": [
+     [
+      36,
+      34
+     ],
+     [
+      30,
+      34
+     ],
+     [
+      26,
+      36
+     ],
+     [
+      22,
+      42
+     ],
+     [
+      22,
+      50
+     ],
+     [
+      10,
+      50
+     ],
+     [
+      -4,
+      50
+     ],
+     [
+      -12,
+      50
+     ],
+     [
+      -14,
+      54
+     ],
+     [
+      -14,
+      62
+     ],
+     [
+      -14,
+      70
+     ],
+     [
+      -10,
+      74
+     ],
+     [
+      0,
+      74
+     ]
+    ]
+   },
+   {
+    "id": "sally",
+    "kind": "stroke",
+    "seed": 7704,
+    "radius": 2,
+    "style": "solid",
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 7701,
+     "cellSize": 3,
+     "jitter": 55,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 6
+      }
+     ]
+    },
+    "points": [
+     [
+      -2,
+      50
+     ],
+     [
+      -2,
+      46
+     ],
+     [
+      -2,
+      42
+     ],
+     [
+      -2,
+      38
+     ],
+     [
+      -2,
+      34
+     ],
+     [
+      -2,
+      28
+     ],
+     [
+      -2,
+      21
+     ]
+    ]
+   },
+   {
+    "id": "oak-front-west-a",
+    "kind": "tree",
+    "seed": 7710,
+    "x": -18,
+    "z": 30,
+    "style": "oak-9"
+   },
+   {
+    "id": "oak-front-west-b",
+    "kind": "tree",
+    "seed": 7711,
+    "x": -11,
+    "z": 30,
+    "style": "oak-9"
+   },
+   {
+    "id": "oak-front-east-a",
+    "kind": "tree",
+    "seed": 7712,
+    "x": 5,
+    "z": 30,
+    "style": "oak-9"
+   },
+   {
+    "id": "oak-front-east-b",
+    "kind": "tree",
+    "seed": 7713,
+    "x": 11,
+    "z": 30,
+    "style": "oak-9"
+   },
+   {
+    "id": "oak-lane-far-a",
+    "kind": "tree",
+    "seed": 7714,
+    "x": -29,
+    "z": 54,
+    "style": "oak-9"
+   },
+   {
+    "id": "oak-lane-far-b",
+    "kind": "tree",
+    "seed": 7715,
+    "x": -23,
+    "z": 54,
+    "style": "oak-9"
+   },
+   {
+    "id": "oak-room-corner",
+    "kind": "tree",
+    "seed": 7716,
+    "x": -18,
+    "z": 78,
+    "style": "oak-9"
+   },
+   {
+    "id": "oak-path-a",
+    "kind": "tree",
+    "seed": 7717,
+    "x": 16,
+    "z": 55,
+    "style": "oak-9"
+   },
+   {
+    "id": "oak-path-b",
+    "kind": "tree",
+    "seed": 7718,
+    "x": 6,
+    "z": 54,
+    "style": "oak-9"
+   },
+   {
+    "id": "oak-path-c",
+    "kind": "tree",
+    "seed": 7719,
+    "x": -4,
+    "z": 55,
+    "style": "oak-9"
+   },
+   {
+    "id": "eye-on-the-road",
+    "kind": "tree",
+    "seed": 7740,
+    "x": 0,
+    "z": 50,
+    "style": "oak-9"
+   },
+   {
+    "id": "eye-beside-it",
+    "kind": "tree",
+    "seed": 7741,
+    "x": 0,
+    "z": 47,
+    "style": "oak-9"
+   },
+   {
+    "id": "eye-over-a-hole",
+    "kind": "tree",
+    "seed": 7742,
+    "x": 10,
+    "z": 38,
+    "style": "oak-9"
+   },
+   {
+    "id": "eye-in-the-doorway",
+    "kind": "tree",
+    "seed": 7743,
+    "x": -12,
+    "z": 77,
+    "style": "oak-9"
+   },
+   {
+    "id": "eye-against-the-wall",
+    "kind": "tree",
+    "seed": 7744,
+    "x": -14,
+    "z": 67,
+    "style": "oak-9"
+   }
+  ]
+ }
+}

@@ -1,0 +1,61 @@
+## clint-3 (boulder) along x
+TRANSECT 25 stations from (-29, 92) to (-5, 92), every 1
+  station        ground  surface  water  top  standing            step
+  (  -29,    92)                                                    void
+  (  -28,    92)                                                    void
+  (  -27,    92)                                                    void
+  (  -26,    92)                                                    void
+  (  -25,    92)                                                    void
+  (  -24,    92)                                                    void
+  (  -23,    92)                                                    void
+  (  -22,    92)                                                    void
+  (  -21,    92)      10       10           10                      
+  (  -20,    92)      10       10           10                      
+  (  -19,    92)      10       10           14  boulder clint-3     
+  (  -18,    92)      10       10           14  boulder clint-3     
+  (  -17,    92)      11       11           14  boulder clint-3     +1
+  (  -16,    92)      11       11           14  boulder clint-3     
+  (  -15,    92)      10       10           14  boulder clint-3     -1
+  (  -14,    92)      11       11           11                      +1
+  (  -13,    92)      11       11           11                      
+  (  -12,    92)      11       11           11                      
+  (  -11,    92)      11       11           11                      
+  (  -10,    92)      11       11           21                      
+  (   -9,    92)      11       11           22  spawn spawn-1       
+  (   -8,    92)      11       11           23  spawn spawn-1       
+  (   -7,    92)      11       11           24  spawn spawn-1       
+  (   -6,    92)      11       11           25  spawn spawn-1       
+  (   -5,    92)      11       11           25  spawn spawn-1       
+rises 2, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder clint-3 at (-19, 91), spawn spawn-1 at (-9, 90)
+
+## clint-3 (boulder) along z
+TRANSECT 25 stations from (-17, 80) to (-17, 104), every 1
+  station        ground  surface  water  top  standing            step
+  (  -17,    80)      11       11           11                      
+  (  -17,    81)      11       11           11                      
+  (  -17,    82)      11       11           11                      
+  (  -17,    83)      11       11           11                      
+  (  -17,    84)      11       11           11                      
+  (  -17,    85)      11       11           11                      
+  (  -17,    86)      11       11           11                      
+  (  -17,    87)      11       11           11                      
+  (  -17,    88)      11       11           11                      
+  (  -17,    89)      11       11           11                      
+  (  -17,    90)      11       11           13  boulder clint-3     
+  (  -17,    91)      11       11           14  boulder clint-3     
+  (  -17,    92)      11       11           14  boulder clint-3     
+  (  -17,    93)      11       11           14  boulder clint-3     
+  (  -17,    94)      11       11           14  boulder clint-3     
+  (  -17,    95)      11       11           12  boulder clint-3     
+  (  -17,    96)      11       11           11                      
+  (  -17,    97)      11       11           11                      
+  (  -17,    98)      11       11           11                      
+  (  -17,    99)      11       11           11                      
+  (  -17,   100)      11       11           11                      
+  (  -17,   101)      11       11           11                      
+  (  -17,   102)      10       10           10                      -1
+  (  -17,   103)      10       10           10                      
+  (  -17,   104)                                                    void
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder clint-3 at (-18, 90)

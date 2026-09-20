@@ -1,0 +1,10 @@
+THEMES  4 themes over 9414 ground cells, 17 distinct surface blocks
+  fell  6062 cells (64.4%)  2:0 Grass Block, 13:0 Gravel, 3:1 Coarse Dirt, 1:5 Andesite, 1:0 Stone, 4:0 Cobblestone, 45:0 Bricks, 98:0 Stone Bricks, 17:1 Spruce Log, 102:0 Glass Pane, 5:1 Spruce Planks, 35:14 Red Wool
+  yard  2067 cells (22.0%)  1:0 Stone, 98:0 Stone Bricks, 4:0 Cobblestone, 5:1 Spruce Planks, 45:0 Bricks, 126:1 Spruce Wood Slab, 17:1 Spruce Log, 17:5 Spruce Log, 65:5 Ladder
+  works  695 cells (7.4%)  13:0 Gravel, 4:0 Cobblestone, 1:5 Andesite
+  dock  590 cells (6.3%)  1:5 Andesite, 13:0 Gravel, 4:0 Cobblestone, 98:0 Stone Bricks
+borders:
+  fell | yard  665 cells
+  dock | fell  178 cells
+  works | yard  139 cells
+  fell | works  43 cells

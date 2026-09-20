@@ -1,0 +1,46 @@
+HOW THIS BOARD IS COME AT
+
+  wool at (0, -85)
+    The attacker walks 149 blocks to it; the defender 60, a ratio of 0.40.
+    A player already at the crossing is 71 blocks from it — further than a respawn, so this objective is defended from the back rather than from the front.
+      Neither side is obviously first to it.
+    4 ways in. The last choice is made at (10, -20) and closes at (0, -85), 0 blocks short of the objective.
+      The defender's own walk runs through that merge, so both sides come up the same road. A defence has to be pushed forward to hold it, and the further forward the merge sits the more of the board it gives up to do so.
+    The attack covers 81% of the ground the defence crosses to get here. The two sides are on the same ground almost the whole way, so however many ways in this board counts, none of them misses the reinforcement lane.
+    Walking attack — 149 blocks, 4 ways, 4 decisions:
+      round the 8-cell hole at (10, -40): choose at (10, -20), live over 61 blocks, the other way 1.00× the shortest.
+      round the 8-cell hole at (10, 40): choose at (35, 40), live over 17 blocks, the other way 1.02× the shortest.
+      round the 4-cell hole at (0, -70): choose at (10, -20), live over 73 blocks, the other way 1.03× the shortest.
+      round the 2-cell hole at (-10, -50): choose at (10, -15), live over 78 blocks, the other way 1.06× the shortest.
+    Walking back-run — 149 blocks, 4 ways, 3 decisions:
+      round the 8-cell hole at (10, -40): choose at (5, -65), live over 91 blocks, the other way 1.00× the shortest.
+      round the 4-cell hole at (0, -70): choose at (0, -85), live over 99 blocks, the other way 1.03× the shortest.
+      round the 2-cell hole at (-10, -50): choose at (0, -85), live over 99 blocks, the other way 1.06× the shortest.
+    Walking defend — 60 blocks, 2 ways, 2 decisions:
+      round the 8-cell hole at (10, -40): choose at (35, -40), live over 17 blocks, the other way 1.05× the shortest.
+      round the 4-cell hole at (0, -70): choose at (15, -55), live over 31 blocks, the other way 1.38× the shortest.
+    Walking chase — 71 blocks, 4 ways, 3 decisions:
+      round the 8-cell hole at (10, -40): choose at (-10, -15), live over 71 blocks, the other way 1.30× the shortest.
+      round the 4-cell hole at (0, -70): choose at (-10, -35), live over 51 blocks, the other way 1.10× the shortest.
+      round the 2-cell hole at (-10, -50): choose at (-10, -35), live over 44 blocks, the other way 1.00× the shortest.
+
+  wool at (-35, -35)
+    The attacker walks 124 blocks to it; the defender 74, a ratio of 0.60.
+    A player already at the crossing is 40 blocks from it — nearer than a respawn, so the defence that matters is whoever was already out.
+      Neither side is obviously first to it.
+    1 ways in. The last choice is made at (35, 40) and closes at (20, 35), 107 blocks short of the objective.
+      Going round the merge saves the defender 126 blocks, so the defence arrives from behind the objective while the attack arrives at its front. Those are different ground and the objective is the easier for it.
+    The attack covers 59% of the ground the defence crosses to get here. The two sides share some of the approach and not all of it.
+    Walking attack — 124 blocks, 1 way, 1 decision:
+      round the 8-cell hole at (10, 40): choose at (35, 40), live over 17 blocks, the other way 1.02× the shortest.
+    Walking defend — 74 blocks, 3 ways, 3 decisions:
+      round the 8-cell hole at (10, -40): choose at (25, -40), live over 64 blocks, the other way 1.19× the shortest.
+      round the 4-cell hole at (0, -70): choose at (25, -40), live over 64 blocks, the other way 1.61× the shortest.
+      round the 2-cell hole at (-10, -50): choose at (25, -40), live over 64 blocks, the other way 1.19× the shortest.
+    Walking chase — 40 blocks, 2 ways, 1 decision:
+      round the 2-cell hole at (-10, -50): choose at (-10, -15), live over 40 blocks, the other way 2.10× the shortest.
+    Walking back-run — 124 blocks, one way, no choice to make.
+
+WHAT NO JOURNEY REACHES
+
+  Every piece of ground is on somebody's way somewhere.

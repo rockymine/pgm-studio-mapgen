@@ -57,8 +57,10 @@ anything is posted.
 
 **A 2xx answer declares a `warnings` array wherever it can carry one**, and every operation declares a
 `Pgm-Warnings` response header — `6 RQ3 SK3 SK4` — which is written whenever the complaint channel collected anything, so
-the count and the rule ids are readable without parsing the body. **Read the body either way**: an endpoint
-that answers `warnings` as its own field — `/plan/evaluate` is one — fills the array without the header.
+the count and the rule ids are readable without parsing the body.
+
+**Read the body either way**: an endpoint that answers `warnings` as its own field — `/plan/evaluate` is
+one — fills the array without the header.
 
 **Read them after every call.** A driver that reads only the status code is throwing away the half of the
 answer that says what the map actually became.
@@ -77,7 +79,9 @@ answer that says what the map actually became.
 
 Guessing a field name, nesting a block one level too deep, writing `x`/`z`/`w`/`h` where the rectangle wants
 `min_x`/`min_z`/`max_x`/`max_z` — every one of those used to answer 200 and quietly build a smaller map.
-They now come back named. **The check after each post is one line: did anything come back under `warnings`.**
+They now come back named.
+
+**The check after each post is one line: did anything come back under `warnings`.**
 
 Two things `RQ3` does not reach, and they are in `GENERATION-NOTES.md`: the inside of a **theme** and the
 inside of a **house style**, both of which are stored as snapshots.
@@ -109,11 +113,14 @@ GET   /api/map/{slug}/export             the world, into a fresh empty directory
 **One call stores the map, and the slug is stated rather than minted.** `POST /map/from-documents` writes the
 plan to re-plan from, rasterizes the drawing into geometry, projects the intent into the map document and
 applies the authors — in that order, which is the order that matters: the projection is what would overwrite
-a name written before it. A map already at the slug is **replaced**, so a corrected spec re-driven keeps one
-map row instead of leaving `board`, `board-2` and `board-3` behind, and a hand edit made in the Sketch tool
-between runs is replaced rather than merged. Everything read after it is read against the stored map: the
-grid and the flow off the stored plan, and `sketch/columns` where `DR-KEEP` can see the spawn doors' approaches
-and the goal rings the intent carries.
+a name written before it.
+
+A map already at the slug is **replaced**, so a corrected spec re-driven keeps one map row instead of leaving
+`board`, `board-2` and `board-3` behind, and a hand edit made in the Sketch tool between runs is replaced
+rather than merged.
+
+Everything read after it is read against the stored map: the grid and the flow off the stored plan, and
+`sketch/columns` where `DR-KEEP` can see the spawn doors' approaches and the goal rings the intent carries.
 
 **Four reads raise no finding at all, which is exactly why they get skipped.** The grid and the flow read the
 stored plan and cost no build; the relief read-back looks at the ground before it is built; coverage is the
@@ -123,27 +130,38 @@ than the render you would have looked at instead.
 **Look at what you built, through the API.** `GET /api/map/{slug}/render/topdown` and its seven siblings —
 `section`, `heightmap`, `surface`, `traversability`, `structures`, `mirror`, and `column` — answer the built
 world as pictures and as text. Each route's summary says what it draws and where it misleads; each declares
-its own query words. **`column` is the workhorse**: every picture beside it is a projection, and it is what is
-actually at a coordinate, which is the read to reach for when a picture and a document disagree.
+its own query words.
+
+**`column` is the workhorse**: every picture beside it is a projection, and it is what is actually at a
+coordinate, which is the read to reach for when a picture and a document disagree.
 
 **Read the text before the pictures.** The driver writes the board as text beside every picture, each
 file the API's own `?format=text` answer — `02-heightmap.txt`, `03-slopes.txt`, the two axis sections, a
 `transect-<feature>.txt` through every spawn, goal, house, water prop and made thing, `04-routes.txt` along
 each team's walk to each goal, `05-themes.txt` and `06-claims.txt` — and prints their summaries inline.
+
 Every one of them can be asked for again at any extent: `render/section`, `transect`, `walk`, `slopes`,
-`render/heightmap`, `themes/census` and `sketch/dressing` all answer `?format=text`, and a finding that
-has a mechanical fix carries it as `edit`, which the drive prints under the finding's sentence. A height in a picture is a shade to gauge; in a transect it is a number to subtract,
-and every step a player cannot walk is already named with its coordinates. A claim about a **shape** — a
-bank, a wall, a slope, a stair, a basin — is a claim about a profile and is read off a transect, never off a
-single column and never off a render; the pictures are for what no number states — whether a thing reads as
-belonging where it stands.
+`render/heightmap`, `themes/census` and `sketch/dressing` all answer `?format=text`.
+
+And a finding that has a mechanical fix carries it as `edit`, which the drive prints under the finding's
+sentence.
+
+A height in a picture is a shade to gauge; in a transect it is a number to subtract, and every step a player
+cannot walk is already named with its coordinates.
+
+A claim about a **shape** — a bank, a wall, a slope, a stair, a basin — is a claim about a profile and is read
+off a transect, never off a single column and never off a render. The pictures are for what no number states —
+whether a thing reads as belonging where it stands.
 
 **`GET …/preflight` is the export's verdict at a fraction of its cost**, and it is the read most easily
-skipped because nothing refuses you for skipping it. It runs the same traversability check the export refuses
-on — **per team**, so a goal a team is barred from reaching names the team barring it — plus the codec
-round-trip, the mirror and buildability, and ends `export gate OPEN` or `export gate BLOCKED`. A wool room on
-the defenders' own spine compiles clean, evaluates clean, and is refused at export as `EX1`; pre-flight says
-so first.
+skipped because nothing refuses you for skipping it.
+
+It runs the same traversability check the export refuses on — **per team**, so a goal a team is barred from
+reaching names the team barring it — plus the codec round-trip, the mirror and buildability, and ends
+`export gate OPEN` or `export gate BLOCKED`.
+
+A wool room on the defenders' own spine compiles clean, evaluates clean, and is refused at export as `EX1`;
+pre-flight says so first.
 
 **Two gates are still heard for the first time at the export, at 409, after the whole world is built.**
 `OB17` — a goal overhanging void, in a spawn, or in a wool room — and `OB19` — a tree, boulder or building
@@ -157,69 +175,17 @@ document until you have read why it was refused.
 
 ## 3. What to author
 
-**A board of your own design.** Decide what the map is before you decide what it is made of, and write the
-identity down in one sentence — if the sentence cannot be written, the board is not ready.
+**A board of your own design.** There are no named briefs and no worked examples on purpose: what the board
+is for, what it is made of and where things stand are yours.
 
-There are no named briefs and no worked examples on purpose. What the board is for, what it is made of and
-where things stand are yours.
+**`ORDER-OF-WORK.md` is the order those decisions are made in**, and it is the one page read before the first
+request. This section is what is left once that order is settled — how a *run* is conducted, rather than how
+a board is decided.
 
-**Before any shape is authored**, write down: the extent, the aspect ratio, where each spawn sits, where each
-objective sits, and the two routes between them. Five numbers and two lines are the board, and everything
-after them is detail. A destroy board is a lane rather than a square — on a square board every goal is
-equidistant from both spawns and the ratio flattens.
-
-**`GO1` is solvable before a shape exists.** With the goal `d` blocks along the lane from its own spawn and
-the spawns `L` apart, the ratio is about `(L − d) / d`, so the band [3.0, 4.0] puts the goal between `L/5` and
-`L/4` from its own spawn. On a 208-block lane that is 42 to 52 blocks; place it there and `/plan/inspect`
-agrees on the first read.
-
-**A wool board is about half void, and its size is the composer's.** The `fill-ratio` term reports under
-`G8` with a band of [0.201, 0.542] and **answers for a wool board and no other kind** — it returns nothing at
-all on a plan with no wool in it, which is why a destroy board never trips it however dense it reads. So a
-wool board that fills its own bounding rectangle is refused — together with `FR6` on the frontline that
-shape produces and `LN2` on the chain, all three at once and none of them naming the cause. Ask the composer
-for the proportions rather than deriving them: `GET /api/compose?players=24&symmetry=rot_180` answers about
-142 proxy cells a team on a 22 × 36 board, which is roughly a third land. The shape that gets there is not
-symmetry about the centre line: **the team unit sits offset**, so its own `rot_180` image occupies the other
-side and the two interlock — each row of the board is about half land and neither half fills it. A unit drawn
-symmetric about `x = 0` cannot reach the band at any size, because it is the arrangement rather than the
-extent that is wrong.
-
-**One objective, and air between the two sides.** On a board a hundred blocks or less across, **one**
-destroyable a team is the answer — two of them close together is one objective with two health bars. And the
-two teams' ground is joined by a **build zone over void** spanning the board's whole width, never by a land
-connection: a corridor is a place a defender stands, and a crossing a team has to pay to bridge is a decision
-an attacker makes. The land ends where the ground stops being anybody's, and the gap starts there. (The
-author's ruling. Both halves of it were wrong in this brief's own first test board.)
-
-**A landscape board is a small plan and a large relief.** Every destroy board is a landscape board. Pieces are
-the *rooms and corridors* a map is played through, not its terrain: reach for a piece when there is a floor,
-a room or a lane that has to be exactly somewhere, and reach for the **relief** for everything that is a
-shape of ground. A plan that grows a piece per landform is a plan whose paint will grow a theme per piece
-(*What a board is painted with*), and a board authored that way comes out as noise wearing a plan.
-
-`firnline` is what that looks like when it goes wrong: **13 plan pieces at 6 surface heights**, then a
-`themeByHeight` mapping each of those 6 heights to a theme. The theme partition is the height partition,
-which is the piece partition — so the board's look was decided by how it happened to be cut up rather than by
-any reading of the terrain, and it reads chopped instead of coherent. The same board is one terrain shape
-plus two platforms: the monument shelf and the middle plateau, each an `addLayers` slab over the ground with
-its own `base_y` and its own theme. **Construction comes before dressing, and a bad construction cannot be
-dressed out of.**
-
-**A compiled rectangle is reshaped one point at a time.** `PATCH
-/map/{slug}/sketch/shapes/{id}/vertices/{index}` moves one vertex and leaves every other exactly where it was drawn; `POST …/vertices` with
-`{"after": n}` adds one, at the midpoint of that edge when no point is stated, and answers where it landed;
-`DELETE …/vertices/{index}` takes one out, and a spec states the three as `editShapes`, an ordered list per
-  shape replayed before any bend. That non-movement is the whole property — a board's shapes abut,
-and an edit that drags a ring's other points opens ground between two that were flush, which is what happens
-when a whole-ring transform is used to pull a corner. `bendShapes` is the other tool and is a *roughener*:
-it moves every cut point at once by a formula, `side` deciding whether the outline bloats (`out`, the
-default), holds its footprint (`in`) or wanders across it (`both`). Reach for the bend to make a whole edge
-read rougher; reach for a vertex to make one place different from the others. Do not reach for a second shape
-to enlarge or eat into the first — that is the move that produces a board nobody can read.
-
-**Announce what you are building at the top of your report before you author anything**, so what you set out
-to do can be read beside what you built.
+**`WHAT-A-BOARD-IS-MADE-OF.md` is the author's ruling on how a board should look**, none of which any gate
+enforces: what it is painted with, what a building is made of, how ground cover is stated, and how made
+ground meets grown ground. It is the half of authoring every previous run got wrong, and it is read once
+before the first theme is written.
 
 ### A run of boards is not one board N times
 
@@ -228,283 +194,92 @@ Write each board's identity in one sentence before anything is authored, and wri
 blocks — and a solved arrangement is precisely what gets reused, because it is the one that already satisfied
 `WL9` and `GO1` without an argument.
 
-Then name the three tone families for each board and check them **across** the set rather than within it. Five
-boards can each be internally coherent and still be five greys: the ground family is the one nobody varies,
-because grey stone is what every fill pattern and every exposed face reaches for. Decide at least one board's
-ground to be warm, or pale, or red, before the first theme is written.
-
-### What the studio checks for you, and what it does not
-
-The numbers a board is held to are in `GET /api/rules` — the goal-to-spawn walk ratio (`GO1`), the strait
-between two teams' groups (`CT12`), the ground a spawn door opens onto (`SP8`, `SP9`), the clearance around a
-goal (`OB19`), the passage past a building (`DR-PASS`), how two wings of a house meet (`HJ1`–`HJ5`). Meeting
-them is not a design achievement; it is the floor.
-
-What no gate asks is whether the board **looks** like anything, and that is where every previous run's boards
-came apart. The observations below are measured off shipped boards and are enforced nowhere:
-
-- **How a board is painted is its own section** — *What a board is painted with*, below. It is the half of
-  authoring no gate holds you to and the half every previous run got wrong.
-- **Stained clay, wool and glass are shade rows, not ground** — a stated colour, never terrain.
-- **The magenta block at the centre of every board is the observer platform's bedrock, and it is not a
-  fault.** `SurfaceReport` legends a full cube no tone family claims as *unnamed material* and colours it
-  magenta, so a block missing from a family reads as a fault in the board. Bedrock has no family on purpose —
-  it is the map's floor and the shell of its walls. Do not go looking for what is wrong with it.
-- **A goal's name is a name.** No `<Team>`, no angle brackets: PGM prints the attribute verbatim, on both
-  teams, and a placeholder reaches a player.
-- **The rim is off on ground a relief solved.** A rim caps every fall with a band and turns a rolling hill
-  into contour lines; it belongs where an edge was *made* — a coast over void, a platform lip, a retaining
-  wall's top course.
-- **A landform meets its neighbour along an authored transition**, never a flat pad butted against a hill.
-  The four fields are `skirt`, `anchor_heights`, `height_mode` and `relief_scope`.
-- **Draw the routes as paths before the scenery.** Spawn door → objective, objective → flank, wool → hub. A
-  path is the circulation diagram drawn: it states the route and keeps the ground along it clean.
-- **A `polyline` *shape* is the layout's easiest curve, and it is not the `stroke` prop.** The rasterizer
-  splines a polyline's points — centripetal Catmull-Rom, eight samples a segment — before offsetting the band,
-  so four clicked points draw as a flowing wall rather than a chain of chords, and nothing has to be authored
-  for it. `stroke_edge` is `solid`, `rough` (the width wanders ±45%) or `tapered`. `opus5-millrace`'s canal
-  walls are three such shapes at three or four points each. Reach for one wherever a wall, a lane or a
-  watercourse should flow; `controls` — Bézier handles — belong only on a closed ring of ground. **The
-  `stroke` prop is the other thing entirely**: it repaints the top course of what it crosses and adds no
-  cell, and `claimsGround` on it says whether trees, boulders and buildings keep off — which is about holding
-  ground, not about players walking.
-- **A board carries more than one placement idea.** A village behind the spawn may be one of them; a single
-  house on a hill, a house in an authored clearing, a mine head or a wellhouse whose style says its function,
-  a run of buildings as a boundary are the others. Six footprints in one style is a settlement; one footprint
-  in six materials is a swatch.
-- **Nothing is scattered.** Every prop is placed because there is an answer to *why here*. Bare ground you
-  chose beats dressing you did not.
-- **Start a house style from a shipped preset and fork it.** Ten exist, each demonstrating a technique;
-  `GET /api/room-styles/{id}/json` answers one as the stamper's own JSON. Repaint `storeys[*].wall` as well
-  as `wall`, or the fork is half applied.
-- **Look at a house in section before building a world.** `/api/room-styles/preview` answers `plan` and
-  `section`. Every shipped roof fault was visible in a section and invisible from above.
-
-### What a board is painted with
-
-Every board in `specs/` passed every gate and several of them look wrong, and it is the same handful of
-faults each time. What follows is the author's ruling in each case; the numbers beside it are measured over
-the **fifty-one** boards here that carry a theme registry, so they say how far the habit runs rather than how
-bad one board was.
-
-**The through-line is simplicity.** A board is authored simple and detailed afterwards — the relief first,
-then one ground, then the few places that are genuinely made of something else. Detail added later is
-*chosen*; detail that comes out of a pattern is a roll of the dice, and a board is not improved by rolling it
-five hundred thousand times.
-
-**A pattern takes two blocks, not a family.** A `TerrainPalette` family is the set of blocks that read as one
-ground, offered together so a list can be *filled* from one and then cut down — filling it is the first step,
-not the answer. Two members is a texture; three is a mottle; five is a family shown off rather than a ground.
-Of the **277 patterns** on these boards, **85% carry three entries or more**, 51 carry five and 8 carry six or
-seven; only 15% carry two.
-
-**A voronoi is never ground.** It draws a diagram — a grid of lines with cells reading off it — and there is
-no landscape that looks like that. It belongs in the **fill**, where it is the body of the rock nobody sees
-until a wall is cut, and it is made of **stone**. A voronoi whose bands are dirt and whose middle is grass is
-the worst of both: a network of dirt lines nothing in nature draws. On these boards **44 of 50 voronois are on
-the surface** and **none is in the fill**.
-
-**Noise carries a texture, never a border.** A fractal field between two blocks of nearly the same shade —
-sandstone into stone, dirt into coarse dirt — reads as one ground with grain in it. The same field between
-two *different* grounds reads as static: the big destroy boards with the lake scattered sand into grass, and
-what that draws is neither a beach nor a meadow. Where two grounds meet, the edge is **drawn** — a shape with
-its own theme, a stroke, a painted band — and never sampled.
-
-**A brush too small is static, and the cure is always bigger.** A field whose features are smaller than the
-thing they dress reads as noise however good the palette is; the same field at three times the period reads as
-patches, which is what looks deliberate. The medians here are `cellSize` **6** for a cell pattern (down to 2)
-and `scale` **8** for a noise field (down to 4). Those are the numbers that produced the boards being
-complained about. Go up, then look at it: `POST /api/terrain/material-preview` renders one material and
-`POST /api/terrain/theme-preview` the whole finish, in five views — `section`, `rim`, `surface`, `wall`,
-`fill` — under `?format=png&view=…&scale=…`. Without `format=png` it answers every view at once as JSON and
-`view` does nothing, which reads exactly like a broken knob and is not one. Neither preview builds a world,
-and neither can tell you what a theme sits **next to**: the sample terrain is grey stone, so a grey theme
-reads as one mass there and may be perfectly legible on a board of grass.
-
-**Three themes is a map.** A theme is a *place* — the moor, the works, the shore — and a board has two or
-three of them. Giving every piece of the plan its own theme is not variety, it is the plan leaking into the
-paint: sixteen boards here carry three themes, but eleven carry five, seven carry six, and five carry between
-sixteen and twenty-four (`opus5-interchange` has **twenty-four**).
-
-**Steps share one theme, and it is not the theme of what they join.** A flight of steps is *made* — it is the
-one part of a landscape a person built — so it reads as stone, and it reads as the same stone the whole way
-up. The grassy shelf at the top and the sandy floor at the bottom may each have their own theme; the stair
-between them having a third is what turns a board into a swatch book.
-
-**A landscape board is one theme, a relief and a handful of patches.** Every destroy board is a landscape
-board. Author a **simple plan with few pieces**, put the shape of the ground into the **relief** rather than
-into the piece list, paint the whole thing one ground, and then put the variation in where you *want* it. A
-raised shelf carrying a city may have a theme of its own — but a city is not noise either, so that theme is
-materials laid in courses, not a field sampled over them.
-
-**Splotches beat patterns, and a splotch is a shape.** A theme is stated **on a shape** (`TP10`: map default ›
-shape, winner takes all), so the brush an author reaches for is an `addShapes` polygon with a `theme` of its
-own — a patch of bare dirt worn into a meadow, a sandy shelf at the water, a scorched ring. Ten of those over
-one ground is a landscape somebody made. The same two blocks in a cell pattern is a board that is a third dirt
-*everywhere*, including the places dirt has no reason to be. If the answer to *why is it here* is "the noise
-put it there", it is not an answer.
-
-**A building is never the ground it stands on.** A house is a thing somebody built on a landscape and it has
-to read as one from across the map, which means its walls are not in the tone family under its feet. A stone
-house on stone can be made to work and is a hard thing to get right; it is not the one to attempt. **9 of the
-50 buildings** here are walled in the ground's own family — `opus5-siderite-bowl` puts three grey-stone houses
-on grey stone. Name three families out loud before painting: which is ground, which is built, which is the
-accent. An accent that appears once is not an accent, and an ore block is never a building material.
-
-**A path is solid, and it is three colours that are nearly the same.** A `worn` or `rough` band reads as
-litter rather than as a way somebody walks: the style to state is `solid`, and the pave is three blocks a
-reader cannot quite tell apart — **dirt, coarse dirt and spruce planks** where the ground is soft, **gravel,
-andesite and cobblestone** where it is hard. A path is also a claim about circulation, so one that ends
-nowhere, or that runs *through* a building rather than to its door, says the board was assembled rather than
-drawn.
-
-**Two blocks a landscape is not made of.** Mossy cobblestone and cracked stone bricks are noise wherever they
-meet terrain — they read as damage, which is a statement about age that ground does not make. Keep them for a
-built thing that has earned them.
-
-**A boulder is stone.** Stone, cobblestone and andesite is the whole palette that reads as rock from any
-distance, with an accent under it if the floor it stands on wants one. A boulder in the ground's own accent is
-a lump, and a boulder in five materials is a sample board.
-
-**A tinted block's family is the biome's to decide, so choose the biome before the patterns.** Grass, leaves
-and water take their colour from the chunk's biome byte and nothing else on a board does, which makes the
-biome a palette decision rather than a line added to the finish at the end. The rule reads twice. A cold board
-takes a **cold biome**: snow and ice are blocks, so a snowfield on `Plains` has a summer meadow running
-through it, and `Ice plains`, `Cold taiga` or `Frozen river` — all three tinting grass `#80b497` — is what
-makes the two agree. And grass with **podzol** is not a prohibition but a colour distance: on `Plains` the
-tint is `#91bd59` against podzol's brown and a pattern mixing them reads as neither ground, where on `Mesa`
-(`#90814d`) or `Swampland` (`#6a7039`) the tint comes to meet it and the pair reads as one dry, leaf-littered
-floor, which is what those places are. `GET /api/terrain/biomes` answers every biome's hex, so the check is a
-look rather than a guess: ask it of each tinted block the palette names, once, before the patterns are
-written.
-
-### Ground cover is one shape and two numbers
-
-A `flora` prop is the pass that scatters ferns, grass and flowers over ground that already carries grass, and
-it is the cheapest thing on a board: every one of its decisions is a noise field sampled per cell, so it
-stores no state and re-exports identically.
-
-**The shape is the whole board, not a patch of it.** `points` is an outline of three or more, and what it
-states is the ground the pass is *eligible* to cover — the patchiness is the density field's job and the field
-is better at it than a hand-drawn polygon. Several small shapes is an author doing the field's work by hand,
-and it comes out as islands of planting with bare ground between them where no edge exists.
-
-**Two of its numbers are gameplay and want to stay low.** `coverage` is how much of the eligible ground
-carries anything at all, and `tallShare` is how much of that is two-block grass — which hides a player, and so
-is cover nobody authored, in front of objectives nobody chose. A high `coverage` is a board whose ground
-cannot be read at a glance, which undoes the slope banding it was painted with. Keep both modest and put the
-character in `scale` — small is speckle, large is meadows and clearings — and in `flowerShare` with
-`flowerScale`, which cluster into fields rather than confetti.
-
-### What a building is made of
-
-The two sections above are what the ground is made of. This is the other half, and it is shorter, because a
-building is a short list of decisions and a shorter list of things not to do. The list is the author's and
-none of it is enforced, which is why the shipped presets break the first item on it.
-
-**No footing.** `Foundation.Footing` is null by default and that is the answer rather than an omission: a
-footing is the course ringing the plate one block proud, and it is what a **deep** plate stands on — over a
-plate of one course, which is what a house on a board has, it is a rim round a building with no foundation to
-speak of and it reads as noise rather than as masonry. Five of the thirteen presets carry one in cobblestone
-— `cottage`, `longhouse`, `terrace`, `counting house` and `workshop` — and so do three of
-`opus5-lodestar`'s own styles (`berth`, `vault`, `shed`) and both of its room shells. A fork of any of them
-carries the footing in unless it is set back to null.
-
-**No shed, and no shed roof.** `RoofForm` offers six — `gable`, `flat`, `hip`, `gambrel`, `shed`,
-`saltbox` — and one of them is not for a map.
-
-**A log is a post or a beam, and a wall is neither.** Posts at the corners are what make a house read as
-framed, which is what every hand-built house on the corpus does. Beams run out past those corners where two
-storeys meet — and a beam has to be the end of something, so the wall under it carries a course of **laid**
-log. A beam over plain infill is a beam ending in nothing.
-
-**A checker in the same log as the posts is one mass.** Where a wall wants a checker it wants a *different*
-log; where it does not, the posts are already doing that work.
-
-**Two buildings are a row when they differ in height and footprint and in nothing else.** One style, three
-plots, one of them a storey taller: that is a town. Three styles is three ideas, and five styles on a board is
-a swatch book. What carries variety instead is shape — a tall wing against a low one, a hall against a cross
-wing, two storeys against three — and a tall building is a perfectly good building where a board wants one.
-
-**Fewer, and each one placed because there is an answer to *why here*.** A yard already standing a spawn hall
-and two wool rooms does not need a fourth building, and `DR-PASS` will eventually say so anyway, which is the
-wrong way to find out.
-
-### Where made ground meets grown ground
-
-A terrace over a meadow, a yard over a pasture, a quay over a shore: two grounds at two heights, and
-everything a match is about happening where they meet. It is the most useful thing a plan can state, and it is
-four decisions rather than one.
-
-**The made ground is `exclude`, not `hold`.** `hold` lets the relief bring the lower tier *up* to the shape,
-and then there is no step and no reason for a stair; `exclude` takes the footprint out of the solve and the
-two tiers meet at a face.
-
-**The boundary is not a straight line.** A retaining wall is straight where it is a wall and interesting where
-it is a gate. Cut re-entrants and salients into the compiled edge one vertex at a time, and size each
-re-entrant to exactly the flight that fills it, so a stair is set *into* the wall rather than leaning on it.
-
-**The height difference is bridged by a stair and not by the relief.** A relief graded across the seam deletes
-the boundary; a flight states it. One polygon, two anchors at the foot and two at the head,
-`height_mode: "level"`, `skirt: 0`, `keepClear: true`, and a `material` rather than a theme — a stair is a
-thing somebody built and a theme is a place. Give it at least twice the run as rise, and prove it with a
-transect: the plan tier walks pieces flat and cannot see an authored flight at all, so `EL1` and `WL11` will
-go on naming the seam and they are not wrong about the plan.
-
-**The made ground's face is where its paint goes.** A `wallRun` stripes along the perimeter and a
-`wallDiagonal` shears those stripes by height so they climb the wall at a slope. Neither is reachable by
-anything sampled from the plane, and a retaining wall is the one surface on a board that wants them. Put a
-`teamTint` in one run and the town wears the colour of whoever holds it, so a player reads whose terrace they
-are looking at from the far bank.
+The tone families are checked the same way, **across** the set rather than within it, which
+`WHAT-A-BOARD-IS-MADE-OF.md` states and is the commonest way a run of five boards comes out as five greys.
 
 ### The one thing that is not yours to decide
 
 **A rule about the map as it is *played* has a human oracle, and this session does not have one.** When you
 hit a question `docs/gameplay/approaches.md` does not settle — what an objective needs around it, whether a
 channel should be bridgeable, how unequal two ways round may be — make your best judgement, **build it**, and
-**record the question in your report as an open question** rather than filing it as a fact. A correct
+**record the question in your report as an open question** rather than filing it as a fact.
+
+**Read `docs/gameplay/match-flow.md` before deciding one of those yourself.** It is the account of how a map
+is played — the funnel, the wall and the pit, where the ground game ends and the sky begins, which wool falls
+first — read off recorded matches rather than reasoned, and most questions that feel like they need the
+oracle are already answered in it. A correct
 measurement plus an invented conclusion is already committed to this repository's history.
 
 ---
 
-## 4. Where things are
+## 4. Where things are, and what to open when
 
 | Thing | Where |
 |---|---|
 | The studio (code, docs) | `/home/user/pgm-studio` |
 | The live API | already running, **do not restart it**. `PGM_STUDIO_API` states where; `tools/drive.py` discovers it by `GET /api/health` when nothing does |
 | Where your map goes | `/home/user/pgm-studio-mapgen` |
-| The errata the API cannot state | `GENERATION-NOTES.md` |
 | The driver | `tools/README.md` · `tools/drive.py` · `tools/board.py` |
 | Every board built here, its specs and its review | `maps/` · `specs/` · `review/` |
-| Hand-authored examples by the repository's author | `/home/user/pgm-studio/tools/seeds/ruediger.{plan,layout,intent}.json` |
 
-`dotnet` is at `/usr/bin/dotnet`. MariaDB is running and migrated. Run long `dotnet` calls as background
-shell commands. **Do not rebuild the solution** — the API runs from those DLLs and a rebuild fails with
-sixteen `MSB3027`s that read like compile errors and are not.
+`dotnet` is at `/usr/bin/dotnet`. MariaDB is running and migrated. Run long `dotnet` calls as background shell
+commands.
 
-### Reading, in this order
+**Do not rebuild the solution** — the API runs from those DLLs and a rebuild fails with sixteen `MSB3027`s
+that read like compile errors and are not.
 
-1. **`GET /api/rules`** — the whole vocabulary of refusal, before anything else.
-2. **`GENERATION-NOTES.md`** — what the API still cannot tell you. Short, and every entry cost a build cycle.
-3. **`tools/README.md`** — the driver and what its two files carry.
-4. **`/home/user/pgm-studio/docs/tools/flow.md`** — the four levels a map is described at (plan → layout →
-   intent → world), which tool owns which, and the five hand-offs. This is the map over everything else.
-5. **`docs/tools/capabilities.md`** — what the system can be asked for at each stage. The section on **set
-   algebra and void** especially: a `subtract` removes ground entirely and is the instrument for cutting a
-   channel; **no relief mark of any kind cuts a hole.**
-6. **`docs/tools/plan.md`**, **`sketch.md`**, **`library.md`** — each has a *Driving it without the UI*
-   section, which is the part that matters here.
-7. **`docs/gameplay/approaches.md`** — read in full. Every claim in it is marked `[author]` and settled, so
-   it is law rather than advice. **`docs/gameplay/match-flow.md`** §4 and §6 are what will change your board.
-8. **`docs/world-export/relief.md`** and **`decoration.md`** — the height model and the prop rules.
-9. **`docs/generator/model.md`** — read for the **box model as vocabulary**: what a body is, how a hub, a
-   lane, a frontline and a dock relate, what a wool approach is made of.
+### There is no reading list
 
-**Do not author from a composed board.** `/generator` composes whole boards from a player count, a symmetry
-and a seed. Understand the box model — that is why `model.md` is on the list — but painting a theme onto a
-composed board is what produced fifteen boards that look like each other. Draw your own, informed by the
-model rather than emitted by it.
+**Three documents are read before anything is posted and they come to about 12k tokens**:
+`ORDER-OF-WORK.md`, `WHAT-A-BOARD-IS-MADE-OF.md` and this brief. Everything else is opened at a question, and
+the question decides which.
+
+The ten `pgm-studio` documents this section used to list come to **187,000 tokens**, which is more than a
+context window holds. They are accurate and they are the whitepaper's source; the fault was that they sat on
+a reading list rather than that they exist.
+
+**Two of them are still worth opening, and they are both about how a map is *played*.** That is the half
+this repository cannot derive: the cards measure what an instrument does and the API answers what it will
+accept, and neither says what makes a match. `docs/gameplay/approaches.md` is the author's law on what an
+objective needs around it, and `docs/gameplay/match-flow.md` is the account of how a map is actually played
+— §4 the match in order, §6 what the recorded matches show, §10 the capture board.
+
+Everything else in the studio is a reference opened at a question. A tool document is long, it describes a
+surface the API already describes, and an agent that finds itself reading one has usually skipped a read
+that would have answered faster.
+
+| The question | What answers it |
+|---|---|
+| What can be asked for, and what does this route take? | `GET /api/openapi/v1.json`, or `/api-docs` in a browser |
+| What does this refusal mean and how is it satisfied? | `GET /api/rules?rule=<id>` |
+| Is there a number for this, and what is the band? | `GET /api/rules/terms` |
+| What fields does this pattern take? | `GET /api/terrain/patterns` — fourteen kinds, exact field names |
+| How do two correct mechanisms interact, and where does a read mislead? | `GENERATION-NOTES.md`, the chapter for the stage — not the file |
+| How is *this instrument* used, worked end to end? | `techniques/`, the card nearest what is being built |
+| Which read answers the question I am about to compute? | the `pgm-board` skill's lookup table |
+| What are the four levels a map is described at, and what hands off to what? | `pgm-studio/docs/tools/flow.md`, which also carries where each document nests and the address that reads it |
+| What does a `subtract` do, and what cuts a hole? | `techniques/cutting-a-hole` — the cut, the override add over it, and the `void-N-cut` a compile writes |
+| What does a destroy goal look like, and which words make one? | `techniques/destroy-goals`, or `GET /api/objectives/vocabulary` for the two closed sets alone |
+| What does a `HouseStyle` actually state, and what is it refused for? | `techniques/a-house-style` — twelve pads, one field changed on each |
+| How is a defence wall or an iron cube authored, and where may one stand? | `techniques/walls-and-iron` — both are plan-only, and `PL13` and `WX8` are the two that refuse |
+| What does an objective need around it? | `docs/gameplay/approaches.md` — every claim marked `[author]` and settled, so law rather than advice |
+| How does a match actually flow, and what does a player do with the ground? | `docs/gameplay/match-flow.md` — §4, §6, and §10 for a capture board |
+| What is the box model's vocabulary — a hub, a lane, a frontline, a dock? | `docs/generator/model.md` |
+| What does the export write into a world? | `techniques/`, the card nearest the instrument; `pgm-studio/docs/world-export/relief.md` and `decoration.md` are the deeper reference behind them |
+| How is a board driven, and what do its two files carry? | `tools/README.md` |
+| A card says to open a board and the studio answers 404, or `dressing.styles` has no copied tree to name | `tools/seed-studio.py` — `--check` says what is missing, no argument puts it back |
+
+**A composed board is a suggestion, and a capture board may start from one.** `GET /api/compose` knows how
+a CTW board is put together — hub, spawn, wool approaches, frontline, a mid band with a row of stepping
+stones in it — and that arrangement is the thing hard to invent and easy to get wrong.
+
+**What it hands over is a plan and nothing else.** It states no elevation, draws nothing but axis-aligned
+rectangles, places no defence wall and carries no layer, so the ground, the edge that is not straight, the
+second storey and the wall are all still yours to author.
+
+**Painting a theme onto a composed board and stopping there is what produced fifteen boards that look like
+each other.** `COMPOSER-ADAPTATION-BRIEF.md` is what taking one over costs and what the adaptation must not
+break; read it before pulling a board, and draw a destroy board yourself.
 
 ---
 
@@ -514,13 +289,12 @@ model rather than emitted by it.
   without it. A thin script posting JSON to documented endpoints is fine; anything computing a placement, a
   clearance, a sampler or a validation is a second copy of the system.
 - **No second format.** Author `PlanModel`, `SketchLayout` and `MapIntent` as they are.
-- **Layers are the sketch's, and a stacked board is written bottom-up.** `layers[]` is a stack of slabs,
+- **Layers are the sketch's, and each one is painted over its own span.** `layers[]` is a stack of slabs,
   each keeping one span per column, and a wall is that slab carried higher rather than a shape on top of
-  it. The painter walks the stack in document order, so a storey listed after one that stands over it
-  finds no stone left to paint: the compiled `ground` layer is not the bottom of every board, and an
-  undercroft goes before it. A placement — a goal, a spawn, a room, a prop — names its storey with
-  `layer`; naming none takes the top surface, which on a roofed goal is the roof. `opus5-mineshaft` is
-  the smallest board that is genuinely two storeys and `opus5-interchange` the first playable one.
+  it. The painter orders them by the lowest surface each carries, so a storey's bands stop at its own floor
+  whatever position the document gives it. A placement — a goal, a spawn, a room, a prop — names its storey
+  with `layer`; naming none takes the top surface, which on a roofed goal is the roof, and a shape naming no
+  layer joins the first one in the list.
 - **Every stage is looked at before the next consumes it.** Fifteen boards were once judged from one top-down
   at the end, and every appearance fault in the review was visible in an image nobody rendered. Use the
   preview endpoints — they answer a theme, a material, a prop or a plan without building a world — and look
@@ -534,13 +308,13 @@ model rather than emitted by it.
   that reaches it, a wall on the only throat, a room whose door opens onto its own apron. A top-down of the
   built world cannot show that, because by then they are terrain. `tools/board.py` is the same read off the
   plan file, before a map row exists.
-- **Export into a fresh, empty directory every time.** A rebuild writes over a region directory it never
-  clears (`B102`, open), so an `.mca` a previous build left behind survives into the new map. If two builds
-  disagree in a way that makes no sense, this is why.
 
 ---
 
 ## 6. Deliverables
+
+**Announce what you are building before you author anything**, at the top of your report, so what you set out
+to do can be read beside what you built.
 
 Into `/home/user/pgm-studio-mapgen`, on the branch this session was given:
 
@@ -551,6 +325,9 @@ Into `/home/user/pgm-studio-mapgen`, on the branch this session was given:
   top-down at the end, and `provenance.json`, which the driver moves here out of the exported `region/`.
 - **`review/<slug>.md`** — what the board is, how it is meant to play, the techniques used, and what went
   wrong. Follow `review/tallow-mirefast.md` for shape.
+- **a row in [BOARDS-BUILT.md](BOARDS-BUILT.md)** — under the run's own heading, saying what the board
+  turned out to be. Nothing derives that column from a folder, and the run that built the board is the only
+  party that knows it. `tools/boards-check.py` fails on a folder nobody wrote up.
 - **`reports/<your-model>-<run>.md`** — one for the run:
   - **What you set out to build**, at the top, before anything else.
   - **What you could not say**, item by item. For each: what you wanted, what you tried, the exact endpoint

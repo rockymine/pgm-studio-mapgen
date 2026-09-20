@@ -1,0 +1,10 @@
+THEMES  4 themes over 8992 ground cells, 18 distinct surface blocks
+  moor  5031 cells (55.9%)  2:0 Grass Block, 4:0 Cobblestone, 1:5 Andesite, 3:1 Coarse Dirt, 13:0 Gravel, 98:0 Stone Bricks, 7:0 Bedrock, 1:0 Stone, 82:0 Clay, 35:14 Red Wool, 35:11 Blue Wool
+  floor  1894 cells (21.1%)  4:0 Cobblestone, 98:0 Stone Bricks, 98:1 Mossy Stone Bricks, 13:0 Gravel, 1:5 Andesite, 48:0 Mossy Cobblestone, 98:2 Cracked Stone Bricks, 7:0 Bedrock, 35:1 Orange Wool, 35:14 Red Wool, 35:3 Light Blue Wool, 35:11 Blue Wool
+  hush  1657 cells (18.4%)  13:0 Gravel, 3:1 Coarse Dirt, 1:0 Stone, 1:5 Andesite, 4:0 Cobblestone
+  mire  410 cells (4.6%)  82:0 Clay, 9:0 Water, 3:1 Coarse Dirt, 13:0 Gravel, 3:2 Podzol, 2:0 Grass Block
+borders:
+  floor | moor  310 cells
+  hush | moor  284 cells
+  mire | moor  62 cells
+  floor | mire  34 cells

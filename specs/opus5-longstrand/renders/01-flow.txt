@@ -1,0 +1,48 @@
+HOW THIS BOARD IS COME AT
+
+  wool at (55, -85)
+    The attacker walks 234 blocks to it; the defender 118, a ratio of 0.50.
+    A player already at the crossing is 118 blocks from it — further than a respawn, so this objective is defended from the back rather than from the front.
+      Neither side is obviously first to it.
+    3 ways in. The last choice is made at (10, -50) and closes at (45, -85), 10 blocks short of the objective.
+      The defender's own walk runs through that merge, so both sides come up the same road. A defence has to be pushed forward to hold it, and the further forward the merge sits the more of the board it gives up to do so.
+    The attack covers 56% of the ground the defence crosses to get here. The two sides share some of the approach and not all of it.
+    Walking attack — 234 blocks, 3 ways, 3 decisions:
+      round the 9-cell hole at (30, -75): choose at (10, -50), live over 58 blocks, the other way 1.03× the shortest.
+      round the 8-cell hole at (0, -10): choose at (0, 30), live over 86 blocks, the other way 1.04× the shortest.
+      round the 8-cell hole at (0, 10): choose at (0, 30), live over 86 blocks, the other way 1.04× the shortest.
+    Walking back-run — 234 blocks, 3 ways, 3 decisions:
+      round the 9-cell hole at (30, -75): choose at (45, -85), live over 44 blocks, the other way 1.03× the shortest.
+      round the 8-cell hole at (0, -10): choose at (5, -40), live over 151 blocks, the other way 1.04× the shortest.
+      round the 8-cell hole at (0, 10): choose at (5, -40), live over 151 blocks, the other way 1.04× the shortest.
+    Walking defend — 118 blocks, 2 ways, 1 decision:
+      round the 9-cell hole at (30, -75): choose at (15, -55), live over 51 blocks, the other way 1.05× the shortest.
+    Walking chase — 118 blocks, 3 ways, 2 decisions:
+      round the 9-cell hole at (30, -75): choose at (10, -50), live over 58 blocks, the other way 1.05× the shortest.
+      round the 8-cell hole at (0, -10): choose at (-20, -5), live over 55 blocks, the other way 1.50× the shortest.
+
+  wool at (-50, -75)
+    The attacker walks 206 blocks to it; the defender 102, a ratio of 0.50.
+    A player already at the crossing is 87 blocks from it — nearer than a respawn, so the defence that matters is whoever was already out.
+      Neither side is obviously first to it.
+    2 ways in. The last choice is made at (0, 30) and closes at (-15, -50), 45 blocks short of the objective.
+      Going round the merge saves the defender 4 blocks, so the defence arrives from behind the objective while the attack arrives at its front. Those are different ground and the objective is the easier for it.
+    The attack covers 40% of the ground the defence crosses to get here. The two sides share some of the approach and not all of it.
+    Walking attack — 206 blocks, 2 ways, 2 decisions:
+      round the 8-cell hole at (0, -10): choose at (0, 30), live over 86 blocks, the other way 1.04× the shortest.
+      round the 8-cell hole at (0, 10): choose at (0, 30), live over 86 blocks, the other way 1.04× the shortest.
+    Walking back-run — 206 blocks, 2 ways, 2 decisions:
+      round the 8-cell hole at (0, -10): choose at (-15, -45), live over 156 blocks, the other way 1.04× the shortest.
+      round the 8-cell hole at (0, 10): choose at (-15, -45), live over 156 blocks, the other way 1.04× the shortest.
+    Walking chase — 87 blocks, 2 ways, 1 decision:
+      round the 8-cell hole at (0, -10): choose at (-20, -5), live over 47 blocks, the other way 1.87× the shortest.
+    Walking defend — 102 blocks, one way, no choice to make.
+
+WHAT NO JOURNEY REACHES
+
+  525 of 9700 blocks (5%) sit off every route between the places this board has. Reachable, and on the way to nothing.
+       175 blocks at (-30, -25) — front-bar (175)
+       175 blocks at (-30, 20) — front-bar (175)
+    4 further stretches are under 100 blocks: a sliver between corridors rather than a place.
+
+  Ground is dead because no journey passes it, not because it is far out. Bring an objective to it, put a route through it, or take it off the board — decorating it only means players look at it on the way past.

@@ -1,0 +1,18 @@
+What the studio said when the board was edited badly, and when it was edited well. Nothing here is
+a 422: every one of these arrives on a 200, which is why the author's own ruling has to do the work.
+
+### a plain add over a hole — on the canvas and not in the world
+  PUT /api/map/technique-composed-1-as-pinned/sketch — HTTP 200
+    SK13  complaint  'paved-over' draws nothing over 144 column(s) — from (-20, 32) — because 'void-1-cut' takes them away, and a subtract beats every plain add on its layer whatever order the two are written in. The shape is on the canvas and not in the world
+
+### an override add over the same hole — the hole is gone, and this is the only thing that says so
+  PUT /api/map/technique-composed-1-as-pinned/sketch — HTTP 200
+    SK13  complaint  'paved-over' fills 144 column(s) that 'void-1-cut' takes away — from (-20, 32) — so the negative space the board states there is ground in the world. An override add beats a subtract on its own layer
+
+### the taken-over board, painted by height — the one thing the store had to say about it
+  PUT /api/map/technique-composed-4-taken-over/sketch — HTTP 200
+    SK27  complaint  component 'hub-t1' on layer 'ground' compiles to 11 plateaus from surface 9 to 16 and they state 4 different paints (hub-t1-9 at 9 paints theme 'front', hub-t1-10 at 10 paints theme 'stair', hub-t1-10-2 at 10 paints theme 'stair', hub-t1-11 at 11 paints theme 'stair', hub-t1-11-2 at 11 paints theme 'stair', hub-t1-12 at 12 paints theme 'stair', hub-t1-12-2 at 12 paints theme 'stair', hub-t1-13 at 13 paints theme 'back', hub-t1-14 at 14 paints theme 'approach', hub-t1-15 at 15 paints theme 'approach', hub-t1-16 at 16 paints theme 'approach') — one landform with a hard line at every riser, where a theme is a place
+
+`SK27` is the studio noticing that painting by height paints one component in as many themes as
+it has heights. It is a complaint and not a fault: a terraced hub really is eleven plateaus. What
+it costs is a hard line at every riser, which is the author's to want or not.

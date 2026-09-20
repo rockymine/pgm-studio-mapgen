@@ -1,0 +1,28 @@
+POST /api/plan/compile — a plan in, a layout and an intent out. A wall and an iron cube are the two
+structures the composer never writes, so this is where both of them come from.
+
+  14 pieces and 4 `walls` entries in → 4 WallStructure out
+
+  'line-field' — 'line-approach'  →  x 0..16  z 31..33  topY 11  chestOnMinFace false
+  'shoulder-field' — 'shoulder-approach'  →  x 56..72  z 31..33  topY 11  chestOnMinFace false
+  'sealed-outer' — 'sealed-middle'  →  x 128..144  z 31..33  topY 11  chestOnMinFace false
+  'sealed-middle' — 'sealed-inner'  →  x 128..144  z 47..49  topY 11  chestOnMinFace false
+
+A `walls` entry carries the two piece ids and nothing else. Every number above is derived: the
+wall spans the interval the two pieces share, it is 2 blocks thick by construction, its top comes
+from the ground it stands on, and which face carries the defence chests is the compiler's answer
+rather than a field.
+
+### two things a non-symmetric plan does not carry
+
+  teams out of the compile: ["red"]
+  meta.authors in : ["the technique cards"]
+  meta.authors out: []
+
+**A team is an orbit image.** `globals.symmetry: "none"` is one image, so a plan stating two
+spawn markers compiles both onto the same team — and `POST /map/from-documents` refuses the
+result `RQ5 — id 'red-spawn-point' already in use`. A two-team board comes from symmetry, not
+from authoring a second spawn.
+
+**A plan's `meta.authors` does not survive the compile.** The intent comes back with an empty
+list and the export answers `EX6`, so the names go back on the intent before it is stored.

@@ -1,0 +1,77 @@
+## dam (water) along x
+TRANSECT 31 stations from (-26, 84) to (4, 84), every 1
+  station        ground  surface  water  top  standing            step
+  (  -26,    84)                                                    void
+  (  -25,    84)                                                    void
+  (  -24,    84)                                                    void
+  (  -23,    84)                                                    void
+  (  -22,    84)                                                    void
+  (  -21,    84)                                                    void
+  (  -20,    84)                                                    void
+  (  -19,    84)                                                    void
+  (  -18,    84)                                                    void
+  (  -17,    84)                                                    void
+  (  -16,    84)      18       18           18  water dam           
+  (  -15,    84)      18       18           18  water dam           
+  (  -14,    84)      18       18     18    18  water dam           
+  (  -13,    84)      18       18     18    18  water dam           
+  (  -12,    84)      18       18     18    18  water dam           
+  (  -11,    84)      18       18     18    18  water dam           
+  (  -10,    84)      18       18     18    18  water dam           
+  (   -9,    84)      18       18     18    18  water dam           
+  (   -8,    84)      18       18           18  water dam           
+  (   -7,    84)      18       18           18  water dam           
+  (   -6,    84)      18       18           18  water dam           
+  (   -5,    84)      18       18           18                      
+  (   -4,    84)      18       18           18                      
+  (   -3,    84)      18       18           18                      
+  (   -2,    84)      18       18           18  stroke road-spine   
+  (   -1,    84)      18       18           18  stroke road-spine   
+  (    0,    84)      18       18           18  stroke road-spine   
+  (    1,    84)      18       18           18  stroke road-spine   
+  (    2,    84)      18       18           18                      
+  (    3,    84)      18       18           18                      
+  (    4,    84)      18       18           18                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water dam at (-16, 82), stroke road-spine at (-2, 82)
+
+## dam (water) along z
+TRANSECT 35 stations from (-11, 67) to (-11, 101), every 1
+  station        ground  surface  water  top  standing            step
+  (  -11,    67)      17       17           17  stroke road-west    
+  (  -11,    68)      17       17           17  stroke road-west    
+  (  -11,    69)      17       17           17                      
+  (  -11,    70)      17       17           17                      
+  (  -11,    71)      17       17           17                      
+  (  -11,    72)      17       17           17                      
+  (  -11,    73)      17       17           17                      
+  (  -11,    74)      17       17           17                      
+  (  -11,    75)      17       17           17  water dam           
+  (  -11,    76)      18       18           18  water dam           +1
+  (  -11,    77)      18       18           18  water dam           
+  (  -11,    78)      18       18           18  water dam           
+  (  -11,    79)      18       18           18  water dam           
+  (  -11,    80)      18       18     18    18  water dam           
+  (  -11,    81)      18       18     18    18  water dam           
+  (  -11,    82)      18       18     18    18  water dam           
+  (  -11,    83)      18       18     18    18  water dam           
+  (  -11,    84)      18       18     18    18  water dam           
+  (  -11,    85)      18       18     18    18  water dam           
+  (  -11,    86)      18       18     18    18  water dam           
+  (  -11,    87)      18       18     18    18  water dam           
+  (  -11,    88)      18       18     18    18  water dam           
+  (  -11,    89)      18       18           18  water dam           
+  (  -11,    90)      18       18           18  water dam           
+  (  -11,    91)      18       18           18  water dam           
+  (  -11,    92)                                                    void
+  (  -11,    93)                                                    void
+  (  -11,    94)                                                    void
+  (  -11,    95)                                                    void
+  (  -11,    96)                                                    void
+  (  -11,    97)                                                    void
+  (  -11,    98)                                                    void
+  (  -11,    99)                                                    void
+  (  -11,   100)                                                    void
+  (  -11,   101)                                                    void
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke road-west at (-13, 65), flora fell-cover at (-12, 69), water dam at (-11, 75)

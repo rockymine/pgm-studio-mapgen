@@ -1,0 +1,882 @@
+{
+ "setup": {
+  "bbox": {
+   "min_x": -221,
+   "max_x": 221,
+   "min_z": -91,
+   "max_z": 91
+  },
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "mirror_mode": "none"
+ },
+ "themes": {
+  "moor": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 25,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 2,
+             "data": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 20,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 45,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 11,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 4,
+               "data": 0
+              }
+             ]
+            },
+            "thickness": 3
+           }
+          ]
+         }
+        }
+       }
+      ]
+     }
+    }
+   }
+  }
+ },
+ "mapTheme": "moor",
+ "relief": {
+  "inherit": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "pushes": [],
+   "marks": [
+    {
+     "id": "brae",
+     "kind": "area",
+     "h": 26,
+     "bevel": 0,
+     "ring": [
+      [
+       -210.0,
+       -82.0
+      ],
+      [
+       -120.0,
+       -82.0
+      ],
+      [
+       -120.0,
+       -75.0
+      ],
+      [
+       -210.0,
+       -75.0
+      ]
+     ]
+    },
+    {
+     "id": "strand",
+     "kind": "area",
+     "h": 10,
+     "bevel": 0,
+     "ring": [
+      [
+       -210.0,
+       -15.0
+      ],
+      [
+       -120.0,
+       -15.0
+      ],
+      [
+       -120.0,
+       -8.0
+      ],
+      [
+       -210.0,
+       -8.0
+      ]
+     ]
+    }
+   ]
+  },
+  "hold": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "pushes": [],
+   "marks": [
+    {
+     "id": "brae",
+     "kind": "area",
+     "h": 26,
+     "bevel": 0,
+     "ring": [
+      [
+       -100.0,
+       -82.0
+      ],
+      [
+       -10.0,
+       -82.0
+      ],
+      [
+       -10.0,
+       -75.0
+      ],
+      [
+       -100.0,
+       -75.0
+      ]
+     ]
+    },
+    {
+     "id": "strand",
+     "kind": "area",
+     "h": 10,
+     "bevel": 0,
+     "ring": [
+      [
+       -100.0,
+       -15.0
+      ],
+      [
+       -10.0,
+       -15.0
+      ],
+      [
+       -10.0,
+       -8.0
+      ],
+      [
+       -100.0,
+       -8.0
+      ]
+     ]
+    }
+   ]
+  },
+  "follow": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "pushes": [],
+   "marks": [
+    {
+     "id": "brae",
+     "kind": "area",
+     "h": 26,
+     "bevel": 0,
+     "ring": [
+      [
+       10.0,
+       -82.0
+      ],
+      [
+       100.0,
+       -82.0
+      ],
+      [
+       100.0,
+       -75.0
+      ],
+      [
+       10.0,
+       -75.0
+      ]
+     ]
+    },
+    {
+     "id": "strand",
+     "kind": "area",
+     "h": 10,
+     "bevel": 0,
+     "ring": [
+      [
+       10.0,
+       -15.0
+      ],
+      [
+       100.0,
+       -15.0
+      ],
+      [
+       100.0,
+       -8.0
+      ],
+      [
+       10.0,
+       -8.0
+      ]
+     ]
+    }
+   ]
+  },
+  "exclude": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "pushes": [],
+   "marks": [
+    {
+     "id": "brae",
+     "kind": "area",
+     "h": 26,
+     "bevel": 0,
+     "ring": [
+      [
+       120.0,
+       -82.0
+      ],
+      [
+       210.0,
+       -82.0
+      ],
+      [
+       210.0,
+       -75.0
+      ],
+      [
+       120.0,
+       -75.0
+      ]
+     ]
+    },
+    {
+     "id": "strand",
+     "kind": "area",
+     "h": 10,
+     "bevel": 0,
+     "ring": [
+      [
+       120.0,
+       -15.0
+      ],
+      [
+       210.0,
+       -15.0
+      ],
+      [
+       210.0,
+       -8.0
+      ],
+      [
+       120.0,
+       -8.0
+      ]
+     ]
+    }
+   ]
+  },
+  "sheer": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "pushes": [],
+   "marks": [
+    {
+     "id": "brae",
+     "kind": "area",
+     "h": 26,
+     "bevel": 0,
+     "ring": [
+      [
+       -210.0,
+       8.0
+      ],
+      [
+       -120.0,
+       8.0
+      ],
+      [
+       -120.0,
+       15.0
+      ],
+      [
+       -210.0,
+       15.0
+      ]
+     ]
+    },
+    {
+     "id": "strand",
+     "kind": "area",
+     "h": 10,
+     "bevel": 0,
+     "ring": [
+      [
+       -210.0,
+       75.0
+      ],
+      [
+       -120.0,
+       75.0
+      ],
+      [
+       -120.0,
+       82.0
+      ],
+      [
+       -210.0,
+       82.0
+      ]
+     ]
+    }
+   ]
+  },
+  "skirt-6": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "pushes": [],
+   "marks": [
+    {
+     "id": "brae",
+     "kind": "area",
+     "h": 26,
+     "bevel": 0,
+     "ring": [
+      [
+       -100.0,
+       8.0
+      ],
+      [
+       -10.0,
+       8.0
+      ],
+      [
+       -10.0,
+       15.0
+      ],
+      [
+       -100.0,
+       15.0
+      ]
+     ]
+    },
+    {
+     "id": "strand",
+     "kind": "area",
+     "h": 10,
+     "bevel": 0,
+     "ring": [
+      [
+       -100.0,
+       75.0
+      ],
+      [
+       -10.0,
+       75.0
+      ],
+      [
+       -10.0,
+       82.0
+      ],
+      [
+       -100.0,
+       82.0
+      ]
+     ]
+    }
+   ]
+  },
+  "skirt-14": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "pushes": [],
+   "marks": [
+    {
+     "id": "brae",
+     "kind": "area",
+     "h": 26,
+     "bevel": 0,
+     "ring": [
+      [
+       10.0,
+       8.0
+      ],
+      [
+       100.0,
+       8.0
+      ],
+      [
+       100.0,
+       15.0
+      ],
+      [
+       10.0,
+       15.0
+      ]
+     ]
+    },
+    {
+     "id": "strand",
+     "kind": "area",
+     "h": 10,
+     "bevel": 0,
+     "ring": [
+      [
+       10.0,
+       75.0
+      ],
+      [
+       100.0,
+       75.0
+      ],
+      [
+       100.0,
+       82.0
+      ],
+      [
+       10.0,
+       82.0
+      ]
+     ]
+    }
+   ]
+  },
+  "both-words": {
+   "base": 18,
+   "reach": 0,
+   "step": 1,
+   "pushes": [],
+   "marks": [
+    {
+     "id": "brae",
+     "kind": "area",
+     "h": 26,
+     "bevel": 0,
+     "ring": [
+      [
+       120.0,
+       8.0
+      ],
+      [
+       210.0,
+       8.0
+      ],
+      [
+       210.0,
+       15.0
+      ],
+      [
+       120.0,
+       15.0
+      ]
+     ]
+    },
+    {
+     "id": "strand",
+     "kind": "area",
+     "h": 10,
+     "bevel": 0,
+     "ring": [
+      [
+       120.0,
+       75.0
+      ],
+      [
+       210.0,
+       75.0
+      ],
+      [
+       210.0,
+       82.0
+      ],
+      [
+       120.0,
+       82.0
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "island-inherit",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 44,
+      "theme": "moor",
+      "min_x": -213,
+      "min_z": -83,
+      "max_x": -117,
+      "max_z": -7
+     },
+     {
+      "id": "piece-inherit",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 24,
+      "theme": "moor",
+      "min_x": -182.0,
+      "min_z": -58.0,
+      "max_x": -148.0,
+      "max_z": -32.0
+     },
+     {
+      "id": "island-hold",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 44,
+      "theme": "moor",
+      "min_x": -103,
+      "min_z": -83,
+      "max_x": -7,
+      "max_z": -7
+     },
+     {
+      "id": "piece-hold",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 24,
+      "theme": "moor",
+      "min_x": -72.0,
+      "min_z": -58.0,
+      "max_x": -38.0,
+      "max_z": -32.0,
+      "relief_scope": "hold"
+     },
+     {
+      "id": "island-follow",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 44,
+      "theme": "moor",
+      "min_x": 7,
+      "min_z": -83,
+      "max_x": 103,
+      "max_z": -7
+     },
+     {
+      "id": "piece-follow",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 24,
+      "theme": "moor",
+      "min_x": 38.0,
+      "min_z": -58.0,
+      "max_x": 72.0,
+      "max_z": -32.0,
+      "relief_scope": "follow"
+     },
+     {
+      "id": "island-exclude",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 44,
+      "theme": "moor",
+      "min_x": 117,
+      "min_z": -83,
+      "max_x": 213,
+      "max_z": -7
+     },
+     {
+      "id": "piece-exclude",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 24,
+      "theme": "moor",
+      "min_x": 148.0,
+      "min_z": -58.0,
+      "max_x": 182.0,
+      "max_z": -32.0,
+      "relief_scope": "exclude"
+     },
+     {
+      "id": "island-sheer",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 44,
+      "theme": "moor",
+      "min_x": -213,
+      "min_z": 7,
+      "max_x": -117,
+      "max_z": 83
+     },
+     {
+      "id": "piece-sheer",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 24,
+      "theme": "moor",
+      "min_x": -182.0,
+      "min_z": 32.0,
+      "max_x": -148.0,
+      "max_z": 58.0,
+      "height_mode": "level",
+      "skirt": 0
+     },
+     {
+      "id": "island-skirt-6",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 44,
+      "theme": "moor",
+      "min_x": -103,
+      "min_z": 7,
+      "max_x": -7,
+      "max_z": 83
+     },
+     {
+      "id": "piece-skirt-6",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 24,
+      "theme": "moor",
+      "min_x": -72.0,
+      "min_z": 32.0,
+      "max_x": -38.0,
+      "max_z": 58.0,
+      "height_mode": "level",
+      "skirt": 6
+     },
+     {
+      "id": "island-skirt-14",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 44,
+      "theme": "moor",
+      "min_x": 7,
+      "min_z": 7,
+      "max_x": 103,
+      "max_z": 83
+     },
+     {
+      "id": "piece-skirt-14",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 24,
+      "theme": "moor",
+      "min_x": 38.0,
+      "min_z": 32.0,
+      "max_x": 72.0,
+      "max_z": 58.0,
+      "height_mode": "level",
+      "skirt": 14
+     },
+     {
+      "id": "island-both-words",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 44,
+      "theme": "moor",
+      "min_x": 117,
+      "min_z": 7,
+      "max_x": 213,
+      "max_z": 83
+     },
+     {
+      "id": "piece-both-words",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 24,
+      "theme": "moor",
+      "min_x": 148.0,
+      "min_z": 32.0,
+      "max_x": 182.0,
+      "max_z": 58.0,
+      "height_mode": "level",
+      "skirt": 0,
+      "relief_scope": "hold"
+     }
+    ],
+    "groups": [
+     {
+      "id": "inherit",
+      "name": "inherit",
+      "mirrors": false,
+      "shapeIds": [
+       "island-inherit",
+       "piece-inherit"
+      ]
+     },
+     {
+      "id": "hold",
+      "name": "hold",
+      "mirrors": false,
+      "shapeIds": [
+       "island-hold",
+       "piece-hold"
+      ]
+     },
+     {
+      "id": "follow",
+      "name": "follow",
+      "mirrors": false,
+      "shapeIds": [
+       "island-follow",
+       "piece-follow"
+      ]
+     },
+     {
+      "id": "exclude",
+      "name": "exclude",
+      "mirrors": false,
+      "shapeIds": [
+       "island-exclude",
+       "piece-exclude"
+      ]
+     },
+     {
+      "id": "sheer",
+      "name": "sheer",
+      "mirrors": false,
+      "shapeIds": [
+       "island-sheer",
+       "piece-sheer"
+      ]
+     },
+     {
+      "id": "skirt-6",
+      "name": "skirt-6",
+      "mirrors": false,
+      "shapeIds": [
+       "island-skirt-6",
+       "piece-skirt-6"
+      ]
+     },
+     {
+      "id": "skirt-14",
+      "name": "skirt-14",
+      "mirrors": false,
+      "shapeIds": [
+       "island-skirt-14",
+       "piece-skirt-14"
+      ]
+     },
+     {
+      "id": "both-words",
+      "name": "both-words",
+      "mirrors": false,
+      "shapeIds": [
+       "island-both-words",
+       "piece-both-words"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

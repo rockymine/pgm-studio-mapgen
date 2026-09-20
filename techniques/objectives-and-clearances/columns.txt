@@ -1,0 +1,160 @@
+GET /api/map/technique-objectives-and-clearances/column?at=x,z — the three objectives as the export built
+them, and what `float` and `leak` change. The wool columns at y58-60 are the beacons every goal gets.
+
+### the monument: ground y11, a chest at y12, and three obsidian from y16
+=== column (-70, 0) — 19 solid block(s), ground 0° from level ===
+  y 60    35:11  Blue Wool
+  y 59    35:11  Blue Wool
+  y 58    35:11  Blue Wool
+  y 18    49:0   Obsidian
+  y 17    49:0   Obsidian
+  y 16    49:0   Obsidian
+  y 12    54:3   Chest
+  y 11    13:0   Gravel
+  y 10     3:1   Coarse Dirt
+  y  9     3:1   Coarse Dirt
+  y  8     7:0   Bedrock
+
+### the core: ground y19, a chest at y20, and a five-block box from y27
+=== column (30, 0) — 29 solid block(s), ground 27° from level ===
+  y 60    35:14  Red Wool
+  y 59    35:14  Red Wool
+  y 58    35:14  Red Wool
+  y 31    49:0   Obsidian
+  y 30    11:0   Lava
+  y 29    11:0   Lava
+  y 28    11:0   Lava
+  y 27    49:0   Obsidian
+  y 20    54:3   Chest
+  y 19     2:0   Grass Block
+  y 18     3:0   Dirt
+
+### the wool, inside its room
+=== column (130, 0) — 29 solid block(s), ground 0° from level ===
+  y 60    35:14  Red Wool
+  y 59    35:14  Red Wool
+  y 58    35:14  Red Wool
+  y 25    35:14  Red Wool
+  y 24     3:0   Dirt
+  y 23     3:0   Dirt
+  y 22     1:0   Stone
+  y 21     1:0   Stone
+  y 20     1:0   Stone
+  y 19     1:0   Stone
+  y 18     1:0   Stone
+
+### the wool room's wall, and the ground it stands on
+=== column (130, -9) — 33 solid block(s), ground 0° from level ===
+  y 33     7:0   Bedrock
+  y 32     7:0   Bedrock
+  y 30     7:0   Bedrock
+  y 29    35:14  Red Wool
+  y 28     7:0   Bedrock
+  y 27     7:0   Bedrock
+  y 26     7:0   Bedrock
+  y 25     7:0   Bedrock
+  y 24    98:0   Stone Bricks
+  y 23    98:0   Stone Bricks
+  y 22    98:0   Stone Bricks
+
+### red's spawn point
+=== column (-180, 0) — 12 solid block(s), ground 0° from level ===
+  y 11    35:14  Red Wool
+  y 10     3:0   Dirt
+  y  9     3:0   Dirt
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+
+## the same two numbers, swept
+
+### monument float 0
+  y 14    49:0   Obsidian
+  y 12    54:3   Chest
+  y 11    13:0   Gravel
+  y 10     3:1   Coarse Dirt
+  y  9     3:1   Coarse Dirt
+  y  8     7:0   Bedrock
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+
+### monument float 4
+  y 18    49:0   Obsidian
+  y 17    49:0   Obsidian
+  y 16    49:0   Obsidian
+  y 12    54:3   Chest
+  y 11    13:0   Gravel
+  y 10     3:1   Coarse Dirt
+  y  9     3:1   Coarse Dirt
+  y  8     7:0   Bedrock
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+
+### monument float 8
+  y 22    49:0   Obsidian
+  y 21    49:0   Obsidian
+  y 20    49:0   Obsidian
+  y 12    54:3   Chest
+  y 11    13:0   Gravel
+  y 10     3:1   Coarse Dirt
+  y  9     3:1   Coarse Dirt
+  y  8     7:0   Bedrock
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+
+### core float 6, leak 5
+  y 31    49:0   Obsidian
+  y 30    11:0   Lava
+  y 29    11:0   Lava
+  y 28    11:0   Lava
+  y 27    49:0   Obsidian
+  y 20    54:3   Chest
+  y 19     2:0   Grass Block
+  y 18     3:0   Dirt
+  y 17     3:0   Dirt
+  y 16     1:0   Stone
+
+### core float 0, leak 5
+  y 25    49:0   Obsidian
+  y 24    11:0   Lava
+  y 23    11:0   Lava
+  y 22    11:0   Lava
+  y 20    54:3   Chest
+  y 19     2:0   Grass Block
+  y 18     3:0   Dirt
+  y 17     3:0   Dirt
+  y 16     1:0   Stone
+  y 15     1:0   Stone
+
+### core float 6, leak 0
+  y 31    49:0   Obsidian
+  y 30    11:0   Lava
+  y 29    11:0   Lava
+  y 28    11:0   Lava
+  y 27    49:0   Obsidian
+  y 20    54:3   Chest
+  y 19     2:0   Grass Block
+  y 18     3:0   Dirt
+  y 17     3:0   Dirt
+  y 16     1:0   Stone
+
+### core float 6, leak 10
+  y 31    49:0   Obsidian
+  y 30    11:0   Lava
+  y 29    11:0   Lava
+  y 28    11:0   Lava
+  y 27    49:0   Obsidian
+  y 20    54:3   Chest
+  y 19     2:0   Grass Block
+  y 18     3:0   Dirt
+  y 17     3:0   Dirt
+  y 16     1:0   Stone
+
+restored

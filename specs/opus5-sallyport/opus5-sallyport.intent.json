@@ -1,0 +1,553 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 30,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 52,
+    "y": 11,
+    "z": 52
+   },
+   "protection": [
+    {
+     "minX": 45,
+     "minZ": 45,
+     "maxX": 55,
+     "maxZ": 60
+    }
+   ],
+   "yaw": 90,
+   "doors": [
+    "-x"
+   ],
+   "footprint": null,
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": -52,
+    "y": 11,
+    "z": -52
+   },
+   "protection": [
+    {
+     "minX": -55,
+     "minZ": -60,
+     "maxX": -45,
+     "maxZ": -45
+    }
+   ],
+   "yaw": 270,
+   "doors": [
+    "+x"
+   ],
+   "footprint": null,
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 58,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -20,
+    "minZ": -10,
+    "maxX": 20,
+    "maxZ": 10
+   },
+   {
+    "minX": -35,
+    "minZ": 45,
+    "maxX": -15,
+    "maxZ": 55
+   },
+   {
+    "minX": 15,
+    "minZ": -55,
+    "maxX": 35,
+    "maxZ": -45
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": {
+   "exclusions": []
+  }
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "protection": [
+    {
+     "minX": -25,
+     "minZ": 75,
+     "maxX": -15,
+     "maxZ": 85
+    }
+   ],
+   "spawn": {
+    "x": -20,
+    "y": 11,
+    "z": 80
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -15,
+     "minZ": 75,
+     "maxX": -15,
+     "maxZ": 85
+    },
+    {
+     "minX": -25,
+     "minZ": 75,
+     "maxX": -25,
+     "maxZ": 85
+    },
+    {
+     "minX": -25,
+     "minZ": 85,
+     "maxX": -15,
+     "maxZ": 85
+    },
+    {
+     "minX": -25,
+     "minZ": 75,
+     "maxX": -15,
+     "maxZ": 75
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-2",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "orange",
+   "protection": [
+    {
+     "minX": -55,
+     "minZ": 45,
+     "maxX": -45,
+     "maxZ": 55
+    }
+   ],
+   "spawn": {
+    "x": -50,
+    "y": 13,
+    "z": 50
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -45,
+     "minZ": 45,
+     "maxX": -45,
+     "maxZ": 55
+    },
+    {
+     "minX": -55,
+     "minZ": 55,
+     "maxX": -45,
+     "maxZ": 55
+    },
+    {
+     "minX": -55,
+     "minZ": 45,
+     "maxX": -45,
+     "maxZ": 45
+    },
+    {
+     "minX": -55,
+     "minZ": 45,
+     "maxX": -55,
+     "maxZ": 55
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "protection": [
+    {
+     "minX": 15,
+     "minZ": -85,
+     "maxX": 25,
+     "maxZ": -75
+    }
+   ],
+   "spawn": {
+    "x": 20,
+    "y": 11,
+    "z": -80
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": 15,
+     "minZ": -85,
+     "maxX": 15,
+     "maxZ": -75
+    },
+    {
+     "minX": 25,
+     "minZ": -85,
+     "maxX": 25,
+     "maxZ": -75
+    },
+    {
+     "minX": 15,
+     "minZ": -85,
+     "maxX": 25,
+     "maxZ": -85
+    },
+    {
+     "minX": 15,
+     "minZ": -75,
+     "maxX": 25,
+     "maxZ": -75
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-2",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "light_blue",
+   "protection": [
+    {
+     "minX": 45,
+     "minZ": -55,
+     "maxX": 55,
+     "maxZ": -45
+    }
+   ],
+   "spawn": {
+    "x": 50,
+    "y": 13,
+    "z": -50
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": 45,
+     "minZ": -55,
+     "maxX": 45,
+     "maxZ": -45
+    },
+    {
+     "minX": 45,
+     "minZ": -55,
+     "maxX": 55,
+     "maxZ": -55
+    },
+    {
+     "minX": 45,
+     "minZ": -45,
+     "maxX": 55,
+     "maxZ": -45
+    },
+    {
+     "minX": 55,
+     "minZ": -55,
+     "maxX": 55,
+     "maxZ": -45
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "ctw"
+ ],
+ "meta": {
+  "name": "Sallyport",
+  "created": "2026-09-16",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red",
+  "3": "red",
+  "4": "blue"
+ },
+ "structures": {
+  "layer": null,
+  "redstoneLines": [
+   {
+    "x1": -16,
+    "z1": 75,
+    "x2": -16,
+    "z2": 84,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "x1": 15,
+    "z1": -85,
+    "x2": 15,
+    "z2": -76,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1
+    }
+   },
+   {
+    "x1": -25,
+    "z1": 75,
+    "x2": -25,
+    "z2": 84,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 0
+    }
+   },
+   {
+    "x1": 24,
+    "z1": -85,
+    "x2": 24,
+    "z2": -76,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 1
+    }
+   },
+   {
+    "x1": -25,
+    "z1": 84,
+    "x2": -16,
+    "z2": 84,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "2",
+     "image": 0
+    }
+   },
+   {
+    "x1": 15,
+    "z1": -85,
+    "x2": 24,
+    "z2": -85,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "2",
+     "image": 1
+    }
+   },
+   {
+    "x1": -25,
+    "z1": 75,
+    "x2": -16,
+    "z2": 75,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "3",
+     "image": 0
+    }
+   },
+   {
+    "x1": 15,
+    "z1": -76,
+    "x2": 24,
+    "z2": -76,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "3",
+     "image": 1
+    }
+   },
+   {
+    "x1": -46,
+    "z1": 45,
+    "x2": -46,
+    "z2": 54,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "4",
+     "image": 0
+    }
+   },
+   {
+    "x1": 45,
+    "z1": -55,
+    "x2": 45,
+    "z2": -46,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "4",
+     "image": 1
+    }
+   },
+   {
+    "x1": -55,
+    "z1": 54,
+    "x2": -46,
+    "z2": 54,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "5",
+     "image": 0
+    }
+   },
+   {
+    "x1": 45,
+    "z1": -55,
+    "x2": 54,
+    "z2": -55,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "5",
+     "image": 1
+    }
+   },
+   {
+    "x1": -55,
+    "z1": 45,
+    "x2": -46,
+    "z2": 45,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "6",
+     "image": 0
+    }
+   },
+   {
+    "x1": 45,
+    "z1": -46,
+    "x2": 54,
+    "z2": -46,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "6",
+     "image": 1
+    }
+   },
+   {
+    "x1": -55,
+    "z1": 45,
+    "x2": -55,
+    "z2": 54,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "7",
+     "image": 0
+    }
+   },
+   {
+    "x1": 54,
+    "z1": -55,
+    "x2": 54,
+    "z2": -46,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "7",
+     "image": 1
+    }
+   }
+  ],
+  "ironCubes": [],
+  "walls": [
+   {
+    "minX": -10,
+    "minZ": 64,
+    "maxX": 0,
+    "maxZ": 66,
+    "topY": 13,
+    "chestOnMinFace": true,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "minX": 0,
+    "minZ": -66,
+    "maxX": 10,
+    "maxZ": -64,
+    "topY": 13,
+    "chestOnMinFace": false,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 1
+    }
+   }
+  ],
+  "isEmpty": false
+ }
+}

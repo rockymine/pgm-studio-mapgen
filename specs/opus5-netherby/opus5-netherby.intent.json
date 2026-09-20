@@ -1,0 +1,221 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 8,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 10,
+    "y": 9,
+    "z": 84
+   },
+   "protection": [
+    {
+     "minX": 4,
+     "minZ": 80,
+     "maxX": 16,
+     "maxZ": 88
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": null,
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": -10,
+    "y": 9,
+    "z": -84
+   },
+   "protection": [
+    {
+     "minX": -16,
+     "minZ": -88,
+     "maxX": -4,
+     "maxZ": -80
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": null,
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 24,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -16,
+    "minZ": -20,
+    "maxX": 16,
+    "maxZ": 20
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": {
+   "exclusions": []
+  }
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "protection": [
+    {
+     "minX": -48,
+     "minZ": 64,
+     "maxX": -40,
+     "maxZ": 76
+    }
+   ],
+   "spawn": {
+    "x": -44,
+    "y": 9,
+    "z": 70
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -40,
+     "minZ": 64,
+     "maxX": -40,
+     "maxZ": 76
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "protection": [
+    {
+     "minX": 40,
+     "minZ": -76,
+     "maxX": 48,
+     "maxZ": -64
+    }
+   ],
+   "spawn": {
+    "x": 44,
+    "y": 9,
+    "z": -70
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": 40,
+     "minZ": -76,
+     "maxX": 40,
+     "maxZ": -64
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "ctw"
+ ],
+ "meta": {
+  "name": "Netherby",
+  "created": "2026-09-17",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue",
+  "3": "neutral"
+ },
+ "structures": {
+  "layer": null,
+  "redstoneLines": [
+   {
+    "x1": -41,
+    "z1": 64,
+    "x2": -41,
+    "z2": 75,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "x1": 40,
+    "z1": -76,
+    "x2": 40,
+    "z2": -65,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1
+    }
+   }
+  ],
+  "ironCubes": [],
+  "walls": [],
+  "isEmpty": false
+ }
+}

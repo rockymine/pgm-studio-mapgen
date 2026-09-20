@@ -1,0 +1,61 @@
+## spall-2 (boulder) along x
+TRANSECT 25 stations from (-3, 31) to (21, 31), every 1
+  station        ground  surface  water  top  standing            step
+  (   -3,    31)      17       22           22  storey              
+  (   -2,    31)      17       22           22  storey              
+  (   -1,    31)      17       20           20  storey              -2
+  (    0,    31)      17       20           20  storey              
+  (    1,    31)      17       22           22  storey              scramble +2
+  (    2,    31)      17       22           22  storey              
+  (    3,    31)      17       17           17                      DROP -5
+  (    4,    31)      10       10           10                      DROP -7
+  (    5,    31)      10       10           10                      
+  (    6,    31)      10       10           10                      
+  (    7,    31)      10       10           10                      
+  (    8,    31)      10       10           13  boulder spall-2     
+  (    9,    31)      10       10           13  boulder spall-2     
+  (   10,    31)      10       10           20  tree thorn-1        
+  (   11,    31)      12       12           21  tree thorn-1        scramble +2
+  (   12,    31)      12       12           21  tree thorn-1        
+  (   13,    31)      12       12           20  tree thorn-1        
+  (   14,    31)      13       13           13                      +1
+  (   15,    31)      13       13           13                      
+  (   16,    31)      13       13           13                      
+  (   17,    31)      13       13           13                      
+  (   18,    31)      13       13           13                      
+  (   19,    31)      13       13           13                      
+  (   20,    31)      13       13           13                      
+  (   21,    31)      13       13           13                      
+rises 3, falls 3, worst step 7: 0 barrier, 2 scramble, 2 drop — scramble +2 at (1, 31); DROP -5 at (3, 31); DROP -7 at (4, 31); scramble +2 at (11, 31) | walked end to end
+beside: house byre at (2, 29), boulder spall-2 at (8, 30), tree thorn-1 at (10, 29)
+
+## spall-2 (boulder) along z
+TRANSECT 25 stations from (9, 19) to (9, 43), every 1
+  station        ground  surface  water  top  standing            step
+  (    9,    19)      12       12           12                      
+  (    9,    20)      12       12           12                      
+  (    9,    21)      11       11           11                      -1
+  (    9,    22)      11       11           11                      
+  (    9,    23)      11       11           15  house byre          
+  (    9,    24)      10       10           16  house byre          -1
+  (    9,    25)      10       10           16  house byre          
+  (    9,    26)      10       10           16  house byre          
+  (    9,    27)      10       10           16  house byre          
+  (    9,    28)      10       10           16  house byre          
+  (    9,    29)      10       10           15  house byre          
+  (    9,    30)      10       10           13  boulder spall-2     
+  (    9,    31)      10       10           13  boulder spall-2     
+  (    9,    32)      10       10           13  boulder spall-2     
+  (    9,    33)      10       10           10                      
+  (    9,    34)      10       10           10                      
+  (    9,    35)      17       20           20  storey              BARRIER +10
+  (    9,    36)      17       20           20  storey              
+  (    9,    37)      17       17           17                      -3
+  (    9,    38)      17       17           17                      
+  (    9,    39)      17       17           17                      
+  (    9,    40)      17       17           17                      
+  (    9,    41)      17       17           17                      
+  (    9,    42)      17       17           17                      
+  (    9,    43)      17       17           17                      
+rises 1, falls 3, worst step 10: 1 barrier, 0 scramble, 0 drop — BARRIER +10 at (9, 35) | walked end to end
+beside: house byre at (7, 23), tree thorn-1 at (11, 28), boulder spall-2 at (8, 30)

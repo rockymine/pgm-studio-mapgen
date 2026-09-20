@@ -1,0 +1,66 @@
+GET …/transect — each lane read ACROSS itself, which is where an L differs from a bar. Three cuts a
+panel: ten blocks up the stem, twenty-six up it, and through the corner. A lane wants to be level
+across; what is not level here is the instrument leaning.
+
+### piece-steps — five heights for eight blocks — the coarse plan, every seam a step of 2
+  stem, z0+10    9  9  9  9  9  9  9  9  9  9  9  9
+  stem, z0+26   11 11 11 11 11 11 11 11 11 11 11 11
+  corner, z1-6  13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13
+
+### piece-treads — nine heights, one course a seam, the corner taking a step of its own
+  stem, z0+10   10 10 10 10 10 10 10 10 10 10 10 10
+  stem, z0+26   11 11 11 11 11 11 11 11 11 11 11 11
+  corner, z1-6  12 12 12 12 12 12 12 12 12 12 12 12 13 13 13 13 13 13
+
+### tilted — one polygon, an anchor at each of the L's six vertices
+  stem, z0+10   10 10 10 10 10 10 10 10 10 10 10 11
+  stem, z0+26   11 11 11 11 11 11 12 12 13 13 13 14
+  corner, z1-6  12 12 12 12 13 13 13 13 13 13 13 13 14 14 14 14 14 14
+
+### two-ramps — one tilted polygon a leg, the corner given to the stem's
+  stem, z0+10   10 10 10 10 10 10 10 10 10 10 10 10
+  stem, z0+26   12 12 12 12 12 12 12 12 12 12 12 12
+  corner, z1-6  12 12 12 12 12 12 12 12 12 12 12 12 13 13 13 13 14 14
+
+### ramps-and-landing — the same two, with the corner held level between them
+  stem, z0+10   11 11 10 11 11 11 11 11 11 11 11 11
+  stem, z0+26   13 13 13 13 13 13 13 13 13 13 13 13
+  corner, z1-6  13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 13 14 14
+
+### plates — nine override plates over a lane left at its foot
+  stem, z0+10   10 10 10 10 10 10 10 10 10 10 10 10
+  stem, z0+26   11 11 11 11 11 11 11 11 11 11 11 11
+  corner, z1-6  12 12 12 12 12 12 12 12 12 12 12 12 13 13 13 13 13 13
+
+### marks — two `area` marks, the stem, the corner and most of the arm left unpinned
+  stem, z0+10    8  8  8  8  8  8  8  8  8  8  8  8
+  stem, z0+26   11 11 11 11 11 11 11 11 11 11 11 11
+  corner, z1-6  11 11 11 11 11 11 11 12 12 12 12 12 12 12 12 12 13 13
+
+### push — one push of 8 at the arm's end, `falloff` 22
+  stem, z0+10    8  8  8  8  8  8  8  8  8  8  8  8
+  stem, z0+26    8  8  8  8  8  8  8  8  8  8  8  8
+  corner, z1-6   8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  9  9
+
+### deck — the lane untouched, a made storey over its corner and two flights up to it
+  stem, z0+10    9  9  9  9  9  9  9  9  9  9  9  9
+  stem, z0+26    9  9  9  9  9  9  9  9  9  9  9  9
+  corner, z1-6   9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9
+
+### every riser line of the three tilted panels, counted — the stem's rows and the arm's columns
+  tilted               stem  4 · arm  2   lines where one cell of twelve sits a course off the rest
+  two-ramps            stem  0 · arm  1   lines where one cell of twelve sits a course off the rest
+  ramps-and-landing    stem  1 · arm  1   lines where one cell of twelve sits a course off the rest
+
+A tilted surface is rounded per column, so a riser line that falls between two courses can miss a
+cell: a one-block notch in a line that is otherwise flat. It is a rounding artefact rather than a
+fault, and no instrument here is free of it — the fewest belong to the longest run.
+
+A rectangle is level across by construction, so every stepped panel reads one figure a row. The
+tilted polygon does not: a tilt is one plane and an L asks it to climb in two directions, so the
+stem leans three blocks across its twelve. The relief panels lean at the corner alone, where the
+relaxation grades on the diagonal between two pins.
+
+`deck` reads its lane at 9 across every cut, storey and flights and all, because a transect answers
+with the ground and a made layer is not ground. A storey is read with `column`, which is what
+columns.txt does.

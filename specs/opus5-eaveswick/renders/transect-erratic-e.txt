@@ -1,0 +1,61 @@
+## erratic-e (boulder) along x
+TRANSECT 25 stations from (0, 21) to (24, 21), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    21)      12       12           12                      
+  (    1,    21)      12       12           12                      
+  (    2,    21)      12       12           12                      
+  (    3,    21)      12       12           12                      
+  (    4,    21)      12       12           12                      
+  (    5,    21)      12       12           12                      
+  (    6,    21)      12       12           12                      
+  (    7,    21)      12       12           12                      
+  (    8,    21)      12       12           12                      
+  (    9,    21)      12       12           16  boulder erratic-e   
+  (   10,    21)      12       12           17  boulder erratic-e   
+  (   11,    21)      12       12           18  boulder erratic-e   
+  (   12,    21)      12       12           18  boulder erratic-e   
+  (   13,    21)      12       12           18  boulder erratic-e   
+  (   14,    21)      12       12           17  boulder erratic-e   
+  (   15,    21)      12       12           17  boulder erratic-e   
+  (   16,    21)      12       12           15  boulder erratic-e   
+  (   17,    21)      12       12           12                      
+  (   18,    21)      12       12           12                      
+  (   19,    21)      12       12           12                      
+  (   20,    21)                                                    void
+  (   21,    21)                                                    void
+  (   22,    21)                                                    void
+  (   23,    21)                                                    void
+  (   24,    21)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house wharf-shed at (-2, 19), tree wharf-3 at (-2, 20), boulder erratic-e at (9, 19), tree wharf-2 at (13, 19)
+
+## erratic-e (boulder) along z
+TRANSECT 25 stations from (12, 9) to (12, 33), every 1
+  station        ground  surface  water  top  standing            step
+  (   12,     9)                                                    void
+  (   12,    10)      11       11           11                      
+  (   12,    11)      12       12           12                      +1
+  (   12,    12)      13       13           13                      +1
+  (   12,    13)      13       13           13                      
+  (   12,    14)      13       13           13                      
+  (   12,    15)      13       13           13                      
+  (   12,    16)      13       13           13                      
+  (   12,    17)      12       12           22  tree wharf-2        -1
+  (   12,    18)      12       12           17  boulder erratic-e   
+  (   12,    19)      12       12           17  boulder erratic-e   
+  (   12,    20)      12       12           18  boulder erratic-e   
+  (   12,    21)      12       12           18  boulder erratic-e   
+  (   12,    22)      12       12           18  boulder erratic-e   
+  (   12,    23)      12       12           17  boulder erratic-e   
+  (   12,    24)      12       12           16  boulder erratic-e   
+  (   12,    25)      12       12           12                      
+  (   12,    26)      12       20           20  storey              BARRIER +8
+  (   12,    27)      12       19           19  storey              -1
+  (   12,    28)      12       19           19  storey              
+  (   12,    29)      12       19           19  storey              
+  (   12,    30)      12       19           19  storey              
+  (   12,    31)      12       19           19  storey              
+  (   12,    32)      12       19           19  storey              
+  (   12,    33)      12       19           19  storey              
+rises 3, falls 2, worst step 8: 1 barrier, 0 scramble, 0 drop — BARRIER +8 at (12, 26) | walked end to end
+beside: tree wharf-2 at (14, 15), boulder erratic-e at (11, 17)

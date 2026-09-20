@@ -1,0 +1,1071 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  },
+  {
+   "id": "yellow",
+   "name": "Yellow",
+   "color": "yellow"
+  },
+  {
+   "id": "green",
+   "name": "Green",
+   "color": "green"
+  }
+ ],
+ "maxPlayers": 20,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 70,
+    "y": 11,
+    "z": 62
+   },
+   "protection": [
+    {
+     "minX": 65,
+     "minZ": 55,
+     "maxX": 75,
+     "maxZ": 65
+    }
+   ],
+   "yaw": 90,
+   "doors": [
+    "-x"
+   ],
+   "footprint": null,
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": -62,
+    "y": 11,
+    "z": 70
+   },
+   "protection": [
+    {
+     "minX": -65,
+     "minZ": 65,
+     "maxX": -55,
+     "maxZ": 75
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": null,
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 2
+   },
+   "team": "yellow",
+   "point": {
+    "x": -70,
+    "y": 11,
+    "z": -62
+   },
+   "protection": [
+    {
+     "minX": -75,
+     "minZ": -65,
+     "maxX": -65,
+     "maxZ": -55
+    }
+   ],
+   "yaw": 270,
+   "doors": [
+    "+x"
+   ],
+   "footprint": null,
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 3
+   },
+   "team": "green",
+   "point": {
+    "x": 62,
+    "y": 11,
+    "z": -70
+   },
+   "protection": [
+    {
+     "minX": 55,
+     "minZ": -75,
+     "maxX": 65,
+     "maxZ": -65
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": null,
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 60,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -10,
+    "minZ": -60,
+    "maxX": 10,
+    "maxZ": 60
+   },
+   {
+    "minX": -60,
+    "minZ": -10,
+    "maxX": 60,
+    "maxZ": 10
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": {
+   "exclusions": []
+  }
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "protection": [
+    {
+     "minX": 30,
+     "minZ": 75,
+     "maxX": 40,
+     "maxZ": 85
+    }
+   ],
+   "spawn": {
+    "x": 35,
+    "y": 11,
+    "z": 80
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": 30,
+     "minZ": 75,
+     "maxX": 40,
+     "maxZ": 75
+    },
+    {
+     "minX": 30,
+     "minZ": 75,
+     "maxX": 30,
+     "maxZ": 85
+    },
+    {
+     "minX": 40,
+     "minZ": 75,
+     "maxX": 40,
+     "maxZ": 85
+    },
+    {
+     "minX": 30,
+     "minZ": 85,
+     "maxX": 40,
+     "maxZ": 85
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-2",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "orange",
+   "protection": [
+    {
+     "minX": 65,
+     "minZ": 35,
+     "maxX": 75,
+     "maxZ": 45
+    }
+   ],
+   "spawn": {
+    "x": 70,
+    "y": 11,
+    "z": 40
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": 65,
+     "minZ": 35,
+     "maxX": 65,
+     "maxZ": 45
+    },
+    {
+     "minX": 65,
+     "minZ": 35,
+     "maxX": 75,
+     "maxZ": 35
+    },
+    {
+     "minX": 65,
+     "minZ": 45,
+     "maxX": 75,
+     "maxZ": 45
+    },
+    {
+     "minX": 75,
+     "minZ": 35,
+     "maxX": 75,
+     "maxZ": 45
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "protection": [
+    {
+     "minX": -85,
+     "minZ": 30,
+     "maxX": -75,
+     "maxZ": 40
+    }
+   ],
+   "spawn": {
+    "x": -80,
+    "y": 11,
+    "z": 35
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -75,
+     "minZ": 30,
+     "maxX": -75,
+     "maxZ": 40
+    },
+    {
+     "minX": -85,
+     "minZ": 30,
+     "maxX": -75,
+     "maxZ": 30
+    },
+    {
+     "minX": -85,
+     "minZ": 40,
+     "maxX": -75,
+     "maxZ": 40
+    },
+    {
+     "minX": -85,
+     "minZ": 30,
+     "maxX": -85,
+     "maxZ": 40
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-2",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "light_blue",
+   "protection": [
+    {
+     "minX": -45,
+     "minZ": 65,
+     "maxX": -35,
+     "maxZ": 75
+    }
+   ],
+   "spawn": {
+    "x": -40,
+    "y": 11,
+    "z": 70
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -45,
+     "minZ": 65,
+     "maxX": -35,
+     "maxZ": 65
+    },
+    {
+     "minX": -35,
+     "minZ": 65,
+     "maxX": -35,
+     "maxZ": 75
+    },
+    {
+     "minX": -45,
+     "minZ": 65,
+     "maxX": -45,
+     "maxZ": 75
+    },
+    {
+     "minX": -45,
+     "minZ": 75,
+     "maxX": -35,
+     "maxZ": 75
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 2
+   },
+   "owner": "yellow",
+   "color": "yellow",
+   "protection": [
+    {
+     "minX": -40,
+     "minZ": -85,
+     "maxX": -30,
+     "maxZ": -75
+    }
+   ],
+   "spawn": {
+    "x": -35,
+    "y": 11,
+    "z": -80
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -40,
+     "minZ": -75,
+     "maxX": -30,
+     "maxZ": -75
+    },
+    {
+     "minX": -30,
+     "minZ": -85,
+     "maxX": -30,
+     "maxZ": -75
+    },
+    {
+     "minX": -40,
+     "minZ": -85,
+     "maxX": -40,
+     "maxZ": -75
+    },
+    {
+     "minX": -40,
+     "minZ": -85,
+     "maxX": -30,
+     "maxZ": -85
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-2",
+    "image": 2
+   },
+   "owner": "yellow",
+   "color": "pink",
+   "protection": [
+    {
+     "minX": -75,
+     "minZ": -45,
+     "maxX": -65,
+     "maxZ": -35
+    }
+   ],
+   "spawn": {
+    "x": -70,
+    "y": 11,
+    "z": -40
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -65,
+     "minZ": -45,
+     "maxX": -65,
+     "maxZ": -35
+    },
+    {
+     "minX": -75,
+     "minZ": -35,
+     "maxX": -65,
+     "maxZ": -35
+    },
+    {
+     "minX": -75,
+     "minZ": -45,
+     "maxX": -65,
+     "maxZ": -45
+    },
+    {
+     "minX": -75,
+     "minZ": -45,
+     "maxX": -75,
+     "maxZ": -35
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 3
+   },
+   "owner": "green",
+   "color": "green",
+   "protection": [
+    {
+     "minX": 75,
+     "minZ": -40,
+     "maxX": 85,
+     "maxZ": -30
+    }
+   ],
+   "spawn": {
+    "x": 80,
+    "y": 11,
+    "z": -35
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": 75,
+     "minZ": -40,
+     "maxX": 75,
+     "maxZ": -30
+    },
+    {
+     "minX": 75,
+     "minZ": -30,
+     "maxX": 85,
+     "maxZ": -30
+    },
+    {
+     "minX": 75,
+     "minZ": -40,
+     "maxX": 85,
+     "maxZ": -40
+    },
+    {
+     "minX": 85,
+     "minZ": -40,
+     "maxX": 85,
+     "maxZ": -30
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-2",
+    "image": 3
+   },
+   "owner": "green",
+   "color": "lime",
+   "protection": [
+    {
+     "minX": 35,
+     "minZ": -75,
+     "maxX": 45,
+     "maxZ": -65
+    }
+   ],
+   "spawn": {
+    "x": 40,
+    "y": 11,
+    "z": -70
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": 35,
+     "minZ": -65,
+     "maxX": 45,
+     "maxZ": -65
+    },
+    {
+     "minX": 35,
+     "minZ": -75,
+     "maxX": 35,
+     "maxZ": -65
+    },
+    {
+     "minX": 45,
+     "minZ": -75,
+     "maxX": 45,
+     "maxZ": -65
+    },
+    {
+     "minX": 35,
+     "minZ": -75,
+     "maxX": 45,
+     "maxZ": -75
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "ctw"
+ ],
+ "meta": {
+  "name": "Quadrangle",
+  "created": "2026-09-16",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "yellow",
+  "3": "green",
+  "4": "red"
+ },
+ "structures": {
+  "layer": null,
+  "redstoneLines": [
+   {
+    "x1": 30,
+    "z1": 75,
+    "x2": 39,
+    "z2": 75,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "x1": -76,
+    "z1": 30,
+    "x2": -76,
+    "z2": 39,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1
+    }
+   },
+   {
+    "x1": -40,
+    "z1": -76,
+    "x2": -31,
+    "z2": -76,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 2
+    }
+   },
+   {
+    "x1": 75,
+    "z1": -40,
+    "x2": 75,
+    "z2": -31,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 3
+    }
+   },
+   {
+    "x1": 30,
+    "z1": 75,
+    "x2": 30,
+    "z2": 84,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 0
+    }
+   },
+   {
+    "x1": -85,
+    "z1": 30,
+    "x2": -76,
+    "z2": 30,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 1
+    }
+   },
+   {
+    "x1": -31,
+    "z1": -85,
+    "x2": -31,
+    "z2": -76,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 2
+    }
+   },
+   {
+    "x1": 75,
+    "z1": -31,
+    "x2": 84,
+    "z2": -31,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 3
+    }
+   },
+   {
+    "x1": 39,
+    "z1": 75,
+    "x2": 39,
+    "z2": 84,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "2",
+     "image": 0
+    }
+   },
+   {
+    "x1": -85,
+    "z1": 39,
+    "x2": -76,
+    "z2": 39,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "2",
+     "image": 1
+    }
+   },
+   {
+    "x1": -40,
+    "z1": -85,
+    "x2": -40,
+    "z2": -76,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "2",
+     "image": 2
+    }
+   },
+   {
+    "x1": 75,
+    "z1": -40,
+    "x2": 84,
+    "z2": -40,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "2",
+     "image": 3
+    }
+   },
+   {
+    "x1": 30,
+    "z1": 84,
+    "x2": 39,
+    "z2": 84,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "3",
+     "image": 0
+    }
+   },
+   {
+    "x1": -85,
+    "z1": 30,
+    "x2": -85,
+    "z2": 39,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "3",
+     "image": 1
+    }
+   },
+   {
+    "x1": -40,
+    "z1": -85,
+    "x2": -31,
+    "z2": -85,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "3",
+     "image": 2
+    }
+   },
+   {
+    "x1": 84,
+    "z1": -40,
+    "x2": 84,
+    "z2": -31,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "3",
+     "image": 3
+    }
+   },
+   {
+    "x1": 65,
+    "z1": 35,
+    "x2": 65,
+    "z2": 44,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "4",
+     "image": 0
+    }
+   },
+   {
+    "x1": -45,
+    "z1": 65,
+    "x2": -36,
+    "z2": 65,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "4",
+     "image": 1
+    }
+   },
+   {
+    "x1": -66,
+    "z1": -45,
+    "x2": -66,
+    "z2": -36,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "4",
+     "image": 2
+    }
+   },
+   {
+    "x1": 35,
+    "z1": -66,
+    "x2": 44,
+    "z2": -66,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "4",
+     "image": 3
+    }
+   },
+   {
+    "x1": 65,
+    "z1": 35,
+    "x2": 74,
+    "z2": 35,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "5",
+     "image": 0
+    }
+   },
+   {
+    "x1": -36,
+    "z1": 65,
+    "x2": -36,
+    "z2": 74,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "5",
+     "image": 1
+    }
+   },
+   {
+    "x1": -75,
+    "z1": -36,
+    "x2": -66,
+    "z2": -36,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "5",
+     "image": 2
+    }
+   },
+   {
+    "x1": 35,
+    "z1": -75,
+    "x2": 35,
+    "z2": -66,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "5",
+     "image": 3
+    }
+   },
+   {
+    "x1": 65,
+    "z1": 44,
+    "x2": 74,
+    "z2": 44,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "6",
+     "image": 0
+    }
+   },
+   {
+    "x1": -45,
+    "z1": 65,
+    "x2": -45,
+    "z2": 74,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "6",
+     "image": 1
+    }
+   },
+   {
+    "x1": -75,
+    "z1": -45,
+    "x2": -66,
+    "z2": -45,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "6",
+     "image": 2
+    }
+   },
+   {
+    "x1": 44,
+    "z1": -75,
+    "x2": 44,
+    "z2": -66,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "6",
+     "image": 3
+    }
+   },
+   {
+    "x1": 74,
+    "z1": 35,
+    "x2": 74,
+    "z2": 44,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "7",
+     "image": 0
+    }
+   },
+   {
+    "x1": -45,
+    "z1": 74,
+    "x2": -36,
+    "z2": 74,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "7",
+     "image": 1
+    }
+   },
+   {
+    "x1": -75,
+    "z1": -45,
+    "x2": -75,
+    "z2": -36,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "7",
+     "image": 2
+    }
+   },
+   {
+    "x1": 35,
+    "z1": -75,
+    "x2": 44,
+    "z2": -75,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "7",
+     "image": 3
+    }
+   }
+  ],
+  "ironCubes": [],
+  "walls": [
+   {
+    "minX": 54,
+    "minZ": 30,
+    "maxX": 56,
+    "maxZ": 50,
+    "topY": 13,
+    "chestOnMinFace": true,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "minX": -50,
+    "minZ": 54,
+    "maxX": -30,
+    "maxZ": 56,
+    "topY": 13,
+    "chestOnMinFace": true,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 1
+    }
+   },
+   {
+    "minX": -56,
+    "minZ": -50,
+    "maxX": -54,
+    "maxZ": -30,
+    "topY": 13,
+    "chestOnMinFace": false,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 2
+    }
+   },
+   {
+    "minX": 30,
+    "minZ": -56,
+    "maxX": 50,
+    "maxZ": -54,
+    "topY": 13,
+    "chestOnMinFace": false,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 3
+    }
+   },
+   {
+    "minX": 30,
+    "minZ": 59,
+    "maxX": 50,
+    "maxZ": 61,
+    "topY": 13,
+    "chestOnMinFace": true,
+    "stamp": {
+     "kind": "wall",
+     "unit": "1",
+     "image": 0
+    }
+   },
+   {
+    "minX": -61,
+    "minZ": 30,
+    "maxX": -59,
+    "maxZ": 50,
+    "topY": 13,
+    "chestOnMinFace": false,
+    "stamp": {
+     "kind": "wall",
+     "unit": "1",
+     "image": 1
+    }
+   },
+   {
+    "minX": -50,
+    "minZ": -61,
+    "maxX": -30,
+    "maxZ": -59,
+    "topY": 13,
+    "chestOnMinFace": false,
+    "stamp": {
+     "kind": "wall",
+     "unit": "1",
+     "image": 2
+    }
+   },
+   {
+    "minX": 59,
+    "minZ": -50,
+    "maxX": 61,
+    "maxZ": -30,
+    "topY": 13,
+    "chestOnMinFace": true,
+    "stamp": {
+     "kind": "wall",
+     "unit": "1",
+     "image": 3
+    }
+   }
+  ],
+  "isEmpty": false
+ }
+}

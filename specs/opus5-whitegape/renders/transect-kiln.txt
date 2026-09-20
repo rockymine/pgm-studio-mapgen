@@ -1,0 +1,62 @@
+## kiln (made) along x
+TRANSECT 27 stations from (-13, -21) to (13, -21), every 1
+  station        ground  surface  water  top  standing            step
+  (  -13,   -21)      19       19           19                      
+  (  -12,   -21)      19       19           19                      
+  (  -11,   -21)      19       19           19                      
+  (  -10,   -21)      19       19           19                      
+  (   -9,   -21)      19       19           19                      
+  (   -8,   -21)      19       19           19                      
+  (   -7,   -21)      19       19           19                      
+  (   -6,   -21)      19       19           19                      
+  (   -5,   -21)      19       24           24  storey              BARRIER +5
+  (   -4,   -21)      19       27           27  storey              BARRIER +3
+  (   -3,   -21)      19       24           24  storey              -3
+  (   -2,   -21)      19       24           24  storey              
+  (   -1,   -21)      19       24           24  storey              
+  (    0,   -21)      19       24           24  storey              
+  (    1,   -21)      19       24           24  storey              
+  (    2,   -21)      19       24           24  storey              
+  (    3,   -21)      19       27           27  storey              BARRIER +3
+  (    4,   -21)      19       24           24  storey              -3
+  (    5,   -21)      19       19           19                      DROP -5
+  (    6,   -21)      19       19           19                      
+  (    7,   -21)      19       19           19                      
+  (    8,   -21)      19       19           19                      
+  (    9,   -21)      19       19           19                      
+  (   10,   -21)      19       19           19                      
+  (   11,   -21)      19       19           19                      
+  (   12,   -21)      19       19           19                      
+  (   13,   -21)      19       19           19                      
+rises 3, falls 3, worst step 5: 3 barrier, 0 scramble, 1 drop — BARRIER +5 at (-5, -21); BARRIER +3 at (-4, -21); BARRIER +3 at (3, -21); DROP -5 at (5, -21) | walked end to end
+beside: (none)
+
+## kiln (made) along z
+TRANSECT 24 stations from (0, -32) to (0, -9), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,   -32)      24       24           24                      
+  (    0,   -31)      25       25           25                      +1
+  (    0,   -30)      25       25           25                      
+  (    0,   -29)      25       25           25                      
+  (    0,   -28)      26       26           26                      +1
+  (    0,   -27)      26       26           26                      
+  (    0,   -26)      26       26           26                      
+  (    0,   -25)      19       19           19                      DROP -7
+  (    0,   -24)      19       24           24  storey              BARRIER +5
+  (    0,   -23)      19       27           27  storey              BARRIER +3
+  (    0,   -22)      19       24           24  storey              -3
+  (    0,   -21)      19       24           24  storey              
+  (    0,   -20)      19       24           24  storey              
+  (    0,   -19)      19       27           27  storey              BARRIER +3
+  (    0,   -18)      19       24           24  storey              -3
+  (    0,   -17)      19       19           19                      DROP -5
+  (    0,   -16)      19       19           19                      
+  (    0,   -15)      19       19           19                      
+  (    0,   -14)      19       19           19                      
+  (    0,   -13)                                                    void
+  (    0,   -12)                                                    void
+  (    0,   -11)                                                    void
+  (    0,   -10)                                                    void
+  (    0,    -9)                                                    void
+rises 5, falls 4, worst step 7: 3 barrier, 0 scramble, 2 drop — DROP -7 at (0, -25); BARRIER +5 at (0, -24); BARRIER +3 at (0, -23); BARRIER +3 at (0, -19); DROP -5 at (0, -17) | walked end to end
+beside: (none)

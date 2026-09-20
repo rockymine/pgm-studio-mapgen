@@ -1,0 +1,269 @@
+\chapter{Layers and Literal Depth}
+\label{ch:layers}
+
+\section{One Span per Column}
+
+A sketch layer is a slab, and the one sentence that governs it is this:
+
+\begin{quote}
+A layer holds exactly one span per column, and where two adds contest a cell
+\textbf{the taller replaces the shorter outright, floor included}.
+\end{quote}
+
+Those last five words are, as the repository's own account of the technique puts
+it, the whole of what makes sculpture possible. They mean that a stack of nested
+shapes writes an arbitrary height field with no subtraction anywhere and no
+per-column authoring. Draw a wide low disc, then a narrower taller one on top of
+it, then a narrower taller one again, and the result is a stepped mound. Nothing
+computed a mound; at every column the tallest add present is simply the one that
+survives.
+
+It also means the word \emph{slab} is misleading:
+
+\begin{quote}
+A layer is not a flat slab. It is one arbitrary \emph{height field}, a
+\id{(floor, top)} pair per column, and a stack of layers is a set of those fields
+with air between them. Any solid whatever can be written in that form.
+\end{quote}
+
+\subsection{The Algebra of a Single Layer}
+
+Within a layer, a group of shapes resolves as
+\[
+\bigl((\text{adds} - \text{subtracts}) \cup \text{override-adds}\bigr) - \text{override-subtracts}.
+\]
+
+Two consequences follow, and both catch authors out. An \emph{ordinary} add loses
+to a subtract over the same column regardless of which was authored first, because
+the subtract side of the algebra runs before either shape's override flag is
+looked at. And the two add sets each settle among themselves by height before the
+override plane overwrites the ordinary one, so an override add replaces the column
+it lands on whatever its height is. That is what puts a one-block floor
+inside a twelve-block wall, and a threshold through a doorway, with neither shape
+cut against the other.
+
+\begin{ruling}{The Limit of Nesting}
+A bowl falls inward, and the outer disc that should keep only its own ring is also
+the tallest thing over the middle, so nested discs come out as a flat plate. A
+falling field needs shapes that do not overlap at all.
+\end{ruling}
+
+\section{A Storey as Rock with Holes}
+
+This is the part that most often has to be unlearned. The instinct, drawing a
+second storey under a map, is to draw the rooms. That produces nothing, and the
+reason is the one-span-per-column rule:
+
+\begin{quote}
+A sketch layer carries one span per column, so a room drawn on its own leaves every
+other column of that storey empty. The board's lower half is air and the ground
+above it floats. What is stated is the \textbf{rock}, over every column the board
+has, and the rooms are the holes in it.
+\end{quote}
+
+Building an undercroft therefore takes three coordinated moves.
+
+\subsection{The Lift}
+
+The ground has to be raised to make room underneath it. That means the plan states
+a higher surface, \id{"globals": \{ "surface": 22 \}}, and the finish thins the
+slab to its top courses, leaving the rest free.
+
+Moving only one of the two fails in a way that is confusing to diagnose. If the
+surface is lifted without telling the plan, the spawns stay at their old height
+while the ground goes up, and the buildability check then reports every placement
+as standing over open void, because the marker is a dozen courses under the ground
+it names.
+
+\subsection{The Layer Below}
+
+\begin{lstlisting}[language=json]
+{ "id": "under", "name": "Undercroft", "base_y": 0, "below": true,
+  "shapes": [
+    { "id": "rk1",  "type": "rectangle", "operation": "add",
+      "floor": 0, "base_height": 14, "theme": "rock",
+      "min_x": -50, "min_z": -50, "max_x":  50, "max_z": -30 },
+    { "id": "rk2",  "...": "min_x -50, min_z -30, max_x -30, max_z 30" },
+    { "id": "rk3",  "...": "min_x  30, min_z -30, max_x  50, max_z 30" },
+    { "id": "rk4",  "...": "min_x -50, min_z  30, max_x  50, max_z 50" },
+    { "id": "hall", "type": "rectangle", "operation": "add",
+      "floor": 0, "base_height": 8, "theme": "room",
+      "min_x": -30, "min_z": -30, "max_x": 30, "max_z": 30 }
+  ],
+  "groups": [ { "id": "under", "mirrors": false, "shapeIds": [ "..." ] } ] }
+\end{lstlisting}
+
+\id{below: true} inserts the layer under the compiled ground rather than over it.
+Every shape in it is an \textbf{add}: the rock is banded round its hole rather
+than cut with a subtract. Four rectangles ring the hall; the hall is a fifth.
+
+The depth arithmetic is then by construction rather than by any field. The rock
+runs from floor 0 for fourteen courses, meeting the landmass's underside at
+$y=14$. The hall is a shorter span in the same columns, floor 0 and eight courses,
+so its floor is stood on at $y=7$ and it has six courses of headroom under the
+rock's ceiling. Stated generally: a storey's headroom is the gap between two spans
+and needs no field at all.
+
+\subsection{Stamping Without Mirroring}
+
+The group carries \id{mirrors: false}, and that is not a detail.
+
+\begin{quote}
+The storey covers the whole board, so its own \id{rot\_180} image lies over it;
+fanning it would put every column's ground back twice. A layer that covers only one
+half is fanned and one that covers both is stamped once.
+\end{quote}
+
+The cost of stamping once is that the layer then has to be its own image, which is
+to say symmetric by construction rather than by machinery.
+
+\section{Three Failure Modes}
+
+\subsection{Subtracts Across Layers}
+
+The natural way to make a hall is to cut it out of a slab. The studio refuses
+that, twice:
+
+\begin{lstlisting}
+POST /map/from-documents   422
+SK13  's0' fills 3600 column(s) that 'cut1' takes away -- from (-30, -30)
+      -- 's0' is on layer 'ground' and the subtract on 'under', and a
+      subtract reaches only the layer it is on
+SK13  'descent' fills 56 column(s) that 'cut1' takes away -- from (-22, 2)
+\end{lstlisting}
+
+The reason is semantic rather than technical. A subtract states that the column is
+\emph{empty}, and the landmass over it then fills what the storey below said was
+void. So the recipe is banding: split into bands at every hole edge along one
+axis, split each band along the other, and drop the parts that fall inside a hole.
+
+The sculptor's version of the same move avoids the problem at the outline level:
+an outline is filled even--odd, so a ring is drawn as the outer ellipse, slit
+inward, the inner ellipse the other way round, and closed: one polygon, no
+subtract, no refusal.
+
+\subsection{Silent Occlusion}
+
+This is the failure to be most afraid of, because everything reports success:
+
+\begin{quote}
+Writing the rock as one rectangle over the whole board and the hall as a shorter
+add in the same columns compiles, builds and exports with the gate \textbf{open},
+and there is no hall.
+\end{quote}
+
+No gate fires, and the studio is right not to fire one: two adds at one floor are
+ordinary ground, and the taller winning is exactly what \emph{height is the tallest
+add} means. That is precisely why the banding is the technique rather than a detail
+of it.
+
+\subsection{Verification by Count}
+
+A missing column in a storey is invisible in every render, because the rock above
+and below it hides the gap. So it is not inspected; it is counted. The undercroft
+showcase states its check as a number: over the board's 10,000 columns, none is
+bare and none carries two spans.
+
+The honest cost of the technique shows up when the holes get complicated. A hall is
+four bands. A maze of a hundred corridors and links leaves \textbf{213 rock bands}
+between them.
+
+\begin{ruling}{Banding Versus Overlay}
+The rock is banded round the hall because the two differ in \emph{height},
+fourteen courses against eight, and on one layer the taller add wins the column
+outright. A basin and a hall that are the same eight courses in the same columns
+win nothing from each other: the geometry is identical either way and only the
+paint differs. Getting it the wrong way round is silent in both directions: a
+banded-out basin is the same world, and a shorter add inside a taller one is no
+room at all.
+\end{ruling}
+
+\section{Override and Floor}
+
+An underpass makes the mechanism measurable. A deck and a cut occupy the same
+cells. Without \id{override}, a column read at the deck answers \emph{0 solid
+blocks, void}: the ordinary add lost to the subtract.
+
+With \id{override: true} but no \id{floor}, the studio refuses:
+
+\begin{lstlisting}
+POST /map/from-documents   422
+[refusal] SK13  'deck' fills 260 column(s) that 'gullet-cut' takes away
+                -- from (-28, -5)
+\end{lstlisting}
+
+The reason is that \id{floor} defaults to zero, the very bottom of the shape's
+column, so an override add with no stated floor spans from the world's floor to
+its own top, and once again fills what the subtract declared void.
+
+\id{floor} is the field that decides, and it decides by setting where the column's
+own span \emph{starts}, not by any relation to the ground it replaces. With
+\id{"floor": 13, "base\_height": 4} the same column reads four blocks, $y13$ to
+$y16$, and nothing recorded beneath. The rule that separates a lid from a fill is
+then exact: an override add resting \emph{above} the subtract's floor moves that
+span up and records nothing beneath it, and the gate is silent on it; the same
+shape at the subtract's own floor is the refusal above. The difference between the
+two documents is one field.
+
+\subsection{The Scope of the Constraint}
+
+It is often said that the studio has no floor underneath a shape. That is not
+quite it, and the accurate version is more useful:
+
+\begin{quote}
+A column carries one span \emph{per sketch layer}, not one span. \ldots So the
+honest statement is narrower and more useful: \textbf{one layer cannot stack, and
+stacking is what layers are for.}
+\end{quote}
+
+\subsection{The Stairwell}
+
+The two mechanisms combine in the move that connects a storey to the one above it:
+
+\begin{lstlisting}[language=json]
+{ "id": "descent", "type": "polygon", "operation": "add",
+  "override": true, "keepClear": true,
+  "floor": 8, "base_height": 14, "theme": "stair",
+  "height_mode": "level", "skirt": 0,
+  "vertices":       [[-22,2],[-18,2],[-18,16],[-22,16]],
+  "anchor_heights": [   1,     1,      14,      14   ] }
+\end{lstlisting}
+
+Two numbers matter and they are the same number. The flight's \id{floor} is 8,
+the hall floor's own top, so it rests on the storey below rather than driving
+through it. And an override add is what cuts the shaft; a subtract there would be
+the refusal above again.
+
+One rasterizer fact is worth carrying away from this, because it explains a class
+of ugly output that looks like a bug. A ramp at one course per cell only rasterizes
+cleanly because the surface is sampled at the cell's centre and \emph{floored} into
+the column. Rounding to nearest instead puts every sample of a 1:1 grade exactly on
+the boundary, and the flight comes out as a beat of noughts and twos.
+
+\section{Paint Order in a Stack}
+
+Layers are written bottom-up and the painter walks them in document order, which
+produces one failure worth stating plainly: a storey listed after one that stands
+over it finds no stone left to paint. An undercroft goes \emph{before} the compiled
+ground in the document, and \id{below} is what puts it there.
+
+Two further properties of a stacked board catch authors out. A plain layer's paint
+bands run from the bedrock course whatever its \id{base\_y}, since only a layer
+marked as a \emph{made} thing is painted over its own span, so every ground theme
+on such a board wants a fill that is not trivial. And a placement names its storey
+explicitly; naming none takes the top surface, which on a roofed goal is the roof.
+
+\section{Made Layers}
+
+A layer marked \id{kind: "made"} is out of the stacking rules: it is painted over
+its own span, and it is exempted from the walk that checks a board's pairs and the
+walk that checks its reachability. The reason is stated as a fact about the shape
+rather than as a convenience. A solid standing in a hill has no gap to lose, and
+its roof is not a stair somebody forgot.
+
+A made layer also carries \id{part\_of}, naming the thing a run of layers is sliced
+from, and may carry \id{seat: "ground"}, which settles the run onto the terrain
+together rather than each slice finding its own height. That is how a sculpted
+landmark, whether a dome, a spire, a tapered tower or a gatehouse, is authored: as
+ordinary sketch shapes, circles and polygons with a floor and a height, rather than
+as stamped block soup.

@@ -1,0 +1,178 @@
+GET /api/map/technique-painting-a-patch/column?at=x,z — one column per claim. Every panel's plain solves to
+y7, and every island is drawn twelve courses high, which is the top a patch's own top is tested against.
+
+### says-nothing — middle of the patch: the ground, unpainted
+=== column (-132, -74) — 8 solid block(s), ground 0° from level ===
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+
+### one-short — middle of the patch, one course under the island: still the ground
+=== column (-54, -74) — 8 solid block(s), ground 0° from level ===
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+
+### level-with-it — middle of the patch, level with the island: gravel at the same y7
+=== column (24, -74) — 8 solid block(s), ground 0° from level ===
+  y  7    13:0   Gravel
+  y  6     3:1   Coarse Dirt
+  y  5     3:1   Coarse Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+
+### level-with-it — the plain well clear of it
+=== column (16, -97) — 8 solid block(s), ground 0° from level ===
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+
+### override-thin — middle of the patch: the column was overwritten and the relief wrote it back
+=== column (102, -74) — 8 solid block(s), ground 0° from level ===
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+
+### raise-flush — middle of the patch: painted, and standing one course proud
+=== column (-132, 0) — 9 solid block(s), ground 0° from level ===
+  y  8    13:0   Gravel
+  y  7     3:1   Coarse Dirt
+  y  6     3:1   Coarse Dirt
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+
+### raise-flush — the plain well clear of it
+=== column (-140, 23) — 8 solid block(s), ground 0° from level ===
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+
+### across-a-slope — middle of the patch, flat at the median of what it covers
+=== column (-25, 13) — 15 solid block(s), ground 0° from level ===
+  y 14    13:0   Gravel
+  y 13     3:1   Coarse Dirt
+  y 12     3:1   Coarse Dirt
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+
+### across-a-slope — the flank beside it
+=== column (-14, 13) — 10 solid block(s), ground 58° from level ===
+  y  9     2:0   Grass Block
+  y  8     3:0   Dirt
+  y  7     3:0   Dirt
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+
+### over-excluded — middle of the patch, over ground the relief never solved
+=== column (27, 0) — 1 solid block(s), ground 0° from level ===
+  y  0     7:0   Bedrock
+
+### over-excluded — the excluded shelf beside the patch
+=== column (15, 13) — 12 solid block(s), ground 0° from level ===
+  y 11     2:0   Grass Block
+  y 10     3:0   Dirt
+  y  9     3:0   Dirt
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+
+### over-the-void — the patch where it is over the island
+=== column (102, -22) — 8 solid block(s), ground 0° from level ===
+  y  7    13:0   Gravel
+  y  6     3:1   Coarse Dirt
+  y  5     3:1   Coarse Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+
+### over-the-void — the patch where it was drawn past the coast
+=== column (102, -33) — 8 solid block(s), ground 0° from level ===
+  y  7    13:0   Gravel
+  y  6     3:1   Coarse Dirt
+  y  5     3:1   Coarse Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+
+### on-a-layer — middle of the slab: twelve courses of its own, four above the plain
+=== column (-132, 74) — 12 solid block(s), ground 0° from level ===
+  y 11    13:0   Gravel
+  y 10     3:1   Coarse Dirt
+  y  9     3:1   Coarse Dirt
+  y  8     1:0   Stone
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+
+### on-a-layer — the plain beside it
+=== column (-140, 97) — 8 solid block(s), ground 0° from level ===
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+
+### layer-on-top — a one-course layer at base_y 8: gravel resting on the plain's own grass
+=== column (24, 74) — 9 solid block(s), ground 0° from level ===
+  y  8    13:0   Gravel
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+
+### layer-on-a-hill — where the hill stands above the slab: the hill's grass over the slab's gravel
+=== column (-25, 87) — 15 solid block(s), ground 46° from level ===
+  y 14     2:0   Grass Block
+  y 13     3:0   Dirt
+  y 12     3:0   Dirt
+  y 11    13:0   Gravel
+  y 10     3:1   Coarse Dirt
+  y  9     3:1   Coarse Dirt
+
+### layer-on-a-hill — where the hill has fallen below it: the slab, showing
+=== column (-25, 94) — 12 solid block(s), ground 0° from level ===
+  y 11    13:0   Gravel
+  y 10     3:1   Coarse Dirt
+  y  9     3:1   Coarse Dirt
+  y  8     1:0   Stone
+  y  7     2:0   Grass Block
+  y  6     3:0   Dirt
+
+### layer-solved — the over-layer's own relief, buried by the ground's
+=== column (131, 87) — 15 solid block(s), ground 46° from level ===
+  y 14     2:0   Grass Block
+  y 13     3:0   Dirt
+  y 12     3:0   Dirt
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+
+### layer-solved — and standing proud of it eight blocks away
+=== column (131, 80) — 21 solid block(s), ground 58° from level ===
+  y 20    13:0   Gravel
+  y 19     2:0   Grass Block
+  y 18     3:0   Dirt
+  y 17     3:0   Dirt
+  y 16     1:0   Stone
+  y 15     1:0   Stone
+

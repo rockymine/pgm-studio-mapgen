@@ -1,0 +1,65 @@
+## steading (house) along x
+TRANSECT 28 stations from (-26, 54) to (1, 54), every 1
+  station        ground  surface  water  top  standing            step
+  (  -26,    54)      11       11           22  tree holt-3         
+  (  -25,    54)      11       11           22  tree holt-3         
+  (  -24,    54)      11       11           20  tree holt-3         
+  (  -23,    54)      11       11           20  tree holt-3         
+  (  -22,    54)      11       11           11                      
+  (  -21,    54)      11       11           11                      
+  (  -20,    54)      11       11           11                      
+  (  -19,    54)      11       11           25  house steading      
+  (  -18,    54)      11       11           25  house steading      
+  (  -17,    54)      11       11           25  house steading      
+  (  -16,    54)      11       11           25  house steading      
+  (  -15,    54)      11       11           25  house steading      
+  (  -14,    54)      11       11           25  house steading      
+  (  -13,    54)      11       11           25  house steading      
+  (  -12,    54)      11       11           25  house steading      
+  (  -11,    54)      11       11           25  house steading      
+  (  -10,    54)      11       11           25  house steading      
+  (   -9,    54)      11       11           25  house steading      
+  (   -8,    54)      11       11           25  house steading      
+  (   -7,    54)      11       11           25  house steading      
+  (   -6,    54)      11       11           25  house steading      
+  (   -5,    54)      16       16           16                      BARRIER +5
+  (   -4,    54)      16       16           16                      
+  (   -3,    54)      16       16           16                      
+  (   -2,    54)      16       16           16                      
+  (   -1,    54)      16       16           16                      
+  (    0,    54)      16       16           16                      
+  (    1,    54)      16       16           16                      
+rises 1, falls 0, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (-5, 54) | walked end to end
+beside: tree holt-3 at (-24, 52), tree holt-4 at (-27, 56), house steading at (-19, 52)
+
+## steading (house) along z
+TRANSECT 26 stations from (-13, 42) to (-13, 67), every 1
+  station        ground  surface  water  top  standing            step
+  (  -13,    42)      11       11           16  boulder erratic-w   
+  (  -13,    43)      11       11           16  boulder erratic-w   
+  (  -13,    44)      11       11           17  boulder erratic-w   
+  (  -13,    45)      11       11           17  boulder erratic-w   
+  (  -13,    46)      11       11           17  boulder erratic-w   
+  (  -13,    47)      11       11           16  boulder erratic-w   
+  (  -13,    48)      11       11           15  boulder erratic-w   
+  (  -13,    49)      11       11           19  house steading      
+  (  -13,    50)      11       11           20  house steading      
+  (  -13,    51)      11       11           22  house steading      
+  (  -13,    52)      11       11           23  house steading      
+  (  -13,    53)      11       11           24  house steading      
+  (  -13,    54)      11       11           25  house steading      
+  (  -13,    55)      11       11           25  house steading      
+  (  -13,    56)      11       11           24  house steading      
+  (  -13,    57)      11       11           23  house steading      
+  (  -13,    58)      11       11           22  house steading      
+  (  -13,    59)      11       11           20  house steading      
+  (  -13,    60)                            19  house steading      void
+  (  -13,    61)                                                    void
+  (  -13,    62)                                                    void
+  (  -13,    63)                                                    void
+  (  -13,    64)                                                    void
+  (  -13,    65)                                                    void
+  (  -13,    66)                                                    void
+  (  -13,    67)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder erratic-w at (-14, 41), house steading at (-15, 49)

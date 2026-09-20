@@ -1,0 +1,35 @@
+PUT …/sketch — three house styles, each one field off the `gable` panel's base. A style is checked
+at the store door, and the message names the JSON path.
+
+### an `arched` window whose block is a glass pane
+  PUT 400
+  HS1 refusal — windows.block (102) is not a stair. The form turns its corners by a stair's own facing;
+  anything else builds without the diamond or the rounded corners the form is named for.
+
+### beams of one wood over posts of another
+  PUT 400
+  HS4 refusal — beams are oak and post is spruce. A post, the beam ends docking against it and the course
+  they are the ends of are one frame, so they are cut from one wood.
+  HS4 refusal — beams are oak and storeys[0].post is spruce. A post, the beam ends docking against it and
+  the course they are the ends of are one frame, so they are cut from one wood.
+  HS4 refusal — beams are oak and storeys[1].post is spruce. A post, the beam ends docking against it and
+  the course they are the ends of are one frame, so they are cut from one wood.
+  HS4 refusal — beams are oak and the wall's laid log is spruce. A post, the beam ends docking against it
+  and the course they are the ends of are one frame, so they are cut from one wood.
+
+### beams with no laid-log course anywhere in the style
+  PUT 400
+  HS9 refusal — the building lays beams of spruce and no course of any of its walls is a laid log, so the
+  ends run out of masonry with no timber behind them. Lay the storey's top course in a laidLog of the same
+  material, or drop the beams.
+
+The card's own layout is stored again after these.
+
+**A window's form and its block are one decision.** `arched` and `stairLattice` turn their corners
+by a stair's own facing, so the block has to be a stair; the `windows-arched` panel states both.
+
+**A frame is one wood.** Beams and posts are the same timber or the style is refused, which is a
+rule about the building and a confusing way to learn that `162` is acacia and dark oak is `162:1`.
+
+**Beams want something to be beam ends of.** A style with `beams.any` and no laid-log course
+anywhere in it — its roof's verge, its walls, its storeys — has log ends running out of nothing.

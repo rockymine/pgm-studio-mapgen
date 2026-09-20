@@ -1,0 +1,304 @@
+\chapter{The Division of Labour}
+\label{ch:division}
+
+\section{The Boundary and Its Source}
+
+The repository states its own answer in one sentence, in the brief that governs
+authoring from a composed board:
+
+\begin{quote}
+A composed board is a \textbf{suggestion}, not a plan.
+\end{quote}
+
+And then, more usefully, the mechanism behind it:
+
+\begin{quote}
+It emits a plan, not a layout. The plan is where the board's \emph{arrangement}
+lives. Everything that makes a place, whether the shape of the ground, the second
+storey, the edge that is not a straight line, the wall or the island, is
+downstream of it and is yours.
+\end{quote}
+
+That is the cleanest statement of the boundary anywhere in the system, and it maps
+exactly onto \cref{ch:four-levels}'s four levels. The studio's generative half
+works at the board level and stops there. Everything at the ground level, the play
+level and the world is authored. That does not mean typed out by hand, because the
+studio computes enormous amounts of it, but it does mean that no part of it
+happens unless the agent asks for it.
+
+\section{Contributions of the Studio}
+
+\subsection{The Arrangement}
+
+The composer knows how a CTW board is put together: a hub with a spawn hung off
+it, one or two wool approaches hanging off the hub's free surface, a frontline
+fronting it, a mid band between the two fanned images with a row of stepping
+stones in it, and a land budget that keeps a wool board about a third land. The
+brief's verdict on why that is worth having is unsentimental. It is the thing that
+is hard to invent and easy to get wrong, and a board drawn from scratch that
+ignores it comes out illogical in ways no gate catches.
+
+It is equally explicit about where that stops. \Cref{tab:composer-stops} is the
+list, and every row of it is a thing the agent must supply or the board will not
+have.
+
+\begin{table}[htbp]
+\caption{What the composer does not do, and what therefore arrives as the agent's
+work. Every row is stated in the repository's own brief.}
+\label{tab:composer-stops}
+\small
+\begin{tabularx}{\textwidth}{L{5.4cm} Y}
+\toprule
+\textbf{The composer does not} & \textbf{So the board arrives} \\
+\midrule
+vary the crossing's ground &
+  with one lateral row of stones at one depth: no tiered island, no staggered
+  pair, nothing off the band's centre line \\
+place defence walls &
+  \id{"walls": []}, always. A defence wall is authored, never composed \\
+state any elevation &
+  with no piece carrying a surface; the whole board flat at
+  \id{globals.surface}~9 \\
+draw anything but rectangles &
+  as axis-aligned cell rects, with no curve, no spur and no taper anywhere \\
+model an intra-team build zone &
+  with exactly one zone, the mid band \\
+carry layers &
+  with no storeys at all: no bottom lane, no top lane, no tunnel, no undercroft \\
+make four-team boards &
+  two teams only, whatever is asked for \\
+balance its own wools &
+  routinely lopsided (\cref{sec:lopsided}) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{Derived Furniture}
+
+Downstream of the plan, a great deal appears that the agent never wrote. When a
+CTW board is stored, the studio works out the monuments, places them beside the
+right spawns, and generates the regions, filters and apply-rules that make them
+function. One run records the scale of this plainly: a plan stating four wool
+rooms and their markers produced four wools, four monuments, 22 regions, 34
+filters and 11 apply-rules, with no authoring and no correction.
+
+The same is true of values that are derived rather than placed. The build ceiling
+is the tallest terrain column plus twenty, so raising any terrain silently raises
+the ceiling over the whole board. A \id{walls} entry names an interface and
+nothing else; the studio decides that a wall is bedrock, two thick, three courses,
+across the full interface width, stamped on the attack side. Pieces are fanned
+through the board's symmetry automatically, though as \cref{ch:refusals} will show,
+not everything is, and knowing which is which has cost several runs a rebuild.
+
+\subsection{Substitution and Complaint}
+
+One case is worth isolating because it shows the studio's temperament. A run
+specified obsidian for a fifteen-block destroyable, which is out of band. The
+studio did not refuse. It built the map in ender stone, raised the complaint
+\id{DC3} saying so, and wrote the \id{map.xml} declaring what was actually laid.
+A refusal stops the request; a complaint lets it through and states what changed.
+That distinction runs through the whole API, and an agent that reads only the
+status code throws half the answer away.
+
+\section{Decisions of the Agent}
+
+\subsection{The Identity Sentence}
+
+The most consistently enforced agent decision in the corpus is also the least
+technical: before a single shape is drawn, the agent writes one sentence saying
+what the board is. The warmup discipline states it as a rule: decide what the
+board is about before deciding what it is made of, keep it to one thing, write the
+sentence down, and if it cannot be written the board is not ready.
+
+A worked example, from a run that built four boards at once:
+
+\begin{quote}
+A sand spit, flat and pale and open nearly everywhere, with one ring of dune on
+it that you have to walk round, two tide-worn stones in the middle at a ten-block
+grain, and a water lane down the west flank that opens forty-five minutes in.
+\end{quote}
+
+This turns out to be load-bearing in a way nobody designed. One orchestrated run
+had three agents killed by an interrupt at twenty-eight minutes. Two of them had
+written their identity sentences into their reports before authoring, and those
+survived. The third had not, and its three remaining identities were lost with it
+and had to be invented again. Writing the identity down first is a durability
+property as well as a design one.
+
+\subsection{Palette Across a Set}
+
+Where several boards are built together, the agent chooses each board's ground,
+built and accent tones against the others, because, as one run puts it, five boards
+can each be internally coherent and still be five greys. The reasoning is
+recorded per board as a position in a range: one board the brightest and highest
+contrast, another the coldest and bluest and lowest contrast.
+
+\subsection{Size}
+
+Every one of the twelve boards in the most recent composed-board runs resized the
+card it was pulled from. The composer sizes to its band; the agent sizes to the
+place it has decided on.
+
+\subsection{Gameplay Intent Without an Oracle}
+
+This is the category the repository treats most carefully, and it is the reason
+this paper is constrained the way it is. Questions about how a map plays are not
+derivable from the code or the corpus. Every run report from the first onward
+therefore carries a section titled \emph{open gameplay questions, decided without
+an oracle}, in which the agent records the judgement it had to make, the answer it
+picked, and its confidence. Three real examples:
+
+\begin{quote}
+\textbf{How high may a mid island stand over the fronts?} Gallowsholt's causey is
+four blocks proud, so a player bridging out of his own front has to place a block
+to get onto it. That makes it a prize and makes the first team there hard to
+shift. Decided: four.
+\end{quote}
+
+\begin{quote}
+\textbf{May two wools be the same distance and completely different to raid?}
+Longstrand's are 200 and 192 blocks from the enemy's door; one is inside a ring of
+dune you must go round and one is on open strand. Decided yes, and it is the thing
+I would most like judged.
+\end{quote}
+
+\begin{quote}
+\textbf{Is a two-block bench across most of a board playable?} \ldots This is the
+decision I am least sure of.
+\end{quote}
+
+The practice exists because of a specific failure. An earlier run measured that
+destroyables and cores float a few blocks above the terrain, reasoned from first
+principles that this made every generated destroy map unwinnable, and filed and
+committed the claim. The measurement was right and the conclusion was invented.
+Floating is deliberate: a core on the ground cannot leak, and a destroyable on the
+ground is trivially covered, so the studio's generator floats one three to five
+blocks and an author's cap bounds it at twelve. The corpus, measured afterwards,
+does not float them at all (\cref{ch:export}), which makes the invented claim
+doubly wrong.
+Neither the corpus nor the code would have corrected it. One question would have.
+
+\section{The Intermediate Category}
+
+Between what the studio supplies and what the agent decides sits a third category,
+and it is where the system is most itself.
+
+\subsection{Placement as Query}
+
+An agent's natural instinct is to place things by eye: this tree here, that
+boulder there, a bench against the wall. The most recent structure-focused run
+records what happens when it does.
+
+\begin{quote}
+Every prop I placed by eye was declined. \ldots Everything that shipped came from
+\route{POST .../sketch/seats} or the candidate loop. Final tally: 78 placed, 0
+declined.
+\end{quote}
+
+The studio knows where a prop can stand, because it knows the ground, the
+clearance, what else is there and what the passage rules require around a
+building. The agent does not, because the agent cannot see. So the productive move is not to place and
+be corrected; it is to ask what the legal seats are and choose among them. This
+inverts the usual relationship between an author and a tool, and it is the single
+most transferable piece of craft in the whole corpus.
+
+\subsection{Instruction by Evaluator}
+
+The studio scores a board against 31 terms, and the scores are not merely a grade.
+One run records the evaluator changing a design rather than a document: a monument
+authored on an open pan read a goal-distance ratio of 1.875 against the
+\id{GO1} band of 3.0--4.0.
+
+\begin{quote}
+\ldots which is not a placement error. It is the board saying the goal is in the
+contested space rather than a short walk forward of the spawn. Moving it to
+the brow gave 3.22 and produced the topology the gameplay documentation describes.
+\end{quote}
+
+The agent did not learn a number. It learned what the number was about.
+
+\subsection{Convergence as a Failure Mode}
+
+This is the finding that most deserves to be in a paper about generated maps,
+because it is the failure mode of the whole approach and it was caught by
+accident.
+
+An orchestrated run put three agents on three different ground families, with no
+contact between them. They converged on nearly identical goal geometry: spawn
+separation 184 blocks, goal 40.5--44.0 from its own spawn, \id{GO1} between 3.24
+and 3.59, lateral offset 11--21. The explanation is not imitation, because there
+was none available.
+
+\begin{quote}
+\ldots because \id{GO1}'s band of [3.0, 4.0] on a lane-shaped board puts the goal
+between $L/5$ and $L/4$ from its own spawn, and the centre line is the cheapest
+way to satisfy it.
+\end{quote}
+
+A constraint with a cheapest satisfying solution will be satisfied that way by
+every author who does not deliberately pay more. The rules that keep bad maps from
+being built will, left to themselves, also make good maps resemble each other.
+Nothing in the system detects this; it took three independent runs and somebody
+noticing.
+
+\subsection{Rules as Band Lookups}
+
+One further finding reframes the rule system entirely, and an agent that does not
+know it will generalise wrongly from every board it has built:
+
+\begin{quote}
+A rule id is not a fixed constraint: \id{FR6}, \id{G8} and \id{CT12} all read
+\textbf{authored bands} whose values depend on what the board is played for, and
+three boards of experience on one objective family taught me nothing about the
+next.
+\end{quote}
+
+This is why the studio publishes \route{GET /api/rules/terms}, so that a driver
+can ask what band is enforced on \emph{this} board rather than writing down a
+number that was true of the last one.
+
+\section{The Boundary by Stage}
+
+\Cref{tab:division} states the division of labour across the whole pipeline. It is
+the table the rest of the paper elaborates, and each of its rows is a chapter in
+Part~II.
+
+\begin{table}[htbp]
+\caption{Who decides what, by stage. \studio{Blue} is the studio; \agent{orange}
+is the agent.}
+\label{tab:division}
+\small
+\begin{tabularx}{\textwidth}{L{2.5cm} Y Y}
+\toprule
+\textbf{Stage} & \textbf{\studio{The studio decides}} & \textbf{\agent{The agent decides}} \\
+\midrule
+Arrangement &
+  hub, spawn, wool approaches, frontline, mid band, land budget, size band &
+  which candidate, and everything the composer does not state \\
+Ground shape &
+  how outlines fuse, how a bend is drawn, where a relief field goes &
+  the identity, the sizes, the reshaping, where two grounds meet \\
+Elevation &
+  the solved height field from the marks it is given &
+  the marks, the grain, the pushes, the scopes \\
+Layers &
+  the painter's bottom-up order, what a layer occludes &
+  how many storeys, what is under what, what is a made thing \\
+Paint &
+  which material lands on which cell, given a band axis &
+  the theme, the axis, where the bands cut \\
+Structures &
+  storey heights, roof pitch, door side, porch, beams &
+  which style, which footprint, which seat from the offered set \\
+Dressing &
+  the legal seats &
+  which seats to take, and the styles \\
+Objectives &
+  monuments, regions, filters, apply-rules, resolved volumes &
+  what the map is played for, and where the goals sit \\
+Refusal &
+  what may not be built, and why &
+  what to do about it \\
+\bottomrule
+\end{tabularx}
+\end{table}

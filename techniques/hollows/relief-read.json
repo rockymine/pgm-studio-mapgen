@@ -1,0 +1,458 @@
+{
+ "groups": [
+  {
+   "group": "push",
+   "cells": 3136,
+   "low": 20,
+   "high": 32,
+   "relief": 12,
+   "steps": {
+    "walk": 5528,
+    "scramble": 312,
+    "barrier": 320
+   },
+   "tiers": [
+    {
+     "name": "walk",
+     "maxStep": 1,
+     "share": 0.8974025974025974,
+     "places": 7,
+     "largestPlace": 0.4604591836734694,
+     "ledges": 0,
+     "parts": [
+      {
+       "cells": 1444,
+       "share": 0.4604591836734694,
+       "centroidX": -32,
+       "centroidZ": 0,
+       "minX": -51,
+       "minZ": -19,
+       "maxX": -14,
+       "maxZ": 18,
+       "place": true
+      },
+      {
+       "cells": 1376,
+       "share": 0.4387755102040816,
+       "centroidX": -32,
+       "centroidZ": 0,
+       "minX": -60,
+       "minZ": -28,
+       "maxX": -5,
+       "maxZ": 27,
+       "place": true
+      },
+      {
+       "cells": 156,
+       "share": 0.04974489795918367,
+       "centroidX": -32,
+       "centroidZ": 0,
+       "minX": -52,
+       "minZ": -20,
+       "maxX": -13,
+       "maxZ": 19,
+       "place": true
+      },
+      {
+       "cells": 40,
+       "share": 0.012755102040816327,
+       "centroidX": -53,
+       "centroidZ": 0,
+       "minX": -53,
+       "minZ": -20,
+       "maxX": -53,
+       "maxZ": 19,
+       "place": true
+      },
+      {
+       "cells": 40,
+       "share": 0.012755102040816327,
+       "centroidX": -32,
+       "centroidZ": -21,
+       "minX": -52,
+       "minZ": -21,
+       "maxX": -13,
+       "maxZ": -21,
+       "place": true
+      },
+      {
+       "cells": 40,
+       "share": 0.012755102040816327,
+       "centroidX": -32,
+       "centroidZ": 20,
+       "minX": -52,
+       "minZ": 20,
+       "maxX": -13,
+       "maxZ": 20,
+       "place": true
+      },
+      {
+       "cells": 40,
+       "share": 0.012755102040816327,
+       "centroidX": -12,
+       "centroidZ": 0,
+       "minX": -12,
+       "minZ": -20,
+       "maxX": -12,
+       "maxZ": 19,
+       "place": true
+      }
+     ]
+    },
+    {
+     "name": "scramble",
+     "maxStep": 2,
+     "share": 0.948051948051948,
+     "places": 2,
+     "largestPlace": 0.5102040816326531,
+     "ledges": 0,
+     "parts": [
+      {
+       "cells": 1600,
+       "share": 0.5102040816326531,
+       "centroidX": -32,
+       "centroidZ": 0,
+       "minX": -52,
+       "minZ": -20,
+       "maxX": -13,
+       "maxZ": 19,
+       "place": true
+      },
+      {
+       "cells": 1536,
+       "share": 0.4897959183673469,
+       "centroidX": -32,
+       "centroidZ": 0,
+       "minX": -60,
+       "minZ": -28,
+       "maxX": -5,
+       "maxZ": 27,
+       "place": true
+      }
+     ]
+    }
+   ],
+   "faces": [
+    {
+     "facing": "south",
+     "width": 40,
+     "drop": 3,
+     "cliff": false
+    },
+    {
+     "facing": "east",
+     "width": 40,
+     "drop": 3,
+     "cliff": false
+    },
+    {
+     "facing": "west",
+     "width": 40,
+     "drop": 3,
+     "cliff": false
+    },
+    {
+     "facing": "north",
+     "width": 40,
+     "drop": 3,
+     "cliff": false
+    }
+   ],
+   "faceCount": 4,
+   "cliffs": 0,
+   "acrossX": {
+    "rows": 56,
+    "onFoot": 14,
+    "withBlock": 16,
+    "descended": 14
+   },
+   "acrossZ": {
+    "rows": 56,
+    "onFoot": 14,
+    "withBlock": 16,
+    "descended": 14
+   },
+   "symmetryError": 0,
+   "landform": "rolling",
+   "smoothing": 0.975,
+   "level": 0.5522959183673469,
+   "largestField": 0.32653061224489793,
+   "seams": [],
+   "silentMarks": [],
+   "pushes": [
+    {
+     "id": "pit",
+     "skirt": 2,
+     "crown": 0,
+     "cells": 1296
+    }
+   ]
+  },
+  {
+   "group": "sink",
+   "cells": 3136,
+   "low": 32,
+   "high": 32,
+   "relief": 0,
+   "steps": {
+    "walk": 6160
+   },
+   "tiers": [
+    {
+     "name": "walk",
+     "maxStep": 1,
+     "share": 1,
+     "places": 1,
+     "largestPlace": 1,
+     "ledges": 0,
+     "parts": [
+      {
+       "cells": 3136,
+       "share": 1,
+       "centroidX": 31,
+       "centroidZ": 0,
+       "minX": 4,
+       "minZ": -28,
+       "maxX": 59,
+       "maxZ": 27,
+       "place": true
+      }
+     ]
+    },
+    {
+     "name": "scramble",
+     "maxStep": 2,
+     "share": 1,
+     "places": 1,
+     "largestPlace": 1,
+     "ledges": 0,
+     "parts": [
+      {
+       "cells": 3136,
+       "share": 1,
+       "centroidX": 31,
+       "centroidZ": 0,
+       "minX": 4,
+       "minZ": -28,
+       "maxX": 59,
+       "maxZ": 27,
+       "place": true
+      }
+     ]
+    }
+   ],
+   "faces": [],
+   "faceCount": 0,
+   "cliffs": 0,
+   "acrossX": {
+    "rows": 56,
+    "onFoot": 56,
+    "withBlock": 56,
+    "descended": 56
+   },
+   "acrossZ": {
+    "rows": 56,
+    "onFoot": 56,
+    "withBlock": 56,
+    "descended": 56
+   },
+   "symmetryError": 0,
+   "landform": "plain",
+   "smoothing": null,
+   "level": 1,
+   "largestField": 1,
+   "seams": [],
+   "silentMarks": [],
+   "pushes": []
+  },
+  {
+   "group": "mark",
+   "cells": 3136,
+   "low": 20,
+   "high": 32,
+   "relief": 12,
+   "steps": {
+    "walk": 5520,
+    "scramble": 512,
+    "barrier": 128
+   },
+   "tiers": [
+    {
+     "name": "walk",
+     "maxStep": 1,
+     "share": 0.8961038961038961,
+     "places": 6,
+     "largestPlace": 0.5867346938775511,
+     "ledges": 0,
+     "parts": [
+      {
+       "cells": 1840,
+       "share": 0.5867346938775511,
+       "centroidX": 95,
+       "centroidZ": 0,
+       "minX": 68,
+       "minZ": -28,
+       "maxX": 123,
+       "maxZ": 27,
+       "place": true
+      },
+      {
+       "cells": 784,
+       "share": 0.25,
+       "centroidX": 95,
+       "centroidZ": 0,
+       "minX": 82,
+       "minZ": -14,
+       "maxX": 109,
+       "maxZ": 13,
+       "place": true
+      },
+      {
+       "cells": 140,
+       "share": 0.044642857142857144,
+       "centroidX": 95,
+       "centroidZ": 0,
+       "minX": 78,
+       "minZ": -18,
+       "maxX": 113,
+       "maxZ": 17,
+       "place": true
+      },
+      {
+       "cells": 132,
+       "share": 0.042091836734693876,
+       "centroidX": 95,
+       "centroidZ": 0,
+       "minX": 79,
+       "minZ": -17,
+       "maxX": 112,
+       "maxZ": 16,
+       "place": true
+      },
+      {
+       "cells": 124,
+       "share": 0.039540816326530615,
+       "centroidX": 95,
+       "centroidZ": 0,
+       "minX": 80,
+       "minZ": -16,
+       "maxX": 111,
+       "maxZ": 15,
+       "place": true
+      },
+      {
+       "cells": 116,
+       "share": 0.036989795918367346,
+       "centroidX": 95,
+       "centroidZ": 0,
+       "minX": 81,
+       "minZ": -15,
+       "maxX": 110,
+       "maxZ": 14,
+       "place": true
+      }
+     ]
+    },
+    {
+     "name": "scramble",
+     "maxStep": 2,
+     "share": 0.9792207792207792,
+     "places": 2,
+     "largestPlace": 0.673469387755102,
+     "ledges": 0,
+     "parts": [
+      {
+       "cells": 2112,
+       "share": 0.673469387755102,
+       "centroidX": 95,
+       "centroidZ": 0,
+       "minX": 68,
+       "minZ": -28,
+       "maxX": 123,
+       "maxZ": 27,
+       "place": true
+      },
+      {
+       "cells": 1024,
+       "share": 0.32653061224489793,
+       "centroidX": 95,
+       "centroidZ": 0,
+       "minX": 80,
+       "minZ": -16,
+       "maxX": 111,
+       "maxZ": 15,
+       "place": true
+      }
+     ]
+    }
+   ],
+   "faces": [
+    {
+     "facing": "south",
+     "width": 32,
+     "drop": 4,
+     "cliff": false
+    },
+    {
+     "facing": "east",
+     "width": 32,
+     "drop": 4,
+     "cliff": false
+    },
+    {
+     "facing": "west",
+     "width": 32,
+     "drop": 4,
+     "cliff": false
+    },
+    {
+     "facing": "north",
+     "width": 32,
+     "drop": 4,
+     "cliff": false
+    }
+   ],
+   "faceCount": 4,
+   "cliffs": 0,
+   "acrossX": {
+    "rows": 56,
+    "onFoot": 20,
+    "withBlock": 24,
+    "descended": 20
+   },
+   "acrossZ": {
+    "rows": 56,
+    "onFoot": 20,
+    "withBlock": 24,
+    "descended": 20
+   },
+   "symmetryError": 0,
+   "landform": "rolling",
+   "smoothing": 4,
+   "level": 0.673469387755102,
+   "largestField": 0.4897959183673469,
+   "seams": [
+    {
+     "a": "basin",
+     "b": "land-96",
+     "step": 2,
+     "x": 78,
+     "z": -18,
+     "cells": 144
+    }
+   ],
+   "silentMarks": [],
+   "pushes": []
+  }
+ ],
+ "warnings": [
+  {
+   "rule": "RL2",
+   "message": "group 'push' carries 12 blocks of range and 1.0 scrambles for every barrier \u2014 320 of its steps are taller than a player can scramble. The elevation is there and was never graded.",
+   "severity": "complaint",
+   "subjects": [
+    "push"
+   ]
+  }
+ ]
+}

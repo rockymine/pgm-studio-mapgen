@@ -1,0 +1,234 @@
+\chapter{The Four Levels of Description}
+\label{ch:four-levels}
+
+\section{A Map as Four Documents}
+
+The first thing to understand about the studio is that it does not hold a map. It
+holds four descriptions of one, at four different grains, each owned by a
+different tool and stored separately. The documentation states it flatly:
+
+\begin{quote}
+A map is not one document. It is four, each describing the whole map at a
+different grain, each owned by a different tool and stored separately.
+\end{quote}
+
+\Cref{tab:levels} is that list. Read it top to bottom as increasing resolution:
+the board knows what things are and not where they are exactly; the world knows
+where every block is and nothing about what any of it is for.
+
+\begin{table}[htbp]
+\caption{The four levels. Each is a description of the whole map.}
+\label{tab:levels}
+\small
+\begin{tabularx}{\textwidth}{L{2.1cm} Y L{3.1cm} L{1.9cm}}
+\toprule
+\textbf{Level} & \textbf{What it states} & \textbf{Document} & \textbf{Tool} \\
+\midrule
+The board &
+  Rectangles on a coarse cell grid, what each one is for, and where the
+  objectives sit &
+  \id{PlanModel} \newline (\id{*.plan.json}) & Plan \\
+The ground &
+  The real geometry at block resolution: outlines, heights, relief, paint, props &
+  \id{SketchLayout} & Sketch \\
+The play &
+  Teams, spawns, protections, build regions, objectives and how they are captured &
+  \id{MapIntent} & Configure \\
+The map &
+  The voxel world and the \id{map.xml} a PGM server loads &
+  \id{VoxelWorld} + \id{MapXml} & --- (built) \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{These are grains, not drafts}
+
+The temptation is to read the four as stages of completeness, a rough sketch
+refined into a finished thing. That reading is wrong and leads directly
+to authoring mistakes, so the documentation heads it off:
+
+\begin{quote}
+A plan is not a rough draft of a layout: it states things a layout cannot, such as
+that this rectangle is a wool room, or that these two pieces share a defence wall,
+and cannot state things a layout can, like a curve or a one-block step. The same is
+true upward: a layout knows where every block of ground is and has no idea what
+any of it is for. That is why a finished map needs all four and why no one of them
+is `the' map.
+\end{quote}
+
+This is worth dwelling on because it explains the shape of everything downstream.
+A wool room is a concept that only exists at the board level. Once the board
+compiles, there is no wool room in the geometry. There is a polygon, at a height,
+with a theme on it. Conversely a coastline is a concept that only exists
+at the ground level; no arrangement of rectangles can state one. An agent that
+tries to express a curve in the plan is fighting the model, and an agent that
+tries to state an objective in the layout is doing the same thing from the other
+side.
+
+\subsection*{The flow is one-way}
+
+\begin{quote}
+A plan compiles into a layout and an intent; a layout rasterizes into a world; an
+intent projects into the map document; the document writes out as \id{map.xml}.
+Nothing reads back up. There is no path from geometry to a plan, and none from a
+finished \id{map.xml} to an intent. Both omissions are deliberate.
+\end{quote}
+
+Nothing infers upward. A finished map cannot be decompiled into the plan that
+would have produced it, and the studio does not try; the documentation's position
+is that hypothesising what a finished map's plan would have been is a person's job
+rather than a tool's. The practical consequence for an agent is that corrections
+are made \emph{upstream and re-run}, not patched downstream. If the ground is
+wrong, the thing to change is the document that produced it.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  font=\sffamily\small,
+  doc/.style={draw=rule, line width=0.9pt, fill=wash, rounded corners=2pt,
+              minimum height=11mm, minimum width=25mm, align=center, inner sep=4pt},
+  built/.style={doc, fill=accentsoft!45, draw=accent!40},
+  every path/.style={draw=ink60, line width=0.8pt, -{Stealth[length=4pt]}}
+]
+\node[doc] (plan) {plan};
+\node[doc, above right=4mm and 16mm of plan] (layout) {layout};
+\node[doc, below right=4mm and 16mm of plan] (intent) {intent};
+\node[built, right=16mm of layout] (world) {world};
+\node[built, right=16mm of intent] (document) {document};
+\node[built, below right=9mm and 15mm of world, minimum width=30mm] (out) {what a\\ server loads};
+
+\draw (plan) -- node[above, sloped, font=\sffamily\scriptsize, color=ink60] {compile} (layout);
+\draw (plan) -- node[below, sloped, font=\sffamily\scriptsize, color=ink60] {compile} (intent);
+\draw (layout) -- node[above, font=\sffamily\scriptsize, color=ink60] {finish} (world);
+\draw (intent) -- node[below, font=\sffamily\scriptsize, color=ink60] {project} (document);
+\draw (world) -- (out);
+\draw (document) -- (out);
+\end{tikzpicture}
+\caption{The five hand-offs. The two branches rejoin at the end rather than
+staying independent: building the world \emph{resolves} parts of the intent, and
+the \id{map.xml} is rendered from that resolved copy.}
+\label{fig:handoffs}
+\end{figure}
+
+\section{The Five Hand-Offs}
+
+\Cref{fig:handoffs} is the whole pipeline. Each arrow is a call.
+
+\paragraph{Plan to layout and intent.} \route{POST /api/plan/compile} turns one
+plan into both downstream documents, and it is pure: the same plan compiles to the
+same pair on the server and in the browser. One thing happens here that surprises
+people reading a compiled board for the first time. Abutting pieces of equal
+height fuse into single polygons, so what arrives at the ground level is a board
+rather than a grid of rectangles. A plan of eleven rectangles can compile to four
+shapes.
+
+\paragraph{Layout onto a map.} \route{PUT /api/map/\{slug\}/sketch/from-plan}
+merges rather than replaces. Themes, room shells, dressing and author-corrected
+heights are carried onto the fresh geometry. Relief is the exception, and the
+reason is worth stating because it is the clearest example in the system of the
+studio refusing to guess: relief is keyed by group id, group identity is derived
+from the geometry, and a recompile that re-fuses the board produces different
+groups. Hand-authored terrain would have nowhere correct to land. So that case
+answers \textbf{409}, one \id{SK1} finding per group it would orphan, and
+\id{?force=true} accepts the loss. It is the author's call, not the server's.
+
+\paragraph{Intent onto a map.} \route{PUT /api/map/\{slug\}/intent/from-plan}
+carries much less: the authors and contributors the stored intent already held,
+and nothing else. Two slices deliberately do not ride across. \id{islandTeams} is
+a positional derivation, and carrying it would relabel territory rather than
+preserve an answer. \id{symmetry} is left behind because its presence is what
+switches the orbit expander on. A rebuild therefore clears both, and the World and
+Teams phases have to be walked again.
+
+\paragraph{Layout to world.} \route{POST /api/map/\{slug\}/sketch/finish}
+rasterizes the layout into world geometry and moves the map to the configure
+stage. This is the only stage transition the studio performs at runtime.
+
+\paragraph{Intent to document to \id{map.xml}.} \route{PUT /api/map/\{slug\}/intent}
+stores the intent and projects it into the PGM document (teams, kits, regions,
+filters, apply-rules and spawns) in one idempotent pass.
+\route{GET /api/map/\{slug\}/xml} renders that document;
+\route{GET /api/map/\{slug\}/export} gives the world.
+
+\section{The Three-Document Load}
+
+An agent reading the five hand-offs might reasonably conclude that authoring a map
+means making five calls in order. It does not, and this is the single most
+consequential piece of practical knowledge in the whole pipeline.
+
+\route{POST /api/map/from-documents} takes a plan, a layout and an intent
+together, stores a whole map from them, and answers the slug it landed under. The
+compile, the rasterize and the projection all run inside it. A map already stored
+under that slug is replaced, because the documents name one map, so loading them
+twice is a reload rather than a second map.
+
+The documentation is explicit that this is the authoring call and not merely the
+import one, and equally explicit about what the staged path costs an agent that
+walks it instead: six calls for one store, a fresh slug originated on every
+correction, and the need to know that the intent's projection lands after the
+metadata write. The staged path is what the browser does. A driver never needs it.
+
+The layout and the intent are required; the plan is not. A board drawn on a grid
+has no plan, so a layout emitter states none. Omitting either of the required two
+answers \textbf{400} naming which.
+
+This call is also the way \emph{back} in, and that matters more than it sounds.
+No route in the studio reads a \id{map.xml} at all: \route{POST /map/import-folder}
+refuses a folder carrying one outright, and \route{import-url} extracts only the
+region files. So a map authored against one studio could reach another only as a
+world, arriving without its plan, its drawing or its intent, and never able to be
+re-planned. The three documents carry more than the world does.
+
+\begin{ruling}{Request Body Conventions}
+Twenty-five of the studio's write endpoints take a bare document and fourteen take
+a wrapper, so an author guessing gets it right slightly more than half the time.
+The rule that resolves it: if the endpoint is asking \emph{about a document}, post
+the document unwrapped; if it is asking to \emph{file a document under a name},
+post the record that names it. A wrong guess is silent, because an unknown
+property is dropped rather than reported. Posting \id{\{"style": \{...\}\}}
+where a bare style was wanted answers \textbf{200} with a preview of the defaults.
+\end{ruling}
+
+\section{The Library}
+
+Beside the four sits one more thing that is not a level at all: the library of
+materials, themes, house parts and room styles. It knows nothing about maps, having
+neither slug nor stage, and the tools that build worlds reach into it to pick a
+recipe.
+What they take is a \emph{copy}, so a library edit can never rebuild a map that
+already shipped. A theme changed today does not alter a world exported last week.
+
+\section{Stage and Layer}
+
+A map row carries a \textbf{stage} and, separately, the \textbf{layers} it holds.
+A stage is where a map has got to. A layer is a document it carries, and it keeps
+carrying it: a map built from a plan still has its plan after it has been
+sketched, configured and exported.
+
+A stage is a progress marker and not a lock. A configured map may be re-planned,
+and no endpoint refuses on the basis of the stage a map stands at. What the stage
+is for is saying which of the moves already open is the one the author was about
+to make.
+
+The studio answers both questions at runtime.
+\route{GET /api/map/\{slug\}/state} gives the stage, the artifacts, and the moves
+they allow, each with its route. A move is offered because the documents it reads
+are stored, not because the stage is right. Its pair,
+\route{GET /api/map/\{slug\}/findings}, answers what is wrong with the map right
+now from every gate the stored documents can reach, and names the gates it did
+\emph{not} ask along with the route that pays for them. An agent that has lost
+track of where it is asks those two.
+
+\section{Responsibilities Held at a Single Level}
+
+A few things belong to exactly one level, and an agent looking for them at the
+wrong one will not find them.
+
+Terrain paint and dressing are the ground level's alone. The rasterizer is what
+makes the world, so a finish authored a level above it would be authored before
+the thing it finishes exists. The observer spawn is the play level's alone: a plan
+puts it at the origin at a computed height, which is why an unattended spectator
+stands at $0,0$. Water lanes are the board level's alone; they survive a
+save at the play level and generate their region, but nothing at that level draws
+them. Room shells come from the ground level's theme phase rather than from the
+play level, which is the one most often looked for in the wrong place.

@@ -1,0 +1,92 @@
+\thispagestyle{empty}
+
+\begin{center}
+\vspace*{2.2cm}
+
+{\sffamily\fontsize{34}{38}\selectfont\bfseries\color{ink} How a PGM Map\\[2pt] Gets Made}
+
+\vspace{14pt}
+{\color{rule}\rule{0.32\textwidth}{1.1pt}}
+\vspace{14pt}
+
+{\sffamily\large\color{ink60} The division of labour between an authoring agent\\ and \textsf{pgm-studio}}
+
+\vspace{2.4cm}
+
+\begin{minipage}{0.76\textwidth}
+\small\color{ink}
+Two maps are built from first principles in these pages: a Capture the Wool
+board, composed by the studio and then adapted into a place, and a
+destroy-the-monument board authored from nothing at all. Every stage of both is
+shown as it came out of the machine. At each stage the paper asks the same
+question. \emph{Who decided this?}
+\end{minipage}
+
+\vfill
+
+{\footnotesize\sffamily\color{ink60}
+Written from the running studio, September 2026\par}
+
+\vspace{1.2cm}
+\end{center}
+
+\clearpage
+
+% ---------------------------------------------------------------------------
+\thispagestyle{empty}
+\vspace*{1cm}
+
+\section*{Purpose, Audience and Method}
+\addcontentsline{toc}{chapter}{Purpose, Audience and Method}
+
+\noindent
+\textsf{pgm-studio} is a program for making Minecraft PvP maps of the kind a PGM
+server loads. It is driven over HTTP, which means the thing operating it need not
+be a person sitting at a screen. For most of the maps described here, the operator
+was a language model with a terminal and a list of endpoints. This paper is an
+account of what such a machine actually does, and of what the studio does for it.
+
+\medskip\noindent
+That question turns out to be the interesting one. A map is not produced by a
+generator that takes a seed and returns a finished world, and it is not produced
+by an author typing coordinates either. It is produced by two parties handing work
+back and forth, and the line between them moves from stage to stage. The studio
+arranges a board and the agent decides what the ground is. The agent states a
+theme and the studio decides which block lands on which cell. The agent asks for
+something, the studio refuses, and the refusal is where a good deal of the map
+comes from. Naming that line precisely, stage by stage, is the whole of what
+follows.
+
+\medskip\noindent
+The paper is in three parts, and they can be read in any order.
+
+\begin{description}[leftmargin=1.6em,style=nextline,itemsep=5pt]
+  \item[Part~I. The System] What a map is made of, the four documents that
+    describe one, and the division of labour stated plainly. Three short
+    chapters; read these first whatever else you read.
+  \item[Part~II. The Instruments] One chapter per capability of the studio: the
+    composer, the rules, shapes, relief, layers, terrain, houses, dressing, the
+    export, reading a world back, and what an agent reads before it starts. This
+    is the reference half, meant to be dipped into rather than read through.
+  \item[Part~III. Two Maps, End to End] The two boards, every stage pictured, and
+    a chapter on what an authoring session actually looks like from the outside,
+    reconstructed from a recording of every call the agent made.
+\end{description}
+
+\medskip\noindent
+A reader who plays these maps and wants to know where they come from can read
+Part~I and then Part~III, and skip the middle entirely. A reader who wants to
+drive the studio wants Part~II. Terms are defined where they are first used, and
+collected again in the glossary at the back.
+
+\medskip\noindent
+One discipline is worth stating up front, because it constrains what this paper is
+permitted to say. Nothing here claims that a map \emph{plays} a particular way
+unless that claim traces to one of two sources: a ruling by the repository's
+author, cited as such, or a measurement over the corpus of roughly 350 published
+PGM maps, quoted with its number. The source code can say what the software does
+and the corpus can say what mapmakers have done. Neither can say what is good.
+Where the honest answer was that nobody had measured it, the claim is absent
+rather than invented.
+
+\clearpage

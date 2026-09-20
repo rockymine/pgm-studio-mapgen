@@ -1,0 +1,263 @@
+\chapter{Relief: The Shaping of Ground}
+\label{ch:relief}
+
+\section{Relief as a Solve}
+
+Relief is how flat ground becomes terrain. It is stated per group, and it is a
+\emph{solve}: the studio takes a small number of statements about where the ground
+must be, and computes a height for every cell in between.
+
+The single most important property follows from that:
+
+\begin{quote}
+A relief replaces the top of every column it solves, and the heights it solves come
+from its marks and pushes. A solved shape's own \id{base\_height} therefore decides
+nothing about where the ground ends up.
+\end{quote}
+
+The technique cards prove this rather than assert it. The same relief is applied to
+two plots whose shapes are drawn at different heights, 13 and 9 in one and both 9
+in the other, and the built ground is identical: 2304 columns compared, 0 differ. An author who tunes a shape's drawn height to influence a solved surface is
+tuning a number nothing reads.
+
+\section{Constituents of a Relief}
+
+\begin{lstlisting}[language=json]
+"relief": { "stepped": {
+  "base": 11, "reach": 0, "step": 1,
+  "marks": [
+    { "id": "upland-bench", "kind": "area", "h": 13, "bevel": 2,
+      "ring": [[-28,-26],[-20,-30],[-8,-29],[-3,-22],
+               [-4,-12],[-10,-7],[-22,-8],[-28,-14]] },
+    { "id": "lowland-bench", "kind": "area", "h": 9, "bevel": 2,
+      "ring": [[-46,8],[-38,5],[-20,6],[-6,5],
+               [-2,10],[-8,15],[-26,14],[-44,15]] } ],
+  "pushes": [
+    { "id": "knoll", "amount": 1, "falloff": 3, "crown": 3.5,
+      "roughness": 0, "seed": 1,
+      "ring": [[-32,-32],[-21,-32],[-18,-25],[-22,-18],[-32,-19]] } ] } }
+\end{lstlisting}
+
+A \textbf{mark} pins ground. An \id{area} mark holds the middle of a region at a
+stated height, and its \id{bevel} softens the edge. A \textbf{push} raises a region
+by an amount over a falloff, with a crown and an optional roughness.
+
+\Cref{tab:marks} is the full set. A mark is placed rather than sampled, for the
+same reason a prop is: a decision about where the high ground is decides how the map
+plays, so it belongs to the person making it rather than to a noise field.
+
+\begin{table}[htbp]
+\caption{The five marks. Each pins part of the footprint at a chosen height; the
+solve fills between them.}
+\label{tab:marks}
+\small
+\begin{tabularx}{\textwidth}{L{1.7cm} L{5.2cm} Y}
+\toprule
+\textbf{Mark} & \textbf{Pins} & \textbf{Says} \\
+\midrule
+\id{point} & a disc of a given radius & a summit, a hollow, a spot height \\
+\id{line} & a band reaching \id{r} either side of a polyline, optionally with
+  several heights along its run and a tread held flat &
+  a ridge, a valley floor, a shoulder falling as it runs, a road switching back
+  down a hill \\
+\id{area} & every cell inside a ring, at one height or one per vertex, with an
+  optional graded bevel inside its edge &
+  a bench, a mesa top, a sunken floor, a shelf cut into a hillside \\
+\id{rim} & the footprint's own outer rings & where the land meets the void \\
+\id{scarp} & a band either side of a drawn line, at two heights, with the face
+  between them left free &
+  a break of slope, and the mark that decides where players can go \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+A line mark's \id{r} reaches either side of the centreline, so the band it writes is
+\emph{twice} it: a stated 6 holds a twelve-block strip. The rim is optional, and it
+is what keeps a hill inside its shape. Without one, marks alone decide the whole
+surface, so a shape carrying a single high mark rises to that height everywhere and
+runs off its own edge.
+
+The most useful sentence about marks is about the space \emph{between} them:
+
+\begin{quote}
+Each \id{area} mark holds the middle of one meadow at its own height, and its
+\id{bevel} softens the edge. The ground between the two benches is pinned by
+nothing, so the solve grades it. \textbf{That free band is the connection.}
+\end{quote}
+
+Relief is therefore authored by pinning as little as possible. Pin the two things
+that must be at particular heights and let the solve invent the slope between them;
+pin everything and there is no slope, only a set of plateaux.
+
+\begin{ruling}{Agreement of a Push's Gradients}
+A push publishes two gradients: its skirt, which is \id{amount / falloff}, and its
+crown. A knoll reading 0.33 up its skirt and 0.31 to its crown is smooth. Where the
+two disagree the push steps at its own outline instead of rising into the ground,
+and the studio raises \id{RL6}.
+\end{ruling}
+
+\section{Relief Scope: Three Treatments}
+
+The question is what a relief does to a shape that already has a height. There are
+three answers and the difference between two of them is the difference between a
+join and a cliff.
+
+\begin{description}[leftmargin=1.6em,style=nextline,itemsep=5pt]
+  \item[No scope at all. The shape joins the solve.] Its drawn height is
+    discarded and the relief decides where its ground goes. This is the default and
+    it is right for terrain.
+  \item[\id{hold}. The shape keeps its height and is still arrived at.] Its cells
+    stay in the solve but are pinned at the height the shape states, so the ground
+    around it is solved \emph{knowing where it has to arrive}.
+  \item[\id{exclude}. The shape is a hole in the solve.] The relief bends round
+    its edge exactly as it bends round the void, and nothing climbs to meet it. The
+    shape keeps its faces.
+\end{description}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{techniques/relief-on-shapes.png}
+
+\medskip
+{\small\begin{minipage}{0.95\textwidth}
+The same three shapes, built three times under three treatments, sixty-four blocks
+apart in one world. Each is a raised works yard, an upland meadow beside it and a
+lowland below both. \textbf{Left}, the relief smooths the two meadows into one slope
+and runs up against the yard without moving it. \textbf{Centre}, both meadows are
+drawn at one height and the same relief builds it alike, block for block.
+\textbf{Right}, the upland is held at the height it was drawn at and the relief is
+spent only on the grade from the lowland up to it.
+\end{minipage}}
+\caption{The three treatments, side by side rather than in three folders. The
+comparison is controlled: the shapes differ only in the heights they are drawn at
+and in what each states about its scope.}
+\label{fig:relief-scope}
+\end{figure}
+
+The distinction between the last two is measurable, and the technique card measures
+it. Along one line, a shape drawn at 12 dropping to ground drawn at 8:
+
+\begin{table}[htbp]
+\caption{The same shape under \id{hold} and under \id{exclude}, read along one
+line. \id{hold} makes the join; \id{exclude} leaves a face.}
+\label{tab:hold-exclude}
+\small
+\begin{tabular}{l r r r r r r r r r}
+\toprule
+$z$ & $\cdots-1$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+\midrule
+as drawn                        & 12 & 8 & 8 & 8 & 8 & 8 & 8 & 8 & 8 \\
+\id{hold}, with the relief      & 12 & 12 & 11 & 11 & 10 & 10 & 9 & 9 & 8 \\
+\id{exclude} instead            & 12 & 8 & 8 & 8 & 8 & 8 & 8 & 8 & 8 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{quote}
+\id{exclude} on the upland would not make the join. An excluded shape is a
+\textbf{hole in the solve}, the relief bends round its edge as it bends round the
+void, and nothing climbs to meet it.
+\end{quote}
+
+The corresponding failure runs the other way. A built thing, such as a yard, a
+plinth or a platform, wants \id{exclude}, because it should keep its faces. The same
+layout built without it puts the yard's top at 11 instead of 17: the relief simply
+replaced the height it was drawn at.
+
+\section{Joins Between Grounds}
+
+This is the craft rule the whole chapter exists to support, and it is stated in the
+authoring discipline rather than in the API.
+
+A board is two or three or four \emph{grounds}, each stated by the one instrument
+that can state it, and every join between them is chosen rather than left over.
+A beach and the dunes behind it are two reliefs on two layers, held at different
+heights, because relief solves per layer and the fields are shifted into world $Y$
+separately, so two reliefs can meet. One relief across both is one field, and
+there is no join at all.
+
+That is the difference between a board that reads as a place and a board that
+reads as one field with a gradient in it.
+
+\begin{table}[htbp]
+\caption{A shore board, worked through: each ground stated by the instrument that
+can state it, and each join chosen.}
+\label{tab:shore}
+\small
+\begin{tabularx}{\textwidth}{L{3.1cm} L{4.1cm} Y}
+\toprule
+\textbf{The ground} & \textbf{Stated by} & \textbf{Why that instrument} \\
+\midrule
+the beach & a relief with flow: marks pinning only the waterline, a grain, a low
+  step & it has to read as deposited, so nothing is pinned that does not have to be \\
+the dunes behind it & a second relief, on its own layer, held a little higher &
+  two reliefs can meet; one relief across both is one field and no join \\
+the yard the houses stand on & a shape carrying \id{relief\_scope: "exclude"} &
+  the footprint leaves the solve, so the two tiers meet at a \emph{face} \\
+beach $\rightarrow$ dune & the two reliefs' own meeting, across the layer seam &
+  the join has a shape because two fields made it \\
+dune $\rightarrow$ yard & an authored flight: \id{height\_mode: "level"},
+  anchors, \id{skirt: 0}, a material rather than a theme, run at least twice the
+  rise & a relief graded across the seam deletes the boundary; a flight states it \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{ruling}{One Map, Several Grounds}
+Plains everywhere is not simplicity. It is one instrument.
+\end{ruling}
+
+\section{Shapes Laid on Solved Ground}
+
+Sand on the beach, gravel on the tide line: something that paints rather than
+shapes. Such a shape carries a theme, a \id{base\_height} equal to the ground it
+lies on, and, in the part that goes wrong, \textbf{no} \id{relief\_scope} at all.
+
+Two reasons. A shape owns the paint only on a cell it forms the surface of, so one
+stated lower runs under the ground, paints nothing, and says so on a 200. And a
+\id{relief\_scope} is a statement about \emph{height}: \id{follow} seats the shape
+on the solved field and then pins its whole ring there rigidly, which over a
+terrain patch is a floor. The strand solves level to the block, and every mark
+inside it is overwritten in silence.
+
+\section{The Relief Read}
+
+One call answers what the marks did to \emph{each other}, which no render can
+show. It is
+\route{POST /api/map/\{slug\}/sketch/relief/read}, given the stored layout.
+
+It answers, per group: the cell count, the low and high, the relief, walk and
+scramble tiers, the faces, the cliffs, and four fields that are the reason to ask
+it at all.
+
+\begin{description}[leftmargin=1.6em,style=nextline,itemsep=4pt]
+  \item[\id{silentMarks}] every mark that landed nowhere. A mark that pinned nothing
+    is invisible in every picture.
+  \item[\id{seams}] the pairs that meet on a step. A seam naming a \emph{shape}
+    rather than a mark is a \id{relief\_scope} pinning ground the marks were meant
+    to shape.
+  \item[\id{level} and \id{largestField}] the two numbers that say whether the
+    ground has a shape at all. Over about 0.45 and 0.13 respectively, it is a table
+    with edges.
+  \item[\id{landform}] what the solve thinks it made: \emph{rolling},
+    \emph{plain}, and so on.
+\end{description}
+
+\begin{ruling}{Relief and Symmetry Folding}
+Any symmetry mode folds the relief across the centre, a group's \id{mirrors: false}
+does not change that, and a layout stating no \id{mirror\_mode} takes
+\id{rot\_180}. A board meant to solve unfolded has to say \id{mirror\_mode: "none"}.
+\end{ruling}
+
+\section{The Limits of Relief}
+
+The repository's author states the danger directly: relief should be used, and
+solid structural areas matter. A board whose every square is rolling has no ground
+a fight can happen on, and an agent reaching for relief to make a board interesting
+will reliably overdo it.
+
+The counterpart discipline is a count. Run over a finished spec: how many reliefs,
+how many marks and of what kinds, how many pushes, how many shapes at each height
+mode, how much made ground, how many polylines, how many made layers, how many
+copied trees. A zero in that list is not a fault. Four zeros is a board that used
+one instrument and called it terrain.

@@ -1,0 +1,30 @@
+\appendix
+
+\chapter{The rule catalogue}
+\label{app:rules}
+
+Every rule the studio can raise as a finding, generated from
+\route{GET /api/rules} on the running studio rather than transcribed. One table
+per family, families in descending size. A rule's \emph{means} is abridged to its
+opening claim where the full text runs long; the whole of it is on the wire, and
+\route{GET /api/rules?rule=<id>} answers one.
+
+{\scriptsize\input{data/rules}}
+
+\chapter{The scored terms}
+\label{app:terms}
+
+The \ScoredTermCount{} terms the evaluator scores, from
+\route{GET /api/rules/terms}. A hard term is an acceptance gate; a soft term
+scores distance from a band. \emph{Band from} says where the envelope came from:
+a measurement over the corpus, or an author's ruling.
+
+{\scriptsize\input{data/terms}}
+
+\chapter{The endpoint surface}
+\label{app:routes}
+
+\RouteCount{} operations over \RoutePathCount{} paths in \RouteAreaCount{} areas,
+generated from the studio's own OpenAPI document.
+
+{\scriptsize\input{data/routes}}

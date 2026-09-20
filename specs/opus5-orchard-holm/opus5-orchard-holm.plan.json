@@ -1,0 +1,180 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Orchard Holm"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "spawn-yard",
+   "role": "spawn",
+   "rect": [
+    -4,
+    -17,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "broadway",
+   "role": "piece",
+   "rect": [
+    -5,
+    -14,
+    4,
+    5
+   ]
+  },
+  {
+   "id": "market-bar",
+   "role": "piece",
+   "rect": [
+    -5,
+    -9,
+    9,
+    3
+   ]
+  },
+  {
+   "id": "front-west",
+   "role": "piece",
+   "rect": [
+    -5,
+    -6,
+    4,
+    1
+   ]
+  },
+  {
+   "id": "east-lane",
+   "role": "piece",
+   "rect": [
+    -1,
+    -14,
+    6,
+    3
+   ]
+  },
+  {
+   "id": "east-spur",
+   "role": "piece",
+   "rect": [
+    1,
+    -11,
+    3,
+    2
+   ]
+  },
+  {
+   "id": "front-east",
+   "role": "piece",
+   "rect": [
+    1,
+    -6,
+    3,
+    1
+   ]
+  },
+  {
+   "id": "wool-approach",
+   "role": "piece",
+   "rect": [
+    5,
+    -14,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "wool-room",
+   "role": "wool-room",
+   "rect": [
+    8,
+    -14,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "wool-flank",
+   "role": "piece",
+   "rect": [
+    8,
+    -11,
+    3,
+    5
+   ]
+  },
+  {
+   "id": "holm",
+   "role": "piece",
+   "rect": [
+    -3,
+    -2,
+    6,
+    4
+   ],
+   "surface": 11
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -5,
+    -5,
+    9,
+    3
+   ],
+   "holes": []
+  },
+  {
+   "id": "wool-bridge",
+   "rect": [
+    4,
+    -9,
+    4,
+    3
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-yard",
+    "at": [
+     7.5,
+     7.5
+    ],
+    "facing": "back"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-room",
+    "at": [
+     7.5,
+     7.5
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [
+  {
+   "a": "wool-approach",
+   "b": "east-lane"
+  }
+ ],
+ "boxes": []
+}

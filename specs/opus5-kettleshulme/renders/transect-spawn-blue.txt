@@ -1,0 +1,67 @@
+## spawn-blue (spawn) along x
+TRANSECT 27 stations from (-18, -83) to (8, -83), every 1
+  station        ground  surface  water  top  standing            step
+  (  -18,   -83)      12       12           12                      
+  (  -17,   -83)      12       12           12                      
+  (  -16,   -83)      12       12           12                      
+  (  -15,   -83)      12       12           12                      
+  (  -14,   -83)      12       12           12                      
+  (  -13,   -83)      12       12           12                      
+  (  -12,   -83)      12       12           12                      
+  (  -11,   -83)      12       12           12                      
+  (  -10,   -83)      12       12           22                      
+  (   -9,   -83)      12       12           23  spawn spawn-1#1     
+  (   -8,   -83)      12       12           24  spawn spawn-1#1     
+  (   -7,   -83)      12       12           25  spawn spawn-1#1     
+  (   -6,   -83)      12       12           26  spawn spawn-1#1     
+  (   -5,   -83)      12       12           26  spawn spawn-1#1     
+  (   -4,   -83)      12       12           25  spawn spawn-1#1     
+  (   -3,   -83)      12       12           24  spawn spawn-1#1     
+  (   -2,   -83)      12       12           23  spawn spawn-1#1     
+  (   -1,   -83)      12       12           22                      
+  (    0,   -83)      11       11           11                      -1
+  (    1,   -83)      11       11           11                      
+  (    2,   -83)      11       11           11                      
+  (    3,   -83)      11       11           11                      
+  (    4,   -83)      11       11           11                      
+  (    5,   -83)      12       12           12                      +1
+  (    6,   -83)      12       12           12                      
+  (    7,   -83)      12       12           12                      
+  (    8,   -83)      12       12           12                      
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (-9, -85)
+
+## spawn-blue (spawn) along z
+TRANSECT 29 stations from (-5, -95) to (-5, -67), every 1
+  station        ground  surface  water  top  standing            step
+  (   -5,   -95)      12       12           12                      
+  (   -5,   -94)      12       12           12                      
+  (   -5,   -93)      12       12           12                      
+  (   -5,   -92)      11       11           11                      -1
+  (   -5,   -91)      11       11           11                      
+  (   -5,   -90)      12       12           26                      +1
+  (   -5,   -89)      12       12           26  spawn spawn-1#1     
+  (   -5,   -88)      12       12           26  spawn spawn-1#1     
+  (   -5,   -87)      12       12           26  spawn spawn-1#1     
+  (   -5,   -86)      12       12           26  spawn spawn-1#1     
+  (   -5,   -85)      12       12           26  spawn spawn-1#1     
+  (   -5,   -84)      12       12           26  spawn spawn-1#1     
+  (   -5,   -83)      12       12           26  spawn spawn-1#1     
+  (   -5,   -82)      12       12           26  spawn spawn-1#1     
+  (   -5,   -81)      12       12           26  spawn spawn-1#1     
+  (   -5,   -80)      12       12           26  spawn spawn-1#1     
+  (   -5,   -79)      12       12           26                      
+  (   -5,   -78)      12       12           12                      
+  (   -5,   -77)      12       12           12                      
+  (   -5,   -76)      12       12           12                      
+  (   -5,   -75)      11       11           11                      -1
+  (   -5,   -74)      12       12           12  stroke packway#1    +1
+  (   -5,   -73)      12       12           12  stroke packway#1    
+  (   -5,   -72)      12       12           12  stroke packway#1    
+  (   -5,   -71)      12       12           12  stroke packway#1    
+  (   -5,   -70)      12       12           12                      
+  (   -5,   -69)      12       12           12                      
+  (   -5,   -68)      14       14           14                      scramble +2
+  (   -5,   -67)      14       14           14                      
+rises 3, falls 2, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-5, -68) | walked end to end
+beside: spawn spawn-1#1 at (-7, -89), stroke packway#1 at (-6, -74)

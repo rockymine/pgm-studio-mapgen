@@ -1,0 +1,59 @@
+GET …/walk — what each climb costs a player, foot to the arm's end. `blocks placed` is the price of
+the steps that cannot be walked.
+
+### piece-steps — five heights for eight blocks — the coarse plan, every seam a step of 2
+  from=-190,-73&to=-149,-39
+  ROUTE (-190, -73) -> (-149, -39) aim travel: 69 blocks, 4 placed, 0 drop(s), worst drop 0
+  rises 4, falls 0, worst step 2: scramble +2 at (-190, -54); scramble +2 at (-185, -45); scramble +2 at (-177, -45); scramble +2 at (-162, -45)
+### piece-treads — nine heights, one course a seam, the corner taking a step of its own
+  from=-116,-73&to=-75,-39
+  ROUTE (-116, -73) -> (-75, -39) aim travel: 69 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+### tilted — one polygon, an anchor at each of the L's six vertices
+  from=-42,-73&to=-1,-39
+  ROUTE (-42, -73) -> (-1, -39) aim travel: 69 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+### two-ramps — one tilted polygon a leg, the corner given to the stem's
+  from=32,-73&to=73,-39
+  ROUTE (32, -73) -> (73, -39) aim travel: 69 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+### ramps-and-landing — the same two, with the corner held level between them
+  from=106,-73&to=147,-39
+  ROUTE (106, -73) -> (147, -39) aim travel: 69 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+### plates — nine override plates over a lane left at its foot
+  from=-190,-7&to=-149,27
+  ROUTE (-190, -7) -> (-149, 27) aim travel: 69 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+### marks — two `area` marks, the stem, the corner and most of the arm left unpinned
+  from=-116,-7&to=-75,27
+  ROUTE (-116, -7) -> (-75, 27) aim travel: 69 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+### push — one push of 8 at the arm's end, `falloff` 22
+  from=-42,-7&to=-1,27
+  ROUTE (-42, -7) -> (-1, 27) aim travel: 69 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+### deck — the lane untouched, a made storey over its corner and two flights up to it
+  from=32,-7&to=73,27
+  ROUTE (32, -7) -> (73, 27) aim travel: 69 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+
+### deck, the three walks a storey with two flights has
+  along the lane, between the flights
+  from=73,27&to=32,-7
+  ROUTE (73, 27) -> (32, -7) aim travel: 69 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+  up the south flight onto the deck
+  from=72,22&to=32,27,17
+  ROUTE (72, 22) -> (32, 27) aim travel: 42 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+  up the north flight onto the deck
+  from=72,31&to=32,27,17
+  ROUTE (72, 31) -> (32, 27) aim travel: 42 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+
+A `to` that names a storey — `x,z,y` — is what asks about the deck rather than the lane under it.
+With no flight at all both of those answered `barrier +8`: the storey was a roof, not a route. With
+one flight across the whole arm the lane answered `barrier +8` instead, because a player running it
+the other way meets the flight's face. Two flights three wide on the arm's edges leave six blocks
+of lane open between them, and all three walks come back clean.

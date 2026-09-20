@@ -1,0 +1,4656 @@
+{
+ "authors": [
+  "Opus 5"
+ ],
+ "created": "2026-09-16",
+ "voidEnforcement": true,
+ "mapTheme": "moor",
+ "themes": {
+  "moor": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 13,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 5,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 14,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "handOver",
+          "bands": [
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "cell",
+             "seed": 62,
+             "cellSize": 9,
+             "jitter": 2,
+             "warp": 2,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 2
+              },
+              {
+               "kind": "solid",
+               "id": 2,
+               "data": 0
+              }
+             ],
+             "rise": 0
+            }
+           },
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            }
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 14,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "handOver",
+          "bands": [
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "cell",
+             "seed": 63,
+             "cellSize": 7,
+             "jitter": 2,
+             "warp": 2,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 3,
+               "data": 1
+              },
+              {
+               "kind": "solid",
+               "id": 13,
+               "data": 0
+              }
+             ],
+             "rise": 0
+            }
+           },
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 1,
+             "data": 0
+            }
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 62,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "handOver",
+          "bands": [
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "cell",
+             "seed": 64,
+             "cellSize": 6,
+             "jitter": 2,
+             "warp": 2,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 5
+              }
+             ],
+             "rise": 0
+            }
+           },
+           {
+            "thickness": 4,
+            "material": {
+             "kind": "solid",
+             "id": 1,
+             "data": 0
+            }
+           }
+          ]
+         },
+         "beyond": {
+          "kind": "solid",
+          "id": 1,
+          "data": 0
+         }
+        }
+       }
+      ]
+     }
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "thickness": 1,
+       "material": {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       }
+      },
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 13,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 5,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       }
+      }
+     ]
+    },
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 5
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "voronoi",
+    "seed": 61,
+    "cellSize": 11,
+    "rise": 4,
+    "bands": [
+     {
+      "depth": 1,
+      "material": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     },
+     {
+      "depth": 2,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     },
+     {
+      "depth": 1,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      }
+     }
+    ]
+   }
+  },
+  "works": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 48,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 2,
+    "material": {
+     "kind": "cell",
+     "seed": 65,
+     "cellSize": 5,
+     "jitter": 2,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     ],
+     "rise": 3
+    }
+   },
+   "wallEnabled": true,
+   "wall": {
+    "kind": "wallDiagonal",
+    "slope": 2,
+    "runs": [
+     {
+      "material": {
+       "kind": "solid",
+       "id": 45,
+       "data": 0
+      },
+      "width": 3
+     },
+     {
+      "material": {
+       "kind": "teamTint",
+       "blockId": 159,
+       "neutral": {
+        "kind": "solid",
+        "id": 159,
+        "data": 7
+       }
+      },
+      "width": 1
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      },
+      "width": 3
+     },
+     {
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      },
+      "width": 2
+     }
+    ]
+   },
+   "fill": {
+    "kind": "voronoi",
+    "seed": 61,
+    "cellSize": 11,
+    "rise": 4,
+    "bands": [
+     {
+      "depth": 1,
+      "material": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     },
+     {
+      "depth": 2,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     },
+     {
+      "depth": 1,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      }
+     }
+    ]
+   }
+  },
+  "crag": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "drop",
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "cell",
+     "seed": 66,
+     "cellSize": 6,
+     "jitter": 2,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      }
+     ],
+     "rise": 3
+    }
+   },
+   "wall": {
+    "kind": "layered",
+    "axis": "depth",
+    "stack": {
+     "ending": "handOver",
+     "bands": [
+      {
+       "thickness": 2,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       }
+      },
+      {
+       "thickness": 3,
+       "material": {
+        "kind": "solid",
+        "id": 1,
+        "data": 5
+       }
+      },
+      {
+       "thickness": 4,
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       }
+      }
+     ]
+    },
+    "beyond": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "fill": {
+    "kind": "voronoi",
+    "seed": 61,
+    "cellSize": 11,
+    "rise": 4,
+    "bands": [
+     {
+      "depth": 1,
+      "material": {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     },
+     {
+      "depth": 2,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 5
+      }
+     },
+     {
+      "depth": 1,
+      "material": {
+       "kind": "solid",
+       "id": 1,
+       "data": 0
+      }
+     }
+    ]
+   }
+  }
+ },
+ "biome": {
+  "kind": "solid",
+  "id": 32
+ },
+ "themeById": {
+  "frontline-t1-11": "moor",
+  "frontline-t1-11-2": "moor",
+  "frontline-t1-14": "works",
+  "outwork-13": "crag"
+ },
+ "shapePropsById": {
+  "frontline-t1-14": {
+   "relief_scope": "exclude"
+  },
+  "outwork-13": {
+   "relief_scope": "exclude"
+  }
+ },
+ "editShapes": {
+  "frontline-t1-11": [
+   {
+    "after": 8,
+    "x": 24,
+    "z": 61
+   },
+   {
+    "after": 9,
+    "x": 13,
+    "z": 63
+   },
+   {
+    "index": 0,
+    "x": -27,
+    "z": 73
+   },
+   {
+    "index": 15,
+    "x": -27,
+    "z": 87
+   }
+  ],
+  "frontline-t1-11-2": [
+   {
+    "after": 5,
+    "x": -8,
+    "z": 14
+   },
+   {
+    "after": 6,
+    "x": 1,
+    "z": 12
+   },
+   {
+    "after": 7,
+    "x": 11,
+    "z": 15
+   },
+   {
+    "index": 0,
+    "x": 18,
+    "z": 13
+   }
+  ],
+  "frontline-t1-14": [
+   {
+    "after": 0,
+    "x": -5,
+    "z": 35
+   },
+   {
+    "after": 1,
+    "x": -5,
+    "z": 39
+   },
+   {
+    "after": 2,
+    "x": 5,
+    "z": 39
+   },
+   {
+    "after": 3,
+    "x": 5,
+    "z": 35
+   },
+   {
+    "after": 6,
+    "x": 34,
+    "z": 45
+   },
+   {
+    "after": 7,
+    "x": 34,
+    "z": 41
+   },
+   {
+    "after": 8,
+    "x": 26,
+    "z": 41
+   },
+   {
+    "after": 9,
+    "x": 26,
+    "z": 45
+   }
+  ]
+ },
+ "bendShapes": {
+  "outwork-13": {
+   "k": 0.22,
+   "wander": 3,
+   "step": 6,
+   "seed": 5,
+   "side": "in"
+  }
+ },
+ "addShapes": [
+  {
+   "id": "dyke",
+   "type": "polyline",
+   "operation": "add",
+   "override": true,
+   "keepClear": true,
+   "group": "team",
+   "vertices": [
+    [
+     6,
+     52
+    ],
+    [
+     16,
+     56
+    ],
+    [
+     26,
+     55
+    ],
+    [
+     34,
+     60
+    ]
+   ],
+   "radius": 1.2,
+   "stroke_edge": "rough",
+   "stroke_seed": 7,
+   "floor": 0,
+   "base_height": 2,
+   "skirt": 0,
+   "height_mode": "raise",
+   "material": {
+    "kind": "cell",
+    "seed": 72,
+    "cellSize": 4,
+    "jitter": 2,
+    "warp": 2,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 0
+     }
+    ],
+    "rise": 2
+   }
+  },
+  {
+   "id": "sally-stair",
+   "type": "polygon",
+   "operation": "add",
+   "override": true,
+   "keepClear": true,
+   "group": "team",
+   "floor": 0,
+   "base_height": 14,
+   "material": {
+    "kind": "cell",
+    "seed": 68,
+    "cellSize": 4,
+    "jitter": 2,
+    "warp": 2,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     }
+    ],
+    "rise": 2
+   },
+   "height_mode": "level",
+   "skirt": 0,
+   "vertices": [
+    [
+     -5,
+     31
+    ],
+    [
+     5,
+     31
+    ],
+    [
+     5,
+     39
+    ],
+    [
+     -5,
+     39
+    ]
+   ],
+   "anchor_heights": [
+    11,
+    11,
+    14,
+    14
+   ]
+  },
+  {
+   "id": "terrace-ramp",
+   "type": "polygon",
+   "operation": "add",
+   "override": true,
+   "keepClear": true,
+   "group": "team",
+   "floor": 0,
+   "base_height": 14,
+   "material": {
+    "kind": "cell",
+    "seed": 68,
+    "cellSize": 4,
+    "jitter": 2,
+    "warp": 2,
+    "palette": [
+     {
+      "kind": "solid",
+      "id": 4,
+      "data": 0
+     },
+     {
+      "kind": "solid",
+      "id": 1,
+      "data": 5
+     }
+    ],
+    "rise": 2
+   },
+   "height_mode": "level",
+   "skirt": 0,
+   "vertices": [
+    [
+     26,
+     49
+    ],
+    [
+     34,
+     49
+    ],
+    [
+     34,
+     41
+    ],
+    [
+     26,
+     41
+    ]
+   ],
+   "anchor_heights": [
+    11,
+    11,
+    14,
+    14
+   ]
+  }
+ ],
+ "addLayers": [
+  {
+   "id": "rampart-west",
+   "name": "Rampart rampart-west",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "rectangle",
+     "min_x": -15,
+     "min_z": 35,
+     "max_x": -6,
+     "max_z": 37,
+     "floor": 14,
+     "base_height": 4,
+     "id": "rampart-west-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -15,
+     "min_z": 35,
+     "max_x": -12,
+     "max_z": 36,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-west-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -15,
+     "min_z": 36,
+     "max_x": -12,
+     "max_z": 37,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-west-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -10,
+     "min_z": 35,
+     "max_x": -7,
+     "max_z": 36,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-west-3",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -10,
+     "min_z": 36,
+     "max_x": -7,
+     "max_z": 37,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-west-4",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "rampart-west-body",
+     "name": "Rampart rampart-west",
+     "mirrors": true,
+     "shapeIds": [
+      "rampart-west-0",
+      "rampart-west-1",
+      "rampart-west-2",
+      "rampart-west-3",
+      "rampart-west-4"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "rampart"
+  },
+  {
+   "id": "rampart-east",
+   "name": "Rampart rampart-east",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "rectangle",
+     "min_x": 6,
+     "min_z": 35,
+     "max_x": 35,
+     "max_z": 37,
+     "floor": 14,
+     "base_height": 4,
+     "id": "rampart-east-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 6,
+     "min_z": 35,
+     "max_x": 9,
+     "max_z": 36,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-east-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 6,
+     "min_z": 36,
+     "max_x": 9,
+     "max_z": 37,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-east-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 11,
+     "min_z": 35,
+     "max_x": 14,
+     "max_z": 36,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-east-3",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 11,
+     "min_z": 36,
+     "max_x": 14,
+     "max_z": 37,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-east-4",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 16,
+     "min_z": 35,
+     "max_x": 19,
+     "max_z": 36,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-east-5",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 16,
+     "min_z": 36,
+     "max_x": 19,
+     "max_z": 37,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-east-6",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 21,
+     "min_z": 35,
+     "max_x": 24,
+     "max_z": 36,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-east-7",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 21,
+     "min_z": 36,
+     "max_x": 24,
+     "max_z": 37,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-east-8",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 26,
+     "min_z": 35,
+     "max_x": 29,
+     "max_z": 36,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-east-9",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 26,
+     "min_z": 36,
+     "max_x": 29,
+     "max_z": 37,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-east-10",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 31,
+     "min_z": 35,
+     "max_x": 34,
+     "max_z": 36,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-east-11",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 31,
+     "min_z": 36,
+     "max_x": 34,
+     "max_z": 37,
+     "floor": 14,
+     "base_height": 6,
+     "id": "rampart-east-12",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "rampart-east-body",
+     "name": "Rampart rampart-east",
+     "mirrors": true,
+     "shapeIds": [
+      "rampart-east-0",
+      "rampart-east-1",
+      "rampart-east-2",
+      "rampart-east-3",
+      "rampart-east-4",
+      "rampart-east-5",
+      "rampart-east-6",
+      "rampart-east-7",
+      "rampart-east-8",
+      "rampart-east-9",
+      "rampart-east-10",
+      "rampart-east-11",
+      "rampart-east-12"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "rampart"
+  },
+  {
+   "id": "gate-tower-w",
+   "name": "West gate tower",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -6.0,
+       41.0
+      ],
+      [
+       -6.014445819983409,
+       41.29405142098868
+      ],
+      [
+       -6.057644158790309,
+       41.585270966048384
+      ],
+      [
+       -6.129178992803373,
+       41.870854031763386
+      ],
+      [
+       -6.22836140246614,
+       42.14805029709527
+      ],
+      [
+       -6.354236206954935,
+       42.41419021047799
+      ],
+      [
+       -6.505591163092364,
+       42.666710699058804
+      ],
+      [
+       -6.680968639911789,
+       42.903179852490936
+      ],
+      [
+       -6.878679656440357,
+       43.121320343559645
+      ],
+      [
+       -7.096820147509064,
+       43.31903136008821
+      ],
+      [
+       -7.333289300941193,
+       43.49440883690764
+      ],
+      [
+       -7.585809789522006,
+       43.64576379304506
+      ],
+      [
+       -7.85194970290473,
+       43.77163859753386
+      ],
+      [
+       -8.129145968236614,
+       43.870821007196625
+      ],
+      [
+       -8.414729033951614,
+       43.94235584120969
+      ],
+      [
+       -8.705948579011318,
+       43.98555418001659
+      ],
+      [
+       -9.0,
+       44.0
+      ],
+      [
+       -9.294051420988682,
+       43.98555418001659
+      ],
+      [
+       -9.585270966048384,
+       43.94235584120969
+      ],
+      [
+       -9.870854031763386,
+       43.870821007196625
+      ],
+      [
+       -10.148050297095269,
+       43.77163859753386
+      ],
+      [
+       -10.414190210477994,
+       43.64576379304506
+      ],
+      [
+       -10.666710699058806,
+       43.49440883690764
+      ],
+      [
+       -10.903179852490936,
+       43.31903136008821
+      ],
+      [
+       -11.121320343559642,
+       43.121320343559645
+      ],
+      [
+       -11.31903136008821,
+       42.903179852490936
+      ],
+      [
+       -11.494408836907636,
+       42.666710699058804
+      ],
+      [
+       -11.645763793045065,
+       42.41419021047799
+      ],
+      [
+       -11.77163859753386,
+       42.14805029709527
+      ],
+      [
+       -11.870821007196627,
+       41.870854031763386
+      ],
+      [
+       -11.942355841209691,
+       41.585270966048384
+      ],
+      [
+       -11.98555418001659,
+       41.29405142098868
+      ],
+      [
+       -12.0,
+       41.0
+      ],
+      [
+       -11.98555418001659,
+       40.70594857901132
+      ],
+      [
+       -11.942355841209691,
+       40.414729033951616
+      ],
+      [
+       -11.870821007196627,
+       40.129145968236614
+      ],
+      [
+       -11.77163859753386,
+       39.85194970290473
+      ],
+      [
+       -11.645763793045065,
+       39.58580978952201
+      ],
+      [
+       -11.494408836907636,
+       39.333289300941196
+      ],
+      [
+       -11.31903136008821,
+       39.096820147509064
+      ],
+      [
+       -11.121320343559642,
+       38.878679656440355
+      ],
+      [
+       -10.903179852490938,
+       38.68096863991179
+      ],
+      [
+       -10.666710699058807,
+       38.50559116309236
+      ],
+      [
+       -10.414190210477994,
+       38.35423620695494
+      ],
+      [
+       -10.14805029709527,
+       38.22836140246614
+      ],
+      [
+       -9.870854031763388,
+       38.129178992803375
+      ],
+      [
+       -9.585270966048386,
+       38.05764415879031
+      ],
+      [
+       -9.294051420988682,
+       38.01444581998341
+      ],
+      [
+       -9.0,
+       38.0
+      ],
+      [
+       -8.70594857901132,
+       38.01444581998341
+      ],
+      [
+       -8.414729033951614,
+       38.05764415879031
+      ],
+      [
+       -8.129145968236614,
+       38.129178992803375
+      ],
+      [
+       -7.85194970290473,
+       38.22836140246614
+      ],
+      [
+       -7.585809789522007,
+       38.35423620695494
+      ],
+      [
+       -7.333289300941194,
+       38.50559116309236
+      ],
+      [
+       -7.096820147509064,
+       38.68096863991179
+      ],
+      [
+       -6.878679656440358,
+       38.878679656440355
+      ],
+      [
+       -6.68096863991179,
+       39.096820147509064
+      ],
+      [
+       -6.505591163092364,
+       39.333289300941196
+      ],
+      [
+       -6.354236206954935,
+       39.585809789522
+      ],
+      [
+       -6.22836140246614,
+       39.851949702904726
+      ],
+      [
+       -6.129178992803373,
+       40.129145968236614
+      ],
+      [
+       -6.057644158790309,
+       40.414729033951616
+      ],
+      [
+       -6.014445819983409,
+       40.70594857901132
+      ],
+      [
+       -6.0,
+       41.0
+      ],
+      [
+       -7.009630546655606,
+       40.80396571934088
+      ],
+      [
+       -7.038429439193539,
+       40.609819355967744
+      ],
+      [
+       -7.086119328535583,
+       40.419430645491076
+      ],
+      [
+       -7.152240934977427,
+       40.23463313526982
+      ],
+      [
+       -7.23615747130329,
+       40.057206526348004
+      ],
+      [
+       -7.337060775394909,
+       39.8888595339608
+      ],
+      [
+       -7.453979093274526,
+       39.73121343167271
+      ],
+      [
+       -7.585786437626905,
+       39.58578643762691
+      ],
+      [
+       -7.731213431672709,
+       39.453979093274526
+      ],
+      [
+       -7.8888595339607965,
+       39.33706077539491
+      ],
+      [
+       -8.057206526348004,
+       39.23615747130329
+      ],
+      [
+       -8.23463313526982,
+       39.15224093497743
+      ],
+      [
+       -8.419430645491076,
+       39.08611932853558
+      ],
+      [
+       -8.609819355967744,
+       39.038429439193536
+      ],
+      [
+       -8.80396571934088,
+       39.00963054665561
+      ],
+      [
+       -9.0,
+       39.0
+      ],
+      [
+       -9.196034280659122,
+       39.00963054665561
+      ],
+      [
+       -9.390180644032258,
+       39.03842943919354
+      ],
+      [
+       -9.580569354508924,
+       39.08611932853558
+      ],
+      [
+       -9.765366864730181,
+       39.15224093497743
+      ],
+      [
+       -9.942793473651996,
+       39.23615747130329
+      ],
+      [
+       -10.111140466039204,
+       39.33706077539491
+      ],
+      [
+       -10.268786568327291,
+       39.453979093274526
+      ],
+      [
+       -10.414213562373096,
+       39.58578643762691
+      ],
+      [
+       -10.546020906725474,
+       39.73121343167271
+      ],
+      [
+       -10.662939224605092,
+       39.8888595339608
+      ],
+      [
+       -10.76384252869671,
+       40.057206526348004
+      ],
+      [
+       -10.847759065022574,
+       40.23463313526982
+      ],
+      [
+       -10.913880671464417,
+       40.419430645491076
+      ],
+      [
+       -10.96157056080646,
+       40.609819355967744
+      ],
+      [
+       -10.990369453344394,
+       40.80396571934088
+      ],
+      [
+       -11.0,
+       41.0
+      ],
+      [
+       -10.990369453344394,
+       41.19603428065912
+      ],
+      [
+       -10.96157056080646,
+       41.390180644032256
+      ],
+      [
+       -10.913880671464417,
+       41.580569354508924
+      ],
+      [
+       -10.847759065022574,
+       41.76536686473018
+      ],
+      [
+       -10.76384252869671,
+       41.942793473651996
+      ],
+      [
+       -10.66293922460509,
+       42.1111404660392
+      ],
+      [
+       -10.546020906725474,
+       42.26878656832729
+      ],
+      [
+       -10.414213562373096,
+       42.41421356237309
+      ],
+      [
+       -10.268786568327291,
+       42.546020906725474
+      ],
+      [
+       -10.111140466039204,
+       42.66293922460509
+      ],
+      [
+       -9.942793473651996,
+       42.76384252869671
+      ],
+      [
+       -9.76536686473018,
+       42.84775906502257
+      ],
+      [
+       -9.580569354508924,
+       42.91388067146442
+      ],
+      [
+       -9.390180644032256,
+       42.961570560806464
+      ],
+      [
+       -9.196034280659122,
+       42.99036945334439
+      ],
+      [
+       -9.0,
+       43.0
+      ],
+      [
+       -8.803965719340878,
+       42.99036945334439
+      ],
+      [
+       -8.609819355967744,
+       42.961570560806464
+      ],
+      [
+       -8.419430645491076,
+       42.91388067146442
+      ],
+      [
+       -8.23463313526982,
+       42.84775906502257
+      ],
+      [
+       -8.057206526348004,
+       42.76384252869671
+      ],
+      [
+       -7.888859533960796,
+       42.66293922460509
+      ],
+      [
+       -7.731213431672709,
+       42.546020906725474
+      ],
+      [
+       -7.585786437626905,
+       42.41421356237309
+      ],
+      [
+       -7.453979093274526,
+       42.26878656832729
+      ],
+      [
+       -7.337060775394909,
+       42.1111404660392
+      ],
+      [
+       -7.23615747130329,
+       41.942793473651996
+      ],
+      [
+       -7.152240934977426,
+       41.76536686473018
+      ],
+      [
+       -7.086119328535583,
+       41.580569354508924
+      ],
+      [
+       -7.038429439193539,
+       41.390180644032256
+      ],
+      [
+       -7.009630546655606,
+       41.19603428065912
+      ],
+      [
+       -7.0,
+       41.0
+      ],
+      [
+       -7.009630546655606,
+       40.80396571934088
+      ]
+     ],
+     "floor": 14,
+     "base_height": 12,
+     "id": "gate-tower-w-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "gate-tower-w-body",
+     "name": "West gate tower",
+     "mirrors": true,
+     "shapeIds": [
+      "gate-tower-w-0"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "rampart"
+  },
+  {
+   "id": "gate-tower-w-crown",
+   "name": "West gate tower crown",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -5.6,
+       41.0
+      ],
+      [
+       -5.609507089583987,
+       41.254082318193845
+      ],
+      [
+       -5.637975190834563,
+       41.506743704998996
+      ],
+      [
+       -5.6852450985818,
+       41.75657117545147
+      ],
+      [
+       -5.751052460327122,
+       42.002167592997075
+      ],
+      [
+       -5.835029254609706,
+       42.24215948284574
+      ],
+      [
+       -5.936705849131775,
+       42.4752047129997
+      ],
+      [
+       -7.198062264195162,
+       41.867767478235116
+      ],
+      [
+       -7.138252502711591,
+       41.73068204873279
+      ],
+      [
+       -7.088854388427718,
+       41.58951034882181
+      ],
+      [
+       -7.050144175636353,
+       41.44504186791263
+      ],
+      [
+       -7.022338347549743,
+       41.29808453235235
+      ],
+      [
+       -7.00559240563764,
+       41.14946018717285
+      ],
+      [
+       -7.0,
+       41.0
+      ]
+     ],
+     "floor": 26,
+     "base_height": 3,
+     "id": "gate-tower-w-crown-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -6.880134673680306,
+       43.6582270403913
+      ],
+      [
+       -7.084711802583685,
+       43.80921183267438
+      ],
+      [
+       -7.3,
+       43.94448637286709
+      ],
+      [
+       -7.524795287000302,
+       44.063294150868224
+      ],
+      [
+       -7.757840517154257,
+       44.16497074539029
+      ],
+      [
+       -7.997832407002925,
+       44.248947539672876
+      ],
+      [
+       -8.24342882454853,
+       44.3147549014182
+      ],
+      [
+       -8.554958132087371,
+       42.949855824363645
+      ],
+      [
+       -8.41048965117819,
+       42.91114561157228
+      ],
+      [
+       -8.26931795126721,
+       42.861747497288405
+      ],
+      [
+       -8.132232521764884,
+       42.80193773580484
+      ],
+      [
+       -8.0,
+       42.732050807568875
+      ],
+      [
+       -7.873359883872756,
+       42.65247754863199
+      ],
+      [
+       -7.753020396282533,
+       42.56366296493606
+      ]
+     ],
+     "floor": 26,
+     "base_height": 3,
+     "id": "gate-tower-w-crown-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -9.75657117545147,
+       44.3147549014182
+      ],
+      [
+       -10.002167592997074,
+       44.248947539672876
+      ],
+      [
+       -10.242159482845743,
+       44.16497074539029
+      ],
+      [
+       -10.475204712999698,
+       44.063294150868224
+      ],
+      [
+       -10.7,
+       43.94448637286709
+      ],
+      [
+       -10.915288197416315,
+       43.80921183267438
+      ],
+      [
+       -11.119865326319694,
+       43.6582270403913
+      ],
+      [
+       -10.246979603717467,
+       42.56366296493606
+      ],
+      [
+       -10.126640116127245,
+       42.65247754863199
+      ],
+      [
+       -10.0,
+       42.732050807568875
+      ],
+      [
+       -9.867767478235116,
+       42.80193773580484
+      ],
+      [
+       -9.73068204873279,
+       42.861747497288405
+      ],
+      [
+       -9.589510348821808,
+       42.91114561157228
+      ],
+      [
+       -9.445041867912629,
+       42.949855824363645
+      ]
+     ],
+     "floor": 26,
+     "base_height": 3,
+     "id": "gate-tower-w-crown-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -12.063294150868224,
+       42.4752047129997
+      ],
+      [
+       -12.164970745390294,
+       42.24215948284574
+      ],
+      [
+       -12.248947539672878,
+       42.002167592997075
+      ],
+      [
+       -12.314754901418201,
+       41.75657117545147
+      ],
+      [
+       -12.362024809165437,
+       41.506743704998996
+      ],
+      [
+       -12.390492910416013,
+       41.254082318193845
+      ],
+      [
+       -12.4,
+       41.0
+      ],
+      [
+       -11.0,
+       41.0
+      ],
+      [
+       -10.994407594362361,
+       41.14946018717285
+      ],
+      [
+       -10.977661652450257,
+       41.29808453235235
+      ],
+      [
+       -10.949855824363647,
+       41.44504186791263
+      ],
+      [
+       -10.911145611572282,
+       41.58951034882181
+      ],
+      [
+       -10.861747497288409,
+       41.73068204873279
+      ],
+      [
+       -10.801937735804838,
+       41.867767478235116
+      ]
+     ],
+     "floor": 26,
+     "base_height": 3,
+     "id": "gate-tower-w-crown-3",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -12.063294150868225,
+       39.5247952870003
+      ],
+      [
+       -11.944486372867091,
+       39.300000000000004
+      ],
+      [
+       -11.809211832674382,
+       39.08471180258368
+      ],
+      [
+       -11.658227040391301,
+       38.88013467368031
+      ],
+      [
+       -11.49237636422141,
+       38.68741269157888
+      ],
+      [
+       -11.312587308421126,
+       38.50762363577859
+      ],
+      [
+       -11.119865326319694,
+       38.3417729596087
+      ],
+      [
+       -10.246979603717467,
+       39.43633703506394
+      ],
+      [
+       -10.36034547554184,
+       39.53389625634035
+      ],
+      [
+       -10.466103743659653,
+       39.63965452445816
+      ],
+      [
+       -10.56366296493606,
+       39.75302039628254
+      ],
+      [
+       -10.652477548631989,
+       39.87335988387276
+      ],
+      [
+       -10.732050807568879,
+       40.0
+      ],
+      [
+       -10.801937735804838,
+       40.132232521764884
+      ]
+     ],
+     "floor": 26,
+     "base_height": 3,
+     "id": "gate-tower-w-crown-4",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -9.75657117545147,
+       37.6852450985818
+      ],
+      [
+       -9.506743704998993,
+       37.63797519083457
+      ],
+      [
+       -9.254082318193845,
+       37.609507089583985
+      ],
+      [
+       -9.0,
+       37.6
+      ],
+      [
+       -8.745917681806157,
+       37.609507089583985
+      ],
+      [
+       -8.493256295001009,
+       37.63797519083456
+      ],
+      [
+       -8.243428824548532,
+       37.6852450985818
+      ],
+      [
+       -8.554958132087371,
+       39.050144175636355
+      ],
+      [
+       -8.701915467647652,
+       39.02233834754974
+      ],
+      [
+       -8.85053981282715,
+       39.00559240563764
+      ],
+      [
+       -9.0,
+       39.0
+      ],
+      [
+       -9.14946018717285,
+       39.00559240563764
+      ],
+      [
+       -9.298084532352348,
+       39.02233834754974
+      ],
+      [
+       -9.445041867912629,
+       39.050144175636355
+      ]
+     ],
+     "floor": 26,
+     "base_height": 3,
+     "id": "gate-tower-w-crown-5",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       -6.880134673680306,
+       38.3417729596087
+      ],
+      [
+       -6.687412691578874,
+       38.50762363577859
+      ],
+      [
+       -6.507623635778591,
+       38.68741269157887
+      ],
+      [
+       -6.341772959608699,
+       38.8801346736803
+      ],
+      [
+       -6.190788167325618,
+       39.08471180258368
+      ],
+      [
+       -6.0555136271329095,
+       39.3
+      ],
+      [
+       -5.9367058491317755,
+       39.5247952870003
+      ],
+      [
+       -7.198062264195162,
+       40.132232521764884
+      ],
+      [
+       -7.267949192431123,
+       40.0
+      ],
+      [
+       -7.34752245136801,
+       39.87335988387276
+      ],
+      [
+       -7.436337035063941,
+       39.75302039628253
+      ],
+      [
+       -7.533896256340348,
+       39.63965452445816
+      ],
+      [
+       -7.639654524458161,
+       39.53389625634035
+      ],
+      [
+       -7.753020396282533,
+       39.43633703506394
+      ]
+     ],
+     "floor": 26,
+     "base_height": 3,
+     "id": "gate-tower-w-crown-6",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "gate-tower-w-crown-body",
+     "name": "West gate tower crown",
+     "mirrors": true,
+     "shapeIds": [
+      "gate-tower-w-crown-0",
+      "gate-tower-w-crown-1",
+      "gate-tower-w-crown-2",
+      "gate-tower-w-crown-3",
+      "gate-tower-w-crown-4",
+      "gate-tower-w-crown-5",
+      "gate-tower-w-crown-6"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "rampart"
+  },
+  {
+   "id": "gate-tower-e",
+   "name": "East gate tower",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       12.0,
+       41.0
+      ],
+      [
+       11.98555418001659,
+       41.29405142098868
+      ],
+      [
+       11.942355841209691,
+       41.585270966048384
+      ],
+      [
+       11.870821007196627,
+       41.870854031763386
+      ],
+      [
+       11.77163859753386,
+       42.14805029709527
+      ],
+      [
+       11.645763793045065,
+       42.41419021047799
+      ],
+      [
+       11.494408836907635,
+       42.666710699058804
+      ],
+      [
+       11.31903136008821,
+       42.903179852490936
+      ],
+      [
+       11.121320343559642,
+       43.121320343559645
+      ],
+      [
+       10.903179852490936,
+       43.31903136008821
+      ],
+      [
+       10.666710699058807,
+       43.49440883690764
+      ],
+      [
+       10.414190210477994,
+       43.64576379304506
+      ],
+      [
+       10.148050297095269,
+       43.77163859753386
+      ],
+      [
+       9.870854031763386,
+       43.870821007196625
+      ],
+      [
+       9.585270966048386,
+       43.94235584120969
+      ],
+      [
+       9.294051420988682,
+       43.98555418001659
+      ],
+      [
+       9.0,
+       44.0
+      ],
+      [
+       8.705948579011318,
+       43.98555418001659
+      ],
+      [
+       8.414729033951616,
+       43.94235584120969
+      ],
+      [
+       8.129145968236614,
+       43.870821007196625
+      ],
+      [
+       7.851949702904731,
+       43.77163859753386
+      ],
+      [
+       7.585809789522007,
+       43.64576379304506
+      ],
+      [
+       7.333289300941194,
+       43.49440883690764
+      ],
+      [
+       7.096820147509064,
+       43.31903136008821
+      ],
+      [
+       6.878679656440358,
+       43.121320343559645
+      ],
+      [
+       6.680968639911789,
+       42.903179852490936
+      ],
+      [
+       6.5055911630923635,
+       42.666710699058804
+      ],
+      [
+       6.354236206954935,
+       42.41419021047799
+      ],
+      [
+       6.22836140246614,
+       42.14805029709527
+      ],
+      [
+       6.129178992803373,
+       41.870854031763386
+      ],
+      [
+       6.057644158790309,
+       41.585270966048384
+      ],
+      [
+       6.014445819983409,
+       41.29405142098868
+      ],
+      [
+       6.0,
+       41.0
+      ],
+      [
+       6.014445819983409,
+       40.70594857901132
+      ],
+      [
+       6.057644158790309,
+       40.414729033951616
+      ],
+      [
+       6.129178992803373,
+       40.129145968236614
+      ],
+      [
+       6.22836140246614,
+       39.85194970290473
+      ],
+      [
+       6.354236206954935,
+       39.58580978952201
+      ],
+      [
+       6.5055911630923635,
+       39.333289300941196
+      ],
+      [
+       6.6809686399117885,
+       39.096820147509064
+      ],
+      [
+       6.878679656440357,
+       38.878679656440355
+      ],
+      [
+       7.096820147509062,
+       38.68096863991179
+      ],
+      [
+       7.3332893009411935,
+       38.50559116309236
+      ],
+      [
+       7.585809789522006,
+       38.35423620695494
+      ],
+      [
+       7.851949702904729,
+       38.22836140246614
+      ],
+      [
+       8.129145968236612,
+       38.129178992803375
+      ],
+      [
+       8.414729033951614,
+       38.05764415879031
+      ],
+      [
+       8.705948579011318,
+       38.01444581998341
+      ],
+      [
+       9.0,
+       38.0
+      ],
+      [
+       9.29405142098868,
+       38.01444581998341
+      ],
+      [
+       9.585270966048386,
+       38.05764415879031
+      ],
+      [
+       9.870854031763386,
+       38.129178992803375
+      ],
+      [
+       10.14805029709527,
+       38.22836140246614
+      ],
+      [
+       10.414190210477994,
+       38.35423620695494
+      ],
+      [
+       10.666710699058806,
+       38.50559116309236
+      ],
+      [
+       10.903179852490936,
+       38.68096863991179
+      ],
+      [
+       11.121320343559642,
+       38.878679656440355
+      ],
+      [
+       11.31903136008821,
+       39.096820147509064
+      ],
+      [
+       11.494408836907635,
+       39.333289300941196
+      ],
+      [
+       11.645763793045065,
+       39.585809789522
+      ],
+      [
+       11.77163859753386,
+       39.851949702904726
+      ],
+      [
+       11.870821007196627,
+       40.129145968236614
+      ],
+      [
+       11.942355841209691,
+       40.414729033951616
+      ],
+      [
+       11.98555418001659,
+       40.70594857901132
+      ],
+      [
+       12.0,
+       41.0
+      ],
+      [
+       10.990369453344394,
+       40.80396571934088
+      ],
+      [
+       10.96157056080646,
+       40.609819355967744
+      ],
+      [
+       10.913880671464417,
+       40.419430645491076
+      ],
+      [
+       10.847759065022572,
+       40.23463313526982
+      ],
+      [
+       10.76384252869671,
+       40.057206526348004
+      ],
+      [
+       10.66293922460509,
+       39.8888595339608
+      ],
+      [
+       10.546020906725474,
+       39.73121343167271
+      ],
+      [
+       10.414213562373094,
+       39.58578643762691
+      ],
+      [
+       10.268786568327291,
+       39.453979093274526
+      ],
+      [
+       10.111140466039204,
+       39.33706077539491
+      ],
+      [
+       9.942793473651996,
+       39.23615747130329
+      ],
+      [
+       9.76536686473018,
+       39.15224093497743
+      ],
+      [
+       9.580569354508924,
+       39.08611932853558
+      ],
+      [
+       9.390180644032256,
+       39.038429439193536
+      ],
+      [
+       9.19603428065912,
+       39.00963054665561
+      ],
+      [
+       9.0,
+       39.0
+      ],
+      [
+       8.803965719340878,
+       39.00963054665561
+      ],
+      [
+       8.609819355967742,
+       39.03842943919354
+      ],
+      [
+       8.419430645491076,
+       39.08611932853558
+      ],
+      [
+       8.234633135269819,
+       39.15224093497743
+      ],
+      [
+       8.057206526348004,
+       39.23615747130329
+      ],
+      [
+       7.888859533960796,
+       39.33706077539491
+      ],
+      [
+       7.731213431672709,
+       39.453979093274526
+      ],
+      [
+       7.585786437626904,
+       39.58578643762691
+      ],
+      [
+       7.453979093274526,
+       39.73121343167271
+      ],
+      [
+       7.337060775394909,
+       39.8888595339608
+      ],
+      [
+       7.23615747130329,
+       40.057206526348004
+      ],
+      [
+       7.152240934977426,
+       40.23463313526982
+      ],
+      [
+       7.086119328535582,
+       40.419430645491076
+      ],
+      [
+       7.038429439193539,
+       40.609819355967744
+      ],
+      [
+       7.009630546655606,
+       40.80396571934088
+      ],
+      [
+       7.0,
+       41.0
+      ],
+      [
+       7.009630546655607,
+       41.19603428065912
+      ],
+      [
+       7.038429439193539,
+       41.390180644032256
+      ],
+      [
+       7.086119328535583,
+       41.580569354508924
+      ],
+      [
+       7.152240934977426,
+       41.76536686473018
+      ],
+      [
+       7.23615747130329,
+       41.942793473651996
+      ],
+      [
+       7.337060775394909,
+       42.1111404660392
+      ],
+      [
+       7.453979093274526,
+       42.26878656832729
+      ],
+      [
+       7.585786437626905,
+       42.41421356237309
+      ],
+      [
+       7.7312134316727095,
+       42.546020906725474
+      ],
+      [
+       7.888859533960796,
+       42.66293922460509
+      ],
+      [
+       8.057206526348004,
+       42.76384252869671
+      ],
+      [
+       8.23463313526982,
+       42.84775906502257
+      ],
+      [
+       8.419430645491076,
+       42.91388067146442
+      ],
+      [
+       8.609819355967744,
+       42.961570560806464
+      ],
+      [
+       8.803965719340878,
+       42.99036945334439
+      ],
+      [
+       9.0,
+       43.0
+      ],
+      [
+       9.196034280659122,
+       42.99036945334439
+      ],
+      [
+       9.390180644032256,
+       42.961570560806464
+      ],
+      [
+       9.580569354508924,
+       42.91388067146442
+      ],
+      [
+       9.76536686473018,
+       42.84775906502257
+      ],
+      [
+       9.942793473651996,
+       42.76384252869671
+      ],
+      [
+       10.111140466039204,
+       42.66293922460509
+      ],
+      [
+       10.268786568327291,
+       42.546020906725474
+      ],
+      [
+       10.414213562373096,
+       42.41421356237309
+      ],
+      [
+       10.546020906725474,
+       42.26878656832729
+      ],
+      [
+       10.66293922460509,
+       42.1111404660392
+      ],
+      [
+       10.76384252869671,
+       41.942793473651996
+      ],
+      [
+       10.847759065022574,
+       41.76536686473018
+      ],
+      [
+       10.913880671464417,
+       41.580569354508924
+      ],
+      [
+       10.96157056080646,
+       41.390180644032256
+      ],
+      [
+       10.990369453344394,
+       41.19603428065912
+      ],
+      [
+       11.0,
+       41.0
+      ],
+      [
+       10.990369453344394,
+       40.80396571934088
+      ]
+     ],
+     "floor": 14,
+     "base_height": 12,
+     "id": "gate-tower-e-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "gate-tower-e-body",
+     "name": "East gate tower",
+     "mirrors": true,
+     "shapeIds": [
+      "gate-tower-e-0"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "rampart"
+  },
+  {
+   "id": "gate-tower-e-crown",
+   "name": "East gate tower crown",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       12.4,
+       41.0
+      ],
+      [
+       12.390492910416013,
+       41.254082318193845
+      ],
+      [
+       12.362024809165437,
+       41.506743704998996
+      ],
+      [
+       12.314754901418201,
+       41.75657117545147
+      ],
+      [
+       12.248947539672878,
+       42.002167592997075
+      ],
+      [
+       12.164970745390294,
+       42.24215948284574
+      ],
+      [
+       12.063294150868225,
+       42.4752047129997
+      ],
+      [
+       10.801937735804838,
+       41.867767478235116
+      ],
+      [
+       10.861747497288409,
+       41.73068204873279
+      ],
+      [
+       10.911145611572282,
+       41.58951034882181
+      ],
+      [
+       10.949855824363647,
+       41.44504186791263
+      ],
+      [
+       10.977661652450257,
+       41.29808453235235
+      ],
+      [
+       10.994407594362361,
+       41.14946018717285
+      ],
+      [
+       11.0,
+       41.0
+      ]
+     ],
+     "floor": 26,
+     "base_height": 3,
+     "id": "gate-tower-e-crown-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       11.119865326319694,
+       43.6582270403913
+      ],
+      [
+       10.915288197416315,
+       43.80921183267438
+      ],
+      [
+       10.700000000000001,
+       43.94448637286709
+      ],
+      [
+       10.475204712999698,
+       44.063294150868224
+      ],
+      [
+       10.242159482845743,
+       44.16497074539029
+      ],
+      [
+       10.002167592997075,
+       44.248947539672876
+      ],
+      [
+       9.75657117545147,
+       44.3147549014182
+      ],
+      [
+       9.445041867912629,
+       42.949855824363645
+      ],
+      [
+       9.58951034882181,
+       42.91114561157228
+      ],
+      [
+       9.73068204873279,
+       42.861747497288405
+      ],
+      [
+       9.867767478235116,
+       42.80193773580484
+      ],
+      [
+       10.0,
+       42.732050807568875
+      ],
+      [
+       10.126640116127245,
+       42.65247754863199
+      ],
+      [
+       10.246979603717467,
+       42.56366296493606
+      ]
+     ],
+     "floor": 26,
+     "base_height": 3,
+     "id": "gate-tower-e-crown-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       8.24342882454853,
+       44.3147549014182
+      ],
+      [
+       7.997832407002925,
+       44.248947539672876
+      ],
+      [
+       7.757840517154257,
+       44.16497074539029
+      ],
+      [
+       7.524795287000303,
+       44.063294150868224
+      ],
+      [
+       7.300000000000001,
+       43.94448637286709
+      ],
+      [
+       7.084711802583685,
+       43.80921183267438
+      ],
+      [
+       6.880134673680306,
+       43.6582270403913
+      ],
+      [
+       7.753020396282533,
+       42.56366296493606
+      ],
+      [
+       7.873359883872756,
+       42.65247754863199
+      ],
+      [
+       8.0,
+       42.732050807568875
+      ],
+      [
+       8.132232521764884,
+       42.80193773580484
+      ],
+      [
+       8.26931795126721,
+       42.861747497288405
+      ],
+      [
+       8.410489651178192,
+       42.91114561157228
+      ],
+      [
+       8.554958132087371,
+       42.949855824363645
+      ]
+     ],
+     "floor": 26,
+     "base_height": 3,
+     "id": "gate-tower-e-crown-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       5.9367058491317755,
+       42.4752047129997
+      ],
+      [
+       5.835029254609706,
+       42.24215948284574
+      ],
+      [
+       5.751052460327122,
+       42.002167592997075
+      ],
+      [
+       5.6852450985818,
+       41.75657117545147
+      ],
+      [
+       5.637975190834563,
+       41.506743704998996
+      ],
+      [
+       5.609507089583987,
+       41.254082318193845
+      ],
+      [
+       5.6,
+       41.0
+      ],
+      [
+       7.0,
+       41.0
+      ],
+      [
+       7.00559240563764,
+       41.14946018717285
+      ],
+      [
+       7.022338347549743,
+       41.29808453235235
+      ],
+      [
+       7.050144175636353,
+       41.44504186791263
+      ],
+      [
+       7.088854388427718,
+       41.58951034882181
+      ],
+      [
+       7.138252502711592,
+       41.73068204873279
+      ],
+      [
+       7.198062264195162,
+       41.867767478235116
+      ]
+     ],
+     "floor": 26,
+     "base_height": 3,
+     "id": "gate-tower-e-crown-3",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       5.936705849131775,
+       39.5247952870003
+      ],
+      [
+       6.055513627132909,
+       39.300000000000004
+      ],
+      [
+       6.190788167325618,
+       39.08471180258368
+      ],
+      [
+       6.341772959608699,
+       38.88013467368031
+      ],
+      [
+       6.5076236357785895,
+       38.68741269157888
+      ],
+      [
+       6.687412691578874,
+       38.50762363577859
+      ],
+      [
+       6.880134673680305,
+       38.3417729596087
+      ],
+      [
+       7.753020396282532,
+       39.43633703506394
+      ],
+      [
+       7.6396545244581615,
+       39.53389625634035
+      ],
+      [
+       7.533896256340347,
+       39.63965452445816
+      ],
+      [
+       7.43633703506394,
+       39.75302039628254
+      ],
+      [
+       7.34752245136801,
+       39.87335988387276
+      ],
+      [
+       7.267949192431122,
+       40.0
+      ],
+      [
+       7.198062264195162,
+       40.132232521764884
+      ]
+     ],
+     "floor": 26,
+     "base_height": 3,
+     "id": "gate-tower-e-crown-4",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       8.24342882454853,
+       37.6852450985818
+      ],
+      [
+       8.493256295001007,
+       37.63797519083457
+      ],
+      [
+       8.745917681806155,
+       37.609507089583985
+      ],
+      [
+       9.0,
+       37.6
+      ],
+      [
+       9.254082318193843,
+       37.609507089583985
+      ],
+      [
+       9.506743704998991,
+       37.63797519083456
+      ],
+      [
+       9.756571175451468,
+       37.6852450985818
+      ],
+      [
+       9.445041867912629,
+       39.050144175636355
+      ],
+      [
+       9.298084532352348,
+       39.02233834754974
+      ],
+      [
+       9.14946018717285,
+       39.00559240563764
+      ],
+      [
+       9.0,
+       39.0
+      ],
+      [
+       8.85053981282715,
+       39.00559240563764
+      ],
+      [
+       8.701915467647652,
+       39.02233834754974
+      ],
+      [
+       8.554958132087371,
+       39.050144175636355
+      ]
+     ],
+     "floor": 26,
+     "base_height": 3,
+     "id": "gate-tower-e-crown-5",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "polygon",
+     "vertices": [
+      [
+       11.119865326319694,
+       38.3417729596087
+      ],
+      [
+       11.312587308421126,
+       38.50762363577859
+      ],
+      [
+       11.492376364221409,
+       38.68741269157887
+      ],
+      [
+       11.658227040391301,
+       38.8801346736803
+      ],
+      [
+       11.809211832674382,
+       39.08471180258368
+      ],
+      [
+       11.94448637286709,
+       39.3
+      ],
+      [
+       12.063294150868224,
+       39.5247952870003
+      ],
+      [
+       10.801937735804838,
+       40.132232521764884
+      ],
+      [
+       10.732050807568877,
+       40.0
+      ],
+      [
+       10.652477548631989,
+       39.87335988387276
+      ],
+      [
+       10.563662964936059,
+       39.75302039628253
+      ],
+      [
+       10.466103743659652,
+       39.63965452445816
+      ],
+      [
+       10.36034547554184,
+       39.53389625634035
+      ],
+      [
+       10.246979603717467,
+       39.43633703506394
+      ]
+     ],
+     "floor": 26,
+     "base_height": 3,
+     "id": "gate-tower-e-crown-6",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "gate-tower-e-crown-body",
+     "name": "East gate tower crown",
+     "mirrors": true,
+     "shapeIds": [
+      "gate-tower-e-crown-0",
+      "gate-tower-e-crown-1",
+      "gate-tower-e-crown-2",
+      "gate-tower-e-crown-3",
+      "gate-tower-e-crown-4",
+      "gate-tower-e-crown-5",
+      "gate-tower-e-crown-6"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "rampart"
+  },
+  {
+   "id": "barrow",
+   "name": "The barrow",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "rectangle",
+     "min_x": 4,
+     "min_z": 50,
+     "max_x": 16,
+     "max_z": 62,
+     "floor": 11,
+     "base_height": 2,
+     "id": "barrow-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 69,
+      "cellSize": 5,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       }
+      ],
+      "rise": 2
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 6,
+     "min_z": 52,
+     "max_x": 14,
+     "max_z": 60,
+     "floor": 11,
+     "base_height": 4,
+     "id": "barrow-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 69,
+      "cellSize": 5,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       }
+      ],
+      "rise": 2
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": 8,
+     "min_z": 54,
+     "max_x": 12,
+     "max_z": 58,
+     "floor": 11,
+     "base_height": 6,
+     "id": "barrow-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 69,
+      "cellSize": 5,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 3,
+        "data": 1
+       },
+       {
+        "kind": "solid",
+        "id": 1,
+        "data": 0
+       }
+      ],
+      "rise": 2
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "barrow-body",
+     "name": "The barrow",
+     "mirrors": true,
+     "shapeIds": [
+      "barrow-0",
+      "barrow-1",
+      "barrow-2"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "barrow"
+  },
+  {
+   "id": "outwork-wall-s",
+   "name": "Outwork outwork-wall-s",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "rectangle",
+     "min_x": -36,
+     "min_z": 40,
+     "max_x": -34,
+     "max_z": 48,
+     "floor": 13,
+     "base_height": 4,
+     "id": "outwork-wall-s-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -36,
+     "min_z": 40,
+     "max_x": -35,
+     "max_z": 43,
+     "floor": 13,
+     "base_height": 6,
+     "id": "outwork-wall-s-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -35,
+     "min_z": 40,
+     "max_x": -34,
+     "max_z": 43,
+     "floor": 13,
+     "base_height": 6,
+     "id": "outwork-wall-s-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -36,
+     "min_z": 45,
+     "max_x": -35,
+     "max_z": 48,
+     "floor": 13,
+     "base_height": 6,
+     "id": "outwork-wall-s-3",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -35,
+     "min_z": 45,
+     "max_x": -34,
+     "max_z": 48,
+     "floor": 13,
+     "base_height": 6,
+     "id": "outwork-wall-s-4",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "outwork-wall-s-body",
+     "name": "Outwork outwork-wall-s",
+     "mirrors": true,
+     "shapeIds": [
+      "outwork-wall-s-0",
+      "outwork-wall-s-1",
+      "outwork-wall-s-2",
+      "outwork-wall-s-3",
+      "outwork-wall-s-4"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "outwork"
+  },
+  {
+   "id": "outwork-wall-n",
+   "name": "Outwork outwork-wall-n",
+   "base_y": 0,
+   "shapes": [
+    {
+     "type": "rectangle",
+     "min_x": -36,
+     "min_z": 52,
+     "max_x": -34,
+     "max_z": 60,
+     "floor": 13,
+     "base_height": 4,
+     "id": "outwork-wall-n-0",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -36,
+     "min_z": 52,
+     "max_x": -35,
+     "max_z": 55,
+     "floor": 13,
+     "base_height": 6,
+     "id": "outwork-wall-n-1",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -35,
+     "min_z": 52,
+     "max_x": -34,
+     "max_z": 55,
+     "floor": 13,
+     "base_height": 6,
+     "id": "outwork-wall-n-2",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -36,
+     "min_z": 57,
+     "max_x": -35,
+     "max_z": 60,
+     "floor": 13,
+     "base_height": 6,
+     "id": "outwork-wall-n-3",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    },
+    {
+     "type": "rectangle",
+     "min_x": -35,
+     "min_z": 57,
+     "max_x": -34,
+     "max_z": 60,
+     "floor": 13,
+     "base_height": 6,
+     "id": "outwork-wall-n-4",
+     "operation": "add",
+     "keepClear": true,
+     "material": {
+      "kind": "cell",
+      "seed": 67,
+      "cellSize": 4,
+      "jitter": 2,
+      "warp": 2,
+      "palette": [
+       {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       {
+        "kind": "solid",
+        "id": 45,
+        "data": 0
+       }
+      ],
+      "rise": 3
+     }
+    }
+   ],
+   "groups": [
+    {
+     "id": "outwork-wall-n-body",
+     "name": "Outwork outwork-wall-n",
+     "mirrors": true,
+     "shapeIds": [
+      "outwork-wall-n-0",
+      "outwork-wall-n-1",
+      "outwork-wall-n-2",
+      "outwork-wall-n-3",
+      "outwork-wall-n-4"
+     ]
+    }
+   ],
+   "kind": "made",
+   "part_of": "outwork"
+  }
+ ],
+ "relief": {
+  "team": {
+   "base": 11,
+   "step": 1,
+   "reach": 18,
+   "landform": "rolling",
+   "grain": {
+    "amplitude": 2,
+    "scale": 16,
+    "seed": 21
+   },
+   "marks": [
+    {
+     "id": "barrow-pad",
+     "kind": "area",
+     "h": 11,
+     "ring": [
+      [
+       20.0,
+       56.0
+      ],
+      [
+       15.7,
+       61.7
+      ],
+      [
+       10.0,
+       65.0
+      ],
+      [
+       4.3,
+       61.7
+      ],
+      [
+       0.0,
+       56.0
+      ],
+      [
+       4.3,
+       50.3
+      ],
+      [
+       10.0,
+       47.0
+      ],
+      [
+       15.7,
+       50.3
+      ]
+     ]
+    },
+    {
+     "id": "sally-foot",
+     "kind": "area",
+     "h": 11,
+     "ring": [
+      [
+       13.0,
+       28.0
+      ],
+      [
+       7.1,
+       35.1
+      ],
+      [
+       0.0,
+       40.0
+      ],
+      [
+       -5.7,
+       33.7
+      ],
+      [
+       -13.0,
+       28.0
+      ],
+      [
+       -7.1,
+       20.9
+      ],
+      [
+       -0.0,
+       16.0
+      ],
+      [
+       5.7,
+       22.3
+      ]
+     ]
+    },
+    {
+     "id": "moss",
+     "kind": "point",
+     "at": [
+      -6,
+      55
+     ],
+     "r": 6,
+     "h": 9,
+     "tread": 4
+    },
+    {
+     "id": "howe",
+     "kind": "point",
+     "at": [
+      30,
+      68
+     ],
+     "r": 5,
+     "h": 14,
+     "tread": 3
+    },
+    {
+     "id": "brae",
+     "kind": "point",
+     "at": [
+      -26,
+      80
+     ],
+     "r": 5,
+     "h": 14,
+     "tread": 3
+    }
+   ],
+   "pushes": [
+    {
+     "id": "rigg",
+     "ring": [
+      [
+       30.0,
+       20.0
+      ],
+      [
+       25.7,
+       25.7
+      ],
+      [
+       20.0,
+       29.0
+      ],
+      [
+       15.1,
+       24.9
+      ],
+      [
+       10.0,
+       20.0
+      ],
+      [
+       14.3,
+       14.3
+      ],
+      [
+       20.0,
+       11.0
+      ],
+      [
+       24.9,
+       15.1
+      ]
+     ],
+     "amount": 3,
+     "falloff": 6,
+     "crown": 3,
+     "roughness": 1.3,
+     "seed": 5
+    }
+   ]
+  }
+ },
+ "roomStyles": {
+  "spawn": "@hb-spawn",
+  "wool": "@ow-cage"
+ },
+ "dressing": {
+  "props": [
+   {
+    "id": "way",
+    "kind": "stroke",
+    "seed": 71,
+    "radius": 2.5,
+    "style": "solid",
+    "coverage": 1.0,
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 70,
+     "cellSize": 4,
+     "jitter": 2,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 4,
+       "data": 0
+      }
+     ],
+     "rise": 0
+    },
+    "points": [
+     [
+      46,
+      52
+     ],
+     [
+      38,
+      51
+     ],
+     [
+      30,
+      48
+     ],
+     [
+      30,
+      42
+     ],
+     [
+      16,
+      40
+     ],
+     [
+      2,
+      40
+     ],
+     [
+      0,
+      33
+     ]
+    ]
+   },
+   {
+    "id": "sward",
+    "kind": "flora",
+    "seed": 9,
+    "points": [
+     [
+      -15,
+      10
+     ],
+     [
+      35,
+      10
+     ],
+     [
+      55,
+      45
+     ],
+     [
+      55,
+      60
+     ],
+     [
+      0,
+      90
+     ],
+     [
+      -30,
+      90
+     ],
+     [
+      -30,
+      60
+     ]
+    ],
+    "spec": {
+     "coverage": 0.2,
+     "scale": 15,
+     "octaves": 3,
+     "fernShare": 0.3,
+     "flowerShare": 0.02,
+     "flowerScale": 18,
+     "tallShare": 0.03
+    }
+   },
+   {
+    "id": "clint-0",
+    "kind": "boulder",
+    "x": 22,
+    "z": 58,
+    "form": "round",
+    "size": 2,
+    "mossy": true,
+    "rock": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    },
+    "seed": 90
+   },
+   {
+    "id": "clint-1",
+    "kind": "boulder",
+    "x": -10,
+    "z": 58,
+    "form": "angular",
+    "size": 3,
+    "mossy": false,
+    "rock": {
+     "kind": "solid",
+     "id": 1,
+     "data": 5
+    },
+    "seed": 91
+   },
+   {
+    "id": "fir-0",
+    "kind": "tree",
+    "x": -3,
+    "z": 58,
+    "form": "Template",
+    "species": "spruce",
+    "height": 8,
+    "seed": 95
+   },
+   {
+    "id": "fir-1",
+    "kind": "tree",
+    "x": 32,
+    "z": 60,
+    "form": "Template",
+    "species": "spruce",
+    "height": 11,
+    "seed": 96
+   },
+   {
+    "id": "watch-house",
+    "kind": "house",
+    "seed": 41,
+    "front": "negZ",
+    "style": "@talltimber-store",
+    "wings": [
+     {
+      "corners": [
+       [
+        -15,
+        47
+       ],
+       [
+        -6,
+        52
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "id": "steading",
+    "kind": "house",
+    "seed": 42,
+    "front": "posZ",
+    "style": "@talltimber-cottage",
+    "wings": [
+     {
+      "corners": [
+       [
+        -14,
+        23
+       ],
+       [
+        -6,
+        28
+       ]
+      ]
+     }
+    ]
+   }
+  ]
+ }
+}

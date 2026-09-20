@@ -1,0 +1,20 @@
+components 13 · navigable 16586 columns · bridgeable 0 · build ceiling y51
+
+12 patch(es) of standing ground no player can get to. None of this is a fault — scenery and a side observer island read exactly like this — but a shape stranded by accident reads like it too, and only the author can tell them apart.
+
+  cells  floor  reason          box
+   8117    y11  no-build-zone   x -70..74, z -150..-11
+     39    y17  no-build-zone   x -74..-67, z 36..48
+     39    y19  no-build-zone   x -69..-62, z -49..-37
+     39    y19  no-build-zone   x 61..68, z 36..48
+     39    y17  no-build-zone   x 66..73, z -49..-37
+     36    y26  no-build-zone   x -29..-17, z -149..-137
+     36    y25  no-build-zone   x -3..2, z -3..2
+     36    y26  no-build-zone   x 16..28, z 136..148
+     34    y25  no-build-zone   x -64..-58, z 71..83
+     34    y25  no-build-zone   x 57..63, z -84..-72
+     10    y26  no-build-zone   x -21..-17, z -141..-137
+     10    y26  no-build-zone   x 16..20, z 136..140
+
+  no-build-zone   nothing the map opens to bridging reaches it, and it is not walked to
+  above-ceiling   its ground stands over the map's maxbuildheight and cannot be built up to

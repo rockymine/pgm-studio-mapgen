@@ -1,0 +1,156 @@
+GET /api/map/technique-painting-with-a-stroke/column?at=x,z — one column per claim. A stroke repaints the top
+course and adds no cell, so every column here is the same height it would be with no prop on the board.
+
+### butted — north of the drawn seam: the meadow
+=== column (-165, -95) — 18 solid block(s), ground 27° from level ===
+  y 17    31:1   Grass
+  y 16     2:0   Grass Block
+  y 15     3:0   Dirt
+  y 14     3:0   Dirt
+
+### butted — three blocks south of it: the strand, on a ruled line
+=== column (-165, -89) — 15 solid block(s), ground 14° from level ===
+  y 14    12:0   Sand
+  y 13    12:0   Sand
+  y 12    24:0   Sandstone
+  y 11    24:0   Sandstone
+
+### feathered — the same cell north of the seam, inside the brush: sand
+=== column (-55, -96) — 17 solid block(s), ground 14° from level ===
+  y 16    12:0   Sand
+  y 15     3:0   Dirt
+  y 14     3:0   Dirt
+  y 13     1:0   Stone
+
+### two-tongues — inside the mottled zone, a cell the shore pattern left as meadow
+=== column (55, -96) — 18 solid block(s), ground 14° from level ===
+  y 17    31:1   Grass
+  y 16     2:0   Grass Block
+  y 15     3:0   Dirt
+  y 14     3:0   Dirt
+
+### tapered-tongue — mid-line, where the taper is at full width: sand
+=== column (165, -95) — 17 solid block(s), ground 27° from level ===
+  y 16    12:0   Sand
+  y 15     3:0   Dirt
+  y 14     3:0   Dirt
+  y 13     1:0   Stone
+
+### tapered-tongue — three cells off the line near its end, where the taper has run out
+=== column (125, -95) — 18 solid block(s), ground 27° from level ===
+  y 17    31:2   Fern
+  y 16     2:0   Grass Block
+  y 15     3:0   Dirt
+  y 14     3:0   Dirt
+
+### road — on the paving: one of the three stones of the road pattern
+=== column (-165, -30) — 28 solid block(s), ground 14° from level ===
+  y 27     1:5   Andesite
+  y 26     3:0   Dirt
+  y 25     3:0   Dirt
+  y 24     1:0   Stone
+
+### weathered — the same cell of the same road, its pave mixed with the meadow's grass
+=== column (-55, -30) — 28 solid block(s), ground 14° from level ===
+  y 27     1:5   Andesite
+  y 26     3:0   Dirt
+  y 25     3:0   Dirt
+  y 24     1:0   Stone
+
+### verge — the wide stroke, outside the narrow one: coarse dirt
+=== column (55, -36) — 28 solid block(s), ground 14° from level ===
+  y 27     3:1   Coarse Dirt
+  y 26     3:0   Dirt
+  y 25     3:0   Dirt
+  y 24     1:0   Stone
+
+### claimed — the same cell of the same verge, under a claim
+=== column (165, -36) — 28 solid block(s), ground 14° from level ===
+  y 27     3:1   Coarse Dirt
+  y 26     3:0   Dirt
+  y 25     3:0   Dirt
+  y 24     1:0   Stone
+
+### by-height — the road at y11, inside the stack's first band
+=== column (-190, 106) — 12 solid block(s), ground 0° from level ===
+  y 11     3:1   Coarse Dirt
+  y 10     3:0   Dirt
+  y  9     3:0   Dirt
+  y  8     1:0   Stone
+
+### by-height — the same road at y20, inside the second
+=== column (-150, 84) — 21 solid block(s), ground 14° from level ===
+  y 20     4:0   Cobblestone
+  y 19     3:0   Dirt
+  y 18     3:0   Dirt
+  y 17     1:0   Stone
+
+### by-height — and at y30, inside the third
+=== column (-190, 62) — 31 solid block(s), ground 0° from level ===
+  y 30     1:5   Andesite
+  y 29     3:0   Dirt
+  y 28     3:0   Dirt
+  y 27     1:0   Stone
+
+### by-height — at y5, one course under the stack's own `from`: the default, stone
+=== column (-129, 106) — 6 solid block(s), ground 0° from level ===
+  y  5     1:0   Stone
+  y  4     3:0   Dirt
+  y  3     3:0   Dirt
+  y  2     1:0   Stone
+
+### by-inward — the whole stroke, resolved to the material named as `beyond`
+=== column (-60, 84) — 19 solid block(s), ground 14° from level ===
+  y 18     5:1   Spruce Planks
+  y 17     3:0   Dirt
+  y 16     3:0   Dirt
+  y 15     1:0   Stone
+
+### over-a-crossing — the causeway, ground to the bedrock: repainted by the way
+=== column (31, 90) — 14 solid block(s), ground 0° from level ===
+  y 13     4:0   Cobblestone
+  y 12    98:0   Stone Bricks
+  y 11    98:0   Stone Bricks
+  y 10    98:0   Stone Bricks
+
+### over-a-crossing — the bank the bridge lands on
+=== column (79, 82) — 14 solid block(s), ground 0° from level ===
+  y 13     4:0   Cobblestone
+  y 12     4:0   Cobblestone
+  y 11     4:0   Cobblestone
+  y 10     1:0   Stone
+
+### over-a-crossing — the bridge deck, one course on its own layer: untouched
+=== column (79, 90) — 4 solid block(s), ground 0° from level ===
+  y 13     5:1   Spruce Planks
+  y  2     1:0   Stone
+  y  1     3:0   Dirt
+  y  0     7:0   Bedrock
+
+### over-a-crossing — the gorge floor under that bridge, inside the way's band
+=== column (79, 95) — 4 solid block(s), ground 0° from level ===
+  y 13     5:1   Spruce Planks
+  y  2     1:5   Andesite
+  y  1     3:0   Dirt
+  y  0     7:0   Bedrock
+
+### over-a-crossing — the gorge floor beside it, outside the band
+=== column (70, 90) — 3 solid block(s), ground 0° from level ===
+  y  2     2:0   Grass Block
+  y  1     3:0   Dirt
+  y  0     7:0   Bedrock
+
+### keep-clear — the same causeway, marked `keepClear`: its own boards
+=== column (141, 90) — 14 solid block(s), ground 0° from level ===
+  y 13     5:1   Spruce Planks
+  y 12    98:0   Stone Bricks
+  y 11    98:0   Stone Bricks
+  y 10    98:0   Stone Bricks
+
+### keep-clear — the same bridge, paved by a stroke on the bridge's layer
+=== column (189, 90) — 4 solid block(s), ground 0° from level ===
+  y 13     4:0   Cobblestone
+  y  2     2:0   Grass Block
+  y  1     3:0   Dirt
+  y  0     7:0   Bedrock
+

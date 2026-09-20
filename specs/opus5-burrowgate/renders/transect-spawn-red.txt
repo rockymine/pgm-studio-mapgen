@@ -1,0 +1,61 @@
+## spawn-red (spawn) along x
+TRANSECT 32 stations from (-3, 65) to (28, 65), every 1
+  station        ground  surface  water  top  standing            step
+  (   -3,    65)                                                    void
+  (   -2,    65)                                                    void
+  (   -1,    65)                                                    void
+  (    0,    65)      16       16           16                      
+  (    1,    65)      16       16           16                      
+  (    2,    65)      16       16           16                      
+  (    3,    65)      16       16           16                      
+  (    4,    65)      16       16           16                      
+  (    5,    65)      16       16           30                      
+  (    6,    65)      16       16           30  spawn spawn-1       
+  (    7,    65)      16       16           30  spawn spawn-1       
+  (    8,    65)      16       16           30  spawn spawn-1       
+  (    9,    65)      16       16           30  spawn spawn-1       
+  (   10,    65)      16       16           30  spawn spawn-1       
+  (   11,    65)      16       16           30  spawn spawn-1       
+  (   12,    65)      16       16           30  spawn spawn-1       
+  (   13,    65)      16       16           30  spawn spawn-1       
+  (   14,    65)      16       16           30                      
+  (   15,    65)      16       16           16                      
+  (   16,    65)      16       16           16                      
+  (   17,    65)      16       16           19  ironcube spawn-1:0  
+  (   18,    65)      16       16           19  ironcube spawn-1:0  
+  (   19,    65)      16       16           19  ironcube spawn-1:0  
+  (   20,    65)                                                    void
+  (   21,    65)                                                    void
+  (   22,    65)                                                    void
+  (   23,    65)                                                    void
+  (   24,    65)                                                    void
+  (   25,    65)                                                    void
+  (   26,    65)                                                    void
+  (   27,    65)                                                    void
+  (   28,    65)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (6, 63), stroke ridge-road at (10, 63), ironcube spawn-1:0 at (17, 64)
+
+## spawn-red (spawn) along z
+TRANSECT 18 stations from (12, 52) to (12, 69), every 1
+  station        ground  surface  water  top  standing            step
+  (   12,    52)      16       16           16  stroke ridge-road   
+  (   12,    53)      16       16           16  stroke ridge-road   
+  (   12,    54)      16       16           16  stroke ridge-road   
+  (   12,    55)      16       16           16  stroke ridge-road   
+  (   12,    56)      16       16           16  stroke ridge-road   
+  (   12,    57)      16       16           16  stroke ridge-road   
+  (   12,    58)      16       16           16  stroke ridge-road   
+  (   12,    59)      16       16           16  stroke ridge-road   
+  (   12,    60)      16       16           26  stroke ridge-road   
+  (   12,    61)      16       16           27  stroke ridge-road   
+  (   12,    62)      16       16           28  stroke ridge-road   
+  (   12,    63)      16       16           29  spawn spawn-1       
+  (   12,    64)      16       16           30  spawn spawn-1       
+  (   12,    65)      16       16           30  spawn spawn-1       
+  (   12,    66)      16       16           29  spawn spawn-1       
+  (   12,    67)      16       16           28  spawn spawn-1       
+  (   12,    68)      16       16           27  spawn spawn-1       
+  (   12,    69)      16       16           26                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke ridge-road at (11, 50), spawn spawn-1 at (13, 61)

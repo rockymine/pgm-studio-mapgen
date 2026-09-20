@@ -1,0 +1,188 @@
+GET /api/map/technique-composed-4-taken-over/column?at=x,z — the taken-over board, course by
+course. Every piece stands over void, so every column of it is a rim column, and the heights are
+the nine the plan states.
+
+### an oak on the front bar's rim in front of hole-1, at 9
+=== column (-18, 30) — 19 solid block(s), ground 0° from level ===
+  y 18    18:4   Oak Leaves
+  y 17    18:4   Oak Leaves
+  y 16    18:4   Oak Leaves
+  y 15    18:4   Oak Leaves
+  y 14    17:12  Oak Log
+  y 13    17:12  Oak Log
+  y 12    17:12  Oak Log
+  y 11    17:12  Oak Log
+  y 10    17:12  Oak Log
+  y  9    17:12  Oak Log
+  y  8     2:0   Grass Block
+  y  7     3:0   Dirt
+  y  6     3:0   Dirt
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### the spine's paving on the back bar at 13 — a stroke repaints the top block and nothing under it
+=== column (10, 50) — 13 solid block(s), ground 0° from level ===
+  y 12     4:0   Cobblestone
+  y 11     3:0   Dirt
+  y 10     3:0   Dirt
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### a tread of the middle staircase at 11, off the road: the `stair` theme is bare stone
+=== column (-6, 38) — 11 solid block(s), ground 14° from level ===
+  y 10     1:0   Stone
+  y  9     3:0   Dirt
+  y  8     3:0   Dirt
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### the tread below it at 10, one course down and the same paint
+=== column (-6, 34) — 10 solid block(s), ground 14° from level ===
+  y  9     1:0   Stone
+  y  8     3:0   Dirt
+  y  7     3:0   Dirt
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### the front bar at 9, four courses below the back bar — the cut the whole finish hangs on
+=== column (-6, 28) — 9 solid block(s), ground 0° from level ===
+  y  8     2:0   Grass Block
+  y  7     3:0   Dirt
+  y  6     3:0   Dirt
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### the bedrock wall across the wool approach: bedrock to y16, cobwebbed at 17
+=== column (-14, 67) — 18 solid block(s), ground 14° from level ===
+  y 17    30:0   Cobweb
+  y 16     7:0   Bedrock
+  y 15     7:0   Bedrock
+  y 14     7:0   Bedrock
+  y 13     7:0   Bedrock
+  y 12     7:0   Bedrock
+  y 11     7:0   Bedrock
+  y 10     7:0   Bedrock
+  y  9     7:0   Bedrock
+  y  8     7:0   Bedrock
+  y  7     7:0   Bedrock
+  y  6     7:0   Bedrock
+  y  5     7:0   Bedrock
+  y  4     7:0   Bedrock
+  y  3     7:0   Bedrock
+  y  2     7:0   Bedrock
+  y  1     7:0   Bedrock
+  y  0     7:0   Bedrock
+
+### three blocks short of it, on `wool-a-t1`'s own ground at 14
+=== column (-18, 64) — 14 solid block(s), ground 0° from level ===
+  y 13     2:0   Grass Block
+  y 12     3:0   Dirt
+  y 11     3:0   Dirt
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### inside the surviving hole, which no variant on this card ever filled
+=== column (10, 38) — 0 solid block(s) ===
+  (void — no block recorded at any height)
+
+### its rim, one block west — `rimEdges: void` caps every composed piece all the way round
+=== column (3, 38) — 11 solid block(s), ground 11° from level ===
+  y 10    98:0   Stone Bricks
+  y  9   159:14  Red Stained Clay
+  y  8   159:14  Red Stained Clay
+  y  7   159:14  Red Stained Clay
+  y  6   159:14  Red Stained Clay
+  y  5   159:14  Red Stained Clay
+  y  4   159:14  Red Stained Clay
+  y  3   159:14  Red Stained Clay
+  y  2   159:14  Red Stained Clay
+  y  1   159:14  Red Stained Clay
+  y  0     7:0   Bedrock
+
+### inside the far lane, the piece that came out for a build zone
+=== column (-26, 38) — 0 solid block(s) ===
+  (void — no block recorded at any height)
+
+### the mid at the origin, under the deck: gravel, then its two floors and the observer block
+=== column (0, 0) — 11 solid block(s), ground 0° from level ===
+  y 24     7:0   Bedrock
+  y 16    98:1   Mossy Stone Bricks
+  y 11    98:0   Stone Bricks
+  y  7    13:0   Gravel
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### one of the deck's four legs, cobble from the holm to each floor in turn
+=== column (-8, -4) — 17 solid block(s), ground 0° from level ===
+  y 16    98:0   Stone Bricks
+  y 15     4:0   Cobblestone
+  y 14     4:0   Cobblestone
+  y 13     4:0   Cobblestone
+  y 12     4:0   Cobblestone
+  y 11    98:1   Mossy Stone Bricks
+  y 10     4:0   Cobblestone
+  y  9     4:0   Cobblestone
+  y  8     4:0   Cobblestone
+  y  7    13:0   Gravel
+  y  6     3:0   Dirt
+  y  5     3:0   Dirt
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### the spawn room's floor at 11, a shelf off the staircase
+=== column (36, 34) — 11 solid block(s), ground 0° from level ===
+  y 10    35:14  Red Wool
+  y  9     3:0   Dirt
+  y  8     3:0   Dirt
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock

@@ -1,0 +1,96 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Fallowgate"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 10,
+  "surface": 13,
+  "observerY": 46
+ },
+ "pieces": [
+  {
+   "id": "fold",
+   "role": "spawn",
+   "rect": [
+    -3,
+    -20,
+    6,
+    4
+   ],
+   "surface": 24
+  },
+  {
+   "id": "flat",
+   "role": "piece",
+   "rect": [
+    -7,
+    -16,
+    14,
+    7
+   ],
+   "surface": 13
+  },
+  {
+   "id": "pasture",
+   "role": "piece",
+   "rect": [
+    -7,
+    -9,
+    14,
+    6
+   ],
+   "surface": 20
+  }
+ ],
+ "zones": [
+  {
+   "id": "crossing",
+   "rect": [
+    -7,
+    -3,
+    14,
+    6
+   ],
+   "kind": "build"
+  }
+ ],
+ "walls": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "fold",
+    "at": [
+     12,
+     2
+    ],
+    "facing": "back",
+    "footprint": [
+     4,
+     1,
+     20,
+     8
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "piece": "flat",
+    "at": [
+     11,
+     18
+    ],
+    "style": "pillar-2",
+    "materials": "obsidian",
+    "float": 2,
+    "name": "The Fallowgate Stone"
+   }
+  ],
+  "wools": [],
+  "cores": []
+ }
+}

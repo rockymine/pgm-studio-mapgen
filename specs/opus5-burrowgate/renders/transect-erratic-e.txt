@@ -1,0 +1,56 @@
+## erratic-e (boulder) along x
+TRANSECT 20 stations from (25, 43) to (44, 43), every 1
+  station        ground  surface  water  top  standing            step
+  (   25,    43)      12       12           12                      
+  (   26,    43)      12       12           12                      
+  (   27,    43)      11       11           11                      -1
+  (   28,    43)      11       11           11                      
+  (   29,    43)      11       11           18  tree holt-5         
+  (   30,    43)      11       11           22  tree holt-5         
+  (   31,    43)      11       11           22  tree holt-5         
+  (   32,    43)      11       11           20  tree holt-5         
+  (   33,    43)      11       11           20  tree holt-5         
+  (   34,    43)      11       11           16  boulder erratic-e   
+  (   35,    43)      11       11           16  boulder erratic-e   
+  (   36,    43)      11       11           17  boulder erratic-e   
+  (   37,    43)      11       11           17  boulder erratic-e   
+  (   38,    43)      11       11           17  boulder erratic-e   
+  (   39,    43)      11       11           16  boulder erratic-e   
+  (   40,    43)                            16  boulder erratic-e   void
+  (   41,    43)                                                    void
+  (   42,    43)                                                    void
+  (   43,    43)                                                    void
+  (   44,    43)                                                    void
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree holt-5 at (28, 44), boulder erratic-e at (34, 41)
+
+## erratic-e (boulder) along z
+TRANSECT 25 stations from (37, 31) to (37, 55), every 1
+  station        ground  surface  water  top  standing            step
+  (   37,    31)                                                    void
+  (   37,    32)                                                    void
+  (   37,    33)                                                    void
+  (   37,    34)                                                    void
+  (   37,    35)                                                    void
+  (   37,    36)                                                    void
+  (   37,    37)                                                    void
+  (   37,    38)                                                    void
+  (   37,    39)                                                    void
+  (   37,    40)      11       11           15  boulder erratic-e   
+  (   37,    41)      11       11           16  boulder erratic-e   
+  (   37,    42)      11       11           17  boulder erratic-e   
+  (   37,    43)      11       11           17  boulder erratic-e   
+  (   37,    44)      11       11           17  boulder erratic-e   
+  (   37,    45)      11       11           16  boulder erratic-e   
+  (   37,    46)      11       11           16  boulder erratic-e   
+  (   37,    47)      11       11           16  tree holt-6         
+  (   37,    48)      11       11           20  tree holt-6         
+  (   37,    49)      11       11           16  tree holt-6         
+  (   37,    50)      11       11           11                      
+  (   37,    51)      11       11           11                      
+  (   37,    52)      11       11           11                      
+  (   37,    53)      11       11           11                      
+  (   37,    54)      11       11           11                      
+  (   37,    55)      11       11           11                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder erratic-e at (35, 40), tree holt-6 at (36, 46), tree holt-7 at (35, 54)

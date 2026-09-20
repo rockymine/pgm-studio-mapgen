@@ -1,0 +1,233 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Composed p10 t2 #78"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 10,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "hub-t1",
+   "role": "piece",
+   "rect": [
+    -8,
+    11,
+    9,
+    3
+   ]
+  },
+  {
+   "id": "hub-t2",
+   "role": "piece",
+   "rect": [
+    -8,
+    5,
+    9,
+    3
+   ]
+  },
+  {
+   "id": "hub-t3",
+   "role": "piece",
+   "rect": [
+    -8,
+    8,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "hub-t4",
+   "role": "piece",
+   "rect": [
+    -2,
+    8,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "hub-t5",
+   "role": "piece",
+   "rect": [
+    1,
+    11,
+    6,
+    3
+   ]
+  },
+  {
+   "id": "hub-t6",
+   "role": "piece",
+   "rect": [
+    1,
+    5,
+    6,
+    3
+   ]
+  },
+  {
+   "id": "hub-t7",
+   "role": "piece",
+   "rect": [
+    4,
+    8,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "spawn-t1",
+   "role": "piece",
+   "rect": [
+    7,
+    7,
+    1,
+    3
+   ]
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    8,
+    7,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "wool-a-t1",
+   "role": "piece",
+   "rect": [
+    -5,
+    14,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "wool-a-t2",
+   "role": "piece",
+   "rect": [
+    -5,
+    17,
+    4,
+    3
+   ]
+  },
+  {
+   "id": "wool-a-room",
+   "role": "wool-room",
+   "rect": [
+    -1,
+    17,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "mid-stone-0",
+   "role": "piece",
+   "rect": [
+    -3,
+    -2,
+    6,
+    4
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -8,
+    -5,
+    16,
+    10
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     4,
+     6
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-a-room",
+    "at": [
+     4,
+     6
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": [
+  {
+   "id": "hub",
+   "kind": "hub",
+   "rect": [
+    -8,
+    5,
+    15,
+    9
+   ],
+   "members": [
+    "hub-t1",
+    "hub-t2",
+    "hub-t3",
+    "hub-t4",
+    "hub-t5",
+    "hub-t6",
+    "hub-t7"
+   ]
+  },
+  {
+   "id": "spawn",
+   "kind": "spawn",
+   "rect": [
+    7,
+    7,
+    3,
+    3
+   ],
+   "members": [
+    "spawn-t1",
+    "spawn-room"
+   ]
+  },
+  {
+   "id": "wool-a",
+   "kind": "wool",
+   "rect": [
+    -5,
+    14,
+    6,
+    6
+   ],
+   "members": [
+    "wool-a-t1",
+    "wool-a-t2",
+    "wool-a-room"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,65 @@
+## spawn-red (spawn) along x
+TRANSECT 22 stations from (37, 52) to (58, 52), every 1
+  station        ground  surface  water  top  standing            step
+  (   37,    52)      12       12           12  stroke way          
+  (   38,    52)      12       12           12  stroke way          
+  (   39,    52)      12       12           12  stroke way          
+  (   40,    52)      12       12           12  stroke way          
+  (   41,    52)      12       12           12  stroke way          
+  (   42,    52)      13       13           13  stroke way          +1
+  (   43,    52)      13       13           13  stroke way          
+  (   44,    52)      13       13           13  stroke way          
+  (   45,    52)      12       12           12  stroke way          -1
+  (   46,    52)      12       12           22  stroke way          
+  (   47,    52)      12       12           22  stroke way          
+  (   48,    52)      12       12           22  spawn spawn-1       
+  (   49,    52)      12       12           22  spawn spawn-1       
+  (   50,    52)      12       12           22  spawn spawn-1       
+  (   51,    52)      12       12           22  spawn spawn-1       
+  (   52,    52)      12       12           22  spawn spawn-1       
+  (   53,    52)      12       12           22  spawn spawn-1       
+  (   54,    52)      12       12           12                      
+  (   55,    52)                                                    void
+  (   56,    52)                                                    void
+  (   57,    52)                                                    void
+  (   58,    52)                                                    void
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke way at (35, 50), spawn spawn-1 at (46, 54)
+
+## spawn-red (spawn) along z
+TRANSECT 32 stations from (50, 37) to (50, 68), every 1
+  station        ground  surface  water  top  standing            step
+  (   50,    37)                                                    void
+  (   50,    38)                                                    void
+  (   50,    39)                                                    void
+  (   50,    40)                                                    void
+  (   50,    41)                                                    void
+  (   50,    42)                                                    void
+  (   50,    43)                                                    void
+  (   50,    44)                                                    void
+  (   50,    45)      12       12           12                      
+  (   50,    46)      12       12           22  spawn spawn-1       
+  (   50,    47)      12       12           22  spawn spawn-1       
+  (   50,    48)      12       12           22  spawn spawn-1       
+  (   50,    49)      12       12           22  spawn spawn-1       
+  (   50,    50)      12       12           22  spawn spawn-1       
+  (   50,    51)      12       12           22  spawn spawn-1       
+  (   50,    52)      12       12           22  spawn spawn-1       
+  (   50,    53)      12       12           22  spawn spawn-1       
+  (   50,    54)      12       12           22  spawn spawn-1       
+  (   50,    55)      12       12           22  spawn spawn-1       
+  (   50,    56)      12       12           22  spawn spawn-1       
+  (   50,    57)      12       12           22  spawn spawn-1       
+  (   50,    58)      12       12           22  spawn spawn-1       
+  (   50,    59)      12       12           12                      
+  (   50,    60)                                                    void
+  (   50,    61)                                                    void
+  (   50,    62)                                                    void
+  (   50,    63)                                                    void
+  (   50,    64)                                                    void
+  (   50,    65)                                                    void
+  (   50,    66)                                                    void
+  (   50,    67)                                                    void
+  (   50,    68)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (48, 46)

@@ -1,0 +1,22 @@
+GET …/xml — the objective half of what a server loads. `materials` is the filter PGM breaks the
+goal by, so it has to name the blocks that are actually there.
+
+  <destroyables>
+  <destroyable id="pillar-1" name="pillar-1" owner="blue-team" materials="obsidian" repairable="false" mode-changes="true" region="pillar-1-region"/>
+  <destroyable id="pillar-2" name="pillar-2" owner="blue-team" materials="obsidian" repairable="false" mode-changes="true" region="pillar-2-region"/>
+  <destroyable id="pillar-3" name="pillar-3" owner="blue-team" materials="obsidian" repairable="false" mode-changes="true" region="pillar-3-region"/>
+  <destroyable id="cube-3" name="cube-3" owner="blue-team" materials="ender stone" repairable="false" mode-changes="true" region="cube-3-region"/>
+  <destroyable id="cube-4" name="cube-4" owner="blue-team" materials="ender stone" repairable="false" mode-changes="true" region="cube-4-region"/>
+  <destroyable id="column-plus" name="column-plus" owner="blue-team" materials="ender stone" repairable="false" mode-changes="true" region="column-plus-region"/>
+  <destroyable id="obsidian" name="obsidian" owner="blue-team" materials="ender stone" repairable="false" mode-changes="true" region="obsidian-region"/>
+  <destroyable id="emerald-block" name="emerald block" owner="blue-team" materials="emerald block" repairable="false" mode-changes="true" region="emerald-block-region"/>
+  <destroyable id="gold-block" name="gold block" owner="blue-team" materials="gold block" repairable="false" mode-changes="true" region="gold-block-region"/>
+  <destroyable id="ender-stone" name="ender stone" owner="blue-team" materials="ender stone" repairable="false" mode-changes="true" region="ender-stone-region"/>
+  </destroyables>
+  <cores>
+  <core id="core" name="core" team="red-team" mode-changes="true" region="core-region"/>
+  </cores>
+
+The three styles the studio rebuilt declare `ender stone`, not the obsidian they were authored
+in: the document says what was laid. A `<core>` declares no material at all, because a core has
+no field for one anywhere in the pipeline.

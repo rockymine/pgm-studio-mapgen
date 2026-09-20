@@ -398,8 +398,12 @@ DRESSING = {
 
 # ── the menu ────────────────────────────────────────────────────────────────────────
 # **The currency is the kit's own wood**, which is the one thing on this board a player both starts with (64)
-# and earns more of (16 a kill, from the studio's default kill reward): pgm-studio has no way to state a
-# currency source yet, so a shop priced in anything else is a shop nobody can buy from.
+# and earns more of (16 a kill, from the studio's default kill reward). A price is a list because PGM takes
+# every entry in it, so two would be a cost in two currencies at once; these each cost one thing.
+def paid(price):
+    return [{"price": price, "currency": "wood"}]
+
+
 SHOP = {
     "id": "quartermaster",
     "name": "Quartermaster",
@@ -409,11 +413,11 @@ SHOP = {
         "material": "gold ingot",
         "name": "`6Supplies",
         "items": [
-            {"material": "golden apple", "name": "`6Runner's Apple", "price": 16, "currency": "wood"},
-            {"material": "arrow", "amount": 16, "price": 8, "currency": "wood"},
-            {"material": "ladder", "amount": 8, "price": 8, "currency": "wood"},
-            {"material": "stained clay", "amount": 16, "price": 12, "currency": "wood", "teamColor": True},
-            {"material": "iron fence", "amount": 8, "price": 24, "currency": "wood"},
+            {"material": "golden apple", "name": "`6Runner's Apple", "payments": paid(16)},
+            {"material": "arrow", "amount": 16, "payments": paid(8)},
+            {"material": "ladder", "amount": 8, "payments": paid(8)},
+            {"material": "stained clay", "amount": 16, "teamColor": True, "payments": paid(12)},
+            {"material": "iron fence", "amount": 8, "payments": paid(24)},
         ],
     }],
 }

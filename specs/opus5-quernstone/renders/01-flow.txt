@@ -1,0 +1,29 @@
+HOW THIS BOARD IS COME AT
+
+  wool at (40, -40)
+    The attacker walks 149 blocks to it; the defender 54, a ratio of 0.36.
+    A player already at the crossing is 41 blocks from it — nearer than a respawn, so the defence that matters is whoever was already out.
+      Neither side is obviously first to it.
+    3 ways in. The last choice is made at (0, 65) and closes at (15, -35), 27 blocks short of the objective.
+      Going round the merge saves the defender 15 blocks, so the defence arrives from behind the objective while the attack arrives at its front. Those are different ground and the objective is the easier for it.
+    The attack covers 28% of the ground the defence crosses to get here. The two sides share some of the approach and not all of it.
+    Walking attack — 149 blocks, 3 ways, 3 decisions:
+      round the 18-cell hole at (0, 45): choose at (0, 65), live over 112 blocks, the other way 1.11× the shortest.
+      round the 8-cell hole at (-10, -20): choose at (0, 65), live over 112 blocks, the other way 1.21× the shortest.
+      round the 8-cell hole at (0, 10): choose at (0, 65), live over 112 blocks, the other way 1.11× the shortest.
+    Walking back-run — 149 blocks, 3 ways, 3 decisions:
+      round the 18-cell hole at (0, 45): choose at (20, -25), live over 114 blocks, the other way 1.11× the shortest.
+      round the 8-cell hole at (-10, -20): choose at (20, -40), live over 129 blocks, the other way 1.21× the shortest.
+      round the 8-cell hole at (0, 10): choose at (20, -25), live over 114 blocks, the other way 1.11× the shortest.
+    Walking defend — 54 blocks, 2 ways, 1 decision:
+      round the 18-cell hole at (0, -50): choose at (0, -75), live over 54 blocks, the other way 1.93× the shortest.
+    Walking chase — 41 blocks, one way, no choice to make.
+
+WHAT NO JOURNEY REACHES
+
+  525 of 5500 blocks (10%) sit off every route between the places this board has. Reachable, and on the way to nothing.
+       250 blocks at (-5, -30) — hub-t2 (150), frontline-t1 (100)
+       250 blocks at (0, 25) — hub-t2 (150), frontline-t1 (100)
+    One further stretch is under 100 blocks: a sliver between corridors rather than a place.
+
+  Ground is dead because no journey passes it, not because it is far out. Bring an objective to it, put a route through it, or take it off the board — decorating it only means players look at it on the way past.

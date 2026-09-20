@@ -1,0 +1,49 @@
+HOW THIS BOARD IS COME AT
+
+  wool at (40, -50)
+    The attacker walks 152 blocks to it; the defender 46, a ratio of 0.30.
+    A player already at the crossing is 59 blocks from it — further than a respawn, so this objective is defended from the back rather than from the front.
+      Neither side is obviously first to it.
+    3 ways in. The last choice is made at (0, 65) and closes at (20, -40), 24 blocks short of the objective.
+      Going round the merge saves the defender 19 blocks, so the defence arrives from behind the objective while the attack arrives at its front. Those are different ground and the objective is the easier for it.
+    The attack covers 18% of the ground the defence crosses to get here. The attack barely touches the defence's ground, so it can arrive without having spent the approach inside the lane reinforcements come down.
+    Walking attack — 152 blocks, 3 ways, 2 decisions:
+      round the 6-cell hole at (-10, 50): choose at (0, 70), live over 90 blocks, the other way 1.13× the shortest.
+      round the 4-cell hole at (10, 50): choose at (0, 65), live over 113 blocks, the other way 1.04× the shortest.
+    Walking back-run — 152 blocks, 4 ways, 6 decisions:
+      round the 6-cell hole at (-10, 50): choose at (15, 5), live over 81 blocks, the other way 1.13× the shortest.
+      round the 6-cell hole at (5, -50): choose at (40, -50), live over 17 blocks, the other way 1.02× the shortest.
+      round the 6-cell hole at (5, -50): choose at (20, -40), live over 72 blocks, the other way 1.02× the shortest.
+      round the 4-cell hole at (-20, -50): choose at (40, -50), live over 17 blocks, the other way 1.02× the shortest.
+      round the 4-cell hole at (-20, -50): choose at (20, -40), live over 72 blocks, the other way 1.02× the shortest.
+      round the 4-cell hole at (10, 50): choose at (20, -40), live over 106 blocks, the other way 1.04× the shortest.
+    Walking defend — 46 blocks, 2 ways, 1 decision:
+      round the 6-cell hole at (5, -50): choose at (0, -70), live over 36 blocks, the other way 1.65× the shortest.
+    Walking chase — 59 blocks, 2 ways, 1 decision:
+      round the 6-cell hole at (5, -50): choose at (-15, -15), live over 59 blocks, the other way 1.49× the shortest.
+
+  wool at (-40, -50)
+    The attacker walks 149 blocks to it; the defender 48, a ratio of 0.32.
+    A player already at the crossing is 43 blocks from it — nearer than a respawn, so the defence that matters is whoever was already out.
+      Neither side is obviously first to it.
+    4 ways in. The last choice is made at (0, 70) and closes at (-20, -35), 26 blocks short of the objective.
+      Going round the merge saves the defender 26 blocks, so the defence arrives from behind the objective while the attack arrives at its front. Those are different ground and the objective is the easier for it.
+    The attack covers 14% of the ground the defence crosses to get here. The attack barely touches the defence's ground, so it can arrive without having spent the approach inside the lane reinforcements come down.
+    Walking attack — 149 blocks, 4 ways, 2 decisions:
+      round the 6-cell hole at (-10, 50): choose at (0, 70), live over 113 blocks, the other way 1.02× the shortest.
+      round the 4-cell hole at (10, 50): choose at (0, 65), live over 80 blocks, the other way 1.15× the shortest.
+    Walking back-run — 149 blocks, 4 ways, 6 decisions:
+      round the 6-cell hole at (-10, 50): choose at (-25, -40), live over 130 blocks, the other way 1.02× the shortest.
+      round the 6-cell hole at (5, -50): choose at (-40, -50), live over 12 blocks, the other way 1.02× the shortest.
+      round the 6-cell hole at (5, -50): choose at (-25, -40), live over 62 blocks, the other way 1.02× the shortest.
+      round the 4-cell hole at (-20, -50): choose at (-40, -50), live over 12 blocks, the other way 1.02× the shortest.
+      round the 4-cell hole at (-20, -50): choose at (-25, -40), live over 62 blocks, the other way 1.02× the shortest.
+      round the 4-cell hole at (10, 50): choose at (-20, 0), live over 88 blocks, the other way 1.15× the shortest.
+    Walking defend — 48 blocks, 2 ways, 1 decision:
+      round the 4-cell hole at (-20, -50): choose at (0, -75), live over 43 blocks, the other way 1.42× the shortest.
+    Walking chase — 43 blocks, 1 way, 1 decision:
+      round the 4-cell hole at (-20, -50): choose at (-25, -40), live over 14 blocks, the other way 1.07× the shortest.
+
+WHAT NO JOURNEY REACHES
+
+  Every piece of ground is on somebody's way somewhere.

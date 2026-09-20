@@ -1,0 +1,58 @@
+## steading (house) along x
+TRANSECT 25 stations from (-22, 25) to (2, 25), every 1
+  station        ground  surface  water  top  standing            step
+  (  -22,    25)                                                    void
+  (  -21,    25)                                                    void
+  (  -20,    25)                                                    void
+  (  -19,    25)                                                    void
+  (  -18,    25)                                                    void
+  (  -17,    25)                                                    void
+  (  -16,    25)                                                    void
+  (  -15,    25)      11       11           19  house steading      
+  (  -14,    25)      11       11           19  house steading      
+  (  -13,    25)      11       11           19  house steading      
+  (  -12,    25)      11       11           19  house steading      
+  (  -11,    25)      11       11           19  house steading      
+  (  -10,    25)      11       11           19  house steading      
+  (   -9,    25)      11       11           19  house steading      
+  (   -8,    25)      11       11           19  house steading      
+  (   -7,    25)      11       11           19  house steading      
+  (   -6,    25)      11       11           19  house steading      
+  (   -5,    25)      11       11           19  house steading      
+  (   -4,    25)      11       11           11                      
+  (   -3,    25)      11       11           11                      
+  (   -2,    25)      11       11           11                      
+  (   -1,    25)      11       11           11                      
+  (    0,    25)      11       11           11                      
+  (    1,    25)      11       11           11                      
+  (    2,    25)      11       11           11                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house steading at (-15, 23)
+
+## steading (house) along z
+TRANSECT 22 stations from (-10, 15) to (-10, 36), every 1
+  station        ground  surface  water  top  standing            step
+  (  -10,    15)      10       10           10                      
+  (  -10,    16)      10       10           10                      
+  (  -10,    17)      11       11           11                      +1
+  (  -10,    18)      11       11           11                      
+  (  -10,    19)      11       11           11                      
+  (  -10,    20)      11       11           11                      
+  (  -10,    21)      11       11           11                      
+  (  -10,    22)      11       11           16  house steading      
+  (  -10,    23)      12       12           17  house steading      +1
+  (  -10,    24)      11       11           18  house steading      -1
+  (  -10,    25)      11       11           19  house steading      
+  (  -10,    26)      11       11           19  house steading      
+  (  -10,    27)      11       11           18  house steading      
+  (  -10,    28)      11       11           17  house steading      
+  (  -10,    29)      11       11           16  house steading      
+  (  -10,    30)      11       11           11                      
+  (  -10,    31)      12       12           12                      +1
+  (  -10,    32)      12       12           12                      
+  (  -10,    33)      12       12           12                      
+  (  -10,    34)      12       12           12                      
+  (  -10,    35)      14       20           20  storey              BARRIER +8
+  (  -10,    36)      14       20           20  storey              
+rises 4, falls 1, worst step 8: 1 barrier, 0 scramble, 0 drop — BARRIER +8 at (-10, 35) | walked end to end
+beside: house steading at (-12, 22)

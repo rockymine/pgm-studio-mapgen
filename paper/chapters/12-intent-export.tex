@@ -1,0 +1,154 @@
+\chapter{The Intent, the Contract and the Export}
+\label{ch:export}
+
+\section{What the Intent States}
+
+The intent is the third of the four documents: teams, spawns, protections, build
+regions, objectives, and how each objective is captured. It is the only one of the
+four that is about the \emph{match} rather than about the ground.
+
+Storing it and projecting it into the PGM document is one call and one idempotent
+pass. \route{PUT /api/map/\{slug\}/intent} writes the intent and derives from it the
+teams, kits, regions, filters, apply-rules and spawns that the document needs.
+\Cref{ch:division} gave the scale of that derivation: a plan stating four wool rooms
+and their markers produced four wools, four monuments, 22 regions, 34 filters and 11
+apply-rules, with nothing authored and nothing corrected.
+
+\section{Naming, and a Trap in It}
+
+PGM has no \id{<monument>} element. The destroy objective's element is
+\id{<destroyable>}, and the word \emph{monument} is already taken throughout the
+studio for the CTW wool-monument, which is the block a capturing team places wool
+on.
+
+\begin{ruling}{The Objective Is a Destroyable, Never a Monument}
+Colloquially a destroyable \emph{is} the DTM monument. In types, columns,
+identifiers and JSON keys it is not, because the word already names a different
+thing in the same system.
+\end{ruling}
+
+This paper uses \emph{monument} in the colloquial sense when describing how a map
+plays, because that is what players call it, and \emph{destroyable} whenever the
+subject is the document.
+
+\section{The Two Destroy Objectives}
+
+Both are goals owned by one team and destroyed by everyone else, and both are
+structurally simpler than a wool, which drags a room region, a spawner, a dye item,
+team filters, apply rules and a coupling to the spawns.
+
+\subsection{The Destroyable}
+
+\begin{quote}
+\id{<destroyable owner name region materials [completion] [id] [modes]>}. PGM builds
+the set of blocks inside the region that match \id{materials}, and the goal
+completes when \id{completion} of them are broken.
+\end{quote}
+
+\id{completion} defaults to 1.0. Four attributes are required and everything else
+defaults.
+
+\subsection{The Core}
+
+\begin{quote}
+\id{<core team region [material] [leak] [name] [id] [modes]>}. \id{material}
+defaults to obsidian and \id{leak} to 5.
+\end{quote}
+
+The core builds two block sets from the world inside its region: the casing, being
+the blocks matching \id{material}, and the lava. It leaks when a lava block reaches
+a height of \id{region.min.y} minus \id{leak} minus one, within fifteen blocks
+horizontally of the core bounds.
+
+One inconsistency is worth noting because it shows in the document: the core's
+owning attribute is \id{team} rather than \id{owner}, which is a known
+inconsistency in PGM itself. The studio mirrors the XML and calls the field
+\id{Owner} in its own code.
+
+\subsection{Why This Caps the Team Count}
+
+\Cref{sec:team-counts} stated the consequence and this is the mechanism. Neither
+objective has the wool's per-capturing-team fan-out. The shape is \textbf{one
+object, one owner, and $N-1$ attackers}.
+
+A wool at four teams gives each team three distinct things to capture, so each team
+has an objective of its own and a winner is well defined. A destroyable at four
+teams gives each team one thing to lose and three things to break, and nothing in
+that arrangement says who won. It is a property of the goal's structure rather than
+a limit anyone imposed.
+
+\section{The Float, and What the Corpus Actually Does}
+
+Both objectives float above the terrain, which is why no carving or negative-space
+primitive is needed to seat one. The studio's generator floats a destroyable three
+to five blocks, with a default of four, and a lone floating pillar is a normal
+output rather than an error. An author's cap bounds the other end at twelve, and the
+reasoning behind that cap is that a goal high enough to need a tower under it is
+reached by a build project rather than by a raid.
+
+The corpus does not do this, and the difference is worth stating because a detector
+expecting a gap will miss most real structures. Measured on the declared blocks
+themselves across 571 single-material structures, the median air gap beneath is
+\textbf{zero}, and \textbf{424 of 571 rest directly on something}. Only 68 float
+three to five blocks. The floating pillar is the authored ideal; the corpus
+overwhelmingly seats its destroyables on terrain, a pedestal or a build.
+
+\begin{ruling}{Float Is an Offset, Not a Height}
+The studio's \id{float} counts from the ground as built rather than from a
+plan-nominal surface. A destroyable or a core is never given a Y at all: the
+structure floats its stated offset over whatever the relief actually left under its
+column, resolved once the layout is rasterized, which is the only place that ground
+is known. A goal placed on a mesa stays on the mesa however the mesa's own height is
+later solved.
+\end{ruling}
+
+Because the compiler resolves nothing about height for these two markers, they are
+also the one marker kind that may name no plan piece at all. The position reads as
+an absolute board position, and the ground it rides can be an authored sketch shape
+with no piece behind it. A landform is then authored once, as the shape it is,
+rather than twice: once as a plan rectangle purely to give a marker something to
+ride, and again as the polygon it actually is.
+
+\section{Flooring Is Per Field}
+
+One detail of the contract has cost hours more than once, and it looks like an
+inconsistency until the reason is known.
+
+\begin{ruling}{Coordinate Flooring Is Per Field, Not Global}
+The wool's \id{<location>} is floored and the destroyable's \id{<block>} is not,
+because PGM floors one itself and never the other. Applying one rule globally in
+either direction produces a document that is wrong in half its objectives.
+\end{ruling}
+
+\section{The Export Gate}
+
+The export is where several checks first become fatal. \route{GET
+/api/map/\{slug\}/xml} answers the document, gated on the pre-flight checks, and
+\route{GET /api/map/\{slug\}/export} answers the world.
+
+Four refusals are worth knowing by name. \id{EX2} is no spawn of any kind.
+\id{EX3} is a kind that went in and did not come out, which is the harder failure
+of the two because it means something was accepted and then lost. \id{EX4} is an
+objective with no team. \id{OB20}, an unknown gamemode, is checked first on every
+export regardless of how the map originated.
+
+Which gate runs does not depend on which door the caller came through. A
+sketch-originated map's whole chain runs inside the same composer as a
+plan-originated one's.
+
+The corpus records this as an expensive property rather than a neutral one. Two of
+those refusals fire only at export, so the first time a board hears about them is a
+409 answered \emph{after the whole world has been built}. One run hit them three
+times between them, at a cost of three full build cycles.
+
+\section{What Is Delivered}
+
+A sketch-originated map exports a ZIP carrying \id{map.xml}, \id{level.dat} and the
+region files at the archive top. A map that arrived through the import path exports
+the XML alone.
+
+The world format is Anvil in its numeric block form, which is the 1.8 to 1.12
+encoding with nibble-packed sections. That matches the studio's supported range,
+and it is the reason the studio refuses maps outside it rather than accommodating
+them: a malformed or out-of-range map is rejected rather than handled by weakening
+the schema.

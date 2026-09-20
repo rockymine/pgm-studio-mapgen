@@ -1,0 +1,72 @@
+GET /api/map/technique-composed-4-taken-over/walk — what this board costs to cross, and the one
+reading on it that has to be argued with. `from` and `to` are `x,z`, or `x,z,y` to name a storey.
+
+
+### down the middle cross-piece, which was split into three treads
+  from=-2,50&to=-2,24
+  ROUTE (-2, 50) -> (-2, 24) aim travel: 26 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+
+### out of the spawn and up its own staircase to the back bar
+  from=36,34&to=22,50
+  ROUTE (36, 34) -> (22, 50) aim travel: 24 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+
+### off the front bar into the far lane, which is now a build zone
+  from=-29,25&to=-26,34
+  ROUTE (-29, 25) -> (-26, 34) aim travel: 10 blocks, 3 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+
+### into the same lane from the back bar, four courses higher
+  from=-29,45&to=-26,38
+  ROUTE (-29, 45) -> (-26, 38) aim travel: 8 blocks, 6 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+
+### off the front line into the mid band, and onto the holm
+  from=-2,21&to=0,0
+  ROUTE (-2, 21) -> (0, 0) aim travel: 22 blocks, 12 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+
+### up the wool approach, through the bedrock wall
+  from=-14,60&to=-14,76
+  ROUTE (-14, 60) -> (-14, 76) aim travel: 16 blocks, 3 placed, 0 drop(s), worst drop 0
+  rises 1, falls 0, worst step 4: barrier +4 at (-14, 67)
+
+### up onto the mid deck's lower floor, from the ground under it
+  from=0,6&to=0,0,11
+  ROUTE (0, 6) -> (0, 0) aim travel: 6 blocks, 3 placed, 0 drop(s), worst drop 0
+  rises 1, falls 0, worst step 4: barrier +4 at (0, 4)
+
+### and on up to its roof, which is what the height is for
+  from=0,6&to=0,0,16
+  ROUTE (0, 6) -> (0, 0) aim travel: 6 blocks, 8 placed, 0 drop(s), worst drop 0
+  rises 1, falls 0, worst step 9: barrier +9 at (0, 4)
+
+### off the back bar's rim into the canopy hanging past it
+  from=-2,54&to=-4,57
+  ROUTE (-2, 54) -> (-4, 57) aim travel: 5 blocks, 7 placed, 0 drop(s), worst drop 0
+  rises 1, falls 0, worst step 8: barrier +8 at (-2, 56)
+
+The staircases walk. Four one-block risers between a bar at 9 and a bar at 13, and nothing
+placed either way — which is the whole of what splitting a piece into treads buys.
+
+**A build zone is crossed level and costs the blocks it costs.** Both lanes read `worst step 0`: the
+bridge is levelled from the shore the player leaves, so it is flat until the far side, and the count of
+blocks placed is the price. The mid band crosses the same way onto the holm at 8.
+
+**The wall reads as `barrier +4` and that is the read being literal about walking.** A `walls` entry
+stamps four courses of bedrock a defender can build on and cannot lose, and four courses is what an
+attacker bridges — the barrier is the feature. `walk` prices a walk and has no word for it, which is
+the author's reading of why so few maps have ever carried one: the read condemns them. Filed as
+`WS69` and `WS70` in `pgm-studio`.
+
+**The deck is a climb and that is the point of it.** Four courses to the lower floor and nine to the
+roof, built up from the holm a player has just bridged to — a height nobody is given and anybody can
+take.
+
+**The last read is the one to argue with, and it is about a crown rather than about the board.** A bar
+twelve deep with a road down it leaves only its outer rim three clear of the paving, so the three oaks
+along the path stand there and their crowns hang past it — which the map contract expects, since
+`block-break-void-filter` makes leaves and logs breakable inside the void. `column?at=-4,57` is four
+blocks of leaves over void and `transect` calls that station void, while the walk offers three places in
+the canopy and prices the climb at `barrier +8`. Filed as `WS71`, parked on the question it turns on.

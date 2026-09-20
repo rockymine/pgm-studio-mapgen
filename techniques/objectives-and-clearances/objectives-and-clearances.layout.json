@@ -1,0 +1,420 @@
+{
+ "setup": {
+  "bbox": {
+   "min_x": -220,
+   "max_x": 220,
+   "min_z": -60,
+   "max_z": 60
+  },
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "mirror_mode": "none"
+ },
+ "themes": {
+  "moor": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 35,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 2,
+             "data": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 20,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 35,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 11,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 4,
+               "data": 0
+              }
+             ]
+            },
+            "thickness": 3
+           }
+          ]
+         }
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "flag": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 13,
+         "data": 0
+        },
+        "thickness": 1
+       },
+       {
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 1
+        },
+        "thickness": 2
+       }
+      ]
+     }
+    }
+   }
+  },
+  "room": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 1
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   }
+  }
+ },
+ "mapTheme": "moor",
+ "relief": {
+  "land": {
+   "base": 12,
+   "reach": 0,
+   "step": 1,
+   "pushes": [],
+   "marks": [
+    {
+     "id": "plain",
+     "kind": "area",
+     "h": 12,
+     "bevel": 0,
+     "ring": [
+      [
+       -206,
+       -46
+      ],
+      [
+       14,
+       -46
+      ],
+      [
+       14,
+       46
+      ],
+      [
+       -206,
+       46
+      ]
+     ]
+    },
+    {
+     "id": "shelf",
+     "kind": "area",
+     "h": 22,
+     "bevel": 0,
+     "ring": [
+      [
+       34,
+       -46
+      ],
+      [
+       206,
+       -46
+      ],
+      [
+       206,
+       46
+      ],
+      [
+       34,
+       46
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "island",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "moor",
+      "min_x": -210.0,
+      "min_z": -50.0,
+      "max_x": 210.0,
+      "max_z": 50.0
+     },
+     {
+      "id": "keep-out",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 40,
+      "theme": "flag",
+      "min_x": -80,
+      "min_z": -10,
+      "max_x": -60,
+      "max_z": 10
+     },
+     {
+      "id": "wool-n",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 4,
+      "theme": "room",
+      "min_x": 118,
+      "min_z": -10,
+      "max_x": 142,
+      "max_z": -8,
+      "height_mode": "raise",
+      "skirt": 0,
+      "keepClear": true
+     },
+     {
+      "id": "wool-s",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 4,
+      "theme": "room",
+      "min_x": 118,
+      "min_z": 8,
+      "max_x": 142,
+      "max_z": 10,
+      "height_mode": "raise",
+      "skirt": 0,
+      "keepClear": true
+     },
+     {
+      "id": "wool-e",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 4,
+      "theme": "room",
+      "min_x": 140,
+      "min_z": -9,
+      "max_x": 142,
+      "max_z": 9,
+      "height_mode": "raise",
+      "skirt": 0,
+      "keepClear": true
+     },
+     {
+      "id": "wool-w-n",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 4,
+      "theme": "room",
+      "min_x": 118,
+      "min_z": -10,
+      "max_x": 120,
+      "max_z": -2,
+      "height_mode": "raise",
+      "skirt": 0,
+      "keepClear": true
+     },
+     {
+      "id": "wool-w-s",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 4,
+      "theme": "room",
+      "min_x": 118,
+      "min_z": 2,
+      "max_x": 120,
+      "max_z": 10,
+      "height_mode": "raise",
+      "skirt": 0,
+      "keepClear": true
+     }
+    ],
+    "groups": [
+     {
+      "id": "land",
+      "name": "land",
+      "mirrors": false,
+      "shapeIds": [
+       "island",
+       "keep-out",
+       "wool-n",
+       "wool-s",
+       "wool-e",
+       "wool-w-n",
+       "wool-w-s"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

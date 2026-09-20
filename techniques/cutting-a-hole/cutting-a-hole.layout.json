@@ -1,0 +1,586 @@
+{
+ "setup": {
+  "bbox": {
+   "min_x": -234,
+   "max_x": 166,
+   "min_z": -114,
+   "max_z": 62
+  },
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "mirror_mode": "none"
+ },
+ "themes": {
+  "moor": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 15,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 2,
+             "data": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 25,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 50,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 11,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 4,
+               "data": 0
+              }
+             ]
+            },
+            "thickness": 3
+           }
+          ]
+         }
+        }
+       }
+      ]
+     }
+    }
+   }
+  }
+ },
+ "mapTheme": "moor",
+ "relief": {},
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "a-hole-ground",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": -200,
+      "max_x": -132,
+      "min_z": -88,
+      "max_z": -36
+     },
+     {
+      "id": "a-hole-cut",
+      "type": "rectangle",
+      "operation": "subtract",
+      "floor": 0,
+      "base_height": 4,
+      "min_x": -176,
+      "max_x": -156,
+      "min_z": -72,
+      "max_z": -52
+     },
+     {
+      "id": "height-not-read-ground",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": -112,
+      "max_x": -44,
+      "min_z": -88,
+      "max_z": -36
+     },
+     {
+      "id": "height-not-read-thin",
+      "type": "rectangle",
+      "operation": "subtract",
+      "floor": 0,
+      "base_height": 1,
+      "min_x": -102,
+      "max_x": -84,
+      "min_z": -72,
+      "max_z": -52
+     },
+     {
+      "id": "height-not-read-tall",
+      "type": "rectangle",
+      "operation": "subtract",
+      "floor": 0,
+      "base_height": 40,
+      "min_x": -72,
+      "max_x": -54,
+      "min_z": -72,
+      "max_z": -52
+     },
+     {
+      "id": "a-lid-ground",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": -24,
+      "max_x": 44,
+      "min_z": -88,
+      "max_z": -36
+     },
+     {
+      "id": "a-lid-cut",
+      "type": "rectangle",
+      "operation": "subtract",
+      "floor": 0,
+      "base_height": 6,
+      "min_x": -2,
+      "max_x": 22,
+      "min_z": -74,
+      "max_z": -50
+     },
+     {
+      "id": "a-lid-deck",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 6,
+      "base_height": 3,
+      "min_x": -2,
+      "max_x": 22,
+      "min_z": -74,
+      "max_z": -50,
+      "override": true,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      }
+     },
+     {
+      "id": "a-room-ground",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": 64,
+      "max_x": 132,
+      "min_z": -88,
+      "max_z": -36
+     },
+     {
+      "id": "a-room-void",
+      "type": "rectangle",
+      "operation": "subtract",
+      "floor": 3,
+      "base_height": 5,
+      "min_x": 86,
+      "max_x": 110,
+      "min_z": -74,
+      "max_z": -50
+     },
+     {
+      "id": "a-room-floor",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 3,
+      "min_x": 86,
+      "max_x": 110,
+      "min_z": -74,
+      "max_z": -50,
+      "override": true,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      }
+     },
+     {
+      "id": "override-wins-ground",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": -200,
+      "max_x": -132,
+      "min_z": -16,
+      "max_z": 36
+     },
+     {
+      "id": "override-wins-plate",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 4,
+      "min_x": -178,
+      "max_x": -154,
+      "min_z": -2,
+      "max_z": 22,
+      "override": true,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      }
+     },
+     {
+      "id": "the-taller-wins-ground",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": -112,
+      "max_x": -44,
+      "min_z": -16,
+      "max_z": 36
+     },
+     {
+      "id": "the-taller-wins-high",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 14,
+      "min_x": -90,
+      "max_x": -66,
+      "min_z": -2,
+      "max_z": 22,
+      "override": true,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      }
+     },
+     {
+      "id": "the-taller-wins-low",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 4,
+      "min_x": -90,
+      "max_x": -66,
+      "min_z": -2,
+      "max_z": 22,
+      "override": true,
+      "material": {
+       "kind": "solid",
+       "id": 155,
+       "data": 0
+      }
+     },
+     {
+      "id": "a-declared-void-ground",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": -24,
+      "max_x": 44,
+      "min_z": -16,
+      "max_z": 36
+     },
+     {
+      "id": "void-1-cut",
+      "type": "polygon",
+      "operation": "subtract",
+      "vertices": [
+       [
+        -2,
+        -2
+       ],
+       [
+        22,
+        -2
+       ],
+       [
+        22,
+        22
+       ],
+       [
+        -2,
+        22
+       ]
+      ]
+     }
+    ],
+    "groups": [
+     {
+      "id": "a-hole",
+      "name": "a-hole",
+      "mirrors": false,
+      "shapeIds": [
+       "a-hole-ground",
+       "a-hole-cut"
+      ]
+     },
+     {
+      "id": "height-not-read",
+      "name": "height-not-read",
+      "mirrors": false,
+      "shapeIds": [
+       "height-not-read-ground",
+       "height-not-read-thin",
+       "height-not-read-tall"
+      ]
+     },
+     {
+      "id": "a-lid",
+      "name": "a-lid",
+      "mirrors": false,
+      "shapeIds": [
+       "a-lid-ground",
+       "a-lid-cut",
+       "a-lid-deck"
+      ]
+     },
+     {
+      "id": "a-room",
+      "name": "a-room",
+      "mirrors": false,
+      "shapeIds": [
+       "a-room-ground",
+       "a-room-void",
+       "a-room-floor"
+      ]
+     },
+     {
+      "id": "override-wins",
+      "name": "override-wins",
+      "mirrors": false,
+      "shapeIds": [
+       "override-wins-ground",
+       "override-wins-plate"
+      ]
+     },
+     {
+      "id": "the-taller-wins",
+      "name": "the-taller-wins",
+      "mirrors": false,
+      "shapeIds": [
+       "the-taller-wins-ground",
+       "the-taller-wins-high",
+       "the-taller-wins-low"
+      ]
+     },
+     {
+      "id": "a-declared-void",
+      "name": "a-declared-void",
+      "mirrors": false,
+      "shapeIds": [
+       "a-declared-void-ground",
+       "void-1-cut"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "a-room-ceiling",
+   "name": "the room's ceiling",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "a-room",
+   "layout": {
+    "shapes": [
+     {
+      "id": "a-room-ceiling",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 8,
+      "base_height": 2,
+      "min_x": 86,
+      "max_x": 110,
+      "min_z": -74,
+      "max_z": -50,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      }
+     }
+    ],
+    "groups": [
+     {
+      "id": "a-room-ceiling",
+      "name": "the room's ceiling",
+      "mirrors": false,
+      "shapeIds": [
+       "a-room-ceiling"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

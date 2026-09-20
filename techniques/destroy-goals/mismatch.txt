@@ -1,0 +1,9 @@
+PUT …/intent then GET …/export — one destroyable authored `materials: "diamond block"`, which is
+not one of the four words `GET /api/objectives/vocabulary` publishes.
+
+  PUT 200 · export 200  Pgm-Warnings: 1 DC3
+  the column it built:  y18 Obsidian  y17 Obsidian  y16 Obsidian
+  the map.xml it wrote:
+    <destroyable id="diamond" name="diamond" owner="blue-team" materials="obsidian" repairable="false" mode-changes="true" region="diamond-region"/>
+
+The card's own intent is stored again after this, so the world the renders read is the clean one.

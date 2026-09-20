@@ -1,0 +1,38 @@
+PUT …/sketch, then POST …/sketch/finish — four adds over the same cut in `a-hole`, and what each
+of the two calls said about it. The cut is the 20 x 20 subtract at (-176, -156, -72, -52), floor 0.
+
+### an override add at the cut's own floor — the refill
+  PUT 200 · finish 422
+  SK13 complaint — 'refill' fills 400 column(s) that 'a-hole-cut' takes away — from (-176, -72) — so the
+  negative space the board states there is ground in the world. An override add beats a subtract on its
+  own layer
+  finish: the board cannot be built as drawn
+
+### a plain add at the cut's own floor — the same shape without `override`
+  PUT 200 · finish 200
+  SK13 complaint — 'plain-refill' draws nothing over 400 column(s) — from (-176, -72) — because
+  'a-hole-cut' takes them away, and a subtract beats every plain add on its layer whatever order the two
+  are written in. The shape is on the canvas and not in the world
+
+### an add on a second layer, at the cut's own floor
+  PUT 200 · finish 422
+  SK13 complaint — 'layer-refill' fills 400 column(s) that 'a-hole-cut' takes away — from (-176, -72) — so
+  the negative space the board states there is ground in the world. 'layer-refill' is on layer 'other' and
+  the subtract on 'ground', and a subtract reaches only the layer it is on
+  finish: the board cannot be built as drawn
+
+### an override add one course above the cut's floor — the bridge
+  PUT 200 · finish 200
+  (nothing said)
+
+The card's own layout is stored again after these, so the map the renders read is the clean one.
+
+`SK13` answers at two volumes. A fill is a **complaint** at the store, which answers 200 and keeps
+the shape, and a **refusal** at the finish, which answers 422 and builds nothing — so a board can
+sit stored for a long time carrying a fault only the finish says out loud.
+
+A plain add over a cut is the quieter half: it complains at both, the board builds, and that shape
+is simply absent from the world.
+
+The floor is the whole of the test. An add standing at or below the subtract's floor puts the
+negative space back; the same shape one course higher is a bridge over it and passes in silence.

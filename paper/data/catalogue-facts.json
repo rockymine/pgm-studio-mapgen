@@ -1,0 +1,125 @@
+{
+  "source": "http://localhost:7894/api",
+  "rules": {
+    "total": 183,
+    "families": 28,
+    "perFamily": {
+      "SK": 28,
+      "DR": 17,
+      "PL": 16,
+      "WX": 13,
+      "OB": 12,
+      "CT": 10,
+      "HS": 10,
+      "WL": 8,
+      "EX": 6,
+      "IM": 6,
+      "RL": 6,
+      "RQ": 6,
+      "HJ": 5,
+      "PT": 5,
+      "ST": 5,
+      "FR": 4,
+      "GO": 4,
+      "SP": 4,
+      "DC": 3,
+      "G": 3,
+      "HP": 3,
+      "ED": 2,
+      "LN": 2,
+      "CO": 1,
+      "EL": 1,
+      "EZ": 1,
+      "PC": 1,
+      "SH": 1
+    },
+    "byCategory": {
+      "unsatisfiable": 49,
+      "(none)": 45,
+      "unplayable": 25,
+      "malformed": 8,
+      "conflict": 41,
+      "unknown": 10,
+      "internal": 3,
+      "forbidden": 1,
+      "unavailable": 1
+    },
+    "withConcerns": 142,
+    "idPrefixes": 29
+  },
+  "law": {
+    "document": "/home/user/pgm-studio/docs/generator/rules.md",
+    "ids": 97,
+    "familyHeadings": 12,
+    "idPrefixes": 13,
+    "headingLetters": [
+      "CT",
+      "EL",
+      "FR",
+      "G",
+      "GO",
+      "HB",
+      "LN",
+      "MD",
+      "PC",
+      "SP",
+      "ST",
+      "WL"
+    ],
+    "prefixesWithoutHeading": [
+      "BZ"
+    ],
+    "servedInCatalogue": 41
+  },
+  "terms": {
+    "total": 31,
+    "byKind": {
+      "hard": 6,
+      "soft": 25
+    },
+    "byBandSource": {
+      "none": 6,
+      "envelope": 21,
+      "authored": 4
+    },
+    "withBand": 25,
+    "learnsFromTraced": 17
+  },
+  "routes": {
+    "operations": 231,
+    "paths": 174,
+    "areas": 22,
+    "withSummary": 212,
+    "byMethod": {
+      "GET": 109,
+      "POST": 62,
+      "PUT": 21,
+      "PATCH": 13,
+      "DELETE": 26
+    },
+    "perArea": {
+      "map": 126,
+      "terrain": 12,
+      "room-styles": 10,
+      "plan": 9,
+      "themes": 8,
+      "boulder-styles": 7,
+      "plans": 7,
+      "tree-styles": 7,
+      "biome-patterns": 6,
+      "porch-styles": 6,
+      "roof-styles": 6,
+      "storey-styles": 6,
+      "styles": 5,
+      "maps": 3,
+      "shapes": 3,
+      "compose": 2,
+      "configure": 2,
+      "rules": 2,
+      "health": 1,
+      "minecraft": 1,
+      "objectives": 1,
+      "sketch": 1
+    }
+  }
+}

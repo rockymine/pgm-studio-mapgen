@@ -1,0 +1,213 @@
+GET /api/map/technique-stacking-layers/column?at=x,z — one column per claim. The court's top block is y13
+everywhere; a gallery's walls stand y14..y18 and its roof is one course of planks at y19.
+
+### open — inside the gallery: five courses of air over a floor marked with its own shape
+=== column (-78, -32) — 15 solid block(s), ground 0° from level ===
+  y 19     5:1   Spruce Planks
+  y 13     1:6   Polished Andesite
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### open — under the roof's overhang, outside that shape: the court, painted as court
+=== column (-107, -35) — 15 solid block(s), ground 56° from level ===
+  y 19     5:1   Spruce Planks
+  y 13    24:0   Sandstone
+  y 12    24:1   Chiseled Sandstone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### open — the court beside the gallery, open to the sky: the same two blocks
+=== column (-78, -10) — 14 solid block(s), ground 0° from level ===
+  y 13    24:0   Sandstone
+  y 12    24:1   Chiseled Sandstone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### open — on the wall line: the roof's plank resting on the wall's top course, which is the seam
+=== column (-78, -37) — 20 solid block(s), ground 0° from level ===
+  y 19     5:1   Spruce Planks
+  y 18    98:1   Mossy Stone Bricks
+  y 17    98:0   Stone Bricks
+  y 16    98:0   Stone Bricks
+  y 15    98:0   Stone Bricks
+  y 14    98:0   Stone Bricks
+  y 13    24:0   Sandstone
+  y 12    24:1   Chiseled Sandstone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### driven — the same wall line one course lower: no plank at all, the roof absorbed into the wall
+=== column (78, -37) — 19 solid block(s), ground 0° from level ===
+  y 18    98:1   Mossy Stone Bricks
+  y 17    98:0   Stone Bricks
+  y 16    98:0   Stone Bricks
+  y 15    98:0   Stone Bricks
+  y 14    98:0   Stone Bricks
+  y 13    24:0   Sandstone
+  y 12    24:1   Chiseled Sandstone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### driven — inside the gallery, away from the walls, the roof stands at y18 and the storey survives
+=== column (78, -32) — 15 solid block(s), ground 0° from level ===
+  y 18     5:1   Spruce Planks
+  y 13     1:6   Polished Andesite
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### low — one course of wall, so one course of headroom
+=== column (0, -32) — 15 solid block(s), ground 0° from level ===
+  y 15     5:1   Spruce Planks
+  y 13     1:6   Polished Andesite
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### two-storeys — two galleries, two gaps, one column
+=== column (78, 26) — 16 solid block(s), ground 0° from level ===
+  y 25     5:1   Spruce Planks
+  y 19     5:1   Spruce Planks
+  y 13     1:6   Polished Andesite
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### stair-meets — the roof's own column
+=== column (-68, 28) — 15 solid block(s), ground 14° from level ===
+  y 19     5:1   Spruce Planks
+  y 13     1:6   Polished Andesite
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### stair-meets — the stair's last tread, one under it
+=== column (-68, 29) — 19 solid block(s), ground 14° from level ===
+  y 18    24:0   Sandstone
+  y 17    24:1   Chiseled Sandstone
+  y 16    24:2   Smooth Sandstone
+  y 15    24:2   Smooth Sandstone
+  y 14    24:2   Smooth Sandstone
+  y 13     1:0   Stone
+  y 12     1:0   Stone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+
+### stair-short — the one column of court left between them
+=== column (10, 29) — 14 solid block(s), ground 14° from level ===
+  y 13    24:0   Sandstone
+  y 12    24:1   Chiseled Sandstone
+  y 11     1:0   Stone
+  y 10     1:0   Stone
+  y  9     1:0   Stone
+  y  8     1:0   Stone
+  y  7     1:0   Stone
+  y  6     1:0   Stone
+  y  5     1:0   Stone
+  y  4     1:0   Stone
+  y  3     1:0   Stone
+  y  2     1:0   Stone
+  y  1     1:0   Stone
+  y  0     7:0   Bedrock
+

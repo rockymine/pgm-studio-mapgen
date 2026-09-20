@@ -1,0 +1,10 @@
+THEMES  5 themes over 4956 ground cells, 10 distinct surface blocks
+  front  1440 cells (29.1%)  2:0 Grass Block, 4:0 Cobblestone, 1:0 Stone, 1:6 Polished Andesite
+  back  1404 cells (28.3%)  2:0 Grass Block, 98:0 Stone Bricks, 1:0 Stone, 1:6 Polished Andesite, 4:0 Cobblestone
+  stair  864 cells (17.4%)  1:0 Stone, 98:0 Stone Bricks, 7:0 Bedrock, 4:0 Cobblestone, 1:6 Polished Andesite, 35:14 Red Wool, 35:11 Blue Wool
+  approach  864 cells (17.4%)  2:0 Grass Block, 4:0 Cobblestone, 7:0 Bedrock, 1:6 Polished Andesite, 1:0 Stone, 35:14 Red Wool, 35:11 Blue Wool
+  mid  384 cells (7.7%)  13:0 Gravel, 24:0 Sandstone
+borders:
+  front | stair  56 cells
+  back | stair  48 cells
+  approach | back  24 cells

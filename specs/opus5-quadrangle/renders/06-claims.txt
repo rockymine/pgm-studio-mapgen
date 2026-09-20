@@ -1,0 +1,181 @@
+CLAIMS  1 char = 1 block  x -88..87 across, z -88..87 down
+KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn keep-out  8 door approach  9 goal clearance  a wool-room keep-out  b structure keep-out  space void
+            -8        -7        -6        -5        -4        -3        -2        -1         0         1         2         3         4         5         6         7         8       
+     87654321098765432109876543210987654321098765432109876543210987654321098765432109876543210123456789012345678901234567890123456789012345678901234567890123456789012345678901234567
+ -88                                              0000888888888000                                                                                                                   
+ -87                                              0bbbbbbbbbbbbbba                                                                                                                   
+ -86                                              0bbbbbbbbbbbbbba                                                                                                                   
+ -85                                             00bbbbbbbbbbbbbba0                                                                                                                  
+ -84                                             88bbbbbbbbbbbbbba8                                                                                                                  
+ -83                                             88bbbbbbbbbbbbbba8                                                                                                                  
+ -82                                             88bbbbbbbbbbbbbba8                                                                                                                  
+ -81                                             88bbbbbbbbbbbbbba8                                                                                                                  
+ -80                                             88bbbbbbbbbbbbbba8                                                                                                                  
+ -79                                             88bbbbbbbbbbbbbba8                                                                                                                  
+ -78                                            888bbbbbbbbbbbbbba88                                                                                                                 
+ -77                                            888bbbbbbbbbbbbbba88                                                    000000bbbbbbbbbbbbbba                                        
+ -76                                            888bbbbbbbbbbbbbba88                                                    000000bbbbbbbbbbbbbba                                        
+ -75                                  0000000000000bbbbbbbbbbbb                                                         000000bbbbbbbbbbbbbba       aaaaaaaaaa                       
+ -74                                   000000000000bbbbbbbbbbbb                                                        8888888bbbbbbbbbbbbbba       aaaaaaaaaa                       
+ -73                                    00000000000aaaaaaaaaaaa                                                        8888888bbbbbbbbbbbbbba       aaabbbbbba                       
+ -72                                    00000000000000888888888                                                        8888888bbbbbbbbbbbbbba       aaabbbbbba                       
+ -71                                     0000000000000888888888                                                        8888888bbbbbbbbbbbbbba8      aaabbbbbba                       
+ -70                                      000000000000888888888                                                        8888888bbbbbbbbbbbbbba8      aaabbbbbba                       
+ -69                                     0000000000000888888888                                                        8888888bbbbbbbbbbbbbba8      aaabbbbbba                       
+ -68                                    00000000000000888888888                                                       08888888bbbbbbbbbbbbbba8      aaa2222bba                       
+ -67                                   000000000000000888888888                                                       08888888bbbbbbbbbbbbbba8      aa22222aaa                       
+ -66                                  0000000000000000888888888                                                       08888888bbbbbbbbbbbbbba8      aa22222aaa                       
+ -65              aaaaaaaaaa77700000000000000000000000000000000                                                            000bbbbbbbbbbbbb440      7222222777                       
+ -64              aabbbbbbaa77788888888888888880000000000000000                                                            050bbbbbbbbbbb44440      7222227777                       
+ -63              aabbbbbbaa7778888888888bbbbbbbbbbbbbbbbbbbbbb                                                            555aaaaaaaaaaa44444      2222227777                       
+ -62              aabbbbb2222778888888888bbbbbbbbbbbbbbbbbbbbbb                                                            5550008888888444444      2222288888                       
+ -61              aabbbbb2222228888888888bbbbbbbbbbbbbbbbbbbbbb                                                            5550008888888844444      2222288888                       
+ -60              aabbbbb2222222288888888bbbbbbbbbbbbbbbbbbbbbbbbb000000000000000bb                                        00000088888888444440     2222888888                       
+ -59              aabbbbb2222222222888888bbbbbbbbbbbbbbbbbbbbbbbbb000000000000000bb                                        00000088888888804000     2222888888                       
+ -58              aaaaaaaa222222222222888bbbbbbbbbb22bbbbbbbbbbbbb000000000000000bb                                        bbbbbbbbbbbbbbbbbbbb     2228888888                       
+ -57              aaaaaaaaaa2222222222222bbbbbbbbbbbbbbbbbbbbbbbbb000000000000000bb                                        bbbbbbbbbbbbbbbbbbbb     2228888888                       
+ -56              aaaaaaaaaa77222222222222222222222222222222220000000000000000000bb                                        bbbbbbbbbbbbbbbbbbbb     2228888888                       
+ -55                                  2222222222222222222222222200000000000000000bb                    bb0000000000000000bbbbbbbbbbbbbbbbbbbbbbbbb222288888888         0             
+ -54                                  2222222222222222222222222220000000000000000bb                    bb0000000000000000bbbbbbbbbbbbbbbbbbbbbbbbb2222888888880       00             
+ -53                                  22222222222220bb222222222222000000000000000bb                    bb0000000005555000bbbbbbbbbbbbbbbbbbbbbbbbb22228888888800    0000             
+ -52                                  bbbb0200bb0000bb0000bb222222000000000000000bb                    bb0000000055555000bbbbbbbbbbbbbbbbbbbbbbbbb2222bbbbbbb8000  00000             
+ -51                                  bbbb000bbb000000000bbb022222200000000000000bb                    bb00000000555550000000bbb000000000bbb0000022222bbbbbbb80000000000             
+ -50                            000bbbbbbb0000bb          bb002222200000000000000bb                    bb000000005555500000000bb4444000000bb0000222228bbbbbbb80000000000             
+ -49                 88888880044440bbbbbbb000000          00002222220000000000000bb                    bb000000000555500000000044444000000000000022222bbbbbbb80000000000             
+ -48            0008888888884444440bbbbbbbb00000          00000222220000000000000bb                    bb00000000000500000b000044444400000000000022222bbbbbbb80000000000             
+ -47            bbbbbbbbbbbb4444444bbbbbbbbb0000          0000bbb2220000000000000bb                    bb0000000000000000bbb000444440000000000bbb22222bbbbbbb80000000000             
+ -46            bbbbbbbbbbbbb444440bbbbbbbbb0000          0000bbb2220000000000000bb                    bb0000000000000000bbb000044400000000000bbb22222bbbbbbb00000000000             
+ -45            bbbbbbbbbbbbb444440bbbbbbbb00000          00000222220000000000000bb                    bb00000000000000000b                    0022222bbbbbbb00000000000088          
+ -44            bbbbbbbbbbbbbba4888bbbbbbb000000          00000022222000000000000bb                    bb000000000000000060                    0022222bbbbbbb000000000000888888888   
+ -43            bbbbbbbbbbbbbba8888bbbbbbb000000          00000022222000000000000bb                    bb000000000000000000                    0022222bbbbbbb000000000000888888888000
+ -42            bbbbbbbbbbbbbba8888bbbbbbb000000          00000bbbbbbbbbbbb000000bb                    bb0000bbbbbbbbbbbb00                    00022222bbbbbb000000000bbbbbbbbbbbbbba
+ -41            bbbbbbbbbbbbbba8888bbbbbbb000000          00000bbbbbbbbbbbb000000bb                    bb0000bbbbbbbbbbbbb0                    0bb22222bbbbbb000000000bbbbbbbbbbbbbba
+ -40            bbbbbbbbbbbbbba8888bbbbbbb000400          00000bbbbbbbbbbbb000000bb                    bb0000bbbbbbbbbbbbb0                    0bb2222bbbbbbb000000000bbbbbbbbbbbbbba
+ -39            bbbbbbbbbbbbbba8888bbbbbbb044440          00000bbbbbbbbbbbb000000bb                    bb0000bbbbbbbbbbbb00                    0022222bbbbbbb008888888bbbbbbbbbbbbbba
+ -38            bbbbbbbbbbbbbba8888bbbbbbb044444          00000bbbbbbbbbbbb000000bb                    bb0000bbbbbbbbbbbb00                    0022222bbbbbbb008888888bbbbbbbbbbbbbba
+ -37            bbbbbbbbbbbbbba8888bbbbbbb044444          00000bbbbbbbbbbbb000000bb                    bb0000bbbbbbbbbbbb00                    0022222bbbbbbb008888888bbbbbbbbbbbbbba
+ -36            bbbbbbbbbbbbbba8888bbbbbbb044444          00000bbbbbbbbbbbb000000bb                    bb0000bbbbbbbbbbbb00                    0022222bbbbbbb008888888bbbbbbbbbbbbbba
+ -35            bbbbbbbbbbbbbba0000bbbbbbbbb4440          0000bbbbbbbbbbbbb000000bb                    bb0000bbbbbbbbbbbbbbb000000000000000000bbb22222bbbbbbb008888888bbbbbbbbbbbbbba
+ -34            bbbbbbbbbbbbbba0000bbbbbbbbb0000          0004bbb0000000000000000bb                    bb0000000000000000bbb000000000000000000bbb22220bbbbbbb008888888bbbbbbbbbbbbbba
+ -33            aaaaaaaaaaaaaa55500bbbbbbbb00000          00444440000000000000000bb                    bb00000000000000000b444000000000000000000222220bbbbbbb008888888bbbbbbbbbbbbbba
+ -32            0008888888880555500bbbbbbb000000          00444440000000000000000bb                    bb000000000000000000444400000000000000002222220bbbbbbb008888888bbbbbbbbbbbbbba
+ -31            0008888888880055500bbbbbbb0000bb          bb444440000000000000000bb                    bb000000000000000004444bb0000000000bb0222222200bbbbbbb008888888bbbbbbbbbbbbbba
+ -30            000888888888          bbbb000bbb0000000000bb004000000000000000000bb                    bb00000000000000000044bbbbbbbbbb00bbb2222222200bbb               bbbbbbbbbbbba
+ -29            000888888888          bbbb0000bb0600bb0000bb000000000000000000000bb                    bb000000000000000000444bbbbbbbbb222bb2222222000bbb               bbbbbbbbbbbba
+ -28            000888888888          bbbb000000000bbbbbbbb0000000000000000000000bb                    bb0000000000000000000000bbbbbbbb222222222220000bbb               aaaaaaaaaaaaa
+ -27               888888888          0000000000000bbbbbbbb0000000000000000000000bb                    bb0000000000000000000000bbbbbbbb222222222000000000               0888888888   
+ -26                     888          0000000000000bbbbbbbb0000000000000000000000bb                    bb0000000000000000000000bbbbbbbb222222200000000000               088          
+ -25                                  0055555000000bbbbbbbb0000000000000000000000bb                    bb0000000000000000000000bbbbbbbb220000000000000000                            
+ -24                                  0055555500000bbbbbbbb0000000000000000000000bb                    bb0000000000000000000000bbbbbbbb000000000000000000                            
+ -23                                  0055555000000bbbbbbbb000000000000bbbbb00000bb                    bb0000bbbbb0000000000000bbbbbbbb000000000000000000                            
+ -22                                  0055555000000bbbbbbbb000000000000b0000bb000bb                    bb0000b0000bb00000000000bbbbbbbb000000000000000000                            
+ -21                                  0005550000000bbbbbbbb00000000000b000000b000bb                    bb000b000000b00000000000bbbbbbbb000000000000000000                            
+ -20                                  0000000000000bbbbbbbb00000000000b000000b000bb                    bb000b000000b00000000000bbbbbbbb000000000000000000                            
+ -19                                  0000000000000bbbbbbbb00000000000b000000b000bb                    bb000b000000b00000000000bbbbbbbb000000000000000000                            
+ -18                                  0000000000000bbbbbbbb00000000000b000000b000bb                    bb000b000000b0000000000000000000000000000000000000                            
+ -17                                  0000000000000bbbbbbbb00000000000bb0000b0000bb                    bb000bb0000b00000000000000000000000000000000000000                            
+ -16                                  0000000000000000000000000000000000bbbbb00000                     0000000bbbbb00000000000000000000000000000000000000                            
+ -15                                  0000000000000000000000000000000000000000000                       0000000000000000000000000000000000000000000000000                            
+ -14                                  000000000000000000000000000000000000000000                         000000000000000000000000000000000000000000000000                            
+ -13                                  00000000000000000000000000000000000000000                           00000000000000000000000000000000000000000000000                            
+ -12                                  bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0                             00bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb                            
+ -11                                  bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb                               0bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb                            
+ -10                                                                                                                                                                                 
+  -9                                                                                                                                                                                 
+  -8                                                                                                                                                                                 
+  -7                                                                                                                                                                                 
+  -6                                                                                                                                                                                 
+  -5                                                                                                                                                                                 
+  -4                                                                                                                                                                                 
+  -3                                                                                                                                                                                 
+  -2                                                                                                                                                                                 
+  -1                                                                                                                                                                                 
+   0                                                                                                                                                                                 
+   1                                                                                                                                                                                 
+   2                                                                                                                                                                                 
+   3                                                                                                                                                                                 
+   4                                                                                                                                                                                 
+   5                                                                                                                                                                                 
+   6                                                                                                                                                                                 
+   7                                                                                                                                                                                 
+   8                                                                                                                                                                                 
+   9                                                                                                                                                                                 
+  10                             bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb                               0bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb                                 
+  11                             bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb0                             00bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb                                 
+  12                             0000000000000000000000000000000000000000000000                           000000000000000000000000000000000000000000                                 
+  13                             00000000000000000000000000000000000000000000000                         0000000000000000000000000000000000000000000                                 
+  14                             000000000000000000000000000000000000000000000000                       00000000000000000000000000000000000000000000                                 
+  15                             00000000000000000000000000000000000000bbbbb000000                     000000bbbbb0000000000000000000000000000000000                                 
+  16                             00000000000000000000000000000000000000b0000bb000bb                    bb0000b0000bb00000000000bbbbbbbb0000000000000                                 
+  17                             0000000000000000000000000000000000000b000000b000bb                    bb000b000000b00000000000bbbbbbbb0000000000000                                 
+  18                             000000000000000000bbbbbbbb00000000000b000000b000bb                    bb000b000000b00000000000bbbbbbbb0000000000000                                 
+  19                             000000000000000000bbbbbbbb00000000000b000000b000bb                    bb000b000000b00000000000bbbbbbbb0000000000000                                 
+  20                             000000000000000000bbbbbbbb00000000000b000000b000bb                    bb000b000000b00000000000bbbbbbbb0000000555000                                 
+  21                             000000000000000000bbbbbbbb00000000000bb0000b0000bb                    bb000bb0000b000000000000bbbbbbbb0000005555500                                 
+  22                             000000000000000000bbbbbbbb0000000000000bbbbb0000bb                    bb00000bbbbb000000000000bbbbbbbb0000005555500                                 
+  23                             000000000000000000bbbbbbbb0000000000000000000000bb                    bb0000000000000000000000bbbbbbbb0000055555500                                 
+  24                             000000000000000022bbbbbbbb0000000000000000000000bb                    bb0000000000000000000000bbbbbbbb0000005555500                                 
+  25           888               000000000002222222bbbbbbbb0000000000000000000000bb                    bb0000000000000000000000bbbbbbbb0000000000000          000                    
+  26    0888888888               000000000222222222bbbbbbbb0000000000000000000000bb                    bb0000000000000000000000bbbbbbbb0000000000000          088888888              
+  27 0000888888888               000000022222222222bbbbbbbb0000000000000000000000bb                    bb0000000000000000000000bbbbbbbb0000000000000          088888888800           
+  28 0bbbbbbbbbbbb               bbbb002222222bb222bbbbbbbbb444000000000000000000bb                    bb000000000000000000000bb0000bb0000bb00000bbb          088888888800           
+  29 0bbbbbbbbbbbb               bbbb02222222bbb200bbbbbbbbb444000000000000000000bb                    bb00000000000000000040bbb000000000bbb00000bbb          088888888800           
+  30 0bbbbbbbbbbbbbba000000000bbbbbbb022222220bb0000000000bb444400000000000000000bb                    bb000000000000000044444bb          bb00000bbbbbbb055500088888888800           
+  31 8bbbbbbbbbbbbbba888888800bbbbbbb22222200000000000000004444000000000000000000bb                    bb00000000000000004444400          0000000bbbbbbb055550088888888800           
+  32 8bbbbbbbbbbbbbba888888800bbbbbbb22222b00000000000000000444000000000000000000bb                    bb00000000000000004b44400          0000000bbbbbbb055500088888888800           
+  33 8bbbbbbbbbbbbbba888888800bbbbbbb2222bbb000000000000000000bbb0000000000000000bb                    bb0000000000000000bbb4000          0000bbbbbbbbbb0000bbbbbbbbbbbbbb           
+  34 8bbbbbbbbbbbbbba888888800bbbbbbb2222bbb000000000000000000bbbbbbbbbbbbbbb0000bb                    bb000000bbbbbbbbbbbbb0000          0444bbbbbbbbbb0000bbbbbbbbbbbbbb           
+  35 8bbbbbbbbbbbbbba888888800bbbbbbb22220b                    00bbbbbbbbbbbb0000bb                    bb000000bbbbbbbbbbbb00000          4444400bbbbbbb0000bbbbbbbbbbbbbb           
+  36 8bbbbbbbbbbbbbba888888800bbbbbbb222200                    00bbbbbbbbbbbb0000bb                    bb000000bbbbbbbbbbbb00000          4444400bbbbbbb8888bbbbbbbbbbbbbb           
+  37 8bbbbbbbbbbbbbba888888800bbbbbbb222200                    00bbbbbbbbbbbb0000bb                    bb000000bbbbbbbbbbbb00000          4444400bbbbbbb8888bbbbbbbbbbbbbb           
+  38 8bbbbbbbbbbbbbba888888800bbbbbbb222200                    00bbbbbbbbbbbb0000bb                    bb000000bbbbbbbbbbbb00000          0444400bbbbbbb8888bbbbbbbbbbbbbb           
+  39 8bbbbbbbbbbbbbba888888800bbbbbbb222bb0                    0bbbbbbbbbbbbb0000bb                    bb000000bbbbbbbbbbbb00000          004000bbbbbbbb8888bbbbbbbbbbbbbb           
+  40 0bbbbbbbbbbbbbba000000000bbbbb2b222bb0                    0bbbbbbbbbbbbb0000bb                    bb000000bbbbbbbbbbbb00000          000000bbbbbbbb8888bbbbbbbbbbbbbb           
+  41 0bbbbbbbbbbbbbba000000000bbbbb2b222000                    00bbbbbbbbbbbb0000bb                    bb000000bbbbbbbbbbbb00000          0000000bbbbbbb8888bbbbbbbbbbbbbb           
+  42 0aaaaaaaaaaaaaaa000000000bbbbbbb222200                    000000000000000000bb                    bb00000000000022222000000          0000000bbbbbbb8888bbbbbbbbbbbbbb           
+  43    0888888888000000000000bbbbbbb222200                    000000000000000000bb                    bb00000000000022222000000          0000000bbbbbbb8848bbbbbbbbbbbbbb           
+  44           888000000000000bbbbbbb22220b                    000000000000000000bb                    bb00000000000002222b00000          0000000bbbbbbb44444bbbbbbbbbbbbb           
+  45              000000000000bbbbbbb2222bbb000000000004440000bbb0000000000000000bb                    bb0000000000000222bbb0000          0000bbbbbbbbbb44444bbbbbbbbbbbbb           
+  46              000000000000bbbbbbb2222bbb000000000044444000bbb0000000000000000bb                    bb0000000000000222bbb0000          0000bbbbbbbbb4444444bbbbbbbbbbbb           
+  47              000000000008bbbbbbb22220b00000000004444440000000000500000000000bb                    bb00000000000002222b00000          0000000bbbbbbb444444aaaaaaaaaaaa           
+  48              000000000008bbbbbbb22220000000000000444440000000005555000000000bb                    bb00000000000002222220000          0000000bbbbbbb444400088888                 
+  49              000000000008bbbbbbb222220000bb0000004444bb000000005555500000000bb                    bb000000000000002222200bb          bb00000bbbbbbb0                            
+  50              000000000008bbbbbbb22220000bbb0000000000bb000000005555500000000bb                    bb00000000000000222222bbb000000000bbb00000bbb                                 
+  51              00000 000008bbbbbbb222200000bb0000bb0000bb000000005555500000000bb                    bb000000000000000222222bb0000bb0000bb00200bbb                                 
+  52              0000   00008bbbbbbb2222bbbbbbbbbbbbbbbbbbbbbbbbb005555000000000bb                    bb000000000000000222222222222bb02222222222bbb                                 
+  53              00      000888888822222bbbbbbbbbbbbbbbbbbbbbbbbb000000000000000bb                    bb0000000000000000222222222222222222222222222                                 
+  54              0        00888888822222bbbbbbbbbbbbbbbbbbbbbbbbb000000000000000bb                    bb0000000000000000022222222222222222222222222                                 
+  55                        0888888222     bbbbbbbbbbbbbbbbbbbb                                        bb00000000000000000002222222222222222222222222222222277aaaaaaaaaa             
+  56                        0888888222     bbbbbbbbbbbbbbbbbbbb                                        bb00000000000000000000002222222222222228222222222222222aaaaaaaaaa             
+  57                        0888888222     bbbbbbbbbbbbbbbbbbbb                                        bb0000000000000000bbbbbbbbbbbb22bbbbbbbbbbb88222222222222aaaaaaaa             
+  58                        0888882222     bbb4bbbbbbbbbbbbbbbb                                        bb0000000000000000bbbbbbbbbbbbbbbbbbbbbbbbb888882222222222bbbbbaa             
+  59                        0888882222     04444488888888800000                                        bb0000000000000000bbbbbbbbbbbbbbbbbbbbbbbbb888888822222222bbbbbaa             
+  60                        0888822222     04444488888888800555                                                            bbbbbbbbbbbbbbbbbbbbbbb888888888222222bbbbbaa             
+  61                        0888822222      4444448888888800555                                                            bbbbbbbbbbbbbbbbbbbbbbb888888888872222bbbbbaa             
+  62                        0888222222      4444488888888800555                                                            bbbbbbbbbbbbbbbbbbbbbbb888888888877aabbbbbbaa             
+  63                        7777222227      04444bbbbbbbbbbba50                                                            bbbbbbbbbbbbbbbbbbbbbbb888888888877aabbbbbbaa             
+  64                        7772222227      044bbbbbbbbbbbbba00                                                            00000000000000000888888888888888877aaaaaaaaaa             
+  65                        aaa22222aa      00bbbbbbbbbbbbbba0000000                                                       000000000000000000000000                                  
+  66                        aaa22222aa      88bbbbbbbbbbbbbba8888888                                                       08888888880000000000000                                   
+  67                        abb2222aaa      88bbbbbbbbbbbbbba8888888                                                       0888888888000000000000                                    
+  68                        abbbbbbaaa      88bbbbbbbbbbbbbba888888                                                        088888888800000000000                                     
+  69                        abbbbbbaaa      88bbbbbbbbbbbbbba888888                                                        088888888800000000000                                     
+  70                        abbbbbbaaa      88bbbbbbbbbbbbbba888888                                                        0888888888000000000000                                    
+  71                        abbbbbbaaa      88bbbbbbbbbbbbbba888888                                                        08888888880000000000000                                   
+  72                        abbbbbbaaa       8bbbbbbbbbbbbbba888888                                                        08888888880000000000000                                   
+  73                        aaaaaaaaaa       8bbbbbbbbbbbbbba888888                                                        bbbbbbbbbbbba00000000000                                  
+  74                        aaaaaaaaaa       8bbbbbbbbbbbbbba88888                                                         bbbbbbbbbbbba000000000000                                 
+  75                                         0bbbbbbbbbbbbbba00000                                                    000bbbbbbbbbbbbbba00                                           
+  76                                         0bbbbbbbbbbbbbba00000                                                    888bbbbbbbbbbbbbba88                                           
+  77                                                                                                                  888bbbbbbbbbbbbbba88                                           
+  78                                                                                                                   88bbbbbbbbbbbbbba8                                            
+  79                                                                                                                   88bbbbbbbbbbbbbba8                                            
+  80                                                                                                                   88bbbbbbbbbbbbbba8                                            
+  81                                                                                                                   88bbbbbbbbbbbbbba8                                            
+  82                                                                                                                   88bbbbbbbbbbbbbba8                                            
+  83                                                                                                                   88bbbbbbbbbbbbbba8                                            
+  84                                                                                                                   88bbbbbbbbbbbbbba8                                            
+  85                                                                                                                    0bbbbbbbbbbbbbba                                             
+  86                                                                                                                    0bbbbbbbbbbbbbba                                             
+  87                                                                                                                    0aaaaaaaaaaaaaaa                                             
+placed 26, declined 0

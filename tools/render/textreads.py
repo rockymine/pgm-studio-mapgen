@@ -226,6 +226,22 @@ def write_all(into, slug, intent, layout, fetch, every=None):
 
     put("05-themes.txt", fetch("GET", f"/map/{slug}/themes/census?format=text"))
     put("06-claims.txt", fetch("POST", f"/map/{slug}/sketch/dressing?format=text", layout))
+
+    # `06-claims.txt` reads the pass backwards — what already claims each cell. This reads it forwards:
+    # where a kind's footprint may seat at all, before one is asked for. A position taken off the mask
+    # seats; a position chosen by eye is a decline waiting on a 200. The house footprint is the smallest
+    # the corpus builds, so the mask is the most generous answer a building has.
+    seats = []
+    for kind, query in (("tree", "kind=tree"), ("boulder", "kind=boulder"),
+                        ("house", "kind=house&width=9&depth=7")):
+        text = fetch("POST", f"/map/{slug}/sketch/seats?{query}&format=text", layout)
+        if text is None:
+            continue
+        seats.append(f"## {kind}\n{text}")
+        head = next((line for line in text.splitlines() if line.startswith("SEATS")), "")
+        summaries.append(f"  seats {kind}: {head[6:].strip() or 'written'}")
+    if seats:
+        put("07-seats.txt", "\n".join(seats))
     return written, summaries
 
 

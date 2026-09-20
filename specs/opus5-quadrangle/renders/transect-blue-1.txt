@@ -1,0 +1,57 @@
+## blue-1 (wool) along x
+TRANSECT 21 stations from (-88, 35) to (-68, 35), every 1
+  station        ground  surface  water  top  standing            step
+  (  -88,    35)      13       13           13                      
+  (  -87,    35)      13       13           13                      
+  (  -86,    35)      12       12           12                      -1
+  (  -85,    35)      13       13           18  redstoneline 3#1    +1
+  (  -84,    35)      13       13           19  wool wool-1#1       
+  (  -83,    35)      13       13           20  wool wool-1#1       
+  (  -82,    35)      13       13           21  wool wool-1#1       
+  (  -81,    35)      13       13           49  wool wool-1#1       
+  (  -80,    35)      13       13           49  wool wool-1#1       
+  (  -79,    35)      13       13           49  wool wool-1#1       
+  (  -78,    35)      13       13           20  wool wool-1#1       
+  (  -77,    35)      13       13           19  wool wool-1#1       
+  (  -76,    35)      13       13           18  redstoneline 0#1    
+  (  -75,    35)      12       12           12                      -1
+  (  -74,    35)      12       12           12                      
+  (  -73,    35)      12       12           12                      
+  (  -72,    35)      12       12           12                      
+  (  -71,    35)      12       12           12                      
+  (  -70,    35)      11       11           11                      -1
+  (  -69,    35)      11       11           11                      
+  (  -68,    35)      11       11           11                      
+rises 1, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: redstoneline 3#1 at (-85, 33), wool wool-1#1 at (-84, 33), redstoneline 0#1 at (-76, 33)
+
+## blue-1 (wool) along z
+TRANSECT 25 stations from (-80, 23) to (-80, 47), every 1
+  station        ground  surface  water  top  standing            step
+  (  -80,    23)                                                    void
+  (  -80,    24)                                                    void
+  (  -80,    25)                                                    void
+  (  -80,    26)      12       12           12                      
+  (  -80,    27)      12       12           12                      
+  (  -80,    28)      12       12           12                      
+  (  -80,    29)      12       12           12                      
+  (  -80,    30)      13       13           18  redstoneline 1#1    +1
+  (  -80,    31)      13       13           19  wool wool-1#1       
+  (  -80,    32)      13       13           20  wool wool-1#1       
+  (  -80,    33)      13       13           21  wool wool-1#1       
+  (  -80,    34)      13       13           49  wool wool-1#1       
+  (  -80,    35)      13       13           49  wool wool-1#1       
+  (  -80,    36)      13       13           49  wool wool-1#1       
+  (  -80,    37)      13       13           20  wool wool-1#1       
+  (  -80,    38)      13       13           19  wool wool-1#1       
+  (  -80,    39)      13       13           18  redstoneline 2#1    
+  (  -80,    40)      14       14           14                      +1
+  (  -80,    41)      14       14           14                      
+  (  -80,    42)      14       14           14                      
+  (  -80,    43)      15       15           15                      +1
+  (  -80,    44)                                                    void
+  (  -80,    45)                                                    void
+  (  -80,    46)                                                    void
+  (  -80,    47)                                                    void
+rises 3, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: redstoneline 1#1 at (-82, 30), wool wool-1#1 at (-82, 31), redstoneline 2#1 at (-82, 39)

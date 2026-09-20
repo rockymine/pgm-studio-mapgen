@@ -1,0 +1,59 @@
+## nethouse-1 (house) along x
+TRANSECT 25 stations from (33, 58) to (57, 58), every 1
+  station        ground  surface  water  top  standing            step
+  (   33,    58)      24       24           24                      
+  (   34,    58)      24       24           24                      
+  (   35,    58)      23       23           23                      -1
+  (   36,    58)      23       23           23                      
+  (   37,    58)      23       23           23                      
+  (   38,    58)      23       23           23                      
+  (   39,    58)      23       23           23                      
+  (   40,    58)      23       23           25  house nethouse-1    
+  (   41,    58)      23       23           26  house nethouse-1    
+  (   42,    58)      23       23           27  house nethouse-1    
+  (   43,    58)      23       23           28  house nethouse-1    
+  (   44,    58)      23       23           29  house nethouse-1    
+  (   45,    58)      23       23           29  house nethouse-1    
+  (   46,    58)      23       23           29  house nethouse-1    
+  (   47,    58)      22       22           28  house nethouse-1    -1
+  (   48,    58)      22       22           27  house nethouse-1    
+  (   49,    58)      22       22           26  house nethouse-1    
+  (   50,    58)                            25  house nethouse-1    void
+  (   51,    58)                                                    void
+  (   52,    58)                                                    void
+  (   53,    58)                                                    void
+  (   54,    58)                                                    void
+  (   55,    58)                                                    void
+  (   56,    58)                                                    void
+  (   57,    58)                                                    void
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree pine-3 at (34, 60), house nethouse-1 at (40, 56)
+
+## nethouse-1 (house) along z
+TRANSECT 23 stations from (45, 47) to (45, 69), every 1
+  station        ground  surface  water  top  standing            step
+  (   45,    47)                                                    void
+  (   45,    48)                                                    void
+  (   45,    49)                                                    void
+  (   45,    50)                                                    void
+  (   45,    51)                                                    void
+  (   45,    52)                                                    void
+  (   45,    53)                                                    void
+  (   45,    54)                            25  house nethouse-1    void
+  (   45,    55)      21       21           26  house nethouse-1    
+  (   45,    56)      23       23           27  house nethouse-1    scramble +2
+  (   45,    57)      23       23           28  house nethouse-1    
+  (   45,    58)      23       23           29  house nethouse-1    
+  (   45,    59)      23       23           28  house nethouse-1    
+  (   45,    60)      23       23           27  house nethouse-1    
+  (   45,    61)      24       24           26  house nethouse-1    +1
+  (   45,    62)      24       24           25  house nethouse-1    
+  (   45,    63)      24       24           24                      
+  (   45,    64)      24       24           24                      
+  (   45,    65)      24       24           24                      
+  (   45,    66)      24       24           24                      
+  (   45,    67)      24       24           24                      
+  (   45,    68)      24       24           24                      
+  (   45,    69)      24       24           24                      
+rises 2, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (45, 56) | walked end to end
+beside: house nethouse-1 at (43, 54)

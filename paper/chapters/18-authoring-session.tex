@@ -1,0 +1,242 @@
+\chapter{The Anatomy of an Authoring Session}
+\label{ch:session}
+
+\section{Authoring Without Sight}
+
+An agent building a map cannot see it. It has no viewport, it cannot walk the
+ground, and it cannot glance at a hillside and notice that the slope is wrong.
+Every belief it holds about what it has built is a number that the studio handed
+back, or an inference from one.
+
+That single constraint produces most of the craft in this chapter. Almost every
+recurring failure across the corpus of run reports reduces to one of three
+mistakes: believing a success that was not one, believing a picture instead of a
+measurement, or believing a number the agent computed itself. The disciplines that
+have accumulated against those three are the substance of an authoring method.
+
+\section{Success Without Effect}
+
+The most repeated finding in the corpus, and the one that has cost the most
+builds, is that a 200 is not a yes.
+
+\begin{quote}
+Every 2xx carries \id{warnings}, and a \id{decline} means a piece of what you
+posted is not in the world. \id{SK9}, \id{SK10}, \id{SK15}, \id{WX11}, \id{HS7}
+and the \id{DR} family all arrive on a 200. The status code is half the answer.
+\end{quote}
+
+\Cref{tab:silent} collects instances. Each one stored at 200, passed the export
+gate, and produced a world missing something the author believed was in it.
+
+\begin{table}[htbp]
+\caption{Things that silently did not happen. Every row stored successfully.}
+\label{tab:silent}
+\small
+\begin{tabularx}{\textwidth}{Y L{5.0cm}}
+\toprule
+\textbf{What was not in the world} & \textbf{What said so, if anything} \\
+\midrule
+Eleven piers and kerbs, all on one layer, where a layer holds one span per column &
+  \id{SK9} on a 200, export gate open \\
+The enemy team's bridge to its own island, because \id{zones} is not fanned by the
+  plan's symmetry &
+  nothing refused; the evaluator scored 0; a grid render showed ten cells of
+  enclosed void \\
+Both wool rooms, built as bedrock boxes because the finish key is \id{wool} and
+  the document said \id{cage} &
+  nothing. A key the reader does not know is dropped in silence \\
+A gill stated as a lower piece enclosed by higher ones, where the taller add wins
+  every column &
+  nothing until a transect was read across it \\
+A flight, deleted by a \id{raise 0} paint patch drawn after it &
+  nothing. Paint goes down before flights \\
+A wall, buried by terrain, because a wall's height comes from the plan and not
+  from the relief &
+  nothing \\
+One column of deck, standing as a six-block wall across the only way into a lower
+  storey, because a polygon's far bound is exclusive &
+  nothing, and invisible to every read but a transect \\
+A path, drawn at width zero because the polyline was written with \id{width} and
+  \id{points} instead of \id{radius} and \id{vertices} &
+  \id{SK4} on the dressing preview, and nothing else \\
+Twenty-six courses of city, painted as viaduct rail, because a plain layer's
+  bands run from the bedrock course whatever its \id{base\_y} &
+  nothing. The census counts the surface and was right \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+One run's summary of the studio-side defects it had provoked states the systemic
+shape: six of the seven were one shape, which is that something was dropped and
+nothing said so. And the sharpest sentence in the corpus on why that matters:
+
+\begin{quote}
+A gate that drops something without saying so does not just cost a build cycle. It
+teaches the wrong contract, and the wrong contract then gets written down.
+\end{quote}
+
+That is not hypothetical. Five documents carried a wrong claim about author
+identifiers before the repository's author caught it, each one written in good
+faith by an agent that had watched a request succeed.
+
+\section{Projection Versus Measurement}
+
+The studio renders a great many pictures, and every one of them is a projection.
+A projection answers whether something came out. It does not answer whether it is
+right, and reading one as though it did is the second failure class.
+
+The corpus rule is blunt: when two reads disagree, \route{column} is the one that
+is not a projection. One run recorded that nine of its ten faults were found by
+reading a column and counting courses, with the renders confirming them
+afterwards.
+
+Four corrections are worth stating because each looks like a defect in the map and
+is in fact a defect in the reading.
+
+A top-down material render draws the top \emph{solid} block, so water reads as its
+own bed. One run concluded a lake was missing on that evidence. A traversability
+render marks an approach wall's cobweb course as impassable although the gate does
+not, so a board with an approach wall reads isolated; measured across twelve
+boards, every board with such a wall read isolated except one, and five that read
+badly all passed the export gate. A transect taken through a height filter reads
+short, which produced a report that a causeway was six blocks low. And a symmetry
+error of zero is a true statement about \emph{one solved field}, not about the four
+copies of it, which is how one run trusted a symmetry reading for four builds while
+two of four quarters had no relief at all.
+
+\begin{ruling}{Two Reads That Are Both Right}
+On one board, the cross-board reachability reading reported 0 of 108 rows
+crossable while the walk tier reported a single connected place holding 99.8\% of
+the ground. Both were correct: they ask different questions. A reader who does not
+know which question an instrument asks will take one of its answers as a verdict on
+the map.
+\end{ruling}
+
+\section{Computed Values and the Duty to Read Back}
+
+The third failure class has a single tell, and the working skill states it
+directly: a number you derived yourself, used as if it had been read back. If you
+computed it, measure the thing you computed before building on it.
+
+The instances are instructive because the arithmetic was not wrong so much as
+answering a different question. An agent assumed a river's eight-block drop was the
+same on both banks; it was not. An agent computed a push's crown gradient at 0.62
+and measured 0.30, twice, because the half-width a crown divides by is the ring's
+own medial distance and no arithmetic in a specification predicts it.
+
+The best example is about distance itself. An agent proved, by a
+perpendicular-bisector argument, that a particular board's lopsided wool could not
+be closed, and wrote the proof into the specification. Then it asked the studio for
+the walk, which read 169 and 165. Moving the near wool twenty blocks west, onto an
+outwork across a strait, moved the \emph{walk} by thirty-five blocks, because the
+walk has to come back round the water.
+
+\begin{ruling}{Straight-Line Arithmetic Is Not a Walk}
+Every distance in every rule is measured over the walkable surface, and the studio
+will compute one on request at no cost. An agent reasoning in Euclidean distance
+about a board with a hole in it is reasoning about a different board.
+\end{ruling}
+
+\section{Misreading the Evaluator}
+
+Two failures are about the scoring surface rather than the map, and both are
+failures of interpretation.
+
+The first is reading a score upside down. The evaluator's score is a
+\emph{distance}: zero is a board with no term outside its band. One run narrowed a
+board, watched the score fall from 0.8 to 0, and read that as worse.
+
+The second is more expensive and is the most instructive single episode in the
+corpus. An agent read \id{"kind": "hard"} on two scoring terms as meaning
+\emph{this will not build}, and rebuilt a board at twice its size to satisfy them.
+Nothing refuses on those terms. What followed was not one mistake but a cascade:
+doubling the cell doubled the spawn protection region past its cap, which split the
+corner into three, which took the wool room to 20$\times$20 with an 18$\times$18
+cage, which needed four shelf pieces to hide the resulting plinth, which produced
+1{,}236 blocks of dead-level pad per quarter and 4{,}944 on the board, or 21\% of
+its ground. Driven afterwards at the original scale, the board pre-flighted clean
+and exported at 0.0\% dead against 1.1\% doubled.
+
+The agent's own verdict on the episode is the part worth quoting, because it names
+a failure mode specific to systems that write their own documentation:
+
+\begin{quote}
+And I did not merely make the mistake, I canonised it. \emph{A cell is a scale and
+an arrangement is a design} went into the review and into the README as though it
+were a principle. It is a sentence I invented to justify a change.
+\end{quote}
+
+\section{Missing, Unreachable, Mistaken}
+
+The discipline that has done most to keep the corpus honest is a three-way verdict
+that every recent report applies to anything it could not do.
+
+\begin{description}[leftmargin=1.6em,style=nextline,itemsep=4pt]
+  \item[Missing] There is no mechanism. The system genuinely cannot do this.
+  \item[Unreachable] The mechanism exists and the surface hid it.
+  \item[Mistaken] The mechanism exists, is documented, and the agent did not find it.
+\end{description}
+
+\emph{Mistaken} is the usual verdict, and the reason is a property of how surfaces
+are indexed:
+
+\begin{quote}
+Search the surface by what a thing would \emph{do}, not by what you would call it.
+\id{mistaken} is the usual verdict because the surface is indexed by name and a
+capability is wanted by function, so one grep of the obvious word answers nothing
+and reads as proof.
+\end{quote}
+
+Two gaps filed in a single run illustrate it exactly. Ground cover was written up
+as absent; the mechanism exists under the name \emph{flora}, and the word was never
+searched because the question had been phrased as grass coverage. An intra-team
+build zone was written up as unmodelled; it is on the wire three times over, under
+a transient-link clause, a defender-egress bridge and a scored term with a stated
+band. None of the three contains the word \emph{zone}, and the search was for
+\emph{zone}.
+
+The judgement that follows is the strongest argument in the corpus for the verdict
+discipline:
+
+\begin{quote}
+A gap filed against a surface that has the feature is worse than no gap. It is a
+capability the next run also will not use, and nothing will ever contradict it.
+\end{quote}
+
+The ratio is worth recording as a number. Of nine things one run could not do,
+five were the schema being right and the agent reading it wrong, three were a
+deliberate rule saying no and saying why, and one was the surface genuinely unable
+to answer.
+
+\section{Placement as Query, Restated}
+
+\Cref{ch:division} introduced the inversion; this is its cost curve. Across three
+separate runs, the count of declined props on successive dressing passes runs
+seven, four, two, zero; six, five, three, none; and five, five, five, six. In every
+case the pass that moved the number to zero was the one where every position came
+off the studio's own seats mask rather than off the agent's judgement.
+
+An agent that places by eye and corrects converges slowly or not at all. An agent
+that asks which seats are legal and chooses among them is finished in one pass.
+This is the clearest instance in the system of the general principle that the
+studio knows things the agent cannot see, and the productive move is to ask rather
+than to guess and be corrected.
+
+\section{The Corrections That Reads Bought}
+
+It is worth ending on the positive form, because the reads are not merely a check.
+Several of the largest design improvements in the corpus came from a measurement
+contradicting a belief, and the change that followed was small.
+
+Moving one wool room from a ring's near corner to its far one took the board's dead
+ground from 25\% to 5\%, with nothing else on the board moving. Widening the middle
+third of a bar, having found that widening the whole corridor made things worse,
+took unreached ground from 9\% to zero. A first cut of the slope bands at
+24 degrees put an entire hill into one band and produced a board that came out grey
+with green only at its edges; the incline reading said where the bands actually
+fell, and a recut at 32 fixed it. On another board the same reading answered that
+77\% of cells were under ten degrees and 0.5\% above twenty, which is to say that
+the board the agent had planned to finish by angle had almost no angle in it.
+
+None of those were caught by a gate. All of them were caught by asking the studio a
+question whose answer the agent could not have computed.

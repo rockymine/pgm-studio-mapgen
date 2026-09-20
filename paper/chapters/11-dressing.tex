@@ -1,0 +1,160 @@
+\chapter{Dressing: Placing Rather Than Sprinkling}
+\label{ch:dressing}
+
+\section{The Central Decision, and the Rewrite That Produced It}
+
+Dressing is the third pass over a realized world, after the structures are stamped
+and the terrain is painted. Where the painter adds no geometry and only rewrites
+materials, this pass exists to add geometry: trees, boulders, flora, paths,
+buildings.
+
+The obvious design for such a pass is a set of density fields assigned to shapes,
+the way a terrain theme is assigned. That was the first implementation, and it was
+replaced. The reasoning is the clearest statement in the system of why map-making
+resists automation:
+
+\begin{quote}
+A tree is cover and a boulder is a wall, so where each one stands decides how the
+map plays, and a decision about how a map plays belongs to the person making it
+rather than to a noise field. So every part of this stage is a thing put somewhere:
+a route is dragged, an area of cover is traced, a tree and a rock are clicked into
+place, and each carries its own knobs. The fields that remain are the ones
+\emph{inside} a drawn area, where placing them one at a time would be data entry
+rather than authoring.
+\end{quote}
+
+That line, between a decision that affects play and a decision that is merely
+tedious, is drawn once and then holds. Which tree stands at the mouth of a lane is
+authored. Which blade of grass fills a square metre of meadow is not.
+
+\section{Running Last Is What Makes It Tractable}
+
+The pass reads the finished, painted world. That ordering is load-bearing rather
+than incidental: the painter has already decided, per cell, what the surface
+\emph{is}, so soil accepts flora and quartz does not, grass can be replaced by a
+stroke and a monument's wool cannot. A pass running earlier would have to predict
+all of that.
+
+The one elevation model it needs is the first air height above each column, and the
+one it is given is the tops of everything on the board \emph{that is not a made
+thing}.
+
+\begin{ruling}{A Made Thing Is Not Ground}
+Nothing that rests on the board treats a made thing as ground. The failure that
+established this is instructive: a cloud drawn at $y=78$ over a car park was the
+top of every column beneath it, so the goal there read the cloud and was stamped at
+$y=83$, over a build ceiling of 68. The same elevation feeds the structure-site
+check, which would otherwise report a shed under a balloon as standing on a
+fifty-block plinth.
+\end{ruling}
+
+Two consequences follow for a stacked board. A prop carries an optional layer and
+rests on that layer's own surfaces; naming a layer the board has no ground on is
+declined. And the claim book that stops two props sharing a cell is keyed on the
+layer as well as the cell, so two props share a cell only where they share a layer.
+
+\section{Keeping Ground Clear}
+
+A shape can declare that it is not ground to dress. A shape marked \id{keepClear}
+puts its own columns into the mask exactly and with no margin, so a road still runs
+to a gate while the wall either side of it keeps its top course.
+
+The failure without it is worth stating because it is not obvious. A stroke
+repaints whatever it crosses. A channel, whose water line is the \emph{lowest}
+surface its band crosses, cuts every other column in the band down to that line.
+On a wall standing seventeen courses over a river, that is a hole through the wall
+rather than a bank.
+
+The keep-out mask itself gathers spawns, wool rooms, stated structures, built
+columns, the shapes that marked themselves clear, and every door's approach. It is
+not the map contract's protection regions, and destroyables and cores are
+deliberately not in it.
+
+\section{Six Primitives}
+
+\begin{description}[leftmargin=1.6em,style=nextline,itemsep=5pt]
+  \item[Noise] The same deterministic hash-from-cell the terrain patterns use, never
+    a random number generator. A density field decides where flora goes, a
+    low-frequency field gathers flowers into meadows and trees into groves, and a
+    per-cell value is the dice a worn stroke rolls.
+  \item[Mask] Eligibility, read from the painted surface and from the keep-out set.
+    The whole of it applies to anything that stands on ground; only the structure
+    part applies to a stroke, which stands on nothing.
+  \item[Placement] A \emph{point} for props that stand somewhere, a \emph{drawn
+    outline} for ones that cover a stretch, and a \emph{dragged rectangle} for the
+    one whose stamp takes a footprint. A marker seats on the ground and can
+    therefore only be dropped on rasterized terrain; an area has no such limit.
+  \item[Reshaping] A selected prop wears one grip per point. Reshaping never changes
+    how many points a prop has.
+  \item[Stamp] A three-dimensional volume seated on the surface and written cell by
+    cell. A prop seats on the \emph{lowest} column of its own footprint, so it sits
+    into a slope rather than floating over the low side.
+  \item[The fan] Every prop is placed once and stamped at every image of its orbit,
+    in the prop's own local frame, with each offset turned by that image's
+    transform.
+\end{description}
+
+Two details in that list repay attention.
+
+\begin{ruling}{Only the Feet Are Asked About}
+What a prop \emph{rests} on needs real ground; what it merely reaches over does
+not. A cell of the prop standing where something already is is skipped, and nothing
+else happens.
+\end{ruling}
+
+The fan carries a mistake worth naming, because it is invisible in a top-down
+render and obvious in play. Mirroring only the anchor leaves both teams with the
+same unmirrored prop shape, so a boulder with a lobe to its east has a lobe to its
+east on both sides of the map. The stamp is also all-or-nothing per image: if one
+image's ground is missing or kept clear, that image is skipped rather than clipped.
+
+\section{Clipping, and the Piece of Tree Floating Next to a Building}
+
+A prop stamped against an obstruction can end in one of three states, and the
+studio distinguishes them because only one is a fault.
+
+\textbf{Truncated} is a prop with a face taken off it. Measured against a wall two
+blocks off its centre, an erratic of size seven loses 36\% of its 1{,}089 blocks
+and severs none of them. That is acceptable: it reads as a boulder against a wall.
+
+\textbf{Cut in two} is a prop whose obstruction took out the blocks joining a piece
+of it to the rest. Nothing declines, the tree is in the world, and there is a piece
+of tree floating next to a building.
+
+The measurement is taken against the prop \emph{as it would have stood on open
+ground}, and connectivity is judged by face adjacency, because a block joined to
+its neighbour at a corner alone has air on all six of its own faces and is seen
+straight past.
+
+\section{Placement Is a Query}
+
+\Cref{ch:division} and \cref{ch:session} both arrive at this point from different
+directions, and it belongs here as mechanism. The studio can answer where a prop or
+a building may legally stand, and an agent that asks converges immediately where an
+agent that guesses does not.
+
+Across three separate runs, declined props on successive dressing passes ran seven,
+four, two, zero; then six, five, three, none; then five, five, five, six. In every
+case the pass that reached zero was the one where every position came off the
+studio's own seats mask rather than off the agent's judgement. One run states the
+final tally plainly: 78 placed, 0 declined.
+
+The same read answers a question about the board rather than about the prop. Asked
+whether a composed board had room for buildings, the seats read answered that a
+12$\times$8 house seated in \emph{zero} cells, a 9$\times$7 in zero, and a
+7$\times$5 in seventy. That is a fact about the board's grain, and no picture of it
+would have said so.
+
+\section{Trees That Are Copied Rather Than Grown}
+
+A tree may be a recipe the studio grows, or it may be \emph{copied}: a body
+recorded block for block out of a real world and filed in the library under a name.
+A placement then names that style. The distinction matters for the look of a board
+more than almost anything else in this chapter, because a grown tree is
+recognisably generated and a copied one is recognisably built.
+
+One caution from the corpus, which no gate reports: nothing asks what block a prop
+is seated \emph{on}. The site check asks whether there is ground under a prop, not
+what that ground is. One run found thirty-five of ninety-eight trees not seated on
+soil, including trees on ice, on coal ore, six on a ruin's masonry, and one planted
+in another tree's leaves. The only read that answers it is one column per prop.

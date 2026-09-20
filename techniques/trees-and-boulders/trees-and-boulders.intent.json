@@ -1,0 +1,83 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "team": "red",
+   "yaw": 90,
+   "iron": [],
+   "point": {
+    "x": -137,
+    "y": 8,
+    "z": 55
+   },
+   "protection": [
+    {
+     "minX": -143,
+     "minZ": 51,
+     "maxX": -131,
+     "maxZ": 59
+    }
+   ]
+  },
+  {
+   "team": "blue",
+   "yaw": 270,
+   "iron": [],
+   "point": {
+    "x": -19,
+    "y": 8,
+    "z": 55
+   },
+   "protection": [
+    {
+     "minX": -25,
+     "minZ": 51,
+     "maxX": -13,
+     "maxZ": 59
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 40,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "destroyables": [
+  {
+   "owner": "blue",
+   "name": "Clearance Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "float": 4,
+   "anchor": {
+    "x": 39,
+    "y": 7,
+    "z": 35
+   }
+  }
+ ],
+ "meta": {
+  "name": "Trees And Boulders",
+  "created": "2026-09-20",
+  "authors": [
+   "the technique cards"
+  ],
+  "contributors": []
+ }
+}

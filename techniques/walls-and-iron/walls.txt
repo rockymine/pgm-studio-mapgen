@@ -1,0 +1,60 @@
+GET …/walk — straight at the wall, at each of the three stations. A walk travels its aim line and
+reports what it meets, so this is the cost of going THROUGH rather than the route a player finds.
+
+### line — one wall, on the approach's outer interface, no ground past its ends
+  from=8,60&to=8,8
+  ROUTE (8, 60) -> (8, 8) aim travel: 52 blocks, 9 placed, 2 drop(s), worst drop 8
+  rises 2, falls 2, worst step 8: barrier +4 at (8, 32); drop -4 at (8, 30); barrier +7 at (8, 14); drop -8 at (8, 9)
+### shoulder — the same wall, with a piece of ground either side of it
+  from=64,60&to=64,8
+  ROUTE (64, 60) -> (64, 8) aim travel: 52 blocks, 9 placed, 2 drop(s), worst drop 8
+  rises 2, falls 2, worst step 8: barrier +4 at (64, 32); drop -4 at (64, 30); barrier +7 at (64, 14); drop -8 at (64, 9)
+### sealed — two walls in series on one approach
+  from=136,60&to=136,8
+  ROUTE (136, 60) -> (136, 8) aim travel: 52 blocks, 12 placed, 3 drop(s), worst drop 8
+  rises 3, falls 3, worst step 8: barrier +4 at (136, 48); drop -4 at (136, 46); barrier +4 at (136, 32); drop -4 at (136, 30); barrier +7 at (136, 14); drop -8 at (136, 9)
+
+Each line ends with `barrier +7` and a drop at the wool room's own wall, which every station has
+and no defence wall put there. What the defence wall costs is the `barrier +4` before it: one at
+`line` and `shoulder`, two at `sealed`.
+
+### the way round, at `shoulder` — three legs, none of which meets the wall
+
+  north off the field into the piece beside the approach
+  from=48,40&to=48,24
+  ROUTE (48, 40) -> (48, 24) aim travel: 16 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+  east into the approach itself, behind the wall
+  from=48,24&to=64,24
+  ROUTE (48, 24) -> (64, 24) aim travel: 16 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+  north at the room, which is the room's own wall and not the defence wall
+  from=64,24&to=64,8
+  ROUTE (64, 24) -> (64, 8) aim travel: 16 blocks, 6 placed, 1 drop(s), worst drop 8
+  rises 1, falls 1, worst step 8: barrier +7 at (64, 14); drop -8 at (64, 9)
+
+### the same ground at `line`, which is not there
+
+  west of the line approach                    === column (-8, 24) — 0 solid block(s) ===
+  east of the line approach                    === column (24, 24) — 0 solid block(s) ===
+  west of the shoulder approach, for the comparison === column (48, 24) — 9 solid block(s), ground 0° from level ===
+
+### what a wall is, read at (8, 32)
+  === column (8, 32) — 13 solid block(s), ground 0° from level ===
+  y 12    30:0   Cobweb
+  y 11     7:0   Bedrock
+  y 10     7:0   Bedrock
+  y  9     7:0   Bedrock
+  y  8     7:0   Bedrock
+  y  7     7:0   Bedrock
+  y  6     7:0   Bedrock
+
+A wall is bedrock, and nothing breaks it or is placed over it. That is the whole of the device:
+the decision is whether a player meets it, and the geometry either side is what decides.
+
+At `shoulder` two legs reach the approach behind the wall with nothing placed, because a piece of
+ground was pulled out past each of the wall's ends. At `line` the same two columns are void —
+there is no ground beside the approach, so the wall is the only way through.
+
+`sealed` is the other bound: two `barrier +4` steps on one approach, which
+`docs/gameplay/approaches.md` settles as a sealed room rather than a prepared line.

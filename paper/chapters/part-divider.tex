@@ -1,0 +1,15 @@
+% A part divider: the part's number and name, and one sentence saying what it is for.
+\newcommand{\partpage}[3]{%
+  \cleardoublepage
+  \thispagestyle{empty}%
+  \vspace*{7cm}
+  \noindent{\sffamily\large\color{ink30} PART #1}\par
+  \vspace{6pt}
+  \noindent{\sffamily\fontsize{26}{30}\selectfont\bfseries\color{ink} #2}\par
+  \vspace{12pt}
+  \noindent{\color{rule}\rule{0.28\textwidth}{1pt}}\par
+  \vspace{12pt}
+  \noindent\begin{minipage}{0.82\textwidth}\color{ink60}\small #3\end{minipage}
+  \addcontentsline{toc}{part}{Part #1. #2}%
+  \cleardoublepage
+}

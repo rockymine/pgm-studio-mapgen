@@ -1,0 +1,300 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Revetment"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 30,
+  "surface": 11,
+  "observerY": 58
+ },
+ "pieces": [
+  {
+   "id": "hub-t1",
+   "role": "piece",
+   "rect": [
+    -5,
+    11,
+    7,
+    2
+   ],
+   "surface": 17
+  },
+  {
+   "id": "hub-t2",
+   "role": "piece",
+   "rect": [
+    -5,
+    7,
+    7,
+    2
+   ],
+   "surface": 17
+  },
+  {
+   "id": "hub-t3",
+   "role": "piece",
+   "rect": [
+    -5,
+    9,
+    2,
+    2
+   ],
+   "surface": 17
+  },
+  {
+   "id": "hub-t4",
+   "role": "piece",
+   "rect": [
+    0,
+    9,
+    2,
+    2
+   ],
+   "surface": 17
+  },
+  {
+   "id": "hub-t5",
+   "role": "piece",
+   "rect": [
+    2,
+    11,
+    3,
+    2
+   ],
+   "surface": 17
+  },
+  {
+   "id": "hub-t6",
+   "role": "piece",
+   "rect": [
+    2,
+    7,
+    3,
+    2
+   ],
+   "surface": 17
+  },
+  {
+   "id": "hub-t7",
+   "role": "piece",
+   "rect": [
+    4,
+    9,
+    1,
+    2
+   ],
+   "surface": 17
+  },
+  {
+   "id": "spawn-t1",
+   "role": "piece",
+   "rect": [
+    -2,
+    13,
+    4,
+    2
+   ],
+   "surface": 17
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    -2,
+    15,
+    4,
+    2
+   ],
+   "surface": 17
+  },
+  {
+   "id": "ward-w-gate",
+   "role": "piece",
+   "rect": [
+    -7,
+    7,
+    2,
+    6
+   ],
+   "surface": 17
+  },
+  {
+   "id": "ward-w-s",
+   "role": "piece",
+   "rect": [
+    -10,
+    8,
+    3,
+    1
+   ],
+   "surface": 17
+  },
+  {
+   "id": "wool-a-room",
+   "role": "wool-room",
+   "rect": [
+    -9,
+    9,
+    2,
+    2
+   ],
+   "surface": 17
+  },
+  {
+   "id": "ward-w-w",
+   "role": "piece",
+   "rect": [
+    -10,
+    9,
+    1,
+    2
+   ],
+   "surface": 17
+  },
+  {
+   "id": "ward-w-n",
+   "role": "piece",
+   "rect": [
+    -10,
+    11,
+    3,
+    1
+   ],
+   "surface": 17
+  },
+  {
+   "id": "ward-e-gate",
+   "role": "piece",
+   "rect": [
+    5,
+    7,
+    2,
+    6
+   ],
+   "surface": 17
+  },
+  {
+   "id": "ward-e-s",
+   "role": "piece",
+   "rect": [
+    7,
+    8,
+    3,
+    1
+   ],
+   "surface": 17
+  },
+  {
+   "id": "wool-b-room",
+   "role": "wool-room",
+   "rect": [
+    7,
+    9,
+    2,
+    2
+   ],
+   "surface": 17
+  },
+  {
+   "id": "ward-e-e",
+   "role": "piece",
+   "rect": [
+    9,
+    9,
+    1,
+    2
+   ],
+   "surface": 17
+  },
+  {
+   "id": "ward-e-n",
+   "role": "piece",
+   "rect": [
+    7,
+    11,
+    3,
+    1
+   ],
+   "surface": 17
+  },
+  {
+   "id": "frontline-t1",
+   "role": "piece",
+   "rect": [
+    -5,
+    2,
+    10,
+    5
+   ],
+   "surface": 11
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -5,
+    -2,
+    10,
+    4
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     10,
+     5
+    ],
+    "facing": "front"
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-a-room",
+    "at": [
+     5,
+     5
+    ]
+   },
+   {
+    "id": "wool-2",
+    "piece": "wool-b-room",
+    "at": [
+     5,
+     5
+    ]
+   }
+  ],
+  "iron": [],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [
+  {
+   "a": "ward-w-gate",
+   "b": "hub-t2"
+  },
+  {
+   "a": "ward-w-gate",
+   "b": "hub-t1"
+  },
+  {
+   "a": "ward-e-gate",
+   "b": "hub-t6"
+  },
+  {
+   "a": "ward-e-gate",
+   "b": "hub-t5"
+  }
+ ],
+ "boxes": []
+}

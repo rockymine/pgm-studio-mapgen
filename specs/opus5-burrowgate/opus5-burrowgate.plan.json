@@ -1,0 +1,199 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Burrowgate",
+  "notes": "CTW. Two wools on sunken shelves under a hill; a gallery runs the length of the hub between them, and the east shelf is an island its own team bridges to."
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 16,
+  "observerY": 48
+ },
+ "pieces": [
+  {
+   "id": "hub-bar",
+   "role": "piece",
+   "rect": [
+    -1,
+    8,
+    7,
+    4
+   ],
+   "surface": 16
+  },
+  {
+   "id": "hub-w",
+   "role": "piece",
+   "rect": [
+    -1,
+    6,
+    2,
+    2
+   ],
+   "surface": 16
+  },
+  {
+   "id": "hub-e",
+   "role": "piece",
+   "rect": [
+    3,
+    6,
+    2,
+    2
+   ],
+   "surface": 16
+  },
+  {
+   "id": "spawn-t1",
+   "role": "piece",
+   "rect": [
+    0,
+    12,
+    1,
+    2
+   ],
+   "surface": 17
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    1,
+    12,
+    3,
+    2
+   ],
+   "surface": 17
+  },
+  {
+   "id": "wool-a-t1",
+   "role": "piece",
+   "rect": [
+    -6,
+    8,
+    5,
+    4
+   ],
+   "surface": 11
+  },
+  {
+   "id": "wool-a-room",
+   "role": "wool-room",
+   "rect": [
+    -8,
+    9,
+    2,
+    2
+   ],
+   "surface": 11
+  },
+  {
+   "id": "wool-b-t1",
+   "role": "piece",
+   "rect": [
+    6,
+    8,
+    2,
+    4
+   ],
+   "surface": 11
+  },
+  {
+   "id": "wool-b-room",
+   "role": "wool-room",
+   "rect": [
+    7,
+    3,
+    2,
+    2
+   ],
+   "surface": 11
+  },
+  {
+   "id": "front",
+   "role": "piece",
+   "rect": [
+    -3,
+    2,
+    7,
+    4
+   ],
+   "surface": 15
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -3,
+    -2,
+    6,
+    4
+   ],
+   "holes": []
+  },
+  {
+   "id": "b-link",
+   "rect": [
+    6,
+    4,
+    3,
+    5
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     5,
+     5
+    ],
+    "facing": "front",
+    "footprint": [
+     1,
+     1,
+     8,
+     8
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-a-room",
+    "at": [
+     5,
+     5
+    ]
+   },
+   {
+    "id": "wool-2",
+    "piece": "wool-b-room",
+    "at": [
+     5,
+     5
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "spawn-room",
+    "at": [
+     13,
+     5
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}
