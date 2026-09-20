@@ -11,9 +11,15 @@ The author's ruling on how a board should look — the paint, the buildings, the
 ground meets grown. None of it is enforced anywhere, which is the half of authoring every previous run got
 wrong.
 
-Those two and `AUTHORING-BRIEF.md` are about 12k tokens together and are the whole of what is read before
-the first request. Everything else is opened at a question, and the brief's §4 says which question opens
-what.
+Those two and `AUTHORING-BRIEF.md` are about 12k tokens together and are the whole of this repository that
+is read before the first request. Everything else here is opened at a question, and the brief's §4 says
+which question opens what.
+
+**One thing outside this repository is read too, and it is the half nothing here can derive: how a map is
+played.** `pgm-studio/docs/gameplay/match-flow.md` is the account of it, read off recorded matches — §4, §6
+and §10 if the whole is too much — and `approaches.md` beside it is the author's law on what an objective
+needs around it. No card and no endpoint answers what makes a match, so a board decided without them is
+decided on look alone.
 
 **Changing, diagnosing or reading a map: invoke the `pgm-board` skill.** It carries the lookup table from
 question to the read that already answers it, and the two moments to stop at. It is distilled from 27 run
@@ -35,6 +41,7 @@ Three things that are true before the skill loads:
   at all.** That is not this repository's business — `pgm-studio/docs/cloud-setup.md` is the runbook, and it
   is accurate: the SDK and MariaDB by apt, the database and its user, `--migrate-only`, then the API. Expect
   it to take a while and do it in a background shell, because a sandboxed foreground one has no network.
+
 - **Do not write a second copy of the system.** A `specs/<slug>/build-spec.py` that generates the plan
   and the finish is the authoring work and is expected. A script that reads the *built world* —
   a ground-finder, a section renderer, a walk or clearance check — is not, wherever it lives, including

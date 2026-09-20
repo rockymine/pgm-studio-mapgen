@@ -20,6 +20,8 @@ read: open a tool document at the question that needs it, not at the start.
 
 | Read | ~tokens | When |
 |---|---|---|
+| `pgm-studio/docs/gameplay/match-flow.md` | ~16k | **once, before the board is decided** — or its §4, §6 and §10 alone |
+| `pgm-studio/docs/gameplay/approaches.md` | ~5k | with it; every claim is the author's and settled |
 | `00-board.txt` | 0.4–3k | freely |
 | one named `renders/*.txt` | ~1.1k median | freely, **named individually** |
 | `02-heightmap.txt` · `03-slopes.txt` | 1.3–10k | one board at a time |
@@ -47,6 +49,17 @@ answer in one fetch and are greppable. That is cheaper than any board.
 
 **Decide what the board is about before deciding what it is made of, and keep it to one
 thing.** Write the sentence down. If it cannot be written, the board is not ready.
+
+**That decision is a question about how the map is played, and this repository cannot answer it.** The
+cards measure what an instrument does and the API answers what it will accept, and neither says what makes
+a match. Two documents in the studio do, and they are the only ones worth opening whole.
+
+**`docs/gameplay/approaches.md` is the author's law on what an objective needs around it**, every claim
+marked and settled, so it governs rather than advises.
+
+**`docs/gameplay/match-flow.md` is how a map is actually played** — the funnel, the wall and the pit, where
+the ground game ends and the sky begins, which wool falls first — read off recorded matches rather than
+reasoned. Its §4, §6 and §10 are the three to open if the whole is too much.
 
 Then: a board is two or three or four *grounds*, each stated by the one instrument that can
 state it, and **every join between them is chosen rather than left over**. That is the whole
