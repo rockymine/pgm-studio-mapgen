@@ -50,11 +50,11 @@ out along, and a range behind every one of them.
 ## The technique cards
 
 `techniques/` is one card per instrument, each a complete world holding its variants **side by side** so the
-comparison is the lesson. Nineteen exist — from outlines, overlapping shapes and Bézier rings through pushes,
-stacked layers, water and the theme buckets to what a shape must say before it owns any paint — and each
-commits the text reads that prove its claims and names no past map.
-[techniques/README.md](techniques/README.md) indexes them and names the three that are missing, with what each
-would demonstrate.
+comparison is the lesson. Twenty exist — from outlines, overlapping shapes and Bézier rings through pushes,
+stacked layers, water and the theme buckets to what a shape must say before it owns any paint, and on to
+sculpture built out of nothing but shapes — and each commits the text reads that prove its claims and names
+no past map. [techniques/README.md](techniques/README.md) indexes them and names the two that are missing,
+with what each would demonstrate.
 
 A card differs from a showcase in what it is for. A showcase forks one base board and changes the one thing
 its README names, so the **diff** is the lesson; a card puts the variants in one world, so the **comparison**
@@ -63,10 +63,14 @@ is.
 ## Sculpting with layers
 
 The sketch tool's layers were built to stack storeys, and they hold rather more than that: a layer is one
-arbitrary height field, so a dome is thirteen circles on one layer and a thirty-block statue is eight layers
+arbitrary height field, so a dome is eleven circles on one layer and a thirty-block statue is eight layers
 of rectangles. [SCULPTING-WITH-LAYERS.md](SCULPTING-WITH-LAYERS.md) is the account — the six facts that decide
 how far it goes, the four limits, and what could become a tool. `sculpture/` holds the two galleries it was
 written from and `maps/opus5-automaton` is a played board furnished with them.
+
+`techniques/sculpture-with-layers` is the worked card beside it: sixteen made things on one board, none of
+them a preset, with the columns that prove each claim. It is where the account's rules are measured rather
+than recounted — nesting against rings, what a second span costs, and what a colour costs.
 
 ## Authoring a map here
 

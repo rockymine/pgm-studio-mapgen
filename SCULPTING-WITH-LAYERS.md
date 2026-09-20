@@ -11,6 +11,10 @@ looks.** A layer is not a flat slab. It is one arbitrary *height field* — a `(
 and a stack of layers is a set of those fields with air between them. Any solid whatever can be written in
 that form.
 
+**`techniques/sculpture-with-layers` is the worked card beside this.** Sixteen made things on one board with
+the column reads that prove each claim, where this file is the account of how far the system goes and what
+it costs. A rule measured there is measured; a rule here is argued.
+
 **And what it costs is the paint, not the shape.** The number of layers a sculpture needs is how many
 separately-coloured runs its busiest column passes through, and for every model measured here the colour term
 dominates: a 70-block starship is two layers of geometry and four in the end, a robot is five and sixteen, and
@@ -66,6 +70,16 @@ every hollow form in `tools/sculpt/props.py` is written with.
 
 Where a hollow needs a floor rather than a hole, the override plane does it: an override-add disc inside the
 wall, one block thick, at the wall's own floor.
+
+**A ring is also what keeps a curved shell out of the findings, and that is measured.** Nested discs whose
+floors rise build a hollow dome correctly and report every nested pair as a lost span: on radius 11, eleven
+discs raise **sixteen** `SK9` where eleven rings covering the same shell raise none. The world is the same
+either way; what the rings buy is a gate that still means something.
+
+**And a field that falls inward is the case nesting gets silently wrong.** Eleven nested discs sized as an
+amphitheatre come out a **flat plate 22 cells across at one height**, with no `SK9`, no `SK10` and no
+complaint of any kind, because the disc that should keep only its own ring is also the tallest thing over the
+middle. Stated as rings the same eleven tiers build the bowl.
 
 ## 3. The compiler: run index, not height
 

@@ -842,6 +842,25 @@ blocks the whole way; a plugged one reads a solid run where the air should be, a
 says so — the export gate stays open, `render/traversability` can still answer one component, and the only
 complaint is an `SK11` that is easy to write off as a quirk of a stacked board.
 
+### A ring is one polygon, and it is what a floor that rises or a surface that falls is drawn with
+
+Nesting settles a contest by height — the taller add wins the column and brings its own floor — so nested
+shapes write any field that **rises** inward from one shared floor with no subtraction and no complaint. A
+ziggurat, a cone and a solid dome are all that one move.
+
+**Give the nested shapes a rising floor and the world is right but the report is not.** Every nested pair is
+then a span the layer had to drop: eleven discs shaped as a hollow dome on radius 11 raise **sixteen** `SK9`,
+and a board carrying sixteen complaints it means has no gate left for one it does not.
+
+**Give them a falling surface and it comes out wrong and says nothing.** Eleven nested discs sized as an
+amphitheatre build a **flat plate 22 cells across at one height**, with no `SK9`, no `SK10` and no finding of
+any kind, because the disc that should keep only its own ring is the tallest thing over the middle too.
+
+**What both cases want is shapes that do not overlap, which is what a ring is.** An outline is filled
+even-odd, so one polygon — the outer circle, a slit inward, the inner circle the other way round, and back —
+is an annulus with no subtract in it; the same eleven tiers stated as rings raise nothing and build the dome
+and the bowl alike. `techniques/sculpture-with-layers` is the worked card.
+
 ### An override add is still part of its group's relief
 
 Override decides who wins the column among the shapes on a layer and says nothing about the solve, so a
@@ -1303,6 +1322,16 @@ anywhere in that column, while inside the gallery — away from the walls — th
 with its storey intact. The fault is local, the world is built, the column is valid, and the gate at the door
 is the only thing that reports it.
 
+### What a made thing costs in layers is its columns, not its palette
+
+A layer holds one span per column and a run of one block is what a span is, so the question a layer count
+answers is how many separately-painted runs the busiest column of a thing passes through.
+
+Measured on one box, 12 × 12 and nine courses: one paint is **one** layer; the same box in three horizontal
+bands is **three**, because its column reads sandstone, then stone brick, then planks, and a layer cannot
+hold three; three paints as three boxes side by side is **one**, because no column passes through two of
+them. A solid with one run per column is one layer of geometry and as many of colour as it has bands.
+
 ### Everything downstream of a stacked cell reads one number: the surface top
 
 `TerrainBuilder.SurfaceTops` keeps the **maximum** `YTop` per `(x, z)`, and that single grid is what
@@ -1570,6 +1599,26 @@ unpainted for an off-by-one — and nothing reports it.
 The counterpart: **`wallRun` stands vertical**, because its stripes wrap the perimeter and are
 constant up a column. A weathered cliff is bedded and a sawn one is scored, and the two are one
 bucket and two materials.
+
+### A shape thinner than three cells has no interior column, so a theme paints it out of two buckets
+
+A column is interior only where it has ground on all eight sides, so a wall two cells wide has none: every
+column of it is an edge, the rim and the wall are the only buckets that reach it, and the theme's surface
+stack is nowhere on the thing. `SK23` says so at the store door and names the layer and a coordinate.
+
+Measured side by side on one board: a rectangle stated at ±1 comes out **two** cells wide and every column
+reads chiseled brick over plain — rim, then wall — while a polyline of radius 1.5 beside it comes out
+**three**, and its middle column reads mossy brick, plain brick, then stone: surface, then fill. One cell of
+width is the difference between a theme using two buckets and one using four, which is why a thing thinner
+than that is painted with a material instead.
+
+### A shape that states a `material` and no `theme` is counted under the ground it stands on
+
+`GET …/themes/census` files a cell by the theme of the group it belongs to, so a shape carrying only a
+`material` never appears as its own entry. On one board of sixteen pads the ground theme came back with
+**seven** distinct surface blocks — grass, sandstone, planks, stone and three bricks — because four
+sculptures on it were painted by material rather than themed, and the themed ones accounted for the other
+entry's two.
 
 ### `globals.surface` is a floor and the theme's `surface.depth` is a thickness
 
