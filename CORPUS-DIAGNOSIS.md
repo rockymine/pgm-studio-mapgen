@@ -7,6 +7,13 @@ the end is an opinion and is marked as one.
 The subject is not any single document. It is the whole body of text an agent loads
 before it draws anything, and the question is what of it should be loaded at all.
 
+**Its measurements are kept as measured and most of what it recommends has since
+landed.** The reading list is gone and `AUTHORING-BRIEF.md` §4 is a question table;
+`capabilities.md` is retired; `GENERATION-NOTES.md` is shortened and points at cards;
+the map log is `BOARDS-BUILT.md` with a gate over it; and `pgm-board-warmup`'s budget
+is remeasured — §2 below is what it used to say, and it no longer says it. What has not
+changed is the reason any of it was worth doing, which is the rest of this document.
+
 ---
 
 ## 1. The measurements

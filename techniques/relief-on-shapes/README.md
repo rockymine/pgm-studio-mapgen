@@ -1,12 +1,18 @@
 # Relief on shapes
 
-A relief shapes the ground a group's shapes build, and a shape can stay out of it. Three shapes make a small
-place: a raised `works` yard, an upland meadow beside it and a lowland meadow below both. The card holds the place
-three times, side by side. In `stepped` the relief smooths the two meadows into one slope and runs up against the
-yard on two sides without moving it. `level` draws both meadows at one height, and the same relief builds it
-alike, block for block. `held` keeps the upland at the height it was drawn at and leaves the yard's faces whole,
-and spends the relief only on the grade from the lowland up to the upland. Open it in the studio as
-`technique-relief-on-shapes`, or read `relief-on-shapes.layout.json`.
+A relief shapes the ground a group's shapes build, and a shape can stay out of it. Three shapes make a
+small place: a raised `works` yard, an upland meadow beside it and a lowland meadow below both. The card
+holds the place three times, side by side.
+
+**In `stepped` the relief smooths the two meadows into one slope** and runs up against the yard on two sides
+without moving it.
+
+**`level` draws both meadows at one height**, and the same relief builds it alike, block for block.
+
+**`held` keeps the upland at the height it was drawn at** and leaves the yard's faces whole, spending the
+relief only on the grade from the lowland up to the upland.
+
+Open it in the studio as `technique-relief-on-shapes`, or read `relief-on-shapes.layout.json`.
 
 ## The document
 

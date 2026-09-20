@@ -41,10 +41,19 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `destroy-goals` | every destroyable the studio builds, in a row — six styles, four materials, a core, and why three obsidian goals came out in ender stone |
 | `cutting-a-hole` | the subtract and the override add — a cut with no depth, a deck over it, a room either side of it, and the `void-N-cut` a compile writes |
 
-## Nothing is missing
+## What is missing is found in the reports, not by looking at this list
 
-Every instrument the studio has now has a card. A new one is written when a new instrument lands, and it
-goes in the table above with the others.
+Every instrument the studio has now has a card, and a new one is written when a new instrument lands.
+That claim has been wrong before and the way it was caught is worth stating, because it is the only way
+it gets caught.
+
+**A gap shows up as a run report working around something.** The four most recent cards each came out of
+`reports/` and `review/`: a run that dropped an iron cube for want of a field that exists, three runs
+naming one read as the thing that stopped their props being declined, a run that drew made things through
+stamped bedrock nine times, and a run whose house styles were refused with no card to check against.
+
+**So the check is to read the newest reports against this table, not to read this table.** A card the set
+is missing is never visible from inside the set.
 
 ## What a card needs before it can be written
 

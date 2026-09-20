@@ -22,11 +22,15 @@ course to that last band, so the four-course run is written out four times to st
 ## How shapes combine
 
 Shapes in one group whose ground touches or overlaps build one island, and the store answers `islands: 2`.
-**The height and the paint of an overlap are decided separately.** Where two shapes cover a cell, the taller one
-gives the column its height, and the paint goes to the smallest themed shape whose top is that tallest top. On
-the flat island the yard is the smaller of the two, so it paints the 8 blocks it shares with the meadow —
-andesite at (26, 12) — and the lawn, smaller again, paints the middle of the yard with grass. On the stepped
-island the yard is also the taller, so it holds both.
+
+**The height and the paint of an overlap are decided separately.** Where two shapes cover a cell, the taller
+one gives the column its height, and the paint goes to the smallest themed shape whose top is that tallest
+top.
+
+**So the two answers come apart on the flat island and together on the stepped one.** On the flat island the
+yard is the smaller of the two, so it paints the 8 blocks it shares with the meadow — andesite at (26, 12) —
+and the lawn, smaller again, paints the middle of the yard with grass. On the stepped island the yard is
+also the taller, so it holds both.
 
 A face shows wherever a shape stands higher than the ground beside it, and the face is what the wall bucket
 paints. The flat yard is andesite over plain stone inside, and striped only on its faces over the void. The

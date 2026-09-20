@@ -13,13 +13,19 @@ Two things here, in order: what reading costs, and what a board is made of. Toge
 
 ## 1. The budget, because this repository is larger than any context window
 
-The documents a run is pointed at come to **~241k tokens** — more than a 200k window holds,
-before a single map is opened. `AUTHORING-BRIEF.md` §4's reading list is 187k of that on its own,
-and the four briefs and two skills here are the other 54k. Nothing below assumes it can all be
-read: open a tool document at the question that needs it, not at the start.
+**What is read up front is small and everything else is opened at a question.** The three documents
+before this skill — `ORDER-OF-WORK.md`, `WHAT-A-BOARD-IS-MADE-OF.md` and `AUTHORING-BRIEF.md` — come
+to **~13k tokens**, and the two skills to **~9k**. That is the whole of what a run loads before its
+first request.
+
+**What is reachable is far more than a window holds, and none of it is a reading list.** The studio
+documents the brief's question table names come to **~105k tokens**, this repository's own
+long-form — `GENERATION-NOTES.md`, the two adaptation briefs, `tools/README.md`, `BOARDS-BUILT.md` —
+to **~54k**, and the 27 technique cards to **~66k**. Open one at the question that needs it.
 
 | Read | ~tokens | When |
 |---|---|---|
+| one technique card | ~2.4k median | freely — the card nearest what is being built |
 | `pgm-studio/docs/gameplay/match-flow.md` | ~16k | **once, before the board is decided** — or its §4, §6 and §10 alone |
 | `pgm-studio/docs/gameplay/approaches.md` | ~5k | with it; every claim is the author's and settled |
 | `00-board.txt` | 0.4–3k | freely |

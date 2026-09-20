@@ -23,12 +23,15 @@ corrected spec **replaces** the map it had rather than leaving a second one besi
 | `<slug>.finish.json` | everything a plan cannot state, keyed onto the layout the plan compiles to |
 
 The driver writes two more beside them — `<slug>.layout.json` and `<slug>.intent.json`, the documents it
-actually posted — so a review reads what was built rather than what was asked for. **Those two are output
-and never input.** A spec carrying a finish is compiled from its plan on every run and the pair is
-overwritten; a spec with no finish is a board drawn in the Sketch tool, and then they are the authored
-geometry and are read. The finish is what decides which, because `addLayers`, `addShapes` and `bendShapes`
-all append — reading back a layout the driver wrote and patching it again gives two storeys called `under`
-and a ring bent twice.
+actually posted — so a review reads what was built rather than what was asked for.
+
+**Those two are output and never input.** A spec carrying a finish is compiled from its plan on every run
+and the pair is overwritten; a spec with no finish is a board drawn in the Sketch tool, and then they are
+the authored geometry and are read.
+
+**The finish is what decides which, and the reason is that the patches append.** `addLayers`, `addShapes`
+and `bendShapes` all add rather than replace, so reading back a layout the driver wrote and patching it
+again gives two storeys called `under` and a ring bent twice.
 
 ### What the finish carries
 
@@ -79,10 +82,12 @@ its rule id and the JSON path it is about**.
 
 **Every call prints its own complaints, in `call` rather than at the call sites.** A 2xx is not a promise
 that everything posted survived: a `decline` says one piece of the document is not in the world, `RQ3` names
-a posted field that went unread, and `SK3`/`SK4` name a shape that drew no ground. The status line carries
-the `Pgm-Warnings` header after the code — `200   ! 6 RQ3 SK3 SK4` — wherever the complaint channel
-collected anything; the body's own `warnings` array is read either way, because an endpoint answering
-`warnings` as its own field, as `/plan/evaluate` does, fills it without the header.
+a posted field that went unread, and `SK3`/`SK4` name a shape that drew no ground.
+
+**The status line carries the `Pgm-Warnings` header after the code** — `200   ! 6 RQ3 SK3 SK4` — wherever
+the complaint channel collected anything. The body's own `warnings` array is read either way, because an
+endpoint answering `warnings` as its own field, as `/plan/evaluate` does, fills it without the header.
+
 `GET /api/rules?rule=<id>` answers what any id means and how to fix it.
 
 The four places a finding appears:
@@ -90,10 +95,13 @@ The four places a finding appears:
 1. **before a map row exists** — `POST /plan/evaluate` (score, `valid`, the hard/soft terms and the whole lint
    table) and `POST /plan/inspect` (`goalDistances` against `GO1`'s 3.0–4.0 band, `islandGaps` against
    `CT12`'s 15–40, the wall rects, the frontline runs);
+
 2. **at the compile** — `POST /plan/compile`'s `warnings`, and its 422 findings if it refuses;
+
 3. **at the store** — `POST /map/from-documents`'s `SK3`/`SK4`/`SK5`/`SK11`, its `RQ3` over all three
    documents at once (each path named with the member it was posted under — `layout.setupp`, not `setupp`),
    and `relief/read`'s per-group cells, low, high and symmetry error;
+
 4. **at the dressing** — `POST …/sketch/columns`'s `DR-*` declines, read **after** the intent is stored,
    because `DR-KEEP` needs the spawn doors and the goal rings the intent carries.
 
@@ -130,12 +138,14 @@ a section per house** — the stamped rooms and every distinct house prop style 
 21 files on a board carrying six themes and six houses.
 
 Two more it draws itself, because the studio answers columns and not cameras: `world-iso` from two quarters,
-and `world-xray` from the same two where the board holds a covered space. The x-ray is the only view anything
-underground appears in — `world-iso` draws a gaol under a meadow as a meadow — and it is written only when
-the void scan finds a roofed void of at least 200 cells, because below that it draws the board the isometric
-already drew, one shade paler. The scan itself runs on every board and prints what it found with the
-coordinates: how much covered space, between which blocks, and how much of it is `SEALED`, meaning nothing
-can walk into it.
+and `world-xray` from the same two where the board holds a covered space.
+
+**The x-ray is the only view anything underground appears in** — `world-iso` draws a gaol under a meadow as
+a meadow. It is written only when the void scan finds a roofed void of at least 200 cells, because below
+that it draws the board the isometric already drew, one shade paler.
+
+**The scan itself runs on every board** and prints what it found with the coordinates: how much covered
+space, between which blocks, and how much of it is `SEALED`, meaning nothing can walk into it.
 
 They land beside the documents rather than in `--out`, and so does the provenance sidecar, which the driver
 moves out of the exported `region/`. `--out` is what a game server is handed: `region/`, `level.dat`,
@@ -223,12 +233,15 @@ python3 tools/loop.py specs/<slug> [--slug <slug>] [--no-relief] [--no-dressing]
 
 A drive is ten minutes and most of what it decides was decided by two previews that take twenty seconds.
 This reads the spec exactly as `drive.py` does — the plan compiled and patched with its finish, or the drawn
-layout — and posts the result to `sketch/relief/read` and `sketch/dressing` without storing anything. The
-relief read answers the terrain in numbers (range, walk/scramble/barrier steps, crossings in both
-directions); the dressing preview answers what every prop did and prints every decline with its rule and
-coordinates. **The map has to have been driven once**, because the dressing preview reads the stored
-intent for the spawn doors and the goal rings `DR-KEEP` keeps clear; after that, every placement question
-is a loop pass and the drive is the last step rather than the first.
+layout — and posts the result to `sketch/relief/read` and `sketch/dressing` without storing anything.
+
+**What the two answer.** The relief read gives the terrain in numbers — range, walk/scramble/barrier steps,
+crossings in both directions — and the dressing preview gives what every prop did, printing each decline
+with its rule and coordinates.
+
+**The map has to have been driven once**, because the dressing preview reads the stored intent for the
+spawn doors and the goal rings `DR-KEEP` keeps clear. After that every placement question is a loop pass,
+and the drive is the last step rather than the first.
 
 `--candidates` asks whether **this** prop stands at a position. The dressing preview's `claims` raster
 already answers where nothing stands and nothing is kept clear — one call, the whole board, in
@@ -256,10 +269,12 @@ python3 tools/board.py specs/<slug>/<slug>.plan.json ["<note>"]
 
 Renders a plan's pieces and zones as an ASCII cell grid — one character per cell, upper case for a stated
 rect and lower case for its symmetry image — with a legend giving each piece's cell rect, its block rect and
-its size. **Run it before posting a plan.** A plan is written in cell rectangles, and the faults that matter
-are relations between two of those rectangles: a stepping stone wider than the build zone that reaches it, a
-wool room touching a piece its wall was meant to guard, a spur that connects to nothing. A grid puts the two
-rects on the same rows and a rendered picture does not.
+its size.
+
+**Run it before posting a plan.** A plan is written in cell rectangles and the faults that matter are
+relations between two of them: a stepping stone wider than the build zone that reaches it, a wool room
+touching a piece its wall was meant to guard, a spur that connects to nothing. A grid puts the two rects on
+the same rows and a rendered picture does not.
 
 Run 4's own worked example is one line of it. In `specs/archive/opus5-wheal-hazel/renders/00-board.txt`:
 
@@ -300,12 +315,16 @@ python3 tools/trees.py verify maps/<new>/region specs/<new>/trees.json
 
 Three things they agree on, so they cannot drift apart: what a tree is (wood, leaves, the plants a crown
 carries; `anvil.py` holds the sets), that a body is 26-connected, and that a column's surface is its topmost
-block that is not a tree, so a crown never counts as ground. Two readings they were written to make cheap:
-**the determinism control** — `world-diff.py` with the edited world replaced by a fresh rebuild of the
-original says what a rebuild moves, and only where it moves nothing is a diff against hand work a statement
-about the hand work (0.4% on `opus5-millrace`, all of it trees and shells); and **floating columns** — a
-column with nothing at the world's floor is a bridge over a strait, a cloud or a balloon far more often than
-a hole, and `probe.py --floating` says which by what stands at its top, where a count alone said "hole".
+block that is not a tree, so a crown never counts as ground.
+
+**The determinism control** is the first reading they were written to make cheap. `world-diff.py` with the
+edited world replaced by a fresh rebuild of the original says what a rebuild moves, and only where it moves
+nothing is a diff against hand work a statement about the hand work — 0.4% on `opus5-millrace`, all of it
+trees and shells.
+
+**Floating columns** are the second. A column with nothing at the world's floor is a bridge over a strait, a
+cloud or a balloon far more often than a hole, and `probe.py --floating` says which by what stands at its
+top, where a count alone said "hole".
 
 Each reads a million-block world in seconds and holds it in memory as a dict; a diff of two boards takes
 about a minute. They take a world's `region/` directory, which is what `maps/<slug>/` and a spec's
