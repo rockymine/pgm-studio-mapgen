@@ -1,0 +1,47 @@
+GET /api/map/technique-raising-a-lane/walk — what each climb costs a player, foot to head. `blocks
+placed` is the price of the ones that cannot be walked.
+
+### piece-steps — five bands of ground stepping by 2 — what a plan of five pieces compiles to
+  from=-46,-124&to=-46,-76
+  ROUTE (-46, -124) -> (-47, -77) aim travel: 47 blocks, 4 placed, 0 drop(s), worst drop 0
+  rises 4, falls 0, worst step 2: scramble +2 at (-46, -114); scramble +2 at (-46, -105); scramble +2 at (-46, -95); scramble +2 at (-46, -86)
+
+### piece-treads — nine bands stepping by 1 — the same tier cut fine enough to walk
+  from=-6,-124&to=-6,-76
+  ROUTE (-6, -124) -> (-7, -77) aim travel: 47 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+
+### tilted — one polygon, anchors 9, 9, 17, 17
+  from=34,-124&to=34,-76
+  ROUTE (34, -124) -> (33, -77) aim travel: 47 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+
+### plates — eight override plates over ground left at the foot
+  from=-46,-48&to=-46,0
+  ROUTE (-46, -48) -> (-47, -1) aim travel: 47 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+
+### raise-skirted — one `raise` of 8 with `skirt` 5, the widest a 12-wide lane affords
+  from=-6,-48&to=-6,0
+  ROUTE (-6, -48) -> (-7, -1) aim travel: 47 blocks, 2 placed, 0 drop(s), worst drop 0
+  rises 2, falls 0, worst step 2: scramble +2 at (-6, -23); scramble +2 at (-6, -20)
+
+### raise-sheer — the same `raise` with `skirt` 0
+  from=34,-48&to=34,0
+  ROUTE (34, -48) -> (33, -1) aim travel: 47 blocks, 7 placed, 0 drop(s), worst drop 0
+  rises 1, falls 0, worst step 8: barrier +8 at (34, -24)
+
+### marks — two `area` marks, the lane's middle left unpinned
+  from=-46,28&to=-46,76
+  ROUTE (-46, 28) -> (-47, 75) aim travel: 47 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+
+### push — one push of 8 over the head, `falloff` 16
+  from=-6,28&to=-6,76
+  ROUTE (-6, 28) -> (-7, 75) aim travel: 47 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+
+### deck — the lane untouched, a made layer crossing over it
+  from=34,28&to=34,76
+  ROUTE (34, 28) -> (33, 75) aim travel: 47 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end

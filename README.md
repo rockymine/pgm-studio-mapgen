@@ -49,10 +49,13 @@ and a range behind every one of them.
 ## The technique cards
 
 `techniques/` is one card per instrument, each a complete world holding its variants **side by side** so the
-comparison is the lesson. **Twenty-two exist, which is all of them** — from outlines, overlapping shapes and
+comparison is the lesson. **Twenty-three exist, which is all of them** — from outlines, overlapping shapes and
 Bézier rings through pushes, stacked layers, water and the theme buckets to what a shape must say before it
-owns any paint, on to sculpture built out of nothing but shapes, and ending with a board somebody else
-arranged. Each commits the text reads that prove its claims and names no past map.
+owns any paint, on to sculpture built out of nothing but shapes and a board somebody else arranged.
+
+**One of them compares the tiers rather than working an instrument.** `raising-a-lane` puts the same lane up
+the same eight blocks nine ways — by the plan, by the layout, by the relief and by a storey over it — and
+measures what each climb costs a player. Each commits the text reads that prove its claims and names no past map.
 [techniques/README.md](techniques/README.md) indexes them; a new card is written when a new instrument
 lands.
 

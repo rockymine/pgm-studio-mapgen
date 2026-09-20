@@ -9,7 +9,7 @@ the card rather than finding the thing inside a thousand-line finish.
 itself, one claim to a paragraph; a card holds one instrument worked all the way through, with the reads
 beside it. Where a card exists, the notes point at it rather than repeating it.
 
-## The twenty-two, which is all of them
+## The twenty-three, which is all of them
 
 | Card | Holds |
 |---|---|
@@ -35,6 +35,7 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `sculpture-with-layers` | the ladder a made thing is built up: one shape, a polyline, layers, rings, and a solid compiled — and what each rung costs |
 | `trees-and-boulders` | what a prop is refused for, and what it is only complained about — a ladder per rule, and a hand-built tree's own foot and crown |
 | `taking-over-a-composed-board` | one pinned plan edited four ways — what a flat compile merges, what a height per piece buys, a lane replaced by a build zone, and why a hole is nobody's to fill |
+| `raising-a-lane` | nine ways up the same eight blocks — the plan, the layout, the relief and a made layer, and what each climb costs a player |
 
 ## Nothing is missing
 

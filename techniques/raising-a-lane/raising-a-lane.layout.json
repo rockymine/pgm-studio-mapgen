@@ -1,0 +1,953 @@
+{
+ "setup": {
+  "bbox": {
+   "min_x": -58,
+   "max_x": 46,
+   "min_z": -148,
+   "max_z": 100
+  },
+  "center": {
+   "cx": 0,
+   "cz": 0
+  },
+  "mirror_mode": "none"
+ },
+ "themes": {
+  "moor": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "rimEdges": "void",
+   "rim": {
+    "enabled": false,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 0
+    }
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 15,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 2,
+             "data": 0
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 25,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            },
+            "thickness": 1
+           },
+           {
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            },
+            "thickness": 2
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 50,
+        "material": {
+         "kind": "layered",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "material": {
+             "kind": "cell",
+             "cellSize": 11,
+             "palette": [
+              {
+               "kind": "solid",
+               "id": 1,
+               "data": 0
+              },
+              {
+               "kind": "solid",
+               "id": 4,
+               "data": 0
+              }
+             ]
+            },
+            "thickness": 3
+           }
+          ]
+         }
+        }
+       }
+      ]
+     }
+    }
+   }
+  }
+ },
+ "mapTheme": "moor",
+ "relief": {
+  "marks": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "pushes": [],
+   "marks": [
+    {
+     "id": "marks-foot",
+     "kind": "area",
+     "h": 8,
+     "bevel": 0,
+     "ring": [
+      [
+       -52.0,
+       28.0
+      ],
+      [
+       -40.0,
+       28.0
+      ],
+      [
+       -40.0,
+       38.0
+      ],
+      [
+       -52.0,
+       38.0
+      ]
+     ]
+    },
+    {
+     "id": "marks-head",
+     "kind": "area",
+     "h": 16,
+     "bevel": 0,
+     "ring": [
+      [
+       -52.0,
+       66.0
+      ],
+      [
+       -40.0,
+       66.0
+      ],
+      [
+       -40.0,
+       76.0
+      ],
+      [
+       -52.0,
+       76.0
+      ]
+     ]
+    }
+   ]
+  },
+  "push": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [],
+   "pushes": [
+    {
+     "id": "push-rise",
+     "amount": 8,
+     "falloff": 16,
+     "crown": 0,
+     "roughness": 0,
+     "seed": 1,
+     "ring": [
+      [
+       -16.0,
+       62.0
+      ],
+      [
+       4.0,
+       62.0
+      ],
+      [
+       4.0,
+       80.0
+      ],
+      [
+       -16.0,
+       80.0
+      ]
+     ]
+    }
+   ]
+  }
+ },
+ "layers": [
+  {
+   "id": "ground",
+   "name": "Ground",
+   "base_y": 0,
+   "layout": {
+    "shapes": [
+     {
+      "id": "piece-steps-0",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": -52,
+      "max_x": -40,
+      "min_z": -124,
+      "max_z": -114
+     },
+     {
+      "id": "piece-steps-1",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 11,
+      "min_x": -52,
+      "max_x": -40,
+      "min_z": -114,
+      "max_z": -105
+     },
+     {
+      "id": "piece-steps-2",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 13,
+      "min_x": -52,
+      "max_x": -40,
+      "min_z": -105,
+      "max_z": -95
+     },
+     {
+      "id": "piece-steps-3",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 15,
+      "min_x": -52,
+      "max_x": -40,
+      "min_z": -95,
+      "max_z": -86
+     },
+     {
+      "id": "piece-steps-4",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 17,
+      "min_x": -52,
+      "max_x": -40,
+      "min_z": -86,
+      "max_z": -76
+     },
+     {
+      "id": "piece-treads-0",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": -12,
+      "max_x": 0,
+      "min_z": -124,
+      "max_z": -119
+     },
+     {
+      "id": "piece-treads-1",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 10,
+      "min_x": -12,
+      "max_x": 0,
+      "min_z": -119,
+      "max_z": -113
+     },
+     {
+      "id": "piece-treads-2",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 11,
+      "min_x": -12,
+      "max_x": 0,
+      "min_z": -113,
+      "max_z": -108
+     },
+     {
+      "id": "piece-treads-3",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 12,
+      "min_x": -12,
+      "max_x": 0,
+      "min_z": -108,
+      "max_z": -103
+     },
+     {
+      "id": "piece-treads-4",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 13,
+      "min_x": -12,
+      "max_x": 0,
+      "min_z": -103,
+      "max_z": -97
+     },
+     {
+      "id": "piece-treads-5",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 14,
+      "min_x": -12,
+      "max_x": 0,
+      "min_z": -97,
+      "max_z": -92
+     },
+     {
+      "id": "piece-treads-6",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 15,
+      "min_x": -12,
+      "max_x": 0,
+      "min_z": -92,
+      "max_z": -87
+     },
+     {
+      "id": "piece-treads-7",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 16,
+      "min_x": -12,
+      "max_x": 0,
+      "min_z": -87,
+      "max_z": -81
+     },
+     {
+      "id": "piece-treads-8",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 17,
+      "min_x": -12,
+      "max_x": 0,
+      "min_z": -81,
+      "max_z": -76
+     },
+     {
+      "id": "tilted",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "vertices": [
+       [
+        28,
+        -124
+       ],
+       [
+        40,
+        -124
+       ],
+       [
+        40,
+        -76
+       ],
+       [
+        28,
+        -76
+       ]
+      ],
+      "anchor_heights": [
+       9,
+       9,
+       17,
+       17
+      ]
+     },
+     {
+      "id": "plates-ground",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": -52,
+      "max_x": -40,
+      "min_z": -48,
+      "max_z": 0
+     },
+     {
+      "id": "plates-1",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 10,
+      "min_x": -52,
+      "max_x": -40,
+      "min_z": -43,
+      "max_z": 0,
+      "override": true
+     },
+     {
+      "id": "plates-2",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 11,
+      "min_x": -52,
+      "max_x": -40,
+      "min_z": -37,
+      "max_z": 0,
+      "override": true
+     },
+     {
+      "id": "plates-3",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 12,
+      "min_x": -52,
+      "max_x": -40,
+      "min_z": -32,
+      "max_z": 0,
+      "override": true
+     },
+     {
+      "id": "plates-4",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 13,
+      "min_x": -52,
+      "max_x": -40,
+      "min_z": -27,
+      "max_z": 0,
+      "override": true
+     },
+     {
+      "id": "plates-5",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 14,
+      "min_x": -52,
+      "max_x": -40,
+      "min_z": -21,
+      "max_z": 0,
+      "override": true
+     },
+     {
+      "id": "plates-6",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 15,
+      "min_x": -52,
+      "max_x": -40,
+      "min_z": -16,
+      "max_z": 0,
+      "override": true
+     },
+     {
+      "id": "plates-7",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 16,
+      "min_x": -52,
+      "max_x": -40,
+      "min_z": -11,
+      "max_z": 0,
+      "override": true
+     },
+     {
+      "id": "plates-8",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 17,
+      "min_x": -52,
+      "max_x": -40,
+      "min_z": -5,
+      "max_z": 0,
+      "override": true
+     },
+     {
+      "id": "raise-skirted-ground",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": -12,
+      "max_x": 0,
+      "min_z": -48,
+      "max_z": 0
+     },
+     {
+      "id": "raise-skirted-shelf",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 8,
+      "vertices": [
+       [
+        -12,
+        -24
+       ],
+       [
+        0,
+        -24
+       ],
+       [
+        0,
+        0
+       ],
+       [
+        -12,
+        0
+       ]
+      ],
+      "height_mode": "raise",
+      "skirt": 5
+     },
+     {
+      "id": "raise-sheer-ground",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": 28,
+      "max_x": 40,
+      "min_z": -48,
+      "max_z": 0
+     },
+     {
+      "id": "raise-sheer-shelf",
+      "type": "polygon",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 8,
+      "vertices": [
+       [
+        28,
+        -24
+       ],
+       [
+        40,
+        -24
+       ],
+       [
+        40,
+        0
+       ],
+       [
+        28,
+        0
+       ]
+      ],
+      "height_mode": "raise",
+      "skirt": 0
+     },
+     {
+      "id": "marks",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": -52,
+      "max_x": -40,
+      "min_z": 28,
+      "max_z": 76
+     },
+     {
+      "id": "push",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": -12,
+      "max_x": 0,
+      "min_z": 28,
+      "max_z": 76
+     },
+     {
+      "id": "deck",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 0,
+      "base_height": 9,
+      "min_x": 28,
+      "max_x": 40,
+      "min_z": 28,
+      "max_z": 76
+     }
+    ],
+    "groups": [
+     {
+      "id": "piece-steps",
+      "name": "piece-steps",
+      "mirrors": false,
+      "shapeIds": [
+       "piece-steps-0",
+       "piece-steps-1",
+       "piece-steps-2",
+       "piece-steps-3",
+       "piece-steps-4"
+      ]
+     },
+     {
+      "id": "piece-treads",
+      "name": "piece-treads",
+      "mirrors": false,
+      "shapeIds": [
+       "piece-treads-0",
+       "piece-treads-1",
+       "piece-treads-2",
+       "piece-treads-3",
+       "piece-treads-4",
+       "piece-treads-5",
+       "piece-treads-6",
+       "piece-treads-7",
+       "piece-treads-8"
+      ]
+     },
+     {
+      "id": "tilted",
+      "name": "tilted",
+      "mirrors": false,
+      "shapeIds": [
+       "tilted"
+      ]
+     },
+     {
+      "id": "plates",
+      "name": "plates",
+      "mirrors": false,
+      "shapeIds": [
+       "plates-ground",
+       "plates-1",
+       "plates-2",
+       "plates-3",
+       "plates-4",
+       "plates-5",
+       "plates-6",
+       "plates-7",
+       "plates-8"
+      ]
+     },
+     {
+      "id": "raise-skirted",
+      "name": "raise-skirted",
+      "mirrors": false,
+      "shapeIds": [
+       "raise-skirted-ground",
+       "raise-skirted-shelf"
+      ]
+     },
+     {
+      "id": "raise-sheer",
+      "name": "raise-sheer",
+      "mirrors": false,
+      "shapeIds": [
+       "raise-sheer-ground",
+       "raise-sheer-shelf"
+      ]
+     },
+     {
+      "id": "marks",
+      "name": "marks",
+      "mirrors": false,
+      "shapeIds": [
+       "marks"
+      ]
+     },
+     {
+      "id": "push",
+      "name": "push",
+      "mirrors": false,
+      "shapeIds": [
+       "push"
+      ]
+     },
+     {
+      "id": "deck",
+      "name": "deck",
+      "mirrors": false,
+      "shapeIds": [
+       "deck"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "deck-tier0",
+   "name": "deck tier 0",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "deck-over",
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-tier0-0",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 8,
+      "base_height": 8,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      },
+      "min_x": 28,
+      "max_x": 30,
+      "min_z": 52,
+      "max_z": 54
+     },
+     {
+      "id": "deck-tier0-1",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 8,
+      "base_height": 8,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      },
+      "min_x": 38,
+      "max_x": 40,
+      "min_z": 52,
+      "max_z": 54
+     },
+     {
+      "id": "deck-tier0-2",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 8,
+      "base_height": 8,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      },
+      "min_x": 28,
+      "max_x": 30,
+      "min_z": 74,
+      "max_z": 76
+     },
+     {
+      "id": "deck-tier0-3",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 8,
+      "base_height": 8,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      },
+      "min_x": 38,
+      "max_x": 40,
+      "min_z": 74,
+      "max_z": 76
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-tier0",
+      "name": "the deck over the lane",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-tier0-0",
+       "deck-tier0-1",
+       "deck-tier0-2",
+       "deck-tier0-3"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "deck-tier1",
+   "name": "deck tier 1",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "deck-over",
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-tier1-0",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 16,
+      "base_height": 1,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      },
+      "min_x": 28,
+      "max_x": 40,
+      "min_z": 52,
+      "max_z": 76
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-tier1",
+      "name": "the deck over the lane",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-tier1-0"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}
