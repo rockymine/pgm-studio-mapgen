@@ -171,15 +171,24 @@ for name in PANELS:
         relief[name] = {"base": FOOT - 1, "reach": 0, "step": 1,
                         "marks": panel_marks, "pushes": panel_pushes}
 
-# The deck: a storey at the head's height over the corner and the first of the arm, on four legs. A layer is
-# one span a column, so the legs stop at the deck rather than passing through it.
+# The deck: a storey at the head's height over the corner and the first of the arm, on four legs, with a
+# flight of its own climbing to it off the arm's far end. A storey nothing climbs to is a roof rather than a
+# route — the walk answers `barrier +8` at every edge of one — so the stair is part of the structure and not
+# an afterthought. A layer is one span a column, so the legs stop at the deck and the treads do not overlap.
 dx0, dx1, dz0, dz1 = limits("deck")
 DECK = (dx0, dx1 + 16, dz1 - WIDE, dz1)                 # over the corner and 16 blocks of the arm
 STONE = {"kind": "cell", "cellSize": 4, "rise": 2, "palette": [SOLID(98), SOLID(98, 1), SOLID(1, 6)]}
 legs = [(DECK[0], DECK[0] + 2, DECK[2], DECK[2] + 2), (DECK[1] - 2, DECK[1], DECK[2], DECK[2] + 2),
         (DECK[0], DECK[0] + 2, DECK[3] - 2, DECK[3]), (DECK[1] - 2, DECK[1], DECK[3] - 2, DECK[3])]
 deck_layers = []
-for tier, (rects, floor, thickness) in enumerate(((legs, FOOT - 1, HEAD - FOOT), ([DECK], HEAD - 1, 1))):
+# Eight treads, two blocks deep each, resting on the lane and arriving flush with the deck's own slab.
+TREAD = 2
+stair = [((DECK[1] + (7 - step) * TREAD, DECK[1] + (8 - step) * TREAD, DECK[2], DECK[3]), FOOT, step + 1)
+         for step in range(8)]
+tiers = [(legs, FOOT - 1, HEAD - FOOT), ([DECK], HEAD - 1, 1)]
+for rect_and_floor in stair:
+    tiers.append(([rect_and_floor[0]], rect_and_floor[1], rect_and_floor[2]))
+for tier, (rects, floor, thickness) in enumerate(tiers):
     drawn = [{"id": f"deck-tier{tier}-{index}", "type": "rectangle", "operation": "add",
               "floor": round(floor), "base_height": round(thickness), "material": STONE,
               "min_x": round(a), "max_x": round(b), "min_z": round(c), "max_z": round(d)}

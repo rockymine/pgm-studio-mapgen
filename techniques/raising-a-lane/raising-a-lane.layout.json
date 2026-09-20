@@ -1167,6 +1167,438 @@
      }
     ]
    }
+  },
+  {
+   "id": "deck-tier2",
+   "name": "deck tier 2",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "deck-over",
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-tier2-0",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 9,
+      "base_height": 1,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      },
+      "min_x": 68,
+      "max_x": 70,
+      "min_z": 21,
+      "max_z": 33
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-tier2",
+      "name": "the deck over the corner",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-tier2-0"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "deck-tier3",
+   "name": "deck tier 3",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "deck-over",
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-tier3-0",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 9,
+      "base_height": 2,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      },
+      "min_x": 66,
+      "max_x": 68,
+      "min_z": 21,
+      "max_z": 33
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-tier3",
+      "name": "the deck over the corner",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-tier3-0"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "deck-tier4",
+   "name": "deck tier 4",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "deck-over",
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-tier4-0",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 9,
+      "base_height": 3,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      },
+      "min_x": 64,
+      "max_x": 66,
+      "min_z": 21,
+      "max_z": 33
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-tier4",
+      "name": "the deck over the corner",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-tier4-0"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "deck-tier5",
+   "name": "deck tier 5",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "deck-over",
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-tier5-0",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 9,
+      "base_height": 4,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      },
+      "min_x": 62,
+      "max_x": 64,
+      "min_z": 21,
+      "max_z": 33
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-tier5",
+      "name": "the deck over the corner",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-tier5-0"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "deck-tier6",
+   "name": "deck tier 6",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "deck-over",
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-tier6-0",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 9,
+      "base_height": 5,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      },
+      "min_x": 60,
+      "max_x": 62,
+      "min_z": 21,
+      "max_z": 33
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-tier6",
+      "name": "the deck over the corner",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-tier6-0"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "deck-tier7",
+   "name": "deck tier 7",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "deck-over",
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-tier7-0",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 9,
+      "base_height": 6,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      },
+      "min_x": 58,
+      "max_x": 60,
+      "min_z": 21,
+      "max_z": 33
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-tier7",
+      "name": "the deck over the corner",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-tier7-0"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "deck-tier8",
+   "name": "deck tier 8",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "deck-over",
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-tier8-0",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 9,
+      "base_height": 7,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      },
+      "min_x": 56,
+      "max_x": 58,
+      "min_z": 21,
+      "max_z": 33
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-tier8",
+      "name": "the deck over the corner",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-tier8-0"
+      ]
+     }
+    ]
+   }
+  },
+  {
+   "id": "deck-tier9",
+   "name": "deck tier 9",
+   "base_y": 0,
+   "kind": "made",
+   "part_of": "deck-over",
+   "layout": {
+    "shapes": [
+     {
+      "id": "deck-tier9-0",
+      "type": "rectangle",
+      "operation": "add",
+      "floor": 9,
+      "base_height": 8,
+      "material": {
+       "kind": "cell",
+       "cellSize": 4,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 98,
+         "data": 1
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 6
+        }
+       ]
+      },
+      "min_x": 54,
+      "max_x": 56,
+      "min_z": 21,
+      "max_z": 33
+     }
+    ],
+    "groups": [
+     {
+      "id": "deck-tier9",
+      "name": "the deck over the corner",
+      "mirrors": false,
+      "shapeIds": [
+       "deck-tier9-0"
+      ]
+     }
+    ]
+   }
   }
  ]
 }

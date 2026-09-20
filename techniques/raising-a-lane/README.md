@@ -21,7 +21,7 @@ everything a bend decides.
 | `plates` | layout | 9 override plates over a lane left at its foot | walked, 0 placed | level |
 | `marks` | relief | two `area` marks, everything between unpinned | walked, 0 placed | level but at the corner |
 | `push` | relief | one push of 8 at the arm's end, `falloff` 22 | walked, 0 placed | level |
-| `deck` | layers | the lane untouched, a storey over its corner | walked — the lane never climbs | level |
+| `deck` | layers | the lane untouched, a storey over its corner and a flight up to it | the lane never climbs; the storey walks from its own flight | level |
 
 ## What the bend decides
 
@@ -70,9 +70,17 @@ pins and the lane does not.
 grades back over `falloff` 22: the arm climbs, the corner catches the edge of the skirt, and the stem never
 leaves the base. A push builds a landform a lane crosses; it does not raise a lane.
 
-**A made storey ignores the bend entirely.** `deck` leaves the L at 9 and crosses a stone floor over the
-corner at 16 on four legs, so the lane a player runs is unchanged and what is new is a route over it and
-cover under it.
+**A made storey ignores the bend entirely, and it is only a route if something climbs to it.** `deck` leaves
+the L at 9 and crosses a stone floor over the corner at 16 on four legs. Drawn with nothing but that, the
+walk answers **`barrier +8` at every edge of it**: a storey nothing reaches is a roof, and the lane under it
+is the only route on the panel.
+
+**So the flight is part of the structure.** Eight treads two blocks deep rest on the lane at the arm's far
+end and climb to y16, flush with the slab — all on the deck's own made layers, so the ground never changes.
+From the stair's foot the deck walks **40 blocks, nothing placed**, back over the corner the lane turns.
+
+**Asking about a storey takes a `to` that names one.** `walk?to=x,z,y` is the difference between the deck and
+the lane under it, and it is the only way to get an answer about the upper surface at all.
 
 ## What the columns say that neither profile can
 
@@ -102,6 +110,8 @@ was drawn at.
 - **a push is a landform, not a climb.** Its falloff is radial, so it reaches a bend from the outside and
   leaves the far leg where it was.
 - **an override add wins the column whatever its height**, so use it where the plate *is* the new ground.
+- **a storey needs its own way up, drawn with it.** A deck with no flight is a roof: the walk says
+  `barrier +8` at every edge, and nothing else reports it because the lane underneath still walks.
 
 ## Limits
 
@@ -123,13 +133,13 @@ grade; a shorter one does not. What transfers is the rule, not the profile.
 - `profiles.txt` — every lane along its own path: up the stem, round the corner, out to the arm's end.
 - `across.txt` — every lane read across itself at three stations, which is where the bend shows.
 - `walks.txt` — `walk` over each one: the route, the blocks placed, and the word for every step that is not
-  a plain walk.
+  a plain walk. Beside them the deck's own two, under the storey and up its flight, which is what a `to`
+  naming a storey answers.
 - `columns.txt` — five columns: under a plate against under a tread, the deck's own column, and the two
   sides of the leaning stem.
 - `across.txt` also counts every riser row of the three tilted panels, which is where the rounding notch is.
-- `raising-a-lane.layout.json` — what `build.py` writes: 37 ground shapes in nine groups, and two made
-  layers for the deck.
+- `raising-a-lane.layout.json` — what `build.py` writes: 37 ground shapes in nine groups, and ten made
+  layers for the deck, its legs and the eight treads of its flight.
 
 Renders: `iso.png`, the nine Ls together; `piece-treads.png`, `tilted.png`, `two-ramps.png`,
-`ramps-and-landing.png` and `marks.png`, the panels whose corners differ, each close enough to see what the
-bend did.
+`ramps-and-landing.png`, `marks.png` and `deck.png`, each close enough to see what the bend did.
