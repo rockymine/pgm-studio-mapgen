@@ -21,7 +21,7 @@ everything a bend decides.
 | `plates` | layout | 9 override plates over a lane left at its foot | walked, 0 placed | level |
 | `marks` | relief | two `area` marks, everything between unpinned | walked, 0 placed | level but at the corner |
 | `push` | relief | one push of 8 at the arm's end, `falloff` 22 | walked, 0 placed | level |
-| `deck` | layers | the lane untouched, a storey over its corner and a flight up to it | the lane never climbs; the storey walks from its own flight | level |
+| `deck` | layers | the lane untouched, a storey over its corner and two flights up to it | the lane never climbs; the storey walks from either flight | level |
 
 ## What the bend decides
 
@@ -75,9 +75,18 @@ the L at 9 and crosses a stone floor over the corner at 16 on four legs. Drawn w
 walk answers **`barrier +8` at every edge of it**: a storey nothing reaches is a roof, and the lane under it
 is the only route on the panel.
 
-**So the flight is part of the structure.** Eight treads two blocks deep rest on the lane at the arm's far
-end and climb to y16, flush with the slab — all on the deck's own made layers, so the ground never changes.
-From the stair's foot the deck walks **40 blocks, nothing placed**, back over the corner the lane turns.
+**So a flight is part of the structure, and it is drawn twice rather than once.** Two of them, each three
+blocks wide, sit on the arm's two edges at its far end: eight treads two blocks deep resting on the lane and
+climbing to y16, flush with the slab, all on the deck's own made layers so the ground never changes.
+
+**A flight the full width of the lane buys the storey by taking the lane.** With one across the whole arm
+the walk answered `barrier +8` *along the lane* instead of over the deck, because a player running it the
+other way meets the flight's high face — a stair across a route is a wall to everyone not on it. Two on
+the edges leave **six blocks of lane at its foot between them**, which `columns.txt` reads
+across the arm as 13 13 13 8 8 8 8 8 8 13 13 13.
+
+**All three walks come back clean.** Along the lane between the flights it is 69 blocks with nothing placed;
+up either flight onto the deck, 42 blocks with nothing placed.
 
 **Asking about a storey takes a `to` that names one.** `walk?to=x,z,y` is the difference between the deck and
 the lane under it, and it is the only way to get an answer about the upper surface at all.
@@ -88,6 +97,10 @@ the lane under it, and it is the only way to get an answer about the upper surfa
 along the path and read level across. The column under a plate is the plate: an **override add is a
 privileged set and wins the column whatever its height**, so a plate replaces the lane under it rather than
 standing on it.
+
+**A transect cannot see a made storey at all.** `deck` reads its lane at 9 across every cut — storey, legs
+and flights included — because a transect answers with the ground and a made layer is not ground. A storey
+is read with `column`.
 
 **The two relief panels start a course lower than the drawn ones.** They read 8 where the drawn panels read
 9, because the relief's `base` is what unpinned ground settles at and a shape's drawn height is only what it
@@ -112,6 +125,8 @@ was drawn at.
 - **an override add wins the column whatever its height**, so use it where the plate *is* the new ground.
 - **a storey needs its own way up, drawn with it.** A deck with no flight is a roof: the walk says
   `barrier +8` at every edge, and nothing else reports it because the lane underneath still walks.
+- **and the way up must not take the way through.** A flight across the full width of a lane makes the lane
+  the wall — two narrow ones on the edges climb the same eight blocks and leave the middle open.
 
 ## Limits
 
@@ -133,13 +148,13 @@ grade; a shorter one does not. What transfers is the rule, not the profile.
 - `profiles.txt` — every lane along its own path: up the stem, round the corner, out to the arm's end.
 - `across.txt` — every lane read across itself at three stations, which is where the bend shows.
 - `walks.txt` — `walk` over each one: the route, the blocks placed, and the word for every step that is not
-  a plain walk. Beside them the deck's own two, under the storey and up its flight, which is what a `to`
-  naming a storey answers.
+  a plain walk. Beside them the deck's own three — along the lane between the flights, and up each of them —
+  which is what a `to` naming a storey answers.
 - `columns.txt` — five columns: under a plate against under a tread, the deck's own column, and the two
-  sides of the leaning stem.
+  sides of the leaning stem. Beside them the deck's arm read across at the flights, one column a cell.
 - `across.txt` also counts every riser row of the three tilted panels, which is where the rounding notch is.
-- `raising-a-lane.layout.json` — what `build.py` writes: 37 ground shapes in nine groups, and ten made
-  layers for the deck, its legs and the eight treads of its flight.
+- `raising-a-lane.layout.json` — what `build.py` writes: 37 ground shapes in nine groups, and eighteen made
+  layers for the deck, its legs and the sixteen treads of its two flights.
 
 Renders: `iso.png`, the nine Ls together; `piece-treads.png`, `tilted.png`, `two-ramps.png`,
 `ramps-and-landing.png`, `marks.png` and `deck.png`, each close enough to see what the bend did.

@@ -33,22 +33,27 @@ the steps that cannot be walked.
   from=-42,-7&to=-1,27
   ROUTE (-42, -7) -> (-1, 27) aim travel: 69 blocks, 0 placed, 0 drop(s), worst drop 0
   rises 0, falls 0, worst step 0: walked end to end
-### deck — the lane untouched, a made storey over its corner and a flight up to it
+### deck — the lane untouched, a made storey over its corner and two flights up to it
   from=32,-7&to=73,27
-  ROUTE (32, -7) -> (73, 27) aim travel: 69 blocks, 7 placed, 0 drop(s), worst drop 0
-  rises 1, falls 0, worst step 8: barrier +8 at (37, 21)
+  ROUTE (32, -7) -> (73, 27) aim travel: 69 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
 
-### deck, the two walks a storey actually has
-  under it, the lane's own length
-  from=32,-7&to=73,27
-  ROUTE (32, -7) -> (73, 27) aim travel: 69 blocks, 7 placed, 0 drop(s), worst drop 0
-  rises 1, falls 0, worst step 8: barrier +8 at (37, 21)
-  up its flight and back over the corner
-  from=72,27&to=32,27,17
-  ROUTE (72, 27) -> (32, 27) aim travel: 40 blocks, 0 placed, 0 drop(s), worst drop 0
+### deck, the three walks a storey with two flights has
+  along the lane, between the flights
+  from=73,27&to=32,-7
+  ROUTE (73, 27) -> (32, -7) aim travel: 69 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+  up the south flight onto the deck
+  from=72,22&to=32,27,17
+  ROUTE (72, 22) -> (32, 27) aim travel: 42 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
+  up the north flight onto the deck
+  from=72,31&to=32,27,17
+  ROUTE (72, 31) -> (32, 27) aim travel: 42 blocks, 0 placed, 0 drop(s), worst drop 0
   rises 0, falls 0, worst step 0: walked end to end
 
 A `to` that names a storey — `x,z,y` — is what asks about the deck rather than the lane under it.
-Without the flight both of those answered `barrier +8`: the storey was a roof, not a route. The
-first walk still reports one, because from the lane's foot the cheapest way to the arm's far end
-is over the deck rather than under it, and the walk prices a climb a player pays for in blocks.
+With no flight at all both of those answered `barrier +8`: the storey was a roof, not a route. With
+one flight across the whole arm the lane answered `barrier +8` instead, because a player running it
+the other way meets the flight's face. Two flights three wide on the arm's edges leave six blocks
+of lane open between them, and all three walks come back clean.

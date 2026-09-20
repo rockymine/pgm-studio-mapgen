@@ -1,4 +1,4 @@
-"""Seven L-shaped lanes, each climbing the same eight blocks a different way.
+"""Nine L-shaped lanes, each climbing the same eight blocks a different way.
 
 A composed lane bends. A wool approach is an L, a hub arm turns into its spawn, and the instruments that
 raise ground do not all survive the corner — which is the whole reason the lane here is an L rather than a
@@ -171,20 +171,24 @@ for name in PANELS:
         relief[name] = {"base": FOOT - 1, "reach": 0, "step": 1,
                         "marks": panel_marks, "pushes": panel_pushes}
 
-# The deck: a storey at the head's height over the corner and the first of the arm, on four legs, with a
-# flight of its own climbing to it off the arm's far end. A storey nothing climbs to is a roof rather than a
-# route — the walk answers `barrier +8` at every edge of one — so the stair is part of the structure and not
-# an afterthought. A layer is one span a column, so the legs stop at the deck and the treads do not overlap.
+# The deck: a storey at the head's height over the corner and the first of the arm, on four legs, with its
+# own flights climbing to it off the arm's far end. A storey nothing climbs to is a roof rather than a route
+# — the walk answers `barrier +8` at every edge of one — so the stair is part of the structure and not an
+# afterthought. A layer is one span a column, so the legs stop at the deck and the treads do not overlap.
 dx0, dx1, dz0, dz1 = limits("deck")
 DECK = (dx0, dx1 + 16, dz1 - WIDE, dz1)                 # over the corner and 16 blocks of the arm
 STONE = {"kind": "cell", "cellSize": 4, "rise": 2, "palette": [SOLID(98), SOLID(98, 1), SOLID(1, 6)]}
 legs = [(DECK[0], DECK[0] + 2, DECK[2], DECK[2] + 2), (DECK[1] - 2, DECK[1], DECK[2], DECK[2] + 2),
         (DECK[0], DECK[0] + 2, DECK[3] - 2, DECK[3]), (DECK[1] - 2, DECK[1], DECK[3] - 2, DECK[3])]
 deck_layers = []
-# Eight treads, two blocks deep each, resting on the lane and arriving flush with the deck's own slab.
-TREAD = 2
-stair = [((DECK[1] + (7 - step) * TREAD, DECK[1] + (8 - step) * TREAD, DECK[2], DECK[3]), FOOT, step + 1)
-         for step in range(8)]
+# Two flights rather than one, three wide, on the arm's two edges — with six blocks of lane left open
+# between them. A flight across the whole width is a wall to anyone running the lane the other way: they
+# meet its face. Two on the edges leave the way through, and a player takes whichever side they are on.
+TREAD, FLIGHT = 2, 3
+stair = []
+for edge in (DECK[2], DECK[3] - FLIGHT):
+    stair += [((DECK[1] + (7 - step) * TREAD, DECK[1] + (8 - step) * TREAD, edge, edge + FLIGHT),
+               FOOT, step + 1) for step in range(8)]
 tiers = [(legs, FOOT - 1, HEAD - FOOT), ([DECK], HEAD - 1, 1)]
 for rect_and_floor in stair:
     tiers.append(([rect_and_floor[0]], rect_and_floor[1], rect_and_floor[2]))

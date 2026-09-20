@@ -42,7 +42,7 @@ across; what is not level here is the instrument leaning.
   stem, z0+26    8  8  8  8  8  8  8  8  8  8  8  8
   corner, z1-6   8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  8  9  9
 
-### deck — the lane untouched, a made storey over its corner and a flight up to it
+### deck — the lane untouched, a made storey over its corner and two flights up to it
   stem, z0+10    9  9  9  9  9  9  9  9  9  9  9  9
   stem, z0+26    9  9  9  9  9  9  9  9  9  9  9  9
   corner, z1-6   9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9  9
@@ -60,3 +60,7 @@ A rectangle is level across by construction, so every stepped panel reads one fi
 tilted polygon does not: a tilt is one plane and an L asks it to climb in two directions, so the
 stem leans three blocks across its twelve. The relief panels lean at the corner alone, where the
 relaxation grades on the diagonal between two pins.
+
+`deck` reads its lane at 9 across every cut, storey and flights and all, because a transect answers
+with the ground and a made layer is not ground. A storey is read with `column`, which is what
+columns.txt does.
