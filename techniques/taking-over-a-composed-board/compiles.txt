@@ -5,30 +5,52 @@ variant                  shapes  adds polys  cuts themes  heights
 
 1-as-pinned                   8     6     2     2      0  [9]
 2-void-redrawn                8     6     2     2      0  [9]
-3-a-surface-per-piece        16    14    10     2      0  [8, 9, 10, 11, 12, 13]
-4-taken-over                 17    16    10     1      6  [8, 9, 10, 11, 12, 13, 15]
+3-a-surface-per-piece        13    11     7     2      0  [8, 9, 11, 13, 14, 15, 16]
+4-taken-over                 17    16    12     1      5  [8, 9, 10, 11, 12, 13, 14, 15, 16]
 
 The two adds of `1-as-pinned` are one merged polygon per COMPONENT — the team unit and the
-neutral mid — not one per board. A surface per piece ends the merge inside a component and
-answers one polygon per height per connected region: `hub-t1-9`, `hub-t1-9-2`, `hub-t1-10` and so
-on, eleven of them over six heights. What it does NOT end is the subtract: both void cuts are
-still there, because `PlanVoids` reads the void per component rather than per surface.
+neutral mid — not one per board. A surface per piece ends that merge: nothing is left to merge
+once no two touching pieces share a height, and `3-a-surface-per-piece` answers one polygon per
+height, seven of them. What it does NOT end is the subtract — both void cuts survive, because
+`PlanVoids` reads the void per component rather than per surface.
+
+The answer is one polygon per height per CONNECTED REGION, and the taken-over board is where the
+difference shows: nine heights come back as twelve polygons, because the staircase's treads put
+10, 11 and 12 on two cross-pieces that do not touch. `hub-t1-10` and `hub-t1-10-2` are those two,
+and `themeById` is what addresses one of them at a time.
 
 The shapes of `3-a-surface-per-piece`, in the order the compiler wrote them:
 
   hub-t1-9              polygon   add      base_height 9
-  hub-t1-9-2            polygon   add      base_height 9
-  hub-t1-10             polygon   add      base_height 10
-  hub-t1-10-2           polygon   add      base_height 10
-  hub-t1-10-3           polygon   add      base_height 10
   hub-t1-11             polygon   add      base_height 11
-  hub-t1-11-2           polygon   add      base_height 11
-  hub-t1-12             polygon   add      base_height 12
   hub-t1-13             polygon   add      base_height 13
+  hub-t1-14             polygon   add      base_height 14
+  hub-t1-15             polygon   add      base_height 15
+  hub-t1-16             polygon   add      base_height 16
   mid-stone-0-8         polygon   add      base_height 8
   void-1-cut            polygon   subtract base_height None
   void-2-cut            polygon   subtract base_height None
   spawn-red             rectangle add      base_height 11
   spawn-blue            rectangle add      base_height None
-  wool-red-red          rectangle add      base_height 13
+  wool-red-red          rectangle add      base_height 16
   wool-blue-blue        rectangle add      base_height None
+
+And of `4-taken-over`, with the theme each one paints:
+
+  hub-t1-9              polygon   add      base_height 9    front
+  hub-t1-10             polygon   add      base_height 10   stair
+  hub-t1-10-2           polygon   add      base_height 10   stair
+  hub-t1-11             polygon   add      base_height 11   stair
+  hub-t1-11-2           polygon   add      base_height 11   stair
+  hub-t1-12             polygon   add      base_height 12   stair
+  hub-t1-12-2           polygon   add      base_height 12   stair
+  hub-t1-13             polygon   add      base_height 13   back
+  hub-t1-14             polygon   add      base_height 14   approach
+  hub-t1-15             polygon   add      base_height 15   approach
+  hub-t1-16             polygon   add      base_height 16   approach
+  mid-stone-0-8         polygon   add      base_height 8    mid
+  void-1-cut            polygon   subtract base_height None 
+  spawn-red             rectangle add      base_height 11   stair
+  spawn-blue            rectangle add      base_height None 
+  wool-red-red          rectangle add      base_height 16   approach
+  wool-blue-blue        rectangle add      base_height None 

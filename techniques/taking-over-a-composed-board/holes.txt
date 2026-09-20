@@ -11,16 +11,22 @@ The board's own negative space, three ways of asking.
     void-1-cut     ring [[-20, 32], [-8, 32], [-8, 44], [-20, 44]]
     void-2-cut     ring [[4, 32], [16, 32], [16, 44], [4, 44]]
 
-### the built world, per variant: how many of each hole's 144 blocks came out as ground
-    1-as-pinned              land  5372   hole-1   0/144   hole-2   0/144
-    2-void-redrawn           land  5436   hole-1  32/144   hole-2   0/144
-    3-a-surface-per-piece    land  5372   hole-1   0/144   hole-2   0/144
-    4-taken-over             land  5145   hole-1  13/144   hole-2   0/144
+### the built world, per variant: how many of each hole's 144 blocks carry ground
+  Asked with `transect`, whose `ground` is null on a void column. A render payload answers a
+  different question: a crown leaning over the rim and a marker block under it are blocks in that
+  column, and a count over them reports a hole as filled that is void to the block.
+    1-as-pinned              hole-1   0/144   hole-2   0/144
+    2-void-redrawn           hole-1  32/144   hole-2   0/144
+    3-a-surface-per-piece    hole-1   0/144   hole-2   0/144
+    4-taken-over             hole-1   0/144   hole-2   0/144
 
-`2-void-redrawn` has 32 blocks of ground in hole-1 because its SUBTRACT was redrawn with the
-corners taken off. No add was written; the board simply states less negative space than it did.
+`2-void-redrawn` is the only variant with ground inside a hole, and its 32 blocks are the
+corners its SUBTRACT was redrawn without. The layout's group mirrors, so the same 32 come out of
+hole-1's image at x 8..20, z -44..-32: 64 blocks over the board, and no add was written for any of
+them. The board simply states less negative space than it did.
 
-`4-taken-over` has 13 there for a different reason, and it is the one worth knowing: the far bar
-came out, so that void is no longer ENCLOSED. The compiler emits one cut instead of two and the
-merged outline traces round what is left of the hole, keeping the corners the bar used to bound.
-Taking a piece away changes which voids are holes, and the cuts change with it.
+`4-taken-over` took the bar west of hole-1 away, and hole-1 is still void to the block. What
+changed is the number of CUTS: with the bar gone that void opens to the sea, so it is no longer
+ENCLOSED, the compiler emits one subtract instead of two, and the merged outline states the same
+void by tracing round it. A subtract is wanted where a void is enclosed; everywhere else the
+outline already says it.

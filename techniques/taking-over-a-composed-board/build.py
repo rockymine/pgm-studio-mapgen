@@ -9,28 +9,41 @@
 and it is an ordinary `PlanModel` from there on. Ten players, `rot_180`, a `double-hole` hub and one `l`
 wool: thirteen pieces on an 80 x 160 board, with two enclosed holes the hub's own shape makes.
 
-Taking it over is editing that JSON, and the four variants are the four kinds of edit there are. Two are
-edits to the PLAN — a height per piece, a piece split in two — and one is an edit to the LAYOUT the compiler
-answers with, because a void ring is the compiler's statement and not the plan's. The fourth is the one that
-cannot be made at all: an add over a hole, which `SK13` refuses at 422.
+Taking it over is editing that JSON, and knowing which document an edit belongs to is most of the skill.
+A height per piece, a piece split, a piece replaced by a build zone and a wall are edits to the PLAN. A void
+ring redrawn, a coast chamfered, a theme, a road and a prop are edits to the LAYOUT the compiler answers
+with. And one edit — an add over a hole — is the one that should not be made in either: it stores at 200
+with an `SK13` complaint, and the complaint is the only thing that says the document and the world disagree.
 """
 import json, math, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PINNED = json.load(open(os.path.join(HERE, "pinned.plan.json")))
 
-# The height each piece stands at, which is what ends the merge. Six distinct values, and they are chosen
-# to say something: the two long bars of the hub at the board's own 9, the crosses between them a step up,
-# the wool approach climbing 11-12-13 to its room, the spawn level with the approach's foot, the neutral
-# mid one below everything so the middle reads as the low ground it is.
+# The height each piece stands at, and the numbers are the point rather than a decoration. A composed
+# board is flat, so the author's first decision is where the hard cuts go — and a cut only pays if it is
+# somewhere the board is fought over.
+#
+# So: the FRONT bar stays at the board's own 9, flat and low, and everything behind it is raised to 13.
+# That four-block step is a barrier a defender shoots over and an attacker has to climb, and it is what
+# gives the paint somewhere to change. The two cross-pieces between the bars are then STAIRCASES — each is
+# split into three and stepped 10, 11, 12 — so the climb walks instead of being scrambled. The wool
+# approach climbs on from the back at 14, 15, 16, and the neutral mid sits one below everything at 8.
 SURFACES = {
-    "hub-t1": 9, "hub-t1-west": 9, "hub-t1-mouth": 10, "hub-t1-east": 9,
-    "hub-t2": 9, "hub-t5": 9, "hub-t6": 9,
-    "hub-t3": 10, "hub-t4": 10, "hub-t7": 10,
-    "spawn-t1": 11, "spawn-room": 11,
-    "wool-a-t1": 11, "wool-a-t2": 12, "wool-a-room": 13,
-    "mid-stone-0": 8,
+    "hub-t2": 9, "hub-t6": 9,                                            # the front bar, flat and low
+    "hub-t4-front": 10, "hub-t4-middle": 11, "hub-t4-back": 12,          # the middle staircase
+    "hub-t7-front": 10, "hub-t7-middle": 11, "hub-t7-back": 12,          # the spawn's staircase
+    "hub-t1": 13, "hub-t5": 13,                                          # the back bar
+    "spawn-t1": 11, "spawn-room": 11,                                    # a shelf off the stair
+    "wool-a-t1": 14, "wool-a-t2": 15, "wool-a-room": 16,                 # the approach, climbing
+    "mid-stone-0": 8,                                                    # the neutral holm
+    "hub-t3": 13,
 }
+
+# Nine heights and five themes, because a theme is a place and not a number: the risers are where the
+# paint changes and the flats either side of one are each a single ground.
+ZONES = {8: "mid", 9: "front", 10: "stair", 11: "stair", 12: "stair", 13: "back",
+         14: "approach", 15: "approach", 16: "approach"}
 
 # The piece that comes out and the zone that replaces it, which is the one edit on this card made for a
 # reason the studio cannot check. Looking west out of the spawn, the double-hole hub is three bars with a
@@ -54,23 +67,26 @@ def plan_with_surfaces(plan):
 
 
 def plan_taken_over(plan):
-    """The same heights, plus every other edit a plan takes: a piece cut in three, a piece replaced by a
-    build zone, and a wall where the approach wants one."""
+    """The same heights, plus every other edit a plan takes: two pieces cut into staircases, a piece
+    replaced by a build zone, and a wall where the approach wants one."""
     out = plan_with_surfaces(plan)
     pieces = out["pieces"]
 
-    # A piece SPLIT, so the mouth of the wool approach is its own place at its own height. `hub-t1` runs
-    # nine cells and the approach leaves it from the middle three; cut there and the mouth can step up to
-    # meet the climb instead of the whole bar having to.
-    original = next(piece for piece in pieces if piece["id"] == "hub-t1")
-    x, z, w, h = original["rect"]
-    index = pieces.index(original)
-    pieces.remove(original)
-    for offset, (name, width) in enumerate([("hub-t1-west", 3), ("hub-t1-mouth", 3), ("hub-t1-east", 3)]):
-        pieces.insert(index + offset, {"id": name, "role": "piece",
-                                       "rect": [x + offset * 3, z, width, h],
-                                       "surface": SURFACES[name]})
-    rename(out, "hub-t1", ["hub-t1-west", "hub-t1-mouth", "hub-t1-east"])
+    # Two pieces SPLIT, and split into something: each cross-piece between the bars is three cells deep,
+    # so cutting it at every cell gives three one-cell treads. Stepped 10, 11, 12 between a front bar at 9
+    # and a back bar at 13, that is four one-block risers — a staircase a player walks rather than a wall
+    # they scramble. A plan piece has one height, so a slope is a run of pieces and nothing else.
+    for cross in ("hub-t4", "hub-t7"):
+        original = next(piece for piece in pieces if piece["id"] == cross)
+        x, z, w, h = original["rect"]
+        index = pieces.index(original)
+        pieces.remove(original)
+        treads = [f"{cross}-front", f"{cross}-middle", f"{cross}-back"]
+        for offset, name in enumerate(treads):
+            pieces.insert(index + offset, {"id": name, "role": "piece",
+                                           "rect": [x, z + offset, w, 1],
+                                           "surface": SURFACES[name]})
+        rename(out, cross, treads)
 
     # A piece REMOVED and a build zone declared over its rect. The zone rides in `zones`, which is what a
     # plan says about the void; the compiler turns it into the intent's own `build.areas`, fanned.
@@ -79,16 +95,12 @@ def plan_taken_over(plan):
     rename(out, FAR_LANE, [])
     out["zones"].append({"id": "far-lane", "rect": far["rect"], "holes": []})
 
-    # No `walls` entry, and the reason is measured rather than chosen. A barrier belongs on the wool
-    # approach and not in the hub (the author's ruling) — but this approach is an L of three pieces in a
-    # line, so every interface in it IS the route, and a `walls` entry stamped across the middle of it
-    # stood four courses over the ground either side with no way through: `walk` called it *"barrier +4 at
-    # (-9, 67)"* and the wool was unreachable. `findings.txt` has the reading.
-    #
-    # So the barrier is drawn instead, in the finish, as two override adds with a gate between them on the
-    # road's own line. A `walls` entry closes an interface; a gate is what closes an interface and keeps a
-    # route.
-    out["walls"] = []
+    # A WALL, on the wool approach and not in the hub (the author's ruling). It stands across the middle
+    # of the approach's L, four courses of bedrock over the ground either side — a thing a defender builds
+    # on and cannot lose, low enough that an attacker bridges it. `walk` reports it as `barrier +4` and
+    # that reading is about WALKING: a four-course bedrock wall is bridged, not walked, and reading the
+    # barrier as a fault is why so few maps have ever had one.
+    out["walls"] = [{"a": "wool-a-t1", "b": "wool-a-t2"}]
     return out
 
 
@@ -152,32 +164,20 @@ def ground(surface, wall, rim):
             "surface": {"enabled": True, "depth": 3, "material": depth((SOLID(surface), 1), (SOLID(3), 2))}}
 
 
-# The barrier on the wool approach: two override adds across the t1/t2 interface with six blocks of gate
-# between them, where the road runs. `keepClear` is what makes the dressing pass see it and `height_mode`
-# with `skirt` is what makes the relief leave its stated top alone — both, or it is neither.
-def barrier(shape_id, min_x, max_x):
-    return {"id": shape_id, "type": "rectangle", "operation": "add", "override": True,
-            "keepClear": True, "height_mode": "level", "skirt": 0,
-            "floor": 0, "base_height": 15, "theme": "keep",
-            "min_x": min_x, "min_z": 66, "max_x": max_x, "max_z": 69}
-
-
-BARRIER = [barrier("gate-west", -20, -17), barrier("gate-east", -11, -8)]
-
 FINISH = {
     # A theme is stated on a SHAPE, and a flat plan has one shape — so `themeByHeight` has nothing to bind
     # to until the heights exist. Heights first, then paint.
     "themes": {
-        "mid":    ground(surface=13, wall=24, rim=24),        # gravel over sandstone: the neutral holm
-        "ring":   ground(surface=2, wall=1, rim=4),           # the hub's own ring, meadow on stone
-        "arm":    ground(surface=2, wall=98, rim=98),         # the arms, brick-faced
-        "inner":  ground(surface=2, wall=98, rim=98),
-        "keep":   ground(surface=1, wall=98, rim=98),         # the piece nearest the spawn: bare stone
-        "camp":   ground(surface=2, wall=4, rim=4),           # spawn and wool room: cobble-faced
+        # Five grounds, one a place. The risers are where they change, which is what makes the cut read
+        # as a boundary and not as a stripe.
+        "mid":      ground(surface=13, wall=24, rim=24),   # gravel on sandstone: the neutral holm
+        "front":    ground(surface=2, wall=1, rim=4),      # the low flat bar both teams fight over
+        "stair":    ground(surface=1, wall=98, rim=98),    # the treads: bare stone, brick-faced
+        "back":     ground(surface=2, wall=98, rim=98),    # the raised ground behind the front
+        "approach": ground(surface=2, wall=4, rim=4),      # the climb to the wool, cobble-faced
     },
-    "themeByHeight": {"8": "mid", "9": "ring", "10": "arm", "11": "inner", "12": "keep", "13": "camp"},
-    "mapTheme": "ring",
-    "barrier": BARRIER,
+    "themeByHeight": {str(height): zone for height, zone in ZONES.items()},
+    "mapTheme": "front",
 }
 
 
@@ -190,22 +190,31 @@ ROAD = {"kind": "cell", "seed": 7701, "cellSize": 3, "jitter": 55, "warp": 1, "r
 # Where a prop may stand, computed rather than eyed. The search is over every built cell: keep the cell and
 # its eight neighbours, all at one height, none of them claimed, three clear of every paved cell — and the
 # same of the cell's own rot_180 image, because a prop is judged at every image of its orbit. On this board
-# it answers 272 cells and fifteen sites, and the roads are why: 886 paved cells on 5,280 of land, each
-# owing a tree three blocks, is most of the board gone.
+# it answers 1,150 cells and thirty-four sites, and the roads are most of why: 916 paved cells, each owing
+# a tree three blocks, take out more ground than every keep-out on the board together.
 #
-# Every pass of this search that left something out was wrong, and the numbers are worth keeping. Against
-# the layout alone it said 512 cells: the rooms, the doors and the spawns are not in the claims map until
-# the compiled INTENT is stored. With the intent but not the ORBIT it said 404, and a tree landed two
-# blocks from another tree's image. And it is re-run after every edit that moves ground — an earlier list
-# was searched before the far lane came out and the roads were redrawn, and six of its twenty sites were
-# then refused.
-SEARCHED = [(-30, 51), (-26, -27), (-25, 51), (-24, 22), (-21, -27), (-21, -22), (-20, 30), (-18, 76),
-            (-16, -27), (-16, -22), (-14, 22), (-11, -24), (-10, -6), (-10, 5), (-8, 28)]
+# The search is asked of the board WITHOUT these props on it. A tree raises its own column's top and claims
+# the cells its crown covers, so a list searched over a layout already carrying one is a list about a
+# different board — which here cuts the field from 1,150 cells to 222.
+#
+# Every pass that left something out was wrong, and the numbers are worth keeping. Against the layout alone
+# it answers 1,494 cells and 52 sites, and four of the first twenty are then refused `DR-KEEP`: the rooms,
+# the doors and the spawns are not in the claims map until the compiled INTENT is stored. With the intent
+# but not the ORBIT it answers 1,370 and 45. With both it answers 1,150 and 34, and all thirty-four place.
+#
+# And it is re-run after every edit that moves ground. Every reshaping on this card invalidated the
+# list before it, and a list carried over from one of them left sites the pass then refused.
+SEARCHED = [(-30, 22), (-30, 27), (-30, 46), (-30, 51), (-26, -27), (-26, -22),
+            (-25, 22), (-25, 27), (-25, 46), (-25, 51), (-21, -27), (-21, -22),
+            (-20, 22), (-20, 27), (-20, 46), (-20, 51), (-18, 76), (-16, -27),
+            (-16, -22), (-15, 22), (-15, 27), (-11, -30), (-11, -25), (-10, -6),
+            (-10, -1), (-10, 4), (-10, 22), (-10, 27), (-6, -30), (-6, -25),
+            (-5, -6), (-5, -1), (-5, 4), (0, -6)]
 
 # And five placed the way an author places them when the board looks like a landscape: on the road, beside
-# it, over a hole, in the doorway of the wool room, and on one jamb of the gate. Four rules between them.
+# it, over a hole, in the doorway of the wool room, and against the bedrock wall. Four rules between them.
 BY_EYE = [("eye-on-the-road", 0, 50), ("eye-beside-it", 0, 47), ("eye-over-a-hole", 10, 38),
-          ("eye-in-the-doorway", -12, 77), ("eye-on-the-gate-jamb", -19, 67)]
+          ("eye-in-the-doorway", -12, 77), ("eye-against-the-wall", -14, 67)]
 
 DRESSING = {
     "styles": {
@@ -218,19 +227,20 @@ DRESSING = {
     # one, because a stroke repaints the top block of every column it crosses — and it is drawn down the
     # middle of a piece rather than along its lip, because a corridor's lip is its rim.
     #
-    # `spine` leaves the spawn, turns down the hub's far bar, climbs the wool approach and ends on the
-    # room's own floor. `sally` drops off it through the middle cross-piece to the brink facing the mid,
-    # which is this board's front: the seed composed no frontline piece, so the front is the bridge.
+    # `spine` leaves the spawn, climbs the spawn's own staircase onto the back bar, runs its length and
+    # climbs the wool approach to the room's doorstep. `sally` drops off it down the MIDDLE staircase to
+    # the front bar and on to the brink facing the mid, which is where a bridge lands: the seed composed
+    # no frontline piece, so the mid band is the front.
     "props": [
         {"id": "spine", "kind": "stroke", "seed": 7703, "radius": 2, "style": "solid",
          "claimsGround": True, "pave": ROAD,
-         "points": [[36, 34], [30, 34], [26, 36], [22, 41], [22, 47], [16, 50], [4, 50], [-8, 50],
-                    [-12, 51], [-14, 55], [-14, 62], [-14, 70], [-10, 74], [0, 74]]},
+         "points": [[36, 34], [30, 34], [26, 36], [22, 42], [22, 50], [10, 50], [-4, 50], [-12, 50],
+                    [-14, 54], [-14, 62], [-14, 70], [-10, 74], [0, 74]]},
         {"id": "sally", "kind": "stroke", "seed": 7704, "radius": 2, "style": "solid",
          "claimsGround": True, "pave": ROAD,
-         "points": [[-2, 50], [-2, 44], [-2, 38], [-2, 32], [-2, 26], [-2, 21]]},
+         "points": [[-2, 50], [-2, 46], [-2, 42], [-2, 38], [-2, 34], [-2, 28], [-2, 21]]},
     ] + [
-        # All twenty are oaks: a boulder rests on a footprint seven cells across and the search above
+        # All thirty-four are oaks: a boulder rests on a footprint seven cells across and the search above
         # tests a cell and its eight neighbours, so a rock wants its own wider test — which is
         # `techniques/trees-and-boulders`, not this card.
         {"id": f"searched-{index}", "kind": "tree", "seed": 7710 + index, "x": x, "z": z,

@@ -34,7 +34,7 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `a-house-and-its-wings` | how two rectangles of one plan meet — marching against projecting, two roof forms on one building, and the five `HJ` refusals |
 | `sculpture-with-layers` | the ladder a made thing is built up: one shape, a polyline, layers, rings, and a solid compiled — and what each rung costs |
 | `trees-and-boulders` | what a prop is refused for, and what it is only complained about — a ladder per rule, and a hand-built tree's own foot and crown |
-| `taking-over-a-composed-board` | one pinned plan edited four ways — what a flat compile merges, what a surface per piece buys, and why a hole is nobody's to fill |
+| `taking-over-a-composed-board` | one pinned plan edited four ways — what a flat compile merges, what a height per piece buys, a lane replaced by a build zone, and why a hole is nobody's to fill |
 
 ## Nothing is missing
 

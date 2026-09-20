@@ -57,7 +57,7 @@
     }
    }
   },
-  "ring": {
+  "front": {
    "bedrock": {
     "relative": false,
     "value": 1
@@ -114,121 +114,7 @@
     }
    }
   },
-  "arm": {
-   "bedrock": {
-    "relative": false,
-    "value": 1
-   },
-   "fill": {
-    "kind": "solid",
-    "id": 1,
-    "data": 0
-   },
-   "wall": {
-    "kind": "solid",
-    "id": 98,
-    "data": 0
-   },
-   "wallEnabled": true,
-   "wallOnTerrainFaces": true,
-   "rim": {
-    "enabled": true,
-    "depth": 1,
-    "material": {
-     "kind": "solid",
-     "id": 98,
-     "data": 0
-    }
-   },
-   "rimEdges": "void",
-   "surface": {
-    "enabled": true,
-    "depth": 3,
-    "material": {
-     "kind": "layered",
-     "axis": "depth",
-     "stack": {
-      "ending": "repeat",
-      "bands": [
-       {
-        "thickness": 1,
-        "material": {
-         "kind": "solid",
-         "id": 2,
-         "data": 0
-        }
-       },
-       {
-        "thickness": 2,
-        "material": {
-         "kind": "solid",
-         "id": 3,
-         "data": 0
-        }
-       }
-      ]
-     }
-    }
-   }
-  },
-  "inner": {
-   "bedrock": {
-    "relative": false,
-    "value": 1
-   },
-   "fill": {
-    "kind": "solid",
-    "id": 1,
-    "data": 0
-   },
-   "wall": {
-    "kind": "solid",
-    "id": 98,
-    "data": 0
-   },
-   "wallEnabled": true,
-   "wallOnTerrainFaces": true,
-   "rim": {
-    "enabled": true,
-    "depth": 1,
-    "material": {
-     "kind": "solid",
-     "id": 98,
-     "data": 0
-    }
-   },
-   "rimEdges": "void",
-   "surface": {
-    "enabled": true,
-    "depth": 3,
-    "material": {
-     "kind": "layered",
-     "axis": "depth",
-     "stack": {
-      "ending": "repeat",
-      "bands": [
-       {
-        "thickness": 1,
-        "material": {
-         "kind": "solid",
-         "id": 2,
-         "data": 0
-        }
-       },
-       {
-        "thickness": 2,
-        "material": {
-         "kind": "solid",
-         "id": 3,
-         "data": 0
-        }
-       }
-      ]
-     }
-    }
-   }
-  },
-  "keep": {
+  "stair": {
    "bedrock": {
     "relative": false,
     "value": 1
@@ -285,7 +171,64 @@
     }
    }
   },
-  "camp": {
+  "back": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 98,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 98,
+     "data": 0
+    }
+   },
+   "rimEdges": "void",
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "depth",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 1,
+        "material": {
+         "kind": "solid",
+         "id": 2,
+         "data": 0
+        }
+       },
+       {
+        "thickness": 2,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "approach": {
    "bedrock": {
     "relative": false,
     "value": 1
@@ -345,47 +288,16 @@
  },
  "themeByHeight": {
   "8": "mid",
-  "9": "ring",
-  "10": "arm",
-  "11": "inner",
-  "12": "keep",
-  "13": "camp"
+  "9": "front",
+  "10": "stair",
+  "11": "stair",
+  "12": "stair",
+  "13": "back",
+  "14": "approach",
+  "15": "approach",
+  "16": "approach"
  },
- "mapTheme": "ring",
- "barrier": [
-  {
-   "id": "gate-west",
-   "type": "rectangle",
-   "operation": "add",
-   "override": true,
-   "keepClear": true,
-   "height_mode": "level",
-   "skirt": 0,
-   "floor": 0,
-   "base_height": 15,
-   "theme": "keep",
-   "min_x": -20,
-   "min_z": 66,
-   "max_x": -17,
-   "max_z": 69
-  },
-  {
-   "id": "gate-east",
-   "type": "rectangle",
-   "operation": "add",
-   "override": true,
-   "keepClear": true,
-   "height_mode": "level",
-   "skirt": 0,
-   "floor": 0,
-   "base_height": 15,
-   "theme": "keep",
-   "min_x": -11,
-   "min_z": 66,
-   "max_x": -8,
-   "max_z": 69
-  }
- ],
+ "mapTheme": "front",
  "dressing": {
   "styles": {
    "oak-9": {
@@ -473,31 +385,27 @@
      ],
      [
       22,
-      41
+      42
      ],
      [
       22,
-      47
-     ],
-     [
-      16,
       50
      ],
      [
-      4,
+      10,
       50
      ],
      [
-      -8,
+      -4,
       50
      ],
      [
       -12,
-      51
+      50
      ],
      [
       -14,
-      55
+      54
      ],
      [
       -14,
@@ -556,7 +464,11 @@
      ],
      [
       -2,
-      44
+      46
+     ],
+     [
+      -2,
+      42
      ],
      [
       -2,
@@ -564,11 +476,11 @@
      ],
      [
       -2,
-      32
+      34
      ],
      [
       -2,
-      26
+      28
      ],
      [
       -2,
@@ -581,38 +493,38 @@
     "kind": "tree",
     "seed": 7710,
     "x": -30,
-    "z": 51,
+    "z": 22,
     "style": "oak-9"
    },
    {
     "id": "searched-1",
     "kind": "tree",
     "seed": 7711,
-    "x": -26,
-    "z": -27,
+    "x": -30,
+    "z": 27,
     "style": "oak-9"
    },
    {
     "id": "searched-2",
     "kind": "tree",
     "seed": 7712,
-    "x": -25,
-    "z": 51,
+    "x": -30,
+    "z": 46,
     "style": "oak-9"
    },
    {
     "id": "searched-3",
     "kind": "tree",
     "seed": 7713,
-    "x": -24,
-    "z": 22,
+    "x": -30,
+    "z": 51,
     "style": "oak-9"
    },
    {
     "id": "searched-4",
     "kind": "tree",
     "seed": 7714,
-    "x": -21,
+    "x": -26,
     "z": -27,
     "style": "oak-9"
    },
@@ -620,7 +532,7 @@
     "id": "searched-5",
     "kind": "tree",
     "seed": 7715,
-    "x": -21,
+    "x": -26,
     "z": -22,
     "style": "oak-9"
    },
@@ -628,72 +540,224 @@
     "id": "searched-6",
     "kind": "tree",
     "seed": 7716,
-    "x": -20,
-    "z": 30,
+    "x": -25,
+    "z": 22,
     "style": "oak-9"
    },
    {
     "id": "searched-7",
     "kind": "tree",
     "seed": 7717,
-    "x": -18,
-    "z": 76,
+    "x": -25,
+    "z": 27,
     "style": "oak-9"
    },
    {
     "id": "searched-8",
     "kind": "tree",
     "seed": 7718,
-    "x": -16,
-    "z": -27,
+    "x": -25,
+    "z": 46,
     "style": "oak-9"
    },
    {
     "id": "searched-9",
     "kind": "tree",
     "seed": 7719,
-    "x": -16,
-    "z": -22,
+    "x": -25,
+    "z": 51,
     "style": "oak-9"
    },
    {
     "id": "searched-10",
     "kind": "tree",
     "seed": 7720,
-    "x": -14,
-    "z": 22,
+    "x": -21,
+    "z": -27,
     "style": "oak-9"
    },
    {
     "id": "searched-11",
     "kind": "tree",
     "seed": 7721,
-    "x": -11,
-    "z": -24,
+    "x": -21,
+    "z": -22,
     "style": "oak-9"
    },
    {
     "id": "searched-12",
     "kind": "tree",
     "seed": 7722,
-    "x": -10,
-    "z": -6,
+    "x": -20,
+    "z": 22,
     "style": "oak-9"
    },
    {
     "id": "searched-13",
     "kind": "tree",
     "seed": 7723,
-    "x": -10,
-    "z": 5,
+    "x": -20,
+    "z": 27,
     "style": "oak-9"
    },
    {
     "id": "searched-14",
     "kind": "tree",
     "seed": 7724,
-    "x": -8,
-    "z": 28,
+    "x": -20,
+    "z": 46,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-15",
+    "kind": "tree",
+    "seed": 7725,
+    "x": -20,
+    "z": 51,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-16",
+    "kind": "tree",
+    "seed": 7726,
+    "x": -18,
+    "z": 76,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-17",
+    "kind": "tree",
+    "seed": 7727,
+    "x": -16,
+    "z": -27,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-18",
+    "kind": "tree",
+    "seed": 7728,
+    "x": -16,
+    "z": -22,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-19",
+    "kind": "tree",
+    "seed": 7729,
+    "x": -15,
+    "z": 22,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-20",
+    "kind": "tree",
+    "seed": 7730,
+    "x": -15,
+    "z": 27,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-21",
+    "kind": "tree",
+    "seed": 7731,
+    "x": -11,
+    "z": -30,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-22",
+    "kind": "tree",
+    "seed": 7732,
+    "x": -11,
+    "z": -25,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-23",
+    "kind": "tree",
+    "seed": 7733,
+    "x": -10,
+    "z": -6,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-24",
+    "kind": "tree",
+    "seed": 7734,
+    "x": -10,
+    "z": -1,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-25",
+    "kind": "tree",
+    "seed": 7735,
+    "x": -10,
+    "z": 4,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-26",
+    "kind": "tree",
+    "seed": 7736,
+    "x": -10,
+    "z": 22,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-27",
+    "kind": "tree",
+    "seed": 7737,
+    "x": -10,
+    "z": 27,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-28",
+    "kind": "tree",
+    "seed": 7738,
+    "x": -6,
+    "z": -30,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-29",
+    "kind": "tree",
+    "seed": 7739,
+    "x": -6,
+    "z": -25,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-30",
+    "kind": "tree",
+    "seed": 7740,
+    "x": -5,
+    "z": -6,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-31",
+    "kind": "tree",
+    "seed": 7741,
+    "x": -5,
+    "z": -1,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-32",
+    "kind": "tree",
+    "seed": 7742,
+    "x": -5,
+    "z": 4,
+    "style": "oak-9"
+   },
+   {
+    "id": "searched-33",
+    "kind": "tree",
+    "seed": 7743,
+    "x": 0,
+    "z": -6,
     "style": "oak-9"
    },
    {
@@ -729,10 +793,10 @@
     "style": "oak-9"
    },
    {
-    "id": "eye-on-the-gate-jamb",
+    "id": "eye-against-the-wall",
     "kind": "tree",
     "seed": 7744,
-    "x": -19,
+    "x": -14,
     "z": 67,
     "style": "oak-9"
    }

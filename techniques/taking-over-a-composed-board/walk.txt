@@ -1,21 +1,43 @@
-GET /api/map/technique-composed-4-taken-over/walk — the wool approach, once it has a barrier across
-it. `from` and `to` are `x,z`. A `walls` entry gave no way through at all and `walk` said so; the
-drawn gate is what a route needs.
+GET /api/map/technique-composed-4-taken-over/walk — what this board costs to cross, and the two
+readings on it that have to be argued with. `from` and `to` are `x,z`.
 
-### up the approach on the road's own line, through the gate
-  from=-14,60&to=-14,76
-  ROUTE (-14, 60) -> (-14, 76) aim travel: 16 blocks, 0 placed, 0 drop(s), worst drop 0
+
+### down the middle cross-piece, which was split into three treads
+  from=-2,50&to=-2,24
+  ROUTE (-2, 50) -> (-2, 24) aim travel: 26 blocks, 0 placed, 0 drop(s), worst drop 0
   rises 0, falls 0, worst step 0: walked end to end
 
-### the same journey a few blocks east, where the jamb stands
-  from=-10,60&to=-10,76
-  ROUTE (-10, 60) -> (-10, 76) aim travel: 16 blocks, 3 placed, 0 drop(s), worst drop 0
-  rises 1, falls 0, worst step 4: barrier +4 at (-10, 66)
+### out of the spawn and up its own staircase to the back bar
+  from=36,34&to=22,50
+  ROUTE (36, 34) -> (22, 50) aim travel: 24 blocks, 0 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
 
-### the spawn to the wool room, end to end
-  from=36,34&to=0,74
-  ROUTE (36, 34) -> (0, 74) aim travel: 78 blocks, 10 placed, 1 drop(s), worst drop 8
-  rises 3, falls 1, worst step 8: barrier +4 at (-9, 66); scramble +2 at (-4, 70); barrier +7 at (-3, 71); drop -8 at (-1, 73)
+### off the front bar into the far lane, which is now a build zone
+  from=-29,25&to=-26,34
+  ROUTE (-29, 25) -> (-26, 34) aim travel: 10 blocks, 3 placed, 0 drop(s), worst drop 0
+  rises 0, falls 0, worst step 0: walked end to end
 
-A jamb is a +4 barrier and the gate is level ground: the gap is what a route is, and a line a few
-blocks off it is not one. `walk` is the read that tells the two apart.
+### up the wool approach, through the bedrock wall
+  from=-14,60&to=-14,76
+  ROUTE (-14, 60) -> (-14, 76) aim travel: 16 blocks, 3 placed, 0 drop(s), worst drop 0
+  rises 1, falls 0, worst step 4: barrier +4 at (-14, 67)
+
+### into the same build zone from the back bar instead
+  from=-29,45&to=-26,38
+  ROUTE (-29, 45) -> (-26, 38) aim travel: 8 blocks, 12 placed, 0 drop(s), worst drop 0
+  rises 1, falls 0, worst step 7: barrier +7 at (-26, 38)
+
+The staircases walk. Four one-block risers between a bar at 9 and a bar at 13, and nothing placed
+either way — which is the whole of what splitting a piece into treads buys.
+
+**The wall reads as `barrier +4` and that is the read being literal about walking.** A `walls` entry
+stamps four courses of bedrock a defender can build on and cannot lose, and four courses is what an
+attacker bridges — the barrier is the feature. `walk` prices a walk and has no word for it, which is
+the author's reading of why so few maps have ever carried one: the read condemns them. Filed as
+`WS69` and `WS70` in `pgm-studio`.
+
+**And the lane entered from the back bar reads `barrier +7`, which is a treetop.** The same crossing
+from the front bar is level at 9 and costs three blocks. Three cells of the lane's north row carry a
+crown over the void — `transect` along `z 43` reads `(-25, 43)` as `ground 20, standing tree` — and a
+bridge is levelled from the nearest ground, so the canopy becomes the height the zone is crossed at.
+Filed as `WS71`.

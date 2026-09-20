@@ -359,10 +359,15 @@ shape**, a flat plan has one shape, and `themeByHeight` therefore has nothing to
 exist. Heights first, then paint.
 
 **And painting by height paints one component in as many themes as it has heights, which `SK27` remarks
-on.** *"component 'hub-t1-east' … compiles to 10 plateaus from surface 9 to 13 and they state 5 different
-paints … one landform with a hard line at every riser, where a theme is a place."* A complaint, not a
-fault: a terraced hub really is ten plateaus, and the hard line at each riser is the author's to want.
+on.** *"component 'hub-t1' … compiles to 11 plateaus from surface 9 to 16 and they state 4 different paints
+… one landform with a hard line at every riser, where a theme is a place."* A complaint, not a fault: a
+terraced hub really is eleven plateaus, and the hard line at each riser is the author's to want.
 `techniques/taking-over-a-composed-board` is the worked card, one pinned board edited four ways.
+
+**A height per piece is also how a plan states a staircase, because one piece is one height.** A climb a
+player walks is a run of pieces and nothing else: a cross-piece three cells deep, cut at every cell and
+stepped 10, 11, 12 between a bar at 9 and a bar at 13, gives four one-block risers that `walk` crosses end
+to end with nothing placed. Unsplit, the same climb is one four-block face.
 
 ### A piece taken out for a build zone is the cheapest edit that changes how a board is fought over
 
@@ -370,10 +375,15 @@ A plan's `zones` is what it says about the void, and the compiler turns an entry
 `build.areas`, fanned with everything else. So replacing a piece is two edits: drop it from `pieces`, and
 add a zone over the rect it had.
 
-**And it changes which voids are holes.** A void bounded by the piece that came out is no longer *enclosed*,
-so the compiler emits one cut fewer and the merged outline traces round what is left. Measured on a
-double-hole hub with its far bar removed: two subtracts became one, and 13 of that hole's 144 blocks came
-out as ground.
+**And it changes which voids are holes, without changing the ground.** A void bounded by the piece that
+came out is no longer *enclosed*, so the compiler emits one cut fewer and the merged outline states that
+void by tracing round it instead. Measured on a double-hole hub with its far bar removed: two subtracts
+became one, and 0 of that hole's 144 blocks came out as ground.
+
+**Ask a hole whether it is ground with `transect`, not with a render payload.** `ground` is null on a void
+column, which is the question being asked; a payload of blocks answers a different one, because a crown
+leaning over the rim and a marker block under it are both blocks in that column. Counting those reported
+a hole 13/144 filled that is void to the block.
 
 **Why to do it at all is a gameplay decision and belongs to the author.** On a `rot_180` board with one
 wool a team, both sides spawn, turn the same way and run past each other down whichever lane is furthest
@@ -397,19 +407,31 @@ belongs in the keep-out list beside the rooms.
 
 **The search is only as good as what it searched against, and two things are easy to leave out.** The rooms,
 the doors and the spawns are not in the claims map until the compiled **intent is stored**: run before that,
-one board's search answered 3,164 free cells and five of the twenty sites it returned were declined
-`DR-KEEP`. Run with the intent but without testing each cell's **orbit image** it answered 2,293, and a tree
-landed two blocks from another tree's image. With both it answered 1,899, and all twenty sites took a tree.
+one board's search answered 1,494 cells and 52 sites, and four of the first twenty were then declined
+`DR-KEEP`. Run with the intent but without testing each cell's **orbit image** it answered 1,370 and 45 —
+no decline on that board, and still not optional, since the orbit is what the last 220 cells cost.
 
-**A `walls` entry is stamped as a barrier with no gate, so on a single-corridor approach it closes the
-route.** Measured on a wool approach that is an L of three pieces in a line: the entry stamped bedrock to
-y14 with a cobweb over it, two columns deep, along the whole interval the two pieces share — four courses
-over the ground either side, `walk` answering *"barrier +4 at (−9, 67)"*, and the wool unreachable.
+**Ask the search about a board with no props on it.** A tree raises its own column's top and claims every
+cell its crown covers, so a layout that already carries one is a different board to search: the same board
+answered 1,150 cells with the props stripped out and 222 with them left in. Strip every prop but the
+strokes, search, then place.
 
-**A barrier a player has to pass is drawn instead.** Two override adds either side of a six-block gap on
-the road's own line, both `keepClear` so the dressing pass sees them and both `height_mode: "level"` with
-`skirt: 0` so the relief leaves their stated tops alone. `walk` up the gate then reads *walked end to end,
-0 placed*, and four blocks east of it *barrier +4*.
+**A `walls` entry stamps a barrier with no gate, and that barrier is the feature.** Four courses of
+bedrock over the ground either side, two columns deep, along the whole interval the two pieces share: a
+defender builds on it and cannot lose it, and four courses is what an attacker bridges. It goes on the
+approach and not in the hub — on the seam between the two approach pieces, or on the outer one where the
+approach meets the board (`PlanValidator` refuses the wool room's own interface).
+
+**`walk` calls it `barrier +4`, and that is the read being literal about walking.** A walk prices a walk
+and has no word for a wall that is bridged rather than walked, so the number reads as a fault on a thing
+the map states deliberately — the author's account of why so few maps have ever carried one of these walls.
+Filed against the studio as `WS69` and `WS70`; the route past it is reached, with the blocks placed
+counted.
+
+**Never chamfer a corner a build zone or the front line attaches to.** Taking a compiled outline's corner
+back is an ordinary layout edit, but a diagonal on an edge somebody bridges from leaves them a triangle of
+ground nobody can build on. Take the corner off the outer coast, away from the fighting, where a coast is
+only a coast.
 
 ---
 

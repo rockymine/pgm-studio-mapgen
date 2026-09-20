@@ -11,37 +11,15 @@
  },
  "pieces": [
   {
-   "id": "hub-t1-west",
+   "id": "hub-t1",
    "role": "piece",
    "rect": [
     -8,
     11,
-    3,
+    9,
     3
    ],
-   "surface": 9
-  },
-  {
-   "id": "hub-t1-mouth",
-   "role": "piece",
-   "rect": [
-    -5,
-    11,
-    3,
-    3
-   ],
-   "surface": 10
-  },
-  {
-   "id": "hub-t1-east",
-   "role": "piece",
-   "rect": [
-    -2,
-    11,
-    3,
-    3
-   ],
-   "surface": 9
+   "surface": 13
   },
   {
    "id": "hub-t2",
@@ -55,15 +33,37 @@
    "surface": 9
   },
   {
-   "id": "hub-t4",
+   "id": "hub-t4-front",
    "role": "piece",
    "rect": [
     -2,
     8,
     3,
-    3
+    1
    ],
    "surface": 10
+  },
+  {
+   "id": "hub-t4-middle",
+   "role": "piece",
+   "rect": [
+    -2,
+    9,
+    3,
+    1
+   ],
+   "surface": 11
+  },
+  {
+   "id": "hub-t4-back",
+   "role": "piece",
+   "rect": [
+    -2,
+    10,
+    3,
+    1
+   ],
+   "surface": 12
   },
   {
    "id": "hub-t5",
@@ -74,7 +74,7 @@
     6,
     3
    ],
-   "surface": 9
+   "surface": 13
   },
   {
    "id": "hub-t6",
@@ -88,15 +88,37 @@
    "surface": 9
   },
   {
-   "id": "hub-t7",
+   "id": "hub-t7-front",
    "role": "piece",
    "rect": [
     4,
     8,
     3,
-    3
+    1
    ],
    "surface": 10
+  },
+  {
+   "id": "hub-t7-middle",
+   "role": "piece",
+   "rect": [
+    4,
+    9,
+    3,
+    1
+   ],
+   "surface": 11
+  },
+  {
+   "id": "hub-t7-back",
+   "role": "piece",
+   "rect": [
+    4,
+    10,
+    3,
+    1
+   ],
+   "surface": 12
   },
   {
    "id": "spawn-t1",
@@ -129,7 +151,7 @@
     3,
     3
    ],
-   "surface": 11
+   "surface": 14
   },
   {
    "id": "wool-a-t2",
@@ -140,7 +162,7 @@
     4,
     3
    ],
-   "surface": 12
+   "surface": 15
   },
   {
    "id": "wool-a-room",
@@ -151,7 +173,7 @@
     2,
     3
    ],
-   "surface": 13
+   "surface": 16
   },
   {
    "id": "mid-stone-0",
@@ -213,7 +235,12 @@
   "destroyables": [],
   "cores": []
  },
- "walls": [],
+ "walls": [
+  {
+   "a": "wool-a-t1",
+   "b": "wool-a-t2"
+  }
+ ],
  "boxes": [
   {
    "id": "hub",
@@ -225,14 +252,16 @@
     9
    ],
    "members": [
+    "hub-t1",
     "hub-t2",
-    "hub-t4",
     "hub-t5",
     "hub-t6",
-    "hub-t7",
-    "hub-t1-west",
-    "hub-t1-mouth",
-    "hub-t1-east"
+    "hub-t4-front",
+    "hub-t4-middle",
+    "hub-t4-back",
+    "hub-t7-front",
+    "hub-t7-middle",
+    "hub-t7-back"
    ]
   },
   {

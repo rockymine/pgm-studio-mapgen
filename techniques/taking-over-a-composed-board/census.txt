@@ -1,13 +1,10 @@
-THEMES  6 themes over 4920 ground cells, 10 distinct surface blocks
-  ring  2520 cells (51.2%)  2:0 Grass Block, 4:0 Cobblestone, 1:0 Stone, 1:6 Polished Andesite
-  arm  864 cells (17.6%)  2:0 Grass Block, 1:6 Polished Andesite, 98:0 Stone Bricks, 4:0 Cobblestone, 1:0 Stone
-  inner  552 cells (11.2%)  2:0 Grass Block, 7:0 Bedrock, 98:0 Stone Bricks, 1:6 Polished Andesite, 1:0 Stone, 4:0 Cobblestone, 35:14 Red Wool, 35:11 Blue Wool
-  keep  408 cells (8.3%)  1:0 Stone, 98:0 Stone Bricks, 1:6 Polished Andesite, 4:0 Cobblestone
-  mid  384 cells (7.8%)  13:0 Gravel, 24:0 Sandstone
-  camp  192 cells (3.9%)  7:0 Bedrock, 4:0 Cobblestone, 2:0 Grass Block, 1:0 Stone, 35:14 Red Wool, 35:11 Blue Wool
+THEMES  5 themes over 4956 ground cells, 10 distinct surface blocks
+  front  1440 cells (29.1%)  2:0 Grass Block, 4:0 Cobblestone, 1:0 Stone, 1:6 Polished Andesite
+  back  1404 cells (28.3%)  2:0 Grass Block, 98:0 Stone Bricks, 1:0 Stone, 1:6 Polished Andesite, 4:0 Cobblestone
+  stair  864 cells (17.4%)  1:0 Stone, 98:0 Stone Bricks, 7:0 Bedrock, 4:0 Cobblestone, 1:6 Polished Andesite, 35:14 Red Wool, 35:11 Blue Wool
+  approach  864 cells (17.4%)  2:0 Grass Block, 4:0 Cobblestone, 7:0 Bedrock, 1:6 Polished Andesite, 1:0 Stone, 35:14 Red Wool, 35:11 Blue Wool
+  mid  384 cells (7.7%)  13:0 Gravel, 24:0 Sandstone
 borders:
-  arm | ring  144 cells
-  arm | inner  40 cells
-  inner | keep  32 cells
-  camp | keep  24 cells
-  inner | ring  8 cells
+  front | stair  56 cells
+  back | stair  48 cells
+  approach | back  24 cells
