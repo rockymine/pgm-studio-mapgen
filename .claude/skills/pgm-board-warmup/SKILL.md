@@ -117,6 +117,9 @@ because there is an answer to *why here*:
   `corpus/tree-showcase` is the world they come from. State them under names in
   `dressing.styles` and let the placements name those — `specs/fable-millrace-revamp/trees.json`
   is 22 of them, keyed the way its placements name them.
+  **A seeded name is `showcase-r<row>-<n>` and says only where the tree stood**, so which one to
+  ask for is `corpus/README.md`'s table: the row is a band, the band is a kind, and the kind is the
+  author's — a pine, an olive, a tall spruce. The log a tree is built of is **not** what it is.
 - **boulders, which are stone** — stone, cobblestone, andesite, and nothing else.
 - **polylines for anything that flows.** The rasterizer splines a polyline's points before
   offsetting the band, so four points draw as a curve: a wall, a lane, a watercourse.
