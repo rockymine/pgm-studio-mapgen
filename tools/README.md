@@ -243,6 +243,25 @@ with its rule and coordinates.
 spawn doors and the goal rings `DR-KEEP` keeps clear. After that every placement question is a loop pass,
 and the drive is the last step rather than the first.
 
+### `seed-techniques.py`
+
+Stores every technique card's board in the studio from the card's own committed documents, so *open it in
+the studio as `technique-<name>`* is true on a database nobody has driven them into. Thirty boards over
+twenty-seven cards.
+
+**A card's files say which road it takes and nothing else decides.** A `<name>.layout.json`, with its
+`<name>.intent.json` beside it where the card has objectives, is stored directly — the shape the Sketch
+tool writes. A `<variant>.plan.json` with a `<variant>.finish.json` beside it goes through `drive.py`,
+because a plan has to be compiled and patched before it is a board.
+
+**A plan with no finish beside it is not a board.** `taking-over-a-composed-board/pinned.plan.json` is the
+composer's own answer, committed so the card's starting point is reproducible, and it is the one plan in
+`techniques/` that is not driven.
+
+`--check` says which slugs are missing and stores nothing, which is what a pre-flight wants; `--all`
+re-seeds boards that are already there; `--only <card>` does one. Re-running is safe — a slug is replaced
+rather than added to.
+
 `--candidates` asks whether **this** prop stands at a position. The dressing preview's `claims` raster
 already answers where nothing stands and nothing is kept clear — one call, the whole board, in
 `06-claims.txt` — but a free cell is not a legal seat: seven rules decide where a prop may stand (a water

@@ -298,9 +298,13 @@ is a standing place for the walk and a void column for every other read, which i
 - `census.txt` — five themes over 4,956 cells, and the borders between them.
 - `tint.txt` — the wall bucket over the whole board as a character map, the three counts, and one rim
   column of each owner, each taken from the sweep rather than chosen.
-- `4-taken-over.finish.json` carries the chamfer as an `editShapes` pair — one vertex moved back along
-  the first edge and one inserted on the second — so `tools/drive.py <spec> --slug …` reproduces this board
-  from the two committed documents and nothing else. The census answering 4,956 cells again is the check.
+- **every variant is a plan and a finish, and `tools/drive.py` builds each from those two files alone.**
+  `4-taken-over`'s finish carries the chamfer as an `editShapes` pair — one vertex moved back along the
+  first edge and one inserted on the second — and `2-void-redrawn`'s carries the rounded void ring as eight
+  ops, both computed by this card's own `chamfer` and `rounded` helpers rather than written out. The checks
+  are the numbers already committed here: the census answering 4,956 cells, and hole-1 answering 32/144.
+- `pinned.plan.json` is the one plan here with **no** finish beside it, which is what marks it as the
+  composer's raw answer rather than a board. `tools/seed-techniques.py` reads exactly that distinction.
 - `pinned.plan.json` — the composer's own answer, committed. `1-as-pinned.plan.json`,
   `3-a-surface-per-piece.plan.json`, `4-taken-over.plan.json` and `4-taken-over.finish.json` are what
   `build.py` writes from it.

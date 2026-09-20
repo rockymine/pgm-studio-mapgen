@@ -88,8 +88,15 @@ plan = {
     ],
 }
 
+# The finish beside it states nothing but the credit. A plan-compiled intent comes back with an empty
+# `meta.authors` — `EX6` is the export saying the observer platform's authors board has a heading and
+# nothing under it — so the two words that clear it ride on the finish, which is also what makes this a
+# spec `tools/drive.py` can take rather than a plan with nothing beside it.
+FINISH = {"authors": ["the technique cards"], "created": "2026-09-20"}
+
 if __name__ == "__main__":
     json.dump(plan, open(os.path.join(HERE, "walls-and-iron.plan.json"), "w"), indent=1)
+    json.dump(FINISH, open(os.path.join(HERE, "walls-and-iron.finish.json"), "w"), indent=1)
     print(f"{len(PIECES)} pieces, {len(WALLS)} walls, {len(IRON)} iron marker(s), symmetry none")
     for a, b in WALLS:
         print(f"  wall on the interface '{a}' — '{b}'")

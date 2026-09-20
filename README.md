@@ -108,9 +108,9 @@ system, so there is not one.
 **One agent authors a board.** There is no reviewer agent and no art-direction agent. Feedback on a board
 comes from the repository's author.
 
-**What that agent reads first is being reconsidered.** [CORPUS-DIAGNOSIS.md](CORPUS-DIAGNOSIS.md) measures
-the reading list, says what is wrong with it in three parts, and recommends a split. It is a handover for
-that work and is not itself an instruction to an authoring agent.
+**What that agent reads first is three documents and two skills, about 22k tokens.** Everything else is
+opened at a question, and `AUTHORING-BRIEF.md` §4 is the table from question to what answers it. The
+reading list that used to sit in its place was larger than a context window.
 
 ## Maps
 

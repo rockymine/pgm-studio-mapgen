@@ -129,6 +129,10 @@ text reads that prove them. Read the card nearest the thing about to be built �
 `hollows` are the two that carry ground, `ramp-and-stair` and `polylines` the two that carry a join — before
 opening anything else. `techniques/README.md` indexes them.
 
+**Every card's world is in the studio, so a card can be opened as well as read.** Each names its slug —
+`technique-<card>` — and `tools/seed-techniques.py --check` says whether this database has them, with no
+argument putting back whatever it is missing.
+
 **A card's variants stand side by side in one world, which is what makes the comparison the lesson.** Read
 the two nearest what is about to be built, and say what separates their panels before authoring anything —
 the card's committed reads are what settle a number, not a picture of one of them.

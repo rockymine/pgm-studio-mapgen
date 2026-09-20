@@ -127,6 +127,22 @@ def chamfer(ring, at, back=6):
     return out
 
 
+def vertex_ops(before, after):
+    """The `editShapes` ops that turn one outline into another, in the order the driver applies them.
+
+    A ring is redrawn as a list of points, and the studio moves a vertex or inserts one — there is no route
+    that replaces a whole outline. So a ring that gains points is said as a move and an insert per original
+    vertex, each op seeing the list the one before it left. Both of this card's outline edits are computed
+    by the helpers above and turned into ops here, rather than written out by hand."""
+    assert len(after) == 2 * len(before), "for a ring that gains one point per vertex, which `rounded` is"
+    ops = []
+    for index in range(len(before)):
+        at = index * 2
+        ops.append({"index": at, "x": after[at][0], "z": after[at][1]})
+        ops.append({"after": at, "x": after[at + 1][0], "z": after[at + 1][1]})
+    return ops
+
+
 def _towards(point, other, distance):
     span = math.hypot(other[0] - point[0], other[1] - point[1]) or 1
     return [round(point[0] + (other[0] - point[0]) * distance / span),
@@ -349,6 +365,18 @@ DRESSING = {
     ],
 }
 
+# `2-void-redrawn` is `1-as-pinned`'s plan with one edit, and the edit is to the LAYOUT the compiler
+# answered with rather than to the plan. `void-1-cut` is the polygon subtract the plan's declared void
+# compiles to; `rounded` takes its corners off and `vertex_ops` says that to the studio.
+VOID_CUT, VOID_RING = "void-1-cut", [[-20, 32], [-8, 32], [-8, 44], [-20, 44]]
+
+# Every variant writes a finish, even the two that change nothing about the compiled layout, because a
+# finish beside a plan is what makes a spec one `tools/drive.py` can take — and because a compiled intent
+# comes back with an empty `meta.authors`, which the export answers `EX6` for. `pinned.plan.json` is the
+# one plan here with no finish, and that is what marks it as the composer's raw answer rather than a board.
+CREDIT = {"authors": ["the technique cards"], "created": "2026-09-20"}
+REDRAWN = CREDIT | {"editShapes": {VOID_CUT: vertex_ops(VOID_RING, rounded(VOID_RING))}}
+
 VARIANTS = [
     ("1-as-pinned", PINNED, None),
     ("2-void-redrawn", PINNED, "redraw"),
@@ -358,14 +386,21 @@ VARIANTS = [
 
 if __name__ == "__main__":
     for name, plan, _ in VARIANTS:
-        if name == "2-void-redrawn":
-            continue                                   # the same plan; its edit is to the compiled layout
+        # Every variant writes its own plan, `2-void-redrawn` included: its plan is `1-as-pinned`'s and
+        # its edit is to the compiled layout, but a spec the driver can take is a plan and a finish
+        # beside it, so the pair is written rather than reconstructed.
         path = os.path.join(HERE, f"{name}.plan.json")
         json.dump(plan, open(path, "w"), indent=1)
         heights = sorted({piece.get("surface", plan["globals"]["surface"]) for piece in plan["pieces"]})
         print(f"{name:24s} {len(plan['pieces']):3d} pieces, {len(plan.get('walls') or []):2d} wall(s), "
               f"heights {heights}")
-    json.dump(FINISH | {"dressing": DRESSING}, open(os.path.join(HERE, "4-taken-over.finish.json"), "w"),
-              indent=1)
+    for name in ("1-as-pinned", "3-a-surface-per-piece"):
+        json.dump(CREDIT, open(os.path.join(HERE, f"{name}.finish.json"), "w"), indent=1)
+        print(f"{name + '.finish':24s} the credit, and nothing the compile does not already say")
+    json.dump(REDRAWN, open(os.path.join(HERE, "2-void-redrawn.finish.json"), "w"), indent=1)
+    print(f"{'2-void-redrawn.finish':24s} the void ring redrawn, "
+          f"{len(REDRAWN['editShapes'][VOID_CUT])} vertex op(s)")
+    json.dump(CREDIT | FINISH | {"dressing": DRESSING},
+              open(os.path.join(HERE, "4-taken-over.finish.json"), "w"), indent=1)
     print(f"{'4-taken-over.finish':24s} {len(FINISH['themes'])} themes, "
           f"{len(DRESSING['props'])} prop(s), {len(DRESSING['styles'])} style(s)")
