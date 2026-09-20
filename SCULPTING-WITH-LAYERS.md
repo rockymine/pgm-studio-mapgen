@@ -50,6 +50,16 @@ twelve-block wall, and a threshold through a doorway, with neither shape cut aga
 keep only its own ring is also the tallest thing over the middle — nested discs come out as a flat plate.
 A falling field needs shapes that do not overlap at all.
 
+**A layer is built once unless the group carrying its shapes says `mirrors`.** The rasterizer fans a group
+onto the symmetry's orbit axes only where that flag is true, and `tools/sculpt/props.py`'s `LayerBuilder`
+leaves it false — right for a landmark seated on the symmetry centre, wrong for a sculpture one team owns.
+Every emitter forwards `**kw`, so `mirrors=True` is what a per-team structure states.
+
+**Nothing refuses a sculpture built for one team and no other.** The store answers 200, pre-flight opens,
+and its mirror check reads spawns, wool rooms and build zones rather than made geometry. `column` at the
+image is the read that sees it, and the image of block `z` is `−z−1`, so probing `−z` lands a block off and
+libels a board that is exactly symmetric.
+
 ## 2. A ring is one polygon, and a subtract is not what it looks like
 
 The obvious way to draw a ring is an outer circle minus an inner one. It works, and on a board with anything

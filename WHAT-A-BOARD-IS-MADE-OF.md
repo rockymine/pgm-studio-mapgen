@@ -63,6 +63,12 @@ came apart. The observations below are measured off shipped boards and are enfor
   it is the map's floor and the shell of its walls. Do not go looking for what is wrong with it.
 - **A goal's name is a name.** No `<Team>`, no angle brackets: PGM prints the attribute verbatim, on both
   teams, and a placeholder reaches a player.
+- **A made thing is built once unless its layer group says `mirrors`.** The rasterizer fans a group's shapes
+  onto the symmetry's orbit only where that flag is true, and `tools/sculpt/props.py`'s `LayerBuilder` leaves
+  it **false** — right for a landmark seated on the symmetry centre, wrong for every tower, curtain and
+  gatehouse one team owns. Nothing refuses it: the store answers 200, pre-flight opens, and its mirror check
+  reads spawns, wool rooms and build zones rather than made geometry, so one side gets a castle and the other
+  bare ground. `column` at the image is what sees it, and the image of block `z` is **`−z−1`**.
 - **The rim is off on ground a relief solved.** A rim caps every fall with a band and turns a rolling hill
   into contour lines; it belongs where an edge was *made* — a coast over void, a platform lip, a retaining
   wall's top course.

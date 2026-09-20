@@ -34,6 +34,7 @@ about it."*
 | Does this climb? Is that step walkable? | `GET …/transect?points=x,z;x,z&beside=2&format=text`, or `03-slopes.txt` | eyeballing a heightmap shade |
 | Does this **flight** actually walk? | the same transect across the crossing — rises, falls, worst step, walked end to end | `EL1` or `WL11`, which walk the pieces flat and cannot see an authored flight at all |
 | Is the shape I authored in the world at all? | `GET …/column?at=x,z` at a cell it should own | the store's 200 and pre-flight's OPEN, neither of which looks |
+| Did that structure land on **every** team's ground? | `GET …/column?at=x,z` at the exact image — the reflection of block `z` is **`−z−1`**, and a made layer is built once unless its group says `mirrors` | pre-flight, whose mirror check reads spawns, wool rooms and build zones and never made geometry |
 | Where does the ground step, over the whole board? | `03-slopes.txt` — `. walked · : scramble · # barrier`, plus a per-face summary | — |
 | How high is the ground along this line? | `tools/loop.py --profile x=<x>,z=<a>..<b>,step=1` | your own arithmetic over the anchors |
 | How **steep** is the ground, and where? | `GET …/incline?format=text` — the glyph is the tens of degrees, and under the grid, how much ground stands in each ten | `03-slopes.txt`, which answers a *step* (can it be walked) and not an *angle* (how should it be finished) |

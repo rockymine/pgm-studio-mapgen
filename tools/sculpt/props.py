@@ -24,6 +24,12 @@ so the deck a tower stands on and the roof over it both collide with the subtrac
 themselves by height and the override adds then overwrite them, so a layer carries two height fields, one
 masking the other. That is what puts a floor inside a wall and a threshold through a doorway.
 
+**A layer is built once unless its group says it mirrors.** The rasterizer fans a group's shapes onto the
+symmetry's orbit axes only where `mirrors` is true, and `LayerBuilder` leaves it false — right for a landmark
+seated on the symmetry centre, wrong for everything one team owns. Every emitter here forwards `**kw`, so
+`mirrors=True` is how a per-team structure asks for its images, and nothing in the pipeline refuses a board
+whose castle stands on one side of two.
+
 Every emitter returns layers ready to drop into a document, and takes the theme id its shapes paint with.
 """
 import math
@@ -31,7 +37,8 @@ import math
 
 class LayerBuilder:
     """One layer under construction: shapes get their ids here, and the group is closed at the end so a
-    whole structure can be turned off the mirror in one flag."""
+    whole structure can be turned off the mirror in one flag. `mirrors` is false unless stated, so a
+    structure standing on one team's ground is built once and every other team gets bare ground."""
 
     def __init__(self, layer_id, name=None, base_y=0, mirrors=False, tag=None):
         self.id = layer_id
