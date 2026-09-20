@@ -29,6 +29,11 @@ raised walls that make the wool room. The intent is the other file.
  "float": 4, "anchor": {"x": -70, "y": 11, "z": 0}}
 ```
 
+**The wool columns high over every goal are the beacons, and they are not a fault.** `GoalMarkerStamper`
+stands three courses of wool at `max_build_height` plus `BuildCeiling.MarkerOver` — five — so the sign is
+out of every player's reach by construction. `techniques/destroy-goals` reads the arithmetic back against a
+board's own `<maxbuildheight>`.
+
 **An anchor is an absolute point and the studio seats nothing for you.** Every `y` in the intent above was
 read off the built world with `column` first. There is no "on the ground" — a goal states the height it
 stands at.

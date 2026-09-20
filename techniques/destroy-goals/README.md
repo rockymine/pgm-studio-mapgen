@@ -73,8 +73,14 @@ where `leak` and `float` are worked against the ground.
 **A defence chest one course over the ground, under every goal.** It is the stamper's, not the author's, and
 it is why a column read through a goal has a `Chest` in it that belongs to nothing in the intent.
 
-**A wool beacon far over the board.** Left out of `goals.txt`'s rows on purpose — it stands around y44 here —
-and it is how a player finds the goal from across the map.
+**A wool beacon far over the board, and it is not a bug.** Three courses of wool stand at y44–46 on this
+board, thirty above the goals themselves, and `GoalMarkerStamper` puts them there on purpose: the lowest
+course is `max_build_height` plus `BuildCeiling.MarkerOver`, which is 5. The map.xml here declares
+`<maxbuildheight>39</maxbuildheight>`, and 39 + 5 is 44.
+
+**It is stamped out of reach deliberately, so nobody can climb to it or grief it.** A sky sign floating in
+a column with thirty blocks of air under it reads exactly like a stamping fault, and a run report in this
+repository has nearly filed it as one three times. Read the cap before writing it up.
 
 **A modes ladder, where the map states none.** The export wrote `gold block` at 15m and `glass` at 20m and
 marked every objective `mode-changes="true"`, which is what keeps `OB26` quiet: a destroy map with no ladder
