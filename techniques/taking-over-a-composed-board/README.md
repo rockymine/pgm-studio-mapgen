@@ -304,7 +304,7 @@ is a standing place for the walk and a void column for every other read, which i
   ops, both computed by this card's own `chamfer` and `rounded` helpers rather than written out. The checks
   are the numbers already committed here: the census answering 4,956 cells, and hole-1 answering 32/144.
 - `pinned.plan.json` is the one plan here with **no** finish beside it, which is what marks it as the
-  composer's raw answer rather than a board. `tools/seed-techniques.py` reads exactly that distinction.
+  composer's raw answer rather than a board. `tools/seed-studio.py` reads exactly that distinction.
 - `pinned.plan.json` — the composer's own answer, committed. `1-as-pinned.plan.json`,
   `3-a-surface-per-piece.plan.json`, `4-taken-over.plan.json` and `4-taken-over.finish.json` are what
   `build.py` writes from it.

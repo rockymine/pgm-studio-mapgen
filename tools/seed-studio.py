@@ -1,31 +1,48 @@
 #!/usr/bin/env python3
-"""Store every technique card's board in the studio, from the card's own committed documents.
+"""Put everything this repository needs into a studio that has none of it.
 
-    tools/seed-techniques.py [--check] [--all] [--only <card>]
+    tools/seed-studio.py [--check] [--all] [--only <card>] [--no-trees]
 
-A card says *open it in the studio as `technique-<name>`*, and that is only true on a database somebody
-has already driven the card into. A fresh container has none of them. This puts them all back, so the
-sentence holds and an agent can look at the thing the card describes rather than only read about it.
+**A studio seeds its own library at startup and nothing else.** `LibrarySeed` runs on every boot and is
+idempotent, so the materials, the house presets and parts, the themes, the biomes, the four erratic
+boulders and the six vanilla tree recipes are always there. Two things this repository depends on are
+not, and this puts both in.
 
-A card's own files say which of two roads it takes, and nothing else decides:
+**The technique cards' boards.** A card says *open it in the studio as `technique-<name>`*, which is only
+true on a database somebody has driven it into — thirty boards over twenty-seven cards. A card's own files
+say which of two roads it takes and nothing else decides:
 
     <name>.layout.json [+ <name>.intent.json]     stored directly, the shape the Sketch tool writes
     <variant>.plan.json + <variant>.finish.json   driven through `tools/drive.py`, the same road a spec
                                                   takes, because a plan has to be compiled and patched
 
-**A plan with no finish beside it is not a board.** `taking-over-a-composed-board/pinned.plan.json` is
-the composer's own answer, committed so the card's starting point is reproducible, and it is the one plan
-here that is not driven.
+A plan with no finish beside it is not a board. `taking-over-a-composed-board/pinned.plan.json` is the
+composer's own answer, committed so the card's starting point is reproducible, and it is the one plan in
+`techniques/` that is not driven.
 
-Re-running is safe: a slug is replaced rather than added to. `--check` says which are missing and stores
-nothing, which is what a pre-flight wants.
+**The copied trees.** `corpus/tree-showcase` is a world of hand-built trees, and the studio's
+`tools/seed-trees.cs` cuts each one out of it into the tree library as a `copied` recipe. Without them a
+studio offers the six vanilla species alone, and the warmup skill tells an author to prefer a copied tree
+over the vanilla stamp — so a run against an unseeded studio is told to reach for something not there.
+`PGM_STUDIO_REPO` says where the studio's checkout is, and `--no-trees` skips this half.
+
+Re-running is safe: a slug is replaced rather than added to, and a tree row is keyed by name. `--check`
+says what is missing and stores nothing, which is what a pre-flight wants.
 """
-import argparse, json, os, shutil, subprocess, sys, tempfile, urllib.error, urllib.request
+import argparse, json, os, shutil, subprocess, sys, tempfile, time, urllib.error, urllib.request
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CARDS = os.path.join(ROOT, "techniques")
 API = os.environ.get("PGM_STUDIO_API", "").rstrip("/")
 CANDIDATES = ["http://localhost:7894/api", "http://localhost:5000/api", "http://localhost:8080/api"]
+
+# The corpus world the copied trees are cut out of, and the name every recipe from it is filed under.
+CORPUS_WORLD = os.path.join(ROOT, "corpus", "tree-showcase")
+CORPUS_TREES = "showcase"
+# Where the studio's own checkout is. Stated as candidates rather than as a constant, because a path is
+# the machine somebody happened to be on.
+STUDIO_REPOS = [os.environ.get("PGM_STUDIO_REPO", ""), "/home/user/pgm-studio",
+                os.path.join(os.path.dirname(ROOT), "pgm-studio")]
 
 # The one card whose slugs are not `technique-<its folder>`: it is four boards rather than one, and its
 # README names them `technique-composed-<variant>`.
@@ -120,11 +137,39 @@ def drive(slug, files):
     return "driven"
 
 
+def copied_trees(base):
+    """How many recipes in the tree library came out of the corpus world."""
+    status, body = call(base, "GET", "/tree-styles")
+    rows = body if isinstance(body, list) else (body.get("items") or []) if isinstance(body, dict) else []
+    return sum(1 for row in rows if str(row.get("name", "")).startswith(f"{CORPUS_TREES}-"))
+
+
+def seed_trees():
+    """The studio's own `seed-trees.cs`, over this repository's corpus world. It is a dotnet build and a
+    scan of every region file, so it takes minutes rather than seconds and says so."""
+    studio = next((path for path in STUDIO_REPOS
+                   if path and os.path.isfile(os.path.join(path, "tools", "seed-trees.cs"))), None)
+    if studio is None:
+        return "SKIPPED — no pgm-studio checkout found; set PGM_STUDIO_REPO"
+    if not os.path.isdir(os.path.join(CORPUS_WORLD, "region")):
+        return f"SKIPPED — no world at {CORPUS_WORLD}"
+    began = time.time()
+    done = subprocess.run(
+        ["dotnet", "run", os.path.join("tools", "seed-trees.cs"), CORPUS_WORLD, CORPUS_TREES],
+        cwd=studio, capture_output=True, text=True)
+    if done.returncode != 0:
+        tail = (done.stderr or done.stdout).strip().splitlines()[-1:] or ["no output"]
+        return f"FAILED — {tail[0][:110]}"
+    said = [line for line in done.stdout.splitlines() if "added" in line and "updated" in line]
+    return f"{said[-1].strip() if said else 'done'}  ({time.time() - began:.0f}s)"
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="say which are missing and store nothing")
     parser.add_argument("--all", action="store_true", help="re-seed every board, not only the missing")
     parser.add_argument("--only", help="one card folder")
+    parser.add_argument("--no-trees", action="store_true", help="the boards only, not the corpus trees")
     args = parser.parse_args()
 
     base = endpoint()
@@ -146,9 +191,19 @@ def main():
         note = store_layout(base, slug, files) if kind == "layout" else drive(slug, files)
         seeded += 1
         print(f"  {'reseeded' if there else 'seeded  '} {slug:44s} {note}")
+    trees = copied_trees(base)
+    wants_trees = not (args.no_trees or args.only)
     if args.check:
-        print(f"\n{missing} missing of {len(boards())}")
-        return 1 if missing else 0
+        print(f"  {'ok      ' if trees else 'MISSING '} {trees} copied tree(s) from `{CORPUS_TREES}`")
+        print(f"\n{missing} board(s) missing of {len(boards())}"
+              f"{'' if trees else ', and the copied trees'}")
+        return 1 if (missing or not trees) else 0
+    if wants_trees and (args.all or not trees):
+        print(f"  {'reseeding' if trees else 'seeding  '} the copied trees — this is a build and a world "
+              f"scan, give it minutes")
+        print(f"  trees: {seed_trees()}")
+    elif wants_trees:
+        print(f"  ok       {trees} copied tree(s) already filed under `{CORPUS_TREES}`")
     print(f"\n{seeded} board(s) stored of {len(boards())}")
     return 0
 

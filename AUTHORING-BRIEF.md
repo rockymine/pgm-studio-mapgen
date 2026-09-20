@@ -267,7 +267,7 @@ that would have answered faster.
 | What is the box model's vocabulary — a hub, a lane, a frontline, a dock? | `docs/generator/model.md` |
 | What does the export write into a world? | `techniques/`, the card nearest the instrument; `pgm-studio/docs/world-export/relief.md` and `decoration.md` are the deeper reference behind them |
 | How is a board driven, and what do its two files carry? | `tools/README.md` |
-| A card says to open a board and the studio answers 404 | `tools/seed-techniques.py` — `--check` says which are missing, no argument puts them back |
+| A card says to open a board and the studio answers 404, or `dressing.styles` has no copied tree to name | `tools/seed-studio.py` — `--check` says what is missing, no argument puts it back |
 
 **A composed board is a suggestion, and a capture board may start from one.** `GET /api/compose` knows how
 a CTW board is put together — hub, spawn, wool approaches, frontline, a mid band with a row of stepping

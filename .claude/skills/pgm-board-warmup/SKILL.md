@@ -130,8 +130,12 @@ text reads that prove them. Read the card nearest the thing about to be built �
 opening anything else. `techniques/README.md` indexes them.
 
 **Every card's world is in the studio, so a card can be opened as well as read.** Each names its slug —
-`technique-<card>` — and `tools/seed-techniques.py --check` says whether this database has them, with no
-argument putting back whatever it is missing.
+`technique-<card>` — and `tools/seed-studio.py --check` says whether this database has them.
+
+**It answers for the copied trees too, and those are the half a fresh studio is missing.** A studio seeds
+its own library on every boot — materials, house presets, themes, biomes, four boulders and the six
+vanilla tree species — but the 74 trees cut out of `corpus/tree-showcase` are this repository's, and
+`--check` reporting none of them means the recipe named two sections below does not exist yet.
 
 **A card's variants stand side by side in one world, which is what makes the comparison the lesson.** Read
 the two nearest what is about to be built, and say what separates their panels before authoring anything —
