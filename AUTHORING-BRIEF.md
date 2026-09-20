@@ -216,7 +216,6 @@ measurement plus an invented conclusion is already committed to this repository'
 | Where your map goes | `/home/user/pgm-studio-mapgen` |
 | The driver | `tools/README.md` · `tools/drive.py` · `tools/board.py` |
 | Every board built here, its specs and its review | `maps/` · `specs/` · `review/` |
-| Hand-authored examples by the repository's author | `/home/user/pgm-studio/tools/seeds/ruediger.{plan,layout,intent}.json` |
 
 `dotnet` is at `/usr/bin/dotnet`. MariaDB is running and migrated. Run long `dotnet` calls as background shell
 commands.
@@ -244,7 +243,7 @@ a reading list rather than that they exist.
 | How is *this instrument* used, worked end to end? | `techniques/`, the card nearest what is being built |
 | Which read answers the question I am about to compute? | the `pgm-board` skill's lookup table |
 | What are the four levels a map is described at, and what hands off to what? | `pgm-studio/docs/tools/flow.md` — the one tool document worth reading whole |
-| What does a `subtract` do, and what cuts a hole? | `docs/tools/capabilities.md`, on set algebra and void |
+| What does a `subtract` do, and what cuts a hole? | `GENERATION-NOTES.md`'s *Shapes* chapter, on the set algebra and what an override add does to it |
 | What does an objective need around it? | `docs/gameplay/approaches.md` — every claim marked `[author]` and settled, so law rather than advice |
 | How does a match actually flow? | `docs/gameplay/match-flow.md` §4 and §6 |
 | What is the box model's vocabulary — a hub, a lane, a frontline, a dock? | `docs/generator/model.md` |
