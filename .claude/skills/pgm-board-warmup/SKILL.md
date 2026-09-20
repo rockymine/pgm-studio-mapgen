@@ -119,7 +119,7 @@ because there is an answer to *why here*:
   is 22 of them, keyed the way its placements name them.
   **A seeded name is `showcase-r<row>-<n>` and says only where the tree stood**, so which one to
   ask for is `corpus/README.md`'s table: the row is a band, the band is a kind, and the kind is the
-  author's — a pine, an olive, a tall spruce. The log a tree is built of is **not** what it is.
+  author's — a pine, an olive, a jungle tree, a willow. The log a tree is built of is **not** what it is.
 - **boulders, which are stone** — stone, cobblestone, andesite, and nothing else.
 - **polylines for anything that flows.** The rasterizer splines a polyline's points before
   offsetting the band, so four points draw as a curve: a wall, a lane, a watercourse.
@@ -137,7 +137,7 @@ opening anything else. `techniques/README.md` indexes them.
 
 **It answers for the copied trees too, and those are the half a fresh studio is missing.** A studio seeds
 its own library on every boot — materials, house presets, themes, biomes, four boulders and the six
-vanilla tree species — but the 74 trees cut out of `corpus/tree-showcase` are this repository's, and
+vanilla tree species — but the 84 trees cut out of `corpus/tree-showcase` are this repository's, and
 `--check` reporting none of them means the recipe named two sections below does not exist yet.
 
 **A card's variants stand side by side in one world, which is what makes the comparison the lesson.** Read
