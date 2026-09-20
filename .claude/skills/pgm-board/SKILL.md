@@ -40,7 +40,8 @@ about it."*
 | Is there anywhere to **stand**? | `POST …/sketch/relief/read` → `level` (share under 10°) and `largestField`; `RL5` fires under 30% | the walk tier, which answers one place and no ledge for a board that is one long ramp |
 | Which two **marks** built that wall? | `POST …/sketch/relief/read` → `seams`, worst first, each naming the pair and the cell; `RL3` fires above a scramble | a face in `03-slopes.txt` or the relief read, which report the wall as terrain and attribute it to nothing |
 | What does a column hold, layer by layer? | `tools/loop.py --column x,z` | reading a world file yourself |
-| May a prop stand here? | `06-claims.txt` (`POST …/sketch/dressing?format=text`), then `tools/loop.py --candidates <propId> x,z …` | placing it and reading the decline |
+| **Where may a prop stand at all?** | `POST …/sketch/seats?kind=tree\|boulder\|house[&width=&depth=]&format=text` — **the stored layout goes in the body** — a raster marking every cell a footprint's *minimum corner* may sit on, and a `refused` list of rule → cells, largest first | placing one by eye. Three runs declined 5–7 props a pass that way and 0 once every position came off this mask |
+| May *this* prop stand *here*? | `06-claims.txt` (`POST …/sketch/dressing?format=text`), then `tools/loop.py --candidates <propId> x,z …` | placing it and reading the decline |
 | What did the route actually cost? | `GET …/walk?from=&to=&aim=&format=text`, or `04-routes.txt` | assuming the shortest line is the route |
 | …and on a **stacked** board? | the same read, with **`from=x,z,y`** — the `y` picks which storey of the column is meant | `x,z` alone, which walks to the column *under* an elevated goal and calls it walked end to end |
 | Is a lower storey still made of what I painted it? | `GET …/column?at=x,z` | the isometric, the census, or the 200 — none of the three sees it |

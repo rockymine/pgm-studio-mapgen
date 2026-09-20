@@ -1,0 +1,26 @@
+POST …/sketch/seats — the forwards read: every cell a prop's footprint may seat on, before one is
+placed. It takes the **stored layout in the body**; its knobs are query words.
+
+  kind           standoff  footprint   seats   refused, largest first
+  tree             3     1x1         47529   DR-CLAIM 7024 · DR-ROAD 1517 · DR-KEEP 851 · OB19 423
+  boulder          2     1x1         52710   DR-CLAIM 2544 · DR-KEEP 851 · DR-ROAD 816 · OB19 423
+  house 9x7        0     9x7         19543   DR-PASS 19093 · DR-SITE 11957 · DR-CLAIM 4399 · DR-KEEP 1569 · OB19 783
+  house 13x11      0     13x11       13989   DR-SITE 18113 · DR-PASS 16670 · DR-CLAIM 5527 · DR-KEEP 2022 · OB19 1023
+
+A mark is where the footprint's **minimum corner** may go, not its centre, so a house's mask is
+its own width and depth narrower than the ground it is read over.
+
+Each kind carries its own standoff from a drawn route — three blocks for a tree, two for a
+boulder, none for a house — which is `DR-ROAD` asked forwards instead of heard as a decline.
+
+### the trap, reproduced
+  posting no body: 200  seats 0  bounds {"min_x": 0, "min_z": 0, "max_x": -1, "max_z": -1}
+
+An empty body answers an empty board, at 200, with no finding of any kind. The layout is the
+body and the knobs are the query; a run that reads the route's parameters and not its body gets
+a clean answer to a board that is not there.
+
+  no `kind` at all: kind 'tree', seats 47529
+
+The default is a tree, so a house mask asked for without `kind` is a tree mask that will seat almost
+anywhere and mean nothing.

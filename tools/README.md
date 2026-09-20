@@ -158,6 +158,7 @@ which features get a transect, which spawn walks to which goal):
 | `04-routes.txt` | each team's walk to each goal, from `GET …/walk?format=text&beside=2`: the storey the walk stood on at every place, every step that left a walk, and what stands within two blocks of the route — the read for a thing thrown in the players' way |
 | `05-themes.txt` | `GET …/themes/census?format=text`: cells and share per theme, the materials each spends, and which theme borders which over how many cells — the number for a board that mashes its themes |
 | `06-claims.txt` | `POST …/sketch/dressing?format=text`: every cell of the board as the digit of what claims it — a prop, a goal's clearance, a keep-out, or free — so a candidate site is looked up rather than tried |
+| `07-seats.txt` | `POST …/sketch/seats?kind=…&format=text`, three times — a tree, a boulder and a 9 × 7 house: every cell that kind's footprint may seat its **minimum corner** on, and the rules that refused the rest by cell count. Where `06-claims.txt` reads the pass backwards, this reads it forwards, so a site is chosen rather than tried |
 
 **And the run ends with the three numbers, not with a picture.** `== the three numbers, before the
 pictures` prints `03-slopes.txt`'s `cells: N walked, N scrambled, N barrier`, `06-claims.txt`'s
@@ -233,8 +234,12 @@ is a loop pass and the drive is the last step rather than the first.
 already answers where nothing stands and nothing is kept clear — one call, the whole board, in
 `06-claims.txt` — but a free cell is not a legal seat: seven rules decide where a prop may stand (a water
 prop's bed, a door's lane, the spawn's margin, a goal's 21 blocks, a road's standoff, a house's claim, a
-structure's keep-out), and the last three read the prop's own footprint rather than the cell. So the raster
-says where to try and this says whether the try lands: the named prop is duplicated at every position given,
+structure's keep-out), and the last three read the prop's own footprint rather than the cell.
+
+**`07-seats.txt` is the raster that does apply the footprint**, per kind, so between the two there is
+usually nothing left to try: take a position off the seats mask and it seats. What `--candidates` is still
+for is a prop whose kind the mask does not cover, or a position the mask allows and a *specific* style's
+own footprint does not. The raster says where to try and this says whether the try lands: the named prop is duplicated at every position given,
 as `cand-1`, `cand-2`, …, and one pass answers which stand and which are declined, with the rule and the
 coordinates. Eight candidates cost one pass.
 

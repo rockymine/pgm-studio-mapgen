@@ -170,9 +170,36 @@ boulder on it came back at 56°; the wall is eleven deep here and its head has f
 *"has no ground at (131, −41)"*, and one thrown across the road raised *"claimed by the paving"*. The box a
 thrower throws into is the author's arithmetic; the pass only reports what it hit.
 
+## Asking forwards instead of hearing a decline
+
+**Every rule on this card can be asked before a prop is placed, and `POST …/sketch/seats` is the ask.**
+It answers a raster marking every cell a footprint may seat on, plus a `refused` list of rule → cells,
+largest first. `seats.txt` is this card's own board read four ways: a tree seats on 47,529 cells, a boulder
+on 52,710, a 9 × 7 house on 19,543 and a 13 × 11 house on 13,989.
+
+**A mark is where the footprint's minimum corner may go, not its centre.** So a house's mask is its own
+width and depth narrower than the ground it is read over, and a position taken off the raster is the
+building's corner.
+
+**Each kind carries its own standoff from a drawn route** — three blocks for a tree, two for a boulder,
+none for a house. That is `DR-ROAD` asked forwards rather than heard as a decline.
+
+**The `refused` list is what answers "why is there nowhere".** On a composed board with a spawn march, a
+wool approach and a road, `DR-PASS` and `DR-SITE` between them can take every passable footprint the team
+side had — a fact about the board rather than about the siting, and only this read states it.
+
+**The layout goes in the body and the knobs are the query.** `kind`, `width` and `depth` are query words;
+posting no body answers **200**, `seats: 0` and `bounds {0, 0, -1, -1}` — an empty board, cleanly, with no
+finding of any kind. And `kind` defaults to `tree`, so a house mask asked for without it is a tree mask
+that will seat almost anywhere and mean nothing.
+
 ## The recipe
 
 **Ask for the props, read the declines, and fix the arithmetic — never the other way round.**
+
+- **ask the mask before placing anything.** `POST …/sketch/seats` with the layout in the body answers
+  where a kind may stand at all. Every position taken off it seats; a position chosen by eye is a decline
+  waiting on a 200.
 
 - **three blocks off paving for a tree, two for a boulder**, measured from the prop's resting cells: a rock
   of reach `r` wants its centre `2 + r` out.
@@ -202,6 +229,8 @@ thrower throws into is the author's arithmetic; the pass only reports what it hi
   it, the marked wall with nothing on it, a placed oak and the road its standoff was measured to, the cell a
   declined oak was asked for, a bedded rock, the wood's floor, a flora cell, the monument, a hand-placed
   trunk beside a template one, and the 63° face.
+- `seats.txt` — the forwards read: how many cells a tree, a boulder and two house footprints may seat
+  on, what refused the rest by rule and cell count, and the two ways the route answers nothing at 200.
 - `census.txt` — two themes over 57,344 cells; the walls are 720 of them.
 - `trees.json` — the two hand-built recipes, block for block, with the `tree-showcase` row each came out of.
   A body cannot be re-derived from anything, so it is committed rather than generated.
