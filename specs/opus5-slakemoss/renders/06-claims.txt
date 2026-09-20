@@ -203,4 +203,5 @@ KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn
   98                               777777777777777777777777777777                              
   99                               777777777777777777777777777777                              
 decline DR-DRY water 'slake' stands against 146 open column(s) of drawn ground — first at (-20, 13, -7), where the basin is dug to the water's own depth and holds none. The hollow and the pool that fills it are two statements about one lake; where the hollow reaches further, the difference is a dry trench beside the water. Widen the pool onto the ground that was dug for it, or stop digging it there.
-placed 40, declined 1
+decline DR-PASS building 'cot' leaves no way past it: a side has fewer than 8 blocks of passable ground along its whole run, and is not the edge of the ground it stands on
+placed 40, declined 2

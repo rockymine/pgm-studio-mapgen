@@ -631,7 +631,6 @@ finish = {
     "mapTheme": "plaza",
     "roomStyles": {"cage": None, "spawn": "@interchange-spawn"},
     "dressing": {"props": props},
-    "voidEnforcement": True,
 }
 
 

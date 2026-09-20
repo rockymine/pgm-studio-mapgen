@@ -342,7 +342,6 @@ props_list.append({"id": "bastle", "kind": "house", "seed": 51, "front": "negZ",
 finish = {
     "authors": ["Opus 5"],
     "created": "2026-09-16",
-    "voidEnforcement": True,
     "mapTheme": "heath",
     "themes": themes,
     "biome": {"kind": "solid", "id": 37},

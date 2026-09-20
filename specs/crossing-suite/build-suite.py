@@ -205,7 +205,6 @@ def finish(plan, cell):
     return {
         "authors": ["Opus 5"],
         "created": "2026-09-17",
-        "voidEnforcement": True,
         "mapTheme": "moor",
         "themes": {"moor": moor_theme()},
         "roomStyles": {"spawn": "@showcase-hall", "wool": "@showcase-cage"},

@@ -99,7 +99,7 @@ def intent(name, created="2026-08-29", spawn=None, observer=None):
                     "protection": [{"minX": x - 8, "minZ": z - 8, "maxX": x + 8, "maxZ": z + 8}],
                     "yaw": 180, "iron": []}],
         "observer": {"point": {"x": ox, "y": oy, "z": oz}, "yaw": 180},
-        "build": {"maxHeight": None, "areas": [], "holes": [], "voidEnforcement": None},
+        "build": {"maxHeight": None, "areas": [], "holes": []},
         "wools": [], "destroyables": [], "cores": None,
     }
 

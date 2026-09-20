@@ -265,7 +265,6 @@ FINISH = {
     "dressing": DRESSING,
     "authors": ["Opus 5"],
     "created": "2026-09-14",
-    "voidEnforcement": True,
 }
 
 def main():

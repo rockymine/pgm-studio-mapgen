@@ -162,7 +162,6 @@
             <region id="blue-red-monument"/>
             <region id="light_blue-red-monument"/>
         </complement>
-        <everywhere id="void-enforcement-area"/>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
         <apply block="never" region="spawns" message="You may not block/break spawns!"/>
@@ -173,7 +172,6 @@
         <apply enter="not-blue" region="blues-woolrooms" message="You may not enter your own wool room!"/>
         <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
         <apply use="deny(all(only-blue,chest-filter))" region="blues-woolrooms"/>
-        <apply block-place="deny(void)" region="void-enforcement-area" message="You may not edit the void!"/>
         <apply block-place="block-place-void-filter" block-break="block-break-void-filter" region="not-build-area" message="You may not edit the void!"/>
     </regions>
     <spawners>

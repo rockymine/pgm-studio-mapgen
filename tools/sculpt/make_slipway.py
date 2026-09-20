@@ -826,7 +826,6 @@ def finish(add_layers):
                  {"material": {"kind": "solid", "id": 3, "data": 1}, "thickness": 1},
                  {"material": {"kind": "solid", "id": 12, "data": 0}, "thickness": 1}]}},
         ] + houses() + crates() + trees()},
-        "voidEnforcement": True,
     }
 
 
