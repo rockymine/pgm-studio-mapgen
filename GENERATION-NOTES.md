@@ -319,36 +319,50 @@ def is_hole(x, z, reach=16):
                for dx, dz in ((1,0),(-1,0),(0,1),(0,-1)))
 ```
 
-### A *flat* composed plan compiles to one merged polygon and a `subtract`, and the subtract wins
+### A *flat* composed plan compiles to one merged polygon per component and a subtract per enclosed void
 
-Twelve pieces go into `POST /plan/compile` and two terrain shapes come out: `s0`, one merged `add`
-polygon over the whole footprint, and `s1`, a `subtract` cutting everything the pieces do not cover.
-A subtract beats **every** add on its layer whatever order they are written in, so an `addShapes`
-rectangle over a composed hole draws nothing at all — and `SK13` now says so, naming both shapes.
+Thirteen pieces go into `POST /plan/compile` and two `add` polygons come out — the team unit's whole
+footprint as one outline, and the neutral mid as another, because the two never touch — plus one `subtract`
+per **enclosed** void. A void the outline can trace around needs no cut: on one micro board the predicate
+named a twelve-cell region the compiler emitted nothing for, and the built world had it void anyway.
 
-**A hole is never scenery. Do not fill one.** What the composer encircles — the middle of a `donut`
-wool room, the yard of a `clamp` or a ring — is ground players go round, and the walls a board hangs
-on it are drawn to guard exactly that ground. Filling it makes them guard nothing (the author's
-ruling). An add that puts the ground back is **refused**, `SK13`, `422` — an override add, or any add
-on **another layer**, since a subtract reaches only the layer it is on and `below: true` does not
-change that.
+Every piece inside that one outline is unaddressable: there is no shape to hang a theme, a relief or a
+`shapePropsById` on until the merge is over.
+
+**A hole is never scenery, and nothing but this sentence defends one.** What the composer encircles — the
+middle of a `donut` wool room, the yard of a `clamp` or a ring — is ground players go round, and the walls a
+board hangs on it are drawn to guard exactly that ground. Filling it makes them guard nothing (the author's
+ruling).
+
+**Both ways of filling one store at 200, and `SK13` only changes its wording.** A plain add over a cut
+*"draws nothing over 144 column(s) … because 'void-1-cut' takes them away … The shape is on the canvas and
+not in the world"*; the same rectangle with `override: true` *"fills 144 column(s) that 'void-1-cut' takes
+away … so the negative space the board states there is ground in the world"*. Neither is refused.
 
 **Where the void wants to change shape, change the subtract.** A compiled subtract is the board's
 statement of its own negative space: it may be redrawn — rounded off, narrowed, moved — but never
-deleted and never papered over with an add.
+deleted and never papered over with an add. Measured: four blocks off each corner of one 12 × 12 ring gave
+the board 32 further cells of ground and no add was written.
 
 **Stating a surface per piece does not remove the hole.** It stops the compiler merging the pieces
 into one polygon, which is what makes a composed board paintable — but `PlanVoids` reads the void per
 **component** rather than per surface, so the buffer is declared and the subtract emitted either way.
+Measured on a thirteen-piece board: both cuts survive, and both holes are 0 of 144 blocks in the world.
 
-**The merge is a consequence of the pieces being flat, and stating a `surface` per piece ends it.** Give every
-piece its own height and there is nothing left to merge: the same twelve-piece plan compiles to **one polygon
-per distinct height and no subtract at all** — nine of them on one twelve-piece board, `s0` at base 9
-through `s8` at base 15 — with the hole simply a place no polygon covers.
+**What the surfaces answer is one polygon per height per connected region, not one per height.** Thirteen
+pieces at six heights came out as **eleven** polygons — `hub-t1-9`, `hub-t1-9-2`, `hub-t1-10`,
+`hub-t1-10-2` — the suffix marking where one height fuses into several, and `themeById` is what addresses
+them singly.
 
 That is also the only way a composed board can be painted in more than one theme: a theme is stated **on a
 shape**, a flat plan has one shape, and `themeByHeight` therefore has nothing to bind to until the heights
 exist. Heights first, then paint.
+
+**And painting by height paints one component in as many themes as it has heights, which `SK27` remarks
+on.** *"component 'hub-t1-east' … compiles to 10 plateaus from surface 9 to 13 and they state 5 different
+paints … one landform with a hard line at every riser, where a theme is a place."* A complaint, not a
+fault: a terraced hub really is ten plateaus, and the hard line at each riser is the author's to want.
+`techniques/taking-over-a-composed-board` is the worked card, one pinned board edited four ways.
 
 ### A composed board is corridors, so compute where a prop may stand
 
@@ -364,6 +378,16 @@ centreline** — clear the stroke's radius *plus* the kind's standoff, three for
 
 And **an approach wall's interface is kept clear the way a doorway is**, so the seam a `walls` entry names
 belongs in the keep-out list beside the rooms.
+
+**The search is only as good as what it searched against, and two things are easy to leave out.** The rooms,
+the doors and the spawns are not in the claims map until the compiled **intent is stored**: run before that,
+one board's search answered 3,164 free cells and five of the twenty sites it returned were declined
+`DR-KEEP`. Run with the intent but without testing each cell's **orbit image** it answered 2,293, and a tree
+landed two blocks from another tree's image. With both it answered 1,899, and all twenty sites took a tree.
+
+**A `walls` entry is stamped as a barrier, not drawn as a line.** Measured on one split piece: bedrock from
+the floor to y11 with a cobweb over it, two columns wide, along the whole interval the two pieces share,
+where the ground either side of it tops at 8 and 9.
 
 ---
 

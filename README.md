@@ -50,15 +50,17 @@ out along, and a range behind every one of them.
 ## The technique cards
 
 `techniques/` is one card per instrument, each a complete world holding its variants **side by side** so the
-comparison is the lesson. Twenty-one exist — from outlines, overlapping shapes and Bézier rings through pushes,
-stacked layers, water and the theme buckets to what a shape must say before it owns any paint, and on to
-sculpture built out of nothing but shapes — and each commits the text reads that prove its claims and names
-no past map. [techniques/README.md](techniques/README.md) indexes them and names the one that is missing,
-with what each would demonstrate.
+comparison is the lesson. **Twenty-two exist, which is all of them** — from outlines, overlapping shapes and
+Bézier rings through pushes, stacked layers, water and the theme buckets to what a shape must say before it
+owns any paint, on to sculpture built out of nothing but shapes, and ending with a board somebody else
+arranged. Each commits the text reads that prove its claims and names no past map.
+[techniques/README.md](techniques/README.md) indexes them; a new card is written when a new instrument
+lands.
 
 A card differs from a showcase in what it is for. A showcase forks one base board and changes the one thing
-its README names, so the **diff** is the lesson; a card puts the variants in one world, so the **comparison**
-is.
+its README names, so the **diff** is the lesson; a card puts the variants in one world, so the
+**comparison** is. `taking-over-a-composed-board` is the one exception, and says why: four compiles of one
+plan cannot share a world.
 
 ## Sculpting with layers
 

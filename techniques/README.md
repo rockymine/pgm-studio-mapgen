@@ -9,7 +9,7 @@ the card rather than finding the thing inside a thousand-line finish.
 itself, one claim to a paragraph; a card holds one instrument worked all the way through, with the reads
 beside it. Where a card exists, the notes point at it rather than repeating it.
 
-## The twenty-one that exist
+## The twenty-two, which is all of them
 
 | Card | Holds |
 |---|---|
@@ -34,17 +34,12 @@ beside it. Where a card exists, the notes point at it rather than repeating it.
 | `a-house-and-its-wings` | how two rectangles of one plan meet — marching against projecting, two roof forms on one building, and the five `HJ` refusals |
 | `sculpture-with-layers` | the ladder a made thing is built up: one shape, a polyline, layers, rings, and a solid compiled — and what each rung costs |
 | `trees-and-boulders` | what a prop is refused for, and what it is only complained about — a ladder per rule, and a hand-built tree's own foot and crown |
+| `taking-over-a-composed-board` | one pinned plan edited four ways — what a flat compile merges, what a surface per piece buys, and why a hole is nobody's to fill |
 
-## The one that is missing
+## Nothing is missing
 
-The entry names what the card would demonstrate, and which of the notes' entries it would absorb — the
-notes carry the measurements already and have nowhere to put the worked comparison.
-
-**`taking-over-a-composed-board` — a plan somebody else arranged.** One pinned board edited four ways: a
-surface per piece, a piece split to make an interface, a hole left alone and a subtract redrawn. Absorbs the
-composer chapter, which is currently the only place a capture board's author is told what the arrangement
-costs.
-
+Every instrument the studio has now has a card. A new one is written when a new instrument lands, and it
+goes in the table above with the others.
 
 ## What a card needs before it can be written
 
