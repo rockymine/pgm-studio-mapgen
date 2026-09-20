@@ -89,7 +89,9 @@ in it is enforced by any gate, which is why it is written down.
 an authoring agent is given, end to end.
 
 [GENERATION-NOTES.md](GENERATION-NOTES.md) is what the API cannot state about itself — a fact about how two
-correct mechanisms interact, a number no gate checks, a read-back that lies.
+correct mechanisms interact, a number no gate checks, a read-back that lies. Where a technique card
+demonstrates an instrument, the notes state the claim in a sentence and point at the card rather than
+repeating it.
 [REVAMP-BRIEF.md](REVAMP-BRIEF.md) is the loop after a person has finished a board in game: the two
 worlds read against each other, the commands named, the finish restated as documents, and a new board
 built with what it taught.

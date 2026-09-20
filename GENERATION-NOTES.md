@@ -17,7 +17,11 @@ debt that comes due the moment the task ships, and it then reads as a limitation
 so every claim is checked against the running API, and against the source where two answers disagree, before
 it is kept. This file carries no task ids for that reason.
 
----
+**And what a technique card demonstrates is not repeated here either.** `techniques/` is twenty-two cards,
+each one instrument worked through on a committed board with the reads that prove it, so where a card exists
+this file states the claim in a sentence and points at it. What stays is what a card cannot be: the fact that
+two correct instruments interact, the number no gate checks, the read-back that lies, and the author's own
+rulings — those last are `WHAT-A-BOARD-IS-MADE-OF.md`'s where they are about how a board should look.
 
 ---
 
@@ -44,17 +48,6 @@ plus two platforms.
 A plan piece earns its place by stating something the arrangement needs: a height a lane climbs, a room a
 building is seated in, a footprint the symmetry fans. A piece that exists only so a theme can be hung on it
 is a piece that should have been a shape scope.
-
-### A core is the forward objective and a wool is the deep one
-
-A core cannot be carried anywhere; it is breached where it stands, so it belongs where it will be
-fought over. A wool has to be fetched and brought home, so it belongs behind. Drafted the other way round,
-`WL10` reads a wool-front-distance of 8.
-
-Two things about a core in particular: `float` and `leak` are one knob (the lava free-falls to the
-terrain at `float` below the casing and leaks a course below `leak`), and **a core on a group in
-open sky has nothing to catch its lava** — so the casing wants ground all round it, or a breach
-anywhere near an edge ends it at once.
 
 ---
 
@@ -250,241 +243,106 @@ jump. Fix the four numbers — the hops and the strait — and fit the groups ro
 ## A board somebody else arranged
 
 What the composer answers, what it does not, and what taking one of its boards over costs.
-
-### A composed board's own proportions, counted
-
-`GET /api/compose?players=24&symmetry=rot_180&wools=i`, pinned through `POST /compose/pin`, answers a
-`PlanModel` whose team unit is **142 proxy cells** — hub 66, frontline 30 + 14, spawn 6 and its room 6, two
-wools 10 each — on a **22 × 36** bbox. Both halves and the mid together come to about **0.36** fill,
-comfortably inside the `fill-ratio` band of [0.201, 0.542] the term reports under `G8`. That term measures a
-**wool** board and answers `null` for any other kind, so the number is not a judgement about a destroy
-board's density and never will be.
-
-The shape that gets there is not symmetry about the centre line. The unit spans `x −11..3` of a board running
-`−11..11`: it is **offset**, its own `rot_180` image takes the other side, and the two interlock so that each
-row is about half land. A unit authored symmetric about `x = 0` fills its own bounding rectangle and is
-refused at **0.774**, with `FR6` on the 24-cell frontline that shape produces and `LN2` on its chain. All
-three name symptoms; the cause is the arrangement.
-
----
+**`techniques/taking-over-a-composed-board` is the worked card** — one pinned board edited four ways, with
+the compile, the holes, the heights, the build zone, the wall and the planting all measured on it. What is
+here is what the card does not carry: how to browse the composer at all, and the rulings.
 
 ### Browsing the composer is a four-call loop, and a scan is what tells you its vocabulary
 
-`GET /compose?players=&symmetry=&seedStart=&count=` returns cards carrying the descriptor that
-reproduces each board, its score, a structural read and a board SVG; `POST /compose/pin` stores one
-from that descriptor; `GET /plans/{id}/png` renders it as an image; `POST /plan/{id}/author` makes a
-map row. Ninety-six seeds, eleven pins and two contact sheets is a few minutes.
+`GET /compose?players=&symmetry=&seedStart=&count=&hub=&front=&wools=` returns cards carrying the descriptor
+that reproduces each board, its score, a structural read and an SVG; `POST /compose/pin` stores one from that
+descriptor and hands back an ordinary `PlanModel`; `GET /plans/{id}/png` renders it; `POST /plan/{id}/author`
+makes a map row. Ninety-six seeds, eleven pins and two contact sheets is a few minutes.
 
-Two things a scan says that nothing else does. **The cell is a drawing scale, and the composer draws on four
-blocks** — every width it builds to is stated in blocks and divided by the cell, so cells 3 through 6 all
-compose and only cell 3 at nano comes back `exhausted`.
+The vocabulary it filters on: hubs `ring|bar|double-hole|twin|P|G|single`, frontlines `twin|single|bar|none`,
+wools `i|l|donut|u|h|clamp`. **There is no `u` frontline** — `u` is a wool family, and the frontline that
+reads as a U opening forward is `twin`, a bar with two prongs off it.
 
-And **10 and 12 players give identical boards**, because the count names a size band rather than a budget of
-its own, and both counts are nano.
+**The cell is a drawing scale and the composer draws on four blocks**, so every width it builds to is stated
+in blocks and divided by the cell: cells 3 through 6 all compose, and only cell 3 at nano comes back
+`exhausted`. **10 and 12 players give identical boards**, because the count names a size band rather than a
+budget of its own.
 
-Hub forms observed in 48 seeds at 16 players: `bar`, `ring`, `single`, `twin`, `g`, `double-hole`, `p`; wool
-shapes `i`, `l` and — five times in forty-eight — `donut`, which is five pieces round a hole.
+Hub forms seen in 48 seeds at 16 players: `bar`, `ring`, `single`, `twin`, `g`, `double-hole`, `p`; wool
+shapes `i`, `l`, and `donut` five times in forty-eight — five pieces round a hole.
 
-### A composed board is JSON, and taking it over is four edits
+### A composed unit is offset, not symmetric about the centre line
 
-`GET /api/compose?players=&symmetry=&seedStart=&count=&hub=&front=&wools=` answers cards carrying a
-descriptor and an SVG; `POST /api/compose/pin` stores one and returns its `planJson`. That plan is an
-ordinary `PlanModel` and everything after that is editing it:
+`players=24&symmetry=rot_180&wools=i` pins a team unit of **142 proxy cells** — hub 66, frontline 30 + 14,
+spawn 6 and its room 6, two wools 10 each — on a **22 × 36** bbox, and both halves with the mid come to about
+**0.36** fill, inside the `fill-ratio` band of [0.201, 0.542] that `G8` reports. That term measures a **wool**
+board and answers `null` for any other kind, so it is not a judgement about a destroy board's density.
 
-```python
-for piece in plan["pieces"]: piece["rect"][1] += 4      # shift every piece 4 cells (20 blocks) of z
-for box   in plan["boxes"]:  box["rect"][1]  += 4       # the boxes travel with their members
-plan["pieces"].append({"id": "mid-isle", "role": "piece",
-                       "rect": [-4, -3, 8, 6], "mirrors": False})
-```
-
-The vocabulary the filter takes: hubs `ring|bar|double-hole|twin|P|G|single`, frontlines
-`twin|single|bar|none`, wools `i|l|donut|u|h|clamp`.
-
-**There is no `u` frontline** — `u` is a wool family, and the frontline that reads as a U opening forward is
-`twin`, a bar with two prongs off it.
+The shape that gets there spans `x −11..3` of a board running `−11..11`: the unit is **offset**, its own
+`rot_180` image takes the other side, and the two interlock so that each row is about half land. A unit
+authored symmetric about `x = 0` fills its own bounding rectangle and is refused at **0.774**, with `FR6` on
+the 24-cell frontline that shape produces and `LN2` on its chain. All three name symptoms; the cause is the
+arrangement.
 
 ### The composer's holes are made by arrangement, and nothing marks them
 
-A double-hole hub's two slots and a U wool's notch are the *shape of the pieces*, not a region. An
-add-shape dropped on one fills it in, no gate says a word, and the layout that was filtered for is
-gone. The predicate to check a ring against, before using it:
+A double-hole hub's two slots and a U wool's notch are the *shape of the pieces*, not a region: no field
+names them and no gate defends them. The predicate to find one before the compile is a void cell with land in
+all four directions within reach — open sea is void with nothing beyond it, and a shape may hang over that.
 
-```python
-def is_hole(x, z, reach=16):
-    """A void cell with land in all four directions within reach. Open sea is void with nothing
-    beyond it, and a shape may hang over that; a hole is not."""
-    if land(x, z) is not None: return False
-    return all(any(land(x + dx*k, z + dz*k) is not None for k in range(1, reach))
-               for dx, dz in ((1,0),(-1,0),(0,1),(0,-1)))
-```
+**A hole is never scenery, and nothing but this sentence defends one.** What the composer encircles is ground
+players go round, and the walls a board hangs on it are drawn to guard exactly that ground; filling it makes
+them guard nothing (the author's ruling). Both ways of filling one store at **200** with `SK13` — a plain add
+draws nothing, an override add fills it — so the complaint is the whole of the defence. Where the void wants
+to change shape, **redraw the subtract** rather than writing an add over it.
 
-### A *flat* composed plan compiles to one merged polygon per component and a subtract per enclosed void
+### Three rulings about taking a board over, which are the author's and not a gate's
 
-Thirteen pieces go into `POST /plan/compile` and two `add` polygons come out — the team unit's whole
-footprint as one outline, and the neutral mid as another, because the two never touch — plus one `subtract`
-per **enclosed** void. A void the outline can trace around needs no cut: on one micro board the predicate
-named a twelve-cell region the compiler emitted nothing for, and the built world had it void anyway.
+**A piece taken out for a build zone is the cheapest edit that changes how a board is fought over.** Drop it
+from `pieces`, add a `zones` entry over its rect, and the compiler turns that into the intent's own
+`build.areas`. On a `rot_180` board with one wool a team both sides spawn, turn the same way and run past each
+other down the lane furthest from their own spawn; taking that lane out means an attacker takes the near lane
+or bridges under fire, and the two teams meet instead of trading.
 
-Every piece inside that one outline is unaddressable: there is no shape to hang a theme, a relief or a
-`shapePropsById` on until the merge is over.
+**A `walls` entry stamps a barrier with no gate, and that barrier is the feature.** Four courses of bedrock
+over the ground either side, two columns deep, along the whole interval two pieces share: a defender builds on
+it and cannot lose it, and four courses is what an attacker bridges. It goes on the approach and not in the
+hub — on the seam between two approach pieces, or on the outer one where the approach meets the board, since
+`PlanValidator` refuses the wool room's own interface.
 
-**A hole is never scenery, and nothing but this sentence defends one.** What the composer encircles — the
-middle of a `donut` wool room, the yard of a `clamp` or a ring — is ground players go round, and the walls a
-board hangs on it are drawn to guard exactly that ground. Filling it makes them guard nothing (the author's
-ruling).
-
-**Both ways of filling one store at 200, and `SK13` only changes its wording.** A plain add over a cut
-*"draws nothing over 144 column(s) … because 'void-1-cut' takes them away … The shape is on the canvas and
-not in the world"*; the same rectangle with `override: true` *"fills 144 column(s) that 'void-1-cut' takes
-away … so the negative space the board states there is ground in the world"*. Neither is refused.
-
-**Where the void wants to change shape, change the subtract.** A compiled subtract is the board's
-statement of its own negative space: it may be redrawn — rounded off, narrowed, moved — but never
-deleted and never papered over with an add. Measured: four blocks off each corner of one 12 × 12 ring gave
-the board 32 further cells of ground and no add was written.
-
-**Stating a surface per piece does not remove the hole.** It stops the compiler merging the pieces
-into one polygon, which is what makes a composed board paintable — but `PlanVoids` reads the void per
-**component** rather than per surface, so the buffer is declared and the subtract emitted either way.
-Measured on a thirteen-piece board: both cuts survive, and both holes are 0 of 144 blocks in the world.
-
-**What the surfaces answer is one polygon per height per connected region, not one per height.** Thirteen
-pieces at six heights came out as **eleven** polygons — `hub-t1-9`, `hub-t1-9-2`, `hub-t1-10`,
-`hub-t1-10-2` — the suffix marking where one height fuses into several, and `themeById` is what addresses
-them singly.
-
-That is also the only way a composed board can be painted in more than one theme: a theme is stated **on a
-shape**, a flat plan has one shape, and `themeByHeight` therefore has nothing to bind to until the heights
-exist. Heights first, then paint.
-
-**And painting by height paints one component in as many themes as it has heights, which `SK27` remarks
-on.** *"component 'hub-t1' … compiles to 11 plateaus from surface 9 to 16 and they state 4 different paints
-… one landform with a hard line at every riser, where a theme is a place."* A complaint, not a fault: a
-terraced hub really is eleven plateaus, and the hard line at each riser is the author's to want.
-`techniques/taking-over-a-composed-board` is the worked card, one pinned board edited four ways.
-
-**A height per piece is also how a plan states a staircase, because one piece is one height.** A climb a
-player walks is a run of pieces and nothing else: a cross-piece three cells deep, cut at every cell and
-stepped 10, 11, 12 between a bar at 9 and a bar at 13, gives four one-block risers that `walk` crosses end
-to end with nothing placed. Unsplit, the same climb is one four-block face.
+**Never chamfer a corner a build zone or the front line attaches to.** Taking a compiled outline's corner back
+is an ordinary layout edit, but a diagonal on an edge somebody bridges from leaves them a triangle of ground
+nobody can build on. Take the corner off the outer coast, where a coast is only a coast.
 
 ### A contested middle wants a structure, and a structure is one made layer per span
 
 The neutral holm both teams bridge to is the piece most worth building on, and a flat island is nothing to
-arrive at. What it wants is a **double deck**: four legs at the corners, a floor with three blocks clear
-under it and a roof with four clear between, so the same piece is a height to hold and a room to hide in
+arrive at. What it wants is a **double deck** — four legs at the corners, a floor with three blocks clear
+under it and a roof with four clear between — so the same piece is a height to hold and a room to hide in
 (the author's ruling).
 
-**A leg passing a floor is two spans in one column, which one layer cannot hold.** A sketch layer is one
-`[floor, floor + base_height)` per column, so the legs are cut at each floor instead — under the lower one,
-then between the two — and every span gets its own layer marked `kind: "made"`. Four layers and ten
-rectangles built the one measured here.
+**A leg passing a floor is two spans in one column, which one layer cannot hold.** Cut the legs at each floor
+instead and give every span its own layer marked `kind: "made"`. Make the footprint **odd in both axes about
+the centre** and it is its own `rot_180` image; an even span is one block off-centre, which on a rotational
+board is one team's middle.
 
-**Make the footprint odd in both axes about the centre, and it is its own image.** A deck spanning columns
-−8..8 by −4..4 maps onto itself under `rot_180` and needs no mirror; an even span is one block off-centre,
-which on a rotational board is one team's middle.
+### On a composed board the props are searched for, and the search is not the authority
 
-**A field with `rise: 0` on a fill is refused by `PT4`.** A plane-sampled pattern resolves every block of a
-column alike, so a leg of it comes out in vertical stripes. Two courses of vertical period is enough for
-anything a deck is made of.
+Every piece is ten blocks wide with a road down the middle and void around it, so there is no landscape to
+place by eye — fourteen declines on one board, half of them `DR-SITE — has no ground`. A search over the
+authored half is instant and answers the truth, and three things decide whether it answers about the board
+you have.
 
-### A piece taken out for a build zone is the cheapest edit that changes how a board is fought over
+**Store the compiled intent first**, because the rooms, the doors and the spawns are not in the claims map
+until then. **Test every candidate's `rot_180` image** as well as the candidate. And **ask it of a board with
+no props on it**, because a tree raises its own column's top and claims the cells its crown covers.
 
-A plan's `zones` is what it says about the void, and the compiler turns an entry there into the intent's own
-`build.areas`, fanned with everything else. So replacing a piece is two edits: drop it from `pieces`, and
-add a zone over the rect it had.
+**What it answers is where a prop MAY stand, and how many stand there is the author's.** Planting every site a
+legal field offers is a forest, and a board of ten-block corridors has no room for one.
+`WHAT-A-BOARD-IS-MADE-OF.md` §where a tree stands carries his rules, and the card carries the worked field
+region by region — including the two the studio enforces by itself, a wall's approach and a one-cell tread,
+which answer **0** legal cells without being asked.
 
-**And it changes which voids are holes, without changing the ground.** A void bounded by the piece that
-came out is no longer *enclosed*, so the compiler emits one cut fewer and the merged outline states that
-void by tracing round it instead. Measured on a double-hole hub with its far bar removed: two subtracts
-became one, and 0 of that hole's 144 blocks came out as ground.
-
-**Ask a hole whether it is ground with `transect`, not with a render payload.** `ground` is null on a void
-column, which is the question being asked; a payload of blocks answers a different one, because a crown
-leaning over the rim and a marker block under it are both blocks in that column. Counting those reported
-a hole 13/144 filled that is void to the block.
-
-**Why to do it at all is a gameplay decision and belongs to the author.** On a `rot_180` board with one
-wool a team, both sides spawn, turn the same way and run past each other down whichever lane is furthest
-from their own spawn; taking that lane out and declaring it buildable means an attacker takes the near lane
-or bridges a gap under fire, and the two teams meet instead of trading (the author's ruling).
-
-### A composed board is corridors, so compute where a prop may stand
-
-Every piece is ten blocks wide with a road down the middle, and there is no landscape around them —
-what is not a piece is void. Placing props by eye on one gave fourteen declines, half of them
-`DR-SITE — has no ground`. Given the piece rectangles, the roads with their radii, the buildings and
-the doorways and the wall seams, a search over every block of the authored half is instant and
-returns the truth: on
-one composed board it is **nine** places in a half.
-
-Two of the rules that search has to know. **A road's standoff is measured to its paved cells, not its
-centreline** — clear the stroke's radius *plus* the kind's standoff, three for a tree and two for a boulder.
-
-And **an approach wall's interface is kept clear the way a doorway is**, so the seam a `walls` entry names
-belongs in the keep-out list beside the rooms.
-
-**The search is only as good as what it searched against, and two things are easy to leave out.** The rooms,
-the doors and the spawns are not in the claims map until the compiled **intent is stored**: run before that,
-one board's search answered 1,398 cells and 52 sites, and four of the first twenty were then declined
-`DR-KEEP`. Run with the intent but without testing each cell's **orbit image** it answered 1,274 and 45 —
-no decline on that board, and still not optional, since the orbit is what the last 212 cells cost.
-
-**Ask the search about a board with no props on it.** A tree raises its own column's top and claims every
-cell its crown covers, so a layout that already carries one is a different board to search: the same board
-answered 1,062 cells with the props stripped out and 748 with seven of them standing. Strip every prop but
-the strokes, search, then place.
-
-**What the search answers is where a prop MAY stand, and how many stand there is the author's** (his
-ruling). Planting every site a legal field offers is a forest, and a board of ten-block corridors has no
-room for one: 34 spaced sites on that board came down to **ten** planted. The rules the ten follow are
-worth more than the list.
-
-**Toward the OUTSIDE of a piece, never down its middle.** With no road on it a player still runs down the
-centre of a corridor, so a line of trees along the rim reads as an alley and the same trees in the middle
-read as an obstacle course. Two in front of each hole, on the rim between the ground and the void.
-
-**Nothing where a build zone is ARRIVED at, and nothing on the brink it is bridged from.** A player who
-crosses a lane and lands in three trees has been given an obstacle the arrangement never asked for; a tree
-two blocks off a bridging edge crowds the edge itself. Both belong on the far side of the piece.
-
-**Nothing on the approach in front of a wall, and nothing on a contested middle.** The first the studio
-enforces on its own — a wall's keep-out plus a road left **0** legal cells on a whole wool approach — and
-the second is a place for a structure rather than for scenery. One tree in the corner behind the wall, in
-front of the room, is what that approach carries.
-
-**A search is narrower than the studio, so a site is checked against the DRESSING PASS.** A filter that
-keeps only cells with eight level neighbours refuses every **rim** cell on a board, because beyond a rim is
-void and a neighbour that is not ground fails the test. What the studio asks is ground under the trunk,
-three clear of the paving, unclaimed and not kept clear.
-
-**The rim passes all four, and a road often leaves nothing else.** On a bar twelve deep with a five-wide
-road down it, three clear of the paving is the rim or nowhere — so the search's silence there is
-conservatism and not a refusal. Probe the stretch a candidate at a time and read the rule each one hits.
-
-**A prop on a rim hangs a crown over the void, and the walk stands on it.** A leaf course over a void column
-is a standing place for `walk` while `column` and `transect` both call that column void, so a route will
-climb through a canopy and report a `barrier +8` that no player meets. Which read is wrong is
-`pgm-studio`'s `WS71`, parked on the question; keeping trees off the rims beside a void is the authoring
-answer either way.
-
-**A `walls` entry stamps a barrier with no gate, and that barrier is the feature.** Four courses of
-bedrock over the ground either side, two columns deep, along the whole interval the two pieces share: a
-defender builds on it and cannot lose it, and four courses is what an attacker bridges. It goes on the
-approach and not in the hub — on the seam between the two approach pieces, or on the outer one where the
-approach meets the board (`PlanValidator` refuses the wool room's own interface).
-
-**`walk` calls it `barrier +4`, and that is the read being literal about walking.** A walk prices a walk
-and has no word for a wall that is bridged rather than walked, so the number reads as a fault on a thing
-the map states deliberately — the author's account of why so few maps have ever carried one of these walls.
-Filed against the studio as `WS69` and `WS70`; the route past it is reached, with the blocks placed
-counted.
-
-**Never chamfer a corner a build zone or the front line attaches to.** Taking a compiled outline's corner
-back is an ordinary layout edit, but a diagonal on an edge somebody bridges from leaves them a triangle of
-ground nobody can build on. Take the corner off the outer coast, away from the fighting, where a coast is
-only a coast.
+**A search is also narrower than the studio, so check a site against the dressing pass.** A filter that keeps
+only cells with eight level neighbours refuses every **rim** cell, because beyond a rim is void and a
+neighbour that is not ground fails the test; what the studio asks is ground under the trunk, three clear of
+the paving, unclaimed and not kept clear. On a bar twelve deep with a five-wide road down it the rim is the
+only row left, so the search's silence there is conservatism and not a refusal.
 
 ---
 
@@ -552,149 +410,98 @@ The relief is the ground's own shape. A mark is a constraint and a push is a lan
 
 ### A mountain is a push. No mark can be one.
 
-A relief mark is a **constraint**: the ground here *is* this height, honoured exactly, with no falloff of any
-kind. That reads as a modelling detail and it decides what terrain can be authored at all. *A point mark's
-radius pins a flat disc* above is the same fact met from the other end, and the two remedies are for two
-jobs: a small radius left to `reach` is how a mark stops terracing ground it is only meant to sit on, and a
-push is the only thing that builds a landform.
+A relief mark is a **constraint**: the ground here *is* this height, honoured exactly, with no falloff. A
+`point` mark at `h 47, r 8` therefore builds a **drum** — a flat disc on a twenty-block sheer wall — and a
+`line` mark with per-vertex heights is the same object stretched along an arc. Both produce correct relief
+numbers and a gate that opens over a landform reading as a row of oil drums.
 
-A `point` mark at `h 47, r 8` therefore does not build a summit. It builds a **drum** — a flat disc eight
-blocks across standing on a twenty-block sheer wall — because nothing between the disc and the ground round it
-is under any statement except the relaxation, and the relaxation has one cell of room to make the transition
-in.
+A **push** takes a drawn ring and lifts the solved surface inside it, and three of its fields are the
+landform. **`amounts`** is one lift per position round the ring, spaced by **arc** rather than by vertex.
+**`crown`** is how much higher the middle stands than the edge, where the middle is the ring's medial axis —
+**the record's default is `0`**, so a push authored without touching it is a plateau, and this one field is
+the difference between a mountain and a mesa. **`falloff`** is the skirt measured from the ring across the
+land, and it decides how much of the board the range eats.
 
-A `line` mark with per-vertex heights is the same object stretched along an arc: a ridge-shaped wall with a
-flat top.
-
-Both produce correct relief numbers — `low 11 · high 55`, `symErr 0`, gate OPEN — over a landform that
-reads as a row of oil drums.
-
-A **push** is the other operation. It takes a drawn ring and lifts the solved surface inside it, and three of
-its fields are the landform:
-
-- **`amounts`** — one lift per position round the ring, in place of the single `amount`. The positions are
-  spaced by **arc**: index `i` is read at fraction `i / count` of the perimeter, which coincides with the
-  drawn vertices only where every side is the same length.
-- **`crown`** — how much higher the middle stands than the edge, where the middle is the ring's **medial
-  axis**: a point for a round ring (a dome), a line for a long one (a crest). **The record's default is `0`**,
-  so a push authored without touching it is a plateau. This one field is the difference between a mountain and
-  a mesa.
-- **`falloff`** — the skirt, measured from the ring across the land. This is the number that decides how much
-  of the board the range eats. On a 90-block-wide board, `falloff: 20` put the two massifs' skirts into each
-  other and left a 20-block ditch down the middle; `falloff: 11` left flat ground from `x −18` to `x +15`.
-
-`roughness` wobbles the skirt against a noise field so it is not a clean offset of the outline, and a
-**negative crown** dishes the ring rather than doming it — a corrie, a quarry floor, a pond basin.
-
-`techniques/pushes` is the worked card: four outlines of one push side by side, four arrangements of several,
-and the two grades read back per push. `techniques/marks-and-pushes` is the same instrument once there is a
-board under it.
+`roughness` wobbles the skirt against a noise field, and a **negative crown** dishes the ring — a corrie, a
+quarry floor, a pond basin. `techniques/pushes` is the worked card and `techniques/marks-and-pushes` the same
+instrument with a board under it.
 
 **The second half is what is *not* written.** Pinning a region with an `area` mark because it should be about
 that height leaves the solver nothing to solve, and a board with a mark on every region is a table with bumps
-on it however tall the bumps are. A range that reads pins four things — the coast, the dale floor, the
-goal's shelf and the spawn's apron, every one of them ground a player walks — and the flanks carry no mark
-at all. A board that pins all four of its regions is flat for exactly that reason.
+on it. A range that reads pins the coast, the dale floor, the goal's shelf and the spawn's apron — every one
+of them ground a player walks — and the flanks carry no mark at all.
 
 `reach: 0` goes with it: a finite reach pulls ground back toward `base` at that distance from any constraint,
-which between two distant marks means the flanks decay to the base and the range becomes separate hills.
+so between two distant marks the flanks decay and the range becomes separate hills.
 
-One last shape note, cheap to fix and expensive to see: an `area` mark's ring is a **shape**, and a rectangle
-looks like one. `shelf` and `apron` written as four-vertex rectangles built two mesas with sheer sides,
-visible in the heightmap as literal squares; the same marks on nine- and eleven-vertex lobed rings are
-indistinguishable from ground.
+**An `area` mark's ring is a shape, and a rectangle looks like one.** Marks written as four-vertex rectangles
+build mesas with sheer sides, visible in the heightmap as literal squares; the same marks on nine- and
+eleven-vertex lobed rings are indistinguishable from ground.
+
 
 ### Three ordering facts about a relief, and each one hides a landform
 
-**A push is applied to the solved surface, so a push over a hollow fills the hollow in.** A push and
-an `area` mark are not two statements about the same field: the marks are solved first and the pushes
-are added to the answer. A twenty-radius push laid across a bench meant to be five blocks down lifted
-it six, and a `sink` cut from that ground came out shallow with nothing complaining.
+**A push is applied to the solved surface, so a push over a hollow fills the hollow in.** The marks are solved
+first and the pushes are added to the answer. A twenty-radius push laid across a bench meant to be five blocks
+down lifted it six, and a `sink` cut from that ground came out shallow with nothing complaining.
 
-**A later mark wins a contested cell, so a mark written over a bench replaces it.** That is the
-mechanism the stacked-hollow idiom depends on — nested `area` rings written outward-in — and it is
-the same mechanism that silently overrode a bench with a knoll written after it and left a
-**21-block** face into a pit that no one authored.
+**A later mark wins a contested cell, so a mark written over a bench replaces it.** That is the mechanism the
+stacked-hollow idiom depends on — nested `area` rings written outward-in — and the same mechanism that
+overrode a bench with a knoll written after it and left a **21-block** face into a pit nobody authored.
 
-**And a push over a pan lowers the pan.** A `slack` push reaching a sough's tail lowered the ground the
-south flight was anchored to arrive on, and the flight came out landing **two blocks proud** of it — visible
-in `…/walk` and in nothing else, because the flight is correct and the ground is correct and only the join is
-wrong.
+**And a push over a pan lowers the pan**, so a flight anchored to arrive on that pan lands proud of it —
+visible in `…/walk` and in nothing else, because the flight is correct and the ground is correct and only the
+join is wrong. The rule under all three: **a push is added to the solved surface and marks negotiate with each
+other.** Where a landform has to agree with something already stated, state that as a mark.
 
-The rule under all three is one line: **a push is added to the solved surface and marks negotiate with each
-other.** Where a landform has to agree with something already stated — a pan, a pad, the head of a flight —
-state it as a mark.
+**A push carries the ground rather than replacing it**, so a landform wanting a flat top needs flat ground
+under it: a hillside reading 15 → 10 → 14 lifted 12 with `crown` 0 came out 27 → 22 → 26, the same shape plus
+twelve, with a hollow on its summit.
 
-**A push carries the ground rather than replacing it, so a landform wanting a flat top needs flat ground
-under it.** A hillside reading 15 → 10 → 14 under a push's ring, lifted 12 with `crown` 0, came out as a
-summit reading **27 → 22 → 26** — the same shape plus twelve, block for block, with a hollow on its top. The
-group read `rolling`, one push, a sane skirt and no finding, and its `relief` came out *lower* than the bare
-hillside's because filling a hollow's neighbourhood shortened the range.
+**A push cannot be kept off a mark: only its ring and its `falloff` can.** Ring plus falloff is its whole
+extent, and every cell inside that circle is lifted whatever states it — a holm pinned at 10 twenty-four cells
+clear of a push still read 22, 12 and its stated 10 across eight cells.
 
-**A push cannot be kept off a mark: only its ring and its `falloff` can.** With the same push moved
-twenty-four cells clear of a holm pinned at 10, the holm read **22**, **12** and its stated **10** across
-eight cells. Ring plus falloff is the push's whole extent, and every cell inside that circle is lifted
-whatever states it.
+**How much of a board to pin is one dial, and `level` is the reading.** Pinning every region built three plates
+at `level` **0.51**; pinning only the ground a player stands on built flowing terrain at **0.30**, which is
+where `RL5` begins. **`reach: 0` is what a board wants**: at `reach: 16` the same document sagged its unpinned
+half to within a few blocks of `base`, and one flowing landform came apart into two mounds.
 
-**How much of a board to pin is one dial, and `level` is the reading.** Pinning every region built three
-plates at `level` **0.51**; pinning only the ground a player stands on built flowing terrain at **0.30**,
-which is exactly where `RL5` begins — *graded everywhere and left nowhere to stand*. `relief` cannot tell a
-range from a staircase and called the staircase the bigger landform, 32 against 21.
-
-**`reach: 0` is what a board wants, and a finite reach is an instrument for isolating something.** The same
-document at `reach: 16` sagged its unpinned north half from 25…20 to 11…13 — within a few blocks of its
-`base` — and a shelf pinned at 30 stopped reaching a line twenty-two cells away from it. Built, a shelf and a
-fell that had been one flowing landform came apart into two mounds on low ground.
-
-**A field pinned only in patches relaxes into fans radiating from each patch; a field pinned along two
-opposite edges relaxes into the ramp between them.** The fans paint as a spray of contour streaks over ground
-that is otherwise flat, which is what an island carrying three small scattered `area` marks and nothing else
-looks like. Two long marks facing each other are what a hillside is made of.
-
-**A `bevel` wider than half a mark's narrow dimension pins nothing, and `relief/read` calls it silent.** A
-bevel is paid for out of the mark's own floor from every side at once, so a nine-cell band at `bevel` 5 has
-no floor left and the group comes out at whatever else is speaking — measured, a panel carrying that band
-and one other pad reads `relief` 0 and `silentMarks: ["crest"]`.
+**A field pinned only in patches relaxes into fans radiating from each patch; a field pinned along two opposite
+edges relaxes into the ramp between them.** The fans paint as a spray of contour streaks over ground that is
+otherwise flat. Two long marks facing each other are what a hillside is made of.
 
 **A push's skirt is gentler than its stated grade at the ends and half again steeper in the middle.** The
-smoothstep a `falloff` eases with peaks at 1.5× the average, so a skirt the read calls 0.55 reaches 39° and
-one it calls 1.33 reaches 63°. That is the difference between a landform the slope bands paint as scree and
-one they paint as crag.
+smoothstep a `falloff` eases with peaks at 1.5× the average, so a skirt the read calls 0.55 reaches 39° and one
+it calls 1.33 reaches 63° — the difference between scree and crag to the slope bands.
+
 
 ### Pushes add to each other, so a massif is several of them
 
-**Every push in a group is summed into one lift field**, which makes a smaller ring inside a larger one a
-terrace on it rather than a replacement for it. Three concentric rings at `+10`, `+8` and `+6` on a plain at
-8 build terraces at 18, 26 and 36 — each the running total, each with its own skirt down to the one below.
-One ring with a large crown is a single cone whose only shape is its outline.
+**Every push in a group is summed into one lift field**, so a smaller ring inside a larger one is a terrace on
+it rather than a replacement for it, and two rings that cross give the sum in the crossing. Three concentric
+rings at `+10`, `+8` and `+6` on a plain at 8 build terraces at 18, 26 and 36.
 
-**Two rings that cross give the sum in the crossing, not the larger of the two.** Two radius-16 rings twenty
-apart at `amount` 14 each read 22 under either alone and **36** where both contain the cell.
-
-**The skirts add as well, and that is where the unauthored steep ground comes from.** On that same pair the
-relief read counts 112 barrier steps, and the cells sit north and south of the waist between the two rings —
-x −62…−49 at z 22…28 and again at z 60…67 — not one of them inside either ring. Two grades of 1.17 meeting
-there make 2.34.
+**The skirts add as well, and that is where the unauthored steep ground comes from.** Two grades of 1.17
+meeting between two rings make 2.34: on one measured pair, 112 barrier steps, none of them inside either ring.
 
 **A negative push inside a positive one cuts the hill after it is raised, and the order they are written in
-changes nothing.** `+20` over a radius-22 ring and `−14` over a radius-11 ring inside it build a rim at 28
-and a floor at 14, six blocks above the plain the cone rose from. A sum has no sequence: what makes the
-caldera a hollow is that its ring lies inside the cone's.
+changes nothing.** A sum has no sequence: what makes a caldera a hollow is that its ring lies inside the
+cone's. `techniques/pushes` has the arrangements side by side.
+
 
 ### `amounts` is read at the nearest ring point, so it cuts the interior into wedges
 
-**Each interior cell takes the lift of the ring position nearest it**, and that partition is the ring's
-medial axis — so a ring of few positions builds that many wedges with a step down every seam between them. A
-40×40 square carrying `[26, 26, 6, 6]` builds two wedges at 34 and two at 14 with a **20-block cliff along
-both diagonals**, two cells wide, which nothing in the document or the read names.
+**Each interior cell takes the lift of the ring position nearest it**, and that partition is the ring's medial
+axis — so a ring of few positions builds that many wedges with a step down every seam between them. A 40×40
+square carrying `[26, 26, 6, 6]` builds two wedges at 34 and two at 14 with a **20-block cliff along both
+diagonals**, two cells wide, which nothing in the document or the read names.
 
-**Two things remove the seam and a spur wants both.** Enough positions that neighbours differ by little, and
+**Two things remove the seam and a spur wants both**: enough positions that neighbours differ by little, and
 a form long enough that the two sides facing each other across the middle carry the same lift — which means
-stating the lifts as a function of position *along* the form rather than of angle round it.
+stating the lifts as a function of position *along* the form rather than of angle round it. A transect across
+every place two landforms share ground is what finds this, before believing the JSON.
 
-None of the three shows up in the document, in a warning, or in a top-down. Each is one
-`GET /map/{slug}/column?at=…` transect across the join. Take one across every place two landforms
-share ground, before believing the JSON.
 
 ### A pin inside a push's ring applies the push twice
 
@@ -704,13 +511,10 @@ is then the group's only constraint, so the second field relaxes to a constant a
 push subtracts its whole amount from that.
 
 Measured on a pit meant to read rim 32 and floor 20: with a room inside the ring and nothing else pinned, the
-rim reads **20** and the floor **8**, with the room standing on a twelve-block plinth in the middle.
+rim reads **20** and the floor **8**. The threshold is one pin and nothing refuses — the store answers 200 and
+the read calls the group `rolling`. **One `area` mark holding the land at the surrounding height fixes it
+exactly.**
 
-**The threshold is one pin, and nothing refuses.** The store answers 200, the export gate opens, and the
-relief read calls the group `rolling` with a relief of 12 — true of the numbers and wrong about the board.
-
-**One `area` mark holding the land at the surrounding height fixes it exactly**, and the profile is then
-station-for-station identical to the same push with no room in it at all.
 
 ### A relief is solved on the group's primary half, and its surface is copied through the mirror
 
@@ -726,42 +530,35 @@ gate in it, follow the neighbour down.
 
 ### A point mark's radius pins a flat disc, so a radius is a mesa and not a summit
 
-`PointMark.Pins` yields **every** cell inside its radius at the stated height, and those cells are
-constraints — the relaxation only shapes what is left between them. Marks placed at radius 16–32 on
-a 176-wide board nearly tile it, and the ground builds as stacked plateaus with vertical faces.
+`PointMark.Pins` yields **every** cell inside its radius at the stated height, and those cells are constraints
+— the relaxation only shapes what is left between them. Marks at radius 16–32 on a 176-wide board nearly tile
+it, and the ground builds as stacked plateaus with vertical faces.
 
 Measured off `…/sketch/relief/read`, the same thirty marks at two radii: at 16–32 the board is terraced
-throughout, with a cliff at every mark's edge; at 3–6 it is **95.1%** walkable at one-block steps, its
-largest place holds 86.5% of that, and six cliffs remain on the whole board.
+throughout with a cliff at every mark's edge; at 3–6 it is **95.1%** walkable at one-block steps and six
+cliffs remain on the whole board.
 
-**The rolling is the relaxation's**; a radius is how much of the landform you are refusing to let it
-do. Keep a summit at three to six and let `reach` spread it. An `area` mark is the other instrument
-and is right where flat is the point — a lake pan, a spawn terrace, a shelf under a goal.
 
 ### A range is a wall unless its two gradients agree
 
-A push has two slopes in it and they are set by different pairs of fields. Outside the ring the ground climbs
-over the skirt, at `amount / falloff` courses a block. Inside it the ground climbs from the ring's edge to its
-medial axis, at `crown / half` — `half` being the half-width the ribbon was drawn at. Where the two disagree
-the landform has a step in it at its own outline, and a range with a large `amount` and a short `falloff` is a
-cliff with a hill on top of it whatever its height.
+A push has two slopes and they are set by different pairs of fields: outside the ring the ground climbs over
+the skirt at `amount / falloff` courses a block, inside it from the ring's edge to its medial axis at
+`crown / half`. Where the two disagree the landform has a step at its own outline, and a range with a large
+`amount` and a short `falloff` is a cliff with a hill on top of it whatever its height.
 
-Measured behind a spawn: `amount 26 · falloff 8` against `crown 10 · half 7` is 3.25
-courses a block for ten blocks and then 1.4, and the section at `x 0` reads as a sheer face standing directly
-on the building's back wall. The same range at `amounts 13–17 · falloff 10` against `crown 12 · half 7` — 1.7
-either side — reads as one mountainside from the wall to the board's back edge.
+Measured behind a spawn: `amount 26 · falloff 8` against `crown 10 · half 7` is 3.25 courses a block for ten
+blocks and then 1.4, and the section reads as a sheer face on the building's back wall. The same range at
+`amounts 13–17 · falloff 10` against `crown 12 · half 7` — 1.7 either side — reads as one mountainside.
 
 **The height a range can be is decided by the ground in front of it, not by taste.** What is available is the
-distance from whatever stands in front to the coast behind, and a peak more than about 1.7 courses a block
-above that distance has to buy the difference somewhere, which it does by putting a step at the ring. Behind
-Thornfell's spawn there are 20 blocks between the building's back wall and the coast, and 20 blocks at 1.7 is
-what makes `high 52` on a board whose ground is 26. Wanting 80 there is wanting a wall.
+distance from whatever stands in front to the coast behind, and a peak more than about **1.7 courses a block**
+above that distance buys the difference with a step at the ring. Twenty blocks at 1.7 is what makes `high 52`
+on a board whose ground is 26; wanting 80 there is wanting a wall.
 
-The other half of the same arithmetic is where the summit goes. Setting the spine **past the coast** puts the
-medial axis off the board, so what is on the board is one uninterrupted climb and the crest reads as being
-behind the map. That costs the strokes that are placed from the spine — a summit blob centred past the coast
-has nothing to clamp to and collapses onto its own centre — so those are taken from a crest point inside the
-outline rather than from the spine itself.
+**Setting the spine past the coast puts the medial axis off the board**, so what is on the board is one
+uninterrupted climb and the crest reads as being behind the map. Strokes placed from the spine then have
+nothing to clamp to, so take those from a crest point inside the outline instead.
+
 
 ### A scarp's shelf is on the +z hand of the direction its lip is traced
 
@@ -781,21 +578,14 @@ Under `rot_180` the image reverses with the original, so one lip traced the righ
 ### A line mark's reach is either side of the line, and its name is `r`
 
 Not a half-width and not a one-sided band. A `line` at z 50 with `r: 12` writes over everything from z 38 to
-z 62, so a mark drawn to make a bank behind a frontline erases the frontline — and a push stacked on that
-band makes a seven-block wall across the necks of the launch ground. Halve every reach that was reasoned
-about as a corridor.
+z 62, so a mark drawn to make a bank behind a frontline erases the frontline. Halve every reach that was
+reasoned about as a corridor. `width` is the same number under an older name, read on the way in and never
+written back, so a document saved through the studio comes out spelling `r`.
 
-`width` is the same number under an older name, read on the way in and never written back, so a document
-saved through the studio comes out spelling `r`.
+**`tread` is how much of the band is flat** and **`batter` how steeply the shoulder falls**, which is what
+turns a serpentine haul road from flat road and vertical wall into flat road and graded batter.
+`techniques/winding-roads` is the worked card, with the pitch window a pass needs.
 
-**`tread` is how much of the band is flat**, in cells either side of the centreline, and the rest is a loft:
-a cell out past the tread takes a straight ramp between the two treads' edges instead of snapping to
-whichever pass of the line is nearer. That is what turns a serpentine or a spiral haul road from flat road
-and vertical wall into flat road and graded batter.
-
-**`batter` states how steeply that shoulder falls**, in degrees from level, and may only be steeper than the
-run allows — a gentler angle would not have arrived by the next tread, so it is raised to what the gap needs.
-Two passes `pitch` apart falling `drop` between them grade over `pitch − 2·tread`.
 
 ### A `rim` mark states one height for **every** group in the relief
 
@@ -817,55 +607,28 @@ On one board three mountain marks lay entirely outside its polygon and a fourth 
 of it; every contour band in its heightmap closed on the frame rather than inside it. A mark placed *wholly* out of reach does nothing and raises nothing — no `SK3`, no warning — so
 the check is the heightmap, not the document.
 
+### A held shape's `skirt` is read as the bevel of the mark it pins with
+
+So a pad stated `relief_scope: "hold"` with a skirt is soft at its edge and rigid in its middle, and the
+ground arrives on a grade rather than at a face. An `area` mark states the same thing directly as `bevel`,
+and two `hold` pads side by side can therefore be ramped between.
+
 ### Two flat marks butted together build two terraces and a step at the seam
 
-A `line` mark at y8 with radius 7 and another at y14 with radius 6, their bands touching, transected
-`7 7 7 7 [+5] 12 13 13`: a five-course wall right round a lake that was meant to shelve. Seven blocks of
-unpinned ground between them and the same two marks read `7 7 7 7 9 11 12 13 13`.
+Two `area` marks at different heights with no gap between them pin their own cells and leave the relaxation
+nowhere to make the transition, so the join is a face as tall as the difference. What grades it is a
+**`bevel`** on each mark, or a gap between them for the relaxation to slope through.
 
-**The gap between two marks is not a gap in the design; it is where the design happens.**
+`techniques/marks-and-seams` is the worked card — what two marks do to the ground they share, and the two
+faults the relief read cannot see.
 
-**One cell of gap halves the wall and hides it from the read.** A ring covers the cells whose centres fall
-inside it, so two bands stated one apart leave exactly one cell pinned by neither, and the relaxation puts
-it midway: a 12-block butted step becomes +6 and +6. `seams` then comes back **empty**, because a seam is
-measured between a cell one mark last claimed and a neighbour the other did, and there is no longer such a
-pair. The ground is still a barrier and nothing says so.
-
-**A group whose marks all state one height comes out at that height everywhere.** A landform is a fall, and
-the fall is either a second mark at another height or a finite `reach` — one ring at 30 over a `base` of 8
-with `reach` 0 reads `low` 30, `high` 30, `relief` 0.
-
-`techniques/marks-and-seams` is the worked card: one pair of pads meeting four ways, a `scarp` beside three
-marks that pinned nothing anybody can see, and four fields from four statements.
-
-### A pad meets its neighbour on a step unless it states how far in to grade
-
-`relief_scope: hold` keeps a shape at its own level and the surrounding surface is solved knowing where it
-has to arrive, which is the pre-raise a spawn or a wool room wants. Stated to its own outline it meets
-whatever is beside it on a face, so a room pad at 18 beside an approach pad at 14 is a hundred cells of floor
-nobody can walk onto, and `relief/read` reports it only as a rise in the place count.
-
-**A held shape's `skirt` is how far inside its ring the height gives way**, read as the bevel of the mark it
-becomes: the pins near the edge are soft and the relaxation pulls them toward the neighbour, so the pad keeps
-its flat core and arrives on a grade. An `area` mark states the same thing directly as `bevel`.
-
-A floor wants none of it and ground wants all of it. Where two pads must stay flat to their own edges, each
-still climbs one block over the pad it is reached from — 16 → 17 → 18.
 
 ### `step` is the instrument for a quarry, and the terracing that ruins a hillside
 
-`step` snaps the finished surface to a quantum, which is what turns a board's hills into stacked plateaus. A
-worked pit **wants** that: state the rim and the floor as two `area` marks, let the relaxation solve a smooth
-bowl between them, and set `step` to the bench height. Four marks and `step 4` give six benches where thirty
-marks gave a hillside nobody wanted.
+`step` quantises a mark's own ground to that interval, which is what a quarry floor and a bench are made of
+and what ruins a hillside asked to flow. `techniques/hollows` is the worked card — a negative push, a `sink`
+shape and an `area` mark, each cutting the same floor.
 
-**A mark states its own `step`**, and ground no mark claimed takes the group's — so a worked terrace and a
-walkable ramp state different quanta and share one island. A cell takes the step of the last mark to claim
-it.
-
-Every stated level must be a multiple of the step or the knob rounds it away. **Nothing repairs what the
-terracing strands**: a pit with no way out of it is a pit, and the walk is what says so — `EX1` where the
-board is no longer one place, and the steepness tiers short of that.
 
 ### Water fills whatever is level, so the pan is the size of the pool
 
@@ -874,30 +637,12 @@ it. Draw the mark at the size of the water and let the surrounding floor sit a f
 
 ### A water prop fills its own band, not the level it finds
 
-`form: "canal"` holds its stated width: a centreline down the middle of a fifteen-wide hole at radius
-3 is a six-wide channel with dry ground either side of it, however flat the pan under it. The band
-**is** the pond and the radius is the knob. It is the same fact met from the other end, where an oversized
-flat `area` mark becomes an oversized lake: a water prop is a stroke
-that carves, not a fluid that finds its level.
+A water prop states the level it fills to, and it fills **its own band** rather than the pan it stands in: a
+level above the ground around it floods outward to wherever that level still holds, and a level below the
+bed's own floor fills nothing. The bed is carved first and the fill is stated second.
 
-**`radius` is half the width on a channel and the *shelf* on a pool** — how far in from the shore the bed
-reaches full depth — so the same number means two things and which it means is `shape`. **`shore` is the
-beach**, in blocks, and 0 is a hard edge where the water meets the grass.
+`techniques/water` is the worked card — five bodies of water and five ways to lose one.
 
-**With no `level` the line is found and with one it is stated, and only a stated line fills dug ground.** A
-pool on flat ground at 21 came out at 21 with nothing saying so; a basin cut with a `height_mode: "sink"`
-shape has no surface up at the line for a derived one to find, so a dock or a harbour can only be stated. The
-author then owns the rim: water rises to the line inside the prop's footprint and nowhere else.
-
-**A water prop's bank is counted against the theme of the ground it carved.** A board of two themes came back
-from `themes/census` with eight distinct surface blocks, gravel and sand among them, because the bank is a
-material the prop lays rather than a theme the document scopes.
-
-**A sea is a pool whose ring is drawn past the edge of the land, so the water fills to the board's rim.** A
-ring kept inside the island stops in a basin with a lip round it, which reads as a tank; `opus5-millrace`
-draws its ring to x −132 on a board whose bbox ends at −130, and the last column before the void comes back
-as water. `shore` is a bank band a few cells wide and not a beach — a shore that should read as sand for
-twenty cells wants a theme of its own on the ground under it.
 
 ### Relief is keyed by group id across the whole stack, and `*` is the ground's alone
 
@@ -909,24 +654,19 @@ key stated beside it survives and names a layer added in the finish.
 
 ### `relief_scope: exclude` takes a tier out of the elevation model entirely
 
-A five-tier board of ~19 000 ground cells reports 4 294 cells to `relief/read` — the one tier that is neither
-`hold` nor `exclude`. Everything above the base tier is outside the solve, so its variation has to come from
-shapes: `raise` landforms, `sink` basins, `anchor_heights` tilts and ramps. Budget for that when designing a
-stepped board, because "add relief" is not available as a later fix.
+An excluded shape is not ground: the solve does not see it, nothing grades to it, and the tier below meets it
+at a face. That is what a made platform wants and what a hillside must never say.
+`techniques/made-ground` is the worked card — `relief_scope` against `height_mode`, and which of the two a
+shape is actually read for.
 
-`hold` and `exclude` differ in how the join reads, not in whether the shape stays flat: `hold` lets the ground
-ramp up to meet the shape, `exclude` meets the tier below at a face. A terrace wants `exclude`.
 
 ### A flight's anchor is an absolute height, and the relief does not know about it
 
-`anchor_heights` on a `height_mode: "level"` polygon states world heights, so a flight arrives where it was
-told rather than where the ground is. Where the relief left a bank two courses above the anchor, the crossing
-read `BARRIER +3 at (−10, 51)`: the flight correct, the ground correct, the join unwalkable.
+A flight states the height it starts from as a number, and the relief solve knows nothing about that number:
+move the ground under it and the flight stays where it was told, landing proud of the pan or buried in it.
+`…/walk` is the read that says so. `techniques/ramp-and-stair` is the worked card — a tilted polygon against a
+stack of plates, and which one walks.
 
-The fix is an `area` mark pinning the ground flat at each end of the crossing, and it is that instrument's own
-case. An area pins a flat disc and is right **where flat is the point** — the ground a bridge lands on, the
-pan a sough discharges into, the shelf a goal stands on, the two banks of a ford. Everywhere else is a `point`
-at radius 4–6 with the relaxation between them.
 
 ---
 
@@ -941,27 +681,21 @@ low until this is applied.
 
 ### Among the shapes of one layer, the taller override-add wins the column — not the later one
 
-`RasterGroup` resolves a layer as `((adds − subtracts) ∪ override-adds) − override-subtracts`, and both the
-plain adds and the override-adds are accumulated through `MergeCell`, where **the taller surface wins**.
-Only the *set* an override-add belongs to is privileged; within that set, document order decides nothing.
+`RasterGroup` resolves a layer as `((adds − subtracts) ∪ override-adds) − override-subtracts`, and both sets
+are accumulated through `MergeCell`, where **the taller surface wins**. Only the *set* an override-add belongs
+to is privileged; within that set, document order decides nothing.
+`techniques/combined-shapes` is the worked card.
 
-That reads as an implementation detail and it is the difference between a tunnel and a sealed one. An end
-wall drawn as one rectangle across the mouth of a ramp is 15 courses tall where the ramp under it is 7, so
-the wall wins every column they share — and the way down ends in solid rock. Measured on
-one board before the fix: `(−8, 60)` read solid `y0..21` with no air in it, a three-block plug at
-`z 59..61` sealing both mouths, with `SK11` reporting 676 and 294 places of standable ground with no route
-onto them.
-
-**So a wall that meets a ramp is drawn in halves, one either side of it.** The general form: on one layer,
-*anything shorter than what crosses it is not in the world there*, which is the same fact `SK9` reports for
-a shorter shape inside a taller one and the same reason a room with a sunken floor is drawn as rectangles
-clamped **around** the sunken part rather than under it. Ordering the document does not fix it, because
-order is not what is read.
+**So a wall that meets a ramp is drawn in halves, one either side of it.** An end wall drawn as one rectangle
+across the mouth of a ramp is 15 courses where the ramp under it is 7, so the wall wins every column they share
+and the way down ends in solid rock — measured, a three-block plug sealing both mouths, with `SK11` reporting
+676 and 294 places of standable ground with no route onto them. The general form: on one layer, anything
+shorter than what crosses it is not in the world there.
 
 The cheap check is a column transect down the way in. A ramp that works reads one course of fall every two
-blocks the whole way; a plugged one reads a solid run where the air should be, and nothing else on the board
-says so — the export gate stays open, `render/traversability` can still answer one component, and the only
-complaint is an `SK11` that is easy to write off as a quirk of a stacked board.
+blocks the whole way; a plugged one reads a solid run where the air should be, and the export gate stays open
+either way.
+
 
 ### A ring is one polygon, and it is what a floor that rises or a surface that falls is drawn with
 
@@ -969,18 +703,15 @@ Nesting settles a contest by height — the taller add wins the column and bring
 shapes write any field that **rises** inward from one shared floor with no subtraction and no complaint. A
 ziggurat, a cone and a solid dome are all that one move.
 
-**Give the nested shapes a rising floor and the world is right but the report is not.** Every nested pair is
-then a span the layer had to drop: eleven discs shaped as a hollow dome on radius 11 raise **sixteen** `SK9`,
-and a board carrying sixteen complaints it means has no gate left for one it does not.
+**A rising floor is right in the world and wrong in the report** (every nested pair is a span the layer had to
+drop: eleven discs as a hollow dome raise **sixteen** `SK9`), and **a falling surface is wrong in the world and
+silent** (eleven nested discs as an amphitheatre build a flat plate 22 cells across, with no finding of any
+kind).
 
-**Give them a falling surface and it comes out wrong and says nothing.** Eleven nested discs sized as an
-amphitheatre build a **flat plate 22 cells across at one height**, with no `SK9`, no `SK10` and no finding of
-any kind, because the disc that should keep only its own ring is the tallest thing over the middle too.
+**What both cases want is shapes that do not overlap, which is what a ring is.** An outline is filled even-odd,
+so one polygon — the outer circle, a slit inward, the inner circle the other way round, and back — is an
+annulus with no subtract in it. `techniques/sculpture-with-layers` is the worked card.
 
-**What both cases want is shapes that do not overlap, which is what a ring is.** An outline is filled
-even-odd, so one polygon — the outer circle, a slit inward, the inner circle the other way round, and back —
-is an annulus with no subtract in it; the same eleven tiers stated as rings raise nothing and build the dome
-and the bowl alike. `techniques/sculpture-with-layers` is the worked card.
 
 ### An override add is still part of its group's relief
 
@@ -1009,59 +740,42 @@ Measured: canal walls, a spawn stair and cairn walls standing over a void from y
 
 ### `skirt` decides whether an erected shape is a landform or a monument
 
-One measurement covers the whole range, probed on flat ground. A `skirt` of **0** builds the edge as one
-sheer step of the whole lift and reads as a monolith. A skirt of about **half the lift** builds two-block
-risers — a lip crossed with a placed block rather than on foot. A skirt **at or over the lift** builds
-one-block risers all the way round, which is a landform walked onto from any side.
+Probed on flat ground: a `skirt` of **0** builds the edge as one sheer step of the whole lift, a skirt of about
+**half the lift** builds two-block risers, and a skirt **at or over the lift** builds one-block risers all the
+way round. So `raise 7, skirt 10` is an outcrop a player strolls up and `raise 7, skirt 0` is a standing stone,
+from the same two fields.
 
-So `raise 7, skirt 10` is an outcrop a player strolls up and `raise 7, skirt 0` is a standing stone,
-from the same two fields. A shape meant to belong to the terrain wants the third row and a theme in
-the ground's own family — plain stone under a grass meadow — rather than an accent.
+**`skirt` is one number for the whole outline**, so an outcrop is uniformly walkable or uniformly steep;
+`anchor_heights` tilts the *top*, not the edge, and there is no per-vertex skirt.
 
-**Grass painted back over it is the rest of the merge, and it is free.** A path prop replaces the
-surface finish and adds no cell, so two to five `worn` brushes with a grass pave, drawn as tongues
-over a crag's shoulders at different angles, let the rock show through the grass instead of the
-grass stopping dead at the shape's outline. The crag stays one plain theme and the seam disappears.
+**Grass painted back over it is the rest of the merge, and it is free.** A path prop replaces the surface
+finish and adds no cell, so two to five `worn` brushes with a grass pave, drawn as tongues over a crag's
+shoulders, let the rock show through instead of the grass stopping dead at the shape's outline.
 
-**`skirt` is one number for the whole outline**, so an outcrop is uniformly walkable or uniformly
-steep; `anchor_heights` tilts the *top*, not the edge. There is no per-vertex skirt.
 
 ### An erected shape is the pillar idiom, and its theme has to go in `fill`
 
-`height_mode: raise` with `skirt: 0` and `floor: 0` is one abstract monolith: the top stands a stated
-amount over whatever ground the footprint covers, the face is sheer on every side, and the plan is
-whatever polygon was drawn. `anchor_heights` slants that top per vertex — measured on flat ground at
-y11, a raise of 10 with no anchors tops at y21 everywhere, and the same shape with
-`anchor_heights: [4, 4, 16, 16]` runs y19 → y25 across its own footprint. Leave `controls` off
-entirely and the corners stay sharp, which is what makes a stone read as broken rock rather than as
-a small group.
+`height_mode: raise` with `skirt: 0` and `floor: 0` is one abstract monolith: the top stands a stated amount
+over whatever ground the footprint covers, the face is sheer on every side, and `anchor_heights` slants that
+top per vertex. Leave `controls` off entirely and the corners stay sharp, which is what makes a stone read as
+broken rock. This is a **different device** from a stack of plates at successive `base_height`: plates are a
+staircase, a raise is a thing standing in the terrain.
 
-This is a **different device** from a stack of plates at successive `base_height` — the way
-`tools/seeds/ruediger.layout.json` builds its steps — and both are right for what each does. Plates
-are a staircase; a raise is a thing standing in the terrain.
+**Put the pillar theme's `layered` stack in `fill` as well as `surface`.** The surface bucket is the top few
+courses, so a stack stated only there bands the head of a 30-block monolith and leaves the whole face plain —
+and the face is the entire point.
 
-**Put the pillar theme's `layered` stack in `fill` as well as `surface`.** The surface bucket is the
-top few courses, so a stack stated only there bands the head of a 30-block monolith and leaves the
-whole face plain — and the face is the entire point. Stated in `surface`, `wall` and `fill`, a column
-read runs the strata bedrock to top.
+**And take the pillar out of the ground's tone family.** On a board whose exposed ground is stone, a pillar
+painted andesite and cobble is terrain wearing a different seed, and `render/surface` shows it as ground. The
+rule the brief states for a building is the rule for an erected landform too.
 
-**And take the pillar out of the ground's tone family.** On a board whose exposed ground is stone,
-a pillar painted andesite, polished andesite and cobble is terrain wearing a different seed:
-`render/surface` shows it as ground. The rule the brief states for a building — never the same family
-as what it stands on — is the rule for an erected landform too.
 
 ### `height_mode: sink` is a quarry, and its anchors are its depth
 
-`sink` with `skirt: 1` cuts sheer faces and a flat floor — measured, a lift of 6 on flat y11 ground
-gives a clean 6-block drop to y5 and back. `anchor_heights` on a sink states the **depth** per
-vertex, so a ring whose corners read 2, 3, 6, 6 comes out four down on average and tilted.
+`sink` cuts the footprint into the ground it stands on and `anchor_heights` states how deep, so a quarry, a
+dock and a sunken yard are one shape rather than a subtract and a refill. `techniques/hollows` is the worked
+card — a negative push, a `sink` shape and an `area` mark, each cutting the same floor.
 
-**Notch it rather than tilt it.** Setting most of the ring to full depth and the two vertices on one
-side to 1 gives a pit that is sheer nearly all the way round with a single shallow ramp in; a linear
-tilt across the same ring turns the whole shallow half into a bowl and the cut stops reading as a
-cut. Without a way in, the floor is a **stranded walkable place** — `relief/read` reports it as an
-extra `places` entry with the largest share below 1, which is the only thing on the board that says
-so; a top-down cannot show it.
 
 ### `height_mode: raise` measures from the median ground under its whole footprint
 
@@ -1091,49 +805,34 @@ nothing. A `height_mode` of `level` states the same crown at an absolute height 
 
 ### `relief_scope` is not read on a shape that declares a `height_mode`
 
-They are alternatives rather than a pair. A `height_mode` says the shape stands **out** of the field — it is
-applied over ground the relief has already made, so the solve never had an opinion about its top. A
-`relief_scope` says how a shape that is part of the ground **takes part** in the solve. A shape stating both
-has the scope ignored, silently, because the field bound and was simply not consulted.
+They are alternatives rather than a pair. A `height_mode` says the shape stands **out** of the field, applied
+over ground the relief has already made; a `relief_scope` says how a shape that is part of the ground takes
+part in the solve. A shape stating both has the scope ignored silently — `ScopeOf` returns `Inherit` for any
+shape declaring a height mode, so the field binds and is never consulted, and `RQ3` does not fire because it
+was read and discarded.
 
-The scope has four words and the fourth goes unused. `follow` takes the height the field settles on under the
-shape and holds it flat there, so the shape moves with the terrain and keeps a level floor — which is what a
-room wants, since a plan states its piece's height before any ground exists. `hold` pins the stated height
-against the relief, `exclude` takes the footprint out of the solve, and absent is `inherit`: the shape is
-part of the group's ground.
-
-**Measured, a shape stating both comes out identical to the same shape stating only the `height_mode`** — a
-`level` plate at `skirt` 0 with and without `relief_scope: "hold"`, compared column by column over both
-panels, differs in not one of 7,296. `ScopeOf` returns `Inherit` for any shape declaring a `height_mode`, so
-the field bound without being asked. Nothing refuses it and `RQ3` does not fire, because the field was read
-and discarded rather than left unread. `techniques/made-ground` is the worked card.
+The scope's words: `follow` takes the height the field settles on under the shape and holds it flat there,
+`hold` pins the stated height against the relief, `exclude` takes the footprint out of the solve, and absent
+is `inherit`. `techniques/made-ground` is the worked card.
 
 **`follow` is not the gentle option: it seats the shape and then solves the group a second time.** `SeatOf`
-reads the field just outside the footprint on every edge and takes the **median** of it, pins that as a rigid
-`AreaMark` and re-solves — so the land around a `follow` shape is re-graded to arrive at it exactly as
-`hold`'s is, and the only difference between the two words is who chose the height. On a hillside falling 26
-to 10, a piece stating 24 came out at **18**, which is in no document.
+takes the **median** of the field just outside the footprint, pins that as a rigid `AreaMark` and re-solves,
+so the land around a `follow` shape is re-graded to arrive at it exactly as `hold`'s is. On a hillside falling
+26 to 10, a piece stating 24 came out at **18**, which is in no document.
 
-**`exclude` keeps the raw column, and the raw column is not the excluded shape's.** A piece stating
-`base_height` 24 inside an island stating 44 built a plinth at **44**: the taller add still wins the column,
-and the word only says the relief may not answer for those cells. Rebuilt with the island at 30 the plinth
-reads 30. A shape wanting a plinth at its own height has to be the taller add over its cells, or say
-`height_mode`.
+**`exclude` keeps the raw column, and the raw column is not the excluded shape's.** The taller add still wins
+the column; the word only says the relief may not answer for those cells. A shape wanting a plinth at its own
+height has to be the taller add there, or say `height_mode`.
 
-**A `skirt` is paid for from every side at once, so one over half the shape's narrow dimension leaves no
-top.** On a 26-deep plate: `skirt` 0 leaves all 26 cells at the stated height, `skirt` 6 leaves 15, and
-`skirt` 14 leaves **2**. It is the same arithmetic that empties a mark whose `bevel` is wider than half its
-band.
+**A `skirt` is paid for from every side at once, so one over half the shape's narrow dimension leaves no top.**
+On a 26-deep plate: `skirt` 0 leaves all 26 cells at the stated height, `skirt` 6 leaves 15, and `skirt` 14
+leaves **2**. Same arithmetic as a mark whose `bevel` is wider than half its band.
 
-**The relief read cannot see an erected shape at all, and `RL5` will say so out loud.** Eight panels
-differing only in these words all read `relief` 16 and `landform: rolling`, while the built worlds ran from a
-bare hillside to a 44-block plinth; `level` moved with the three scopes (0.18, 0.44, 0.35, 0.32) and not at
-all with the three skirts. `RL5` fired on the panel carrying a ten-block sheer plate, saying it *presents no
-face at all — it is a ramp end to end*, which is true of the solve and false of the world.
+**The relief read cannot see an erected shape at all, and `RL5` will say so out loud.** Eight panels differing
+only in these words all read `relief` 16 and `landform: rolling` while the built worlds ran from a bare
+hillside to a 44-block plinth — and `RL5` fired on the one carrying a ten-block sheer plate, calling it a ramp
+end to end, which is true of the solve and false of the world.
 
-**A `cell` pattern is anchored in world space, so one shape built at two places on a board does not paint
-alike.** Two panels identical in every column stood 330 blocks apart and disagreed on 92 cells, every one of
-them in the rock band, each reading stone where the other read cobblestone.
 
 ### A ramp between two tiers is four fields and works first time
 
@@ -1151,42 +850,18 @@ terraces from a series of one-way drops into a zigzag climb.
 
 ### A ramp at one course a cell builds as treads of two, and a two-block rise is a placed block
 
-A `ramp` polygon falling 18 → 6 over **12** cells rasterized as `18 16 16 14 14 12 12 10 10 8 8` —
-six steps of two — and `…/walk?aim=reach` answered `blocks 3` climbing it, because the walk prices a
-rise of δ at δ−1 placed blocks. The same 12 courses over **20** cells reads one course a cell and
-walks both ways for nothing. The rule to author by: **run at least twice the rise** on any stair
-meant to be climbed rather than fallen down. (A 20-course ramp over 32 cells was right first time.)
+A ramp falling one course per cell rasterises as treads of two, because a cell is two blocks and the fall is
+taken once per cell: what a player meets is a two-block rise, which is a placed block rather than a walk.
+**Run at least twice the rise** and the treads come out one course each. `techniques/ramp-and-stair` is the
+worked card, with the same climb built both ways.
 
-**A flight is one shape, and the gradient is the whole of what decides it.** A polygon carries a height per
-vertex and the rasterizer interpolates between them, so a tilted quad *is* a stair — the courses are what a
-sloped surface rasterizes to. At 1:1 the worst step is two blocks; at 2:1 and 3:1 it is one. Where the ratio
-holds, a flight is a single polygon with `height_mode: "level"`, `skirt: 0` and a thickness per vertex, in
-place of one rectangle a course.
-
-**Where the space is fixed, one rectangle a course is the only correct form.** A shaft 24 blocks long that
-must fall 24 courses cannot be 2:1, and neither can a slipway climbing 8 courses out of a river 16 wide.
-Those stay per-course, and so does anything **clipped round an obstacle** — rectangles can be cut round a
-rectangle with plain arithmetic and a single tilted polygon cannot.
 
 ### Three points and a plane is how you tilt a shape deliberately
 
-`anchor_heights` is per-vertex, which is one number too many to pose by hand and one too few to be a
-gesture. Stating three and solving for the rest is the gesture:
+`anchor_heights` states a height per vertex, and three points define the plane the rest of the shape is fitted
+to — so a deliberate tilt is three anchors chosen for the plane you want rather than a number per corner
+adjusted until it looks right. `techniques/ramp-and-stair` is the worked card.
 
-```python
-def plane3(ring, pts):
-    """pts is three (index, height) pairs. Solves a*x + b*z + c = h through them, fills the rest."""
-    (i0,h0),(i1,h1),(i2,h2) = pts
-    (x0,z0),(x1,z1),(x2,z2) = ring[i0], ring[i1], ring[i2]
-    det = (x1-x0)*(z2-z0) - (x2-x0)*(z1-z0)
-    a = ((h1-h0)*(z2-z0) - (h2-h0)*(z1-z0)) / det
-    b = ((h2-h0)*(x1-x0) - (h1-h0)*(x2-x0)) / det
-    return [max(0, round(a*x + b*z + (h0 - a*x0 - b*z0))) for x, z in ring]
-```
-
-Pick the three by the axis the lean should run along — the two furthest downwind at 0, the one
-furthest upwind at the lift — and every shape on the board leans together instead of each being its
-own accident. On a `rot_180` board that gives each team the cliff and its own side the ramp for free.
 
 ### `rot_180` maps a shape centred on the origin onto itself, so a central lake may be any shape
 
@@ -1236,74 +911,38 @@ rougher and wrong where one place should differ from the others — pulling a ba
 the notch a lane runs through. Those are one point each, and a bend does them by making the entire outline
 uniformly wobbly and the one place unchanged.
 
-The three routes that do it are `PATCH /map/{slug}/sketch/shapes/{id}/vertices/{index}` (move one point),
-`POST …/vertices` with `{"after": n, "x": …, "z": …}` (add one on that edge, and the answer says the index it
-landed at) and `DELETE …/vertices/{index}`.
+The three routes are `PATCH …/shapes/{id}/vertices/{index}` (move one point), `POST …/vertices` with
+`{"after": n, "x": …, "z": …}` (add one on that edge; the answer says the index it landed at) and
+`DELETE …/vertices/{index}`. **Every other point of the outline is exactly where it was drawn after each of
+them**, which is the property the whole thing exists for: a board's shapes abut, and an edit that drags a
+ring's other points opens ground between two that were flush. `techniques/flat-ground` is the worked card.
 
-**Every other point of the outline is exactly where it was drawn after each of them.** That is the property
-the whole thing exists for: a board's shapes abut, and an edit that drags a ring's other points opens ground
-between two that were flush.
-
-State the point in the insert rather than splitting first and moving second: the one call is atomic, so a
-point that would fold the ring leaves the outline untouched, where the two-call form leaves the midpoint
-behind. Omitting `x`/`z` is the other case and is the midpoint anchor — a corner half way along a wall,
-placed before it is decided where it goes. Nine such calls take a one-piece plan's compiled rectangle
-(4 vertices, 24,000 blocks²) to a 12-point outline of 28,084, **+17%**, with all four of the compile's own
-corners still exactly where the plan put them.
+State the point in the insert rather than splitting first and moving second: the one call is atomic, so a point
+that would fold the ring leaves the outline untouched. Omitting `x`/`z` is the midpoint anchor — a corner half
+way along a wall, placed before it is decided where it goes.
 
 **A spec states them under `editShapes`**, an ordered list per shape replayed after the store and **before**
-any bend, since a bend resamples whatever ring it is given. Each op names exactly one index — `after` inserts
-a point on that edge, `index` moves the point there, `remove` drops it — and one naming none or two stops the
-run rather than guessing. The indices shift as the ring grows and shrinks, which is why the run prints where
-each point landed:
+any bend, since a bend resamples whatever ring it is given. Each op names exactly one index — `after` inserts,
+`index` moves, `remove` drops — and one naming none or two stops the run rather than guessing. The indices
+shift as the ring grows, which is why the run prints where each point landed.
 
-```json
-"editShapes": {"garth-14": [{"after": 1, "x": 92, "z": -70},
-                            {"index": 4, "x": 80, "z": -60},
-                            {"remove": 7}]}
-```
+**A hand works at a larger scale than a bend does.** One board's four ground shapes, reshaped by hand from four
+vertices to between six and eleven, grew 14,250 blocks² of compiled rectangle into 16,008 drawn — and of the 36
+drawn vertices, 19 sit outside the rectangle they came from by 2 to 20 blocks. That is not reachable by any
+whole-ring transform, and it is reachable one point at a time.
 
-A hand works at a larger scale than a bend does. One board's four
-ground shapes are the plan's four rectangles reshaped by hand, each grown from four vertices to between six
-and eleven, and 14,250 blocks² of compiled rectangle became 16,008 drawn — **+12.3%**, with every one of the
-four larger than the rectangle it came from.
-
-Every one grew. Of the 36 drawn vertices, 19 sit **outside** the rectangle they came from by 2 to 20 blocks,
-7 sit inside by 4 to 8, and 10 stay on the edge. The document carries **no Bézier handles at all**. A reshape
-that far outward and that uneven is not reachable by any whole-ring transform, and it is reachable one point
-at a time.
-
-A board inheriting those shapes **vertex for vertex** adds no handles either — its curves are `path` shapes,
-which is the layout's other curve and the one nothing has to author.
-
-The three canal walls are `wall-s`, `wall-n-w` and `wall-n-e`: three or four clicked points, `radius 1`,
-`stroke_edge: solid`. The rasterizer runs a polyline's points through a centripetal Catmull-Rom spline at
-eight samples a segment before offsetting the band, so four points become a twenty-five-point centreline and
-the wall draws as a curve. `cairn-wall-0`–`2` are the same shape at nine or ten points over about twenty
-blocks.
-
-Reach for a polyline wherever a wall, a lane or a watercourse should flow; reach for `controls` only on a
-closed ring of ground.
 
 ### The bend is the studio's, and the side is the author's
 
-`POST /map/{slug}/sketch/shapes/{shapeId}/bend` draws a compiled outline as a coast, and `drive.py`'s
-`bendShapes` calls it once the board is stored. **The outline's own vertices never move** — that is the rule
-that makes one safe, and it is the studio's.
+`POST …/shapes/{shapeId}/bend` draws a compiled outline as a coast. **The outline's own vertices never move** —
+that is the rule that makes one safe, and it is the studio's.
 
 Which way the cut points go is `side`: `out` is the default and is the slight bloat that makes a compiled
 rectangle read as land, `in` keeps the plan's footprint where shapes abut on a measured strait, and `both`
-wanders across the line the plan drew.
+wanders across the line the plan drew. The side is decided by offering each inserted point both perpendiculars
+and taking the one that lands where it was asked to — right for a ring wound either way and for a concave
+stretch as readily as a convex one, which a shoelace sign is not.
 
-The side is decided by offering each inserted point both perpendiculars and taking the one that lands where it
-was asked to — right for a ring wound either way and for a concave stretch as readily as a convex one, which a
-shoelace sign is not.
-
-Measured on two rings compiled against each side: one at 9,750 blocks² bent to 11,033 outward and 8,467
-inward, the other at 4,800 to 5,477 and 4,123 — **+1,283 against −1,283**, and **+677 against −677**. The
-same magnitude with the sign reversed is the whole of what the side chooses. The studio's outward
-coast is vertex-for-vertex the coast every bent board in `specs/` was authored against, so those boards
-re-drive to the ground their props were placed on.
 
 ### A vertex insert names the edge leaving that vertex, and the index moves under it
 
@@ -1318,60 +957,21 @@ is what found it. Count the indices as the ring grows, or read back the index ea
 
 ### Bézier `controls` — the semantics, and where the curve actually is
 
-`controls` is keyed by **vertex index as a string**, and the handles are **absolute board coordinates**:
+`controls` is per vertex and states the handles of the curve leaving that vertex, so a ring's curve lies
+between its points rather than through them: the drawn outline is what the vertices *suggest*, and the built
+coast bulges outside the ring on a convex stretch and inside it on a concave one. Anything measured against the
+authored polygon — a prop's footprint, a strait's width — is measured against the wrong line.
 
-```json
-"controls": { "5": { "in": [77, 25], "out": [77, 35] } }
-```
+`techniques/curved-outlines` is the worked card, with the tangent continuity a closed ring needs and what each
+handle length does to the coast.
 
-The edge from vertex *i* to *j* is the cubic `p0 = V[i]`, `c1 = controls[i].out`, `c2 = controls[j].in`,
-`p3 = V[j]`. So a vertex's **`out` bends the edge after it and its `in` bends the edge before it** — one
-vertex's handles belong to two different edges. A missing handle falls back to the endpoint itself.
-
-**The extremum sits between vertices, never at one.** Probing the vertex is the natural check and it is
-worthless — the vertex is a fixed point of the curve. Probe near `t = 0.5`.
-
-**A handle that travels further away from its edge than along it makes a lobe, not a corner.** Place every
-handle as `c1 = p0 + d·t + n·bulge`, `c2 = p3 − d·t + n·bulge`, with `d` the edge vector, `n` its outward unit
-normal and `t` a forward fraction (0.3 works). Two constraints keep it a corner: `t·|d| ≥ bulge`, so the
-handle travels further along the edge than away from it, and `bulge ≤ 0.35·|d|`, because a short edge cannot
-carry a big bulge.
-
-Break the first and the cubic doubles back into a cusp, and past that a self-intersecting loop that rasterizes
-as a detached scrap of land. Break the second — an 8-block handle on a 15-block edge — and you get a deep U
-hanging off the shape, which flattens without self-intersecting and still reads as a bulb. Flatten the
-finished ring and test every non-adjacent segment pair for intersection before posting: a curve that *looks*
-right in numbers can still cross itself.
-
-**And keep the curve away from two things.** A **seam** a player walks — bow it and the two pieces stop
-touching. And a **wall**: its width was fixed at compile from the plan's seam, so bowing the coast beside it
-widens the lane past the wall's ends and hands players a way round it. The wall rects are in
-`POST /api/plan/inspect`'s structures feed; veto every edge within 10 blocks of one.
 
 ### A corner recipe does not make a coastline: a closed ring wants tangent continuity
 
-The handle construction above — `c1 = p0 + d·t + n·bulge`, with `t·|d| ≥ bulge` and
-`bulge ≤ 0.35·|d|` — is the recipe for **one** corner, and it is correct for one. Applied to every edge
-of a closed outline it constrains each edge against itself and says nothing about the two edges meeting
-at a vertex, so every edge bows outward and meets its neighbour in a cusp. A 24-vertex group authored
-that way, with both constraints satisfied and no self-intersection, rasterizes as a **gear**: twenty-four
-points around a blob.
+Handles chosen per corner give a ring that is smooth at each vertex and kinked between them. What a coastline
+wants is the handles of the edge arriving and the edge leaving to be collinear at every vertex, which is one
+rule over the whole ring rather than a recipe per corner. `techniques/curved-outlines` is the worked card.
 
-An organic outline is a smoothness constraint between edges, not a bulge on each. Catmull-Rom converted
-to Bézier gives it in one line and is tangent-continuous at every vertex by construction:
-
-```
-c1 = P1 + (P2 − P0)/6        # controls[i].out,  edge i → j
-c2 = P2 − (P3 − P1)/6        # controls[j].in
-```
-
-with `P0`/`P3` the ring neighbours. Raising the divisor flattens the curve toward the polygon; 6 is a
-natural coastline at a 12–20 block vertex spacing.
-
-**Leave the seam edge alone.** On a `rot_180` board the edge a shape shares with its own image — the run
-along `z = 0` — takes no handles at all: straight, the mirror lands on it exactly, and the two halves are
-one group. That is the same warning the entry above gives about bowing a seam, and it is the one edge of
-the ring that must be excluded from whichever construction is used.
 
 ---
 
@@ -1425,23 +1025,11 @@ though nothing is lost. A sculpture drawn out of layers has no stacking order to
 
 ### Two layers may share one course and no more
 
-A layer's span is inclusive of its top, so an upper layer sitting exactly at the lower one's top shares that
-course and is the ordinary seam. Past it the two build as one solid mass and the gap the layers were drawn to
-have is not in the world there.
+A layer's segment top is `base_y + base_height` while its built top block is one lower, so two layers whose
+spans meet exactly share one course and build correctly. **One lower than that is `SK10`**, and the slab is
+absorbed exactly where the layer below reaches it. `techniques/stacking-layers` is the worked card — two solid
+spans in one column, and the three ways the air between them is lost.
 
-A bridge deck at `base_y 11` lapped two blocks onto banks topping at y11 read `SK10 — driven 2 block(s) into
-each other over 24 column(s), deepest at (−26, 62)`. The same deck sized to the cut's own columns exactly, one
-course thick, laps nothing, sits flush with both banks and leaves four courses of air under it.
-
-**The seam sits where it does because a layer's segment top is `base_y + base_height` while its built top
-block is one lower.** A court stating `base_height` 14 has its top block at y13, so a one-course deck at
-`base_y` **14** rests on it, shares one course by the gate's arithmetic and raises nothing.
-
-**One lower than that is `SK10`, and the slab is absorbed exactly where the layer below reaches it.** A
-gallery's roof set one course into its wall heads left mossy brick on top of the wall line and no plank
-anywhere in that column, while inside the gallery — away from the walls — the same roof stood a course lower
-with its storey intact. The fault is local, the world is built, the column is valid, and the gate at the door
-is the only thing that reports it.
 
 ### `kind: "made"` and `seat: "ground"` are what a layer says when it is a thing rather than terrain
 
@@ -1496,39 +1084,19 @@ them. A solid with one run per column is one layer of geometry and as many of co
 
 ### Everything downstream of a stacked cell reads one number: the surface top
 
-`TerrainBuilder.SurfaceTops` keeps the **maximum** `YTop` per `(x, z)`, and that single grid is what
-the painter, the structure floors, the placements, the dressing and every 2-D render consume. Four
-consequences, all measured:
+Every read and every pass past the rasterizer takes a cell's **surface top** and nothing else, which has four
+consequences. **A placement climbs onto the upper layer by itself.** **The covered ground keeps its own
+paint**, because the painter hands each layer its own floor. **A covered floor is not in `themes/census`**, so
+a board's paint figures are about its roofs. And **the covered ground cannot be dressed** — the pass seats on
+the surface top, so nothing can be placed under a deck.
 
-- **A placement climbs onto the upper layer by itself.** A destroyable stated in plan cells with
-  `float: 4` landed at y34 over a terrace and at y19 on the same plan with the layers stripped.
-  Putting an objective on a deck is not stated anywhere — it follows from drawing the deck over it.
-- **The covered ground keeps its own paint.** `TerrainPainter.Paint` orders the layers by lowest
-  surface and paints each over its own span, so a court under a deck and the same court beside it come
-  back block for block alike — measured on a theme whose `fill` is deliberately a different block from
-  its surface, which is what makes the two tellable apart at all.
-- **A covered floor is not in `themes/census`.** The census counts each column's *top* surface, so a
-  board stating four themes reported three: every cell of the fourth had a roof over it.
-- **The covered ground cannot be dressed.** A tree stated at `(8, 53)`, where the ground is a hall
-  floor at y14, stood at y28 on the roof. No decline mentions it.
-- **Theme scope is per layer.** `ShapeScopeOwners` keys on `(layer, x, z)`, so a shape owns the paint
-  only on its own storey and ground under a slab keeps whatever its own layer states.
 
 ### A ground ramp meets an upper slab by touching it, and nothing else is needed
 
-Where a relief-solved ground top equals an upper layer's top, the two columns merge into one solid mass and
-the join is a single one-block rise. The failure is one column wide: a causeway whose band reached x ±19
-beside a terrace drawn to x ±18 left one column of hall floor between them — a twelve-block slot, and the deck
-a group in the air.
+**Overlap the two footprints by a column** and the ramp arrives: no join, no shared course, no field to state.
+**`SK11` at the store door is what reports the miss**, and it is silent on the join itself — a ramp that lands
+one block short reads as standable ground with no route onto it.
 
-**Overlap the two footprints by a column**, or arrive one course under the slab, which is enough: a causeway
-climbing to y17 beside a deck at y18 joins it on a one-block rise. Check it with a transect either way.
-
-**`SK11` at the store door is what reports the miss, and it is silent on the join.** The same causeway stopped
-one column short left a single column of court five below the deck, and the store answered *2,912 place(s) of
-standable ground … have open sky over them and no route onto them from the rest of the board* for both the
-deck and the court it sits over — and said nothing about the panel that met. `traversability` and
-`WorldColumns.Membership` still both discard Y, so those two go on calling a layered board one component.
 
 ### The bedrock floor goes under what rests on it, and under nothing else
 
@@ -1546,26 +1114,11 @@ card for all of this.
 
 ### A channel's line is the lowest surface its band crosses, and everything over that line is emptied to it
 
-**This is the one sentence most of a water prop's behaviour follows from**, and `DR-BANK` is the rule that
-says it: *the line is the lowest surface the body crosses and every column over it is emptied down to it*.
+**This is the one sentence most of a water prop's behaviour follows from.** The body takes the lowest surface
+its band crosses and empties every column over that line down to it, so **a channel run down a fall is built as
+a trench, not as a beck**. **A bridge is bitten through only when the prop names no layer**, and naming one is
+the whole fix — every prop kind takes the field. `techniques/water` is the worked card.
 
-**So a channel run down a fall is built as a trench, not as a beck.** One drawn from a head at 30 to a foot
-at 16 took 16 as its line and reported *cut **14 course(s)** of ground away above its own line — a
-straight-sided wall from y16 to y29*. Keep a run within a course or two of level, state a `level` and accept
-the rim, or break it into reaches that each cross flat ground — a reach left dry still lays its bank
-materials, which is worth having where the board can afford to call it a sink.
-
-**A bridge is bitten through only when the prop names no layer, and naming one is the whole fix.** A water
-prop carves against `DressingContext.GroundFor`, which is the ground of the layer it **names**; with none it
-takes the top of the stack, so a beck under a deck at y25 read the deck as its own ground and cut *6
-course(s) … from y20 to y25*. The same beck with `"layer": "ground"` builds planks at y25 with water at y19
-under them and declines nothing.
-
-**So a board can have the water and the bridge, and every prop kind takes the field.** This is the prop rule
-met where it matters most rather than a rule about water, because water is the one prop that changes the
-ground it is placed on.
-
-`techniques/water` is the worked card, with both cases side by side.
 
 ### A prop's claim is a claim of one storey
 
@@ -1592,20 +1145,10 @@ top surface again. A wool's or a spawn's storey has no plan field yet and is sti
 
 ### A stroke ignores `layer`, so a floor with a roof over it is marked with a shape
 
-Every prop kind takes `layer` and `DressingContext.GroundFor` reads it — a house, a tree and a boulder all
-seat on the storey they name; measured, a kiosk stated for a pool hall stands with
-its roof at y10 under a concourse whose floor is y12, and an oak stated for the car deck stands at y42.
+A stroke reads the surface top of every column it crosses, whatever layer that top belongs to, so it cannot be
+kept to one storey. **Mark a covered floor with a shape instead** — a shape states its layer and a stroke does
+not.
 
-**A stroke does not.** Two lane markings carrying `"layer": "under"` came back from `POST …/sketch/dressing`
-with `"y": 25` and `"y": 17` — the corridor wall's coping and the corridor floor, over the basin they were
-drawn for — and a worn track stated for a hall at y18 came back at `"y": 37`, on the deck roofing it.
-
-Nothing declines, because `DR-LAYER` fires on a layer the board does not have and these are layers it has.
-
-**Mark a covered floor with a shape instead**: a rectangle of that floor's own `floor` and
-`base_height` carrying a different `theme`. The geometry is unchanged and the theme scope resolves
-per layer, so it lands exactly where it is drawn. Both of the pool's lanes are three-wide rectangles
-of the basin's own two courses, themed dark prismarine.
 
 ---
 
@@ -1615,112 +1158,30 @@ A theme is stated on a shape and a cell goes to one of them. What decides which 
 
 ### Height and paint resolve overlaps by *different* rules
 
-- **Height**: `RasterGroup`/`MergeCell` — *the taller add-shape wins* the column.
-- **Paint**: `ShapeScopeOwners` — *the smallest-area shape wins* the cell (the most specific scope).
+Height goes to the **taller** shape and paint to the **smallest themed** shape whose top is that tallest top,
+so the shape that owns a cell's height and the shape that owns its paint need not be the same one. **Check
+which way round each join sits before building.** `techniques/combined-shapes` is the worked card.
 
-The documented way to make an organic tier is to let the tier below **run under** it, so the upper one can
-pull inward without opening a hole. But where the lower tier is the *smaller* shape, it keeps the paint while
-the upper tier keeps the height — a band of the wrong material laid across the top of the upper terrace, as
-deep as the underlap.
-
-Measured on a five-tier board at `x = 0`, with `shelf` (`base_height 22`, quartz, ~3 300 cells) overlapping
-`terr-mid` (`base_height 18`, grass over sandstone, ~1 500 cells):
-
-Three columns down one line tell the whole story. Where the shelf stands alone it reads y21 and quartz,
-which is right; where `terr-mid` stands alone it reads y17 over grass, dirt and sandstone, also right; and
-where the two overlap it reads **y21** — the shelf's height — under **grass, dirt and sandstone**, which is
-`terr-mid`'s paint on the shelf's blocks.
-
-**Check which way round each join sits before building.** Where the upper tier is the smaller shape the
-problem does not arise at all. Where it is not, author the two edges to overlap by two to four blocks and the
-seam reads as a transition rather than a stripe.
-
-**It reaches made things too, and there it is worse.** A hill's outer ring crossing a town wall leaves the
-wall built to its own twenty-seven courses and finished in the hill's grass-over-dirt, sides included,
-because the hill theme's wall material is dirt. `SK15` names the pair, both themes and the columns they
-contest; before it, a column read was the only thing that saw it.
-
-**Cut a mound out of what it may not land on** rather than trusting the heights to sort it.
 
 ### A shape owns the paint on a cell only where its own drawn top is the tallest drawn top there
 
-Scoping a theme to a patch of ground is an authored shape carrying a `theme`, and whether that shape owns
-any of the paint it carries is decided by one comparison. `SketchRasterizer.ShapeScopeOwners` gives a cell to
-the smallest shape whose own top **equals** the tallest one on it —
-`scopes && (standing || top == held.Ground) && area < held.Area`.
+The paint of a cell goes to the smallest themed shape whose **drawn top** is the tallest drawn top there, so a
+patch that is shorter than what it lies on paints nothing. **A shape stating no height at all is one course at
+bedrock, not "no opinion"**, and **`override: true` does not rescue a brush that is too short** — override
+decides a set, not a height.
 
-**A shape stating no height at all is one course at bedrock, not "no opinion".** `RasterShape` takes its floor
-from `Floor ?? 0` and its thickness from `HeightFn`, whose last line is `double bh = s.BaseHeight ?? 1`. So a
-brush drawn thinner than the landmass under it reaches no surface, owns nothing, and reports nothing.
+**So the form a patch takes is the ground's own `floor` and `base_height`, and the relief settles the height.**
+A shape declaring a `height_mode` is a candidate whatever its height and is never flush, which is why a patch
+meant to lie in the ground must not declare one. `techniques/painting-a-patch` is the worked card.
 
-**`override: true` does not rescue a brush that is too short.** Only the *set* an override-add belongs to is
-privileged in `((adds − subtracts) ∪ override-adds) − override-subtracts`; the ownership test inside that set
-is the same one. It is, however, the one form the store complains about, as `SK14`.
-
-**So the form a patch takes is the ground's own `floor` and `base_height`, and the relief settles the
-height.** `RasterizeLayout` writes the solved surface back over every cell of a solved group's footprint, so
-a twelve-course patch on a plain that solves to y7 is built at y7 and differs from its neighbours only in
-paint.
-
-**A shape declaring `height_mode` is a candidate whatever its height, and is never flush.** `Erect` settles a
-cell at `datum + rise * Math.Max(1, floor(surface))`, so a `raise` of zero stands one course above the datum
-and a `sink` of zero one below. The datum for both is the **median** of the ground under the footprint, read
-once, which turns a brush drawn across a flank into a bench.
-
-**Where the relief never solved, nothing writes a height back and an override stays one course on bedrock.**
-A shape carrying `relief_scope: "exclude"` takes its cells out of the group's footprint, and an override
-stroke over such ground punches a hole to y0 rather than repainting anything.
-
-**A shape on a second layer never enters that contest at all, and that is why it is not paint.**
-`ShapeScopeOwners` keys by `(layer, x, z)`, so the shape owns its own layer outright and what is *seen* is
-settled afterwards by which layer's top block is higher. A twelve-course patch on a layer at `base_y: 0` is a
-slab that buries itself in the terrain — `SK10`, "driven 9 blocks into each other … they build as one solid
-mass" — and over a hill the ground wins most of it.
-
-**The one second-layer form that behaves like paint is a single course at the ground's own top**, `base_y`
-set to the surface below plus one. `base_y` is one constant for a whole layer, so it works exactly as far as
-that ground is level, and giving the layer its own relief makes it worse: two fields solved over two
-footprints do not agree.
-
-**`GET .../themes/census` is the only witness either way**, because a patch that owns nothing builds a world
-that looks exactly right. `techniques/painting-a-patch` is the worked card: twelve statements of one outline
-under one paint, of which eight land.
-
-This is the instrument a detailed surface is painted with — a drift of sand against rock, scree at the foot of
-a crag, mud in a hollow — and it is what a single large `voronoi` over a whole region is a substitute for.
 
 ### A fill pattern is a plane until it states a `rise`, and the gate now refuses one without
 
-**`PT4` refuses a fill or wall pattern that states no `rise`** — *fill samples its field in the plane only,
-so every block of a column resolves alike and it reads as vertical stripes. A rise is the vertical period
-that gives a face its grain.* The board does not store until it is added, so this is no longer a trap to
-remember.
+A sampled field with no vertical period resolves every block of a column alike, so a face of it comes out in
+vertical stripes. **`PT4` refuses a fill or wall pattern that states no `rise`**, and two or three courses
+against a `cellSize` of nine or ten is what the committed bodies use. **`PT1` refuses a surfacing block as a
+band's whole material** — grass belongs on top of a stack, not inside it.
 
-**`PT1` refuses a surfacing block as a band's whole material** — *a surfacing block is exactly one course
-thick and what is under it is soil*. So every band of a `height`, `slope` or `inward` stack is itself a small
-`depth` stack: one course of the surfacing block over earth. Both refusals are at the store door and name the
-exact JSON path.
-
-Every area pattern — `cell`, `voronoi`, `noise`, `turbulence`, `electric` — samples the plane by default
-(`TP15`): a column resolves to one block, so the pattern decides the ground and nothing else. On a surface a
-course or three deep that is right and cheap.
-
-On a **fill** it is a cliff of vertical stripes: a six-stone body stated as a `cell` of `turbulence` mixes
-with `rise` at its default builds with every cut face striped floor to sky, one cell's stone the whole
-height of the column.
-
-State a `rise` and the field is a volume — but a cell as tall as it is wide still reads as a column on a cut,
-because a cut face shows a cell's width and its height side by side and a square blob of stone is a post. A body
-stated as cells of 7 with a rise of 7 still reads as vertical runs on every cut face.
-
-Make the cells wider than tall. A body stated as a `cell` nine across with a rise of five, over turbulences
-seven across with a rise of four, builds runs of one
-material down a column are 40% one block long, 23% two and 16% three, a mean of **2.5** — a blob, not a
-stripe.
-
-The earth is the other way: three courses deep, so a rise of eight there makes each column's earth one
-material (64% of columns) and the mix shows across the ground rather than down it, which is what a cut through
-soil looks like.
 
 ### A voronoi's bands are rings inward from a cell boundary, and the last one takes the rest
 
@@ -1737,30 +1198,12 @@ round each patch. A voronoi is a diagram, not a mixture.
 
 ### A cliff's strata belong in the `wall` bucket, because a cliff is what that bucket paints
 
-**The wall is the column's body at an edge, not a coat on a slope**, so nothing of it shows from above: it
-replaces the fill from the bottom of the surface down, wherever the column stands on a void-facing edge or —
-with `wallOnTerrainFaces` — on a terrain face. Measured on one board that was 440 columns, 244 round the
-island's rim and **196 inland** on a mesa's own skirt. A wall and a fill are read on a cut.
+**The wall is the column's body at an edge, not a coat on a slope**: the bucket paints the face a drop
+exposes, so a cliff's strata go there and nowhere else. **`rimEdges` decides how much the rim claims and the
+difference is large** — `void` caps every edge over nothing, and a piece standing over void is rim all the way
+round. **A `height` stack leaves everything under its own `from` to the bucket beneath**, and one block is
+enough. `techniques/theme-buckets` is the worked card, one bucket at a time over one ground.
 
-**`rimEdges` decides how much the rim claims and the difference is large.** `void` caps only the landmass's
-true outside; `boundary` caps every plateau boundary in it, which on the same board was **1,310 further
-cells**, 1,244 of them inland. `techniques/theme-buckets` switches the four buckets on one at a time over one
-ground.
-
-
-A band stack takes one of four axes — `depth` down the column, `inward` from the void-facing edge, `height`
-up from a stated world Y, and `slope` by the ground's angle. A `wall` stack on `depth` is read from the top
-of the face, so on a board whose drops all begin at one shelf, banding by depth **is** banding by altitude
-and `height` is not needed. One stack shared as the wall material of every theme makes every cut on the board
-the same rock in the same order, and puts those colours nowhere else.
-
-**A `height` stack leaves everything under its own `from` to the bucket beneath, and one block is enough.**
-A stack stated `from: 8` over a plain topping at y7 read back as the fill's own block — the whole plain
-unpainted for an off-by-one — and nothing reports it.
-
-The counterpart: **`wallRun` stands vertical**, because its stripes wrap the perimeter and are
-constant up a column. A weathered cliff is bedded and a sawn one is scored, and the two are one
-bucket and two materials.
 
 ### A shape thinner than three cells has no interior column, so a theme paints it out of two buckets
 
@@ -1832,20 +1275,10 @@ Watch the marker parity while shrinking it (`WX3`): a piece of an even number of
 
 ### A placed building is capped at 192 blocks of wing, and a storey wall at `clear + 1` courses
 
-`HP3` names the cap in its refusal — *"the wings cover 232 blocks, past the 192 a placed building may
-take"* — so an L of a 16×9 hall and an 8×11 wing is refused and one of 14×8 + 7×10 is not. Draw the
-plan shapes to fit it: a U of a 16×7 hall and two 5×7 wings is 182.
+The cap is on the wing's own length, and a storey's wall is `clear + 1` courses whatever else the style says.
+**`POST /terrain/prop-preview` is the read for a multi-wing house** — it answers the whole building against a
+theme without building a world.
 
-A **storey** carries `clear + 1` courses of wall (the top storey carries none extra, the roof being its
-lid), so a wall stack longer than that is silently truncated: a seven-band brick/checker/spruce stack
-on a storey of clear 3 builds four courses of brick and checker and no spruce at all, and the section
-reads as one flat mass. Size each storey's own stack to its own clear — which is also what makes a
-three-storey building read as three rooms rather than as one tall wall.
-
-**`POST /terrain/prop-preview` is the read for a multi-wing house.** It takes the prop — wings and all —
-plus a theme, and answers plan and section as PNG at `?format=png&view=…&scale=8`.
-`room-styles/preview-snapshot` draws the style on a default box, which for an L or a U is not the
-building being placed.
 
 ### `DR-SLOPE` is gated on the building's own height, not on the wall it stands against
 
@@ -1859,22 +1292,11 @@ the footprint is whole. Check a footprint against the rim it sits on rather than
 
 ### Wing corners are inclusive, and the joint roles are ridge-derived
 
-An `AuthoredWing`'s `corners` name cells inclusively: `[[0,6],[9,10]]` covers row 6 *and* row 10. Two wings
-sharing a coordinate row therefore **overlap** (`HJ1`); a touching wing starts one row past its hall
-(`maxZ` 77 → wing `minZ` 78).
+A wing's rect is inclusive at both ends, so a wing stated the way a rectangle usually is comes out a block
+longer than intended. **Which rectangle is the hall and which the wing follows from the ridges**, not from the
+order they are written: **a roughly square hall ties its ridge `AlongX`, which is `HJ4` waiting to happen.**
+`techniques/a-house-and-its-wings` is the worked card, with all five `HJ` refusals.
 
-**Which rectangle is the hall and which the wing follows from the ridges**, not from your drawing — the wing's
-ridge runs *into* the shared edge. So an explicit `ridge` stated to dodge an `HJ3` tie can silently swap the
-roles, and checking a rule against the rectangle you *drew* as the wing reads a firing `HJ5` as satisfied. The
-refusal names the derived roles ("the wing (rectangle 1)…"): read the indices in the message, not your drawing.
-
-**A roughly square hall ties its ridge `AlongX`, which is `HJ4` waiting to happen.** A square-ish hall meeting
-a wing on a vertical shared edge ties toward x, the wing then also runs into that edge, and both-into-it is
-`HJ4`. State the **hall's** ridge along the shared edge (`AlongZ` for a vertical seam) and the wing's into it.
-
-`POST /api/terrain/prop-preview` answers all of this before a build — but its body is `{propJson, themeJson}`
-with the documents as **strings**, and a house prop's `style` must be the resolved `HouseStyle`, not a library
-reference.
 
 ---
 
@@ -1921,23 +1343,11 @@ crossed the marked shape wants redrawing too.
 
 ### A standing stone is terrain, and `keepClear` is what makes the pass see it
 
-An authored `addShapes` polygon is ground, not a prop, so a building drawn over one stands inside it and is
-reported by nothing — *unless the shape sets* `keepClear`, which makes it a real dressing keep-out with no
-margin. A wall, a market cross or a stair flight authored as terrain and marked that way declines what leans
-on it by name.
+An authored shape is ground as far as the dressing pass is concerned: **without `keepClear` a prop does not
+stand beside the shape, it stands on top of it**, and nothing reports that. **An authored shape needs a field
+for each pass it crosses** — `keepClear` for the props, and the same shape named by a stroke's own exclusions
+for the paving.
 
-Test every footprint against every *unmarked* authored shape's ring yourself. *Measured:
-`b-berm-e rests on (35, 32), which is kept clear for a stated structure` — a boulder declined for leaning on
-a `keepClear` town wall.*
-
-**Without the flag a prop does not stand beside the shape, it stands on top of it, and that is what nothing
-reports.** Measured on two identical six-course walls: the marked one declined both props by `DR-KEEP`, and
-on the unmarked one an oak's trunk began at y14 — the wall's own top course, six over the meadow — with a
-boulder bedded into the head beside it. Only a column read says so.
-
-**And an authored shape needs a field for each pass it crosses.** `height_mode: "level"` with `skirt: 0` is
-what the relief wants — without it `SK14` fires and the wall comes out level with the ground — and
-`keepClear` is what the dressing pass wants. Neither substitutes for the other.
 
 ### A prop is judged at every image of its orbit
 
@@ -1970,185 +1380,76 @@ The count falls with separation and goes silent: measured on pairs of one 299-bl
 
 ### A copied tree is a recipe with a body, and the body is the whole of it
 
-A `copied` tree recipe carries `body: [[x, y, z, id, data], …]` from its foot, and the placement is a point
-and a seed like any other tree.
+A `copied` style carries the blocks that were cut out of a world, so its footprint, its foot and its crown are
+whatever was cut rather than whatever was asked for. **A body's foot is every cell of its lowest course**, and
+that is what a standoff is measured from — a nine-cell foot owes three blocks from each of its nine.
+**A hand-built crown is not a disc, not symmetric, and not even solid**, so what decides a spacing is
+occupancy rather than distance. `techniques/trees-and-boulders` has both bodies measured against a template.
 
-The registry key minted for one stated inline counts its blocks (`copied-716`), so state the recipes under
-names in `dressing.styles` — `oak-dense-2`, `fir-tall-6` — and let the placements name those.
-
-The bodies come out of a world with `pgm-studio/tools/seed-trees.cs`, which files them in the library under
-`<world>-r<row>-<n>`, and a spec's own tree file keys them the way its placements name them.
-
-A body is written block for block, so its seat is its foot's column and a crown overhanging a slope is cut
-where it meets it, exactly as a grown one.
-
-**A body's foot is every cell of its lowest course, and that is what a standoff is measured from.** Measured
-on two `tree-showcase` recipes: `r2-1` rests on one cell and `r3-1` on **nine**, spanning x 0..3 and z −1..3.
-Anchored at the same three blocks off one road the slender one stood and the buttressed one was declined,
-the message naming a foot cell rather than the anchor.
-
-**And a hand-built crown is not a disc, not symmetric, and not even solid.** `r2-1` covers 144 plan cells
-spanning x −9..+7 and z −7..+8, and its own trunk row reads `#######..####` — the cells at (1, 0) and (2, 0)
-are holes in it. Which answer a neighbour gets depends on the cell its foot lands in and not on the
-distance: a second copy two blocks east found the hole and was placed, and one three blocks east landed on
-a written cell and was declined.
-
-For scale against a template: those two bodies cover 144 and 147 plan cells where an `oak` of height 14
-covers **67**.
 
 ### A prop is tested at its lowest course and claims everything it covers, and every distance follows
 
-`Decorator.Seats` walks only the cells a prop rests on — `prop.Min(cell => cell.Y)` and nothing above it —
-so a tree is judged by its **trunk** and a boulder by its **footprint**. What a placed prop then registers
-is every cell it covered, crown and all.
+The pass seats a prop by its **lowest course** and then claims every cell the whole prop covers, which is what
+makes a crown a keep-out and a trunk a seat. **So what two trees need between them is one crown and not two**,
+and **a boulder's standoff is measured from its body**, so its centre owes the standoff plus its own reach.
+`techniques/trees-and-boulders` is the worked card, one ladder per rule.
 
-**So what two trees need between them is one crown and not two.** The second oak is declined exactly where
-its trunk falls inside the first one's claimed canopy, which makes the distance the *larger* of the two
-crowns rather than the sum. Measured with one seed pair down each ladder, stepping along x only: a pair of
-nines is refused at 1, 2 and 3 and stands at **4**; a pair of fourteens is refused at 2, 3 and 4 and stands
-at **5**.
-
-The crown is still hash-keyed off the prop's `seed` — `Decorator.CanopyRadius` measures what the build
-writes — so a rung right on the threshold is not stable across an edit that shifts seeds. Four for a nine
-and five for a fourteen are the measured floors; add one where a board is going to be revised.
-
-**And a boulder's standoff is measured from its body, so its centre owes the standoff plus its own reach.**
-A size-3 erratic stated 3 blocks off a road was declined at (−62, −68) for a road cell at (−63, −69): the
-prop was two blocks out and its footprint was one.
-
-Dart-throwing beats a jittered lattice here. A lattice at the spacing either reads as a grid (no jitter) or
-breaks its own minimum (with jitter, which is what the rule charges for); thrown points accept right up
-against it. Forty-five darts on a 53 × 45 pad were all taken, and the same box packs 98 at the limit.
-`techniques/trees-and-boulders` is the worked card, every rule of it a ladder.
 
 ### DR-CLAIM between props is footprint overlap, not a standoff
 
-`claims.Holds(x, z)` — a prop is declined for resting on a cell another prop has claimed, and that is
-the whole rule. Reserving three blocks around each boulder cost twelve trees on a board that had
-three hundred plantable cells; `body + size + 1` is the real margin. Two size-3 erratics three apart
-contest and the same two nine apart do not.
+Two props contest only where their claimed cells overlap: there is no margin between them beyond their own
+footprints. **The pass runs by kind** — water, strokes, houses, boulders, trees, flora — and the document's
+order is the order only within a kind, so a rock written after an oak is still placed before it.
 
-**The order the pass runs in is by kind, and the document's order is the order only within a kind.**
-`Decorator` walks water, then strokes, then houses, then boulders, then trees, then flora, so a rock always
-beats a tree for a contested cell whatever the props array says. Measured: the same rock-and-oak overlap
-stated twice with the order opposite declined **both** oaks. A wood grows round a rock because it cannot do
-anything else, and the only order an author controls is between two rocks or between two trees.
 
 ### A path's band follows the spline, not your polyline
 
-`Centerline.Of` runs the drawn points through a **Catmull-Rom spline** before the band is derived, and a
-Catmull-Rom overshoots the outside of every corner — by several blocks when the segments are long. The band
-does not turn a building away for merely touching it (the road runs to the porch), but it decides where the
-*road itself* runs and what the scatter is refused over, so margin arithmetic against the polyline is
-arithmetic against the wrong line.
+A polyline's points are run through a centripetal Catmull-Rom spline at eight samples a segment before the
+band is offset, so four clicked points become a twenty-five-point centreline and the band is wider of the
+corners than the points suggest. **A building may end a road and never stand across one** (`DR-CROSS`).
+`techniques/polylines` is the worked card.
 
-**A building may end a road and never stand across one (`DR-CROSS`).** Drop a house on the pavement and the
-road ends at its wall, which is what a road running to a door is. Drop one in the *middle* of a road and the
-whole building is declined: the paving carries on out the other side, so what was one way through the board
-is two dead ends facing a wall. Draw the road **to** the door rather than through the house.
-
-Chamfer every sharp corner with two bracketing points — the spline then has nothing to overshoot — and read
-`region/dressing-report.json` after a build, where a prop the band refused is named with its colliding cell.
 
 ---
 
 ### DR-ROAD measures to the cells a stroke claims, and a wide brush is still a road
 
-`PlacePath` claims exactly what `StrokeFill.Cells(points, radius, style, coverage, seed)` lays, and
-`RouteStandoff` is 3 for a tree and 2 for a boulder off any of them.
+The standoff is measured to the **paved cells**, not to the centreline, so a wide brush is a keep-out as wide
+as itself plus the kind's standoff — three for a tree, two for a boulder. **A `solid` band has a constant edge
+and a `rough` one does not**, so a rough brush's keep-out is a range rather than a number.
+`techniques/trees-and-boulders` prices both against a measured ladder.
 
-Two consequences that pull opposite ways: a `worn` stroke under partial coverage claims a scattered subset, so
-a keep-out computed at `radius × coverage` lets props through that the gate then declines; and a stroke
-wanders to its full radius, so a keep-out at `radius + standoff` is right — and twenty-one path props over a
-110 × 220 board with that keep-out leave **eleven** plantable cells on the whole map.
-
-**A `solid` band has a constant edge and a `rough` one does not, so a rough brush's keep-out is a range.**
-Measured off the claims map: a radius-2 `solid` road was 4 cells wide at every one of its 57 columns, while
-a radius-8 `rough` brush beside it ran **11 to 18 cells wide** and reached 5 to 10 either side of its
-centreline. Four oaks all stated eleven off that centreline came back three placed and one declined, which
-is the wander and not a threshold — budget a rough brush from its wide end.
-
-Texture brushes are paths. Budget them like roads: one tongue per feature, radius 3–4, not two at 6–7.
 
 ### `DR-STEEP` is a rock's rule and nobody else's, and it complains rather than refusing
 
-`PlaceBoulder` asks it and `PlaceTree` does not, so a face that keeps an oak without a word keeps the
-boulder beside it with a note: *"stands at (131, 105) on ground inclined 63°, and the theme painting that
-cell calls the ground a face"*. The rock is in the world; the pass has said it looks wrong.
+Only a boulder is asked about the grade it stands on, and the answer is a **complaint**: the rock is in the
+world, leaning. **The angle it compares against is the theme's own cliff band, not a constant**, so the same
+face complains under one paint and not under another.
 
-**The angle it compares against is the theme's own cliff band, not a constant.** Measured on one board
-whose `meadow` put grass under 35° and coarse dirt to 55°: a 51° face raised nothing at all and a 63° one
-raised the complaint. The same rock on the same grade is quiet under a theme whose bands cut higher.
-
-A six-course wall five cells deep has no flat ground on its head at all — every cell of it is an edge, and
-a boulder placed there came back at 56°. At eleven cells deep the middle of the head reads 0°.
-
-### A texture path is an exclusion zone as wide as itself
-
-Using the path prop as a brush — a wide `rough` or `worn` band whose `pave` says what a stretch of ground *is*
-— is the way to get dedicated ground out of a single theme, and `DR-ROAD` prices it: a tree keeps **three**
-blocks from the nearest paved cell and a boulder **two**, measured from the prop's resting cells, so a
-radius-10 brush is a 26-wide strip nothing can stand in. A paved forest floor is an empty forest.
-
-Brush the ground that is meant to be open — the fighting ring round a goal, a quarry pan, a trampled heath, a
-shore — and leave the wood's floor to the theme and the flora overlay.
 
 ### Only `worn` spends `coverage` — `rough` fills its band solid
 
-`StrokeFill` decides a cell's membership in two steps: a half-width the style shapes, and then a per-cell
-gate. Only `worn` has that gate — `PatternNoise.Unit(x, z, seed + 11) < coverage`.
+`coverage` is read by `worn` alone: `rough` fills its band solid and wanders the band's edge instead. **A
+stroke prop takes five styles and a polyline shape takes three**, and `stones` spaces discs along arc length,
+which is the stepping-stone crossing nothing else draws. **A seam wants two tongues with their bands left
+whole**, and the mixing belongs in the pave rather than in the brush.
+`techniques/painting-with-a-stroke` is the worked card.
 
-`rough` spends its knob on the band's *edge* instead, wandering the half-width by ±45% over a 7-block scale
-and filling everything inside it. So `style="rough", coverage=0.26` is a **solid belt**, not a freckle, and
-sixteen seam strokes written that way turn every boundary on a board into a stripe of a third material laid
-over the join.
-
-**A stroke prop takes five styles and a polyline shape takes three.** The prop's are `solid`, `worn`,
-`rough`, `tapered` and `stones` — discs at intervals along the arc with gaps between them, spaced on arc
-length so the spacing stays even round a bend, which is the stepping-stone crossing nothing else draws. A
-polyline shape's `stroke_edge` is `solid`, `rough` or `tapered`: it is an outline, and an outline cannot
-express a gap or a per-cell dice.
-
-**A seam wants two tongues with their bands left whole, and the mixing belongs in the pave rather than in
-the brush** (the author's ruling). A `rough` stroke of the shore's material reaching up and a second reaching
-down give a zone instead of a line, and where one of them should read as a gradient its pave is a small
-`cell` pattern over both grounds' own blocks. The same move is what weathers a road: `worn` takes the band
-apart, and a cell pattern mixing the path's stones with the meadow's grass does not.
 
 ### A pave is a full terrain material, but a stroke answers only one of its four axes
 
-`PlaceStroke` resolves the pave at `new BucketContext(x, top - 1, z, TerrainBucket.Surface, 0)` — a world
-coordinate, the surface bucket, and nothing else. So a `height` stack **works**, and bands the path by
-altitude; `depth` and `slope` are handed 0 and always resolve to the stack's first band; and `inward` is
-handed `Inset` of **−1**, which `LayeredMaterial.Resolve` answers with the `beyond` material on every cell.
+A `pave` takes any terrain material, but a stroke hands it only the **surface** axis, so a path cannot be
+banded across its own width by its material — that takes two strokes, one inside the other.
 
-**So a path cannot be banded across its own width by its material — it takes two strokes.** A wide stroke in
-the verge's material with a narrow one over it in the path's, on one centerline, is the ring an `inward`
-stack cannot give. Nothing reports the failed stack: a board whose road came out entirely in its `beyond`
-block looks deliberate.
 
 ### A stroke is turned away by `keepClear`, and by a stamped block, and by nothing else
 
-The keep-out mask is about things that *stand* on ground and a stroke stands on nothing, so a road runs
-through a spawn's protection and up to a door. What stops it is a shape marked `"keepClear": true` — a
-causeway, a town wall, a crop bed, a flight of steps — whose columns it skips exactly, with no margin, so
-the way runs to it and resumes beyond it. `DressingPalette.IsStamp` covers the rest for free: bedrock,
-obsidian, wool, gold, iron, emerald, chests and stained glass are never a road's to take.
+A stroke repaints the top course of every column it crosses, and the only things that stop it are a shape
+stating `keepClear` and a block a stamp has already placed. **A bridge needs no marking, because it is not on
+the layer the stroke names** — a stroke ignores `layer` and reads the surface top, so a deck over a gorge is
+out of its way by construction. **A deck lands on its banks only if the marks that cut the gorge share their
+boundary coordinate.** `techniques/painting-with-a-stroke` is the worked card.
 
-**A bridge needs no marking, because it is not on the layer the stroke names.** A deck with air under it is
-one course on a layer of its own, and `PlaceStroke` reads `context.GroundFor(path)` — the surface of the
-prop's own layer. So a ground-layer way across a bridged gorge paves the **gorge floor** under the deck and
-never touches it, and paving the deck takes a stroke drawn on the bridge's layer. A causeway is the other
-thing: ground, solid to the bedrock, and indistinguishable from the bank it joins until it is marked.
-
-**And a deck lands on its banks only if the marks that cut the gorge share their boundary coordinate.** A
-ring covers the cells whose centres fall inside it, so a bank band stopping one short of the cut leaves that
-cell pinned by neither mark: the relaxation splits the difference into a one-cell ledge halfway down, and
-the deck spanning the stated gap ends over air. Stated as abutting bands the walk reads worst step 0 from
-bank to deck to bank.
-
-`techniques/painting-with-a-stroke` is the worked card: a strand feathered into a meadow, a serpentine paved
-four ways, the same verge with and without a claim, and one bridge crossed twice.
 
 ---
 
@@ -2161,28 +1462,19 @@ it, and the same board exported again with one fault in it at a time.
 
 ### `float` is geometry and `leak` is an attribute, and a goal at float 0 is not a goal
 
-**A goal's base is the standing level plus its `float`.** Over ground topping at y11 a `pillar-3` starts at
-y16 at `float` 4 and at y20 at `float` 8; a core's casing sits at y27 over a bank topping at y19 at `float` 6.
+**A goal's base is the standing level plus its `float`**, so the float is what lifts a monument off the ground
+and `leak` is a word about what happens when it is broken. A goal at `float` 0 is not a goal: a core on the
+ground cannot leak and a destroyable on the ground is trivially covered.
+`techniques/objectives-and-clearances` is the worked card — what `float` builds, where `leak` lives, and the
+two gates heard only at the export.
 
-**At `float` 0 a destroyable comes out as one obsidian block and a core loses its floor.** The monument's
-lower courses are where its chest and the ground already are, and the core reads three lava with a lid and
-no casing under them — nowhere for the lava to fall, which is the whole of what a core is. The four and the
-six are not clearance; they are what makes the goal completable.
-
-**`leak` changes no block at all.** Exported at 0, 5 and 10 with `float` held, the core's column is
-identical; the number is an attribute on the `<core>` element, and the studio writes it only when it is not
-PGM's own default of 5. A question about a leak is answered by the map.xml and never by a column.
 
 ### `OB17` refuses at 409 and `OB19` warns at 200
 
-**`OB17` names which of its three places the goal hit** — over the void, inside a spawn's protection, inside
-a wool room — each in its own words, and it refuses the whole export. Nothing earlier sees it: the board
-stores clean and finishes clean.
+**`OB17` names which of its three places the goal hit** — over the void, inside a spawn's protection, inside a
+wool room — and refuses the whole export at 409. **`OB19` is a warning at 200** about clearance, so a board
+carrying one exports. Nothing earlier sees either: the board stores clean and compiles clean.
 
-**`OB19` is a decline rather than a refusal.** A tree, boulder or building inside the ten-block square about
-a marker is left out and the world is built anyway, at 200 with a `Pgm-Warnings` header — *a goal is what the
-map is for, and a prop is removable*. Measured: a boulder six blocks off the marker is declined, the same
-boulder sixteen off is built.
 
 ### A placement carrying `"stamp": null` voids the whole intent PUT
 
@@ -2193,16 +1485,9 @@ success for having done nothing.
 ### `OB19`'s keep-out is bigger than it sounds, and it is the first thing a prop hits
 
 A **10-block square about the goal's anchor** — 441 cells reaching Chebyshev 10 — tested against a prop's
-footprint **plus its eaves**, and against **every orbit image** of it. For a goal at `(0, 45)` the box is
-`x −10..10, z 35..55`, and a building drawn at `x −12..−1, z 54..61` is refused on its eave. Measured with a
-ladder of oaks round one destroyable: 9 and 10 declined, 11 and 12 placed, so eleven off the anchor is the
-first clear ring.
+footprint **plus its eaves**, and against **every orbit image** of it. It is the first thing a prop near a
+monument hits, and `techniques/objectives-and-clearances` has the ladder that finds its edge.
 
-**`Seats` asks `context.AllowsProp` before any other claim, so the clearance answers on the dressing read
-rather than at the export.** It arrives as a decline on a 200 — *"rests on (48, 70), inside a goal's
-clearance"* — which is early enough to fix and quiet enough to miss. Compute the box, add one for the
-overhang, and keep buildings, trees and boulders out of it; `techniques/trees-and-boulders` reads the rule
-from the prop's end and `techniques/objectives-and-clearances` from the goal's.
 
 ### A compile cannot see a layout `subtract`
 
@@ -2271,37 +1556,18 @@ mislead, so what follows is only what a summary cannot hold.
 
 ### `column` is the only honest answer
 
-Every other read is a projection. Probe the coordinate you already expect something at.
+Every other read is a projection. Probe the coordinate you already expect something at — the `pgm-board`
+skill's lookup table is the rest of this subject.
 
-A column through the middle of a house reads floor, air, roof — the walls are at the perimeter. That is a
-correct building, not a broken one.
 
 ### `walk` is the read that says what ground costs
 
-`traversability` answers whether a board joins up. `walk` answers what crossing it charges, between two
-stated cells, in four units at once: whether it can be reached, how far in blocks, how many blocks a player
-must **place** — a rise of Δ costing Δ−1, void bridged one a cell — and how many falls over three the way
-takes. `aim` picks the route: `travel` the shortest, `reach` the one placing fewest blocks, `comfort` the
-least edge-hugging of the routes within ten blocks of the shortest. `render/walk` shades the same field over
-the whole board with the route on it.
+`traversability` answers whether a board joins up; `walk` answers what crossing it charges between two stated
+cells — whether it can be reached, how far in blocks, how many blocks a player must **place**, and what it
+falls. **A step it calls `barrier` is a step, not a verdict**: a four-course bedrock wall is bridged rather
+than walked, and the read has no word for that (`pgm-studio`'s `WS69`). The `pgm-board` skill's table says
+which read answers which question.
 
-**Ask it in mirrored pairs.** A single journey says what a journey costs; the same journey against its own
-image under the plan's `symmetry` says whether the board is fair, and that is the question no other read
-answers.
-
-`render/mirror` compares blocks, and two halves can be block-identical while the ground between them charges
-one team eleven blocks the other does not pay.
-
-Measured on a `rot_180` board whose spawn-to-goal lines agree to within one block: the river corridor does
-not, with `(−24, −16)` river bed at y5 against `(24, 16)` bank top at y17, which the walk turns into 11
-placed blocks for one team and 0 for the other.
-
-The relief mark's own point list is rotationally symmetric; what moves the edge is what is laid over it
-unmirrored — the `grain` field and the water props' `shoreWander`.
-
-**The field is one-sided, and the picture does not say so.** `render/walk` measures from one `from`; a cell
-shaded cheap is cheap *from there*. Two teams do not share a picture. Read one per spawn before concluding
-anything about a board's balance from a colour.
 
 ### Only two reads keep Y, and one of them is the section
 

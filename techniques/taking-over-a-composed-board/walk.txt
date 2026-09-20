@@ -66,7 +66,7 @@ take.
 
 **The last read is the one to argue with, and it is about a crown rather than about the board.** A bar
 twelve deep with a road down it leaves only its outer rim three clear of the paving, so the three oaks
-along the path stand there and their crowns hang past it. `column?at=-4,57` is four blocks of leaves
-over void and `transect` calls that station void — and the walk offers three places in the canopy and
-prices the climb at `barrier +8`. Filed as `WS71`, parked on the question it turns on: may a walk stand
-on a prop at all.
+along the path stand there and their crowns hang past it — which the map contract expects, since
+`block-break-void-filter` makes leaves and logs breakable inside the void. `column?at=-4,57` is four
+blocks of leaves over void and `transect` calls that station void, while the walk offers three places in
+the canopy and prices the climb at `barrier +8`. Filed as `WS71`, parked on the question it turns on.

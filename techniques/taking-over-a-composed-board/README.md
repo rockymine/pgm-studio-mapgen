@@ -186,9 +186,14 @@ bar's outer rim passes all of it: ground under the trunk, three clear of the pav
 clear. `props.txt` has the whole stretch probed a candidate at a time.
 
 **So a site is checked against the dressing pass, and the search only proposes.** Its silence is
-conservatism, not a refusal — which matters most where a road has taken everything else: on a bar twelve
-deep with a five-wide road down it, three clear of the paving is the rim or nowhere. The cost is that a crown
-there hangs over the void, which is what `WS71` is about, and the trade is the author's.
+conservatism, not a refusal — which matters most where a road has taken everything else: on a bar twelve deep
+with a five-wide road down it, three clear of the paving is the rim or nowhere.
+
+**A crown hanging over the void is ordinary, and the map contract says so.** `template.xml`'s
+`block-break-void-filter` allows breaking leaves and logs inside the void region and everything outside it,
+so tree parts over a board's edge are breakable where the rest of the void is not. What the overhang does
+change is a read: the walk offers a standing place in the canopy that `column` and `transect` both call void,
+which is `WS71`.
 
 **Every pass of the search that left something out was wrong, and the card keeps the numbers.** Against the
 layout alone it answers 1,398 cells and 52 sites, and four of the first twenty are then refused `DR-KEEP`:

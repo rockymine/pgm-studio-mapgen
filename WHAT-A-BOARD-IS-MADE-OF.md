@@ -26,6 +26,16 @@ decision an attacker makes.
 The land ends where the ground stops being anybody's, and the gap starts there. (The author's ruling. Both
 halves of it were wrong on the first board authored against the brief that used to carry this.)
 
+## A core is the forward objective and a wool is the deep one
+
+A core cannot be carried anywhere; it is breached where it stands, so it belongs where it will be fought over.
+A wool has to be fetched and brought home, so it belongs behind. Drafted the other way round, `WL10` reads a
+wool-front-distance of 8.
+
+**A core on a group in open sky has nothing to catch its lava**, so the casing wants ground all round it: a
+breach anywhere near an edge ends it at once. `float` and `leak` are one knob — the lava free-falls to the
+terrain at `float` below the casing and leaks a course below `leak`.
+
 ## Across a run of boards, check the tone families against each other
 
 Name the three tone families for each board and check them **across** the set rather than within it. Five
