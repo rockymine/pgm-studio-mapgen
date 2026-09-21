@@ -93,9 +93,11 @@ sixteen-block terrace, with five blocks of yard south of it for the route to the
 `roomStyles` takes two members and this board states both, because the default is the
 studio's built-in bedrock box standing where the wool is fetched from and where every player
 arrives. Both are the chapel's family — birch over stone brick on a dark, wet ground, with a
-dark oak frame — and both are **flat** roofed, which is the only form that can carry a hole.
-The wool room takes the darker lid and a two-block door; the spawn hall the paler lid and a
-three-block one.
+dark oak frame — under the **steep gable** a chapel wants. The wool room takes the darker
+roof and a two-block door; the spawn hall the paler roof and a three-block one.
+
+**Neither is flat with a hole in it, which is what the first pass built.** That shape is the
+bedrock box's, and a room reached through its own door has no use for a lid that opens.
 
 ## What went wrong
 

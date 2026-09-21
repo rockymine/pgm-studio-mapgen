@@ -551,8 +551,9 @@ Hallowgate, which is what sent that board's chapel onto made layers instead of i
 **All three boards state `roomStyles`.** A finish that states none stamps the studio's built-in bedrock box
 for the spawn and the wool room, which are the two structures a player sees from the inside — and a board
 can carry a designed house row and still leave those on the default, which is what the first pass of all
-three did. Each room wears its own board's built family and a **flat** roof, that being the only form that
-can carry a hole.
+three did. Each room wears its own board's built family under a **pitched** roof — hipped on Kilnbrow, gabled on
+the other two. A flat lid with a hole in it is the bedrock box's own shape, and building one in sandstone
+is the default again in a different material.
 
 | Folder | Mode | Author | What it is |
 |---|---|---|---|

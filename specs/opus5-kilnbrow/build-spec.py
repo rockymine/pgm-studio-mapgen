@@ -366,8 +366,9 @@ KILN_SHELL = {
 # ── the rooms ─────────────────────────────────────────────────────────────────
 # A spawn and a wool room stamp the studio's built-in bedrock box unless the finish states a
 # shell for them, and the box is the first thing every player on the board looks at from the
-# inside. The spawn hall is therefore the kiln row's own style, one storey and flat-roofed:
-# `flat` is the only roof form that can carry a hole, which is why a room wears it.
+# inside. The spawn hall is therefore the kiln row's own style at one storey, hipped rather
+# than gabled so the hall reads as the larger building of the works. A flat lid with a hole
+# in it is the bedrock box's own shape and not a requirement of a room.
 SPAWN_SHELL = {
     "foundation": {
         "plate": {"stack": {"bands": [{"material": solid(SANDSTONE), "thickness": 1}],
@@ -377,8 +378,8 @@ SPAWN_SHELL = {
         "footing": None,
     },
     "roof": {
-        "form": "flat", "pitch": 1, "slab": -1, "slabData": 0, "overhang": 1,
-        "ridgeCap": False, "hole": True,
+        "form": "hip", "pitch": 2, "slab": -1, "slabData": 0, "overhang": 1,
+        "ridgeCap": False, "hole": False,
         "body": solid((STAINED_CLAY, 12)),
         "verge": {"kind": "laidLog", "id": LOG2, "data": 1},
         "gable": solid((STAINED_CLAY, 12)),

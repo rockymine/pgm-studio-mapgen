@@ -320,8 +320,8 @@ SLUICE_SHELL = {
 
 # ── the rooms ─────────────────────────────────────────────────────────────────
 # Stated, or the spawn stamps the studio's built-in bedrock box — which is the one structure
-# every player sees from the inside. It is the sluice house's own style at one storey, with
-# a `flat` roof, because that is the only form that can carry a hole.
+# every player sees from the inside. It is the sluice house's own style at one storey under
+# a steeper gable, so the two buildings share a family and differ in shape.
 SPAWN_SHELL = {
     "foundation": {
         "plate": {"stack": {"bands": [{"material": solid(STONE_BRICK), "thickness": 1}],
@@ -331,8 +331,8 @@ SPAWN_SHELL = {
         "footing": None,
     },
     "roof": {
-        "form": "flat", "pitch": 1, "slab": -1, "slabData": 0, "overhang": 1,
-        "ridgeCap": False, "hole": True,
+        "form": "gable", "pitch": 3, "slab": -1, "slabData": 0, "overhang": 1,
+        "ridgeCap": False, "hole": False,
         "body": solid(SPRUCE_PLANKS),
         "verge": {"kind": "laidLog", "id": LOG, "data": 1},
         "gable": solid(SPRUCE_PLANKS),

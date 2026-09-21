@@ -83,8 +83,14 @@ rises 2, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to en
 `roomStyles` states the spawn's shell. A finish that states none stamps the studio's
 built-in bedrock box, and that box is the first thing every player looks at from the inside.
 The hall is the kiln row's own style at one storey — laid dark oak over smooth sandstone,
-one frame timber throughout — under a **flat** roof, which is the only form that can carry
-a hole.
+one frame timber throughout — under a **hipped** roof, so it reads as the larger building of
+the works.
+
+**A flat lid with a hole in it is the bedrock box's own shape, and a room does not need
+one.** That was the first thing written here, on the strength of a card sentence saying
+`flat` is the only form that can carry a hole *and that a room has always worn it*. The
+second half is a description of what boards have done, not a constraint, and reading it as
+one reproduces the default in a different material.
 
 ## What went wrong
 

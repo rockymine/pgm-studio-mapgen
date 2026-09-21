@@ -56,16 +56,16 @@ rises 2, falls 1, worst step 4: barrier +4 at (0, 75); drop -4 at (1, 77); barri
 beside: spawn spawn-1 at (-24, 70) d0, wool wool-1 at (17, 96) d0
 
 ## spawn-red -> blue-1
-ROUTE (-24, 70) -> (-20, -98) aim travel: 196 blocks, 43 placed, 3 drop(s), worst drop 9
+ROUTE (-24, 70) -> (-20, -98) aim travel: 196 blocks, 42 placed, 3 drop(s), worst drop 7
   place            y   step
   (-24, 70)          9
   (-24, 69)          9
   (-23, 68)          9
-  (-22, 67)         18   barrier +9
-  (-21, 66)         18
-  (-20, 65)         18
-  (-19, 64)         18
-  (-18, 63)          9   drop -9
+  (-22, 67)          9
+  (-21, 66)         12   barrier +3
+  (-20, 65)         18   barrier +6
+  (-19, 64)         16
+  (-18, 63)          9   drop -7
   (-17, 62)          9
   (-17, 61)          9
   (-16, 60)          9
@@ -230,19 +230,19 @@ ROUTE (-24, 70) -> (-20, -98) aim travel: 196 blocks, 43 placed, 3 drop(s), wors
   (-18, -97)        14
   (-19, -97)        14
   (-20, -98)        14
-rises 4, falls 3, worst step 9: barrier +9 at (-22, 67); drop -9 at (-18, 63); barrier +4 at (-12, -76); drop -4 at (-12, -78); barrier +7 at (-12, -79); drop -7 at (-11, -84); barrier +3 at (-12, -93)
+rises 5, falls 3, worst step 7: barrier +3 at (-21, 66); barrier +6 at (-20, 65); drop -7 at (-18, 63); barrier +4 at (-12, -76); drop -4 at (-12, -78); barrier +7 at (-12, -79); drop -7 at (-11, -84); barrier +3 at (-12, -93)
 beside: spawn spawn-1 at (-24, 69) d0, tree yew-4 at (-14, 47) d0, water tarn at (-14, 53) d0, wool wool-1#1 at (-20, -98) d0, tree yew-1#1 at (-16, -49) d1
 
 ## spawn-blue -> red-0
-ROUTE (24, -70) -> (20, 98) aim travel: 185 blocks, 43 placed, 3 drop(s), worst drop 9
+ROUTE (24, -70) -> (20, 98) aim travel: 185 blocks, 43 placed, 3 drop(s), worst drop 7
   place            y   step
   (24, -70)          9
   (23, -69)          9
-  (22, -68)         18   barrier +9
-  (21, -67)         18
-  (20, -66)         18
-  (19, -65)         18
-  (18, -64)          9   drop -9
+  (22, -68)          9
+  (21, -67)          9
+  (20, -66)         18   barrier +9
+  (19, -65)         16
+  (18, -64)          9   drop -7
   (17, -63)          9
   (16, -62)          9
   (15, -61)          9
@@ -408,7 +408,7 @@ ROUTE (24, -70) -> (20, 98) aim travel: 185 blocks, 43 placed, 3 drop(s), worst 
   (18, 96)          14
   (19, 97)          14
   (20, 98)          14
-rises 4, falls 3, worst step 9: barrier +9 at (22, -68); drop -9 at (18, -64); barrier +4 at (11, 75); drop -4 at (11, 77); barrier +7 at (11, 78); drop -7 at (10, 83); barrier +3 at (11, 92)
+rises 4, falls 3, worst step 9: barrier +9 at (20, -66); drop -7 at (18, -64); barrier +4 at (11, 75); drop -4 at (11, 77); barrier +7 at (11, 78); drop -7 at (10, 83); barrier +3 at (11, 92)
 beside: spawn spawn-1#1 at (20, -66) d0, tree yew-4#1 at (10, -42) d0, water tarn#1 at (13, -58) d0, wool wool-1 at (17, 96) d0, tree yew-1 at (13, 46) d1
 
 ## spawn-blue -> blue-1

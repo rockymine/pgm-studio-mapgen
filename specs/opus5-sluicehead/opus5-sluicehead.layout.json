@@ -1115,13 +1115,13 @@
     "footing": null
    },
    "roof": {
-    "form": "flat",
-    "pitch": 1,
+    "form": "gable",
+    "pitch": 3,
     "slab": -1,
     "slabData": 0,
     "overhang": 1,
     "ridgeCap": false,
-    "hole": true,
+    "hole": false,
     "body": {
      "kind": "solid",
      "id": 5,

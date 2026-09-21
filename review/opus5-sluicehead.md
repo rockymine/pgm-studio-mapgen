@@ -75,8 +75,9 @@ polyline revetment: a cut leat is walled, and four clicked points spline into th
 `roomStyles` states the spawn's shell, and a finish that states none stamps the studio's
 built-in bedrock box — which is the one structure every player on the board sees from the
 inside. It is the sluice house's own style at one storey: stone brick with a mossy course,
-a spruce frame carried through post, beams and the laid log, and a **flat** roof, which is
-the only form that can carry a hole.
+a spruce frame carried through post, beams and the laid log, under a **gable at pitch 3** —
+steeper than the house beside it, so the two share a family and differ in shape. A flat lid
+with a hole in it is the bedrock box's shape rather than a room's requirement.
 
 ## What went wrong
 

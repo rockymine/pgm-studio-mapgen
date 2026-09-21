@@ -378,8 +378,8 @@ CHAPEL_SHELL = {
 # ── the rooms ─────────────────────────────────────────────────────────────────
 # Both of them, because a finish that states neither leaves the studio's built-in bedrock box
 # standing where the wool is fetched from and where every player arrives. They are the
-# chapel's own family — birch over stone brick on a dark, wet ground — and both are flat
-# roofed, which is the only form that can carry a hole.
+# chapel's own family — birch over stone brick on a dark, wet ground — under the steep gable
+# a chapel wants. A flat lid with a hole in it is the bedrock box's own shape.
 ROOM_WALL = {"stack": {"bands": [
     {"material": {"kind": "laidLog", "id": LOG2, "data": 1}, "thickness": 1},
     {"material": solid(BIRCH_PLANKS), "thickness": 3},
@@ -397,8 +397,8 @@ def room_shell(roof_body, door_width):
             "footing": None,
         },
         "roof": {
-            "form": "flat", "pitch": 1, "slab": -1, "slabData": 0, "overhang": 1,
-            "ridgeCap": False, "hole": True,
+            "form": "gable", "pitch": 3, "slab": -1, "slabData": 0, "overhang": 1,
+            "ridgeCap": False, "hole": False,
             "body": solid(roof_body),
             "verge": {"kind": "laidLog", "id": LOG2, "data": 1},
             "gable": solid(roof_body),
