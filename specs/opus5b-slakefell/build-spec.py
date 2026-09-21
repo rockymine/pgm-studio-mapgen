@@ -246,7 +246,7 @@ save_cache(cache_path, cache)
 
 PAVE = cells(5162, 3, 0, [GRAVEL, COBBLE, ANDESITE])
 
-BOULDERS = [(-20, 70), (10, 72), (10, 28)]
+BOULDERS = [(-20, 70), (10, 72), (-22, 14)]
 PINES = [(-20, 76), (-14, 72), (-21, 62), (8, 60)]
 FIRS = [(4, 74), (14, 66)]
 

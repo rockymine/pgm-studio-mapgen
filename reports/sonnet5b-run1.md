@@ -59,10 +59,12 @@ rather than guessing from the refusal text is what actually found it in one step
 **A combined board's numeric bands are not the union of its two gamemodes' bands.** I built
 `sonnet5b-highgarth-fell` by taking `sonnet5b-ropeworks-quay`'s plan geometry (sized so `CT12`'s strait
 comes out 15–40 blocks) and adding a destroyable at the offset that had worked on the *short* landscape
-lane. `GO1` came out 7.32 against a 3.0–4.0 band and `GO3` 278 against 85–150 — a CTW-length approach
-chain is far longer than a destroy lane wants, and no amount of sliding the beacon within that chain
-closes both gaps at once, because moving it toward the enemy to fix `GO3` moves it away from `GO4`'s own
-floor. The actual fix was shrinking the whole spawn-to-strait depth, not retuning the goal.
+lane.
+
+`GO1` came out 7.32 against a 3.0–4.0 band and `GO3` 278 against 85–150 — a CTW-length approach chain is
+far longer than a destroy lane wants, and no amount of sliding the beacon within that chain closes both
+gaps at once, because moving it toward the enemy to fix `GO3` moves it away from `GO4`'s own floor. The
+actual fix was shrinking the whole spawn-to-strait depth, not retuning the goal.
 
 ## What worked first time
 
