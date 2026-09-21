@@ -1,0 +1,268 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 12,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -24,
+    "y": 9,
+    "z": 70
+   },
+   "protection": [
+    {
+     "minX": -32,
+     "minZ": 60,
+     "maxX": -16,
+     "maxZ": 80
+    }
+   ],
+   "yaw": 270,
+   "doors": [
+    "+x"
+   ],
+   "footprint": {
+    "minX": -29,
+    "minZ": 65,
+    "maxX": -19,
+    "maxZ": 75
+   },
+   "iron": [
+    {
+     "x": -24,
+     "y": 9,
+     "z": 78
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 24,
+    "y": 9,
+    "z": -70
+   },
+   "protection": [
+    {
+     "minX": 16,
+     "minZ": -80,
+     "maxX": 32,
+     "maxZ": -60
+    }
+   ],
+   "yaw": 90,
+   "doors": [
+    "-x"
+   ],
+   "footprint": {
+    "minX": 19,
+    "minZ": -75,
+    "maxX": 29,
+    "maxZ": -65
+   },
+   "iron": [
+    {
+     "x": 24,
+     "y": 9,
+     "z": -78
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 54,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -24,
+    "minZ": -20,
+    "maxX": 24,
+    "maxZ": 20
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "protection": [
+    {
+     "minX": 16,
+     "minZ": 92,
+     "maxX": 24,
+     "maxZ": 104
+    }
+   ],
+   "spawn": {
+    "x": 20,
+    "y": 14,
+    "z": 98
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": 16,
+     "minZ": 92,
+     "maxX": 16,
+     "maxZ": 104
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "protection": [
+    {
+     "minX": -24,
+     "minZ": -104,
+     "maxX": -16,
+     "maxZ": -92
+    }
+   ],
+   "spawn": {
+    "x": -20,
+    "y": 14,
+    "z": -98
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -16,
+     "minZ": -104,
+     "maxX": -16,
+     "maxZ": -92
+    }
+   ]
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "ctw"
+ ],
+ "meta": {
+  "name": "Hallowgate",
+  "created": "2026-09-21",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue",
+  "3": "neutral"
+ },
+ "structures": {
+  "layer": null,
+  "redstoneLines": [
+   {
+    "x1": 16,
+    "z1": 92,
+    "x2": 16,
+    "z2": 103,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "x1": -17,
+    "z1": -104,
+    "x2": -17,
+    "z2": -93,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1
+    }
+   }
+  ],
+  "ironCubes": [],
+  "walls": [
+   {
+    "minX": 0,
+    "minZ": 75,
+    "maxX": 12,
+    "maxZ": 77,
+    "topY": 11,
+    "chestOnMinFace": true,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "minX": -12,
+    "minZ": -77,
+    "maxX": 0,
+    "maxZ": -75,
+    "topY": 11,
+    "chestOnMinFace": false,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 1
+    }
+   }
+  ],
+  "isEmpty": false
+ }
+}

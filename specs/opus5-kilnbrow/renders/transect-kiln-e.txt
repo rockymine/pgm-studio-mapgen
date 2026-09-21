@@ -1,0 +1,52 @@
+## kiln-e (house) along x
+TRANSECT 17 stations from (18, -97) to (34, -97), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,   -97)      18       18           31  house kiln-m        
+  (   19,   -97)      18       18           31  house kiln-m        
+  (   20,   -97)      18       18           31  house kiln-m        
+  (   21,   -97)      18       18           31  house kiln-m        
+  (   22,   -97)      18       18           31  house kiln-m        
+  (   23,   -97)      18       18           31  house kiln-m        
+  (   24,   -97)      18       18           18                      
+  (   25,   -97)      18       18           29  house kiln-e        
+  (   26,   -97)      18       18           29  house kiln-e        
+  (   27,   -97)      18       18           29  house kiln-e        
+  (   28,   -97)      18       18           29  house kiln-e        
+  (   29,   -97)      18       18           29  house kiln-e        
+  (   30,   -97)      18       18           29  house kiln-e        
+  (   31,   -97)      18       18           29  house kiln-e        
+  (   32,   -97)      18       18           29  house kiln-e        
+  (   33,   -97)      18       18           29  house kiln-e        
+  (   34,   -97)      18       18           29  house kiln-e        
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house kiln-m at (16, -99), house kiln-e at (25, -99)
+
+## kiln-e (house) along z
+TRANSECT 24 stations from (30, -108) to (30, -85), every 1
+  station        ground  surface  water  top  standing            step
+  (   30,  -108)      18       18           18                      
+  (   30,  -107)      18       18           18                      
+  (   30,  -106)      18       18           18                      
+  (   30,  -105)      21       21           21                      BARRIER +3
+  (   30,  -104)      21       21           21                      
+  (   30,  -103)      18       18           18                      -3
+  (   30,  -102)      18       18           18                      
+  (   30,  -101)      18       18           21  house kiln-e        
+  (   30,  -100)      18       18           23  house kiln-e        
+  (   30,   -99)      18       18           25  house kiln-e        
+  (   30,   -98)      18       18           27  house kiln-e        
+  (   30,   -97)      18       18           29  house kiln-e        
+  (   30,   -96)      18       18           29  house kiln-e        
+  (   30,   -95)      18       18           27  house kiln-e        
+  (   30,   -94)      18       18           25  house kiln-e        
+  (   30,   -93)      18       18           23  house kiln-e        
+  (   30,   -92)      18       18           21  house kiln-e        
+  (   30,   -91)      18       18           18  stroke track-lane   
+  (   30,   -90)      18       18           18  stroke track-lane   
+  (   30,   -89)      18       18           18  stroke track-lane   
+  (   30,   -88)      18       18           18                      
+  (   30,   -87)      18       18           18                      
+  (   30,   -86)      18       18           18                      
+  (   30,   -85)      18       18           18                      
+rises 1, falls 1, worst step 3: 1 barrier, 0 scramble, 0 drop — BARRIER +3 at (30, -105) | walked end to end
+beside: house kiln-e at (28, -101), stroke track-lane at (28, -91)

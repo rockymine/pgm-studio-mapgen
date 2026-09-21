@@ -1,0 +1,62 @@
+## winding-house (house) along x
+TRANSECT 27 stations from (-3, -41) to (23, -41), every 1
+  station        ground  surface  water  top  standing            step
+  (   -3,   -41)      10       10           10  water leat          
+  (   -2,   -41)      10       10           10  water leat          
+  (   -1,   -41)      10       10           10                      
+  (    0,   -41)      10       10           10                      
+  (    1,   -41)      10       10           10                      
+  (    2,   -41)      10       10           10                      
+  (    3,   -41)      10       10           10                      
+  (    4,   -41)      10       10           21  house winding-house  
+  (    5,   -41)      10       10           21  house winding-house  
+  (    6,   -41)      10       10           21  house winding-house  
+  (    7,   -41)      10       10           21  house winding-house  
+  (    8,   -41)      10       10           21  house winding-house  
+  (    9,   -41)      10       10           21  house winding-house  
+  (   10,   -41)      10       10           21  house winding-house  
+  (   11,   -41)      10       10           21  house winding-house  
+  (   12,   -41)      10       10           21  house winding-house  
+  (   13,   -41)      10       10           21  house winding-house  
+  (   14,   -41)      10       10           21  house winding-house  
+  (   15,   -41)      10       10           21  house winding-house  
+  (   16,   -41)      10       10           21  house winding-house  
+  (   17,   -41)      11       11           11                      +1
+  (   18,   -41)      13       13           13                      scramble +2
+  (   19,   -41)      14       14           14                      +1
+  (   20,   -41)      15       15           15                      +1
+  (   21,   -41)      17       17           17                      scramble +2
+  (   22,   -41)      18       18           18                      +1
+  (   23,   -41)      18       18           18                      
+rises 6, falls 0, worst step 2: 0 barrier, 2 scramble, 0 drop — scramble +2 at (18, -41); scramble +2 at (21, -41) | walked end to end
+beside: water leat at (-5, -43), house winding-house at (4, -43)
+
+## winding-house (house) along z
+TRANSECT 24 stations from (10, -52) to (10, -29), every 1
+  station        ground  surface  water  top  standing            step
+  (   10,   -52)      10       10           10                      
+  (   10,   -51)      10       10           10                      
+  (   10,   -50)      10       10           10                      
+  (   10,   -49)      10       10           10                      
+  (   10,   -48)      10       10           10                      
+  (   10,   -47)      10       10           10                      
+  (   10,   -46)      10       10           10                      
+  (   10,   -45)      10       10           13  house winding-house  
+  (   10,   -44)      10       10           15  house winding-house  
+  (   10,   -43)      10       10           17  house winding-house  
+  (   10,   -42)      10       10           19  house winding-house  
+  (   10,   -41)      10       10           21  house winding-house  
+  (   10,   -40)      10       10           21  house winding-house  
+  (   10,   -39)      10       10           19  house winding-house  
+  (   10,   -38)      10       10           17  house winding-house  
+  (   10,   -37)      10       10           15  house winding-house  
+  (   10,   -36)      10       10           13  house winding-house  
+  (   10,   -35)      10       10           10                      
+  (   10,   -34)      10       10           10                      
+  (   10,   -33)       9        9            9                      -1
+  (   10,   -32)       9        9            9                      
+  (   10,   -31)       9        9            9                      
+  (   10,   -30)       8        8            8                      -1
+  (   10,   -29)       8        8            8                      
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder rock-e1 at (8, -54), house winding-house at (8, -45)

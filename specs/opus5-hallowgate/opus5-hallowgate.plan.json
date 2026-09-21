@@ -1,0 +1,199 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Hallowgate",
+  "notes": "CTW. One wool a team in a chapel on a raised churchyard, reached along a walled causeway with a lychgate on it. The hub rings a grave-pit nothing crosses, and the middle is a bar of stepping stones over black water."
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 9,
+  "observerY": 54
+ },
+ "pieces": [
+  {
+   "id": "hub-t1",
+   "role": "piece",
+   "rect": [
+    -4,
+    16,
+    11,
+    3
+   ]
+  },
+  {
+   "id": "hub-t2",
+   "role": "piece",
+   "rect": [
+    -4,
+    10,
+    11,
+    3
+   ]
+  },
+  {
+   "id": "hub-t3",
+   "role": "piece",
+   "rect": [
+    -4,
+    13,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "hub-t4",
+   "role": "piece",
+   "rect": [
+    4,
+    13,
+    3,
+    3
+   ]
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    -8,
+    15,
+    4,
+    5
+   ]
+  },
+  {
+   "id": "wool-a-t1",
+   "role": "piece",
+   "rect": [
+    0,
+    19,
+    3,
+    4
+   ]
+  },
+  {
+   "id": "wool-a-t2",
+   "role": "piece",
+   "rect": [
+    0,
+    23,
+    4,
+    3
+   ],
+   "surface": 14
+  },
+  {
+   "id": "wool-a-room",
+   "role": "wool-room",
+   "rect": [
+    4,
+    23,
+    2,
+    3
+   ],
+   "surface": 14
+  },
+  {
+   "id": "frontline-t1",
+   "role": "piece",
+   "rect": [
+    -4,
+    7,
+    10,
+    3
+   ]
+  },
+  {
+   "id": "frontline-t2",
+   "role": "piece",
+   "rect": [
+    -6,
+    5,
+    4,
+    2
+   ]
+  },
+  {
+   "id": "frontline-t3",
+   "role": "piece",
+   "rect": [
+    2,
+    5,
+    4,
+    2
+   ]
+  },
+  {
+   "id": "mid-stone",
+   "role": "piece",
+   "rect": [
+    -3,
+    -2,
+    6,
+    4
+   ],
+   "mirrors": false
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -6,
+    -5,
+    12,
+    10
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     8,
+     10
+    ],
+    "facing": "right",
+    "footprint": [
+     3,
+     5,
+     10,
+     10
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-a-room",
+    "at": [
+     4,
+     6
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "spawn-room",
+    "at": [
+     8,
+     18
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [
+  {
+   "a": "wool-a-t1",
+   "b": "hub-t1"
+  }
+ ],
+ "boxes": []
+}

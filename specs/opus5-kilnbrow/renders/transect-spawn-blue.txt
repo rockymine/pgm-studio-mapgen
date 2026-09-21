@@ -1,0 +1,76 @@
+## spawn-blue (spawn) along x
+TRANSECT 37 stations from (-18, 120) to (18, 120), every 1
+  station        ground  surface  water  top  standing            step
+  (  -18,   120)                                                    void
+  (  -17,   120)                                                    void
+  (  -16,   120)                                                    void
+  (  -15,   120)                                                    void
+  (  -14,   120)                                                    void
+  (  -13,   120)                                                    void
+  (  -12,   120)                                                    void
+  (  -11,   120)                                                    void
+  (  -10,   120)      18       18           18                      
+  (   -9,   120)      18       18           18                      
+  (   -8,   120)      18       18           18                      
+  (   -7,   120)      18       18           26  spawn spawn-1#1     
+  (   -6,   120)      18       18           26  spawn spawn-1#1     
+  (   -5,   120)      18       18           26  spawn spawn-1#1     
+  (   -4,   120)      18       18           26  spawn spawn-1#1     
+  (   -3,   120)      18       18           26  spawn spawn-1#1     
+  (   -2,   120)      18       18           26  spawn spawn-1#1     
+  (   -1,   120)      18       18           26  spawn spawn-1#1     
+  (    0,   120)      18       18           26  spawn spawn-1#1     
+  (    1,   120)      18       18           26  spawn spawn-1#1     
+  (    2,   120)      18       18           26  spawn spawn-1#1     
+  (    3,   120)      18       18           26  spawn spawn-1#1     
+  (    4,   120)      18       18           26  spawn spawn-1#1     
+  (    5,   120)      18       18           26  spawn spawn-1#1     
+  (    6,   120)      18       18           26  spawn spawn-1#1     
+  (    7,   120)      18       18           18                      
+  (    8,   120)      18       18           18                      
+  (    9,   120)      18       18           18                      
+  (   10,   120)                                                    void
+  (   11,   120)                                                    void
+  (   12,   120)                                                    void
+  (   13,   120)                                                    void
+  (   14,   120)                                                    void
+  (   15,   120)                                                    void
+  (   16,   120)                                                    void
+  (   17,   120)                                                    void
+  (   18,   120)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1#1 at (-7, 118)
+
+## spawn-blue (spawn) along z
+TRANSECT 28 stations from (0, 102) to (0, 129), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,   102)      18       18           18                      
+  (    0,   103)      18       18           18                      
+  (    0,   104)      18       18           18                      
+  (    0,   105)      18       18           18                      
+  (    0,   106)      18       18           18                      
+  (    0,   107)      18       18           18                      
+  (    0,   108)      18       18           18  stroke track-bench#1  
+  (    0,   109)      18       18           18  stroke track-bench#1  
+  (    0,   110)      18       18           18  stroke track-bench#1  
+  (    0,   111)      18       18           18  stroke track-bench#1  
+  (    0,   112)      18       18           18  stroke track-bench#1  
+  (    0,   113)      18       18           21  stroke track-bench#1  
+  (    0,   114)      18       18           21  stroke track-bench#1  
+  (    0,   115)      18       18           21  stroke track-bench#1  
+  (    0,   116)      18       18           18                      
+  (    0,   117)      18       18           18                      
+  (    0,   118)      18       18           26  spawn spawn-1#1     
+  (    0,   119)      18       18           26  spawn spawn-1#1     
+  (    0,   120)      18       18           26  spawn spawn-1#1     
+  (    0,   121)      18       18           18  spawn spawn-1#1     
+  (    0,   122)      18       18           18  spawn spawn-1#1     
+  (    0,   123)      18       18           18  spawn spawn-1#1     
+  (    0,   124)      18       18           26  spawn spawn-1#1     
+  (    0,   125)      18       18           26  spawn spawn-1#1     
+  (    0,   126)      18       18           26  spawn spawn-1#1     
+  (    0,   127)      18       18           18                      
+  (    0,   128)      18       18           18                      
+  (    0,   129)      18       18           18                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke track-bench#1 at (2, 105), ironcube spawn-1:0#1 at (-2, 115), spawn spawn-1#1 at (-2, 118)

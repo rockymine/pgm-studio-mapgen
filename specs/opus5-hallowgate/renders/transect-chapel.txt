@@ -1,0 +1,53 @@
+## chapel (made) along x
+TRANSECT 26 stations from (-6, 100) to (19, 100), every 1
+  station        ground  surface  water  top  standing            step
+  (   -6,   100)                                                    void
+  (   -5,   100)                                                    void
+  (   -4,   100)                                                    void
+  (   -3,   100)                                                    void
+  (   -2,   100)                                                    void
+  (   -1,   100)                                                    void
+  (    0,   100)      14       14           14                      
+  (    1,   100)      17       17           17                      BARRIER +3
+  (    2,   100)      17       21           21  storey              BARRIER +4
+  (    3,   100)      14       21           21  storey              
+  (    4,   100)      14       21           21  storey              
+  (    5,   100)      14       21           21  storey              
+  (    6,   100)      14       21           21  storey              
+  (    7,   100)      14       21           21  storey              
+  (    8,   100)      14       21           21  storey              
+  (    9,   100)      14       21           21  storey              
+  (   10,   100)      14       21           21  storey              
+  (   11,   100)      14       14           14                      DROP -7
+  (   12,   100)      14       14           14                      
+  (   13,   100)      14       14           14                      
+  (   14,   100)      14       14           14                      
+  (   15,   100)      14       14           14                      
+  (   16,   100)      14       14           15  redstoneline 0      
+  (   17,   100)      14       14           22  wool wool-1         
+  (   18,   100)      14       14           22  wool wool-1         
+  (   19,   100)      14       14           22  wool wool-1         
+rises 2, falls 1, worst step 7: 2 barrier, 0 scramble, 1 drop — BARRIER +3 at (1, 100); BARRIER +4 at (2, 100); DROP -7 at (11, 100) | walked end to end
+beside: redstoneline 0 at (16, 98), wool wool-1 at (17, 98)
+
+## chapel (made) along z
+TRANSECT 16 stations from (6, 88) to (6, 103), every 1
+  station        ground  surface  water  top  standing            step
+  (    6,    88)      10       10           10                      
+  (    6,    89)      10       10           10                      
+  (    6,    90)      11       11           11                      +1
+  (    6,    91)      11       11           11                      
+  (    6,    92)      12       12           12                      +1
+  (    6,    93)      12       12           12                      
+  (    6,    94)      13       13           13                      +1
+  (    6,    95)      13       13           13                      
+  (    6,    96)      14       21           21  storey              BARRIER +8
+  (    6,    97)      14       21           21  storey              
+  (    6,    98)      14       21           21  storey              
+  (    6,    99)      14       21           21  storey              
+  (    6,   100)      14       21           21  storey              
+  (    6,   101)      14       21           21  storey              
+  (    6,   102)      14       21           21  storey              
+  (    6,   103)      14       21           21  storey              
+rises 4, falls 0, worst step 8: 1 barrier, 0 scramble, 0 drop — BARRIER +8 at (6, 96) | walked end to end
+beside: (none)

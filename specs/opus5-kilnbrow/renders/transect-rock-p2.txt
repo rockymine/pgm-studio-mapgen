@@ -1,0 +1,53 @@
+## rock-p2 (boulder) along x
+TRANSECT 17 stations from (-35, -31) to (-19, -31), every 1
+  station        ground  surface  water  top  standing            step
+  (  -35,   -31)      12       12           12                      
+  (  -34,   -31)      12       12           12                      
+  (  -33,   -31)      12       12           16  boulder rock-p2     
+  (  -32,   -31)      12       12           16  boulder rock-p2     
+  (  -31,   -31)      12       12           16  boulder rock-p2     
+  (  -30,   -31)      12       12           16  boulder rock-p2     
+  (  -29,   -31)      12       12           16  boulder rock-p2     
+  (  -28,   -31)      12       12           14  boulder rock-p2     
+  (  -27,   -31)      12       12           12                      
+  (  -26,   -31)      12       12           12                      
+  (  -25,   -31)      12       12           12                      
+  (  -24,   -31)      12       12           12                      
+  (  -23,   -31)      12       12           12                      
+  (  -22,   -31)      12       12           12                      
+  (  -21,   -31)      12       12           12                      
+  (  -20,   -31)      12       12           12                      
+  (  -19,   -31)      12       12           12                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder rock-p2 at (-33, -33), tree tree-w2 at (-36, -29)
+
+## rock-p2 (boulder) along z
+TRANSECT 25 stations from (-31, -43) to (-31, -19), every 1
+  station        ground  surface  water  top  standing            step
+  (  -31,   -43)       6        6            6                      
+  (  -31,   -42)       6        6            6                      
+  (  -31,   -41)       7        7            7                      +1
+  (  -31,   -40)       6        6            6                      -1
+  (  -31,   -39)       7        7            7                      +1
+  (  -31,   -38)       9        9            9                      scramble +2
+  (  -31,   -37)      11       11           11                      scramble +2
+  (  -31,   -36)      12       12           12                      +1
+  (  -31,   -35)      12       12           12                      
+  (  -31,   -34)      12       12           13  boulder rock-p2     
+  (  -31,   -33)      12       12           16  boulder rock-p2     
+  (  -31,   -32)      12       12           16  boulder rock-p2     
+  (  -31,   -31)      12       12           16  boulder rock-p2     
+  (  -31,   -30)      12       12           16  boulder rock-p2     
+  (  -31,   -29)      12       12           16  boulder rock-p2     
+  (  -31,   -28)      12       12           16  tree tree-w2        
+  (  -31,   -27)      12       12           17  tree tree-w2        
+  (  -31,   -26)      12       12           19  tree tree-w2        
+  (  -31,   -25)      12       12           16  tree tree-w2        
+  (  -31,   -24)      12       12           12                      
+  (  -31,   -23)      12       12           19  tree tree-w2        
+  (  -31,   -22)      12       12           18  tree tree-w2        
+  (  -31,   -21)      12       12           12                      
+  (  -31,   -20)                                                    void
+  (  -31,   -19)                                                    void
+rises 5, falls 1, worst step 2: 0 barrier, 2 scramble, 0 drop — scramble +2 at (-31, -38); scramble +2 at (-31, -37) | walked end to end
+beside: stroke track-pan at (-29, -45), boulder rock-p2 at (-32, -34), tree tree-w2 at (-33, -29)

@@ -1,0 +1,108 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Kilnbrow",
+  "notes": "DTM. One monument a team on an open clay shelf: a spoil hill east to bridge from, a worked pit south-west to come up out of, the kiln bench behind. The two lands are joined by a build zone over void, never by ground."
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 12,
+  "observerY": 56
+ },
+ "pieces": [
+  {
+   "id": "pan",
+   "role": "piece",
+   "rect": [
+    -7,
+    -16,
+    14,
+    12
+   ],
+   "surface": 12
+  },
+  {
+   "id": "bench",
+   "role": "piece",
+   "rect": [
+    -7,
+    -22,
+    14,
+    6
+   ],
+   "surface": 18
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -2,
+    -26,
+    4,
+    4
+   ],
+   "surface": 18
+  }
+ ],
+ "zones": [
+  {
+   "id": "sound",
+   "rect": [
+    -7,
+    -4,
+    14,
+    8
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     10,
+     5
+    ],
+    "facing": "back",
+    "footprint": [
+     3,
+     3,
+     14,
+     9
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "spawn",
+    "at": [
+     10,
+     16
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "piece": "pan",
+    "at": [
+     15,
+     10
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Kilnbrow Monument"
+   }
+  ],
+  "cores": []
+ },
+ "walls": [],
+ "boxes": []
+}

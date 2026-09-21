@@ -1,0 +1,110 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Sluicehead",
+  "notes": "DTC. One core a team, out on an open frozen floor with ground all round its casing: a moraine over each shoulder to bridge from, a cut leat past it to move along unseen, and the sluice house to fight through."
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 12,
+  "surface": 10,
+  "observerY": 58
+ },
+ "pieces": [
+  {
+   "id": "floor",
+   "role": "piece",
+   "rect": [
+    -7,
+    -17,
+    14,
+    13
+   ],
+   "surface": 10
+  },
+  {
+   "id": "head",
+   "role": "piece",
+   "rect": [
+    -7,
+    -20,
+    14,
+    3
+   ],
+   "surface": 14
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -2,
+    -24,
+    4,
+    4
+   ],
+   "surface": 14
+  }
+ ],
+ "zones": [
+  {
+   "id": "sound",
+   "rect": [
+    -7,
+    -4,
+    14,
+    8
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     10,
+     5
+    ],
+    "facing": "back",
+    "footprint": [
+     3,
+     3,
+     14,
+     9
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "spawn",
+    "at": [
+     10,
+     16
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": [
+   {
+    "id": "core-1",
+    "piece": "floor",
+    "at": [
+     55,
+     21
+    ],
+    "lava": 3,
+    "lavaHeight": 3,
+    "float": 6,
+    "leak": 5,
+    "openTop": false,
+    "name": "Sluicehead Cistern"
+   }
+  ]
+ },
+ "walls": [],
+ "boxes": []
+}

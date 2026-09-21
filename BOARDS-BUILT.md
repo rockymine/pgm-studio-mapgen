@@ -532,6 +532,28 @@ and `GET …/coverage` prices ground as dead that a capture board is built to co
 | `opus5-threap-edge` | koth | Opus 5 | **A gritstone edge across a moor, with the three hills cut into its top** — `The Edge` on the summit at dead centre and `West Nab` and `East Nab` on the shoulders where the crest steps down, 32 blocks either side of it, each paying 1 to a limit of 750. Both teams spawn on the low moor, north and south, 96 blocks apart. Every pad is 64 blocks of white stained clay and every sky marker 7 of white wool at y57–59, and **both are regions the point displays through** — the pad as `progress-display-region`, the marker as `owner-display-region` — so both take the holder's colour on capture and go back to white when the point goes neutral. A wool room's marker and a destroyable's name a team for the whole match; a hill's is the one that moves. **8 420 walked · 908 scrambled · 224 barrier · 8 faces**, 26 props placed and none declined, export gate OPEN |
 | `opus5-casemate` | koth | Opus 5 | **A fort rather than a hill, and the middle pays double** — `The Cistern` in a lidded casemate at y13 pays 2, `West Bay` and `East Bay` pay 1 each from three-walled bays with one mouth apiece, to the same 750. Nothing stands over open ground and no pad has a line to a spawn: the terreplein at y20 carries the traverses and the pillars, the rampart rings it, and the ground is one-way. **The cover here is structure, not dressing — 0 props placed** — and the largest of its 20 faces is the casemate's own seven-block wall at x −21..20, z −15..14. **6 364 walked · 360 scrambled · 1 964 barrier**, nine regions, three white wool markers at y53–55, export gate OPEN. The team colour is **stated** rather than sampled, because on a one-island board the tint could not be read (`WE120`) |
 
+### Opus 5 — four boards, one per game mode, to the shortened brief
+
+Four boards asked for together — capture the wool, destroy the monument, destroy the core, and one board
+mixing wool with monument — on the run where the technique cards became the way an instrument is learned.
+The identities were written down together before the first shape, and the tone families checked **across**
+the set rather than within it, because five boards that are each internally coherent still come out five
+greys: **warm red clay**, **pale ice**, **dark wet churchyard**, and the fourth board's grey estuary.
+
+**Three of the four are here; the mixed board is not built yet.**
+
+Two findings the run carries rather than either board: `G8`'s `dead-share` is the one hard term with no
+technique card behind it, and it is a **journey** measure rather than a size one — narrowing a board or
+shortening it moves it the wrong way, and moving the objective off the centre line took Kilnbrow from
+**44.6%** to **6.0%**. And `POST …/sketch/seats` read **60 legal cells for a 9 × 7 house** over the whole of
+Hallowgate, which is what sent that board's chapel onto made layers instead of into the dressing pass.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5-kilnbrow` | dtm | Opus 5 | **A red clay firing-ground where the monument stands out on the open pan** — `Kilnbrow Monument` on a pinned shelf at (−20, −70), twenty blocks off the centre line, 63 from its own spawn and 196 from the enemy's for a `GO1` of **3.11**. The four approaches are four instruments: a spoil hill pushed up east to bridge from, a worked clay pit dug west to come up out of, a kiln row of three on the bench to fight through, and the shelf itself pinned flat. The two lands never touch — a build zone spans the whole 70-block width over 40 of void. The kiln bench is `exclude`d and meets the pan at an eight-block face that two flights state; `EL1` complains about that seam and the transect answers `worst step 1, walked end to end`. Bands cut at 30°/50° off its own `incline`. **12 298 walked · 574 scrambled · 528 barrier · 18 faces**, 28 props placed and none declined, 6.0% dead, export gate OPEN |
+| `opus5-sluicehead` | dtc | Opus 5 | **A frozen trough where the core stands on the open floor with ground all round its casing** — `Sluicehead Cistern` at (20, −64), fifteen blocks clear of the board's edge so a breach anywhere on it still has terrain under it for the lava. A core is breached where it stands, so nothing is put between it and the middle. Two moraines push up over either shoulder to bridge from, a cut leat runs past it to move along unseen, and a sluice house stands beside it to fight through. Snow over packed ice on **Cold taiga**, because snow and ice are blocks and a snowfield on a summer biome has a meadow running through it. **10 936 walked · 840 scrambled · 224 barrier · 6 faces**, `GO1` **3.19**, 4.0% dead, export gate OPEN — with **one boulder still declined `DR-KEEP`**, which is a debt rather than a design |
+| `opus5-hallowgate` | ctw | Opus 5 | **A composed arrangement taken over into a churchyard** — `composed-seed-3.plan.json` is committed beside the spec, and what it bought is the hub ringing an enclosed grave-pit, the spawn hung off its flank, the L of causeway to a room in a corner and the stepping stones. Everything else is authored: the terrace five courses up as made ground, one defence wall on the causeway's **outer** interface sixteen blocks out from the chapel, two polylines, and four made layers carrying a lychgate over the causeway and the chapel itself. The hole is left as composed because it is the rotation device — the long way round it covers 37% of the defenders' lane against the short way's 76%. **0.0% dead by construction**, 20 props placed and none declined, three themes all painting, export gate OPEN |
+
 ---
 
 ## Not boards

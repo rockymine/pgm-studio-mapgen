@@ -1,0 +1,25 @@
+HOW THIS BOARD IS COME AT
+
+  wool at (-20, -100)
+    The attacker walks 182 blocks to it; the defender 57, a ratio of 0.31.
+      Neither side is obviously first to it.
+    5 ways in. The last choice is made at (-16, 8) and closes at (-12, -96), 10 blocks short of the objective.
+      The defender's own walk runs through that merge, so both sides come up the same road. A defence has to be pushed forward to hold it, and the further forward the merge sits the more of the board it gives up to do so.
+    The attack covers 46% of the ground the defence crosses to get here. The two sides share some of the approach and not all of it.
+    Walking attack — 182 blocks, 5 ways, 4 decisions:
+      round the 15-cell hole at (-8, -60): choose at (-16, 8), live over 109 blocks, the other way 1.05× the shortest.
+      round the 15-cell hole at (4, 56): choose at (-24, 68), live over 172 blocks, the other way 1.23× the shortest.
+      round the 8-cell hole at (0, -24): choose at (-16, 8), live over 109 blocks, the other way 1.07× the shortest.
+      round the 8-cell hole at (0, 24): choose at (-16, 60), live over 161 blocks, the other way 1.07× the shortest.
+    Walking back-run — 182 blocks, 4 ways, 4 decisions:
+      round the 15-cell hole at (-8, -60): choose at (-12, -96), live over 161 blocks, the other way 1.05× the shortest.
+      round the 15-cell hole at (4, 56): choose at (-12, -96), live over 167 blocks, the other way 1.23× the shortest.
+      round the 8-cell hole at (0, -24): choose at (-12, -96), live over 161 blocks, the other way 1.07× the shortest.
+      round the 8-cell hole at (0, 24): choose at (-12, -96), live over 161 blocks, the other way 1.07× the shortest.
+    Walking defend — 57 blocks, 2 ways, 1 decision:
+      round the 15-cell hole at (-8, -60): choose at (20, -72), live over 49 blocks, the other way 1.86× the shortest.
+
+WHAT NO JOURNEY REACHES
+
+  160 of 6144 blocks (3%) sit off every route between the places this board has. Reachable, and on the way to nothing.
+    None of it is a place: all 4 stretches are under 100 blocks, which is a sliver between corridors rather than ground anyone would notice.

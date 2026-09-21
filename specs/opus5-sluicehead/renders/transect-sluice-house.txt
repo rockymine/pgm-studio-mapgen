@@ -1,0 +1,66 @@
+## sluice-house (house) along x
+TRANSECT 31 stations from (-4, -79) to (26, -79), every 1
+  station        ground  surface  water  top  standing            step
+  (   -4,   -79)      10       10     10    10  water leat          
+  (   -3,   -79)      10       10     10    10  water leat          
+  (   -2,   -79)      10       10           10  water leat          
+  (   -1,   -79)      10       10           10                      
+  (    0,   -79)      10       10           10                      
+  (    1,   -79)      10       10           10                      
+  (    2,   -79)      10       10           10                      
+  (    3,   -79)      10       10           21  house sluice-house  
+  (    4,   -79)      10       10           21  house sluice-house  
+  (    5,   -79)      10       10           21  house sluice-house  
+  (    6,   -79)      10       10           21  house sluice-house  
+  (    7,   -79)      10       10           21  house sluice-house  
+  (    8,   -79)      10       10           21  house sluice-house  
+  (    9,   -79)      10       10           21  house sluice-house  
+  (   10,   -79)      10       10           21  house sluice-house  
+  (   11,   -79)      10       10           21  house sluice-house  
+  (   12,   -79)      10       10           21  house sluice-house  
+  (   13,   -79)      10       10           21  house sluice-house  
+  (   14,   -79)      10       10           21  house sluice-house  
+  (   15,   -79)      10       10           21  house sluice-house  
+  (   16,   -79)      10       10           21  house sluice-house  
+  (   17,   -79)      10       10           21  house sluice-house  
+  (   18,   -79)      10       10           21  house sluice-house  
+  (   19,   -79)      10       10           21  house sluice-house  
+  (   20,   -79)      10       10           10                      
+  (   21,   -79)      10       10           10                      
+  (   22,   -79)      10       10           10                      
+  (   23,   -79)      10       10           10                      
+  (   24,   -79)      10       10           10                      
+  (   25,   -79)      10       10           10                      
+  (   26,   -79)      10       10           10                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water leat at (-6, -81), house sluice-house at (3, -81)
+
+## sluice-house (house) along z
+TRANSECT 24 stations from (11, -90) to (11, -67), every 1
+  station        ground  surface  water  top  standing            step
+  (   11,   -90)      14       14           14                      
+  (   11,   -89)      14       14           14                      
+  (   11,   -88)      14       14           14                      
+  (   11,   -87)      14       14           14                      
+  (   11,   -86)      14       14           14                      
+  (   11,   -85)      10       10           10                      DROP -4
+  (   11,   -84)      10       10           10                      
+  (   11,   -83)      10       10           13  house sluice-house  
+  (   11,   -82)      10       10           15  house sluice-house  
+  (   11,   -81)      10       10           17  house sluice-house  
+  (   11,   -80)      10       10           19  house sluice-house  
+  (   11,   -79)      10       10           21  house sluice-house  
+  (   11,   -78)      10       10           21  house sluice-house  
+  (   11,   -77)      10       10           19  house sluice-house  
+  (   11,   -76)      10       10           17  house sluice-house  
+  (   11,   -75)      10       10           15  house sluice-house  
+  (   11,   -74)      10       10           13  house sluice-house  
+  (   11,   -73)      10       10           10                      
+  (   11,   -72)      10       10           10                      
+  (   11,   -71)      10       10           10                      
+  (   11,   -70)      10       10           10                      
+  (   11,   -69)      10       10           10                      
+  (   11,   -68)      10       10           10                      
+  (   11,   -67)      10       10           10                      
+rises 0, falls 1, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (11, -85) | walked end to end
+beside: house sluice-house at (9, -83)

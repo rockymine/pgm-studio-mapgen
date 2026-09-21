@@ -1,0 +1,265 @@
+HEIGHTMAP  1 char = 1x1 blocks (the top-left block of each)  x -35..34 across, z -130..129 down
+KEY  char = ground height above y5 in bands of 1 block(s): 0 = y5..5, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
+         -3        -2        -1         0         1         2         3    
+     5432109876543210987654321098765432101234567890123456789012345678901234
+-130                          dddddddddddddddddddd                         
+-129                          dddddddddddddddddddd                         
+-128                          dddddddddddddddddddd                         
+-127                          dddHHHHHHHHHHHHHHddd                         
+-126                          dddHHHHHHHHHHHHHHddd                         
+-125                          dddHHHHHHHHHHHHHHddd                         
+-124                          dddHHHHHHHHHHHHHHddd                         
+-123                          dddHHHHHHHHHHHHHHddd                         
+-122                          dddHHHHHHHHHHHHHHddd                         
+-121                          dddHHHHHHHHHHHHHHddd                         
+-120                          dddHHHHHHHHHHHHHHddd                         
+-119                          dddHHHHHHHHHHHHHHddd                         
+-118                          dddddddddddddddddddd                         
+-117                          dddddddddddddddddddd                         
+-116                          ddddddddHddddddddddd                         
+-115                          dddddddddddddddddddd                         
+-114                          dddddddddddddddddddd                         
+-113                          dddddddddddddddddddd                         
+-112                          dddddddddddddddddddd                         
+-111                          dddddddddddddddddddd                         
+-110 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+-109 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+-108 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+-107 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+-106 dddddddddddddddddddddddddddddddddddddgggggddddddddddddggggggggggdddddd
+-105 dddddddddddddddddddddddddddddddddddddgggggggggggggggggggggggggggggggdd
+-104 dddddddddddddddddddddddddddddddddddddddddgggggggggggggddddddddddgggggd
+-103 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddggd
+-102 ddddddddddddddddddddddddddddddddddddddddddddHHHHHHHHHHHHHHHddddddddddd
+-101 ddddddddHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHHHdHHHHHHHHHH
+-100 ddddddddHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHHHdHHHHHHHHHH
+ -99 ddddddddHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHHHdHHHHHHHHHH
+ -98 ddddddddHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHHHdHHHHHHHHHH
+ -97 ddddddddHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHHHdHHHHHHHHHH
+ -96 ddddddddHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHHHdHHHHHHHHHH
+ -95 ddddddddHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHHHdHHHHHHHHHH
+ -94 ddddddddHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHHHdHHHHHHHHHH
+ -93 ddddddddHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHHHdHHHHHHHHHH
+ -92 ddddddddHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHHHdHHHHHHHHHH
+ -91 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+ -90 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+ -89 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+ -88 ddddccccccccddddddddddddddddddddddddddddddddddddccccccccdddddddddddddd
+ -87 ddddccccccccddddddddddddddddddddddddddddddddddddccccccccdddddddddddddd
+ -86 ddddccccccccddddddddddddddddddddddddddddddddddddccccccccdddddddddddddd
+ -85 ddddbbbbbbbbddddddddddddddddddddddddddddddddddddbbbbbbbbdddddddddddddd
+ -84 ddddbbbbbbbbddddddddddddddddddddddddddddddddddddbbbbbbbbdddddddddddddd
+ -83 ddddbbbbbbbbddddddddddddddddddddddddddddddddddddbbbbbbbbdddddddddddddd
+ -82 ddddaaaaaaaaddddddddddddddddddddddddddddddddddddaaaaaaaadddddddddddddd
+ -81 ddddaaaaaaaaddddddddddddddddddddddddddddddddddddaaaaaaaadddddddddddddd
+ -80 8888aaaaaaaa888888888888888888888888888888888888aaaaaaaa88888888888888
+ -79 8888aaaaaaaa888888888888888888888888888888888888aaaaaaaa88888888888888
+ -78 8888999999998888888888888888888888888888888888889999999988888888888888
+ -77 8888999999998888888888888888888888888888888888889999999988888888888888
+ -76 8888999999998888888888888888888888888888888888889999999988888888888888
+ -75 8888888888888888888888888888888888888888888888888888888888888888888888
+ -74 8888888888888889999999999999998888888888888888888888888888888888888888
+ -73 9999888888889999999999999999999888888888888888888888888898888888888888
+ -72 9999999999999HHHHH99999999999999988888888888888899999aaa99888888888888
+ -71 9999999999999HHHHH9999999999999999999888888899999aaaabbbaa998888888888
+ -70 9999999999999HH!HH999999999999999999988889999aaaabbbccccbbaa9888888888
+ -69 99999999aaaaaHHHHHaa99999999999999999889999aabbbccccdddddcbba988888888
+ -68 9999aaaaaaaaaHHHHHaaaa999999999999999999aaabbcccddddeeeeeddbba99888888
+ -67 99aaaaaaaaaaaaaaaaaaaaaa999999999999999aabcccddeeeeefffffedcbbaa988888
+ -66 aaaaaaaaaaaaaaaaaaaaaaaaa9999999999999aaccddeeeffffffgggffedccbba99888
+ -65 aaaaaaaaaaaaaaaaaaaaaaaaa9999999999999abcdeeffffgggggggggfeeddcbbaa988
+ -64 aaaaaaaaaaaaaaaaaaaaaaaaa9999999999999abdefffggggggggggggfffeedccbba98
+ -63 aaaaaaaaaaaaaaaaaaaaaaaaa999999999999abcdefggggggggggghgggfffeeddcbba9
+ -62 aaaaaaaaaaaaaaaaaaaaaaaaaa99999999999abcdefgggggghhhhhhgggggfffeedcbba
+ -61 aaaaaaaaaaaaaaaaaaaaaaaaaa99999999999abcdefgghhhhhhhhihhgggggfffeedcbb
+ -60 aaaaaaaaaaaaaaaaaaaaaaaaaa99999999999abcdefggghhhiiiiiihhhgggggffeedcb
+ -59 a9aaaaaaaaaaaaaaaaaaaaaaaa99999999999abcdefggghhiijjjjiiihhgggggffeedc
+ -58 999aaaaaaaaaaaaaaaaaaaaaaa99999999899abcdefggghhijjjjjjjiihhhggggffedc
+ -57 9999aaaaaaaaaaaaaaaaaaaaa999999999899abcdffggghhijjkkkkjjiiihhggggfeec
+ -56 99999aaaaaaaaaaaaaaaaaaa999999999889abcdefgggghhijjkklkkjjjiihhgggffec
+ -55 999999aaaaaaaaaaaaaaaaa9999999999899abcdefggghhiijkklllkkkjjiihgggffed
+ -54 9999999999999aaaaaaaaa99999999998899abcdefggghhijjkkllllkkkjiihhggffed
+ -53 999999999999999999999999999999998899abcdefggghhijjkllllllkkjiihgggffed
+ -52 999999999989999999999999999999998899abcdefggghhijjkklllllkjjihhgggffed
+ -51 999998888777778899999999999999988899abcdefggghhijjkkklllkkjjihgggffedc
+ -50 998876666544555689999999999999888889abcdefggghhijjjkkkllkkjjihgggffedc
+ -49 887654444323333568999999999999888889abcdefggghhiijjjjkkkkkjjihgggffedb
+ -48 865432222222223356788999999998888889abcdefgggghhiiijjjkkjjjjihgggffedb
+ -47 7532211111222222345688999988888888899abdeffgggghhhiijjjjjiiiihgggffedb
+ -46 6421111111111222223567888888888888889abcdeffgggghhhiiiiiiihhhhgggffedb
+ -45 64211111111111111123557888888888888899acddeffgggghhhhhiihhhggggggffedb
+ -44 74221111111111111112347888888888888889abbddeffgggggghhhhhgggggffffedcb
+ -43 754211111111111111112467888888888888899abbddefffgggggghggggffffffeedca
+ -42 7632111111111111111224688888888888888889abbddeeffffgggggggfffffeeedcba
+ -41 86422111111111111122457888888888888888889abbcddeefffggggffffeeeeddcba9
+ -40 875311111111111111245778888877788888888889aabbdddeeffggfffeeedddcbba99
+ -39 87642111111000001245778888777777888888888899abbccdeeffffeeedcccbbaa998
+ -38 776543333211111124567777777777777788888888889aabbcdeeeeeeddcbbaa999887
+ -37 777665555433333344677777777777777777777777888899bbcdddddccbbaa99888777
+ -36 7777777766555555567777777777777777777777777788899abbccccbbaa9988877777
+ -35 77777777776666667777777777777777777777777777778899aabbbaa9998877777777
+ -34 77777777777777777777777777777777777777777777777788899aa998887777777777
+ -33 7777777777777777777777777777777777777777777777777788899888777777777777
+ -32 7777777777777777777777777777777777777777777777777777888877777777777777
+ -31 7777777777777777777777777777777777777777777777777777777777777777777777
+ -30 7777777777777777777777777777777777777777777777777777777777777777777777
+ -29 7777777777777777777777777777777777777777777777777777777777777777777777
+ -28 7777777777777777777777777777777777777777777777777777777777777777777777
+ -27 7777777777777777777777777777777777777777777777777777777777777777777777
+ -26 7777777777777777777777777777777777777777777777777777777777777777777777
+ -25 7777777777777777777777777777777777777777777777777777777777777777777777
+ -24 7777777777777777777777777777777777777777777777777777777777777777777777
+ -23 7777777777777777777777777777777777777777777777777777777777777777777777
+ -22 7777777777777777777777777777777777777777777777777777777777777777777777
+ -21 7777777777777777777777777777777777777777777777777777777777777777777777
+ -20                                                                       
+ -19                                                                       
+ -18                                                                       
+ -17                                                                       
+ -16                                                                       
+ -15                                                                       
+ -14                                                                       
+ -13                                                                       
+ -12                                                                       
+ -11                                                                       
+ -10                                                                       
+  -9                                                                       
+  -8                                                                       
+  -7                                                                       
+  -6                                                                       
+  -5                                                                       
+  -4                                                                       
+  -3                                                                       
+  -2                                                                       
+  -1                                                                       
+   0                                                                       
+   1                                                                       
+   2                                                                       
+   3                                                                       
+   4                                                                       
+   5                                                                       
+   6                                                                       
+   7                                                                       
+   8                                                                       
+   9                                                                       
+  10                                                                       
+  11                                                                       
+  12                                                                       
+  13                                                                       
+  14                                                                       
+  15                                                                       
+  16                                                                       
+  17                                                                       
+  18                                                                       
+  19                                                                       
+  20 7777777777777777777777777777777777777777777777777777777777777777777777
+  21 7777777777777777777777777777777777777777777777777777777777777777777777
+  22 7777777777777777777777777777777777777777777777777777777777777777777777
+  23 7777777777777777777777777777777777777777777777777777777777777777777777
+  24 7777777777777777777777777777777777777777777777777777777777777777777777
+  25 7777777777777777777777777777777777777777777777777777777777777777777777
+  26 7777777777777777777777777777777777777777777777777777777777777777777777
+  27 7777777777777777777777777777777777777777777777777777777777777777777777
+  28 7777777777777777777777777777777777777777777777777777777777777777777777
+  29 7777777777777777777777777777777777777777777777777777777777777777777777
+  30 7777777777777777777777777777777777777777777777777777777777777777777777
+  31 7777777777777788887777777777777777777777777777777777777777777777777777
+  32 7777777777778889988877777777777777777777777777777777777777777777777777
+  33 777777777788899aa99888777777777777777777777777777777777777777777777777
+  34 7777777788999aabbbaa99887777777777777777777777777777776666667777777777
+  35 7777788899aabbccccbba9988877777777777777777777777777655555556677777777
+  36 77788899aabbccdddddcbb998888777777777777777777777776443333334555566777
+  37 788999aabbcddeeeeeedcbbaa988888888887777777777777765421111112333345677
+  38 899aabbcccdeeeffffeedccbba99888888888877777788887754210000011111124678
+  39 99abbcdddeeefffggffeedddbbaa988888888887778888877542111111111111113578
+  40 9abcddeeeeffffggggfffeeddcbba98888888888888888875422111111111111122468
+  41 abcdeeefffffgggggggffffeeddbba9888888888888888864221111111111111112367
+  42 acdeeffffffgggghggggggfffeddbba998888888888888764211111111111111112457
+  43 bcdeffffggggghhhhhggggggffeddbba98888888888888874321111111111111112247
+  44 bdeffgggggghhhiihhhhhggggffeddca99888888888888875532111111111111111246
+  45 bdeffggghhhhiiiiiiihhhggggffedcba9888888888888887653222221111111111246
+  46 bdeffggghiiiijjjjjiihhhggggffedba9988888888899998865432222221111122357
+  47 bdeffggghijjjjkkjjjiiihhggggfedcba988888899999999887653322222222234568
+  48 bdeffggghijjkkkkkjjjjiihhgggfedcba988888999999999999865333323444456788
+  49 cdeffggghijjkkllkkkjjjihhgggfedcba988888999999999999986555445666678899
+  50 cdeffggghijjkklllkkkjjihhgggfedcba998889999999999999998877777888899999
+  51 deffggghhijjklllllkkjjihhgggfedcba998899999999999999999999989999999999
+  52 deffggghiijkkllllllkjjihhgggfedcba998899999999999999999999999999999999
+  53 deffgghhiijkkkllllkkjjihhgggfedcba99889999999999aaaaaaaaa9999999999999
+  54 deffggghiijjkkklllkkjiihhgggfedcba9989999999999aaaaaaaaaaaaaaaaa999999
+  55 ceffggghhiijjjkklkkjjihhggggfedcba988999999999aaaaaaaaaaaaaaaaaaa99999
+  56 ceefgggghhiiijjkkkkjjihhgggffdcba998999999999aaaaaaaaaaaaaaaaaaaaa9999
+  57 cdeffgggghhhiijjjjjjjihhgggfedcba99899999999aaaaaaaaaaaaaaaaaaaaaaa999
+  58 cdeeffggggghhiiijjjjiihhgggfedcba99999999999aaaaaaaaaaaaaaaaaaaaaaaa9a
+  59 bcdeeffggggghhhiiiiiihhhgggfedcba99999999999aaaaaaaaaaaaaaaaaaaaaaaaaa
+  60 bbcdeefffggggghhihhhhhhhhggfedcba99999999999aaaaaaaaaaaaaaaaaaaaaaaaaa
+  61 abbcdeefffggggghhhhhhggggggfedcba99999999999aaaaaaaaaaaaaaaaaaaaaaaaaa
+  62 9abbcddeefffggghgggggggggggfedcba999999999999aaaaaaaaaaaaaaaaaaaaaaaaa
+  63 89abbccdeefffggggggggggggfffedba9999999999999aaaaaaaaaaaaaaaaaaaaaaaaa
+  64 889aabbcddeefgggggggggffffeedcba9999999999999aaaaaaaaaaaaaaaaaaaaaaaaa
+  65 88899abbccdeffgggffffffeeeddccaa9999999999999aaaaaaaaaaaaaaaaaaaaaaaaa
+  66 888889aabbcdefffffeeeeeddcccbaa999999999999999aaaaaaaaaaaaaaaaaaaaaa99
+  67 88888899abbddeeeeeddddcccbbaaa999999999999999999aaaaHHHHHaaaaaaaaa9999
+  68 888888889abbcdddddccccbbbaa99998899999999999999999aaHHHHHaaaaa99999999
+  69 8888888889aabbccccbbbaaaa999988889999999999999999999HH!HH9999999999999
+  70 888888888899aabbbaaaa9999988888889999999999999999999HHHHH9999999999999
+  71 88888888888899aaa99999888888888888888999999999999999HHHHH9999999999999
+  72 8888888888888988888888888888888888888889999999999999999999888888889999
+  73 8888888888888888888888888888888888888888999999999999999888888888888888
+  74 8888888888888888888888888888888888888888888888888888888888888888888888
+  75 8888888888888899999999888888888888888888888888888888888888999999998888
+  76 8888888888888899999999888888888888888888888888888888888888999999998888
+  77 8888888888888899999999888888888888888888888888888888888888999999998888
+  78 88888888888888aaaaaaaa888888888888888888888888888888888888aaaaaaaa8888
+  79 88888888888888aaaaaaaa888888888888888888888888888888888888aaaaaaaa8888
+  80 ddddddddddddddaaaaaaaaddddddddddddddddddddddddddddddddddddaaaaaaaadddd
+  81 ddddddddddddddaaaaaaaaddddddddddddddddddddddddddddddddddddaaaaaaaadddd
+  82 ddddddddddddddbbbbbbbbddddddddddddddddddddddddddddddddddddbbbbbbbbdddd
+  83 ddddddddddddddbbbbbbbbddddddddddddddddddddddddddddddddddddbbbbbbbbdddd
+  84 ddddddddddddddbbbbbbbbddddddddddddddddddddddddddddddddddddbbbbbbbbdddd
+  85 ddddddddddddddccccccccddddddddddddddddddddddddddddddddddddccccccccdddd
+  86 ddddddddddddddccccccccddddddddddddddddddddddddddddddddddddccccccccdddd
+  87 ddddddddddddddccccccccddddddddddddddddddddddddddddddddddddccccccccdddd
+  88 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+  89 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+  90 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+  91 HHHHHHHHHHdHHHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHdddddddd
+  92 HHHHHHHHHHdHHHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHdddddddd
+  93 HHHHHHHHHHdHHHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHdddddddd
+  94 HHHHHHHHHHdHHHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHdddddddd
+  95 HHHHHHHHHHdHHHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHdddddddd
+  96 HHHHHHHHHHdHHHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHdddddddd
+  97 HHHHHHHHHHdHHHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHdddddddd
+  98 HHHHHHHHHHdHHHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHdddddddd
+  99 HHHHHHHHHHdHHHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHdddddddd
+ 100 HHHHHHHHHHdHHHHHHHHHHHHHHHdddddddddddddddddddddddHHHHHHHHHHHHHdddddddd
+ 101 dddddddddddHHHHHHHHHHHHHHHdddddddddddddddddddddddddddddddddddddddddddd
+ 102 dggddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+ 103 dgggggddddddddddgggggggggggggddddddddddddddddddddddddddddddddddddddddd
+ 104 ddgggggggggggggggggggggggggggggggddddddddddddddddddddddddddddddddddddd
+ 105 ddddddggggggggggddddddddddddgggggddddddddddddddddddddddddddddddddddddd
+ 106 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+ 107 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+ 108 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+ 109 dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
+ 110                          dddddddddddddddddddd                         
+ 111                          dddddddddddddddddddd                         
+ 112                          dddddddddddddddddddd                         
+ 113                          dddddddddddddddddddd                         
+ 114                          dddddddddddddddddddd                         
+ 115                          ddddddddHddddddddddd                         
+ 116                          dddddddddddddddddddd                         
+ 117                          dddddddddddddddddddd                         
+ 118                          dddHHHHHHHHHHHHHHddd                         
+ 119                          dddHHHHHHHHHHHHHHddd                         
+ 120                          dddHHHHHHHHHHHHHHddd                         
+ 121                          dddHHHHHHHHHHHHHHddd                         
+ 122                          dddHHHHHHHHHHHHHHddd                         
+ 123                          dddHHHHHHHHHHHHHHddd                         
+ 124                          dddHHHHHHHHHHHHHHddd                         
+ 125                          dddHHHHHHHHHHHHHHddd                         
+ 126                          dddHHHHHHHHHHHHHHddd                         
+ 127                          dddddddddddddddddddd                         
+ 128                          dddddddddddddddddddd                         
+ 129                          dddddddddddddddddddd                         
+low y5, high y26, range 21

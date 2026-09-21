@@ -1,0 +1,53 @@
+## rock-h1 (boulder) along x
+TRANSECT 17 stations from (18, -97) to (34, -97), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,   -97)      14       14           14                      
+  (   19,   -97)      14       14           14                      
+  (   20,   -97)      14       14           14                      
+  (   21,   -97)      14       14           14                      
+  (   22,   -97)      14       14           14                      
+  (   23,   -97)      14       14           14                      
+  (   24,   -97)      14       14           14                      
+  (   25,   -97)      14       14           14                      
+  (   26,   -97)      14       14           14                      
+  (   27,   -97)      14       14           14                      
+  (   28,   -97)      14       14           18  boulder rock-h1     
+  (   29,   -97)      14       14           34  tree tree-e1        
+  (   30,   -97)      14       14           28  tree tree-e1        
+  (   31,   -97)      14       14           28  tree tree-e1        
+  (   32,   -97)      14       14           29  tree tree-e1        
+  (   33,   -97)      14       14           31  tree tree-e1        
+  (   34,   -97)      14       14           30  tree tree-e1        
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder rock-h1 at (28, -98), tree tree-e1 at (28, -96)
+
+## rock-h1 (boulder) along z
+TRANSECT 25 stations from (30, -109) to (30, -85), every 1
+  station        ground  surface  water  top  standing            step
+  (   30,  -109)                                                    void
+  (   30,  -108)                                                    void
+  (   30,  -107)                                                    void
+  (   30,  -106)                                                    void
+  (   30,  -105)                                                    void
+  (   30,  -104)                                                    void
+  (   30,  -103)                                                    void
+  (   30,  -102)                                                    void
+  (   30,  -101)                                                    void
+  (   30,  -100)      14       14           14                      
+  (   30,   -99)      14       14           28  tree tree-e1        
+  (   30,   -98)      14       14           29  tree tree-e1        
+  (   30,   -97)      14       14           28  tree tree-e1        
+  (   30,   -96)      14       14           34  tree tree-e1        
+  (   30,   -95)      14       14           38  tree tree-e1        
+  (   30,   -94)      14       14           39  tree tree-e1        
+  (   30,   -93)      14       14           39  tree tree-e1        
+  (   30,   -92)      14       14           32  tree tree-e1        
+  (   30,   -91)      14       14           31  tree tree-e1        
+  (   30,   -90)      14       14           36  tree tree-e1        
+  (   30,   -89)      14       14           35  tree tree-e1        
+  (   30,   -88)      14       14           25  tree tree-e1        
+  (   30,   -87)      14       14           14                      
+  (   30,   -86)      14       14           14                      
+  (   30,   -85)      10       10           10                      DROP -4
+rises 0, falls 1, worst step 4: 0 barrier, 0 scramble, 1 drop — DROP -4 at (30, -85) | walked end to end
+beside: tree tree-e1 at (31, -100), boulder rock-h1 at (29, -99)
