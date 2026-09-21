@@ -1,0 +1,61 @@
+## red-beacon-1 (destroyable) along x
+TRANSECT 25 stations from (49, -1) to (73, -1), every 1
+  station        ground  surface  water  top  standing            step
+  (   49,    -1)      11       11           11                      
+  (   50,    -1)      11       11           11                      
+  (   51,    -1)      11       11           11                      
+  (   52,    -1)      11       11           11                      
+  (   53,    -1)      11       11           11                      
+  (   54,    -1)      11       11           12  flora fell-cover#1  
+  (   55,    -1)      11       11           12  flora fell-cover#1  
+  (   56,    -1)      11       11           12  flora fell-cover#1  
+  (   57,    -1)      11       11           12  flora fell-cover#1  
+  (   58,    -1)      11       11           11                      
+  (   59,    -1)      11       11           11  destroyable red-beacon#1  
+  (   60,    -1)      11       11           52  stroke fell-road#1  
+  (   61,    -1)      11       11           53  stroke fell-road#1  
+  (   62,    -1)      11       11           52  stroke fell-road#1  
+  (   63,    -1)      11       11           11  stroke fell-road#1  
+  (   64,    -1)      11       11           11  stroke fell-road#1  
+  (   65,    -1)      11       11           11  stroke fell-road#1  
+  (   66,    -1)      11       11           11  stroke fell-road#1  
+  (   67,    -1)      11       11           11  stroke fell-road#1  
+  (   68,    -1)      11       11           11  stroke fell-road#1  
+  (   69,    -1)      11       11           11  stroke fell-road#1  
+  (   70,    -1)      11       11           11  stroke fell-road#1  
+  (   71,    -1)      11       11           11  stroke fell-road#1  
+  (   72,    -1)      11       11           11  stroke fell-road#1  
+  (   73,    -1)      11       11           11  stroke fell-road#1  
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora fell-cover#1 at (53, -3), destroyable red-beacon#1 at (59, -3), stroke fell-road#1 at (60, -1)
+
+## red-beacon-1 (destroyable) along z
+TRANSECT 25 stations from (61, -13) to (61, 11), every 1
+  station        ground  surface  water  top  standing            step
+  (   61,   -13)      11       11           11                      
+  (   61,   -12)      11       11           11                      
+  (   61,   -11)      11       11           11                      
+  (   61,   -10)      11       11           11                      
+  (   61,    -9)      11       11           11                      
+  (   61,    -8)      11       11           11                      
+  (   61,    -7)      11       11           11                      
+  (   61,    -6)      11       11           11                      
+  (   61,    -5)      11       11           11                      
+  (   61,    -4)      11       11           11                      
+  (   61,    -3)      11       11           11  destroyable red-beacon#1  
+  (   61,    -2)      11       11           52  stroke fell-road#1  
+  (   61,    -1)      11       11           53  stroke fell-road#1  
+  (   61,     0)      11       11           52  stroke fell-road#1  
+  (   61,     1)      11       11           11  stroke fell-road#1  
+  (   61,     2)      11       11           11                      
+  (   61,     3)      11       11           11                      
+  (   61,     4)      11       11           11                      
+  (   61,     5)      11       11           11                      
+  (   61,     6)      11       11           11                      
+  (   61,     7)      11       11           11                      
+  (   61,     8)      11       11           11                      
+  (   61,     9)      11       11           11                      
+  (   61,    10)      11       11           11                      
+  (   61,    11)      11       11           11                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable red-beacon#1 at (59, -3), stroke fell-road#1 at (61, -2)

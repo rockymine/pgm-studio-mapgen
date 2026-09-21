@@ -1,0 +1,307 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 8,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "red-spawn",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -110,
+    "y": 11,
+    "z": 2
+   },
+   "protection": [
+    {
+     "minX": -120,
+     "minZ": -12,
+     "maxX": -100,
+     "maxZ": 16
+    }
+   ],
+   "yaw": 270,
+   "doors": [
+    "+x"
+   ],
+   "footprint": {
+    "minX": -118,
+    "minZ": -8,
+    "maxX": -102,
+    "maxZ": 12
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "red-spawn",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 110,
+    "y": 11,
+    "z": -2
+   },
+   "protection": [
+    {
+     "minX": 100,
+     "minZ": -16,
+     "maxX": 120,
+     "maxZ": 12
+    }
+   ],
+   "yaw": 90,
+   "doors": [
+    "-x"
+   ],
+   "footprint": {
+    "minX": 102,
+    "minZ": -12,
+    "maxX": 118,
+    "maxZ": 8
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 26,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -16,
+    "minZ": -32,
+    "maxX": 16,
+    "maxZ": 32
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "red-wool",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "protection": [
+    {
+     "minX": -96,
+     "minZ": 48,
+     "maxX": -76,
+     "maxZ": 72
+    }
+   ],
+   "spawn": {
+    "x": -86,
+    "y": 11,
+    "z": 60
+   },
+   "monuments": [],
+   "footprint": {
+    "minX": -94,
+    "minZ": 50,
+    "maxX": -78,
+    "maxZ": 70
+   },
+   "entries": [
+    {
+     "minX": -96,
+     "minZ": 48,
+     "maxX": -76,
+     "maxZ": 48
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "red-wool",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "protection": [
+    {
+     "minX": 76,
+     "minZ": -72,
+     "maxX": 96,
+     "maxZ": -48
+    }
+   ],
+   "spawn": {
+    "x": 86,
+    "y": 11,
+    "z": -60
+   },
+   "monuments": [],
+   "footprint": {
+    "minX": 78,
+    "minZ": -70,
+    "maxX": 94,
+    "maxZ": -50
+   },
+   "entries": [
+    {
+     "minX": 76,
+     "minZ": -48,
+     "maxX": 96,
+     "maxZ": -48
+    }
+   ]
+  }
+ ],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "red-beacon",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Highgarth Beacon",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -62,
+    "y": 11,
+    "z": 0
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "red-beacon",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Highgarth Beacon",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 61,
+    "y": 11,
+    "z": -1
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "ctw",
+  "dtm"
+ ],
+ "meta": {
+  "name": "Highgarth Fell",
+  "created": "2026-09-21",
+  "authors": [
+   {
+    "name": "Sonnet 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": {
+  "layer": null,
+  "redstoneLines": [
+   {
+    "x1": -96,
+    "z1": 48,
+    "x2": -77,
+    "z2": 48,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "x1": 76,
+    "z1": -49,
+    "x2": 95,
+    "z2": -49,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1
+    }
+   }
+  ],
+  "ironCubes": [],
+  "walls": [
+   {
+    "minX": -96,
+    "minZ": 31,
+    "maxX": -76,
+    "maxZ": 33,
+    "topY": 13,
+    "chestOnMinFace": true,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "minX": 76,
+    "minZ": -33,
+    "maxX": 96,
+    "maxZ": -31,
+    "topY": 13,
+    "chestOnMinFace": false,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 1
+    }
+   }
+  ],
+  "isEmpty": false
+ }
+}

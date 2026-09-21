@@ -179,7 +179,7 @@ finish = {
             {"kind": "tree", "id": "windbent-2", "x": -35, "z": 20, "style": "windbent", "routeStandoff": 3},
             {"kind": "boulder", "id": "fellrock-1", "x": -25, "z": -18, "style": "fell-rock", "routeStandoff": 2},
             {"kind": "boulder", "id": "fellrock-2", "x": -25, "z": 18, "style": "fell-rock", "routeStandoff": 2},
-            {"kind": "boulder", "id": "fellrock-3", "x": -95, "z": -8, "style": "fell-rock", "routeStandoff": 2},
+            {"kind": "boulder", "id": "fellrock-3", "x": -70, "z": -24, "style": "fell-rock", "routeStandoff": 2},
         ],
     },
 }

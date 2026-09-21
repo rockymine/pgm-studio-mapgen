@@ -1,0 +1,85 @@
+## spawn-red (spawn) along x
+TRANSECT 29 stations from (-120, 2) to (-92, 2), every 1
+  station        ground  surface  water  top  standing            step
+  ( -120,     2)      11       11           11                      
+  ( -119,     2)      11       11           18                      
+  ( -118,     2)      11       11           19  spawn red-spawn     
+  ( -117,     2)      11       11           20  spawn red-spawn     
+  ( -116,     2)      11       11           21  spawn red-spawn     
+  ( -115,     2)      11       11           22  spawn red-spawn     
+  ( -114,     2)      11       11           23  spawn red-spawn     
+  ( -113,     2)      11       11           24  spawn red-spawn     
+  ( -112,     2)      11       11           25  stroke fell-road    
+  ( -111,     2)      11       11           26  spawn red-spawn     
+  ( -110,     2)      11       11           26  spawn red-spawn     
+  ( -109,     2)      11       11           25  stroke fell-road    
+  ( -108,     2)      11       11           24  stroke fell-road    
+  ( -107,     2)      11       11           23  stroke fell-road    
+  ( -106,     2)      11       11           22  stroke fell-road    
+  ( -105,     2)      11       11           21  stroke fell-road    
+  ( -104,     2)      11       11           20  stroke fell-road    
+  ( -103,     2)      11       11           19  stroke fell-road    
+  ( -102,     2)      11       11           18  stroke fell-road    
+  ( -101,     2)      11       11           11  stroke fell-road    
+  ( -100,     2)      11       11           11  stroke fell-road    
+  (  -99,     2)      11       11           11  stroke fell-road    
+  (  -98,     2)      11       11           11  stroke fell-road    
+  (  -97,     2)      11       11           11  stroke fell-road    
+  (  -96,     2)      11       11           11  stroke fell-road    
+  (  -95,     2)      11       11           11  stroke fell-road    
+  (  -94,     2)      11       11           11  stroke fell-road    
+  (  -93,     2)      11       11           11  stroke fell-road    
+  (  -92,     2)      11       11           11  stroke fell-road    
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn red-spawn at (-118, 0), stroke fell-road at (-112, 1)
+
+## spawn-red (spawn) along z
+TRANSECT 45 stations from (-110, -20) to (-110, 24), every 1
+  station        ground  surface  water  top  standing            step
+  ( -110,   -20)                                                    void
+  ( -110,   -19)                                                    void
+  ( -110,   -18)                                                    void
+  ( -110,   -17)                                                    void
+  ( -110,   -16)                                                    void
+  ( -110,   -15)                                                    void
+  ( -110,   -14)                                                    void
+  ( -110,   -13)                                                    void
+  ( -110,   -12)      11       11           11                      
+  ( -110,   -11)      11       11           11                      
+  ( -110,   -10)      11       11           11                      
+  ( -110,    -9)      11       11           26                      
+  ( -110,    -8)      11       11           26  spawn red-spawn     
+  ( -110,    -7)      11       11           26  spawn red-spawn     
+  ( -110,    -6)      11       11           26  spawn red-spawn     
+  ( -110,    -5)      11       11           26  spawn red-spawn     
+  ( -110,    -4)      11       11           26  spawn red-spawn     
+  ( -110,    -3)      11       11           26  spawn red-spawn     
+  ( -110,    -2)      11       11           26  spawn red-spawn     
+  ( -110,    -1)      11       11           26  spawn red-spawn     
+  ( -110,     0)      11       11           26  stroke fell-road    
+  ( -110,     1)      11       11           26  spawn red-spawn     
+  ( -110,     2)      11       11           26  spawn red-spawn     
+  ( -110,     3)      11       11           26  stroke fell-road    
+  ( -110,     4)      11       11           26  spawn red-spawn     
+  ( -110,     5)      11       11           26  spawn red-spawn     
+  ( -110,     6)      11       11           26  spawn red-spawn     
+  ( -110,     7)      11       11           26  spawn red-spawn     
+  ( -110,     8)      11       11           26  spawn red-spawn     
+  ( -110,     9)      11       11           26  spawn red-spawn     
+  ( -110,    10)      11       11           26  spawn red-spawn     
+  ( -110,    11)      11       11           26  spawn red-spawn     
+  ( -110,    12)      11       11           26                      
+  ( -110,    13)      11       11           11                      
+  ( -110,    14)      11       11           11                      
+  ( -110,    15)      11       11           11                      
+  ( -110,    16)                                                    void
+  ( -110,    17)                                                    void
+  ( -110,    18)                                                    void
+  ( -110,    19)                                                    void
+  ( -110,    20)                                                    void
+  ( -110,    21)                                                    void
+  ( -110,    22)                                                    void
+  ( -110,    23)                                                    void
+  ( -110,    24)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn red-spawn at (-112, -8), stroke fell-road at (-111, 0)

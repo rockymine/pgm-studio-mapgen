@@ -15,21 +15,22 @@
    "id": "hill",
    "role": "piece",
    "rect": [
-    -5,
     -4,
-    10,
+    -4,
+    8,
     8
    ],
-   "surface": 20
+   "surface": 26,
+   "mirrors": false
   },
   {
    "id": "wool-high",
    "role": "piece",
    "rect": [
-    8,
-    -10,
+    6,
+    -8,
     4,
-    3
+    4
    ],
    "surface": 26
   },
@@ -38,25 +39,39 @@
    "role": "spawn",
    "rect": [
     -8,
-    14,
     16,
-    4
+    16,
+    3
    ],
-   "surface": 20
-  }
- ],
- "zones": [
+   "surface": 20,
+   "mirrors": false
+  },
   {
-   "id": "main",
+   "id": "lane-a",
+   "role": "piece",
    "rect": [
     -12,
-    -10,
-    28,
-    28
+    -4,
+    6,
+    8
    ],
-   "kind": "build"
+   "surface": 20,
+   "mirrors": false
+  },
+  {
+   "id": "lane-b",
+   "role": "piece",
+   "rect": [
+    6,
+    -4,
+    6,
+    8
+   ],
+   "surface": 20,
+   "mirrors": false
   }
  ],
+ "zones": [],
  "placements": {
   "spawns": [
    {
@@ -64,14 +79,14 @@
     "piece": "spawn-zone",
     "at": [
      40,
-     8
+     6
     ],
     "facing": "front",
     "footprint": [
      8,
-     4,
+     3,
      16,
-     10
+     9
     ]
    }
   ],
@@ -80,16 +95,16 @@
     "id": "iron-1",
     "piece": "spawn-zone",
     "at": [
-     4,
-     8
+     10,
+     5
     ]
    },
    {
     "id": "iron-2",
     "piece": "spawn-zone",
     "at": [
-     28,
-     8
+     30,
+     5
     ]
    }
   ],

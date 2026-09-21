@@ -1,0 +1,83 @@
+## frozen-tarn (water) along x
+TRANSECT 32 stations from (-25, 20) to (6, 20), every 1
+  station        ground  surface  water  top  standing            step
+  (  -25,    20)                                                    void
+  (  -24,    20)       9        9            9                      
+  (  -23,    20)       9        9            9                      
+  (  -22,    20)       9        9            9  water frozen-tarn   
+  (  -21,    20)       9        9            9  water frozen-tarn   
+  (  -20,    20)       9        9            9  stroke haul-road    
+  (  -19,    20)       9        9            9  stroke haul-road    
+  (  -18,    20)       9        9      8     9  stroke haul-road    
+  (  -17,    20)       9        9      8     9  stroke haul-road    
+  (  -16,    20)       9        9      9     9  water frozen-tarn   
+  (  -15,    20)       9        9      9     9  water frozen-tarn   
+  (  -14,    20)       9        9      9     9  water frozen-tarn   
+  (  -13,    20)       9        9      9     9  water frozen-tarn   
+  (  -12,    20)       9        9      9     9  water frozen-tarn   
+  (  -11,    20)       9        9      9     9  water frozen-tarn   
+  (  -10,    20)       9        9      9     9  water frozen-tarn   
+  (   -9,    20)       9        9      9     9  water frozen-tarn   
+  (   -8,    20)       9        9      9     9  water frozen-tarn   
+  (   -7,    20)       9        9            9  water frozen-tarn   
+  (   -6,    20)       9        9            9  water frozen-tarn   
+  (   -5,    20)       9        9            9  water frozen-tarn   
+  (   -4,    20)       9        9            9                      
+  (   -3,    20)       9        9           17  house tarn-store    
+  (   -2,    20)       9        9           17  house tarn-store    
+  (   -1,    20)       9        9           17  house tarn-store    
+  (    0,    20)       9        9           17  house tarn-store    
+  (    1,    20)       9        9           17  house tarn-store    
+  (    2,    20)       9        9           17  house tarn-store    
+  (    3,    20)       9        9           17  house tarn-store    
+  (    4,    20)       9        9           17  house tarn-store    
+  (    5,    20)       9        9           17  house tarn-store    
+  (    6,    20)       9        9           17  house tarn-store    
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water frozen-tarn at (-23, 22), stroke haul-road at (-20, 18), house tarn-store at (-3, 18)
+
+## frozen-tarn (water) along z
+TRANSECT 40 stations from (-13, 1) to (-13, 40), every 1
+  station        ground  surface  water  top  standing            step
+  (  -13,     1)                                                    void
+  (  -13,     2)                                                    void
+  (  -13,     3)                                                    void
+  (  -13,     4)                                                    void
+  (  -13,     5)                                                    void
+  (  -13,     6)                                                    void
+  (  -13,     7)                                                    void
+  (  -13,     8)       9        9            9                      
+  (  -13,     9)       9        9            9                      
+  (  -13,    10)       9        9            9                      
+  (  -13,    11)       9        9            9  water frozen-tarn   
+  (  -13,    12)       9        9            9  water frozen-tarn   
+  (  -13,    13)       9        9            9  water frozen-tarn   
+  (  -13,    14)       9        9      9     9  water frozen-tarn   
+  (  -13,    15)       9        9      9     9  water frozen-tarn   
+  (  -13,    16)       9        9      9     9  water frozen-tarn   
+  (  -13,    17)       9        9      9     9  water frozen-tarn   
+  (  -13,    18)       9        9      9     9  water frozen-tarn   
+  (  -13,    19)       9        9      9     9  water frozen-tarn   
+  (  -13,    20)       9        9      9     9  water frozen-tarn   
+  (  -13,    21)       9        9      9     9  water frozen-tarn   
+  (  -13,    22)       9        9      9     9  water frozen-tarn   
+  (  -13,    23)       9        9      9     9  water frozen-tarn   
+  (  -13,    24)       9        9      9     9  water frozen-tarn   
+  (  -13,    25)       9        9      9     9  water frozen-tarn   
+  (  -13,    26)       9        9      9     9  water frozen-tarn   
+  (  -13,    27)       9        9            9  water frozen-tarn   
+  (  -13,    28)       9        9            9  water frozen-tarn   
+  (  -13,    29)      10       10           10  water frozen-tarn   +1
+  (  -13,    30)      12       12           12  water frozen-tarn   scramble +2
+  (  -13,    31)      13       13           13                      +1
+  (  -13,    32)      14       14           14                      +1
+  (  -13,    33)      15       15           15                      +1
+  (  -13,    34)      16       16           16                      +1
+  (  -13,    35)      17       17           17                      +1
+  (  -13,    36)      17       17           17  stroke haul-road    
+  (  -13,    37)      17       17           17  stroke haul-road    
+  (  -13,    38)      17       17           17  stroke haul-road    
+  (  -13,    39)      17       17           17                      
+  (  -13,    40)      17       17           17                      
+rises 7, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-13, 30) | walked end to end
+beside: stroke haul-road at (-15, 8), water frozen-tarn at (-13, 11)

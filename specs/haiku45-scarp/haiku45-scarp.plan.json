@@ -7,109 +7,79 @@
   "cell": 5,
   "symmetry": "rot_180",
   "maxPlayers": 16,
-  "surface": 12,
+  "surface": 32,
   "observerY": 48
  },
  "pieces": [
   {
+   "id": "spawn-a",
+   "role": "spawn",
+   "rect": [
+    -12,
+    -10,
+    8,
+    4
+   ],
+   "surface": 32,
+   "mirrors": false
+  },
+  {
    "id": "hill",
    "role": "piece",
    "rect": [
-    -3,
+    -4,
+    -2,
+    8,
+    4
+   ],
+   "surface": 40,
+   "mirrors": false
+  },
+  {
+   "id": "lane-a",
+   "role": "piece",
+   "rect": [
+    -12,
     -2,
     6,
     4
    ],
-   "surface": 17,
+   "surface": 32,
    "mirrors": false
   },
   {
-   "id": "pasture",
+   "id": "lane-b",
    "role": "piece",
    "rect": [
-    -11,
     4,
-    14,
+    -2,
+    6,
     4
    ],
-   "surface": 12
+   "surface": 32,
+   "mirrors": false
   },
   {
-   "id": "platform",
+   "id": "neutral",
    "role": "piece",
    "rect": [
-    -11,
-    8,
-    10,
-    6
-   ],
-   "surface": 17
-  },
-  {
-   "id": "lane",
-   "role": "piece",
-   "rect": [
-    -1,
-    8,
-    4,
-    6
-   ],
-   "surface": 12
-  },
-  {
-   "id": "spawn-area",
-   "role": "spawn",
-   "rect": [
-    -11,
-    14,
-    4,
-    3
-   ],
-   "surface": 12
-  },
-  {
-   "id": "spawn-center",
-   "role": "piece",
-   "rect": [
-    -7,
-    14,
+    -8,
     6,
-    3
+    16,
+    4
    ],
-   "surface": 12
-  },
-  {
-   "id": "dressing",
-   "role": "piece",
-   "rect": [
-    -1,
-    14,
-    4,
-    3
-   ],
-   "surface": 12
+   "surface": 32
   }
  ],
- "zones": [
-  {
-   "id": "pass",
-   "rect": [
-    -11,
-    -4,
-    22,
-    8
-   ],
-   "kind": "build"
-  }
- ],
+ "zones": [],
  "placements": {
   "spawns": [
    {
     "id": "spawn-1",
-    "piece": "spawn-center",
+    "piece": "spawn-a",
     "at": [
      15,
-     8
+     10
     ],
     "facing": "front",
     "footprint": [
@@ -123,33 +93,32 @@
   "iron": [
    {
     "id": "iron-1",
-    "piece": "spawn-center",
+    "piece": "spawn-a",
     "at": [
-     2,
-     7
+     8,
+     6
     ]
    },
    {
     "id": "iron-2",
-    "piece": "spawn-center",
+    "piece": "spawn-a",
     "at": [
-     28,
-     7
+     18,
+     6
     ]
    }
   ],
   "destroyables": [
    {
     "id": "monument",
-    "piece": "hill",
+    "piece": "",
     "at": [
      0,
      0
     ],
     "style": "pillar-3",
     "materials": "obsidian",
-    "float": 5,
-    "leak": 4,
+    "float": 4,
     "name": "The Scarp"
    }
   ],

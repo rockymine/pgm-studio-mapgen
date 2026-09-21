@@ -1,0 +1,60 @@
+## core-0 (core) along x
+TRANSECT 24 stations from (-25, 48) to (-2, 48), every 1
+  station        ground  surface  water  top  standing            step
+  (  -25,    48)                                                    void
+  (  -24,    48)      17       17           17                      
+  (  -23,    48)      17       20           20  storey              BARRIER +3
+  (  -22,    48)      17       20           20  storey              
+  (  -21,    48)      17       17           17                      -3
+  (  -20,    48)      17       17           17                      
+  (  -19,    48)      17       17           17                      
+  (  -18,    48)      17       17           17                      
+  (  -17,    48)      17       17           17                      
+  (  -16,    48)      17       17           28  core core           
+  (  -15,    48)      17       17     27    66  core core           
+  (  -14,    48)      17       17     27    67  core core           
+  (  -13,    48)      17       17     27    66  core core           
+  (  -12,    48)      17       17           28  core core           
+  (  -11,    48)      17       17           17                      
+  (  -10,    48)      17       17           17                      
+  (   -9,    48)      17       17           17                      
+  (   -8,    48)      17       17           17                      
+  (   -7,    48)      17       17           17                      
+  (   -6,    48)      17       20           20  storey              BARRIER +3
+  (   -5,    48)      17       20           20  storey              
+  (   -4,    48)      17       17           17                      -3
+  (   -3,    48)      17       17           17                      
+  (   -2,    48)      17       17           17                      
+rises 2, falls 2, worst step 3: 2 barrier, 0 scramble, 0 drop — BARRIER +3 at (-23, 48); BARRIER +3 at (-6, 48) | walked end to end
+beside: core core at (-16, 46), stroke fell-track at (-12, 50)
+
+## core-0 (core) along z
+TRANSECT 25 stations from (-14, 36) to (-14, 60), every 1
+  station        ground  surface  water  top  standing            step
+  (  -14,    36)      17       17           17  stroke haul-road    
+  (  -14,    37)      17       17           17  stroke haul-road    
+  (  -14,    38)      17       17           17  stroke haul-road    
+  (  -14,    39)      17       17           17  stroke haul-road    
+  (  -14,    40)      17       17           17                      
+  (  -14,    41)      17       17           17                      
+  (  -14,    42)      17       17           17                      
+  (  -14,    43)      17       17           17                      
+  (  -14,    44)      17       17           17                      
+  (  -14,    45)      17       17           17                      
+  (  -14,    46)      17       17           28  core core           
+  (  -14,    47)      17       17     27    66  core core           
+  (  -14,    48)      17       17     27    67  core core           
+  (  -14,    49)      17       17     27    66  core core           
+  (  -14,    50)      17       17           28  core core           
+  (  -14,    51)      17       17           17                      
+  (  -14,    52)      17       17           17                      
+  (  -14,    53)      17       17           17                      
+  (  -14,    54)      17       17           17                      
+  (  -14,    55)      17       17           17                      
+  (  -14,    56)      17       17           17                      
+  (  -14,    57)      17       17           17                      
+  (  -14,    58)      18       18           18                      +1
+  (  -14,    59)      19       19           19                      +1
+  (  -14,    60)      19       19           19                      
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke haul-road at (-16, 34), core core at (-16, 46), stroke fell-track at (-12, 50), tree pine-2 at (-16, 60)

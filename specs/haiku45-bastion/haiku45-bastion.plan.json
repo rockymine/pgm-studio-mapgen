@@ -7,93 +7,86 @@
   "cell": 5,
   "symmetry": "rot_180",
   "maxPlayers": 16,
-  "surface": 20,
-  "observerY": 48
+  "surface": 22,
+  "observerY": 50
  },
  "pieces": [
   {
    "id": "tower",
    "role": "piece",
    "rect": [
-    -2,
-    -2,
-    4,
-    4
+    -4,
+    -4,
+    8,
+    8
    ],
-   "surface": 20
-  },
-  {
-   "id": "monument-peak",
-   "role": "piece",
-   "rect": [
-    -1,
-    -3,
-    2,
-    1
-   ],
-   "surface": 30
+   "surface": 30,
+   "mirrors": false
   },
   {
    "id": "wool-platform",
    "role": "piece",
    "rect": [
-    4,
-    1,
-    3,
-    3
-   ],
-   "surface": 27
-  },
-  {
-   "id": "rampart-left",
-   "role": "piece",
-   "rect": [
-    -8,
-    -1,
-    3,
+    6,
+    -6,
+    5,
     5
    ],
-   "surface": 22
+   "surface": 27
   },
   {
    "id": "spawn-zone",
    "role": "spawn",
    "rect": [
-    -5,
-    6,
-    10,
+    -10,
+    16,
+    20,
     3
    ],
-   "surface": 20
-  }
- ],
- "zones": [
+   "surface": 22,
+   "mirrors": false
+  },
   {
-   "id": "main",
+   "id": "lane-a",
+   "role": "piece",
    "rect": [
-    -8,
-    -3,
-    16,
-    12
+    -14,
+    -2,
+    8,
+    8
    ],
-   "kind": "build"
+   "surface": 22,
+   "mirrors": false
+  },
+  {
+   "id": "lane-b",
+   "role": "piece",
+   "rect": [
+    6,
+    -2,
+    8,
+    8
+   ],
+   "surface": 22,
+   "mirrors": false
   }
  ],
+ "zones": [],
  "placements": {
   "spawns": [
    {
     "id": "spawn-1",
     "piece": "spawn-zone",
     "at": [
-     25,
+     40,
      6
     ],
     "facing": "front",
     "footprint": [
-     5,
+     8,
      3,
-     10,
-     9
+     20,
+     10
     ]
    }
   ],
@@ -102,23 +95,23 @@
     "id": "iron-1",
     "piece": "spawn-zone",
     "at": [
-     2,
-     6
+     12,
+     5
     ]
    },
    {
     "id": "iron-2",
     "piece": "spawn-zone",
     "at": [
-     18,
-     6
+     32,
+     5
     ]
    }
   ],
   "destroyables": [
    {
     "id": "monument",
-    "piece": "monument-peak",
+    "piece": "",
     "at": [
      0,
      0
@@ -126,17 +119,16 @@
     "style": "pillar-3",
     "materials": "obsidian",
     "float": 2,
-    "leak": 1,
     "name": "The Bastion"
    }
   ],
   "cores": [],
   "wools": [
    {
-    "id": "wool",
+    "id": "wool-team-a",
     "piece": "wool-platform",
     "at": [
-     1,
+     2,
      1
     ]
    }

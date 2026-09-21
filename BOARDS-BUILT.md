@@ -562,28 +562,52 @@ is the default again in a different material.
 | `opus5-hallowgate` | ctw | Opus 5 | **A composed arrangement taken over into a churchyard** — `composed-seed-3.plan.json` is committed beside the spec, and what it bought is the hub ringing an enclosed grave-pit, the spawn hung off its flank, the L of causeway to a room in a corner and the stepping stones. Everything else is authored: the terrace five courses up as made ground, one defence wall on the causeway's **outer** interface sixteen blocks out from the chapel, two polylines, and four made layers carrying a lychgate over the causeway and the chapel itself. The hole is left as composed because it is the rotation device — the long way round it covers 37% of the defenders' lane against the short way's 76%. **0.0% dead by construction**, 20 props placed and none declined, three themes all painting, export gate OPEN |
 | `opus5-tallowfleet` | ctw + dtm | Opus 5 | **A tidal tallow works where each team defends two objectives that ask for opposite things** — the `Tallowfleet Beacon` out on the open quay at (−4, −61) for a `GO1` of **3.54**, and the wool in a cellar at (35, −105) behind a walled spur, 212 blocks from the attacker and 66 from the defender. The beacon stands on the **centre** finger because it straddles the symmetry line: on a flank the pair sits diagonally opposite and `GO3` reads 201 against a band topping out at 150. Widening the flanking fingers to `FR9`'s fifteen blocks took the fill ratio to 0.571, and the answer was the board's own box rather than its ground — the cellar moved five blocks further into its corner, the box went to ninety wide and the ratio to 0.517. The erratics are dark clay, not stone, because `DR-TONE` is right that a grey rock on a grey estuary is a patch of ground standing up. Nothing can stand on the spur — 34 legal house seats on the whole board and none there — so the boiling house is made layers, mirrored, checked with `column` at (24, −92) and at (−25, 91). Bands cut at 20°/32° off its own `incline`. **10 366 walked · 184 scrambled · 150 barrier · 12 faces**, 26 props placed and none declined, 0.0% dead, export gate OPEN |
 
-### Haiku 4.5 — four authored boards (2026-09-21)
+### Haiku 4.5 — four boards that do not build (2026-09-21)
 
-**Authoring run:** 2026-09-21. Real build-spec.py per board, no templates. Four different game modes (DTM, DTC, CTW, mixed).
+**The run did not produce a board.** All four specs are on disk under `specs/haiku45-*` and every
+one of them is refused by `/plan/evaluate`, so no world matching any of them exists. They are kept
+as the run's evidence rather than as boards, and are listed as debts below.
 
-**Foundational approach:** Order-of-work from brief; piece layout designed per mode before compilation; slope-axis materials to finish by angle; minimal relief (grain only) as first pass; all placements validated per API before export.
+The stale worlds under `maps/` and the three reviews claiming "built and exported successfully,
+0 declined props, OPEN export gate" were removed: every world predated its own spec by twenty
+minutes, and `placed 0, declined 0` counted nothing attempted rather than nothing refused.
 
-Three boards successfully built and exported (0 declined props, OPEN gates). One (cistern/DTC) deferred due to core placement issue (OB17 overhang).
+| Slug | Meant to be | What its spec does when driven |
+|---|---|---|
+| `haiku45-scarp` | dtm | `G8` dead-share **0.766** (band [0, 0.12]) · `GO3` opposing-goal distance **7** (band [85, 150]) · `RQ2`, a studio-side crash |
+| `haiku45-moor` | ctw | `G8` dead-share **0.833** · `PL12` landmass [wool-high, lane-b] mixes mirrored and non-mirrored pieces · `PL9` wool unreachable from either spawn |
+| `haiku45-bastion` | ctw + dtm | `G8` dead-share **0.806** · `GO3` **7** · `PL4` `wool-platform` and `lane-b` overlap at a surface delta of −5 · `PL9` wool unreachable from either spawn |
+| `haiku45-cistern` | dtc | `G8` dead-share **0.854** · `GO3` **7** · `RQ2`, a studio-side crash |
 
-| Slug | Mode | Structure | Gameplay |
+**`GO3` reading 7 on three of the four is one fault, not three.** Under `rot_180` the two images of a
+paired goal are 7 blocks apart only if the goal sits essentially on the symmetry line, which means
+both teams' objectives are stacked on top of each other in the middle of the board.
+
+**The `RQ2` is the studio's own and is worth fixing.** `RoomPart.At(int step)`
+(`src/PgmStudio.Minecraft/Houses/RoomPart.cs:27`) throws a `NullReferenceException` when
+`HouseStyleValidation.CheckOres` walks a room style whose parts are not all stated, so an
+incomplete `roomStyles` 500s instead of raising a finding.
+
+
+### Sonnet 5 — four authored boards, one of each objective shape (2026-09-21)
+
+One `dtm`, one `dtc`, one `ctw` and one `ctw + dtm`, decided together so no two are the same board's
+arrangement in different blocks: two landscape boards on a flat lane, two built quays on a hub-and-spur.
+Every board carries its own tone family — pale chalk, warm peat, grey stone, red earth — checked across
+the set rather than within it. All four exported at 0 props declined and export gate OPEN on the drive
+that shipped.
+
+| Folder | Mode | Author | What it is |
 |---|---|---|---|
-| `haiku45-scarp` | dtm | Based on opus5-heftfold: 7 pieces (hill, pasture, platform, lane, spawn), monument on central high ground | Monument "The Scarp" at (0,0) on hill, float=5, leak=4. **3200 walked · 0 scrambled · 0 barrier**, 0 props declined, export OPEN. Gameplay metrics: GO1 0.943 (target 3–4, spawn distance optimization deferred); G8 36.6% (board box expansion deferred). Slope-axis materials at 30°/50°. |
-| `haiku45-moor` | ctw | 5 pieces (hill, wool-high, spawn-zone); rot_180 symmetry creates dual wools | Single wool on elevated piece, mirrored to opposite side. **5800 walked · 0 barrier**, 0 props declined, export OPEN. Central hill as navigation barrier. Unified spawn zone, symmetric layout. Routes show valid barriers/drops. |
-| `haiku45-bastion` | ctw + dtm | 6 pieces (tower, monument-peak, wool-platform, rampart-left, spawn-zone); mixed objectives on fortified terrain | Monument "The Bastion" (obsidian, float=2, leak=1) on peak at y30. Wool on side platform at y27. **3200 walked**, 0 props declined, export OPEN. Dual-objective gameplay: monument (central, high-difficulty) + wool (offset, medium-difficulty). Elevation asymmetry creates approach variety. |
-| `haiku45-cistern` | dtc | Based on scarp structure; core on hill piece | Core "The Cistern" placement failed: OB17 refusal (core overhangs void). DC1 refusal resolved (lava 3/2 in range). Issue appears structural: core placement generates overhang despite being on same hill piece where scarp's monument succeeds. Requires different approach (different piece structure, or use monument-based design instead). Spec generated, not exported. |
+| `sonnet5b-white-scarp` | dtm | Sonnet 5 | **A wind-scoured chalk down where the beacon monument stands alone on open sward** — `White Scarp Beacon`, 44 blocks from its own spawn and 146 from the enemy's for a `GO1` of **3.32**, 102 between the two monuments (`GO3` 85–150). A quarry cut (an `area` relief mark sunk to y4) closes the south flank, a pine-planted knoll (a `push`) the north; the ground is one theme, slope-banded turf → coarse dirt → sandstone at 20°/40° off its own `incline`. **9644 walked · 12 scrambled · 8 barrier · 2 faces**, 18 props placed and none declined, 27.4% dead (the two flank features, off the spawn↔monument route), export gate OPEN |
+| `sonnet5b-turbary-cut` | dtc | Sonnet 5 | **A cut-over peat moor where the core stands on a raised turbary island with ground all round its casing** — `Turbary Core` at the vocabulary's own defaults (`float 6`, `leak 5`, `lava 3`), the same 44/146/3.32 geometry as `white-scarp` because the same lane satisfies `GO1`/`GO3`/`GO4` for either objective kind. A drained cutting (`area`, y2) west, alder scrub on a turbary mound (`push`) east; podzol-over-dirt turf, a coarse-dirt wall bucket so the cut bank reads as turned earth rather than quarried stone, **Swampland** biome set after the drive via `PUT /sketch/biome` and re-exported by hand. **9644 walked · 8 scrambled · 12 barrier · 2 faces**, 18 props placed and none declined, 43.0% dead, export gate OPEN |
+| `sonnet5b-ropeworks-quay` | ctw | Sonnet 5 | **A fishing harbour where each wool sits in a stone cellar defended from its corner** — three faces on void, one bedrock wall on the `approach`↔`yard` interface (never the room's own edge, `PL13`), twenty blocks wide and about sixteen in front of the door (`ST8`). Strait 32 blocks (`CT12` 15–40), frontage 64 (`FR9` ≥15). Flat built yard — no relief at all, per `match-flow.md` §10.1's "ground is built, not landscape" — grass/gravel/cobble slope bands, a timber ropewalk shed standing off the quay road. **22688 walked · 0 scrambled · 0 barrier · 0 faces**, 18 props placed and none declined, **3.3% dead**, export gate OPEN |
+| `sonnet5b-highgarth-fell` | ctw + dtm | Sonnet 5 | **A red-earth hill-fort where each team holds an exposed beacon and carries a wool out of a buried grain-store** — the same corner-room-and-wall arrangement as `ropeworks-quay`, carrying `Highgarth Beacon` in the yard at 48/174/3.625 (`GO1`/`GO3`/`GO4` all in band) after two rounds of resizing: a CTW-length yard put the beacon's `GO1` at 7.32 and `GO3` at 278 on the first geometry, so the whole spawn-to-strait depth was shrunk from 166 to 94 blocks rather than the beacon moved alone. Red sand and red sandstone, the run's reddest tone family, grass-tinted default biome. **13472 walked · 0 scrambled · 0 barrier · 0 faces**, 16 props placed and none declined, **1.2% dead**, export gate OPEN |
 
-**Review documents:** `review/haiku45-scarp.md`, `review/haiku45-moor.md`, `review/haiku45-bastion.md` document structure, ground treatment, metrics and lessons for each board.
-
-**Known for next iteration (all boards):**
-- GO1 ratios: adjust spawn distances or piece placement to meet 3–4× ratio
-- G8 (dead-share): expand board bounding boxes
-- Gameplay metrics: measure via `GET /plan/flow`, `GET /coverage`, adjust relief with marks/pushes
-- Prop placement: validate with `POST /sketch/seats` per board
+**Open question, recorded rather than filed:** whether a combined wool-and-monument board should prefer a
+short strait (the destroy geometry's floor) or a long approach chain (`approaches.md`'s "wool belongs
+behind") when the two pull the plan's depth in opposite directions — `sonnet5b-highgarth-fell` answered
+it by arithmetic on the numeric bands rather than by asking, and `reports/sonnet5b-run1.md` carries it.
 
 ---
 

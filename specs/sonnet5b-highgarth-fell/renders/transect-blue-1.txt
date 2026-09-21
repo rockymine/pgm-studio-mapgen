@@ -1,0 +1,61 @@
+## blue-1 (wool) along x
+TRANSECT 25 stations from (74, -60) to (98, -60), every 1
+  station        ground  surface  water  top  standing            step
+  (   74,   -60)                                                    void
+  (   75,   -60)                                                    void
+  (   76,   -60)      11       11           11                      
+  (   77,   -60)      11       11           18                      
+  (   78,   -60)      11       11           19  wool red-wool#1     
+  (   79,   -60)      11       11           20  wool red-wool#1     
+  (   80,   -60)      11       11           21  wool red-wool#1     
+  (   81,   -60)      11       11           22  wool red-wool#1     
+  (   82,   -60)      11       11           23  wool red-wool#1     
+  (   83,   -60)      11       11           24  wool red-wool#1     
+  (   84,   -60)      11       11           25  stroke store-path#1  
+  (   85,   -60)      11       11           53  wool red-wool#1     
+  (   86,   -60)      11       11           53  wool red-wool#1     
+  (   87,   -60)      11       11           53  stroke store-path#1  
+  (   88,   -60)      11       11           24  wool red-wool#1     
+  (   89,   -60)      11       11           23  wool red-wool#1     
+  (   90,   -60)      11       11           22  wool red-wool#1     
+  (   91,   -60)      11       11           21  wool red-wool#1     
+  (   92,   -60)      11       11           20  wool red-wool#1     
+  (   93,   -60)      11       11           19  wool red-wool#1     
+  (   94,   -60)      11       11           18                      
+  (   95,   -60)      11       11           11                      
+  (   96,   -60)                                                    void
+  (   97,   -60)                                                    void
+  (   98,   -60)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool red-wool#1 at (78, -62), stroke store-path#1 at (84, -62)
+
+## blue-1 (wool) along z
+TRANSECT 25 stations from (86, -72) to (86, -48), every 1
+  station        ground  surface  water  top  standing            step
+  (   86,   -72)      11       11           11                      
+  (   86,   -71)      11       11           18                      
+  (   86,   -70)      11       11           19  stroke store-path#1  
+  (   86,   -69)      11       11           20  stroke store-path#1  
+  (   86,   -68)      11       11           21  stroke store-path#1  
+  (   86,   -67)      11       11           22  wool red-wool#1     
+  (   86,   -66)      11       11           23  stroke store-path#1  
+  (   86,   -65)      11       11           24  stroke store-path#1  
+  (   86,   -64)      11       11           25  wool red-wool#1     
+  (   86,   -63)      11       11           26  wool red-wool#1     
+  (   86,   -62)      11       11           26  stroke store-path#1  
+  (   86,   -61)      11       11           53  wool red-wool#1     
+  (   86,   -60)      11       11           53  wool red-wool#1     
+  (   86,   -59)      11       11           53  stroke store-path#1  
+  (   86,   -58)      11       11           26  stroke store-path#1  
+  (   86,   -57)      11       11           25  stroke store-path#1  
+  (   86,   -56)      11       11           24  stroke store-path#1  
+  (   86,   -55)      11       11           23  stroke store-path#1  
+  (   86,   -54)      11       11           22  stroke store-path#1  
+  (   86,   -53)      11       11           21  wool red-wool#1     
+  (   86,   -52)      11       11           20  stroke store-path#1  
+  (   86,   -51)      11       11           19  wool red-wool#1     
+  (   86,   -50)      11       11           18                      
+  (   86,   -49)      11       11           12  redstoneline 0#1    
+  (   86,   -48)      11       11           11                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool red-wool#1 at (84, -70), stroke store-path#1 at (85, -70), redstoneline 0#1 at (84, -49)

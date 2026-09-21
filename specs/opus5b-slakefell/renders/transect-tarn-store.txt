@@ -1,0 +1,58 @@
+## tarn-store (house) along x
+TRANSECT 25 stations from (-10, 20) to (14, 20), every 1
+  station        ground  surface  water  top  standing            step
+  (  -10,    20)       9        9      9     9  water frozen-tarn   
+  (   -9,    20)       9        9      9     9  water frozen-tarn   
+  (   -8,    20)       9        9      9     9  water frozen-tarn   
+  (   -7,    20)       9        9            9  water frozen-tarn   
+  (   -6,    20)       9        9            9  water frozen-tarn   
+  (   -5,    20)       9        9            9  water frozen-tarn   
+  (   -4,    20)       9        9            9                      
+  (   -3,    20)       9        9           17  house tarn-store    
+  (   -2,    20)       9        9           17  house tarn-store    
+  (   -1,    20)       9        9           17  house tarn-store    
+  (    0,    20)       9        9           17  house tarn-store    
+  (    1,    20)       9        9           17  house tarn-store    
+  (    2,    20)       9        9           17  house tarn-store    
+  (    3,    20)       9        9           17  house tarn-store    
+  (    4,    20)       9        9           17  house tarn-store    
+  (    5,    20)       9        9           17  house tarn-store    
+  (    6,    20)       9        9           17  house tarn-store    
+  (    7,    20)       9        9           17  house tarn-store    
+  (    8,    20)       9        9            9                      
+  (    9,    20)       9        9            9                      
+  (   10,    20)       9        9            9                      
+  (   11,    20)       9        9            9                      
+  (   12,    20)       9        9            9                      
+  (   13,    20)       9        9            9                      
+  (   14,    20)       9        9            9                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water frozen-tarn at (-12, 18), house tarn-store at (-3, 18)
+
+## tarn-store (house) along z
+TRANSECT 22 stations from (2, 10) to (2, 31), every 1
+  station        ground  surface  water  top  standing            step
+  (    2,    10)       9        9            9                      
+  (    2,    11)       9        9            9                      
+  (    2,    12)       9        9            9                      
+  (    2,    13)       9        9            9                      
+  (    2,    14)       9        9            9                      
+  (    2,    15)       9        9            9                      
+  (    2,    16)       9        9            9                      
+  (    2,    17)       9        9           14  house tarn-store    
+  (    2,    18)       9        9           15  house tarn-store    
+  (    2,    19)       9        9           16  house tarn-store    
+  (    2,    20)       9        9           17  house tarn-store    
+  (    2,    21)       9        9           17  house tarn-store    
+  (    2,    22)       9        9           16  house tarn-store    
+  (    2,    23)       9        9           15  house tarn-store    
+  (    2,    24)       9        9           14  house tarn-store    
+  (    2,    25)       9        9            9                      
+  (    2,    26)       9        9            9                      
+  (    2,    27)       9        9            9                      
+  (    2,    28)       9        9            9                      
+  (    2,    29)      10       10           10                      +1
+  (    2,    30)      12       12           12                      scramble +2
+  (    2,    31)      13       13           13                      +1
+rises 3, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (2, 30) | walked end to end
+beside: house tarn-store at (0, 17)

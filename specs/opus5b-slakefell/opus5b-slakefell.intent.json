@@ -1,0 +1,191 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-lodge",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -1,
+    "y": 29,
+    "z": 94
+   },
+   "protection": [
+    {
+     "minX": -16,
+     "minZ": 84,
+     "maxX": 4,
+     "maxZ": 104
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z",
+    "-x"
+   ],
+   "footprint": {
+    "minX": -10,
+    "minZ": 88,
+    "maxX": 2,
+    "maxZ": 100
+   },
+   "iron": [
+    {
+     "x": -13.5,
+     "y": 29,
+     "z": 94
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-lodge",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 1,
+    "y": 29,
+    "z": -94
+   },
+   "protection": [
+    {
+     "minX": -4,
+     "minZ": -104,
+     "maxX": 16,
+     "maxZ": -84
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z",
+    "+x"
+   ],
+   "footprint": {
+    "minX": -2,
+    "minZ": -100,
+    "maxX": 10,
+    "maxZ": -88
+   },
+   "iron": [
+    {
+     "x": 13.5,
+     "y": 29,
+     "z": -94
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 24,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -24,
+    "minZ": -16,
+    "maxX": 24,
+    "maxZ": 16
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Slakefell Core",
+   "anchor": {
+    "x": -14,
+    "y": 17,
+    "z": 48
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "core",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Slakefell Core",
+   "anchor": {
+    "x": 13,
+    "y": 17,
+    "z": -49
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  }
+ ],
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtc"
+ ],
+ "meta": {
+  "name": "Slakefell",
+  "created": "2026-09-21",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": null
+}

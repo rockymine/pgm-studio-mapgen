@@ -1,0 +1,76 @@
+## spawn-red (spawn) along x
+TRANSECT 37 stations from (-24, 94) to (12, 94), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,    94)      29       29           29                      
+  (  -23,    94)      29       29           29                      
+  (  -22,    94)      29       29           29                      
+  (  -21,    94)      29       29           29                      
+  (  -20,    94)      29       29           29                      
+  (  -19,    94)      29       29           29                      
+  (  -18,    94)      29       29           29                      
+  (  -17,    94)      29       29           29                      
+  (  -16,    94)      27       27           27                      -2
+  (  -15,    94)      27       27           30  ironcube spawn-lodge:0  
+  (  -14,    94)      27       27           30  ironcube spawn-lodge:0  
+  (  -13,    94)      27       27           30  ironcube spawn-lodge:0  
+  (  -12,    94)      27       27           27                      
+  (  -11,    94)      27       27           34                      
+  (  -10,    94)      27       27           35  spawn spawn-lodge   
+  (   -9,    94)      27       27           36  spawn spawn-lodge   
+  (   -8,    94)      27       27           37  spawn spawn-lodge   
+  (   -7,    94)      27       27           38  spawn spawn-lodge   
+  (   -6,    94)      27       27           39  spawn spawn-lodge   
+  (   -5,    94)      27       27           40  spawn spawn-lodge   
+  (   -4,    94)      27       27           40  spawn spawn-lodge   
+  (   -3,    94)      27       27           39  spawn spawn-lodge   
+  (   -2,    94)      27       27           38  spawn spawn-lodge   
+  (   -1,    94)      27       27           37  spawn spawn-lodge   
+  (    0,    94)      27       27           36  spawn spawn-lodge   
+  (    1,    94)      27       27           35  spawn spawn-lodge   
+  (    2,    94)      27       27           34                      
+  (    3,    94)      27       27           27                      
+  (    4,    94)      29       29           29                      scramble +2
+  (    5,    94)      29       29           29                      
+  (    6,    94)      29       29           29                      
+  (    7,    94)      29       29           29                      
+  (    8,    94)      29       29           29                      
+  (    9,    94)      29       29           29                      
+  (   10,    94)      29       29           29                      
+  (   11,    94)      29       29           29                      
+  (   12,    94)      29       29           29                      
+rises 1, falls 1, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (4, 94) | walked end to end
+beside: ironcube spawn-lodge:0 at (-15, 93), spawn spawn-lodge at (-10, 92), house lodge-byre at (13, 92)
+
+## spawn-red (spawn) along z
+TRANSECT 28 stations from (-6, 76) to (-6, 103), every 1
+  station        ground  surface  water  top  standing            step
+  (   -6,    76)      25       25           25                      
+  (   -6,    77)      25       25           25                      
+  (   -6,    78)      25       25           25                      
+  (   -6,    79)      25       25           25                      
+  (   -6,    80)      26       26           26                      +1
+  (   -6,    81)      26       26           26                      
+  (   -6,    82)      27       27           27                      +1
+  (   -6,    83)      27       27           27                      
+  (   -6,    84)      27       27           27                      
+  (   -6,    85)      27       27           27                      
+  (   -6,    86)      27       27           27                      
+  (   -6,    87)      27       27           34                      
+  (   -6,    88)      27       27           35  spawn spawn-lodge   
+  (   -6,    89)      27       27           36  spawn spawn-lodge   
+  (   -6,    90)      27       27           37  spawn spawn-lodge   
+  (   -6,    91)      27       27           38  spawn spawn-lodge   
+  (   -6,    92)      27       27           39  spawn spawn-lodge   
+  (   -6,    93)      27       27           39  spawn spawn-lodge   
+  (   -6,    94)      27       27           39  spawn spawn-lodge   
+  (   -6,    95)      27       27           39  spawn spawn-lodge   
+  (   -6,    96)      27       27           38  spawn spawn-lodge   
+  (   -6,    97)      27       27           37  spawn spawn-lodge   
+  (   -6,    98)      27       27           36  spawn spawn-lodge   
+  (   -6,    99)      27       27           35  spawn spawn-lodge   
+  (   -6,   100)      27       27           34                      
+  (   -6,   101)      27       27           27                      
+  (   -6,   102)      27       27           27                      
+  (   -6,   103)      27       27           27                      
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree pine-1 at (-8, 74), stroke fell-track at (-5, 74), spawn spawn-lodge at (-8, 88)

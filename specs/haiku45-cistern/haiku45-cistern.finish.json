@@ -4,7 +4,71 @@
  ],
  "created": "2026-09-21",
  "themes": {
-  "ground": {
+  "water": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   },
+   "wallEnabled": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 3,
+     "data": 2
+    }
+   },
+   "rimEdges": "void",
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 25,
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 0
+        }
+       },
+       {
+        "thickness": 40,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 1
+        }
+       },
+       {
+        "thickness": 65,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 2
+        }
+       }
+      ]
+     }
+    }
+   }
+  },
+  "grass": {
    "bedrock": {
     "relative": false,
     "value": 1
@@ -42,65 +106,25 @@
        {
         "thickness": 20,
         "material": {
-         "kind": "layered",
-         "axis": "depth",
-         "stack": {
-          "ending": "repeat",
-          "bands": [
-           {
-            "thickness": 1,
-            "material": {
-             "kind": "solid",
-             "id": 2,
-             "data": 0
-            }
-           },
-           {
-            "thickness": 1,
-            "material": {
-             "kind": "solid",
-             "id": 3,
-             "data": 0
-            }
-           }
-          ]
-         }
+         "kind": "solid",
+         "id": 2,
+         "data": 0
         }
        },
        {
-        "thickness": 30,
-        "material": {
-         "kind": "layered",
-         "axis": "depth",
-         "stack": {
-          "ending": "repeat",
-          "bands": [
-           {
-            "thickness": 1,
-            "material": {
-             "kind": "solid",
-             "id": 3,
-             "data": 0
-            }
-           },
-           {
-            "thickness": 2,
-            "material": {
-             "kind": "solid",
-             "id": 1,
-             "data": 0
-            }
-           }
-          ]
-         }
-        }
-       },
-       {
-        "thickness": 50,
+        "thickness": 35,
         "material": {
          "kind": "solid",
-         "id": 1,
+         "id": 3,
          "data": 0
+        }
+       },
+       {
+        "thickness": 55,
+        "material": {
+         "kind": "solid",
+         "id": 3,
+         "data": 1
         }
        }
       ]
@@ -109,27 +133,255 @@
    }
   }
  },
- "mapTheme": "ground",
+ "mapTheme": "grass",
  "relief": {
   "*": {
-   "base": 12,
+   "base": 20,
    "reach": 0,
    "step": 1,
    "landform": "rolling",
    "grain": {
-    "amplitude": 0.6,
-    "scale": 12,
-    "seed": 4701
+    "amplitude": 0.5,
+    "scale": 14,
+    "seed": 4801
    },
-   "marks": [],
-   "pushes": []
+   "marks": [
+    {
+     "id": "base-level",
+     "kind": "area",
+     "h": 20,
+     "bevel": 0,
+     "ring": [
+      [
+       -70,
+       -50
+      ],
+      [
+       70,
+       -50
+      ],
+      [
+       70,
+       80
+      ],
+      [
+       -70,
+       80
+      ]
+     ]
+    },
+    {
+     "id": "core-peak",
+     "kind": "area",
+     "h": 27,
+     "bevel": 2,
+     "ring": [
+      [
+       -20,
+       -20
+      ],
+      [
+       20,
+       -20
+      ],
+      [
+       20,
+       20
+      ],
+      [
+       -20,
+       20
+      ]
+     ]
+    }
+   ],
+   "pushes": [
+    {
+     "id": "core-swell",
+     "ring": [
+      [
+       -25,
+       -25
+      ],
+      [
+       25,
+       -25
+      ],
+      [
+       25,
+       25
+      ],
+      [
+       -25,
+       25
+      ]
+     ],
+     "amount": 3,
+     "falloff": 8,
+     "crown": 1,
+     "roughness": 0,
+     "seed": 99
+    }
+   ]
   }
  },
- "addShapes": [],
+ "addShapes": [
+  {
+   "id": "water-hill",
+   "type": "polygon",
+   "operation": "add",
+   "floor": 0,
+   "base_height": 27,
+   "theme": "water",
+   "vertices": [
+    [
+     -20,
+     -20
+    ],
+    [
+     20,
+     -20
+    ],
+    [
+     20,
+     20
+    ],
+    [
+     -20,
+     20
+    ]
+   ]
+  }
+ ],
  "addLayers": [],
- "roomStyles": {},
+ "roomStyles": {
+  "spawn": {
+   "floor": {
+    "material": {
+     "kind": "solid",
+     "id": 2,
+     "data": 0
+    }
+   },
+   "ceiling": {
+    "height": 8,
+    "material": {
+     "kind": "solid",
+     "id": 52,
+     "data": 0
+    }
+   },
+   "wall": {
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 5
+    }
+   }
+  },
+  "default": {
+   "floor": {
+    "material": {
+     "kind": "solid",
+     "id": 2,
+     "data": 0
+    }
+   },
+   "ceiling": {
+    "height": 6,
+    "material": {
+     "kind": "solid",
+     "id": 52,
+     "data": 0
+    }
+   },
+   "wall": {
+    "material": {
+     "kind": "solid",
+     "id": 1,
+     "data": 5
+    }
+   }
+  }
+ },
  "dressing": {
-  "styles": {},
-  "props": []
+  "styles": {
+   "oak-8": {
+    "kind": "tree",
+    "form": "template",
+    "species": "oak",
+    "height": 8
+   },
+   "oak-10": {
+    "kind": "tree",
+    "form": "template",
+    "species": "oak",
+    "height": 10
+   },
+   "boulder-2": {
+    "kind": "boulder",
+    "form": "round",
+    "size": 2,
+    "mossy": true,
+    "rock": "granite"
+   },
+   "boulder-3": {
+    "kind": "boulder",
+    "form": "round",
+    "size": 3,
+    "mossy": true,
+    "rock": "granite"
+   }
+  },
+  "props": [
+   {
+    "id": "tree-1",
+    "kind": "tree",
+    "seed": 7001,
+    "x": -90,
+    "z": -45,
+    "style": "oak-8"
+   },
+   {
+    "id": "tree-2",
+    "kind": "tree",
+    "seed": 7002,
+    "x": -70,
+    "z": -40,
+    "style": "oak-10"
+   },
+   {
+    "id": "tree-3",
+    "kind": "tree",
+    "seed": 7003,
+    "x": 60,
+    "z": 35,
+    "style": "oak-8"
+   },
+   {
+    "id": "tree-4",
+    "kind": "tree",
+    "seed": 7004,
+    "x": 80,
+    "z": 40,
+    "style": "oak-10"
+   },
+   {
+    "id": "boulder-1",
+    "kind": "boulder",
+    "seed": 8001,
+    "x": -100,
+    "z": -50,
+    "style": "boulder-3"
+   },
+   {
+    "id": "boulder-2",
+    "kind": "boulder",
+    "seed": 8002,
+    "x": 70,
+    "z": 45,
+    "style": "boulder-2"
+   }
+  ]
  }
 }
