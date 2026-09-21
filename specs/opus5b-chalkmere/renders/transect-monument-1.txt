@@ -1,0 +1,61 @@
+## monument-1 (destroyable) along x
+TRANSECT 25 stations from (-27, -63) to (-3, -63), every 1
+  station        ground  surface  water  top  standing            step
+  (  -27,   -63)      17       17           17                      
+  (  -26,   -63)      17       17           17                      
+  (  -25,   -63)      17       17           17                      
+  (  -24,   -63)      17       17           17                      
+  (  -23,   -63)      17       17           17                      
+  (  -22,   -63)      17       17           17                      
+  (  -21,   -63)      17       17           17                      
+  (  -20,   -63)      17       17           17                      
+  (  -19,   -63)      17       17           17                      
+  (  -18,   -63)      17       17           17                      
+  (  -17,   -63)      17       17           17  destroyable monument#1  
+  (  -16,   -63)      17       17           57  destroyable monument#1  
+  (  -15,   -63)      17       17           58  destroyable monument#1  
+  (  -14,   -63)      17       17           57  destroyable monument#1  
+  (  -13,   -63)      17       17           17  destroyable monument#1  
+  (  -12,   -63)      17       17           17                      
+  (  -11,   -63)      17       17           17                      
+  (  -10,   -63)      17       17           17                      
+  (   -9,   -63)      17       17           17                      
+  (   -8,   -63)      17       17           17                      
+  (   -7,   -63)      17       17           17                      
+  (   -6,   -63)      16       16           16                      -1
+  (   -5,   -63)      16       16           16                      
+  (   -4,   -63)      16       16           16                      
+  (   -3,   -63)      16       16           16                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable monument#1 at (-17, -65), stroke steading-track#1 at (-14, -65)
+
+## monument-1 (destroyable) along z
+TRANSECT 25 stations from (-15, -75) to (-15, -51), every 1
+  station        ground  surface  water  top  standing            step
+  (  -15,   -75)      17       17           17                      
+  (  -15,   -74)      17       17           17                      
+  (  -15,   -73)      17       17           17                      
+  (  -15,   -72)      17       17           17                      
+  (  -15,   -71)      17       17           17                      
+  (  -15,   -70)      17       17           17                      
+  (  -15,   -69)      17       17           17                      
+  (  -15,   -68)      17       17           17                      
+  (  -15,   -67)      17       17           17  stroke steading-track#1  
+  (  -15,   -66)      17       17           17  stroke steading-track#1  
+  (  -15,   -65)      17       17           17  destroyable monument#1  
+  (  -15,   -64)      17       17           57  destroyable monument#1  
+  (  -15,   -63)      17       17           58  destroyable monument#1  
+  (  -15,   -62)      17       17           57  destroyable monument#1  
+  (  -15,   -61)      17       17           17  destroyable monument#1  
+  (  -15,   -60)      17       17           17                      
+  (  -15,   -59)      17       17           17                      
+  (  -15,   -58)      17       17           17                      
+  (  -15,   -57)      17       17           17                      
+  (  -15,   -56)      17       17           17  stroke forward-track#1  
+  (  -15,   -55)      17       17           17  stroke forward-track#1  
+  (  -15,   -54)      17       17           17  stroke forward-track#1  
+  (  -15,   -53)      16       16           16  stroke forward-track#1  -1
+  (  -15,   -52)      16       16           16  stroke forward-track#1  
+  (  -15,   -51)      16       16           16  stroke forward-track#1  
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke steading-track#1 at (-13, -70), destroyable monument#1 at (-17, -65), stroke forward-track#1 at (-15, -56)

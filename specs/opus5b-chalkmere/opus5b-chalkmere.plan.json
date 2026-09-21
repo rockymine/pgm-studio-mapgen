@@ -1,0 +1,116 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Chalkmere"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 20,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "down",
+   "role": "piece",
+   "rect": [
+    -7,
+    2,
+    14,
+    21
+   ],
+   "surface": 9
+  },
+  {
+   "id": "fold-w",
+   "role": "piece",
+   "rect": [
+    -7,
+    23,
+    3,
+    4
+   ],
+   "surface": 19
+  },
+  {
+   "id": "steading",
+   "role": "spawn",
+   "rect": [
+    -4,
+    23,
+    5,
+    4
+   ],
+   "surface": 19
+  },
+  {
+   "id": "fold-e",
+   "role": "piece",
+   "rect": [
+    1,
+    23,
+    6,
+    4
+   ],
+   "surface": 19
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -7,
+    -4,
+    14,
+    8
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-steading",
+    "piece": "steading",
+    "at": [
+     11,
+     8
+    ],
+    "facing": "front",
+    "footprint": [
+     6,
+     2,
+     10,
+     12
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [
+   {
+    "id": "iron-steading",
+    "piece": "steading",
+    "at": [
+     2.5,
+     8.0
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "monument",
+    "piece": "down",
+    "at": [
+     42,
+     54
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Chalkmere Monument"
+   }
+  ],
+  "cores": []
+ },
+ "walls": []
+}

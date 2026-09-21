@@ -1,0 +1,61 @@
+## monument-0 (destroyable) along x
+TRANSECT 25 stations from (-27, -10) to (-3, -10), every 1
+  station        ground  surface  water  top  standing            step
+  (  -27,   -10)                                                    void
+  (  -26,   -10)                                                    void
+  (  -25,   -10)                                                    void
+  (  -24,   -10)                                                    void
+  (  -23,   -10)                                                    void
+  (  -22,   -10)                                                    void
+  (  -21,   -10)                                                    void
+  (  -20,   -10)                                                    void
+  (  -19,   -10)                                                    void
+  (  -18,   -10)                                                    void
+  (  -17,   -10)                             9  destroyable monument  void
+  (  -16,   -10)                            46  destroyable monument  void
+  (  -15,   -10)      12       12           47  destroyable monument  
+  (  -14,   -10)      12       12           46  destroyable monument  
+  (  -13,   -10)      12       12           12  destroyable monument  
+  (  -12,   -10)      12       12           12                      
+  (  -11,   -10)      12       12           12                      
+  (  -10,   -10)      12       12           12                      
+  (   -9,   -10)      12       12           12                      
+  (   -8,   -10)      12       12           12                      
+  (   -7,   -10)      12       12           12                      
+  (   -6,   -10)      12       12           12                      
+  (   -5,   -10)      12       12           12                      
+  (   -4,   -10)      12       12           12                      
+  (   -3,   -10)      12       12           12                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable monument at (-17, -12)
+
+## monument-0 (destroyable) along z
+TRANSECT 25 stations from (-15, -22) to (-15, 2), every 1
+  station        ground  surface  water  top  standing            step
+  (  -15,   -22)      12       12           12                      
+  (  -15,   -21)      12       12           12                      
+  (  -15,   -20)                                                    void
+  (  -15,   -19)                                                    void
+  (  -15,   -18)                                                    void
+  (  -15,   -17)                                                    void
+  (  -15,   -16)                                                    void
+  (  -15,   -15)                                                    void
+  (  -15,   -14)                                                    void
+  (  -15,   -13)                                                    void
+  (  -15,   -12)                             9  destroyable monument  void
+  (  -15,   -11)                            46  destroyable monument  void
+  (  -15,   -10)      12       12           47  destroyable monument  
+  (  -15,    -9)      12       12           46  destroyable monument  
+  (  -15,    -8)      12       12           12  destroyable monument  
+  (  -15,    -7)      12       12           12                      
+  (  -15,    -6)      12       12           12                      
+  (  -15,    -5)      12       12           12                      
+  (  -15,    -4)      12       12           12                      
+  (  -15,    -3)      12       12           12                      
+  (  -15,    -2)      12       12           12                      
+  (  -15,    -1)      12       12           12                      
+  (  -15,     0)      12       12           12                      
+  (  -15,     1)      12       12           12                      
+  (  -15,     2)      12       12           12                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable monument at (-17, -12)

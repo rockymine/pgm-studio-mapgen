@@ -1,0 +1,72 @@
+## spawn-red (spawn) along x
+TRANSECT 37 stations from (-24, 100) to (12, 100), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,   100)      19       19           19                      
+  (  -23,   100)      19       19           19                      
+  (  -22,   100)      19       19           19                      
+  (  -21,   100)      19       19           19                      
+  (  -20,   100)      19       19           19                      
+  (  -19,   100)      19       19           19                      
+  (  -18,   100)      19       19           19                      
+  (  -17,   100)      19       19           19                      
+  (  -16,   100)      19       19           19                      
+  (  -15,   100)      19       19           22  ironcube spawn-steading:0  
+  (  -14,   100)      19       19           22  ironcube spawn-steading:0  
+  (  -13,   100)      19       19           22  ironcube spawn-steading:0  
+  (  -12,   100)      19       19           19                      
+  (  -11,   100)      19       19           26                      
+  (  -10,   100)      19       19           27  spawn spawn-steading  
+  (   -9,   100)      19       19           28  spawn spawn-steading  
+  (   -8,   100)      19       19           29  spawn spawn-steading  
+  (   -7,   100)      19       19           30  spawn spawn-steading  
+  (   -6,   100)      19       19           31  spawn spawn-steading  
+  (   -5,   100)      19       19           31  spawn spawn-steading  
+  (   -4,   100)      19       19           30  spawn spawn-steading  
+  (   -3,   100)      19       19           29  spawn spawn-steading  
+  (   -2,   100)      19       19           28  spawn spawn-steading  
+  (   -1,   100)      19       19           27  spawn spawn-steading  
+  (    0,   100)      19       19           26                      
+  (    1,   100)      19       19           19                      
+  (    2,   100)      19       19           19                      
+  (    3,   100)      19       19           19                      
+  (    4,   100)      19       19           19                      
+  (    5,   100)      19       19           19                      
+  (    6,   100)      19       19           19                      
+  (    7,   100)      19       19           19                      
+  (    8,   100)      19       19           19                      
+  (    9,   100)      19       19           19                      
+  (   10,   100)      19       19           19                      
+  (   11,   100)      19       19           19                      
+  (   12,   100)      19       19           19                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: ironcube spawn-steading:0 at (-15, 99), spawn spawn-steading at (-10, 98)
+
+## spawn-red (spawn) along z
+TRANSECT 24 stations from (-6, 84) to (-6, 107), every 1
+  station        ground  surface  water  top  standing            step
+  (   -6,    84)      19       19           19                      
+  (   -6,    85)      19       19           19                      
+  (   -6,    86)      19       19           19                      
+  (   -6,    87)      19       19           19                      
+  (   -6,    88)      19       19           19                      
+  (   -6,    89)      19       19           19  stroke steading-track  
+  (   -6,    90)      19       19           19  stroke steading-track  
+  (   -6,    91)      19       19           19  stroke steading-track  
+  (   -6,    92)      19       19           19  stroke steading-track  
+  (   -6,    93)      19       19           26  stroke steading-track  
+  (   -6,    94)      19       19           27  stroke steading-track  
+  (   -6,    95)      19       19           28  stroke steading-track  
+  (   -6,    96)      19       19           29  spawn spawn-steading  
+  (   -6,    97)      19       19           30  spawn spawn-steading  
+  (   -6,    98)      19       19           31  spawn spawn-steading  
+  (   -6,    99)      19       19           31  spawn spawn-steading  
+  (   -6,   100)      19       19           31  spawn spawn-steading  
+  (   -6,   101)      19       19           31  spawn spawn-steading  
+  (   -6,   102)      19       19           30  spawn spawn-steading  
+  (   -6,   103)      19       19           29  spawn spawn-steading  
+  (   -6,   104)      19       19           28  spawn spawn-steading  
+  (   -6,   105)      19       19           27  spawn spawn-steading  
+  (   -6,   106)      19       19           26                      
+  (   -6,   107)      19       19           19                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke steading-track at (-4, 85), spawn spawn-steading at (-8, 94)

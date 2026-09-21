@@ -1,0 +1,187 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 20,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-steading",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -5,
+    "y": 19,
+    "z": 100
+   },
+   "protection": [
+    {
+     "minX": -16,
+     "minZ": 92,
+     "maxX": 4,
+     "maxZ": 108
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z",
+    "-x"
+   ],
+   "footprint": {
+    "minX": -10,
+    "minZ": 94,
+    "maxX": 0,
+    "maxZ": 106
+   },
+   "iron": [
+    {
+     "x": -13.5,
+     "y": 19,
+     "z": 100
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-steading",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 5,
+    "y": 19,
+    "z": -100
+   },
+   "protection": [
+    {
+     "minX": -4,
+     "minZ": -108,
+     "maxX": 16,
+     "maxZ": -92
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z",
+    "+x"
+   ],
+   "footprint": {
+    "minX": 0,
+    "minZ": -106,
+    "maxX": 10,
+    "maxZ": -94
+   },
+   "iron": [
+    {
+     "x": 13.5,
+     "y": 19,
+     "z": -100
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 24,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -28,
+    "minZ": -16,
+    "maxX": 28,
+    "maxZ": 16
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Chalkmere Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 14,
+    "y": 9,
+    "z": 62
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Chalkmere Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -15,
+    "y": 9,
+    "z": -63
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Chalkmere",
+  "created": "2026-09-21",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": null
+}

@@ -1,0 +1,61 @@
+## red-core-0 (core) along x
+TRANSECT 25 stations from (-63, 0) to (-39, 0), every 1
+  station        ground  surface  water  top  standing            step
+  (  -63,     0)       2        2            2  stroke moor-track   
+  (  -62,     0)       2        2            2  stroke moor-track   
+  (  -61,     0)       2        2            2  stroke moor-track   
+  (  -60,     0)       2        2            2  stroke moor-track   
+  (  -59,     0)       2        2            2  stroke moor-track   
+  (  -58,     0)       2        2            2  stroke moor-track   
+  (  -57,     0)       2        2            2  stroke moor-track   
+  (  -56,     0)       2        2            2                      
+  (  -55,     0)       2        2            2  stroke moor-track   
+  (  -54,     0)       2        2            2                      
+  (  -53,     0)       2        2           13  core red-core       
+  (  -52,     0)       2        2     12    41  core red-core       
+  (  -51,     0)       2        2     12    42  core red-core       
+  (  -50,     0)       2        2     12    41  core red-core       
+  (  -49,     0)       2        2           13  flora moor-cover    
+  (  -48,     0)       2        2            3  flora moor-cover    
+  (  -47,     0)       2        2            2                      
+  (  -46,     0)       2        2            2                      
+  (  -45,     0)       2        2            2                      
+  (  -44,     0)       2        2            2                      
+  (  -43,     0)       2        2            2                      
+  (  -42,     0)       2        2            2                      
+  (  -41,     0)       2        2            2                      
+  (  -40,     0)       2        2            2                      
+  (  -39,     0)       2        2            2                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke moor-track at (-64, -2), flora moor-cover at (-56, 2), core red-core at (-53, -2)
+
+## red-core-0 (core) along z
+TRANSECT 25 stations from (-51, -12) to (-51, 12), every 1
+  station        ground  surface  water  top  standing            step
+  (  -51,   -12)       2        2            2                      
+  (  -51,   -11)       2        2            2                      
+  (  -51,   -10)       2        2            2                      
+  (  -51,    -9)       2        2            2                      
+  (  -51,    -8)       2        2            2                      
+  (  -51,    -7)       2        2            2                      
+  (  -51,    -6)       2        2            2                      
+  (  -51,    -5)       2        2            2                      
+  (  -51,    -4)       2        2            2                      
+  (  -51,    -3)       2        2            2                      
+  (  -51,    -2)       2        2           13  core red-core       
+  (  -51,    -1)       2        2     12    41  core red-core       
+  (  -51,     0)       2        2     12    42  core red-core       
+  (  -51,     1)       2        2     12    41  core red-core       
+  (  -51,     2)       2        2           13  core red-core       
+  (  -51,     3)       2        2            2                      
+  (  -51,     4)       2        2            2                      
+  (  -51,     5)       2        2            2                      
+  (  -51,     6)       2        2            2                      
+  (  -51,     7)       3        3            3                      +1
+  (  -51,     8)       3        3            3                      
+  (  -51,     9)       3        3            3                      
+  (  -51,    10)       3        3            3                      
+  (  -51,    11)       4        4            4                      +1
+  (  -51,    12)       4        4            4                      
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: core red-core at (-53, -2), flora moor-cover at (-49, 0)

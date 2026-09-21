@@ -1,0 +1,475 @@
+{
+ "created": "2026-09-21",
+ "authors": [
+  "Sonnet 5"
+ ],
+ "themes": {
+  "peat-moor": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 3,
+    "data": 0
+   },
+   "wallEnabled": true,
+   "wallOnTerrainFaces": true,
+   "wall": {
+    "kind": "solid",
+    "id": 3,
+    "data": 1
+   },
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 20,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 2
+            }
+           },
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            }
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 20,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 1
+            }
+           },
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            }
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 50,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 13,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            }
+           }
+          ]
+         }
+        }
+       }
+      ]
+     }
+    }
+   },
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 3,
+     "data": 1
+    }
+   },
+   "rimEdges": "void"
+  }
+ },
+ "mapTheme": "peat-moor",
+ "roomStyles": {
+  "spawn": {
+   "foundation": {
+    "plate": {
+     "stack": {
+      "bands": [
+       {
+        "material": {
+         "kind": "solid",
+         "id": 4,
+         "data": 0
+        },
+        "thickness": 1
+       }
+      ],
+      "ending": "repeat"
+     },
+     "extent": 1
+    },
+    "surface": {
+     "field": null,
+     "border": null,
+     "borderWidth": 1,
+     "inlay": null,
+     "inlayInset": 2,
+     "isPlain": true
+    },
+    "footing": null
+   },
+   "roof": {
+    "form": "gable",
+    "pitch": 1,
+    "slab": -1,
+    "slabData": 0,
+    "overhang": 1,
+    "ridgeCap": false,
+    "hole": false,
+    "body": {
+     "kind": "solid",
+     "id": 5,
+     "data": 1
+    },
+    "verge": {
+     "kind": "solid",
+     "id": 5,
+     "data": 1
+    },
+    "gable": {
+     "kind": "solid",
+     "id": 5,
+     "data": 0
+    },
+    "gableWindows": {
+     "form": "none",
+     "block": 102,
+     "hostBlock": -1,
+     "hostData": 0,
+     "data": 0,
+     "sill": 2,
+     "width": 2,
+     "height": 2,
+     "spacing": 3
+    }
+   },
+   "wall": {
+    "stack": {
+     "bands": [
+      {
+       "material": {
+        "kind": "solid",
+        "id": 4,
+        "data": 0
+       },
+       "thickness": 3
+      },
+      {
+       "material": {
+        "kind": "solid",
+        "id": 5,
+        "data": 0
+       },
+       "thickness": 4
+      }
+     ],
+     "ending": "repeat"
+    },
+    "extent": 7
+   },
+   "post": {
+    "kind": "solid",
+    "id": 17,
+    "data": 1
+   },
+   "windows": {
+    "form": "stairLattice",
+    "block": 134,
+    "hostBlock": -1,
+    "hostData": 0,
+    "data": 0,
+    "sill": 4,
+    "width": 2,
+    "height": 2,
+    "spacing": 3
+   },
+   "storeys": [],
+   "porch": null,
+   "front": null,
+   "beams": {
+    "block": 17,
+    "data": 1,
+    "reach": 1,
+    "any": false
+   },
+   "doorway": {
+    "door": "air",
+    "head": {
+     "form": "arched",
+     "block": 134,
+     "fill": "upperSlab",
+     "fillBlock": 126,
+     "fillData": 1
+    },
+    "width": 2,
+    "height": 3
+   }
+  }
+ },
+ "relief": {
+  "team": {
+   "base": 8,
+   "reach": 0,
+   "step": 1,
+   "marks": [
+    {
+     "id": "cutting",
+     "kind": "area",
+     "h": 2,
+     "bevel": 5,
+     "ring": [
+      [
+       -78,
+       -30
+      ],
+      [
+       -64,
+       -30
+      ],
+      [
+       -64,
+       -13
+      ],
+      [
+       -78,
+       -13
+      ]
+     ]
+    }
+   ],
+   "pushes": [
+    {
+     "id": "turbary",
+     "ring": [
+      [
+       -80,
+       12
+      ],
+      [
+       -55,
+       12
+      ],
+      [
+       -55,
+       30
+      ],
+      [
+       -80,
+       30
+      ]
+     ],
+     "amount": 4,
+     "falloff": 12,
+     "crown": 0,
+     "roughness": 3,
+     "seed": 13
+    }
+   ]
+  }
+ },
+ "dressing": {
+  "styles": {
+   "alder": {
+    "kind": "tree",
+    "form": "template",
+    "species": "birch",
+    "height": 7
+   },
+   "peat-boulder": {
+    "kind": "boulder",
+    "form": "round",
+    "size": 2.0,
+    "rock": {
+     "kind": "solid",
+     "id": 1,
+     "data": 5
+    },
+    "mossy": true
+   }
+  },
+  "props": [
+   {
+    "kind": "flora",
+    "id": "moor-cover",
+    "points": [
+     [
+      -84,
+      -32
+     ],
+     [
+      -16,
+      -32
+     ],
+     [
+      -16,
+      32
+     ],
+     [
+      -84,
+      32
+     ]
+    ],
+    "spec": {
+     "coverage": 0.3,
+     "scale": 8,
+     "octaves": 3,
+     "fernShare": 0.35,
+     "flowerShare": 0.06,
+     "flowerScale": 5,
+     "tallShare": 0.15
+    }
+   },
+   {
+    "kind": "stroke",
+    "id": "moor-track",
+    "points": [
+     [
+      -92,
+      0
+     ],
+     [
+      -56,
+      0
+     ]
+    ],
+    "radius": 2,
+    "style": "worn",
+    "coverage": 0.6,
+    "claimsGround": true,
+    "pave": {
+     "kind": "cell",
+     "seed": 17,
+     "cellSize": 3,
+     "jitter": 60,
+     "warp": 2,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      },
+      {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      }
+     ],
+     "rise": 0
+    }
+   },
+   {
+    "kind": "tree",
+    "id": "alder-1",
+    "x": -68,
+    "z": 18,
+    "style": "alder",
+    "routeStandoff": 3
+   },
+   {
+    "kind": "tree",
+    "id": "alder-2",
+    "x": -60,
+    "z": 25,
+    "style": "alder",
+    "routeStandoff": 3
+   },
+   {
+    "kind": "tree",
+    "id": "alder-3",
+    "x": -72,
+    "z": 28,
+    "style": "alder",
+    "routeStandoff": 3
+   },
+   {
+    "kind": "tree",
+    "id": "alder-4",
+    "x": -63,
+    "z": 14,
+    "style": "alder",
+    "routeStandoff": 3
+   },
+   {
+    "kind": "boulder",
+    "id": "peatrock-1",
+    "x": -66,
+    "z": -22,
+    "style": "peat-boulder",
+    "routeStandoff": 2
+   },
+   {
+    "kind": "boulder",
+    "id": "peatrock-2",
+    "x": -74,
+    "z": -18,
+    "style": "peat-boulder",
+    "routeStandoff": 2
+   },
+   {
+    "kind": "boulder",
+    "id": "peatrock-3",
+    "x": -30,
+    "z": -18,
+    "style": "peat-boulder",
+    "routeStandoff": 2
+   }
+  ]
+ }
+}

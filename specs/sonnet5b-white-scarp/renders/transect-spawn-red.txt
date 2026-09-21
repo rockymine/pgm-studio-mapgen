@@ -1,0 +1,81 @@
+## spawn-red (spawn) along x
+TRANSECT 29 stations from (-104, 0) to (-76, 0), every 1
+  station        ground  surface  water  top  standing            step
+  ( -104,     0)       4        4            4                      
+  ( -103,     0)       4        4           17                      
+  ( -102,     0)       4        4           17  spawn red-spawn     
+  ( -101,     0)       4        4           17  spawn red-spawn     
+  ( -100,     0)       4        4           17  spawn red-spawn     
+  (  -99,     0)       4        4           17  spawn red-spawn     
+  (  -98,     0)       4        4           17  spawn red-spawn     
+  (  -97,     0)       4        4           17  spawn red-spawn     
+  (  -96,     0)       4        4           17  spawn red-spawn     
+  (  -95,     0)       4        4           17  spawn red-spawn     
+  (  -94,     0)       4        4           17  spawn red-spawn     
+  (  -93,     0)       4        4           17  stroke beacon-path  
+  (  -92,     0)       4        4           17  stroke beacon-path  
+  (  -91,     0)       4        4           17  stroke beacon-path  
+  (  -90,     0)       4        4           17  stroke beacon-path  
+  (  -89,     0)       4        4           17  stroke beacon-path  
+  (  -88,     0)       4        4           17  stroke beacon-path  
+  (  -87,     0)       4        4           17  stroke beacon-path  
+  (  -86,     0)       4        4           17  stroke beacon-path  
+  (  -85,     0)       4        4            4  stroke beacon-path  
+  (  -84,     0)       4        4            4  stroke beacon-path  
+  (  -83,     0)       4        4            4  stroke beacon-path  
+  (  -82,     0)       4        4            4  stroke beacon-path  
+  (  -81,     0)       4        4            4  stroke beacon-path  
+  (  -80,     0)       4        4            4  stroke beacon-path  
+  (  -79,     0)       4        4            4  stroke beacon-path  
+  (  -78,     0)       4        4            4  stroke beacon-path  
+  (  -77,     0)       4        4            4  stroke beacon-path  
+  (  -76,     0)       4        4            4  stroke beacon-path  
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn red-spawn at (-102, -2), stroke beacon-path at (-93, -2)
+
+## spawn-red (spawn) along z
+TRANSECT 41 stations from (-94, -20) to (-94, 20), every 1
+  station        ground  surface  water  top  standing            step
+  (  -94,   -20)                                                    void
+  (  -94,   -19)                                                    void
+  (  -94,   -18)                                                    void
+  (  -94,   -17)                                                    void
+  (  -94,   -16)                                                    void
+  (  -94,   -15)                                                    void
+  (  -94,   -14)                                                    void
+  (  -94,   -13)                                                    void
+  (  -94,   -12)       4        4            4                      
+  (  -94,   -11)       4        4            4                      
+  (  -94,   -10)       4        4            4                      
+  (  -94,    -9)       4        4            4                      
+  (  -94,    -8)       4        4            4                      
+  (  -94,    -7)       4        4           11                      
+  (  -94,    -6)       4        4           12  spawn red-spawn     
+  (  -94,    -5)       4        4           13  spawn red-spawn     
+  (  -94,    -4)       4        4           14  spawn red-spawn     
+  (  -94,    -3)       4        4           15  spawn red-spawn     
+  (  -94,    -2)       4        4           16  spawn red-spawn     
+  (  -94,    -1)       4        4           17  spawn red-spawn     
+  (  -94,     0)       4        4           17  spawn red-spawn     
+  (  -94,     1)       4        4           16  spawn red-spawn     
+  (  -94,     2)       4        4           15  spawn red-spawn     
+  (  -94,     3)       4        4           14  spawn red-spawn     
+  (  -94,     4)       4        4           13  spawn red-spawn     
+  (  -94,     5)       4        4           12  spawn red-spawn     
+  (  -94,     6)       4        4           11                      
+  (  -94,     7)       4        4            4                      
+  (  -94,     8)       4        4            4                      
+  (  -94,     9)       4        4            4                      
+  (  -94,    10)       4        4            4                      
+  (  -94,    11)       4        4            4                      
+  (  -94,    12)                                                    void
+  (  -94,    13)                                                    void
+  (  -94,    14)                                                    void
+  (  -94,    15)                                                    void
+  (  -94,    16)                                                    void
+  (  -94,    17)                                                    void
+  (  -94,    18)                                                    void
+  (  -94,    19)                                                    void
+  (  -94,    20)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn red-spawn at (-96, -6), stroke beacon-path at (-93, -2)

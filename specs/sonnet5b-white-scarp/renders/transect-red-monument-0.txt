@@ -1,0 +1,61 @@
+## red-monument-0 (destroyable) along x
+TRANSECT 25 stations from (-63, 8) to (-39, 8), every 1
+  station        ground  surface  water  top  standing            step
+  (  -63,     8)       7        7            7                      
+  (  -62,     8)       7        7            7                      
+  (  -61,     8)       7        7            8  flora sward-cover   
+  (  -60,     8)       7        7            8  flora sward-cover   
+  (  -59,     8)       8        8            8                      +1
+  (  -58,     8)       8        8            8                      
+  (  -57,     8)       8        8            8                      
+  (  -56,     8)       8        8            8                      
+  (  -55,     8)       8        8            9  flora sward-cover   
+  (  -54,     8)       8        8            8                      
+  (  -53,     8)       8        8            8  destroyable red-monument  
+  (  -52,     8)       7        7           43  destroyable red-monument  -1
+  (  -51,     8)       7        7           44  destroyable red-monument  
+  (  -50,     8)       6        6           43  destroyable red-monument  -1
+  (  -49,     8)       6        6            6  destroyable red-monument  
+  (  -48,     8)       5        5            5                      -1
+  (  -47,     8)       5        5            5                      
+  (  -46,     8)       4        4            4                      -1
+  (  -45,     8)       4        4            4                      
+  (  -44,     8)       4        4            4                      
+  (  -43,     8)       4        4            4                      
+  (  -42,     8)       4        4            4                      
+  (  -41,     8)       4        4            4                      
+  (  -40,     8)       4        4            4                      
+  (  -39,     8)       4        4            4                      
+rises 1, falls 4, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora sward-cover at (-62, 7), destroyable red-monument at (-53, 6)
+
+## red-monument-0 (destroyable) along z
+TRANSECT 25 stations from (-51, -4) to (-51, 20), every 1
+  station        ground  surface  water  top  standing            step
+  (  -51,    -4)       4        4            4                      
+  (  -51,    -3)       4        4            4                      
+  (  -51,    -2)       4        4            4                      
+  (  -51,    -1)       4        4            4                      
+  (  -51,     0)       4        4            5  flora sward-cover   
+  (  -51,     1)       4        4            5  flora sward-cover   
+  (  -51,     2)       4        4            4                      
+  (  -51,     3)       4        4            4                      
+  (  -51,     4)       5        5            5                      +1
+  (  -51,     5)       5        5            5                      
+  (  -51,     6)       6        6            6  destroyable red-monument  +1
+  (  -51,     7)       7        7           43  destroyable red-monument  +1
+  (  -51,     8)       7        7           44  destroyable red-monument  
+  (  -51,     9)       7        7           43  destroyable red-monument  
+  (  -51,    10)       7        7            7  destroyable red-monument  
+  (  -51,    11)       7        7            7                      
+  (  -51,    12)       7        7            7                      
+  (  -51,    13)       7        7            7                      
+  (  -51,    14)       7        7            7                      
+  (  -51,    15)       7        7            7                      
+  (  -51,    16)       7        7            7                      
+  (  -51,    17)       7        7            7                      
+  (  -51,    18)       7        7            7                      
+  (  -51,    19)       7        7            7                      
+  (  -51,    20)       7        7            7                      
+rises 3, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: flora sward-cover at (-53, 0), destroyable red-monument at (-53, 6)

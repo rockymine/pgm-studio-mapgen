@@ -1,0 +1,223 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -20,
+    "y": 12,
+    "z": 78
+   },
+   "protection": [
+    {
+     "minX": -35,
+     "minZ": 70,
+     "maxX": -5,
+     "maxZ": 85
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z",
+    "-x"
+   ],
+   "footprint": {
+    "minX": -29,
+    "minZ": 73,
+    "maxX": -11,
+    "maxZ": 82
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 20,
+    "y": 12,
+    "z": -78
+   },
+   "protection": [
+    {
+     "minX": 5,
+     "minZ": -85,
+     "maxX": 35,
+     "maxZ": -70
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z",
+    "+x"
+   ],
+   "footprint": {
+    "minX": 11,
+    "minZ": -82,
+    "maxX": 29,
+    "maxZ": -73
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 48,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -55,
+    "minZ": -20,
+    "maxX": 55,
+    "maxZ": 20
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "The Scarp",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -15,
+    "y": 17,
+    "z": -10
+   },
+   "float": 5,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "The Scarp",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 14,
+    "y": 17,
+    "z": 9
+   },
+   "float": 5,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Scarp",
+  "created": "2026-09-21",
+  "authors": [
+   {
+    "name": "Claude Haiku 4.5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue",
+  "3": "neutral"
+ },
+ "structures": {
+  "layer": null,
+  "redstoneLines": [],
+  "ironCubes": [
+   {
+    "minX": -35,
+    "minZ": 76,
+    "renew": false,
+    "stamp": {
+     "kind": "ironcube",
+     "unit": "iron-1",
+     "image": 0
+    }
+   },
+   {
+    "minX": 32,
+    "minZ": -79,
+    "renew": false,
+    "stamp": {
+     "kind": "ironcube",
+     "unit": "iron-1",
+     "image": 1
+    }
+   },
+   {
+    "minX": -9,
+    "minZ": 76,
+    "renew": false,
+    "stamp": {
+     "kind": "ironcube",
+     "unit": "iron-2",
+     "image": 0
+    }
+   },
+   {
+    "minX": 6,
+    "minZ": -79,
+    "renew": false,
+    "stamp": {
+     "kind": "ironcube",
+     "unit": "iron-2",
+     "image": 1
+    }
+   }
+  ],
+  "walls": [],
+  "isEmpty": false
+ }
+}

@@ -1,0 +1,82 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Turbary Cut"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 8,
+  "surface": 8
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -26,
+    -3,
+    5,
+    6
+   ]
+  },
+  {
+   "id": "field",
+   "role": "piece",
+   "rect": [
+    -21,
+    -8,
+    17,
+    16
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -4,
+    -8,
+    8,
+    16
+   ],
+   "kind": "build"
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "red-spawn",
+    "piece": "spawn",
+    "at": [
+     10,
+     12
+    ],
+    "facing": "right",
+    "footprint": [
+     2,
+     6,
+     16,
+     12
+    ]
+   }
+  ],
+  "cores": [
+   {
+    "id": "red-core",
+    "piece": "field",
+    "at": [
+     33,
+     32
+    ],
+    "lava": 3,
+    "lavaHeight": 3,
+    "float": 6,
+    "leak": 5,
+    "openTop": false,
+    "name": "Turbary Core"
+   }
+  ]
+ },
+ "walls": []
+}

@@ -1,0 +1,135 @@
+{
+ "authors": [
+  "Claude Haiku 4.5"
+ ],
+ "created": "2026-09-21",
+ "themes": {
+  "ground": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   },
+   "wallEnabled": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 2,
+     "data": 0
+    }
+   },
+   "rimEdges": "void",
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 20,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 2,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            }
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 30,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 1,
+             "data": 0
+            }
+           }
+          ]
+         }
+        }
+       },
+       {
+        "thickness": 50,
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 0
+        }
+       }
+      ]
+     }
+    }
+   }
+  }
+ },
+ "mapTheme": "ground",
+ "relief": {
+  "*": {
+   "base": 20,
+   "reach": 0,
+   "step": 1,
+   "landform": "rolling",
+   "grain": {
+    "amplitude": 0.5,
+    "scale": 10,
+    "seed": 4701
+   },
+   "marks": [],
+   "pushes": []
+  }
+ },
+ "addShapes": [],
+ "addLayers": [],
+ "roomStyles": {},
+ "dressing": {
+  "styles": {},
+  "props": []
+ }
+}

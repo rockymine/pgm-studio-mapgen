@@ -1,0 +1,81 @@
+## spawn-red (spawn) along x
+TRANSECT 29 stations from (-104, 0) to (-76, 0), every 1
+  station        ground  surface  water  top  standing            step
+  ( -104,     0)       2        2            2                      
+  ( -103,     0)       2        2           15                      
+  ( -102,     0)       2        2           15  spawn red-spawn     
+  ( -101,     0)       2        2           15  spawn red-spawn     
+  ( -100,     0)       2        2           15  spawn red-spawn     
+  (  -99,     0)       2        2           15  spawn red-spawn     
+  (  -98,     0)       2        2           15  spawn red-spawn     
+  (  -97,     0)       2        2           15  spawn red-spawn     
+  (  -96,     0)       2        2           15  spawn red-spawn     
+  (  -95,     0)       2        2           15  spawn red-spawn     
+  (  -94,     0)       2        2           15  spawn red-spawn     
+  (  -93,     0)       2        2           15  spawn red-spawn     
+  (  -92,     0)       2        2           15  spawn red-spawn     
+  (  -91,     0)       2        2           15  stroke moor-track   
+  (  -90,     0)       2        2           15  stroke moor-track   
+  (  -89,     0)       2        2           15  spawn red-spawn     
+  (  -88,     0)       2        2           15  stroke moor-track   
+  (  -87,     0)       2        2           15  spawn red-spawn     
+  (  -86,     0)       2        2           15                      
+  (  -85,     0)       2        2            2  stroke moor-track   
+  (  -84,     0)       2        2            2  stroke moor-track   
+  (  -83,     0)       2        2            2  stroke moor-track   
+  (  -82,     0)       2        2            2  stroke moor-track   
+  (  -81,     0)       2        2            2                      
+  (  -80,     0)       2        2            2  stroke moor-track   
+  (  -79,     0)       2        2            2  stroke moor-track   
+  (  -78,     0)       2        2            2  stroke moor-track   
+  (  -77,     0)       2        2            2  stroke moor-track   
+  (  -76,     0)       2        2            2                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn red-spawn at (-102, -2), stroke moor-track at (-93, -1)
+
+## spawn-red (spawn) along z
+TRANSECT 41 stations from (-94, -20) to (-94, 20), every 1
+  station        ground  surface  water  top  standing            step
+  (  -94,   -20)                                                    void
+  (  -94,   -19)                                                    void
+  (  -94,   -18)                                                    void
+  (  -94,   -17)                                                    void
+  (  -94,   -16)                                                    void
+  (  -94,   -15)                                                    void
+  (  -94,   -14)                                                    void
+  (  -94,   -13)                                                    void
+  (  -94,   -12)       2        2            2                      
+  (  -94,   -11)       2        2            2                      
+  (  -94,   -10)       2        2            2                      
+  (  -94,    -9)       2        2            2                      
+  (  -94,    -8)       2        2            2                      
+  (  -94,    -7)       2        2            9                      
+  (  -94,    -6)       2        2           10  spawn red-spawn     
+  (  -94,    -5)       2        2           11  spawn red-spawn     
+  (  -94,    -4)       2        2           12  spawn red-spawn     
+  (  -94,    -3)       2        2           13  spawn red-spawn     
+  (  -94,    -2)       2        2           14  spawn red-spawn     
+  (  -94,    -1)       2        2           15  spawn red-spawn     
+  (  -94,     0)       2        2           15  spawn red-spawn     
+  (  -94,     1)       2        2           14  spawn red-spawn     
+  (  -94,     2)       2        2           13  spawn red-spawn     
+  (  -94,     3)       2        2           12  spawn red-spawn     
+  (  -94,     4)       2        2           11  spawn red-spawn     
+  (  -94,     5)       2        2           10  spawn red-spawn     
+  (  -94,     6)       2        2            9                      
+  (  -94,     7)       2        2            2                      
+  (  -94,     8)       2        2            2                      
+  (  -94,     9)       2        2            2                      
+  (  -94,    10)       2        2            2                      
+  (  -94,    11)       2        2            2                      
+  (  -94,    12)                                                    void
+  (  -94,    13)                                                    void
+  (  -94,    14)                                                    void
+  (  -94,    15)                                                    void
+  (  -94,    16)                                                    void
+  (  -94,    17)                                                    void
+  (  -94,    18)                                                    void
+  (  -94,    19)                                                    void
+  (  -94,    20)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn red-spawn at (-96, -6), stroke moor-track at (-92, -2)

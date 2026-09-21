@@ -1,0 +1,177 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 8,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "red-spawn",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -94,
+    "y": 8,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": -104,
+     "minZ": -12,
+     "maxX": -84,
+     "maxZ": 12
+    }
+   ],
+   "yaw": 270,
+   "doors": [
+    "+x"
+   ],
+   "footprint": {
+    "minX": -102,
+    "minZ": -6,
+    "maxX": -86,
+    "maxZ": 6
+   },
+   "iron": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "red-spawn",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 94,
+    "y": 8,
+    "z": 0
+   },
+   "protection": [
+    {
+     "minX": 84,
+     "minZ": -12,
+     "maxX": 104,
+     "maxZ": 12
+    }
+   ],
+   "yaw": 90,
+   "doors": [
+    "-x"
+   ],
+   "footprint": {
+    "minX": 86,
+    "minZ": -6,
+    "maxX": 102,
+    "maxZ": 6
+   },
+   "iron": []
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 23,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -16,
+    "minZ": -32,
+    "maxX": 16,
+    "maxZ": 32
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "red-core",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Turbary Core",
+   "anchor": {
+    "x": -51,
+    "y": 8,
+    "z": 0
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "core",
+    "unit": "red-core",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Turbary Core",
+   "anchor": {
+    "x": 50,
+    "y": 8,
+    "z": -1
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  }
+ ],
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtc"
+ ],
+ "meta": {
+  "name": "Turbary Cut",
+  "created": "2026-09-21",
+  "authors": [
+   {
+    "name": "Sonnet 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red",
+  "2": "blue"
+ },
+ "structures": null
+}

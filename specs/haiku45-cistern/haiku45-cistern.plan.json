@@ -1,0 +1,127 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Cistern"
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 20,
+  "observerY": 54
+ },
+ "pieces": [
+  {
+   "id": "ground",
+   "role": "piece",
+   "rect": [
+    -11,
+    4,
+    22,
+    12
+   ],
+   "surface": 20
+  },
+  {
+   "id": "spawn-left",
+   "role": "spawn",
+   "rect": [
+    -11,
+    14,
+    4,
+    3
+   ],
+   "surface": 20
+  },
+  {
+   "id": "spawn-right",
+   "role": "piece",
+   "rect": [
+    -7,
+    14,
+    6,
+    3
+   ],
+   "surface": 20
+  },
+  {
+   "id": "spawn-extra",
+   "role": "piece",
+   "rect": [
+    -1,
+    14,
+    4,
+    3
+   ],
+   "surface": 20
+  }
+ ],
+ "zones": [
+  {
+   "id": "middle",
+   "rect": [
+    -11,
+    -2,
+    22,
+    18
+   ],
+   "kind": "build"
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-right",
+    "at": [
+     15,
+     8
+    ],
+    "facing": "front",
+    "footprint": [
+     6,
+     3,
+     18,
+     9
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "spawn-right",
+    "at": [
+     2,
+     7
+    ]
+   },
+   {
+    "id": "iron-2",
+    "piece": "spawn-right",
+    "at": [
+     28,
+     7
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": [
+   {
+    "id": "core",
+    "piece": "ground",
+    "at": [
+     0,
+     10
+    ],
+    "lava": 3,
+    "lavaHeight": 3,
+    "float": 6,
+    "leak": 5,
+    "name": "The Cistern"
+   }
+  ],
+  "wools": []
+ },
+ "walls": [],
+ "boxes": []
+}
