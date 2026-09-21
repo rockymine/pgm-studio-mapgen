@@ -256,6 +256,9 @@ different wordings. `props.txt` is the table.
 - **a possible placement is not a required one.** The search says where a prop may stand; how many stand
   there is the author's. Plant to the outside of a piece, two in front of a hole, three along a road, none
   where a build zone is arrived at, none on the approach in front of a wall, none on a contested middle.
+- **state `roomStyles`.** The composed board's spawn and wool room are the studio's built-in bedrock box,
+  because a plan states no shell and a finish that states none keeps the default — at 200, with no finding.
+  Every board on this card wears the box for the same reason, and none of them is about houses.
 - **check a site against the dressing pass, not against your own filter.** A search that wants eight level
   neighbours refuses every rim cell, and a rim is often the only row a road leaves.
 - **a structure is one made layer per span.** A leg passing a floor is two spans in one column, so cut the

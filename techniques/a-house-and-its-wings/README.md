@@ -84,7 +84,13 @@ storey down, `shed-wing` gives it a single climbing plane, and `shallow-wing` ke
 `pitch: 1`, which drops the same wing's ridge from y17 to **y15**. All four are the same hall.
 
 **The five forms are `gable`, `flat`, `hip`, `gambrel`, `shed` and `saltbox`**, and `flat` is the only one
-that can carry a hole — which is why a wool room and a spawn have always worn it.
+that can carry a hole.
+
+**That is a capability rather than a requirement, and reading it as one builds the bedrock box again.** A
+wool room and a spawn are entered through their own doors and have no use for a lid that opens, so they wear
+whatever roof the board wants; `flat` is needed only where the lid itself has to open. The sentence that
+used to stand here — *which is why a wool room and a spawn have always worn it* — described a habit, and a
+board built on it comes out with the studio's default shape in a different material.
 
 ## What the ridges decide
 

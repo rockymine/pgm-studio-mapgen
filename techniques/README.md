@@ -5,6 +5,17 @@ lesson. A card states its variants in one board, commits the text reads that pro
 mistake the technique invites, and cites no past map — a reader who wants to know how a thing is done reads
 the card rather than finding the thing inside a thousand-line finish.
 
+**A card's board is a demonstration of its instrument and never a model for a map.** Eleven objectives on
+one island, sixteen pads asking for 124 props, twelve panels of the same hillside: these are built so a
+comparison can be read, and several of them say so in their own *Limits*. What a board should be is
+`ORDER-OF-WORK.md` and `WHAT-A-BOARD-IS-MADE-OF.md`; what a card holds is how one instrument behaves.
+
+**The same goes for anything a card leaves on the studio's default, and the spawn and the wool room are the
+ones that bite.** A finish stating no `roomStyles` stamps the built-in bedrock box, at 200, with no finding
+— so every card carrying a room carries a box, because the room is not what that card is about. A board
+that copies the silence ships the box, and the two structures a player sees from the inside are the last
+place a default belongs.
+
 `GENERATION-NOTES.md` is the other half and is not a substitute. The notes hold what the API cannot say about
 itself, one claim to a paragraph; a card holds one instrument worked all the way through, with the reads
 beside it. Where a card exists, the notes point at it rather than repeating it.
