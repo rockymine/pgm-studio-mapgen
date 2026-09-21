@@ -1,173 +1,105 @@
 #!/usr/bin/env python3
-"""
-haiku45-bastion: Mixed Wool + Monument board
+"""haiku45-bastion: Mixed Wool + Monument board."""
+import json, os
 
-A fortified structure board combining monument destruction and wool capture objectives.
-Central high tower holds the monument; wool is positioned for team advancement.
-Design emphasizes dual objectives requiring different tactical approaches.
-
-Plan: 8 pieces
-- tower: central elevated structure
-- monument-peak: platform for monument placement
-- wool-ledge: wool placement area
-- rampart-left, rampart-right: defensive terraces
-- approach-north, approach-south: team advances
-- spawn-center: shared spawn area between teams
-
-Relief: minimal grain only.
-Themes: slope-axis layered ground, emphasizing structural contrast.
-"""
-
-import json
-import math
+HERE = os.path.dirname(os.path.abspath(__file__))
+SLUG = "haiku45-bastion"
 
 def solid(i, d=0):
-    """Material: solid color/texture at given data value."""
     return {"kind": "solid", "id": i, "data": d}
 
 def layered(bands, axis="depth", ending="repeat"):
-    """Material: layered stack of materials with thickness bands.
-
-    bands: list of (thickness, material) tuples
-    axis: "depth" (Y), "slope" (terrain angle), "height" (Y bands)
-    ending: "repeat" or "clamp"
-    """
-    stack = {
-        "ending": ending,
-        "bands": [{"thickness": t, "material": m} for t, m in bands]
-    }
+    stack = {"ending": ending, "bands": [{"thickness": t, "material": m} for t, m in bands]}
     return {"kind": "layered", "axis": axis, "stack": stack}
 
-# ============================================================================
-# PLAN
-# ============================================================================
+GRASS, DIRT, STONE, ANDESITE = solid(2, 0), solid(3, 0), solid(1, 0), solid(1, 5)
+BASE_Y = 20
 
+# Mixed board: monument tower, wool platform, spawns, non-overlapping pieces
 plan = {
-    "kind": "plan",
+    "plan": 2,
+    "meta": {"name": "Bastion"},
+    "globals": {"cell": 5, "symmetry": "rot_180", "maxPlayers": 16, "surface": BASE_Y, "observerY": 48},
     "pieces": [
-        # Central tower structure
-        {
-            "name": "tower",
-            "kind": "rectangle",
-            "at": {"x": -3, "z": -3},
-            "size": {"x": 6, "z": 6},
-            "base_y": 25,
-        },
-        # Monument platform at peak
-        {
-            "name": "monument-peak",
-            "kind": "rectangle",
-            "at": {"x": -1, "z": -1},
-            "size": {"x": 2, "z": 2},
-            "base_y": 30,
-        },
-        # Wool placement on side ledge
-        {
-            "name": "wool-ledge",
-            "kind": "rectangle",
-            "at": {"x": 5, "z": -1},
-            "size": {"x": 3, "z": 3},
-            "base_y": 27,
-        },
-        # Defensive terraces
-        {
-            "name": "rampart-left",
-            "kind": "rectangle",
-            "at": {"x": -10, "z": -3},
-            "size": {"x": 4, "z": 6},
-            "base_y": 22,
-        },
-        {
-            "name": "rampart-right",
-            "kind": "rectangle",
-            "at": {"x": 7, "z": -3},
-            "size": {"x": 4, "z": 6},
-            "base_y": 22,
-        },
-        # Team approach areas
-        {
-            "name": "approach-north",
-            "kind": "rectangle",
-            "at": {"x": -3, "z": -9},
-            "size": {"x": 6, "z": 4},
-            "base_y": 20,
-        },
-        {
-            "name": "approach-south",
-            "kind": "rectangle",
-            "at": {"x": -3, "z": 6},
-            "size": {"x": 6, "z": 4},
-            "base_y": 20,
-        },
+        # Central tower
+        {"id": "tower", "role": "piece", "rect": [-2, -2, 4, 4], "surface": BASE_Y},
+        # Monument on tower (high)
+        {"id": "monument-peak", "role": "piece", "rect": [-1, -3, 2, 1], "surface": 30},
+        # Wool platform (offset, non-overlapping)
+        {"id": "wool-platform", "role": "piece", "rect": [4, 1, 3, 3], "surface": 27},
+        # Defense terraces (non-overlapping)
+        {"id": "rampart-left", "role": "piece", "rect": [-8, -1, 3, 5], "surface": 22},
         # Shared spawn
-        {
-            "name": "spawn-center",
-            "kind": "rectangle",
-            "at": {"x": -2, "z": 12},
-            "size": {"x": 4, "z": 3},
-            "base_y": 19,
-        },
+        {"id": "spawn-zone", "role": "spawn", "rect": [-5, 6, 10, 3], "surface": BASE_Y},
     ],
-}
-
-# ============================================================================
-# FINISH
-# ============================================================================
-
-# Ground material: slope-axis layering
-ground_material = layered([
-    (30, solid("grass_block")),
-    (15, solid("dirt")),
-    (45, solid("stone")),
-], axis="slope", ending="repeat")
-
-finish = {
-    "kind": "finish",
-    "themes": {
-        "ground": {
-            "buckets": {
-                "surface": ground_material,
-                "fill": solid("dirt"),
-                "bedrock": solid("bedrock"),
-            },
-        },
-    },
+    "zones": [
+        {"id": "main", "rect": [-8, -3, 16, 12], "kind": "build"}
+    ],
     "placements": {
-        "objectives": [
-            {
-                "kind": "monument",
-                "name": "The Bastion",
-                "location": {"piece": "monument-peak", "at": [1, 1]},
-                "float": 3,
-                "leak": 2,
-            },
-            {
-                "kind": "wool",
-                "color": "green",
-                "location": {"piece": "wool-ledge", "at": [1, 1]},
-            },
+        "spawns": [
+            {"id": "spawn-1", "piece": "spawn-zone", "at": [25, 6], "facing": "front",
+             "footprint": [5, 3, 10, 9]},
+        ],
+        "iron": [
+            {"id": "iron-1", "piece": "spawn-zone", "at": [2, 6]},
+            {"id": "iron-2", "piece": "spawn-zone", "at": [18, 6]},
+        ],
+        "destroyables": [
+            {"id": "monument", "piece": "monument-peak", "at": [0, 0], "style": "pillar-3",
+             "materials": "obsidian", "float": 2, "leak": 1, "name": "The Bastion"}
+        ],
+        "cores": [],
+        "wools": [
+            {"id": "wool", "piece": "wool-platform", "at": [1, 1]},
         ],
     },
-    "relief": {
-        "grain": {"amplitude": 0.5, "frequency": 0.05},
-    },
+    "walls": [],
+    "boxes": [],
 }
 
-# ============================================================================
-# OUTPUT
-# ============================================================================
+relief = {
+    "*": {
+        "base": BASE_Y, "reach": 0, "step": 1, "landform": "rolling",
+        "grain": {"amplitude": 0.6, "scale": 12, "seed": 4704},
+        "marks": [],
+        "pushes": []
+    }
+}
 
-if __name__ == "__main__":
-    import sys
+GROUND_SURFACE = layered([
+    (20, layered([(1, GRASS), (1, DIRT)])),
+    (30, layered([(1, DIRT), (2, STONE)])),
+    (50, solid(1, 0))
+], axis="slope")
 
-    plan_file = f"{sys.argv[1]}.plan.json"
-    finish_file = f"{sys.argv[1]}.finish.json"
+themes = {
+    "ground": {
+        "bedrock": {"relative": False, "value": 1},
+        "fill": STONE,
+        "wall": ANDESITE,
+        "wallEnabled": True,
+        "rim": {"enabled": True, "depth": 1, "material": GRASS},
+        "rimEdges": "void",
+        "surface": {"enabled": True, "depth": 3, "material": GROUND_SURFACE}
+    }
+}
 
-    with open(plan_file, "w") as f:
-        json.dump(plan, f, indent=2)
+finish = {
+    "authors": ["Claude Haiku 4.5"],
+    "created": "2026-09-21",
+    "themes": themes,
+    "mapTheme": "ground",
+    "relief": relief,
+    "addShapes": [],
+    "addLayers": [],
+    "roomStyles": {},
+    "dressing": {"styles": {}, "props": []}
+}
 
-    with open(finish_file, "w") as f:
-        json.dump(finish, f, indent=2)
+def write_json(path, data):
+    with open(path, 'w') as f:
+        json.dump(data, f, indent=1)
 
-    print(f"✓ {plan_file}")
-    print(f"✓ {finish_file}")
+write_json(os.path.join(HERE, f"{SLUG}.plan.json"), plan)
+write_json(os.path.join(HERE, f"{SLUG}.finish.json"), finish)
+print(f"Wrote {SLUG}.plan.json and {SLUG}.finish.json")

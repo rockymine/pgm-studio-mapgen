@@ -207,7 +207,7 @@ finish = {
             {"kind": "boulder", "id": "quayrock-1", "x": -30, "z": -18, "style": "quay-rock", "routeStandoff": 2},
             {"kind": "boulder", "id": "quayrock-2", "x": -30, "z": 18, "style": "quay-rock", "routeStandoff": 2},
             {"kind": "house", "id": "ropewalk", "style": "ropewalk",
-             "wings": [{"minX": -110, "minZ": -22, "maxX": -90, "maxZ": -10}]},
+             "wings": [{"corners": [[-106, -21], [-92, -12]]}]},
         ],
     },
 }

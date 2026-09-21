@@ -1,221 +1,221 @@
-HEIGHTMAP  1 char = 1x1 blocks (the top-left block of each)  x -29..28 across, z -108..107 down
-KEY  char = ground height above y1 in bands of 1 block(s): 0 = y1..1, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
-             -2        -1         0         1         2        
-     9876543210987654321098765432101234567890123456789012345678
--108      iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiijjj     
--107      iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiijjj     
--106      iiiiiiiiiiiiiiiiiiiiiiiiHHHHHHHHHHiiiiiiiiiijjii     
--105      iiiiiiiiiiiiiiiiiiiiiiiiHHHHHHHHHHiiiiiiiiiiiiii     
--104      iiiiiiiiiiiiiiiiiiiiiiiiHHHHHHHHHHiiiiiiiiiiiiii     
--103      iiiiiiiiiiiiiiiiiiiiiiiiHHHHHHHHHHiiiiiiiiiiiiii     
--102      iiiiiiiiiiiiiiiiiiiiiiiiHHHHHHHHHHiiHHHiiiiiiiii     
--101      iiiiiiiiiiiiiiiiiiiiiiiiHHHHHHHHHHiiHHHiiiiiiiii     
--100      iiiiiiiiiiiiiiiiiiiiiiiiHHHHHHHHHHiiHHHiiiiiiiii     
- -99      iiiiiiiiiiiiiiiiiiiiiiiiHHHHHHHHHHiiiiiiiiiiiiii     
- -98      iiiiiiiiiiiiiiiiiiiiiiiiHHHHHHHHHHiiiiiiiiiiiiii     
- -97      iiiiiiiiiiiiiiiiiiiiiiiiHHHHHHHHHHiiiiiiiiiiiiii     
- -96      iiiiiiiiiiiiiiiiiiiiiiiiHHHHiiHHHHiiiiiiiiiiiiii     
- -95      iiiiiiiiiiiiiiiiiiiiiiiiHHHiiiiHHHiiiiiiiiiiiiii     
- -94      iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii     
- -93      iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii     
- -92      iiihhhhiiiiiihiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii     
- -91      ihhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii     
- -90      hhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii     
- -89      hhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiiiiiiiiii     
- -88      hhhhhhhhhhhhhhhhhhhiiiiiiiiiiiiiiiiiiiiiiiiihhhh     
- -87      hhhhhhhhhhhhhhhhhhhiiihhhhhiiiiiiiiiiiiiihhhhhhh     
- -86      hhhhhhhhhhhhhhhhhhhhhhhhhhhhiiiiihhhhhhhhhhhhhhh     
- -85      hhhhhhhhhhhhhhhhhhhhhhhhhhhhiiihhhhhhhhhhhhhhhhh     
- -84      hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh     
- -83      hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh     
- -82      ghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh     
- -81      ghhhhhhhhhhhggghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh     
- -80      gghhhhhhhhgggggghhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh     
- -79      gghhhhhhggggggggghhhhhhhhhhhhhhhhhhhhhhhgggggggg     
- -78      ggghhhggggggggggggghhhhhhhhhhhhhhhhhhhhggggggggg     
- -77      gggggggggggggggggggghhhhhhhhhhhhhhhhhhgggggggggg     
- -76      ggggggggggggggggggggghhhhhhhhhhhhhhhhggggggggggg     
- -75      gggggggggggggggggggggghhhhhhgggggggggggggggggggg     
- -74      ggggggggggggggggggggggghhhgggggggggggggggggggggg     
- -73      gggggggggggggggggggggggggggggggggggggggggggggggg     
- -72      gggggggggggggggggggggggggggggggggggggggggggggggg     
- -71      ggggffgggggggggggggggggggggggggggggggggggggggggg     
- -70      gggfffgggggggggggggggggggggggggggggggggggggggggg     
- -69      gggggggggggggggggggggggggggggggggggffffffffggggg     
- -68      gggggggggggggggggggggggggggggggfffffffffffffffff     
- -67      ggggggggggggggggggggggffffffffffffffffffffffffff     
- -66      gggggggggggggggggggggfffffffffffffffffffffffffff     
- -65      gggggggggHHHgggggggggfffffffffffffffffffffffffff     
- -64      gggggggggHHHHHgggggggfffffffffffffffffffffffffff     
- -63      gggggggggHH!HHggggggffffffffffffffffffffffffffff     
- -62      gggggggggHHHHHggggggfffffffffffffeeeffffffffffff     
- -61      gggggggggHHHHHggggggfffffeefffffeeeeeeeeeefffffe     
- -60      gggggggggggggggggggffffeeeeeeeeeeeeeeeeeeeeeeeee     
- -59      gggggggggggggggggggfffeeeeeeeeeeeeeeeeeeeeeeeeee     
- -58      ggggggggggggggggggffffeeeeeeeeeeeeeeeeeeeeeeeeee     
- -57      gggggggggggggggggffffeeeeeeeeeeeeeeeeedddddeeeee     
- -56      ggggggggggggggggffffeeeeeeeeeeeeeeddddddcccdddee     
- -55      gggggggggggggggffffeeeeeeeeeeedddddccccccbbccddd     
- -54      gffffffgggggffffffeeeeeeeeddddddcccbbbbbbaabbccc     
- -53      fffffffffffffffffeeeeeedddddddccbbbaaaaa999aabbb     
- -52      ffffffffffffffffeeeeeddddddddccbaa999999888899ab     
- -51      fffffffffffffffeeeedddddddddcbba998878887777889a     
- -50      eeeeeeeeeeeeeeeeeeddddddddcccba98777667766667889     
- -49      eeeeeeeeeeeeeeeeeddddddddcccba987766666666666788     
- -48      eeeeeeeeeeeeeeeeddddddddcccbaa987665555555556678     
- -47      eeeeeeeeeedddddddddddddcccba98876655555555555566     
- -46      dddddddddddddddddddddccccbba98766555544444455556     
- -45      ddddddeedddddddddddcccccba9987665554444443444455     
- -44      dddddeeeeeddddddccccccccba98776555444333333344445    
- -43      ddddeefgfeeeddddcccccccbba9766554444332222233444456  
- -42      ddeeffghgfffeeddcccccccba987655544433221122233444566 
- -41      eeffghhihhggffeeddccccbba9876554443322111112233445678
- -40      ffgghiijiiihggffedddccba9976654443322111111123344556 
- -39      fghiijkkkjjiiihgffedccba9976654433221111001122334456 
- -38      hhjjkklllkkjjjihhgeeddcb987655443322211100112233445  
- -37      hjjkllmmmlllkkjiiggfeedba98765443332221111112233445  
- -36      jjklmmmmmmmlllkkiihggedca9876554433222111111223334   
- -35      jkllmmmmmmmllllkjiihgfdca9876654433322111222223334   
- -34      kklmmmmnmmmmmmllkkjihfedba87765443332212222222333    
- -33      kllmmmnnnnmmmmllllkihgedba98776544332222222222233    
- -32      kllmmnnonnnnmmllllkjhgfdca98876544332222233333233    
- -31      kllmmnooooonnmmmlkkjhgecba9987654433222223333322     
- -30      kllmmnoooooonnmllkjihfecba9987654332222333333332     
- -29      kllmnnopppooonmllkjihfdcba9987654432222333333333     
- -28      kllmmnooppoonnmlkkjigfdcaa9988765433233334444433     
- -27      kkllmnoooooonmllkkjigedba99988765443333344555443     
- -26      jkllmnnoonnnmmlkkjjigedba99988765544444445565544     
- -25      jkklmmmnnnmmmlkkjjihfeca999888776655444556666655     
- -24      jkkklllmmmlllkkkjihgfdba998888777665555566677666     
- -23      ijjkkkllllkkkkjjiigfecb9988888877766656676777766     
- -22      iijjjjjjkjjjjjiihhfedba9888888877877777778888877     
- -21      hiiijjjjjjjjjiihgffecba8888888888888777788888888     
- -20      gghhiijjjjiiihhgffddca98888888888888888888888888     
- -19      efgghhiiiihhgggffddbba98888888888888888888888888     
- -18      cdefgghhhhgfffeeddbba988888888888888888888888888     
- -17      cdddefgggffeeedccbba9988888888888888888888888888     
- -16      bbbcddefeedccccbbaa98888888888888888888888888888     
- -15      aaaabccdddcbbbaaa9998888888888888888888888888887     
- -14      9999aabcbbaa9a9998888888888888888888888888888887     
- -13      998899aaaa99999888888888888888888888888888888888     
- -12      998888999988888888888888888888888888888888888888     
- -11      998888888888888888888888888888888888888888888888     
- -10      998888888888888888888888888888888888888888888888     
-  -9      998888888888888888888888888888888888888888888888     
-  -8                                                           
-  -7                                                           
-  -6                                                           
-  -5                                                           
-  -4                                                           
-  -3                                                           
-  -2                                                           
-  -1                                                           
-   0                                                           
-   1                                                           
-   2                                                           
-   3                                                           
-   4                                                           
-   5                                                           
-   6                                                           
-   7                                                           
-   8      888888888888888888888888888888888888888888888899     
-   9      888888888888888888888888888888888888888888888899     
-  10      888888888888888888888888888888888888888888888899     
-  11      888888888888888888888888888888888888889999888899     
-  12      88888888888888888888888888888888899999aaaa998899     
-  13      7888888888888888888888888888888999a9aabbcbaa9999     
-  14      7888888888888888888888888888999aaabbbcdddccbaaaa     
-  15      88888888888888888888888888889aabbccccdeefeddcbbb     
-  16      8888888888888888888888888899abbccdeeeffgggfedddc     
-  17      888888888888888888888888889abbddeefffghhhhggfedc     
-  18      88888888888888888888888889abbddffggghhiiiihhggfe     
-  19      88888888888888888888888889acddffghhiiijjjjiihhgg     
-  20      8888888877778888888888888abceffghiijjjjjjjjjiiih     
-  21      7788888777777787788888889abdefhhiijjjjjkjjjjjjii     
-  22      6677776766566677788888899bcefgiijjkkkkllllkkkjji     
-  23      666776665555566777888899abdfghijkkklllmmmlllkkkj     
-  24      556666655444556677888999acefhijjkklmmmnnnmmmlkkj     
-  25      44556554444444556788999abdegijjkklmmnnnoonnmllkj     
-  26      34455544333334456788999abdegijkkllmnoooooonmllkk     
-  27      3344444333323345678899aacdfgijkklmnnooppoonmmllk     
-  28      3333333332222344567899abcdfhijkllmnoooppponnmllk     
-  29      2333333332222334567899abcefhijkllmnnoooooonmmllk     
-  30      2233333222223344567899abceghjkklmmmnnooooonmmllk     
-  31     33233333222223344567889acdfghjkllllmmnnnnonnmmllk     
-  32     33222222222223344567789abdeghikllllmmmmnnnnmmmllk     
-  33     33322222221223334456778abdefhijkkllmmmmmmnmmmmlkk     
-  34    4333222221112233344566789acdfghiijkllllmmmmmmmllkj     
-  35    4333221111112223344556789acdegghiikklllmmmmmmmlkjj     
-  36   54433221111112223334456789abdeefggiijkklllmmmllkjjh     
-  37   544332211001112223344556789bcddeeghhijjjkklllkkjjhh     
-  38  6544332211001111223344566799abccdeffghiiijjkkkjiihgf     
-  39  6554433211111112233444566799abccdddeffgghiiijiihggff     
-  40 8765443322111112233444556789abbccccddeeffgghhihhgffee     
-  41  665444332221122334445556789abcccccccddeefffghgffeedd     
-  42   6544443322222334444556679abbcccccccddddeeefgfeedddd     
-  43     54444333333344455567789abccccccccddddddeeeeeddddd     
-  44      5544443444444555667899abcccccdddddddddddeedddddd     
-  45      65555444444555566789abbccccddddddddddddddddddddd     
-  46      66555555555555667889abcccdddddddddddddeeeeeeeeee     
-  47      876655555555566789aabcccddddddddeeeeeeeeeeeeeeee     
-  48      887666666666667789abcccddddddddeeeeeeeeeeeeeeeee     
-  49      98876666776677789abcccddddddddeeeeeeeeeeeeeeeeee     
-  50      a988777788878899abbcdddddddddeeeefffffffffffffff     
-  51      ba998888999999aabccddddddddeeeeeffffffffffffffff     
-  52      bbbaa999aaaaabbbccdddddddeeeeeefffffffffffffffff     
-  53      cccbbaabbbbbbcccddddddeeeeeeeeffffffgggggffffffg     
-  54      dddccbbccccccdddddeeeeeeeeeeeffffggggggggggggggg     
-  55      eedddcccddddddeeeeeeeeeeeeeeffffgggggggggggggggg     
-  56      eeeeedddddeeeeeeeeeeeeeeeeeffffggggggggggggggggg     
-  57      eeeeeeeeeeeeeeeeeeeeeeeeeeffffgggggggggggggggggg     
-  58      eeeeeeeeeeeeeeeeeeeeeeeeeefffggggggggggggggggggg     
-  59      eeeeeeeeeeeeeeeeeeeeeeeeeffffggggggggggggggggggg     
-  60      efffffeeeeeeeeeefffffeefffffggggggHHHHHggggggggg     
-  61      ffffffffffffeeefffffffffffffggggggHHHHHggggggggg     
-  62      ffffffffffffffffffffffffffffggggggHH!HHggggggggg     
-  63      fffffffffffffffffffffffffffgggggggHHHHHggggggggg     
-  64      fffffffffffffffffffffffffffgggggggggHHHggggggggg     
-  65      fffffffffffffffffffffffffffggggggggggggggggggggg     
-  66      ffffffffffffffffffffffffffgggggggggggggggggggggg     
-  67      fffffffffffffffffggggggggggggggggggggggggggggggg     
-  68      gggggffffffffggggggggggggggggggggggggggggggggggg     
-  69      ggggggggggggggggggggggggggggggggggggggggggfffggg     
-  70      ggggggggggggggggggggggggggggggggggggggggggffgggg     
-  71      gggggggggggggggggggggggggggggggggggggggggggggggg     
-  72      gggggggggggggggggggggggggggggggggggggggggggggggg     
-  73      gggggggggggggggggggggghhhggggggggggggggggggggggg     
-  74      gggggggggggggggggggghhhhhhgggggggggggggggggggggg     
-  75      ggggggggggghhhhhhhhhhhhhhhhggggggggggggggggggggg     
-  76      gggggggggghhhhhhhhhhhhhhhhhhgggggggggggggggggggg     
-  77      ggggggggghhhhhhhhhhhhhhhhhhhhggggggggggggghhhggg     
-  78      gggggggghhhhhhhhhhhhhhhhhhhhhhhggggggggghhhhhhgg     
-  79      hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhgggggghhhhhhhhgg     
-  80      hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhggghhhhhhhhhhhg     
-  81      hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhg     
-  82      hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh     
-  83      hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh     
-  84      hhhhhhhhhhhhhhhhhiiihhhhhhhhhhhhhhhhhhhhhhhhhhhh     
-  85      hhhhhhhhhhhhhhhiiiiihhhhhhhhhhhhhhhhhhhhhhhhhhhh     
-  86      hhhhhhhiiiiiiiiiiiiiihhhhhiiihhhhhhhhhhhhhhhhhhh     
-  87      hhhhiiiiiiiiiiiiiiiiiiiiiiiiihhhhhhhhhhhhhhhhhhh     
-  88      iiiiiiiiiiiiiiiiiiiiiiiiiiiiiihhhhhhhhhhhhhhhhhh     
-  89      iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiihhhhhhhhhhhhhhhhh     
-  90      iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiihhhhhhhhhhhhhhhi     
-  91      iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiihiiiiiihhhhiii     
-  92      iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii     
-  93      iiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii     
-  94      iiiiiiiiiiiiiiHHHiiiiHHHiiiiiiiiiiiiiiiiiiiiiiii     
-  95      iiiiiiiiiiiiiiHHHHiiHHHHiiiiiiiiiiiiiiiiiiiiiiii     
-  96      iiiiiiiiiiiiiiHHHHHHHHHHiiiiiiiiiiiiiiiiiiiiiiii     
-  97      iiiiiiiiiiiiiiHHHHHHHHHHiiiiiiiiiiiiiiiiiiiiiiii     
-  98      iiiiiiiiiiiiiiHHHHHHHHHHiiiiiiiiiiiiiiiiiiiiiiii     
-  99      iiiiiiiiiHHHiiHHHHHHHHHHiiiiiiiiiiiiiiiiiiiiiiii     
- 100      iiiiiiiiiHHHiiHHHHHHHHHHiiiiiiiiiiiiiiiiiiiiiiii     
- 101      iiiiiiiiiHHHiiHHHHHHHHHHiiiiiiiiiiiiiiiiiiiiiiii     
- 102      iiiiiiiiiiiiiiHHHHHHHHHHiiiiiiiiiiiiiiiiiiiiiiii     
- 103      iiiiiiiiiiiiiiHHHHHHHHHHiiiiiiiiiiiiiiiiiiiiiiii     
- 104      iiiiiiiiiiiiiiHHHHHHHHHHiiiiiiiiiiiiiiiiiiiiiiii     
- 105      iijjiiiiiiiiiiHHHHHHHHHHiiiiiiiiiiiiiiiiiiiiiiii     
- 106      jjjiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii     
- 107      jjjiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii     
-low y1, high y26, range 25
+HEIGHTMAP  1 char = 1x1 blocks (the top-left block of each)  x -30..29 across, z -108..107 down
+KEY  char = ground height above y6 in bands of 1 block(s): 0 = y6..6, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
+     3        -2        -1         0         1         2         
+     098765432109876543210987654321012345678901234567890123456789
+-108       dddddddddddddddddddddddddddddddddddddddddddddeee      
+-107       dddddddddddddddddddddddddddddddddddddddddddddeee      
+-106       ddddddddddddddddddddddddHHHHHHHHHHddddddddddeedd      
+-105       ddddddddddddddddddddddddHHHHHHHHHHdddddddddddddd      
+-104       ddddddddddddddddddddddddHHHHHHHHHHdddddddddddddd      
+-103       ddddddddddddddddddddddddHHHHHHHHHHdddddddddddddd      
+-102       ddddddddddddddddddddddddHHHHHHHHHHddHHHddddddddd      
+-101       ddddddddddddddddddddddddHHHHHHHHHHddHHHddddddddd      
+-100       ddddddddddddddddddddddddHHHHHHHHHHddHHHddddddddd      
+ -99       ddddddddddddddddddddddddHHHHHHHHHHdddddddddddddd      
+ -98       ddddddddddddddddddddddddHHHHHHHHHHdddddddddddddd      
+ -97       ddddddddddddddddddddddddHHHHHHHHHHdddddddddddddd      
+ -96       ddddddddddddddddddddddddHHHHddHHHHdddddddddddddd      
+ -95       ddddddddddddddddddddddddHHHddddHHHdddddddddddddd      
+ -94       dddddddddddddddddddddddddddddddddddddddddddddddd      
+ -93       ddddcddddddddddddddddddddddddddddddddddddddddddd      
+ -92       ddcccccdddddcccddddddddddddddddddddddddddddddddd      
+ -91       dccccccccccccccccddddddddddddddddddddddddddddddc      
+ -90       ccccccccccccccccccddddddddddddddddddddcccccccccc      
+ -89       cccccccccccccccccccddddddddccddccccccccccccccccc      
+ -88       cccccccccccccccccccccccccccccccccccccccccccccccc      
+ -87       cccccccccccccccccccccccccccccccccccccccccccccccc      
+ -86       cccccccccccccccccccccccccccccccccccccccccccccccb      
+ -85       cccccccccccccccccccccccccccccccccccccccccbbbbbbb      
+ -84       ccccccccccccccccccccccccccccccccccbbbbHHHHHHHHHHH     
+ -83       bcccccccccccbbbcccccccccccccccccbbbbbbHHHHHHHHHHH     
+ -82       bbcccccccccbbbbbbccccccccccccccbbbbbbbHHHHHHHHHHH     
+ -81       bbccccccccbbbbbbbbccccccbbbccbbbbbbbbbHHHHHHHHHHH     
+ -80       bbccccccbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbHHHHHHHHHHH     
+ -79       bbbccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaHHHHHHHHHHH     
+ -78       bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaHHHHHHHHHHH     
+ -77       bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaHHHHHHHHHHH     
+ -76       bbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaHHHHHHHHHHH     
+ -75       bbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaa9999999999      
+ -74       bbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaa999999999999      
+ -73       bbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaa9999999999988888      
+ -72       bbbbbbbbbbbbbbbbbbbbbbaaaaaaaa999999999988888888      
+ -71       bbbbaabbbbbbbbbbbbbbaaaaaaaaa9999999HHHHHHHHHHHHH     
+ -70       bbbaaabbbbbbbbbbbbbaaaaaaaa999999988HHHHHHHHHHHHH     
+ -69       bbbabbbbbbbbbbbbbbbaaaaaaa9999998888HHHHHHHHHHHHH     
+ -68       bbbbbbbbbbbbbbbbbbbaaaaaa99999888888HHHHHHHHHHHHH     
+ -67       bbbbbbbbbbbbbbbbbbbaaaaa999998888877HHHHHHHHHHHHH     
+ -66       bbbbbbbbbbbbbbbbbbbbaaa99999888877777HHHHHHHHHHHH     
+ -65       bbbbbbbbbHHHbbbbbbbbbaa99988888777777HHHHHHHHHHHH     
+ -64       bbbbbbbbbHHHHHbbbbbbba999888887777666HHHHHHHHHHHH     
+ -63       bbbbbbbbbHH!HHbbbbbbaa998888877776666HHHHHHHHHHHH     
+ -62       bbbbbbbbbHHHHHbbbbbba9998887777766666HHHHHHHHHHHH     
+ -61       bbbbbbbbbHHHHHbbbbbba998887777666665555555555555      
+ -60       bbbbbbbbbbbbbbbbbbba9988877776666555555555555554      
+ -59       bbbbbbbbbbbbbbbbbbba9988777766665555444444444444      
+ -58       bbbbbbbbbbbbbbbbbba99888777666555544444444444444      
+ -57       bbbbbbbbbbbbbbbbba999887776665554444333333333333      
+ -56       bbbbbbbbbbbbbbbbaa998877766655544433333333333333      
+ -55       baaaabbbbbbbbbaaa998887766655544433322~222233333      
+ -54       aaaaaaaabaaaaaaa9988877666555443332211~~22222222      
+ -53       aaaaaaaaaaaaaaa99888776665554433222111~~1122222222    
+ -52       aaaaaaaaaaaa99998887766655544433211111~~~1111222211   
+ -51       99999999999999988877666555444332211111~~~~11111111111 
+ -50       9999999999999988877766555444332211111~~~~~~~1111111111
+ -49       999999999988888877766655544433221111~~~~~~~~~~~1111111
+ -48       88888888888888877766655544433221111~~~~~~~~~~~~111111 
+ -47       88888888888887777766655544433221~~~~~~~~~~~~~~~111111 
+ -46       888888888777777776665555443332211~~~~~~~~~~~~~~11111  
+ -45       7777888887777776666555544433322111~~~~~~~~~~~~~1111   
+ -44       77778889887777666665555444333221111~~~~~~~~~~~~1111   
+ -43       7778899a9988777666555544443332221111~~~~~~~~~~11111   
+ -42       78889aabaa99887766555544443332221111~~~~~~~~~~1111    
+ -41       8899abbcbbba998776655444443333222111~~~~~~~~~11111    
+ -40       99abbcdddccbaa9887665544443333222111~~~~~~~~111111    
+ -39       abbcddeeeddccba99876555444333322211~~~~~~~1111111     
+ -38       bcdeeffffeeeddcba9876654433333222211~~~~111111111     
+ -37       cdefffgggfffeedcca988765433333222221~~1111111111      
+ -36       ddffgggggggfffedcbaa9765433333322222222111111111      
+ -35       defggggggggffffedccb9875433333322222222222222221      
+ -34       efgggghhhhggggffeedca976543333322222222222222222      
+ -33       ffggghhihhhgggfffedcb986543333332222222222222222      
+ -32       fggghhiiiihhhggfffedba87543333333222222222222222      
+ -31       ffgghiijjiiihgggfeedb986543333333322222222222222      
+ -30       ffgghiijjjjiihggfeecb976543333333322222222222222      
+ -29       fggghijjjjjjihgffedcb976543333333332222222222222      
+ -28       ffgghijjjjjjihgffedcb976443333333332222222222222      
+ -27       effghiijjjjiihgffedcb976443333333333222222222222      
+ -26       effghhiiiiiihgfffedca975443333333333222222222222      
+ -25       effgghhhihhhhgfeeedba865433333333333222222222222      
+ -24       efffggghhggggffeedcb9764433333333332222222222222      
+ -23       deefffgggffffeeedcba9754333333222222223332222222      
+ -22       ddeeeeeefeeeeeddcca98654333332222333333333333333      
+ -21       cdddeeeeeeeeeddcbaa97653333333333333333333333333      
+ -20       bbccddeeeedddccbaa887543333333333333333333333333      
+ -19       9abbccddddccbbbaa8866543333333333333333333333333      
+ -18       789abbccccbaaa9988665433333333333333333333333333      
+ -17       78889abbbaa9998776654433333333333333333333333333      
+ -16       6667889a9987777665543333333333333333333333333333      
+ -15       555567788876665554443333333333333333333333333332      
+ -14       444455676655454443333333333333333333333333333332      
+ -13       443344555544444333333333333333333333333333333333      
+ -12       443333444433333333333333333333333333333333333333      
+ -11       443333333333333333333333333333333333333333333333      
+ -10       443333333333333333333333333333333333333333333333      
+  -9       443333333333333333333333333333333333333333333333      
+  -8                                                             
+  -7                                                             
+  -6                                                             
+  -5                                                             
+  -4                                                             
+  -3                                                             
+  -2                                                             
+  -1                                                             
+   0                                                             
+   1                                                             
+   2                                                             
+   3                                                             
+   4                                                             
+   5                                                             
+   6                                                             
+   7                                                             
+   8       333333333333333333333333333333333333333333333344      
+   9       333333333333333333333333333333333333333333333344      
+  10       333333333333333333333333333333333333333333333344      
+  11       333333333333333333333333333333333333334444333344      
+  12       333333333333333333333333333333333444445555443344      
+  13       233333333333333333333333333333344454556676554444      
+  14       233333333333333333333333333344455566678887765555      
+  15       3333333333333333333333333333455667777899a9887666      
+  16       3333333333333333333333333344566778999aabbba98887      
+  17       3333333333333333333333333345668899aaabccccbba987      
+  18       3333333333333333333333333456688aabbbccddddccbba9      
+  19       333333333333333333333333345788aabccdddeeeeddccbb      
+  20       33333333333333333333333335679aabcddeeeeeeeeedddc      
+  21       33333333333333322223333345689accddeeeeefeeeeeedd      
+  22       2222222333222222223333334579abcdeeeffffgggfffeed      
+  23       2222222222222333333333344679bcdeeffgggghhgggfffe      
+  24       222222222222333333333334568abdeeefghhhhihhhggffe      
+  25       222222222222333333333344579acdefffghiiiiiihhgffe      
+  26       222222222222333333333344679bcdeffghiijjjjiihgffe      
+  27       222222222222233333333344679bcdeffghijjjjjjihggff      
+  28       222222222222233333333345679bcdeffghijjjjjjihgggf      
+  29       222222222222223333333345679bceefgghiijjjjiihggff      
+  30       222222222222223333333345689bdeefggghiiijjiihggff      
+  31       22222222222222233333334578abdefffgghhhiiiihhgggf      
+  32       222222222222222233333345689bcdefffggghhhihhgggff      
+  33       222222222222222223333345679acdeeffgggghhhhggggfe      
+  34       1222222222222222233333345789bccdeffffggggggggfed      
+  35       1111111112222222233333345679aabcdefffgggggggffdd      
+  36       1111111111~~122222333334567889accdeefffgggfffedc      
+  37      111111111~~~~1122223333344566789abcddeeeffffeedcb      
+  38      1111111~~~~~~~11222333344455567899abccddeeeddcbba      
+  39     111111~~~~~~~~1112223333444455667889aabccdddcbba99      
+  40     11111~~~~~~~~~111222333344444556677899abbbcbba9988      
+  41     1111~~~~~~~~~~11112223334444555566778899aabaa98887      
+  42    11111~~~~~~~~~~1111222333444455556667778899a9988777      
+  43    1111~~~~~~~~~~~~11112233344455556666677778898887777      
+  44    1111~~~~~~~~~~~~~1112233344455556666777777888887777      
+  45   11111~~~~~~~~~~~~~~112233344555566677777777888888888      
+  46  111111~~~~~~~~~~~~~~~12233444555666777778888888888888      
+  47  111111~~~~~~~~~~~~11112233444555666777888888888888888      
+  48 1111111~~~~~~~~~~~111122334445556667778888889999999999      
+  49 1111111111~~~~~~~1111122334445556677788899999999999999      
+  50  11111111111~~~~11111223344455566677888999999999999999      
+  51    1122221111~~~11111233444555666778889999aaaaaaaaaaaa      
+  52     2222222211~~11122233445556667788899aaaaaaaaaaaaaaa      
+  53       22222222~~1122333445556667788899aaaaaaabaaaaaaaa      
+  54       333332222~223334445556667788899aaabbbbbbbbbaaaab      
+  55       333333333333334445556667778899aabbbbbbbbbbbbbbbb      
+  56       333333333333444455566677788999abbbbbbbbbbbbbbbbb      
+  57       44444444444444555566677788899abbbbbbbbbbbbbbbbbb      
+  58       4444444444445555666677778899abbbbbbbbbbbbbbbbbbb      
+  59       4555555555555556666777788899abbbbbbbbbbbbbbbbbbb      
+  60       555555555555566666777788899abbbbbbHHHHHbbbbbbbbb      
+  61      HHHHHHHHHHHH6666677777888999abbbbbbHHHHHbbbbbbbbb      
+  62      HHHHHHHHHHHH666677778888899aabbbbbbHH!HHbbbbbbbbb      
+  63      HHHHHHHHHHHH666777788888999abbbbbbbHHHHHbbbbbbbbb      
+  64      HHHHHHHHHHHH77777788888999aabbbbbbbbbHHHbbbbbbbbb      
+  65      HHHHHHHHHHHH77777888899999aaabbbbbbbbbbbbbbbbbbbb      
+  66      HHHHHHHHHHHHH778888899999aaaaabbbbbbbbbbbbbbbbbbb      
+  67      HHHHHHHHHHHHH88888899999aaaaaabbbbbbbbbbbbbbbbbbb      
+  68      HHHHHHHHHHHHH8888999999aaaaaaabbbbbbbbbbbbbbbabbb      
+  69      HHHHHHHHHHHHH889999999aaaaaaaabbbbbbbbbbbbbaaabbb      
+  70      HHHHHHHHHHHHH9999999aaaaaaaaabbbbbbbbbbbbbbaabbbb      
+  71       888888889999999999aaaaaaaabbbbbbbbbbbbbbbbbbbbbb      
+  72       8888899999999999aaaaaaaabbbbbbbbbbbbbbbbbbbbbbbb      
+  73       999999999999aaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbb      
+  74       9999999999aaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbb      
+  75      HHHHHHHHHHHaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbb      
+  76      HHHHHHHHHHHaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb      
+  77      HHHHHHHHHHHaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb      
+  78      HHHHHHHHHHHaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbccccbbb      
+  79      HHHHHHHHHHHbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbccccccbb      
+  80      HHHHHHHHHHHbbbbbbbbbccbbbccccccbbbbbbbbccccccccbb      
+  81      HHHHHHHHHHHbbbbbbbccccccccccccccbbbbbbcccccccccbb      
+  82      HHHHHHHHHHHbbbbbbcccccccccccccccccbbbcccccccccccb      
+  83      HHHHHHHHHHHbbbbcccccccccccccccccccccccccccccccccc      
+  84       bbbbbbbccccccccccccccccccccccccccccccccccccccccc      
+  85       bccccccccccccccccccccccccccccccccccccccccccccccc      
+  86       cccccccccccccccccccccccccccccccccccccccccccccccc      
+  87       cccccccccccccccccccccccccccccccccccccccccccccccc      
+  88       cccccccccccccccccddccddddddddccccccccccccccccccc      
+  89       ccccccccccddddddddddddddddddddcccccccccccccccccc      
+  90       cddddddddddddddddddddddddddddddccccccccccccccccd      
+  91       dddddddddddddddddddddddddddddddddcccdddddcccccdd      
+  92       dddddddddddddddddddddddddddddddddddddddddddcdddd      
+  93       dddddddddddddddddddddddddddddddddddddddddddddddd      
+  94       ddddddddddddddHHHddddHHHdddddddddddddddddddddddd      
+  95       ddddddddddddddHHHHddHHHHdddddddddddddddddddddddd      
+  96       ddddddddddddddHHHHHHHHHHdddddddddddddddddddddddd      
+  97       ddddddddddddddHHHHHHHHHHdddddddddddddddddddddddd      
+  98       ddddddddddddddHHHHHHHHHHdddddddddddddddddddddddd      
+  99       dddddddddHHHddHHHHHHHHHHdddddddddddddddddddddddd      
+ 100       dddddddddHHHddHHHHHHHHHHdddddddddddddddddddddddd      
+ 101       dddddddddHHHddHHHHHHHHHHdddddddddddddddddddddddd      
+ 102       ddddddddddddddHHHHHHHHHHdddddddddddddddddddddddd      
+ 103       ddddddddddddddHHHHHHHHHHdddddddddddddddddddddddd      
+ 104       ddddddddddddddHHHHHHHHHHdddddddddddddddddddddddd      
+ 105       ddeeddddddddddHHHHHHHHHHdddddddddddddddddddddddd      
+ 106       eeeddddddddddddddddddddddddddddddddddddddddddddd      
+ 107       eeeddddddddddddddddddddddddddddddddddddddddddddd      
+low y6, high y25, range 19

@@ -1,84 +1,135 @@
 {
-  "kind": "finish",
-  "themes": {
-    "ground": {
-      "buckets": {
-        "surface": {
-          "kind": "layered",
-          "axis": "slope",
-          "stack": {
-            "ending": "repeat",
-            "bands": [
-              {
-                "thickness": 30,
-                "material": {
-                  "kind": "solid",
-                  "id": "grass_block",
-                  "data": 0
-                }
-              },
-              {
-                "thickness": 15,
-                "material": {
-                  "kind": "solid",
-                  "id": "dirt",
-                  "data": 0
-                }
-              },
-              {
-                "thickness": 45,
-                "material": {
-                  "kind": "solid",
-                  "id": "stone",
-                  "data": 0
-                }
-              }
-            ]
-          }
-        },
-        "fill": {
-          "kind": "solid",
-          "id": "dirt",
-          "data": 0
-        },
-        "bedrock": {
-          "kind": "solid",
-          "id": "bedrock",
-          "data": 0
-        }
-      }
+ "authors": [
+  "Claude Haiku 4.5"
+ ],
+ "created": "2026-09-21",
+ "themes": {
+  "ground": {
+   "bedrock": {
+    "relative": false,
+    "value": 1
+   },
+   "fill": {
+    "kind": "solid",
+    "id": 1,
+    "data": 0
+   },
+   "wall": {
+    "kind": "solid",
+    "id": 1,
+    "data": 5
+   },
+   "wallEnabled": true,
+   "rim": {
+    "enabled": true,
+    "depth": 1,
+    "material": {
+     "kind": "solid",
+     "id": 2,
+     "data": 0
     }
-  },
-  "placements": {
-    "wools": [
-      {
-        "kind": "wool",
-        "color": "red",
-        "location": {
-          "piece": "wool-north-east",
-          "at": [
-            2,
-            1
+   },
+   "rimEdges": "void",
+   "surface": {
+    "enabled": true,
+    "depth": 3,
+    "material": {
+     "kind": "layered",
+     "axis": "slope",
+     "stack": {
+      "ending": "repeat",
+      "bands": [
+       {
+        "thickness": 20,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 2,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            }
+           }
           ]
+         }
         }
-      },
-      {
-        "kind": "wool",
-        "color": "blue",
-        "location": {
-          "piece": "wool-south-west",
-          "at": [
-            2,
-            1
+       },
+       {
+        "thickness": 30,
+        "material": {
+         "kind": "layered",
+         "axis": "depth",
+         "stack": {
+          "ending": "repeat",
+          "bands": [
+           {
+            "thickness": 1,
+            "material": {
+             "kind": "solid",
+             "id": 3,
+             "data": 0
+            }
+           },
+           {
+            "thickness": 2,
+            "material": {
+             "kind": "solid",
+             "id": 1,
+             "data": 0
+            }
+           }
           ]
+         }
         }
-      }
-    ]
-  },
-  "relief": {
-    "grain": {
-      "amplitude": 0.5,
-      "frequency": 0.05
+       },
+       {
+        "thickness": 50,
+        "material": {
+         "kind": "solid",
+         "id": 1,
+         "data": 0
+        }
+       }
+      ]
+     }
     }
+   }
   }
+ },
+ "mapTheme": "ground",
+ "relief": {
+  "*": {
+   "base": 20,
+   "reach": 0,
+   "step": 1,
+   "landform": "rolling",
+   "grain": {
+    "amplitude": 0.6,
+    "scale": 12,
+    "seed": 4703
+   },
+   "marks": [],
+   "pushes": []
+  }
+ },
+ "addShapes": [],
+ "addLayers": [],
+ "roomStyles": {},
+ "dressing": {
+  "styles": {},
+  "props": []
+ }
 }

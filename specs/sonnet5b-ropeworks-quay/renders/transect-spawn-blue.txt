@@ -1,0 +1,81 @@
+## spawn-blue (spawn) along x
+TRANSECT 25 stations from (164, -2) to (188, -2), every 1
+  station        ground  surface  water  top  standing            step
+  (  164,    -2)       9        9            9  stroke quay-road#1  
+  (  165,    -2)       9        9            9  stroke quay-road#1  
+  (  166,    -2)       9        9            9  stroke quay-road#1  
+  (  167,    -2)       9        9            9  stroke quay-road#1  
+  (  168,    -2)       9        9            9  stroke quay-road#1  
+  (  169,    -2)       9        9            9  stroke quay-road#1  
+  (  170,    -2)       9        9            9  stroke quay-road#1  
+  (  171,    -2)       9        9            9  stroke quay-road#1  
+  (  172,    -2)       9        9            9  stroke quay-road#1  
+  (  173,    -2)       9        9           16  stroke quay-road#1  
+  (  174,    -2)       9        9           17  stroke quay-road#1  
+  (  175,    -2)       9        9           18  stroke quay-road#1  
+  (  176,    -2)       9        9           19  stroke quay-road#1  
+  (  177,    -2)       9        9           20  stroke quay-road#1  
+  (  178,    -2)       9        9           21  stroke quay-road#1  
+  (  179,    -2)       9        9           22  stroke quay-road#1  
+  (  180,    -2)       9        9           23  stroke quay-road#1  
+  (  181,    -2)       9        9           24  spawn red-spawn#1   
+  (  182,    -2)       9        9           24  spawn red-spawn#1   
+  (  183,    -2)       9        9           23  stroke quay-road#1  
+  (  184,    -2)       9        9           22  spawn red-spawn#1   
+  (  185,    -2)       9        9           21  spawn red-spawn#1   
+  (  186,    -2)       9        9           20  spawn red-spawn#1   
+  (  187,    -2)       9        9           19  spawn red-spawn#1   
+  (  188,    -2)       9        9           18  spawn red-spawn#1   
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke quay-road#1 at (162, -4), spawn red-spawn#1 at (174, 0)
+
+## spawn-blue (spawn) along z
+TRANSECT 45 stations from (182, -24) to (182, 20), every 1
+  station        ground  surface  water  top  standing            step
+  (  182,   -24)                                                    void
+  (  182,   -23)                                                    void
+  (  182,   -22)                                                    void
+  (  182,   -21)                                                    void
+  (  182,   -20)                                                    void
+  (  182,   -19)                                                    void
+  (  182,   -18)                                                    void
+  (  182,   -17)                                                    void
+  (  182,   -16)       9        9            9                      
+  (  182,   -15)       9        9            9                      
+  (  182,   -14)       9        9            9                      
+  (  182,   -13)       9        9           24                      
+  (  182,   -12)       9        9           24  spawn red-spawn#1   
+  (  182,   -11)       9        9           24  spawn red-spawn#1   
+  (  182,   -10)       9        9           24  spawn red-spawn#1   
+  (  182,    -9)       9        9           24  spawn red-spawn#1   
+  (  182,    -8)       9        9           24  spawn red-spawn#1   
+  (  182,    -7)       9        9           24  spawn red-spawn#1   
+  (  182,    -6)       9        9           24  spawn red-spawn#1   
+  (  182,    -5)       9        9           24  spawn red-spawn#1   
+  (  182,    -4)       9        9           24  stroke quay-road#1  
+  (  182,    -3)       9        9           24  spawn red-spawn#1   
+  (  182,    -2)       9        9           24  spawn red-spawn#1   
+  (  182,    -1)       9        9           24  stroke quay-road#1  
+  (  182,     0)       9        9           24  spawn red-spawn#1   
+  (  182,     1)       9        9           24  spawn red-spawn#1   
+  (  182,     2)       9        9           24  spawn red-spawn#1   
+  (  182,     3)       9        9           24  spawn red-spawn#1   
+  (  182,     4)       9        9           24  spawn red-spawn#1   
+  (  182,     5)       9        9           24  spawn red-spawn#1   
+  (  182,     6)       9        9           24  spawn red-spawn#1   
+  (  182,     7)       9        9           24  spawn red-spawn#1   
+  (  182,     8)       9        9           24                      
+  (  182,     9)       9        9            9                      
+  (  182,    10)       9        9            9                      
+  (  182,    11)       9        9            9                      
+  (  182,    12)                                                    void
+  (  182,    13)                                                    void
+  (  182,    14)                                                    void
+  (  182,    15)                                                    void
+  (  182,    16)                                                    void
+  (  182,    17)                                                    void
+  (  182,    18)                                                    void
+  (  182,    19)                                                    void
+  (  182,    20)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn red-spawn#1 at (180, -12), stroke quay-road#1 at (180, -4)

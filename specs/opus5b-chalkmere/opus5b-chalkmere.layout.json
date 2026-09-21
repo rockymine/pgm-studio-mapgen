@@ -250,60 +250,60 @@
       "type": "polygon",
       "operation": "add",
       "floor": 0,
-      "base_height": 10,
+      "base_height": 9,
       "theme": "combe",
       "vertices": [
        [
-        -7.5,
-        38.0
+        -4.78,
+        46.0
        ],
        [
-        -6.55,
-        43.48
+        -3.65,
+        52.48
        ],
        [
-        -10.8,
-        46.99
+        -8.67,
+        56.62
        ],
        [
-        -15.67,
-        48.95
+        -14.43,
+        58.94
        ],
        [
-        -20.5,
-        47.23
+        -20.14,
+        56.91
        ],
        [
-        -24.05,
-        44.25
+        -24.33,
+        53.38
        ],
        [
-        -28.92,
-        40.94
+        -30.08,
+        49.47
        ],
        [
-        -26.2,
-        35.73
+        -26.87,
+        43.32
        ],
        [
-        -24.63,
-        31.24
+        -25.02,
+        38.01
        ],
        [
-        -21.57,
-        25.94
+        -21.41,
+        31.75
        ],
        [
-        -15.92,
-        29.1
+        -14.72,
+        35.49
        ],
        [
-        -10.46,
-        28.53
+        -8.27,
+        34.8
        ],
        [
-        -5.73,
-        32.09
+        -2.69,
+        39.01
        ]
       ]
      },
@@ -312,7 +312,7 @@
       "type": "polygon",
       "operation": "add",
       "floor": 0,
-      "base_height": 10,
+      "base_height": 19,
       "theme": "yard",
       "vertices": [
        [
@@ -406,7 +406,7 @@
    "layout": {
     "shapes": [
      {
-      "id": "yard-wall-run",
+      "id": "yard-wall-west",
       "type": "polyline",
       "operation": "add",
       "floor": 19,
@@ -437,27 +437,67 @@
       "vertices": [
        [
         -19,
-        92
+        91
        ],
        [
         -20,
-        99
+        97
        ],
        [
-        -16,
-        105
+        -18,
+        103
        ],
        [
-        -4,
+        -13,
         106
+       ]
+      ]
+     },
+     {
+      "id": "yard-wall-east",
+      "type": "polyline",
+      "operation": "add",
+      "floor": 19,
+      "base_height": 2,
+      "radius": 1.0,
+      "stroke_edge": "solid",
+      "keepClear": true,
+      "material": {
+       "kind": "cell",
+       "seed": 4151,
+       "cellSize": 4,
+       "jitter": 45,
+       "warp": 1,
+       "rise": 2,
+       "palette": [
+        {
+         "kind": "solid",
+         "id": 4,
+         "data": 0
+        },
+        {
+         "kind": "solid",
+         "id": 1,
+         "data": 5
+        }
+       ]
+      },
+      "vertices": [
+       [
+        3,
+        107
        ],
        [
-        7,
+        8,
         104
        ],
        [
         11,
         98
+       ],
+       [
+        10,
+        92
        ]
       ]
      }
@@ -468,7 +508,8 @@
       "name": "the steading wall",
       "mirrors": true,
       "shapeIds": [
-       "yard-wall-run"
+       "yard-wall-west",
+       "yard-wall-east"
       ]
      }
     ]
@@ -6610,6 +6651,203 @@
      ],
      "rise": 3
     }
+   },
+   "fold-house": {
+    "kind": "house",
+    "shell": {
+     "foundation": {
+      "plate": {
+       "stack": {
+        "bands": [
+         {
+          "material": {
+           "kind": "solid",
+           "id": 4,
+           "data": 0
+          },
+          "thickness": 1
+         }
+        ],
+        "ending": "repeat"
+       },
+       "extent": 1
+      },
+      "surface": {
+       "field": null,
+       "border": null,
+       "borderWidth": 1,
+       "inlay": null,
+       "inlayInset": 2,
+       "isPlain": true
+      },
+      "footing": null
+     },
+     "roof": {
+      "form": "gable",
+      "pitch": 2,
+      "slab": 126,
+      "slabData": 1,
+      "overhang": 1,
+      "ridgeCap": true,
+      "hole": false,
+      "body": {
+       "kind": "solid",
+       "id": 5,
+       "data": 1
+      },
+      "verge": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gable": {
+       "kind": "solid",
+       "id": 5,
+       "data": 5
+      },
+      "gableWindows": {
+       "form": "open",
+       "block": 102,
+       "hostBlock": -1,
+       "hostData": 0,
+       "data": 0,
+       "sill": 1,
+       "width": 1,
+       "height": 1,
+       "spacing": 3
+      }
+     },
+     "wall": {
+      "stack": {
+       "bands": [
+        {
+         "material": {
+          "kind": "solid",
+          "id": 4,
+          "data": 0
+         },
+         "thickness": 1
+        }
+       ],
+       "ending": "repeat"
+      },
+      "extent": 5
+     },
+     "post": {
+      "kind": "solid",
+      "id": 17,
+      "data": 1
+     },
+     "windows": {
+      "form": "none",
+      "block": 102,
+      "hostBlock": -1,
+      "hostData": 0,
+      "data": 0,
+      "sill": 2,
+      "width": 2,
+      "height": 2,
+      "spacing": 3
+     },
+     "storeys": [
+      {
+       "clear": 5,
+       "wall": {
+        "stack": {
+         "bands": [
+          {
+           "material": {
+            "kind": "solid",
+            "id": 4,
+            "data": 0
+           },
+           "thickness": 1
+          },
+          {
+           "material": {
+            "kind": "cell",
+            "seed": 4191,
+            "cellSize": 3,
+            "jitter": 45,
+            "warp": 1,
+            "rise": 2,
+            "palette": [
+             {
+              "kind": "solid",
+              "id": 5,
+              "data": 1
+             },
+             {
+              "kind": "solid",
+              "id": 5,
+              "data": 5
+             }
+            ]
+           },
+           "thickness": 3
+          },
+          {
+           "material": {
+            "kind": "laidLog",
+            "id": 17,
+            "data": 1
+           },
+           "thickness": 1
+          }
+         ],
+         "ending": "repeat"
+        },
+        "extent": 5
+       },
+       "post": {
+        "kind": "solid",
+        "id": 17,
+        "data": 1
+       },
+       "windows": {
+        "form": "arched",
+        "block": 134,
+        "hostBlock": -1,
+        "hostData": 0,
+        "data": 0,
+        "sill": 2,
+        "width": 2,
+        "height": 2,
+        "spacing": 3
+       },
+       "surface": {
+        "field": null,
+        "border": null,
+        "borderWidth": 1,
+        "inlay": null,
+        "inlayInset": 2,
+        "isPlain": true
+       },
+       "deck": null,
+       "headroom": 5
+      }
+     ],
+     "porch": null,
+     "front": null,
+     "beams": {
+      "block": 17,
+      "data": 1,
+      "reach": 1,
+      "any": true
+     },
+     "doorway": {
+      "door": "air",
+      "head": {
+       "form": "arched",
+       "block": 134,
+       "fill": "upperSlab",
+       "fillBlock": 126,
+       "fillData": 1
+      },
+      "width": 2,
+      "height": 3
+     }
+    }
    }
   },
   "props": [
@@ -6635,8 +6873,8 @@
       },
       {
        "kind": "solid",
-       "id": 1,
-       "data": 5
+       "id": 3,
+       "data": 1
       },
       {
        "kind": "solid",
@@ -6690,8 +6928,8 @@
       },
       {
        "kind": "solid",
-       "id": 1,
-       "data": 5
+       "id": 3,
+       "data": 1
       },
       {
        "kind": "solid",
@@ -6722,6 +6960,207 @@
       10
      ]
     ]
+   },
+   {
+    "id": "dew-pond",
+    "kind": "water",
+    "seed": 4173,
+    "shape": "pool",
+    "points": [
+     [
+      -10.36,
+      46.0
+     ],
+     [
+      -11.5,
+      49.78
+     ],
+     [
+      -14.77,
+      53.0
+     ],
+     [
+      -18.45,
+      50.25
+     ],
+     [
+      -21.31,
+      47.93
+     ],
+     [
+      -22.39,
+      43.67
+     ],
+     [
+      -18.92,
+      40.93
+     ],
+     [
+      -14.81,
+      39.22
+     ],
+     [
+      -11.95,
+      42.6
+     ]
+    ],
+    "radius": 2,
+    "depth": 2,
+    "shore": 3,
+    "shoreWander": true,
+    "bank": {
+     "kind": "cell",
+     "seed": 4175,
+     "cellSize": 4,
+     "jitter": 45,
+     "warp": 1,
+     "rise": 0,
+     "palette": [
+      {
+       "kind": "solid",
+       "id": 13,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 82,
+       "data": 0
+      },
+      {
+       "kind": "solid",
+       "id": 3,
+       "data": 1
+      }
+     ]
+    }
+   },
+   {
+    "id": "fold-house",
+    "kind": "house",
+    "seed": 4176,
+    "style": "fold-house",
+    "front": "posX",
+    "wings": [
+     {
+      "corners": [
+       [
+        -24,
+        62
+       ],
+       [
+        -14,
+        69
+       ]
+      ],
+      "spec": {
+       "storeysHigh": 2
+      }
+     }
+    ]
+   },
+   {
+    "id": "fold-byre",
+    "kind": "house",
+    "seed": 4177,
+    "style": "fold-house",
+    "front": "posX",
+    "wings": [
+     {
+      "corners": [
+       [
+        -24,
+        76
+       ],
+       [
+        -16,
+        82
+       ]
+      ],
+      "spec": {
+       "storeysHigh": 1
+      }
+     }
+    ]
+   },
+   {
+    "id": "beech-0",
+    "kind": "tree",
+    "seed": 4200,
+    "x": -10,
+    "z": 52,
+    "style": "beech"
+   },
+   {
+    "id": "beech-1",
+    "kind": "tree",
+    "seed": 4201,
+    "x": -4,
+    "z": 57,
+    "style": "beech"
+   },
+   {
+    "id": "beech-2",
+    "kind": "tree",
+    "seed": 4202,
+    "x": -9,
+    "z": 63,
+    "style": "beech"
+   },
+   {
+    "id": "beech-3",
+    "kind": "tree",
+    "seed": 4203,
+    "x": -2,
+    "z": 68,
+    "style": "beech"
+   },
+   {
+    "id": "beech-4",
+    "kind": "tree",
+    "seed": 4204,
+    "x": -4,
+    "z": 48,
+    "style": "beech"
+   },
+   {
+    "id": "thorn-0",
+    "kind": "tree",
+    "seed": 4220,
+    "x": -20,
+    "z": 30,
+    "style": "thorn"
+   },
+   {
+    "id": "thorn-1",
+    "kind": "tree",
+    "seed": 4221,
+    "x": -8,
+    "z": 34,
+    "style": "thorn"
+   },
+   {
+    "id": "flint-0",
+    "kind": "boulder",
+    "seed": 4240,
+    "x": -4,
+    "z": 30,
+    "style": "flint-rock"
+   },
+   {
+    "id": "flint-1",
+    "kind": "boulder",
+    "seed": 4241,
+    "x": -22,
+    "z": 56,
+    "style": "flint-rock"
+   },
+   {
+    "id": "flint-2",
+    "kind": "boulder",
+    "seed": 4242,
+    "x": 12,
+    "z": 28,
+    "style": "flint-rock"
    },
    {
     "id": "flora",
@@ -6800,12 +7239,15 @@
      "fernShare": 0.12,
      "flowerShare": 0.1,
      "flowerScale": 18,
-     "tallShare": 0.06
+     "tallShare": 0.05
     }
    }
   ]
  },
- "biome": null,
+ "biome": {
+  "kind": "solid",
+  "id": 1
+ },
  "biomeSource": null,
  "relief": {
   "team": {
@@ -7014,6 +7456,66 @@
        96.12
       ]
      ]
+    },
+    {
+     "id": "combe-pan",
+     "kind": "area",
+     "h": 7,
+     "bevel": 5,
+     "ring": [
+      [
+       -2.27,
+       46.0
+      ],
+      [
+       -5.33,
+       51.6
+      ],
+      [
+       -8.38,
+       57.04
+      ],
+      [
+       -14.45,
+       58.8
+      ],
+      [
+       -19.9,
+       56.28
+      ],
+      [
+       -23.7,
+       52.83
+      ],
+      [
+       -26.18,
+       48.51
+      ],
+      [
+       -29.25,
+       42.73
+      ],
+      [
+       -23.18,
+       39.64
+      ],
+      [
+       -20.77,
+       33.41
+      ],
+      [
+       -14.81,
+       36.19
+      ],
+      [
+       -10.49,
+       38.01
+      ],
+      [
+       -5.06,
+       40.26
+      ]
+     ]
     }
    ],
    "pushes": [
@@ -7062,60 +7564,6 @@
      "crown": 4,
      "roughness": 1.2,
      "seed": 4122
-    },
-    {
-     "id": "combe",
-     "ring": [
-      [
-       -6.58,
-       38.0
-      ],
-      [
-       -9.39,
-       42.89
-      ],
-      [
-       -12.78,
-       47.24
-      ],
-      [
-       -18.38,
-       47.63
-      ],
-      [
-       -22.36,
-       44.18
-      ],
-      [
-       -24.29,
-       40.14
-      ],
-      [
-       -24.45,
-       35.81
-      ],
-      [
-       -23.78,
-       30.18
-      ],
-      [
-       -18.0,
-       31.04
-      ],
-      [
-       -12.76,
-       28.72
-      ],
-      [
-       -10.89,
-       34.07
-      ]
-     ],
-     "amount": -7,
-     "falloff": 11,
-     "crown": -3,
-     "roughness": 1.0,
-     "seed": 4124
     }
    ]
   }

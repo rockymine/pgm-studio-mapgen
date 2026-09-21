@@ -1,9 +1,9 @@
 ## monument-0 (destroyable) along x
 TRANSECT 25 stations from (0, 62) to (24, 62), every 1
   station        ground  surface  water  top  standing            step
-  (    0,    62)      16       16           16                      
-  (    1,    62)      16       16           16                      
-  (    2,    62)      16       16           16                      
+  (    0,    62)      15       15           19  tree beech-1        
+  (    1,    62)      15       15           20  tree beech-1        
+  (    2,    62)      16       16           16                      +1
   (    3,    62)      16       16           16                      
   (    4,    62)      17       17           17                      +1
   (    5,    62)      17       17           17                      
@@ -26,17 +26,17 @@ TRANSECT 25 stations from (0, 62) to (24, 62), every 1
   (   22,    62)      17       17           17                      
   (   23,    62)      17       17           17                      
   (   24,    62)                                                    void
-rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: destroyable monument at (10, 60), stroke steading-track at (10, 64)
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree beech-1 at (-2, 60), tree beech-2 at (-2, 62), tree beech-3 at (-2, 63), destroyable monument at (10, 60), stroke steading-track at (10, 64)
 
 ## monument-0 (destroyable) along z
 TRANSECT 25 stations from (12, 50) to (12, 74), every 1
   station        ground  surface  water  top  standing            step
-  (   12,    50)      16       16           16  stroke forward-track  
-  (   12,    51)      16       16           16  stroke forward-track  
+  (   12,    50)      15       15           15  stroke forward-track  
+  (   12,    51)      16       16           16  stroke forward-track  +1
   (   12,    52)      16       16           16  stroke forward-track  
-  (   12,    53)      17       17           17  stroke forward-track  +1
-  (   12,    54)      17       17           17  stroke forward-track  
+  (   12,    53)      16       16           16  stroke forward-track  
+  (   12,    54)      17       17           17  stroke forward-track  +1
   (   12,    55)      17       17           17  stroke forward-track  
   (   12,    56)      17       17           17                      
   (   12,    57)      17       17           17                      
@@ -57,5 +57,5 @@ TRANSECT 25 stations from (12, 50) to (12, 74), every 1
   (   12,    72)      17       17           17                      
   (   12,    73)      17       17           17                      
   (   12,    74)      17       17           17                      
-rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: stroke forward-track at (10, 48), destroyable monument at (10, 60), stroke steading-track at (10, 64)

@@ -7,23 +7,57 @@
   "cell": 5,
   "symmetry": "rot_180",
   "maxPlayers": 16,
-  "surface": 20,
-  "observerY": 54
+  "surface": 12,
+  "observerY": 48
  },
  "pieces": [
   {
-   "id": "ground",
+   "id": "hill",
+   "role": "piece",
+   "rect": [
+    -3,
+    -2,
+    6,
+    4
+   ],
+   "surface": 17,
+   "mirrors": false
+  },
+  {
+   "id": "pasture",
    "role": "piece",
    "rect": [
     -11,
     4,
-    22,
-    12
+    14,
+    4
    ],
-   "surface": 20
+   "surface": 12
   },
   {
-   "id": "spawn-left",
+   "id": "platform",
+   "role": "piece",
+   "rect": [
+    -11,
+    8,
+    10,
+    6
+   ],
+   "surface": 17
+  },
+  {
+   "id": "lane",
+   "role": "piece",
+   "rect": [
+    -1,
+    8,
+    4,
+    6
+   ],
+   "surface": 12
+  },
+  {
+   "id": "spawn-area",
    "role": "spawn",
    "rect": [
     -11,
@@ -31,10 +65,10 @@
     4,
     3
    ],
-   "surface": 20
+   "surface": 12
   },
   {
-   "id": "spawn-right",
+   "id": "spawn-center",
    "role": "piece",
    "rect": [
     -7,
@@ -42,10 +76,10 @@
     6,
     3
    ],
-   "surface": 20
+   "surface": 12
   },
   {
-   "id": "spawn-extra",
+   "id": "dressing",
    "role": "piece",
    "rect": [
     -1,
@@ -53,17 +87,17 @@
     4,
     3
    ],
-   "surface": 20
+   "surface": 12
   }
  ],
  "zones": [
   {
-   "id": "middle",
+   "id": "pass",
    "rect": [
     -11,
-    -2,
+    -4,
     22,
-    18
+    8
    ],
    "kind": "build"
   }
@@ -72,7 +106,7 @@
   "spawns": [
    {
     "id": "spawn-1",
-    "piece": "spawn-right",
+    "piece": "spawn-center",
     "at": [
      15,
      8
@@ -89,7 +123,7 @@
   "iron": [
    {
     "id": "iron-1",
-    "piece": "spawn-right",
+    "piece": "spawn-center",
     "at": [
      2,
      7
@@ -97,7 +131,7 @@
    },
    {
     "id": "iron-2",
-    "piece": "spawn-right",
+    "piece": "spawn-center",
     "at": [
      28,
      7
@@ -108,15 +142,15 @@
   "cores": [
    {
     "id": "core",
-    "piece": "ground",
+    "piece": "hill",
     "at": [
      0,
-     10
+     0
     ],
     "lava": 3,
-    "lavaHeight": 3,
-    "float": 6,
-    "leak": 5,
+    "lavaHeight": 2,
+    "float": 1,
+    "leak": 1,
     "name": "The Cistern"
    }
   ],

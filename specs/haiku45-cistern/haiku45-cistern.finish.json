@@ -112,13 +112,13 @@
  "mapTheme": "ground",
  "relief": {
   "*": {
-   "base": 20,
+   "base": 12,
    "reach": 0,
    "step": 1,
    "landform": "rolling",
    "grain": {
-    "amplitude": 0.5,
-    "scale": 10,
+    "amplitude": 0.6,
+    "scale": 12,
     "seed": 4701
    },
    "marks": [],

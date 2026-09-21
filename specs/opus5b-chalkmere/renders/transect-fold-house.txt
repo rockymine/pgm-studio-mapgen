@@ -1,0 +1,60 @@
+## fold-house (house) along x
+TRANSECT 25 stations from (-30, 65) to (-6, 65), every 1
+  station        ground  surface  water  top  standing            step
+  (  -30,    65)                                                    void
+  (  -29,    65)                                                    void
+  (  -28,    65)                                                    void
+  (  -27,    65)                                                    void
+  (  -26,    65)                                                    void
+  (  -25,    65)                            20  house fold-house    void
+  (  -24,    65)      12       12           20  house fold-house    
+  (  -23,    65)      12       12           20  house fold-house    
+  (  -22,    65)      12       12           20  house fold-house    
+  (  -21,    65)      12       12           20  house fold-house    
+  (  -20,    65)      13       13           20  house fold-house    +1
+  (  -19,    65)      13       13           20  house fold-house    
+  (  -18,    65)      13       13           20  house fold-house    
+  (  -17,    65)      13       13           20  house fold-house    
+  (  -16,    65)      13       13           20  house fold-house    
+  (  -15,    65)      13       13           20  house fold-house    
+  (  -14,    65)      13       13           20  house fold-house    
+  (  -13,    65)      13       13           20  tree beech-2        
+  (  -12,    65)      13       13           22  tree beech-2        
+  (  -11,    65)      13       13           23  tree beech-2        
+  (  -10,    65)      13       13           24  tree beech-2        
+  (   -9,    65)      13       13           25  tree beech-2        
+  (   -8,    65)      14       14           26  tree beech-2        +1
+  (   -7,    65)      14       14           24  tree beech-2        
+  (   -6,    65)      14       14           25  tree beech-2        
+rises 2, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house fold-house at (-25, 63), tree beech-2 at (-13, 63), tree beech-3 at (-6, 66)
+
+## fold-house (house) along z
+TRANSECT 24 stations from (-19, 54) to (-19, 77), every 1
+  station        ground  surface  water  top  standing            step
+  (  -19,    54)       8        8            8                      
+  (  -19,    55)       9        9            9                      +1
+  (  -19,    56)       9        9            9                      
+  (  -19,    57)      10       10           10                      +1
+  (  -19,    58)      10       10           10                      
+  (  -19,    59)      11       11           11                      +1
+  (  -19,    60)      11       11           11                      
+  (  -19,    61)      11       11           16  house fold-house    
+  (  -19,    62)      12       12           17  house fold-house    +1
+  (  -19,    63)      12       12           18  house fold-house    
+  (  -19,    64)      12       12           19  house fold-house    
+  (  -19,    65)      13       13           20  house fold-house    +1
+  (  -19,    66)      13       13           20  house fold-house    
+  (  -19,    67)      13       13           19  house fold-house    
+  (  -19,    68)      14       14           18  house fold-house    +1
+  (  -19,    69)      14       14           17  house fold-house    
+  (  -19,    70)      14       14           16  house fold-house    
+  (  -19,    71)      14       14           14                      
+  (  -19,    72)      15       15           15                      +1
+  (  -19,    73)      15       15           15                      
+  (  -19,    74)      15       15           15                      
+  (  -19,    75)      15       15           20  house fold-byre     
+  (  -19,    76)      15       15           21  house fold-byre     
+  (  -19,    77)      16       16           22  house fold-byre     +1
+rises 8, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder flint-1 at (-21, 55), house fold-house at (-21, 61), house fold-byre at (-21, 75)

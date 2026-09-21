@@ -1,0 +1,57 @@
+## fold-byre (house) along x
+TRANSECT 23 stations from (-30, 79) to (-8, 79), every 1
+  station        ground  surface  water  top  standing            step
+  (  -30,    79)                                                    void
+  (  -29,    79)                                                    void
+  (  -28,    79)                                                    void
+  (  -27,    79)                                                    void
+  (  -26,    79)                                                    void
+  (  -25,    79)                            24  house fold-byre     void
+  (  -24,    79)      16       16           24  house fold-byre     
+  (  -23,    79)      16       16           24  house fold-byre     
+  (  -22,    79)      16       16           24  house fold-byre     
+  (  -21,    79)      16       16           24  house fold-byre     
+  (  -20,    79)      16       16           24  house fold-byre     
+  (  -19,    79)      16       16           24  house fold-byre     
+  (  -18,    79)      16       16           24  house fold-byre     
+  (  -17,    79)      16       16           24  house fold-byre     
+  (  -16,    79)      16       16           24  house fold-byre     
+  (  -15,    79)      16       16           24  house fold-byre     
+  (  -14,    79)      17       17           17                      +1
+  (  -13,    79)      17       17           17                      
+  (  -12,    79)      17       17           17                      
+  (  -11,    79)      17       17           17                      
+  (  -10,    79)      17       17           17                      
+  (   -9,    79)      17       17           17                      
+  (   -8,    79)      17       17           17                      
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house fold-byre at (-25, 77)
+
+## fold-byre (house) along z
+TRANSECT 23 stations from (-20, 68) to (-20, 90), every 1
+  station        ground  surface  water  top  standing            step
+  (  -20,    68)      14       14           18  house fold-house    
+  (  -20,    69)      14       14           17  house fold-house    
+  (  -20,    70)      14       14           16  house fold-house    
+  (  -20,    71)      14       14           14                      
+  (  -20,    72)      14       14           14                      
+  (  -20,    73)      15       15           15                      +1
+  (  -20,    74)      15       15           15                      
+  (  -20,    75)      15       15           20  house fold-byre     
+  (  -20,    76)      15       15           21  house fold-byre     
+  (  -20,    77)      16       16           22  house fold-byre     +1
+  (  -20,    78)      16       16           23  house fold-byre     
+  (  -20,    79)      16       16           24  house fold-byre     
+  (  -20,    80)      16       16           23  house fold-byre     
+  (  -20,    81)      17       17           22  house fold-byre     +1
+  (  -20,    82)      17       17           21  house fold-byre     
+  (  -20,    83)      17       17           20  house fold-byre     
+  (  -20,    84)      17       17           17                      
+  (  -20,    85)      18       18           18                      +1
+  (  -20,    86)      18       18           18                      
+  (  -20,    87)      18       18           18                      
+  (  -20,    88)      18       18           18                      
+  (  -20,    89)      18       18           18                      
+  (  -20,    90)      19       19           19                      +1
+rises 5, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house fold-house at (-22, 66), house fold-byre at (-22, 75)

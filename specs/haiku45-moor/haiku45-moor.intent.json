@@ -1,0 +1,218 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 20,
+    "z": 78
+   },
+   "protection": [
+    {
+     "minX": -40,
+     "minZ": 70,
+     "maxX": 40,
+     "maxZ": 90
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z",
+    "+z"
+   ],
+   "footprint": {
+    "minX": -32,
+    "minZ": 74,
+    "maxX": -16,
+    "maxZ": 84
+   },
+   "iron": [
+    {
+     "x": -36,
+     "y": 20,
+     "z": 78
+    },
+    {
+     "x": -12,
+     "y": 20,
+     "z": 78
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 20,
+    "z": -78
+   },
+   "protection": [
+    {
+     "minX": -40,
+     "minZ": -90,
+     "maxX": 40,
+     "maxZ": -70
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z",
+    "-z"
+   ],
+   "footprint": {
+    "minX": 16,
+    "minZ": -84,
+    "maxX": 32,
+    "maxZ": -74
+   },
+   "iron": [
+    {
+     "x": 36,
+     "y": 20,
+     "z": -78
+    },
+    {
+     "x": 12,
+     "y": 20,
+     "z": -78
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 48,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -60,
+    "minZ": -50,
+    "maxX": 80,
+    "maxZ": 90
+   },
+   {
+    "minX": -80,
+    "minZ": -90,
+    "maxX": 60,
+    "maxZ": 50
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-team-a",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "protection": [
+    {
+     "minX": 40,
+     "minZ": -50,
+     "maxX": 60,
+     "maxZ": -35
+    }
+   ],
+   "spawn": {
+    "x": 42,
+    "y": 26,
+    "z": -49
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": []
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-team-a",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "protection": [
+    {
+     "minX": -60,
+     "minZ": 35,
+     "maxX": -40,
+     "maxZ": 50
+    }
+   ],
+   "spawn": {
+    "x": -42,
+    "y": 26,
+    "z": 49
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": []
+  }
+ ],
+ "destroyables": null,
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "ctw"
+ ],
+ "meta": {
+  "name": "Moor",
+  "created": "2026-09-21",
+  "authors": [
+   {
+    "name": "Claude Haiku 4.5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "neutral",
+  "2": "blue",
+  "3": "red",
+  "4": "blue",
+  "5": "red"
+ },
+ "structures": null
+}

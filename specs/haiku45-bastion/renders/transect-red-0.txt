@@ -1,0 +1,61 @@
+## red-0 (wool) along x
+TRANSECT 25 stations from (9, 6) to (33, 6), every 1
+  station        ground  surface  water  top  standing            step
+  (    9,     6)      20       20           20                      
+  (   10,     6)                                                    void
+  (   11,     6)                                                    void
+  (   12,     6)                                                    void
+  (   13,     6)                                                    void
+  (   14,     6)                                                    void
+  (   15,     6)                                                    void
+  (   16,     6)                                                    void
+  (   17,     6)                            29  wool wool           void
+  (   18,     6)                            29  wool wool           void
+  (   19,     6)                            21  wool wool           void
+  (   20,     6)      20       20           56  wool wool           
+  (   21,     6)      20       20           56  wool wool           
+  (   22,     6)      20       20           56  wool wool           
+  (   23,     6)      21       21           29  wool wool           +1
+  (   24,     6)      21       21           29  wool wool           
+  (   25,     6)      20       20           20                      -1
+  (   26,     6)      20       20           20                      
+  (   27,     6)      20       20           20                      
+  (   28,     6)      20       20           20                      
+  (   29,     6)      20       20           20                      
+  (   30,     6)      20       20           20                      
+  (   31,     6)      20       20           20                      
+  (   32,     6)      20       20           20                      
+  (   33,     6)      20       20           20                      
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool at (17, 4)
+
+## red-0 (wool) along z
+TRANSECT 25 stations from (21, -6) to (21, 18), every 1
+  station        ground  surface  water  top  standing            step
+  (   21,    -6)                                                    void
+  (   21,    -5)                                                    void
+  (   21,    -4)                                                    void
+  (   21,    -3)                                                    void
+  (   21,    -2)                                                    void
+  (   21,    -1)                                                    void
+  (   21,     0)                                                    void
+  (   21,     1)                                                    void
+  (   21,     2)                            29  wool wool           void
+  (   21,     3)                            29  wool wool           void
+  (   21,     4)                            21  wool wool           void
+  (   21,     5)      20       20           56  wool wool           
+  (   21,     6)      20       20           56  wool wool           
+  (   21,     7)      20       20           56  wool wool           
+  (   21,     8)      20       20           29  wool wool           
+  (   21,     9)      20       20           29  wool wool           
+  (   21,    10)      20       20           20                      
+  (   21,    11)      20       20           20                      
+  (   21,    12)      20       20           20                      
+  (   21,    13)      20       20           20                      
+  (   21,    14)      20       20           20                      
+  (   21,    15)      20       20           20                      
+  (   21,    16)      20       20           20                      
+  (   21,    17)      20       20           20                      
+  (   21,    18)      20       20           20                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool at (19, 2)

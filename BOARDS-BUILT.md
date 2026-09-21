@@ -562,6 +562,29 @@ is the default again in a different material.
 | `opus5-hallowgate` | ctw | Opus 5 | **A composed arrangement taken over into a churchyard** — `composed-seed-3.plan.json` is committed beside the spec, and what it bought is the hub ringing an enclosed grave-pit, the spawn hung off its flank, the L of causeway to a room in a corner and the stepping stones. Everything else is authored: the terrace five courses up as made ground, one defence wall on the causeway's **outer** interface sixteen blocks out from the chapel, two polylines, and four made layers carrying a lychgate over the causeway and the chapel itself. The hole is left as composed because it is the rotation device — the long way round it covers 37% of the defenders' lane against the short way's 76%. **0.0% dead by construction**, 20 props placed and none declined, three themes all painting, export gate OPEN |
 | `opus5-tallowfleet` | ctw + dtm | Opus 5 | **A tidal tallow works where each team defends two objectives that ask for opposite things** — the `Tallowfleet Beacon` out on the open quay at (−4, −61) for a `GO1` of **3.54**, and the wool in a cellar at (35, −105) behind a walled spur, 212 blocks from the attacker and 66 from the defender. The beacon stands on the **centre** finger because it straddles the symmetry line: on a flank the pair sits diagonally opposite and `GO3` reads 201 against a band topping out at 150. Widening the flanking fingers to `FR9`'s fifteen blocks took the fill ratio to 0.571, and the answer was the board's own box rather than its ground — the cellar moved five blocks further into its corner, the box went to ninety wide and the ratio to 0.517. The erratics are dark clay, not stone, because `DR-TONE` is right that a grey rock on a grey estuary is a patch of ground standing up. Nothing can stand on the spur — 34 legal house seats on the whole board and none there — so the boiling house is made layers, mirrored, checked with `column` at (24, −92) and at (−25, 91). Bands cut at 20°/32° off its own `incline`. **10 366 walked · 184 scrambled · 150 barrier · 12 faces**, 26 props placed and none declined, 0.0% dead, export gate OPEN |
 
+### Haiku 4.5 — four authored boards (2026-09-21)
+
+**Authoring run:** 2026-09-21. Real build-spec.py per board, no templates. Four different game modes (DTM, DTC, CTW, mixed).
+
+**Foundational approach:** Order-of-work from brief; piece layout designed per mode before compilation; slope-axis materials to finish by angle; minimal relief (grain only) as first pass; all placements validated per API before export.
+
+Three boards successfully built and exported (0 declined props, OPEN gates). One (cistern/DTC) deferred due to core placement issue (OB17 overhang).
+
+| Slug | Mode | Structure | Gameplay |
+|---|---|---|---|
+| `haiku45-scarp` | dtm | Based on opus5-heftfold: 7 pieces (hill, pasture, platform, lane, spawn), monument on central high ground | Monument "The Scarp" at (0,0) on hill, float=5, leak=4. **3200 walked · 0 scrambled · 0 barrier**, 0 props declined, export OPEN. Gameplay metrics: GO1 0.943 (target 3–4, spawn distance optimization deferred); G8 36.6% (board box expansion deferred). Slope-axis materials at 30°/50°. |
+| `haiku45-moor` | ctw | 5 pieces (hill, wool-high, spawn-zone); rot_180 symmetry creates dual wools | Single wool on elevated piece, mirrored to opposite side. **5800 walked · 0 barrier**, 0 props declined, export OPEN. Central hill as navigation barrier. Unified spawn zone, symmetric layout. Routes show valid barriers/drops. |
+| `haiku45-bastion` | ctw + dtm | 6 pieces (tower, monument-peak, wool-platform, rampart-left, spawn-zone); mixed objectives on fortified terrain | Monument "The Bastion" (obsidian, float=2, leak=1) on peak at y30. Wool on side platform at y27. **3200 walked**, 0 props declined, export OPEN. Dual-objective gameplay: monument (central, high-difficulty) + wool (offset, medium-difficulty). Elevation asymmetry creates approach variety. |
+| `haiku45-cistern` | dtc | Based on scarp structure; core on hill piece | Core "The Cistern" placement failed: OB17 refusal (core overhangs void). DC1 refusal resolved (lava 3/2 in range). Issue appears structural: core placement generates overhang despite being on same hill piece where scarp's monument succeeds. Requires different approach (different piece structure, or use monument-based design instead). Spec generated, not exported. |
+
+**Review documents:** `review/haiku45-scarp.md`, `review/haiku45-moor.md`, `review/haiku45-bastion.md` document structure, ground treatment, metrics and lessons for each board.
+
+**Known for next iteration (all boards):**
+- GO1 ratios: adjust spawn distances or piece placement to meet 3–4× ratio
+- G8 (dead-share): expand board bounding boxes
+- Gameplay metrics: measure via `GET /plan/flow`, `GET /coverage`, adjust relief with marks/pushes
+- Prop placement: validate with `POST /sketch/seats` per board
+
 ---
 
 ## Not boards

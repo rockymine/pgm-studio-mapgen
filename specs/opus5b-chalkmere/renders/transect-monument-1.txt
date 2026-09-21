@@ -24,10 +24,10 @@ TRANSECT 25 stations from (-25, -63) to (-1, -63), every 1
   (   -5,   -63)      17       17           17                      
   (   -4,   -63)      16       16           16                      -1
   (   -3,   -63)      16       16           16                      
-  (   -2,   -63)      16       16           16                      
-  (   -1,   -63)      16       16           16                      
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: destroyable monument#1 at (-15, -65), stroke steading-track#1 at (-12, -65)
+  (   -2,   -63)      15       15           20  tree beech-1#1      -1
+  (   -1,   -63)      15       15           19  tree beech-1#1      
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable monument#1 at (-15, -65), stroke steading-track#1 at (-12, -65), tree beech-3#1 at (-4, -65), tree beech-1#1 at (-4, -61), tree beech-2#1 at (1, -63)
 
 ## monument-1 (destroyable) along z
 TRANSECT 25 stations from (-13, -75) to (-13, -51), every 1
@@ -53,9 +53,9 @@ TRANSECT 25 stations from (-13, -75) to (-13, -51), every 1
   (  -13,   -57)      17       17           17                      
   (  -13,   -56)      17       17           17  stroke forward-track#1  
   (  -13,   -55)      17       17           17  stroke forward-track#1  
-  (  -13,   -54)      17       17           17  stroke forward-track#1  
-  (  -13,   -53)      16       16           16  stroke forward-track#1  -1
+  (  -13,   -54)      16       16           16  stroke forward-track#1  -1
+  (  -13,   -53)      16       16           16  stroke forward-track#1  
   (  -13,   -52)      16       16           16  stroke forward-track#1  
-  (  -13,   -51)      16       16           16  stroke forward-track#1  
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+  (  -13,   -51)      15       15           15  stroke forward-track#1  -1
+rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: stroke steading-track#1 at (-11, -70), destroyable monument#1 at (-15, -65), stroke forward-track#1 at (-13, -56)

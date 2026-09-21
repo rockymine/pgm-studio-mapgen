@@ -1,0 +1,57 @@
+## flint-1 (boulder) along x
+TRANSECT 21 stations from (-30, 56) to (-10, 56), every 1
+  station        ground  surface  water  top  standing            step
+  (  -30,    56)                                                    void
+  (  -29,    56)                                                    void
+  (  -28,    56)                                                    void
+  (  -27,    56)                                                    void
+  (  -26,    56)                                                    void
+  (  -25,    56)                                                    void
+  (  -24,    56)       9        9           11  boulder flint-1     
+  (  -23,    56)       9        9           12  boulder flint-1     
+  (  -22,    56)       9        9           12  boulder flint-1     
+  (  -21,    56)       9        9           12  boulder flint-1     
+  (  -20,    56)       9        9            9                      
+  (  -19,    56)       9        9            9                      
+  (  -18,    56)       9        9            9                      
+  (  -17,    56)       9        9            9                      
+  (  -16,    56)       9        9            9                      
+  (  -15,    56)       9        9            9                      
+  (  -14,    56)       9        9            9                      
+  (  -13,    56)       9        9            9                      
+  (  -12,    56)      10       10           16  tree beech-0        +1
+  (  -11,    56)      10       10           17  tree beech-0        
+  (  -10,    56)      10       10           18  tree beech-0        
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder flint-1 at (-24, 56), water dew-pond at (-15, 54), tree beech-0 at (-14, 54), tree beech-2 at (-10, 58), tree beech-1 at (-8, 55)
+
+## flint-1 (boulder) along z
+TRANSECT 25 stations from (-22, 44) to (-22, 68), every 1
+  station        ground  surface  water  top  standing            step
+  (  -22,    44)       7        7      6     6  water dew-pond      
+  (  -22,    45)       7        7      6     6  water dew-pond      
+  (  -22,    46)       7        7      6     6  water dew-pond      
+  (  -22,    47)       7        7            7  water dew-pond      
+  (  -22,    48)       7        7            7  water dew-pond      
+  (  -22,    49)       7        7            7                      
+  (  -22,    50)       7        7            7                      
+  (  -22,    51)       8        8            8                      +1
+  (  -22,    52)       8        8            8                      
+  (  -22,    53)       8        8            8                      
+  (  -22,    54)       9        9           10  boulder flint-1     +1
+  (  -22,    55)       9        9           12  boulder flint-1     
+  (  -22,    56)       9        9           12  boulder flint-1     
+  (  -22,    57)      10       10           12  boulder flint-1     +1
+  (  -22,    58)      10       10           10                      
+  (  -22,    59)      11       11           11                      +1
+  (  -22,    60)      11       11           11                      
+  (  -22,    61)      11       11           16  house fold-house    
+  (  -22,    62)      12       12           17  house fold-house    +1
+  (  -22,    63)      12       12           18  house fold-house    
+  (  -22,    64)      12       12           19  house fold-house    
+  (  -22,    65)      12       12           20  house fold-house    
+  (  -22,    66)      13       13           20  house fold-house    +1
+  (  -22,    67)      13       13           19  house fold-house    
+  (  -22,    68)      14       14           18  house fold-house    +1
+rises 7, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water dew-pond at (-22, 42), boulder flint-1 at (-22, 54), house fold-house at (-24, 61)

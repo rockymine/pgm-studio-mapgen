@@ -1,0 +1,61 @@
+## flint-2 (boulder) along x
+TRANSECT 25 stations from (0, 28) to (24, 28), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    28)      12       12           12                      
+  (    1,    28)      13       13           13                      +1
+  (    2,    28)      15       15           15                      scramble +2
+  (    3,    28)      17       17           17                      scramble +2
+  (    4,    28)      18       18           18                      +1
+  (    5,    28)      19       19           19  stroke forward-track  +1
+  (    6,    28)      20       20           20  stroke forward-track  +1
+  (    7,    28)      21       21           21  stroke forward-track  +1
+  (    8,    28)      21       21           21  stroke forward-track  
+  (    9,    28)      22       22           22  stroke forward-track  +1
+  (   10,    28)      23       23           27  boulder flint-2     +1
+  (   11,    28)      24       24           28  boulder flint-2     +1
+  (   12,    28)      25       25           28  boulder flint-2     +1
+  (   13,    28)      25       25           28  boulder flint-2     
+  (   14,    28)      25       25           26  boulder flint-2     
+  (   15,    28)      25       25           25                      
+  (   16,    28)      25       25           25                      
+  (   17,    28)      25       25           25                      
+  (   18,    28)      24       24           24                      -1
+  (   19,    28)      23       23           23                      -1
+  (   20,    28)      22       22           22                      -1
+  (   21,    28)      22       22           22                      
+  (   22,    28)      22       22           22                      
+  (   23,    28)      21       21           21                      -1
+  (   24,    28)                                                    void
+rises 11, falls 4, worst step 2: 0 barrier, 2 scramble, 0 drop — scramble +2 at (2, 28); scramble +2 at (3, 28) | walked end to end
+beside: stroke forward-track at (5, 26), boulder flint-2 at (10, 28)
+
+## flint-2 (boulder) along z
+TRANSECT 25 stations from (12, 16) to (12, 40), every 1
+  station        ground  surface  water  top  standing            step
+  (   12,    16)      15       15           15                      
+  (   12,    17)      16       16           16                      +1
+  (   12,    18)      18       18           18                      scramble +2
+  (   12,    19)      19       19           19                      +1
+  (   12,    20)      20       20           20                      +1
+  (   12,    21)      20       20           20                      
+  (   12,    22)      21       21           21                      +1
+  (   12,    23)      22       22           22                      +1
+  (   12,    24)      23       23           23                      +1
+  (   12,    25)      24       24           24                      +1
+  (   12,    26)      24       24           24                      
+  (   12,    27)      25       25           28  boulder flint-2     +1
+  (   12,    28)      25       25           28  boulder flint-2     
+  (   12,    29)      24       24           28  boulder flint-2     -1
+  (   12,    30)      24       24           24                      
+  (   12,    31)      23       23           23                      -1
+  (   12,    32)      22       22           22                      -1
+  (   12,    33)      22       22           22                      
+  (   12,    34)      21       21           21                      -1
+  (   12,    35)      21       21           21                      
+  (   12,    36)      21       21           21                      
+  (   12,    37)      20       20           20                      -1
+  (   12,    38)      18       18           18                      -2
+  (   12,    39)      17       17           17  stroke forward-track  -1
+  (   12,    40)      16       16           16  stroke forward-track  -1
+rises 9, falls 8, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (12, 18) | walked end to end
+beside: boulder flint-2 at (11, 27), stroke forward-track at (10, 31)

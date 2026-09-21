@@ -1,8 +1,5 @@
 #!/usr/bin/env python3
-"""Cistern — destroy the core in an open well.
-
-Core floated above a deep well. Two spawns flank it on level ground. Symmetric approaches, open center.
-"""
+"""Cistern — destroy the core. Scarp structure with core placement."""
 import json, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -16,35 +13,38 @@ def layered(bands, axis="depth", ending="repeat"):
     return {"kind": "layered", "axis": axis, "stack": stack}
 
 GRASS, DIRT, STONE, ANDESITE = solid(2, 0), solid(3, 0), solid(1, 0), solid(1, 5)
+LOW, HIGH = 12, 17
 
-BASE_Y = 20
-
+# Scarp structure with core (lava 2-5 range)
 plan = {
     "plan": 2,
     "meta": {"name": "Cistern"},
-    "globals": {"cell": 5, "symmetry": "rot_180", "maxPlayers": 16, "surface": BASE_Y, "observerY": 54},
+    "globals": {"cell": 5, "symmetry": "rot_180", "maxPlayers": 16, "surface": LOW, "observerY": 48},
     "pieces": [
-        {"id": "ground", "role": "piece", "rect": [-11, 4, 22, 12], "surface": BASE_Y},
-        {"id": "spawn-left", "role": "spawn", "rect": [-11, 14, 4, 3], "surface": BASE_Y},
-        {"id": "spawn-right", "role": "piece", "rect": [-7, 14, 6, 3], "surface": BASE_Y},
-        {"id": "spawn-extra", "role": "piece", "rect": [-1, 14, 4, 3], "surface": BASE_Y},
+        {"id": "hill", "role": "piece", "rect": [-3, -2, 6, 4], "surface": HIGH, "mirrors": False},
+        {"id": "pasture", "role": "piece", "rect": [-11, 4, 14, 4], "surface": LOW},
+        {"id": "platform", "role": "piece", "rect": [-11, 8, 10, 6], "surface": HIGH},
+        {"id": "lane", "role": "piece", "rect": [-1, 8, 4, 6], "surface": LOW},
+        {"id": "spawn-area", "role": "spawn", "rect": [-11, 14, 4, 3], "surface": LOW},
+        {"id": "spawn-center", "role": "piece", "rect": [-7, 14, 6, 3], "surface": LOW},
+        {"id": "dressing", "role": "piece", "rect": [-1, 14, 4, 3], "surface": LOW},
     ],
     "zones": [
-        {"id": "middle", "rect": [-11, -2, 22, 18], "kind": "build"}
+        {"id": "pass", "rect": [-11, -4, 22, 8], "kind": "build"}
     ],
     "placements": {
         "spawns": [
-            {"id": "spawn-1", "piece": "spawn-right", "at": [15, 8], "facing": "front",
+            {"id": "spawn-1", "piece": "spawn-center", "at": [15, 8], "facing": "front",
              "footprint": [6, 3, 18, 9]}
         ],
         "iron": [
-            {"id": "iron-1", "piece": "spawn-right", "at": [2, 7]},
-            {"id": "iron-2", "piece": "spawn-right", "at": [28, 7]}
+            {"id": "iron-1", "piece": "spawn-center", "at": [2, 7]},
+            {"id": "iron-2", "piece": "spawn-center", "at": [28, 7]}
         ],
         "destroyables": [],
         "cores": [
-            {"id": "core", "piece": "ground", "at": [0, 10], "lava": 3, "lavaHeight": 3,
-             "float": 6, "leak": 5, "name": "The Cistern"}
+            {"id": "core", "piece": "hill", "at": [0, 0], "lava": 3, "lavaHeight": 2,
+             "float": 1, "leak": 1, "name": "The Cistern"}
         ],
         "wools": [],
     },
@@ -54,8 +54,8 @@ plan = {
 
 relief = {
     "*": {
-        "base": BASE_Y, "reach": 0, "step": 1, "landform": "rolling",
-        "grain": {"amplitude": 0.5, "scale": 10, "seed": 4701},
+        "base": LOW, "reach": 0, "step": 1, "landform": "rolling",
+        "grain": {"amplitude": 0.6, "scale": 12, "seed": 4701},
         "marks": [],
         "pushes": []
     }

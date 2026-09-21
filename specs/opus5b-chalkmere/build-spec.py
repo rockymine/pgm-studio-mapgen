@@ -105,15 +105,19 @@ relief = {
                           seed=4112)},
             {"id": "steading-apron", "kind": "area", "h": 19, "bevel": 4,
              "ring": lobed_rect(-26, 88, 26, 112, wobble=2.5, seed=4113)},
+            # The combe is a mark rather than a push. Drawn as a push it took
+            # its floor down to y1 — the ground there solves to 9 and the lift
+            # is arithmetic on the answer — and the pool in it then cut three
+            # courses of bank away and raised DR-BANK, because a push dishes
+            # and a pool's line is the lowest surface it crosses. A pinned pan
+            # is level, and water fills whatever is level.
+            {"id": "combe-pan", "kind": "area", "h": 7, "bevel": 5,
+             "ring": lobe(-16, 46, 12, points=13, wobble=0.22, seed=4123)},
         ],
         "pushes": [
             {"id": "nab", "ring": lobe(15, 28, 8, points=9, wobble=0.22, seed=4121),
              "amount": 11, "falloff": 11, "crown": 4, "roughness": 1.2,
              "seed": 4122},
-            {"id": "combe", "ring": lobe(-17, 38, 9, points=11, wobble=0.24,
-                                         seed=4123),
-             "amount": -7, "falloff": 11, "crown": -3, "roughness": 1.0,
-             "seed": 4124},
         ],
     }
 }
@@ -192,14 +196,19 @@ yard_theme = {
 # layer: the dry-stone wall that encloses the steading yard, drawn as a
 # polyline so it flows rather than turning square corners.
 
-DOWN_BASE = 10   # read off the compiled layout — see README in this directory
+# The compile emits one shape per surface: down-9 for the board and down-19 for
+# the back band. A patch owns the paint on a cell only where its own drawn top
+# equals the tallest drawn top there, so each of the two states the base_height
+# of the ground it lies on. The first cut stated 10 for both and the yard
+# painted 100 cells of the 480 it covers.
+DOWN_LOW, DOWN_HIGH = 9, 19
 
 add_shapes = [
     {"id": "combe-floor", "type": "polygon", "operation": "add",
-     "floor": 0, "base_height": DOWN_BASE, "theme": "combe",
-     "vertices": lobe(-17, 38, 11, points=13, wobble=0.22, seed=4141)},
+     "floor": 0, "base_height": DOWN_LOW, "theme": "combe",
+     "vertices": lobe(-16, 46, 13, points=13, wobble=0.22, seed=4141)},
     {"id": "steading-yard", "type": "polygon", "operation": "add",
-     "floor": 0, "base_height": DOWN_BASE, "theme": "yard",
+     "floor": 0, "base_height": DOWN_HIGH, "theme": "yard",
      "vertices": lobed_rect(-20, 90, 10, 106, wobble=2.0, seed=4142)},
 ]
 
@@ -207,28 +216,49 @@ yard_wall = {
     "id": "yard-wall", "name": "the steading wall", "base_y": 0,
     "kind": "made", "part_of": "steading",
     "groups": [{"id": "yard-wall", "name": "the steading wall",
-                "mirrors": True, "shapeIds": ["yard-wall-run"]}],
+                "mirrors": True,
+                "shapeIds": ["yard-wall-west", "yard-wall-east"]}],
     "shapes": [
         # a polyline rather than a chain of rectangles: the rasterizer splines
         # the points before offsetting the band, so six points draw a wall that
         # flows round the yard. The studio's kinds are rectangle, circle,
         # polygon, lasso and polyline — "path" is what the schema calls it and
         # SK3 is what the store answers to that word.
-        {"id": "yard-wall-run", "type": "polyline", "operation": "add",
+        # Two runs rather than one. A single run round the yard crossed the
+        # hall's own footprint and SK18 read twenty columns where the made
+        # thing and the stamped room hold the same courses: the rasterizer lays
+        # one and the stamper writes the other, and neither reads the other.
+        {"id": "yard-wall-west", "type": "polyline", "operation": "add",
          "floor": 19, "base_height": 2, "radius": 1.0,
          "stroke_edge": "solid", "keepClear": True,
          "material": cells(4151, 4, 2, [solid(4, 0), FLINT]),
-         "vertices": [[-19, 92], [-20, 99], [-16, 105], [-4, 106],
-                      [7, 104], [11, 98]]},
+         "vertices": [[-19, 91], [-20, 97], [-18, 103], [-13, 106]]},
+        {"id": "yard-wall-east", "type": "polyline", "operation": "add",
+         "floor": 19, "base_height": 2, "radius": 1.0,
+         "stroke_edge": "solid", "keepClear": True,
+         "material": cells(4151, 4, 2, [solid(4, 0), FLINT]),
+         "vertices": [[3, 107], [8, 104], [11, 98], [10, 92]]},
     ],
 }
 
 # ---------------------------------------------------------------- the dressing
+#
+# Four ideas, and each thing is where it is because there is an answer to why
+# there. The west approach is composed: a dew pond in the combe a player drops
+# into, a two-house fold on the west bank to be fought through, and a beech
+# shaw between the fold and the monument that carries cover to within fifteen
+# blocks of it. The east approach is the nab, which is bare on purpose —
+# climbing it and bridging down is the other way in, and the ground in front of
+# a goal wants reading at a glance.
+#
+# Every position below was taken off POST .../sketch/seats for its own kind,
+# which is a raster of the cells a footprint's minimum corner may sit on; none
+# was chosen by eye.
 
 cache_path = os.path.join(HERE, "trees.json")
 cache = load_cache(cache_path)
 BEECH = tree_body("showcase-r11-3", cache)      # dense oak — the shaw
-THORN = tree_body("showcase-r6-4", cache)       # tiny oak — the hedge line
+THORN = tree_body("showcase-r6-4", cache)       # tiny oak — the rim
 save_cache(cache_path, cache)
 
 styles = {
@@ -237,26 +267,65 @@ styles = {
     "flint-rock": {"kind": "boulder", "form": "round", "size": 2, "mossy": False,
                    "rock": field(4161, 3, 3, [solid(1, 0), solid(4, 0), FLINT],
                                  rise=3, kind="turbulence")},
+    "fold-house": {"kind": "house", "shell": None},   # filled below
 }
 
-PAVE = cells(4162, 3, 0, [GRAVEL, FLINT, solid(4, 0)])
+PAVE = cells(4162, 3, 0, [GRAVEL, WORN, solid(4, 0)])
+
+FLINTS = [(-4, 30), (-22, 56), (12, 28)]
 
 props = [
-    # the two routes, drawn before the scenery: spawn door to the monument, and
-    # the monument forward to the strand a crossing lands on.
+    # The routes are drawn before the scenery, because circulation is decided
+    # first: the door of the hall to the monument, and the monument forward to
+    # the strand a crossing lands on. Both are solid and three tones a reader
+    # cannot quite tell apart.
     {"id": "steading-track", "kind": "stroke", "seed": 4171, "radius": 2,
      "style": "solid", "claimsGround": True, "pave": PAVE,
      "points": [[-5, 94], [-3, 86], [2, 78], [8, 70], [11, 66]]},
     {"id": "forward-track", "kind": "stroke", "seed": 4172, "radius": 2,
      "style": "solid", "claimsGround": True, "pave": PAVE,
      "points": [[12, 54], [11, 42], [8, 30], [4, 18], [2, 10]]},
+
+    # the dew pond in the combe floor — the reason to drop into it
+    {"id": "dew-pond", "kind": "water", "seed": 4173, "shape": "pool",
+     "points": lobe(-16, 46, 6, points=9, wobble=0.2, seed=4174),
+     "radius": 2, "depth": 2, "shore": 3, "shoreWander": True,
+     "bank": cells(4175, 4, 0, [GRAVEL, solid(82, 0), WORN])},
+
+    # the fold: one style, two plots, one of them a storey taller and wider
+    {"id": "fold-house", "kind": "house", "seed": 4176, "style": "fold-house",
+     "front": "posX",
+     "wings": [{"corners": [[-24, 62], [-14, 69]], "spec": {"storeysHigh": 2}}]},
+    {"id": "fold-byre", "kind": "house", "seed": 4177, "style": "fold-house",
+     "front": "posX",
+     "wings": [{"corners": [[-24, 76], [-16, 82]], "spec": {"storeysHigh": 1}}]},
 ]
+
+# the shaw — five beeches west of the monument, trunk to trunk no closer than
+# the larger of two crowns, and the nearest of them fifteen blocks off the
+# monument's own anchor
+props += [{"id": f"beech-{i}", "kind": "tree", "seed": 4200 + i,
+           "x": x, "z": z, "style": "beech"}
+          for i, (x, z) in enumerate([(-10, 52), (-4, 57), (-9, 63), (-2, 68),
+                                      (-4, 48)])]
+# two thorns on the combe's rim, to the outside of the piece rather than down
+# the middle of it
+props += [{"id": f"thorn-{i}", "kind": "tree", "seed": 4220 + i,
+           "x": x, "z": z, "style": "thorn"}
+          for i, (x, z) in enumerate([(-20, 30), (-8, 34)])]
+# three flints, each on ground flat enough to hold one
+# Three flints, each on ground the incline read calls flat: a boulder is a
+# mass the ice left, so DR-STEEP turns one away from a face, and the first cut
+# put all three on 41, 48 and 54 degrees.
+props += [{"id": f"flint-{i}", "kind": "boulder", "seed": 4240 + i,
+           "x": x, "z": z, "style": "flint-rock"}
+          for i, (x, z) in enumerate(FLINTS)]
 
 props += [
     {"id": "flora", "kind": "flora", "seed": 4180,
      "points": lobed_rect(-24, 8, 24, 106, wobble=2.0, seed=4181),
      "spec": {"coverage": 0.22, "scale": 26, "octaves": 3, "fernShare": 0.12,
-              "flowerShare": 0.10, "flowerScale": 18, "tallShare": 0.06}},
+              "flowerShare": 0.10, "flowerScale": 18, "tallShare": 0.05}},
 ]
 
 # ---------------------------------------------------------------- the house
@@ -329,11 +398,16 @@ SPAWN_HALL["storeys"][0]["headroom"] = 7
 SPAWN_HALL["storeys"][0]["wall"]["extent"] = 7
 SPAWN_HALL["storeys"][0]["wall"]["stack"]["bands"][1]["thickness"] = 5
 
+styles["fold-house"] = {"kind": "house", "shell": CHALK_HOUSE}
+
 finish = {
     "authors": ["Opus 5"],
     "created": "2026-09-21",
     "themes": {"down": down_theme, "combe": combe_theme, "yard": yard_theme},
     "mapTheme": "down",
+    # Plains: grass at #91bd59 reads fresh against sandstone, which is what a
+    # chalk down wants. Asked of GET /api/terrain/biomes rather than assumed.
+    "biome": {"kind": "solid", "id": 1},
     "relief": relief,
     "addShapes": add_shapes,
     "addLayers": [yard_wall],

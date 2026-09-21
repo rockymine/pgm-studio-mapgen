@@ -1,0 +1,121 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Highgarth Fell"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 8,
+  "surface": 11
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -30,
+    -3,
+    5,
+    7
+   ]
+  },
+  {
+   "id": "yard",
+   "role": "piece",
+   "rect": [
+    -25,
+    -8,
+    21,
+    16
+   ]
+  },
+  {
+   "id": "approach",
+   "role": "piece",
+   "rect": [
+    -24,
+    8,
+    5,
+    4
+   ]
+  },
+  {
+   "id": "wool-room",
+   "role": "wool-room",
+   "rect": [
+    -24,
+    12,
+    5,
+    6
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -4,
+    -8,
+    8,
+    16
+   ],
+   "kind": "build"
+  }
+ ],
+ "walls": [
+  {
+   "a": "approach",
+   "b": "yard"
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "red-spawn",
+    "piece": "spawn",
+    "at": [
+     10,
+     14
+    ],
+    "facing": "right",
+    "footprint": [
+     2,
+     4,
+     16,
+     20
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "red-wool",
+    "piece": "wool-room",
+    "at": [
+     10,
+     12
+    ],
+    "footprint": [
+     2,
+     2,
+     16,
+     20
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "red-beacon",
+    "piece": "yard",
+    "at": [
+     38,
+     32
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Highgarth Beacon"
+   }
+  ]
+ }
+}
