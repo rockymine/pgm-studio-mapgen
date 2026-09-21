@@ -641,6 +641,41 @@ that reading and it is a judgement rather than a measurement.
 | `opus5b-ochredrift` | ctw | Opus 5 | **A red mesa mining camp over a dry wash** — two wools a team on spurs at the far corners, each room with three faces on void, each spur's mouth carrying sixteen blocks of bedrock twenty in front of the room's face. A notch between the two frontline legs meets a slot across the hub, so the middle of a team's own ground is one T of void nothing bridges, and the only land joining the wash to the hub is sixteen blocks at each end with a ramp cut through it. The crusher terrace is `relief_scope: exclude` and meets the hub at a 64-cell face, with a twelve-block flight of six two-deep treads cut into it. `Mesa` biome so grass and podzol read as one dry floor. **11 118 walked · 318 scrambled · 128 barrier · 2 faces**, 28 props placed and none declined, **0.0% dead over 21 journeys**, export gate OPEN |
 | `opus5b-alderquay` | ctw + dtm | Opus 5 | **A dark alder holt on a delta channel** — one obsidian monument a team in the open on the bank above a timber quay at `(30, 52)`, own walk 53 against 187, and one wool on a spur at the back behind a sixteen-block bedrock line. The map declares both gamemodes. The void here is a channel that reaches the mid rather than a hole inside the team's ground, which is the only cut `approaches.md` and `G8` both allow; a pinned backwater on the west bank is the entrance from below. The quay is two made layers, because one layer holds one span per column and the posts under the deck are simply not in the world otherwise. `Swampland` biome, white-plaster buildings framed in dark oak. **8 440 walked · 90 scrambled · 0 barrier · 0 faces**, 32 props placed and none declined, 1.6% dead, export gate OPEN |
 
+---
+
+### Opus 5 — four boards, one per approach dimension
+
+`approaches.md` names the four dimensions an approach can come from — a player
+arrives at an objective from **around** it, from **above** it, from **below** it, or
+**through** something — and says that what separates a composed objective from a
+decorated one is that its ways in differ in dimension rather than in flavour. This
+run takes those four as its spine, one board each, so that no two boards could be
+one arrangement in different blocks.
+[reports/opus5c-run1.md](reports/opus5c-run1.md)
+
+**The instrument counts are the evidence that the spine held.** Emberhowe is five
+area marks, a push and two polylines; Ambertor six marks, a push and a cut flight;
+Wetherslack four marks, no push at all and two made layers; Culvergate no relief
+whatever — no mark, no push — and three made layers over 41 shapes. Four boards,
+four different instruments doing the work.
+
+**The tone families were checked across the set rather than within it.** The ground
+is black basalt under pale ash, gold limestone, deep green moss and pale limestone
+flags; what is built is warm spruce, dark oak, pale birch and red brick. No two
+boards share a ground family and no board's buildings are in its own ground's.
+
+**All four export with the gate OPEN and none declines a single prop**, which was
+not true of any of them on its first drive: thirty-one props were declined across
+the four before every position came off `POST …/sketch/seats` and
+`tools/loop.py --candidates` instead of off the map in the author's head.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5c-emberhowe` | ctw | Opus 5 | **A dead volcano whose crater nobody crosses — the board is the ring of ground round it.** Each team holds a horseshoe of rim open toward the middle, and the pit they enclose carries no build zone at all, so the only ways between the two lands are 24 blocks of strait at each horn. A raider picks a hand there and cannot change it: the far room is reached by walking the whole rim past the enemy spawn. Two wools a team on shelves hung off the outer coast, each with three faces on void and one bedrock wall sixteen blocks in front of its face, and the two spurs are deliberately **not** at the same z — symmetric ones put `WL9`'s spawn-wool ratio at exactly 1.0 under a band starting at 1.031, and two hands that cost the same are not a decision either. Ground is pale ash over black rock on a slope stack cut at 20°/40°. **10 070 walked · 498 scrambled · 0 barrier · 0 faces**, 36 props placed and none declined, 4.1% dead, export gate OPEN |
+| `opus5c-ambertor` | dtm | Opus 5 | **A gold limestone pavement with one tor standing over the monument's pan** — the crag's crest is about fifteen blocks over the goal's own underside, so the shortest way at it is to climb something and bridge down, which is a commitment that takes time and is visible the whole while. The tor stands against the board's **west edge** rather than on its centre line: a crag with a lane each side gives two approaches differing only in hand, and one against the edge leaves the open 17-block east lane or the climb. A cut flight of 33 blocks up its south-west flank is the one walked way onto it. `GO1` **3.39**, `GO3` 127, `GO4` 45, all three right on the first evaluate. Three line marks with a `tread` cut the ramps off the spawn's ten-block shelf, and a transect reads each `worst step 1, walked end to end` where `EL1` and `SP8` still complain. **8 056 walked · 818 scrambled · 466 barrier · 14 faces**, 30 props placed and none declined, 7.2% dead, export gate OPEN |
+| `opus5c-wetherslack` | dtc | Opus 5 | **A wooded gill with a vaulted terrace built out over its west side, and the core standing on the deck.** The deck tops at y21 against the shoulder's y20, so from the west a player steps up one and is on it; from the gill floor the way at it is the undercroft below — **nine courses of air**, entered by two mouths and left by a shaft in the deck that comes up four blocks from the casing. The undercroft is ground nobody drew on: an opening is a gap between shapes rather than a subtract, which `SK13` refuses. The core **names its layer** — stated with none it seated on the terrain under the terrace, casing at y18 with the deck running through it at y21. The gill carries one shoulder rather than two, because two ten-wide rims on a 48-wide board leave the beck's band nothing to sit in. `GO1` **3.30**. **8 272 walked · 200 scrambled · 202 barrier · 6 faces**, 42 roofed voids and **0 sealed**, 34 props placed and none declined, 4.6% dead, export gate OPEN |
+| `opus5c-culvergate` | koth | Opus 5 | **A brick waterworks fought room by room, and the middle pays double.** `The Cistern` sits inside a long engine hall split into three rooms by two cross-walls whose doors are on opposite hands — each the other's `rot_180` image, so the zigzag is the same for both teams — and `West` and `East Settling` sit in yards walled on two of their four sides. The middle pays 2 against the flanks' 1 to a limit of 750, and the flanks stand at **0.79** of the centre-to-spawn distance, the top of the corpus's range. **The board carries no relief at all** — no mark, no push — because a capture board's ground is built and a point raised over open ground is a point its first holder keeps; every height on it is a course somebody laid. Cover is built in two sizes: ten boxes of two and three courses inside the spaces, and two ten-block pillars that split each approach. **The works is a cross rather than a rectangle**, which is the only thing that answered a 9.3% dead share — a second mouth per yard and a road round the back moved coverage by nothing, because it measures journeys and a journey takes the short way. **6 686 walked · 16 scrambled · 100 barrier · 2 faces**, 16 props placed and none declined, **0.9% dead**, export gate OPEN |
+
 ## Not boards
 
 Folders under `maps/` or `specs/` that exist for a reading rather than for a game. They are named

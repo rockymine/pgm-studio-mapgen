@@ -1,0 +1,77 @@
+## spawn-blue (spawn) along x
+TRANSECT 33 stations from (-16, -56) to (16, -56), every 1
+  station        ground  surface  water  top  standing            step
+  (  -16,   -56)                                                    void
+  (  -15,   -56)                                                    void
+  (  -14,   -56)                                                    void
+  (  -13,   -56)                                                    void
+  (  -12,   -56)                                                    void
+  (  -11,   -56)       9        9            9                      
+  (  -10,   -56)       9        9            9                      
+  (   -9,   -56)       9        9            9                      
+  (   -8,   -56)       9        9            9                      
+  (   -7,   -56)       9        9            9                      
+  (   -6,   -56)       9        9           16                      
+  (   -5,   -56)       9        9           17  spawn spawn-gate#1  
+  (   -4,   -56)       9        9           18  spawn spawn-gate#1  
+  (   -3,   -56)       9        9           19  spawn spawn-gate#1  
+  (   -2,   -56)       9        9           20  spawn spawn-gate#1  
+  (   -1,   -56)       9        9           21  spawn spawn-gate#1  
+  (    0,   -56)       9        9           21  spawn spawn-gate#1  
+  (    1,   -56)       9        9           20  spawn spawn-gate#1  
+  (    2,   -56)       9        9           19  spawn spawn-gate#1  
+  (    3,   -56)       9        9           18  spawn spawn-gate#1  
+  (    4,   -56)       9        9           17  spawn spawn-gate#1  
+  (    5,   -56)       9        9           16                      
+  (    6,   -56)       9        9            9                      
+  (    7,   -56)       9        9            9                      
+  (    8,   -56)       9        9            9                      
+  (    9,   -56)       9        9            9                      
+  (   10,   -56)       9        9            9                      
+  (   11,   -56)                                                    void
+  (   12,   -56)                                                    void
+  (   13,   -56)                                                    void
+  (   14,   -56)                                                    void
+  (   15,   -56)                                                    void
+  (   16,   -56)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-gate#1 at (-5, -58)
+
+## spawn-blue (spawn) along z
+TRANSECT 33 stations from (0, -68) to (0, -36), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,   -68)       9        9            9                      
+  (    0,   -67)       9        9            9                      
+  (    0,   -66)       9        9            9                      
+  (    0,   -65)       9        9            9                      
+  (    0,   -64)       9        9           16                      
+  (    0,   -63)       9        9           17  spawn spawn-gate#1  
+  (    0,   -62)       9        9           18  spawn spawn-gate#1  
+  (    0,   -61)       9        9           19  spawn spawn-gate#1  
+  (    0,   -60)       9        9           20  spawn spawn-gate#1  
+  (    0,   -59)       9        9           21  spawn spawn-gate#1  
+  (    0,   -58)       9        9           21  spawn spawn-gate#1  
+  (    0,   -57)       9        9           21  spawn spawn-gate#1  
+  (    0,   -56)       9        9           21  spawn spawn-gate#1  
+  (    0,   -55)       9        9           20  spawn spawn-gate#1  
+  (    0,   -54)       9        9           19  spawn spawn-gate#1  
+  (    0,   -53)       9        9           18  spawn spawn-gate#1  
+  (    0,   -52)       9        9           17  spawn spawn-gate#1  
+  (    0,   -51)       9        9           16                      
+  (    0,   -50)       9        9            9                      
+  (    0,   -49)       9        9           12  ironcube spawn-gate:0#1  
+  (    0,   -48)       9        9           12  stroke gate-way-s   
+  (    0,   -47)       9        9           12  stroke gate-way-s   
+  (    0,   -46)       9        9            9  stroke gate-way-s   
+  (    0,   -45)       9        9            9  stroke gate-way-s   
+  (    0,   -44)       9        9            9  stroke gate-way-s   
+  (    0,   -43)       9        9            9  stroke gate-way-s   
+  (    0,   -42)       9        9            9  stroke gate-way-s   
+  (    0,   -41)       9        9            9  stroke gate-way-s   
+  (    0,   -40)       9        9            9  stroke gate-way-s   
+  (    0,   -39)       9        9            9  stroke gate-way-s   
+  (    0,   -38)       9        9            9  stroke gate-way-s   
+  (    0,   -37)       9        9            9  stroke gate-way-s   
+  (    0,   -36)       9        9            9  stroke gate-way-s   
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-gate#1 at (-2, -63), ironcube spawn-gate:0#1 at (-2, -49), stroke gate-way-s at (-1, -48)

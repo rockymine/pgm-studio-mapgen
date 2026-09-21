@@ -1,0 +1,92 @@
+HEIGHTMAP  1 char = 2x2 blocks (the top-left block of each)  x -80..78 across, z -87..85 down
+KEY  char = ground height above y10 in bands of 1 block(s): 0 = y10..10, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
+     8   -7   -6   -5   -4   -3   -2   -1    0    1    2    3    4    5    6    7    
+     08642086420864208642086420864208642086420246802468024680246802468024680246802468
+ -87                          bbc                                                    
+ -85                 HHHHH   cccbccc                                                 
+ -83                 HHHHHccccccccccccccccccccccccccccccdfhjkllllkifd                
+ -81                 HHHHHcccccccccccccccccccccccccccccdfhjlmmmmmljhe                
+ -79                 HHHHHcccccccccccccccccHHHHHHccccccdgjlmmnoommlif                
+ -77                 HHHHHcccccccccccccccccHHHHHHccccccehkmmnpppnmljg                
+ -75                 bbbcccccccccccccccccccHHHHHHcccccdgilmnpqrqonmkh                
+ -73                 bbbcccccccccccccccccccHHHHHHcccccegjlmoprsqpnmkh                
+ -71                 bbbcccccccccccccccccccHHHHHHcccccehkmnoqssqpnmjg                
+ -69                 bbbcccccccccccccccccccHHHHHHcccccehjlmoqssqonljg                
+ -67                 bbbcccbbbbbbbbbbcccccccccccccccccegjlmoopqpnmlif                
+ -65                 babbbbbbbbbbbbbbbccccccccHcccccccegjllmmnnnmlkhe                
+ -63                 aaaaaaaaabbbbbbbcccccccccHcccccccdfijkklllllkifc                
+ -61                 aaaaaaaaaaabbbbbccccccccccccccccccegiijjkjjjigdb                
+ -59                 aaaaaa999a                            fhhhhgfeca                
+ -57                 9999999999                            cdeeedca99                
+ -55                 9999999999                            9aaaaa9888                
+ -53                 8888888888                            8888888888                
+ -51                 8888888888                            7777777888                
+ -49                 8888877777                            7777777777                
+ -47 8888888888888777H777777777                            6666777777                
+ -45 8HHHHHH888888777H777776666                            55666666776               
+ -43 8HHHHHH888888777H766666666                            55556666666               
+ -41 8HHHHHH888888777H666555555                            4455555566                
+ -39 8HHHHHH8888877766655555555                            4444455555                
+ -37 8HHHHHH888887766H555444444                            3344444444                
+ -35 8HHHHHH888887765H444444444                            3333333444H4555555H5555555
+ -33 8888888888887765H433333333                            222233333444555555HHHHHHH5
+ -31                 3333333333                            222222223344555555HHHHHHH5
+ -29                 2222222222                            111111122334555555HHHHHHH5
+ -27                 2111112222                            111111112234555555HHHHHHH5
+ -25                 1111111112                            1111111112H3555555HHHHHHH5
+ -23                 1111111112                            1011111111H3455555HHHHHHH5
+ -21                 1111111111                            1111111111H3455555H5555555
+ -19                 1111111111                            1111111111                
+ -17                 1111111111                            1111111111                
+ -15                 1111111111                            1111111111                
+ -13                 1111111111                            1111111111                
+ -11                                                                                 
+  -9                                                                                 
+  -7                                                                                 
+  -5                                                                                 
+  -3                                                                                 
+  -1                                                                                 
+   1                                                                                 
+   3                                                                                 
+   5                                                                                 
+   7                                                                                 
+   9                                                                                 
+  11                                                                                 
+  13                 1111111111                            1111111111                
+  15                 1111111111                            1111111111                
+  17                 1111111111                            1111111111                
+  19                 1111111111                            1111111111                
+  21 5555555555555542H111111111                            2111111111                
+  23 5HHHHHH555555543H111111101                            2111111111                
+  25 5HHHHHH555555543H111111111                            2111111111                
+  27 5HHHHHH5555555543221111111                            2222221122                
+  29 5HHHHHH5555555543322211112                            3332222223                
+  31 5HHHHHH5555555444333222222                            3333333333                
+  33 5HHHHHH555555544H433333333                            4444444444H6677888H8888888
+  35 5555555555555544H444443333                            4444444455H6778888HHHHHHH8
+  37                 5554444444                            4455555555H6778888HHHHHHH8
+  39                 5555555444                            555555556667778888HHHHHHH8
+  41                 6666555555                            5556666666H7778888HHHHHHH8
+  43                 6666666555                            6666667777H7788888HHHHHHH8
+  45                 7777666666                            6667777777H7778888HHHHHHH8
+  47                 7777777766                            7777777777H7778888H8888888
+  49                 7877777777                            8877888888                
+  51                 8888888877                            8888888888                
+  53                 8888899998                            8889888888                
+  55                 889abbcccb                            9999999999                
+  57                 9abdeffffe                            9999999999                
+  59                 9beghiiiii                            aaaaaaaaaa                
+  61                 bdgikkkkkkjjigdcccccccccccccccccbbbbbbaaaaaaaaaa                
+  63                 cfikllmmmlllkhecccccccHHccccccccbbbbbbbbbbbbaaaa                
+  65                 dgjlmnoponmlkifdccccccccccccccccbbbbbbbbbbbbbbbb                
+  67                 fikmnoqrqpnmkifdccccHHHHHHcccccccccccccccccccbbb                
+  69                 fikmoprsrpomligdccccHHHHHHcccccccccccccccccccbbb                
+  71                 filmoprsrpnmligdccccHHHHHHcccccccccccccccccccbbb                
+  73                 filmoprrqonmkhecccccHHHHHHccccccccccccccccccccbb                
+  75                 gjlmnpqqpnmljgecccccHHHHHHccccccccccccccccccccbb                
+  77                 ehkmmnponmmlifdcccccHHHHHHcccccccccccccccccHHHHHH               
+  79                 egjlmnnnmmljhecccccccccccccccccccccccccccccHHHHHH               
+  81                 dfhkmmmmlkjhfdcccccccccccccccccccccccccccccHHHHHH               
+  83                 degjkkkkjihfdcccccccccccccccdccccccccccccccHHHHHH               
+  85                                                    cbbbb                        
+low y10, high y38, range 28

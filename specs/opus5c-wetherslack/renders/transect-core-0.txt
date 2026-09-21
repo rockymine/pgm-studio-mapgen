@@ -1,0 +1,61 @@
+## core-0 (core) along x
+TRANSECT 25 stations from (-16, 62) to (8, 62), every 1
+  station        ground  surface  water  top  standing            step
+  (  -16,    62)      12       22           22  storey              
+  (  -15,    62)      12       22           22  storey              
+  (  -14,    62)      12       22           22  storey              
+  (  -13,    62)      12       22           22  storey              
+  (  -12,    62)      12       22           22  storey              
+  (  -11,    62)      12       22           22  storey              
+  (  -10,    62)      12       22           22  storey              
+  (   -9,    62)      12       22           22  storey              
+  (   -8,    62)      12       22           22  storey              
+  (   -7,    62)      12       22           22  storey              
+  (   -6,    62)      12       22           33  core core           
+  (   -5,    62)      12       22     32    39  core core           
+  (   -4,    62)      12       22     32    40  core core           
+  (   -3,    62)      12       22     32    39  core core           
+  (   -2,    62)      12       22           33  core core           
+  (   -1,    62)      12       22           22  storey              
+  (    0,    62)      12       22           22  storey              
+  (    1,    62)      12       22           22  storey              
+  (    2,    62)      12       22           22  storey              
+  (    3,    62)      12       22           22  storey              
+  (    4,    62)      12       22           22  storey              
+  (    5,    62)      12       22           22  storey              
+  (    6,    62)      12       22           22  storey              
+  (    7,    62)      11       22           22  storey              
+  (    8,    62)      10       10           10  water beck-water    DROP -12
+rises 0, falls 1, worst step 12: 0 barrier, 0 scramble, 1 drop — DROP -12 at (8, 62) | walked end to end
+beside: core core at (-6, 60), water beck-water at (8, 61)
+
+## core-0 (core) along z
+TRANSECT 25 stations from (-4, 50) to (-4, 74), every 1
+  station        ground  surface  water  top  standing            step
+  (   -4,    50)      12       12           21  tree oak-0          
+  (   -4,    51)      12       12           12                      
+  (   -4,    52)      12       22           22  storey              BARRIER +10
+  (   -4,    53)      12       22           22  storey              
+  (   -4,    54)      12       22           22  storey              
+  (   -4,    55)      12       22           22  storey              
+  (   -4,    56)      12       22           22  storey              
+  (   -4,    57)      12       22           22  storey              
+  (   -4,    58)      12       22           22  storey              
+  (   -4,    59)      12       22           22  storey              
+  (   -4,    60)      12       22           33  core core           
+  (   -4,    61)      12       22     32    39  core core           
+  (   -4,    62)      12       22     32    40  core core           
+  (   -4,    63)      12       22     32    39  core core           
+  (   -4,    64)      12       22           33  core core           
+  (   -4,    65)      12       22           22  storey              
+  (   -4,    66)      12       22           22  storey              
+  (   -4,    67)      12       22           22  storey              
+  (   -4,    68)      12       22           22  storey              
+  (   -4,    69)      12       22           22  storey              
+  (   -4,    70)      12       22           22  storey              
+  (   -4,    71)      12       22           22  storey              
+  (   -4,    72)      12       12           12                      DROP -10
+  (   -4,    73)      12       12           12                      
+  (   -4,    74)      13       13           13                      +1
+rises 2, falls 1, worst step 10: 1 barrier, 0 scramble, 1 drop — BARRIER +10 at (-4, 52); DROP -10 at (-4, 72) | walked end to end
+beside: tree oak-0 at (-6, 48), core core at (-6, 60), house gill-house at (-6, 75)

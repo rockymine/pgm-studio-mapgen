@@ -1,0 +1,104 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Culvergate"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 20,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "works-mid",
+   "role": "piece",
+   "rect": [
+    -9,
+    -7,
+    18,
+    14
+   ],
+   "surface": 9
+  },
+  {
+   "id": "works-w",
+   "role": "piece",
+   "rect": [
+    -13,
+    -3,
+    4,
+    6
+   ],
+   "surface": 9
+  },
+  {
+   "id": "works-e",
+   "role": "piece",
+   "rect": [
+    9,
+    -3,
+    4,
+    6
+   ],
+   "surface": 9
+  },
+  {
+   "id": "approach",
+   "role": "piece",
+   "rect": [
+    -4,
+    7,
+    8,
+    4
+   ],
+   "surface": 9
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -2,
+    11,
+    4,
+    6
+   ],
+   "surface": 9
+  }
+ ],
+ "zones": [],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-gate",
+    "piece": "spawn",
+    "at": [
+     8,
+     13
+    ],
+    "facing": "front",
+    "footprint": [
+     3,
+     7,
+     10,
+     12
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [
+   {
+    "id": "iron-gate",
+    "piece": "spawn",
+    "at": [
+     8.0,
+     3.5
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": [],
+  "controlPoints": 3
+ },
+ "walls": []
+}

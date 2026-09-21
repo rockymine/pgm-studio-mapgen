@@ -1,0 +1,53 @@
+## shed-crest (house) along x
+TRANSECT 25 stations from (31, 80) to (55, 80), every 1
+  station        ground  surface  water  top  standing            step
+  (   31,    80)      22       22           22                      
+  (   32,    80)      22       22           22                      
+  (   33,    80)      22       22           22                      
+  (   34,    80)      22       22           22                      
+  (   35,    80)      22       22           22                      
+  (   36,    80)      22       22           22                      
+  (   37,    80)      22       22           22                      
+  (   38,    80)      22       22           30  house shed-crest    
+  (   39,    80)      22       22           30  house shed-crest    
+  (   40,    80)      21       21           30  house shed-crest    -1
+  (   41,    80)      21       21           30  house shed-crest    
+  (   42,    80)      21       21           30  house shed-crest    
+  (   43,    80)      21       21           30  house shed-crest    
+  (   44,    80)      21       21           30  house shed-crest    
+  (   45,    80)      21       21           30  house shed-crest    
+  (   46,    80)      21       21           30  house shed-crest    
+  (   47,    80)      21       21           30  house shed-crest    
+  (   48,    80)                            30  house shed-crest    void
+  (   49,    80)                                                    void
+  (   50,    80)                                                    void
+  (   51,    80)                                                    void
+  (   52,    80)                                                    void
+  (   53,    80)                                                    void
+  (   54,    80)                                                    void
+  (   55,    80)                                                    void
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house shed-crest at (38, 78)
+
+## shed-crest (house) along z
+TRANSECT 17 stations from (43, 69) to (43, 85), every 1
+  station        ground  surface  water  top  standing            step
+  (   43,    69)      21       21           21                      
+  (   43,    70)      21       21           21                      
+  (   43,    71)      21       21           28  tree fir-1          
+  (   43,    72)      21       21           29  tree fir-1          
+  (   43,    73)      21       21           21                      
+  (   43,    74)      21       21           21                      
+  (   43,    75)      21       21           21                      
+  (   43,    76)      21       21           26  house shed-crest    
+  (   43,    77)      21       21           27  house shed-crest    
+  (   43,    78)      21       21           28  house shed-crest    
+  (   43,    79)      21       21           29  house shed-crest    
+  (   43,    80)      21       21           30  house shed-crest    
+  (   43,    81)      21       21           29  house shed-crest    
+  (   43,    82)      22       22           28  house shed-crest    +1
+  (   43,    83)      22       22           27  house shed-crest    
+  (   43,    84)                            26  house shed-crest    void
+  (   43,    85)                                                    void
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree fir-1 at (41, 68), house shed-crest at (41, 76)

@@ -1,0 +1,61 @@
+## monument-0 (destroyable) along x
+TRANSECT 25 stations from (0, 62) to (24, 62), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,    62)      14       14           14                      
+  (    1,    62)      14       14           14                      
+  (    2,    62)      14       14           14                      
+  (    3,    62)      14       14           14                      
+  (    4,    62)      14       14           14                      
+  (    5,    62)      14       14           14                      
+  (    6,    62)      14       14           14                      
+  (    7,    62)      14       14           14                      
+  (    8,    62)      14       14           14                      
+  (    9,    62)      14       14           14                      
+  (   10,    62)      14       14           14  destroyable monument  
+  (   11,    62)      14       14           43  stroke garth-way    
+  (   12,    62)      14       14           44  stroke garth-way    
+  (   13,    62)      14       14           43  destroyable monument  
+  (   14,    62)      14       14           14  destroyable monument  
+  (   15,    62)      14       14           14                      
+  (   16,    62)      14       14           14                      
+  (   17,    62)      14       14           14                      
+  (   18,    62)      14       14           14                      
+  (   19,    62)      14       14           14                      
+  (   20,    62)      14       14           14                      
+  (   21,    62)      14       14           14                      
+  (   22,    62)      14       14           14                      
+  (   23,    62)      14       14           14                      
+  (   24,    62)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable monument at (10, 60), stroke garth-way at (10, 63)
+
+## monument-0 (destroyable) along z
+TRANSECT 25 stations from (12, 50) to (12, 74), every 1
+  station        ground  surface  water  top  standing            step
+  (   12,    50)      14       14           14                      
+  (   12,    51)      14       14           14                      
+  (   12,    52)      14       14           14                      
+  (   12,    53)      14       14           14                      
+  (   12,    54)      14       14           14                      
+  (   12,    55)      14       14           14                      
+  (   12,    56)      14       14           14                      
+  (   12,    57)      14       14           14                      
+  (   12,    58)      14       14           14                      
+  (   12,    59)      14       14           14                      
+  (   12,    60)      14       14           14  destroyable monument  
+  (   12,    61)      14       14           43  destroyable monument  
+  (   12,    62)      14       14           44  stroke garth-way    
+  (   12,    63)      14       14           43  stroke garth-way    
+  (   12,    64)      14       14           14  stroke garth-way    
+  (   12,    65)      14       14           14  stroke garth-way    
+  (   12,    66)      14       14           14  stroke garth-way    
+  (   12,    67)      14       14           14  stroke garth-way    
+  (   12,    68)      14       14           14  stroke garth-way    
+  (   12,    69)      14       14           14  stroke garth-way    
+  (   12,    70)      14       14           14  stroke garth-way    
+  (   12,    71)      14       14           14  stroke garth-way    
+  (   12,    72)      12       12           12                      -2
+  (   12,    73)      11       11           11                      -1
+  (   12,    74)      10       10           10                      -1
+rises 0, falls 3, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree thorn-3 at (10, 48), stroke east-foot at (14, 55), stroke tor-foot at (10, 56), destroyable monument at (10, 60), stroke garth-way at (11, 62), tree pine-1 at (13, 73)

@@ -1,0 +1,61 @@
+## bomb-1 (boulder) along x
+TRANSECT 25 stations from (18, 30) to (42, 30), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,    30)                                                    void
+  (   19,    30)                                                    void
+  (   20,    30)                                                    void
+  (   21,    30)                                                    void
+  (   22,    30)                                                    void
+  (   23,    30)                                                    void
+  (   24,    30)                                                    void
+  (   25,    30)                                                    void
+  (   26,    30)                                                    void
+  (   27,    30)                                                    void
+  (   28,    30)      13       13           13                      
+  (   29,    30)      13       13           16  boulder bomb-1      
+  (   30,    30)      13       13           20  tree scrub-2        
+  (   31,    30)      13       13           20  tree scrub-2        
+  (   32,    30)      13       13           21  tree scrub-2        
+  (   33,    30)      13       13           19  tree scrub-2        
+  (   34,    30)      13       13           13                      
+  (   35,    30)      13       13           13                      
+  (   36,    30)      13       13           13                      
+  (   37,    30)      13       13           13                      
+  (   38,    30)      13       13           13                      
+  (   39,    30)      13       13           13                      
+  (   40,    30)      13       13           13  stroke horn-way-east  
+  (   41,    30)      13       13           13  stroke horn-way-east  
+  (   42,    30)      13       13           13  stroke horn-way-east  
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree scrub-2 at (27, 32), boulder bomb-1 at (29, 29), stroke horn-way-east at (40, 28)
+
+## bomb-1 (boulder) along z
+TRANSECT 25 stations from (30, 18) to (30, 42), every 1
+  station        ground  surface  water  top  standing            step
+  (   30,    18)      11       11           11                      
+  (   30,    19)      11       11           11                      
+  (   30,    20)      11       11           11                      
+  (   30,    21)      11       11           11                      
+  (   30,    22)      11       11           11                      
+  (   30,    23)      11       11           11                      
+  (   30,    24)      11       11           11                      
+  (   30,    25)      11       11           11                      
+  (   30,    26)      12       12           12                      +1
+  (   30,    27)      12       12           12                      
+  (   30,    28)      12       12           12                      
+  (   30,    29)      13       13           16  boulder bomb-1      +1
+  (   30,    30)      13       13           20  tree scrub-2        
+  (   30,    31)      13       13           19  tree scrub-2        
+  (   30,    32)      13       13           23  tree scrub-2        
+  (   30,    33)      14       14           22  tree scrub-2        +1
+  (   30,    34)      14       14           24  tree scrub-2        
+  (   30,    35)      14       14           23  tree scrub-2        
+  (   30,    36)      14       14           23  tree scrub-2        
+  (   30,    37)      14       14           22  tree scrub-2        
+  (   30,    38)      15       15           24  tree scrub-2        +1
+  (   30,    39)      15       15           23  tree scrub-2        
+  (   30,    40)      15       15           20  tree scrub-2        
+  (   30,    41)      15       15           22  tree scrub-3        
+  (   30,    42)      16       16           25  tree scrub-3        +1
+rises 5, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder bomb-1 at (29, 29), tree scrub-2 at (30, 30), tree scrub-3 at (32, 40)

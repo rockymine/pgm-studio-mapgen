@@ -1,0 +1,186 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 18,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-garth",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -2,
+    "y": 19,
+    "z": 105
+   },
+   "protection": [
+    {
+     "minX": -12,
+     "minZ": 92,
+     "maxX": 8,
+     "maxZ": 116
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-x",
+    "+x"
+   ],
+   "footprint": {
+    "minX": -8,
+    "minZ": 99,
+    "maxX": 4,
+    "maxZ": 111
+   },
+   "iron": [
+    {
+     "x": -2,
+     "y": 19,
+     "z": 95.5
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-garth",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 2,
+    "y": 19,
+    "z": -105
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": -116,
+     "maxX": 12,
+     "maxZ": -92
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+x",
+    "-x"
+   ],
+   "footprint": {
+    "minX": -4,
+    "minZ": -111,
+    "maxX": 8,
+    "maxZ": -99
+   },
+   "iron": [
+    {
+     "x": 2,
+     "y": 19,
+     "z": -95.5
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 24,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -24,
+    "minZ": -16,
+    "maxX": 24,
+    "maxZ": 16
+   }
+  ],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Ambertor Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 12,
+    "y": 9,
+    "z": 62
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "monument",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Ambertor Monument",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -13,
+    "y": 9,
+    "z": -63
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtm"
+ ],
+ "meta": {
+  "name": "Ambertor",
+  "created": "2026-09-21",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": null
+}

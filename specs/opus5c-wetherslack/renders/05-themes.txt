@@ -1,0 +1,8 @@
+THEMES  3 themes over 8674 ground cells, 22 distinct surface blocks
+  gill  6034 cells (69.6%)  2:0 Grass Block, 1:0 Stone, 13:0 Gravel, 3:0 Dirt, 3:1 Coarse Dirt, 4:0 Cobblestone, 1:5 Andesite, 5:1 Spruce Planks, 9:0 Water, 5:2 Birch Planks, 82:0 Clay, 5:5 Dark Oak Planks
+  garth  1488 cells (17.2%)  4:0 Cobblestone, 13:0 Gravel, 1:0 Stone, 5:1 Spruce Planks, 3:1 Coarse Dirt, 35:14 Red Wool, 35:11 Blue Wool, 3:0 Dirt
+  flush  1152 cells (13.3%)  13:0 Gravel, 9:0 Water, 4:0 Cobblestone, 82:0 Clay, 3:0 Dirt, 3:1 Coarse Dirt, 5:1 Spruce Planks
+borders:
+  flush | gill  376 cells
+  garth | gill  276 cells
+  flush | garth  20 cells

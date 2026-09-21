@@ -1,0 +1,119 @@
+## beck-water (water) along x
+TRANSECT 29 stations from (-3, 61) to (25, 61), every 1
+  station        ground  surface  water  top  standing            step
+  (   -3,    61)      12       22     32    33  core core           
+  (   -2,    61)      12       22           33  core core           
+  (   -1,    61)      12       22           22  storey              
+  (    0,    61)      12       22           22  storey              
+  (    1,    61)      12       22           22  storey              
+  (    2,    61)      12       22           22  storey              
+  (    3,    61)      12       22           22  storey              
+  (    4,    61)      12       22           22  storey              
+  (    5,    61)      12       22           22  storey              
+  (    6,    61)      12       22           22  storey              
+  (    7,    61)      11       22           22  storey              
+  (    8,    61)      10       10           10  water beck-water    DROP -12
+  (    9,    61)       9        9      7     7  water beck-water    -1
+  (   10,    61)       8        8      7     7  water beck-water    -1
+  (   11,    61)       8        8      7     7  water beck-water    
+  (   12,    61)       8        8      7     7  water beck-water    
+  (   13,    61)       8        8            8  water beck-water    
+  (   14,    61)       8        8            8  water beck-water    
+  (   15,    61)       8        8            8                      
+  (   16,    61)       8        8            8                      
+  (   17,    61)       8        8            8                      
+  (   18,    61)       8        8            8  stroke spawn-way    
+  (   19,    61)       8        8            8  stroke spawn-way    
+  (   20,    61)       8        8            8  stroke spawn-way    
+  (   21,    61)       8        8            8  stroke spawn-way    
+  (   22,    61)       8        8            8                      
+  (   23,    61)       8        8            8                      
+  (   24,    61)                                                    void
+  (   25,    61)                                                    void
+rises 0, falls 3, worst step 12: 0 barrier, 0 scramble, 1 drop — DROP -12 at (8, 61) | walked end to end
+beside: core core at (-5, 60), water beck-water at (8, 61), stroke spawn-way at (18, 59)
+
+## beck-water (water) along z
+TRANSECT 79 stations from (11, 22) to (11, 100), every 1
+  station        ground  surface  water  top  standing            step
+  (   11,    22)       9        9            9                      
+  (   11,    23)       9        9            9                      
+  (   11,    24)       8        8            8                      -1
+  (   11,    25)       8        8            8                      
+  (   11,    26)       8        8            8                      
+  (   11,    27)       8        8            8                      
+  (   11,    28)       8        8            8                      
+  (   11,    29)       8        8            8                      
+  (   11,    30)       8        8            8                      
+  (   11,    31)       8        8            8  water beck-water    
+  (   11,    32)       8        8      7     7  water beck-water    
+  (   11,    33)       8        8      7    20  tree willow-1       
+  (   11,    34)       8        8      7    20  tree willow-1       
+  (   11,    35)       8        8      7    19  tree willow-1       
+  (   11,    36)       8        8      7    18  tree willow-1       
+  (   11,    37)       8        8      7     7  water beck-water    
+  (   11,    38)       8        8      7    19  tree willow-1       
+  (   11,    39)       8        8      7    19  tree willow-1       
+  (   11,    40)       8        8      7    19  tree willow-1       
+  (   11,    41)       8        8      7    18  tree willow-1       
+  (   11,    42)       8        8      7    17  tree willow-1       
+  (   11,    43)       8        8      7    17  tree willow-1       
+  (   11,    44)       8        8      7     7  water beck-water    
+  (   11,    45)       8        8            8  water beck-water    
+  (   11,    46)       8        8            8  water beck-water    
+  (   11,    47)       8        8            8  water beck-water    
+  (   11,    48)       8        8            8  water beck-water    
+  (   11,    49)       8        8            8  water beck-water    
+  (   11,    50)       8        8            8  water beck-water    
+  (   11,    51)       8        8            8  water beck-water    
+  (   11,    52)       8        8            8  water beck-water    
+  (   11,    53)       8        8            8  water beck-water    
+  (   11,    54)       8        8      7     7  water beck-water    
+  (   11,    55)       8        8      7     7  water beck-water    
+  (   11,    56)       8        8      7     7  water beck-water    
+  (   11,    57)       8        8      7     7  water beck-water    
+  (   11,    58)       8        8      7     7  water beck-water    
+  (   11,    59)       8        8      7     7  water beck-water    
+  (   11,    60)       8        8      7     7  water beck-water    
+  (   11,    61)       8        8      7     7  water beck-water    
+  (   11,    62)       8        8      7     7  water beck-water    
+  (   11,    63)       8        8      7     7  water beck-water    
+  (   11,    64)       8        8      7     7  water beck-water    
+  (   11,    65)       8        8      7     7  water beck-water    
+  (   11,    66)       8        8      7     7  water beck-water    
+  (   11,    67)       8        8      7     7  water beck-water    
+  (   11,    68)       8        8      7     7  water beck-water    
+  (   11,    69)       8        8      7     7  water beck-water    
+  (   11,    70)       8        8      7     7  water beck-water    
+  (   11,    71)       8        8      7     7  water beck-water    
+  (   11,    72)       8        8      7     7  water beck-water    
+  (   11,    73)       8        8      7     7  water beck-water    
+  (   11,    74)       8        8      7     7  water beck-water    
+  (   11,    75)       8        8      7     7  water beck-water    
+  (   11,    76)       8        8      7     7  water beck-water    
+  (   11,    77)       8        8      7     7  water beck-water    
+  (   11,    78)       8        8      7     7  water beck-water    
+  (   11,    79)       8        8      7     7  water beck-water    
+  (   11,    80)       8        8      7     7  water beck-water    
+  (   11,    81)       8        8      7     7  water beck-water    
+  (   11,    82)       8        8      7     7  water beck-water    
+  (   11,    83)       8        8            8  water beck-water    
+  (   11,    84)       8        8            8  water beck-water    
+  (   11,    85)       8        8            8  water beck-water    
+  (   11,    86)       8        8            8  water beck-water    
+  (   11,    87)       8        8            8  water beck-water    
+  (   11,    88)       8        8            8  water beck-water    
+  (   11,    89)       8        8            8  stroke spawn-way    
+  (   11,    90)       8        8            8  stroke spawn-way    
+  (   11,    91)       8        8            8  stroke spawn-way    
+  (   11,    92)       8        8            8  stroke spawn-way    
+  (   11,    93)       8        8            8  stroke spawn-way    
+  (   11,    94)       9        9            9  stroke spawn-way    +1
+  (   11,    95)       9        9            9  stroke spawn-way    
+  (   11,    96)       9        9            9  stroke spawn-way    
+  (   11,    97)       9        9            9                      
+  (   11,    98)       9        9           12  ironcube spawn-slack:0  
+  (   11,    99)       9        9           12  ironcube spawn-slack:0  
+  (   11,   100)       9        9           12  ironcube spawn-slack:0  
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree willow-0 at (13, 29), tree willow-1 at (9, 30), water beck-water at (11, 31), tree birch-0 at (13, 41), stroke spawn-way at (13, 84), ironcube spawn-slack:0 at (9, 98)

@@ -1,0 +1,84 @@
+## spawn-blue (spawn) along x
+TRANSECT 37 stations from (-16, -72) to (20, -72), every 1
+  station        ground  surface  water  top  standing            step
+  (  -16,   -72)      22       22           22  stroke way-east#1   
+  (  -15,   -72)      22       22           22  stroke way-east#1   
+  (  -14,   -72)      22       22           22  stroke way-east#1   
+  (  -13,   -72)      22       22           22  stroke way-east#1   
+  (  -12,   -72)      22       22           22  stroke way-east#1   
+  (  -11,   -72)      22       22           22  stroke way-east#1   
+  (  -10,   -72)      22       22           22  stroke way-east#1   
+  (   -9,   -72)      22       22           22  stroke way-east#1   
+  (   -8,   -72)      22       22           22  stroke way-east#1   
+  (   -7,   -72)      22       22           22  stroke way-east#1   
+  (   -6,   -72)      22       22           22  stroke way-east#1   
+  (   -5,   -72)      22       22           29                      
+  (   -4,   -72)      22       22           30  spawn spawn-howe#1  
+  (   -3,   -72)      22       22           31  spawn spawn-howe#1  
+  (   -2,   -72)      22       22           32  spawn spawn-howe#1  
+  (   -1,   -72)      22       22           33  spawn spawn-howe#1  
+  (    0,   -72)      22       22           34  spawn spawn-howe#1  
+  (    1,   -72)      22       22           34  spawn spawn-howe#1  
+  (    2,   -72)      22       22           34  spawn spawn-howe#1  
+  (    3,   -72)      22       22           34  spawn spawn-howe#1  
+  (    4,   -72)      22       22           33  spawn spawn-howe#1  
+  (    5,   -72)      22       22           32  spawn spawn-howe#1  
+  (    6,   -72)      22       22           31  spawn spawn-howe#1  
+  (    7,   -72)      22       22           30  spawn spawn-howe#1  
+  (    8,   -72)      22       22           29                      
+  (    9,   -72)      22       22           22  stroke way-west#1   
+  (   10,   -72)      22       22           22  stroke way-west#1   
+  (   11,   -72)      22       22           22  stroke way-west#1   
+  (   12,   -72)      22       22           22  stroke way-west#1   
+  (   13,   -72)      22       22           22  stroke way-west#1   
+  (   14,   -72)      22       22           22  stroke way-west#1   
+  (   15,   -72)      22       22           22  stroke way-west#1   
+  (   16,   -72)      22       22           22  stroke way-west#1   
+  (   17,   -72)      23       23           23                      +1
+  (   18,   -72)      24       24           24                      +1
+  (   19,   -72)      26       26           26                      scramble +2
+  (   20,   -72)      27       27           27  stroke way-west#1   +1
+rises 4, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (19, -72) | walked end to end
+beside: stroke way-east#1 at (-18, -74), spawn spawn-howe#1 at (-4, -74), stroke way-west#1 at (8, -71)
+
+## spawn-blue (spawn) along z
+TRANSECT 36 stations from (2, -87) to (2, -52), every 1
+  station        ground  surface  water  top  standing            step
+  (    2,   -87)                                                    void
+  (    2,   -86)                                                    void
+  (    2,   -85)                                                    void
+  (    2,   -84)      22       22           22                      
+  (    2,   -83)      22       22           22                      
+  (    2,   -82)      22       22           22                      
+  (    2,   -81)      22       22           22                      
+  (    2,   -80)      22       22           29                      
+  (    2,   -79)      22       22           30  spawn spawn-howe#1  
+  (    2,   -78)      22       22           31  spawn spawn-howe#1  
+  (    2,   -77)      22       22           32  spawn spawn-howe#1  
+  (    2,   -76)      22       22           33  spawn spawn-howe#1  
+  (    2,   -75)      22       22           34  spawn spawn-howe#1  
+  (    2,   -74)      22       22           35  spawn spawn-howe#1  
+  (    2,   -73)      22       22           35  spawn spawn-howe#1  
+  (    2,   -72)      22       22           34  spawn spawn-howe#1  
+  (    2,   -71)      22       22           33  spawn spawn-howe#1  
+  (    2,   -70)      22       22           32  spawn spawn-howe#1  
+  (    2,   -69)      22       22           31  spawn spawn-howe#1  
+  (    2,   -68)      22       22           30  spawn spawn-howe#1  
+  (    2,   -67)      22       22           29                      
+  (    2,   -66)      22       22           22                      
+  (    2,   -65)      22       22           25  ironcube spawn-howe:0#1  
+  (    2,   -64)      22       22           25  ironcube spawn-howe:0#1  
+  (    2,   -63)      22       22           25  ironcube spawn-howe:0#1  
+  (    2,   -62)      22       22           22                      
+  (    2,   -61)      22       22           22                      
+  (    2,   -60)                                                    void
+  (    2,   -59)                                                    void
+  (    2,   -58)                                                    void
+  (    2,   -57)                                                    void
+  (    2,   -56)                                                    void
+  (    2,   -55)                                                    void
+  (    2,   -54)                                                    void
+  (    2,   -53)                                                    void
+  (    2,   -52)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-howe#1 at (0, -79), ironcube spawn-howe:0#1 at (1, -65)

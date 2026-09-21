@@ -1,0 +1,52 @@
+## gritstone-1 (boulder) along x
+TRANSECT 16 stations from (10, 88) to (25, 88), every 1
+  station        ground  surface  water  top  standing            step
+  (   10,    88)       8        8            8  water beck-water    
+  (   11,    88)       8        8            8  water beck-water    
+  (   12,    88)       8        8            8  stroke spawn-way    
+  (   13,    88)       8        8            8  stroke spawn-way    
+  (   14,    88)       9        9            9  stroke spawn-way    +1
+  (   15,    88)       9        9            9  stroke spawn-way    
+  (   16,    88)       9        9            9                      
+  (   17,    88)       9        9            9                      
+  (   18,    88)       9        9            9                      
+  (   19,    88)       9        9            9                      
+  (   20,    88)       9        9           11  boulder gritstone-1  
+  (   21,    88)       9        9           12  boulder gritstone-1  
+  (   22,    88)       9        9           12  boulder gritstone-1  
+  (   23,    88)       9        9           12  boulder gritstone-1  
+  (   24,    88)                                                    void
+  (   25,    88)                                                    void
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water beck-water at (9, 86), stroke spawn-way at (12, 86), tree willow-2 at (20, 86), boulder gritstone-1 at (20, 88)
+
+## gritstone-1 (boulder) along z
+TRANSECT 25 stations from (22, 76) to (22, 100), every 1
+  station        ground  surface  water  top  standing            step
+  (   22,    76)       8        8            8                      
+  (   22,    77)       8        8           20  tree willow-2       
+  (   22,    78)       8        8           21  tree willow-2       
+  (   22,    79)       8        8           10  tree willow-2       
+  (   22,    80)       8        8           23  tree willow-2       
+  (   22,    81)       8        8           24  tree willow-2       
+  (   22,    82)       8        8            8                      
+  (   22,    83)       8        8           18  tree willow-2       
+  (   22,    84)       8        8           22  tree willow-2       
+  (   22,    85)       9        9           20  tree willow-2       +1
+  (   22,    86)       9        9           19  tree willow-2       
+  (   22,    87)       9        9           12  boulder gritstone-1  
+  (   22,    88)       9        9           12  boulder gritstone-1  
+  (   22,    89)       9        9           12  boulder gritstone-1  
+  (   22,    90)       9        9           10  boulder gritstone-1  
+  (   22,    91)       9        9            9                      
+  (   22,    92)       9        9            9                      
+  (   22,    93)       9        9            9                      
+  (   22,    94)       9        9            9                      
+  (   22,    95)       9        9            9                      
+  (   22,    96)                                                    void
+  (   22,    97)                                                    void
+  (   22,    98)                                                    void
+  (   22,    99)                                                    void
+  (   22,   100)                                                    void
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree willow-2 at (23, 74), boulder gritstone-1 at (22, 87)

@@ -42,11 +42,19 @@ large `*.finish.json`.
 **A one-line answer is a `grep`, not a file read.** `03-slopes.txt` runs to 10k tokens and its
 verdict is one line: `grep 'cells:' …/03-slopes.txt`.
 
-**`specs/` is split, and the split is the reading rule.** Eighteen boards sit flat and are worth
-reading; the other 118 are under `specs/archive/` — probes, experiments run to find the limit
-of one mechanism, early runs, superseded boards.
+**Do not open another board's spec, and that is a rule about authoring rather than about budget.**
+An arrangement read is the arrangement reached for, because it is the one already known to satisfy
+`WL9` and `GO1` without an argument. Every run that has copied one shipped the first board's shape in
+different blocks, and neither the gates nor a render says so.
 
-**Nothing under `specs/archive/` is a model for anything.**
+**`techniques/` is where a technique is read, and it is built for exactly this.** A card states one
+instrument with its variants side by side, cites no past map, and costs ~2.4k tokens against a
+thousand-line finish. Where a field name rather than a technique is wanted, `GET /api/openapi/v1.json`
+is the contract and a committed spec is dated evidence of it.
+
+**`specs/` is the log's evidence, and it is opened to answer what a past board *did*** — a run report's
+claim, a review's number, a debt in `BOARDS-BUILT.md`. Eighteen boards sit flat; the other 118 are under
+`specs/archive/`, and nothing there is a model for anything either.
 
 When a *number* is wanted rather than an example, `GET /api/rules` and `GET /api/rules/terms`
 answer in one fetch and are greppable. That is cheaper than any board.

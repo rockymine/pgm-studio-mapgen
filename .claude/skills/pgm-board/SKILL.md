@@ -17,8 +17,9 @@ the brief points at are ~241k tokens, every text render of one board is 30–57k
 files exceed 200k each. `pgm-board-warmup` carries the limits and the never-open list. A layout is queried
 with `jq` and never `cat`-ed, and a one-line verdict is a `grep` rather than a file read.
 
-**And `specs/archive/` is a record rather than a set of examples** — the eighteen boards flat under
-`specs/` are the ones worth reading, and `techniques/` is smaller and more directed than either.
+**And a board's spec is not opened to learn how a board is made** — `techniques/` is where a technique
+is read, one instrument to a card, citing no past map. `specs/` answers what a past board did, which is a
+different question; `pgm-board-warmup` carries the rule and what it costs to break.
 
 ---
 

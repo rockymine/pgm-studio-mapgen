@@ -1,0 +1,45 @@
+components 39 · navigable 7852 columns · bridgeable 0 · build ceiling y32
+
+37 patch(es) of standing ground no player can get to. None of this is a fault — scenery and a side observer island read exactly like this — but a shape stranded by accident reads like it too, and only the author can tell them apart.
+
+  cells  floor  reason          box
+     40    y17  no-build-zone   x -16..-5, z -115..-104
+     40    y17  no-build-zone   x 4..15, z 103..114
+     36    y25  no-build-zone   x -3..2, z -3..2
+     13    y22  no-build-zone   x -5..1, z -54..-53
+     13    y22  no-build-zone   x -2..4, z 52..53
+      3    y21  no-build-zone   x -16..-15, z 85..86
+      3    y22  no-build-zone   x -7..-7, z -60..-58
+      3    y22  no-build-zone   x 6..6, z 57..59
+      3    y21  no-build-zone   x 14..15, z -87..-86
+      2    y21  no-build-zone   x -20..-19, z 35..35
+      2    y15  no-build-zone   x -11..-10, z 42..42
+      2    y16  no-build-zone   x -9..-8, z 84..84
+      2    y16  no-build-zone   x 7..8, z -85..-85
+      2    y15  no-build-zone   x 9..10, z -43..-43
+      2    y21  no-build-zone   x 18..19, z -36..-36
+      1    y21  no-build-zone   x -24..-24, z 35..35
+      1    y21  no-build-zone   x -23..-23, z 36..36
+      1    y21  no-build-zone   x -22..-22, z 34..34
+      1    y21  no-build-zone   x -20..-20, z 33..33
+      1    y21  no-build-zone   x -18..-18, z 36..36
+      1    y21  no-build-zone   x -18..-18, z 89..89
+      1    y21  no-build-zone   x -16..-16, z 36..36
+      1    y16  no-build-zone   x -11..-11, z 44..44
+      1    y14  no-build-zone   x -9..-9, z 48..48
+      1    y17  no-build-zone   x -9..-9, z 86..86
+      1    y15  no-build-zone   x -7..-7, z 83..83
+      1    y15  no-build-zone   x 6..6, z -84..-84
+      1    y17  no-build-zone   x 8..8, z -87..-87
+      1    y14  no-build-zone   x 8..8, z -49..-49
+      1    y16  no-build-zone   x 10..10, z -45..-45
+      1    y21  no-build-zone   x 15..15, z -37..-37
+      1    y21  no-build-zone   x 17..17, z -90..-90
+      1    y21  no-build-zone   x 17..17, z -37..-37
+      1    y21  no-build-zone   x 19..19, z -34..-34
+      1    y21  no-build-zone   x 21..21, z -35..-35
+      1    y21  no-build-zone   x 22..22, z -37..-37
+      1    y21  no-build-zone   x 23..23, z -36..-36
+
+  no-build-zone   nothing the map opens to bridging reaches it, and it is not walked to
+  above-ceiling   its ground stands over the map's maxbuildheight and cannot be built up to

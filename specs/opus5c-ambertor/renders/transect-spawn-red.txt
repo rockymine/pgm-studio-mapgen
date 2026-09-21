@@ -1,0 +1,80 @@
+## spawn-red (spawn) along x
+TRANSECT 37 stations from (-20, 104) to (16, 104), every 1
+  station        ground  surface  water  top  standing            step
+  (  -20,   104)      20       20           20                      
+  (  -19,   104)      19       19           19                      -1
+  (  -18,   104)      19       19           19                      
+  (  -17,   104)      19       19           19                      
+  (  -16,   104)      19       19           19                      
+  (  -15,   104)      19       19           19                      
+  (  -14,   104)      19       19           19                      
+  (  -13,   104)      19       19           19                      
+  (  -12,   104)      19       19           19                      
+  (  -11,   104)      19       19           19                      
+  (  -10,   104)      19       19           19                      
+  (   -9,   104)      19       19           26                      
+  (   -8,   104)      19       19           27  spawn spawn-garth   
+  (   -7,   104)      19       19           28  spawn spawn-garth   
+  (   -6,   104)      19       19           29  spawn spawn-garth   
+  (   -5,   104)      19       19           30  spawn spawn-garth   
+  (   -4,   104)      19       19           31  spawn spawn-garth   
+  (   -3,   104)      19       19           32  spawn spawn-garth   
+  (   -2,   104)      19       19           32  spawn spawn-garth   
+  (   -1,   104)      19       19           31  spawn spawn-garth   
+  (    0,   104)      19       19           30  spawn spawn-garth   
+  (    1,   104)      19       19           29  spawn spawn-garth   
+  (    2,   104)      19       19           28  spawn spawn-garth   
+  (    3,   104)      19       19           27  spawn spawn-garth   
+  (    4,   104)      19       19           26                      
+  (    5,   104)      19       19           19                      
+  (    6,   104)      19       19           19                      
+  (    7,   104)      19       19           19                      
+  (    8,   104)      19       19           19                      
+  (    9,   104)      19       19           19                      
+  (   10,   104)      19       19           19                      
+  (   11,   104)      19       19           19                      
+  (   12,   104)      19       19           19                      
+  (   13,   104)      19       19           19                      
+  (   14,   104)      19       19           19                      
+  (   15,   104)      19       19           19                      
+  (   16,   104)      19       19           19                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-garth at (-8, 102)
+
+## spawn-red (spawn) along z
+TRANSECT 32 stations from (-2, 84) to (-2, 115), every 1
+  station        ground  surface  water  top  standing            step
+  (   -2,    84)      14       14           14                      
+  (   -2,    85)      15       15           15                      +1
+  (   -2,    86)      16       16           16                      +1
+  (   -2,    87)      17       17           17                      +1
+  (   -2,    88)      17       17           17                      
+  (   -2,    89)      18       18           18                      +1
+  (   -2,    90)      19       19           19  stroke garth-way    +1
+  (   -2,    91)      19       19           19  stroke garth-way    
+  (   -2,    92)      19       19           19  stroke garth-way    
+  (   -2,    93)      19       19           19  stroke garth-way    
+  (   -2,    94)      19       19           22  stroke garth-way    
+  (   -2,    95)      19       19           22  stroke garth-way    
+  (   -2,    96)      19       19           22  stroke garth-way    
+  (   -2,    97)      19       19           19  stroke garth-way    
+  (   -2,    98)      19       19           26                      
+  (   -2,    99)      19       19           27  spawn spawn-garth   
+  (   -2,   100)      19       19           28  spawn spawn-garth   
+  (   -2,   101)      19       19           29  spawn spawn-garth   
+  (   -2,   102)      19       19           30  spawn spawn-garth   
+  (   -2,   103)      19       19           31  spawn spawn-garth   
+  (   -2,   104)      19       19           32  spawn spawn-garth   
+  (   -2,   105)      19       19           32  spawn spawn-garth   
+  (   -2,   106)      19       19           31  spawn spawn-garth   
+  (   -2,   107)      19       19           30  spawn spawn-garth   
+  (   -2,   108)      19       19           29  spawn spawn-garth   
+  (   -2,   109)      19       19           28  spawn spawn-garth   
+  (   -2,   110)      19       19           27  spawn spawn-garth   
+  (   -2,   111)      19       19           26                      
+  (   -2,   112)      19       19           19                      
+  (   -2,   113)      19       19           19                      
+  (   -2,   114)      19       19           19                      
+  (   -2,   115)      19       19           19                      
+rises 5, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke garth-way at (0, 87), spawn spawn-garth at (-4, 99)

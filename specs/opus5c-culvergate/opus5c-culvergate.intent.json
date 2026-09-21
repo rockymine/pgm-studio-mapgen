@@ -1,0 +1,166 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 20,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-gate",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 0,
+    "y": 9,
+    "z": 57
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": 44,
+     "maxX": 8,
+     "maxZ": 68
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": -5,
+    "minZ": 51,
+    "maxX": 5,
+    "maxZ": 63
+   },
+   "iron": [
+    {
+     "x": 0,
+     "y": 9,
+     "z": 47.5
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-gate",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 0,
+    "y": 9,
+    "z": -57
+   },
+   "protection": [
+    {
+     "minX": -8,
+     "minZ": -68,
+     "maxX": 8,
+     "maxZ": -44
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -5,
+    "minZ": -63,
+    "maxX": 5,
+    "maxZ": -51
+   },
+   "iron": [
+    {
+     "x": 0,
+     "y": 9,
+     "z": -47.5
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 24,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": null,
+ "controlPoints": [
+  {
+   "name": "The Cistern",
+   "anchor": {
+    "x": 0,
+    "y": 8,
+    "z": 0
+   },
+   "size": 8,
+   "points": 2
+  },
+  {
+   "name": "West Settling",
+   "anchor": {
+    "x": -44,
+    "y": 8,
+    "z": 0
+   },
+   "size": 8,
+   "points": 1
+  },
+  {
+   "name": "East Settling",
+   "anchor": {
+    "x": 44,
+    "y": 8,
+    "z": 0
+   },
+   "size": 8,
+   "points": 1
+  }
+ ],
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": 750,
+ "modes": null,
+ "gamemodes": [
+  "koth"
+ ],
+ "meta": {
+  "name": "Culvergate",
+  "created": "2026-09-21",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "red"
+ },
+ "structures": null
+}

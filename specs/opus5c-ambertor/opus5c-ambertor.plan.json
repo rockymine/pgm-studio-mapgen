@@ -1,0 +1,116 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Ambertor"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 18,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "fell",
+   "role": "piece",
+   "rect": [
+    -6,
+    4,
+    12,
+    19
+   ],
+   "surface": 9
+  },
+  {
+   "id": "garth-w",
+   "role": "piece",
+   "rect": [
+    -5,
+    23,
+    2,
+    6
+   ],
+   "surface": 19
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -3,
+    23,
+    5,
+    6
+   ],
+   "surface": 19
+  },
+  {
+   "id": "garth-e",
+   "role": "piece",
+   "rect": [
+    2,
+    23,
+    3,
+    6
+   ],
+   "surface": 19
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -6,
+    -4,
+    12,
+    8
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-garth",
+    "piece": "spawn",
+    "at": [
+     10,
+     13
+    ],
+    "facing": "front",
+    "footprint": [
+     4,
+     7,
+     12,
+     12
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [
+   {
+    "id": "iron-garth",
+    "piece": "spawn",
+    "at": [
+     10.0,
+     3.5
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "monument",
+    "piece": "fell",
+    "at": [
+     36,
+     46
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Ambertor Monument"
+   }
+  ],
+  "cores": []
+ },
+ "walls": []
+}

@@ -1,0 +1,57 @@
+## erratic-0 (boulder) along x
+TRANSECT 21 stations from (-28, 22) to (-8, 22), every 1
+  station        ground  surface  water  top  standing            step
+  (  -28,    22)                                                    void
+  (  -27,    22)                                                    void
+  (  -26,    22)                                                    void
+  (  -25,    22)                                                    void
+  (  -24,    22)       9        9            9                      
+  (  -23,    22)       9        9            9                      
+  (  -22,    22)       9        9           16  tree thorn-0        
+  (  -21,    22)       9        9           18  tree thorn-0        
+  (  -20,    22)       9        9           17  tree thorn-0        
+  (  -19,    22)       9        9           19  tree thorn-0        
+  (  -18,    22)       9        9           17  tree thorn-0        
+  (  -17,    22)       9        9           18  tree thorn-0        
+  (  -16,    22)       9        9           16  tree thorn-0        
+  (  -15,    22)       9        9           18  tree thorn-0        
+  (  -14,    22)       9        9           17  tree thorn-0        
+  (  -13,    22)       9        9           16  tree thorn-0        
+  (  -12,    22)       9        9           13  tree thorn-0        
+  (  -11,    22)       9        9            9                      
+  (  -10,    22)       9        9            9                      
+  (   -9,    22)       9        9            9                      
+  (   -8,    22)       9        9            9                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree thorn-0 at (-23, 20)
+
+## erratic-0 (boulder) along z
+TRANSECT 25 stations from (-20, 10) to (-20, 34), every 1
+  station        ground  surface  water  top  standing            step
+  (  -20,    10)                                                    void
+  (  -20,    11)                                                    void
+  (  -20,    12)                                                    void
+  (  -20,    13)                                                    void
+  (  -20,    14)                                                    void
+  (  -20,    15)      10       10           16  tree thorn-0        
+  (  -20,    16)      10       10           18  tree thorn-0        
+  (  -20,    17)      10       10           18  tree thorn-0        
+  (  -20,    18)       9        9           17  tree thorn-0        -1
+  (  -20,    19)       9        9           18  tree thorn-0        
+  (  -20,    20)       9        9           18  tree thorn-0        
+  (  -20,    21)       9        9           19  tree thorn-0        
+  (  -20,    22)       9        9           17  tree thorn-0        
+  (  -20,    23)       9        9           16  tree thorn-0        
+  (  -20,    24)       9        9           16  tree thorn-0        
+  (  -20,    25)       9        9           16  tree thorn-0        
+  (  -20,    26)       9        9           14  tree thorn-0        
+  (  -20,    27)       9        9            9                      
+  (  -20,    28)       9        9            9                      
+  (  -20,    29)       9        9            9                      
+  (  -20,    30)       9        9            9                      
+  (  -20,    31)      10       10           10                      +1
+  (  -20,    32)      11       11           11                      +1
+  (  -20,    33)      13       13           13                      scramble +2
+  (  -20,    34)      14       14           14                      +1
+rises 4, falls 1, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-20, 33) | walked end to end
+beside: tree thorn-0 at (-19, 14), tree thorn-2 at (-19, 33)

@@ -178,6 +178,11 @@ document until you have read why it was refused.
 **A board of your own design.** There are no named briefs and no worked examples on purpose: what the board
 is for, what it is made of and where things stand are yours.
 
+**So no other board's spec is opened during an authoring run.** A solved arrangement is what gets reused
+once it has been seen, and a run that reuses one has not decided a board. `techniques/` is what a technique
+is read from and `GET /api/openapi/v1.json` is what a field name is read from; a spec under `specs/` is
+evidence about a past run and is opened for that.
+
 **`ORDER-OF-WORK.md` is the order those decisions are made in**, and it is the one page read before the first
 request. This section is what is left once that order is settled — how a *run* is conducted, rather than how
 a board is decided.

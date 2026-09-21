@@ -1,0 +1,95 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Wetherslack"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 18,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "slack",
+   "role": "piece",
+   "rect": [
+    -6,
+    4,
+    12,
+    20
+   ],
+   "surface": 9
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    0,
+    24,
+    5,
+    6
+   ],
+   "surface": 9
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -6,
+    -4,
+    12,
+    8
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-slack",
+    "piece": "spawn",
+    "at": [
+     10,
+     13
+    ],
+    "facing": "front",
+    "footprint": [
+     4,
+     7,
+     12,
+     12
+    ]
+   }
+  ],
+  "wools": [],
+  "iron": [
+   {
+    "id": "iron-slack",
+    "piece": "spawn",
+    "at": [
+     10.0,
+     3.5
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": [
+   {
+    "id": "core",
+    "piece": "slack",
+    "at": [
+     20,
+     46
+    ],
+    "layer": "vault-deck",
+    "lava": 3,
+    "float": 6,
+    "leak": 5,
+    "name": "Wetherslack Cistern"
+   }
+  ]
+ },
+ "walls": []
+}

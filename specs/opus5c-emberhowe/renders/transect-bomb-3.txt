@@ -1,0 +1,61 @@
+## bomb-3 (boulder) along x
+TRANSECT 25 stations from (21, 50) to (45, 50), every 1
+  station        ground  surface  water  top  standing            step
+  (   21,    50)                                                    void
+  (   22,    50)                                                    void
+  (   23,    50)                                                    void
+  (   24,    50)                                                    void
+  (   25,    50)                                                    void
+  (   26,    50)                                                    void
+  (   27,    50)                                                    void
+  (   28,    50)      18       18           18                      
+  (   29,    50)      18       18           22  tree scrub-3        
+  (   30,    50)      18       18           24  tree scrub-3        
+  (   31,    50)      18       18           25  tree scrub-3        
+  (   32,    50)      18       18           23  tree scrub-3        
+  (   33,    50)      18       18           26  tree scrub-3        
+  (   34,    50)      18       18           25  tree scrub-3        
+  (   35,    50)      18       18           25  tree scrub-3        
+  (   36,    50)      18       18           18                      
+  (   37,    50)      18       18           23  tree scrub-3        
+  (   38,    50)      18       18           18                      
+  (   39,    50)      18       18           18                      
+  (   40,    50)      18       18           18                      
+  (   41,    50)      18       18           18  stroke way-east     
+  (   42,    50)      18       18           18  stroke way-east     
+  (   43,    50)      18       18           18  stroke way-east     
+  (   44,    50)      18       18           18  stroke way-east     
+  (   45,    50)      18       18           18                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree scrub-3 at (28, 48), stroke way-east at (41, 48)
+
+## bomb-3 (boulder) along z
+TRANSECT 25 stations from (33, 38) to (33, 62), every 1
+  station        ground  surface  water  top  standing            step
+  (   33,    38)      15       15           18  tree scrub-2        
+  (   33,    39)      15       15           21  tree scrub-2        
+  (   33,    40)      15       15           23  tree scrub-3        
+  (   33,    41)      16       16           25  tree scrub-3        +1
+  (   33,    42)      16       16           23  tree scrub-3        
+  (   33,    43)      16       16           27  tree scrub-3        
+  (   33,    44)      16       16           27  tree scrub-3        
+  (   33,    45)      17       17           22  tree scrub-3        +1
+  (   33,    46)      17       17           27  tree scrub-3        
+  (   33,    47)      17       17           26  tree scrub-3        
+  (   33,    48)      17       17           25  tree scrub-3        
+  (   33,    49)      17       17           24  tree scrub-3        
+  (   33,    50)      18       18           26  tree scrub-3        +1
+  (   33,    51)      18       18           25  tree scrub-3        
+  (   33,    52)      18       18           21  tree scrub-3        
+  (   33,    53)      18       18           18                      
+  (   33,    54)      19       19           19                      +1
+  (   33,    55)      19       19           19                      
+  (   33,    56)      19       19           19                      
+  (   33,    57)      19       19           19                      
+  (   33,    58)      19       19           25  tree fir-2          
+  (   33,    59)      20       20           26  tree fir-2          +1
+  (   33,    60)      20       20           20                      
+  (   33,    61)      20       25           25  storey              BARRIER +5
+  (   33,    62)      20       25           25  storey              
+rises 6, falls 0, worst step 5: 1 barrier, 0 scramble, 0 drop — BARRIER +5 at (33, 61) | walked end to end
+beside: tree scrub-2 at (31, 36), tree scrub-3 at (32, 40), tree fir-2 at (31, 55)

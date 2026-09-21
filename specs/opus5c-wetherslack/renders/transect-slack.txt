@@ -1,0 +1,89 @@
+## slack (made) along x
+TRANSECT 41 stations from (-24, 62) to (16, 62), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,    62)      21       21           21  stroke shoulder-way  
+  (  -23,    62)      21       21           21  stroke shoulder-way  
+  (  -22,    62)      21       21           21  stroke shoulder-way  
+  (  -21,    62)      21       21           21  stroke shoulder-way  
+  (  -20,    62)      21       21           21                      
+  (  -19,    62)      21       21           21                      
+  (  -18,    62)      18       18           18                      -3
+  (  -17,    62)      15       15           15                      -3
+  (  -16,    62)      12       22           22  storey              BARRIER +7
+  (  -15,    62)      12       22           22  storey              
+  (  -14,    62)      12       22           22  storey              
+  (  -13,    62)      12       22           22  storey              
+  (  -12,    62)      12       22           22  storey              
+  (  -11,    62)      12       22           22  storey              
+  (  -10,    62)      12       22           22  storey              
+  (   -9,    62)      12       22           22  storey              
+  (   -8,    62)      12       22           22  storey              
+  (   -7,    62)      12       22           22  storey              
+  (   -6,    62)      12       22           33  core core           
+  (   -5,    62)      12       22     32    39  core core           
+  (   -4,    62)      12       22     32    40  core core           
+  (   -3,    62)      12       22     32    39  core core           
+  (   -2,    62)      12       22           33  core core           
+  (   -1,    62)      12       22           22  storey              
+  (    0,    62)      12       22           22  storey              
+  (    1,    62)      12       22           22  storey              
+  (    2,    62)      12       22           22  storey              
+  (    3,    62)      12       22           22  storey              
+  (    4,    62)      12       22           22  storey              
+  (    5,    62)      12       22           22  storey              
+  (    6,    62)      12       22           22  storey              
+  (    7,    62)      11       22           22  storey              
+  (    8,    62)      10       10           10  water beck-water    DROP -12
+  (    9,    62)       9        9            9  water beck-water    -1
+  (   10,    62)       8        8      7     7  water beck-water    -1
+  (   11,    62)       8        8      7     7  water beck-water    
+  (   12,    62)       8        8      7     7  water beck-water    
+  (   13,    62)       8        8      7     7  water beck-water    
+  (   14,    62)       8        8            8  water beck-water    
+  (   15,    62)       8        8            8  water beck-water    
+  (   16,    62)       8        8            8                      
+rises 1, falls 5, worst step 12: 1 barrier, 0 scramble, 1 drop — BARRIER +7 at (-16, 62); DROP -12 at (8, 62) | walked end to end
+beside: stroke shoulder-way at (-24, 60), core core at (-6, 60), water beck-water at (8, 61), stroke spawn-way at (18, 60)
+
+## slack (made) along z
+TRANSECT 37 stations from (-4, 44) to (-4, 80), every 1
+  station        ground  surface  water  top  standing            step
+  (   -4,    44)      12       12           26  tree oak-0          
+  (   -4,    45)      12       12           25  tree oak-0          
+  (   -4,    46)      12       12           26  tree oak-0          
+  (   -4,    47)      12       12           26  tree oak-0          
+  (   -4,    48)      12       12           24  tree oak-0          
+  (   -4,    49)      12       12           23  tree oak-0          
+  (   -4,    50)      12       12           21  tree oak-0          
+  (   -4,    51)      12       12           12                      
+  (   -4,    52)      12       22           22  storey              BARRIER +10
+  (   -4,    53)      12       22           22  storey              
+  (   -4,    54)      12       22           22  storey              
+  (   -4,    55)      12       22           22  storey              
+  (   -4,    56)      12       22           22  storey              
+  (   -4,    57)      12       22           22  storey              
+  (   -4,    58)      12       22           22  storey              
+  (   -4,    59)      12       22           22  storey              
+  (   -4,    60)      12       22           33  core core           
+  (   -4,    61)      12       22     32    39  core core           
+  (   -4,    62)      12       22     32    40  core core           
+  (   -4,    63)      12       22     32    39  core core           
+  (   -4,    64)      12       22           33  core core           
+  (   -4,    65)      12       22           22  storey              
+  (   -4,    66)      12       22           22  storey              
+  (   -4,    67)      12       22           22  storey              
+  (   -4,    68)      12       22           22  storey              
+  (   -4,    69)      12       22           22  storey              
+  (   -4,    70)      12       22           22  storey              
+  (   -4,    71)      12       22           22  storey              
+  (   -4,    72)      12       12           12                      DROP -10
+  (   -4,    73)      12       12           12                      
+  (   -4,    74)      13       13           13                      +1
+  (   -4,    75)      13       13           13                      
+  (   -4,    76)      13       13           13                      
+  (   -4,    77)      13       13           13                      
+  (   -4,    78)      13       13           13                      
+  (   -4,    79)      13       13           13                      
+  (   -4,    80)      14       14           14                      +1
+rises 3, falls 1, worst step 10: 1 barrier, 0 scramble, 1 drop — BARRIER +10 at (-4, 52); DROP -10 at (-4, 72) | walked end to end
+beside: tree oak-0 at (-6, 42), core core at (-6, 60), house gill-house at (-6, 75), tree oak-4 at (-6, 81)

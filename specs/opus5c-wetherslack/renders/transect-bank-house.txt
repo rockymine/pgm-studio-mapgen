@@ -1,0 +1,60 @@
+## bank-house (house) along x
+TRANSECT 26 stations from (-21, 33) to (4, 33), every 1
+  station        ground  surface  water  top  standing            step
+  (  -21,    33)      21       21           29  tree oak-1          
+  (  -20,    33)      21       21           28  tree oak-1          
+  (  -19,    33)      21       21           29  tree oak-1          
+  (  -18,    33)      21       21           27  tree oak-1          
+  (  -17,    33)      21       21           28  tree oak-1          
+  (  -16,    33)      19       19           26  tree oak-1          -2
+  (  -15,    33)      18       18           25  tree oak-1          -1
+  (  -14,    33)      16       16           23  tree oak-1          -2
+  (  -13,    33)      15       15           18  house bank-house    -1
+  (  -12,    33)      14       14           18  house bank-house    -1
+  (  -11,    33)      14       14           18  house bank-house    
+  (  -10,    33)      13       13           18  house bank-house    -1
+  (   -9,    33)      12       12           18  house bank-house    -1
+  (   -8,    33)      12       12           18  house bank-house    
+  (   -7,    33)      11       11           18  house bank-house    -1
+  (   -6,    33)      11       11           18  house bank-house    
+  (   -5,    33)      11       11           18  house bank-house    
+  (   -4,    33)      10       10           18  house bank-house    -1
+  (   -3,    33)      10       10           18  house bank-house    
+  (   -2,    33)      10       10           10                      
+  (   -1,    33)       9        9            9                      -1
+  (    0,    33)       9        9            9                      
+  (    1,    33)       9        9            9                      
+  (    2,    33)       9        9            9                      
+  (    3,    33)       9        9           20  tree willow-1       
+  (    4,    33)       8        8            8                      -1
+rises 0, falls 11, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree oak-1 at (-23, 31), house bank-house at (-14, 35), tree birch-1 at (-2, 31), tree willow-1 at (2, 34)
+
+## bank-house (house) along z
+TRANSECT 23 stations from (-9, 22) to (-9, 44), every 1
+  station        ground  surface  water  top  standing            step
+  (   -9,    22)       9        9            9                      
+  (   -9,    23)       9        9            9                      
+  (   -9,    24)       9        9            9                      
+  (   -9,    25)       9        9            9                      
+  (   -9,    26)       9        9            9                      
+  (   -9,    27)       9        9            9                      
+  (   -9,    28)       9        9            9                      
+  (   -9,    29)       9        9           14  house bank-house    
+  (   -9,    30)      10       10           15  house bank-house    +1
+  (   -9,    31)      11       11           16  house bank-house    +1
+  (   -9,    32)      11       11           17  house bank-house    
+  (   -9,    33)      12       12           18  house bank-house    +1
+  (   -9,    34)      13       13           17  house bank-house    +1
+  (   -9,    35)      13       13           16  house bank-house    
+  (   -9,    36)      14       14           15  house bank-house    +1
+  (   -9,    37)      14       14           14  house bank-house    
+  (   -9,    38)      14       14           14                      
+  (   -9,    39)      14       14           19  tree oak-0          
+  (   -9,    40)      15       15           21  tree oak-0          +1
+  (   -9,    41)      15       15           25  tree oak-0          
+  (   -9,    42)      15       15           24  tree oak-0          
+  (   -9,    43)      15       15           26  tree oak-0          
+  (   -9,    44)      15       15           25  tree oak-0          
+rises 6, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder gritstone-0 at (-7, 24), house bank-house at (-11, 29), tree oak-0 at (-9, 39)

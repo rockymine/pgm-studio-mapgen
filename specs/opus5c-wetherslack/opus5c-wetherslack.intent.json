@@ -1,0 +1,188 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 18,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-slack",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": 10,
+    "y": 9,
+    "z": 109
+   },
+   "protection": [
+    {
+     "minX": 0,
+     "minZ": 96,
+     "maxX": 20,
+     "maxZ": 120
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": 4,
+    "minZ": 103,
+    "maxX": 16,
+    "maxZ": 115
+   },
+   "iron": [
+    {
+     "x": 10,
+     "y": 9,
+     "z": 99.5
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-slack",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": -10,
+    "y": 9,
+    "z": -109
+   },
+   "protection": [
+    {
+     "minX": -20,
+     "minZ": -120,
+     "maxX": 0,
+     "maxZ": -96
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -16,
+    "minZ": -115,
+    "maxX": -4,
+    "maxZ": -103
+   },
+   "iron": [
+    {
+     "x": -10,
+     "y": 9,
+     "z": -99.5
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 24,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -24,
+    "minZ": -16,
+    "maxX": 24,
+    "maxZ": 16
+   }
+  ],
+  "holes": []
+ },
+ "waterLanes": null,
+ "wools": [],
+ "destroyables": null,
+ "cores": [
+  {
+   "layer": "vault-deck",
+   "stamp": {
+    "kind": "core",
+    "unit": "core",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Wetherslack Cistern",
+   "anchor": {
+    "x": -4,
+    "y": 9,
+    "z": 62
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  },
+  {
+   "layer": "vault-deck",
+   "stamp": {
+    "kind": "core",
+    "unit": "core",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Wetherslack Cistern",
+   "anchor": {
+    "x": 3,
+    "y": 9,
+    "z": -63
+   },
+   "lava": 3,
+   "lavaHeight": 3,
+   "openTop": false,
+   "float": 6,
+   "leak": 5,
+   "box": null,
+   "digDepth": 0
+  }
+ ],
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "dtc"
+ ],
+ "meta": {
+  "name": "Wetherslack",
+  "created": "2026-09-21",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": null
+}

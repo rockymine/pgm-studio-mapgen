@@ -1,0 +1,197 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Emberhowe"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 18,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "arm-w",
+   "role": "piece",
+   "rect": [
+    -12,
+    3,
+    5,
+    12
+   ]
+  },
+  {
+   "id": "arm-e",
+   "role": "piece",
+   "rect": [
+    7,
+    3,
+    5,
+    12
+   ]
+  },
+  {
+   "id": "cap-w",
+   "role": "piece",
+   "rect": [
+    -12,
+    15,
+    9,
+    6
+   ]
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -3,
+    15,
+    5,
+    6
+   ]
+  },
+  {
+   "id": "cap-e",
+   "role": "piece",
+   "rect": [
+    2,
+    15,
+    10,
+    6
+   ]
+  },
+  {
+   "id": "w-approach",
+   "role": "piece",
+   "rect": [
+    -16,
+    5,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "w-room",
+   "role": "wool-room",
+   "rect": [
+    -20,
+    5,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "e-approach",
+   "role": "piece",
+   "rect": [
+    12,
+    8,
+    4,
+    4
+   ]
+  },
+  {
+   "id": "e-room",
+   "role": "wool-room",
+   "rect": [
+    16,
+    8,
+    4,
+    4
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait-w",
+   "rect": [
+    -12,
+    -3,
+    5,
+    6
+   ],
+   "holes": []
+  },
+  {
+   "id": "strait-e",
+   "rect": [
+    7,
+    -3,
+    5,
+    6
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-howe",
+    "piece": "spawn",
+    "at": [
+     10,
+     13
+    ],
+    "facing": "left",
+    "footprint": [
+     4,
+     7,
+     12,
+     12
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-west",
+    "piece": "w-room",
+    "at": [
+     8,
+     8
+    ],
+    "footprint": [
+     2,
+     2,
+     12,
+     12
+    ]
+   },
+   {
+    "id": "wool-east",
+    "piece": "e-room",
+    "at": [
+     8,
+     8
+    ],
+    "footprint": [
+     2,
+     2,
+     12,
+     12
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-howe",
+    "piece": "spawn",
+    "at": [
+     10.0,
+     3.5
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [
+  {
+   "a": "w-approach",
+   "b": "arm-w"
+  },
+  {
+   "a": "e-approach",
+   "b": "arm-e"
+  }
+ ]
+}

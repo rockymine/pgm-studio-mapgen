@@ -1,0 +1,58 @@
+## gill-house (house) along x
+TRANSECT 25 stations from (-23, 78) to (1, 78), every 1
+  station        ground  surface  water  top  standing            step
+  (  -23,    78)      21       21           21  stroke shoulder-way  
+  (  -22,    78)      22       22           22  stroke shoulder-way  +1
+  (  -21,    78)      22       22           22  stroke shoulder-way  
+  (  -20,    78)      21       21           21                      -1
+  (  -19,    78)      21       21           21                      
+  (  -18,    78)      21       21           21                      
+  (  -17,    78)      21       21           21                      
+  (  -16,    78)      21       21           22  house gill-house    
+  (  -15,    78)      21       21           22  house gill-house    
+  (  -14,    78)      20       20           22  house gill-house    -1
+  (  -13,    78)      19       19           22  house gill-house    -1
+  (  -12,    78)      18       18           22  house gill-house    -1
+  (  -11,    78)      17       17           22  house gill-house    -1
+  (  -10,    78)      16       16           22  house gill-house    -1
+  (   -9,    78)      16       16           22  house gill-house    
+  (   -8,    78)      15       15           22  house gill-house    -1
+  (   -7,    78)      15       15           22  house gill-house    
+  (   -6,    78)      14       14           22  house gill-house    -1
+  (   -5,    78)      14       14           14                      
+  (   -4,    78)      13       13           13                      -1
+  (   -3,    78)      13       13           13                      
+  (   -2,    78)      13       13           13                      
+  (   -1,    78)      12       12           12                      -1
+  (    0,    78)      12       12           12                      
+  (    1,    78)      11       11           11                      -1
+rises 1, falls 11, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke shoulder-way at (-24, 76), house gill-house at (-16, 76)
+
+## gill-house (house) along z
+TRANSECT 22 stations from (-11, 68) to (-11, 89), every 1
+  station        ground  surface  water  top  standing            step
+  (  -11,    68)      12       22           22  storey              
+  (  -11,    69)      12       22           22  storey              
+  (  -11,    70)      12       22           22  storey              
+  (  -11,    71)      13       22           22  storey              
+  (  -11,    72)      14       14           14                      DROP -8
+  (  -11,    73)      15       15           15                      +1
+  (  -11,    74)      16       16           16                      +1
+  (  -11,    75)      16       16           19  house gill-house    
+  (  -11,    76)      17       17           20  house gill-house    +1
+  (  -11,    77)      17       17           21  house gill-house    
+  (  -11,    78)      17       17           22  house gill-house    
+  (  -11,    79)      17       17           22  house gill-house    
+  (  -11,    80)      17       17           21  house gill-house    
+  (  -11,    81)      18       18           28  tree oak-3          +1
+  (  -11,    82)      18       18           30  tree oak-3          
+  (  -11,    83)      18       18           31  tree oak-3          
+  (  -11,    84)      18       18           32  tree oak-3          
+  (  -11,    85)      18       18           32  tree oak-3          
+  (  -11,    86)      18       18           31  tree oak-3          
+  (  -11,    87)      18       18           33  tree oak-3          
+  (  -11,    88)      18       18           32  tree oak-3          
+  (  -11,    89)      18       18           33  tree oak-3          
+rises 4, falls 1, worst step 8: 0 barrier, 0 scramble, 1 drop — DROP -8 at (-11, 72) | walked end to end
+beside: house gill-house at (-13, 75), tree oak-3 at (-13, 81), tree oak-4 at (-9, 83), tree oak-2 at (-13, 91)
