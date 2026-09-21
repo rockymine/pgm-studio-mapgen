@@ -1,0 +1,197 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Tallowfleet",
+  "notes": "CTW and DTM on one board. The monument stands forward on the open quay and the wool lies in a cellar at the end of a walled spur behind the works, so holding the quay is not holding the cellar."
+ },
+ "globals": {
+  "cell": 5,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 10,
+  "observerY": 56
+ },
+ "pieces": [
+  {
+   "id": "works",
+   "role": "piece",
+   "rect": [
+    -7,
+    -19,
+    10,
+    4
+   ],
+   "surface": 15
+  },
+  {
+   "id": "spur",
+   "role": "piece",
+   "rect": [
+    3,
+    -19,
+    5,
+    4
+   ],
+   "surface": 15
+  },
+  {
+   "id": "lane",
+   "role": "piece",
+   "rect": [
+    2,
+    -23,
+    3,
+    4
+   ],
+   "surface": 15
+  },
+  {
+   "id": "quay-c",
+   "role": "piece",
+   "rect": [
+    -2,
+    -15,
+    4,
+    11
+   ],
+   "surface": 10
+  },
+  {
+   "id": "quay-w",
+   "role": "piece",
+   "rect": [
+    -7,
+    -15,
+    3,
+    11
+   ],
+   "surface": 10
+  },
+  {
+   "id": "quay-e",
+   "role": "piece",
+   "rect": [
+    4,
+    -15,
+    3,
+    11
+   ],
+   "surface": 10
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -8,
+    -23,
+    4,
+    4
+   ],
+   "surface": 15
+  },
+  {
+   "id": "cellar",
+   "role": "wool-room",
+   "rect": [
+    5,
+    -23,
+    4,
+    4
+   ],
+   "surface": 15
+  }
+ ],
+ "zones": [
+  {
+   "id": "fleet-c",
+   "rect": [
+    -2,
+    -4,
+    4,
+    8
+   ],
+   "holes": []
+  },
+  {
+   "id": "fleet-w",
+   "rect": [
+    -7,
+    -4,
+    3,
+    8
+   ],
+   "holes": []
+  },
+  {
+   "id": "fleet-e",
+   "rect": [
+    4,
+    -4,
+    3,
+    8
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn",
+    "at": [
+     10,
+     10
+    ],
+    "facing": "back",
+    "footprint": [
+     3,
+     4,
+     14,
+     8
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "cellar",
+    "at": [
+     10,
+     10
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "spawn",
+    "at": [
+     10,
+     16
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "destroyable-1",
+    "piece": "quay-c",
+    "at": [
+     6,
+     14
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Tallowfleet Beacon"
+   }
+  ],
+  "cores": []
+ },
+ "walls": [
+  {
+   "a": "spur",
+   "b": "works"
+  }
+ ],
+ "boxes": []
+}

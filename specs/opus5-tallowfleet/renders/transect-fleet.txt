@@ -1,0 +1,92 @@
+## fleet (water) along x
+TRANSECT 51 stations from (-45, -90) to (5, -90), every 1
+  station        ground  surface  water  top  standing            step
+  (  -45,   -90)                                                    void
+  (  -44,   -90)                                                    void
+  (  -43,   -90)                                                    void
+  (  -42,   -90)                                                    void
+  (  -41,   -90)                                                    void
+  (  -40,   -90)                                                    void
+  (  -39,   -90)                                                    void
+  (  -38,   -90)                                                    void
+  (  -37,   -90)                                                    void
+  (  -36,   -90)                                                    void
+  (  -35,   -90)      15       15           15  water fleet         
+  (  -34,   -90)      15       15           15  water fleet         
+  (  -33,   -90)      15       15           15  water fleet         
+  (  -32,   -90)      15       15           15  water fleet         
+  (  -31,   -90)      15       15           15  water fleet         
+  (  -30,   -90)      15       15           15  water fleet         
+  (  -29,   -90)      15       15           15  water fleet         
+  (  -28,   -90)      15       15           15  water fleet         
+  (  -27,   -90)      15       15           15  water fleet         
+  (  -26,   -90)      15       15           15  water fleet         
+  (  -25,   -90)      15       15           15  stroke trod-beacon  
+  (  -24,   -90)      15       15           15  stroke trod-beacon  
+  (  -23,   -90)      15       15           15  stroke trod-beacon  
+  (  -22,   -90)      15       15     14    15  stroke trod-beacon  
+  (  -21,   -90)      15       15     14    15  stroke trod-beacon  
+  (  -20,   -90)      15       15     15    15  water fleet         
+  (  -19,   -90)      15       15     15    15  water fleet         
+  (  -18,   -90)      15       15     15    15  water fleet         
+  (  -17,   -90)      15       15     15    15  water fleet         
+  (  -16,   -90)      15       15     15    15  water fleet         
+  (  -15,   -90)      15       15     15    15  water fleet         
+  (  -14,   -90)      15       15     15    15  water fleet         
+  (  -13,   -90)      15       15     15    15  water fleet         
+  (  -12,   -90)      15       15     15    15  water fleet         
+  (  -11,   -90)      15       15     15    15  water fleet         
+  (  -10,   -90)      15       15     15    15  water fleet         
+  (   -9,   -90)      15       15     15    15  water fleet         
+  (   -8,   -90)      15       15     15    15  water fleet         
+  (   -7,   -90)      15       15     15    15  water fleet         
+  (   -6,   -90)      15       15     15    15  water fleet         
+  (   -5,   -90)      15       15           15                      
+  (   -4,   -90)      15       15           15                      
+  (   -3,   -90)      15       15           15                      
+  (   -2,   -90)      15       15           15                      
+  (   -1,   -90)      15       15           15                      
+  (    0,   -90)      15       15           15                      
+  (    1,   -90)      15       15           15                      
+  (    2,   -90)      15       15           15                      
+  (    3,   -90)      15       15           15                      
+  (    4,   -90)      15       15           15                      
+  (    5,   -90)      15       15           15                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: water fleet at (-35, -92), stroke trod-beacon at (-26, -92), stroke trod-cellar at (-8, -92)
+
+## fleet (water) along z
+TRANSECT 30 stations from (-20, -104) to (-20, -75), every 1
+  station        ground  surface  water  top  standing            step
+  (  -20,  -104)                                                    void
+  (  -20,  -103)                                                    void
+  (  -20,  -102)                                                    void
+  (  -20,  -101)                                                    void
+  (  -20,  -100)                                                    void
+  (  -20,   -99)                                                    void
+  (  -20,   -98)                                                    void
+  (  -20,   -97)                                                    void
+  (  -20,   -96)                                                    void
+  (  -20,   -95)      15       15           15  stroke trod-cellar  
+  (  -20,   -94)      15       15           15                      
+  (  -20,   -93)      15       15           15                      
+  (  -20,   -92)      15       15           15                      
+  (  -20,   -91)      15       15     15    15  water fleet         
+  (  -20,   -90)      15       15     15    15  water fleet         
+  (  -20,   -89)      15       15     14    15  stroke trod-beacon  
+  (  -20,   -88)      15       15     14    15  stroke trod-beacon  
+  (  -20,   -87)      15       15     14    15  stroke trod-beacon  
+  (  -20,   -86)      15       15     14    15  stroke trod-beacon  
+  (  -20,   -85)      15       15           15  stroke trod-beacon  
+  (  -20,   -84)      15       15           15  stroke trod-beacon  
+  (  -20,   -83)      15       15           15                      
+  (  -20,   -82)      15       15           15                      
+  (  -20,   -81)      15       15           15                      
+  (  -20,   -80)      15       15           15                      
+  (  -20,   -79)      15       15           15                      
+  (  -20,   -78)      15       15           15                      
+  (  -20,   -77)      15       15           15                      
+  (  -20,   -76)      15       15           15                      
+  (  -20,   -75)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke trod-cellar at (-22, -99), stroke trod-beacon at (-22, -92), water fleet at (-18, -92)

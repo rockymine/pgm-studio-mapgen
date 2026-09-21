@@ -1,0 +1,57 @@
+## tryhouse-works (house) along x
+TRANSECT 24 stations from (-7, -84) to (16, -84), every 1
+  station        ground  surface  water  top  standing            step
+  (   -7,   -84)      15       15           15                      
+  (   -6,   -84)      15       15           15                      
+  (   -5,   -84)      15       15           15                      
+  (   -4,   -84)      15       15           15                      
+  (   -3,   -84)      15       15           15                      
+  (   -2,   -84)      15       15           15                      
+  (   -1,   -84)      15       15           15                      
+  (    0,   -84)      15       15           24  house tryhouse-works  
+  (    1,   -84)      15       15           24  house tryhouse-works  
+  (    2,   -84)      15       15           24  house tryhouse-works  
+  (    3,   -84)      15       15           24  house tryhouse-works  
+  (    4,   -84)      15       15           24  house tryhouse-works  
+  (    5,   -84)      15       15           24  house tryhouse-works  
+  (    6,   -84)      15       15           24  house tryhouse-works  
+  (    7,   -84)      15       15           24  house tryhouse-works  
+  (    8,   -84)      15       15           24  house tryhouse-works  
+  (    9,   -84)      15       15           24  house tryhouse-works  
+  (   10,   -84)      15       15           15                      
+  (   11,   -84)      15       15           15                      
+  (   12,   -84)      15       15           15                      
+  (   13,   -84)      15       15           15                      
+  (   14,   -84)      15       15           19  wall 0              
+  (   15,   -84)      15       15           19  wall 0              
+  (   16,   -84)      15       15           15                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house tryhouse-works at (0, -86), wall 0 at (14, -86)
+
+## tryhouse-works (house) along z
+TRANSECT 22 stations from (4, -94) to (4, -73), every 1
+  station        ground  surface  water  top  standing            step
+  (    4,   -94)      15       15           15  stroke trod-cellar  
+  (    4,   -93)      15       15           15  stroke trod-cellar  
+  (    4,   -92)      15       15           15  stroke trod-cellar  
+  (    4,   -91)      15       15           15  stroke trod-cellar  
+  (    4,   -90)      15       15           15                      
+  (    4,   -89)      15       15           15                      
+  (    4,   -88)      15       15           15                      
+  (    4,   -87)      15       15           18  house tryhouse-works  
+  (    4,   -86)      15       15           20  house tryhouse-works  
+  (    4,   -85)      15       15           22  house tryhouse-works  
+  (    4,   -84)      15       15           24  house tryhouse-works  
+  (    4,   -83)      15       15           24  house tryhouse-works  
+  (    4,   -82)      15       15           22  house tryhouse-works  
+  (    4,   -81)      15       15           20  house tryhouse-works  
+  (    4,   -80)      15       15           18  house tryhouse-works  
+  (    4,   -79)      15       15           15                      
+  (    4,   -78)      15       15           15                      
+  (    4,   -77)      15       15           15                      
+  (    4,   -76)      15       15           15                      
+  (    4,   -75)      12       12           12                      -3
+  (    4,   -74)      12       12           12                      
+  (    4,   -73)      12       12           12                      
+rises 0, falls 1, worst step 3: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke trod-cellar at (6, -95), house tryhouse-works at (2, -87)

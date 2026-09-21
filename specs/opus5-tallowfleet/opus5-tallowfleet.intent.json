@@ -1,0 +1,355 @@
+{
+ "teams": [
+  {
+   "id": "red",
+   "name": "Red",
+   "color": "red"
+  },
+  {
+   "id": "blue",
+   "name": "Blue",
+   "color": "blue"
+  }
+ ],
+ "maxPlayers": 16,
+ "spawns": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 0
+   },
+   "team": "red",
+   "point": {
+    "x": -30,
+    "y": 15,
+    "z": -105
+   },
+   "protection": [
+    {
+     "minX": -40,
+     "minZ": -115,
+     "maxX": -20,
+     "maxZ": -95
+    }
+   ],
+   "yaw": 0,
+   "doors": [
+    "+z"
+   ],
+   "footprint": {
+    "minX": -37,
+    "minZ": -111,
+    "maxX": -23,
+    "maxZ": -103
+   },
+   "iron": [
+    {
+     "x": -30,
+     "y": 15,
+     "z": -99
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "spawn",
+    "unit": "spawn-1",
+    "image": 1
+   },
+   "team": "blue",
+   "point": {
+    "x": 30,
+    "y": 15,
+    "z": 105
+   },
+   "protection": [
+    {
+     "minX": 20,
+     "minZ": 95,
+     "maxX": 40,
+     "maxZ": 115
+    }
+   ],
+   "yaw": 180,
+   "doors": [
+    "-z"
+   ],
+   "footprint": {
+    "minX": 23,
+    "minZ": 103,
+    "maxX": 37,
+    "maxZ": 111
+   },
+   "iron": [
+    {
+     "x": 30,
+     "y": 15,
+     "z": 99
+    }
+   ]
+  }
+ ],
+ "observer": {
+  "point": {
+   "x": 0,
+   "y": 56,
+   "z": 0
+  },
+  "yaw": 0
+ },
+ "build": {
+  "maxHeight": null,
+  "areas": [
+   {
+    "minX": -10,
+    "minZ": -20,
+    "maxX": 10,
+    "maxZ": 20
+   },
+   {
+    "minX": -35,
+    "minZ": -20,
+    "maxX": -20,
+    "maxZ": 20
+   },
+   {
+    "minX": 20,
+    "minZ": -20,
+    "maxX": 35,
+    "maxZ": 20
+   }
+  ],
+  "holes": [],
+  "voidEnforcement": null
+ },
+ "waterLanes": null,
+ "wools": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 0
+   },
+   "owner": "red",
+   "color": "red",
+   "protection": [
+    {
+     "minX": 25,
+     "minZ": -115,
+     "maxX": 45,
+     "maxZ": -95
+    }
+   ],
+   "spawn": {
+    "x": 35,
+    "y": 15,
+    "z": -105
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": 25,
+     "minZ": -95,
+     "maxX": 40,
+     "maxZ": -95
+    },
+    {
+     "minX": 25,
+     "minZ": -115,
+     "maxX": 25,
+     "maxZ": -95
+    }
+   ]
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "wool",
+    "unit": "wool-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "color": "blue",
+   "protection": [
+    {
+     "minX": -45,
+     "minZ": 95,
+     "maxX": -25,
+     "maxZ": 115
+    }
+   ],
+   "spawn": {
+    "x": -35,
+    "y": 15,
+    "z": 105
+   },
+   "monuments": [],
+   "footprint": null,
+   "entries": [
+    {
+     "minX": -40,
+     "minZ": 95,
+     "maxX": -25,
+     "maxZ": 95
+    },
+    {
+     "minX": -25,
+     "minZ": 95,
+     "maxX": -25,
+     "maxZ": 115
+    }
+   ]
+  }
+ ],
+ "destroyables": [
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 0
+   },
+   "owner": "red",
+   "name": "Tallowfleet Beacon",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": -4,
+    "y": 10,
+    "z": -61
+   },
+   "float": 4,
+   "box": null
+  },
+  {
+   "layer": null,
+   "stamp": {
+    "kind": "destroyable",
+    "unit": "destroyable-1",
+    "image": 1
+   },
+   "owner": "blue",
+   "name": "Tallowfleet Beacon",
+   "style": "pillar-3",
+   "materials": "obsidian",
+   "repairable": false,
+   "anchor": {
+    "x": 3,
+    "y": 10,
+    "z": 60
+   },
+   "float": 4,
+   "box": null
+  }
+ ],
+ "cores": null,
+ "controlPoints": null,
+ "shops": null,
+ "spawners": null,
+ "scoreLimit": null,
+ "modes": null,
+ "gamemodes": [
+  "ctw",
+  "dtm"
+ ],
+ "meta": {
+  "name": "Tallowfleet",
+  "created": "2026-09-21",
+  "authors": [
+   {
+    "name": "Opus 5"
+   }
+  ],
+  "contributors": []
+ },
+ "symmetry": null,
+ "islandTeams": {
+  "1": "blue",
+  "2": "red"
+ },
+ "structures": {
+  "layer": null,
+  "redstoneLines": [
+   {
+    "x1": 25,
+    "z1": -96,
+    "x2": 39,
+    "z2": -96,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "x1": -40,
+    "z1": 95,
+    "x2": -26,
+    "z2": 95,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "0",
+     "image": 1
+    }
+   },
+   {
+    "x1": 25,
+    "z1": -115,
+    "x2": 25,
+    "z2": -96,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 0
+    }
+   },
+   {
+    "x1": -26,
+    "z1": 95,
+    "x2": -26,
+    "z2": 114,
+    "stamp": {
+     "kind": "redstoneline",
+     "unit": "1",
+     "image": 1
+    }
+   }
+  ],
+  "ironCubes": [],
+  "walls": [
+   {
+    "minX": 14,
+    "minZ": -95,
+    "maxX": 16,
+    "maxZ": -75,
+    "topY": 17,
+    "chestOnMinFace": true,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 0
+    }
+   },
+   {
+    "minX": -16,
+    "minZ": 75,
+    "maxX": -14,
+    "maxZ": 95,
+    "topY": 17,
+    "chestOnMinFace": false,
+    "stamp": {
+     "kind": "wall",
+     "unit": "0",
+     "image": 1
+    }
+   }
+  ],
+  "isEmpty": false
+ }
+}

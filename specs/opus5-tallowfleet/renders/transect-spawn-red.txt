@@ -1,0 +1,74 @@
+## spawn-red (spawn) along x
+TRANSECT 34 stations from (-45, -105) to (-12, -105), every 1
+  station        ground  surface  water  top  standing            step
+  (  -45,  -105)                                                    void
+  (  -44,  -105)                                                    void
+  (  -43,  -105)                                                    void
+  (  -42,  -105)                                                    void
+  (  -41,  -105)                                                    void
+  (  -40,  -105)      15       15           15                      
+  (  -39,  -105)      15       15           15                      
+  (  -38,  -105)      15       15           27                      
+  (  -37,  -105)      15       15           27  spawn spawn-1       
+  (  -36,  -105)      15       15           27  spawn spawn-1       
+  (  -35,  -105)      15       15           27  spawn spawn-1       
+  (  -34,  -105)      15       15           27  spawn spawn-1       
+  (  -33,  -105)      15       15           27  spawn spawn-1       
+  (  -32,  -105)      15       15           27  spawn spawn-1       
+  (  -31,  -105)      15       15           27  spawn spawn-1       
+  (  -30,  -105)      15       15           27  spawn spawn-1       
+  (  -29,  -105)      15       15           27  spawn spawn-1       
+  (  -28,  -105)      15       15           27  spawn spawn-1       
+  (  -27,  -105)      15       15           27  spawn spawn-1       
+  (  -26,  -105)      15       15           27  spawn spawn-1       
+  (  -25,  -105)      15       15           27  spawn spawn-1       
+  (  -24,  -105)      15       15           27  spawn spawn-1       
+  (  -23,  -105)      15       15           27                      
+  (  -22,  -105)      15       15           15                      
+  (  -21,  -105)      15       15           15                      
+  (  -20,  -105)                                                    void
+  (  -19,  -105)                                                    void
+  (  -18,  -105)                                                    void
+  (  -17,  -105)                                                    void
+  (  -16,  -105)                                                    void
+  (  -15,  -105)                                                    void
+  (  -14,  -105)                                                    void
+  (  -13,  -105)                                                    void
+  (  -12,  -105)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (-37, -107)
+
+## spawn-red (spawn) along z
+TRANSECT 29 stations from (-30, -115) to (-30, -87), every 1
+  station        ground  surface  water  top  standing            step
+  (  -30,  -115)      15       15           15                      
+  (  -30,  -114)      15       15           15                      
+  (  -30,  -113)      15       15           15                      
+  (  -30,  -112)      15       15           22                      
+  (  -30,  -111)      15       15           24  spawn spawn-1       
+  (  -30,  -110)      15       15           27  spawn spawn-1       
+  (  -30,  -109)      15       15           29  spawn spawn-1       
+  (  -30,  -108)      15       15           31  spawn spawn-1       
+  (  -30,  -107)      15       15           31  spawn spawn-1       
+  (  -30,  -106)      15       15           29  spawn spawn-1       
+  (  -30,  -105)      15       15           27  spawn spawn-1       
+  (  -30,  -104)      15       15           24  spawn spawn-1       
+  (  -30,  -103)      15       15           22                      
+  (  -30,  -102)      15       15           15  stroke trod-beacon  
+  (  -30,  -101)      15       15           18  stroke trod-beacon  
+  (  -30,  -100)      15       15           18  stroke trod-beacon  
+  (  -30,   -99)      15       15           18  stroke trod-beacon  
+  (  -30,   -98)      15       15           15  stroke trod-beacon  
+  (  -30,   -97)      15       15           15  stroke trod-beacon  
+  (  -30,   -96)      15       15           15                      
+  (  -30,   -95)      15       15           15                      
+  (  -30,   -94)      15       15           15                      
+  (  -30,   -93)      15       15           15  water fleet         
+  (  -30,   -92)      15       15           15  water fleet         
+  (  -30,   -91)      15       15           15  water fleet         
+  (  -30,   -90)      15       15           15  water fleet         
+  (  -30,   -89)      15       15           15  water fleet         
+  (  -30,   -88)      15       15           15  water fleet         
+  (  -30,   -87)      15       15           15                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: spawn spawn-1 at (-32, -111), stroke trod-beacon at (-31, -102), ironcube spawn-1:0 at (-32, -99), stroke trod-cellar at (-28, -99), water fleet at (-32, -94)

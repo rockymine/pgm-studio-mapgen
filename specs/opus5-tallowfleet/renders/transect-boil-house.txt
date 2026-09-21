@@ -1,0 +1,64 @@
+## boil-house (made) along x
+TRANSECT 25 stations from (20, -89) to (44, -89), every 1
+  station        ground  surface  water  top  standing            step
+  (   20,   -89)      15       15           15                      
+  (   21,   -89)      15       15           15                      
+  (   22,   -89)      15       15           15                      
+  (   23,   -89)      15       15           15                      
+  (   24,   -89)      15       15           15                      
+  (   25,   -89)      15       15           15                      
+  (   26,   -89)      15       15           15                      
+  (   27,   -89)      15       15           15                      
+  (   28,   -89)      15       21           21  storey              BARRIER +6
+  (   29,   -89)      15       21           21  storey              
+  (   30,   -89)      15       21           21  storey              
+  (   31,   -89)      15       21           21  storey              
+  (   32,   -89)      15       21           21  storey              
+  (   33,   -89)      15       21           21  storey              
+  (   34,   -89)      15       21           21  storey              
+  (   35,   -89)      15       21           21  storey              
+  (   36,   -89)      15       21           21  storey              
+  (   37,   -89)      15       21           21  storey              
+  (   38,   -89)      15       21           21  storey              
+  (   39,   -89)      15       21           21  storey              
+  (   40,   -89)                                                    void
+  (   41,   -89)                                                    void
+  (   42,   -89)                                                    void
+  (   43,   -89)                                                    void
+  (   44,   -89)                                                    void
+rises 1, falls 0, worst step 6: 1 barrier, 0 scramble, 0 drop — BARRIER +6 at (28, -89) | walked end to end
+beside: (none)
+
+## boil-house (made) along z
+TRANSECT 28 stations from (34, -102) to (34, -75), every 1
+  station        ground  surface  water  top  standing            step
+  (   34,  -102)      15       15           36  wool wool-1         
+  (   34,  -101)      15       15           34  wool wool-1         
+  (   34,  -100)      15       15           32  wool wool-1         
+  (   34,   -99)      15       15           29  wool wool-1         
+  (   34,   -98)      15       15           27  wool wool-1         
+  (   34,   -97)      15       15           24  wool wool-1         
+  (   34,   -96)      15       15           22  redstoneline 0      
+  (   34,   -95)      15       15           15                      
+  (   34,   -94)      15       21           21  storey              BARRIER +6
+  (   34,   -93)      15       21           21  storey              
+  (   34,   -92)      15       21           21  storey              
+  (   34,   -91)      15       21           21  storey              
+  (   34,   -90)      15       21           21  storey              
+  (   34,   -89)      15       21           21  storey              
+  (   34,   -88)      15       21           21  storey              
+  (   34,   -87)      15       21           21  storey              
+  (   34,   -86)      15       21           21  storey              
+  (   34,   -85)      15       21           21  storey              
+  (   34,   -84)      15       21           21  storey              
+  (   34,   -83)      15       15           20  tree salt-4         DROP -6
+  (   34,   -82)      15       15           21  tree salt-4         
+  (   34,   -81)      15       15           23  tree salt-4         
+  (   34,   -80)      15       15           23  tree salt-4         
+  (   34,   -79)      15       15           24  tree salt-4         
+  (   34,   -78)      15       15           22  tree salt-4         
+  (   34,   -77)      15       15           19  tree salt-4         
+  (   34,   -76)      15       15           23  tree salt-4         
+  (   34,   -75)      12       12           23  tree salt-4         -3
+rises 1, falls 2, worst step 6: 1 barrier, 0 scramble, 1 drop — BARRIER +6 at (34, -94); DROP -6 at (34, -83) | walked end to end
+beside: wool wool-1 at (32, -104), redstoneline 0 at (32, -96), tree salt-4 at (32, -83)
