@@ -1,20 +1,22 @@
-components 13 · navigable 10442 columns · bridgeable 0 · build ceiling y39
+components 15 · navigable 10698 columns · bridgeable 0 · build ceiling y39
 
-12 patch(es) of standing ground no player can get to. None of this is a fault — scenery and a side observer island read exactly like this — but a shape stranded by accident reads like it too, and only the author can tell them apart.
+14 patch(es) of standing ground no player can get to. None of this is a fault — scenery and a side observer island read exactly like this — but a shape stranded by accident reads like it too, and only the author can tell them apart.
 
   cells  floor  reason          box
-   5109    y10  no-build-zone   x -80..79, z 12..86
-     44    y26  no-build-zone   x -78..-67, z -46..-35
-     44    y23  no-build-zone   x -78..-67, z 22..33
-     44    y23  no-build-zone   x 66..77, z -34..-23
-     44    y26  no-build-zone   x 66..77, z 34..45
+   5235    y10  no-build-zone   x -84..83, z 12..86
+     44    y26  no-build-zone   x -82..-71, z -46..-35
+     44    y23  no-build-zone   x -82..-71, z 22..33
+     44    y23  no-build-zone   x 70..81, z -34..-23
+     44    y26  no-build-zone   x 70..81, z 34..45
      36    y25  no-build-zone   x -3..2, z -3..2
-      3    y28  no-build-zone   x -31..-30, z 59..60
-      3    y28  no-build-zone   x 29..30, z -61..-60
+      4    y28  no-build-zone   x -32..-30, z 59..60
+      4    y28  no-build-zone   x 29..31, z -61..-60
       2    y38  no-build-zone   x -34..-33, z 70..70
       2    y38  no-build-zone   x 32..33, z -71..-71
-      1    y28  no-build-zone   x -33..-33, z 59..59
-      1    y28  no-build-zone   x 32..32, z -60..-60
+      1    y27  no-build-zone   x -37..-37, z 58..58
+      1    y30  no-build-zone   x -34..-34, z 60..60
+      1    y30  no-build-zone   x 33..33, z -61..-61
+      1    y27  no-build-zone   x 36..36, z -59..-59
 
   no-build-zone   nothing the map opens to bridging reaches it, and it is not walked to
   above-ceiling   its ground stands over the map's maxbuildheight and cannot be built up to

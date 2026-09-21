@@ -1,34 +1,34 @@
 HOW THIS BOARD IS COME AT
 
-  wool at (-72, -40)
-    The attacker walks 161 blocks to it; the defender 75, a ratio of 0.47.
-    A player already at the crossing is 36 blocks from it — nearer than a respawn, so the defence that matters is whoever was already out.
+  wool at (-76, -40)
+    The attacker walks 165 blocks to it; the defender 79, a ratio of 0.48.
+    A player already at the crossing is 40 blocks from it — nearer than a respawn, so the defence that matters is whoever was already out.
       Neither side is obviously first to it.
-    1 ways in. The last choice is made at (-48, -36) and closes at (-72, -40), 0 blocks short of the objective.
+    1 ways in. The last choice is made at (-48, -36) and closes at (-76, -40), 0 blocks short of the objective.
       The defender's own walk runs through that merge, so both sides come up the same road. A defence has to be pushed forward to hold it, and the further forward the merge sits the more of the board it gives up to do so.
-    The attack covers 12% of the ground the defence crosses to get here. The attack barely touches the defence's ground, so it can arrive without having spent the approach inside the lane reinforcements come down.
-    Walking attack — 161 blocks, 1 way, 2 decisions:
+    The attack covers 15% of the ground the defence crosses to get here. The attack barely touches the defence's ground, so it can arrive without having spent the approach inside the lane reinforcements come down.
+    Walking attack — 165 blocks, 1 way, 2 decisions:
       round the 420-cell hole at (0, 0): choose at (-32, 60), live over 86 blocks, the other way 1.00× the shortest.
-      round the 420-cell hole at (0, 0): choose at (-48, -36), live over 26 blocks, the other way 1.00× the shortest.
-    Walking back-run — 161 blocks, one way, no choice to make.
-    Walking defend — 75 blocks, one way, no choice to make.
-    Walking chase — 36 blocks, one way, no choice to make.
+      round the 420-cell hole at (0, 0): choose at (-48, -36), live over 30 blocks, the other way 1.00× the shortest.
+    Walking back-run — 165 blocks, one way, no choice to make.
+    Walking defend — 79 blocks, one way, no choice to make.
+    Walking chase — 40 blocks, one way, no choice to make.
 
-  wool at (72, -28)
-    The attacker walks 157 blocks to it; the defender 83, a ratio of 0.53.
-    A player already at the crossing is 35 blocks from it — nearer than a respawn, so the defence that matters is whoever was already out.
+  wool at (76, -28)
+    The attacker walks 161 blocks to it; the defender 87, a ratio of 0.54.
+    A player already at the crossing is 39 blocks from it — nearer than a respawn, so the defence that matters is whoever was already out.
       Neither side is obviously first to it.
     One way in, end to end: nothing forks and nothing merges, so the whole approach is one road to hold.
-    The attack covers 11% of the ground the defence crosses to get here. The attack barely touches the defence's ground, so it can arrive without having spent the approach inside the lane reinforcements come down.
-    Walking defend — 83 blocks, 1 way, 1 decision:
+    The attack covers 13% of the ground the defence crosses to get here. The attack barely touches the defence's ground, so it can arrive without having spent the approach inside the lane reinforcements come down.
+    Walking defend — 87 blocks, 1 way, 1 decision:
       round the 420-cell hole at (0, 0): choose at (28, -64), live over 18 blocks, the other way 1.00× the shortest.
-    Walking attack — 157 blocks, one way, no choice to make.
-    Walking back-run — 157 blocks, one way, no choice to make.
-    Walking chase — 35 blocks, one way, no choice to make.
+    Walking attack — 161 blocks, one way, no choice to make.
+    Walking back-run — 161 blocks, one way, no choice to make.
+    Walking chase — 39 blocks, one way, no choice to make.
 
 WHAT NO JOURNEY REACHES
 
-  1248 of 10496 blocks (12%) sit off every route between the places this board has. Reachable, and on the way to nothing.
+  1248 of 10752 blocks (12%) sit off every route between the places this board has. Reachable, and on the way to nothing.
        320 blocks at (-36, 72) — cap-w (320)
        320 blocks at (32, 72) — cap-e (320)
        304 blocks at (-36, -76) — cap-e (304)

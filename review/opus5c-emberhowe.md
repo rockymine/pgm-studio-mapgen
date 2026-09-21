@@ -11,8 +11,8 @@
 |---|---|---|
 | west strait | `x -48..-28, z -12..12` | 24 blocks, `CT12` wants 15–40 |
 | east strait | `x 28..48, z -12..12` | 24 blocks |
-| west wool | `(-40, 28)`, room `x -80..-64` | three faces on void, one wall in front |
-| east wool | `(40, 40)`, room `x 64..80` | eight blocks further round the rim |
+| west wool | `(-76, 28)`, room `x -84..-68` | three faces on void, one wall sixteen blocks in front |
+| east wool | `(76, 40)`, room `x 68..84` | eight blocks further round the rim |
 | spawn | `(-2, 73)` on the crest | door faces **left**, along the crest |
 | the pit | `x -28..28`, the board's whole length | 896 cells, no build zone over any of it |
 
@@ -82,14 +82,31 @@ spawn and shared the courses of six columns with its iron cube; `SK18` is the on
 thing that says so, and only on the export's header. It is two runs now, and the
 hall is the gap between them.
 
+**Both walls were buried under the ground they were meant to bar, and the author read the first build and
+found them.** That one is a studio bug and is fixed: `StampWall` took its height from the surface the
+*plan* drew rather than the one the relief solved, so a mark that lifted the seam left the bedrock
+underground — with its own defence chest standing correctly on the ground above it, because the chest reads
+the solved surface and the wall did not (`rules.md` amendment 43).
+
+**Both also sat where they could be jumped round, and that one is this board's.** The wall stood on the
+limb's own edge, where the limb runs 24 blocks past its ends, so its ground wraps the corner:
+`(-48, 36)` to `(-50, 35)` is a running jump that lands behind it.
+
+**The answer to the second was four blocks.** Each spur gained a `mouth` piece where it opens off the limb
+and the wall moved onto the approach↔mouth seam, so both its ends are now bounded by the pit and going
+round it means leaving the ground. The rooms moved out with it, which also put the wall on the shelf's own
+flat: it stood **six** courses proud on ground falling 11 → 14, and stands three on ground a transect reads
+`worst step 0` end to end. `PL17` and `ST4` are the two complaints that now say both of those out loud.
+
 ## Coordinates
 
 | Thing | Position | Reading |
 |---|---|---|
-| west wool room | `(-72, 28)` | three faces on void, wall at `x -48` |
-| east wool room | `(72, 40)` | the same, eight blocks further round |
+| west wool room | `(-76, 28)` | three faces on void, wall at `x -52`, in the lane |
+| east wool room | `(76, 40)` | the same, eight blocks further round |
 | spawn hall | `(-2, 73)` | 12 × 12, door west onto the crest |
 | spatter cone | `(-34, 72)` | amount 10, falloff 10, crown 6 |
-| whole board | `160 × 168` | 10 070 walked · 498 scrambled · **0 barrier** · 0 faces |
-| coverage | — | **4.1% dead**, largest patch 176 cells |
+| west wall | `(-53, 20)`–`(-51, 35)` | bedrock to y17, cobweb y18, **level end to end**, 3 courses proud |
+| whole board | `168 × 168` | 10 304 walked · 520 scrambled · **0 barrier** · 0 faces |
+| coverage | — | **2.9% dead** |
 | dressing | — | 36 placed, **0 declined** |

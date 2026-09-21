@@ -37,10 +37,12 @@ CELL = 4
 #   cap-w        x -48..-12   z  60..84     the rim's crest, west of the hall
 #   spawn        x -12..8     z  60..84     20 x 24, inside ST10's 20 x 30 cap
 #   cap-e        x   8..48    z  60..84
-#   w-approach   x -64..-48   z  20..36     the ledge the west room is entered over
-#   w-room       x -80..-64   z  20..36     a shelf hung off the outside of the rim
-#   e-approach   x  48..64    z  32..48
-#   e-room       x  64..80    z  32..48
+#   w-mouth      x -52..-48   z  20..36     where the spur opens off the limb
+#   w-approach   x -68..-52   z  20..36     the ledge the west room is entered over
+#   w-room       x -84..-68   z  20..36     a shelf hung off the outside of the rim
+#   e-mouth      x  48..52    z  32..48
+#   e-approach   x  52..68    z  32..48
+#   e-room       x  68..84    z  32..48
 #
 #   strait-w     x -48..-28   z -12..12     a build zone, and one of only two
 #   strait-e     x  28..48    z -12..12
@@ -61,8 +63,8 @@ CELL = 4
 # decision either.
 
 SPAWN_AT = (-2, 73)
-W_WOOL = (-72, 28)
-E_WOOL = (72, 40)
+W_WOOL = (-76, 28)
+E_WOOL = (76, 40)
 
 plan = {
     "plan": 2,
@@ -75,10 +77,12 @@ plan = {
         {"id": "cap-w", "role": "piece", "rect": [-12, 15, 9, 6]},
         {"id": "spawn", "role": "spawn", "rect": [-3, 15, 5, 6]},
         {"id": "cap-e", "role": "piece", "rect": [2, 15, 10, 6]},
-        {"id": "w-approach", "role": "piece", "rect": [-16, 5, 4, 4]},
-        {"id": "w-room", "role": "wool-room", "rect": [-20, 5, 4, 4]},
-        {"id": "e-approach", "role": "piece", "rect": [12, 8, 4, 4]},
-        {"id": "e-room", "role": "wool-room", "rect": [16, 8, 4, 4]},
+        {"id": "w-mouth", "role": "piece", "rect": [-13, 5, 1, 4]},
+        {"id": "w-approach", "role": "piece", "rect": [-17, 5, 4, 4]},
+        {"id": "w-room", "role": "wool-room", "rect": [-21, 5, 4, 4]},
+        {"id": "e-mouth", "role": "piece", "rect": [12, 8, 1, 4]},
+        {"id": "e-approach", "role": "piece", "rect": [13, 8, 4, 4]},
+        {"id": "e-room", "role": "wool-room", "rect": [17, 8, 4, 4]},
     ],
     "zones": [
         {"id": "strait-w", "rect": [-12, -3, 5, 6], "holes": []},
@@ -103,11 +107,18 @@ plan = {
         "destroyables": [],
         "cores": [],
     },
-    # One wall a room, on the approach's OUTER interface — sixteen blocks in
+    # One wall a room, on the approach's outer interface — sixteen blocks in
     # front of the room's face, never the room's own edge, which PL13 refuses.
+    #
+    # And never on the limb's own edge either, which is where the first cut put
+    # it and what PL17 now says: the limb runs 24 blocks past the wall's ends
+    # there, so its ground wraps the corner and a player on it rounds the wall
+    # with one diagonal jump — (-48, 36) to (-50, 35) is a running jump, not a
+    # bridge. The mouth is the four blocks that move the line off that corner.
+    # A wall in a lane has void at both its ends and has to be crossed.
     "walls": [
-        {"a": "w-approach", "b": "arm-w"},
-        {"a": "e-approach", "b": "arm-e"},
+        {"a": "w-approach", "b": "w-mouth"},
+        {"a": "e-approach", "b": "e-mouth"},
     ],
 }
 
@@ -134,10 +145,16 @@ relief = {
              "ring": wander_rect(-50, 62, 50, 86, wobble=2.5, seed=5113)},
             # each shelf sits at the height the arm has reached beside it, so
             # the wall's interface is a step rather than a face
+            # Wide enough that the WALL's own run stands on the flat core and
+            # not in the bevel: a wall's top is one level taken from the highest
+            # ground it crosses, so ground that falls along its run is added to
+            # its face at the low end, and past four courses ST4 says so. On the
+            # first cut the seam fell 11 to 14 over sixteen blocks and the wall
+            # came out six courses proud.
             {"id": "w-shelf", "kind": "area", "h": 15, "bevel": 3,
-             "ring": blob(-66, 28, 16, points=11, wobble=0.18, seed=5114)},
+             "ring": blob(-66, 28, 20, points=11, wobble=0.14, seed=5114)},
             {"id": "e-shelf", "kind": "area", "h": 18, "bevel": 3,
-             "ring": blob(66, 40, 16, points=11, wobble=0.18, seed=5115)},
+             "ring": blob(66, 40, 20, points=11, wobble=0.14, seed=5115)},
         ],
         # the spatter cone: the one landform on the crest, and the thing a
         # player on the far rim sees over the pit. Its ring plus its falloff
@@ -249,10 +266,10 @@ add_shapes = [
      "vertices": wander_rect(-14, 62, 10, 82, wobble=2.0, seed=5144)},
     {"id": "w-room-yard", "type": "polygon", "operation": "add", "floor": 0,
      "base_height": GROUND, "theme": "yard",
-     "vertices": wander_rect(-79, 21, -65, 35, wobble=1.4, seed=5145)},
+     "vertices": wander_rect(-83, 21, -69, 35, wobble=1.4, seed=5145)},
     {"id": "e-room-yard", "type": "polygon", "operation": "add", "floor": 0,
      "base_height": GROUND, "theme": "yard",
-     "vertices": wander_rect(65, 33, 79, 47, wobble=1.4, seed=5146)},
+     "vertices": wander_rect(69, 33, 83, 47, wobble=1.4, seed=5146)},
 ]
 
 # The rim parapet: a revetment along the crest's own lip, where the cap meets
@@ -310,10 +327,10 @@ props = [
     {"id": "way-west", "kind": "stroke", "seed": 5171, "radius": 2,
      "style": "solid", "claimsGround": True, "pave": PAVE,
      "points": [[-10, 70], [-24, 74], [-40, 72], [-44, 56], [-44, 42],
-                [-48, 28]]},
+                [-50, 28]]},
     {"id": "way-east", "kind": "stroke", "seed": 5172, "radius": 2,
      "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[6, 70], [24, 72], [34, 70], [42, 60], [44, 46], [48, 40]]},
+     "points": [[6, 70], [24, 72], [34, 70], [42, 60], [44, 46], [50, 40]]},
     {"id": "horn-way-west", "kind": "stroke", "seed": 5173, "radius": 2,
      "style": "solid", "claimsGround": True, "pave": PAVE,
      "points": [[-44, 42], [-42, 26], [-40, 16]]},
@@ -356,7 +373,7 @@ props += [{"id": f"bomb-{i}", "kind": "boulder", "seed": 5240 + i,
 # two-block grass in front of a wool room is cover nobody authored
 props += [
     {"id": "flora", "kind": "flora", "seed": 5180,
-     "points": wander_rect(-80, 12, 80, 84, wobble=2.5, seed=5181),
+     "points": wander_rect(-84, 12, 84, 84, wobble=2.5, seed=5181),
      "spec": {"coverage": 0.11, "scale": 28, "octaves": 3, "fernShare": 0.16,
               "flowerShare": 0.04, "flowerScale": 20, "tallShare": 0.03}},
 ]

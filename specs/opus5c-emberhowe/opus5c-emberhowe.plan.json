@@ -61,10 +61,20 @@
    ]
   },
   {
+   "id": "w-mouth",
+   "role": "piece",
+   "rect": [
+    -13,
+    5,
+    1,
+    4
+   ]
+  },
+  {
    "id": "w-approach",
    "role": "piece",
    "rect": [
-    -16,
+    -17,
     5,
     4,
     4
@@ -74,9 +84,19 @@
    "id": "w-room",
    "role": "wool-room",
    "rect": [
-    -20,
+    -21,
     5,
     4,
+    4
+   ]
+  },
+  {
+   "id": "e-mouth",
+   "role": "piece",
+   "rect": [
+    12,
+    8,
+    1,
     4
    ]
   },
@@ -84,7 +104,7 @@
    "id": "e-approach",
    "role": "piece",
    "rect": [
-    12,
+    13,
     8,
     4,
     4
@@ -94,7 +114,7 @@
    "id": "e-room",
    "role": "wool-room",
    "rect": [
-    16,
+    17,
     8,
     4,
     4
@@ -187,11 +207,11 @@
  "walls": [
   {
    "a": "w-approach",
-   "b": "arm-w"
+   "b": "w-mouth"
   },
   {
    "a": "e-approach",
-   "b": "arm-e"
+   "b": "e-mouth"
   }
  ]
 }

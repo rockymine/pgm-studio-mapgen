@@ -27,6 +27,17 @@ is stamped along the interval the two named pieces share, and `compiled.txt` rea
 nothing is placed over it, which is the whole of the device — it is a prepared line the defence holds, not
 scenery and not damage.
 
+**Its height is three courses over the ground the RELIEF solved, and this board cannot show that, because it
+has none.** Every panel here is flat, so the plan's own surface and the solved one are the same number and
+`topY` 11 is both answers at once. On a board where a mark or a push lifts the seam they part, and until
+amendment 43 the wall was laid to the plan's — which left it under the terrain it was meant to bar, with its
+own defence chest standing correctly on the ground above it.
+
+**The top is one level over the whole run, taken from the highest ground the wall crosses.** A top that
+followed the ground per column would step with it and read as a curved wall, which is not how a map is built;
+a top taken from the average buries the wall wherever the ground rises past it. Ground that falls away along
+the seam therefore shows up as height at the low end, and past **four courses** the export says `ST4`.
+
 **It may not stand on the wool room's own interface.** `PL13` refuses that outright — *"the wall and the
 room stand through each other and the room can barely be entered"* — and names where it belongs instead:
 about fifteen blocks out, on the approach's outer interface, where the approach meets the board. Every
@@ -112,6 +123,13 @@ is to stop the made thing short: where a bedrock wall stands, the bedrock *is* t
   height, which face carries the chests — is derived, and none of it is yours to write.
 - **never on the room's own interface.** `PL13` refuses it; put it about fifteen blocks out, where the
   approach meets the board.
+- **never at the mouth of the lane it opens off.** `PL17` says so: where the piece on the far side runs past
+  the wall's ends, its ground wraps the corner and a player beside the end rounds the wall with one diagonal
+  jump rather than crossing it. Put a piece between the two and wall **that** seam, so the wall stands in a
+  lane with nothing to step round it onto.
+- **wall a level seam.** The top is flat at the highest ground it crosses, so a seam that falls along its run
+  is added to the face at the low end; past four courses `ST4` says the wall has stopped being a line to hold
+  and become a blank face a team builds over.
 - **one wall, on one interface.** Two in series is a sealed room, and the walk will say `barrier` twice.
 - **check the ground at the wall's ends, not the wall.** A walk through it reads the same whether or not
   there is a way round; a column beside it is what answers.
