@@ -1,0 +1,109 @@
+{
+  "kind": "plan",
+  "pieces": [
+    {
+      "name": "hill",
+      "kind": "rectangle",
+      "at": {
+        "x": -5,
+        "z": -6
+      },
+      "size": {
+        "x": 10,
+        "z": 12
+      },
+      "base_y": 23
+    },
+    {
+      "name": "wool-north-east",
+      "kind": "rectangle",
+      "at": {
+        "x": 8,
+        "z": -8
+      },
+      "size": {
+        "x": 4,
+        "z": 4
+      },
+      "base_y": 28
+    },
+    {
+      "name": "wool-south-west",
+      "kind": "rectangle",
+      "at": {
+        "x": -12,
+        "z": 8
+      },
+      "size": {
+        "x": 4,
+        "z": 4
+      },
+      "base_y": 28
+    },
+    {
+      "name": "passage-north",
+      "kind": "rectangle",
+      "at": {
+        "x": 5,
+        "z": -12
+      },
+      "size": {
+        "x": 8,
+        "z": 3
+      },
+      "base_y": 20
+    },
+    {
+      "name": "passage-south",
+      "kind": "rectangle",
+      "at": {
+        "x": -13,
+        "z": 10
+      },
+      "size": {
+        "x": 8,
+        "z": 3
+      },
+      "base_y": 20
+    },
+    {
+      "name": "passage-center",
+      "kind": "rectangle",
+      "at": {
+        "x": -2,
+        "z": -1
+      },
+      "size": {
+        "x": 4,
+        "z": 2
+      },
+      "base_y": 21
+    },
+    {
+      "name": "spawn-left",
+      "kind": "rectangle",
+      "at": {
+        "x": -17,
+        "z": -8
+      },
+      "size": {
+        "x": 4,
+        "z": 4
+      },
+      "base_y": 19
+    },
+    {
+      "name": "spawn-right",
+      "kind": "rectangle",
+      "at": {
+        "x": 13,
+        "z": 8
+      },
+      "size": {
+        "x": 4,
+        "z": 4
+      },
+      "base_y": 19
+    }
+  ]
+}

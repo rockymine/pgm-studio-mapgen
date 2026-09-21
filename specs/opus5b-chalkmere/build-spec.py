@@ -29,37 +29,39 @@ CELL = 4
 # the shallow back band the spawn hall is seated in, so the hall is not a
 # promontory with void on three sides.
 #
-# blocks:  down      x -28..28   z   8..92
-#          fold-w    x -28..-16  z  92..108
+# blocks:  down      x -24..24   z   8..92
+#          fold-w    x -24..-16  z  92..108
 #          steading  x -16..4    z  92..108   (20 x 16 - inside ST10's cap)
-#          fold-e    x   4..28   z  92..108
-#          strait    x -28..28   z -16..16    a build zone over 16 blocks of void
+#          fold-e    x   4..24   z  92..108
+#          strait    x -24..24   z -16..16    a build zone over 16 blocks of void
 #
-# Two numbers were read rather than chosen. The board is 56 blocks wide: the
-# first cut was 72 and G8 read a dead share of 0.272 against its band of
-# [0, 0.12], because the flanks were ground no journey went to. And the back
-# band is 16 blocks deep rather than 24, because the ground behind a spawn is
-# ground nobody walks (SP2) and it was the next largest dead patch.
+# Three numbers here were read rather than chosen, all of them off the dead
+# share. The first cut was 72 blocks wide and G8 read 0.272 against its band
+# of [0, 0.12], because the flanks were ground no journey went to; the back
+# band was 24 blocks deep and the ground behind a spawn is ground nobody walks
+# (SP2); and at 56 wide the built board still read GET .../coverage 0.1208,
+# with its four largest dead patches in the back corners of the band. So the
+# board is 48 wide and the band stops where the down's corners did.
 
 SPAWN_AT = (-5, 100)           # blocks, world - the hall's own centre
-GOAL_AT = (14, 62)             # blocks, world - off the centre line on purpose
+GOAL_AT = (12, 62)             # blocks, world - off the centre line on purpose
 
-DOWN_MIN = (-28, 8)            # the down piece's minimum corner, in blocks
+DOWN_MIN = (-24, 8)            # the down piece's minimum corner, in blocks
 STEAD_MIN = (-16, 92)
 
 plan = {
     "plan": 2,
     "meta": {"name": "Chalkmere"},
-    "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 20,
+    "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 18,
                 "surface": 9},
     "pieces": [
-        {"id": "down", "role": "piece", "rect": [-7, 2, 14, 21], "surface": 9},
-        {"id": "fold-w", "role": "piece", "rect": [-7, 23, 3, 4], "surface": 19},
+        {"id": "down", "role": "piece", "rect": [-6, 2, 12, 21], "surface": 9},
+        {"id": "fold-w", "role": "piece", "rect": [-6, 23, 2, 4], "surface": 19},
         {"id": "steading", "role": "spawn", "rect": [-4, 23, 5, 4], "surface": 19},
-        {"id": "fold-e", "role": "piece", "rect": [1, 23, 6, 4], "surface": 19},
+        {"id": "fold-e", "role": "piece", "rect": [1, 23, 5, 4], "surface": 19},
     ],
     "zones": [
-        {"id": "strait", "rect": [-7, -4, 14, 8], "holes": []},
+        {"id": "strait", "rect": [-6, -4, 12, 8], "holes": []},
     ],
     "placements": {
         # The hall is 10 x 12 inside a 20 x 16 piece, which leaves a six-block
@@ -97,15 +99,15 @@ relief = {
         "grain": {"amplitude": 1.5, "scale": 20, "seed": 4103},
         "marks": [
             {"id": "strand", "kind": "area", "h": 9, "bevel": 2,
-             "ring": lobed_rect(-30, 4, 30, 24, wobble=2.5, seed=4111)},
+             "ring": lobed_rect(-26, 4, 26, 24, wobble=2.5, seed=4111)},
             {"id": "shoulder", "kind": "area", "h": 17, "bevel": 4,
              "ring": lobe(GOAL_AT[0], GOAL_AT[1], 13, points=11, wobble=0.2,
                           seed=4112)},
             {"id": "steading-apron", "kind": "area", "h": 19, "bevel": 4,
-             "ring": lobed_rect(-30, 88, 30, 114, wobble=2.5, seed=4113)},
+             "ring": lobed_rect(-26, 88, 26, 112, wobble=2.5, seed=4113)},
         ],
         "pushes": [
-            {"id": "nab", "ring": lobe(18, 26, 8, points=9, wobble=0.22, seed=4121),
+            {"id": "nab", "ring": lobe(15, 28, 8, points=9, wobble=0.22, seed=4121),
              "amount": 11, "falloff": 11, "crown": 4, "roughness": 1.2,
              "seed": 4122},
             {"id": "combe", "ring": lobe(-17, 38, 9, points=11, wobble=0.24,
@@ -135,8 +137,11 @@ GRAVEL = solid(13, 0)
 
 CHALK_FACE = cells(4131, 7, 5, [CHALK, CHALK_SMOOTH])
 
-# slope band edges — recut from incline after the first drive
-SLOPE_TURF, SLOPE_WORN = 14, 30
+# The slope band edges are this board's own: GET .../incline reads 45.4% of
+# its ground under 10 degrees, 24.9% between 10 and 19, and 11.7% at 40 or
+# steeper, so cuts at 20 and 38 fall between three real populations and
+# neither of them runs through the middle of one.
+SLOPE_TURF, SLOPE_WORN = 20, 38
 
 down_theme = {
     "bedrock": {"relative": False, "value": 1},
@@ -195,7 +200,7 @@ add_shapes = [
      "vertices": lobe(-17, 38, 11, points=13, wobble=0.22, seed=4141)},
     {"id": "steading-yard", "type": "polygon", "operation": "add",
      "floor": 0, "base_height": DOWN_BASE, "theme": "yard",
-     "vertices": lobed_rect(-24, 90, 12, 107, wobble=2.0, seed=4142)},
+     "vertices": lobed_rect(-20, 90, 10, 106, wobble=2.0, seed=4142)},
 ]
 
 yard_wall = {
@@ -204,12 +209,17 @@ yard_wall = {
     "groups": [{"id": "yard-wall", "name": "the steading wall",
                 "mirrors": True, "shapeIds": ["yard-wall-run"]}],
     "shapes": [
-        {"id": "yard-wall-run", "type": "path", "operation": "add",
+        # a polyline rather than a chain of rectangles: the rasterizer splines
+        # the points before offsetting the band, so six points draw a wall that
+        # flows round the yard. The studio's kinds are rectangle, circle,
+        # polygon, lasso and polyline — "path" is what the schema calls it and
+        # SK3 is what the store answers to that word.
+        {"id": "yard-wall-run", "type": "polyline", "operation": "add",
          "floor": 19, "base_height": 2, "radius": 1.0,
          "stroke_edge": "solid", "keepClear": True,
          "material": cells(4151, 4, 2, [solid(4, 0), FLINT]),
-         "vertices": [[-22, 93], [-23, 100], [-18, 106], [-6, 107],
-                      [6, 105], [12, 99]]},
+         "vertices": [[-19, 92], [-20, 99], [-16, 105], [-4, 106],
+                      [7, 104], [11, 98]]},
     ],
 }
 
@@ -236,15 +246,15 @@ props = [
     # the monument forward to the strand a crossing lands on.
     {"id": "steading-track", "kind": "stroke", "seed": 4171, "radius": 2,
      "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[-5, 94], [-2, 86], [4, 78], [10, 70], [13, 66]]},
+     "points": [[-5, 94], [-3, 86], [2, 78], [8, 70], [11, 66]]},
     {"id": "forward-track", "kind": "stroke", "seed": 4172, "radius": 2,
      "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[14, 54], [13, 42], [9, 30], [5, 18], [3, 10]]},
+     "points": [[12, 54], [11, 42], [8, 30], [4, 18], [2, 10]]},
 ]
 
 props += [
     {"id": "flora", "kind": "flora", "seed": 4180,
-     "points": lobed_rect(-28, 8, 28, 108, wobble=2.0, seed=4181),
+     "points": lobed_rect(-24, 8, 24, 106, wobble=2.0, seed=4181),
      "spec": {"coverage": 0.22, "scale": 26, "octaves": 3, "fernShare": 0.12,
               "flowerShare": 0.10, "flowerScale": 18, "tallShare": 0.06}},
 ]

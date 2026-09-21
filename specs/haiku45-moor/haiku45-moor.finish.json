@@ -1,0 +1,84 @@
+{
+  "kind": "finish",
+  "themes": {
+    "ground": {
+      "buckets": {
+        "surface": {
+          "kind": "layered",
+          "axis": "slope",
+          "stack": {
+            "ending": "repeat",
+            "bands": [
+              {
+                "thickness": 30,
+                "material": {
+                  "kind": "solid",
+                  "id": "grass_block",
+                  "data": 0
+                }
+              },
+              {
+                "thickness": 15,
+                "material": {
+                  "kind": "solid",
+                  "id": "dirt",
+                  "data": 0
+                }
+              },
+              {
+                "thickness": 45,
+                "material": {
+                  "kind": "solid",
+                  "id": "stone",
+                  "data": 0
+                }
+              }
+            ]
+          }
+        },
+        "fill": {
+          "kind": "solid",
+          "id": "dirt",
+          "data": 0
+        },
+        "bedrock": {
+          "kind": "solid",
+          "id": "bedrock",
+          "data": 0
+        }
+      }
+    }
+  },
+  "placements": {
+    "wools": [
+      {
+        "kind": "wool",
+        "color": "red",
+        "location": {
+          "piece": "wool-north-east",
+          "at": [
+            2,
+            1
+          ]
+        }
+      },
+      {
+        "kind": "wool",
+        "color": "blue",
+        "location": {
+          "piece": "wool-south-west",
+          "at": [
+            2,
+            1
+          ]
+        }
+      }
+    ]
+  },
+  "relief": {
+    "grain": {
+      "amplitude": 0.5,
+      "frequency": 0.05
+    }
+  }
+}

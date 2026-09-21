@@ -1,0 +1,86 @@
+{
+  "kind": "finish",
+  "themes": {
+    "ground": {
+      "buckets": {
+        "surface": {
+          "kind": "layered",
+          "axis": "slope",
+          "stack": {
+            "ending": "repeat",
+            "bands": [
+              {
+                "thickness": 30,
+                "material": {
+                  "kind": "solid",
+                  "id": "grass_block",
+                  "data": 0
+                }
+              },
+              {
+                "thickness": 15,
+                "material": {
+                  "kind": "solid",
+                  "id": "dirt",
+                  "data": 0
+                }
+              },
+              {
+                "thickness": 45,
+                "material": {
+                  "kind": "solid",
+                  "id": "stone",
+                  "data": 0
+                }
+              }
+            ]
+          }
+        },
+        "fill": {
+          "kind": "solid",
+          "id": "dirt",
+          "data": 0
+        },
+        "bedrock": {
+          "kind": "solid",
+          "id": "bedrock",
+          "data": 0
+        }
+      }
+    }
+  },
+  "placements": {
+    "objectives": [
+      {
+        "kind": "monument",
+        "name": "The Bastion",
+        "location": {
+          "piece": "monument-peak",
+          "at": [
+            1,
+            1
+          ]
+        },
+        "float": 3,
+        "leak": 2
+      },
+      {
+        "kind": "wool",
+        "color": "green",
+        "location": {
+          "piece": "wool-ledge",
+          "at": [
+            1,
+            1
+          ]
+        }
+      }
+    ]
+  },
+  "relief": {
+    "grain": {
+      "amplitude": 0.5,
+      "frequency": 0.05
+    }
+  }
+}

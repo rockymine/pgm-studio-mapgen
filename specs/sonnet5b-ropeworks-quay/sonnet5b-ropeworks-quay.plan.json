@@ -1,0 +1,107 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Ropeworks Quay"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 8,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -48,
+    -3,
+    5,
+    7
+   ]
+  },
+  {
+   "id": "yard",
+   "role": "piece",
+   "rect": [
+    -43,
+    -8,
+    39,
+    16
+   ]
+  },
+  {
+   "id": "approach",
+   "role": "piece",
+   "rect": [
+    -15,
+    8,
+    5,
+    4
+   ]
+  },
+  {
+   "id": "wool-room",
+   "role": "wool-room",
+   "rect": [
+    -15,
+    12,
+    5,
+    6
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -4,
+    -8,
+    8,
+    16
+   ],
+   "kind": "build"
+  }
+ ],
+ "walls": [
+  {
+   "a": "approach",
+   "b": "yard"
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "red-spawn",
+    "piece": "spawn",
+    "at": [
+     10,
+     14
+    ],
+    "facing": "right",
+    "footprint": [
+     2,
+     4,
+     16,
+     20
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "red-wool",
+    "piece": "wool-room",
+    "at": [
+     10,
+     12
+    ],
+    "footprint": [
+     2,
+     2,
+     16,
+     20
+    ]
+   }
+  ]
+ }
+}

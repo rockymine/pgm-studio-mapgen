@@ -4,10 +4,10 @@ TRANSECT 37 stations from (-24, 100) to (12, 100), every 1
   (  -24,   100)      19       19           19                      
   (  -23,   100)      19       19           19                      
   (  -22,   100)      19       19           19                      
-  (  -21,   100)      19       19           19                      
-  (  -20,   100)      19       19           19                      
-  (  -19,   100)      19       19           19                      
-  (  -18,   100)      19       19           19                      
+  (  -21,   100)      19       21           21  storey              scramble +2
+  (  -20,   100)      19       21           21  storey              
+  (  -19,   100)      19       21           21  storey              
+  (  -18,   100)      19       19           19                      -2
   (  -17,   100)      19       19           19                      
   (  -16,   100)      19       19           19                      
   (  -15,   100)      19       19           22  ironcube spawn-steading:0  
@@ -34,11 +34,11 @@ TRANSECT 37 stations from (-24, 100) to (12, 100), every 1
   (    6,   100)      19       19           19                      
   (    7,   100)      19       19           19                      
   (    8,   100)      19       19           19                      
-  (    9,   100)      19       19           19                      
-  (   10,   100)      19       19           19                      
-  (   11,   100)      19       19           19                      
+  (    9,   100)      19       21           21  storey              scramble +2
+  (   10,   100)      19       21           21  storey              
+  (   11,   100)      19       19           19                      -2
   (   12,   100)      19       19           19                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 2, falls 2, worst step 2: 0 barrier, 2 scramble, 0 drop — scramble +2 at (-21, 100); scramble +2 at (9, 100) | walked end to end
 beside: ironcube spawn-steading:0 at (-15, 99), spawn spawn-steading at (-10, 98)
 
 ## spawn-red (spawn) along z
@@ -47,8 +47,8 @@ TRANSECT 24 stations from (-6, 84) to (-6, 107), every 1
   (   -6,    84)      19       19           19                      
   (   -6,    85)      19       19           19                      
   (   -6,    86)      19       19           19                      
-  (   -6,    87)      19       19           19                      
-  (   -6,    88)      19       19           19                      
+  (   -6,    87)      19       19           19  stroke steading-track  
+  (   -6,    88)      19       19           19  stroke steading-track  
   (   -6,    89)      19       19           19  stroke steading-track  
   (   -6,    90)      19       19           19  stroke steading-track  
   (   -6,    91)      19       19           19  stroke steading-track  
@@ -65,8 +65,8 @@ TRANSECT 24 stations from (-6, 84) to (-6, 107), every 1
   (   -6,   102)      19       19           30  spawn spawn-steading  
   (   -6,   103)      19       19           29  spawn spawn-steading  
   (   -6,   104)      19       19           28  spawn spawn-steading  
-  (   -6,   105)      19       19           27  spawn spawn-steading  
-  (   -6,   106)      19       19           26                      
-  (   -6,   107)      19       19           19                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke steading-track at (-4, 85), spawn spawn-steading at (-8, 94)
+  (   -6,   105)      19       21           27  spawn spawn-steading  scramble +2
+  (   -6,   106)      19       21           26  storey              
+  (   -6,   107)      19       19           19                      -2
+rises 1, falls 1, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-6, 105) | walked end to end
+beside: stroke steading-track at (-4, 83), spawn spawn-steading at (-8, 94)

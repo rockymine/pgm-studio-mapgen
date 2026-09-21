@@ -2,9 +2,9 @@
 TRANSECT 37 stations from (-12, -100) to (24, -100), every 1
   station        ground  surface  water  top  standing            step
   (  -12,  -100)      19       19           19                      
-  (  -11,  -100)      19       19           19                      
-  (  -10,  -100)      19       19           19                      
-  (   -9,  -100)      19       19           19                      
+  (  -11,  -100)      19       21           21  storey              scramble +2
+  (  -10,  -100)      19       21           21  storey              
+  (   -9,  -100)      19       19           19                      -2
   (   -8,  -100)      19       19           19                      
   (   -7,  -100)      19       19           19                      
   (   -6,  -100)      19       19           19                      
@@ -32,22 +32,22 @@ TRANSECT 37 stations from (-12, -100) to (24, -100), every 1
   (   16,  -100)      19       19           19                      
   (   17,  -100)      19       19           19                      
   (   18,  -100)      19       19           19                      
-  (   19,  -100)      19       19           19                      
-  (   20,  -100)      19       19           19                      
-  (   21,  -100)      19       19           19                      
+  (   19,  -100)      19       21           21  storey              scramble +2
+  (   20,  -100)      19       21           21  storey              
+  (   21,  -100)      19       19           19                      -2
   (   22,  -100)      19       19           19                      
   (   23,  -100)      19       19           19                      
-  (   24,  -100)      19       19           19                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+  (   24,  -100)                                                    void
+rises 2, falls 2, worst step 2: 0 barrier, 2 scramble, 0 drop — scramble +2 at (-11, -100); scramble +2 at (19, -100) | walked end to end
 beside: spawn spawn-steading#1 at (0, -102), ironcube spawn-steading:0#1 at (12, -102)
 
 ## spawn-blue (spawn) along z
 TRANSECT 25 stations from (6, -108) to (6, -84), every 1
   station        ground  surface  water  top  standing            step
   (    6,  -108)      19       19           19                      
-  (    6,  -107)      19       19           26                      
-  (    6,  -106)      19       19           27  spawn spawn-steading#1  
-  (    6,  -105)      19       19           28  spawn spawn-steading#1  
+  (    6,  -107)      19       21           26  storey              scramble +2
+  (    6,  -106)      19       21           27  spawn spawn-steading#1  
+  (    6,  -105)      19       19           28  spawn spawn-steading#1  -2
   (    6,  -104)      19       19           29  spawn spawn-steading#1  
   (    6,  -103)      19       19           30  spawn spawn-steading#1  
   (    6,  -102)      19       19           30  spawn spawn-steading#1  
@@ -60,7 +60,7 @@ TRANSECT 25 stations from (6, -108) to (6, -84), every 1
   (    6,   -95)      19       19           27  stroke steading-track#1  
   (    6,   -94)      19       19           26  stroke steading-track#1  
   (    6,   -93)      19       19           19  stroke steading-track#1  
-  (    6,   -92)      19       19           19                      
+  (    6,   -92)      19       19           19  stroke steading-track#1  
   (    6,   -91)      19       19           19                      
   (    6,   -90)      19       19           19                      
   (    6,   -89)      19       19           19                      
@@ -69,5 +69,5 @@ TRANSECT 25 stations from (6, -108) to (6, -84), every 1
   (    6,   -86)      19       19           19                      
   (    6,   -85)      19       19           19                      
   (    6,   -84)      18       18           18                      -1
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 1, falls 2, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (6, -107) | walked end to end
 beside: spawn spawn-steading#1 at (4, -106), stroke steading-track#1 at (4, -96)

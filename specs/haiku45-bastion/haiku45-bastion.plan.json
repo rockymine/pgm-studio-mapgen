@@ -1,0 +1,109 @@
+{
+  "kind": "plan",
+  "pieces": [
+    {
+      "name": "tower",
+      "kind": "rectangle",
+      "at": {
+        "x": -3,
+        "z": -3
+      },
+      "size": {
+        "x": 6,
+        "z": 6
+      },
+      "base_y": 25
+    },
+    {
+      "name": "monument-peak",
+      "kind": "rectangle",
+      "at": {
+        "x": -1,
+        "z": -1
+      },
+      "size": {
+        "x": 2,
+        "z": 2
+      },
+      "base_y": 30
+    },
+    {
+      "name": "wool-ledge",
+      "kind": "rectangle",
+      "at": {
+        "x": 5,
+        "z": -1
+      },
+      "size": {
+        "x": 3,
+        "z": 3
+      },
+      "base_y": 27
+    },
+    {
+      "name": "rampart-left",
+      "kind": "rectangle",
+      "at": {
+        "x": -10,
+        "z": -3
+      },
+      "size": {
+        "x": 4,
+        "z": 6
+      },
+      "base_y": 22
+    },
+    {
+      "name": "rampart-right",
+      "kind": "rectangle",
+      "at": {
+        "x": 7,
+        "z": -3
+      },
+      "size": {
+        "x": 4,
+        "z": 6
+      },
+      "base_y": 22
+    },
+    {
+      "name": "approach-north",
+      "kind": "rectangle",
+      "at": {
+        "x": -3,
+        "z": -9
+      },
+      "size": {
+        "x": 6,
+        "z": 4
+      },
+      "base_y": 20
+    },
+    {
+      "name": "approach-south",
+      "kind": "rectangle",
+      "at": {
+        "x": -3,
+        "z": 6
+      },
+      "size": {
+        "x": 6,
+        "z": 4
+      },
+      "base_y": 20
+    },
+    {
+      "name": "spawn-center",
+      "kind": "rectangle",
+      "at": {
+        "x": -2,
+        "z": 12
+      },
+      "size": {
+        "x": 4,
+        "z": 3
+      },
+      "base_y": 19
+    }
+  ]
+}

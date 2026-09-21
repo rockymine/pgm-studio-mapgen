@@ -11,7 +11,7 @@
    "color": "blue"
   }
  ],
- "maxPlayers": 20,
+ "maxPlayers": 18,
  "spawns": [
   {
    "layer": null,
@@ -106,9 +106,9 @@
   "maxHeight": null,
   "areas": [
    {
-    "minX": -28,
+    "minX": -24,
     "minZ": -16,
-    "maxX": 28,
+    "maxX": 24,
     "maxZ": 16
    }
   ],
@@ -131,7 +131,7 @@
    "materials": "obsidian",
    "repairable": false,
    "anchor": {
-    "x": 14,
+    "x": 12,
     "y": 9,
     "z": 62
    },
@@ -151,7 +151,7 @@
    "materials": "obsidian",
    "repairable": false,
    "anchor": {
-    "x": -15,
+    "x": -13,
     "y": 9,
     "z": -63
    },

@@ -10,8 +10,8 @@
         <author>Opus 5</author>
     </authors>
     <teams>
-        <team id="red-team" color="red" max="20">Red</team>
-        <team id="blue-team" color="blue" max="20">Blue</team>
+        <team id="red-team" color="red" max="18">Red</team>
+        <team id="blue-team" color="blue" max="18">Blue</team>
     </teams>
     <kits>
         <kit id="spawn-kit">
@@ -101,8 +101,8 @@
         <point id="observer-spawn">0,25,0</point>
         <rectangle id="blue-spawn" min="-4,-108" max="16,-92"/>
         <rectangle id="red-spawn" min="-16,92" max="4,108"/>
-        <cuboid id="chalkmere-monument-region" min="14,21,62" max="15,24,63"/>
-        <cuboid id="chalkmere-monument-2-region" min="-15,21,-63" max="-14,24,-62"/>
+        <cuboid id="chalkmere-monument-region" min="12,21,62" max="13,24,63"/>
+        <cuboid id="chalkmere-monument-2-region" min="-13,21,-63" max="-12,24,-62"/>
         <union id="spawns">
             <region id="red-spawn"/>
             <region id="blue-spawn"/>
@@ -115,7 +115,7 @@
             <region id="spawns"/>
         </negative>
         <negative id="not-build-area">
-            <rectangle id="build-area-1" min="-28,-16" max="28,16"/>
+            <rectangle id="build-area-1" min="-24,-16" max="24,16"/>
         </negative>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
