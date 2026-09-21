@@ -1,0 +1,58 @@
+## monument-1 (destroyable) along x
+TRANSECT 22 stations from (-40, -53) to (-19, -53), every 1
+  station        ground  surface  water  top  standing            step
+  (  -40,   -53)                                                    void
+  (  -39,   -53)                                                    void
+  (  -38,   -53)                                                    void
+  (  -37,   -53)                                                    void
+  (  -36,   -53)      11       11           11                      
+  (  -35,   -53)      11       11           11                      
+  (  -34,   -53)      11       11           11                      
+  (  -33,   -53)      11       11           11  destroyable monument#1  
+  (  -32,   -53)      11       11           53  destroyable monument#1  
+  (  -31,   -53)      11       11           54  destroyable monument#1  
+  (  -30,   -53)      11       11           53  destroyable monument#1  
+  (  -29,   -53)      11       11           11  destroyable monument#1  
+  (  -28,   -53)      11       11           11                      
+  (  -27,   -53)      11       11           11                      
+  (  -26,   -53)      11       11           11                      
+  (  -25,   -53)      11       11           11                      
+  (  -24,   -53)      11       12           12  storey              +1
+  (  -23,   -53)      11       12           12  storey              
+  (  -22,   -53)      11       12           12  storey              
+  (  -21,   -53)      11       12           12  storey              
+  (  -20,   -53)      11       12           12  storey              
+  (  -19,   -53)      11       12           12  storey              
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: destroyable monument#1 at (-33, -55)
+
+## monument-1 (destroyable) along z
+TRANSECT 25 stations from (-31, -65) to (-31, -41), every 1
+  station        ground  surface  water  top  standing            step
+  (  -31,   -65)      11       11           11                      
+  (  -31,   -64)      11       11           11                      
+  (  -31,   -63)      11       11           11                      
+  (  -31,   -62)      11       11           11                      
+  (  -31,   -61)      11       11           11                      
+  (  -31,   -60)      11       11           11                      
+  (  -31,   -59)      11       11           11                      
+  (  -31,   -58)      11       11           11                      
+  (  -31,   -57)      11       11           11                      
+  (  -31,   -56)      11       11           11                      
+  (  -31,   -55)      11       11           11  destroyable monument#1  
+  (  -31,   -54)      11       11           53  destroyable monument#1  
+  (  -31,   -53)      11       11           54  destroyable monument#1  
+  (  -31,   -52)      11       11           53  destroyable monument#1  
+  (  -31,   -51)      11       11           11  destroyable monument#1  
+  (  -31,   -50)      11       11           11                      
+  (  -31,   -49)      11       11           11                      
+  (  -31,   -48)      11       11           11                      
+  (  -31,   -47)      11       11           11                      
+  (  -31,   -46)      11       11           11                      
+  (  -31,   -45)      11       11           11                      
+  (  -31,   -44)      10       10           10                      -1
+  (  -31,   -43)      10       10           10                      
+  (  -31,   -42)      10       10           10                      
+  (  -31,   -41)      10       10           10                      
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke quay-road#1 at (-30, -67), destroyable monument#1 at (-33, -55)

@@ -1,0 +1,58 @@
+## sawmill (house) along x
+TRANSECT 25 stations from (4, 66) to (28, 66), every 1
+  station        ground  surface  water  top  standing            step
+  (    4,    66)      11       11           21  tree willow-1       
+  (    5,    66)      11       11           20  tree willow-1       
+  (    6,    66)      11       11           24  tree willow-2       
+  (    7,    66)      11       11           25  tree willow-2       
+  (    8,    66)      11       11           24  tree willow-2       
+  (    9,    66)      11       11           14  tree willow-2       
+  (   10,    66)      11       11           11                      
+  (   11,    66)      11       11           19  house sawmill       
+  (   12,    66)      11       11           21  tree willow-2       
+  (   13,    66)      11       11           21  tree willow-2       
+  (   14,    66)      11       11           23  tree willow-2       
+  (   15,    66)      11       11           22  tree willow-2       
+  (   16,    66)      11       11           19  house sawmill       
+  (   17,    66)      11       11           19  house sawmill       
+  (   18,    66)      11       11           19  house sawmill       
+  (   19,    66)      11       11           19  house sawmill       
+  (   20,    66)      11       11           19  house sawmill       
+  (   21,    66)      11       11           19  house sawmill       
+  (   22,    66)      11       11           11                      
+  (   23,    66)      11       11           11                      
+  (   24,    66)      11       11           11                      
+  (   25,    66)      11       11           11                      
+  (   26,    66)      11       11           11  stroke quay-road    
+  (   27,    66)      11       11           11  stroke quay-road    
+  (   28,    66)      11       11           11  stroke quay-road    
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree willow-1 at (2, 64), tree willow-2 at (6, 65), house sawmill at (11, 64), stroke quay-road at (25, 64)
+
+## sawmill (house) along z
+TRANSECT 22 stations from (16, 56) to (16, 77), every 1
+  station        ground  surface  water  top  standing            step
+  (   16,    56)      11       12           12  storey              
+  (   16,    57)      11       12           12  storey              
+  (   16,    58)      11       12           12  storey              
+  (   16,    59)      11       12           12  storey              
+  (   16,    60)      11       12           12  storey              
+  (   16,    61)      11       12           12  storey              
+  (   16,    62)      11       11           11                      -1
+  (   16,    63)      11       11           20  tree willow-2       
+  (   16,    64)      11       11           21  tree willow-2       
+  (   16,    65)      11       11           22  tree willow-2       
+  (   16,    66)      11       11           19  house sawmill       
+  (   16,    67)      11       11           19  tree willow-2       
+  (   16,    68)      11       11           18  house sawmill       
+  (   16,    69)      12       12           21  tree willow-2       +1
+  (   16,    70)      12       12           22  tree willow-2       
+  (   16,    71)      12       12           23  tree willow-2       
+  (   16,    72)      13       13           22  tree willow-2       +1
+  (   16,    73)      13       13           21  tree willow-2       
+  (   16,    74)      13       13           19  tree willow-2       
+  (   16,    75)      14       14           14                      +1
+  (   16,    76)      14       14           14                      
+  (   16,    77)      14       14           14                      
+rises 3, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree willow-2 at (14, 62), house sawmill at (15, 63)

@@ -1,0 +1,20 @@
+HOW THIS BOARD IS COME AT
+
+  wool at (28, -100)
+    The attacker walks 205 blocks to it; the defender 85, a ratio of 0.41.
+      Neither side is obviously first to it.
+    3 ways in. The last choice is made at (16, 80) and closes at (24, -96), 6 blocks short of the objective.
+      The defender's own walk runs through that merge, so both sides come up the same road. A defence has to be pushed forward to hold it, and the further forward the merge sits the more of the board it gives up to do so.
+    The attack covers 23% of the ground the defence crosses to get here. The two sides share some of the approach and not all of it.
+    Walking attack — 205 blocks, 3 ways, 2 decisions:
+      round the 102-cell hole at (0, -40): choose at (16, 80), live over 179 blocks, the other way 1.30× the shortest.
+      round the 102-cell hole at (-4, 36): choose at (16, 80), live over 179 blocks, the other way 1.26× the shortest.
+    Walking back-run — 205 blocks, 3 ways, 2 decisions:
+      round the 102-cell hole at (0, -40): choose at (28, -80), live over 185 blocks, the other way 1.30× the shortest.
+      round the 102-cell hole at (-4, 36): choose at (28, -24), live over 129 blocks, the other way 1.26× the shortest.
+    Walking defend — 85 blocks, one way, no choice to make.
+
+WHAT NO JOURNEY REACHES
+
+  256 of 8384 blocks (3%) sit off every route between the places this board has. Reachable, and on the way to nothing.
+    None of it is a place: all 4 stretches are under 100 blocks, which is a sliver between corridors rather than ground anyone would notice.

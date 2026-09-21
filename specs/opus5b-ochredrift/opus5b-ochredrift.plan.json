@@ -1,0 +1,239 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Ochre Drift"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 22,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "front-w",
+   "role": "piece",
+   "rect": [
+    -12,
+    4,
+    9,
+    5
+   ],
+   "surface": 9
+  },
+  {
+   "id": "front-e",
+   "role": "piece",
+   "rect": [
+    3,
+    4,
+    9,
+    5
+   ],
+   "surface": 9
+  },
+  {
+   "id": "hub-w",
+   "role": "piece",
+   "rect": [
+    -12,
+    9,
+    4,
+    7
+   ],
+   "surface": 15
+  },
+  {
+   "id": "hub-e",
+   "role": "piece",
+   "rect": [
+    8,
+    9,
+    4,
+    7
+   ],
+   "surface": 15
+  },
+  {
+   "id": "hub-link-w",
+   "role": "piece",
+   "rect": [
+    -8,
+    13,
+    4,
+    3
+   ],
+   "surface": 15
+  },
+  {
+   "id": "hub-n",
+   "role": "piece",
+   "rect": [
+    -4,
+    12,
+    8,
+    4
+   ],
+   "surface": 15
+  },
+  {
+   "id": "hub-link-e",
+   "role": "piece",
+   "rect": [
+    4,
+    13,
+    4,
+    3
+   ],
+   "surface": 15
+  },
+  {
+   "id": "w-approach",
+   "role": "piece",
+   "rect": [
+    -12,
+    16,
+    4,
+    4
+   ],
+   "surface": 15
+  },
+  {
+   "id": "w-room",
+   "role": "wool-room",
+   "rect": [
+    -12,
+    20,
+    4,
+    3
+   ],
+   "surface": 15
+  },
+  {
+   "id": "e-approach",
+   "role": "piece",
+   "rect": [
+    8,
+    16,
+    4,
+    4
+   ],
+   "surface": 15
+  },
+  {
+   "id": "e-room",
+   "role": "wool-room",
+   "rect": [
+    8,
+    20,
+    4,
+    3
+   ],
+   "surface": 15
+  },
+  {
+   "id": "yard",
+   "role": "piece",
+   "rect": [
+    -4,
+    16,
+    8,
+    5
+   ],
+   "surface": 21
+  },
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -4,
+    21,
+    5,
+    5
+   ],
+   "surface": 21
+  },
+  {
+   "id": "yard-ne",
+   "role": "piece",
+   "rect": [
+    1,
+    21,
+    2,
+    5
+   ],
+   "surface": 21
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -12,
+    -4,
+    24,
+    8
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-camp",
+    "piece": "spawn",
+    "at": [
+     11,
+     10
+    ],
+    "facing": "front",
+    "footprint": [
+     6,
+     2,
+     10,
+     16
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-west",
+    "piece": "w-room",
+    "at": [
+     8,
+     6
+    ]
+   },
+   {
+    "id": "wool-east",
+    "piece": "e-room",
+    "at": [
+     8,
+     6
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-camp",
+    "piece": "spawn",
+    "at": [
+     2.5,
+     10.0
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [
+  {
+   "a": "hub-w",
+   "b": "w-approach"
+  },
+  {
+   "a": "hub-e",
+   "b": "e-approach"
+  }
+ ]
+}

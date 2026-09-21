@@ -1,0 +1,76 @@
+## spawn-red (spawn) along x
+TRANSECT 37 stations from (-24, 94) to (12, 94), every 1
+  station        ground  surface  water  top  standing            step
+  (  -24,    94)                                                    void
+  (  -23,    94)                                                    void
+  (  -22,    94)                                                    void
+  (  -21,    94)                                                    void
+  (  -20,    94)                                                    void
+  (  -19,    94)                                                    void
+  (  -18,    94)                                                    void
+  (  -17,    94)                                                    void
+  (  -16,    94)      21       21           21                      
+  (  -15,    94)      21       21           24  ironcube spawn-camp:0  
+  (  -14,    94)      21       21           24  ironcube spawn-camp:0  
+  (  -13,    94)      21       21           24  ironcube spawn-camp:0  
+  (  -12,    94)      21       21           21                      
+  (  -11,    94)      21       21           28                      
+  (  -10,    94)      21       21           29  spawn spawn-camp    
+  (   -9,    94)      21       21           30  spawn spawn-camp    
+  (   -8,    94)      21       21           31  spawn spawn-camp    
+  (   -7,    94)      21       21           32  spawn spawn-camp    
+  (   -6,    94)      21       21           33  spawn spawn-camp    
+  (   -5,    94)      21       21           33  spawn spawn-camp    
+  (   -4,    94)      21       21           32  spawn spawn-camp    
+  (   -3,    94)      21       21           31  spawn spawn-camp    
+  (   -2,    94)      21       21           30  spawn spawn-camp    
+  (   -1,    94)      21       21           29  spawn spawn-camp    
+  (    0,    94)      21       21           28                      
+  (    1,    94)      21       21           21                      
+  (    2,    94)      21       21           21                      
+  (    3,    94)      21       21           21                      
+  (    4,    94)      21       21           21                      
+  (    5,    94)      21       21           21                      
+  (    6,    94)      21       21           21                      
+  (    7,    94)      21       21           21                      
+  (    8,    94)      21       21           21                      
+  (    9,    94)      21       21           21                      
+  (   10,    94)      21       21           21                      
+  (   11,    94)      21       21           21                      
+  (   12,    94)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: ironcube spawn-camp:0 at (-15, 93), spawn spawn-camp at (-10, 92)
+
+## spawn-red (spawn) along z
+TRANSECT 28 stations from (-6, 76) to (-6, 103), every 1
+  station        ground  surface  water  top  standing            step
+  (   -6,    76)      21       21           21                      
+  (   -6,    77)      21       21           21                      
+  (   -6,    78)      21       21           21  stroke west-haul    
+  (   -6,    79)      21       21           21  stroke west-haul    
+  (   -6,    80)      21       21           21  stroke west-haul    
+  (   -6,    81)      21       21           21  stroke west-haul    
+  (   -6,    82)      21       21           21  stroke west-haul    
+  (   -6,    83)      21       21           21                      
+  (   -6,    84)      21       21           21                      
+  (   -6,    85)      21       21           28                      
+  (   -6,    86)      21       21           29  spawn spawn-camp    
+  (   -6,    87)      21       21           30  spawn spawn-camp    
+  (   -6,    88)      21       21           31  spawn spawn-camp    
+  (   -6,    89)      21       21           32  spawn spawn-camp    
+  (   -6,    90)      21       21           33  spawn spawn-camp    
+  (   -6,    91)      21       21           33  spawn spawn-camp    
+  (   -6,    92)      21       21           33  spawn spawn-camp    
+  (   -6,    93)      21       21           33  spawn spawn-camp    
+  (   -6,    94)      21       21           33  spawn spawn-camp    
+  (   -6,    95)      21       21           33  spawn spawn-camp    
+  (   -6,    96)      21       21           33  spawn spawn-camp    
+  (   -6,    97)      21       21           33  spawn spawn-camp    
+  (   -6,    98)      21       21           32  spawn spawn-camp    
+  (   -6,    99)      21       21           31  spawn spawn-camp    
+  (   -6,   100)      21       21           30  spawn spawn-camp    
+  (   -6,   101)      21       21           29  spawn spawn-camp    
+  (   -6,   102)      21       21           28                      
+  (   -6,   103)      21       21           21                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke west-haul at (-8, 76), spawn spawn-camp at (-8, 86)

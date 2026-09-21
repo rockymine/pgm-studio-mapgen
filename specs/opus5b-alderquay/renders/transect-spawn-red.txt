@@ -1,0 +1,76 @@
+## spawn-red (spawn) along x
+TRANSECT 37 stations from (0, 102) to (36, 102), every 1
+  station        ground  surface  water  top  standing            step
+  (    0,   102)                                                    void
+  (    1,   102)                                                    void
+  (    2,   102)                                                    void
+  (    3,   102)                                                    void
+  (    4,   102)      15       15           15                      
+  (    5,   102)      15       15           15                      
+  (    6,   102)      15       15           15                      
+  (    7,   102)      15       15           15                      
+  (    8,   102)      15       15           15                      
+  (    9,   102)      15       15           18  ironcube spawn-camp:0  
+  (   10,   102)      15       15           18  ironcube spawn-camp:0  
+  (   11,   102)      15       15           18  ironcube spawn-camp:0  
+  (   12,   102)      15       15           15                      
+  (   13,   102)      15       15           22                      
+  (   14,   102)      15       15           23  spawn spawn-camp    
+  (   15,   102)      15       15           24  spawn spawn-camp    
+  (   16,   102)      15       15           25  spawn spawn-camp    
+  (   17,   102)      15       15           26  spawn spawn-camp    
+  (   18,   102)      15       15           27  spawn spawn-camp    
+  (   19,   102)      15       15           27  spawn spawn-camp    
+  (   20,   102)      15       15           26  spawn spawn-camp    
+  (   21,   102)      15       15           25  spawn spawn-camp    
+  (   22,   102)      15       15           24  spawn spawn-camp    
+  (   23,   102)      15       15           23  spawn spawn-camp    
+  (   24,   102)      15       15           22                      
+  (   25,   102)      15       15           15                      
+  (   26,   102)      15       15           15                      
+  (   27,   102)      15       15           15                      
+  (   28,   102)      15       15           15                      
+  (   29,   102)      15       15           15                      
+  (   30,   102)      15       15           15                      
+  (   31,   102)      15       15           15                      
+  (   32,   102)      15       15           15                      
+  (   33,   102)      15       15           15                      
+  (   34,   102)      15       15           15                      
+  (   35,   102)      15       15           15                      
+  (   36,   102)                                                    void
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: ironcube spawn-camp:0 at (9, 101), spawn spawn-camp at (14, 100)
+
+## spawn-red (spawn) along z
+TRANSECT 28 stations from (18, 84) to (18, 111), every 1
+  station        ground  surface  water  top  standing            step
+  (   18,    84)      15       15           15                      
+  (   18,    85)      15       15           15                      
+  (   18,    86)      15       15           15                      
+  (   18,    87)      15       15           15  stroke quay-road    
+  (   18,    88)      15       15           15  stroke quay-road    
+  (   18,    89)      15       15           15  stroke quay-road    
+  (   18,    90)      15       15           15  stroke quay-road    
+  (   18,    91)      15       15           15  stroke quay-road    
+  (   18,    92)      15       15           15  stroke quay-road    
+  (   18,    93)      15       15           22  stroke quay-road    
+  (   18,    94)      15       15           23  spawn spawn-camp    
+  (   18,    95)      15       15           24  spawn spawn-camp    
+  (   18,    96)      15       15           25  spawn spawn-camp    
+  (   18,    97)      15       15           26  spawn spawn-camp    
+  (   18,    98)      15       15           27  spawn spawn-camp    
+  (   18,    99)      15       15           27  spawn spawn-camp    
+  (   18,   100)      15       15           27  spawn spawn-camp    
+  (   18,   101)      15       15           27  spawn spawn-camp    
+  (   18,   102)      15       15           27  spawn spawn-camp    
+  (   18,   103)      15       15           27  spawn spawn-camp    
+  (   18,   104)      15       15           27  spawn spawn-camp    
+  (   18,   105)      15       15           27  spawn spawn-camp    
+  (   18,   106)      15       15           26  spawn spawn-camp    
+  (   18,   107)      15       15           25  spawn spawn-camp    
+  (   18,   108)      15       15           24  spawn spawn-camp    
+  (   18,   109)      15       15           23  spawn spawn-camp    
+  (   18,   110)      15       15           22                      
+  (   18,   111)      15       15           15                      
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke quay-road at (20, 82), spawn spawn-camp at (16, 94)

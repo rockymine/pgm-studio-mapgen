@@ -1,0 +1,213 @@
+HEIGHTMAP  1 char = 1x1 blocks (the top-left block of each)  x -48..47 across, z -104..103 down
+KEY  char = ground height above y8 in bands of 1 block(s): 0 = y8..8, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
+            -4        -3        -2        -1         0         1         2         3         4       
+     876543210987654321098765432109876543210987654321012345678901234567890123456789012345678901234567
+-104                                     dddddddddddddddddddddddddddd                                
+-103                                     dddddddddddddddddddddddddddd                                
+-102                                     ddddddddddddHHHHHHHHHHdddddd                                
+-101                                     ddddddddddddHHHHHHHHHHdddddd                                
+-100                                     ddddddddddddHHHHHHHHHHdddddd                                
+ -99                                     ddddddddddddHHHHHHHHHHdddddd                                
+ -98                                     ddddddddddddHHHHHHHHHHdddddd                                
+ -97                                     ddddddddddddHHHHHHHHHHdddddd                                
+ -96                                     ddddddddddddHHHHHHHHHHddHHHd                                
+ -95                                     ddddddddddddHHHHHHHHHHddHHHd                                
+ -94                                     ddddddddddddHHHHHHHHHHddHHHd                                
+ -93                                     ddddddddddddHHHHHHHHHHdddddd                                
+ -92 7777777777777777                    ddddddddddddHHHHHHHHHHdddddd                7777777777777777
+ -91 7HHHHHHHHHHHHHH7                    ddddddddddddHHHHHHHHHHdddddd                7HHHHHHHHHHHHHH7
+ -90 7HHHHHHHHHHHHHH7                    ddddddddddddHHHHHHHHHHdddddd                7HHHHHHHHHHHHHH7
+ -89 7HHHHHHHHHHHHHH7                    ddddddddddddHHHHHHHHHHdddddd                7HHHHHHHHHHHHHH7
+ -88 7HHHHHHHHHHHHHH7                    ddddddddddddHHHHHHHHHHdddddd                7HHHHHHHHHHHHHH7
+ -87 7HHHHHHHHHHHHHH7                    ddddddddddddHHHHHHHHHHdddddd                7HHHHHHHHHHHHHH7
+ -86 7HHHHHHHHHHHHHH7                    dddddddddddddddddddddddddddd                7HHHHHHHHHHHHHH7
+ -85 7HHHHHHHHHHHHHH7                    dddddddddddddddddddddddddddd                7HHHHHHHHHHHHHH7
+ -84 7HHHHHHHHHHHHHH7                dddddddddddddddddddddddddddddddd                7HHHHHHHHHHHHHH7
+ -83 7HHHHHHHHHHHHHH7                dddddddddddddddddddddddddddddddd                7HHHHHHHHHHHHHH7
+ -82 7HHHHHHHHHHHHHH7                dddddddddddddddddddddddddddddddd                7HHHHHHHHHHHHHH7
+ -81 HHHHHHHHHHHHHHHH                dddddddddddddddddddddddddddddddd                HHHHHHHHHHHHHHHH
+ -80 7777777777777766                dddddddddddddddddddddddddddddddd                7777777777777777
+ -79 7777777777777776                dddddddddddddddddddddddddddddddd                7777777777777777
+ -78 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+ -77 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+ -76 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+ -75 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+ -74 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+ -73 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+ -72 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+ -71 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+ -70 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+ -69 7777777777777778                dddddddddddddddddddddddddddddddd                7777777777777777
+ -68 7777777777777777                dddddddddddddddddddddddddddddddd                8777777777777777
+ -67 7777777777777777                dddddddddddddddddddddddddddddddd                8777777777777777
+ -66 7777777777777777                dddddddddddddddddddddddddddddddd                8777777777777777
+ -65 HHHHHHHHHHHHHHHH                dddddddddddddddddddddddddddddddd                HHHHHHHHHHHHHHHH
+ -64 HHHHHHHHHHHHHHHH8887777777777777777777777777888888777777777777777777777777777778HHHHHHHHHHHHHHHH
+ -63 777777777777777788877777777777777777777777778888877777777777777777777777777777788777777777777777
+ -62 777777777777777887777777777777777777777777777777777777777777777777777777777777777777777777777777
+ -61 777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
+ -60 777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
+ -59 HHHHHHHHHHH7777777777777777777777777777777777777777777777777777777777777777777777777777777777777
+ -58 HHHHHHHHHHH7777777777777777777777777777777777777777777777777777777777777777777777777777777777777
+ -57 HHHHHHHHHHH7777777777777777777777777777777777777777777777777777777777777777777777777777777777777
+ -56 HHHHHHHHHHH7777777777777777777777777777777777777777777777777777777777777777777777777777777777777
+ -55 HHHHHHHHHHH7777777777777777777777777777777777777777777777777777777777777777777777777777777777777
+ -54 HHHHHHHHHHH7777777777777777777777777777777777777777777777777777777777777777777777777777777777777
+ -53 HHHHHHHHHHH7777777777777777777777777777777777777777777777777777777777777777777777777777777777777
+ -52 HHH7HHHHHHH77777                77777777777777777777777777777777                7777777777777777
+ -51 7777777777777777                77788777777777777777777777777777                7777777777777777
+ -50 7777777777777777                77887777777777777777777777777777                7777777777777777
+ -49 7777777777777777                88877777777777777777777777777777                7777777777777777
+ -48 8877777777777777                                                                7777777777777777
+ -47 7777777777777777                                                                7777777777777777
+ -46 7777777777777777                                                                7777777777777777
+ -45 7777777777777777                                                                7777777777777777
+ -44 7777666666667777                                                                6777666666667777
+ -43 7777666666667777                                                                6777666666667776
+ -42 7777655555566666                                                                6666655555566666
+ -41 6667655555566665                                                                6655555555566666
+ -40 5666555555555555                                                                5555555555555555
+ -39 5555555555555444                                                                4455555555555555
+ -38 4444444444444444                                                                4444444444444444
+ -37 4444444444444333                                                                3334444444444433
+ -36 333333333333333221111111111111111111         111111         445667777666654422222333333333333333
+ -35 222333333333222211111222322111111110 0011111111111111111    567788888888766442222223333333332222
+ -34 222223333332111111122333443322111110000001111111111111112346788999999999876643221122233333331111
+ -33 1111233333321111122334455554432211111000011111111111111123578999aaaaaa99987664321111233333321111
+ -32 1111222222221111123445566665544321111111111111111111111234679aaaaaaaaaaa998865421111222222221111
+ -31 1111222222221111234566667766554432111111111111111111112346789aaaabbbbbbaa99876432111222222221111
+ -30 111111111111111234566777776766544321111111111111111111235789aaabbbcccccbba9986542111111111111111
+ -29 11111111111111223456777788777665443211111111111111111224689aaabbccdddddcbba987643111111111111111
+ -28 11111111111111233456778888887776543211111111111111111234689aaabcddeeeeddcba987643211111111111111
+ -27 11111111111111233456778999988776654221111111111111112345789aabbcdeeeeeedcba987543211111111111111
+ -26 111111111111112334567789aaa98877654321111111111111112345789aabbcdeeeeeddcba987532111111111111111
+ -25 111111111111112334567789aaaa9877654321111111111111111235679aaabbcddeeddccba986532111111111111111
+ -24 111111111111112334567789aaaa98776543211111111111111112345789aaHHHHHHHHHHHaa987542111111111111111
+ -23 111111111111112234567789aaaa987765432111111111111111112356789aHHHHHHHHHHHa9987532111111111111111
+ -22 111111111111112345667789aaaa987765432111111111111111112344679aHHHHHHHHHHH99876532111111111111111
+ -21 11111111111111234566778899998877654322111111111111111112345789HHHHHHHHHHH88766432111111111111111
+ -20 11111111111111234566777888888776654321111111111111111111234677HHHHHHHHHHH77654421111111111111111
+ -19 11111111111111123456777777777776543221111111111111111111124456HHHHHHHHHHH65544221111111111111111
+ -18 11111111111111123456667777766766543211111111111111111111122345HHHHHHHHHHH54432211111111111111111
+ -17 111111111111111123455666666666654322     111111111111111111 23HHHHHHHHHHH43221111111111111111111
+ -16                                                  111                                            
+ -15                                                                                                 
+ -14                                                                                                 
+ -13                                                                                                 
+ -12                                                                                                 
+ -11                                                                                                 
+ -10                                                                                                 
+  -9                                                                                                 
+  -8                                                                                                 
+  -7                                                                                                 
+  -6                                                                                                 
+  -5                                                                                                 
+  -4                                                                                                 
+  -3                                                                                                 
+  -2                                                                                                 
+  -1                                                                                                 
+   0                                                                                                 
+   1                                                                                                 
+   2                                                                                                 
+   3                                                                                                 
+   4                                                                                                 
+   5                                                                                                 
+   6                                                                                                 
+   7                                                                                                 
+   8                                                                                                 
+   9                                                                                                 
+  10                                                                                                 
+  11                                                                                                 
+  12                                                                                                 
+  13                                                                                                 
+  14                                                                                                 
+  15                                             111                                                 
+  16 11111111111111111112234HHHHHHHHHHH32 111111111111111111     223456666666666554321111111111111111
+  17 11111111111111111223445HHHHHHHHHHH54322111111111111111111111234566766777776665432111111111111111
+  18 11111111111111112244556HHHHHHHHHHH65442111111111111111111112234567777777777765432111111111111111
+  19 11111111111111112445677HHHHHHHHHHH77643211111111111111111112345667788888877766543211111111111111
+  20 11111111111111123466788HHHHHHHHHHH98754321111111111111111122345677889999887766543211111111111111
+  21 11111111111111123567899HHHHHHHHHHHa976443211111111111111111234567789aaaa987766543211111111111111
+  22 1111111111111112357899aHHHHHHHHHHHa987653211111111111111111234567789aaaa987765432211111111111111
+  23 111111111111111245789aaHHHHHHHHHHHaa98754321111111111111111234567789aaaa987765433211111111111111
+  24 111111111111111235689abccddeeddcbbaaa9765321111111111111111234567789aaaa987765433211111111111111
+  25 111111111111111235789abcddeeeeedcbbaa98754321111111111111112345677889aaa987765433211111111111111
+  26 111111111111112345789abcdeeeeeedcbbaa98754321111111111111112245667788999987765433211111111111111
+  27 111111111111112346789abcddeeeeddcbaaa98643211111111111111111234567778888887765433211111111111111
+  28 111111111111111346789abbcdddddccbbaaa98642211111111111111111234456677788777765432211111111111111
+  29 1111111111111112456899abbcccccbbbaaa987532111111111111111111123445667677777665432111111111111111
+  30 11112222222211123467899aabbbbbbaaaa9876432111111111111111111112344556677666654321111222222221111
+  31 111122222222111124568899aaaaaaaaaaa9764321111111111111111111111234455666655443211111222222221111
+  32 11112333333211112346678999aaaaaa9998753211111111111111100001111122344555544332211111233333321111
+  33 111133333332221122346678999999999887643211111111111111100000011111223344333221111111233333322222
+  34 222233333333322222244667888888887765    1111111111111111100 011111111223222111112222333333333222
+  35 333333333333333222224456666777766544         111111         111111111111111111122333333333333333
+  36 3344444444444333                                                                3334444444444444
+  37 4444444444444444                                                                4444444444444444
+  38 5555555555555544                                                                4445555555555555
+  39 5555555555555555                                                                5555555555556665
+  40 6666655555555566                                                                5666655555567666
+  41 6666655555566666                                                                6666655555567777
+  42 6777666666667776                                                                7777666666667777
+  43 7777666666667776                                                                7777666666667777
+  44 7777777777777777                                                                7777777777777777
+  45 7777777777777777                                                                7777777777777777
+  46 7777777777777777                                                                7777777777777777
+  47 7777777777777777                                                                7777777777777788
+  48 7777777777777777                77777777777777777777777777777888                7777777777777777
+  49 7777777777777777                77777777777777777777777777778877                7777777777777777
+  50 7777777777777777                77777777777777777777777777788777                7777777777777777
+  51 7777777777777777                77777777777777777777777777777777                77777HHHHHHH7HHH
+  52 7777777777777777777777777777777777777777777777777777777777777777777777777777777777777HHHHHHHHHHH
+  53 7777777777777777777777777777777777777777777777777777777777777777777777777777777777777HHHHHHHHHHH
+  54 7777777777777777777777777777777777777777777777777777777777777777777777777777777777777HHHHHHHHHHH
+  55 7777777777777777777777777777777777777777777777777777777777777777777777777777777777777HHHHHHHHHHH
+  56 7777777777777777777777777777777777777777777777777777777777777777777777777777777777777HHHHHHHHHHH
+  57 7777777777777777777777777777777777777777777777777777777777777777777777777777777777777HHHHHHHHHHH
+  58 7777777777777777777777777777777777777777777777777777777777777777777777777777777777777HHHHHHHHHHH
+  59 777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
+  60 777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
+  61 777777777777777777777777777777777777777777777777777777777777777777777777777777788777777777777777
+  62 777777777777777887777777777777777777777777777778888877777777777777777777777778887777777777777777
+  63 HHHHHHHHHHHHHHHH8777777777777777777777777777778888887777777777777777777777777888HHHHHHHHHHHHHHHH
+  64 HHHHHHHHHHHHHHHH                dddddddddddddddddddddddddddddddd                HHHHHHHHHHHHHHHH
+  65 7777777777777778                dddddddddddddddddddddddddddddddd                7777777777777777
+  66 7777777777777778                dddddddddddddddddddddddddddddddd                7777777777777777
+  67 7777777777777778                dddddddddddddddddddddddddddddddd                7777777777777777
+  68 7777777777777777                dddddddddddddddddddddddddddddddd                8777777777777777
+  69 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+  70 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+  71 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+  72 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+  73 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+  74 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+  75 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+  76 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+  77 7777777777777777                dddddddddddddddddddddddddddddddd                7777777777777777
+  78 7777777777777777                dddddddddddddddddddddddddddddddd                6777777777777777
+  79 7777777777777777                dddddddddddddddddddddddddddddddd                6677777777777777
+  80 HHHHHHHHHHHHHHHH                dddddddddddddddddddddddddddddddd                HHHHHHHHHHHHHHHH
+  81 7HHHHHHHHHHHHHH7                dddddddddddddddddddddddddddddddd                7HHHHHHHHHHHHHH7
+  82 7HHHHHHHHHHHHHH7                dddddddddddddddddddddddddddddddd                7HHHHHHHHHHHHHH7
+  83 7HHHHHHHHHHHHHH7                dddddddddddddddddddddddddddddddd                7HHHHHHHHHHHHHH7
+  84 7HHHHHHHHHHHHHH7                dddddddddddddddddddddddddddd                    7HHHHHHHHHHHHHH7
+  85 7HHHHHHHHHHHHHH7                dddddddddddddddddddddddddddd                    7HHHHHHHHHHHHHH7
+  86 7HHHHHHHHHHHHHH7                ddddddHHHHHHHHHHdddddddddddd                    7HHHHHHHHHHHHHH7
+  87 7HHHHHHHHHHHHHH7                ddddddHHHHHHHHHHdddddddddddd                    7HHHHHHHHHHHHHH7
+  88 7HHHHHHHHHHHHHH7                ddddddHHHHHHHHHHdddddddddddd                    7HHHHHHHHHHHHHH7
+  89 7HHHHHHHHHHHHHH7                ddddddHHHHHHHHHHdddddddddddd                    7HHHHHHHHHHHHHH7
+  90 7HHHHHHHHHHHHHH7                ddddddHHHHHHHHHHdddddddddddd                    7HHHHHHHHHHHHHH7
+  91 7777777777777777                ddddddHHHHHHHHHHdddddddddddd                    7777777777777777
+  92                                 ddddddHHHHHHHHHHdddddddddddd                                    
+  93                                 dHHHddHHHHHHHHHHdddddddddddd                                    
+  94                                 dHHHddHHHHHHHHHHdddddddddddd                                    
+  95                                 dHHHddHHHHHHHHHHdddddddddddd                                    
+  96                                 ddddddHHHHHHHHHHdddddddddddd                                    
+  97                                 ddddddHHHHHHHHHHdddddddddddd                                    
+  98                                 ddddddHHHHHHHHHHdddddddddddd                                    
+  99                                 ddddddHHHHHHHHHHdddddddddddd                                    
+ 100                                 ddddddHHHHHHHHHHdddddddddddd                                    
+ 101                                 ddddddHHHHHHHHHHdddddddddddd                                    
+ 102                                 dddddddddddddddddddddddddddd                                    
+ 103                                 dddddddddddddddddddddddddddd                                    
+low y8, high y22, range 14

@@ -611,6 +611,36 @@ it by arithmetic on the numeric bands rather than by asking, and `reports/sonnet
 
 ---
 
+### Opus 5 — four boards, one per objective shape, decided together
+
+Four boards written as four sentences before the first shape was drawn, so that no two would be one
+arrangement in different blocks: a destroy board that is one wide piece with the relief doing all the
+work, a core board that is four height zones with ramps cut through its risers, a wool board that is four
+limbs round a T of void, and a mixed board that is a delta with a channel through it.
+[reports/opus5b-run1.md](reports/opus5b-run1.md)
+
+**The tone families were checked across the set rather than within it.** The ground is pale chalk, cold
+slate, red mesa clay and dark wet carr; what is built is dark timber on cobble, dark timber on brick
+under a red roof, pale sandstone and birch, and white plaster framed in dark oak. No two boards share a
+ground family and no board's buildings are in its own ground's family.
+
+**`G8` is what shaped three of the four, and it asks two different questions.** On the destroy boards it
+reads `dead-share` — ground no journey passes — and Chalkmere went 0.272 → 0.155 → 0.131 → **0.0957** as
+the board narrowed from 72 to 48 and the band behind the spawn from 24 deep to 16. On the wool boards it
+reads `fill-ratio`, which is land over the fanned bounding box, and it wants a board **less than 54% solid**.
+
+**That second term and `approaches.md` pull opposite ways on a board played for a wool and a monument.**
+The capture half wants void inside a team's ground and the destroy half withdraws it, and the only cut
+that satisfies both is one that reaches the mid — a channel rather than a hole. Alderquay is built on
+that reading and it is a judgement rather than a measurement.
+
+| Folder | Mode | Author | What it is |
+|---|---|---|---|
+| `opus5b-chalkmere` | dtm | Opus 5 | **A chalk downland split by a dry combe** — one obsidian `pillar-3` a team at `(14, 62)` on an open turf shoulder, own walk 48 against 167, ratio 3.48. The ground round it is composed rather than decorated: a pinned combe five blocks down with a dew pond in it is the way in from below, an eleven-block push east is the way in from above, a five-beech shaw carries cover to within fifteen blocks, and the strand is open. Two halves joined by a build zone over 16 blocks of void across the whole 48-block face. Three themes on a **slope** stack cut at 20° and 38° off its own incline, `Plains` biome, a drystone yard wall drawn as two polylines. **9 324 walked · 382 scrambled · 0 barrier · 0 faces**, 30 props placed and none declined, 9.6% dead, export gate OPEN |
+| `opus5b-slakefell` | dtc | Opus 5 | **A slate fell in three benches over a frozen tarn** — the core in a walled fold on the middle bench at `(-14, 48)`, `float 6` and `leak 5`, ground on every side of it, own walk 49 against 151. The benches are pinned flat with three-block gaps, so each riser is a face — 52 barrier cells in four faces and nothing else — and four `line` marks with a height at each end are the ramps cut through them, two to a riser on opposite hands, every one reading worst step 1 on a transect. `Ice plains` so the snow and the grass agree; buildings in dark timber on a brick plinth under a brick roof, the one warm thing on the board. **8 558 walked · 608 scrambled · 52 barrier · 4 faces**, 28 props placed and none declined, 6.7% dead, export gate OPEN |
+| `opus5b-ochredrift` | ctw | Opus 5 | **A red mesa mining camp over a dry wash** — two wools a team on spurs at the far corners, each room with three faces on void, each spur's mouth carrying sixteen blocks of bedrock twenty in front of the room's face. A notch between the two frontline legs meets a slot across the hub, so the middle of a team's own ground is one T of void nothing bridges, and the only land joining the wash to the hub is sixteen blocks at each end with a ramp cut through it. The crusher terrace is `relief_scope: exclude` and meets the hub at a 64-cell face, with a twelve-block flight of six two-deep treads cut into it. `Mesa` biome so grass and podzol read as one dry floor. **11 118 walked · 318 scrambled · 128 barrier · 2 faces**, 28 props placed and none declined, **0.0% dead over 21 journeys**, export gate OPEN |
+| `opus5b-alderquay` | ctw + dtm | Opus 5 | **A dark alder holt on a delta channel** — one obsidian monument a team in the open on the bank above a timber quay at `(30, 52)`, own walk 53 against 187, and one wool on a spur at the back behind a sixteen-block bedrock line. The map declares both gamemodes. The void here is a channel that reaches the mid rather than a hole inside the team's ground, which is the only cut `approaches.md` and `G8` both allow; a pinned backwater on the west bank is the entrance from below. The quay is two made layers, because one layer holds one span per column and the posts under the deck are simply not in the world otherwise. `Swampland` biome, white-plaster buildings framed in dark oak. **8 440 walked · 90 scrambled · 0 barrier · 0 faces**, 32 props placed and none declined, 1.6% dead, export gate OPEN |
+
 ## Not boards
 
 Folders under `maps/` or `specs/` that exist for a reading rather than for a game. They are named

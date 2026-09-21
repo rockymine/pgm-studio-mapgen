@@ -1,0 +1,61 @@
+## rock-1 (boulder) along x
+TRANSECT 25 stations from (10, 22) to (34, 22), every 1
+  station        ground  surface  water  top  standing            step
+  (   10,    22)       9        9            9                      
+  (   11,    22)      10       10           10                      +1
+  (   12,    22)      11       11           11                      +1
+  (   13,    22)      12       12           12                      +1
+  (   14,    22)      13       13           13                      +1
+  (   15,    22)      14       14           14                      +1
+  (   16,    22)      15       15           15                      +1
+  (   17,    22)      15       15           15                      
+  (   18,    22)      16       16           16                      +1
+  (   19,    22)      17       17           17                      +1
+  (   20,    22)      18       18           20  boulder rock-1      +1
+  (   21,    22)      18       18           21  boulder rock-1      
+  (   22,    22)      18       18           21  boulder rock-1      
+  (   23,    22)      18       18           21  boulder rock-1      
+  (   24,    22)      17       17           17                      -1
+  (   25,    22)      16       16           16                      -1
+  (   26,    22)      15       15           15                      -1
+  (   27,    22)      15       15           15                      
+  (   28,    22)      14       14           14                      -1
+  (   29,    22)      13       13           13                      -1
+  (   30,    22)      12       12           12                      -1
+  (   31,    22)      11       11           11                      -1
+  (   32,    22)      10       10           10                      -1
+  (   33,    22)      10       10           10                      
+  (   34,    22)       9        9            9                      -1
+rises 9, falls 9, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder rock-1 at (20, 22), tree olive-1 at (23, 24)
+
+## rock-1 (boulder) along z
+TRANSECT 25 stations from (22, 10) to (22, 34), every 1
+  station        ground  surface  water  top  standing            step
+  (   22,    10)                                                    void
+  (   22,    11)                                                    void
+  (   22,    12)                                                    void
+  (   22,    13)                                                    void
+  (   22,    14)                                                    void
+  (   22,    15)                                                    void
+  (   22,    16)      14       14           14                      
+  (   22,    17)      15       15           15                      +1
+  (   22,    18)      15       15           15                      
+  (   22,    19)      16       16           16                      +1
+  (   22,    20)      17       17           17                      +1
+  (   22,    21)      18       18           21  boulder rock-1      +1
+  (   22,    22)      18       18           21  boulder rock-1      
+  (   22,    23)      18       18           21  boulder rock-1      
+  (   22,    24)      18       18           18                      
+  (   22,    25)      18       18           20  tree olive-1        
+  (   22,    26)      17       17           21  tree olive-1        -1
+  (   22,    27)      16       16           19  tree olive-1        -1
+  (   22,    28)      16       16           22  tree olive-1        
+  (   22,    29)      15       15           15                      -1
+  (   22,    30)      15       15           15                      
+  (   22,    31)      14       14           14                      -1
+  (   22,    32)      13       13           13                      -1
+  (   22,    33)      12       12           12                      -1
+  (   22,    34)      10       10           10                      -2
+rises 4, falls 7, worst step 2: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder rock-1 at (21, 21), tree olive-1 at (24, 23)

@@ -1,0 +1,58 @@
+## crusher (house) along x
+TRANSECT 25 stations from (-32, 19) to (-8, 19), every 1
+  station        ground  surface  water  top  standing            step
+  (  -32,    19)      10       10           10  stroke front-haul   
+  (  -31,    19)      12       12           12  stroke front-haul   scramble +2
+  (  -30,    19)      12       12           12  stroke front-haul   
+  (  -29,    19)      13       13           13                      +1
+  (  -28,    19)      14       14           14                      +1
+  (  -27,    19)      15       15           15                      +1
+  (  -26,    19)      15       15           15                      
+  (  -25,    19)      16       16           22  house crusher       +1
+  (  -24,    19)      17       17           22  house crusher       +1
+  (  -23,    19)      17       17           22  house crusher       
+  (  -22,    19)      18       18           22  house crusher       +1
+  (  -21,    19)      18       18           22  house crusher       
+  (  -20,    19)      18       18           22  house crusher       
+  (  -19,    19)      18       18           22  house crusher       
+  (  -18,    19)      18       18           22  house crusher       
+  (  -17,    19)      17       17           22  house crusher       -1
+  (  -16,    19)      17       17           22  house crusher       
+  (  -15,    19)      16       16           22  house crusher       -1
+  (  -14,    19)      15       15           15                      -1
+  (  -13,    19)      15       15           15                      
+  (  -12,    19)      14       14           14                      -1
+  (  -11,    19)      12       12           12                      -2
+  (  -10,    19)      11       11           11                      -1
+  (   -9,    19)      10       10           10                      -1
+  (   -8,    19)       9        9            9                      -1
+rises 7, falls 8, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (-31, 19) | walked end to end
+beside: stroke front-haul at (-32, 17), house crusher at (-25, 17)
+
+## crusher (house) along z
+TRANSECT 22 stations from (-20, 9) to (-20, 30), every 1
+  station        ground  surface  water  top  standing            step
+  (  -20,     9)                                                    void
+  (  -20,    10)                                                    void
+  (  -20,    11)                                                    void
+  (  -20,    12)                                                    void
+  (  -20,    13)                                                    void
+  (  -20,    14)                                                    void
+  (  -20,    15)                                                    void
+  (  -20,    16)      15       15           19  house crusher       
+  (  -20,    17)      16       16           20  house crusher       +1
+  (  -20,    18)      17       17           21  house crusher       +1
+  (  -20,    19)      18       18           22  house crusher       +1
+  (  -20,    20)      18       18           22  house crusher       
+  (  -20,    21)      19       19           21  house crusher       +1
+  (  -20,    22)      20       20           20  house crusher       +1
+  (  -20,    23)      21       21           21  house crusher       +1
+  (  -20,    24)      22       22           22                      +1
+  (  -20,    25)      22       22           22                      
+  (  -20,    26)      22       22           22                      
+  (  -20,    27)      22       22           22                      
+  (  -20,    28)      21       21           21                      -1
+  (  -20,    29)      20       20           20                      -1
+  (  -20,    30)      19       19           19                      -1
+rises 7, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house crusher at (-22, 16)

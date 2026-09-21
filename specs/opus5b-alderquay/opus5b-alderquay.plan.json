@@ -1,0 +1,207 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Alderquay"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 18,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "eyot-w",
+   "role": "piece",
+   "rect": [
+    -9,
+    4,
+    4,
+    7
+   ],
+   "surface": 9
+  },
+  {
+   "id": "eyot-e",
+   "role": "piece",
+   "rect": [
+    5,
+    4,
+    4,
+    7
+   ],
+   "surface": 9
+  },
+  {
+   "id": "holt-w",
+   "role": "piece",
+   "rect": [
+    -9,
+    11,
+    4,
+    7
+   ],
+   "surface": 11
+  },
+  {
+   "id": "holt-e",
+   "role": "piece",
+   "rect": [
+    3,
+    11,
+    6,
+    7
+   ],
+   "surface": 11
+  },
+  {
+   "id": "holt-n",
+   "role": "piece",
+   "rect": [
+    -5,
+    15,
+    8,
+    3
+   ],
+   "surface": 11
+  },
+  {
+   "id": "spur",
+   "role": "piece",
+   "rect": [
+    -9,
+    18,
+    4,
+    5
+   ],
+   "surface": 15
+  },
+  {
+   "id": "wool-room",
+   "role": "wool-room",
+   "rect": [
+    -9,
+    23,
+    4,
+    3
+   ],
+   "surface": 15
+  },
+  {
+   "id": "yard",
+   "role": "piece",
+   "rect": [
+    1,
+    18,
+    8,
+    5
+   ],
+   "surface": 15
+  },
+  {
+   "id": "yard-w",
+   "role": "piece",
+   "rect": [
+    1,
+    23,
+    1,
+    5
+   ],
+   "surface": 15
+  },
+  {
+   "id": "camp",
+   "role": "spawn",
+   "rect": [
+    2,
+    23,
+    5,
+    5
+   ],
+   "surface": 15
+  },
+  {
+   "id": "yard-e",
+   "role": "piece",
+   "rect": [
+    7,
+    23,
+    2,
+    5
+   ],
+   "surface": 15
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -9,
+    -4,
+    18,
+    8
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-camp",
+    "piece": "camp",
+    "at": [
+     11,
+     10
+    ],
+    "facing": "front",
+    "footprint": [
+     6,
+     2,
+     10,
+     16
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-spur",
+    "piece": "wool-room",
+    "at": [
+     8,
+     6
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-camp",
+    "piece": "camp",
+    "at": [
+     2.5,
+     10.0
+    ]
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "monument",
+    "piece": "holt-e",
+    "at": [
+     18,
+     8
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4,
+    "name": "Alderquay Monument"
+   }
+  ],
+  "cores": []
+ },
+ "walls": [
+  {
+   "a": "holt-w",
+   "b": "spur"
+  }
+ ]
+}
