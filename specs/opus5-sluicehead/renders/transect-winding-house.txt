@@ -34,9 +34,9 @@ beside: water leat at (-5, -43), house winding-house at (4, -43)
 ## winding-house (house) along z
 TRANSECT 24 stations from (10, -52) to (10, -29), every 1
   station        ground  surface  water  top  standing            step
-  (   10,   -52)      10       10           10                      
-  (   10,   -51)      10       10           10                      
-  (   10,   -50)      10       10           10                      
+  (   10,   -52)      10       10           14  boulder rock-w1     
+  (   10,   -51)      10       10           14  boulder rock-w1     
+  (   10,   -50)      10       10           13  boulder rock-w1     
   (   10,   -49)      10       10           10                      
   (   10,   -48)      10       10           10                      
   (   10,   -47)      10       10           10                      
@@ -59,4 +59,4 @@ TRANSECT 24 stations from (10, -52) to (10, -29), every 1
   (   10,   -30)       8        8            8                      -1
   (   10,   -29)       8        8            8                      
 rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder rock-e1 at (8, -54), house winding-house at (8, -45)
+beside: boulder rock-e1 at (8, -54), boulder rock-w1 at (9, -54), house winding-house at (8, -45)

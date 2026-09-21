@@ -363,6 +363,43 @@ KILN_SHELL = {
                 "width": 2, "height": 3},
 }
 
+# ── the rooms ─────────────────────────────────────────────────────────────────
+# A spawn and a wool room stamp the studio's built-in bedrock box unless the finish states a
+# shell for them, and the box is the first thing every player on the board looks at from the
+# inside. The spawn hall is therefore the kiln row's own style, one storey and flat-roofed:
+# `flat` is the only roof form that can carry a hole, which is why a room wears it.
+SPAWN_SHELL = {
+    "foundation": {
+        "plate": {"stack": {"bands": [{"material": solid(SANDSTONE), "thickness": 1}],
+                            "ending": "repeat"}, "extent": 1},
+        "surface": {"field": None, "border": None, "borderWidth": 1, "inlay": None,
+                    "inlayInset": 2, "isPlain": True},
+        "footing": None,
+    },
+    "roof": {
+        "form": "flat", "pitch": 1, "slab": -1, "slabData": 0, "overhang": 1,
+        "ridgeCap": False, "hole": True,
+        "body": solid((STAINED_CLAY, 12)),
+        "verge": {"kind": "laidLog", "id": LOG2, "data": 1},
+        "gable": solid((STAINED_CLAY, 12)),
+        "gableWindows": {"form": "none", "block": 102, "hostBlock": -1, "hostData": 0,
+                         "data": 0, "sill": 2, "width": 2, "height": 2, "spacing": 3},
+    },
+    "wall": KILN_WALL,
+    "post": solid(DARK_OAK),
+    "windows": {"form": "stairLattice", "block": SANDSTONE_STAIRS, "hostBlock": -1,
+                "hostData": 0, "data": 0, "sill": 3, "width": 2, "height": 2, "spacing": 4},
+    "storeys": [],
+    "porch": None,
+    "front": None,
+    "beams": {"block": LOG2, "data": 1, "reach": 1, "any": True},
+    "doorway": {"door": "air",
+                "head": {"form": "arched", "block": SANDSTONE_STAIRS,
+                         "fill": "upperSlab", "fillBlock": SANDSTONE_SLAB[0],
+                         "fillData": SANDSTONE_SLAB[1]},
+                "width": 3, "height": 4},
+}
+
 # ── the dressing ──────────────────────────────────────────────────────────────
 # The routes are drawn before the scenery, because scenery placed first is scenery standing
 # in the routes. A path is solid and three colours a reader cannot quite tell apart, and
@@ -464,6 +501,7 @@ finish = {
     # Mesa, #90814d. A tinted block takes its colour from the chunk's biome byte and nothing
     # else on a board does, so this is a palette decision rather than a line added at the end.
     "biome": {"kind": "solid", "id": 37},
+    "roomStyles": {"spawn": SPAWN_SHELL},
     "mapTheme": "moor",
     "themes": themes,
     # Keyed on the compiled shape ids, read off POST /plan/compile: the compiler fuses the

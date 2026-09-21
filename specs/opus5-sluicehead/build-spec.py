@@ -318,6 +318,42 @@ SLUICE_SHELL = {
                 "width": 2, "height": 3},
 }
 
+# ── the rooms ─────────────────────────────────────────────────────────────────
+# Stated, or the spawn stamps the studio's built-in bedrock box — which is the one structure
+# every player sees from the inside. It is the sluice house's own style at one storey, with
+# a `flat` roof, because that is the only form that can carry a hole.
+SPAWN_SHELL = {
+    "foundation": {
+        "plate": {"stack": {"bands": [{"material": solid(STONE_BRICK), "thickness": 1}],
+                            "ending": "repeat"}, "extent": 1},
+        "surface": {"field": None, "border": None, "borderWidth": 1, "inlay": None,
+                    "inlayInset": 2, "isPlain": True},
+        "footing": None,
+    },
+    "roof": {
+        "form": "flat", "pitch": 1, "slab": -1, "slabData": 0, "overhang": 1,
+        "ridgeCap": False, "hole": True,
+        "body": solid(SPRUCE_PLANKS),
+        "verge": {"kind": "laidLog", "id": LOG, "data": 1},
+        "gable": solid(SPRUCE_PLANKS),
+        "gableWindows": {"form": "none", "block": 102, "hostBlock": -1, "hostData": 0,
+                         "data": 0, "sill": 2, "width": 2, "height": 2, "spacing": 3},
+    },
+    "wall": SLUICE_WALL,
+    "post": solid(SPRUCE_LOG),
+    "windows": {"form": "stairLattice", "block": SPRUCE_STAIRS, "hostBlock": -1,
+                "hostData": 0, "data": 0, "sill": 3, "width": 2, "height": 2, "spacing": 4},
+    "storeys": [],
+    "porch": None,
+    "front": None,
+    "beams": {"block": LOG, "data": 1, "reach": 1, "any": True},
+    "doorway": {"door": "air",
+                "head": {"form": "arched", "block": SPRUCE_STAIRS,
+                         "fill": "upperSlab", "fillBlock": SPRUCE_SLAB[0],
+                         "fillData": SPRUCE_SLAB[1]},
+                "width": 3, "height": 4},
+}
+
 # ── the dressing ──────────────────────────────────────────────────────────────
 # A path is solid and three colours a reader cannot quite tell apart. This ground is hard
 # and frozen, so the swept track is gravel, andesite and cobblestone.
@@ -411,6 +447,7 @@ finish = {
     # Cold taiga, #80b497. Snow and ice are blocks, so a snowfield on a summer biome has a
     # meadow running through it — the biome is a palette decision, not a line added at the end.
     "biome": {"kind": "solid", "id": 30},
+    "roomStyles": {"spawn": SPAWN_SHELL},
     "mapTheme": "ice",
     "themes": themes,
     # Keyed on the compiled shape ids, read off POST /plan/compile: the compiler fuses the

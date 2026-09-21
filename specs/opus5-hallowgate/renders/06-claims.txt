@@ -2,18 +2,18 @@ CLAIMS  1 char = 1 block  x -32..31 across, z -104..103 down
 KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn keep-out  8 door approach  9 goal clearance  a wool-room keep-out  b structure keep-out  space void
       -3        -2        -1         0         1         2         3 
      2109876543210987654321098765432101234567890123456789012345678901
--104         bbbbbbbbbba0000000000000                                
--103         bbbbbbbbbba8888888000000                                
--102         bbbbbbbbbba888888800bbb0                                
--101         bbbbbbbbbba8888888000bb0                                
--100         bbbbbbbbbba88888880000bb                                
- -99         bbbbbbbbbba88888880000bb                                
- -98         bbbbbbbbbba88888880000bb                                
- -97         bbbbbbbbbba88888880000bb                                
- -96         bbbbbbbbbba88bbbbbbbb0bb                                
- -95         bbbbbbbbbba88bbbbbbbb0bb                                
- -94         bbbbbbbbbba88bbbbbbbb0bb                                
- -93         bbbbbbbbbba88bbbbbbbb0bb                                
+-104         aaaaabbbbba0000000000000                                
+-103         aaaaabbbbba8888888000000                                
+-102         aaaaabbbbba888888800bbb0                                
+-101         abbbbbbbbba8888888000bb0                                
+-100         abbbbbbbbba88888880000bb                                
+ -99         abbbbbbbbba88888880000bb                                
+ -98         abbbbbbbbba88888880000bb                                
+ -97         abbbbbbbbba88888880000bb                                
+ -96         abbbbbbbbba88bbbbbbbb0bb                                
+ -95         aaaaabbbbba88bbbbbbbb0bb                                
+ -94         aaaaabbbbba88bbbbbbbb0bb                                
+ -93         aaaaabbbbba88bbbbbbbb0bb                                
  -92                     0bbbbbbbb000                                
  -91                     0bbbbbbbb000                                
  -90                     0bbbbbbbbb00                                
@@ -29,20 +29,20 @@ KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn
  -80                      000220000bb                777          777
  -79                     bbb2222bbbbb                7777777777777777
  -78                     bbb2222bbbbb                7777777777777777
- -77                     bbbbbbbbbbbb                7bbbbbbbbbbbbbb7
- -76     4444        00bbbbbbbbbbbbbbbb            777bbbbbbbbbbbbbb7
- -75     44444444000000bbbbbbb2222bbbbbb88888888888777bbbbbbbbbbbbbb7
- -74     44444440000000bbbbbbb222222bbbb88888888888777bbbbbbbbbbbbbb 
- -73     44444440000000bbbbbbbbbbbbbbbbb88888888888777bbbbbbbbbbbbbb 
- -72     4444440000000000000000022222222222222222222222bbbbbbbbbbbbb 
- -71     44400000000000000000000022222222222222222222222bbbbbbbbbbbb 
- -70     44400000000000005550000000222222222222222222222bbbbbbbbbbbb 
- -69     0000000000000005555000000222222222222222222222bbbbbbbbbbbbb 
- -68     000000000000000055500552222222228888888888777bbbbbbbbbbbbbb 
- -67      00000000000000000000222222222288888888888777bbbbbbbbbbbbbb 
- -66     000000000000000000022222222228888888888888777bbbbbbbbbbbbbb7
- -65     000000000000000002222222220888888888888888777bbbbbbbbbbbbbb7
- -64     000000000000                    0000111000777bbbbbbbbbbbbbb7
+ -77                     bbbbbbbbbbbb                7777777777777777
+ -76     4444        00bbbbbbbbbbbbbbbb            7777aaaaa777777777
+ -75     44444444000000bbbbbbb2222bbbbbb888888888887777aaaaa777777777
+ -74     44444440000000bbbbbbb222222bbbb888888888887777aaaaa77777777 
+ -73     44444440000000bbbbbbbbbbbbbbbbb888888888887777aaabbbbbb7777 
+ -72     4444440000000000000000022222222222222222222222aaabbbbbb7777 
+ -71     4440000000000000000000002222222222222222222222277bbbbbb7777 
+ -70     4440000000000000555000000022222222222222222222277bbbbbb7777 
+ -69     0000000000000005555000000222222222222222222222777bbbbbb7777 
+ -68     0000000000000000555005522222222288888888887777777bbbbbb7777 
+ -67      0000000000000000000022222222228888888888877777777777777777 
+ -66     000000000000000000022222222228888888888888777777777777777777
+ -65     000000000000000002222222220888888888888888777777777777777777
+ -64     000000000000                    0000111000777777777777777777
  -63     000000000000                    0001111100777777777777777777
  -62     000000000000                    0011111111777777777777777777
  -61     000000000000                    011111111177777          777
@@ -169,20 +169,20 @@ KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn
   60 777          777771111111110                    000000000000    
   61 7777777777777777777111111100                    000000000000    
   62 7777777777777777777011111000                    000000000000    
-  63 7bbbbbbbbbbbbbb7777001110000                    000000000000    
-  64 7bbbbbbbbbbbbbb777700000000000000022222222200000000000000000    
-  65 7bbbbbbbbbbbbbb777788888888888822222222220000000000000000000    
-  66  bbbbbbbbbbbbbb77778888888888222222222200000000000000000000     
-  67  bbbbbbbbbbbbbb777788888888822222222255005550000000000000000    
-  68  bbbbbbbbbbbbb2222222222222222222220000005555000000000000000    
-  69  bbbbbbbbbbbb22222222222222222222200000005550000000000000444    
-  70  bbbbbbbbbbbb22222222222222222222222000000000000000000000444    
-  71  bbbbbbbbbbbbb2222222222222222222222200000000000000000444444    
-  72  bbbbbbbbbbbbbb777788888888888822222220000000000000004444444    
-  73  bbbbbbbbbbbbbb777788888888888bbb222222bbbbbbbb0000004444444    
-  74 7bbbbbbbbbbbbbb777788888888888bbbbb2222bbbbbbbb0000044444444    
-  75 7bbbbbbbbbbbbbb777            bbbbbbbbbbbbbbbbb0        4444    
-  76 7bbbbbbbbbbbbbb7                bbbbbbbbbbbb                    
+  63 7777777777777777777001110000                    000000000000    
+  64 777777777aaaaa7777700000000000000022222222200000000000000000    
+  65 777777777aaaaa7777788888888888822222222220000000000000000000    
+  66  77777777aaaaa777778888888888222222222200000000000000000000     
+  67  7777bbbbbbaaa7777788888888822222222255005550000000000000000    
+  68  7777bbbbbbaaa2222222222222222222220000005555000000000000000    
+  69  7777bbbbbb7722222222222222222222200000005550000000000000444    
+  70  7777bbbbbb7722222222222222222222222000000000000000000000444    
+  71  7777bbbbbb7772222222222222222222222200000000000000000444444    
+  72  7777bbbbbb7777777788888888888822222220000000000000004444444    
+  73  77777777777777777788888888888bbb222222bbbbbbbb0000004444444    
+  74 777777777777777777788888888888bbbbb2222bbbbbbbb0000044444444    
+  75 777777777777777777            bbbbbbbbbbbbbbbbb0        4444    
+  76 7777777777777777                bbbbbbbbbbbb                    
   77 7777777777777777                bbbbb2222bbb                    
   78 7777777777777777                bbbbb2222bbb                    
   79 777          777                bbbbbbbbbbb                     
@@ -198,16 +198,16 @@ KEY  0 free  1 water  2 paving  3 structure  4 tree  5 boulder  6 flora  7 spawn
   89                                 00bbbbbbbbb0                    
   90                                 000bbbbbbbb0                    
   91                                 000bbbbbbbb0                    
-  92                                 bb0bbbbbbbb000bbbbbbbbbb        
-  93                                 bb0bbbbbbbb888bbbbbbbbbb        
-  94                                 bb0bbbbbbbb888bbbbbbbbbb        
-  95                                 bb0bbbbbbbb888bbbbbbbbbb        
-  96                                 bb000008888888bbbbbbbbbb        
-  97                                 bb000008888888bbbbbbbbbb        
-  98                                 bb000008888888bbbbbbbbbb        
-  99                                 bb000008888888bbbbbbbbbb        
- 100                                 0bb00008888888bbbbbbbbbb        
- 101                                 0bbb0008888888bbbbbbbbbb        
- 102                                 00000008888888bbbbbbbbbb        
- 103                                 00000008888888bbbbbbbbbb        
+  92                                 bb0bbbbbbbb000bbbbbaaaaa        
+  93                                 bb0bbbbbbbb888bbbbbaaaaa        
+  94                                 bb0bbbbbbbb888bbbbbaaaaa        
+  95                                 bb0bbbbbbbb888bbbbbbbbba        
+  96                                 bb000008888888bbbbbbbbba        
+  97                                 bb000008888888bbbbbbbbba        
+  98                                 bb000008888888bbbbbbbbba        
+  99                                 bb000008888888bbbbbbbbba        
+ 100                                 0bb00008888888bbbbbbbbba        
+ 101                                 0bbb0008888888bbbbbaaaaa        
+ 102                                 00000008888888bbbbbaaaaa        
+ 103                                 00000008888888bbbbbaaaaa        
 placed 20, declined 0

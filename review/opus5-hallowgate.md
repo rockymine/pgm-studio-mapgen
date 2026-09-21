@@ -88,6 +88,15 @@ on the terrace's top block plus one, a roof on the walls' top, `kind: "made"` an
 so `SK10`'s pair walk and `SK11`'s reachability walk stay off it. Seven blocks wide on a
 sixteen-block terrace, with five blocks of yard south of it for the route to the room.
 
+## Both rooms are buildings
+
+`roomStyles` takes two members and this board states both, because the default is the
+studio's built-in bedrock box standing where the wool is fetched from and where every player
+arrives. Both are the chapel's family — birch over stone brick on a dark, wet ground, with a
+dark oak frame — and both are **flat** roofed, which is the only form that can carry a hole.
+The wool room takes the darker lid and a two-block door; the spawn hall the paler lid and a
+three-block one.
+
 ## What went wrong
 
 **Both made structures floated a course above what they were meant to rest on.** A layer's

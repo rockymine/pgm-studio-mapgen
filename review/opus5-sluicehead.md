@@ -64,18 +64,19 @@ polyline revetment: a cut leat is walled, and four clicked points spline into th
 | Read | Answer |
 |---|---|
 | `03-slopes.txt` | 10 936 walked · 840 scrambled · 224 barrier; 6 faces, largest 80 at x −18…20, z −87…−85 |
-| `06-claims.txt` | 24 placed, **1 declined** — see below |
+| `06-claims.txt` | **26 placed, 0 declined** |
 | `GET …/coverage` | reached 11 153 · decorated 369 · dead 478 of 12 000 = **4.0% dead** |
 | `POST …/sketch/relief/read` | group `team`: 4 550 cells, 8…24, relief 16, symmetry error 0 |
 | `GO1` | own 58 · enemy 185 · ratio **3.19** |
 | `GET …/preflight` | **export gate OPEN**, per team |
 
-## What is outstanding
+## The spawn is a building
 
-**One boulder, `rock-w1`, is declined `DR-KEEP`** — it rests at (5, −67), inside the
-keep-out of the leat revetment added in the last pass. The fix is a position off
-`POST …/sketch/seats`; it had not been applied when this board was committed. The board
-exports and plays without it; the prop is simply not in the world.
+`roomStyles` states the spawn's shell, and a finish that states none stamps the studio's
+built-in bedrock box — which is the one structure every player on the board sees from the
+inside. It is the sluice house's own style at one storey: stone brick with a mossy course,
+a spruce frame carried through post, beams and the laid log, and a **flat** roof, which is
+the only form that can carry a hole.
 
 ## What went wrong
 

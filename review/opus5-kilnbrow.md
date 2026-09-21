@@ -78,6 +78,14 @@ rises 2, falls 5, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to en
 | `POST …/sketch/relief/read` | group `team`: 4 200 cells, 5…26, relief 21, symmetry error 0 |
 | `GET …/preflight` | **export gate OPEN**, per team |
 
+## The spawn is a building
+
+`roomStyles` states the spawn's shell. A finish that states none stamps the studio's
+built-in bedrock box, and that box is the first thing every player looks at from the inside.
+The hall is the kiln row's own style at one storey — laid dark oak over smooth sandstone,
+one frame timber throughout — under a **flat** roof, which is the only form that can carry
+a hole.
+
 ## What went wrong
 
 **The board was three times too long for its own buildings before `DR-PASS` said so.** A

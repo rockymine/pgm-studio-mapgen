@@ -375,6 +375,51 @@ CHAPEL_SHELL = {
                 "width": 2, "height": 4},
 }
 
+# ── the rooms ─────────────────────────────────────────────────────────────────
+# Both of them, because a finish that states neither leaves the studio's built-in bedrock box
+# standing where the wool is fetched from and where every player arrives. They are the
+# chapel's own family — birch over stone brick on a dark, wet ground — and both are flat
+# roofed, which is the only form that can carry a hole.
+ROOM_WALL = {"stack": {"bands": [
+    {"material": {"kind": "laidLog", "id": LOG2, "data": 1}, "thickness": 1},
+    {"material": solid(BIRCH_PLANKS), "thickness": 3},
+    {"material": solid(STONE_BRICK), "thickness": 4},
+], "ending": "repeat"}, "extent": 8}
+
+
+def room_shell(roof_body, door_width):
+    return {
+        "foundation": {
+            "plate": {"stack": {"bands": [{"material": solid(STONE_BRICK), "thickness": 1}],
+                                "ending": "repeat"}, "extent": 1},
+            "surface": {"field": None, "border": None, "borderWidth": 1, "inlay": None,
+                        "inlayInset": 2, "isPlain": True},
+            "footing": None,
+        },
+        "roof": {
+            "form": "flat", "pitch": 1, "slab": -1, "slabData": 0, "overhang": 1,
+            "ridgeCap": False, "hole": True,
+            "body": solid(roof_body),
+            "verge": {"kind": "laidLog", "id": LOG2, "data": 1},
+            "gable": solid(roof_body),
+            "gableWindows": {"form": "none", "block": 102, "hostBlock": -1, "hostData": 0,
+                             "data": 0, "sill": 2, "width": 2, "height": 2, "spacing": 3},
+        },
+        "wall": ROOM_WALL,
+        "post": solid(DARK_OAK_LOG),
+        "windows": {"form": "arched", "block": BIRCH_STAIRS, "hostBlock": -1, "hostData": 0,
+                    "data": 0, "sill": 3, "width": 2, "height": 3, "spacing": 4},
+        "storeys": [],
+        "porch": None,
+        "front": None,
+        "beams": {"block": LOG2, "data": 1, "reach": 1, "any": True},
+        "doorway": {"door": "air",
+                    "head": {"form": "arched", "block": BIRCH_STAIRS, "fill": "upperSlab",
+                             "fillBlock": BIRCH_SLAB[0], "fillData": BIRCH_SLAB[1]},
+                    "width": door_width, "height": 4},
+    }
+
+
 # ── the dressing ──────────────────────────────────────────────────────────────
 # The ground here is soft, so the path is dirt, coarse dirt and spruce planks — three
 # colours a reader cannot quite tell apart.
@@ -453,6 +498,9 @@ finish = {
     # Swampland, #6a7039. The grass tint comes to meet podzol's brown, so the pair reads as
     # one dry, leaf-littered floor instead of as two grounds arguing.
     "biome": {"kind": "solid", "id": 6},
+    # the chapel the wool is fetched from, and the hall every player arrives in
+    "roomStyles": {"wool": room_shell(DARK_OAK_PLANKS, 2),
+                   "spawn": room_shell(BIRCH_PLANKS, 3)},
     "mapTheme": "mire",
     "themes": themes,
     # Keyed on the compiled shape ids, read off POST /plan/compile: the compiler fuses every
