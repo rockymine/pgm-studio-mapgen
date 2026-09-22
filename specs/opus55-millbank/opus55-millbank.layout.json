@@ -6,10 +6,10 @@
    "cz": 0
   },
   "bbox": {
-   "min_x": -68,
-   "max_x": 68,
-   "min_z": -128,
-   "max_z": 128
+   "min_x": -76,
+   "max_x": 76,
+   "min_z": -136,
+   "max_z": 136
   }
  },
  "layers": [
@@ -97,11 +97,11 @@
         80
        ],
        [
-        64,
+        72,
         80
        ],
        [
-        64,
+        72,
         92
        ],
        [
@@ -118,11 +118,11 @@
        ],
        [
         24,
-        124
+        132
        ],
        [
         8,
-        124
+        132
        ],
        [
         8,
@@ -150,11 +150,11 @@
        ],
        [
         -36,
-        100
+        108
        ],
        [
         -48,
-        100
+        108
        ],
        [
         -48,
@@ -283,7 +283,7 @@
       "min_x": 8,
       "min_z": 116,
       "max_x": 24,
-      "max_z": 124,
+      "max_z": 132,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -308,13 +308,44 @@
       "material": null
      },
      {
+      "id": "spawn-red-building",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": 9,
+      "min_z": 124,
+      "max_x": 23,
+      "max_z": 131,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "building",
+      "intentRef": null,
+      "color": "red",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
       "id": "spawn-blue",
       "type": "rectangle",
       "operation": "add",
       "override": false,
       "keepClear": false,
       "min_x": -24,
-      "min_z": -124,
+      "min_z": -132,
       "max_x": -8,
       "max_z": -116,
       "center_x": null,
@@ -339,6 +370,37 @@
       "material": null
      },
      {
+      "id": "spawn-blue-building",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -23,
+      "min_z": -131,
+      "max_x": -9,
+      "max_z": -124,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "building",
+      "intentRef": null,
+      "color": "blue",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
       "id": "wool-red-red",
       "type": "rectangle",
       "operation": "add",
@@ -347,7 +409,7 @@
       "min_x": -48,
       "min_z": 92,
       "max_x": -36,
-      "max_z": 100,
+      "max_z": 108,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -372,6 +434,37 @@
       "material": null
      },
      {
+      "id": "wool-red-red-building",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -47,
+      "min_z": 100,
+      "max_x": -37,
+      "max_z": 107,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "building",
+      "intentRef": null,
+      "color": "red",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
       "id": "wool-red-orange",
       "type": "rectangle",
       "operation": "add",
@@ -379,7 +472,7 @@
       "keepClear": false,
       "min_x": 56,
       "min_z": 80,
-      "max_x": 64,
+      "max_x": 72,
       "max_z": 92,
       "center_x": null,
       "center_z": null,
@@ -405,13 +498,44 @@
       "material": null
      },
      {
+      "id": "wool-red-orange-building",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": 64,
+      "min_z": 81,
+      "max_x": 71,
+      "max_z": 91,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "building",
+      "intentRef": null,
+      "color": "orange",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
       "id": "wool-blue-blue",
       "type": "rectangle",
       "operation": "add",
       "override": false,
       "keepClear": false,
       "min_x": 36,
-      "min_z": -100,
+      "min_z": -108,
       "max_x": 48,
       "max_z": -92,
       "center_x": null,
@@ -436,12 +560,43 @@
       "material": null
      },
      {
+      "id": "wool-blue-blue-building",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": 37,
+      "min_z": -107,
+      "max_x": 47,
+      "max_z": -100,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "building",
+      "intentRef": null,
+      "color": "blue",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
       "id": "wool-blue-light_blue",
       "type": "rectangle",
       "operation": "add",
       "override": false,
       "keepClear": false,
-      "min_x": -64,
+      "min_x": -72,
       "min_z": -92,
       "max_x": -56,
       "max_z": -80,
@@ -460,6 +615,37 @@
       "floor": null,
       "role": "woolRoom",
       "intentRef": "blue:light_blue",
+      "color": "light_blue",
+      "height_authored": null,
+      "doors": null,
+      "theme": null,
+      "material": null
+     },
+     {
+      "id": "wool-blue-light_blue-building",
+      "type": "rectangle",
+      "operation": "add",
+      "override": false,
+      "keepClear": false,
+      "min_x": -71,
+      "min_z": -91,
+      "max_x": -64,
+      "max_z": -81,
+      "center_x": null,
+      "center_z": null,
+      "radius": null,
+      "vertices": null,
+      "controls": null,
+      "stroke_edge": null,
+      "stroke_seed": null,
+      "height_mode": null,
+      "skirt": null,
+      "relief_scope": null,
+      "base_height": null,
+      "anchor_heights": null,
+      "floor": null,
+      "role": "building",
+      "intentRef": null,
       "color": "light_blue",
       "height_authored": null,
       "doors": null,
@@ -667,11 +853,11 @@
        74
       ],
       [
-       68,
+       76,
        74
       ],
       [
-       68,
+       76,
        94
       ],
       [
@@ -696,11 +882,11 @@
       ],
       [
        -34,
-       104
+       112
       ],
       [
        -52,
-       104
+       112
       ]
      ]
     },
@@ -720,11 +906,11 @@
       ],
       [
        26,
-       126
+       134
       ],
       [
        6,
-       126
+       134
       ]
      ]
     },

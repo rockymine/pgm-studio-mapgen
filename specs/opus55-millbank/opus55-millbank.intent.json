@@ -24,21 +24,26 @@
    "point": {
     "x": 16,
     "y": 9,
-    "z": 120
+    "z": 127
    },
    "protection": [
     {
      "minX": 8,
      "minZ": 116,
      "maxX": 24,
-     "maxZ": 124
+     "maxZ": 132
     }
    ],
    "yaw": 180,
    "doors": [
     "-z"
    ],
-   "footprint": null,
+   "footprint": {
+    "minX": 9,
+    "minZ": 124,
+    "maxX": 23,
+    "maxZ": 131
+   },
    "iron": []
   },
   {
@@ -52,12 +57,12 @@
    "point": {
     "x": -16,
     "y": 9,
-    "z": -120
+    "z": -127
    },
    "protection": [
     {
      "minX": -24,
-     "minZ": -124,
+     "minZ": -132,
      "maxX": -8,
      "maxZ": -116
     }
@@ -66,7 +71,12 @@
    "doors": [
     "+z"
    ],
-   "footprint": null,
+   "footprint": {
+    "minX": -23,
+    "minZ": -131,
+    "maxX": -9,
+    "maxZ": -124
+   },
    "iron": []
   }
  ],
@@ -106,16 +116,21 @@
      "minX": -48,
      "minZ": 92,
      "maxX": -36,
-     "maxZ": 100
+     "maxZ": 108
     }
    ],
    "spawn": {
     "x": -42,
     "y": 9,
-    "z": 96
+    "z": 103
    },
    "monuments": [],
-   "footprint": null,
+   "footprint": {
+    "minX": -47,
+    "minZ": 100,
+    "maxX": -37,
+    "maxZ": 107
+   },
    "entries": [
     {
      "minX": -48,
@@ -138,17 +153,22 @@
     {
      "minX": 56,
      "minZ": 80,
-     "maxX": 64,
+     "maxX": 72,
      "maxZ": 92
     }
    ],
    "spawn": {
-    "x": 60,
+    "x": 67,
     "y": 9,
     "z": 86
    },
    "monuments": [],
-   "footprint": null,
+   "footprint": {
+    "minX": 64,
+    "minZ": 81,
+    "maxX": 71,
+    "maxZ": 91
+   },
    "entries": [
     {
      "minX": 56,
@@ -170,7 +190,7 @@
    "protection": [
     {
      "minX": 36,
-     "minZ": -100,
+     "minZ": -108,
      "maxX": 48,
      "maxZ": -92
     }
@@ -178,10 +198,15 @@
    "spawn": {
     "x": 42,
     "y": 9,
-    "z": -96
+    "z": -103
    },
    "monuments": [],
-   "footprint": null,
+   "footprint": {
+    "minX": 37,
+    "minZ": -107,
+    "maxX": 47,
+    "maxZ": -100
+   },
    "entries": [
     {
      "minX": 36,
@@ -202,19 +227,24 @@
    "color": "light_blue",
    "protection": [
     {
-     "minX": -64,
+     "minX": -72,
      "minZ": -92,
      "maxX": -56,
      "maxZ": -80
     }
    ],
    "spawn": {
-    "x": -60,
+    "x": -67,
     "y": 9,
     "z": -86
    },
    "monuments": [],
-   "footprint": null,
+   "footprint": {
+    "minX": -71,
+    "minZ": -91,
+    "maxX": -64,
+    "maxZ": -81
+   },
    "entries": [
     {
      "minX": -56,

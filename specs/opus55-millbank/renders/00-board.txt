@@ -1,68 +1,72 @@
-      |      -1         0         1      |
-      | 65432109876543210123456789012345 |
-  -31 |           SSSS                   |
-  -30 |           SS@S                   |
-  -29 |           EEEE                   |
-  -28 |           EEEE                   |
-  -27 |         AAAAAAAAAAAA             |
-  -26 |         AAAAAAAAAAAA             |
-  -25 |         AAAAAAAAAAAA     WWW     |
-  -24 |         AAAAAAAAAAAA     W¤W     |
-  -23 | VVGGGGLLDDDDooooCCCCKFFFFFFF     |
-  -22 | V¤GGGGLLDDDDooooCCCCKFFFFFFF     |
-  -21 | VVGGGGLLDDDDooooCCCCKFFFFFFF     |
-  -20 |   GGGGLLDDDDooooCCCCKFFFFFFF     |
-  -19 |         BBBBBBBBBBBB             |
-  -18 |         BBBBBBBBBBBB             |
-  -17 |         BBBBBBBBBBBB             |
-  -16 |         BBBBBBBBBBBB             |
-  -15 |         HHHHHHHHHHHH             |
-  -14 |         HHHHHHHHHHHH             |
-  -13 |         HHHHHHHHHHHH             |
-  -12 |         HHHHHHHHHHHH             |
-  -11 |             JJJJJJJJ             |
-  -10 |             JJJJJJJJ             |
-   -9 |             ++++++++             |
-   -8 |             ++++++++             |
-   -7 |             ++++++++             |
-   -6 |             ++++++++             |
-   -5 |             ++++++++             |
-   -4 |             MMMMMMMM             |
-   -3 |             MMMMMMMM             |
-   -2 |             MMMMMMMM             |
-   -1 |             MMMMMMMM             |
-    0 |             MMMMMMMM             |
-    1 |             MMMMMMMM             |
-    2 |             MMMMMMMM             |
-    3 |             MMMMMMMM             |
-    4 |             ++++++++             |
-    5 |             ++++++++             |
-    6 |             ++++++++             |
-    7 |             ++++++++             |
-    8 |             ++++++++             |
-    9 |             JJJJJJJJ             |
-   10 |             JJJJJJJJ             |
-   11 |             HHHHHHHHHHHH         |
-   12 |             HHHHHHHHHHHH         |
-   13 |             HHHHHHHHHHHH         |
-   14 |             HHHHHHHHHHHH         |
-   15 |             BBBBBBBBBBBB         |
-   16 |             BBBBBBBBBBBB         |
-   17 |             BBBBBBBBBBBB         |
-   18 |             BBBBBBBBBBBB         |
-   19 |     FFFFFFFKCCCCooooDDDDLLGGGG   |
-   20 |     FFFFFFFKCCCCooooDDDDLLGGGGVV |
-   21 |     FFFFFFFKCCCCooooDDDDLLGGGGV¤ |
-   22 |     FFFFFFFKCCCCooooDDDDLLGGGGVV |
-   23 |     WWW     AAAAAAAAAAAA         |
-   24 |     W¤W     AAAAAAAAAAAA         |
-   25 |             AAAAAAAAAAAA         |
-   26 |             AAAAAAAAAAAA         |
-   27 |                   EEEE           |
-   28 |                   EEEE           |
-   29 |                   SSSS           |
-   30 |                   SS@S           |
-      32 × 62 cells drawn  ·  32 × 62 cells = 128 × 248 blocks  ·  cell 4
+      |        -1         0         1        |
+      | 876543210987654321012345678901234567 |
+  -33 |             SSSS                     |
+  -32 |             SS@S                     |
+  -31 |             SSSS                     |
+  -30 |             SSSS                     |
+  -29 |             EEEE                     |
+  -28 |             EEEE                     |
+  -27 |           AAAAAAAAAAAA     WWW       |
+  -26 |           AAAAAAAAAAAA     W¤W       |
+  -25 |           AAAAAAAAAAAA     WWW       |
+  -24 |           AAAAAAAAAAAA     WWW       |
+  -23 | VVVVGGGGLLDDDDooooCCCCKFFFFFFF       |
+  -22 | V¤VVGGGGLLDDDDooooCCCCKFFFFFFF       |
+  -21 | VVVVGGGGLLDDDDooooCCCCKFFFFFFF       |
+  -20 |     GGGGLLDDDDooooCCCCKFFFFFFF       |
+  -19 |           BBBBBBBBBBBB               |
+  -18 |           BBBBBBBBBBBB               |
+  -17 |           BBBBBBBBBBBB               |
+  -16 |           BBBBBBBBBBBB               |
+  -15 |           HHHHHHHHHHHH               |
+  -14 |           HHHHHHHHHHHH               |
+  -13 |           HHHHHHHHHHHH               |
+  -12 |           HHHHHHHHHHHH               |
+  -11 |               JJJJJJJJ               |
+  -10 |               JJJJJJJJ               |
+   -9 |               ++++++++               |
+   -8 |               ++++++++               |
+   -7 |               ++++++++               |
+   -6 |               ++++++++               |
+   -5 |               ++++++++               |
+   -4 |               MMMMMMMM               |
+   -3 |               MMMMMMMM               |
+   -2 |               MMMMMMMM               |
+   -1 |               MMMMMMMM               |
+    0 |               MMMMMMMM               |
+    1 |               MMMMMMMM               |
+    2 |               MMMMMMMM               |
+    3 |               MMMMMMMM               |
+    4 |               ++++++++               |
+    5 |               ++++++++               |
+    6 |               ++++++++               |
+    7 |               ++++++++               |
+    8 |               ++++++++               |
+    9 |               JJJJJJJJ               |
+   10 |               JJJJJJJJ               |
+   11 |               HHHHHHHHHHHH           |
+   12 |               HHHHHHHHHHHH           |
+   13 |               HHHHHHHHHHHH           |
+   14 |               HHHHHHHHHHHH           |
+   15 |               BBBBBBBBBBBB           |
+   16 |               BBBBBBBBBBBB           |
+   17 |               BBBBBBBBBBBB           |
+   18 |               BBBBBBBBBBBB           |
+   19 |       FFFFFFFKCCCCooooDDDDLLGGGG     |
+   20 |       FFFFFFFKCCCCooooDDDDLLGGGGVVVV |
+   21 |       FFFFFFFKCCCCooooDDDDLLGGGGVV¤V |
+   22 |       FFFFFFFKCCCCooooDDDDLLGGGGVVVV |
+   23 |       WWW     AAAAAAAAAAAA           |
+   24 |       WWW     AAAAAAAAAAAA           |
+   25 |       W¤W     AAAAAAAAAAAA           |
+   26 |       WWW     AAAAAAAAAAAA           |
+   27 |                     EEEE             |
+   28 |                     EEEE             |
+   29 |                     SSSS             |
+   30 |                     SSSS             |
+   31 |                     SS@S             |
+   32 |                     SSSS             |
+      36 × 66 cells drawn  ·  36 × 66 cells = 144 × 264 blocks  ·  cell 4
       @ spawn   A hub-t1 (piece)   B hub-t2 (piece)   C hub-t3 (piece)   D hub-t4 (piece)   
       E spawn-t1 (piece)   F wool-a-t1 (piece)   G wool-b-t1 (piece)   H frontline-t1 (piece)   
       J frontline-t2 (piece)   K wool-a-neck (piece)   L wool-b-neck (piece)   

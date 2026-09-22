@@ -22,13 +22,24 @@ BASE = 9
 # neck is a cell longer than wool-a's so the two rooms are about the same walk from their own spawn.
 RECT = {
     "wool-a-t1": [-12, 14, 7, 4],
-    "wool-a-room": [-12, 18, 3, 2],
+    "wool-a-room": [-12, 18, 3, 4],
     "wool-b-t1": [10, 14, 4, 4],
-    "wool-b-room": [14, 15, 2, 3],
+    "wool-b-room": [14, 15, 4, 3],
+    "spawn-room": [2, 24, 4, 4],
+}
+
+# Every room is sixteen blocks deep along the way its door faces, and the building on it is seven deep and
+# stands at the back, leaving a yard nine deep in front of the door. Each marker stands inside its building.
+# A footprint is [x, z, w, h] in blocks from the piece's minimum corner. wool-a's room opens south onto its
+# arm, wool-b's west onto its arm, and the spawn south toward the hamlet.
+ROOMS = {
+    "wool-a-room": {"footprint": [1, 8, 10, 7], "at": [6, 11]},
+    "wool-b-room": {"footprint": [8, 1, 7, 10], "at": [11, 6]},
+    "spawn-room": {"footprint": [1, 8, 14, 7], "at": [8, 11]},
 }
 NECKS = [{"id": "wool-a-neck", "role": "piece", "rect": [-5, 14, 1, 4]},
          {"id": "wool-b-neck", "role": "piece", "rect": [8, 14, 2, 4]}]
-BOXES = {"wool-a": [-12, 14, 8, 6], "wool-b": [8, 14, 8, 4]}
+BOXES = {"wool-a": [-12, 14, 8, 8], "wool-b": [8, 14, 10, 4], "spawn": [2, 22, 4, 6]}
 
 # The holm in the gorge is as wide as the build zone and 32 blocks deep. The team units stand five cells further
 # out than composed, so the gorge is eighteen cells deep and the void between each lip and the holm is twenty
@@ -52,6 +63,8 @@ def plan():
     doc["pieces"].append(dict(HOLM, surface=BASE))
     doc["zones"] = [{"id": "mid-band", "rect": GORGE, "holes": []}]
     doc["walls"] = WALLS
+    for marker in doc["placements"]["spawns"] + doc["placements"]["wools"]:
+        marker.update(ROOMS.get(marker["piece"], {}))
     for box in doc.get("boxes", []):
         x, z, w, h = BOXES.get(box["id"], box["rect"])
         box["rect"] = [x, z + SHIFT, w, h]
@@ -69,8 +82,8 @@ TEAM_DZ = 4 * (SHIFT - 1)
 # lip is not touched: it is where the build zone attaches, and pulling it in would leave void the zone does not
 # cover.
 COMPILED_RING = [(-48, 60), (-16, 60), (-16, 20), (16, 20), (16, 28), (32, 28), (32, 60), (56, 60), (56, 64),
-                 (64, 64), (64, 76), (32, 76), (32, 92), (24, 92), (24, 108), (8, 108), (8, 92), (-16, 92),
-                 (-16, 76), (-36, 76), (-36, 84), (-48, 84)]
+                 (72, 64), (72, 76), (32, 76), (32, 92), (24, 92), (24, 116), (8, 116), (8, 92), (-16, 92),
+                 (-16, 76), (-36, 76), (-36, 92), (-48, 92)]
 RESHAPE = [
     ((-16, 60), (-16, 20), [(-19, 50), (-20, 36), (-18, 26)]),  # west flank of the hub and the meadow
     ((16, 28), (32, 28), [(25, 25)]),                            # the meadow's east shoulder
@@ -118,7 +131,7 @@ def orchards(h):
     """Each wall's seam held level at the approaches' height across the neck, a strip of the hub and the first
     blocks of the arm, so the bedrock stands on level ground its whole run. wool-b's approach is held level to
     its room; wool-a's has a relief of its own (WOOL_A_YARD, WOOL_A_SWELL)."""
-    return [area("wall-west", h, -26, 58, -12, 86), area("orchard-east", h, 28, 58, 68, 78)]
+    return [area("wall-west", h, -26, 58, -12, 86), area("orchard-east", h, 28, 58, 76, 78)]
 
 
 # wool-a's approach leans from the wall at 20 down to a yard at 17 round its room, with a low swell on its gorge
@@ -168,8 +181,8 @@ RELIEF = [
     area("lip", LIP, -20, 18, 36, 24),
     {"id": "hamlet-face", "kind": "scarp", "points": FACE, "low": FOOT, "high": HEAD, "face": 2, "band": 4},
     *orchards(APPROACHES),
-    area("wool-a-yard", WOOL_A_YARD, -52, 74, -34, 88),
-    area("spawn-yard", SPAWN_YARD, 6, 94, 26, 110),
+    area("wool-a-yard", WOOL_A_YARD, -52, 74, -34, 96),
+    area("spawn-yard", SPAWN_YARD, 6, 94, 26, 118),
     stair("stair-west", -12),
     stair("stair-east", 28),
 ]

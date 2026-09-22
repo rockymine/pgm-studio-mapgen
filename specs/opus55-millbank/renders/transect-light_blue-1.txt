@@ -1,53 +1,54 @@
 ## light_blue-1 (wool) along x
-TRANSECT 17 stations from (-64, -86) to (-48, -86), every 1
+TRANSECT 18 stations from (-72, -86) to (-55, -86), every 1
   station        ground  surface  water  top  standing            step
+  (  -72,   -86)      20       20           20                      
+  (  -71,   -86)      20       20           28  wool wool-2#1       
+  (  -70,   -86)      20       20           28  wool wool-2#1       
+  (  -69,   -86)      20       20           20  wool wool-2#1       
+  (  -68,   -86)      20       20           45  wool wool-2#1       
+  (  -67,   -86)      20       20           45  wool wool-2#1       
+  (  -66,   -86)      20       20           45  wool wool-2#1       
+  (  -65,   -86)      20       20           28  wool wool-2#1       
   (  -64,   -86)      20       20           20                      
-  (  -63,   -86)      20       20           28  wool wool-2#1       
-  (  -62,   -86)      20       20           28  wool wool-2#1       
-  (  -61,   -86)      20       20           45  wool wool-2#1       
-  (  -60,   -86)      20       20           45  wool wool-2#1       
-  (  -59,   -86)      20       20           45  wool wool-2#1       
-  (  -58,   -86)      20       20           28  wool wool-2#1       
+  (  -63,   -86)      20       20           20                      
+  (  -62,   -86)      20       20           20                      
+  (  -61,   -86)      20       20           20                      
+  (  -60,   -86)      20       20           20                      
+  (  -59,   -86)      20       20           20                      
+  (  -58,   -86)      20       20           20                      
   (  -57,   -86)      20       20           21  redstoneline 1#1    
   (  -56,   -86)      20       20           20                      
   (  -55,   -86)      20       20           20                      
-  (  -54,   -86)      20       20           20                      
-  (  -53,   -86)      20       20           20                      
-  (  -52,   -86)      20       20           20                      
-  (  -51,   -86)      20       20           20                      
-  (  -50,   -86)      19       19           19                      -1
-  (  -49,   -86)      19       19           19                      
-  (  -48,   -86)      19       19           19                      
-rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-2#1 at (-63, -88), redstoneline 1#1 at (-57, -88)
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: wool wool-2#1 at (-71, -88), redstoneline 1#1 at (-57, -88)
 
 ## light_blue-1 (wool) along z
-TRANSECT 25 stations from (-60, -98) to (-60, -74), every 1
+TRANSECT 25 stations from (-67, -98) to (-67, -74), every 1
   station        ground  surface  water  top  standing            step
-  (  -60,   -98)                                                    void
-  (  -60,   -97)                                                    void
-  (  -60,   -96)                                                    void
-  (  -60,   -95)                                                    void
-  (  -60,   -94)                                                    void
-  (  -60,   -93)                                                    void
-  (  -60,   -92)      20       20           20                      
-  (  -60,   -91)      20       20           28  wool wool-2#1       
-  (  -60,   -90)      20       20           28  wool wool-2#1       
-  (  -60,   -89)      20       20           28  wool wool-2#1       
-  (  -60,   -88)      20       20           20  wool wool-2#1       
-  (  -60,   -87)      20       20           45  wool wool-2#1       
-  (  -60,   -86)      20       20           45  wool wool-2#1       
-  (  -60,   -85)      20       20           45  wool wool-2#1       
-  (  -60,   -84)      20       20           28  wool wool-2#1       
-  (  -60,   -83)      20       20           28  wool wool-2#1       
-  (  -60,   -82)      20       20           28  wool wool-2#1       
-  (  -60,   -81)      20       20           20                      
-  (  -60,   -80)                                                    void
-  (  -60,   -79)                                                    void
-  (  -60,   -78)                                                    void
-  (  -60,   -77)                                                    void
-  (  -60,   -76)                                                    void
-  (  -60,   -75)                                                    void
-  (  -60,   -74)                                                    void
+  (  -67,   -98)                                                    void
+  (  -67,   -97)                                                    void
+  (  -67,   -96)                                                    void
+  (  -67,   -95)                                                    void
+  (  -67,   -94)                                                    void
+  (  -67,   -93)                                                    void
+  (  -67,   -92)      20       20           20                      
+  (  -67,   -91)      20       20           28  wool wool-2#1       
+  (  -67,   -90)      20       20           28  wool wool-2#1       
+  (  -67,   -89)      20       20           28  wool wool-2#1       
+  (  -67,   -88)      20       20           20  wool wool-2#1       
+  (  -67,   -87)      20       20           45  wool wool-2#1       
+  (  -67,   -86)      20       20           45  wool wool-2#1       
+  (  -67,   -85)      20       20           45  wool wool-2#1       
+  (  -67,   -84)      20       20           28  wool wool-2#1       
+  (  -67,   -83)      20       20           28  wool wool-2#1       
+  (  -67,   -82)      20       20           28  wool wool-2#1       
+  (  -67,   -81)      20       20           20                      
+  (  -67,   -80)                                                    void
+  (  -67,   -79)                                                    void
+  (  -67,   -78)                                                    void
+  (  -67,   -77)                                                    void
+  (  -67,   -76)                                                    void
+  (  -67,   -75)                                                    void
+  (  -67,   -74)                                                    void
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-2#1 at (-62, -91)
+beside: wool wool-2#1 at (-69, -91)
