@@ -70,6 +70,11 @@ do the other's job is the single most expensive mistake available at this stage.
 height leaves the solver nothing to solve, and a board with a mark on every region is a table with bumps on
 it however tall the bumps are. Pin the ground a player stands on and leave the flanks alone.
 
+**Sketch the relief more than one way before settling it.** The same plan under three or four reliefs, driven
+unpainted and looked at side by side, turns a judgement about ground into a choice between built alternatives,
+and the relief that ships takes what each did well. It is the one decision here that cannot be added later, so
+it is the one worth building more than once.
+
 ## 4. The shapes
 
 **A shape is drawn once and reshaped one point at a time.** Moving, inserting and removing a vertex each

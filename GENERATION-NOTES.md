@@ -261,6 +261,17 @@ face one block over carries none: the wall does not have two faces with a chest 
 two.
 
 
+### `PL17` compares the two pieces a wall names, so a wall at a T is passed and flanked
+
+The rule asks whether the pieces either side of a wall are the same width, and nothing else. An arm sixteen
+blocks deep walled against a hub side sixteen deep passes it, while the hub's pieces in front of and behind that
+side run on past both ends of the wall, and a player rounds it off either corner of the junction.
+
+**Put a neck between them and wall the neck's seam.** A piece one cell long and as deep as the arm, walled on
+its seam with the arm, has void past both ends of the wall. The room still wants its fifteen or so blocks behind
+the wall (`ST8`), so the arm grows by the neck's length.
+
+
 ### On a bridging board the gaps are the design, so state them first
 
 Six-block gaps between groups answer `G2` (a corridor under ten wide), `G5` (a hop outside 10–20)
@@ -548,8 +559,14 @@ exactly.**
 ### A relief is solved on the group's primary half, and its surface is copied through the mirror
 
 A mark on the far half constrains cells the solve never visits and is overwritten by the image of the near
-half. State every mark on the side the plan's pieces are authored on, and pin a footprint that straddles the
-axis on both sides.
+half. For a team's ground that is the side the plan's pieces are authored on, because a mirrored group's
+footprint is that one unit.
+
+**A group that straddles the axis is solved on its `z < 0` half.** A neutral holm under `rot_180` is one
+footprint across the centre, and the half-turn keeps the cells north of the centre and copies them south, so a
+mark stated south of it is discarded without a finding. Measured: a 32-block holm with a bank, a knoll and an
+edge stated on its south half and a bed across the centre solved flat at the bed's 7 over all 1,024 cells, and
+the relief read listed no silent mark. The same marks turned through the centre built 7 to 13.
 
 ### A mark pins its own cells and the relaxation slopes everything within `reach`
 
@@ -645,6 +662,19 @@ board's edge is a mountainside cut through rather than ground decaying to `base`
 On one board three mountain marks lay entirely outside its polygon and a fourth ran out through both ends
 of it; every contour band in its heightmap closed on the frame rather than inside it. A mark placed *wholly* out of reach does nothing and raises nothing — no `SK3`, no warning — so
 the check is the heightmap, not the document.
+
+### A push's ring has to hold land, or it lifts nothing
+
+A push's falloff is measured from its ring **across the land**, so a ring lying wholly over the void — even one
+whose edge touches the coast — has nothing to measure from and moves no cell. No finding is raised;
+`POST …/sketch/relief/read` answers each push's `cells`, and zero is a push that landed nowhere. Measured: a
+swell of 3 with a 6-block falloff, its ring drawn on the void side of a coast, left the ground under it level,
+and the same ring moved to straddle the coast with two rows of land inside rose to the brink and eased out over
+six blocks.
+
+**That is the instrument for ground that rises or dips toward an edge**: a swell on a coast, a tilt toward a
+spawn along a wall's seam, a lip dipping into a hole. The ring follows the edge two blocks proud of it, on the
+land side.
 
 ### A held shape's `skirt` is read as the bevel of the mark it pins with
 

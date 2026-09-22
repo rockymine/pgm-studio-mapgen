@@ -116,6 +116,8 @@ between its foot and the spawn.
 **A hill at the board's edge may keep its height, because only a portion of it stands on the board.** Centre
 its ring over the void outside the coast and the skirt that lands reads as a cliff at the water rather than as
 a cone with a path round it — which is the one place on a wool board where steep ground costs nobody a route.
+The ring must still hold some land: a push's falloff is measured across the land, so a ring wholly over the
+void lifts nothing and says nothing.
 
 **The frontline and the ground in front of a bedrock wall are the two places a hill is always wrong.** Both
 are ground a team has to cross under fire, and a landform there decides the fight instead of the players.
