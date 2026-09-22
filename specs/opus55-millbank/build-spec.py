@@ -141,6 +141,34 @@ HOLE_OPS = [
 ]
 
 
+
+
+def hole_ring(margin):
+    """The hexagon HOLE_OPS draws, pushed `margin` blocks out from its centre at every point."""
+    points = [(op["x"], op["z"]) for op in sorted(HOLE_OPS, key=lambda op: HOLE_ORDER.index(op_key(op)))]
+    cx = sum(x for x, _ in points) / len(points)
+    cz = sum(z for _, z in points) / len(points)
+    ring = []
+    for x, z in points:
+        length = ((x - cx) ** 2 + (z - cz) ** 2) ** 0.5
+        ring.append([round(x + margin * (x - cx) / length, 1), round(z + margin * (z - cz) / length, 1)])
+    return ring
+
+
+def op_key(op):
+    return (op["x"], op["z"])
+
+
+# The order the hexagon's points stand in round the ring once HOLE_OPS has been applied.
+HOLE_ORDER = [(1, 58), (12, 56), (17, 65), (15, 78), (4, 80), (-1, 69)]
+
+# The hub's ground dips toward the hole: a shallow hollow traced on the hexagon two blocks proud of its edge, so
+# the ring holds a lip of land (a ring wholly over the void lowers nothing), falling two blocks at the brink and
+# easing back over five.
+HOLE_LIP = {"id": "hole-lip", "ring": hole_ring(2), "amount": -2, "falloff": 5, "crown": 0, "roughness": 0,
+            "seed": 1}
+
+
 def area(mark_id, h, x0, z0, x1, z1, bevel=0):
     return {"id": mark_id, "kind": "area", "h": h, "bevel": bevel,
             "ring": [[x0, z0], [x1, z0], [x1, z1], [x0, z1]]}
@@ -249,7 +277,7 @@ def finish():
     return {
         "editShapes": {TEAM: ops, HOLE: hole},
         "relief": {"team": {"base": BASE, "reach": 0, "step": 1, "marks": marks,
-                            "pushes": onto_board(copy.deepcopy([WOOL_A_SWELL, WOOL_B_TILT]), [])[0]},
+                            "pushes": onto_board(copy.deepcopy([WOOL_A_SWELL, WOOL_B_TILT, HOLE_LIP]), [])[0]},
                    "neutral": {"base": BANK, "reach": 0, "step": 1, "marks": HOLM_RELIEF,
                                "pushes": HOLM_PUSHES}},
         "dressing": {"props": [RIVER]},
