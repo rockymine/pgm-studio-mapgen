@@ -1,10 +1,10 @@
 ## orange-0 (wool) along x
 TRANSECT 15 stations from (48, 78) to (62, 78), every 1
   station        ground  surface  water  top  standing            step
-  (   48,    78)      20       20           20                      
-  (   49,    78)      20       20           20                      
-  (   50,    78)      20       20           20                      
-  (   51,    78)      20       20           20                      
+  (   48,    78)      19       19           19                      
+  (   49,    78)      19       19           19                      
+  (   50,    78)      19       19           19                      
+  (   51,    78)      20       20           20                      +1
   (   52,    78)      20       20           20                      
   (   53,    78)      20       20           20                      
   (   54,    78)      20       20           20                      
@@ -16,7 +16,7 @@ TRANSECT 15 stations from (48, 78) to (62, 78), every 1
   (   60,    78)      20       20           45  wool wool-2         
   (   61,    78)      20       20           45  wool wool-2         
   (   62,    78)      20       20           28  wool wool-2         
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: redstoneline 1 at (56, 76), wool wool-2 at (57, 76)
 
 ## orange-0 (wool) along z

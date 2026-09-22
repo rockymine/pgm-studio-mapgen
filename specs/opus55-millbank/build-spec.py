@@ -130,6 +130,13 @@ WOOL_A_YARD = 17
 WOOL_A_SWELL = {"id": "wool-a-swell", "ring": [[-44, 56], [-32, 56], [-32, 62], [-44, 62]], "amount": 3,
                 "falloff": 6, "crown": 0, "roughness": 0, "seed": 1}
 
+# wool-b's approach stays level to its room but tilts toward the spawn at its wall: a shallow hollow straddles
+# the arm's spawn-side coast at the wall, on both sides of it, with two rows of land inside it. The wall's top
+# is level and taken from the highest ground it crosses, so the tilt stands it a course or two taller at its
+# spawn-side end.
+WOOL_B_TILT = {"id": "wool-b-tilt", "ring": [[34, 74], [46, 74], [46, 80], [34, 80]], "amount": -2,
+               "falloff": 10, "crown": 0, "roughness": 0, "seed": 1}
+
 
 # The ground leans from the gorge to the spawn and breaks once, at a curved scarp seven blocks tall between the
 # meadow and the hamlet. The lip is pinned at 9 and the scarp's foot at 12, and the meadow between them is
@@ -209,7 +216,7 @@ def finish():
     return {
         "editShapes": {TEAM: ops},
         "relief": {"team": {"base": BASE, "reach": 0, "step": 1, "marks": marks,
-                            "pushes": onto_board([copy.deepcopy(WOOL_A_SWELL)], [])[0]},
+                            "pushes": onto_board(copy.deepcopy([WOOL_A_SWELL, WOOL_B_TILT]), [])[0]},
                    "neutral": {"base": BANK, "reach": 0, "step": 1, "marks": HOLM_RELIEF,
                                "pushes": HOLM_PUSHES}},
         "dressing": {"props": [RIVER]},

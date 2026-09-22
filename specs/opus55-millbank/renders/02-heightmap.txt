@@ -15,13 +15,13 @@ KEY  char = ground height above y7 in bands of 1 block(s): 0 = y7..7, 1 = …; H
  -96                 eeeefffffffffeeeeeedddd                         
  -94                 eeeeeefffffeeeeeeeedddd                         
  -92                 eeeeeeeeeeeeeeeeeeedddd           aaaaaa        
- -90                 eeeeeeeeeeeeeeeeeeddddd           aHHHHH        
+ -90                 deeeeeeeeeeeeeeeeeddddd           aHHHHH        
  -88                 dddeeeeeeeeeeeeeeedddddd          aHHHHH        
- -86                 ddddeeeeeeeeeeeeeddddddd          aHHHHH        
- -84 ddddddddddddHddddddddeee        ddddddddddHdddccbaaaaaaa        
- -82 dHHHddddddddHddddddddddd        ddddddddddHdddccbaaaaaaa        
- -80 dHHHddddddddHddddddddddd        ddddddddddHdddccbbbaaaaa        
- -78 dHHHddddddddHddddddddddd        ddddddddddHdddcccbbbbbaa        
+ -86                 ccddeeeeeeeeeeeeeddddddd          aHHHHH        
+ -84 ddddddccbbbbHbbbbcdddeee        ddddddddddHdddccbaaaaaaa        
+ -82 dHHHddccbbbbHbbbccdddddd        ddddddddddHdddccbaaaaaaa        
+ -80 dHHHdddccbbbHbbcccdddddd        ddddddddddHdddccbbbaaaaa        
+ -78 dHHHdddcccccHccccddddddd        ddddddddddHdddcccbbbbbaa        
  -76 dHHHddddddddHddddddddddd        ddddddddddHdddcccbbbbbbb        
  -74 dHHHddddddddHddddddddddd        ddddddddddHdddccdcccccbb        
  -72     ddddddddHddddddddddd        ddddddddddHddddeeeeddddc        
@@ -98,13 +98,13 @@ KEY  char = ground height above y7 in bands of 1 block(s): 0 = y7..7, 1 = …; H
   70         bdeeeeeffeddddHddddddddd        ddddddddddddHddddddd    
   72         bcccddddddddddHddddddddd        ddddddddddddHdddddddHddd
   74         bbbbbbccccddddHddddddddd        ddddddddddddHdddddddHHHH
-  76         abbbbbbbccddddHddddddddd        ddddddddddddHdddddddHHHH
-  78         aaaabbbbccddddHddddddddd        ddddddddddddHdddddddHHHH
-  80         aaaaaabbbcddddHddddddddd        ddddddddddddHdddddddHHHH
-  82         aaaaaaabbccdddHddddddddd        eeddddddddddHdddddddHHHH
-  84         HHHHHH          ddddddddeeeeeeeeeeeedddd                
-  86         aHHHHH           ddddddeeeeeeeeeeeeeeddd                
-  88         aHHHHH           ddddddeeeeeeeeeeeeeeeed                
+  76         abbbbbbbccddddHddddddddd        dddddddddcccHcccddddHHHH
+  78         aaaabbbbccddddHddddddddd        dddddddcccccHcccccddHHHH
+  80         aaaaaabbbcddddHddddddddd        dddddddcbbbbHbbbccddHHHH
+  82         aaaaaaabbccdddHddddddddd        eeddddccbbbbHbbbbcddHHHH
+  84         HHHHHH          ddddddddeeeeeeeeeeeeddcc                
+  86         aHHHHH           ddddddeeeeeeeeeeeeeeddc                
+  88         aHHHHH           ddddddeeeeeeeeeeeeeeedd                
   90         aHHHHH           dddddeeeeeeeeeeeeeeeeee                
   92                           ddddeeeeeeeefffeeeeeee                
   94                          ddddeeeeeeeffffffffeeee                
