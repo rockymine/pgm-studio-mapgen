@@ -97,6 +97,36 @@ came apart. The observations below are measured off shipped boards and are enfor
 - **Look at a house in section before building a world.** `/api/room-styles/preview` answers `plan` and
   `section`. Every shipped roof fault was visible in a section and invisible from above.
 
+## A hill is measured against the lane it stands in
+
+**On a capture board a hill is measured against the width of the lane it stands in, and never against the
+board.** A wool board's ground is thin by construction — spurs, limbs and a rim, with the objectives hung off
+the ends — so a landform that would be one feature among many on an open map is the entire width of the ground
+it sits in.
+
+Emberhowe is the measured case. The land west of the spawn runs 36 blocks, from the coast at x -48 to the
+spawn's wall at x -12, and a spatter cone 20 blocks across sat in the middle of it: 28 to 32 blocks of ground
+over 30° on every row from z 59 to z 83, with 14 to 24 of those over 40°. What was left of the lane was a
+strip 4 to 8 blocks wide at x -20..-14, between the hall's wall and a 42° face.
+
+**So a hill on a capture board is either smooth enough to walk or far enough out to be off it, and the middle
+of a lane is neither.** Smooth is measurable: the rebuilt cone rises 8 blocks over 16 at the shore, which
+transects as *worst step 1, 0 barrier, 0 scramble, walked end to end*, and leaves 20 blocks of flat crest
+between its foot and the spawn.
+
+**A hill at the board's edge may keep its height, because only a portion of it stands on the board.** Centre
+its ring over the void outside the coast and the skirt that lands reads as a cliff at the water rather than as
+a cone with a path round it — which is the one place on a wool board where steep ground costs nobody a route.
+
+**The frontline and the ground in front of a bedrock wall are the two places a hill is always wrong.** Both
+are ground a team has to cross under fire, and a landform there decides the fight instead of the players;
+Ochredrift carries hills at both.
+
+**A house is never inside a hill.** Ochredrift's crusher stands at x -25..-15, z 16..23 with butte-west's ring
+at x -27..-12, z 20..32, so the ground at the house's back wall is y20 to y22 while its front sits at y9 to
+y12 — ten blocks of butte against one wall of a building, which reads as a mistake from every angle it can be
+seen from.
+
 ## What a board is painted with
 
 The numbers here are measured over the **fifty-one** boards in this repository that carry a theme registry,

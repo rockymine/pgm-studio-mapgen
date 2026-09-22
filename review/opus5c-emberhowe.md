@@ -61,8 +61,15 @@ sides are the pit or the outer coast, so the door faces **left**, along the cres
 Stated `front` it opened onto the pit and `SP9` read nought blocks of ground.
 
 **One push, and its two grades inside twice each other.** The spatter cone climbs
-its skirt at 1.0 and its crown at 0.6; at crown 3 they were 3.3× apart and `RL6`
-said the ground stepped at the push's own outline.
+its skirt at 0.5 and its crown at 0.4; past twice apart `RL6` says the ground
+steps at the push's own outline.
+
+**The cone is centred over the water, and what stands on the board is its seaward
+flank.** A wool board's lane is thin — the land west of the spawn is 36 blocks
+from the coast at `x -48` to the hall's wall at `x -12` — so a 20-block landform
+anywhere inside it is the whole width of the way to the board's left side. At the
+shore the bank rises 8 blocks over 16, which transects as *worst step 1, walked
+end to end*, and leaves 20 blocks of flat crest beside the hall.
 
 ## What went wrong
 
@@ -105,8 +112,9 @@ flat: it stood **six** courses proud on ground falling 11 → 14, and stands thr
 | west wool room | `(-76, 28)` | three faces on void, wall at `x -52`, in the lane |
 | east wool room | `(76, 40)` | the same, eight blocks further round |
 | spawn hall | `(-2, 73)` | 12 × 12, door west onto the crest |
-| spatter cone | `(-34, 72)` | amount 10, falloff 10, crown 6 |
+| spatter cone | `(-50, 72)` | amount 5, falloff 10, crown 4 — ring centred over the void off the west coast |
+| the lane west of the hall | `x -32..-12` at `z 60..84` | 20 blocks flat, `worst step 1` from the hall's wall to the shore |
 | west wall | `(-53, 20)`–`(-51, 35)` | bedrock to y17, cobweb y18, **level end to end**, 3 courses proud |
-| whole board | `168 × 168` | 10 304 walked · 520 scrambled · **0 barrier** · 0 faces |
-| coverage | — | **2.9% dead** |
+| whole board | `168 × 168` | 10 812 walked · 12 scrambled · **0 barrier** · 0 faces, `rolling` at 0.29 |
+| coverage | — | **2.9% dead**, 6 patches out of reach |
 | dressing | — | 36 placed, **0 declined** |

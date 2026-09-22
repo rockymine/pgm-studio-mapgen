@@ -134,7 +134,7 @@ plan = {
 
 relief = {
     "*": {
-        "base": 9, "reach": 0, "step": 1, "landform": "hills",
+        "base": 9, "reach": 0, "step": 1, "landform": "rolling",
         "grain": {"amplitude": 1.2, "scale": 22, "seed": 5101},
         "marks": [
             {"id": "horn-w", "kind": "area", "h": 11, "bevel": 4,
@@ -156,17 +156,23 @@ relief = {
             {"id": "e-shelf", "kind": "area", "h": 18, "bevel": 3,
              "ring": blob(66, 40, 20, points=11, wobble=0.14, seed=5115)},
         ],
-        # the spatter cone: the one landform on the crest, and the thing a
-        # player on the far rim sees over the pit. Its ring plus its falloff
-        # stops short of the spawn piece. The skirt grades 10 over 10 and the
-        # crown 6 over a radius of 10 — 1.67x apart, where past twice RL6 says
-        # the ground steps at the push's own outline, which at crown 3 it did.
-        # `roughness` stays 0: it wobbles the skirt against a noise field, and
-        # on a landform read as ground that is damage rather than weathering.
+        # the spatter cone, centred over the water off the west coast so that
+        # what stands on the board is its seaward flank and nothing else: a
+        # bluff along the shore at z 60..84, with the flat crest west of the
+        # spawn left open as the lane to the board's left side. A cone seated
+        # inland fills that lane instead — the land at this z runs from the
+        # coast at x -48 to the spawn's wall at x -12, so a 20-block landform
+        # anywhere in it is the whole width.
+        #
+        # The skirt grades 5 over 10 and the crown 4 over a radius of 10 —
+        # 1.14x apart, where past twice RL6 says the ground steps at the
+        # push's own outline. `roughness` stays 0: it wobbles the skirt
+        # against a noise field, and on a landform read as ground that is
+        # damage rather than weathering.
         "pushes": [
             {"id": "spatter-cone",
-             "ring": blob(-34, 72, 10, points=9, wobble=0.22, seed=5121),
-             "amount": 10, "falloff": 10, "crown": 6, "roughness": 0,
+             "ring": blob(-50, 72, 10, points=9, wobble=0.22, seed=5121),
+             "amount": 5, "falloff": 10, "crown": 4, "roughness": 0,
              "seed": 5122},
         ],
     }

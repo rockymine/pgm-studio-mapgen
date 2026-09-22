@@ -34,11 +34,11 @@ TRANSECT 37 stations from (-16, -72) to (20, -72), every 1
   (   14,   -72)      22       22           22  stroke way-west#1   
   (   15,   -72)      22       22           22  stroke way-west#1   
   (   16,   -72)      22       22           22  stroke way-west#1   
-  (   17,   -72)      23       23           23                      +1
-  (   18,   -72)      24       24           24                      +1
-  (   19,   -72)      26       26           26                      scramble +2
-  (   20,   -72)      27       27           27  stroke way-west#1   +1
-rises 4, falls 0, worst step 2: 0 barrier, 1 scramble, 0 drop — scramble +2 at (19, -72) | walked end to end
+  (   17,   -72)      22       22           22  stroke way-west#1   
+  (   18,   -72)      22       22           22  stroke way-west#1   
+  (   19,   -72)      22       22           22  stroke way-west#1   
+  (   20,   -72)      22       22           22  stroke way-west#1   
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: stroke way-east#1 at (-18, -74), spawn spawn-howe#1 at (-4, -74), stroke way-west#1 at (8, -71)
 
 ## spawn-blue (spawn) along z

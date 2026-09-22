@@ -1,10 +1,10 @@
 ## spawn-red (spawn) along x
 TRANSECT 37 stations from (-20, 72) to (16, 72), every 1
   station        ground  surface  water  top  standing            step
-  (  -20,    72)      25       25           25                      
-  (  -19,    72)      24       24           24                      -1
-  (  -18,    72)      23       23           23  stroke way-west     -1
-  (  -17,    72)      22       22           22  stroke way-west     -1
+  (  -20,    72)      22       22           22  stroke way-west     
+  (  -19,    72)      22       22           22  stroke way-west     
+  (  -18,    72)      22       22           22  stroke way-west     
+  (  -17,    72)      22       22           22  stroke way-west     
   (  -16,    72)      22       22           22  stroke way-west     
   (  -15,    72)      22       22           22  stroke way-west     
   (  -14,    72)      22       22           22  stroke way-west     
@@ -38,8 +38,8 @@ TRANSECT 37 stations from (-20, 72) to (16, 72), every 1
   (   14,    72)      22       22           22  stroke way-east     
   (   15,    72)      22       22           22  stroke way-east     
   (   16,    72)      22       22           22  stroke way-east     
-rises 0, falls 3, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: stroke way-west at (-21, 71), spawn spawn-howe at (-8, 70), stroke way-east at (4, 70)
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke way-west at (-18, 70), spawn spawn-howe at (-8, 70), stroke way-east at (4, 70)
 
 ## spawn-red (spawn) along z
 TRANSECT 34 stations from (-2, 52) to (-2, 85), every 1
