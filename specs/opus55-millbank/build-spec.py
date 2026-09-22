@@ -122,9 +122,12 @@ def orchards(h):
 
 
 # wool-a's approach leans from the wall at 20 down to a yard at 17 round its room, with a low swell on its gorge
-# side, so the long arm is ground rather than a pier.
+# side, so the long arm is ground rather than a pier. The swell's ring straddles the gorge-side coast with two
+# rows of land inside it (a ring wholly over the void lifts nothing, since its falloff is measured across the
+# land), so it rises toward the edge; its falloff stops short of the wall's level band to the east and well short
+# of the room to the north.
 WOOL_A_YARD = 17
-WOOL_A_SWELL = {"id": "wool-a-swell", "ring": [[-46, 60], [-36, 60], [-36, 66], [-46, 66]], "amount": 3,
+WOOL_A_SWELL = {"id": "wool-a-swell", "ring": [[-44, 56], [-32, 56], [-32, 62], [-44, 62]], "amount": 3,
                 "falloff": 6, "crown": 0, "roughness": 0, "seed": 1}
 
 

@@ -32,10 +32,10 @@ beside: wool wool-1 at (-47, 86)
 ## red-0 (wool) along z
 TRANSECT 25 stations from (-42, 76) to (-42, 100), every 1
   station        ground  surface  water  top  standing            step
-  (  -42,    76)      19       19           19                      
-  (  -42,    77)      18       18           18                      -1
-  (  -42,    78)      18       18           18                      
-  (  -42,    79)      17       17           17                      -1
+  (  -42,    76)      18       18           18                      
+  (  -42,    77)      18       18           18                      
+  (  -42,    78)      17       17           17                      -1
+  (  -42,    79)      17       17           17                      
   (  -42,    80)      17       17           17                      
   (  -42,    81)      17       17           17                      
   (  -42,    82)      17       17           17                      
@@ -57,5 +57,5 @@ TRANSECT 25 stations from (-42, 76) to (-42, 100), every 1
   (  -42,    98)                                                    void
   (  -42,    99)                                                    void
   (  -42,   100)                                                    void
-rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: redstoneline 0 at (-44, 84), wool wool-1 at (-44, 85)
