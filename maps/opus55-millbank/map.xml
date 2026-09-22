@@ -57,9 +57,9 @@
         <spawn team="blue-team" kit="spawn-kit" region="blue-spawn-point"/>
     </spawns>
     <wools>
-        <wool team="blue-team" color="red" location="-42,19,88" monument="red-blue-monument"/>
+        <wool team="blue-team" color="red" location="-42,16,88" monument="red-blue-monument"/>
         <wool team="blue-team" color="orange" location="60,19,78" monument="orange-blue-monument"/>
-        <wool team="red-team" color="blue" location="42,19,-88" monument="blue-red-monument"/>
+        <wool team="red-team" color="blue" location="42,16,-88" monument="blue-red-monument"/>
         <wool team="red-team" color="light_blue" location="-60,19,-78" monument="light_blue-red-monument"/>
     </wools>
     <filters>
@@ -119,9 +119,9 @@
     <regions>
         <point id="blue-spawn-point">-16,23,-112</point>
         <point id="red-spawn-point">16,23,112</point>
-        <point id="blue-wool-spawn">42,19,-88</point>
+        <point id="blue-wool-spawn">42,16,-88</point>
         <point id="orange-wool-spawn">60,19,78</point>
-        <point id="red-wool-spawn">-42,19,88</point>
+        <point id="red-wool-spawn">-42,16,88</point>
         <point id="light_blue-wool-spawn">-60,19,-78</point>
         <point id="observer-spawn">0,25,0</point>
         <block id="light_blue-red-monument">21,24,110</block>

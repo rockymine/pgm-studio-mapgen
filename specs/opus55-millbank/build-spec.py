@@ -79,7 +79,9 @@ RESHAPE = [
     ((-16, 92), (-16, 76), [(-13, 84)]),                         # hub's west back flank, pulled in
 ]
 CHAMFER = 3
-CHAMFERED = [(-48, 60), (56, 60)]   # the outer corner of each wool approach on the gorge side
+# wool-a's approach is chamfered at its outer corner on the gorge side. wool-b's is not: its corner stands four
+# blocks from the room's, and a cut there bends the outline at the room itself.
+CHAMFERED = [(-48, 60)]
 
 
 def toward(corner, other, run):
@@ -113,9 +115,17 @@ def area(mark_id, h, x0, z0, x1, z1, bevel=0):
 
 
 def orchards(h):
-    """Both wool approaches held at one height across their necks and a strip of the hub, so each bedrock wall
-    stands on level ground its whole run."""
-    return [area("orchard-west", h, -52, 58, -12, 86), area("orchard-east", h, 28, 58, 68, 78)]
+    """Each wall's seam held level at the approaches' height across the neck, a strip of the hub and the first
+    blocks of the arm, so the bedrock stands on level ground its whole run. wool-b's approach is held level to
+    its room; wool-a's has a relief of its own (WOOL_A_YARD, WOOL_A_SWELL)."""
+    return [area("wall-west", h, -26, 58, -12, 86), area("orchard-east", h, 28, 58, 68, 78)]
+
+
+# wool-a's approach leans from the wall at 20 down to a yard at 17 round its room, with a low swell on its gorge
+# side, so the long arm is ground rather than a pier.
+WOOL_A_YARD = 17
+WOOL_A_SWELL = {"id": "wool-a-swell", "ring": [[-46, 60], [-36, 60], [-36, 66], [-46, 66]], "amount": 3,
+                "falloff": 6, "crown": 0, "roughness": 0, "seed": 1}
 
 
 # The ground leans from the gorge to the spawn and breaks once, at a curved scarp seven blocks tall between the
@@ -148,6 +158,7 @@ RELIEF = [
     area("lip", LIP, -20, 18, 36, 24),
     {"id": "hamlet-face", "kind": "scarp", "points": FACE, "low": FOOT, "high": HEAD, "face": 2, "band": 4},
     *orchards(APPROACHES),
+    area("wool-a-yard", WOOL_A_YARD, -52, 74, -34, 88),
     area("spawn-yard", SPAWN_YARD, 6, 94, 26, 110),
     stair("stair-west", -12),
     stair("stair-east", 28),
@@ -179,7 +190,7 @@ RIVER = {"id": "river", "kind": "water", "shape": "pool", "form": "natural", "la
 
 
 def onto_board(marks, ops):
-    """Red's half stated with the lip at z 20, moved out to the board's own lip."""
+    """Red's half stated with the lip at z 20, moved out to the board's own lip — marks and pushes alike."""
     for mark in marks:
         for key in ("ring", "points"):
             if key in mark:
@@ -194,7 +205,8 @@ def finish():
     marks, ops = onto_board(copy.deepcopy(RELIEF), reshape_ops()[TEAM])
     return {
         "editShapes": {TEAM: ops},
-        "relief": {"team": {"base": BASE, "reach": 0, "step": 1, "marks": marks},
+        "relief": {"team": {"base": BASE, "reach": 0, "step": 1, "marks": marks,
+                            "pushes": onto_board([copy.deepcopy(WOOL_A_SWELL)], [])[0]},
                    "neutral": {"base": BANK, "reach": 0, "step": 1, "marks": HOLM_RELIEF,
                                "pushes": HOLM_PUSHES}},
         "dressing": {"props": [RIVER]},
