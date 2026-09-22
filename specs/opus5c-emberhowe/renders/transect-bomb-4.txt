@@ -13,10 +13,10 @@ TRANSECT 25 stations from (16, 66) to (40, 66), every 1
   (   25,    66)      21       21           31  tree fir-0          
   (   26,    66)      21       21           27  tree fir-0          
   (   27,    66)      21       21           28  tree fir-2          
-  (   28,    66)      21       21           27  tree fir-2          
-  (   29,    66)      21       21           28  tree fir-2          
-  (   30,    66)      21       21           31  tree fir-2          
-  (   31,    66)      21       21           30  tree fir-2          
+  (   28,    66)      21       21           26  tree fir-2          
+  (   29,    66)      21       21           27  tree fir-2          
+  (   30,    66)      21       21           30  tree fir-2          
+  (   31,    66)      21       21           29  tree fir-2          
   (   32,    66)      21       21           21                      
   (   33,    66)      21       21           21                      
   (   34,    66)      21       21           21                      
@@ -32,20 +32,20 @@ beside: tree scrub-3 at (14, 64), tree fir-0 at (21, 67), tree fir-2 at (27, 66)
 ## bomb-4 (boulder) along z
 TRANSECT 25 stations from (28, 54) to (28, 78), every 1
   station        ground  surface  water  top  standing            step
-  (   28,    54)      19       19           19                      
-  (   28,    55)      19       19           19                      
-  (   28,    56)      19       19           19                      
-  (   28,    57)      19       19           19                      
-  (   28,    58)      20       20           20                      +1
-  (   28,    59)      20       20           20                      
-  (   28,    60)      20       20           20                      
-  (   28,    61)      20       20           20                      
-  (   28,    62)      21       21           26  tree fir-2          +1
-  (   28,    63)      21       21           21                      
-  (   28,    64)      21       21           22  boulder bomb-4      
-  (   28,    65)      21       21           28  tree fir-2          
-  (   28,    66)      21       21           27  tree fir-2          
-  (   28,    67)      22       22           27  tree fir-2          +1
+  (   28,    54)      16       16           16                      
+  (   28,    55)      17       17           17                      +1
+  (   28,    56)      17       17           17                      
+  (   28,    57)      18       18           18                      +1
+  (   28,    58)      18       18           18                      
+  (   28,    59)      19       19           19                      +1
+  (   28,    60)      19       19           19                      
+  (   28,    61)      20       20           20                      +1
+  (   28,    62)      20       20           25  tree fir-2          
+  (   28,    63)      20       20           20                      
+  (   28,    64)      21       21           22  boulder bomb-4      +1
+  (   28,    65)      21       21           27  tree fir-2          
+  (   28,    66)      21       21           26  tree fir-2          
+  (   28,    67)      22       22           26  tree fir-2          +1
   (   28,    68)      22       22           22                      
   (   28,    69)      22       22           22                      
   (   28,    70)      22       22           22  stroke way-east     
@@ -57,5 +57,5 @@ TRANSECT 25 stations from (28, 54) to (28, 78), every 1
   (   28,    76)      22       22           22                      
   (   28,    77)      22       22           22                      
   (   28,    78)      22       22           22                      
-rises 3, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 6, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: tree fir-2 at (29, 61), tree fir-0 at (26, 63), boulder bomb-4 at (28, 64), stroke way-east at (30, 69)

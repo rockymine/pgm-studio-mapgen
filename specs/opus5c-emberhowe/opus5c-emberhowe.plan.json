@@ -15,9 +15,9 @@
    "role": "piece",
    "rect": [
     -12,
-    3,
+    7,
     5,
-    12
+    8
    ]
   },
   {
@@ -25,9 +25,29 @@
    "role": "piece",
    "rect": [
     7,
-    3,
+    7,
     5,
-    12
+    8
+   ]
+  },
+  {
+   "id": "link-w",
+   "role": "piece",
+   "rect": [
+    -7,
+    8,
+    5,
+    3
+   ]
+  },
+  {
+   "id": "link-e",
+   "role": "piece",
+   "rect": [
+    2,
+    8,
+    5,
+    3
    ]
   },
   {
@@ -65,7 +85,7 @@
    "role": "piece",
    "rect": [
     -13,
-    5,
+    9,
     1,
     4
    ]
@@ -75,7 +95,7 @@
    "role": "piece",
    "rect": [
     -17,
-    5,
+    9,
     4,
     4
    ]
@@ -85,7 +105,7 @@
    "role": "wool-room",
    "rect": [
     -21,
-    5,
+    9,
     4,
     4
    ]
@@ -95,7 +115,7 @@
    "role": "piece",
    "rect": [
     12,
-    8,
+    9,
     1,
     4
    ]
@@ -105,7 +125,7 @@
    "role": "piece",
    "rect": [
     13,
-    8,
+    9,
     4,
     4
    ]
@@ -115,30 +135,61 @@
    "role": "wool-room",
    "rect": [
     17,
-    8,
+    9,
     4,
     4
    ]
+  },
+  {
+   "id": "plug",
+   "role": "piece",
+   "rect": [
+    -12,
+    -3,
+    24,
+    6
+   ],
+   "mirrors": false
   }
  ],
  "zones": [
   {
-   "id": "strait-w",
+   "id": "mid-north",
    "rect": [
     -12,
-    -3,
-    5,
-    6
+    3,
+    24,
+    4
    ],
    "holes": []
   },
   {
-   "id": "strait-e",
+   "id": "mid-south",
    "rect": [
-    7,
-    -3,
-    5,
-    6
+    -12,
+    -7,
+    24,
+    4
+   ],
+   "holes": []
+  },
+  {
+   "id": "rotate-a",
+   "rect": [
+    -2,
+    8,
+    4,
+    3
+   ],
+   "holes": []
+  },
+  {
+   "id": "rotate-b",
+   "rect": [
+    -2,
+    -11,
+    4,
+    3
    ],
    "holes": []
   }

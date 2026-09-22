@@ -30,41 +30,61 @@ CELL = 4
 
 # ---------------------------------------------------------------- the plan
 #
-# A horseshoe a team, in blocks:
+# A horseshoe a team, a neutral plug between them, in blocks:
 #
-#   arm-w        x -48..-28   z  12..60     the west limb, climbing from the horn
-#   arm-e        x  28..48    z  12..60     the east limb
+#   arm-w        x -48..-28   z  28..60     the west limb, climbing from the horn
+#   arm-e        x  28..48    z  28..60     the east limb
+#   link-w       x -28..-8    z  32..44     the causeway across the team's own bay
+#   link-e       x   8..28    z  32..44
 #   cap-w        x -48..-12   z  60..84     the rim's crest, west of the hall
 #   spawn        x -12..8     z  60..84     20 x 24, inside ST10's 20 x 30 cap
 #   cap-e        x   8..48    z  60..84
-#   w-mouth      x -52..-48   z  20..36     where the spur opens off the limb
-#   w-approach   x -68..-52   z  20..36     the ledge the west room is entered over
-#   w-room       x -84..-68   z  20..36     a shelf hung off the outside of the rim
-#   e-mouth      x  48..52    z  32..48
-#   e-approach   x  52..68    z  32..48
-#   e-room       x  68..84    z  32..48
+#   w-mouth      x -52..-48   z  36..52     where the spur opens off the limb
+#   w-approach   x -68..-52   z  36..52     the ledge the west room is entered over
+#   w-room       x -84..-68   z  36..52     a shelf hung off the outside of the rim
+#   e-mouth      x  48..52    z  36..52     the same spur, at the same z
+#   e-approach   x  52..68    z  36..52
+#   e-room       x  68..84    z  36..52
 #
-#   strait-w     x -48..-28   z -12..12     a build zone, and one of only two
-#   strait-e     x  28..48    z -12..12
+#   plug         x -48..48    z -12..12     neutral, on-axis, fanned by nothing
 #
-# The pit is the ground no piece covers: x -28..28 the whole length of the
-# board, breached east and west by the two straits. Nothing spans it, because a
-# zone is authored and neither of the two is over it.
+#   mid-north    x -48..48    z  12..28     a build zone; the plug's north shore
+#   mid-south    x -48..48    z -28..-12
+#   rotate-a     x  -8..8     z  32..44     the gap in a team's own causeway
+#   rotate-b     x  -8..8     z -44..-32
 #
-# Three numbers here were read rather than chosen. The rim was 176 blocks long
+# The board is symmetric twice over: `rot_180` between the teams, and each
+# team's own half mirrored down x = 0, so both wool rooms sit at one z and
+# cost the same walk from the hall. A 100% double-symmetric map is ordinary
+# practice (author), and `WL9`'s ratio reads 1 for it since amendment 44.
+#
+# **The middle is 56 blocks and there is ground in it.** Team land ends at
+# z 28, the plug spans z -12..12, and each team bridges 16 blocks of void to
+# reach it — two crossings a side, one off each limb. A middle either team can
+# stand on is what the board is contested over; a bare 24-block strait is two
+# lands taking turns.
+#
+# **A team's own two rooms are joined across its bay, and the join is broken.**
+# The causeway runs just south of the rooms and stops 8 blocks short of the
+# axis either side, so a rotation from the red wool to the orange is a
+# 16-block bridge rather than the whole rim. It is 12 blocks deep because a
+# zone under 10 across is a corridor `G2` refuses, and it ends at z 44 because
+# a void gap beside a goal wants 16 blocks and the hall stands at z 60. Land all the way across would make the
+# rotation free, which is the half that would take the danger out of it.
+#
+# The pit is the ground no piece covers: two bays a team, at z 28..32 and
+# z 44..60, plus the void the plug stands in.
+#
+# Two numbers here were read rather than chosen. The rim was 176 blocks long
 # and LN2 read one lane of 176 against a band topping at 110 — a lane is
 # measured to its next junction, and a cap with the arms joining only at its
 # ends has none. The rooms hung INTO the pit on the first cut, which put
 # WL7's wool-to-wool walk at 243 against a band of [50, 227] and left the pit
-# cluttered with the two things the board is played for; hung outward they are
-# 200 apart and the pit is what it is meant to be. And the two spurs are NOT at
-# the same z: symmetric ones put WL9's spawn-wool ratio at exactly 1.0 under a
-# band that starts at 1.031, and two hands that cost the same are not a
-# decision either.
+# cluttered with the two things the board is played for.
 
 SPAWN_AT = (-2, 73)
-W_WOOL = (-76, 28)
-E_WOOL = (76, 40)
+W_WOOL = (-76, 44)
+E_WOOL = (76, 44)
 
 plan = {
     "plan": 2,
@@ -72,21 +92,28 @@ plan = {
     "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 18,
                 "surface": 9},
     "pieces": [
-        {"id": "arm-w", "role": "piece", "rect": [-12, 3, 5, 12]},
-        {"id": "arm-e", "role": "piece", "rect": [7, 3, 5, 12]},
+        {"id": "arm-w", "role": "piece", "rect": [-12, 7, 5, 8]},
+        {"id": "arm-e", "role": "piece", "rect": [7, 7, 5, 8]},
+        {"id": "link-w", "role": "piece", "rect": [-7, 8, 5, 3]},
+        {"id": "link-e", "role": "piece", "rect": [2, 8, 5, 3]},
         {"id": "cap-w", "role": "piece", "rect": [-12, 15, 9, 6]},
         {"id": "spawn", "role": "spawn", "rect": [-3, 15, 5, 6]},
         {"id": "cap-e", "role": "piece", "rect": [2, 15, 10, 6]},
-        {"id": "w-mouth", "role": "piece", "rect": [-13, 5, 1, 4]},
-        {"id": "w-approach", "role": "piece", "rect": [-17, 5, 4, 4]},
-        {"id": "w-room", "role": "wool-room", "rect": [-21, 5, 4, 4]},
-        {"id": "e-mouth", "role": "piece", "rect": [12, 8, 1, 4]},
-        {"id": "e-approach", "role": "piece", "rect": [13, 8, 4, 4]},
-        {"id": "e-room", "role": "wool-room", "rect": [17, 8, 4, 4]},
+        {"id": "w-mouth", "role": "piece", "rect": [-13, 9, 1, 4]},
+        {"id": "w-approach", "role": "piece", "rect": [-17, 9, 4, 4]},
+        {"id": "w-room", "role": "wool-room", "rect": [-21, 9, 4, 4]},
+        {"id": "e-mouth", "role": "piece", "rect": [12, 9, 1, 4]},
+        {"id": "e-approach", "role": "piece", "rect": [13, 9, 4, 4]},
+        {"id": "e-room", "role": "wool-room", "rect": [17, 9, 4, 4]},
+        # the plug: neutral ground on the axis, so nothing fans it and PL12's
+        # mixed-mirrors read does not see it beside the fanned rim
+        {"id": "plug", "role": "piece", "rect": [-12, -3, 24, 6], "mirrors": False},
     ],
     "zones": [
-        {"id": "strait-w", "rect": [-12, -3, 5, 6], "holes": []},
-        {"id": "strait-e", "rect": [7, -3, 5, 6], "holes": []},
+        {"id": "mid-north", "rect": [-12, 3, 24, 4], "holes": []},
+        {"id": "mid-south", "rect": [-12, -7, 24, 4], "holes": []},
+        {"id": "rotate-a", "rect": [-2, 8, 4, 3], "holes": []},
+        {"id": "rotate-b", "rect": [-2, -11, 4, 3], "holes": []},
     ],
     "placements": {
         # The hall is 12 x 12 inside a 20 x 24 piece. The door faces LEFT, along
@@ -132,15 +159,19 @@ plan = {
 # are pinned by nothing — which is where the ground gets its shape. Pinning the
 # arms too would leave the solver nothing to solve.
 
+# The plug is an island nothing fans, so the compile gives it a relief group of
+# its own (`neutral`) and a mark only ever pins cells of the group it is in —
+# `RL4` says so, once per mark, for every mark keyed at the wrong one. So the
+# two grounds are stated separately, which is what they are.
 relief = {
-    "*": {
+    "team": {
         "base": 9, "reach": 0, "step": 1, "landform": "rolling",
         "grain": {"amplitude": 1.2, "scale": 22, "seed": 5101},
         "marks": [
             {"id": "horn-w", "kind": "area", "h": 11, "bevel": 4,
-             "ring": blob(-38, 18, 15, points=11, wobble=0.2, seed=5111)},
+             "ring": blob(-38, 34, 15, points=11, wobble=0.2, seed=5111)},
             {"id": "horn-e", "kind": "area", "h": 11, "bevel": 4,
-             "ring": blob(38, 18, 15, points=11, wobble=0.2, seed=5112)},
+             "ring": blob(38, 34, 15, points=11, wobble=0.2, seed=5112)},
             {"id": "crest", "kind": "area", "h": 22, "bevel": 6,
              "ring": wander_rect(-50, 62, 50, 86, wobble=2.5, seed=5113)},
             # each shelf sits at the height the arm has reached beside it, so
@@ -151,10 +182,13 @@ relief = {
             # its face at the low end, and past four courses ST4 says so. On the
             # first cut the seam fell 11 to 14 over sixteen blocks and the wall
             # came out six courses proud.
-            {"id": "w-shelf", "kind": "area", "h": 15, "bevel": 3,
-             "ring": blob(-66, 28, 20, points=11, wobble=0.14, seed=5114)},
-            {"id": "e-shelf", "kind": "area", "h": 18, "bevel": 3,
-             "ring": blob(66, 40, 20, points=11, wobble=0.14, seed=5115)},
+            {"id": "w-shelf", "kind": "area", "h": 15, "bevel": 2,
+             "ring": blob(-66, 44, 20, points=11, wobble=0.14, seed=5114)},
+            {"id": "e-shelf", "kind": "area", "h": 15, "bevel": 2,
+             "ring": blob(66, 44, 20, points=11, wobble=0.14, seed=5115)},
+            # the plug stands between the horns and the crest in height as well
+            # as in position: a team bridges DOWN onto it from a limb at 11 and
+            # fights UP off it toward nothing, since the rim's own crest is 22
         ],
         # the spatter cone, centred over the water off the west coast so that
         # what stands on the board is its seaward flank and nothing else: a
@@ -175,7 +209,33 @@ relief = {
              "amount": 5, "falloff": 10, "crown": 4, "roughness": 0,
              "seed": 5122},
         ],
-    }
+    },
+    # The plug stands between the horns and the crest in height as well as in
+    # position: a team bridges ACROSS to it from a limb pinned at 11 and fights
+    # up a low bench, where the rim's own crest is 22.
+    #
+    # The push states no crown, so it grades its skirt at one rate and leaves
+    # the ring's own interior flat. A crown over a patch this size grades the
+    # whole of it and `RL5` reads a ramp end to end with nowhere to stand — and
+    # somewhere to stand is the entire point of a middle two teams contest.
+    #
+    # A bench with a graded shore is a `plain` at 0.10 for its own size, and the
+    # group says so: the word is a claim `RL1` checks against the solved
+    # surface, and a middle that measured as hills would be a middle nobody
+    # could hold.
+    "neutral": {
+        "base": 9, "reach": 0, "step": 1, "landform": "plain",
+        "grain": {"amplitude": 1.0, "scale": 14, "seed": 5102},
+        "marks": [
+            {"id": "plug", "kind": "area", "h": 14, "bevel": 4,
+             "ring": wander_rect(-46, -10, 46, 10, wobble=2.2, seed=5116)},
+        ],
+        "pushes": [
+            {"id": "plug-bench",
+             "ring": wander_rect(-30, -6, 30, 6, wobble=1.6, seed=5123),
+             "amount": 5, "falloff": 10, "roughness": 0, "seed": 5124},
+        ],
+    },
 }
 
 # ---------------------------------------------------------------- the paint
@@ -276,10 +336,10 @@ add_shapes = [
      "vertices": wander_rect(-14, 62, 10, 82, wobble=2.0, seed=5144)},
     {"id": "w-room-yard", "type": "polygon", "operation": "add", "floor": 0,
      "base_height": GROUND, "theme": "yard",
-     "vertices": wander_rect(-83, 21, -69, 35, wobble=1.4, seed=5145)},
+     "vertices": wander_rect(-83, 37, -69, 51, wobble=1.4, seed=5145)},
     {"id": "e-room-yard", "type": "polygon", "operation": "add", "floor": 0,
      "base_height": GROUND, "theme": "yard",
-     "vertices": wander_rect(69, 33, 83, 47, wobble=1.4, seed=5146)},
+     "vertices": wander_rect(69, 37, 83, 51, wobble=1.4, seed=5146)},
 ]
 
 # The rim parapet: a revetment along the crest's own lip, where the cap meets

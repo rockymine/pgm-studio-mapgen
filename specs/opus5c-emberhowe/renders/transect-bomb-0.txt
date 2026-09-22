@@ -1,23 +1,23 @@
 ## bomb-0 (boulder) along x
 TRANSECT 25 stations from (-45, 30) to (-21, 30), every 1
   station        ground  surface  water  top  standing            step
-  (  -45,    30)      14       14           14  stroke horn-way-west  
-  (  -44,    30)      13       13           13  stroke horn-way-west  -1
-  (  -43,    30)      13       13           13  stroke horn-way-west  
-  (  -42,    30)      13       13           13  stroke horn-way-west  
-  (  -41,    30)      12       12           12                      -1
-  (  -40,    30)      12       12           12                      
-  (  -39,    30)      12       12           12                      
-  (  -38,    30)      12       12           12                      
-  (  -37,    30)      12       12           12                      
-  (  -36,    30)      12       12           12                      
-  (  -35,    30)      12       12           12                      
-  (  -34,    30)      12       12           15  boulder bomb-0      
-  (  -33,    30)      12       12           20  tree scrub-0        
-  (  -32,    30)      12       12           20  tree scrub-0        
-  (  -31,    30)      12       12           21  tree scrub-0        
-  (  -30,    30)      12       12           19  tree scrub-0        
-  (  -29,    30)      12       12           12                      
+  (  -45,    30)      11       11           11  stroke horn-way-west  
+  (  -44,    30)      11       11           11  stroke horn-way-west  
+  (  -43,    30)      11       11           11  stroke horn-way-west  
+  (  -42,    30)      11       11           11  stroke horn-way-west  
+  (  -41,    30)      11       11           11                      
+  (  -40,    30)      11       11           11                      
+  (  -39,    30)      11       11           11                      
+  (  -38,    30)      11       11           11                      
+  (  -37,    30)      11       11           11                      
+  (  -36,    30)      11       11           11                      
+  (  -35,    30)      11       11           11                      
+  (  -34,    30)      11       11           14  boulder bomb-0      
+  (  -33,    30)      11       11           17  tree scrub-0        
+  (  -32,    30)      11       11           17  tree scrub-0        
+  (  -31,    30)      11       11           18  tree scrub-0        
+  (  -30,    30)      11       11           16  tree scrub-0        
+  (  -29,    30)      10       10           10                      -1
   (  -28,    30)                                                    void
   (  -27,    30)                                                    void
   (  -26,    30)                                                    void
@@ -26,36 +26,36 @@ TRANSECT 25 stations from (-45, 30) to (-21, 30), every 1
   (  -23,    30)                                                    void
   (  -22,    30)                                                    void
   (  -21,    30)                                                    void
-rises 0, falls 2, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: stroke horn-way-west at (-44, 28), stroke way-west at (-47, 30), tree scrub-0 at (-36, 32), boulder bomb-0 at (-34, 29)
 
 ## bomb-0 (boulder) along z
 TRANSECT 25 stations from (-33, 18) to (-33, 42), every 1
   station        ground  surface  water  top  standing            step
-  (  -33,    18)      11       11           11                      
-  (  -33,    19)      11       11           11                      
-  (  -33,    20)      11       11           11                      
-  (  -33,    21)      11       11           11                      
-  (  -33,    22)      11       11           11                      
-  (  -33,    23)      11       11           11                      
-  (  -33,    24)      11       11           11                      
-  (  -33,    25)      11       11           11                      
-  (  -33,    26)      11       11           11                      
-  (  -33,    27)      11       11           11                      
+  (  -33,    18)                                                    void
+  (  -33,    19)                                                    void
+  (  -33,    20)                                                    void
+  (  -33,    21)                                                    void
+  (  -33,    22)                                                    void
+  (  -33,    23)                                                    void
+  (  -33,    24)                                                    void
+  (  -33,    25)                                                    void
+  (  -33,    26)                                                    void
+  (  -33,    27)                                                    void
   (  -33,    28)      11       11           11                      
-  (  -33,    29)      11       11           15  boulder bomb-0      
-  (  -33,    30)      12       12           20  tree scrub-0        +1
-  (  -33,    31)      12       12           19  tree scrub-0        
-  (  -33,    32)      13       13           23  tree scrub-0        +1
-  (  -33,    33)      13       13           22  tree scrub-0        
-  (  -33,    34)      13       13           24  tree scrub-0        
-  (  -33,    35)      13       13           23  tree scrub-0        
-  (  -33,    36)      14       14           23  tree scrub-0        +1
-  (  -33,    37)      14       14           22  tree scrub-0        
-  (  -33,    38)      14       14           24  tree scrub-0        
-  (  -33,    39)      14       14           23  tree scrub-0        
-  (  -33,    40)      15       15           20  tree scrub-0        +1
-  (  -33,    41)      15       15           21  tree scrub-0        
-  (  -33,    42)      15       15           19  tree scrub-0        
-rises 4, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+  (  -33,    29)      11       11           14  boulder bomb-0      
+  (  -33,    30)      11       11           17  tree scrub-0        
+  (  -33,    31)      11       11           16  tree scrub-0        
+  (  -33,    32)      11       11           20  tree scrub-0        
+  (  -33,    33)      11       11           19  tree scrub-0        
+  (  -33,    34)      11       11           21  tree scrub-0        
+  (  -33,    35)      11       11           20  tree scrub-0        
+  (  -33,    36)      11       11           20  tree scrub-0        
+  (  -33,    37)      11       11           19  tree scrub-0        
+  (  -33,    38)      11       11           21  tree scrub-0        
+  (  -33,    39)      11       11           20  tree scrub-0        
+  (  -33,    40)      11       11           17  tree scrub-0        
+  (  -33,    41)      11       11           18  tree scrub-0        
+  (  -33,    42)      11       11           16  tree scrub-0        
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: boulder bomb-0 at (-34, 29), tree scrub-0 at (-33, 30), tree scrub-1 at (-35, 43), boulder bomb-2 at (-34, 43)

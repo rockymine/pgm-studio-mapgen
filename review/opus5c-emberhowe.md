@@ -1,35 +1,43 @@
-# Emberhowe — the crater is the board, and going round it is the decision
+# Emberhowe — the crater is the board, and the plug in it is what both teams want
 
-> Capture the wool. Two horseshoes of rim facing each other across a pit nothing
-> spans, joined only by twenty-four blocks of strait at each horn. A raider picks
-> a hand there and lives with it: the far room is reached by walking the whole rim
-> past the enemy spawn, and there is no way across.
+> Capture the wool. Two horseshoes of rim facing each other across a crater, with
+> a neutral plug standing in the middle of it and sixteen blocks of void between
+> the plug and each limb. Every crossing on the board is the same sixteen blocks:
+> the two onto the plug, and the one inside a team's own half that joins its two
+> wool rooms.
 
-## Where the four things are
+## Where the things are
 
 | The thing | Where | Measured |
 |---|---|---|
-| west strait | `x -48..-28, z -12..12` | 24 blocks, `CT12` wants 15–40 |
-| east strait | `x 28..48, z -12..12` | 24 blocks |
-| west wool | `(-76, 28)`, room `x -84..-68` | three faces on void, one wall sixteen blocks in front |
-| east wool | `(76, 40)`, room `x 68..84` | eight blocks further round the rim |
+| the plug | `x -48..48, z -12..12` | 2 304 cells of neutral ground, fanned by nothing |
+| the middle | `z -28..28` | 56 blocks between the two lands, 16 of void either side of the plug |
+| north crossings | `x -48..-28` and `x 28..48` at `z 12..28` | 16 blocks, `CT12` wants 15–40 |
+| the causeway | `x -28..-8` and `x 8..28` at `z 32..44` | a team's own two rooms joined, with 16 blocks of void between the halves |
+| west wool | `(-76, 44)`, room `x -84..-68` | three faces on void, one wall sixteen blocks in front |
+| east wool | `(76, 44)`, room `x 68..84` | the same room at the same z — the halves are mirrors |
 | spawn | `(-2, 73)` on the crest | door faces **left**, along the crest |
-| the pit | `x -28..28`, the board's whole length | 896 cells, no build zone over any of it |
+| the bays | `x -28..28` at `z 28..32` and `z 44..60` | the void a team's own rim rings |
 
 ## The one decision the board is built on
 
-**The pit carries no build zone, and that is what makes the two horns a choice
-rather than two doors into the same room.** A zone is authored, and neither of
-this board's two is over the middle — so the only ground between the teams is the
-twenty-four blocks at each horn, and a player who crosses at the west cannot
-change hands afterwards without walking the whole rim.
+**The middle is 56 blocks across and there is ground standing in it.** Team land
+ends at `z 28`, the plug spans `z -12..12`, and a team bridges 16 blocks off
+either limb to reach it. A middle both teams can stand on is what the board is
+contested over; a bare strait is two lands taking turns at each other.
 
-**That is `approaches.md`'s *around* at the scale of the whole board rather than
-of one objective.** A hole in front of a goal makes two ways round it; a hole the
-board is a ring about makes two ways round the *board*, and the far way runs past
-the enemy's own spawn. `match-flow.md` §4.9 prices that choice at 76% of the
-defender's reinforcement lane against 37%, and here the near way is the only short
-one there is.
+**A board with one way out of spawn is a board with one fight.** From the hall a
+player goes left or right along the crest and that is the whole of the decision —
+so the rim's two halves are joined across the team's own bay at the rooms' own
+z, broken by 16 blocks of void. A rotation from the red wool to the orange is a
+bridge somebody can be shot off rather than a walk round the whole rim, and land
+all the way across would have taken the danger out of it (author).
+
+**The board is symmetric twice over, and that is ordinary practice.** `rot_180`
+between the teams, and each team's own half mirrored down `x = 0`, so both rooms
+sit at one z and cost the same walk from the hall — 88 blocks west and 92 east.
+`WL9` reads that as a ratio of 1 and passes it since amendment 44, where its band
+used to start at 1.031 and call perfect balance a fault.
 
 ## What the ground is made of
 
@@ -122,15 +130,19 @@ flat: it stood **six** courses proud on ground falling 11 → 14, and stands thr
 
 | Thing | Position | Reading |
 |---|---|---|
-| west wool room | `(-76, 28)` | three faces on void, wall at `x -52`, in the lane |
-| east wool room | `(76, 40)` | the same, eight blocks further round |
+| west wool room | `(-76, 44)` | three faces on void, wall at `x -52`, in the lane |
+| east wool room | `(76, 44)` | the same room at the same z |
 | spawn hall | `(-2, 73)` | 12 × 12, door west onto the crest |
+| the plug | `x -48..48, z -12..12` | pinned at 14 with a benched top, `plain` at 0.10 for its own size |
+| plug crossings | `x -48..-28` and `x 28..48` at `z 12..28` | 16 blocks of void, both teams' |
+| the causeway's gap | `x -8..8` at `z 32..44` | 16 blocks, and 12 deep because `G2` refuses a corridor under 10 |
 | spatter cone | `(-50, 72)` | amount 5, falloff 10, crown 4 — ring centred over the void off the west coast |
 | rim parapet | `x -28..-14` · `x 14..28` at `z 61` | the pit's own width, clear of both limb mouths |
-| spawn → west wool | `(-2, 73)`–`(-76, 28)` | 104 blocks, **4 placed**, worst step 4 — the bedrock wall at `(-52, 28)` |
-| spawn → east wool | `(-2, 73)`–`(76, 40)` | 96 blocks, **5 placed**, worst step 5 — the bedrock wall at `(51, 40)` |
-| the lane west of the hall | `x -32..-12` at `z 60..84` | 20 blocks flat, `worst step 1` from the hall's wall to the shore |
-| west wall | `(-53, 20)`–`(-51, 35)` | bedrock to y17, cobweb y18, **level end to end**, 3 courses proud |
-| whole board | `168 × 168` | 10 812 walked · 12 scrambled · **0 barrier** · 0 faces, `rolling` at 0.29 |
-| coverage | — | **2.9% dead**, 6 patches out of reach |
+| spawn → west wool | `(-2, 73)`–`(-76, 44)` | 88 blocks, 5 placed, worst drop 5 |
+| spawn → east wool | `(-2, 73)`–`(76, 44)` | 92 blocks, 4 placed — a ratio of 1.05, which `WL9` now passes |
+| wool → wool, over the causeway | `(-20, 38)`–`(20, 38)` | 115 blocks and **0 placed** the long way round, against 16 placed straight across |
+| west wall | `(-53, 36)`–`(-52, 51)` | level end to end, 3 courses proud |
+| whole board | `168 × 168` | 12 748 walked · 52 scrambled · **0 barrier** · 0 faces |
+| the evaluator | — | **score 0, valid True** — no refusal and no complaint |
+| coverage | — | **0.2% dead** over 21 journeys |
 | dressing | — | 36 placed, **0 declined** |
