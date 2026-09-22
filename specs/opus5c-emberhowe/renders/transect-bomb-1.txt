@@ -13,10 +13,10 @@ TRANSECT 25 stations from (18, 30) to (42, 30), every 1
   (   27,    30)                                                    void
   (   28,    30)      13       13           13                      
   (   29,    30)      13       13           16  boulder bomb-1      
-  (   30,    30)      13       13           20  tree scrub-2        
-  (   31,    30)      13       13           20  tree scrub-2        
-  (   32,    30)      13       13           21  tree scrub-2        
-  (   33,    30)      13       13           19  tree scrub-2        
+  (   30,    30)      13       13           16  boulder bomb-1      
+  (   31,    30)      13       13           16  boulder bomb-1      
+  (   32,    30)      13       13           13                      
+  (   33,    30)      13       13           13                      
   (   34,    30)      13       13           13                      
   (   35,    30)      13       13           13                      
   (   36,    30)      13       13           13                      
@@ -24,10 +24,10 @@ TRANSECT 25 stations from (18, 30) to (42, 30), every 1
   (   38,    30)      13       13           13                      
   (   39,    30)      13       13           13                      
   (   40,    30)      13       13           13  stroke horn-way-east  
-  (   41,    30)      13       13           13  stroke horn-way-east  
-  (   42,    30)      13       13           13  stroke horn-way-east  
+  (   41,    30)      13       13           18  tree scrub-2        
+  (   42,    30)      13       13           21  tree scrub-2        
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree scrub-2 at (27, 32), boulder bomb-1 at (29, 29), stroke horn-way-east at (40, 28)
+beside: boulder bomb-1 at (29, 29), stroke horn-way-east at (40, 28), tree scrub-2 at (41, 28)
 
 ## bomb-1 (boulder) along z
 TRANSECT 25 stations from (30, 18) to (30, 42), every 1
@@ -44,18 +44,18 @@ TRANSECT 25 stations from (30, 18) to (30, 42), every 1
   (   30,    27)      12       12           12                      
   (   30,    28)      12       12           12                      
   (   30,    29)      13       13           16  boulder bomb-1      +1
-  (   30,    30)      13       13           20  tree scrub-2        
-  (   30,    31)      13       13           19  tree scrub-2        
-  (   30,    32)      14       14           23  tree scrub-2        +1
-  (   30,    33)      14       14           22  tree scrub-2        
-  (   30,    34)      14       14           24  tree scrub-2        
-  (   30,    35)      14       14           23  tree scrub-2        
-  (   30,    36)      14       14           23  tree scrub-2        
-  (   30,    37)      15       15           22  tree scrub-2        +1
-  (   30,    38)      15       15           24  tree scrub-2        
-  (   30,    39)      15       15           23  tree scrub-2        
-  (   30,    40)      15       15           20  tree scrub-2        
-  (   30,    41)      16       16           22  tree scrub-3        +1
-  (   30,    42)      16       16           25  tree scrub-3        
+  (   30,    30)      13       13           16  boulder bomb-1      
+  (   30,    31)      13       13           16  boulder bomb-1      
+  (   30,    32)      14       14           14                      +1
+  (   30,    33)      14       14           14                      
+  (   30,    34)      14       14           14                      
+  (   30,    35)      14       14           14                      
+  (   30,    36)      14       14           14                      
+  (   30,    37)      15       15           15                      +1
+  (   30,    38)      15       15           15                      
+  (   30,    39)      15       15           15                      
+  (   30,    40)      15       15           15                      
+  (   30,    41)      16       16           16                      +1
+  (   30,    42)      16       16           16                      
 rises 5, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder bomb-1 at (29, 29), tree scrub-2 at (30, 30), tree scrub-3 at (32, 40)
+beside: boulder bomb-1 at (29, 29)

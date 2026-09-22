@@ -200,7 +200,11 @@ GRIT = solid(3, 1)           # coarse dirt
 
 # the crater's own face: black glass in a grey rock
 CRATER_FACE = cells(5131, 7, 5, [ANDESITE, OBSIDIAN, COAL])
-ASH_FLAT = cells(5132, 7, 0, [ASH, GRAVEL])
+# The flat carries coarse dirt as well as ash, and it is what the wood stands
+# in: DR-ROOT admits grass and the three dirts and nothing else, so a board
+# surfaced in diorite and gravel alone has nowhere a tree belongs. Grit rather
+# than grass, because a dead volcano's flat is weathered ash and not a meadow.
+ASH_FLAT = cells(5132, 7, 0, [ASH, GRAVEL, GRIT])
 SCORIA_SLOPE = cells(5133, 6, 3, [SCORIA, GRAVEL])
 
 SLOPE_FLAT, SLOPE_SHOULDER = 22, 40
@@ -232,7 +236,7 @@ drift_theme = {
     "rim": {"enabled": False, "depth": 1, "material": ANDESITE},
     "rimEdges": "void",
     "surface": {"enabled": True, "depth": 3,
-                "material": soil(cells(5136, 8, 0, [ASH, ASH_PALE, STONE]),
+                "material": soil(cells(5136, 8, 0, [ASH, ASH_PALE, STONE, GRIT]),
                                  GRAVEL)},
 }
 
@@ -282,8 +286,14 @@ add_shapes = [
 # the pit. Drawn as a polyline so the rasterizer splines it into a curve rather
 # than a chain of chords, and kept four blocks off the hall's footprint,
 # because a made thing drawn through a stamp's courses is simply absent from
-# the world and only SK18's header says so. It does not cross the crest, which
-# is the lane every journey on this board runs along.
+# the world and only SK18's header says so.
+#
+# It runs the pit's own width and stops there — x -28..28, the span the cap
+# actually faces void along. Carried out to the limbs it stands across the
+# mouth each limb opens off the cap at, which is the lane every journey on this
+# board runs along: a two-course revetment there is a step every walk out of
+# the hall pays, and the walk to the west room read `barrier +6 at (-34, 62)`
+# with the parapet and a tree's crown stacked over each other on the line.
 rim_parapet = {
     "id": "rim-parapet", "name": "the rim parapet", "base_y": 0,
     "kind": "made", "part_of": "spawn",
@@ -294,12 +304,12 @@ rim_parapet = {
          "floor": 23, "base_height": 2, "radius": 1.0,
          "stroke_edge": "solid", "keepClear": True,
          "material": cells(5151, 4, 2, [COBBLE, ANDESITE]),
-         "vertices": [[-46, 61], [-36, 62], [-26, 61], [-16, 62]]},
+         "vertices": [[-28, 61], [-22, 62], [-14, 61]]},
         {"id": "rim-parapet-east", "type": "polyline", "operation": "add",
          "floor": 23, "base_height": 2, "radius": 1.0,
          "stroke_edge": "solid", "keepClear": True,
          "material": cells(5151, 4, 2, [COBBLE, ANDESITE]),
-         "vertices": [[12, 62], [22, 61], [32, 62], [42, 61]]},
+         "vertices": [[14, 61], [22, 62], [28, 61]]},
     ],
 }
 
@@ -361,13 +371,19 @@ props = [
 # the map in my head, which declined eleven props on the first pass. Scrub goes
 # to the outside of each piece and never on the brink a bridger leaves from, so
 # nothing stands within eighteen blocks of either horn's tip.
+#
+# A TREE's mask is the narrow one on this board, because `DR-ROOT` refuses every
+# cell whose surface is not grass or one of the three dirts, and the ground here
+# is ash over rock: 421 of the board's 10 824 cells seat a tree, against 4 832
+# for a boulder. The grit in ASH_FLAT and in the drift's own cells is what those
+# 421 are made of.
 props += [{"id": f"scrub-{i}", "kind": "tree", "seed": 5200 + i,
            "x": x, "z": z, "style": "scrub"}
-          for i, (x, z) in enumerate([(-32, 36), (-33, 56), (31, 36),
-                                      (33, 46), (-33, 67)])]
+          for i, (x, z) in enumerate([(-32, 36), (-40, 46), (46, 29),
+                                      (15, 62), (-45, 79)])]
 props += [{"id": f"fir-{i}", "kind": "tree", "seed": 5220 + i,
            "x": x, "z": z, "style": "fir"}
-          for i, (x, z) in enumerate([(24, 65), (40, 71), (30, 58)])]
+          for i, (x, z) in enumerate([(24, 65), (40, 71), (30, 64)])]
 # volcanic bombs, each on ground the incline read calls flat — a boulder is a
 # mass that was thrown, so DR-STEEP turns one away from a face
 props += [{"id": f"bomb-{i}", "kind": "boulder", "seed": 5240 + i,

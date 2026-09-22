@@ -89,6 +89,19 @@ spawn and shared the courses of six columns with its iron cube; `SK18` is the on
 thing that says so, and only on the export's header. It is two runs now, and the
 hall is the gap between them.
 
+**A revetment runs the pit's own width and stops there.** Carried out to the limbs
+it stands across the mouth each limb opens off the cap at, which is the lane every
+journey on this board runs along, and two courses there is a step every walk out
+of the hall pays. The walk to the west room read `barrier +6 at (-34, 62)` with
+the parapet and a tree's crown stacked on the line; it is `worst step 4` and four
+placed blocks now, against the east's five.
+
+**Eight trees stood on gravel, stone, hardened clay and diorite, because the board
+had no soil on it at all.** `DR-ROOT` is the rule that now says so, and the fix is
+the paint rather than the position: coarse dirt joins the ash on the flat band and
+the drift's own cells, which makes 421 of the board's 10 824 cells seat a tree
+against 4 832 for a boulder. Every scrub came off that mask.
+
 **Both walls were buried under the ground they were meant to bar, and the author read the first build and
 found them.** That one is a studio bug and is fixed: `StampWall` took its height from the surface the
 *plan* drew rather than the one the relief solved, so a mark that lifted the seam left the bedrock
@@ -113,6 +126,9 @@ flat: it stood **six** courses proud on ground falling 11 → 14, and stands thr
 | east wool room | `(76, 40)` | the same, eight blocks further round |
 | spawn hall | `(-2, 73)` | 12 × 12, door west onto the crest |
 | spatter cone | `(-50, 72)` | amount 5, falloff 10, crown 4 — ring centred over the void off the west coast |
+| rim parapet | `x -28..-14` · `x 14..28` at `z 61` | the pit's own width, clear of both limb mouths |
+| spawn → west wool | `(-2, 73)`–`(-76, 28)` | 104 blocks, **4 placed**, worst step 4 — the bedrock wall at `(-52, 28)` |
+| spawn → east wool | `(-2, 73)`–`(76, 40)` | 96 blocks, **5 placed**, worst step 5 — the bedrock wall at `(51, 40)` |
 | the lane west of the hall | `x -32..-12` at `z 60..84` | 20 blocks flat, `worst step 1` from the hall's wall to the shore |
 | west wall | `(-53, 20)`–`(-51, 35)` | bedrock to y17, cobweb y18, **level end to end**, 3 courses proud |
 | whole board | `168 × 168` | 10 812 walked · 12 scrambled · **0 barrier** · 0 faces, `rolling` at 0.29 |
