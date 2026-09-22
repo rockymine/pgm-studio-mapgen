@@ -26,54 +26,55 @@ from opus5c import (solid, cells, field, voronoi, band, stack, soil,
                     load_cache, save_cache, write)
 
 SLUG = "opus5c-emberhowe"
-CELL = 4
+CELL = 2
 
 # ---------------------------------------------------------------- the plan
 #
-# A horseshoe a team, a neutral plug between them, in blocks:
+# 168 x 200. Every gap on this board is 20 blocks, in blocks:
 #
-#   arm-w        x -48..-28   z  28..60     the west limb, climbing from the horn
-#   arm-e        x  28..48    z  28..60     the east limb
-#   link-w       x -28..-8    z  32..44     the causeway across the team's own bay
-#   link-e       x   8..28    z  32..44
-#   cap-w        x -48..-12   z  60..84     the rim's crest, west of the hall
-#   spawn        x -12..8     z  60..84     20 x 24, inside ST10's 20 x 30 cap
-#   cap-e        x   8..48    z  60..84
-#   w-mouth      x -52..-48   z  36..52     where the spur opens off the limb
-#   w-approach   x -68..-52   z  36..52     the ledge the west room is entered over
-#   w-room       x -84..-68   z  36..52     a shelf hung off the outside of the rim
-#   e-mouth      x  48..52    z  36..52     the same spur, at the same z
-#   e-approach   x  52..68    z  36..52
-#   e-room       x  68..84    z  36..52
+#   plug-w       x -44..-10   z -10..10    a middle island, neutral, split in two
+#   plug-e       x  10..44    z -10..10
+#   mid-gap      x -10..10    z -10..10    a build zone, joining the two islands
 #
-#   plug         x -48..48    z -12..12     neutral, on-axis, fanned by nothing
+#   cross-w      x -44..-28   z  10..30    a build zone: the limb's face to the island
+#   cross-e      x  28..44    z  10..30
 #
-#   mid-north    x -48..48    z  12..28     a build zone; the plug's north shore
-#   mid-south    x -48..48    z -28..-12
-#   rotate-a     x  -8..8     z  32..44     the gap in a team's own causeway
-#   rotate-b     x  -8..8     z -44..-32
+#   arm-w        x -48..-28   z  30..80    the west limb; 12 blocks of it stand in
+#   arm-e        x  28..48    z  30..80    FRONT of the spur, which is the ground
+#                                          a raid is met on
+#   link-w       x -28..-10   z  42..58    the causeway between a team's own rooms
+#   link-e       x  10..28    z  42..58
+#   rotate       x -10..10    z  42..58    a build zone, the spur band's own depth
+#
+#   w-mouth      x -52..-48   z  42..58    where the spur opens off the limb
+#   w-approach   x -68..-52   z  42..58    the ledge the west room is entered over
+#   w-room       x -84..-68   z  42..58    a shelf hung off the outside of the rim
+#   e-mouth      x  48..52    z  42..58    the same spur at the same z
+#   e-approach   x  52..68    z  42..58
+#   e-room       x  68..84    z  42..58
+#
+#   cap-w        x -48..-12   z  80..100   the rim's crest, west of the hall
+#   spawn        x -12..8     z  80..100   20 x 20, inside ST10's 20 x 30 cap
+#   cap-e        x   8..48    z  80..100
 #
 # The board is symmetric twice over: `rot_180` between the teams, and each
-# team's own half mirrored down x = 0, so both wool rooms sit at one z and
-# cost the same walk from the hall. A 100% double-symmetric map is ordinary
-# practice (author), and `WL9`'s ratio reads 1 for it since amendment 44.
+# team's own half mirrored down x = 0, so both wool rooms sit at one z and cost
+# the same walk from the hall. A 100% double-symmetric map is ordinary practice
+# (author), and `WL9`'s ratio reads 1 for it since amendment 44.
 #
-# **The middle is 56 blocks and there is ground in it.** Team land ends at
-# z 28, the plug spans z -12..12, and each team bridges 16 blocks of void to
-# reach it — two crossings a side, one off each limb. A middle either team can
-# stand on is what the board is contested over; a bare 24-block strait is two
-# lands taking turns.
+# **There are three places to cross and they are all 20 blocks.** A team bridges
+# its limb's face onto a middle island, the two islands are joined to each other
+# across the axis, and a team's own two rooms are joined across its bay. Four
+# build zones a team and one neutral, where one strait was: a middle worth
+# holding is one with more than a single way onto it.
 #
-# **A team's own two rooms are joined across its bay, and the join is broken.**
-# The causeway runs just south of the rooms and stops 8 blocks short of the
-# axis either side, so a rotation from the red wool to the orange is a
-# 16-block bridge rather than the whole rim. It is 12 blocks deep because a
-# zone under 10 across is a corridor `G2` refuses, and it ends at z 44 because
-# a void gap beside a goal wants 16 blocks and the hall stands at z 60. Land all the way across would make the
-# rotation free, which is the half that would take the danger out of it.
+# **The limb stands 12 blocks in front of its own spur.** That ground is what a
+# raid crosses before it reaches the mouth, and the board is 200 rather than 168
+# long to carry it: the causeway between the two rooms was 4 blocks off the
+# frontline at 168 and no fight fits in 4 blocks (author).
 #
-# The pit is the ground no piece covers: two bays a team, at z 28..32 and
-# z 44..60, plus the void the plug stands in.
+# The pit is the ground no piece covers: two bays a team, at z 30..42 and
+# z 58..80, plus the void the islands stand in.
 #
 # Two numbers here were read rather than chosen. The rim was 176 blocks long
 # and LN2 read one lane of 176 against a band topping at 110 — a lane is
@@ -82,9 +83,9 @@ CELL = 4
 # WL7's wool-to-wool walk at 243 against a band of [50, 227] and left the pit
 # cluttered with the two things the board is played for.
 
-SPAWN_AT = (-2, 73)
-W_WOOL = (-76, 44)
-E_WOOL = (76, 44)
+SPAWN_AT = (-2, 93)
+W_WOOL = (-76, 50)
+E_WOOL = (76, 50)
 
 plan = {
     "plan": 2,
@@ -92,28 +93,32 @@ plan = {
     "globals": {"cell": CELL, "symmetry": "rot_180", "maxPlayers": 18,
                 "surface": 9},
     "pieces": [
-        {"id": "arm-w", "role": "piece", "rect": [-12, 7, 5, 8]},
-        {"id": "arm-e", "role": "piece", "rect": [7, 7, 5, 8]},
-        {"id": "link-w", "role": "piece", "rect": [-7, 8, 5, 3]},
-        {"id": "link-e", "role": "piece", "rect": [2, 8, 5, 3]},
-        {"id": "cap-w", "role": "piece", "rect": [-12, 15, 9, 6]},
-        {"id": "spawn", "role": "spawn", "rect": [-3, 15, 5, 6]},
-        {"id": "cap-e", "role": "piece", "rect": [2, 15, 10, 6]},
-        {"id": "w-mouth", "role": "piece", "rect": [-13, 9, 1, 4]},
-        {"id": "w-approach", "role": "piece", "rect": [-17, 9, 4, 4]},
-        {"id": "w-room", "role": "wool-room", "rect": [-21, 9, 4, 4]},
-        {"id": "e-mouth", "role": "piece", "rect": [12, 9, 1, 4]},
-        {"id": "e-approach", "role": "piece", "rect": [13, 9, 4, 4]},
-        {"id": "e-room", "role": "wool-room", "rect": [17, 9, 4, 4]},
-        # the plug: neutral ground on the axis, so nothing fans it and PL12's
-        # mixed-mirrors read does not see it beside the fanned rim
-        {"id": "plug", "role": "piece", "rect": [-12, -3, 24, 6], "mirrors": False},
+        {"id": "arm-w", "role": "piece", "rect": [-24, 15, 10, 25]},
+        {"id": "arm-e", "role": "piece", "rect": [14, 15, 10, 25]},
+        {"id": "link-w", "role": "piece", "rect": [-14, 21, 9, 8]},
+        {"id": "link-e", "role": "piece", "rect": [5, 21, 9, 8]},
+        {"id": "cap-w", "role": "piece", "rect": [-24, 40, 18, 10]},
+        {"id": "spawn", "role": "spawn", "rect": [-6, 40, 10, 10]},
+        {"id": "cap-e", "role": "piece", "rect": [4, 40, 20, 10]},
+        {"id": "w-mouth", "role": "piece", "rect": [-26, 21, 2, 8]},
+        {"id": "w-approach", "role": "piece", "rect": [-34, 21, 8, 8]},
+        {"id": "w-room", "role": "wool-room", "rect": [-42, 21, 8, 8]},
+        {"id": "e-mouth", "role": "piece", "rect": [24, 21, 2, 8]},
+        {"id": "e-approach", "role": "piece", "rect": [26, 21, 8, 8]},
+        {"id": "e-room", "role": "wool-room", "rect": [34, 21, 8, 8]},
+        # the two middle islands: neither is fanned, so neither belongs to a
+        # team and PL12's mixed-mirrors read does not see them beside the rim
+        {"id": "plug-w", "role": "piece", "rect": [-22, -5, 17, 10], "mirrors": False},
+        {"id": "plug-e", "role": "piece", "rect": [5, -5, 17, 10], "mirrors": False},
     ],
     "zones": [
-        {"id": "mid-north", "rect": [-12, 3, 24, 4], "holes": []},
-        {"id": "mid-south", "rect": [-12, -7, 24, 4], "holes": []},
-        {"id": "rotate-a", "rect": [-2, 8, 4, 3], "holes": []},
-        {"id": "rotate-b", "rect": [-2, -11, 4, 3], "holes": []},
+        {"id": "mid-gap", "rect": [-5, -5, 10, 10], "holes": []},
+        {"id": "cross-wa", "rect": [-22, 5, 8, 10], "holes": []},
+        {"id": "cross-ea", "rect": [14, 5, 8, 10], "holes": []},
+        {"id": "cross-wb", "rect": [-22, -15, 8, 10], "holes": []},
+        {"id": "cross-eb", "rect": [14, -15, 8, 10], "holes": []},
+        {"id": "rotate-a", "rect": [-5, 21, 10, 8], "holes": []},
+        {"id": "rotate-b", "rect": [-5, -29, 10, 8], "holes": []},
     ],
     "placements": {
         # The hall is 12 x 12 inside a 20 x 24 piece. The door faces LEFT, along
@@ -137,12 +142,10 @@ plan = {
     # One wall a room, on the approach's outer interface — sixteen blocks in
     # front of the room's face, never the room's own edge, which PL13 refuses.
     #
-    # And never on the limb's own edge either, which is where the first cut put
-    # it and what PL17 now says: the limb runs 24 blocks past the wall's ends
-    # there, so its ground wraps the corner and a player on it rounds the wall
-    # with one diagonal jump — (-48, 36) to (-50, 35) is a running jump, not a
-    # bridge. The mouth is the four blocks that move the line off that corner.
-    # A wall in a lane has void at both its ends and has to be crossed.
+    # And never on the limb's own edge either, which is what PL17 says: a wall
+    # sits between two pieces of the same width, and the limb runs 50 blocks
+    # past the ends of a wall on its edge. The mouth is the four blocks that put
+    # the line between two pieces that line up.
     "walls": [
         {"a": "w-approach", "b": "w-mouth"},
         {"a": "e-approach", "b": "e-mouth"},
@@ -169,11 +172,11 @@ relief = {
         "grain": {"amplitude": 1.2, "scale": 22, "seed": 5101},
         "marks": [
             {"id": "horn-w", "kind": "area", "h": 11, "bevel": 4,
-             "ring": blob(-38, 34, 15, points=11, wobble=0.2, seed=5111)},
+             "ring": blob(-38, 40, 15, points=11, wobble=0.2, seed=5111)},
             {"id": "horn-e", "kind": "area", "h": 11, "bevel": 4,
-             "ring": blob(38, 34, 15, points=11, wobble=0.2, seed=5112)},
+             "ring": blob(38, 40, 15, points=11, wobble=0.2, seed=5112)},
             {"id": "crest", "kind": "area", "h": 22, "bevel": 6,
-             "ring": wander_rect(-50, 62, 50, 86, wobble=2.5, seed=5113)},
+             "ring": wander_rect(-50, 82, 50, 102, wobble=2.5, seed=5113)},
             # each shelf sits at the height the arm has reached beside it, so
             # the wall's interface is a step rather than a face
             # Wide enough that the WALL's own run stands on the flat core and
@@ -183,9 +186,9 @@ relief = {
             # first cut the seam fell 11 to 14 over sixteen blocks and the wall
             # came out six courses proud.
             {"id": "w-shelf", "kind": "area", "h": 15, "bevel": 2,
-             "ring": blob(-66, 44, 20, points=11, wobble=0.14, seed=5114)},
+             "ring": blob(-66, 50, 20, points=11, wobble=0.14, seed=5114)},
             {"id": "e-shelf", "kind": "area", "h": 15, "bevel": 2,
-             "ring": blob(66, 44, 20, points=11, wobble=0.14, seed=5115)},
+             "ring": blob(66, 50, 20, points=11, wobble=0.14, seed=5115)},
             # the plug stands between the horns and the crest in height as well
             # as in position: a team bridges DOWN onto it from a limb at 11 and
             # fights UP off it toward nothing, since the rim's own crest is 22
@@ -205,7 +208,7 @@ relief = {
         # damage rather than weathering.
         "pushes": [
             {"id": "spatter-cone",
-             "ring": blob(-50, 72, 10, points=9, wobble=0.22, seed=5121),
+             "ring": blob(-50, 92, 10, points=9, wobble=0.22, seed=5121),
              "amount": 5, "falloff": 10, "crown": 4, "roughness": 0,
              "seed": 5122},
         ],
@@ -219,21 +222,25 @@ relief = {
     # whole of it and `RL5` reads a ramp end to end with nowhere to stand — and
     # somewhere to stand is the entire point of a middle two teams contest.
     #
-    # A bench with a graded shore is a `plain` at 0.10 for its own size, and the
-    # group says so: the word is a claim `RL1` checks against the solved
-    # surface, and a middle that measured as hills would be a middle nobody
-    # could hold.
+    # The two islands share ONE relief group, so each is pinned in it. A mark
+    # covering only the west one leaves the east to whatever the solver does
+    # with an unpinned island, which was 66 barrier steps and two cliffs.
     "neutral": {
         "base": 9, "reach": 0, "step": 1, "landform": "plain",
         "grain": {"amplitude": 1.0, "scale": 14, "seed": 5102},
         "marks": [
-            {"id": "plug", "kind": "area", "h": 14, "bevel": 4,
-             "ring": wander_rect(-46, -10, 46, 10, wobble=2.2, seed=5116)},
+            {"id": "plug-w", "kind": "area", "h": 14, "bevel": 4,
+             "ring": wander_rect(-42, -8, -12, 8, wobble=1.8, seed=5116)},
+            {"id": "plug-e", "kind": "area", "h": 14, "bevel": 4,
+             "ring": wander_rect(12, -8, 42, 8, wobble=1.8, seed=5117)},
         ],
         "pushes": [
-            {"id": "plug-bench",
-             "ring": wander_rect(-30, -6, 30, 6, wobble=1.6, seed=5123),
+            {"id": "bench-w",
+             "ring": wander_rect(-40, -7, -14, 7, wobble=1.2, seed=5123),
              "amount": 5, "falloff": 10, "roughness": 0, "seed": 5124},
+            {"id": "bench-e",
+             "ring": wander_rect(14, -7, 40, 7, wobble=1.2, seed=5125),
+             "amount": 5, "falloff": 10, "roughness": 0, "seed": 5126},
         ],
     },
 }
@@ -257,6 +264,8 @@ OBSIDIAN = solid(49, 0)
 COAL = solid(173, 0)
 COBBLE = solid(4, 0)
 GRIT = solid(3, 1)           # coarse dirt
+DIRT = solid(3, 0)
+PODZOL = solid(3, 2)
 
 # the crater's own face: black glass in a grey rock
 CRATER_FACE = cells(5131, 7, 5, [ANDESITE, OBSIDIAN, COAL])
@@ -264,7 +273,12 @@ CRATER_FACE = cells(5131, 7, 5, [ANDESITE, OBSIDIAN, COAL])
 # in: DR-ROOT admits grass and the three dirts and nothing else, so a board
 # surfaced in diorite and gravel alone has nowhere a tree belongs. Grit rather
 # than grass, because a dead volcano's flat is weathered ash and not a meadow.
-ASH_FLAT = cells(5132, 7, 0, [ASH, GRAVEL, GRIT])
+#
+# The cell is 14 rather than 7 because soil in 7-block cells is soil a single
+# trunk fits in and a crown does not: the seats mask answers 1 091 cells and
+# almost none of them with four blocks of soil around it, so a tree seats and
+# its canopy lands on rock. A patch a wood can stand in is what the wood needs.
+ASH_FLAT = cells(5132, 14, 0, [ASH, GRAVEL, GRIT])
 SCORIA_SLOPE = cells(5133, 6, 3, [SCORIA, GRAVEL])
 
 SLOPE_FLAT, SLOPE_SHOULDER = 22, 40
@@ -296,7 +310,7 @@ drift_theme = {
     "rim": {"enabled": False, "depth": 1, "material": ANDESITE},
     "rimEdges": "void",
     "surface": {"enabled": True, "depth": 3,
-                "material": soil(cells(5136, 8, 0, [ASH, ASH_PALE, STONE, GRIT]),
+                "material": soil(cells(5136, 14, 0, [ASH, ASH_PALE, STONE, GRIT]),
                                  GRAVEL)},
 }
 
@@ -313,6 +327,21 @@ yard_theme = {
                                  STONE)},
 }
 
+grove_theme = {
+    "bedrock": {"relative": False, "value": 1},
+    "fill": voronoi(5147, 9, [(5, STONE), (4, ANDESITE)]),
+    "wall": CRATER_FACE,
+    "wallEnabled": True,
+    "wallOnTerrainFaces": True,
+    "rim": {"enabled": False, "depth": 1, "material": ANDESITE},
+    "rimEdges": "void",
+    # every cell of it roots a tree, which is the whole reason it exists: soil
+    # scattered through an ash pattern seats a trunk and drops the crown on
+    # rock, because a `cells` patch the size of one tree is not a wood's ground
+    "surface": {"enabled": True, "depth": 3,
+                "material": soil(cells(5148, 5, 0, [GRIT, DIRT, PODZOL]), GRIT)},
+}
+
 # ---------------------------------------------------------------- the shapes
 #
 # Every piece takes globals.surface, so the compile emits one ground shape at
@@ -324,22 +353,32 @@ GROUND = 9
 add_shapes = [
     {"id": "drift-cap", "type": "polygon", "operation": "add", "floor": 0,
      "base_height": GROUND, "theme": "drift",
-     "vertices": blob(28, 72, 14, points=13, wobble=0.26, seed=5141)},
+     "vertices": blob(28, 90, 14, points=13, wobble=0.26, seed=5141)},
     {"id": "drift-armw", "type": "polygon", "operation": "add", "floor": 0,
      "base_height": GROUND, "theme": "drift",
-     "vertices": blob(-38, 46, 10, points=11, wobble=0.24, seed=5142)},
+     "vertices": blob(-38, 60, 10, points=11, wobble=0.24, seed=5142)},
     {"id": "drift-arme", "type": "polygon", "operation": "add", "floor": 0,
      "base_height": GROUND, "theme": "drift",
-     "vertices": blob(38, 52, 9, points=11, wobble=0.24, seed=5143)},
+     "vertices": blob(38, 66, 9, points=11, wobble=0.24, seed=5143)},
     {"id": "spawn-yard", "type": "polygon", "operation": "add", "floor": 0,
      "base_height": GROUND, "theme": "yard",
-     "vertices": wander_rect(-14, 62, 10, 82, wobble=2.0, seed=5144)},
+     "vertices": wander_rect(-14, 82, 10, 98, wobble=2.0, seed=5144)},
     {"id": "w-room-yard", "type": "polygon", "operation": "add", "floor": 0,
      "base_height": GROUND, "theme": "yard",
-     "vertices": wander_rect(-83, 37, -69, 51, wobble=1.4, seed=5145)},
+     "vertices": wander_rect(-83, 43, -69, 57, wobble=1.4, seed=5145)},
     {"id": "e-room-yard", "type": "polygon", "operation": "add", "floor": 0,
      "base_height": GROUND, "theme": "yard",
-     "vertices": wander_rect(69, 37, 83, 51, wobble=1.4, seed=5146)},
+     "vertices": wander_rect(69, 43, 83, 57, wobble=1.4, seed=5146)},
+    # the groves: soil, authored where the wood stands rather than scattered
+    {"id": "grove-armw", "type": "polygon", "operation": "add", "floor": 0,
+     "base_height": GROUND, "theme": "grove",
+     "vertices": blob(-34, 50, 10, points=11, wobble=0.22, seed=5149)},
+    {"id": "grove-arme", "type": "polygon", "operation": "add", "floor": 0,
+     "base_height": GROUND, "theme": "grove",
+     "vertices": blob(34, 50, 10, points=11, wobble=0.22, seed=5150)},
+    {"id": "grove-cap", "type": "polygon", "operation": "add", "floor": 0,
+     "base_height": GROUND, "theme": "grove",
+     "vertices": blob(-42, 94, 8, points=11, wobble=0.22, seed=5151)},
 ]
 
 # The rim parapet: a revetment along the crest's own lip, where the cap meets
@@ -364,12 +403,12 @@ rim_parapet = {
          "floor": 23, "base_height": 2, "radius": 1.0,
          "stroke_edge": "solid", "keepClear": True,
          "material": cells(5151, 4, 2, [COBBLE, ANDESITE]),
-         "vertices": [[-28, 61], [-22, 62], [-14, 61]]},
+         "vertices": [[-28, 81], [-22, 82], [-14, 81]]},
         {"id": "rim-parapet-east", "type": "polyline", "operation": "add",
          "floor": 23, "base_height": 2, "radius": 1.0,
          "stroke_edge": "solid", "keepClear": True,
          "material": cells(5151, 4, 2, [COBBLE, ANDESITE]),
-         "vertices": [[14, 61], [22, 62], [28, 61]]},
+         "vertices": [[14, 81], [22, 82], [28, 81]]},
     ],
 }
 
@@ -402,17 +441,17 @@ PAVE = cells(5162, 3, 0, [GRAVEL, ANDESITE, COBBLE])
 props = [
     {"id": "way-west", "kind": "stroke", "seed": 5171, "radius": 2,
      "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[-10, 70], [-24, 74], [-40, 72], [-44, 56], [-44, 42],
-                [-50, 28]]},
+     "points": [[-12, 90], [-26, 93], [-42, 86], [-45, 72], [-45, 60],
+                [-50, 50]]},
     {"id": "way-east", "kind": "stroke", "seed": 5172, "radius": 2,
      "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[6, 70], [24, 72], [34, 70], [42, 60], [44, 46], [50, 40]]},
+     "points": [[8, 90], [26, 93], [42, 86], [45, 72], [45, 60], [50, 50]]},
     {"id": "horn-way-west", "kind": "stroke", "seed": 5173, "radius": 2,
      "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[-44, 42], [-42, 26], [-40, 16]]},
+     "points": [[-45, 60], [-43, 44], [-41, 34]]},
     {"id": "horn-way-east", "kind": "stroke", "seed": 5174, "radius": 2,
      "style": "solid", "claimsGround": True, "pave": PAVE,
-     "points": [[44, 46], [42, 30], [40, 16]]},
+     "points": [[45, 60], [43, 44], [41, 34]]},
 
     # One works shed, on the crest's east corner, and the board carries no
     # other free-standing building. A 20-wide limb cannot hold one and still
@@ -423,7 +462,7 @@ props = [
     # that was not, and the limbs are what this board is fought over.
     {"id": "shed-crest", "kind": "house", "seed": 5177, "style": "works",
      "front": "negZ",
-     "wings": [{"corners": [[39, 77], [47, 83]], "spec": {"storeysHigh": 2}}]},
+     "wings": [{"corners": [[29, 64], [37, 70]], "spec": {"storeysHigh": 2}}]},
 ]
 
 # Every position below came off POST .../sketch/seats for its own kind — a
@@ -434,22 +473,22 @@ props = [
 #
 # A TREE's mask is the narrow one on this board, because `DR-ROOT` refuses every
 # cell whose surface is not grass or one of the three dirts, and the ground here
-# is ash over rock: 421 of the board's 10 824 cells seat a tree, against 4 832
+# is ash over rock: 1 091 of the board's 12 930 cells seat a tree, against 7 659
 # for a boulder. The grit in ASH_FLAT and in the drift's own cells is what those
-# 421 are made of.
+# 1 091 are made of, and the causeway is taken out of them by hand — a lane two
+# teams rotate through is not somewhere to put a wood.
 props += [{"id": f"scrub-{i}", "kind": "tree", "seed": 5200 + i,
            "x": x, "z": z, "style": "scrub"}
-          for i, (x, z) in enumerate([(-32, 36), (-40, 46), (46, 29),
-                                      (15, 62), (-45, 79)])]
+          for i, (x, z) in enumerate([(-36, 56), (-32, 44), (-43, 94)])]
 props += [{"id": f"fir-{i}", "kind": "tree", "seed": 5220 + i,
            "x": x, "z": z, "style": "fir"}
-          for i, (x, z) in enumerate([(24, 65), (40, 71), (30, 64)])]
+          for i, (x, z) in enumerate([(36, 56), (32, 44)])]
 # volcanic bombs, each on ground the incline read calls flat — a boulder is a
 # mass that was thrown, so DR-STEEP turns one away from a face
 props += [{"id": f"bomb-{i}", "kind": "boulder", "seed": 5240 + i,
            "x": x, "z": z, "style": "bomb"}
-          for i, (x, z) in enumerate([(-33, 30), (30, 30), (-34, 44),
-                                      (33, 50), (28, 66)])]
+          for i, (x, z) in enumerate([(-33, 34), (33, 34), (-38, 70),
+                                      (38, 76), (-30, 74)])]
 
 # a cinder field is bare: the coverage is low and the tall share lower, because
 # two-block grass in front of a wool room is cover nobody authored
@@ -536,7 +575,8 @@ styles["works"] = {"kind": "house", "shell": WORKS}
 finish = {
     "authors": ["Opus 5"],
     "created": "2026-09-21",
-    "themes": {"rim": rim_theme, "drift": drift_theme, "yard": yard_theme},
+    "themes": {"rim": rim_theme, "drift": drift_theme, "yard": yard_theme,
+               "grove": grove_theme},
     "mapTheme": "rim",
     # Extreme hills (#8ab689): there is almost no grass on a cinder field, and
     # what the flora pass does put there stays muted against the ash rather

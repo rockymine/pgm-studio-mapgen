@@ -1,7 +1,10 @@
-THEMES  3 themes over 12800 ground cells, 18 distinct surface blocks
-  rim  8766 cells (68.5%)  13:0 Gravel, 1:3 Diorite, 1:5 Andesite, 3:1 Coarse Dirt, 172:0 Hardened Clay, 4:0 Cobblestone, 7:0 Bedrock, 49:0 Obsidian, 173:0 Coal Block, 17:1 Spruce Log, 54:4 Chest, 54:5 Chest
-  drift  2330 cells (18.2%)  1:4 Polished Diorite, 1:0 Stone, 1:3 Diorite, 4:0 Cobblestone, 3:1 Coarse Dirt, 13:0 Gravel, 1:5 Andesite
-  yard  1704 cells (13.3%)  172:0 Hardened Clay, 4:0 Cobblestone, 1:5 Andesite, 13:0 Gravel, 35:14 Red Wool, 35:11 Blue Wool, 35:1 Orange Wool, 35:3 Light Blue Wool
+THEMES  4 themes over 12878 ground cells, 22 distinct surface blocks
+  rim  7650 cells (59.4%)  13:0 Gravel, 1:3 Diorite, 1:5 Andesite, 3:1 Coarse Dirt, 172:0 Hardened Clay, 4:0 Cobblestone, 7:0 Bedrock, 49:0 Obsidian, 173:0 Coal Block, 5:1 Spruce Planks, 5:5 Dark Oak Planks, 17:1 Spruce Log
+  drift  2110 cells (16.4%)  1:0 Stone, 1:4 Polished Diorite, 1:3 Diorite, 13:0 Gravel, 1:5 Andesite, 3:1 Coarse Dirt, 4:0 Cobblestone, 172:0 Hardened Clay, 5:5 Dark Oak Planks, 5:1 Spruce Planks, 17:1 Spruce Log
+  grove  1612 cells (12.5%)  3:0 Dirt, 3:2 Podzol, 3:1 Coarse Dirt, 4:0 Cobblestone, 13:0 Gravel, 1:5 Andesite
+  yard  1506 cells (11.7%)  172:0 Hardened Clay, 4:0 Cobblestone, 1:5 Andesite, 13:0 Gravel, 35:14 Red Wool, 35:11 Blue Wool, 35:1 Orange Wool, 35:3 Light Blue Wool
 borders:
-  drift | rim  512 cells
-  rim | yard  454 cells
+  rim | yard  438 cells
+  drift | rim  364 cells
+  grove | rim  316 cells
+  drift | grove  74 cells

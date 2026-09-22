@@ -57,10 +57,10 @@
         <spawn team="blue-team" kit="spawn-kit" yaw="270" region="blue-spawn-point"/>
     </spawns>
     <wools>
-        <wool team="blue-team" color="red" location="-76,14,44" monument="red-blue-monument"/>
-        <wool team="blue-team" color="orange" location="76,14,44" monument="orange-blue-monument"/>
-        <wool team="red-team" color="blue" location="76,14,-44" monument="blue-red-monument"/>
-        <wool team="red-team" color="light_blue" location="-76,14,-44" monument="light_blue-red-monument"/>
+        <wool team="blue-team" color="red" location="-76,14,50" monument="red-blue-monument"/>
+        <wool team="blue-team" color="orange" location="76,14,50" monument="orange-blue-monument"/>
+        <wool team="red-team" color="blue" location="76,14,-50" monument="blue-red-monument"/>
+        <wool team="red-team" color="light_blue" location="-76,14,-50" monument="light_blue-red-monument"/>
     </wools>
     <filters>
         <team id="only-blue">blue-team</team>
@@ -123,23 +123,23 @@
         </all>
     </filters>
     <regions>
-        <point id="blue-spawn-point">2,22,-73</point>
-        <point id="red-spawn-point">-2,22,73</point>
-        <point id="blue-wool-spawn">76,14,-44</point>
-        <point id="orange-wool-spawn">76,14,44</point>
-        <point id="red-wool-spawn">-76,14,44</point>
-        <point id="light_blue-wool-spawn">-76,14,-44</point>
+        <point id="blue-spawn-point">2,22,-93</point>
+        <point id="red-spawn-point">-2,22,93</point>
+        <point id="blue-wool-spawn">76,14,-50</point>
+        <point id="orange-wool-spawn">76,14,50</point>
+        <point id="red-wool-spawn">-76,14,50</point>
+        <point id="light_blue-wool-spawn">-76,14,-50</point>
         <point id="observer-spawn">0,25,0</point>
-        <block id="light_blue-red-monument">-7,23,77</block>
-        <block id="blue-red-monument">-7,23,68</block>
-        <block id="orange-blue-monument">6,23,-69</block>
-        <block id="red-blue-monument">6,23,-78</block>
-        <rectangle id="blue-spawn" min="-8,-84" max="12,-60"/>
-        <rectangle id="red-spawn" min="-12,60" max="8,84"/>
-        <rectangle id="light_blue-wool" min="-84,-52" max="-68,-36"/>
-        <rectangle id="blue-wool" min="68,-52" max="84,-36"/>
-        <rectangle id="orange-wool" min="68,36" max="84,52"/>
-        <rectangle id="red-wool" min="-84,36" max="-68,52"/>
+        <block id="light_blue-red-monument">-7,23,97</block>
+        <block id="blue-red-monument">-7,23,88</block>
+        <block id="orange-blue-monument">6,23,-89</block>
+        <block id="red-blue-monument">6,23,-98</block>
+        <rectangle id="blue-spawn" min="-8,-100" max="12,-80"/>
+        <rectangle id="red-spawn" min="-12,80" max="8,100"/>
+        <rectangle id="light_blue-wool" min="-84,-58" max="-68,-42"/>
+        <rectangle id="blue-wool" min="68,-58" max="84,-42"/>
+        <rectangle id="orange-wool" min="68,42" max="84,58"/>
+        <rectangle id="red-wool" min="-84,42" max="-68,58"/>
         <union id="reds-woolrooms">
             <region id="red-wool"/>
             <region id="orange-wool"/>
@@ -153,18 +153,21 @@
             <region id="blues-woolrooms"/>
         </union>
         <union id="iron-cubes">
-            <rectangle id="iron-cube-0" min="-4,62" max="-2,64"/>
-            <rectangle id="iron-cube-1" min="1,-65" max="3,-63"/>
+            <rectangle id="iron-cube-0" min="-4,82" max="-2,84"/>
+            <rectangle id="iron-cube-1" min="1,-85" max="3,-83"/>
         </union>
         <negative id="not-spawns">
             <region id="spawns"/>
         </negative>
         <negative id="not-build-area">
             <union id="build-area">
-                <rectangle id="build-area-1" min="-48,12" max="48,28"/>
-                <rectangle id="build-area-2" min="-48,-28" max="48,-12"/>
-                <rectangle id="build-area-3" min="-8,32" max="8,44"/>
-                <rectangle id="build-area-4" min="-8,-44" max="8,-32"/>
+                <rectangle id="build-area-1" min="-10,-10" max="10,10"/>
+                <rectangle id="build-area-2" min="-44,10" max="-28,30"/>
+                <rectangle id="build-area-3" min="28,-30" max="44,-10"/>
+                <rectangle id="build-area-4" min="28,10" max="44,30"/>
+                <rectangle id="build-area-5" min="-44,-30" max="-28,-10"/>
+                <rectangle id="build-area-6" min="-10,42" max="10,58"/>
+                <rectangle id="build-area-7" min="-10,-58" max="10,-42"/>
             </union>
         </negative>
         <complement id="spawns">

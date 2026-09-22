@@ -1,41 +1,47 @@
-# Emberhowe — the crater is the board, and the plug in it is what both teams want
+# Emberhowe — the crater is the board, and the middle of it is split three ways
 
 > Capture the wool. Two horseshoes of rim facing each other across a crater, with
-> a neutral plug standing in the middle of it and sixteen blocks of void between
-> the plug and each limb. Every crossing on the board is the same sixteen blocks:
-> the two onto the plug, and the one inside a team's own half that joins its two
-> wool rooms.
+> two neutral islands standing in the middle of it and a build zone between every
+> pair of things. Every gap on the board is 20 blocks: limb to island, island to
+> island, and the causeway that joins a team's own two wool rooms.
 
 ## Where the things are
 
 | The thing | Where | Measured |
 |---|---|---|
-| the plug | `x -48..48, z -12..12` | 2 304 cells of neutral ground, fanned by nothing |
-| the middle | `z -28..28` | 56 blocks between the two lands, 16 of void either side of the plug |
-| north crossings | `x -48..-28` and `x 28..48` at `z 12..28` | 16 blocks, `CT12` wants 15–40 |
-| the causeway | `x -28..-8` and `x 8..28` at `z 32..44` | a team's own two rooms joined, with 16 blocks of void between the halves |
-| west wool | `(-76, 44)`, room `x -84..-68` | three faces on void, one wall sixteen blocks in front |
-| east wool | `(76, 44)`, room `x 68..84` | the same room at the same z — the halves are mirrors |
-| spawn | `(-2, 73)` on the crest | door faces **left**, along the crest |
-| the bays | `x -28..28` at `z 28..32` and `z 44..60` | the void a team's own rim rings |
+| the islands | `x -44..-10` and `x 10..44`, `z -10..10` | 1 360 cells of neutral ground, fanned by nothing |
+| the middle | `z -28..28` | 56 blocks between the two lands |
+| island ↔ island | `x -10..10`, `z -10..10` | a build zone, 20 × 20 |
+| limb ↔ island | `x -44..-28` and `x 28..44`, `z 10..30` | 20 blocks, `CT12` wants 15–40 |
+| the causeway | `x -28..-10` and `x 10..28`, `z 42..58` | a team's own rooms joined, 20 blocks of void between the halves |
+| the limb's own front | `z 30..42` | 12 blocks of land in front of the spur, which is what a raid crosses |
+| west wool | `(-76, 50)`, room `x -84..-68` | three faces on void, one wall sixteen blocks in front |
+| east wool | `(76, 50)`, room `x 68..84` | the same room at the same z — the halves are mirrors |
+| spawn | `(-2, 93)` on the crest | door faces **left**, along the crest |
 
 ## The one decision the board is built on
 
-**The middle is 56 blocks across and there is ground standing in it.** Team land
-ends at `z 28`, the plug spans `z -12..12`, and a team bridges 16 blocks off
-either limb to reach it. A middle both teams can stand on is what the board is
-contested over; a bare strait is two lands taking turns at each other.
+**Every gap on this board is 20 blocks and there are five of them a team.** Two
+onto the islands, one between the islands, and one inside each half joining its
+own two rooms — where the board began with a single 24-block strait at each
+horn. A middle worth holding is one with more than one way onto it.
+
+**The middle carries ground, and it is split.** Team land ends at `z 28` and the
+two islands stand at `z -10..10` with 20 blocks of void between them, so a team
+bridges to an island, and taking the second one is a second bridge somebody can
+be shot off. One island spanning the whole width was a middle a team held
+outright once it arrived (author).
 
 **A board with one way out of spawn is a board with one fight.** From the hall a
-player goes left or right along the crest and that is the whole of the decision —
-so the rim's two halves are joined across the team's own bay at the rooms' own
-z, broken by 16 blocks of void. A rotation from the red wool to the orange is a
-bridge somebody can be shot off rather than a walk round the whole rim, and land
-all the way across would have taken the danger out of it (author).
+player goes left or right along the crest and that is the whole of the decision,
+so the rim's two halves are joined across the team's own bay at the rooms' own z,
+broken by 20 blocks of void. The limb stands 12 blocks in front of its own spur,
+which is the ground a raid is met on before it reaches the mouth; the board is
+200 rather than 168 long to carry it.
 
 **The board is symmetric twice over, and that is ordinary practice.** `rot_180`
 between the teams, and each team's own half mirrored down `x = 0`, so both rooms
-sit at one z and cost the same walk from the hall — 88 blocks west and 92 east.
+sit at one z and cost the same walk from the hall — 99 blocks west and 103 east.
 `WL9` reads that as a ratio of 1 and passes it since amendment 44, where its band
 used to start at 1.031 and call perfect balance a fault.
 
@@ -130,19 +136,15 @@ flat: it stood **six** courses proud on ground falling 11 → 14, and stands thr
 
 | Thing | Position | Reading |
 |---|---|---|
-| west wool room | `(-76, 44)` | three faces on void, wall at `x -52`, in the lane |
-| east wool room | `(76, 44)` | the same room at the same z |
-| spawn hall | `(-2, 73)` | 12 × 12, door west onto the crest |
-| the plug | `x -48..48, z -12..12` | pinned at 14 with a benched top, `plain` at 0.10 for its own size |
-| plug crossings | `x -48..-28` and `x 28..48` at `z 12..28` | 16 blocks of void, both teams' |
-| the causeway's gap | `x -8..8` at `z 32..44` | 16 blocks, and 12 deep because `G2` refuses a corridor under 10 |
-| spatter cone | `(-50, 72)` | amount 5, falloff 10, crown 4 — ring centred over the void off the west coast |
-| rim parapet | `x -28..-14` · `x 14..28` at `z 61` | the pit's own width, clear of both limb mouths |
-| spawn → west wool | `(-2, 73)`–`(-76, 44)` | 88 blocks, 5 placed, worst drop 5 |
-| spawn → east wool | `(-2, 73)`–`(76, 44)` | 92 blocks, 4 placed — a ratio of 1.05, which `WL9` now passes |
-| wool → wool, over the causeway | `(-20, 38)`–`(20, 38)` | 115 blocks and **0 placed** the long way round, against 16 placed straight across |
-| west wall | `(-53, 36)`–`(-52, 51)` | level end to end, 3 courses proud |
-| whole board | `168 × 168` | 12 748 walked · 52 scrambled · **0 barrier** · 0 faces |
+| west wool room | `(-76, 50)` | three faces on void, wall at `x -52`, in the lane |
+| east wool room | `(76, 50)` | the same room at the same z |
+| spawn hall | `(-2, 93)` | 12 × 12, door west onto the crest |
+| the islands | `x -44..-10` · `x 10..44`, `z -10..10` | pinned at 14, benched flat, `plain` for their own size |
+| the three grove patches | `(-34, 50)` · `(34, 50)` · `(-42, 94)` | soil authored where the wood stands, every cell of it rooting a tree |
+| spawn → west wool | `(-2, 93)`–`(-76, 50)` | 99 blocks, 3 placed |
+| spawn → east wool | `(-2, 93)`–`(76, 50)` | 103 blocks, 3 placed — a ratio of 1.04 |
+| the observer pad | `(0, 0)`, y 24–25 | 6 × 6 of bedrock the export seats the observer spawn on, now floating in the island gap |
+| whole board | `168 × 200` | 12 848 walked · 26 scrambled · 4 barrier · 2 faces |
 | the evaluator | — | **score 0, valid True** — no refusal and no complaint |
-| coverage | — | **0.2% dead** over 21 journeys |
-| dressing | — | 36 placed, **0 declined** |
+| coverage | — | **1.6% dead** over 21 journeys |
+| dressing | — | 30 placed, **0 declined** |

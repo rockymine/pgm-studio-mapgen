@@ -1,61 +1,61 @@
 ## bomb-3 (boulder) along x
-TRANSECT 25 stations from (21, 50) to (45, 50), every 1
+TRANSECT 25 stations from (26, 76) to (50, 76), every 1
   station        ground  surface  water  top  standing            step
-  (   21,    50)                                                    void
-  (   22,    50)                                                    void
-  (   23,    50)                                                    void
-  (   24,    50)                                                    void
-  (   25,    50)                                                    void
-  (   26,    50)                                                    void
-  (   27,    50)                                                    void
-  (   28,    50)      15       15           15                      
-  (   29,    50)      15       15           15                      
-  (   30,    50)      15       15           15                      
-  (   31,    50)      15       15           17  boulder bomb-3      
-  (   32,    50)      15       15           18  boulder bomb-3      
-  (   33,    50)      15       15           18  boulder bomb-3      
-  (   34,    50)      15       15           18  boulder bomb-3      
-  (   35,    50)      15       15           15                      
-  (   36,    50)      15       15           15                      
-  (   37,    50)      15       15           15                      
-  (   38,    50)      15       15           15                      
-  (   39,    50)      15       15           15                      
-  (   40,    50)      15       15           15                      
-  (   41,    50)      15       15           15  stroke way-east     
-  (   42,    50)      15       15           15  stroke way-east     
-  (   43,    50)      15       15           15  stroke way-east     
-  (   44,    50)      15       15           15  stroke way-east     
-  (   45,    50)      15       15           15                      
-rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder bomb-3 at (31, 50), stroke way-east at (41, 48)
+  (   26,    76)                                                    void
+  (   27,    76)                                                    void
+  (   28,    76)      19       19           19                      
+  (   29,    76)      19       19           19                      
+  (   30,    76)      19       19           19                      
+  (   31,    76)      19       19           19                      
+  (   32,    76)      19       19           19                      
+  (   33,    76)      19       19           19                      
+  (   34,    76)      19       19           19                      
+  (   35,    76)      19       19           19                      
+  (   36,    76)      19       19           21  boulder bomb-3      
+  (   37,    76)      19       19           22  boulder bomb-3      
+  (   38,    76)      19       19           22  boulder bomb-3      
+  (   39,    76)      19       19           22  boulder bomb-3      
+  (   40,    76)      19       19           19                      
+  (   41,    76)      19       19           19                      
+  (   42,    76)      18       18           18                      -1
+  (   43,    76)      18       18           18  stroke way-east     
+  (   44,    76)      18       18           18  stroke way-east     
+  (   45,    76)      18       18           18  stroke way-east     
+  (   46,    76)      19       19           19  stroke way-east     +1
+  (   47,    76)      19       19           19                      
+  (   48,    76)                                                    void
+  (   49,    76)                                                    void
+  (   50,    76)                                                    void
+rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: boulder bomb-3 at (36, 76), stroke way-east at (42, 78)
 
 ## bomb-3 (boulder) along z
-TRANSECT 25 stations from (33, 38) to (33, 62), every 1
+TRANSECT 25 stations from (38, 64) to (38, 88), every 1
   station        ground  surface  water  top  standing            step
-  (   33,    38)      11       11           11                      
-  (   33,    39)      11       11           11                      
-  (   33,    40)      11       11           11                      
-  (   33,    41)      11       11           11                      
-  (   33,    42)      11       11           11                      
-  (   33,    43)      11       11           11                      
-  (   33,    44)      12       12           12                      +1
-  (   33,    45)      12       12           12                      
-  (   33,    46)      13       13           13                      +1
-  (   33,    47)      13       13           13                      
-  (   33,    48)      14       14           14                      +1
-  (   33,    49)      14       14           18  boulder bomb-3      
-  (   33,    50)      15       15           18  boulder bomb-3      +1
-  (   33,    51)      15       15           18  boulder bomb-3      
-  (   33,    52)      15       15           16  boulder bomb-3      
-  (   33,    53)      16       16           16                      +1
-  (   33,    54)      16       16           16                      
-  (   33,    55)      17       17           17                      +1
-  (   33,    56)      17       17           17                      
-  (   33,    57)      17       17           17                      
-  (   33,    58)      18       18           18                      +1
-  (   33,    59)      18       18           18                      
-  (   33,    60)      19       19           19                      +1
-  (   33,    61)      19       19           19                      
-  (   33,    62)      20       20           20                      +1
-rises 9, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: boulder bomb-3 at (32, 49), tree fir-2 at (31, 61)
+  (   38,    64)      15       15           21  house shed-crest    
+  (   38,    65)      16       16           22  house shed-crest    +1
+  (   38,    66)      16       16           23  house shed-crest    
+  (   38,    67)      16       16           24  house shed-crest    
+  (   38,    68)      17       17           23  house shed-crest    +1
+  (   38,    69)      17       17           22  house shed-crest    
+  (   38,    70)      17       17           21  house shed-crest    
+  (   38,    71)      17       17           20  house shed-crest    
+  (   38,    72)      18       18           18                      +1
+  (   38,    73)      18       18           18                      
+  (   38,    74)      18       18           18                      
+  (   38,    75)      18       18           22  boulder bomb-3      
+  (   38,    76)      19       19           22  boulder bomb-3      +1
+  (   38,    77)      19       19           22  boulder bomb-3      
+  (   38,    78)      19       19           20  boulder bomb-3      
+  (   38,    79)      20       20           20                      +1
+  (   38,    80)      20       20           20                      
+  (   38,    81)      20       20           20                      
+  (   38,    82)      21       21           21                      +1
+  (   38,    83)      21       21           21                      
+  (   38,    84)      21       21           21                      
+  (   38,    85)      21       21           21                      
+  (   38,    86)      22       22           22  stroke way-east     +1
+  (   38,    87)      22       22           22  stroke way-east     
+  (   38,    88)      22       22           22  stroke way-east     
+rises 7, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: house shed-crest at (36, 63), boulder bomb-3 at (37, 75), stroke way-east at (40, 85)

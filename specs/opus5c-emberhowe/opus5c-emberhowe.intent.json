@@ -24,14 +24,14 @@
    "point": {
     "x": -2,
     "y": 9,
-    "z": 73
+    "z": 93
    },
    "protection": [
     {
      "minX": -12,
-     "minZ": 60,
+     "minZ": 80,
      "maxX": 8,
-     "maxZ": 84
+     "maxZ": 100
     }
    ],
    "yaw": 90,
@@ -41,15 +41,15 @@
    ],
    "footprint": {
     "minX": -8,
-    "minZ": 67,
+    "minZ": 87,
     "maxX": 4,
-    "maxZ": 79
+    "maxZ": 99
    },
    "iron": [
     {
      "x": -2,
      "y": 9,
-     "z": 63.5
+     "z": 83.5
     }
    ]
   },
@@ -64,14 +64,14 @@
    "point": {
     "x": 2,
     "y": 9,
-    "z": -73
+    "z": -93
    },
    "protection": [
     {
      "minX": -8,
-     "minZ": -84,
+     "minZ": -100,
      "maxX": 12,
-     "maxZ": -60
+     "maxZ": -80
     }
    ],
    "yaw": 270,
@@ -81,15 +81,15 @@
    ],
    "footprint": {
     "minX": -4,
-    "minZ": -79,
+    "minZ": -99,
     "maxX": 8,
-    "maxZ": -67
+    "maxZ": -87
    },
    "iron": [
     {
      "x": 2,
      "y": 9,
-     "z": -63.5
+     "z": -83.5
     }
    ]
   }
@@ -106,28 +106,46 @@
   "maxHeight": null,
   "areas": [
    {
-    "minX": -48,
-    "minZ": 12,
-    "maxX": 48,
-    "maxZ": 28
+    "minX": -10,
+    "minZ": -10,
+    "maxX": 10,
+    "maxZ": 10
    },
    {
-    "minX": -48,
-    "minZ": -28,
-    "maxX": 48,
-    "maxZ": -12
+    "minX": -44,
+    "minZ": 10,
+    "maxX": -28,
+    "maxZ": 30
    },
    {
-    "minX": -8,
-    "minZ": 32,
-    "maxX": 8,
-    "maxZ": 44
+    "minX": 28,
+    "minZ": -30,
+    "maxX": 44,
+    "maxZ": -10
    },
    {
-    "minX": -8,
-    "minZ": -44,
-    "maxX": 8,
-    "maxZ": -32
+    "minX": 28,
+    "minZ": 10,
+    "maxX": 44,
+    "maxZ": 30
+   },
+   {
+    "minX": -44,
+    "minZ": -30,
+    "maxX": -28,
+    "maxZ": -10
+   },
+   {
+    "minX": -10,
+    "minZ": 42,
+    "maxX": 10,
+    "maxZ": 58
+   },
+   {
+    "minX": -10,
+    "minZ": -58,
+    "maxX": 10,
+    "maxZ": -42
    }
   ],
   "holes": []
@@ -146,29 +164,29 @@
    "protection": [
     {
      "minX": -84,
-     "minZ": 36,
+     "minZ": 42,
      "maxX": -68,
-     "maxZ": 52
+     "maxZ": 58
     }
    ],
    "spawn": {
     "x": -76,
     "y": 9,
-    "z": 44
+    "z": 50
    },
    "monuments": [],
    "footprint": {
     "minX": -82,
-    "minZ": 38,
+    "minZ": 44,
     "maxX": -70,
-    "maxZ": 50
+    "maxZ": 56
    },
    "entries": [
     {
      "minX": -68,
-     "minZ": 36,
+     "minZ": 42,
      "maxX": -68,
-     "maxZ": 52
+     "maxZ": 58
     }
    ]
   },
@@ -184,29 +202,29 @@
    "protection": [
     {
      "minX": 68,
-     "minZ": 36,
+     "minZ": 42,
      "maxX": 84,
-     "maxZ": 52
+     "maxZ": 58
     }
    ],
    "spawn": {
     "x": 76,
     "y": 9,
-    "z": 44
+    "z": 50
    },
    "monuments": [],
    "footprint": {
     "minX": 70,
-    "minZ": 38,
+    "minZ": 44,
     "maxX": 82,
-    "maxZ": 50
+    "maxZ": 56
    },
    "entries": [
     {
      "minX": 68,
-     "minZ": 36,
+     "minZ": 42,
      "maxX": 68,
-     "maxZ": 52
+     "maxZ": 58
     }
    ]
   },
@@ -222,29 +240,29 @@
    "protection": [
     {
      "minX": 68,
-     "minZ": -52,
+     "minZ": -58,
      "maxX": 84,
-     "maxZ": -36
+     "maxZ": -42
     }
    ],
    "spawn": {
     "x": 76,
     "y": 9,
-    "z": -44
+    "z": -50
    },
    "monuments": [],
    "footprint": {
     "minX": 70,
-    "minZ": -50,
+    "minZ": -56,
     "maxX": 82,
-    "maxZ": -38
+    "maxZ": -44
    },
    "entries": [
     {
      "minX": 68,
-     "minZ": -52,
+     "minZ": -58,
      "maxX": 68,
-     "maxZ": -36
+     "maxZ": -42
     }
    ]
   },
@@ -260,29 +278,29 @@
    "protection": [
     {
      "minX": -84,
-     "minZ": -52,
+     "minZ": -58,
      "maxX": -68,
-     "maxZ": -36
+     "maxZ": -42
     }
    ],
    "spawn": {
     "x": -76,
     "y": 9,
-    "z": -44
+    "z": -50
    },
    "monuments": [],
    "footprint": {
     "minX": -82,
-    "minZ": -50,
+    "minZ": -56,
     "maxX": -70,
-    "maxZ": -38
+    "maxZ": -44
    },
    "entries": [
     {
      "minX": -68,
-     "minZ": -52,
+     "minZ": -58,
      "maxX": -68,
-     "maxZ": -36
+     "maxZ": -42
     }
    ]
   }
@@ -311,16 +329,17 @@
  "islandTeams": {
   "1": "blue",
   "2": "red",
-  "3": "neutral"
+  "3": "neutral",
+  "4": "neutral"
  },
  "structures": {
   "layer": null,
   "redstoneLines": [
    {
     "x1": -69,
-    "z1": 36,
+    "z1": 42,
     "x2": -69,
-    "z2": 51,
+    "z2": 57,
     "stamp": {
      "kind": "redstoneline",
      "unit": "0",
@@ -329,9 +348,9 @@
    },
    {
     "x1": 68,
-    "z1": -52,
+    "z1": -58,
     "x2": 68,
-    "z2": -37,
+    "z2": -43,
     "stamp": {
      "kind": "redstoneline",
      "unit": "0",
@@ -340,9 +359,9 @@
    },
    {
     "x1": 68,
-    "z1": 36,
+    "z1": 42,
     "x2": 68,
-    "z2": 51,
+    "z2": 57,
     "stamp": {
      "kind": "redstoneline",
      "unit": "1",
@@ -351,9 +370,9 @@
    },
    {
     "x1": -69,
-    "z1": -52,
+    "z1": -58,
     "x2": -69,
-    "z2": -37,
+    "z2": -43,
     "stamp": {
      "kind": "redstoneline",
      "unit": "1",
@@ -365,9 +384,9 @@
   "walls": [
    {
     "minX": -53,
-    "minZ": 36,
+    "minZ": 42,
     "maxX": -51,
-    "maxZ": 52,
+    "maxZ": 58,
     "topY": 11,
     "chestOnMinFace": false,
     "stamp": {
@@ -378,9 +397,9 @@
    },
    {
     "minX": 51,
-    "minZ": -52,
+    "minZ": -58,
     "maxX": 53,
-    "maxZ": -36,
+    "maxZ": -42,
     "topY": 11,
     "chestOnMinFace": true,
     "stamp": {
@@ -391,9 +410,9 @@
    },
    {
     "minX": 51,
-    "minZ": 36,
+    "minZ": 42,
     "maxX": 53,
-    "maxZ": 52,
+    "maxZ": 58,
     "topY": 11,
     "chestOnMinFace": true,
     "stamp": {
@@ -404,9 +423,9 @@
    },
    {
     "minX": -53,
-    "minZ": -52,
+    "minZ": -58,
     "maxX": -51,
-    "maxZ": -36,
+    "maxZ": -42,
     "topY": 11,
     "chestOnMinFace": false,
     "stamp": {

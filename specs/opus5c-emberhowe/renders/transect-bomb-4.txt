@@ -1,61 +1,61 @@
 ## bomb-4 (boulder) along x
-TRANSECT 25 stations from (16, 66) to (40, 66), every 1
+TRANSECT 25 stations from (-42, 74) to (-18, 74), every 1
   station        ground  surface  water  top  standing            step
-  (   16,    66)      22       22           29  tree scrub-3        
-  (   17,    66)      21       21           29  tree scrub-3        -1
-  (   18,    66)      21       21           21                      
-  (   19,    66)      21       21           27  tree scrub-3        
-  (   20,    66)      21       21           21                      
-  (   21,    66)      21       21           21                      
-  (   22,    66)      21       21           28  tree fir-0          
-  (   23,    66)      21       21           28  tree fir-0          
-  (   24,    66)      21       21           34  tree fir-0          
-  (   25,    66)      21       21           31  tree fir-0          
-  (   26,    66)      21       21           27  tree fir-0          
-  (   27,    66)      21       21           28  tree fir-2          
-  (   28,    66)      21       21           26  tree fir-2          
-  (   29,    66)      21       21           27  tree fir-2          
-  (   30,    66)      21       21           30  tree fir-2          
-  (   31,    66)      21       21           29  tree fir-2          
-  (   32,    66)      21       21           21                      
-  (   33,    66)      21       21           21                      
-  (   34,    66)      21       21           21                      
-  (   35,    66)      21       21           21  stroke way-east     
-  (   36,    66)      22       22           22  stroke way-east     +1
-  (   37,    66)      22       22           22  stroke way-east     
-  (   38,    66)      22       22           22  stroke way-east     
-  (   39,    66)      22       22           22  stroke way-east     
-  (   40,    66)      22       22           22                      
-rises 1, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree scrub-3 at (14, 64), tree fir-0 at (21, 67), tree fir-2 at (27, 66), boulder bomb-4 at (27, 67), stroke way-east at (33, 68), tree fir-1 at (39, 68)
+  (  -42,    74)      19       19           19                      
+  (  -41,    74)      19       19           19                      
+  (  -40,    74)      19       19           19                      
+  (  -39,    74)      19       19           19                      
+  (  -38,    74)      19       19           19                      
+  (  -37,    74)      19       19           19                      
+  (  -36,    74)      19       19           19                      
+  (  -35,    74)      19       19           19                      
+  (  -34,    74)      19       19           19                      
+  (  -33,    74)      19       19           19                      
+  (  -32,    74)      19       19           19                      
+  (  -31,    74)      19       19           21  boulder bomb-4      
+  (  -30,    74)      18       18           21  boulder bomb-4      -1
+  (  -29,    74)      18       18           21  boulder bomb-4      
+  (  -28,    74)                                                    void
+  (  -27,    74)                                                    void
+  (  -26,    74)                                                    void
+  (  -25,    74)                                                    void
+  (  -24,    74)                                                    void
+  (  -23,    74)                                                    void
+  (  -22,    74)                                                    void
+  (  -21,    74)                                                    void
+  (  -20,    74)                                                    void
+  (  -19,    74)                                                    void
+  (  -18,    74)                                                    void
+rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: stroke way-west at (-44, 72), boulder bomb-4 at (-31, 73)
 
 ## bomb-4 (boulder) along z
-TRANSECT 25 stations from (28, 54) to (28, 78), every 1
+TRANSECT 25 stations from (-30, 62) to (-30, 86), every 1
   station        ground  surface  water  top  standing            step
-  (   28,    54)      16       16           16                      
-  (   28,    55)      17       17           17                      +1
-  (   28,    56)      17       17           17                      
-  (   28,    57)      18       18           18                      +1
-  (   28,    58)      18       18           18                      
-  (   28,    59)      19       19           19                      +1
-  (   28,    60)      19       19           19                      
-  (   28,    61)      20       20           20                      +1
-  (   28,    62)      20       20           25  tree fir-2          
-  (   28,    63)      20       20           20                      
-  (   28,    64)      21       21           22  boulder bomb-4      +1
-  (   28,    65)      21       21           27  tree fir-2          
-  (   28,    66)      21       21           26  tree fir-2          
-  (   28,    67)      22       22           26  tree fir-2          +1
-  (   28,    68)      22       22           22                      
-  (   28,    69)      22       22           22                      
-  (   28,    70)      22       22           22  stroke way-east     
-  (   28,    71)      22       22           22  stroke way-east     
-  (   28,    72)      22       22           22  stroke way-east     
-  (   28,    73)      22       22           22  stroke way-east     
-  (   28,    74)      22       22           22                      
-  (   28,    75)      22       22           22                      
-  (   28,    76)      22       22           22                      
-  (   28,    77)      22       22           22                      
-  (   28,    78)      22       22           22                      
-rises 6, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: tree fir-2 at (29, 61), tree fir-0 at (26, 63), boulder bomb-4 at (28, 64), stroke way-east at (30, 69)
+  (  -30,    62)      15       15           15                      
+  (  -30,    63)      15       15           15                      
+  (  -30,    64)      15       15           15                      
+  (  -30,    65)      15       15           15                      
+  (  -30,    66)      16       16           16                      +1
+  (  -30,    67)      16       16           16                      
+  (  -30,    68)      16       16           16                      
+  (  -30,    69)      17       17           17                      +1
+  (  -30,    70)      17       17           17                      
+  (  -30,    71)      17       17           17                      
+  (  -30,    72)      18       18           19  boulder bomb-4      +1
+  (  -30,    73)      18       18           21  boulder bomb-4      
+  (  -30,    74)      18       18           21  boulder bomb-4      
+  (  -30,    75)      19       19           21  boulder bomb-4      +1
+  (  -30,    76)      19       19           19                      
+  (  -30,    77)      19       19           19                      
+  (  -30,    78)      20       20           20                      +1
+  (  -30,    79)      20       20           20                      
+  (  -30,    80)      20       20           20                      
+  (  -30,    81)      21       21           21                      +1
+  (  -30,    82)      21       21           21                      
+  (  -30,    83)      21       21           21                      
+  (  -30,    84)      21       21           21                      
+  (  -30,    85)      21       21           21                      
+  (  -30,    86)      22       22           22                      +1
+rises 7, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+beside: tree scrub-0 at (-32, 60), boulder bomb-4 at (-30, 72)
