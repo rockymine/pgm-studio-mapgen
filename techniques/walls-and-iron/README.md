@@ -123,10 +123,9 @@ is to stop the made thing short: where a bedrock wall stands, the bedrock *is* t
   height, which face carries the chests — is derived, and none of it is yours to write.
 - **never on the room's own interface.** `PL13` refuses it; put it about fifteen blocks out, where the
   approach meets the board.
-- **never at the mouth of the lane it opens off.** `PL17` says so: where the piece on the far side runs past
-  the wall's ends, its ground wraps the corner and a player beside the end rounds the wall with one diagonal
-  jump rather than crossing it. Put a piece between the two and wall **that** seam, so the wall stands in a
-  lane with nothing to step round it onto.
+- **only between two pieces of the same width.** `PL17` says so: the wall spans the interval the two share,
+  so a piece reaching past it wraps the corner and a player beside the end rounds the wall with one diagonal
+  jump rather than crossing it. Put a piece the lane's own width between the two and wall **that** seam.
 - **wall a level seam.** The top is flat at the highest ground it crosses, so a seam that falls along its run
   is added to the face at the low end; past four courses `ST4` says the wall has stopped being a line to hold
   and become a blank face a team builds over.
