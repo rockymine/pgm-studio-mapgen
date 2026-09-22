@@ -275,6 +275,25 @@ also demands eight level neighbours refuses every rim cell on the board, and the
 a road leaves. A search is a way of proposing sites nobody has to think about — its silence is conservatism,
 not a refusal.
 
+**Two species a board, and never three.** Wetherslack carries a dense oak, a birch and a willow and reads as
+three woods pushed together rather than as one place; Emberhowe's oak and tiny spruce are one wood with an
+accent in it, which is what the pair is for. A third species is the one that stops being scenery and starts
+being a catalogue (author).
+
+**A board's trees belong to its climate, and pine and spruce belong to a cold one.** Ambertor is savanna —
+warm, sandy ground — with `showcase-r2`'s large pine standing on it, and no amount of placement repairs the
+species being wrong for the ground it is on.
+
+**What a tree *is* is what `corpus/README.md` says, not what its blocks are.** The seeding names every row:
+`r2` and `r3` are pines built of dark-oak log under birch and spruce leaves, `r7` is a tall spruce of acacia
+log and birch leaves, and `r4` is a tiny spruce of the same two blocks. Reading the log is how a spruce ends
+up on a savanna.
+
+**A tree holds the disc its crown covers, and the pass says so.** `DR-CLAIM` refuses a trunk inside another
+tree's crown, at `Decorator.CanopyRadius` — the tree's own farthest leaf, measured rather than taken from its
+species — so two trees stand at least their two crowns apart. Crowns that interpenetrate read as one mass of
+foliage, and the dense oaks of `r11` are the worst of it because their crowns are widest.
+
 ## What a building is made of
 
 The two sections above are what the ground is made of. This is the other half, and it is shorter, because a
