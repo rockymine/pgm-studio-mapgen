@@ -127,6 +127,20 @@ def reshape_ops():
     return {TEAM: ops}
 
 
+# The hub's hole is an irregular hexagon rather than the compiled square: its four corners moved and two points
+# added, one on the east side and one on the west. It runs about 24 blocks along z against the square's 16,
+# leaving the hub's front and back bars twelve deep, and stays within a block of the square's width.
+HOLE = "void-1-cut"
+HOLE_OPS = [
+    {"index": 0, "x": 1, "z": 58},
+    {"index": 1, "x": 12, "z": 56},
+    {"after": 1, "x": 17, "z": 65},
+    {"index": 3, "x": 15, "z": 78},
+    {"index": 4, "x": 4, "z": 80},
+    {"after": 4, "x": -1, "z": 69},
+]
+
+
 def area(mark_id, h, x0, z0, x1, z1, bevel=0):
     return {"id": mark_id, "kind": "area", "h": h, "bevel": bevel,
             "ring": [[x0, z0], [x1, z0], [x1, z1], [x0, z1]]}
@@ -231,8 +245,9 @@ def onto_board(marks, ops):
 
 def finish():
     marks, ops = onto_board(copy.deepcopy(RELIEF), reshape_ops()[TEAM])
+    hole = onto_board([], copy.deepcopy(HOLE_OPS))[1]
     return {
-        "editShapes": {TEAM: ops},
+        "editShapes": {TEAM: ops, HOLE: hole},
         "relief": {"team": {"base": BASE, "reach": 0, "step": 1, "marks": marks,
                             "pushes": onto_board(copy.deepcopy([WOOL_A_SWELL, WOOL_B_TILT]), [])[0]},
                    "neutral": {"base": BANK, "reach": 0, "step": 1, "marks": HOLM_RELIEF,
