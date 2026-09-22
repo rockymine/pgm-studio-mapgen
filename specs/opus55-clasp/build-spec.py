@@ -184,18 +184,21 @@ def stair(stair_id, points, x, low, high):
             "h": [low, high]}
 
 
-# The ground leans from the lip at 9 to the foot of a scarp at 12, which zigzags across the board like a bolt
-# of lightning and stands seven blocks to the hub at 19; two stairs are cut into it. The hub leans on up to 23
+# The ground leans from the lip at 9 to the foot of a scarp at 12, which zigzags across the frontline like a
+# bolt of lightning and stands seven blocks to the frontline's back and the hub at 19; two stairs are cut into
+# it. The scarp is one mark per straight run: a single mark's band beyond a corner takes the side of whichever
+# run the cell is nearest the end of, which stands a one-block ridge of the high side out past every corner
+# pointing at the low side. Split, the ground beyond each corner is neither run's and grades between them. The hub leans on up to 23
 # along its back edge and to the spawn yard at 21, and a swell rises at its back corner beside the spawn. The
 # clamp is held level at 20 for its wall. The back wool's neck and the first blocks of its arm are held at 23
 # for its wall, and past it the arm meets a second scarp, four blocks up to a yard at 27 round the room, with a
 # stair of its own.
 LIP, FOOT, HEAD, CLAMP, SPAWN_YARD, HUB_BACK, BACK_YARD = 9, 12, 19, 20, 21, 23, 27
-FRONT_FACE = [[-26, 40], [-14, 50], [-6, 42], [6, 54], [14, 47], [24, 60], [36, 56]]
+FRONT_FACE = [[-24, 42], [-14, 47], [-6, 43], [4, 48], [12, 44], [22, 48]]
 BACK_FACE = [[-14, 114], [-4, 118], [10, 115]]
 RELIEF = [
     area("lip", LIP, -20, 20, 20, 32),
-    scarp("front-face", FRONT_FACE, FOOT, HEAD),
+    *[scarp(f"front-face-{i}", FRONT_FACE[i:i + 2], FOOT, HEAD) for i in range(len(FRONT_FACE) - 1)],
     area("spawn-yard", SPAWN_YARD, -38, 66, -20, 86),
     area("hub-back", HUB_BACK, -16, 96, 20, 100),
     area("clamp", CLAMP, 28, 60, 56, 98),
@@ -203,7 +206,7 @@ RELIEF = [
     scarp("back-face", BACK_FACE, HUB_BACK, BACK_YARD),
     area("back-yard", BACK_YARD, -10, 122, 6, 142),
     stair("front-stair-west", FRONT_FACE, -10, FOOT, HEAD),
-    stair("front-stair-east", FRONT_FACE, 20, FOOT, HEAD),
+    stair("front-stair-east", FRONT_FACE, 8, FOOT, HEAD),
     stair("back-stair", BACK_FACE, -2, HUB_BACK, BACK_YARD),
 ]
 
@@ -213,13 +216,19 @@ def push(push_id, x0, z0, x1, z1, amount, falloff):
             "falloff": falloff, "crown": 0, "roughness": 0, "seed": 1}
 
 
+def hollow(push_id, ring, amount, falloff):
+    return {"id": push_id, "ring": ring, "amount": amount, "falloff": falloff, "crown": 0, "roughness": 0,
+            "seed": 1}
+
+
 PUSHES = [
     # a canyon six deep across the piece between the hub's hole and the clamp's mouth, its ring reaching into
     # both voids so the trench runs out into each of them rather than leaving a rim at their edges
     push("canyon", 8, 72, 32, 80, -6, 3),
-    # a hollow four deep along the clamp's back approach, the length of the mouth, its ring over the mouth's
-    # edge and stopping short of the room
-    push("clamp-hollow", 30, 80, 42, 90, -4, 3),
+    # a hollow four deep through the clamp's whole back approach: its ring reaches over the mouth on one side and
+    # the coast on the other, so the lane is lowered across its full depth, and its two ends inside the lane,
+    # at the hub and short of the room, are irregular rather than square
+    hollow("clamp-hollow", [[29, 80], [36, 79], [42, 82], [43, 90], [41, 100], [34, 101], [27, 98], [26, 88]], -4, 3),
     # a swell on the hub's west coast at its back corner beside the spawn, two rows of land inside its ring
     push("spawn-corner", -22, 88, -13, 98, 3, 5),
 ]
