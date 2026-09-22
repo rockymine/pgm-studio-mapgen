@@ -1,10 +1,10 @@
 ## spawn-blue (spawn) along x
 TRANSECT 33 stations from (12, -76) to (44, -76), every 1
   station        ground  surface  water  top  standing            step
-  (   12,   -76)      20       20           20                      
-  (   13,   -76)      20       20           20                      
-  (   14,   -76)      20       20           20                      
-  (   15,   -76)      21       21           21                      +1
+  (   12,   -76)      21       21           21                      
+  (   13,   -76)      21       21           21                      
+  (   14,   -76)      21       21           21                      
+  (   15,   -76)      21       21           21                      
   (   16,   -76)      21       21           21                      
   (   17,   -76)      21       21           21                      
   (   18,   -76)      21       21           21                      
@@ -34,7 +34,7 @@ TRANSECT 33 stations from (12, -76) to (44, -76), every 1
   (   42,   -76)                                                    void
   (   43,   -76)                                                    void
   (   44,   -76)                                                    void
-rises 1, falls 0, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
+rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
 beside: spawn spawn-1#1 at (28, -78)
 
 ## spawn-blue (spawn) along z

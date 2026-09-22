@@ -94,11 +94,13 @@ def plan():
 TEAM, HOLE = "frontline-t1-9", "void-1-cut"
 
 # The team unit's outline as the compile answers it, and the points it is reshaped by: the flanks of the
-# frontline and the hub pushed a few blocks out, and the clamp's two outer corners chamfered. The lip, the rooms
-# and the approaches are not touched.
+# frontline and the hub pushed a few blocks out, the lip pushed out into the build zone at two points (never
+# pulled in, which would leave void the zone does not cover), and the clamp's two outer corners chamfered. The
+# rooms and the approaches are not touched.
 COMPILED_RING = [(-36, 68), (-16, 68), (-16, 28), (16, 28), (16, 52), (28, 52), (28, 60), (52, 60), (52, 96),
                  (28, 96), (28, 100), (4, 100), (4, 140), (-8, 140), (-8, 100), (-16, 100), (-16, 84), (-36, 84)]
 RESHAPE = [
+    ((-16, 28), (16, 28), [(-6, 24), (7, 23)]),                  # the lip, pushed out into the build zone
     ((-16, 68), (-16, 28), [(-19, 58), (-20, 42), (-18, 33)]),   # west flank of the hub and the frontline
     ((16, 28), (16, 52), [(19, 40)]),                            # the frontline's east flank
     ((16, 52), (28, 52), [(22, 49)]),                            # the hub's front edge beside it
@@ -146,6 +148,17 @@ HOLE_OPS = [
 ]
 
 
+# Each island keeps its outer side straight on the build zone's edge and gets an irregular inner side, one point
+# pushed toward the channel and one pulled back. The islands are neutral and not fanned, so the east island's
+# points are the west island's turned through the centre, and the channel stays fifteen blocks or more across.
+ISLAND_OPS = {
+    "mid-west-9": [{"index": 1, "x": -9, "z": -12}, {"after": 1, "x": -6, "z": -4}, {"after": 2, "x": -9, "z": 4},
+                   {"index": 4, "x": -7, "z": 12}],
+    "mid-east-9": [{"index": 0, "x": 7, "z": -12}, {"index": 3, "x": 9, "z": 12}, {"after": 3, "x": 6, "z": 4},
+                   {"after": 4, "x": 9, "z": -4}],
+}
+
+
 def area(mark_id, h, x0, z0, x1, z1):
     return {"id": mark_id, "kind": "area", "h": h, "bevel": 0,
             "ring": [[x0, z0], [x1, z0], [x1, z1], [x0, z1]]}
@@ -171,36 +184,56 @@ def stair(stair_id, points, x, low, high):
             "h": [low, high]}
 
 
-# The ground leans from the lip at 9 to the foot of a diagonal scarp at 12, which stands seven blocks to the hub
-# at 19; the hub leans on to the spawn yard at 21. Both walls stand on level ground at 20: the clamp is held at
-# 20 whole, and the back wool's neck with the first blocks of its arm. Past its wall the back wool's arm meets a
-# second scarp, four blocks up to a yard at 24 round its room, so the wool is reached by a climb.
-LIP, FOOT, HEAD, WALLS_AT, SPAWN_YARD, BACK_YARD = 9, 12, 19, 20, 21, 24
-FRONT_FACE = [[-26, 40], [-6, 46], [12, 52], [36, 62]]
+# The ground leans from the lip at 9 to the foot of a scarp at 12, which zigzags across the board like a bolt
+# of lightning and stands seven blocks to the hub at 19; two stairs are cut into it. The hub leans on up to 23
+# along its back edge and to the spawn yard at 21, and a swell rises at its back corner beside the spawn. The
+# clamp is held level at 20 for its wall. The back wool's neck and the first blocks of its arm are held at 23
+# for its wall, and past it the arm meets a second scarp, four blocks up to a yard at 27 round the room, with a
+# stair of its own.
+LIP, FOOT, HEAD, CLAMP, SPAWN_YARD, HUB_BACK, BACK_YARD = 9, 12, 19, 20, 21, 23, 27
+FRONT_FACE = [[-26, 40], [-14, 50], [-6, 42], [6, 54], [14, 47], [24, 60], [36, 56]]
 BACK_FACE = [[-14, 114], [-4, 118], [10, 115]]
 RELIEF = [
-    area("lip", LIP, -20, 26, 20, 32),
+    area("lip", LIP, -20, 20, 20, 32),
     scarp("front-face", FRONT_FACE, FOOT, HEAD),
     area("spawn-yard", SPAWN_YARD, -38, 66, -20, 86),
-    area("clamp", WALLS_AT, 26, 58, 56, 98),
-    area("back-wall", WALLS_AT, -10, 98, 6, 112),
-    scarp("back-face", BACK_FACE, WALLS_AT, BACK_YARD),
+    area("hub-back", HUB_BACK, -16, 96, 20, 100),
+    area("clamp", CLAMP, 28, 60, 56, 98),
+    area("back-wall", HUB_BACK, -10, 98, 6, 112),
+    scarp("back-face", BACK_FACE, HUB_BACK, BACK_YARD),
     area("back-yard", BACK_YARD, -10, 122, 6, 142),
     stair("front-stair-west", FRONT_FACE, -10, FOOT, HEAD),
-    stair("front-stair-east", FRONT_FACE, 22, FOOT, HEAD),
-    stair("back-stair", BACK_FACE, -2, WALLS_AT, BACK_YARD),
+    stair("front-stair-east", FRONT_FACE, 20, FOOT, HEAD),
+    stair("back-stair", BACK_FACE, -2, HUB_BACK, BACK_YARD),
 ]
 
-# A hollow on the hub's piece between its hole and the clamp's mouth: a dip three blocks deep, easing out over
-# three, its ring inside the piece so it holds land.
-HOLLOW = {"id": "hollow", "ring": [[16, 71], [25, 71], [25, 81], [16, 81]], "amount": -3, "falloff": 3,
-          "crown": 0, "roughness": 0, "seed": 1}
+
+def push(push_id, x0, z0, x1, z1, amount, falloff):
+    return {"id": push_id, "ring": [[x0, z0], [x1, z0], [x1, z1], [x0, z1]], "amount": amount,
+            "falloff": falloff, "crown": 0, "roughness": 0, "seed": 1}
+
+
+PUSHES = [
+    # a canyon six deep across the piece between the hub's hole and the clamp's mouth, its ring reaching into
+    # both voids so the trench runs out into each of them rather than leaving a rim at their edges
+    push("canyon", 8, 72, 32, 80, -6, 3),
+    # a hollow four deep along the clamp's back approach, the length of the mouth, its ring over the mouth's
+    # edge and stopping short of the room
+    push("clamp-hollow", 30, 80, 42, 90, -4, 3),
+    # a swell on the hub's west coast at its back corner beside the spawn, two rows of land inside its ring
+    push("spawn-corner", -22, 88, -13, 98, 3, 5),
+]
+
+# The islands lean up from their gorge-facing ends at 9 to 11 across the middle. A half-turn solves the neutral
+# group's z < 0 half and copies it, so the marks stand there.
+ISLAND_RELIEF = [area("island-ends", LIP, -18, -14, 18, -10), area("island-crest", 11, -18, -2, 18, 0)]
 
 
 def finish():
     return {
-        "editShapes": {TEAM: reshape_ops(), HOLE: copy.deepcopy(HOLE_OPS)},
-        "relief": {"team": {"base": BASE, "reach": 0, "step": 1, "marks": RELIEF, "pushes": [HOLLOW]}},
+        "editShapes": {TEAM: reshape_ops(), HOLE: copy.deepcopy(HOLE_OPS), **copy.deepcopy(ISLAND_OPS)},
+        "relief": {"team": {"base": BASE, "reach": 0, "step": 1, "marks": RELIEF, "pushes": PUSHES},
+                   "neutral": {"base": LIP, "reach": 0, "step": 1, "marks": ISLAND_RELIEF}},
         "authors": ["Opus 5.5"],
         "created": "2026-09-22",
     }
