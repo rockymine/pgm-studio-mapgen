@@ -631,6 +631,22 @@ bank at 13–14 and the count at 268, which is the two scarp faces and nothing e
 
 Under `rot_180` the image reverses with the original, so one lip traced the right way is both.
 
+### A scarp with a corner stands a ridge past it, so a zigzag is one scarp per run
+
+**A cell past a corner that points at the low side is nearest the corner itself, and the scarp takes its side
+from one of the two runs meeting there.** That run's line, carried on past the corner, puts a thin wedge of
+low ground on its high side, and the band pins it high. The wedge comes out as a ridge one block wide, running
+diagonally out from the corner at the full height of the face, and nothing reports it: the relief read names
+no seam, because it is one mark.
+
+Measured: a lightning scarp of five runs from 12 to 19, turning 45° at each corner, stood a ridge at 19 across
+three cells of ground at 12 below its corner at (−6, 42) — (−3, 38), (−4, 39), (−4, 40) — and its image
+under the half-turn.
+
+**Stated as one scarp per straight run, the ground past each corner is in neither band and grades between the
+two.** The same line split that way solved to no ridge anywhere, and the ground just past each corner came out
+a couple of graded blocks — 18, 17, 19 — rather than a column.
+
 ### A line mark's reach is either side of the line, and its name is `r`
 
 Not a half-width and not a one-sided band. A `line` at z 50 with `r: 12` writes over everything from z 38 to
