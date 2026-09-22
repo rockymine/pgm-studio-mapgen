@@ -31,7 +31,7 @@ KEY  char = ground height above y9 in bands of 1 block(s): 0 = y9..9, 1 = …; H
  -88 bbbb8777777779cccddddddddddddddeggg                 
  -86 bbbb977777777acccccdd   ddddddddeee                 
  -84 HHHH        8bccccc      dddddddddcccccccccc        
- -82 bHHH        aaaaaaa      ddddddddcccccccHHHH        
+ -82 bHHH        aaaaaaa      dddddddccccccccHHHH        
  -80 bHHH        5556666       ddccccccccccHcHHHH        
  -78 bHHH        55555555      ccccccccccccccHHHH        
  -76 bHHH        55555555      ccccccccccccccHHHH        
@@ -41,22 +41,22 @@ KEY  char = ground height above y9 in bands of 1 block(s): 0 = y9..9, 1 = …; H
  -68 bbbbbbbbHbbbbbbbbbbbbb bbbbbbbbbbb                  
  -66 bbbbbbbbHbbbbbbbbbbbbbbbbbbbbbbbbbb                 
  -64 bbbbbbbbHbbbbbbbbbbbbbbbbbbbbbbbbbb                 
- -62  bbbbbbbHbbbbbbbbbbbaaaabbbbbbbbbbb                 
- -60             bbbbbaaaaaaaaaaabbbbbbba                
+ -62  bbbbbbbHbbbbbbbbbbaaaaaabbbbbbbbbb                 
+ -60             bbbbbaaaaaaaaaaaaabbbbba                
  -58             bbbaaaaaaaaaaaaaaaaaaaaa                
- -56             aaaaaaaaaaaaaaaaaaaaaaaa                
+ -56             baaaaaaaaaaaaaaaaaaaaaaa                
  -54             aaaaaaaaaaaaaaaaaaaaaaaa                
- -52              aaaaaaaa99aaaaaaaaaaaaa                
- -50                a  aaa77a9aaaaa88aaaa                
- -48                   aaa55668aaaa66a9aa                
+ -52              aaaaaaa999aaaaaaaaaaaaa                
+ -50                a  aa977a9aaaa988aaaa                
+ -48                   aaa55668aaa966a9aa                
  -46                  478a3333368aa444368                
  -44                  3334333333366333333                
  -42                  3333333333333333333                
- -40                  3333332223333333333                
+ -40                  2222222222233322223                
  -38                  2222222222222222222                
- -36                  2111111111111111122                
+ -36                  2222111111222222222                
  -34                   11111111111111111                 
- -32                   00000000000000000                 
+ -32                   11110000011111001                 
  -30                   00000000000000000                 
  -28                    000000000000000                  
  -26                     00000000000                     
@@ -87,27 +87,27 @@ KEY  char = ground height above y9 in bands of 1 block(s): 0 = y9..9, 1 = …; H
   24                        00000000                     
   26                     0000000000000                   
   28                   0000000000000000                  
-  30                   00000000000000000                 
-  32                  100000000000000000                 
-  34                  111111111111111111                 
+  30                   00000000000000011                 
+  32                  111111111100111111                 
+  34                  111111111111111112                 
   36                  222222222222222222                 
-  38                  3222322322222222223                
-  40                 33333333333333333333                
+  38                  2222222222222222222                
+  40                 33333333333222333333                
   42                 3333333433333333333                 
   44                 7533337a75333335753                 
   46                 aa7655aaaa75344aaa9                 
-  48                 aaa977aaaaaa866aaaa                 
-  50                  aaa999aaaaaa889aa  aaa             
+  48                 aaa97789aaaa8668aaa                 
+  50                  aaa999aaaaaa8899a  aaa             
   52                  aaaaaaaaaaaaaaaaaaaaaaa            
   54                  aaaaaaaaaaaaaaaaaaaaaaa            
-  56                  aaaaaaaaaaaaaaaaaaaaaab            
+  56                  aaaaaaaaaaaaaaaaaaaaabb            
   58                  aaaaaaaaaaaaaaaaaaaabbb            
-  60                  bbbbbbbbbbaaaaaaabbbbbbbbbbHbbbbbb 
-  62                  bbbbbbbbbbbbbbbbbbbbbbbbbbbHbbbbbbb
+  60                  bbbbbbbbbaaaaaaaaabbbbbbbbbHbbbbbb 
+  62                  bbbbbbbbbbbbaaabbbbbbbbbbbbHbbbbbbb
   64                   bbbbbbbbbbbbbbbbbbbbbbbbbbHbbbbbbb
   66                   bbbbbbbbbbbbbbbbbbbbbbbbbbHbbbbbbb
   68         cccccccccccbbbbbbbbb   bbbbbbbbbbbbbHbbbbbbb
-  70         cHHHccccccccccccbb      a999aaa9abbbHbbbbbbb
+  70         cHHHcccccccccccbbb      a9999aa9abbbHbbbbbbb
   72         cHHHcccccccccccccc       5555555        HHHH
   74         cHHHcccccccccccccc       5555555        bHHH
   76         cHHHcccccccccccccc       5555555        bHHH
@@ -117,7 +117,7 @@ KEY  char = ground height above y9 in bands of 1 block(s): 0 = y9..9, 1 = …; H
   84                   dddddddddd     cccccc877777778bbbb
   86                   ffedddddddd ddddccccb877777777abbb
   88                  gggfeddddddddddddddccb777777777abbb
-  90                  gggfeddeeeeeedddddddcb777777777abbb
+  90                  gggfedddeeeeedddddddcb777777777abbb
   92                  hhhgeeeeeeeeeeeeddddcb877777778bbbb
   94                  hhhgeeeeeeeeeeeeeedddc977777778bbb 
   96                   hhgeeeeeeeeeeeeeeeedd9            

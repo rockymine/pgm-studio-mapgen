@@ -164,9 +164,9 @@ def area(mark_id, h, x0, z0, x1, z1):
             "ring": [[x0, z0], [x1, z0], [x1, z1], [x0, z1]]}
 
 
-def scarp(scarp_id, points, low, high):
+def scarp(scarp_id, points, low, high, band=4):
     """Drawn west to east, so the high side is the one toward red's spawn."""
-    return {"id": scarp_id, "kind": "scarp", "points": points, "low": low, "high": high, "face": 2, "band": 4}
+    return {"id": scarp_id, "kind": "scarp", "points": points, "low": low, "high": high, "face": 2, "band": band}
 
 
 def face_z(points, x):
@@ -196,9 +196,16 @@ def stair(stair_id, points, x, low, high):
 LIP, FOOT, HEAD, CLAMP, SPAWN_YARD, HUB_BACK, BACK_YARD = 9, 12, 19, 20, 21, 23, 27
 FRONT_FACE = [[-24, 42], [-14, 47], [-6, 43], [4, 48], [12, 44], [22, 48]]
 BACK_FACE = [[-14, 114], [-4, 118], [10, 115]]
+# The lip is held at 9 up to an inner edge that follows the scarp's zigzag sixteen blocks short of it, and the
+# scarp holds only two blocks at its foot, so every contour the frontline solves between the two follows the
+# lightning rather than lying straight across the lane.
+LIP_REACH = 16
+LIP_RING = [[-26, 18], [24, 18], [24, FRONT_FACE[-1][1] - LIP_REACH],
+            *[[x, z - LIP_REACH] for x, z in reversed(FRONT_FACE)], [-26, FRONT_FACE[0][1] - LIP_REACH]]
+
 RELIEF = [
-    area("lip", LIP, -20, 20, 20, 32),
-    *[scarp(f"front-face-{i}", FRONT_FACE[i:i + 2], FOOT, HEAD) for i in range(len(FRONT_FACE) - 1)],
+    {"id": "lip", "kind": "area", "h": LIP, "bevel": 0, "ring": LIP_RING},
+    *[scarp(f"front-face-{i}", FRONT_FACE[i:i + 2], FOOT, HEAD, band=2) for i in range(len(FRONT_FACE) - 1)],
     area("spawn-yard", SPAWN_YARD, -38, 66, -20, 86),
     area("hub-back", HUB_BACK, -16, 96, 20, 100),
     area("clamp", CLAMP, 28, 60, 56, 98),
