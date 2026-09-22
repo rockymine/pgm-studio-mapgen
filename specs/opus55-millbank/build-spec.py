@@ -30,10 +30,11 @@ NECKS = [{"id": "wool-a-neck", "role": "piece", "rect": [-5, 14, 1, 4]},
          {"id": "wool-b-neck", "role": "piece", "rect": [8, 14, 2, 4]}]
 BOXES = {"wool-a": [-12, 14, 8, 6], "wool-b": [8, 14, 8, 4]}
 
-# The holm in the gorge is as wide as the build zone and twice as deep as the lip strip. A hop onto it must be
-# ten blocks or more, so the team units stand a cell further out than composed and the gorge is ten cells deep.
-SHIFT = 1
-HOLM = {"id": "mill-holm", "role": "piece", "rect": [-4, -2, 8, 4], "mirrors": False}
+# The holm in the gorge is as wide as the build zone and 32 blocks deep. A hop onto it must be ten blocks or
+# more, so the team units stand three cells further out than composed, the gorge is fourteen cells deep and
+# each hop is twelve blocks.
+SHIFT = 3
+HOLM = {"id": "mill-holm", "role": "piece", "rect": [-4, -4, 8, 8], "mirrors": False}
 GORGE = [-4, -4 - SHIFT, 8, 8 + 2 * SHIFT]
 
 # One wall per approach, on the seam between the neck and the arm, sixteen blocks in front of the room.
@@ -57,9 +58,10 @@ def plan():
     return doc
 
 
-# Block coordinates of red's half, which the symmetry turns onto blue's. The gorge lip runs along z 20.
-LIP_Z = 20
+# Block coordinates of red's half, which the symmetry turns onto blue's. They are stated as they stand with the
+# gorge lip at z 20, and `onto_board` moves them out by TEAM_DZ to where the shift puts the lip.
 TEAM = "frontline-t1-9"
+TEAM_DZ = 4 * (SHIFT - 1)
 
 # The team unit's outline as the compile answers it, and the few points it is reshaped by. The flanks of the
 # hub and the meadow are pushed a few blocks out and the hub's west back flank pulled in, which keeps the bay
@@ -152,10 +154,50 @@ RELIEF = [
 ]
 
 
+# The holm is the river's island, and the river has cut a bed through its middle along the gorge. The bed
+# floor is held at 7 across the whole holm and past both of its ends; a curved scarp stands four blocks sheer
+# from it to a bank top held flat at 11 out to the gorge edge, a low knoll swells on the bank, and a stair is
+# cut into the bank at 45 degrees, so the holm can be crossed on foot. Every one of these stands on the
+# holm's north half (z < 0): a half-turn solves that half and copies it onto the south, so the south bank, its
+# knoll and its stair are the north's images, and the river's width wanders as the two curves pass each other.
+BED, BANK = 7, 11
+BANK_LINE = [[24, -5], [22, -5], [10, -3], [-2, -4], [-12, -6], [-22, -4], [-24, -4]]   # traced east to west,
+HOLM_RELIEF = [                                                                           # so its high side is north
+    area("river-bed", BED, -24, -3, 24, 3),
+    {"id": "bank", "kind": "scarp", "points": BANK_LINE, "low": BED, "high": BANK, "face": 1, "band": 6},
+    {"id": "bank-stair", "kind": "line", "r": 2, "points": [[6, -2.5], [6, -6.5]], "h": [BED, BANK]},
+]
+HOLM_PUSHES = [{"id": "bank-knoll", "ring": [[-14, -12], [-4, -12], [-4, -8], [-14, -8]], "amount": 2,
+                "falloff": 8, "crown": 0, "roughness": 0, "seed": 1}]
+
+# The river fills its bed a block deep. Its ring runs half a block into each bank, so it reaches the foot of each cut,
+# and runs past both ends of the holm so it meets the gorge rather than stopping in a basin.
+NORTH_SHORE = [[x, z - 0.5] for x, z in reversed(BANK_LINE)]
+RIVER = {"id": "river", "kind": "water", "shape": "pool", "form": "natural", "layer": "ground",
+         "points": NORTH_SHORE + [[-x, -z] for x, z in NORTH_SHORE], "radius": 1, "depth": 1,
+         "level": BED + 1, "shore": 0}
+
+
+def onto_board(marks, ops):
+    """Red's half stated with the lip at z 20, moved out to the board's own lip."""
+    for mark in marks:
+        for key in ("ring", "points"):
+            if key in mark:
+                mark[key] = [[x, z + TEAM_DZ] for x, z in mark[key]]
+    for op in ops:
+        if "z" in op:
+            op["z"] += TEAM_DZ
+    return marks, ops
+
+
 def finish():
+    marks, ops = onto_board(copy.deepcopy(RELIEF), reshape_ops()[TEAM])
     return {
-        "editShapes": reshape_ops(),
-        "relief": {"team": {"base": BASE, "reach": 0, "step": 1, "marks": RELIEF}},
+        "editShapes": {TEAM: ops},
+        "relief": {"team": {"base": BASE, "reach": 0, "step": 1, "marks": marks},
+                   "neutral": {"base": BANK, "reach": 0, "step": 1, "marks": HOLM_RELIEF,
+                               "pushes": HOLM_PUSHES}},
+        "dressing": {"props": [RIVER]},
         "authors": ["Opus 5.5"],
         "created": "2026-09-22",
     }
