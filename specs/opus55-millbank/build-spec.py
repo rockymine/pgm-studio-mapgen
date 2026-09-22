@@ -30,10 +30,10 @@ NECKS = [{"id": "wool-a-neck", "role": "piece", "rect": [-5, 14, 1, 4]},
          {"id": "wool-b-neck", "role": "piece", "rect": [8, 14, 2, 4]}]
 BOXES = {"wool-a": [-12, 14, 8, 6], "wool-b": [8, 14, 8, 4]}
 
-# The holm in the gorge is as wide as the build zone and 32 blocks deep. A hop onto it must be ten blocks or
-# more, so the team units stand three cells further out than composed, the gorge is fourteen cells deep and
-# each hop is twelve blocks.
-SHIFT = 3
+# The holm in the gorge is as wide as the build zone and 32 blocks deep. The team units stand five cells further
+# out than composed, so the gorge is eighteen cells deep and the void between each lip and the holm is twenty
+# blocks.
+SHIFT = 5
 HOLM = {"id": "mill-holm", "role": "piece", "rect": [-4, -4, 8, 8], "mirrors": False}
 GORGE = [-4, -4 - SHIFT, 8, 8 + 2 * SHIFT]
 

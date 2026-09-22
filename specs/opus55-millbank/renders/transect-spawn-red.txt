@@ -1,59 +1,59 @@
 ## spawn-red (spawn) along x
-TRANSECT 33 stations from (0, 112) to (32, 112), every 1
+TRANSECT 33 stations from (0, 120) to (32, 120), every 1
   station        ground  surface  water  top  standing            step
-  (    0,   112)                                                    void
-  (    1,   112)                                                    void
-  (    2,   112)                                                    void
-  (    3,   112)                                                    void
-  (    4,   112)                                                    void
-  (    5,   112)                                                    void
-  (    6,   112)                                                    void
-  (    7,   112)                                                    void
-  (    8,   112)      23       23           23                      
-  (    9,   112)      23       23           31  spawn spawn-1       
-  (   10,   112)      23       23           31  spawn spawn-1       
-  (   11,   112)      23       23           31  spawn spawn-1       
-  (   12,   112)      23       23           31  spawn spawn-1       
-  (   13,   112)      23       23           31  spawn spawn-1       
-  (   14,   112)      23       23           23  spawn spawn-1       
-  (   15,   112)      23       23           23  spawn spawn-1       
-  (   16,   112)      23       23           23  spawn spawn-1       
-  (   17,   112)      23       23           23  spawn spawn-1       
-  (   18,   112)      23       23           31  spawn spawn-1       
-  (   19,   112)      23       23           31  spawn spawn-1       
-  (   20,   112)      23       23           31  spawn spawn-1       
-  (   21,   112)      23       23           31  spawn spawn-1       
-  (   22,   112)      23       23           31  spawn spawn-1       
-  (   23,   112)      23       23           23                      
-  (   24,   112)                                                    void
-  (   25,   112)                                                    void
-  (   26,   112)                                                    void
-  (   27,   112)                                                    void
-  (   28,   112)                                                    void
-  (   29,   112)                                                    void
-  (   30,   112)                                                    void
-  (   31,   112)                                                    void
-  (   32,   112)                                                    void
+  (    0,   120)                                                    void
+  (    1,   120)                                                    void
+  (    2,   120)                                                    void
+  (    3,   120)                                                    void
+  (    4,   120)                                                    void
+  (    5,   120)                                                    void
+  (    6,   120)                                                    void
+  (    7,   120)                                                    void
+  (    8,   120)      23       23           23                      
+  (    9,   120)      23       23           31  spawn spawn-1       
+  (   10,   120)      23       23           31  spawn spawn-1       
+  (   11,   120)      23       23           31  spawn spawn-1       
+  (   12,   120)      23       23           31  spawn spawn-1       
+  (   13,   120)      23       23           31  spawn spawn-1       
+  (   14,   120)      23       23           23  spawn spawn-1       
+  (   15,   120)      23       23           23  spawn spawn-1       
+  (   16,   120)      23       23           23  spawn spawn-1       
+  (   17,   120)      23       23           23  spawn spawn-1       
+  (   18,   120)      23       23           31  spawn spawn-1       
+  (   19,   120)      23       23           31  spawn spawn-1       
+  (   20,   120)      23       23           31  spawn spawn-1       
+  (   21,   120)      23       23           31  spawn spawn-1       
+  (   22,   120)      23       23           31  spawn spawn-1       
+  (   23,   120)      23       23           23                      
+  (   24,   120)                                                    void
+  (   25,   120)                                                    void
+  (   26,   120)                                                    void
+  (   27,   120)                                                    void
+  (   28,   120)                                                    void
+  (   29,   120)                                                    void
+  (   30,   120)                                                    void
+  (   31,   120)                                                    void
+  (   32,   120)                                                    void
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn spawn-1 at (9, 110)
+beside: spawn spawn-1 at (9, 118)
 
 ## spawn-red (spawn) along z
-TRANSECT 15 stations from (16, 100) to (16, 114), every 1
+TRANSECT 15 stations from (16, 108) to (16, 122), every 1
   station        ground  surface  water  top  standing            step
-  (   16,   100)      23       23           23                      
-  (   16,   101)      23       23           23                      
-  (   16,   102)      23       23           23                      
-  (   16,   103)      23       23           23                      
-  (   16,   104)      23       23           23                      
-  (   16,   105)      23       23           23                      
-  (   16,   106)      23       23           23                      
-  (   16,   107)      23       23           23                      
   (   16,   108)      23       23           23                      
-  (   16,   109)      23       23           31  spawn spawn-1       
-  (   16,   110)      23       23           31  spawn spawn-1       
-  (   16,   111)      23       23           23  spawn spawn-1       
-  (   16,   112)      23       23           23  spawn spawn-1       
-  (   16,   113)      23       23           31  spawn spawn-1       
-  (   16,   114)      23       23           31  spawn spawn-1       
+  (   16,   109)      23       23           23                      
+  (   16,   110)      23       23           23                      
+  (   16,   111)      23       23           23                      
+  (   16,   112)      23       23           23                      
+  (   16,   113)      23       23           23                      
+  (   16,   114)      23       23           23                      
+  (   16,   115)      23       23           23                      
+  (   16,   116)      23       23           23                      
+  (   16,   117)      23       23           31  spawn spawn-1       
+  (   16,   118)      23       23           31  spawn spawn-1       
+  (   16,   119)      23       23           23  spawn spawn-1       
+  (   16,   120)      23       23           23  spawn spawn-1       
+  (   16,   121)      23       23           31  spawn spawn-1       
+  (   16,   122)      23       23           31  spawn spawn-1       
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn spawn-1 at (14, 109)
+beside: spawn spawn-1 at (14, 117)

@@ -1,61 +1,61 @@
 ## spawn-blue (spawn) along x
-TRANSECT 33 stations from (-32, -112) to (0, -112), every 1
+TRANSECT 33 stations from (-32, -120) to (0, -120), every 1
   station        ground  surface  water  top  standing            step
-  (  -32,  -112)                                                    void
-  (  -31,  -112)                                                    void
-  (  -30,  -112)                                                    void
-  (  -29,  -112)                                                    void
-  (  -28,  -112)                                                    void
-  (  -27,  -112)                                                    void
-  (  -26,  -112)                                                    void
-  (  -25,  -112)                                                    void
-  (  -24,  -112)      23       23           23                      
-  (  -23,  -112)      23       23           31  spawn spawn-1#1     
-  (  -22,  -112)      23       23           31  spawn spawn-1#1     
-  (  -21,  -112)      23       23           31  spawn spawn-1#1     
-  (  -20,  -112)      23       23           31  spawn spawn-1#1     
-  (  -19,  -112)      23       23           31  spawn spawn-1#1     
-  (  -18,  -112)      23       23           23  spawn spawn-1#1     
-  (  -17,  -112)      23       23           23  spawn spawn-1#1     
-  (  -16,  -112)      23       23           23  spawn spawn-1#1     
-  (  -15,  -112)      23       23           23  spawn spawn-1#1     
-  (  -14,  -112)      23       23           31  spawn spawn-1#1     
-  (  -13,  -112)      23       23           31  spawn spawn-1#1     
-  (  -12,  -112)      23       23           31  spawn spawn-1#1     
-  (  -11,  -112)      23       23           31  spawn spawn-1#1     
-  (  -10,  -112)      23       23           31  spawn spawn-1#1     
-  (   -9,  -112)      23       23           23                      
-  (   -8,  -112)                                                    void
-  (   -7,  -112)                                                    void
-  (   -6,  -112)                                                    void
-  (   -5,  -112)                                                    void
-  (   -4,  -112)                                                    void
-  (   -3,  -112)                                                    void
-  (   -2,  -112)                                                    void
-  (   -1,  -112)                                                    void
-  (    0,  -112)                                                    void
+  (  -32,  -120)                                                    void
+  (  -31,  -120)                                                    void
+  (  -30,  -120)                                                    void
+  (  -29,  -120)                                                    void
+  (  -28,  -120)                                                    void
+  (  -27,  -120)                                                    void
+  (  -26,  -120)                                                    void
+  (  -25,  -120)                                                    void
+  (  -24,  -120)      23       23           23                      
+  (  -23,  -120)      23       23           31  spawn spawn-1#1     
+  (  -22,  -120)      23       23           31  spawn spawn-1#1     
+  (  -21,  -120)      23       23           31  spawn spawn-1#1     
+  (  -20,  -120)      23       23           31  spawn spawn-1#1     
+  (  -19,  -120)      23       23           31  spawn spawn-1#1     
+  (  -18,  -120)      23       23           23  spawn spawn-1#1     
+  (  -17,  -120)      23       23           23  spawn spawn-1#1     
+  (  -16,  -120)      23       23           23  spawn spawn-1#1     
+  (  -15,  -120)      23       23           23  spawn spawn-1#1     
+  (  -14,  -120)      23       23           31  spawn spawn-1#1     
+  (  -13,  -120)      23       23           31  spawn spawn-1#1     
+  (  -12,  -120)      23       23           31  spawn spawn-1#1     
+  (  -11,  -120)      23       23           31  spawn spawn-1#1     
+  (  -10,  -120)      23       23           31  spawn spawn-1#1     
+  (   -9,  -120)      23       23           23                      
+  (   -8,  -120)                                                    void
+  (   -7,  -120)                                                    void
+  (   -6,  -120)                                                    void
+  (   -5,  -120)                                                    void
+  (   -4,  -120)                                                    void
+  (   -3,  -120)                                                    void
+  (   -2,  -120)                                                    void
+  (   -1,  -120)                                                    void
+  (    0,  -120)                                                    void
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn spawn-1#1 at (-23, -114)
+beside: spawn spawn-1#1 at (-23, -122)
 
 ## spawn-blue (spawn) along z
-TRANSECT 17 stations from (-16, -116) to (-16, -100), every 1
+TRANSECT 17 stations from (-16, -124) to (-16, -108), every 1
   station        ground  surface  water  top  standing            step
+  (  -16,  -124)      23       23           23                      
+  (  -16,  -123)      23       23           31  spawn spawn-1#1     
+  (  -16,  -122)      23       23           31  spawn spawn-1#1     
+  (  -16,  -121)      23       23           23  spawn spawn-1#1     
+  (  -16,  -120)      23       23           23  spawn spawn-1#1     
+  (  -16,  -119)      23       23           31  spawn spawn-1#1     
+  (  -16,  -118)      23       23           31  spawn spawn-1#1     
+  (  -16,  -117)      23       23           23                      
   (  -16,  -116)      23       23           23                      
-  (  -16,  -115)      23       23           31  spawn spawn-1#1     
-  (  -16,  -114)      23       23           31  spawn spawn-1#1     
-  (  -16,  -113)      23       23           23  spawn spawn-1#1     
-  (  -16,  -112)      23       23           23  spawn spawn-1#1     
-  (  -16,  -111)      23       23           31  spawn spawn-1#1     
-  (  -16,  -110)      23       23           31  spawn spawn-1#1     
+  (  -16,  -115)      23       23           23                      
+  (  -16,  -114)      23       23           23                      
+  (  -16,  -113)      23       23           23                      
+  (  -16,  -112)      23       23           23                      
+  (  -16,  -111)      23       23           23                      
+  (  -16,  -110)      23       23           23                      
   (  -16,  -109)      23       23           23                      
-  (  -16,  -108)      23       23           23                      
-  (  -16,  -107)      23       23           23                      
-  (  -16,  -106)      23       23           23                      
-  (  -16,  -105)      23       23           23                      
-  (  -16,  -104)      23       23           23                      
-  (  -16,  -103)      23       23           23                      
-  (  -16,  -102)      23       23           23                      
-  (  -16,  -101)      23       23           23                      
-  (  -16,  -100)      22       22           22                      -1
+  (  -16,  -108)      22       22           22                      -1
 rises 0, falls 1, worst step 1: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: spawn spawn-1#1 at (-18, -115)
+beside: spawn spawn-1#1 at (-18, -123)
