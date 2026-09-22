@@ -69,6 +69,12 @@ The claim is the first sentence and stays bolded where the document bolds its cl
 supports that claim — the mechanism, the number, the failure it prevents, the worked case. Where a
 paragraph makes two claims it is two paragraphs.
 
+**An instruction names no board.** A document an agent is handed states the rule and the measurement that
+settles it, and a slug in place of a measurement is a citation the reader cannot follow: the board may have
+been rebuilt, renamed or retired since, and its coordinates mean nothing without it. Write what was measured —
+36 blocks of lane, ten blocks of hill against a wall, twenty-four themes — and leave the board it came off in
+`BOARDS-BUILT.md` and the run report, which is what those are for.
+
 **`tools/prose-check.py` is the gate.** It lists every prose paragraph over 110 words or 4 sentences and
 exits non-zero while any remain; a table, a fenced block, a list and a heading are none of its business.
 Run it over a brief or a skill before the commit that changes one.

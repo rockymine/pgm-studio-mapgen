@@ -79,8 +79,8 @@ came apart. The observations below are measured off shipped boards and are enfor
 - **A `polyline` *shape* is the layout's easiest curve, and it is not the `stroke` prop.** The rasterizer
   splines a polyline's points — centripetal Catmull-Rom, eight samples a segment — before offsetting the band,
   so four clicked points draw as a flowing wall rather than a chain of chords, and nothing has to be authored
-  for it. `stroke_edge` is `solid`, `rough` (the width wanders ±45%) or `tapered`. `opus5-millrace`'s canal
-  walls are three such shapes at three or four points each. Reach for one wherever a wall, a lane or a
+  for it. `stroke_edge` is `solid`, `rough` (the width wanders ±45%) or `tapered`. A pair of canal
+  walls comes out as three such shapes at three or four points each. Reach for one wherever a wall, a lane or a
   watercourse should flow; `controls` — Bézier handles — belong only on a closed ring of ground. **The
   `stroke` prop is the other thing entirely**: it repaints the top course of what it crosses and adds no
   cell, and `claimsGround` on it says whether trees, boulders and buildings keep off — which is about holding
@@ -104,10 +104,9 @@ board.** A wool board's ground is thin by construction — spurs, limbs and a ri
 the ends — so a landform that would be one feature among many on an open map is the entire width of the ground
 it sits in.
 
-Emberhowe is the measured case. The land west of the spawn runs 36 blocks, from the coast at x -48 to the
-spawn's wall at x -12, and a spatter cone 20 blocks across sat in the middle of it: 28 to 32 blocks of ground
-over 30° on every row from z 59 to z 83, with 14 to 24 of those over 40°. What was left of the lane was a
-strip 4 to 8 blocks wide at x -20..-14, between the hall's wall and a 42° face.
+The measured case ran 36 blocks of land between a coast and a spawn hall's wall, with a spatter cone 20
+blocks across in the middle of it. Every row of that lane carried 28 to 32 blocks of ground over 30°, 14 to 24
+of them over 40°, and what was left to walk was a strip 4 to 8 blocks wide between the hall and a 42° face.
 
 **So a hill on a capture board is either smooth enough to walk or far enough out to be off it, and the middle
 of a lane is neither.** Smooth is measurable: the rebuilt cone rises 8 blocks over 16 at the shore, which
@@ -119,13 +118,12 @@ its ring over the void outside the coast and the skirt that lands reads as a cli
 a cone with a path round it — which is the one place on a wool board where steep ground costs nobody a route.
 
 **The frontline and the ground in front of a bedrock wall are the two places a hill is always wrong.** Both
-are ground a team has to cross under fire, and a landform there decides the fight instead of the players;
-Ochredrift carries hills at both.
+are ground a team has to cross under fire, and a landform there decides the fight instead of the players.
 
-**A house is never inside a hill.** Ochredrift's crusher stands at x -25..-15, z 16..23 with butte-west's ring
-at x -27..-12, z 20..32, so the ground at the house's back wall is y20 to y22 while its front sits at y9 to
-y12 — ten blocks of butte against one wall of a building, which reads as a mistake from every angle it can be
-seen from.
+**A house is never inside a hill.** The measured case put a push's ring across the back third of a building's
+footprint, and the ground at its back wall then stood **ten blocks** higher than the ground at its front: one
+wall buried to the eaves and the other on the flat. It reads as a mistake from every angle it can be seen
+from.
 
 ## What a board is painted with
 
@@ -170,7 +168,7 @@ grey stone, so a grey theme reads as one mass there and may be perfectly legible
 **Three themes is a map.** A theme is a *place* — the moor, the works, the shore — and a board has two or
 three of them. Giving every piece of the plan its own theme is not variety, it is the plan leaking into the
 paint: sixteen boards here carry three themes, but eleven carry five, seven carry six, and five carry between
-sixteen and twenty-four (`opus5-interchange` has **twenty-four**).
+sixteen and twenty-four, the worst of them carrying **twenty-four**.
 
 **Steps share one theme, and it is not the theme of what they join.** A flight of steps is *made* — it is the
 one part of a landscape a person built — so it reads as stone, and it reads as the same stone the whole way
@@ -194,8 +192,8 @@ has no reason to be. If the answer to *why is it here* is "the noise put it ther
 **A building is never the ground it stands on.** A house is a thing somebody built on a landscape and it has
 to read as one from across the map, which means its walls are not in the tone family under its feet. A stone
 house on stone can be made to work and is a hard thing to get right; it is not the one to attempt. **9 of the
-50 buildings** here are walled in the ground's own family — `opus5-siderite-bowl` puts three grey-stone houses
-on grey stone.
+50 buildings** here are walled in the ground's own family, one board putting three grey-stone houses on grey
+stone.
 
 Name three families out loud before painting: which is ground, which is built, which is the
 accent. An accent that appears once is not an accent, and an ore block is never a building material.
@@ -275,13 +273,13 @@ also demands eight level neighbours refuses every rim cell on the board, and the
 a road leaves. A search is a way of proposing sites nobody has to think about — its silence is conservatism,
 not a refusal.
 
-**Two species a board, and never three.** Wetherslack carries a dense oak, a birch and a willow and reads as
-three woods pushed together rather than as one place; Emberhowe's oak and tiny spruce are one wood with an
-accent in it, which is what the pair is for. A third species is the one that stops being scenery and starts
-being a catalogue (author).
+**Two species a board, and never three.** A dense oak, a birch and a willow on one board read as three woods
+pushed together rather than as one place, where an oak with a tiny spruce among it is one wood with an accent
+in it — which is what the pair is for. A third species is the one that stops being scenery and starts being a
+catalogue (author).
 
-**A board's trees belong to its climate, and pine and spruce belong to a cold one.** Ambertor is savanna —
-warm, sandy ground — with `showcase-r2`'s large pine standing on it, and no amount of placement repairs the
+**A board's trees belong to its climate, and pine and spruce belong to a cold one.** `showcase-r2`'s large
+pine standing on savanna — warm, sandy ground — is the measured case, and no amount of placement repairs a
 species being wrong for the ground it is on.
 
 **What a tree *is* is what `corpus/README.md` says, not what its blocks are.** The seeding names every row:
@@ -292,7 +290,7 @@ up on a savanna.
 **A tree holds the disc its crown covers, and the pass says so.** `DR-CLAIM` refuses a trunk inside another
 tree's crown, at `Decorator.CanopyRadius` — the tree's own farthest leaf, measured rather than taken from its
 species — so two trees stand at least their two crowns apart. Crowns that interpenetrate read as one mass of
-foliage, and the dense oaks of `r11` are the worst of it because their crowns are widest.
+foliage, and `r11`'s dense oaks are the worst of it because their crowns are the widest in the corpus.
 
 ## What a building is made of
 
@@ -306,8 +304,8 @@ plate of one course, which is what a house on a board has, it is a rim round a b
 speak of and it reads as noise rather than as masonry.
 
 Five of the thirteen presets carry one in cobblestone — `cottage`, `longhouse`, `terrace`, `counting house`
-and `workshop` — and so do three of `opus5-lodestar`'s own styles (`berth`, `vault`, `shed`) and both of its
-room shells. A fork of any of them carries the footing in unless it is set back to null.
+and `workshop` — and a hand-authored style is as likely to, room shells included. A fork of any of them carries
+the footing in unless it is set back to null.
 
 **No shed, and no shed roof.** `RoofForm` offers six — `gable`, `flat`, `hip`, `gambrel`, `shed`,
 `saltbox` — and one of them is not for a map.
