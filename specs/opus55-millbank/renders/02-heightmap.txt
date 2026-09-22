@@ -7,8 +7,8 @@ KEY  char = ground height above y7 in bands of 1 block(s): 0 = y7..7, 1 = …; H
 -128                         gHHHHHHH                                        
 -126                         gHHHHHHH                                        
 -124                         gggggggg                                        
--122                         gggggggg                                        
--120                         gggggggg                                        
+-122                         ggHggggg                                        
+-120                         ggHggggg                                        
 -118                         gggggggg                                        
 -116                         gggggggg                                        
 -114                         gggggggg                                        
@@ -128,7 +128,7 @@ KEY  char = ground height above y7 in bands of 1 block(s): 0 = y7..7, 1 = …; H
  114                                         gggggggg                        
  116                                         gggggggg                        
  118                                         gggggggg                        
- 120                                         gggggggg                        
+ 120                                         gggggHHg                        
  122                                         gggggggg                        
  124                                         gHHHHHHH                        
  126                                         gHHHHHHH                        

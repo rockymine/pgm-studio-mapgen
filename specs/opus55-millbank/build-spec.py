@@ -37,6 +37,10 @@ ROOMS = {
     "wool-b-room": {"footprint": [8, 1, 7, 10], "at": [11, 6]},
     "spawn-room": {"footprint": [1, 8, 14, 7], "at": [8, 11]},
 }
+
+# The spawn's iron stands in its yard, off the line from the door, where the studio's room read seats a cube
+# clear of the building's wall. Inside a spawn piece it renews itself.
+IRON = [{"id": "iron-1", "piece": "spawn-room", "at": [11.5, 4.5]}]
 NECKS = [{"id": "wool-a-neck", "role": "piece", "rect": [-5, 14, 1, 4]},
          {"id": "wool-b-neck", "role": "piece", "rect": [8, 14, 2, 4]}]
 BOXES = {"wool-a": [-12, 14, 8, 8], "wool-b": [8, 14, 10, 4], "spawn": [2, 22, 4, 6]}
@@ -65,6 +69,7 @@ def plan():
     doc["walls"] = WALLS
     for marker in doc["placements"]["spawns"] + doc["placements"]["wools"]:
         marker.update(ROOMS.get(marker["piece"], {}))
+    doc["placements"]["iron"] = copy.deepcopy(IRON)
     for box in doc.get("boxes", []):
         x, z, w, h = BOXES.get(box["id"], box["rect"])
         box["rect"] = [x, z + SHIFT, w, h]

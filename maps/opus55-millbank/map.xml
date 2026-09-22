@@ -115,6 +115,12 @@
         <not id="block-place-void-filter">
             <void/>
         </not>
+        <material id="only-air">air</material>
+        <material id="only-iron">iron block</material>
+        <all id="only-iron-cause-world">
+            <material>iron block</material>
+            <cause>world</cause>
+        </all>
     </filters>
     <regions>
         <point id="blue-spawn-point">-16,23,-127</point>
@@ -146,6 +152,10 @@
             <region id="reds-woolrooms"/>
             <region id="blues-woolrooms"/>
         </union>
+        <union id="iron-cubes">
+            <rectangle id="iron-cube-0" min="18,119" max="20,121"/>
+            <rectangle id="iron-cube-1" min="-21,-122" max="-19,-120"/>
+        </union>
         <negative id="not-spawns">
             <region id="spawns"/>
         </negative>
@@ -164,7 +174,6 @@
         </complement>
         <apply enter="only-red" region="red-spawn" message="You may not enter the enemy's spawn!"/>
         <apply enter="only-blue" region="blue-spawn" message="You may not enter the enemy's spawn!"/>
-        <apply block="never" region="spawns" message="You may not block/break spawns!"/>
         <apply kit="reset-resistance-kit" region="not-spawns"/>
         <apply enter="not-red" region="reds-woolrooms" message="You may not enter your own wool room!"/>
         <apply block="reds-woolrooms-filter" region="reds-woolrooms" message="You may not edit the wool room!"/>
@@ -172,6 +181,7 @@
         <apply enter="not-blue" region="blues-woolrooms" message="You may not enter your own wool room!"/>
         <apply block="blues-woolrooms-filter" region="blues-woolrooms" message="You may not edit the wool room!"/>
         <apply use="deny(all(only-blue,chest-filter))" region="blues-woolrooms"/>
+        <apply block-place="only-iron-cause-world" block-break="only-iron" region="spawns" message="You may not edit spawn!"/>
         <apply block-place="block-place-void-filter" block-break="block-break-void-filter" region="not-build-area" message="You may not edit the void!"/>
     </regions>
     <spawners>
@@ -188,6 +198,9 @@
             <item material="wool" damage="3"/>
         </spawner>
     </spawners>
+    <renewables>
+        <renewable region="iron-cubes" renew-filter="only-iron" replace-filter="only-air" avoid-players="2"/>
+    </renewables>
     <block-drops>
         <rule>
             <filter>
