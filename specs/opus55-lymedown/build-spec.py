@@ -2,8 +2,9 @@
 
 The arrangement is composed board p8 rot_180 seed 8 (`composed-seed8.plan.json`, the composer's raw answer),
 a nano board: a g-shaped hub with two holes, one wool on an L at its back, no frontline and a wide build band
-with one island in it. Taken over: the wool's arm is walled behind a neck, the wool room and the spawn are
-deepened with a building at the back of each, the spawn carries iron, the island stands sixteen blocks off
+with one island in it. Taken over: the wool box is centred on the hub's hole and turned to face the spawn, walled
+behind a neck, the build band narrowed to the span between the spawn's leg and the hole, the wool room and the
+spawn deepened with a building at the back of each, the spawn carries iron, the island stands sixteen blocks off
 each hub, and the whole team unit is stated at one surface so the relief alone gives it its heights.
 """
 import copy
@@ -16,30 +17,35 @@ composed = json.loads((HERE / "composed-seed8.plan.json").read_text())
 
 BASE = 9
 
-# Cell rects [x, z, w, h]. The wool's arm leaves the hub's back bar through a neck a cell long, and the wall
-# stands on the seam between the neck and the arm, where there is void past both of its ends; at the bar's own
-# side the bar runs on past the arm and a player rounds the wall off its corner. The wool room and the spawn
-# are sixteen blocks deep along the way their doors face, and the arm is long enough that the room stands sixteen
-# blocks clear of the back bar.
+# Cell rects [x, z, w, h]. The wool box leaves the hub's back bar with its neck centred on the hole below it, and
+# turns west, so its room stands at the west end of the L with its door facing east: from the spawn a player
+# sees the room's yard and door rather than its back wall. The wall stands on the seam between the neck and the
+# arm, where there is void past both of its ends. The arm is long enough that the room stands sixteen blocks
+# clear of the back bar. The wool room and the spawn are sixteen blocks deep along the way their doors face.
 RECT = {
-    "wool-a-t1": [-7, 15, 3, 3],
-    "wool-a-t2": [-7, 18, 4, 3],
-    "wool-a-room": [-3, 18, 4, 3],
+    "wool-a-t1": [-5, 15, 3, 3],
+    "wool-a-t2": [-6, 18, 4, 3],
+    "wool-a-room": [-10, 18, 4, 3],
     "spawn-room": [8, 10, 4, 3],
 }
-NECKS = [{"id": "wool-a-neck", "role": "piece", "rect": [-7, 14, 3, 1]}]
-BOXES = {"wool-a": [-7, 14, 8, 7], "spawn": [7, 10, 5, 3]}
+NECKS = [{"id": "wool-a-neck", "role": "piece", "rect": [-5, 14, 3, 1]}]
+BOXES = {"wool-a": [-10, 14, 8, 7], "spawn": [7, 10, 5, 3]}
 WALLS = [{"a": "wool-a-t1", "b": "wool-a-neck"}]
 
 # The island stands sixteen blocks off each hub's front: the team units sit a cell further out than composed.
+# The build band runs only from the outer edge of the hub's leg out of the spawn to the far end of the hole,
+# not the whole width of the G, so a team leaving its spawn has to choose a side of the hole rather than run
+# straight across. The team units sit a cell further west than composed, which centres that span on the
+# board's axis, so the two sides face each other squarely across a band twelve cells wide.
 SHIFT = 1
-GORGE = [-8, -5 - SHIFT, 16, 10 + 2 * SHIFT]
+SHIFT_X = -1
+GORGE = [-6, -5 - SHIFT, 12, 10 + 2 * SHIFT]
 
 # Each deepened room holds a building seven deep at its back and a yard nine deep in front of its door, with
-# the marker inside the building. A footprint is [x, z, w, h] in blocks from the piece's minimum corner. Both
-# rooms open west, the way a player arriving at the spawn faces.
+# the marker inside the building. A footprint is [x, z, w, h] in blocks from the piece's minimum corner. The wool
+# room opens east onto its arm and the spawn west onto the hub, the way a player arriving there faces.
 ROOMS = {
-    "wool-a-room": {"footprint": [8, 1, 7, 10], "at": [11, 6]},
+    "wool-a-room": {"footprint": [1, 1, 7, 10], "at": [4, 6]},
     "spawn-room": {"footprint": [8, 1, 7, 10], "at": [11, 6], "facing": "left"},
 }
 IRON = [{"id": "iron-1", "piece": "spawn-room", "at": [4.5, 2.5]}]
@@ -51,7 +57,8 @@ def plan():
     doc["pieces"] += copy.deepcopy(NECKS)
     for piece in doc["pieces"]:
         x, z, w, h = RECT.get(piece["id"], piece["rect"])
-        piece["rect"] = [x, z + (SHIFT if piece["id"] != "mid-stone-0" else 0), w, h]
+        team = piece["id"] != "mid-stone-0"
+        piece["rect"] = [x + (SHIFT_X if team else 0), z + (SHIFT if team else 0), w, h]
         piece["surface"] = BASE
         if piece["id"] == "mid-stone-0":
             piece["mirrors"] = False   # it lies across the centre and is its own image, so it is neutral ground
@@ -62,7 +69,7 @@ def plan():
     doc["placements"]["iron"] = copy.deepcopy(IRON)
     for box in doc.get("boxes", []):
         x, z, w, h = BOXES.get(box["id"], box["rect"])
-        box["rect"] = [x, z + SHIFT, w, h]
+        box["rect"] = [x + SHIFT_X, z + SHIFT, w, h]
         if box["id"] == "wool-a":
             box["members"].append("wool-a-neck")
     return doc
@@ -73,17 +80,17 @@ TEAM, HOLE, ISLAND = "hub-t1-9", "void-1-cut", "mid-stone-0-9"
 
 # The team unit's outline as the compile answers it, and the points it is reshaped by: the flanks and the back
 # bar pushed a few blocks out, the front pushed into the build band at two points (never pulled in, which would
-# leave void the zone does not cover), and the wool arm's far corner chamfered, sixteen blocks from its room.
-COMPILED_RING = [(-32, 24), (4, 24), (4, 48), (16, 48), (16, 24), (28, 24), (28, 44), (48, 44), (48, 56),
-                 (28, 56), (28, 60), (-16, 60), (-16, 76), (4, 76), (4, 88), (-28, 88), (-28, 60), (-32, 60)]
+# leave void the zone does not cover), and the wool L's east corner chamfered, sixteen blocks from its room.
+COMPILED_RING = [(-44, 76), (-24, 76), (-24, 60), (-36, 60), (-36, 24), (0, 24), (0, 48), (12, 48), (12, 24),
+                 (24, 24), (24, 44), (44, 44), (44, 56), (24, 56), (24, 60), (-12, 60), (-12, 88), (-44, 88)]
 RESHAPE = [
-    ((-32, 24), (4, 24), [(-18, 21), (-6, 20)]),   # the front, pushed into the build band
-    ((28, 24), (28, 44), [(31, 34)]),              # the east flank
-    ((28, 60), (-16, 60), [(8, 63)]),              # the back bar's north edge
-    ((-32, 60), (-32, 24), [(-35, 42)]),           # the west flank
+    ((-36, 24), (0, 24), [(-22, 21), (-10, 20)]),  # the front, pushed into the build band
+    ((24, 24), (24, 44), [(27, 34)]),              # the east flank
+    ((24, 60), (-12, 60), [(6, 63)]),              # the back bar's north edge
+    ((-36, 60), (-36, 24), [(-39, 42)]),           # the west flank
 ]
 CHAMFER = 3
-CHAMFERED = [(-28, 88)]
+CHAMFERED = [(-12, 88)]
 
 
 def toward(corner, other, run):
@@ -112,14 +119,14 @@ def reshape_ops():
 
 
 # The hub's hole is a rounded, irregular hexagon rather than the compiled square — a dene in the down.
-HOLE_POINTS = [(-19, 38), (-12, 35), (-7, 40), (-8, 47), (-15, 49), (-21, 44)]
+HOLE_POINTS = [(-23, 38), (-16, 35), (-11, 40), (-12, 47), (-19, 49), (-25, 44)]
 HOLE_OPS = [
-    {"index": 0, "x": -19, "z": 38},
-    {"index": 1, "x": -12, "z": 35},
-    {"after": 1, "x": -7, "z": 40},
-    {"index": 3, "x": -8, "z": 47},
-    {"index": 4, "x": -15, "z": 49},
-    {"after": 4, "x": -21, "z": 44},
+    {"index": 0, "x": -23, "z": 38},
+    {"index": 1, "x": -16, "z": 35},
+    {"after": 1, "x": -11, "z": 40},
+    {"index": 3, "x": -12, "z": 47},
+    {"index": 4, "x": -19, "z": 49},
+    {"after": 4, "x": -25, "z": 44},
 ]
 
 # The island loses its square corners; it lies across the centre and is not fanned, so its ring is written
@@ -153,19 +160,19 @@ def proud(points, margin):
 
 # Chalk downs: nothing is sheer. The hub leans from its front at the build band, held at 9, up to its back bar at
 # 13, and a rounded down swells on its west coast. The wool's neck and the first blocks of its arm are held at 13
-# for the wall; past it the arm climbs onto a second rounded down at its far corner, whose shoulder falls to the
-# room. Each down's skirt climbs at about the rate its crown does, so neither steps at its own outline. The spawn
+# for the wall; past it the arm climbs onto a second rounded down at the L's corner, whose shoulder falls west
+# to the room. Each down's skirt climbs at about the rate its crown does, so neither steps at its own outline. The spawn
 # yard is held at 14. The hub dips two blocks toward its hole, which reads as a dene in the down.
 FRONT, BACK, SPAWN_YARD = 9, 13, 14
 RELIEF = [
-    area("front-edge", FRONT, -36, 18, 32, 27),
-    area("back-bar", BACK, -30, 56, 26, 62),
-    area("wall", BACK, -30, 58, -14, 70),
-    area("spawn-yard", SPAWN_YARD, 30, 42, 50, 58),
+    area("front-edge", FRONT, -40, 18, 28, 27),
+    area("back-bar", BACK, -34, 56, 22, 62),
+    area("wall", BACK, -26, 58, -10, 70),
+    area("spawn-yard", SPAWN_YARD, 26, 42, 46, 58),
 ]
 PUSHES = [
-    push("west-down", [(-38, 38), (-26, 36), (-24, 46), (-28, 56), (-38, 56)], 3, 12, crown=2),
-    push("wool-down", [(-32, 80), (-22, 78), (-20, 86), (-24, 94), (-32, 94)], 3, 10, crown=2),
+    push("west-down", [(-44, 34), (-32, 32), (-30, 42), (-34, 50), (-44, 50)], 3, 12, crown=2),
+    push("wool-down", [(-20, 82), (-10, 80), (-6, 86), (-10, 94), (-20, 94)], 3, 10, crown=2),
     push("dene-lip", proud(HOLE_POINTS, 2), -2, 5),
 ]
 
