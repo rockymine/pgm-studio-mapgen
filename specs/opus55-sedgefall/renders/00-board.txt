@@ -1,28 +1,29 @@
       |   -1         0         1   |
       | 32109876543210123456789012 |
-  -29 |                 WWW        |
-  -28 |                 W¤W        |
-  -27 |                 WWW        |
-  -26 |                 WWW        |
-  -25 |                 FFF        |
-  -24 |                 FFF        |
-  -23 |                 FFF        |
-  -22 |                 LLL        |
-  -21 |           AAAAAAAAA        |
-  -20 |           AAAAAAAAA        |
+  -30 |              WWW           |
+  -29 |              W¤W           |
+  -28 |              WWW           |
+  -27 |              WWW           |
+  -26 |              FFF           |
+  -25 |              FFF           |
+  -24 |              FFF           |
+  -23 |              FFF           |
+  -22 |              LLL       VVV |
+  -21 |           AAAAAAAAA    V¤V |
+  -20 |           AAAAAAAAA    VVV |
   -19 |           AAAAAAAAA    VVV |
-  -18 |           DDDoooCCC    V¤V |
-  -17 |     SSSSEEDDDoooCCC    VVV |
-  -16 |     S@SSEEDDDoooCCC    VVV |
+  -18 |           DDDoooCCCMGGGGGG |
+  -17 |     SSSSEEDDDoooCCCMGGGGGG |
+  -16 |     S@SSEEDDDoooCCCMGGGGGG |
   -15 |     SSiSEEDDDoooCCCMGGGGGG |
-  -14 |           BBBBBBBBBMGGGGGG |
-  -13 |           BBBBBBBBBMGGGGGG |
+  -14 |           BBBBBBBBB        |
+  -13 |           BBBBBBBBB        |
   -12 |           BBBBBBBBB        |
-  -11 |            HHHHHHHH        |
-  -10 |            HHHHHHHH        |
-   -9 |            HHHHHHHH        |
-   -8 |            JJJJJ           |
-   -7 |            JJJJJ           |
+  -11 |           HHHHHHHHH        |
+  -10 |           HHHHHHHHH        |
+   -9 |           HHHHHHHHH        |
+   -8 |           JJJJJJ           |
+   -7 |           JJJJJJ           |
    -6 |           ++++++           |
    -5 |           ++++++           |
    -4 |           ++++++           |
@@ -35,30 +36,31 @@
     3 |           ++++++           |
     4 |           ++++++           |
     5 |           ++++++           |
-    6 |           JJJJJ            |
-    7 |           JJJJJ            |
-    8 |        HHHHHHHH            |
-    9 |        HHHHHHHH            |
-   10 |        HHHHHHHH            |
+    6 |           JJJJJJ           |
+    7 |           JJJJJJ           |
+    8 |        HHHHHHHHH           |
+    9 |        HHHHHHHHH           |
+   10 |        HHHHHHHHH           |
    11 |        BBBBBBBBB           |
-   12 | GGGGGGMBBBBBBBBB           |
-   13 | GGGGGGMBBBBBBBBB           |
+   12 |        BBBBBBBBB           |
+   13 |        BBBBBBBBB           |
    14 | GGGGGGMCCCoooDDDEESiSS     |
-   15 | VVV    CCCoooDDDEESS@S     |
-   16 | VVV    CCCoooDDDEESSSS     |
-   17 | V¤V    CCCoooDDD           |
+   15 | GGGGGGMCCCoooDDDEESS@S     |
+   16 | GGGGGGMCCCoooDDDEESSSS     |
+   17 | GGGGGGMCCCoooDDD           |
    18 | VVV    AAAAAAAAA           |
-   19 |        AAAAAAAAA           |
-   20 |        AAAAAAAAA           |
-   21 |        LLL                 |
-   22 |        FFF                 |
-   23 |        FFF                 |
-   24 |        FFF                 |
-   25 |        WWW                 |
-   26 |        WWW                 |
-   27 |        W¤W                 |
-   28 |        WWW                 |
-      26 × 58 cells drawn  ·  26 × 58 cells = 104 × 232 blocks  ·  cell 4
+   19 | VVV    AAAAAAAAA           |
+   20 | V¤V    AAAAAAAAA           |
+   21 | VVV       LLL              |
+   22 |           FFF              |
+   23 |           FFF              |
+   24 |           FFF              |
+   25 |           FFF              |
+   26 |           WWW              |
+   27 |           WWW              |
+   28 |           W¤W              |
+   29 |           WWW              |
+      26 × 60 cells drawn  ·  26 × 60 cells = 104 × 240 blocks  ·  cell 4
       @ spawn   A hub-t1 (piece)   B hub-t2 (piece)   C hub-t3 (piece)   D hub-t4 (piece)   
       E spawn-t1 (piece)   F wool-a-t1 (piece)   G wool-b-t1 (piece)   H frontline-t1 (piece)   
       J frontline-t2 (piece)   K mid-stone-0 (piece)   L wool-a-neck (piece)   

@@ -17,25 +17,32 @@ composed = json.loads((HERE / "composed-seed24.plan.json").read_text())
 
 BASE = 9
 
-# Cell rects [x, z, w, h]. Each wool's arm leaves the hub through a neck a cell long, and its wall stands on the
-# seam between the neck and the arm, where there is void past both of its ends. The side wool's arm reaches a
-# cell further west so its room stands sixteen blocks clear of the hub. The hub is a cell wider to the east, and
-# the spawn moves with it, so its hole is twelve blocks across rather than a gap a player jumps. The rooms and
-# the spawn are sixteen blocks deep along the way their doors face.
+# Cell rects [x, z, w, h]. Both wool approaches line up with the middle of the hub's hole: the back one leaves the
+# back bar straight behind it, and the side one is as deep as the hub's west side and meets it opposite the
+# hole. Each leaves the hub through a neck a cell long, and its wall stands on the seam between the neck and the
+# arm, where there is void past both of its ends. The side wool's arm is long enough that its room stands
+# sixteen blocks clear of the hub, and the back wool's that its room stands sixteen behind its wall, which is
+# also what balances the two rooms' walks from the spawn. The hub is a cell wider than composed to the east, and the spawn moves with
+# it, so its hole is twelve blocks across rather than a gap a player jumps. The frontline's lip is centred on
+# the board's axis, so the two teams' lips face each other squarely across the build zone. The rooms and the
+# spawn are sixteen blocks deep along the way their doors face.
 RECT = {
     "hub-t1": [-6, 17, 9, 3],
     "hub-t2": [-6, 10, 9, 3],
     "hub-t4": [0, 13, 3, 4],
     "spawn-t1": [3, 13, 2, 3],
-    "wool-a-t1": [-6, 21, 3, 3],
-    "wool-a-room": [-6, 24, 3, 4],
-    "wool-b-t1": [-13, 11, 6, 3],
-    "wool-b-room": [-13, 14, 3, 4],
+    "frontline-t1": [-6, 7, 9, 3],
+    "frontline-t2": [-3, 5, 6, 2],
+    "wool-a-t1": [-3, 21, 3, 4],
+    "wool-a-room": [-3, 25, 3, 4],
+    "wool-b-t1": [-13, 13, 6, 4],
+    "wool-b-room": [-13, 17, 3, 4],
     "spawn-room": [5, 13, 4, 3],
 }
-NECKS = [{"id": "wool-a-neck", "role": "piece", "rect": [-6, 20, 3, 1]},
-         {"id": "wool-b-neck", "role": "piece", "rect": [-7, 11, 1, 3]}]
-BOXES = {"hub": [-6, 10, 9, 10], "wool-a": [-6, 20, 3, 8], "wool-b": [-13, 11, 7, 7], "spawn": [3, 13, 6, 3]}
+NECKS = [{"id": "wool-a-neck", "role": "piece", "rect": [-3, 20, 3, 1]},
+         {"id": "wool-b-neck", "role": "piece", "rect": [-7, 13, 1, 4]}]
+BOXES = {"hub": [-6, 10, 9, 10], "wool-a": [-3, 20, 3, 9], "wool-b": [-13, 13, 7, 8], "spawn": [3, 13, 6, 3],
+         "frontline": [-6, 5, 9, 5]}
 WALLS = [{"a": "wool-a-t1", "b": "wool-a-neck"}, {"a": "wool-b-t1", "b": "wool-b-neck"}]
 
 # The island stands sixteen blocks off each frontline: the team units sit a cell further out than composed.
@@ -82,20 +89,19 @@ TEAM, HOLE, ISLAND = "frontline-t1-9", "void-1-cut", "mid-stone-0-9"
 
 # The team unit's outline as the compile answers it, and the points it is reshaped by: the flanks pushed a few
 # blocks out, the lip pushed into the crossing at two points (never pulled in, which would leave void the build
-# zone does not cover), and the side wool's arm chamfered at its outer corner, twelve blocks from its room. The
+# zone does not cover), and the side wool's arm chamfered at its outer corner, sixteen blocks from its room. The
 # arms' own edges and the rooms are not touched.
-COMPILED_RING = [(-52, 48), (-24, 48), (-24, 32), (-12, 32), (-12, 24), (8, 24), (8, 44), (12, 44), (12, 56),
-                 (36, 56), (36, 68), (12, 68), (12, 84), (-12, 84), (-12, 116), (-24, 116), (-24, 60),
-                 (-40, 60), (-40, 76), (-52, 76)]
+COMPILED_RING = [(-52, 56), (-24, 56), (-24, 32), (-12, 32), (-12, 24), (12, 24), (12, 56), (36, 56), (36, 68),
+                 (12, 68), (12, 84), (0, 84), (0, 120), (-12, 120), (-12, 84), (-24, 84), (-24, 72), (-40, 72),
+                 (-40, 88), (-52, 88)]
 RESHAPE = [
-    ((-24, 48), (-24, 32), [(-27, 40)]),     # the frontline's west flank
-    ((-12, 24), (8, 24), [(-5, 21), (3, 20)]),   # the lip
-    ((8, 24), (8, 44), [(11, 33)]),          # the frontline's east flank
+    ((-24, 56), (-24, 32), [(-27, 44)]),     # the frontline's and hub's west flank
+    ((-12, 24), (12, 24), [(-5, 21), (4, 20)]),   # the lip
+    ((12, 24), (12, 56), [(15, 40)]),        # the frontline's east flank
     ((12, 68), (12, 84), [(15, 76)]),        # the hub's east back flank
-    ((12, 84), (-12, 84), [(0, 87)]),        # the hub's back edge
 ]
 CHAMFER = 3
-CHAMFERED = [(-52, 48)]
+CHAMFERED = [(-52, 56)]
 
 
 def toward(corner, other, run):
@@ -163,27 +169,31 @@ def proud(points, margin):
     return ring
 
 
-# A fen: the frontline lies low at 9, and a raised causeway runs up its middle from the lip to the hub, a flat
-# track four wide standing a block or two proud of the fen and climbing the bank to its top. The hub is a low turf knoll at 13 behind a bank that rises three
-# blocks over three, walked anywhere. Both walls stand on level ground at 13; past them the arms fall to the
-# reed-bed yards round the rooms at 11. The spawn yard is held at 14.
-FEN, BANK_TOP, REED_BED, SPAWN_YARD = 9, 13, 11, 14
+# A fen: the frontline lies low, leaning from 9 at the lip to 10 at the foot of a bank that curves across it
+# and rises three blocks over three to a turf knoll at 13, walked anywhere along it. The bank is one mark per
+# straight run, so no corner stands a ridge past it, and the lip is held up to an inner edge that follows the
+# bank's curve twelve blocks short of it, so the fen's contours curve with the bank rather than lying straight.
+# One reed pool, soft-edged and off the line from the lip to the hub, sinks two blocks into the fen. Both walls
+# stand on level ground at 13; past them the arms fall to the reed-bed yards round the rooms at 11. The spawn
+# yard is held at 14, and the hub dips two blocks toward its mere.
+FEN, FOOT, BANK_TOP, REED_BED, SPAWN_YARD = 9, 10, 13, 11, 14
+BANK = [[-30, 42], [-20, 45], [-10, 42], [0, 46], [8, 43], [16, 46]]
+LIP_REACH = 12
+LIP_RING = [[-30, 16], [18, 16], [18, BANK[-1][1] - LIP_REACH],
+            *[[x, z - LIP_REACH] for x, z in reversed(BANK)], [-30, BANK[0][1] - LIP_REACH]]
 RELIEF = [
-    area("fen", FEN, -30, 18, 14, 38),
-    {"id": "bank", "kind": "scarp", "points": [[-30, 42], [-12, 44], [2, 43], [14, 45]], "low": FEN + 1,
-     "high": BANK_TOP, "face": 3, "band": 2},
+    {"id": "fen", "kind": "area", "h": FEN, "bevel": 0, "ring": LIP_RING},
+    *[{"id": f"bank-{i}", "kind": "scarp", "points": BANK[i:i + 2], "low": FOOT, "high": BANK_TOP, "face": 3,
+       "band": 2} for i in range(len(BANK) - 1)],
     area("spawn-yard", SPAWN_YARD, 18, 54, 38, 70),
-    area("back-wall", BANK_TOP, -26, 80, -10, 92),
-    area("side-wall", BANK_TOP, -32, 46, -20, 62),
-    area("back-reeds", REED_BED, -26, 98, -10, 118),
-    area("side-reeds", REED_BED, -54, 58, -38, 78),
-    {"id": "causeway", "kind": "line", "r": 2, "tread": 2, "points": [[-2, 18], [-2, 38], [-2, 48]],
-     "h": [FEN + 1, FEN + 2, BANK_TOP]},
+    area("back-wall", BANK_TOP, -14, 82, 2, 94),
+    area("side-wall", BANK_TOP, -34, 54, -22, 74),
+    area("back-reeds", REED_BED, -14, 102, 2, 122),
+    area("side-reeds", REED_BED, -54, 70, -38, 90),
 ]
 PUSHES = [
-    # two peat cuttings, dug square either side of the causeway
-    push("cutting-west", [(-22, 27), (-8, 27), (-8, 35), (-22, 35)], -2, 1),
-    push("cutting-east", [(4, 26), (12, 26), (12, 36), (4, 36)], -2, 1),
+    # a reed pool in the fen west of the line from the lip to the hub, its outline drawn rather than square
+    push("reed-pool", [(-21, 29), (-15, 26), (-9, 28), (-8, 33), (-13, 36), (-20, 35)], -2, 4),
     # the hub dips two blocks toward its mere
     push("mere-lip", proud(HOLE_POINTS, 2), -2, 4),
 ]

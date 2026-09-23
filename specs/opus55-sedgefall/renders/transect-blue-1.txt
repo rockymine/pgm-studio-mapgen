@@ -1,54 +1,54 @@
 ## blue-1 (wool) along x
-TRANSECT 25 stations from (6, -111) to (30, -111), every 1
+TRANSECT 25 stations from (-6, -115) to (18, -115), every 1
   station        ground  surface  water  top  standing            step
-  (    6,  -111)                                                    void
-  (    7,  -111)                                                    void
-  (    8,  -111)                                                    void
-  (    9,  -111)                                                    void
-  (   10,  -111)                                                    void
-  (   11,  -111)                                                    void
-  (   12,  -111)      11       11           11                      
-  (   13,  -111)      11       11           19  wool wool-1#1       
-  (   14,  -111)      11       11           19  wool wool-1#1       
-  (   15,  -111)      11       11           19  wool wool-1#1       
-  (   16,  -111)      11       11           11  wool wool-1#1       
-  (   17,  -111)      11       11           40  wool wool-1#1       
-  (   18,  -111)      11       11           40  wool wool-1#1       
-  (   19,  -111)      11       11           40  wool wool-1#1       
-  (   20,  -111)      11       11           19  wool wool-1#1       
-  (   21,  -111)      11       11           19  wool wool-1#1       
-  (   22,  -111)      11       11           19  wool wool-1#1       
-  (   23,  -111)      11       11           11                      
-  (   24,  -111)                                                    void
-  (   25,  -111)                                                    void
-  (   26,  -111)                                                    void
-  (   27,  -111)                                                    void
-  (   28,  -111)                                                    void
-  (   29,  -111)                                                    void
-  (   30,  -111)                                                    void
+  (   -6,  -115)                                                    void
+  (   -5,  -115)                                                    void
+  (   -4,  -115)                                                    void
+  (   -3,  -115)                                                    void
+  (   -2,  -115)                                                    void
+  (   -1,  -115)                                                    void
+  (    0,  -115)      11       11           11                      
+  (    1,  -115)      11       11           19  wool wool-1#1       
+  (    2,  -115)      11       11           19  wool wool-1#1       
+  (    3,  -115)      11       11           19  wool wool-1#1       
+  (    4,  -115)      11       11           11  wool wool-1#1       
+  (    5,  -115)      11       11           40  wool wool-1#1       
+  (    6,  -115)      11       11           40  wool wool-1#1       
+  (    7,  -115)      11       11           40  wool wool-1#1       
+  (    8,  -115)      11       11           19  wool wool-1#1       
+  (    9,  -115)      11       11           19  wool wool-1#1       
+  (   10,  -115)      11       11           19  wool wool-1#1       
+  (   11,  -115)      11       11           11                      
+  (   12,  -115)                                                    void
+  (   13,  -115)                                                    void
+  (   14,  -115)                                                    void
+  (   15,  -115)                                                    void
+  (   16,  -115)                                                    void
+  (   17,  -115)                                                    void
+  (   18,  -115)                                                    void
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-1#1 at (13, -113)
+beside: wool wool-1#1 at (1, -117)
 
 ## blue-1 (wool) along z
-TRANSECT 18 stations from (18, -116) to (18, -99), every 1
+TRANSECT 18 stations from (6, -120) to (6, -103), every 1
   station        ground  surface  water  top  standing            step
-  (   18,  -116)      11       11           11                      
-  (   18,  -115)      11       11           19  wool wool-1#1       
-  (   18,  -114)      11       11           19  wool wool-1#1       
-  (   18,  -113)      11       11           11  wool wool-1#1       
-  (   18,  -112)      11       11           40  wool wool-1#1       
-  (   18,  -111)      11       11           40  wool wool-1#1       
-  (   18,  -110)      11       11           40  wool wool-1#1       
-  (   18,  -109)      11       11           19  wool wool-1#1       
-  (   18,  -108)      11       11           11                      
-  (   18,  -107)      11       11           11                      
-  (   18,  -106)      11       11           11                      
-  (   18,  -105)      11       11           11                      
-  (   18,  -104)      11       11           11                      
-  (   18,  -103)      11       11           11                      
-  (   18,  -102)      11       11           11                      
-  (   18,  -101)      11       11           12  redstoneline 0#1    
-  (   18,  -100)      11       11           11                      
-  (   18,   -99)      11       11           11                      
+  (    6,  -120)      11       11           11                      
+  (    6,  -119)      11       11           19  wool wool-1#1       
+  (    6,  -118)      11       11           19  wool wool-1#1       
+  (    6,  -117)      11       11           11  wool wool-1#1       
+  (    6,  -116)      11       11           40  wool wool-1#1       
+  (    6,  -115)      11       11           40  wool wool-1#1       
+  (    6,  -114)      11       11           40  wool wool-1#1       
+  (    6,  -113)      11       11           19  wool wool-1#1       
+  (    6,  -112)      11       11           11                      
+  (    6,  -111)      11       11           11                      
+  (    6,  -110)      11       11           11                      
+  (    6,  -109)      11       11           11                      
+  (    6,  -108)      11       11           11                      
+  (    6,  -107)      11       11           11                      
+  (    6,  -106)      11       11           11                      
+  (    6,  -105)      11       11           12  redstoneline 0#1    
+  (    6,  -104)      11       11           11                      
+  (    6,  -103)      11       11           11                      
 rises 0, falls 0, worst step 0: 0 barrier, 0 scramble, 0 drop | walked end to end
-beside: wool wool-1#1 at (16, -115), redstoneline 0#1 at (16, -101)
+beside: wool wool-1#1 at (4, -119), redstoneline 0#1 at (4, -105)

@@ -125,30 +125,30 @@
    "color": "red",
    "protection": [
     {
-     "minX": -24,
-     "minZ": 100,
-     "maxX": -12,
-     "maxZ": 116
+     "minX": -12,
+     "minZ": 104,
+     "maxX": 0,
+     "maxZ": 120
     }
    ],
    "spawn": {
-    "x": -18,
+    "x": -6,
     "y": 9,
-    "z": 111
+    "z": 115
    },
    "monuments": [],
    "footprint": {
-    "minX": -23,
-    "minZ": 108,
-    "maxX": -13,
-    "maxZ": 115
+    "minX": -11,
+    "minZ": 112,
+    "maxX": -1,
+    "maxZ": 119
    },
    "entries": [
     {
-     "minX": -24,
-     "minZ": 100,
-     "maxX": -12,
-     "maxZ": 100
+     "minX": -12,
+     "minZ": 104,
+     "maxX": 0,
+     "maxZ": 104
     }
    ]
   },
@@ -164,29 +164,29 @@
    "protection": [
     {
      "minX": -52,
-     "minZ": 60,
+     "minZ": 72,
      "maxX": -40,
-     "maxZ": 76
+     "maxZ": 88
     }
    ],
    "spawn": {
     "x": -46,
     "y": 9,
-    "z": 71
+    "z": 83
    },
    "monuments": [],
    "footprint": {
     "minX": -51,
-    "minZ": 68,
+    "minZ": 80,
     "maxX": -41,
-    "maxZ": 75
+    "maxZ": 87
    },
    "entries": [
     {
      "minX": -52,
-     "minZ": 60,
+     "minZ": 72,
      "maxX": -40,
-     "maxZ": 60
+     "maxZ": 72
     }
    ]
   },
@@ -201,30 +201,30 @@
    "color": "blue",
    "protection": [
     {
-     "minX": 12,
-     "minZ": -116,
-     "maxX": 24,
-     "maxZ": -100
+     "minX": 0,
+     "minZ": -120,
+     "maxX": 12,
+     "maxZ": -104
     }
    ],
    "spawn": {
-    "x": 18,
+    "x": 6,
     "y": 9,
-    "z": -111
+    "z": -115
    },
    "monuments": [],
    "footprint": {
-    "minX": 13,
-    "minZ": -115,
-    "maxX": 23,
-    "maxZ": -108
+    "minX": 1,
+    "minZ": -119,
+    "maxX": 11,
+    "maxZ": -112
    },
    "entries": [
     {
-     "minX": 12,
-     "minZ": -100,
-     "maxX": 24,
-     "maxZ": -100
+     "minX": 0,
+     "minZ": -104,
+     "maxX": 12,
+     "maxZ": -104
     }
    ]
   },
@@ -240,29 +240,29 @@
    "protection": [
     {
      "minX": 40,
-     "minZ": -76,
+     "minZ": -88,
      "maxX": 52,
-     "maxZ": -60
+     "maxZ": -72
     }
    ],
    "spawn": {
     "x": 46,
     "y": 9,
-    "z": -71
+    "z": -83
    },
    "monuments": [],
    "footprint": {
     "minX": 41,
-    "minZ": -75,
+    "minZ": -87,
     "maxX": 51,
-    "maxZ": -68
+    "maxZ": -80
    },
    "entries": [
     {
      "minX": 40,
-     "minZ": -60,
+     "minZ": -72,
      "maxX": 52,
-     "maxZ": -60
+     "maxZ": -72
     }
    ]
   }
@@ -297,10 +297,10 @@
   "layer": null,
   "redstoneLines": [
    {
-    "x1": -24,
-    "z1": 100,
-    "x2": -13,
-    "z2": 100,
+    "x1": -12,
+    "z1": 104,
+    "x2": -1,
+    "z2": 104,
     "stamp": {
      "kind": "redstoneline",
      "unit": "0",
@@ -308,10 +308,10 @@
     }
    },
    {
-    "x1": 12,
-    "z1": -101,
-    "x2": 23,
-    "z2": -101,
+    "x1": 0,
+    "z1": -105,
+    "x2": 11,
+    "z2": -105,
     "stamp": {
      "kind": "redstoneline",
      "unit": "0",
@@ -320,9 +320,9 @@
    },
    {
     "x1": -52,
-    "z1": 60,
+    "z1": 72,
     "x2": -41,
-    "z2": 60,
+    "z2": 72,
     "stamp": {
      "kind": "redstoneline",
      "unit": "1",
@@ -331,9 +331,9 @@
    },
    {
     "x1": 40,
-    "z1": -61,
+    "z1": -73,
     "x2": 51,
-    "z2": -61,
+    "z2": -73,
     "stamp": {
      "kind": "redstoneline",
      "unit": "1",
@@ -344,9 +344,9 @@
   "ironCubes": [],
   "walls": [
    {
-    "minX": -24,
+    "minX": -12,
     "minZ": 87,
-    "maxX": -12,
+    "maxX": 0,
     "maxZ": 89,
     "topY": 11,
     "chestOnMinFace": true,
@@ -357,9 +357,9 @@
     }
    },
    {
-    "minX": 12,
+    "minX": 0,
     "minZ": -89,
-    "maxX": 24,
+    "maxX": 12,
     "maxZ": -87,
     "topY": 11,
     "chestOnMinFace": false,
@@ -371,9 +371,9 @@
    },
    {
     "minX": -29,
-    "minZ": 48,
+    "minZ": 56,
     "maxX": -27,
-    "maxZ": 60,
+    "maxZ": 72,
     "topY": 11,
     "chestOnMinFace": false,
     "stamp": {
@@ -384,9 +384,9 @@
    },
    {
     "minX": 27,
-    "minZ": -60,
+    "minZ": -72,
     "maxX": 29,
-    "maxZ": -48,
+    "maxZ": -56,
     "topY": 11,
     "chestOnMinFace": true,
     "stamp": {
