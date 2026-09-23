@@ -1,0 +1,339 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Sedgefall"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 8,
+  "surface": 9
+ },
+ "pieces": [
+  {
+   "id": "hub-t1",
+   "role": "piece",
+   "rect": [
+    -6,
+    18,
+    9,
+    3
+   ],
+   "surface": 9
+  },
+  {
+   "id": "hub-t2",
+   "role": "piece",
+   "rect": [
+    -6,
+    11,
+    9,
+    3
+   ],
+   "surface": 9
+  },
+  {
+   "id": "hub-t3",
+   "role": "piece",
+   "rect": [
+    -6,
+    14,
+    3,
+    4
+   ],
+   "surface": 9
+  },
+  {
+   "id": "hub-t4",
+   "role": "piece",
+   "rect": [
+    0,
+    14,
+    3,
+    4
+   ],
+   "surface": 9
+  },
+  {
+   "id": "spawn-t1",
+   "role": "piece",
+   "rect": [
+    3,
+    14,
+    2,
+    3
+   ],
+   "surface": 9
+  },
+  {
+   "id": "spawn-room",
+   "role": "spawn",
+   "rect": [
+    5,
+    14,
+    4,
+    3
+   ],
+   "surface": 9
+  },
+  {
+   "id": "wool-a-t1",
+   "role": "piece",
+   "rect": [
+    -6,
+    22,
+    3,
+    3
+   ],
+   "surface": 9
+  },
+  {
+   "id": "wool-a-room",
+   "role": "wool-room",
+   "rect": [
+    -6,
+    25,
+    3,
+    4
+   ],
+   "surface": 9
+  },
+  {
+   "id": "wool-b-t1",
+   "role": "piece",
+   "rect": [
+    -13,
+    12,
+    6,
+    3
+   ],
+   "surface": 9
+  },
+  {
+   "id": "wool-b-room",
+   "role": "wool-room",
+   "rect": [
+    -13,
+    15,
+    3,
+    4
+   ],
+   "surface": 9
+  },
+  {
+   "id": "frontline-t1",
+   "role": "piece",
+   "rect": [
+    -6,
+    8,
+    8,
+    3
+   ],
+   "surface": 9
+  },
+  {
+   "id": "frontline-t2",
+   "role": "piece",
+   "rect": [
+    -3,
+    6,
+    5,
+    2
+   ],
+   "surface": 9
+  },
+  {
+   "id": "mid-stone-0",
+   "role": "piece",
+   "rect": [
+    -2,
+    -2,
+    4,
+    4
+   ],
+   "surface": 9,
+   "mirrors": false
+  },
+  {
+   "id": "wool-a-neck",
+   "role": "piece",
+   "rect": [
+    -6,
+    21,
+    3,
+    1
+   ],
+   "surface": 9
+  },
+  {
+   "id": "wool-b-neck",
+   "role": "piece",
+   "rect": [
+    -7,
+    12,
+    1,
+    3
+   ],
+   "surface": 9
+  }
+ ],
+ "zones": [
+  {
+   "id": "mid-band",
+   "rect": [
+    -3,
+    -6,
+    6,
+    12
+   ],
+   "holes": []
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "spawn-1",
+    "piece": "spawn-room",
+    "at": [
+     11,
+     6
+    ],
+    "facing": "left",
+    "footprint": [
+     8,
+     1,
+     7,
+     10
+    ]
+   }
+  ],
+  "wools": [
+   {
+    "id": "wool-1",
+    "piece": "wool-a-room",
+    "at": [
+     6,
+     11
+    ],
+    "footprint": [
+     1,
+     8,
+     10,
+     7
+    ]
+   },
+   {
+    "id": "wool-2",
+    "piece": "wool-b-room",
+    "at": [
+     6,
+     11
+    ],
+    "footprint": [
+     1,
+     8,
+     10,
+     7
+    ]
+   }
+  ],
+  "iron": [
+   {
+    "id": "iron-1",
+    "piece": "spawn-room",
+    "at": [
+     4.5,
+     2.5
+    ]
+   }
+  ],
+  "destroyables": [],
+  "cores": []
+ },
+ "walls": [
+  {
+   "a": "wool-a-t1",
+   "b": "wool-a-neck"
+  },
+  {
+   "a": "wool-b-t1",
+   "b": "wool-b-neck"
+  }
+ ],
+ "boxes": [
+  {
+   "id": "hub",
+   "kind": "hub",
+   "rect": [
+    -6,
+    11,
+    9,
+    10
+   ],
+   "members": [
+    "hub-t1",
+    "hub-t2",
+    "hub-t3",
+    "hub-t4"
+   ]
+  },
+  {
+   "id": "spawn",
+   "kind": "spawn",
+   "rect": [
+    3,
+    14,
+    6,
+    3
+   ],
+   "members": [
+    "spawn-t1",
+    "spawn-room"
+   ]
+  },
+  {
+   "id": "wool-a",
+   "kind": "wool",
+   "rect": [
+    -6,
+    21,
+    3,
+    8
+   ],
+   "members": [
+    "wool-a-t1",
+    "wool-a-room",
+    "wool-a-neck"
+   ]
+  },
+  {
+   "id": "wool-b",
+   "kind": "wool",
+   "rect": [
+    -13,
+    12,
+    7,
+    7
+   ],
+   "members": [
+    "wool-b-t1",
+    "wool-b-room",
+    "wool-b-neck"
+   ]
+  },
+  {
+   "id": "frontline",
+   "kind": "frontline",
+   "rect": [
+    -6,
+    6,
+    8,
+    5
+   ],
+   "members": [
+    "frontline-t1",
+    "frontline-t2"
+   ]
+  }
+ ]
+}
