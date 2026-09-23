@@ -38,11 +38,11 @@
       "vertices": [
        [
         -52,
-        48
+        60
        ],
        [
         -36,
-        48
+        60
        ],
        [
         -36,
@@ -145,20 +145,8 @@
         72
        ],
        [
-        -33,
-        72
-       ],
-       [
-        -36,
-        69
-       ],
-       [
-        -36,
-        60
-       ],
-       [
         -52,
-        60
+        72
        ]
       ],
       "controls": null,
@@ -367,9 +355,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -52,
-      "min_z": 48,
+      "min_z": 60,
       "max_x": -36,
-      "max_z": 60,
+      "max_z": 72,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -400,9 +388,9 @@
       "override": false,
       "keepClear": false,
       "min_x": -51,
-      "min_z": 49,
+      "min_z": 61,
       "max_x": -44,
-      "max_z": 59,
+      "max_z": 71,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -431,9 +419,9 @@
       "override": false,
       "keepClear": false,
       "min_x": 36,
-      "min_z": -60,
+      "min_z": -72,
       "max_x": 52,
-      "max_z": -48,
+      "max_z": -60,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -462,9 +450,9 @@
       "override": false,
       "keepClear": false,
       "min_x": 44,
-      "min_z": -59,
+      "min_z": -71,
       "max_x": 51,
-      "max_z": -49,
+      "max_z": -61,
       "center_x": null,
       "center_z": null,
       "radius": null,
@@ -671,13 +659,13 @@
      ]
     },
     {
-     "id": "u-wall",
+     "id": "hub-west",
      "kind": "area",
      "h": 17,
      "bevel": 0,
      "ring": [
       [
-       -18,
+       -14,
        34
       ],
       [
@@ -686,11 +674,11 @@
       ],
       [
        -8,
-       50
+       66
       ],
       [
-       -18,
-       50
+       -14,
+       66
       ]
      ]
     },

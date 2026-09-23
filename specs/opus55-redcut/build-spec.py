@@ -2,8 +2,8 @@
 
 The arrangement is composed board p8 rot_180 seed 32 (`composed-seed32.plan.json`, the composer's raw answer),
 a nano board: a single hub, one wool whose approach curls round a hole in a U, a bar frontline and an open
-crossing. Taken over: the U's front arm is walled behind a neck, the wool room and the spawn are deepened with
-a building at the back of each, the spawn carries iron, and the whole team unit is stated at one surface so
+crossing. Taken over: the wool room moved to the spawn's end of the U's spine, the spine walled across its
+middle, the wool room and the spawn deepened with a building at the back of each, the spawn carries iron, and the whole team unit is stated at one surface so
 the relief alone gives it its heights.
 """
 import copy
@@ -16,18 +16,19 @@ composed = json.loads((HERE / "composed-seed32.plan.json").read_text())
 
 BASE = 9
 
-# Cell rects [x, z, w, h]. The U's front arm is split a cell short of the hub, and the wall stands on the seam
-# between the neck and the arm, where there is void past both of its ends: at the hub's side the hub runs on
-# past the arm and a player rounds the wall off its corner. The wool room and the spawn are sixteen blocks deep
-# along the way their doors face.
+# Cell rects [x, z, w, h]. The wool room stands at the spawn's end of the U's spine, flush with its corner, so it
+# is the nearer walk from the spawn. The spine is split at its middle and the wall stands on that seam, level
+# with the middle of the hole: its east end faces the hole and its west end the void south of the room, so a
+# player crosses it rather than rounding it. The wool room and the spawn are sixteen blocks deep along the way
+# their doors face.
 RECT = {
-    "wool-a-t2": [-6, 9, 2, 3],
-    "wool-a-room": [-13, 12, 4, 3],
+    "wool-a-t1": [-9, 9, 3, 5],
+    "wool-a-room": [-13, 15, 4, 3],
     "spawn-room": [1, 20, 3, 4],
 }
-NECKS = [{"id": "wool-a-neck", "role": "piece", "rect": [-4, 9, 1, 3]}]
+SPINE_NORTH = [{"id": "wool-a-spine", "role": "piece", "rect": [-9, 14, 3, 4]}]
 BOXES = {"wool-a": [-13, 9, 10, 9], "spawn": [1, 19, 3, 5]}
-WALLS = [{"a": "wool-a-t2", "b": "wool-a-neck"}]
+WALLS = [{"a": "wool-a-t1", "b": "wool-a-spine"}]
 
 # Each deepened room holds a building seven deep at its back and a yard nine deep in front of its door, with
 # the marker inside the building. A footprint is [x, z, w, h] in blocks from the piece's minimum corner. The
@@ -42,7 +43,7 @@ IRON = [{"id": "iron-1", "piece": "spawn-room", "at": [9.5, 4.5]}]
 def plan():
     doc = copy.deepcopy(composed)
     doc["meta"] = {"name": "Redcut"}
-    doc["pieces"] += copy.deepcopy(NECKS)
+    doc["pieces"] += copy.deepcopy(SPINE_NORTH)
     for piece in doc["pieces"]:
         piece["rect"] = RECT.get(piece["id"], piece["rect"])
         piece["surface"] = BASE
@@ -53,7 +54,7 @@ def plan():
     for box in doc.get("boxes", []):
         box["rect"] = BOXES.get(box["id"], box["rect"])
         if box["id"] == "wool-a":
-            box["members"].append("wool-a-neck")
+            box["members"].append("wool-a-spine")
     return doc
 
 
@@ -62,11 +63,10 @@ TEAM, HOLE = "frontline-t1-9", "void-1-cut"
 
 # The team unit's outline as the compile answers it, and the points it is reshaped by: the flanks of the
 # frontline and the hub pushed a few blocks out, the lip pushed out into the crossing at two points (never pulled
-# in, which would leave void the build zone does not cover), and the U chamfered at its two outer corners, each
-# twelve blocks from the room. The U's own edges and the rooms are not touched.
-COMPILED_RING = [(-52, 48), (-36, 48), (-36, 36), (-12, 36), (-12, 16), (12, 16), (12, 36), (0, 36), (0, 64),
-                 (20, 64), (20, 76), (16, 76), (16, 96), (4, 96), (4, 76), (-12, 76), (-12, 72), (-36, 72),
-                 (-36, 60), (-52, 60)]
+# in, which would leave void the build zone does not cover), and the U chamfered at its outer corner away from
+# the room. The U's own edges and the rooms are not touched.
+COMPILED_RING = [(-52, 60), (-36, 60), (-36, 36), (-12, 36), (-12, 16), (12, 16), (12, 36), (0, 36), (0, 64),
+                 (20, 64), (20, 76), (16, 76), (16, 96), (4, 96), (4, 76), (-12, 76), (-12, 72), (-52, 72)]
 RESHAPE = [
     ((-12, 36), (-12, 16), [(-15, 26)]),     # the frontline's west flank
     ((-12, 16), (12, 16), [(-4, 13), (5, 12)]),   # the lip
@@ -78,7 +78,7 @@ RESHAPE = [
     ((4, 76), (-12, 76), [(-4, 79)]),        # the back bar's north edge
 ]
 CHAMFER = 3
-CHAMFERED = [(-36, 36), (-36, 72)]
+CHAMFERED = [(-36, 36)]
 
 
 def toward(corner, other, run):
@@ -147,8 +147,9 @@ def stair(stair_id, points, x, low, high):
 # A mesa: the frontline climbs from the lip at 9 by two sheer steps, three blocks to a bench at 12 and five more
 # to the butte the hub stands on at 17, each crossed by a stair: the bench's at the east, the butte's at the
 # west where it arrives on the hub, so the climb turns along the bench.
-# The butte leans up to the spawn yard at 19. The U is held level at 17 across its wall and falls from there into
-# a box canyon at 13 along its spine, where the wool room opens.
+# The butte leans up to the spawn yard at 19, and its west edge is held at 17 where the U's arms leave it. From
+# there both arms fall into a box canyon at 13 along the U's spine, where the wall stands on level ground and the
+# wool room opens.
 LIP, BENCH, BUTTE, SPAWN_YARD, CANYON = 9, 12, 17, 19, 13
 BENCH_FACE = [[-18, 25], [-6, 23], [4, 25], [16, 24]]
 BUTTE_FACE = [[-18, 33], [-8, 31], [2, 34], [18, 32]]
@@ -157,7 +158,7 @@ RELIEF = [
     *scarps("bench-face", BENCH_FACE, LIP, BENCH),
     *scarps("butte-face", BUTTE_FACE, BENCH, BUTTE),
     area("spawn-yard", SPAWN_YARD, 2, 78, 18, 98),
-    area("u-wall", BUTTE, -18, 34, -8, 50),
+    area("hub-west", BUTTE, -14, 34, -8, 66),
     area("canyon", CANYON, -54, 34, -24, 74),
     stair("bench-stair", BENCH_FACE, 8, LIP, BENCH),
     stair("butte-stair", BUTTE_FACE, -4, BENCH, BUTTE),

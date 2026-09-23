@@ -61,7 +61,7 @@
     -9,
     9,
     3,
-    9
+    5
    ],
    "surface": 9
   },
@@ -71,7 +71,7 @@
    "rect": [
     -6,
     9,
-    2,
+    3,
     3
    ],
    "surface": 9
@@ -92,7 +92,7 @@
    "role": "wool-room",
    "rect": [
     -13,
-    12,
+    15,
     4,
     3
    ],
@@ -110,13 +110,13 @@
    "surface": 9
   },
   {
-   "id": "wool-a-neck",
+   "id": "wool-a-spine",
    "role": "piece",
    "rect": [
-    -4,
-    9,
-    1,
-    3
+    -9,
+    14,
+    3,
+    4
    ],
    "surface": 9
   }
@@ -182,8 +182,8 @@
  },
  "walls": [
   {
-   "a": "wool-a-t2",
-   "b": "wool-a-neck"
+   "a": "wool-a-t1",
+   "b": "wool-a-spine"
   }
  ],
  "boxes": [
@@ -229,7 +229,7 @@
     "wool-a-t2",
     "wool-a-t3",
     "wool-a-room",
-    "wool-a-neck"
+    "wool-a-spine"
    ]
   },
   {

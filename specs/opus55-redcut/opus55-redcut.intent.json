@@ -126,29 +126,29 @@
    "protection": [
     {
      "minX": -52,
-     "minZ": 48,
+     "minZ": 60,
      "maxX": -36,
-     "maxZ": 60
+     "maxZ": 72
     }
    ],
    "spawn": {
     "x": -48,
     "y": 9,
-    "z": 54
+    "z": 66
    },
    "monuments": [],
    "footprint": {
     "minX": -51,
-    "minZ": 49,
+    "minZ": 61,
     "maxX": -44,
-    "maxZ": 59
+    "maxZ": 71
    },
    "entries": [
     {
      "minX": -36,
-     "minZ": 48,
+     "minZ": 60,
      "maxX": -36,
-     "maxZ": 60
+     "maxZ": 72
     }
    ]
   },
@@ -164,29 +164,29 @@
    "protection": [
     {
      "minX": 36,
-     "minZ": -60,
+     "minZ": -72,
      "maxX": 52,
-     "maxZ": -48
+     "maxZ": -60
     }
    ],
    "spawn": {
     "x": 48,
     "y": 9,
-    "z": -54
+    "z": -66
    },
    "monuments": [],
    "footprint": {
     "minX": 44,
-    "minZ": -59,
+    "minZ": -71,
     "maxX": 51,
-    "maxZ": -49
+    "maxZ": -61
    },
    "entries": [
     {
      "minX": 36,
-     "minZ": -60,
+     "minZ": -72,
      "maxX": 36,
-     "maxZ": -48
+     "maxZ": -60
     }
    ]
   }
@@ -221,9 +221,9 @@
   "redstoneLines": [
    {
     "x1": -37,
-    "z1": 48,
+    "z1": 60,
     "x2": -37,
-    "z2": 59,
+    "z2": 71,
     "stamp": {
      "kind": "redstoneline",
      "unit": "0",
@@ -232,9 +232,9 @@
    },
    {
     "x1": 36,
-    "z1": -60,
+    "z1": -72,
     "x2": 36,
-    "z2": -49,
+    "z2": -61,
     "stamp": {
      "kind": "redstoneline",
      "unit": "0",
@@ -245,12 +245,12 @@
   "ironCubes": [],
   "walls": [
    {
-    "minX": -17,
-    "minZ": 36,
-    "maxX": -15,
-    "maxZ": 48,
+    "minX": -36,
+    "minZ": 55,
+    "maxX": -24,
+    "maxZ": 57,
     "topY": 11,
-    "chestOnMinFace": false,
+    "chestOnMinFace": true,
     "stamp": {
      "kind": "wall",
      "unit": "0",
@@ -258,12 +258,12 @@
     }
    },
    {
-    "minX": 15,
-    "minZ": -48,
-    "maxX": 17,
-    "maxZ": -36,
+    "minX": 24,
+    "minZ": -57,
+    "maxX": 36,
+    "maxZ": -55,
     "topY": 11,
-    "chestOnMinFace": true,
+    "chestOnMinFace": false,
     "stamp": {
      "kind": "wall",
      "unit": "0",

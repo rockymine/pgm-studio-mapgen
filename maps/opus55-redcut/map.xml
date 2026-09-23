@@ -57,8 +57,8 @@
         <spawn team="blue-team" kit="spawn-kit" region="blue-spawn-point"/>
     </spawns>
     <wools>
-        <wool team="blue-team" color="red" location="-48,12,54" monument="red-blue-monument"/>
-        <wool team="red-team" color="blue" location="48,12,-54" monument="blue-red-monument"/>
+        <wool team="blue-team" color="red" location="-48,12,66" monument="red-blue-monument"/>
+        <wool team="red-team" color="blue" location="48,12,-66" monument="blue-red-monument"/>
     </wools>
     <filters>
         <team id="only-blue">blue-team</team>
@@ -123,15 +123,15 @@
     <regions>
         <point id="blue-spawn-point">-10,19,-91</point>
         <point id="red-spawn-point">10,19,91</point>
-        <point id="blue-wool-spawn">48,12,-54</point>
-        <point id="red-wool-spawn">-48,12,54</point>
+        <point id="blue-wool-spawn">48,12,-66</point>
+        <point id="red-wool-spawn">-48,12,66</point>
         <point id="observer-spawn">0,25,0</point>
         <block id="blue-red-monument">6,20,89</block>
         <block id="red-blue-monument">-14,20,-90</block>
         <rectangle id="blue-spawn" min="-16,-96" max="-4,-80"/>
         <rectangle id="red-spawn" min="4,80" max="16,96"/>
-        <rectangle id="blue-wool" min="36,-60" max="52,-48"/>
-        <rectangle id="red-wool" min="-52,48" max="-36,60"/>
+        <rectangle id="blue-wool" min="36,-72" max="52,-60"/>
+        <rectangle id="red-wool" min="-52,60" max="-36,72"/>
         <union id="reds-woolrooms">
             <region id="red-wool"/>
         </union>
