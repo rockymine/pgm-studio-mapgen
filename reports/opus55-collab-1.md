@@ -26,9 +26,9 @@ with a building seven deep at its back, and every spawn carries iron.
 
 ## The author's layout adjustments, board by board
 
-**Every adjustment below is the author's, and so is every reason given with it.** They are about the map as it
-is played: how a wool relates to the frontline, to its own spawn, and to the other wool. Where the author gave
-no reason, the row says so rather than supplying one.
+**Every adjustment below is the author's, and so is every reason given with it.** Most are about the map as it
+is played: how a wool relates to the frontline, to its own spawn, and to the other wool. The reasons the author
+did not state at the time were asked for afterwards and are recorded as the author gave them.
 
 ### Millbank
 
@@ -36,15 +36,15 @@ no reason, the row says so rather than supplying one.
 |---|---|
 | The lip is never pulled in; terrain may only be pushed out of it | The build zone is a rectangle, so ground taken away at the lip leaves void over which players cannot place blocks; pulling in would need the zone extended with it |
 | Each wool's wall moved off the T where its arm meets the hub, onto a neck | A wall at the junction has the hub running on past both of its ends, so it is rounded rather than crossed. `PL17` says nothing about it, which is now `TN22` |
-| No bulges on the wool approaches; a slight corner cut is allowed | Not stated beyond the preference |
+| No bulges on the wool approaches; a slight corner cut is allowed | A bulge adds ground behind and around the wall, and players jump round the wall far more easily |
 | No chamfer next to a wool room | A cut four blocks from the orange room's corner deformed the room's own piece |
-| A middle island, as wide as the build zone and twice as deep as the thin lip strip; later doubled, with a river bed cut through it by a scarp and smooth relief on top | Not stated beyond the design |
-| The void from each lip to the island widened from 12 to 20 blocks | Not stated |
-| Wool rooms and spawn 16 deep, each building 7 deep | Not stated |
+| A middle island, as wide as the build zone and twice as deep as the thin lip strip; later doubled, with a river bed cut through it by a scarp and smooth relief on top | The island is bridged over, not fought on: it has no high or low ground worth holding, and the water gives no advantage. Its larger size delays the first attack, so defenders reach the wool room and prepare. The river is there for the look |
+| The void from each lip to the island widened from 12 to 20 blocks | At 12 blocks a bridge is thrown across in seconds; at 20, bridging is a commitment a player can be shot off |
+| Wool rooms and spawn 16 deep, each building 7 deep | Room for a larger building, perhaps a house with two wings. It also gives attackers who reach the wool some safe space to build their own staircase out, which is less awkward than a tiny room. The yard is not where the defence stands: defenders cannot enter the whole sixteen blocks |
 | Renewable iron in the spawn yard | The deepened spawn has room for it |
 | The hub's hole a six-vertex, longer, irregular polygon, and a shallow dip round its lip | To accentuate the hole |
 | Wool-a's swell moved out over its coast | It came too close to the wool room |
-| A tilt toward the spawn on both sides of wool-b's wall | Not stated; the `ST4` the tilt raises is fine by the author |
+| A tilt toward the spawn on both sides of wool-b's wall | Aesthetic only, a subtle change of height; the `ST4` it raises is fine |
 | The relief: a frontline that leans, a curved scarp standing to a hub that keeps rising, 45-degree stairs cut into the face | Flat ground and straight edges do not read as the theme; the hub started at frontline height and raised, with room for houses in front |
 
 ### Clasp
@@ -52,27 +52,27 @@ no reason, the row says so rather than supplying one.
 | Adjustment | The author's reasoning |
 |---|---|
 | This composed arrangement chosen as a second board | The clamp wool room makes the layout interesting |
-| The spawn moved a few cells toward the back wool, level with the hub's middle piece | Not stated |
-| The hub extended two cells toward the clamp so its hole is three cells by four, the clamp box moving with it | Not stated |
-| A bedrock wall only at the clamp's front entrance | To aid the defence |
-| A bedrock wall on the back wool as well | Not stated beyond the instruction |
-| The void to the middle 16 blocks, and the middle made two parallel islands on the build zone's edges, 8 wide, deformed inward only | Their sides stay parallel to the build zone |
-| Two scarps: a diagonal one at the front and one approaching the back wool | Not stated beyond the design |
+| The spawn moved a few cells toward the back wool, level with the hub's middle piece | It sat too close to the frontline, which is not wanted. Level with the hub's middle, a player leaving it faces the hole squarely, about as far from both wools as from the front |
+| The hub extended two cells toward the clamp so its hole is three cells by four, the clamp box moving with it | At one cell (four blocks) the hole was small enough to jump |
+| A bedrock wall only at the clamp's front entrance | It is the attackers' closest pressure point, and from it a defender oversees the ground between the two holes. Defenders cannot realistically hold three walls, so if anything the second wall would have gone between the holes. Past the wall an attacker can run through the clamp room and out the other side, so the clamp is hard to defend and a natural place for attackers to group, hold, and shoot at defenders on the back wool's wall |
+| A bedrock wall on the back wool as well | A walled wool is standard in CTW: it gives defenders a checkpoint close to hand, instead of defending at the room's entrance. It gives attackers a target late in the match too, since without it the line players eventually build to would sit far down a dug-out approach, hard to push into |
+| The void to the middle 16 blocks, and the middle made two parallel islands on the build zone's edges, 8 wide, deformed inward only | Their sides stay parallel to the build zone. At the edges they leave the centre open void and split the middle into two flanks, so a push can go either way |
+| Two scarps: a diagonal one at the front and one approaching the back wool | Part of the relief design |
 | The front scarp on the frontline only, not the hub | On the hub it left a stair running down a corner that led nowhere |
 | The front scarp made a lightning shape, then gentler | A straight diagonal is uninteresting; the first zigzag was too zigzaggy |
 | The frontline's contours made to follow the scarp | Otherwise it reads as a straight shallow ramp |
 | A canyon six deep between the two holes, overlapping into both | So the edges of the holes carry no leftover rims |
 | The hollow on the clamp's back approach run through the whole lane | Stopping halfway looks incomplete; its straight edges are a contrast the author accepts |
 | More elevation toward the back of the hub, and a small hill at the corner by the spawn | The back was too flat; the frontline's lean is the measure |
-| The frontline pushed into the build zone at two vertices | Not stated |
-| The hub's hole reshaped on a slight diagonal | Not stated beyond the design |
+| The frontline pushed into the build zone at two vertices | Aesthetic, not gameplay: organic edges suit a natural theme, where straight ones contrast too hard with the relief |
+| The hub's hole reshaped on a slight diagonal | Part of the relief design |
 
 ### Redcut
 
 | Adjustment | The author's reasoning |
 |---|---|
-| The wool room moved along the U's spine to its spawn end, flush with the corner, and that corner's chamfer removed | Closer to the spawn; the fuller reason is an open question below |
-| The wall moved to the middle of the spine, level with the middle of the hole | Not stated; an open question below |
+| The wool room moved along the U's spine to its spawn end, flush with the corner, and that corner's chamfer removed | The room sat too close to the frontline; at the spawn end the map is more defendable |
+| The wall moved to the middle of the spine, level with the middle of the hole | At the front arm defenders could never build a defence at the wall. In the middle of the U it is closer to the room, and attackers must come round the corner to it rather than jump it at once |
 
 ### Lymedown
 
@@ -81,13 +81,13 @@ no reason, the row says so rather than supplying one.
 | The wool box shifted so its entry is centred on the hub's hole, and flipped so the room faces the spawn | From the spawn the defence then has an overview of its wool; as it stood a player saw the back of the wool room |
 | The build zone narrowed to run only from the spawn's leg of the G to the end of the hole, not to the top of the G | The wool becomes more defendable. As it stood a player ran out of the spawn and straight across; the decision to go left or right at the hole was not promoted enough, and the narrower band forces it |
 | The team units shifted so the two sides are parallel again | Narrowing the band on one side has to leave the halves facing squarely |
-| `FR9` on `hub-t5`'s 12-block front | Not valid on this board |
+| `FR9` on `hub-t5`'s 12-block front | Not valid on this board: that ground is used mostly by players leaving the spawn and is not the map's main funnel. Attackers arrive across the other front, which is 24 blocks wide |
 
 ### Sedgefall
 
 | Adjustment | The author's reasoning |
 |---|---|
-| Both wool approaches aligned with the centre of the hub's hole | Not stated; an open question below |
+| Both wool approaches aligned with the centre of the hub's hole | The L-approach's wool sat too close to the frontline. The back wool followed it so the two wools are not close to one another |
 | The frontline aligned between the two teams | The two lips were not properly aligned across the build zone |
 | The frontline relief rebuilt | It was too geometric: a scarp with no curvature, two hollows cut as squares, and a ramp running straight down that nothing needed, since no ground on it is steep |
 
@@ -125,6 +125,10 @@ itself. Chamfers now stop twelve blocks or more from a room.
 **A level mark reached past its pieces.** The mark holding Clasp's clamp at 20 overlapped two blocks of the hub
 where the scarp pinned its foot at 12, and stood an eight-block step there. `RL3` named it and the mark was
 trimmed to the clamp.
+
+**I guessed the reasons for the layout changes, and most guesses were wrong.** Asked afterwards, the author gave
+one reason for three of them: a wool or a spawn stood too close to the frontline, or two wools too close to
+each other. I had measured none of those distances. Two changes I had read as gameplay were for the look alone.
 
 **I said a finding was undocumented when it was.** The notes already carried the half-solve entry; my search
 pattern missed it. The entry was sharpened instead of duplicated.
