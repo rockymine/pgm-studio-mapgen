@@ -19,7 +19,7 @@ it costs. A rule measured there is measured; a rule here is argued.
 separately-coloured runs its busiest column passes through, and for every model measured here the colour term
 dominates: a 70-block starship is two layers of geometry and four in the end, a robot is five and sixteen, and
 a **Rubik's cube — a solid box with one run per column — is one and seven**. §6 costs the one-record change
-that removes most of it.
+that removes most of it, and that change has shipped as the `height` band axis.
 
 ---
 
@@ -205,7 +205,8 @@ itself is still one row a layer.
 
 ## 6. What could become a tool
 
-**Two of the four below have shipped and are §5's subject: `kind: "made"` and `seat: "ground"`.** They are
+**Three of the four below have shipped: `kind: "made"` and `seat: "ground"`, which are §5's subject, and a
+material that reads absolute Y.** They are
 left here with what they were asked for, because the argument for them is the measurement that produced
 them, and the entries are marked where the studio now answers.
 
@@ -260,14 +261,18 @@ layers is one slice of, which is what seats them together and what a strip would
 
 And one more, which is the largest of the four and the cheapest:
 
-**A material that reads absolute Y.** Everything §3 measures says the same thing — the layer count is the paint
+**A material that reads absolute Y. — shipped, as a `layered` material on the `height` axis.** A stack stating
+`"axis": "height"` and a `from` resolves each course by `Y − from`, so one span carries every band.
+`techniques/designing-a-structure` spends it on a façade and on a lattice's marking. The argument that asked
+for it follows.
+
+Everything §3 measures says the same thing — the layer count is the paint
 job, not the shape — and a layer only splits on colour because a span carries **one** material. Give it a stack
 keyed on world Y and the split stops.
 
 `TerrainMaterial` is already polymorphic under a `kind` discriminator with fourteen derived types,
-`BucketContext` already carries `Y`, and no material maps it to a stated band: the volume patterns sample it as
-a noise coordinate and that is all. So this is one derived record — a list of `(from, to, material)` and a
-fallback — and no change to the rasterizer, the painter or the gate.
+`BucketContext` carries `Y`, so this was one more axis on a record that already existed, and no change to the
+rasterizer, the painter or the gate.
 
 What it is worth, measured by re-compiling every model with runs split on **air only** and shapes grouped by
 `(floor, top, colour sequence)`:
