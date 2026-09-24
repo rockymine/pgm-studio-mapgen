@@ -195,7 +195,7 @@ override, a mast hanging two courses above its tower, and a door that did not op
 no finding. `column` is the read that sees each one.
 
 **A layer's list stops being readable well before a facility stops growing.** The station alone is twelve
-layers. Naming layers by mass and by slab height, as `Made` in `build.py` does, keeps the strip legible
+layers. Naming layers by mass and by slab height, as `Made` in `techniques/made.py` does, keeps the strip legible
 where a run index would not.
 
 ## What checks it

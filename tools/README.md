@@ -249,7 +249,7 @@ idempotent, so the materials, the house presets and parts, the themes, the biome
 boulders and the six vanilla tree recipes are always there. Two things this repository depends on are not,
 and this puts both in.
 
-**The technique cards' boards** — thirty-one over twenty-eight cards — so *open it in the studio as
+**The technique cards' boards** — thirty-two over twenty-nine cards — so *open it in the studio as
 `technique-<name>`* is true on a database nobody has driven them into.
 
 **The copied trees.** `corpus/tree-showcase` is a world of hand-built trees and the studio's
