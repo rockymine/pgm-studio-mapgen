@@ -1,0 +1,56 @@
+HEIGHTMAP  1 char = 3x3 blocks (the top-left block of each)  x -132..129 across, z -76..74 down
+KEY  char = ground height above y11 in bands of 2 block(s): 0 = y11..12, 1 = …; H house or hall  ~ water  @ spawn point  ! goal  space = void
+     -3 -2  -1 -0 -9  -8 -7 -6  -5 -4 -3  -2 -1  0   1  2  3   4  5  6   7  8  9   0  1  2   
+     2963074185296307418529630741852963074185296303692581470369258147036925814703692581470369
+ -76                                                                                         
+ -73                        102                                                              
+ -70                       000346                                                            
+ -67                       0015677776                                                        
+ -64          cbb7777     00135787777666                                    7777add          
+ -61        cbcb97777766  11156888887776655            556              56777777bdceff       
+ -58       cbbcc8777779853122678888887766555           5667          11256777777cddefggh     
+ -55      bbaaba777779bb94222678888888776555          556777         2125677777acdeefggh     
+ -52     aaaaaaa77778bbba7333679999988776655          566777        42225677779dddeffgghh    
+ -49     aaaaaa777778bbba9333689999988776655          5667788       3225577777ddddeffggghi   
+ -46    aa99999777777abcca33358aaaa998877665          66777889      322556666addddeffgghhi   
+ -43    aa9999977777777976333478aaa999877766          66778889     3322555557ccdddeffgghghj  
+ -40   aa9999898777777777643336799999c888776          6678ddb99a   332355555bccddddffggghhi  
+ -37   aa99999997777777777633357799affe88776          677cddd99a986443555557bbccddeeffgfghi  
+ -34   aaaa99aaaa777777777653337789deeeb8776          677cddd999875332565559bbccdddeffgffgh  
+ -31   aaaaaabbbc977777777662334678deeed8876          6778ddd99976332556555abbcdddeeffghhhhh 
+ -28   bbbbbbcccdc77777777755323668aeeed8776          67778aa89975332656655abbcdddeeffgghhhh 
+ -25   bbccccddddd97777777755111568888987776          6777888889763225566667cccddeeeeffggghg 
+ -22  cccdddddddddd8777777755111457777776666          67777888886622235777669cdddddeefffffgg 
+ -19  dddeeeeeeddddc777777753100456666666666          66667778887622115677777ddddcdeeefffffff
+ -16  eeeeeeeeeddddd977777751100456666666666          66666777887621114577777bddddeeeeffffefg
+ -13  fffffeeeeeddddc7777!531101466666666666          666666679bb5311125777777cdddeeeefefffgg
+ -10 fffffefeeeeddddd7777H531113466666666666          66666666ab85410115777777addddeeefffffgg
+  -7 fHHHHfffeeeedddd77776555334666666665666          66666666aa65421355677777adddeeeeffHHHHH
+  -4 fHHHHfffeeeddddd87776555555666666655566          666656666666445555577778ddddeeeeffHHHHH
+  -1 fHHHHfffeeeddddc87776555555666666655566          666555666666555555577779ddddeeeeffHHHHH
+   2 fHHHHfffeeeedddc77777555555566666655666           6655566666665555557777addddeeeeffHHHHH
+   5 fHHHHffeeeedddd977777555414466876666666           66556666666642555577779ddddeeeeffHHHHH
+   8 gggffffeeeedddc87777765110245aaa6666666           66666666666431145577779ddddeeeeeeefeff
+  11  ggfffeeeeedddd97777765111155bb96666666           66666666666401114!H7778dddddeeeeffffff
+  14  ggfffffeeeddddd87777652111469977766666           66666666665401125777777cddddeeeeefffee
+  17  fefffffeeedddddb7777754112368888776666           666666666643001357777779dddddeeeeeeedd
+  20  gggefffeeedcdddc7677765122468888877776           666677777752012557777777bddddddeddddc 
+  23  gggggfffeeddddcca666765422277888887777           6777777777531125677777778cddddddccccc 
+  26   hhhggffeeeedccbb756675523377988888776           6778dee9876422256777777779ddccccbbbbb 
+  29   hhhhggffeeddccbb855665433378999dda776           6788eeeeb86633355777777777cccbbbaaaab 
+  32   ihgfggffddddccbb75555523347999bddd976          66788eeeed876533267777777778bbaaaaaaaa 
+  35   hhgffgffedddcbbb65555434477999bddda76          66788cefe99877333567777777779999999aaa 
+  38    hhggggfedddccba555552334 8a999ddc876          667788ee9999874333677777777779999999a  
+  41    ighgggfeedddcc7555552334    998987766         56777889999997633356777777777889999aa  
+  44    ihhhggfeedddd8666644223      98877765         5667778999aaa884334acbb777777799999aa  
+  47     hhgggfeedddd7766653223      88777665         55667788999aa973334abbbb77777899a9aa   
+  50     hhhggfeeddd8777755222        8777665         5556677889999974333aabbb77777aaaaaa    
+  53      hgggfedcda7777755122         77665          55566778889999742227abb977778bbaabb    
+  56       gggfeedc77777755111         77665           55567788888886422159ba77777abbbbc     
+  59        gffdddb777777551            6665           555667788888873211 56777777ccbcc      
+  62          eddd877777                                  566777888762101   777778bcc        
+  65                                                         67777764100        7b           
+  68                                                            66643000                     
+  71                                                               4201                      
+  74                                                                 0                       
+low y11, high y49, range 38

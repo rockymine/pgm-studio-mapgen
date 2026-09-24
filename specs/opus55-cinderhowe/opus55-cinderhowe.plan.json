@@ -1,0 +1,73 @@
+{
+ "plan": 2,
+ "meta": {
+  "name": "Cinderhowe"
+ },
+ "globals": {
+  "cell": 4,
+  "symmetry": "rot_180",
+  "maxPlayers": 16,
+  "surface": 20
+ },
+ "pieces": [
+  {
+   "id": "spawn",
+   "role": "spawn",
+   "rect": [
+    -35,
+    -2,
+    5,
+    4
+   ]
+  },
+  {
+   "id": "field",
+   "role": "piece",
+   "rect": [
+    -30,
+    -16,
+    26,
+    32
+   ]
+  }
+ ],
+ "zones": [
+  {
+   "id": "strait",
+   "rect": [
+    -4,
+    -16,
+    8,
+    32
+   ],
+   "kind": "build"
+  }
+ ],
+ "placements": {
+  "spawns": [
+   {
+    "id": "red-spawn",
+    "piece": "spawn",
+    "at": [
+     10,
+     8
+    ],
+    "facing": "right"
+   }
+  ],
+  "destroyables": [
+   {
+    "id": "red-monument",
+    "piece": "field",
+    "at": [
+     54,
+     68
+    ],
+    "style": "pillar-3",
+    "materials": "obsidian",
+    "float": 4
+   }
+  ]
+ },
+ "walls": []
+}
